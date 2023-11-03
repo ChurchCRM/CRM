@@ -1,0 +1,936 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: he\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "לא יכול לבצע שאילתה."
+
+#: 
+msgid "Delete"
+msgstr "מחיקה"
+
+#: 
+msgid "Cancel"
+msgstr "ביטול"
+
+#: 
+msgid "Save"
+msgstr "שמירה"
+
+#. Need context
+#: 
+#, fuzzy
+msgid "Unassigned"
+msgstr "בלתי משוייך"
+
+#. Need context
+#: 
+msgid "None"
+msgstr "ללא"
+
+#: 
+msgid "City"
+msgstr "עיר"
+
+#: 
+msgid "State"
+msgstr "מדינה"
+
+#: 
+msgid "Country"
+msgstr "מחוז"
+
+#: 
+msgid "Phone"
+msgstr "טלפון"
+
+#: 
+msgid "Email"
+msgstr "דוא\"ל"
+
+#: 
+msgid "Credit Card"
+msgstr "כרטיס אשראי"
+
+#: 
+msgid "Backup Database"
+msgstr "גבה מסד נתונים"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "כלי זה יסייע לך ביצירת גיבוי ידני של מסד הנתונים של ChurchCRM"
+
+#: 
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "עליך לבצע גיבוי ידני, לפחות פעם בשבוע, אלא אם המערכת שלך מבצעת גיבוי אוטומטי בשיגרה"
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "לאחר הורדת קובץ הגיבוי, צור שני עותקים.\n"
+"אחסן אחד מהם בכספת חסינת אש באתר, ועותק נוסף - באתר אחר."
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "אם אתה מודאג לגבי מידע רגיש, המאוחסן במערכת ChurchCRM, עליך לבצע הצפנה לקובץ הגיבוי, במידה שהוא מאוחסן במקום הנגיש לאחרים"
+
+#: 
+msgid "Select archive type"
+msgstr "בחר סוג ארכיון"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "להצפין קובץ גיבוי עם סיסמה?"
+
+#: 
+msgid "Re-type Password"
+msgstr "הקלד שוב את הסיסמה"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "צור גיבוי ושלח אל איחסון חיצוני"
+
+#: 
+msgid "Winner"
+msgstr "זוכה"
+
+#: 
+msgid "Price"
+msgstr "מחיר"
+
+#: 
+msgid "Enter Winners"
+msgstr "הכנס שמות זוכים"
+
+#: 
+msgid "CSV Export"
+msgstr "ייצוא CSV"
+
+#: 
+msgid "Field Selection"
+msgstr "בחירת שדה"
+
+#: 
+msgid "Last Name"
+msgstr "שם משפחה"
+
+#: 
+msgid "Required"
+msgstr "נדרש"
+
+#: 
+msgid "First Name"
+msgstr "שם פרטי"
+
+#: 
+msgid "Middle Name"
+msgstr "שם שני"
+
+#: 
+msgid "Zip"
+msgstr "מיקוד"
+
+#: 
+msgid "Envelope"
+msgstr "מעטפה"
+
+#: 
+msgid "Work/Other Email"
+msgstr "עבודה\\דוא\"ל אחר"
+
+#: 
+msgid "Membership Date"
+msgstr "תאריך חברות"
+
+#: 
+#, fuzzy
+msgid "Birth / Anniversary Date"
+msgstr "יום הולדת\\יום שנה"
+
+#: 
+msgid "Age / Years Married"
+msgstr "גיל\\שנות נישואין"
+
+#: 
+msgid "Family Role"
+msgstr "תפקיד משפחתי"
+
+#. Need context
+#: 
+msgid "Custom Field Selection"
+msgstr "בחירת שדה אחר"
+
+#: 
+msgid "Filters"
+msgstr "מסננים"
+
+#: 
+msgid "Records to export"
+msgstr "רשומה לייצוא"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "לחץ על מקש Ctrl כדי לבצע בחירה מרובה"
+
+#: 
+msgid "Don't Filter"
+msgstr "אל תסנן"
+
+#: 
+msgid "Male"
+msgstr "זכר"
+
+#: 
+msgid "Female"
+msgstr "נקבה"
+
+#: 
+msgid "From:"
+msgstr "מאת:"
+
+#: 
+msgid "To:"
+msgstr "אל:"
+
+#: 
+msgid "Birthday Date"
+msgstr "תאריך לידה"
+
+#. Need context
+#: 
+#, fuzzy
+msgid "Anniversary Date"
+msgstr "יום שנה"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "דלג על רשומות ללא כתובת דוא\"ל"
+
+#: 
+msgid "Create File"
+msgstr "צור קובץ"
+
+#: 
+msgid "No file selected for upload."
+msgstr "לא נבחר קובץ להעלאה"
+
+#: 
+msgid "Ignore this Field"
+msgstr "התעלם משדה זה"
+
+#: 
+msgid "Title"
+msgstr "תואר"
+
+#: 
+msgid "Gender"
+msgstr "מין"
+
+#: 
+msgid "Home Phone"
+msgstr "טלפון בית"
+
+#: 
+msgid "Work Phone"
+msgstr "טלפון עבודה"
+
+#: 
+msgid "Mobile Phone"
+msgstr "טלפון נייד"
+
+#: 
+msgid "Work / Other Email"
+msgstr "עבודה \\ דוא\"ל אחר"
+
+#: 
+msgid "Birth Date"
+msgstr "תאריך לידה"
+
+#: 
+msgid "Wedding Date"
+msgstr "תאריך נישואין"
+
+#. Need context
+#: 
+msgid "Patriarch"
+msgstr "פטריארך"
+
+#. Need context
+#: 
+msgid "Matriarch"
+msgstr "מטריארך"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "ארץ ברירת מחדל - אם לא צויין אחרת"
+
+#: 
+msgid "Classification"
+msgstr "סיווג"
+
+#: 
+msgid "Perform Import"
+msgstr "בצע ייבוא"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "שגיאה: קובץ ה-CSV שהעלית - אינו קיים יותר"
+
+#: 
+msgid "Upload CSV File"
+msgstr "טען קובץ CSV"
+
+#: 
+msgid "Data import successful."
+msgstr "ייבוא המידע הושלם בהצלחה"
+
+#: 
+msgid "persons were imported"
+msgstr "האנשים יובאו בהצלחה"
+
+#: 
+msgid "Set default fiscal year"
+msgstr "הזן ערך ברירת מחדל לשנת תקציב"
+
+#: 
+msgid "Check to confirm"
+msgstr "סמן לאישור"
+
+#. Need context
+#: 
+msgid "Briefing Sheets"
+msgstr "דפי תדרוך"
+
+#: 
+msgid "Progress Report"
+msgstr "דו\"ח התקדמות"
+
+#: 
+msgid "Summary Report"
+msgstr "דו\"ח סיכום"
+
+#: 
+msgid "Positive"
+msgstr "חיובי"
+
+#: 
+msgid "Critical"
+msgstr "קריטי"
+
+#: 
+msgid "Insightful"
+msgstr "בעל תובנה"
+
+#: 
+msgid "Financial"
+msgstr "פיננסי"
+
+#: 
+msgid "Suggestions"
+msgstr "הצעות"
+
+#: 
+msgid "Not Interested"
+msgstr "לא מעוניין"
+
+#: 
+msgid "Why Not Interested?"
+msgstr "מדוע לא מעוניין?"
+
+#: 
+msgid "Add Cart to Event"
+msgstr "הוסף סל לאירוע"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "בחר באירוע שברצונך להוסיף לסל"
+
+#: 
+msgid "OR"
+msgstr "או"
+
+#: 
+msgid "Add New Event"
+msgstr "הוסף אירוע חדש"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "הסל שלך ריק!"
+
+#: 
+msgid "No family name entered!"
+msgstr "לא הוכנסה משפחה!"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "הוסף סל למשפחה"
+
+#: 
+msgid "Name"
+msgstr "שם"
+
+#: 
+msgid "Assign Role"
+msgstr "הקצה תפקיד"
+
+#: 
+msgid "Already in a family"
+msgstr "משוייך כבר למשפחה"
+
+#: 
+msgid "Create new family"
+msgstr "צור משפחה חדשה"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "אם משפחה חדשה, בחר מהנ\"ל"
+
+#: 
+msgid "Use address/contact data from"
+msgstr "בחר כתובת\\איש קשר מ:"
+
+#: 
+msgid "Add to Family"
+msgstr "הוסף למשפחה"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "הוסף סל לקבוצה"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "בחר בקבוצה אליך תרצה לשייך את הסל"
+
+#: 
+msgid "Select Group"
+msgstr "בחר קבוצה"
+
+#: 
+msgid "No Group Selected"
+msgstr "לא נבחרה קבוצה"
+
+#: 
+msgid "Add to Group"
+msgstr "הוסף לקבוצה"
+
+#: 
+msgid "View Your Cart"
+msgstr "הצג את הסל שלך"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "אין פריטים בסל שלך"
+
+#: 
+msgid "Back to Menu"
+msgstr "חזרה לתפריט"
+
+#: 
+msgid "Empty Cart"
+msgstr "רוקן סל"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "רוקן סל לקבוצה"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "רוקן סל למשפחה"
+
+#: 
+msgid "Empty Cart to Event"
+msgstr "רוקן סל לאירוע"
+
+#: 
+msgid "Map Cart"
+msgstr "מפה את הסל"
+
+#: 
+msgid "Name Tags"
+msgstr "תגי שמות"
+
+#: 
+msgid "Email (BCC)"
+msgstr "דוא\"ל (BCC)"
+
+#: 
+msgid "Create Directory From Cart"
+msgstr "צור ספריה מהסל"
+
+#. Need context
+#: 
+msgid "Quiet Presort"
+msgstr "מיון שקט"
+
+#: 
+msgid "Your cart contains"
+msgstr "הסל שלך מכיל"
+
+#: 
+msgid "persons from"
+msgstr "אנשים מ:"
+
+#: 
+msgid "Remove"
+msgstr "הסר"
+
+#: 
+msgid "Yes"
+msgstr "כן"
+
+#: 
+msgid "No"
+msgstr "לא"
+
+#: 
+msgid "Developer Chat"
+msgstr "צ'ט מפתחים"
+
+#: 
+msgid "Event Checkin"
+msgstr "כניסה לאירוע"
+
+#: 
+msgid "Select the event to which you would like to check people in for"
+msgstr "בחר באירוע אליו תרצה להוסיף אנשים"
+
+#: 
+msgid "Select Event"
+msgstr "בחר אירוע"
+
+#: 
+msgid "Add Visitor"
+msgstr "הוסף מבקר"
+
+#: 
+msgid "CheckIn"
+msgstr "כניסה"
+
+#: 
+msgid "CheckOut"
+msgstr "יציאה"
+
+#: 
+msgid "Checked In Time"
+msgstr "זמן כניסה"
+
+#: 
+msgid "Checked In By"
+msgstr "רישום כניסה על-ידי"
+
+#: 
+msgid "Checked Out Time"
+msgstr "זמן יציאה"
+
+#: 
+msgid "Checked Out By"
+msgstr "רישום יציאה על-ידי"
+
+#. Need context
+#: 
+msgid "Action"
+msgstr "פעולה"
+
+#: 
+msgid "No Attendees Assigned to Event"
+msgstr "לא שוייכו נוכחים לאירוע"
+
+#: 
+msgid "Member"
+msgstr "חבר"
+
+#. Need context
+#: 
+#, fuzzy
+msgid " of the"
+msgstr "של ה"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(לא נבחרה משפחה)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "המר בודדים למשפחות"
+
+#: 
+msgid "Convert Next"
+msgstr "המר הבא"
+
+#: 
+msgid "Convert All"
+msgstr "המר את כולם"
+
+#: 
+msgid "Deposit Slip Number: "
+msgstr "מספר אישור הפקדה"
+
+#: 
+msgid "Deposit Details: "
+msgstr "פרטי הפקדה"
+
+#: 
+msgid "Close deposit slip (remember to press Save)"
+msgstr "סגור אישור הפקדה (זכור ללחוץ על 'שמור')"
+
+#: 
+#, fuzzy
+msgid "Deposit Slip Report"
+msgstr "דו\"ח הפקדה"
+
+#: 
+msgid "Deposit Summary: "
+msgstr "סיכום הפקדה"
+
+#: 
+msgid "Payments on this deposit slip:"
+msgstr "תשלומים על שובר הפקדה זה"
+
+#: 
+msgid "Add Payment"
+msgstr "הוסף תשלום"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "טען פעולות מאושרות"
+
+#: 
+msgid "Run Transactions"
+msgstr "הפעל עסקה"
+
+#: 
+#, fuzzy
+msgid "Select classifications to include"
+msgstr "בחר בסיווג לבחירה"
+
+#: 
+#, fuzzy
+msgid "Which role is the head of household?"
+msgstr "מה תפקיד ראש המשפחה?"
+
+#: 
+msgid "Which role is the spouse?"
+msgstr "מה תפקיד הרעיה?"
+
+#: 
+msgid "Which role is a child?"
+msgstr "מה תפקיד הילד?"
+
+#: 
+msgid "Information to Include"
+msgstr "מידע להוספה"
+
+#: 
+msgid "Address"
+msgstr "כתובת"
+
+#: 
+msgid "Birthday"
+msgstr "יום הולדת"
+
+#: 
+msgid "Family Home Phone"
+msgstr "טלפון בבית המשפחה"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "טלפון נייד משפחתי"
+
+#: 
+msgid "Family Email"
+msgstr "דוא\"ל משפחתי"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "טלפון נייד אישי"
+
+#: 
+msgid "Personal Email"
+msgstr "דוא\"ל אישי"
+
+#: 
+msgid "Photos"
+msgstr "צילומים"
+
+#: 
+msgid "Number of Columns"
+msgstr "מספר העמודות"
+
+#: 
+msgid "Paper Size"
+msgstr "גודל נייר"
+
+#: 
+msgid "Font Size"
+msgstr "גודל גופן"
+
+#: 
+msgid "Title page"
+msgstr "כותרת עמוד"
+
+#: 
+msgid "Use Title Page"
+msgstr "שימוש בדף כותרת"
+
+#: 
+msgid "Church Name"
+msgstr "שם הכנסייה"
+
+#: 
+msgid "Create Directory"
+msgstr "צור ספריה"
+
+#: 
+msgid "Save and Add"
+msgstr "שמור והוסף"
+
+#: 
+msgid "Item"
+msgstr "פריט"
+
+#: 
+msgid "Multiple items"
+msgstr "מספר פריטים"
+
+#: 
+msgid "Sell to everyone"
+msgstr "מכור לכולם"
+
+#: 
+msgid "Estimated Price"
+msgstr "מחיר מוערך"
+
+#: 
+msgid "Final Price"
+msgstr "מחיר סופי"
+
+#: 
+msgid "Replicate item"
+msgstr "שכפל פריט"
+
+#: 
+msgid "Description"
+msgstr "תיאור"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "האם אתה בטוח במחיקת תרומה זאת?"
+
+#: 
+msgid "Active"
+msgstr "פעיל"
+
+#: 
+msgid "Save Changes"
+msgstr "שמור שינויים"
+
+#: 
+msgid "Church Event Editor"
+msgstr "עורך אירועי כנסיה"
+
+#: 
+msgid "Edit Event Types"
+msgstr "ערוך סוגי אירועים"
+
+#: 
+msgid "Edit Event Type"
+msgstr "ערוך סוג אירוע"
+
+#: 
+msgid "Event Type"
+msgstr "סוג אירוע"
+
+#: 
+msgid "Save Name"
+msgstr "שמור שם"
+
+#: 
+msgid "Family"
+msgstr "משפחה"
+
+#: 
+msgid "Type"
+msgstr "סוג"
+
+#: 
+msgid "Fiscal Year"
+msgstr "שנת כספים"
+
+#: 
+msgid "Amount"
+msgstr "סכום"
+
+#: 
+msgid "Fund"
+msgstr "סכום"
+
+#: 
+msgid "Bank"
+msgstr "בנק"
+
+#: 
+msgid "Month"
+msgstr "חודש"
+
+#: 
+msgid "Year"
+msgstr "שנה"
+
+#: 
+msgid "Edit"
+msgstr "עריכה"
+
+#: 
+msgid "Event Title"
+msgstr "כותרת אירוע"
+
+#: 
+msgid "Guests"
+msgstr "אורחים"
+
+#: 
+msgid "There are no events in this category"
+msgstr "אין אירועים בקטגוריה זאת"
+
+#: 
+msgid "Create Event"
+msgstr "צור אירוע"
+
+#: 
+msgid "Create a new Event"
+msgstr "צור אירוע חדש"
+
+#: 
+msgid "Passed"
+msgstr "עבר"
+
+#: 
+msgid "Warning: Signature mismatch"
+msgstr "אזהרה: החתימה אינה תואמת "
+
+#: 
+msgid "Estonian"
+msgstr "אסטונית"
+
+#: 
+msgid "Generate Backup"
+msgstr "צור גיבוי"
+
+#: 
+msgid "Password (if any)"
+msgstr "סיסמא (אם יש)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "כל המידע, בדף זה, נכון."
+
+#: 
+msgid "Event not found"
+msgstr "לא נמצא אירוע"
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "טיפול בקבצי PDF.\n"
+"1 = שמירת קובץ\n"
+"2 + פתח בחלון הנוכחי"
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "לחץ CTRL + C כדי להעתיק את כל שמות\\מספרי הטלפון שבקבוצה"
+
+#: 
+msgid "Download family letters"
+msgstr "הורדת מכתבי משפחות"
+
+#: 
+#, fuzzy
+msgid "Verification URL created"
+msgstr "נוצר URL לאישור"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "לקבלת מידע נוסף - אנא בדוק רישומי מערכת"
+
+#: 
+msgid "Verification URL"
+msgstr "URL לאישור"
+
+#: 
+msgid "Reset System"
+msgstr "איתחול מערכת"
+
+#: 
+#, fuzzy
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "אזהרה: נמצאו משימות מלפני העדכון"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "פונקציות לאיתחול מסד נתונים"
+
+#: 
+msgid "Reset Members"
+msgstr "איתחול חברים"
+
+#: 
+msgid "Reset Families/People"
+msgstr "אתחל משפחות \\ אנשים"
+
+#: 
+msgid "Reset Database"
+msgstr "אתחל בסיס נתונים"
+
+#: 
+msgid "Clear Filter"
+msgstr "הסר מסנן"
+
+#: 
+msgid "Add Person"
+msgstr "הוסף אדם"
+
+#: 
+#, fuzzy
+msgid "Portuguese - Portugal"
+msgstr "פוטוגזית - פורטוגל"
+
+#: 
+msgid "Holiday"
+msgstr "חופשה"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "תודה שרשמת את משפחתך"
+
+#: 
+msgid "Register another family!"
+msgstr "רשום משפחה נוספת"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "זהו, הצג את דף הבית"
+
+#: 
+msgid "Unpinned Events"
+msgstr "אירועים שלא סומנו"
+

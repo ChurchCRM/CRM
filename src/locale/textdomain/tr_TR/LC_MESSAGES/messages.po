@@ -1,0 +1,9388 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "Sorgu Yürütülemiyor."
+
+#: 
+msgid "Delete"
+msgstr "Sil"
+
+#: 
+msgid "Cancel"
+msgstr "İptal Et"
+
+#: 
+msgid "Save"
+msgstr "Kaydet"
+
+#: 
+msgid "Unassigned"
+msgstr "Atanmamış"
+
+#: 
+msgid "None"
+msgstr "Yok"
+
+#: 
+msgid "City"
+msgstr "Şehir"
+
+#: 
+msgid "State"
+msgstr "Eyalet"
+
+#: 
+msgid "Country"
+msgstr "Ülke"
+
+#: 
+msgid "Phone"
+msgstr "Telefon"
+
+#: 
+msgid "Email"
+msgstr "E-Posta"
+
+#: 
+msgid "Credit Card"
+msgstr "Kredi Kartı"
+
+#: 
+msgid "Backup Database"
+msgstr "Veritabanı Yedeği"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Bu araç, ChurchCRM veritabanını manuel olarak yedeklemenize yardımcı olacaktır."
+
+#: 
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "Sistemleriniz için düzenli bir yedekleme prosedürünüz yoksa en az haftada bir manuel yedekleme yapmanız gerekir."
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Yedekleme dosyasını indirdikten sonra iki kopya almalısınız. Bunlardan birini sahada yangına dayanıklı bir kasaya, diğerini ise saha dışında güvenli bir yere koyun."
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "ChurchCRM veritabanında depolanan verilerin gizliliği konusunda endişeleriniz varsa, yedek verileri başkalarının erişebildiği bir yerde saklanacaksa şifrelemelisiniz."
+
+#: 
+msgid "Select archive type"
+msgstr "Arşiv türünü seçin"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "Yedekleme dosyası bir şifre ile şifrelensin mi?"
+
+#: 
+msgid "Re-type Password"
+msgstr "Şifrenizi yeniden yazın"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Harici depolamaya yedekleme oluşturun ve gönderin"
+
+#: 
+msgid "Batch Winner Entry"
+msgstr "Toplu kazanan girişi"
+
+#: 
+msgid "Winner"
+msgstr "kazanan"
+
+#: 
+msgid "Price"
+msgstr "Fiyat"
+
+#: 
+msgid "Enter Winners"
+msgstr "Kazananları Girin"
+
+#: 
+msgid "CSV Export"
+msgstr "CSV ihracatı"
+
+#: 
+msgid "Field Selection"
+msgstr "Saha seçimi"
+
+#: 
+msgid "Last Name"
+msgstr "Soy isim"
+
+#: 
+msgid "Required"
+msgstr "Gerekli"
+
+#: 
+msgid "First Name"
+msgstr "İlk adı"
+
+#: 
+msgid "Middle Name"
+msgstr "İkinci ad"
+
+#: 
+msgid "Zip"
+msgstr "Zip"
+
+#: 
+msgid "Envelope"
+msgstr "Mektup"
+
+#: 
+msgid "Work/Other Email"
+msgstr "İş/diğer e -posta"
+
+#: 
+msgid "Membership Date"
+msgstr "Üyelik tarihi"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "Doğum / Yıldönümü Tarihi"
+
+#: 
+msgid "Age / Years Married"
+msgstr "Yaş / yıl evli"
+
+#: 
+msgid "Family Role"
+msgstr "Aile rolü"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "Kişi veya aile çıktı yönteminin kullanılıp kullanılmadığına bağlı"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "Özel Saha Seçimi"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "Özel Kişi Alanları"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "Özel Aile Alanları"
+
+#: 
+msgid "Filters"
+msgstr "Filtreler"
+
+#: 
+msgid "Records to export"
+msgstr "İhracat Kayıtları"
+
+#: 
+msgid "Based on filters below.."
+msgstr "Aşağıdaki filtrelere dayanarak .."
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "Sepetteki insanlar (filtreler göz ardı edildi)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "Birden çok seçmek için Ctrl tuşunu kullanın"
+
+#: 
+msgid "Don't Filter"
+msgstr "Filtrelemeyin"
+
+#: 
+msgid "Male"
+msgstr "Erkek"
+
+#: 
+msgid "Female"
+msgstr "Dişi"
+
+#: 
+msgid "Group Membership"
+msgstr "Grup üyeliği"
+
+#: 
+msgid "From:"
+msgstr "İtibaren:"
+
+#: 
+msgid "To:"
+msgstr "İle:"
+
+#: 
+msgid "Birthday Date"
+msgstr "Doğum tarihi"
+
+#: 
+msgid "Anniversary Date"
+msgstr "Yıldönümü tarihi"
+
+#: 
+msgid "Output Method:"
+msgstr "Çıktı yöntemi:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "CSV Bireysel Kayıtlar"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV aileleri birleştirir"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "Sepete birey ekleyin"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "Eksik posta adresi ile kayıtları atlayın"
+
+#: 
+msgid "Create File"
+msgstr "Dosya oluştur"
+
+#: 
+msgid "No file selected for upload."
+msgstr "Yükleme için dosya seçilmedi."
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "CSV dosyasındaki toplam satır sayısı:"
+
+#: 
+msgid "Ignore this Field"
+msgstr "Bu alanı görmezden gel"
+
+#: 
+msgid "Title"
+msgstr "Başlık"
+
+#: 
+msgid "Suffix"
+msgstr "Sonek"
+
+#: 
+msgid "Gender"
+msgstr "Cinsiyet"
+
+#: 
+msgid "Donation Envelope"
+msgstr "Bağış zarfı"
+
+#: 
+msgid "Home Phone"
+msgstr "Ev telefonu"
+
+#: 
+msgid "Work Phone"
+msgstr "İş telefonu"
+
+#: 
+msgid "Mobile Phone"
+msgstr "Cep telefonu"
+
+#: 
+msgid "Work / Other Email"
+msgstr "İş / diğer e -posta"
+
+#: 
+msgid "Birth Date"
+msgstr "Doğum günü"
+
+#: 
+msgid "Wedding Date"
+msgstr "Düğün tarihi"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "İlk CSV satırını yok say (bir başlığı hariç tutmak için)"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "Soyadı ve adrese göre aile kayıtları yapın"
+
+#: 
+msgid "Patriarch"
+msgstr "Patrik"
+
+#: 
+msgid "Matriarch"
+msgstr "Anal"
+
+#: 
+msgid "Family Type: used with Make Family records... option above"
+msgstr "Aile Türü: Aile Kayıtları Yapma ... Yukarıdaki Seçenek"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "Not: Ayırıcılar (çizgiler, vb.) Veya eksikliği önemli değil"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "Aksi belirtilmiyorsa varsayılan ülke"
+
+#: 
+msgid "Classification"
+msgstr "Sınıflandırma"
+
+#: 
+msgid "Perform Import"
+msgstr "İthalat yapmak"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "Hata: Yüklenen CSV dosyası artık mevcut değil!"
+
+#: 
+msgid "Upload CSV File"
+msgstr "CSV dosyasını yükle"
+
+#: 
+msgid "Data import successful."
+msgstr "Veri içe aktarma başarılı."
+
+#: 
+msgid "persons were imported"
+msgstr "Kişiler ithal edildi"
+
+#: 
+msgid "Canvass Automation"
+msgstr "Canvass Otomasyonu"
+
+#: 
+msgid "Not confirmed."
+msgstr "Onaylanmadı."
+
+#: 
+msgid "Canvassers"
+msgstr "Terketçiler"
+
+#: 
+msgid "BraveCanvassers"
+msgstr "Bravecanvassers"
+
+#: 
+msgid "Cleared all canvasser assignments."
+msgstr "Tüm Canvasser atamalarını temizledi."
+
+#: 
+msgid "Set Ok To Canvass for all families."
+msgstr "Tüm aileler için başa çıkın."
+
+#: 
+msgid "Disabled Ok To Canvass for all families."
+msgstr "Tüm aileler için devre dışı bırakıldı."
+
+#: 
+msgid "ClearAllOkToCanvass button not confimed."
+msgstr "ClearAlloktocanvass düğmesi konferanslı değil."
+
+#: 
+msgid "Set default fiscal year"
+msgstr "Varsayılan mali yılı ayarlayın"
+
+#: 
+msgid "Check to confirm"
+msgstr "Onaylamak için kontrol edin"
+
+#: 
+msgid "Assign Canvassers"
+msgstr "Canvasser atama"
+
+#: 
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "Tüm ailelere rastgele kanvaser atayın. Canvassers \"kanvaserlerden\" alınır; Grup."
+
+#: 
+msgid "Assign To Non Pledging"
+msgstr "Taahhüt etmemeye atayın"
+
+#: 
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "Canvasser'ları rastgele terketmeyen ailelere atar. Canvassers \"Bravecanvassers\" dan alınır; Grup."
+
+#: 
+msgid "Clear Canvasser Assignments"
+msgstr "Canvasser atamalarını temizleyin"
+
+#: 
+msgid "Clear all the canvasser assignments for all families."
+msgstr "Tüm aileler için tüm Canvasser ödevlerini temizleyin."
+
+#: 
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "Önemli Not: Bu, elle yapılan herhangi bir kanvasçı atamasını kaybedecektir."
+
+#: 
+msgid "Enable Canvass for All Families"
+msgstr "Tüm aileler için kanvas'ı etkinleştirin"
+
+#: 
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "\"Tamam\" ı açın \"ı açın; Tüm aileler için alan."
+
+#: 
+msgid "Disable Canvass for All Families"
+msgstr "Tüm aileler için kanvas'ı devre dışı bırakın"
+
+#: 
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
+msgstr "\"Tamam\" ı kapatın; Tüm aileler için alan"
+
+#: 
+msgid "Briefing Sheets"
+msgstr "Brifing sayfaları"
+
+#: 
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "Canvasser tarafından sıralanan tüm aileler için brifing sayfaları içeren bir PDF oluşturun."
+
+#: 
+msgid "Progress Report"
+msgstr "İlerleme raporu"
+
+#: 
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "İlerleme raporu içeren bir PDF oluşturun. İlerleme raporu, kanvanın genel ilerlemesi ve bireysel kanvasların ilerlemesi hakkında bilgi içerir."
+
+#: 
+msgid "Summary Report"
+msgstr "Özet raporu"
+
+#: 
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "Özet rapor içeren bir PDF oluşturun. Özet rapor, Canvass verilerinden çıkarılan yorumları içerir."
+
+#: 
+msgid "Not Interested Report"
+msgstr "İlgilenmiyor Rapor"
+
+#: 
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "\"İlgilenmeyen\" olarak işaretlenmiş ailelerin bir raporunu içeren bir PDF oluşturun; Canvasser tarafından."
+
+#: 
+msgid " Canvass Input for the "
+msgstr " Canvass girişi"
+
+#: 
+msgid "Canvasser"
+msgstr "Avcı"
+
+#: 
+msgid "Positive"
+msgstr "Pozitif"
+
+#: 
+msgid "Critical"
+msgstr "Eleştirel"
+
+#: 
+msgid "Insightful"
+msgstr "Anlayışlı"
+
+#: 
+msgid "Financial"
+msgstr "Parasal"
+
+#: 
+msgid "Suggestions"
+msgstr "Öneriler"
+
+#: 
+msgid "Not Interested"
+msgstr "İlgilenmiyorum"
+
+#: 
+msgid "Why Not Interested?"
+msgstr "Neden ilgilenmiyorsunuz?"
+
+#: 
+msgid "Add Cart to Event"
+msgstr "Etkinliğe Sepet Ekle"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "Sepetinizi eklemek istediğiniz etkinliği seçin"
+
+#: 
+msgid "OR"
+msgstr "VEYA"
+
+#: 
+msgid "Add New Event"
+msgstr "Yeni Etkinlik Ekle"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "Sepetiniz boş!"
+
+#: 
+msgid "No family name entered!"
+msgstr "Hiçbir aile adı girilmedi!"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "Aileye Sepet Ekle"
+
+#: 
+msgid "Name"
+msgstr "İsim"
+
+#: 
+msgid "Assign Role"
+msgstr "Rol atamak"
+
+#: 
+msgid "Already in a family"
+msgstr "Zaten bir ailede"
+
+#: 
+msgid "Create new family"
+msgstr "Yeni Aile Oluştur"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "Yeni bir aile ekliyorsanız, aşağıya verileri girin."
+
+#: 
+msgid "Use address/contact data from"
+msgstr "Adres/iletişim verilerini kullanın"
+
+#: 
+msgid "Only the new data below"
+msgstr "Yalnızca aşağıdaki yeni veriler"
+
+#: 
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Metin Kutusunu ABD ve Kanada dışındaki ülkeler için kullanın)"
+
+#: 
+msgid "Do not auto-format"
+msgstr "Otomatik format yapmayın"
+
+#: 
+msgid "Add to Family"
+msgstr "Aileye Ekle"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "Grup için araba ekle"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "Sepetinizi eklemek istediğiniz grubu seçin"
+
+#: 
+msgid "Select Group"
+msgstr "Grup Seç"
+
+#: 
+msgid "No Group Selected"
+msgstr "Grup seçilmedi"
+
+#: 
+msgid "Add to Group"
+msgstr "Gruba ekle"
+
+#: 
+msgid "View Your Cart"
+msgstr "Sepetinizi görüntüleyin"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "Sepetinizde öğe yok."
+
+#: 
+msgid "Back to Menu"
+msgstr "Menüye dön"
+
+#: 
+msgid "Empty Cart"
+msgstr "Boş sepet"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "Grup için boş araba"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "Aileye boş araba"
+
+#: 
+msgid "Empty Cart to Event"
+msgstr "Etkinliğe boş araba"
+
+#: 
+msgid "Map Cart"
+msgstr "Harita arabası"
+
+#: 
+msgid "Name Tags"
+msgstr "İsim etiketleri"
+
+#: 
+msgid "Email Cart"
+msgstr "E -posta sepeti"
+
+#: 
+msgid "Email (BCC)"
+msgstr "E -posta (BCC)"
+
+#: 
+msgid "Create Directory From Cart"
+msgstr "Sepetten dizin oluştur"
+
+#: 
+msgid "Bulk Mail Presort"
+msgstr "Toplu posta sunumu"
+
+#: 
+msgid "Quiet Presort"
+msgstr "Sessiz sunum"
+
+#: 
+msgid "Your cart contains"
+msgstr "Sepetiniz içeriyor"
+
+#: 
+msgid "persons from"
+msgstr "Kişiler"
+
+#: 
+msgid "Remove"
+msgstr "Kaldırmak"
+
+#: 
+msgid "Yes"
+msgstr "Evet"
+
+#: 
+msgid "No"
+msgstr "Numara"
+
+#: 
+msgid "Developer Chat"
+msgstr "Geliştirici sohbeti"
+
+#: 
+msgid "Event Checkin"
+msgstr "Olay kontrolü"
+
+#: 
+msgid "Select the event to which you would like to check people in for"
+msgstr "İnsanları kontrol etmek istediğiniz olayı seçin"
+
+#: 
+msgid "Select Event"
+msgstr "Etkinliği Seçin"
+
+#: 
+msgid "Add Visitor"
+msgstr "Ziyaretçi ekle"
+
+#: 
+msgid "CheckIn"
+msgstr "Giriş"
+
+#: 
+msgid "CheckOut"
+msgstr "Ödeme"
+
+#: 
+msgid "Checked In Time"
+msgstr "Zamanında kontrol edildi"
+
+#: 
+msgid "Checked In By"
+msgstr "Check -in yaptı"
+
+#: 
+msgid "Checked Out Time"
+msgstr "Kontrol Edildi Zaman"
+
+#: 
+msgid "Checked Out By"
+msgstr "Tarafından kontrol edildi"
+
+#: 
+msgid "Action"
+msgstr "Eylem"
+
+#: 
+msgid "No Attendees Assigned to Event"
+msgstr "Etkinliğe atanan katılımcı yok"
+
+#: 
+msgid "Member"
+msgstr "Üye"
+
+#: 
+msgid " of the"
+msgstr " ki"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(Atanan Aile Yok)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "Bireyleri ailelere dönüştürmek"
+
+#: 
+msgid "Convert Next"
+msgstr "Sonraki Dönüştür"
+
+#: 
+msgid "Convert All"
+msgstr "Hepsini dönüştür"
+
+#: 
+msgid "Deposit Slip Number: "
+msgstr "Depozito Kayma Numarası:"
+
+#: 
+msgid "Deposit Details: "
+msgstr "Depozito Detayları:"
+
+#: 
+msgid "Close deposit slip (remember to press Save)"
+msgstr "Depozito fişini kapatın (Kaydet'e basmayı unutmayın)"
+
+#: 
+msgid "Deposit Slip Report"
+msgstr "Depozito Kayma Raporu"
+
+#: 
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgstr "Önemli Not: Depozito kayması kapatıldığında başarısız işlemler kalıcı olarak silinecektir."
+
+#: 
+msgid "Deposit Summary: "
+msgstr "Mevduat Özeti:"
+
+#: 
+msgid "Payments on this deposit slip:"
+msgstr "Bu depozito fişiyle ilgili ödemeler:"
+
+#: 
+msgid "Import eGive"
+msgstr "İthal"
+
+#: 
+msgid "Add Payment"
+msgstr "Ödeme Ekle"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "Yetkili İşlemleri Yükle"
+
+#: 
+msgid "Run Transactions"
+msgstr "İşlemleri çalıştırın"
+
+#: 
+msgid "Directory reports"
+msgstr "Dizin raporları"
+
+#: 
+msgid "Select classifications to include"
+msgstr "Dahil etmek için sınıflandırmaları seçin"
+
+#: 
+msgid "Which role is the head of household?"
+msgstr "Hanehalkı başkanı hangi rol?"
+
+#: 
+msgid "Which role is the spouse?"
+msgstr "Eş hangi rolü?"
+
+#: 
+msgid "Which role is a child?"
+msgstr "Çocuk hangi rolü?"
+
+#: 
+msgid "Information to Include"
+msgstr "Dahil edilecek bilgiler"
+
+#: 
+msgid "Address"
+msgstr "Adres"
+
+#: 
+msgid "Birthday"
+msgstr "Doğum günü"
+
+#: 
+msgid "Family Home Phone"
+msgstr "Aile ev telefonu"
+
+#: 
+msgid "Family Work Phone"
+msgstr "Aile İş Telefonu"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "Aile Cep Telefonu"
+
+#: 
+msgid "Family Email"
+msgstr "Aile e -postası"
+
+#: 
+msgid "Personal Home Phone"
+msgstr "Kişisel ev telefonu"
+
+#: 
+msgid "Personal Work Phone"
+msgstr "Kişisel Çalışma Telefonu"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "Kişisel cep telefonu"
+
+#: 
+msgid "Personal Email"
+msgstr "Kişisel eposta"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "Kişisel Çalışma/Diğer E -posta"
+
+#: 
+msgid "Photos"
+msgstr "Fotoğraflar"
+
+#: 
+msgid "Number of Columns"
+msgstr "Sütun sayısı"
+
+#: 
+msgid "Paper Size"
+msgstr "Kağıt boyutu"
+
+#: 
+msgid "Font Size"
+msgstr "Yazı Boyutu"
+
+#: 
+msgid "Title page"
+msgstr "Baş sayfa"
+
+#: 
+msgid "Use Title Page"
+msgstr "Başlık sayfasını kullanın"
+
+#: 
+msgid "Church Name"
+msgstr "Kilise adı"
+
+#: 
+msgid "Disclaimer"
+msgstr "Feragatname"
+
+#: 
+msgid "Create Directory"
+msgstr "Dizin oluştur"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "Bağışlanan Ürün Editörü"
+
+#: 
+msgid "Save and Add"
+msgstr "Kaydet ve Ekle"
+
+#: 
+msgid "Item"
+msgstr "Öğe"
+
+#: 
+msgid "Multiple items"
+msgstr "Birden Fazla Öğeler"
+
+#: 
+msgid "Sell to everyone"
+msgstr "Herkese Sat"
+
+#: 
+msgid "Estimated Price"
+msgstr "Tahmini fiyat"
+
+#: 
+msgid "Multiple"
+msgstr "Çoklu"
+
+#: 
+msgid "Final Price"
+msgstr "Son fiyat"
+
+#: 
+msgid "Replicate item"
+msgstr "Öğeyi çoğaltma"
+
+#: 
+msgid "Go"
+msgstr "Gitmek"
+
+#: 
+msgid "Description"
+msgstr "Tanım"
+
+#: 
+msgid "Picture URL"
+msgstr "Resim url"
+
+#: 
+msgid "Donation Fund Editor"
+msgstr "Bağış fonu editörü"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Bu fonu silmek istediğinizden emin misiniz?"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
+msgstr "UYARI: Bir silme veya 'yeni ekle' düğmesini kullanmadan önce 'değişiklik kaydetme' yapmazsanız alan değişiklikleri kaybolur!"
+
+#: 
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "Geçersiz alanlar veya seçimler. Değişiklikler kaydedilmedi! Lütfen düzeltin ve tekrar deneyin!"
+
+#: 
+msgid "No funds have been added yet"
+msgstr "Henüz hiçbir fon eklenmedi"
+
+#: 
+msgid "Active"
+msgstr "Aktif"
+
+#: 
+msgid "Save Changes"
+msgstr "Değişiklikleri Kaydet"
+
+#: 
+msgid "Add New Fund"
+msgstr "Yeni Fon Ekle"
+
+#: 
+msgid "Church Event Editor"
+msgstr "Kilise Etkinlik Editörü"
+
+#: 
+msgid "Edit Event Types"
+msgstr "Etkinlik Türlerini Düzenle"
+
+#: 
+msgid "Edit Event Type"
+msgstr "Etkinlik Türünü Düzenle"
+
+#: 
+msgid "Event Type"
+msgstr "Etkinlik tipi"
+
+#: 
+msgid "Save Name"
+msgstr "İsim Kaydet"
+
+#: 
+msgid "Recurrence Pattern"
+msgstr "Tekrarlama paterni"
+
+#: 
+msgid "Attendance Counts"
+msgstr "Katılım Sayıları"
+
+#: 
+msgid "Add counter"
+msgstr "Sayaç ekle"
+
+#: 
+msgid "Return to Event Types"
+msgstr "Etkinlik Türlerine Dönüş"
+
+#: 
+msgid "Family"
+msgstr "Aile"
+
+#: 
+msgid "Type"
+msgstr "Tip"
+
+#: 
+msgid "Fiscal Year"
+msgstr "Mali yıl"
+
+#: 
+msgid "Amount"
+msgstr "Tutar"
+
+#: 
+msgid "Fund"
+msgstr "Fon, sermaye"
+
+#: 
+msgid "Bank"
+msgstr "Banka"
+
+#: 
+msgid "Month"
+msgstr "Ay"
+
+#: 
+msgid "Year"
+msgstr "Yıl"
+
+#: 
+msgid "Edit"
+msgstr "Düzenlemek"
+
+#: 
+msgid "Event Attendees"
+msgstr "Etkinlik katılımcıları"
+
+#: 
+msgid "Event Nonattendees"
+msgstr "Etkinlik Nonsoles Non"
+
+#: 
+msgid "Event Guests"
+msgstr "Etkinlik Konukları"
+
+#: 
+msgid "There "
+msgstr "Orası"
+
+#: 
+msgid "Event Title"
+msgstr "Olay başlığı"
+
+#: 
+msgid "Event Date"
+msgstr "Etkinlik tarihi"
+
+#: 
+msgid "Attending Members"
+msgstr "Katılan Üyeler"
+
+#: 
+msgid "Non-Attending Members"
+msgstr "Katılımsız üyeler"
+
+#: 
+msgid "Guests"
+msgstr "Misafirler"
+
+#: 
+msgid "There are no events in this category"
+msgstr "Bu kategoride olay yok"
+
+#: 
+msgid "Create Event"
+msgstr "Etkinlik oluşturmak"
+
+#: 
+msgid "Create a new Event"
+msgstr "Yeni Bir Etkinlik Oluşturun"
+
+#: 
+msgid "Editing Event ID: "
+msgstr "Düzenleme Olay Kimliği:"
+
+#: 
+msgid " errors. Please see below"
+msgstr " hatalar. Lütfen aşağıya bakın"
+
+#: 
+msgid "Items with a "
+msgstr "A ile eşyalar"
+
+#: 
+msgid " are required"
+msgstr " gerekmektedir"
+
+#: 
+msgid "Select your event type"
+msgstr "Etkinlik Türünüzü Seçin"
+
+#: 
+msgid "You must pick an event type."
+msgstr "Bir olay türü seçmelisiniz."
+
+#: 
+msgid "Event Desc"
+msgstr "Olay Desc"
+
+#: 
+msgid "No Attendance counts recorded"
+msgstr "Katılım sayısı kaydedilmedi"
+
+#: 
+msgid "Attendance Notes: "
+msgstr "Katılım Notları:"
+
+#: 
+msgid "Event Sermon"
+msgstr "Etkinlik Vaaz"
+
+#: 
+msgid "Event Status"
+msgstr "Olay durumu"
+
+#: 
+msgid "Return to Events"
+msgstr "Etkinliklere Dön"
+
+#: 
+msgid "EVENT TYPE NAME"
+msgstr "Olay Türü Adı"
+
+#: 
+msgid "Sundays"
+msgstr "Pazar günleri"
+
+#: 
+msgid "Mondays"
+msgstr "Pazartesi"
+
+#: 
+msgid "Tuesdays"
+msgstr "Salı günleri"
+
+#: 
+msgid "Wednesdays"
+msgstr "Çarşamba günleri"
+
+#: 
+msgid "Thursdays"
+msgstr "Perşembe günleri"
+
+#: 
+msgid "Fridays"
+msgstr "Cuma günleri"
+
+#: 
+msgid "Saturdays"
+msgstr "Cumartesi günleri"
+
+#: 
+msgid "DEFAULT START TIME"
+msgstr "Varsayılan başlangıç ​​zamanı"
+
+#: 
+msgid "ATTENDANCE COUNTS"
+msgstr "Katılım Sayıları"
+
+#: 
+msgid "Optional"
+msgstr "İsteğe bağlı"
+
+#: 
+msgid "Enter a list of the attendance counts you want to include with this event."
+msgstr "Bu etkinliğe dahil etmek istediğiniz katılım sayısının bir listesini girin."
+
+#: 
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
+msgstr "Her sayım_adı bir virgülle ayırın. Örneğin. Üyeler, ziyaretçiler, kampüs, çocuklar"
+
+#: 
+msgid "Every event type includes a Total count, you do not need to include it."
+msgstr "Her olay türü toplam sayı içerir, eklemeniz gerekmez."
+
+#: 
+msgid "Add Event Type"
+msgstr "Etkinlik Türü Ekle"
+
+#: 
+msgid "Custom Family Fields Editor"
+msgstr "Özel Aile Fields Editor"
+
+#: 
+msgid "Default Option"
+msgstr "Varsayılan seçenek"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
+msgstr "UYARI: Bu alanı silerek, bu alan için atanan tüm aile verilerini geri çekilemez bir şekilde kaybedeceksiniz!"
+
+#: 
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Uyarı: Ok ve Sil düğmeleri hemen yürürlüğe girer. Yukarı, Aşağı, Sil veya 'Yeni Ekle' düğmesini kullanmadan önce 'Değişiklikleri Kaydet' olmazsanız alan adı değişiklikleri kaybolur!"
+
+#: 
+msgid "No custom Family fields have been added yet"
+msgstr "Henüz özel bir aile alanı eklenmedi"
+
+#: 
+msgid "Special option"
+msgstr "Özel Seçenek"
+
+#: 
+msgid "Security Option"
+msgstr "Güvenlik seçeneği"
+
+#: 
+msgid "You must select a group."
+msgstr "Bir grup seçmelisiniz."
+
+#: 
+msgid "Edit List Options"
+msgstr "Liste Seçeneklerini Düzenle"
+
+#: 
+msgid "Help on types.."
+msgstr "Türlerde yardım .."
+
+#: 
+msgid "You must enter a name"
+msgstr "Bir isim girmelisin"
+
+#: 
+msgid "That field name already exists."
+msgstr "Bu alan adı zaten var."
+
+#: 
+msgid "Add New Field"
+msgstr "Yeni Alan Ekle"
+
+#: 
+msgid "Family Editor"
+msgstr "Aile editörü"
+
+#: 
+msgid "First name must be entered"
+msgstr "Ad girilmeli"
+
+#: 
+msgid "Invalid Year: allowable values are 1901 to 2155"
+msgstr "Geçersiz Yıl: İzin verilen değerler 1901 ila 2155'tir"
+
+#: 
+msgid "Invalid Birth Date."
+msgstr "Geçersiz doğum tarihi."
+
+#: 
+msgid "Not a valid Wedding Date"
+msgstr "Geçerli bir düğün tarihi değil"
+
+#: 
+msgid "Email is Not Valid"
+msgstr "E-posta geçerli değil"
+
+#: 
+msgid "Family Info"
+msgstr "Aile bilgisi"
+
+#: 
+msgid "Contact Info"
+msgstr "İletişim bilgileri"
+
+#: 
+msgid "Other Info"
+msgstr "Diğer bilgiler"
+
+#: 
+msgid "Ok To Canvass"
+msgstr "Tamam"
+
+#: 
+msgid "Assign a Canvasser"
+msgstr "Bir kanvaser atayın"
+
+#: 
+msgid "Assign a Brave Canvasser"
+msgstr "Cesur bir kanvaser atayın"
+
+#: 
+msgid "Envelope Info"
+msgstr "Zarf Bilgisi"
+
+#: 
+msgid "Custom Fields"
+msgstr "Özel Alanlar"
+
+#: 
+msgid "Family Members"
+msgstr "Aile üyeleri"
+
+#: 
+msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
+msgstr "Şimdi aile üyeleri oluşturabilir veya daha sonra ekleyebilirsiniz. Tüm girişler yeni kişi kayıtları olacak."
+
+#: 
+msgid "First"
+msgstr "Öncelikle"
+
+#: 
+msgid "Middle"
+msgstr "Orta"
+
+#: 
+msgid "Last"
+msgstr "Son"
+
+#: 
+msgid "Role"
+msgstr "Rol"
+
+#: 
+msgid "Select Gender"
+msgstr "Cinsiyet seç"
+
+#: 
+msgid "Select Role"
+msgstr "Rol Seçin"
+
+#: 
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+#: 
+msgid "January"
+msgstr "Ocak"
+
+#: 
+msgid "February"
+msgstr "Şubat"
+
+#: 
+msgid "March"
+msgstr "Mart"
+
+#: 
+msgid "April"
+msgstr "Nisan"
+
+#: 
+msgid "May"
+msgstr "Mayıs"
+
+#: 
+msgid "June"
+msgstr "Haziran"
+
+#: 
+msgid "July"
+msgstr "Temmuz"
+
+#: 
+msgid "August"
+msgstr "Ağustos"
+
+#: 
+msgid "September"
+msgstr "Eylül"
+
+#: 
+msgid "October"
+msgstr "Ekim"
+
+#: 
+msgid "November"
+msgstr "Kasım"
+
+#: 
+msgid "December"
+msgstr "Aralık"
+
+#: 
+msgid "Unk"
+msgstr "Unk"
+
+#: 
+msgid "Family List"
+msgstr "Aile listesi"
+
+#: 
+msgid "Add Family"
+msgstr "Aile ekle"
+
+#: 
+msgid "Created"
+msgstr "Yaratılmış"
+
+#: 
+msgid "Edited"
+msgstr "Düzenlenmiş"
+
+#: 
+msgid "Envelope Number"
+msgstr "Zarf numarası"
+
+#: 
+msgid "Verify Info"
+msgstr "Bilgi Doğrula"
+
+#: 
+msgid "Add New Member"
+msgstr "Yeni üye ekle"
+
+#: 
+msgid "Previous Family"
+msgstr "Önceki Aile"
+
+#: 
+msgid "Next Family"
+msgstr "Sonraki Aile"
+
+#: 
+msgid "Delete this Family"
+msgstr "Bu aileyi sil"
+
+#: 
+msgid "Upload Photo"
+msgstr "Fotoğraf yükle"
+
+#: 
+msgid "Delete Photo"
+msgstr "Fotoğrafı sil"
+
+#: 
+msgid "Add a Note"
+msgstr "Bir not ekle"
+
+#: 
+msgid "Add All Family Members to Cart"
+msgstr "Tüm aile üyelerini sepete ekleyin"
+
+#: 
+msgid "Timeline"
+msgstr "Zaman çizelgesi"
+
+#: 
+msgid "Pledges and Payments"
+msgstr "Taahhütler ve ödemeler"
+
+#: 
+msgid "No property assignments."
+msgstr "Mülk ödevi yok."
+
+#: 
+msgid "Value"
+msgstr "Değer"
+
+#: 
+msgid "Edit Value"
+msgstr "Değer Düzenle"
+
+#: 
+msgid "Assign a New Property"
+msgstr "Yeni bir mülk atayın"
+
+#: 
+msgid "Assign"
+msgstr "Atamak"
+
+#: 
+msgid "Date Updated"
+msgstr "Tarih Güncellendi"
+
+#: 
+msgid "Updated By"
+msgstr "Tarafından güncellendi"
+
+#: 
+msgid "Show Pledges"
+msgstr "Taahhütleri Göster"
+
+#: 
+msgid "Show Payments"
+msgstr "Ödemeleri Göster"
+
+#: 
+msgid "Since"
+msgstr "Dan beri"
+
+#: 
+msgid "Update"
+msgstr "Güncelleme"
+
+#: 
+msgid "Pledge or Payment"
+msgstr "Rehin veya ödeme"
+
+#: 
+msgid "Date"
+msgstr "Tarih"
+
+#: 
+msgid "NonDeductible"
+msgstr "Azarlanamaz"
+
+#: 
+msgid "Schedule"
+msgstr "Takvim"
+
+#: 
+msgid "Method"
+msgstr "Yöntem"
+
+#: 
+msgid "Comment"
+msgstr "Yorum"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Yeni bir rehin ekle"
+
+#: 
+msgid "Add a new payment"
+msgstr "Yeni bir ödeme ekle"
+
+#: 
+msgid " Canvass Entry"
+msgstr " Canvass girişi"
+
+#: 
+msgid "Close"
+msgstr "Kapat"
+
+#: 
+msgid "Confirm Delete"
+msgstr "Silini onaylayın"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "Profil fotoğrafını silmek üzeresiniz, bu prosedür geri döndürülemez."
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "Devam etmek istiyor musunuz?"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "Aile bilgilerinin kopyasını aşağıdaki e -postalara e -posta ile göndermek üzeresiniz"
+
+#: 
+msgid "Financial Reports"
+msgstr "Finansal raporlar"
+
+#: 
+msgid "No records were returned from the previous report."
+msgstr "Önceki rapordan kayıt iade edilmedi."
+
+#: 
+msgid "Report Type:"
+msgstr "Rapor türü:"
+
+#: 
+msgid "Select Report Type"
+msgstr "Rapor Türünü Seçin"
+
+#: 
+msgid "Pledge Summary"
+msgstr "Rehin özeti"
+
+#: 
+msgid "Pledge Family Summary"
+msgstr "Rehin Aile Özeti"
+
+#: 
+msgid "Pledge Reminders"
+msgstr "Rehin Hatırlatıcıları"
+
+#: 
+msgid "Voting Members"
+msgstr "Oy kullanan üyeler"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Rapor Verme (Vergi Tabloları)"
+
+#: 
+msgid "Zero Givers"
+msgstr "Sıfır Vericiler"
+
+#: 
+msgid "Individual Deposit Report"
+msgstr "Bireysel Depozito Raporu"
+
+#: 
+msgid "Advanced Deposit Report"
+msgstr "Gelişmiş Depozito Raporu"
+
+#: 
+msgid "Next"
+msgstr "Sonraki"
+
+#: 
+msgid "Filter by Family"
+msgstr "Ailenin filtresi"
+
+#: 
+msgid "Report Start Date:"
+msgstr "Rapor Başlangıç ​​Tarihi:"
+
+#: 
+msgid "Report End Date:"
+msgstr "Rapor Bitiş Tarihi:"
+
+#: 
+msgid "Apply Report Dates To:"
+msgstr "Rapor tarihlerini uygulayın:"
+
+#: 
+msgid "Deposit Date (Default)"
+msgstr "Depozito Tarihi (Varsayılan)"
+
+#: 
+msgid "Payment Date"
+msgstr "Ödeme tarihi"
+
+#: 
+msgid "Filter by Deposit:"
+msgstr "Depozitiyle filtre:"
+
+#: 
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "Depozito seçilirse, tarih kriterleri göz ardı edilir."
+
+#: 
+msgid "All deposits within date range"
+msgstr "Tarih aralığı içindeki tüm depozitolar"
+
+#: 
+msgid "Filter by Payment Type:"
+msgstr "Ödeme Türüne Göre Filtre:"
+
+#: 
+msgid "All Methods"
+msgstr "Tüm yöntemler"
+
+#: 
+msgid "Check"
+msgstr "Kontrol"
+
+#: 
+msgid "Cash"
+msgstr "Nakit"
+
+#: 
+msgid "Bank Draft"
+msgstr "Banka taslağı"
+
+#: 
+msgid "eGive"
+msgstr "kaçamak"
+
+#: 
+#, fuzzy
+msgid "Minimum Total Amount:"
+msgstr "Minimum Toplam Tutar:"
+
+#: 
+msgid "0 - No Minimum"
+msgstr "0 - Minimum Yok"
+
+#: 
+msgid "Other Settings"
+msgstr "Diğer ayarlar"
+
+#: 
+msgid "Include:"
+msgstr "Katmak:"
+
+#: 
+msgid "Only Payments with Pledges"
+msgstr "Yalnızca Revedges ile Ödemeler"
+
+#: 
+msgid "All Payments"
+msgstr "Tüm ödemeler"
+
+#: 
+msgid "Generate:"
+msgstr "Oluşturun:"
+
+#: 
+msgid "Only Families with unpaid pledges"
+msgstr "Sadece ödenmemiş vaadi olan aileler"
+
+#: 
+msgid "All Families"
+msgstr "Tüm Aileler"
+
+#: 
+msgid "Report Heading:"
+msgstr "Rapor Başlığı:"
+
+#: 
+msgid "Graphic"
+msgstr "Grafik"
+
+#: 
+msgid "Church Address"
+msgstr "Kilise adresi"
+
+#: 
+msgid "Blank"
+msgstr "Boşluk"
+
+#: 
+msgid "Remittance Slip:"
+msgstr "Havale Kayma:"
+
+#: 
+msgid "Sort Data by:"
+msgstr "Verileri:"
+
+#: 
+msgid "Deposit"
+msgstr "Depozito"
+
+#: 
+msgid "All Data"
+msgstr "Bütün bilgiler"
+
+#: 
+msgid "Moderate Detail"
+msgstr "Orta detay"
+
+#: 
+msgid "Summary Data"
+msgstr "Özet veriler"
+
+#: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+msgstr "Oylama üyeleri bu yıllar içinde <br> bağış yapmış olmalı <br> (0 bağış gerektirmemek için):"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
+msgid "Back"
+msgstr "Geri"
+
+#: 
+msgid "Create Report"
+msgstr "Rapor yaratmak"
+
+#: 
+msgid "Deposit Listing"
+msgstr "Depozito Listesi"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Yeni Depozito Ekle"
+
+#: 
+msgid "Deposits: "
+msgstr "Mevduat:"
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "Seçilen satırları sil"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "Seçilen satırları dışa aktarın (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "Seçilen satırları dışa aktar (CSV)"
+
+#: 
+msgid "Fundraiser Listing"
+msgstr "Bağış toplama listesi"
+
+#: 
+msgid "Date Start"
+msgstr "baslangıç ​​tarihi"
+
+#: 
+msgid "Apply Filters"
+msgstr "Filtreler uygulayın"
+
+#: 
+msgid "Date End"
+msgstr "Tarih sonu"
+
+#: 
+msgid "Clear Filters"
+msgstr "Temiz filtreler"
+
+#: 
+msgid "Previous Page"
+msgstr "Önceki sayfa"
+
+#: 
+msgid "Next Page"
+msgstr "Sonraki Sayfa"
+
+#: 
+msgid "Display:"
+msgstr "Görüntülemek:"
+
+#: 
+msgid "Number"
+msgstr "Sayı"
+
+#: 
+msgid "Create New Fund Raiser"
+msgstr "Yeni Fon Yaratıcı Oluştur"
+
+#: 
+msgid "Add Donated Item"
+msgstr "Bağışlı öğeyi ekle"
+
+#: 
+msgid "Generate Catalog"
+msgstr "Katalog Oluşturun"
+
+#: 
+msgid "Generate Bid Sheets"
+msgstr "Teklif Sayfaları Oluşturun"
+
+#: 
+msgid "Generate Certificates"
+msgstr "Sertifika Oluşturun"
+
+#: 
+msgid "Donated items for this fundraiser"
+msgstr "Bu bağış toplama için bağışlanan ürünler"
+
+#: 
+msgid "Donor"
+msgstr "Donör"
+
+#: 
+msgid "Buyer"
+msgstr "Alıcı"
+
+#: 
+msgid "Sale Price"
+msgstr "Satış ücreti"
+
+#: 
+msgid "Material Value"
+msgstr "Malzeme değeri"
+
+#: 
+msgid "Minimum Price"
+msgstr "Minimum fiyat"
+
+#: 
+msgid "Family Geographic Utilities"
+msgstr "Aile Coğrafi Kamu Hizmetleri"
+
+#: 
+msgid "Select Family:"
+msgstr "Aile seçin:"
+
+#: 
+msgid "Maximum number of neighbors:"
+msgstr "Maksimum komşu sayısı:"
+
+#: 
+msgid "Maximum distance"
+msgstr "Maksimum mesafe"
+
+#: 
+msgid "Data file format:"
+msgstr "Veri Dosyası Biçimi:"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "GPS görselleştiricisi"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "Street Atlas ABD"
+
+#: 
+msgid "Include families in coordinate file:"
+msgstr "Aileleri koordinat dosyasına ekleyin:"
+
+#: 
+msgid "Neighbor Families"
+msgstr "Komşu aileler"
+
+#: 
+msgid "Make Data File"
+msgstr "Veri dosyası yap"
+
+#: 
+msgid "Show Neighbors"
+msgstr "Komşuları Göster"
+
+#: 
+msgid "Distance"
+msgstr "Mesafe"
+
+#: 
+msgid "Direction"
+msgstr "Yön"
+
+#: 
+msgid "Latitude"
+msgstr "Enlem"
+
+#: 
+msgid "Longitude"
+msgstr "Boylam"
+
+#: 
+msgid "Add to Cart"
+msgstr "Sepete ekle"
+
+#: 
+msgid "Intersect with Cart"
+msgstr "Sepetle kesişmek"
+
+#: 
+msgid "Remove from Cart"
+msgstr "Sepetten kaldır"
+
+#: 
+msgid "Text for Event ID: "
+msgstr "Olay Kimliği için Metin:"
+
+#: 
+msgid "Group Editor"
+msgstr "Grup editörü"
+
+#: 
+msgid "Group Settings"
+msgstr "Grup ayarları"
+
+#: 
+msgid "Type of Group"
+msgstr "Grup türü"
+
+#: 
+msgid "Group Member Roles"
+msgstr "Grup Üye Rolleri"
+
+#: 
+msgid "Clone roles"
+msgstr "Klon Rolleri"
+
+#: 
+msgid "from group"
+msgstr "Gruptan"
+
+#: 
+msgid "Select a group"
+msgstr "Bir Grup Seçin"
+
+#: 
+msgid "Group Specific Properties: "
+msgstr "Grupa özgü özellikler:"
+
+#: 
+msgid "Enabled"
+msgstr "Etkinleştirilmiş"
+
+#: 
+msgid "Edit Group-Specific Properties Form"
+msgstr "Grupa özgü özellikler formunu düzenle"
+
+#: 
+msgid "Disabled"
+msgstr "Engelli"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "Gruba özgü özellikleri etkinleştirin"
+
+#: 
+msgid "Group Roles"
+msgstr "Grup rolleri"
+
+#: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "Grup Rol Adı Değişiklikleri, Kutu Odağı kaybeder gelmez kaydedilir"
+
+#: 
+msgid "New Role"
+msgstr "Yeni rol"
+
+#: 
+msgid "Add New Role"
+msgstr "Yeni rol ekle"
+
+#: 
+msgid "Group Listing"
+msgstr "Grup listesi"
+
+#: 
+msgid "Add New Group"
+msgstr "Yeni Grup Ekle"
+
+#: 
+msgid "Submit"
+msgstr "Göndermek"
+
+#: 
+msgid "Group Member Properties Editor"
+msgstr "Grup Üyesi Özellikleri Editör"
+
+#: 
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr "Bu grubun şu anda hiçbir özelliği yok! Bunları grup düzenleyicisine ekleyebilirsiniz."
+
+#: 
+msgid "Return to Person Record"
+msgstr "Kişi kaydına dön"
+
+#: 
+msgid "Editing"
+msgstr "Düzenleme"
+
+#: 
+msgid "data for member"
+msgstr "Üye için veriler"
+
+#: 
+msgid "Group-Specific Properties Form Editor:"
+msgstr "Gruba özgü özellikler form düzenleyicisi:"
+
+#: 
+msgid "No properties have been added yet"
+msgstr "Henüz hiçbir özellik eklenmedi"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+msgstr "UYARI: Yukarı, aşağı, aşağı, silin veya 'yeni ekle' düğmesini kullanmadan önce 'değişiklik kaydetme' yapmazsanız alan değişiklikleri kaybolur!"
+
+#: 
+msgid "Show in"
+msgstr "Göster"
+
+#: 
+msgid "Person View"
+msgstr "Kişi görünümü"
+
+#: 
+msgid "Group reports"
+msgstr "Grup raporları"
+
+#: 
+msgid "Select the group you would like to report"
+msgstr "Raporlamak istediğiniz grubu seçin"
+
+#: 
+msgid "No Role Selected"
+msgstr "Rol seçilmedi"
+
+#: 
+msgid "Only cart persons?"
+msgstr "Sadece araba kişileri mi?"
+
+#: 
+msgid "Report Model"
+msgstr "Rapor modeli"
+
+#: 
+msgid "Report for group and role selected"
+msgstr "Grup ve Rol Seçilen Rapor"
+
+#: 
+msgid "Report for any role in group selected"
+msgstr "Seçilen gruptaki herhangi bir rol için rapor"
+
+#: 
+msgid "Select which information you want to include"
+msgstr "Hangi bilgileri dahil etmek istediğinizi seçin"
+
+#: 
+msgid "Standard Info"
+msgstr "Standart Bilgi"
+
+#: 
+msgid "Other Email"
+msgstr "Diğer E -posta"
+
+#: 
+msgid "GroupRole"
+msgstr "Groipol"
+
+#: 
+msgid "Group-Specific Property Fields"
+msgstr "Gruba özgü mülk alanları"
+
+#: 
+msgid "Undefined"
+msgstr "Tanımsız"
+
+#: 
+msgid "Group View"
+msgstr "Grup Görünümü"
+
+#: 
+msgid "Group Functions"
+msgstr "Grup işlevleri"
+
+#: 
+msgid "Edit this Group"
+msgstr "Bu grubu düzenle"
+
+#: 
+msgid "Delete this Group"
+msgstr "Bu grubu sil"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "Sil grubunu onaylayın"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "Lütfen bu grup kaydının silinmesini onaylayın"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "Bu aynı zamanda bu grup kaydıyla ilişkili tüm rolleri ve gruba özgü özellik verilerini de silecektir."
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "Tüm grup üyeliği ve mülkleri yok edilecektir. Grup üyelerinin kendileri değiştirilmeyecektir."
+
+#: 
+msgid "Please select target group for members"
+msgstr "Lütfen üyeler için Hedef Grubu seçin"
+
+#: 
+msgid "Add Group Members to Cart"
+msgstr "Sepete grup üyeleri ekleyin"
+
+#: 
+msgid "Map this group"
+msgstr "Bu Grubu Harita"
+
+#: 
+msgid "Email Group"
+msgstr "E -posta Grubu"
+
+#: 
+msgid "Total Members"
+msgstr "Toplam Üyeler"
+
+#: 
+msgid "Default Role"
+msgstr "Varsayılan rol"
+
+#: 
+msgid "Group-Specific Properties"
+msgstr "Gruba özgü özellikler"
+
+#: 
+msgid "Disabled for this group."
+msgstr "Bu grup için devre dışı bırakıldı."
+
+#: 
+msgid "Assigned Properties"
+msgstr "Atanan mülkler"
+
+#: 
+msgid "Group Members:"
+msgstr "Grup üyeleri:"
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "Seçilen üyeleri gruptan kaldırın"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "Sepete seçilmiş üyeleri ekleyin"
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "Grup için seçilen üyeleri ekleyin"
+
+#: 
+msgid "Move Selected Members to Group"
+msgstr "Seçilen üyeleri gruba taşıyın"
+
+#: 
+msgid "Add Group Member: "
+msgstr "Grup Üyesi Ekle:"
+
+#: 
+msgid "Letters and Mailing Labels"
+msgstr "Harfler ve Posta Etiketleri"
+
+#: 
+msgid "Newsletter labels"
+msgstr "Bülten etiketleri"
+
+#: 
+msgid "Confirm data labels"
+msgstr "Veri etiketlerini onaylayın"
+
+#: 
+msgid "Listing Events of Type = "
+msgstr "Türü listeleme olayları ="
+
+#: 
+msgid "Listing All Church Events"
+msgstr "Tüm kilise etkinliklerini listeleme"
+
+#: 
+msgid "Select Event Types To Display"
+msgstr "Görüntülemek için olay türlerini seçin"
+
+#: 
+msgid "Display Events in Year"
+msgstr "Yılda Etkinlik Görüntüleyin"
+
+#: 
+msgid "Start Date/Time"
+msgstr "Başlangıç ​​tarihi/saati"
+
+#: 
+msgid "No Attendance Recorded"
+msgstr "Katılım kaydedilmedi"
+
+#: 
+msgid "Attendees"
+msgstr "Katılımcılar"
+
+#: 
+msgid " Monthly Averages"
+msgstr " Aylık ortalamalar"
+
+#: 
+msgid "Invalid login or password"
+msgstr "geçersiz giriş yada şifre"
+
+#: 
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr "Çok fazla başarısız giriş: Hesabınız kilitlendi. Lütfen bir yöneticiyle iletişime geçin."
+
+#: 
+msgid "Please Login"
+msgstr "Lütfen giriş yapın"
+
+#: 
+msgid "Email/Username"
+msgstr "E -posta/Kullanıcı Adı"
+
+#: 
+msgid "Password"
+msgstr "Şifre"
+
+#: 
+msgid "Login"
+msgstr "Giriş yapmak"
+
+#: 
+msgid "Envelope Manager"
+msgstr "Zarf yöneticisi"
+
+#: 
+msgid "Update Family Records"
+msgstr "Aile Kayıtlarını Güncelle"
+
+#: 
+msgid "Update Envelopes"
+msgstr "Zarfları güncelle"
+
+#: 
+msgid "Confirm"
+msgstr "Onaylamak"
+
+#: 
+msgid "Sort by"
+msgstr "Göre sırala"
+
+#: 
+msgid "Zero"
+msgstr "Sıfır"
+
+#: 
+msgid "Assign starting at #"
+msgstr "# 'Dan başlayarak atayın"
+
+#: 
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr "Kilise enlemi veya boylamı nedeniyle haritayı görüntüleyemiyor. Lütfen Ayarlar menüsündeki kilise adresini güncelleyin."
+
+#: 
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
+msgstr "Google Harita API tuşu ayarlanmamıştır. Harita daha küçük konumlar için çalışacaktır. Lütfen ayar menüsünün haritalar bölümlerinde bir anahtar oluşturun."
+
+#: 
+msgid "Member Role Change"
+msgstr "Üye Rol Değişimi"
+
+#: 
+msgid "Member's Name"
+msgstr "Üyenin Adı"
+
+#: 
+msgid "Current Role"
+msgstr "Mevcut rol"
+
+#: 
+msgid "All People"
+msgstr "Tüm insanlar"
+
+#: 
+msgid "Classifications Manager"
+msgstr "Sınıflandırma Yöneticisi"
+
+#: 
+msgid "Email All"
+msgstr "Hepsini e -posta ile gönder"
+
+#: 
+msgid "Email All (BCC)"
+msgstr "Tüm E -posta (BCC)"
+
+#: 
+msgid "Family Roles"
+msgstr "Aile rolleri"
+
+#: 
+msgid "Family Geographic"
+msgstr "Aile Geographic"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Tüm aile koordinatlarını güncelleyin"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "Gönüllü fırsatlar"
+
+#: 
+msgid "Families"
+msgstr "Aileler"
+
+#: 
+msgid "See all Families"
+msgstr "Tüm aileleri gör"
+
+#: 
+msgid "People"
+msgstr "İnsanlar"
+
+#: 
+msgid "See All People"
+msgstr "Tüm insanları gör"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "Pazar Okulu Çocukları"
+
+#: 
+msgid "More info"
+msgstr "Daha fazla bilgi"
+
+#: 
+msgid "Reports on groups and roles"
+msgstr "Gruplar ve roller hakkındaki raporlar"
+
+#: 
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "Grup ve seçilen roller hakkında rapor (çok sayfalık bir PDF olabilir)."
+
+#: 
+msgid "Generate letters and mailing labels."
+msgstr "Harfler ve posta etiketleri oluşturun."
+
+#: 
+msgid "Role / Gender"
+msgstr "Rol / Cinsiyet"
+
+#: 
+msgid "Count"
+msgstr "Saymak"
+
+#: 
+msgid "People Classification"
+msgstr "İnsan sınıflandırması"
+
+#: 
+msgid "Gender Demographics"
+msgstr "Cinsiyet demografisi"
+
+#: 
+msgid "Men"
+msgstr "Erkekler"
+
+#: 
+msgid "Women"
+msgstr "Kadın"
+
+#: 
+msgid "Boys"
+msgstr "Erkekler"
+
+#: 
+msgid "Girls"
+msgstr "Kızlar"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "Pazar Okulu Dersleri"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "Depozito İzleme"
+
+#: 
+msgid "Latest Families"
+msgstr "Son Aileler"
+
+#: 
+msgid "Family Name"
+msgstr "Soyadı"
+
+#: 
+msgid "Updated Families"
+msgstr "Güncellenmiş aileler"
+
+#: 
+msgid "Updated"
+msgstr "Güncellenmiş"
+
+#: 
+msgid "Note Delete Confirmation"
+msgstr "Not Onay Sil"
+
+#: 
+msgid "Please confirm deletion of this note"
+msgstr "Lütfen bu notun silinmesini onaylayın"
+
+#: 
+msgid "Yes, delete this record"
+msgstr "Evet, bu kaydı sil"
+
+#: 
+msgid "(this action cannot be undone)"
+msgstr "(Bu eylem geri alınamaz)"
+
+#: 
+msgid "Note Editor"
+msgstr "Not editörü"
+
+#: 
+msgid "Private"
+msgstr "Özel"
+
+#: 
+msgid "Person"
+msgstr "Kişi"
+
+#: 
+msgid "Group"
+msgstr "Grup"
+
+#: 
+msgid "Option"
+msgstr "Seçenek"
+
+#: 
+msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgstr "Uyarı: Çıkarma, ödevi olan tüm kişiler için tüm ödevleri sıfırlar!"
+
+#: 
+msgid "Error: Duplicate"
+msgstr "Hata: kopya"
+
+#: 
+msgid "Default"
+msgstr "Varsayılan"
+
+#: 
+msgid "Duplicate name found."
+msgstr "Yinelenen isim bulundu."
+
+#: 
+msgid "Make Default"
+msgstr "Varsayılan yapmak"
+
+#: 
+msgid "Exit"
+msgstr "çıkış"
+
+#: 
+msgid "Add New"
+msgstr "Yeni ekle"
+
+#: 
+msgid "Error: A "
+msgstr "Hata: A"
+
+#: 
+msgid " by that name already exists."
+msgstr " Bu isim zaten var."
+
+#: 
+msgid "Buyer Number Editor"
+msgstr "Alıcı Numarası Editör"
+
+#: 
+msgid "Generate Statement"
+msgstr "İfade Oluşturun"
+
+#: 
+msgid "Buyers for this fundraiser:"
+msgstr "Bu bağış toplama için alıcılar:"
+
+#: 
+msgid "Select all"
+msgstr "Hepsini seç"
+
+#: 
+msgid "Select none"
+msgstr "Hiçbirini Seçme"
+
+#: 
+msgid "Add Buyer"
+msgstr "Alıcı Ekle"
+
+#: 
+msgid "Generate Statements for Selected"
+msgstr "Seçilen için İfadeler Oluşturun"
+
+#: 
+msgid "Select"
+msgstr "Seçme"
+
+#: 
+msgid "Custom Person Fields Editor"
+msgstr "Özel Kişi Fields Editor"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
+msgstr "Uyarı: Bu alanı silerek, bu alan için atanan tüm kişi verilerini geri çekilemez bir şekilde kaybedeceksiniz!"
+
+#: 
+msgid "No custom person fields have been added yet"
+msgstr "Henüz özel kişi alanı eklenmedi"
+
+#: 
+msgid "Person Editor"
+msgstr "Kişi editör"
+
+#: 
+msgid "You must enter a Last Name if no Family is selected."
+msgstr "Hiçbir aile seçilmezse bir soyadı girmelisiniz."
+
+#: 
+msgid "Not a valid Friend Date"
+msgstr "Geçerli bir arkadaş tarihi değil"
+
+#: 
+msgid "Not a valid Membership Date"
+msgstr "Geçerli bir üyelik tarihi değil"
+
+#: 
+msgid "Work Email is Not Valid"
+msgstr "İş e -postası geçerli değil"
+
+#: 
+msgid "Red text"
+msgstr "Kırmızı metin"
+
+#: 
+msgid "indicates items inherited from the associated family record."
+msgstr "İlişkili aile kaydından miras alınan öğeleri gösterir."
+
+#: 
+msgid "Personal Info"
+msgstr "Kişisel bilgi"
+
+#: 
+msgid "Mr., Mrs., Dr., Rev."
+msgstr "Bay, Bayan, Dr., Rev."
+
+#: 
+msgid "Jr., Sr., III"
+msgstr "Jr., Sr., III"
+
+#: 
+msgid "Birth Month"
+msgstr "Doğum ayı"
+
+#: 
+msgid "Select Month"
+msgstr "Ay seç"
+
+#: 
+msgid "Birth Day"
+msgstr "Doğum günü"
+
+#: 
+msgid "Select Day"
+msgstr "Seçim Günü"
+
+#: 
+msgid "Birth Year"
+msgstr "doğum yılı"
+
+#: 
+msgid "Hide Age"
+msgstr "Git yaşı"
+
+#: 
+msgid "Create a new family (using last name)"
+msgstr "Yeni Bir Aile Oluştur (Soyadı Kullanarak)"
+
+#: 
+msgid "Membership Info"
+msgstr "Üyelik Bilgisi"
+
+#: 
+msgid "Friend Date"
+msgstr "Arkadaş Tarihi"
+
+#: 
+msgid "Person Profile"
+msgstr "Kişi profili"
+
+#: 
+msgid "Not assigned"
+msgstr "Atanmadı"
+
+#: 
+msgid "About Me"
+msgstr "Benim hakkımda"
+
+#: 
+msgid "Printable Page"
+msgstr "Yazdırılabilir sayfa"
+
+#: 
+msgid "Edit \"Why Came\" Notes"
+msgstr "\"Neden geldi\" notlarını düzenle"
+
+#: 
+msgid "Delete this Record"
+msgstr "Bu kaydı sil"
+
+#: 
+msgid "Make User"
+msgstr "Kullanıcı yapmak"
+
+#: 
+msgid "Edit User"
+msgstr "kullanıcıyı düzenle"
+
+#: 
+msgid "List Members"
+msgstr "Liste üyeleri"
+
+#: 
+msgid "No group assignments."
+msgstr "Grup ödevi yok."
+
+#: 
+msgid "Change Role"
+msgstr "Rolü Değiştir"
+
+#: 
+msgid "Update Properties"
+msgstr "Özellikleri Güncelle"
+
+#: 
+msgid "Assign New Group"
+msgstr "Yeni Grup atayın"
+
+#: 
+msgid "No volunteer opportunity assignments."
+msgstr "Gönüllü fırsat ödevi yok."
+
+#: 
+msgid "Assign a New Volunteer Opportunity"
+msgstr "Yeni bir gönüllü fırsat atayın"
+
+#: 
+msgid "Electronic Transaction Details"
+msgstr "Elektronik işlem detayları"
+
+#: 
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "Azaltılamaz miktar toplam tutardan daha fazla olamaz."
+
+#: 
+msgid "At least one fund must have a non-zero amount."
+msgstr "En az bir fonun sıfır olmayan bir miktara sahip olması gerekir."
+
+#: 
+msgid "Must specify non-zero check number"
+msgstr "Sıfır olmayan çek numarasını belirtmeli"
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "'Nakit' ödemesi için geçerli olmayan kontrol numarası"
+
+#: 
+msgid "Pledge Editor"
+msgstr "Rehin editörü"
+
+#: 
+msgid "Payment Editor: "
+msgstr "Ödeme Editörü:"
+
+#: 
+msgid " Deposit Slip #"
+msgstr " Mevduat fişi #"
+
+#: 
+msgid " more entries will fit."
+msgstr " Daha fazla giriş sığacaktır."
+
+#: 
+msgid "Payment Editor - Modify Existing Payment"
+msgstr "Ödeme Editörü - Mevcut ödemeyi değiştirin"
+
+#: 
+msgid "Payment Editor - New Deposit Slip Will Be Created"
+msgstr "Ödeme Editörü - Yeni Depozito Kayması Oluşturulacak"
+
+#: 
+msgid "Deposit closed"
+msgstr "Depozito kapalı"
+
+#: 
+msgid "Find family->"
+msgstr "Aileyi Bul->"
+
+#: 
+msgid "Payment Schedule"
+msgstr "Ödeme planı"
+
+#: 
+msgid "Select Schedule"
+msgstr "Program seçin"
+
+#: 
+msgid "Weekly"
+msgstr "Haftalık"
+
+#: 
+msgid "Monthly"
+msgstr "Aylık"
+
+#: 
+msgid "Quarterly"
+msgstr "Üç ayda bir"
+
+#: 
+msgid "Once"
+msgstr "Bir kere"
+
+#: 
+msgid "Other"
+msgstr "Başka"
+
+#: 
+msgid "Payment by"
+msgstr "Ödeme"
+
+#: 
+msgid "Scan check"
+msgstr "Tarama kontrolü"
+
+#: 
+msgid "find family from check account #"
+msgstr "Check Hesabından Aileyi Bul #"
+
+#: 
+msgid "Set default check account number for family"
+msgstr "Aile için varsayılan kontrol hesap numarasını ayarlayın"
+
+#: 
+msgid "Fund Name"
+msgstr "Fon adı"
+
+#: 
+msgid "Non-deductible amount"
+msgstr "Düşülemez tutar"
+
+#: 
+msgid "Printable View"
+msgstr "Yazdırılabilir Görünüm"
+
+#: 
+msgid "Age"
+msgstr "Yaş"
+
+#: 
+msgid "Assigned Groups"
+msgstr "Atanan Gruplar"
+
+#: 
+msgid "Group Name"
+msgstr "Grup ismi"
+
+#: 
+msgid "Notes:"
+msgstr "Notlar:"
+
+#: 
+msgid "Entered:"
+msgstr "Girdi:"
+
+#: 
+msgid "by"
+msgstr "ile"
+
+#: 
+msgid "Property successfully assigned."
+msgstr "Mülk başarıyla atandı."
+
+#: 
+msgid " Property Assignment"
+msgstr " Mülk görevi"
+
+#: 
+msgid "Assigning"
+msgstr "Atama"
+
+#: 
+msgid "Property Delete Confirmation"
+msgstr "Mülkiyet Onay Sil"
+
+#: 
+msgid "Please confirm deletion of this property"
+msgstr "Lütfen bu mülkün silinmesini onaylayın"
+
+#: 
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgstr "Bu mülkün silinmesi, bu mülkün tüm ödevlerini herhangi bir kişiye, aileye veya grup kayıtlarına da siler."
+
+#: 
+msgid "No, cancel this deletion"
+msgstr "Hayır, bu silme işlemini iptal et"
+
+#: 
+msgid "Property Editor"
+msgstr "Mülk editörü"
+
+#: 
+msgid "You must select a type"
+msgstr "Bir tür seçmelisin"
+
+#: 
+msgid "Select Property Type"
+msgstr "Mülk Türünü Seçin"
+
+#: 
+msgid "A"
+msgstr "A"
+
+#: 
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr "Hızlı bir değer girmek, serbest biçimli bir değerin ilişkisine izin verecektir."
+
+#: 
+msgid "Property List"
+msgstr "Mülk listesi"
+
+#: 
+msgid "Add a New"
+msgstr "Yeni ekle"
+
+#: 
+msgid "Property"
+msgstr "Mülk"
+
+#: 
+msgid "Prompt"
+msgstr "Çabuk"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Mülk Türü Sil Onayı"
+
+#: 
+msgid "Warning"
+msgstr "Uyarı"
+
+#: 
+msgid "This property type is still being used by at least one property."
+msgstr "Bu özellik türü hala en az bir mülk tarafından kullanılmaktadır."
+
+#: 
+msgid "If you delete this type, you will also remove all properties using"
+msgstr "Bu türü silerseniz, tüm özellikleri kullanarak da kaldırırsınız."
+
+#: 
+msgid "it and lose any corresponding property assignments."
+msgstr "ve ilgili mülk atamalarını kaybeder ve kaybeder."
+
+#: 
+msgid "Please confirm deletion of this Property Type"
+msgstr "Lütfen bu mülk türünün silinmesini onaylayın"
+
+#: 
+msgid "Property Type Editor"
+msgstr "Mülk Türü Editörü"
+
+#: 
+msgid "Property Type List"
+msgstr "Mülk Türü Listesi"
+
+#: 
+msgid "Add a New Property Type"
+msgstr "Yeni bir mülk türü ekleyin"
+
+#: 
+msgid "Class"
+msgstr "Sınıf"
+
+#: 
+msgid "Properties"
+msgstr "Özellikleri"
+
+#: 
+msgid " Property Unassignment"
+msgstr " Mülkiyet Tahsilat"
+
+#: 
+msgid "Please confirm removal of this property from this"
+msgstr "Lütfen bu mülkün kaldırılmasını onaylayın"
+
+#: 
+msgid "Unassigning"
+msgstr "Atanan"
+
+#: 
+msgid "Yes, unassign this Property"
+msgstr "Evet, bu mülkü atamadan"
+
+#: 
+msgid "No, retain this assignment"
+msgstr "Hayır, bu ödevi saklayın"
+
+#: 
+msgid "Query Listing"
+msgstr "Sorgu Listesi"
+
+#: 
+msgid "Run a Free-Text Query"
+msgstr "Ücretsiz metin sorgusu çalıştırın"
+
+#: 
+msgid "Free-Text Query"
+msgstr "Serbest metin sorgusu"
+
+#: 
+msgid "Export Results to CSV file"
+msgstr "Sonuçları CSV dosyasına dışa aktar"
+
+#: 
+msgid "Execute SQL"
+msgstr "SQL'i yürütmek"
+
+#: 
+#, fuzzy
+msgid "An error occurred: "
+msgstr "Bir hata oluştu:"
+
+#: 
+msgid " record(s) returned"
+msgstr " Geri döndürülen rekor (lar)"
+
+#: 
+msgid "Add Results To Cart"
+msgstr "Sepete sonuç ekle"
+
+#: 
+msgid "Intersect Results With Cart"
+msgstr "Sepet ile sonuçları kesiş"
+
+#: 
+msgid "Remove Results From Cart"
+msgstr "Sepetin sonuçlarını kaldırın"
+
+#: 
+msgid "Return to Query Menu"
+msgstr "Sorgu menüsüne dön"
+
+#: 
+msgid "Query View"
+msgstr "Sorgu Görünümü"
+
+#: 
+msgid "This value is required."
+msgstr "Bu değer gereklidir."
+
+#: 
+msgid "This value must be numeric."
+msgstr "Bu değer sayısal olmalıdır."
+
+#: 
+msgid "This value must be at least "
+msgstr "Bu değer en azından olmalı"
+
+#: 
+msgid "This value cannot be more than "
+msgstr "Bu değer daha fazla olamaz"
+
+#: 
+msgid " characters long"
+msgstr " karakter uzunluğu"
+
+#: 
+msgid "This value cannot be less than "
+msgstr "Bu değer daha az olamaz"
+
+#: 
+msgid "Run Query Again"
+msgstr "Sorguyu tekrar çalıştırın"
+
+#: 
+msgid "Execute Query"
+msgstr "Sorguyu çalıştır"
+
+#: 
+msgid "Send"
+msgstr "Göndermek"
+
+#: 
+msgid "Pledge Reminder Report"
+msgstr "Rehin Hatırlatma Raporu"
+
+#: 
+msgid "Event Attendance Reports"
+msgstr "Etkinlik Katılım Raporları"
+
+#: 
+msgid "Restore Database"
+msgstr "Veritabanını geri yükle"
+
+#: 
+msgid "All donations from this family have been moved to another family."
+msgstr "Bu aileden gelen tüm bağışlar başka bir aileye taşındı."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Aile Sil Onayı"
+
+#: 
+msgid "Please confirm deletion of"
+msgstr "Lütfen silinmesini onaylayın"
+
+#: 
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
+msgstr "Üzgünüm, bu aileden bağış kayıtları var. Bu aile silinmeyebilir."
+
+#: 
+msgid "Return to Family View"
+msgstr "Aile Görünümüne Dönüş"
+
+#: 
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
+msgstr "Uyarı: Bu ailenin bağış kayıtları vardır ve bu bağışlar başka bir aileyle ilişkilendirilene kadar silinmeyebilir."
+
+#: 
+msgid "Please select another family with whom to associate these donations:"
+msgstr "Lütfen bu bağışları ilişkilendireceğiniz başka bir aile seçin:"
+
+#: 
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr "Uyarı: Bu eylem geri alınamaz ve yasal etkileri olabilir!"
+
+#: 
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr "Mevcut aile bağışları"
+
+#: 
+msgid "Please confirm deletion of this family record:"
+msgstr "Lütfen bu aile kaydının silinmesini onaylayın:"
+
+#: 
+msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr "Not: Bu, bu aile kaydıyla ilişkili tüm notları da silecektir."
+
+#: 
+msgid "Delete Family Record ONLY"
+msgstr "Yalnızca aile kaydını sil"
+
+#: 
+msgid "Delete Family Record AND Family Members"
+msgstr "Aile kaydını ve aile üyelerini sil"
+
+#: 
+msgid "Filter and Cart"
+msgstr "Filtre ve araba"
+
+#: 
+msgid "Listing"
+msgstr "Liste"
+
+#: 
+msgid "My User Settings"
+msgstr "Kullanıcı Ayarlarım"
+
+#: 
+msgid "Variable name"
+msgstr "Değişken ismi"
+
+#: 
+msgid "Current Value"
+msgstr "Mevcut değer"
+
+#: 
+msgid "Save Settings"
+msgstr "Ayarları kaydet"
+
+#: 
+msgid "Default User Settings"
+msgstr "Varsayılan Kullanıcı Ayarları"
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
+msgstr "Yeni kullanıcılara mevcut değerlerini değiştirme yeteneği vermek için izni doğru ayarlayın. <br>"
+
+#: 
+msgid "Permission"
+msgstr "İzin"
+
+#: 
+msgid "System Settings"
+msgstr "Sistem ayarları"
+
+#: 
+msgid "Tax Report"
+msgstr "Vergi raporu"
+
+#: 
+msgid "Calendar Year"
+msgstr "Takvim yılı"
+
+#: 
+msgid "Update Latitude & Longitude"
+msgstr "Enlem ve Boylamı Güncelle"
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "Kullanıcı Silme Onayı"
+
+#: 
+msgid "Please confirm removal of user status from:"
+msgstr "Lütfen kullanıcı durumunun kaldırılmasını onaylayın:"
+
+#: 
+msgid "User Editor"
+msgstr "Kullanıcı editörü"
+
+#: 
+msgid "Note: Changes will not take effect until next logon."
+msgstr "Not: Bir sonraki oturum açana kadar değişiklikler yürürlüğe girmez."
+
+#: 
+msgid "Person to Make User"
+msgstr "Kullanıcı yapmak için kişi"
+
+#: 
+msgid "User"
+msgstr "Kullanıcı"
+
+#: 
+msgid "Login Name"
+msgstr "Kullanıcı adı"
+
+#: 
+msgid "Add Records"
+msgstr "Kayıt ekle"
+
+#: 
+msgid "Edit Records"
+msgstr "Kayıtları Düzenle"
+
+#: 
+msgid "Delete Records"
+msgstr "Kayıtları Sil"
+
+#: 
+msgid "Manage Properties and Classifications"
+msgstr "Özellikleri ve sınıflandırmaları yönetin"
+
+#: 
+msgid "Manage Groups and Roles"
+msgstr "Grupları ve rolleri yönetin"
+
+#: 
+msgid "Manage Donations and Finance"
+msgstr "Bağışları ve finansmanı yönetin"
+
+#: 
+msgid "View, Add and Edit Notes"
+msgstr "Notları görüntüleyin, ekle ve düzenleyin"
+
+#: 
+msgid "Edit Self"
+msgstr "Kendini düzenle"
+
+#: 
+msgid "(Edit own family only.)"
+msgstr "(Yalnızca kendi ailesini düzenleyin.)"
+
+#: 
+msgid "(Canvass volunteer.)"
+msgstr "(Canvass Gönüllü.)"
+
+#: 
+msgid "Admin"
+msgstr "Yönetici"
+
+#: 
+msgid "(Grants all privileges.)"
+msgstr "(Tüm ayrıcalıkları verir.)"
+
+#: 
+msgid "Style"
+msgstr "Stil"
+
+#: 
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr "Bu kullanıcıya geçerli değerlerini değiştirme yeteneği vermek için izni doğru ayarlayın."
+
+#: 
+msgid "User Listing"
+msgstr "Kullanıcı listesi"
+
+#: 
+msgid "New User"
+msgstr "Yeni kullanıcı"
+
+#: 
+msgid "User Settings"
+msgstr "Kullanıcı ayarları"
+
+#: 
+msgid "Last Login"
+msgstr "Son giriş"
+
+#: 
+msgid "Total Logins"
+msgstr "Toplam girişler"
+
+#: 
+msgid "Failed Logins"
+msgstr "Başarısız girişler"
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "Her iki kutuda da aynı şifreyi girmelisiniz"
+
+#: 
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "Şifre seçiminiz çok açık. Lütfen başka bir şey seçin."
+
+#: 
+msgid "Your new password must be at least"
+msgstr "Yeni şifreniz en azından"
+
+#: 
+msgid "characters"
+msgstr "karakter"
+
+#: 
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
+msgstr "Mevcut şifrenizi, ardından yeni şifrenizi iki kez girin. Parolalar en azından olmalı"
+
+#: 
+msgid "characters in length."
+msgstr "Uzunluğundaki karakterler."
+
+#: 
+msgid "Old Password"
+msgstr "eski Şifre"
+
+#: 
+msgid "New Password"
+msgstr "Yeni Şifre"
+
+#: 
+msgid "Confirm New Password"
+msgstr "Yeni şifreyi onayla"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "Lütfen bu kullanıcının şifre sıfırlamasını onaylayın"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Gönüllü Fırsat Onayını Sil"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity."
+msgstr "Bu gönüllü fırsata atanan insanlar var."
+
+#: 
+msgid "Volunteer Opportunity will be unassigned for the following people."
+msgstr "Gönüllü fırsatı aşağıdaki insanlar için atanacak."
+
+#: 
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr "Evet, bu gönüllü fırsatı sil"
+
+#: 
+msgid "Volunteer Opportunity Editor"
+msgstr "Gönüllü Fırsat Editörü"
+
+#: 
+msgid "No volunteer opportunities have been added yet"
+msgstr "Henüz gönüllü fırsatı eklenmedi"
+
+#: 
+msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
+msgstr "Not: Ekle, sil ve sipariş değişiklikleri hemen. Ad veya DESC alanlarındaki değişiklikler 'değişiklikleri kaydet' tuşuna basarak kaydedilmelidir"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Yeni Fırsat Ekle"
+
+#: 
+msgid "\"Why Came\" notes for "
+msgstr "\"Neden Geldi\" notları"
+
+#: 
+msgid "Why did you come to the church?"
+msgstr "Neden kiliseye geldin?"
+
+#: 
+msgid "Why do you keep coming?"
+msgstr "Neden gelmeye devam ediyorsun?"
+
+#: 
+msgid "Do you have any suggestions for us?"
+msgstr "Bizim için herhangi bir öneriniz var mı?"
+
+#: 
+msgid "How did you learn of the church?"
+msgstr "Kiliseyi nasıl öğrendin?"
+
+#: 
+msgid "eGive Import"
+msgstr "Egilt İthalat"
+
+#: 
+msgid "Re-import to selected family"
+msgstr "Seçilen aileye yeniden imtiyaz"
+
+#: 
+msgid "Data import results: "
+msgstr "Veri içe aktarma sonuçları:"
+
+#: 
+msgid " gifts were imported, "
+msgstr " Hediyeler ithal edildi,"
+
+#: 
+msgid " gifts unchanged, and "
+msgstr " Hediyeler değişmedi ve"
+
+#: 
+msgid " gifts not imported due to problems"
+msgstr " Sorunlar nedeniyle ithal edilmeyen hediyeler"
+
+#: 
+msgid "Back to Deposit Slip"
+msgstr "Depozito Slip'e geri dön"
+
+#: 
+msgid "Fatal error in eGive API datastream: '"
+msgstr "EGIVE API veri akışında ölümcül hata: '"
+
+#: 
+msgid "eMail Dashboard"
+msgstr "E -posta Gösterge Tablosu"
+
+#: 
+msgid "No families need canvassers assigned"
+msgstr "Hiçbir ailenin atanan kanvaserlere ihtiyacı yok"
+
+#: 
+msgid "Canvassers assigned at random to %d families."
+msgstr "Canvassers rastgele %d ailelere atandı."
+
+#: 
+msgid "Canvassers assigned at random to %d non-pledging families."
+msgstr "Canvassers rastgele %D-Plozda olmayan ailelere atanmıştır."
+
+#: 
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr "En az bir üyeli tüm ailelere zarf numaraları atanmıştır."
+
+#: 
+msgid "Assigned envelope numbers to all families."
+msgstr "Tüm ailelere zarf numaraları atandı."
+
+#: 
+msgid "Version"
+msgstr "Versiyon"
+
+#: 
+msgid "Copyright"
+msgstr "Telif hakkı"
+
+#: 
+msgid "All rights reserved"
+msgstr "Tüm hakları Saklıdır"
+
+#: 
+msgid "True / False"
+msgstr "Doğru yanlış"
+
+#: 
+msgid "Text Field (50 char)"
+msgstr "Metin alanı (50 karakter)"
+
+#: 
+msgid "Text Field (100 char)"
+msgstr "Metin alanı (100 karakter)"
+
+#: 
+msgid "Text Field (long)"
+msgstr "Metin alanı (uzun)"
+
+#: 
+msgid "Season"
+msgstr "Mevsim"
+
+#: 
+msgid "Person from Group"
+msgstr "Gruptan kişi"
+
+#: 
+msgid "Money"
+msgstr "Para"
+
+#: 
+msgid "Phone Number"
+msgstr "Telefon numarası"
+
+#: 
+msgid "Custom Drop-Down List"
+msgstr "Özel açılır liste"
+
+#: 
+msgid "Thank you for registering your ChurchCRM installation."
+msgstr "ChurchCRM kurulumunuzu kaydettiğiniz için teşekkür ederiz."
+
+#: 
+msgid "PDFs successfully emailed "
+msgstr "PDFS başarıyla e -postayla gönderildi"
+
+#: 
+msgid "PDF successfully emailed to family members."
+msgstr "PDF, aile üyelerine başarıyla e -posta gönderdi."
+
+#: 
+msgid "Failed to email PDF to family members."
+msgstr "Aile üyelerine PDF e -posta gönderemedi."
+
+#: 
+msgid "Group successfully added to the Cart."
+msgstr "Grup sepete başarıyla eklendi."
+
+#: 
+msgid "Group successfully removed from the Cart."
+msgstr "Grup, arabadan başarıyla kaldırıldı."
+
+#: 
+msgid "Profile Image successfully removed."
+msgstr "Profil görüntüsü başarıyla kaldırıldı."
+
+#: 
+msgid "Profile Image successfully updated."
+msgstr "Profil resmi başarıyla güncellendi."
+
+#: 
+msgid "Profile Image upload Error."
+msgstr "Profil Resim Yükle Hatası."
+
+#: 
+msgid "Selected record successfully removed from the Cart."
+msgstr "Seçilen kayıt, arabadan başarıyla kaldırıldı."
+
+#: 
+msgid "Your cart has been successfully emptied"
+msgstr "Sepetiniz başarıyla boşaltıldı"
+
+#: 
+msgid "item(s) added to the Cart."
+msgstr "Madde (ler) arabaya eklendi."
+
+#: 
+msgid "Select Fiscal Year"
+msgstr "Seçim mali yılı"
+
+#: 
+msgid "pm"
+msgstr "öğleden sonra"
+
+#: 
+msgid "am"
+msgstr "Ben"
+
+#: 
+msgid "Invalid Editor ID!"
+msgstr "Geçersiz Editör Kimliği!"
+
+#: 
+msgid "Select Season"
+msgstr "Sezonu seçin"
+
+#: 
+msgid "Winter"
+msgstr "Kış mevsimi"
+
+#: 
+msgid "Spring"
+msgstr "Bahar"
+
+#: 
+msgid "Summer"
+msgstr "Yaz"
+
+#: 
+msgid "Fall"
+msgstr "Sonbahar"
+
+#: 
+msgid "Error: Invalid Editor ID!"
+msgstr "Hata: Geçersiz Editör Kimliği!"
+
+#: 
+msgid "Not a valid date"
+msgstr "Geçerli bir tarih değil"
+
+#: 
+msgid "Invalid Year"
+msgstr "Geçersiz yıl"
+
+#: 
+msgid "Out of range: Allowable values are 1901 to 2155"
+msgstr "Aralık dışı: İzin verilen değerler 1901 ila 2155"
+
+#: 
+msgid "Invalid Number"
+msgstr "Geçersiz numara"
+
+#: 
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr "Çok büyük. -2147483648 ve 2147483647 arasında olmalıdır"
+
+#: 
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "Para miktarı çok büyük. Maksimum $ 999999999.99"
+
+#: 
+msgid " Bold Italic"
+msgstr " Kalın italik"
+
+#: 
+msgid " Italic"
+msgstr " İtalik"
+
+#: 
+msgid " Bold"
+msgstr " Gözü pek"
+
+#: 
+msgid "Error making API Call to"
+msgstr "API çağrısı yapma hatası"
+
+#: 
+msgid "Error text"
+msgstr "Hata metni"
+
+#: 
+msgid "Issue Report!"
+msgstr "Sorun Raporu!"
+
+#: 
+msgid "Enter a Title for your bug / feature report"
+msgstr "Hata / özellik raporunuz için bir başlık girin"
+
+#: 
+msgid "What were you doing when you noticed the bug / feature opportunity?"
+msgstr "Hata / özellik fırsatını fark ettiğinizde ne yapıyordunuz?"
+
+#: 
+msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
+msgstr "\"Gönder\" i tıkladığınızda, ChurchCRM GitHub Sayı izleyicisine bir hata raporu gönderilir."
+
+#: 
+msgid "Please do not include any confidential information."
+msgstr "Lütfen gizli bilgiler eklemeyin."
+
+#: 
+msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
+msgstr "Sisteminizle ilgili bazı genel bilgiler, sunucu sürümü ve tarayıcı başlıkları gibi istekle birlikte gönderilecektir."
+
+#: 
+msgid "No personally identifiable information will be submitted unless you purposefully include it."
+msgstr "Kasıtlı olarak dahil edilmedikçe, kişisel olarak tanımlanabilir hiçbir bilgi gönderilmeyecektir."
+
+#: 
+msgid "Dashboard"
+msgstr "Gösterge Paneli"
+
+#: 
+msgid "Change Password"
+msgstr "Şifre değiştir"
+
+#: 
+msgid "You have"
+msgstr "Var"
+
+#: 
+msgid "task(s)"
+msgstr "görevler)"
+
+#: 
+msgid "Home"
+msgstr "Ev"
+
+#: 
+msgid "Font"
+msgstr "Yazı tipi"
+
+#: 
+msgid "Label Type"
+msgstr "Etiket Türü"
+
+#: 
+msgid "Label Grouping"
+msgstr "Etiket Gruplama"
+
+#: 
+msgid "All Individuals"
+msgstr "Tüm bireyler"
+
+#: 
+msgid "Grouped by Family"
+msgstr "Aile tarafından gruplandırılmış"
+
+#: 
+msgid "To the parents of"
+msgstr "Ebeveynlerine"
+
+#: 
+msgid "Start Row"
+msgstr "Başlangıç ​​Row"
+
+#: 
+msgid "Start Column"
+msgstr "Başlat sütunu"
+
+#: 
+msgid "Ignore Incomplete<br>Addresses"
+msgstr "Eksik <br> adresleri yok say"
+
+#: 
+msgid "File Type"
+msgstr "Dosya tipi"
+
+#: 
+msgid "items"
+msgstr "öğeler"
+
+#: 
+msgid "Did not pledge"
+msgstr "Söz vermedi"
+
+#: 
+msgid "Top pledger"
+msgstr "TOP VERİ"
+
+#: 
+msgid "Pledged"
+msgstr "Sözlü"
+
+#: 
+msgid "M/F"
+msgstr "M/F"
+
+#: 
+msgid "Liaison"
+msgstr "İrtibat"
+
+#: 
+msgid "City, State, Zip"
+msgstr "Şehir posta kodu"
+
+#: 
+msgid "Send Newsletter"
+msgstr "Bülten gönder"
+
+#: 
+msgid "Member Name"
+msgstr "Üye adı"
+
+#: 
+msgid "Adult/Child"
+msgstr "Yetişkin/çocuk"
+
+#: 
+msgid "Cell Phone"
+msgstr "Cep telefonu"
+
+#: 
+msgid "Member/Friend"
+msgstr "Üye/Arkadaş"
+
+#: 
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr "Bu seçenek MySQL'in en az 3.22 sürümünü gerektirir! ChurchCRM'ye dönmek için tarayıcı geri düğmesine basın."
+
+#: 
+msgid "Work"
+msgstr "İş"
+
+#: 
+msgid "Cell"
+msgstr "Hücre"
+
+#: 
+msgid "Estimated value "
+msgstr "Tahmini değer"
+
+#: 
+msgid "Donated by "
+msgstr "Bağışlandı"
+
+#: 
+msgid "Paddle"
+msgstr "Kürek çekmek"
+
+#: 
+msgid "Bid"
+msgstr "Teklif etmek"
+
+#: 
+msgid "Minimum bid "
+msgstr "Minimum teklif"
+
+#: 
+msgid "All Funds"
+msgstr "Tüm Fonlar"
+
+#: 
+msgid " for all funds"
+msgstr " Tüm fonlar için"
+
+#: 
+msgid " for fund "
+msgstr " fon için"
+
+#: 
+msgid "for funds "
+msgstr "fon için"
+
+#: 
+msgid "Donated Items:"
+msgstr "Bağışlanan Ürünler:"
+
+#: 
+msgid "Purchased Items:"
+msgstr "Satın alınan ürünler:"
+
+#: 
+msgid "Total of all purchases: $"
+msgstr "Tüm alımların toplamı: $"
+
+#: 
+msgid "Total purchases: $"
+msgstr "Toplam Alımlar: $"
+
+#: 
+msgid "Amount paid: ________________"
+msgstr "Ödenen miktar: ________________"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "() Cash () check () tarafından ödenen kredi kartı __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ / __"
+
+#: 
+msgid "                                        Signature ________________________________________________________________"
+msgstr "                                        İmza ________________________________________________________________"
+
+#: 
+msgid "Totals"
+msgstr "Toplam"
+
+#: 
+msgid "Certificate of Ownership"
+msgstr "Mülkiyet belgesi"
+
+#: 
+msgid "Directory"
+msgstr "Dizin"
+
+#: 
+msgid "Page"
+msgstr "Sayfa"
+
+#: 
+msgid "Wedding"
+msgstr "Düğün"
+
+#: 
+msgid "and"
+msgstr "ve"
+
+#: 
+msgid "Group Directory"
+msgstr "Grup dizin"
+
+#: 
+msgid "Please detach this slip and mail with your next gift."
+msgstr "Lütfen bu kaymayı ayırın ve bir sonraki hediyenizle postalayın."
+
+#: 
+msgid "Please mail you next gift to "
+msgstr "Lütfen size bir sonraki hediyeyi postalayın"
+
+#: 
+msgid "Gift Amount:"
+msgstr "Hediye Miktarı:"
+
+#: 
+msgid "Gift Designation:"
+msgstr "Hediye Ataması:"
+
+#: 
+msgid "Sunday School"
+msgstr "Pazar Okulu"
+
+#: 
+msgid "Sunday School Class Functions"
+msgstr "Pazar Okulu Sınıfı İşlevleri"
+
+#: 
+msgid "Toggle Dropdown"
+msgstr "Açma"
+
+#: 
+msgid "Teachers"
+msgstr "Öğretmen"
+
+#: 
+msgid "Send Message"
+msgstr "Mesaj gönder"
+
+#: 
+msgid "View Profile"
+msgstr "Profili Görüntüle"
+
+#: 
+msgid "Quick Status"
+msgstr "Hızlı Durum"
+
+#: 
+msgid "Birthdays by Month"
+msgstr "Aylara göre doğum günleri"
+
+#: 
+msgid "Students"
+msgstr "Öğrenciler"
+
+#: 
+msgid "Mobile"
+msgstr "Hareketli"
+
+#: 
+msgid "Home Address"
+msgstr "Ev Adresi"
+
+#: 
+msgid "Dad Name"
+msgstr "Baba adı"
+
+#: 
+msgid "Dad Mobile"
+msgstr "Baba mobil"
+
+#: 
+msgid "Dad Email"
+msgstr "Baba E -posta"
+
+#: 
+msgid "Mom Name"
+msgstr "Anne Adı"
+
+#: 
+msgid "Mom Mobile"
+msgstr "Anne Mobile"
+
+#: 
+msgid "Mom Email"
+msgstr "Anne e -posta"
+
+#: 
+msgid "Compose New Message"
+msgstr "Yeni mesaj oluştur"
+
+#: 
+msgid "Kids Emails"
+msgstr "Çocuk e -postaları"
+
+#: 
+msgid "Parents Emails"
+msgstr "Ebeveyn e -postaları"
+
+#: 
+msgid "Teachers Emails"
+msgstr "Öğretmen e -postaları"
+
+#: 
+msgid "Attachment"
+msgstr "Ek"
+
+#: 
+msgid "Max. 32MB"
+msgstr "Maks. 32MB"
+
+#: 
+msgid "Discard"
+msgstr "Atmak"
+
+#: 
+msgid "Sunday School Dashboard"
+msgstr "Pazar Okulu Gösterge Tablosu"
+
+#: 
+msgid "Classes"
+msgstr "Sınıf"
+
+#: 
+msgid "Sunday School Reports"
+msgstr "Pazar Okulu Raporları"
+
+#: 
+msgid "Generate class lists and attendance sheets"
+msgstr "Sınıf listeleri ve katılım sayfaları oluşturun"
+
+#: 
+msgid "Export All Classes, Kids, and Parent to CSV file"
+msgstr "Tüm sınıfları, çocukları ve ebeveynleri CSV dosyasına dışa aktarın"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "Pazar okulu sınıfında olmayan öğrenciler"
+
+#: 
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr "Sınıf listeleri veya katılım sayfaları yapmak için en az bir grup seçilmelidir."
+
+#: 
+msgid "Report Details"
+msgstr "Rapor Ayrıntıları"
+
+#: 
+msgid "To select multiple hold CTL"
+msgstr "Çoklu Bekleme CTL seçmek için"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups<br>"
+msgstr "Birden fazla grubun gruplar arasında bir sayfa kırılması olacak <br>"
+
+#: 
+msgid "List all Roles (unchecked will list Teacher/Student roles only)"
+msgstr "Tüm rolleri listeleyin (kontrolsüz sadece öğretmen/öğrenci rollerini listeleyecektir)"
+
+#: 
+msgid "First Sunday"
+msgstr "İlk Pazar"
+
+#: 
+msgid "Last Sunday"
+msgstr "Geçen pazar"
+
+#: 
+msgid "No Sunday School"
+msgstr "Pazar Okulu Yok"
+
+#: 
+msgid "Extra Students"
+msgstr "Ekstra öğrenciler"
+
+#: 
+msgid "Extra Teachers"
+msgstr "Ekstra Öğretmenler"
+
+#: 
+msgid "Create Class List"
+msgstr "Sınıf Listesi Oluştur"
+
+#: 
+msgid "Create Attendance Sheet"
+msgstr "Katılım Sayfası Oluştur"
+
+#: 
+msgid "System Users"
+msgstr "Sistem kullanıcıları"
+
+#: 
+msgid "Calendar"
+msgstr "Takvim"
+
+#: 
+msgid "Members"
+msgstr "Üyeler"
+
+#: 
+msgid "Add New Person"
+msgstr "Yeni Kişi Ekle"
+
+#: 
+msgid "View All People"
+msgstr "Tüm İnsanları Görüntüle"
+
+#: 
+msgid "Add New Family"
+msgstr "Yeni Aile Ekle"
+
+#: 
+msgid "Events"
+msgstr "Olaylar"
+
+#: 
+msgid "Fundraiser"
+msgstr "Bağış"
+
+#: 
+msgid "Email Export"
+msgstr "E -posta Dışarı"
+
+#: 
+msgid "List"
+msgstr "Liste"
+
+#: 
+msgid "Import Data"
+msgstr "Verileri İçe Aktar"
+
+#: 
+msgid "Are you sure you want to DELETE this person from Event ID: "
+msgstr "Bu kişiyi olay kimliğinden silmek istediğinden emin misiniz:"
+
+#: 
+msgid "Date Range"
+msgstr "Tarih aralığı"
+
+#: 
+msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
+msgstr "Bu olay türünün silinmesi, mevcut olayları veya katılım sayısını silmez. Olay türü kimliğini silmek istediğinizden emin misiniz:"
+
+#: 
+msgid "Are you sure you want to delete the selected"
+msgstr "Seçilenleri silmek istediğinden emin misiniz"
+
+#: 
+msgid "Deposit(s)"
+msgstr "Depozito (lar)"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "Bu, bu depozitonla ilişkili tüm ödemeleri de silecektir."
+
+#: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "Bu eylem geri alınamaz ve yasal etkileri olabilir!"
+
+#: 
+msgid "Please ensure this what you want to do."
+msgstr "Lütfen bunu yapmak istediğiniz şeyi sağlayın."
+
+#: 
+msgid "Deposit Type"
+msgstr "Depozito Türü"
+
+#: 
+msgid "Deposit Date"
+msgstr "Mevduat tarihi"
+
+#: 
+msgid "Details:"
+msgstr "Detaylar:"
+
+#: 
+msgid "File Missing"
+msgstr "Eksik dosya"
+
+#: 
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr "Bu, veritabanındaki aile zarf numaralarının bu sayfada seçilenlerle üzerine yazacaktır. Devam et?"
+
+#: 
+msgid "Family Select"
+msgstr "Aile Seçimi"
+
+#: 
+msgid "with at least one:"
+msgstr "en az biriyle:"
+
+#: 
+msgid "Welcome to"
+msgstr "Hoşgeldiniz"
+
+#: 
+msgid "Select Database Files"
+msgstr "Veritabanı dosyalarını seçin"
+
+#: 
+msgid "Select a backup file to restore"
+msgstr "Geri yüklemek için bir yedekleme dosyası seçin"
+
+#: 
+msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
+msgstr "Dikkat: Bu, mevcut veritabanını tamamen silecek ve yedekleme ile değiştirecektir"
+
+#: 
+msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
+msgstr "ChurchInfo'dan veya ChurchCRM'nin önceki bir sürümünden bir yedekleme yüklerseniz, otomatik olarak geçerli veritabanı şemasına yükseltilir"
+
+#: 
+msgid "Upload Files"
+msgstr "Dosyaları yükle"
+
+#: 
+msgid "No Restore Running"
+msgstr "Geri Yükleme Yok"
+
+#: 
+msgid "Restore Complete"
+msgstr "Tamamla Geri Yükle"
+
+#: 
+msgid "Login to restored Database"
+msgstr "Geri yüklenen veritabanına giriş yapın"
+
+#: 
+msgid "Restore Error."
+msgstr "Hatayı geri yükle."
+
+#: 
+msgid "Church Information"
+msgstr "Kilise bilgileri"
+
+#: 
+msgid "User Setup"
+msgstr "Kullanıcı kurulumu"
+
+#: 
+msgid "Email Setup"
+msgstr "E -posta Kurulumu"
+
+#: 
+msgid "Map Settings"
+msgstr "Harita ayarları"
+
+#: 
+msgid "Report Settings"
+msgstr "Rapor Ayarları"
+
+#: 
+msgid "Localization"
+msgstr "Yerelleştirme"
+
+#: 
+msgid "Setting saved"
+msgstr "Tasarlandı"
+
+#: 
+msgid "Edit JSON Settings"
+msgstr "JSON Ayarlarını Düzenle"
+
+#: 
+msgid "Default Value"
+msgstr "Varsayılan değer"
+
+#: 
+msgid "False"
+msgstr "Yanlış"
+
+#: 
+msgid "True"
+msgstr "Doğru"
+
+#: 
+msgid "Edit Settings"
+msgstr "Ayarları Düzenle"
+
+#: 
+msgid "Upgrade ChurchCRM"
+msgstr "Churchcrm'i yükselt"
+
+#: 
+msgid "Step 1: Backup Database"
+msgstr "1. Adım: Yedek Veritabanı"
+
+#: 
+msgid "Please create a database backup before beginning the upgrade process."
+msgstr "Yükseltme işlemine başlamadan önce lütfen bir veritabanı yedekleme oluşturun."
+
+#: 
+msgid "Generate Database Backup"
+msgstr "Veritabanı yedekleme oluştur"
+
+#: 
+msgid "Step 2: Fetch Update Package on Server"
+msgstr "2. Adım: Sunucuda Güncelleme Paketi Alın"
+
+#: 
+msgid "Fetch the latest files from the ChurchCRM GitHub release page"
+msgstr "Churchcrm GitHub sürüm sayfasından en son dosyaları getirin"
+
+#: 
+msgid "Fetch Update Files"
+msgstr "Güncelleme dosyalarını getirin"
+
+#: 
+msgid "Step 3: Apply Update Package on Server"
+msgstr "Adım 3: Sunucuya güncelleme paketi uygulayın"
+
+#: 
+msgid "Extract the upgrade archive, and apply the new files"
+msgstr "Yükseltme arşivini çıkarın ve yeni dosyaları uygulayın"
+
+#: 
+msgid "Full Path:"
+msgstr "Tam yol:"
+
+#: 
+msgid "SHA1:"
+msgstr "SHA1:"
+
+#: 
+msgid "Upgrade System"
+msgstr "Yükseltme sistemi"
+
+#: 
+msgid "Step 4: Login"
+msgstr "4. Adım: Giriş"
+
+#: 
+msgid "Login to Upgraded System"
+msgstr "Yükseltilmiş sisteme giriş yapın"
+
+#: 
+msgid "Backup Complete, Ready for Download."
+msgstr "Yedekleme tamamlandı, indirmeye hazır."
+
+#: 
+msgid "Backup Error."
+msgstr "Yedekleme hatası."
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "Yedekleme indirildi, sunucuda kopyalama kaldırıldı"
+
+#: 
+msgid "Campaigns:"
+msgstr "Kampanyalar:"
+
+#: 
+msgid "Unsubscribed count:"
+msgstr "Abonelikten Çıkarılmış Sayım:"
+
+#: 
+msgid "Unsubscribed count since last send:"
+msgstr "Son gönderimden bu yana abonelikten çıkma sayısı:"
+
+#: 
+msgid "Cleaned count:"
+msgstr "Temizlenmiş sayı:"
+
+#: 
+msgid "Cleaned count since last send:"
+msgstr "Son gönderimden beri temizlenmiş sayı:"
+
+#: 
+msgid "Functions"
+msgstr "İşlevler"
+
+#: 
+msgid "Add New Class"
+msgstr "Yeni Sınıf Ekle"
+
+#: 
+msgid "Export to CSV"
+msgstr "CSV'ye dışa aktarma"
+
+#: 
+msgid "Add"
+msgstr "Ekle"
+
+#: 
+msgid "Enter Name"
+msgstr "İsim giriniz"
+
+#: 
+msgid "Update Church Info"
+msgstr "Kilise Bilgilerini Güncelle"
+
+#: 
+msgid "Set Church Address"
+msgstr "Kilise adresini ayarlayın"
+
+#: 
+msgid "Set Email Settings"
+msgstr "E -posta Ayarlarını Ayarla"
+
+#: 
+msgid "New Release"
+msgstr "Yeni sürüm"
+
+#: 
+msgid "Application Integrity Check Failed"
+msgstr "Uygulama bütünlüğü kontrolü başarısız oldu"
+
+#: 
+msgid "Self Registration"
+msgstr "Kendi Kayıt"
+
+#: 
+msgid "Restore Status:"
+msgstr "Geri Yükleme Durumu:"
+
+#: 
+msgid "No coordinates found"
+msgstr "Koordinat bulunamadı"
+
+#: 
+msgid "Backup Status:"
+msgstr "Yedekleme Durumu:"
+
+#: 
+msgid "No Backup Running"
+msgstr "Yedekleme Yok"
+
+#: 
+msgid "Anonymous"
+msgstr "Anonim"
+
+#: 
+msgid "Attendees for Event ID:"
+msgstr "Etkinlik Kimliği için katılımcılar:"
+
+#: 
+msgid "is not configured"
+msgstr "yapılandırılmamış"
+
+#: 
+msgid "Please update the"
+msgstr "Lütfen güncelleyin"
+
+#: 
+msgid "API key in Setting->"
+msgstr "Ayarda API Anahtarı->"
+
+#: 
+msgid "then update"
+msgstr "sonra güncelleme"
+
+#: 
+msgid "For more info see our "
+msgstr "Daha fazla bilgi için bkz."
+
+#: 
+msgid "support docs."
+msgstr "Destek dokümanları."
+
+#: 
+msgid "Yearly"
+msgstr "Yıllık"
+
+#: 
+msgid "Registration Complete"
+msgstr "Kayıt tamamlandı"
+
+#: 
+msgid "Register"
+msgstr "Kayıt ol"
+
+#: 
+msgid "Register your family"
+msgstr "Ailenizi Kaydet"
+
+#: 
+msgid "How many people are in your family"
+msgstr "Ailende kaç kişi var"
+
+#: 
+msgid "Add All Classes"
+msgstr "Tüm sınıfları ekleyin"
+
+#: 
+msgid "Clear All Classes"
+msgstr "Tüm Sınıfları Temizle"
+
+#: 
+msgid "Add All Families"
+msgstr "Tüm aileleri ekleyin"
+
+#: 
+msgid "Clear All Families"
+msgstr "Tüm aileleri temizle"
+
+#: 
+msgid "Add All Funds"
+msgstr "Tüm fonları ekleyin"
+
+#: 
+msgid "Clear All Funds"
+msgstr "Tüm fonları temizleyin"
+
+#: 
+msgid "Deposit Comment"
+msgstr "Depozito Yorumu"
+
+#: 
+msgid "Your previous session timed out.  Please login again."
+msgstr "Önceki oturumunuz zaman aşımına uğradı. Lütfen tekrar giriş yapın."
+
+#: 
+msgid "Register a new Family"
+msgstr "Yeni Bir Aile Kaydolun"
+
+#: 
+msgid "Signature definition file signature failed validation"
+msgstr "İmza Tanım Dosyası İmza Başarısız Doğrulama"
+
+#: 
+msgid "Signature definition File Missing"
+msgstr "İmza Tanım Dosyası Eksik"
+
+#: 
+msgid "One or more files failed signature validation"
+msgstr "Bir veya daha fazla dosya başarısız oldu imza doğrulaması"
+
+#: 
+msgid "Configure HTTPS"
+msgstr "HTTPS'yi yapılandırın"
+
+#: 
+msgid "Files failing integrity check"
+msgstr "Dosyalar Dürüstlük Kontrolü Başarısız"
+
+#: 
+msgid "Family:"
+msgstr "Aile:"
+
+#: 
+msgid "item"
+msgstr "öğe"
+
+#: 
+msgid "Address 1"
+msgstr "Adres 1"
+
+#: 
+msgid "Address 2"
+msgstr "Adres 2"
+
+#: 
+msgid "Cell phone"
+msgstr "Cep telefonu"
+
+#: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-------------------------------------------------- -------------------------------------------------- -------------------------------------------"
+
+#: 
+msgid "Buyer # "
+msgstr "Alıcı #"
+
+#: 
+msgid "Envelope:"
+msgstr "Mektup:"
+
+#: 
+msgid ", Phone: "
+msgstr ", Telefon:"
+
+#: 
+msgid "Voting members "
+msgstr "Oy kullanan üyeler"
+
+#: 
+msgid "Restore Running, Please wait."
+msgstr "Çalışmayı geri yükleyin, lütfen bekleyin."
+
+#: 
+msgid "Family Members:"
+msgstr "Aile üyeleri:"
+
+#: 
+msgid "Anniversary"
+msgstr "Yıl dönümü"
+
+#: 
+msgid "Notes"
+msgstr "Notalar"
+
+#: 
+msgid "Reports"
+msgstr "Raporlar"
+
+#: 
+msgid "File Name:"
+msgstr "Dosya adı:"
+
+#: 
+msgid "Fiscal Year:"
+msgstr "Mali yıl:"
+
+#: 
+msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
+msgstr "Önemli Not: Bu, \"Tamam\" ı kaybedecektir. Elle ayarlanmış alanlar."
+
+#: 
+msgid "Canvasser:"
+msgstr "Canvasser:"
+
+#: 
+msgid "Add Attendees for Event"
+msgstr "Etkinlik için katılımcılar ekleyin"
+
+#: 
+msgid "family"
+msgstr "aile"
+
+#: 
+msgid "Anniversary Date:"
+msgstr "Yıldönümü Tarihi:"
+
+#: 
+msgid "Date Entered:"
+msgstr "Girilen tarih:"
+
+#: 
+msgid "CSV Import"
+msgstr "CSV İthalat"
+
+#: 
+msgid "Comment:"
+msgstr "Yorum:"
+
+#: 
+msgid "Closed:"
+msgstr "Kapalı:"
+
+#: 
+msgid "Start Date: "
+msgstr "Başlangıç ​​tarihi:"
+
+#: 
+msgid "End Date: "
+msgstr "Bitiş tarihi:"
+
+#: 
+msgid "Members:"
+msgstr "Üyeler:"
+
+#: 
+msgid "Edit General Settings"
+msgstr "Genel Ayarları Düzenle"
+
+#: 
+msgid "There were "
+msgstr "Vardı"
+
+#: 
+msgid "Inactive"
+msgstr "Aktif olmayan"
+
+#: 
+msgid "Start Time"
+msgstr "Başlangıç ​​saati"
+
+#: 
+msgid "Filter by Fund"
+msgstr "Fonla Filtre"
+
+#: 
+msgid "Add New Deposit: "
+msgstr "Yeni depozito ekleyin:"
+
+#: 
+msgid "Estimated value"
+msgstr "Tahmini değer"
+
+#: 
+msgid "Disable Group Specific Properties"
+msgstr "Gruba özgü özellikleri devre dışı bırakın"
+
+#: 
+msgid "'Default Option'"
+msgstr "'Varsayılan seçenek'"
+
+#: 
+msgid "Text Group"
+msgstr "Metin grubu"
+
+#: 
+msgid "Group Properties"
+msgstr "Grup Özellikleri"
+
+#: 
+msgid "Assign a New Property:"
+msgstr "Yeni bir mülk atayın:"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "İstenen nesneyi geri almada bir sorun vardı"
+
+#: 
+msgid "All"
+msgstr "Herşey"
+
+#: 
+msgid "Family Map"
+msgstr "Aile haritası"
+
+#: 
+msgid "Groups"
+msgstr "Grup"
+
+#: 
+msgid "Error: You must enter a name"
+msgstr "Hata: Bir isim girmelisin"
+
+#: 
+msgid " Since:"
+msgstr " Dan beri:"
+
+#: 
+msgid "Total $"
+msgstr "Toplam $"
+
+#: 
+msgid "with this property.."
+msgstr "Bu mülkle .."
+
+#: 
+msgid "with this Property..."
+msgstr "Bu mülkle ..."
+
+#: 
+msgid "Church Email"
+msgstr "Kilise e -posta"
+
+#: 
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
+msgstr "Yalnızca bu sınıflandırmaları dizine ekleyin, virgül ayrılmış"
+
+#: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "Bunlar evin başkanı olarak belirlenen aile rolü numaraları"
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "Bunlar eş olarak belirlenen aile rolü numaraları"
+
+#: 
+msgid "These are the family role numbers designated as child"
+msgstr "Bunlar çocuk olarak belirlenen aile rol numaralarıdır"
+
+#: 
+msgid "Queries for which user must have finance permissions to use:"
+msgstr "Kullanıcının kullanılması için hangi kullanıcının kullanılması gereken sorgular:"
+
+#: 
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr "Yalnızca yöneticilerin CSV Dışa Aktarma Sistemi ve Dizin Raporuna erişimi olmalı mı?"
+
+#: 
+msgid "Minimum length a user may set their password to"
+msgstr "Bir kullanıcının şifresini ayarlayabileceği minimum uzunluk"
+
+#: 
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr "İzinsiz (çok açık) şifrelerin virgülle ayrılmış bir listesi."
+
+#: 
+msgid "Default City"
+msgstr "Varsayılan şehir"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "Varsayılan durum - 2 harfli kısaltma olmalıdır!"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "Tüm e -postaların bir kopyasını almak için varsayılan hesap"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "SMTP Sunucu Adresi (Mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "SMTP sunucunuz kimlik doğrulaması (kullanıcı adı/şifre) gerektiriyor mu?"
+
+#: 
+msgid "SMTP Username"
+msgstr "SMTP Kullanıcı Adı"
+
+#: 
+msgid "SMTP Password"
+msgstr "SMTP şifresi"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "Uluslararasılaşma (I18N) Destek"
+
+#: 
+msgid "First month of the fiscal year"
+msgstr "Mali yılın ilk ayı"
+
+#: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "Google haritasını ortalamak için kullanılan kilisenin enlemi"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "Google haritasını ortalamak için kullanılan kilisenin boylamı"
+
+#: 
+msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
+msgstr "Kişisel editörde adresleri devre dışı bırakmak için true ayarlayın. Kişisel editörde adreslerin girilmesini etkinleştirmek için false ayarlayın."
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "Kişiler editöründe arkadaş tarihini devre dışı bırakmak için true ayarlayın. Kişiler Editöründe Arkadaş Tarihini Girmeyi Etkinleştirmek için Yanlış Ayarlayın."
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "Aile Editörü'ndeki bülten aboneliklerinin yönetimini devre dışı bırakmak için true ayarlayın."
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "Aile Editöründe Düğün Tarihini Giriş Dışı Bırakmak İçin True Ayarlayın. Aile Editörüne Düğün Tarihini Giriş Etkinlik için Yanlış Ayarlayın."
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "Aile düzenleyicisine enlem ve boylam girişi devre dışı bırakmak için true ayarlayın. Aile düzenleyicisine enlem ve boylamın girilmesini sağlamak için false ayarlayın. Aramalar hala gerçekleştirilmiştir, sadece görüntülenmez."
+
+#: 
+msgid "Set true to enable use of donation envelopes"
+msgstr "Bağış zarflarının kullanımını etkinleştirmek için true ayarlayın"
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "Her sayfanın üstünde başlık olarak görüntülenecek HTML koduna girin. Etiketlerinizi kapattığınızdan emin olun! Not: Yeni başlığı görüntülemek için tarayıcınızı ikinci kez yenilemelisiniz."
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Yatırma Kayma Raporu için Çek Sayısı"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "Taranan çeklerin kullanımını etkinleştirmek için true ayarlayın"
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "Birim mesafe, mil veya km ölçmek için kullanılır."
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "Sınıflandırma sırasına göre Google Haritalar için İşaretçilerin Adları"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "İndirilemez ödemeleri etkinleştirin"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "Ailenin kendi kayıtlarını etkinleştirmek için true ayarlayın."
+
+#: 
+msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
+msgstr "Churchcrm kayıtlı. ChurchCRM ekibi, kullanımı izlemek için kayıt bilgilerini kullanır. Bu bilgiler gizli tutulur ve asla serbest bırakılır veya satılır. Bu alan doğruysa, yönetici menüsündeki kayıt seçeneği kaydını güncellemek için değişir."
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "Sol kenar boşluğu (1 = 1/100. İnç)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "Çizgi kalınlığı (1 = 1/100. İnç"
+
+#: 
+msgid "Church City"
+msgstr "Kilise şehri"
+
+#: 
+msgid "Church State"
+msgstr "Kilise devleti"
+
+#: 
+msgid "Church Zip"
+msgstr "Kilise zip"
+
+#: 
+msgid "Church Phone"
+msgstr "Kilise telefonu"
+
+#: 
+msgid "Home area code of the church"
+msgstr "Kilisenin Ev Alan Kodu"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "Vergi raporunun üst satırı için söz konusu. Tarihler bu çizginin sonuna eklenecektir."
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "Vergi raporunun alt satırı için söz konusu."
+
+#: 
+msgid "Tax Report signer"
+msgstr "Vergi Raporu Signer"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "Rehin Hatırlatma Raporu için Verba"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "Rehin hatırlatıcısı imzalayan"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "Rehin Hatırlatma Raporu için Şirket - Rehin Kayıt Yok"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "Rehin Hatırlatma Raporu için Şirket - Ödeme Kaydı Yok"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "Veritabanı Bilgiler Onayı ve Düzeltme Raporu için Verba"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "Veritabanı Bilgileri Onaylama ve Düzeltme Raporu Signer"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "Rehin Özeti Raporu için Vaka"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "Dizin Raporu için Vaka"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "Kilise antetli yolu ve dosya"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "Yerel görüntü olmadığında Gravatar'da Kullanıcı Görüntüleri Arayın"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "Bulut hizmetlerine uzak yedeklemeleri etkinleştirin"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "Bulut Hizmet Türü (Desteklenen Değerler: WebDav, Yerel)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "Uzak Yedek Kullanıcı Adı"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "Uzak yedekleme şifresi"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "Otomatik uzaktan yedeklemeler için saat aralık"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "Son yedekleme zaman damgası"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "QuickBooks Depozitet Bilet Ayarları"
+
+#: 
+msgid "Enable Integrity Check"
+msgstr "Bütünlük Kontrolünü Etkinleştir"
+
+#: 
+msgid "Interval in Hours for Integrity Check"
+msgstr "Dürüstlük kontrolü için saat aralık"
+
+#: 
+msgid "Last Integrity Check Timestamp"
+msgstr "Son bütünlük kontrolü zaman damgası"
+
+#: 
+msgid "List Groups"
+msgstr "Liste Grupları"
+
+#: 
+msgid "List Church Events"
+msgstr "Kilise etkinliklerini listeleyin"
+
+#: 
+msgid "Add Church Event"
+msgstr "Kilise Etkinliği Ekle"
+
+#: 
+msgid "List Event Types"
+msgstr "Olay türlerini listeleyin"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "Check-in ve check-out"
+
+#: 
+msgid "View All Deposits"
+msgstr "Tüm Mevduatları Görüntüle"
+
+#: 
+msgid "Deposit Reports"
+msgstr "Depozito Raporları"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "Depozito Slip'i Düzenle"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "Tüm bağışçıları görüntüleyin"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "Yeni bağış toplama oluştur"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "Bağış toplama"
+
+#: 
+msgid "View Buyers"
+msgstr "Alıcıları Görüntüle"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "Alıcı listesine bağışçılar ekleyin"
+
+#: 
+msgid "Data/Reports"
+msgstr "Veri/Raporlar"
+
+#: 
+msgid "Query Menu"
+msgstr "Sorgu Menüsü"
+
+#: 
+msgid "CSV Export Records"
+msgstr "CSV Dışa Aktarma Kayıtları"
+
+#: 
+msgid "People Properties"
+msgstr "İnsan Mülkleri"
+
+#: 
+msgid "Family Properties"
+msgstr "Aile Mülkleri"
+
+#: 
+msgid "Property Types"
+msgstr "Mülk türleri"
+
+#: 
+msgid "Zip Code"
+msgstr "Posta kodu"
+
+#: 
+msgid "2012/2013"
+msgstr "2012/2013"
+
+#: 
+msgid "2013/2014"
+msgstr "2013/2014"
+
+#: 
+msgid "2014/2015"
+msgstr "2014/2015"
+
+#: 
+msgid "2015/2016"
+msgstr "2015/2016"
+
+#: 
+msgid "WorkEmail"
+msgstr "İş e - postası"
+
+#: 
+msgid "Regular Attender"
+msgstr "Düzenli Katılımcı"
+
+#: 
+msgid "Guest"
+msgstr "Misafir"
+
+#: 
+msgid "Non-Attender"
+msgstr "Bağlı olmayan"
+
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Bağımsız olmayan (personel)"
+
+#: 
+msgid "Minimum Age"
+msgstr "Asgari yaş"
+
+#: 
+msgid "Maximum Age"
+msgstr "Maksimum yaş"
+
+#: 
+msgid "Beginning Date"
+msgstr "Başlangıç ​​tarihi"
+
+#: 
+msgid "Ending Date"
+msgstr "Bitiş tarihi"
+
+#: 
+msgid "Search"
+msgstr "Arama"
+
+#: 
+msgid "Field"
+msgstr "Alan"
+
+#: 
+msgid "Registered students"
+msgstr "Kayıtlı Öğrenciler"
+
+#: 
+msgid "Volunteer opportunities"
+msgstr "Gönüllü fırsatlar"
+
+#: 
+msgid "Months"
+msgstr "Aylar"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "İlk mali yıl"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "İkinci mali yıl"
+
+#: 
+msgid "Custom field"
+msgstr "Özel alan"
+
+#: 
+msgid "Field value"
+msgstr "Alan değeri"
+
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Kayıtların iade edilmesini istediğiniz asgari yaş."
+
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Kayıtların iade edilmesini istediğiniz maksimum yaş."
+
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Veritabanını aramak istenen cinsiyet."
+
+#: 
+msgid "Select the desired family role."
+msgstr "İstenen aile rolünü seçin."
+
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Kayıtların iade edilmesini istediğiniz cinsiyet."
+
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Kişi kayıtlarının iade edilmesini istediğiniz mülk."
+
+#: 
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Lütfen her üye için toplam katkıları hesaplamak için başlangıç ​​tarihini seçin (yani YYYY-MM-DD). Not: Yalnızca Conatain bağışlarının tarihlerini seçebilirsiniz."
+
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Her üye için toplam katkıları hesaplamak için lütfen son tarihi girin (yani YYYY-MM-DD)."
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Aşağıdakilerin herhangi bir bölümünü girin: isim, şehir, eyalet, zip, ev telefonu, e -posta veya çalışma e -postası."
+
+#: 
+msgid "Select field to search for."
+msgstr "Aramak için alanı seçin."
+
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Kayıtların iade edilmesini istediğiniz doğum günü ayı."
+
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Kayıtların iade edilmesini istediğiniz Pazar Okulu Sınıfı."
+
+#: 
+msgid "Group of registered students"
+msgstr "Kayıtlı öğrenci grubu"
+
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Kayıtların iade edilmesini istediğiniz üyelik yıldönümü ayı."
+
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Gönüllü Bir Fırsat Seçin"
+
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Arkadaş olduğundan sonraki ay sayısı"
+
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Karşılaştırma için ilk mali yıl"
+
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Karşılaştırma için ikinci mali yıl"
+
+#: 
+msgid "Pledged this year"
+msgstr "Bu yıl söz verdi"
+
+#: 
+msgid "but not this year"
+msgstr "Ama bu yıl değil"
+
+#: 
+msgid "Fiscal Year."
+msgstr "Mali yıl."
+
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Üye, düzenli katılımcı, vb."
+
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "İlk Gönüllü Fırsat Seçimi"
+
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "İkinci Gönüllü Fırsat Seçimi"
+
+#: 
+msgid "Choose customer person field"
+msgstr "Müşteri Kişi Alanını Seçin"
+
+#: 
+msgid "Match custom field to this value"
+msgstr "Özel alanı bu değerle eşleştirin"
+
+#: 
+msgid "Family Member Count"
+msgstr "Aile Üyesi Sayısı"
+
+#: 
+msgid "Person by Age"
+msgstr "Yaşa göre kişi"
+
+#: 
+msgid "Total By Gender"
+msgstr "Toplam cinsiyete göre"
+
+#: 
+msgid "Person by Role and Gender"
+msgstr "Rol ve cinsiyete göre kişi"
+
+#: 
+msgid "Person by Property"
+msgstr "Mülkiyete göre kişi"
+
+#: 
+msgid "Advanced Search"
+msgstr "gelişmiş Arama"
+
+#: 
+msgid "Birthdays"
+msgstr "Doğum günleri"
+
+#: 
+msgid "Membership anniversaries"
+msgstr "Üyelik Yıldönümleri"
+
+#: 
+msgid "Select database users"
+msgstr "Veritabanı kullanıcılarını seçin"
+
+#: 
+msgid "Select all members"
+msgstr "Tüm üyeleri seçin"
+
+#: 
+msgid "Volunteers"
+msgstr "Gönüllüler"
+
+#: 
+msgid "Recent friends"
+msgstr "Son Arkadaşlar"
+
+#: 
+msgid "Families to Canvass"
+msgstr "Aileler to Canvass"
+
+#: 
+msgid "Pledge comparison"
+msgstr "Rehin karşılaştırması"
+
+#: 
+msgid "Missing pledges"
+msgstr "Eksik Taahhütler"
+
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Mali yıla kadar aile sözü"
+
+#: 
+msgid "CustomSearch"
+msgstr "Özel arama"
+
+#: 
+msgid "Returns each family and the total number of people assigned to them."
+msgstr "Her aileyi ve kendilerine atanan toplam kişi sayısını iade eder."
+
+#: 
+msgid "Returns any person records with ages between two given ages."
+msgstr "Verilen iki yaş arasında herhangi bir kişi kaydını döndürür."
+
+#: 
+msgid "Total of records matching a given gender."
+msgstr "Belirli bir cinsiyetle eşleşen toplam kayıt."
+
+#: 
+msgid "Selects person records with the family role and gender specified."
+msgstr "Aile rolü ve cinsiyet belirtilen kişi kayıtlarını seçer."
+
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Verilen mülke atanan kişi kayıtlarını döndürür."
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "İsim, şehir, eyalet, zip, ev telefonu, e -posta veya çalışma e -postasının herhangi bir bölümüne göre arayın."
+
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Belirli bir ayda doğum günleri olan insanlar"
+
+#: 
+msgid "Find Registered students"
+msgstr "Kayıtlı Öğrencileri Bulun"
+
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Belirli bir ayda katılan üyeler"
+
+#: 
+msgid "People who are registered as database users"
+msgstr "Veritabanı kullanıcısı olarak kayıtlı kişiler"
+
+#: 
+msgid "People who are members"
+msgstr "Üye olan insanlar"
+
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Belirli bir fırsat için gönüllüleri bulun"
+
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Önceki aylarda kaydolan arkadaşlar"
+
+#: 
+msgid "People in families that are ok to canvass."
+msgstr "Canvass için uygun ailelerde insanlar."
+
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "İki mali yıl arasındaki taahhütleri karşılaştırın"
+
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Bir yıl vaat eden ama başka bir kişiyi bulun"
+
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Seçilen mali yıl için her fon için aile ismine göre rehin özeti"
+
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "İki özel fırsat koduyla eşleşen gönüllüleri bulun"
+
+#: 
+msgid "Find people with a custom field value"
+msgstr "Özel alan değeri olan kişileri bulun"
+
+#: 
+msgid "Last Edited"
+msgstr "Son Düzenlendi"
+
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Mailto üzerinden e -posta gönderme kullanıcı izni: bağlantılar"
+
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Mailto'daki e -postaları ayıracak sınırlayıcı: bağlantılar"
+
+#: 
+msgid "User permission to create directories"
+msgstr "Dizinler oluşturmak için kullanıcı izni"
+
+#: 
+msgid "User permission to export CSV files"
+msgstr "CSV dosyalarını dışa aktarmak için kullanıcı izni"
+
+#: 
+msgid "Allow user to add new event"
+msgstr "Kullanıcının yeni etkinlik eklemesine izin verin"
+
+#: 
+msgid "Canvass Progress Report"
+msgstr "Canvass İlerleme Raporu"
+
+#: 
+msgid "Done"
+msgstr "Tamamlandı"
+
+#: 
+msgid "Assigned"
+msgstr "Atanmış"
+
+#: 
+msgid "Percent"
+msgstr "Yüzde"
+
+#: 
+msgid "Total"
+msgstr "Toplam"
+
+#: 
+msgid "Pledge status"
+msgstr "Rehin Durumu"
+
+#: 
+msgid "Canvass Summary Report"
+msgstr "Canvass Özet Raporu"
+
+#: 
+msgid "Suggestion"
+msgstr "Öneri"
+
+#: 
+msgid "WhyNotInterested"
+msgstr "Neden İlişkili"
+
+#: 
+msgid "Comments"
+msgstr "Yorumlar"
+
+#: 
+msgid "Canvass Not Interested Report"
+msgstr "Canvass İlgilenmiyor Rapor"
+
+#: 
+msgid "Weekly on"
+msgstr "Haftalık"
+
+#: 
+msgid "s"
+msgstr "s"
+
+#: 
+msgid "Monthly on"
+msgstr "Aylık"
+
+#: 
+msgid "Yearly on"
+msgstr "Yıllık"
+
+#: 
+msgid "All Events of Type"
+msgstr "Tüm tür olaylar"
+
+#: 
+msgid "There is"
+msgstr "Var"
+
+#: 
+msgid "There are"
+msgstr "Var"
+
+#: 
+msgid "event"
+msgstr "Etkinlik"
+
+#: 
+msgid "events"
+msgstr "Etkinlikler"
+
+#: 
+msgid " in this category."
+msgstr " Bu kategoride."
+
+#: 
+msgid "There currently is"
+msgstr "Şu anda var"
+
+#: 
+msgid "There currently are"
+msgstr "Şu anda var"
+
+#: 
+msgid "custom event type"
+msgstr "Özel Etkinlik Türü"
+
+#: 
+msgid "custom event types"
+msgstr "Özel Etkinlik Türleri"
+
+#: 
+msgid "Family Roles Editor"
+msgstr "Aile Rolleri Editör"
+
+#: 
+msgid "Person Classification"
+msgstr "Kişi sınıflandırması"
+
+#: 
+msgid "Person Classifications"
+msgstr "Kişi sınıflandırmaları"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "Kişi Sınıflandırma Editörü"
+
+#: 
+msgid "Group Type"
+msgstr "Grup türü"
+
+#: 
+msgid "Group Types"
+msgstr "Grup türleri"
+
+#: 
+msgid "Group Types Editor"
+msgstr "Grup Türleri Editör"
+
+#: 
+msgid "Security Group"
+msgstr "Güvenlik grubu"
+
+#: 
+msgid "Security Groups"
+msgstr "Güvenlik grupları"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "Güvenlik Grupları Editör"
+
+#: 
+msgid "Group Member Role"
+msgstr "Grup Üyesi Rolü"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "Grup Üyesi Roller Editör"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "Kişi Özel Listesi Seçeneği"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "Kişi Özel Listesi Seçenekleri"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "Kişi Özel Listesi Seçenekleri Düzenleyicisi"
+
+#: 
+msgid "Custom List Option"
+msgstr "Özel Liste seçeneği"
+
+#: 
+msgid "Custom List Options"
+msgstr "Özel Liste Seçenekleri"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "Özel Liste Seçenekleri Düzenleyicisi"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "Aile Özel Listesi Seçeneği"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "Aile Özel Listesi Seçenekleri"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "Aile Özel Listesi Seçenekleri Editör"
+
+#: 
+msgid "are not allowed."
+msgstr "izin verilmez."
+
+#: 
+msgid "Name for New"
+msgstr "YENİ İÇİN ADI"
+
+#: 
+msgid "Imported"
+msgstr "İthal"
+
+#: 
+msgid "Created via Family"
+msgstr "Aile aracılığıyla oluşturuldu"
+
+#: 
+msgid "Updated via Family"
+msgstr "Aile aracılığıyla güncellendi"
+
+#: 
+msgid "Family Data Verified"
+msgstr "Aile verileri doğrulandı"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "Profil resmi silindi"
+
+#: 
+msgid "miles"
+msgstr "mil"
+
+#: 
+msgid "kilometers"
+msgstr "kilometrelik"
+
+#: 
+msgid "WebDAV"
+msgstr "Webdav"
+
+#: 
+msgid "Local"
+msgstr "Yerel"
+
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Afganistan (افغنستان)"
+
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "Åland Adaları (Åland)"
+
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Arnavutluk (Shqipëri)"
+
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "Cezayir (الجزائر)"
+
+#: 
+msgid "American Samoa"
+msgstr "Amerikan Samoası"
+
+#: 
+msgid "Andorra"
+msgstr "Andorra"
+
+#: 
+msgid "Angola"
+msgstr "Angola"
+
+#: 
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: 
+msgid "Antarctica"
+msgstr "Antarktika"
+
+#: 
+msgid "Antigua and Barbuda"
+msgstr "Antigua ve Barbuda"
+
+#: 
+msgid "Argentina"
+msgstr "Arjantin"
+
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "Ermenistan (հայատան)"
+
+#: 
+msgid "Aruba"
+msgstr "Aruba"
+
+#: 
+msgid "Ascension Island"
+msgstr "Yükselme adası"
+
+#: 
+msgid "Australia"
+msgstr "Avustralya"
+
+#: 
+msgid "Austria (Österreich)"
+msgstr "Avusturya (Österreich)"
+
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "Azerbaycan (Azərbaycan)"
+
+#: 
+msgid "Bahamas"
+msgstr "Bahamalar"
+
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "Bahreyn (البحين)"
+
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "Bangladeş (বাংলাদেশ)"
+
+#: 
+msgid "Barbados"
+msgstr "Barbados"
+
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "Belarus (беларtern)"
+
+#: 
+msgid "Belgium (België)"
+msgstr "Belçika (België)"
+
+#: 
+msgid "Belize"
+msgstr "Belize"
+
+#: 
+msgid "Benin (Bénin)"
+msgstr "Benin (Bénin)"
+
+#: 
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "Butan (འབྲུག)"
+
+#: 
+msgid "Bolivia"
+msgstr "Bolivya"
+
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "Bosna ve Herzegovina (босна и херцеговина)"
+
+#: 
+msgid "Botswana"
+msgstr "Botsvana"
+
+#: 
+msgid "Bouvet Island"
+msgstr "Bouvet adası"
+
+#: 
+msgid "Brazil (Brasil)"
+msgstr "Brezilya (Brasil)"
+
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "İngiliz Hint Okyanusu Bölgesi"
+
+#: 
+msgid "British Virgin Islands"
+msgstr "İngiliz Virgin Adaları"
+
+#: 
+msgid "Brunei"
+msgstr "Brunei"
+
+#: 
+msgid "Bulgaria (България)"
+msgstr "Bulgaristan (Xългария)"
+
+#: 
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "Burundi (Uburundi)"
+
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "Kamboçya (កម្ពុជា)"
+
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "Kamerun (Kamerun)"
+
+#: 
+msgid "Canada"
+msgstr "Kanada"
+
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "Kanarya Adaları (Islas Canarias)"
+
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "Cape Verde (Kabu Verdi)"
+
+#: 
+msgid "Caribbean Netherlands"
+msgstr "Karayip Hollanda"
+
+#: 
+msgid "Cayman Islands"
+msgstr "Cayman Adaları"
+
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "Orta Afrika Cumhuriyeti (République Centrafricaine)"
+
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "Ceuta ve Melilla (Ceuta Y Melilla)"
+
+#: 
+msgid "Chad (Tchad)"
+msgstr "Chad (Tchad)"
+
+#: 
+msgid "Chile"
+msgstr "Şili"
+
+#: 
+msgid "China (中国)"
+msgstr "Çin (中国)"
+
+#: 
+msgid "Christmas Island"
+msgstr "Noel Adası"
+
+#: 
+msgid "Clipperton Island"
+msgstr "Clipperton Adası"
+
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "Cocos (Keeling) Adaları (Kepulauan Cocos (Keeling))"
+
+#: 
+msgid "Colombia"
+msgstr "Kolombiya"
+
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "Comoros (جزر القمر)"
+
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "Kongo (DRC) (Jamhuri Ya Kidemokrasia Ya Kongo)"
+
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "Kongo (Cumhuriyet) (Congo-Brazzaville)"
+
+#: 
+msgid "Cook Islands"
+msgstr "Cook Adaları"
+
+#: 
+msgid "Costa Rica"
+msgstr "Kosta Rika"
+
+#: 
+msgid "Côte d’Ivoire"
+msgstr "Côte d’Ivoire"
+
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "Hırvatistan (Hrvatska)"
+
+#: 
+msgid "Cuba"
+msgstr "Küba"
+
+#: 
+msgid "Curaçao"
+msgstr "Curacao"
+
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "Kıbrıs (κύπρος)"
+
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "Çek Cumhuriyeti (česká Republika)"
+
+#: 
+msgid "Denmark (Danmark)"
+msgstr "Danimarka (Danmark)"
+
+#: 
+msgid "Diego Garcia"
+msgstr "Diego Garcia"
+
+#: 
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: 
+msgid "Dominica"
+msgstr "Dominika"
+
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "Dominik Cumhuriyeti (República Dominicana)"
+
+#: 
+msgid "Ecuador"
+msgstr "Ekvador"
+
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "Mısır (مصر)"
+
+#: 
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "Ekvator Gine (Gine Ekvatoryal)"
+
+#: 
+msgid "Eritrea"
+msgstr "Eritre"
+
+#: 
+msgid "Estonia (Eesti)"
+msgstr "Estonya (Eesti)"
+
+#: 
+msgid "Ethiopia"
+msgstr "Etiyopya"
+
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "Falkland Adaları (Islas Malvinas)"
+
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "Faroe Adaları (Føroyar)"
+
+#: 
+msgid "Fiji"
+msgstr "Fiji"
+
+#: 
+msgid "Finland (Suomi)"
+msgstr "Finlandiya (Suomi)"
+
+#: 
+msgid "France"
+msgstr "Fransa"
+
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "Fransız Guyanası (Guyane Française)"
+
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "Fransız Polinezyası (Polynésie Française)"
+
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "Fransız Güney Bölgeleri (Terres Australes Françaises)"
+
+#: 
+msgid "Gabon"
+msgstr "Gabon"
+
+#: 
+msgid "Gambia"
+msgstr "Gambiya"
+
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "Georgia (საქართველო)"
+
+#: 
+msgid "Germany (Deutschland)"
+msgstr "Almanya (Deutschland)"
+
+#: 
+msgid "Ghana (Gaana)"
+msgstr "Gana (Gaana)"
+
+#: 
+msgid "Gibraltar"
+msgstr "Cebelitarık"
+
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "Yunanistan (ελλάδα)"
+
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "Grönland (Kalaallit Nunaat)"
+
+#: 
+msgid "Grenada"
+msgstr "Grenada"
+
+#: 
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#: 
+msgid "Guam"
+msgstr "Guam"
+
+#: 
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: 
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#: 
+msgid "Guinea (Guinée)"
+msgstr "Gine (Guinée)"
+
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "Gine-Bissau (Guiné Bissau)"
+
+#: 
+msgid "Guyana"
+msgstr "Guyana"
+
+#: 
+msgid "Haiti"
+msgstr "Haiti"
+
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "Heard & McDonald Adaları"
+
+#: 
+msgid "Honduras"
+msgstr "Honduras"
+
+#: 
+msgid "Hong Kong (香港)"
+msgstr "Hong Kong (香港)"
+
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "Macaristan (Magyarország)"
+
+#: 
+msgid "Iceland (Ísland)"
+msgstr "İzlanda (ísland)"
+
+#: 
+msgid "India (भारत)"
+msgstr "Hindistan (भारत)"
+
+#: 
+msgid "Indonesia"
+msgstr "Endonezya"
+
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "İran (ایران)"
+
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "Irak (العراق)"
+
+#: 
+msgid "Ireland"
+msgstr "İrlanda"
+
+#: 
+msgid "Isle of Man"
+msgstr "Adam Adası"
+
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "İsrail (ש)"
+
+#: 
+msgid "Italy (Italia)"
+msgstr "İtalya (Italia)"
+
+#: 
+msgid "Jamaica"
+msgstr "Jamaika"
+
+#: 
+msgid "Japan (日本)"
+msgstr "Japonya (日本)"
+
+#: 
+msgid "Jersey"
+msgstr "Jersey"
+
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "Ürdün (الأدن)"
+
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "Kazakistan (кахстан)"
+
+#: 
+msgid "Kenya"
+msgstr "Kenya"
+
+#: 
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "Kosova (Kosova)"
+
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "Kuveyt (الكويت)"
+
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "Kırgızistan (ыргызстан)"
+
+#: 
+msgid "Laos (ລາວ)"
+msgstr "Laos (ລາວ)"
+
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "Lübnan (لبنان)"
+
+#: 
+msgid "Lesotho"
+msgstr "Lesoto"
+
+#: 
+msgid "Liberia"
+msgstr "Liberya"
+
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "Libya (ليبيا)"
+
+#: 
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "Litvanya (Lietuva)"
+
+#: 
+msgid "Luxembourg"
+msgstr "Lüksemburg"
+
+#: 
+msgid "Macau (澳門)"
+msgstr "Macau (澳門)"
+
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "Makedonya (Fyrom) (македонија)"
+
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "Madagaskar (Madagasikara)"
+
+#: 
+msgid "Malawi"
+msgstr "Malawi"
+
+#: 
+msgid "Malaysia"
+msgstr "Malezya"
+
+#: 
+msgid "Maldives"
+msgstr "Maldivler"
+
+#: 
+msgid "Mali"
+msgstr "Mali"
+
+#: 
+msgid "Malta"
+msgstr "Malta"
+
+#: 
+msgid "Marshall Islands"
+msgstr "Marşal Adaları"
+
+#: 
+msgid "Martinique"
+msgstr "Martinik"
+
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "Mauritania (مريتانيا)"
+
+#: 
+msgid "Mauritius (Moris)"
+msgstr "Mauritius (Moris)"
+
+#: 
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#: 
+msgid "Mexico (México)"
+msgstr "Meksika (México)"
+
+#: 
+msgid "Micronesia"
+msgstr "Mikronezya"
+
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "Moldova (Republica Moldova)"
+
+#: 
+msgid "Monaco"
+msgstr "Monako"
+
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "Moğolistan (мнгол)"
+
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "Karadağ (CRNA Gora)"
+
+#: 
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "Fas (المغرب)"
+
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "Mozambik (Maçambik)"
+
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "Myanmar (Burma) (မြန်မာ)"
+
+#: 
+msgid "Namibia (Namibië)"
+msgstr "Namibya (Namibië)"
+
+#: 
+msgid "Nauru"
+msgstr "Nauru"
+
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "Nepal (नेपाल)"
+
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "Hollanda (Nederland)"
+
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "Yeni Kaledonya (Nouvelle-Calédonie)"
+
+#: 
+msgid "New Zealand"
+msgstr "Yeni Zelanda"
+
+#: 
+msgid "Nicaragua"
+msgstr "Nikaragua"
+
+#: 
+msgid "Niger (Nijar)"
+msgstr "Nijer (Nijar)"
+
+#: 
+msgid "Nigeria"
+msgstr "Nijerya"
+
+#: 
+msgid "Niue"
+msgstr "Niue"
+
+#: 
+msgid "Norfolk Island"
+msgstr "Norfolk Adası"
+
+#: 
+msgid "Northern Mariana Islands"
+msgstr "Kuzey Mariana Adaları"
+
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "Kuzey Kore (조선 민주 주의 공화국 공화국)"
+
+#: 
+msgid "Norway (Norge)"
+msgstr "Norveç (Norge)"
+
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "Umman (عُمان)"
+
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "Pakistan (پاکتان)"
+
+#: 
+msgid "Palau"
+msgstr "Palau"
+
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "Filistin (فلسطين)"
+
+#: 
+msgid "Panama (Panamá)"
+msgstr "Panama (Panamá)"
+
+#: 
+msgid "Papua New Guinea"
+msgstr "Papua Yeni Gine"
+
+#: 
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: 
+msgid "Peru (Perú)"
+msgstr "Peru (Perú)"
+
+#: 
+msgid "Philippines"
+msgstr "Filipinler"
+
+#: 
+msgid "Pitcairn Islands"
+msgstr "Pitcairn Adaları"
+
+#: 
+msgid "Poland (Polska)"
+msgstr "Polonya (Polska)"
+
+#: 
+msgid "Portugal"
+msgstr "Portekiz"
+
+#: 
+msgid "Puerto Rico"
+msgstr "Porto Riko"
+
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "Katar (قطر)"
+
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "Réunion (La Réunion)"
+
+#: 
+msgid "Romania (România)"
+msgstr "Romanya (România)"
+
+#: 
+msgid "Russia (Россия)"
+msgstr "Rusya (росия)"
+
+#: 
+msgid "Rwanda"
+msgstr "Ruanda"
+
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "Saint Barthélemy (Saint-Barthéemy)"
+
+#: 
+msgid "Saint Helena"
+msgstr "Saint Helena"
+
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "Saint Kitts ve Nevis"
+
+#: 
+msgid "Saint Lucia"
+msgstr "Saint Lucia"
+
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "Saint Martin (Saint-Martin (Partie Française))"
+
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "Saint Pierre ve Miquelon (Saint-Pierre-Et-Miquelon)"
+
+#: 
+msgid "Samoa"
+msgstr "Samoa"
+
+#: 
+msgid "San Marino"
+msgstr "San Marino"
+
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "São Tomé ve Príncipe (São Tomé e Príncipe)"
+
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "Suudi Arabistan (الملكة العربية السعودية)"
+
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "Senegal (Sénégal)"
+
+#: 
+msgid "Serbia (Србија)"
+msgstr "Sırbistan (рбија)"
+
+#: 
+msgid "Seychelles"
+msgstr "Seyşeller"
+
+#: 
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: 
+msgid "Singapore"
+msgstr "Singapur"
+
+#: 
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "Slovakya (Slovensko)"
+
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "Slovenya (Slovenija)"
+
+#: 
+msgid "Solomon Islands"
+msgstr "Solomon Adaları"
+
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "Somali (Soomaaliya)"
+
+#: 
+msgid "South Africa"
+msgstr "Güney Afrika"
+
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "Güney Georgia ve Güney Sandviç Adaları"
+
+#: 
+msgid "South Korea (대한민국)"
+msgstr "Güney Kore (대한민국)"
+
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "Güney Sudan (جنوب السودان)"
+
+#: 
+msgid "Spain (España)"
+msgstr "İspanya (España)"
+
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "Sri Lanka (ශ්‍රී ලංකාව)"
+
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "Vincent & Grenadines"
+
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "Sudan (السودان)"
+
+#: 
+msgid "Suriname"
+msgstr "Surinam"
+
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "Svalbard ve Jan Mayen (Svalbard OG Jan Mayen)"
+
+#: 
+msgid "Swaziland"
+msgstr "Svaziland"
+
+#: 
+msgid "Sweden (Sverige)"
+msgstr "İsveç (Sverige)"
+
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "İsviçre (Schweiz)"
+
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "Suriye (سوريا)"
+
+#: 
+msgid "Taiwan (台灣)"
+msgstr "Tayvan (台灣)"
+
+#: 
+msgid "Tajikistan"
+msgstr "Tacikistan"
+
+#: 
+msgid "Tanzania"
+msgstr "Tanzanya"
+
+#: 
+msgid "Thailand (ไทย)"
+msgstr "Tayland (ไทย)"
+
+#: 
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+#: 
+msgid "Togo"
+msgstr "Gitmek"
+
+#: 
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: 
+msgid "Tonga"
+msgstr "Tonga"
+
+#: 
+msgid "Trinidad and Tobago"
+msgstr "Trinidad ve Tobago"
+
+#: 
+msgid "Tristan da Cunha"
+msgstr "Tristan da Cunha"
+
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "Tunus (تونس)"
+
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "Türkiye (Türkiye)"
+
+#: 
+msgid "Turkmenistan"
+msgstr "Türkmenistan"
+
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "Turks ve Caicos Adaları"
+
+#: 
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "ABD dış adaları"
+
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "Amerika Birleşik Devletleri Virgin Adaları"
+
+#: 
+msgid "Uganda"
+msgstr "Uganda"
+
+#: 
+msgid "Ukraine (Україна)"
+msgstr "Ukrayna (урна)"
+
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "Birleşik Arap Emirlikleri (الإمات العربية المتحدة)"
+
+#: 
+msgid "United Kingdom"
+msgstr "Birleşik Krallık"
+
+#: 
+msgid "United States"
+msgstr "Amerika Birleşik Devletleri"
+
+#: 
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "Özbekistan (Oʻzbekiston)"
+
+#: 
+msgid "Vanuatu"
+msgstr "Vanatu"
+
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "Vatikan Şehri (Città del Vatikano)"
+
+#: 
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "Vietnam (Việt Nam)"
+
+#: 
+msgid "Wallis and Futuna"
+msgstr "Wallis ve Futuna"
+
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "Batı Sahara (الصحراء الغربية)"
+
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "Yemen (اليمن)"
+
+#: 
+msgid "Zambia"
+msgstr "Zambiya"
+
+#: 
+msgid "Zimbabwe"
+msgstr "Zimbabve"
+
+#: 
+msgid "Please verify your family's information"
+msgstr "Lütfen ailenizin bilgilerini doğrulayın"
+
+#: 
+msgid "Church Address is not Set."
+msgstr "Kilise adresi ayarlanmadı."
+
+#: 
+msgid "Church Name is set to default value"
+msgstr "Kilise adı varsayılan değere ayarlanmıştır"
+
+#: 
+msgid "SMTP Server info are blank"
+msgstr "SMTP sunucu bilgileri boş"
+
+#: 
+msgid "Your system could be more secure by installing an TLS/SSL Cert."
+msgstr "TLS/SSL sertifikası yükleyerek sisteminiz daha güvenli olabilir."
+
+#: 
+msgid "Missing Classification Data"
+msgstr "Eksik sınıflandırma verileri"
+
+#: 
+msgid "Missing Classification Data for Some People"
+msgstr "Bazı insanlar için eksik sınıflandırma verileri"
+
+#: 
+msgid "Missing Gender Data"
+msgstr "Eksik Cinsiyet Verileri"
+
+#: 
+msgid "Missing Gender Data for Some People"
+msgstr "Bazı insanlar için cinsiyet verileri eksik"
+
+#: 
+msgid "Missing Role Data"
+msgstr "Eksik Rol Verileri"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "Doğrulama bilgilerini yükleyemiyor"
+
+#: 
+msgid "No Changes"
+msgstr "Değişiklik yok"
+
+#: 
+msgid "Page not fond"
+msgstr "Sayfa düşkün değil"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "Oops! Sayfa bulunamadı."
+
+#: 
+msgid "Family Registration"
+msgstr "Aile kaydı"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "Ailenizin doğrulamasını başlatmak için lütfen aşağıdakileri girin"
+
+#: 
+msgid "Family Verification"
+msgstr "Aile doğrulaması"
+
+#: 
+msgid "Family Member(s)"
+msgstr "Aile üyeleri)"
+
+#: 
+msgid "Work Email"
+msgstr "İş e - postası"
+
+#: 
+msgid "Your verification request is complete"
+msgstr "Doğrulama talebiniz tamamlandı"
+
+#: 
+msgid "We encountered an error submitting with your verification data"
+msgstr "Doğrulama verilerinizle gönderirken bir hata ile karşılaştık"
+
+#: 
+msgid "Visit our Site"
+msgstr "Sitemizi ziyaret edin"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "Aile Bilgisi Doğrulama İsteyin"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "Aile bilgilerinin doğrulanmasını nasıl istemek isteyeceğinizi seçin"
+
+#: 
+msgid "Online Verification"
+msgstr "Çevrimiçi Doğrulama"
+
+#: 
+msgid "Verified In Person"
+msgstr "Şahsen doğrulandı"
+
+#: 
+msgid "None State"
+msgstr "Hiçbir DEĞİL"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "Yedek arşivi bir veritabanı içermiyor"
+
+#: 
+msgid "Missing Coordinates"
+msgstr "Eksik koordinatlar"
+
+#: 
+msgid "Family Coordinates Data for Some Families"
+msgstr "Bazı aileler için aile verileri koordine eder"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "Veritabanına kaydedilirken kullanıcı tarafından girilen zip/postkodları büyük harf yapın."
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "Signer'dan önce bir mektubu bitirmek için kullanılır"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "Google Analytics izleme kodu"
+
+#: 
+msgid "English - United States"
+msgstr "İngilizce - Amerika Birleşik Devletleri"
+
+#: 
+msgid "English - Canada"
+msgstr "İngilizce - Kanada"
+
+#: 
+msgid "English - Australia"
+msgstr "İngilizce - Avustralya"
+
+#: 
+msgid "English - Great Britain"
+msgstr "İngilizce - Büyük Britanya"
+
+#: 
+msgid "German - Germany"
+msgstr "Almanya - Almanya"
+
+#: 
+msgid "Spanish - Spain"
+msgstr "İspanyol - İspanya"
+
+#: 
+msgid "French - France"
+msgstr "Fransızca Fransa"
+
+#: 
+msgid "Hungarian"
+msgstr "Macarca"
+
+#: 
+msgid "Italian - Italy"
+msgstr "İtalyan - İtalya"
+
+#: 
+msgid "Norwegian"
+msgstr "Norveççe"
+
+#: 
+msgid "Dutch - Netherlands"
+msgstr "Hollanda - Hollanda"
+
+#: 
+msgid "Polish"
+msgstr "Lehçe"
+
+#: 
+msgid "Portuguese - Brazil"
+msgstr "Portekiz Brezilyası"
+
+#: 
+msgid "Romanian - Romania"
+msgstr "Romanya - Romanya"
+
+#: 
+msgid "Russian"
+msgstr "Rusça"
+
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "Sami (Kuzey) (İsveç)"
+
+#: 
+msgid "Albanian"
+msgstr "Arnavut"
+
+#: 
+msgid "Vietnamese"
+msgstr "Vietnam"
+
+#: 
+msgid "Chinese - China"
+msgstr "Çin - Çin"
+
+#: 
+msgid "Chinese - Taiwan"
+msgstr "Çince - Tayvan"
+
+#: 
+msgid "Maximum upload size"
+msgstr "Maksimum Yükleme Boyutu"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "Seçilen dosya, bu sunucuların maksimum yükleme boyutunu aşıyor"
+
+#: 
+msgid "Unmet Application Prerequisites"
+msgstr "Karşılanmamış uygulama önkoşulları"
+
+#: 
+msgid "Failed"
+msgstr "Arızalı"
+
+#: 
+msgid "The previous integrity check passed.  All system file hashes match the expected values."
+msgstr "Önceki bütünlük kontrolü geçti. Tüm sistem dosyası karmalar beklenen değerlerle eşleşir."
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "Kilise Kontrol Hesap Numarası"
+
+#: 
+msgid "Missing Role Data for Some People"
+msgstr "Bazı insanlar için eksik rol verileri"
+
+#: 
+msgid "PHP Max File size too small"
+msgstr "PHP Max Dosya Boyutu Çok Küçük"
+
+#: 
+msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
+msgstr "Mobil fotoğraf yüklemesine izin vermek için PHP yükleme sınırlarını artırın ve yedekleme geri yükleme."
+
+#: 
+msgid "Deactivated the Family"
+msgstr "Aileyi devre dışı bıraktı"
+
+#: 
+msgid "Activated the Family"
+msgstr "Aileyi etkinleştirdi"
+
+#: 
+msgid "families"
+msgstr "aileler"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "Depozito Bilet Türü. QBDT - QuickBooks"
+
+#: 
+msgid "Financial Settings"
+msgstr "Finansal Ayarlar"
+
+#: 
+msgid "An invalid configuration name has been requested"
+msgstr "Geçersiz bir yapılandırma adı istendi"
+
+#: 
+msgid "An invalid configuration id has been requested"
+msgstr "Geçersiz bir yapılandırma kimliği istendi"
+
+#: 
+msgid "Profile Image uploaded"
+msgstr "Profil resmi yüklendi"
+
+#: 
+msgid "payments(s)?"
+msgstr "Ödemeler?"
+
+#: 
+msgid "Please ensure this what you want to do.</p>"
+msgstr "Lütfen bunu yapmak istediğiniz şeyden emin olun. </p>"
+
+#: 
+msgid " this Family"
+msgstr " bu aile"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "Devre dışı bırakmayı onaylayın"
+
+#: 
+msgid "Confirm Activation"
+msgstr "Aktivasyonu onaylayın"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "Lütfen ailenin devre dışı bırakılmasını onaylayın"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "Lütfen ailenin aktivasyonunu onaylayın"
+
+#: 
+msgid "Show neighbors with these classifications:"
+msgstr "Komşuları bu sınıflandırmalarla gösterin:"
+
+#: 
+msgid "Please select a Family."
+msgstr "Lütfen bir aile seçin."
+
+#: 
+msgid "Coordinate data base file name:"
+msgstr "Veri tabanı dosya adını koordine edin:"
+
+#: 
+msgid "Intersect With Cart"
+msgstr "Sepetle kesişmek"
+
+#: 
+msgid "Family Member"
+msgstr "Aile üyesi"
+
+#: 
+msgid "select an option"
+msgstr "bir seçenek seçin"
+
+#: 
+msgid "Direct me"
+msgstr "Beni yönlendir"
+
+#: 
+msgid "Your cart is empty"
+msgstr "Sepetiniz boş"
+
+#: 
+msgid "The record could not be found."
+msgstr "Kayıt bulunamadı."
+
+#: 
+msgid "The property is already assigned."
+msgstr "Mülkiyet zaten atandı."
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "Mülk başarıyla atanır."
+
+#: 
+msgid "The property could not be assigned."
+msgstr "Mülk atanamadı."
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "Mülk başarıyla atanmamış."
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "Tesis tayinsiz olamazdı."
+
+#: 
+msgid "Select event"
+msgstr "Etkinliği Seçin"
+
+#: 
+msgid "Person's Name"
+msgstr "Kişinin adı"
+
+#: 
+msgid "Adult Name(Optional)"
+msgstr "Yetişkin adı (isteğe bağlı)"
+
+#: 
+msgid "Checked in By(Optional)"
+msgstr "(İsteğe bağlı) tarafından check -in yapıldı"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "Bu etkinlik için kişi zaten kontrol edildi"
+
+#: 
+msgid "CheckOut Person"
+msgstr "Kasa"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "Girişte Check'i Sil"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "Yetişkin Kişiyi Kontrol Etme"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Yetişkin adı (isteğe bağlı)"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "E -postalarda/raporlarda addan önce metin"
+
+#: 
+msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
+msgstr "Boş LastName'de şahsen editörde izin vermek için true ayarlayın. Soyadını doğrulamak için false ayarlayın ve boş bırakıldığında aileden miras alın."
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "Depozito faturasında fatura sayımlarını göster"
+
+#: 
+msgid "ChurchCRM Cloud Access URL"
+msgstr "Churchcrm Bulut Erişim URL'si"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "Hesabınız silindi"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "ChurchCRM hesabınız silindi."
+
+#: 
+msgid "Account Locked"
+msgstr "Hesap kilitli"
+
+#: 
+msgid "Your New Account"
+msgstr "Yeni Hesabınız"
+
+#: 
+msgid "Password Changed"
+msgstr "Şifre değişti"
+
+#: 
+msgid "Password Reset"
+msgstr "Parola sıfırlama"
+
+#: 
+msgid "Account Unlocked"
+msgstr "Hesap Kilidi"
+
+#: 
+msgid "Part"
+msgstr "Bölüm"
+
+#: 
+msgid "View Photo"
+msgstr "Fotoğrafı göster"
+
+#: 
+msgid "Family Photo"
+msgstr "Aile fotoğrafı"
+
+#: 
+msgid "Quick Settings"
+msgstr "Hızlı Ayarlar"
+
+#: 
+msgid "Status"
+msgstr "Durum"
+
+#: 
+msgid "Email export"
+msgstr "E -posta Dışarı"
+
+#: 
+msgid "Include"
+msgstr "Katmak"
+
+#: 
+msgid "Exclude"
+msgstr "Hariç tutmak"
+
+#: 
+msgid "No property assignments"
+msgstr "Mülk ödevi yok"
+
+#: 
+msgid "View Cart"
+msgstr "Sepet görüntüleyin"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "Sepetiniz boş"
+
+#: 
+msgid "View on Map"
+msgstr "Haritada görüntüle"
+
+#: 
+msgid "Legend"
+msgstr "Efsane"
+
+#: 
+msgid "assigned"
+msgstr "atanmış"
+
+#: 
+msgid "Photo"
+msgstr "Fotoğraf"
+
+#: 
+msgid "Payment Details"
+msgstr "Ödeme detayları"
+
+#: 
+msgid "Fund Split"
+msgstr "Fon Split"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "Öğrencileri doğum günleri göstererek göstermek"
+
+#: 
+msgid "Actions"
+msgstr "Hareketler"
+
+#: 
+msgid "Action Confirmation"
+msgstr "Eylem Onayı"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "Lütfen başarısız giriş sayısını sıfırla onaylayın"
+
+#: 
+msgid "View Active Families"
+msgstr "Aktif Aileleri Görüntüle"
+
+#: 
+msgid "View Inactive Families"
+msgstr "Aktif olmayan aileleri görüntüle"
+
+#: 
+msgid "SMTP Server timeout in sec"
+msgstr "SEC'de SMTP Sunucusu Zaman Aşımı"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "Aktif olmayan aileleri hariç tut"
+
+#: 
+msgid "The role is already assigned."
+msgstr "Rol zaten atandı."
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "Rol başarıyla atanır."
+
+#: 
+msgid "The role could not be assigned."
+msgstr "Rol atanamadı."
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "Bing Map API benzersiz bir anahtar gerektirir"
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "Google Haritalar Zoom"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "Geocoder sağlayıcısı seçin"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "ChurchCRM hesabınız kilitlendi."
+
+#: 
+msgid "A ChurchCRM account was created for you"
+msgstr "Sizin için bir ChurchCRM hesabı oluşturuldu"
+
+#: 
+msgid "Your ChurchCRM password was changed"
+msgstr "ChurchCRM şifreniz değiştirildi"
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "Bu bağlantıyı tıklayarak ChurchCRM şifrenizi sıfırlayabilirsiniz"
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "ChurchCRM hesabınızın kilidi açıldı."
+
+#: 
+msgid "system user created"
+msgstr "Sistem kullanıcısı oluşturuldu"
+
+#: 
+msgid "system user updated"
+msgstr "sistem kullanıcısı güncellendi"
+
+#: 
+msgid "system user deleted"
+msgstr "Sistem kullanıcısı silindi"
+
+#: 
+msgid "system user password reset"
+msgstr "Sistem Kullanıcı Şifresi Sıfırlama"
+
+#: 
+msgid "system user changed password"
+msgstr "Sistem kullanıcısı şifre değiştirdi"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "Sistem Kullanıcı Şifresi Yönetici tarafından değiştirildi"
+
+#: 
+msgid "system user login reset"
+msgstr "Sistem Kullanıcı Oturum Açma Sıfırlama"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "Kayıp aileler? Şimdi aile enlemini veya boylamını güncelleyin."
+
+#: 
+msgid "Families without Geo Info"
+msgstr "Coğrafi bilgisi olmayan aileler"
+
+#: 
+msgid "Notification for"
+msgstr "İçin bildirim"
+
+#: 
+msgid "DEBUG"
+msgstr "Ayıklamak"
+
+#: 
+msgid "INFO"
+msgstr "BİLGİ"
+
+#: 
+msgid "NOTICE"
+msgstr "FARK ETME"
+
+#: 
+msgid "WARNING"
+msgstr "UYARI"
+
+#: 
+msgid "ERROR"
+msgstr "HATA"
+
+#: 
+msgid "CRITICAL"
+msgstr "Eleştirel"
+
+#: 
+msgid "ALERT"
+msgstr "ALARM"
+
+#: 
+msgid "EMERGENCY"
+msgstr "ACİL DURUM"
+
+#: 
+msgid "Title FirstName MiddleName LastName"
+msgstr "Başlık FirstName Middlename LastName"
+
+#: 
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr "Title FirstName MiddleInitial. Soy isim"
+
+#: 
+msgid "LastName, Title FirstName MiddleName"
+msgstr "LastName, Başlık FirstName Middlename"
+
+#: 
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr "LastName, Title FirstName MiddleInitial"
+
+#: 
+msgid "FirstName MiddleName LastName"
+msgstr "FirstName Middlename LastName"
+
+#: 
+msgid "Title FirstName LastName"
+msgstr "Başlık FirstName LastName"
+
+#: 
+msgid "LastName, Title FirstName"
+msgstr "LastName, Title First Name"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "ORM ve Uygulama Günlükleri tarafından kullanılan olay günlüğü ciddiyeti"
+
+#: 
+msgid "Time zone"
+msgstr "Saat dilimi"
+
+#: 
+msgid "Nexmo SMS API Key"
+msgstr "Nexmo SMS API Anahtarı"
+
+#: 
+msgid "Nexmo SMS API Secret"
+msgstr "Nexmo SMS API Sırrı"
+
+#: 
+msgid "Nexmo SMS From Number"
+msgstr "Numaradan Nexmo SMS"
+
+#: 
+msgid "OpenLP URL"
+msgstr "Openlp URL"
+
+#: 
+msgid "OpenLP Username"
+msgstr "OpenLP Kullanıcı Adı"
+
+#: 
+msgid "OpenLP Password"
+msgstr "Openlp şifresi"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "KioskvisityTimestamp"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "Giriş ekranında kayıp şifre bağlantısını göster/gizle"
+
+#: 
+msgid "Backup"
+msgstr "Destek olmak"
+
+#: 
+msgid "Integration"
+msgstr "Entegrasyon"
+
+#: 
+msgid "Notification"
+msgstr "Bildirim"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "Koruyucu (lar)"
+
+#: 
+msgid "A notification was triggered by the classroom teacher at"
+msgstr "Sınıf öğretmeni tarafından bir bildirim tetiklendi"
+
+#: 
+msgid "Please go to this location"
+msgstr "Lütfen bu konuma gidin"
+
+#: 
+msgid "You ChurchCRM updated password has been changed"
+msgstr "Siz ChurchCrm Güncellenmiş şifre değiştirildi"
+
+#: 
+msgid "Password Reset Link"
+msgstr "Parola Sıfırlama Bağlantısı"
+
+#: 
+msgid "Reset Password"
+msgstr "Şifreyi yenile"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
+msgstr "Geri yüklemenin bir parçası olarak harici yedekler devre dışı bırakılmıştır. Otomatik yedeklemelere devam etmek istiyorsanız, BenableExternalBackuptarget ayarını yeniden etkinleştirmeniz gerekir."
+
+#: 
+msgid "Unable to reset password"
+msgstr "Parolayı sıfırlanamıyor"
+
+#: 
+msgid "Reset your password"
+msgstr "Şifrenizi sıfırlayın"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "Üzgünüm, bu noktada isteğinizi işleyemiyoruz."
+
+#: 
+msgid "Login Name is Required"
+msgstr "Giriş adı gerekli"
+
+#: 
+msgid "A new password was sent to you. Please check your email"
+msgstr "Size yeni bir şifre gönderildi. Lütfen emailinizi kontrol edin"
+
+#: 
+msgid "Kiosk Manager"
+msgstr "Kiosk yöneticisi"
+
+#: 
+msgid "Report an issue"
+msgstr "Bir Sorun Bildirin"
+
+#: 
+msgid "Enable New Kiosk Registration"
+msgstr "Yeni kiosk kaydını etkinleştirin"
+
+#: 
+msgid "Active Kiosks"
+msgstr "Aktif kiosklar"
+
+#: 
+msgid "I forgot my password"
+msgstr "Şifremi Unuttum"
+
+#: 
+msgid "Attendees Checked In"
+msgstr "Katılımcılar check -in yaptı"
+
+#: 
+msgid "Text Cart"
+msgstr "Metin arabası"
+
+#: 
+msgid "Your Church's Website"
+msgstr "Kilisenizin web sitesi"
+
+#: 
+msgid "Self Verification"
+msgstr "Kendini doğrulama"
+
+#: 
+msgid "Deactivate"
+msgstr "Devre dışı bırakmak"
+
+#: 
+msgid "Activate"
+msgstr "Etkinleştirmek"
+
+#: 
+msgid "Stack Trace"
+msgstr "Yığın izleme"
+
+#: 
+msgid "Check Number"
+msgstr "Numaraya bak"
+
+#: 
+msgid "Details"
+msgstr "Detaylar"
+
+#: 
+msgid "Verification email sent"
+msgstr "Doğrulama e -postası gönderildi"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "Grupa özgü özellikleri etkinleştirin"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "Bu, bu grup için gruba özgü bir özellik tablosu oluşturacaktır. Daha sonra gruba özgü özellikler form düzenleyicisi ile gerekli özellikleri eklemelisiniz."
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "Grupa özgü özellikleri devre dışı bırakın"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "Gruba özgü kişi özelliklerini kaldırmak istediğinizden emin misiniz? Tüm Grup Üyesi Özellikleri Verileri kaybedilecektir!"
+
+#: 
+msgid "Role Name"
+msgstr "Rol ismi"
+
+#: 
+msgid "Sequence"
+msgstr "Sekans"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "Sepet Durumunu Kontrol Etme"
+
+#: 
+msgid "All members of this group are in the cart"
+msgstr "Bu grubun tüm üyeleri arabada"
+
+#: 
+msgid "Remove all"
+msgstr "Hepsini kaldır"
+
+#: 
+msgid "Not all members of this group are in the cart"
+msgstr "Bu grubun tüm üyeleri arabada değil"
+
+#: 
+msgid "Add all"
+msgstr "Hepsini ekle"
+
+#: 
+msgid "Are you sure you want to remove the selected group members?"
+msgstr "Seçilen grup üyelerini kaldırmak istediğinizden emin misiniz?"
+
+#: 
+msgid "Successfully submitted Issue"
+msgstr "Başarıyla gönderilen sorun"
+
+#: 
+msgid "View Issue on GitHub"
+msgstr "Github'da Sorunu Görüntüle"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "Bu kişiyi silmek ister misiniz? Bu geri alınamaz."
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "Bu mülkü atamak istediğinizden emin misiniz?"
+
+#: 
+msgid "Select a family"
+msgstr "Bir Aile Seçin"
+
+#: 
+msgid "Release Notes"
+msgstr "Sürüm notları"
+
+#: 
+msgid "Move"
+msgstr "Hareket"
+
+#: 
+msgid "Arabic - Egypt"
+msgstr "Arapça - Mısır"
+
+#: 
+msgid "Thai"
+msgstr "Tayland"
+
+#: 
+msgid "Your Church's Facebook Page"
+msgstr "Kilisenizin Facebook Sayfası"
+
+#: 
+msgid "Your Church's Twitter Page"
+msgstr "Kilisenizin Twitter sayfası"
+
+#: 
+msgid "lookup user images on Google when no local image is present"
+msgstr "Yerel resim olmadığında Google'da Kullanıcı Görüntüleri Arama"
+
+#: 
+msgid "Self Register"
+msgstr "Kendi Kayıt Kayıt"
+
+#: 
+msgid "List families that were created via self registration."
+msgstr "Kendi kayıt yoluyla oluşturulan aileleri listeleyin."
+
+#: 
+msgid "Pending Self Verify"
+msgstr "Beklediğin Kendini Doğrula"
+
+#: 
+msgid "Self Verify"
+msgstr "Kendini doğrulamak"
+
+#: 
+msgid "Indonesian - Indonesia"
+msgstr "Endonezya - Endonezya"
+
+#: 
+msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+msgstr "Sepete gönderin, bir kişi dizisi, aile kimliği veya groupId gerektirir"
+
+#: 
+msgid "records(s) successfully added to selected Group."
+msgstr "Kayıtlar seçilen gruba başarıyla eklendi."
+
+#: 
+msgid "To export to another For european CharSet use ;"
+msgstr "Avrupa kömürü kullanımı için bir başkasına ihraç etmek;"
+
+#: 
+msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
+msgstr "Varsayılan UTF-8'dir."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr "TARİH KURULUNDA TARİHİN tanımlanması için, varsayılan başına: YYYY-MM-DD, Fransızca: Örneğin DD/MM/YYYY."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr "Tarih seçmesinin tarihini tanımlamak için, varsayılan başına: y-m-d, Fransızca: D/m/y Örneğin."
+
+#: 
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr "Yeni bir aile veya kişi eklendiğinde bilgilendirilecek kişilerin kişilerinin virgül ayrılmış listesi"
+
+#: 
+msgid "Allow unauthenticated reads of events from the external calendar API"
+msgstr "Harici takvim API'sından kimlik doğrulanmamış olayların okunmasına izin verin"
+
+#: 
+msgid "New Person Added"
+msgstr "Yeni kişi eklendi"
+
+#: 
+msgid "New Family Added"
+msgstr "Yeni aile eklendi"
+
+#: 
+msgid "Church Greeter"
+msgstr "Kilise Selamcı"
+
+#: 
+msgid "External Calendar API is disabled"
+msgstr "Harici takvim API devre dışı bırakıldı"
+
+#: 
+msgid "Special Group Settings : Sunday School Type"
+msgstr "Özel Grup Ayarları: Pazar Okulu Türü"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases :"
+msgstr "Pazar Okulu Grubu sadece bu iki durumda değiştirilemez:"
+
+#: 
+msgid "You can create/delete sunday school group. "
+msgstr "Pazar Okulu Grubu oluşturabilir/silebilirsiniz."
+
+#: 
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr "Yeni roller ekleyin, ancak öğrenciyi ve öğretmen rollerini değiştirmeyin veya yeniden adlandırmayın."
+
+#: 
+msgid "E"
+msgstr "E"
+
+#: 
+msgid "ENE"
+msgstr "Ivır zıvır"
+
+#: 
+msgid "ESE"
+msgstr "ESE"
+
+#: 
+msgid "N"
+msgstr "N"
+
+#: 
+msgid "NE"
+msgstr "NE"
+
+#: 
+msgid "NNE"
+msgstr "Nne"
+
+#: 
+msgid "NNW"
+msgstr "NNW"
+
+#: 
+msgid "NW"
+msgstr "KB"
+
+#: 
+msgid "S"
+msgstr "S"
+
+#: 
+msgid "SE"
+msgstr "Se"
+
+#: 
+msgid "SSW"
+msgstr "SSW"
+
+#: 
+msgid "SW"
+msgstr "Sw"
+
+#: 
+msgid "W"
+msgstr "W"
+
+#: 
+msgid "WNW"
+msgstr "WNW"
+
+#: 
+msgid "WSW"
+msgstr "WSW"
+
+#: 
+msgid "Persons"
+msgstr "Kişiler"
+
+#: 
+msgid "Search Family"
+msgstr "Aile Arama"
+
+#: 
+msgid "Show Family Head of House Names"
+msgstr "Ailenin ev isimlerini göster"
+
+#: 
+msgid "Search Groups"
+msgstr "Arama grupları"
+
+#: 
+msgid "Search Deposits"
+msgstr "Arama Mevduatları"
+
+#: 
+msgid "Search Payments"
+msgstr "Arama ödemeleri"
+
+#: 
+msgid "Quick Search"
+msgstr "Hızlı arama"
+
+#: 
+msgid "Search Addresses"
+msgstr "Arama adresleri"
+
+#: 
+msgid "Maximum number of Families"
+msgstr "Maksimum aile sayısı"
+
+#: 
+msgid "Maximum number of Family H.O.H Names"
+msgstr "Maksimum aile sayısı H.O.H isimleri"
+
+#: 
+msgid "Maximum number of Groups"
+msgstr "Maksimum grup sayısı"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "Maksimum mevduat sayısı"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "Maksimum ödeme sayısı"
+
+#: 
+msgid "Maximum number of Addresses"
+msgstr "Maksimum adres sayısı"
+
+#: 
+msgid "Show type of group:"
+msgstr "Grup türünü göster:"
+
+#: 
+msgid "Add Students"
+msgstr "Öğrencileri ekle"
+
+#: 
+msgid "Edit this Class"
+msgstr "Bu sınıfı düzenle"
+
+#: 
+msgid "OK"
+msgstr "TAMAM"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "Lütfen üyeler için hedef rolü seçin"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "Rol seçimi istemi için gerekli GroupId"
+
+#: 
+msgid "Select Group and Role"
+msgstr "Grup ve rolü seçin"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "Bu kişinin üyeliğini kaldırmak istediğinden emin misiniz?"
+
+#: 
+msgid "All Members"
+msgstr "Tüm üyeler"
+
+#: 
+msgid "PhotoBook"
+msgstr "Fotoğraf kitabı"
+
+#: 
+msgid "With Photos"
+msgstr "Fotoğraf ile"
+
+#: 
+msgid "Create PhotoBook"
+msgstr "Fotoğraf kitabı oluştur"
+
+#: 
+msgid "SSE"
+msgstr "SSE"
+
+#: 
+msgid "Height to use for images"
+msgstr "Görüntüler için Kullanılacak Yükseklik"
+
+#: 
+msgid "Width to use for images"
+msgstr "Görüntüler için kullanılacak genişlik"
+
+#: 
+msgid "Width to use for thumbnails"
+msgstr "Küçük resimler için kullanılmak üzere genişlik"
+
+#: 
+msgid "Point size to use for initials thumbnails"
+msgstr "Baş harfleri için kullanılması gereken nokta boyutu"
+
+#: 
+msgid "Client cache seconds for images"
+msgstr "Görüntüler için istemci önbellek saniye"
+
+#: 
+msgid "Server cache time for remote images"
+msgstr "Uzaktan resimler için sunucu önbellek süresi"
+
+#: 
+msgid "Recipient Naming Method"
+msgstr "Alıcı adlandırma yöntemi"
+
+#: 
+msgid "Salutation Utility"
+msgstr "Selamlama yardımcısı"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Bir grup adı ekle"
+
+#: 
+msgid "Default Name Group"
+msgstr "Varsayılan isim grubu"
+
+#: 
+msgid "Group Role"
+msgstr "Grup rolü"
+
+#: 
+msgid "Members from group"
+msgstr "Grup üyeleri"
+
+#: 
+msgid "Members to another group"
+msgstr "Üyeler başka bir gruba"
+
+#: 
+msgid "Members to cart"
+msgstr "Üyeler Sepet için"
+
+#: 
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr "Veya bir grup oluşturun ve arabayı bir eylemde ekleyin"
+
+#: 
+msgid "Create Group + ADD Cart"
+msgstr "Grup Oluştur + Sepet Ekle"
+
+#: 
+msgid "Facebook"
+msgstr "Facebook"
+
+#: 
+msgid "Twitter"
+msgstr "Twitter"
+
+#: 
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: 
+msgid "Move Event"
+msgstr "Hareket Etkinliği"
+
+#: 
+msgid "Resize Event"
+msgstr "Yeniden boyutlandırma etkinliği"
+
+#: 
+msgid "Text from"
+msgstr "Metin"
+
+#: 
+msgid "Profile"
+msgstr "Profil"
+
+#: 
+msgid "Sign out"
+msgstr "oturumu Kapat"
+
+#: 
+msgid "Sermon Text"
+msgstr "Vaaz metni"
+
+#: 
+msgid "Change Settings"
+msgstr "Ayarları değiştir"
+
+#: 
+msgid "Unknown Type"
+msgstr "Bilinmeyen tip"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "Sepet için personid sayısal olmalı"
+
+#: 
+msgid "GroupID for Cart must be numeric"
+msgstr "Sepet için GroupId sayısal olmalı"
+
+#: 
+msgid "FamilyID for Cart must be numeric"
+msgstr "Sepet için FamilyId sayısal olmalı"
+
+#: 
+msgid "Search People"
+msgstr "İnsanları arama"
+
+#: 
+msgid "Maximum number of People"
+msgstr "Maksimum kişi sayısı"
+
+#: 
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "İtiraf babasının listelendiği alan, grup tipi bir insan olmalı"
+
+#: 
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "Son itirafın depolandığı alan, tarih türü olmalıdır"
+
+#: 
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "Bu ChurchCRM veritabanına HTTPS üzerinden erişilmesini gerektirir"
+
+#: 
+msgid "People Setup"
+msgstr "İnsan Kurulumu"
+
+#: 
+msgid "Church Services"
+msgstr "Kilise hizmetleri"
+
+#: 
+msgid "People Reports"
+msgstr "İnsanlar raporları"
+
+#: 
+msgid "People Dashboard"
+msgstr "İnsanlar Dashboard"
+
+#: 
+msgid "People Functions"
+msgstr "İnsanlar işlevleri"
+
+#: 
+msgid "People Directory"
+msgstr "People Dizini"
+
+#: 
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "Tüm kişilerin yazdırılabilir dizini, atanan aile tarafından gruplandırılmış"
+
+#: 
+msgid "of People"
+msgstr "insanların"
+
+#: 
+msgid "System Upgrade"
+msgstr "Sistem güncellemesi"
+
+#: 
+msgid "Upgrade Required"
+msgstr "Yükseltme Gerekli"
+
+#: 
+msgid "Current DB Version: "
+msgstr "Mevcut DB sürümü:"
+
+#: 
+msgid "Current Software Version: "
+msgstr "Mevcut Yazılım Sürümü:"
+
+#: 
+msgid "Upgrade database"
+msgstr "Veritabanını Yükselt"
+
+#: 
+msgid "Show Birthdates Anniversaries on start up of the CRM"
+msgstr "CRM'nin başlangıcında doğum tarihleri ​​yıldönümlerini gösterin"
+
+#: 
+msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
+msgstr "Banner kaybolana kadar sayfa yükünden sonra saniye sayısı, varsayılan 10 saniye"
+
+#: 
+msgid "Help & Manual"
+msgstr "Yardım ve Manuel"
+
+#: 
+msgid "Contributing"
+msgstr "Katkı"
+
+#: 
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr "Aktarma sunucusu tarafından sunulursa SMTP şifrelemesini otomatik olarak etkinleştirin."
+
+#: 
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr "Şifreleme sistemini kullanacak şekilde ayarlayın - SSL (kullanımdan kaldırılmış) veya TLS"
+
+#: 
+msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr "Gösterge Tablosu Servisi Dinamik Asenkron Yenileme Aralığı, Varsayılan 60 saniye"
+
+#: 
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr "Seçilen satırlar için depozito kayması oluşturun (PDF)"
+
+#: 
+msgid "Add All to Cart"
+msgstr "Sepete her şeyi ekle"
+
+#: 
+msgid "Remove All from Cart"
+msgstr "Sepetten tüm kaldır"
+
+#: 
+msgid "records(s) successfully deleted from the selected Group."
+msgstr "Seçilen gruptan başarıyla silinen kayıtlar."
+
+#: 
+msgid "Not Found"
+msgstr "Bulunamadı"
+
+#: 
+msgid "Oops!"
+msgstr "Oops!"
+
+#: 
+msgid "Meanwhile, you may"
+msgstr "Bu arada olabilirsin"
+
+#: 
+msgid "Database Only (.sql)"
+msgstr "Yalnızca veritabanı (.sql)"
+
+#: 
+msgid "Database and Photos (.tar.gz)"
+msgstr "Veritabanı ve Fotoğraflar (.tar.gz)"
+
+#: 
+msgid "User must be an Admin"
+msgstr "Kullanıcı yönetici olmalı"
+
+#: 
+msgid "No logged in user"
+msgstr "Kullanıcıda oturum açılmış"
+
+#: 
+msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
+msgstr "Standart profil resim simgesi boyutunu, varsayılan 85 piksel, kullanıcı listelerinde kullanılacak piksel olarak ayarlayın."
+
+#: 
+msgid "not found"
+msgstr "bulunamadı"
+
+#: 
+msgid "Deleted from group"
+msgstr "Gruptan silindi"
+
+#: 
+msgid "Added to group"
+msgstr "Gruba eklendi"
+
+#: 
+msgid "We could not find the person(s) you were looking for."
+msgstr "Aradığınız kişileri bulamadık."
+
+#: 
+msgid "return to People Dashboard"
+msgstr "People Dashboard'a Dön"
+
+#: 
+msgid "User must have MenuOptions permission"
+msgstr "Kullanıcının MenuOptions iznine sahip olması gerekir"
+
+#: 
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "SMTP Host kurulum değil, lütfen Ayarlar sayfasını ziyaret edin"
+
+#: 
+msgid "Debug Email Connection"
+msgstr "E -posta bağlantısı hata ayıklama"
+
+#: 
+msgid "This Family is Deactivated"
+msgstr "Bu aile devre dışı bırakıldı"
+
+#: 
+msgid "Metadata"
+msgstr "Meta veriler"
+
+#: 
+msgid "The database has been cleared."
+msgstr "Veritabanı temizlendi."
+
+#: 
+msgid "User must have bAddEvent permissions"
+msgstr "Kullanıcının BadDevent izinleri olmalı"
+
+#: 
+msgid "Anniversaries"
+msgstr "Yıldönümleri"
+
+#: 
+msgid "New Family Notification Email Error"
+msgstr "Yeni Aile Bildirimi E -posta Hatası"
+
+#: 
+msgid "New Person Notification Email Error"
+msgstr "Yeni Kişi Bildirimi E -posta Hatası"
+
+#: 
+msgid "View User"
+msgstr "Kullanıcıyı görüntüle"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "Geçersiz istek: Eksik takvim kimliği"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "Bulunmadı: Bilinmeyen Takvim Kimliği"
+
+#: 
+msgid "no found or user without an email"
+msgstr "E -posta olmadan bulunamadı veya kullanıcı"
+
+#: 
+msgid "UserName not set"
+msgstr "Kullanıcı adı ayarlanmadı"
+
+#: 
+msgid "The people and families has been cleared from the database."
+msgstr "İnsanlar ve aileler veritabanından temizlendi."
+
+#: 
+msgid "Self Registrations"
+msgstr "Kendi Kayıtları"
+
+#: 
+msgid "Public Calendar"
+msgstr "Kamu takvimi"
+
+#: 
+msgid "Private Calendar"
+msgstr "Özel takvim"
+
+#: 
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "Hareket etmek istediğinden emin misin"
+
+#: 
+msgid "from"
+msgstr "itibaren"
+
+#: 
+msgid "to"
+msgstr "ile"
+
+#: 
+msgid "Are you sure you want to change the end time for "
+msgstr "Bitiş saatini değiştirmek istediğinden emin misiniz?"
+
+#: 
+msgid "Access Token"
+msgstr "Erişim belirteci"
+
+#: 
+msgid "New Access Token"
+msgstr "Yeni Erişim Jetonu"
+
+#: 
+msgid "Delete Access Token"
+msgstr "Erişim belirtecini sil"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
+
+#: 
+msgid "JSON URL"
+msgstr "JSON URL'si"
+
+#: 
+msgid "Foreground Color"
+msgstr "Ön plan rengi"
+
+#: 
+msgid "Background Color"
+msgstr "Arka plan rengi"
+
+#: 
+msgid "Delete Calendar"
+msgstr "Takvimi sil"
+
+#: 
+msgid "Invalid Entry"
+msgstr "Geçersiz Girdi"
+
+#: 
+msgid "Calendar Name"
+msgstr "Takvim adı"
+
+#: 
+msgid "New Calendar"
+msgstr "Yeni Takvim"
+
+#: 
+msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "Uyarı: BenableExternalCalendarapi devre dışı bırakıldı, ancak bazı takvimlerin erişim belirteçleri var"
+
+#: 
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr "Takvimlerin paylaşılması için, özel bir erişim belirtecine sahip takvime ek olarak BenableExternalCalendarapi ayarı etkinleştirilmelidir."
+
+#: 
+msgid "Links"
+msgstr "Bağlar"
+
+#: 
+msgid "Show custom links on the left menu."
+msgstr "Sol menüde özel bağlantıları gösterin."
+
+#: 
+msgid "Enable Sunday School left menu."
+msgstr "Pazar Okulu sol menüsünü etkinleştirin."
+
+#: 
+msgid "Enable Finance menu"
+msgstr "Finans menüsünü etkinleştir"
+
+#: 
+msgid "Enable Events menu."
+msgstr "Olaylar menüsünü etkinleştir."
+
+#: 
+msgid "Enable Calendar menu."
+msgstr "Takvim menüsünü etkinleştirin."
+
+#: 
+msgid "Enable Fundraiser menu."
+msgstr "Bağış toplama menüsünü etkinleştirin."
+
+#: 
+msgid "Enable Email menu."
+msgstr "E -posta menüsünü etkinleştirin."
+
+#: 
+msgid "Enabled Features"
+msgstr "Etkin özellikler"
+
+#: 
+msgid "Validation Error"
+msgstr "Doğrulama Hatası"
+
+#: 
+msgid "Link Not found"
+msgstr "Bağlantı bulunamadı"
+
+#: 
+msgid "Email Functions"
+msgstr "E -posta işlevleri"
+
+#: 
+msgid "Debug"
+msgstr "Ayıklamak"
+
+#: 
+msgid "Family Custom Fields"
+msgstr "Aile Özel Alanları"
+
+#: 
+msgid "Person Custom Fields"
+msgstr "Kişi Özel Alanları"
+
+#: 
+msgid "Donation Funds"
+msgstr "Bağış fonları"
+
+#: 
+msgid "Unable to open file"
+msgstr "Dosya açılamıyor"
+
+#: 
+msgid "Missing calendar access token"
+msgstr "Eksik Takvim Erişim Jetonu"
+
+#: 
+msgid "Calendar access token not found"
+msgstr "Takvim erişim jetonu bulunamadı"
+
+#: 
+msgid "User must have Delete Records permission"
+msgstr "Kullanıcının kayıt iznini silmesi gerekir"
+
+#: 
+msgid "ChurchCRM Central Notifications URL"
+msgstr "Churchcrm Merkezi Bildirimler URL"
+
+#: 
+msgid "Follow us on Twitter"
+msgstr "Bizi Twitter'da takip edin"
+
+#: 
+msgid "invalid event type id"
+msgstr "Geçersiz olay türü kimliği"
+
+#: 
+msgid "invalid calendar pinning"
+msgstr "Geçersiz takvim sabitleme"
+
+#: 
+msgid "invalid group id"
+msgstr "Geçersiz grup kimliği"
+
+#: 
+msgid "invalid status value"
+msgstr "Geçersiz Durum Değeri"
+
+#: 
+msgid "invalid export value"
+msgstr "Geçersiz dışa aktarma değeri"
+
+#: 
+msgid "Invalid User/Password"
+msgstr "Geçersiz Kullanıcı/Parola"
+
+#: 
+msgid "Find Duplicate Emails"
+msgstr "Yinelenen e -postaları bulun"
+
+#: 
+msgid "Duplicate Emails"
+msgstr "Yinelenen e -postalar"
+
+#: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
+msgid "Latest Persons"
+msgstr "Son Kişiler"
+
+#: 
+msgid "Updated Persons"
+msgstr "Güncellenmiş kişiler"
+
+#: 
+msgid "Custom Menus"
+msgstr "Özel menüler"
+
+#: 
+msgid "User must have Manage Groups permission"
+msgstr "Kullanıcının grup iznini yönetmesi gerekir"
+
+#: 
+msgid "Missing"
+msgstr "Eksik"
+
+#: 
+msgid "User must have Edit Records permission"
+msgstr "Kullanıcının kayıt iznini düzenlemesi gerekir"
+
+#: 
+msgid "User must have Finance permission"
+msgstr "Kullanıcının finans iznine sahip olması gerekir"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "Kendini silemiyorum"
+
+#: 
+msgid "success"
+msgstr "başarı"
+
+#: 
+msgid "The role could not be found."
+msgstr "Rol bulunamadı."
+
+#: 
+msgid "Add Menu"
+msgstr "Menü Ekle"
+
+#: 
+msgid "Menu Name"
+msgstr "Menü adı"
+
+#: 
+msgid "Max 20 char"
+msgstr "Max 20 Char"
+
+#: 
+msgid "Link Address"
+msgstr "Bağlantı adresi"
+
+#: 
+msgid "Start with http:// or https://"
+msgstr "Http: // veya https: // ile başlayın"
+
+#: 
+msgid "Menus"
+msgstr "Menüler"
+
+#: 
+msgid "is disabled"
+msgstr "devre dışı bırakıldı"
+
+#: 
+msgid "System Information"
+msgstr "Sistem bilgisi"
+
+#: 
+msgid "Software Version"
+msgstr "Yazılım versiyonu"
+
+#: 
+msgid "Valid Mail Server Settings"
+msgstr "Geçerli posta sunucusu ayarları"
+
+#: 
+msgid "Database"
+msgstr "Veri tabanı"
+
+#: 
+msgid "Database Version"
+msgstr "Veritabanı Sürümü"
+
+#: 
+msgid "Application Prerequisites"
+msgstr "Uygulama Önkoşulları"
+
+#: 
+msgid "Invalid country name supplied"
+msgstr "Geçersiz ülke adı tedarik edildi"
+
+#: 
+msgid "LastName FirstName"
+msgstr "Soyad ad"
+
+#: 
+msgid "Holidays"
+msgstr "Bayram"
+
+#: 
+msgid "Person Name"
+msgstr "Kişi Adı"
+
+#: 
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "Kilise Selam E -posta 1, Max 255 karakter için özel mesaj"
+
+#: 
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "Kilise Selam E -posta 2, Max 255 karakter için özel mesaj"
+
+#: 
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "Yeni Üye E -posta Bildirimi Gövdesine İletişim ve Demografik Veriler Ekleyin"
+
+#: 
+msgid "Include family custom properties in global search."
+msgstr "Global aramaya aile özel mülklerini ekleyin."
+
+#: 
+msgid "Latvia (Latvija)"
+msgstr "Letonya (Letvija)"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "Yorum yapmadan yeni bir depozito eklemek üzeresiniz"
+
+#: 
+msgid "Families Without Emails"
+msgstr "E -posta olmadan aileler"
+
+#: 
+msgid "Record"
+msgstr "Kayıt"
+
+#: 
+msgid "Records"
+msgstr "Kayıtlar"
+
+#: 
+msgid "Emptied into Event ID"
+msgstr "Olay kimliğine boşaltıldı"
+
+#: 
+msgid "integrityCheck.json file missing"
+msgstr "IntegrityCheck.json Dosyası Eksik"
+
+#: 
+msgid "Passed"
+msgstr "Geçti"
+
+#: 
+msgid "PHP Max Execution Time is too Short"
+msgstr "PHP Max Yürütme Süresi Çok Kısa"
+
+#: 
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "Yedeklemeye ve geri yüklemeye izin vermek için PHP yürütme süresi sınırını artırın."
+
+#: 
+msgid "Application Integrity Check"
+msgstr "Uygulama Bütünlük Kontrolü"
+
+#: 
+msgid "Focus"
+msgstr "Odak"
+
+#: 
+msgid "Unfocus"
+msgstr "Üslup"
+
+#: 
+msgid "Warning: Signature mismatch"
+msgstr "Uyarı: İmza Uyumsuzluğu"
+
+#: 
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "Bazı ChurchCRM sistem dosyaları son kurulumdan bu yana değiştirilmiş olabilir."
+
+#: 
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "Bu yükseltme, dosyaları resmi sürüme döndürerek aşağıdaki dosyalara yapılan özelleştirmeleri tamamen yok edecektir."
+
+#: 
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "Bu dosyalardaki değişikliklerinizi korumak istiyorsanız, lütfen bu yükseltmeye devam etmeden önce bu dosyaların manuel yedeğini alın ve yükseltme tamamlandıktan sonra dosyaları manuel olarak geri yükleyin."
+
+#: 
+msgid "Integrity Check Details:"
+msgstr "Dürüstlük Kontrol Detayları:"
+
+#: 
+msgid "I Understand"
+msgstr "Anlıyorum"
+
+#: 
+msgid "Unsupported Deposit Types Detected"
+msgstr "Desteklenmemiş depozito türleri tespit edildi"
+
+#: 
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "Egile, kredi kartı ve banka taslak ödemeleri için destek verilmiştir. Mevcut banka dışı raporlar artık gelecekteki sürümlerde erişilemeyebilir."
+
+#: 
+msgid "Estonian"
+msgstr "Estonya"
+
+#: 
+msgid "Error decoding integrity check result file"
+msgstr "Hata Kod çözme Bütünlük Kontrol Sonuç Dosyası"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "İmza Tanım Dosyasını Kod Çözme Hata"
+
+#: 
+msgid "Generate Backup"
+msgstr "Yedekleme Oluşturun"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Uzak yedekleme uç noktası. WebDav ise, bu URL kodlanmalıdır."
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "Yedeklemeye baş harfleri görüntü dosyalarını, uzak resim dosyalarını (gravatar) ve küçük resimleri ekleyin. Bu dosyalar genellikle bir geri yüklemeden sonra çoğaltılabilir ve Yedek Arşivine büyük bir yürütme süresi ve depolama masrafıyla çok az değer katabilir."
+
+#: 
+msgid "Password (if any)"
+msgstr "Şifre (varsa)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "Bu sayfadaki tüm bilgiler doğrudur."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "Lütfen ailem bilgilerini aşağıdakilerle güncelleyin"
+
+#: 
+msgid "Age Histogram"
+msgstr "Yaş histogramı"
+
+#: 
+msgid "Missing event id"
+msgstr "Eksik Olay Kimliği"
+
+#: 
+msgid "Event not found"
+msgstr "Olay bulunamadı"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Oturum zaman aşımı uzunluğu saniye cinsinden\n"
+"Oturum zaman aşımlarını devre dışı bırakmak için sıfıra ayarlayın."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "Yeni bir şifre eskisinden farklı olması gereken minimum miktar (karakterlerin# değişmesi)\n"
+"Bu özelliği devre dışı bırakmak için sıfıra ayarlayın"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Bir kullanıcı hesabı kilitlenmeden önce izin verecek maksimum başarısız giriş sayısı.\n"
+"Maksimuma ulaşıldıktan sonra, bir yöneticinin hesabı yeniden etkinleştirmesi gerekir.\n"
+"Bu özellik, otomatik şifre tahmin saldırılarına karşı korunmaya yardımcı olur.\n"
+"Bu özelliği devre dışı bırakmak için sıfıra ayarlayın."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "PDF kullanım modu.\n"
+"1 = Dosya Dosyayı Kaydet\n"
+"2 = Geçerli tarayıcı penceresinde açın"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Ekran için atanan aileden miras alınan kişi bilgisi?\n"
+"Bu seçenek, bir kişinin atanan aile kaydından belirli bilgilerin\n"
+"O kişi için ilgili bilgi girilmediyse görüntülenir."
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Tüm Grup Üyelerini Kopyalamak İçin Ctrl + C tuşlarına basın \\ 'Telefon Numaraları"
+
+#: 
+msgid "Verify People"
+msgstr "İnsanları doğrulayın"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "İnsanlar gösterge panosun"
+
+#: 
+msgid "Download family letters"
+msgstr "Aile Mektuplarını İndir"
+
+#: 
+msgid "Send family email"
+msgstr "Aile E -postası Gönder"
+
+#: 
+msgid "Verification recorded"
+msgstr "Doğrulama kaydedildi"
+
+#: 
+msgid "Verification URL created"
+msgstr "Doğrulama URL'si oluşturuldu"
+
+#: 
+msgid "URL"
+msgstr "Url"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "E -posta gönderme hatası"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "Daha fazla bilgi için lütfen günlükleri kontrol edin"
+
+#: 
+msgid "Verification URL"
+msgstr "Doğrulama URL'si"
+
+#: 
+msgid "Reset System"
+msgstr "Sistemi Sıfırla"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "Beklenmedik kişi kimliği"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Yazılım güncelleme kontrolü için saat aralık"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Son Yazılım Güncellemesi Kontrol Zaman Damgası"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "GitHub'da 'Ön bırak' olarak işaretlenmiş Sistem Yükseltmelerinin Sürüm Yapmasına İzin Ver"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Arama Takvim Etkinlikleri"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Maksimum takvim etkinliği sayısı"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d Ay önce"
+msgstr[1] "%d Ay önce"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d yıl önce"
+msgstr[1] "%d yıl önce"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Desteklenmemiş PHP sürümü"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "Bu PHP sürümü için destek yakında kaldırılacaktır. Mevcut PHP sürümü:"
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "PHP Ziparchive eksik"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "Yükseltmeyi desteklemek için gerekli PHP Ziparchive"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Sepete sonuç ekle"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Sepetin sonuçlarını kaldırın"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Uyarı: Tespit edilen ön yükseltme görevleri"
+
+#: 
+#, fuzzy
+msgid "Some conditions have been identified which may prevent a successful upgrade"
+msgstr "Başarılı bir yükseltmeyi önleyebilecek bazı koşullar tespit edildi"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Yükseltme ile devam etmeden önce lütfen bu görevleri inceleyin ve hafifletin:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Veritabanı Sıfırlama İşlevleri"
+
+#: 
+msgid "Reset Members"
+msgstr "Üyeleri sıfırla"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "Bu, tüm üye verileri, kişileri ve aileleri kaldıracak ve geri alınamaz."
+
+#: 
+msgid "Reset Families/People"
+msgstr "Aileleri/insanları sıfırlayın"
+
+#: 
+msgid "Reset Database"
+msgstr "Veritabanını sıfırla"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Bu, sistem verilerini sıfırlar ve sistemi yeni bir yükleme olarak yeniden başlatır."
+
+#: 
+msgid "Clear Filter"
+msgstr "Temiz filtre"
+
+#: 
+msgid "Add Person"
+msgstr "Kişi ekle"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portekizce - Portekiz"
+
+#: 
+msgid "Holiday"
+msgstr "Tatil"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Kullanıcıların 2 faktörlü kimlik doğrulamasında kendi kendine kayıt yapmasına izin verin"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Kullanıcıların 2 faktörlü kimlik doğrulamasında kendi kendine kayıt yapmasını gerektirir"
+
+#: 
+msgid "ChurchCRM"
+msgstr "Churchcrm"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Authenticator uygulamasında görüntülenecek uygulama adını belirtin"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Config.php'de eksik olan gizli anahtarlar"
+
+#: 
+msgid "Review"
+msgstr "Gözden geçirmek"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "Ailenizi kaydettiğiniz için teşekkür ederiz"
+
+#: 
+msgid "Register another family!"
+msgstr "Başka bir aile kaydedin!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "Bitti, bana ana sayfayı göster!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "API anahtarı aracılığıyla kimliği doğrulanmış kullanıcı:"
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Başarısız API Anahtar Kimlik Doğrulama Girişimi"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Pinasız Etkinlikler"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "Son ad ilk ad ikinci ad"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "2 faktör kimlik doğrulamasını yönetin"
+
+#: 
+msgid "Two Factor Status"
+msgstr "İki Faktör Durumu"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Lütfen bu kullanıcı için 2 faktörlü kimliği devre dışı bırakmayı onaylayın"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Lütfen 2FA kodunu girin"
+
+#: 
+msgid "2FA Code"
+msgstr "2FA Kodu"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "2 faktör kimlik doğrulama kaydı"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Desteklenmemiş iki faktörlü kimlik doğrulama yapılandırması"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "İki faktörlü kimlik doğrulama kaydına başlayamıyor"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "İki faktörlü kimlik doğrulaması, ChurchCRM yöneticilerinin birkaç parametre yapılandırmasını gerektirir"
+
+#: 
+msgid "System configuration "
+msgstr "Sistem yapılandırması"
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "'True' olarak ayarlanmalı"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Incown/config.php, 2FA gizli anahtarlarını veritabanında depolamak için bir şifreleme anahtarı tanımlamalıdır."
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Coğrafi kodlama adresleri için kullanılan Google Haritalar API Anahtarı"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Hesapları silindiğinde kullanıcıları bildiren bir e -posta gönderin"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Google Haritalar API Anahtarı Tarayıcıda Haritalar Oluşturmak İçin Kullanılır"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Mevcut kullanıcı için yanlış şifre verilir"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Yeni şifreniz eskinizle eşleşmemelidir."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Yeni şifreniz eskinize çok benziyor."
+
+#: 
+#, fuzzy
+msgid "Password reset not available.  Please contact your system administrator"
+msgstr "Parola sıfırlama kullanılabilir değil. Lütfen sistem yöneticinizle iletişime geçin"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Kimlik doğrulama sorunu"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Yeni kullanıcı şifresi girin. İdari olarak ayarlanan şifreler uzunluk veya karmaşıklık gereksinimlerine tabi değildir"
+
+#: 
+msgid "No email passed in"
+msgstr "E -posta geçmedi"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp aktif değil"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "Listeler"
+
+#: 
+msgid "loading"
+msgstr "Yükleniyor"
+
+#: 
+msgid "List not found"
+msgstr "Liste bulunamadı"
+
+#: 
+msgid "List not inList"
+msgstr "Liste Inlist değil"
+
+#: 
+msgid "People not in"
+msgstr "İnsanlar içeride değil"
+
+#: 
+msgid "Invalid List id"
+msgstr "Geçersiz Liste Kimliği"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "Kilisede izleyici değil"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "ChurchCrm Kurulum Bilgileri"
+
+#: 
+msgid "Database Server Version"
+msgstr "Veritabanı sunucusu sürümü"
+
+#: 
+msgid "Web Server"
+msgstr "Web sunucusu"
+
+#: 
+msgid "Server Software"
+msgstr "Sunucu Yazılımı"
+
+#: 
+msgid "Email Information"
+msgstr "E -posta bilgileri"
+
+#: 
+msgid "List maintenance"
+msgstr "Bakım listesi"
+
+#: 
+msgid "People not in list"
+msgstr "Listede Değil İnsanlar"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "CRM'de izleyici değil"
+
+#: 
+msgid "Hebrew"
+msgstr "İbranice"
+
+#: 
+msgid "open rate"
+msgstr "açık oran"
+
+#: 
+msgid "Not Subscribed "
+msgstr "Abone olunmamış"
+
+#: 
+msgid "Global User Settings"
+msgstr "Global Kullanıcı Ayarları"
+
+#: 
+msgid "General"
+msgstr "Genel"
+
+#: 
+msgid "Passwords"
+msgstr "Şifreler"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#: 
+msgid "Session Timeout"
+msgstr "Oturum zaman aşımına uğradı"
+
+#: 
+msgid "Max Failed Login"
+msgstr "Max başarısız giriş"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "Parola sıfırlamasını etkinleştir"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Silinen kullanıcılara e -posta gönderin"
+
+#: 
+msgid "Min Password Length"
+msgstr "Min şifre uzunluğu"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "Min şifre karakterleri delta"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "İzin verilmeyen şifreler"
+
+#: 
+msgid "Enable 2FA"
+msgstr "2FA'yı etkinleştir"
+
+#: 
+msgid "Require 2FA"
+msgstr "2FA gerektirir"
+
+#: 
+msgid "2FA Application Name"
+msgstr "2FA Uygulama Adı"
+
+#: 
+msgid "Login Info"
+msgstr "Giriş Bilgileri"
+
+#: 
+msgid "Login Count"
+msgstr "Giriş sayımı"
+
+#: 
+msgid "Failed Login"
+msgstr "Başarısız oturum açma"
+
+#: 
+msgid "Permissions"
+msgstr "İzin"
+
+#: 
+msgid "Manage Notes"
+msgstr "Notları Yönetin"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "Başarısız yeni bir API anahtarı oluşturun"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "Ailenin Rehin Özeti"
+
+#: 
+msgid "Pledge"
+msgstr "Rehin"
+
+#: 
+msgid "Paid"
+msgstr "Paralı"
+
+#: 
+msgid "Owe"
+msgstr "Sahip olmak"
+
+#: 
+msgid "Start Date"
+msgstr "Başlangıç ​​tarihi"
+
+#: 
+msgid "End Date"
+msgstr "Bitiş tarihi"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "Sabit takvimler"
+
+#: 
+msgid "This field is required"
+msgstr "Bu alan gereklidir"
+
+#: 
+msgid "Text"
+msgstr "Metin"
+
+#: 
+msgid "Event Description"
+msgstr "Etkinlik Açıklaması"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "ChurchCRM kullanıcı hesabınızı iki faktörlü kimliklere kaydettirmek, hesabınıza erişmeye çalışan kötü aktörlere karşı ek bir savunma katmanı sağlar."
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "Churchcrm İki Faktör herhangi bir TOTP Authenticator uygulamasını destekler, bu nedenle Microsoft Authenticator, Google Authenticator, Authy, LastPass ve diğerleri arasında seçim yapmakta özgürsünüz"
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "ChurchCRM'de oturum açtığınızda, yine de normal gibi kullanıcı adınızı ve şifrenizi gireceksiniz."
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "Ancak, girişinizi tamamlamak için kimlik doğrulayıcı cihazınızdan bir kerelik bir kod sağlamanız gerekir."
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "Hem kimlik bilgilerinizi hem de bir kerelik kodu başarıyla girdikten sonra, normal olarak oturum açacaksınız"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "ChurchCRM hesabınızdan kilitlenmeyi önlemek için, lütfen başlamadan önce iki faktörlü kaydını tamamlamaya hazır olduğunuzdan emin olun"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "Başlangıç ​​kayıtları, daha önce kaydedilmiş 2 faktörlü cihaz ve kurtarma kodlarını geçersiz kılacaktır."
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "İleri tıkladığınızda, kimlik doğrulayıcı uygulamanızı kaydetmek için bir QR kodu taramanız istenir."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "Kayıt onaylamak için, kimlik doğrulayıcı uygulamanız tarafından oluşturulan kodu girmeniz gerekir."
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "Uygulama kaydını onayladıktan sonra, tek kullanımlık kurtarma kodları oluşturulacak ve görüntülenecektir."
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "Kurtarma kodları, Authenticator uygulamanızdan oluşturulan bir kod yerine kullanılabilir."
+
+#: 
+msgid "Store these in a secure location"
+msgstr "Bunları güvenli bir yerde saklayın"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "İki faktörlü kimlik doğrulama kaydına başlayın"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "2 faktör kimlik doğrulama sırrı"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "2 faktörlü kimlik doğrulama sırrını yeniden oluşturur"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "2 faktörlü kimlik doğrulama sırrını kaldırın"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "Kaydı onaylamak için TOTP kodunu girin"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "2 faktör kimlik doğrulama kaydı başarısı"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "Lütfen bu kurtarma kodlarını güvenli bir yerde saklayın"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "Yeni kaydedilen Authenticator uygulamanıza erişimi kaybettiyseniz, hesabınıza erişmek için bir kurtarma kodu kullanmanız gerekir."
+
+#: 
+msgid "Event Attendance"
+msgstr "Etkinlik Katılımı"
+
+#: 
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "Etkinlikler için Katılım Olun ve Katılım Olmayan Raporlar"
+
+#: 
+msgid "Help translate this project"
+msgstr "Bu projeyi tercüme etmeye yardım edin"
+
+#: 
+msgid "Credit Card People"
+msgstr "Kredi kartı kişileri"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Kredi kartıyla ödeme yapacak şekilde yapılandırılmış kişiler."
+
+#: 
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: 
+msgid " has a type mismatch"
+msgstr " Tip bir uyumsuzluk var"
+
+#: 
+msgid "Loading"
+msgstr "Yükleniyor"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "Aile Mülkiyeti Tahsilat"
+
+#: 
+msgid "Do you want to remove"
+msgstr "Kaldırmak ister misin"
+
+#: 
+msgid "View Active People"
+msgstr "Aktif insanları görüntüleyin"
+
+#: 
+msgid "View Inactive People"
+msgstr "Aktif insanları görüntüleyin"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Bugünün Doğum Günleri"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Bugünün evlilik yıldönümleri"
+
+#: 
+msgid "Api Key"
+msgstr "API Anahtarı"
+
+#: 
+msgid "Regen API Key"
+msgstr "Regen API Anahtarı"
+
+#: 
+msgid "View Family Page"
+msgstr "Aile Sayfasını Görüntüle"
+
+#: 
+msgid "View Person Page"
+msgstr "Kişi sayfasını görüntüle"
+
+#: 
+msgid "Verify"
+msgstr "Doğrulayın"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "Ailenin kullanılacak e -postaları yok"
+
+#: 
+msgid "Boxed Layout"
+msgstr "Kutulu düzen"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "Kutulu düzeni etkinleştirin"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "Kenar çubuğu"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "Sol kenar çubuğunun durumunu değiştirin (açık veya çökme)"
+
+#: 
+msgid "Tables Settings"
+msgstr "Tablo Ayarları"
+
+#: 
+msgid "Page length"
+msgstr "Sayfa uzunluğu"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "İlk sayfa uzunluğunu değiştirin (sayfa başına satır sayısı)"
+
+#: 
+msgid "User Interface"
+msgstr "Kullanıcı arayüzü"
+
+#: 
+msgid "Locale"
+msgstr "Yer"
+
+#: 
+msgid "Override system locale"
+msgstr "Sistem yerel ayarını geçersiz kılmak"
+
+#: 
+msgid "Deleted"
+msgstr "silindi"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Geçersiz Doğum Tarihi: Ek ay veya gün eksik."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Geçersiz Doğum Tarihi: Aylık ve Gündüz Eksik."
+

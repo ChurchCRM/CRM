@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: en-ca\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "State"
+msgstr "Province"
+
+#: 
+msgid "Zip"
+msgstr "Postal Code"
+
+#: 
+msgid "Check"
+msgstr "Cheque"
+
+#: 
+msgid "Maximum number of neighbors:"
+msgstr "Maximum number of neighbours:"
+
+#: 
+msgid "Neighbor Families"
+msgstr "Neighbour Families"
+
+#: 
+msgid "Show Neighbors"
+msgstr "Show Neighbours"
+
+#: 
+msgid "Scan check"
+msgstr "Scan cheque"
+
+#: 
+msgid "City, State, Zip"
+msgstr "City, Province, Postal Code"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "Default Province - Must be 2-letter abbreviation!"
+
+#: 
+msgid "Church State"
+msgstr "Church Province"
+
+#: 
+msgid "Church Zip"
+msgstr "Church Postal Code"
+
+#: 
+msgid "Zip Code"
+msgstr "Postal Code"
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Enter any part of the following: Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Search by any part of Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
+
+#: 
+msgid "Show neighbors with these classifications:"
+msgstr "Show neighbours with these classifications:"
+
+#: 
+msgid "Foreground Color"
+msgstr "Foreground Colour"
+
+#: 
+msgid "Background Color"
+msgstr "Background Colour"
+

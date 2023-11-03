@@ -1,0 +1,804 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "Kyselyä ei voi suorittaa."
+
+#: 
+msgid "Delete"
+msgstr "Poista"
+
+#: 
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: 
+msgid "Save"
+msgstr "Tallenna"
+
+#: 
+msgid "Unassigned"
+msgstr "Ei määritetty"
+
+#: 
+msgid "None"
+msgstr "Ei mitään"
+
+#: 
+msgid "City"
+msgstr "Kaupunki"
+
+#: 
+msgid "State"
+msgstr "Lääni"
+
+#: 
+msgid "Country"
+msgstr "Maa"
+
+#: 
+msgid "Phone"
+msgstr "Puhelin"
+
+#: 
+msgid "Email"
+msgstr "Sähköposti"
+
+#: 
+msgid "Credit Card"
+msgstr "Luottokortti"
+
+#: 
+msgid "Backup Database"
+msgstr "Varmista tietokanta"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Tämä työkalu auttaa sinua varmuuskopioimaan ChurchCRM-tietokannan manuaalisesti."
+
+#: 
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "\n"
+"Sinun tulee tehdä manuaalinen varmuuskopio vähintään kerran viikossa, ellei sinulla ole jo tavallista varmuuskopiointimenettelyä järjestelmillesi."
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Kun olet ladannut varmuuskopiotiedoston, sinun tulee tehdä kaksi kopiota. Aseta yksi niistä paloturvalliseen kassakaappiin paikan päällä ja toinen turvalliseen paikkaan paikan päällä."
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Jos olet huolissasi ChurchCRM-tietokantaan tallennettujen tietojen luottamuksellisuudesta, sinun tulee salata varmuuskopiotiedot, jos ne tallennetaan jonnekin, johon muut mahdollisesti voivat päästä."
+
+#: 
+msgid "Select archive type"
+msgstr "Valitse arkiston tyyppi"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "Salataanko varmuuskopiotiedosto salasanalla?"
+
+#: 
+msgid "Re-type Password"
+msgstr "Toista salasana"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Luo ja lähetä varmuuskopio ulkoiseen tallennustilaan"
+
+#: 
+msgid "Batch Winner Entry"
+msgstr "Erän voittajan osallistuminen"
+
+#: 
+msgid "Winner"
+msgstr "Voittaja"
+
+#: 
+msgid "Price"
+msgstr "Hinta"
+
+#: 
+msgid "Enter Winners"
+msgstr "Anna voittaja"
+
+#: 
+msgid "CSV Export"
+msgstr "CSV vienti"
+
+#: 
+msgid "Field Selection"
+msgstr "Kentän valinta"
+
+#: 
+msgid "Last Name"
+msgstr "Sukunimi"
+
+#: 
+msgid "Required"
+msgstr "Vaaditaan"
+
+#: 
+msgid "First Name"
+msgstr "Etunimi"
+
+#: 
+msgid "Middle Name"
+msgstr "Toinen nimi"
+
+#: 
+msgid "Zip"
+msgstr "Postinumero"
+
+#: 
+msgid "Envelope"
+msgstr "Kirje"
+
+#: 
+msgid "Work/Other Email"
+msgstr "Työ/toinen sähköposti"
+
+#: 
+msgid "Membership Date"
+msgstr "Jäseneksi liittymispäivä"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "Syntymäpäivä"
+
+#: 
+msgid "Age / Years Married"
+msgstr "Vuosia avioliitossa"
+
+#: 
+msgid "Family Role"
+msgstr "Rooli perheessä"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "Riippuu siitä, käytetäänkö henkilö- vai perhetulostusmenetelmää"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "Mukautettu kenttävalinta"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "Mukautettu Henkilö kenttä"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "Mukautettu Perhe kenttä"
+
+#: 
+msgid "Filters"
+msgstr "Suodatin"
+
+#: 
+msgid "Records to export"
+msgstr "Tietojen vienti"
+
+#: 
+msgid "Based on filters below.."
+msgstr "Perustuu alla oleviin suodattimiin.."
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "Ihmiset korissa (suodattimet ohitettu)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "Käytä Ctrl näppäintä valitaksesi useamman"
+
+#: 
+msgid "Don't Filter"
+msgstr "Älä suodata"
+
+#: 
+msgid "Male"
+msgstr "Mies"
+
+#: 
+msgid "Female"
+msgstr "Nainen"
+
+#: 
+msgid "Group Membership"
+msgstr "Ryhmän jäsen"
+
+#: 
+msgid "From:"
+msgstr "Mistä:"
+
+#: 
+msgid "To:"
+msgstr "Minne:"
+
+#: 
+msgid "Birthday Date"
+msgstr "Syntymäaika"
+
+#: 
+msgid "Anniversary Date"
+msgstr "Juhlapäivä"
+
+#: 
+msgid "Output Method:"
+msgstr "Ulostulo metodi;"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "Yksittäiset CSV-tiedot"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV-yhdistysperheet"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "Lisää henkilöitä koriin"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "Ohita tietueet, joissa sähköpostiosoite on epätäydellinen"
+
+#: 
+msgid "Create File"
+msgstr "Luo tiedosto"
+
+#: 
+msgid "No file selected for upload."
+msgstr "Tiedostoa ei ole valittu ladattavaksi."
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "CSV-tiedoston rivien kokonaismäärä:"
+
+#: 
+msgid "Ignore this Field"
+msgstr "Ohita tämä kenttä"
+
+#: 
+msgid "Title"
+msgstr "Otsikko"
+
+#: 
+msgid "Suffix"
+msgstr "Jälkiliite"
+
+#: 
+msgid "Gender"
+msgstr "Sukupuoli"
+
+#: 
+msgid "Donation Envelope"
+msgstr "Lahjoituskuori"
+
+#: 
+msgid "Home Phone"
+msgstr "Puhelin kotiin"
+
+#: 
+msgid "Work Phone"
+msgstr "Puhelin töihin"
+
+#: 
+msgid "Mobile Phone"
+msgstr "Matkapuhelin"
+
+#: 
+msgid "Work / Other Email"
+msgstr "Työ / muu sähköposti"
+
+#: 
+msgid "Birth Date"
+msgstr "Syntymäpäivä"
+
+#: 
+msgid "Wedding Date"
+msgstr "Hääpäivä"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Ohita ensimmäinen CSV-rivi (otsikon poissulkemiseksi)"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "Tee perherekisteri sukunimen ja osoitteen perusteella"
+
+#: 
+msgid "Patriarch"
+msgstr "Isoisä"
+
+#: 
+msgid "Matriarch"
+msgstr "Isoäiti"
+
+#: 
+msgid "Family Type: used with Make Family records... option above"
+msgstr "Perheen tyyppi: käytetään Luo Perhe Tiedot... -vaihtoehdon kanssa yllä"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "HUOMAA: Erottimet (viivat jne.) tai niiden puutteella ei ole merkitystä"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "Oletusmaa, jos muuta ei ole määritetty"
+
+#: 
+msgid "Classification"
+msgstr "Luokitus"
+
+#: 
+msgid "Perform Import"
+msgstr "Suorita tuonti"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "VIRHE: ladattua CSV-tiedostoa ei ole enää olemassa!"
+
+#: 
+msgid "Upload CSV File"
+msgstr "Lataa CSV-tiedosto"
+
+#: 
+msgid "Data import successful."
+msgstr "Tietojen tuonti onnistui."
+
+#: 
+msgid "persons were imported"
+msgstr "henkilöitä tuotiin"
+
+#: 
+msgid "Canvass Automation"
+msgstr "Canvass-automaatio"
+
+#: 
+msgid "Not confirmed."
+msgstr "Ei vahvistettu."
+
+#: 
+msgid "Canvassers"
+msgstr "Canvassers"
+
+#: 
+msgid "BraveCanvassers"
+msgstr "Rohkea Canvassers"
+
+#: 
+msgid "Cleared all canvasser assignments."
+msgstr "Tyhjennä kaikki canvasser tehtävät."
+
+#: 
+msgid "Set Ok To Canvass for all families."
+msgstr "Aseta Ok  Canvass kaikille perheille"
+
+#: 
+msgid "Disabled Ok To Canvass for all families."
+msgstr "Poista köytöstä Canvass kaikilta perheiltä."
+
+#: 
+msgid "ClearAllOkToCanvass button not confimed."
+msgstr "TyhjennäKaikkiOk Canvass-painiketta ei ole vahvistettu."
+
+#: 
+msgid "Set default fiscal year"
+msgstr "Aseta oletustilivuosi"
+
+#: 
+msgid "Check to confirm"
+msgstr "Vahvista valitsemalla"
+
+#: 
+msgid "Assign Canvassers"
+msgstr "Määritä mainostaja"
+
+#: 
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "Määritä satunaismainonta kaikille perheille. Mainonta on otettu &quot;Mainonta&quot; ryhmästä."
+
+#: 
+msgid "Assign To Non Pledging"
+msgstr "Määritä sitoutumattomat"
+
+#: 
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "Määritä satunnaisesti hakijat perheille, jotka eivät ole sitoutuneet. Mainonta on otettu &quot; Ansioituneiden mainonta&quot; ryhmästä."
+
+#: 
+msgid "Clear Canvasser Assignments"
+msgstr "Tyhjennä mainonnan tehtävät"
+
+#: 
+msgid "Clear all the canvasser assignments for all families."
+msgstr "Tyhjennä kaikki mainonnan tehtävät kaikilta perheiltä"
+
+#: 
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "Tärkeä huomautus: menetät kaikki käsin tehdyt mainontatehtävät."
+
+#: 
+msgid "Enable Canvass for All Families"
+msgstr "Ota mainonta käyttöön kaikille perheille"
+
+#: 
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "Ota &quot;Ok mainonta &quot; kenttä kaikille perheille."
+
+#: 
+msgid "Disable Canvass for All Families"
+msgstr "Poista mainonta kaikilta perheiltä käytöstä"
+
+#: 
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
+msgstr "Poista &quot;Ok mainonta &quot; kenttä kaikilta perheiltä. "
+
+#: 
+msgid "Briefing Sheets"
+msgstr "Tiedotuslomakkeet"
+
+#: 
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "Luo PDF-tiedosto, joka sisältää tiedotuslomakkeet kaikille perheille, lajiteltuina julkaisun mukaan."
+
+#: 
+msgid "Progress Report"
+msgstr "Väliraportti"
+
+#: 
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "Luo edistymisraportti sisältävä PDF. Edistymisraportti sisältää tietoa markkinoinnin yleisestä etenemisestä ja yksittäisten tutkijoiden edistymisestä."
+
+#: 
+msgid "Summary Report"
+msgstr "Yhteenvetoraportti"
+
+#: 
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "Luo yhteenvetoraportin sisältävä PDF. Yhteenvetoraportti sisältää kommentit, jotka on poimittu markkinointitiedoista."
+
+#: 
+msgid "Not Interested Report"
+msgstr "Ei kiinnostunut raportti"
+
+#: 
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "Luo PDF-tiedosto, joka sisältää raportin perheistä, jotka on merkitty \"Ei kiinnostunut\". mainostajan toimesta."
+
+#: 
+msgid " Canvass Input for the "
+msgstr "Mainonta-syöte"
+
+#: 
+msgid "Canvasser"
+msgstr "Mainostaja"
+
+#: 
+msgid "Positive"
+msgstr "Positiivinen"
+
+#: 
+msgid "Critical"
+msgstr "Kriittinen"
+
+#: 
+msgid "Insightful"
+msgstr "Ymmärtänyt"
+
+#: 
+msgid "Financial"
+msgstr "Taloudellinen"
+
+#: 
+msgid "Suggestions"
+msgstr "Ehdotukset"
+
+#: 
+msgid "Not Interested"
+msgstr "Ei kiinnostunut"
+
+#: 
+msgid "Why Not Interested?"
+msgstr "Miksi ei kiinnostunut?"
+
+#: 
+msgid "Add Cart to Event"
+msgstr "Lisää tapahtuma koriin"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "Valitse tapahtuma, jonka haluat lisätä koriin"
+
+#: 
+msgid "OR"
+msgstr "TAI"
+
+#: 
+msgid "Add New Event"
+msgstr "Lisää uusi tapahtuma"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "Sinun korisi on tyhjä!"
+
+#: 
+msgid "No family name entered!"
+msgstr "Ei perheen nimeä annettu!"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "Lisää kori perheelle"
+
+#: 
+msgid "Name"
+msgstr "Nimi"
+
+#: 
+msgid "Assign Role"
+msgstr "Määritä rooli"
+
+#: 
+msgid "Already in a family"
+msgstr "On jo perheessä"
+
+#: 
+msgid "Create new family"
+msgstr "Luo uusi perhe"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "Jos lisäät uuden perheen, kirjoita tiedot alle."
+
+#: 
+msgid "Use address/contact data from"
+msgstr "Käytä osoite/yhteystietoja osoitteesta"
+
+#: 
+msgid "Only the new data below"
+msgstr "Vain uudet tiedot alle"
+
+#: 
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Käytä tekstiruutua muille maille kuin Yhdysvalloille ja Kanadalle)"
+
+#: 
+msgid "Do not auto-format"
+msgstr "Älä alusta automaattisesti"
+
+#: 
+msgid "Add to Family"
+msgstr "Lisää perheeseen"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "Lisää kori ryhmään"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "Valitse ryhmä, jonka haluat lisätä koriin"
+
+#: 
+msgid "Select Group"
+msgstr "Valitse ryhmä"
+
+#: 
+msgid "No Group Selected"
+msgstr "Ei ryhmää valittu"
+
+#: 
+msgid "Add to Group"
+msgstr "Lisää ryhmään"
+
+#: 
+msgid "View Your Cart"
+msgstr "Näytä korin sisältö"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "Sinulla ei ole asioita korin sisällä."
+
+#: 
+msgid "Back to Menu"
+msgstr "Paluu päävalikkoon"
+
+#: 
+msgid "Empty Cart"
+msgstr "Tyhjennä kori"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "Tyhjennä kori ryhmästä"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "Tyhjennä kori perheestä"
+
+#: 
+msgid "Empty Cart to Event"
+msgstr "Tyhjennä kori tapahtumista"
+
+#: 
+msgid "Map Cart"
+msgstr "Karttakori"
+
+#: 
+msgid "Name Tags"
+msgstr "Nimilaput"
+
+#: 
+msgid "Email Cart"
+msgstr "Sähköposti kori"
+
+#: 
+msgid "Email (BCC)"
+msgstr "Sähköposti(BCC)"
+
+#: 
+msgid "Create Directory From Cart"
+msgstr "Luo hakemisto ostoskorista"
+
+#: 
+msgid "Bulk Mail Presort"
+msgstr "Joukkopostin esilajittelu"
+
+#: 
+msgid "Quiet Presort"
+msgstr "Hiljainen esilajittelu"
+
+#: 
+msgid "Your cart contains"
+msgstr "Korisi sisältää"
+
+#: 
+msgid "persons from"
+msgstr "henkilöt alkaen"
+
+#: 
+msgid "Remove"
+msgstr "Poista"
+
+#: 
+msgid "Yes"
+msgstr "Kyllä"
+
+#: 
+msgid "No"
+msgstr "Ei"
+
+#: 
+msgid "Developer Chat"
+msgstr "Kehittäjän chat"
+
+#: 
+msgid "Event Checkin"
+msgstr "Tapahtumaan sisäänkirjautuminen"
+
+#: 
+msgid "Select the event to which you would like to check people in for"
+msgstr "Valitse tapahtuma, johon haluat kirjata ihmiset sisään"
+
+#: 
+msgid "Select Event"
+msgstr "Valitse Tapahtuma"
+
+#: 
+msgid "Add Visitor"
+msgstr "Lisää vierailija"
+
+#: 
+msgid "CheckIn"
+msgstr "Ilmoittautuminen"
+
+#: 
+msgid "CheckOut"
+msgstr "Uloskirjautuminen"
+
+#: 
+msgid "Checked In Time"
+msgstr "Kirjattu ajoissa"
+
+#: 
+msgid "Checked In By"
+msgstr "Kirjattu toimesta"
+
+#: 
+msgid "Checked Out Time"
+msgstr "Uloskirjattu ajoissa"
+
+#: 
+msgid "Checked Out By"
+msgstr "Uloskirjattu toimesta"
+
+#: 
+msgid "Action"
+msgstr "Toiminta"
+
+#: 
+msgid "No Attendees Assigned to Event"
+msgstr "Tapahtumaan ei ole määrätty osallistujia"
+
+#: 
+msgid "Member"
+msgstr "Jäsen"
+
+#: 
+msgid " of the"
+msgstr "asti"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(Ei määrättyä perhettä)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "Muunna yksilöt perheiksi"
+
+#: 
+msgid "Convert Next"
+msgstr "Muunna seuraavaksi"
+
+#: 
+msgid "Convert All"
+msgstr "Muunnan kaikki"
+
+#: 
+msgid "Deposit Slip Number: "
+msgstr "Talletuksen kuittinumero:"
+
+#: 
+msgid "Deposit Details: "
+msgstr "Talletustiedot:"
+
+#: 
+msgid "Close deposit slip (remember to press Save)"
+msgstr "Sulje talletuksen kuittinumero(muista painaa Tallenna-painiketta)"
+
+#: 
+msgid "Deposit Slip Report"
+msgstr "Talletuksen kuitti raportti"
+
+#: 
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgstr "Tärkeä huomautus: epäonnistuneet tapahtumat poistetaan pysyvästi, kun talletuskuitti suljetaan."
+
+#: 
+msgid "Deposit Summary: "
+msgstr "Talletusyhteenveto:"
+
+#: 
+msgid "Payments on this deposit slip:"
+msgstr "Tämän talletuskuitin maksut:"
+
+#: 
+msgid "Import eGive"
+msgstr "Tuo eGive"
+
+#: 
+msgid "Add Payment"
+msgstr "Lisää maksu"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "lataa Valtuutetut tapahtumat"
+
+#: 
+msgid "Run Transactions"
+msgstr "Suorita siirtotapahtumat"
+
+#: 
+msgid "Directory reports"
+msgstr "Hakemistoraportit"
+
+#: 
+msgid "Select classifications to include"
+msgstr "Valitse sisällytettävät luokitukset"
+

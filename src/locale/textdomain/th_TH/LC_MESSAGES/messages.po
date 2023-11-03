@@ -1,0 +1,258 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "ไม่สามารถสืบค้นฐานข้อมูล"
+
+#: 
+msgid "Delete"
+msgstr "ลบ"
+
+#: 
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#: 
+msgid "Save"
+msgstr "บันทึก"
+
+#: 
+msgid "Unassigned"
+msgstr "ยังไม่ได้กำหนด"
+
+#: 
+msgid "None"
+msgstr "ไม่มี"
+
+#: 
+msgid "City"
+msgstr "เมือง"
+
+#: 
+msgid "State"
+msgstr "จังหวัด"
+
+#: 
+msgid "Country"
+msgstr "ประเทศ"
+
+#: 
+msgid "Phone"
+msgstr "โทรศัพท์"
+
+#: 
+msgid "Email"
+msgstr "อีเมล"
+
+#: 
+msgid "Credit Card"
+msgstr "บัตรเครดิต"
+
+#: 
+msgid "Backup Database"
+msgstr "ฐานข้อมูลสำรอง"
+
+#: 
+msgid "Select archive type"
+msgstr "เลือกประเภทเก็บ"
+
+#: 
+msgid "Re-type Password"
+msgstr "พิมพ์รหัสผ่านอีกครั้ง"
+
+#: 
+msgid "Winner"
+msgstr "ผู้ชนะ"
+
+#: 
+msgid "Price"
+msgstr "ราคา"
+
+#: 
+msgid "Enter Winners"
+msgstr "ลงชื่อผู้ชนะ"
+
+#: 
+msgid "CSV Export"
+msgstr "ส่งไฟล์ CSV ออก"
+
+#: 
+msgid "Field Selection"
+msgstr "เลือกฟิลด์"
+
+#: 
+#, fuzzy
+msgid "Last Name"
+msgstr "นามสกุล"
+
+#: 
+msgid "Required"
+msgstr "ฟิลด์ที่จำเป็น"
+
+#: 
+#, fuzzy
+msgid "First Name"
+msgstr "ชื่อจริง"
+
+#: 
+#, fuzzy
+msgid "Middle Name"
+msgstr "ชื่อกลาง"
+
+#: 
+#, fuzzy
+msgid "Zip"
+msgstr "รหัสไปรษณีย์"
+
+#: 
+#, fuzzy
+msgid "Envelope"
+msgstr "ซอง"
+
+#: 
+#, fuzzy
+msgid "Work/Other Email"
+msgstr "อีเมล ที่ทำงาน/ที่อื่นๆ"
+
+#: 
+#, fuzzy
+msgid "Membership Date"
+msgstr "วันที่เป็นสมาชิก"
+
+#: 
+#, fuzzy
+msgid "Birth / Anniversary Date"
+msgstr "วันเกิด / วันครอบรอบแต่งงาน"
+
+#: 
+msgid "Age / Years Married"
+msgstr "อายุ / แต่งงานกี่ปีแล้ว"
+
+#: 
+#, fuzzy
+msgid "Family Role"
+msgstr "บทบาทในครอบครัว"
+
+#: 
+msgid "Filters"
+msgstr "ฟิลเตอร์"
+
+#: 
+msgid "Based on filters below.."
+msgstr "ขึ้นอยู่กับฟิลเตอร์ด้านล่าง"
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "คนในรถเข็น"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "ใช้ Ctrl คีย์เพื่อเลือกหลาย"
+
+#: 
+msgid "Don't Filter"
+msgstr "ไม่ใช้ฟิลเตอร์"
+
+#: 
+msgid "Male"
+msgstr "ชาย"
+
+#: 
+msgid "Female"
+msgstr "หญิง"
+
+#: 
+#, fuzzy
+msgid "Group Membership"
+msgstr "สมาชิกกลุ่ม"
+
+#: 
+msgid "From:"
+msgstr "จาก"
+
+#: 
+msgid "To:"
+msgstr "เรียน"
+
+#: 
+#, fuzzy
+msgid "Birthday Date"
+msgstr "วันเกิด"
+
+#: 
+#, fuzzy
+msgid "Anniversary Date"
+msgstr "วันครบรอบแต่งงาน"
+
+#: 
+msgid "Output Method:"
+msgstr "วิธีการส่งออก"
+
+#: 
+msgid "Create File"
+msgstr "สร้างไฟล์"
+
+#: 
+msgid "Gender"
+msgstr "เพศ"
+
+#: 
+msgid "Donation Envelope"
+msgstr "ซองถวาย"
+
+#: 
+msgid "Home Phone"
+msgstr "โทรศัพท์บ้าน"
+
+#: 
+msgid "Work Phone"
+msgstr "โทรศัพท์ที่ทำงาน"
+
+#: 
+msgid "Mobile Phone"
+msgstr "โทรศัพท์มือถือ"
+
+#: 
+msgid "Work / Other Email"
+msgstr "อีเมล ที่ทำงาน / ที่อื่นๆ"
+
+#: 
+msgid "Birth Date"
+msgstr "วันเกิด"
+
+#: 
+msgid "Wedding Date"
+msgstr "วันแต่งงาน"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "ข้อมูลแต่ละครอบครัวโดยเรียงตามลำดับอักษรของนามสกุลและที่อยู่"
+
+#: 
+msgid "Patriarch"
+msgstr "ผู้ชายที่อยู่ในวงศาคณาญาติที่เราให้ความเคารพ"
+
+#: 
+msgid "Matriarch"
+msgstr "ผู้หญิงที่อยู่ในวงศาคณาญาติที่เราให้ความเคารพ"
+
+#: 
+msgid "Login"
+msgstr "เข้าสู่ระบบ"
+
+#: 
+msgid "Login Name"
+msgstr "ชื่อผู้ใช้"
+
+#: 
+msgid "Last Login"
+msgstr "เข้าสู่ระบบครั้งล่าสุด"
+
