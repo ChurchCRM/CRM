@@ -1084,11 +1084,6 @@ msgid "Edit"
 msgstr "编辑"
 
 #: 
-#, fuzzy
-msgid "Message"
-msgstr "信息"
-
-#: 
 msgid "Event Attendees"
 msgstr "活动的参与者"
 
@@ -3125,18 +3120,6 @@ msgid "Execute Query"
 msgstr "执行查询"
 
 #: 
-msgid "Software Registration"
-msgstr "登记软件"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "通过检查此资讯，按下“发送”按钮，请注册您的ChurchCRM的。"
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "此信息是仅用于跟踪此软件的用法。"
-
-#: 
 msgid "Send"
 msgstr "发送"
 
@@ -3240,10 +3223,6 @@ msgstr "真设置权限给新用户的能力，改变他们的当前值。 <BR>"
 #: 
 msgid "Permission"
 msgstr "允许"
-
-#: 
-msgid "Base URL"
-msgstr "基于URL"
 
 #: 
 msgid "System Settings"
@@ -4457,10 +4436,6 @@ msgid "Enter Name"
 msgstr "输入名称"
 
 #: 
-msgid "Register Software"
-msgstr "软件登记"
-
-#: 
 msgid "Update Church Info"
 msgstr "更新教堂信息"
 
@@ -4587,14 +4562,6 @@ msgstr "您上次会话已超时。请再次登录。"
 #: 
 msgid "Register a new Family"
 msgstr "注册新家庭"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "如果您需要更改注册数据，请转到"
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "管理员 - >编辑常规设置"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5510,10 +5477,6 @@ msgstr "用户创建目录的权限"
 #: 
 msgid "User permission to export CSV files"
 msgstr "用户导出CSV文件的权限"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "用户使用IST地址验证的权限"
 
 #: 
 msgid "Allow user to add new event"
@@ -6806,10 +6769,6 @@ msgstr "缺少某些人的性别数据"
 #: 
 msgid "Missing Role Data"
 msgstr "缺少角色数据"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "请告诉我们您正在使用该软件"
 
 #: 
 msgid "Unable to load verification info"

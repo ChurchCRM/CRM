@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-28 16:05-0700\n"
+"POT-Creation-Date: 2023-11-02 17:49-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-10-28T23:05:24.464Z\n"
-"PO-Revision-Date: 2023-10-28T23:05:24.464Z\n"
+"POT-Creation-Date: 2023-11-03T00:49:43.662Z\n"
+"PO-Revision-Date: 2023-11-03T00:49:43.662Z\n"
 "#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
 "Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-10-28T23:05:24.660Z\n"
-"PO-Revision-Date: 2023-10-28T23:05:24.660Z\n"
+"POT-Creation-Date: 2023-11-03T00:49:43.875Z\n"
+"PO-Revision-Date: 2023-11-03T00:49:43.875Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -1893,12 +1893,6 @@ msgid "Missing Role Data for Some People"
 msgstr ""
 
 msgid "Unmet Application Prerequisites"
-msgstr ""
-
-msgid "Register Software"
-msgstr ""
-
-msgid "Let us know that you are using the software"
 msgstr ""
 
 msgid "Secret Keys missing from Config.php"
@@ -4259,32 +4253,6 @@ msgstr ""
 msgid "Execute Query"
 msgstr ""
 
-msgid "Software Registration"
-msgstr ""
-
-msgid "If you need to make changes to registration data, go to "
-msgstr ""
-
-msgid "Admin->Edit General Settings"
-msgstr ""
-
-msgid ""
-"Please register your copy of ChurchCRM by checking over this information and "
-"pressing the Send button.  "
-msgstr ""
-
-msgid "This information is used only to track the usage of this software.  "
-msgstr ""
-
-msgid "Base URL"
-msgstr ""
-
-msgid "Message"
-msgstr ""
-
-msgid "Send"
-msgstr ""
-
 msgid "Pledge Reminder Report"
 msgstr ""
 
@@ -5120,6 +5088,9 @@ msgid "Your verification request is complete"
 msgstr ""
 
 msgid "We encountered an error submitting with your verification data"
+msgstr ""
+
+msgid "Send"
 msgstr ""
 
 msgid "Visit our Site"
@@ -6953,9 +6924,6 @@ msgid "User permission to create directories"
 msgstr ""
 
 msgid "User permission to export CSV files"
-msgstr ""
-
-msgid "User permission to use IST Address Verification"
 msgstr ""
 
 msgid "Allow user to add new event"

@@ -1029,11 +1029,6 @@ msgid "Edit"
 msgstr "Edytuj"
 
 #: 
-#, fuzzy
-msgid "Message"
-msgstr "Wiadomość"
-
-#: 
 msgid "Event Attendees"
 msgstr "Uczestnicy"
 
@@ -2972,18 +2967,6 @@ msgid "Execute Query"
 msgstr "Wyszukaj"
 
 #: 
-msgid "Software Registration"
-msgstr "Rejestracja Programu"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Proszę zarejestrować kopię ChurchCRM, zaznacz to pole i kliknij 'Wyślij'"
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Informacje te zbierane są tylko to śledzenia gdzie program jest używany"
-
-#: 
 msgid "Send"
 msgstr "Wyślij"
 
@@ -3087,10 +3070,6 @@ msgstr "Ustaw True aby zezwolić użytkownikowi na zmianę wartości danego pola
 #: 
 msgid "Permission"
 msgstr "Uprawnienia"
-
-#: 
-msgid "Base URL"
-msgstr "Domyślny URL"
 
 #: 
 msgid "System Settings"
@@ -3896,10 +3875,6 @@ msgstr "Dodaj wszystkie klasy"
 #: 
 msgid "Clear All Classes"
 msgstr "Wyczyść wszystkie klasy"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Jeśli musisz poprawić dane rejestracji, przejdź do "
 
 #: 
 msgid "Add Attendees for Event"

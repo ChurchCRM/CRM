@@ -1051,10 +1051,6 @@ msgid "Edit"
 msgstr "تحرير"
 
 #: 
-msgid "Message"
-msgstr "رسالة"
-
-#: 
 msgid "Event Attendees"
 msgstr "حضور الحدث"
 
@@ -3049,18 +3045,6 @@ msgid "Execute Query"
 msgstr "تنفيذ الاستعلام"
 
 #: 
-msgid "Software Registration"
-msgstr "تسجيل البرمجيات"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "الرجاء تسجيل نسختك من ChurchCRM عن طريق فحص على هذه المعلومات والضغط على زر إرسال."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "وتستخدم هذه المعلومات فقط لتعقب استخدام هذا البرنامج."
-
-#: 
 msgid "Send"
 msgstr "ارسال"
 
@@ -3163,10 +3147,6 @@ msgstr "تعيين إذن صحيح لإعطاء المستخدمين الجدد 
 #: 
 msgid "Permission"
 msgstr "الإذن"
-
-#: 
-msgid "Base URL"
-msgstr "URL قاعدة"
 
 #: 
 msgid "System Settings"
@@ -4347,10 +4327,6 @@ msgid "Enter Name"
 msgstr "ادخل الاسم"
 
 #: 
-msgid "Register Software"
-msgstr "سجل البرمجيات"
-
-#: 
 msgid "Update Church Info"
 msgstr "تحديث معلومات كنيسة"
 
@@ -4477,14 +4453,6 @@ msgstr "انتهت مهلة الجلسة السابقة الخاص بها. ال�
 #: 
 msgid "Register a new Family"
 msgstr "تسجيل جديد للأسرة"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "إذا كنت بحاجة إلى إجراء تغييرات على بيانات التسجيل، انتقل إلى"
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "المسؤول-> تحرير إعدادات عامة"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5400,10 +5368,6 @@ msgstr "إذن لإنشاء الدلائل العضو"
 #: 
 msgid "User permission to export CSV files"
 msgstr "إذن المستخدم إلى ملفات CSV تصدير"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "إذن المستخدم لاستخدام IST التحقق من العنوان"
 
 #: 
 msgid "Allow user to add new event"
@@ -6696,10 +6660,6 @@ msgstr "البيانات الناقصة الجنس بالنسبة لبعض ال�
 #: 
 msgid "Missing Role Data"
 msgstr "في عداد المفقودين دور البيانات"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "واسمحوا لنا أن نعرف أن كنت تستخدم البرمجيات"
 
 #: 
 msgid "Unable to load verification info"

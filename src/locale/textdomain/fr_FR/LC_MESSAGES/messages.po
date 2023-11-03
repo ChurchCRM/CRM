@@ -1056,10 +1056,6 @@ msgid "Edit"
 msgstr "Editer"
 
 #: 
-msgid "Message"
-msgstr "Message"
-
-#: 
 msgid "Event Attendees"
 msgstr "Les participants à l&#39;événement"
 
@@ -3055,18 +3051,6 @@ msgid "Execute Query"
 msgstr "Exécuter la Requête"
 
 #: 
-msgid "Software Registration"
-msgstr "Enregistrement du logiciel"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Veuillez enregistrer votre copie de ChurchCRM en vérifiant les informations et en appuyant sur le bouton Envoyer."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Cette information est utilisée uniquement pour suivre l&#39;utilisation de ce logiciel."
-
-#: 
 msgid "Send"
 msgstr "Envoyer"
 
@@ -3169,10 +3153,6 @@ msgstr "Fixer les permissions sur \"Vrai\" pour donner aux nouveaux utilisateurs
 #: 
 msgid "Permission"
 msgstr "Permission"
-
-#: 
-msgid "Base URL"
-msgstr "URL de base"
 
 #: 
 msgid "System Settings"
@@ -4353,10 +4333,6 @@ msgid "Enter Name"
 msgstr "Entrer le Nom"
 
 #: 
-msgid "Register Software"
-msgstr "Enregistrer le logiciel"
-
-#: 
 msgid "Update Church Info"
 msgstr "Mettre à jour les informations de l&#39;église"
 
@@ -4483,14 +4459,6 @@ msgstr "Votre session a expiré. Veuillez vous reconnecter."
 #: 
 msgid "Register a new Family"
 msgstr "Inscrire une nouvelle famille"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Si vous devez modifier votre inscription, aller dans "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Admin->Modifier les réglages généraux"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5406,10 +5374,6 @@ msgstr "Permission de l&#39;utilisateur pour créer des annuaires."
 #: 
 msgid "User permission to export CSV files"
 msgstr "Permission de l&#39;utilisateur pour exporter des fichiers CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Permission de l&#39;utilisateur d'utiliser la Vérification d'Adresse IST"
 
 #: 
 msgid "Allow user to add new event"
@@ -6702,10 +6666,6 @@ msgstr "Données de sexe manquante pour certaines personnes"
 #: 
 msgid "Missing Role Data"
 msgstr "Données de rôle manquant"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "Dites nous que vous utilisez ChurchCRM"
 
 #: 
 msgid "Unable to load verification info"

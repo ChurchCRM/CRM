@@ -1051,10 +1051,6 @@ msgid "Edit"
 msgstr "Редагувати"
 
 #: 
-msgid "Message"
-msgstr "повідомлення"
-
-#: 
 msgid "Event Attendees"
 msgstr "Учасники заходу"
 
@@ -3049,18 +3045,6 @@ msgid "Execute Query"
 msgstr "Виконати запит"
 
 #: 
-msgid "Software Registration"
-msgstr "Реєстрація програмного забезпечення"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Будь ласка, зареєструйте свою копію ChurchCRM, перевіривши цю інформацію та натиснувши кнопку Надіслати.  "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Ця інформація використовується лише для відстеження використання цього програмного забезпечення.  "
-
-#: 
 msgid "Send"
 msgstr "Надіслати"
 
@@ -3163,10 +3147,6 @@ msgstr "Встановіть Permission True, щоб дати новим кор�
 #: 
 msgid "Permission"
 msgstr "Дозвіл"
-
-#: 
-msgid "Base URL"
-msgstr "Базова URL-адреса"
 
 #: 
 msgid "System Settings"
@@ -4345,10 +4325,6 @@ msgid "Enter Name"
 msgstr "Введіть ім'я"
 
 #: 
-msgid "Register Software"
-msgstr "Зареєструйте програмне забезпечення"
-
-#: 
 msgid "Update Church Info"
 msgstr "Оновіть інформацію про церкву"
 
@@ -4475,14 +4451,6 @@ msgstr "У вашого попереднього сеансу минув час.
 #: 
 msgid "Register a new Family"
 msgstr "Зареєструйте нову сім'ю"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Якщо вам потрібно внести зміни до реєстраційних даних, перейдіть на "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Адміністратор-> Редагувати загальні налаштування"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5398,10 +5366,6 @@ msgstr "Дозвіл користувача на створення катало
 #: 
 msgid "User permission to export CSV files"
 msgstr "Дозвіл користувача на експорт файлів CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Дозвіл користувача використовувати підтвердження IST-адреси"
 
 #: 
 msgid "Allow user to add new event"
@@ -6694,10 +6658,6 @@ msgstr "Відсутні гендерні дані для деяких люде�
 #: 
 msgid "Missing Role Data"
 msgstr "Відсутні дані про ролі"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "Повідомте нас, що ви використовуєте програмне забезпечення"
 
 #: 
 msgid "Unable to load verification info"

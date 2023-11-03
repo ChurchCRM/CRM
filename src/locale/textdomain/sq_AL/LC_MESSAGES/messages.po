@@ -956,11 +956,6 @@ msgid "Edit"
 msgstr "Ndrysho"
 
 #: 
-#, fuzzy
-msgid "Message"
-msgstr "Mesazh"
-
-#: 
 msgid "Event Attendees"
 msgstr "Pjesëmarrësit Event"
 
@@ -2541,14 +2536,6 @@ msgstr "Run Query Përsëri"
 #: 
 msgid "Execute Query"
 msgstr "Execute Query"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Ju lutemi regjistrohuni kopje të ChurchCRM duke kontrolluar mbi këtë informacion dhe të shtypur butonin Send.  "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Ky informacion do të përdoret vetëm për të ndjekur përdorimin e këtij software.  "
 
 #: 
 msgid "Send"

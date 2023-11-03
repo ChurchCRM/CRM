@@ -1051,10 +1051,6 @@ msgid "Edit"
 msgstr "Redigeeri"
 
 #: 
-msgid "Message"
-msgstr "Sõnum"
-
-#: 
 msgid "Event Attendees"
 msgstr "Üritustel osalejad"
 
@@ -3049,18 +3045,6 @@ msgid "Execute Query"
 msgstr "Käivita päring"
 
 #: 
-msgid "Software Registration"
-msgstr "Tarkvara registreerimine"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Registreerige oma ChurchCRM-i koopia, kontrollides seda teavet ja vajutades nuppu Saada. "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Seda teavet kasutatakse ainult selle tarkvara kasutamise jälgimiseks. "
-
-#: 
 msgid "Send"
 msgstr "Saada"
 
@@ -3163,10 +3147,6 @@ msgstr "Määrake luba True, et anda uutele kasutajatele võimalus muuta oma pra
 #: 
 msgid "Permission"
 msgstr "Luba"
-
-#: 
-msgid "Base URL"
-msgstr "Baas-URL"
 
 #: 
 msgid "System Settings"
@@ -4343,10 +4323,6 @@ msgid "Enter Name"
 msgstr "Sisestage nimi"
 
 #: 
-msgid "Register Software"
-msgstr "Registreeri tarkvara"
-
-#: 
 msgid "Update Church Info"
 msgstr "Koguduse teabe värskendamine"
 
@@ -4473,14 +4449,6 @@ msgstr "Teie eelmine seanss aegus. Palun logi uuesti sisse."
 #: 
 msgid "Register a new Family"
 msgstr "Registreeri uus pere"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Kui peate registreerimisandmetes muudatusi tegema, minge aadressile"
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Administraator-> Redigeeri üldsätteid"
 
 #: 
 msgid "Signature definition file signature failed validation"

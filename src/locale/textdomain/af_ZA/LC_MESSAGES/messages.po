@@ -1050,10 +1050,6 @@ msgid "Edit"
 msgstr "Redigeer"
 
 #: 
-msgid "Message"
-msgstr "Boodskap"
-
-#: 
 msgid "Event Attendees"
 msgstr "Geleentheid bywoners"
 
@@ -3048,18 +3044,6 @@ msgid "Execute Query"
 msgstr "Voer navraag uit"
 
 #: 
-msgid "Software Registration"
-msgstr "Sagteware registrasie"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Registreer u eksemplaar van ChurchCRM deur hierdie inligting na te gaan en op die Send-knoppie te druk.  "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Hierdie inligting word slegs gebruik om die gebruik van hierdie sagteware op te spoor.  "
-
-#: 
 msgid "Send"
 msgstr "Stuur"
 
@@ -3162,10 +3146,6 @@ msgstr "Stel Toestemming Waar om nuwe gebruikers die moontlikheid te gee om hul 
 #: 
 msgid "Permission"
 msgstr "Toestemming"
-
-#: 
-msgid "Base URL"
-msgstr "Basis-URL"
 
 #: 
 msgid "System Settings"
@@ -4346,10 +4326,6 @@ msgid "Enter Name"
 msgstr "Voer naam in"
 
 #: 
-msgid "Register Software"
-msgstr "Registreer sagteware"
-
-#: 
 msgid "Update Church Info"
 msgstr "Update Kerkinligting"
 
@@ -4476,14 +4452,6 @@ msgstr "U vorige sessie is verstreke. Meld asseblief weer aan."
 #: 
 msgid "Register a new Family"
 msgstr "Registreer 'n nuwe gesin"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Gaan na as u veranderinge aan die registrasiedata moet aanbring "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Admin-> Wysig algemene instellings"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5399,10 +5367,6 @@ msgstr "Gebruikers se toestemming om gidse te skep"
 #: 
 msgid "User permission to export CSV files"
 msgstr "Gebruikerstoestemming om CSV-lêers uit te voer"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Gebruikerstoestemming om IST-adresverifikasie te gebruik"
 
 #: 
 msgid "Allow user to add new event"
@@ -6695,10 +6659,6 @@ msgstr "Ontbrekende geslagsdata vir sommige mense"
 #: 
 msgid "Missing Role Data"
 msgstr "Roldata ontbreek"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "Laat weet ons dat u die sagteware gebruik"
 
 #: 
 msgid "Unable to load verification info"

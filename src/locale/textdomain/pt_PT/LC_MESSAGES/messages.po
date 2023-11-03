@@ -1084,11 +1084,6 @@ msgid "Edit"
 msgstr "Editar"
 
 #: 
-#, fuzzy
-msgid "Message"
-msgstr "Mensagem"
-
-#: 
 msgid "Event Attendees"
 msgstr "Participantes do evento"
 
@@ -3156,18 +3151,6 @@ msgid "Execute Query"
 msgstr "Correr a pesquisa"
 
 #: 
-msgid "Software Registration"
-msgstr "Registo do Software"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Por favor, registe sua cópia do CRM marcando sobre esta informação e pressionar o botão Enviar."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Esta informação é utilizada apenas para controlar o uso deste software."
-
-#: 
 msgid "Send"
 msgstr "Enviar"
 
@@ -3275,11 +3258,6 @@ msgstr "Definir permissão verdadeira para dar novos utilizadores a capacidade d
 #, fuzzy
 msgid "Permission"
 msgstr "Pessoa"
-
-#: 
-#, fuzzy
-msgid "Base URL"
-msgstr "URL base"
 
 #: 
 msgid "System Settings"
@@ -4512,10 +4490,6 @@ msgid "Enter Name"
 msgstr "Inserir o Nome"
 
 #: 
-msgid "Register Software"
-msgstr "Registar o Software"
-
-#: 
 msgid "Update Church Info"
 msgstr "Atualizar Informações da Igreja"
 
@@ -4642,14 +4616,6 @@ msgstr "A sua sessão anterior expirou. Por favor faça o login outra vez."
 #: 
 msgid "Register a new Family"
 msgstr "Registre uma nova família"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Se você precisar fazer mudanças nos dados de registo, vá para "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Admin > Configurações Gerais"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5572,10 +5538,6 @@ msgstr "Permissão para o utilizador criar diretórios"
 #: 
 msgid "User permission to export CSV files"
 msgstr "Permissão para o utilizador exportar ficheiros CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Permissão para o utilizador usar verificação de endereço IST"
 
 #: 
 msgid "Allow user to add new event"
@@ -6871,10 +6833,6 @@ msgstr "Dado de genero perdido para algumas pessoas"
 #, fuzzy
 msgid "Missing Role Data"
 msgstr "Dado do papel perdido"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "Nos deixe saber como você está usando o software"
 
 #: 
 msgid "Unable to load verification info"

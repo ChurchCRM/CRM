@@ -1050,10 +1050,6 @@ msgid "Edit"
 msgstr "Επεξεργασία"
 
 #: 
-msgid "Message"
-msgstr "Μήνυμα"
-
-#: 
 msgid "Event Attendees"
 msgstr "Συμμετέχοντες στην εκδήλωση"
 
@@ -3044,18 +3040,6 @@ msgid "Execute Query"
 msgstr "Εκτέλεση ερωτήματος"
 
 #: 
-msgid "Software Registration"
-msgstr "Εγγραφή λογισμικού"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Καταχωρίστε το αντίγραφό σας του ChurchCRM ελέγχοντας αυτές τις πληροφορίες και πατώντας το κουμπί Αποστολή.  "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Αυτές οι πληροφορίες χρησιμοποιούνται μόνο για την παρακολούθηση της χρήσης αυτού του λογισμικού.  "
-
-#: 
 msgid "Send"
 msgstr "Στείλετε"
 
@@ -3158,10 +3142,6 @@ msgstr "Ορίστε το Permission True για να δώσετε στους ν
 #: 
 msgid "Permission"
 msgstr "Αδεια"
-
-#: 
-msgid "Base URL"
-msgstr "Βασική διεύθυνση URL"
 
 #: 
 msgid "System Settings"
@@ -4340,10 +4320,6 @@ msgid "Enter Name"
 msgstr "Εισαγάγετε Όνομα"
 
 #: 
-msgid "Register Software"
-msgstr "Εγγραφή λογισμικού"
-
-#: 
 msgid "Update Church Info"
 msgstr "Ενημέρωση πληροφοριών εκκλησίας"
 
@@ -4470,14 +4446,6 @@ msgstr "Η προηγούμενη συνεδρία σας έληξε. Παρακ
 #: 
 msgid "Register a new Family"
 msgstr "Εγγραφή νέας οικογένειας"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Εάν πρέπει να κάνετε αλλαγές στα δεδομένα εγγραφής, μεταβείτε στο "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Διαχειριστής->Επεξεργασία γενικών ρυθμίσεων"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5393,10 +5361,6 @@ msgstr "Άδεια χρήστη για τη δημιουργία καταλόγ�
 #: 
 msgid "User permission to export CSV files"
 msgstr "Άδεια χρήστη για εξαγωγή αρχείων CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Άδεια χρήστη για χρήση της επαλήθευσης διεύθυνσης IST"
 
 #: 
 msgid "Allow user to add new event"
@@ -6689,10 +6653,6 @@ msgstr "Λείπουν δεδομένα φύλου για ορισμένα άτ�
 #: 
 msgid "Missing Role Data"
 msgstr "Λείπουν δεδομένα ρόλου"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "Ενημερώστε μας ότι χρησιμοποιείτε το λογισμικό"
 
 #: 
 msgid "Unable to load verification info"

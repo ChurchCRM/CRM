@@ -1052,10 +1052,6 @@ msgid "Edit"
 msgstr "sunting"
 
 #: 
-msgid "Message"
-msgstr "pesan"
-
-#: 
 msgid "Event Attendees"
 msgstr "Tamu yang hadir"
 
@@ -3052,18 +3048,6 @@ msgid "Execute Query"
 msgstr "Jalankan Query"
 
 #: 
-msgid "Software Registration"
-msgstr "Pendaftaran Perangkat Lunak"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Silakan daftarkan salinan ChurchCRM Anda dengan memeriksa informasi ini dan menekan tombol Kirim. "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Informasi ini hanya digunakan untuk melacak penggunaan perangkat lunak ini. "
-
-#: 
 msgid "Send"
 msgstr "Kirim"
 
@@ -3166,10 +3150,6 @@ msgstr "Setel Izin Benar untuk memberi pengguna baru kemampuan mengubah nilai me
 #: 
 msgid "Permission"
 msgstr "Izin"
-
-#: 
-msgid "Base URL"
-msgstr "URL dasar"
 
 #: 
 msgid "System Settings"
@@ -4350,10 +4330,6 @@ msgid "Enter Name"
 msgstr "Masukkan nama"
 
 #: 
-msgid "Register Software"
-msgstr "Daftarkan Perangkat Lunak"
-
-#: 
 msgid "Update Church Info"
 msgstr "Perbarui Info Gereja"
 
@@ -4480,14 +4456,6 @@ msgstr "Sesi Anda sebelumnya habis. Silakan masuk lagi."
 #: 
 msgid "Register a new Family"
 msgstr "Daftarkan Keluarga baru"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Jika Anda perlu membuat perubahan pada data pendaftaran, buka "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Admin-> Edit Pengaturan Umum"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5403,10 +5371,6 @@ msgstr "Izin pengguna untuk membuat direktori"
 #: 
 msgid "User permission to export CSV files"
 msgstr "Izin pengguna untuk mengekspor file CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Izin pengguna untuk menggunakan Verifikasi Alamat IST"
 
 #: 
 msgid "Allow user to add new event"
@@ -6699,10 +6663,6 @@ msgstr "Data Gender Tidak Ada untuk Beberapa Orang"
 #: 
 msgid "Missing Role Data"
 msgstr "Data Peran Tidak Ada"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "Beri tahu kami bahwa Anda menggunakan perangkat lunak"
 
 #: 
 msgid "Unable to load verification info"

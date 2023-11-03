@@ -1054,10 +1054,6 @@ msgid "Edit"
 msgstr "Modifica"
 
 #: 
-msgid "Message"
-msgstr "Messaggio"
-
-#: 
 msgid "Event Attendees"
 msgstr "Evento Partecipanti"
 
@@ -3061,18 +3057,6 @@ msgid "Execute Query"
 msgstr "Esegui Query"
 
 #: 
-msgid "Software Registration"
-msgstr "Registrazione del software"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Si prega di registrare la copia di ChurchCRM controllando su queste informazioni e premere il pulsante Invia."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Queste informazioni vengono utilizzate solo per monitorare l&#39;utilizzo di questo software."
-
-#: 
 msgid "Send"
 msgstr "Inviare"
 
@@ -3175,10 +3159,6 @@ msgstr "Impostare vera autorizzazione per offrire agli utenti nuovi la possibili
 #: 
 msgid "Permission"
 msgstr "Autorizzazione"
-
-#: 
-msgid "Base URL"
-msgstr "URL di base"
 
 #: 
 msgid "System Settings"
@@ -4360,10 +4340,6 @@ msgstr "Inserire nome\n"
 ""
 
 #: 
-msgid "Register Software"
-msgstr "Registra Software"
-
-#: 
 msgid "Update Church Info"
 msgstr "Aggiorna informazioni Chiesa"
 
@@ -4491,14 +4467,6 @@ msgstr "La sessione precedente è scaduta. Per favore esegui l'accesso di nuovo.
 #: 
 msgid "Register a new Family"
 msgstr "Registra una nuova famiglia"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Se è necessario apportare modifiche ai dati di registrazione, andare a "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Ammin-> Modifica impostazioni generali"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5415,10 +5383,6 @@ msgstr "Autorizzazione utente per creare directory"
 #: 
 msgid "User permission to export CSV files"
 msgstr "Autorizzazione utente per esportare file CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Autorizzazione dell'utente a utilizzare la verifica dell'indirizzo IST"
 
 #: 
 msgid "Allow user to add new event"
@@ -6720,10 +6684,6 @@ msgstr "Dati di genere mancanti per alcune persone"
 #: 
 msgid "Missing Role Data"
 msgstr "Dati di ruolo mancanti"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "Facci sapere che stai usando il software"
 
 #: 
 msgid "Unable to load verification info"

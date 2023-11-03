@@ -1068,10 +1068,6 @@ msgid "Edit"
 msgstr "Chỉnh sửa"
 
 #: 
-msgid "Message"
-msgstr "Tin nhắn"
-
-#: 
 msgid "Event Attendees"
 msgstr "Người tham dự sự kiện"
 
@@ -3066,18 +3062,6 @@ msgid "Execute Query"
 msgstr "Thực hiện kiểm tra"
 
 #: 
-msgid "Software Registration"
-msgstr "Đăng ký phần mềm"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Vui lòng đăng ký bản sao ChurchCRM của bạn bằng cách kiểm tra thông tin này và nhấn nút Gửi."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Thông tin này chỉ được sử dụng để theo dõi việc sử dụng phần mềm này."
-
-#: 
 msgid "Send"
 msgstr "Gửi đi"
 
@@ -3180,10 +3164,6 @@ msgstr "Thiết lập quyền đúng sẽ cho phép thành viên mới có khả
 #: 
 msgid "Permission"
 msgstr "Quyền hạn"
-
-#: 
-msgid "Base URL"
-msgstr "URL cơ sở"
 
 #: 
 msgid "System Settings"
@@ -4364,10 +4344,6 @@ msgid "Enter Name"
 msgstr "Nhập tên"
 
 #: 
-msgid "Register Software"
-msgstr "Đăng ký phần mềm"
-
-#: 
 msgid "Update Church Info"
 msgstr "Cập nhật thông tin Hội Thánh"
 
@@ -4494,14 +4470,6 @@ msgstr "Phiên truy cập trước đã hết thời gian, vui lòng đăng nh�
 #: 
 msgid "Register a new Family"
 msgstr "Đăng ký một gia đình mới"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Nếu bạn cần thay đổi dữ liệu đăng ký, hãy truy cập"
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Quản trị->Cài đặt tổng quan"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5417,10 +5385,6 @@ msgstr "Thành viên có quyền tạo ra danh bạ"
 #: 
 msgid "User permission to export CSV files"
 msgstr "Thành viên có quyền xuất tập tin CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Thành viên có quyền sử dụng xác nhận địa chỉ"
 
 #: 
 msgid "Allow user to add new event"
@@ -6713,10 +6677,6 @@ msgstr "Thiếu dữ liệu giới tính cho một số người"
 #: 
 msgid "Missing Role Data"
 msgstr "Thiếu dữ liệu vai trò"
-
-#: 
-msgid "Let us know that you are using the software"
-msgstr "Hãy cho chúng tôi biết rằng bạn đang sử dụng phần mềm"
 
 #: 
 msgid "Unable to load verification info"
