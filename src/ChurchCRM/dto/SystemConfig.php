@@ -291,7 +291,7 @@ class SystemConfig
     /**
      * @param Config[] $configs
      */
-    public static function init(?array $configs = null)
+    public static function init($configs = null)
     {
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
@@ -316,7 +316,7 @@ class SystemConfig
     /**
      * @param Config[] $configs
      */
-    private static function scrapeDBConfigs(array $configs)
+    private static function scrapeDBConfigs($configs)
     {
         foreach ($configs as $config) {
             if (isset(self::$configs[$config->getName()])) {
