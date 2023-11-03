@@ -66,6 +66,8 @@ class Photo
         if (strpos($photoFile, "remote") !== false || strpos($photoFile, "initials") !== false) {
             return filemtime($photoFile) < $remoteCacheThreshold->getTimestamp();
         }
+
+        return false;
     }
 
     private function photoHunt()
