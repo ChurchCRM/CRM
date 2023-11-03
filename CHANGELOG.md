@@ -1,3 +1,76 @@
+# 5.0.5
+
+## :star: Enhancements
+
+- Ckeditor [#6601](https://github.com/ChurchCRM/CRM/pull/6601)
+- Event Editor  Default Date and Date Range Issue [#6137](https://github.com/ChurchCRM/CRM/issues/6137)
+
+## :speech_balloon: Localization
+
+- 5.0.5 POEditor Update - ro_RO [#6599](https://github.com/ChurchCRM/CRM/pull/6599)
+
+## :gear: Inner Beauty
+
+- Remove permissions for usAddressVerification [#6598](https://github.com/ChurchCRM/CRM/pull/6598)
+- More https corrections [#6594](https://github.com/ChurchCRM/CRM/pull/6594)
+- update various npm dependencies [#6588](https://github.com/ChurchCRM/CRM/pull/6588)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@brianteeman](https://github.com/brianteeman)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+- [@DAcodedBEAT](https://github.com/DAcodedBEAT)
+ 
+- ## What's Changed
+* remove tooltip by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6596
+* More https corrections by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6594
+* Using Docker Mail Server  by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6597
+* update various npm dependencies by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6588
+* add logs to upgrade flow to make it easier to triage errors by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6589
+* Remove permissions for usAddressVerification by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6598
+* Ckeditor by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6601
+* 5.0.5 POEditor Update - ro_RO by @github-actions in https://github.com/ChurchCRM/CRM/pull/6599
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.0.4...5.0.5
+
+# 5.0.4
+ ## :speech_balloon: Localization
+
+- 5.0.4 Locale update & Czech locale added [#6583](https://github.com/ChurchCRM/CRM/pull/6583)
+
+## :beetle: Bugs
+
+- Bug fixes - User Setting / View Person / CVS Import [#6581](https://github.com/ChurchCRM/CRM/pull/6581)
+- Removed Intelligent Search Technolgy as a tool [#6585](https://github.com/ChurchCRM/CRM/pull/6585)
+- intelligentsearch was shutdown  [#6584](https://github.com/ChurchCRM/CRM/issues/6584)
+
+## :gear: Inner Beauty
+
+- spelling dashbaord/dashboard [#6590](https://github.com/ChurchCRM/CRM/pull/6590)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@brianteeman](https://github.com/brianteeman)
+- [@DawoudIO](https://github.com/DawoudIO)
+- ## What's Changed
+* Bug fixes - User Setting / View Person / CVS Import by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6581
+* 5.0.4 Locale update & Czech locale added by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6583
+* Removed Intelligent Search Technolgy as a tool by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6585
+* Test/ensure load top pages by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6586
+* 5.0.4 POEditor Update - 2023-10-29 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6587
+* spelling dashbaord/dashboard by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6590
+* Footer copyright by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6593
+* Update Config.php.example by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6592
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.0.3...5.0.4
+
 # 5.0.3
 ## :beetle: Bugs
 
