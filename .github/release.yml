@@ -15,28 +15,31 @@ changelog:
       labels:
         - Semver-Minor
         - enhancement
-        - Feature Request
+        - 'Feature Request'
         - new
         - UI
         - API 
     - title: Bugs
       labels:
         - bug
-        - P0 - Urgent
+        - 'P0 - Urgent'
     - title: Core Functionality
       labels:
-        - Installation and Upgrade
+        - 'Installation and Upgrade'
         - Configuration
     - title: Localization
       labels:
         - Localization
-    - title: Inner Beauty
-      lables: 
+    - title: 'Inner Beauty'
+      labels: 
         - development
         - build
-        - Code Smell
-        - Backend System
-        - Package Dependencies
+        - 'Code Smell'
+        - 'Backend System'
+    - title: Dependencies 👒
+      labels:
+        - dependencies
+        - 'Package Dependencies'
     - title: Other Changes
       labels:
         - "*"
