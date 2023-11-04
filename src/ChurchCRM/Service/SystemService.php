@@ -73,51 +73,6 @@ class SystemService
         }
     }
 
-    public function reportIssue($data)
-    {
-        $serviceURL = 'http://demo.churchcrm.io/issues/';
-        $headers = [];
-        $headers[] = 'Content-type: application/json';
-
-        $issueDescription = $data->issueDescription . "\r\n\r\n\r\n" .
-            "Collected Value Title |  Data \r\n" .
-            "----------------------|----------------\r\n" .
-            'Page Name |' . $data->pageName . "\r\n" .
-            'Screen Size |' . $data->screenSize->height . 'x' . $data->screenSize->width . "\r\n" .
-            'Window Size |' . $data->windowSize->height . 'x' . $data->windowSize->width . "\r\n" .
-            'Page Size |' . $data->pageSize->height . 'x' . $data->pageSize->width . "\r\n" .
-            'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
-            'PHP Version | ' . phpversion() . "\r\n" .
-            'SQL Version | ' . self::getDBServerVersion() . "\r\n" .
-            'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
-            'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
-            'Prerequisite Status |' . self::getPrerequisiteStatus() . "\r\n" .
-            'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json') . "\r\n";
-
-        if (function_exists('apache_get_modules')) {
-            $issueDescription .= 'Apache Modules    |' . implode(',', apache_get_modules());
-        }
-
-        $postdata = new \stdClass();
-        $postdata->issueTitle = InputUtils::legacyFilterInput($data->issueTitle);
-        $postdata->issueDescription = $issueDescription;
-
-        $curlService = curl_init($serviceURL);
-
-        curl_setopt($curlService, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curlService, CURLOPT_POST, true);
-        curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata, JSON_THROW_ON_ERROR));
-        curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curlService, CURLOPT_CONNECTTIMEOUT, 1);
-
-        $result = curl_exec($curlService);
-        if ($result === false) {
-            throw new \Exception('Unable to reach the issue bridge', 500);
-        }
-
-        return $result;
-    }
-
     private static function isTimerThresholdExceeded(string $LastTime, int $ThresholdHours)
     {
         if (empty($LastTime)) {
