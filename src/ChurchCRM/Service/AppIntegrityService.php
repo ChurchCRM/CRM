@@ -188,11 +188,7 @@ class AppIntegrityService
 
     public static function hasApacheModule($module)
     {
-        if (function_exists('apache_get_modules')) {
-            LoggerUtils::getAppLogger()->debug("looking for apache module $module using PHP's apache_get_modules");
-            return in_array($module, apache_get_modules());
-        }
-        return false;
+        return in_array($module, apache_get_modules());
     }
 
     public static function hasModRewrite()
