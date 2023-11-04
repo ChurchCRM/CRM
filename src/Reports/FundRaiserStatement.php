@@ -186,20 +186,33 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
         }
 
         // Get multibuy items for this buyer
-        $sqlMultiBuy = 'SELECT mb_count, mb_item_ID, 
-		                a.per_FirstName as donorFirstName,
-		                a.per_LastName as donorLastName,
-		                a.per_Email as donorEmail,
-		                c.fam_HomePhone as donorPhone,
-						b.di_item, b.di_title, b.di_donor_id, b.di_sellprice
-						FROM multibuy_mb
-						LEFT JOIN donateditem_di b ON mb_item_ID=b.di_ID
-						LEFT JOIN person_per a ON b.di_donor_id=a.per_ID 
-						LEFT JOIN family_fam c ON a.per_fam_id = c.fam_ID
-						WHERE b.di_FR_ID=' . $iFundRaiserID . ' AND mb_per_ID=' . $pn_per_ID;
+        $sqlMultiBuy = <<<SQL
+SELECT
+    mb_count,
+    a.per_FirstName as donorFirstName,
+    a.per_LastName as donorLastName,
+    a.per_Email as donorEmail,
+    c.fam_HomePhone as donorPhone,
+    b.di_item,
+    b.di_title,
+    b.di_sellprice
+FROM multibuy_mb
+LEFT JOIN donateditem_di b ON mb_item_ID=b.di_ID
+LEFT JOIN person_per a ON b.di_donor_id=a.per_ID 
+LEFT JOIN family_fam c ON a.per_fam_id = c.fam_ID
+WHERE b.di_FR_ID=$iFundRaiserID AND mb_per_ID=$pn_per_ID;
+SQL;
         $rsMultiBuy = RunQuery($sqlMultiBuy);
         while ($mbRow = mysqli_fetch_array($rsMultiBuy)) {
-            extract($mbRow);
+            $mb_count = $mbRow['mb_count'];
+            $donorFirstName = $mbRow['donorFirstName'];
+            $donorLastName = $mbRow['donorLastName'];
+            $donorEmail = $mbRow['donorEmail'];
+            $donorPhone = $mbRow['donorPhone'];
+            $di_item = $mbRow['di_item'];
+            $di_title = $mbRow['di_title'];
+            $di_sellprice = $mbRow['di_sellprice'];
+
             $nextY = $curY;
             $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
             $nextY = $pdf->cellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');

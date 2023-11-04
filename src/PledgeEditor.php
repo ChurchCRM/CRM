@@ -44,14 +44,14 @@ $sComment = [];
 $checkHash = [];
 
 // Get the list of funds
-$sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
+$sSQL = 'SELECT fun_ID,fun_Name,fun_Active FROM donationfund_fun';
 $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
 
 $rsFunds = RunQuery($sSQL);
 mysqli_data_seek($rsFunds, 0);
 while ($aRow = mysqli_fetch_array($rsFunds)) {
-    extract($aRow);
-    $fundId2Name[$fun_ID] = $fun_Name;
+    $fun_ID = $aRow['fun_ID'];
+    $fundId2Name[$fun_ID] = $aRow['fun_Name'];
     $nAmount[$fun_ID] = 0.0;
     $nNonDeductible[$fun_ID] = 0.0;
     $sAmountError[$fun_ID] = '';
@@ -59,7 +59,7 @@ while ($aRow = mysqli_fetch_array($rsFunds)) {
     if (!isset($defaultFundID)) {
         $defaultFundID = $fun_ID;
     }
-    $fundIdActive[$fun_ID] = $fun_Active;
+    $fundIdActive[$fun_ID] = $aRow['fun_Active'];
 } // end while
 
 // Handle URL via _GET first
@@ -153,8 +153,8 @@ if (
             $rsMethod = RunQuery($sSQL);
             $num = mysqli_num_rows($rsMethod);
             if ($num) {    // set iMethod to last record's setting
-                extract(mysqli_fetch_array($rsMethod));
-                $iMethod = $plg_method;
+                $previousPledgeMethodArray = mysqli_fetch_array($rsMethod);
+                $iMethod = $previousPledgeMethodArray['plg_method'];
             } else {
                 $iMethod = 'CHECK';
             }
@@ -175,23 +175,20 @@ if (
         list($numGroupKeys, $PledgeOrPayment, $fundId, $dDate, $iFYID, $iCheckNo, $iSchedule, $iMethod, $iCurrentDeposit) = mysqli_fetch_row($rsResults);
 
 
-        $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_date, plg_method, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
-        //  don't know if we need plg_date or plg_method here...  leave it here for now
+        $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
         $rsFam = RunQuery($sSQL);
-        extract(mysqli_fetch_array($rsFam));
 
-        $iFamily = $plg_famID;
-        $iCheckNo = $plg_CheckNo;
-        $iFYID = $plg_FYID;
+        $iFamily = $rsFam['plg_famID'];
+        $iCheckNo = $rsFam['plg_CheckNo'];
+        $iFYID = $rsFam['plg_FYID'];
 
         $sSQL = "SELECT plg_plgID, plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
 
         $rsAmounts = RunQuery($sSQL);
         while ($aRow = mysqli_fetch_array($rsAmounts)) {
-            extract($aRow);
-            $nAmount[$plg_fundID] = $plg_amount;
-            $nNonDeductible[$plg_fundID] = $plg_NonDeductible;
-            $sComment[$plg_fundID] = $plg_comment;
+            $nAmount[$plg_fundID] = $aRow['plg_amount'];
+            $nNonDeductible[$plg_fundID] = $aRow['plg_NonDeductible'];
+            $sComment[$plg_fundID] = $aRow['plg_comment'];
         }
     } else {
         if (array_key_exists('idefaultDate', $_SESSION)) {
@@ -219,9 +216,8 @@ if (
     if (!$iEnvelope && $iFamily) {
         $sSQL = 'SELECT fam_Envelope FROM family_fam WHERE fam_ID="' . $iFamily . '";';
         $rsEnv = RunQuery($sSQL);
-        extract(mysqli_fetch_array($rsEnv));
         if ($fam_Envelope) {
-            $iEnvelope = $fam_Envelope;
+            $iEnvelope = $rsEnv['fam_Envelope'];
         }
     }
 }
@@ -394,8 +390,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         if ($routeAndAccount) {
             $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
             $rsFam = RunQuery($sSQL);
-            extract(mysqli_fetch_array($rsFam));
-            $iFamily = $fam_ID;
+            $iFamily = $rsFam['fam_ID'];
 
             $iCheckNo = $micrObj->findCheckNo($tScanString);
         } else {
@@ -411,8 +406,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             $rsFam = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsFam);
             if ($numRows) {
-                extract(mysqli_fetch_array($rsFam));
-                $iFamily = $fam_ID;
+                $iFamily = $rsFam['fam_ID'];
             }
         }
     } else {
@@ -450,10 +444,9 @@ if ($PledgeOrPayment == 'Pledge') {
     $rsChecksThisDep = RunQuery($sSQL);
     $depositCount = 0;
     while ($aRow = mysqli_fetch_array($rsChecksThisDep)) {
-        extract($aRow);
-        $chkKey = $plg_FamID . '|' . $plg_checkNo;
-        if ($plg_method == 'CHECK' && (!array_key_exists($chkKey, $checkHash))) {
-            $checkHash[$chkKey] = $plg_plgID;
+        $chkKey = $aRow['plg_FamID'] . '|' . $aRow['plg_checkNo'];
+        if ($aRow['plg_method'] === 'CHECK' && (!array_key_exists($chkKey, $checkHash))) {
+            $checkHash[$chkKey] = $aRow['plg_plgID'];
             ++$depositCount;
         }
     }
@@ -485,8 +478,7 @@ if ($iFamily) {
     $sSQL = 'SELECT fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID =' . $iFamily;
     $rsFindFam = RunQuery($sSQL);
     while ($aRow = mysqli_fetch_array($rsFindFam)) {
-        extract($aRow);
-        $sFamilyName = $fam_Name . ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+        $sFamilyName = $fam_Name . ' ' . FormatAddressLine($aRow['fam_Address1'], $aRow['fam_City'], $aRow['fam_State']);
     }
 }
 
