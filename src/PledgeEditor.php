@@ -182,10 +182,10 @@ if (
         $iCheckNo = $rsFam['plg_CheckNo'];
         $iFYID = $rsFam['plg_FYID'];
 
-        $sSQL = "SELECT plg_plgID, plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
-
+        $sSQL = "SELECT plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
         $rsAmounts = RunQuery($sSQL);
         while ($aRow = mysqli_fetch_array($rsAmounts)) {
+            $plg_fundID = $aRow['plg_fundID'];
             $nAmount[$plg_fundID] = $aRow['plg_amount'];
             $nNonDeductible[$plg_fundID] = $aRow['plg_NonDeductible'];
             $sComment[$plg_fundID] = $aRow['plg_comment'];
@@ -239,11 +239,11 @@ if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is 
     }
 }
 
-if ($iMethod == 'CASH' || $iMethod == 'CHECK') {
+if ($iMethod === 'CASH' || $iMethod === 'CHECK') {
     $dep_Type = 'Bank';
-} elseif ($iMethod == 'CREDITCARD') {
+} elseif ($iMethod === 'CREDITCARD') {
     $dep_Type = 'CreditCard';
-} elseif ($iMethod == 'BANKDRAFT') {
+} elseif ($iMethod === 'BANKDRAFT') {
     $dep_Type = 'BankDraft';
 }
 
