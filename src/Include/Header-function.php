@@ -27,14 +27,16 @@ function Header_modals()
     ?>
     <!-- Issue Report Modal -->
     <div id="IssueReportModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <!-- Modal content-->
             <div class="modal-content">
                 <form name="issueReport">
                     <input type="hidden" name="pageName" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><?= gettext('Issue Report!') ?></h4>
+                        <h5 class="modal-title" id="exampleModalLongTitle"><?= gettext('Issue Report!') ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
@@ -45,7 +47,7 @@ function Header_modals()
                                         : </label>
                                 </div>
                                 <div class="col-xl-3">
-                                    <input type="text" name="issueTitle">
+                                    <input type="text" size="70" name="issueTitle">
                                 </div>
                             </div>
                             <div class="row">
@@ -54,10 +56,11 @@ function Header_modals()
                                             for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
                                 </div>
                                 <div class="col-xl-3">
-                                    <textarea rows="10" cols="50" name="issueDescription"></textarea>
+                                    <textarea rows="10" cols="70" name="issueDescription"></textarea>
                                 </div>
                             </div>
                         </div>
+                        <p></p>
                         <ul>
                             <li><?= gettext('When you click "submit," an error report will be posted to the ChurchCRM GitHub Issue tracker.') ?></li>
                             <li><?= gettext('Please do not include any confidential information.') ?></li>

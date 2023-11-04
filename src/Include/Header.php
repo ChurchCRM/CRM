@@ -120,7 +120,7 @@ $MenuFirst = 1;
                         <i class="fas fa-book-reader"></i> <?= gettext('Help & Manual') ?>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item" data-target="#IssueReportModal"  title="<?= gettext('Report an issue') ?>">
+                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#IssueReportModal"  title="<?= gettext('Report an issue') ?>">
                         <i class="fas fa-bug"></i> <?= gettext('Report an issue') ?>
                     </a>
                     <a href="https://gitter.im/ChurchCRM/CRM" target="_blank" class="dropdown-item" title="<?= gettext('Developer Chat') ?>">
