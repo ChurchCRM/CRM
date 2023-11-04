@@ -95,17 +95,13 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body" style="overflow: scroll-x">
                 <table class="table table-striped">
                     <tr>
-                        <td><?= gettext("Server Software") ?></td>
                         <td><?= $_SERVER["SERVER_SOFTWARE"] ?></td>
                     </tr>
-                    <?php
-                    if (function_exists('apache_get_modules')) {
-                        foreach (apache_get_modules() as $item) { ?>
-                            <tr>
-                                <td><?= $item ?></td>
-                            </tr>
-                        <?php }
-                    } ?>
+                    <?php foreach (apache_get_modules() as $item) { ?>
+                    <tr>
+                        <td><?= $item ?></td>
+                    </tr>
+                    <?php } ?>
                 </table>
             </div>
         </div>
