@@ -47,7 +47,7 @@ function Header_modals()
                                         : </label>
                                 </div>
                                 <div class="col-xl-3">
-                                    <input type="text" size="70" name="issueTitle">
+                                    <input type="text" size="70" name="issueTitle" id="issueTitle">
                                 </div>
                             </div>
                             <div class="row">
@@ -56,7 +56,7 @@ function Header_modals()
                                             for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
                                 </div>
                                 <div class="col-xl-3">
-                                    <textarea rows="10" cols="70" name="issueDescription"></textarea>
+                                    <textarea rows="10" cols="70" name="issueDescription" id="issueDescription"></textarea>
                                 </div>
                             </div>
                         </div>
