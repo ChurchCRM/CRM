@@ -416,9 +416,6 @@ module.exports = function (grunt) {
             }
         },
         exec: {
-            updatechangelog: {
-                cmd: "gren changelog --generate --override --token=<%= buildConfig.GitHub.token %>"
-            },
             downloadPOEditorStats: {
                 cmd: "curl -X POST https://api.poeditor.com/v2/languages/list -d api_token=<%= buildConfig.POEditor.token %> -d id=<%= buildConfig.POEditor.id %> -o src/locale/poeditor.json -s"
             }
