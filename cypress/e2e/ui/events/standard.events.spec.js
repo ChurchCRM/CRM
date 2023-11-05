@@ -15,4 +15,12 @@ context('Standard User Session', () => {
 
     });
 
+    it('CheckIn People', () => {
+        cy.loginStandard('Checkin.php');
+        cy.contains("Event Checkin");
+        cy.get('#EventID').select("Summer Camp");
+        cy.contains("Add Attendees for Event: Summer Camp");
+        cy.contains("Mark Smith");
+    });
+
 });
