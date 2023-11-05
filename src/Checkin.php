@@ -103,7 +103,7 @@ if ($EventID > 0) {
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 text-right">
-                            <a href="EventEditor.php"><?= gettext('Add New Event'); ?></a>
+                            <a class="btn btn-primary" href="EventEditor.php"><?= gettext('Add New Event'); ?></a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
         <input type="hidden" id="adult-id" name="adult-id">
 
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-md-10 col-xs-12">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title"><?= gettext('Add Attendees for Event'); ?>: <?= $event->getTitle() ?></h3>
@@ -170,7 +170,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                             </div>
 
                             <div class="text-right col-md-8 col-xs-4">
-                                <a href="PersonEditor.php"><?= gettext('Add Visitor'); ?></a>
+                                <a class="btn btn-success" href="PersonEditor.php"><?= gettext('Add Visitor'); ?></a>
                             </div>
                         </div>
                     </div>
@@ -353,8 +353,8 @@ if (isset($_POST['EventID'])) {
                                  class="direct-chat-img initials-image">&nbsp
                             <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a></td>
                         <td><?= date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
-                        <td><?= $sCheckinby ?></td>
-                        <td><?= date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
+                        <td><?= $sCheckinby ?> </td>
+                        <td><?= !$per->getCheckoutDate() ? "" : $per->getCheckoutDate() ?? date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
                         <td><?= $sCheckoutby ?></td>
 
                         <td align="center">
@@ -366,7 +366,7 @@ if (isset($_POST['EventID'])) {
                                     ?>
                                     <input class="btn btn-primary btn-sm" type="submit" name="CheckOutBtn"
                                            value="<?= gettext('CheckOut') ?>">
-                                    <input class="btn btn-danger btn-xs" type="submit" name="DeleteBtn"
+                                    <input class="btn btn-danger btn-sm" type="submit" name="DeleteBtn"
                                            value="<?= gettext('Delete') ?>">
 
                                     <?php
