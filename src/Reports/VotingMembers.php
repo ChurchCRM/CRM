@@ -19,6 +19,9 @@ use ChurchCRM\Utils\InputUtils;
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+if (!$iFYID) {
+    $iFYID = CurrentFY();
+}
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 $iRequireDonationYears = InputUtils::legacyFilterInput($_POST['RequireDonationYears'], 'int');
 $output = InputUtils::legacyFilterInput($_POST['output']);
@@ -43,7 +46,11 @@ $pdf = new PdfVotingMembers();
 $topY = 10;
 $curY = $topY;
 
-$pdf->writeAt(SystemConfig::getValue('leftX'), $curY, (gettext('Voting members ') . MakeFYString($iFYID)));
+$pdf->writeAt(
+    SystemConfig::getValue('leftX'),
+    $curY,
+    gettext('Voting members ') . MakeFYString($iFYID)
+);
 $curY += 10;
 
 $votingMemberCount = 0;
