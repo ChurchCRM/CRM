@@ -14,8 +14,8 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './ui-commands'
-import './api-commands'
+import "./ui-commands";
+import "./api-commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
