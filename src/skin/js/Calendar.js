@@ -469,7 +469,7 @@ function initializeNewCalendarButton(){
 
 function displayAccessTokenAPITest() {
   if (window.CRM.calendarJSArgs.countCalendarAccessTokens > 0 && !window.CRM.calendarJSArgs.bEnableExternalCalendarAPI){
-    $(".content").prepend("<div class='callout callout-danger'><h4>"+i18next.t("Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens")+"</h4><p>"+i18next.t("For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token")+"</p></div>");
+    $(".content").prepend("<div class='callout callout-danger'><h4>"+i18next.t("bEnableExternalCalendarAPI disabled, but some calendars have access tokens")+"</h4><p>"+i18next.t("For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token")+"</p></div>");
   }
 }
 
