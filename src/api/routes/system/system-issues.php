@@ -6,7 +6,7 @@ use ChurchCRM\Service\SystemService;
 // Routes
 $app->post('/issues', function ($request, $response, $args) use ($app) {
     $data = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
-    $issueDescription = $data->issueDescription . "\r\n\r\n\r\n" .
+    $issueDescription =     
         "Collected Value Title |  Data \r\n" .
         "----------------------|----------------\r\n" .
         'Page Name |' . $data->pageName . "\r\n" .
@@ -18,9 +18,7 @@ $app->post('/issues', function ($request, $response, $args) use ($app) {
         'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
         'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
         'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
-        'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n" .
-        'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json') . "\r\n";
-        $issueDescription .= 'Apache Modules    |' . implode(',', apache_get_modules());
+        'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n" ;
 
     return $response->withJson(["issueBody" => $issueDescription]);    
 });
