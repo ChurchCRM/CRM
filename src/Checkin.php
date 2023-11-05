@@ -353,7 +353,7 @@ if (isset($_POST['EventID'])) {
                                  class="direct-chat-img initials-image">&nbsp
                             <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a></td>
                         <td><?= date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
-                        <td><?= $sCheckinby ?> </td>
+                        <td><?= $sCheckinby ?></td>
                         <td><?= !$per->getCheckoutDate() ? "" : $per->getCheckoutDate() ?? date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
                         <td><?= $sCheckoutby ?></td>
 
