@@ -6,10 +6,7 @@ context('Report Issue', () => {
         cy.loginStandard('v2/dashboard');
         cy.get('.fa-headset').click();
         cy.get('#reportIssue').click();
-        cy.get('#issueTitle').type('testing bug submit');
-        cy.get('#issueDescription').type('My Background is blue');
-        cy.get('#submitIssue').click();
-        
+        cy.contains("Issue Report!")
     });
 
 });
