@@ -1,6 +1,6 @@
 interface EventType {
-    Id: number,
-    Name: string
-  }
+  Id: number;
+  Name: string;
+}
 
-export default EventType
+export default EventType;
