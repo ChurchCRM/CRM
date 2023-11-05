@@ -1,5 +1,5 @@
 /*
- * ChurcmCRM JavaScript Object Model Initailizaion Script
+ * ChurchCRM JavaScript Object Model Initailizaion Script
  */
 
     window.CRM.APIRequest = function(options) {
@@ -29,7 +29,7 @@
     }
 
     window.CRM.DisplayErrorMessage = function(endpoint, error) {
-
+      console.trace(error);
       message = "<p>" + i18next.t("Error making API Call to") + ": " + endpoint +
         "</p><p>" + i18next.t("Error text") + ": " + error.message;
       if (error.trace)
