@@ -33,16 +33,16 @@ function Header_modals()
                 <form name="issueReport">
                     <input type="hidden" name="pageName" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"><?= gettext('Issue Report!') ?></h5>
+                        <h5 class="modal-title"><?= gettext('Issue Report!') ?></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">x</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-info alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h5><i class="icon fas fa-info"></i> Alert!</h5>
-                            <?= gettext('When you click "Submit to GitHub" you will be directed to github issues page with your system info prefilled.') ?> <?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?>
+                            <h5><i class="icon fas fa-info"></i>Alert!</h5>
+                            <?= gettext('When you click "Submit to GitHub" you will be directed to GitHub issues page with your system info prefilled.') ?> <?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?>
                         </div>
                     </div>
                     <div class="modal-footer">

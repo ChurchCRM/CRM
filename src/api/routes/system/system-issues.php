@@ -20,5 +20,5 @@ $app->post('/issues', function ($request, $response, $args) use ($app) {
         'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
         'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n" ;
 
-    return $response->withJson(["issueBody" => $issueDescription]);    
+    return $response->withJson(["issueBody" => $issueDescription]);
 });

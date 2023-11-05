@@ -21,9 +21,9 @@ $("#submitIssue").click(function () {
     contentType: "application/json; charset=utf-8",
     dataType: "json"
   }).done(function (data) {
-    var bugMsg = "**Describe the bug** \n\n\n\n";
+    var bugMsg = "**Describe the issue** \n\n\n\n";
     var systemInfo = encodeURIComponent(bugMsg + data['issueBody']);
-    var gitHubURL = 'https://github.com/ChurchCRM/CRM/issues/new?assignees=&labels=bug&body='+systemInfo;
+    var gitHubURL = 'https://github.com/ChurchCRM/CRM/issues/new?assignees=&labels=Web%20Report&body='+systemInfo;
     window.open(gitHubURL, `github`);
     $('#IssueReportModal').modal('toggle');
   });
