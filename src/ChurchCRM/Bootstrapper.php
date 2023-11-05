@@ -234,20 +234,22 @@ namespace ChurchCRM
         }
         private static function configureLogging()
         {
-         // PHP Logs
+            // PHP Logs
             $phpLogPath = LoggerUtils::buildLogFilePath("php");
             self::$bootStrapLogger->debug("Configuring PHP logs at :" . $phpLogPath);
             ini_set('log_errors', 1);
             ini_set('error_log', $phpLogPath);
 
             // ORM Logs
-            $ormLogPath = LoggerUtils::buildLogFilePath("orm");
-            $ormLogger = new Logger('ormLogger');
-            self::$bootStrapLogger->debug("Configuring ORM logs at :" . $ormLogPath);
-            self::$dbClassName = '\\' . \Propel\Runtime\Connection\DebugPDO::class;
-            self::$manager->setConfiguration(self::buildConnectionManagerConfig());
-            $ormLogger->pushHandler(new StreamHandler($ormLogPath, LoggerUtils::getLogLevel()));
-            self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
+            if (SystemConfig::debugEnabled()) {
+                $ormLogPath = LoggerUtils::buildLogFilePath("orm");
+                $ormLogger = new Logger('ormLogger');
+                self::$bootStrapLogger->debug("Configuring ORM logs at :" . $ormLogPath);
+                self::$dbClassName = '\\' . \Propel\Runtime\Connection\DebugPDO::class;
+                self::$manager->setConfiguration(self::buildConnectionManagerConfig());
+                $ormLogger->pushHandler(new StreamHandler($ormLogPath, LoggerUtils::getLogLevel()));
+                self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
+            }
         }
 
         public static function getDSN()
