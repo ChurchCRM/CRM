@@ -24,7 +24,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
         public function authenticate(AuthenticationRequest $AuthenticationRequest)
         {
             if (! $AuthenticationRequest instanceof APITokenAuthenticationRequest) {
-                throw new \Exception("Unable to process request as APITokenAuthenticationRequest");
+                throw new \Exception('Unable to process request as APITokenAuthenticationRequest');
             }
             $authenticationResult = new AuthenticationResult();
             $authenticationResult->isAuthenticated = false;
@@ -40,7 +40,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
             return $authenticationResult;
         }
 
-        public function validateUserSessionIsActive($updateLastOperationTimestamp): AuthenticationResult
+        public function validateUserSessionIsActive(bool $updateLastOperationTimestamp): AuthenticationResult
         {
             // APITokens are sessionless, so just always say false.
             $authenticationResult = new AuthenticationResult();

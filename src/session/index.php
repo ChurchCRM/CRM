@@ -34,7 +34,7 @@ require __DIR__ . '/routes/password-reset.php';
 
 
 $app->get('/begin', 'beginSession');
-$app->post("/begin", "beginSession");
+$app->post('/begin', 'beginSession');
 $app->get('/end', 'endSession');
 $app->get('/two-factor', 'processTwoFactorGet');
 $app->post('/two-factor', 'processTwoFactorPost');
@@ -82,8 +82,8 @@ function beginSession(Request $request, Response $response, array $args)
 
     $renderer = new PhpRenderer('templates/');
 
-    $pageArgs['prefilledUserName'] = "";
-    # Defermine if approprirate to pre-fill the username field
+    $pageArgs['prefilledUserName'] = '';
+    # Determine if approprirate to pre-fill the username field
     if (isset($_GET['username'])) {
         $pageArgs['prefilledUserName'] = $_GET['username'];
     } elseif (isset($_SESSION['username'])) {

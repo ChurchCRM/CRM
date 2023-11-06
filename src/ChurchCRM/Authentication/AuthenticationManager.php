@@ -27,7 +27,7 @@ namespace ChurchCRM\Authentication {
             ) {
                 return $_SESSION['AuthenticationProvider'];
             } else {
-                throw new \Exception("No active authentication provider");
+                throw new \Exception('No active authentication provider');
             }
         }
 
@@ -41,7 +41,7 @@ namespace ChurchCRM\Authentication {
             try {
                 $currentUser = self::getAuthenticationProvider()->getCurrentUser();
                 if (empty($currentUser)) {
-                    throw new \Exception("No current user provided by current authentication provider: " . get_class(self::getAuthenticationProvider()));
+                    throw new \Exception('No current user provided by current authentication provider: ' . get_class(self::getAuthenticationProvider()));
                 }
                 return $currentUser;
             } catch (\Exception $e) {
@@ -53,14 +53,15 @@ namespace ChurchCRM\Authentication {
         public static function endSession($preventRedirect = false)
         {
             $logger = LoggerUtils::getAuthLogger();
-            $currentSessionUserName = "Unknown";
+            $currentSessionUserName = 'Unknown';
             try {
-                if (self::getCurrentUser() != null) {
+                if (self::getCurrentUser() !== null) {
                     $currentSessionUserName = self::getCurrentUser()->getName();
                 }
             } catch (\Exception $e) {
-          //unable to get name of user logging out. Don't really care.
+                //unable to get name of user logging out. Don't really care.
             }
+            $logCtx = ['username' => $currentSessionUserName];
 
             try {
                 $result = self::getAuthenticationProvider()->endSession();
@@ -68,12 +69,18 @@ namespace ChurchCRM\Authentication {
                 $_SESSION = [];
                 session_destroy();
                 Bootstrapper::initSession();
-                $logger->info("Ended Local session for user " . $currentSessionUserName);
+                $logger->info(
+                    'Ended Local session for user',
+                    $logCtx
+                );
             } catch (\Exception $e) {
-                $logger->warning('Error destroying session', ['exception' => $e]);
+                $logger->warning(
+                    'Error destroying session',
+                    array_merge($logCtx, ['exception' => $e])
+                );
             } finally {
                 if (!$preventRedirect) {
-                        RedirectUtils::redirect(self::getSessionBeginURL());
+                    RedirectUtils::redirect(self::getSessionBeginURL());
                 }
             }
         }
@@ -94,37 +101,40 @@ namespace ChurchCRM\Authentication {
                     try {
                         self::getAuthenticationProvider();
                     } catch (\Exception $e) {
-                        $logger->warning("Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen", ['exception' => $e]);
+                        $logger->warning(
+                            "Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen",
+                            ['exception' => $e]
+                        );
                     }
                     break;
                 default:
-                    $logger->critical("Unknown AuthenticationRequest type supplied");
+                    $logger->critical('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => get_class($AuthenticationRequest)]);
                     break;
             }
 
             $result = self::getAuthenticationProvider()->authenticate($AuthenticationRequest);
 
             if (null !== $result->nextStepURL) {
-                $logger->debug("Authentication requires additional step: " . $result->nextStepURL);
+                $logger->debug('Authentication requires additional step: ' . $result->nextStepURL);
                 RedirectUtils::redirect($result->nextStepURL);
             }
 
             if ($result->isAuthenticated && ! $result->preventRedirect) {
-                $redirectLocation = array_key_exists("location", $_SESSION) ? $_SESSION['location'] : 'Menu.php';
+                $redirectLocation = array_key_exists('location', $_SESSION) ? $_SESSION['location'] : 'Menu.php';
                 NotificationService::updateNotifications();
-                $logger->debug("Authentication Successful; redirecting to: " . $redirectLocation);
+                $logger->debug('Authentication Successful; redirecting to: ' . $redirectLocation);
                 RedirectUtils::redirect($redirectLocation);
             }
             return $result;
         }
 
-        public static function validateUserSessionIsActive($updateLastOperationTimestamp = true)
+        public static function validateUserSessionIsActive(bool $updateLastOperationTimestamp = true): bool
         {
             try {
                 $result = self::getAuthenticationProvider()->validateUserSessionIsActive($updateLastOperationTimestamp);
                 return $result->isAuthenticated;
             } catch (\Exception $error) {
-                LoggerUtils::getAuthLogger()->debug("Error determining session authentication status.", ['exception' => $error]);
+                LoggerUtils::getAuthLogger()->debug('Error determining session authentication status.', ['exception' => $error]);
                 return false;
             }
         }
@@ -141,22 +151,29 @@ namespace ChurchCRM\Authentication {
             // Sometimes other actions may require a `nextStepURL` that should be enforced with
             // an authentication request (2FA, Expired Password, etc).
                 if (!$result->isAuthenticated) {
-                    LoggerUtils::getAuthLogger()->debug("Session not authenticated.  Redirecting to login page");
+                    LoggerUtils::getAuthLogger()->debug(
+                        'Session not authenticated.  Redirecting to login page'
+                    );
                     RedirectUtils::redirect(self::getSessionBeginURL());
                 } elseif (null !== $result->nextStepURL) {
-                    LoggerUtils::getAuthLogger()->debug("Session authenticated, but redirect requested by authentication provider.");
+                    LoggerUtils::getAuthLogger()->debug(
+                        'Session authenticated, but redirect requested by authentication provider.'
+                    );
                     RedirectUtils::redirect($result->nextStepURL);
                 }
-                LoggerUtils::getAuthLogger()->debug("Session valid");
+                LoggerUtils::getAuthLogger()->debug('Session valid');
             } catch (\Throwable $error) {
-                LoggerUtils::getAuthLogger()->debug("Error determining session authentication status.  Redirecting to login page.", ['exception' => $error]);
+                LoggerUtils::getAuthLogger()->debug(
+                    'Error determining session authentication status.  Redirecting to login page.',
+                    ['exception' => $error]
+                );
                 RedirectUtils::redirect(self::getSessionBeginURL());
             }
         }
 
         public static function getSessionBeginURL()
         {
-            return SystemURLs::getRootPath() . "/session/begin";
+            return SystemURLs::getRootPath() . '/session/begin';
         }
 
         public static function getForgotPasswordURL()
@@ -166,7 +183,7 @@ namespace ChurchCRM\Authentication {
           // this URL will need to be configuable by the system administrator
           // since they likely will not want users attempting to reset ChurchCRM passwords
           // but rather redirect users to some other password reset mechanism.
-            return SystemURLs::getRootPath() . "/session/forgot-password/reset-request";
+            return SystemURLs::getRootPath() . '/session/forgot-password/reset-request';
         }
     }
 }
