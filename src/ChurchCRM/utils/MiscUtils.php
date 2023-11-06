@@ -66,7 +66,7 @@ class MiscUtils
         return time() + $cacheLength ;
     }
 
-    public static function formatAge($Month, $Day, $Year)
+    public static function formatAge(int $Month, int $Day, int $Year)
     {
         if ($Year === null || $Year === '') {
             return;
