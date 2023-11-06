@@ -24,6 +24,7 @@ use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Base\GroupQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
 //Get the GroupID out of the querystring
@@ -34,7 +35,7 @@ if ($iGroupID < 1) {
 }
 
 //Get the data on this group
-$thisGroup = ChurchCRM\GroupQuery::create()->findOneById($iGroupID);
+$thisGroup = GroupQuery::create()->findOneById($iGroupID);
 
 //Look up the default role name
 $defaultRole = ListOptionQuery::create()->filterById($thisGroup->getRoleListId())->filterByOptionId($thisGroup->getDefaultRole())->findOne();

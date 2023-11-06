@@ -13,17 +13,14 @@ namespace ChurchCRM\Reports;
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\Base\Person2group2roleP2g2rQuery;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Person;
-use ChurchCRM\FamilyQuery;
 use ChurchCRM\GroupQuery;
-use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Map\PersonTableMap;
-use Propel\Runtime\ActiveQuery\Criteria;
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
@@ -89,7 +86,7 @@ for ($i = 0; $i < $nGrps; $i++) {
     $bFirstTeacher1 = true;
     $bFirstTeacher2 = true;
 
-    $groupRoleMemberships = ChurchCRM\Person2group2roleP2g2rQuery::create()
+    $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
                             ->joinWithPerson()
                             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
                             ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce ORDER BY per_LastName, per_FirstName
@@ -114,7 +111,7 @@ for ($i = 0; $i < $nGrps; $i++) {
             }
         }
 
-        $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
+        $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
         $lst_OptionName = $groupRole->getOptionName();
 
         if ($lst_OptionName == 'Teacher') {
