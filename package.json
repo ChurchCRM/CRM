@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "5.1.0",
+    "version": "5.1.1",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -19,7 +19,7 @@
     "homepage": "https://www.churchcrm.io",
     "scripts": {
         "clean": "rm -rf node_modules/ src/vendor/ src/skin/external",
-        "preinstall": "grunt clean & grunt updateVersions",
+        "preinstall": "grunt clean",
         "install": "grunt curl-dir && grunt copy && grunt sass && grunt lineending && grunt patchDataTablesCSS",
         "build-react": "webpack",
         "build": "npm run composer-install && npm run orm-gen &&  npm run build-react && grunt generateSignatures",
@@ -32,8 +32,6 @@
         "locale-audit": "grunt exec:downloadPOEditorStats && grunt genLocaleAudit",
         "update-signatures": "grunt generateSignatures",
         "package": "npm run clean && npm run deploy && rm src/composer.lock && grunt compress",
-        "demosite": "php scripts/update-demo-site.php",
-        "changelog-gen": "grunt exec:updatechangelog",
         "orm-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "sql-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel sql:build",
         "graph-viz": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel graphviz:generate",

@@ -2,8 +2,8 @@
 --
 -- Host: database	Database: churchcrm
 -- ------------------------------------------------------
--- Server version 	10.5.8-MariaDB-1:10.5.8+maria~focal
--- Date: Tue, 31 Oct 2023 23:45:44 -0400
+-- Server version 	11.1.2-MariaDB-1:11.1.2+maria~ubu2204
+-- Date: Sun, 05 Nov 2023 12:29:13 -0500
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,12 +26,12 @@ DROP TABLE IF EXISTS `calendars`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `calendars` (
   `calendar_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `accesstoken` varchar(99) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `foregroundColor` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `backgroundColor` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(128) NOT NULL,
+  `accesstoken` varchar(99) DEFAULT NULL,
+  `foregroundColor` varchar(6) DEFAULT NULL,
+  `backgroundColor` varchar(6) DEFAULT NULL,
   PRIMARY KEY (`calendar_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +60,7 @@ CREATE TABLE `calendar_events` (
   `calendar_id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
   PRIMARY KEY (`calendar_id`,`event_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,15 +91,15 @@ CREATE TABLE `canvassdata_can` (
   `can_Canvasser` mediumint(9) NOT NULL DEFAULT 0,
   `can_FYID` mediumint(9) DEFAULT NULL,
   `can_date` date DEFAULT NULL,
-  `can_Positive` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `can_Critical` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `can_Insightful` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `can_Financial` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `can_Suggestion` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `can_Positive` text DEFAULT NULL,
+  `can_Critical` text DEFAULT NULL,
+  `can_Insightful` text DEFAULT NULL,
+  `can_Financial` text DEFAULT NULL,
+  `can_Suggestion` text DEFAULT NULL,
   `can_NotInterested` tinyint(1) NOT NULL DEFAULT 0,
-  `can_WhyNotInterested` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `can_WhyNotInterested` text DEFAULT NULL,
   PRIMARY KEY (`can_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `church_location_person` (
   `order` int(11) NOT NULL,
   `person_location_role_id` int(11) NOT NULL,
   PRIMARY KEY (`location_id`,`person_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +160,7 @@ CREATE TABLE `church_location_role` (
   `role_order` int(11) NOT NULL,
   `role_title` int(11) NOT NULL,
   PRIMARY KEY (`location_id`,`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,11 +186,11 @@ DROP TABLE IF EXISTS `config_cfg`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `config_cfg` (
   `cfg_id` int(11) NOT NULL DEFAULT 0,
-  `cfg_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `cfg_value` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cfg_name` varchar(50) NOT NULL DEFAULT '',
+  `cfg_value` text DEFAULT NULL,
   PRIMARY KEY (`cfg_id`),
   UNIQUE KEY `cfg_name` (`cfg_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +200,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','crmEmailServer:1025'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20231031-233404'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20231031-233405'),(20142,'bHSTSEnable','');
+INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','crmEmailServer:1025'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20231105-122907'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20231105-122908'),(20142,'bHSTSEnable','');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -218,12 +218,12 @@ DROP TABLE IF EXISTS `deposit_dep`;
 CREATE TABLE `deposit_dep` (
   `dep_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `dep_Date` date DEFAULT NULL,
-  `dep_Comment` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dep_Comment` text DEFAULT NULL,
   `dep_EnteredBy` mediumint(9) unsigned DEFAULT NULL,
   `dep_Closed` tinyint(1) NOT NULL DEFAULT 0,
-  `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Bank',
+  `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') NOT NULL DEFAULT 'Bank',
   PRIMARY KEY (`dep_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=0;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci PACK_KEYS=0;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -250,22 +250,22 @@ DROP TABLE IF EXISTS `donateditem_di`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `donateditem_di` (
   `di_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `di_item` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `di_item` varchar(32) NOT NULL,
   `di_FR_ID` mediumint(9) unsigned NOT NULL,
   `di_donor_ID` mediumint(9) NOT NULL DEFAULT 0,
   `di_buyer_ID` mediumint(9) NOT NULL DEFAULT 0,
   `di_multibuy` smallint(1) NOT NULL DEFAULT 0,
-  `di_title` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `di_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `di_title` varchar(128) NOT NULL,
+  `di_description` text DEFAULT NULL,
   `di_sellprice` decimal(8,2) DEFAULT NULL,
   `di_estprice` decimal(8,2) DEFAULT NULL,
   `di_minimum` decimal(8,2) DEFAULT NULL,
   `di_materialvalue` decimal(8,2) DEFAULT NULL,
   `di_EnteredBy` smallint(5) unsigned NOT NULL DEFAULT 0,
   `di_EnteredDate` date NOT NULL,
-  `di_picture` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `di_picture` text DEFAULT NULL,
   PRIMARY KEY (`di_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -291,11 +291,11 @@ DROP TABLE IF EXISTS `donationfund_fun`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `donationfund_fun` (
   `fun_ID` tinyint(3) NOT NULL AUTO_INCREMENT,
-  `fun_Active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
-  `fun_Name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fun_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fun_Active` enum('true','false') NOT NULL DEFAULT 'true',
+  `fun_Name` varchar(30) DEFAULT NULL,
+  `fun_Description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`fun_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,13 +321,13 @@ DROP TABLE IF EXISTS `egive_egv`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `egive_egv` (
-  `egv_egiveID` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `egv_egiveID` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `egv_famID` int(11) NOT NULL,
   `egv_DateEntered` datetime NOT NULL,
   `egv_DateLastEdited` datetime NOT NULL,
   `egv_EnteredBy` smallint(6) NOT NULL DEFAULT 0,
   `egv_EditedBy` smallint(6) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -354,11 +354,11 @@ DROP TABLE IF EXISTS `email_message_pending_emp`;
 CREATE TABLE `email_message_pending_emp` (
   `emp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT 0,
   `emp_to_send` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `emp_subject` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `emp_message` text COLLATE utf8_unicode_ci NOT NULL,
-  `emp_attach_name` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emp_subject` varchar(128) NOT NULL,
+  `emp_message` text NOT NULL,
+  `emp_attach_name` text DEFAULT NULL,
   `emp_attach` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,8 +387,8 @@ CREATE TABLE `email_recipient_pending_erp` (
   `erp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT 0,
   `erp_num_attempt` smallint(5) unsigned NOT NULL DEFAULT 0,
   `erp_failed_time` datetime DEFAULT NULL,
-  `erp_email_address` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `erp_email_address` varchar(50) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -415,11 +415,11 @@ DROP TABLE IF EXISTS `eventcountnames_evctnm`;
 CREATE TABLE `eventcountnames_evctnm` (
   `evctnm_countid` int(5) NOT NULL AUTO_INCREMENT,
   `evctnm_eventtypeid` smallint(5) NOT NULL DEFAULT 0,
-  `evctnm_countname` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `evctnm_notes` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `evctnm_countname` varchar(20) NOT NULL DEFAULT '',
+  `evctnm_notes` varchar(20) NOT NULL DEFAULT '',
   UNIQUE KEY `evctnm_countid` (`evctnm_countid`),
   UNIQUE KEY `evctnm_eventtypeid` (`evctnm_eventtypeid`,`evctnm_countname`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -447,11 +447,11 @@ DROP TABLE IF EXISTS `eventcounts_evtcnt`;
 CREATE TABLE `eventcounts_evtcnt` (
   `evtcnt_eventid` int(5) NOT NULL DEFAULT 0,
   `evtcnt_countid` int(5) NOT NULL DEFAULT 0,
-  `evtcnt_countname` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `evtcnt_countname` varchar(20) DEFAULT NULL,
   `evtcnt_countcount` int(6) DEFAULT NULL,
-  `evtcnt_notes` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `evtcnt_notes` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`evtcnt_eventid`,`evtcnt_countid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -479,19 +479,19 @@ DROP TABLE IF EXISTS `events_event`;
 CREATE TABLE `events_event` (
   `event_id` int(11) NOT NULL AUTO_INCREMENT,
   `event_type` int(11) NOT NULL DEFAULT 0,
-  `event_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `event_desc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `event_text` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `event_title` varchar(255) NOT NULL DEFAULT '',
+  `event_desc` varchar(255) DEFAULT NULL,
+  `event_text` text DEFAULT NULL,
   `event_start` datetime NOT NULL,
   `event_end` datetime NOT NULL,
   `inactive` int(1) NOT NULL DEFAULT 0,
-  `event_typename` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `event_typename` varchar(40) NOT NULL DEFAULT '',
   `location_id` int(11) DEFAULT NULL,
   `secondary_contact_person_id` int(11) DEFAULT NULL,
   `primary_contact_person_id` int(11) DEFAULT NULL,
-  `event_url` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `event_url` text DEFAULT NULL,
   PRIMARY KEY (`event_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -526,7 +526,7 @@ CREATE TABLE `event_attend` (
   `checkout_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`attend_id`),
   UNIQUE KEY `event_id` (`event_id`,`person_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -555,7 +555,7 @@ CREATE TABLE `event_audience` (
   `event_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   PRIMARY KEY (`event_id`,`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -581,16 +581,16 @@ DROP TABLE IF EXISTS `event_types`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `event_types` (
   `type_id` int(11) NOT NULL AUTO_INCREMENT,
-  `type_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `type_name` varchar(255) NOT NULL DEFAULT '',
   `type_defstarttime` time NOT NULL DEFAULT '00:00:00',
-  `type_defrecurtype` enum('none','weekly','monthly','yearly') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'none',
-  `type_defrecurDOW` enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Sunday',
-  `type_defrecurDOM` char(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `type_defrecurtype` enum('none','weekly','monthly','yearly') NOT NULL DEFAULT 'none',
+  `type_defrecurDOW` enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday') NOT NULL DEFAULT 'Sunday',
+  `type_defrecurDOM` char(2) NOT NULL DEFAULT '0',
   `type_defrecurDOY` date NOT NULL DEFAULT '2016-01-01',
   `type_active` int(1) NOT NULL DEFAULT 1,
   `type_grpid` mediumint(9) DEFAULT NULL,
   PRIMARY KEY (`type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -618,11 +618,11 @@ DROP TABLE IF EXISTS `family_custom`;
 CREATE TABLE `family_custom` (
   `fam_ID` mediumint(9) NOT NULL DEFAULT 0,
   `c1` mediumint(9) DEFAULT NULL,
-  `c2` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `c3` enum('winter','spring','summer','fall') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c2` varchar(30) DEFAULT NULL,
+  `c3` enum('winter','spring','summer','fall') DEFAULT NULL,
   `c4` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`fam_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -649,12 +649,12 @@ DROP TABLE IF EXISTS `family_custom_master`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `family_custom_master` (
   `fam_custom_Order` smallint(6) NOT NULL DEFAULT 0,
-  `fam_custom_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `fam_custom_Name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `fam_custom_Field` varchar(5) NOT NULL DEFAULT '',
+  `fam_custom_Name` varchar(40) NOT NULL DEFAULT '',
   `fam_custom_Special` mediumint(8) unsigned DEFAULT NULL,
   `fam_custom_FieldSec` tinyint(4) NOT NULL DEFAULT 1,
   `type_ID` tinyint(4) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -681,33 +681,33 @@ DROP TABLE IF EXISTS `family_fam`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `family_fam` (
   `fam_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `fam_Name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_Address1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_Address2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_City` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_State` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_Zip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_Country` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_HomePhone` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_WorkPhone` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_CellPhone` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_Email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fam_Name` varchar(50) DEFAULT NULL,
+  `fam_Address1` varchar(255) DEFAULT NULL,
+  `fam_Address2` varchar(255) DEFAULT NULL,
+  `fam_City` varchar(50) DEFAULT NULL,
+  `fam_State` varchar(50) DEFAULT NULL,
+  `fam_Zip` varchar(50) DEFAULT NULL,
+  `fam_Country` varchar(50) DEFAULT NULL,
+  `fam_HomePhone` varchar(30) DEFAULT NULL,
+  `fam_WorkPhone` varchar(30) DEFAULT NULL,
+  `fam_CellPhone` varchar(30) DEFAULT NULL,
+  `fam_Email` varchar(100) DEFAULT NULL,
   `fam_WeddingDate` date DEFAULT NULL,
   `fam_DateEntered` datetime NOT NULL,
   `fam_DateLastEdited` datetime DEFAULT NULL,
   `fam_EnteredBy` smallint(5) NOT NULL DEFAULT 0,
   `fam_EditedBy` smallint(5) unsigned DEFAULT 0,
-  `fam_scanCheck` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_scanCredit` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fam_SendNewsLetter` enum('FALSE','TRUE') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'FALSE',
+  `fam_scanCheck` text DEFAULT NULL,
+  `fam_scanCredit` text DEFAULT NULL,
+  `fam_SendNewsLetter` enum('FALSE','TRUE') NOT NULL DEFAULT 'FALSE',
   `fam_DateDeactivated` date DEFAULT NULL,
-  `fam_OkToCanvass` enum('FALSE','TRUE') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'FALSE',
+  `fam_OkToCanvass` enum('FALSE','TRUE') NOT NULL DEFAULT 'FALSE',
   `fam_Canvasser` smallint(5) unsigned NOT NULL DEFAULT 0,
   `fam_Latitude` double DEFAULT NULL,
   `fam_Longitude` double DEFAULT NULL,
   `fam_Envelope` mediumint(9) NOT NULL DEFAULT 0,
   PRIMARY KEY (`fam_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -735,12 +735,12 @@ DROP TABLE IF EXISTS `fundraiser_fr`;
 CREATE TABLE `fundraiser_fr` (
   `fr_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `fr_date` date DEFAULT NULL,
-  `fr_title` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `fr_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fr_title` varchar(128) NOT NULL,
+  `fr_description` text DEFAULT NULL,
   `fr_EnteredBy` smallint(5) unsigned NOT NULL DEFAULT 0,
   `fr_EnteredDate` date NOT NULL,
   PRIMARY KEY (`fr_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -768,7 +768,7 @@ DROP TABLE IF EXISTS `groupprop_11`;
 CREATE TABLE `groupprop_11` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -796,7 +796,7 @@ DROP TABLE IF EXISTS `groupprop_13`;
 CREATE TABLE `groupprop_13` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -823,14 +823,14 @@ DROP TABLE IF EXISTS `groupprop_17`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `groupprop_17` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` enum('false','true') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c1` enum('false','true') DEFAULT NULL,
   `c2` tinyint(4) DEFAULT NULL,
   `c3` int(11) DEFAULT NULL,
-  `c4` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c4` varchar(100) DEFAULT NULL,
   `c6` date DEFAULT NULL,
-  `c7` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `c8` text COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `c7` varchar(100) DEFAULT NULL,
+  `c8` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -859,7 +859,7 @@ CREATE TABLE `groupprop_2` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL,
   `c2` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -887,7 +887,7 @@ DROP TABLE IF EXISTS `groupprop_20`;
 CREATE TABLE `groupprop_20` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -917,7 +917,7 @@ CREATE TABLE `groupprop_23` (
   `c1` year(4) DEFAULT NULL,
   PRIMARY KEY (`per_ID`),
   UNIQUE KEY `per_ID` (`per_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -944,7 +944,7 @@ DROP TABLE IF EXISTS `groupprop_45`;
 CREATE TABLE `groupprop_45` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -970,7 +970,7 @@ DROP TABLE IF EXISTS `groupprop_47`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `groupprop_47` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -997,7 +997,7 @@ DROP TABLE IF EXISTS `groupprop_49`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `groupprop_49` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1024,7 +1024,7 @@ DROP TABLE IF EXISTS `groupprop_6`;
 CREATE TABLE `groupprop_6` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1053,7 +1053,7 @@ CREATE TABLE `groupprop_7` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` date DEFAULT NULL,
   `c2` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1082,7 +1082,7 @@ CREATE TABLE `groupprop_9` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `c1` tinyint(4) DEFAULT NULL,
   `c2` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1110,13 +1110,13 @@ DROP TABLE IF EXISTS `groupprop_master`;
 CREATE TABLE `groupprop_master` (
   `grp_ID` mediumint(9) unsigned NOT NULL DEFAULT 0,
   `prop_ID` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `prop_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `prop_Name` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prop_Description` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prop_Field` varchar(5) NOT NULL DEFAULT '0',
+  `prop_Name` varchar(40) DEFAULT NULL,
+  `prop_Description` varchar(60) DEFAULT NULL,
   `type_ID` smallint(5) unsigned NOT NULL DEFAULT 0,
   `prop_Special` mediumint(9) unsigned DEFAULT NULL,
-  `prop_PersonDisplay` enum('false','true') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'false'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Group-specific properties order, name, description, type';
+  `prop_PersonDisplay` enum('false','true') NOT NULL DEFAULT 'false'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='Group-specific properties order, name, description, type';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1146,13 +1146,13 @@ CREATE TABLE `group_grp` (
   `grp_Type` tinyint(4) NOT NULL DEFAULT 0,
   `grp_RoleListID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `grp_DefaultRole` mediumint(9) NOT NULL DEFAULT 0,
-  `grp_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `grp_Description` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `grp_Name` varchar(50) NOT NULL DEFAULT '',
+  `grp_Description` text DEFAULT NULL,
   `grp_hasSpecialProps` tinyint(1) NOT NULL DEFAULT 0,
   `grp_active` tinyint(1) NOT NULL DEFAULT 1,
   `grp_include_email_export` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`grp_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1180,23 +1180,23 @@ DROP TABLE IF EXISTS `istlookup_lu`;
 CREATE TABLE `istlookup_lu` (
   `lu_fam_ID` mediumint(9) NOT NULL DEFAULT 0,
   `lu_LookupDateTime` datetime NOT NULL DEFAULT '2016-01-01 00:00:00',
-  `lu_DeliveryLine1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_DeliveryLine2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_City` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_State` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_ZipAddon` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_Zip` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_Addon` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_LOTNumber` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_DPCCheckdigit` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_RecordType` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_LastLine` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_CarrierRoute` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_ReturnCodes` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_ErrorCodes` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_ErrorDesc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_DeliveryLine1` varchar(255) DEFAULT NULL,
+  `lu_DeliveryLine2` varchar(255) DEFAULT NULL,
+  `lu_City` varchar(50) DEFAULT NULL,
+  `lu_State` varchar(50) DEFAULT NULL,
+  `lu_ZipAddon` varchar(50) DEFAULT NULL,
+  `lu_Zip` varchar(10) DEFAULT NULL,
+  `lu_Addon` varchar(10) DEFAULT NULL,
+  `lu_LOTNumber` varchar(10) DEFAULT NULL,
+  `lu_DPCCheckdigit` varchar(10) DEFAULT NULL,
+  `lu_RecordType` varchar(10) DEFAULT NULL,
+  `lu_LastLine` varchar(255) DEFAULT NULL,
+  `lu_CarrierRoute` varchar(10) DEFAULT NULL,
+  `lu_ReturnCodes` varchar(10) DEFAULT NULL,
+  `lu_ErrorCodes` varchar(10) DEFAULT NULL,
+  `lu_ErrorDesc` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`lu_fam_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='US Address Verification Lookups From Intelligent Search Tech';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='US Address Verification Lookups From Intelligent Search Tech';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1227,7 +1227,7 @@ CREATE TABLE `kioskassginment_kasm` (
   `kasm_EventId` mediumint(9) DEFAULT 0,
   PRIMARY KEY (`kasm_ID`),
   UNIQUE KEY `kasm_ID` (`kasm_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1253,14 +1253,14 @@ DROP TABLE IF EXISTS `kioskdevice_kdev`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kioskdevice_kdev` (
   `kdev_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `kdev_GUIDHash` char(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `kdev_Name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `kdev_GUIDHash` char(64) DEFAULT NULL,
+  `kdev_Name` varchar(50) DEFAULT NULL,
   `kdev_deviceType` mediumint(9) NOT NULL DEFAULT 0,
   `kdev_lastHeartbeat` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `kdev_Accepted` tinyint(1) DEFAULT NULL,
-  `kdev_PendingCommands` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `kdev_PendingCommands` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`kdev_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1288,8 +1288,8 @@ CREATE TABLE `list_lst` (
   `lst_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `lst_OptionID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `lst_OptionSequence` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `lst_OptionName` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `lst_OptionName` varchar(50) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1317,17 +1317,17 @@ DROP TABLE IF EXISTS `locations`;
 CREATE TABLE `locations` (
   `location_id` int(11) NOT NULL AUTO_INCREMENT,
   `location_typeId` int(11) NOT NULL,
-  `location_name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
-  `location_address` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_city` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_state` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_zip` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_country` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `location_email` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `location_timzezone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `location_name` varchar(256) NOT NULL,
+  `location_address` varchar(45) NOT NULL,
+  `location_city` varchar(45) NOT NULL,
+  `location_state` varchar(45) NOT NULL,
+  `location_zip` varchar(45) NOT NULL,
+  `location_country` varchar(45) NOT NULL,
+  `location_phone` varchar(45) DEFAULT NULL,
+  `location_email` varchar(45) DEFAULT NULL,
+  `location_timzezone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`location_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1353,11 +1353,11 @@ DROP TABLE IF EXISTS `menu_links`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu_links` (
   `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
+  `linkName` varchar(50) DEFAULT NULL,
+  `linkUri` text NOT NULL,
   `linkOrder` int(11) NOT NULL,
   PRIMARY KEY (`linkId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1388,7 +1388,7 @@ CREATE TABLE `multibuy_mb` (
   `mb_item_ID` mediumint(9) NOT NULL DEFAULT 0,
   `mb_count` decimal(8,0) DEFAULT NULL,
   PRIMARY KEY (`mb_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1417,14 +1417,14 @@ CREATE TABLE `note_nte` (
   `nte_per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `nte_fam_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `nte_Private` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `nte_Text` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nte_Text` text DEFAULT NULL,
   `nte_DateEntered` datetime NOT NULL,
   `nte_DateLastEdited` datetime DEFAULT NULL,
   `nte_EnteredBy` mediumint(8) NOT NULL DEFAULT 0,
   `nte_EditedBy` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `nte_Type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nte_Type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`nte_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=633 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=633 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1455,7 +1455,7 @@ CREATE TABLE `paddlenum_pn` (
   `pn_Num` mediumint(9) unsigned DEFAULT NULL,
   `pn_per_ID` mediumint(9) NOT NULL DEFAULT 0,
   PRIMARY KEY (`pn_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1485,7 +1485,7 @@ CREATE TABLE `permissions` (
   `permission_desc` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`permission_id`),
   UNIQUE KEY `permission_name` (`permission_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1516,7 +1516,7 @@ CREATE TABLE `person2group2role_p2g2r` (
   `p2g2r_rle_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`p2g2r_per_ID`,`p2g2r_grp_ID`),
   KEY `p2g2r_per_ID` (`p2g2r_per_ID`,`p2g2r_grp_ID`,`p2g2r_rle_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1546,7 +1546,7 @@ CREATE TABLE `person2volunteeropp_p2vo` (
   `p2vo_per_ID` mediumint(9) DEFAULT NULL,
   `p2vo_vol_ID` mediumint(9) DEFAULT NULL,
   PRIMARY KEY (`p2vo_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1573,11 +1573,11 @@ DROP TABLE IF EXISTS `person_custom`;
 CREATE TABLE `person_custom` (
   `per_ID` mediumint(9) NOT NULL DEFAULT 0,
   `c1` mediumint(9) DEFAULT NULL,
-  `c2` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `c3` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c2` varchar(50) DEFAULT NULL,
+  `c3` varchar(100) DEFAULT NULL,
   `c4` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`per_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1604,13 +1604,13 @@ DROP TABLE IF EXISTS `person_custom_master`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `person_custom_master` (
   `custom_Order` smallint(6) NOT NULL DEFAULT 0,
-  `custom_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `custom_Name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `custom_Field` varchar(5) NOT NULL DEFAULT '',
+  `custom_Name` varchar(40) NOT NULL DEFAULT '',
   `custom_Special` mediumint(8) unsigned DEFAULT NULL,
   `custom_FieldSec` tinyint(4) NOT NULL,
   `type_ID` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`custom_Field`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1637,22 +1637,22 @@ DROP TABLE IF EXISTS `person_per`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `person_per` (
   `per_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `per_Title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_FirstName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_MiddleName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_LastName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_Suffix` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_Address1` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_Address2` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_City` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_State` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_Zip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_Country` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_HomePhone` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_WorkPhone` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_CellPhone` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_Email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_WorkEmail` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `per_Title` varchar(50) DEFAULT NULL,
+  `per_FirstName` varchar(50) DEFAULT NULL,
+  `per_MiddleName` varchar(50) DEFAULT NULL,
+  `per_LastName` varchar(50) DEFAULT NULL,
+  `per_Suffix` varchar(50) DEFAULT NULL,
+  `per_Address1` varchar(50) DEFAULT NULL,
+  `per_Address2` varchar(50) DEFAULT NULL,
+  `per_City` varchar(50) DEFAULT NULL,
+  `per_State` varchar(50) DEFAULT NULL,
+  `per_Zip` varchar(50) DEFAULT NULL,
+  `per_Country` varchar(50) DEFAULT NULL,
+  `per_HomePhone` varchar(30) DEFAULT NULL,
+  `per_WorkPhone` varchar(30) DEFAULT NULL,
+  `per_CellPhone` varchar(30) DEFAULT NULL,
+  `per_Email` varchar(50) DEFAULT NULL,
+  `per_WorkEmail` varchar(50) DEFAULT NULL,
   `per_BirthMonth` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `per_BirthDay` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `per_BirthYear` year(4) DEFAULT NULL,
@@ -1668,11 +1668,11 @@ CREATE TABLE `person_per` (
   `per_EditedBy` smallint(5) unsigned DEFAULT 0,
   `per_FriendDate` date DEFAULT NULL,
   `per_Flags` mediumint(9) NOT NULL DEFAULT 0,
-  `per_Facebook` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_Twitter` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `per_LinkedIn` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `per_Facebook` varchar(50) DEFAULT NULL,
+  `per_Twitter` varchar(50) DEFAULT NULL,
+  `per_LinkedIn` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`per_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1701,7 +1701,7 @@ CREATE TABLE `person_permission` (
   `per_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL,
   PRIMARY KEY (`per_id`,`permission_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1729,7 +1729,7 @@ CREATE TABLE `person_roles` (
   `per_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   PRIMARY KEY (`per_id`,`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1759,24 +1759,24 @@ CREATE TABLE `pledge_plg` (
   `plg_FYID` mediumint(9) DEFAULT NULL,
   `plg_date` date DEFAULT NULL,
   `plg_amount` decimal(8,2) DEFAULT NULL,
-  `plg_schedule` enum('Weekly','Monthly','Quarterly','Once','Other') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `plg_comment` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `plg_schedule` enum('Weekly','Monthly','Quarterly','Once','Other') DEFAULT NULL,
+  `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') DEFAULT NULL,
+  `plg_comment` text DEFAULT NULL,
   `plg_DateLastEdited` date NOT NULL DEFAULT '2016-01-01',
   `plg_EditedBy` mediumint(9) NOT NULL DEFAULT 0,
-  `plg_PledgeOrPayment` enum('Pledge','Payment') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Pledge',
+  `plg_PledgeOrPayment` enum('Pledge','Payment') NOT NULL DEFAULT 'Pledge',
   `plg_fundID` tinyint(3) unsigned DEFAULT NULL,
   `plg_depID` mediumint(9) unsigned DEFAULT NULL,
   `plg_CheckNo` bigint(16) unsigned DEFAULT NULL,
   `plg_Problem` tinyint(1) DEFAULT NULL,
-  `plg_scanString` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `plg_scanString` text DEFAULT NULL,
   `plg_aut_ID` mediumint(9) NOT NULL DEFAULT 0,
   `plg_aut_Cleared` tinyint(1) NOT NULL DEFAULT 0,
   `plg_aut_ResultID` mediumint(9) NOT NULL DEFAULT 0,
   `plg_NonDeductible` decimal(8,2) NOT NULL,
-  `plg_GroupKey` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `plg_GroupKey` varchar(64) NOT NULL,
   PRIMARY KEY (`plg_plgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1803,11 +1803,11 @@ DROP TABLE IF EXISTS `propertytype_prt`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `propertytype_prt` (
   `prt_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `prt_Class` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `prt_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `prt_Description` text COLLATE utf8_unicode_ci NOT NULL,
+  `prt_Class` varchar(10) NOT NULL DEFAULT '',
+  `prt_Name` varchar(50) NOT NULL DEFAULT '',
+  `prt_Description` text NOT NULL,
   PRIMARY KEY (`prt_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1834,13 +1834,13 @@ DROP TABLE IF EXISTS `property_pro`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `property_pro` (
   `pro_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `pro_Class` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `pro_Class` varchar(10) NOT NULL DEFAULT '',
   `pro_prt_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `pro_Name` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `pro_Description` text COLLATE utf8_unicode_ci NOT NULL,
-  `pro_Prompt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pro_Name` varchar(200) NOT NULL DEFAULT '0',
+  `pro_Description` text NOT NULL,
+  `pro_Prompt` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`pro_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1868,10 +1868,10 @@ DROP TABLE IF EXISTS `queryparameteroptions_qpo`;
 CREATE TABLE `queryparameteroptions_qpo` (
   `qpo_ID` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `qpo_qrp_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `qpo_Display` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `qpo_Value` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `qpo_Display` varchar(50) NOT NULL DEFAULT '',
+  `qpo_Value` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`qpo_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1900,21 +1900,21 @@ CREATE TABLE `queryparameters_qrp` (
   `qrp_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `qrp_qry_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `qrp_Type` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `qrp_OptionSQL` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `qrp_Name` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `qrp_Description` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `qrp_Alias` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `qrp_Default` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `qrp_OptionSQL` text DEFAULT NULL,
+  `qrp_Name` varchar(25) DEFAULT NULL,
+  `qrp_Description` text DEFAULT NULL,
+  `qrp_Alias` varchar(25) DEFAULT NULL,
+  `qrp_Default` varchar(25) DEFAULT NULL,
   `qrp_Required` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `qrp_InputBoxSize` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `qrp_Validation` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `qrp_Validation` varchar(5) NOT NULL DEFAULT '',
   `qrp_NumericMax` int(11) DEFAULT NULL,
   `qrp_NumericMin` int(11) DEFAULT NULL,
   `qrp_AlphaMinLength` int(11) DEFAULT NULL,
   `qrp_AlphaMaxLength` int(11) DEFAULT NULL,
   PRIMARY KEY (`qrp_ID`),
   KEY `qrp_qry_ID` (`qrp_qry_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1941,12 +1941,12 @@ DROP TABLE IF EXISTS `query_qry`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `query_qry` (
   `qry_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `qry_SQL` text COLLATE utf8_unicode_ci NOT NULL,
-  `qry_Name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `qry_Description` text COLLATE utf8_unicode_ci NOT NULL,
+  `qry_SQL` text NOT NULL,
+  `qry_Name` varchar(255) NOT NULL DEFAULT '',
+  `qry_Description` text NOT NULL,
   `qry_Count` tinyint(1) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`qry_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1974,8 +1974,8 @@ DROP TABLE IF EXISTS `record2property_r2p`;
 CREATE TABLE `record2property_r2p` (
   `r2p_pro_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `r2p_record_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `r2p_Value` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `r2p_Value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2002,23 +2002,23 @@ DROP TABLE IF EXISTS `result_res`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `result_res` (
   `res_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `res_echotype1` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_echotype2` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_echotype3` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_authorization` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_order_number` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_reference` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_status` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_avs_result` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_security_result` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_mac` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_decline_code` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_tran_date` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_merchant_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_version` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_EchoServer` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_echotype1` text NOT NULL,
+  `res_echotype2` text NOT NULL,
+  `res_echotype3` text NOT NULL,
+  `res_authorization` text NOT NULL,
+  `res_order_number` text NOT NULL,
+  `res_reference` text NOT NULL,
+  `res_status` text NOT NULL,
+  `res_avs_result` text NOT NULL,
+  `res_security_result` text NOT NULL,
+  `res_mac` text NOT NULL,
+  `res_decline_code` text NOT NULL,
+  `res_tran_date` text NOT NULL,
+  `res_merchant_name` text NOT NULL,
+  `res_version` text NOT NULL,
+  `res_EchoServer` text NOT NULL,
   PRIMARY KEY (`res_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2047,7 +2047,7 @@ CREATE TABLE `roles` (
   `role_name` varchar(50) NOT NULL,
   `role_desc` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2073,13 +2073,13 @@ DROP TABLE IF EXISTS `tokens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tokens` (
-  `token` varchar(99) COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `token` varchar(99) NOT NULL,
+  `type` varchar(50) DEFAULT NULL,
   `reference_id` int(9) NOT NULL,
   `valid_until_date` datetime DEFAULT NULL,
   `remainingUses` int(2) DEFAULT NULL,
   PRIMARY KEY (`token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2107,14 +2107,14 @@ DROP TABLE IF EXISTS `userconfig_ucfg`;
 CREATE TABLE `userconfig_ucfg` (
   `ucfg_per_id` mediumint(9) unsigned NOT NULL,
   `ucfg_id` int(11) NOT NULL DEFAULT 0,
-  `ucfg_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `ucfg_value` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ucfg_type` enum('text','number','date','boolean','textarea') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'text',
-  `ucfg_tooltip` text COLLATE utf8_unicode_ci NOT NULL,
-  `ucfg_permission` enum('FALSE','TRUE') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'FALSE',
-  `ucfg_cat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `ucfg_name` varchar(50) NOT NULL DEFAULT '',
+  `ucfg_value` text DEFAULT NULL,
+  `ucfg_type` enum('text','number','date','boolean','textarea') NOT NULL DEFAULT 'text',
+  `ucfg_tooltip` text NOT NULL,
+  `ucfg_permission` enum('FALSE','TRUE') NOT NULL DEFAULT 'FALSE',
+  `ucfg_cat` varchar(20) NOT NULL,
   PRIMARY KEY (`ucfg_per_id`,`ucfg_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2144,7 +2144,7 @@ CREATE TABLE `user_settings` (
   `setting_name` varchar(50) NOT NULL,
   `setting_value` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`user_id`,`setting_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2171,7 +2171,7 @@ DROP TABLE IF EXISTS `user_usr`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_usr` (
   `usr_per_ID` mediumint(9) unsigned NOT NULL DEFAULT 0,
-  `usr_Password` varchar(500) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `usr_Password` varchar(500) NOT NULL DEFAULT '',
   `usr_NeedPasswordChange` tinyint(3) unsigned NOT NULL DEFAULT 1,
   `usr_LastLogin` datetime NOT NULL DEFAULT '2016-01-01 00:00:00',
   `usr_LoginCount` smallint(5) unsigned NOT NULL DEFAULT 0,
@@ -2185,14 +2185,14 @@ CREATE TABLE `user_usr` (
   `usr_Notes` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_Admin` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_SearchLimit` tinyint(4) DEFAULT 10,
-  `usr_Style` varchar(50) COLLATE utf8_unicode_ci DEFAULT 'Style.css',
+  `usr_Style` varchar(50) DEFAULT 'Style.css',
   `usr_showPledges` tinyint(1) NOT NULL DEFAULT 0,
   `usr_showPayments` tinyint(1) NOT NULL DEFAULT 0,
   `usr_showSince` date NOT NULL DEFAULT '2016-01-01',
   `usr_defaultFY` mediumint(9) NOT NULL DEFAULT 10,
   `usr_currentDeposit` mediumint(9) NOT NULL DEFAULT 0,
-  `usr_UserName` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `usr_apiKey` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `usr_UserName` varchar(32) DEFAULT NULL,
+  `usr_apiKey` varchar(255) DEFAULT NULL,
   `usr_EditSelf` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_CalStart` date DEFAULT NULL,
   `usr_CalEnd` date DEFAULT NULL,
@@ -2206,13 +2206,13 @@ CREATE TABLE `user_usr` (
   `usr_CalNoSchool8` date DEFAULT NULL,
   `usr_SearchFamily` tinyint(3) DEFAULT NULL,
   `usr_Canvasser` tinyint(3) NOT NULL DEFAULT 0,
-  `usr_TwoFactorAuthSecret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `usr_TwoFactorAuthSecret` varchar(255) DEFAULT NULL,
   `usr_TwoFactorAuthLastKeyTimestamp` int(11) DEFAULT NULL,
-  `usr_TwoFactorAuthRecoveryCodes` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `usr_TwoFactorAuthRecoveryCodes` text DEFAULT NULL,
   PRIMARY KEY (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   UNIQUE KEY `usr_apiKey_unique` (`usr_apiKey`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2239,12 +2239,12 @@ DROP TABLE IF EXISTS `version_ver`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `version_ver` (
   `ver_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `ver_version` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `ver_version` varchar(50) NOT NULL DEFAULT '',
   `ver_update_start` datetime DEFAULT NULL,
   `ver_update_end` datetime DEFAULT NULL,
   PRIMARY KEY (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2254,12 +2254,12 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55'),(20,'5.0.5','2023-10-21 19:04:42','2023-10-21 19:04:42'),(21,'5.1.0','2023-10-31 23:33:49','2023-10-31 23:33:49');
+INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55'),(20,'5.0.5','2023-10-21 19:04:42','2023-10-21 19:04:42'),(21,'5.1.0','2023-10-31 23:33:49','2023-10-31 23:33:49'),(22,'5.1.1','2023-11-05 12:28:43','2023-11-05 12:28:43');
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `version_ver` with 21 row(s)
+-- Dumped table `version_ver` with 22 row(s)
 --
 
 --
@@ -2272,11 +2272,11 @@ DROP TABLE IF EXISTS `volunteeropportunity_vol`;
 CREATE TABLE `volunteeropportunity_vol` (
   `vol_ID` int(3) NOT NULL AUTO_INCREMENT,
   `vol_Order` int(3) NOT NULL DEFAULT 0,
-  `vol_Active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
-  `vol_Name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `vol_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `vol_Active` enum('true','false') NOT NULL DEFAULT 'true',
+  `vol_Name` varchar(30) DEFAULT NULL,
+  `vol_Description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`vol_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2303,12 +2303,12 @@ DROP TABLE IF EXISTS `whycame_why`;
 CREATE TABLE `whycame_why` (
   `why_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
   `why_per_ID` mediumint(9) NOT NULL DEFAULT 0,
-  `why_join` text COLLATE utf8_unicode_ci NOT NULL,
-  `why_come` text COLLATE utf8_unicode_ci NOT NULL,
-  `why_suggest` text COLLATE utf8_unicode_ci NOT NULL,
-  `why_hearOfUs` text COLLATE utf8_unicode_ci NOT NULL,
+  `why_join` text NOT NULL,
+  `why_come` text NOT NULL,
+  `why_suggest` text NOT NULL,
+  `why_hearOfUs` text NOT NULL,
   PRIMARY KEY (`why_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2376,4 +2376,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 31 Oct 2023 23:45:45 -0400
+-- Dump completed on: Sun, 05 Nov 2023 12:29:14 -0500

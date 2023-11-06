@@ -1,3 +1,27 @@
+# 5.1.0
+
+## What's Changed
+### 🪲 Bugs
+* handle situation where iRemotePhotoCacheDuration is not set, minor cleanup around code by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6607
+* Fixed Issue Reporting by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6616
+* Bug: Fix Event Checkin by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6617
+### 💬 Localization
+* 5.1.0 POEditor Update - en_GB & ro_RO by @github-actions in https://github.com/ChurchCRM/CRM/pull/6603
+* 5.1.0 POEditor Update - 2023-11-02 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6608
+### Inner Beauty
+* introduce phpcs and conform to psr12 by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6600
+* Build: 5.1.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6604
+* Remove System regestration feature by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6605
+* Moved from Custom github action for Release Notes to github builtin  by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6609
+* better utilize docker layer cache, make `up` rebuild by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6612
+### 👒 Dependencies
+* [Snyk] Upgrade ckeditor4 from 4.22.1 to 4.23.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6611
+### Other Changes
+* enable ORM logs only if we are in debug mode by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6618
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.0.5...5.1.0
+
 # 5.0.5
 
 ## :star: Enhancements
