@@ -1,16 +1,9 @@
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
-*.iml
 ## Directory-based project format:
 .vscode/
-
-## File-based project format:
-*.ipr
-*.iws
 
 #Exclude composer vendor folders
 vendor
 node_modules
-npm-debug.log*
 BuildConfig.json
 security-checker.phar
 
