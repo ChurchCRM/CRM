@@ -2027,10 +2027,6 @@ msgid "Add New Group"
 msgstr "Tambahkan Grup Baru"
 
 #: 
-msgid "Submit"
-msgstr "Kirimkan"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Editor Properti Anggota Grup"
 
@@ -3172,8 +3168,9 @@ msgid "User Delete Confirmation"
 msgstr "Konfirmasi Penghapusan Pengguna"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Harap konfirmasi penghapusan status pengguna dari:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Harap konfirmasi penghapusan status pengguna dari"
 
 #: 
 msgid "User Editor"
@@ -3606,26 +3603,6 @@ msgstr "Teks salah"
 #: 
 msgid "Issue Report!"
 msgstr "Laporan Masalah!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Masukkan Judul untuk laporan bug / fitur Anda"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Apa yang Anda lakukan ketika Anda melihat peluang bug / fitur?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Ketika Anda mengklik \"kirim,\" laporan kesalahan akan diposting ke pelacak Isu ChurchCRM GitHub."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Harap jangan sertakan informasi rahasia apa pun."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Beberapa informasi umum tentang sistem Anda akan dikirimkan bersama dengan permintaan seperti versi Server dan header browser."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -7521,14 +7498,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "Anda yakin ingin menghapus anggota grup yang dipilih?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Masalah yang berhasil dikirim"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Lihat Masalah di GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Apakah Anda ingin menghapus orang ini? Ini tidak dapat dibatalkan."
 
@@ -8247,10 +8216,6 @@ msgstr "Nama Kalender"
 #: 
 msgid "New Calendar"
 msgstr "Kalender Baru"
-
-#: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Peringatan: bEnableExternalCalendarAPI dinonaktifkan, tetapi beberapa kalender memiliki token akses"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9018,10 +8983,6 @@ msgid "Web Server"
 msgstr "Web Server"
 
 #: 
-msgid "Server Software"
-msgstr "Server Perangkat Lunak"
-
-#: 
 msgid "Email Information"
 msgstr "Informasi Email"
 
@@ -9380,4 +9341,64 @@ msgstr "Tanggal lahir tidak sesuai: Tanggal atau bulan kelahiran tidak ditemukan
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Tanggal lahir tidak sesuai: Tanggal dan bulan kelahiran tidak ditemukan."
+
+#: 
+msgid "System"
+msgstr "Sistem"
+
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Amharic - Etiopia"
+
+#: 
+msgid "Czech"
+msgstr "Ceko"
+
+#: 
+msgid "Finnish"
+msgstr "Finlandia"
+
+#: 
+msgid "Greek"
+msgstr "Yunani"
+
+#: 
+msgid "Turkish"
+msgstr "Turki"
+
+#: 
+msgid "Ukrainian"
+msgstr "Ukrania"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Ketika mengklik \"Kirim ke Github\", Anda akan dialihkan ke halaman isu GitHub yang telah diisi dengan info sistem Anda"
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Kirim ke Github"
+
+#: 
+msgid "Change role"
+msgstr "Ubah peran"
+
+#: 
+msgid "Closed"
+msgstr "Ditutup"
+
+#: 
+msgid "Delete this person?"
+msgstr "Hapus orang ini?"
+
+#: 
+msgid "Deposit ID"
+msgstr "ID Deposit"
+
+#: 
+msgid "Deposit Total"
+msgstr "Total Deposit"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Status Keranjang Kelompok"
 

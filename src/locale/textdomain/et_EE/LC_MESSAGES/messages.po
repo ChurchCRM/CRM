@@ -2024,10 +2024,6 @@ msgid "Add New Group"
 msgstr "Lisa uus grupp"
 
 #: 
-msgid "Submit"
-msgstr "Esita"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Grupi liikmete omaduste redigeerija"
 
@@ -3169,8 +3165,9 @@ msgid "User Delete Confirmation"
 msgstr "Kasutaja kustutamise kinnitus"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Kinnitage kasutaja oleku eemaldamine saidist:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Kinnitage kasutaja oleku eemaldamine saidist"
 
 #: 
 msgid "User Editor"
@@ -3603,26 +3600,6 @@ msgstr "Vea tekst"
 #: 
 msgid "Issue Report!"
 msgstr "Väljaannete aruanne!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Sisestage vea- / funktsiooniaruande pealkiri"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Mida te tegite, kui märkasite viga / funktsiooni võimalust?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Kui klõpsate nupul „Esita”, postitatakse veaaruanne ChurchCRM GitHub Issue jälgimisse."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Ärge lisage konfidentsiaalset teavet."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Koos päringuga esitatakse ka mõni üldine teave teie süsteemi kohta, näiteks serveri versioon ja brauseri päised."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -5824,10 +5801,6 @@ msgstr "Kalendri nimi"
 #: 
 msgid "New Calendar"
 msgstr "Uus kalender"
-
-#: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Hoiatus: bEnableExternalCalendarAPI on keelatud, kuid mõnel kalendril on juurdepääsumärgid"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"

@@ -2067,10 +2067,6 @@ msgid "Add New Group"
 msgstr "Добавить новую группу"
 
 #: 
-msgid "Submit"
-msgstr "Представлять"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Группа Свойства редактор"
 
@@ -3226,8 +3222,9 @@ msgid "User Delete Confirmation"
 msgstr "Пользователь подтверждения удаления"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Пожалуйста, подтвердите удаление статуса пользователя от:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Пожалуйста, подтвердите удаление статуса пользователя от"
 
 #: 
 msgid "User Editor"
@@ -3674,26 +3671,6 @@ msgstr "Текст ошибки"
 #: 
 msgid "Issue Report!"
 msgstr "Отчет о проблеме!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Введите заголовок для отчета об ошибке / функции"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Что вы делали, когда заметили возможность ошибки / функции?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Когда вы нажимаете «отправить», отчет об ошибке будет отправлен в трекер ошибок ChurchCRM GitHub."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Пожалуйста, не указывайте конфиденциальную информацию."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Вместе с запросом будет отправлена ​​некоторая общая информация о вашей системе, такая как версия сервера и заголовки браузера."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -6089,10 +6066,6 @@ msgstr "Неверный id списка"
 #: 
 msgid "Web Server"
 msgstr "Веб-сервер"
-
-#: 
-msgid "Server Software"
-msgstr "ПО сервера"
 
 #: 
 msgid "Email Information"

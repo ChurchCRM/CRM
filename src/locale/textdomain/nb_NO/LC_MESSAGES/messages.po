@@ -2009,10 +2009,6 @@ msgid "Add New Group"
 msgstr "Legg til ny Gruppe"
 
 #: 
-msgid "Submit"
-msgstr "Send inn"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Gruppe Member Properties Editor"
 
@@ -3143,8 +3139,9 @@ msgid "User Delete Confirmation"
 msgstr "Bruker Slett Bekreftelse"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Vennligst bekreft fjerning av brukeren status fra:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Vennligst bekreft fjerning av brukeren status fra"
 
 #: 
 msgid "User Editor"

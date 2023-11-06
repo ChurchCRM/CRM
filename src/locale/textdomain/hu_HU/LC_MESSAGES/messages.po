@@ -1806,10 +1806,6 @@ msgid "Group Listing"
 msgstr "Group Listing"
 
 #: 
-msgid "Submit"
-msgstr "Küldés"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Csoporttag tulajdonságai szerkesztő"
 
@@ -2736,8 +2732,9 @@ msgid "User Delete Confirmation"
 msgstr "Felhasználó törlése megerősítése"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Kérjük, erősítse eltávolítása felhasználói státuszát:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Kérjük, erősítse eltávolítása felhasználói státuszát"
 
 #: 
 msgid "User Editor"

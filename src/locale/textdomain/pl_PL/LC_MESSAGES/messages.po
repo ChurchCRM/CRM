@@ -1927,10 +1927,6 @@ msgid "Add New Group"
 msgstr "Dodaj Nową Grupę"
 
 #: 
-msgid "Submit"
-msgstr "Zatwierdź"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Edytor Ustawień dla Członka Grupy"
 
@@ -3093,8 +3089,9 @@ msgid "User Delete Confirmation"
 msgstr "Potwierdznie Usunięcia Użytkownika"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Proszę potwierdzić usunięcie stanu użytkownika z:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Proszę potwierdzić usunięcie stanu użytkownika z"
 
 #: 
 msgid "User Editor"
@@ -4142,10 +4139,6 @@ msgid "New Calendar"
 msgstr "Nowy Kalendarz"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Uwaga: bEnableExternalCalendarAPI wyłączony, lecz niektóre kalendarze posiadają token dostepu"
-
-#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Aby współdzielić kalendarz bEnableExternalCalendarAPI musi być włączony oraz kalendarz musi mieć osobny token dostępu"
 
@@ -4884,10 +4877,6 @@ msgstr "Wersja Servera Bazy Danych"
 #: 
 msgid "Web Server"
 msgstr "Serwer WWW"
-
-#: 
-msgid "Server Software"
-msgstr "Oprogramowanie Serwera"
 
 #: 
 msgid "Email Information"

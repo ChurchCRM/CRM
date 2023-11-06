@@ -1749,10 +1749,6 @@ msgid "Group Listing"
 msgstr "Listing Group"
 
 #: 
-msgid "Submit"
-msgstr "Konfirmo"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Grupi Anëtar Prona Editor"
 
@@ -2634,8 +2630,9 @@ msgid "User Delete Confirmation"
 msgstr "User Fshije Konfirmimi"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Ju lutem konfirmoni heqjen e statusit të përdoruesit nga:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Ju lutem konfirmoni heqjen e statusit të përdoruesit nga"
 
 #: 
 msgid "User Editor"
