@@ -11,14 +11,12 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
-use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\Base\Person2group2roleP2g2rQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\GroupQuery;
-use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Map\PersonTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -68,14 +66,14 @@ foreach ($groups as $group) {
     $sundayschoolClass = $group->getName();
 
 
-    $groupRoleMemberships = ChurchCRM\Person2group2roleP2g2rQuery::create()
+    $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
                             ->joinWithPerson()
                             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
                             ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce per_LastName, per_FirstName
                             ->findByGroupId($iGroupID);
 
     foreach ($groupRoleMemberships as $groupRoleMembership) {
-        $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
+        $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
 
         $lst_OptionName = $groupRole->getOptionName();
         $member = $groupRoleMembership->getPerson();

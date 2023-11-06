@@ -13,6 +13,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Base\PersonQuery;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
@@ -399,7 +400,7 @@ if ($sFormat == 'addtocart') {
         $sCountry = '';
 
         extract($aRow);
-        $person = ChurchCRM\PersonQuery::create()->findOneById($per_ID);
+        $person = PersonQuery::create()->findOneById($per_ID);
 
         // If we are doing a family roll-up, we want to favor available family address / phone numbers over the individual data returned
         if ($sFormat == 'rollup') {
@@ -513,7 +514,7 @@ if ($sFormat == 'addtocart') {
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                            $age = MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, 0);
+                            $age = MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear);
                         } else {
                             $age = '';
                         }

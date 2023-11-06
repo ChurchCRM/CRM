@@ -15,7 +15,7 @@ $app->group('/', function () use ($app) {
     });
 
     $app->get('SystemIntegrityCheck', function ($request, $response, $args) {
-        $AppIntegrity = ChurchCRM\Service\AppIntegrityService::verifyApplicationIntegrity();
+        $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
         echo $AppIntegrity['status'];
     });
 

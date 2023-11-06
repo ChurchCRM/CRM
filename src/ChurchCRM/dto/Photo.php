@@ -55,11 +55,10 @@ class Photo
             );
 
             // default defined in SystemConfig.php
-            $interval = new \DateInterval('72 hours');
+            $interval = \DateInterval::createFromDateString('72 hours');
         } else {
             $interval = \DateInterval::createFromDateString($remotePhotoCacheDuration);    
         }
-
         $remoteCacheThreshold = new \DateTimeImmutable();
         $remoteCacheThreshold = $remoteCacheThreshold->sub($interval);
 

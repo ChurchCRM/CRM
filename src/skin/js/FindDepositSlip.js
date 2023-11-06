@@ -65,7 +65,7 @@ $(document).ready(function () {
                         return (
                             "<a href='DepositSlipEditor.php?DepositSlipID=" +
                             full.Id +
-                            '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>' +
+                            '\'><i class="fa fa-search-plus"></i></a>' +
                             full.Id
                         );
                     } else {

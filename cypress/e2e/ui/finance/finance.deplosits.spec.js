@@ -29,7 +29,7 @@ context("Finance Deposits", () => {
         //cy.get('.select2-search__field').type('Berry{enter}', { delay: 500 });
         cy.get("#CheckNo").type("111");
         cy.get("#1_Amount").type("1000");
-        cy.get(".col-lg-12 > .btn:nth-child(1)").click();
+        cy.get("#saveBtn").click();
         cy.get("#DepositSlipEditor").submit();
         cy.url().should("contains", "DepositSlipEditor.php");
     });

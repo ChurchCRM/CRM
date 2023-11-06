@@ -188,7 +188,7 @@ $mailchimp = new MailChimpService();
                                         href="mailto:<?= $family->getEmail() ?>">
                                         <span><?= $family->getEmail() ?></span></a></li>
                                 <?php if ($mailchimp->isActive()) { ?>
-                                 <li><i class="fa-li fa fa-send"></i><?= gettext("Mailchimp") ?>:
+                                 <li><i class="fa-li fa-regular fa-paper-plane"></i><?= gettext("Mailchimp") ?>:
                                  <span id="<?= md5($family->getEmail())?>">... <?= gettext("loading")?> ...</span></a></li>
                                 <?php }
                             }

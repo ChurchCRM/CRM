@@ -177,10 +177,10 @@ if (
 
         $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
         $rsFam = RunQuery($sSQL);
-
-        $iFamily = $rsFam['plg_famID'];
-        $iCheckNo = $rsFam['plg_CheckNo'];
-        $iFYID = $rsFam['plg_FYID'];
+        $fam_NameArray = mysqli_fetch_array($rsFam);
+        $iFamily = $fam_NameArray['plg_famID'];
+        $iCheckNo = $fam_NameArray['plg_CheckNo'];
+        $iFYID = $fam_NameArray['plg_FYID'];
 
         $sSQL = "SELECT plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
         $rsAmounts = RunQuery($sSQL);
@@ -490,7 +490,7 @@ require 'Include/Header.php';
 
 
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-12">
     <div class="card">
       <div class="card-header with-border">
         <h3 class="card-title"><?= gettext("Payment Details") ?></h3>
@@ -640,9 +640,10 @@ require 'Include/Header.php';
     <div class="col-lg-12">
     <?php if (!$dep_Closed) {
         ?>
-        <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
+        <br/>
+        <input type="submit" id="saveBtn" class="btn btn-default" value="<?= gettext('Save') ?>" name="PledgeSubmit">
         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-            echo '<input type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
+            echo '<input id="save-n-add" type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
         } ?>
           <?php
     } ?>
@@ -656,8 +657,9 @@ require 'Include/Header.php';
   </div>
 </div>
   </div>
-
-  <div class="col-lg-6">
+</div>
+<div class="row">
+  <div class="col-lg-12">
     <div class="card">
       <div class="card-header with-border">
         <h3 class="card-title"><?= gettext("Fund Split") ?></h3>
