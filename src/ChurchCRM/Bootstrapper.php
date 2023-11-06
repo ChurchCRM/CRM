@@ -296,7 +296,8 @@ namespace ChurchCRM
                 }
             }
         }
-        private static function systemFailure($message, $header = 'Setup failure')
+
+        public static function systemFailure($message, $header = 'Setup failure')
         {
             $sPageTitle = $header;
             if (!SystemConfig::isInitialized()) {

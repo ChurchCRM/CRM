@@ -50,13 +50,13 @@ if (isset($_POST['EnterWinners'])) {
 }
 
 // Get Items for the drop-down
-$sDonatedItemsSQL = "SELECT di_ID, di_Item, di_title, di_multibuy
+$sDonatedItemsSQL = "SELECT di_ID, di_Item, di_title
                      FROM donateditem_di
                      WHERE di_FR_ID = '" . $iCurrentFundraiser . "' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)";
 $rsDonatedItems = RunQuery($sDonatedItemsSQL);
 
 //Get Paddles for the drop-down
-$sPaddleSQL = 'SELECT pn_ID, pn_Num, pn_per_ID,
+$sPaddleSQL = 'SELECT pn_Num, pn_per_ID,
                       a.per_FirstName AS buyerFirstName,
                       a.per_LastName AS buyerLastName
                       FROM paddlenum_pn
@@ -85,7 +85,9 @@ for ($row = 0; $row < 10; $row += 1) {
 
     mysqli_data_seek($rsDonatedItems, 0);
     while ($itemArr = mysqli_fetch_array($rsDonatedItems)) {
-        extract($itemArr);
+        $di_ID = $itemArr['di_ID'];
+        $di_Item = $itemArr['di_Item'];
+        $di_title = $itemArr['di_title'];
         echo '<option value="' . $di_ID . '">' . $di_Item . ' ' . $di_title . "</option>\n";
     }
     echo "</select>\n";
@@ -97,7 +99,10 @@ for ($row = 0; $row < 10; $row += 1) {
 
     mysqli_data_seek($rsPaddles, 0);
     while ($paddleArr = mysqli_fetch_array($rsPaddles)) {
-        extract($paddleArr);
+        $pn_per_ID = $paddleArr['pn_per_ID'];
+        $pn_Num = $paddleArr['pn_Num'];
+        $buyerFirstName = $paddleArr['buyerFirstName'];
+        $buyerLastName = $paddleArr['buyerLastName'];
         echo '<option value="' . $pn_per_ID . '">' . $pn_Num . ' ' . $buyerFirstName . ' ' . $buyerLastName . "</option>\n";
     }
     echo "</select>\n";

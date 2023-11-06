@@ -420,6 +420,7 @@ if ($output == 'pdf') {
 
     // Finish Last Report
     $pdf->SetFont('Times', 'B', 10);
+    $pdf->addPage();
     $pdf->Cell(20, $summaryIntervalY / 2, ' ', 0, 1);
     $pdf->Cell(95, $summaryIntervalY, ' ');
     $pdf->Cell(50, $summaryIntervalY, 'Total Payments:');

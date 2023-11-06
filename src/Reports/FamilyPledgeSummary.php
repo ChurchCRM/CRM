@@ -59,6 +59,9 @@ if (!empty($_POST['classList'])) {
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+if (!$iFYID) {
+    $iFYID = CurrentFY();
+}
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 $output = InputUtils::legacyFilterInput($_POST['output']);
 $pledge_filter = '';
@@ -229,7 +232,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     extract($aFam);
 
     // Check for pledges if filtering by pledges
-    if ($pledge_filter == 'pledge') {
+    if ($pledge_filter === 'pledge') {
         $temp = "SELECT plg_plgID FROM pledge_plg
 			WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID" . $sSQLFundCriteria;
         $rsPledgeCheck = RunQuery($temp);

@@ -285,7 +285,7 @@ class Photo
         $bgcolor = $this->getRandomColor($image);
         $white = imagecolorallocate($image, 255, 255, 255);
         imagefilledrectangle($image, 0, 0, $height, $width, $bgcolor);
-        $tb = imagettfbbox($pointSize, 0, $font, $initials);
+        $tb = imageftbbox($pointSize, 0, $font, $initials);
         $x = ceil(($width - $tb[2]) / 2);
         $y = ceil(($height - $tb[5]) / 2);
         imagefttext($image, $pointSize, 0, $x, $y, $white, $font, $initials);

@@ -45,17 +45,17 @@ require 'Include/Header.php';
 <?php
 
 // No Records Message if previous report returned no records.
-if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] == 'NoRows') {
+if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] === 'NoRows') {
     echo '<h3><span style="color: red;">' . gettext('No records were returned from the previous report.') . '</span></h3>';
 }
 
 if ($sReportType == '') {
     // First Pass - Choose report type
-    echo "<form method=post action='FinancialReports.php'>";
+    echo "<form method=post id='FinancialReports' action='FinancialReports.php'>";
     echo '<table cellpadding=3 align=left>';
     echo '<tr><td class=LabelColumn>' . gettext('Report Type:') . '</td>';
-    echo '<td class=TextColumn><select name=ReportType>';
-    echo '<option value=0>' . gettext('Select Report Type') . '</option>';
+    echo '<td class=TextColumn><select name=ReportType id=FinancialReportTypes>';
+    echo '<option selected="selected" disabled value="0">' . gettext('Select Report Type') . '</option>';
     echo "<option value='Pledge Summary'>" . gettext('Pledge Summary') . '</option>';
     echo "<option value='Pledge Family Summary'>" . gettext('Pledge Family Summary') . '</option>';
     echo "<option value='Pledge Reminders'>" . gettext('Pledge Reminders') . '</option>';
@@ -68,9 +68,9 @@ if ($sReportType == '') {
     echo '</td></tr>';
     // First Pass Cancel, Next Buttons
     echo "<tr><td>&nbsp;</td>
-        <td><input type=button class=btn name=Cancel value='" . gettext('Cancel') . "'
+        <td><input type=button class='btn btn-default' name=Cancel value='" . gettext('Cancel') . "'
         onclick=\"javascript:document.location='Menu.php';\">
-        <input type=submit class=btn name=Submit1 value='" . gettext('Next') . "'>
+        <input type=submit class='btn btn-primary' name=Submit1 value='" . gettext('Next') . "'>
         </td></tr>
         </table></form>";
 } else {
@@ -325,11 +325,18 @@ if ($sReportType == '') {
     }
 
     // Back, Next Buttons
-    echo "<tr><td>&nbsp;</td>
-        <td><input type=button class=btn name=Cancel value='" . gettext('Back') . "'
-        onclick=\"javascript:document.location='FinancialReports.php';\">
-        <input type=submit class=btn name=Submit2 value='" . gettext('Create Report') . "'>
-        </td></tr></table></form>";
+    $backText = gettext('Back');
+    $createReportText = gettext('Create Report');
+    echo <<<EOD
+<tr>
+    <td>&nbsp;</td>
+    <td>
+        <input type="button" class="btn btn-default" name="Cancel" value="$backText" onclick="javascript:document.location='FinancialReports.php';" />
+        <input download type="submit" class="btn btn-primary" id="createReport" name="Submit2" value="$createReportText" />
+    </td>
+</tr>
+EOD;
+    echo "</table></form>";
 }
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
