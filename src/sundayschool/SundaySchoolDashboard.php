@@ -226,7 +226,7 @@ require '../Include/Header.php';
             echo '<td>' . $firstName . '</td>';
             echo '<td>' . $LastName . '</td>';
             echo '<td>' . $birthDate . '</td>';
-            echo "<td>" . MiscUtils::formatAge($birthMonth, $birthDay, $birthYear, $hideAge) . "</td>";
+            echo "<td>" . MiscUtils::formatAge($birthMonth, $birthDay, $birthYear) . "</td>";
             echo '<td>' . $Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip . '</td>';
             echo '</tr>';
         }

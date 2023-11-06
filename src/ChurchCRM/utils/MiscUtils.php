@@ -66,15 +66,13 @@ class MiscUtils
         return time() + $cacheLength ;
     }
 
-    public static function formatAge($Month, $Day, $Year, $Flags)
+    public static function formatAge($Month, $Day, $Year)
     {
-        if ($Flags || $Year === null || $Year === '') {
+        if ($Year === null || $Year === '') {
             return;
         }
 
         $birthDate = MiscUtils::birthDate($Year, $Month, $Day);
-        $ageSuffix = gettext('Unknown');
-        $ageValue = 0;
 
         $now = date_create('today');
         $age = date_diff($now, $birthDate);

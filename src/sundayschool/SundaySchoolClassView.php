@@ -230,7 +230,7 @@ require '../Include/Header.php';
           </td>
           <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'] . ', ' . $child['firstName'] ?></a></td>
           <td><?= $birthDate ?> </td>
-          <td><?= MiscUtils::formatAge($child['birthMonth'], $child['birthDay'], $child['birthYear'], $child['flags']) ?></td>
+          <td><?= MiscUtils::formatAge($child['birthMonth'], $child['birthDay'], $child['birthYear']) ?></td>
           <td><?= $child['kidEmail'] ?></td>
           <td><?= $child['mobilePhone'] ?></td>
           <td><?= $child['homePhone'] ?></td>

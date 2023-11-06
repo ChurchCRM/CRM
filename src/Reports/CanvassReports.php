@@ -251,7 +251,7 @@ function CanvassBriefingSheets($iFYID)
             } else {
                 $sGender = 'F';
             }
-            $sAge = MiscUtils::formatAge($aFamilyMember['per_BirthMonth'], $aFamilyMember['per_BirthDay'], $aFamilyMember['per_BirthYear'], $aFamilyMember['per_Flags']);
+            $sAge = MiscUtils::formatAge($aFamilyMember['per_BirthMonth'], $aFamilyMember['per_BirthDay'], $aFamilyMember['per_BirthYear']);
             $pdf->writeAt($memberNameX, $curY, $aFamilyMember['per_FirstName'] . ' ' . $aFamilyMember['per_LastName']);
             $pdf->writeAt($memberGenderX, $curY, $sGender);
             $pdf->writeAt($memberRoleX, $curY, $aFamilyMember['sFamRole']);
