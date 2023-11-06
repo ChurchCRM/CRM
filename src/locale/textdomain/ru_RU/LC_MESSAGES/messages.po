@@ -2067,10 +2067,6 @@ msgid "Add New Group"
 msgstr "Добавить новую группу"
 
 #: 
-msgid "Submit"
-msgstr "Представлять"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Группа Свойства редактор"
 
@@ -6070,10 +6066,6 @@ msgstr "Неверный id списка"
 #: 
 msgid "Web Server"
 msgstr "Веб-сервер"
-
-#: 
-msgid "Server Software"
-msgstr "ПО сервера"
 
 #: 
 msgid "Email Information"
