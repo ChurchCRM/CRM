@@ -28,6 +28,9 @@ if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
 // Filter Values
 $output = InputUtils::legacyFilterInput($_POST['output']);
 $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+if (!$iFYID) {
+    $iFYID = CurrentFY();
+}
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
@@ -214,7 +217,7 @@ if ($output == 'pdf') {
     $curY += 2 * SystemConfig::getValue('incrementY');
 
     $blurb = SystemConfig::getValue('sPledgeSummary1') . ' ';
-    $blurb .= MakeFYString($iFYID);
+    $blurb .= MakeFYString($iFYID) .' ';
     $blurb .= SystemConfig::getValue('sPledgeSummary2') . ' ' . date('Y-m-d') . '.';
     $pdf->writeAt($nameX, $curY, $blurb);
 

@@ -10,7 +10,7 @@
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *  Copyright 2005 Todd Pillars
  *  Copyright 2012 Michael Wilt
-  *
+ *
  ******************************************************************************/
 
 // Include the function library
@@ -35,7 +35,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
 
     // Loop through the session array
     $iCount = 0;
-    while ($element = each($_SESSION['aPeopleCart'])) {
+    foreach($_SESSION['aPeopleCart'] as $element) {
         // Enter ID into event
         $sSQL = 'INSERT IGNORE INTO event_attend (event_id, person_id)';
         $sSQL .= " VALUES ('" . $iEventID . "','" . $_SESSION['aPeopleCart'][$element['key']] . "')";

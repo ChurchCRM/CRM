@@ -50,13 +50,13 @@ $sSQL = "SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn WHERE pn_FR_ID = '" . $i
 $rsMaxPaddle = RunQuery($sSQL);
 if (mysqli_num_rows($rsMaxPaddle) > 0) {
     $oneRow = mysqli_fetch_array($rsMaxPaddle);
-    extract($oneRow);
+    $pn_max = $oneRow['pn_max'];
     $extraPaddleNum = $pn_max + 1;
 }
 
 // Go through the donors, add buyer records for any who don't have one yet
 while ($donorRow = mysqli_fetch_array($rsDonors)) {
-    extract($donorRow);
+    $donorID = $donorRow['donorID'];
 
     $sSQL = "SELECT pn_per_id FROM paddlenum_pn WHERE pn_per_id='$donorID' AND pn_FR_ID = '$iFundRaiserID'";
     $rsBuyer = RunQuery($sSQL);

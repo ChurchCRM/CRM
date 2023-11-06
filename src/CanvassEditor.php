@@ -39,7 +39,8 @@ $bNotInterested = false;
 //Get Family name
 $sSQL = 'SELECT fam_Name FROM family_fam where fam_ID = ' . $iFamily;
 $rsFamily = RunQuery($sSQL);
-extract(mysqli_fetch_array($rsFamily));
+$fam_NameArray = mysqli_fetch_array($rsFamily);
+$fam_Name = $fam_NameArray['fam_Name'];
 
 $fyStr = MakeFYString($iFYID);
 

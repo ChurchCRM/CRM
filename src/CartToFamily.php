@@ -91,18 +91,20 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             //Get the key back
             $sSQL = 'SELECT MAX(fam_ID) AS iFamilyID FROM family_fam';
             $rsLastEntry = RunQuery($sSQL);
-            extract(mysqli_fetch_array($rsLastEntry));
+            $famIdArray = mysqli_fetch_array($rsLastEntry);
+            $iFamilyID = $famIdArray['iFamilyID'];
         }
     }
 
     if (!$bError) {
         // Loop through the cart array
         $iCount = 0;
-        while ($element = each($_SESSION['aPeopleCart'])) {
-            $iPersonID = $_SESSION['aPeopleCart'][$element[key]];
+        foreach($_SESSION['aPeopleCart'] as $element) {
+            $iPersonID = $_SESSION['aPeopleCart'][$element['key']];
             $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = ' . $iPersonID;
             $rsPerson = RunQuery($sSQL);
-            extract(mysqli_fetch_array($rsPerson));
+            $perFamIdArray = mysqli_fetch_array($rsPerson);
+            $per_fam_ID = $perFamIdArray['per_fam_ID'];
 
             // Make sure they are not already in a family
             if ($per_fam_ID == 0) {

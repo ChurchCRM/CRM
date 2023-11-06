@@ -27,6 +27,9 @@ if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+if (!$iFYID) {
+    $iFYID = CurrentFY();
+}
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 $output = InputUtils::legacyFilterInput($_POST['output']);
 $pledge_filter = InputUtils::legacyFilterInput($_POST['pledge_filter']);

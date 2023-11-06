@@ -1,25 +1,22 @@
 /// <reference types="cypress" />
 
-context('Standard Family', () => {
-
-    it('Delete Person', () => {
-        cy.loginStandard('PersonView.php?PersonID=69');
-        cy.get('#deletePersonBtn').click();
-        cy.get('.bootbox-accept').should('be.visible').click();
-        cy.url().should('contains', 'v2/dashboard');
-        cy.visit('PersonView.php?PersonID=69');
-        cy.contains('Not Found: Person');
-
+context("Standard Family", () => {
+    it("Delete Person", () => {
+        cy.loginStandard("PersonView.php?PersonID=69");
+        cy.get("#deletePersonBtn").click();
+        cy.get(".bootbox-accept").should("be.visible").click();
+        cy.url().should("contains", "v2/dashboard");
+        cy.visit("PersonView.php?PersonID=69");
+        cy.contains("Not Found: Person");
     });
 
-    it('Delete Family', () => {
+    it("Delete Family", () => {
         cy.loginStandard("v2/family/7");
-        cy.get('#deleteFamilyBtn').click();
-        cy.url().should('contains', 'SelectDelete.php');
-        cy.get('#deleteFamilyAndMembersBtn').click();
-        cy.url().should('contains', 'v2/family');
-        cy.visit('v2/family/7');
-        cy.contains('Not Found: Family');
-
+        cy.get("#deleteFamilyBtn").click();
+        cy.url().should("contains", "SelectDelete.php");
+        cy.get("#deleteFamilyAndMembersBtn").click();
+        cy.url().should("contains", "v2/family");
+        cy.visit("v2/family/7");
+        cy.contains("Not Found: Family");
     });
 });
