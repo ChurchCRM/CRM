@@ -177,10 +177,10 @@ if (
 
         $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
         $rsFam = RunQuery($sSQL);
-
-        $iFamily = $rsFam['plg_famID'];
-        $iCheckNo = $rsFam['plg_CheckNo'];
-        $iFYID = $rsFam['plg_FYID'];
+        $fam_NameArray = mysqli_fetch_array($rsFam);
+        $iFamily = $fam_NameArray['plg_famID'];
+        $iCheckNo = $fam_NameArray['plg_CheckNo'];
+        $iFYID = $fam_NameArray['plg_FYID'];
 
         $sSQL = "SELECT plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
         $rsAmounts = RunQuery($sSQL);
@@ -641,9 +641,9 @@ require 'Include/Header.php';
     <?php if (!$dep_Closed) {
         ?>
         <br/>
-        <input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PledgeSubmit">
+        <input type="submit" id="saveBtn" class="btn btn-default" value="<?= gettext('Save') ?>" name="PledgeSubmit">
         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-            echo '<input type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
+            echo '<input id="save-n-add" type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
         } ?>
           <?php
     } ?>
