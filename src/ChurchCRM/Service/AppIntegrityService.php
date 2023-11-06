@@ -44,7 +44,7 @@ class AppIntegrityService
         return AppIntegrityService::$IntegrityCheckDetails;
     }
 
-    public static function getIntegrityCheckStatus()
+    public static function getIntegrityCheckStatus(): string
     {
         if (AppIntegrityService::getIntegrityCheckData()->status === "failure") {
             return gettext("Failed");
@@ -53,7 +53,7 @@ class AppIntegrityService
         return gettext("Passed");
     }
 
-    public static function getIntegrityCheckMessage()
+    public static function getIntegrityCheckMessage(): string
     {
         if (AppIntegrityService::getIntegrityCheckData()->status !== "failure") {
             AppIntegrityService::$IntegrityCheckDetails->message = gettext('The previous integrity check passed.  All system file hashes match the expected values.');
@@ -67,7 +67,7 @@ class AppIntegrityService
         return AppIntegrityService::getIntegrityCheckData()->files ?? [];
     }
 
-    public static function verifyApplicationIntegrity()
+    public static function verifyApplicationIntegrity(): array
     {
         $logger = LoggerUtils::getAppLogger();
 
@@ -84,8 +84,8 @@ class AppIntegrityService
                 $logger->warning('Error decoding signature definition file: ' . $signatureFile, ['exception' => $e]);
 
                 return [
-                'status' => 'failure',
-                'message' => gettext('Error decoding signature definition file')
+                    'status' => 'failure',
+                    'message' => gettext('Error decoding signature definition file')
                 ];
             }
             if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) === $signatureData->sha1) {
@@ -96,17 +96,17 @@ class AppIntegrityService
                         if ($actualHash != $file->sha1) {
                             $logger->warning('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1 . "; Got: " . $actualHash);
                             array_push($signatureFailures, [
-                            'filename' => $file->filename,
-                            'status' => 'Hash Mismatch',
-                            'expectedhash' => $file->sha1,
-                            'actualhash' => $actualHash
+                                'filename' => $file->filename,
+                                'status' => 'Hash Mismatch',
+                                'expectedhash' => $file->sha1,
+                                'actualhash' => $actualHash
                             ]);
                         }
                     } else {
                         $logger->warning('File Missing: ' . $file->filename);
                         array_push($signatureFailures, [
-                        'filename' => $file->filename,
-                        'status' => 'File Missing'
+                            'filename' => $file->filename,
+                            'status' => 'File Missing'
                         ]);
                     }
                 }
@@ -114,66 +114,71 @@ class AppIntegrityService
                 $logger->warning('Signature definition file signature failed validation');
 
                 return [
-                'status' => 'failure',
-                'message' => gettext('Signature definition file signature failed validation')
+                    'status' => 'failure',
+                    'message' => gettext('Signature definition file signature failed validation')
                 ];
             }
         } else {
             $logger->warning('Signature definition file not found at: ' . $signatureFile);
             return [
-            'status' => 'failure',
-            'message' => gettext('Signature definition File Missing')
+                'status' => 'failure',
+                'message' => gettext('Signature definition File Missing')
             ];
         }
 
         if (count($signatureFailures) > 0) {
             return [
-            'status' => 'failure',
-            'message' => gettext('One or more files failed signature validation'),
-            'files' => $signatureFailures
+                'status' => 'failure',
+                'message' => gettext('One or more files failed signature validation'),
+                'files' => $signatureFailures
             ];
         } else {
             return [
-            'status' => 'success'
+                'status' => 'success'
             ];
         }
     }
 
-    private static function testImagesWriteable()
+    private static function testImagesWriteable(): bool
     {
         return is_writable(SystemURLs::getDocumentRoot() . '/Images/') &&
             is_writable(SystemURLs::getDocumentRoot() . '/Images/Family') &&
             is_writable(SystemURLs::getDocumentRoot() . '/Images/Person');
     }
 
-    public static function getApplicationPrerequisites()
+    /**
+     * @return Prerequisite[]
+     */
+    public static function getApplicationPrerequisites(): array
     {
-
         $prerequisites = [
-        new Prerequisite('PHP 8.1+', fn() => version_compare(PHP_VERSION, '8.1.0', '>=')),
-        new Prerequisite('PCRE and UTF-8 Support', fn() => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
-        new Prerequisite('Multibyte Encoding', fn() => extension_loaded('mbstring')),
-        new Prerequisite('PHP Phar', fn() => extension_loaded('phar')),
-        new Prerequisite('PHP Session', fn() => extension_loaded('session')),
-        new Prerequisite('PHP XML', fn() => extension_loaded('xml')),
-        new Prerequisite('PHP EXIF', fn() => extension_loaded('exif')),
-        new Prerequisite('PHP iconv', fn() => extension_loaded('iconv')),
-        new Prerequisite('Mod Rewrite or Equivalent', fn() => AppIntegrityService::hasModRewrite()),
-        new Prerequisite('GD Library for image manipulation', fn() => extension_loaded('gd') && function_exists('gd_info')),
-        new Prerequisite('FreeType Library', fn() => function_exists('imagettftext')),
-        new Prerequisite('FileInfo Extension for image manipulation', fn() => extension_loaded('fileinfo')),
-        new Prerequisite('cURL', fn() => function_exists('curl_version')),
-        new Prerequisite('locale gettext', fn() => function_exists('bindtextdomain') && function_exists("gettext")),
-        new Prerequisite('Include/Config file is writeable', fn() => is_writable(SystemURLs::getDocumentRoot() . '/Include/') || is_writable(SystemURLs::getDocumentRoot() . '/Include/Config.php')),
-        new Prerequisite('Images directory is writeable', fn() => AppIntegrityService::testImagesWriteable()),
-        new Prerequisite('PHP ZipArchive', fn() => extension_loaded('zip')),
-        new Prerequisite('Mysqli Functions', fn() => function_exists('mysqli_connect'))
+            new Prerequisite('PHP 8.1+', fn() => version_compare(PHP_VERSION, '8.1.0', '>=')),
+            new Prerequisite('PCRE and UTF-8 Support', fn() => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
+            new Prerequisite('Multibyte Encoding', fn() => extension_loaded('mbstring')),
+            new Prerequisite('PHP Phar', fn() => extension_loaded('phar')),
+            new Prerequisite('PHP Session', fn() => extension_loaded('session')),
+            new Prerequisite('PHP XML', fn() => extension_loaded('xml')),
+            new Prerequisite('PHP EXIF', fn() => extension_loaded('exif')),
+            new Prerequisite('PHP iconv', fn() => extension_loaded('iconv')),
+            new Prerequisite('Mod Rewrite or Equivalent', fn() => AppIntegrityService::hasModRewrite()),
+            new Prerequisite('GD Library for image manipulation', fn() => extension_loaded('gd') && function_exists('gd_info')),
+            new Prerequisite('FreeType Library', fn() => function_exists('imagettftext')),
+            new Prerequisite('FileInfo Extension for image manipulation', fn() => extension_loaded('fileinfo')),
+            new Prerequisite('cURL', fn() => function_exists('curl_version')),
+            new Prerequisite('locale gettext', fn() => function_exists('bindtextdomain') && function_exists("gettext")),
+            new Prerequisite('Include/Config file is writeable', fn() => is_writable(SystemURLs::getDocumentRoot() . '/Include/') || is_writable(SystemURLs::getDocumentRoot() . '/Include/Config.php')),
+            new Prerequisite('Images directory is writeable', fn() => AppIntegrityService::testImagesWriteable()),
+            new Prerequisite('PHP ZipArchive', fn() => extension_loaded('zip')),
+            new Prerequisite('Mysqli Functions', fn() => function_exists('mysqli_connect'))
         ];
 
         return $prerequisites;
     }
 
-    public static function getUnmetPrerequisites()
+    /**
+     * @return Prerequisite[]
+     */
+    public static function getUnmetPrerequisites(): array
     {
         return array_filter(
             AppIntegrityService::getApplicationPrerequisites(),
@@ -181,17 +186,12 @@ class AppIntegrityService
         );
     }
 
-    public static function arePrerequisitesMet()
+    public static function arePrerequisitesMet(): bool
     {
         return count(AppIntegrityService::getUnmetPrerequisites()) === 0;
     }
 
-    public static function hasApacheModule($module)
-    {
-        return in_array($module, apache_get_modules());
-    }
-
-    public static function hasModRewrite()
+    public static function hasModRewrite(): bool
     {
       // mod_rewrite can be tricky to detect properly.
       // First check if it's loaded as an apache module
@@ -203,21 +203,26 @@ class AppIntegrityService
         $check = false;
         $logger = LoggerUtils::getAppLogger();
 
-        if (stristr($_SERVER["SERVER_SOFTWARE"], "apache") != false) {
-            $logger->debug("PHP is running through Apache; look for mod_rewrite");
-            $check = AppIntegrityService::hasApacheModule('mod_rewrite');
+        if (isset($_SERVER['HTTP_MOD_REWRITE'])) {
+            $logger->debug("Webserver configuration has set mod_rewrite variable: {$_SERVER['HTTP_MOD_REWRITE']}");
+            $check = strtolower($_SERVER['HTTP_MOD_REWRITE']) === 'on';
+        } elseif (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
+            $logger->debug('PHP is running through Apache; looking for mod_rewrite');
+            if (function_exists('apache_get_modules')) {
+                $check = in_array('mod_rewrite', apache_get_modules());
+             }
             $logger->debug("Apache mod_rewrite check status: $check");
         } else {
-            $logger->debug("PHP is not running through Apache");
+            $logger->debug('PHP is not running through Apache');
         }
 
-        if ($check == false) {
-            $logger->debug("Previous rewrite checks failed");
+        if ($check === false) {
+            $logger->debug('Previous rewrite checks failed');
             if (function_exists('curl_version')) {
                 $ch = curl_init();
                 $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
                 $request_scheme = $request_url_parser['scheme'] ?? 'http';
-                $rewrite_chk_url = $request_scheme . "://" . $_SERVER['SERVER_ADDR'] . SystemURLs::getRootPath() . "/INVALID";
+                $rewrite_chk_url = $request_scheme . '://' . $_SERVER['SERVER_ADDR'] . SystemURLs::getRootPath() . '/INVALID';
                 $logger->debug("Testing CURL loopback check to: $rewrite_chk_url");
                 curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -232,13 +237,13 @@ class AppIntegrityService
                 $headers['status'] = $data[0];
                 array_shift($data);
                 foreach ($data as $part) {
-                    if (strpos($part, ":")) {
-                        $middle = explode(":", $part);
+                    if (strpos($part, ':')) {
+                        $middle = explode(':', $part);
                         $headers[trim($middle[0])] = trim($middle[1]);
                     }
                 }
-                $check =  $headers['CRM'] == "would redirect";
-                $logger->debug("CURL loopback check headers observed: " . ($check ? 'true' : 'false'));
+                $check =  $headers['CRM'] == 'would redirect';
+                $logger->debug('CURL loopback check headers observed: ' . ($check ? 'true' : 'false'));
             }
         }
 
