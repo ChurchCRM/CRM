@@ -2075,10 +2075,6 @@ msgid "Add New Group"
 msgstr "Adaugă grup nou"
 
 #: 
-msgid "Submit"
-msgstr "Trimiteti"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Editor de Proprietăți pentru Membrii Grupului"
 
@@ -3244,8 +3240,9 @@ msgid "User Delete Confirmation"
 msgstr "Ștergere utilizator Confirmarea"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Vă rugăm să confirmați eliminarea stării de utilizator de la:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Vă rugăm să confirmați eliminarea stării de utilizator de la"
 
 #: 
 msgid "User Editor"
@@ -3693,26 +3690,6 @@ msgstr "Text eroare"
 #: 
 msgid "Issue Report!"
 msgstr "Raport eroare!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Introdu un titlu pentru raportul de eroare / funcționalitate"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Că făceai atunci când ai întâmpinat această eroare / problemă ?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Când faceți clic pe „trimite”, un raport de eroare va fi publicat în trackerul problemei ChurchCRM GitHub"
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Nu scrieți aici informații confidențiale"
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Unele informații generale despre sistemul dvs. vor fi trimise împreună cu solicitarea, cum ar fi versiunea serverului și anteturile browserului."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -7622,14 +7599,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "Sigur doriți să eliminați membri selectați din grup?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Raportare trimisă cu success"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Vezi problemele în GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Vreți să ștergeți această persoană? Nu puteți reveni"
 
@@ -8348,10 +8317,6 @@ msgstr "Nume calendar"
 #: 
 msgid "New Calendar"
 msgstr "Calendar nou"
-
-#: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Avertisment: bEnableExternalCalendarAPI dezactivat, dar unele calendare au tokenuri de acces"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9124,10 +9089,6 @@ msgstr "Versiunea serverului bazei de date"
 #: 
 msgid "Web Server"
 msgstr "Server web"
-
-#: 
-msgid "Server Software"
-msgstr "Software-ul serverului"
 
 #: 
 msgid "Email Information"
