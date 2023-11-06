@@ -24,9 +24,14 @@ use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Get the GroupID out of the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
+
+if ($iGroupID < 1) {
+  RedirectUtils::redirect('GroupList.php');
+}
 
 //Get the data on this group
 $thisGroup = ChurchCRM\GroupQuery::create()->findOneById($iGroupID);
