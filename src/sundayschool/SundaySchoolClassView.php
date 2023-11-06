@@ -73,9 +73,10 @@ require '../Include/Header.php';
     <?php
     $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     $allEmails = array_unique([...$ParentsEmails, ...$KidsEmails, ...$TeachersEmails]);
-    $roleEmails->Parents = implode($sMailtoDelimiter, $ParentsEmails) . ',';
-    $roleEmails->Teachers = implode($sMailtoDelimiter, $TeachersEmails) . ',';
-    $roleEmails->Kids = implode($sMailtoDelimiter, $KidsEmails) . ',';
+    $roleEmails = [];
+    $roleEmails['Parents'] = implode($sMailtoDelimiter, $ParentsEmails) . ',';
+    $roleEmails['Teachers'] = implode($sMailtoDelimiter, $TeachersEmails) . ',';
+    $roleEmails['Kids'] = implode($sMailtoDelimiter, $KidsEmails) . ',';
     $sEmailLink = implode($sMailtoDelimiter, $allEmails) . ',';
     // Add default email if default email has been set and is not already in string
     if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
@@ -100,7 +101,7 @@ require '../Include/Header.php';
 
       <div class="btn-group">
         <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i
-            class="fa fa-send"></i><?= gettext('Email (BCC)') ?></a>
+            class="fa-regular fa-paper-plane"></i><?= gettext('Email (BCC)') ?></a>
         <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>
           <span class="sr-only"><?= gettext('Toggle Dropdown') ?></span>
