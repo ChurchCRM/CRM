@@ -415,15 +415,7 @@ module.exports = function (grunt) {
                 api_token: '<%= buildConfig.POEditor.token %>'
             }
         },
-        updateVersions: {
-            update: {
-                version: '<%= package.version %>'
-            }
-        },
         exec: {
-            updatechangelog: {
-                cmd: "gren changelog --generate --override --token=<%= buildConfig.GitHub.token %>"
-            },
             downloadPOEditorStats: {
                 cmd: "curl -X POST https://api.poeditor.com/v2/languages/list -d api_token=<%= buildConfig.POEditor.token %> -d id=<%= buildConfig.POEditor.id %> -o src/locale/poeditor.json -s"
             }
@@ -560,30 +552,6 @@ module.exports = function (grunt) {
                 jsFileContent = jsFileContent + '\n' + "try {"+select2+"} catch(e) {}"
             }
             grunt.file.write('src/locale/js/'+locale+'.js', jsFileContent );
-        }
-    });
-
-    grunt.registerMultiTask('updateVersions', 'Update Files to match NPM version', function () {
-        var moment = require('moment');
-        var version = this.data.version;
-
-        // php composer
-        var file = 'src/composer.json';
-
-        var curFile = grunt.file.readJSON(file);
-        curFile.version = version;
-        var stringFile = JSON.stringify(curFile, null, 4);
-        grunt.file.write(file, stringFile);
-
-        // db update file
-        file = 'src/mysql/upgrade.json';
-        curFile = grunt.file.readJSON(file);
-        if (curFile.current.dbVersion !== version) {
-            console.log("updating database upgrade file to: " + version);
-            curFile.current.versions.push(curFile.current.dbVersion);
-            curFile.current.dbVersion = version;
-            stringFile = JSON.stringify(curFile, null, 4);
-            grunt.file.write(file, stringFile);
         }
     });
 

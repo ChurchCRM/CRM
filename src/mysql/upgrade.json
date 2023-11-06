@@ -316,7 +316,7 @@
         "scripts": [],
         "dbVersion": "5.0.0"
     },
-    "current": {
+    "pre-5.1.0": {
         "versions": [
             "5.0.0",
             "5.0.1",
@@ -329,5 +329,12 @@
             "/mysql/upgrade/5.1.0.sql"
         ],
         "dbVersion": "5.1.0"
+    },
+    "current": {
+        "versions": [
+            "5.1.0"
+        ],
+        "scripts": [],
+        "dbVersion": "5.1.1"
     }
 }
