@@ -6,6 +6,7 @@ require '../Include/Config.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use ChurchCRM\dto\SystemConfig;
+use Slim\App;
 
 // Instantiate the app
 $app = new App();
