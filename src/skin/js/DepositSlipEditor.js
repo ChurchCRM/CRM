@@ -11,9 +11,9 @@ function initPaymentTable() {
                     depositSlipID +
                     "&GroupKey=" +
                     full.GroupKey +
-                    '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa ' +
+                    '\'><i class="fa ' +
                     (isDepositClosed ? "fa-search-plus" : "fa-pencil") +
-                    ' fa-stack-1x fa-inverse"></i></span></a>' +
+                    '"></i></a>' +
                     familyName
                 );
             },
