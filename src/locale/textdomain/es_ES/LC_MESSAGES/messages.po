@@ -3170,8 +3170,9 @@ msgid "User Delete Confirmation"
 msgstr "confirmación de eliminación de usuario"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Confirme la eliminación de estado de usuario de:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Confirme la eliminación de estado de usuario de"
 
 #: 
 msgid "User Editor"
@@ -3604,26 +3605,6 @@ msgstr "Texto de Error"
 #: 
 msgid "Issue Report!"
 msgstr "Reporte de Problemas!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Ingrese un Título para su reporte de problema/característica nueva"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "¿Qué estaba haciendo cuando se dio cuenta del problema/funcionalidad nueva?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Cuando seleccione \"enviar\", un reporte de error será publicado en el Rastreador de Problemas de ChucrchCRM GitHub"
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Por favor no incluya ninguna información confidencial."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Alguna Información general acerca de su sistema será enviada junto a la llamada , tales como versión del Servidor y encabezados del navegador."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -7547,14 +7528,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "¿Está seguro de que desea remover los miembros seleccionados del grupo?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Problema enviado exisotamente"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Ver Problema en GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "¿Desea eliminar esta persona? Esto no puede deshacerse."
 
@@ -8277,8 +8250,9 @@ msgid "New Calendar"
 msgstr "Nuevo calendario"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Alerta: bEnableExternalCalendarAPI deshabilitado, pero algunos calendarios tienen token de acceso"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI deshabilitado, pero algunos calendarios tienen token de acceso"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"

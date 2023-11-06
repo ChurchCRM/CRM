@@ -2634,8 +2634,9 @@ msgid "User Delete Confirmation"
 msgstr "User Fshije Konfirmimi"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Ju lutem konfirmoni heqjen e statusit të përdoruesit nga:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Ju lutem konfirmoni heqjen e statusit të përdoruesit nga"
 
 #: 
 msgid "User Editor"

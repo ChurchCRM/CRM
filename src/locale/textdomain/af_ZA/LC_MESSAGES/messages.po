@@ -3168,8 +3168,9 @@ msgid "User Delete Confirmation"
 msgstr "Bevestiging deur gebruiker verwyder"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Bevestig die verwydering van gebruikerstatus uit:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Bevestig die verwydering van gebruikerstatus uit"
 
 #: 
 msgid "User Editor"
@@ -3602,26 +3603,6 @@ msgstr "Foutteks"
 #: 
 msgid "Issue Report!"
 msgstr "Uitreikingsverslag!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Voer 'n titel in vir u fout- / funksieverslag"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Wat het u gedoen toe u die fout / funksie-geleentheid opmerk?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "As u op \"indien\" klik, word 'n foutverslag aan die tracker van ChurchCRM GitHub Issue gepos."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Moet asseblief geen vertroulike inligting insluit nie."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Sommige algemene inligting oor u stelsel sal saam met die versoek ingedien word, soos die bedienerweergawe en blaaieropskrifte."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -7517,14 +7498,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "Is u seker dat u die geselekteerde groeplede wil verwyder?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Uitgawe suksesvol ingedien"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Kyk na die uitgawe op GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Wil u hierdie persoon uitvee? Dit kan nie ongedaan gemaak word nie."
 
@@ -8245,8 +8218,9 @@ msgid "New Calendar"
 msgstr "Nuwe kalender"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Waarskuwing: bEnableExternalCalendarAPI is gedeaktiveer, maar sommige kalenders het toegangstokens"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI is gedeaktiveer, maar sommige kalenders het toegangstokens"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"

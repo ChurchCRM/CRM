@@ -3186,8 +3186,9 @@ msgid "User Delete Confirmation"
 msgstr "Xác nhận xóa người dùng"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Vui lòng xác nhận việc xóa trạng thái người dùng khỏi:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Vui lòng xác nhận việc xóa trạng thái người dùng khỏi"
 
 #: 
 msgid "User Editor"
@@ -3620,26 +3621,6 @@ msgstr "Văn bản lỗi"
 #: 
 msgid "Issue Report!"
 msgstr "Báo cáo sự cố!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Nhập Tiêu đề cho báo cáo lỗi / tính năng của bạn"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Bạn đã làm gì khi nhận thấy cơ hội về lỗi / tính năng?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Khi bạn nhấp vào \"gửi\", một báo cáo lỗi sẽ được đăng lên trình theo dõi Sự cố GitHub của ChurchCRM."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Vui lòng không bao gồm bất kỳ thông tin bí mật nào."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Một số thông tin chung về hệ thống của bạn sẽ được gửi cùng với yêu cầu như Phiên bản máy chủ và tiêu đề trình duyệt."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -7535,14 +7516,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "Bạn có chắc chắn muốn xóa các thành viên nhóm đã chọn không?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Đã gửi vấn đề thành công"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Xem sự cố trên GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Bạn có muốn xóa thành viên này không ? Điều này không thể hoàn lại."
 
@@ -8263,8 +8236,9 @@ msgid "New Calendar"
 msgstr "Tạo lịch mới"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Cảnh báo: bEnableExternalCalendarAPI bị vô hiệu hóa, nhưng một số lịch có mã thông báo truy cập"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI bị vô hiệu hóa, nhưng một số lịch có mã thông báo truy cập"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"

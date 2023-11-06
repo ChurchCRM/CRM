@@ -3093,8 +3093,9 @@ msgid "User Delete Confirmation"
 msgstr "Potwierdznie Usunięcia Użytkownika"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Proszę potwierdzić usunięcie stanu użytkownika z:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Proszę potwierdzić usunięcie stanu użytkownika z"
 
 #: 
 msgid "User Editor"
@@ -4142,8 +4143,9 @@ msgid "New Calendar"
 msgstr "Nowy Kalendarz"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Uwaga: bEnableExternalCalendarAPI wyłączony, lecz niektóre kalendarze posiadają token dostepu"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI wyłączony, lecz niektóre kalendarze posiadają token dostepu"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"

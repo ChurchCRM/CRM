@@ -3143,8 +3143,9 @@ msgid "User Delete Confirmation"
 msgstr "Bruker Slett Bekreftelse"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Vennligst bekreft fjerning av brukeren status fra:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Vennligst bekreft fjerning av brukeren status fra"
 
 #: 
 msgid "User Editor"

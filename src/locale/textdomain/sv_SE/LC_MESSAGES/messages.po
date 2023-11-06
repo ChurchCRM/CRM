@@ -3277,8 +3277,9 @@ msgid "User Delete Confirmation"
 msgstr "Bekräfta radera användare"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Bekräfta att du vill radera användare status från:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Bekräfta att du vill radera användare status från"
 
 #: 
 msgid "User Editor"
@@ -3733,26 +3734,6 @@ msgstr "Feltext"
 #: 
 msgid "Issue Report!"
 msgstr "Utgivningsrapport!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Ange en titel för din bug / funktionsrapport"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Vad gjorde du när du märkte felet / funktionen?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "När du klickar på \"skicka,\" kommer en felrapport att läggas till ChurchCRM GitHub Issue tracker."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Ta inte med någon konfidentiell information."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Viss allmän information om ditt system kommer att skickas in tillsammans med begäran som serverversion och webbläsarhuvud."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -7665,14 +7646,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "Är du säker på att du vill ta bort de valda gruppmedlemmarna?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Problemet har skickats"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Visa problem på GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Vill du ta bort den här personen? Detta kan inte göras ogjort."
 
@@ -8393,8 +8366,9 @@ msgid "New Calendar"
 msgstr "Ny kalender"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Varning: bEnableExternalCalendarAPI är inaktiverat, men vissa kalendrar har åtkomsttecken"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI är inaktiverat, men vissa kalendrar har åtkomsttecken"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
