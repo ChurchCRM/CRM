@@ -648,7 +648,7 @@ function displayAccessTokenAPITest() {
         $(".content").prepend(
             "<div class='callout callout-danger'><h4>" +
                 i18next.t(
-                    "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens",
+                    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens",
                 ) +
                 "</h4><p>" +
                 i18next.t(

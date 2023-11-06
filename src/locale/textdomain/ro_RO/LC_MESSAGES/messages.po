@@ -2075,6 +2075,10 @@ msgid "Add New Group"
 msgstr "Adaugă grup nou"
 
 #: 
+msgid "Submit"
+msgstr "Trimiteti"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Editor de Proprietăți pentru Membrii Grupului"
 
@@ -8319,6 +8323,11 @@ msgid "New Calendar"
 msgstr "Calendar nou"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI dezactivat, dar unele calendare au tokenuri de acces"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Pentru ca calendarele să poată fi partajate, setarea bEnableExternalCalendarAPI trebuie să fie activată, pe lângă faptul că calendarul trebuie să aibă un token de acces specific"
 
@@ -9089,6 +9098,10 @@ msgstr "Versiunea serverului bazei de date"
 #: 
 msgid "Web Server"
 msgstr "Server web"
+
+#: 
+msgid "Server Software"
+msgstr "Software-ul serverului"
 
 #: 
 msgid "Email Information"

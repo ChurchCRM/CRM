@@ -2023,6 +2023,10 @@ msgid "Add New Group"
 msgstr "Προσθήκη νέας ομάδας"
 
 #: 
+msgid "Submit"
+msgstr "υποβάλλουν"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Επεξεργαστής ιδιοτήτων μέλους ομάδας"
 
@@ -8208,6 +8212,11 @@ msgid "New Calendar"
 msgstr "Νέο Ημερολόγιο"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI είναι απενεργοποιημένο, αλλά ορισμένα ημερολόγια έχουν διακριτικά πρόσβασης"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Για κοινή χρήση ημερολογίων, η ρύθμιση bEnableExternalCalendarAPI πρέπει να είναι ενεργοποιημένη εκτός από το ημερολόγιο που έχει συγκεκριμένο διακριτικό πρόσβασης"
 
@@ -8970,6 +8979,10 @@ msgstr "Έκδοση διακομιστή βάσης δεδομένων"
 #: 
 msgid "Web Server"
 msgstr "Διακομιστής Ιστού"
+
+#: 
+msgid "Server Software"
+msgstr "Λογισμικό διακομιστή"
 
 #: 
 msgid "Email Information"

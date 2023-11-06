@@ -21,8 +21,8 @@ function deleteUser(userId, userName) {
         title: i18next.t("User Delete Confirmation"),
         message:
             '<p style="color: red">' +
-            i18next.t("Please confirm removal of user status from:") +
-            " <b>" +
+            i18next.t("Please confirm removal of user status from") +
+            ": <b>" +
             userName +
             "</b></p>",
         callback: function (result) {
