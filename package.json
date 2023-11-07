@@ -70,7 +70,7 @@
         "ckeditor4": "4.23.0",
         "daterangepicker": "^3.1.0",
         "flag-icons": "^6.11.1",
-        "fullcalendar": "3.10.5",
+        "fullcalendar": "^6.1.9",
         "i18n": "^0.15.1",
         "i18next": "^23.6.0",
         "icheck-bootstrap": "^3.0.1",

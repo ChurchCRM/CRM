@@ -79,29 +79,14 @@ window.moveEventModal = {
 };
 
 window.CRM.refreshAllFullCalendarSources = function () {
-    $(window.CRM.fullcalendar.fullCalendar("getEventSources")).each(
-        function (idx, obj) {
-            window.CRM.fullcalendar.fullCalendar("refetchEventSources", obj);
-        },
-    );
+    window.CRM.fullcalendar.refetchEvents();
 };
 
 function deleteCalendar() {
-    window.CRM.APIRequest({
-        method: "DELETE",
-        path: "calendars/" + window.calendarPropertiesModal.calendar.Id,
-    }).done(function (data) {
-        var eventSourceURL =
-            window.CRM.root +
-            "/api/calendars/" +
-            $(this).data("calendarid") +
-            "/fullcalendar";
-        window.CRM.fullcalendar.fullCalendar("removeEventSource", {
-            id: window.calendarPropertiesModal.calendar.Id,
-            url: eventSourceURL,
-        });
-        initializeFilterSettings();
-    });
+    window.CRM.fullcalendar
+        .getEventSourceById(window.calendarPropertiesModal.calendar.Id)
+        .remove();
+    initializeFilterSettings();
 }
 
 window.calendarPropertiesModal = {
@@ -397,41 +382,40 @@ window.newCalendarModal = {
 };
 
 function initializeCalendar() {
-    window.CRM.isCalendarLoading = false; //
+    window.CRM.isCalendarLoading = false;
     // initialize the calendar
     // -----------------------------------------------------------------
-    window.CRM.fullcalendar = $("#calendar").fullCalendar({
-        header: {
-            left: "prev,next today",
+    window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+        headerToolbar: {
+            start: "prev,next today",
             center: "title",
-            right: "month,agendaWeek,agendaDay,listMonth",
+            end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
         },
         height: 600,
-        selectable: window.CRM.calendarJSArgs.isModifiable,
+        selectable: true,
         editable: window.CRM.calendarJSArgs.isModifiable,
-        eventStartEditable: window.CRM.calendarJSArgs.isModifiable,
-        eventDurationEditable: window.CRM.calendarJSArgs.isModifiable,
         eventDrop: window.moveEventModal.handleEventDrop,
         eventResize: window.moveEventModal.handleEventResize,
-        selectHelper: true,
-        selectable: true,
+        selectMirror: true,
         select: window.showNewEventForm, // This starts the React app
-        eventClick: function (eventData) {
+        eventClick: function (info) {
+            var { event: eventData, jsEvent } = info;
+            jsEvent.preventDefault(); // don't let the browser navigate
+
             var eventSourceParams = eventData.source.url.split("/");
-            var eventSourceType =
-                eventSourceParams[eventSourceParams.length - 3];
-            // this event has a URL, so we should redirect the user to that URL
-            if (eventData.url) {
+            var eventSourceType = eventSourceParams[eventSourceParams.length - 3];
+            if (eventData.url) {  // this event has a URL, so we should redirect the user to that URL
                 window.open(eventData.url);
-            }
-            // this event is "Editable", so we should display the edit form.
-            else if (eventData.editable) {
+            } else if (eventData.editable || (eventData.startEditable || eventData.durationEditable)) {
+                // this event is "Editable", so we should display the edit form.
+                //
+                // NOTE: for some reaons, `editable` field is not in the event so we're estimating
+                //   this value based on `startEditable` and `durationEditable`
                 window.showEventForm(eventData); // This starts the React app
             } else {
                 // but holidays don't currently have a URL from the backend #4962
                 alert(i18next.t("Holiday") + ": " + eventData.title);
             }
-            return false;
         },
         locale: window.CRM.lang,
         loading: function (isLoading, view) {
@@ -504,31 +488,30 @@ function GetCalendarURL(calendarType, calendarID) {
 
 function registerCalendarSelectionEvents() {
     $(document).on("change", ".calendarSelectionBox", function (event) {
+        var eventSourceURL = GetCalendarURL(
+            $(this).data("calendartype"),
+            $(this).data("calendarid"),
+        );
         if ($(this).is(":checked")) {
-            var eventSourceURL = GetCalendarURL(
-                $(this).data("calendartype"),
-                $(this).data("calendarid"),
-            );
             var alreadyPresent = window.CRM.fullcalendar
-                .fullCalendar("getEventSources")
+                .getEventSources()
                 .find(function (element) {
                     return element.url === eventSourceURL;
                 });
             if (!alreadyPresent) {
-                window.CRM.fullcalendar.fullCalendar(
-                    "addEventSource",
+                window.CRM.fullcalendar.addEventSource(
                     eventSourceURL,
                 );
             }
         } else {
-            var eventSourceURL = GetCalendarURL(
-                $(this).data("calendartype"),
-                $(this).data("calendarid"),
-            );
-            window.CRM.fullcalendar.fullCalendar(
-                "removeEventSource",
-                eventSourceURL,
-            );
+            var eventSource = window.CRM.fullcalendar
+                .getEventSources()
+                .find(function (element) {
+                    return element.url === eventSourceURL;
+                });
+            if (eventSource) {
+                eventSource.remove();
+            }
         }
     });
 
@@ -589,8 +572,7 @@ function showAllUserCalendars() {
                 getCalendarFilterElement(calendar, "user", "userCalendars"),
             );
 
-            window.CRM.fullcalendar.fullCalendar(
-                "addEventSource",
+            window.CRM.fullcalendar.addEventSource(
                 GetCalendarURL("user", calendar.Id),
             );
         });
@@ -610,8 +592,7 @@ function showAllSystemCalendars() {
             $("#systemCalendars").append(
                 getCalendarFilterElement(calendar, "system", "systemCalendars"),
             );
-            window.CRM.fullcalendar.fullCalendar(
-                "addEventSource",
+            window.CRM.fullcalendar.addEventSource(
                 GetCalendarURL("system", calendar.Id),
             );
         });
@@ -659,11 +640,13 @@ function displayAccessTokenAPITest() {
     }
 }
 
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function() {
     //window.CRM.calendarJSArgs.isModifiable = false;
     initializeCalendar();
     initializeFilterSettings();
     initializeNewCalendarButton();
     registerCalendarSelectionEvents();
     displayAccessTokenAPITest();
+
+    window.CRM.fullcalendar.render();
 });
