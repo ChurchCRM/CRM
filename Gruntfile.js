@@ -181,7 +181,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/chart.js/dist/Chart.js'],
+                        src: ['node_modules/chart.js/dist/chart.umd.js'],
                         dest: 'src/skin/external/chartjs/'
                     },
                     {
