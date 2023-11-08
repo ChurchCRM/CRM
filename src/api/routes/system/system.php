@@ -26,12 +26,12 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
     }
     $notifications = [];
     foreach (NotificationService::getNotifications() as $notification) {
-        $uiNotification = new UiNotification($notification->title, "bell", $notification->link, "", "danger", "8000", "bottom", "left");
+        $uiNotification = new UiNotification($notification->title, 'bell', $notification->link, '', 'danger', '8000', 'bottom', 'left');
         array_push($notifications, $uiNotification);
     }
 
     $taskSrv = new TaskService();
     $notifications = array_merge($notifications, $taskSrv->getTaskNotifications());
 
-    return $response->withJson(["notifications" => $notifications]);
+    return $response->withJson(['notifications' => $notifications]);
 }

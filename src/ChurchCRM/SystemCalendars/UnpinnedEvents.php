@@ -2,10 +2,8 @@
 
 namespace ChurchCRM\SystemCalendars;
 
-use ChurchCRM\Interfaces\SystemCalendar;
-use ChurchCRM\PersonQuery;
 use ChurchCRM\EventQuery;
-use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Interfaces\SystemCalendar;
 
 class UnpinnedEvents implements SystemCalendar
 {
@@ -21,12 +19,12 @@ class UnpinnedEvents implements SystemCalendar
 
     public function getBackgroundColor()
     {
-        return "FF0000";
+        return 'FF0000';
     }
 
     public function getForegroundColor()
     {
-        return "FFFFFF";
+        return 'FFFFFF';
     }
 
     public function getId()
@@ -36,18 +34,19 @@ class UnpinnedEvents implements SystemCalendar
 
     public function getName()
     {
-        return gettext("Unpinned Events");
+        return gettext('Unpinned Events');
     }
 
     public function getEvents($start, $end)
     {
         $Events = EventQuery::create()
-        ->filterByStart(["min" => $start])
-        ->filterByEnd(["max" => $end])
+        ->filterByStart(['min' => $start])
+        ->filterByEnd(['max' => $end])
         ->useCalendarEventQuery(null, \Propel\Runtime\ActiveQuery\Criteria::LEFT_JOIN)
           ->filterByCalendarId(null)
         ->endUse()
         ->find();
+
         return $Events;
     }
 
@@ -55,6 +54,7 @@ class UnpinnedEvents implements SystemCalendar
     {
         $Event = EventQuery::create()
         ->findOneById($Id);
+
         return $Event;
     }
 }

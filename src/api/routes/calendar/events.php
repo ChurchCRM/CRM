@@ -13,10 +13,9 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->group('/events', function () use ($app) {
-
     $app->get('/', 'getAllEvents');
     $app->get('', 'getAllEvents');
-    $app->get("/types", "getEventTypes");
+    $app->get('/types', 'getEventTypes');
     $app->get('/{id}', 'getEvent')->add(new EventsMiddleware());
     $app->get('/{id}/', 'getEvent')->add(new EventsMiddleware());
     $app->get('/{id}/primarycontact', 'getEventPrimaryContact');
@@ -29,7 +28,7 @@ $app->group('/events', function () use ($app) {
     $app->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $app->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
 
-    $app->delete("/{id}", 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
+    $app->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
 });
 
 function getAllEvents($request, Response $response, $args)
@@ -39,6 +38,7 @@ function getAllEvents($request, Response $response, $args)
     if ($Events) {
         return $response->write($Events->toJSON());
     }
+
     return $response->withStatus(404);
 }
 
@@ -50,12 +50,14 @@ function getEventTypes($request, Response $response, $args)
     if ($EventTypes) {
         return $response->write($EventTypes->toJSON());
     }
+
     return $response->withStatus(404);
 }
 
 function getEvent(Request $request, Response $response, $args)
 {
-    $Event = $request->getAttribute("event");
+    $Event = $request->getAttribute('event');
+
     return $response->write($Event->toJSON());
 }
 
@@ -69,6 +71,7 @@ function getEventPrimaryContact($request, $response, $args)
             return $response->write($Contact->toJSON());
         }
     }
+
     return $response->withStatus(404);
 }
 
@@ -80,6 +83,7 @@ function getEventSecondaryContact($request, $response, $args)
     if ($Contact) {
         return $response->write($Contact->toJSON());
     }
+
     return $response->withStatus(404);
 }
 
@@ -91,6 +95,7 @@ function getEventLocation($request, $response, $args)
     if ($Location) {
         return $response->write($Location->toJSON());
     }
+
     return $response->withStatus(404);
 }
 
@@ -102,25 +107,26 @@ function getEventAudience($request, Response $response, $args)
     if ($Audience) {
         return $response->write($Audience->toJSON());
     }
+
     return $response->withStatus(404);
 }
 
 function newEvent($request, $response, $args)
 {
-    $input = (object)$request->getParsedBody();
+    $input = (object) $request->getParsedBody();
 
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::Create()
         ->findOneById($input->Type);
     if (!$type) {
-        return $response->withStatus(400, gettext("invalid event type id"));
+        return $response->withStatus(400, gettext('invalid event type id'));
     }
 
     $calendars = CalendarQuery::create()
         ->filterById($input->PinnedCalendars)
         ->find();
     if (count($calendars) != count($input->PinnedCalendars)) {
-        return $response->withStatus(400, gettext("invalid calendar pinning"));
+        return $response->withStatus(400, gettext('invalid calendar pinning'));
     }
 
     // we have event type and pined calendars.  now create the event.
@@ -128,23 +134,21 @@ function newEvent($request, $response, $args)
     $event->setTitle($input->Title);
     $event->setEventType($type);
     $event->setDesc($input->Desc);
-    $event->setStart(str_replace("T", " ", $input->Start));
-    $event->setEnd(str_replace("T", " ", $input->End));
+    $event->setStart(str_replace('T', ' ', $input->Start));
+    $event->setEnd(str_replace('T', ' ', $input->End));
     $event->setText(InputUtils::filterHTML($input->Text));
     $event->setCalendars($calendars);
     $event->save();
 
-    return $response->withJson(["status" => "success"]);
+    return $response->withJson(['status' => 'success']);
 }
 
 function updateEvent($request, $response, $args)
 {
-
-
     $e = new Event();
     //$e->getId();
     $input = $request->getParsedBody();
-    $Event = $request->getAttribute("event");
+    $Event = $request->getAttribute('event');
     $id = $Event->getId();
     $Event->fromArray($input);
     $Event->setId($id);
@@ -158,7 +162,7 @@ function updateEvent($request, $response, $args)
 
 function setEventTime($request, Response $response, $args)
 {
-    $input = (object)$request->getParsedBody();
+    $input = (object) $request->getParsedBody();
 
     $event = EventQuery::Create()
         ->findOneById($args['id']);
@@ -168,9 +172,9 @@ function setEventTime($request, Response $response, $args)
     $event->setStart($input->startTime);
     $event->setEnd($input->endTime);
     $event->save();
-    return $response->withJson(["status" => "success"]);
-}
 
+    return $response->withJson(['status' => 'success']);
+}
 
 function unusedSetEventAttendance()
 {
@@ -203,7 +207,7 @@ function unusedSetEventAttendance()
 
 function deleteEvent($request, $response, $args)
 {
-    $input = (object)$request->getParsedBody();
+    $input = (object) $request->getParsedBody();
 
     $event = EventQuery::Create()
         ->findOneById($args['id']);
@@ -211,5 +215,6 @@ function deleteEvent($request, $response, $args)
         return $response->withStatus(404);
     }
     $event->delete();
-    return $response->withJson(["status" => "success"]);
+
+    return $response->withJson(['status' => 'success']);
 }

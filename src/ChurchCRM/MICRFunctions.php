@@ -72,7 +72,7 @@ class MICRFunctions
             $firstSmallO = strpos($micr, 'o');
             $accountNo = mb_substr($micr, $firstSmallO, strlen($micr) - $firstSmallO);
 
-            return $routeNo . $accountNo;
+            return $routeNo.$accountNo;
         } else {
             return '';
         }

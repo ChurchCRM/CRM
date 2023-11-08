@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Tasks;
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
 
 class IntegrityCheckTask implements TaskInterface
@@ -12,7 +12,7 @@ class IntegrityCheckTask implements TaskInterface
 
     public function __construct()
     {
-        $integrityCheckPath = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
+        $integrityCheckPath = SystemURLs::getDocumentRoot().'/integrityCheck.json';
         if (is_file($integrityCheckPath)) {
             $integrityCheckContents = file_get_contents($integrityCheckPath);
             MiscUtils::throwIfFailed($integrityCheckContents);
@@ -33,7 +33,7 @@ class IntegrityCheckTask implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/v2/admin/debug';
+        return SystemURLs::getRootPath().'/v2/admin/debug';
     }
 
     public function getTitle(): string

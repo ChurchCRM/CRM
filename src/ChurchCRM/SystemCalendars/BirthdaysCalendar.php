@@ -2,12 +2,11 @@
 
 namespace ChurchCRM\SystemCalendars;
 
+use ChurchCRM\Event;
 use ChurchCRM\Interfaces\SystemCalendar;
 use ChurchCRM\PersonQuery;
-use Propel\Runtime\Collection\ObjectCollection;
-use ChurchCRM\Event;
-use ChurchCRM\Calendar;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Collection\ObjectCollection;
 
 class BirthdaysCalendar implements SystemCalendar
 {
@@ -23,12 +22,12 @@ class BirthdaysCalendar implements SystemCalendar
 
     public function getBackgroundColor()
     {
-        return "0000FF";
+        return '0000FF';
     }
 
     public function getForegroundColor()
     {
-        return "FFFFFF";
+        return 'FFFFFF';
     }
 
     public function getId()
@@ -38,7 +37,7 @@ class BirthdaysCalendar implements SystemCalendar
 
     public function getName()
     {
-        return gettext("Birthdays");
+        return gettext('Birthdays');
     }
 
     public function getEvents($start, $end)
@@ -46,6 +45,7 @@ class BirthdaysCalendar implements SystemCalendar
         $people = PersonQuery::create()
             ->filterByBirthDay('', Criteria::NOT_EQUAL)
             ->find();
+
         return $this->peopleCollectionToEvents($people);
     }
 
@@ -55,6 +55,7 @@ class BirthdaysCalendar implements SystemCalendar
             ->filterByBirthDay('', Criteria::NOT_EQUAL)
             ->filterById($Id)
             ->find();
+
         return $this->peopleCollectionToEvents($people);
     }
 
@@ -67,12 +68,13 @@ class BirthdaysCalendar implements SystemCalendar
             $birthday->setId($person->getId());
             $birthday->setEditable(false);
             $year = date('Y');
-            $birthday->setStart($year . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
+            $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
             $age = $person->getAge($birthday->getStart());
-            $birthday->setTitle(gettext("Birthday") . ": " . $person->getFullName() . ( $age ? " (" . $age . ")" : '' ));
+            $birthday->setTitle(gettext('Birthday').': '.$person->getFullName().($age ? ' ('.$age.')' : ''));
             $birthday->setURL($person->getViewURI());
             $events->push($birthday);
         }
+
         return $events;
     }
 }

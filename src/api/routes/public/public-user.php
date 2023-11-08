@@ -17,11 +17,12 @@ function userLogin(Request $request, Response $response, array $args)
         if (!empty($user)) {
             $password = $body->password;
             if ($user->isPasswordValid($password)) {
-                return $response->withJson(["apiKey" => $user->getApiKey()]);
+                return $response->withJson(['apiKey' => $user->getApiKey()]);
             } else {
                 return $response->withStatus(401, gettext('Invalid User/Password'));
             }
         }
     }
+
     return $response->withStatus(404);
 }

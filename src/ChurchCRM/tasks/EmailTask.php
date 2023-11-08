@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Tasks;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 class EmailTask implements TaskInterface
 {
@@ -20,7 +20,7 @@ class EmailTask implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/SystemSettings.php';
+        return SystemURLs::getRootPath().'/SystemSettings.php';
     }
 
     public function getTitle(): string
@@ -30,6 +30,6 @@ class EmailTask implements TaskInterface
 
     public function getDesc(): string
     {
-        return gettext("SMTP Server info are blank");
+        return gettext('SMTP Server info are blank');
     }
 }

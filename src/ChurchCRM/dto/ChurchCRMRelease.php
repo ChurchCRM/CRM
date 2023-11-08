@@ -13,12 +13,11 @@ class ChurchCRMRelease
     public function __construct(array $releaseArray)
     {
         $this->rawRelease = $releaseArray;
-        $versions = explode(".", $releaseArray["name"]);
+        $versions = explode('.', $releaseArray['name']);
         $this->MAJOR = $versions[0];
         $this->MINOR = $versions[1];
         $this->PATCH = $versions[2];
     }
-
 
     public function equals(ChurchCRMRelease $b)
     {
@@ -31,7 +30,7 @@ class ChurchCRMRelease
             return -1;
         } elseif ($this->MAJOR > $b->MAJOR) {
             return 1;
-        } elseif ($this->MAJOR  ==  $b->MAJOR) {
+        } elseif ($this->MAJOR == $b->MAJOR) {
             if ($this->MINOR < $b->MINOR) {
                 return -1;
             } elseif ($this->MINOR > $b->MINOR) {
@@ -51,7 +50,7 @@ class ChurchCRMRelease
     public function __toString()
     {
         try {
-            return (string) $this->MAJOR . "." . $this->MINOR . "." . $this->PATCH;
+            return (string) $this->MAJOR.'.'.$this->MINOR.'.'.$this->PATCH;
         } catch (\Exception $exception) {
             return '';
         }
@@ -60,10 +59,11 @@ class ChurchCRMRelease
     public function getDownloadURL()
     {
         foreach ($this->rawRelease['assets'] as $asset) {
-            if ($asset['name'] == "ChurchCRM-" . $this->rawRelease['name'] . ".zip") {
+            if ($asset['name'] == 'ChurchCRM-'.$this->rawRelease['name'].'.zip') {
                 $url = $asset['browser_download_url'];
             }
         }
+
         return $url;
     }
 
