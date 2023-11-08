@@ -26,9 +26,9 @@ class PdfGroupDirectory extends ChurchInfoReport
             //Move to the right
             $this->Cell(10);
             //Framed title
-            $sTitle = $sGroupName . ' - ' . gettext('Group Directory');
+            $sTitle = $sGroupName.' - '.gettext('Group Directory');
             if (strlen($sRoleName)) {
-                $sTitle .= ' (' . $sRoleName . ')';
+                $sTitle .= ' ('.$sRoleName.')';
             }
             $this->Cell(197, 10, $sTitle, 1, 0, 'C');
         }
@@ -41,7 +41,7 @@ class PdfGroupDirectory extends ChurchInfoReport
         //Select Arial italic 8
         $this->SetFont($this->_Font, 'I', 8);
         //Print centered page number
-        $this->Cell(0, 10, 'Page ' . ($this->PageNo()), 0, 0, 'C');
+        $this->Cell(0, 10, 'Page '.$this->PageNo(), 0, 0, 'C');
     }
 
     // Sets the character size
@@ -87,20 +87,20 @@ class PdfGroupDirectory extends ChurchInfoReport
 
     // This function prints out the heading when a letter
     // changes.
-/*  function addHeader($sLetter)
-    {
-        $this->checkLines(2);
-        $this->SetTextColor(255);
-        $this->SetFont($this->_Font,'B',12);
-        $_PosX = $this->_Margin_Left+($this->_Column*108);
-        $_PosY = $this->_Margin_Top+($this->_CurLine*5);
-        $this->SetXY($_PosX, $_PosY);
-        $this->Cell(80, 5, $sLetter, 1, 1, "C", 1) ;
-        $this->SetTextColor(0);
-        $this->SetFont($this->_Font,'',$this->_Char_Size);
-        $this->_CurLine+=2;
-    }
-*/
+    /*  function addHeader($sLetter)
+        {
+            $this->checkLines(2);
+            $this->SetTextColor(255);
+            $this->SetFont($this->_Font,'B',12);
+            $_PosX = $this->_Margin_Left+($this->_Column*108);
+            $_PosY = $this->_Margin_Top+($this->_CurLine*5);
+            $this->SetXY($_PosX, $_PosY);
+            $this->Cell(80, 5, $sLetter, 1, 1, "C", 1) ;
+            $this->SetTextColor(0);
+            $this->SetFont($this->_Font,'',$this->_Char_Size);
+            $this->_CurLine+=2;
+        }
+    */
 
     // This prints the name in BOLD
     public function printName($sName)

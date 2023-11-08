@@ -17,6 +17,7 @@ class Classification
         if (!empty($classification)) {
             return $classification->getOptionName();
         }
-        return "";
+
+        return '';
     }
 }

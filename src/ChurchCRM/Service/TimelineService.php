@@ -2,12 +2,12 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\EventAttendQuery;
 use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 class TimelineService
 {
@@ -60,6 +60,7 @@ class TimelineService
                 $timeline[$item['key']] = $item;
             }
         }
+
         return $timeline;
     }
 
@@ -122,7 +123,7 @@ class TimelineService
             $displayEditedBy = gettext('Unknown');
             if ($dbNote->getDisplayEditedBy() == Person::SELF_REGISTER) {
                 $displayEditedBy = gettext('Self Registration');
-            } else if ($dbNote->getDisplayEditedBy() == Person::SELF_VERIFY) {
+            } elseif ($dbNote->getDisplayEditedBy() == Person::SELF_VERIFY) {
                 $displayEditedBy = gettext('Self Verification');
             } else {
                 $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
@@ -134,8 +135,8 @@ class TimelineService
                 $dbNote->getId(),
                 $dbNote->getType(),
                 $dbNote->getDisplayEditedDate(),
-                $dbNote->getDisplayEditedDate("Y"),
-                gettext('by') . ' ' . $displayEditedBy,
+                $dbNote->getDisplayEditedDate('Y'),
+                gettext('by').' '.$displayEditedBy,
                 '',
                 $dbNote->getText(),
                 $dbNote->getEditLink(),
@@ -190,7 +191,7 @@ class TimelineService
 
         $item['datetime'] = $datetime;
         $item['year'] = $year;
-        $item['key'] = $datetime . '-' . $id;
+        $item['key'] = $datetime.'-'.$id;
 
         return $item;
     }

@@ -32,12 +32,12 @@ class CheckUploadSizeTask
 
     public function getTitle(): string
     {
-        return gettext('PHP Max File size too small') . " (" . $this->sizeString . ")";
+        return gettext('PHP Max File size too small').' ('.$this->sizeString.')';
     }
 
     public function getDesc(): string
     {
-        return gettext("Increase the php upload limits to allow for mobile photo upload, and backup restore.");
+        return gettext('Increase the php upload limits to allow for mobile photo upload, and backup restore.');
     }
 
     private static function returnBytes(string $val): int

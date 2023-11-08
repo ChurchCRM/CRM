@@ -27,12 +27,12 @@ class Event extends BaseEvent
 
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
     {
-
         $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
         $array['PinnedCalendars'] = array_map('intval', Base\CalendarEventQuery::create()
             ->filterByEventId($this->getId())
             ->select(Map\CalendarEventTableMap::COL_CALENDAR_ID)
             ->find()->toArray());
+
         return $array;
     }
 
@@ -59,7 +59,7 @@ class Event extends BaseEvent
         ->setCheckoutDate(null)
         ->save();
 
-        return ["status" => "success"];
+        return ['status' => 'success'];
     }
 
     public function checkOutPerson($PersonId)
@@ -75,11 +75,11 @@ class Event extends BaseEvent
         ->setCheckoutDate(date('Y-m-d H:i:s'))
         ->save();
 
-        return ["status" => "success"];
+        return ['status' => 'success'];
     }
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath() . "/EventEditor.php?calendarAction=" . $this->getID();
+        return SystemURLs::getRootPath().'/EventEditor.php?calendarAction='.$this->getID();
     }
 }

@@ -33,8 +33,8 @@ class Country implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-          'name' => $this->countryName,
-          'code' => $this->countryCode,
+            'name' => $this->countryName,
+            'code' => $this->countryCode,
         ];
     }
 }

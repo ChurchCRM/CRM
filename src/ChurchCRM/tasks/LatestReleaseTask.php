@@ -2,11 +2,10 @@
 
 namespace ChurchCRM\Tasks;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\dto\ChurchCRMRelease;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 class LatestReleaseTask implements TaskInterface
 {
@@ -21,7 +20,7 @@ class LatestReleaseTask implements TaskInterface
     public function isActive(): bool
     {
         $isCurrent = ChurchCRMReleaseManager::isReleaseCurrent($this->installedVersion);
-        if (! $isCurrent) {
+        if (!$isCurrent) {
             try {
                 // This can fail with an exception if the currently running software is "not current"
                 // but there are no more available releases.
@@ -30,10 +29,13 @@ class LatestReleaseTask implements TaskInterface
                 $this->latestVersion = ChurchCRMReleaseManager::getNextReleaseStep($this->installedVersion);
             } catch (\Exception $e) {
                 LoggerUtils::getAppLogger()->debug($e);
+
                 return false;
             }
+
             return true;
         }
+
         return false;
     }
 
@@ -45,7 +47,7 @@ class LatestReleaseTask implements TaskInterface
     public function getLink(): string
     {
         if (AuthenticationManager::getCurrentUser()->isAdmin()) {
-            return SystemURLs::getRootPath() . '/UpgradeCRM.php';
+            return SystemURLs::getRootPath().'/UpgradeCRM.php';
         } else {
             return 'https://github.com/ChurchCRM/CRM/releases/latest';
         }
@@ -53,7 +55,7 @@ class LatestReleaseTask implements TaskInterface
 
     public function getTitle(): string
     {
-        return gettext('New Release') . ' ' . $this->latestVersion;
+        return gettext('New Release').' '.$this->latestVersion;
     }
 
     public function getDesc(): string

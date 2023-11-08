@@ -8,8 +8,8 @@ class PdfDepositReport extends ChurchInfoReport
     public $_Char_Size = 10;        // Character size
     public $_Font = 'Courier';
 
-  // Sets the character size
-  // This changes the line height too
+    // Sets the character size
+    // This changes the line height too
     public function setCharSize($pt)
     {
         if ($pt > 3) {
@@ -26,7 +26,7 @@ class PdfDepositReport extends ChurchInfoReport
         $this->Write(8, $str);
     }
 
-  // Constructor
+    // Constructor
     public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);

@@ -27,10 +27,10 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
     $mailchimp = new MailChimpService();
 
     $pageArgs = [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('eMail Dashboard'),
+        'sRootPath'         => SystemURLs::getRootPath(),
+        'sPageTitle'        => gettext('eMail Dashboard'),
         'isMailChimpActive' => $mailchimp->isActive(),
-        'mailChimpLists' => $mailchimp->getLists()
+        'mailChimpLists'    => $mailchimp->getLists(),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
@@ -41,35 +41,35 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
     $renderer = new PhpRenderer('templates/email/');
 
     $mailer = new PHPMailer();
-    $message = "";
+    $message = '';
 
-    if (!empty(SystemConfig::getValue("sSMTPHost")) && !empty(ChurchMetaData::getChurchEmail())) {
+    if (!empty(SystemConfig::getValue('sSMTPHost')) && !empty(ChurchMetaData::getChurchEmail())) {
         $mailer->IsSMTP();
         $mailer->CharSet = 'UTF-8';
-        $mailer->Timeout = intval(SystemConfig::getValue("iSMTPTimeout"));
-        $mailer->Host = SystemConfig::getValue("sSMTPHost");
-        if (SystemConfig::getBooleanValue("bSMTPAuth")) {
+        $mailer->Timeout = intval(SystemConfig::getValue('iSMTPTimeout'));
+        $mailer->Host = SystemConfig::getValue('sSMTPHost');
+        if (SystemConfig::getBooleanValue('bSMTPAuth')) {
             $mailer->SMTPAuth = true;
-            echo "SMTP Auth Used </br>";
-            $mailer->Username = SystemConfig::getValue("sSMTPUser");
-            $mailer->Password = SystemConfig::getValue("sSMTPPass");
+            echo 'SMTP Auth Used </br>';
+            $mailer->Username = SystemConfig::getValue('sSMTPUser');
+            $mailer->Password = SystemConfig::getValue('sSMTPPass');
         }
 
         $mailer->SMTPDebug = 3;
-        $mailer->Subject = "Test SMTP Email";
+        $mailer->Subject = 'Test SMTP Email';
         $mailer->setFrom(ChurchMetaData::getChurchEmail());
         $mailer->addAddress(ChurchMetaData::getChurchEmail());
-        $mailer->Body = "test email";
-        $mailer->Debugoutput = "html";
+        $mailer->Body = 'test email';
+        $mailer->Debugoutput = 'html';
     } else {
-        $message = gettext("SMTP Host is not setup, please visit the settings page");
+        $message = gettext('SMTP Host is not setup, please visit the settings page');
     }
 
     $pageArgs = [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext("Debug Email Connection"),
-        'mailer' => $mailer,
-        'message' => $message
+        'sRootPath'  => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('Debug Email Connection'),
+        'mailer'     => $mailer,
+        'message'    => $message,
     ];
 
     return $renderer->render($response, 'debug.php', $pageArgs);
@@ -77,12 +77,12 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
 
 function getDuplicateEmailsMVC(Request $request, Response $response, array $args)
 {
-    return renderPage($response, 'templates/email/', 'duplicate.php', _("Duplicate Emails"));
+    return renderPage($response, 'templates/email/', 'duplicate.php', _('Duplicate Emails'));
 }
 
 function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args)
 {
-    return renderPage($response, 'templates/email/', 'without.php', _("Families Without Emails"));
+    return renderPage($response, 'templates/email/', 'without.php', _('Families Without Emails'));
 }
 
 function getMailListUnSubscribersMVC(Request $request, Response $response, array $args)
@@ -92,13 +92,15 @@ function getMailListUnSubscribersMVC(Request $request, Response $response, array
     if ($list) {
         $renderer = new PhpRenderer('templates/email/');
         $pageArgs = [
-            'sRootPath' => SystemURLs::getRootPath(),
-            'sPageTitle' => _("People not in") . " " .  $list["name"],
-            'listId' => $list["id"]
+            'sRootPath'  => SystemURLs::getRootPath(),
+            'sPageTitle' => _('People not in').' '.$list['name'],
+            'listId'     => $list['id'],
         ];
+
         return $renderer->render($response, 'mailchimp-unsubscribers.php', $pageArgs);
     }
-    return $response->withStatus(404, gettext("Invalid List id") . ": " . $args['listId']);
+
+    return $response->withStatus(404, gettext('Invalid List id').': '.$args['listId']);
 }
 
 function getMailListMissingMVC(Request $request, Response $response, array $args)
@@ -108,11 +110,13 @@ function getMailListMissingMVC(Request $request, Response $response, array $args
     if ($list) {
         $renderer = new PhpRenderer('templates/email/');
         $pageArgs = [
-            'sRootPath' => SystemURLs::getRootPath(),
-            'sPageTitle' => $list["name"] . " " . _("Audience not in the ChurchCRM"),
-            'listId' => $list["id"]
+            'sRootPath'  => SystemURLs::getRootPath(),
+            'sPageTitle' => $list['name'].' '._('Audience not in the ChurchCRM'),
+            'listId'     => $list['id'],
         ];
+
         return $renderer->render($response, 'mailchimp-missing.php', $pageArgs);
     }
-    return $response->withStatus(404, gettext("Invalid List id") . ": " . $args['listId']);
+
+    return $response->withStatus(404, gettext('Invalid List id').': '.$args['listId']);
 }

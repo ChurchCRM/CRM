@@ -14,7 +14,7 @@ use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
-    $app->get('/photo', function ($request, $response, $args) use ($app) {
+    $app->get('/photo', function ($request, $response, $args) {
         $this->cache->withExpires(
             $response,
             MiscUtils::getPhotoCacheExpirationTimestamp()
@@ -27,7 +27,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
     });
 
     $app->post('/photo', function ($request, $response, $args) {
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
         $family = $request->getAttribute('family');
         $family->setImageFromBase64($input->imgBase64);
 
@@ -36,10 +36,11 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
 
     $app->delete('/photo', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
+
         return $response->withJson(['status' => $family->deletePhoto()]);
     })->add(new EditRecordsRoleAuthMiddleware());
 
-    $app->get('/thumbnail', function ($request, $response, $args) use ($app) {
+    $app->get('/thumbnail', function ($request, $response, $args) {
         $this->cache->withExpires(
             $response,
             MiscUtils::getPhotoCacheExpirationTimestamp()
@@ -53,6 +54,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
 
     $app->get('', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
+
         return $response
             ->withHeader('Content-Type', 'application/json')
             ->write($family->exportTo('JSON'));
@@ -67,6 +69,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
             ChurchMetaData::getChurchAddress()
         );
         $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
+
         return $response->withJson($geoLocationInfo);
     });
 
@@ -90,21 +93,24 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         if ($tempFamily) {
             $familyNav['NextFamilyId'] = $tempFamily->getId();
         }
+
         return $response->withJson($familyNav);
     });
 
-
     $app->post('/verify', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
+
         try {
             $family->sendVerifyEmail();
+
             return $response->withStatus(200);
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->error($e->getMessage());
+
             return $response->withStatus(500)
                 ->withJson([
-                    'message' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
-                    'trace' => $e->getMessage()
+                    'message' => gettext('Error sending email(s)').' - '.gettext('Please check logs for more information'),
+                    'trace'   => $e->getMessage(),
                 ]);
         }
     });
@@ -119,13 +125,15 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         $token->build('verifyFamily', $family->getId());
         $token->save();
         $family->createTimeLineNote('verify-URL');
+
         return $response
-            ->withJson(['url' => SystemURLs::getURL() . '/external/verify/' . $token->getToken()]);
+            ->withJson(['url' => SystemURLs::getURL().'/external/verify/'.$token->getToken()]);
     });
 
     $app->post('/verify/now', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
         $family->verify();
+
         return $response->withJson(['message' => 'Success']);
     });
 })->add(new FamilyAPIMiddleware());

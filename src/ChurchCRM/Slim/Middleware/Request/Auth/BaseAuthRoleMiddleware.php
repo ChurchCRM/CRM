@@ -10,7 +10,7 @@ use Slim\Http\Response;
 abstract class BaseAuthRoleMiddleware
 {
     /**
-     * @var  User $user
+     * @var User
      */
     protected $user;
 
@@ -24,6 +24,7 @@ abstract class BaseAuthRoleMiddleware
         if (!$this->hasRole()) {
             return $response->withStatus(403, $this->noRoleMessage());
         }
+
         return $next($request, $response);
     }
 

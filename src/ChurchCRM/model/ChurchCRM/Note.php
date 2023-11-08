@@ -24,12 +24,12 @@ class Note extends BaseNote
 
     public function getEditLink()
     {
-        $url = SystemURLs::getRootPath() . '/NoteEditor.php?NoteID=' . $this->getId() . '&';
+        $url = SystemURLs::getRootPath().'/NoteEditor.php?NoteID='.$this->getId().'&';
 
         if ($this->getPerId() != '') {
-            $url = $url . 'PersonID=' . $this->getPerId();
+            $url = $url.'PersonID='.$this->getPerId();
         } else {
-            $url = $url . 'FamilyID=' . $this->getFamId();
+            $url = $url.'FamilyID='.$this->getFamId();
         }
 
         return $url;
@@ -37,7 +37,7 @@ class Note extends BaseNote
 
     public function getDeleteLink()
     {
-        return SystemURLs::getRootPath() . '/NoteDelete.php?NoteID=' . $this->getId();
+        return SystemURLs::getRootPath().'/NoteDelete.php?NoteID='.$this->getId();
     }
 
     public function getDisplayEditedDate($format = 'Y-m-d h:i:s')

@@ -1,12 +1,10 @@
 <?php
 
-namespace ChurchCRM\Authentication\Requests {
+namespace ChurchCRM\Authentication\Requests;
 
-    class AuthenticationRequest
+class AuthenticationRequest
+{
+    public function __construct()
     {
-        public function __construct()
-        {
-        }
     }
-
 }

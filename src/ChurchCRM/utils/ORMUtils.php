@@ -8,8 +8,9 @@ class ORMUtils
     {
         $validationErrors = [];
         foreach ($failures as $failure) {
-            array_push($validationErrors, "Property " . $failure->getPropertyPath() . ": " . $failure->getMessage());
+            array_push($validationErrors, 'Property '.$failure->getPropertyPath().': '.$failure->getMessage());
         }
+
         return $validationErrors;
     }
 }

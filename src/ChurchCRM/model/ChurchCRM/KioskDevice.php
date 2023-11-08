@@ -3,7 +3,6 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\KioskDevice as BaseKioskDevice;
-use ChurchCRM\Map\ListOptionTableMap;
 
 class KioskDevice extends BaseKioskDevice
 {
@@ -37,12 +36,11 @@ class KioskDevice extends BaseKioskDevice
             $assignmentJSON = $assignment->toJSON();
         }
 
-
         return [
-        "Accepted" => $this->getAccepted(),
-        "Name" => $this->getName(),
-        "Assignment" => $assignmentJSON,
-        "Commands" => $this->getPendingCommands()
+            'Accepted'   => $this->getAccepted(),
+            'Name'       => $this->getName(),
+            'Assignment' => $assignmentJSON,
+            'Commands'   => $this->getPendingCommands(),
         ];
     }
 
@@ -51,20 +49,23 @@ class KioskDevice extends BaseKioskDevice
         $commands = parent::getPendingCommands();
         $this->setPendingCommands(null);
         $this->save();
+
         return $commands;
     }
 
     public function reloadKiosk()
     {
-        $this->setPendingCommands("Reload");
+        $this->setPendingCommands('Reload');
         $this->save();
+
         return true;
     }
 
     public function identifyKiosk()
     {
-        $this->setPendingCommands("Identify");
+        $this->setPendingCommands('Identify');
         $this->save();
+
         return true;
     }
 
@@ -73,6 +74,7 @@ class KioskDevice extends BaseKioskDevice
         if (!isset($this->Name)) {
             $this->setName(Utils\MiscUtils::randomWord());
         }
+
         return true;
     }
 }
