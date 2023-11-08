@@ -17,6 +17,7 @@ class UiNotification implements JsonSerializable
 
     /**
      * UiNotification constructor.
+     *
      * @param $title
      * @param $message
      * @param $url
@@ -26,7 +27,7 @@ class UiNotification implements JsonSerializable
      * @param $placement
      * @param $align
      */
-    public function __construct($title, $icon, $url = "", $message = "", $type = "info", $delay = 4000, $placement = "top", $align = "right")
+    public function __construct($title, $icon, $url = '', $message = '', $type = 'info', $delay = 4000, $placement = 'top', $align = 'right')
     {
         $this->title = $title;
         $this->message = $message;
@@ -101,7 +102,6 @@ class UiNotification implements JsonSerializable
     {
         return $this->align;
     }
-
 
     public function jsonSerialize(): array
     {

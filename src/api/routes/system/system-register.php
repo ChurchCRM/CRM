@@ -6,7 +6,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 
 $app->group('/register', function () use ($app) {
     $app->post('', function ($request, $response, $args) {
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
 
         $registrationData = new \stdClass();
         $registrationData->sName = SystemConfig::getValue('sChurchName');

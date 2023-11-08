@@ -23,10 +23,12 @@ class Pledge extends BasePledge
         return MakeFYString($this->getFyId());
     }
 
-   /**
-     * Code to be run before deleting the object in database
-     * @param  ConnectionInterface $con
-     * @return boolean
+    /**
+     * Code to be run before deleting the object in database.
+     *
+     * @param ConnectionInterface $con
+     *
+     * @return bool
      */
     public function preDelete(ConnectionInterface $con = null)
     {
@@ -44,10 +46,10 @@ class Pledge extends BasePledge
         $family = $this->getFamily();
 
         if ($family) {
-          // This must be done in the Pledge object model instead of during a query with Propel's ->WithColumn() syntax
-          // because the getFamilyString logic is implemented in PHP, not SQL, and the consumer of this object
-          // expects to see the fully-formatted family string (name, address, state) instead of only family name.
-          // i.e. commit 33b40c973685b7f03cfb3e79241fe53594b83f04 does it incorrectly.
+            // This must be done in the Pledge object model instead of during a query with Propel's ->WithColumn() syntax
+            // because the getFamilyString logic is implemented in PHP, not SQL, and the consumer of this object
+            // expects to see the fully-formatted family string (name, address, state) instead of only family name.
+            // i.e. commit 33b40c973685b7f03cfb3e79241fe53594b83f04 does it incorrectly.
             $array['FamilyString'] = $family->getFamilyString();
         }
 

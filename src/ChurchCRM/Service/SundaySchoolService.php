@@ -49,13 +49,13 @@ class SundaySchoolService
     {
         $sql = 'select person_per.*
               from person_per,group_grp grp, person2group2role_p2g2r person_grp, list_lst lst
-            where grp.grp_ID = ' . $groupId . "
+            where grp.grp_ID = '.$groupId."
               and grp_Type = 4
               and grp.grp_ID = person_grp.p2g2r_grp_ID
               and person_grp.p2g2r_per_ID = per_ID
               and lst.lst_ID = grp.grp_RoleListID
               and lst.lst_OptionID = person_grp.p2g2r_rle_ID
-              and lst.lst_OptionName = '" . $role . "'
+              and lst.lst_OptionName = '".$role."'
             order by per_FirstName";
         $rsMembers = RunQuery($sql);
         $members = [];
@@ -146,18 +146,18 @@ class SundaySchoolService
             }
         }
 
-        return ['Jan' => $Jan,
-        'Feb'       => $Feb,
-        'Mar'       => $Mar,
-        'Apr'       => $Apr,
-        'May'       => $May,
-        'June'      => $June,
-        'July'      => $July,
-        'Aug'       => $Aug,
-        'Sept'      => $Sept,
-        'Oct'       => $Oct,
-        'Nov'       => $Nov,
-        'Dec'       => $Dec,
+        return ['Jan'   => $Jan,
+            'Feb'       => $Feb,
+            'Mar'       => $Mar,
+            'Apr'       => $Apr,
+            'May'       => $May,
+            'June'      => $June,
+            'July'      => $July,
+            'Aug'       => $Aug,
+            'Sept'      => $Sept,
+            'Oct'       => $Oct,
+            'Nov'       => $Nov,
+            'Dec'       => $Dec,
         ];
     }
 
@@ -180,7 +180,7 @@ class SundaySchoolService
                 left Join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 and ( dad.per_fmr_ID = 1 or dad.per_fmr_ID = 2)
                 left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and (mom.per_fmr_ID = 1 or mom.per_fmr_ID = 2),`group_grp` grp, `person2group2role_p2g2r` person_grp
 
-            where kid.per_fam_id = fam.fam_ID and grp.grp_ID = ' . $groupId . "
+            where kid.per_fam_id = fam.fam_ID and grp.grp_ID = '.$groupId."
               and fam.fam_DateDeactivated is null
               and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID
               and lst.lst_OptionID = person_grp.p2g2r_rle_ID and lst.lst_ID = grp.grp_RoleListID and lst.lst_OptionName = 'Student'

@@ -8,7 +8,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
 $app->group('/deposits', function () use ($app) {
     $app->post('', function ($request, $response, $args) {
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
         $deposit = new Deposit();
         $deposit->setType($input->depositType);
         $deposit->setComment($input->depositComment);
@@ -21,6 +21,7 @@ $app->group('/deposits', function () use ($app) {
         $list = DepositQuery::create()
             ->filterByDate(['min' => date('Y-m-d', strtotime('-90 days'))])
             ->find();
+
         return $response->withJson($list->toArray());
     });
 
@@ -35,7 +36,7 @@ $app->group('/deposits', function () use ($app) {
 
     $app->post('/{id:[0-9]+}', function ($request, $response, $args) {
         $id = $args['id'];
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
         $appDeposit = DepositQuery::create()->findOneById($id);
         $appDeposit->setType($input->depositType);
         $appDeposit->setComment($input->depositComment);
@@ -60,7 +61,7 @@ $app->group('/deposits', function () use ($app) {
     $app->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
         $id = $args['id'];
         //echo DepositQuery::create()->findOneById($id)->toCSV();
-        header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
+        header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$id.'-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
         echo PledgeQuery::create()->filterByDepId($id)
             ->joinDonationFund()->useDonationFundQuery()
             ->withColumn('DonationFund.Name', 'DonationFundName')
@@ -88,6 +89,7 @@ $app->group('/deposits', function () use ($app) {
             ->withColumn('DonationFund.Name')
             ->find()
             ->toArray();
+
         return $response->withJson($Pledges);
     });
 })->add(new FinanceRoleAuthMiddleware());

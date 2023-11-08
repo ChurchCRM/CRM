@@ -24,41 +24,42 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->group('/database', function () use ($app) {
-
     $app->delete('/reset', 'resetDatabase');
     $app->delete('/people/clear', 'clearPeopleTables');
 
     $app->get('/people/export/chmeetings', 'exportChMeetings');
 
     $app->post('/backup', function ($request, $response, $args) {
-        $input = (object)$request->getParsedBody();
-        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $input = (object) $request->getParsedBody();
+        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')).'-'.date(SystemConfig::getValue('sDateFilenameFormat'));
         $BackupType = $input->BackupType;
         $Backup = new BackupJob(
             $BaseName,
             $BackupType,
             SystemConfig::getValue('bBackupExtraneousImages'),
-            $input->EncryptBackup ?? "",
-            $input->BackupPassword ?? ""
+            $input->EncryptBackup ?? '',
+            $input->BackupPassword ?? ''
         );
         $Backup->execute();
+
         return $response->withJson($Backup);
     });
 
     $app->post('/backupRemote', function ($request, $response, $args) {
         if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-            $input = (object)$request->getParsedBody();
-            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+            $input = (object) $request->getParsedBody();
+            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')).'-'.date(SystemConfig::getValue('sDateFilenameFormat'));
             $BackupType = $input->BackupType;
             $Backup = new BackupJob(
                 $BaseName,
                 $BackupType,
                 SystemConfig::getValue('bBackupExtraneousImages'),
-                $input->EncryptBackup ?? "",
-                $input->BackupPassword ?? ""
+                $input->EncryptBackup ?? '',
+                $input->BackupPassword ?? ''
             );
             $Backup->execute();
             $copyStatus = $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
+
             return $response->withJson($copyStatus);
         } else {
             throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
@@ -68,6 +69,7 @@ $app->group('/database', function () use ($app) {
     $app->post('/restore', function ($request, $response, $args) {
         $RestoreJob = new RestoreJob();
         $RestoreJob->execute();
+
         return $response->withJson($RestoreJob);
     });
 
@@ -77,38 +79,37 @@ $app->group('/database', function () use ($app) {
     });
 })->add(new AdminRoleAuthMiddleware());
 
-
 /**
- * A method that drops all db tables
+ * A method that drops all db tables.
  *
- * @param \Slim\Http\Request $p_request The request.
+ * @param \Slim\Http\Request  $p_request  The request.
  * @param \Slim\Http\Response $p_response The response.
- * @param array $p_args Arguments
+ * @param array               $p_args     Arguments
+ *
  * @return \Slim\Http\Response The augmented response.
  */
 function exportChMeetings(Request $request, Response $response, array $p_args)
 {
-
     $header_data = [
-        'First Name','Last Name','Middle Name','Gender',
-        'Marital Status','Anniversary','Engagement Date',
-        'Birthdate','Mobile Phone','Home Phone','Email',
-        'Facebook','School','Grade','Employer','Job Title','Talents And Hobbies',
-        'Address Line','Address Line 2','City','State','ZIP Code','Notes','Join Date',
-        'Family Id','Family Role',
-        'Baptism Date','Baptism Location','Nickname'
+        'First Name', 'Last Name', 'Middle Name', 'Gender',
+        'Marital Status', 'Anniversary', 'Engagement Date',
+        'Birthdate', 'Mobile Phone', 'Home Phone', 'Email',
+        'Facebook', 'School', 'Grade', 'Employer', 'Job Title', 'Talents And Hobbies',
+        'Address Line', 'Address Line 2', 'City', 'State', 'ZIP Code', 'Notes', 'Join Date',
+        'Family Id', 'Family Role',
+        'Baptism Date', 'Baptism Location', 'Nickname',
     ];
     $people = PersonQuery::create()->find();
     $list = [];
     foreach ($people as $person) {
         $family = $person->getFamily();
-        $annaversery = ($family ? $family->getWeddingdate(SystemConfig::getValue("sDateFormatShort")) : "");
+        $annaversery = ($family ? $family->getWeddingdate(SystemConfig::getValue('sDateFormatShort')) : '');
         $familyRole = $person->getFamilyRoleName();
-        if ($familyRole == "Head of Household") {
-            $familyRole = "Primary";
+        if ($familyRole == 'Head of Household') {
+            $familyRole = 'Primary';
         }
 
-        $chPerson = [$person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, "", $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), "", "", "", "", "", $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), "", $person->getMembershipDate(SystemConfig::getValue("sDateFormatShort")), ($family ? $family->getId() : ""), $familyRole, "", "", ""];
+        $chPerson = [$person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, '', $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), '', '', '', '', '', $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), '', $person->getMembershipDate(SystemConfig::getValue('sDateFormatShort')), $family ? $family->getId() : '', $familyRole, '', '', ''];
         array_push($list, $chPerson);
     }
 
@@ -121,17 +122,18 @@ function exportChMeetings(Request $request, Response $response, array $p_args)
     rewind($stream);
 
     $response = $response->withHeader('Content-Type', 'text/csv');
-    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv"');
+    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv"');
 
     return $response->withBody(new \Slim\Http\Stream($stream));
 }
 
 /**
- * A method that drops all db tables
+ * A method that drops all db tables.
  *
- * @param \Slim\Http\Request $p_request The request.
+ * @param \Slim\Http\Request  $p_request  The request.
  * @param \Slim\Http\Response $p_response The response.
- * @param array $p_args Arguments
+ * @param array               $p_args     Arguments
+ *
  * @return \Slim\Http\Response The augmented response.
  */
 function resetDatabase(Request $request, Response $response, array $p_args)
@@ -139,21 +141,21 @@ function resetDatabase(Request $request, Response $response, array $p_args)
     $connection = Propel::getConnection();
     $logger = LoggerUtils::getAppLogger();
 
-    $logger->info("DB Drop started ");
+    $logger->info('DB Drop started ');
 
-    $statement = $connection->prepare("SHOW FULL TABLES;");
+    $statement = $connection->prepare('SHOW FULL TABLES;');
     $statement->execute();
     $dbTablesSQLs = $statement->fetchAll();
 
     foreach ($dbTablesSQLs as $dbTable) {
-        if ($dbTable[1] == "VIEW") {
-            $alterSQL = "DROP VIEW " . $dbTable[0] . " ;";
+        if ($dbTable[1] == 'VIEW') {
+            $alterSQL = 'DROP VIEW '.$dbTable[0].' ;';
         } else {
-            $alterSQL = "DROP TABLE " . $dbTable[0] . " ;";
+            $alterSQL = 'DROP TABLE '.$dbTable[0].' ;';
         }
 
         $dbAlterStatement = $connection->exec($alterSQL);
-        $logger->info("DB Update: " . $alterSQL . " done.");
+        $logger->info('DB Update: '.$alterSQL.' done.');
     }
 
     AuthenticationManager::endSession();
@@ -166,43 +168,42 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
     $connection = Propel::getConnection();
     $logger = LoggerUtils::getAppLogger();
     $curUserId = AuthenticationManager::getCurrentUser()->getId();
-    $logger->info("People DB Clear started ");
-
+    $logger->info('People DB Clear started ');
 
     FamilyCustomQuery::create()->deleteAll($connection);
-    $logger->info("Family custom deleted ");
+    $logger->info('Family custom deleted ');
 
     FamilyQuery::create()->deleteAll($connection);
-    $logger->info("Families deleted");
+    $logger->info('Families deleted');
 
     // Delete Family Photos
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . "/Family/", Photo::getValidExtensions());
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . "/Family/thumbnails/", Photo::getValidExtensions());
-    $logger->info("family photos deleted");
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot().'/Family/', Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot().'/Family/thumbnails/', Photo::getValidExtensions());
+    $logger->info('family photos deleted');
 
     Person2group2roleP2g2rQuery::create()->deleteAll($connection);
-    $logger->info("Person Group Roles deleted");
+    $logger->info('Person Group Roles deleted');
 
     PersonCustomQuery::create()->deleteAll($connection);
-    $logger->info("Person Custom deleted");
+    $logger->info('Person Custom deleted');
 
     PersonVolunteerOpportunityQuery::create()->deleteAll($connection);
-    $logger->info("Person Volunteer deleted");
+    $logger->info('Person Volunteer deleted');
 
     UserQuery::create()->filterByPersonId($curUserId, Criteria::NOT_EQUAL)->delete($connection);
-    $logger->info("Users aide from person logged in deleted");
+    $logger->info('Users aide from person logged in deleted');
 
     PersonQuery::create()->filterById($curUserId, Criteria::NOT_EQUAL)->delete($connection);
-    $logger->info("Persons aide from person logged in deleted");
+    $logger->info('Persons aide from person logged in deleted');
 
     // Delete Person Photos
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . "/Person/", Photo::getValidExtensions());
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . "/Person/thumbnails/", Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot().'/Person/', Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot().'/Person/thumbnails/', Photo::getValidExtensions());
 
-    $logger->info("people photos deleted");
+    $logger->info('people photos deleted');
 
     NoteQuery::create()->filterByPerId($curUserId, Criteria::NOT_EQUAL)->delete($connection);
-    $logger->info("Notes deleted");
+    $logger->info('Notes deleted');
 
     return $response->withJson(['success' => true, 'msg' => gettext('The people and families has been cleared from the database.')]);
 }

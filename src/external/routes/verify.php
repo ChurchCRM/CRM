@@ -1,16 +1,15 @@
 <?php
 
-use Slim\Views\PhpRenderer;
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\TokenQuery;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Note;
 use ChurchCRM\Person;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\TokenQuery;
+use Slim\Views\PhpRenderer;
 
 $app->group('/verify', function () use ($app) {
     $app->get('/{token}', function ($request, $response, $args) {
-        $renderer = new PhpRenderer("templates/verify/");
+        $renderer = new PhpRenderer('templates/verify/');
         $token = TokenQuery::create()->findPk($args['token']);
         $haveFamily = false;
         if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
@@ -23,9 +22,9 @@ $app->group('/verify', function () use ($app) {
         }
 
         if ($haveFamily) {
-            return $renderer->render($response, "verify-family-info.php", ["family" => $family, "token" => $token]);
+            return $renderer->render($response, 'verify-family-info.php', ['family' => $family, 'token' => $token]);
         } else {
-            return $renderer->render($response, "/../404.php", ["message" => gettext("Unable to load verification info")]);
+            return $renderer->render($response, '/../404.php', ['message' => gettext('Unable to load verification info')]);
         }
     });
 
@@ -37,22 +36,23 @@ $app->group('/verify', function () use ($app) {
                 $body = (object) $request->getParsedBody();
                 $note = new Note();
                 $note->setFamily($family);
-                $note->setType("verify");
+                $note->setType('verify');
                 $note->setEntered(Person::SELF_VERIFY);
-                $note->setText(gettext("No Changes"));
+                $note->setText(gettext('No Changes'));
                 if (!empty($body->message)) {
                     $note->setText($body->message);
                 }
                 $note->save();
             }
         }
+
         return $response->withStatus(200);
     });
 
-  /*$app->post('/', function ($request, $response, $args) {
-      $body = $request->getParsedBody();
-      $renderer = new PhpRenderer("templates/verify/");
-      $family = PersonQuery::create()->findByEmail($body["email"]);
-      return $renderer->render($response, "view-info.php", array("family" => $family));
-  });*/
+    /*$app->post('/', function ($request, $response, $args) {
+        $body = $request->getParsedBody();
+        $renderer = new PhpRenderer("templates/verify/");
+        $family = PersonQuery::create()->findByEmail($body["email"]);
+        return $renderer->render($response, "view-info.php", array("family" => $family));
+    });*/
 });

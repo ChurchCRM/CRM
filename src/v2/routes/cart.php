@@ -16,20 +16,21 @@ function getCartView(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/cart/');
 
     $pageArgs = [
-      'sRootPath' => SystemURLs::getRootPath(),
-      'sPageTitle' => gettext('View Your Cart'),
-      'PageJSVars' => []
+        'sRootPath'  => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('View Your Cart'),
+        'PageJSVars' => [],
     ];
 
     if (!Cart::hasPeople()) {
         return $renderer->render($response, 'cartempty.php', $pageArgs);
     } else {
         $pageArgs = array_merge($pageArgs, [
-        'sEmailLink' => Cart::getEmailLink(),
-        'sPhoneLink' => Cart::getSMSLink(),
-        'iNumFamilies' => Cart::countFamilies(),
-        'cartPeople' => Cart::getCartPeople()
+            'sEmailLink'   => Cart::getEmailLink(),
+            'sPhoneLink'   => Cart::getSMSLink(),
+            'iNumFamilies' => Cart::countFamilies(),
+            'cartPeople'   => Cart::getCartPeople(),
         ]);
+
         return $renderer->render($response, 'cartview.php', $pageArgs);
     }
 }

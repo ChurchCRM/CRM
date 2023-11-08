@@ -14,12 +14,12 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfDirectory;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Check for Create Directory user permission.
 if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
@@ -106,7 +106,7 @@ if ($numCustomFields > 0) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
         $pdf->addCustomField(
             $rowCustomField['custom_Order'],
-            isset($_POST['bCustom' . $rowCustomField['custom_Order']])
+            isset($_POST['bCustom'.$rowCustomField['custom_Order']])
         );
     }
 }
@@ -119,7 +119,7 @@ if ($bDirUseTitlePage) {
 
 $sClassQualifier = '';
 if (strlen($sDirClassifications)) {
-    $sClassQualifier = 'AND per_cls_ID in (' . $sDirClassifications . ')';
+    $sClassQualifier = 'AND per_cls_ID in ('.$sDirClassifications.')';
 }
 
 $sWhereExt = '';
@@ -132,7 +132,7 @@ if (!empty($_POST['GroupID'])) {
     }
     $sGroupsList = implode(',', $aGroups);
 
-    $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID in (' . $sGroupsList . ')';
+    $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID in ('.$sGroupsList.')';
 
     // This is used by per-role queries to remove duplicate rows from people assigned multiple groups.
     $sGroupBy = ' GROUP BY per_ID';
@@ -149,7 +149,7 @@ if ($bExcludeInactive) {
 }
 
 if (array_key_exists('cartdir', $_POST)) {
-    $sWhereExt .= 'AND per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')';
+    $sWhereExt .= 'AND per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).')';
 }
 
 $mysqlinfo = mysqli_get_server_info($cnInfoCentral);
@@ -170,16 +170,16 @@ if ($mysqlversion >= 4) {
 } elseif ($mysqlversion == 3 && $mysqlsubversion >= 22) {
     // If UNION not supported use this query with temporary table.  Prior to version 3.22 no IF EXISTS statement.
     $sSQL = 'DROP TABLE IF EXISTS tmp;';
-    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || die(mysqli_error($cnInfoCentral));
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || exit(mysqli_error($cnInfoCentral));
     $sSQL = "CREATE TABLE tmp TYPE = InnoDB SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;";
-    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || die(mysqli_error($cnInfoCentral));
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || exit(mysqli_error($cnInfoCentral));
     $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;";
-    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || die(mysqli_error($cnInfoCentral));
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || exit(mysqli_error($cnInfoCentral));
     $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1;";
-    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || die(mysqli_error($cnInfoCentral));
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || exit(mysqli_error($cnInfoCentral));
     $sSQL = 'SELECT DISTINCT * FROM tmp ORDER BY SortMe';
 } else {
-    die(gettext('This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM.'));
+    exit(gettext('This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM.'));
 }
 
 $rsRecords = RunQuery($sSQL);
@@ -207,7 +207,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
         // Find the Head of Household
         $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
-            WHERE per_fam_ID = " . $iFamilyID . "
+            WHERE per_fam_ID = ".$iFamilyID."
             AND per_fmr_ID in ($sDirRoleHeads) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
 
@@ -219,7 +219,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
         // Find the Spouse of Household
         $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
-            WHERE per_fam_ID = " . $iFamilyID . "
+            WHERE per_fam_ID = ".$iFamilyID."
             AND per_fmr_ID in ($sDirRoleSpouses) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
 
@@ -236,7 +236,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
         // Find the other members of a family
         $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
-            WHERE per_fam_ID = " . $iFamilyID . " AND !(per_fmr_ID in ($sDirRoleHeads))
+            WHERE per_fam_ID = ".$iFamilyID." AND !(per_fmr_ID in ($sDirRoleHeads))
             AND !(per_fmr_ID in ($sDirRoleSpouses))  $sWhereExt $sClassQualifier $sGroupBy ORDER BY per_BirthYear,per_FirstName";
         $rsPerson = RunQuery($sSQL);
 
@@ -250,13 +250,13 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         } else {
             $pdf->sLastName = $fam_Name;
         }
-        $pdf->sRecordName = $pdf->sLastName . ', ' . $per_FirstName;
+        $pdf->sRecordName = $pdf->sLastName.', '.$per_FirstName;
         if (strlen($per_Suffix)) {
-            $pdf->sRecordName .= ' ' . $per_Suffix;
+            $pdf->sRecordName .= ' '.$per_Suffix;
         }
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $pdf->sRecordName .= " " . MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "/", $per_Flags);
+            $pdf->sRecordName .= ' '.MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '/', $per_Flags);
         }
 
         SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
@@ -276,30 +276,30 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
                 $OutStr .= $sAddress1;
             }
             if (strlen($sAddress2)) {
-                $OutStr .= '   ' . $sAddress2;
+                $OutStr .= '   '.$sAddress2;
             }
             $OutStr .= "\n";
             if (strlen($sCity)) {
-                $OutStr .= $sCity . ', ' . $sState . ' ' . $sZip . "\n";
+                $OutStr .= $sCity.', '.$sState.' '.$sZip."\n";
             }
         }
         if (($bDirFamilyPhone || $bDirPersonalPhone) && strlen($sHomePhone)) {
             $TempStr = ExpandPhoneNumber($sHomePhone, SystemConfig::getValue('sDefaultCountry'), $bWierd);
-            $OutStr .= '   ' . gettext('Phone') . ': ' . $TempStr . "\n";
+            $OutStr .= '   '.gettext('Phone').': '.$TempStr."\n";
         }
         if (($bDirFamilyWork || $bDirPersonalWork) && strlen($sWorkPhone)) {
             $TempStr = ExpandPhoneNumber($sWorkPhone, SystemConfig::getValue('sDefaultCountry'), $bWierd);
-            $OutStr .= '   ' . gettext('Work') . ': ' . $TempStr . "\n";
+            $OutStr .= '   '.gettext('Work').': '.$TempStr."\n";
         }
         if (($bDirFamilyCell || $bDirPersonalCell) && strlen($sCellPhone)) {
             $TempStr = ExpandPhoneNumber($sCellPhone, SystemConfig::getValue('sDefaultCountry'), $bWierd);
-            $OutStr .= '   ' . gettext('Cell') . ': ' . $TempStr . "\n";
+            $OutStr .= '   '.gettext('Cell').': '.$TempStr."\n";
         }
         if (($bDirFamilyEmail || $bDirPersonalEmail) && strlen($sEmail)) {
-            $OutStr .= '   ' . gettext('Email') . ': ' . $sEmail . "\n";
+            $OutStr .= '   '.gettext('Email').': '.$sEmail."\n";
         }
         if ($bDirPersonalWorkEmail && strlen($per_WorkEmail)) {
-            $OutStr .= '   ' . gettext('Work/Other Email') . ': ' . $per_WorkEmail .= "\n";
+            $OutStr .= '   '.gettext('Work/Other Email').': '.$per_WorkEmail .= "\n";
         }
 
         // Custom Fields
@@ -341,7 +341,7 @@ if ($mysqlversion == 3 && $mysqlsubversion >= 22) {
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('Directory-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+    $pdf->Output('Directory-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

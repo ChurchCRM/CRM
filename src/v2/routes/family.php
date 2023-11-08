@@ -25,7 +25,7 @@ function listFamilies(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/people/');
     $sMode = 'Active';
-  // Filter received user input as needed
+    // Filter received user input as needed
     if (isset($_GET['mode'])) {
         $sMode = InputUtils::legacyFilterInput($_GET['mode']);
     }
@@ -42,10 +42,11 @@ function listFamilies(Request $request, Response $response, array $args)
               ->find();
     }
     $pageArgs = [
-      'sMode' => $sMode,
-      'sRootPath' => SystemURLs::getRootPath(),
-      'families' => $families
+        'sMode'     => $sMode,
+        'sRootPath' => SystemURLs::getRootPath(),
+        'families'  => $families,
     ];
+
     return $renderer->render($response, 'family-list.php', $pageArgs);
 }
 
@@ -54,9 +55,9 @@ function viewFamilyNotFound(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/common/');
 
     $pageArgs = [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'memberType' => "Family",
-        'id' => $request->getParam("id")
+        'sRootPath'  => SystemURLs::getRootPath(),
+        'memberType' => 'Family',
+        'id'         => $request->getParam('id'),
     ];
 
     return $renderer->render($response, 'not-found-view.php', $pageArgs);
@@ -66,21 +67,21 @@ function viewFamily(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/people/');
 
-    $familyId = $args["id"];
+    $familyId = $args['id'];
     $family = FamilyQuery::create()->findPk($familyId);
 
     if (empty($family)) {
-        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/family/not-found?id=" . $args["id"]);
+        return $response->withRedirect(SystemURLs::getRootPath().'/v2/family/not-found?id='.$args['id']);
     }
 
     $timelineService = new TimelineService();
 
-    $allFamilyProperties = PropertyQuery::create()->findByProClass("f");
+    $allFamilyProperties = PropertyQuery::create()->findByProClass('f');
 
     $allFamilyCustomFields = FamilyCustomMasterQuery::create()->find();
 
     // get family with all the extra columns created
-    $rawQry =  FamilyCustomQuery::create();
+    $rawQry = FamilyCustomQuery::create();
     foreach ($allFamilyCustomFields as $customfield) {
         $rawQry->withColumn($customfield->getField());
     }
@@ -100,11 +101,11 @@ function viewFamily(Request $request, Response $response, array $args)
     }
 
     $pageArgs = [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'family' => $family,
-        'familyTimeline' => $timelineService->getForFamily($family->getId()),
+        'sRootPath'           => SystemURLs::getRootPath(),
+        'family'              => $family,
+        'familyTimeline'      => $timelineService->getForFamily($family->getId()),
         'allFamilyProperties' => $allFamilyProperties,
-        'familyCustom' => $familyCustom
+        'familyCustom'        => $familyCustom,
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);

@@ -9,7 +9,7 @@ class NewDashboardService
         $DashboardItems = [
             \ChurchCRM\Dashboard\EventsMenuItems::class,
             \ChurchCRM\Dashboard\ClassificationDashboardItem::class,
-            \ChurchCRM\Dashboard\CurrentLocaleMetadata::class
+            \ChurchCRM\Dashboard\CurrentLocaleMetadata::class,
         ];
         $ReturnValues = [];
         foreach ($DashboardItems as $DashboardItem) {
@@ -17,6 +17,7 @@ class NewDashboardService
                 array_push($ReturnValues, $DashboardItem);
             }
         }
+
         return $ReturnValues;
     }
 
@@ -26,6 +27,7 @@ class NewDashboardService
         foreach (self::getDashboardItems($PageName) as $DashboardItem) {
             $ReturnValues[$DashboardItem::getDashboardItemName()] = $DashboardItem::getDashboardItemValue();
         }
+
         return $ReturnValues;
     }
 }

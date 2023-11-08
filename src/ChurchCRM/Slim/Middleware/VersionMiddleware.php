@@ -10,6 +10,6 @@ class VersionMiddleware
 {
     public function __invoke(Request $request, Response $response, callable $next)
     {
-        return $next($request, $response)->withHeader("CRM_VERSION", SystemService::getInstalledVersion());
+        return $next($request, $response)->withHeader('CRM_VERSION', SystemService::getInstalledVersion());
     }
 }

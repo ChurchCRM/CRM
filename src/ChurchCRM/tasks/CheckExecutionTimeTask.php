@@ -30,11 +30,11 @@ class CheckExecutionTimeTask
 
     public function getTitle(): string
     {
-        return gettext('PHP Max Execution Time is too Short') . " (" . $this->executionTime . ")";
+        return gettext('PHP Max Execution Time is too Short').' ('.$this->executionTime.')';
     }
 
     public function getDesc(): string
     {
-        return gettext("Increase the PHP execution time limit to allow for backup and restore.");
+        return gettext('Increase the PHP execution time limit to allow for backup and restore.');
     }
 }

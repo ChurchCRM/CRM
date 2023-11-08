@@ -16,7 +16,7 @@ class SearchResultGroup implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'text' => $this->groupName,
+            'text'     => $this->groupName,
             'children' => $this->results,
         ];
     }

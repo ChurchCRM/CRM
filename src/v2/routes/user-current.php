@@ -15,15 +15,13 @@ $app->group('/user/current', function () use ($app) {
     $app->post('/changepassword', 'changepassword');
 });
 
-
-
 function enroll2fa(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/user/');
     $curUser = AuthenticationManager::getCurrentUser();
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'user' => $curUser,
+        'user'      => $curUser,
     ];
 
     if (LocalAuthentication::getIsTwoFactorAuthSupported()) {
@@ -40,19 +38,21 @@ function changepassword(Request $request, Response $response, array $args)
     $curUser = AuthenticationManager::getCurrentUser();
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'user' => $curUser,
+        'user'      => $curUser,
     ];
 
     if ($authenticationProvider instanceof LocalAuthentication) {
         // ChangePassword only works with LocalAuthentication
 
-        if ($request->getMethod() == "POST") {
-            $loginRequestBody = (object)$request->getParsedBody();
+        if ($request->getMethod() == 'POST') {
+            $loginRequestBody = (object) $request->getParsedBody();
+
             try {
                 $curUser->userChangePassword($loginRequestBody->OldPassword, $loginRequestBody->NewPassword1);
-                return $renderer->render($response, "common/success-changepassword.php", $pageArgs);
+
+                return $renderer->render($response, 'common/success-changepassword.php', $pageArgs);
             } catch (PasswordChangeException $pwChangeExc) {
-                $pageArgs['s' . $pwChangeExc->AffectedPassword . 'PasswordError'] =  $pwChangeExc->getMessage();
+                $pageArgs['s'.$pwChangeExc->AffectedPassword.'PasswordError'] = $pwChangeExc->getMessage();
             }
         }
 

@@ -71,9 +71,10 @@ class User extends BaseUser
 
     public function isFinanceEnabled()
     {
-        if (SystemConfig::getBooleanValue("bEnabledFinance")) {
+        if (SystemConfig::getBooleanValue('bEnabledFinance')) {
             return $this->isAdmin() || $this->isFinance();
         }
+
         return false;
     }
 
@@ -104,7 +105,7 @@ class User extends BaseUser
 
     public function hashPassword($password)
     {
-        return hash('sha256', $password . $this->getPersonId());
+        return hash('sha256', $password.$this->getPersonId());
     }
 
     public function isAddEventEnabled() // TODO: Create permission to manag event deletion see https://github.com/ChurchCRM/CRM/issues/4726
@@ -148,6 +149,7 @@ class User extends BaseUser
         $this->updatePassword($password);
         $this->setNeedPasswordChange(true);
         $this->setFailedLogins(0);
+
         return $password;
     }
 
@@ -160,6 +162,7 @@ class User extends BaseUser
             $n = random_int(0, $alphaLength);
             $pass[] = $alphabet[$n];
         }
+
         return implode($pass); //turn the array into a string
     }
 
@@ -170,12 +173,12 @@ class User extends BaseUser
 
     public function postInsert(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote("created");
+        $this->createTimeLineNote('created');
     }
 
     public function postDelete(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote("deleted");
+        $this->createTimeLineNote('deleted');
     }
 
     public function createTimeLineNote($type)
@@ -186,25 +189,25 @@ class User extends BaseUser
         $note->setType('user');
 
         switch ($type) {
-            case "created":
+            case 'created':
                 $note->setText(gettext('system user created'));
                 break;
-            case "updated":
+            case 'updated':
                 $note->setText(gettext('system user updated'));
                 break;
-            case "deleted":
+            case 'deleted':
                 $note->setText(gettext('system user deleted'));
                 break;
-            case "password-reset":
+            case 'password-reset':
                 $note->setText(gettext('system user password reset'));
                 break;
-            case "password-changed":
+            case 'password-changed':
                 $note->setText(gettext('system user changed password'));
                 break;
-            case "password-changed-admin":
+            case 'password-changed-admin':
                 $note->setText(gettext('system user password changed by admin'));
                 break;
-            case "login-reset":
+            case 'login-reset':
                 $note->setText(gettext('system user login reset'));
                 break;
         }
@@ -216,48 +219,48 @@ class User extends BaseUser
     {
         if ($this->isAdmin()) {
             return true;
-        } else if ($securityConfigName == "bAdmin") {
+        } elseif ($securityConfigName == 'bAdmin') {
             return false;
         }
 
-        if ($securityConfigName == "bAll") {
+        if ($securityConfigName == 'bAll') {
             return true;
         }
 
-
-        if ($securityConfigName == "bAddRecords" && $this->isAddRecordsEnabled()) {
+        if ($securityConfigName == 'bAddRecords' && $this->isAddRecordsEnabled()) {
             return true;
         }
 
-        if ($securityConfigName == "bEditRecords" && $this->isEditRecordsEnabled()) {
+        if ($securityConfigName == 'bEditRecords' && $this->isEditRecordsEnabled()) {
             return true;
         }
 
-        if ($securityConfigName == "bDeleteRecords" && $this->isDeleteRecordsEnabled()) {
+        if ($securityConfigName == 'bDeleteRecords' && $this->isDeleteRecordsEnabled()) {
             return true;
         }
 
-        if ($securityConfigName == "bManageGroups" && $this->isManageGroupsEnabled()) {
+        if ($securityConfigName == 'bManageGroups' && $this->isManageGroupsEnabled()) {
             return true;
         }
 
-        if ($securityConfigName == "bFinance" && $this->isFinanceEnabled()) {
+        if ($securityConfigName == 'bFinance' && $this->isFinanceEnabled()) {
             return true;
         }
 
-        if ($securityConfigName == "bNotes" && $this->isNotesEnabled()) {
+        if ($securityConfigName == 'bNotes' && $this->isNotesEnabled()) {
             return true;
         }
 
-        if ($securityConfigName == "bCanvasser" && $this->isCanvasserEnabled()) {
+        if ($securityConfigName == 'bCanvasser' && $this->isCanvasserEnabled()) {
             return true;
         }
 
         foreach ($this->getUserConfigs() as $userConfig) {
             if ($userConfig->getName() == $securityConfigName) {
-                return $userConfig->getPermission() == "TRUE";
+                return $userConfig->getPermission() == 'TRUE';
             }
         }
+
         return false;
     }
 
@@ -279,7 +282,6 @@ class User extends BaseUser
         }
     }
 
-
     public function setSetting($name, $value)
     {
         $setting = $this->getSetting($name);
@@ -295,7 +297,8 @@ class User extends BaseUser
     public function getSettingValue($name)
     {
         $userSetting = $this->getSetting($name);
-        return $userSetting === null ? "" : $userSetting->getValue();
+
+        return $userSetting === null ? '' : $userSetting->getValue();
     }
 
     public function getSetting($name)
@@ -305,6 +308,7 @@ class User extends BaseUser
                 return $userSetting;
             }
         }
+
         return null;
     }
 
@@ -315,17 +319,18 @@ class User extends BaseUser
         array_push($cssClasses, $skin);
         array_push($cssClasses, $this->getSetting(UserSetting::UI_BOXED));
         array_push($cssClasses, $this->getSetting(UserSetting::UI_SIDEBAR));
+
         return implode(' ', $cssClasses);
     }
 
     public function isShowPledges()
     {
-        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PLEDGES) == "true";
+        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PLEDGES) == 'true';
     }
 
     public function isShowPayments()
     {
-        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PAYMENTS) == "true";
+        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PAYMENTS) == 'true';
     }
 
     public function getShowSince()
@@ -343,6 +348,7 @@ class User extends BaseUser
         // encrypt the 2FA key since this object and its properties are serialized into the $_SESSION store
         // which is generally written to disk.
         $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManager::getTwoFASecretKey());
+
         return $key;
     }
 
@@ -355,8 +361,10 @@ class User extends BaseUser
         if ($isKeyValid) {
             $this->setTwoFactorAuthSecret($this->provisional2FAKey);
             $this->save();
+
             return true;
         }
+
         return $isKeyValid;
     }
 
@@ -373,7 +381,7 @@ class User extends BaseUser
 
     private function getDecryptedTwoFactorAuthRecoveryCodes()
     {
-        return explode(",", Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::getTwoFASecretKey()));
+        return explode(',', Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::getTwoFASecretKey()));
     }
 
     public function disableTwoFactorAuthentication()
@@ -395,9 +403,10 @@ class User extends BaseUser
         for ($i = 0; $i < 12; $i++) {
             $recoveryCodes[$i] = base64_encode(random_bytes(10));
         }
-        $recoveryCodesString = implode(",", $recoveryCodes);
+        $recoveryCodesString = implode(',', $recoveryCodes);
         $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::getTwoFASecretKey()));
         $this->save();
+
         return $recoveryCodes;
     }
 
@@ -409,6 +418,7 @@ class User extends BaseUser
         if ($timestamp !== false) {
             $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
             $this->save();
+
             return true;
         } else {
             return false;
@@ -422,10 +432,12 @@ class User extends BaseUser
         $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
         if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
             unset($codes[$key]);
-            $recoveryCodesString = implode(",", $codes);
+            $recoveryCodesString = implode(',', $codes);
             $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::getTwoFASecretKey()));
+
             return true;
         }
+
         return false;
     }
 
@@ -434,44 +446,46 @@ class User extends BaseUser
         $this->updatePassword($newPassword);
         $this->setNeedPasswordChange(false);
         $this->save();
-        $this->createTimeLineNote("password-changed-admin");
-        return;
+        $this->createTimeLineNote('password-changed-admin');
+
     }
 
     public function userChangePassword($oldPassword, $newPassword)
     {
         if (!$this->isPasswordValid($oldPassword)) {
-            throw new PasswordChangeException("Old", gettext('Incorrect password supplied for current user'));
+            throw new PasswordChangeException('Old', gettext('Incorrect password supplied for current user'));
         }
 
         if (!$this->getIsPasswordPermissible($newPassword)) {
-            throw new PasswordChangeException("New", gettext('Your password choice is too obvious. Please choose something else.'));
+            throw new PasswordChangeException('New', gettext('Your password choice is too obvious. Please choose something else.'));
         }
 
         if (strlen($newPassword) < SystemConfig::getValue('iMinPasswordLength')) {
-            throw new PasswordChangeException("New", gettext('Your new password must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters'));
+            throw new PasswordChangeException('New', gettext('Your new password must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters'));
         }
 
         if ($newPassword == $oldPassword) {
-            throw new PasswordChangeException("New", gettext('Your new password must not match your old one.'));
+            throw new PasswordChangeException('New', gettext('Your new password must not match your old one.'));
         }
 
         if (levenshtein(strtolower($newPassword), strtolower($oldPassword)) < SystemConfig::getValue('iMinPasswordChange')) {
-            throw new PasswordChangeException("New", gettext('Your new password is too similar to your old one.'));
+            throw new PasswordChangeException('New', gettext('Your new password is too similar to your old one.'));
         }
 
         $this->updatePassword($newPassword);
         $this->setNeedPasswordChange(false);
         $this->save();
-        $this->createTimeLineNote("password-changed");
-        return;
+        $this->createTimeLineNote('password-changed');
+
     }
+
     private function getIsPasswordPermissible($newPassword)
     {
         $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('aDisallowedPasswords')));
         $aBadPasswords[] = strtolower($this->getPerson()->getFirstName());
         $aBadPasswords[] = strtolower($this->getPerson()->getMiddleName());
         $aBadPasswords[] = strtolower($this->getPerson()->getLastName());
-        return ! in_array(strtolower($newPassword), $aBadPasswords);
+
+        return !in_array(strtolower($newPassword), $aBadPasswords);
     }
 }

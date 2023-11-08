@@ -1,15 +1,13 @@
 <?php
 
-namespace ChurchCRM\Authentication\Requests {
+namespace ChurchCRM\Authentication\Requests;
 
-    class LocalTwoFactorTokenRequest extends AuthenticationRequest
+class LocalTwoFactorTokenRequest extends AuthenticationRequest
+{
+    public $TwoFACode;
+
+    public function __construct($TwoFACode)
     {
-        public $TwoFACode;
-
-        public function __construct($TwoFACode)
-        {
-            $this->TwoFACode = $TwoFACode;
-        }
+        $this->TwoFACode = $TwoFACode;
     }
-
 }
