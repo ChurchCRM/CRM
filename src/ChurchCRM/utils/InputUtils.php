@@ -20,10 +20,10 @@ class InputUtils
     public static function translateSpecialCharset($string)
     {
         if (empty($string)) {
-            return "";
+            return '';
         }
 
-        return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") ? gettext($string) : iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
+        return (SystemConfig::getValue('sCSVExportCharset') == 'UTF-8') ? gettext($string) : iconv('UTF-8', SystemConfig::getValue('sCSVExportCharset'), gettext($string));
     }
 
     public static function filterString($sInput)
@@ -54,18 +54,18 @@ class InputUtils
 
     public static function filterDate($sInput)
     {
-      // Attempts to take a date in any format and convert it to YYYY-MM-DD format
-      // Logel Philippe
+        // Attempts to take a date in any format and convert it to YYYY-MM-DD format
+        // Logel Philippe
         if (empty($sInput)) {
-            return "";
+            return '';
         } else {
-            return date('Y-m-d', strtotime(str_replace("/", "-", $sInput)));
+            return date('Y-m-d', strtotime(str_replace('/', '-', $sInput)));
         }
     }
 
-  // Sanitizes user input as a security measure
-  // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
-  // Note that a database connection must already be established for the mysqli_real_escape_string function to work.
+    // Sanitizes user input as a security measure
+    // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
+    // Note that a database connection must already be established for the mysqli_real_escape_string function to work.
     public static function legacyFilterInput($sInput, $type = 'string', $size = 1)
     {
         global $cnInfoCentral;

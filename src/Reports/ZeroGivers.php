@@ -14,11 +14,10 @@ namespace ChurchCRM\Reports;
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
@@ -103,10 +102,10 @@ if ($output == 'pdf') {
             if ($sDateStart == $sDateEnd) {
                 $DateString = date('F j, Y', strtotime($sDateStart));
             } else {
-                $DateString = date('M j, Y', strtotime($sDateStart)) . ' - ' . date('M j, Y', strtotime($sDateEnd));
+                $DateString = date('M j, Y', strtotime($sDateStart)).' - '.date('M j, Y', strtotime($sDateEnd));
             }
 
-            $blurb = SystemConfig::getValue('sTaxReport1') . ' ' . $DateString . ' ' . SystemConfig::getValue('sZeroGivers');
+            $blurb = SystemConfig::getValue('sTaxReport1').' '.$DateString.' '.SystemConfig::getValue('sZeroGivers');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
             $curY += 30 * SystemConfig::getValue('incrementY');
 
@@ -123,7 +122,7 @@ if ($output == 'pdf') {
             $blurb = SystemConfig::getValue('sZeroGivers3');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
             $curY += 3 * SystemConfig::getValue('incrementY');
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely') . ',');
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
             $curY += 4 * SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxSigner'));
         }
@@ -141,7 +140,7 @@ if ($output == 'pdf') {
     }
 
     if (SystemConfig::getValue('iPDFOutputType') == 1) {
-        $pdf->Output('ZeroGivers' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+        $pdf->Output('ZeroGivers'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
     } else {
         $pdf->Output();
     }
@@ -156,25 +155,25 @@ if ($output == 'pdf') {
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {
-        $buffer .= trim($heading) . $delimiter;
+        $buffer .= trim($heading).$delimiter;
     }
     // Remove trailing delimiter and add eol
-    $buffer = mb_substr($buffer, 0, -1) . $eol;
+    $buffer = mb_substr($buffer, 0, -1).$eol;
 
     // Add data
     while ($row = mysqli_fetch_row($rsReport)) {
         foreach ($row as $field) {
             $field = str_replace($delimiter, ' ', $field);    // Remove any delimiters from data
-            $buffer .= $field . $delimiter;
+            $buffer .= $field.$delimiter;
         }
         // Remove trailing delimiter and add eol
-        $buffer = mb_substr($buffer, 0, -1) . $eol;
+        $buffer = mb_substr($buffer, 0, -1).$eol;
     }
 
     // Export file
     header('Content-type: text/x-csv');
-    header('Content-Disposition: attachment; filename=ChurchCRM-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
+    header('Content-Disposition: attachment; filename=ChurchCRM-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
     echo $buffer;
 } else {
-    echo "[" . $output . "] output selected, but is not known";
+    echo '['.$output.'] output selected, but is not known';
 }

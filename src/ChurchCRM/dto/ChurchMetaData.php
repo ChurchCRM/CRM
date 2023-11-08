@@ -19,7 +19,7 @@ class ChurchMetaData
         }
 
         if (!empty(self::getChurchCity())) {
-            array_push($address, self::getChurchCity() . ',');
+            array_push($address, self::getChurchCity().',');
         }
 
         if (!empty(self::getChurchState())) {
@@ -81,6 +81,7 @@ class ChurchMetaData
         if (empty(SystemConfig::getValue('iChurchLatitude'))) {
             self::updateLatLng();
         }
+
         return SystemConfig::getValue('iChurchLatitude');
     }
 
@@ -89,6 +90,7 @@ class ChurchMetaData
         if (empty(SystemConfig::getValue('iChurchLongitude'))) {
             self::updateLatLng();
         }
+
         return SystemConfig::getValue('iChurchLongitude');
     }
 

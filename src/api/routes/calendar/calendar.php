@@ -23,7 +23,6 @@ $app->group('/calendars', function () use ($app) {
     $app->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(new AddEventsRoleAuthMiddleware());
 });
 
-
 $app->group('/systemcalendars', function () use ($app) {
     $app->get('', 'getSystemCalendars');
     $app->get('/', 'getSystemCalendars');
@@ -31,7 +30,6 @@ $app->group('/systemcalendars', function () use ($app) {
     $app->get('/{id}/events/{eventid}', 'getSystemCalendarEventById');
     $app->get('/{id}/fullcalendar', 'getSystemCalendarFullCalendarEvents');
 });
-
 
 function getSystemCalendars(Request $request, Response $response, array $args)
 {
@@ -41,10 +39,11 @@ function getSystemCalendars(Request $request, Response $response, array $args)
 function getSystemCalendarEvents(Request $request, Response $response, array $args)
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-    $start = $request->getQueryParam("start", "");
-    $end = $request->getQueryParam("end", "");
+    $start = $request->getQueryParam('start', '');
+    $end = $request->getQueryParam('end', '');
     if ($Calendar) {
         $events = $Calendar->getEvents($start, $end);
+
         return $response->withJson($events->toJSON());
     }
 }
@@ -55,16 +54,16 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 
     if ($Calendar) {
         $event = $Calendar->getEventById($args['eventid']);
+
         return $response->withJson($event->toJSON());
     }
 }
 
-
 function getSystemCalendarFullCalendarEvents($request, Response $response, $args)
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-    $start = $request->getQueryParam("start", "");
-    $end = $request->getQueryParam("end", "");
+    $start = $request->getQueryParam('start', '');
+    $end = $request->getQueryParam('end', '');
     if (!$Calendar) {
         return $response->withStatus(404);
     }
@@ -72,9 +71,9 @@ function getSystemCalendarFullCalendarEvents($request, Response $response, $args
     if (!$Events) {
         return $response->withStatus(404);
     }
+
     return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar)), JSON_THROW_ON_ERROR));
 }
-
 
 function getUserCalendars(Request $request, Response $response, array $args)
 {
@@ -109,16 +108,17 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
     if (!$calendar) {
         return $response->withStatus(404);
     }
-    $start = $request->getQueryParam("start", "");
-    $end = $request->getQueryParam("end", "");
+    $start = $request->getQueryParam('start', '');
+    $end = $request->getQueryParam('end', '');
     $Events = EventQuery::create()
-        ->filterByStart(["min" => $start])
-        ->filterByEnd(["max" => $end])
+        ->filterByStart(['min' => $start])
+        ->filterByEnd(['max' => $end])
         ->filterByCalendar($calendar)
         ->find();
     if (!$Events) {
         return $response->withStatus(404);
     }
+
     return $response->write(
         json_encode(
             EventsObjectCollectionToFullCalendar($Events, $calendar),
@@ -134,61 +134,65 @@ function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar
         $fce = FullCalendarEvent::createFromEvent($event, $calendar);
         array_push($formattedEvents, $fce);
     }
+
     return $formattedEvents;
 }
 
 function NewAccessToken($request, Response $response, $args)
 {
-
     if (!isset($args['id'])) {
-        return $response->withStatus(400, gettext("Invalid request: Missing calendar id"));
+        return $response->withStatus(400, gettext('Invalid request: Missing calendar id'));
     }
     $Calendar = CalendarQuery::create()
         ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404, gettext("Not Found: Unknown calendar id") . ": " . $args['id']);
+        return $response->withStatus(404, gettext('Not Found: Unknown calendar id').': '.$args['id']);
     }
     $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
     $Calendar->save();
+
     return $Calendar->toJSON();
 }
 
 function DeleteAccessToken($request, Response $response, $args)
 {
     if (!isset($args['id'])) {
-        return $response->withStatus(400, gettext("Invalid request: Missing calendar id"));
+        return $response->withStatus(400, gettext('Invalid request: Missing calendar id'));
     }
     $Calendar = CalendarQuery::create()
       ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404, gettext("Not Found: Unknown calendar id") . ": " . $args['id']);
+        return $response->withStatus(404, gettext('Not Found: Unknown calendar id').': '.$args['id']);
     }
     $Calendar->setAccessToken(null);
     $Calendar->save();
+
     return $Calendar->toJSON();
 }
 
 function NewCalendar(Request $request, Response $response, $args)
 {
-    $input = (object)$request->getParsedBody();
+    $input = (object) $request->getParsedBody();
     $Calendar = new Calendar();
     $Calendar->setName($input->Name);
     $Calendar->setForegroundColor($input->ForegroundColor);
     $Calendar->setBackgroundColor($input->BackgroundColor);
     $Calendar->save();
+
     return $response->withJson($Calendar->toArray());
 }
 
 function deleteUserCalendar(Request $request, Response $response, $args)
 {
     if (!isset($args['id'])) {
-        return $response->withStatus(400, gettext("Invalid request: Missing calendar id"));
+        return $response->withStatus(400, gettext('Invalid request: Missing calendar id'));
     }
     $Calendar = CalendarQuery::create()
         ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404, gettext("Not Found: Unknown calendar id") . ": " . $args['id']);
+        return $response->withStatus(404, gettext('Not Found: Unknown calendar id').': '.$args['id']);
     }
     $Calendar->delete();
-    return $response->withJson(["status" => "success"]);
+
+    return $response->withJson(['status' => 'success']);
 }

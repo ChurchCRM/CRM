@@ -184,7 +184,7 @@ class JSMin
                     }
                     $this->b = $this->next();
                 }
-            // end case ACTION_DELETE_A_B
+                // end case ACTION_DELETE_A_B
         }
     }
 

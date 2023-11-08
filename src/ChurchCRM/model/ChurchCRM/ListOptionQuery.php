@@ -15,9 +15,6 @@ use ChurchCRM\Base\ListOptionQuery as BaseListOptionQuery;
  */
 class ListOptionQuery extends BaseListOptionQuery
 {
-    /**
-     *
-     */
     public function getFamilyRoles()
     {
         return $this

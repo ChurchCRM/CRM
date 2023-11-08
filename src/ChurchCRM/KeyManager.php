@@ -1,24 +1,23 @@
 <?php
 
-namespace ChurchCRM
+namespace ChurchCRM;
+
+class KeyManager
 {
-    class KeyManager
+    private static $TwoFASecretKey;
+
+    public static function init($TwoFASecretKey)
     {
-        private static $TwoFASecretKey;
+        self::$TwoFASecretKey = $TwoFASecretKey;
+    }
 
-        public static function init($TwoFASecretKey)
-        {
-            self::$TwoFASecretKey = $TwoFASecretKey;
-        }
+    public static function getTwoFASecretKey()
+    {
+        return self::$TwoFASecretKey;
+    }
 
-        public static function getTwoFASecretKey()
-        {
-            return self::$TwoFASecretKey;
-        }
-
-        public static function getAreAllSecretsDefined()
-        {
-            return !empty(self::$TwoFASecretKey);
-        }
+    public static function getAreAllSecretsDefined()
+    {
+        return !empty(self::$TwoFASecretKey);
     }
 }

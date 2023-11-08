@@ -13,12 +13,10 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->group('/people/properties', function () use ($app) {
-
-    $personPropertyAPIMiddleware = new PropertyAPIMiddleware("p");
+    $personPropertyAPIMiddleware = new PropertyAPIMiddleware('p');
     $personAPIMiddleware = new PersonAPIMiddleware();
-    $familyPropertyAPIMiddleware = new PropertyAPIMiddleware("f");
+    $familyPropertyAPIMiddleware = new PropertyAPIMiddleware('f');
     $familyAPIMiddleware = new FamilyAPIMiddleware();
-
 
     $app->get('/person', 'getAllPersonProperties');
     $app->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);
@@ -30,48 +28,51 @@ $app->group('/people/properties', function () use ($app) {
     $app->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
 })->add(new MenuOptionsRoleAuthMiddleware());
 
-
 function getAllPersonProperties(Request $request, Response $response, array $args)
 {
     $properties = PropertyQuery::create()
-        ->filterByProClass("p")
+        ->filterByProClass('p')
         ->find();
+
     return $response->withJson($properties->toArray());
 }
 
 function addPropertyToPerson(Request $request, Response $response, array $args)
 {
-    $person = $request->getAttribute("person");
-    return addProperty($request, $response, $person->getId(), $request->getAttribute("property"));
+    $person = $request->getAttribute('person');
+
+    return addProperty($request, $response, $person->getId(), $request->getAttribute('property'));
 }
 
 function removePropertyFromPerson($request, $response, $args)
 {
-    $person = $request->getAttribute("person");
-    return removeProperty($response, $person->getId(), $request->getAttribute("property"));
+    $person = $request->getAttribute('person');
+
+    return removeProperty($response, $person->getId(), $request->getAttribute('property'));
 }
 
 function getAllFamilyProperties(Request $request, Response $response, array $args)
 {
     $properties = PropertyQuery::create()
-        ->filterByProClass("f")
+        ->filterByProClass('f')
         ->find();
+
     return $response->withJson($properties->toArray());
 }
 
 function getPersonProperties(Request $request, Response $response, array $args)
 {
-    $person = $request->getAttribute("person");
-    return getProperties($response, "p", $person->getId());
-}
+    $person = $request->getAttribute('person');
 
+    return getProperties($response, 'p', $person->getId());
+}
 
 function getFamilyProperties(Request $request, Response $response, array $args)
 {
-    $family = $request->getAttribute("family");
-    return getProperties($response, "f", $family->getId());
-}
+    $family = $request->getAttribute('family');
 
+    return getProperties($response, 'f', $family->getId());
+}
 
 function getProperties(Response $response, $type, $id)
 {
@@ -85,15 +86,15 @@ function getProperties(Response $response, $type, $id)
         $rawProp = $property->getProperty();
         if ($rawProp->getProClass() == $type) {
             $tempProp = [];
-            $tempProp["id"] = $property->getPropertyId();
-            $tempProp["name"] = $rawProp->getProName();
-            $tempProp["value"] = $property->getPropertyValue();
+            $tempProp['id'] = $property->getPropertyId();
+            $tempProp['name'] = $rawProp->getProName();
+            $tempProp['value'] = $property->getPropertyValue();
             if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-                $tempProp["allowEdit"] = !empty(trim($rawProp->getProPrompt()));
-                $tempProp["allowDelete"] = true;
+                $tempProp['allowEdit'] = !empty(trim($rawProp->getProPrompt()));
+                $tempProp['allowDelete'] = true;
             } else {
-                $tempProp["allowEdit"] = false;
-                $tempProp["allowDelete"] = false;
+                $tempProp['allowEdit'] = false;
+                $tempProp['allowDelete'] = false;
             }
             array_push($finalProperties, $tempProp);
         }
@@ -104,29 +105,30 @@ function getProperties(Response $response, $type, $id)
 
 function addPropertyToFamily(Request $request, Response $response, array $args)
 {
-    $family = $request->getAttribute("family");
-    return addProperty($request, $response, $family->getId(), $request->getAttribute("property"));
+    $family = $request->getAttribute('family');
+
+    return addProperty($request, $response, $family->getId(), $request->getAttribute('property'));
 }
 
 function removePropertyFromFamily($request, $response, $args)
 {
-    $family = $request->getAttribute("family");
-    return removeProperty($response, $family->getId(), $request->getAttribute("property"));
+    $family = $request->getAttribute('family');
+
+    return removeProperty($response, $family->getId(), $request->getAttribute('property'));
 }
 
 function addProperty(Request $request, Response $response, $id, $property)
 {
-
     $personProperty = RecordPropertyQuery::create()
         ->filterByRecordId($id)
         ->filterByPropertyId($property->getProId())
         ->findOne();
 
-    $propertyValue = "";
+    $propertyValue = '';
     if (!empty($property->getProPrompt())) {
         $data = $request->getParsedBody();
         $propertyValue = empty($data['value']) ? 'N/A' : $data['value'];
-        LoggerUtils::getAppLogger()->debug("final value is: " . $propertyValue);
+        LoggerUtils::getAppLogger()->debug('final value is: '.$propertyValue);
     }
 
     if ($personProperty) {
@@ -146,6 +148,7 @@ function addProperty(Request $request, Response $response, $id, $property)
         $personProperty->setRecordId($id);
         $personProperty->setPropertyValue($propertyValue);
         $personProperty->save();
+
         return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
     }
 
@@ -154,7 +157,6 @@ function addProperty(Request $request, Response $response, $id, $property)
 
 function removeProperty($response, $id, $property)
 {
-
     $personProperty = RecordPropertyQuery::create()
         ->filterByRecordId($id)
         ->filterByPropertyId($property->getProId())

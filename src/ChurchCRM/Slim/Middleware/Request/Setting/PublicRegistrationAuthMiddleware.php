@@ -6,6 +6,6 @@ class PublicRegistrationAuthMiddleware extends BaseAuthSettingMiddleware
 {
     protected function getSettingName()
     {
-        return "bEnableSelfRegistration";
+        return 'bEnableSelfRegistration';
     }
 }

@@ -15,13 +15,13 @@ class PdfAttendance extends ChurchInfoReport
 {
     /////////////////////////////////////////////////////////////////////////////
 //
-// function modified by S. Shaffer 3/2006 to change the following
-// (1) handle the case where the list of names covers more than one page
-// (2) rearranged some of the code to make it clearer for multi-page
+    // function modified by S. Shaffer 3/2006 to change the following
+    // (1) handle the case where the list of names covers more than one page
+    // (2) rearranged some of the code to make it clearer for multi-page
 //
 //    for information contact Steve Shaffer at stephen@shaffers4christ.com
 //
-/////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
 
     // Constructor
     public function __construct()
@@ -86,40 +86,39 @@ class PdfAttendance extends ChurchInfoReport
         $noSchoolCnt = 0;
 
 //
-//  determine how many pages will be includes in this report
+        //  determine how many pages will be includes in this report
 //
 
 //
-// First cull the input names array to remove duplicates, then extend the array to include the requested
-// number of blank lines
+        // First cull the input names array to remove duplicates, then extend the array to include the requested
+        // number of blank lines
 //
-            $prevThisName = '';
+        $prevThisName = '';
         $aNameCount = 0;
         for ($row = 0; $row < count($aNames); $row++) {
-                $person = $aNames[$row];
-            $thisName = ($person->getFullName());
+            $person = $aNames[$row];
+            $thisName = $person->getFullName();
 
-             // Special handling for person listed twice- only show once in the Attendance Calendar
-             // This happens when a child is listed in two different families (parents divorced and
-             // both active in the church)
+            // Special handling for person listed twice- only show once in the Attendance Calendar
+            // This happens when a child is listed in two different families (parents divorced and
+            // both active in the church)
             if ($thisName != $prevThisName) {
-                    $NameList[$aNameCount] = $thisName;
-                    $imgList[$aNameCount++] = $imgs[$row];
+                $NameList[$aNameCount] = $thisName;
+                $imgList[$aNameCount++] = $imgs[$row];
                 //          echo "adding {$thisName} to NameList at {$aNameCount}\n\r";
             }
             $prevThisName = $thisName;
         }
 //
-// add extra blank lines to the array
+        // add extra blank lines to the array
 //
         for ($i = 0; $i < $extraLines; $i++) {
-                $NameList[$aNameCount] = '   ';
-                $imgList[$aNameCount++] = '';
+            $NameList[$aNameCount] = '   ';
+            $imgList[$aNameCount++] = '';
         }
 
         $numMembers = count($NameList);
         $nPages = ceil($numMembers / $MaxLinesPerPage);
-
 
         //  echo "nPages = {$nPages} \n\r";
         //
@@ -141,20 +140,20 @@ class PdfAttendance extends ChurchInfoReport
             $yDays = $yTop + $yIncrement;
             $y = $yDays + $yIncrement;
     //
-    //  put title on the page
+            //  put title on the page
     //
             $this->SetFont('Times', 'B', $fontTitleNormal);
             $this->writeAt($nameX, $yDays + 1, $tTitle);
             $this->SetFont('Times', '', $fontTitleNormal);
 
     //
-    // calculate the starting and ending rows for the page
+            // calculate the starting and ending rows for the page
     //
             $pRowStart = $p * $MaxLinesPerPage;
-            $pRowEnd = min(((($p + 1) * $MaxLinesPerPage)), $numMembers);
+            $pRowEnd = min(($p + 1) * $MaxLinesPerPage, $numMembers);
     //      echo "pRowStart = {$pRowStart} and pRowEnd= {$pRowEnd}\n\r";
     //
-    // Write the names down the page and draw lines between
+            // Write the names down the page and draw lines between
     //
 
             $this->SetLineWidth(0.25);
@@ -173,7 +172,6 @@ class PdfAttendance extends ChurchInfoReport
                     $this->Line($nameX - $yIncrement, $y + $yIncrement, $nameX, $y);
                     $this->Line($nameX - $yIncrement, $y, $nameX, $y + $yIncrement);
 
-
                     if ($NameList[$row] != '   ' && strlen($imgList[$row]) > 5 && file_exists($imgList[$row])) {
                         [$width, $height] = getimagesize($imgList[$row]);
                         $factor = $yIncrement / $height;
@@ -187,7 +185,7 @@ class PdfAttendance extends ChurchInfoReport
                 $y += $yIncrement;
             }
     //
-    // write a totals text at the bottom
+            // write a totals text at the bottom
     //
             $this->SetFont('Times', 'B', $fontTitleNormal);
             $this->writeAt($nameX, $y + 1, gettext('Totals'));
@@ -195,7 +193,7 @@ class PdfAttendance extends ChurchInfoReport
 
             $bottomY = $y + $yIncrement;
     //
-    // Paint the calendar grid
+            // Paint the calendar grid
     //
             $dayCounter = 0;
             $monthCounter = 0;
@@ -253,7 +251,7 @@ class PdfAttendance extends ChurchInfoReport
                     $aLightVerticalX[$lightVerticalXCnt++] = $dayX;
                 }
                 $dayX += $dayWid;
-                ++$dayCounter;
+                $dayCounter++;
 
     //              if ($tWhichSunday == $tLastSunday) $doneFlag = true;
     //
@@ -264,7 +262,7 @@ class PdfAttendance extends ChurchInfoReport
                     $doneFlag = true;
                 }
 
-    //  Increment the date by one week
+                //  Increment the date by one week
     //
                 $sundayDay = date('d', $dWhichSunday);
                 $sundayMonth = date('m', $dWhichSunday);
@@ -277,17 +275,17 @@ class PdfAttendance extends ChurchInfoReport
 
             $rightEdgeX = $dayX;
 
-              // Draw vertical lines now that we know how far down the list goes
+            // Draw vertical lines now that we know how far down the list goes
 
-              // Draw the left-most vertical line heavy, through the month row
-              $this->SetLineWidth(0.5);
+            // Draw the left-most vertical line heavy, through the month row
+            $this->SetLineWidth(0.5);
             $this->Line($nameX, $yMonths, $nameX, $bottomY);
 
-                  // Draw the left-most line between the people and the calendar
-                  $lineTopY = $yMonths;
+            // Draw the left-most line between the people and the calendar
+            $lineTopY = $yMonths;
             $this->Line($startMonthX, $lineTopY, $startMonthX, $bottomY);
 
-                  // Draw the vertical lines in the grid based on X coords stored above
+            // Draw the vertical lines in the grid based on X coords stored above
             $this->SetLineWidth(0.5);
             for ($i = 0; $i < $heavyVerticalXCnt; $i++) {
                 $this->Line($aHeavyVerticalX[$i], $lineTopY, $aHeavyVerticalX[$i], $bottomY);
@@ -303,7 +301,7 @@ class PdfAttendance extends ChurchInfoReport
             $this->SetLineWidth(0.5);
             $this->Line($dayX, $yMonths, $dayX, $bottomY);
 
-                  // Fill the no-school days
+            // Fill the no-school days
             $this->SetFillColor(200, 200, 200);
             $this->SetLineWidth(0.25);
             for ($i = 0; $i < count($aNoSchoolX); $i++) {
@@ -323,7 +321,7 @@ class PdfAttendance extends ChurchInfoReport
             $this->Line($nameX, $yBottom, $rightEdgeX, $yBottom);
             $this->Line($nameX, $yBottom + $yIncrement, $rightEdgeX, $yBottom + $yIncrement);
     //
-    //  add in horizontal lines between names
+            //  add in horizontal lines between names
     //
             $y = $yTop;
             for ($s = $pRowStart; $s < $pRowEnd + 4; $s++) {

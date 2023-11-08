@@ -25,14 +25,14 @@ class FullCalendarEvent
         $fce = new self();
 
         $fce->title = $CRMEvent->getTitle();
-        $fce->start = $CRMEvent->getStart("c");
-        $fce->end = $CRMEvent->getEnd("c");
-        $fce->allDay =  ( $CRMEvent->getEnd() == null ? true : false);
+        $fce->start = $CRMEvent->getStart('c');
+        $fce->end = $CRMEvent->getEnd('c');
+        $fce->allDay = ($CRMEvent->getEnd() == null ? true : false);
         $fce->id = $CRMEvent->getId();
-        $fce->backgroundColor = "#" . $CRMCalendar->getBackgroundColor();
-        $fce->textColor = "#" . $CRMCalendar->getForegroundColor();
+        $fce->backgroundColor = '#'.$CRMCalendar->getBackgroundColor();
+        $fce->textColor = '#'.$CRMCalendar->getForegroundColor();
         $fce->editable = $CRMEvent->isEditable();
-        
+
         $url = $CRMEvent->getURL();
         if ($url) {
             $fce->url = $url;

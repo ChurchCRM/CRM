@@ -12,10 +12,9 @@ namespace ChurchCRM\Reports;
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\ChurchInfoReport;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
@@ -87,7 +86,7 @@ class PdfEnvelopeReport extends ChurchInfoReport
     {
         extract($aRow); // Get a row from family_fam
 
-        return $fam_Envelope . ' ' . $this->makeSalutation($fam_ID);
+        return $fam_Envelope.' '.$this->makeSalutation($fam_ID);
     }
 
     // Number of lines is only for the $text parameter
@@ -128,7 +127,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('EnvelopeAssignments-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+    $pdf->Output('EnvelopeAssignments-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 } else {
     $pdf->Output();
 }
