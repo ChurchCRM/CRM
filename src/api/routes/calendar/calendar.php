@@ -119,15 +119,19 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
     if (!$Events) {
         return $response->withStatus(404);
     }
-    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, $calendar), JSON_THROW_ON_ERROR));
+    return $response->write(
+        json_encode(
+            EventsObjectCollectionToFullCalendar($Events, $calendar),
+            JSON_THROW_ON_ERROR
+        )
+    );
 }
 
-function EventsObjectCollectionToFullCalendar(ObjectCollection $Events, Calendar $Calendar)
+function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar $calendar): array
 {
     $formattedEvents = [];
-    foreach ($Events as $event) {
-        $fce = new FullCalendarEvent();
-        $fce->createFromEvent($event, $Calendar);
+    foreach ($events as $event) {
+        $fce = FullCalendarEvent::createFromEvent($event, $calendar);
         array_push($formattedEvents, $fce);
     }
     return $formattedEvents;
