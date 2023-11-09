@@ -10,7 +10,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\MICRFunctions;
-use ChurchCRM\MICRReader;
 use ChurchCRM\PledgeQuery;
 
 class FinancialService
@@ -34,11 +33,11 @@ class FinancialService
                 $iCheckNo = $micrObj->findCheckNo($tScanString);
 
                 return json_encode([
-                    'ScanString' => $tScanString,
+                    'ScanString'      => $tScanString,
                     'RouteAndAccount' => $routeAndAccount,
-                    'CheckNumber' => $iCheckNo,
-                    'fam_ID' => $row['fam_ID'],
-                    'fam_Name' => $row['fam_Name'],
+                    'CheckNumber'     => $iCheckNo,
+                    'fam_ID'          => $row['fam_ID'],
+                    'fam_Name'        => $row['fam_Name'],
                 ], JSON_THROW_ON_ERROR);
             } else {
                 throw new \Exception('error in locating family');

@@ -159,7 +159,7 @@ class Photo
                 $sourceGDImage = imagecreatefrompng($sourceImagePath);
                 break;
             default:
-                throw new \Exception('Unsupported image type: ' . $sourceImageType);
+                throw new \Exception('Unsupported image type: '.$sourceImageType);
         }
 
         return $sourceGDImage;

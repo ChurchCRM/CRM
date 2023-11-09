@@ -252,10 +252,10 @@ class GroupService
 
         return json_encode([
             'newRole' => [
-                'roleID' => $newOptionID,
+                'roleID'   => $newOptionID,
                 'roleName' => $groupRoleName,
                 'sequence' => $newOptionSequence,
-            ]
+            ],
         ], JSON_THROW_ON_ERROR);
     }
 

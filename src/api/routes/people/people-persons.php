@@ -49,7 +49,7 @@ $app->group('/persons', function () use ($app) {
 
     $app->get(
         '/numbers',
-        fn($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberBirthDates())
+        fn ($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberBirthDates())
     );
 
     $app->get('/self-register', function ($request, $response, $args) {

@@ -44,7 +44,7 @@ $app->group('/families', function () use ($app) {
 
     $app->get(
         '/numbers',
-        fn($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries())
+        fn ($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries())
     );
 
     $app->get('/search/{query}', function ($request, $response, $args) {
