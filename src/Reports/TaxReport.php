@@ -53,13 +53,13 @@ if (!empty($_POST['classList'])) {
         while ($aRow = mysqli_fetch_array($rsClassifications)) {
             extract($aRow);
             if (in_array($lst_OptionID, $classList)) {
-                if ($inClassList == '(') {
+                if ($inClassList === '(') {
                     $inClassList .= $lst_OptionID;
                 } else {
                     $inClassList .= ','.$lst_OptionID;
                 }
             } else {
-                if ($notInClassList == '(') {
+                if ($notInClassList === '(') {
                     $notInClassList .= $lst_OptionID;
                 } else {
                     $notInClassList .= ','.$lst_OptionID;
@@ -71,7 +71,7 @@ if (!empty($_POST['classList'])) {
     }
 
     // all classes were selected. this should behave as if no filter classes were specified
-    if ($notInClassList == '()') {
+    if ($notInClassList === '()') {
         unset($classList);
     }
 }
@@ -169,9 +169,9 @@ if ($iCountRows < 1) {
 // Create Giving Report -- PDF
 // ***************************
 
-if ($output == 'pdf') {
+if ($output === 'pdf') {
     // Set up bottom border values
-    if ($remittance == 'yes') {
+    if ($remittance === 'yes') {
         $bottom_border1 = 134;
         $bottom_border2 = 180;
     } else {
@@ -232,7 +232,7 @@ if ($output == 'pdf') {
             $curY += 4 * SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxSigner'));
 
-            if ($remittance == 'yes') {
+            if ($remittance === 'yes') {
                 // Add remittance slip
                 $curY = 194;
                 $curX = 60;
@@ -332,7 +332,7 @@ if ($output == 'pdf') {
 
             if ($curY > $bottom_border1) {
                 $pdf->addPage();
-                if ($letterhead == 'none') {
+                if ($letterhead === 'none') {
                     // Leave blank space at top on all pages for pre-printed letterhead
                     $curY = 20 + ($summaryIntervalY * 3) + 25;
                     $pdf->SetY($curY);
@@ -398,7 +398,7 @@ if ($output == 'pdf') {
 
         if ($curY > $bottom_border2) {
             $pdf->addPage();
-            if ($letterhead == 'none') {
+            if ($letterhead === 'none') {
                 // Leave blank space at top on all pages for pre-printed letterhead
                 $curY = 20 + ($summaryIntervalY * 3) + 25;
                 $pdf->SetY($curY);
@@ -443,7 +443,7 @@ if ($output == 'pdf') {
     if ($cnt > 0) {
         if ($curY > $bottom_border1) {
             $pdf->addPage();
-            if ($letterhead == 'none') {
+            if ($letterhead === 'none') {
                 // Leave blank space at top on all pages for pre-printed letterhead
                 $curY = 20 + ($summaryIntervalY * 3) + 25;
                 $pdf->SetY($curY);
@@ -465,7 +465,7 @@ if ($output == 'pdf') {
 
     // Output a text file
     // ##################
-} elseif ($output == 'csv') {
+} elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
     $eol = "\r\n";

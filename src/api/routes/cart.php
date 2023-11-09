@@ -3,9 +3,10 @@
 use ChurchCRM\dto\Cart;
 
 $app->group('/cart', function () use ($app) {
-    $app->get('/', function ($request, $response, $args) {
-        return $response->withJson(['PeopleCart' => $_SESSION['aPeopleCart']]);
-    });
+    $app->get(
+        '/',
+        fn($request, $response, $args) => $response->withJson(['PeopleCart' => $_SESSION['aPeopleCart']])
+    );
 
     $app->post('/', function ($request, $response, $args) {
         $cartPayload = (object) $request->getParsedBody();

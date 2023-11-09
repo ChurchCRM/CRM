@@ -113,7 +113,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
         $lst_OptionName = $groupRole->getOptionName();
 
-        if ($lst_OptionName == 'Teacher') {
+        if ($lst_OptionName === 'Teacher') {
             $phone = $pdf->stripPhone($homePhone);
             if ($teacherCount >= $teachersThatFit) {
                 if (!$bFirstTeacher2) {
@@ -131,7 +131,7 @@ for ($i = 0; $i < $nGrps; $i++) {
             $teacherCount++;
         } elseif ($lst_OptionName == gettext('Liaison')) {
             $liaisonString .= gettext('Liaison').':'.$person->getFullName().' '.$phone.' ';
-        } elseif ($lst_OptionName == 'Student') {
+        } elseif ($lst_OptionName === 'Student') {
             $elt = ['perID' => $groupRoleMembership->getPersonId()];
 
             array_push($students, $elt);

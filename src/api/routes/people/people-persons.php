@@ -47,9 +47,10 @@ $app->group('/persons', function () use ($app) {
         return $response->withJson($return);
     });
 
-    $app->get('/numbers', function ($request, $response, $args) {
-        return $response->withJson(MenuEventsCount::getNumberBirthDates());
-    });
+    $app->get(
+        '/numbers',
+        fn($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberBirthDates())
+    );
 
     $app->get('/self-register', function ($request, $response, $args) {
         $people = PersonQuery::create()

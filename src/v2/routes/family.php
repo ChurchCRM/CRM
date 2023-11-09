@@ -29,7 +29,7 @@ function listFamilies(Request $request, Response $response, array $args)
     if (isset($_GET['mode'])) {
         $sMode = InputUtils::legacyFilterInput($_GET['mode']);
     }
-    if (strtolower($sMode) == 'inactive') {
+    if (strtolower($sMode) === 'inactive') {
         $families = FamilyQuery::create()
           ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
               ->orderByName()

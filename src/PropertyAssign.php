@@ -90,7 +90,7 @@ function UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction)
 {
     global $cnInfoCentral;
 
-    if ($sAction == 'add') {
+    if ($sAction === 'add') {
         // Make sure this property isn't already assigned
         $sSQL = "SELECT * FROM record2property_r2p WHERE r2p_record_ID = $iRecordID AND r2p_pro_ID = $iPropertyID";
         $rsExistingTest = RunQuery($sSQL);
@@ -142,7 +142,7 @@ if (strlen($sPrompt) == 0) {
 }
 
 // If we're editing, get the value
-if ($sAction == 'edit') {
+if ($sAction === 'edit') {
     $sSQL = 'SELECT r2p_Value FROM record2property_r2p WHERE r2p_pro_ID = ' . $iPropertyID . ' AND r2p_record_ID = ' . $iRecordID;
     $rsValue = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsValue);
@@ -183,7 +183,7 @@ require 'Include/Header.php';
 </table>
 </div>
 
-<p align="center"><input type="submit" class="btn btn-primary" <?= 'value="'; if ($sAction == 'add') {
+<p align="center"><input type="submit" class="btn btn-primary" <?= 'value="'; if ($sAction === 'add') {
         echo gettext('Assign');
                                                                } else {
                                                                    echo gettext('Update');

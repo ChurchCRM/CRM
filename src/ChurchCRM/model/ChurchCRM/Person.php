@@ -63,8 +63,8 @@ class Person extends BasePerson implements PhotoInterface
     public function getBirthDate()
     {
         if (
-            $this->getBirthDay() !== null && $this->getBirthDay() !== '' &&
-            $this->getBirthMonth() !== null && $this->getBirthMonth() !== ''
+            $this->getBirthDay() !== null && $this->getBirthDay() !== 0 &&
+            $this->getBirthMonth() !== null && $this->getBirthMonth() !== 0
         ) {
             $birthYear = $this->getBirthYear();
             if ($birthYear === '') {

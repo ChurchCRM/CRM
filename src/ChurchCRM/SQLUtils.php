@@ -130,7 +130,7 @@ class SQLUtils
 
         $isQuoted = false;
         for ($i = 0; $i < $offset; $i++) {
-            if ($text[$i] == "'") {
+            if ($text[$i] === "'") {
                 $isQuoted = !$isQuoted;
             }
             if ($text[$i] == '\\' && $isQuoted) {

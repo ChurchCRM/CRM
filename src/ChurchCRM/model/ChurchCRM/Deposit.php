@@ -175,7 +175,7 @@ class Deposit extends BaseDeposit
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
-            if ($pledge->getMethod() == 'CHECK') {
+            if ($pledge->getMethod() === 'CHECK') {
                 $thisReport->pdf->printRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckNo());
                 $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
 
@@ -385,7 +385,7 @@ class Deposit extends BaseDeposit
     {
         requireUserGroupMembership('bFinance');
         $Report = new \stdClass();
-        if (count($this->getPledges()) == 0) {
+        if (count($this->getPledges()) === 0) {
             throw new \Exception('No Payments on this Deposit', 404);
         }
 
@@ -395,12 +395,12 @@ class Deposit extends BaseDeposit
         //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
         $sDepositSlipType = SystemConfig::getValue('sDepositSlipType');
 
-        if ($sDepositSlipType == 'QBDT') {
+        if ($sDepositSlipType === 'QBDT') {
             //Generate a QuickBooks Deposit Ticket.
             $this->generateQBDepositSlip($Report);
-        } elseif ($sDepositSlipType == 'PTDT') {
+        } elseif ($sDepositSlipType === 'PTDT') {
             //placeholder for Peachtree Deposit Tickets.
-        } elseif ($sDepositSlipType == 'GDT') {
+        } elseif ($sDepositSlipType === 'GDT') {
             //placeholder for generic deposit ticket.
         }
         //$this->generateBankDepositSlip($Report);

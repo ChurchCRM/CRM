@@ -67,7 +67,7 @@ if (!$sAction) {
 //
 // process the action inputs
 //
-if ($sAction == 'Create Event' && !empty($tyid)) {
+if ($sAction === 'Create Event' && !empty($tyid)) {
     //
     // user is coming from the event types screen and thus there
     // is no existing event in the event_event table

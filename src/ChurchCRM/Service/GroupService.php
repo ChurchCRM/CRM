@@ -53,7 +53,7 @@ class GroupService
      * @param int $personID UserID to remove from the group
      * @param int $roleID   Role ID to set to the person
      */
-    public function addUserToGroup($iGroupID, $iPersonID, $iRoleID)
+    public function addUserToGroup(int $iGroupID, int $iPersonID, int $iRoleID)
     {
         requireUserGroupMembership('bManageGroups');
         //
@@ -63,7 +63,7 @@ class GroupService
         global $cnInfoCentral;
 
         // Was a RoleID passed in?
-        if ($iRoleID == 0) {
+        if ($iRoleID === 0) {
             // No, get the Default Role for this Group
             $sSQL = 'SELECT grp_DefaultRole FROM group_grp WHERE grp_ID = '.$iGroupID;
             $rsRoleID = RunQuery($sSQL);

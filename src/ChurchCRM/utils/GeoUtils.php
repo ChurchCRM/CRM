@@ -99,7 +99,7 @@ class GeoUtils
         $distance = $radians * $radius;
 
         // convert to miles
-        if (strtoupper(SystemConfig::getValue('sDistanceUnit')) == 'MILES') {
+        if (strtoupper(SystemConfig::getValue('sDistanceUnit')) === 'MILES') {
             $distance = 0.6213712 * $distance;
         }
 

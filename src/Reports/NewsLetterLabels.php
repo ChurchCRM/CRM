@@ -39,7 +39,7 @@ $families = FamilyQuery::create()
         ->find();
 
 foreach ($families as $family) {
-    if ($bRecipientNamingMethod == 'familyname') {
+    if ($bRecipientNamingMethod === 'familyname') {
         $labelText = $family->getName();
     } else {
         $labelText = $pdf->makeSalutation($family->getID());

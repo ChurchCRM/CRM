@@ -43,9 +43,10 @@ function GetGroupArray($iGroupID)
 			   LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
 		   WHERE p2g2r_grp_ID = ".$iGroupID.' ORDER BY per_LastName, per_FirstName';
     $rsGroupMembers = RunQuery($sSQL);
-    $row = 0;
+
+    $ret = [];
     while ($aGroupMember = mysqli_fetch_array($rsGroupMembers)) {
-        $ret[$row++] = $aGroupMember;
+        $ret[] = $aGroupMember;
     }
 
     return $ret;

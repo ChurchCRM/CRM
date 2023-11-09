@@ -29,8 +29,8 @@ class PdfPhotoBook extends ChurchInfoReport
 {
     private $group;
     private $FYIDString;
-    private $currentX;
-    private $currentY;
+    private ?int $currentX = null;
+    private ?int $currentY = null;
     private int $pageMarginL = 15;
     private int $pageMarginR = 15;
     private int $pageMarginT = 20;

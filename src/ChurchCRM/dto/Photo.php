@@ -32,6 +32,20 @@ class Photo
         return Photo::$validExtensions;
     }
 
+    public function createThumbnail()
+    {
+        $this->ensureThumbnailsPath();
+        $thumbWidth = SystemConfig::getValue('iThumbnailWidth');
+        $img = $this->getGDImage($this->photoURI); //just in case we have legacy JPG/GIF that don't have a thumbnail.
+        $width = imagesx($img);
+        $height = imagesy($img);
+        $new_width = $thumbWidth;
+        $new_height = floor($height * ($thumbWidth / $width));
+        $tmp_img = imagecreatetruecolor($new_width, $new_height);
+        imagecopyresized($tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+        imagejpeg($tmp_img, $this->photoThumbURI, 50);
+    }
+
     private function setURIs($photoPath)
     {
         $this->photoURI = $photoPath;
@@ -144,6 +158,8 @@ class Photo
             case IMAGETYPE_PNG:
                 $sourceGDImage = imagecreatefrompng($sourceImagePath);
                 break;
+            default:
+                throw new \Exception('Unsupported image type: ' . $sourceImageType);
         }
 
         return $sourceGDImage;
@@ -154,20 +170,6 @@ class Photo
         if (!file_exists($this->thubmnailPath)) {
             mkdir($this->thubmnailPath);
         }
-    }
-
-    private function createThumbnail()
-    {
-        $this->ensureThumbnailsPath();
-        $thumbWidth = SystemConfig::getValue('iThumbnailWidth');
-        $img = $this->getGDImage($this->photoURI); //just in case we have legacy JPG/GIF that don't have a thumbnail.
-        $width = imagesx($img);
-        $height = imagesy($img);
-        $new_width = $thumbWidth;
-        $new_height = floor($height * ($thumbWidth / $width));
-        $tmp_img = imagecreatetruecolor($new_width, $new_height);
-        imagecopyresized($tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-        imagejpeg($tmp_img, $this->photoThumbURI, 50);
     }
 
     public function getThumbnailBytes()

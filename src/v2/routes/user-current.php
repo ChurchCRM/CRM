@@ -44,7 +44,7 @@ function changepassword(Request $request, Response $response, array $args)
     if ($authenticationProvider instanceof LocalAuthentication) {
         // ChangePassword only works with LocalAuthentication
 
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() === 'POST') {
             $loginRequestBody = (object) $request->getParsedBody();
 
             try {

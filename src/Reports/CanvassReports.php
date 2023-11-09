@@ -406,18 +406,18 @@ function CanvassNotInterestedReport($iFYID)
     $pdf->Output('CanvassNotInterested'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 }
 
-if ($sWhichReport == 'Briefing') {
+if ($sWhichReport === 'Briefing') {
     CanvassBriefingSheets($iFYID);
 }
 
-if ($sWhichReport == 'Progress') {
+if ($sWhichReport === 'Progress') {
     CanvassProgressReport($iFYID);
 }
 
-if ($sWhichReport == 'Summary') {
+if ($sWhichReport === 'Summary') {
     CanvassSummaryReport($iFYID);
 }
 
-if ($sWhichReport == 'NotInterested') {
+if ($sWhichReport === 'NotInterested') {
     CanvassNotInterestedReport($iFYID);
 }

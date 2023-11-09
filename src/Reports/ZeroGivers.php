@@ -72,9 +72,9 @@ if ($iCountRows < 1) {
 // Create Giving Report -- PDF
 // ***************************
 
-if ($output == 'pdf') {
+if ($output === 'pdf') {
     // Set up bottom border values
-    if ($remittance == 'yes') {
+    if ($remittance === 'yes') {
         $bottom_border1 = 134;
         $bottom_border2 = 180;
     } else {
@@ -147,7 +147,7 @@ if ($output == 'pdf') {
 
     // Output a text file
     // ##################
-} elseif ($output == 'csv') {
+} elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
     $eol = "\r\n";

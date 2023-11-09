@@ -58,8 +58,8 @@ if ((!AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly && $o
     exit;
 }
 
-if ($output == 'pdf') {
+if ($output === 'pdf') {
     header('Location: '.SystemURLs::getRootPath().'/api/deposits/'.$iDepositSlipID.'/pdf');
-} elseif ($output == 'csv') {
+} elseif ($output === 'csv') {
     header('Location: '.SystemURLs::getRootPath().'/api/deposits/'.$iDepositSlipID.'/csv');
 }

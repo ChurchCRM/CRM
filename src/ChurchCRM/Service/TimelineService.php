@@ -19,7 +19,7 @@ class TimelineService
         $this->currentUser = AuthenticationManager::getCurrentUser();
     }
 
-    public function getForFamily($familyID)
+    public function getForFamily(int $familyID)
     {
         $timeline = [];
         $familyNotes = NoteQuery::create()->findByFamId($familyID);
@@ -40,7 +40,7 @@ class TimelineService
         return $sortedTimeline;
     }
 
-    private function eventsForPerson($personID)
+    private function eventsForPerson(int $personID)
     {
         $timeline = [];
         $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
@@ -64,12 +64,12 @@ class TimelineService
         return $timeline;
     }
 
-    private function notesForPerson($personID, $noteType)
+    private function notesForPerson(int $personID, ?string $noteType = null)
     {
         $timeline = [];
         $personQuery = NoteQuery::create()
             ->filterByPerId($personID);
-        if ($noteType != null) {
+        if ($noteType !== null) {
             $personQuery->filterByType($noteType);
         }
         foreach ($personQuery->find() as $dbNote) {
@@ -94,14 +94,14 @@ class TimelineService
         return $sortedTimeline;
     }
 
-    public function getNotesForPerson($personID)
+    public function getNotesForPerson(int $personID)
     {
         $timeline = $this->notesForPerson($personID, 'note');
 
         return $this->sortTimeline($timeline);
     }
 
-    public function getForPerson($personID)
+    public function getForPerson(int $personID)
     {
         $timeline = array_merge(
             $this->notesForPerson($personID, null),
@@ -112,18 +112,18 @@ class TimelineService
     }
 
     /**
-     * @param $dbNote Note
+     * @param Note $dbNote
      *
      * @return mixed|null
      */
-    public function noteToTimelineItem($dbNote)
+    public function noteToTimelineItem(Note $dbNote)
     {
         $item = null;
-        if ($this->currentUser->isAdmin() || $dbNote->isVisable($this->currentUser->getPersonId())) {
+        if ($this->currentUser->isAdmin() || $dbNote->isVisible($this->currentUser->getPersonId())) {
             $displayEditedBy = gettext('Unknown');
-            if ($dbNote->getDisplayEditedBy() == Person::SELF_REGISTER) {
+            if ($dbNote->getDisplayEditedBy() === Person::SELF_REGISTER) {
                 $displayEditedBy = gettext('Self Registration');
-            } elseif ($dbNote->getDisplayEditedBy() == Person::SELF_VERIFY) {
+            } elseif ($dbNote->getDisplayEditedBy() === Person::SELF_VERIFY) {
                 $displayEditedBy = gettext('Self Verification');
             } else {
                 $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());

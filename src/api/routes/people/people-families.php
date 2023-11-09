@@ -42,9 +42,10 @@ $app->group('/families', function () use ($app) {
         return $response->withJson(['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
     });
 
-    $app->get('/numbers', function ($request, $response, $args) {
-        return $response->withJson(MenuEventsCount::getNumberAnniversaries());
-    });
+    $app->get(
+        '/numbers',
+        fn($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries())
+    );
 
     $app->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];

@@ -249,7 +249,7 @@ require 'Include/Header.php';
                     $sRowClass = 'RowColorB';
                 }
 
-                if ($plg_PledgeOrPayment == 'Payment') {
+                if ($plg_PledgeOrPayment === 'Payment') {
                     if ($tog) {
                         $sRowClass = 'PaymentRowColorA';
                     } else {

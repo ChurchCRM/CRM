@@ -214,7 +214,7 @@ EOD;
                       <td><?= $file->expectedhash ?></td>
                       <td>
                             <?php
-                            if ($file->status == 'File Missing') {
+                            if ($file->status === 'File Missing') {
                                 echo gettext('File Missing');
                             } else {
                                 echo $file->actualhash;

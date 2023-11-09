@@ -27,7 +27,7 @@ function FontSelect($fieldname)
     foreach ($d as $entry) {
         $len = strlen($entry);
         if ($len > 3) {
-            if (strtoupper(mb_substr($entry, $len - 3)) == 'PHP') { // php files only
+            if (strtoupper(mb_substr($entry, $len - 3)) === 'PHP') { // php files only
                 $filename = mb_substr($entry, 0, $len - 4);
                 if (mb_substr($filename, 0, strlen($family)) != $family) {
                     $family = $filename;
@@ -106,7 +106,7 @@ function LabelGroupSelect($fieldname)
     echo '>'.gettext('All Individuals').'<br>';
     echo "<input name=\"$fieldname\" type=\"radio\" value=\"fam\" ";
 
-    if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == 'fam') {
+    if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] === 'fam') {
         echo 'checked';
     }
 

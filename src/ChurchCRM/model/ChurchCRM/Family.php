@@ -303,8 +303,6 @@ class Family extends BaseFamily implements PhotoInterface
 
     /**
      * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
-     *
-     * @return array of Lat/Lng
      */
     public function updateLanLng()
     {

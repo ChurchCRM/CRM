@@ -262,7 +262,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
                     $OutStr = $sCustomFieldName[$custom_Order - 1].' : '.$currentFieldData.'    ';
                     $pdf->writeAtCell($xInc, $curY, $xSize, $sCustomFieldName[$custom_Order - 1]);
-                    if ($currentFieldData == '') {
+                    if ($currentFieldData === '') {
                         $pdf->SetFont('Times', 'B', 6);
                         $pdf->writeAtCell($xInc + $xSize, $curY, $xSize, '');
                         $pdf->SetFont('Times', '', 10);
