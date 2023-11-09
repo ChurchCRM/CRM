@@ -250,7 +250,13 @@ class GroupService
             }
         }
 
-        return '{"newRole":{"roleID":"'.$newOptionID.'", "roleName":"'.$groupRoleName.'", "sequence":"'.$newOptionSequence.'"}}';
+        return json_encode([
+            'newRole' => [
+                'roleID' => $newOptionID,
+                'roleName' => $groupRoleName,
+                'sequence' => $newOptionSequence,
+            ]
+        ], JSON_THROW_ON_ERROR);
     }
 
     public function enableGroupSpecificProperties($groupID)

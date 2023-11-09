@@ -9,6 +9,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
+use ChurchCRM\MICRFunctions;
 use ChurchCRM\MICRReader;
 use ChurchCRM\PledgeQuery;
 
@@ -20,20 +21,25 @@ class FinancialService
         PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
-    public function getMemberByScanString($sstrnig)
+    public function getMemberByScanString($tScanString)
     {
         requireUserGroupMembership('bFinance');
         if (SystemConfig::getValue('bUseScannedChecks')) {
-            require '../Include/MICRFunctions.php';
-            $micrObj = new MICRReader(); // Instantiate the MICR class
+            $micrObj = new MICRFunctions(); // Instantiate the MICR class
             $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
             if ($routeAndAccount) {
                 $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="'.$routeAndAccount.'"';
                 $rsFam = RunQuery($sSQL);
-                extract(mysqli_fetch_array($rsFam));
+                $row = mysqli_fetch_array($rsFam);
                 $iCheckNo = $micrObj->findCheckNo($tScanString);
 
-                return '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
+                return json_encode([
+                    'ScanString' => $tScanString,
+                    'RouteAndAccount' => $routeAndAccount,
+                    'CheckNumber' => $iCheckNo,
+                    'fam_ID' => $row['fam_ID'],
+                    'fam_Name' => $row['fam_Name'],
+                ], JSON_THROW_ON_ERROR);
             } else {
                 throw new \Exception('error in locating family');
             }
@@ -84,7 +90,7 @@ class FinancialService
     public function getPaymentJSON($payments)
     {
         if ($payments) {
-            return '{"payments":'.json_encode($payments, JSON_THROW_ON_ERROR).'}';
+            return json_encode(['payments' => $payments], JSON_THROW_ON_ERROR);
         } else {
             return false;
         }
