@@ -235,6 +235,7 @@ class ChurchCRMReleaseManager
         // PHP instance's max_execution_time
         $displayErrors = ini_get('display_errors');
         ini_set('display_errors', 0);
+        ini_set('max_execution_time', 50_000);
         register_shutdown_function(fn () => ChurchCRMReleaseManager::preShutdown());
 
         $logger = LoggerUtils::getAppLogger();
@@ -247,12 +248,16 @@ class ChurchCRMReleaseManager
             $zip = new \ZipArchive();
             if ($zip->open($zipFilename) === true) {
                 $logger->info('Extracting '.$zipFilename.' to: '.SystemURLs::getDocumentRoot().'/Upgrade');
+
                 $executionTime = new ExecutionTime();
                 $isSuccessful = $zip->extractTo(SystemURLs::getDocumentRoot().'/Upgrade');
                 MiscUtils::throwIfFailed($isSuccessful);
+
                 $zip->close();
+
                 $logger->info('Extraction completed.  Took:'.$executionTime->getMilliseconds());
                 $logger->info('Moving extracted zip into place');
+
                 $executionTime = new ExecutionTime();
 
                 FileSystemUtils::moveDir(SystemURLs::getDocumentRoot().'/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
