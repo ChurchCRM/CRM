@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 
 class CheckExecutionTimeTask
 {
-    private $executionTime;
+    private int $executionTime;
 
     public function __construct()
     {
