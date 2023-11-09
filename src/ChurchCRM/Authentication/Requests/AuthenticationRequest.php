@@ -2,9 +2,6 @@
 
 namespace ChurchCRM\Authentication\Requests;
 
-class AuthenticationRequest
+abstract class AuthenticationRequest
 {
-    public function __construct()
-    {
-    }
 }
