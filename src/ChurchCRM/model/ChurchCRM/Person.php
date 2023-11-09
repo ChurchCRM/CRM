@@ -63,18 +63,18 @@ class Person extends BasePerson implements PhotoInterface
     public function getBirthDate()
     {
         if (
-            $this->getBirthDay() !== null && $this->getBirthDay() !== 0 &&
-            $this->getBirthMonth() !== null && $this->getBirthMonth() !== 0
+            $this->getBirthDay() !== null && $this->getBirthDay() !== '' &&
+            $this->getBirthMonth() !== null && $this->getBirthMonth() !== ''
         ) {
             $birthYear = $this->getBirthYear();
             if ($birthYear === '') {
                 $birthYear = 1900;
             }
 
-            return date_create($birthYear.'-'.$this->getBirthMonth().'-'.$this->getBirthDay());
+            return \DateTimeImmutable::createFromFormat('Y-m-d', $birthYear.'-'.$this->getBirthMonth().'-'.$this->getBirthDay());
         }
 
-        return false;
+        return null;
     }
 
     public function getFormattedBirthDate()
@@ -647,7 +647,7 @@ class Person extends BasePerson implements PhotoInterface
             return false;
         }
         if (empty($now)) {
-            $now = date_create('today');
+            $now = new \DateTimeImmutable('today');
         }
         $age = date_diff($now, $birthDate);
 
