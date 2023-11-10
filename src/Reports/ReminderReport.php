@@ -53,13 +53,13 @@ if (!empty($_POST['classList'])) {
         while ($aRow = mysqli_fetch_array($rsClassifications)) {
             extract($aRow);
             if (in_array($lst_OptionID, $classList)) {
-                if ($inClassList == '(') {
+                if ($inClassList === '(') {
                     $inClassList .= $lst_OptionID;
                 } else {
                     $inClassList .= ','.$lst_OptionID;
                 }
             } else {
-                if ($notInClassList == '(') {
+                if ($notInClassList === '(') {
                     $notInClassList .= $lst_OptionID;
                 } else {
                     $notInClassList .= ','.$lst_OptionID;
@@ -71,7 +71,7 @@ if (!empty($_POST['classList'])) {
     }
 
     // all classes were selected. this should behave as if no filter classes were specified
-    if ($notInClassList == '()') {
+    if ($notInClassList === '()') {
         unset($classList);
     }
 }
@@ -92,7 +92,7 @@ if (!empty($_POST['family'])) {
     foreach ($_POST['family'] as $famID) {
         $fam[$count++] = InputUtils::legacyFilterInput($famID, 'int');
     }
-    if ($count == 1) {
+    if ($count === 1) {
         if ($fam[0]) {
             $q = " fam_ID='$fam[0]'";
             if ($criteria) {
@@ -140,7 +140,7 @@ if (!empty($_POST['funds'])) {
     foreach ($_POST['funds'] as $fundID) {
         $fund[$fundCount++] = InputUtils::legacyFilterInput($fundID, 'int');
     }
-    if ($fundCount == 1) {
+    if ($fundCount === 1) {
         if ($fund[0]) {
             $sSQLFundCriteria .= " AND plg_fundID='$fund[0]' ";
         }
@@ -155,8 +155,8 @@ if (!empty($_POST['funds'])) {
 
 // Make the string describing the fund filter
 if ($fundCount > 0) {
-    if ($fundCount == 1) {
-        if ($fund[0] == gettext('All Funds')) {
+    if ($fundCount === 1) {
+        if ($fund[0] === gettext('All Funds')) {
             $fundOnlyString = gettext(' for all funds');
         } else {
             $fundOnlyString = gettext(' for fund ');
@@ -222,7 +222,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     extract($aFam);
 
     // Check for pledges if filtering by pledges
-    if ($pledge_filter == 'pledge') {
+    if ($pledge_filter === 'pledge') {
         $temp = "SELECT plg_plgID FROM pledge_plg
             WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID".$sSQLFundCriteria;
         $rsPledgeCheck = RunQuery($temp);
@@ -243,13 +243,13 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         continue;
     }
 
-    if ($only_owe == 'yes') {
+    if ($only_owe === 'yes') {
         // Run through pledges and payments for this family to see if there are any unpaid pledges
         $oweByFund = [];
         $bOwe = 0;
         while ($aRow = mysqli_fetch_array($rsPledges)) {
             extract($aRow);
-            if ($plg_PledgeOrPayment == 'Pledge') {
+            if ($plg_PledgeOrPayment === 'Pledge') {
                 if (array_key_exists($plg_fundID, $oweByFund)) {
                     $oweByFund[$plg_fundID] -= $plg_amount;
                 } else {

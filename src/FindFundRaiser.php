@@ -208,19 +208,15 @@ $sLimit20 = '';
 $sLimit25 = '';
 $sLimit50 = '';
 
-if ($iPerPage == '5') {
+if ($iPerPage === 5) {
     $sLimit5 = 'selected';
-}
-if ($iPerPage == '10') {
+} elseif ($iPerPage === 10) {
     $sLimit10 = 'selected';
-}
-if ($iPerPage == '20') {
+} elseif ($iPerPage === 20) {
     $sLimit20 = 'selected';
-}
-if ($iPerPage == '25') {
+} elseif ($iPerPage === 25) {
     $sLimit25 = 'selected';
-}
-if ($iPerPage == '50') {
+} elseif ($iPerPage === 50) {
     $sLimit50 = 'selected';
 }
 

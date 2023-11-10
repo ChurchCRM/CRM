@@ -129,7 +129,7 @@ switch ($sAction) {
 
             // If group roles mode, check if we've deleted the old group default role.  If so, reset default to role ID 1
             // Next, if any group members were using the deleted role, reset their role to the group default.
-            if ($mode == 'grproles') {
+            if ($mode === 'grproles') {
                 // Reset if default role was just removed.
                 $sSQL = "UPDATE group_grp SET grp_DefaultRole = 1 WHERE grp_RoleListID = $listID AND grp_DefaultRole = $iID";
                 RunQuery($sSQL);

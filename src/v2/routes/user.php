@@ -82,7 +82,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
         'user'      => $user,
     ];
 
-    if ($request->getMethod() == 'POST') {
+    if ($request->getMethod() === 'POST') {
         $loginRequestBody = (object) $request->getParsedBody();
 
         try {

@@ -102,7 +102,7 @@ $numRows = mysqli_num_rows($rsOpps);
 
 <?php
 // year selector
-if ($eType == 'All') {
+if ($eType === 'All') {
     $sSQL = 'SELECT DISTINCT YEAR(events_event.event_start)
            FROM events_event
            WHERE YEAR(events_event.event_start)';
@@ -147,7 +147,7 @@ for ($r = 1; $r <= $numRows; $r++) {
 $currYear = date('Y');
 $currMonth = date('m');
 $allMonths = ['12', '11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1'];
-if ($eType == 'All') {
+if ($eType === 'All') {
     $eTypeSQL = ' ';
 } else {
     $eTypeSQL = " AND t1.event_type=$eType";
@@ -259,7 +259,7 @@ foreach ($allMonths as $mKey => $mVal) {
             } ?>
             <td>
               <?= $aEventTitle[$row] ?>
-              <?= ($aEventDesc[$row] == '' ? '&nbsp;' : $aEventDesc[$row]) ?>
+              <?= ($aEventDesc[$row] === '' ? '&nbsp;' : $aEventDesc[$row]) ?>
               <?php if ($aEventText[$row] != '') {
                     ?>
                 <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')"><?= gettext("Sermon Text") ?></a></div>

@@ -46,13 +46,13 @@ if (!empty($_POST['classList'])) {
         while ($aRow = mysqli_fetch_array($rsClassifications)) {
             extract($aRow);
             if (in_array($lst_OptionID, $classList)) {
-                if ($inClassList == '(') {
+                if ($inClassList === '(') {
                     $inClassList .= $lst_OptionID;
                 } else {
                     $inClassList .= ','.$lst_OptionID;
                 }
             } else {
-                if ($notInClassList == '(') {
+                if ($notInClassList === '(') {
                     $notInClassList .= $lst_OptionID;
                 } else {
                     $notInClassList .= ','.$lst_OptionID;
@@ -118,7 +118,7 @@ if ($iDepID > 0) {
         $sDateStart = $sDateEnd;
         $sDateEnd = $temp;
     }
-    if ($datetype == 'Payment') {
+    if ($datetype === 'Payment') {
         $sSQL .= " AND plg_date BETWEEN '$sDateStart' AND '$sDateEnd' ";
     } else {
         $sSQL .= " AND dep_Date BETWEEN '$sDateStart' AND '$sDateEnd' ";
@@ -187,11 +187,11 @@ if (!empty($_POST['method'])) {
 }
 
 // Add SQL ORDER
-if ($sort == 'deposit') {
+if ($sort === 'deposit') {
     $sSQL .= ' ORDER BY plg_depID, fun_Name, fam_Name, fam_ID';
-} elseif ($sort == 'fund') {
+} elseif ($sort === 'fund') {
     $sSQL .= ' ORDER BY fun_Name, fam_Name, fam_ID, plg_depID ';
-} elseif ($sort == 'family') {
+} elseif ($sort === 'family') {
     $sSQL .= ' ORDER BY fam_Name, fam_ID, fun_Name, plg_depID';
 }
 
@@ -209,7 +209,7 @@ if ($iCountRows < 1) {
 // Create PDF Report -- PDF
 // ***************************
 
-if ($output == 'pdf') {
+if ($output === 'pdf') {
     // Set up bottom border value
     $bottom_border = 250;
     $summaryIntervalY = 4;
@@ -286,7 +286,7 @@ if ($output == 'pdf') {
                 $page++;
                 $this->addPage();
                 $curY = 20;
-                if ($detail_level == 'detail') {
+                if ($detail_level === 'detail') {
                     $curY = $this->headings($curY);
                 }
             }
@@ -297,7 +297,7 @@ if ($output == 'pdf') {
         public function headings($curY)
         {
             global $sort, $summaryIntervalY;
-            if ($sort == 'deposit') {
+            if ($sort === 'deposit') {
                 $curX = SystemConfig::getValue('leftX');
                 $this->SetFont('Times', 'BU', 10);
                 $this->writeAt($curX, $curY, 'Chk No.');
@@ -306,7 +306,7 @@ if ($output == 'pdf') {
                 $this->writeAt(135, $curY, 'Memo');
                 $this->writeAt(181, $curY, 'Amount');
                 $curY += 2 * $summaryIntervalY;
-            } elseif ($sort == 'fund') {
+            } elseif ($sort === 'fund') {
                 $curX = SystemConfig::getValue('leftX');
                 $this->SetFont('Times', 'BU', 10);
                 $this->writeAt($curX, $curY, 'Chk No.');
@@ -315,7 +315,7 @@ if ($output == 'pdf') {
                 $this->writeAt(135, $curY, 'Memo');
                 $this->writeAt(181, $curY, 'Amount');
                 $curY += 2 * $summaryIntervalY;
-            } elseif ($sort == 'family') {
+            } elseif ($sort === 'family') {
                 $curX = SystemConfig::getValue('leftX');
                 $this->SetFont('Times', 'BU', 10);
                 $this->writeAt($curX, $curY, 'Chk No.');
@@ -358,8 +358,8 @@ if ($output == 'pdf') {
     // **********************
     // Sort by Deposit Report
     // **********************
-    if ($sort == 'deposit') {
-        if ($detail_level == 'detail') {
+    if ($sort === 'deposit') {
+        if ($detail_level === 'detail') {
             $curY = $pdf->headings($curY);
         }
 
@@ -428,12 +428,12 @@ if ($output == 'pdf') {
             }
 
             // Print Deposit Detail
-            if ($detail_level == 'detail') {
+            if ($detail_level === 'detail') {
                 // Format Data
-                if ($plg_method == 'CREDITCARD') {
+                if ($plg_method === 'CREDITCARD') {
                     $plg_method = 'CREDIT';
                 }
-                if ($plg_method == 'BANKDRAFT') {
+                if ($plg_method === 'BANKDRAFT') {
                     $plg_method = 'DRAFT';
                 }
                 if ($plg_method != 'CHECK') {
@@ -515,12 +515,12 @@ if ($output == 'pdf') {
         $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
         $curY += 2 * $summaryIntervalY;
         $page = $pdf->pageBreak($page);
-    } elseif ($sort == 'fund') {
+    } elseif ($sort === 'fund') {
         // **********************
         // Sort by Fund  Report
         // **********************
 
-        if ($detail_level == 'detail') {
+        if ($detail_level === 'detail') {
             $curY = $pdf->headings($curY);
         }
 
@@ -589,12 +589,12 @@ if ($output == 'pdf') {
             }
 
             // Print Deposit Detail
-            if ($detail_level == 'detail') {
+            if ($detail_level === 'detail') {
                 // Format Data
-                if ($plg_method == 'CREDITCARD') {
+                if ($plg_method === 'CREDITCARD') {
                     $plg_method = 'CREDIT';
                 }
-                if ($plg_method == 'BANKDRAFT') {
+                if ($plg_method === 'BANKDRAFT') {
                     $plg_method = 'DRAFT';
                 }
                 if ($plg_method != 'CHECK') {
@@ -679,7 +679,7 @@ if ($output == 'pdf') {
             $pdf->line(40, $curY - 2, 195, $curY - 2);
         }
         $page = $pdf->pageBreak($page);
-    } elseif ($sort == 'family') {
+    } elseif ($sort === 'family') {
         // **********************
         // Sort by Family  Report
         // **********************
@@ -750,12 +750,12 @@ if ($output == 'pdf') {
             }
 
             // Print Deposit Detail
-            if ($detail_level == 'detail') {
+            if ($detail_level === 'detail') {
                 // Format Data
-                if ($plg_method == 'CREDITCARD') {
+                if ($plg_method === 'CREDITCARD') {
                     $plg_method = 'CREDIT';
                 }
-                if ($plg_method == 'BANKDRAFT') {
+                if ($plg_method === 'BANKDRAFT') {
                     $plg_method = 'DRAFT';
                 }
                 if ($plg_method != 'CHECK') {
@@ -883,7 +883,7 @@ if ($output == 'pdf') {
 
     // Output a text file
     // ##################
-} elseif ($output == 'csv') {
+} elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
     $eol = "\r\n";

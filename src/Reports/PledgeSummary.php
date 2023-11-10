@@ -94,7 +94,7 @@ $rsPledges = RunQuery($sSQL);
 
 // Create PDF Report
 // *****************
-if ($output == 'pdf') {
+if ($output === 'pdf') {
     class PdfPledgeSummaryReport extends ChurchInfoReport
     {
         // Constructor
@@ -134,7 +134,7 @@ if ($output == 'pdf') {
             extract($aRow);
         }
 
-        if ($fundName == '') {
+        if ($fundName === '') {
             $fundName = 'Unassigned';
         }
 
@@ -167,7 +167,7 @@ if ($output == 'pdf') {
         }
 
         if ($thisRow < $totRows) {
-            if ($plg_PledgeOrPayment == 'Pledge') {
+            if ($plg_PledgeOrPayment === 'Pledge') {
                 if (array_key_exists($fundName, $pledgeFundTotal)) {
                     $pledgeFundTotal[$fundName] += $plg_amount;
                     $pledgeCnt[$fundName] += 1;
@@ -180,7 +180,7 @@ if ($output == 'pdf') {
                 } else {
                     $pledgeThisFam[$fundName] = $plg_amount;
                 }
-            } elseif ($plg_PledgeOrPayment == 'Payment') {
+            } elseif ($plg_PledgeOrPayment === 'Payment') {
                 if (array_key_exists($fundName, $paymentFundTotal)) {
                     $paymentFundTotal[$fundName] += $plg_amount;
                     $paymentCnt[$fundName] += 1;
@@ -278,7 +278,7 @@ if ($output == 'pdf') {
 
     // Output a text file
     // ##################
-} elseif ($output == 'csv') {
+} elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
     $eol = "\r\n";

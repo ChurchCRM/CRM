@@ -70,7 +70,7 @@ function beginSession(Request $request, Response $response, array $args)
         'forgotPasswordURL'    => AuthenticationManager::getForgotPasswordURL(),
     ];
 
-    if ($request->getMethod() == 'POST') {
+    if ($request->getMethod() === 'POST') {
         $loginRequestBody = (object) $request->getParsedBody();
         $request = new LocalUsernamePasswordRequest($loginRequestBody->User, $loginRequestBody->Password);
         $authenticationResult = AuthenticationManager::authenticate($request);

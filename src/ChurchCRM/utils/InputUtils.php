@@ -23,7 +23,7 @@ class InputUtils
             return '';
         }
 
-        return (SystemConfig::getValue('sCSVExportCharset') == 'UTF-8') ? gettext($string) : iconv('UTF-8', SystemConfig::getValue('sCSVExportCharset'), gettext($string));
+        return (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') ? gettext($string) : iconv('UTF-8', SystemConfig::getValue('sCSVExportCharset'), gettext($string));
     }
 
     public static function filterString($sInput)

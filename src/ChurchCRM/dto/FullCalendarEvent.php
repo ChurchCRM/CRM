@@ -12,11 +12,11 @@ class FullCalendarEvent
 
     public string $title;
     public string $start; // date-string
-    public ?string $backgroundColor;
-    public ?string $textColor;
-    public ?string $end; // date-string
+    public ?string $backgroundColor = null;
+    public ?string $textColor = null;
+    public ?string $end = null; // date-string
     public bool $allDay;
-    public ?string $url;
+    public ?string $url = null;
     public string $id;
     public bool $editable;
 

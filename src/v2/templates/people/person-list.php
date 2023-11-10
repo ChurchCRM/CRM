@@ -137,7 +137,7 @@ foreach ($ListItem as $element) {
                 <td><?= empty($person->getPropertiesString()) ? 'Unassigned' : json_encode($person->getPropertiesString(), JSON_THROW_ON_ERROR) ?></td>
                 <td><?= empty($person->getCustomFields()) ? 'Unassigned' : json_encode($person->getCustomFields(), JSON_THROW_ON_ERROR) ?></td>
                 <td><?= empty($person->getGroups()) ? 'Unassigned' : json_encode($person->getGroups(), JSON_THROW_ON_ERROR) ?></td>
-                <?php
+<?php
             }
             ?>
             </tr>

@@ -12,10 +12,6 @@ class Notification
     protected $recipients;
     protected $person;
 
-    public function __construct()
-    {
-    }
-
     public function setRecipients($recipients)
     {
         $this->recipients = $recipients;
@@ -69,7 +65,7 @@ class Notification
                 ]);
             }
 
-            return $message;
+            return true;
         } catch (\Exception $ex) {
             return false;
         }

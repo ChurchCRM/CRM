@@ -81,7 +81,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         }
     }
 
-    if (($iRequireDonationYears == 0) || $donation == 'yes') {
+    if (($iRequireDonationYears == 0) || $donation === 'yes') {
         $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Name);
 
         //Get the family members for this family

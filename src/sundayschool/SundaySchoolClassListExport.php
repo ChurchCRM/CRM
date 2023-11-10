@@ -33,7 +33,7 @@ $delimiter = SystemConfig::getValue('sCSVExportDelimiter');
 $out = fopen('php://output', 'w');
 
 //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-if (SystemConfig::getValue('sCSVExportCharset') == 'UTF-8') {
+if (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') {
     fputs($out, $bom = (chr(0xEF).chr(0xBB).chr(0xBF)));
 }
 
@@ -99,7 +99,7 @@ foreach ($groups as $group) {
             $state = $family->getState();
             $zip = $family->getZip();
 
-            if ($lst_OptionName == 'Student') {
+            if ($lst_OptionName === 'Student') {
                 // only for a student
                 $FAmembers = FamilyQuery::create()->findOneByID($famID)->getAdults();
 
@@ -124,7 +124,7 @@ foreach ($groups as $group) {
 
         $assignedProperties = $member->getProperties();
         $props = ' ';
-        if ($lst_OptionName == 'Student' && !empty($assignedProperties)) {
+        if ($lst_OptionName === 'Student' && !empty($assignedProperties)) {
             foreach ($assignedProperties as $property) {
                 $props .= $property->getProName().', ';
             }
@@ -133,7 +133,7 @@ foreach ($groups as $group) {
         }
 
         $birthDate = '';
-        if ($birthYear != '' && !$birthDate && (!$member->getFlags() || $lst_OptionName == 'Student')) {
+        if ($birthYear != '' && !$birthDate && (!$member->getFlags() || $lst_OptionName === 'Student')) {
             $publishDate = DateTime::createFromFormat('Y-m-d', $birthYear.'-'.$birthMonth.'-'.$birthDay);
             $birthDate = $publishDate->format(SystemConfig::getValue('sDateFormatLong'));
         }

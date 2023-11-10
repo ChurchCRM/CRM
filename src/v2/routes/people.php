@@ -50,18 +50,16 @@ function listPeople(Request $request, Response $response, array $args)
     $sMode = 'Person';
     // by default show only active families
     $familyActiveStatus = 'active';
-    if ($_GET['familyActiveStatus'] == 'inactive') {
+    if ($_GET['familyActiveStatus'] === 'inactive') {
         $familyActiveStatus = 'inactive';
-    } elseif ($_GET['familyActiveStatus'] == 'all') {
+    } elseif ($_GET['familyActiveStatus'] === 'all') {
         $familyActiveStatus = 'all';
     }
 
-    if ($familyActiveStatus == 'active') {
+    if ($familyActiveStatus === 'active') {
         $members->leftJoinFamily()->where('family_fam.fam_DateDeactivated is null');
-    } else {
-        if ($familyActiveStatus == 'inactive') {
-            $members->leftJoinFamily()->where('family_fam.fam_DateDeactivated is not null');
-        }
+    } elseif ($familyActiveStatus === 'inactive') {
+        $members->leftJoinFamily()->where('family_fam.fam_DateDeactivated is not null');
     }
 
     $members->find();

@@ -9,7 +9,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\MICRReader;
+use ChurchCRM\MICRFunctions;
 use ChurchCRM\PledgeQuery;
 
 class FinancialService
@@ -20,20 +20,25 @@ class FinancialService
         PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
-    public function getMemberByScanString($sstrnig)
+    public function getMemberByScanString($tScanString)
     {
         requireUserGroupMembership('bFinance');
         if (SystemConfig::getValue('bUseScannedChecks')) {
-            require '../Include/MICRFunctions.php';
-            $micrObj = new MICRReader(); // Instantiate the MICR class
+            $micrObj = new MICRFunctions(); // Instantiate the MICR class
             $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
             if ($routeAndAccount) {
                 $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="'.$routeAndAccount.'"';
                 $rsFam = RunQuery($sSQL);
-                extract(mysqli_fetch_array($rsFam));
+                $row = mysqli_fetch_array($rsFam);
                 $iCheckNo = $micrObj->findCheckNo($tScanString);
 
-                return '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
+                return json_encode([
+                    'ScanString'      => $tScanString,
+                    'RouteAndAccount' => $routeAndAccount,
+                    'CheckNumber'     => $iCheckNo,
+                    'fam_ID'          => $row['fam_ID'],
+                    'fam_Name'        => $row['fam_Name'],
+                ], JSON_THROW_ON_ERROR);
             } else {
                 throw new \Exception('error in locating family');
             }
@@ -47,7 +52,7 @@ class FinancialService
         if ($iDepositSlipID) {
             $sSQL = "UPDATE deposit_dep SET dep_Date = '".$depositDate."', dep_Comment = '".$depositComment."', dep_EnteredBy = ".AuthenticationManager::getCurrentUser()->getId().', dep_Closed = '.intval($depositClosed).' WHERE dep_ID = '.$iDepositSlipID.';';
             $bGetKeyBack = false;
-            if ($depositClosed && ($depositType == 'CreditCard' || $depositType == 'BankDraft')) {
+            if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
                 $q = 'DELETE FROM pledge_plg WHERE plg_depID = '.$iDepositSlipID.' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
                 RunQuery($q);
@@ -84,7 +89,7 @@ class FinancialService
     public function getPaymentJSON($payments)
     {
         if ($payments) {
-            return '{"payments":'.json_encode($payments, JSON_THROW_ON_ERROR).'}';
+            return json_encode(['payments' => $payments], JSON_THROW_ON_ERROR);
         } else {
             return false;
         }
@@ -206,14 +211,14 @@ class FinancialService
         //validate that the payment options are valid
         //If the payment method is a check, then the check number must be present, and it must not already have been used for this family
         //if the payment method is cash, there must not be a check number
-        if ($payment->type == 'Payment' && $payment->iMethod == 'CHECK' && !isset($payment->iCheckNo)) {
+        if ($payment->type === 'Payment' && $payment->iMethod === 'CHECK' && !isset($payment->iCheckNo)) {
             throw new \Exception(gettext('Must specify non-zero check number'));
         }
         // detect check inconsistencies
-        if ($payment->type == 'Payment' && isset($payment->iCheckNo)) {
-            if ($payment->iMethod == 'CASH') {
+        if ($payment->type === 'Payment' && isset($payment->iCheckNo)) {
+            if ($payment->iMethod === 'CASH') {
                 throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
-            } elseif ($payment->iMethod == 'CHECK' && $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
+            } elseif ($payment->iMethod === 'CHECK' && $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
                 //build routine to make sure this check number hasn't been used by this family yet (look at group key)
                 throw new \Exception("Check number '".$payment->iCheckNo."' for selected family already exists.");
             }
@@ -243,14 +248,14 @@ class FinancialService
         foreach ($FundSplit as $Fund) {
             if ($Fund->Amount > 0) {  //Only insert a row in the pledge table if this fund has a non zero amount.
                 if (!isset($sGroupKey)) {  //a GroupKey references a single familie's payment, and transcends the fund splits.  Sharing the same Group Key for this payment helps clean up reports.
-                    if ($payment->iMethod == 'CHECK') {
+                    if ($payment->iMethod === 'CHECK') {
                         $sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
-                    } elseif ($payment->iMethod == 'BANKDRAFT') {
+                    } elseif ($payment->iMethod === 'BANKDRAFT') {
                         if (!$iAutID) {
                             $iAutID = 'draft';
                         }
                         $sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
-                    } elseif ($payment->iMethod == 'CREDITCARD') {
+                    } elseif ($payment->iMethod === 'CREDITCARD') {
                         if (!$iAutID) {
                             $iAutID = 'credit';
                         }
@@ -393,7 +398,7 @@ class FinancialService
         $numItems = 0;
         foreach ($thisReport->payments as $payment) {
             // List all the checks and total the cash
-            if ($payment->plg_method == 'CHECK') {
+            if ($payment->plg_method === 'CHECK') {
                 $plgSumStr = sprintf('%.2f', $payment->plg_amount);
                 $thisReport->pdf->SetFontSize(14);
                 $thisReport->pdf->SetXY($thisReport->depositSlipBackCheckNosX, $thisReport->depositSlipBackCheckNosY + $numItems * $thisReport->depositSlipBackCheckNosHeight);

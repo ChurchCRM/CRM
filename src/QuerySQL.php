@@ -62,7 +62,7 @@ require 'Include/Header.php';
 
 
 if (isset($_POST['SQL'])) {
-    if (strtolower(mb_substr($sSQL, 0, 6)) == 'select') {
+    if (strtolower(mb_substr($sSQL, 0, 6)) === 'select') {
         RunFreeQuery();
     }
 }
@@ -161,7 +161,7 @@ function RunFreeQuery()
             for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
                 //If this field is called "AddToCart", add this to the hidden form field...
                 $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
-                if ($fieldInfo->name == 'AddToCart') {
+                if ($fieldInfo->name === 'AddToCart') {
                     $aHiddenFormField[] = $aRow[$iCount];
                 } else {  //...otherwise just render the field
                     //Write the actual value of this row

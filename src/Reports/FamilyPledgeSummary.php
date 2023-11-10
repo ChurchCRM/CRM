@@ -38,13 +38,13 @@ if (!empty($_POST['classList'])) {
         while ($aRow = mysqli_fetch_array($rsClassifications)) {
             extract($aRow);
             if (in_array($lst_OptionID, $classList)) {
-                if ($inClassList == '(') {
+                if ($inClassList === '(') {
                     $inClassList .= $lst_OptionID;
                 } else {
                     $inClassList .= ','.$lst_OptionID;
                 }
             } else {
-                if ($notInClassList == '(') {
+                if ($notInClassList === '(') {
                     $notInClassList .= $lst_OptionID;
                 } else {
                     $notInClassList .= ','.$lst_OptionID;
@@ -252,13 +252,13 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         continue;
     }
 
-    if ($only_owe == 'yes') {
+    if ($only_owe === 'yes') {
         // Run through pledges and payments for this family to see if there are any unpaid pledges
         $oweByFund = [];
         $bOwe = 0;
         while ($aRow = mysqli_fetch_array($rsPledges)) {
             extract($aRow);
-            if ($plg_PledgeOrPayment == 'Pledge') {
+            if ($plg_PledgeOrPayment === 'Pledge') {
                 $oweByFund[$plg_fundID] -= $plg_amount;
             } else {
                 $oweByFund[$plg_fundID] += $plg_amount;

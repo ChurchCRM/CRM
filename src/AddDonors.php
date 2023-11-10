@@ -24,7 +24,7 @@ if (array_key_exists('linkBack', $_GET)) {
 }
 $iFundRaiserID = InputUtils::legacyFilterInput($_GET['FundRaiserID']);
 
-if ($linkBack == '') {
+if ($linkBack === '') {
     $linkBack = "PaddleNumList.php?FundRaiserID=$iFundRaiserID";
 }
 

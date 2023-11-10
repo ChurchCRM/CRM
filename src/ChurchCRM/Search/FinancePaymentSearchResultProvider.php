@@ -36,7 +36,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
     {
         $searchResults = [];
         $id = 0;
-        if ($max == 0) {
+        if ($max === 0) {
             $max = PHP_INT_MAX;
         }
 

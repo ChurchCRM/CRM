@@ -122,7 +122,7 @@ class SystemService
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity, JSON_THROW_ON_ERROR));
                 $now = new \DateTime();  // update the LastBackupTimeStamp.
                 SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
-                if ($appIntegrity['status'] == 'success') {
+                if ($appIntegrity['status'] === 'success') {
                     LoggerUtils::getAppLogger()->info('Application integrity check passed');
                 } else {
                     LoggerUtils::getAppLogger()->warning('Application integrity check failed: '.$appIntegrity['message']);

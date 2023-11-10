@@ -13,7 +13,7 @@ class DashboardService
         $people = PersonQuery::create()->find();
         foreach ($people as $person) {
             $personNumericAge = (int) $person->getNumericAge();
-            if ($personNumericAge == 0) {
+            if ($personNumericAge === 0) {
                 continue;
             }
             if (!array_key_exists($personNumericAge, $ageStats)) {

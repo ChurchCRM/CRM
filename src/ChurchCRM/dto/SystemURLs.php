@@ -19,7 +19,7 @@ class SystemURLs
     public static function init($rootPath, $urls, $documentRoot)
     {
         // Avoid consecutive slashes when $sRootPath = '/'
-        if ($rootPath == '/') {
+        if ($rootPath === '/') {
             $rootPath = '';
         }
         self::$rootPath = $rootPath;
@@ -75,7 +75,7 @@ class SystemURLs
         // Return the URL configured for this server from Include/Config.php
         // Trim any trailing slashes from the configured URL
         $URL = self::$urls[$index];
-        if (substr($URL, -1, 1) == '/') {
+        if (substr($URL, -1, 1) === '/') {
             return substr($URL, 0, -1);
         }
 

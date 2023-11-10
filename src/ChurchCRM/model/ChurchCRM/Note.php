@@ -16,17 +16,17 @@ use ChurchCRM\dto\SystemURLs;
  */
 class Note extends BaseNote
 {
-    public function setEntered($enteredBy)
+    public function setEntered($enteredBy): void
     {
-        $this->setDateEntered(new \DateTime());
+        $this->setDateEntered(new \DateTimeImmutable());
         $this->setEnteredBy($enteredBy);
     }
 
-    public function getEditLink()
+    public function getEditLink(): string
     {
         $url = SystemURLs::getRootPath().'/NoteEditor.php?NoteID='.$this->getId().'&';
 
-        if ($this->getPerId() != '') {
+        if ($this->getPerId() !== 0) {
             $url = $url.'PersonID='.$this->getPerId();
         } else {
             $url = $url.'FamilyID='.$this->getFamId();
@@ -35,12 +35,12 @@ class Note extends BaseNote
         return $url;
     }
 
-    public function getDeleteLink()
+    public function getDeleteLink(): string
     {
         return SystemURLs::getRootPath().'/NoteDelete.php?NoteID='.$this->getId();
     }
 
-    public function getDisplayEditedDate($format = 'Y-m-d h:i:s')
+    public function getDisplayEditedDate(string $format = 'Y-m-d h:i:s'): string
     {
         if (!empty($this->getDateLastEdited())) {
             return $this->getDateLastEdited($format);
@@ -49,22 +49,22 @@ class Note extends BaseNote
         }
     }
 
-    public function getDisplayEditedBy()
+    public function getDisplayEditedBy(): int
     {
-        if ($this->getEditedBy() != '') {
+        if ($this->getEditedBy() !== 0) {
             return $this->getEditedBy();
         } else {
             return $this->getEnteredBy();
         }
     }
 
-    public function isPrivate()
+    public function isPrivate(): bool
     {
-        return $this->getPrivate() != '0';
+        return $this->getPrivate() !== 0;
     }
 
-    public function isVisable($personId)
+    public function isVisible(int $personId): bool
     {
-        return !$this->isPrivate() || $this->getPrivate() == $personId;
+        return !$this->isPrivate() || $this->getPrivate() === $personId;
     }
 }

@@ -648,7 +648,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
         unset($aName);
 
-        if ($mode == 'fam') {
+        if ($mode === 'fam') {
             $aName = GroupBySalutation($aRow['per_fam_ID'], $aAdultRole, $aChildRole);
         } else {
             $sName = FormatFullName(
@@ -676,11 +676,11 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
         foreach ($aName as $key => $sName) {
             // Bail out if nothing to print
-            if ($sName == 'Nothing to return') {
+            if ($sName === 'Nothing to return') {
                 continue;
             }
 
-            if ($bToParents && ($key == 'child')) {
+            if ($bToParents && ($key === 'child')) {
                 $sName = "To the parents of:\n".$sName;
             }
 
@@ -775,7 +775,7 @@ $sFontSize = $_GET['labelfontsize'];
 setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 
-if ($sFontSize == 'default') {
+if ($sFontSize === 'default') {
     $sFontSize = '10';
 }
 
@@ -824,7 +824,7 @@ $aLabelList = unserialize(
     GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete)
 );
 
-if ($sFileType == 'PDF') {
+if ($sFileType === 'PDF') {
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
     if (SystemConfig::getValue('iPDFOutputType') == 1) {

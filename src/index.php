@@ -33,7 +33,7 @@ if (!empty($_GET['location'])) {
 // First, ensure that the user is authenticated.
 AuthenticationManager::ensureAuthentication();
 
-if (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php') {
+if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
     // Index.php -> Menu.php
     header('Location: '.SystemURLs::getRootPath().'/Menu.php');
     exit;

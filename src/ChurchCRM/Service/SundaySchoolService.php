@@ -28,9 +28,9 @@ class SundaySchoolService
                 $curClass['id'] = $row['grp_id'];
                 $curClass['name'] = $row['grp_name'];
             }
-            if ($row['lst_OptionName'] == 'Teacher') {
+            if ($row['lst_OptionName'] === 'Teacher') {
                 $curClass['teachers'] = $row['total'];
-            } elseif ($row['lst_OptionName'] == 'Student') {
+            } elseif ($row['lst_OptionName'] === 'Student') {
                 $curClass['kids'] = $row['total'];
             }
 

@@ -34,14 +34,14 @@ $bSkipIncompleteAddr = isset($_POST['SkipIncompleteAddr']);
 $bSkipNoEnvelope = isset($_POST['SkipNoEnvelope']);
 
 // Get the custom fields
-if ($sFormat == 'default') {
+if ($sFormat === 'default') {
     $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
     $rsCustomFields = RunQuery($sSQL);
 
     $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
     $rsFamCustomFields = RunQuery($sSQL);
 }
-if ($sFormat == 'rollup') {
+if ($sFormat === 'rollup') {
     $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
     $rsFamCustomFields = RunQuery($sSQL);
 }
@@ -78,7 +78,7 @@ $sJoinFamTable = ' LEFT JOIN family_fam ON per_fam_ID = fam_ID ';
 $sPerTable = 'person_per';
 
 // If our source is the cart contents, we don't need to build a WHERE filter string
-if ($sSource == 'cart') {
+if ($sSource === 'cart') {
     $sWhereExt = 'AND per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).')';
 } else {
     // If we're filtering by groups, include the p2g2r table
@@ -93,7 +93,7 @@ if ($sSource == 'cart') {
         foreach ($_POST['Classification'] as $Cls) {
             $Class[$count++] = InputUtils::legacyFilterInput($Cls, 'int');
         }
-        if ($count == 1) {
+        if ($count === 1) {
             if ($Class[0]) {
                 $sWhereExt .= 'AND per_cls_ID = '.$Class[0].' ';
             }
@@ -112,7 +112,7 @@ if ($sSource == 'cart') {
         foreach ($_POST['FamilyRole'] as $Fmr) {
             $Class[$count++] = InputUtils::legacyFilterInput($Fmr, 'int');
         }
-        if ($count == 1) {
+        if ($count === 1) {
             if ($Class[0]) {
                 $sWhereExt .= 'AND per_fmr_ID = '.$Class[0].' ';
             }
@@ -134,7 +134,7 @@ if ($sSource == 'cart') {
         foreach ($_POST['GroupID'] as $Grp) {
             $Class[$count++] = InputUtils::legacyFilterInput($Grp, 'int');
         }
-        if ($count == 1) {
+        if ($count === 1) {
             if ($Class[0]) {
                 $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID = '.$Class[0].' ';
             }
@@ -200,7 +200,7 @@ if ($sSource == 'cart') {
     }
 }
 
-if ($sFormat == 'addtocart') {
+if ($sFormat === 'addtocart') {
     // Get individual records to add to the cart
 
     $sSQL = "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
@@ -215,7 +215,7 @@ if ($sFormat == 'addtocart') {
 } else {
     // Build the complete SQL statement
 
-    if ($sFormat == 'rollup') {
+    if ($sFormat === 'rollup') {
         $sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
 		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
 		UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe";
@@ -228,7 +228,7 @@ if ($sFormat == 'addtocart') {
 
     //Produce Header Based on Selected Fields
     $headerString = '"'.InputUtils::translateSpecialCharset('Family').' ID "'.$delimiter;
-    if ($sFormat == 'rollup') {
+    if ($sFormat === 'rollup') {
         $headerString .= '"'.InputUtils::translateSpecialCharset('Name').'"'.$delimiter;
         // Add Salutation for family here...
         $headerString .= '"'.InputUtils::translateSpecialCharset('Salutation').'"'.$delimiter;
@@ -289,7 +289,7 @@ if ($sFormat == 'addtocart') {
         $headerString .= '"'.InputUtils::translateSpecialCharset('MembershipDate').'"'.$delimiter;
     }
 
-    if ($sFormat == 'default') {
+    if ($sFormat === 'default') {
         if (!empty($_POST['BirthdayDate'])) {
             $headerString .= '"'.InputUtils::translateSpecialCharset('Birth Date').'"'.$delimiter;
         }
@@ -316,7 +316,7 @@ if ($sFormat == 'addtocart') {
 
     // Add any custom field names to the header, unless using family roll-up mode
     $bUsedCustomFields = false;
-    if ($sFormat == 'default') {
+    if ($sFormat === 'default') {
         while ($aRow = mysqli_fetch_array($rsCustomFields)) {
             extract($aRow);
             if (isset($_POST["$custom_Field"])) {
@@ -335,7 +335,7 @@ if ($sFormat == 'addtocart') {
         }
     }
     // Add any family custom fields names to the header
-    if ($sFormat == 'rollup') {
+    if ($sFormat === 'rollup') {
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
             extract($aFamRow);
             if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
@@ -354,7 +354,7 @@ if ($sFormat == 'addtocart') {
     header('Content-Disposition: attachment; filename=churchcrm-export-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
 
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-    if (SystemConfig::getValue('sCSVExportCharset') == 'UTF-8') {
+    if (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') {
         echo "\xEF\xBB\xBF";
     }
 
@@ -402,7 +402,7 @@ if ($sFormat == 'addtocart') {
         $person = PersonQuery::create()->findOneById($per_ID);
 
         // If we are doing a family roll-up, we want to favor available family address / phone numbers over the individual data returned
-        if ($sFormat == 'rollup') {
+        if ($sFormat === 'rollup') {
             $sPhoneCountry = SelectWhichInfo($fam_Country, $per_Country, false);
             $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), false);
             $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), false);
@@ -428,13 +428,13 @@ if ($sFormat == 'addtocart') {
         }
 
         // Check if we're filtering out people with incomplete addresses
-        if (!($bSkipIncompleteAddr && (strlen($sCity) == 0 || strlen($sState) == 0 || strlen($sZip) == 0 || (strlen($sAddress1) == 0 && strlen($sAddress2) == 0)))) {
+        if (!($bSkipIncompleteAddr && (strlen($sCity) === 0 || strlen($sState) === 0 || strlen($sZip) === 0 || (strlen($sAddress1) === 0 && strlen($sAddress2) === 0)))) {
             // Check if we're filtering out people with no envelope number assigned
             // ** should move this to the WHERE clause
-            if (!($bSkipNoEnvelope && (strlen($fam_Envelope) == 0))) {
+            if (!($bSkipNoEnvelope && (strlen($fam_Envelope) === 0))) {
                 // If we are doing family roll-up, we use a single, formatted name field
                 $sString = '"'.($fam_ID ? $fam_ID : '');
-                if ($sFormat == 'default') {
+                if ($sFormat === 'default') {
                     $sString .= '"'.$delimiter.'"'.$per_ID;
                     $sString .= '"'.$delimiter.'"'.$per_LastName;
                     if (isset($_POST['Title'])) {
@@ -449,7 +449,7 @@ if ($sFormat == 'addtocart') {
                     if (isset($_POST['MiddleName'])) {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translateSpecialCharset($per_MiddleName);
                     }
-                } elseif ($sFormat == 'rollup') {
+                } elseif ($sFormat === 'rollup') {
                     $family = FamilyQuery::create()->findPk($fam_ID);
                     if ($memberCount > 1) {
                         $sString .= '"'.$delimiter.'"'.$family->getSalutation();
@@ -500,7 +500,7 @@ if ($sFormat == 'addtocart') {
                     $sString .= '"'.$delimiter.'"'.$per_MembershipDate;
                 }
 
-                if ($sFormat == 'default') {
+                if ($sFormat === 'default') {
                     if (isset($_POST['BirthdayDate'])) {
                         $sString .= '"'.$delimiter.'"';
                         if ($per_BirthYear != '') {

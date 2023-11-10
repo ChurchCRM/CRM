@@ -130,7 +130,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
             $lst_OptionName = $groupRole->getOptionName();
 
-            if ($lst_OptionName == 'Teacher') {
+            if ($lst_OptionName === 'Teacher') {
                 $aTeachers[$iTeacherCnt] = $person; // Make an array of teachers while we're here
                 if (!$bFirstTeacher) {
                     $teacherString .= ', ';
@@ -140,7 +140,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
                 $person->getPhoto()->createThumbnail();
                 $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(), '', $person->getPhoto()->getThumbnailURI());
-            } elseif ($lst_OptionName == 'Student') {
+            } elseif ($lst_OptionName === 'Student') {
                 $aStudents[$iStudentCnt] = $person;
 
                 $person->getPhoto()->createThumbnail();

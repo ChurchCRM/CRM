@@ -20,11 +20,6 @@ class Event extends BaseEvent
 {
     private bool $editable = true;
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
     {
         $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);

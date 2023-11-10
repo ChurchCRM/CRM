@@ -243,7 +243,7 @@ class AppIntegrityService
                         $headers[trim($middle[0])] = trim($middle[1]);
                     }
                 }
-                $check = $headers['CRM'] == 'would redirect';
+                $check = $headers['CRM'] === 'would redirect';
                 $logger->debug('CURL loopback check headers observed: '.($check ? 'true' : 'false'));
             }
         }
