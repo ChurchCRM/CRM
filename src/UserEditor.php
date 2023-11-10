@@ -22,11 +22,11 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\UserQuery;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Emails\NewAccountEmail;
-use ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;

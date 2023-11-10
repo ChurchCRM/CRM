@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\KioskDeviceQuery;
+use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/kiosks', function () use ($app) {
@@ -17,8 +17,8 @@ $app->group('/kiosks', function () use ($app) {
     });
 
     $app->post('/allowRegistration', function ($request, $response, $args) {
-        $window = new DateTime();
-        $window->add(new DateInterval('PT05S'));
+        $window = new \DateTime();
+        $window->add(new \DateInterval('PT05S'));
         SystemConfig::setValue('sKioskVisibilityTimestamp', $window->format('Y-m-d H:i:s'));
 
         return $response->write(json_encode(['visibleUntil' => $window]));

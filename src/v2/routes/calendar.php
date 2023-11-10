@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\CalendarQuery;
+use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use Propel\Runtime\ActiveQuery\Criteria;

@@ -13,11 +13,11 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Base\PersonQuery;
+use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;

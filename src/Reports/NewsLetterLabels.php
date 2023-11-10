@@ -12,7 +12,7 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Reports\PdfNewsletterLabels;
 use ChurchCRM\Utils\InputUtils;
 

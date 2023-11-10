@@ -9,7 +9,7 @@ use ChurchCRM\Authentication\Requests\AuthenticationRequest;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\NotificationService;
-use ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 

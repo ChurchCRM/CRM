@@ -1,10 +1,10 @@
 <?php
 
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\Note;
-use ChurchCRM\Person;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\TokenQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;;
+use ChurchCRM\model\ChurchCRM\TokenQuery;
 use Slim\Views\PhpRenderer;
 
 $app->group('/verify', function () use ($app) {

@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Location as BaseLocation;
+use ChurchCRM\model\ChurchCRM\Base\Location as BaseLocation;
 
 /**
  * Skeleton subclass for representing a row from the 'locations' table.

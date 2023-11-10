@@ -1,10 +1,10 @@
 <?php
 
-use ChurchCRM\Base\EventQuery;
-use ChurchCRM\Base\EventTypeQuery;
-use ChurchCRM\CalendarQuery;
-use ChurchCRM\Event;
-use ChurchCRM\EventCounts;
+use ChurchCRM\model\ChurchCRM\Base\EventQuery;
+use ChurchCRM\model\ChurchCRM\Base\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\CalendarQuery;
+use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventCounts;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\InputUtils;

@@ -1,11 +1,12 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
-use ChurchCRM\Base\User as BaseUser;
+use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\KeyManager;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
 use PragmaRX\Google2FA\Google2FA;

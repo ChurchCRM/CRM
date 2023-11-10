@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Event as BaseEvent;
+use ChurchCRM\model\ChurchCRM\Base\Event as BaseEvent;
 use ChurchCRM\dto\SystemURLs;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Map\TableMap;

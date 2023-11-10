@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\SystemCalendars;
 
-use ChurchCRM\Event;
 use ChurchCRM\Interfaces\SystemCalendar;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\Event;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
 
@@ -62,7 +62,7 @@ class BirthdaysCalendar implements SystemCalendar
     private function peopleCollectionToEvents(ObjectCollection $People)
     {
         $events = new ObjectCollection();
-        $events->setModel(\ChurchCRM\Event::class);
+        $events->setModel(Event::class);
         foreach ($People as $person) {
             $birthday = new Event();
             $birthday->setId($person->getId());

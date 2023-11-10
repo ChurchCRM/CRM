@@ -20,11 +20,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Base\GroupQuery;
+use ChurchCRM\model\ChurchCRM\Base\GroupQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
 //Get the GroupID out of the querystring

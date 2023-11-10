@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\SystemCalendars;
 
-use ChurchCRM\Event;
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Interfaces\SystemCalendar;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
@@ -62,7 +62,7 @@ class AnniversariesCalendar implements SystemCalendar
     private function familyCollectionToEvents(ObjectCollection $Families)
     {
         $events = new ObjectCollection();
-        $events->setModel(\ChurchCRM\Event::class);
+        $events->setModel(Event::class);
         foreach ($Families as $family) {
             $anniversary = new Event();
             $anniversary->setId($family->getId());

@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Tasks;
 
-use ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
 use Propel\Runtime\ActiveQuery\Criteria;
 

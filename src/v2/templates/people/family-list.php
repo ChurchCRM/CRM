@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Family;
 
 //Set the page title
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Family List');
@@ -34,7 +35,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!--Populate the table with family details -->
             <?php foreach ($families as $family) {
-              /* @var $family ChurchCRM\Family */
+              /* @var Family $family */
                 ?>
             <tr>
               <td><a href='<?= SystemURLs::getRootPath()?>/v2/family/<?= $family->getId() ?>'>

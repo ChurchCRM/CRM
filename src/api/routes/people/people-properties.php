@@ -1,9 +1,9 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\PropertyQuery;
-use ChurchCRM\RecordProperty;
-use ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\RecordProperty;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;

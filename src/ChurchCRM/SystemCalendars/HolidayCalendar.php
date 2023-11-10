@@ -4,7 +4,7 @@ namespace ChurchCRM\SystemCalendars;
 
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\Interfaces\SystemCalendar;
 use Propel\Runtime\Collection\ObjectCollection;
 use Yasumi\Holiday;
@@ -51,7 +51,7 @@ class HolidayCalendar implements SystemCalendar
         $year = date('Y');
         $holidays = Yasumi::create($Country->getCountryNameYasumi(), $year);
         $events = new ObjectCollection();
-        $events->setModel(\ChurchCRM\Event::class);
+        $events->setModel(Event::class);
 
         foreach ($holidays as $holiday) {
             $event = $this->yasumiHolidayToEvent($holiday);

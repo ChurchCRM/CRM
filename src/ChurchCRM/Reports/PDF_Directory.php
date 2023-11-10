@@ -3,8 +3,8 @@
 namespace ChurchCRM\Reports;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\MiscUtils;
 
 class PdfDirectory extends ChurchInfoReport

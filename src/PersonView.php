@@ -16,7 +16,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;

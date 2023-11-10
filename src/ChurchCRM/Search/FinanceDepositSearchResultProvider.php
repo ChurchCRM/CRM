@@ -3,7 +3,7 @@
 namespace ChurchCRM\Search;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;

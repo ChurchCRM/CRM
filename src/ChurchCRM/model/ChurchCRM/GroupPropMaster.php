@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\GroupPropMaster as BaseGroupPropMaster;
+use ChurchCRM\model\ChurchCRM\Base\GroupPropMaster as BaseGroupPropMaster;
 
 /**
  * Skeleton subclass for representing a row from the 'groupprop_master' table.

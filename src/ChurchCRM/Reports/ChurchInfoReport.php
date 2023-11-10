@@ -14,7 +14,7 @@
 namespace ChurchCRM\Reports;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use FPDF;
 
 // This class definition contains a bunch of configuration stuff and utitilities

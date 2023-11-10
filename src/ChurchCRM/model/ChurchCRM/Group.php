@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Group as BaseGroup;
+use ChurchCRM\model\ChurchCRM\Base\Group as BaseGroup;
 use ChurchCRM\dto\SystemURLs;
 
 /**

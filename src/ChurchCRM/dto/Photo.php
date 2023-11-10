@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\LoggerUtils;
 
 class Photo

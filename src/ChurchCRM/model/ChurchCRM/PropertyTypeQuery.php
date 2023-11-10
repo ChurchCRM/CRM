@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\PropertyTypeQuery as BasePropertyTypeQuery;
+use ChurchCRM\model\ChurchCRM\Base\PropertyTypeQuery as BasePropertyTypeQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'propertytype_prt' table.

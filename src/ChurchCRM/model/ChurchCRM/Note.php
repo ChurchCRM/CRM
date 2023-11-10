@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Note as BaseNote;
+use ChurchCRM\model\ChurchCRM\Base\Note as BaseNote;
 use ChurchCRM\dto\SystemURLs;
 
 /**

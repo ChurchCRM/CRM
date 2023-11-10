@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\UserQuery as BaseUserQuery;
+use ChurchCRM\model\ChurchCRM\Base\UserQuery as BaseUserQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'user_usr' table.

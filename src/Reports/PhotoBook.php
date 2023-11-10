@@ -14,10 +14,10 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\GroupQuery;
-use ChurchCRM\ListOptionQuery;
-use ChurchCRM\Map\PersonTableMap;
-use ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\Utils\InputUtils;
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);

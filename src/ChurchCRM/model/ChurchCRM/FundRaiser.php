@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\FundRaiser as BaseFundRaiser;
+use ChurchCRM\model\ChurchCRM\Base\FundRaiser as BaseFundRaiser;
 
 /**
  * Skeleton subclass for representing a row from the 'fundraiser_fr' table.

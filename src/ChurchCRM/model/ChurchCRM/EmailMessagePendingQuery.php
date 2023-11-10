@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\EmailMessagePendingQuery as BaseEmailMessagePendingQuery;
+use ChurchCRM\model\ChurchCRM\Base\EmailMessagePendingQuery as BaseEmailMessagePendingQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'email_message_pending_emp' table.

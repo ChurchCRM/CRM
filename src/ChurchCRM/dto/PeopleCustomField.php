@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\ListOptionQuery;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;;
 
 class PeopleCustomField
 {

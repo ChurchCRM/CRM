@@ -19,7 +19,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\RecordPropertyQuery as BaseRecordPropertyQuery;
+use ChurchCRM\model\ChurchCRM\Base\RecordPropertyQuery as BaseRecordPropertyQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'record2property_r2p' table.

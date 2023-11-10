@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Calendar as BaseCalendar;
+use ChurchCRM\model\ChurchCRM\Base\Calendar as BaseCalendar;
 
 /**
  * Skeleton subclass for representing a row from the 'calendars' table.

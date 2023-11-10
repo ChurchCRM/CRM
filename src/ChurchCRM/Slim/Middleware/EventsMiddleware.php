@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Slim\Middleware;
 
-use ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

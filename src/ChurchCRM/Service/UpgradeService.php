@@ -13,7 +13,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\SQLUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Version;
+use ChurchCRM\model\ChurchCRM\Version;
 use Propel\Runtime\Propel;
 
 class UpgradeService
