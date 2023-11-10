@@ -12,7 +12,7 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class MenuEventsCount

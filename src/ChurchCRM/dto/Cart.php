@@ -5,7 +5,7 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class Cart
 {

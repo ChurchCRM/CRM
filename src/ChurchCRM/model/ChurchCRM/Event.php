@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\model\ChurchCRM\Base\Event as BaseEvent;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Base\Event as BaseEvent;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Map\TableMap;
 

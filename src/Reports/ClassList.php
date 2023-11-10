@@ -13,12 +13,12 @@ namespace ChurchCRM\Reports;
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2rQuery;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
-use ChurchCRM\model\ChurchCRM\PersonQuery;;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);

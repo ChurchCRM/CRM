@@ -4,8 +4,8 @@ return [
     'propel' => [
         'generator' => [
             'schema' => [
-                'autoPackage' => true
-            ]
+                'autoPackage' => true,
+            ],
         ],
         'database' => [
             'connections' => [

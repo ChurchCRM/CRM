@@ -3,8 +3,8 @@
 use ChurchCRM\model\ChurchCRM\PredefinedReportsQuery;
 use ChurchCRM\model\ChurchCRM\QueryParameterOptionsQuery;
 use ChurchCRM\model\ChurchCRM\QueryParametersQuery;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

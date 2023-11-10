@@ -1,9 +1,9 @@
 <?php
 
-use ChurchCRM\model\ChurchCRM\Calendar;
-use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
+use ChurchCRM\model\ChurchCRM\Calendar;
+use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use Propel\Runtime\Collection\ObjectCollection;

@@ -8,8 +8,8 @@ require_once dirname(__DIR__).'/../Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\MICRFunctions;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 
 class FinancialService
