@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Slim\Middleware\Request;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use ChurchCRM\Utils\InputUtils;

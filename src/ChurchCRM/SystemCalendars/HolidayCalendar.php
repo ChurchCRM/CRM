@@ -4,8 +4,8 @@ namespace ChurchCRM\SystemCalendars;
 
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\Interfaces\SystemCalendar;
+use ChurchCRM\model\ChurchCRM\Event;
 use Propel\Runtime\Collection\ObjectCollection;
 use Yasumi\Holiday;
 use Yasumi\Yasumi;

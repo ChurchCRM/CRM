@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\SystemCalendars;
 
+use ChurchCRM\Interfaces\SystemCalendar;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\Interfaces\SystemCalendar;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
 

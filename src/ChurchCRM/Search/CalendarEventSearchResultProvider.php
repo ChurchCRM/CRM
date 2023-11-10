@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Search;
 
-use ChurchCRM\model\ChurchCRM\Base\EventQuery;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Base\EventQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 

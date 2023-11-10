@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\SystemCalendars;
 
-use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Interfaces\SystemCalendar;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 
 class UnpinnedEvents implements SystemCalendar
 {

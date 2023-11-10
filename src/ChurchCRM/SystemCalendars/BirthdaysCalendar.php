@@ -3,8 +3,8 @@
 namespace ChurchCRM\SystemCalendars;
 
 use ChurchCRM\Interfaces\SystemCalendar;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
 

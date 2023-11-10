@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\model\ChurchCRM\Base\Deposit as BaseDeposit;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Base\Deposit as BaseDeposit;
 use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery as ChildPledgeQuery;

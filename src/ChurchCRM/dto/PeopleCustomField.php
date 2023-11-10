@@ -3,7 +3,7 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class PeopleCustomField
 {

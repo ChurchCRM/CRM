@@ -18,7 +18,7 @@ class SystemCalendars
             BirthdaysCalendar::class,
             AnniversariesCalendar::class,
             HolidayCalendar::class,
-            UnpinnedEvents::class
+            UnpinnedEvents::class,
         ];
 
         $calendars = [];

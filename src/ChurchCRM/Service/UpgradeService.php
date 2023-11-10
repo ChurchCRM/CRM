@@ -10,10 +10,10 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Version;
 use ChurchCRM\SQLUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\model\ChurchCRM\Version;
 use Propel\Runtime\Propel;
 
 class UpgradeService
