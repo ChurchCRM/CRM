@@ -333,9 +333,10 @@
     "current": {
         "versions": [
             "5.1.0",
-            "5.1.1"
+            "5.1.1",
+            "5.2.0"
         ],
         "scripts": [],
-        "dbVersion": "5.2.0"
+        "dbVersion": "5.2.1"
     }
 }
