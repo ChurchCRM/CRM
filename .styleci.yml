@@ -1,0 +1,19 @@
+risky: false
+version: 8.2
+preset: recommended
+monolithic: true
+
+tab-width: 4
+use-tabs: false
+
+enabled:
+  - long_array_syntax
+  - strict
+  - unalign_double_arrow
+
+finder:
+  path:
+    - "src"
+  exclude:
+    - "vendor"
+  name: "*.php"
