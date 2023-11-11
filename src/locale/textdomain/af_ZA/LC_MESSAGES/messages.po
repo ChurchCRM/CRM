@@ -2023,10 +2023,6 @@ msgid "Add New Group"
 msgstr "Voeg nuwe groep by"
 
 #: 
-msgid "Submit"
-msgstr "Indien"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Eiendomsredakteur vir groepslede"
 
@@ -8218,11 +8214,6 @@ msgid "New Calendar"
 msgstr "Nuwe kalender"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI is gedeaktiveer, maar sommige kalenders het toegangstokens"
-
-#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Om kalenders te kan deel, moet die instelling bEnableExternalCalendarAPI geaktiveer word, benewens dat die kalender 'n spesifieke toegangstoken het"
 
@@ -8997,10 +8988,6 @@ msgstr "Databasis bediener weergawe"
 #: 
 msgid "Web Server"
 msgstr "Web bediener"
-
-#: 
-msgid "Server Software"
-msgstr "Bedienersagteware"
 
 #: 
 msgid "Email Information"

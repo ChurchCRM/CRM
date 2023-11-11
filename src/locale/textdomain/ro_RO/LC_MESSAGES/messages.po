@@ -2075,10 +2075,6 @@ msgid "Add New Group"
 msgstr "Adaugă grup nou"
 
 #: 
-msgid "Submit"
-msgstr "Trimiteti"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Editor de Proprietăți pentru Membrii Grupului"
 
@@ -7128,7 +7124,7 @@ msgstr "Contul tău a fost șters"
 
 #: 
 msgid "Your ChurchCRM Account was Deleted."
-msgstr "Contul tău CurchCRM a fost șters "
+msgstr "Contul tău CurchCRM a fost șters"
 
 #: 
 msgid "Account Locked"
@@ -7204,7 +7200,7 @@ msgstr "Legendă"
 
 #: 
 msgid "assigned"
-msgstr "alocat"
+msgstr "asignat"
 
 #: 
 msgid "Photo"
@@ -7224,11 +7220,11 @@ msgstr "Se afișează studenții cu zile de naștere în"
 
 #: 
 msgid "Actions"
-msgstr "Actiuni"
+msgstr "Acțiuni"
 
 #: 
 msgid "Action Confirmation"
-msgstr "Confirmare actiune"
+msgstr "Confirmare acțiune"
 
 #: 
 msgid "Please confirm reset failed login count"
@@ -7264,7 +7260,7 @@ msgstr "Rolul nu a putut fi alocat"
 
 #: 
 msgid "Bing map API requires a unique key"
-msgstr "Harta BING solicită o chie unică"
+msgstr "Harta BING solicită o cheie unică"
 
 #: 
 msgid "Google Maps Zoom"
@@ -7296,23 +7292,23 @@ msgstr "Contul tău CurchCRM a fost deblocat."
 
 #: 
 msgid "system user created"
-msgstr "utilizator system creat"
+msgstr "utilizator sistem creat"
 
 #: 
 msgid "system user updated"
-msgstr "utilizator system actualizat"
+msgstr "utilizator sistem actualizat"
 
 #: 
 msgid "system user deleted"
-msgstr "utilizator system șters"
+msgstr "utilizator sistem șters"
 
 #: 
 msgid "system user password reset"
-msgstr "resetare parolă utilizator system"
+msgstr "resetare parolă pentru utilizatorul sistemului"
 
 #: 
 msgid "system user changed password"
-msgstr "schimbare parolă utilizator system"
+msgstr "schimbare parolă pentru utilizatorul sistemului"
 
 #: 
 msgid "system user password changed by admin"
@@ -7320,7 +7316,7 @@ msgstr "parolă utilizator de rețea schimbată de către admin"
 
 #: 
 msgid "system user login reset"
-msgstr "resetare autentificare utilizator system"
+msgstr "resetare autentificare pentru utilizatorul sistemului"
 
 #: 
 msgid "Missing Families? Update Family Latitude or Longitude now."
@@ -7352,11 +7348,11 @@ msgstr "AVERTIZARE"
 
 #: 
 msgid "ERROR"
-msgstr "Eroare"
+msgstr "EROARE"
 
 #: 
 msgid "CRITICAL"
-msgstr "Critical"
+msgstr "CRITIC"
 
 #: 
 msgid "ALERT"
@@ -7368,7 +7364,7 @@ msgstr "URGENȚĂ"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
-msgstr "Titlu Prenume1 Prenume Nume"
+msgstr "Titlu Prenume PrenumeSecundar Nume"
 
 #: 
 msgid "Title FirstName MiddleInitial. LastName"
@@ -7376,7 +7372,7 @@ msgstr "Titlu Nume Inițială Tată Prenume."
 
 #: 
 msgid "LastName, Title FirstName MiddleName"
-msgstr "Nume, Titlu Prenume Prenume1"
+msgstr "Nume, Titlu Prenume PrenumeSecundar"
 
 #: 
 msgid "LastName, Title FirstName MiddleInitial"
@@ -7384,7 +7380,7 @@ msgstr "Nume, Titlu Prenume Inițială Tată"
 
 #: 
 msgid "FirstName MiddleName LastName"
-msgstr "Prenume Prenume1 Nume"
+msgstr "Prenume PrenumeSecundar Nume"
 
 #: 
 msgid "Title FirstName LastName"
@@ -7396,7 +7392,7 @@ msgstr "Nume, Titlu Prenume"
 
 #: 
 msgid "Event Log severity to write, used by ORM and App Logs"
-msgstr "Severitatea jurnalului de evenimente pentru a scrie, utilizată de ORM și jurnalele de aplicații"
+msgstr "Nivelul de gravitate al jurnalului de evenimente pentru scriere, utilizat de ORM (Object-Relational Mapping) și jurnalele aplicației"
 
 #: 
 msgid "Time zone"
@@ -7404,27 +7400,27 @@ msgstr "Fus orar"
 
 #: 
 msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API Key"
+msgstr "Cheie API Nexmo SMS"
 
 #: 
 msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API Secret"
+msgstr "Secret API Nexmo SMS"
 
 #: 
 msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS număr expeditor"
+msgstr "Număr Expeditor SMS Nexmo"
 
 #: 
 msgid "OpenLP URL"
-msgstr "OpenLP URL"
+msgstr "URL OpenLP"
 
 #: 
 msgid "OpenLP Username"
-msgstr "OpenLP Utilizator"
+msgstr "Utilizator OpenLP"
 
 #: 
 msgid "OpenLP Password"
-msgstr "OpenLp Parolă"
+msgstr "Parolă OpenLp"
 
 #: 
 msgid "KioskVisibilityTimestamp"
@@ -7460,7 +7456,7 @@ msgstr "Navigați la această locație"
 
 #: 
 msgid "You ChurchCRM updated password has been changed"
-msgstr "Parola ta schimbată pentru CurchCRM a fost actualizată"
+msgstr "Parola ta actualizată pentru CurchCRM a fost schimbată"
 
 #: 
 msgid "Password Reset Link"
@@ -7488,7 +7484,7 @@ msgstr "Ne pare rău, nu am putut procesa solicitarea"
 
 #: 
 msgid "Login Name is Required"
-msgstr "Este necesar Login Name"
+msgstr "Este necesar numele de logare (login name)"
 
 #: 
 msgid "A new password was sent to you. Please check your email"
@@ -7496,7 +7492,7 @@ msgstr "O nouă parolă a fost trimisă. Verifică email-ul"
 
 #: 
 msgid "Kiosk Manager"
-msgstr "Kiosk Manager"
+msgstr "Gestionar chioșc (kiosk)"
 
 #: 
 msgid "Report an issue"
@@ -7504,11 +7500,11 @@ msgstr "Rapoartează o eroare"
 
 #: 
 msgid "Enable New Kiosk Registration"
-msgstr "Activați înregistrarea chioșcului nou"
+msgstr "Activați înregistrarea chioșcului (Kiosk) nou"
 
 #: 
 msgid "Active Kiosks"
-msgstr "Chioșcuri active"
+msgstr "Chioșcuri (Kiosks) active"
 
 #: 
 msgid "I forgot my password"
@@ -8323,11 +8319,6 @@ msgid "New Calendar"
 msgstr "Calendar nou"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI dezactivat, dar unele calendare au tokenuri de acces"
-
-#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Pentru ca calendarele să poată fi partajate, setarea bEnableExternalCalendarAPI trebuie să fie activată, pe lângă faptul că calendarul trebuie să aibă un token de acces specific"
 
@@ -9100,10 +9091,6 @@ msgid "Web Server"
 msgstr "Server web"
 
 #: 
-msgid "Server Software"
-msgstr "Software-ul serverului"
-
-#: 
 msgid "Email Information"
 msgstr "Informații email"
 
@@ -9490,4 +9477,36 @@ msgstr "Turc"
 #: 
 msgid "Ukrainian"
 msgstr "Ucrainean"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Când apăsați pe „Submit to GitHub”, veți fi redirecționați către pagina de probleme GitHub cu informațiile despre sistemul dvs. precompletate"
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Trimite către GitHub"
+
+#: 
+msgid "Change role"
+msgstr "Schimba rolul"
+
+#: 
+msgid "Closed"
+msgstr "Inchis"
+
+#: 
+msgid "Delete this person?"
+msgstr "Ștergi această personă"
+
+#: 
+msgid "Deposit ID"
+msgstr "Depozit ID"
+
+#: 
+msgid "Deposit Total"
+msgstr "Total depozit"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Stare coș grup"
 
