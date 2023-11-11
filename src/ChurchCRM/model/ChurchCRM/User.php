@@ -447,7 +447,6 @@ class User extends BaseUser
         $this->setNeedPasswordChange(false);
         $this->save();
         $this->createTimeLineNote('password-changed-admin');
-
     }
 
     public function userChangePassword($oldPassword, $newPassword)
@@ -476,7 +475,6 @@ class User extends BaseUser
         $this->setNeedPasswordChange(false);
         $this->save();
         $this->createTimeLineNote('password-changed');
-
     }
 
     private function getIsPasswordPermissible($newPassword)
