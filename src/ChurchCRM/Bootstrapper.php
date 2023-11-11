@@ -13,6 +13,8 @@ use Propel\Runtime\Propel;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
+use ChurchCRM\model\ChurchCRM\Version;
 use Exception;
 
 class Bootstrapper

@@ -3,10 +3,10 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\PeopleCustomField;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\FamilyCustomMasterQuery;
-use ChurchCRM\FamilyCustomQuery;
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
+use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;

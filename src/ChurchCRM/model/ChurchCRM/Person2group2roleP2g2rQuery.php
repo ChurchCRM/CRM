@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Person2group2roleP2g2rQuery as BasePerson2group2roleP2g2rQuery;
+use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2rQuery as BasePerson2group2roleP2g2rQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'person2group2role_p2g2r' table.

@@ -5,9 +5,9 @@ namespace ChurchCRM\Config\Menu;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Config;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\GroupQuery;
-use ChurchCRM\ListOptionQuery;
-use ChurchCRM\MenuLinkQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\MenuLinkQuery;
 
 class Menu
 {

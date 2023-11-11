@@ -15,14 +15,14 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\MICRReader;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\MICRFunctions;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
-    $micrObj = new MICRReader();
+    $micrObj = new MICRFunctions();
 }
 
 $iEnvelope = 0;

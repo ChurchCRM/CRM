@@ -4,7 +4,9 @@ namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class NewPersonOrFamilyEmail extends BaseEmail
 {
@@ -35,9 +37,9 @@ class NewPersonOrFamilyEmail extends BaseEmail
 
     protected function getSubSubject()
     {
-        if (get_class($this->relatedObject) == \ChurchCRM\Person::class) {
+        if ($this->relatedObject instanceof Person) {
             return gettext('New Person Added');
-        } elseif (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
+        } elseif ($this->relatedObject instanceof Family) {
             return gettext('New Family Added');
         }
     }
@@ -47,8 +49,8 @@ class NewPersonOrFamilyEmail extends BaseEmail
         $myTokens = [
             'toName' => gettext('Church Greeter'),
         ];
-        if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
-            /* @var $family ChurchCRM\Family */
+        if ($this->relatedObject instanceof Family) {
+            /** @var Family $family */
             $family = $this->relatedObject;
             $myTokens['body'] = gettext('New Family Added')."\r\n".
             gettext('Family Name').': '.$family->getName();
@@ -56,8 +58,8 @@ class NewPersonOrFamilyEmail extends BaseEmail
             $myTokens['FamilyPhone'] = $family->getCellPhone();
             $myTokens['FamilyAddress'] = $family->getAddress();
             $myTokens['IncludeDataInNewFamilyNotifications'] = SystemConfig::getBooleanValue('IncludeDataInNewPersonNotifications');
-        } elseif (get_class($this->relatedObject) == \ChurchCRM\Person::class) {
-            /* @var $person ChurchCRM\Person */
+        } elseif ($this->relatedObject instanceof Person) {
+            /** @var Person $person */
             $person = $this->relatedObject;
             $myTokens['body'] = gettext('New Person Added')."\r\n".
             gettext('Person Name').': '.$person->getFullName();
@@ -75,18 +77,18 @@ class NewPersonOrFamilyEmail extends BaseEmail
 
     protected function getFullURL()
     {
-        if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
+        if ($this->relatedObject instanceof Family) {
             return SystemURLs::getURL().'/v2/family/'.$this->relatedObject->getId();
-        } elseif (get_class($this->relatedObject) == \ChurchCRM\Person::class) {
+        } elseif ($this->relatedObject instanceof Person) {
             return SystemURLs::getURL().'/PersonView.php?PersonID='.$this->relatedObject->getId();
         }
     }
 
     protected function getButtonText()
     {
-        if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
+        if ($this->relatedObject instanceof Family) {
             return gettext('View Family Page');
-        } elseif (get_class($this->relatedObject) == \ChurchCRM\Person::class) {
+        } elseif ($this->relatedObject instanceof Person) {
             return gettext('View Person Page');
         }
     }

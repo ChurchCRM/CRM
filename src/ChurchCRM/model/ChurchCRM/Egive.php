@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Egive as BaseEgive;
+use ChurchCRM\model\ChurchCRM\Base\Egive as BaseEgive;
 
 /**
  * Skeleton subclass for representing a row from the 'egive_egv' table.

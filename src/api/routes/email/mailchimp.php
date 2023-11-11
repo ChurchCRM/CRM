@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;

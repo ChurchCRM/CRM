@@ -3,9 +3,9 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Base\FamilyQuery;
-use ChurchCRM\Base\ListOptionQuery;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\Base\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use Propel\Runtime\ActiveQuery\Criteria;

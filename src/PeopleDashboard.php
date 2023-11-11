@@ -12,8 +12,8 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Set the page title

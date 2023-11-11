@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\EventAttendQuery as BaseEventAttendQuery;
+use ChurchCRM\model\ChurchCRM\Base\EventAttendQuery as BaseEventAttendQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'event_attend' table.

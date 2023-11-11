@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\UserSetting as BaseUserSetting;
+use ChurchCRM\model\ChurchCRM\Base\UserSetting as BaseUserSetting;
 
 /**
  * Skeleton subclass for representing a row from the 'user_settings' table.

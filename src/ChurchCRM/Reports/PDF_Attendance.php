@@ -28,7 +28,6 @@ class PdfAttendance extends ChurchInfoReport
     {
         parent::__construct('P', 'mm', $this->paperFormat);
 
-        $this->incrementY = 6;
         $this->SetMargins(0, 0);
 
         $this->SetFont('Times', '', 14);
@@ -68,7 +67,6 @@ class PdfAttendance extends ChurchInfoReport
         $yTitle = 20;
         $yTeachers = $yTitle + $yIncrement;
         $nameX = 10 + $yIncrement / 2;
-        unset($NameList);
         $numMembers = 0;
         $aNameCount = 0;
 
@@ -95,6 +93,7 @@ class PdfAttendance extends ChurchInfoReport
 //
         $prevThisName = '';
         $aNameCount = 0;
+        $NameList = [];
         for ($row = 0; $row < count($aNames); $row++) {
             $person = $aNames[$row];
             $thisName = $person->getFullName();

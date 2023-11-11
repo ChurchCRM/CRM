@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\ListOption as BaseListOption;
+use ChurchCRM\model\ChurchCRM\Base\ListOption as BaseListOption;
 
 /**
  * Skeleton subclass for representing a row from the 'list_lst' table.

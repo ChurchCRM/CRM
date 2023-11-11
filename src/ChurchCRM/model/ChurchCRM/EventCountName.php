@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\EventCountName as BaseEventCountName;
+use ChurchCRM\model\ChurchCRM\Base\EventCountName as BaseEventCountName;
 
 /**
  * Skeleton subclass for representing a row from the 'eventcountnames_evctnm' table.

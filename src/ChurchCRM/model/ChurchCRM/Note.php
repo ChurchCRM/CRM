@@ -1,9 +1,9 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Note as BaseNote;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Base\Note as BaseNote;
 
 /**
  * Skeleton subclass for representing a row from the 'note_nte' table.

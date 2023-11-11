@@ -1,9 +1,9 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Group as BaseGroup;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Base\Group as BaseGroup;
 
 /**
  * Skeleton subclass for representing a row from the 'group_grp' table.

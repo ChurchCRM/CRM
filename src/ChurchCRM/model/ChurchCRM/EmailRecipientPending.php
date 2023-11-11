@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\EmailRecipientPending as BaseEmailRecipientPending;
+use ChurchCRM\model\ChurchCRM\Base\EmailRecipientPending as BaseEmailRecipientPending;
 
 /**
  * Skeleton subclass for representing a row from the 'email_recipient_pending_erp' table.

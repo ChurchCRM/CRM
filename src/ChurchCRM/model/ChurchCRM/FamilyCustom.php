@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\FamilyCustom as BaseFamilyCustom;
+use ChurchCRM\model\ChurchCRM\Base\FamilyCustom as BaseFamilyCustom;
 
 /**
  * Skeleton subclass for representing a row from the 'family_custom' table.

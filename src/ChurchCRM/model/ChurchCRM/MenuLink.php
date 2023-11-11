@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\MenuLink as BaseMenuLink;
+use ChurchCRM\model\ChurchCRM\Base\MenuLink as BaseMenuLink;
 
 /**
  * Skeleton subclass for representing a row from the 'menu_links' table.

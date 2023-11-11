@@ -3,16 +3,16 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\EventAttendQuery;
-use ChurchCRM\Note;
-use ChurchCRM\NoteQuery;
-use ChurchCRM\Person;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
+use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\NoteQuery;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\User;
 
 class TimelineService
 {
-    /* @var $currentUser \ChurchCRM\User */
-    private \ChurchCRM\User $currentUser;
+    private User $currentUser;
 
     public function __construct()
     {

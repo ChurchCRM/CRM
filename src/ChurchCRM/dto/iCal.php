@@ -8,7 +8,7 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\Service\SystemService;
 use Propel\Runtime\Collection\ObjectCollection;
 

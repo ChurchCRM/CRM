@@ -1,9 +1,10 @@
 <?php
 
 use ChurchCRM\dto\Notification;
-use ChurchCRM\PersonQuery;
-use Psr\Http\Message\ResponseInterface;
+use ChurchCRM\dto\Photo;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
 $app->get('/', function ($request, $response, $args) {
@@ -46,7 +47,7 @@ $app->post('/triggerNotification', function ($request, $response, $args) use ($a
 
 $app->get('/activeClassMembers', fn ($request, $response, $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());
 
-$app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+$app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface $request, Response $response, $args) {
     $photo = new Photo('Person', $args['PersonId']);
 
     return $response->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());

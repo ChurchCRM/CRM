@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Classification;

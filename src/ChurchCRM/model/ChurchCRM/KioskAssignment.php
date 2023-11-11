@@ -1,10 +1,10 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\KioskAssignment as BaseKioskAssignment;
 use ChurchCRM\dto\KioskAssignmentTypes;
-use ChurchCRM\Map\ListOptionTableMap;
+use ChurchCRM\model\ChurchCRM\Base\KioskAssignment as BaseKioskAssignment;
+use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\Join;
 

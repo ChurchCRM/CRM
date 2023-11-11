@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\EventAudience as BaseEventAudience;
+use ChurchCRM\model\ChurchCRM\Base\EventAudience as BaseEventAudience;
 
 /**
  * Skeleton subclass for representing a row from the 'event_audience' table.
