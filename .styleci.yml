@@ -9,6 +9,9 @@ use-tabs: false
 enabled:
   - long_array_syntax
 
+disabled:
+  - short_array_syntax
+
 finder:
   path:
     - "src"
