@@ -7,8 +7,7 @@ tab-width: 4
 use-tabs: false
 
 enabled:
-  - long_array_syntax
-  - unalign_double_arrow
+#  - long_array_syntax
 
 finder:
   path:
