@@ -2085,6 +2085,10 @@ msgid "Add New Group"
 msgstr "添加新群組"
 
 #: 
+msgid "Submit"
+msgstr "提交"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "群組成員的屬性編輯器"
 
@@ -8387,6 +8391,11 @@ msgid "New Calendar"
 msgstr "新日曆"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "已禁用bEnableExternalCalendarAPI，但某些日曆具有訪問令牌"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "對於要共享的日曆，除了具有特定訪問令牌的日曆之外，還必須啟用bEnableExternalCalendarAPI設置"
 
@@ -9250,6 +9259,10 @@ msgstr "資料庫伺服器版本"
 #: 
 msgid "Web Server"
 msgstr "網頁伺服器"
+
+#: 
+msgid "Server Software"
+msgstr "伺服器軟體"
 
 #: 
 msgid "Email Information"

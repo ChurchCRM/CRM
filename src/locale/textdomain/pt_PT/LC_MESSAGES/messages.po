@@ -2088,6 +2088,10 @@ msgid "Add New Group"
 msgstr "Adicionar um Novo Grupo"
 
 #: 
+msgid "Submit"
+msgstr "Enviar"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Editor de Propriedades dos Grupos"
 
@@ -8408,6 +8412,11 @@ msgstr "Nome do Calendário"
 #: 
 msgid "New Calendar"
 msgstr "Novo Calendário"
+
+#: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI desativado, mas alguns calendários têm tokens de acesso"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"

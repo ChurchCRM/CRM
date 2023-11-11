@@ -12,9 +12,9 @@ $app->group('/system/debug', function () use ($app) {
 function getSystemURLAPI(Request $request, Response $response, array $args)
 {
     return $response->withJson([
-        "RootPath" => SystemURLs::getRootPath(),
-        "ImagesRoot" => SystemURLs::getImagesRoot(),
-        "DocumentRoot" => SystemURLs::getDocumentRoot(),
-        "SupportURL" => SystemURLs::getSupportURL()
+        'RootPath'     => SystemURLs::getRootPath(),
+        'ImagesRoot'   => SystemURLs::getImagesRoot(),
+        'DocumentRoot' => SystemURLs::getDocumentRoot(),
+        'SupportURL'   => SystemURLs::getSupportURL(),
     ]);
 }

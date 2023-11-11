@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\MiscUtils;
 
 class NotificationService
@@ -12,19 +12,19 @@ class NotificationService
     {
         /** Get the latest notifications from the source.  Store in session variable */
         try {
-            $notificationFileContents = file_get_contents(SystemConfig::getValue("sNotificationsURL"));
+            $notificationFileContents = file_get_contents(SystemConfig::getValue('sNotificationsURL'));
             MiscUtils::throwIfFailed($notificationFileContents);
             $tempNotifications = json_decode($notificationFileContents, null, 512, JSON_THROW_ON_ERROR);
             if (isset($tempNotifications->TTL)) {
                 $_SESSION['SystemNotifications'] = $tempNotifications;
                 $expires = (new \DateTimeImmutable())
-                    ->add(new \DateInterval("PT" . $_SESSION['SystemNotifications']->TTL . "S"));
+                    ->add(new \DateInterval('PT'.$_SESSION['SystemNotifications']->TTL.'S'));
                 $_SESSION['SystemNotifications']->expires = $expires;
             }
         } catch (\Exception $ex) {
-          //a failure here should never prevent the page from loading.
-          //Possibly log an exception when a unified logger is implemented.
-          //for now, do nothing.
+            //a failure here should never prevent the page from loading.
+            //Possibly log an exception when a unified logger is implemented.
+            //for now, do nothing.
         }
     }
 
@@ -35,7 +35,7 @@ class NotificationService
         if (isset($_SESSION['SystemNotifications'])) {
             foreach ($_SESSION['SystemNotifications']->messages as $message) {
                 if ($message->targetVersion === $_SESSION['sSoftwareInstalledVersion']) {
-                    if (!$message->adminOnly ||  AuthenticationManager::getCurrentUser()->isAdmin()) {
+                    if (!$message->adminOnly || AuthenticationManager::getCurrentUser()->isAdmin()) {
                         array_push($notifications, $message);
                     }
                 }

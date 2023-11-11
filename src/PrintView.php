@@ -385,7 +385,7 @@ if ($fam_ID) {
             <td>
         <?= $sFamRole ?>&nbsp;
             </td>
-      <td><?= MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) ?></td>
+      <td><?= MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear) ?></td>
         </tr>
         <?php
     }

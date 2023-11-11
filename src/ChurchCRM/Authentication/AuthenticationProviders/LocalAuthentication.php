@@ -1,235 +1,242 @@
 <?php
 
-namespace ChurchCRM\Authentication\AuthenticationProviders {
+namespace ChurchCRM\Authentication\AuthenticationProviders;
 
-    use ChurchCRM\Authentication\AuthenticationManager;
-    use ChurchCRM\dto\SystemConfig;
-    use ChurchCRM\Authentication\AuthenticationResult;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationResult;
+use ChurchCRM\Authentication\Requests\AuthenticationRequest;
+use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
+use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Emails\LockedEmail;
+use ChurchCRM\KeyManager;
+use ChurchCRM\User;
+use ChurchCRM\UserQuery;
+use ChurchCRM\Utils\LoggerUtils;
+use DateTime;
+use DateTimeZone;
+use Endroid\QrCode\QrCode;
+use PragmaRX\Google2FA\Google2FA;
 
-    use ChurchCRM\Authentication\Requests\AuthenticationRequest;
-    use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
-    use ChurchCRM\Authentication\Requests\LocalUserAuthenticationRequest;
-    use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
-    use ChurchCRM\dto\SystemURLs;
-    use ChurchCRM\UserQuery;
-    use ChurchCRM\Emails\LockedEmail;
-    use DateTime;
-    use DateTimeZone;
-    use ChurchCRM\Utils\LoggerUtils;
-    use ChurchCRM\KeyManager;
-    use PragmaRX\Google2FA\Google2FA;
-    use Endroid\QrCode\QrCode;
+class LocalAuthentication implements IAuthenticationProvider
+{
+    private ?User $currentUser = null;
+    private ?bool $bPendingTwoFactorAuth = null;
+    private ?int $tLastOperationTimestamp = null;
 
-    class LocalAuthentication implements IAuthenticationProvider
+    public function getPasswordChangeURL()
     {
-        /***
-         * @var ChurchCRM\User
-         */
-        private $currentUser;
-        private ?bool $bPendingTwoFactorAuth = null;
-        private ?int $tLastOperationTimestamp = null;
+        // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface
+        return SystemURLs::getRootPath().'/v2/user/current/changepassword';
+    }
 
-        public function getPasswordChangeURL()
-        {
-          // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface
-            return SystemURLs::getRootPath() . '/v2/user/current/changepassword';
-        }
+    public static function getIsTwoFactorAuthSupported()
+    {
+        return SystemConfig::getBooleanValue('bEnable2FA') && KeyManager::getAreAllSecretsDefined();
+    }
 
-        public static function getIsTwoFactorAuthSupported()
-        {
-            return SystemConfig::getBooleanValue("bEnable2FA") && KeyManager::getAreAllSecretsDefined();
-        }
+    public static function getTwoFactorQRCode($username, $secret): QrCode
+    {
+        $google2fa = new Google2FA();
+        $g2faUrl = $google2fa->getQRCodeUrl(
+            SystemConfig::getValue('s2FAApplicationName'),
+            $username,
+            $secret
+        );
+        $qrCode = new QrCode($g2faUrl);
+        $qrCode->setSize(300);
 
-        public static function getTwoFactorQRCode($username, $secret): QrCode
-        {
-            $google2fa = new Google2FA();
-            $g2faUrl = $google2fa->getQRCodeUrl(
-                SystemConfig::getValue("s2FAApplicationName"),
-                $username,
-                $secret
-            );
-            $qrCode = new QrCode($g2faUrl);
-            $qrCode->setSize(300);
-            return $qrCode;
-        }
+        return $qrCode;
+    }
 
-        public function __construct()
-        {
-        }
+    public function getCurrentUser()
+    {
+        return $this->currentUser;
+    }
 
-        public function getCurrentUser()
-        {
-            return $this->currentUser;
-        }
-
-        public function endSession()
-        {
-
-            if (!empty($this->currentUser)) {
-                //$this->currentUser->setDefaultFY($_SESSION['idefaultFY']);
-                $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
-                $this->currentUser->save();
-                $this->currentUser = null;
-            }
-        }
-
-        private function prepareSuccessfulLoginOperations()
-        {
-          // Set the LastLogin and Increment the LoginCount
-            $date = new DateTime('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
-            $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
-            $this->currentUser->setLoginCount($this->currentUser->getLoginCount() + 1);
-            $this->currentUser->setFailedLogins(0);
+    public function endSession()
+    {
+        if (!empty($this->currentUser)) {
+            //$this->currentUser->setDefaultFY($_SESSION['idefaultFY']);
+            $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
             $this->currentUser->save();
+            $this->currentUser = null;
+        }
+    }
 
-            $_SESSION['bManageGroups'] = $this->currentUser->isManageGroupsEnabled();
-            $_SESSION['bFinance'] = $this->currentUser->isFinanceEnabled();
+    private function prepareSuccessfulLoginOperations()
+    {
+        // Set the LastLogin and Increment the LoginCount
+        $date = new DateTime('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
+        $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
+        $this->currentUser->setLoginCount($this->currentUser->getLoginCount() + 1);
+        $this->currentUser->setFailedLogins(0);
+        $this->currentUser->save();
 
-          // Create the Cart
-            $_SESSION['aPeopleCart'] = [];
+        $_SESSION['bManageGroups'] = $this->currentUser->isManageGroupsEnabled();
+        $_SESSION['bFinance'] = $this->currentUser->isFinanceEnabled();
 
-          // Create the variable for the Global Message
-            $_SESSION['sGlobalMessage'] = '';
+        // Create the Cart
+        $_SESSION['aPeopleCart'] = [];
 
-          // Initialize the last operation time
-            $this->tLastOperationTimestamp = time();
+        // Create the variable for the Global Message
+        $_SESSION['sGlobalMessage'] = '';
 
-            $_SESSION['bHasMagicQuotes'] = 0;
+        // Initialize the last operation time
+        $this->tLastOperationTimestamp = time();
 
-          // Pledge and payment preferences
-          //$_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
-            $_SESSION['iCurrentDeposit'] = $this->currentUser->getCurrentDeposit();
+        $_SESSION['bHasMagicQuotes'] = 0;
+
+        // Pledge and payment preferences
+        //$_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
+        $_SESSION['iCurrentDeposit'] = $this->currentUser->getCurrentDeposit();
+    }
+
+    public function authenticate(AuthenticationRequest $AuthenticationRequest)
+    {
+        if (!($AuthenticationRequest instanceof LocalUsernamePasswordRequest || $AuthenticationRequest instanceof LocalTwoFactorTokenRequest)) {
+            throw new \Exception('Unable to process request as LocalUsernamePasswordRequest or LocalTwoFactorTokenRequest');
         }
 
-        public function authenticate(AuthenticationRequest $AuthenticationRequest)
-        {
+        $authenticationResult = new AuthenticationResult();
+        $logCtx = ['username' => $AuthenticationRequest->username];
+        if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
+            LoggerUtils::getAuthLogger()->debug('Processing local login', $logCtx);
+            // Get the information for the selected user
+            $this->currentUser = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
+            if ($this->currentUser === null) {
+                // Set the error text
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->message = gettext('Invalid login or password');
 
-            if (!($AuthenticationRequest instanceof LocalUsernamePasswordRequest  || $AuthenticationRequest instanceof LocalTwoFactorTokenRequest)) {
-                throw new \Exception("Unable to process request as LocalUsernamePasswordRequest or LocalTwoFactorTokenRequest");
+                return $authenticationResult;
+            } elseif ($this->currentUser->isLocked()) {
+                // Block the login if a maximum login failure count has been reached
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->message = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
+                LoggerUtils::getAuthLogger()->warning('Authentication attempt for locked account', $logCtx);
+
+                return $authenticationResult;
+            } elseif (!$this->currentUser->isPasswordValid($AuthenticationRequest->password)) {
+                // Does the password match?
+
+                // Increment the FailedLogins
+                $this->currentUser->setFailedLogins($this->currentUser->getFailedLogins() + 1);
+                $this->currentUser->save();
+                if (!empty($this->currentUser->getEmail()) && $this->currentUser->isLocked()) {
+                    LoggerUtils::getAuthLogger()->warning('Too many failed logins. The account has been locked', $logCtx);
+                    $lockedEmail = new LockedEmail($this->currentUser);
+                    $lockedEmail->send();
+                }
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->message = gettext('Invalid login or password');
+                LoggerUtils::getAuthLogger()->warning('Invalid login attempt', $logCtx);
+
+                return $authenticationResult;
+            } elseif (SystemConfig::getBooleanValue('bEnable2FA') && $this->currentUser->is2FactorAuthEnabled()) {
+                // Only redirect the user to the 2FA sign-ing page if it's
+                // enabled both at system AND user level.
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath().'/session/two-factor';
+                $this->bPendingTwoFactorAuth = true;
+                LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
+
+                return $authenticationResult;
+            } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled()) {
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->message = gettext('Invalid login or password');
+                LoggerUtils::getAuthLogger()->warning('User attempted login with valid credentials, but missing mandatory 2FA enrollment.  Denying access for user', $logCtx);
+
+                return $authenticationResult;
+            } else {
+                $this->prepareSuccessfulLoginOperations();
+                $authenticationResult->isAuthenticated = true;
+                LoggerUtils::getAuthLogger()->debug('User successfully logged in without 2FA', $logCtx);
+
+                return $authenticationResult;
             }
+        } elseif ($AuthenticationRequest instanceof LocalTwoFactorTokenRequest && $this->bPendingTwoFactorAuth) {
+            if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
+                $this->prepareSuccessfulLoginOperations();
+                $authenticationResult->isAuthenticated = true;
+                $this->bPendingTwoFactorAuth = false;
+                LoggerUtils::getAuthLogger()->info('User successfully logged in with 2FA', $logCtx);
 
+                return $authenticationResult;
+            } elseif ($this->currentUser->isTwoFaRecoveryCodeValid($AuthenticationRequest->TwoFACode)) {
+                $this->prepareSuccessfulLoginOperations();
+                $authenticationResult->isAuthenticated = true;
+                $this->bPendingTwoFactorAuth = false;
+                LoggerUtils::getAuthLogger()->info('User successfully logged in with 2FA Recovery Code', $logCtx);
 
-            $authenticationResult = new AuthenticationResult();
+                return $authenticationResult;
+            } else {
+                LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath().'/session/two-factor';
 
-            if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
-                LoggerUtils::getAuthLogger()->debug("Processing local login for" . $AuthenticationRequest->username);
-          // Get the information for the selected user
-                $this->currentUser = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
-                if ($this->currentUser == null) {
-                    // Set the error text
-                    $authenticationResult->isAuthenticated = false;
-                    $authenticationResult->message = gettext('Invalid login or password');
-                    return $authenticationResult;
-                } elseif ($this->currentUser->isLocked()) {
-                    // Block the login if a maximum login failure count has been reached
-                    $authenticationResult->isAuthenticated = false;
-                    $authenticationResult->message = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
-                    LoggerUtils::getAuthLogger()->warning("Authentication attempt for locked account: " . $this->currentUser->getUserName());
-                    return $authenticationResult;
-                } elseif (!$this->currentUser->isPasswordValid($AuthenticationRequest->password)) {
-                    // Does the password match?
-
-                    // Increment the FailedLogins
-                    $this->currentUser->setFailedLogins($this->currentUser->getFailedLogins() + 1);
-                    $this->currentUser->save();
-                    if (!empty($this->currentUser->getEmail()) && $this->currentUser->isLocked()) {
-                        LoggerUtils::getAuthLogger()->warning("Too many failed logins for: " . $this->currentUser->getUserName() . ". The account has been locked");
-                        $lockedEmail = new LockedEmail($this->currentUser);
-                        $lockedEmail->send();
-                    }
-                    $authenticationResult->isAuthenticated = false;
-                    $authenticationResult->message = gettext('Invalid login or password');
-                    LoggerUtils::getAuthLogger()->warning("Invalid login attempt for: " . $this->currentUser->getUserName());
-                    return $authenticationResult;
-                } elseif (SystemConfig::getBooleanValue("bEnable2FA") && $this->currentUser->is2FactorAuthEnabled()) {
-                  // Only redirect the user to the 2FA sign-ing page if it's
-                  // enabled both at system AND user level.
-                    $authenticationResult->isAuthenticated = false;
-                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . "/session/two-factor";
-                    $this->bPendingTwoFactorAuth = true;
-                    LoggerUtils::getAuthLogger()->info("User partially authenticated, pending 2FA: " . $this->currentUser->getUserName());
-                    return $authenticationResult;
-                } elseif (SystemConfig::getBooleanValue("bRequire2FA") && ! $this->currentUser->is2FactorAuthEnabled()) {
-                    $authenticationResult->isAuthenticated = false;
-                    $authenticationResult->message = gettext('Invalid login or password');
-                    LoggerUtils::getAuthLogger()->warning("User attempted login with valid credentials, but missing mandatory 2FA enrollment.  Denying access for user: " . $this->currentUser->getUserName());
-                    return $authenticationResult;
-                } else {
-                    $this->prepareSuccessfulLoginOperations();
-                    $authenticationResult->isAuthenticated = true;
-                    LoggerUtils::getAuthLogger()->debug("User successfully logged in without 2FA: " . $this->currentUser->getUserName());
-                    return $authenticationResult;
-                }
-            } elseif ($AuthenticationRequest instanceof LocalTwoFactorTokenRequest && $this->bPendingTwoFactorAuth) {
-                if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
-                      $this->prepareSuccessfulLoginOperations();
-                      $authenticationResult->isAuthenticated = true;
-                      $this->bPendingTwoFactorAuth = false;
-                      LoggerUtils::getAuthLogger()->info("User successfully logged in with 2FA: " . $this->currentUser->getUserName());
-                      return $authenticationResult;
-                } elseif ($this->currentUser->isTwoFaRecoveryCodeValid($AuthenticationRequest->TwoFACode)) {
-                    $this->prepareSuccessfulLoginOperations();
-                    $authenticationResult->isAuthenticated = true;
-                    $this->bPendingTwoFactorAuth = false;
-                    LoggerUtils::getAuthLogger()->info("User successfully logged in with 2FA Recovery Code: " . $this->currentUser->getUserName());
-                    return $authenticationResult;
-                } else {
-                    LoggerUtils::getAuthLogger()->info("Invalid 2FA code provided by partially authenticated user: " . $this->currentUser->getUserName());
-                    $authenticationResult->isAuthenticated = false;
-                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . "/session/two-factor";
-                    return $authenticationResult;
-                }
+                return $authenticationResult;
             }
         }
+    }
 
-        public function validateUserSessionIsActive($updateLastOperationTimestamp): AuthenticationResult
-        {
+    public function validateUserSessionIsActive(bool $updateLastOperationTimestamp): AuthenticationResult
+    {
+        $authenticationResult = new AuthenticationResult();
 
-            $authenticationResult = new AuthenticationResult();
+        // First check to see if a `user` key exists on the session.
+        if (null === $this->currentUser) {
+            $authenticationResult->isAuthenticated = false;
+            LoggerUtils::getAuthLogger()->debug('No active user session.');
 
-          // First check to see if a `user` key exists on the session.
-            if (null == $this->currentUser) {
-                $authenticationResult->isAuthenticated = false;
-                LoggerUtils::getAuthLogger()->debug("No active user session.");
-                return $authenticationResult;
-            }
-            LoggerUtils::getAuthLogger()->debug("Processing session for user: " . $this->currentUser->getName());
-
-          // Next, make sure the user in the sesion still exists in the database.
-            try {
-                $this->currentUser->reload();
-            } catch (\Exception $exc) {
-                LoggerUtils::getAuthLogger()->debug("User with active session no longer exists in the database.  Expiring session");
-                AuthenticationManager::endSession();
-                $authenticationResult->isAuthenticated = false;
-                return $authenticationResult;
-            }
-
-      // Next, check for login timeout.  If login has expired, redirect to login page
-            if (SystemConfig::getValue('iSessionTimeout') > 0) {
-                if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getValue('iSessionTimeout')) {
-                    LoggerUtils::getAuthLogger()->debug("User session timed out");
-                    $authenticationResult->isAuthenticated = false;
-                    return $authenticationResult;
-                } else if ($updateLastOperationTimestamp) {
-                    $this->tLastOperationTimestamp = time();
-                }
-            }
-
-      // Next, if this user needs to change password, send to that page
-      // but don't redirect them if they're already on the password change page
-            $IsUserOnPasswordChangePageNow = $_SERVER["REQUEST_URI"] == $this->getPasswordChangeURL();
-            if ($this->currentUser->getNeedPasswordChange() && ! $IsUserOnPasswordChangePageNow) {
-                LoggerUtils::getAuthLogger()->info("User needs password change; redirecting to password change");
-                $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = $this->getPasswordChangeURL();
-            }
-
-
-      // Finally, if the above tests pass, this user "is authenticated"
-            $authenticationResult->isAuthenticated = true;
-            LoggerUtils::getAuthLogger()->debug("Session validated for user: " . $this->currentUser->getName());
             return $authenticationResult;
         }
+        $logCtx = [
+            'username'     => $this->currentUser->getUserName(),
+            'userFullName' => $this->currentUser->getName(),
+        ];
+        LoggerUtils::getAuthLogger()->debug('Processing session for user', $logCtx);
+
+        // Next, make sure the user in the sesion still exists in the database.
+        try {
+            $this->currentUser->reload();
+        } catch (\Exception $exc) {
+            LoggerUtils::getAuthLogger()->debug(
+                'User with active session no longer exists in the database.  Expiring session',
+                array_merge($logCtx, ['exception' => $exc])
+            );
+            AuthenticationManager::endSession();
+            $authenticationResult->isAuthenticated = false;
+
+            return $authenticationResult;
+        }
+
+        // Next, check for login timeout.  If login has expired, redirect to login page
+        if (SystemConfig::getValue('iSessionTimeout') > 0) {
+            if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getValue('iSessionTimeout')) {
+                LoggerUtils::getAuthLogger()->debug('User session timed out', $logCtx);
+                $authenticationResult->isAuthenticated = false;
+
+                return $authenticationResult;
+            } elseif ($updateLastOperationTimestamp) {
+                $this->tLastOperationTimestamp = time();
+            }
+        }
+
+        // Next, if this user needs to change password, send to that page
+        // but don't redirect them if they're already on the password change page
+        $IsUserOnPasswordChangePageNow = $_SERVER['REQUEST_URI'] === $this->getPasswordChangeURL();
+        if ($this->currentUser->getNeedPasswordChange() && !$IsUserOnPasswordChangePageNow) {
+            LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);
+            $authenticationResult->isAuthenticated = false;
+            $authenticationResult->nextStepURL = $this->getPasswordChangeURL();
+        }
+
+        // Finally, if the above tests pass, this user "is authenticated"
+        $authenticationResult->isAuthenticated = true;
+        LoggerUtils::getAuthLogger()->debug('Session validated for user', $logCtx);
+
+        return $authenticationResult;
     }
 }

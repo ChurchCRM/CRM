@@ -1,24 +1,24 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
-use ChurchCRM\UserConfigQuery;
 use ChurchCRM\PredefinedReportsQuery;
 use ChurchCRM\QueryParameterOptionsQuery;
 use ChurchCRM\QueryParametersQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\UserConfigQuery;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/locale', function () use ($app) {
     $app->get('/database/terms', 'getDBTerms');
 })->add(new AdminRoleAuthMiddleware());
 
-
 /**
- * A method that gets locale terms from the db for po generation
+ * A method that gets locale terms from the db for po generation.
  *
- * @param \Slim\Http\Request $p_request The request.
+ * @param \Slim\Http\Request  $p_request  The request.
  * @param \Slim\Http\Response $p_response The response.
- * @param array $p_args Arguments
+ * @param array               $p_args     Arguments
+ *
  * @return \Slim\Http\Response The augmented response.
  */
 function getDBTerms(Request $request, Response $response, array $p_args)
@@ -46,8 +46,6 @@ function getDBTerms(Request $request, Response $response, array $p_args)
         array_push($terms, $term['qrp_Name']);
         array_push($terms, $term['qrp_Description']);
     }
-
-
 
     return $response->withJson(['terms' => $terms]);
 }

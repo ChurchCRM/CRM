@@ -6,12 +6,12 @@ class ClassificationDashboardItem implements DashboardItemInterface
 {
     public static function getDashboardItemName()
     {
-        return "ClassificationBreakdown";
+        return 'ClassificationBreakdown';
     }
 
     public static function getDashboardItemValue()
     {
-         $data = [];
+        $data = [];
         $sSQL = 'select lst_OptionName as Classification, count(*) as count
                 from person_per INNER JOIN list_lst ON  per_cls_ID = lst_OptionID
                 LEFT JOIN family_fam ON family_fam.fam_ID = person_per.per_fam_ID
@@ -27,6 +27,6 @@ class ClassificationDashboardItem implements DashboardItemInterface
 
     public static function shouldInclude($PageName)
     {
-        return $PageName == "PeopleDashboard.php"; // this ID would be found on all pages.
+        return $PageName == 'PeopleDashboard.php'; // this ID would be found on all pages.
     }
 }

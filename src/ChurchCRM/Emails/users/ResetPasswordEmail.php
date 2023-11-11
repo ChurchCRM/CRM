@@ -14,19 +14,20 @@ class ResetPasswordEmail extends BaseUserEmail
 
     protected function getSubSubject()
     {
-        return gettext("Password Reset");
+        return gettext('Password Reset');
     }
 
     protected function buildMessageBody()
     {
-        return gettext("You ChurchCRM updated password has been changed") . ":";
+        return gettext('You ChurchCRM updated password has been changed').':';
     }
 
     public function getTokens()
     {
         $parentTokens = parent::getTokens();
-        $myTokens = ["password" => $this->password,
-            "passwordText" => gettext('New Password')];
+        $myTokens = ['password' => $this->password,
+            'passwordText'      => gettext('New Password')];
+
         return array_merge($parentTokens, $myTokens);
     }
 }

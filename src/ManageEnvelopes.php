@@ -159,11 +159,11 @@ if (isset($_POST['PrintReport'])) {
         </select>
         <input type="submit" class="btn btn-default" value="<?= gettext('Sort by') ?>" name="Sort">
         <input type="radio" Name="SortBy" value="name"
-        <?php if ($sSortBy == 'name') {
+        <?php if ($sSortBy === 'name') {
             echo ' checked';
         } ?>><?= gettext('Last Name') ?>
         <input type="radio" Name="SortBy" value="envelope"
-        <?php if ($sSortBy == 'envelope') {
+        <?php if ($sSortBy === 'envelope') {
             echo ' checked';
         } ?>><?= gettext('Envelope Number') ?>
     </th>
@@ -180,7 +180,7 @@ if (isset($_POST['PrintReport'])) {
 
 <?php
 
-if ($sSortBy == 'envelope') {
+if ($sSortBy === 'envelope') {
     asort($envelopesByFamID);
     $arrayToLoop = $envelopesByFamID;
 } else {
@@ -188,7 +188,7 @@ if ($sSortBy == 'envelope') {
 }
 
 foreach ($arrayToLoop as $fam_ID => $value) {
-    if ($sSortBy == 'envelope') {
+    if ($sSortBy === 'envelope') {
         $envelope = $value;
         $fam_Data = $familyArray[$fam_ID];
     } else {

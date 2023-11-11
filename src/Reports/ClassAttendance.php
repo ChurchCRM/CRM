@@ -12,16 +12,14 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
-use ChurchCRM\Reports\PdfAttendance;
+use ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\Base\Person2group2roleP2g2rQuery;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\FamilyQuery;
 use ChurchCRM\GroupQuery;
-use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Map\PersonTableMap;
-use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Reports\PdfAttendance;
+use ChurchCRM\Utils\InputUtils;
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
@@ -93,16 +91,16 @@ for ($i = 0; $i < $nGrps; $i++) {
 
     $FYString = MakeFYString($iFYID);
 
-    $reportHeader = str_pad($group->getName(), 95) . $FYString;
+    $reportHeader = str_pad($group->getName(), 95).$FYString;
 
     // Build the teacher string- first teachers, then the liaison
-    $teacherString = gettext('Teachers') . ': ';
+    $teacherString = gettext('Teachers').': ';
     $bFirstTeacher = true;
     $iTeacherCnt = 0;
     $iMaxTeachersFit = 4;
     $iStudentCnt = 0;
 
-    $groupRoleMemberships = ChurchCRM\Person2group2roleP2g2rQuery::create()
+    $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
             ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce per_LastName, per_FirstName
@@ -115,10 +113,9 @@ for ($i = 0; $i < $nGrps; $i++) {
             $person = $groupRoleMembership->getPerson();
             $family = $person->getFamily();
 
-            $homePhone = "";
+            $homePhone = '';
             if (!empty($family)) {
                 $homePhone = $family->getHomePhone();
-
 
                 if (empty($homePhone)) {
                     $homePhone = $family->getCellPhone();
@@ -129,11 +126,11 @@ for ($i = 0; $i < $nGrps; $i++) {
                 }
             }
 
-            $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
+            $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
 
             $lst_OptionName = $groupRole->getOptionName();
 
-            if ($lst_OptionName == 'Teacher') {
+            if ($lst_OptionName === 'Teacher') {
                 $aTeachers[$iTeacherCnt] = $person; // Make an array of teachers while we're here
                 if (!$bFirstTeacher) {
                     $teacherString .= ', ';
@@ -142,21 +139,20 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $bFirstTeacher = false;
 
                 $person->getPhoto()->createThumbnail();
-                $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getThumbnailURI());
-            } elseif ($lst_OptionName == 'Student') {
+                $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(), '', $person->getPhoto()->getThumbnailURI());
+            } elseif ($lst_OptionName === 'Student') {
                 $aStudents[$iStudentCnt] = $person;
 
                 $person->getPhoto()->createThumbnail();
                 $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getThumbnailURI();
             } elseif ($lst_OptionName == gettext('Liaison')) {
-                $liaisonString .= gettext('Liaison') . ':' . $person->getFullName() . ' ' . $pdf->stripPhone($homePhone) . ' ';
+                $liaisonString .= gettext('Liaison').':'.$person->getFullName().' '.$pdf->stripPhone($homePhone).' ';
             }
         }
 
         if ($iTeacherCnt < $iMaxTeachersFit) {
-            $teacherString .= '  ' . $liaisonString;
+            $teacherString .= '  '.$liaisonString;
         }
-
 
         $pdf->SetFont('Times', 'B', 12);
 
@@ -189,7 +185,6 @@ for ($i = 0; $i < $nGrps; $i++) {
             $aStudentsIMG,
             $withPictures
         );
-
 
         // we start a new page
         if ($y > $yTeachers + 10) {
@@ -261,7 +256,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
-    $pdf->Output('ClassAttendance' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+    $pdf->Output('ClassAttendance'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

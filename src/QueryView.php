@@ -227,7 +227,7 @@ function DoQuery()
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
             // If this field is called "AddToCart", add a cart button to the form
             $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
-            if ($fieldInfo->name == 'AddToCart') {
+            if ($fieldInfo->name === 'AddToCart') {
                 ?>
                 <td>
                     <a class="AddToPeopleCart"  data-cartpersonid="<?= $aRow[$iCount] ?>">

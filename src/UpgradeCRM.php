@@ -15,7 +15,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
-if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+if (!AuthenticationManager::validateUserSessionIsActive(false) || !AuthenticationManager::getCurrentUser()->isAdmin()) {
     RedirectUtils::redirect('index.php');
     exit;
 }
@@ -70,7 +70,7 @@ Header_body_scripts();
     }
     ?>
     <?php
-    if (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed")) {
+    if (AppIntegrityService::getIntegrityCheckStatus() === gettext("Failed")) {
         ?>
     <li>
       <i class="fa fa-bomb bg-red"></i>
@@ -99,7 +99,7 @@ Header_body_scripts();
                       <td><?= $file->expectedhash ?></td>
                       <td>
                             <?php
-                            if ($file->status == 'File Missing') {
+                            if ($file->status === 'File Missing') {
                                 echo gettext('File Missing');
                             } else {
                                 echo $file->actualhash;
@@ -123,7 +123,7 @@ Header_body_scripts();
       <i class="fa fa-database bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 1: Backup Database') ?> <span id="status1"></span></h3>
-        <div class="timeline-body" id="backupPhase" <?= (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed") || count($preUpgradeTasks) > 0) ? 'style="display:none"' : '' ?>>
+        <div class="timeline-body" id="backupPhase" <?= (AppIntegrityService::getIntegrityCheckStatus() === gettext("Failed") || count($preUpgradeTasks) > 0) ? 'style="display:none"' : '' ?>>
           <p><?= gettext('Please create a database backup before beginning the upgrade process.')?></p>
           <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="' . gettext('Generate Database Backup') . '"' ?>>
           <span id="backupStatus"></span>
@@ -181,7 +181,7 @@ Header_body_scripts();
 
     $("#acceptUpgradeTaskWarking").click(function() {
       $("#preUpgradeCheckWarning").slideUp();
-      $("#<?= AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed") ? "integrityCheckWarning" : "backupPhase" ?>").show("slow");
+      $("#<?= AppIntegrityService::getIntegrityCheckStatus() === gettext("Failed") ? "integrityCheckWarning" : "backupPhase" ?>").show("slow");
     });
 
     $("#acceptIntegrityCheckWarking").click(function() {

@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Tasks;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 class ChurchAddress implements TaskInterface
 {
@@ -20,7 +20,7 @@ class ChurchAddress implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/SystemSettings.php';
+        return SystemURLs::getRootPath().'/SystemSettings.php';
     }
 
     public function getTitle(): string
@@ -30,6 +30,6 @@ class ChurchAddress implements TaskInterface
 
     public function getDesc(): string
     {
-        return gettext("Church Address is not Set.");
+        return gettext('Church Address is not Set.');
     }
 }

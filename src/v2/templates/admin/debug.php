@@ -15,7 +15,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header">
                 <h4><?= gettext("ChurchCRM Installation Information") ?></h4>
             </div>
-            <div class="card-body">
+            <div class="card-body overflow-auto">
                 <table class="table table-striped">
                     <tr>
                         <td>ChurchCRM <?= gettext("Software Version") ?></td>
@@ -46,7 +46,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header">
                 <h4><?= gettext("System Information") ?></h4>
             </div>
-            <div class="card-body">
+            <div class="card-body overflow-auto">
                 <table class="table table-striped">
                     <tr>
                         <td>Server Hostname</td>
@@ -69,7 +69,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header">
                 <h4><?= gettext("Database") ?></h4>
             </div>
-            <div class="card-body">
+            <div class="card-body overflow-auto">
                 <table class="table table-striped">
                     <tr>
                         <td>ChurchCRM <?= gettext("Database Version") ?></td>
@@ -92,16 +92,28 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header">
                 <h4><?= gettext("Web Server") ?></h4>
             </div>
-            <div class="card-body" style="overflow: scroll-x">
+            <div class="card-body overflow-auto">
                 <table class="table table-striped">
                     <tr>
                         <td><?= $_SERVER["SERVER_SOFTWARE"] ?></td>
                     </tr>
-                    <?php foreach (apache_get_modules() as $item) { ?>
-                    <tr>
-                        <td><?= $item ?></td>
-                    </tr>
-                    <?php } ?>
+<?php
+if (function_exists('apache_get_modules')) {
+    foreach (apache_get_modules() as $item) {
+        echo <<<EOD
+<tr>
+    <td>$item</td>
+</tr>
+EOD;
+    }
+} else {
+    echo <<<EOD
+<tr>
+    <td><i>function <pre>apache_get_modules</pre> does not exist!</i></td>
+</tr>
+EOD;
+}
+?>
                 </table>
             </div>
         </div>
@@ -111,7 +123,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header">
                 <h4>PHP</h4>
             </div>
-            <div class="card-body">
+            <div class="card-body overflow-auto">
                 <table class="table table-striped">
                     <tr>
                         <td>PHP Version</td>
@@ -146,7 +158,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header">
                 <h4><?= gettext("Email Information") ?></h4>
             </div>
-            <div class="card-body">
+            <div class="card-body overflow-auto">
                 <table class="table table-striped">
                     <tr>
                         <td>SMTP Host</td>
@@ -165,7 +177,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header">
                 <h4><?= gettext("Application Prerequisites") ?></h4>
             </div>
-            <div class="card-body">
+            <div class="card-body overflow-auto">
                 <table class="table table-striped">
                     <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite) { ?>
                         <tr>
@@ -202,7 +214,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                       <td><?= $file->expectedhash ?></td>
                       <td>
                             <?php
-                            if ($file->status == 'File Missing') {
+                            if ($file->status === 'File Missing') {
                                 echo gettext('File Missing');
                             } else {
                                 echo $file->actualhash;

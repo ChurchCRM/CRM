@@ -1,8 +1,8 @@
 Welcome to Church Web CRM
 ---
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![All Releases](https://img.shields.io/github/downloads/churchcrm/crm/total.svg)](https://github.com/ChurchCRM/CRM/releases)
-[![Release 5.0.0](https://img.shields.io/github/downloads/churchcrm/crm/5.0.3/total.svg)](https://github.com/ChurchCRM/CRM/releases/5.0.3)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
+[![Total All-Time Downloads](https://img.shields.io/github/downloads/churchcrm/crm/total.svg?label=Total%20All-Time%20Downloads)](https://github.com/ChurchCRM/CRM/releases)
+[![Latest Release](https://img.shields.io/github/downloads/churchcrm/crm/latest/total.svg?label=Latest%20Release)](https://github.com/ChurchCRM/CRM/releases/latest)
 
 ### Development
 [![GitHub contributors](https://img.shields.io/github/contributors/churchcrm/crm.svg)]()

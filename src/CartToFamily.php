@@ -32,7 +32,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
     $iFamilyID = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');
 
     // Are we creating a new family
-    if ($iFamilyID == 0) {
+    if ($iFamilyID === 0) {
         $sFamilyName = InputUtils::legacyFilterInput($_POST['FamilyName']);
 
         $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate']);
@@ -81,7 +81,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $sCellPhone = SelectWhichInfo($sCellPhone, $per_CellPhone);
         $sEmail = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Email']), $per_Email);
 
-        if (strlen($sFamilyName) == 0) {
+        if (strlen($sFamilyName) === 0) {
             $sError = '<p class="callout callout-warning" align="center" style="color:red;">' . gettext('No family name entered!') . '</p>';
             $bError = true;
         } else {

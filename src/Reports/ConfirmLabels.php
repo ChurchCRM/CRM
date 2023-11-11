@@ -12,9 +12,9 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FamilyQuery;
 use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\FamilyQuery;
 
 $sLabelFormat = InputUtils::legacyFilterInput($_GET['labeltype']);
 $bRecipientNamingMethod = $_GET['recipientnamingmethod'];
@@ -37,21 +37,21 @@ $families = FamilyQuery::create()
         ->find();
 
 foreach ($families as $family) {
-    if ($bRecipientNamingMethod == "familyname") {
+    if ($bRecipientNamingMethod === 'familyname') {
         $labelText = $family->getName();
     } else {
         $labelText = $pdf->makeSalutation($family->getID());
     }
     if ($family->getAddress1() != '') {
-        $labelText .= "\n" . $family->getAddress1();
+        $labelText .= "\n".$family->getAddress1();
     }
     if ($family->getAddress2() != '') {
-        $labelText .= "\n" . $family->getAddress2();
+        $labelText .= "\n".$family->getAddress2();
     }
     $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
 
     if ($family->getCountry() != '' && $family->getCountry() != 'USA' && $family->getCountry() != 'United States') {
-        $labelText .= "\n" . $family->getCountry();
+        $labelText .= "\n".$family->getCountry();
     }
 
     $pdf->addPdfLabel($labelText);
@@ -59,7 +59,7 @@ foreach ($families as $family) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
-    $pdf->Output('ConfirmDataLabels' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+    $pdf->Output('ConfirmDataLabels'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

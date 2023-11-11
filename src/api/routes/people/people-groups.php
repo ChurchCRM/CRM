@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\Group;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\Note;
@@ -52,10 +53,9 @@ $app->group('/groups', function () use ($app) {
 
     $app->get('/{groupID:[0-9]+}/members', function ($request, $response, $args) {
         $groupID = $args['groupID'];
-        $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
+        $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->findByGroupId($groupID);
-
 
         // we loop to find the information in the family to add addresses etc ...
         foreach ($members as $member) {
@@ -78,7 +78,7 @@ $app->group('/groups', function () use ($app) {
 
     $app->get('/{groupID:[0-9]+}/events', function ($request, $response, $args) {
         $groupID = $args['groupID'];
-        $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
+        $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->findByGroupId($groupID);
         echo $members->toJSON();
@@ -87,15 +87,14 @@ $app->group('/groups', function () use ($app) {
     $app->get('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $group = GroupQuery::create()->findOneById($groupID);
-        $roles = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->find();
+        $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
         echo $roles->toJSON();
     });
 });
 
 $app->group('/groups', function () use ($app) {
-
     $app->post('/', function ($request, $response, $args) {
-        $groupSettings = (object)$request->getParsedBody();
+        $groupSettings = (object) $request->getParsedBody();
         $group = new Group();
         if ($groupSettings->isSundaySchool) {
             $group->makeSundaySchool();
@@ -107,7 +106,7 @@ $app->group('/groups', function () use ($app) {
 
     $app->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
         $group->setName($input->groupName);
         $group->setType($input->groupType);
@@ -122,7 +121,6 @@ $app->group('/groups', function () use ($app) {
         echo json_encode(['status' => 'success']);
     });
 
-
     $app->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
@@ -133,8 +131,8 @@ $app->group('/groups', function () use ($app) {
             if ($groupRoleMembership->getPersonId() == $person->getId()) {
                 $groupRoleMembership->delete();
                 $note = new Note();
-                $note->setText(gettext("Deleted from group") . ": " . $group->getName());
-                $note->setType("group");
+                $note->setText(gettext('Deleted from group').': '.$group->getName());
+                $note->setType('group');
                 $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                 $note->setPerId($person->getId());
                 $note->save();
@@ -147,7 +145,7 @@ $app->group('/groups', function () use ($app) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
         $group = GroupQuery::create()->findPk($groupID);
         $p2g2r = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($groupID)
@@ -162,12 +160,12 @@ $app->group('/groups', function () use ($app) {
         $group->addPerson2group2roleP2g2r($p2g2r);
         $group->save();
         $note = new Note();
-        $note->setText(gettext("Added to group") . ": " . $group->getName());
-        $note->setType("group");
+        $note->setText(gettext('Added to group').': '.$group->getName());
+        $note->setType('group');
         $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
         $note->setPerId($person->getId());
         $note->save();
-        $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
+        $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->filterByPersonId($input->PersonID)
             ->findByGroupId($groupID);
@@ -178,7 +176,7 @@ $app->group('/groups', function () use ($app) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $roleID = $request->getParsedBody()['roleID'];
-        $membership = ChurchCRM\Person2group2roleP2g2rQuery::create()->filterByGroupId($groupID)->filterByPersonId($userID)->findOne();
+        $membership = Person2group2roleP2g2rQuery::create()->filterByGroupId($groupID)->filterByPersonId($userID)->findOne();
         $membership->setRoleId($roleID);
         $membership->save();
         echo $membership->toJSON();
@@ -187,16 +185,16 @@ $app->group('/groups', function () use ($app) {
     $app->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
         if (isset($input->groupRoleName)) {
-            $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+            $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
             $groupRole->setOptionName($input->groupRoleName);
             $groupRole->save();
 
             return json_encode(['success' => true]);
         } elseif (isset($input->groupRoleOrder)) {
-            $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+            $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
             $groupRole->setOptionSequence($input->groupRoleOrder);
             $groupRole->save();
 
@@ -242,7 +240,7 @@ $app->group('/groups', function () use ($app) {
     $app->post('/{groupID:[0-9]+}/settings/active/{value}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $flag = $args['value'];
-        if ($flag == "true" || $flag == "false") {
+        if ($flag == 'true' || $flag == 'false') {
             $group = GroupQuery::create()->findOneById($groupID);
             if ($group != null) {
                 $group->setActive($flag);
@@ -250,7 +248,8 @@ $app->group('/groups', function () use ($app) {
             } else {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
-            return $response->withJson(['status' => "success"]);
+
+            return $response->withJson(['status' => 'success']);
         } else {
             return $response->withStatus(500, gettext('invalid status value'));
         }
@@ -259,7 +258,7 @@ $app->group('/groups', function () use ($app) {
     $app->post('/{groupID:[0-9]+}/settings/email/export/{value}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $flag = $args['value'];
-        if ($flag == "true" || $flag == "false") {
+        if ($flag == 'true' || $flag == 'false') {
             $group = GroupQuery::create()->findOneById($groupID);
             if ($group != null) {
                 $group->setIncludeInEmailExport($flag);
@@ -267,7 +266,8 @@ $app->group('/groups', function () use ($app) {
             } else {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
-            return $response->withJson(['status' => "success"]);
+
+            return $response->withJson(['status' => 'success']);
         } else {
             return $response->withStatus(500, gettext('invalid export value'));
         }

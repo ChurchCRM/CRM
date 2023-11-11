@@ -9,7 +9,7 @@ class PrerequisiteCheckTask implements TaskInterface
 {
     public function isActive(): bool
     {
-        return ! AppIntegrityService::arePrerequisitesMet();
+        return !AppIntegrityService::arePrerequisitesMet();
     }
 
     public function isAdmin(): bool
@@ -19,7 +19,7 @@ class PrerequisiteCheckTask implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/v2/admin/debug';
+        return SystemURLs::getRootPath().'/v2/admin/debug';
     }
 
     public function getTitle(): string

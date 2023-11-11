@@ -9,7 +9,7 @@ class SecretsConfigurationCheckTask implements TaskInterface
 {
     public function isActive(): bool
     {
-        return ! KeyManager::getAreAllSecretsDefined();
+        return !KeyManager::getAreAllSecretsDefined();
     }
 
     public function isAdmin(): bool

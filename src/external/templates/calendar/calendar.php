@@ -8,7 +8,7 @@ $sPageTitle = $calendarName;
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment-with-locales.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/fullcalendar.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/index.global.min.js"></script>
 <div class="register-box" style="width: 100%; margin-top:5px;">
     <div class="register-logo">
       <a href="<?= SystemURLs::getRootPath() ?>/"><?=  ChurchMetaData::getChurchName() ?></a>: <?= $calendarName ?></h1>
@@ -28,23 +28,25 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-window.CRM.fullcalendar =  $('#calendar').fullCalendar({
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay,listMonth'
-    },
-    height: 600,
-    selectable: false,
-    editable: false,
-    eventStartEditable: false,
-    eventDurationEditable: false,
-    selectHelper: true,
-    locale: window.CRM.lang,
-    eventSources: [
-      '<?= $eventSource ?>'
-    ]
+document.addEventListener('DOMContentLoaded', function() {
+  window.CRM.fullcalendar =  new FullCalendar.Calendar(document.getElementById('calendar'), {
+      header: {
+        start: 'prev,next today',
+        center: 'title',
+        end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      },
+      height: 600,
+      selectable: false,
+      editable: false,
+      selectMirror: true,
+      locale: window.CRM.lang,
+      eventSources: [
+        '<?= $eventSource ?>'
+      ]
   });
+
+  calendar.render();
+});
 </script>
 
 <?php

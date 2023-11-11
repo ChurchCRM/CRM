@@ -84,7 +84,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/fullcalendar/dist/*'],
+                        src: ['node_modules/fullcalendar/index.global.min.js'],
                         dest: 'src/skin/external/fullcalendar/'
                     },
                     {
@@ -181,7 +181,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/chart.js/dist/Chart.js'],
+                        src: ['node_modules/chart.js/dist/chart.umd.js'],
                         dest: 'src/skin/external/chartjs/'
                     },
                     {
@@ -534,7 +534,7 @@ module.exports = function (grunt) {
                 if (localeConfig.hasOwnProperty("fullCalendarLocale")) {
                     tempLangCode = localeConfig["fullCalendarLocale"];
                 }
-                tempFile = 'node_modules/fullcalendar/dist/locale/'+tempLangCode+'.js';
+                tempFile = 'node_modules/@fullcalendar/core/locales/'+tempLangCode+'.js';
                 var fullCalendar = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
                 jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {};\n";

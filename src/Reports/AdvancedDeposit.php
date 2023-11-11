@@ -13,11 +13,10 @@ namespace ChurchCRM\Reports;
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
@@ -47,16 +46,16 @@ if (!empty($_POST['classList'])) {
         while ($aRow = mysqli_fetch_array($rsClassifications)) {
             extract($aRow);
             if (in_array($lst_OptionID, $classList)) {
-                if ($inClassList == '(') {
+                if ($inClassList === '(') {
                     $inClassList .= $lst_OptionID;
                 } else {
-                    $inClassList .= ',' . $lst_OptionID;
+                    $inClassList .= ','.$lst_OptionID;
                 }
             } else {
-                if ($notInClassList == '(') {
+                if ($notInClassList === '(') {
                     $notInClassList .= $lst_OptionID;
                 } else {
-                    $notInClassList .= ',' . $lst_OptionID;
+                    $notInClassList .= ','.$lst_OptionID;
                 }
             }
         }
@@ -119,7 +118,7 @@ if ($iDepID > 0) {
         $sDateStart = $sDateEnd;
         $sDateEnd = $temp;
     }
-    if ($datetype == 'Payment') {
+    if ($datetype === 'Payment') {
         $sSQL .= " AND plg_date BETWEEN '$sDateStart' AND '$sDateEnd' ";
     } else {
         $sSQL .= " AND dep_Date BETWEEN '$sDateStart' AND '$sDateEnd' ";
@@ -165,7 +164,7 @@ if ($familyList) {
 }
 
 if ($classList[0]) {
-    $sSQL .= ' AND per_cls_ID IN ' . $inClassList . ' AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN ' . $notInClassList . ')';
+    $sSQL .= ' AND per_cls_ID IN '.$inClassList.' AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN '.$notInClassList.')';
 }
 
 // Filter by Payment Method
@@ -188,11 +187,11 @@ if (!empty($_POST['method'])) {
 }
 
 // Add SQL ORDER
-if ($sort == 'deposit') {
+if ($sort === 'deposit') {
     $sSQL .= ' ORDER BY plg_depID, fun_Name, fam_Name, fam_ID';
-} elseif ($sort == 'fund') {
+} elseif ($sort === 'fund') {
     $sSQL .= ' ORDER BY fun_Name, fam_Name, fam_ID, plg_depID ';
-} elseif ($sort == 'family') {
+} elseif ($sort === 'family') {
     $sSQL .= ' ORDER BY fam_Name, fam_ID, fun_Name, plg_depID';
 }
 
@@ -210,7 +209,7 @@ if ($iCountRows < 1) {
 // Create PDF Report -- PDF
 // ***************************
 
-if ($output == 'pdf') {
+if ($output === 'pdf') {
     // Set up bottom border value
     $bottom_border = 250;
     $summaryIntervalY = 4;
@@ -243,11 +242,11 @@ if ($output == 'pdf') {
             $curY = 20;
             $curX = 60;
             $this->SetFont('Times', 'B', 14);
-            $this->writeAt($curX, $curY, SystemConfig::getValue('sChurchName') . ' Deposit Report');
+            $this->writeAt($curX, $curY, SystemConfig::getValue('sChurchName').' Deposit Report');
             $curY += 2 * SystemConfig::getValue('incrementY');
             $this->SetFont('Times', 'B', 10);
             $curX = SystemConfig::getValue('leftX');
-            $this->writeAt($curX, $curY, 'Data sorted by ' . ucwords($sort));
+            $this->writeAt($curX, $curY, 'Data sorted by '.ucwords($sort));
             $curY += SystemConfig::getValue('incrementY');
             if (!$iDepID) {
                 $this->writeAt($curX, $curY, "$datetype Dates: $sDateStart through $sDateEnd");
@@ -287,7 +286,7 @@ if ($output == 'pdf') {
                 $page++;
                 $this->addPage();
                 $curY = 20;
-                if ($detail_level == 'detail') {
+                if ($detail_level === 'detail') {
                     $curY = $this->headings($curY);
                 }
             }
@@ -298,7 +297,7 @@ if ($output == 'pdf') {
         public function headings($curY)
         {
             global $sort, $summaryIntervalY;
-            if ($sort == 'deposit') {
+            if ($sort === 'deposit') {
                 $curX = SystemConfig::getValue('leftX');
                 $this->SetFont('Times', 'BU', 10);
                 $this->writeAt($curX, $curY, 'Chk No.');
@@ -307,7 +306,7 @@ if ($output == 'pdf') {
                 $this->writeAt(135, $curY, 'Memo');
                 $this->writeAt(181, $curY, 'Amount');
                 $curY += 2 * $summaryIntervalY;
-            } elseif ($sort == 'fund') {
+            } elseif ($sort === 'fund') {
                 $curX = SystemConfig::getValue('leftX');
                 $this->SetFont('Times', 'BU', 10);
                 $this->writeAt($curX, $curY, 'Chk No.');
@@ -316,7 +315,7 @@ if ($output == 'pdf') {
                 $this->writeAt(135, $curY, 'Memo');
                 $this->writeAt(181, $curY, 'Amount');
                 $curY += 2 * $summaryIntervalY;
-            } elseif ($sort == 'family') {
+            } elseif ($sort === 'family') {
                 $curX = SystemConfig::getValue('leftX');
                 $this->SetFont('Times', 'BU', 10);
                 $this->writeAt($curX, $curY, 'Chk No.');
@@ -332,7 +331,7 @@ if ($output == 'pdf') {
 
         public function finishPage($page)
         {
-            $footer = "Page $page   Generated on " . date(SystemConfig::getValue("sDateTimeFormat"));
+            $footer = "Page $page   Generated on ".date(SystemConfig::getValue('sDateTimeFormat'));
             $this->SetFont('Times', 'I', 9);
             $this->writeAt(80, 258, $footer);
         }
@@ -359,8 +358,8 @@ if ($output == 'pdf') {
     // **********************
     // Sort by Deposit Report
     // **********************
-    if ($sort == 'deposit') {
-        if ($detail_level == 'detail') {
+    if ($sort === 'deposit') {
+        if ($detail_level === 'detail') {
             $curY = $pdf->headings($curY);
         }
 
@@ -389,7 +388,7 @@ if ($output == 'pdf') {
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary = "$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+                $sFundSummary = "$currentFundName Total - $countFund $item:   $".number_format($currentFundAmount, 2, '.', ',');
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -407,7 +406,7 @@ if ($output == 'pdf') {
                 } else {
                     $item = gettext('item');
                 }
-                $sDepositSummary = "Deposit #$currentDepositID Total - $countDeposit $item:   $" . number_format($currentDepositAmount, 2, '.', ',');
+                $sDepositSummary = "Deposit #$currentDepositID Total - $countDeposit $item:   $".number_format($currentDepositAmount, 2, '.', ',');
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
@@ -429,31 +428,31 @@ if ($output == 'pdf') {
             }
 
             // Print Deposit Detail
-            if ($detail_level == 'detail') {
+            if ($detail_level === 'detail') {
                 // Format Data
-                if ($plg_method == 'CREDITCARD') {
+                if ($plg_method === 'CREDITCARD') {
                     $plg_method = 'CREDIT';
                 }
-                if ($plg_method == 'BANKDRAFT') {
+                if ($plg_method === 'BANKDRAFT') {
                     $plg_method = 'DRAFT';
                 }
                 if ($plg_method != 'CHECK') {
                     $plg_CheckNo = $plg_method;
                 }
                 if (strlen($plg_CheckNo) > 8) {
-                    $plg_CheckNo = '...' . mb_substr($plg_CheckNo, -8, 8);
+                    $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
                 }
                 if (strlen($fun_Name) > 22) {
-                    $sfun_Name = mb_substr($fun_Name, 0, 21) . '...';
+                    $sfun_Name = mb_substr($fun_Name, 0, 21).'...';
                 } else {
                     $sfun_Name = $fun_Name;
                 }
                 if (strlen($plg_comment) > 29) {
-                    $plg_comment = mb_substr($plg_comment, 0, 28) . '...';
+                    $plg_comment = mb_substr($plg_comment, 0, 28).'...';
                 }
-                $fam_Name = $fam_Name . ' - ' . $fam_Address1;
+                $fam_Name = $fam_Name.' - '.$fam_Address1;
                 if (strlen($fam_Name) > 31) {
-                    $fam_Name = mb_substr($fam_Name, 0, 30) . '...';
+                    $fam_Name = mb_substr($fam_Name, 0, 30).'...';
                 }
 
                 // Print Data
@@ -496,7 +495,7 @@ if ($output == 'pdf') {
             } else {
                 $item = gettext('item');
             }
-            $sFundSummary = "$fun_Name Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+            $sFundSummary = "$fun_Name Total - $countFund $item:   $".number_format($currentFundAmount, 2, '.', ',');
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -510,18 +509,18 @@ if ($output == 'pdf') {
         } else {
             $item = gettext('item');
         }
-        $sDepositSummary = "Deposit #$currentDepositID Total - $countDeposit $item:   $" . number_format($currentDepositAmount, 2, '.', ',');
+        $sDepositSummary = "Deposit #$currentDepositID Total - $countDeposit $item:   $".number_format($currentDepositAmount, 2, '.', ',');
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
         $curY += 2 * $summaryIntervalY;
         $page = $pdf->pageBreak($page);
-    } elseif ($sort == 'fund') {
+    } elseif ($sort === 'fund') {
         // **********************
         // Sort by Fund  Report
         // **********************
 
-        if ($detail_level == 'detail') {
+        if ($detail_level === 'detail') {
             $curY = $pdf->headings($curY);
         }
 
@@ -550,7 +549,7 @@ if ($output == 'pdf') {
                 } else {
                     $item = gettext('item');
                 }
-                $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+                $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $".number_format($currentFamilyAmount, 2, '.', ',');
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -568,7 +567,7 @@ if ($output == 'pdf') {
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary = "$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+                $sFundSummary = "$currentFundName Total - $countFund $item:   $".number_format($currentFundAmount, 2, '.', ',');
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
@@ -590,30 +589,30 @@ if ($output == 'pdf') {
             }
 
             // Print Deposit Detail
-            if ($detail_level == 'detail') {
+            if ($detail_level === 'detail') {
                 // Format Data
-                if ($plg_method == 'CREDITCARD') {
+                if ($plg_method === 'CREDITCARD') {
                     $plg_method = 'CREDIT';
                 }
-                if ($plg_method == 'BANKDRAFT') {
+                if ($plg_method === 'BANKDRAFT') {
                     $plg_method = 'DRAFT';
                 }
                 if ($plg_method != 'CHECK') {
                     $plg_CheckNo = $plg_method;
                 }
                 if (strlen($plg_CheckNo) > 8) {
-                    $plg_CheckNo = '...' . mb_substr($plg_CheckNo, -8, 8);
+                    $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
                 }
                 $sDeposit = "Dep #$plg_depID $dep_Date";
                 if (strlen($sDeposit) > 22) {
-                    $sDeposit = mb_substr($sDeposit, 0, 21) . '...';
+                    $sDeposit = mb_substr($sDeposit, 0, 21).'...';
                 }
                 if (strlen($plg_comment) > 29) {
-                    $plg_comment = mb_substr($plg_comment, 0, 28) . '...';
+                    $plg_comment = mb_substr($plg_comment, 0, 28).'...';
                 }
-                $fam_Name = $fam_Name . ' - ' . $fam_Address1;
+                $fam_Name = $fam_Name.' - '.$fam_Address1;
                 if (strlen($fam_Name) > 31) {
-                    $fam_Name = mb_substr($fam_Name, 0, 30) . '...';
+                    $fam_Name = mb_substr($fam_Name, 0, 30).'...';
                 }
 
                 // Print Data
@@ -657,7 +656,7 @@ if ($output == 'pdf') {
             } else {
                 $item = gettext('item');
             }
-            $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+            $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $".number_format($currentFamilyAmount, 2, '.', ',');
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -671,7 +670,7 @@ if ($output == 'pdf') {
         } else {
             $item = gettext('item');
         }
-        $sFundSummary = "$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+        $sFundSummary = "$currentFundName Total - $countFund $item:   $".number_format($currentFundAmount, 2, '.', ',');
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
@@ -680,7 +679,7 @@ if ($output == 'pdf') {
             $pdf->line(40, $curY - 2, 195, $curY - 2);
         }
         $page = $pdf->pageBreak($page);
-    } elseif ($sort == 'family') {
+    } elseif ($sort === 'family') {
         // **********************
         // Sort by Family  Report
         // **********************
@@ -711,7 +710,7 @@ if ($output == 'pdf') {
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary = "$currentFundName - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+                $sFundSummary = "$currentFundName - $countFund $item:   $".number_format($currentFundAmount, 2, '.', ',');
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -729,7 +728,7 @@ if ($output == 'pdf') {
                 } else {
                     $item = gettext('item');
                 }
-                $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+                $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $".number_format($currentFamilyAmount, 2, '.', ',');
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sFamilySummary, 0, 0, 'R');
@@ -751,30 +750,30 @@ if ($output == 'pdf') {
             }
 
             // Print Deposit Detail
-            if ($detail_level == 'detail') {
+            if ($detail_level === 'detail') {
                 // Format Data
-                if ($plg_method == 'CREDITCARD') {
+                if ($plg_method === 'CREDITCARD') {
                     $plg_method = 'CREDIT';
                 }
-                if ($plg_method == 'BANKDRAFT') {
+                if ($plg_method === 'BANKDRAFT') {
                     $plg_method = 'DRAFT';
                 }
                 if ($plg_method != 'CHECK') {
                     $plg_CheckNo = $plg_method;
                 }
                 if (strlen($plg_CheckNo) > 8) {
-                    $plg_CheckNo = '...' . mb_substr($plg_CheckNo, -8, 8);
+                    $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
                 }
                 $sDeposit = "Dep #$plg_depID $dep_Date";
                 if (strlen($sDeposit) > 22) {
-                    $sDeposit = mb_substr($sDeposit, 0, 21) . '...';
+                    $sDeposit = mb_substr($sDeposit, 0, 21).'...';
                 }
                 if (strlen($plg_comment) > 29) {
-                    $plg_comment = mb_substr($plg_comment, 0, 28) . '...';
+                    $plg_comment = mb_substr($plg_comment, 0, 28).'...';
                 }
                 $sFundName = $fun_Name;
                 if (strlen($sFundName) > 31) {
-                    $sFundName = mb_substr($sFundName, 0, 30) . '...';
+                    $sFundName = mb_substr($sFundName, 0, 30).'...';
                 }
 
                 // Print Data
@@ -818,7 +817,7 @@ if ($output == 'pdf') {
             } else {
                 $item = gettext('item');
             }
-            $sFundSummary = "$currentFundName - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+            $sFundSummary = "$currentFundName - $countFund $item:   $".number_format($currentFundAmount, 2, '.', ',');
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -832,7 +831,7 @@ if ($output == 'pdf') {
         } else {
             $item = gettext('item');
         }
-        $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+        $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $".number_format($currentFamilyAmount, 2, '.', ',');
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sFamilySummary, 0, 0, 'R');
@@ -849,7 +848,7 @@ if ($output == 'pdf') {
     } else {
         $item = gettext('item');
     }
-    $sReportSummary = "Report Total ($countReport $item):   $" . number_format($currentReportAmount, 2, '.', ',');
+    $sReportSummary = "Report Total ($countReport $item):   $".number_format($currentReportAmount, 2, '.', ',');
     $pdf->SetXY(20, $curY);
     $pdf->SetFont('Times', 'B', 10);
     $pdf->Cell(176, $summaryIntervalY, $sReportSummary, 0, 0, 'R');
@@ -867,7 +866,7 @@ if ($output == 'pdf') {
     reset($totalFund);
     while ($FundTotal = current($totalFund)) {
         if (strlen(key($totalFund) > 22)) {
-            $sfun_Name = mb_substr(key($totalFund), 0, 21) . '...';
+            $sfun_Name = mb_substr(key($totalFund), 0, 21).'...';
         } else {
             $sfun_Name = key($totalFund);
         }
@@ -880,11 +879,11 @@ if ($output == 'pdf') {
     }
 
     $pdf->finishPage($page);
-    $pdf->Output('DepositReport-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+    $pdf->Output('DepositReport-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 
     // Output a text file
     // ##################
-} elseif ($output == 'csv') {
+} elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
     $eol = "\r\n";
@@ -894,23 +893,23 @@ if ($output == 'pdf') {
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {
-        $buffer .= trim($heading) . $delimiter;
+        $buffer .= trim($heading).$delimiter;
     }
     // Remove trailing delimiter and add eol
-    $buffer = mb_substr($buffer, 0, -1) . $eol;
+    $buffer = mb_substr($buffer, 0, -1).$eol;
 
     // Add data
     while ($row = mysqli_fetch_row($rsReport)) {
         foreach ($row as $field) {
             $field = str_replace($delimiter, ' ', $field);    // Remove any delimiters from data
-            $buffer .= $field . $delimiter;
+            $buffer .= $field.$delimiter;
         }
         // Remove trailing delimiter and add eol
-        $buffer = mb_substr($buffer, 0, -1) . $eol;
+        $buffer = mb_substr($buffer, 0, -1).$eol;
     }
 
     // Export file
     header('Content-type: text/x-csv');
-    header("Content-Disposition: attachment; filename='ChurchCRM" . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
+    header("Content-Disposition: attachment; filename='ChurchCRM".date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
     echo $buffer;
 }
