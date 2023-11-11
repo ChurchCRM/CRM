@@ -2024,10 +2024,6 @@ msgid "Add New Group"
 msgstr "Додати нову групу"
 
 #: 
-msgid "Submit"
-msgstr "Подати"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Редактор властивостей учасника групи"
 
@@ -8217,11 +8213,6 @@ msgid "New Calendar"
 msgstr "Новий календар"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI вимкнено, але деякі календарі мають маркери доступу"
-
-#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Для спільного використання календарів потрібно ввімкнути параметр bEnableExternalCalendarAPI на додаток до календаря, що має певний маркер доступу"
 
@@ -8984,10 +8975,6 @@ msgstr "Версія сервера баз даних"
 #: 
 msgid "Web Server"
 msgstr "Веб-сервер"
-
-#: 
-msgid "Server Software"
-msgstr "Серверне програмне забезпечення"
 
 #: 
 msgid "Email Information"
