@@ -60,18 +60,21 @@ class Photo
             return strpos($photoFile, 'remote') !== false;
         }
 
-        // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
-        $remotePhotoCacheDuration = SystemConfig::getValue('iRemotePhotoCacheDuration');
-        if (!$remotePhotoCacheDuration) {
-            LoggerUtils::getAppLogger()->error(
-                'config iRemotePhotoCacheDuration somehow not set, please investigate',
-                ['stacktrace' => debug_backtrace()]
-            );
-
-            // default defined in SystemConfig.php
-            $interval = \DateInterval::createFromDateString('72 hours');
-        } else {
-            $interval = \DateInterval::createFromDateString($remotePhotoCacheDuration);
+        // default defined in SystemConfig.php
+        $interval = \DateInterval::createFromDateString('72 hours');
+        try {
+            // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
+            $remotePhotoCacheDuration = SystemConfig::getValue('iRemotePhotoCacheDuration');
+            if (!$remotePhotoCacheDuration) {
+                LoggerUtils::getAppLogger()->error(
+                    'config iRemotePhotoCacheDuration somehow not set, please investigate',
+                    ['stacktrace' => debug_backtrace()]
+                );
+            } else {
+                $interval = \DateInterval::createFromDateString($remotePhotoCacheDuration);
+            }
+        } catch (\Exception $exception) {
+            // use default value
         }
         $remoteCacheThreshold = new \DateTimeImmutable();
         $remoteCacheThreshold = $remoteCacheThreshold->sub($interval);
