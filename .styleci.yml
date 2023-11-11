@@ -8,6 +8,7 @@ use-tabs: false
 
 enabled:
 - assign_null_coalescing_to_coalesce_equal
+- backtick_to_shell_exec
 
  
 disabled:
