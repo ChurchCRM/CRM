@@ -10,7 +10,7 @@ enabled:
   - short_array_syntax
 
 disabled:
-  - long_array_syntax
+#  - long_array_syntax
 
 finder:
   path:
