@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\CanvassDataQuery as BaseCanvassDataQuery;
+use ChurchCRM\model\ChurchCRM\Base\CanvassDataQuery as BaseCanvassDataQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'canvassdata_can' table.

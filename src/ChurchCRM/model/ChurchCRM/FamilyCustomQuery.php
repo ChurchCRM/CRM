@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\FamilyCustomQuery as BaseFamilyCustomQuery;
+use ChurchCRM\model\ChurchCRM\Base\FamilyCustomQuery as BaseFamilyCustomQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'family_custom' table.

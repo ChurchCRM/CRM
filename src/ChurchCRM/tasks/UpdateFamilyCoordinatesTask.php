@@ -3,7 +3,7 @@
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 
 class UpdateFamilyCoordinatesTask
 {

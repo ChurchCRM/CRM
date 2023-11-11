@@ -6,7 +6,7 @@ use ChurchCRM\Authentication\AuthenticationResult;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\Authentication\Requests\AuthenticationRequest;
 use ChurchCRM\Exceptions\NotImplementedException;
-use ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
 
 class APITokenAuthentication implements IAuthenticationProvider

@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 
 class Classification
 {

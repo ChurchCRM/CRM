@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\QueryParameters as BaseQueryParameters;
+use ChurchCRM\model\ChurchCRM\Base\QueryParameters as BaseQueryParameters;
 
 /**
  * Skeleton subclass for representing a row from the 'queryparameters_qrp' table.

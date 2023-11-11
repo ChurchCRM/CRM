@@ -15,8 +15,8 @@ require 'Include/Functions.php';
 require 'Include/CanvassUtilities.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Note;
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;

@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\DonatedItemQuery as BaseDonatedItemQuery;
+use ChurchCRM\model\ChurchCRM\Base\DonatedItemQuery as BaseDonatedItemQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'donateditem_di' table.

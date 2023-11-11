@@ -4,7 +4,7 @@ namespace ChurchCRM\dto;
 
 use ChurchCRM\Config;
 use ChurchCRM\data\Countries;
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use Exception;
 use Monolog\Logger;
 

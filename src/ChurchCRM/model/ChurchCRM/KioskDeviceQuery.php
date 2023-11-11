@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\KioskDeviceQuery as BaseKioskDeviceQuery;
+use ChurchCRM\model\ChurchCRM\Base\KioskDeviceQuery as BaseKioskDeviceQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'kioskdevice_kdev' table.

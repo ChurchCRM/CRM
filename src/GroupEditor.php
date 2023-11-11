@@ -15,8 +15,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\GroupQuery;
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;

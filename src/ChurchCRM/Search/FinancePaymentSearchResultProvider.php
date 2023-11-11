@@ -5,7 +5,7 @@ namespace ChurchCRM\Search;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PledgeQuery;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -59,7 +59,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
                     }
                 }
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
 

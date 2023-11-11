@@ -1,7 +1,7 @@
 <?php
 
-use ChurchCRM\MenuLink;
-use ChurchCRM\MenuLinkQuery;
+use ChurchCRM\model\ChurchCRM\MenuLink;
+use ChurchCRM\model\ChurchCRM\MenuLinkQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Utils\ORMUtils;
 use Slim\Http\Request;

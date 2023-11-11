@@ -1,12 +1,12 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Deposit as BaseDeposit;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Map\DonationFundTableMap;
-use ChurchCRM\Map\PledgeTableMap;
-use ChurchCRM\PledgeQuery as ChildPledgeQuery;
+use ChurchCRM\model\ChurchCRM\Base\Deposit as BaseDeposit;
+use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
+use ChurchCRM\model\ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 

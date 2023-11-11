@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\TokenQuery as BaseTokenQuery;
+use ChurchCRM\model\ChurchCRM\Base\TokenQuery as BaseTokenQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'tokens' table.

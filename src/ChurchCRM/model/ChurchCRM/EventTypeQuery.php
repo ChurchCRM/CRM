@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\EventTypeQuery as BaseEventTypeQuery;
+use ChurchCRM\model\ChurchCRM\Base\EventTypeQuery as BaseEventTypeQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'event_types' table.

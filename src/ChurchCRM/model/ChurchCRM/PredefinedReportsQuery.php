@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\PredefinedReportsQuery as BasePredefinedReportsQuery;
+use ChurchCRM\model\ChurchCRM\Base\PredefinedReportsQuery as BasePredefinedReportsQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'query_qry' table.

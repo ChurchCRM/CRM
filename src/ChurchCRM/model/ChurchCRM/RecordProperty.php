@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\RecordProperty as BaseRecordProperty;
+use ChurchCRM\model\ChurchCRM\Base\RecordProperty as BaseRecordProperty;
 
 /**
  * Skeleton subclass for representing a row from the 'record2property_r2p' table.

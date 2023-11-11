@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\FamilyCustomMaster as BaseFamilyCustomMaster;
+use ChurchCRM\model\ChurchCRM\Base\FamilyCustomMaster as BaseFamilyCustomMaster;
 
 /**
  * Skeleton subclass for representing a row from the 'family_custom_master' table.

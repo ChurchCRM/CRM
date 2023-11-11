@@ -4,7 +4,7 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\SundaySchoolService;
 
 $sundaySchoolService = new SundaySchoolService();

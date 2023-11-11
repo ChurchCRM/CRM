@@ -1,8 +1,10 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\KioskDevice as BaseKioskDevice;
+use ChurchCRM\dto\KioskAssignmentTypes;
+use ChurchCRM\model\ChurchCRM\Base\KioskDevice as BaseKioskDevice;
+use ChurchCRM\Utils\MiscUtils;
 
 class KioskDevice extends BaseKioskDevice
 {
@@ -31,7 +33,7 @@ class KioskDevice extends BaseKioskDevice
         $assignmentJSON = null;
         $assignment = $this->getActiveAssignment();
 
-        if (isset($assignment) && $assignment->getAssignmentType() == dto\KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {
+        if (isset($assignment) && $assignment->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {
             $assignment->getEvent();
             $assignmentJSON = $assignment->toJSON();
         }
@@ -71,8 +73,8 @@ class KioskDevice extends BaseKioskDevice
 
     public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
     {
-        if (!isset($this->Name)) {
-            $this->setName(Utils\MiscUtils::randomWord());
+        if (!isset($this->getName())) {
+            $this->setName(MiscUtils::randomWord());
         }
 
         return true;

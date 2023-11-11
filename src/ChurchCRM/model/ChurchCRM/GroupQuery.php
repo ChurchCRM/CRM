@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\GroupQuery as BaseGroupQuery;
+use ChurchCRM\model\ChurchCRM\Base\GroupQuery as BaseGroupQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\Join;
 use Propel\Runtime\Connection\ConnectionInterface;
