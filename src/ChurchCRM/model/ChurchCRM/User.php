@@ -1,11 +1,12 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
-use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\KeyManager;
+use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
 use PragmaRX\Google2FA\Google2FA;
@@ -447,7 +448,6 @@ class User extends BaseUser
         $this->setNeedPasswordChange(false);
         $this->save();
         $this->createTimeLineNote('password-changed-admin');
-
     }
 
     public function userChangePassword($oldPassword, $newPassword)
@@ -476,7 +476,6 @@ class User extends BaseUser
         $this->setNeedPasswordChange(false);
         $this->save();
         $this->createTimeLineNote('password-changed');
-
     }
 
     private function getIsPasswordPermissible($newPassword)

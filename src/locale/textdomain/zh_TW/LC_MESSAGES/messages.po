@@ -2085,10 +2085,6 @@ msgid "Add New Group"
 msgstr "添加新群組"
 
 #: 
-msgid "Submit"
-msgstr "提交"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "群組成員的屬性編輯器"
 
@@ -8391,11 +8387,6 @@ msgid "New Calendar"
 msgstr "新日曆"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "已禁用bEnableExternalCalendarAPI，但某些日曆具有訪問令牌"
-
-#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "對於要共享的日曆，除了具有特定訪問令牌的日曆之外，還必須啟用bEnableExternalCalendarAPI設置"
 
@@ -9261,10 +9252,6 @@ msgid "Web Server"
 msgstr "網頁伺服器"
 
 #: 
-msgid "Server Software"
-msgstr "伺服器軟體"
-
-#: 
 msgid "Email Information"
 msgstr "電子郵件資訊"
 
@@ -9700,4 +9687,79 @@ msgstr "無效的出生日期: 缺少出生月份或日期."
 #, fuzzy
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "無效的出生日期: 缺少出生的月份和日期."
+
+#: 
+#, fuzzy
+msgid "System"
+msgstr "系統"
+
+#: 
+#, fuzzy
+msgid "Amharic - Ethiopia"
+msgstr "阿姆哈拉語 - 衣索比亞"
+
+#: 
+#, fuzzy
+msgid "Czech"
+msgstr "捷克語"
+
+#: 
+#, fuzzy
+msgid "Finnish"
+msgstr "芬蘭文"
+
+#: 
+#, fuzzy
+msgid "Greek"
+msgstr "希臘語"
+
+#: 
+#, fuzzy
+msgid "Turkish"
+msgstr "土耳其文"
+
+#: 
+#, fuzzy
+msgid "Ukrainian"
+msgstr "烏克蘭文"
+
+#: 
+#, fuzzy
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "當您按兩下「提交到 GitHub」 時，您將被定向到 GitHub 問題頁面，並預先填寫您的系統資訊。"
+
+#: 
+#, fuzzy
+msgid "Submit to GitHub"
+msgstr "提交到 GitHub"
+
+#: 
+#, fuzzy
+msgid "Change role"
+msgstr "更改角色"
+
+#: 
+#, fuzzy
+msgid "Closed"
+msgstr "關閉"
+
+#: 
+#, fuzzy
+msgid "Delete this person?"
+msgstr "刪除此人？"
+
+#: 
+#, fuzzy
+msgid "Deposit ID"
+msgstr "存款編號"
+
+#: 
+#, fuzzy
+msgid "Deposit Total"
+msgstr "存款總額"
+
+#: 
+#, fuzzy
+msgid "Group Cart Status"
+msgstr "群組購物車狀態"
 

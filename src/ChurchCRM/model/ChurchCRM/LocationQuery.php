@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\LocationQuery as BaseLocationQuery;
+use ChurchCRM\model\ChurchCRM\Base\LocationQuery as BaseLocationQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'locations' table.

@@ -14,10 +14,10 @@
 // Include the function library
 require '../Include/Config.php';
 require '../Include/Functions.php';
-use ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Utils\RedirectUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Authentication\AuthenticationManager;

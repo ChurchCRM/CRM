@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Config as BaseConfig;
+use ChurchCRM\model\ChurchCRM\Base\Config as BaseConfig;
 
 /**
  * Skeleton subclass for representing a row from the 'config_cfg' table.

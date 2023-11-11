@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\EventAttend as BaseEventAttend;
+use ChurchCRM\model\ChurchCRM\Base\EventAttend as BaseEventAttend;
 
 /**
  * Skeleton subclass for representing a row from the 'event_attend' table.

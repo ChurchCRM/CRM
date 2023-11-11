@@ -22,7 +22,7 @@ require 'Include/Functions.php';
 $sPageTitle = gettext('Group Listing');
 require 'Include/Header.php';
 
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 

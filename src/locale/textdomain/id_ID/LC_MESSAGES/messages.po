@@ -2027,10 +2027,6 @@ msgid "Add New Group"
 msgstr "Tambahkan Grup Baru"
 
 #: 
-msgid "Submit"
-msgstr "Kirimkan"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Editor Properti Anggota Grup"
 
@@ -8222,11 +8218,6 @@ msgid "New Calendar"
 msgstr "Kalender Baru"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI dinonaktifkan, tetapi beberapa kalender memiliki token akses"
-
-#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Agar kalender dapat dibagikan, pengaturan bEnableExternalCalendarAPI harus diaktifkan selain kalender yang memiliki token akses khusus"
 
@@ -8992,10 +8983,6 @@ msgid "Web Server"
 msgstr "Web Server"
 
 #: 
-msgid "Server Software"
-msgstr "Server Perangkat Lunak"
-
-#: 
 msgid "Email Information"
 msgstr "Informasi Email"
 
@@ -9354,4 +9341,64 @@ msgstr "Tanggal lahir tidak sesuai: Tanggal atau bulan kelahiran tidak ditemukan
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Tanggal lahir tidak sesuai: Tanggal dan bulan kelahiran tidak ditemukan."
+
+#: 
+msgid "System"
+msgstr "Sistem"
+
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Amharic - Etiopia"
+
+#: 
+msgid "Czech"
+msgstr "Ceko"
+
+#: 
+msgid "Finnish"
+msgstr "Finlandia"
+
+#: 
+msgid "Greek"
+msgstr "Yunani"
+
+#: 
+msgid "Turkish"
+msgstr "Turki"
+
+#: 
+msgid "Ukrainian"
+msgstr "Ukrania"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Ketika mengklik \"Kirim ke Github\", Anda akan dialihkan ke halaman isu GitHub yang telah diisi dengan info sistem Anda"
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Kirim ke Github"
+
+#: 
+msgid "Change role"
+msgstr "Ubah peran"
+
+#: 
+msgid "Closed"
+msgstr "Ditutup"
+
+#: 
+msgid "Delete this person?"
+msgstr "Hapus orang ini?"
+
+#: 
+msgid "Deposit ID"
+msgstr "ID Deposit"
+
+#: 
+msgid "Deposit Total"
+msgstr "Total Deposit"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Status Keranjang Kelompok"
 

@@ -1,7 +1,7 @@
 <?php
 
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
-use ChurchCRM\User;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

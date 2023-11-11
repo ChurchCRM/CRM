@@ -3,7 +3,7 @@
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonRoleDataCheck implements TaskInterface

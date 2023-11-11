@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\UserConfig as BaseUserConfig;
+use ChurchCRM\model\ChurchCRM\Base\UserConfig as BaseUserConfig;
 
 /**
  * Skeleton subclass for representing a row from the 'userconfig_ucfg' table.

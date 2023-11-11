@@ -3,6 +3,7 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Emails\NotificationEmail;
+use ChurchCRM\model\ChurchCRM\Person;
 use Vonage\Client;
 use Vonage\Client\Credentials\Basic;
 
@@ -25,7 +26,7 @@ class Notification
     {
     }
 
-    public function setPerson(\ChurchCRM\Person $Person)
+    public function setPerson(Person $Person)
     {
         $this->person = $Person;
     }

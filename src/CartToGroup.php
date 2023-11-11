@@ -16,7 +16,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;

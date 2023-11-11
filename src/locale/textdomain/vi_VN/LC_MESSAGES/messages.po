@@ -2041,10 +2041,6 @@ msgid "Add New Group"
 msgstr "Thêm Ban/Mục vụ mới"
 
 #: 
-msgid "Submit"
-msgstr "Gửi đi"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Trình chỉnh sửa thuộc tính thành viên nhóm"
 
@@ -8236,11 +8232,6 @@ msgid "New Calendar"
 msgstr "Tạo lịch mới"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI bị vô hiệu hóa, nhưng một số lịch có mã thông báo truy cập"
-
-#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Để lịch được chia sẻ, cài đặt bEnableExternalCalendarAPI phải được bật ngoài việc lịch có mã thông báo truy cập cụ thể"
 
@@ -9004,10 +8995,6 @@ msgstr "Phiên bản máy chủ cơ sở dữ liệu"
 #: 
 msgid "Web Server"
 msgstr "Máy chủ web"
-
-#: 
-msgid "Server Software"
-msgstr "Phần mềm máy chủ"
 
 #: 
 msgid "Email Information"

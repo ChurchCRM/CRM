@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService

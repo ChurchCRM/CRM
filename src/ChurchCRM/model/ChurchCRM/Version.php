@@ -1,8 +1,9 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Version as BaseVersion;
+use ChurchCRM\ArrayUtils;
+use ChurchCRM\model\ChurchCRM\Base\Version as BaseVersion;
 
 /**
  * Skeleton subclass for representing a row from the 'version_ver' table.

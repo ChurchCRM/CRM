@@ -2,10 +2,10 @@
 
 namespace ChurchCRM\Dashboard;
 
-use ChurchCRM\EventQuery;
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\Map\FamilyTableMap;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class EventsMenuItems implements DashboardItemInterface

@@ -1,7 +1,7 @@
 <?php
 
-use ChurchCRM\Family;
-use ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ORMUtils;

@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\WhyCameQuery as BaseWhyCameQuery;
+use ChurchCRM\model\ChurchCRM\Base\WhyCameQuery as BaseWhyCameQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'whycame_why' table.

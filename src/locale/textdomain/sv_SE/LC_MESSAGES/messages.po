@@ -2087,10 +2087,6 @@ msgid "Add New Group"
 msgstr "Lägg till ny grupp"
 
 #: 
-msgid "Submit"
-msgstr "Lämna in"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Grupp medlemmar egenskapar redigeringsverktyg"
 
@@ -8366,11 +8362,6 @@ msgid "New Calendar"
 msgstr "Ny kalender"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI är inaktiverat, men vissa kalendrar har åtkomsttecken"
-
-#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "För att kalendrar ska delas måste inställningen bEnableExternalCalendarAPI vara aktiverad förutom att kalendern har ett specifikt åtkomsttoken"
 
@@ -9145,10 +9136,6 @@ msgstr "Databaseserverversion"
 #: 
 msgid "Web Server"
 msgstr "Webbserver"
-
-#: 
-msgid "Server Software"
-msgstr "Serverprogramvara"
 
 #: 
 msgid "Email Information"

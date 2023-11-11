@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\UserSettingQuery as BaseUserSettingQuery;
+use ChurchCRM\model\ChurchCRM\Base\UserSettingQuery as BaseUserSettingQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'user_settings' table.

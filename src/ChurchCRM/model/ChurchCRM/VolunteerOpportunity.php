@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\VolunteerOpportunity as BaseVolunteerOpportunity;
+use ChurchCRM\model\ChurchCRM\Base\VolunteerOpportunity as BaseVolunteerOpportunity;
 
 /**
  * Skeleton subclass for representing a row from the 'volunteeropportunity_vol' table.

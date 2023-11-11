@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\KioskAssignmentQuery as BaseKioskAssignmentQuery;
+use ChurchCRM\model\ChurchCRM\Base\KioskAssignmentQuery as BaseKioskAssignmentQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'kioskassginment_kasm' table.

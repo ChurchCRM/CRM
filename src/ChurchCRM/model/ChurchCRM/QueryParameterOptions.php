@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\QueryParameterOptions as BaseQueryParameterOptions;
+use ChurchCRM\model\ChurchCRM\Base\QueryParameterOptions as BaseQueryParameterOptions;
 
 /**
  * Skeleton subclass for representing a row from the 'queryparameteroptions_qpo' table.

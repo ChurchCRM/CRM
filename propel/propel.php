@@ -2,6 +2,11 @@
 
 return [
     'propel' => [
+        'generator' => [
+            'schema' => [
+                'autoPackage' => true,
+            ],
+        ],
         'database' => [
             'connections' => [
                 'default' => [

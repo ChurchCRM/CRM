@@ -3,7 +3,7 @@
 namespace ChurchCRM\Slim\Middleware\Request;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
