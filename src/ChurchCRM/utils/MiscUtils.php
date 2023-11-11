@@ -19,7 +19,7 @@ class MiscUtils
     public static function randomToken()
     {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $apiKey = []; //remember to declare $apiKey as an array
+        $apiKey = array(); //remember to declare $apiKey as an array
         $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
         for ($i = 0; $i < 50; $i++) {
             $n = random_int(0, $alphaLength);
@@ -31,9 +31,9 @@ class MiscUtils
 
     public static function randomWord($length = 6)
     {
-        $cons = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z', 'pt', 'gl', 'gr', 'ch', 'ph', 'ps', 'sh', 'st', 'th', 'wh'];
-        $cons_cant_start = ['ck', 'cm', 'dr', 'ds', 'ft', 'gh', 'gn', 'kr', 'ks', 'ls', 'lt', 'lr', 'mp', 'mt', 'ms', 'ng', 'ns', 'rd', 'rg', 'rs', 'rt', 'ss', 'ts', 'tch'];
-        $vows = ['a', 'e', 'i', 'o', 'u', 'y', 'ee', 'oa', 'oo'];
+        $cons = array('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z', 'pt', 'gl', 'gr', 'ch', 'ph', 'ps', 'sh', 'st', 'th', 'wh');
+        $cons_cant_start = array('ck', 'cm', 'dr', 'ds', 'ft', 'gh', 'gn', 'kr', 'ks', 'ls', 'lt', 'lr', 'mp', 'mt', 'ms', 'ng', 'ns', 'rd', 'rg', 'rs', 'rt', 'ss', 'ts', 'tch');
+        $vows = array('a', 'e', 'i', 'o', 'u', 'y', 'ee', 'oa', 'oo');
         $current = (random_int(0, 1) === 0 ? 'cons' : 'vows');
         $word = '';
         while (strlen($word) < $length) {

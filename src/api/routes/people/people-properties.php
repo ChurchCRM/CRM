@@ -80,12 +80,12 @@ function getProperties(Response $response, $type, $id)
         ->filterByRecordId($id)
         ->find();
 
-    $finalProperties = [];
+    $finalProperties = array();
 
     foreach ($properties as $property) {
         $rawProp = $property->getProperty();
         if ($rawProp->getProClass() == $type) {
-            $tempProp = [];
+            $tempProp = array();
             $tempProp['id'] = $property->getPropertyId();
             $tempProp['name'] = $rawProp->getProName();
             $tempProp['value'] = $property->getPropertyValue();
@@ -133,12 +133,12 @@ function addProperty(Request $request, Response $response, $id, $property)
 
     if ($personProperty) {
         if (empty($property->getProPrompt()) || $personProperty->getPropertyValue() == $propertyValue) {
-            return $response->withJson(['success' => true, 'msg' => gettext('The property is already assigned.')]);
+            return $response->withJson(array('success' => true, 'msg' => gettext('The property is already assigned.')));
         }
 
         $personProperty->setPropertyValue($propertyValue);
         if ($personProperty->save()) {
-            return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
+            return $response->withJson(array('success' => true, 'msg' => gettext('The property is successfully assigned.')));
         } else {
             return $response->withStatus(500, gettext('The property could not be assigned.'));
         }
@@ -149,7 +149,7 @@ function addProperty(Request $request, Response $response, $id, $property)
         $personProperty->setPropertyValue($propertyValue);
         $personProperty->save();
 
-        return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
+        return $response->withJson(array('success' => true, 'msg' => gettext('The property is successfully assigned.')));
     }
 
     return $response->withStatus(500, gettext('The property could not be assigned.'));
@@ -168,7 +168,7 @@ function removeProperty($response, $id, $property)
 
     $personProperty->delete();
     if ($personProperty->isDeleted()) {
-        return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
+        return $response->withJson(array('success' => true, 'msg' => gettext('The property is successfully unassigned.')));
     } else {
         return $response->withStatus(500, gettext('The property could not be unassigned.'));
     }

@@ -69,7 +69,7 @@ class FileSystemUtils
         }
 
         $logger->info('Moving files: '.$src.' to '.$dest);
-        $files = array_diff(scandir($src), ['.', '..']);
+        $files = array_diff(scandir($src), array('.', '..'));
         foreach ($files as $file) {
             if (is_dir("$src/$file")) {
                 mkdir("$dest/$file");

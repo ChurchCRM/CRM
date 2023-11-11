@@ -21,7 +21,7 @@ function viewDashboard(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/root/');
 
-    $dashboardCounts = [];
+    $dashboardCounts = array();
 
     $dashboardCounts['families'] = FamilyQuery::Create()
         ->filterByDateDeactivated()
@@ -46,13 +46,13 @@ function viewDashboard(Request $request, Response $response, array $args)
         ->find()
         ->count();
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'           => SystemURLs::getRootPath(),
         'sPageTitle'          => gettext('Welcome to').' '.ChurchMetaData::getChurchName(),
         'dashboardCounts'     => $dashboardCounts,
         'sundaySchoolEnabled' => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
         'depositEnabled'      => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),
-    ];
+    );
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
 }

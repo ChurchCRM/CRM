@@ -16,5 +16,5 @@ $app->group('/public', function () use ($app) {
  */
 function getEcho(Request $request, Response $response, array $p_args)
 {
-    return $response->withJson(['message' => 'echo']);
+    return $response->withJson(array('message' => 'echo'));
 }

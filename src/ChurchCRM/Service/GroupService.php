@@ -98,7 +98,7 @@ class GroupService
      */
     public function getGroupRoles($groupID)
     {
-        $groupRoles = [];
+        $groupRoles = array();
         $sSQL = 'SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
               FROM group_grp
               LEFT JOIN list_lst ON
@@ -250,13 +250,13 @@ class GroupService
             }
         }
 
-        return json_encode([
-            'newRole' => [
+        return json_encode(array(
+            'newRole' => array(
                 'roleID'   => $newOptionID,
                 'roleName' => $groupRoleName,
                 'sequence' => $newOptionSequence,
-            ],
-        ], JSON_THROW_ON_ERROR);
+            ),
+        ), JSON_THROW_ON_ERROR);
     }
 
     public function enableGroupSpecificProperties($groupID)
@@ -304,7 +304,7 @@ class GroupService
             $whereClause = ' AND p2g2r_per_ID = '.$personID;
         }
 
-        $members = [];
+        $members = array();
         // Main select query
         $sSQL = 'SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
 

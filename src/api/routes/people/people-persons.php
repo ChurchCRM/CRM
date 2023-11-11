@@ -34,7 +34,7 @@ $app->group('/persons', function () use ($app) {
 
         $id = 1;
 
-        $return = [];
+        $return = array();
         foreach ($people as $person) {
             $values['id'] = $id++;
             $values['objid'] = $person->getId();
@@ -59,7 +59,7 @@ $app->group('/persons', function () use ($app) {
             ->limit(100)
             ->find();
 
-        return $response->withJson(['people' => $people->toArray()]);
+        return $response->withJson(array('people' => $people->toArray()));
     });
 });
 
@@ -81,27 +81,27 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
     $statement->execute();
     $dupEmails = $statement->fetchAll();
 
-    $emails = [];
+    $emails = array();
     foreach ($dupEmails as $dbEmail) {
         $email = $dbEmail['email'];
         $dbPeople = PersonQuery::create()->filterByEmail($email)->_or()->filterByWorkEmail($email)->find();
-        $people = [];
+        $people = array();
         foreach ($dbPeople as $person) {
-            array_push($people, ['id' => $person->getId(), 'name' => $person->getFullName()]);
+            array_push($people, array('id' => $person->getId(), 'name' => $person->getFullName()));
         }
-        $families = [];
+        $families = array();
         $dbFamilies = FamilyQuery::create()->findByEmail($email);
         foreach ($dbFamilies as $family) {
-            array_push($families, ['id' => $family->getId(), 'name' => $family->getName()]);
+            array_push($families, array('id' => $family->getId(), 'name' => $family->getName()));
         }
-        array_push($emails, [
+        array_push($emails, array(
             'email'    => $email,
             'people'   => $people,
             'families' => $families,
-        ]);
+        ));
     }
 
-    return $response->withJson(['emails' => $emails]);
+    return $response->withJson(array('emails' => $emails));
 }
 
 function getLatestPersons(Request $request, Response $response, array $p_args)
@@ -140,10 +140,10 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $p_
 
 function buildFormattedPersonList(Collection $people, bool $created, bool $edited, bool $birthday)
 {
-    $formattedList = [];
+    $formattedList = array();
 
     foreach ($people as $person) {
-        $formattedPerson = [];
+        $formattedPerson = array();
         $formattedPerson['PersonId'] = $person->getId();
         $formattedPerson['FirstName'] = $person->getFirstName();
         $formattedPerson['LastName'] = $person->getLastName();
@@ -164,5 +164,5 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
         array_push($formattedList, $formattedPerson);
     }
 
-    return ['people' => $formattedList];
+    return array('people' => $formattedList);
 }

@@ -24,10 +24,10 @@ class NotificationEmail extends BaseEmail
 
     public function getTokens()
     {
-        $myTokens = [
+        $myTokens = array(
             'toName' => gettext('Guardian(s) of').' '.$this->notificationSource,
             'body'   => gettext('A notification was triggered by the classroom teacher at').' '.date('Y-m-d H:i:s').' '.gettext('Please go to this location'),
-        ];
+        );
 
         return array_merge($this->getCommonTokens(), $myTokens);
     }

@@ -78,7 +78,7 @@ function CanvassProgressReport($iFYID)
     $totalDone = 0;
 
     // Get all the canvassers
-    $canvassGroups = ['Canvassers', 'BraveCanvassers'];
+    $canvassGroups = array('Canvassers', 'BraveCanvassers');
     foreach ($canvassGroups as $cgName) {
         $rsCanvassers = CanvassGetCanvassers(gettext($cgName));
         if ($rsCanvassers == 0) {
@@ -343,7 +343,7 @@ function CanvassSummaryReport($iFYID)
     $sSQL = 'SELECT * FROM canvassdata_can WHERE can_FYID='.$iFYID;
     $rsCanvassData = RunQuery($sSQL);
 
-    foreach ([gettext('Positive'), gettext('Critical'), gettext('Insightful'), gettext('Financial'), gettext('Suggestion'), gettext('WhyNotInterested')] as $colName) {
+    foreach (array(gettext('Positive'), gettext('Critical'), gettext('Insightful'), gettext('Financial'), gettext('Suggestion'), gettext('WhyNotInterested')) as $colName) {
         $pdf->SetFont('Times', 'B', 14);
 
         $pdf->Write(5, $colName.' '.gettext('Comments')."\n");

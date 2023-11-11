@@ -44,7 +44,7 @@ function GetGroupArray($iGroupID)
 		   WHERE p2g2r_grp_ID = ".$iGroupID.' ORDER BY per_LastName, per_FirstName';
     $rsGroupMembers = RunQuery($sSQL);
 
-    $ret = [];
+    $ret = array();
     while ($aGroupMember = mysqli_fetch_array($rsGroupMembers)) {
         $ret[] = $aGroupMember;
     }

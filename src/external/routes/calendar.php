@@ -15,5 +15,5 @@ function serveCalendarPage($request, $response)
     $eventSource = SystemURLs::getRootPath().'/api/public/calendar/'.$request->getAttribute('route')->getArgument('CalendarAccessToken').'/fullcalendar';
     $calendarName = $request->getAttribute('calendar')->getName();
 
-    return $renderer->render($response, 'calendar.php', ['eventSource' => $eventSource, 'calendarName' => $calendarName]);
+    return $renderer->render($response, 'calendar.php', array('eventSource' => $eventSource, 'calendarName' => $calendarName));
 }

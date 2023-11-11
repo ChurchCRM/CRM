@@ -19,7 +19,7 @@ $app->group('/deposits', function () use ($app) {
 
     $app->get('/dashboard', function ($request, $response, $args) {
         $list = DepositQuery::create()
-            ->filterByDate(['min' => date('Y-m-d', strtotime('-90 days'))])
+            ->filterByDate(array('min' => date('Y-m-d', strtotime('-90 days'))))
             ->find();
 
         return $response->withJson($list->toArray());
@@ -76,7 +76,7 @@ $app->group('/deposits', function () use ($app) {
     $app->delete('/{id:[0-9]+}', function ($request, $response, $args) {
         $id = $args['id'];
         DepositQuery::create()->findOneById($id)->delete();
-        echo json_encode(['success' => true]);
+        echo json_encode(array('success' => true));
     });
 
     $app->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {

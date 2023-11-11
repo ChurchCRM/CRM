@@ -93,8 +93,8 @@ class LocaleInfo
 
     public function getLocaleArray()
     {
-        $utfList = ['.utf8', '.UTF8', '.utf-8', '.UTF-8'];
-        $localArray = [];
+        $utfList = array('.utf8', '.UTF8', '.utf-8', '.UTF-8');
+        $localArray = array();
         array_push($localArray, $this->getLanguageCode());
         foreach ($utfList as $item) {
             array_push($localArray, $this->getLanguageCode().$item);

@@ -42,7 +42,7 @@ $app->group('/person/{personId:[0-9]+}', function () use ($app) {
         }
         $person->delete();
 
-        return $response->withJson(['status' => gettext('success')]);
+        return $response->withJson(array('status' => gettext('success')));
     })->add(new DeleteRecordRoleAuthMiddleware());
 
     $app->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
@@ -55,13 +55,13 @@ $app->group('/person/{personId:[0-9]+}', function () use ($app) {
         $person = $request->getAttribute('person');
         $input = (object) $request->getParsedBody();
         $person->setImageFromBase64($input->imgBase64);
-        $response->withJson(['status' => 'success']);
+        $response->withJson(array('status' => 'success'));
     })->add(new EditRecordsRoleAuthMiddleware());
 
     $app->delete('/photo', function (Request $request, Response $response, array $args) {
         $person = $request->getAttribute('person');
 
-        return $response->withJson(['success' => $person->deletePhoto()]);
+        return $response->withJson(array('success' => $person->deletePhoto()));
     })->add(new DeleteRecordRoleAuthMiddleware());
 })->add(new PersonAPIMiddleware());
 
@@ -77,12 +77,12 @@ function setPersonRoleAPI(Request $request, Response $response, array $args)
     }
 
     if ($person->getFmrId() == $roleId) {
-        return $response->withJson(['success' => true, 'msg' => gettext('The role is already assigned.')]);
+        return $response->withJson(array('success' => true, 'msg' => gettext('The role is already assigned.')));
     }
 
     $person->setFmrId($role->getOptionId());
     if ($person->save()) {
-        return $response->withJson(['success' => true, 'msg' => gettext('The role is successfully assigned.')]);
+        return $response->withJson(array('success' => true, 'msg' => gettext('The role is successfully assigned.')));
     } else {
         return $response->withStatus(500, gettext('The role could not be assigned.'));
     }

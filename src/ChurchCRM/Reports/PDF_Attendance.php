@@ -82,7 +82,7 @@ class PdfAttendance extends ChurchInfoReport
             $fontTitleNormal = 10;
         }
 
-        $aNoSchoolX = [];
+        $aNoSchoolX = array();
         $noSchoolCnt = 0;
 
 //

@@ -21,7 +21,7 @@ class PdfDirectory extends ChurchInfoReport
     public string $sRecordName;
     public $sLastName;
     public $_ColWidth = 58;
-    public $_Custom = [];
+    public $_Custom = array();
     public $_NCols = 3;
     public $_PS = 'Letter';
     public $sSortBy = '';

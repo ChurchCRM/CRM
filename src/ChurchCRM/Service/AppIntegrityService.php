@@ -26,7 +26,7 @@ class AppIntegrityService
                     MiscUtils::throwIfFailed($integrityCheckFileContents);
                     AppIntegrityService::$IntegrityCheckDetails = json_decode($integrityCheckFileContents, null, 512, JSON_THROW_ON_ERROR);
                 } catch (\Exception $e) {
-                    $logger->warning('Error decoding integrity check result file: '.$integrityCheckFile, ['exception' => $e]);
+                    $logger->warning('Error decoding integrity check result file: '.$integrityCheckFile, array('exception' => $e));
                     AppIntegrityService::$IntegrityCheckDetails = new \stdClass();
                     AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
                     AppIntegrityService::$IntegrityCheckDetails->message = gettext('Error decoding integrity check result file');
@@ -64,7 +64,7 @@ class AppIntegrityService
 
     public static function getFilesFailingIntegrityCheck()
     {
-        return AppIntegrityService::getIntegrityCheckData()->files ?? [];
+        return AppIntegrityService::getIntegrityCheckData()->files ?? array();
     }
 
     public static function verifyApplicationIntegrity(): array
@@ -72,7 +72,7 @@ class AppIntegrityService
         $logger = LoggerUtils::getAppLogger();
 
         $signatureFile = SystemURLs::getDocumentRoot().'/signatures.json';
-        $signatureFailures = [];
+        $signatureFailures = array();
         if (is_file($signatureFile)) {
             $logger->info('Signature file found at: '.$signatureFile);
 
@@ -81,12 +81,12 @@ class AppIntegrityService
                 MiscUtils::throwIfFailed($signatureFileContents);
                 $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
             } catch (\Exception $e) {
-                $logger->warning('Error decoding signature definition file: '.$signatureFile, ['exception' => $e]);
+                $logger->warning('Error decoding signature definition file: '.$signatureFile, array('exception' => $e));
 
-                return [
+                return array(
                     'status'  => 'failure',
                     'message' => gettext('Error decoding signature definition file'),
-                ];
+                );
             }
             if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) === $signatureData->sha1) {
                 foreach ($signatureData->files as $file) {
@@ -95,48 +95,48 @@ class AppIntegrityService
                         $actualHash = sha1_file($currentFile);
                         if ($actualHash != $file->sha1) {
                             $logger->warning('File hash mismatch: '.$file->filename.'. Expected: '.$file->sha1.'; Got: '.$actualHash);
-                            array_push($signatureFailures, [
+                            array_push($signatureFailures, array(
                                 'filename'     => $file->filename,
                                 'status'       => 'Hash Mismatch',
                                 'expectedhash' => $file->sha1,
                                 'actualhash'   => $actualHash,
-                            ]);
+                            ));
                         }
                     } else {
                         $logger->warning('File Missing: '.$file->filename);
-                        array_push($signatureFailures, [
+                        array_push($signatureFailures, array(
                             'filename' => $file->filename,
                             'status'   => 'File Missing',
-                        ]);
+                        ));
                     }
                 }
             } else {
                 $logger->warning('Signature definition file signature failed validation');
 
-                return [
+                return array(
                     'status'  => 'failure',
                     'message' => gettext('Signature definition file signature failed validation'),
-                ];
+                );
             }
         } else {
             $logger->warning('Signature definition file not found at: '.$signatureFile);
 
-            return [
+            return array(
                 'status'  => 'failure',
                 'message' => gettext('Signature definition File Missing'),
-            ];
+            );
         }
 
         if (count($signatureFailures) > 0) {
-            return [
+            return array(
                 'status'  => 'failure',
                 'message' => gettext('One or more files failed signature validation'),
                 'files'   => $signatureFailures,
-            ];
+            );
         } else {
-            return [
+            return array(
                 'status' => 'success',
-            ];
+            );
         }
     }
 
@@ -152,7 +152,7 @@ class AppIntegrityService
      */
     public static function getApplicationPrerequisites(): array
     {
-        $prerequisites = [
+        $prerequisites = array(
             new Prerequisite('PHP 8.1+', fn () => version_compare(PHP_VERSION, '8.1.0', '>=')),
             new Prerequisite('PCRE and UTF-8 Support', fn () => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
             new Prerequisite('Multibyte Encoding', fn () => extension_loaded('mbstring')),
@@ -171,7 +171,7 @@ class AppIntegrityService
             new Prerequisite('Images directory is writeable', fn () => AppIntegrityService::testImagesWriteable()),
             new Prerequisite('PHP ZipArchive', fn () => extension_loaded('zip')),
             new Prerequisite('Mysqli Functions', fn () => function_exists('mysqli_connect')),
-        ];
+        );
 
         return $prerequisites;
     }
@@ -233,7 +233,7 @@ class AppIntegrityService
                 curl_setopt($ch, CURLOPT_NOBODY, 1);
                 $output = curl_exec($ch);
                 curl_close($ch);
-                $headers = [];
+                $headers = array();
                 $data = explode("\n", $output);
                 $headers['status'] = $data[0];
                 array_shift($data);

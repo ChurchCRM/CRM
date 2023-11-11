@@ -20,7 +20,7 @@ class Event extends BaseEvent
 {
     private bool $editable = true;
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
         $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
         $array['PinnedCalendars'] = array_map('intval', Base\CalendarEventQuery::create()
@@ -54,7 +54,7 @@ class Event extends BaseEvent
         ->setCheckoutDate(null)
         ->save();
 
-        return ['status' => 'success'];
+        return array('status' => 'success');
     }
 
     public function checkOutPerson($PersonId)
@@ -70,7 +70,7 @@ class Event extends BaseEvent
         ->setCheckoutDate(date('Y-m-d H:i:s'))
         ->save();
 
-        return ['status' => 'success'];
+        return array('status' => 'success');
     }
 
     public function getViewURI()

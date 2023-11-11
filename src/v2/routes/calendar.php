@@ -18,20 +18,20 @@ function getCalendar(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/calendar/');
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'      => SystemURLs::getRootPath(),
         'sPageTitle'     => gettext('Calendar'),
         'calendarJSArgs' => getCalendarJSArgs(),
-    ];
+    );
 
     return $renderer->render($response, 'calendar.php', $pageArgs);
 }
 
 function getCalendarJSArgs()
 {
-    return [
+    return array(
         'isModifiable'               => AuthenticationManager::getCurrentUser()->isAddEvent(),
         'countCalendarAccessTokens'  => CalendarQuery::create()->filterByAccessToken(null, Criteria::NOT_EQUAL)->count(),
         'bEnableExternalCalendarAPI' => SystemConfig::getBooleanValue('bEnableExternalCalendarAPI'),
-    ];
+    );
 }

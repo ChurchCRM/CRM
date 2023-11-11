@@ -46,10 +46,10 @@ class GeoUtils
             $logger->warning('issue creating geoCoder '.$exception->getMessage());
         }
 
-        return [
+        return array(
             'Latitude'  => $lat,
             'Longitude' => $long,
-        ];
+        );
     }
 
     public static function drivingDistanceMatrix($address1, $address2)
@@ -65,10 +65,10 @@ class GeoUtils
         $details = json_decode($gMapsResponse, true, 512, JSON_THROW_ON_ERROR);
         $matrixElements = $details['rows'][0]['elements'][0];
 
-        return [
+        return array(
             'distance' => $matrixElements['distance']['text'],
             'duration' => $matrixElements['duration']['text'],
-        ];
+        );
     }
 
     // Function takes latitude and longitude

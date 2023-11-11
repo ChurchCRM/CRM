@@ -18,14 +18,14 @@ use ChurchCRM\Utils\InputUtils;
 
 $sLabelFormat = InputUtils::legacyFilterInput($_GET['labeltype']);
 $bRecipientNamingMethod = $_GET['recipientnamingmethod'];
-setcookie('labeltype', $sLabelFormat, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('labeltype', $sLabelFormat, array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 
 $pdf = new PdfLabel($sLabelFormat);
 
 $sFontInfo = FontFromName($_GET['labelfont']);
-setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('labelfont', $_GET['labelfont'], array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 $sFontSize = $_GET['labelfontsize'];
-setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('labelfontsize', $sFontSize, array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 if ($sFontSize != 'default') {
     $pdf->setCharSize($sFontSize);

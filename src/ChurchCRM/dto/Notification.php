@@ -37,7 +37,7 @@ class Notification
 
     private function sendEmail()
     {
-        $emailaddresses = [];
+        $emailaddresses = array();
         foreach ($this->recipients as $recipient) {
             array_push($emailaddresses, $recipient->getEmail());
         }
@@ -58,11 +58,11 @@ class Notification
             $client = new Client(new Basic(SystemConfig::getValue('sNexmoAPIKey'), SystemConfig::getValue('sNexmoAPISecret')));
 
             foreach ($this->recipients as $recipient) {
-                $message = $client->message()->sendText([
+                $message = $client->message()->sendText(array(
                     'to'   => $recipient->getNumericCellPhone(),
                     'from' => SystemConfig::getValue('sNexmoFromNumber'),
                     'text' => gettext('Notification for').' '.$this->person->getFullName(),
-                ]);
+                ));
             }
 
             return true;
@@ -89,7 +89,7 @@ class Notification
 
     public function send()
     {
-        $methods = [];
+        $methods = array();
         if (SystemConfig::hasValidMailServerSettings()) {
             $send = $this->sendEmail();
             array_push($methods, 'email: '.$send);
@@ -102,10 +102,10 @@ class Notification
             $send = (bool) $this->sendProjector();
             array_push($methods, 'projector: '.$send);
         }
-        $sendStatus = [
+        $sendStatus = array(
             'status'  => '',
             'methods' => $methods,
-        ];
+        );
 
         return json_encode($sendStatus, JSON_THROW_ON_ERROR);
     }

@@ -20,11 +20,11 @@ function viewUserNotFound(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/common/');
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'  => SystemURLs::getRootPath(),
         'memberType' => 'User',
         'id'         => $request->getParam('id'),
-    ];
+    );
 
     return $renderer->render($response, 'not-found-view.php', $pageArgs);
 }
@@ -45,10 +45,10 @@ function viewUser(Request $request, Response $response, array $args)
         return $response->withRedirect(SystemURLs::getRootPath().'/v2/admin/user/not-found?id='.$args['id']);
     }
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath' => SystemURLs::getRootPath(),
         'user'      => $user,
-    ];
+    );
 
     return $renderer->render($response, 'user.php', $pageArgs);
 }
@@ -77,10 +77,10 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
         return $response->withRedirect(SystemURLs::getRootPath().'/v2/user/current/changepassword');
     }
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath' => SystemURLs::getRootPath(),
         'user'      => $user,
-    ];
+    );
 
     if ($request->getMethod() === 'POST') {
         $loginRequestBody = (object) $request->getParsedBody();

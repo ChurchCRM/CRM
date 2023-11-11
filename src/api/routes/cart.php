@@ -5,7 +5,7 @@ use ChurchCRM\dto\Cart;
 $app->group('/cart', function () use ($app) {
     $app->get(
         '/',
-        fn ($request, $response, $args) => $response->withJson(['PeopleCart' => $_SESSION['aPeopleCart']])
+        fn ($request, $response, $args) => $response->withJson(array('PeopleCart' => $_SESSION['aPeopleCart']))
     );
 
     $app->post('/', function ($request, $response, $args) {
@@ -20,27 +20,27 @@ $app->group('/cart', function () use ($app) {
             throw new \Exception(gettext('POST to cart requires a Persons array, FamilyID, or GroupID'), 500);
         }
 
-        return $response->withJson(['status' => 'success']);
+        return $response->withJson(array('status' => 'success'));
     });
 
     $app->post('/emptyToGroup', function ($request, $response, $args) {
         $cartPayload = (object) $request->getParsedBody();
         Cart::emptyToGroup($cartPayload->groupID, $cartPayload->groupRoleID);
 
-        return $response->withJson([
+        return $response->withJson(array(
             'status'  => 'success',
             'message' => gettext('records(s) successfully added to selected Group.'),
-        ]);
+        ));
     });
 
     $app->post('/removeGroup', function ($request, $response, $args) {
         $cartPayload = (object) $request->getParsedBody();
         Cart::removeGroup($cartPayload->Group);
 
-        return $response->withJson([
+        return $response->withJson(array(
             'status'  => 'success',
             'message' => gettext('records(s) successfully deleted from the selected Group.'),
-        ]);
+        ));
     });
 
     /**
@@ -53,14 +53,14 @@ $app->group('/cart', function () use ($app) {
         } else {
             $sMessage = gettext('Your cart is empty');
             if (count($_SESSION['aPeopleCart']) > 0) {
-                $_SESSION['aPeopleCart'] = [];
+                $_SESSION['aPeopleCart'] = array();
                 $sMessage = gettext('Your cart has been successfully emptied');
             }
         }
 
-        return $response->withJson([
+        return $response->withJson(array(
             'status'  => 'success',
             'message' => $sMessage,
-        ]);
+        ));
     });
 });

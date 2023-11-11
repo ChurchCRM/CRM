@@ -25,10 +25,10 @@ class UpgradeService
 
         $logger->info(
             "Current Version: $db_version",
-            [
+            array(
                 'dbVersion'                => $db_version,
                 'softwareInstalledVersion' => $_SESSION['sSoftwareInstalledVersion'],
-            ]
+            )
         );
         if ($db_version === $_SESSION['sSoftwareInstalledVersion']) {
             return true;
@@ -79,12 +79,12 @@ class UpgradeService
                 } catch (\Exception $exc) {
                     $logger->error(
                         'Failure executing upgrade script(s): '.$exc->getMessage(),
-                        [
+                        array(
                             'exception'                 => $exc,
                             'scriptName'                => $scriptName,
                             'version'                   => $version->getVersion(),
                             'numUpgradeScriptsExecuted' => $upgradeScriptsExecuted,
-                        ]
+                        )
                     );
 
                     throw $exc;
@@ -101,7 +101,7 @@ class UpgradeService
         } catch (\Exception $exc) {
             $logger->error(
                 'Database upgrade failed: '.$exc->getMessage(),
-                ['exception' => $exc]
+                array('exception' => $exc)
             );
 
             throw $exc; //allow the method requesting the upgrade to handle this failure also.

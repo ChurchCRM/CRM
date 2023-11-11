@@ -91,7 +91,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                             ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce ORDER BY per_LastName, per_FirstName
                             ->findByGroupId($iGroupID);
 
-    $students = [];
+    $students = array();
 
     foreach ($groupRoleMemberships as $groupRoleMembership) {
         $person = $groupRoleMembership->getPerson();
@@ -132,7 +132,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         } elseif ($lst_OptionName == gettext('Liaison')) {
             $liaisonString .= gettext('Liaison').':'.$person->getFullName().' '.$phone.' ';
         } elseif ($lst_OptionName === 'Student') {
-            $elt = ['perID' => $groupRoleMembership->getPersonId()];
+            $elt = array('perID' => $groupRoleMembership->getPersonId());
 
             array_push($students, $elt);
         }

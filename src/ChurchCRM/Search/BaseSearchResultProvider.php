@@ -7,7 +7,7 @@ abstract class BaseSearchResultProvider
     /* @var string */
     protected $pluralNoun;
     /* @var ChurchCRM\Search\SearchResult[] */
-    protected $searchResults = [];
+    protected $searchResults = array();
 
     abstract public function getSearchResults(string $SearchQuery);
 
@@ -17,7 +17,7 @@ abstract class BaseSearchResultProvider
             return new SearchResultGroup(gettext($this->pluralNoun).' ('.count($this->searchResults).')', $this->searchResults);
         }
 
-        return [];
+        return array();
     }
 
     protected function addSearchResults(array $results)

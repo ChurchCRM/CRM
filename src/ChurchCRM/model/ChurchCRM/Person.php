@@ -195,7 +195,7 @@ class Person extends BasePerson implements PhotoInterface
     public function getAddress()
     {
         if (!empty($this->getAddress1())) {
-            $address = [];
+            $address = array();
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
                 $tmp = $tmp.' '.$this->getAddress2();
@@ -317,10 +317,10 @@ class Person extends BasePerson implements PhotoInterface
             }
         }
 
-        return [
+        return array(
             'Latitude'  => $lat,
             'Longitude' => $lng,
-        ];
+        );
     }
 
     public function deletePhoto()
@@ -570,7 +570,7 @@ class Person extends BasePerson implements PhotoInterface
           ->where('r2p_record_ID='.$this->getId())
           ->find();
 
-        $PropertiesList = [];
+        $PropertiesList = array();
         foreach ($personProperties as $element) {
             $PropertiesList[] = $element->getProName();
         }
@@ -595,7 +595,7 @@ class Person extends BasePerson implements PhotoInterface
         $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
 
         // get custom column names and values
-        $personCustom = [];
+        $personCustom = array();
         if ($rawQry->count() > 0) {
             foreach ($allPersonCustomFields as $customfield) {
                 if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
@@ -619,7 +619,7 @@ class Person extends BasePerson implements PhotoInterface
         ->where('p2g2r_per_ID='.$this->getId())
         ->find();
 
-        $group = [];
+        $group = array();
         foreach ($GroupList as $element) {
             $group[] = $element->getName();
         }
@@ -683,7 +683,7 @@ class Person extends BasePerson implements PhotoInterface
         return $this->getFullName().' '.$this->getAge();
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
         $array = parent::toArray();
         $array['Address'] = $this->getAddress();

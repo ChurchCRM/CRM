@@ -35,7 +35,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new \DateTime());
 
-    $familyMembers = [];
+    $familyMembers = array();
 
     if ($family->validate()) {
         foreach ($familyMetadata->people as $personMetaData) {
@@ -63,14 +63,14 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
             if (!$person->validate()) {
                 LoggerUtils::getAppLogger()->error('Public Reg Error with the following data: '.json_encode($personMetaData, JSON_THROW_ON_ERROR));
 
-                return $response->withStatus(401)->withJson(['error' => gettext('Validation Error'),
-                    'failures'                                       => ORMUtils::getValidationErrors($person->getValidationFailures())]);
+                return $response->withStatus(401)->withJson(array('error' => gettext('Validation Error'),
+                    'failures'                                            => ORMUtils::getValidationErrors($person->getValidationFailures())));
             }
             array_push($familyMembers, $person);
         }
     } else {
-        return $response->withStatus(400)->withJson(['error' => gettext('Validation Error'),
-            'failures'                                       => ORMUtils::getValidationErrors($family->getValidationFailures())]);
+        return $response->withStatus(400)->withJson(array('error' => gettext('Validation Error'),
+            'failures'                                            => ORMUtils::getValidationErrors($family->getValidationFailures())));
     }
 
     $family->save();
@@ -97,6 +97,6 @@ function registerPersonAPI(Request $request, Response $response, array $args)
         return $response->withHeader('Content-Type', 'application/json')->write($person->exportTo('JSON'));
     }
 
-    return $response->withStatus(400)->withJson(['error' => gettext('Validation Error'),
-        'failures'                                       => ORMUtils::getValidationErrors($person->getValidationFailures())]);
+    return $response->withStatus(400)->withJson(array('error' => gettext('Validation Error'),
+        'failures'                                            => ORMUtils::getValidationErrors($person->getValidationFailures())));
 }

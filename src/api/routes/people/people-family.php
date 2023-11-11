@@ -37,7 +37,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
     $app->delete('/photo', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
 
-        return $response->withJson(['status' => $family->deletePhoto()]);
+        return $response->withJson(array('status' => $family->deletePhoto()));
     })->add(new EditRecordsRoleAuthMiddleware());
 
     $app->get('/thumbnail', function ($request, $response, $args) {
@@ -75,7 +75,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
 
     $app->get('/nav', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
-        $familyNav = [];
+        $familyNav = array();
         $familyNav['PreFamilyId'] = 0;
         $familyNav['NextFamilyId'] = 0;
 
@@ -108,10 +108,10 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
             LoggerUtils::getAppLogger()->error($e->getMessage());
 
             return $response->withStatus(500)
-                ->withJson([
+                ->withJson(array(
                     'message' => gettext('Error sending email(s)').' - '.gettext('Please check logs for more information'),
                     'trace'   => $e->getMessage(),
-                ]);
+                ));
         }
     });
 
@@ -127,13 +127,13 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         $family->createTimeLineNote('verify-URL');
 
         return $response
-            ->withJson(['url' => SystemURLs::getURL().'/external/verify/'.$token->getToken()]);
+            ->withJson(array('url' => SystemURLs::getURL().'/external/verify/'.$token->getToken()));
     });
 
     $app->post('/verify/now', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
         $family->verify();
 
-        return $response->withJson(['message' => 'Success']);
+        return $response->withJson(array('message' => 'Success'));
     });
 })->add(new FamilyAPIMiddleware());

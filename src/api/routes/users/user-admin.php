@@ -75,7 +75,7 @@ function deleteUser(Request $request, Response $response, array $args)
         }
     }
 
-    return $response->withJson(['user' => $userName]);
+    return $response->withJson(array('user' => $userName));
 }
 
 function getUserPermissionsAPI(Request $request, Response $response, array $args)
@@ -83,5 +83,5 @@ function getUserPermissionsAPI(Request $request, Response $response, array $args
     $userId = $args['userId'];
     $user = UserQuery::create()->findPk($userId);
 
-    return $response->withJson(['user' => $user->getName(), 'userId' => $user->getId(), 'addEvent' => $user->isAddEvent(), 'csvExport' => $user->isCSVExport()]);
+    return $response->withJson(array('user' => $user->getName(), 'userId' => $user->getId(), 'addEvent' => $user->isAddEvent(), 'csvExport' => $user->isCSVExport()));
 }

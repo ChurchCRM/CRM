@@ -17,7 +17,7 @@ function genAPIKey(Request $request, Response $response, array $args)
     $user->save();
     $user->createTimeLineNote('api-key-regen');
 
-    return $response->withJson(['apiKey' => $user->getApiKey()]);
+    return $response->withJson(array('apiKey' => $user->getApiKey()));
 }
 
 function updateUserConfig(Request $request, Response $response, array $args)
@@ -29,6 +29,6 @@ function updateUserConfig(Request $request, Response $response, array $args)
     $user->setUserConfigString($userConfigName, $newValue);
     $user->save();
     if ($user->getUserConfigString($userConfigName) == $newValue) {
-        return $response->withJson([$userConfigName => $newValue]);
+        return $response->withJson(array($userConfigName => $newValue));
     }
 }

@@ -107,7 +107,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     extract($aFam);
 
-    $emaillist = [];
+    $emaillist = array();
 
     $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     $curY += SystemConfig::getValue('incrementY');

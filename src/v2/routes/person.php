@@ -13,11 +13,11 @@ function viewPersonNotFound(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/common/');
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'  => SystemURLs::getRootPath(),
         'memberType' => 'Person',
         'id'         => $request->getParam('id'),
-    ];
+    );
 
     return $renderer->render($response, 'not-found-view.php', $pageArgs);
 }

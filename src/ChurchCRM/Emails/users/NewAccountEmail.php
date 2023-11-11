@@ -25,8 +25,8 @@ class NewAccountEmail extends BaseUserEmail
     public function getTokens()
     {
         $parentTokens = parent::getTokens();
-        $myTokens = ['password' => $this->password,
-            'passwordText'      => gettext('New Password')];
+        $myTokens = array('password' => $this->password,
+            'passwordText'           => gettext('New Password'));
 
         return array_merge($parentTokens, $myTokens);
     }

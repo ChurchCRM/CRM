@@ -14,7 +14,7 @@ $app->group('/payments', function () use ($app) {
 
     $app->post('/', function ($request, $response, $args) use ($app) {
         $payment = $request->getParsedBody();
-        echo json_encode(['payment' => $app->FinancialService->submitPledgeOrPayment($payment)], JSON_THROW_ON_ERROR);
+        echo json_encode(array('payment' => $app->FinancialService->submitPledgeOrPayment($payment)), JSON_THROW_ON_ERROR);
     });
 
     $app->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
@@ -32,7 +32,7 @@ $app->group('/payments', function () use ($app) {
         $query->innerJoinDonationFund()->withColumn('donationfund_fun.fun_Name', 'PledgeName');
         $data = $query->find();
 
-        $rows = [];
+        $rows = array();
 
         foreach ($data as $row) {
             $newRow['FormattedFY'] = $row->getFormattedFY();
@@ -50,12 +50,12 @@ $app->group('/payments', function () use ($app) {
             array_push($rows, $newRow);
         }
 
-        return $response->withJson(['data' => $rows]);
+        return $response->withJson(array('data' => $rows));
     });
 
     $app->delete('/{groupKey}', function (Request $request, Response $response, array $args) use ($app) {
         $groupKey = $args['groupKey'];
         $app->FinancialService->deletePayment($groupKey);
-        echo json_encode(['status' => 'ok']);
+        echo json_encode(array('status' => 'ok'));
     });
 })->add(new FinanceRoleAuthMiddleware());

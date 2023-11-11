@@ -15,7 +15,7 @@ class PersonService
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
         _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
         limit(15)->find();
-        $return = [];
+        $return = array();
         foreach ($people as $person) {
             $values['id'] = $person->getId();
             $values['familyID'] = $person->getFamId();
@@ -66,15 +66,15 @@ class PersonService
 
               order by per_id;";
         $rsPeopleWithEmails = RunQuery($sSQL);
-        $people = [];
+        $people = array();
         $lastPersonId = 0;
-        $person = [];
+        $person = array();
         while ($row = mysqli_fetch_array($rsPeopleWithEmails)) {
             if ($lastPersonId != $row['per_ID']) {
                 if ($lastPersonId != 0) {
                     array_push($people, $person);
                 }
-                $person = [];
+                $person = array();
                 $person['id'] = $row['per_ID'];
                 $person['email'] = $row['per_Email'];
                 $person['firstName'] = $row['per_FirstName'];

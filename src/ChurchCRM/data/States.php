@@ -8,7 +8,7 @@ use ChurchCRM\Utils\MiscUtils;
 class States
 {
     private $countryCode;
-    private $states = [];
+    private $states = array();
 
     public function __construct($countryCode)
     {

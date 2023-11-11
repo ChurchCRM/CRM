@@ -346,7 +346,7 @@ if ($output === 'pdf') {
     $currentDepositID = 0;
     $currentFundID = 0;
     $totalAmount = 0;
-    $totalFund = [];
+    $totalFund = array();
 
     $countFund = 0;
     $countDeposit = 0;

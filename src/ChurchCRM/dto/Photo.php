@@ -17,7 +17,7 @@ class Photo
     private $thumbnailContentType;
     private bool $remotesEnabled;
 
-    public static $validExtensions = ['png', 'jpeg', 'jpg'];
+    public static $validExtensions = array('png', 'jpeg', 'jpg');
 
     public function __construct($photoType, $id)
     {
@@ -65,7 +65,7 @@ class Photo
         if (!$remotePhotoCacheDuration) {
             LoggerUtils::getAppLogger()->error(
                 'config iRemotePhotoCacheDuration somehow not set, please investigate',
-                ['stacktrace' => debug_backtrace()]
+                array('stacktrace' => debug_backtrace())
             );
 
             // default defined in SystemConfig.php
@@ -89,7 +89,7 @@ class Photo
         $extensions = Photo::$validExtensions;
 
         foreach ($extensions as $ext) {
-            $photoFiles = [$baseName.'.'.$ext, $baseName.'-remote.'.$ext, $baseName.'-initials.'.$ext];
+            $photoFiles = array($baseName.'.'.$ext, $baseName.'-remote.'.$ext, $baseName.'-initials.'.$ext);
             foreach ($photoFiles as $photoFile) {
                 if (is_file($photoFile)) {
                     $this->setURIs($photoFile);
@@ -222,7 +222,7 @@ class Photo
         $d = '404';
         $r = 'g';
         $img = false;
-        $atts = [];
+        $atts = array();
         $url = 'https://www.gravatar.com/avatar/';
         $url .= md5(strtolower(trim($email)));
         $url .= "?s=$s&d=$d&r=$r";
@@ -276,7 +276,7 @@ class Photo
     {
         $retstr = '';
         if ($this->photoType == 'Person') {
-            $fullNameArr = PersonQuery::create()->select(['FirstName', 'LastName'])->findOneById($this->id);
+            $fullNameArr = PersonQuery::create()->select(array('FirstName', 'LastName'))->findOneById($this->id);
             foreach ($fullNameArr as $name) {
                 $retstr .= mb_strtoupper(mb_substr($name, 0, 1));
             }
@@ -323,7 +323,7 @@ class Photo
 
     public function delete(): bool
     {
-        $deleted = [];
+        $deleted = array();
         if ($this->photoURI && is_file($this->photoURI)) {
             $deleted[$this->photoURI] = unlink($this->photoURI);
         }

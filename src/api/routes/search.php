@@ -23,8 +23,8 @@ use ChurchCRM\Search\PersonSearchResultProvider;
 // search for a string in Persons, families, groups, Financial Deposits and Payments
 $app->get('/search/{query}', function ($request, $response, $args) {
     $query = $args['query'];
-    $resultsArray = [];
-    $resultsProviders = [
+    $resultsArray = array();
+    $resultsProviders = array(
         new PersonSearchResultProvider(),
         new AddressSearchResultProvider(),
         new FamilySearchResultProvider(),
@@ -32,7 +32,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         new FinanceDepositSearchResultProvider(),
         new FinancePaymentSearchResultProvider(),
         new CalendarEventSearchResultProvider(),
-    ];
+    );
 
     foreach ($resultsProviders as $provider) {
         /* @var $provider iSearchResultProvider */

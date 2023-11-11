@@ -156,7 +156,7 @@ class User extends BaseUser
     public static function randomPassword()
     {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $pass = []; //remember to declare $pass as an array
+        $pass = array(); //remember to declare $pass as an array
         $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
         for ($i = 0; $i < SystemConfig::getValue('iMinPasswordLength'); $i++) {
             $n = random_int(0, $alphaLength);
@@ -315,7 +315,7 @@ class User extends BaseUser
     public function getStyle()
     {
         $skin = $this->getSetting(UserSetting::UI_STYLE) ?? 'skin-red';
-        $cssClasses = [];
+        $cssClasses = array();
         array_push($cssClasses, $skin);
         array_push($cssClasses, $this->getSetting(UserSetting::UI_BOXED));
         array_push($cssClasses, $this->getSetting(UserSetting::UI_SIDEBAR));
@@ -399,7 +399,7 @@ class User extends BaseUser
     public function getNewTwoFARecoveryCodes()
     {
         // generate an array of 2FA recovery codes, and store as an encrypted, comma-separated list
-        $recoveryCodes = [];
+        $recoveryCodes = array();
         for ($i = 0; $i < 12; $i++) {
             $recoveryCodes[$i] = base64_encode(random_bytes(10));
         }

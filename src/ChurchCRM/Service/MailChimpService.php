@@ -47,22 +47,22 @@ class MailChimpService
             $lists = $this->myMailchimp->get('lists')['lists'];
             LoggerUtils::getAppLogger()->debug('MailChimp list enumeration took: '.$time->getMilliseconds().' ms.  Found '.count($lists).' lists');
             foreach ($lists as &$list) {
-                $list['members'] = [];
+                $list['members'] = array();
                 $listmembers = $this->myMailchimp->get(
                     'lists/'.$list['id'].'/members',
-                    [
+                    array(
                         'count'  => $list['stats']['member_count'],
                         'fields' => 'members.id,members.email_address,members.status,members.merge_fields',
                         'status' => 'subscribed',
-                    ]
+                    )
                 );
                 foreach ($listmembers['members'] as $member) {
-                    array_push($list['members'], [
+                    array_push($list['members'], array(
                         'email'  => strtolower($member['email_address']),
                         'first'  => $member['merge_fields']['FNAME'],
                         'last'   => $member['merge_fields']['LNAME'],
                         'status' => $member['status'],
-                    ]);
+                    ));
                 }
                 LoggerUtils::getAppLogger()->debug('MailChimp list '.$list['id'].' membership '.count($list['members']));
             }
@@ -86,11 +86,11 @@ class MailChimpService
         }
 
         $lists = $this->getListsFromCache();
-        $listsStatus = [];
+        $listsStatus = array();
         foreach ($lists as $list) {
             $data = $this->myMailchimp->get('lists/'.$list['id'].'/members/'.md5($email));
             LoggerUtils::getAppLogger()->debug($email.' is '.$data['status'].' to '.$list['name']);
-            array_push($listsStatus, ['name' => $list['name'], 'status' => $data['status'], 'stats' => $data['stats']]);
+            array_push($listsStatus, array('name' => $list['name'], 'status' => $data['status'], 'stats' => $data['stats']));
         }
 
         return $listsStatus;

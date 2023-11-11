@@ -14,7 +14,7 @@ $app->group('/system/config/{configName}', function () use ($app) {
 
 function getConfigValueByNameAPI(Request $request, Response $response, array $args)
 {
-    return $response->withJson(['value' => SystemConfig::getValue($args['configName'])]);
+    return $response->withJson(array('value' => SystemConfig::getValue($args['configName'])));
 }
 
 function setConfigValueByNameAPI(Request $request, Response $response, array $args)
@@ -23,5 +23,5 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
     $input = (object) $request->getParsedBody();
     SystemConfig::setValue($configName, $input->value);
 
-    return $response->withJson(['value' => SystemConfig::getValue($configName)]);
+    return $response->withJson(array('value' => SystemConfig::getValue($configName)));
 }

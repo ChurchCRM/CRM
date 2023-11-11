@@ -23,7 +23,7 @@ $app->group('/families', function () use ($app) {
     $app->get('/email/without', function ($request, $response, $args) {
         $families = FamilyQuery::create()->joinWithPerson()->find();
 
-        $familiesWithoutEmails = [];
+        $familiesWithoutEmails = array();
         foreach ($families as $family) {
             if (empty($family->getEmail())) {
                 $hasEmail = false;
@@ -39,7 +39,7 @@ $app->group('/families', function () use ($app) {
             }
         }
 
-        return $response->withJson(['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
+        return $response->withJson(array('count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails));
     });
 
     $app->get(
@@ -49,7 +49,7 @@ $app->group('/families', function () use ($app) {
 
     $app->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
-        $results = [];
+        $results = array();
         $q = FamilyQuery::create()
             ->filterByName("%$query%", Criteria::LIKE)
             ->limit(15)
@@ -58,7 +58,7 @@ $app->group('/families', function () use ($app) {
             array_push($results, $family->toSearchArray());
         }
 
-        return $response->withJson(json_encode(['Families' => $results], JSON_THROW_ON_ERROR));
+        return $response->withJson(json_encode(array('Families' => $results), JSON_THROW_ON_ERROR));
     });
 
     $app->get('/self-register', function ($request, $response, $args) {
@@ -68,7 +68,7 @@ $app->group('/families', function () use ($app) {
             ->limit(100)
             ->find();
 
-        return $response->withJson(['families' => $families->toArray()]);
+        return $response->withJson(array('families' => $families->toArray()));
     });
 
     $app->get('/self-verify', function ($request, $response, $args) {
@@ -79,21 +79,21 @@ $app->group('/families', function () use ($app) {
             ->limit(100)
             ->find();
 
-        return $response->withJson(['families' => $verificationNotes->toArray()]);
+        return $response->withJson(array('families' => $verificationNotes->toArray()));
     });
 
     $app->get('/pending-self-verify', function ($request, $response, $args) {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::TYPE_FAMILY_VERIFY)
-            ->filterByRemainingUses(['min' => 1])
-            ->filterByValidUntilDate(['min' => new DateTime()])
+            ->filterByRemainingUses(array('min' => 1))
+            ->filterByValidUntilDate(array('min' => new DateTime()))
             ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
             ->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
             ->withColumn(TokenTableMap::COL_REFERENCE_ID, 'FamilyId')
             ->limit(100)
             ->find();
 
-        return $response->withJson(['families' => $pendingTokens->toArray()]);
+        return $response->withJson(array('families' => $pendingTokens->toArray()));
     });
 
     $app->get('/byCheckNumber/{scanString}', function ($request, $response, $args) use ($app) {
@@ -134,7 +134,7 @@ $app->group('/families', function () use ($app) {
             $note->save();
         }
 
-        return $response->withJson(['success' => true]);
+        return $response->withJson(array('success' => true));
     });
 });
 
@@ -176,10 +176,10 @@ function getUpdatedFamilies(Request $request, Response $response, array $p_args)
 
 function buildFormattedFamilies($families, $created, $edited, $wedding)
 {
-    $formattedList = [];
+    $formattedList = array();
 
     foreach ($families as $family) {
-        $formattedFamily = [];
+        $formattedFamily = array();
         $formattedFamily['FamilyId'] = $family->getId();
         $formattedFamily['Name'] = $family->getName();
         $formattedFamily['Address'] = $family->getAddress();
@@ -198,5 +198,5 @@ function buildFormattedFamilies($families, $created, $edited, $wedding)
         array_push($formattedList, $formattedFamily);
     }
 
-    return ['families' => $formattedList];
+    return array('families' => $formattedList);
 }

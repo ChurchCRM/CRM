@@ -19,7 +19,7 @@ function getUserSetting(Request $request, Response $response, array $args)
         $value = $setting->getValue();
     }
 
-    return $response->withJson(['value' => $value]);
+    return $response->withJson(array('value' => $value));
 }
 
 function updateUserSetting(Request $request, Response $response, array $args)
@@ -30,5 +30,5 @@ function updateUserSetting(Request $request, Response $response, array $args)
     $input = (object) $request->getParsedBody();
     $user->setSetting($settingName, $input->value);
 
-    return $response->withJson(['value' => $user->getSetting($settingName)->getValue()]);
+    return $response->withJson(array('value' => $user->getSetting($settingName)->getValue()));
 }

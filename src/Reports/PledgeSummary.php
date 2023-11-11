@@ -42,10 +42,10 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValu
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true' ORDER BY fun_Active, fun_Name";
 $rsFunds = RunQuery($sSQL);
 
-$overpaid = [];
-$underpaid = [];
-$pledgeFundTotal = [];
-$paymentFundTotal = [];
+$overpaid = array();
+$underpaid = array();
+$pledgeFundTotal = array();
+$paymentFundTotal = array();
 
 while ($row = mysqli_fetch_array($rsFunds)) {
     $fun_name = $row['fun_Name'];
@@ -121,8 +121,8 @@ if ($output === 'pdf') {
     // family, by fund.  It needs to go around one extra time so the last payment gets posted to underpaid/
     // overpaid.
     $curFam = 0;
-    $paidThisFam = [];
-    $pledgeThisFam = [];
+    $paidThisFam = array();
+    $pledgeThisFam = array();
     $totRows = mysqli_num_rows($rsPledges);
     $thisRow = 0;
     $fundName = '';
@@ -161,8 +161,8 @@ if ($output === 'pdf') {
                     $underpaid[$fun_name] -= $pledgeDiff;
                 }
             }
-            $paidThisFam = [];
-            $pledgeThisFam = [];
+            $paidThisFam = array();
+            $pledgeThisFam = array();
             $curFam = $plg_famID;
         }
 

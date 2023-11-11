@@ -20,14 +20,14 @@ function refresh2fasecret(Request $request, Response $response, array $args)
     $secret = $user->provisionNew2FAKey();
     LoggerUtils::getAuthLogger()->info('Began 2FA enrollment for user: '.$user->getUserName());
 
-    return $response->withJson(['TwoFAQRCodeDataUri' => LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $secret)->writeDataUri()]);
+    return $response->withJson(array('TwoFAQRCodeDataUri' => LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $secret)->writeDataUri()));
 }
 
 function refresh2farecoverycodes(Request $request, Response $response, array $args)
 {
     $user = AuthenticationManager::getCurrentUser();
 
-    return $response->withJson(['TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()]);
+    return $response->withJson(array('TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()));
 }
 
 function remove2fasecret(Request $request, Response $response, array $args)
@@ -35,7 +35,7 @@ function remove2fasecret(Request $request, Response $response, array $args)
     $user = AuthenticationManager::getCurrentUser();
     $user->remove2FAKey();
 
-    return $response->withJson([]);
+    return $response->withJson(array());
 }
 
 function get2faqrcode(Request $request, Response $response, array $args)
@@ -57,5 +57,5 @@ function test2FAEnrollmentCode(Request $request, Response $response, array $args
         LoggerUtils::getAuthLogger()->notice('Unsuccessful 2FA enrollment for user: '.$user->getUserName());
     }
 
-    return $response->withJson(['IsEnrollmentCodeValid' => $result]);
+    return $response->withJson(array('IsEnrollmentCodeValid' => $result));
 }

@@ -102,7 +102,7 @@ class BackupJob extends JobBase
         LoggerUtils::getAppLogger()->debug('Beginning to backup database to: '.$SqlFilePath->getPathname());
 
         try {
-            $dump = new Mysqldump(Bootstrapper::getDSN(), $sUSER, $sPASSWORD, ['add-drop-table' => true]);
+            $dump = new Mysqldump(Bootstrapper::getDSN(), $sUSER, $sPASSWORD, array('add-drop-table' => true));
             $dump->start($SqlFilePath->getPathname());
             LoggerUtils::getAppLogger()->debug('Finished backing up database to '.$SqlFilePath->getPathname());
         } catch (\Exception $e) {
@@ -124,7 +124,7 @@ class BackupJob extends JobBase
 
     private function createFullArchive()
     {
-        $imagesAddedToArchive = [];
+        $imagesAddedToArchive = array();
         $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.'.tar');
         $phar = new PharData($this->BackupFile->getPathname());
         LoggerUtils::getAppLogger()->debug('Archive opened at: '.$this->BackupFile->getPathname());

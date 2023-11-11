@@ -13,7 +13,7 @@ $app->group('/register', function () use ($app) {
             $renderer = new PhpRenderer('templates/registration/');
             $familyRoles = ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find();
 
-            return $renderer->render($response, 'family-register.php', ['sRootPath' => SystemURLs::getRootPath(), 'familyRoles' => $familyRoles]);
+            return $renderer->render($response, 'family-register.php', array('sRootPath' => SystemURLs::getRootPath(), 'familyRoles' => $familyRoles));
         });
     }
 });

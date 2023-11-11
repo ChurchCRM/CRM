@@ -20,7 +20,7 @@ $app->group('/groups', function () use ($app) {
             ->orderByName()
             ->find();
 
-        $return = [];
+        $return = array();
         foreach ($groups as $group) {
             $values['type'] = 'group';
             $values['groupID'] = $group->getID();
@@ -33,14 +33,14 @@ $app->group('/groups', function () use ($app) {
     });
 
     $app->get('/groupsInCart', function () {
-        $groupsInCart = [];
+        $groupsInCart = array();
         $groups = GroupQuery::create()->find();
         foreach ($groups as $group) {
             if ($group->checkAgainstCart()) {
                 array_push($groupsInCart, $group->getId());
             }
         }
-        echo json_encode(['groupsInCart' => $groupsInCart], JSON_THROW_ON_ERROR);
+        echo json_encode(array('groupsInCart' => $groupsInCart), JSON_THROW_ON_ERROR);
     });
 
     $app->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
@@ -118,7 +118,7 @@ $app->group('/groups', function () use ($app) {
     $app->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         GroupQuery::create()->findOneById($groupID)->delete();
-        echo json_encode(['status' => 'success']);
+        echo json_encode(array('status' => 'success'));
     });
 
     $app->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
@@ -138,7 +138,7 @@ $app->group('/groups', function () use ($app) {
                 $note->save();
             }
         }
-        echo json_encode(['success' => 'true']);
+        echo json_encode(array('success' => 'true'));
     });
 
     $app->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
@@ -192,16 +192,16 @@ $app->group('/groups', function () use ($app) {
             $groupRole->setOptionName($input->groupRoleName);
             $groupRole->save();
 
-            return json_encode(['success' => true]);
+            return json_encode(array('success' => true));
         } elseif (isset($input->groupRoleOrder)) {
             $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
             $groupRole->setOptionSequence($input->groupRoleOrder);
             $groupRole->save();
 
-            return json_encode(['success' => true]);
+            return json_encode(array('success' => true));
         }
 
-        echo json_encode(['success' => false]);
+        echo json_encode(array('success' => false));
     });
 
     $app->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) use ($app) {
@@ -222,7 +222,7 @@ $app->group('/groups', function () use ($app) {
         $group = GroupQuery::create()->findPk($groupID);
         $group->setDefaultRole($roleID);
         $group->save();
-        echo json_encode(['success' => true]);
+        echo json_encode(array('success' => true));
     });
 
     $app->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) use ($app) {
@@ -230,10 +230,10 @@ $app->group('/groups', function () use ($app) {
         $input = $request->getParsedBody();
         if ($input['GroupSpecificPropertyStatus']) {
             $app->GroupService->enableGroupSpecificProperties($groupID);
-            echo json_encode(['status' => 'group specific properties enabled']);
+            echo json_encode(array('status' => 'group specific properties enabled'));
         } else {
             $app->GroupService->disableGroupSpecificProperties($groupID);
-            echo json_encode(['status' => 'group specific properties disabled']);
+            echo json_encode(array('status' => 'group specific properties disabled'));
         }
     });
 
@@ -249,7 +249,7 @@ $app->group('/groups', function () use ($app) {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
 
-            return $response->withJson(['status' => 'success']);
+            return $response->withJson(array('status' => 'success'));
         } else {
             return $response->withStatus(500, gettext('invalid status value'));
         }
@@ -267,7 +267,7 @@ $app->group('/groups', function () use ($app) {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
 
-            return $response->withJson(['status' => 'success']);
+            return $response->withJson(array('status' => 'success'));
         } else {
             return $response->withStatus(500, gettext('invalid export value'));
         }

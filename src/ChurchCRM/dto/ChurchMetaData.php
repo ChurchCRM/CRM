@@ -13,7 +13,7 @@ class ChurchMetaData
 
     public static function getChurchFullAddress()
     {
-        $address = [];
+        $address = array();
         if (!empty(self::getChurchAddress())) {
             array_push($address, self::getChurchAddress());
         }

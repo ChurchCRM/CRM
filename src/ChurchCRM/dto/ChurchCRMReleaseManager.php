@@ -26,7 +26,7 @@ class ChurchCRMReleaseManager
             // just give the requestor a skeleton object
             LoggerUtils::getAppLogger()->debug('Query for release string '.$releaseString.' occurred before GitHub releases were populated.  Providing skeleton release object');
 
-            return new ChurchCRMRelease(@['name' => $releaseString]);
+            return new ChurchCRMRelease(@array('name' => $releaseString));
         } else {
             LoggerUtils::getAppLogger()->debug('Attempting to service query for release string '.$releaseString.' from GitHub release cache');
             $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'], fn ($r) => $r->__toString() === $releaseString));
@@ -40,7 +40,7 @@ class ChurchCRMReleaseManager
                 // where the currently running software has not yet been released / tagged on GitHun
                 LoggerUtils::getAppLogger()->debug('Query for release string '.$releaseString.' did not match any GitHub releases.  Providing skeleton release object');
 
-                return new ChurchCRMRelease(@['name' => $releaseString]);
+                return new ChurchCRMRelease(@array('name' => $releaseString));
             } else {
                 // This should _never_ happen.
                 throw new \Exception('Provided string matched more than one ChurchCRM Release: '.\json_encode($requestedRelease, JSON_THROW_ON_ERROR));
@@ -54,7 +54,7 @@ class ChurchCRMReleaseManager
     private static function populateReleases(): array
     {
         $client = new Client();
-        $eligibleReleases = [];
+        $eligibleReleases = array();
         LoggerUtils::getAppLogger()->debug("Querying GitHub '".ChurchCRMReleaseManager::GITHUB_USER_NAME.'/'.ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME."' for ChurchCRM Releases");
         $gitHubReleases = $client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME);
         LoggerUtils::getAppLogger()->debug('Received '.count($gitHubReleases).' ChurchCRM releases from GitHub');
@@ -195,7 +195,7 @@ class ChurchCRMReleaseManager
         $executionTime = new ExecutionTime();
         file_put_contents($UpgradeDir.'/'.basename($url), file_get_contents($url));
         $logger->info('Finished downloading file.  Execution time: '.$executionTime->getMilliseconds().' ms');
-        $returnFile = [];
+        $returnFile = array();
         $returnFile['fileName'] = basename($url);
         $returnFile['releaseNotes'] = $release->getReleaseNotes();
         $returnFile['fullPath'] = $UpgradeDir.'/'.basename($url);
@@ -219,10 +219,10 @@ class ChurchCRMReleaseManager
             $logger = LoggerUtils::getAppLogger();
             $logger->warning('Maximum execution time threshold exceeded: '.ini_get('max_execution_time'));
 
-            echo \json_encode([
+            echo \json_encode(array(
                 'code'    => 500,
                 'message' => 'Maximum execution time threshold exceeded: '.ini_get('max_execution_time').'.  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update',
-            ], JSON_THROW_ON_ERROR);
+            ), JSON_THROW_ON_ERROR);
         }
     }
 

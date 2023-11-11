@@ -78,7 +78,7 @@ class LocalAuthentication implements IAuthenticationProvider
         $_SESSION['bFinance'] = $this->currentUser->isFinanceEnabled();
 
         // Create the Cart
-        $_SESSION['aPeopleCart'] = [];
+        $_SESSION['aPeopleCart'] = array();
 
         // Create the variable for the Global Message
         $_SESSION['sGlobalMessage'] = '';
@@ -100,7 +100,7 @@ class LocalAuthentication implements IAuthenticationProvider
         }
 
         $authenticationResult = new AuthenticationResult();
-        $logCtx = ['username' => $AuthenticationRequest->username];
+        $logCtx = array('username' => $AuthenticationRequest->username);
         if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
             LoggerUtils::getAuthLogger()->debug('Processing local login', $logCtx);
             // Get the information for the selected user
@@ -192,10 +192,10 @@ class LocalAuthentication implements IAuthenticationProvider
 
             return $authenticationResult;
         }
-        $logCtx = [
+        $logCtx = array(
             'username'     => $this->currentUser->getUserName(),
             'userFullName' => $this->currentUser->getName(),
-        ];
+        );
         LoggerUtils::getAuthLogger()->debug('Processing session for user', $logCtx);
 
         // Next, make sure the user in the sesion still exists in the database.
@@ -204,7 +204,7 @@ class LocalAuthentication implements IAuthenticationProvider
         } catch (\Exception $exc) {
             LoggerUtils::getAuthLogger()->debug(
                 'User with active session no longer exists in the database.  Expiring session',
-                array_merge($logCtx, ['exception' => $exc])
+                array_merge($logCtx, array('exception' => $exc))
             );
             AuthenticationManager::endSession();
             $authenticationResult->isAuthenticated = false;

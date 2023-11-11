@@ -36,12 +36,12 @@ class KioskDevice extends BaseKioskDevice
             $assignmentJSON = $assignment->toJSON();
         }
 
-        return [
+        return array(
             'Accepted'   => $this->getAccepted(),
             'Name'       => $this->getName(),
             'Assignment' => $assignmentJSON,
             'Commands'   => $this->getPendingCommands(),
-        ];
+        );
     }
 
     public function getPendingCommands()

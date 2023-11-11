@@ -19,10 +19,10 @@ function enroll2fa(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/user/');
     $curUser = AuthenticationManager::getCurrentUser();
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath' => SystemURLs::getRootPath(),
         'user'      => $curUser,
-    ];
+    );
 
     if (LocalAuthentication::getIsTwoFactorAuthSupported()) {
         return $renderer->render($response, 'manage-2fa.php', $pageArgs);
@@ -36,10 +36,10 @@ function changepassword(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/');
     $authenticationProvider = AuthenticationManager::getAuthenticationProvider();
     $curUser = AuthenticationManager::getCurrentUser();
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath' => SystemURLs::getRootPath(),
         'user'      => $curUser,
-    ];
+    );
 
     if ($authenticationProvider instanceof LocalAuthentication) {
         // ChangePassword only works with LocalAuthentication

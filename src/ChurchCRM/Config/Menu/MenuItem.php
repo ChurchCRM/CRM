@@ -12,8 +12,8 @@ class MenuItem
     private $hasPermission;
     private $icon;
     private bool $external = false;
-    private array $subItems = [];
-    private array $counters = [];
+    private array $subItems = array();
+    private array $counters = array();
 
     public function __construct($name, $uri, $hasPermission = true, $icon = '')
     {

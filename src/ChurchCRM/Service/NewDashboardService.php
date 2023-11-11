@@ -6,12 +6,12 @@ class NewDashboardService
 {
     public static function getDashboardItems($PageName)
     {
-        $DashboardItems = [
+        $DashboardItems = array(
             \ChurchCRM\Dashboard\EventsMenuItems::class,
             \ChurchCRM\Dashboard\ClassificationDashboardItem::class,
             \ChurchCRM\Dashboard\CurrentLocaleMetadata::class,
-        ];
-        $ReturnValues = [];
+        );
+        $ReturnValues = array();
         foreach ($DashboardItems as $DashboardItem) {
             if ($DashboardItem::shouldInclude($PageName)) {
                 array_push($ReturnValues, $DashboardItem);
@@ -23,7 +23,7 @@ class NewDashboardService
 
     public static function getValues($PageName)
     {
-        $ReturnValues = [];
+        $ReturnValues = array();
         foreach (self::getDashboardItems($PageName) as $DashboardItem) {
             $ReturnValues[$DashboardItem::getDashboardItemName()] = $DashboardItem::getDashboardItemValue();
         }

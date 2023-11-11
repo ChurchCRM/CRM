@@ -14,7 +14,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
     {
         $this->relatedObject = $RelatedObject;
 
-        $toAddresses = [];
+        $toAddresses = array();
         $recipientPeople = explode(',', SystemConfig::getValue('sNewPersonNotificationRecipientIDs'));
 
         foreach ($recipientPeople as $PersonID) {
@@ -44,9 +44,9 @@ class NewPersonOrFamilyEmail extends BaseEmail
 
     public function getTokens()
     {
-        $myTokens = [
+        $myTokens = array(
             'toName' => gettext('Church Greeter'),
-        ];
+        );
         if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
             /* @var $family ChurchCRM\Family */
             $family = $this->relatedObject;

@@ -12,7 +12,7 @@ $app->group('/', function () use ($app) {
             $renderPage = 'setup-error.php';
         }
 
-        return $renderer->render($response, $renderPage, ['sRootPath' => SystemURLs::getRootPath()]);
+        return $renderer->render($response, $renderPage, array('sRootPath' => SystemURLs::getRootPath()));
     });
 
     $app->get('SystemIntegrityCheck', function ($request, $response, $args) {

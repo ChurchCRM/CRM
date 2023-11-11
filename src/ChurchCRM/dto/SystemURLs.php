@@ -54,14 +54,14 @@ class SystemURLs
 
     public static function getSupportURL($topic = '')
     {
-        $supportURLs = [
+        $supportURLs = array(
             'HttpsTask'                     => 'https://github.com/ChurchCRM/CRM/wiki/SSL',
             'CheckExecutionTimeTask'        => 'https://github.com/ChurchCRM/CRM/wiki/PHP-Max-Execution-Time',
             'SecretsConfigurationCheckTask' => 'https://github.com/ChurchCRM/CRM/wiki/Secret-Keys-in-Config.php',
             'UnsupportedPaymentDataCheck'   => 'https://github.com/ChurchCRM/CRM/wiki/Finances',
             'UnsupportedDepositCheck'       => 'https://github.com/ChurchCRM/CRM/wiki/Finances',
             'CheckUploadSizeTask'           => 'https://mediatemple.net/community/products/dv/204404784/how-do-i-increase-the-php-upload-limits',
-        ];
+        );
 
         if (array_key_exists($topic, $supportURLs)) {
             return $supportURLs[$topic];

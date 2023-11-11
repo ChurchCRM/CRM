@@ -140,7 +140,7 @@ function newEvent($request, $response, $args)
     $event->setCalendars($calendars);
     $event->save();
 
-    return $response->withJson(['status' => 'success']);
+    return $response->withJson(array('status' => 'success'));
 }
 
 function updateEvent($request, $response, $args)
@@ -173,7 +173,7 @@ function setEventTime($request, Response $response, $args)
     $event->setEnd($input->endTime);
     $event->save();
 
-    return $response->withJson(['status' => 'success']);
+    return $response->withJson(array('status' => 'success'));
 }
 
 function unusedSetEventAttendance()
@@ -216,5 +216,5 @@ function deleteEvent($request, $response, $args)
     }
     $event->delete();
 
-    return $response->withJson(['status' => 'success']);
+    return $response->withJson(array('status' => 'success'));
 }

@@ -35,14 +35,14 @@ class MenuEventsCount
     public static function getAnniversaries()
     {
         $Anniversaries = FamilyQuery::create()
-              ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
+              ->filterByWeddingDate(array('min' => '0001-00-00')) // a Wedding Date
               ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
               ->find();
 
         $curDay = date('d');
         $curMonth = date('m');
 
-        $families = [];
+        $families = array();
         foreach ($Anniversaries as $anniversary) {
             if ($anniversary->getWeddingMonth() == $curMonth && $curDay == $anniversary->getWeddingDay()) {
                 $families[] = $anniversary;

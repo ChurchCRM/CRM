@@ -69,9 +69,9 @@ class Group extends BaseGroup
 
     public function postInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
     {
-        $optionList = ['Member'];
+        $optionList = array('Member');
         if ($this->isSundaySchool()) {
-            $optionList = ['Teacher', 'Student'];
+            $optionList = array('Teacher', 'Student');
         }
 
         $i = 1;

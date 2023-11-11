@@ -41,11 +41,11 @@ function listFamilies(Request $request, Response $response, array $args)
               ->orderByName()
               ->find();
     }
-    $pageArgs = [
+    $pageArgs = array(
         'sMode'     => $sMode,
         'sRootPath' => SystemURLs::getRootPath(),
         'families'  => $families,
-    ];
+    );
 
     return $renderer->render($response, 'family-list.php', $pageArgs);
 }
@@ -54,11 +54,11 @@ function viewFamilyNotFound(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/common/');
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'  => SystemURLs::getRootPath(),
         'memberType' => 'Family',
         'id'         => $request->getParam('id'),
-    ];
+    );
 
     return $renderer->render($response, 'not-found-view.php', $pageArgs);
 }
@@ -88,7 +88,7 @@ function viewFamily(Request $request, Response $response, array $args)
     $appFamilyCustomFields = $rawQry->findOneByFamId($familyId);
 
     if ($appFamilyCustomFields) {
-        $familyCustom = [];
+        $familyCustom = array();
         foreach ($allFamilyCustomFields as $customfield) {
             if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 $value = $appFamilyCustomFields->getVirtualColumn($customfield->getField());
@@ -100,13 +100,13 @@ function viewFamily(Request $request, Response $response, array $args)
         }
     }
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'           => SystemURLs::getRootPath(),
         'family'              => $family,
         'familyTimeline'      => $timelineService->getForFamily($family->getId()),
         'allFamilyProperties' => $allFamilyProperties,
         'familyCustom'        => $familyCustom,
-    ];
+    );
 
     return $renderer->render($response, 'family-view.php', $pageArgs);
 }

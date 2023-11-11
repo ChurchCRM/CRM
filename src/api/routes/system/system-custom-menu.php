@@ -20,7 +20,7 @@ function getMenus(Request $request, Response $response, array $args)
 {
     $links = MenuLinkQuery::create()->orderByOrder()->find();
 
-    return $response->withJson(['menus' => $links->toArray()]);
+    return $response->withJson(array('menus' => $links->toArray()));
 }
 
 function addMenu(Request $request, Response $response, array $args)
@@ -34,8 +34,8 @@ function addMenu(Request $request, Response $response, array $args)
         return $response->withJson($link->toArray());
     }
 
-    return $response->withStatus(400)->withJson(['error' => gettext('Validation Error'),
-        'failures'                                       => ORMUtils::getValidationErrors($link->getValidationFailures())]);
+    return $response->withStatus(400)->withJson(array('error' => gettext('Validation Error'),
+        'failures'                                            => ORMUtils::getValidationErrors($link->getValidationFailures())));
 }
 
 function delMenu(Request $request, Response $response, array $args)

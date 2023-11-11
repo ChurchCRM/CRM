@@ -26,12 +26,12 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/email/');
     $mailchimp = new MailChimpService();
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'         => SystemURLs::getRootPath(),
         'sPageTitle'        => gettext('eMail Dashboard'),
         'isMailChimpActive' => $mailchimp->isActive(),
         'mailChimpLists'    => $mailchimp->getLists(),
-    ];
+    );
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
 }
@@ -65,12 +65,12 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
         $message = gettext('SMTP Host is not setup, please visit the settings page');
     }
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'  => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Debug Email Connection'),
         'mailer'     => $mailer,
         'message'    => $message,
-    ];
+    );
 
     return $renderer->render($response, 'debug.php', $pageArgs);
 }
@@ -91,11 +91,11 @@ function getMailListUnSubscribersMVC(Request $request, Response $response, array
     $list = $mailchimpService->getList($args['listId']);
     if ($list) {
         $renderer = new PhpRenderer('templates/email/');
-        $pageArgs = [
+        $pageArgs = array(
             'sRootPath'  => SystemURLs::getRootPath(),
             'sPageTitle' => _('People not in').' '.$list['name'],
             'listId'     => $list['id'],
-        ];
+        );
 
         return $renderer->render($response, 'mailchimp-unsubscribers.php', $pageArgs);
     }
@@ -109,11 +109,11 @@ function getMailListMissingMVC(Request $request, Response $response, array $args
     $list = $mailchimpService->getList($args['listId']);
     if ($list) {
         $renderer = new PhpRenderer('templates/email/');
-        $pageArgs = [
+        $pageArgs = array(
             'sRootPath'  => SystemURLs::getRootPath(),
             'sPageTitle' => $list['name'].' '._('Audience not in the ChurchCRM'),
             'listId'     => $list['id'],
-        ];
+        );
 
         return $renderer->render($response, 'mailchimp-missing.php', $pageArgs);
     }

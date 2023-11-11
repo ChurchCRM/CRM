@@ -47,7 +47,7 @@ if ($sFormat === 'rollup') {
 }
 
 //Get membership classes
-$memberClass = [0];
+$memberClass = array(0);
 foreach (Classification::getAll() as $Member) {
     $memberClass[] = $Member->getOptionName();
 }

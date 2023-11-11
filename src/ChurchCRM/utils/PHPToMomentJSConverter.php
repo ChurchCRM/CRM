@@ -10,7 +10,7 @@ namespace ChurchCRM\Utils;
 
 class PHPToMomentJSConverter
 {
-    private static array $replacements = [
+    private static array $replacements = array(
         'd' => 'DD',
         'D' => 'ddd',
         'j' => 'D',
@@ -48,7 +48,7 @@ class PHPToMomentJSConverter
         'c' => '', // no equivalent
         'r' => '', // no equivalent
         'U' => 'X',
-    ];
+    );
 
     public static function convertFormatString($string)
     {

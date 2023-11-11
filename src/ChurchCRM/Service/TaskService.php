@@ -30,13 +30,13 @@ class TaskService
      * @var ObjectCollection|TaskInterface[]
      */
     private $taskClasses;
-    private array $notificationClasses = [
+    private array $notificationClasses = array(
         //  new LatestReleaseTask()
-    ];
+    );
 
     public function __construct()
     {
-        $this->taskClasses = [
+        $this->taskClasses = array(
             new PrerequisiteCheckTask(),
             new ChurchNameTask(),
             new ChurchAddress(),
@@ -54,18 +54,18 @@ class TaskService
             new SecretsConfigurationCheckTask(),
             new PHPPendingDeprecationVersionCheckTask(),
             new PHPZipArchiveCheckTask(),
-        ];
+        );
     }
 
     public function getCurrentUserTasks(): array
     {
-        $tasks = [];
+        $tasks = array();
         foreach ($this->taskClasses as $taskClass) {
             if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && AuthenticationManager::getCurrentUser()->isAdmin()))) {
-                array_push($tasks, ['title' => $taskClass->getTitle(),
-                    'link'                  => $taskClass->getLink(),
-                    'admin'                 => $taskClass->isAdmin(),
-                    'desc'                  => $taskClass->getDesc()]);
+                array_push($tasks, array('title' => $taskClass->getTitle(),
+                    'link'                       => $taskClass->getLink(),
+                    'admin'                      => $taskClass->isAdmin(),
+                    'desc'                       => $taskClass->getDesc()));
             }
         }
 
@@ -74,7 +74,7 @@ class TaskService
 
     public function getTaskNotifications(): array
     {
-        $tasks = [];
+        $tasks = array();
         foreach ($this->notificationClasses as $taskClass) {
             if ($taskClass->isActive()) {
                 array_push(

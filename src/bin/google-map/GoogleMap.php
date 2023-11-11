@@ -377,11 +377,11 @@ class GoogleMapAPI
     /**
      * set default marker clusterer options.
      */
-    public $marker_clusterer_options = [
+    public $marker_clusterer_options = array(
         'maxZoom' => 'null',
         'gridSize'=> 'null',
         'styles'  => 'null',
-    ];
+    );
 
     /**
      * determines if traffic overlay is displayed on map.
@@ -419,14 +419,14 @@ class GoogleMapAPI
      * @var string service name
      */
     public $lookup_service = 'GOOGLE';
-    public $lookup_server = ['GOOGLE' => 'maps.google.com', 'YAHOO' => 'api.local.yahoo.com'];
+    public $lookup_server = array('GOOGLE' => 'maps.google.com', 'YAHOO' => 'api.local.yahoo.com');
 
     /**
      * @var array
      *
      * @deprecated
      */
-    public $driving_dir_text = [
+    public $driving_dir_text = array(
         'dir_to'            => 'Start address: (include addr, city st/region)',
         'to_button_value'   => 'Get Directions',
         'to_button_type'    => 'submit',
@@ -436,7 +436,7 @@ class GoogleMapAPI
         'dir_text'          => 'Directions: ',
         'dir_tohere'        => 'To here',
         'dir_fromhere'      => 'From here',
-    ];
+    );
 
     /**
      * version number.
@@ -450,7 +450,7 @@ class GoogleMapAPI
      *
      * @var array
      */
-    public $_markers = [];
+    public $_markers = array();
 
     /**
      * maximum longitude of all markers.
@@ -506,19 +506,19 @@ class GoogleMapAPI
      *
      * @var array
      */
-    public $_polygons = [];
+    public $_polygons = array();
 
     /**
      * list of added polylines.
      *
      * @var array
      */
-    public $_polylines = [];
+    public $_polylines = array();
 
     /**
      * list of polylines that should have an elevation profile rendered.
      */
-    public $_elevation_polylines = [];
+    public $_elevation_polylines = array();
 
     /**
      * determines whether or not to display a marker on the "line" when
@@ -541,7 +541,7 @@ class GoogleMapAPI
      *
      * @version 2.5
      */
-    public $_icons = [];
+    public $_icons = array();
 
     /**
      * marker icon info array.
@@ -550,7 +550,7 @@ class GoogleMapAPI
      *
      * @version 3.0
      */
-    public $_marker_icons = [];
+    public $_marker_icons = array();
 
     /**
      * Default icon image location.
@@ -571,12 +571,12 @@ class GoogleMapAPI
      *
      * @var array
      */
-    public $_overlays = [];
+    public $_overlays = array();
 
     /**
      * list of added kml overlays.
      */
-    public $_kml_overlays = [];
+    public $_kml_overlays = array();
 
     /**
      * database cache table name.
@@ -595,7 +595,7 @@ class GoogleMapAPI
     /**
      * Class variable that will store information to render directions.
      */
-    public $_directions = [];
+    public $_directions = array();
 
     /**
      * Class variable to store whether or not to display JS functions in the header.
@@ -740,7 +740,7 @@ class GoogleMapAPI
      */
     public function setControlSize($size)
     {
-        if (in_array($size, ['large', 'small'])) {
+        if (in_array($size, array('large', 'small'))) {
             $this->control_size = $size;
         }
     }
@@ -864,7 +864,7 @@ class GoogleMapAPI
         }
 
         if ($start_address != '' && $dest_address != '' && $dom_id != '') {
-            $this->_directions[$dom_id] = [
+            $this->_directions[$dom_id] = array(
                 'dom_id'           => $dom_id,
                 'start'            => $start_address,
                 'dest'             => $dest_address,
@@ -873,7 +873,7 @@ class GoogleMapAPI
                 'width'            => ($elevation_width != '' ? $elevation_width : str_replace('px', '', $this->width)),
                 'height'           => ($elevation_height != '' ? $elevation_height : str_replace('px', '', $this->height) / 2),
                 'elevation_dom_id' => $elevation_dom_id,
-            ];
+            );
             if ($add_markers == true) {
                 $this->addMarkerByAddress($start_address, $start_address, $start_address);
                 $this->addMarkerByAddress($dest_address, $dest_address, $dest_address);
@@ -1350,7 +1350,7 @@ class GoogleMapAPI
             return false;
         }
         if (!isset($this->_markers[$marker_id]['openers'])) {
-            $this->_markers[$marker_id]['openers'] = [];
+            $this->_markers[$marker_id]['openers'] = array();
         }
         $this->_markers[$marker_id]['openers'][] = $dom_id;
     }
@@ -1469,24 +1469,24 @@ class GoogleMapAPI
             $_polyline = $this->_polylines[$id];
         } else {
             //only set color,weight,and opacity if new polyline
-            $_polyline = [
+            $_polyline = array(
                 'color'  => $color,
                 'weight' => $weight,
                 'opacity'=> $opacity,
-            ];
+            );
         }
         if (!isset($_polyline['coords']) || !is_array($_polyline['coords'])) {
-            $_polyline['coords'] = [
-                '0'=> ['lat'=>$lat1, 'long'=>$lon1],
-                '1'=> ['lat'=>$lat2, 'long'=>$lon2],
-            ];
+            $_polyline['coords'] = array(
+                '0'=> array('lat'=>$lat1, 'long'=>$lon1),
+                '1'=> array('lat'=>$lat2, 'long'=>$lon2),
+            );
         } else {
             $last_index = count($_polyline['coords']) - 1;
             //check if lat1/lon1 point is already on polyline
             if ($_polyline['coords'][$last_index]['lat'] != $lat1 || $_polyline['coords'][$last_index]['long'] != $lon1) {
-                $_polyline['coords'][] = ['lat'=>$lat1, 'long'=>$lon1];
+                $_polyline['coords'][] = array('lat'=>$lat1, 'long'=>$lon1);
             }
-            $_polyline['coords'][] = ['lat'=>$lat2, 'long'=>$lon2];
+            $_polyline['coords'][] = array('lat'=>$lat2, 'long'=>$lon2);
         }
         if ($id === false) {
             $this->_polylines[] = $_polyline;
@@ -1506,13 +1506,13 @@ class GoogleMapAPI
     public function addPolylineElevation($polyline_id, $elevation_dom_id, $samples = 256, $width = '', $height = '', $focus_color = '#00ff00')
     {
         if (isset($this->_polylines[$polyline_id])) {
-            $this->_elevation_polylines[$polyline_id] = [
+            $this->_elevation_polylines[$polyline_id] = array(
                 'dom_id'     => $elevation_dom_id,
                 'samples'    => $samples,
                 'width'      => ($width != '' ? $width : str_replace('px', '', $this->width)),
                 'height'     => ($height != '' ? $height : str_replace('px', '', $this->height) / 2),
                 'focus_color'=> $focus_color,
-            ];
+            );
         }
     }
 
@@ -1521,20 +1521,20 @@ class GoogleMapAPI
      */
     public function addOverlay($bds_lat1, $bds_lon1, $bds_lat2, $bds_lon2, $img_src, $opacity = 100)
     {
-        $_overlay = [
-            'bounds' => [
-                'ne'=> [
+        $_overlay = array(
+            'bounds' => array(
+                'ne'=> array(
                     'lat' => $bds_lat1,
                     'long'=> $bds_lon1,
-                ],
-                'sw'=> [
+                ),
+                'sw'=> array(
                     'lat' => $bds_lat2,
                     'long'=> $bds_lon2,
-                ],
-            ],
+                ),
+            ),
             'img'     => $img_src,
             'opacity' => $opacity / 10,
-        ];
+        );
         $this->adjustCenterCoords($bds_lon1, $bds_lat1);
         $this->adjustCenterCoords($bds_lon2, $bds_lat2);
         $this->_overlays[] = $_overlay;
@@ -1628,7 +1628,7 @@ class GoogleMapAPI
             $infoWindowAnchorY = (int) ($_image_info[1] / 2);
         }
 
-        $icon_info = [
+        $icon_info = array(
             'image'             => $iconImage,
             'iconWidth'         => $_image_info[0],
             'iconHeight'        => $_image_info[1],
@@ -1636,11 +1636,11 @@ class GoogleMapAPI
             'iconAnchorY'       => $iconAnchorY,
             'infoWindowAnchorX' => $infoWindowAnchorX,
             'infoWindowAnchorY' => $infoWindowAnchorY,
-        ];
+        );
         if ($iconShadowImage) {
-            $icon_info = array_merge($icon_info, ['shadow'            => $iconShadowImage,
-                'shadowWidth'                                         => $_shadow_info[0],
-                'shadowHeight'                                        => $_shadow_info[1], ]);
+            $icon_info = array_merge($icon_info, array('shadow'            => $iconShadowImage,
+                'shadowWidth'                                              => $_shadow_info[0],
+                'shadowHeight'                                             => $_shadow_info[1], ));
         }
 
         return $icon_info;
@@ -1701,7 +1701,7 @@ class GoogleMapAPI
      */
     public function getIconKey($iconImage, $iconShadow = '')
     {
-        return str_replace(['/', ':', '.'], '', $iconImage.$iconShadow);
+        return str_replace(array('/', ':', '.'), '', $iconImage.$iconShadow);
     }
 
     /**
@@ -2226,7 +2226,7 @@ class GoogleMapAPI
         }
         $_output = '';
         foreach ($this->_markers as $_marker) {
-            $iw_html = str_replace('"', '\"', str_replace(["\n", "\r"], '', $_marker['html']));
+            $iw_html = str_replace('"', '\"', str_replace(array("\n", "\r"), '', $_marker['html']));
             $_output .= 'var point = new google.maps.LatLng('.$_marker['lat'].','.$_marker['lon'].");\n";
             $_output .= sprintf(
                 '%s.push(createMarker(%s%s, point,"%s","%s", %s, %s, "%s", %s ));',
@@ -2320,7 +2320,7 @@ class GoogleMapAPI
 
         foreach ($this->_directions as $directions) {
             $dom_id = $directions['dom_id'];
-            $travelModeParams = [];
+            $travelModeParams = array();
             $directionsParams = '';
             if ($this->walking_directions == true) {
                 $directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.WALKING";
@@ -2665,7 +2665,7 @@ class GoogleMapAPI
             return false;
         }
 
-        $_ret = [];
+        $_ret = array();
 
         // PEAR DB
         require_once 'DB.php';
@@ -2707,7 +2707,7 @@ class GoogleMapAPI
         if (PEAR::isError($_db)) {
             exit($_db->getMessage());
         }
-        $_res = &$_db->query('insert into '.$this->_db_cache_table.' values (?, ?, ?)', [$address, $lon, $lat]);
+        $_res = &$_db->query('insert into '.$this->_db_cache_table.' values (?, ?, ?)', array($address, $lon, $lat));
         if (PEAR::isError($_res)) {
             exit($_res->getMessage());
         }
@@ -2891,26 +2891,26 @@ class GoogleMapAPI
             $_polygon = $this->_polygons[$id];
         } else {
             //only set color,weight,and opacity if new polyline
-            $_polygon = [
+            $_polygon = array(
                 'color'       => $color,
                 'weight'      => $weight,
                 'opacity'     => $opacity,
                 'fill_color'  => $fill_color,
                 'fill_opacity'=> $fill_opacity,
-            ];
+            );
         }
         if (!isset($_polygon['coords']) || !is_array($_polygon['coords'])) {
-            $_polygon['coords'] = [
-                '0'=> ['lat'=>$lat1, 'long'=>$lon1],
-                '1'=> ['lat'=>$lat2, 'long'=>$lon2],
-            ];
+            $_polygon['coords'] = array(
+                '0'=> array('lat'=>$lat1, 'long'=>$lon1),
+                '1'=> array('lat'=>$lat2, 'long'=>$lon2),
+            );
         } else {
             $last_index = count($_polygon['coords']) - 1;
             //check if lat1/lon1 point is already on polyline
             if ($_polygon['coords'][$last_index]['lat'] != $lat1 || $_polygon['coords'][$last_index]['long'] != $lon1) {
-                $_polygon['coords'][] = ['lat'=>$lat1, 'long'=>$lon1];
+                $_polygon['coords'][] = array('lat'=>$lat1, 'long'=>$lon1);
             }
-            $_polygon['coords'][] = ['lat'=>$lat2, 'long'=>$lon2];
+            $_polygon['coords'][] = array('lat'=>$lat2, 'long'=>$lon2);
         }
         if ($id === false) {
             $this->_polygons[] = $_polygon;

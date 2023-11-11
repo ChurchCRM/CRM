@@ -90,7 +90,7 @@ $app->group('/database', function () use ($app) {
  */
 function exportChMeetings(Request $request, Response $response, array $p_args)
 {
-    $header_data = [
+    $header_data = array(
         'First Name', 'Last Name', 'Middle Name', 'Gender',
         'Marital Status', 'Anniversary', 'Engagement Date',
         'Birthdate', 'Mobile Phone', 'Home Phone', 'Email',
@@ -98,9 +98,9 @@ function exportChMeetings(Request $request, Response $response, array $p_args)
         'Address Line', 'Address Line 2', 'City', 'State', 'ZIP Code', 'Notes', 'Join Date',
         'Family Id', 'Family Role',
         'Baptism Date', 'Baptism Location', 'Nickname',
-    ];
+    );
     $people = PersonQuery::create()->find();
-    $list = [];
+    $list = array();
     foreach ($people as $person) {
         $family = $person->getFamily();
         $annaversery = ($family ? $family->getWeddingdate(SystemConfig::getValue('sDateFormatShort')) : '');
@@ -109,7 +109,7 @@ function exportChMeetings(Request $request, Response $response, array $p_args)
             $familyRole = 'Primary';
         }
 
-        $chPerson = [$person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, '', $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), '', '', '', '', '', $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), '', $person->getMembershipDate(SystemConfig::getValue('sDateFormatShort')), $family ? $family->getId() : '', $familyRole, '', '', ''];
+        $chPerson = array($person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, '', $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), '', '', '', '', '', $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), '', $person->getMembershipDate(SystemConfig::getValue('sDateFormatShort')), $family ? $family->getId() : '', $familyRole, '', '', '');
         array_push($list, $chPerson);
     }
 
@@ -160,7 +160,7 @@ function resetDatabase(Request $request, Response $response, array $p_args)
 
     AuthenticationManager::endSession();
 
-    return $response->withJson(['success' => true, 'msg' => gettext('The database has been cleared.')]);
+    return $response->withJson(array('success' => true, 'msg' => gettext('The database has been cleared.')));
 }
 
 function clearPeopleTables(Request $request, Response $response, array $p_args)
@@ -205,5 +205,5 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
     NoteQuery::create()->filterByPerId($curUserId, Criteria::NOT_EQUAL)->delete($connection);
     $logger->info('Notes deleted');
 
-    return $response->withJson(['success' => true, 'msg' => gettext('The people and families has been cleared from the database.')]);
+    return $response->withJson(array('success' => true, 'msg' => gettext('The people and families has been cleared from the database.')));
 }

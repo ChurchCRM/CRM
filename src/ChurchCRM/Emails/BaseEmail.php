@@ -25,9 +25,9 @@ abstract class BaseEmail
         }
 
         // use .html instead of .mustache for default template extension
-        $options = ['extension' => '.html'];
+        $options = array('extension' => '.html');
 
-        $this->mustache = new Mustache_Engine(['loader' => new Mustache_Loader_FilesystemLoader(SystemURLs::getDocumentRoot().'/views/email', $options)]);
+        $this->mustache = new Mustache_Engine(array('loader' => new Mustache_Loader_FilesystemLoader(SystemURLs::getDocumentRoot().'/views/email', $options)));
     }
 
     private function setConnection()
@@ -81,7 +81,7 @@ abstract class BaseEmail
 
     protected function getCommonTokens()
     {
-        $commonTokens = [
+        $commonTokens = array(
             'toEmails'             => $this->mail->getToAddresses(),
             'churchName'           => ChurchMetaData::getChurchName(),
             'churchAddress'        => ChurchMetaData::getChurchFullAddress(),
@@ -95,13 +95,13 @@ abstract class BaseEmail
             'buttonNotWorkingText' => gettext("If that doesn't work, copy and paste the following link in your browser"),
             'emailErrorText'       => gettext("You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."),
             'stopEmailText'        => gettext('To stop receiving these emails, you can email'),
-        ];
+        );
 
         if (!empty($this->getFullURL())) {
-            $buttonTokens = [
+            $buttonTokens = array(
                 'fullURL'    => $this->getFullURL(),
                 'buttonText' => $this->getButtonText(),
-            ];
+            );
             $commonTokens = array_merge($commonTokens, $buttonTokens);
         }
 

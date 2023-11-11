@@ -175,7 +175,7 @@ class SystemService
 
     private static function humanFilesize($bytes, $decimals = 2)
     {
-        $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        $size = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
         $factor = floor((strlen($bytes) - 1) / 3);
 
         return sprintf("%.{$decimals}f", $bytes / 1024 ** $factor).@$size[$factor];

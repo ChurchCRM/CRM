@@ -37,7 +37,7 @@ if (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') {
     fputs($out, $bom = (chr(0xEF).chr(0xBB).chr(0xBF)));
 }
 
-fputcsv($out, [InputUtils::translateSpecialCharset('Class'),
+fputcsv($out, array(InputUtils::translateSpecialCharset('Class'),
     InputUtils::translateSpecialCharset('Role'),
     InputUtils::translateSpecialCharset('First Name'),
     InputUtils::translateSpecialCharset('Last Name'),
@@ -51,7 +51,7 @@ fputcsv($out, [InputUtils::translateSpecialCharset('Class'),
     InputUtils::translateSpecialCharset('Mom Name'),
     InputUtils::translateSpecialCharset('Mom Mobile'),
     InputUtils::translateSpecialCharset('Mom Email'),
-    InputUtils::translateSpecialCharset('Properties')], $delimiter);
+    InputUtils::translateSpecialCharset('Properties')), $delimiter);
 
 // only the unday groups
 $groups = GroupQuery::create()
@@ -138,7 +138,7 @@ foreach ($groups as $group) {
             $birthDate = $publishDate->format(SystemConfig::getValue('sDateFormatLong'));
         }
 
-        fputcsv($out, [
+        fputcsv($out, array(
             InputUtils::translateSpecialCharset($sundayschoolClass),
             InputUtils::translateSpecialCharset($lst_OptionName),
             InputUtils::translateSpecialCharset($firstName),
@@ -146,7 +146,7 @@ foreach ($groups as $group) {
             $birthDate, $mobilePhone, $homePhone,
             InputUtils::translateSpecialCharset($Address1).' '.InputUtils::translateSpecialCharset($Address2).' '.InputUtils::translateSpecialCharset($city).' '.InputUtils::translateSpecialCharset($state).' '.$zip,
             InputUtils::translateSpecialCharset($dadFirstName).' '.InputUtils::translateSpecialCharset($dadLastName), $dadCellPhone, $dadEmail,
-            InputUtils::translateSpecialCharset($momFirstName).' '.InputUtils::translateSpecialCharset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
+            InputUtils::translateSpecialCharset($momFirstName).' '.InputUtils::translateSpecialCharset($momLastName), $momCellPhone, $momEmail, $props), $delimiter);
     }
 }
 

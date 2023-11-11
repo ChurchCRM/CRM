@@ -111,8 +111,8 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
     $start = $request->getQueryParam('start', '');
     $end = $request->getQueryParam('end', '');
     $Events = EventQuery::create()
-        ->filterByStart(['min' => $start])
-        ->filterByEnd(['max' => $end])
+        ->filterByStart(array('min' => $start))
+        ->filterByEnd(array('max' => $end))
         ->filterByCalendar($calendar)
         ->find();
     if (!$Events) {
@@ -129,7 +129,7 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
 
 function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar $calendar): array
 {
-    $formattedEvents = [];
+    $formattedEvents = array();
     foreach ($events as $event) {
         $fce = FullCalendarEvent::createFromEvent($event, $calendar);
         array_push($formattedEvents, $fce);
@@ -194,5 +194,5 @@ function deleteUserCalendar(Request $request, Response $response, $args)
     }
     $Calendar->delete();
 
-    return $response->withJson(['status' => 'success']);
+    return $response->withJson(array('status' => 'success'));
 }

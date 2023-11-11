@@ -32,13 +32,13 @@ class FinancialService
                 $row = mysqli_fetch_array($rsFam);
                 $iCheckNo = $micrObj->findCheckNo($tScanString);
 
-                return json_encode([
+                return json_encode(array(
                     'ScanString'      => $tScanString,
                     'RouteAndAccount' => $routeAndAccount,
                     'CheckNumber'     => $iCheckNo,
                     'fam_ID'          => $row['fam_ID'],
                     'fam_Name'        => $row['fam_Name'],
-                ], JSON_THROW_ON_ERROR);
+                ), JSON_THROW_ON_ERROR);
             } else {
                 throw new \Exception('error in locating family');
             }
@@ -89,7 +89,7 @@ class FinancialService
     public function getPaymentJSON($payments)
     {
         if ($payments) {
-            return json_encode(['payments' => $payments], JSON_THROW_ON_ERROR);
+            return json_encode(array('payments' => $payments), JSON_THROW_ON_ERROR);
         } else {
             return false;
         }
@@ -109,7 +109,7 @@ class FinancialService
         }
         $rsDep = RunQuery($sSQL);
 
-        $payments = [];
+        $payments = array();
         while ($aRow = mysqli_fetch_array($rsDep)) {
             extract($aRow);
             $family = FamilyQuery::create()->findOneById($plg_FamID);
@@ -329,7 +329,7 @@ class FinancialService
         $sSQL = 'SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey="'.$GroupKey.'"';
         $rsKeys = RunQuery($sSQL);
         $payment = new \stdClass();
-        $payment->funds = [];
+        $payment->funds = array();
         while ($aRow = mysqli_fetch_array($rsKeys)) {
             extract($aRow);
             $family = FamilyQuery::create()->findOneById($plg_FamID);
@@ -357,7 +357,7 @@ class FinancialService
     {
         // --------------------------------
         // BEGIN FRONT OF BANK DEPOSIT SLIP
-        $thisReport->pdf->addPage('L', [187, 84]);
+        $thisReport->pdf->addPage('L', array(187, 84));
         $thisReport->pdf->SetFont('Courier', '', 18);
         // Print Deposit Slip portion of report
 
@@ -394,7 +394,7 @@ class FinancialService
         // --------------------------------
         // BEGIN BACK OF BANK DEPOSIT SLIP
 
-        $thisReport->pdf->addPage('P', [84, 187]);
+        $thisReport->pdf->addPage('P', array(84, 187));
         $numItems = 0;
         foreach ($thisReport->payments as $payment) {
             // List all the checks and total the cash
@@ -556,7 +556,7 @@ class FinancialService
     {
         requireUserGroupMembership('bFinance');
         $retstring = '';
-        $line = [];
+        $line = array();
         $firstLine = true;
         $payments = $this->getPayments($depID);
         if (count($payments) == 0) {
@@ -566,9 +566,9 @@ class FinancialService
             array_push($line, $key);
         }
         $retstring = implode(',', $line)."\n";
-        $line = [];
+        $line = array();
         foreach ($payments as $payment) {
-            $line = [];
+            $line = array();
             foreach ($payment as $key => $value) {
                 array_push($line, str_replace(',', '', $value));
             }
@@ -585,7 +585,7 @@ class FinancialService
 
     public function getCurrencyTypeOnDeposit($currencyID, $depositID)
     {
-        $currencies = [];
+        $currencies = array();
         // Get the list of Currency denominations
         $sSQL = 'select sum(pdem_denominationQuantity) from pledge_denominations_pdem
                  where  plg_depID = '.$depositID.'
@@ -598,7 +598,7 @@ class FinancialService
 
     public function getCurrency()
     {
-        $currencies = [];
+        $currencies = array();
         // Get the list of Currency denominations
         $sSQL = 'SELECT * FROM currency_denominations_cdem';
         $rscurrencyDenomination = RunQuery($sSQL);
@@ -618,7 +618,7 @@ class FinancialService
     public function getActiveFunds()
     {
         requireUserGroupMembership('bFinance');
-        $funds = [];
+        $funds = array();
         $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
         $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
         $rsFunds = RunQuery($sSQL);

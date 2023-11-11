@@ -17,11 +17,11 @@ class EventsMenuItems implements DashboardItemInterface
 
     public static function getDashboardItemValue()
     {
-        $activeEvents = [
+        $activeEvents = array(
             'Events'        => self::getNumberEventsOfToday(),
             'Birthdays'     => self::getNumberBirthDates(),
             'Anniversaries' => self::getNumberAnniversaries(),
-        ];
+        );
 
         return $activeEvents;
     }

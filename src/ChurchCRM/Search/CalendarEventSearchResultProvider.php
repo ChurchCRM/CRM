@@ -26,7 +26,7 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider
 
     private function getCalendarEventSearchResultsByPartialName(string $SearchQuery)
     {
-        $searchResults = [];
+        $searchResults = array();
         $id = 0;
 
         try {

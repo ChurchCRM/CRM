@@ -6,7 +6,7 @@ class ORMUtils
 {
     public static function getValidationErrors($failures)
     {
-        $validationErrors = [];
+        $validationErrors = array();
         foreach ($failures as $failure) {
             array_push($validationErrors, 'Property '.$failure->getPropertyPath().': '.$failure->getMessage());
         }

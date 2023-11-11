@@ -245,7 +245,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     if ($only_owe === 'yes') {
         // Run through pledges and payments for this family to see if there are any unpaid pledges
-        $oweByFund = [];
+        $oweByFund = array();
         $bOwe = 0;
         while ($aRow = mysqli_fetch_array($rsPledges)) {
             extract($aRow);
@@ -283,7 +283,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPledges = 0;
-    $fundPledgeTotal = [];
+    $fundPledgeTotal = array();
 
     $summaryDateX = SystemConfig::getValue('leftX');
     $summaryFundX = 45;
@@ -361,7 +361,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPayments = 0;
-    $fundPaymentTotal = [];
+    $fundPaymentTotal = array();
     if (mysqli_num_rows($rsPledges) == 0) {
         $curY += $summaryIntervalY;
         $pdf->writeAt($summaryDateX, $curY, SystemConfig::getValue('sReminderNoPayments'));

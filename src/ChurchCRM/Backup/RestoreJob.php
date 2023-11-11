@@ -21,7 +21,7 @@ class RestoreJob extends JobBase
     /**
      * @var array
      */
-    public $Messages = [];
+    public $Messages = array();
     /**
      * @var bool
      */

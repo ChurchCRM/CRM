@@ -32,7 +32,7 @@ $app->group('/forgot-password', function () use ($app) {
                     LoggerUtils::getAuthLogger()->info('Password reset for user '.$user->getUserName());
                     $email = new ResetPasswordEmail($user, $password);
                     if ($email->send()) {
-                        return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
+                        return $renderer->render($response, 'password/password-check-email.php', array('sRootPath' => SystemURLs::getRootPath()));
                     } else {
                         $app->Logger->error($email->getError());
 
@@ -41,13 +41,13 @@ $app->group('/forgot-password', function () use ($app) {
                 }
             }
 
-            return $renderer->render($response, 'error.php', ['message' => gettext('Unable to reset password')]);
+            return $renderer->render($response, 'error.php', array('message' => gettext('Unable to reset password')));
         });
     } else {
         $app->get('/{foo:.*}', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates');
 
-            return $renderer->render($response, '/error.php', ['message' => gettext('Password reset not available.  Please contact your system administrator')]);
+            return $renderer->render($response, '/error.php', array('message' => gettext('Password reset not available.  Please contact your system administrator')));
         });
     }
 });
@@ -55,10 +55,10 @@ $app->group('/forgot-password', function () use ($app) {
 function forgotPassword($request, $response, $args)
 {
     $renderer = new PhpRenderer('templates/password/');
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'                => SystemURLs::getRootPath(),
         'PasswordResetXHREndpoint' => AuthenticationManager::getForgotPasswordURL(),
-    ];
+    );
 
     return $renderer->render($response, 'enter-username.php', $pageArgs);
 }

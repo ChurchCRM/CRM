@@ -11,8 +11,8 @@ class SystemCalendars
     private static function getCalendars()
     {
         $systemCalendarNamespace = "ChurchCRM\SystemCalendars\\";
-        $systemCalendarNames = ['BirthdaysCalendar', 'AnniversariesCalendar', 'HolidayCalendar', 'UnpinnedEvents'];
-        $calendars = [];
+        $systemCalendarNames = array('BirthdaysCalendar', 'AnniversariesCalendar', 'HolidayCalendar', 'UnpinnedEvents');
+        $calendars = array();
         foreach ($systemCalendarNames as $systemCalendarName) {
             $className = $systemCalendarNamespace.$systemCalendarName;
             if ($className::isAvailable()) {

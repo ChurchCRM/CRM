@@ -30,7 +30,7 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function getAddress()
     {
-        $address = [];
+        $address = array();
         if (!empty($this->getAddress1())) {
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
@@ -141,7 +141,7 @@ class Family extends BaseFamily implements PhotoInterface
             ),
             explode(',', SystemConfig::getValue('sDirRoleChild'))
         );
-        $foundPeople = [];
+        $foundPeople = array();
         foreach ($this->getPeople() as $person) {
             if (!in_array($person->getFmrId(), $roleIds)) {
                 array_push($foundPeople, $person);
@@ -154,7 +154,7 @@ class Family extends BaseFamily implements PhotoInterface
     private function getPeopleByRole($roleConfigName)
     {
         $roleIds = explode(',', SystemConfig::getValue($roleConfigName));
-        $foundPeople = [];
+        $foundPeople = array();
         foreach ($this->getPeople() as $person) {
             if (in_array($person->getFmrId(), $roleIds)) {
                 array_push($foundPeople, $person);
@@ -171,7 +171,7 @@ class Family extends BaseFamily implements PhotoInterface
      */
     public function getEmails()
     {
-        $emails = [];
+        $emails = array();
         if (!(empty($this->getEmail()))) {
             array_push($emails, $this->getEmail());
         }
@@ -278,14 +278,14 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function getFamilyString($booleanIncludeHOH = true)
     {
-        $HoH = [];
+        $HoH = array();
         if ($booleanIncludeHOH) {
             $HoH = $this->getHeadPeople();
         }
         if (count($HoH) == 1) {
             return $this->getName().': '.$HoH[0]->getFirstName().' - '.$this->getAddress();
         } elseif (count($HoH) > 1) {
-            $HoHs = [];
+            $HoHs = array();
             foreach ($HoH as $person) {
                 array_push($HoHs, $person->getFirstName());
             }
@@ -316,7 +316,7 @@ class Family extends BaseFamily implements PhotoInterface
         }
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
         $array = parent::toArray();
         $array['Address'] = $this->getAddress();
@@ -327,11 +327,11 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function toSearchArray()
     {
-        $searchArray = [
+        $searchArray = array(
             'Id'          => $this->getId(),
             'displayName' => $this->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')),
             'uri'         => SystemURLs::getRootPath().'/v2/family/'.$this->getId(),
-        ];
+        );
 
         return $searchArray;
     }
@@ -403,7 +403,7 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function getFirstNameSalutation()
     {
-        $names = [];
+        $names = array();
         foreach ($this->getPeopleSorted() as $person) {
             array_push($names, $person->getFirstName());
         }

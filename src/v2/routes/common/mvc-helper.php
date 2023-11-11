@@ -6,10 +6,10 @@ use Slim\Views\PhpRenderer;
 
 function renderPage(Response $response, $renderPath, $renderFile, $title = '')
 {
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath'  => SystemURLs::getRootPath(),
         'sPageTitle' => gettext($title),
-    ];
+    );
 
     $renderer = new PhpRenderer($renderPath);
 

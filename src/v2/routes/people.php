@@ -19,18 +19,18 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/people/');
 
-    $pageArgs = [
+    $pageArgs = array(
         'sRootPath' => SystemURLs::getRootPath(),
-    ];
+    );
 
     if ($request->getQueryParam('EmailsError')) {
-        $errorArgs = ['sGlobalMessage' => gettext('Error sending email(s)').' - '.gettext('Please check logs for more information'), 'sGlobalMessageClass' => 'danger'];
+        $errorArgs = array('sGlobalMessage' => gettext('Error sending email(s)').' - '.gettext('Please check logs for more information'), 'sGlobalMessageClass' => 'danger');
         $pageArgs = array_merge($pageArgs, $errorArgs);
     }
 
     if ($request->getQueryParam('AllPDFsEmailed')) {
-        $headerArgs = ['sGlobalMessage' => gettext('PDFs successfully emailed ').$request->getQueryParam('AllPDFsEmailed').' '.gettext('families').'.',
-            'sGlobalMessageClass'       => 'success'];
+        $headerArgs = array('sGlobalMessage' => gettext('PDFs successfully emailed ').$request->getQueryParam('AllPDFsEmailed').' '.gettext('families').'.',
+            'sGlobalMessageClass'            => 'success');
         $pageArgs = array_merge($pageArgs, $headerArgs);
     }
 
@@ -111,14 +111,14 @@ function listPeople(Request $request, Response $response, array $args)
         }
     }
 
-    $pageArgs = [
+    $pageArgs = array(
         'sMode'          => $sMode,
         'sRootPath'      => SystemURLs::getRootPath(),
         'members'        => $members,
         'filterByClsId'  => $filterByClsId,
         'filterByFmrId'  => $filterByFmrId,
         'filterByGender' => $filterByGender,
-    ];
+    );
 
     return $renderer->render($response, 'person-list.php', $pageArgs);
 }

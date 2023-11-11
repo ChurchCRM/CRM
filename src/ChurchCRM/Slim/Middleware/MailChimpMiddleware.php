@@ -13,7 +13,7 @@ class MailChimpMiddleware
         $mailchimpService = new MailChimpService();
 
         if (!$mailchimpService->isActive()) {
-            return $response->withStatus(412)->withJson(['message' =>  gettext('Mailchimp is not active')]);
+            return $response->withStatus(412)->withJson(array('message' =>  gettext('Mailchimp is not active')));
         }
         $request = $request->withAttribute('mailchimpService', $mailchimpService);
 

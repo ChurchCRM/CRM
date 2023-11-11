@@ -24,7 +24,7 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
     if (NotificationService::isUpdateRequired()) {
         NotificationService::updateNotifications();
     }
-    $notifications = [];
+    $notifications = array();
     foreach (NotificationService::getNotifications() as $notification) {
         $uiNotification = new UiNotification($notification->title, 'bell', $notification->link, '', 'danger', '8000', 'bottom', 'left');
         array_push($notifications, $uiNotification);
@@ -33,5 +33,5 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
     $taskSrv = new TaskService();
     $notifications = array_merge($notifications, $taskSrv->getTaskNotifications());
 
-    return $response->withJson(['notifications' => $notifications]);
+    return $response->withJson(array('notifications' => $notifications));
 }

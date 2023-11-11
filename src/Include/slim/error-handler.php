@@ -1,13 +1,13 @@
 <?php
 
 $container['errorHandler'] = fn ($container) => function ($request, $response, $exception) use ($container) {
-    $data = [
+    $data = array(
         'code'    => $exception->getCode(),
         'message' => $exception->getMessage(),
         'file'    => $exception->getFile(),
         'line'    => $exception->getLine(),
         'trace'   => explode("\n", $exception->getTraceAsString()),
-    ];
+    );
 
     return $container->get('response')->withStatus(500)
         ->withHeader('Content-Type', 'application/json')

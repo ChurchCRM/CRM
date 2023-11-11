@@ -21,7 +21,7 @@ $app->group('/kiosks', function () use ($app) {
         $window->add(new DateInterval('PT05S'));
         SystemConfig::setValue('sKioskVisibilityTimestamp', $window->format('Y-m-d H:i:s'));
 
-        return $response->write(json_encode(['visibleUntil' => $window]));
+        return $response->write(json_encode(array('visibleUntil' => $window)));
     });
 
     $app->post('/{kioskId:[0-9]+}/reloadKiosk', function ($request, $response, $args) {

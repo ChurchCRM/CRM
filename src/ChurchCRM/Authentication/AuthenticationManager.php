@@ -46,7 +46,7 @@ class AuthenticationManager
 
             return $currentUser;
         } catch (\Exception $e) {
-            LoggerUtils::getAppLogger()->debug('Failed to get current user', ['exception' => $e]);
+            LoggerUtils::getAppLogger()->debug('Failed to get current user', array('exception' => $e));
 
             throw $e;
         }
@@ -64,12 +64,12 @@ class AuthenticationManager
         } catch (\Exception $e) {
             //unable to get name of user logging out. Don't really care.
         }
-        $logCtx = ['username' => $currentSessionUserName];
+        $logCtx = array('username' => $currentSessionUserName);
 
         try {
             $result = self::getAuthenticationProvider()->endSession();
-            $_COOKIE = [];
-            $_SESSION = [];
+            $_COOKIE = array();
+            $_SESSION = array();
             session_destroy();
             Bootstrapper::initSession();
             $logger->info(
@@ -79,7 +79,7 @@ class AuthenticationManager
         } catch (\Exception $e) {
             $logger->warning(
                 'Error destroying session',
-                array_merge($logCtx, ['exception' => $e])
+                array_merge($logCtx, array('exception' => $e))
             );
         } finally {
             if (!$preventRedirect) {
@@ -106,12 +106,12 @@ class AuthenticationManager
                 } catch (\Exception $e) {
                     $logger->warning(
                         "Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen",
-                        ['exception' => $e]
+                        array('exception' => $e)
                     );
                 }
                 break;
             default:
-                $logger->critical('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => get_class($AuthenticationRequest)]);
+                $logger->critical('Unknown AuthenticationRequest type supplied', array('providedAuthenticationRequestClass' => get_class($AuthenticationRequest)));
                 break;
         }
 
@@ -139,7 +139,7 @@ class AuthenticationManager
 
             return $result->isAuthenticated;
         } catch (\Exception $error) {
-            LoggerUtils::getAuthLogger()->debug('Error determining session authentication status.', ['exception' => $error]);
+            LoggerUtils::getAuthLogger()->debug('Error determining session authentication status.', array('exception' => $error));
 
             return false;
         }
@@ -171,7 +171,7 @@ class AuthenticationManager
         } catch (\Throwable $error) {
             LoggerUtils::getAuthLogger()->debug(
                 'Error determining session authentication status.  Redirecting to login page.',
-                ['exception' => $error]
+                array('exception' => $error)
             );
             RedirectUtils::redirect(self::getSessionBeginURL());
         }

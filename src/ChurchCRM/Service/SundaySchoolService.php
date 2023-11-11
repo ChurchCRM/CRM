@@ -16,15 +16,15 @@ class SundaySchoolService
               group by grp.grp_name, lst.lst_OptionName
               order by grp.grp_name, lst.lst_OptionName';
         $rsClassCounts = RunQuery($sSQL);
-        $classInfo = [];
+        $classInfo = array();
         $lastClassId = 0;
-        $curClass = [];
+        $curClass = array();
         while ($row = mysqli_fetch_assoc($rsClassCounts)) {
             if ($lastClassId != $row['grp_id']) {
                 if ($lastClassId != 0) {
                     array_push($classInfo, $curClass);
                 }
-                $curClass = [];
+                $curClass = array();
                 $curClass['id'] = $row['grp_id'];
                 $curClass['name'] = $row['grp_name'];
             }
@@ -58,7 +58,7 @@ class SundaySchoolService
               and lst.lst_OptionName = '".$role."'
             order by per_FirstName";
         $rsMembers = RunQuery($sql);
-        $members = [];
+        $members = array();
         while ($row = mysqli_fetch_assoc($rsMembers)) {
             array_push($members, $row);
         }
@@ -86,7 +86,7 @@ class SundaySchoolService
             }
         }
 
-        return ['Boys' => $boys, 'Girls' => $girls, 'Unknown' => $unknown];
+        return array('Boys' => $boys, 'Girls' => $girls, 'Unknown' => $unknown);
     }
 
     public function getKidsBirthdayMonth($groupId)
@@ -146,19 +146,19 @@ class SundaySchoolService
             }
         }
 
-        return ['Jan'   => $Jan,
-            'Feb'       => $Feb,
-            'Mar'       => $Mar,
-            'Apr'       => $Apr,
-            'May'       => $May,
-            'June'      => $June,
-            'July'      => $July,
-            'Aug'       => $Aug,
-            'Sept'      => $Sept,
-            'Oct'       => $Oct,
-            'Nov'       => $Nov,
-            'Dec'       => $Dec,
-        ];
+        return array('Jan'   => $Jan,
+            'Feb'            => $Feb,
+            'Mar'            => $Mar,
+            'Apr'            => $Apr,
+            'May'            => $May,
+            'June'           => $June,
+            'July'           => $July,
+            'Aug'            => $Aug,
+            'Sept'           => $Sept,
+            'Oct'            => $Oct,
+            'Nov'            => $Nov,
+            'Dec'            => $Dec,
+        );
     }
 
     public function getKidsFullDetails($groupId)
@@ -188,7 +188,7 @@ class SundaySchoolService
             order by grp.grp_Name, fam.fam_Name";
 
         $rsKids = RunQuery($sSQL);
-        $kids = [];
+        $kids = array();
         while ($row = mysqli_fetch_assoc($rsKids)) {
             array_push($kids, $row);
         }
@@ -207,7 +207,7 @@ class SundaySchoolService
 	              (select per_id from person_per,group_grp grp, person2group2role_p2g2r person_grp
 		              where person_grp.p2g2r_rle_ID = 2 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID)';
         $rsKidsMissing = RunQuery($sSQL);
-        $kids = [];
+        $kids = array();
         while ($row = mysqli_fetch_array($rsKidsMissing)) {
             array_push($kids, $row);
         }

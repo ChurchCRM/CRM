@@ -26,7 +26,7 @@ class AddressSearchResultProvider extends BaseSearchResultProvider
 
     private function getPersonSearchResultsByPartialAddress(string $SearchQuery)
     {
-        $searchResults = [];
+        $searchResults = array();
         $id = 0;
 
         try {

@@ -17,7 +17,7 @@ abstract class BaseUserEmail extends BaseEmail
      */
     public function __construct($user)
     {
-        parent::__construct([$user->getEmail()]);
+        parent::__construct(array($user->getEmail()));
         $this->user = $user;
         $this->mail->Subject = SystemConfig::getValue('sChurchName').': '.$this->getSubSubject();
         $this->mail->isHTML(true);
@@ -28,11 +28,11 @@ abstract class BaseUserEmail extends BaseEmail
 
     public function getTokens()
     {
-        $myTokens = ['toName' => $this->user->getPerson()->getFirstName(),
-            'userName'        => $this->user->getUserName(),
-            'userNameText'    => gettext('Email/Username'),
-            'body'            => $this->buildMessageBody(),
-        ];
+        $myTokens = array('toName' => $this->user->getPerson()->getFirstName(),
+            'userName'             => $this->user->getUserName(),
+            'userNameText'         => gettext('Email/Username'),
+            'body'                 => $this->buildMessageBody(),
+        );
 
         return array_merge($this->getCommonTokens(), $myTokens);
     }

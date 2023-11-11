@@ -168,8 +168,8 @@ if ($fundCount > 0) {
 $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
 $rsFunds = RunQuery($sSQL);
 
-$fundPaymentTotal = [];
-$fundPledgeTotal = [];
+$fundPaymentTotal = array();
+$fundPledgeTotal = array();
 while ($row = mysqli_fetch_array($rsFunds)) {
     $fun_name = $row['fun_Name'];
     $fundPaymentTotal[$fun_name] = 0;
@@ -254,7 +254,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     if ($only_owe === 'yes') {
         // Run through pledges and payments for this family to see if there are any unpaid pledges
-        $oweByFund = [];
+        $oweByFund = array();
         $bOwe = 0;
         while ($aRow = mysqli_fetch_array($rsPledges)) {
             extract($aRow);

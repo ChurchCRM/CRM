@@ -28,7 +28,7 @@ if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
 }
 
 // Get and filter the classifications selected
-$aClasses = [];
+$aClasses = array();
 if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] != '') {
     foreach ($_POST['sDirClassifications'] as $Cls) {
         $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
@@ -37,19 +37,19 @@ if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassificatio
 } else {
     $sDirClassifications = '';
 }
-$aHeads = [];
+$aHeads = array();
 foreach ($_POST['sDirRoleHead'] as $Head) {
     $aHeads[] = InputUtils::legacyFilterInput($Head, 'int');
 }
 $sDirRoleHeads = implode(',', $aHeads);
 
-$aSpouses = [];
+$aSpouses = array();
 foreach ($_POST['sDirRoleSpouse'] as $Spouse) {
     $aSpouses[] = InputUtils::legacyFilterInput($Spouse, 'int');
 }
 $sDirRoleSpouses = implode(',', $aSpouses);
 
-$aChildren = [];
+$aChildren = array();
 foreach ($_POST['sDirRoleChild'] as $Child) {
     $aChildren[] = InputUtils::legacyFilterInput($Child, 'int');
 }
@@ -126,7 +126,7 @@ $sWhereExt = '';
 if (!empty($_POST['GroupID'])) {
     $sGroupTable = '(person_per, person2group2role_p2g2r)';
 
-    $aGroups = [];
+    $aGroups = array();
     foreach ($_POST['GroupID'] as $Grp) {
         $aGroups[] = InputUtils::legacyFilterInput($Grp, 'int');
     }

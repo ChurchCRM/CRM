@@ -84,7 +84,7 @@ class Deposit extends BaseDeposit
     private function generateCashDenominations($thisReport)
     {
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-        $cashDenominations = ['0.01', '0.05', '0.10', '0.25', '0.50', '1.00'];
+        $cashDenominations = array('0.01', '0.05', '0.10', '0.25', '0.50', '1.00');
         $thisReport->pdf->Cell(10, 10, 'Coin', 1, 0, 'L');
         $thisReport->pdf->Cell(20, 10, 'Counts', 1, 0, 'L');
         $thisReport->pdf->Cell(20, 10, 'Totals', 1, 2, 'L');
@@ -100,7 +100,7 @@ class Deposit extends BaseDeposit
         $thisReport->curX += 70;
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
 
-        $cashDenominations = ['$1', '$2', '$5', '$10', '$20', '$50', '$100'];
+        $cashDenominations = array('$1', '$2', '$5', '$10', '$20', '$50', '$100');
         $thisReport->pdf->Cell(10, 10, 'Bill', 1, 0, 'L');
         $thisReport->pdf->Cell(20, 10, 'Counts', 1, 0, 'L');
         $thisReport->pdf->Cell(20, 10, 'Totals', 1, 2, 'L');
@@ -473,7 +473,7 @@ class Deposit extends BaseDeposit
         ->joinDonationFund()
         ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
         ->orderBy(DonationFundTableMap::COL_FUN_NAME)
-        ->select(['Name', 'Total'])
+        ->select(array('Name', 'Total'))
         ->find();
 
         return $funds;

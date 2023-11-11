@@ -26,10 +26,10 @@ function getPersonFieldsByType(Request $request, Response $response, array $p_ar
 
     $fields = PersonCustomMasterQuery::create()->filterByTypeId($typeId)->find();
 
-    $keyValue = [];
+    $keyValue = array();
 
     foreach ($fields as $field) {
-        array_push($keyValue, ['id' => $field->getId(), 'value' => $field->getName()]);
+        array_push($keyValue, array('id' => $field->getId(), 'value' => $field->getName()));
     }
 
     return $response->withJson($keyValue);

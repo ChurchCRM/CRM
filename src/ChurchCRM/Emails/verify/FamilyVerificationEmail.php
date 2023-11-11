@@ -22,9 +22,9 @@ class FamilyVerificationEmail extends BaseEmail
 
     public function getTokens()
     {
-        $myTokens = ['toName' => $this->familyName.' '.gettext('Family'),
-            'body'            => SystemConfig::getValue('sConfirm1'),
-        ];
+        $myTokens = array('toName' => $this->familyName.' '.gettext('Family'),
+            'body'                 => SystemConfig::getValue('sConfirm1'),
+        );
 
         return array_merge($this->getCommonTokens(), $myTokens);
     }

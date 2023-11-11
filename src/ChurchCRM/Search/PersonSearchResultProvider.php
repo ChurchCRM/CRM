@@ -26,7 +26,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
 
     private function getPersonSearchResultsByPartialName(string $SearchQuery)
     {
-        $searchResults = [];
+        $searchResults = array();
         $id = 0;
 
         try {

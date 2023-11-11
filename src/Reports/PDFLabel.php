@@ -437,10 +437,10 @@ function ZipBundleSort($inLabels)
 
     foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip5MinBundleSize) {
-            $NoteText = ['Note' => '******* Presort ZIP-5 '.$z];
-            $NameText = ['Name' => '** '.$zc.' Addresses in Bundle '.$z.' *'];
-            $AddressText = ['Address' => '** '.$nTotalLabels.' Total Addresses *'];
-            $CityText = ['City' => '******* Presort ZIP-5 '.$z.'  '];
+            $NoteText = array('Note' => '******* Presort ZIP-5 '.$z);
+            $NameText = array('Name' => '** '.$zc.' Addresses in Bundle '.$z.' *');
+            $AddressText = array('Address' => '** '.$nTotalLabels.' Total Addresses *');
+            $CityText = array('City' => '******* Presort ZIP-5 '.$z.'  ');
             $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
             for ($i = 0; $i < $n; $i++) {
                 if (intval(mb_substr($inLabels[$i]['Zip'], 0, 5)) == $z) {
@@ -490,10 +490,10 @@ function ZipBundleSort($inLabels)
     $nz3 = 0;
     foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip3MinBundleSize) {
-            $NoteText = ['Note' => '******* Presort ZIP-3 '.$z];
-            $NameText = ['Name' => '** '.$zc.' Addresses in Bundle '.$z.' *'];
-            $AddressText = ['Address' => '** '.$nTotalLabels.' Total Addresses *'];
-            $CityText = ['City' => '******* Presort ZIP-3 '.$z.'  '];
+            $NoteText = array('Note' => '******* Presort ZIP-3 '.$z);
+            $NameText = array('Name' => '** '.$zc.' Addresses in Bundle '.$z.' *');
+            $AddressText = array('Address' => '** '.$nTotalLabels.' Total Addresses *');
+            $CityText = array('City' => '******* Presort ZIP-3 '.$z.'  ');
             $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
             for ($i = 0; $i < $n; $i++) {
                 if (intval(mb_substr($inLabels[$i]['Zip'], 0, 3)) == $z) {
@@ -546,10 +546,10 @@ function ZipBundleSort($inLabels)
     if ($ncounts) {
         foreach ($ZipCounts as $z => $zc) {
             if ($zc >= $iAdcMinBundleSize) {
-                $NoteText = ['Note' => '******* Presort ADC '.$z];
-                $NameText = ['Name' => '** '.$zc.' Addresses in Bundle ADC '.$z.' *'];
-                $AddressText = ['Address' => '** '.$nTotalLabels.' Total Addresses *'];
-                $CityText = ['City' => '******* Presort ADC '.$z.'  '];
+                $NoteText = array('Note' => '******* Presort ADC '.$z);
+                $NameText = array('Name' => '** '.$zc.' Addresses in Bundle ADC '.$z.' *');
+                $AddressText = array('Address' => '** '.$nTotalLabels.' Total Addresses *');
+                $CityText = array('City' => '******* Presort ADC '.$z.'  ');
                 $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
                 for ($i = 0; $i < $n; $i++) {
                     if ($adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))] == $z) {
@@ -579,10 +579,10 @@ function ZipBundleSort($inLabels)
     $n = count($inLabels);
     $zc = $n;
     if ($zc > 0) {
-        $NoteText = ['Note' => '******* Presort MIXED ADC '];
-        $NameText = ['Name' => '** '.$zc.' Addresses in Bundle *'];
-        $AddressText = ['Address' => '** '.$nTotalLabels.' Total Addresses *'];
-        $CityText = ['City' => '******* Presort MIXED ADC   '];
+        $NoteText = array('Note' => '******* Presort MIXED ADC ');
+        $NameText = array('Name' => '** '.$zc.' Addresses in Bundle *');
+        $AddressText = array('Address' => '** '.$nTotalLabels.' Total Addresses *');
+        $CityText = array('City' => '******* Presort MIXED ADC   ');
         $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
         for ($i = 0; $i < $n; $i++) {
             $outList[] = array_merge($inLabels[$i], $NoteText);
@@ -622,7 +622,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     $sSQL .= 'ORDER BY fam_Zip, per_LastName, per_FirstName';
     $rsCartItems = RunQuery($sSQL);
     $sRowClass = 'RowColorA';
-    $didFam = [];
+    $didFam = array();
 
     while ($aRow = mysqli_fetch_array($rsCartItems)) {
         // It's possible (but unlikely) that three labels can be generated for a
@@ -696,7 +696,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             }
 
             if (!$bOnlyComplete || (strlen($sAddress) && strlen($sCity) && strlen($sState) && strlen($sZip))) {
-                $sLabelList[] = ['Name' => $sName, 'Address' => $sAddress, 'City' => $sCity, 'State' => $sState, 'Zip' => $sZip]; //,'fam_ID'=>$aRow['fam_ID']);
+                $sLabelList[] = array('Name' => $sName, 'Address' => $sAddress, 'City' => $sCity, 'State' => $sState, 'Zip' => $sZip); //,'fam_ID'=>$aRow['fam_ID']);
             }
         } // end of foreach loop
     } // end of while loop
@@ -765,14 +765,14 @@ if ($startrow < 1) {
 }
 
 $sLabelType = InputUtils::legacyFilterInput($_GET['labeltype'], 'char', 8);
-setcookie('labeltype', $sLabelType, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('labeltype', $sLabelType, array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 
 $pdf = new PdfLabel($sLabelType, $startcol, $startrow);
 
 $sFontInfo = FontFromName($_GET['labelfont']);
-setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('labelfont', $_GET['labelfont'], array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 $sFontSize = $_GET['labelfontsize'];
-setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('labelfontsize', $sFontSize, array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 
 if ($sFontSize === 'default') {
@@ -787,7 +787,7 @@ if ($startcol > 1 || $startrow > 1) {
 }
 
 $mode = $_GET['groupbymode'];
-setcookie('groupbymode', $mode, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('groupbymode', $mode, array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 
 if (array_key_exists('bulkmailpresort', $_GET)) {
     $bulkmailpresort = $_GET['bulkmailpresort'];
@@ -795,7 +795,7 @@ if (array_key_exists('bulkmailpresort', $_GET)) {
     $bulkmailpresort = false;
 }
 
-setcookie('bulkmailpresort', $bulkmailpresort, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('bulkmailpresort', $bulkmailpresort, array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 
 if (array_key_exists('bulkmailquiet', $_GET)) {
     $bulkmailquiet = $_GET['bulkmailquiet'];
@@ -803,7 +803,7 @@ if (array_key_exists('bulkmailquiet', $_GET)) {
     $bulkmailquiet = false;
 }
 
-setcookie('bulkmailquiet', $bulkmailquiet, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('bulkmailquiet', $bulkmailquiet, array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 
 $iBulkCode = 0;
 if ($bulkmailpresort) {
@@ -814,7 +814,7 @@ if ($bulkmailpresort) {
 }
 
 $bToParents = (array_key_exists('toparents', $_GET) && $_GET['toparents'] == 1);
-setcookie('toparents', $bToParents, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+setcookie('toparents', $bToParents, array('expires' => time() + 60 * 60 * 24 * 90, 'path' => '/'));
 
 $bOnlyComplete = ($_GET['onlyfull'] == 1);
 

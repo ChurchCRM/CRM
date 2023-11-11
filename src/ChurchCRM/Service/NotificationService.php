@@ -31,7 +31,7 @@ class NotificationService
     /** retrieve active notifications from the session variable for display */
     public static function getNotifications(): array
     {
-        $notifications = [];
+        $notifications = array();
         if (isset($_SESSION['SystemNotifications'])) {
             foreach ($_SESSION['SystemNotifications']->messages as $message) {
                 if ($message->targetVersion === $_SESSION['sSoftwareInstalledVersion']) {

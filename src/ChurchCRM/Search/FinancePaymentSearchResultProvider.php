@@ -34,7 +34,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
 
     private function getPaymentsWithValuesInRange(int $min, int $max)
     {
-        $searchResults = [];
+        $searchResults = array();
         $id = 0;
         if ($max === 0) {
             $max = PHP_INT_MAX;
@@ -68,7 +68,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
 
     private function getPaymentSearchResults(string $SearchQuery)
     {
-        $searchResults = [];
+        $searchResults = array();
         $id = 0;
 
         try {

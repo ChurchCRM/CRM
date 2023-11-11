@@ -12,7 +12,7 @@ class Cart
     private static function checkCart()
     {
         if (!isset($_SESSION['aPeopleCart'])) {
-            $_SESSION['aPeopleCart'] = [];
+            $_SESSION['aPeopleCart'] = array();
         }
     }
 
@@ -132,7 +132,7 @@ class Cart
     {
         $persons = PersonQuery::create()
             ->distinct()
-            ->select(['Person.FamId'])
+            ->select(array('Person.FamId'))
             ->filterById($_SESSION['aPeopleCart'])
             ->orderByFamId()
             ->find();
@@ -175,7 +175,7 @@ class Cart
             $iCount += 1;
         }
 
-        $_SESSION['aPeopleCart'] = [];
+        $_SESSION['aPeopleCart'] = array();
     }
 
     public static function getCartPeople()
@@ -191,7 +191,7 @@ class Cart
     {
         /* @var $cartPerson ChurchCRM\Person */
         $people = Cart::getCartPeople();
-        $emailAddressArray = [];
+        $emailAddressArray = array();
         foreach ($people as $cartPerson) {
             if (!empty($cartPerson->getEmail())) {
                 array_push($emailAddressArray, $cartPerson->getEmail());
@@ -210,7 +210,7 @@ class Cart
     {
         /* @var $cartPerson ChurchCRM\Person */
         $people = Cart::getCartPeople();
-        $SMSNumberArray = [];
+        $SMSNumberArray = array();
         foreach ($people as $cartPerson) {
             if (!empty($cartPerson->getCellPhone())) {
                 array_push($SMSNumberArray, $cartPerson->getCellPhone());

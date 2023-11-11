@@ -30,7 +30,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
 
     private function getDepositSearchResults(string $SearchQuery)
     {
-        $searchResults = [];
+        $searchResults = array();
         $id = 0;
 
         try {

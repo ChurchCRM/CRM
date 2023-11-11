@@ -22,7 +22,7 @@ function FontSelect($fieldname)
     $sFPDF_PATH = 'vendor/setasign/fpdf';
 
     $d = scandir($sFPDF_PATH.'/font/', SCANDIR_SORT_DESCENDING);
-    $fontnames = [];
+    $fontnames = array();
     $family = ' ';
     foreach ($d as $entry) {
         $len = strlen($entry);
@@ -57,7 +57,7 @@ function FontSelect($fieldname)
 
 function FontSizeSelect($fieldname)
 {
-    $sizes = ['default', 6, 7, 8, 9, 10, 11, 12, 14, 16, 18];
+    $sizes = array('default', 6, 7, 8, 9, 10, 11, 12, 14, 16, 18);
     echo '<tr>';
     echo '<td class="LabelColumn"> '.gettext('Font Size').':</td>';
     echo '<td class="TextColumn">';
@@ -76,7 +76,7 @@ function FontSizeSelect($fieldname)
 
 function LabelSelect($fieldname)
 {
-    $labels = ['Tractor', '5160', '5161', '5162', '5163', '5164', '8600', 'L7163'];
+    $labels = array('Tractor', '5160', '5161', '5162', '5163', '5164', '8600', 'L7163');
     echo '<tr>';
     echo '<td class="LabelColumn">'.gettext('Label Type').':</td>';
     echo '<td class="TextColumn">';

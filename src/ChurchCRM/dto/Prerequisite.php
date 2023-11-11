@@ -47,10 +47,10 @@ class Prerequisite implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        return array(
             'Name'      => $this->getName(),
             'WikiLink'  => $this->getWikiLink(),
             'Satisfied' => $this->isPrerequisiteMet(),
-        ];
+        );
     }
 }

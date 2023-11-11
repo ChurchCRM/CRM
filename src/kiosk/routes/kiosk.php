@@ -8,7 +8,7 @@ use Slim\Views\PhpRenderer;
 
 $app->get('/', function ($request, $response, $args) {
     $renderer = new PhpRenderer('templates/kioskDevices/');
-    $pageObjects = ['sRootPath' => $_SESSION['sRootPath']];
+    $pageObjects = array('sRootPath' => $_SESSION['sRootPath']);
 
     return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
 });

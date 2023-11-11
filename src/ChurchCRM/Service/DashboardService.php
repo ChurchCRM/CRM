@@ -9,7 +9,7 @@ class DashboardService
 {
     public function getAgeStats()
     {
-        $ageStats = [];
+        $ageStats = array();
         $people = PersonQuery::create()->find();
         foreach ($people as $person) {
             $personNumericAge = (int) $person->getNumericAge();
@@ -31,7 +31,7 @@ class DashboardService
         $familyCount = FamilyQuery::Create()
             ->filterByDateDeactivated()
             ->count();
-        $data = ['familyCount' => $familyCount];
+        $data = array('familyCount' => $familyCount);
 
         return $data;
     }
@@ -43,14 +43,14 @@ class DashboardService
                 ->filterByDateDeactivated(null)
             ->endUse()
             ->count();
-        $data = ['personCount' => $personCount];
+        $data = array('personCount' => $personCount);
 
         return $data;
     }
 
     public function getPersonStats()
     {
-        $data = [];
+        $data = array();
         $sSQL = 'select lst_OptionName as Classification, count(*) as count
                 from person_per INNER JOIN list_lst ON  per_cls_ID = lst_OptionID
                 LEFT JOIN family_fam ON family_fam.fam_ID = person_per.per_fam_ID
@@ -79,7 +79,7 @@ class DashboardService
         ';
         $rsQuickStat = RunQuery($sSQL);
         $row = mysqli_fetch_array($rsQuickStat);
-        $data = ['groups' => $row['Group_cnt'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
+        $data = array('groups' => $row['Group_cnt'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']);
 
         return $data;
     }

@@ -35,6 +35,6 @@ $app->group('/register', function () use ($app) {
         // =Turn off the registration flag so the menu option is less obtrusive
         SystemConfig::setValue('bRegistered', '1');
 
-        return $response->withJson(['status' => 'success']);
+        return $response->withJson(array('status' => 'success'));
     });
 })->add(new AdminRoleAuthMiddleware());

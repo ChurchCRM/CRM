@@ -10,7 +10,7 @@ use ChurchCRM\Service\SundaySchoolService;
 $sundaySchoolService = new SundaySchoolService();
 $groups = GroupQuery::create()->filterByActive(true)->filterByIncludeInEmailExport(true)->find();
 
-$colNames = [];
+$colNames = array();
 array_push($colNames, 'CRM ID');
 array_push($colNames, 'FirstName');
 array_push($colNames, 'LastName');
@@ -19,12 +19,12 @@ foreach ($groups as $group) {
     array_push($colNames, $group->getName());
 }
 
-$sundaySchoolsParents = [];
+$sundaySchoolsParents = array();
 foreach ($groups as $group) {
     if ($group->isSundaySchool()) {
-        $sundaySchoolParents = [];
+        $sundaySchoolParents = array();
         $kids = $sundaySchoolService->getKidsFullDetails($group->getId());
-        $parentIds = [];
+        $parentIds = array();
         foreach ($kids as $kid) {
             if ($kid['dadId'] != '') {
                 array_push($parentIds, $kid['dadId']);
@@ -45,7 +45,7 @@ header('Expires: 0');
 $out = fopen('php://output', 'w');
 fputcsv($out, $colNames);
 foreach ($personService->getPeopleEmailsAndGroups() as $person) {
-    $row = [];
+    $row = array();
     array_push($row, $person['id']);
     array_push($row, $person['firstName']);
     array_push($row, $person['lastName']);
