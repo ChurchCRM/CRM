@@ -534,7 +534,7 @@ module.exports = function (grunt) {
                 if (localeConfig.hasOwnProperty("fullCalendarLocale")) {
                     tempLangCode = localeConfig["fullCalendarLocale"];
                 }
-                tempFile = 'node_modules/fullcalendar/dist/locale/'+tempLangCode+'.js';
+                tempFile = 'node_modules/@fullcalendar/core/locales/'+tempLangCode+'.js';
                 var fullCalendar = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
                 jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {};\n";
