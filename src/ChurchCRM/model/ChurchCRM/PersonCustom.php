@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\PersonCustom as BasePersonCustom;
+use ChurchCRM\model\ChurchCRM\Base\PersonCustom as BasePersonCustom;
 
 /**
  * Skeleton subclass for representing a row from the 'person_custom' table.

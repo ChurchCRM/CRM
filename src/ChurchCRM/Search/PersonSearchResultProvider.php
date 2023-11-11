@@ -3,7 +3,7 @@
 namespace ChurchCRM\Search;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 

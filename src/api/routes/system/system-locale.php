@@ -1,10 +1,10 @@
 <?php
 
-use ChurchCRM\PredefinedReportsQuery;
-use ChurchCRM\QueryParameterOptionsQuery;
-use ChurchCRM\QueryParametersQuery;
+use ChurchCRM\model\ChurchCRM\PredefinedReportsQuery;
+use ChurchCRM\model\ChurchCRM\QueryParameterOptionsQuery;
+use ChurchCRM\model\ChurchCRM\QueryParametersQuery;
+use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use ChurchCRM\UserConfigQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

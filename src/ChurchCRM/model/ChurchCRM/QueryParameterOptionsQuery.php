@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\QueryParameterOptionsQuery as BaseQueryParameterOptionsQuery;
+use ChurchCRM\model\ChurchCRM\Base\QueryParameterOptionsQuery as BaseQueryParameterOptionsQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'queryparameteroptions_qpo' table.

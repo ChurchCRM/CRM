@@ -20,10 +20,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/Header.php';
 
-use ChurchCRM\EventQuery;
-use ChurchCRM\EventAttendQuery;
-use ChurchCRM\EventAttend;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
+use ChurchCRM\model\ChurchCRM\EventAttend;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;

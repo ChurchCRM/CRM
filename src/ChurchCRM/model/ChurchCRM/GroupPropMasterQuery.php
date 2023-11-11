@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\GroupPropMasterQuery as BaseGroupPropMasterQuery;
+use ChurchCRM\model\ChurchCRM\Base\GroupPropMasterQuery as BaseGroupPropMasterQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'groupprop_master' table.

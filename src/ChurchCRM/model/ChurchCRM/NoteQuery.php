@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\NoteQuery as BaseNoteQuery;
+use ChurchCRM\model\ChurchCRM\Base\NoteQuery as BaseNoteQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'note_nte' table.

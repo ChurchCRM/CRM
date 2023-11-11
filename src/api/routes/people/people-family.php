@@ -3,11 +3,11 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Token;
+use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
-use ChurchCRM\Token;
-use ChurchCRM\TokenQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;

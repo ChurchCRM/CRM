@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\PersonQuery as BasePersonQuery;
+use ChurchCRM\model\ChurchCRM\Base\PersonQuery as BasePersonQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'person_per' table.

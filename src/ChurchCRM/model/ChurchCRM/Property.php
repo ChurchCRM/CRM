@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Property as BaseProperty;
+use ChurchCRM\model\ChurchCRM\Base\Property as BaseProperty;
 
 /**
  * Skeleton subclass for representing a row from the 'property_pro' table.

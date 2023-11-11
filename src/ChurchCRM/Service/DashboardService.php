@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class DashboardService
 {

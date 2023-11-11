@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\EgiveQuery as BaseEgiveQuery;
+use ChurchCRM\model\ChurchCRM\Base\EgiveQuery as BaseEgiveQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'egive_egv' table.

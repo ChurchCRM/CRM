@@ -3,7 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;

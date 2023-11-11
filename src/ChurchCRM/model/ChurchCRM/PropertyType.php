@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\PropertyType as BasePropertyType;
+use ChurchCRM\model\ChurchCRM\Base\PropertyType as BasePropertyType;
 
 /**
  * Skeleton subclass for representing a row from the 'propertytype_prt' table.

@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\EmailMessagePending as BaseEmailMessagePending;
+use ChurchCRM\model\ChurchCRM\Base\EmailMessagePending as BaseEmailMessagePending;
 
 /**
  * Skeleton subclass for representing a row from the 'email_message_pending_emp' table.

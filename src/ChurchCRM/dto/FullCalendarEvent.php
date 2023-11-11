@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Calendar;
-use ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\Calendar;
+use ChurchCRM\model\ChurchCRM\Event;
 
 class FullCalendarEvent
 {

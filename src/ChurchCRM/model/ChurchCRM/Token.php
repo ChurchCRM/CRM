@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Token as BaseToken;
+use ChurchCRM\model\ChurchCRM\Base\Token as BaseToken;
 
 /**
  * Skeleton subclass for representing a row from the 'tokens' table.

@@ -1,8 +1,8 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\ListOptionQuery;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;

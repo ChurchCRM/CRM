@@ -11,10 +11,10 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\GroupQuery;
-use ChurchCRM\ListOptionQuery;
-use ChurchCRM\PersonCustomMasterQuery;
-use ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
 
 //Set the page title
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');

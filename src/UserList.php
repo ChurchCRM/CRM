@@ -20,7 +20,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;

@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\PledgeQuery as BasePledgeQuery;
+use ChurchCRM\model\ChurchCRM\Base\PledgeQuery as BasePledgeQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'pledge_plg' table.

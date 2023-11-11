@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\DepositQuery as BaseDepositQuery;
+use ChurchCRM\model\ChurchCRM\Base\DepositQuery as BaseDepositQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'deposit_dep' table.

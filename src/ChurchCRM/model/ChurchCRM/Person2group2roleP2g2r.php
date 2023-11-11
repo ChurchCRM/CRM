@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Person2group2roleP2g2r as BasePerson2group2roleP2g2r;
+use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2r as BasePerson2group2roleP2g2r;
 
 /**
  * Skeleton subclass for representing a row from the 'person2group2role_p2g2r' table.

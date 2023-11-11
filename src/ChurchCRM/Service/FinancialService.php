@@ -8,9 +8,9 @@ require_once dirname(__DIR__).'/../Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\FamilyQuery;
 use ChurchCRM\MICRFunctions;
-use ChurchCRM\PledgeQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 
 class FinancialService
 {
@@ -67,8 +67,6 @@ class FinancialService
             $iDepositSlipID = mysqli_fetch_array($rsDepositSlipID)[0];
         }
         $_SESSION['iCurrentDeposit'] = $iDepositSlipID;
-
-        return $this->getDeposits($iDepositSlipID);
     }
 
     public function getDepositTotal($id, $type = null)
@@ -243,7 +241,6 @@ class FinancialService
         requireUserGroupMembership('bFinance');
         // Only set PledgeOrPayment when the record is first created
         // loop through all funds and create non-zero amount pledge records
-        unset($sGroupKey);
         $FundSplit = json_decode($payment->FundSplit, null, 512, JSON_THROW_ON_ERROR);
         foreach ($FundSplit as $Fund) {
             if ($Fund->Amount > 0) {  //Only insert a row in the pledge table if this fund has a non zero amount.
@@ -251,12 +248,12 @@ class FinancialService
                     if ($payment->iMethod === 'CHECK') {
                         $sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
-                        if (!$iAutID) {
+                        if (!isset($payment->iAutID)) {
                             $iAutID = 'draft';
                         }
                         $sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {
-                        if (!$iAutID) {
+                        if (!isset($payment->iAutID)) {
                             $iAutID = 'credit';
                         }
                         $sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);

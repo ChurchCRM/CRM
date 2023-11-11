@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Slim\Middleware\Request;
 
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

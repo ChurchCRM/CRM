@@ -3,7 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;

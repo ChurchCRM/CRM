@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\MenuLinkQuery as BaseMenuLinkQuery;
+use ChurchCRM\model\ChurchCRM\Base\MenuLinkQuery as BaseMenuLinkQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'menu_links' table.

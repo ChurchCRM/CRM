@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use Slim\Views\PhpRenderer;
 
 $app->group('/register', function () use ($app) {

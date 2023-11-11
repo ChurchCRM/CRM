@@ -1,14 +1,15 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Base\Family as BaseFamily;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\model\ChurchCRM\Base\Family as BaseFamily;
+use ChurchCRM\PhotoInterface;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;

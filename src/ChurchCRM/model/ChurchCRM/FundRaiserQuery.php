@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\FundRaiserQuery as BaseFundRaiserQuery;
+use ChurchCRM\model\ChurchCRM\Base\FundRaiserQuery as BaseFundRaiserQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'fundraiser_fr' table.

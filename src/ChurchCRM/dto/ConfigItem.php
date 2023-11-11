@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Config;
+use ChurchCRM\model\ChurchCRM\Config;
 
 class ConfigItem
 {
@@ -15,6 +15,8 @@ class ConfigItem
     private $url;
     private $data;
     private $dbConfigItem;
+    private $section = null;
+    private $category = null;
 
     public function __construct($id, $name, $type, $default, $tooltip = '', $url = '', $data = '')
     {

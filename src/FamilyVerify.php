@@ -3,7 +3,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
 
 //Get the FamilyID out of the querystring

@@ -4,7 +4,7 @@ namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\User;
 
 abstract class BaseUserEmail extends BaseEmail
 {

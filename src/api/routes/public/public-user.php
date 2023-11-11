@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

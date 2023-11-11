@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\PledgeQuery;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;

@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Slim\Middleware\Request;
 
-use ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
