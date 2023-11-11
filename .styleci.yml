@@ -17,5 +17,5 @@ finder:
   path:
     - "src"
   exclude:
-    - "vendor"
+    - "src/vendor"
   name: "*.php"
