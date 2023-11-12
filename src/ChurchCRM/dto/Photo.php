@@ -5,6 +5,7 @@ namespace ChurchCRM\dto;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\MiscUtils;
 
 class Photo
 {
@@ -60,18 +61,23 @@ class Photo
             return strpos($photoFile, 'remote') !== false;
         }
 
-        // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
-        $remotePhotoCacheDuration = SystemConfig::getValue('iRemotePhotoCacheDuration');
-        if (!$remotePhotoCacheDuration) {
-            LoggerUtils::getAppLogger()->error(
-                'config iRemotePhotoCacheDuration somehow not set, please investigate',
-                ['stacktrace' => debug_backtrace()]
-            );
+        // default defined in SystemConfig.php
+        $interval = \DateInterval::createFromDateString('72 hours');
 
-            // default defined in SystemConfig.php
-            $interval = \DateInterval::createFromDateString('72 hours');
-        } else {
-            $interval = \DateInterval::createFromDateString($remotePhotoCacheDuration);
+        try {
+            // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
+            $remotePhotoCacheDuration = SystemConfig::getValue('iRemotePhotoCacheDuration');
+            if (!$remotePhotoCacheDuration) {
+                LoggerUtils::getAppLogger()->error(
+                    'config iRemotePhotoCacheDuration somehow not set, please investigate',
+                    ['stacktrace' => debug_backtrace()]
+                );
+            } else {
+                $interval = \DateInterval::createFromDateString($remotePhotoCacheDuration);
+                MiscUtils::throwIfFailed($interval);
+            }
+        } catch (\Throwable $exception) {
+            // use default value
         }
         $remoteCacheThreshold = new \DateTimeImmutable();
         $remoteCacheThreshold = $remoteCacheThreshold->sub($interval);
