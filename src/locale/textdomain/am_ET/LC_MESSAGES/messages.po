@@ -8217,6 +8217,11 @@ msgid "New Calendar"
 msgstr "አዲስ ቀን መቁጠሪያ"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI ተሰናክሏል፣ነገር ግን አንዳንድ የቀን መቁጠሪያዎች የመድረሻ መተኪያዎች አሏቸው"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "የቀን መቁጠሪያዎች ለመጋራት፣ የbEnableExternalCalendarAPI ቅንብር የቀን መቁጠሪያው የተወሰነ የመዳረሻ ማስመሰያ ካለው በተጨማሪ መንቃት አለበት"
 

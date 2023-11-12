@@ -1,3 +1,57 @@
+# 5.2.1
+
+<!-- Release notes generated using configuration in .github/release.yml at 423fe651ee875fd4a78777230bec39fca912d6b8 -->
+
+## What's Changed
+### 🪲 Bugs
+* UI: Bug Fix - Left Nav Bar  by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6650
+### Inner Beauty
+* re-namespace propel classes to conform to psr-4 by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6642
+* StyleCI now uses .styleci.yml by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6648
+### Other Changes
+* Apply fixes from StyleCI by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6641
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6646
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.2.0...5.2.1
+
+# 5.2.0
+<!-- Release notes generated using configuration in .github/release.yml at 13bd89991654dba2f4142a8c2cd4c1fa5ab7fa80 -->
+
+## What's Changed
+### 🪲 Bugs
+* additional fixes and code smell cleanup by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6636
+### 💬 Localization
+* Locale: 5.2.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6645
+### Inner Beauty
+* Update README badges to always reflect latest release by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6633
+### 👒 Dependencies
+* Upgrade frontend deps by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6630
+### Other Changes
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6632
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.1.1...5.2.0
+
+# 5.1.1
+
+<!-- Release notes generated using configuration in .github/release.yml at 39fafec969a421c28502f3484317c38695373786 -->
+
+## What's Changed
+### 🪲 Bugs
+* Bug Fixes & Cleanup 5.1.1 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6625
+* attempt to fix potentially-undefined fn apache_get_modules, only allow upgrade when logged in, fix kiosk routes, misc minor cleanup by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6627
+### 💬 Localization
+* 5.1.1 POEditor Update - 2023-11-06 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6623
+### Inner Beauty
+* 5.1.1 - Build Script Cleanup by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6620
+* start removal of extract function from codebase + fix report tests by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6613
+* Development Updates: GitHub Templates & Scripts  by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6624
+* Locale: tool updates & 5.1.1 download by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6622
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.1.0...5.1.1
+
 # 5.1.0
 
 ## What's Changed

@@ -2048,6 +2048,7 @@
     "Invalid Entry": "Intrare nevalidă",
     "Calendar Name": "Nume calendar",
     "New Calendar": "Calendar nou",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnableExternalCalendarAPI dezactivat, dar unele calendare au tokenuri de acces",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "Pentru ca calendarele să poată fi partajate, setarea bEnableExternalCalendarAPI trebuie să fie activată, pe lângă faptul că calendarul trebuie să aibă un token de acces specific",
     "Links": "Link-uri",
     "Show custom links on the left menu.": "Arată link-urile personalizate în meniul din stânga",

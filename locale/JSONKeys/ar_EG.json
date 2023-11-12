@@ -2048,6 +2048,7 @@
     "Invalid Entry": "دخول غير صالح",
     "Calendar Name": "اسم التقويم",
     "New Calendar": "التقويم الجديد",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnableExternalCalendarAPI تعطيل، ولكن بعض التقاويم على رموز الوصول المميزة",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "للتقويمات أن تكون مشتركة، لا بد من تمكين الإعداد bEnableExternalCalendarAPI بالإضافة إلى التقويم وجود رمز وصول محددة",
     "Links": "الروابط",
     "Show custom links on the left menu.": "تظهر الروابط المخصصة في القائمة اليسرى.",
