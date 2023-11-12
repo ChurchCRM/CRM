@@ -337,7 +337,7 @@
             "5.2.0"
         ],
         "scripts": [
-            "/mysql/upgrade/5.1.1.sql"
+            "/mysql/upgrade/5.2.2.sql"
         ],
         "dbVersion": "5.2.1"
     }
