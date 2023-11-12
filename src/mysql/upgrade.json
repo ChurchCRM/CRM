@@ -334,11 +334,12 @@
         "versions": [
             "5.1.0",
             "5.1.1",
-            "5.2.0"
+            "5.2.0",
+            "5.2.1"
         ],
         "scripts": [
-            "/mysql/upgrade/5.2.2.sql"
+            "/mysql/upgrade/5.3.0.sql"
         ],
-        "dbVersion": "5.2.1"
+        "dbVersion": "5.3.0"
     }
 }
