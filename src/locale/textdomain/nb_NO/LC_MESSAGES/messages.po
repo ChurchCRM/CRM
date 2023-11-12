@@ -2009,6 +2009,10 @@ msgid "Add New Group"
 msgstr "Legg til ny Gruppe"
 
 #: 
+msgid "Submit"
+msgstr "Send inn"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Gruppe Member Properties Editor"
 

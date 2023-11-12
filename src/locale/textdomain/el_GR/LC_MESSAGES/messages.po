@@ -2023,6 +2023,10 @@ msgid "Add New Group"
 msgstr "Προσθήκη νέας ομάδας"
 
 #: 
+msgid "Submit"
+msgstr "υποβάλλουν"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Επεξεργαστής ιδιοτήτων μέλους ομάδας"
 
@@ -8208,6 +8212,11 @@ msgid "New Calendar"
 msgstr "Νέο Ημερολόγιο"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI είναι απενεργοποιημένο, αλλά ορισμένα ημερολόγια έχουν διακριτικά πρόσβασης"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Για κοινή χρήση ημερολογίων, η ρύθμιση bEnableExternalCalendarAPI πρέπει να είναι ενεργοποιημένη εκτός από το ημερολόγιο που έχει συγκεκριμένο διακριτικό πρόσβασης"
 
@@ -8972,6 +8981,10 @@ msgid "Web Server"
 msgstr "Διακομιστής Ιστού"
 
 #: 
+msgid "Server Software"
+msgstr "Λογισμικό διακομιστή"
+
+#: 
 msgid "Email Information"
 msgstr "Πληροφορίες email"
 
@@ -9074,6 +9087,10 @@ msgstr "Άδειες"
 #: 
 msgid "Manage Notes"
 msgstr "Διαχείριση σημειώσεων"
+
+#: 
+msgid "Skins"
+msgstr "Δέρματα"
 
 #: 
 msgid "Failed generate a new API Key"
@@ -9278,6 +9295,54 @@ msgstr "Επαληθεύω"
 #: 
 msgid "Family has no emails to use"
 msgstr "Η οικογένεια δεν έχει email για χρήση"
+
+#: 
+msgid "Blue"
+msgstr "Μπλε"
+
+#: 
+msgid "Black"
+msgstr "Μαύρος"
+
+#: 
+msgid "Purple"
+msgstr "Μωβ"
+
+#: 
+msgid "Green"
+msgstr "Πράσινος"
+
+#: 
+msgid "Red"
+msgstr "το κόκκινο"
+
+#: 
+msgid "Yellow"
+msgstr "Κίτρινος"
+
+#: 
+msgid "Blue Light"
+msgstr "Μπλε φως"
+
+#: 
+msgid "Black Light"
+msgstr "Μαύρο φως"
+
+#: 
+msgid "Purple Light"
+msgstr "Μωβ Φως"
+
+#: 
+msgid "Green Light"
+msgstr "Πράσινο φως"
+
+#: 
+msgid "Red Light"
+msgstr "Κόκκινο φως"
+
+#: 
+msgid "Yellow Light"
+msgstr "Κίτρινο φως"
 
 #: 
 msgid "Boxed Layout"

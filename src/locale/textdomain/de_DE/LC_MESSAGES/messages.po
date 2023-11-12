@@ -2041,6 +2041,10 @@ msgid "Add New Group"
 msgstr "Neue Gruppe hinzufügen"
 
 #: 
+msgid "Submit"
+msgstr "Versende"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Einstellungseditor für Gruppenmitglieder"
 
@@ -7907,6 +7911,11 @@ msgid "New Calendar"
 msgstr "Neuer Kalender"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI deaktiviert, aber einige Kalender haben Zugriffstoken"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Damit Kalender freigegeben werden können, muss die Einstellung bEnableExternalCalendarAPI zusätzlich zum Kalender mit einem bestimmten Zugriffstoken aktiviert werden"
 
@@ -8683,6 +8692,10 @@ msgid "Web Server"
 msgstr "Web Server"
 
 #: 
+msgid "Server Software"
+msgstr "Server Software"
+
+#: 
 msgid "Email Information"
 msgstr "E-Mail-Informationen"
 
@@ -8777,6 +8790,10 @@ msgstr "Fehlgeschlagene Anmeldung(en)"
 #: 
 msgid "Permissions"
 msgstr "Berechtigungen"
+
+#: 
+msgid "Skins"
+msgstr "Design"
 
 #: 
 msgid "Paid"
@@ -8881,6 +8898,54 @@ msgstr "Verifizieren"
 #: 
 msgid "Family has no emails to use"
 msgstr "Die Familie hat keine E-Mailadresse"
+
+#: 
+msgid "Blue"
+msgstr "Blau"
+
+#: 
+msgid "Black"
+msgstr "Schwarz"
+
+#: 
+msgid "Purple"
+msgstr "Violett"
+
+#: 
+msgid "Green"
+msgstr "Grün"
+
+#: 
+msgid "Red"
+msgstr "Rot"
+
+#: 
+msgid "Yellow"
+msgstr "Gelb"
+
+#: 
+msgid "Blue Light"
+msgstr "Blaues Licht"
+
+#: 
+msgid "Black Light"
+msgstr "Schwarzes Licht"
+
+#: 
+msgid "Purple Light"
+msgstr "Violettes Licht"
+
+#: 
+msgid "Green Light"
+msgstr "Grünes Licht"
+
+#: 
+msgid "Red Light"
+msgstr "Rotes Licht"
+
+#: 
+msgid "Yellow Light"
+msgstr "Gelbes Licht"
 
 #: 
 msgid "Toggle the left sidebar's state (open or collapse)"

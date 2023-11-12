@@ -1806,6 +1806,10 @@ msgid "Group Listing"
 msgstr "Group Listing"
 
 #: 
+msgid "Submit"
+msgstr "Küldés"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Csoporttag tulajdonságai szerkesztő"
 

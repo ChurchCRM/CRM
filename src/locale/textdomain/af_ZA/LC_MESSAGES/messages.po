@@ -2023,6 +2023,10 @@ msgid "Add New Group"
 msgstr "Voeg nuwe groep by"
 
 #: 
+msgid "Submit"
+msgstr "Indien"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Eiendomsredakteur vir groepslede"
 
@@ -8214,6 +8218,11 @@ msgid "New Calendar"
 msgstr "Nuwe kalender"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI is gedeaktiveer, maar sommige kalenders het toegangstokens"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Om kalenders te kan deel, moet die instelling bEnableExternalCalendarAPI geaktiveer word, benewens dat die kalender 'n spesifieke toegangstoken het"
 
@@ -8990,6 +8999,10 @@ msgid "Web Server"
 msgstr "Web bediener"
 
 #: 
+msgid "Server Software"
+msgstr "Bedienersagteware"
+
+#: 
 msgid "Email Information"
 msgstr "Epos informasie"
 
@@ -9092,6 +9105,10 @@ msgstr "Toestemming"
 #: 
 msgid "Manage Notes"
 msgstr "Bestuur notas"
+
+#: 
+msgid "Skins"
+msgstr "Velle"
 
 #: 
 msgid "Failed generate a new API Key"
@@ -9296,6 +9313,54 @@ msgstr "Verifieer"
 #: 
 msgid "Family has no emails to use"
 msgstr "Gesin het geen e-posse om te gebruik nie"
+
+#: 
+msgid "Blue"
+msgstr "Blou"
+
+#: 
+msgid "Black"
+msgstr "Swart"
+
+#: 
+msgid "Purple"
+msgstr "Pers"
+
+#: 
+msgid "Green"
+msgstr "Groen"
+
+#: 
+msgid "Red"
+msgstr "Rooi"
+
+#: 
+msgid "Yellow"
+msgstr "Geel"
+
+#: 
+msgid "Blue Light"
+msgstr "Blou-Lig"
+
+#: 
+msgid "Black Light"
+msgstr "Swart-Lig"
+
+#: 
+msgid "Purple Light"
+msgstr "Pers-Lig"
+
+#: 
+msgid "Green Light"
+msgstr "Groen-Lig"
+
+#: 
+msgid "Red Light"
+msgstr "Rooi-Lig"
+
+#: 
+msgid "Yellow Light"
+msgstr "Geel-Lig"
 
 #: 
 msgid "Boxed Layout"

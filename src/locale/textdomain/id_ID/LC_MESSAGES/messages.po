@@ -2027,6 +2027,10 @@ msgid "Add New Group"
 msgstr "Tambahkan Grup Baru"
 
 #: 
+msgid "Submit"
+msgstr "Kirimkan"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Editor Properti Anggota Grup"
 
@@ -8218,6 +8222,11 @@ msgid "New Calendar"
 msgstr "Kalender Baru"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI dinonaktifkan, tetapi beberapa kalender memiliki token akses"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Agar kalender dapat dibagikan, pengaturan bEnableExternalCalendarAPI harus diaktifkan selain kalender yang memiliki token akses khusus"
 
@@ -8983,6 +8992,10 @@ msgid "Web Server"
 msgstr "Web Server"
 
 #: 
+msgid "Server Software"
+msgstr "Server Perangkat Lunak"
+
+#: 
 msgid "Email Information"
 msgstr "Informasi Email"
 
@@ -9085,6 +9098,10 @@ msgstr "Izin"
 #: 
 msgid "Manage Notes"
 msgstr "Kelola Catatan"
+
+#: 
+msgid "Skins"
+msgstr "Tampilan"
 
 #: 
 msgid "Failed generate a new API Key"
@@ -9289,6 +9306,54 @@ msgstr "Verifikasi"
 #: 
 msgid "Family has no emails to use"
 msgstr "Keluarga tidak memiliki email"
+
+#: 
+msgid "Blue"
+msgstr "Biru"
+
+#: 
+msgid "Black"
+msgstr "Hitam"
+
+#: 
+msgid "Purple"
+msgstr "Ungu"
+
+#: 
+msgid "Green"
+msgstr "Hijau"
+
+#: 
+msgid "Red"
+msgstr "Merah"
+
+#: 
+msgid "Yellow"
+msgstr "Kuning"
+
+#: 
+msgid "Blue Light"
+msgstr "Biru Terang"
+
+#: 
+msgid "Black Light"
+msgstr "Hitam Terang"
+
+#: 
+msgid "Purple Light"
+msgstr "Ungu Terang"
+
+#: 
+msgid "Green Light"
+msgstr "Hijau Terang"
+
+#: 
+msgid "Red Light"
+msgstr "Merah Terang"
+
+#: 
+msgid "Yellow Light"
+msgstr "Kuning Terang"
 
 #: 
 msgid "Boxed Layout"

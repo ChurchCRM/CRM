@@ -2067,6 +2067,10 @@ msgid "Add New Group"
 msgstr "Добавить новую группу"
 
 #: 
+msgid "Submit"
+msgstr "Представлять"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Группа Свойства редактор"
 
@@ -6068,6 +6072,10 @@ msgid "Web Server"
 msgstr "Веб-сервер"
 
 #: 
+msgid "Server Software"
+msgstr "ПО сервера"
+
+#: 
 msgid "Email Information"
 msgstr "Сведения эл.почты"
 
@@ -6217,6 +6225,56 @@ msgstr "Повторная генерация ключа API"
 #: 
 msgid "Verify"
 msgstr "Проверить"
+
+#: 
+msgid "Blue"
+msgstr "Синий"
+
+#: 
+msgid "Black"
+msgstr "Черный"
+
+#: 
+msgid "Purple"
+msgstr "Фиолетовый"
+
+#: 
+msgid "Green"
+msgstr "Зеленый"
+
+#: 
+msgid "Red"
+msgstr "Красный"
+
+#: 
+msgid "Yellow"
+msgstr "Желтый"
+
+#: 
+msgid "Blue Light"
+msgstr "Голубой"
+
+#. did you mean grey? or is it a name of theme?
+#: 
+#, fuzzy
+msgid "Black Light"
+msgstr "Черный"
+
+#: 
+msgid "Purple Light"
+msgstr "Светло фиолетовый"
+
+#: 
+msgid "Green Light"
+msgstr "Светло зеленый"
+
+#: 
+msgid "Red Light"
+msgstr "Светло красный"
+
+#: 
+msgid "Yellow Light"
+msgstr "Светло желтый"
 
 #: 
 msgid "Tables Settings"

@@ -2085,6 +2085,10 @@ msgid "Add New Group"
 msgstr "添加新群組"
 
 #: 
+msgid "Submit"
+msgstr "提交"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "群組成員的屬性編輯器"
 
@@ -8387,6 +8391,11 @@ msgid "New Calendar"
 msgstr "新日曆"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "已禁用bEnableExternalCalendarAPI，但某些日曆具有訪問令牌"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "對於要共享的日曆，除了具有特定訪問令牌的日曆之外，還必須啟用bEnableExternalCalendarAPI設置"
 
@@ -9252,6 +9261,10 @@ msgid "Web Server"
 msgstr "網頁伺服器"
 
 #: 
+msgid "Server Software"
+msgstr "伺服器軟體"
+
+#: 
 msgid "Email Information"
 msgstr "電子郵件資訊"
 
@@ -9374,6 +9387,11 @@ msgstr "許可權"
 #, fuzzy
 msgid "Manage Notes"
 msgstr "管理筆記"
+
+#: 
+#, fuzzy
+msgid "Skins"
+msgstr "佈景主題"
 
 #: 
 #, fuzzy
@@ -9622,6 +9640,66 @@ msgstr "確認"
 #, fuzzy
 msgid "Family has no emails to use"
 msgstr "家庭沒有電子郵件可使用"
+
+#: 
+#, fuzzy
+msgid "Blue"
+msgstr "藍"
+
+#: 
+#, fuzzy
+msgid "Black"
+msgstr "黑"
+
+#: 
+#, fuzzy
+msgid "Purple"
+msgstr "紫"
+
+#: 
+#, fuzzy
+msgid "Green"
+msgstr "綠"
+
+#: 
+#, fuzzy
+msgid "Red"
+msgstr "紅"
+
+#: 
+#, fuzzy
+msgid "Yellow"
+msgstr "黃"
+
+#: 
+#, fuzzy
+msgid "Blue Light"
+msgstr "淺藍"
+
+#: 
+#, fuzzy
+msgid "Black Light"
+msgstr "淺黑"
+
+#: 
+#, fuzzy
+msgid "Purple Light"
+msgstr "淺紫"
+
+#: 
+#, fuzzy
+msgid "Green Light"
+msgstr "淺綠"
+
+#: 
+#, fuzzy
+msgid "Red Light"
+msgstr "淺紅"
+
+#: 
+#, fuzzy
+msgid "Yellow Light"
+msgstr "淺黃"
 
 #: 
 #, fuzzy

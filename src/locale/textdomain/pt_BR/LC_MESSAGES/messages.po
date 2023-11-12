@@ -2463,6 +2463,11 @@ msgstr "Adicionar um Novo Grupo"
 
 #: 
 #, fuzzy
+msgid "Submit"
+msgstr "Enviar"
+
+#: 
+#, fuzzy
 msgid "Group Member Properties Editor"
 msgstr "Editor de Propriedades dos Grupos"
 
@@ -10066,6 +10071,11 @@ msgstr "Novo Calendário"
 
 #: 
 #, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI desativado, mas alguns calendários têm tokens de acesso"
+
+#: 
+#, fuzzy
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Para que os calendários sejam compartilhados, a configuração bEnableExternalCalendarAPI deve ser ativada, além do calendário com um token de acesso específico."
 
@@ -11025,6 +11035,11 @@ msgstr "Servidor Web"
 
 #: 
 #, fuzzy
+msgid "Server Software"
+msgstr "Software do servidor"
+
+#: 
+#, fuzzy
 msgid "Email Information"
 msgstr "Informação do e-mail"
 
@@ -11152,6 +11167,11 @@ msgstr "Permissões"
 #, fuzzy
 msgid "Manage Notes"
 msgstr "Editar Notas"
+
+#: 
+#, fuzzy
+msgid "Skins"
+msgstr "Telas"
 
 #: 
 #, fuzzy
@@ -11407,6 +11427,66 @@ msgstr "Verificar"
 #, fuzzy
 msgid "Family has no emails to use"
 msgstr "A família não tem e-mails para usar"
+
+#: 
+#, fuzzy
+msgid "Blue"
+msgstr "Azul"
+
+#: 
+#, fuzzy
+msgid "Black"
+msgstr "Preto"
+
+#: 
+#, fuzzy
+msgid "Purple"
+msgstr "Roxo"
+
+#: 
+#, fuzzy
+msgid "Green"
+msgstr "Verde"
+
+#: 
+#, fuzzy
+msgid "Red"
+msgstr "Vermelho"
+
+#: 
+#, fuzzy
+msgid "Yellow"
+msgstr "Amarelo"
+
+#: 
+#, fuzzy
+msgid "Blue Light"
+msgstr "Luz Azul"
+
+#: 
+#, fuzzy
+msgid "Black Light"
+msgstr "Luz Negra"
+
+#: 
+#, fuzzy
+msgid "Purple Light"
+msgstr "Luz Roxa"
+
+#: 
+#, fuzzy
+msgid "Green Light"
+msgstr "Luz Verde"
+
+#: 
+#, fuzzy
+msgid "Red Light"
+msgstr "Luz Vermelha"
+
+#: 
+#, fuzzy
+msgid "Yellow Light"
+msgstr "Luz Amarela"
 
 #: 
 #, fuzzy

@@ -1927,6 +1927,10 @@ msgid "Add New Group"
 msgstr "Dodaj Nową Grupę"
 
 #: 
+msgid "Submit"
+msgstr "Zatwierdź"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Edytor Ustawień dla Członka Grupy"
 
@@ -4139,6 +4143,11 @@ msgid "New Calendar"
 msgstr "Nowy Kalendarz"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI wyłączony, lecz niektóre kalendarze posiadają token dostepu"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Aby współdzielić kalendarz bEnableExternalCalendarAPI musi być włączony oraz kalendarz musi mieć osobny token dostępu"
 
@@ -4879,6 +4888,10 @@ msgid "Web Server"
 msgstr "Serwer WWW"
 
 #: 
+msgid "Server Software"
+msgstr "Oprogramowanie Serwera"
+
+#: 
 msgid "Email Information"
 msgstr "Informacje o Email"
 
@@ -4979,6 +4992,10 @@ msgid "Manage Notes"
 msgstr "Zarządzaj Notatkami"
 
 #: 
+msgid "Skins"
+msgstr "Powłoki"
+
+#: 
 msgid "Failed generate a new API Key"
 msgstr "Bład tworzenia klucza API"
 
@@ -4989,6 +5006,34 @@ msgstr "Dzisiejsze urodziny"
 #: 
 msgid "Today's Wedding Anniversaries"
 msgstr "Dzisiejsze rocznice ślubu"
+
+#: 
+msgid "Blue"
+msgstr "Niebieski"
+
+#: 
+msgid "Black"
+msgstr "Czarny"
+
+#: 
+msgid "Purple"
+msgstr "Fioletowy"
+
+#: 
+msgid "Green"
+msgstr "Zielony"
+
+#: 
+msgid "Red"
+msgstr "Czerwony"
+
+#: 
+msgid "Yellow"
+msgstr "Żółty"
+
+#: 
+msgid "Blue Light"
+msgstr "Błękitny"
 
 #: 
 msgid "Deleted"

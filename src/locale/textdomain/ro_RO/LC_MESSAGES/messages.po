@@ -2075,6 +2075,10 @@ msgid "Add New Group"
 msgstr "Adaugă grup nou"
 
 #: 
+msgid "Submit"
+msgstr "Trimiteti"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Editor de Proprietăți pentru Membrii Grupului"
 
@@ -8319,6 +8323,11 @@ msgid "New Calendar"
 msgstr "Calendar nou"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI dezactivat, dar unele calendare au tokenuri de acces"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Pentru ca calendarele să poată fi partajate, setarea bEnableExternalCalendarAPI trebuie să fie activată, pe lângă faptul că calendarul trebuie să aibă un token de acces specific"
 
@@ -9091,6 +9100,10 @@ msgid "Web Server"
 msgstr "Server web"
 
 #: 
+msgid "Server Software"
+msgstr "Software-ul serverului"
+
+#: 
 msgid "Email Information"
 msgstr "Informații email"
 
@@ -9193,6 +9206,10 @@ msgstr "Permisiuni"
 #: 
 msgid "Manage Notes"
 msgstr "Administrați notițele"
+
+#: 
+msgid "Skins"
+msgstr "Teme"
 
 #: 
 msgid "Failed generate a new API Key"
@@ -9397,6 +9414,54 @@ msgstr "Verifică"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familia nu are adrese de email de utilizat"
+
+#: 
+msgid "Blue"
+msgstr "Albastru"
+
+#: 
+msgid "Black"
+msgstr "Negru"
+
+#: 
+msgid "Purple"
+msgstr "Mov"
+
+#: 
+msgid "Green"
+msgstr "Verde"
+
+#: 
+msgid "Red"
+msgstr "Roșu"
+
+#: 
+msgid "Yellow"
+msgstr "Galben"
+
+#: 
+msgid "Blue Light"
+msgstr "Albastru deschis"
+
+#: 
+msgid "Black Light"
+msgstr "Negru deschis"
+
+#: 
+msgid "Purple Light"
+msgstr "Mov deschis"
+
+#: 
+msgid "Green Light"
+msgstr "Verde deschis"
+
+#: 
+msgid "Red Light"
+msgstr "Roșu deschis"
+
+#: 
+msgid "Yellow Light"
+msgstr "Galben deschis"
 
 #: 
 msgid "Boxed Layout"

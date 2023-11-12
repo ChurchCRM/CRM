@@ -2024,6 +2024,10 @@ msgid "Add New Group"
 msgstr "أضف مجموعة جديدة"
 
 #: 
+msgid "Submit"
+msgstr "تنفيذ"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "مجموعة العضو محرر خصائص"
 
@@ -8215,6 +8219,11 @@ msgid "New Calendar"
 msgstr "التقويم الجديد"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI تعطيل، ولكن بعض التقاويم على رموز الوصول المميزة"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "للتقويمات أن تكون مشتركة، لا بد من تمكين الإعداد bEnableExternalCalendarAPI بالإضافة إلى التقويم وجود رمز وصول محددة"
 
@@ -8990,6 +8999,10 @@ msgid "Web Server"
 msgstr "قاعدة بيانات للانترنت"
 
 #: 
+msgid "Server Software"
+msgstr "برنامج الخادم"
+
+#: 
 msgid "Email Information"
 msgstr "معلومات البريد الإلكتروني"
 
@@ -9092,6 +9105,10 @@ msgstr "أذونات"
 #: 
 msgid "Manage Notes"
 msgstr "إدارة الملاحظات"
+
+#: 
+msgid "Skins"
+msgstr "جلود"
 
 #: 
 msgid "Failed generate a new API Key"
@@ -9296,6 +9313,54 @@ msgstr "تحقق"
 #: 
 msgid "Family has no emails to use"
 msgstr "العائلة ليس لديها رسائل بريد إلكتروني لاستخدامها"
+
+#: 
+msgid "Blue"
+msgstr "أزرق"
+
+#: 
+msgid "Black"
+msgstr "أسود"
+
+#: 
+msgid "Purple"
+msgstr "أرجواني"
+
+#: 
+msgid "Green"
+msgstr "أخضر"
+
+#: 
+msgid "Red"
+msgstr "أحمر"
+
+#: 
+msgid "Yellow"
+msgstr "أصفر"
+
+#: 
+msgid "Blue Light"
+msgstr "ضوء أزرق"
+
+#: 
+msgid "Black Light"
+msgstr "ضوء أسود"
+
+#: 
+msgid "Purple Light"
+msgstr "ضوء أرجواني"
+
+#: 
+msgid "Green Light"
+msgstr "ضوء أخضر"
+
+#: 
+msgid "Red Light"
+msgstr "ضوء أحمر"
+
+#: 
+msgid "Yellow Light"
+msgstr "ضوء أصفر"
 
 #: 
 msgid "Boxed Layout"

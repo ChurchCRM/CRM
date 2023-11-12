@@ -2030,6 +2030,10 @@ msgid "Add New Group"
 msgstr "Ajouter un groupe"
 
 #: 
+msgid "Submit"
+msgstr "Soumettre"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Gestionnaire des Propriétés des membres du groupe"
 
@@ -8222,6 +8226,11 @@ msgid "New Calendar"
 msgstr "Nouveau calendrier"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI désactivé, mais des calendriers ont des jetons d'accès"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Pour partager les calendriers, bEnableExternalCalendarAPI doit être activé et le calendrier doit avoir un jeton d'accès spécifique"
 
@@ -8998,6 +9007,10 @@ msgid "Web Server"
 msgstr "Serveur wen"
 
 #: 
+msgid "Server Software"
+msgstr "Logiciel serveur"
+
+#: 
 msgid "Email Information"
 msgstr "Informations par e-mail"
 
@@ -9100,6 +9113,10 @@ msgstr "Autorisations"
 #: 
 msgid "Manage Notes"
 msgstr "Gérer les notes"
+
+#: 
+msgid "Skins"
+msgstr "Peaux"
 
 #: 
 msgid "Failed generate a new API Key"
@@ -9305,6 +9322,54 @@ msgstr "Vérifier"
 #: 
 msgid "Family has no emails to use"
 msgstr "Aucune adresse email renseignée pour cette famille"
+
+#: 
+msgid "Blue"
+msgstr "Bleu"
+
+#: 
+msgid "Black"
+msgstr "Noir"
+
+#: 
+msgid "Purple"
+msgstr "Violet"
+
+#: 
+msgid "Green"
+msgstr "Vert"
+
+#: 
+msgid "Red"
+msgstr "Rouge"
+
+#: 
+msgid "Yellow"
+msgstr "Jaune"
+
+#: 
+msgid "Blue Light"
+msgstr "Bleu clair"
+
+#: 
+msgid "Black Light"
+msgstr "Noir clair"
+
+#: 
+msgid "Purple Light"
+msgstr "Violet clair"
+
+#: 
+msgid "Green Light"
+msgstr "Vert clair"
+
+#: 
+msgid "Red Light"
+msgstr "Rouge clair"
+
+#: 
+msgid "Yellow Light"
+msgstr "Jaune clair"
 
 #: 
 msgid "Boxed Layout"

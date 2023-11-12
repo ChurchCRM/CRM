@@ -2041,6 +2041,10 @@ msgid "Add New Group"
 msgstr "Thêm Ban/Mục vụ mới"
 
 #: 
+msgid "Submit"
+msgstr "Gửi đi"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Trình chỉnh sửa thuộc tính thành viên nhóm"
 
@@ -8232,6 +8236,11 @@ msgid "New Calendar"
 msgstr "Tạo lịch mới"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI bị vô hiệu hóa, nhưng một số lịch có mã thông báo truy cập"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Để lịch được chia sẻ, cài đặt bEnableExternalCalendarAPI phải được bật ngoài việc lịch có mã thông báo truy cập cụ thể"
 
@@ -8997,6 +9006,10 @@ msgid "Web Server"
 msgstr "Máy chủ web"
 
 #: 
+msgid "Server Software"
+msgstr "Phần mềm máy chủ"
+
+#: 
 msgid "Email Information"
 msgstr "Thông tin Email"
 
@@ -9099,6 +9112,10 @@ msgstr "Quyền"
 #: 
 msgid "Manage Notes"
 msgstr "Quản lý ghi chú"
+
+#: 
+msgid "Skins"
+msgstr "Da"
 
 #: 
 msgid "Failed generate a new API Key"
@@ -9303,6 +9320,54 @@ msgstr "Kiểm chứng"
 #: 
 msgid "Family has no emails to use"
 msgstr "Gia đình không có email nào để sử dụng"
+
+#: 
+msgid "Blue"
+msgstr "Màu xanh da trời"
+
+#: 
+msgid "Black"
+msgstr "Đen"
+
+#: 
+msgid "Purple"
+msgstr "Màu tím"
+
+#: 
+msgid "Green"
+msgstr "màu xanh lá"
+
+#: 
+msgid "Red"
+msgstr "Đỏ"
+
+#: 
+msgid "Yellow"
+msgstr "Màu vàng"
+
+#: 
+msgid "Blue Light"
+msgstr "Đèn xanh"
+
+#: 
+msgid "Black Light"
+msgstr "Ánh sáng màu đen"
+
+#: 
+msgid "Purple Light"
+msgstr "Ánh sáng tím"
+
+#: 
+msgid "Green Light"
+msgstr "Đèn xanh"
+
+#: 
+msgid "Red Light"
+msgstr "Đèn đỏ"
+
+#: 
+msgid "Yellow Light"
+msgstr "Đèn vàng"
 
 #: 
 msgid "Boxed Layout"

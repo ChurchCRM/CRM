@@ -1749,6 +1749,10 @@ msgid "Group Listing"
 msgstr "Listing Group"
 
 #: 
+msgid "Submit"
+msgstr "Konfirmo"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Grupi Anëtar Prona Editor"
 

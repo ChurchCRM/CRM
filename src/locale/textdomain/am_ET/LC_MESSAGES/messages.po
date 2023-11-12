@@ -2025,6 +2025,10 @@ msgid "Add New Group"
 msgstr "አዲስ ቡድን ያክሉ"
 
 #: 
+msgid "Submit"
+msgstr "አስገባ"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "የቡድን አባል ንብረቶች አርታዒ"
 
@@ -8217,6 +8221,11 @@ msgid "New Calendar"
 msgstr "አዲስ ቀን መቁጠሪያ"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI ተሰናክሏል፣ነገር ግን አንዳንድ የቀን መቁጠሪያዎች የመድረሻ መተኪያዎች አሏቸው"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "የቀን መቁጠሪያዎች ለመጋራት፣ የbEnableExternalCalendarAPI ቅንብር የቀን መቁጠሪያው የተወሰነ የመዳረሻ ማስመሰያ ካለው በተጨማሪ መንቃት አለበት"
 
@@ -9007,6 +9016,10 @@ msgid "Web Server"
 msgstr "የድር አገልጋይ"
 
 #: 
+msgid "Server Software"
+msgstr "የአገልጋይ ሶፍትዌር"
+
+#: 
 msgid "Email Information"
 msgstr "የኢሜል መረጃ"
 
@@ -9110,6 +9123,10 @@ msgstr "ፈቃዶች"
 #: 
 msgid "Manage Notes"
 msgstr "ማስታወሻዎችን ያስተካክሉ"
+
+#: 
+msgid "Skins"
+msgstr "ቆዳዎች"
 
 #: 
 msgid "Failed generate a new API Key"
@@ -9319,6 +9336,54 @@ msgstr "አረጋገጥ"
 #: 
 msgid "Family has no emails to use"
 msgstr "ቤተሰብ ለመጠቀም ምንም ኢሜይሎች የሉትም።"
+
+#: 
+msgid "Blue"
+msgstr "ሰማያዊ"
+
+#: 
+msgid "Black"
+msgstr "ጥቁር"
+
+#: 
+msgid "Purple"
+msgstr "ሐምራዊ"
+
+#: 
+msgid "Green"
+msgstr "አረንጓዴ"
+
+#: 
+msgid "Red"
+msgstr "ቀይ"
+
+#: 
+msgid "Yellow"
+msgstr "ብጫ"
+
+#: 
+msgid "Blue Light"
+msgstr "ሰማያዊ ብርሃን"
+
+#: 
+msgid "Black Light"
+msgstr "ጥቁር ብርሃን"
+
+#: 
+msgid "Purple Light"
+msgstr "ሐምራዊ ብርሃን"
+
+#: 
+msgid "Green Light"
+msgstr "አረንጓዴ ብርሃን"
+
+#: 
+msgid "Red Light"
+msgstr "ቀይ ብርሃን"
+
+#: 
+msgid "Yellow Light"
+msgstr "ብጫ ብርሃን"
 
 #: 
 msgid "Boxed Layout"

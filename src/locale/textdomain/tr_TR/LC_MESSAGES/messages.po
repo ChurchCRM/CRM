@@ -2023,6 +2023,10 @@ msgid "Add New Group"
 msgstr "Yeni Grup Ekle"
 
 #: 
+msgid "Submit"
+msgstr "Göndermek"
+
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Grup Üyesi Özellikleri Editör"
 
@@ -8212,6 +8216,11 @@ msgid "New Calendar"
 msgstr "Yeni Takvim"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "BenableExternalCalendarapi devre dışı bırakıldı, ancak bazı takvimlerin erişim belirteçleri var"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Takvimlerin paylaşılması için, özel bir erişim belirtecine sahip takvime ek olarak BenableExternalCalendarapi ayarı etkinleştirilmelidir."
 
@@ -8988,6 +8997,10 @@ msgid "Web Server"
 msgstr "Web sunucusu"
 
 #: 
+msgid "Server Software"
+msgstr "Sunucu Yazılımı"
+
+#: 
 msgid "Email Information"
 msgstr "E -posta bilgileri"
 
@@ -9090,6 +9103,10 @@ msgstr "İzin"
 #: 
 msgid "Manage Notes"
 msgstr "Notları Yönetin"
+
+#: 
+msgid "Skins"
+msgstr "Deriler"
 
 #: 
 msgid "Failed generate a new API Key"
@@ -9294,6 +9311,54 @@ msgstr "Doğrulayın"
 #: 
 msgid "Family has no emails to use"
 msgstr "Ailenin kullanılacak e -postaları yok"
+
+#: 
+msgid "Blue"
+msgstr "Mavi"
+
+#: 
+msgid "Black"
+msgstr "Siyah"
+
+#: 
+msgid "Purple"
+msgstr "Mor"
+
+#: 
+msgid "Green"
+msgstr "Yeşil"
+
+#: 
+msgid "Red"
+msgstr "Kırmızı"
+
+#: 
+msgid "Yellow"
+msgstr "Sarı"
+
+#: 
+msgid "Blue Light"
+msgstr "Mavi ışık"
+
+#: 
+msgid "Black Light"
+msgstr "Siyah ışık"
+
+#: 
+msgid "Purple Light"
+msgstr "Mor ışık"
+
+#: 
+msgid "Green Light"
+msgstr "Yeşil ışık"
+
+#: 
+msgid "Red Light"
+msgstr "Kırmızı ışık"
+
+#: 
+msgid "Yellow Light"
+msgstr "Sarı ışık"
 
 #: 
 msgid "Boxed Layout"
