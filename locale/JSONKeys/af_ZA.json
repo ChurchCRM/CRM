@@ -2048,6 +2048,7 @@
     "Invalid Entry": "Ongeldige inskrywing",
     "Calendar Name": "Kalendernaam",
     "New Calendar": "Nuwe kalender",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnableExternalCalendarAPI is gedeaktiveer, maar sommige kalenders het toegangstokens",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "Om kalenders te kan deel, moet die instelling bEnableExternalCalendarAPI geaktiveer word, benewens dat die kalender 'n spesifieke toegangstoken het",
     "Links": "Skakels",
     "Show custom links on the left menu.": "Toon gepaste skakels in die linkerkieslys.",

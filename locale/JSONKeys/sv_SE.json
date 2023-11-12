@@ -2048,6 +2048,7 @@
     "Invalid Entry": "Ogiltig post",
     "Calendar Name": "Kalendernamn",
     "New Calendar": "Ny kalender",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnableExternalCalendarAPI är inaktiverat, men vissa kalendrar har åtkomsttecken",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "För att kalendrar ska delas måste inställningen bEnableExternalCalendarAPI vara aktiverad förutom att kalendern har ett specifikt åtkomsttoken",
     "Links": "Länkar",
     "Show custom links on the left menu.": "Visa anpassade länkar på vänster meny.",

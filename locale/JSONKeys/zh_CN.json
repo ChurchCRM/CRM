@@ -2048,6 +2048,7 @@
     "Invalid Entry": "输入无效",
     "Calendar Name": "日历名称",
     "New Calendar": "新日历",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "已禁用bEnableExternalCalendarAPI，但某些日历具有访问令牌",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "对于要共享的日历，除了具有特定访问令牌的日历之外，还必须启用bEnableExternalCalendarAPI设置",
     "Links": "连接",
     "Show custom links on the left menu.": "在左侧菜单中显示自定义链接。",
