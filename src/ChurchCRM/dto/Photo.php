@@ -63,6 +63,7 @@ class Photo
 
         // default defined in SystemConfig.php
         $interval = \DateInterval::createFromDateString('72 hours');
+
         try {
             // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
             $remotePhotoCacheDuration = SystemConfig::getValue('iRemotePhotoCacheDuration');
