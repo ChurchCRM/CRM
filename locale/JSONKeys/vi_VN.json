@@ -2048,6 +2048,7 @@
     "Invalid Entry": "Entry không hợp lệ",
     "Calendar Name": "Tên lịch",
     "New Calendar": "Tạo lịch mới",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnableExternalCalendarAPI bị vô hiệu hóa, nhưng một số lịch có mã thông báo truy cập",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "Để lịch được chia sẻ, cài đặt bEnableExternalCalendarAPI phải được bật ngoài việc lịch có mã thông báo truy cập cụ thể",
     "Links": "Liên kết",
     "Show custom links on the left menu.": "Hiển thị các liên kết tùy chỉnh trên menu bên trái.",

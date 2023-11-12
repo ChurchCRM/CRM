@@ -2047,6 +2047,7 @@
     "Invalid Entry": "Μη έγκυρη καταχώρηση",
     "Calendar Name": "Όνομα ημερολογίου",
     "New Calendar": "Νέο Ημερολόγιο",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnableExternalCalendarAPI είναι απενεργοποιημένο, αλλά ορισμένα ημερολόγια έχουν διακριτικά πρόσβασης",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "Για κοινή χρήση ημερολογίων, η ρύθμιση bEnableExternalCalendarAPI πρέπει να είναι ενεργοποιημένη εκτός από το ημερολόγιο που έχει συγκεκριμένο διακριτικό πρόσβασης",
     "Links": "Συνδέσεις",
     "Show custom links on the left menu.": "Εμφάνιση προσαρμοσμένων συνδέσμων στο αριστερό μενού.",

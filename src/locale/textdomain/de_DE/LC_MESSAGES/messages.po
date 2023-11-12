@@ -7907,6 +7907,11 @@ msgid "New Calendar"
 msgstr "Neuer Kalender"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI deaktiviert, aber einige Kalender haben Zugriffstoken"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Damit Kalender freigegeben werden können, muss die Einstellung bEnableExternalCalendarAPI zusätzlich zum Kalender mit einem bestimmten Zugriffstoken aktiviert werden"
 
