@@ -95,9 +95,9 @@ $(document).ready(function () {
         let value = "";
         let dataToSend = $("#assign-property-form").serializeArray();
         $.each(dataToSend, function (key, field) {
-            if (field.name == "PropertyId") {
+            if (field.name === "PropertyId") {
                 propertyId = field.value;
-            } else if (field.name == "PropertyValue") {
+            } else if (field.name === "PropertyValue") {
                 value = field.value;
             }
         });
