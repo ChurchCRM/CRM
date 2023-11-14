@@ -60,7 +60,7 @@ function restUserLoginCount(userId, userName) {
                     dataType: "json",
                     encode: true,
                 }).done(function (data) {
-                    if (data.status == "success")
+                    if (data.status === "success")
                         window.location.href =
                             window.CRM.root + "/UserList.php";
                 });
@@ -90,7 +90,7 @@ function resetUserPassword(userId, userName) {
                     dataType: "json",
                     encode: true,
                 }).done(function (data) {
-                    if (data.status == "success")
+                    if (data.status === "success")
                         showGlobalMessage(
                             '<?= gettext("Password reset for") ?> ' + userName,
                             "success",

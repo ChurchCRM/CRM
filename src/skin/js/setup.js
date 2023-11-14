@@ -14,7 +14,7 @@ window.CRM.checkIntegrity = function () {
         method: "GET",
     })
         .done(function (data) {
-            if (data == "success") {
+            if (data === "success") {
                 window.CRM.renderPrerequisite({
                     Name: "ChurchCRM File Integrity Check",
                     WikiLink: "",
@@ -75,7 +75,7 @@ window.CRM.renderPrerequisite = function (prerequisite) {
         .append($("<td>", { text: prerequisite.Name }))
         .append($("<td>", td));
 
-    if ($(domElement).length != 0) {
+    if ($(domElement).length !== 0) {
         $(domElement).replaceWith(prerequisite);
     } else {
         $("#prerequisites").append(prerequisite);
@@ -103,7 +103,7 @@ $("document").ready(function () {
                 return true;
             }
 
-            if (currentIndex == 0) {
+            if (currentIndex === 0) {
                 return window.CRM.prerequisitesStatus;
             }
 

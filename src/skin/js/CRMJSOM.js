@@ -550,7 +550,7 @@ window.CRM.system = {
             var errortext = textStatus + " " + errorThrown;
         }
 
-        if (!(textStatus == "abort" || suppressErrorDialog)) {
+        if (!(textStatus === "abort" || suppressErrorDialog)) {
             if (CRMResponse) {
                 window.CRM.DisplayErrorMessage(jqXHR.url, CRMResponse);
             } else {
@@ -578,7 +578,7 @@ window.CRM.dashboard = {
             $("#translationInfo").html(
                 data.name + " [" + window.CRM.locale + "]",
             );
-            if (data.countryFlagCode != "us" && data.poPerComplete < 90) {
+            if (data.countryFlagCode !== "us" && data.poPerComplete < 90) {
                 $("#translationPer").html(data.poPerComplete + "%");
                 $("#localePer").removeClass("hidden");
             }
