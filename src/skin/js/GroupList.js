@@ -118,7 +118,7 @@ $(document).ready(function () {
                             i18next.t(
                                 "All members of this group are in the cart",
                             ) +
-                            '</span><a onclick="saveScrollCoordinates()" class="btn btn-danger " id="removeGroupFromCart" data-groupid="' +
+                            '</span><a class="btn btn-danger " id="removeGroupFromCart" data-groupid="' +
                             objectID +
                             '">' +
                             i18next.t("Remove all") +
@@ -130,13 +130,11 @@ $(document).ready(function () {
                             i18next.t(
                                 "Not all members of this group are in the cart",
                             ) +
-                            '</span><a onclick="saveScrollCoordinates()" id="AddGroupToCart" class="btn btn-primary' +
+                            '</span> <a id="AddGroupToCart" class="btn' +
                             activLink +
                             '" data-groupid="' +
                             objectID +
-                            '">' +
-                            i18next.t("Add all") +
-                            "</a>",
+                            '"><i class="fa-solid fa-cart-plus"></i></a>',
                     );
                 }
             });
@@ -148,7 +146,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#AddGroupToCart", function (link) {
-        var groupid = link.toElement.dataset.groupid;
+        var groupid = link.currentTarget.dataset.groupid;
         var parent = $(this).parent().find("span");
         window.CRM.cart.addGroup(groupid, function (data) {
             link.target.id = "removeGroupFromCart";
@@ -159,7 +157,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#removeGroupFromCart", function (link) {
-        var groupid = link.toElement.dataset.groupid;
+        var groupid = link.currentTarget.dataset.groupid;
         var parent = $(this).parent().find("span");
         window.CRM.cart.removeGroup(groupid, function (data) {
             link.target.id = "AddGroupToCart";
