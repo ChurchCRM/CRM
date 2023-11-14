@@ -204,16 +204,20 @@ $app->group('/groups', function () use ($app) {
         echo json_encode(['success' => false]);
     });
 
-    $app->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) use ($app) {
+    $app->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        echo json_encode($app->GroupService->deleteGroupRole($groupID, $roleID), JSON_THROW_ON_ERROR);
+        $groupService = $this->get('GroupService');
+
+        echo json_encode($groupService->deleteGroupRole($groupID, $roleID), JSON_THROW_ON_ERROR);
     });
 
-    $app->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) use ($app) {
+    $app->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleName = $request->getParsedBody()['roleName'];
-        echo $app->GroupService->addGroupRole($groupID, $roleName);
+        $groupService = $this->get('GroupService');
+
+        echo $groupService->addGroupRole($groupID, $roleName);
     });
 
     $app->post('/{groupID:[0-9]+}/defaultRole', function ($request, $response, $args) {
@@ -225,14 +229,16 @@ $app->group('/groups', function () use ($app) {
         echo json_encode(['success' => true]);
     });
 
-    $app->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) use ($app) {
+    $app->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
+        $groupService = $this->get('GroupService');
+
         if ($input['GroupSpecificPropertyStatus']) {
-            $app->GroupService->enableGroupSpecificProperties($groupID);
+            $groupService->enableGroupSpecificProperties($groupID);
             echo json_encode(['status' => 'group specific properties enabled']);
         } else {
-            $app->GroupService->disableGroupSpecificProperties($groupID);
+            $groupService->disableGroupSpecificProperties($groupID);
             echo json_encode(['status' => 'group specific properties disabled']);
         }
     });

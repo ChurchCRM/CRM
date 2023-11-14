@@ -9,12 +9,19 @@ use Slim\Http\Response;
 
 $app->group('/payments', function () use ($app) {
     $app->get('/', function (Request $request, Response $response, array $args) use ($app) {
-        $app->FinancialService->getPaymentJSON($app->FinancialService->getPayments());
+        $financialService = $this->get('FinancialService');
+
+        echo $financialService->getPaymentJSON($app->FinancialService->getPayments());
     });
 
-    $app->post('/', function ($request, $response, $args) use ($app) {
+    $app->post('/', function ($request, $response, $args) {
         $payment = $request->getParsedBody();
-        echo json_encode(['payment' => $app->FinancialService->submitPledgeOrPayment($payment)], JSON_THROW_ON_ERROR);
+        $financialService = $this->get('FinancialService');
+
+        echo json_encode(
+            ['payment' => $financialService->submitPledgeOrPayment($payment)],
+            JSON_THROW_ON_ERROR
+        );
     });
 
     $app->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
@@ -33,7 +40,6 @@ $app->group('/payments', function () use ($app) {
         $data = $query->find();
 
         $rows = [];
-
         foreach ($data as $row) {
             $newRow['FormattedFY'] = $row->getFormattedFY();
             $newRow['GroupKey'] = $row->getGroupKey();
