@@ -41,7 +41,7 @@ $("document").ready(function () {
                 "/api/groups/" +
                 groupID +
                 "/setGroupSpecificPropertyStatus",
-            data: '{"GroupSpecificPropertyStatus":"' + action + '"}',
+            data: JSON.stringify({"GroupSpecificPropertyStatus": action}),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done(function (data) {
@@ -88,7 +88,7 @@ $("document").ready(function () {
         $.ajax({
             method: "POST",
             url: window.CRM.root + "/api/groups/" + groupID + "/roles",
-            data: '{"roleName":"' + newRoleName + '"}',
+            data: JSON.stringify({"roleName": newRoleName}),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done(function (data) {
@@ -171,7 +171,7 @@ $("document").ready(function () {
             method: "POST",
             url:
                 window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
-            data: '{"groupRoleName":"' + groupRoleName + '"}',
+                data: JSON.stringify({"groupRoleName": groupRoleName}),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done(function (data) {});
@@ -182,7 +182,7 @@ $("document").ready(function () {
         $.ajax({
             method: "POST",
             url: window.CRM.root + "/api/groups/" + groupID + "/defaultRole",
-            data: '{"roleID":"' + roleID + '"}',
+            data: JSON.stringify({"roleID": roleID}),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done(function (data) {
@@ -306,7 +306,7 @@ function setGroupRoleOrder(groupID, roleID, groupRoleOrder) {
     $.ajax({
         method: "POST",
         url: window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
-        data: '{"groupRoleOrder":"' + groupRoleOrder + '"}',
+        data: JSON.stringify({"groupRoleOrder": groupRoleOrder}),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
     }).done(function (data) {});
