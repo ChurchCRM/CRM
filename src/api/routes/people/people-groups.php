@@ -204,7 +204,7 @@ $app->group('/groups', function () use ($app) {
         echo json_encode(['success' => false]);
     });
 
-    $app->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) use ($app) {
+    $app->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
         $groupService = $this->get('GroupService');
@@ -212,7 +212,7 @@ $app->group('/groups', function () use ($app) {
         echo json_encode($groupService->deleteGroupRole($groupID, $roleID), JSON_THROW_ON_ERROR);
     });
 
-    $app->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) use ($app) {
+    $app->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleName = $request->getParsedBody()['roleName'];
         $groupService = $this->get('GroupService');
@@ -229,7 +229,7 @@ $app->group('/groups', function () use ($app) {
         echo json_encode(['success' => true]);
     });
 
-    $app->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) use ($app) {
+    $app->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
         $groupService = $this->get('GroupService');
