@@ -14,7 +14,7 @@ $app->group('/payments', function () use ($app) {
         echo $financialService->getPaymentJSON($app->FinancialService->getPayments());
     });
 
-    $app->post('/', function ($request, $response, $args) use ($app) {
+    $app->post('/', function ($request, $response, $args) {
         $payment = $request->getParsedBody();
         $financialService = $this->get('FinancialService');
 
