@@ -1,17 +1,12 @@
-# Description
-Please include a summary of the changes and the related issue. Please also include relevant motivation and context.
+# Description & Issue number it clsoes 
+<!-- Please include a summary of the changes and the related issue. Please also include relevant motivation and context. -->
 
-## Issue ticket number and link
+## Screenshots (if appropriate)
+<!-- Before and after --> 
 
-Closes 
-
-#### Screenshots (if appropriate)
-
-#### How should this be manually tested?
+## How to test the changes?
 
 ## Type of change
-
-Please delete options that are not relevant.
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
@@ -20,10 +15,7 @@ Please delete options that are not relevant.
 
 # How Has This Been Tested?
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
-
-- [ ] Test A
-- [ ] Test B
+<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration -->
 
 # Checklist:
 
