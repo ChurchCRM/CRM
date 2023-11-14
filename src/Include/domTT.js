@@ -146,14 +146,14 @@ function domTT_activate(in_this, in_event) {
     var tooltip = domTT_tooltips.get(owner.id);
     if (tooltip) {
         if (tooltip.get("eventType") != in_event.type) {
-            if (tooltip.get("type") == "greasy") {
+            if (tooltip.get("type") === "greasy") {
                 tooltip.set("closeAction", "destroy");
                 domTT_deactivate(owner.id);
-            } else if (tooltip.get("status") != "inactive") {
+            } else if (tooltip.get("status") !== "inactive") {
                 return owner.id;
             }
         } else {
-            if (tooltip.get("status") == "inactive") {
+            if (tooltip.get("status") === "inactive") {
                 tooltip.set("status", "pending");
                 tooltip.set(
                     "activateTimeout",
@@ -210,7 +210,7 @@ function domTT_activate(in_this, in_event) {
     // load in the options from the function call
     for (var i = 2; i < arguments.length; i += 2) {
         // load in predefined
-        if (arguments[i] == "predefined") {
+        if (arguments[i] === "predefined") {
             var predefinedOptions = domTT_predefined.get(arguments[i + 1]);
             for (var j in predefinedOptions.elementData) {
                 options.set(j, predefinedOptions.get(j));
@@ -285,7 +285,7 @@ function domTT_create(in_options) {
 
     if (
         in_options.get("caption") ||
-        (in_options.get("type") == "sticky" &&
+        (in_options.get("type") === "sticky" &&
             in_options.get("caption") !== false)
     ) {
         // layout the tip with a hidden formatting table
@@ -312,7 +312,7 @@ function domTT_create(in_options) {
         caption.style.height = "100%";
         caption.appendChild(document.createTextNode(in_options.get("caption")));
 
-        if (in_options.get("type") == "sticky") {
+        if (in_options.get("type") === "sticky") {
             var numCaptionCells = 2;
             var closeLinkCell = captionRow.appendChild(
                 document.createElement("td"),
@@ -404,7 +404,7 @@ function domTT_create(in_options) {
 
     // tooltip floats
     if (
-        in_options.get("position") == "absolute" &&
+        in_options.get("position") === "absolute" &&
         !(in_options.has("x") && in_options.has("y"))
     ) {
         // determine the offset relative to the pointer
@@ -439,7 +439,7 @@ function domTT_create(in_options) {
     in_options.set("offsetWidth", tipObj.offsetWidth);
     in_options.set("offsetHeight", tipObj.offsetHeight);
     if (domLib_canFade && typeof alphaAPI == "function") {
-        if (in_options.get("fade") != "neither") {
+        if (in_options.get("fade") !== "neither") {
             var fadeHandler = new alphaAPI(tipObj, 50, 50, 100, 0, null, 10);
             fadeHandler.setAlpha(0);
             in_options.set("fadeHandler", fadeHandler);
@@ -461,8 +461,8 @@ function domTT_create(in_options) {
         };
     }
 
-    if (in_options.get("type") == "sticky") {
-        if (in_options.get("position") == "absolute" && domTT_dragStickyTips) {
+    if (in_options.get("type") === "sticky") {
+        if (in_options.get("position") === "absolute" && domTT_dragStickyTips) {
             if (domLib_isIE) {
                 captionRow.onselectstart = function () {
                     return false;
@@ -480,7 +480,7 @@ function domTT_create(in_options) {
                 domTT_dragStop();
             };
         }
-    } else if (in_options.get("type") == "velcro") {
+    } else if (in_options.get("type") === "velcro") {
         tipObj.onmouseout = function (in_event) {
             if (typeof in_event == "undefined") {
                 in_event = event;
@@ -491,7 +491,7 @@ function domTT_create(in_options) {
         };
     }
 
-    if (in_options.get("position") == "relative") {
+    if (in_options.get("position") === "relative") {
         tipObj.style.position = "relative";
     }
 
@@ -512,13 +512,13 @@ function domTT_show(in_ownerId, in_event) {
     var status = tooltip.get("status");
     var tipObj = tooltip.get("node");
 
-    if (tooltip.get("position") == "absolute") {
+    if (tooltip.get("position") === "absolute") {
         if (tooltip.has("x") && tooltip.has("y")) {
             var mouse_x = tooltip.get("x");
             var mouse_y = tooltip.get("y");
         } else if (
             !domTT_useGlobalMousePosition ||
-            status == "active" ||
+            status === "active" ||
             tooltip.get("delay") == 0
         ) {
             var eventPosition = domLib_getEventPosition(in_event);
@@ -534,8 +534,8 @@ function domTT_show(in_ownerId, in_event) {
             // if this is not a mousemove event or it is a mousemove event on an active tip and
             // the movement is bigger than the grid
             if (
-                in_event.type != "mousemove" ||
-                (status == "active" &&
+                in_event.type !== "mousemove" ||
+                (status === "active" &&
                     (Math.abs(tooltip.get("lastX") - mouse_x) >
                         tooltip.get("grid") ||
                         Math.abs(tooltip.get("lastY") - mouse_y) >
@@ -573,28 +573,28 @@ function domTT_show(in_ownerId, in_event) {
     }
 
     // if tip is not active, active it now and check for a fade in
-    if (status == "pending") {
+    if (status === "pending") {
         // unhide the tooltip
         tooltip.set("status", "active");
         tipObj.style.display = "";
         tipObj.style.visibility = "visible";
 
         var fade = tooltip.get("fade");
-        if (fade != "neither") {
+        if (fade !== "neither") {
             var fadeHandler = tooltip.get("fadeHandler");
-            if (fade == "out" || fade == "both") {
+            if (fade === "out" || fade === "both") {
                 fadeHandler.pause();
-                if (fade == "out") {
+                if (fade === "out") {
                     fadeHandler.reset();
                 }
             }
 
-            if (fade == "in" || fade == "both") {
+            if (fade === "in" || fade === "both") {
                 fadeHandler.fadeIn();
             }
         }
 
-        if (tooltip.get("type") == "greasy" && tooltip.get("lifetime") != 0) {
+        if (tooltip.get("type") === "greasy" && tooltip.get("lifetime") != 0) {
             tooltip.set(
                 "lifetimeTimeout",
                 domLib_setTimeout(
@@ -608,7 +608,7 @@ function domTT_show(in_ownerId, in_event) {
         }
     }
 
-    if (tooltip.get("position") == "absolute") {
+    if (tooltip.get("position") === "absolute") {
         domLib_detectCollisions(tipObj);
     }
 }
@@ -620,21 +620,21 @@ function domTT_deactivate(in_ownerId) {
     var tooltip = domTT_tooltips.get(in_ownerId);
     if (tooltip) {
         var status = tooltip.get("status");
-        if (status == "pending") {
+        if (status === "pending") {
             // cancel the creation of this tip if it is still pending
             domLib_clearTimeout(tooltip.get("activateTimeout"));
             tooltip.set("status", "inactive");
-        } else if (status == "active") {
+        } else if (status === "active") {
             if (tooltip.get("lifetime")) {
                 domLib_clearTimeout(tooltip.get("lifetimeTimeout"));
             }
 
             var tipObj = tooltip.get("node");
-            if (tooltip.get("closeAction") == "hide") {
+            if (tooltip.get("closeAction") === "hide") {
                 var fade = tooltip.get("fade");
-                if (fade != "neither") {
+                if (fade !== "neither") {
                     var fadeHandler = tooltip.get("fadeHandler");
-                    if (fade == "out" || fade == "both") {
+                    if (fade === "out" || fade === "both") {
                         fadeHandler.pause();
                         fadeHandler.fadeOut();
                     } else {
@@ -671,7 +671,7 @@ function domTT_mouseout(in_owner, in_event) {
     var tooltip = domTT_tooltips.get(in_owner.id);
     if (
         tooltip &&
-        (tooltip.get("type") == "greasy" || tooltip.get("status") != "active")
+        (tooltip.get("type") === "greasy" || tooltip.get("status") !== "active")
     ) {
         // deactivate tip if exists and we moved away from the owner
         if (!toChild) {
@@ -697,7 +697,7 @@ function domTT_mousemove(in_owner, in_event) {
     }
 
     var tooltip = domTT_tooltips.get(in_owner.id);
-    if (tooltip && tooltip.get("trail") && tooltip.get("status") == "active") {
+    if (tooltip && tooltip.get("trail") && tooltip.get("status") === "active") {
         domTT_show(in_owner.id, in_event);
     }
 }
@@ -772,7 +772,7 @@ function domTT_correctEdgeBleed(
             in_height -
             (pageHeight - domTT_screenEdgePadding)) > 0
     ) {
-        if (in_type == "sticky") {
+        if (in_type === "sticky") {
             in_y -= bleedBottom;
         } else {
             in_y -= in_height + 2 * in_offsetY + domTT_mouseHeight;
@@ -782,7 +782,7 @@ function domTT_correctEdgeBleed(
     // if we are bleeding off the top, flip to south
     // we don't want an 'else if' here, because if we just can't fit it, bleed off the bottom
     if (in_y - pageYOffset < domTT_screenEdgePadding) {
-        if (in_type == "sticky") {
+        if (in_type === "sticky") {
             in_y = domTT_screenEdgePadding + pageYOffset;
         } else {
             in_y += in_height + 2 * in_offsetY + domTT_mouseHeight;
@@ -797,7 +797,7 @@ function domTT_correctEdgeBleed(
 
 function domTT_isActive(in_ownerId) {
     var tooltip = domTT_tooltips.get(in_ownerId);
-    if (!tooltip || tooltip.get("status") != "active") {
+    if (!tooltip || tooltip.get("status") !== "active") {
         return false;
     } else {
         return true;

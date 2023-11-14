@@ -121,7 +121,7 @@ $(document).ready(function () {
                 $("#onlineVerifyCancelBtn").hide();
                 $("#onlineVerifyBtn").hide();
                 $("#onlineVerifySiteBtn").show();
-                if (status == "success") {
+                if (status === "success") {
                     $("#confirm-modal-done").show();
                 } else {
                     $("#confirm-modal-error").show();

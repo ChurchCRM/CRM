@@ -143,7 +143,7 @@ $(document).ready(function () {
     }).done(function (data) {
         let familyCountry = $("#familyCountry");
         $.each(data, function (idx, country) {
-            let selected = familyCountry.data("system-default") == country.name;
+            let selected = familyCountry.data("system-default") === country.name;
             familyCountry.append(
                 new Option(country.name, country.code, selected, selected),
             );
@@ -215,11 +215,11 @@ $(document).ready(function () {
 
             let phoneType = $("#memberPhoneType-" + i).val();
             let phoneNumber = $("#memberPhone-" + i).val();
-            if (phoneType == "mobile") {
+            if (phoneType === "mobile") {
                 person["cellPhone"] = phoneNumber;
-            } else if (phoneType == "work") {
+            } else if (phoneType === "work") {
                 person["workPhone"] = phoneNumber;
-            } else if (phoneType == "home") {
+            } else if (phoneType === "home") {
                 person["homePhone"] = phoneNumber;
             }
             family["people"].push(person);

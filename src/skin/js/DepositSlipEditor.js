@@ -35,7 +35,7 @@ function initPaymentTable() {
         },
     ];
 
-    if (depositType == "CreditCard") {
+    if (depositType === "CreditCard") {
         colDef.push({
             width: "auto",
             title: i18next.t("Details"),

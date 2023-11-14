@@ -21,11 +21,11 @@ $("#FundSplit").on("change", function () {
 });
 
 $("#PaymentByMethod").on("change", function () {
-    if (this.value == "CASH") {
+    if (this.value === "CASH") {
         $("#CashEnter").show();
         $("#CheckEnter").hide();
         $("#grandTotal").prop("disabled", true);
-    } else if (this.value == "CHECK") {
+    } else if (this.value === "CHECK") {
         $("#CashEnter").hide();
         $("#CheckEnter").show();
         $("#grandTotal").prop("disabled", false);
@@ -51,7 +51,7 @@ $(".fundSplitInputBox").on("change", function () {
         var fundval = $(el).val();
         grandtotal += fundval * 1;
     });
-    if (formatCurrency(grandtotal) == formatCurrency($("#grandTotal").val())) {
+    if (formatCurrency(grandtotal) === formatCurrency($("#grandTotal").val())) {
         console.log("split value is OK");
         $("#FundSelection .box-header h4").removeClass("fa fa-exclamation");
         $("#FundSelection .box-header h4").addClass("fa fa-check");
@@ -174,10 +174,10 @@ $(document).ready(function () {
             DepositID: $("input[name=DepositID]").val(),
             type: $("input[name=PledgeOrPayment").val(),
         };
-        if ($("select[name=Method]").val() == "CASH") {
+        if ($("select[name=Method]").val() === "CASH") {
             fd["cashDenominations"] = getDenominationSubmitData();
         }
-        if ($("select[name=Method]").val() == "CHECK") {
+        if ($("select[name=Method]").val() === "CHECK") {
             fd["iCheckNo"] = $("input[name=CheckNo]").val();
         }
         fd["FundSplit"] = getFundSubmitData();
@@ -207,7 +207,7 @@ $(document).ready(function () {
 
     function renderFormData(payment) {
         console.log("Rendering Payment Data: " + JSON.stringify(payment));
-        if (payment.iMethod == "CASH") {
+        if (payment.iMethod === "CASH") {
             $("#CashEnter").show();
             $("#CheckEnter").hide();
         } else {
@@ -245,10 +245,8 @@ $(document).ready(function () {
             //dataType    : 'json', // what type of data do we expect back from the server
             encode: true,
         }).done(function (data) {
-            console.log(data);
             var submitType = $("button[type=submit][clicked=true]").val();
-            console.log(submitType);
-            if (submitType == "Save") {
+            if (submitType === "Save") {
                 window.location.href =
                     "DepositSlipEditor.php?DepositSlipID=" +
                     $("input[name=DepositID]").val();

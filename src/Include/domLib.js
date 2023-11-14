@@ -6,20 +6,20 @@
 
 // browsers
 var domLib_userAgent = navigator.userAgent.toLowerCase();
-var domLib_isOpera = domLib_userAgent.indexOf("opera 7") != -1 ? 1 : 0;
-var domLib_isKonq = domLib_userAgent.indexOf("konq") != -1 ? 1 : 0;
+var domLib_isOpera = domLib_userAgent.indexOf("opera 7") !== -1 ? 1 : 0;
+var domLib_isKonq = domLib_userAgent.indexOf("konq") !== -1 ? 1 : 0;
 var domLib_isIE =
     !domLib_isKonq &&
     !domLib_isOpera &&
-    (domLib_userAgent.indexOf("msie 5") != -1 ||
-        domLib_userAgent.indexOf("msie 6") != -1);
+    (domLib_userAgent.indexOf("msie 5") !== -1 ||
+        domLib_userAgent.indexOf("msie 6") !== -1);
 var domLib_isIE5up = domLib_isIE;
-var domLib_isIE50 = domLib_isIE && domLib_userAgent.indexOf("msie 5.0") != -1;
-var domLib_isIE55 = domLib_isIE && domLib_userAgent.indexOf("msie 5.5") != -1;
+var domLib_isIE50 = domLib_isIE && domLib_userAgent.indexOf("msie 5.0") !== -1;
+var domLib_isIE55 = domLib_isIE && domLib_userAgent.indexOf("msie 5.5") !== -1;
 var domLib_isIE5 = domLib_isIE50 || domLib_isIE55;
 var domLib_isIE55up = domLib_isIE5up && !domLib_isIE50;
 var domLib_isIE6up = domLib_isIE55up && !domLib_isIE55;
-var domLib_isGecko = domLib_userAgent.indexOf("gecko") != -1 ? 1 : 0;
+var domLib_isGecko = domLib_userAgent.indexOf("gecko") !== -1 ? 1 : 0;
 
 // abilities
 var domLib_useLibrary =
