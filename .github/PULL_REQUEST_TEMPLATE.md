@@ -1,10 +1,10 @@
 # Description & Issue number it clsoes 
 <!-- Please include a summary of the changes and the related issue. Please also include relevant motivation and context. -->
 
-#### Screenshots (if appropriate)
+## Screenshots (if appropriate)
 <!-- Before and after --> 
 
-#### How to test the changes?
+## How to test the changes?
 
 ## Type of change
 
