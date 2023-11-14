@@ -45,7 +45,7 @@ $(document).ready(function () {
             }
 
             $("#family-property-loading").addClass("hidden");
-            if (data.length == 0) {
+            if (data.length === 0) {
                 $("#family-property-no-data").removeClass("hidden");
             } else {
                 $("#family-property-table").removeClass("hidden");

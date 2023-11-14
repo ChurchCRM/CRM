@@ -152,17 +152,17 @@ domMenu_settings.setItem(
  * @var domMenu_is{Browser}
  */
 var domMenu_userAgent = navigator.userAgent.toLowerCase();
-var domMenu_isOpera = domMenu_userAgent.indexOf("opera 7") != -1 ? 1 : 0;
-var domMenu_isKonq = domMenu_userAgent.indexOf("konq") != -1 ? 1 : 0;
+var domMenu_isOpera = domMenu_userAgent.indexOf("opera 7") !== -1 ? 1 : 0;
+var domMenu_isKonq = domMenu_userAgent.indexOf("konq") !== -1 ? 1 : 0;
 var domMenu_isIE = !domMenu_isKonq && !domMenu_isOpera && document.all ? 1 : 0;
 var domMenu_isIE50 =
-    domMenu_isIE && domMenu_userAgent.indexOf("msie 5.0") != -1;
+    domMenu_isIE && domMenu_userAgent.indexOf("msie 5.0") !== -1;
 var domMenu_isIE55 =
-    domMenu_isIE && domMenu_userAgent.indexOf("msie 5.5") != -1;
+    domMenu_isIE && domMenu_userAgent.indexOf("msie 5.5") !== -1;
 var domMenu_isIE5 = domMenu_isIE50 || domMenu_isIE55;
-var domMenu_isSafari = domMenu_userAgent.indexOf("safari") != -1 ? 1 : 0;
+var domMenu_isSafari = domMenu_userAgent.indexOf("safari") !== -1 ? 1 : 0;
 var domMenu_isGecko =
-    !domMenu_isSafari && domMenu_userAgent.indexOf("gecko") != -1 ? 1 : 0;
+    !domMenu_isSafari && domMenu_userAgent.indexOf("gecko") !== -1 ? 1 : 0;
 
 /**
  * Passport to use the menu system, checked before performing menu manipulation
@@ -279,7 +279,7 @@ function domMenu_Hash() {
         }
 
         for (var tmp_key in this.items) {
-            if (this.items[tmp_key] != in_hash.items[tmp_key]) {
+            if (this.items[tmp_key] !== in_hash.items[tmp_key]) {
                 return false;
             }
         }
@@ -890,7 +890,7 @@ function domMenu_openEvent(in_this, in_event, in_openDelay) {
 
     // if we are moving amongst children of the same element, just ignore event
     if (
-        eventObj.type != "mousedown" &&
+        eventObj.type !== "mousedown" &&
         domMenu_getElement(eventObj[domMenu_eventFrom], basename) ==
             currentTarget
     ) {

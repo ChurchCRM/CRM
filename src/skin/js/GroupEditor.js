@@ -1,7 +1,7 @@
 $("document").ready(function () {
     $(".groupSpecificProperties").click(function (e) {
         var groupPropertyAction = e.currentTarget.id;
-        if (groupPropertyAction == "enableGroupProps") {
+        if (groupPropertyAction === "enableGroupProps") {
             $("#groupSpecificPropertiesModal").modal("show");
             $("#gsproperties-label").text(
                 i18next.t("Confirm Enable Group Specific Properties"),
@@ -73,7 +73,7 @@ $("document").ready(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done(function (data) {
-            if (data.groupType == i18next.t("Sunday School")) {
+            if (data.groupType === i18next.t("Sunday School")) {
                 window.location.href =
                     CRM.root + "/sundayschool/SundaySchoolDashboard.php";
             } else {
@@ -136,9 +136,9 @@ $("document").ready(function () {
                 }
             }, 2)
             .data(); //get the sequence number of the selected role
-        if (roleSequenceAction == "roleUp") {
+        if (roleSequenceAction === "roleUp") {
             newRoleSequence = Number(currentRoleSequence) - 1; //decrease the role's sequence number
-        } else if (roleSequenceAction == "roleDown") {
+        } else if (roleSequenceAction === "roleDown") {
             newRoleSequence = Number(currentRoleSequence) + 1; // increase the role's sequenc number
         }
 

@@ -108,7 +108,7 @@ $(document).ready(function () {
                 var numberOfMembers = $(element).data("membercount"); // PL : we know the number of members
 
                 var activLink = "";
-                if (numberOfMembers == 0) {
+                if (numberOfMembers === 0) {
                     activLink = " disabled"; // PL : We disable the button Add All when there isn't any member in the group
                 }
 
