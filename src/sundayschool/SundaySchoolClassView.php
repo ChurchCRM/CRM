@@ -31,7 +31,7 @@ foreach ($sundaySchoolService->getKidsBirthdayMonth($iGroupId) as $birthDayMonth
         $kidsCount
     ];
 }
-$birthDayMonthChartJSON = json_encode($birthDayMonthChartArray);
+$birthDayMonthChartJSON = json_encode($birthDayMonthChartArray, JSON_THROW_ON_ERROR);
 
 $genderChartArray = [];
 foreach ($sundaySchoolService->getKidsGender($iGroupId) as $gender => $kidsCount) {
@@ -40,7 +40,7 @@ foreach ($sundaySchoolService->getKidsGender($iGroupId) as $gender => $kidsCount
         'data' => $kidsCount
     ];
 }
-$genderChartJSON = json_encode($genderChartArray);
+$genderChartJSON = json_encode($genderChartArray, JSON_THROW_ON_ERROR);
 
 $rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, 'Teacher');
 $sPageTitle = gettext('Sunday School') . ': ' . $iGroupName;
