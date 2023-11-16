@@ -198,7 +198,7 @@ class SundaySchoolService
 
     public function getKidsWithoutClasses()
     {
-        $sSQL = <<<SQL
+        $sSQL = <<<'SQL'
 select
     kid.per_ID kidId,
     kid.per_FirstName firstName,
