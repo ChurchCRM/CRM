@@ -467,7 +467,8 @@ function implodeUnique($array, $withQuotes)
       }
     },
     legend: {
-      show: false
+      show: false,
+      position: "sw",
     }
   });
   /*
