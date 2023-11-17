@@ -1,4 +1,4 @@
-# Description & Issue number it clsoes 
+# Description & Issue number it closes 
 <!-- Please include a summary of the changes and the related issue. Please also include relevant motivation and context. -->
 
 ## Screenshots (if appropriate)
