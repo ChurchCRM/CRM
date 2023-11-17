@@ -331,6 +331,10 @@ function implodeUnique($array, $withQuotes)
   <!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!-- JQUERY CANVAS WRAPPER for flot -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.canvaswrapper.js"></script>
+<!-- JQUERY COLOR HELPERS for flot -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.colorhelpers.js"></script>
 <!-- FLOT CHARTS -->
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
@@ -339,6 +343,14 @@ function implodeUnique($array, $withQuotes)
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.pie.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.categories.js"></script>
+<!-- FLOT SATURATED PLUGIN -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.saturated.js"></script>
+<!-- FLOT BROWSER PLUGIN -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.browser.js"></script>
+<!-- FLOT DRAW SERIES PLUGIN -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.drawSeries.js"></script>
+<!-- FLOT UI CONSTANTS -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.uiConstants.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {

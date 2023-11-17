@@ -195,7 +195,11 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/flot/jquery.flot*.js'],
+                        src: [
+                            'node_modules/flot/source/jquery.canvaswrapper.js',
+                            'node_modules/flot/source/jquery.colorhelpers.js',
+                            'node_modules/flot/source/jquery.flot*.js'
+                        ],
                         dest: 'src/skin/external/flot/'
                     },
                     {
