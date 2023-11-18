@@ -55,27 +55,33 @@ class ChurchCRMReleaseManager
     {
         $client = new Client();
         $eligibleReleases = [];
-        LoggerUtils::getAppLogger()->debug("Querying GitHub '".ChurchCRMReleaseManager::GITHUB_USER_NAME.'/'.ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME."' for ChurchCRM Releases");
-        $gitHubReleases = $client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME);
-        LoggerUtils::getAppLogger()->debug('Received '.count($gitHubReleases).' ChurchCRM releases from GitHub');
-        foreach ($gitHubReleases as $r) {
-            $release = new ChurchCRMRelease($r);
-            if ($release->isPreRelease()) {
-                if (SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade')) {
-                    LoggerUtils::getAppLogger()->debug('bAllowPrereleaseUpgrade allows upgrade to a pre-release version.  Including '.$release.' for consideration');
-                    array_push($eligibleReleases, $release);
+        $logger = LoggerUtils::getAppLogger();
+        try {
+            $logger->debug("Querying GitHub '" . ChurchCRMReleaseManager::GITHUB_USER_NAME . '/' . ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME . "' for ChurchCRM Releases");
+            $gitHubReleases = $client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME);
+            $logger->debug('Received ' . count($gitHubReleases) . ' ChurchCRM releases from GitHub');
+            foreach ($gitHubReleases as $r) {
+                $release = new ChurchCRMRelease($r);
+                if ($release->isPreRelease()) {
+                    if (SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade')) {
+                        $logger->debug('bAllowPrereleaseUpgrade allows upgrade to a pre-release version.  Including ' . $release . ' for consideration');
+                        array_push($eligibleReleases, $release);
+                    } else {
+                        $logger->debug('bAllowPrereleaseUpgrade disallows upgrade to a pre-release version.  Not including ' . $release . ' for consideration');
+                    }
                 } else {
-                    LoggerUtils::getAppLogger()->debug('bAllowPrereleaseUpgrade disallows upgrade to a pre-release version.  Not including '.$release.' for consideration');
+                    $logger->debug($release . ' is not a pre-release version. Including for consideration');
+                    array_push($eligibleReleases, $release);
                 }
-            } else {
-                LoggerUtils::getAppLogger()->debug($release.' is not a pre-release version. Including for consideration');
-                array_push($eligibleReleases, $release);
             }
+
+            usort($eligibleReleases, fn(ChurchCRMRelease $a, ChurchCRMRelease $b) => $a->compareTo($b) < 0);
+
+            $logger->debug('Found ' . count($eligibleReleases) . ' eligible ChurchCRM releases on GitHub');
+        } catch (\Exception $ex) {
+            $errorMessage = $ex->getMessage();
+            $logger->error("Error updating database: " . $errorMessage, ['exception' => $ex]);
         }
-
-        usort($eligibleReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b) => $a->compareTo($b) < 0);
-
-        LoggerUtils::getAppLogger()->debug('Found '.count($eligibleReleases).' eligible ChurchCRM releases on GitHub');
 
         return $eligibleReleases;
     }
