@@ -8,7 +8,7 @@ $app->group('/', function () use ($app) {
     $app->get('', function ($request, $response, $args) {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
-        if (version_compare(phpversion(), '8.0.0', '<')) {
+        if (version_compare(phpversion(), '8.1.0', '<')) {
             $renderPage = 'setup-error.php';
         }
 

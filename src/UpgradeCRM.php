@@ -30,19 +30,17 @@ Header_body_scripts();
 
 ?>
 <div class="col-lg-8 col-lg-offset-2" style="margin-top: 10px">
-  <ul class="timeline">
-    <li class="time-label">
-        <span class="bg-red">
-            <?= gettext('Upgrade ChurchCRM') ?>
-        </span>
-    </li>
+  <div class="timeline">
+      <div class="time-label">
+          <span class="bg-red"><?= gettext('Upgrade ChurchCRM') ?></span>
+      </div>
 
     <?php
      $taskService = new TaskService();
      $preUpgradeTasks = $taskService->getActivePreUpgradeTasks();
     if (count($preUpgradeTasks) > 0) {
         ?>
-    <li>
+    <div>
       <i class="fa fa-bomb bg-red"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Warning: Pre-Upgrade Tasks Detected') ?> <span id="status1"></span></h3>
@@ -59,20 +57,20 @@ Header_body_scripts();
             } ?>
 
             </ul>
-              
+
           </div>
           <p></p>
           <input type="button" class="btn btn-primary" id="acceptUpgradeTaskWarking" <?= 'value="' . gettext('I Understand') . '"' ?>>
         </div>
       </div>
-    </li>
+    </div>
         <?php
     }
     ?>
     <?php
     if (AppIntegrityService::getIntegrityCheckStatus() === gettext("Failed")) {
         ?>
-    <li>
+    <div>
       <i class="fa fa-bomb bg-red"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Warning: Signature mismatch') ?> <span id="status1"></span></h3>
@@ -115,11 +113,11 @@ Header_body_scripts();
           <input type="button" class="btn btn-primary" id="acceptIntegrityCheckWarking" <?= 'value="' . gettext('I Understand') . '"' ?>>
         </div>
       </div>
-    </li>
+    </div>
         <?php
     }
     ?>
-    <li>
+    <div>
       <i class="fa fa-database bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 1: Backup Database') ?> <span id="status1"></span></h3>
@@ -131,8 +129,8 @@ Header_body_scripts();
           </div>
         </div>
       </div>
-    </li>
-    <li>
+    </div>
+    <div>
       <i class="fa fa-cloud-download bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 2: Fetch Update Package on Server') ?> <span id="status2"></span></h3>
@@ -141,8 +139,8 @@ Header_body_scripts();
           <input type="button" class="btn btn-primary" id="fetchUpdate" <?= 'value="' . gettext('Fetch Update Files') . '"' ?> >
         </div>
       </div>
-    </li>
-    <li>
+    </div>
+    <div>
       <i class="fa fa-cogs bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 3: Apply Update Package on Server') ?> <span id="status3"></span></h3>
@@ -159,8 +157,8 @@ Header_body_scripts();
           <input type="button" class="btn btn-warning" id="applyUpdate" value="<?= gettext('Upgrade System') ?>">
         </div>
       </div>
-    </li>
-    <li>
+    </div>
+    <div>
       <i class="fa fa-sign-in bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 4: Login') ?></h3>
@@ -168,8 +166,8 @@ Header_body_scripts();
           <a href="Logoff.php" class="btn btn-primary"><?= gettext('Login to Upgraded System') ?> </a>
         </div>
       </div>
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function() {

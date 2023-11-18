@@ -155,7 +155,7 @@ function resetDatabase(Request $request, Response $response, array $p_args)
         }
 
         $dbAlterStatement = $connection->exec($alterSQL);
-        $logger->info('DB Update: '.$alterSQL.' done.');
+        $logger->debug('DB Update: '.$alterSQL.' done.');
     }
 
     AuthenticationManager::endSession();
