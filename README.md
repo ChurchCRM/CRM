@@ -26,7 +26,7 @@ We welcome contributions from everyone! Whether it's bug reports, feature reques
 [![Join the chat at https://gitter.im/ChurchCRM/CRM](https://badges.gitter.im/ChurchCRM/CRM.svg)](https://gitter.im/ChurchCRM/CRM?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### 📚 Documentation
-Our [documentation](https://github.com/ChurchCRM/ChurchCRM/wiki) is your go-to resource for understanding ChurchCRM inside and out. If you find something missing or unclear, don't hesitate to open an issue or submit a pull request.
+Our [documentation](https://github.com/ChurchCRM/CRM/wiki) is your go-to resource for understanding ChurchCRM inside and out. If you find something missing or unclear, don't hesitate to open an issue or submit a pull request.
 
 ### 🤝 Community
 Join our [Support Chat](https://gitter.im/ChurchCRM/CRM) to connect with other users, ask questions, and share your experiences. We believe in the power of a supportive community!
