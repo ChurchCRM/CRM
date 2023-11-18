@@ -1050,10 +1050,6 @@ msgid "Edit"
 msgstr "Düzenlemek"
 
 #: 
-msgid "Message"
-msgstr "İleti"
-
-#: 
 msgid "Event Attendees"
 msgstr "Etkinlik katılımcıları"
 
@@ -2025,10 +2021,6 @@ msgstr "Grup listesi"
 #: 
 msgid "Add New Group"
 msgstr "Yeni Grup Ekle"
-
-#: 
-msgid "Submit"
-msgstr "Göndermek"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -3048,18 +3040,6 @@ msgid "Execute Query"
 msgstr "Sorguyu çalıştır"
 
 #: 
-msgid "Software Registration"
-msgstr "Yazılım Kayıt"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Lütfen bu bilgileri kontrol ederek ve Gönder düğmesine basarak ChurchCRM kopyanızı kaydedin."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Bu bilgiler yalnızca bu yazılımın kullanımını izlemek için kullanılır."
-
-#: 
 msgid "Send"
 msgstr "Göndermek"
 
@@ -3164,10 +3144,6 @@ msgid "Permission"
 msgstr "İzin"
 
 #: 
-msgid "Base URL"
-msgstr "Temel url"
-
-#: 
 msgid "System Settings"
 msgstr "Sistem ayarları"
 
@@ -3188,8 +3164,9 @@ msgid "User Delete Confirmation"
 msgstr "Kullanıcı Silme Onayı"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Lütfen kullanıcı durumunun kaldırılmasını onaylayın:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Lütfen kullanıcı durumunun kaldırılmasını onaylayın"
 
 #: 
 msgid "User Editor"
@@ -3622,26 +3599,6 @@ msgstr "Hata metni"
 #: 
 msgid "Issue Report!"
 msgstr "Sorun Raporu!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Hata / özellik raporunuz için bir başlık girin"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Hata / özellik fırsatını fark ettiğinizde ne yapıyordunuz?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "\"Gönder\" i tıkladığınızda, ChurchCRM GitHub Sayı izleyicisine bir hata raporu gönderilir."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Lütfen gizli bilgiler eklemeyin."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Sisteminizle ilgili bazı genel bilgiler, sunucu sürümü ve tarayıcı başlıkları gibi istekle birlikte gönderilecektir."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -4344,10 +4301,6 @@ msgid "Enter Name"
 msgstr "İsim giriniz"
 
 #: 
-msgid "Register Software"
-msgstr "Kayıt Yazılımı"
-
-#: 
 msgid "Update Church Info"
 msgstr "Kilise Bilgilerini Güncelle"
 
@@ -4474,14 +4427,6 @@ msgstr "Önceki oturumunuz zaman aşımına uğradı. Lütfen tekrar giriş yap�
 #: 
 msgid "Register a new Family"
 msgstr "Yeni Bir Aile Kaydolun"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Kayıt verilerinde değişiklik yapmanız gerekiyorsa,"
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Yönetici-> Genel Ayarları Düzenle"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5397,10 +5342,6 @@ msgstr "Dizinler oluşturmak için kullanıcı izni"
 #: 
 msgid "User permission to export CSV files"
 msgstr "CSV dosyalarını dışa aktarmak için kullanıcı izni"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "IST adresi doğrulamasını kullanmak için kullanıcı izni"
 
 #: 
 msgid "Allow user to add new event"
@@ -6695,10 +6636,6 @@ msgid "Missing Role Data"
 msgstr "Eksik Rol Verileri"
 
 #: 
-msgid "Let us know that you are using the software"
-msgstr "Yazılımı kullandığınızı bize bildirin"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Doğrulama bilgilerini yükleyemiyor"
 
@@ -7555,14 +7492,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "Seçilen grup üyelerini kaldırmak istediğinizden emin misiniz?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Başarıyla gönderilen sorun"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Github'da Sorunu Görüntüle"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Bu kişiyi silmek ister misiniz? Bu geri alınamaz."
 
@@ -8283,8 +8212,9 @@ msgid "New Calendar"
 msgstr "Yeni Takvim"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Uyarı: BenableExternalCalendarapi devre dışı bırakıldı, ancak bazı takvimlerin erişim belirteçleri var"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "BenableExternalCalendarapi devre dışı bırakıldı, ancak bazı takvimlerin erişim belirteçleri var"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9061,10 +8991,6 @@ msgstr "Veritabanı sunucusu sürümü"
 #: 
 msgid "Web Server"
 msgstr "Web sunucusu"
-
-#: 
-msgid "Server Software"
-msgstr "Sunucu Yazılımı"
 
 #: 
 msgid "Email Information"

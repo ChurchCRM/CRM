@@ -956,11 +956,6 @@ msgid "Edit"
 msgstr "Ndrysho"
 
 #: 
-#, fuzzy
-msgid "Message"
-msgstr "Mesazh"
-
-#: 
 msgid "Event Attendees"
 msgstr "Pjesëmarrësit Event"
 
@@ -1754,10 +1749,6 @@ msgid "Group Listing"
 msgstr "Listing Group"
 
 #: 
-msgid "Submit"
-msgstr "Konfirmo"
-
-#: 
 msgid "Group Member Properties Editor"
 msgstr "Grupi Anëtar Prona Editor"
 
@@ -2543,14 +2534,6 @@ msgid "Execute Query"
 msgstr "Execute Query"
 
 #: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Ju lutemi regjistrohuni kopje të ChurchCRM duke kontrolluar mbi këtë informacion dhe të shtypur butonin Send.  "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Ky informacion do të përdoret vetëm për të ndjekur përdorimin e këtij software.  "
-
-#: 
 msgid "Send"
 msgstr "Dërgoj"
 
@@ -2647,8 +2630,9 @@ msgid "User Delete Confirmation"
 msgstr "User Fshije Konfirmimi"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Ju lutem konfirmoni heqjen e statusit të përdoruesit nga:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Ju lutem konfirmoni heqjen e statusit të përdoruesit nga"
 
 #: 
 msgid "User Editor"

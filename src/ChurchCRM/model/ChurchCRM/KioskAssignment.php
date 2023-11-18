@@ -1,10 +1,10 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\KioskAssignment as BaseKioskAssignment;
 use ChurchCRM\dto\KioskAssignmentTypes;
-use ChurchCRM\Map\ListOptionTableMap;
+use ChurchCRM\model\ChurchCRM\Base\KioskAssignment as BaseKioskAssignment;
+use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\Join;
 
@@ -16,7 +16,6 @@ use Propel\Runtime\ActiveQuery\Join;
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
- *
  */
 class KioskAssignment extends BaseKioskAssignment
 {
@@ -28,9 +27,10 @@ class KioskAssignment extends BaseKioskAssignment
             ->filterByEnd('now', Criteria::GREATER_EQUAL)
             ->filterById($this->getEventId())
             ->findOne();
+
             return $Event;
         } else {
-            throw new \Exception("This kiosk does not support group attendance");
+            throw new \Exception('This kiosk does not support group attendance');
         }
     }
 
@@ -38,8 +38,8 @@ class KioskAssignment extends BaseKioskAssignment
     {
         if ($this->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {
             $groupTypeJoin = new Join();
-            $groupTypeJoin->addCondition("Person2group2roleP2g2r.RoleId", "list_lst.lst_OptionId", Join::EQUAL);
-            $groupTypeJoin->addForeignValueCondition("list_lst", "lst_ID", '', $this->getActiveEvent()->getGroup()->getRoleListId(), Join::EQUAL);
+            $groupTypeJoin->addCondition('Person2group2roleP2g2r.RoleId', 'list_lst.lst_OptionId', Join::EQUAL);
+            $groupTypeJoin->addForeignValueCondition('list_lst', 'lst_ID', '', $this->getActiveEvent()->getGroup()->getRoleListId(), Join::EQUAL);
             $groupTypeJoin->setJoinType(Criteria::LEFT_JOIN);
 
             $ssClass = PersonQuery::create()
@@ -48,15 +48,16 @@ class KioskAssignment extends BaseKioskAssignment
                   ->filterByGroupId($this->getEvent()->getGroupId())
                   ->joinGroup()
                   ->addJoinObject($groupTypeJoin)
-                ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME, "RoleName")
+                ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME, 'RoleName')
                 ->endUse()
                  ->leftJoin('EventAttend')
-                 ->withColumn("(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)", "status")
-                ->select(["Id", "FirstName", "LastName", "status"])
+                 ->withColumn('(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)', 'status')
+                ->select(['Id', 'FirstName', 'LastName', 'status'])
                 ->find();
+
             return $ssClass;
         } else {
-            throw new \Exception("This kiosk does not support group attendance");
+            throw new \Exception('This kiosk does not support group attendance');
         }
     }
 }

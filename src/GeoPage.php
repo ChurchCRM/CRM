@@ -21,8 +21,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\ListOptionQuery;
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
@@ -32,7 +32,7 @@ function CompareDistance($elem1, $elem2)
 {
     if ($elem1['Distance'] > $elem2['Distance']) {
         return 1;
-    } elseif ($elem1['Distance'] == $elem2['Distance']) {
+    } elseif ($elem1['Distance'] === $elem2['Distance']) {
         return 0;
     } else {
         return -1;
@@ -156,22 +156,22 @@ if (isset($_POST['FindNeighbors']) || isset($_POST['DataFile']) || isset($_POST[
 if (isset($_POST['DataFile'])) {
     $resultsByDistance = FamilyInfoByDistance($iFamily);
 
-    if ($sCoordFileFormat == 'GPSVisualizer') {
+    if ($sCoordFileFormat === 'GPSVisualizer') {
         $filename = $sCoordFileName . '.csv';
-    } elseif ($sCoordFileFormat == 'StreetAtlasUSA') {
+    } elseif ($sCoordFileFormat === 'StreetAtlasUSA') {
         $filename = $sCoordFileName . '.txt';
     }
 
     header("Content-Disposition: attachment; filename=$filename");
 
-    if ($sCoordFileFormat == 'GPSVisualizer') {
+    if ($sCoordFileFormat === 'GPSVisualizer') {
         echo "Name,Latitude,Longitude\n";
     }
 
     $counter = 0;
 
     foreach ($resultsByDistance as $oneResult) {
-        if ($sCoordFileFamilies == 'NeighborFamilies') {
+        if ($sCoordFileFamilies === 'NeighborFamilies') {
             if ($counter++ == $iNumNeighbors) {
                 break;
             }
@@ -185,9 +185,9 @@ if (isset($_POST['DataFile'])) {
             continue;
         }
 
-        if ($sCoordFileFormat == 'GPSVisualizer') {
+        if ($sCoordFileFormat === 'GPSVisualizer') {
             echo $oneResult['fam_Name'] . ',' . $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] . "\n";
-        } elseif ($sCoordFileFormat == 'StreetAtlasUSA') {
+        } elseif ($sCoordFileFormat === 'StreetAtlasUSA') {
             echo "BEGIN SYMBOL\n";
             echo $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] . ',' . $oneResult['fam_Name'] . ',' . "Green Star\n";
             echo "END\n";
@@ -293,12 +293,12 @@ $families = FamilyQuery::create()
                     <div class="col-xs-12 col-sm-9">
                         <label class="radio-inline">
                             <input type="radio" name="CoordFileFormat"
-                                   value="GPSVisualizer" <?= ($sCoordFileFormat == 'GPSVisualizer' ? ' checked' : '') ?> >
+                                   value="GPSVisualizer" <?= ($sCoordFileFormat === 'GPSVisualizer' ? ' checked' : '') ?> >
                             <?= gettext('GPS Visualizer') ?>
                         </label>
                         <label class="radio-inline">
                             <input type="radio" name="CoordFileFormat"
-                                   value="StreetAtlasUSA" <?= ($sCoordFileFormat == 'StreetAtlasUSA' ? ' checked' : '') ?> >
+                                   value="StreetAtlasUSA" <?= ($sCoordFileFormat === 'StreetAtlasUSA' ? ' checked' : '') ?> >
                             <?= gettext('Street Atlas USA') ?>
                         </label>
                     </div>
@@ -309,12 +309,12 @@ $families = FamilyQuery::create()
                     <div class="col-xs-12 col-sm-9">
                         <label class="radio-inline">
                             <input type="radio" name="CoordFileFamilies"
-                                   value="AllFamilies" <?= ($sCoordFileFamilies == 'AllFamilies' ? ' checked' : '') ?> >
+                                   value="AllFamilies" <?= ($sCoordFileFamilies === 'AllFamilies' ? ' checked' : '') ?> >
                             <?= gettext('All Families') ?>
                         </label>
                         <label class="radio-inline">
                             <input type="radio" name="CoordFileFamilies"
-                                   value="NeighborFamilies" <?= ($sCoordFileFamilies == 'NeighborFamilies' ? ' checked' : '') ?> >
+                                   value="NeighborFamilies" <?= ($sCoordFileFamilies === 'NeighborFamilies' ? ' checked' : '') ?> >
                             <?= gettext('Neighbor Families') ?>
                         </label>
                     </div>

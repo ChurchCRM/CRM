@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\PersonQuery;
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class PeopleCustomField
 {
@@ -11,11 +11,12 @@ class PeopleCustomField
     private string $value;
     private $formattedValue;
     private ?string $link = null;
-    private string $icon = "fa fa-tag";
+    private string $icon = 'fa fa-tag';
     private $displayValue;
 
     /**
      * PeopleCustomField constructor.
+     *
      * @param $name
      */
     public function __construct($masterField, $value)
@@ -26,24 +27,24 @@ class PeopleCustomField
         $masterField->getName();
 
         if ($masterField->getTypeId() == 9) {
-            $this->icon = "fa fa-user";
-            $this->link = SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->value;
+            $this->icon = 'fa fa-user';
+            $this->link = SystemURLs::getRootPath().'/PersonView.php?PersonID='.$this->value;
             $person = PersonQuery::create()->findPk($this->value);
             if ($person) {
                 $this->formattedValue = $person->getFullName();
             } else {
-                $this->formattedValue = gettext("Unexpected Person Id") . " : " . $this->value;
+                $this->formattedValue = gettext('Unexpected Person Id').' : '.$this->value;
             }
-        } elseif ($masterField->getTypeId()  == 11) {
+        } elseif ($masterField->getTypeId() == 11) {
             //$custom_Special = $sPhoneCountry;
-            $this->icon = "fa fa-phone";
-            $this->link = "tel:" . $this->value;
+            $this->icon = 'fa fa-phone';
+            $this->link = 'tel:'.$this->value;
         } elseif ($masterField->getTypeId() == 12) {
             $customOption = ListOptionQuery::create()->filterById($masterField->getCustomSpecial())->filterByOptionId($this->value)->findOne();
             if ($customOption != null) {
-                $this->formattedValue =  $customOption->getOptionName();
+                $this->formattedValue = $customOption->getOptionName();
             } else {
-                $this->formattedValue = $this->value . " ( " . gettext("Deleted") . " )";
+                $this->formattedValue = $this->value.' ( '.gettext('Deleted').' )';
             }
         }
     }

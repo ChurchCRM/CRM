@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 
 class Classification
 {
@@ -17,6 +17,7 @@ class Classification
         if (!empty($classification)) {
             return $classification->getOptionName();
         }
-        return "";
+
+        return '';
     }
 }

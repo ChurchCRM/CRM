@@ -3,14 +3,14 @@
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\User;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
 abstract class BaseAuthRoleMiddleware
 {
     /**
-     * @var  User $user
+     * @var User
      */
     protected $user;
 
@@ -24,6 +24,7 @@ abstract class BaseAuthRoleMiddleware
         if (!$this->hasRole()) {
             return $response->withStatus(403, $this->noRoleMessage());
         }
+
         return $next($request, $response);
     }
 

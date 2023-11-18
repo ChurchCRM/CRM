@@ -788,10 +788,6 @@ msgid "Edit"
 msgstr "עריכה"
 
 #: 
-msgid "Message"
-msgstr "הודעה"
-
-#: 
 msgid "Event Title"
 msgstr "כותרת אירוע"
 

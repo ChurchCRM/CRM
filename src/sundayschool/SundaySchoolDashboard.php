@@ -7,6 +7,7 @@ use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\LoggerUtils;
 
 $dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
@@ -64,7 +65,7 @@ require '../Include/Header.php';
 <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-gray"><i class="fa fa-gg"></i></span>
+      <span class="info-box-icon bg-gray"><i class="fa-solid fa-chalkboard"></i></span>
 
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Classes') ?></span>
@@ -76,7 +77,7 @@ require '../Include/Header.php';
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-olive"><i class="fa fa-group"></i></span>
+      <span class="info-box-icon bg-olive"><i class="fa-solid fa-person-chalkboard"></i></span>
 
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Teachers') ?></span>
@@ -161,16 +162,10 @@ require '../Include/Header.php';
         <tr>
           <td style="width:80px">
             <a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
-            <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-            </span>
+              <i class="fa fa-search-plus"></i>
             </a>
             <a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
-            <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fas fa-pen fa-stack-1x fa-inverse"></i>
-            </span>
+              <i class="fa fas fa-pen"></i>
             </a>
           </td>
           <td><?= $class['name'] ?></td>
@@ -214,21 +209,33 @@ require '../Include/Header.php';
         foreach ($kidsWithoutClasses as $child) {
             extract($child);
 
-            $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
-            $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+            $birthDate = 'N/A';
+            $age = 'N/A';
+            $hideAge = $flags == 1 || empty($birthYear);
+            try {
+              if (!$hideAge) {
+                $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+                $age = MiscUtils::formatAge($birthMonth, $birthDay, $birthYear);
+              }
+            } catch (\Throwable $ex) {
+              LoggerUtils::getAppLogger()->error("Failed to retrieve student's age", ['exception' => $ex]);
+            }
 
-            echo '<tr>';
-            echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
-            echo '	<span class="fa-stack">';
-            echo '	<i class="fa fa-square fa-stack-2x"></i>';
-            echo '	<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>';
-            echo '	</span></a></td>';
-            echo '<td>' . $firstName . '</td>';
-            echo '<td>' . $LastName . '</td>';
-            echo '<td>' . $birthDate . '</td>';
-            echo "<td>" . MiscUtils::formatAge($birthMonth, $birthDay, $birthYear, $hideAge) . "</td>";
-            echo '<td>' . $Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip . '</td>';
-            echo '</tr>';
+            $html = <<<HTML
+<tr>
+<td>
+  <a href="../PersonView.php?PersonID={$kidId}">
+    <i class="fa fa-search-plus"></i>
+  </a>
+</td>
+<td>$firstName</td>
+<td>$LastName</td>
+<td>$birthDate</td>
+<td>$age</td>
+<td>$Address1 $Address2 $city $state $zip</td>
+</tr>
+HTML;
+          echo $html;
         }
 
         ?>

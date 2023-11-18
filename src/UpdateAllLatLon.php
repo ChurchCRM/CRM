@@ -8,7 +8,7 @@
  *
  ******************************************************************************/
 
-use ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 require 'Include/Config.php';

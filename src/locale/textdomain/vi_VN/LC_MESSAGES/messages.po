@@ -1068,10 +1068,6 @@ msgid "Edit"
 msgstr "Chỉnh sửa"
 
 #: 
-msgid "Message"
-msgstr "Tin nhắn"
-
-#: 
 msgid "Event Attendees"
 msgstr "Người tham dự sự kiện"
 
@@ -2043,10 +2039,6 @@ msgstr "Danh sách Ban/Mục vụ"
 #: 
 msgid "Add New Group"
 msgstr "Thêm Ban/Mục vụ mới"
-
-#: 
-msgid "Submit"
-msgstr "Gửi đi"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -3066,18 +3058,6 @@ msgid "Execute Query"
 msgstr "Thực hiện kiểm tra"
 
 #: 
-msgid "Software Registration"
-msgstr "Đăng ký phần mềm"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Vui lòng đăng ký bản sao ChurchCRM của bạn bằng cách kiểm tra thông tin này và nhấn nút Gửi."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Thông tin này chỉ được sử dụng để theo dõi việc sử dụng phần mềm này."
-
-#: 
 msgid "Send"
 msgstr "Gửi đi"
 
@@ -3182,10 +3162,6 @@ msgid "Permission"
 msgstr "Quyền hạn"
 
 #: 
-msgid "Base URL"
-msgstr "URL cơ sở"
-
-#: 
 msgid "System Settings"
 msgstr "Hệ thống"
 
@@ -3206,8 +3182,9 @@ msgid "User Delete Confirmation"
 msgstr "Xác nhận xóa người dùng"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Vui lòng xác nhận việc xóa trạng thái người dùng khỏi:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Vui lòng xác nhận việc xóa trạng thái người dùng khỏi"
 
 #: 
 msgid "User Editor"
@@ -3640,26 +3617,6 @@ msgstr "Văn bản lỗi"
 #: 
 msgid "Issue Report!"
 msgstr "Báo cáo sự cố!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Nhập Tiêu đề cho báo cáo lỗi / tính năng của bạn"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Bạn đã làm gì khi nhận thấy cơ hội về lỗi / tính năng?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Khi bạn nhấp vào \"gửi\", một báo cáo lỗi sẽ được đăng lên trình theo dõi Sự cố GitHub của ChurchCRM."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Vui lòng không bao gồm bất kỳ thông tin bí mật nào."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Một số thông tin chung về hệ thống của bạn sẽ được gửi cùng với yêu cầu như Phiên bản máy chủ và tiêu đề trình duyệt."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -4364,10 +4321,6 @@ msgid "Enter Name"
 msgstr "Nhập tên"
 
 #: 
-msgid "Register Software"
-msgstr "Đăng ký phần mềm"
-
-#: 
 msgid "Update Church Info"
 msgstr "Cập nhật thông tin Hội Thánh"
 
@@ -4494,14 +4447,6 @@ msgstr "Phiên truy cập trước đã hết thời gian, vui lòng đăng nh�
 #: 
 msgid "Register a new Family"
 msgstr "Đăng ký một gia đình mới"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Nếu bạn cần thay đổi dữ liệu đăng ký, hãy truy cập"
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Quản trị->Cài đặt tổng quan"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5417,10 +5362,6 @@ msgstr "Thành viên có quyền tạo ra danh bạ"
 #: 
 msgid "User permission to export CSV files"
 msgstr "Thành viên có quyền xuất tập tin CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Thành viên có quyền sử dụng xác nhận địa chỉ"
 
 #: 
 msgid "Allow user to add new event"
@@ -6715,10 +6656,6 @@ msgid "Missing Role Data"
 msgstr "Thiếu dữ liệu vai trò"
 
 #: 
-msgid "Let us know that you are using the software"
-msgstr "Hãy cho chúng tôi biết rằng bạn đang sử dụng phần mềm"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Không thể tải thông tin xác minh"
 
@@ -7575,14 +7512,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "Bạn có chắc chắn muốn xóa các thành viên nhóm đã chọn không?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Đã gửi vấn đề thành công"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Xem sự cố trên GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Bạn có muốn xóa thành viên này không ? Điều này không thể hoàn lại."
 
@@ -8303,8 +8232,9 @@ msgid "New Calendar"
 msgstr "Tạo lịch mới"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Cảnh báo: bEnableExternalCalendarAPI bị vô hiệu hóa, nhưng một số lịch có mã thông báo truy cập"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI bị vô hiệu hóa, nhưng một số lịch có mã thông báo truy cập"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9070,10 +9000,6 @@ msgstr "Phiên bản máy chủ cơ sở dữ liệu"
 #: 
 msgid "Web Server"
 msgstr "Máy chủ web"
-
-#: 
-msgid "Server Software"
-msgstr "Phần mềm máy chủ"
 
 #: 
 msgid "Email Information"

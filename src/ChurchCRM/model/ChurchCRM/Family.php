@@ -1,14 +1,15 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Base\Family as BaseFamily;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\model\ChurchCRM\Base\Family as BaseFamily;
+use ChurchCRM\PhotoInterface;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
@@ -34,13 +35,13 @@ class Family extends BaseFamily implements PhotoInterface
         if (!empty($this->getAddress1())) {
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
-                $tmp = $tmp . ' ' . $this->getAddress2();
+                $tmp = $tmp.' '.$this->getAddress2();
             }
             array_push($address, $tmp);
         }
 
         if (!empty($this->getCity())) {
-            array_push($address, $this->getCity() . ',');
+            array_push($address, $this->getCity().',');
         }
 
         if (!empty($this->getState())) {
@@ -59,7 +60,7 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath() . '/v2/family/' . $this->getId();
+        return SystemURLs::getRootPath().'/v2/family/'.$this->getId();
     }
 
     public function getWeddingDay()
@@ -87,10 +88,10 @@ class Family extends BaseFamily implements PhotoInterface
     public function postInsert(ConnectionInterface $con = null)
     {
         $this->createTimeLineNote('create');
-        if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
+        if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
             $NotificationEmail = new NewPersonOrFamilyEmail($this);
             if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext("New Family Notification Email Error") . " :" . $NotificationEmail->getError());
+                LoggerUtils::getAppLogger()->warning(gettext('New Family Notification Email Error').' :'.$NotificationEmail->getError());
             }
         }
     }
@@ -102,23 +103,23 @@ class Family extends BaseFamily implements PhotoInterface
         }
     }
 
-
     public function getPeopleSorted()
     {
         $familyMembersParents = array_merge($this->getHeadPeople(), $this->getSpousePeople());
         $familyMembersChildren = $this->getChildPeople();
         $familyMembersOther = $this->getOtherPeople();
+
         return array_merge($familyMembersParents, $familyMembersChildren, $familyMembersOther);
     }
 
     public function getHeadPeople()
     {
-        return $this->getPeopleByRole("sDirRoleHead");
+        return $this->getPeopleByRole('sDirRoleHead');
     }
 
     public function getSpousePeople()
     {
-        return $this->getPeopleByRole("sDirRoleSpouse");
+        return $this->getPeopleByRole('sDirRoleSpouse');
     }
 
     public function getAdults()
@@ -128,18 +129,18 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function getChildPeople()
     {
-        return $this->getPeopleByRole("sDirRoleChild");
+        return $this->getPeopleByRole('sDirRoleChild');
     }
 
     public function getOtherPeople()
     {
         $roleIds = array_merge(
-            explode(",", SystemConfig::getValue("sDirRoleHead")),
+            explode(',', SystemConfig::getValue('sDirRoleHead')),
             explode(
-                ",",
-                SystemConfig::getValue("sDirRoleSpouse")
+                ',',
+                SystemConfig::getValue('sDirRoleSpouse')
             ),
-            explode(",", SystemConfig::getValue("sDirRoleChild"))
+            explode(',', SystemConfig::getValue('sDirRoleChild'))
         );
         $foundPeople = [];
         foreach ($this->getPeople() as $person) {
@@ -147,24 +148,27 @@ class Family extends BaseFamily implements PhotoInterface
                 array_push($foundPeople, $person);
             }
         }
+
         return $foundPeople;
     }
 
     private function getPeopleByRole($roleConfigName)
     {
-        $roleIds = explode(",", SystemConfig::getValue($roleConfigName));
+        $roleIds = explode(',', SystemConfig::getValue($roleConfigName));
         $foundPeople = [];
         foreach ($this->getPeople() as $person) {
             if (in_array($person->getFmrId(), $roleIds)) {
                 array_push($foundPeople, $person);
             }
         }
+
         return $foundPeople;
     }
 
     /**
-     * @return array
      * @throws \Propel\Runtime\Exception\PropelException
+     *
+     * @return array
      */
     public function getEmails()
     {
@@ -182,6 +186,7 @@ class Family extends BaseFamily implements PhotoInterface
                 array_push($emails, $email);
             }
         }
+
         return $emails;
     }
 
@@ -193,25 +198,25 @@ class Family extends BaseFamily implements PhotoInterface
         $note->setDateEntered(new DateTime());
 
         switch ($type) {
-            case "create":
+            case 'create':
                 $note->setText(gettext('Created'));
                 $note->setEnteredBy($this->getEnteredBy());
                 $note->setDateEntered($this->getDateEntered());
                 break;
-            case "edit":
+            case 'edit':
                 $note->setText(gettext('Updated'));
                 $note->setEnteredBy($this->getEditedBy());
                 $note->setDateEntered($this->getDateLastEdited());
                 break;
-            case "verify":
+            case 'verify':
                 $note->setText(gettext('Family Data Verified'));
                 $note->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                 break;
-            case "verify-link":
+            case 'verify-link':
                 $note->setText(gettext('Verification email sent'));
                 $note->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                 break;
-            case "verify-URL":
+            case 'verify-URL':
                 $note->setText(gettext('Verification URL created'));
                 $note->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                 break;
@@ -226,8 +231,9 @@ class Family extends BaseFamily implements PhotoInterface
     public function getPhoto()
     {
         if (!$this->photo) {
-            $this->photo = new Photo("Family", $this->getId());
+            $this->photo = new Photo('Family', $this->getId());
         }
+
         return $this->photo;
     }
 
@@ -236,28 +242,33 @@ class Family extends BaseFamily implements PhotoInterface
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
                 $note = new Note();
-                $note->setText(gettext("Profile Image Deleted"));
-                $note->setType("photo");
+                $note->setText(gettext('Profile Image Deleted'));
+                $note->setType('photo');
                 $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                 $note->setPerId($this->getId());
                 $note->save();
+
                 return true;
             }
         }
+
         return false;
     }
+
     public function setImageFromBase64($base64)
     {
         if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
             $note = new Note();
-            $note->setText(gettext("Profile Image uploaded"));
-            $note->setType("photo");
+            $note->setText(gettext('Profile Image uploaded'));
+            $note->setType('photo');
             $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setFamId($this->getId());
             $note->save();
+
             return true;
         }
+
         return false;
     }
 
@@ -273,16 +284,16 @@ class Family extends BaseFamily implements PhotoInterface
             $HoH = $this->getHeadPeople();
         }
         if (count($HoH) == 1) {
-            return $this->getName() . ": " . $HoH[0]->getFirstName() . " - " . $this->getAddress();
+            return $this->getName().': '.$HoH[0]->getFirstName().' - '.$this->getAddress();
         } elseif (count($HoH) > 1) {
             $HoHs = [];
             foreach ($HoH as $person) {
                 array_push($HoHs, $person->getFirstName());
             }
 
-            return $this->getName() . ": " . join(",", $HoHs) . " - " . $this->getAddress();
+            return $this->getName().': '.join(',', $HoHs).' - '.$this->getAddress();
         } else {
-            return $this->getName() . " " . $this->getAddress();
+            return $this->getName().' '.$this->getAddress();
         }
     }
 
@@ -293,7 +304,6 @@ class Family extends BaseFamily implements PhotoInterface
 
     /**
      * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
-     * @return array of Lat/Lng
      */
     public function updateLanLng()
     {
@@ -312,16 +322,18 @@ class Family extends BaseFamily implements PhotoInterface
         $array = parent::toArray();
         $array['Address'] = $this->getAddress();
         $array['FamilyString'] = $this->getFamilyString();
+
         return $array;
     }
 
     public function toSearchArray()
     {
         $searchArray = [
-          "Id" => $this->getId(),
-          "displayName" => $this->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-          "uri" => SystemURLs::getRootPath() . '/v2/family/' . $this->getId()
+            'Id'          => $this->getId(),
+            'displayName' => $this->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')),
+            'uri'         => SystemURLs::getRootPath().'/v2/family/'.$this->getId(),
         ];
+
         return $searchArray;
     }
 
@@ -333,7 +345,7 @@ class Family extends BaseFamily implements PhotoInterface
     public function getProperties()
     {
         return PropertyQuery::create()
-            ->filterByProClass("f")
+            ->filterByProClass('f')
             ->useRecordPropertyQuery()
             ->filterByRecordId($this->getId())
             ->find();
@@ -344,22 +356,24 @@ class Family extends BaseFamily implements PhotoInterface
         $familyEmails = $this->getEmails();
 
         if (empty($familyEmails)) {
-            throw new \Exception(gettext("Family has no emails to use"));
+            throw new \Exception(gettext('Family has no emails to use'));
         }
 
         // delete old tokens
-        TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($this->getId())->delete();
+        TokenQuery::create()->filterByType('verifyFamily')->filterByReferenceId($this->getId())->delete();
 
         // create a new token an send to all emails
         $token = new Token();
-        $token->build("verifyFamily", $this->getId());
+        $token->build('verifyFamily', $this->getId());
         $token->save();
         $email = new FamilyVerificationEmail($familyEmails, $this->getName(), $token);
         if (!$email->send()) {
             LoggerUtils::getAppLogger()->error($email->getError());
+
             throw new \Exception($email->getError());
         }
-        $this->createTimeLineNote("verify-link");
+        $this->createTimeLineNote('verify-link');
+
         return true;
     }
 
@@ -379,12 +393,12 @@ class Family extends BaseFamily implements PhotoInterface
             $firstLastName = $adults[0]->getLastName();
             $secondLastName = $adults[1]->getLastName();
             if ($firstLastName == $secondLastName) {
-                return $adults[0]->getFirstName() . ' & ' . $adults[1]->getFirstName() . ' ' . $firstLastName;
+                return $adults[0]->getFirstName().' & '.$adults[1]->getFirstName().' '.$firstLastName;
             } else {
-                return $adults[0]->getFullName() . ' & ' . $adults[1]->getFullName();
+                return $adults[0]->getFullName().' & '.$adults[1]->getFullName();
             }
         } else {
-            return $this->getName() . ' Family';
+            return $this->getName().' Family';
         }
     }
 
@@ -394,6 +408,7 @@ class Family extends BaseFamily implements PhotoInterface
         foreach ($this->getPeopleSorted() as $person) {
             array_push($names, $person->getFirstName());
         }
-        return implode(", ", $names);
+
+        return implode(', ', $names);
     }
 }

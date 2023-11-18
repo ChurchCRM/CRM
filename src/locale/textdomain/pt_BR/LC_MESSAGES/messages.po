@@ -1276,10 +1276,6 @@ msgid "Edit"
 msgstr "Editar"
 
 #: 
-msgid "Message"
-msgstr "Mensagem"
-
-#: 
 #, fuzzy
 msgid "Event Attendees"
 msgstr "Presentes no evento"
@@ -2464,11 +2460,6 @@ msgstr "Listagem do grupo"
 #, fuzzy
 msgid "Add New Group"
 msgstr "Adicionar um Novo Grupo"
-
-#: 
-#, fuzzy
-msgid "Submit"
-msgstr "Enviar"
 
 #: 
 #, fuzzy
@@ -3700,21 +3691,6 @@ msgstr "Rodar a pesquisa"
 
 #: 
 #, fuzzy
-msgid "Software Registration"
-msgstr "Registro do Software"
-
-#: 
-#, fuzzy
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Por favor, registre sua cópia do ChurchCRM marcando sobre esta informação e pressionar o botão Enviar."
-
-#: 
-#, fuzzy
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Esta informação é utilizada apenas para controlar o uso deste software."
-
-#: 
-#, fuzzy
 msgid "Send"
 msgstr "Enviar"
 
@@ -3839,10 +3815,6 @@ msgid "Permission"
 msgstr "Pessoa"
 
 #: 
-msgid "Base URL"
-msgstr "URL base"
-
-#: 
 #, fuzzy
 msgid "System Settings"
 msgstr "Configurações do Sistema"
@@ -3868,8 +3840,8 @@ msgstr "Confirmação de remoção de usuário"
 
 #: 
 #, fuzzy
-msgid "Please confirm removal of user status from:"
-msgstr "Por favor, confirme a remoção do status de usuário de:"
+msgid "Please confirm removal of user status from"
+msgstr "Por favor, confirme a remoção do status de usuário de"
 
 #: 
 #, fuzzy
@@ -4380,31 +4352,6 @@ msgstr "Texto de Erro"
 #, fuzzy
 msgid "Issue Report!"
 msgstr "Reportar problema!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Digite um Título para o seu relatório de bug/ funcionalidade\n"
-""
-
-#: 
-#, fuzzy
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "O que você estava fazendo na ocasião em que foi informado do bug/ funcionalidade?"
-
-#: 
-#, fuzzy
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Quando você clicar em \"enviar\", um relatório de erro será postado no ChurchCRM GitHub Issue Tracker."
-
-#: 
-#, fuzzy
-msgid "Please do not include any confidential information."
-msgstr "Por favor não inclua nenhuma informação confidencial."
-
-#: 
-#, fuzzy
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Algumas informações gerais sobre o seu sistema vai serão enviadas juntamente com o pedido, tais como a versão do servidor e cabeçalhos do navegador."
 
 #: 
 #, fuzzy
@@ -5261,11 +5208,6 @@ msgstr "Inserir o Nome"
 
 #: 
 #, fuzzy
-msgid "Register Software"
-msgstr "Registrar o Software"
-
-#: 
-#, fuzzy
 msgid "Update Church Info"
 msgstr "Atualizar Informações da Igreja"
 
@@ -5423,16 +5365,6 @@ msgstr "A sua sessão anterior expirou. Por favor faça o login outra vez."
 #, fuzzy
 msgid "Register a new Family"
 msgstr "Registre uma nova família"
-
-#: 
-#, fuzzy
-msgid "If you need to make changes to registration data, go to "
-msgstr "Se você precisar fazer mudanças nos dados de registro, vá para "
-
-#: 
-#, fuzzy
-msgid "Admin->Edit General Settings"
-msgstr "Admin > Configurações Gerais"
 
 #: 
 #, fuzzy
@@ -6567,11 +6499,6 @@ msgstr "Permissão para o usuário criar diretórios"
 #, fuzzy
 msgid "User permission to export CSV files"
 msgstr "Permissão para o usuário exportar arquivos CSV"
-
-#: 
-#, fuzzy
-msgid "User permission to use IST Address Verification"
-msgstr "Permissão para o usuário usar verificação de endereço IST"
 
 #: 
 #, fuzzy
@@ -8187,11 +8114,6 @@ msgstr "Dado do papel perdido"
 
 #: 
 #, fuzzy
-msgid "Let us know that you are using the software"
-msgstr "Nos deixe saber como você está usando o software"
-
-#: 
-#, fuzzy
 msgid "Unable to load verification info"
 msgstr "Não foi possível carregar as informações de verificação"
 
@@ -9241,16 +9163,6 @@ msgstr "Você está certo de que deseja remover os membros do grupo selecionados
 
 #: 
 #, fuzzy
-msgid "Successfully submitted Issue"
-msgstr "Problema submetido com sucesso"
-
-#: 
-#, fuzzy
-msgid "View Issue on GitHub"
-msgstr "Ver problema no GitHub"
-
-#: 
-#, fuzzy
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Deseja  excluir esta pessoa? Isso não pode ser desfeito."
 
@@ -10154,8 +10066,8 @@ msgstr "Novo Calendário"
 
 #: 
 #, fuzzy
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Aviso: bEnableExternalCalendarAPI desativado, mas alguns calendários têm tokens de acesso"
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI desativado, mas alguns calendários têm tokens de acesso"
 
 #: 
 #, fuzzy
@@ -11115,11 +11027,6 @@ msgstr "Versão do Banco de Dados"
 #, fuzzy
 msgid "Web Server"
 msgstr "Servidor Web"
-
-#: 
-#, fuzzy
-msgid "Server Software"
-msgstr "Software do servidor"
 
 #: 
 #, fuzzy

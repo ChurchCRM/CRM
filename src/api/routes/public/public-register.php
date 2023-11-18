@@ -1,7 +1,7 @@
 <?php
 
-use ChurchCRM\Family;
-use ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ORMUtils;
@@ -19,7 +19,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
 {
     $family = new Family();
 
-    $familyMetadata = (object)$request->getParsedBody();
+    $familyMetadata = (object) $request->getParsedBody();
 
     $family->setName($familyMetadata->Name);
     $family->setAddress1($familyMetadata->Address1);
@@ -42,17 +42,17 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
             $person = new Person();
             $person->setEnteredBy(Person::SELF_REGISTER);
             $person->setDateEntered(new \DateTime());
-            $person->setFirstName($personMetaData["firstName"]);
-            $person->setLastName($personMetaData["lastName"]);
-            $person->setGender($personMetaData["gender"]);
-            $person->setFmrId($personMetaData["role"]);
-            $person->setEmail($personMetaData["email"]);
-            $person->setCellPhone($personMetaData["cellPhone"]);
-            $person->setHomePhone($personMetaData["homePhone"]);
-            $person->setWorkPhone($personMetaData["workPhone"]);
-            $person->setFlags($personMetaData["hideAge"] ? "1" : 0);
+            $person->setFirstName($personMetaData['firstName']);
+            $person->setLastName($personMetaData['lastName']);
+            $person->setGender($personMetaData['gender']);
+            $person->setFmrId($personMetaData['role']);
+            $person->setEmail($personMetaData['email']);
+            $person->setCellPhone($personMetaData['cellPhone']);
+            $person->setHomePhone($personMetaData['homePhone']);
+            $person->setWorkPhone($personMetaData['workPhone']);
+            $person->setFlags($personMetaData['hideAge'] ? '1' : 0);
 
-            $birthday = $personMetaData["birthday"];
+            $birthday = $personMetaData['birthday'];
             if (!empty($birthday)) {
                 $birthdayDate = \DateTime::createFromFormat('m/d/Y', $birthday);
                 $person->setBirthDay($birthdayDate->format('d'));
@@ -61,15 +61,16 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
             }
 
             if (!$person->validate()) {
-                LoggerUtils::getAppLogger()->error("Public Reg Error with the following data: " . json_encode($personMetaData, JSON_THROW_ON_ERROR));
-                return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
-                    "failures" => ORMUtils::getValidationErrors($person->getValidationFailures())]);
+                LoggerUtils::getAppLogger()->error('Public Reg Error with the following data: '.json_encode($personMetaData, JSON_THROW_ON_ERROR));
+
+                return $response->withStatus(401)->withJson(['error' => gettext('Validation Error'),
+                    'failures'                                       => ORMUtils::getValidationErrors($person->getValidationFailures())]);
             }
             array_push($familyMembers, $person);
         }
     } else {
-        return $response->withStatus(400)->withJson(["error" => gettext("Validation Error"),
-            "failures" => ORMUtils::getValidationErrors($family->getValidationFailures())]);
+        return $response->withStatus(400)->withJson(['error' => gettext('Validation Error'),
+            'failures'                                       => ORMUtils::getValidationErrors($family->getValidationFailures())]);
     }
 
     $family->save();
@@ -80,21 +81,22 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
     }
 
     $family->save();
+
     return $response->withHeader('Content-Type', 'application/json')->write($family->exportTo('JSON'));
 }
 
 function registerPersonAPI(Request $request, Response $response, array $args)
 {
-
     $person = new Person();
     $person->fromJSON($request->getBody());
     $person->setEnteredBy(Person::SELF_REGISTER);
     $person->setDateEntered(new \DateTime());
     if ($person->validate()) {
         $person->save();
+
         return $response->withHeader('Content-Type', 'application/json')->write($person->exportTo('JSON'));
     }
 
-    return $response->withStatus(400)->withJson(["error" => gettext("Validation Error"),
-        "failures" => ORMUtils::getValidationErrors($person->getValidationFailures())]);
+    return $response->withStatus(400)->withJson(['error' => gettext('Validation Error'),
+        'failures'                                       => ORMUtils::getValidationErrors($person->getValidationFailures())]);
 }

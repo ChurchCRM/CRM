@@ -19,7 +19,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\SystemURLs;
@@ -249,7 +249,7 @@ require 'Include/Header.php';
                     $sRowClass = 'RowColorB';
                 }
 
-                if ($plg_PledgeOrPayment == 'Payment') {
+                if ($plg_PledgeOrPayment === 'Payment') {
                     if ($tog) {
                         $sRowClass = 'PaymentRowColorA';
                     } else {

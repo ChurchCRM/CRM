@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\ListOptionQuery as BaseListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery as BaseListOptionQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'list_lst' table.
@@ -15,9 +15,6 @@ use ChurchCRM\Base\ListOptionQuery as BaseListOptionQuery;
  */
 class ListOptionQuery extends BaseListOptionQuery
 {
-    /**
-     *
-     */
     public function getFamilyRoles()
     {
         return $this

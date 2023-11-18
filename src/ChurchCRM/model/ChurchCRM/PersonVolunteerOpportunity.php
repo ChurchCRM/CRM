@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\PersonVolunteerOpportunity as BasePersonVolunteerOpportunity;
+use ChurchCRM\model\ChurchCRM\Base\PersonVolunteerOpportunity as BasePersonVolunteerOpportunity;
 
 /**
  * Skeleton subclass for representing a row from the 'person2volunteeropp_p2vo' table.
@@ -12,7 +12,6 @@ use ChurchCRM\Base\PersonVolunteerOpportunity as BasePersonVolunteerOpportunity;
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
- *
  */
 class PersonVolunteerOpportunity extends BasePersonVolunteerOpportunity
 {

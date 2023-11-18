@@ -1051,10 +1051,6 @@ msgid "Edit"
 msgstr "تحرير"
 
 #: 
-msgid "Message"
-msgstr "رسالة"
-
-#: 
 msgid "Event Attendees"
 msgstr "حضور الحدث"
 
@@ -2026,10 +2022,6 @@ msgstr "قائمة المجموعة"
 #: 
 msgid "Add New Group"
 msgstr "أضف مجموعة جديدة"
-
-#: 
-msgid "Submit"
-msgstr "تنفيذ"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -3049,18 +3041,6 @@ msgid "Execute Query"
 msgstr "تنفيذ الاستعلام"
 
 #: 
-msgid "Software Registration"
-msgstr "تسجيل البرمجيات"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "الرجاء تسجيل نسختك من ChurchCRM عن طريق فحص على هذه المعلومات والضغط على زر إرسال."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "وتستخدم هذه المعلومات فقط لتعقب استخدام هذا البرنامج."
-
-#: 
 msgid "Send"
 msgstr "ارسال"
 
@@ -3165,10 +3145,6 @@ msgid "Permission"
 msgstr "الإذن"
 
 #: 
-msgid "Base URL"
-msgstr "URL قاعدة"
-
-#: 
 msgid "System Settings"
 msgstr "اعدادات النظام"
 
@@ -3189,8 +3165,9 @@ msgid "User Delete Confirmation"
 msgstr "العضو تأكيد حذف"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "إزالة تأكيد يرجى من حالة المستخدم من:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "إزالة تأكيد يرجى من حالة المستخدم من"
 
 #: 
 msgid "User Editor"
@@ -3623,26 +3600,6 @@ msgstr "نص الخطأ"
 #: 
 msgid "Issue Report!"
 msgstr "إصدار تقرير!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "أدخل عنوان لعلة / تقرير ميزة الخاص بك"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "ماذا كنت تفعل عندما لاحظت الفرصة علة / الميزة؟"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "عند النقر فوق \"إرسال\"، سيتم نشر تقرير عن خطأ إلى ChurchCRM جيثب العدد تعقب."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "يرجى عدم تضمين أي معلومات سرية."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "وسيتم تقديم بعض المعلومات العامة عن النظام الخاص جنبا إلى جنب مع طلب مثل Server الإصدار ورؤوس المتصفح."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -4347,10 +4304,6 @@ msgid "Enter Name"
 msgstr "ادخل الاسم"
 
 #: 
-msgid "Register Software"
-msgstr "سجل البرمجيات"
-
-#: 
 msgid "Update Church Info"
 msgstr "تحديث معلومات كنيسة"
 
@@ -4477,14 +4430,6 @@ msgstr "انتهت مهلة الجلسة السابقة الخاص بها. ال�
 #: 
 msgid "Register a new Family"
 msgstr "تسجيل جديد للأسرة"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "إذا كنت بحاجة إلى إجراء تغييرات على بيانات التسجيل، انتقل إلى"
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "المسؤول-> تحرير إعدادات عامة"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5400,10 +5345,6 @@ msgstr "إذن لإنشاء الدلائل العضو"
 #: 
 msgid "User permission to export CSV files"
 msgstr "إذن المستخدم إلى ملفات CSV تصدير"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "إذن المستخدم لاستخدام IST التحقق من العنوان"
 
 #: 
 msgid "Allow user to add new event"
@@ -6698,10 +6639,6 @@ msgid "Missing Role Data"
 msgstr "في عداد المفقودين دور البيانات"
 
 #: 
-msgid "Let us know that you are using the software"
-msgstr "واسمحوا لنا أن نعرف أن كنت تستخدم البرمجيات"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "غير قادر على تحميل معلومات التحقق"
 
@@ -7558,14 +7495,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "هل أنت متأكد أنك تريد إزالة أعضاء المجموعة المختارة؟"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "العدد قدمت بنجاح"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "عرض العدد على جيثب"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "هل تريد حذف هذا الشخص؟ هذا لا يمكن التراجع عنها."
 
@@ -8286,8 +8215,9 @@ msgid "New Calendar"
 msgstr "التقويم الجديد"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "تحذير: bEnableExternalCalendarAPI تعطيل، ولكن بعض التقاويم على رموز الوصول المميزة"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI تعطيل، ولكن بعض التقاويم على رموز الوصول المميزة"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9063,10 +8993,6 @@ msgstr "إصدار خادم قاعدة البيانات"
 #: 
 msgid "Web Server"
 msgstr "قاعدة بيانات للانترنت"
-
-#: 
-msgid "Server Software"
-msgstr "برنامج الخادم"
 
 #: 
 msgid "Email Information"

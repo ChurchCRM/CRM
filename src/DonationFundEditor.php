@@ -14,8 +14,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\DonationFund;
-use ChurchCRM\DonationFundQuery;
+use ChurchCRM\model\ChurchCRM\DonationFund;
+use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;

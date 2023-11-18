@@ -13,11 +13,10 @@ namespace ChurchCRM\Reports;
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
@@ -54,16 +53,16 @@ if (!empty($_POST['classList'])) {
         while ($aRow = mysqli_fetch_array($rsClassifications)) {
             extract($aRow);
             if (in_array($lst_OptionID, $classList)) {
-                if ($inClassList == '(') {
+                if ($inClassList === '(') {
                     $inClassList .= $lst_OptionID;
                 } else {
-                    $inClassList .= ',' . $lst_OptionID;
+                    $inClassList .= ','.$lst_OptionID;
                 }
             } else {
-                if ($notInClassList == '(') {
+                if ($notInClassList === '(') {
                     $notInClassList .= $lst_OptionID;
                 } else {
-                    $notInClassList .= ',' . $lst_OptionID;
+                    $notInClassList .= ','.$lst_OptionID;
                 }
             }
         }
@@ -72,7 +71,7 @@ if (!empty($_POST['classList'])) {
     }
 
     // all classes were selected. this should behave as if no filter classes were specified
-    if ($notInClassList == '()') {
+    if ($notInClassList === '()') {
         unset($classList);
     }
 }
@@ -147,9 +146,9 @@ if (!empty($_POST['family'])) {
 }
 
 if ($classList[0]) {
-    $q = ' plg_famID IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN ' . $inClassList . ')';
+    $q = ' plg_famID IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN '.$inClassList.')';
 
-    $sSQL .= ' AND' . $q;
+    $sSQL .= ' AND'.$q;
 }
 
 // Get Criteria string
@@ -170,9 +169,9 @@ if ($iCountRows < 1) {
 // Create Giving Report -- PDF
 // ***************************
 
-if ($output == 'pdf') {
+if ($output === 'pdf') {
     // Set up bottom border values
-    if ($remittance == 'yes') {
+    if ($remittance === 'yes') {
         $bottom_border1 = 134;
         $bottom_border2 = 180;
     } else {
@@ -197,7 +196,7 @@ if ($output == 'pdf') {
             global $letterhead, $sDateStart, $sDateEnd, $iDepID;
             $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
             if (SystemConfig::getValue('bUseDonationEnvelopes')) {
-                $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope:') . $fam_envelope);
+                $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope:').$fam_envelope);
                 $curY += SystemConfig::getValue('incrementY');
             }
             $curY += 2 * SystemConfig::getValue('incrementY');
@@ -210,9 +209,9 @@ if ($output == 'pdf') {
             if ($sDateStart == $sDateEnd) {
                 $DateString = date('F j, Y', strtotime($sDateStart));
             } else {
-                $DateString = date('M j, Y', strtotime($sDateStart)) . ' - ' . date('M j, Y', strtotime($sDateEnd));
+                $DateString = date('M j, Y', strtotime($sDateStart)).' - '.date('M j, Y', strtotime($sDateEnd));
             }
-            $blurb = SystemConfig::getValue('sTaxReport1') . ' ' . $DateString . '.';
+            $blurb = SystemConfig::getValue('sTaxReport1').' '.$DateString.'.';
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
             $curY += 2 * SystemConfig::getValue('incrementY');
 
@@ -229,19 +228,19 @@ if ($output == 'pdf') {
             $blurb = SystemConfig::getValue('sTaxReport3');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
             $curY += 3 * SystemConfig::getValue('incrementY');
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely') . ',');
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
             $curY += 4 * SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxSigner'));
 
-            if ($remittance == 'yes') {
+            if ($remittance === 'yes') {
                 // Add remittance slip
                 $curY = 194;
                 $curX = 60;
                 $this->writeAt($curX, $curY, gettext('Please detach this slip and mail with your next gift.'));
                 $curY += (1.5 * SystemConfig::getValue('incrementY'));
-                $church_mailing = gettext('Please mail you next gift to ') . SystemConfig::getValue('sChurchName') . ', '
-                    . SystemConfig::getValue('sChurchAddress') . ', ' . SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  '
-                    . SystemConfig::getValue('sChurchZip') . gettext(', Phone: ') . SystemConfig::getValue('sChurchPhone');
+                $church_mailing = gettext('Please mail you next gift to ').SystemConfig::getValue('sChurchName').', '
+                    .SystemConfig::getValue('sChurchAddress').', '.SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '
+                    .SystemConfig::getValue('sChurchZip').gettext(', Phone: ').SystemConfig::getValue('sChurchPhone');
                 $this->SetFont('Times', 'I', 10);
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, $church_mailing);
                 $this->SetFont('Times', '', 10);
@@ -256,7 +255,7 @@ if ($output == 'pdf') {
                     $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Address2);
                     $curY += SystemConfig::getValue('incrementY');
                 }
-                $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
+                $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City.', '.$fam_State.'  '.$fam_Zip);
                 $curY += SystemConfig::getValue('incrementY');
                 if ($fam_Country != '' && $fam_Country != 'USA' && $fam_Country != 'United States') {
                     $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Country);
@@ -270,7 +269,7 @@ if ($output == 'pdf') {
                     $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, SystemConfig::getValue('sChurchAddress'));
                     $curY += SystemConfig::getValue('incrementY');
                 }
-                $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  ' . SystemConfig::getValue('sChurchZip'));
+                $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
                 $curY += SystemConfig::getValue('incrementY');
                 if ($fam_Country != '' && $fam_Country != 'USA' && $fam_Country != 'United States') {
                     $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, $fam_Country);
@@ -313,19 +312,19 @@ if ($output == 'pdf') {
             $pdf->Cell(20, $summaryIntervalY / 2, ' ', 0, 1);
             $pdf->Cell(95, $summaryIntervalY, ' ');
             $pdf->Cell(50, $summaryIntervalY, 'Total Payments:');
-            $totalAmountStr = '$' . number_format($totalAmount, 2);
+            $totalAmountStr = '$'.number_format($totalAmount, 2);
             $pdf->SetFont('Courier', '', 9);
             $pdf->Cell(25, $summaryIntervalY, $totalAmountStr, 0, 1, 'R');
             $pdf->SetFont('Times', 'B', 10);
             $pdf->Cell(95, $summaryIntervalY, ' ');
             $pdf->Cell(50, $summaryIntervalY, 'Goods and Services Rendered:');
-            $totalAmountStr = '$' . number_format($totalNonDeductible, 2);
+            $totalAmountStr = '$'.number_format($totalNonDeductible, 2);
             $pdf->SetFont('Courier', '', 9);
             $pdf->Cell(25, $summaryIntervalY, $totalAmountStr, 0, 1, 'R');
             $pdf->SetFont('Times', 'B', 10);
             $pdf->Cell(95, $summaryIntervalY, ' ');
             $pdf->Cell(50, $summaryIntervalY, 'Tax-Deductible Contribution:');
-            $totalAmountStr = '$' . number_format($totalAmount - $totalNonDeductible, 2);
+            $totalAmountStr = '$'.number_format($totalAmount - $totalNonDeductible, 2);
             $pdf->SetFont('Courier', '', 9);
             $pdf->Cell(25, $summaryIntervalY, $totalAmountStr, 0, 1, 'R');
             $curY = $pdf->GetY();
@@ -333,7 +332,7 @@ if ($output == 'pdf') {
 
             if ($curY > $bottom_border1) {
                 $pdf->addPage();
-                if ($letterhead == 'none') {
+                if ($letterhead === 'none') {
                     // Leave blank space at top on all pages for pre-printed letterhead
                     $curY = 20 + ($summaryIntervalY * 3) + 25;
                     $pdf->SetY($curY);
@@ -373,15 +372,15 @@ if ($output == 'pdf') {
         }
         // Format Data
         if (strlen($plg_CheckNo) > 8) {
-            $plg_CheckNo = '...' . mb_substr($plg_CheckNo, -8, 8);
+            $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
         } else {
             $plg_CheckNo .= '    ';
         }
         if (strlen($fun_Name) > 25) {
-            $fun_Name = mb_substr($fun_Name, 0, 25) . '...';
+            $fun_Name = mb_substr($fun_Name, 0, 25).'...';
         }
         if (strlen($plg_comment) > 25) {
-            $plg_comment = mb_substr($plg_comment, 0, 25) . '...';
+            $plg_comment = mb_substr($plg_comment, 0, 25).'...';
         }
         // Print Gift Data
         $pdf->SetFont('Times', '', 10);
@@ -399,7 +398,7 @@ if ($output == 'pdf') {
 
         if ($curY > $bottom_border2) {
             $pdf->addPage();
-            if ($letterhead == 'none') {
+            if ($letterhead === 'none') {
                 // Leave blank space at top on all pages for pre-printed letterhead
                 $curY = 20 + ($summaryIntervalY * 3) + 25;
                 $pdf->SetY($curY);
@@ -420,22 +419,23 @@ if ($output == 'pdf') {
 
     // Finish Last Report
     $pdf->SetFont('Times', 'B', 10);
+    $pdf->addPage();
     $pdf->Cell(20, $summaryIntervalY / 2, ' ', 0, 1);
     $pdf->Cell(95, $summaryIntervalY, ' ');
     $pdf->Cell(50, $summaryIntervalY, 'Total Payments:');
-    $totalAmountStr = '$' . number_format($totalAmount, 2);
+    $totalAmountStr = '$'.number_format($totalAmount, 2);
     $pdf->SetFont('Courier', '', 9);
     $pdf->Cell(25, $summaryIntervalY, $totalAmountStr, 0, 1, 'R');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->Cell(95, $summaryIntervalY, ' ');
     $pdf->Cell(50, $summaryIntervalY, 'Goods and Services Rendered:');
-    $totalAmountStr = '$' . number_format($totalNonDeductible, 2);
+    $totalAmountStr = '$'.number_format($totalNonDeductible, 2);
     $pdf->SetFont('Courier', '', 9);
     $pdf->Cell(25, $summaryIntervalY, $totalAmountStr, 0, 1, 'R');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->Cell(95, $summaryIntervalY, ' ');
     $pdf->Cell(50, $summaryIntervalY, 'Tax-Deductible Contribution:');
-    $totalAmountStr = '$' . number_format($totalAmount - $totalNonDeductible, 2);
+    $totalAmountStr = '$'.number_format($totalAmount - $totalNonDeductible, 2);
     $pdf->SetFont('Courier', '', 9);
     $pdf->Cell(25, $summaryIntervalY, $totalAmountStr, 0, 1, 'R');
     $curY = $pdf->GetY();
@@ -443,7 +443,7 @@ if ($output == 'pdf') {
     if ($cnt > 0) {
         if ($curY > $bottom_border1) {
             $pdf->addPage();
-            if ($letterhead == 'none') {
+            if ($letterhead === 'none') {
                 // Leave blank space at top on all pages for pre-printed letterhead
                 $curY = 20 + ($summaryIntervalY * 3) + 25;
                 $pdf->SetY($curY);
@@ -458,14 +458,14 @@ if ($output == 'pdf') {
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
     if (SystemConfig::getValue('iPDFOutputType') == 1) {
-        $pdf->Output('TaxReport' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+        $pdf->Output('TaxReport'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
     } else {
         $pdf->Output();
     }
 
     // Output a text file
     // ##################
-} elseif ($output == 'csv') {
+} elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
     $eol = "\r\n";
@@ -475,23 +475,23 @@ if ($output == 'pdf') {
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {
-        $buffer .= trim($heading) . $delimiter;
+        $buffer .= trim($heading).$delimiter;
     }
     // Remove trailing delimiter and add eol
-    $buffer = mb_substr($buffer, 0, -1) . $eol;
+    $buffer = mb_substr($buffer, 0, -1).$eol;
 
     // Add data
     while ($row = mysqli_fetch_row($rsReport)) {
         foreach ($row as $field) {
             $field = str_replace($delimiter, ' ', $field);    // Remove any delimiters from data
-            $buffer .= $field . $delimiter;
+            $buffer .= $field.$delimiter;
         }
         // Remove trailing delimiter and add eol
-        $buffer = mb_substr($buffer, 0, -1) . $eol;
+        $buffer = mb_substr($buffer, 0, -1).$eol;
     }
 
     // Export file
     header('Content-type: text/x-csv');
-    header('Content-Disposition: attachment; filename=ChurchCRM-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
+    header('Content-Disposition: attachment; filename=ChurchCRM-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
     echo $buffer;
 }

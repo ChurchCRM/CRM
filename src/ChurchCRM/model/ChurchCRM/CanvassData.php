@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\CanvassData as BaseCanvassData;
+use ChurchCRM\model\ChurchCRM\Base\CanvassData as BaseCanvassData;
 
 /**
  * Skeleton subclass for representing a row from the 'canvassdata_can' table.

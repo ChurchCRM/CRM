@@ -19,7 +19,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
@@ -385,7 +385,7 @@ if ($fam_ID) {
             <td>
         <?= $sFamRole ?>&nbsp;
             </td>
-      <td><?= MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) ?></td>
+      <td><?= MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear) ?></td>
         </tr>
         <?php
     }

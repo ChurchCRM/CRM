@@ -24,8 +24,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
@@ -78,19 +78,19 @@ while ($aRow = mysqli_fetch_array($rsList)) {
                 fam_HomePhone,
                 fam_DateEntered,
                 fam_EnteredBy)
-            VALUES ('" .
-                $per_LastName . "','" .
-                $per_Address1 . "','" .
-                $per_Address2 . "','" .
-                $per_City . "','" .
-                $per_State . "','" .
-                $per_Zip . "','" .
-                $per_Country . "','" .
-                $per_HomePhone . "'," .
-                'NOW()' . ",'" .
-                $curUserId . "')";
+            VALUES ('".
+                $per_LastName."','".
+                $per_Address1."','".
+                $per_Address2."','".
+                $per_City."','".
+                $per_State."','".
+                $per_Zip."','".
+                $per_Country."','".
+                $per_HomePhone."',".
+                'NOW()'.",'".
+                $curUserId."')";
 
-    echo '<br>' . $sSQL;
+    echo '<br>'.$sSQL;
     // RunQuery to add family record
     RunQuery($sSQL);
     $iFamilyID++; // increment family ID
@@ -109,20 +109,20 @@ while ($aRow = mysqli_fetch_array($rsList)) {
     echo '<br><br>';
 
     // Now update person record
-    $sSQL = 'UPDATE person_per ' .
-            "SET per_fam_ID='$iFamilyID'," .
-            '    per_Address1=NULL,' .
-            '    per_Address2=NULL,' .
-            '    per_City=NULL,' .
-            '    per_State=NULL,' .
-            '    per_Zip=NULL,' .
-            '    per_Country=NULL,' .
-            '    per_HomePhone=NULL,' .
-            '    per_DateLastEdited=NOW(),' .
-            "    per_EditedBy='$curUserId' " .
+    $sSQL = 'UPDATE person_per '.
+            "SET per_fam_ID='$iFamilyID',".
+            '    per_Address1=NULL,'.
+            '    per_Address2=NULL,'.
+            '    per_City=NULL,'.
+            '    per_State=NULL,'.
+            '    per_Zip=NULL,'.
+            '    per_Country=NULL,'.
+            '    per_HomePhone=NULL,'.
+            '    per_DateLastEdited=NOW(),'.
+            "    per_EditedBy='$curUserId' ".
             "WHERE per_ID='$per_ID'";
 
-    echo '<br>' . $sSQL;
+    echo '<br>'.$sSQL;
     RunQuery($sSQL);
 
     echo '<br><br><br>';
@@ -136,7 +136,7 @@ while ($aRow = mysqli_fetch_array($rsList)) {
 }
 echo '<br><br>';
 
-echo '<a href="ConvertIndividualToFamily.php">' . gettext('Convert Next') . '</a><br><br>';
-echo '<a href="ConvertIndividualToFamily.php?all=true">' . gettext('Convert All') . '</a><br>';
+echo '<a href="ConvertIndividualToFamily.php">'.gettext('Convert Next').'</a><br><br>';
+echo '<a href="ConvertIndividualToFamily.php?all=true">'.gettext('Convert All').'</a><br>';
 
 require 'Include/Footer.php';

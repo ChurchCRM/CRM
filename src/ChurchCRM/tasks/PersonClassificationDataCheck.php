@@ -3,7 +3,7 @@
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonClassificationDataCheck implements TaskInterface
@@ -31,16 +31,16 @@ class PersonClassificationDataCheck implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/v2/people?Classification=0';
+        return SystemURLs::getRootPath().'/v2/people?Classification=0';
     }
 
     public function getTitle(): string
     {
-        return gettext('Missing Classification Data') . " (" . $this->count . ")";
+        return gettext('Missing Classification Data').' ('.$this->count.')';
     }
 
     public function getDesc(): string
     {
-        return gettext("Missing Classification Data for Some People");
+        return gettext('Missing Classification Data for Some People');
     }
 }

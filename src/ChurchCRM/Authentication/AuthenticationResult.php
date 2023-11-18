@@ -1,13 +1,11 @@
 <?php
 
-namespace ChurchCRM\Authentication {
+namespace ChurchCRM\Authentication;
 
-    class AuthenticationResult
-    {
-        public $isAuthenticated;
-        public $nextStepURL;
-        public $message;
-        public $preventRedirect;
-    }
-
+class AuthenticationResult
+{
+    public $isAuthenticated;
+    public $nextStepURL;
+    public $message;
+    public $preventRedirect;
 }

@@ -1053,11 +1053,6 @@ msgid "Edit"
 msgstr "Bewerken"
 
 #: 
-#, fuzzy
-msgid "Message"
-msgstr "Bericht"
-
-#: 
 msgid "Event Attendees"
 msgstr "Deelnemers activiteit"
 
@@ -2030,10 +2025,6 @@ msgstr "Groepen"
 #: 
 msgid "Add New Group"
 msgstr "Groep toevoegen"
-
-#: 
-msgid "Submit"
-msgstr "Verstuur"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -3058,18 +3049,6 @@ msgid "Execute Query"
 msgstr "Execute Query"
 
 #: 
-msgid "Software Registration"
-msgstr "Software registratie"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Registreer aub uw exemplaar van het KerkInfo pakket door het invullen van de gegevens en het indrukken van de verstuur knop.  "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Deze gegevens wordt alleen gebruikt om het gebruik van dit pakket te registreren.  "
-
-#: 
 msgid "Send"
 msgstr "Verstuur"
 
@@ -3174,10 +3153,6 @@ msgid "Permission"
 msgstr "Toestemming"
 
 #: 
-msgid "Base URL"
-msgstr "Basis URL"
-
-#: 
 msgid "System Settings"
 msgstr "Systeem instellingen"
 
@@ -3198,8 +3173,9 @@ msgid "User Delete Confirmation"
 msgstr "Bevestiging Verwijderen Gebruiker"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Bevestig aub verwijdering van gebruikers status van:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Bevestig aub verwijdering van gebruikers status van"
 
 #: 
 msgid "User Editor"
@@ -3633,26 +3609,6 @@ msgstr "Fout tekst"
 #: 
 msgid "Issue Report!"
 msgstr "Stuur het overzicht."
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Voer een titel in voor uw bug- / functierapport"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Wat was je aan het doen toen je de bug / feature-mogelijkheid zag?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Wanneer u op \"submit\" klikt, wordt een foutenrapport naar de ChurchCRM GitHub Issue-tracker gepost."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Geen vertrouwelijke gegevens toevoegen, svp. "
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Er wordt een aantal algemene informatie over uw systeem ingediend samen met de aanvraag, zoals serverversie en browserheaders."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -4361,10 +4317,6 @@ msgid "Enter Name"
 msgstr "Registreer naam"
 
 #: 
-msgid "Register Software"
-msgstr "Registreer de software"
-
-#: 
 msgid "Update Church Info"
 msgstr "Vernieuw gegevens"
 
@@ -4491,14 +4443,6 @@ msgstr "Uw vorige sessie is verlopen. Log alsjeblieft nogmaals in."
 #: 
 msgid "Register a new Family"
 msgstr "Registreer een nieuw gezin"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Als wijzigingen nodig zijn van uw registratie gegevens, ga dan naar"
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Beheer -> wijzig de algemene gegevens"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5420,10 +5364,6 @@ msgstr "Gebruikersrechten om mappen te maken"
 #: 
 msgid "User permission to export CSV files"
 msgstr "Gebruikersrechten om CSV-bestanden te exporteren"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Gebruikerstoestemming om IST-adresverificatie te gebruiken"
 
 #: 
 msgid "Allow user to add new event"
@@ -6718,10 +6658,6 @@ msgid "Missing Role Data"
 msgstr "Ontbrekende rolgegevens"
 
 #: 
-msgid "Let us know that you are using the software"
-msgstr "Laat ons weten dat je de software gebruikt"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Kan verificatiegegevens niet laden"
 
@@ -7578,14 +7514,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "Weet je zeker dat je de geselecteerde groepsleden wilt verwijderen?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Probleem ingediend"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Bekijk probleem op GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Wil je deze persoon verwijderen? Dit kan niet ongedaan gemaakt worden."
 
@@ -8306,8 +8234,9 @@ msgid "New Calendar"
 msgstr "Nieuwe kalender"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Waarschuwing: bEnable External Calendar API uitgeschakeld, maar sommige agenda's hebben toegangstokens"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnable External Calendar API uitgeschakeld, maar sommige agenda's hebben toegangstokens"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9085,10 +9014,6 @@ msgstr "Databaseserver versie"
 #: 
 msgid "Web Server"
 msgstr "Web Server"
-
-#: 
-msgid "Server Software"
-msgstr "Serversoftware"
 
 #: 
 msgid "Email Information"

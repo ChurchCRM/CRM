@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Config;
+use ChurchCRM\model\ChurchCRM\Config;
 
 class ConfigItem
 {
@@ -15,6 +15,8 @@ class ConfigItem
     private $url;
     private $data;
     private $dbConfigItem;
+    private $section = null;
+    private $category = null;
 
     public function __construct($id, $name, $type, $default, $tooltip = '', $url = '', $data = '')
     {
@@ -42,7 +44,6 @@ class ConfigItem
         return $this->url;
     }
 
-
     public function setDBConfigObject($dbConfigItem)
     {
         $this->dbConfigItem = $dbConfigItem;
@@ -51,7 +52,7 @@ class ConfigItem
 
     public function getDBConfigObject()
     {
-        return $this->dbConfigItem ;
+        return $this->dbConfigItem;
     }
 
     public function getValue()
@@ -77,14 +78,14 @@ class ConfigItem
                 $this->dbConfigItem->delete();
             }
         } else {
-          //if the value is being set to a non-default value
-            if (! isset($this->dbConfigItem)) {
-              //create the item if it doesnt exist
+            //if the value is being set to a non-default value
+            if (!isset($this->dbConfigItem)) {
+                //create the item if it doesnt exist
                 $this->dbConfigItem = new Config();
                 $this->dbConfigItem->setId($this->getId());
                 $this->dbConfigItem->setName($this->getName());
             }
-          //set the values, and save it
+            //set the values, and save it
             $this->dbConfigItem->setValue($value);
             $this->dbConfigItem->save();
             $this->value = $value;
@@ -95,7 +96,6 @@ class ConfigItem
     {
         return $this->default;
     }
-
 
     public function getType()
     {

@@ -17,7 +17,7 @@ require_once 'Functions.php';
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\MenuConfigQuery;
+use ChurchCRM\model\ChurchCRM\MenuConfigQuery;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\PHPToMomentJSConverter;
 use ChurchCRM\Bootstrapper;
@@ -27,48 +27,31 @@ function Header_modals()
     ?>
     <!-- Issue Report Modal -->
     <div id="IssueReportModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" id="bugForm">
                 <form name="issueReport">
                     <input type="hidden" name="pageName" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><?= gettext('Issue Report!') ?></h4>
+                        <h5 class="modal-title"><?= gettext('Issue Report!') ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                        </button>
                     </div>
                     <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xl-3">
-                                    <label
-                                            for="issueTitle"><?= gettext('Enter a Title for your bug / feature report') ?>
-                                        : </label>
-                                </div>
-                                <div class="col-xl-3">
-                                    <input type="text" name="issueTitle">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-3">
-                                    <label
-                                            for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
-                                </div>
-                                <div class="col-xl-3">
-                                    <textarea rows="10" cols="50" name="issueDescription"></textarea>
-                                </div>
-                            </div>
+                        <div class="alert alert-info alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h5><i class="icon fas fa-info"></i>Alert!</h5>
+                            <?= gettext('When you click "Submit to GitHub" you will be directed to GitHub issues page with your system info prefilled.') ?> <?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?>
                         </div>
-                        <ul>
-                            <li><?= gettext('When you click "submit," an error report will be posted to the ChurchCRM GitHub Issue tracker.') ?></li>
-                            <li><?= gettext('Please do not include any confidential information.') ?></li>
-                            <li><?= gettext('Some general information about your system will be submitted along with the request such as Server version and browser headers.') ?></li>
-                            <li><?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?></li>
-                        </ul>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="submitIssue"><?= gettext('Submit') ?></button>
+                        <button type="button" class="btn btn-primary" id="submitIssue"><?= gettext('Submit to GitHub') ?></button>
                     </div>
                 </form>
+            </div>
+            <div id="bug-content">
+                test
             </div>
         </div>
     </div>

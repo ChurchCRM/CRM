@@ -1,9 +1,10 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\KioskDevice as BaseKioskDevice;
-use ChurchCRM\Map\ListOptionTableMap;
+use ChurchCRM\dto\KioskAssignmentTypes;
+use ChurchCRM\model\ChurchCRM\Base\KioskDevice as BaseKioskDevice;
+use ChurchCRM\Utils\MiscUtils;
 
 class KioskDevice extends BaseKioskDevice
 {
@@ -32,17 +33,16 @@ class KioskDevice extends BaseKioskDevice
         $assignmentJSON = null;
         $assignment = $this->getActiveAssignment();
 
-        if (isset($assignment) && $assignment->getAssignmentType() == dto\KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {
+        if (isset($assignment) && $assignment->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {
             $assignment->getEvent();
             $assignmentJSON = $assignment->toJSON();
         }
 
-
         return [
-        "Accepted" => $this->getAccepted(),
-        "Name" => $this->getName(),
-        "Assignment" => $assignmentJSON,
-        "Commands" => $this->getPendingCommands()
+            'Accepted'   => $this->getAccepted(),
+            'Name'       => $this->getName(),
+            'Assignment' => $assignmentJSON,
+            'Commands'   => $this->getPendingCommands(),
         ];
     }
 
@@ -51,28 +51,32 @@ class KioskDevice extends BaseKioskDevice
         $commands = parent::getPendingCommands();
         $this->setPendingCommands(null);
         $this->save();
+
         return $commands;
     }
 
     public function reloadKiosk()
     {
-        $this->setPendingCommands("Reload");
+        $this->setPendingCommands('Reload');
         $this->save();
+
         return true;
     }
 
     public function identifyKiosk()
     {
-        $this->setPendingCommands("Identify");
+        $this->setPendingCommands('Identify');
         $this->save();
+
         return true;
     }
 
     public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
     {
-        if (!isset($this->Name)) {
-            $this->setName(Utils\MiscUtils::randomWord());
+        if (!isset($this->getName())) {
+            $this->setName(MiscUtils::randomWord());
         }
+
         return true;
     }
 }

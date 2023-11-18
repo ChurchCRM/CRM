@@ -20,7 +20,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
@@ -245,7 +245,7 @@ require 'Include/Header.php';
                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) {
                             ?>
                             <a href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
-                                <i class="fas fa-paper-plane"></i></a>
+                                <i class="fa fa-paper-plane"></i></a>
                             <?php
                         } ?>
                     </td>

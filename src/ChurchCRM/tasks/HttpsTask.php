@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Tasks;
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 
 class HttpsTask implements TaskInterface
 {

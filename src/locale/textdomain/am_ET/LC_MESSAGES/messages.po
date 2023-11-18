@@ -1052,10 +1052,6 @@ msgid "Edit"
 msgstr "አርትዕ"
 
 #: 
-msgid "Message"
-msgstr "መልእክት"
-
-#: 
 msgid "Event Attendees"
 msgstr "የክስተት ተሳታፊዎች"
 
@@ -2027,10 +2023,6 @@ msgstr "የቡድን ዝርዝር"
 #: 
 msgid "Add New Group"
 msgstr "አዲስ ቡድን ያክሉ"
-
-#: 
-msgid "Submit"
-msgstr "አስገባ"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -3050,18 +3042,6 @@ msgid "Execute Query"
 msgstr "መጠይቁን አስኪድ"
 
 #: 
-msgid "Software Registration"
-msgstr "የሶፍትዌር ምዝገባ"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "እባክዎ የራስዎችን የChurchCRM ቅጂ፤ ይህንን መረጃ በማጣራት ያስመዝግቡ  እና ላክ የሚለውን ቁልፍ ይጫኑ።  "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "ይህ መረጃ የዚህን ሶፍትዌር አጠቃቀም ለመከታተል ብቻ ጥቅም ላይ ይውላል።  "
-
-#: 
 msgid "Send"
 msgstr "ላክ"
 
@@ -3166,10 +3146,6 @@ msgid "Permission"
 msgstr "ፍቃድ"
 
 #: 
-msgid "Base URL"
-msgstr "ዋናው የድህረገጽ አድራሻ"
-
-#: 
 msgid "System Settings"
 msgstr "የሶፍርዌሩ ቅንብር"
 
@@ -3190,8 +3166,9 @@ msgid "User Delete Confirmation"
 msgstr "የተጠቃሚ ሰርዝ ማረጋገጫ"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "እባክዎ ተጠቃሚው ከሚከተለው መወገዱን ያረጋግጡ:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "እባክዎ ተጠቃሚው ከሚከተለው መወገዱን ያረጋግጡ"
 
 #: 
 msgid "User Editor"
@@ -3624,26 +3601,6 @@ msgstr "የስህተት ጽሑፍ "
 #: 
 msgid "Issue Report!"
 msgstr "የተዘጋጀ ሪፖርት"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "ለእርስዎ የሳንካ / ባህሪ ሪፖርት ርዕስ ያስገቡ"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "የሳንካ/የባህሪ ዕድሉን ሲመለከቱ ምን እየሰሩ ነበር?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "\"አስገባ\" ን ጠቅ ሲያደርጉ የስህተት ሪፖርት ወደ ቤተክርስትያን CRM GitHub ጉዳይ መከታተያ ይለጠፋል"
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "እባክዎ ማንኛውንም ሚስጥራዊ መረጃ አያካትቱ"
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "ስለ ስርዓትዎ አንዳንድ አጠቃላይ መረጃዎች እንደ የአገልጋይ ስሪት እና የአሳሽ ራስጌዎች ካሉ ጥያቄዎች ጋር አብረው ይመጣሉ"
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -4346,10 +4303,6 @@ msgid "Enter Name"
 msgstr "ስም አስገባ"
 
 #: 
-msgid "Register Software"
-msgstr "ሶፍትዌር ይመዝገቡ"
-
-#: 
 msgid "Update Church Info"
 msgstr "የቤተ ክርስቲያን መረጃን አዘምን"
 
@@ -4476,14 +4429,6 @@ msgstr "ያለፈው ክፍለ ጊዜዎ አልቋል. እባክዎ እንደገ
 #: 
 msgid "Register a new Family"
 msgstr "አዲስ ቤተሰብ ይመዝገቡ"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "በምዝገባ ውሂብ ላይ ለውጦችን ማድረግ ከፈለጉ "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "አስተዳዳሪ-> አጠቃላይ ቅንብሮችን ያርትዑ"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5400,10 +5345,6 @@ msgstr "ማውጫዎችን ለመፍጠር የተጠቃሚ ፍቃድ"
 #: 
 msgid "User permission to export CSV files"
 msgstr "የCSV ፋይሎችን ወደ ውጭ ለመላክ የተጠቃሚ ፍቃድ"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "የተጠቃሚ ፍቃድ IST አድራሻ ማረጋገጫን ለመጠቀም"
 
 #: 
 msgid "Allow user to add new event"
@@ -6699,10 +6640,6 @@ msgid "Missing Role Data"
 msgstr "የሚና ዳታ ይጎድላል"
 
 #: 
-msgid "Let us know that you are using the software"
-msgstr "ሶፍትዌሩን እየተጠቀሙ እንደሆነ ያሳውቁን"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "የማረጋገጫ መረጃን ማንበብ አልተቻለም"
 
@@ -7559,14 +7496,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "እርግጠኛ ነዎት የተመረጡትን የቡድን አባላት ማስወገድ ይፈልጋሉ?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "ጉዳዩ በተሳካ ሁኔታ ገብቷል"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "በ GitHub ላይ ጉዳዩን ይመልከቱ"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "ይህን ሰው መሰረዝ ይፈልጋሉ? ይህ ሊቀለበስ አይችልም።"
 
@@ -8288,8 +8217,9 @@ msgid "New Calendar"
 msgstr "አዲስ ቀን መቁጠሪያ"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "ማስጠንቀቂያ፡- bEnableExternalCalendarAPI ተሰናክሏል፣ነገር ግን አንዳንድ የቀን መቁጠሪያዎች የመድረሻ መተኪያዎች አሏቸው"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI ተሰናክሏል፣ነገር ግን አንዳንድ የቀን መቁጠሪያዎች የመድረሻ መተኪያዎች አሏቸው"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9080,10 +9010,6 @@ msgstr "የውሂብ ጎታ አገልጋይ ሥሪት"
 #: 
 msgid "Web Server"
 msgstr "የድር አገልጋይ"
-
-#: 
-msgid "Server Software"
-msgstr "የአገልጋይ ሶፍትዌር"
 
 #: 
 msgid "Email Information"

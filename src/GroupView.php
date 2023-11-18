@@ -20,16 +20,22 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\Base\GroupQuery;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Get the GroupID out of the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
+if ($iGroupID < 1) {
+  RedirectUtils::redirect('GroupList.php');
+}
+
 //Get the data on this group
-$thisGroup = ChurchCRM\GroupQuery::create()->findOneById($iGroupID);
+$thisGroup = GroupQuery::create()->findOneById($iGroupID);
 
 //Look up the default role name
 $defaultRole = ListOptionQuery::create()->filterById($thisGroup->getRoleListId())->filterByOptionId($thisGroup->getDefaultRole())->findOne();
@@ -139,7 +145,7 @@ require 'Include/Header.php';
         </div>
 
         <div class="btn-group">
-          <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-send"></i><?= gettext('Email (BCC)') ?></a>
+          <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa-regular fa-paper-plane"></i><?= gettext('Email (BCC)') ?></a>
           <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>

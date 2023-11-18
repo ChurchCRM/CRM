@@ -1,9 +1,9 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Group as BaseGroup;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Base\Group as BaseGroup;
 
 /**
  * Skeleton subclass for representing a row from the 'group_grp' table.
@@ -95,7 +95,7 @@ class Group extends BaseGroup
         $groupMemberships = $this->getPerson2group2roleP2g2rsJoinPerson();
         $bNoneInCart = true;
         $bAllInCart = true;
-    //Loop through the recordset
+        //Loop through the recordset
         foreach ($groupMemberships as $groupMembership) {
             if (!isset($_SESSION['aPeopleCart'])) {
                 $bAllInCart = false;
@@ -122,6 +122,6 @@ class Group extends BaseGroup
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $this->getId();
+        return SystemURLs::getRootPath().'/GroupView.php?GroupID='.$this->getId();
     }
 }

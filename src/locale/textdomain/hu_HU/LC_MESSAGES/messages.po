@@ -988,11 +988,6 @@ msgid "Edit"
 msgstr "Szerkeszt"
 
 #: 
-#, fuzzy
-msgid "Message"
-msgstr "Üzenet"
-
-#: 
 msgid "Event Attendees"
 msgstr "Event Résztvevők"
 
@@ -1809,10 +1804,6 @@ msgstr "Új Szerep"
 #: 
 msgid "Group Listing"
 msgstr "Group Listing"
-
-#: 
-msgid "Submit"
-msgstr "Küldés"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -2639,14 +2630,6 @@ msgid "Execute Query"
 msgstr "Execute Query"
 
 #: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Kérjük regisztrálja másolatát ChurchCRM ellenőrzésével át ezt az információt, és nyomja meg a Küldés gombot."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Ez az információ csak nyomon követhető a használat ezt a szoftvert."
-
-#: 
 msgid "Send"
 msgstr "Küld"
 
@@ -2749,8 +2732,9 @@ msgid "User Delete Confirmation"
 msgstr "Felhasználó törlése megerősítése"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Kérjük, erősítse eltávolítása felhasználói státuszát:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Kérjük, erősítse eltávolítása felhasználói státuszát"
 
 #: 
 msgid "User Editor"

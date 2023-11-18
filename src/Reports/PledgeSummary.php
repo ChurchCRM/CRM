@@ -13,11 +13,10 @@ namespace ChurchCRM\Reports;
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
@@ -28,6 +27,9 @@ if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
 // Filter Values
 $output = InputUtils::legacyFilterInput($_POST['output']);
 $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+if (!$iFYID) {
+    $iFYID = CurrentFY();
+}
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
@@ -62,7 +64,7 @@ $pledgeCnt['Unassigned'] = 0;
 // Get pledges and payments for this fiscal year
 $sSQL = 'SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID, plg_famID, b.fun_Name AS fundName, b.fun_Active AS fundActive FROM pledge_plg 
 		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-		 WHERE plg_FYID = ' . $iFYID;
+		 WHERE plg_FYID = '.$iFYID;
 
 // Filter by Fund
 if (!empty($_POST['funds'])) {
@@ -92,7 +94,7 @@ $rsPledges = RunQuery($sSQL);
 
 // Create PDF Report
 // *****************
-if ($output == 'pdf') {
+if ($output === 'pdf') {
     class PdfPledgeSummaryReport extends ChurchInfoReport
     {
         // Constructor
@@ -132,7 +134,7 @@ if ($output == 'pdf') {
             extract($aRow);
         }
 
-        if ($fundName == '') {
+        if ($fundName === '') {
             $fundName = 'Unassigned';
         }
 
@@ -165,7 +167,7 @@ if ($output == 'pdf') {
         }
 
         if ($thisRow < $totRows) {
-            if ($plg_PledgeOrPayment == 'Pledge') {
+            if ($plg_PledgeOrPayment === 'Pledge') {
                 if (array_key_exists($fundName, $pledgeFundTotal)) {
                     $pledgeFundTotal[$fundName] += $plg_amount;
                     $pledgeCnt[$fundName] += 1;
@@ -178,7 +180,7 @@ if ($output == 'pdf') {
                 } else {
                     $pledgeThisFam[$fundName] = $plg_amount;
                 }
-            } elseif ($plg_PledgeOrPayment == 'Payment') {
+            } elseif ($plg_PledgeOrPayment === 'Payment') {
                 if (array_key_exists($fundName, $paymentFundTotal)) {
                     $paymentFundTotal[$fundName] += $plg_amount;
                     $paymentCnt[$fundName] += 1;
@@ -208,14 +210,14 @@ if ($output == 'pdf') {
     $curY += SystemConfig::getValue('incrementY');
     $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  ' . SystemConfig::getValue('sChurchZip'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone') . '  ' . SystemConfig::getValue('sChurchEmail'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
     $curY += 2 * SystemConfig::getValue('incrementY');
 
-    $blurb = SystemConfig::getValue('sPledgeSummary1') . ' ';
-    $blurb .= MakeFYString($iFYID);
-    $blurb .= SystemConfig::getValue('sPledgeSummary2') . ' ' . date('Y-m-d') . '.';
+    $blurb = SystemConfig::getValue('sPledgeSummary1').' ';
+    $blurb .= MakeFYString($iFYID).' ';
+    $blurb .= SystemConfig::getValue('sPledgeSummary2').' '.date('Y-m-d').'.';
     $pdf->writeAt($nameX, $curY, $blurb);
 
     $curY += 3 * SystemConfig::getValue('incrementY');
@@ -236,7 +238,7 @@ if ($output == 'pdf') {
         $fun_name = $row['fun_Name'];
         if ($pledgeFundTotal[$fun_name] > 0 || $paymentFundTotal[$fun_name] > 0) {
             if (strlen($fun_name) > 30) {
-                $short_fun_name = mb_substr($fun_name, 0, 30) . '...';
+                $short_fun_name = mb_substr($fun_name, 0, 30).'...';
             } else {
                 $short_fun_name = $fun_name;
             }
@@ -269,14 +271,14 @@ if ($output == 'pdf') {
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
     if (SystemConfig::getValue('iPDFOutputType') == 1) {
-        $pdf->Output('PledgeSummaryReport' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+        $pdf->Output('PledgeSummaryReport'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
     } else {
         $pdf->Output();
     }
 
     // Output a text file
     // ##################
-} elseif ($output == 'csv') {
+} elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
     $eol = "\r\n";
@@ -286,23 +288,23 @@ if ($output == 'pdf') {
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {
-        $buffer .= trim($heading) . $delimiter;
+        $buffer .= trim($heading).$delimiter;
     }
     // Remove trailing delimiter and add eol
-    $buffer = mb_substr($buffer, 0, -1) . $eol;
+    $buffer = mb_substr($buffer, 0, -1).$eol;
 
     // Add data
     while ($row = mysqli_fetch_row($rsPledges)) {
         foreach ($row as $field) {
             $field = str_replace($delimiter, ' ', $field);    // Remove any delimiters from data
-            $buffer .= $field . $delimiter;
+            $buffer .= $field.$delimiter;
         }
         // Remove trailing delimiter and add eol
-        $buffer = mb_substr($buffer, 0, -1) . $eol;
+        $buffer = mb_substr($buffer, 0, -1).$eol;
     }
 
     // Export file
     header('Content-type: text/x-csv');
-    header('Content-Disposition: attachment; filename=ChurchInfo-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
+    header('Content-Disposition: attachment; filename=ChurchInfo-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
     echo $buffer;
 }

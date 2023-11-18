@@ -1082,11 +1082,6 @@ msgid "Edit"
 msgstr "Редактировать"
 
 #: 
-#, fuzzy
-msgid "Message"
-msgstr "Сообщение"
-
-#: 
 msgid "Event Attendees"
 msgstr "Участники мероприятия"
 
@@ -2070,10 +2065,6 @@ msgstr "Группа Листинг"
 #: 
 msgid "Add New Group"
 msgstr "Добавить новую группу"
-
-#: 
-msgid "Submit"
-msgstr "Представлять"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -3105,18 +3096,6 @@ msgid "Execute Query"
 msgstr "Выполнить запрос"
 
 #: 
-msgid "Software Registration"
-msgstr "Регистрация программного обеспечения"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Пожалуйста, зарегистрируйтесь копию ChurchCRM, проверяя по этой информации и нажав на кнопку Отправить.  "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Эта информация используется только для отслеживания использования данного программного обеспечения.  "
-
-#: 
 msgid "Send"
 msgstr "Отправить"
 
@@ -3222,10 +3201,6 @@ msgid "Permission"
 msgstr "Разрешение"
 
 #: 
-msgid "Base URL"
-msgstr "Базовый URL"
-
-#: 
 msgid "System Settings"
 msgstr "Системные настройки"
 
@@ -3247,8 +3222,9 @@ msgid "User Delete Confirmation"
 msgstr "Пользователь подтверждения удаления"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Пожалуйста, подтвердите удаление статуса пользователя от:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Пожалуйста, подтвердите удаление статуса пользователя от"
 
 #: 
 msgid "User Editor"
@@ -3695,26 +3671,6 @@ msgstr "Текст ошибки"
 #: 
 msgid "Issue Report!"
 msgstr "Отчет о проблеме!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Введите заголовок для отчета об ошибке / функции"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Что вы делали, когда заметили возможность ошибки / функции?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Когда вы нажимаете «отправить», отчет об ошибке будет отправлен в трекер ошибок ChurchCRM GitHub."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Пожалуйста, не указывайте конфиденциальную информацию."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Вместе с запросом будет отправлена ​​некоторая общая информация о вашей системе, такая как версия сервера и заголовки браузера."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -4424,10 +4380,6 @@ msgid "Enter Name"
 msgstr "Введите Имя"
 
 #: 
-msgid "Register Software"
-msgstr "Зарегистрировать программное обеспечение"
-
-#: 
 msgid "Update Church Info"
 msgstr "Обновить информацию о церкви"
 
@@ -4554,14 +4506,6 @@ msgstr "Истекло время вашего предыдущего сеанс
 #: 
 msgid "Register a new Family"
 msgstr "Зарегистрировать новую семью"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Если вам необходимо внести изменения в регистрационные данные, перейдите на"
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Админ-> Изменить общие настройки"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5379,10 +5323,6 @@ msgid "User permission to export CSV files"
 msgstr "Разрешение пользователя на экспорт файлов CSV"
 
 #: 
-msgid "User permission to use IST Address Verification"
-msgstr "Разрешение пользователя на использование проверки адреса IST"
-
-#: 
 msgid "Allow user to add new event"
 msgstr "Разрешить пользователю добавлять новое событие"
 
@@ -6126,10 +6066,6 @@ msgstr "Неверный id списка"
 #: 
 msgid "Web Server"
 msgstr "Веб-сервер"
-
-#: 
-msgid "Server Software"
-msgstr "ПО сервера"
 
 #: 
 msgid "Email Information"

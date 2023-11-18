@@ -1051,10 +1051,6 @@ msgid "Edit"
 msgstr "Редагувати"
 
 #: 
-msgid "Message"
-msgstr "повідомлення"
-
-#: 
 msgid "Event Attendees"
 msgstr "Учасники заходу"
 
@@ -2026,10 +2022,6 @@ msgstr "Перелік груп"
 #: 
 msgid "Add New Group"
 msgstr "Додати нову групу"
-
-#: 
-msgid "Submit"
-msgstr "Подати"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -3049,18 +3041,6 @@ msgid "Execute Query"
 msgstr "Виконати запит"
 
 #: 
-msgid "Software Registration"
-msgstr "Реєстрація програмного забезпечення"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Будь ласка, зареєструйте свою копію ChurchCRM, перевіривши цю інформацію та натиснувши кнопку Надіслати.  "
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Ця інформація використовується лише для відстеження використання цього програмного забезпечення.  "
-
-#: 
 msgid "Send"
 msgstr "Надіслати"
 
@@ -3165,10 +3145,6 @@ msgid "Permission"
 msgstr "Дозвіл"
 
 #: 
-msgid "Base URL"
-msgstr "Базова URL-адреса"
-
-#: 
 msgid "System Settings"
 msgstr "Налаштування системи"
 
@@ -3189,8 +3165,9 @@ msgid "User Delete Confirmation"
 msgstr "Підтвердження видалення користувача"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Підтвердьте видалення статусу користувача з:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Підтвердьте видалення статусу користувача з"
 
 #: 
 msgid "User Editor"
@@ -3623,26 +3600,6 @@ msgstr "Текст помилки"
 #: 
 msgid "Issue Report!"
 msgstr "Звіт про випуск!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Введіть заголовок для звіту про помилку / функцію"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Що ви робили, коли помітили можливість помилки / функції?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Коли ви натискаєте \"надіслати\", звіт про помилку буде опубліковано в засобі відстеження ChurchCRM GitHub."
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Будь ласка, не включайте жодної конфіденційної інформації."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Деяка загальна інформація про вашу систему буде подана разом із запитом, наприклад версія сервера та заголовки браузера."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -4345,10 +4302,6 @@ msgid "Enter Name"
 msgstr "Введіть ім'я"
 
 #: 
-msgid "Register Software"
-msgstr "Зареєструйте програмне забезпечення"
-
-#: 
 msgid "Update Church Info"
 msgstr "Оновіть інформацію про церкву"
 
@@ -4475,14 +4428,6 @@ msgstr "У вашого попереднього сеансу минув час.
 #: 
 msgid "Register a new Family"
 msgstr "Зареєструйте нову сім'ю"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Якщо вам потрібно внести зміни до реєстраційних даних, перейдіть на "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Адміністратор-> Редагувати загальні налаштування"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5398,10 +5343,6 @@ msgstr "Дозвіл користувача на створення катало
 #: 
 msgid "User permission to export CSV files"
 msgstr "Дозвіл користувача на експорт файлів CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Дозвіл користувача використовувати підтвердження IST-адреси"
 
 #: 
 msgid "Allow user to add new event"
@@ -6696,10 +6637,6 @@ msgid "Missing Role Data"
 msgstr "Відсутні дані про ролі"
 
 #: 
-msgid "Let us know that you are using the software"
-msgstr "Повідомте нас, що ви використовуєте програмне забезпечення"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Не вдається завантажити інформацію про підтвердження"
 
@@ -7556,14 +7493,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "Ви впевнені, що хочете видалити вибраних членів групи?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Випуск успішно надіслано"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Переглянути випуск на GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Видалити цю особу? Це не може бути скасовано."
 
@@ -8284,8 +8213,9 @@ msgid "New Calendar"
 msgstr "Новий календар"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Попередження: bEnableExternalCalendarAPI вимкнено, але деякі календарі мають маркери доступу"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI вимкнено, але деякі календарі мають маркери доступу"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9050,10 +8980,6 @@ msgstr "Версія сервера баз даних"
 #: 
 msgid "Web Server"
 msgstr "Веб-сервер"
-
-#: 
-msgid "Server Software"
-msgstr "Серверне програмне забезпечення"
 
 #: 
 msgid "Email Information"

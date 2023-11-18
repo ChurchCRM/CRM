@@ -40,19 +40,19 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole)
     // such as "All Souls Church"
     // Similar logic is applied if mailing to Sunday School children.
 
-    $sSQL = 'SELECT * FROM family_fam WHERE fam_ID=' . $famID;
+    $sSQL = 'SELECT * FROM family_fam WHERE fam_ID='.$famID;
     $rsFamInfo = RunQuery($sSQL);
 
     if (mysqli_num_rows($rsFamInfo) == 0) {
-        return 'Invalid Family' . $famID;
+        return 'Invalid Family'.$famID;
     }
 
     $aFam = mysqli_fetch_array($rsFamInfo);
     extract($aFam);
 
     // Only get family members that are in the cart
-    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID=' . $famID . ' AND per_ID IN ('
-    . convertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_LastName, per_FirstName';
+    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID='.$famID.' AND per_ID IN ('
+    .convertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_LastName, per_FirstName';
 
     $rsMembers = RunQuery($sSQL);
     $numMembers = mysqli_num_rows($rsMembers);
@@ -104,7 +104,7 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole)
 
     if ($numAdult == 1) { // Generate Salutation for Adults in family
         extract($aAdult[0]);
-        $sNameAdult = $per_FirstName . ' ' . $per_LastName;
+        $sNameAdult = $per_FirstName.' '.$per_LastName;
     } elseif ($numAdult == 2) {
         $firstMember = mysqli_fetch_array($rsMembers);
         extract($aAdult[0]);
@@ -115,10 +115,10 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole)
         $secondFirstName = $per_FirstName;
         $secondLastName = $per_LastName;
         if ($firstLastName == $secondLastName) {
-            $sNameAdult = $firstFirstName . ' & ' . $secondFirstName . ' ' . $firstLastName;
+            $sNameAdult = $firstFirstName.' & '.$secondFirstName.' '.$firstLastName;
         } else {
-            $sNameAdult = $firstFirstName . ' ' . $firstLastName . ' & ' .
-                            $secondFirstName . ' ' . $secondLastName;
+            $sNameAdult = $firstFirstName.' '.$firstLastName.' & '.
+                            $secondFirstName.' '.$secondLastName;
         }
     } elseif ($numAdult > 2) {
         $sNameAdult = $fam_Name;
@@ -154,36 +154,36 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole)
         $bSameLastNames = $bSameLastNames && ($thirdLastName == $fourthLastName);
     }
     if ($numChild == 1) {
-        $sNameChild = $per_FirstName . ' ' . $per_LastName;
+        $sNameChild = $per_FirstName.' '.$per_LastName;
     }
     if ($numChild == 2) {
         if ($bSameLastNames) {
-            $sNameChild = $firstFirstName . ' & ' . $secondFirstName . ' ' . $firstLastName;
+            $sNameChild = $firstFirstName.' & '.$secondFirstName.' '.$firstLastName;
         } else {
-            $sNameChild = $firstFirstName . ' ' . $firstLastName . ' & ' .
-                            $secondFirstName . ' ' . $secondLastName;
+            $sNameChild = $firstFirstName.' '.$firstLastName.' & '.
+                            $secondFirstName.' '.$secondLastName;
         }
     }
     if ($numChild == 3) {
         if ($bSameLastNames) {
-            $sNameChild = $firstFirstName . ', ' . $secondFirstName . ' & ' .
-                                            $thirdFirstName . ' ' . $firstLastName;
+            $sNameChild = $firstFirstName.', '.$secondFirstName.' & '.
+                                            $thirdFirstName.' '.$firstLastName;
         } else {
-            $sNameChild = $firstFirstName . ', ' . $secondFirstName . ' & ' .
-                                            $thirdFirstName . ' ' . $fam_Name;
+            $sNameChild = $firstFirstName.', '.$secondFirstName.' & '.
+                                            $thirdFirstName.' '.$fam_Name;
         }
     }
     if ($numChild == 4) {
         if ($bSameLastNames) {
-            $sNameChild = $firstFirstName . ', ' . $secondFirstName . ', ' .
-                        $thirdFirstName . ' & ' . $fourthFirstName . ' ' . $firstLastName;
+            $sNameChild = $firstFirstName.', '.$secondFirstName.', '.
+                        $thirdFirstName.' & '.$fourthFirstName.' '.$firstLastName;
         } else {
-            $sNameChild = $firstFirstName . ', ' . $secondFirstName . ', ' .
-                        $thirdFirstName . ' & ' . $fourthFirstName . ' ' . $fam_Name;
+            $sNameChild = $firstFirstName.', '.$secondFirstName.', '.
+                        $thirdFirstName.' & '.$fourthFirstName.' '.$fam_Name;
         }
     }
     if ($numChild > 4) {
-        $sNameChild = 'The ' . $fam_Name . ' Family';
+        $sNameChild = 'The '.$fam_Name.' Family';
     }
 
     if ($numOther) {
@@ -208,7 +208,7 @@ function MakeADCArray($sADClist)
         $endOfRow = strpos($sADClist, '|');
         if ($endOfRow) {
             $currentRow = mb_substr($sADClist, 0, $endOfRow);
-            $sADClist = mb_substr($sADClist, ($endOfRow + 1));
+            $sADClist = mb_substr($sADClist, $endOfRow + 1);
 
             // find the current adc (hint, last item listed)
             $currentRow = trim($currentRow);
@@ -291,114 +291,114 @@ function ZipBundleSort($inLabels)
     // ADC array updated 2010-08-26
 
     $sADClist =
-    '005, 115, 117-119                      _LONG ISLAND NY 117         |' .
-    '006-009                                _ADC SAN JUAN PR 006        |' .
-    '010-017                                _ADC SPRINGFIELD MA 010     |' .
-    '018, 019, 021, 022, 024, 055           _ADC BOSTON MA 021          |' .
-    '020, 023, 025-029                      _ADC PROVIDENCE RI 028      |' .
-    '030-034, 038, 039                      _ADC PORTSMOUTH NH 038      |' .
-    '035-037, 050-054, 056-059              _ADC WHITE RIV JCT VT 050   |' .
-    '040-049                                _ADC PORTLAND ME 040        |' .
-    '060-069                                _ADC SOUTHERN CT 064        |' .
-    '070-079, 085-089                       _ADC DV DANIELS NJ 07099    |' .
-    '080-084                                _ADC SOUTH JERSEY NJ 080    |' .
-    '090-099                                _MILITARY CENTER NY 090     |' .
-    '100-102, 104                           _ADC NEW YORK NY 100        |' .
-    '103, 110-114, 116                      _ADC QUEENS NY 110          |' .
-    '105-109                                _ADC WESTCHESTER NY 105     |' .
-    '120-129                                _ADC ALBANY NY 120          |' .
-    '130-139                                _ADC SYRACUSE NY 130        |' .
-    '140-149                                _ADC BUFFALO NY 140         |' .
-    '150-168, 260                           _ADC PITTSBURGH PA 150      |' .
-    '169-178                                _ADC HARRISBURG PA 170      |' .
-    '179, 189, 193-196                      _ADC SOUTHEASTERN PA 189    |' .
-    '180-188                                _ADC LEHIGH VALLEY PA 180   |' .
-    '190-192                                _ADC PHILADELPHIA PA 190    |' .
-    '197-199                                _ADC WILMINGTON DE 197      |' .
-    '200                                    _WASHINGTON DC 200          |' .
-    '201, 220-223, 226, 227                 _ADC NORTHERN VA VA 220     |' .
-    '202-205                                _ADC WASHINGTON DC 202      |' .
-    '206-209                                _ADC SOUTHERN MD MD 207     |' .
-    '210-212, 214-219, 254, 267             _ADC LINTHICUM MD 210       |' .
-    '224, 225, 228-239, 244                 _ADC RICHMOND VA 230        |' .
-    '240-243, 245                           _ADC ROANOKE VA 240         |' .
-    '246-253, 255-259                       _ADC CHARLESTON WV 250      |' .
-    '261-266, 268                           _ADC CLARKSBURG WV 263      |' .
-    '270-279, 285                           _ADC GREENSBORO NC 270      |' .
-    '280-284, 286-289, 297                  _ADC CHARLOTTE NC 280       |' .
-    '290-296                                _ADC COLUMBIA SC 290        |' .
-    '298, 300, 301, 305, 306, 308, 309      _ADC NORTH METRO GA 30197   |' .
-    '299, 304, 313-315, 320-324, 326, 344   _ADC JACKSONVILLE FL 32088  |' .
-    '302, 303, 311, 399                     _ADC ATLANTA GA 303         |' .
-    '307, 370-374, 376-379, 384, 385        _ADC NASHVILLE TN 37099     |' .
-    '310, 312, 316-319, 398                 _ADC MACON GA 31293         |' .
-    '325, 365, 366, 394, 395                _ADC MOBILE AL 365          |' .
-    '327-329, 334, 347, 349                 _ADC MID FLORIDA FL 32799   |' .
-    '330-333, 340                           _ADC MIAMI FL 33298         |' .
-    '335-339, 341, 342, 346                 _ADC TAMPA FL 335           |' .
-    '350-352, 354-359, 362                  _ADC BIRMINGHAM AL 35099    |' .
-    '360, 361, 363, 364, 367, 368           _ADC MONTGOMERY AL 36099    |' .
-    '369, 390-393, 396, 397                 _ADC JACKSON MS 39099       |' .
-    '375, 380-383, 386-389, 723             _ADC MEMPHIS TN 38099       |' .
+    '005, 115, 117-119                      _LONG ISLAND NY 117         |'.
+    '006-009                                _ADC SAN JUAN PR 006        |'.
+    '010-017                                _ADC SPRINGFIELD MA 010     |'.
+    '018, 019, 021, 022, 024, 055           _ADC BOSTON MA 021          |'.
+    '020, 023, 025-029                      _ADC PROVIDENCE RI 028      |'.
+    '030-034, 038, 039                      _ADC PORTSMOUTH NH 038      |'.
+    '035-037, 050-054, 056-059              _ADC WHITE RIV JCT VT 050   |'.
+    '040-049                                _ADC PORTLAND ME 040        |'.
+    '060-069                                _ADC SOUTHERN CT 064        |'.
+    '070-079, 085-089                       _ADC DV DANIELS NJ 07099    |'.
+    '080-084                                _ADC SOUTH JERSEY NJ 080    |'.
+    '090-099                                _MILITARY CENTER NY 090     |'.
+    '100-102, 104                           _ADC NEW YORK NY 100        |'.
+    '103, 110-114, 116                      _ADC QUEENS NY 110          |'.
+    '105-109                                _ADC WESTCHESTER NY 105     |'.
+    '120-129                                _ADC ALBANY NY 120          |'.
+    '130-139                                _ADC SYRACUSE NY 130        |'.
+    '140-149                                _ADC BUFFALO NY 140         |'.
+    '150-168, 260                           _ADC PITTSBURGH PA 150      |'.
+    '169-178                                _ADC HARRISBURG PA 170      |'.
+    '179, 189, 193-196                      _ADC SOUTHEASTERN PA 189    |'.
+    '180-188                                _ADC LEHIGH VALLEY PA 180   |'.
+    '190-192                                _ADC PHILADELPHIA PA 190    |'.
+    '197-199                                _ADC WILMINGTON DE 197      |'.
+    '200                                    _WASHINGTON DC 200          |'.
+    '201, 220-223, 226, 227                 _ADC NORTHERN VA VA 220     |'.
+    '202-205                                _ADC WASHINGTON DC 202      |'.
+    '206-209                                _ADC SOUTHERN MD MD 207     |'.
+    '210-212, 214-219, 254, 267             _ADC LINTHICUM MD 210       |'.
+    '224, 225, 228-239, 244                 _ADC RICHMOND VA 230        |'.
+    '240-243, 245                           _ADC ROANOKE VA 240         |'.
+    '246-253, 255-259                       _ADC CHARLESTON WV 250      |'.
+    '261-266, 268                           _ADC CLARKSBURG WV 263      |'.
+    '270-279, 285                           _ADC GREENSBORO NC 270      |'.
+    '280-284, 286-289, 297                  _ADC CHARLOTTE NC 280       |'.
+    '290-296                                _ADC COLUMBIA SC 290        |'.
+    '298, 300, 301, 305, 306, 308, 309      _ADC NORTH METRO GA 30197   |'.
+    '299, 304, 313-315, 320-324, 326, 344   _ADC JACKSONVILLE FL 32088  |'.
+    '302, 303, 311, 399                     _ADC ATLANTA GA 303         |'.
+    '307, 370-374, 376-379, 384, 385        _ADC NASHVILLE TN 37099     |'.
+    '310, 312, 316-319, 398                 _ADC MACON GA 31293         |'.
+    '325, 365, 366, 394, 395                _ADC MOBILE AL 365          |'.
+    '327-329, 334, 347, 349                 _ADC MID FLORIDA FL 32799   |'.
+    '330-333, 340                           _ADC MIAMI FL 33298         |'.
+    '335-339, 341, 342, 346                 _ADC TAMPA FL 335           |'.
+    '350-352, 354-359, 362                  _ADC BIRMINGHAM AL 35099    |'.
+    '360, 361, 363, 364, 367, 368           _ADC MONTGOMERY AL 36099    |'.
+    '369, 390-393, 396, 397                 _ADC JACKSON MS 39099       |'.
+    '375, 380-383, 386-389, 723             _ADC MEMPHIS TN 38099       |'.
     '400-409, 411-418, 420-427, 471, 476, 477
-                                        _ADC LOUISVILLE KY 400      |' .
-    '410, 450-455, 458, 459, 470            _ADC CINCINNATI OH 450      |' .
-    '430-438, 456, 457                      _ADC COLUMBUS OH 430        |' .
-    '439-449                                _ADC CLEVELAND OH 440       |' .
-    '460-469, 472-475, 478, 479             _ADC INDIANAPOLIS IN 460    |' .
-    '480-489, 492                           _ADC DETROIT MI 481         |' .
-    '490, 491, 493-497                      _ADC GRAND RAPIDS MI 493    |' .
+                                        _ADC LOUISVILLE KY 400      |'.
+    '410, 450-455, 458, 459, 470            _ADC CINCINNATI OH 450      |'.
+    '430-438, 456, 457                      _ADC COLUMBUS OH 430        |'.
+    '439-449                                _ADC CLEVELAND OH 440       |'.
+    '460-469, 472-475, 478, 479             _ADC INDIANAPOLIS IN 460    |'.
+    '480-489, 492                           _ADC DETROIT MI 481         |'.
+    '490, 491, 493-497                      _ADC GRAND RAPIDS MI 493    |'.
     '498, 499, 530-532, 534, 535, 537-539, 541-545, 549
-                                        _ADC MILWAUKEE WI 530       |' .
-    '500-509, 520-528, 612                  _ADC DES MOINES IA 50091    |' .
-    '510-516, 680, 681, 683-693             _ADC OMAHA NE 680           |' .
-    '540, 546-548, 550, 551, 556-559        _ADC ST PAUL MN 550         |' .
-    '553-555, 560-564, 566                  _ADC MINNEAPOLIS MN 553     |' .
-    '565, 567, 580-588                      _ADC FARGO ND 580           |' .
-    '570-577                                _ADC SIOUX FALLS SD 570     |' .
-    '590-599, 821                           _ADC BILLINGS MT 590        |' .
-    '600-603, 610, 611, 614-616             _ADC CAROL STREAM IL 601    |' .
-    '604, 605, 609, 613, 617-619            _ADC S SUBURBAN IL 604      |' .
-    '606-608                                _ADC CHICAGO IL 606         |' .
-    '620, 622-631, 633-639                  _ADC ST LOUIS MO 63203      |' .
-    '640, 641, 644-658, 660-662, 664-668    _ADC KANSAS CITY MO 66340   |' .
-    '669-679, 739                           _ADC WICHITA KS 67099       |' .
-    '700, 701, 703, 704                     _ADC NEW ORLEANS LA 700     |' .
-    '705-708                                _ADC BATON ROUGE LA 707     |' .
-    '710-714                                _ADC SHREVEPORT LA 71099    |' .
-    '716-722, 724-729                       _ADC LITTLE ROCK AR 72098   |' .
-    '730, 731, 734-738, 748                 _ADC OKLAHOMA CITY OK 730   |' .
-    '733, 779-789                           _ADC SAN ANTONIO TX 78099   |' .
-    '740, 741, 743-747, 749                 _ADC TULSA OK 740           |' .
-    '750-759                                _ADC NORTH TEXAS TX 750     |' .
-    '760-769                                _ADC FT WORTH TX 760        |' .
-    '770-778                                _ADC NORTH HOUSTON TX 773   |' .
-    '790-797                                _ADC LUBBOCK TX 793         |' .
-    '798, 799, 880, 885                     _ADC EL PASO TX 798         |' .
-    '800-816                                _ADC DENVER CO 800          |' .
-    '820, 822-831                           _ADC CHEYENNE WY 820        |' .
-    '832-834, 836, 837, 979                 _ADC BOISE ID 836           |' .
-    '835, 838, 980-985, 988-994, 998, 999   _ADC SEATTLE WA 980         |' .
-    '840-847, 898                           _ADC SALT LAKE CTY UT 840   |' .
-    '850-853, 855, 859, 860, 863            _ADC PHOENIX AZ 852         |' .
-    '856, 857                               _ADC TUCSON AZ 856          |' .
-    '864, 889-891, 893-895, 897, 961        _ADC LAS VEGAS NV 890       |' .
-    '865, 870-875, 877-879, 881-884         _ADC ALBUQUERQUE NM 870     |' .
-    '900-904                                _ADC LOS ANGELES CA 900     |' .
-    '905-908                                _ADC LONG BEACH CA 907      |' .
-    '910-912, 932, 933, 935                 _ADC PASADENA CA 910        |' .
-    '913-916, 930, 931, 934                 _ADC SANTA CLARITA CA 913   |' .
-    '917, 918                               _ADC INDUSTRY CA 917        |' .
-    '919-921                                _ADC SAN DIEGO CA 920       |' .
-    '922-925                                _ADC SN BERNARDINO CA 923   |' .
-    '926-928                                _ADC SANTA ANA CA 926       |' .
-    '936-939, 950, 951                      _ADC SAN JOSE CA 950        |' .
-    '940, 941, 943, 944, 949, 954, 955      _ADC SAN FRANCISCO CA 940   |' .
-    '942, 952, 953, 956-960                 _ADC SACRAMENTO CA 956      |' .
-    '945-948                                _ADC OAKLAND CA 945         |' .
-    '962-966                                _AMF SFO APO/FPO CA 962     |' .
-    '967-969                                _ADC HONOLULU HI 967        |' .
-    '970-978, 986                           _ADC PORTLAND OR 970        |' .
+                                        _ADC MILWAUKEE WI 530       |'.
+    '500-509, 520-528, 612                  _ADC DES MOINES IA 50091    |'.
+    '510-516, 680, 681, 683-693             _ADC OMAHA NE 680           |'.
+    '540, 546-548, 550, 551, 556-559        _ADC ST PAUL MN 550         |'.
+    '553-555, 560-564, 566                  _ADC MINNEAPOLIS MN 553     |'.
+    '565, 567, 580-588                      _ADC FARGO ND 580           |'.
+    '570-577                                _ADC SIOUX FALLS SD 570     |'.
+    '590-599, 821                           _ADC BILLINGS MT 590        |'.
+    '600-603, 610, 611, 614-616             _ADC CAROL STREAM IL 601    |'.
+    '604, 605, 609, 613, 617-619            _ADC S SUBURBAN IL 604      |'.
+    '606-608                                _ADC CHICAGO IL 606         |'.
+    '620, 622-631, 633-639                  _ADC ST LOUIS MO 63203      |'.
+    '640, 641, 644-658, 660-662, 664-668    _ADC KANSAS CITY MO 66340   |'.
+    '669-679, 739                           _ADC WICHITA KS 67099       |'.
+    '700, 701, 703, 704                     _ADC NEW ORLEANS LA 700     |'.
+    '705-708                                _ADC BATON ROUGE LA 707     |'.
+    '710-714                                _ADC SHREVEPORT LA 71099    |'.
+    '716-722, 724-729                       _ADC LITTLE ROCK AR 72098   |'.
+    '730, 731, 734-738, 748                 _ADC OKLAHOMA CITY OK 730   |'.
+    '733, 779-789                           _ADC SAN ANTONIO TX 78099   |'.
+    '740, 741, 743-747, 749                 _ADC TULSA OK 740           |'.
+    '750-759                                _ADC NORTH TEXAS TX 750     |'.
+    '760-769                                _ADC FT WORTH TX 760        |'.
+    '770-778                                _ADC NORTH HOUSTON TX 773   |'.
+    '790-797                                _ADC LUBBOCK TX 793         |'.
+    '798, 799, 880, 885                     _ADC EL PASO TX 798         |'.
+    '800-816                                _ADC DENVER CO 800          |'.
+    '820, 822-831                           _ADC CHEYENNE WY 820        |'.
+    '832-834, 836, 837, 979                 _ADC BOISE ID 836           |'.
+    '835, 838, 980-985, 988-994, 998, 999   _ADC SEATTLE WA 980         |'.
+    '840-847, 898                           _ADC SALT LAKE CTY UT 840   |'.
+    '850-853, 855, 859, 860, 863            _ADC PHOENIX AZ 852         |'.
+    '856, 857                               _ADC TUCSON AZ 856          |'.
+    '864, 889-891, 893-895, 897, 961        _ADC LAS VEGAS NV 890       |'.
+    '865, 870-875, 877-879, 881-884         _ADC ALBUQUERQUE NM 870     |'.
+    '900-904                                _ADC LOS ANGELES CA 900     |'.
+    '905-908                                _ADC LONG BEACH CA 907      |'.
+    '910-912, 932, 933, 935                 _ADC PASADENA CA 910        |'.
+    '913-916, 930, 931, 934                 _ADC SANTA CLARITA CA 913   |'.
+    '917, 918                               _ADC INDUSTRY CA 917        |'.
+    '919-921                                _ADC SAN DIEGO CA 920       |'.
+    '922-925                                _ADC SN BERNARDINO CA 923   |'.
+    '926-928                                _ADC SANTA ANA CA 926       |'.
+    '936-939, 950, 951                      _ADC SAN JOSE CA 950        |'.
+    '940, 941, 943, 944, 949, 954, 955      _ADC SAN FRANCISCO CA 940   |'.
+    '942, 952, 953, 956-960                 _ADC SACRAMENTO CA 956      |'.
+    '945-948                                _ADC OAKLAND CA 945         |'.
+    '962-966                                _AMF SFO APO/FPO CA 962     |'.
+    '967-969                                _ADC HONOLULU HI 967        |'.
+    '970-978, 986                           _ADC PORTLAND OR 970        |'.
     '995-997                                _ADC ANCHORAGE AK 995       |';
 
     $adc = MakeADCArray($sADClist);
@@ -437,10 +437,10 @@ function ZipBundleSort($inLabels)
 
     foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip5MinBundleSize) {
-            $NoteText = ['Note' => '******* Presort ZIP-5 ' . $z];
-            $NameText = ['Name' => '** ' . $zc . ' Addresses in Bundle ' . $z . ' *'];
-            $AddressText = ['Address' => '** ' . $nTotalLabels . ' Total Addresses *'];
-            $CityText = ['City' => '******* Presort ZIP-5 ' . $z . '  '];
+            $NoteText = ['Note' => '******* Presort ZIP-5 '.$z];
+            $NameText = ['Name' => '** '.$zc.' Addresses in Bundle '.$z.' *'];
+            $AddressText = ['Address' => '** '.$nTotalLabels.' Total Addresses *'];
+            $CityText = ['City' => '******* Presort ZIP-5 '.$z.'  '];
             $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
             for ($i = 0; $i < $n; $i++) {
                 if (intval(mb_substr($inLabels[$i]['Zip'], 0, 5)) == $z) {
@@ -490,10 +490,10 @@ function ZipBundleSort($inLabels)
     $nz3 = 0;
     foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip3MinBundleSize) {
-            $NoteText = ['Note' => '******* Presort ZIP-3 ' . $z];
-            $NameText = ['Name' => '** ' . $zc . ' Addresses in Bundle ' . $z . ' *'];
-            $AddressText = ['Address' => '** ' . $nTotalLabels . ' Total Addresses *'];
-            $CityText = ['City' => '******* Presort ZIP-3 ' . $z . '  '];
+            $NoteText = ['Note' => '******* Presort ZIP-3 '.$z];
+            $NameText = ['Name' => '** '.$zc.' Addresses in Bundle '.$z.' *'];
+            $AddressText = ['Address' => '** '.$nTotalLabels.' Total Addresses *'];
+            $CityText = ['City' => '******* Presort ZIP-3 '.$z.'  '];
             $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
             for ($i = 0; $i < $n; $i++) {
                 if (intval(mb_substr($inLabels[$i]['Zip'], 0, 3)) == $z) {
@@ -546,10 +546,10 @@ function ZipBundleSort($inLabels)
     if ($ncounts) {
         foreach ($ZipCounts as $z => $zc) {
             if ($zc >= $iAdcMinBundleSize) {
-                $NoteText = ['Note' => '******* Presort ADC ' . $z];
-                $NameText = ['Name' => '** ' . $zc . ' Addresses in Bundle ADC ' . $z . ' *'];
-                $AddressText = ['Address' => '** ' . $nTotalLabels . ' Total Addresses *'];
-                $CityText = ['City' => '******* Presort ADC ' . $z . '  '];
+                $NoteText = ['Note' => '******* Presort ADC '.$z];
+                $NameText = ['Name' => '** '.$zc.' Addresses in Bundle ADC '.$z.' *'];
+                $AddressText = ['Address' => '** '.$nTotalLabels.' Total Addresses *'];
+                $CityText = ['City' => '******* Presort ADC '.$z.'  '];
                 $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
                 for ($i = 0; $i < $n; $i++) {
                     if ($adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))] == $z) {
@@ -580,8 +580,8 @@ function ZipBundleSort($inLabels)
     $zc = $n;
     if ($zc > 0) {
         $NoteText = ['Note' => '******* Presort MIXED ADC '];
-        $NameText = ['Name' => '** ' . $zc . ' Addresses in Bundle *'];
-        $AddressText = ['Address' => '** ' . $nTotalLabels . ' Total Addresses *'];
+        $NameText = ['Name' => '** '.$zc.' Addresses in Bundle *'];
+        $AddressText = ['Address' => '** '.$nTotalLabels.' Total Addresses *'];
         $CityText = ['City' => '******* Presort MIXED ADC   '];
         $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
         for ($i = 0; $i < $n; $i++) {
@@ -605,7 +605,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 {
     // $mode is "indiv" or "fam"
 
-    $sAdultRole = SystemConfig::getValue('sDirRoleHead') . ',' . SystemConfig::getValue('sDirRoleSpouse');
+    $sAdultRole = SystemConfig::getValue('sDirRoleHead').','.SystemConfig::getValue('sDirRoleSpouse');
     $sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
     $aAdultRole = explode(',', $sAdultRole);
     $aAdultRole = array_unique($aAdultRole);
@@ -618,8 +618,8 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
     $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ';
     $sSQL .= 'ON person_per.per_fam_ID = family_fam.fam_ID ';
-    $sSQL .= 'WHERE per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ') ';
-    $sSQL .= 'ORDER BY fam_Zip, per_LastName, per_FirstName';
+    $sSQL .= 'WHERE per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).') ';
+    $sSQL .= 'ORDER BY per_LastName, per_FirstName, fam_Zip';
     $rsCartItems = RunQuery($sSQL);
     $sRowClass = 'RowColorA';
     $didFam = [];
@@ -648,7 +648,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
         unset($aName);
 
-        if ($mode == 'fam') {
+        if ($mode === 'fam') {
             $aName = GroupBySalutation($aRow['per_fam_ID'], $aAdultRole, $aChildRole);
         } else {
             $sName = FormatFullName(
@@ -676,12 +676,12 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
         foreach ($aName as $key => $sName) {
             // Bail out if nothing to print
-            if ($sName == 'Nothing to return') {
+            if ($sName === 'Nothing to return') {
                 continue;
             }
 
-            if ($bToParents && ($key == 'child')) {
-                $sName = "To the parents of:\n" . $sName;
+            if ($bToParents && ($key === 'child')) {
+                $sName = "To the parents of:\n".$sName;
             }
 
             SelectWhichAddress($sAddress1, $sAddress2, $aRow['per_Address1'], $aRow['per_Address2'], $aRow['fam_Address1'], $aRow['fam_Address2'], false);
@@ -692,10 +692,10 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
             $sAddress = $sAddress1;
             if ($sAddress2 != '') {
-                $sAddress .= "\n" . $sAddress2;
+                $sAddress .= "\n".$sAddress2;
             }
 
-            if (!$bOnlyComplete || ((strlen($sAddress)) && strlen($sCity) && strlen($sState) && strlen($sZip))) {
+            if (!$bOnlyComplete || (strlen($sAddress) && strlen($sCity) && strlen($sState) && strlen($sZip))) {
                 $sLabelList[] = ['Name' => $sName, 'Address' => $sAddress, 'City' => $sCity, 'State' => $sState, 'Zip' => $sZip]; //,'fam_ID'=>$aRow['fam_ID']);
             }
         } // end of foreach loop
@@ -775,7 +775,7 @@ $sFontSize = $_GET['labelfontsize'];
 setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 
-if ($sFontSize == 'default') {
+if ($sFontSize === 'default') {
     $sFontSize = '10';
 }
 
@@ -824,65 +824,63 @@ $aLabelList = unserialize(
     GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete)
 );
 
-if ($sFileType == 'PDF') {
+if ($sFileType === 'PDF') {
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
     if (SystemConfig::getValue('iPDFOutputType') == 1) {
-        $pdf->Output('Labels-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+        $pdf->Output('Labels-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
     } else {
         $pdf->Output();
     }
 } else { // File Type must be CSV
-    $delimiter = SystemConfig::getValue("sCSVExportDelimiter");
+    $delimiter = SystemConfig::getValue('sCSVExportDelimiter');
 
     $sCSVOutput = '';
     if ($iBulkCode) {
-        $sCSVOutput .= '"ZipBundle"' . $delimiter;
+        $sCSVOutput .= '"ZipBundle"'.$delimiter;
     }
 
-
-    $sCSVOutput .= '"' . InputUtils::translateSpecialCharset("Greeting") . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset("Name") . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset("Address") . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset("City") . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset("State") . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset("Zip") . '"' . "\n";
+    $sCSVOutput .= '"'.InputUtils::translateSpecialCharset('Greeting').'"'.$delimiter.'"'.InputUtils::translateSpecialCharset('Name').'"'.$delimiter.'"'.InputUtils::translateSpecialCharset('Address').'"'.$delimiter.'"'.InputUtils::translateSpecialCharset('City').'"'.$delimiter.'"'.InputUtils::translateSpecialCharset('State').'"'.$delimiter.'"'.InputUtils::translateSpecialCharset('Zip').'"'."\n";
 
     foreach ($aLabelList as $i => $sLT) {
         if ($iBulkCode) {
-            $sCSVOutput .= '"' . $sLT['Note'] . '"' . $delimiter;
+            $sCSVOutput .= '"'.$sLT['Note'].'"'.$delimiter;
         }
 
-        $iNewline = (strpos($sLT['Name'], "\n"));
+        $iNewline = strpos($sLT['Name'], "\n");
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '""' . $delimiter . '"' . InputUtils::translateSpecialCharset($sLT['Name']) . '"' . $delimiter;
+            $sCSVOutput .= '""'.$delimiter.'"'.InputUtils::translateSpecialCharset($sLT['Name']).'"'.$delimiter;
         } else {
-            $sCSVOutput .= '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], 0, $iNewline)) . '"' . $delimiter .
-                            '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], $iNewline + 1)) . '"' . $delimiter;
+            $sCSVOutput .= '"'.InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], $iNewline + 1)).'"'.$delimiter;
         }
 
-        $iNewline = (strpos($sLT['Address'], "\n"));
+        $iNewline = strpos($sLT['Address'], "\n");
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"' . InputUtils::translateSpecialCharset($sLT['Address']) . '"' . $delimiter;
+            $sCSVOutput .= '"'.InputUtils::translateSpecialCharset($sLT['Address']).'"'.$delimiter;
         } else {
-            $sCSVOutput .= '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], 0, $iNewline)) . '"' . $delimiter .
-                            '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], $iNewline + 1)) . '"' . $delimiter;
+            $sCSVOutput .= '"'.InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], $iNewline + 1)).'"'.$delimiter;
         }
 
-        $sCSVOutput .= '"' . InputUtils::translateSpecialCharset($sLT['City']) . '"' . $delimiter .
-                        '"' . InputUtils::translateSpecialCharset($sLT['State']) . '"' . $delimiter .
-                        '"' . $sLT['Zip'] . '"' . "\n";
+        $sCSVOutput .= '"'.InputUtils::translateSpecialCharset($sLT['City']).'"'.$delimiter.
+                        '"'.InputUtils::translateSpecialCharset($sLT['State']).'"'.$delimiter.
+                        '"'.$sLT['Zip'].'"'."\n";
     }
 
-    header('Content-type: application/csv;charset=' . SystemConfig::getValue("sCSVExportCharset"));
-    header('Content-Disposition: attachment; filename=Labels-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
+    header('Content-type: application/csv;charset='.SystemConfig::getValue('sCSVExportCharset'));
+    header('Content-Disposition: attachment; filename=Labels-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
 
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-    if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
+    if (SystemConfig::getValue('sCSVExportCharset') == 'UTF-8') {
         echo "\xEF\xBB\xBF";
     }
 
     echo $sCSVOutput;
 }
 
-
-exit();
+exit;

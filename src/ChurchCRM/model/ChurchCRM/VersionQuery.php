@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\VersionQuery as BaseVersionQuery;
+use ChurchCRM\model\ChurchCRM\Base\VersionQuery as BaseVersionQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'version_ver' table.

@@ -3,6 +3,7 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Emails\NotificationEmail;
+use ChurchCRM\model\ChurchCRM\Person;
 use Vonage\Client;
 use Vonage\Client\Credentials\Basic;
 
@@ -11,10 +12,6 @@ class Notification
     protected $projectorText;
     protected $recipients;
     protected $person;
-
-    public function __construct()
-    {
-    }
 
     public function setRecipients($recipients)
     {
@@ -29,9 +26,9 @@ class Notification
     {
     }
 
-    public function setPerson(\ChurchCRM\Person $Person)
+    public function setPerson(Person $Person)
     {
-        $this->person  = $Person;
+        $this->person = $Person;
     }
 
     public function setProjectorText($text)
@@ -45,9 +42,11 @@ class Notification
         foreach ($this->recipients as $recipient) {
             array_push($emailaddresses, $recipient->getEmail());
         }
+
         try {
             $email = new NotificationEmail($emailaddresses, $this->person->getFullName());
             $emailStatus = $email->send();
+
             return $emailStatus;
         } catch (\Exception $ex) {
             return false;
@@ -57,16 +56,17 @@ class Notification
     private function sendSMS()
     {
         try {
-            $client = new Client(new Basic(SystemConfig::getValue("sNexmoAPIKey"), SystemConfig::getValue("sNexmoAPISecret")));
+            $client = new Client(new Basic(SystemConfig::getValue('sNexmoAPIKey'), SystemConfig::getValue('sNexmoAPISecret')));
 
             foreach ($this->recipients as $recipient) {
                 $message = $client->message()->sendText([
-                'to' => $recipient->getNumericCellPhone(),
-                'from' => SystemConfig::getValue("sNexmoFromNumber"),
-                'text' => gettext('Notification for') . " " . $this->person->getFullName()
+                    'to'   => $recipient->getNumericCellPhone(),
+                    'from' => SystemConfig::getValue('sNexmoFromNumber'),
+                    'text' => gettext('Notification for').' '.$this->person->getFullName(),
                 ]);
             }
-            return $message;
+
+            return true;
         } catch (\Exception $ex) {
             return false;
         }
@@ -76,11 +76,12 @@ class Notification
     {
         try {
             $OLPAlert = new OpenLPNotification(
-                SystemConfig::getValue("sOLPURL"),
-                SystemConfig::getValue("sOLPUserName"),
-                SystemConfig::getValue("sOLPPassword")
+                SystemConfig::getValue('sOLPURL'),
+                SystemConfig::getValue('sOLPUserName'),
+                SystemConfig::getValue('sOLPPassword')
             );
             $OLPAlert->setAlertText($this->projectorText);
+
             return $OLPAlert->send();
         } catch (\Exception $ex) {
             return false;
@@ -89,23 +90,22 @@ class Notification
 
     public function send()
     {
-
         $methods = [];
         if (SystemConfig::hasValidMailServerSettings()) {
             $send = $this->sendEmail();
-            array_push($methods, "email: " . $send);
+            array_push($methods, 'email: '.$send);
         }
         if (SystemConfig::hasValidSMSServerSettings()) {
-            $send = (bool)$this->sendSMS();
-            array_push($methods, "sms: " . $send);
+            $send = (bool) $this->sendSMS();
+            array_push($methods, 'sms: '.$send);
         }
         if (SystemConfig::hasValidOpenLPSettings()) {
-            $send = (bool)($this->sendProjector());
-            array_push($methods, "projector: " . $send);
+            $send = (bool) $this->sendProjector();
+            array_push($methods, 'projector: '.$send);
         }
         $sendStatus = [
-        "status" => "",
-        "methods" => $methods
+            'status'  => '',
+            'methods' => $methods,
         ];
 
         return json_encode($sendStatus, JSON_THROW_ON_ERROR);

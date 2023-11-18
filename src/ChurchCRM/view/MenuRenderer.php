@@ -24,9 +24,9 @@ class MenuRenderer
     private static function renderMenuItem(MenuItem $menuItem)
     {
         ?>
-        <li class="nav-item <?= $menuItem->isActive() ? "active" : ""?>">
+        <li class="nav-item<?= $menuItem->isActive() ? " active" : ""?>">
             <a href="<?= $menuItem->getURI() ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?> class="nav-link">
-                <i class='fa <?= $menuItem->getIcon() ?>'></i>
+                <i class='nav-icon fa <?= $menuItem->getIcon() ?>'></i>
                 <p>
                     <?= $menuItem->getName() ?>
                     <?php self::renderMenuCounters($menuItem) ?>
@@ -39,14 +39,14 @@ class MenuRenderer
     private static function renderSubMenuItem(MenuItem $menuItem)
     {
         ?>
-        <div class="nav-item <?= $menuItem->openMenu() ? "menu-open active" : "" ?>">
+        <div class="nav-item<?= $menuItem->openMenu() ? " menu-open active" : "" ?>">
             <a href="#" class="nav-link">
-                <i class="fa <?= $menuItem->getIcon() ?>"></i>
-                <span>
+                <i class="nav-icon fa <?= $menuItem->getIcon() ?>"></i>
+                <p>
                     <b><?= $menuItem->getName() ?></b>
                     <?php self::renderMenuCounters($menuItem) ?>
-                </span>
-                <i class="right fas fa-angle-left"></i>
+                    <i class="right fas fa-angle-left"></i>
+                </p>
             </a>
             <ul class="nav nav-treeview">
             <?php foreach ($menuItem->getSubItems() as $menuSubItem) {

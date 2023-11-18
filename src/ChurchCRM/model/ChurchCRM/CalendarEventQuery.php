@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\CalendarEventQuery as BaseCalendarEventQuery;
+use ChurchCRM\model\ChurchCRM\Base\CalendarEventQuery as BaseCalendarEventQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'calendar_events' table.
@@ -12,7 +12,6 @@ use ChurchCRM\Base\CalendarEventQuery as BaseCalendarEventQuery;
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
- *
  */
 class CalendarEventQuery extends BaseCalendarEventQuery
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\WhyCame as BaseWhyCame;
+use ChurchCRM\model\ChurchCRM\Base\WhyCame as BaseWhyCame;
 
 /**
  * Skeleton subclass for representing a row from the 'whycame_why' table.

@@ -3,7 +3,7 @@
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonRoleDataCheck implements TaskInterface
@@ -14,7 +14,7 @@ class PersonRoleDataCheck implements TaskInterface
     {
         $personQuery = PersonQuery::create()->filterByFmrId(0)
             ->filterById(1, Criteria::NOT_EQUAL)
-            ->filterByFamId("", Criteria::NOT_EQUAL)
+            ->filterByFamId('', Criteria::NOT_EQUAL)
             ->find();
         $this->count = $personQuery->count();
     }
@@ -31,16 +31,16 @@ class PersonRoleDataCheck implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/v2/people?FamilyRole=0';
+        return SystemURLs::getRootPath().'/v2/people?FamilyRole=0';
     }
 
     public function getTitle(): string
     {
-        return gettext('Missing Role Data') . " (" . $this->count . ")";
+        return gettext('Missing Role Data').' ('.$this->count.')';
     }
 
     public function getDesc(): string
     {
-        return gettext("Missing Role Data for Some People");
+        return gettext('Missing Role Data for Some People');
     }
 }

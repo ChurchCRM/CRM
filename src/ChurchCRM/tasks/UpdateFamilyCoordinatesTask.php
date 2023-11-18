@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Tasks;
 
-use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 
 class UpdateFamilyCoordinatesTask
 {
@@ -11,7 +11,7 @@ class UpdateFamilyCoordinatesTask
 
     public function __construct()
     {
-        $query = FamilyQuery::create()->filterByLatitude("")->find();
+        $query = FamilyQuery::create()->filterByLatitude('')->find();
         $this->count = $query->count();
     }
 
@@ -27,16 +27,16 @@ class UpdateFamilyCoordinatesTask
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/UpdateAllLatLon.php';
+        return SystemURLs::getRootPath().'/UpdateAllLatLon.php';
     }
 
     public function getTitle(): string
     {
-        return gettext('Missing Coordinates') . " (" . $this->count . ")";
+        return gettext('Missing Coordinates').' ('.$this->count.')';
     }
 
     public function getDesc(): string
     {
-        return gettext("Family Coordinates Data for Some Families");
+        return gettext('Family Coordinates Data for Some Families');
     }
 }

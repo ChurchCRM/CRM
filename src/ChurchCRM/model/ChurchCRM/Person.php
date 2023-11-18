@@ -1,13 +1,14 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
+use ChurchCRM\PhotoInterface;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -70,9 +71,11 @@ class Person extends BasePerson implements PhotoInterface
             if ($birthYear === '') {
                 $birthYear = 1900;
             }
-            return date_create($birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
+
+            return \DateTimeImmutable::createFromFormat('Y-m-d', $birthYear.'-'.$this->getBirthMonth().'-'.$this->getBirthDay());
         }
-        return false;
+
+        return null;
     }
 
     public function getFormattedBirthDate()
@@ -82,15 +85,15 @@ class Person extends BasePerson implements PhotoInterface
             return false;
         }
         if ($this->hideAge()) {
-            return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));
+            return $birthDate->format(SystemConfig::getValue('sDateFormatNoYear'));
         } else {
-            return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
+            return $birthDate->format(SystemConfig::getValue('sDateFormatLong'));
         }
     }
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->getId();
+        return SystemURLs::getRootPath().'/PersonView.php?PersonID='.$this->getId();
     }
 
     public function getFamilyRole()
@@ -122,6 +125,7 @@ class Person extends BasePerson implements PhotoInterface
         if (!empty($clsId)) {
             $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($clsId)->findOne();
         }
+
         return $classification;
     }
 
@@ -132,16 +136,17 @@ class Person extends BasePerson implements PhotoInterface
         if ($classification !== null) {
             $classificationName = $classification->getOptionName();
         }
+
         return $classificationName;
     }
 
     public function postInsert(ConnectionInterface $con = null)
     {
         $this->createTimeLineNote('create');
-        if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
+        if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
             $NotificationEmail = new NewPersonOrFamilyEmail($this);
             if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext("New Person Notification Email Error") . " :" . $NotificationEmail->getError());
+                LoggerUtils::getAppLogger()->warning(gettext('New Person Notification Email Error').' :'.$NotificationEmail->getError());
             }
         }
     }
@@ -161,12 +166,12 @@ class Person extends BasePerson implements PhotoInterface
         $note->setDateEntered(new DateTime());
 
         switch ($type) {
-            case "create":
+            case 'create':
                 $note->setText(gettext('Created'));
                 $note->setEnteredBy($this->getEnteredBy());
                 $note->setDateEntered($this->getDateEntered());
                 break;
-            case "edit":
+            case 'edit':
                 $note->setText(gettext('Updated'));
                 $note->setEnteredBy($this->getEditedBy());
                 $note->setDateEntered($this->getDateLastEdited());
@@ -185,6 +190,7 @@ class Person extends BasePerson implements PhotoInterface
 
     /**
      * Get address of  a person. If empty, return family address.
+     *
      * @return string
      */
     public function getAddress()
@@ -193,11 +199,11 @@ class Person extends BasePerson implements PhotoInterface
             $address = [];
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
-                $tmp = $tmp . ' ' . $this->getAddress2();
+                $tmp = $tmp.' '.$this->getAddress2();
             }
             array_push($address, $tmp);
             if (!empty($this->getCity())) {
-                array_push($address, $this->getCity() . ',');
+                array_push($address, $this->getCity().',');
             }
             if (!empty($this->getState())) {
                 array_push($address, $this->getState());
@@ -208,6 +214,7 @@ class Person extends BasePerson implements PhotoInterface
             if (!empty($this->getCountry())) {
                 array_push($address, $this->getCountry());
             }
+
             return implode(' ', $address);
         } else {
             if ($this->getFamily()) {
@@ -216,11 +223,12 @@ class Person extends BasePerson implements PhotoInterface
             }
         }
         //if it reaches here, no address found. return empty $address
-        return "";
+        return '';
     }
 
     /**
      * Get name of a person family.
+     *
      * @return string
      */
     public function getFamilyName()
@@ -229,12 +237,13 @@ class Person extends BasePerson implements PhotoInterface
             return $this->getFamily()
               ->getName();
         }
-      //if it reaches here, no family name found. return empty family name
-        return "";
+        //if it reaches here, no family name found. return empty family name
+        return '';
     }
 
     /**
      * Get name of a person family.
+     *
      * @return string
      */
     public function getFamilyCountry()
@@ -243,15 +252,16 @@ class Person extends BasePerson implements PhotoInterface
             return $this->getFamily()
               ->getCountry();
         }
-      //if it reaches here, no country found. return empty country
-        return "";
+        //if it reaches here, no country found. return empty country
+        return '';
     }
 
-     /**
+    /**
      * Get Phone of a person family.
      * 0 = Home
      * 1 = Work
-     * 2 = Cell
+     * 2 = Cell.
+     *
      * @return string
      */
     public function getFamilyPhone($type)
@@ -265,23 +275,25 @@ class Person extends BasePerson implements PhotoInterface
                 break;
             case 1:
                 if ($this->getFamily()) {
-                      return $this->getFamily()
-                      ->getWorkPhone();
+                    return $this->getFamily()
+                    ->getWorkPhone();
                 }
                 break;
             case 2:
                 if ($this->getFamily()) {
-                      return $this->getFamily()
-                      ->getCellPhone();
+                    return $this->getFamily()
+                    ->getCellPhone();
                 }
                 break;
         }
-      //if it reaches here, no phone found. return empty phone
-        return "";
+        //if it reaches here, no phone found. return empty phone
+        return '';
     }
+
     /**
      * * If person address found, return latitude and Longitude of person address
-     * else return family latitude and Longitude
+     * else return family latitude and Longitude.
+     *
      * @return array
      */
     public function getLatLng()
@@ -296,18 +308,19 @@ class Person extends BasePerson implements PhotoInterface
                 $lng = $latLng['Longitude'];
             }
         } else {
-         // Philippe Logel : this is usefull when a person don't have a family : ie not an address
+            // Philippe Logel : this is usefull when a person don't have a family : ie not an address
             if (!empty($this->getFamily())) {
                 if (!$this->getFamily()->hasLatitudeAndLongitude()) {
-                       $this->getFamily()->updateLanLng();
+                    $this->getFamily()->updateLanLng();
                 }
                 $lat = $this->getFamily()->getLatitude();
                 $lng = $this->getFamily()->getLongitude();
             }
         }
+
         return [
-          'Latitude' => $lat,
-          'Longitude' => $lng
+            'Latitude'  => $lat,
+            'Longitude' => $lng,
         ];
     }
 
@@ -316,22 +329,25 @@ class Person extends BasePerson implements PhotoInterface
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
                 $note = new Note();
-                $note->setText(gettext("Profile Image Deleted"));
-                $note->setType("photo");
+                $note->setText(gettext('Profile Image Deleted'));
+                $note->setType('photo');
                 $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                 $note->setPerId($this->getId());
                 $note->save();
+
                 return true;
             }
         }
+
         return false;
     }
 
     public function getPhoto()
     {
         if (!$this->photo) {
-            $this->photo = new Photo("Person", $this->getId());
+            $this->photo = new Photo('Person', $this->getId());
         }
+
         return $this->photo;
     }
 
@@ -339,14 +355,16 @@ class Person extends BasePerson implements PhotoInterface
     {
         if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
             $note = new Note();
-            $note->setText(gettext("Profile Image uploaded"));
-            $note->setType("photo");
+            $note->setText(gettext('Profile Image uploaded'));
+            $note->setType('photo');
             $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setPerId($this->getId());
             $note->save();
+
             return true;
         }
+
         return false;
     }
 
@@ -360,9 +378,10 @@ class Person extends BasePerson implements PhotoInterface
      * $Style = 5  :  "Title FirstName LastName"
      * $Style = 6  :  "LastName, Title FirstName"
      * $Style = 7  :  "LastName FirstName"
-     * $Style = 8  :  "LastName, FirstName Middlename"
+     * $Style = 8  :  "LastName, FirstName Middlename".
      *
      * @param $Style
+     *
      * @return string
      */
     public function getFormattedName($Style)
@@ -371,101 +390,101 @@ class Person extends BasePerson implements PhotoInterface
         switch ($Style) {
             case 0:
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle() . ' ';
+                    $nameString .= $this->getTitle().' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' ' . $this->getMiddleName();
+                    $nameString .= ' '.$this->getMiddleName();
                 }
                 if ($this->getLastName()) {
-                    $nameString .= ' ' . $this->getLastName();
+                    $nameString .= ' '.$this->getLastName();
                 }
                 if ($this->getSuffix()) {
-                    $nameString .= ', ' . $this->getSuffix();
+                    $nameString .= ', '.$this->getSuffix();
                 }
                 break;
 
             case 1:
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle() . ' ';
+                    $nameString .= $this->getTitle().' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' ' . strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')) . '.';
+                    $nameString .= ' '.strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')).'.';
                 }
                 if ($this->getLastName()) {
-                    $nameString .= ' ' . $this->getLastName();
+                    $nameString .= ' '.$this->getLastName();
                 }
                 if ($this->getSuffix()) {
-                    $nameString .= ', ' . $this->getSuffix();
+                    $nameString .= ', '.$this->getSuffix();
                 }
                 break;
 
             case 2:
                 if ($this->getLastName()) {
-                    $nameString .= $this->getLastName() . ', ';
+                    $nameString .= $this->getLastName().', ';
                 }
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle() . ' ';
+                    $nameString .= $this->getTitle().' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' ' . $this->getMiddleName();
+                    $nameString .= ' '.$this->getMiddleName();
                 }
                 if ($this->getSuffix()) {
-                    $nameString .= ', ' . $this->getSuffix();
+                    $nameString .= ', '.$this->getSuffix();
                 }
                 break;
 
             case 3:
                 if ($this->getLastName()) {
-                    $nameString .= $this->getLastName() . ', ';
+                    $nameString .= $this->getLastName().', ';
                 }
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle() . ' ';
+                    $nameString .= $this->getTitle().' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' ' . strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')) . '.';
+                    $nameString .= ' '.strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')).'.';
                 }
                 if ($this->getSuffix()) {
-                    $nameString .= ', ' . $this->getSuffix();
+                    $nameString .= ', '.$this->getSuffix();
                 }
                 break;
 
             case 4:
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' ' . $this->getMiddleName();
+                    $nameString .= ' '.$this->getMiddleName();
                 }
                 if ($this->getLastName()) {
-                    $nameString .= ' ' . $this->getLastName();
+                    $nameString .= ' '.$this->getLastName();
                 }
                 break;
 
             case 5:
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle() . ' ';
+                    $nameString .= $this->getTitle().' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getLastName()) {
-                    $nameString .= ' ' . $this->getLastName();
+                    $nameString .= ' '.$this->getLastName();
                 }
                 break;
 
             case 6:
                 if ($this->getLastName()) {
-                    $nameString .= $this->getLastName() . ', ';
+                    $nameString .= $this->getLastName().', ';
                 }
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle() . ' ';
+                    $nameString .= $this->getTitle().' ';
                 }
                 $nameString .= $this->getFirstName();
                 break;
 
             case 7:
                 if ($this->getLastName()) {
-                    $nameString .= $this->getLastName() . ' ';
+                    $nameString .= $this->getLastName().' ';
                 }
                 if ($this->getFirstName()) {
                     $nameString .= $this->getFirstName();
@@ -482,16 +501,17 @@ class Person extends BasePerson implements PhotoInterface
                     if (!$nameString) { // no first name
                         $nameString = $this->getFirstName();
                     } else {
-                        $nameString .= ', ' . $this->getFirstName();
+                        $nameString .= ', '.$this->getFirstName();
                     }
                 }
                 if ($this->getMiddleName()) {
-                    $nameString .= ' ' . $this->getMiddleName();
+                    $nameString .= ' '.$this->getMiddleName();
                 }
                 break;
             default:
                 $nameString = trim($this->getFullName());
         }
+
         return $nameString;
     }
 
@@ -520,7 +540,7 @@ class Person extends BasePerson implements PhotoInterface
         PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->delete($con);
 
         PropertyQuery::create()
-            ->filterByProClass("p")
+            ->filterByProClass('p')
             ->useRecordPropertyQuery()
             ->filterByRecordId($this->getId())
             ->delete($con);
@@ -533,10 +553,11 @@ class Person extends BasePerson implements PhotoInterface
     public function getProperties()
     {
         $personProperties = PropertyQuery::create()
-          ->filterByProClass("p")
+          ->filterByProClass('p')
           ->useRecordPropertyQuery()
           ->filterByRecordId($this->getId())
           ->find();
+
         return $personProperties;
     }
 
@@ -545,15 +566,16 @@ class Person extends BasePerson implements PhotoInterface
     public function getPropertiesString()
     {
         $personProperties = PropertyQuery::create()
-          ->filterByProClass("p")
+          ->filterByProClass('p')
           ->leftJoinRecordProperty()
-          ->where('r2p_record_ID=' . $this->getId())
+          ->where('r2p_record_ID='.$this->getId())
           ->find();
 
         $PropertiesList = [];
         foreach ($personProperties as $element) {
             $PropertiesList[] = $element->getProName();
         }
+
         return $PropertiesList;
     }
 
@@ -561,11 +583,11 @@ class Person extends BasePerson implements PhotoInterface
     // created for the person-list.php datatable
     public function getCustomFields()
     {
-      // get list of custom field column names
+        // get list of custom field column names
         $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
 
-      // add custom fields to person_custom table since they are not defined in the propel schema
-        $rawQry =  PersonCustomQuery::create();
+        // add custom fields to person_custom table since they are not defined in the propel schema
+        $rawQry = PersonCustomQuery::create();
         foreach ($allPersonCustomFields as $customfield) {
             if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 $rawQry->withColumn($customfield->getId());
@@ -573,7 +595,7 @@ class Person extends BasePerson implements PhotoInterface
         }
         $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
 
-      // get custom column names and values
+        // get custom column names and values
         $personCustom = [];
         if ($rawQry->count() > 0) {
             foreach ($allPersonCustomFields as $customfield) {
@@ -585,32 +607,36 @@ class Person extends BasePerson implements PhotoInterface
                 }
             }
         }
+
         return $personCustom;
     }
+
     // return array of person groups
     // created for the person-list.php datatable
     public function getGroups()
     {
         $GroupList = GroupQuery::create()
         ->leftJoinPerson2group2roleP2g2r()
-        ->where('p2g2r_per_ID=' . $this->getId())
+        ->where('p2g2r_per_ID='.$this->getId())
         ->find();
 
         $group = [];
         foreach ($GroupList as $element) {
             $group[] = $element->getName();
         }
+
         return $group;
     }
 
     public function getNumericCellPhone()
     {
-        return "1" . preg_replace('/[^\.0-9]/', "", $this->getCellPhone());
+        return '1'.preg_replace('/[^\.0-9]/', '', $this->getCellPhone());
     }
 
     public function postSave(ConnectionInterface $con = null)
     {
         $this->getPhoto()->refresh();
+
         return parent::postSave($con);
     }
 
@@ -622,7 +648,7 @@ class Person extends BasePerson implements PhotoInterface
             return false;
         }
         if (empty($now)) {
-            $now = date_create('today');
+            $now = new \DateTimeImmutable('today');
         }
         $age = date_diff($now, $birthDate);
 
@@ -648,25 +674,27 @@ class Person extends BasePerson implements PhotoInterface
         } else {
             $ageValue = $age->y;
         }
+
         return $ageValue;
     }
 
     /* Philippe Logel 2017 */
     public function getFullNameWithAge()
     {
-        return $this->getFullName() . " " . $this->getAge();
+        return $this->getFullName().' '.$this->getAge();
     }
 
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
     {
         $array = parent::toArray();
         $array['Address'] = $this->getAddress();
+
         return $array;
     }
 
     public function getThumbnailURL()
     {
-        return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
+        return SystemURLs::getRootPath().'/api/person/'.$this->getId().'/thumbnail';
     }
 
     public function getEmail()
@@ -677,6 +705,7 @@ class Person extends BasePerson implements PhotoInterface
                 return $family->getEmail();
             }
         }
+
         return parent::getEmail();
     }
 }

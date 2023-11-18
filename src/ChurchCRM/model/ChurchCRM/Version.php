@@ -1,8 +1,9 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Version as BaseVersion;
+use ChurchCRM\ArrayUtils;
+use ChurchCRM\model\ChurchCRM\Base\Version as BaseVersion;
 
 /**
  * Skeleton subclass for representing a row from the 'version_ver' table.
@@ -18,7 +19,7 @@ class Version extends BaseVersion
     public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null)
     {
         //before we try to save this version object to the database, ensure that
-    //the database has the correct columns to accomedate the version data
+        //the database has the correct columns to accomedate the version data
 
         $query = 'DESCRIBE version_ver';
         $statement = $con->prepare($query);
@@ -36,7 +37,7 @@ class Version extends BaseVersion
             $statement = $con->prepare($query);
             $resultset = $statement->execute();
         }
-    //then save this version
+        //then save this version
 
         return true;
     }

@@ -1,12 +1,12 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\Deposit as BaseDeposit;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Map\DonationFundTableMap;
-use ChurchCRM\Map\PledgeTableMap;
-use ChurchCRM\PledgeQuery as ChildPledgeQuery;
+use ChurchCRM\model\ChurchCRM\Base\Deposit as BaseDeposit;
+use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
+use ChurchCRM\model\ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 
@@ -36,47 +36,47 @@ class Deposit extends BaseDeposit
         }
 
         $orgName = 'ChurchCRM Deposit Data';
-        $OFXReturn->content = 'OFXHEADER:100' . PHP_EOL .
-            'DATA:OFXSGML' . PHP_EOL .
-            'VERSION:102' . PHP_EOL .
-            'SECURITY:NONE' . PHP_EOL .
-            'ENCODING:USASCII' . PHP_EOL .
-            'CHARSET:1252' . PHP_EOL .
-            'COMPRESSION:NONE' . PHP_EOL .
-            'OLDFILEUID:NONE' . PHP_EOL .
-            'NEWFILEUID:NONE' . PHP_EOL . PHP_EOL;
+        $OFXReturn->content = 'OFXHEADER:100'.PHP_EOL.
+            'DATA:OFXSGML'.PHP_EOL.
+            'VERSION:102'.PHP_EOL.
+            'SECURITY:NONE'.PHP_EOL.
+            'ENCODING:USASCII'.PHP_EOL.
+            'CHARSET:1252'.PHP_EOL.
+            'COMPRESSION:NONE'.PHP_EOL.
+            'OLDFILEUID:NONE'.PHP_EOL.
+            'NEWFILEUID:NONE'.PHP_EOL.PHP_EOL;
         $OFXReturn->content .= '<OFX>';
-        $OFXReturn->content .= '<SIGNONMSGSRSV1><SONRS><STATUS><CODE>0<SEVERITY>INFO</STATUS><DTSERVER>' . date('YmdHis.u[O:T]') . '<LANGUAGE>ENG<FI><ORG>' . $orgName . '<FID>12345</FI></SONRS></SIGNONMSGSRSV1>';
-        $OFXReturn->content .= '<BANKMSGSRSV1>' .
-            '<STMTTRNRS>' .
-            '<TRNUID>' .
-            '<STATUS>' .
-            '<CODE>0' .
-            '<SEVERITY>INFO' .
+        $OFXReturn->content .= '<SIGNONMSGSRSV1><SONRS><STATUS><CODE>0<SEVERITY>INFO</STATUS><DTSERVER>'.date('YmdHis.u[O:T]').'<LANGUAGE>ENG<FI><ORG>'.$orgName.'<FID>12345</FI></SONRS></SIGNONMSGSRSV1>';
+        $OFXReturn->content .= '<BANKMSGSRSV1>'.
+            '<STMTTRNRS>'.
+            '<TRNUID>'.
+            '<STATUS>'.
+            '<CODE>0'.
+            '<SEVERITY>INFO'.
             '</STATUS>';
 
         foreach ($this->getFundTotals() as $fund) {
-            $OFXReturn->content .= '<STMTRS>' .
-                '<CURDEF>USD' .
-                '<BANKACCTFROM>' .
-                '<BANKID>' . $orgName .
-                '<ACCTID>' . $fund['Name'] .
-                '<ACCTTYPE>SAVINGS' .
+            $OFXReturn->content .= '<STMTRS>'.
+                '<CURDEF>USD'.
+                '<BANKACCTFROM>'.
+                '<BANKID>'.$orgName.
+                '<ACCTID>'.$fund['Name'].
+                '<ACCTTYPE>SAVINGS'.
                 '</BANKACCTFROM>';
             $OFXReturn->content .=
-                '<STMTTRN>' .
-                '<TRNTYPE>CREDIT' .
-                '<DTPOSTED>' . $this->getDate('Ymd') .
-                '<TRNAMT>' . $fund['Total'] .
-                '<FITID>' .
-                '<NAME>' . $this->getComment() .
-                '<MEMO>' . $fund['Name'] .
+                '<STMTTRN>'.
+                '<TRNTYPE>CREDIT'.
+                '<DTPOSTED>'.$this->getDate('Ymd').
+                '<TRNAMT>'.$fund['Total'].
+                '<FITID>'.
+                '<NAME>'.$this->getComment().
+                '<MEMO>'.$fund['Name'].
                 '</STMTTRN></STMTRS>';
         }
 
         $OFXReturn->content .= '</STMTTRNRS></BANKTRANLIST></OFX>';
         // Export file
-        $OFXReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $this->getId() . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.ofx';
+        $OFXReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$this->getId().'-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.ofx';
 
         return $OFXReturn;
     }
@@ -123,7 +123,7 @@ class Deposit extends BaseDeposit
         $thisReport->curY += 4;
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write(8, 'Checks: ');
-        $thisReport->pdf->write(8, '(' . $this->getCountChecks() . ')');
+        $thisReport->pdf->write(8, '('.$this->getCountChecks().')');
         $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalChecks()));
         $thisReport->curY += 4;
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
@@ -175,7 +175,7 @@ class Deposit extends BaseDeposit
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
-            if ($pledge->getMethod() == 'CHECK') {
+            if ($pledge->getMethod() === 'CHECK') {
                 $thisReport->pdf->printRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckNo());
                 $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
 
@@ -196,7 +196,7 @@ class Deposit extends BaseDeposit
         $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
         $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->titleX, $thisReport->curY);
         $thisReport->pdf->SetFont('Courier', 'B', 20);
-        $thisReport->pdf->Write(8, 'Deposit Summary ' . $this->getId());
+        $thisReport->pdf->Write(8, 'Deposit Summary '.$this->getId());
         $thisReport->pdf->SetFont('Times', '', 10);
         $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date2X, $thisReport->curY);
         $thisReport->pdf->Write(8, $this->getDate()->format('Y-m-d'));
@@ -246,7 +246,7 @@ class Deposit extends BaseDeposit
 
         $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->title->x, $thisReport->depositSummaryParameters->title->y);
         $thisReport->pdf->SetFont('Courier', 'B', 20);
-        $thisReport->pdf->Write(8, 'Deposit Summary ' . $this->getId());
+        $thisReport->pdf->Write(8, 'Deposit Summary '.$this->getId());
         $thisReport->pdf->SetFont('Times', 'B', 10);
 
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
@@ -291,16 +291,16 @@ class Deposit extends BaseDeposit
             }
 
             if (strlen($checkNo) > 8) {
-                $checkNo = '...' . mb_substr($checkNo, -8, 8);
+                $checkNo = '...'.mb_substr($checkNo, -8, 8);
             }
             if (strlen($fundName) > 20) {
-                $fundName = mb_substr($fundName, 0, 20) . '...';
+                $fundName = mb_substr($fundName, 0, 20).'...';
             }
             if (strlen($comment) > 40) {
-                $comment = mb_substr($comment, 0, 38) . '...';
+                $comment = mb_substr($comment, 0, 38).'...';
             }
             if (strlen($familyName) > 25) {
-                $familyName = mb_substr($familyName, 0, 24) . '...';
+                $familyName = mb_substr($familyName, 0, 24).'...';
             }
 
             $thisReport->pdf->printRightJustified($thisReport->curX + 2, $thisReport->curY, $checkNo);
@@ -354,7 +354,7 @@ class Deposit extends BaseDeposit
 
         if (!empty($this->getComment())) {
             $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-            $thisReport->pdf->MultiCell(0, $thisReport->depositSummaryParameters->summary->intervalY, gettext('Deposit Comment') . ": " . $this->getComment(), 0, 'L');
+            $thisReport->pdf->MultiCell(0, $thisReport->depositSummaryParameters->summary->intervalY, gettext('Deposit Comment').': '.$this->getComment(), 0, 'L');
         }
         $thisReport->curY += 130;
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
@@ -365,7 +365,7 @@ class Deposit extends BaseDeposit
     private function generateWitnessSignature($thisReport)
     {
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
-        $thisReport->curY = $thisReport->pdf->GetPageHeight()  - 30;
+        $thisReport->curY = $thisReport->pdf->GetPageHeight() - 30;
         $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->write(8, 'Witness 1');
         $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
@@ -385,7 +385,7 @@ class Deposit extends BaseDeposit
     {
         requireUserGroupMembership('bFinance');
         $Report = new \stdClass();
-        if (count($this->getPledges()) == 0) {
+        if (count($this->getPledges()) === 0) {
             throw new \Exception('No Payments on this Deposit', 404);
         }
 
@@ -395,12 +395,12 @@ class Deposit extends BaseDeposit
         //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
         $sDepositSlipType = SystemConfig::getValue('sDepositSlipType');
 
-        if ($sDepositSlipType == 'QBDT') {
+        if ($sDepositSlipType === 'QBDT') {
             //Generate a QuickBooks Deposit Ticket.
             $this->generateQBDepositSlip($Report);
-        } elseif ($sDepositSlipType == 'PTDT') {
+        } elseif ($sDepositSlipType === 'PTDT') {
             //placeholder for Peachtree Deposit Tickets.
-        } elseif ($sDepositSlipType == 'GDT') {
+        } elseif ($sDepositSlipType === 'GDT') {
             //placeholder for generic deposit ticket.
         }
         //$this->generateBankDepositSlip($Report);
@@ -408,7 +408,7 @@ class Deposit extends BaseDeposit
         $this->generateDepositSummary($Report);
 
         // Export file
-        $Report->pdf->Output('ChurchCRM-DepositReport-' . $this->getId() . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
+        $Report->pdf->Output('ChurchCRM-DepositReport-'.$this->getId().'-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
     }
 
     public function getTotalAmount()
@@ -469,7 +469,7 @@ class Deposit extends BaseDeposit
         $funds = PledgeQuery::create()
         ->filterByDepId($this->getId())
         ->groupByFundId()
-        ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'Total')
+        ->withColumn('SUM('.PledgeTableMap::COL_PLG_AMOUNT.')', 'Total')
         ->joinDonationFund()
         ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
         ->orderBy(DonationFundTableMap::COL_FUN_NAME)

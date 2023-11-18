@@ -3,9 +3,9 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Base\FamilyQuery;
-use ChurchCRM\Base\ListOptionQuery;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\Base\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -25,14 +25,14 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
     <?= gettext('Missing Families? Update Family Latitude or Longitude now.') ?>
 </div>
 
-<?php if (ChurchMetaData::getChurchLatitude() == '') {
+<?php if (ChurchMetaData::getChurchLatitude() === '') {
     ?>
     <div class="callout callout-danger">
         <?= gettext('Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.') ?>
     </div>
     <?php
 } else {
-    if (SystemConfig::getValue('sGoogleMapsRenderKey') == '') {
+    if (SystemConfig::getValue('sGoogleMapsRenderKey') === '') {
         ?>
         <div class="callout callout-warning">
           <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?></a>

@@ -1029,11 +1029,6 @@ msgid "Edit"
 msgstr "Edytuj"
 
 #: 
-#, fuzzy
-msgid "Message"
-msgstr "Wiadomość"
-
-#: 
 msgid "Event Attendees"
 msgstr "Uczestnicy"
 
@@ -1930,10 +1925,6 @@ msgstr "Lista Grup"
 #: 
 msgid "Add New Group"
 msgstr "Dodaj Nową Grupę"
-
-#: 
-msgid "Submit"
-msgstr "Zatwierdź"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -2972,18 +2963,6 @@ msgid "Execute Query"
 msgstr "Wyszukaj"
 
 #: 
-msgid "Software Registration"
-msgstr "Rejestracja Programu"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Proszę zarejestrować kopię ChurchCRM, zaznacz to pole i kliknij 'Wyślij'"
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Informacje te zbierane są tylko to śledzenia gdzie program jest używany"
-
-#: 
 msgid "Send"
 msgstr "Wyślij"
 
@@ -3089,10 +3068,6 @@ msgid "Permission"
 msgstr "Uprawnienia"
 
 #: 
-msgid "Base URL"
-msgstr "Domyślny URL"
-
-#: 
 msgid "System Settings"
 msgstr "Ustawienia Systemu"
 
@@ -3114,8 +3089,9 @@ msgid "User Delete Confirmation"
 msgstr "Potwierdznie Usunięcia Użytkownika"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Proszę potwierdzić usunięcie stanu użytkownika z:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Proszę potwierdzić usunięcie stanu użytkownika z"
 
 #: 
 msgid "User Editor"
@@ -3898,10 +3874,6 @@ msgid "Clear All Classes"
 msgstr "Wyczyść wszystkie klasy"
 
 #: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Jeśli musisz poprawić dane rejestracji, przejdź do "
-
-#: 
 msgid "Add Attendees for Event"
 msgstr "Dodaj uczestników wydarzenia"
 
@@ -4167,8 +4139,9 @@ msgid "New Calendar"
 msgstr "Nowy Kalendarz"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Uwaga: bEnableExternalCalendarAPI wyłączony, lecz niektóre kalendarze posiadają token dostepu"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI wyłączony, lecz niektóre kalendarze posiadają token dostepu"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -4909,10 +4882,6 @@ msgstr "Wersja Servera Bazy Danych"
 #: 
 msgid "Web Server"
 msgstr "Serwer WWW"
-
-#: 
-msgid "Server Software"
-msgstr "Oprogramowanie Serwera"
 
 #: 
 msgid "Email Information"

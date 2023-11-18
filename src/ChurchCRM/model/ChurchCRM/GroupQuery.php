@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\GroupQuery as BaseGroupQuery;
+use ChurchCRM\model\ChurchCRM\Base\GroupQuery as BaseGroupQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\Join;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -24,8 +24,8 @@ class GroupQuery extends BaseGroupQuery
         $this->withColumn('COUNT(person2group2role_p2g2r.PersonId)', 'memberCount');
         $this->groupBy('Group.Id');
         $groupTypeJoin = new Join();
-        $groupTypeJoin->addCondition("Group.Type", "list_lst.lst_OptionId", self::EQUAL);
-        $groupTypeJoin->addForeignValueCondition("list_lst", "lst_ID", '', 3, self::EQUAL);
+        $groupTypeJoin->addCondition('Group.Type', 'list_lst.lst_OptionId', self::EQUAL);
+        $groupTypeJoin->addForeignValueCondition('list_lst', 'lst_ID', '', 3, self::EQUAL);
         $groupTypeJoin->setJoinType(Criteria::LEFT_JOIN);
         $this->addJoinObject($groupTypeJoin);
         $this->withColumn('list_lst.lst_OptionName', 'groupType');

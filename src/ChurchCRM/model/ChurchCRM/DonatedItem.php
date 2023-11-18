@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\DonatedItem as BaseDonatedItem;
+use ChurchCRM\model\ChurchCRM\Base\DonatedItem as BaseDonatedItem;
 
 /**
  * Skeleton subclass for representing a row from the 'donateditem_di' table.

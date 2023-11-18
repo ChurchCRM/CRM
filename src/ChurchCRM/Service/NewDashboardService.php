@@ -2,14 +2,20 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Dashboard\ClassificationDashboardItem;
+use ChurchCRM\Dashboard\CurrentLocaleMetadata;
+use ChurchCRM\Dashboard\EventsMenuItems;
+use ChurchCRM\Dashboard\SystemUpdateMenuItem;
+
 class NewDashboardService
 {
     public static function getDashboardItems($PageName)
     {
         $DashboardItems = [
-            \ChurchCRM\Dashboard\EventsMenuItems::class,
-            \ChurchCRM\Dashboard\ClassificationDashboardItem::class,
-            \ChurchCRM\Dashboard\CurrentLocaleMetadata::class
+            EventsMenuItems::class,
+            ClassificationDashboardItem::class,
+            CurrentLocaleMetadata::class,
+            SystemUpdateMenuItem::class,
         ];
         $ReturnValues = [];
         foreach ($DashboardItems as $DashboardItem) {
@@ -17,6 +23,7 @@ class NewDashboardService
                 array_push($ReturnValues, $DashboardItem);
             }
         }
+
         return $ReturnValues;
     }
 
@@ -26,6 +33,7 @@ class NewDashboardService
         foreach (self::getDashboardItems($PageName) as $DashboardItem) {
             $ReturnValues[$DashboardItem::getDashboardItemName()] = $DashboardItem::getDashboardItemValue();
         }
+
         return $ReturnValues;
     }
 }

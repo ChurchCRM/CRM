@@ -148,17 +148,27 @@ function CurrentFY()
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect($iFYID, $selectName)
 {
-    echo '<select class="form-control" name="' . $selectName . '">';
-    echo '<option value="0">' . gettext('Select Fiscal Year') . '</option>';
+    echo sprintf('<select class="form-control" name="%s">', $selectName);
 
+    $hasSelected = false;
+    $selectableOptions = [];
     for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {
-        echo '<option value="' . $fy . '"';
-        if ($iFYID == $fy) {
-            echo ' selected';
+        $selectedTag = '';
+        if ($iFYID === $fy) {
+            $hasSelected = true;
+            $selectedTag = ' selected';
         }
-        echo '>';
-        echo MakeFYString($fy);
+
+        $selectableOptions[] = sprintf('<option value="%s"', $fy) . $selectedTag . '>' . MakeFYString($fy) . '</option>';
     }
+
+    $selectableOptions = [
+        '<option disabled value="0"' . (!$hasSelected ? ' selected' : '') . '>' . gettext('Select Fiscal Year') . '</option>',
+        ...$selectableOptions
+    ];
+
+    echo implode('', $selectableOptions);
+
     echo '</select>';
 }
 
@@ -168,9 +178,9 @@ function MakeFYString($iFYID)
     $monthNow = date('m');
 
     if (SystemConfig::getValue('iFYMonth') == 1) {
-        return 1996 + $iFYID;
+        return (string) (1996 + $iFYID);
     } else {
-        return 1995 + $iFYID . '/' . mb_substr(1996 + $iFYID, 2, 2);
+        return (string) (1995 + $iFYID) . '/' . mb_substr(1996 + $iFYID, 2, 2);
     }
 }
 
@@ -1642,7 +1652,7 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
         $Email = urlencode($Email);  // Mailto should comply with RFC 2368
         ?>
       <a class="dropdown-item" href="<?= $href . mb_substr($Email, 0, -3) ?>"><?=$role?></a>
-        <?php
+<?php
     }
 }
 

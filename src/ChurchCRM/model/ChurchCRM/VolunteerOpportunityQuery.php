@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\VolunteerOpportunityQuery as BaseVolunteerOpportunityQuery;
+use ChurchCRM\model\ChurchCRM\Base\VolunteerOpportunityQuery as BaseVolunteerOpportunityQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'volunteeropportunity_vol' table.

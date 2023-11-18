@@ -2,14 +2,14 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
 {
     public function search($searchTerm, $includeFamilyRole = true)
     {
-        $searchLikeString = '%' . $searchTerm . '%';
+        $searchLikeString = '%'.$searchTerm.'%';
         $people = PersonQuery::create()->
         filterByFirstName($searchLikeString, Criteria::LIKE)->
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
@@ -29,14 +29,14 @@ class PersonService
             $values['role'] = $person->getFamilyRoleName();
 
             if ($includeFamilyRole) {
-                $familyRole = "(";
+                $familyRole = '(';
                 if ($values['familyID']) {
                     if ($person->getFamilyRole()) {
                         $familyRole .= $person->getFamilyRoleName();
                     } else {
                         $familyRole .= gettext('Part');
                     }
-                    $familyRole .= gettext(' of the') . ' <a href="v2/family/' . $values['familyID'] . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
+                    $familyRole .= gettext(' of the').' <a href="v2/family/'.$values['familyID'].'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
                 } else {
                     $familyRole = gettext('(No assigned family)');
                 }

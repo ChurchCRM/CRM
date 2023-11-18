@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\Base\PersonCustomQuery as BasePersonCustomQuery;
+use ChurchCRM\model\ChurchCRM\Base\PersonCustomQuery as BasePersonCustomQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'person_custom' table.

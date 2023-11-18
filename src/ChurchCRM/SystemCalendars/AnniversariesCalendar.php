@@ -3,11 +3,10 @@
 namespace ChurchCRM\SystemCalendars;
 
 use ChurchCRM\Interfaces\SystemCalendar;
-use ChurchCRM\FamilyQuery;
-use Propel\Runtime\Collection\ObjectCollection;
-use ChurchCRM\Event;
-use ChurchCRM\Calendar;
+use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Collection\ObjectCollection;
 
 class AnniversariesCalendar implements SystemCalendar
 {
@@ -23,12 +22,12 @@ class AnniversariesCalendar implements SystemCalendar
 
     public function getBackgroundColor()
     {
-        return "000000";
+        return '000000';
     }
 
     public function getForegroundColor()
     {
-        return "FFFFFF";
+        return 'FFFFFF';
     }
 
     public function getId()
@@ -38,7 +37,7 @@ class AnniversariesCalendar implements SystemCalendar
 
     public function getName()
     {
-        return gettext("Anniversaries");
+        return gettext('Anniversaries');
     }
 
     public function getEvents($start, $end)
@@ -46,6 +45,7 @@ class AnniversariesCalendar implements SystemCalendar
         $families = FamilyQuery::create()
             ->filterByWeddingdate('', Criteria::NOT_EQUAL)
             ->find();
+
         return $this->familyCollectionToEvents($families);
     }
 
@@ -55,23 +55,25 @@ class AnniversariesCalendar implements SystemCalendar
             ->filterByWeddingdate('', Criteria::NOT_EQUAL)
             ->filterById($Id)
             ->find();
+
         return $this->familyCollectionToEvents($families);
     }
 
     private function familyCollectionToEvents(ObjectCollection $Families)
     {
         $events = new ObjectCollection();
-        $events->setModel(\ChurchCRM\Event::class);
+        $events->setModel(Event::class);
         foreach ($Families as $family) {
             $anniversary = new Event();
             $anniversary->setId($family->getId());
             $anniversary->setEditable(false);
-            $anniversary->setTitle(gettext("Anniversary") . ": " . $family->getFamilyString());
+            $anniversary->setTitle(gettext('Anniversary').': '.$family->getFamilyString());
             $year = date('Y');
-            $anniversary->setStart($year . '-' . $family->getWeddingMonth() . '-' . $family->getWeddingDay());
+            $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
             $anniversary->setURL($family->getViewURI());
             $events->push($anniversary);
         }
+
         return $events;
     }
 }

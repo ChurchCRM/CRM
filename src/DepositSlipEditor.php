@@ -13,7 +13,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;

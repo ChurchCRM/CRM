@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Tasks;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 class PHPPendingDeprecationVersionCheckTask implements TaskInterface, PreUpgradeTaskInterface
@@ -21,7 +20,7 @@ class PHPPendingDeprecationVersionCheckTask implements TaskInterface, PreUpgrade
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/v2/admin/debug';
+        return SystemURLs::getRootPath().'/v2/admin/debug';
     }
 
     public function getTitle(): string
@@ -31,6 +30,6 @@ class PHPPendingDeprecationVersionCheckTask implements TaskInterface, PreUpgrade
 
     public function getDesc(): string
     {
-        return gettext('Support for this PHP version will soon be removed.  Current PHP Version: ' . PHP_VERSION . ". Minimum Required PHP Version: " . $this::REQUIRED_PHP_VERSION);
+        return gettext('Support for this PHP version will soon be removed.  Current PHP Version: '.PHP_VERSION.'. Minimum Required PHP Version: '.$this::REQUIRED_PHP_VERSION);
     }
 }

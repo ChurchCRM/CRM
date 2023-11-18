@@ -70,7 +70,7 @@
  * do nasty things to the browsers.  If <span> turns out to be a bad choice for tags, then a
  * non-HTML element can be used instead.
  *
-**/
+ **/
 
 // }}}
 // {{{ settings (editable)
@@ -78,38 +78,71 @@
 var domMenu_data = new domMenu_Hash();
 var domMenu_settings = new domMenu_Hash();
 
-domMenu_settings.setItem('global', new domMenu_Hash(
-    'menuBarClass', 'domMenu_menuBar',
-    'menuElementClass', 'domMenu_menuElement',
-    'menuElementHoverClass', 'domMenu_menuElementHover',
-    'menuElementActiveClass', 'domMenu_menuElementHover',
-    'subMenuBarClass', 'domMenu_subMenuBar',
-    'subMenuElementClass', 'domMenu_subMenuElement',
-    'subMenuElementHoverClass', 'domMenu_subMenuElementHover',
-    'subMenuElementActiveClass', 'domMenu_subMenuElementHover',
-    'subMenuElementHeadingClass', 'domMenu_subMenuElementHeading',
-    'menuBarWidth', '100%',
-    'subMenuMinWidth', 'inherit',
-    'distributeSpace', true,
-    'axis', 'horizontal',
-    'verticalExpand', 'south',
-    'horizontalExpand', 'east',
-    'subMenuWidthCorrection', 0,
-    'verticalSubMenuOffsetY', 0,
-    'verticalSubMenuOffsetX', 0,
-    'horizontalSubMenuOffsetX', 0,
-    'horizontalSubMenuOffsetY', 0,
-    'screenPadding', 0,
-    'openMouseoverMenuDelay', 300,
-    'openMousedownMenuDelay', -1,
-    'closeMouseoutMenuDelay', 800,
-    'closeClickMenuDelay', -1,
-    'openMouseoverSubMenuDelay', 300,
-    'openClickSubMenuDelay', -1,
-    'closeMouseoutSubMenuDelay', 300,
-    'closeClickSubMenuDelay', -1,
-    'baseZIndex', 100
-));
+domMenu_settings.setItem(
+    "global",
+    new domMenu_Hash(
+        "menuBarClass",
+        "domMenu_menuBar",
+        "menuElementClass",
+        "domMenu_menuElement",
+        "menuElementHoverClass",
+        "domMenu_menuElementHover",
+        "menuElementActiveClass",
+        "domMenu_menuElementHover",
+        "subMenuBarClass",
+        "domMenu_subMenuBar",
+        "subMenuElementClass",
+        "domMenu_subMenuElement",
+        "subMenuElementHoverClass",
+        "domMenu_subMenuElementHover",
+        "subMenuElementActiveClass",
+        "domMenu_subMenuElementHover",
+        "subMenuElementHeadingClass",
+        "domMenu_subMenuElementHeading",
+        "menuBarWidth",
+        "100%",
+        "subMenuMinWidth",
+        "inherit",
+        "distributeSpace",
+        true,
+        "axis",
+        "horizontal",
+        "verticalExpand",
+        "south",
+        "horizontalExpand",
+        "east",
+        "subMenuWidthCorrection",
+        0,
+        "verticalSubMenuOffsetY",
+        0,
+        "verticalSubMenuOffsetX",
+        0,
+        "horizontalSubMenuOffsetX",
+        0,
+        "horizontalSubMenuOffsetY",
+        0,
+        "screenPadding",
+        0,
+        "openMouseoverMenuDelay",
+        300,
+        "openMousedownMenuDelay",
+        -1,
+        "closeMouseoutMenuDelay",
+        800,
+        "closeClickMenuDelay",
+        -1,
+        "openMouseoverSubMenuDelay",
+        300,
+        "openClickSubMenuDelay",
+        -1,
+        "closeMouseoutSubMenuDelay",
+        300,
+        "closeClickSubMenuDelay",
+        -1,
+        "baseZIndex",
+        100,
+    ),
+);
 
 // }}}
 // {{{ global variables
@@ -119,20 +152,30 @@ domMenu_settings.setItem('global', new domMenu_Hash(
  * @var domMenu_is{Browser}
  */
 var domMenu_userAgent = navigator.userAgent.toLowerCase();
-var domMenu_isOpera = domMenu_userAgent.indexOf('opera 7') != -1 ? 1 : 0;
-var domMenu_isKonq = domMenu_userAgent.indexOf('konq') != -1 ? 1 : 0;
+var domMenu_isOpera = domMenu_userAgent.indexOf("opera 7") !== -1 ? 1 : 0;
+var domMenu_isKonq = domMenu_userAgent.indexOf("konq") !== -1 ? 1 : 0;
 var domMenu_isIE = !domMenu_isKonq && !domMenu_isOpera && document.all ? 1 : 0;
-var domMenu_isIE50 = domMenu_isIE && domMenu_userAgent.indexOf('msie 5.0') != -1;
-var domMenu_isIE55 = domMenu_isIE && domMenu_userAgent.indexOf('msie 5.5') != -1;
+var domMenu_isIE50 =
+    domMenu_isIE && domMenu_userAgent.indexOf("msie 5.0") !== -1;
+var domMenu_isIE55 =
+    domMenu_isIE && domMenu_userAgent.indexOf("msie 5.5") !== -1;
 var domMenu_isIE5 = domMenu_isIE50 || domMenu_isIE55;
-var domMenu_isSafari = domMenu_userAgent.indexOf('safari') != -1 ? 1 : 0;
-var domMenu_isGecko = !domMenu_isSafari && domMenu_userAgent.indexOf('gecko') != -1 ? 1 : 0;
+var domMenu_isSafari = domMenu_userAgent.indexOf("safari") !== -1 ? 1 : 0;
+var domMenu_isGecko =
+    !domMenu_isSafari && domMenu_userAgent.indexOf("gecko") !== -1 ? 1 : 0;
 
 /**
  * Passport to use the menu system, checked before performing menu manipulation
  * @var domMenu_useLibrary
  */
-var domMenu_useLibrary = domMenu_isIE || domMenu_isGecko || domMenu_isKonq || domMenu_isOpera || domMenu_isSafari ? 1 : 0;
+var domMenu_useLibrary =
+    domMenu_isIE ||
+    domMenu_isGecko ||
+    domMenu_isKonq ||
+    domMenu_isOpera ||
+    domMenu_isSafari
+        ? 1
+        : 0;
 
 /**
  * The data for the menu is stored here, loaded from an external file
@@ -142,8 +185,8 @@ var domMenu_data;
 
 var domMenu_selectElements;
 var domMenu_scrollbarWidth = 14;
-var domMenu_eventTo = domMenu_isIE ? 'toElement' : 'relatedTarget';
-var domMenu_eventFrom = domMenu_isIE ? 'fromElement' : 'relatedTarget';
+var domMenu_eventTo = domMenu_isIE ? "toElement" : "relatedTarget";
+var domMenu_eventFrom = domMenu_isIE ? "fromElement" : "relatedTarget";
 
 var domMenu_activeElement = new domMenu_Hash();
 
@@ -152,18 +195,18 @@ var domMenu_activeElement = new domMenu_Hash();
  * @array domMenu_timeouts
  */
 var domMenu_timeouts = new Array();
-domMenu_timeouts['open'] = new domMenu_Hash();
-domMenu_timeouts['close'] = new domMenu_Hash();
+domMenu_timeouts["open"] = new domMenu_Hash();
+domMenu_timeouts["close"] = new domMenu_Hash();
 
 var domMenu_timeoutStates = new Array();
-domMenu_timeoutStates['open'] = new domMenu_Hash();
-domMenu_timeoutStates['close'] = new domMenu_Hash();
+domMenu_timeoutStates["open"] = new domMenu_Hash();
+domMenu_timeoutStates["close"] = new domMenu_Hash();
 
 /**
  * Style to use for a link pointer, which is different between Gecko and IE
  * @var domMenu_pointerStyle
  */
-var domMenu_pointerStyle = domMenu_isIE ? 'hand' : 'pointer';
+var domMenu_pointerStyle = domMenu_isIE ? "hand" : "pointer";
 
 // }}}
 // {{{ domMenu_Hash()
@@ -185,7 +228,7 @@ function domMenu_Hash() {
 
     this.removeItem = function (in_key) {
         var tmp_value;
-        if (typeof (this.items[in_key]) != 'undefined') {
+        if (typeof this.items[in_key] != "undefined") {
             this.length--;
             if (in_key == parseInt(in_key)) {
                 this.numericLength--;
@@ -196,14 +239,14 @@ function domMenu_Hash() {
         }
 
         return tmp_value;
-    }
+    };
 
     this.getItem = function (in_key) {
         return this.items[in_key];
-    }
+    };
 
     this.setItem = function (in_key, in_value) {
-        if (typeof (this.items[in_key]) == 'undefined') {
+        if (typeof this.items[in_key] == "undefined") {
             this.length++;
             if (in_key == parseInt(in_key)) {
                 this.numericLength++;
@@ -211,15 +254,15 @@ function domMenu_Hash() {
         }
 
         this.items[in_key] = in_value;
-    }
+    };
 
     this.hasItem = function (in_key) {
-        return typeof (this.items[in_key]) != 'undefined';
-    }
+        return typeof this.items[in_key] != "undefined";
+    };
 
     this.merge = function (in_hash) {
         for (var tmp_key in in_hash.items) {
-            if (typeof (this.items[tmp_key]) == 'undefined') {
+            if (typeof this.items[tmp_key] == "undefined") {
                 this.length++;
                 if (tmp_key == parseInt(tmp_key)) {
                     this.numericLength++;
@@ -228,7 +271,7 @@ function domMenu_Hash() {
 
             this.items[tmp_key] = in_hash.items[tmp_key];
         }
-    }
+    };
 
     this.compare = function (in_hash) {
         if (this.length != in_hash.length) {
@@ -236,13 +279,13 @@ function domMenu_Hash() {
         }
 
         for (var tmp_key in this.items) {
-            if (this.items[tmp_key] != in_hash.items[tmp_key]) {
+            if (this.items[tmp_key] !== in_hash.items[tmp_key]) {
                 return false;
             }
         }
 
         return true;
-    }
+    };
 }
 
 // }}}
@@ -253,7 +296,11 @@ function domMenu_activate(in_containerId) {
     var data;
 
     // make sure we can use the menu system and this is a valid menu
-    if (!domMenu_useLibrary || !(container = document.getElementById(in_containerId)) || !(data = domMenu_data.items[in_containerId])) {
+    if (
+        !domMenu_useLibrary ||
+        !(container = document.getElementById(in_containerId)) ||
+        !(data = domMenu_data.items[in_containerId])
+    ) {
         return;
     }
 
@@ -263,103 +310,168 @@ function domMenu_activate(in_containerId) {
     }
 
     var settings = domMenu_settings.items[in_containerId];
-    for (var i in domMenu_settings.items['global'].items) {
+    for (var i in domMenu_settings.items["global"].items) {
         if (!settings.hasItem(i)) {
-            settings.setItem(i, domMenu_settings.items['global'].items[i]);
+            settings.setItem(i, domMenu_settings.items["global"].items[i]);
         }
     }
 
     // populate the zero level element
     container.data = new domMenu_Hash(
-        'parentElement', false,
-        'numChildren', data.numericLength,
-        'childElements', new domMenu_Hash(),
-        'level', 0,
-        'index', 1
+        "parentElement",
+        false,
+        "numChildren",
+        data.numericLength,
+        "childElements",
+        new domMenu_Hash(),
+        "level",
+        0,
+        "index",
+        1,
     );
 
     // if we choose to distribute either height or width, determine ratio of each cell
-    var distributeRatio = Math.round(100 / container.data.items['numChildren']) + '%';
+    var distributeRatio =
+        Math.round(100 / container.data.items["numChildren"]) + "%";
 
     // the first menu is the rootMenu, which is a child of the zero level element
-    var rootMenu = document.createElement('div');
-    rootMenu.id = in_containerId + '[0]';
-    rootMenu.className = settings.items['menuBarClass'];
-    container.data.setItem('subMenu', rootMenu);
+    var rootMenu = document.createElement("div");
+    rootMenu.id = in_containerId + "[0]";
+    rootMenu.className = settings.items["menuBarClass"];
+    container.data.setItem("subMenu", rootMenu);
 
-    var rootMenuTable = rootMenu.appendChild(document.createElement('table'));
+    var rootMenuTable = rootMenu.appendChild(document.createElement("table"));
     if (domMenu_isKonq) {
         rootMenuTable.cellSpacing = 0;
     }
 
     rootMenuTable.style.border = 0;
-    rootMenuTable.style.borderCollapse = 'collapse';
-    rootMenuTable.style.width = settings.items['menuBarWidth'];
-    var rootMenuTableBody = rootMenuTable.appendChild(document.createElement('tbody'));
+    rootMenuTable.style.borderCollapse = "collapse";
+    rootMenuTable.style.width = settings.items["menuBarWidth"];
+    var rootMenuTableBody = rootMenuTable.appendChild(
+        document.createElement("tbody"),
+    );
 
-    var numSiblings = container.data.items['numChildren'];
+    var numSiblings = container.data.items["numChildren"];
     for (var index = 1; index <= numSiblings; index++) {
         // create a row the first time if horizontal or each time if vertical
-        if (index == 1 || settings.items['axis'] == 'vertical') {
-            var rootMenuTableRow = rootMenuTableBody.appendChild(document.createElement('tr'));
+        if (index == 1 || settings.items["axis"] == "vertical") {
+            var rootMenuTableRow = rootMenuTableBody.appendChild(
+                document.createElement("tr"),
+            );
         }
 
         // create an instance of the root level menu element
-        var rootMenuTableCell = rootMenuTableRow.appendChild(document.createElement('td'));
+        var rootMenuTableCell = rootMenuTableRow.appendChild(
+            document.createElement("td"),
+        );
         rootMenuTableCell.style.padding = 0;
-        rootMenuTableCell.id = in_containerId + '[' + index + ']';
+        rootMenuTableCell.id = in_containerId + "[" + index + "]";
         // add element to list of parent children
-        container.data.items['childElements'].setItem(rootMenuTableCell.id, rootMenuTableCell);
+        container.data.items["childElements"].setItem(
+            rootMenuTableCell.id,
+            rootMenuTableCell,
+        );
 
         // assign the settings to the root level element
         // {!} this is a problem if two menus are using the same data {!}
         rootMenuTableCell.data = data.items[index];
-        rootMenuTableCell.data.merge(new domMenu_Hash(
-            'basename', in_containerId,
-            'parentElement', container,
-            'numChildren', rootMenuTableCell.data.numericLength,
-            'childElements', new domMenu_Hash(),
-            'offsets', new domMenu_Hash(),
-            'level', container.data.items['level'] + 1,
-            'index', index
-        ));
+        rootMenuTableCell.data.merge(
+            new domMenu_Hash(
+                "basename",
+                in_containerId,
+                "parentElement",
+                container,
+                "numChildren",
+                rootMenuTableCell.data.numericLength,
+                "childElements",
+                new domMenu_Hash(),
+                "offsets",
+                new domMenu_Hash(),
+                "level",
+                container.data.items["level"] + 1,
+                "index",
+                index,
+            ),
+        );
 
         // assign the styles
-        rootMenuTableCell.style.cursor = 'default';
-        if (settings.items['axis'] == 'horizontal') {
-            if (settings.items['distributeSpace']) {
+        rootMenuTableCell.style.cursor = "default";
+        if (settings.items["axis"] == "horizontal") {
+            if (settings.items["distributeSpace"]) {
                 rootMenuTableCell.style.width = distributeRatio;
             }
         }
 
-        var rootElement = rootMenuTableCell.appendChild(document.createElement('div'));
-        rootElement.className = settings.items['menuElementClass'];
+        var rootElement = rootMenuTableCell.appendChild(
+            document.createElement("div"),
+        );
+        rootElement.className = settings.items["menuElementClass"];
         // fill in the menu element contents
-        rootElement.innerHTML = '<span>' + rootMenuTableCell.data.items['contents'] + '</span>' + (rootMenuTableCell.data.hasItem('contentsHover') ? '<span style="display: none;">' + rootMenuTableCell.data.items['contentsHover'] + '</span>' : '');
+        rootElement.innerHTML =
+            "<span>" +
+            rootMenuTableCell.data.items["contents"] +
+            "</span>" +
+            (rootMenuTableCell.data.hasItem("contentsHover")
+                ? '<span style="display: none;">' +
+                  rootMenuTableCell.data.items["contentsHover"] +
+                  "</span>"
+                : "");
 
         // attach the events
-        rootMenuTableCell.onmouseover = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openMouseoverMenuDelay']); };
-        rootMenuTableCell.onmouseout = function (in_event) { domMenu_closeEvent(this, in_event); };
+        rootMenuTableCell.onmouseover = function (in_event) {
+            domMenu_openEvent(
+                this,
+                in_event,
+                settings.items["openMouseoverMenuDelay"],
+            );
+        };
+        rootMenuTableCell.onmouseout = function (in_event) {
+            domMenu_closeEvent(this, in_event);
+        };
 
-        if (settings.items['openMousedownMenuDelay'] >= 0 && rootMenuTableCell.data.items['numChildren']) {
-            rootMenuTableCell.onmousedown = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openMousedownMenuDelay']); };
+        if (
+            settings.items["openMousedownMenuDelay"] >= 0 &&
+            rootMenuTableCell.data.items["numChildren"]
+        ) {
+            rootMenuTableCell.onmousedown = function (in_event) {
+                domMenu_openEvent(
+                    this,
+                    in_event,
+                    settings.items["openMousedownMenuDelay"],
+                );
+            };
             // cancel mouseup so that it doesn't propagate to global mouseup event
-            rootMenuTableCell.onmouseup = function (in_event) { var eventObj = domMenu_isIE ? event : in_event; eventObj.cancelBubble = true; };
+            rootMenuTableCell.onmouseup = function (in_event) {
+                var eventObj = domMenu_isIE ? event : in_event;
+                eventObj.cancelBubble = true;
+            };
             if (domMenu_isIE) {
-                rootMenuTableCell.ondblclick = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openMousedownMenuDelay']); };
+                rootMenuTableCell.ondblclick = function (in_event) {
+                    domMenu_openEvent(
+                        this,
+                        in_event,
+                        settings.items["openMousedownMenuDelay"],
+                    );
+                };
             }
-        }
-        else if (rootMenuTableCell.data.items['uri']) {
+        } else if (rootMenuTableCell.data.items["uri"]) {
             rootMenuTableCell.style.cursor = domMenu_pointerStyle;
-            rootMenuTableCell.onclick = function (in_event) { domMenu_resolveLink(this, in_event); };
+            rootMenuTableCell.onclick = function (in_event) {
+                domMenu_resolveLink(this, in_event);
+            };
         }
 
         // prevent highlighting of text
         if (domMenu_isIE) {
-            rootMenuTableCell.onselectstart = function () { return false; };
+            rootMenuTableCell.onselectstart = function () {
+                return false;
+            };
         }
 
-        rootMenuTableCell.oncontextmenu = function () { return false; };
+        rootMenuTableCell.oncontextmenu = function () {
+            return false;
+        };
     }
 
     // add the menu rootMenu to the zero level element
@@ -375,31 +487,32 @@ function domMenu_activate(in_containerId) {
 
 function domMenu_activateSubMenu(in_parentElement) {
     // see if submenu already exists
-    if (in_parentElement.data.hasItem('subMenu')) {
-        domMenu_toggleSubMenu(in_parentElement, 'visible');
+    if (in_parentElement.data.hasItem("subMenu")) {
+        domMenu_toggleSubMenu(in_parentElement, "visible");
         return;
     }
 
-    var settings = domMenu_settings.items[in_parentElement.data.items['basename']];
+    var settings =
+        domMenu_settings.items[in_parentElement.data.items["basename"]];
 
     // build the submenu
-    var menu = document.createElement('div');
-    menu.id = in_parentElement.id + '[0]';
-    menu.className = settings.items['subMenuBarClass'];
-    menu.style.zIndex = settings.items['baseZIndex'];
-    menu.style.position = 'absolute';
+    var menu = document.createElement("div");
+    menu.id = in_parentElement.id + "[0]";
+    menu.className = settings.items["subMenuBarClass"];
+    menu.style.zIndex = settings.items["baseZIndex"];
+    menu.style.position = "absolute";
     // position the menu in the upper left corner hidden so that we can work on it
-    menu.style.visibility = 'hidden';
+    menu.style.visibility = "hidden";
     menu.style.top = 0;
     menu.style.left = 0;
 
-    in_parentElement.data.setItem('subMenu', menu);
+    in_parentElement.data.setItem("subMenu", menu);
 
-    var menuTable = menu.appendChild(document.createElement('table'));
+    var menuTable = menu.appendChild(document.createElement("table"));
     // ** opera wants to make absolute tables width 100% **
     if (domMenu_isOpera) {
-        menuTable.style.width = '1px';
-        menuTable.style.whiteSpace = 'nowrap';
+        menuTable.style.width = "1px";
+        menuTable.style.whiteSpace = "nowrap";
     }
 
     if (domMenu_isKonq) {
@@ -407,81 +520,134 @@ function domMenu_activateSubMenu(in_parentElement) {
     }
 
     menuTable.style.border = 0;
-    menuTable.style.borderCollapse = 'collapse';
-    var menuTableBody = menuTable.appendChild(document.createElement('tbody'));
+    menuTable.style.borderCollapse = "collapse";
+    var menuTableBody = menuTable.appendChild(document.createElement("tbody"));
 
-    var numSiblings = in_parentElement.data.items['numChildren'];
+    var numSiblings = in_parentElement.data.items["numChildren"];
     for (var index = 1; index <= numSiblings; index++) {
-        var dataIndex = in_parentElement.data.items['level'] == 1 && settings.items['verticalExpand'] == 'north' && settings.items['axis'] == 'horizontal' ? numSiblings + 1 - index : index;
-        var menuTableCell = menuTableBody.appendChild(document.createElement('tr')).appendChild(document.createElement('td'));
+        var dataIndex =
+            in_parentElement.data.items["level"] == 1 &&
+            settings.items["verticalExpand"] == "north" &&
+            settings.items["axis"] == "horizontal"
+                ? numSiblings + 1 - index
+                : index;
+        var menuTableCell = menuTableBody
+            .appendChild(document.createElement("tr"))
+            .appendChild(document.createElement("td"));
         menuTableCell.style.padding = 0;
-        menuTableCell.id = in_parentElement.id + '[' + dataIndex + ']';
+        menuTableCell.id = in_parentElement.id + "[" + dataIndex + "]";
 
         // add element to list of parent children
-        in_parentElement.data.items['childElements'].setItem(menuTableCell.id, menuTableCell);
+        in_parentElement.data.items["childElements"].setItem(
+            menuTableCell.id,
+            menuTableCell,
+        );
 
         // assign the settings to nth level element
         menuTableCell.data = in_parentElement.data.items[dataIndex];
-        menuTableCell.data.merge(new domMenu_Hash(
-            'basename', in_parentElement.data.items['basename'],
-            'parentElement', in_parentElement,
-            'numChildren', menuTableCell.data.numericLength,
-            'childElements', new domMenu_Hash(),
-            'offsets', new domMenu_Hash(),
-            'level', in_parentElement.data.items['level'] + 1,
-            'index', index
-        ));
+        menuTableCell.data.merge(
+            new domMenu_Hash(
+                "basename",
+                in_parentElement.data.items["basename"],
+                "parentElement",
+                in_parentElement,
+                "numChildren",
+                menuTableCell.data.numericLength,
+                "childElements",
+                new domMenu_Hash(),
+                "offsets",
+                new domMenu_Hash(),
+                "level",
+                in_parentElement.data.items["level"] + 1,
+                "index",
+                index,
+            ),
+        );
 
         // assign the styles
-        var parentStyle = in_parentElement.data.items['level'] == 1 ? in_parentElement.parentNode.style : in_parentElement.style;
-        menuTableCell.style.cursor = 'default';
+        var parentStyle =
+            in_parentElement.data.items["level"] == 1
+                ? in_parentElement.parentNode.style
+                : in_parentElement.style;
+        menuTableCell.style.cursor = "default";
 
-        var element = menuTableCell.appendChild(document.createElement('div'));
+        var element = menuTableCell.appendChild(document.createElement("div"));
         var outerElement = element;
-        outerElement.className = settings.items['subMenuElementClass'];
+        outerElement.className = settings.items["subMenuElementClass"];
 
-        if (menuTableCell.data.items['numChildren']) {
-            element = outerElement.appendChild(document.createElement('div'));
+        if (menuTableCell.data.items["numChildren"]) {
+            element = outerElement.appendChild(document.createElement("div"));
             // {!} depends on which way we are opening {!}
-            element.style.backgroundImage = 'url(arrow.gif)';
-            element.style.backgroundRepeat = 'no-repeat';
-            element.style.backgroundPosition = 'right center';
+            element.style.backgroundImage = "url(arrow.gif)";
+            element.style.backgroundRepeat = "no-repeat";
+            element.style.backgroundPosition = "right center";
             // add appropriate padding to fit the arrow
-            element.style.paddingRight = '12px';
+            element.style.paddingRight = "12px";
         }
 
         // fill in the menu item contents
-        element.innerHTML = menuTableCell.data.items['contents'];
+        element.innerHTML = menuTableCell.data.items["contents"];
 
         // attach the events
-        menuTableCell.onmouseover = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openMouseoverSubMenuDelay']); };
-        menuTableCell.onmouseout = function (in_event) { domMenu_closeEvent(this, in_event); };
+        menuTableCell.onmouseover = function (in_event) {
+            domMenu_openEvent(
+                this,
+                in_event,
+                settings.items["openMouseoverSubMenuDelay"],
+            );
+        };
+        menuTableCell.onmouseout = function (in_event) {
+            domMenu_closeEvent(this, in_event);
+        };
 
-        if (settings.items['openClickSubMenuDelay'] >= 0 && menuTableCell.data.items['numChildren']) {
-            menuTableCell.onmousedown = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openClickSubMenuDelay']); };
-            menuTableCell.onmouseup = function (in_event) { var eventObj = domMenu_isIE ? event : in_event; eventObj.cancelBubble = true; };
+        if (
+            settings.items["openClickSubMenuDelay"] >= 0 &&
+            menuTableCell.data.items["numChildren"]
+        ) {
+            menuTableCell.onmousedown = function (in_event) {
+                domMenu_openEvent(
+                    this,
+                    in_event,
+                    settings.items["openClickSubMenuDelay"],
+                );
+            };
+            menuTableCell.onmouseup = function (in_event) {
+                var eventObj = domMenu_isIE ? event : in_event;
+                eventObj.cancelBubble = true;
+            };
             if (domMenu_isIE) {
-                menuTableCell.ondblclick = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openClickSubMenuDelay']); };
+                menuTableCell.ondblclick = function (in_event) {
+                    domMenu_openEvent(
+                        this,
+                        in_event,
+                        settings.items["openClickSubMenuDelay"],
+                    );
+                };
             }
-        }
-        else if (menuTableCell.data.items['uri']) {
+        } else if (menuTableCell.data.items["uri"]) {
             menuTableCell.style.cursor = domMenu_pointerStyle;
-            menuTableCell.onclick = function (in_event) { domMenu_resolveLink(this, in_event); };
-        }
-        else if (!menuTableCell.data.items['numChildren']) {
-            outerElement.className += ' ' + settings.items['subMenuElementHeadingClass'];
+            menuTableCell.onclick = function (in_event) {
+                domMenu_resolveLink(this, in_event);
+            };
+        } else if (!menuTableCell.data.items["numChildren"]) {
+            outerElement.className +=
+                " " + settings.items["subMenuElementHeadingClass"];
         }
 
         // prevent highlighting of text
         if (domMenu_isIE) {
-            menuTableCell.onselectstart = function () { return false; };
+            menuTableCell.onselectstart = function () {
+                return false;
+            };
         }
 
-        menuTableCell.oncontextmenu = function () { return false; };
+        menuTableCell.oncontextmenu = function () {
+            return false;
+        };
     }
 
     menu = document.body.appendChild(menu);
-    domMenu_toggleSubMenu(in_parentElement, 'visible');
+    domMenu_toggleSubMenu(in_parentElement, "visible");
 }
 
 // }}}
@@ -494,19 +660,25 @@ function domMenu_activateSubMenu(in_parentElement) {
  *
  * @return mixed new active element or false if not set
  */
-function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_closeDelay) {
+function domMenu_changeActivePath(
+    in_newActiveElement,
+    in_oldActiveElement,
+    in_closeDelay,
+) {
     // protect against crap
     if (!in_oldActiveElement && !in_newActiveElement) {
         return false;
     }
 
     // cancel open timeouts since we know we are opening something different now
-    for (var i in domMenu_timeouts['open'].items) {
-        domMenu_cancelTimeout(i, 'open');
+    for (var i in domMenu_timeouts["open"].items) {
+        domMenu_cancelTimeout(i, "open");
     }
 
     // grab some info about this menu system
-    var basename = in_oldActiveElement ? in_oldActiveElement.data.items['basename'] : in_newActiveElement.data.items['basename'];
+    var basename = in_oldActiveElement
+        ? in_oldActiveElement.data.items["basename"]
+        : in_newActiveElement.data.items["basename"];
     var settings = domMenu_settings.items[basename];
 
     // build the old and new paths
@@ -514,11 +686,22 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
     if (in_oldActiveElement) {
         var tmp_oldActivePathElement = in_oldActiveElement;
         do {
-            oldActivePath.setItem(tmp_oldActivePathElement.id, tmp_oldActivePathElement);
-        } while ((tmp_oldActivePathElement = tmp_oldActivePathElement.data.items['parentElement']) && tmp_oldActivePathElement.id != basename);
+            oldActivePath.setItem(
+                tmp_oldActivePathElement.id,
+                tmp_oldActivePathElement,
+            );
+        } while (
+            (tmp_oldActivePathElement =
+                tmp_oldActivePathElement.data.items["parentElement"]) &&
+            tmp_oldActivePathElement.id != basename
+        );
 
         // unhighlight the old active element if it doesn't have children open
-        if (!in_oldActiveElement.data.items['subMenu'] || in_oldActiveElement.data.items['subMenu'].style.visibility == 'hidden') {
+        if (
+            !in_oldActiveElement.data.items["subMenu"] ||
+            in_oldActiveElement.data.items["subMenu"].style.visibility ==
+                "hidden"
+        ) {
             domMenu_toggleHighlight(in_oldActiveElement, false);
         }
     }
@@ -527,12 +710,12 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
     var intersectPoint;
     if (in_newActiveElement) {
         var actualActiveElement = in_newActiveElement;
-        window.status = in_newActiveElement.data.items['statusText'] + ' ';
+        window.status = in_newActiveElement.data.items["statusText"] + " ";
 
         // in the event we have no old active element, just highlight new one and return
         // without setting the new active element (handled later)
         if (!in_oldActiveElement) {
-            domMenu_cancelTimeout(in_newActiveElement.id, 'close');
+            domMenu_cancelTimeout(in_newActiveElement.id, "close");
             domMenu_toggleHighlight(in_newActiveElement, true);
             return false;
         }
@@ -545,20 +728,36 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
         var tmp_newActivePathElement = in_newActiveElement;
         do {
             // if we have met up with the old active path, then record merge point
-            if (!intersectPoint && oldActivePath.hasItem(tmp_newActivePathElement.id)) {
+            if (
+                !intersectPoint &&
+                oldActivePath.hasItem(tmp_newActivePathElement.id)
+            ) {
                 intersectPoint = tmp_newActivePathElement;
             }
 
-            newActivePath.setItem(tmp_newActivePathElement.id, tmp_newActivePathElement);
-            domMenu_cancelTimeout(tmp_newActivePathElement.id, 'close');
+            newActivePath.setItem(
+                tmp_newActivePathElement.id,
+                tmp_newActivePathElement,
+            );
+            domMenu_cancelTimeout(tmp_newActivePathElement.id, "close");
             // {!} this is ugly {!}
-            if (tmp_newActivePathElement != in_oldActiveElement || actualActiveElement == in_oldActiveElement) {
+            if (
+                tmp_newActivePathElement != in_oldActiveElement ||
+                actualActiveElement == in_oldActiveElement
+            ) {
                 domMenu_toggleHighlight(tmp_newActivePathElement, true);
             }
-        } while ((tmp_newActivePathElement = tmp_newActivePathElement.data.items['parentElement']) && tmp_newActivePathElement.id != basename);
+        } while (
+            (tmp_newActivePathElement =
+                tmp_newActivePathElement.data.items["parentElement"]) &&
+            tmp_newActivePathElement.id != basename
+        );
 
         // if we move to the child of the old active element
-        if (in_newActiveElement.data.items['parentElement'] == in_oldActiveElement) {
+        if (
+            in_newActiveElement.data.items["parentElement"] ==
+            in_oldActiveElement
+        ) {
             return in_newActiveElement;
         }
         // if the new active element is in the old active path
@@ -570,24 +769,29 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
         var intersectSibling;
         if (intersectPoint) {
             for (var i in oldActivePath.items) {
-                if (oldActivePath.items[i].data.items['parentElement'] == intersectPoint) {
+                if (
+                    oldActivePath.items[i].data.items["parentElement"] ==
+                    intersectPoint
+                ) {
                     intersectSibling = oldActivePath.items[i];
                     break;
                 }
             }
         }
 
-        var isRootLevel = in_newActiveElement.data.items['level'] == 1 ? true : false;
-        var closeDelay = isRootLevel ? settings.items['closeMouseoutMenuDelay'] : settings.items['closeMouseoutSubMenuDelay'];
-    }
-    else {
+        var isRootLevel =
+            in_newActiveElement.data.items["level"] == 1 ? true : false;
+        var closeDelay = isRootLevel
+            ? settings.items["closeMouseoutMenuDelay"]
+            : settings.items["closeMouseoutSubMenuDelay"];
+    } else {
         var isRootLevel = false;
-        var closeDelay = settings.items['closeMouseoutMenuDelay'];
+        var closeDelay = settings.items["closeMouseoutMenuDelay"];
         window.status = window.defaultStatus;
     }
 
     // override the close delay with that passed in
-    if (typeof (in_closeDelay) != 'undefined') {
+    if (typeof in_closeDelay != "undefined") {
         closeDelay = in_closeDelay;
     }
 
@@ -604,10 +808,10 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
         // {!} clean this up {!}
         else {
             // add lingering menus outside of old active path to active path
-            for (var i in domMenu_timeouts['close'].items) {
+            for (var i in domMenu_timeouts["close"].items) {
                 if (!oldActivePath.hasItem(i)) {
                     var tmp_element = document.getElementById(i);
-                    if (tmp_element.data.items['basename'] == basename) {
+                    if (tmp_element.data.items["basename"] == basename) {
                         oldActivePath.setItem(i, tmp_element);
                     }
                 }
@@ -622,22 +826,27 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
         }
 
         // make sure we don't double schedule here
-        domMenu_cancelTimeout(i, 'close');
+        domMenu_cancelTimeout(i, "close");
 
         if (isRootLevel) {
             domMenu_toggleHighlight(oldActivePath.items[i], false);
-            domMenu_toggleSubMenu(oldActivePath.items[i], 'hidden');
-        }
-        else {
+            domMenu_toggleSubMenu(oldActivePath.items[i], "hidden");
+        } else {
             var tmp_args = new Array();
             tmp_args[0] = oldActivePath.items[i];
-            var tmp_function = 'domMenu_toggleHighlight(argv[0], false); domMenu_toggleSubMenu(argv[0], ' + domMenu_quote('hidden') + ');';
+            var tmp_function =
+                "domMenu_toggleHighlight(argv[0], false); domMenu_toggleSubMenu(argv[0], " +
+                domMenu_quote("hidden") +
+                ");";
             // if this is the top level, then the menu is being deactivated
-            if (oldActivePath.items[i].data.items['level'] == 1) {
-                tmp_function += ' domMenu_activeElement.setItem(' + domMenu_quote(basename) + ', false);';
+            if (oldActivePath.items[i].data.items["level"] == 1) {
+                tmp_function +=
+                    " domMenu_activeElement.setItem(" +
+                    domMenu_quote(basename) +
+                    ", false);";
             }
 
-            domMenu_callTimeout(tmp_function, closeDelay, tmp_args, i, 'close');
+            domMenu_callTimeout(tmp_function, closeDelay, tmp_args, i, "close");
         }
     }
 
@@ -652,7 +861,11 @@ function domMenu_deactivate(in_basename, in_delay) {
         in_delay = 0;
     }
 
-    domMenu_changeActivePath(false, domMenu_activeElement.items[in_basename], in_delay);
+    domMenu_changeActivePath(
+        false,
+        domMenu_activeElement.items[in_basename],
+        in_delay,
+    );
 }
 
 // }}}
@@ -673,44 +886,84 @@ function domMenu_openEvent(in_this, in_event, in_openDelay) {
     // setup the cross-browser event object and target
     var eventObj = domMenu_isIE ? event : in_event;
     var currentTarget = domMenu_isIE ? in_this : eventObj.currentTarget;
-    var basename = currentTarget.data.items['basename'];
+    var basename = currentTarget.data.items["basename"];
 
     // if we are moving amongst children of the same element, just ignore event
-    if (eventObj.type != 'mousedown' && domMenu_getElement(eventObj[domMenu_eventFrom], basename) == currentTarget) {
+    if (
+        eventObj.type !== "mousedown" &&
+        domMenu_getElement(eventObj[domMenu_eventFrom], basename) ==
+            currentTarget
+    ) {
         return;
     }
 
     // if we click on an open menu, close it
-    if (eventObj.type == 'mousedown' && domMenu_activeElement.items[basename]) {
+    if (eventObj.type == "mousedown" && domMenu_activeElement.items[basename]) {
         var settings = domMenu_settings.items[basename];
-        domMenu_changeActivePath(false, domMenu_activeElement.items[basename], currentTarget.data.items['level'] == 1 ? settings.items['closeClickMenuDelay'] : settings.items['closeClickSubMenuDelay']);
+        domMenu_changeActivePath(
+            false,
+            domMenu_activeElement.items[basename],
+            currentTarget.data.items["level"] == 1
+                ? settings.items["closeClickMenuDelay"]
+                : settings.items["closeClickSubMenuDelay"],
+        );
         return;
     }
 
     // if this element has children, popup the child menu
-    if (currentTarget.data.items['numChildren']) {
+    if (currentTarget.data.items["numChildren"]) {
         // the top level menus have no delay when moving between them
         // so activate submenu immediately
-        if (currentTarget.data.items['level'] == 1 && domMenu_activeElement.items[basename]) {
+        if (
+            currentTarget.data.items["level"] == 1 &&
+            domMenu_activeElement.items[basename]
+        ) {
             // ** I place changeActivePath() call here so the hiding of selects does not flicker **
             // {!} instead I could tell changeActivePath to clear select ownership but not
             // toggle visibility....hmmm....{!}
             domMenu_activateSubMenu(currentTarget);
             // clear the active path and initialize the new one
-            domMenu_activeElement.setItem(basename, domMenu_changeActivePath(currentTarget, domMenu_activeElement.items[basename]));
-        }
-        else {
+            domMenu_activeElement.setItem(
+                basename,
+                domMenu_changeActivePath(
+                    currentTarget,
+                    domMenu_activeElement.items[basename],
+                ),
+            );
+        } else {
             // clear the active path and initialize the new one
-            domMenu_activeElement.setItem(basename, domMenu_changeActivePath(currentTarget, domMenu_activeElement.items[basename]));
+            domMenu_activeElement.setItem(
+                basename,
+                domMenu_changeActivePath(
+                    currentTarget,
+                    domMenu_activeElement.items[basename],
+                ),
+            );
             var tmp_args = new Array();
             tmp_args[0] = currentTarget;
-            var tmp_function = 'if (!domMenu_activeElement.items[' + domMenu_quote(basename) + ']) { domMenu_activeElement.setItem(' + domMenu_quote(basename) + ', argv[0]); } domMenu_activateSubMenu(argv[0]);';
-            domMenu_callTimeout(tmp_function, in_openDelay, tmp_args, currentTarget.id, 'open');
+            var tmp_function =
+                "if (!domMenu_activeElement.items[" +
+                domMenu_quote(basename) +
+                "]) { domMenu_activeElement.setItem(" +
+                domMenu_quote(basename) +
+                ", argv[0]); } domMenu_activateSubMenu(argv[0]);";
+            domMenu_callTimeout(
+                tmp_function,
+                in_openDelay,
+                tmp_args,
+                currentTarget.id,
+                "open",
+            );
         }
-    }
-    else {
+    } else {
         // clear the active path and initialize the new one
-        domMenu_activeElement.setItem(basename, domMenu_changeActivePath(currentTarget, domMenu_activeElement.items[basename]));
+        domMenu_activeElement.setItem(
+            basename,
+            domMenu_changeActivePath(
+                currentTarget,
+                domMenu_activeElement.items[basename],
+            ),
+        );
     }
 }
 
@@ -727,20 +980,23 @@ function domMenu_closeEvent(in_this, in_event) {
     // setup the cross-browser event object and target
     var eventObj = domMenu_isIE ? event : in_event;
     var currentTarget = domMenu_isIE ? in_this : eventObj.currentTarget;
-    var basename = currentTarget.data.items['basename'];
+    var basename = currentTarget.data.items["basename"];
     var relatedTarget = domMenu_getElement(eventObj[domMenu_eventTo], basename);
 
     // if the related target is not a menu element then we left the menu system
     // at this point (or cannot discern where we are in the menu)
     if (domMenu_activeElement.items[basename]) {
         if (!relatedTarget) {
-            domMenu_changeActivePath(false, domMenu_activeElement.items[basename]);
+            domMenu_changeActivePath(
+                false,
+                domMenu_activeElement.items[basename],
+            );
         }
     }
     // we are highlighting the top level, but menu is not yet 'active'
     else {
         if (currentTarget != relatedTarget) {
-            domMenu_cancelTimeout(currentTarget.id, 'open');
+            domMenu_cancelTimeout(currentTarget.id, "open");
             domMenu_toggleHighlight(currentTarget, false);
         }
     }
@@ -752,14 +1008,19 @@ function domMenu_closeEvent(in_this, in_event) {
 function domMenu_getElement(in_object, in_basename) {
     while (in_object) {
         try {
-            if (in_object.id && in_object.id.search(new RegExp('^' + in_basename + '(\\[[0-9]\\])*\\[[1-9]\\]$')) == 0) {
+            if (
+                in_object.id &&
+                in_object.id.search(
+                    new RegExp(
+                        "^" + in_basename + "(\\[[0-9]\\])*\\[[1-9]\\]$",
+                    ),
+                ) == 0
+            ) {
                 return in_object;
-            }
-            else {
+            } else {
                 in_object = in_object.parentNode;
             }
-        }
-        catch (e) {
+        } catch (e) {
             return false;
         }
     }
@@ -776,21 +1037,25 @@ function domMenu_detectCollisions(in_menuObj, in_recover) {
         return;
     }
 
-    if (typeof (domMenu_selectElements) == 'undefined') {
-        domMenu_selectElements = document.getElementsByTagName('select');
+    if (typeof domMenu_selectElements == "undefined") {
+        domMenu_selectElements = document.getElementsByTagName("select");
     }
 
     // if we don't have a menu, then unhide selects
     if (in_recover) {
         for (var cnt = 0; cnt < domMenu_selectElements.length; cnt++) {
-            if (domMenu_isGecko && domMenu_selectElements[cnt].size <= 1 && !domMenu_selectElements[cnt].multiple) {
+            if (
+                domMenu_isGecko &&
+                domMenu_selectElements[cnt].size <= 1 &&
+                !domMenu_selectElements[cnt].multiple
+            ) {
                 continue;
             }
 
             var thisSelect = domMenu_selectElements[cnt];
             thisSelect.hideList.removeItem(in_menuObj.id);
             if (!thisSelect.hideList.length) {
-                domMenu_selectElements[cnt].style.visibility = 'visible';
+                domMenu_selectElements[cnt].style.visibility = "visible";
             }
         }
 
@@ -816,31 +1081,63 @@ function domMenu_detectCollisions(in_menuObj, in_recover) {
         var selectOffsets = domMenu_getOffsets(thisSelect);
         // for mozilla we only have to worry about the scrollbar itself
         if (domMenu_isGecko) {
-            selectOffsets.setItem('left', selectOffsets.items['left'] + thisSelect.offsetWidth - domMenu_scrollbarWidth);
-            selectOffsets.setItem('leftCenter', selectOffsets.items['left'] + domMenu_scrollbarWidth / 2);
-            selectOffsets.setItem('radius', Math.max(thisSelect.offsetHeight, domMenu_scrollbarWidth / 2));
+            selectOffsets.setItem(
+                "left",
+                selectOffsets.items["left"] +
+                    thisSelect.offsetWidth -
+                    domMenu_scrollbarWidth,
+            );
+            selectOffsets.setItem(
+                "leftCenter",
+                selectOffsets.items["left"] + domMenu_scrollbarWidth / 2,
+            );
+            selectOffsets.setItem(
+                "radius",
+                Math.max(thisSelect.offsetHeight, domMenu_scrollbarWidth / 2),
+            );
         }
 
-        var center2centerDistance = Math.sqrt(Math.pow(selectOffsets.items['leftCenter'] - menuOffsets.items['leftCenter'], 2) + Math.pow(selectOffsets.items['topCenter'] - menuOffsets.items['topCenter'], 2));
-        var radiusSum = selectOffsets.items['radius'] + menuOffsets.items['radius'];
+        var center2centerDistance = Math.sqrt(
+            Math.pow(
+                selectOffsets.items["leftCenter"] -
+                    menuOffsets.items["leftCenter"],
+                2,
+            ) +
+                Math.pow(
+                    selectOffsets.items["topCenter"] -
+                        menuOffsets.items["topCenter"],
+                    2,
+                ),
+        );
+        var radiusSum =
+            selectOffsets.items["radius"] + menuOffsets.items["radius"];
         // the encompassing circles are overlapping, get in for a closer look
         if (center2centerDistance < radiusSum) {
             // tip is left of select
-            if ((menuOffsets.items['leftCenter'] <= selectOffsets.items['leftCenter'] && menuOffsets.items['right'] < selectOffsets.items['left']) ||
+            if (
+                (menuOffsets.items["leftCenter"] <=
+                    selectOffsets.items["leftCenter"] &&
+                    menuOffsets.items["right"] < selectOffsets.items["left"]) ||
                 // tip is right of select
-                (menuOffsets.items['leftCenter'] > selectOffsets.items['leftCenter'] && menuOffsets.items['left'] > selectOffsets.items['right']) ||
+                (menuOffsets.items["leftCenter"] >
+                    selectOffsets.items["leftCenter"] &&
+                    menuOffsets.items["left"] > selectOffsets.items["right"]) ||
                 // tip is above select
-                (menuOffsets.items['topCenter'] <= selectOffsets.items['topCenter'] && menuOffsets.items['bottom'] < selectOffsets.items['top']) ||
+                (menuOffsets.items["topCenter"] <=
+                    selectOffsets.items["topCenter"] &&
+                    menuOffsets.items["bottom"] < selectOffsets.items["top"]) ||
                 // tip is below select
-                (menuOffsets.items['topCenter'] > selectOffsets.items['topCenter'] && menuOffsets.items['top'] > selectOffsets.items['bottom'])) {
+                (menuOffsets.items["topCenter"] >
+                    selectOffsets.items["topCenter"] &&
+                    menuOffsets.items["top"] > selectOffsets.items["bottom"])
+            ) {
                 thisSelect.hideList.removeItem(in_menuObj.id);
                 if (!thisSelect.hideList.length) {
-                    thisSelect.style.visibility = 'visible';
+                    thisSelect.style.visibility = "visible";
                 }
-            }
-            else {
+            } else {
                 thisSelect.hideList.setItem(in_menuObj.id, true);
-                thisSelect.style.visibility = 'hidden';
+                thisSelect.style.visibility = "hidden";
             }
         }
     }
@@ -863,27 +1160,47 @@ function domMenu_getOffsets(in_object) {
     }
 
     return new domMenu_Hash(
-        'left', offsetLeft,
-        'top', offsetTop,
-        'right', offsetLeft + originalWidth,
-        'bottom', offsetTop + originalHeight,
-        'leftCenter', offsetLeft + originalWidth / 2,
-        'topCenter', offsetTop + originalHeight / 2,
-        'radius', Math.max(originalWidth, originalHeight)
+        "left",
+        offsetLeft,
+        "top",
+        offsetTop,
+        "right",
+        offsetLeft + originalWidth,
+        "bottom",
+        offsetTop + originalHeight,
+        "leftCenter",
+        offsetLeft + originalWidth / 2,
+        "topCenter",
+        offsetTop + originalHeight / 2,
+        "radius",
+        Math.max(originalWidth, originalHeight),
     );
 }
 
 // }}}
 // {{{ domMenu_callTimeout()
 
-function domMenu_callTimeout(in_function, in_timeout, in_args, in_basename, in_type) {
+function domMenu_callTimeout(
+    in_function,
+    in_timeout,
+    in_args,
+    in_basename,
+    in_type,
+) {
     if (in_timeout == 0) {
-        var tmp_function = new Function('argv', in_function);
+        var tmp_function = new Function("argv", in_function);
         tmp_function(in_args);
-    }
-    else if (in_timeout > 0) {
+    } else if (in_timeout > 0) {
         // after we complete the timeout call, we want to remove the reference, so always add that
-        var tmp_function = new Function('argv', in_function + ' domMenu_timeouts[' + domMenu_quote(in_type) + '].removeItem(' + domMenu_quote(in_basename) + ');');
+        var tmp_function = new Function(
+            "argv",
+            in_function +
+                " domMenu_timeouts[" +
+                domMenu_quote(in_type) +
+                "].removeItem(" +
+                domMenu_quote(in_basename) +
+                ");",
+        );
 
         var tmp_args = new Array();
         for (var i = 0; i < in_args.length; i++) {
@@ -891,17 +1208,43 @@ function domMenu_callTimeout(in_function, in_timeout, in_args, in_basename, in_t
         }
 
         if (!domMenu_isKonq && !domMenu_isIE50) {
-            domMenu_timeouts[in_type].setItem(in_basename, setTimeout(function () { tmp_function(tmp_args); }, in_timeout));
-        }
-        else {
+            domMenu_timeouts[in_type].setItem(
+                in_basename,
+                setTimeout(function () {
+                    tmp_function(tmp_args);
+                }, in_timeout),
+            );
+        } else {
             var tmp_data = new Array();
-            tmp_data['function'] = tmp_function;
-            tmp_data['args'] = tmp_args;
+            tmp_data["function"] = tmp_function;
+            tmp_data["args"] = tmp_args;
             domMenu_timeoutStates[in_type].setItem(in_basename, tmp_data);
             var tmp_type = domMenu_quote(in_type);
             var tmp_basename = domMenu_quote(in_basename);
 
-            domMenu_timeouts[in_type].setItem(in_basename, setTimeout('domMenu_timeoutStates[' + tmp_type + '].items[' + tmp_basename + '][' + domMenu_quote('function') + '](domMenu_timeoutStates[' + tmp_type + '].items[' + tmp_basename + '][' + domMenu_quote('args') + ']); domMenu_timeoutStates[' + tmp_type + '].removeItem(' + tmp_basename + ');', in_timeout));
+            domMenu_timeouts[in_type].setItem(
+                in_basename,
+                setTimeout(
+                    "domMenu_timeoutStates[" +
+                        tmp_type +
+                        "].items[" +
+                        tmp_basename +
+                        "][" +
+                        domMenu_quote("function") +
+                        "](domMenu_timeoutStates[" +
+                        tmp_type +
+                        "].items[" +
+                        tmp_basename +
+                        "][" +
+                        domMenu_quote("args") +
+                        "]); domMenu_timeoutStates[" +
+                        tmp_type +
+                        "].removeItem(" +
+                        tmp_basename +
+                        ");",
+                    in_timeout,
+                ),
+            );
         }
     }
 }
@@ -913,8 +1256,7 @@ function domMenu_cancelTimeout(in_basename, in_type) {
     // take advantage of browsers which use the anonymous function
     if (!domMenu_isKonq && !domMenu_isIE50) {
         clearTimeout(domMenu_timeouts[in_type].removeItem(in_basename));
-    }
-    else {
+    } else {
         // if konqueror, we only want to clearTimeout if it is still running
         if (domMenu_timeoutStates[in_type].hasItem(in_basename)) {
             clearTimeout(domMenu_timeouts[in_type].removeItem(in_basename));
@@ -926,24 +1268,36 @@ function domMenu_cancelTimeout(in_basename, in_type) {
 // }}}
 // {{{ domMenu_correctEdgeBleed()
 
-function domMenu_correctEdgeBleed(in_width, in_height, in_x, in_y, in_padding, in_axis) {
+function domMenu_correctEdgeBleed(
+    in_width,
+    in_height,
+    in_x,
+    in_y,
+    in_padding,
+    in_axis,
+) {
     if (domMenu_isIE && !domMenu_isIE5) {
         var pageHeight = document.documentElement.clientHeight;
-    }
-    else if (!domMenu_isKonq) {
+    } else if (!domMenu_isKonq) {
         var pageHeight = document.body.clientHeight;
-    }
-    else {
+    } else {
         var pageHeight = window.innerHeight;
     }
 
-    var pageYOffset = domMenu_isIE ? document.body.scrollTop : window.pageYOffset;
-    var pageXOffset = domMenu_isIE ? document.body.scrollLeft : window.pageXOffset;
+    var pageYOffset = domMenu_isIE
+        ? document.body.scrollTop
+        : window.pageYOffset;
+    var pageXOffset = domMenu_isIE
+        ? document.body.scrollLeft
+        : window.pageXOffset;
 
-
-    if (in_axis == 'horizontal') {
-        var bleedRight = (in_x - pageXOffset) + in_width - (document.body.clientWidth - in_padding);
-        var bleedLeft = (in_x - pageXOffset) - in_padding;
+    if (in_axis == "horizontal") {
+        var bleedRight =
+            in_x -
+            pageXOffset +
+            in_width -
+            (document.body.clientWidth - in_padding);
+        var bleedLeft = in_x - pageXOffset - in_padding;
 
         // we are bleeding off the right, move menu to stay on page
         if (bleedRight > 0) {
@@ -955,10 +1309,10 @@ function domMenu_correctEdgeBleed(in_width, in_height, in_x, in_y, in_padding, i
         if (bleedLeft < 0) {
             in_x += bleedLeft;
         }
-    }
-    else {
-        var bleedTop = (in_y - pageYOffset) - in_padding;
-        var bleedBottom = (in_y - pageYOffset) + in_height - (pageHeight - in_padding);
+    } else {
+        var bleedTop = in_y - pageYOffset - in_padding;
+        var bleedBottom =
+            in_y - pageYOffset + in_height - (pageHeight - in_padding);
 
         // if we are bleeding off the bottom, move menu to stay on page
         if (bleedBottom > 0) {
@@ -979,84 +1333,122 @@ function domMenu_correctEdgeBleed(in_width, in_height, in_x, in_y, in_padding, i
 // {{{ domMenu_toggleSubMenu()
 
 function domMenu_toggleSubMenu(in_parentElement, in_style) {
-    var subMenu = in_parentElement.data.items['subMenu'];
+    var subMenu = in_parentElement.data.items["subMenu"];
     if (subMenu && subMenu.style.visibility != in_style) {
-        var settings = domMenu_settings.items[in_parentElement.data.items['basename']];
-        var prefix = in_parentElement.data.items['level'] == 1 ? 'menu' : 'subMenu';
-        var className = settings.items[prefix + 'ElementClass'];
+        var settings =
+            domMenu_settings.items[in_parentElement.data.items["basename"]];
+        var prefix =
+            in_parentElement.data.items["level"] == 1 ? "menu" : "subMenu";
+        var className = settings.items[prefix + "ElementClass"];
         // :BUG: this is a problem if submenus click to open, then it won't
         // have the right class when you click to close
-        if (in_style == 'visible') {
-            className += ' ' + settings.items[prefix + 'Element' + (in_style == 'visible' ? 'Active' : 'Hover') + 'Class'];
+        if (in_style == "visible") {
+            className +=
+                " " +
+                settings.items[
+                    prefix +
+                        "Element" +
+                        (in_style == "visible" ? "Active" : "Hover") +
+                        "Class"
+                ];
         }
 
         in_parentElement.firstChild.className = className;
 
         // position our submenu
-        if (in_style == 'visible') {
+        if (in_style == "visible") {
             var tmp_offsets = domMenu_getOffsets(in_parentElement);
-            if (in_parentElement.data.items['level'] == 1) {
-                tmp_offsets.items['top'] += settings.items['verticalSubMenuOffsetY'];
-                tmp_offsets.items['bottom'] += settings.items['verticalSubMenuOffsetY'];
-                tmp_offsets.items['left'] += settings.items['verticalSubMenuOffsetX'];
-                tmp_offsets.items['right'] += settings.items['verticalSubMenuOffsetX'];
+            if (in_parentElement.data.items["level"] == 1) {
+                tmp_offsets.items["top"] +=
+                    settings.items["verticalSubMenuOffsetY"];
+                tmp_offsets.items["bottom"] +=
+                    settings.items["verticalSubMenuOffsetY"];
+                tmp_offsets.items["left"] +=
+                    settings.items["verticalSubMenuOffsetX"];
+                tmp_offsets.items["right"] +=
+                    settings.items["verticalSubMenuOffsetX"];
             }
 
             // reposition if there was a change in the parent position/size
-            if (!in_parentElement.data.items['offsets'].compare(tmp_offsets)) {
-                in_parentElement.data.items['offsets'] = tmp_offsets;
+            if (!in_parentElement.data.items["offsets"].compare(tmp_offsets)) {
+                in_parentElement.data.items["offsets"] = tmp_offsets;
 
-                if (settings.items['axis'] == 'horizontal' && in_parentElement.data.items['level'] == 1) {
-                    var xCoor = tmp_offsets.items['left'];
-                    if (settings.items['verticalExpand'] == 'north') {
-                        var yCoor = tmp_offsets.items['top'] - subMenu.offsetHeight - settings.items['verticalSubMenuOffsetY'];
+                if (
+                    settings.items["axis"] == "horizontal" &&
+                    in_parentElement.data.items["level"] == 1
+                ) {
+                    var xCoor = tmp_offsets.items["left"];
+                    if (settings.items["verticalExpand"] == "north") {
+                        var yCoor =
+                            tmp_offsets.items["top"] -
+                            subMenu.offsetHeight -
+                            settings.items["verticalSubMenuOffsetY"];
+                    } else {
+                        var yCoor = tmp_offsets.items["bottom"];
                     }
-                    else {
-                        var yCoor = tmp_offsets.items['bottom'];
-                    }
-                }
-                else {
-                    var xCoor = tmp_offsets.items['right'] + settings.items['horizontalSubMenuOffsetX'];
-                    var yCoor = tmp_offsets.items['top'] + settings.items['horizontalSubMenuOffsetY'];
+                } else {
+                    var xCoor =
+                        tmp_offsets.items["right"] +
+                        settings.items["horizontalSubMenuOffsetX"];
+                    var yCoor =
+                        tmp_offsets.items["top"] +
+                        settings.items["horizontalSubMenuOffsetY"];
                 }
 
-                var minWidth = settings.items['subMenuMinWidth'];
+                var minWidth = settings.items["subMenuMinWidth"];
                 var renderedWidth = subMenu.offsetWidth;
-                if (minWidth == 'inherit') {
-                    minWidth = in_parentElement.offsetWidth + settings.items['subMenuWidthCorrection'];
-                }
-                else if (minWidth == 'auto') {
+                if (minWidth == "inherit") {
+                    minWidth =
+                        in_parentElement.offsetWidth +
+                        settings.items["subMenuWidthCorrection"];
+                } else if (minWidth == "auto") {
                     minWidth = renderedWidth;
                 }
 
                 if (domMenu_isKonq) {
                     // change with width of the first cell
-                    subMenu.firstChild.firstChild.firstChild.firstChild.style.width = Math.max(minWidth, renderedWidth) + 'px';
-                }
-                else {
+                    subMenu.firstChild.firstChild.firstChild.firstChild.style.width =
+                        Math.max(minWidth, renderedWidth) + "px";
+                } else {
                     // change the width of the table
-                    subMenu.firstChild.style.width = Math.max(minWidth, renderedWidth) + 'px';
+                    subMenu.firstChild.style.width =
+                        Math.max(minWidth, renderedWidth) + "px";
                 }
 
-                var coordinates = domMenu_correctEdgeBleed(subMenu.offsetWidth, subMenu.offsetHeight, xCoor, yCoor, settings.items['screenPadding'], settings.items['axis']);
-                subMenu.style.left = coordinates[0] + 'px';
-                subMenu.style.top = coordinates[1] + 'px';
+                var coordinates = domMenu_correctEdgeBleed(
+                    subMenu.offsetWidth,
+                    subMenu.offsetHeight,
+                    xCoor,
+                    yCoor,
+                    settings.items["screenPadding"],
+                    settings.items["axis"],
+                );
+                subMenu.style.left = coordinates[0] + "px";
+                subMenu.style.top = coordinates[1] + "px";
 
                 // ** if we inherit, it is necessary to check the parent element width again **
-                if (settings.items['axis'] == 'horizontal' && settings.items['subMenuMinWidth'] == 'inherit') {
-                    subMenu.firstChild.style.width = Math.max(in_parentElement.offsetWidth + settings.items['subMenuWidthCorrection'], renderedWidth) + 'px';
+                if (
+                    settings.items["axis"] == "horizontal" &&
+                    settings.items["subMenuMinWidth"] == "inherit"
+                ) {
+                    subMenu.firstChild.style.width =
+                        Math.max(
+                            in_parentElement.offsetWidth +
+                                settings.items["subMenuWidthCorrection"],
+                            renderedWidth,
+                        ) + "px";
                 }
             }
         }
 
         // force konqueror to change the styles
         if (domMenu_isKonq) {
-            in_parentElement.firstChild.style.display = 'none';
-            in_parentElement.firstChild.style.display = '';
+            in_parentElement.firstChild.style.display = "none";
+            in_parentElement.firstChild.style.display = "";
         }
 
         subMenu.style.visibility = in_style;
-        domMenu_detectCollisions(subMenu, (in_style == 'hidden'));
+        domMenu_detectCollisions(subMenu, in_style == "hidden");
     }
 }
 
@@ -1065,38 +1457,52 @@ function domMenu_toggleSubMenu(in_parentElement, in_style) {
 
 function domMenu_toggleHighlight(in_element, in_status) {
     // if this is a heading, don't change the style
-    if (!in_element.data.items['numChildren'] && !in_element.data.items['uri']) {
+    if (
+        !in_element.data.items["numChildren"] &&
+        !in_element.data.items["uri"]
+    ) {
         return;
     }
 
-    var settings = domMenu_settings.items[in_element.data.items['basename']];
-    var prefix = in_element.data.items['level'] == 1 ? 'menu' : 'subMenu';
-    var className = settings.items[prefix + 'ElementClass'];
+    var settings = domMenu_settings.items[in_element.data.items["basename"]];
+    var prefix = in_element.data.items["level"] == 1 ? "menu" : "subMenu";
+    var className = settings.items[prefix + "ElementClass"];
     var highlightElement = in_element.firstChild;
 
     var pseudoClass;
     if (in_status) {
-        if (in_element.data.hasItem('subMenu') && in_element.data.items['subMenu'].style.visibility == 'visible') {
-            pseudoClass = 'Active';
-        }
-        else if (in_element.data.items['numChildren'] || in_element.data.items['uri']) {
-            pseudoClass = 'Hover';
+        if (
+            in_element.data.hasItem("subMenu") &&
+            in_element.data.items["subMenu"].style.visibility == "visible"
+        ) {
+            pseudoClass = "Active";
+        } else if (
+            in_element.data.items["numChildren"] ||
+            in_element.data.items["uri"]
+        ) {
+            pseudoClass = "Hover";
         }
     }
 
     if (pseudoClass) {
-        className += ' ' + settings.items[prefix + 'Element' + pseudoClass + 'Class'];
+        className +=
+            " " + settings.items[prefix + "Element" + pseudoClass + "Class"];
         // if we are changing to hover, change the alt contents (only change if needs it)
-        if (highlightElement.childNodes.length == 2 && highlightElement.lastChild.style.display == 'none') {
-            highlightElement.firstChild.style.display = 'none';
-            highlightElement.lastChild.style.display = '';
+        if (
+            highlightElement.childNodes.length == 2 &&
+            highlightElement.lastChild.style.display == "none"
+        ) {
+            highlightElement.firstChild.style.display = "none";
+            highlightElement.lastChild.style.display = "";
         }
-    }
-    else {
+    } else {
         // if we are changing to non-hover, change the alt contents (only change if needs it)
-        if (highlightElement.childNodes.length == 2 && highlightElement.firstChild.style.display == 'none') {
-            highlightElement.lastChild.style.display = 'none';
-            highlightElement.firstChild.style.display = '';
+        if (
+            highlightElement.childNodes.length == 2 &&
+            highlightElement.firstChild.style.display == "none"
+        ) {
+            highlightElement.lastChild.style.display = "none";
+            highlightElement.firstChild.style.display = "";
         }
     }
 
@@ -1104,8 +1510,8 @@ function domMenu_toggleHighlight(in_element, in_status) {
 
     // force konqueror to change the styles
     if (domMenu_isKonq) {
-        highlightElement.style.display = 'none';
-        highlightElement.style.display = '';
+        highlightElement.style.display = "none";
+        highlightElement.style.display = "";
     }
 }
 
@@ -1115,21 +1521,27 @@ function domMenu_toggleHighlight(in_element, in_status) {
 function domMenu_resolveLink(in_this, in_event) {
     var eventObj = domMenu_isIE ? event : in_event;
     var currentTarget = domMenu_isIE ? in_this : eventObj.currentTarget;
-    var basename = currentTarget.data.items['basename'];
+    var basename = currentTarget.data.items["basename"];
 
     // close the menu system immediately when we resolve the uri
     domMenu_changeActivePath(false, domMenu_activeElement.items[basename], 0);
 
-    if (currentTarget.data.items['uri']) {
-        window.status = 'Resolving Link...';
+    if (currentTarget.data.items["uri"]) {
+        window.status = "Resolving Link...";
 
         // open in current window
-        if (!currentTarget.data.items['target'] || currentTarget.data.items['target'] == '_self') {
-            window.location = currentTarget.data.items['uri'];
+        if (
+            !currentTarget.data.items["target"] ||
+            currentTarget.data.items["target"] == "_self"
+        ) {
+            window.location = currentTarget.data.items["uri"];
         }
         // open in new window
         else {
-            window.open(currentTarget.data.items['uri'], currentTarget.data.items['target']);
+            window.open(
+                currentTarget.data.items["uri"],
+                currentTarget.data.items["target"],
+            );
         }
     }
 }
@@ -1138,7 +1550,7 @@ function domMenu_resolveLink(in_this, in_event) {
 // {{{ domMenu_quote()
 
 function domMenu_quote(in_string) {
-    return "'" + in_string.replace(new RegExp("'", 'g'), "\\'") + "'";
+    return "'" + in_string.replace(new RegExp("'", "g"), "\\'") + "'";
 }
 
 // }}}

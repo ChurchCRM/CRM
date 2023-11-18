@@ -4,14 +4,14 @@ namespace ChurchCRM\Dashboard;
 
 class ClassificationDashboardItem implements DashboardItemInterface
 {
-    public static function getDashboardItemName()
+    public static function getDashboardItemName(): string
     {
-        return "ClassificationBreakdown";
+        return 'ClassificationBreakdown';
     }
 
-    public static function getDashboardItemValue()
+    public static function getDashboardItemValue(): array
     {
-         $data = [];
+        $data = [];
         $sSQL = 'select lst_OptionName as Classification, count(*) as count
                 from person_per INNER JOIN list_lst ON  per_cls_ID = lst_OptionID
                 LEFT JOIN family_fam ON family_fam.fam_ID = person_per.per_fam_ID
@@ -25,8 +25,8 @@ class ClassificationDashboardItem implements DashboardItemInterface
         return $data;
     }
 
-    public static function shouldInclude($PageName)
+    public static function shouldInclude(string $PageName): bool
     {
-        return $PageName == "PeopleDashboard.php"; // this ID would be found on all pages.
+        return $PageName == 'PeopleDashboard.php'; // this ID would be found on all pages.
     }
 }

@@ -13,7 +13,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\NoteQuery;
+use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;

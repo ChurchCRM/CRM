@@ -1052,10 +1052,6 @@ msgid "Edit"
 msgstr "Editar"
 
 #: 
-msgid "Message"
-msgstr "Mensaje"
-
-#: 
 msgid "Event Attendees"
 msgstr "Asistentes a evento"
 
@@ -2027,10 +2023,6 @@ msgstr "Listado de grupo"
 #: 
 msgid "Add New Group"
 msgstr "Agregar nuevo grupo"
-
-#: 
-msgid "Submit"
-msgstr "Enviar"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -3050,18 +3042,6 @@ msgid "Execute Query"
 msgstr "Ejecutar búsqueda"
 
 #: 
-msgid "Software Registration"
-msgstr "Registro del Software"
-
-#: 
-msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
-msgstr "Por favor registre su copa de ChurchCRM, evaluando esta información y presionando el botón de Enviar."
-
-#: 
-msgid "This information is used only to track the usage of this software.  "
-msgstr "Esta información sólo es usada para seguir el uso de este software."
-
-#: 
 msgid "Send"
 msgstr "Enviar"
 
@@ -3166,10 +3146,6 @@ msgid "Permission"
 msgstr "Permiso"
 
 #: 
-msgid "Base URL"
-msgstr "URL Base"
-
-#: 
 msgid "System Settings"
 msgstr "Ajustes de sistema"
 
@@ -3190,8 +3166,9 @@ msgid "User Delete Confirmation"
 msgstr "confirmación de eliminación de usuario"
 
 #: 
-msgid "Please confirm removal of user status from:"
-msgstr "Confirme la eliminación de estado de usuario de:"
+#, fuzzy
+msgid "Please confirm removal of user status from"
+msgstr "Confirme la eliminación de estado de usuario de"
 
 #: 
 msgid "User Editor"
@@ -3624,26 +3601,6 @@ msgstr "Texto de Error"
 #: 
 msgid "Issue Report!"
 msgstr "Reporte de Problemas!"
-
-#: 
-msgid "Enter a Title for your bug / feature report"
-msgstr "Ingrese un Título para su reporte de problema/característica nueva"
-
-#: 
-msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "¿Qué estaba haciendo cuando se dio cuenta del problema/funcionalidad nueva?"
-
-#: 
-msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
-msgstr "Cuando seleccione \"enviar\", un reporte de error será publicado en el Rastreador de Problemas de ChucrchCRM GitHub"
-
-#: 
-msgid "Please do not include any confidential information."
-msgstr "Por favor no incluya ninguna información confidencial."
-
-#: 
-msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
-msgstr "Alguna Información general acerca de su sistema será enviada junto a la llamada , tales como versión del Servidor y encabezados del navegador."
 
 #: 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
@@ -4346,10 +4303,6 @@ msgid "Enter Name"
 msgstr "Ingresar Nombre"
 
 #: 
-msgid "Register Software"
-msgstr "Registrar software"
-
-#: 
 msgid "Update Church Info"
 msgstr "Actualizar Información de iglesia"
 
@@ -4476,14 +4429,6 @@ msgstr "Su sesión previa ha expirado. por favor ingrese nuevamente."
 #: 
 msgid "Register a new Family"
 msgstr "Registrar una nueva familia"
-
-#: 
-msgid "If you need to make changes to registration data, go to "
-msgstr "Si necesita hacer cambios a los datos de registro, diríjase a "
-
-#: 
-msgid "Admin->Edit General Settings"
-msgstr "Admin ->Editar ajustes generales"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5402,10 +5347,6 @@ msgstr "Permiso de usuario para crear directorios"
 #: 
 msgid "User permission to export CSV files"
 msgstr "Permiso de usuario para exportar archivos CSV"
-
-#: 
-msgid "User permission to use IST Address Verification"
-msgstr "Permiso de usuario para usar Verificación de Dirección IST"
 
 #: 
 msgid "Allow user to add new event"
@@ -6702,10 +6643,6 @@ msgid "Missing Role Data"
 msgstr "Faltan datos de roles"
 
 #: 
-msgid "Let us know that you are using the software"
-msgstr "Háganos saber que esta usando este software"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "No fue posible cargar la información de verificación"
 
@@ -7587,14 +7524,6 @@ msgid "Are you sure you want to remove the selected group members?"
 msgstr "¿Está seguro de que desea remover los miembros seleccionados del grupo?"
 
 #: 
-msgid "Successfully submitted Issue"
-msgstr "Problema enviado exisotamente"
-
-#: 
-msgid "View Issue on GitHub"
-msgstr "Ver Problema en GitHub"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "¿Desea eliminar esta persona? Esto no puede deshacerse."
 
@@ -8317,8 +8246,9 @@ msgid "New Calendar"
 msgstr "Nuevo calendario"
 
 #: 
-msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "Alerta: bEnableExternalCalendarAPI deshabilitado, pero algunos calendarios tienen token de acceso"
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI deshabilitado, pero algunos calendarios tienen token de acceso"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9101,10 +9031,6 @@ msgstr "Versión de Servidor de base de datos"
 #: 
 msgid "Web Server"
 msgstr "Servidor Web"
-
-#: 
-msgid "Server Software"
-msgstr "Software de Servidor"
 
 #: 
 msgid "Email Information"

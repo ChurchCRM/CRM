@@ -2,15 +2,14 @@
 
 namespace ChurchCRM\Tasks;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 class PHPZipArchiveCheckTask implements TaskInterface, PreUpgradeTaskInterface
 {
-  // todo: make these const variables private after deprecating PHP7.0 #4948
+    // todo: make these const variables private after deprecating PHP7.0 #4948
     public function isActive(): bool
     {
-        return !class_exists("ZipArchive");
+        return !class_exists('ZipArchive');
     }
 
     public function isAdmin(): bool
@@ -20,7 +19,7 @@ class PHPZipArchiveCheckTask implements TaskInterface, PreUpgradeTaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/v2/admin/debug';
+        return SystemURLs::getRootPath().'/v2/admin/debug';
     }
 
     public function getTitle(): string
@@ -30,6 +29,6 @@ class PHPZipArchiveCheckTask implements TaskInterface, PreUpgradeTaskInterface
 
     public function getDesc(): string
     {
-        return gettext("PHP ZipArchive required to support upgrade");
+        return gettext('PHP ZipArchive required to support upgrade');
     }
 }

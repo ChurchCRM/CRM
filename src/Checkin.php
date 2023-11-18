@@ -20,10 +20,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/Header.php';
 
-use ChurchCRM\EventQuery;
-use ChurchCRM\EventAttendQuery;
-use ChurchCRM\EventAttend;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
+use ChurchCRM\model\ChurchCRM\EventAttend;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
@@ -86,7 +86,7 @@ if ($EventID > 0) {
                         <div class="col-md-10 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar-check"></i></span>
-                                <select name="EventID" class="form-control" onchange="this.form.submit()">
+                                <select id="EventID" name="EventID" class="form-control" onchange="this.form.submit()">
                                     <option value="<?= $EventID; ?>"
                                             disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?> ><?= gettext('Select event') ?></option>
                                     <?php foreach ($activeEvents as $event) {
@@ -103,7 +103,7 @@ if ($EventID > 0) {
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 text-right">
-                            <a href="EventEditor.php"><?= gettext('Add New Event'); ?></a>
+                            <a class="btn btn-primary" href="EventEditor.php"><?= gettext('Add New Event'); ?></a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
         <input type="hidden" id="adult-id" name="adult-id">
 
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-md-10 col-xs-12">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title"><?= gettext('Add Attendees for Event'); ?>: <?= $event->getTitle() ?></h3>
@@ -170,7 +170,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                             </div>
 
                             <div class="text-right col-md-8 col-xs-4">
-                                <a href="PersonEditor.php"><?= gettext('Add Visitor'); ?></a>
+                                <a class="btn btn-success" href="PersonEditor.php"><?= gettext('Add Visitor'); ?></a>
                             </div>
                         </div>
                     </div>
@@ -354,7 +354,7 @@ if (isset($_POST['EventID'])) {
                             <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a></td>
                         <td><?= date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
                         <td><?= $sCheckinby ?></td>
-                        <td><?= date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
+                        <td><?= $per->getCheckoutDate() ? date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat'))  : '' ?></td>
                         <td><?= $sCheckoutby ?></td>
 
                         <td align="center">
@@ -366,7 +366,7 @@ if (isset($_POST['EventID'])) {
                                     ?>
                                     <input class="btn btn-primary btn-sm" type="submit" name="CheckOutBtn"
                                            value="<?= gettext('CheckOut') ?>">
-                                    <input class="btn btn-danger btn-xs" type="submit" name="DeleteBtn"
+                                    <input class="btn btn-danger btn-sm" type="submit" name="DeleteBtn"
                                            value="<?= gettext('Delete') ?>">
 
                                     <?php
