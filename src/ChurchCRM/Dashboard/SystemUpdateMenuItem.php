@@ -7,17 +7,17 @@ use ChurchCRM\Utils\LoggerUtils;
 
 class SystemUpdateMenuItem implements DashboardItemInterface
 {
-    public static function getDashboardItemName()
+    public static function getDashboardItemName(): string
     {
         return 'SystemUpgrade';
     }
 
-    public static function shouldInclude($PageName)
+    public static function shouldInclude(string $PageName): bool
     {
-        return true; //$PageName == 'v2/dashboard';
+        return true;
     }
 
-    public static function getDashboardItemValue()
+    public static function getDashboardItemValue(): array
     {
         $data['newVersion'] = '';
         $installedVersion = ChurchCRMReleaseManager::getReleaseFromString($_SESSION['sSoftwareInstalledVersion']);
