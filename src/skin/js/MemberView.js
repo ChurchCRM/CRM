@@ -43,7 +43,7 @@ $(".delete-person").click(function (event) {
                         thisLink.data("person_id"),
                     dataType: "json",
                     success: function (data, status, xmlHttpReq) {
-                        if (thisLink.data("view") == "family") {
+                        if (thisLink.data("view") === "family") {
                             location.reload();
                         } else {
                             location.replace(window.CRM.root + "/");

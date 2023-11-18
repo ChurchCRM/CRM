@@ -619,7 +619,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ';
     $sSQL .= 'ON person_per.per_fam_ID = family_fam.fam_ID ';
     $sSQL .= 'WHERE per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).') ';
-    $sSQL .= 'ORDER BY fam_Zip, per_LastName, per_FirstName';
+    $sSQL .= 'ORDER BY per_LastName, per_FirstName, fam_Zip';
     $rsCartItems = RunQuery($sSQL);
     $sRowClass = 'RowColorA';
     $didFam = [];

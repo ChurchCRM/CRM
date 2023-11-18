@@ -1939,6 +1939,7 @@
     "Invalid Entry": "Ungültiger Eintrag",
     "Calendar Name": "Kalendername",
     "New Calendar": "Neuer Kalender",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnableExternalCalendarAPI deaktiviert, aber einige Kalender haben Zugriffstoken",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "Damit Kalender freigegeben werden können, muss die Einstellung bEnableExternalCalendarAPI zusätzlich zum Kalender mit einem bestimmten Zugriffstoken aktiviert werden",
     "Links": "Links",
     "Show custom links on the left menu.": "Benutzerdefinierte Links im linken Menü anzeigen.",

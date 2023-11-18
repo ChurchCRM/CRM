@@ -6,7 +6,7 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2005 Michael Wilt
-  *
+ *
  ******************************************************************************/
 
 //Include the function library
@@ -44,7 +44,8 @@ if (array_key_exists('previousPage', $_GET)) {
 if ($iPersonID > 0) {
     $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = ' . $iPersonID;
     $rsPerson = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsPerson));
+    $aRow = mysqli_fetch_array($rsPerson);
+    $per_fam_ID = $aRow['per_fam_ID'];
 
     if (mysqli_num_rows($rsPerson) == 0) {
         RedirectUtils::redirect('Menu.php');
@@ -146,7 +147,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if ($iFamily > 0) {
         $sSQL = 'SELECT fam_Country FROM family_fam WHERE fam_ID = ' . $iFamily;
         $rsFamCountry = RunQuery($sSQL);
-        extract(mysqli_fetch_array($rsFamCountry));
+        $aRow = mysqli_fetch_array($rsFamCountry);
+        $fam_Country = $aRow['fam_Country'];
     }
 
     $sCountryTest = SelectWhichInfo($sCountry, $fam_Country, false);
@@ -212,7 +214,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if ($iBirthMonth > 0 xor $iBirthDay > 0) {
         $sBirthDateError = gettext('Invalid Birth Date: Missing birth month or day.');
         $bErrorFlag = true;
-    } elseif (strlen($iBirthYear) > 0 && $iBirthMonth == 0 && $iBirthDay == 0) {
+    } elseif ($iBirthYear > 0 && $iBirthMonth == 0 && $iBirthDay == 0) {
         $sBirthDateError = gettext('Invalid Birth Date: Missing birth month and day.');
         $bErrorFlag = true;
     } elseif (strlen($iBirthYear) > 0) {
@@ -321,7 +323,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             //Get the key back
             $sSQL = 'SELECT MAX(fam_ID) AS iFamily FROM family_fam';
             $rsLastEntry = RunQuery($sSQL);
-            extract(mysqli_fetch_array($rsLastEntry));
+            $aRow = mysqli_fetch_array($rsLastEntry);
+            $iFamily = $aRow['iFamily'];
         }
 
         if ($bHideAge) {
@@ -399,7 +402,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($bGetKeyBack) {
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
             $rsPersonID = RunQuery($sSQL);
-            extract(mysqli_fetch_array($rsPersonID));
+            $aRow = mysqli_fetch_array($rsPersonID);
+            $iPersonID = $aRow['iPersonID'];
             $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('" . $iPersonID . "')";
             RunQuery($sSQL);
             $note->setPerId($iPersonID);
@@ -740,12 +744,11 @@ require 'Include/Header.php';
                     <div class="col-md-2">
                         <label><?= gettext('Birth Day') ?>:</label>
                         <select id="BirthDay" name="BirthDay" class="form-control">
-                            <option value="0"><?= gettext('Select Day') ?></option>
+                            <option value="0" ><?= gettext('Select Day') ?></option>
                             <?php for ($x = 1; $x < 32; $x++) {
+                                $sDay = $x;
                                 if ($x < 10) {
                                     $sDay = '0' . $x;
-                                } else {
-                                    $sDay = $x;
                                 } ?>
                                 <option value="<?= $sDay ?>" <?php if ($iBirthDay == $x) {
                                     echo 'selected';

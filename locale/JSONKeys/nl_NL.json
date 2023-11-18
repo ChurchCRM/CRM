@@ -2048,6 +2048,7 @@
     "Invalid Entry": "Verkeerde invoer",
     "Calendar Name": "Naam van de kalender",
     "New Calendar": "Nieuwe kalender",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnable External Calendar API uitgeschakeld, maar sommige agenda's hebben toegangstokens",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "Om agenda's te kunnen delen, moet de instelling bEnableExternalCalendarAPI zijn ingeschakeld naast de agenda met een specifiek toegangstoken",
     "Links": "Eigen schermen",
     "Show custom links on the left menu.": "Weergave van de eigen schermen in het linker menu. ",

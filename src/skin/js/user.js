@@ -7,7 +7,7 @@ $("#regenApiKey").click(function () {
             window.CRM.viewUserId +
             "/apikey/regen",
     }).done(function (data, textStatus, xhr) {
-        if (xhr.status == 200) {
+        if (xhr.status === 200) {
             $("#apiKey").val(data.apiKey);
         } else {
             showGlobalMessage(

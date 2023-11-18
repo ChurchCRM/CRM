@@ -1003,6 +1003,7 @@
     "Invalid Entry": "Błędny Wpis",
     "Calendar Name": "Nazwa Kalendarza",
     "New Calendar": "Nowy Kalendarz",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnableExternalCalendarAPI wyłączony, lecz niektóre kalendarze posiadają token dostepu",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "Aby współdzielić kalendarz bEnableExternalCalendarAPI musi być włączony oraz kalendarz musi mieć osobny token dostępu",
     "Links": "Linki",
     "Show custom links on the left menu.": "Pokaż własne odnośniki w lewym menu.",

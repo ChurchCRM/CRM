@@ -7,6 +7,7 @@ use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\LoggerUtils;
 
 $dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
@@ -208,18 +209,33 @@ require '../Include/Header.php';
         foreach ($kidsWithoutClasses as $child) {
             extract($child);
 
-            $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
-            $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+            $birthDate = 'N/A';
+            $age = 'N/A';
+            $hideAge = $flags == 1 || empty($birthYear);
+            try {
+              if (!$hideAge) {
+                $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+                $age = MiscUtils::formatAge($birthMonth, $birthDay, $birthYear);
+              }
+            } catch (\Throwable $ex) {
+              LoggerUtils::getAppLogger()->error("Failed to retrieve student's age", ['exception' => $ex]);
+            }
 
-            echo '<tr>';
-            echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
-            echo '	<i class="fa fa-search-plus"></i></a></td>';
-            echo '<td>' . $firstName . '</td>';
-            echo '<td>' . $LastName . '</td>';
-            echo '<td>' . $birthDate . '</td>';
-            echo "<td>" . MiscUtils::formatAge($birthMonth, $birthDay, $birthYear) . "</td>";
-            echo '<td>' . $Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip . '</td>';
-            echo '</tr>';
+            $html = <<<HTML
+<tr>
+<td>
+  <a href="../PersonView.php?PersonID={$kidId}">
+    <i class="fa fa-search-plus"></i>
+  </a>
+</td>
+<td>$firstName</td>
+<td>$LastName</td>
+<td>$birthDate</td>
+<td>$age</td>
+<td>$Address1 $Address2 $city $state $zip</td>
+</tr>
+HTML;
+          echo $html;
         }
 
         ?>

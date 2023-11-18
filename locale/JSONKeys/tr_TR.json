@@ -2048,6 +2048,7 @@
     "Invalid Entry": "Geçersiz Girdi",
     "Calendar Name": "Takvim adı",
     "New Calendar": "Yeni Takvim",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "BenableExternalCalendarapi devre dışı bırakıldı, ancak bazı takvimlerin erişim belirteçleri var",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "Takvimlerin paylaşılması için, özel bir erişim belirtecine sahip takvime ek olarak BenableExternalCalendarapi ayarı etkinleştirilmelidir.",
     "Links": "Bağlar",
     "Show custom links on the left menu.": "Sol menüde özel bağlantıları gösterin.",

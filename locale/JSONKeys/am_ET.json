@@ -2048,6 +2048,7 @@
     "Invalid Entry": "ያስገቡት ተቀባይነት የለውም",
     "Calendar Name": "የቀን መቁጠሪያ ስም",
     "New Calendar": "አዲስ ቀን መቁጠሪያ",
+    "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "bEnableExternalCalendarAPI ተሰናክሏል፣ነገር ግን አንዳንድ የቀን መቁጠሪያዎች የመድረሻ መተኪያዎች አሏቸው",
     "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "የቀን መቁጠሪያዎች ለመጋራት፣ የbEnableExternalCalendarAPI ቅንብር የቀን መቁጠሪያው የተወሰነ የመዳረሻ ማስመሰያ ካለው በተጨማሪ መንቃት አለበት",
     "Links": "ማስፈንጠሪያ",
     "Show custom links on the left menu.": "በግራ ምናሌው ላይ ብጁ አገናኞችን አሳይ",

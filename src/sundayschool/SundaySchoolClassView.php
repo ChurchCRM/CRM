@@ -26,15 +26,21 @@ while ($aRow = mysqli_fetch_array($rsSundaySchoolClass)) {
 
 $birthDayMonthChartArray = [];
 foreach ($sundaySchoolService->getKidsBirthdayMonth($iGroupId) as $birthDayMonth => $kidsCount) {
-    array_push($birthDayMonthChartArray, "['" . gettext($birthDayMonth) . "', " . $kidsCount . ' ]');
+    $birthDayMonthChartArray[] = [
+        gettext($birthDayMonth),
+        $kidsCount
+    ];
 }
-$birthDayMonthChartJSON = implode(',', $birthDayMonthChartArray);
+$birthDayMonthChartJSON = json_encode($birthDayMonthChartArray, JSON_THROW_ON_ERROR);
 
 $genderChartArray = [];
 foreach ($sundaySchoolService->getKidsGender($iGroupId) as $gender => $kidsCount) {
-    array_push($genderChartArray, "{label: '" . gettext($gender) . "', data: " . $kidsCount . '}');
+    $genderChartArray[] = [
+        'label' => gettext($gender),
+        'data' => $kidsCount
+    ];
 }
-$genderChartJSON = implode(',', $genderChartArray);
+$genderChartJSON = json_encode($genderChartArray, JSON_THROW_ON_ERROR);
 
 $rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, 'Teacher');
 $sPageTitle = gettext('Sunday School') . ': ' . $iGroupName;
@@ -46,13 +52,13 @@ $ParentsEmails = [];
 $thisClassChildren = $sundaySchoolService->getKidsFullDetails($iGroupId);
 
 foreach ($thisClassChildren as $child) {
-    if ($child['dadEmail'] != '') {
+    if (!empty($child['dadEmail'])) {
         array_push($ParentsEmails, $child['dadEmail']);
     }
-    if ($child['momEmail'] != '') {
+    if (!empty($child['momEmail'])) {
         array_push($ParentsEmails, $child['momEmail']);
     }
-    if ($child['kidEmail'] != '') {
+    if (!empty($child['kidEmail'])) {
         array_push($KidsEmails, $child['kidEmail']);
     }
 }
@@ -221,7 +227,7 @@ require '../Include/Header.php';
       <?php
 
         foreach ($thisClassChildren as $child) {
-            $hideAge = $child['flags'] == 1 || $child['birthYear'] == '' || $child['birthYear'] == '0';
+            $hideAge = $child['flags'] == 1 || empty($child['birthYear']);
             $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']); ?>
           <tr>
           <td>
@@ -325,6 +331,10 @@ function implodeUnique($array, $withQuotes)
   <!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!-- JQUERY CANVAS WRAPPER for flot -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.canvaswrapper.js"></script>
+<!-- JQUERY COLOR HELPERS for flot -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.colorhelpers.js"></script>
 <!-- FLOT CHARTS -->
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
@@ -333,6 +343,14 @@ function implodeUnique($array, $withQuotes)
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.pie.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.categories.js"></script>
+<!-- FLOT SATURATED PLUGIN -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.saturated.js"></script>
+<!-- FLOT BROWSER PLUGIN -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.browser.js"></script>
+<!-- FLOT DRAW SERIES PLUGIN -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.drawSeries.js"></script>
+<!-- FLOT UI CONSTANTS -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.uiConstants.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {
@@ -396,9 +414,7 @@ function implodeUnique($array, $withQuotes)
    */
 
   var bar_data = {
-    data: [
-      <?= $birthDayMonthChartJSON ?>
-    ],
+    data: <?= $birthDayMonthChartJSON ?>,
     color: "#3c8dbc"
   };
 
@@ -433,7 +449,7 @@ function implodeUnique($array, $withQuotes)
    * -----------
    */
 
-  var donutData = [<?=$genderChartJSON ?>];
+  var donutData = <?=$genderChartJSON ?>;
 
   $.plot("#donut-chart", donutData, {
     series: {
@@ -451,7 +467,8 @@ function implodeUnique($array, $withQuotes)
       }
     },
     legend: {
-      show: false
+      show: false,
+      position: "sw",
     }
   });
   /*

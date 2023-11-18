@@ -8212,6 +8212,11 @@ msgid "New Calendar"
 msgstr "Yeni Takvim"
 
 #: 
+#, fuzzy
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "BenableExternalCalendarapi devre dışı bırakıldı, ancak bazı takvimlerin erişim belirteçleri var"
+
+#: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Takvimlerin paylaşılması için, özel bir erişim belirtecine sahip takvime ek olarak BenableExternalCalendarapi ayarı etkinleştirilmelidir."
 
