@@ -1,8 +1,24 @@
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="skin/css/php-error.css">
     <title>Incompatible PHP Version</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const phpVersion = urlParams.get('phpVersion');
+            if (phpVersion) {
+                var paragraph = document.getElementById('php-version');
+                var text = document.createTextNode(
+                    "You are currently running PHP version: " + phpVersion
+                );
+
+                paragraph.appendChild(text);
+            }
+        }
+    </script>
 </head>
+
 <body>
 
 <div class="background">
@@ -12,10 +28,12 @@
     <div class="left-section">
         <div class="inner-content">
             <h1 class="heading">500</h1>
-            <p class="subheading" style="color: yellow"><b>You are running an incompatible php version.</b></p>
+            <p class="subheading" style="color: yellow"><b>You are running an incompatible PHP version.</b></p>
             <br/>
-            <p class="subheading">ChurchCRM requires PHP 8.x. </p>
-            <p></p>
+            <p class="subheading">ChurchCRM requires PHP 8.x.</p>
+            <br/>
+            <p id="php-version" class="subheading"></p>
+            <br/>
             <p class="subheading"><a href="https://www.php.net/supported-versions.php" style="color: red">Checkout supported versions of PHP</a</p>
         </div>
     </div>

@@ -1,7 +1,14 @@
 <?php
 
-if (version_compare(phpversion(), '8.0.0', '<=')) {
-    header('Location: php-error.html');
+$phpVersion = phpversion();
+if (version_compare($phpVersion, '8.0.0', '<=')) {
+    $redirectHeader = 'Location: php-error.html';
+    if ($phpVersion) {
+        header('X-PHP-Version: '.$phpVersion);
+        $redirectHeader .= '?phpVersion='.$phpVersion;
+    }
+    header($redirectHeader);
+
     exit;
 }
 
