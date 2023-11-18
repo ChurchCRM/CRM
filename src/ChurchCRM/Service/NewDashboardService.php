@@ -15,7 +15,7 @@ class NewDashboardService
             EventsMenuItems::class,
             ClassificationDashboardItem::class,
             CurrentLocaleMetadata::class,
-            SystemUpdateMenuItem::class
+            SystemUpdateMenuItem::class,
         ];
         $ReturnValues = [];
         foreach ($DashboardItems as $DashboardItem) {

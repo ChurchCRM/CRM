@@ -2,8 +2,6 @@
 
 namespace ChurchCRM\Dashboard;
 
-use ChurchCRM\Bootstrapper;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
 
@@ -21,7 +19,7 @@ class SystemUpdateMenuItem implements DashboardItemInterface
 
     public static function getDashboardItemValue()
     {
-        $data['newVersion']  = "";
+        $data['newVersion'] = '';
         $installedVersion = ChurchCRMReleaseManager::getReleaseFromString($_SESSION['sSoftwareInstalledVersion']);
         $isCurrent = ChurchCRMReleaseManager::isReleaseCurrent($installedVersion);
         if (!$isCurrent) {
