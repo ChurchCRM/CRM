@@ -7,17 +7,17 @@ use ChurchCRM\dto\SystemURLs;
 
 class CurrentLocaleMetadata implements DashboardItemInterface
 {
-    public static function getDashboardItemName()
+    public static function getDashboardItemName(): string
     {
         return 'PageLocale';
     }
 
-    public static function shouldInclude($PageName)
+    public static function shouldInclude(string $PageName): bool
     {
         return true;
     }
 
-    public static function getDashboardItemValue()
+    public static function getDashboardItemValue(): array
     {
         $localeInfo = Bootstrapper::getCurrentLocale();
         $data['name'] = $localeInfo->getName();

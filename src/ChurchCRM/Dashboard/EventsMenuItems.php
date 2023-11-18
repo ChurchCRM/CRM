@@ -10,12 +10,12 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class EventsMenuItems implements DashboardItemInterface
 {
-    public static function getDashboardItemName()
+    public static function getDashboardItemName(): string
     {
         return 'EventsCounters';
     }
 
-    public static function getDashboardItemValue()
+    public static function getDashboardItemValue(): array
     {
         $activeEvents = [
             'Events'        => self::getNumberEventsOfToday(),
@@ -26,7 +26,7 @@ class EventsMenuItems implements DashboardItemInterface
         return $activeEvents;
     }
 
-    public static function shouldInclude($PageName)
+    public static function shouldInclude(string $PageName): bool
     {
         return true; // this ID would be found on all pages.
     }
