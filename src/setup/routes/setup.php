@@ -2,9 +2,9 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
-use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Views\PhpRenderer;
 
 $app->group('/', function () use ($app) {
     $app->get('', function ($request, $response, $args) {
@@ -20,12 +20,14 @@ $app->group('/', function () use ($app) {
     $app->get('SystemIntegrityCheck', function ($request, $response, $args) {
         $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
         $response->getBody()->write(json_encode($AppIntegrity['status']));
+
         return $response->withHeader('Content-Type', 'application/json');
     });
 
     $app->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
         $required = AppIntegrityService::getApplicationPrerequisites();
         $response->getBody()->write(json_encode($required));
+
         return $response->withHeader('Content-Type', 'application/json');
     });
 
