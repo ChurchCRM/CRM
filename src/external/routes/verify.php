@@ -8,7 +8,7 @@ use ChurchCRM\model\ChurchCRM\TokenQuery;
 use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
 $app->group('/verify', function (RouteCollectorProxy $group) {
-    $group->get('/{token}', function ($request, $response, $args) {
+    $group->get('/{token}', function  (Request $request, Response $response, array $args) {
         $renderer = new PhpRenderer('templates/verify/');
         $token = TokenQuery::create()->findPk($args['token']);
         $haveFamily = false;
@@ -28,7 +28,7 @@ $app->group('/verify', function (RouteCollectorProxy $group) {
         }
     });
 
-    $group->post('/{token}', function ($request, $response, $args) {
+    $group->post('/{token}', function  (Request $request, Response $response, array $args) {
         $token = TokenQuery::create()->findPk($args['token']);
         if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());

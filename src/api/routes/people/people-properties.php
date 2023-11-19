@@ -45,7 +45,7 @@ function addPropertyToPerson(Request $request, Response $response, array $args)
     return addProperty($request, $response, $person->getId(), $request->getAttribute('property'));
 }
 
-function removePropertyFromPerson($request, $response, $args)
+function removePropertyFromPerson (Request $request, Response $response, array $args)
 {
     $person = $request->getAttribute('person');
 
@@ -111,7 +111,7 @@ function addPropertyToFamily(Request $request, Response $response, array $args)
     return addProperty($request, $response, $family->getId(), $request->getAttribute('property'));
 }
 
-function removePropertyFromFamily($request, $response, $args)
+function removePropertyFromFamily (Request $request, Response $response, array $args)
 {
     $family = $request->getAttribute('family');
 

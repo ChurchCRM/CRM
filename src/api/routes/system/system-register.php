@@ -3,10 +3,12 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/register', function (RouteCollectorProxy $group) {
-    $group->post('', function ($request, $response, $args) {
+    $group->post('', function  (Request $request, Response $response, array $args) {
         $input = (object) $request->getParsedBody();
 
         $registrationData = new \stdClass();
@@ -36,6 +38,7 @@ $app->group('/register', function (RouteCollectorProxy $group) {
         // =Turn off the registration flag so the menu option is less obtrusive
         SystemConfig::setValue('bRegistered', '1');
 
-        return $response->withJson(['status' => 'success']);
+        $response->getBody()->write(json_encode(['status' => 'success']));
+        return $response->withHeader('Content-Type', 'application/json');
     });
 })->add(AdminRoleAuthMiddleware::class);

@@ -2,7 +2,8 @@
 
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/systemupgrade', function (RouteCollectorProxy $group) {
@@ -12,7 +13,7 @@ $app->group('/systemupgrade', function (RouteCollectorProxy $group) {
         return $response->withJson($upgradeFile);
     });
 
-    $group->post('/doupgrade', function ($request, $response, $args) {
+    $group->post('/doupgrade', function  (Request $request, Response $response, array $args) {
         $input = (object) $request->getParsedBody();
         $upgradeResult = ChurchCRMReleaseManager::doUpgrade($input->fullPath, $input->sha1);
 

@@ -8,7 +8,7 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 $app->group('/', function (RouteCollectorProxy $group) {
-    $group->get('', function ($request, $response, $args) {
+    $group->get('', function (Request $request, Response $response, array $args)  {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
         if (version_compare(phpversion(), '8.1.0', '<')) {
