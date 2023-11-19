@@ -16,9 +16,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups permission
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {

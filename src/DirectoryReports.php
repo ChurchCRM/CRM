@@ -16,9 +16,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Check for Create Directory user permission.
 if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {

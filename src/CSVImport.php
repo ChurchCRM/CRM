@@ -17,12 +17,12 @@ namespace ChurchCRM;
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
     RedirectUtils::redirect('Menu.php');
@@ -840,7 +840,7 @@ if ($iStage == 1) {
     // Display the select file form?>
     <p style="color: red"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
-            <input class="icTinyButton" type="file" name="CSVfile"> 
+            <input class="icTinyButton" type="file" name="CSVfile">
             <p></p>
             <input type="submit" class="btn btn-success" value=" <?= gettext('Upload CSV File') ?> " name="UploadCSV">
         </form>

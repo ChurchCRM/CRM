@@ -2,12 +2,12 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\SundaySchoolService;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\MiscUtils;
 
 $dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();

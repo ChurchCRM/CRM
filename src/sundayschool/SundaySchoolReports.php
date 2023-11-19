@@ -14,13 +14,14 @@
 // Include the function library
 require '../Include/Config.php';
 require '../Include/Functions.php';
-use ChurchCRM\model\ChurchCRM\UserQuery;
-use ChurchCRM\Utils\InputUtils;
+
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Get all the sunday school classes
 $groups = GroupQuery::create()

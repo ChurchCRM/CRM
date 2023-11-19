@@ -1,7 +1,7 @@
 <?php
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 if (SystemConfig::debugEnabled()) {
     require_once 'Header-Security.php';

@@ -3,12 +3,12 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 $sundaySchoolService = new SundaySchoolService();
 

@@ -6,11 +6,11 @@ $bSuppressSessionTests = true;
 require 'Include/Functions.php';
 require_once 'Include/Header-function.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\TaskService;
-use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');

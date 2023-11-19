@@ -14,15 +14,15 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/CanvassUtilities.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\Note;
-use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Bootstrapper;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
