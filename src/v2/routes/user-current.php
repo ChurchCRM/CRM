@@ -7,8 +7,9 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 $app->group('/user/current', function (RouteCollectorProxy $group) {
     $group->get('/enroll2fa', 'enroll2fa');
     $group->get('/changepassword', 'changepassword');
