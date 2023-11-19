@@ -2,12 +2,13 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
-use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
 
-$app->group('/', function () use ($app) {
-    $app->get('', function ($request, $response, $args) {
+$app->group('/', function (RouteCollectorProxy $group) {
+    $group->get('', function ($request, $response, $args) {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
         if (version_compare(phpversion(), '8.1.0', '<')) {
@@ -17,19 +18,19 @@ $app->group('/', function () use ($app) {
         return $renderer->render($response, $renderPage, ['sRootPath' => SystemURLs::getRootPath()]);
     });
 
-    $app->get('SystemIntegrityCheck', function ($request, $response, $args) {
+    $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args) {
         $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
         $response->getBody()->write(json_encode($AppIntegrity['status']));
         return $response->withHeader('Content-Type', 'application/json');
     });
 
-    $app->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
+    $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args) {
         $required = AppIntegrityService::getApplicationPrerequisites();
         $response->getBody()->write(json_encode($required));
         return $response->withHeader('Content-Type', 'application/json');
     });
 
-    $app->post('', function (Request $request, Response $response, array $args) {
+    $group->post('', function (Request $request, Response $response, array $args) {
         $setupData = $request->getParsedBody();
 
         $template = file_get_contents(SystemURLs::getDocumentRoot().'/Include/Config.php.example');
