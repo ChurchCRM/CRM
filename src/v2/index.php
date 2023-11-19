@@ -13,15 +13,13 @@ $app = AppFactory::create();
 $container = $app->getContainer();
 $app->setBasePath('/v2');
 
-$app->add(new VersionMiddleware());
-$app->add(new AuthMiddleware());
+$app->add(VersionMiddleware::class);
+$app->add(AuthMiddleware::class);
 
-// Set up
+// common
 require __DIR__ . '/../Include/slim/error-handler.php';
-
 require __DIR__ . '/routes/common/mvc-helper.php';
 
-// admin routes
 require __DIR__ . '/routes/admin/admin.php';
 require __DIR__ . '/routes/user.php';
 
