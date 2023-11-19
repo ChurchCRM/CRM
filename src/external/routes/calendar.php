@@ -3,11 +3,11 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
 use Slim\Views\PhpRenderer;
-
-$app->group('/calendars', function () use ($app) {
-    $app->get('/{CalendarAccessToken}', 'serveCalendarPage');
-    $app->get('/{CalendarAccessToken}/', 'serveCalendarPage');
-})->add(new PublicCalendarAPIMiddleware());
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/calendars', function (RouteCollectorProxy $group) {
+    $group->get('/{CalendarAccessToken}', 'serveCalendarPage');
+    $group->get('/{CalendarAccessToken}/', 'serveCalendarPage');
+})->add(PublicCalendarAPIMiddleware::class);
 
 function serveCalendarPage($request, $response)
 {

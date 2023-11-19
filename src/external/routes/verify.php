@@ -6,9 +6,9 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use Slim\Views\PhpRenderer;
-
-$app->group('/verify', function () use ($app) {
-    $app->get('/{token}', function ($request, $response, $args) {
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/verify', function (RouteCollectorProxy $group) {
+    $group->get('/{token}', function ($request, $response, $args) {
         $renderer = new PhpRenderer('templates/verify/');
         $token = TokenQuery::create()->findPk($args['token']);
         $haveFamily = false;
@@ -28,7 +28,7 @@ $app->group('/verify', function () use ($app) {
         }
     });
 
-    $app->post('/{token}', function ($request, $response, $args) {
+    $group->post('/{token}', function ($request, $response, $args) {
         $token = TokenQuery::create()->findPk($args['token']);
         if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());
@@ -49,10 +49,4 @@ $app->group('/verify', function () use ($app) {
         return $response->withStatus(200);
     });
 
-    /*$app->post('/', function ($request, $response, $args) {
-        $body = $request->getParsedBody();
-        $renderer = new PhpRenderer("templates/verify/");
-        $family = PersonQuery::create()->findByEmail($body["email"]);
-        return $renderer->render($response, "view-info.php", array("family" => $family));
-    });*/
 });
