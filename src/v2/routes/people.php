@@ -6,8 +6,9 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 // entity can be a person, family, or business
 $app->group('/people',function (RouteCollectorProxy $group) {
     $group->get('/verify', 'viewPeopleVerify');

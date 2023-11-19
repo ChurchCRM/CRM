@@ -6,6 +6,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/user/current', function (RouteCollectorProxy $group) {
     $group->post('/refresh2fasecret', 'refresh2fasecret');
     $group->post('/refresh2farecoverycodes', 'refresh2farecoverycodes');

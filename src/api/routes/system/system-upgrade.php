@@ -4,6 +4,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use Slim\Http\Response;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/systemupgrade', function (RouteCollectorProxy $group) {
     $group->get('/downloadlatestrelease', function ($request, Response $response, $args) {
         $upgradeFile = ChurchCRMReleaseManager::downloadLatestRelease();

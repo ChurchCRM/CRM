@@ -5,6 +5,7 @@ use ChurchCRM\data\States;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/public/data', function (RouteCollectorProxy $group) {
     $group->get('/countries', 'getCountries');
     $group->get('/countries/', 'getCountries');

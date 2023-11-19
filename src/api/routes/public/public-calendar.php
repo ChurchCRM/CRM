@@ -8,6 +8,7 @@ use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/public/calendar', function (RouteCollectorProxy $group) {
     $group->get('/{CalendarAccessToken}/events', 'getJSON');
     $group->get('/{CalendarAccessToken}/ics', 'getICal');

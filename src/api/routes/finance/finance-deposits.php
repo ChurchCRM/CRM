@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/deposits', function (RouteCollectorProxy $group) {
     $group->post('', function ($request, $response, $args) {
         $input = (object) $request->getParsedBody();

@@ -10,6 +10,7 @@ use Propel\Runtime\Collection\ObjectCollection;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/calendars', function (RouteCollectorProxy $group) {
     $group->get('', 'getUserCalendars');
     $group->post('', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());

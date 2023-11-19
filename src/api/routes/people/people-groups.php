@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/groups', function (RouteCollectorProxy $group) {
     $group->get('/', function () {
         echo GroupQuery::create()->find()->toJSON();

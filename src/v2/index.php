@@ -8,7 +8,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
-use Slim\HttpCache\CacheProvider;
 
 $app = AppFactory::create();
 $container = $app->getContainer();

@@ -23,6 +23,7 @@ use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/database', function (RouteCollectorProxy $group) {
     $group->delete('/reset', 'resetDatabase');
     $group->delete('/people/clear', 'clearPeopleTables');

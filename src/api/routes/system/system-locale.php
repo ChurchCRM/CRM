@@ -8,6 +8,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/locale', function (RouteCollectorProxy $group) {
     $group->get('/database/terms', 'getDBTerms');
 })->add(AdminRoleAuthMiddleware::class);
