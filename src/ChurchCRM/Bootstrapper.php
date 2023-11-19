@@ -2,20 +2,19 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
+use ChurchCRM\model\ChurchCRM\Version;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\RedirectUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Propel;
-use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\model\ChurchCRM\ConfigQuery;
-use ChurchCRM\model\ChurchCRM\Version;
-use Exception;
 
 class Bootstrapper
 {

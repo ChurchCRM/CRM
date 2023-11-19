@@ -19,8 +19,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\InputUtils;
 
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
     header('Location: Menu.php');

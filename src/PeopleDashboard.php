@@ -9,12 +9,12 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Service\DashboardService;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\DashboardService;
 
 // Set the page title
 $sPageTitle = gettext('People Dashboard');

@@ -13,16 +13,16 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\Note;
-use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Emails\NewPersonOrFamilyEmail;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\dto\Photo;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\Photo;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');

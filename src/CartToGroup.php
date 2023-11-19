@@ -15,11 +15,11 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\model\ChurchCRM\GroupQuery;
-use ChurchCRM\dto\Cart;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\Cart;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups & Roles permission
 if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {

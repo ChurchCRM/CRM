@@ -13,9 +13,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 

@@ -15,10 +15,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have add records permission
 if (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {

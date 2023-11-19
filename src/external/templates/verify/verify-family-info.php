@@ -1,10 +1,10 @@
 <?php
 
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Classification;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");

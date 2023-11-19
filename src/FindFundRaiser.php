@@ -13,8 +13,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\InputUtils;
 
 //Set the page title
 $sPageTitle = gettext('Fundraiser Listing');

@@ -14,8 +14,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\RedirectUtils;
 
 // If user does not have CSV Export permission, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isCSVExport()) {

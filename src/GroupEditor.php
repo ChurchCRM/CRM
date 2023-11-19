@@ -14,13 +14,13 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups permission
 if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {

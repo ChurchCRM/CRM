@@ -14,12 +14,12 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be administrator to use this page
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
