@@ -2,29 +2,31 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use Monolog\Logger;
+use Selective\BasePath\BasePathMiddleware;
+use Slim\Container;
+use Slim\Factory\AppFactory;
 
-error_reporting(E_ALL);
-ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/../logs/external.log');
+require_once __DIR__ . '/../vendor/autoload.php';
 
-if (file_exists('../Include/Config.php')) {
-    header('Location: ../index.php');
-} else {
-    require_once __DIR__ . '/../vendor/autoload.php';
 
-    $rootPath = str_replace('/setup/index.php', '', $_SERVER['SCRIPT_NAME']);
-    SystemURLs::init($rootPath, '', __DIR__ . "/../");
-    SystemConfig::init();
+$rootPath = str_replace('/setup/index.php', '', $_SERVER['SCRIPT_NAME']);
+SystemURLs::init($rootPath, '', __DIR__ . "/../");
+SystemConfig::init();
 
-    $app = new \Slim\App();
-    $container = $app->getContainer();
-    if (SystemConfig::debugEnabled()) {
-        $app->addErrorMiddleware(true, true, true);
-    }
+$app = AppFactory::create();
+$app->setBasePath('/setup/');
 
-    require __DIR__ . '/../Include/slim/error-handler.php';
+SystemConfig::getValue("sLogLevel", Logger::DEBUG);
+require __DIR__ . '/../Include/slim/error-handler.php';
 
-    require __DIR__ . '/routes/setup.php';
+$app->addRoutingMiddleware();
+$app->add(new VersionMiddleware());
+$container = $app->getContainer();
 
-    $app->run();
-}
+$app->addBodyParsingMiddleware();
+
+require __DIR__ . '/routes/setup.php';
+
+$app->run();
