@@ -3,8 +3,9 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
 
-error_reporting(E_ALL);
-ini_set('log_errors', 1);
+error_reporting(E_ERROR);
+ini_set('display_errors', true);
+ini_set('log_errors', true);
 ini_set('error_log', LoggerUtils::buildLogFilePath("slim"));
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true, LoggerUtils::getSlimMVCLogger());

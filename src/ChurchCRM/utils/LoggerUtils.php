@@ -34,7 +34,7 @@ class LoggerUtils
 
     public static function buildLogFilePath($type)
     {
-        return $logFilePrefix = SystemURLs::getDocumentRoot().'/logs/'.date('Y-m-d').'-'.$type.'.log';
+        return SystemURLs::getDocumentRoot().'/logs/'.date('Y-m-d').'-'.$type.'.log';
     }
 
     /**
