@@ -9,24 +9,24 @@ use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PropertyAPIMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/people/properties', function () use ($app) {
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/people/properties', function (RouteCollectorProxy $group) {
     $personPropertyAPIMiddleware = new PropertyAPIMiddleware('p');
     $personAPIMiddleware = new PersonAPIMiddleware();
     $familyPropertyAPIMiddleware = new PropertyAPIMiddleware('f');
     $familyAPIMiddleware = new FamilyAPIMiddleware();
 
-    $app->get('/person', 'getAllPersonProperties');
-    $app->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);
-    $app->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
-    $app->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
-    $app->get('/family', 'getAllFamilyProperties');
-    $app->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware);
-    $app->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
-    $app->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
-})->add(new MenuOptionsRoleAuthMiddleware());
+    $group->get('/person', 'getAllPersonProperties');
+    $group->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);
+    $group->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
+    $group->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
+    $group->get('/family', 'getAllFamilyProperties');
+    $group->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware);
+    $group->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
+    $group->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
+})->add(MenuOptionsRoleAuthMiddleware::class);
 
 function getAllPersonProperties(Request $request, Response $response, array $args)
 {

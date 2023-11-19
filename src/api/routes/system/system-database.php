@@ -20,16 +20,16 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/database', function (RouteCollectorProxy $group) {
+    $group->delete('/reset', 'resetDatabase');
+    $group->delete('/people/clear', 'clearPeopleTables');
 
-$app->group('/database', function () use ($app) {
-    $app->delete('/reset', 'resetDatabase');
-    $app->delete('/people/clear', 'clearPeopleTables');
+    $group->get('/people/export/chmeetings', 'exportChMeetings');
 
-    $app->get('/people/export/chmeetings', 'exportChMeetings');
-
-    $app->post('/backup', function ($request, $response, $args) {
+    $group->post('/backup', function ($request, $response, $args) {
         $input = (object) $request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')).'-'.date(SystemConfig::getValue('sDateFilenameFormat'));
         $BackupType = $input->BackupType;
@@ -45,7 +45,7 @@ $app->group('/database', function () use ($app) {
         return $response->withJson($Backup);
     });
 
-    $app->post('/backupRemote', function ($request, $response, $args) {
+    $group->post('/backupRemote', function ($request, $response, $args) {
         if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
             $input = (object) $request->getParsedBody();
             $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')).'-'.date(SystemConfig::getValue('sDateFilenameFormat'));
@@ -66,18 +66,18 @@ $app->group('/database', function () use ($app) {
         }
     });
 
-    $app->post('/restore', function ($request, $response, $args) {
+    $group->post('/restore', function ($request, $response, $args) {
         $RestoreJob = new RestoreJob();
         $RestoreJob->execute();
 
         return $response->withJson($RestoreJob);
     });
 
-    $app->get('/download/{filename}', function ($request, $response, $args) {
+    $group->get('/download/{filename}', function ($request, $response, $args) {
         $filename = $args['filename'];
         BackupDownloader::downloadBackup($filename);
     });
-})->add(new AdminRoleAuthMiddleware());
+})->add(AdminRoleAuthMiddleware::class);
 
 /**
  * A method that drops all db tables.

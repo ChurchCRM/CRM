@@ -1,12 +1,12 @@
 <?php
 
 use ChurchCRM\model\ChurchCRM\UserQuery;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/public/user', function () use ($app) {
-    $app->post('/login', 'userLogin');
-    $app->post('/login/', 'userLogin');
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/public/user', function (RouteCollectorProxy $group) {
+    $group->post('/login', 'userLogin');
+    $group->post('/login/', 'userLogin');
 });
 
 function userLogin(Request $request, Response $response, array $args)

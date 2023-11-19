@@ -5,12 +5,12 @@ use ChurchCRM\model\ChurchCRM\QueryParameterOptionsQuery;
 use ChurchCRM\model\ChurchCRM\QueryParametersQuery;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/locale', function () use ($app) {
-    $app->get('/database/terms', 'getDBTerms');
-})->add(new AdminRoleAuthMiddleware());
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/locale', function (RouteCollectorProxy $group) {
+    $group->get('/database/terms', 'getDBTerms');
+})->add(AdminRoleAuthMiddleware::class);
 
 /**
  * A method that gets locale terms from the db for po generation.

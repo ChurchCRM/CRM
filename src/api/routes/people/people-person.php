@@ -8,19 +8,19 @@ use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
 use ChurchCRM\Utils\MiscUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 // This group does not load the person via middleware (to speed up the page loads)
-$app->group('/person/{personId:[0-9]+}', function () use ($app) {
-    $app->get('/thumbnail', function (Request $request, Response $response, array $args) {
+$app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
+    $group->get('/thumbnail', function (Request $request, Response $response, array $args) {
         $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $photo = new Photo('Person', $args['personId']);
 
         return $response->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
     });
 
-    $app->get('/photo', function (Request $request, Response $response, array $args) {
+    $group->get('/photo', function (Request $request, Response $response, array $args) {
         $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $photo = new Photo('Person', $args['personId']);
 
@@ -28,14 +28,14 @@ $app->group('/person/{personId:[0-9]+}', function () use ($app) {
     });
 });
 
-$app->group('/person/{personId:[0-9]+}', function () use ($app) {
-    $app->get('', function (Request $request, Response $response, array $args) {
+$app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
+    $group->get('', function (Request $request, Response $response, array $args) {
         $person = $request->getAttribute('person');
 
         return $response->withHeader('Content-Type', 'application/json')->write($person->exportTo('JSON'));
     });
 
-    $app->delete('', function (Request $request, Response $response, array $args) {
+    $group->delete('', function (Request $request, Response $response, array $args) {
         $person = $request->getAttribute('person');
         if (AuthenticationManager::getCurrentUser()->getId() == $person->getId()) {
             return $response->withStatus(403, gettext("Can't delete yourself"));
@@ -43,27 +43,27 @@ $app->group('/person/{personId:[0-9]+}', function () use ($app) {
         $person->delete();
 
         return $response->withJson(['status' => gettext('success')]);
-    })->add(new DeleteRecordRoleAuthMiddleware());
+    })->add(DeleteRecordRoleAuthMiddleware::class);
 
-    $app->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
+    $group->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
 
-    $app->post('/addToCart', function (Request $request, Response $response, array $args) {
+    $group->post('/addToCart', function (Request $request, Response $response, array $args) {
         Cart::addPerson($args['personId']);
     });
 
-    $app->post('/photo', function (Request $request, Response $response, array $args) {
+    $group->post('/photo', function (Request $request, Response $response, array $args) {
         $person = $request->getAttribute('person');
         $input = (object) $request->getParsedBody();
         $person->setImageFromBase64($input->imgBase64);
         $response->withJson(['status' => 'success']);
-    })->add(new EditRecordsRoleAuthMiddleware());
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
-    $app->delete('/photo', function (Request $request, Response $response, array $args) {
+    $group->delete('/photo', function (Request $request, Response $response, array $args) {
         $person = $request->getAttribute('person');
 
         return $response->withJson(['success' => $person->deletePhoto()]);
-    })->add(new DeleteRecordRoleAuthMiddleware());
-})->add(new PersonAPIMiddleware());
+    })->add(DeleteRecordRoleAuthMiddleware::class);
+})->add(PersonAPIMiddleware::class);
 
 function setPersonRoleAPI(Request $request, Response $response, array $args)
 {

@@ -1,10 +1,10 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/public', function () use ($app) {
-    $app->get('/echo', 'getEcho');
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/public', function (RouteCollectorProxy $group) {
+    $group->get('/echo', 'getEcho');
 });
 
 /**

@@ -7,28 +7,28 @@ use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use Propel\Runtime\Collection\ObjectCollection;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/calendars', function () use ($app) {
-    $app->get('', 'getUserCalendars');
-    $app->post('', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
-    $app->get('/', 'getUserCalendars');
-    $app->post('/', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
-    $app->get('/{id}', 'getUserCalendars');
-    $app->delete('/{id}', 'deleteUserCalendar');
-    $app->get('/{id}/events', 'UserCalendar');
-    $app->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
-    $app->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
-    $app->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(new AddEventsRoleAuthMiddleware());
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/calendars', function (RouteCollectorProxy $group) {
+    $group->get('', 'getUserCalendars');
+    $group->post('', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
+    $group->get('/', 'getUserCalendars');
+    $group->post('/', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
+    $group->get('/{id}', 'getUserCalendars');
+    $group->delete('/{id}', 'deleteUserCalendar');
+    $group->get('/{id}/events', 'UserCalendar');
+    $group->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
+    $group->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
+    $group->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(new AddEventsRoleAuthMiddleware());
 });
 
-$app->group('/systemcalendars', function () use ($app) {
-    $app->get('', 'getSystemCalendars');
-    $app->get('/', 'getSystemCalendars');
-    $app->get('/{id}/events', 'getSystemCalendarEvents');
-    $app->get('/{id}/events/{eventid}', 'getSystemCalendarEventById');
-    $app->get('/{id}/fullcalendar', 'getSystemCalendarFullCalendarEvents');
+$app->group('/systemcalendars', function (RouteCollectorProxy $group) {
+    $group->get('', 'getSystemCalendars');
+    $group->get('/', 'getSystemCalendars');
+    $group->get('/{id}/events', 'getSystemCalendarEvents');
+    $group->get('/{id}/events/{eventid}', 'getSystemCalendarEventById');
+    $group->get('/{id}/fullcalendar', 'getSystemCalendarFullCalendarEvents');
 });
 
 function getSystemCalendars(Request $request, Response $response, array $args)

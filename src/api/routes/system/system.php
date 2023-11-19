@@ -4,12 +4,12 @@ use ChurchCRM\dto\Notification\UiNotification;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\LoggerUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/system', function () use ($app) {
-    $app->get('/notification', 'getUiNotificationAPI');
-    $app->post('/background/csp-report', 'logCSPReportAPI');
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/system', function (RouteCollectorProxy $group) {
+    $group->get('/notification', 'getUiNotificationAPI');
+    $group->post('/background/csp-report', 'logCSPReportAPI');
 });
 
 function logCSPReportAPI(Request $request, Response $response, array $args)

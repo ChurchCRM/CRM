@@ -5,15 +5,15 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ORMUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/public/register', function () use ($app) {
-    $app->post('/family', 'registerFamilyAPI');
-    $app->post('/family/', 'registerFamilyAPI');
-    $app->post('/person', 'registerPersonAPI');
-    $app->post('/person/', 'registerPersonAPI');
-})->add(new PublicRegistrationAuthMiddleware());
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/public/register', function (RouteCollectorProxy $group) {
+    $group->post('/family', 'registerFamilyAPI');
+    $group->post('/family/', 'registerFamilyAPI');
+    $group->post('/person', 'registerPersonAPI');
+    $group->post('/person/', 'registerPersonAPI');
+})->add(PublicRegistrationAuthMiddleware::class);
 
 function registerFamilyAPI(Request $request, Response $response, array $args)
 {

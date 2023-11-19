@@ -9,26 +9,26 @@ use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/events', function (RouteCollectorProxy $group) {
+    $group->get('/', 'getAllEvents');
+    $group->get('', 'getAllEvents');
+    $group->get('/types', 'getEventTypes');
+    $group->get('/{id}', 'getEvent')->add(new EventsMiddleware());
+    $group->get('/{id}/', 'getEvent')->add(new EventsMiddleware());
+    $group->get('/{id}/primarycontact', 'getEventPrimaryContact');
+    $group->get('/{id}/secondarycontact', 'getEventSecondaryContact');
+    $group->get('/{id}/location', 'getEventLocation');
+    $group->get('/{id}/audience', 'getEventAudience');
 
-$app->group('/events', function () use ($app) {
-    $app->get('/', 'getAllEvents');
-    $app->get('', 'getAllEvents');
-    $app->get('/types', 'getEventTypes');
-    $app->get('/{id}', 'getEvent')->add(new EventsMiddleware());
-    $app->get('/{id}/', 'getEvent')->add(new EventsMiddleware());
-    $app->get('/{id}/primarycontact', 'getEventPrimaryContact');
-    $app->get('/{id}/secondarycontact', 'getEventSecondaryContact');
-    $app->get('/{id}/location', 'getEventLocation');
-    $app->get('/{id}/audience', 'getEventAudience');
+    $group->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
+    $group->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
 
-    $app->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $app->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $app->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
-    $app->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
-
-    $app->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
+    $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
 });
 
 function getAllEvents($request, Response $response, $args)

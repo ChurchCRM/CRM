@@ -1,13 +1,13 @@
 <?php
 
 use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/user/{userId:[0-9]+}/setting', function () use ($app) {
-    $app->get('/{settingName}', 'getUserSetting');
-    $app->post('/{settingName}', 'updateUserSetting');
-})->add(new UserAPIMiddleware());
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $group) {
+    $group->get('/{settingName}', 'getUserSetting');
+    $group->post('/{settingName}', 'updateUserSetting');
+})->add(UserAPIMiddleware::class);
 
 function getUserSetting(Request $request, Response $response, array $args)
 {

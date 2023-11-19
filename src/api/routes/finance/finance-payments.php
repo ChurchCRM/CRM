@@ -4,17 +4,17 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/payments', function () use ($app) {
-    $app->get('/', function (Request $request, Response $response, array $args) use ($app) {
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/payments', function (RouteCollectorProxy $group) {
+    $group->get('/', function (Request $request, Response $response, array $args) use ($app) {
         $financialService = $this->get('FinancialService');
 
         echo $financialService->getPaymentJSON($app->FinancialService->getPayments());
     });
 
-    $app->post('/', function ($request, $response, $args) {
+    $group->post('/', function ($request, $response, $args) {
         $payment = $request->getParsedBody();
         $financialService = $this->get('FinancialService');
 
@@ -24,7 +24,7 @@ $app->group('/payments', function () use ($app) {
         );
     });
 
-    $app->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
+    $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
         $familyId = $request->getAttribute('route')->getArgument('familyId');
         $query = PledgeQuery::create()->filterByFamId($familyId);
         if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
@@ -59,9 +59,9 @@ $app->group('/payments', function () use ($app) {
         return $response->withJson(['data' => $rows]);
     });
 
-    $app->delete('/{groupKey}', function (Request $request, Response $response, array $args) use ($app) {
+    $group->delete('/{groupKey}', function (Request $request, Response $response, array $args) use ($app) {
         $groupKey = $args['groupKey'];
         $app->FinancialService->deletePayment($groupKey);
         echo json_encode(['status' => 'ok']);
     });
-})->add(new FinanceRoleAuthMiddleware());
+})->add(FinanceRoleAuthMiddleware::class);

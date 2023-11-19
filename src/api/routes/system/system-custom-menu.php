@@ -4,17 +4,17 @@ use ChurchCRM\model\ChurchCRM\MenuLink;
 use ChurchCRM\model\ChurchCRM\MenuLinkQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Utils\ORMUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/system/menu', function () use ($app) {
-    $app->get('', 'getMenus');
-    $app->get('/', 'getMenus');
-    $app->put('', 'addMenu');
-    $app->put('/', 'addMenu');
-    $app->delete('{linkId:[0-9]+}', 'delMenu');
-    $app->delete('/{linkId:[0-9]+}', 'delMenu');
-})->add(new AdminRoleAuthMiddleware());
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/system/menu', function (RouteCollectorProxy $group) {
+    $group->get('', 'getMenus');
+    $group->get('/', 'getMenus');
+    $group->put('', 'addMenu');
+    $group->put('/', 'addMenu');
+    $group->delete('{linkId:[0-9]+}', 'delMenu');
+    $group->delete('/{linkId:[0-9]+}', 'delMenu');
+})->add(AdminRoleAuthMiddleware::class);
 
 function getMenus(Request $request, Response $response, array $args)
 {

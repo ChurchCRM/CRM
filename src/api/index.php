@@ -18,8 +18,8 @@ $container = $app->getContainer();
 $container['cache'] = fn () => new CacheProvider();
 
 # Add middleware - executed in reverse order of appearing here.
-$app->add(new VersionMiddleware());
-$app->add(new AuthMiddleware());
+$app->add(VersionMiddleware::class);
+$app->add(AuthMiddleware::class);
 
 // Set up
 require __DIR__ . '/dependencies.php';

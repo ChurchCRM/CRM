@@ -2,12 +2,12 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/system/debug', function () use ($app) {
-    $app->get('/urls', 'getSystemURLAPI');
-})->add(new AdminRoleAuthMiddleware());
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/system/debug', function (RouteCollectorProxy $group) {
+    $group->get('/urls', 'getSystemURLAPI');
+})->add(AdminRoleAuthMiddleware::class);
 
 function getSystemURLAPI(Request $request, Response $response, array $args)
 {

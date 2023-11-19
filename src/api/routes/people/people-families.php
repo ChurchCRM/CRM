@@ -12,15 +12,15 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/families',  function (RouteCollectorProxy $group) {
+    $group->get('/latest', 'getLatestFamilies');
+    $group->get('/updated', 'getUpdatedFamilies');
+    $group->get('/anniversaries', 'getFamiliesWithAnniversaries');
 
-$app->group('/families', function () use ($app) {
-    $app->get('/latest', 'getLatestFamilies');
-    $app->get('/updated', 'getUpdatedFamilies');
-    $app->get('/anniversaries', 'getFamiliesWithAnniversaries');
-
-    $app->get('/email/without', function ($request, $response, $args) {
+    $group->get('/email/without', function ($request, $response, $args) {
         $families = FamilyQuery::create()->joinWithPerson()->find();
 
         $familiesWithoutEmails = [];
@@ -42,12 +42,12 @@ $app->group('/families', function () use ($app) {
         return $response->withJson(['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
     });
 
-    $app->get(
+    $group->get(
         '/numbers',
         fn ($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries())
     );
 
-    $app->get('/search/{query}', function ($request, $response, $args) {
+    $group->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
         $results = [];
         $q = FamilyQuery::create()
@@ -61,7 +61,7 @@ $app->group('/families', function () use ($app) {
         return $response->withJson(json_encode(['Families' => $results], JSON_THROW_ON_ERROR));
     });
 
-    $app->get('/self-register', function ($request, $response, $args) {
+    $group->get('/self-register', function ($request, $response, $args) {
         $families = FamilyQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
@@ -71,7 +71,7 @@ $app->group('/families', function () use ($app) {
         return $response->withJson(['families' => $families->toArray()]);
     });
 
-    $app->get('/self-verify', function ($request, $response, $args) {
+    $group->get('/self-verify', function ($request, $response, $args) {
         $verificationNotes = NoteQuery::create()
             ->filterByEnteredBy(Person::SELF_VERIFY)
             ->orderByDateEntered(Criteria::DESC)
@@ -82,7 +82,7 @@ $app->group('/families', function () use ($app) {
         return $response->withJson(['families' => $verificationNotes->toArray()]);
     });
 
-    $app->get('/pending-self-verify', function ($request, $response, $args) {
+    $group->get('/pending-self-verify', function ($request, $response, $args) {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::TYPE_FAMILY_VERIFY)
             ->filterByRemainingUses(['min' => 1])
@@ -96,7 +96,7 @@ $app->group('/families', function () use ($app) {
         return $response->withJson(['families' => $pendingTokens->toArray()]);
     });
 
-    $app->get('/byCheckNumber/{scanString}', function ($request, $response, $args) use ($app) {
+    $group->get('/byCheckNumber/{scanString}', function ($request, $response, $args) use ($app) {
         $scanString = $args['scanString'];
         echo $app->FinancialService->getMemberByScanString($scanString);
     });
@@ -105,7 +105,7 @@ $app->group('/families', function () use ($app) {
      * Update the family status to activated or deactivated with :familyId and :status true/false.
      * Pass true to activate and false to deactivate.     *.
      */
-    $app->post('/{familyId:[0-9]+}/activate/{status}', function ($request, $response, $args) {
+    $group->post('/{familyId:[0-9]+}/activate/{status}', function ($request, $response, $args) {
         $familyId = $args['familyId'];
         $newStatus = $args['status'];
 

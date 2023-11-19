@@ -8,14 +8,14 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
-
-$app->group('/groups', function () use ($app) {
-    $app->get('/', function () {
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/groups', function (RouteCollectorProxy $group) {
+    $group->get('/', function () {
         echo GroupQuery::create()->find()->toJSON();
     });
 
     // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
-    $app->get('/calendars', function ($request, $response, $args) {
+    $group->get('/calendars', function ($request, $response, $args) {
         $groups = GroupQuery::Create()
             ->orderByName()
             ->find();
@@ -32,7 +32,7 @@ $app->group('/groups', function () use ($app) {
         return $response->withJson($return);
     });
 
-    $app->get('/groupsInCart', function () {
+    $group->get('/groupsInCart', function () {
         $groupsInCart = [];
         $groups = GroupQuery::create()->find();
         foreach ($groups as $group) {
@@ -43,15 +43,15 @@ $app->group('/groups', function () use ($app) {
         echo json_encode(['groupsInCart' => $groupsInCart], JSON_THROW_ON_ERROR);
     });
 
-    $app->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $group->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
         echo GroupQuery::create()->findOneById($args['groupID'])->toJSON();
     });
 
-    $app->get('/{groupID:[0-9]+}/cartStatus', function ($request, $response, $args) {
+    $group->get('/{groupID:[0-9]+}/cartStatus', function ($request, $response, $args) {
         echo GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart();
     });
 
-    $app->get('/{groupID:[0-9]+}/members', function ($request, $response, $args) {
+    $group->get('/{groupID:[0-9]+}/members', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
@@ -76,7 +76,7 @@ $app->group('/groups', function () use ($app) {
         echo $members->toJSON();
     });
 
-    $app->get('/{groupID:[0-9]+}/events', function ($request, $response, $args) {
+    $group->get('/{groupID:[0-9]+}/events', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
@@ -84,7 +84,7 @@ $app->group('/groups', function () use ($app) {
         echo $members->toJSON();
     });
 
-    $app->get('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
+    $group->get('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $group = GroupQuery::create()->findOneById($groupID);
         $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
@@ -92,8 +92,8 @@ $app->group('/groups', function () use ($app) {
     });
 });
 
-$app->group('/groups', function () use ($app) {
-    $app->post('/', function ($request, $response, $args) {
+$app->group('/groups', function (RouteCollectorProxy $group) {
+    $group->post('/', function ($request, $response, $args) {
         $groupSettings = (object) $request->getParsedBody();
         $group = new Group();
         if ($groupSettings->isSundaySchool) {
@@ -104,7 +104,7 @@ $app->group('/groups', function () use ($app) {
         echo $group->toJSON();
     });
 
-    $app->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $input = (object) $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
@@ -115,13 +115,13 @@ $app->group('/groups', function () use ($app) {
         echo $group->toJSON();
     });
 
-    $app->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $group->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         GroupQuery::create()->findOneById($groupID)->delete();
         echo json_encode(['status' => 'success']);
     });
 
-    $app->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
+    $group->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
@@ -141,7 +141,7 @@ $app->group('/groups', function () use ($app) {
         echo json_encode(['success' => 'true']);
     });
 
-    $app->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
@@ -172,7 +172,7 @@ $app->group('/groups', function () use ($app) {
         echo $members->toJSON();
     });
 
-    $app->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $roleID = $request->getParsedBody()['roleID'];
@@ -182,7 +182,7 @@ $app->group('/groups', function () use ($app) {
         echo $membership->toJSON();
     });
 
-    $app->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
         $input = (object) $request->getParsedBody();
@@ -204,7 +204,7 @@ $app->group('/groups', function () use ($app) {
         echo json_encode(['success' => false]);
     });
 
-    $app->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
+    $group->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
         $groupService = $this->get('GroupService');
@@ -212,7 +212,7 @@ $app->group('/groups', function () use ($app) {
         echo json_encode($groupService->deleteGroupRole($groupID, $roleID), JSON_THROW_ON_ERROR);
     });
 
-    $app->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleName = $request->getParsedBody()['roleName'];
         $groupService = $this->get('GroupService');
@@ -220,7 +220,7 @@ $app->group('/groups', function () use ($app) {
         echo $groupService->addGroupRole($groupID, $roleName);
     });
 
-    $app->post('/{groupID:[0-9]+}/defaultRole', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/defaultRole', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $request->getParsedBody()['roleID'];
         $group = GroupQuery::create()->findPk($groupID);
@@ -229,7 +229,7 @@ $app->group('/groups', function () use ($app) {
         echo json_encode(['success' => true]);
     });
 
-    $app->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
         $groupService = $this->get('GroupService');
@@ -243,7 +243,7 @@ $app->group('/groups', function () use ($app) {
         }
     });
 
-    $app->post('/{groupID:[0-9]+}/settings/active/{value}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/settings/active/{value}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
@@ -261,7 +261,7 @@ $app->group('/groups', function () use ($app) {
         }
     });
 
-    $app->post('/{groupID:[0-9]+}/settings/email/export/{value}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/settings/email/export/{value}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
@@ -278,4 +278,4 @@ $app->group('/groups', function () use ($app) {
             return $response->withStatus(500, gettext('invalid export value'));
         }
     });
-})->add(new ManageGroupRoleAuthMiddleware());
+})->add(ManageGroupRoleAuthMiddleware::class);

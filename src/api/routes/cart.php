@@ -1,14 +1,14 @@
 <?php
 
 use ChurchCRM\dto\Cart;
-
-$app->group('/cart', function () use ($app) {
-    $app->get(
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/cart', function (RouteCollectorProxy $group) {
+    $group->get(
         '/',
         fn ($request, $response, $args) => $response->withJson(['PeopleCart' => $_SESSION['aPeopleCart']])
     );
 
-    $app->post('/', function ($request, $response, $args) {
+    $group->post('/', function ($request, $response, $args) {
         $cartPayload = (object) $request->getParsedBody();
         if (isset($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
             Cart::addPersonArray($cartPayload->Persons);
@@ -23,7 +23,7 @@ $app->group('/cart', function () use ($app) {
         return $response->withJson(['status' => 'success']);
     });
 
-    $app->post('/emptyToGroup', function ($request, $response, $args) {
+    $group->post('/emptyToGroup', function ($request, $response, $args) {
         $cartPayload = (object) $request->getParsedBody();
         Cart::emptyToGroup($cartPayload->groupID, $cartPayload->groupRoleID);
 
@@ -33,7 +33,7 @@ $app->group('/cart', function () use ($app) {
         ]);
     });
 
-    $app->post('/removeGroup', function ($request, $response, $args) {
+    $group->post('/removeGroup', function ($request, $response, $args) {
         $cartPayload = (object) $request->getParsedBody();
         Cart::removeGroup($cartPayload->Group);
 
@@ -46,7 +46,7 @@ $app->group('/cart', function () use ($app) {
     /**
      * delete. This will empty the cart.
      */
-    $app->delete('/', function ($request, $response, $args) {
+    $group->delete('/', function ($request, $response, $args) {
         $cartPayload = (object) $request->getParsedBody();
         if (isset($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
             Cart::removePersonArray($cartPayload->Persons);

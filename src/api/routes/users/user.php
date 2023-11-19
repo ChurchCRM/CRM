@@ -2,13 +2,13 @@
 
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/user/{userId:[0-9]+}', function () use ($app) {
-    $app->post('/apikey/regen', 'genAPIKey');
-    $app->post('/config/{key}', 'updateUserConfig');
-})->add(new UserAPIMiddleware());
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/user/{userId:[0-9]+}', function (RouteCollectorProxy $group) {
+    $group->post('/apikey/regen', 'genAPIKey');
+    $group->post('/config/{key}', 'updateUserConfig');
+})->add(UserAPIMiddleware::class);
 
 function genAPIKey(Request $request, Response $response, array $args)
 {

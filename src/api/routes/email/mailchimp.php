@@ -6,16 +6,16 @@ use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/mailchimp/', function () use ($app) {
-    $app->get('list/{id}', 'getMailchimpList');
-    $app->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');
-    $app->get('list/{id}/not-subscribed', 'getMailChimpMissingSubscribed');
-    $app->get('person/{personId}', 'getPersonStatus')->add(new PersonAPIMiddleware());
-    $app->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
-})->add(new MailChimpMiddleware());
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/mailchimp/', function (RouteCollectorProxy $group) {
+    $group->get('list/{id}', 'getMailchimpList');
+    $group->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');
+    $group->get('list/{id}/not-subscribed', 'getMailChimpMissingSubscribed');
+    $group->get('person/{personId}', 'getPersonStatus')->add(new PersonAPIMiddleware());
+    $group->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
+})->add(MailChimpMiddleware::class);
 
 function getMailchimpList(Request $request, Response $response, array $args)
 {

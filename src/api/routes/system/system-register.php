@@ -3,9 +3,9 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-
-$app->group('/register', function () use ($app) {
-    $app->post('', function ($request, $response, $args) {
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/register', function (RouteCollectorProxy $group) {
+    $group->post('', function ($request, $response, $args) {
         $input = (object) $request->getParsedBody();
 
         $registrationData = new \stdClass();
@@ -37,4 +37,4 @@ $app->group('/register', function () use ($app) {
 
         return $response->withJson(['status' => 'success']);
     });
-})->add(new AdminRoleAuthMiddleware());
+})->add(AdminRoleAuthMiddleware::class);

@@ -12,9 +12,9 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-
-$app->group('/family/{familyId:[0-9]+}', function () use ($app) {
-    $app->get('/photo', function ($request, $response, $args) {
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
+    $group->get('/photo', function ($request, $response, $args) {
         $this->cache->withExpires(
             $response,
             MiscUtils::getPhotoCacheExpirationTimestamp()
@@ -26,21 +26,21 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
             ->withHeader('Content-type', $photo->getPhotoContentType());
     });
 
-    $app->post('/photo', function ($request, $response, $args) {
+    $group->post('/photo', function ($request, $response, $args) {
         $input = (object) $request->getParsedBody();
         $family = $request->getAttribute('family');
         $family->setImageFromBase64($input->imgBase64);
 
         return $response->withStatus(200);
-    })->add(new EditRecordsRoleAuthMiddleware());
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
-    $app->delete('/photo', function ($request, $response, $args) {
+    $group->delete('/photo', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
 
         return $response->withJson(['status' => $family->deletePhoto()]);
-    })->add(new EditRecordsRoleAuthMiddleware());
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
-    $app->get('/thumbnail', function ($request, $response, $args) {
+    $group->get('/thumbnail', function ($request, $response, $args) {
         $this->cache->withExpires(
             $response,
             MiscUtils::getPhotoCacheExpirationTimestamp()
@@ -52,7 +52,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
             ->withHeader('Content-type', $photo->getThumbnailContentType());
     });
 
-    $app->get('', function ($request, $response, $args) {
+    $group->get('', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
 
         return $response
@@ -60,7 +60,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
             ->write($family->exportTo('JSON'));
     });
 
-    $app->get('/geolocation', function ($request, $response, $args) {
+    $group->get('/geolocation', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
         $familyAddress = $family->getAddress();
         $familyLatLong = GeoUtils::getLatLong($familyAddress);
@@ -73,7 +73,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         return $response->withJson($geoLocationInfo);
     });
 
-    $app->get('/nav', function ($request, $response, $args) {
+    $group->get('/nav', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
         $familyNav = [];
         $familyNav['PreFamilyId'] = 0;
@@ -97,7 +97,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         return $response->withJson($familyNav);
     });
 
-    $app->post('/verify', function ($request, $response, $args) {
+    $group->post('/verify', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
 
         try {
@@ -115,7 +115,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         }
     });
 
-    $app->get('/verify/url', function ($request, $response, $args) {
+    $group->get('/verify/url', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
         TokenQuery::create()
             ->filterByType('verifyFamily')
@@ -130,10 +130,10 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
             ->withJson(['url' => SystemURLs::getURL().'/external/verify/'.$token->getToken()]);
     });
 
-    $app->post('/verify/now', function ($request, $response, $args) {
+    $group->post('/verify/now', function ($request, $response, $args) {
         $family = $request->getAttribute('family');
         $family->verify();
 
         return $response->withJson(['message' => 'Success']);
     });
-})->add(new FamilyAPIMiddleware());
+})->add(FamilyAPIMiddleware::class);

@@ -2,13 +2,13 @@
 
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/system/custom-fields', function () use ($app) {
-    $app->get('/person', 'getPersonFieldsByType');
-    $app->get('/person/', 'getPersonFieldsByType');
-})->add(new AdminRoleAuthMiddleware());
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/system/custom-fields', function (RouteCollectorProxy $group) {
+    $group->get('/person', 'getPersonFieldsByType');
+    $group->get('/person/', 'getPersonFieldsByType');
+})->add(AdminRoleAuthMiddleware::class);
 
 /**
  * A method that does the work to handle getting an existing person custom fields by type.

@@ -9,20 +9,20 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Propel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/persons', function (RouteCollectorProxy $group) {
+    $group->get('/roles', 'getAllRolesAPI');
+    $group->get('/roles/', 'getAllRolesAPI');
+    $group->get('/duplicate/emails', 'getEmailDupesAPI');
 
-$app->group('/persons', function () use ($app) {
-    $app->get('/roles', 'getAllRolesAPI');
-    $app->get('/roles/', 'getAllRolesAPI');
-    $app->get('/duplicate/emails', 'getEmailDupesAPI');
-
-    $app->get('/latest', 'getLatestPersons');
-    $app->get('/updated', 'getUpdatedPersons');
-    $app->get('/birthday', 'getPersonsWithBirthdays');
+    $group->get('/latest', 'getLatestPersons');
+    $group->get('/updated', 'getUpdatedPersons');
+    $group->get('/birthday', 'getPersonsWithBirthdays');
 
     // search person by Name
-    $app->get('/search/{query}', function ($request, $response, $args) {
+    $group->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
 
         $searchLikeString = '%'.$query.'%';
@@ -47,12 +47,12 @@ $app->group('/persons', function () use ($app) {
         return $response->withJson($return);
     });
 
-    $app->get(
+    $group->get(
         '/numbers',
         fn ($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberBirthDates())
     );
 
-    $app->get('/self-register', function ($request, $response, $args) {
+    $group->get('/self-register', function ($request, $response, $args) {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)

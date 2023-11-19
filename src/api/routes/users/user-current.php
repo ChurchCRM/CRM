@@ -3,15 +3,15 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Utils\LoggerUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-$app->group('/user/current', function () use ($app) {
-    $app->post('/refresh2fasecret', 'refresh2fasecret');
-    $app->post('/refresh2farecoverycodes', 'refresh2farecoverycodes');
-    $app->post('/remove2fasecret', 'remove2fasecret');
-    $app->post('/test2FAEnrollmentCode', 'test2FAEnrollmentCode');
-    $app->get('/get2faqrcode', 'get2faqrcode');
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/user/current', function (RouteCollectorProxy $group) {
+    $group->post('/refresh2fasecret', 'refresh2fasecret');
+    $group->post('/refresh2farecoverycodes', 'refresh2farecoverycodes');
+    $group->post('/remove2fasecret', 'remove2fasecret');
+    $group->post('/test2FAEnrollmentCode', 'test2FAEnrollmentCode');
+    $group->get('/get2faqrcode', 'get2faqrcode');
 });
 
 function refresh2fasecret(Request $request, Response $response, array $args)
