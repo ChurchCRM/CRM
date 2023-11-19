@@ -16,11 +16,13 @@ function getPageCommonData(Request $request, Response $response, array $p_args)
     $pageName = $request->getQueryParams()['name'];
     $DashboardValues = NewDashboardService::getValues($pageName);
     $response->getBody()->write(json_encode($DashboardValues));
+
     return $response->withHeader('Content-Type', 'application/json');
 }
 
 function runTimerJobsAPI(Request $request, Response $response, array $p_args)
 {
     SystemService::runTimerJobs();
+
     return $response;
 }

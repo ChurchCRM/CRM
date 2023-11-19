@@ -31,7 +31,6 @@ class LoggerUtils
         return intval(SystemConfig::getValue('sLogLevel'));
     }
 
-
     public static function buildLogFilePath($type)
     {
         return SystemURLs::getDocumentRoot().'/logs/'.date('Y-m-d').'-'.$type.'.log';
@@ -40,13 +39,15 @@ class LoggerUtils
     /**
      * @return Logger
      */
-    public static function getSlimMVCLogger(): Logger {
+    public static function getSlimMVCLogger(): Logger
+    {
         if (self::$slimLogger === null) {
             $slimLogger = new Logger('slim-app');
-            $streamHandler = new StreamHandler(self::buildLogFilePath('slim'), SystemConfig::getValue("sLogLevel"));
+            $streamHandler = new StreamHandler(self::buildLogFilePath('slim'), SystemConfig::getValue('sLogLevel'));
             $slimLogger->pushHandler($streamHandler);
             self::$slimLogger = $slimLogger;
         }
+
         return self::$slimLogger;
     }
 

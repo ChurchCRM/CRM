@@ -2,8 +2,9 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 $app->group('/calendars', function (RouteCollectorProxy $group) {
     $group->get('/{CalendarAccessToken}', 'serveCalendarPage');
     $group->get('/{CalendarAccessToken}/', 'serveCalendarPage');

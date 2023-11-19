@@ -3,12 +3,12 @@
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 $app->group('/verify', function (RouteCollectorProxy $group) {
-    $group->get('/{token}', function  (Request $request, Response $response, array $args) {
+    $group->get('/{token}', function (Request $request, Response $response, array $args) {
         $renderer = new PhpRenderer('templates/verify/');
         $token = TokenQuery::create()->findPk($args['token']);
         $haveFamily = false;
@@ -28,7 +28,7 @@ $app->group('/verify', function (RouteCollectorProxy $group) {
         }
     });
 
-    $group->post('/{token}', function  (Request $request, Response $response, array $args) {
+    $group->post('/{token}', function (Request $request, Response $response, array $args) {
         $token = TokenQuery::create()->findPk($args['token']);
         if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());
@@ -48,5 +48,4 @@ $app->group('/verify', function (RouteCollectorProxy $group) {
 
         return $response->withStatus(200);
     });
-
 });
