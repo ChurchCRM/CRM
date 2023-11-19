@@ -1,10 +1,10 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-function renderPage(Response $response, $renderPath, $renderFile, $title = '')
+function renderPage(Response $response, string $renderPath, string $renderFile, string $title = '')
 {
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
