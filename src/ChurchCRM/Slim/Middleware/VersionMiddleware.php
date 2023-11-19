@@ -9,9 +9,10 @@ use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 class VersionMiddleware
 {
-    public function __invoke(Request $request, RequestHandler $handler) : Response
+    public function __invoke(Request $request, RequestHandler $handler): Response
     {
         $response = $handler->handle($request);
-        return $response->withAddedHeader("CRM_VERSION", SystemService::getInstalledVersion());
+
+        return $response->withAddedHeader('CRM_VERSION', SystemService::getInstalledVersion());
     }
 }

@@ -15,18 +15,20 @@ abstract class BaseAuthRoleMiddleware
      */
     protected $user;
 
-    public function  __invoke(Request $request, RequestHandler $handler) : Response
+    public function __invoke(Request $request, RequestHandler $handler): Response
     {
         $response = $handler->handle($request);
         $this->user = AuthenticationManager::getCurrentUser();
         if (empty($this->user)) {
             $response = $handler->handle($request);
+
             return $response->withStatus(401, gettext('No logged in user'));
         }
 
         if (!$this->hasRole()) {
             return $response->withStatus(403, $this->noRoleMessage());
         }
+
         return $handler->handle($request);
     }
 
