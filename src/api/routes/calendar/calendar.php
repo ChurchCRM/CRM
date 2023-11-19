@@ -45,6 +45,7 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
     if ($Calendar) {
         $events = $Calendar->getEvents($start, $end);
         $response->getBody()->write(json_encode($events));
+
         return $response->withHeader('Content-Type', 'application/json');
     }
 }
@@ -56,6 +57,7 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
     if ($Calendar) {
         $event = $Calendar->getEventById($args['eventid']);
         $response->getBody()->write(json_encode($event));
+
         return $response->withHeader('Content-Type', 'application/json');
     }
 }
@@ -97,6 +99,7 @@ function getUserCalendarEvents(Request $request, Response $response, array $p_ar
             ->find();
         if ($Events) {
             $response->getBody()->write(json_encode($Events));
+
             return $response->withHeader('Content-Type', 'application/json');
         }
     }
@@ -181,6 +184,7 @@ function NewCalendar(Request $request, Response $response, $args)
     $Calendar->setBackgroundColor($input->BackgroundColor);
     $Calendar->save();
     $response->getBody()->write(json_encode($Calendar));
+
     return $response->withHeader('Content-Type', 'application/json');
 }
 
@@ -197,5 +201,6 @@ function deleteUserCalendar(Request $request, Response $response, $args)
     $Calendar->delete();
 
     $response->getBody()->write(json_encode(['status' => 'success']));
+
     return $response->withHeader('Content-Type', 'application/json');
 }

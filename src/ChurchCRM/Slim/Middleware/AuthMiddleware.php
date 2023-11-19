@@ -10,18 +10,19 @@ use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 class AuthMiddleware
 {
-    public function __invoke(Request $request, RequestHandler $handler) : Response
+    public function __invoke(Request $request, RequestHandler $handler): Response
     {
         $response = $handler->handle($request);
-        if (!$this->isPath($request, "public")) {
-            $apiKey = $request->getHeader("x-api-key");
+        if (!$this->isPath($request, 'public')) {
+            $apiKey = $request->getHeader('x-api-key');
             if (!empty($apiKey)) {
                 $authenticationResult = AuthenticationManager::authenticate(new APITokenAuthenticationRequest($apiKey[0]));
-                if (! $authenticationResult->isAuthenticated) {
+                if (!$authenticationResult->isAuthenticated) {
                     AuthenticationManager::endSession(true);
+
                     return $response->withStatus(401, gettext('No logged in user'));
                 }
-            } else if (AuthenticationManager::validateUserSessionIsActive(!$this->isPath($request, "background"))) {
+            } elseif (AuthenticationManager::validateUserSessionIsActive(!$this->isPath($request, 'background'))) {
                 // validate the user session; however, do not update tLastOperation if the requested path is "/background"
                 // since /background operations do not connotate user activity.
 
@@ -31,15 +32,17 @@ class AuthMiddleware
                 return $response->withStatus(401, gettext('No logged in user'));
             }
         }
+
         return $response;
     }
 
     private function isPath(Request $request, $pathPart)
     {
-        $pathAry = explode("/", $request->getUri()->getPath());
+        $pathAry = explode('/', $request->getUri()->getPath());
         if (!empty($pathAry) && $pathAry[0] === $pathPart) {
             return true;
         }
+
         return false;
     }
 }

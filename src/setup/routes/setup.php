@@ -8,7 +8,7 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 $app->group('/', function (RouteCollectorProxy $group) {
-    $group->get('', function (Request $request, Response $response, array $args)  {
+    $group->get('', function (Request $request, Response $response, array $args) {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
         if (version_compare(phpversion(), '8.1.0', '<')) {
@@ -21,12 +21,14 @@ $app->group('/', function (RouteCollectorProxy $group) {
     $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args) {
         $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
         $response->getBody()->write(json_encode($AppIntegrity['status']));
+
         return $response->withHeader('Content-Type', 'application/json');
     });
 
     $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args) {
         $required = AppIntegrityService::getApplicationPrerequisites();
         $response->getBody()->write(json_encode($required));
+
         return $response->withHeader('Content-Type', 'application/json');
     });
 

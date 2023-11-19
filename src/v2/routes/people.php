@@ -10,7 +10,7 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 // entity can be a person, family, or business
-$app->group('/people',function (RouteCollectorProxy $group) {
+$app->group('/people', function (RouteCollectorProxy $group) {
     $group->get('/verify', 'viewPeopleVerify');
     $group->get('/', 'listPeople');
     $group->get('', 'listPeople');

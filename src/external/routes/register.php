@@ -3,13 +3,14 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 $app->group('/register', function (RouteCollectorProxy $group) {
     $enableSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
 
     if ($enableSelfReg) {
-        $group->get('/', function  (Request $request, Response $response, array $args) {
+        $group->get('/', function (Request $request, Response $response, array $args) {
             $renderer = new PhpRenderer('templates/registration/');
             $familyRoles = ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find();
 

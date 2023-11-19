@@ -13,7 +13,7 @@ $app->group('/systemupgrade', function (RouteCollectorProxy $group) {
         return $response->withJson($upgradeFile);
     });
 
-    $group->post('/doupgrade', function  (Request $request, Response $response, array $args) {
+    $group->post('/doupgrade', function (Request $request, Response $response, array $args) {
         $input = (object) $request->getParsedBody();
         $upgradeResult = ChurchCRMReleaseManager::doUpgrade($input->fullPath, $input->sha1);
 

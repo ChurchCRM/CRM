@@ -11,18 +11,18 @@ use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
+use ChurchCRM\Slim\Request\JsonResponse;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
-use ChurchCRM\Slim\Request\JsonResponse;
 
-$app->group('/families',  function (RouteCollectorProxy $group) {
+$app->group('/families', function (RouteCollectorProxy $group) {
     $group->get('/latest', 'getLatestFamilies');
     $group->get('/updated', 'getUpdatedFamilies');
     $group->get('/anniversaries', 'getFamiliesWithAnniversaries');
 
-    $group->get('/email/without', function  (Request $request, Response $response, array $args) {
+    $group->get('/email/without', function (Request $request, Response $response, array $args) {
         $families = FamilyQuery::create()->joinWithPerson()->find();
 
         $familiesWithoutEmails = [];
@@ -46,10 +46,10 @@ $app->group('/families',  function (RouteCollectorProxy $group) {
 
     $group->get(
         '/numbers',
-        fn  (Request $request, Response $response, array $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries())
+        fn (Request $request, Response $response, array $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries())
     );
 
-    $group->get('/search/{query}', function  (Request $request, Response $response, array $args) {
+    $group->get('/search/{query}', function (Request $request, Response $response, array $args) {
         $query = $args['query'];
         $results = [];
         $q = FamilyQuery::create()
@@ -63,7 +63,7 @@ $app->group('/families',  function (RouteCollectorProxy $group) {
         return $response->withJson(json_encode(['Families' => $results], JSON_THROW_ON_ERROR));
     });
 
-    $group->get('/self-register', function  (Request $request, Response $response, array $args) {
+    $group->get('/self-register', function (Request $request, Response $response, array $args) {
         $families = FamilyQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
@@ -73,7 +73,7 @@ $app->group('/families',  function (RouteCollectorProxy $group) {
         return $response->withJson(['families' => $families->toArray()]);
     });
 
-    $group->get('/self-verify', function  (Request $request, Response $response, array $args) {
+    $group->get('/self-verify', function (Request $request, Response $response, array $args) {
         $verificationNotes = NoteQuery::create()
             ->filterByEnteredBy(Person::SELF_VERIFY)
             ->orderByDateEntered(Criteria::DESC)
@@ -84,7 +84,7 @@ $app->group('/families',  function (RouteCollectorProxy $group) {
         return $response->withJson(['families' => $verificationNotes->toArray()]);
     });
 
-    $group->get('/pending-self-verify', function  (Request $request, Response $response, array $args) {
+    $group->get('/pending-self-verify', function (Request $request, Response $response, array $args) {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::TYPE_FAMILY_VERIFY)
             ->filterByRemainingUses(['min' => 1])
@@ -98,7 +98,7 @@ $app->group('/families',  function (RouteCollectorProxy $group) {
         return $response->withJson(['families' => $pendingTokens->toArray()]);
     });
 
-    $group->get('/byCheckNumber/{scanString}', function  (Request $request, Response $response, array $args) {
+    $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args) {
         $scanString = $args['scanString'];
         $financialService = $this->get('FinancialService');
         echo $financialService->getMemberByScanString($scanString);
@@ -108,7 +108,7 @@ $app->group('/families',  function (RouteCollectorProxy $group) {
      * Update the family status to activated or deactivated with :familyId and :status true/false.
      * Pass true to activate and false to deactivate.     *.
      */
-    $group->post('/{familyId:[0-9]+}/activate/{status}', function  (Request $request, Response $response, array $args) {
+    $group->post('/{familyId:[0-9]+}/activate/{status}', function (Request $request, Response $response, array $args) {
         $familyId = $args['familyId'];
         $newStatus = $args['status'];
 
@@ -136,6 +136,7 @@ $app->group('/families',  function (RouteCollectorProxy $group) {
             $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $note->save();
         }
+
         return JsonResponse::render($response, ['success' => true]);
     });
 });
@@ -149,6 +150,7 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
         ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'DAY('.FamilyTableMap::COL_FAM_WEDDINGDATE.') ='.date('d'), Criteria::CUSTOM)
         ->orderByWeddingdate('DESC')
         ->find();
+
     return JsonResponse::render($response, buildFormattedFamilies($families, false, false, true));
 }
 function getLatestFamilies(Request $request, Response $response, array $p_args)
@@ -158,6 +160,7 @@ function getLatestFamilies(Request $request, Response $response, array $p_args)
         ->orderByDateEntered('DESC')
         ->limit(10)
         ->find();
+
     return JsonResponse::render($response, buildFormattedFamilies($families, true, false, false));
 }
 
@@ -170,6 +173,7 @@ function getUpdatedFamilies(Request $request, Response $response, array $p_args)
         ->find();
 
     $formattedList = buildFormattedFamilies($families, false, true, false);
+
     return JsonResponse::render($response, $formattedList);
 }
 

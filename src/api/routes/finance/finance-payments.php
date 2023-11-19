@@ -12,10 +12,11 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
     $group->get('/', function (Request $request, Response $response, array $args) {
         $financialService = $this->get('FinancialService');
         $response->getBody()->write(json_encode($financialService->getPaymentJSON($financialService->getPayments())));
+
         return $response->withHeader('Content-Type', 'application/json');
     });
 
-    $group->post('/', function  (Request $request, Response $response, array $args) {
+    $group->post('/', function (Request $request, Response $response, array $args) {
         $payment = $request->getParsedBody();
         $financialService = $this->get('FinancialService');
 
@@ -58,8 +59,8 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
         }
 
         $response->getBody()->write(json_encode(['data' => $rows]));
-        return $response->withHeader('Content-Type', 'application/json');
 
+        return $response->withHeader('Content-Type', 'application/json');
     });
 
     $group->delete('/{groupKey}', function (Request $request, Response $response, array $args) {
