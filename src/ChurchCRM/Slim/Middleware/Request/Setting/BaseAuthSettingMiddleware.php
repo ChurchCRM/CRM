@@ -3,8 +3,8 @@
 namespace ChurchCRM\Slim\Middleware\Request\Setting;
 
 use ChurchCRM\dto\SystemConfig;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 abstract class BaseAuthSettingMiddleware
 {

@@ -31,6 +31,7 @@ class AuthMiddleware
                 return $response->withStatus(401, gettext('No logged in user'));
             }
         }
+        return $response;
     }
 
     private function isPath(Request $request, $pathPart)

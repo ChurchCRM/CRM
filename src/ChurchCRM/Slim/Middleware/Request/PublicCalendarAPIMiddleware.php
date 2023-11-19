@@ -10,8 +10,8 @@ use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use ChurchCRM\Utils\InputUtils;
 use DateTime;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class PublicCalendarAPIMiddleware
 {
