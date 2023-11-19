@@ -10,15 +10,15 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
-
-$app->group('/family', function () use ($app) {
-    $app->get('', 'listFamilies');
-    $app->get('/', 'listFamilies');
-    $app->get('/not-found', 'viewFamilyNotFound');
-    $app->get('/{id}', 'viewFamily');
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/family', function (RouteCollectorProxy $group) {
+    $group->get('/not-found', 'viewFamilyNotFound');
+    $group->get('/{id}', 'viewFamily');
+    $group->get('/', 'listFamilies');
+    $group->get('', 'listFamilies');
 });
 
 function listFamilies(Request $request, Response $response, array $args)

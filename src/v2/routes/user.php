@@ -4,16 +4,17 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\UserQuery;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/user', function () use ($app) {
-    $app->get('/not-found', 'viewUserNotFound');
-    $app->get('/{id}', 'viewUser');
-    $app->get('/{id}/', 'viewUser');
-    $app->get('/{id}/changePassword', 'adminChangeUserPassword');
-    $app->post('/{id}/changePassword', 'adminChangeUserPassword');
+$app->group('/user', function (RouteCollectorProxy $group) {
+    $group->get('/not-found', 'viewUserNotFound');
+    $group->get('/{id}/changePassword', 'adminChangeUserPassword');
+    $group->post('/{id}/changePassword', 'adminChangeUserPassword');
+    $group->get('/{id}/', 'viewUser');
+    $group->get('/{id}', 'viewUser');
 });
 
 function viewUserNotFound(Request $request, Response $response, array $args)

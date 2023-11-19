@@ -5,14 +5,14 @@ use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
-
-$app->group('/user/current', function () use ($app) {
-    $app->get('/enroll2fa', 'enroll2fa');
-    $app->get('/changepassword', 'changepassword');
-    $app->post('/changepassword', 'changepassword');
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/user/current', function (RouteCollectorProxy $group) {
+    $group->get('/enroll2fa', 'enroll2fa');
+    $group->get('/changepassword', 'changepassword');
+    $group->post('/changepassword', 'changepassword');
 });
 
 function enroll2fa(Request $request, Response $response, array $args)

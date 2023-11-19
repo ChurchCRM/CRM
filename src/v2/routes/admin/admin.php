@@ -2,15 +2,16 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/admin', function () use ($app) {
-    $app->get('/debug', 'debugPage');
-    $app->get('/menus', 'menuPage');
-    $app->get('/database/reset', 'dbResetPage');
-})->add(new AdminRoleAuthMiddleware());
+$app->group('/admin', function (RouteCollectorProxy $group) {
+    $group->get('/debug', 'debugPage');
+    $group->get('/menus', 'menuPage');
+    $group->get('/database/reset', 'dbResetPage');
+})->add(AdminRoleAuthMiddleware::class);
 
 function debugPage(Request $request, Response $response, array $args)
 {

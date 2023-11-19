@@ -6,19 +6,19 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use PHPMailer\PHPMailer\PHPMailer;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
-
-$app->group('/email', function () use ($app) {
-    $app->get('/debug', 'testEmailConnectionMVC')->add(new AdminRoleAuthMiddleware());
-    $app->get('', 'getEmailDashboardMVC');
-    $app->get('/', 'getEmailDashboardMVC');
-    $app->get('/dashboard', 'getEmailDashboardMVC');
-    $app->get('/duplicate', 'getDuplicateEmailsMVC');
-    $app->get('/missing', 'getFamiliesWithoutEmailsMVC');
-    $app->get('/mailchimp/{listId}/unsubscribed', 'getMailListUnSubscribersMVC');
-    $app->get('/mailchimp/{listId}/missing', 'getMailListMissingMVC');
+use Slim\Routing\RouteCollectorProxy;
+$app->group('/email', function (RouteCollectorProxy $group) {
+    $group->get('/debug', 'testEmailConnectionMVC')->add(AdminRoleAuthMiddleware::class);
+    $group->get('/dashboard', 'getEmailDashboardMVC');
+    $group->get('/duplicate', 'getDuplicateEmailsMVC');
+    $group->get('/missing', 'getFamiliesWithoutEmailsMVC');
+    $group->get('/mailchimp/{listId}/unsubscribed', 'getMailListUnSubscribersMVC');
+    $group->get('/mailchimp/{listId}/missing', 'getMailListMissingMVC');
+    $group->get('', 'getEmailDashboardMVC');
+    $group->get('/', 'getEmailDashboardMVC');
 });
 
 function getEmailDashboardMVC(Request $request, Response $response, array $args)
