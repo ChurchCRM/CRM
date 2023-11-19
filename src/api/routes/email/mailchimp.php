@@ -9,6 +9,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/mailchimp/', function (RouteCollectorProxy $group) {
     $group->get('list/{id}', 'getMailchimpList');
     $group->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');

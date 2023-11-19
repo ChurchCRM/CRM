@@ -11,8 +11,9 @@ use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 $app->group('/forgot-password', function (RouteCollectorProxy $group) {
     if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
         $group->get('/reset-request', 'forgotPassword');

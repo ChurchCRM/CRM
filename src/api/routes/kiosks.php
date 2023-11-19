@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/kiosks', function (RouteCollectorProxy $group) {
     $group->get('/', function ($request, $response, $args) {
         $Kiosks = KioskDeviceQuery::create()

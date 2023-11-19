@@ -4,8 +4,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
 
 $app->group('/admin', function (RouteCollectorProxy $group) {
     $group->get('/debug', 'debugPage');

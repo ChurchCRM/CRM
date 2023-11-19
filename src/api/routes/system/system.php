@@ -7,6 +7,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/system', function (RouteCollectorProxy $group) {
     $group->get('/notification', 'getUiNotificationAPI');
     $group->post('/background/csp-report', 'logCSPReportAPI');

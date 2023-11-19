@@ -4,8 +4,9 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 $app->group('/cart', function (RouteCollectorProxy $group) {
     $group->get('/', 'getCartView');
     $group->get('', 'getCartView');

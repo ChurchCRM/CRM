@@ -12,6 +12,7 @@ use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/persons', function (RouteCollectorProxy $group) {
     $group->get('/roles', 'getAllRolesAPI');
     $group->get('/roles/', 'getAllRolesAPI');

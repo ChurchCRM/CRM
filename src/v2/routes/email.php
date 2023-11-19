@@ -8,8 +8,9 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use PHPMailer\PHPMailer\PHPMailer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 $app->group('/email', function (RouteCollectorProxy $group) {
     $group->get('/debug', 'testEmailConnectionMVC')->add(AdminRoleAuthMiddleware::class);
     $group->get('/dashboard', 'getEmailDashboardMVC');

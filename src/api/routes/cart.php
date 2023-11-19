@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\Cart;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/cart', function (RouteCollectorProxy $group) {
     $group->get(
         '/',

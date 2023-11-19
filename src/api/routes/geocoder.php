@@ -4,6 +4,7 @@ use ChurchCRM\Utils\GeoUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/geocoder', function (RouteCollectorProxy $group) {
     $group->post('/address', 'getGeoLocals');
     $group->post('/address/', 'getGeoLocals');

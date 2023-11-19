@@ -8,6 +8,7 @@ use ChurchCRM\Utils\ORMUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/public/register', function (RouteCollectorProxy $group) {
     $group->post('/family', 'registerFamilyAPI');
     $group->post('/family/', 'registerFamilyAPI');

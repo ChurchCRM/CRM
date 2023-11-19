@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/register', function (RouteCollectorProxy $group) {
     $group->post('', function ($request, $response, $args) {
         $input = (object) $request->getParsedBody();

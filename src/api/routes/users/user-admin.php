@@ -12,6 +12,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/user/{userId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->post('/password/reset', 'resetPasswordAPI');
     $group->post('/disableTwoFactor', 'disableTwoFactor');

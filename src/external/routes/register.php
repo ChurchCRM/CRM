@@ -3,8 +3,9 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 $app->group('/register', function (RouteCollectorProxy $group) {
     $enableSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
 

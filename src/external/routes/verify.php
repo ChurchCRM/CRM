@@ -3,10 +3,10 @@
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
-use Slim\Views\PhpRenderer;
 use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
 $app->group('/verify', function (RouteCollectorProxy $group) {
     $group->get('/{token}', function ($request, $response, $args) {
         $renderer = new PhpRenderer('templates/verify/');
@@ -48,5 +48,4 @@ $app->group('/verify', function (RouteCollectorProxy $group) {
 
         return $response->withStatus(200);
     });
-
 });

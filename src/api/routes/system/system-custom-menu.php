@@ -7,6 +7,7 @@ use ChurchCRM\Utils\ORMUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/system/menu', function (RouteCollectorProxy $group) {
     $group->get('', 'getMenus');
     $group->get('/', 'getMenus');

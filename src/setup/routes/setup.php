@@ -21,12 +21,14 @@ $app->group('/', function (RouteCollectorProxy $group) {
     $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args) {
         $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
         $response->getBody()->write(json_encode($AppIntegrity['status']));
+
         return $response->withHeader('Content-Type', 'application/json');
     });
 
     $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args) {
         $required = AppIntegrityService::getApplicationPrerequisites();
         $response->getBody()->write(json_encode($required));
+
         return $response->withHeader('Content-Type', 'application/json');
     });
 

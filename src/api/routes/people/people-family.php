@@ -13,6 +13,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->get('/photo', function ($request, $response, $args) {
         $this->cache->withExpires(

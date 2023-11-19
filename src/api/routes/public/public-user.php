@@ -4,6 +4,7 @@ use ChurchCRM\model\ChurchCRM\UserQuery;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/public/user', function (RouteCollectorProxy $group) {
     $group->post('/login', 'userLogin');
     $group->post('/login/', 'userLogin');

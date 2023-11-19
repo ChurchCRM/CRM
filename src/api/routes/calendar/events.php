@@ -12,6 +12,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
 $app->group('/events', function (RouteCollectorProxy $group) {
     $group->get('/', 'getAllEvents');
     $group->get('', 'getAllEvents');
