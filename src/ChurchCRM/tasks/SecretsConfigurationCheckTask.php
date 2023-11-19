@@ -19,7 +19,7 @@ class SecretsConfigurationCheckTask implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getSupportURL(array_pop(explode('\\', self::class)));
+        return SystemURLs::getSupportURL('SecretsConfigurationCheckTask');
     }
 
     public function getTitle(): string

@@ -19,7 +19,7 @@ class HttpsTask implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getSupportURL(array_pop(explode('\\', self::class)));
+        return SystemURLs::getSupportURL('HttpsTask');
     }
 
     public function getTitle(): string
