@@ -23,7 +23,8 @@ function getGeoLocals(Request $request, Response $response, array $p_args)
 {
     $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     if (!empty($input)) {
-        return $response->withJson(GeoUtils::getLatLong($input->address));
+        $response->getBody()->write(json_encode(GeoUtils::getLatLong($input->address)));
+        return $response->withHeader('Content-Type', 'application/json');
     }
 
     return $response->withStatus(400); // bad request

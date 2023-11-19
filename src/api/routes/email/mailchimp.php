@@ -25,7 +25,9 @@ function getMailchimpList(Request $request, Response $response, array $args)
     $mailchimpService = $request->getAttribute('mailchimpService');
     $list = $mailchimpService->getList($listId);
 
-    return $response->withJson(['list' => $list]);
+    $response->getBody()->write(json_encode(['list' => $list]));
+    return $response->withHeader('Content-Type', 'application/json');
+
 }
 
 function getMailchimpEmailNotInCRM(Request $request, Response $response, array $args)
@@ -108,8 +110,8 @@ function getFamilyStatus(Request $request, Response $response, array $args)
         array_push($emailToLists, ['email' => $family->getEmail(), 'emailMD5' => md5($family->getEmail()),
             'list'                         => $mailchimpService->isEmailInMailChimp($family->getEmail())]);
     }
-
-    return $response->withJson($emailToLists);
+    $response->getBody()->write(json_encode($emailToLists));
+    return $response->withHeader('Content-Type', 'application/json');
 }
 
 function getPersonStatus(Request $request, Response $response, array $args)
@@ -125,8 +127,8 @@ function getPersonStatus(Request $request, Response $response, array $args)
         array_push($emailToLists, ['email' => $person->getWorkEmail(), 'emailMD5' => md5($person->getWorkEmail()),
             'list'                         => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())]);
     }
-
-    return $response->withJson($emailToLists);
+    $response->getBody()->write(json_encode($emailToLists));
+    return $response->withHeader('Content-Type', 'application/json');
 }
 
 function getPeopleWithEmails()

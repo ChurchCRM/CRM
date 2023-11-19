@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Slim\Request\JsonResponse;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Propel;
@@ -23,7 +24,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
     $group->get('/birthday', 'getPersonsWithBirthdays');
 
     // search person by Name
-    $group->get('/search/{query}', function ($request, $response, $args) {
+    $group->get('/search/{query}', function (Request $request, Response $response, array $args){
         $query = $args['query'];
 
         $searchLikeString = '%'.$query.'%';
@@ -44,31 +45,28 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
 
             array_push($return, $values);
         }
-
-        return $response->withJson($return);
+        return JsonResponse::render($response, $return);
     });
 
     $group->get(
         '/numbers',
-        fn ($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberBirthDates())
+        fn  (Request $request, Response $response, array $args) => $response->withJson(MenuEventsCount::getNumberBirthDates())
     );
 
-    $group->get('/self-register', function ($request, $response, $args) {
+    $group->get('/self-register', function  (Request $request, Response $response, array $args) {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
-
-        return $response->withJson(['people' => $people->toArray()]);
+        return JsonResponse::render($response,['people' => $people->toArray()]);
     });
 });
 
-function getAllRolesAPI(Request $request, Response $response, array $p_args)
+function getAllRolesAPI (Request $request, Response $response, array $args)
 {
     $roles = ListOptionQuery::create()->getFamilyRoles();
-
-    return $response->withJson($roles->toArray());
+    return JsonResponse::render($response, $roles->toArray());
 }
 
 /**
@@ -101,11 +99,10 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
             'families' => $families,
         ]);
     }
-
-    return $response->withJson(['emails' => $emails]);
+    return JsonResponse::render($response,['emails' => $emails]);
 }
 
-function getLatestPersons(Request $request, Response $response, array $p_args)
+function getLatestPersons (Request $request, Response $response, array $args)
 {
     $people = PersonQuery::create()
     ->leftJoinWithFamily()
@@ -113,11 +110,10 @@ function getLatestPersons(Request $request, Response $response, array $p_args)
     ->orderByDateEntered('DESC')
     ->limit(10)
     ->find();
-
-    return $response->withJson(buildFormattedPersonList($people, true, false, false));
+    return JsonResponse::render($response, buildFormattedPersonList($people, true, false, false));
 }
 
-function getUpdatedPersons(Request $request, Response $response, array $p_args)
+function getUpdatedPersons (Request $request, Response $response, array $args)
 {
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
@@ -125,18 +121,16 @@ function getUpdatedPersons(Request $request, Response $response, array $p_args)
         ->orderByDateLastEdited('DESC')
         ->limit(10)
         ->find();
-
-    return $response->withJson(buildFormattedPersonList($people, false, true, false));
+    return JsonResponse::render($response, buildFormattedPersonList($people, false, true, false));
 }
 
-function getPersonsWithBirthdays(Request $request, Response $response, array $p_args)
+function getPersonsWithBirthdays(Request $request, Response $response, array $args)
 {
     $people = PersonQuery::create()
         ->filterByBirthMonth(date('m'))
         ->filterByBirthDay(date('d'))
         ->find();
-
-    return $response->withJson(buildFormattedPersonList($people, false, false, true));
+    return JsonResponse::render($response, buildFormattedPersonList($people, false, false, true));
 }
 
 function buildFormattedPersonList(Collection $people, bool $created, bool $edited, bool $birthday)

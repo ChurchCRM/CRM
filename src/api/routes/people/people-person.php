@@ -43,7 +43,8 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
         }
         $person->delete();
 
-        return $response->withJson(['status' => gettext('success')]);
+        $response->getBody()->write(json_encode(['status' => 'success']));
+        return $response->withHeader('Content-Type', 'application/json');
     })->add(DeleteRecordRoleAuthMiddleware::class);
 
     $group->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
@@ -56,7 +57,8 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
         $person = $request->getAttribute('person');
         $input = (object) $request->getParsedBody();
         $person->setImageFromBase64($input->imgBase64);
-        $response->withJson(['status' => 'success']);
+        $response->getBody()->write(json_encode(['status' => 'success']));
+        return $response->withHeader('Content-Type', 'application/json');
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->delete('/photo', function (Request $request, Response $response, array $args) {

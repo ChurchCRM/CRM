@@ -9,13 +9,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/payments', function (RouteCollectorProxy $group) {
-    $group->get('/', function (Request $request, Response $response, array $args) use ($app) {
+    $group->get('/', function (Request $request, Response $response, array $args) {
         $financialService = $this->get('FinancialService');
-
-        echo $financialService->getPaymentJSON($app->FinancialService->getPayments());
+        $response->getBody()->write(json_encode($financialService->getPaymentJSON($financialService->getPayments())));
+        return $response->withHeader('Content-Type', 'application/json');
     });
 
-    $group->post('/', function ($request, $response, $args) {
+    $group->post('/', function  (Request $request, Response $response, array $args) {
         $payment = $request->getParsedBody();
         $financialService = $this->get('FinancialService');
 
@@ -57,12 +57,15 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
             array_push($rows, $newRow);
         }
 
-        return $response->withJson(['data' => $rows]);
+        $response->getBody()->write(json_encode(['data' => $rows]));
+        return $response->withHeader('Content-Type', 'application/json');
+
     });
 
-    $group->delete('/{groupKey}', function (Request $request, Response $response, array $args) use ($app) {
+    $group->delete('/{groupKey}', function (Request $request, Response $response, array $args) {
         $groupKey = $args['groupKey'];
-        $app->FinancialService->deletePayment($groupKey);
+        $financialService = $this->get('FinancialService');
+        $financialService->deletePayment($groupKey);
         echo json_encode(['status' => 'ok']);
     });
 })->add(FinanceRoleAuthMiddleware::class);

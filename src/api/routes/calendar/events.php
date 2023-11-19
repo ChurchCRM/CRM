@@ -62,7 +62,7 @@ function getEvent(Request $request, Response $response, $args)
     return $response->write($Event->toJSON());
 }
 
-function getEventPrimaryContact($request, $response, $args)
+function getEventPrimaryContact (Request $request, Response $response, array $args)
 {
     $Event = EventQuery::create()
         ->findOneById($args['id']);
@@ -76,7 +76,7 @@ function getEventPrimaryContact($request, $response, $args)
     return $response->withStatus(404);
 }
 
-function getEventSecondaryContact($request, $response, $args)
+function getEventSecondaryContact (Request $request, Response $response, array $args)
 {
     $Contact = EventQuery::create()
         ->findOneById($args['id'])
@@ -88,7 +88,7 @@ function getEventSecondaryContact($request, $response, $args)
     return $response->withStatus(404);
 }
 
-function getEventLocation($request, $response, $args)
+function getEventLocation (Request $request, Response $response, array $args)
 {
     $Location = EventQuery::create()
         ->findOneById($args['id'])
@@ -112,7 +112,7 @@ function getEventAudience($request, Response $response, $args)
     return $response->withStatus(404);
 }
 
-function newEvent($request, $response, $args)
+function newEvent (Request $request, Response $response, array $args)
 {
     $input = (object) $request->getParsedBody();
 
@@ -141,10 +141,11 @@ function newEvent($request, $response, $args)
     $event->setCalendars($calendars);
     $event->save();
 
-    return $response->withJson(['status' => 'success']);
+    $response->getBody()->write(json_encode(['status' => 'success']));
+    return $response->withHeader('Content-Type', 'application/json');
 }
 
-function updateEvent($request, $response, $args)
+function updateEvent (Request $request, Response $response, array $args)
 {
     $e = new Event();
     //$e->getId();
@@ -174,7 +175,8 @@ function setEventTime($request, Response $response, $args)
     $event->setEnd($input->endTime);
     $event->save();
 
-    return $response->withJson(['status' => 'success']);
+    $response->getBody()->write(json_encode(['status' => 'success']));
+    return $response->withHeader('Content-Type', 'application/json');
 }
 
 function unusedSetEventAttendance()
@@ -206,7 +208,7 @@ function unusedSetEventAttendance()
     }
 }
 
-function deleteEvent($request, $response, $args)
+function deleteEvent (Request $request, Response $response, array $args)
 {
     $input = (object) $request->getParsedBody();
 
@@ -217,5 +219,6 @@ function deleteEvent($request, $response, $args)
     }
     $event->delete();
 
-    return $response->withJson(['status' => 'success']);
+    $response->getBody()->write(json_encode(['status' => 'success']));
+    return $response->withHeader('Content-Type', 'application/json');
 }

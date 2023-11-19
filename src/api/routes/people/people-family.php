@@ -12,10 +12,12 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
-    $group->get('/photo', function ($request, $response, $args) {
+    $group->get('/photo', function  (Request $request, Response $response, array $args) {
         $this->cache->withExpires(
             $response,
             MiscUtils::getPhotoCacheExpirationTimestamp()
@@ -27,7 +29,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
             ->withHeader('Content-type', $photo->getPhotoContentType());
     });
 
-    $group->post('/photo', function ($request, $response, $args) {
+    $group->post('/photo', function  (Request $request, Response $response, array $args) {
         $input = (object) $request->getParsedBody();
         $family = $request->getAttribute('family');
         $family->setImageFromBase64($input->imgBase64);
@@ -35,13 +37,13 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         return $response->withStatus(200);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
-    $group->delete('/photo', function ($request, $response, $args) {
+    $group->delete('/photo', function  (Request $request, Response $response, array $args) {
         $family = $request->getAttribute('family');
 
         return $response->withJson(['status' => $family->deletePhoto()]);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
-    $group->get('/thumbnail', function ($request, $response, $args) {
+    $group->get('/thumbnail', function  (Request $request, Response $response, array $args) {
         $this->cache->withExpires(
             $response,
             MiscUtils::getPhotoCacheExpirationTimestamp()
@@ -53,7 +55,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
             ->withHeader('Content-type', $photo->getThumbnailContentType());
     });
 
-    $group->get('', function ($request, $response, $args) {
+    $group->get('', function  (Request $request, Response $response, array $args) {
         $family = $request->getAttribute('family');
 
         return $response
@@ -61,7 +63,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
             ->write($family->exportTo('JSON'));
     });
 
-    $group->get('/geolocation', function ($request, $response, $args) {
+    $group->get('/geolocation', function  (Request $request, Response $response, array $args) {
         $family = $request->getAttribute('family');
         $familyAddress = $family->getAddress();
         $familyLatLong = GeoUtils::getLatLong($familyAddress);
@@ -74,7 +76,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         return $response->withJson($geoLocationInfo);
     });
 
-    $group->get('/nav', function ($request, $response, $args) {
+    $group->get('/nav', function  (Request $request, Response $response, array $args) {
         $family = $request->getAttribute('family');
         $familyNav = [];
         $familyNav['PreFamilyId'] = 0;
@@ -98,7 +100,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         return $response->withJson($familyNav);
     });
 
-    $group->post('/verify', function ($request, $response, $args) {
+    $group->post('/verify', function  (Request $request, Response $response, array $args) {
         $family = $request->getAttribute('family');
 
         try {
@@ -116,7 +118,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         }
     });
 
-    $group->get('/verify/url', function ($request, $response, $args) {
+    $group->get('/verify/url', function  (Request $request, Response $response, array $args) {
         $family = $request->getAttribute('family');
         TokenQuery::create()
             ->filterByType('verifyFamily')
@@ -131,10 +133,10 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
             ->withJson(['url' => SystemURLs::getURL().'/external/verify/'.$token->getToken()]);
     });
 
-    $group->post('/verify/now', function ($request, $response, $args) {
+    $group->post('/verify/now', function  (Request $request, Response $response, array $args) {
         $family = $request->getAttribute('family');
         $family->verify();
-
-        return $response->withJson(['message' => 'Success']);
+        $response->getBody()->write(json_encode(['message' => 'Success']));
+        return $response->withHeader('Content-Type', 'application/json');
     });
 })->add(FamilyAPIMiddleware::class);

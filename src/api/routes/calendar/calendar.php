@@ -44,8 +44,8 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
     $end = $request->getQueryParam('end', '');
     if ($Calendar) {
         $events = $Calendar->getEvents($start, $end);
-
-        return $response->withJson($events->toJSON());
+        $response->getBody()->write(json_encode($events));
+        return $response->withHeader('Content-Type', 'application/json');
     }
 }
 
@@ -55,8 +55,8 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 
     if ($Calendar) {
         $event = $Calendar->getEventById($args['eventid']);
-
-        return $response->withJson($event->toJSON());
+        $response->getBody()->write(json_encode($event));
+        return $response->withHeader('Content-Type', 'application/json');
     }
 }
 
@@ -96,7 +96,8 @@ function getUserCalendarEvents(Request $request, Response $response, array $p_ar
             ->filterByCalendar($Calendar)
             ->find();
         if ($Events) {
-            return $response->withJson($Events->toJSON());
+            $response->getBody()->write(json_encode($Events));
+            return $response->withHeader('Content-Type', 'application/json');
         }
     }
 }
@@ -179,8 +180,8 @@ function NewCalendar(Request $request, Response $response, $args)
     $Calendar->setForegroundColor($input->ForegroundColor);
     $Calendar->setBackgroundColor($input->BackgroundColor);
     $Calendar->save();
-
-    return $response->withJson($Calendar->toArray());
+    $response->getBody()->write(json_encode($Calendar));
+    return $response->withHeader('Content-Type', 'application/json');
 }
 
 function deleteUserCalendar(Request $request, Response $response, $args)
@@ -195,5 +196,6 @@ function deleteUserCalendar(Request $request, Response $response, $args)
     }
     $Calendar->delete();
 
-    return $response->withJson(['status' => 'success']);
+    $response->getBody()->write(json_encode(['status' => 'success']));
+    return $response->withHeader('Content-Type', 'application/json');
 }
