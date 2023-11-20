@@ -34,5 +34,6 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
     $taskSrv = new TaskService();
     $notifications = array_merge($notifications, $taskSrv->getTaskNotifications());
     $response->getBody()->write(json_encode(['notifications' => $notifications]));
+
     return $response->withHeader('Content-Type', 'application/json');
 }

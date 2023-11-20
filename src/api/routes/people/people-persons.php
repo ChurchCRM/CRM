@@ -24,7 +24,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
     $group->get('/birthday', 'getPersonsWithBirthdays');
 
     // search person by Name
-    $group->get('/search/{query}', function (Request $request, Response $response, array $args){
+    $group->get('/search/{query}', function (Request $request, Response $response, array $args) {
         $query = $args['query'];
 
         $searchLikeString = '%'.$query.'%';
@@ -45,27 +45,30 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
 
             array_push($return, $values);
         }
+
         return JsonResponse::render($response, $return);
     });
 
     $group->get(
         '/numbers',
-        fn  (Request $request, Response $response, array $args) => $response->withJson(MenuEventsCount::getNumberBirthDates())
+        fn (Request $request, Response $response, array $args) => $response->withJson(MenuEventsCount::getNumberBirthDates())
     );
 
-    $group->get('/self-register', function  (Request $request, Response $response, array $args) {
+    $group->get('/self-register', function (Request $request, Response $response, array $args) {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
-        return JsonResponse::render($response,['people' => $people->toArray()]);
+
+        return JsonResponse::render($response, ['people' => $people->toArray()]);
     });
 });
 
-function getAllRolesAPI (Request $request, Response $response, array $args)
+function getAllRolesAPI(Request $request, Response $response, array $args)
 {
     $roles = ListOptionQuery::create()->getFamilyRoles();
+
     return JsonResponse::render($response, $roles->toArray());
 }
 
@@ -99,10 +102,11 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
             'families' => $families,
         ]);
     }
-    return JsonResponse::render($response,['emails' => $emails]);
+
+    return JsonResponse::render($response, ['emails' => $emails]);
 }
 
-function getLatestPersons (Request $request, Response $response, array $args)
+function getLatestPersons(Request $request, Response $response, array $args)
 {
     $people = PersonQuery::create()
     ->leftJoinWithFamily()
@@ -110,10 +114,11 @@ function getLatestPersons (Request $request, Response $response, array $args)
     ->orderByDateEntered('DESC')
     ->limit(10)
     ->find();
+
     return JsonResponse::render($response, buildFormattedPersonList($people, true, false, false));
 }
 
-function getUpdatedPersons (Request $request, Response $response, array $args)
+function getUpdatedPersons(Request $request, Response $response, array $args)
 {
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
@@ -121,6 +126,7 @@ function getUpdatedPersons (Request $request, Response $response, array $args)
         ->orderByDateLastEdited('DESC')
         ->limit(10)
         ->find();
+
     return JsonResponse::render($response, buildFormattedPersonList($people, false, true, false));
 }
 
@@ -130,6 +136,7 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
         ->filterByBirthMonth(date('m'))
         ->filterByBirthDay(date('d'))
         ->find();
+
     return JsonResponse::render($response, buildFormattedPersonList($people, false, false, true));
 }
 

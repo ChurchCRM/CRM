@@ -44,6 +44,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
         $person->delete();
 
         $response->getBody()->write(json_encode(['status' => 'success']));
+
         return $response->withHeader('Content-Type', 'application/json');
     })->add(DeleteRecordRoleAuthMiddleware::class);
 
@@ -58,6 +59,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
         $input = (object) $request->getParsedBody();
         $person->setImageFromBase64($input->imgBase64);
         $response->getBody()->write(json_encode(['status' => 'success']));
+
         return $response->withHeader('Content-Type', 'application/json');
     })->add(EditRecordsRoleAuthMiddleware::class);
 

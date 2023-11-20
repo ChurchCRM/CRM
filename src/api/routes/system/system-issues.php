@@ -5,7 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 // Routes
-$app->post('/issues', function  (Request $request, Response $response, array $args) {
+$app->post('/issues', function (Request $request, Response $response, array $args) {
     $data = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     $issueDescription =
         "Collected Value Title |  Data \r\n".

@@ -24,6 +24,7 @@ function getGeoLocals(Request $request, Response $response, array $p_args)
     $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     if (!empty($input)) {
         $response->getBody()->write(json_encode(GeoUtils::getLatLong($input->address)));
+
         return $response->withHeader('Content-Type', 'application/json');
     }
 
