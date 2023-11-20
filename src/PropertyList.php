@@ -13,9 +13,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 //Get the type to display
 $sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);

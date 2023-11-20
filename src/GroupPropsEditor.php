@@ -15,9 +15,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be allowed to edit records to use this page.
 if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {

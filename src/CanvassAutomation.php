@@ -15,9 +15,9 @@ require 'Include/Functions.php';
 
 require 'Include/CanvassUtilities.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Canvass Automation');

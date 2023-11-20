@@ -1,11 +1,11 @@
 <?php
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Bootstrapper;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Include the function library
 require 'Include/Config.php';

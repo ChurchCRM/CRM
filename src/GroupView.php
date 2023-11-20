@@ -19,12 +19,12 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Base\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\model\ChurchCRM\Base\GroupQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
 //Get the GroupID out of the querystring
@@ -420,7 +420,7 @@ require 'Include/Header.php';
                 </div>
                 </form>
                 <!-- END GROUP MEMBERS LISTING -->
-                
+
             </div>
             <script nonce="<?= SystemURLs::getCSPNonce() ?>">
               window.CRM.currentGroup = <?= $iGroupID ?>;

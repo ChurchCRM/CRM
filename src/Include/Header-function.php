@@ -14,13 +14,13 @@
 
 require_once 'Functions.php';
 
-use ChurchCRM\Service\SystemService;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\MenuConfigQuery;
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Utils\PHPToMomentJSConverter;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\MenuConfigQuery;
+use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\PHPToMomentJSConverter;
 
 function Header_modals()
 {

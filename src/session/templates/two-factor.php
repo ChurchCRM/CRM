@@ -1,8 +1,7 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Login');

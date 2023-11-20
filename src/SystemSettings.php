@@ -14,13 +14,13 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Bootstrapper;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
@@ -125,7 +125,7 @@ require 'Include/Header.php';
       <hr>
       <input type='submit' class='btn btn-sm btn-primary' name='save' id='save' value="<?= gettext('Save Settings') ?>">
     </div>
-   
+
   </div>
   <div class="col-7 col-sm-9">
     <div class="tab-content" id="vert-tabs-tabContent">

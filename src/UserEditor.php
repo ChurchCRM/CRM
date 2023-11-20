@@ -22,15 +22,17 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\model\ChurchCRM\UserQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Emails\NewAccountEmail;
-use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Emails\NewAccountEmail;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
+
+;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.

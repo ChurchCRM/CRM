@@ -15,9 +15,9 @@ require 'Include/Functions.php';
 
 require 'Include/EnvelopeFunctions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Envelope Manager');

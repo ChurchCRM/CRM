@@ -15,13 +15,13 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Reports\ChurchInfoReport;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\PersonQuery;;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
+
+;
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');

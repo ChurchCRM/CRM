@@ -22,9 +22,9 @@ require 'Include/Functions.php';
 $sPageTitle = gettext('Group Listing');
 require 'Include/Header.php';
 
-use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 
 $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 
