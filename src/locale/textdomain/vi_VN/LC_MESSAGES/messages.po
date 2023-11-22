@@ -8397,10 +8397,6 @@ msgid "Can't delete yourself"
 msgstr "Không thể xóa chính bạn"
 
 #: 
-msgid "success"
-msgstr "sự thành công"
-
-#: 
 msgid "The role could not be found."
 msgstr "Không thể tìm thấy vai trò."
 

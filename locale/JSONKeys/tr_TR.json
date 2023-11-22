@@ -2089,7 +2089,6 @@
     "User must have Edit Records permission": "Kullanıcının kayıt iznini düzenlemesi gerekir",
     "User must have Finance permission": "Kullanıcının finans iznine sahip olması gerekir",
     "Can't delete yourself": "Kendini silemiyorum",
-    "success": "başarı",
     "The role could not be found.": "Rol bulunamadı.",
     "Add Menu": "Menü Ekle",
     "Menu Name": "Menü adı",

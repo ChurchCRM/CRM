@@ -8380,10 +8380,6 @@ msgid "Can't delete yourself"
 msgstr "لا تستطيع مسح نفسك"
 
 #: 
-msgid "success"
-msgstr "نجاح"
-
-#: 
 msgid "The role could not be found."
 msgstr "تعذر العثور الدور."
 

@@ -1486,7 +1486,6 @@
     "User must have Edit Records permission": "Kasutajal peab olema muudetud kirjete luba",
     "User must have Finance permission": "Kasutajal peab olema rahandusluba",
     "Can't delete yourself": "Ei saa ennast kustutada",
-    "success": "edu",
     "The role could not be found.": "Rolli ei leitud.",
     "Add Menu": "Lisage menüü",
     "Menu Name": "Menüü nimi",

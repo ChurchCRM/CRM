@@ -4280,10 +4280,6 @@ msgid "Can't delete yourself"
 msgstr "Nie można usunąć siebie"
 
 #: 
-msgid "success"
-msgstr "powodzenie"
-
-#: 
 msgid "The role could not be found."
 msgstr "Nie znaleziono roli."
 

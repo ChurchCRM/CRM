@@ -8484,10 +8484,6 @@ msgid "Can't delete yourself"
 msgstr "Nu poți să te ștergi pe tine"
 
 #: 
-msgid "success"
-msgstr "succes"
-
-#: 
 msgid "The role could not be found."
 msgstr "Rolul nu se găsește"
 

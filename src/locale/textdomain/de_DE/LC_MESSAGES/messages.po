@@ -8072,10 +8072,6 @@ msgid "Can't delete yourself"
 msgstr "Sie können sich nicht selbst löschen"
 
 #: 
-msgid "success"
-msgstr "erfolgreich"
-
-#: 
 msgid "The role could not be found."
 msgstr "Die Rolle konnte nicht gefunden werden."
 
