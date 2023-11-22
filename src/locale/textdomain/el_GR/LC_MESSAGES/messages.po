@@ -8373,10 +8373,6 @@ msgid "Can't delete yourself"
 msgstr "Δεν μπορείτε να διαγράψετε τον εαυτό σας"
 
 #: 
-msgid "success"
-msgstr "επιτυχία"
-
-#: 
 msgid "The role could not be found."
 msgstr "Ο ρόλος δεν βρέθηκε."
 

@@ -8382,10 +8382,6 @@ msgid "Can't delete yourself"
 msgstr "እራሶን መሰረዝ አይችሉም"
 
 #: 
-msgid "success"
-msgstr "የተሳካ "
-
-#: 
 msgid "The role could not be found."
 msgstr "ምርጫው ሊገኝ አልቻለም "
 

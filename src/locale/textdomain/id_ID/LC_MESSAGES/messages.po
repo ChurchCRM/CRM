@@ -8383,10 +8383,6 @@ msgid "Can't delete yourself"
 msgstr "Tidak bisa menghapus diri sendiri"
 
 #: 
-msgid "success"
-msgstr "Sukses"
-
-#: 
 msgid "The role could not be found."
 msgstr "Peran tidak dapat ditemukan."
 

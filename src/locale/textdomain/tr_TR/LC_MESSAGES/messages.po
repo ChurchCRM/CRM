@@ -8377,10 +8377,6 @@ msgid "Can't delete yourself"
 msgstr "Kendini silemiyorum"
 
 #: 
-msgid "success"
-msgstr "başarı"
-
-#: 
 msgid "The role could not be found."
 msgstr "Rol bulunamadı."
 
