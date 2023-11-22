@@ -32,24 +32,24 @@ $sAction = $_GET['Action'];
 switch ($sAction) {
     // Move a field up:  Swap the fam_custom_Order (ordering) of the selected row and the one above it
     case 'up':
-        $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '".$iOrderID."' WHERE fam_custom_Order = '".($iOrderID - 1)."'";
+        $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . $iOrderID . "' WHERE fam_custom_Order = '" . ($iOrderID - 1) . "'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '".($iOrderID - 1)."' WHERE fam_custom_Field = '".$sField."'";
+        $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . ($iOrderID - 1) . "' WHERE fam_custom_Field = '" . $sField . "'";
         RunQuery($sSQL);
         break;
 
         // Move a field down:  Swap the fam_custom_Order (ordering) of the selected row and the one below it
     case 'down':
-        $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '".$iOrderID."' WHERE fam_custom_Order = '".($iOrderID + 1)."'";
+        $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . $iOrderID . "' WHERE fam_custom_Order = '" . ($iOrderID + 1) . "'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '".($iOrderID + 1)."' WHERE fam_custom_Field = '".$sField."'";
+        $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . ($iOrderID + 1) . "' WHERE fam_custom_Field = '" . $sField . "'";
         RunQuery($sSQL);
         break;
 
         // Delete a field from the form
     case 'delete':
         // Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
-        $sSQL = "SELECT type_ID,fam_custom_Special FROM family_custom_master WHERE fam_custom_Field = '".$sField."'";
+        $sSQL = "SELECT type_ID,fam_custom_Special FROM family_custom_master WHERE fam_custom_Field = '" . $sField . "'";
         $rsTemp = RunQuery($sSQL);
         $aTemp = mysqli_fetch_array($rsTemp);
         if ($aTemp[0] == 12) {
@@ -57,10 +57,10 @@ switch ($sAction) {
             RunQuery($sSQL);
         }
 
-        $sSQL = 'ALTER TABLE `family_custom` DROP `'.$sField.'` ;';
+        $sSQL = 'ALTER TABLE `family_custom` DROP `' . $sField . '` ;';
         RunQuery($sSQL);
 
-        $sSQL = "DELETE FROM family_custom_master WHERE fam_custom_Field = '".$sField."'";
+        $sSQL = "DELETE FROM family_custom_master WHERE fam_custom_Field = '" . $sField . "'";
         RunQuery($sSQL);
 
         $sSQL = 'SELECT * FROM family_custom_master';
@@ -70,7 +70,7 @@ switch ($sAction) {
         // Shift the remaining rows up by one, unless we've just deleted the only row
         if ($numRows > 0) {
             for ($reorderRow = $iOrderID + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
-                $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '".($reorderRow - 1)."' WHERE fam_custom_Order = '".$reorderRow."'";
+                $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . ($reorderRow - 1) . "' WHERE fam_custom_Order = '" . $reorderRow . "'";
                 RunQuery($sSQL);
             }
         }

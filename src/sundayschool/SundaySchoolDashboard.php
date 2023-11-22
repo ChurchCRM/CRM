@@ -213,12 +213,12 @@ require '../Include/Header.php';
             $age = 'N/A';
             $hideAge = $flags == 1 || empty($birthYear);
             try {
-              if (!$hideAge) {
-                $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
-                $age = MiscUtils::formatAge($birthMonth, $birthDay, $birthYear);
-              }
+                if (!$hideAge) {
+                    $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+                    $age = MiscUtils::formatAge($birthMonth, $birthDay, $birthYear);
+                }
             } catch (\Throwable $ex) {
-              LoggerUtils::getAppLogger()->error("Failed to retrieve student's age", ['exception' => $ex]);
+                LoggerUtils::getAppLogger()->error("Failed to retrieve student's age", ['exception' => $ex]);
             }
 
             $html = <<<HTML
@@ -235,7 +235,7 @@ require '../Include/Header.php';
 <td>$Address1 $Address2 $city $state $zip</td>
 </tr>
 HTML;
-          echo $html;
+            echo $html;
         }
 
         ?>

@@ -41,7 +41,7 @@ class MenuItem
         //Review SessionVar stuff
         if (!empty($this->uri)) {
             if (filter_var($this->uri, FILTER_VALIDATE_URL) === false) {
-                return SystemURLs::getRootPath().'/'.$this->uri;
+                return SystemURLs::getRootPath() . '/' . $this->uri;
             }
             $this->external = true;
 
@@ -59,7 +59,7 @@ class MenuItem
     public function getName()
     {
         if (mb_strlen($this->name) > $this->maxNameStr) {
-            return mb_substr($this->name, 0, $this->maxNameStr - 3).' ...';
+            return mb_substr($this->name, 0, $this->maxNameStr - 3) . ' ...';
         }
 
         return $this->name;

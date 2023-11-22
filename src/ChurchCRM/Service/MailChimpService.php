@@ -45,11 +45,11 @@ class MailChimpService
             LoggerUtils::getAppLogger()->debug('Updating MailChimp List Cache');
             $time = new ExecutionTime();
             $lists = $this->myMailchimp->get('lists')['lists'];
-            LoggerUtils::getAppLogger()->debug('MailChimp list enumeration took: '.$time->getMilliseconds().' ms.  Found '.count($lists).' lists');
+            LoggerUtils::getAppLogger()->debug('MailChimp list enumeration took: ' . $time->getMilliseconds() . ' ms.  Found ' . count($lists) . ' lists');
             foreach ($lists as &$list) {
                 $list['members'] = [];
                 $listmembers = $this->myMailchimp->get(
-                    'lists/'.$list['id'].'/members',
+                    'lists/' . $list['id'] . '/members',
                     [
                         'count'  => $list['stats']['member_count'],
                         'fields' => 'members.id,members.email_address,members.status,members.merge_fields',
@@ -64,9 +64,9 @@ class MailChimpService
                         'status' => $member['status'],
                     ]);
                 }
-                LoggerUtils::getAppLogger()->debug('MailChimp list '.$list['id'].' membership '.count($list['members']));
+                LoggerUtils::getAppLogger()->debug('MailChimp list ' . $list['id'] . ' membership ' . count($list['members']));
             }
-            LoggerUtils::getAppLogger()->debug('MailChimp list and membership update took: '.$time->getMilliseconds().' ms');
+            LoggerUtils::getAppLogger()->debug('MailChimp list and membership update took: ' . $time->getMilliseconds() . ' ms');
             $_SESSION['MailChimpLists'] = $lists;
         } else {
             LoggerUtils::getAppLogger()->debug('Using cached MailChimp List');
@@ -88,8 +88,8 @@ class MailChimpService
         $lists = $this->getListsFromCache();
         $listsStatus = [];
         foreach ($lists as $list) {
-            $data = $this->myMailchimp->get('lists/'.$list['id'].'/members/'.md5($email));
-            LoggerUtils::getAppLogger()->debug($email.' is '.$data['status'].' to '.$list['name']);
+            $data = $this->myMailchimp->get('lists/' . $list['id'] . '/members/' . md5($email));
+            LoggerUtils::getAppLogger()->debug($email . ' is ' . $data['status'] . ' to ' . $list['name']);
             array_push($listsStatus, ['name' => $list['name'], 'status' => $data['status'], 'stats' => $data['stats']]);
         }
 

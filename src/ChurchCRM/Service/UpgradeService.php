@@ -38,7 +38,7 @@ class UpgradeService
         try {
             $connection = Propel::getConnection();
 
-            $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot().'/mysql/upgrade.json');
+            $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
             MiscUtils::throwIfFailed($dbUpdatesFile);
 
             $dbUpdates = json_decode($dbUpdatesFile, true, 512, JSON_THROW_ON_ERROR);
@@ -52,12 +52,12 @@ class UpgradeService
                         $version->setVersion($dbUpdate['dbVersion']);
                         $version->setUpdateStart(new \DateTimeImmutable());
 
-                        $logger->info('New Version: '.$version->getVersion());
+                        $logger->info('New Version: ' . $version->getVersion());
                         $scriptName = null;
                         foreach ($dbUpdate['scripts'] as $dbScript) {
-                            $scriptName = SystemURLs::getDocumentRoot().$dbScript;
+                            $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
 
-                            $logger->info('Upgrade DB - '.$scriptName);
+                            $logger->info('Upgrade DB - ' . $scriptName);
                             if (pathinfo($scriptName, PATHINFO_EXTENSION) === 'sql') {
                                 SQLUtils::sqlImport($scriptName, $connection);
                             } elseif (pathinfo($scriptName, PATHINFO_EXTENSION) === 'php') {
@@ -78,7 +78,7 @@ class UpgradeService
                     }
                 } catch (\Exception $exc) {
                     $logger->error(
-                        'Failure executing upgrade script(s): '.$exc->getMessage(),
+                        'Failure executing upgrade script(s): ' . $exc->getMessage(),
                         [
                             'exception'                 => $exc,
                             'scriptName'                => $scriptName,
@@ -92,15 +92,15 @@ class UpgradeService
             }
 
             if ($upgradeScriptsExecuted === 0) {
-                $logger->warning('No upgrade path for '.SystemService::getDBVersion().' to '.$_SESSION['sSoftwareInstalledVersion']);
+                $logger->warning('No upgrade path for ' . SystemService::getDBVersion() . ' to ' . $_SESSION['sSoftwareInstalledVersion']);
             }
             // always rebuild the views
-            SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/upgrade/rebuild_views.sql', $connection);
+            SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
 
             return true;
         } catch (\Exception $exc) {
             $logger->error(
-                'Database upgrade failed: '.$exc->getMessage(),
+                'Database upgrade failed: ' . $exc->getMessage(),
                 ['exception' => $exc]
             );
 

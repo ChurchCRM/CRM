@@ -20,7 +20,7 @@ class ChurchAddress implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath().'/SystemSettings.php';
+        return SystemURLs::getRootPath() . '/SystemSettings.php';
     }
 
     public function getTitle(): string

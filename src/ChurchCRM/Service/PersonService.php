@@ -9,7 +9,7 @@ class PersonService
 {
     public function search($searchTerm, $includeFamilyRole = true)
     {
-        $searchLikeString = '%'.$searchTerm.'%';
+        $searchLikeString = '%' . $searchTerm . '%';
         $people = PersonQuery::create()->
         filterByFirstName($searchLikeString, Criteria::LIKE)->
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
@@ -36,7 +36,7 @@ class PersonService
                     } else {
                         $familyRole .= gettext('Part');
                     }
-                    $familyRole .= gettext(' of the').' <a href="v2/family/'.$values['familyID'].'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
+                    $familyRole .= gettext(' of the') . ' <a href="v2/family/' . $values['familyID'] . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
                 } else {
                     $familyRole = gettext('(No assigned family)');
                 }

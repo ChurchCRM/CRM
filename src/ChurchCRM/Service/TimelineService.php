@@ -136,7 +136,7 @@ class TimelineService
                 $dbNote->getType(),
                 $dbNote->getDisplayEditedDate(),
                 $dbNote->getDisplayEditedDate('Y'),
-                gettext('by').' '.$displayEditedBy,
+                gettext('by') . ' ' . $displayEditedBy,
                 '',
                 $dbNote->getText(),
                 $dbNote->getEditLink(),
@@ -191,7 +191,7 @@ class TimelineService
 
         $item['datetime'] = $datetime;
         $item['year'] = $year;
-        $item['key'] = $datetime.'-'.$id;
+        $item['key'] = $datetime . '-' . $id;
 
         return $item;
     }

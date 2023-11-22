@@ -26,9 +26,9 @@ class PdfGroupDirectory extends ChurchInfoReport
             //Move to the right
             $this->Cell(10);
             //Framed title
-            $sTitle = $sGroupName.' - '.gettext('Group Directory');
+            $sTitle = $sGroupName . ' - ' . gettext('Group Directory');
             if (strlen($sRoleName)) {
-                $sTitle .= ' ('.$sRoleName.')';
+                $sTitle .= ' (' . $sRoleName . ')';
             }
             $this->Cell(197, 10, $sTitle, 1, 0, 'C');
         }
@@ -41,7 +41,7 @@ class PdfGroupDirectory extends ChurchInfoReport
         //Select Arial italic 8
         $this->SetFont($this->_Font, 'I', 8);
         //Print centered page number
-        $this->Cell(0, 10, 'Page '.$this->PageNo(), 0, 0, 'C');
+        $this->Cell(0, 10, 'Page ' . $this->PageNo(), 0, 0, 'C');
     }
 
     // Sets the character size

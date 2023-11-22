@@ -34,7 +34,7 @@ class SystemURLs
             return self::$rootPath;
         }
 
-        throw new \Exception("Please check the value for '\$sRootPath' in <b>`Include\\Config.php`</b>, the following is not valid [".self::$rootPath.']');
+        throw new \Exception("Please check the value for '\$sRootPath' in <b>`Include\\Config.php`</b>, the following is not valid [" . self::$rootPath . ']');
     }
 
     public static function getDocumentRoot()
@@ -44,7 +44,7 @@ class SystemURLs
 
     public static function getImagesRoot()
     {
-        return self::$documentRoot.'/Images';
+        return self::$documentRoot . '/Images';
     }
 
     public static function getURLs()
@@ -97,7 +97,7 @@ class SystemURLs
     {
         if (isset($bLockURL) && ($bLockURL === true)) {
             // get the URL of this page
-            $currentURL = 'http'.(isset($_SERVER['HTTPS']) ? 's' : '').'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            $currentURL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
             // chop off the query string
             $currentURL = explode('?', $currentURL)[0];
@@ -114,7 +114,7 @@ class SystemURLs
 
             // jump to the first whitelisted url (TODO: maybe pick a ranodm URL?)
             if (!$validURL) {
-                header('Location: '.$URL[0]);
+                header('Location: ' . $URL[0]);
                 exit;
             }
         }

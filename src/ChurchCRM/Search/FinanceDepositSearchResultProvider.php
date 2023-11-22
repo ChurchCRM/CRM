@@ -38,13 +38,13 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
                 ->_or()
                 ->filterById($SearchQuery)
                 ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
-                ->withColumn('CONCAT("'.SystemURLs::getRootPath().'/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
+                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
                 ->limit(SystemConfig::getValue('bSearchIncludeDepositsMax'))->find();
 
             if (!empty($Deposits)) {
                 $id++;
                 foreach ($Deposits->toArray() as $Deposit) {
-                    array_push($searchResults, new SearchResult('finance-deposit-'.$id, $Deposit['displayName'], $Deposit['uri']));
+                    array_push($searchResults, new SearchResult('finance-deposit-' . $id, $Deposit['displayName'], $Deposit['uri']));
                 }
             }
         } catch (\Exception $e) {

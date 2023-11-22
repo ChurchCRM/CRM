@@ -19,7 +19,7 @@ class SQLUtils
         $sql = '';
 
         if (!$fileHandle) {
-            throw new \Exception(gettext('Unable to open file').': '.$fileName);
+            throw new \Exception(gettext('Unable to open file') . ': ' . $fileName);
         }
 
         while (!feof($fileHandle)) {
@@ -52,14 +52,14 @@ class SQLUtils
                 if (self::isQuoted($delimiterOffset, $row)) {
                     $offset = $delimiterOffset + strlen($delimiter);
                 } else {
-                    $sql = trim($sql.' '.trim(mb_substr($row, 0, $delimiterOffset)));
+                    $sql = trim($sql . ' ' . trim(mb_substr($row, 0, $delimiterOffset)));
                     self::query($sql, $mysqli);
                     $row = mb_substr($row, $delimiterOffset + strlen($delimiter));
                     $offset = 0;
                     $sql = '';
                 }
             }
-            $sql = trim($sql.' '.$row);
+            $sql = trim($sql . ' ' . $row);
         }
         if (strlen($sql) > 0) {
             self::query($row, $mysqli);
@@ -99,7 +99,7 @@ class SQLUtils
                 if (mb_substr($comment, 0, 2) == '/*') {
                     $closedOn = strpos($sql, '*/', $foundOn);
                     if ($closedOn !== false) {
-                        $sql = mb_substr($sql, 0, $foundOn).mb_substr($sql, $closedOn + 2);
+                        $sql = mb_substr($sql, 0, $foundOn) . mb_substr($sql, $closedOn + 2);
                     } else {
                         $sql = mb_substr($sql, 0, $foundOn);
                         $isMultiComment = true;
@@ -147,7 +147,7 @@ class SQLUtils
             return;
         }
         if (!$query = $mysqli->query($sql)) {
-            throw new \Exception("Cannot execute request to the database {$sql}: ".$mysqli->error);
+            throw new \Exception("Cannot execute request to the database {$sql}: " . $mysqli->error);
         }
     }
 }

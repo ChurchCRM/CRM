@@ -35,13 +35,13 @@ class Family extends BaseFamily implements PhotoInterface
         if (!empty($this->getAddress1())) {
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
-                $tmp = $tmp.' '.$this->getAddress2();
+                $tmp = $tmp . ' ' . $this->getAddress2();
             }
             array_push($address, $tmp);
         }
 
         if (!empty($this->getCity())) {
-            array_push($address, $this->getCity().',');
+            array_push($address, $this->getCity() . ',');
         }
 
         if (!empty($this->getState())) {
@@ -60,7 +60,7 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath().'/v2/family/'.$this->getId();
+        return SystemURLs::getRootPath() . '/v2/family/' . $this->getId();
     }
 
     public function getWeddingDay()
@@ -91,7 +91,7 @@ class Family extends BaseFamily implements PhotoInterface
         if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
             $NotificationEmail = new NewPersonOrFamilyEmail($this);
             if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext('New Family Notification Email Error').' :'.$NotificationEmail->getError());
+                LoggerUtils::getAppLogger()->warning(gettext('New Family Notification Email Error') . ' :' . $NotificationEmail->getError());
             }
         }
     }
@@ -284,16 +284,16 @@ class Family extends BaseFamily implements PhotoInterface
             $HoH = $this->getHeadPeople();
         }
         if (count($HoH) == 1) {
-            return $this->getName().': '.$HoH[0]->getFirstName().' - '.$this->getAddress();
+            return $this->getName() . ': ' . $HoH[0]->getFirstName() . ' - ' . $this->getAddress();
         } elseif (count($HoH) > 1) {
             $HoHs = [];
             foreach ($HoH as $person) {
                 array_push($HoHs, $person->getFirstName());
             }
 
-            return $this->getName().': '.join(',', $HoHs).' - '.$this->getAddress();
+            return $this->getName() . ': ' . join(',', $HoHs) . ' - ' . $this->getAddress();
         } else {
-            return $this->getName().' '.$this->getAddress();
+            return $this->getName() . ' ' . $this->getAddress();
         }
     }
 
@@ -331,7 +331,7 @@ class Family extends BaseFamily implements PhotoInterface
         $searchArray = [
             'Id'          => $this->getId(),
             'displayName' => $this->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')),
-            'uri'         => SystemURLs::getRootPath().'/v2/family/'.$this->getId(),
+            'uri'         => SystemURLs::getRootPath() . '/v2/family/' . $this->getId(),
         ];
 
         return $searchArray;
@@ -393,12 +393,12 @@ class Family extends BaseFamily implements PhotoInterface
             $firstLastName = $adults[0]->getLastName();
             $secondLastName = $adults[1]->getLastName();
             if ($firstLastName == $secondLastName) {
-                return $adults[0]->getFirstName().' & '.$adults[1]->getFirstName().' '.$firstLastName;
+                return $adults[0]->getFirstName() . ' & ' . $adults[1]->getFirstName() . ' ' . $firstLastName;
             } else {
-                return $adults[0]->getFullName().' & '.$adults[1]->getFullName();
+                return $adults[0]->getFullName() . ' & ' . $adults[1]->getFullName();
             }
         } else {
-            return $this->getName().' Family';
+            return $this->getName() . ' Family';
         }
     }
 

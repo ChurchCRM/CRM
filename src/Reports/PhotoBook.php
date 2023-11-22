@@ -114,7 +114,7 @@ class PdfPhotoBook extends ChurchInfoReport
                             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
                             ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME)
                             ->find();
-        $this->drawPageHeader(gettext('PhotoBook').' - '.$this->group->getName().' - '.$roleDisplayName.' ('.$groupRoleMemberships->count().')');
+        $this->drawPageHeader(gettext('PhotoBook') . ' - ' . $this->group->getName() . ' - ' . $roleDisplayName . ' (' . $groupRoleMemberships->count() . ')');
         $this->currentX = $this->pageMarginL;
         $this->currentY += 10;
         foreach ($groupRoleMemberships as $roleMembership) {
@@ -126,7 +126,7 @@ class PdfPhotoBook extends ChurchInfoReport
             }
             if ($this->currentY + $this->personImageHeight + 10 >= $this->GetPageHeight() - $this->pageMarginB) {
                 $this->addPage();
-                $this->drawPageHeader(gettext('PhotoBook').' - '.$this->group->getName().' - '.$roleDisplayName.' ('.$groupRoleMemberships->count().')');
+                $this->drawPageHeader(gettext('PhotoBook') . ' - ' . $this->group->getName() . ' - ' . $roleDisplayName . ' (' . $groupRoleMemberships->count() . ')');
                 $this->currentX = $this->pageMarginL;
                 $this->currentY += 10;
             }
@@ -141,7 +141,7 @@ foreach ($aGrp as $groupID) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
-    $pdf->Output('ClassList'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
+    $pdf->Output('ClassList' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

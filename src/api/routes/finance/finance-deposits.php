@@ -61,7 +61,7 @@ $app->group('/deposits', function () use ($app) {
     $app->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
         $id = $args['id'];
         //echo DepositQuery::create()->findOneById($id)->toCSV();
-        header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$id.'-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
+        header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
         echo PledgeQuery::create()->filterByDepId($id)
             ->joinDonationFund()->useDonationFundQuery()
             ->withColumn('DonationFund.Name', 'DonationFundName')

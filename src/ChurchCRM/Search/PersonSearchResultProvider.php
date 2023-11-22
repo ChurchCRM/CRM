@@ -30,7 +30,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
         $id = 0;
 
         try {
-            $searchLikeString = '%'.$SearchQuery.'%';
+            $searchLikeString = '%' . $SearchQuery . '%';
             $people = PersonQuery::create()->
                 filterByFirstName($searchLikeString, Criteria::LIKE)->
                 _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
@@ -44,7 +44,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
             if (!empty($people)) {
                 $id++;
                 foreach ($people as $person) {
-                    array_push($searchResults, new SearchResult('person-name-'.$id, $person->getFullName(), $person->getViewURI()));
+                    array_push($searchResults, new SearchResult('person-name-' . $id, $person->getFullName(), $person->getViewURI()));
                 }
             }
         } catch (\Exception $e) {

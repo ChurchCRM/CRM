@@ -93,14 +93,14 @@ function getMailListUnSubscribersMVC(Request $request, Response $response, array
         $renderer = new PhpRenderer('templates/email/');
         $pageArgs = [
             'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => _('People not in').' '.$list['name'],
+            'sPageTitle' => _('People not in') . ' ' . $list['name'],
             'listId'     => $list['id'],
         ];
 
         return $renderer->render($response, 'mailchimp-unsubscribers.php', $pageArgs);
     }
 
-    return $response->withStatus(404, gettext('Invalid List id').': '.$args['listId']);
+    return $response->withStatus(404, gettext('Invalid List id') . ': ' . $args['listId']);
 }
 
 function getMailListMissingMVC(Request $request, Response $response, array $args)
@@ -111,12 +111,12 @@ function getMailListMissingMVC(Request $request, Response $response, array $args
         $renderer = new PhpRenderer('templates/email/');
         $pageArgs = [
             'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => $list['name'].' '._('Audience not in the ChurchCRM'),
+            'sPageTitle' => $list['name'] . ' ' . _('Audience not in the ChurchCRM'),
             'listId'     => $list['id'],
         ];
 
         return $renderer->render($response, 'mailchimp-missing.php', $pageArgs);
     }
 
-    return $response->withStatus(404, gettext('Invalid List id').': '.$args['listId']);
+    return $response->withStatus(404, gettext('Invalid List id') . ': ' . $args['listId']);
 }

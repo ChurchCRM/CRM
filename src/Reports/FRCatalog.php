@@ -40,22 +40,22 @@ class PdfFRCatalogReport extends ChurchInfoReport
         parent::addPage($orientation, $format, $rotation);
 
         $this->SetFont('Times', 'B', 16);
-        $this->Write(8, $fr_title."\n");
+        $this->Write(8, $fr_title . "\n");
         $curY += 8;
-        $this->Write(8, $fr_description."\n\n");
+        $this->Write(8, $fr_description . "\n\n");
         $curY += 8;
         $this->SetFont('Times', '', 12);
     }
 }
 
 // Get the information about this fundraiser
-$sSQL = 'SELECT * FROM fundraiser_fr WHERE fr_ID='.$iCurrentFundraiser;
+$sSQL = 'SELECT * FROM fundraiser_fr WHERE fr_ID=' . $iCurrentFundraiser;
 $rsFR = RunQuery($sSQL);
 $thisFR = mysqli_fetch_array($rsFR);
 extract($thisFR);
 
 // Get all the donated items
-$sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID='.$iCurrentFundraiser.
+$sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $iCurrentFundraiser .
 ' ORDER BY SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)';
 $rsItems = RunQuery($sSQL);
 
@@ -79,8 +79,8 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
     $idFirstChar = $newIdFirstChar;
 
     $pdf->SetFont('Times', 'B', 12);
-    $pdf->Write(6, $di_item.': ');
-    $pdf->Write(6, stripslashes($di_title)."\n");
+    $pdf->Write(6, $di_item . ': ');
+    $pdf->Write(6, stripslashes($di_title) . "\n");
 
     if ($di_picture != '') {
         $s = getimagesize($di_picture);
@@ -90,22 +90,22 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
     }
 
     $pdf->SetFont('Times', '', 12);
-    $pdf->Write(6, stripslashes($di_description)."\n");
+    $pdf->Write(6, stripslashes($di_description) . "\n");
     if ($di_minimum > 0) {
-        $pdf->Write(6, gettext('Minimum bid ').'$'.$di_minimum.'.  ');
+        $pdf->Write(6, gettext('Minimum bid ') . '$' . $di_minimum . '.  ');
     }
     if ($di_estprice > 0) {
-        $pdf->Write(6, gettext('Estimated value ').'$'.$di_estprice.'.  ');
+        $pdf->Write(6, gettext('Estimated value ') . '$' . $di_estprice . '.  ');
     }
     if ($per_LastName != '') {
-        $pdf->Write(6, gettext('Donated by ').$per_FirstName.' '.$per_LastName.".\n");
+        $pdf->Write(6, gettext('Donated by ') . $per_FirstName . ' ' . $per_LastName . ".\n");
     }
     $pdf->Write(6, "\n");
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('FRCatalog'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
+    $pdf->Output('FRCatalog' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

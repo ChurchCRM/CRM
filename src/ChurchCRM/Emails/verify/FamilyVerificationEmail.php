@@ -15,14 +15,14 @@ class FamilyVerificationEmail extends BaseEmail
         parent::__construct($emails);
         $this->familyName = $familyName;
         $this->token = $token;
-        $this->mail->Subject = $familyName.': '.gettext("Please verify your family's information");
+        $this->mail->Subject = $familyName . ': ' . gettext("Please verify your family's information");
         $this->mail->isHTML(true);
         $this->mail->msgHTML($this->buildMessage());
     }
 
     public function getTokens()
     {
-        $myTokens = ['toName' => $this->familyName.' '.gettext('Family'),
+        $myTokens = ['toName' => $this->familyName . ' ' . gettext('Family'),
             'body'            => SystemConfig::getValue('sConfirm1'),
         ];
 
@@ -31,7 +31,7 @@ class FamilyVerificationEmail extends BaseEmail
 
     protected function getFullURL()
     {
-        return SystemURLs::getURL().'/external/verify/'.$this->token->getToken();
+        return SystemURLs::getURL() . '/external/verify/' . $this->token->getToken();
     }
 
     protected function getButtonText()

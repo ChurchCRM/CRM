@@ -39,7 +39,7 @@ $app->post('/triggerNotification', function ($request, $response, $args) use ($a
     $Notification = new Notification();
     $Notification->setPerson($Person);
     $Notification->setRecipients($Person->getFamily()->getAdults());
-    $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType().'-'.$Person->getId());
+    $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType() . '-' . $Person->getId());
     $Status = $Notification->send();
 
     return $response->withJson($Status);
