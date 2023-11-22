@@ -109,7 +109,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
 
             return $response->withStatus(500)
                 ->withJson([
-                    'message' => gettext('Error sending email(s)').' - '.gettext('Please check logs for more information'),
+                    'message' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
                     'trace'   => $e->getMessage(),
                 ]);
         }
@@ -127,7 +127,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         $family->createTimeLineNote('verify-URL');
 
         return $response
-            ->withJson(['url' => SystemURLs::getURL().'/external/verify/'.$token->getToken()]);
+            ->withJson(['url' => SystemURLs::getURL() . '/external/verify/' . $token->getToken()]);
     });
 
     $app->post('/verify/now', function ($request, $response, $args) {

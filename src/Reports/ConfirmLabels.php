@@ -43,15 +43,15 @@ foreach ($families as $family) {
         $labelText = $pdf->makeSalutation($family->getID());
     }
     if ($family->getAddress1() != '') {
-        $labelText .= "\n".$family->getAddress1();
+        $labelText .= "\n" . $family->getAddress1();
     }
     if ($family->getAddress2() != '') {
-        $labelText .= "\n".$family->getAddress2();
+        $labelText .= "\n" . $family->getAddress2();
     }
     $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
 
     if ($family->getCountry() != '' && $family->getCountry() != 'USA' && $family->getCountry() != 'United States') {
-        $labelText .= "\n".$family->getCountry();
+        $labelText .= "\n" . $family->getCountry();
     }
 
     $pdf->addPdfLabel($labelText);
@@ -59,7 +59,7 @@ foreach ($families as $family) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
-    $pdf->Output('ConfirmDataLabels'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
+    $pdf->Output('ConfirmDataLabels' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

@@ -14,7 +14,6 @@ use ChurchCRM\KeyManager;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
-use DateTime;
 use DateTimeZone;
 use Endroid\QrCode\QrCode;
 use PragmaRX\Google2FA\Google2FA;
@@ -27,11 +26,11 @@ class LocalAuthentication implements IAuthenticationProvider
 
     public function getPasswordChangeURL()
     {
-        // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface
-        return SystemURLs::getRootPath().'/v2/user/current/changepassword';
+        // this shouldn't really be called, but it's necessary to implement the IAuthenticationProvider interface
+        return SystemURLs::getRootPath() . '/v2/user/current/changepassword';
     }
 
-    public static function getIsTwoFactorAuthSupported()
+    public static function getIsTwoFactorAuthSupported(): bool
     {
         return SystemConfig::getBooleanValue('bEnable2FA') && KeyManager::getAreAllSecretsDefined();
     }
@@ -65,10 +64,10 @@ class LocalAuthentication implements IAuthenticationProvider
         }
     }
 
-    private function prepareSuccessfulLoginOperations()
+    private function prepareSuccessfulLoginOperations(): void
     {
         // Set the LastLogin and Increment the LoginCount
-        $date = new DateTime('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
+        $date = new \DateTimeImmutable('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
         $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
         $this->currentUser->setLoginCount($this->currentUser->getLoginCount() + 1);
         $this->currentUser->setFailedLogins(0);
@@ -109,15 +108,11 @@ class LocalAuthentication implements IAuthenticationProvider
                 // Set the error text
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
-
-                return $authenticationResult;
             } elseif ($this->currentUser->isLocked()) {
                 // Block the login if a maximum login failure count has been reached
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
                 LoggerUtils::getAuthLogger()->warning('Authentication attempt for locked account', $logCtx);
-
-                return $authenticationResult;
             } elseif (!$this->currentUser->isPasswordValid($AuthenticationRequest->password)) {
                 // Does the password match?
 
@@ -132,29 +127,21 @@ class LocalAuthentication implements IAuthenticationProvider
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
                 LoggerUtils::getAuthLogger()->warning('Invalid login attempt', $logCtx);
-
-                return $authenticationResult;
             } elseif (SystemConfig::getBooleanValue('bEnable2FA') && $this->currentUser->is2FactorAuthEnabled()) {
                 // Only redirect the user to the 2FA sign-ing page if it's
                 // enabled both at system AND user level.
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath().'/session/two-factor';
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
                 $this->bPendingTwoFactorAuth = true;
                 LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
-
-                return $authenticationResult;
             } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled()) {
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
                 LoggerUtils::getAuthLogger()->warning('User attempted login with valid credentials, but missing mandatory 2FA enrollment.  Denying access for user', $logCtx);
-
-                return $authenticationResult;
             } else {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
                 LoggerUtils::getAuthLogger()->debug('User successfully logged in without 2FA', $logCtx);
-
-                return $authenticationResult;
             }
         } elseif ($AuthenticationRequest instanceof LocalTwoFactorTokenRequest && $this->bPendingTwoFactorAuth) {
             if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
@@ -162,26 +149,22 @@ class LocalAuthentication implements IAuthenticationProvider
                 $authenticationResult->isAuthenticated = true;
                 $this->bPendingTwoFactorAuth = false;
                 LoggerUtils::getAuthLogger()->info('User successfully logged in with 2FA', $logCtx);
-
-                return $authenticationResult;
             } elseif ($this->currentUser->isTwoFaRecoveryCodeValid($AuthenticationRequest->TwoFACode)) {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
                 $this->bPendingTwoFactorAuth = false;
                 LoggerUtils::getAuthLogger()->info('User successfully logged in with 2FA Recovery Code', $logCtx);
-
-                return $authenticationResult;
             } else {
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath().'/session/two-factor';
-
-                return $authenticationResult;
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
             }
         }
+
+        return $authenticationResult;
     }
 
-    public function validateUserSessionIsActive(bool $updateLastOperationTimestamp): AuthenticationResult
+    public function validateUserSessionIsActive(bool $updateLastOperationTimestamp)
     {
         $authenticationResult = new AuthenticationResult();
 

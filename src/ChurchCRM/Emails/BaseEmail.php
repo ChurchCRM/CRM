@@ -27,7 +27,7 @@ abstract class BaseEmail
         // use .html instead of .mustache for default template extension
         $options = ['extension' => '.html'];
 
-        $this->mustache = new Mustache_Engine(['loader' => new Mustache_Loader_FilesystemLoader(SystemURLs::getDocumentRoot().'/views/email', $options)]);
+        $this->mustache = new Mustache_Engine(['loader' => new Mustache_Loader_FilesystemLoader(SystemURLs::getDocumentRoot() . '/views/email', $options)]);
     }
 
     private function setConnection()

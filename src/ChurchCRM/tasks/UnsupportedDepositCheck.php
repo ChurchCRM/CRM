@@ -35,7 +35,7 @@ class UnsupportedDepositCheck implements TaskInterface
 
     public function getTitle(): string
     {
-        return gettext('Unsupported Deposit Types Detected').' ('.$this->count.')';
+        return gettext('Unsupported Deposit Types Detected') . ' (' . $this->count . ')';
     }
 
     public function getDesc(): string

@@ -19,7 +19,7 @@ abstract class BaseUserEmail extends BaseEmail
     {
         parent::__construct([$user->getEmail()]);
         $this->user = $user;
-        $this->mail->Subject = SystemConfig::getValue('sChurchName').': '.$this->getSubSubject();
+        $this->mail->Subject = SystemConfig::getValue('sChurchName') . ': ' . $this->getSubSubject();
         $this->mail->isHTML(true);
         $this->mail->msgHTML($this->buildMessage());
     }
@@ -39,7 +39,7 @@ abstract class BaseUserEmail extends BaseEmail
 
     protected function getFullURL()
     {
-        return SystemURLs::getURL().'/session/begin?username='.$this->user->getUserName();
+        return SystemURLs::getURL() . '/session/begin?username=' . $this->user->getUserName();
     }
 
     protected function getButtonText()

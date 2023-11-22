@@ -110,7 +110,7 @@ class PdfAddressReport extends ChurchInfoReport
     // Number of lines is only for the $text parameter
     public function addRecord($fam_Str, $sLuStr, $sErrStr)
     {
-        $sLuStr .= "\n".$sErrStr;
+        $sLuStr .= "\n" . $sErrStr;
 
         $numlines1 = $this->numLinesInFpdfCell(90, $fam_Str);
         $numlines2 = $this->numLinesInFpdfCell(90, $sLuStr);

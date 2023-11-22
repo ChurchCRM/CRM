@@ -72,7 +72,7 @@ class Person extends BasePerson implements PhotoInterface
                 $birthYear = 1900;
             }
 
-            return \DateTimeImmutable::createFromFormat('Y-m-d', $birthYear.'-'.$this->getBirthMonth().'-'.$this->getBirthDay());
+            return \DateTimeImmutable::createFromFormat('Y-m-d', $birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
         }
 
         return null;
@@ -93,7 +93,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath().'/PersonView.php?PersonID='.$this->getId();
+        return SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->getId();
     }
 
     public function getFamilyRole()
@@ -146,7 +146,7 @@ class Person extends BasePerson implements PhotoInterface
         if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
             $NotificationEmail = new NewPersonOrFamilyEmail($this);
             if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext('New Person Notification Email Error').' :'.$NotificationEmail->getError());
+                LoggerUtils::getAppLogger()->warning(gettext('New Person Notification Email Error') . ' :' . $NotificationEmail->getError());
             }
         }
     }
@@ -199,11 +199,11 @@ class Person extends BasePerson implements PhotoInterface
             $address = [];
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
-                $tmp = $tmp.' '.$this->getAddress2();
+                $tmp = $tmp . ' ' . $this->getAddress2();
             }
             array_push($address, $tmp);
             if (!empty($this->getCity())) {
-                array_push($address, $this->getCity().',');
+                array_push($address, $this->getCity() . ',');
             }
             if (!empty($this->getState())) {
                 array_push($address, $this->getState());
@@ -390,101 +390,101 @@ class Person extends BasePerson implements PhotoInterface
         switch ($Style) {
             case 0:
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle().' ';
+                    $nameString .= $this->getTitle() . ' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' '.$this->getMiddleName();
+                    $nameString .= ' ' . $this->getMiddleName();
                 }
                 if ($this->getLastName()) {
-                    $nameString .= ' '.$this->getLastName();
+                    $nameString .= ' ' . $this->getLastName();
                 }
                 if ($this->getSuffix()) {
-                    $nameString .= ', '.$this->getSuffix();
+                    $nameString .= ', ' . $this->getSuffix();
                 }
                 break;
 
             case 1:
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle().' ';
+                    $nameString .= $this->getTitle() . ' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' '.strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')).'.';
+                    $nameString .= ' ' . strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')) . '.';
                 }
                 if ($this->getLastName()) {
-                    $nameString .= ' '.$this->getLastName();
+                    $nameString .= ' ' . $this->getLastName();
                 }
                 if ($this->getSuffix()) {
-                    $nameString .= ', '.$this->getSuffix();
+                    $nameString .= ', ' . $this->getSuffix();
                 }
                 break;
 
             case 2:
                 if ($this->getLastName()) {
-                    $nameString .= $this->getLastName().', ';
+                    $nameString .= $this->getLastName() . ', ';
                 }
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle().' ';
+                    $nameString .= $this->getTitle() . ' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' '.$this->getMiddleName();
+                    $nameString .= ' ' . $this->getMiddleName();
                 }
                 if ($this->getSuffix()) {
-                    $nameString .= ', '.$this->getSuffix();
+                    $nameString .= ', ' . $this->getSuffix();
                 }
                 break;
 
             case 3:
                 if ($this->getLastName()) {
-                    $nameString .= $this->getLastName().', ';
+                    $nameString .= $this->getLastName() . ', ';
                 }
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle().' ';
+                    $nameString .= $this->getTitle() . ' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' '.strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')).'.';
+                    $nameString .= ' ' . strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')) . '.';
                 }
                 if ($this->getSuffix()) {
-                    $nameString .= ', '.$this->getSuffix();
+                    $nameString .= ', ' . $this->getSuffix();
                 }
                 break;
 
             case 4:
                 $nameString .= $this->getFirstName();
                 if ($this->getMiddleName()) {
-                    $nameString .= ' '.$this->getMiddleName();
+                    $nameString .= ' ' . $this->getMiddleName();
                 }
                 if ($this->getLastName()) {
-                    $nameString .= ' '.$this->getLastName();
+                    $nameString .= ' ' . $this->getLastName();
                 }
                 break;
 
             case 5:
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle().' ';
+                    $nameString .= $this->getTitle() . ' ';
                 }
                 $nameString .= $this->getFirstName();
                 if ($this->getLastName()) {
-                    $nameString .= ' '.$this->getLastName();
+                    $nameString .= ' ' . $this->getLastName();
                 }
                 break;
 
             case 6:
                 if ($this->getLastName()) {
-                    $nameString .= $this->getLastName().', ';
+                    $nameString .= $this->getLastName() . ', ';
                 }
                 if ($this->getTitle()) {
-                    $nameString .= $this->getTitle().' ';
+                    $nameString .= $this->getTitle() . ' ';
                 }
                 $nameString .= $this->getFirstName();
                 break;
 
             case 7:
                 if ($this->getLastName()) {
-                    $nameString .= $this->getLastName().' ';
+                    $nameString .= $this->getLastName() . ' ';
                 }
                 if ($this->getFirstName()) {
                     $nameString .= $this->getFirstName();
@@ -501,11 +501,11 @@ class Person extends BasePerson implements PhotoInterface
                     if (!$nameString) { // no first name
                         $nameString = $this->getFirstName();
                     } else {
-                        $nameString .= ', '.$this->getFirstName();
+                        $nameString .= ', ' . $this->getFirstName();
                     }
                 }
                 if ($this->getMiddleName()) {
-                    $nameString .= ' '.$this->getMiddleName();
+                    $nameString .= ' ' . $this->getMiddleName();
                 }
                 break;
             default:
@@ -568,7 +568,7 @@ class Person extends BasePerson implements PhotoInterface
         $personProperties = PropertyQuery::create()
           ->filterByProClass('p')
           ->leftJoinRecordProperty()
-          ->where('r2p_record_ID='.$this->getId())
+          ->where('r2p_record_ID=' . $this->getId())
           ->find();
 
         $PropertiesList = [];
@@ -617,7 +617,7 @@ class Person extends BasePerson implements PhotoInterface
     {
         $GroupList = GroupQuery::create()
         ->leftJoinPerson2group2roleP2g2r()
-        ->where('p2g2r_per_ID='.$this->getId())
+        ->where('p2g2r_per_ID=' . $this->getId())
         ->find();
 
         $group = [];
@@ -630,7 +630,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getNumericCellPhone()
     {
-        return '1'.preg_replace('/[^\.0-9]/', '', $this->getCellPhone());
+        return '1' . preg_replace('/[^\.0-9]/', '', $this->getCellPhone());
     }
 
     public function postSave(ConnectionInterface $con = null)
@@ -681,7 +681,7 @@ class Person extends BasePerson implements PhotoInterface
     /* Philippe Logel 2017 */
     public function getFullNameWithAge()
     {
-        return $this->getFullName().' '.$this->getAge();
+        return $this->getFullName() . ' ' . $this->getAge();
     }
 
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
@@ -694,7 +694,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getThumbnailURL()
     {
-        return SystemURLs::getRootPath().'/api/person/'.$this->getId().'/thumbnail';
+        return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
     }
 
     public function getEmail()

@@ -30,7 +30,7 @@ if ($linkBack === '') {
 
 if ($iFundRaiserID > 0) {
     // Get the current fund raiser record
-    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = '.$iFundRaiserID;
+    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iFundRaiserID;
     $rsFRR = RunQuery($sSQL);
     extract(mysqli_fetch_array($rsFRR));
     // Set current fundraiser
@@ -42,11 +42,11 @@ if ($iFundRaiserID > 0) {
 // Get all the people listed as donors for this fundraiser
 $sSQL = "SELECT a.per_id as donorID FROM donateditem_di
     	     LEFT JOIN person_per a ON di_donor_ID=a.per_ID
-         WHERE di_FR_ID = '".$iFundRaiserID."' ORDER BY a.per_id";
+         WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY a.per_id";
 $rsDonors = RunQuery($sSQL);
 
 $extraPaddleNum = 1;
-$sSQL = "SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn WHERE pn_FR_ID = '".$iFundRaiserID."'";
+$sSQL = "SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn WHERE pn_FR_ID = '" . $iFundRaiserID . "'";
 $rsMaxPaddle = RunQuery($sSQL);
 if (mysqli_num_rows($rsMaxPaddle) > 0) {
     $oneRow = mysqli_fetch_array($rsMaxPaddle);

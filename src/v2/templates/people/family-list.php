@@ -57,7 +57,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </td>
 
             </tr>
-<?php } ?>
+            <?php } ?>
             </tbody>
         </table>
     </div>

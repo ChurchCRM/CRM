@@ -31,7 +31,7 @@ use ChurchCRM\Utils\RedirectUtils;
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
 if ($iGroupID < 1) {
-  RedirectUtils::redirect('GroupList.php');
+    RedirectUtils::redirect('GroupList.php');
 }
 
 //Get the data on this group

@@ -41,7 +41,7 @@ class MiscUtils
                 $cons = array_merge($cons, $cons_cant_start);
             }
             $rnd = ${$current}[random_int(0, count(${$current}) - 1)];
-            if (strlen($word.$rnd) <= $length) {
+            if (strlen($word . $rnd) <= $length) {
                 $word .= $rnd;
                 $current = ($current === 'cons' ? 'vows' : 'cons');
             }
@@ -109,7 +109,7 @@ class MiscUtils
                 $year = 1900;
             }
 
-            return date_create($year.'-'.$month.'-'.$day);
+            return date_create($year . '-' . $month . '-' . $day);
         }
 
         return false;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * jsmin.php - PHP implementation of Douglas Crockford's JSMin.
  *
@@ -108,14 +109,18 @@ class JSMin
             } elseif ($this->a === "\n") {
                 if ($this->b === ' ') {
                     $command = self::ACTION_DELETE_A_B;
-                } elseif (false === strpos('{[(+-', $this->b)
-                          && !$this->isAlphaNum($this->b)) {
+                } elseif (
+                    false === strpos('{[(+-', $this->b)
+                          && !$this->isAlphaNum($this->b)
+                ) {
                     $command = self::ACTION_DELETE_A;
                 }
             } elseif (!$this->isAlphaNum($this->a)) {
-                if ($this->b === ' '
+                if (
+                    $this->b === ' '
                     || ($this->b === "\n"
-                        && (false === strpos('}])+-"\'', $this->a)))) {
+                        && (false === strpos('}])+-"\'', $this->a)))
+                ) {
                     $command = self::ACTION_DELETE_A_B;
                 }
             }
@@ -149,7 +154,7 @@ class JSMin
                         }
                         if (ord($this->a) <= self::ORD_LF) {
                             throw new JSMin_UnterminatedStringException(
-                                'Unterminated String: '.var_export($str, true)
+                                'Unterminated String: ' . var_export($str, true)
                             );
                         }
                         $str .= $this->a;
@@ -164,7 +169,7 @@ class JSMin
             case self::ACTION_DELETE_A_B:
                 $this->b = $this->next();
                 if ($this->b === '/' && $this->isRegexpLiteral()) { // RegExp literal
-                    $this->output .= $this->a.$this->b;
+                    $this->output .= $this->a . $this->b;
                     $pattern = '/'; // in case needed for exception
                     while (true) {
                         $this->a = $this->get();
@@ -177,7 +182,7 @@ class JSMin
                             $pattern .= $this->a;
                         } elseif (ord($this->a) <= self::ORD_LF) {
                             throw new JSMin_UnterminatedRegExpException(
-                                'Unterminated RegExp: '.var_export($pattern, true)
+                                'Unterminated RegExp: ' . var_export($pattern, true)
                             );
                         }
                         $this->output .= $this->a;
@@ -285,7 +290,7 @@ class JSMin
                     $this->get();
                     // if comment preserved by YUI Compressor
                     if (0 === strpos($comment, '!')) {
-                        return "\n/*".mb_substr($comment, 1)."*/\n";
+                        return "\n/*" . mb_substr($comment, 1) . "*/\n";
                     }
                     // if IE conditional comment
                     if (preg_match('/^@(?:cc_on|if|elif|else|end)\\b/', $comment)) {
@@ -295,7 +300,7 @@ class JSMin
                     return ' ';
                 }
             } elseif ($get === null) {
-                throw new JSMin_UnterminatedCommentException('Unterminated Comment: '.var_export('/*'.$comment, true));
+                throw new JSMin_UnterminatedCommentException('Unterminated Comment: ' . var_export('/*' . $comment, true));
             }
             $comment .= $get;
         }

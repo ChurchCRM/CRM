@@ -27,12 +27,12 @@ class UpdateFamilyCoordinatesTask
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath().'/UpdateAllLatLon.php';
+        return SystemURLs::getRootPath() . '/UpdateAllLatLon.php';
     }
 
     public function getTitle(): string
     {
-        return gettext('Missing Coordinates').' ('.$this->count.')';
+        return gettext('Missing Coordinates') . ' (' . $this->count . ')';
     }
 
     public function getDesc(): string
