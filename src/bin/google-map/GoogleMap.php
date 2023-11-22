@@ -619,7 +619,7 @@ class GoogleMapAPI
     public function GoogleMapAPI($map_id = 'map', $app_id = 'MyMapApp')
     {
         $this->map_id = $map_id;
-        $this->sidebar_id = 'sidebar_'.$map_id;
+        $this->sidebar_id = 'sidebar_' . $map_id;
         $this->app_id = $app_id;
     }
 
@@ -665,9 +665,9 @@ class GoogleMapAPI
         $_width = $_match[1];
         $_type = $_match[2];
         if ($_type == '%') {
-            $this->width = $_width.'%';
+            $this->width = $_width . '%';
         } else {
-            $this->width = $_width.'px';
+            $this->width = $_width . 'px';
         }
 
         return true;
@@ -689,9 +689,9 @@ class GoogleMapAPI
         $_height = $_match[1];
         $_type = $_match[2];
         if ($_type == '%') {
-            $this->height = $_height.'%';
+            $this->height = $_height . '%';
         } else {
-            $this->height = $_height.'px';
+            $this->height = $_height . 'px';
         }
 
         return true;
@@ -860,7 +860,7 @@ class GoogleMapAPI
     public function addDirections($start_address = '', $dest_address = '', $dom_id = '', $add_markers = true, $elevation_samples = 256, $elevation_width = '', $elevation_height = '', $elevation_dom_id = '')
     {
         if ($elevation_dom_id == '') {
-            $elevation_dom_id = 'elevation'.$dom_id;
+            $elevation_dom_id = 'elevation' . $dom_id;
         }
 
         if ($start_address != '' && $dest_address != '' && $dom_id != '') {
@@ -1604,14 +1604,14 @@ class GoogleMapAPI
      */
     public function createMarkerIcon($iconImage, $iconShadowImage = '', $iconAnchorX = 'x', $iconAnchorY = 'x', $infoWindowAnchorX = 'x', $infoWindowAnchorY = 'x')
     {
-        $_icon_image_path = strpos($iconImage, 'http') === 0 ? $iconImage : $_SERVER['DOCUMENT_ROOT'].$iconImage;
+        $_icon_image_path = strpos($iconImage, 'http') === 0 ? $iconImage : $_SERVER['DOCUMENT_ROOT'] . $iconImage;
         if (!($_image_info = @getimagesize($_icon_image_path))) {
-            exit('GoogleMapAPI:createMarkerIcon: Error reading image: '.$iconImage);
+            exit('GoogleMapAPI:createMarkerIcon: Error reading image: ' . $iconImage);
         }
         if ($iconShadowImage) {
-            $_shadow_image_path = strpos($iconShadowImage, 'http') === 0 ? $iconShadowImage : $_SERVER['DOCUMENT_ROOT'].$iconShadowImage;
+            $_shadow_image_path = strpos($iconShadowImage, 'http') === 0 ? $iconShadowImage : $_SERVER['DOCUMENT_ROOT'] . $iconShadowImage;
             if (!($_shadow_info = @getimagesize($_shadow_image_path))) {
-                exit('GoogleMapAPI:createMarkerIcon: Error reading shadow image: '.$iconShadowImage);
+                exit('GoogleMapAPI:createMarkerIcon: Error reading shadow image: ' . $iconShadowImage);
             }
         }
 
@@ -1701,7 +1701,7 @@ class GoogleMapAPI
      */
     public function getIconKey($iconImage, $iconShadow = '')
     {
-        return str_replace(['/', ':', '.'], '', $iconImage.$iconShadow);
+        return str_replace(['/', ':', '.'], '', $iconImage . $iconShadow);
     }
 
     /**
@@ -1754,7 +1754,7 @@ class GoogleMapAPI
         $_headerJS = '';
         if ($this->mobile == true) {
             $_headerJS .= "
-        	    <meta name='viewport' content='".$this->meta_viewport."' />
+        	    <meta name='viewport' content='" . $this->meta_viewport . "' />
         	";
         }
         if (!empty($this->_elevation_polylines) || (!empty($this->_directions) && $this->elevation_directions)) {
@@ -1765,15 +1765,15 @@ class GoogleMapAPI
 				google.load('visualization', '1', {packages: ['columnchart']});
 			</script>";
         }
-        $scriptUrl = 'https://maps.google.com/maps/api/js?sensor='.(($this->mobile == true) ? 'true' : 'false');
+        $scriptUrl = 'https://maps.google.com/maps/api/js?sensor=' . (($this->mobile == true) ? 'true' : 'false');
         if (is_array($this->api_options)) {
             foreach ($this->api_options as $key => $value) {
-                $scriptUrl .= '&'.$key.'='.$value;
+                $scriptUrl .= '&' . $key . '=' . $value;
             }
         }
-        $_headerJS .= "<script type='text/javascript' src='".$scriptUrl."'></script>";
+        $_headerJS .= "<script type='text/javascript' src='" . $scriptUrl . "'></script>";
         if ($this->marker_clusterer) {
-            $_headerJS .= "<script type='text/javascript' src='".$this->marker_clusterer_location."' ></script>";
+            $_headerJS .= "<script type='text/javascript' src='" . $this->marker_clusterer_location . "' ></script>";
         }
         if ($this->local_search) {/*TODO: Load Local Search API V3 when available*/
         }
@@ -1805,7 +1805,7 @@ class GoogleMapAPI
      */
     public function getOnLoad()
     {
-        return '<script >window.onload=onLoad'.$this->map_id.';</script>';
+        return '<script >window.onload=onLoad' . $this->map_id . ';</script>';
     }
 
     /**
@@ -1813,7 +1813,7 @@ class GoogleMapAPI
      */
     public function getOnLoadFunction()
     {
-        return 'onLoad'.$this->map_id;
+        return 'onLoad' . $this->map_id;
     }
 
     /**
@@ -1831,10 +1831,10 @@ class GoogleMapAPI
     {
         $_script = '';
         $_key = $this->map_id;
-        $_output = '<script  charset="utf-8">'."\n";
-        $_output .= '//<![CDATA['."\n";
+        $_output = '<script  charset="utf-8">' . "\n";
+        $_output .= '//<![CDATA[' . "\n";
         $_output .= "/*************************************************\n";
-        $_output .= ' * Created with GoogleMapAPI'.$this->_version."\n";
+        $_output .= ' * Created with GoogleMapAPI' . $this->_version . "\n";
         $_output .= " * Author: Brad Wedell <brad AT mycnl DOT com>\n";
         $_output .= " * Link http://code.google.com/p/php-google-map-api/\n";
         $_output .= " * Copyright 2010-2012 Brad Wedell\n";
@@ -1848,11 +1848,11 @@ class GoogleMapAPI
 
         if ($this->street_view_dom_id != '') {
             $_script .= '
-				var panorama'.$this->street_view_dom_id."$_key = '';
+				var panorama' . $this->street_view_dom_id . "$_key = '';
 			";
             if (!empty($this->_markers)) {
                 $_script .= '
-					var panorama'.$this->street_view_dom_id."markers$_key = [];
+					var panorama' . $this->street_view_dom_id . "markers$_key = [];
 				";
             }
         }
@@ -1927,25 +1927,25 @@ class GoogleMapAPI
             foreach ($this->_marker_icons as $icon_key => $icon_info) {
                 //no need to check icon key here since that's already done with setters
                 $_script .= '
-        		  icon'.$_key."['$icon_key'] = {};
-        		  icon".$_key."['$icon_key'].image =  new google.maps.MarkerImage('".$icon_info['image']."',
+        		  icon' . $_key . "['$icon_key'] = {};
+        		  icon" . $_key . "['$icon_key'].image =  new google.maps.MarkerImage('" . $icon_info['image'] . "',
 				      // The size
-				      new google.maps.Size(".$icon_info['iconWidth'].', '.$icon_info['iconHeight'].'),
+				      new google.maps.Size(" . $icon_info['iconWidth'] . ', ' . $icon_info['iconHeight'] . '),
 				      // The origin(sprite)
 				      new google.maps.Point(0,0),
 				      // The anchor
-				      new google.maps.Point('.$icon_info['iconAnchorX'].', '.$icon_info['iconAnchorY'].')
+				      new google.maps.Point(' . $icon_info['iconAnchorX'] . ', ' . $icon_info['iconAnchorY'] . ')
                   );
         		';
                 if (isset($icon_info['shadow']) && $icon_info['shadow'] != '') {
                     $_script .= '
-                    icon'.$_key."['$icon_key'].shadow = new google.maps.MarkerImage('".$icon_info['shadow']."',
+                    icon' . $_key . "['$icon_key'].shadow = new google.maps.MarkerImage('" . $icon_info['shadow'] . "',
                       // The size
-                      new google.maps.Size(".$icon_info['shadowWidth'].', '.$icon_info['shadowHeight'].'),
+                      new google.maps.Size(" . $icon_info['shadowWidth'] . ', ' . $icon_info['shadowHeight'] . '),
                       // The origin(sprite)
                       new google.maps.Point(0,0),
                       // The anchor
-                      new google.maps.Point('.$icon_info['iconAnchorX'].', '.$icon_info['iconAnchorY'].')
+                      new google.maps.Point(' . $icon_info['iconAnchorX'] . ', ' . $icon_info['iconAnchorY'] . ')
                     );
                   ';
                 }
@@ -1956,7 +1956,7 @@ class GoogleMapAPI
 
         //start setting script var
         if ($this->onload) {
-            $_script .= 'function onLoad'.$this->map_id.'() {'."\n";
+            $_script .= 'function onLoad' . $this->map_id . '() {' . "\n";
         }
 
         if (!empty($this->browser_alert)) {
@@ -1984,31 +1984,31 @@ class GoogleMapAPI
         */
 
         if ($this->display_map) {
-            $_script .= sprintf('var mapObj%s = document.getElementById("%s");', $_key, $this->map_id)."\n";
+            $_script .= sprintf('var mapObj%s = document.getElementById("%s");', $_key, $this->map_id) . "\n";
             $_script .= "if (mapObj$_key != 'undefined' && mapObj$_key != null) {\n";
 
             $_script .= "
 				var mapOptions$_key = {
-					scrollwheel: ".($this->scrollwheel ? 'true' : 'false').',
-					zoom: '.$this->zoom.',
-					mapTypeId: google.maps.MapTypeId.'.$this->map_type.',
-					mapTypeControl: '.($this->type_controls ? 'true' : 'false').',
-					mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.'.$this->type_controls_style.'}
+					scrollwheel: " . ($this->scrollwheel ? 'true' : 'false') . ',
+					zoom: ' . $this->zoom . ',
+					mapTypeId: google.maps.MapTypeId.' . $this->map_type . ',
+					mapTypeControl: ' . ($this->type_controls ? 'true' : 'false') . ',
+					mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.' . $this->type_controls_style . '}
 				};
 			';
             if (isset($this->center_lat) && isset($this->center_lon)) {
                 // Special care for decimal point in lon and lat, would get lost if "wrong" locale is set; applies to (s)printf only
                 $_script .= '
-					mapOptions'.$_key.'.center = new google.maps.LatLng(
-						'.number_format($this->center_lat, 6, '.', '').',
-						'.number_format($this->center_lon, 6, '.', '').'
+					mapOptions' . $_key . '.center = new google.maps.LatLng(
+						' . number_format($this->center_lat, 6, '.', '') . ',
+						' . number_format($this->center_lon, 6, '.', '') . '
 					);
 				';
             }
 
             if ($this->street_view_controls) {
                 $_script .= '
-					mapOptions'.$_key.'.streetViewControl= true;
+					mapOptions' . $_key . '.streetViewControl= true;
 
 				';
             }
@@ -2016,7 +2016,7 @@ class GoogleMapAPI
             // Add any map styles if they are present
             if (isset($this->map_styles)) {
                 $_script .= "
-						var styles$_key = ".$this->map_styles.';
+						var styles$_key = " . $this->map_styles . ';
 				';
             }
 
@@ -2030,8 +2030,8 @@ class GoogleMapAPI
 
             if ($this->street_view_dom_id != '') {
                 $_script .= '
-					panorama'.$this->street_view_dom_id."$_key = new  google.maps.StreetViewPanorama(document.getElementById('".$this->street_view_dom_id."'));
-					map$_key.setStreetView(panorama".$this->street_view_dom_id."$_key);
+					panorama' . $this->street_view_dom_id . "$_key = new  google.maps.StreetViewPanorama(document.getElementById('" . $this->street_view_dom_id . "'));
+					map$_key.setStreetView(panorama" . $this->street_view_dom_id . "$_key);
 				";
 
                 if (!empty($this->_markers)) {
@@ -2043,11 +2043,11 @@ class GoogleMapAPI
                     $last_id = count($this->_markers) - 1;
 
                     $_script .= '
-						panorama'.$this->street_view_dom_id."$_key.setPosition(new google.maps.LatLng(
-							".$this->_markers[$last_id]['lat'].',
-							'.$this->_markers[$last_id]['lon'].'
+						panorama' . $this->street_view_dom_id . "$_key.setPosition(new google.maps.LatLng(
+							" . $this->_markers[$last_id]['lat'] . ',
+							' . $this->_markers[$last_id]['lon'] . '
 						));
-						panorama'.$this->street_view_dom_id."$_key.setVisible(true);
+						panorama' . $this->street_view_dom_id . "$_key.setVisible(true);
 					";
                 }
             }
@@ -2071,7 +2071,7 @@ class GoogleMapAPI
                 $this->_max_lat += $_len_lat * $this->bounds_fudge;
 
                 $_script .= "var bds$_key = new google.maps.LatLngBounds(new google.maps.LatLng($this->_min_lat, $this->_min_lon), new google.maps.LatLng($this->_max_lat, $this->_max_lon));\n";
-                $_script .= 'map'.$_key.'.fitBounds(bds'.$_key.');'."\n";
+                $_script .= 'map' . $_key . '.fitBounds(bds' . $_key . ');' . "\n";
             }
 
             /*
@@ -2147,7 +2147,7 @@ class GoogleMapAPI
             }
 
             //end JS if mapObj != "undefined" block
-            $_script .= '}'."\n";
+            $_script .= '}' . "\n";
         }//end if $this->display_map==true
 
         if (!empty($this->browser_alert)) {
@@ -2158,7 +2158,7 @@ class GoogleMapAPI
         }
 
         if ($this->onload) {
-            $_script .= '}'."\n";
+            $_script .= '}' . "\n";
         }
 
         $_script .= $this->getMapFunctions();
@@ -2169,8 +2169,8 @@ class GoogleMapAPI
 
         //Append script to output
         $_output .= $_script;
-        $_output .= '//]]>'."\n";
-        $_output .= '</script>'."\n";
+        $_output .= '//]]>' . "\n";
+        $_output .= '</script>' . "\n";
 
         return $_output;
     }
@@ -2201,10 +2201,10 @@ class GoogleMapAPI
             $_script .= $this->getPlotElevationJS();
         }
         // Utility functions used to distinguish between tabbed and non-tabbed info windows
-        $_script .= 'function isArray(a) {return isObject(a) && a.constructor == Array;}'."\n";
-        $_script .= 'function isObject(a) {return (a && typeof a == \'object\') || isFunction(a);}'."\n";
-        $_script .= 'function isFunction(a) {return typeof a == \'function\';}'."\n";
-        $_script .= 'function isEmpty(obj) { for(var i in obj) { return false; } return true; }'."\n";
+        $_script .= 'function isArray(a) {return isObject(a) && a.constructor == Array;}' . "\n";
+        $_script .= 'function isObject(a) {return (a && typeof a == \'object\') || isFunction(a);}' . "\n";
+        $_script .= 'function isFunction(a) {return typeof a == \'function\';}' . "\n";
+        $_script .= 'function isEmpty(obj) { for(var i in obj) { return false; } return true; }' . "\n";
 
         return $_script;
     }
@@ -2222,32 +2222,32 @@ class GoogleMapAPI
         if ($pano == false) {
             $_prefix = 'map';
         } else {
-            $_prefix = 'panorama'.$this->street_view_dom_id;
+            $_prefix = 'panorama' . $this->street_view_dom_id;
         }
         $_output = '';
         foreach ($this->_markers as $_marker) {
             $iw_html = str_replace('"', '\"', str_replace(["\n", "\r"], '', $_marker['html']));
-            $_output .= 'var point = new google.maps.LatLng('.$_marker['lat'].','.$_marker['lon'].");\n";
+            $_output .= 'var point = new google.maps.LatLng(' . $_marker['lat'] . ',' . $_marker['lon'] . ");\n";
             $_output .= sprintf(
                 '%s.push(createMarker(%s%s, point,"%s","%s", %s, %s, "%s", %s ));',
-                (($pano == true) ? $_prefix : '').'markers'.$map_id,
+                (($pano == true) ? $_prefix : '') . 'markers' . $map_id,
                 $_prefix,
                 $map_id,
                 str_replace('"', '\"', $_marker['title']),
                 str_replace('/', '\/', $iw_html),
-                (isset($_marker['icon_key'])) ? 'icon'.$map_id."['".$_marker['icon_key']."'].image" : "''",
-                (isset($_marker['icon_key']) && isset($_marker['shadow_icon'])) ? 'icon'.$map_id."['".$_marker['icon_key']."'].shadow" : "''",
+                (isset($_marker['icon_key'])) ? 'icon' . $map_id . "['" . $_marker['icon_key'] . "'].image" : "''",
+                (isset($_marker['icon_key']) && isset($_marker['shadow_icon'])) ? 'icon' . $map_id . "['" . $_marker['icon_key'] . "'].shadow" : "''",
                 ($this->sidebar) ? $this->sidebar_id : '',
                 (isset($_marker['openers']) && count($_marker['openers']) > 0) ? json_encode($_marker['openers']) : "''"
-            )."\n";
+            ) . "\n";
         }
 
         if ($this->marker_clusterer && $pano == false) {//only do marker clusterer for map, not streetview
             $_output .= '
-        	   markerClusterer'.$map_id.' = new MarkerClusterer('.$_prefix.$map_id.', markers'.$map_id.', {
-		          maxZoom: '.$this->marker_clusterer_options['maxZoom'].',
-		          gridSize: '.$this->marker_clusterer_options['gridSize'].',
-		          styles: '.$this->marker_clusterer_options['styles'].'
+        	   markerClusterer' . $map_id . ' = new MarkerClusterer(' . $_prefix . $map_id . ', markers' . $map_id . ', {
+		          maxZoom: ' . $this->marker_clusterer_options['maxZoom'] . ',
+		          gridSize: ' . $this->marker_clusterer_options['gridSize'] . ',
+		          styles: ' . $this->marker_clusterer_options['styles'] . '
 		        });
 
         	';
@@ -2269,18 +2269,18 @@ class GoogleMapAPI
                     $_coords_output .= ',';
                 }
                 $_coords_output .= '
-        		    new google.maps.LatLng('.$_coords['lat'].', '.$_coords['long'].')
+        		    new google.maps.LatLng(' . $_coords['lat'] . ', ' . $_coords['long'] . ')
         		';
             }
             $_output .= '
-        	   polylineCoords'.$this->map_id."[$polyline_id] = [".$_coords_output.'];
-			   polylines'.$this->map_id."[$polyline_id] = new google.maps.Polyline({
-				  path: polylineCoords".$this->map_id."[$polyline_id]
-				  ".(($_polyline['color'] != '') ? ", strokeColor: '".$_polyline['color']."'" : '').'
-				  '.(($_polyline['opacity'] != 0) ? ', strokeOpacity: '.$_polyline['opacity'].'' : '').'
-				  '.(($_polyline['weight'] != 0) ? ', strokeWeight: '.$_polyline['weight'].'' : '').'
+        	   polylineCoords' . $this->map_id . "[$polyline_id] = [" . $_coords_output . '];
+			   polylines' . $this->map_id . "[$polyline_id] = new google.maps.Polyline({
+				  path: polylineCoords" . $this->map_id . "[$polyline_id]
+				  " . (($_polyline['color'] != '') ? ", strokeColor: '" . $_polyline['color'] . "'" : '') . '
+				  ' . (($_polyline['opacity'] != 0) ? ', strokeOpacity: ' . $_polyline['opacity'] . '' : '') . '
+				  ' . (($_polyline['weight'] != 0) ? ', strokeWeight: ' . $_polyline['weight'] . '' : '') . '
 			  });
-			  polylines'.$this->map_id."[$polyline_id].setMap(map".$this->map_id.');
+			  polylines' . $this->map_id . "[$polyline_id].setMap(map" . $this->map_id . ');
         	';
 
             //Elevation profiles
@@ -2291,7 +2291,7 @@ class GoogleMapAPI
                 $samples = $this->_elevation_polylines[$polyline_id]['samples'];
                 $focus_color = $this->_elevation_polylines[$polyline_id]['focus_color'];
                 $_output .= '
-					elevationPolylines'.$this->map_id."[$polyline_id] = {
+					elevationPolylines' . $this->map_id . "[$polyline_id] = {
 						'selector':'$elevation_dom_id',
 						'chart': new google.visualization.ColumnChart(document.getElementById('$elevation_dom_id')),
 						'service': new google.maps.ElevationService(),
@@ -2300,10 +2300,10 @@ class GoogleMapAPI
 						'focusColor':'$focus_color',
 						'marker':null
 					};
-					elevationPolylines".$this->map_id."[$polyline_id]['service'].getElevationAlongPath({
-						path: polylineCoords".$this->map_id."[$polyline_id],
+					elevationPolylines" . $this->map_id . "[$polyline_id]['service'].getElevationAlongPath({
+						path: polylineCoords" . $this->map_id . "[$polyline_id],
 						samples: $samples
-					}, function(results,status){plotElevation(results,status, elevationPolylines".$this->map_id."[$polyline_id], map".$this->map_id.', elevationCharts'.$this->map_id.');});
+					}, function(results,status){plotElevation(results,status, elevationPolylines" . $this->map_id . "[$polyline_id], map" . $this->map_id . ', elevationCharts' . $this->map_id . ');});
 				';
             }
         }
@@ -2346,36 +2346,36 @@ class GoogleMapAPI
             }
 
             $_output .= '
-			    directions'.$this->map_id."['$dom_id'] = {
+			    directions' . $this->map_id . "['$dom_id'] = {
 					displayRenderer:new google.maps.DirectionsRenderer(),
 					directionService:new google.maps.DirectionsService(),
 					request:{
             					waypoints: [{$this->_waypoints_string}],
-						origin: '".$directions['start']."',
-						destination: '".$directions['dest']."'
+						origin: '" . $directions['start'] . "',
+						destination: '" . $directions['dest'] . "'
 						$directionsParams
 					}
-					".(($this->elevation_directions) ? ",
-					   selector: '".$directions['elevation_dom_id']."',
-					   chart: new google.visualization.ColumnChart(document.getElementById('".$directions['elevation_dom_id']."')),
+					" . (($this->elevation_directions) ? ",
+					   selector: '" . $directions['elevation_dom_id'] . "',
+					   chart: new google.visualization.ColumnChart(document.getElementById('" . $directions['elevation_dom_id'] . "')),
 					   service: new google.maps.ElevationService(),
-					   width:".$directions['width'].',
-					   height:'.$directions['height'].",
+					   width:" . $directions['width'] . ',
+					   height:' . $directions['height'] . ",
 					   focusColor:'#00FF00',
 					   marker:null
-				   " : '').'
+				   " : '') . '
 				};
-				directions'.$this->map_id."['$dom_id'].displayRenderer.setMap(map".$this->map_id.');
-				directions'.$this->map_id."['$dom_id'].displayRenderer.setPanel(document.getElementById('$dom_id'));
-				directions".$this->map_id."['$dom_id'].directionService.route(directions".$this->map_id."['$dom_id'].request, function(response, status) {
+				directions' . $this->map_id . "['$dom_id'].displayRenderer.setMap(map" . $this->map_id . ');
+				directions' . $this->map_id . "['$dom_id'].displayRenderer.setPanel(document.getElementById('$dom_id'));
+				directions" . $this->map_id . "['$dom_id'].directionService.route(directions" . $this->map_id . "['$dom_id'].request, function(response, status) {
 					if (status == google.maps.DirectionsStatus.OK) {
-					   directions".$this->map_id."['$dom_id'].displayRenderer.setDirections(response);
-					   ".(($this->elevation_directions) ? '
-						   directions'.$this->map_id."['$dom_id'].service.getElevationAlongPath({
+					   directions" . $this->map_id . "['$dom_id'].displayRenderer.setDirections(response);
+					   " . (($this->elevation_directions) ? '
+						   directions' . $this->map_id . "['$dom_id'].service.getElevationAlongPath({
 							   path: response.routes[0].overview_path,
-							   samples: ".$directions['elevation_samples'].'
-						   }, function(results,status){plotElevation(results,status, directions'.$this->map_id."['$dom_id'], map".$this->map_id.', elevationCharts'.$this->map_id.');});
-					   ' : '').'
+							   samples: " . $directions['elevation_samples'] . '
+						   }, function(results,status){plotElevation(results,status, directions' . $this->map_id . "['$dom_id'], map" . $this->map_id . ', elevationCharts' . $this->map_id . ');});
+					   ' : '') . '
 					}
 				});
 			 ';
@@ -2392,9 +2392,9 @@ class GoogleMapAPI
         $_output = '';
         foreach ($this->_overlays as $_key => $_overlay) {
             $_output .= '
-			 	 var bounds = new google.maps.LatLngBounds(new google.maps.LatLng('.$_overlay['bounds']['ne']['lat'].', '.$_overlay['bounds']['ne']['long'].'), new google.maps.LatLng('.$_overlay['bounds']['sw']['lat'].', '.$_overlay['bounds']['sw']['long']."));
-				 var image = '".$_overlay['img']."';
-			     overlays".$this->map_id."[$_key] = new CustomOverlay(bounds, image, map".$this->map_id.', '.$_overlay['opacity'].');
+			 	 var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(' . $_overlay['bounds']['ne']['lat'] . ', ' . $_overlay['bounds']['ne']['long'] . '), new google.maps.LatLng(' . $_overlay['bounds']['sw']['lat'] . ', ' . $_overlay['bounds']['sw']['long'] . "));
+				 var image = '" . $_overlay['img'] . "';
+			     overlays" . $this->map_id . "[$_key] = new CustomOverlay(bounds, image, map" . $this->map_id . ', ' . $_overlay['opacity'] . ');
 			 ';
         }
 
@@ -2418,9 +2418,9 @@ class GoogleMapAPI
 			    //create marker
 			    var new_marker = new google.maps.Marker(marker_options);
 			    if(html!=''){
-					".(($this->info_window) ? "
+					" . (($this->info_window) ? "
 
-			        google.maps.event.addListener(new_marker, '".$this->window_trigger."', function() {
+			        google.maps.event.addListener(new_marker, '" . $this->window_trigger . "', function() {
 			          	infowindow.close();
 			          	infowindow.setContent(html);
 			          	infowindow.open(map,new_marker);
@@ -2429,7 +2429,7 @@ class GoogleMapAPI
 					if(openers != ''&&!isEmpty(openers)){
 			           for(var i in openers){
 			             var opener = document.getElementById(openers[i]);
-			             opener.on".$this->window_trigger.' = function() {
+			             opener.on" . $this->window_trigger . ' = function() {
 
 			             	infowindow.close();
 			             	infowindow.setContent(html);
@@ -2439,16 +2439,16 @@ class GoogleMapAPI
 			             };
 			           }
 			        }
-					' : '')."
+					' : '') . "
 			        if(sidebar_id != ''){
 			            var sidebar = document.getElementById(sidebar_id);
 						if(sidebar!=null && sidebar!=undefined && title!=null && title!=''){
 							var newlink = document.createElement('a');
-							".(($this->info_window) ? '
+							" . (($this->info_window) ? '
 			        		newlink.onclick=function(){infowindow.open(map,new_marker); return false};
 							' : '
 							newlink.onclick=function(){map.setCenter(point); return false};
-							').'
+							') . '
 							newlink.innerHTML = title;
 							sidebar.appendChild(newlink);
 						}
@@ -2589,12 +2589,12 @@ class GoogleMapAPI
      */
     public function getMap()
     {
-        $_output = '<script  charset="utf-8">'."\n".'//<![CDATA['."\n";
+        $_output = '<script  charset="utf-8">' . "\n" . '//<![CDATA[' . "\n";
         //$_output .= 'if (GBrowserIsCompatible()) {' . "\n";
         if (strlen($this->width) > 0 && strlen($this->height) > 0) {
-            $_output .= sprintf('document.write(\'<div id="%s" style="width: %s; height: %s; position:relative;"><\/div>\');', $this->map_id, $this->width, $this->height)."\n";
+            $_output .= sprintf('document.write(\'<div id="%s" style="width: %s; height: %s; position:relative;"><\/div>\');', $this->map_id, $this->width, $this->height) . "\n";
         } else {
-            $_output .= sprintf('document.write(\'<div id="%s" style="position:relative;"><\/div>\');', $this->map_id)."\n";
+            $_output .= sprintf('document.write(\'<div id="%s" style="position:relative;"><\/div>\');', $this->map_id) . "\n";
         }
         //$_output .= '}';
 
@@ -2604,10 +2604,10 @@ class GoogleMapAPI
          //    $_output .= '}' . "\n";
         //}
 
-        $_output .= '//]]>'."\n".'</script>'."\n";
+        $_output .= '//]]>' . "\n" . '</script>' . "\n";
 
         if (!empty($this->js_alert)) {
-            $_output .= '<noscript>'.$this->js_alert.'</noscript>'."\n";
+            $_output .= '<noscript>' . $this->js_alert . '</noscript>' . "\n";
         }
 
         return $_output;
@@ -2626,7 +2626,7 @@ class GoogleMapAPI
      */
     public function getSidebar()
     {
-        return sprintf('<div id="%s" class="'.$this->sidebar_id.'"></div>', $this->sidebar_id)."\n";
+        return sprintf('<div id="%s" class="' . $this->sidebar_id . '"></div>', $this->sidebar_id) . "\n";
     }
 
     /**
@@ -2707,7 +2707,7 @@ class GoogleMapAPI
         if (PEAR::isError($_db)) {
             exit($_db->getMessage());
         }
-        $_res = &$_db->query('insert into '.$this->_db_cache_table.' values (?, ?, ?)', [$address, $lon, $lat]);
+        $_res = &$_db->query('insert into ' . $this->_db_cache_table . ' values (?, ?, ?)', [$address, $lon, $lat]);
         if (PEAR::isError($_res)) {
             exit($_res->getMessage());
         }
@@ -2848,20 +2848,20 @@ class GoogleMapAPI
                     $_coords_output .= ',';
                 }
                 $_coords_output .= '
-        		    new google.maps.LatLng('.$_coords['lat'].', '.$_coords['long'].')
+        		    new google.maps.LatLng(' . $_coords['lat'] . ', ' . $_coords['long'] . ')
         		';
             }
             $_output .= '
-        	   polygonCoords'.$this->map_id."[$polygon_id] = [".$_coords_output.'];
-			   polygon'.$this->map_id."[$polygon_id] = new google.maps.Polygon({
-				  paths: polygonCoords".$this->map_id."[$polygon_id]
-				  ".(($_polygon['color'] != '') ? ", strokeColor: '".$_polygon['color']."'" : '').'
-				  '.(($_polygon['opacity'] != 0) ? ', strokeOpacity: '.$_polygon['opacity'].'' : '').'
-				  '.(($_polygon['weight'] != 0) ? ', strokeWeight: '.$_polygon['weight'].'' : '').'
-				  '.(($_polygon['fill_color'] != '') ? ", fillColor: '".$_polygon['fill_color']."'" : '').'
-				  '.(($_polygon['fill_opacity'] != 0) ? ', fillOpacity: '.$_polygon['fill_opacity'].'' : '').'
+        	   polygonCoords' . $this->map_id . "[$polygon_id] = [" . $_coords_output . '];
+			   polygon' . $this->map_id . "[$polygon_id] = new google.maps.Polygon({
+				  paths: polygonCoords" . $this->map_id . "[$polygon_id]
+				  " . (($_polygon['color'] != '') ? ", strokeColor: '" . $_polygon['color'] . "'" : '') . '
+				  ' . (($_polygon['opacity'] != 0) ? ', strokeOpacity: ' . $_polygon['opacity'] . '' : '') . '
+				  ' . (($_polygon['weight'] != 0) ? ', strokeWeight: ' . $_polygon['weight'] . '' : '') . '
+				  ' . (($_polygon['fill_color'] != '') ? ", fillColor: '" . $_polygon['fill_color'] . "'" : '') . '
+				  ' . (($_polygon['fill_opacity'] != 0) ? ', fillOpacity: ' . $_polygon['fill_opacity'] . '' : '') . '
 			  });
-			  polygon'.$this->map_id."[$polygon_id].setMap(map".$this->map_id.');
+			  polygon' . $this->map_id . "[$polygon_id].setMap(map" . $this->map_id . ');
         	';
         }
 
