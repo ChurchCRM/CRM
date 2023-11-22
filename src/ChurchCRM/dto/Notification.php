@@ -62,7 +62,7 @@ class Notification
                 $message = $client->message()->sendText([
                     'to'   => $recipient->getNumericCellPhone(),
                     'from' => SystemConfig::getValue('sNexmoFromNumber'),
-                    'text' => gettext('Notification for').' '.$this->person->getFullName(),
+                    'text' => gettext('Notification for') . ' ' . $this->person->getFullName(),
                 ]);
             }
 
@@ -93,15 +93,15 @@ class Notification
         $methods = [];
         if (SystemConfig::hasValidMailServerSettings()) {
             $send = $this->sendEmail();
-            array_push($methods, 'email: '.$send);
+            array_push($methods, 'email: ' . $send);
         }
         if (SystemConfig::hasValidSMSServerSettings()) {
             $send = (bool) $this->sendSMS();
-            array_push($methods, 'sms: '.$send);
+            array_push($methods, 'sms: ' . $send);
         }
         if (SystemConfig::hasValidOpenLPSettings()) {
             $send = (bool) $this->sendProjector();
-            array_push($methods, 'projector: '.$send);
+            array_push($methods, 'projector: ' . $send);
         }
         $sendStatus = [
             'status'  => '',

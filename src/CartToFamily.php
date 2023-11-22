@@ -99,7 +99,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
     if (!$bError) {
         // Loop through the cart array
         $iCount = 0;
-        foreach($_SESSION['aPeopleCart'] as $element) {
+        foreach ($_SESSION['aPeopleCart'] as $element) {
             $iPersonID = $_SESSION['aPeopleCart'][$element['key']];
             $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = ' . $iPersonID;
             $rsPerson = RunQuery($sSQL);

@@ -30,7 +30,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         }
 
         parent::__construct($toAddresses);
-        $this->mail->Subject = SystemConfig::getValue('sChurchName').': '.$this->getSubSubject();
+        $this->mail->Subject = SystemConfig::getValue('sChurchName') . ': ' . $this->getSubSubject();
         $this->mail->isHTML(true);
         $this->mail->msgHTML($this->buildMessage());
     }
@@ -52,8 +52,8 @@ class NewPersonOrFamilyEmail extends BaseEmail
         if ($this->relatedObject instanceof Family) {
             /** @var Family $family */
             $family = $this->relatedObject;
-            $myTokens['body'] = gettext('New Family Added')."\r\n".
-            gettext('Family Name').': '.$family->getName();
+            $myTokens['body'] = gettext('New Family Added') . "\r\n" .
+            gettext('Family Name') . ': ' . $family->getName();
             $myTokens['FamilyEmail'] = $family->getEmail();
             $myTokens['FamilyPhone'] = $family->getCellPhone();
             $myTokens['FamilyAddress'] = $family->getAddress();
@@ -61,8 +61,8 @@ class NewPersonOrFamilyEmail extends BaseEmail
         } elseif ($this->relatedObject instanceof Person) {
             /** @var Person $person */
             $person = $this->relatedObject;
-            $myTokens['body'] = gettext('New Person Added')."\r\n".
-            gettext('Person Name').': '.$person->getFullName();
+            $myTokens['body'] = gettext('New Person Added') . "\r\n" .
+            gettext('Person Name') . ': ' . $person->getFullName();
             $myTokens['PersonEmail'] = $person->getEmail();
             $myTokens['PersonPhone'] = $person->getCellPhone();
             $myTokens['PersonAddress'] = $person->getAddress();
@@ -78,9 +78,9 @@ class NewPersonOrFamilyEmail extends BaseEmail
     protected function getFullURL()
     {
         if ($this->relatedObject instanceof Family) {
-            return SystemURLs::getURL().'/v2/family/'.$this->relatedObject->getId();
+            return SystemURLs::getURL() . '/v2/family/' . $this->relatedObject->getId();
         } elseif ($this->relatedObject instanceof Person) {
-            return SystemURLs::getURL().'/PersonView.php?PersonID='.$this->relatedObject->getId();
+            return SystemURLs::getURL() . '/PersonView.php?PersonID=' . $this->relatedObject->getId();
         }
     }
 

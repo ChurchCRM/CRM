@@ -25,7 +25,7 @@ $app->group('/persons', function () use ($app) {
     $app->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
 
-        $searchLikeString = '%'.$query.'%';
+        $searchLikeString = '%' . $query . '%';
         $people = PersonQuery::create()->
         filterByFirstName($searchLikeString, Criteria::LIKE)->
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->

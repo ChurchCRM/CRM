@@ -106,7 +106,7 @@ class User extends BaseUser
 
     public function hashPassword($password)
     {
-        return hash('sha256', $password.$this->getPersonId());
+        return hash('sha256', $password . $this->getPersonId());
     }
 
     public function isAddEventEnabled() // TODO: Create permission to manag event deletion see https://github.com/ChurchCRM/CRM/issues/4726
@@ -461,7 +461,7 @@ class User extends BaseUser
         }
 
         if (strlen($newPassword) < SystemConfig::getValue('iMinPasswordLength')) {
-            throw new PasswordChangeException('New', gettext('Your new password must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters'));
+            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters'));
         }
 
         if ($newPassword == $oldPassword) {

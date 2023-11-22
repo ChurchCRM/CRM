@@ -32,7 +32,7 @@ class CheckUploadSizeTask
 
     public function getTitle(): string
     {
-        return gettext('PHP Max File size too small').' ('.$this->sizeString.')';
+        return gettext('PHP Max File size too small') . ' (' . $this->sizeString . ')';
     }
 
     public function getDesc(): string

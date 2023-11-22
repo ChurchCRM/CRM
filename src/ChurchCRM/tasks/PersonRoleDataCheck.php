@@ -31,12 +31,12 @@ class PersonRoleDataCheck implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath().'/v2/people?FamilyRole=0';
+        return SystemURLs::getRootPath() . '/v2/people?FamilyRole=0';
     }
 
     public function getTitle(): string
     {
-        return gettext('Missing Role Data').' ('.$this->count.')';
+        return gettext('Missing Role Data') . ' (' . $this->count . ')';
     }
 
     public function getDesc(): string

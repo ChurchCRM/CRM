@@ -91,10 +91,10 @@ for ($i = 0; $i < $nGrps; $i++) {
 
     $FYString = MakeFYString($iFYID);
 
-    $reportHeader = str_pad($group->getName(), 95).$FYString;
+    $reportHeader = str_pad($group->getName(), 95) . $FYString;
 
     // Build the teacher string- first teachers, then the liaison
-    $teacherString = gettext('Teachers').': ';
+    $teacherString = gettext('Teachers') . ': ';
     $bFirstTeacher = true;
     $iTeacherCnt = 0;
     $iMaxTeachersFit = 4;
@@ -146,12 +146,12 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $person->getPhoto()->createThumbnail();
                 $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getThumbnailURI();
             } elseif ($lst_OptionName == gettext('Liaison')) {
-                $liaisonString .= gettext('Liaison').':'.$person->getFullName().' '.$pdf->stripPhone($homePhone).' ';
+                $liaisonString .= gettext('Liaison') . ':' . $person->getFullName() . ' ' . $pdf->stripPhone($homePhone) . ' ';
             }
         }
 
         if ($iTeacherCnt < $iMaxTeachersFit) {
-            $teacherString .= '  '.$liaisonString;
+            $teacherString .= '  ' . $liaisonString;
         }
 
         $pdf->SetFont('Times', 'B', 12);
@@ -256,7 +256,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
-    $pdf->Output('ClassAttendance'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
+    $pdf->Output('ClassAttendance' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

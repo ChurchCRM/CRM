@@ -16,26 +16,26 @@ class RedirectUtils
     public static function redirect($sRelativeURL)
     {
         if (substr($sRelativeURL, 0, 1) != '/') {
-            $sRelativeURL = '/'.$sRelativeURL;
+            $sRelativeURL = '/' . $sRelativeURL;
         }
         if (substr($sRelativeURL, 0, strlen(SystemURLs::getRootPath())) != SystemURLs::getRootPath()) {
-            $finalLocation = SystemURLs::getRootPath().$sRelativeURL;
+            $finalLocation = SystemURLs::getRootPath() . $sRelativeURL;
         } else {
             $finalLocation = $sRelativeURL;
         }
-        header('Location: '.$finalLocation);
+        header('Location: ' . $finalLocation);
         exit;
     }
 
     public static function absoluteRedirect($sTargetURL)
     {
-        header('Location: '.$sTargetURL);
+        header('Location: ' . $sTargetURL);
         exit;
     }
 
     public static function securityRedirect($missingRole)
     {
-        LoggerUtils::getAppLogger()->info('Security Redirect Request due to Role: '.$missingRole);
+        LoggerUtils::getAppLogger()->info('Security Redirect Request due to Role: ' . $missingRole);
         self::Redirect('Menu.php');
     }
 }

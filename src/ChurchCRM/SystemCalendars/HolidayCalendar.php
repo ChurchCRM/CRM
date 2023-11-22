@@ -68,7 +68,7 @@ class HolidayCalendar implements SystemCalendar
 
     private function yasumiHolidayToEvent(Holiday $holiday)
     {
-        $id = crc32($holiday->getName().$holiday->getTimestamp());
+        $id = crc32($holiday->getName() . $holiday->getTimestamp());
         $holidayEvent = new Event();
         $holidayEvent->setId($id);
         $holidayEvent->setEditable(false);
