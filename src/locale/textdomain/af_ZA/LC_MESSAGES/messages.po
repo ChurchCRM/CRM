@@ -8379,10 +8379,6 @@ msgid "Can't delete yourself"
 msgstr "Kan nie jouself uitvee nie"
 
 #: 
-msgid "success"
-msgstr "sukses"
-
-#: 
 msgid "The role could not be found."
 msgstr "Die rol kon nie gevind word nie."
 

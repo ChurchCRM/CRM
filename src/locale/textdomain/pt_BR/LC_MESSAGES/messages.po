@@ -10271,11 +10271,6 @@ msgstr "Você não pode se deletar"
 
 #: 
 #, fuzzy
-msgid "success"
-msgstr "Sucesso"
-
-#: 
-#, fuzzy
 msgid "The role could not be found."
 msgstr "A função não pôde ser encontrada."
 

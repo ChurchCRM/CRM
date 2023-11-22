@@ -8387,10 +8387,6 @@ msgid "Can't delete yourself"
 msgstr "Vous ne pouvez pas effacer votre compte"
 
 #: 
-msgid "success"
-msgstr "succès"
-
-#: 
 msgid "The role could not be found."
 msgstr "Le rôle est introuvable"
 

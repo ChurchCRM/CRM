@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-12 14:02-0800\n"
+"POT-Creation-Date: 2023-11-20 23:01-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-11-12T22:02:49.543Z\n"
-"PO-Revision-Date: 2023-11-12T22:02:49.544Z\n"
+"POT-Creation-Date: 2023-11-21T07:01:44.766Z\n"
+"PO-Revision-Date: 2023-11-21T07:01:44.767Z\n"
 "Language: en\n"
 
 msgid "Backup Database"
@@ -1862,9 +1862,6 @@ msgstr ""
 msgid "Application Integrity Check Failed"
 msgstr ""
 
-msgid "New Release"
-msgstr ""
-
 msgid "Unsupported PHP Version"
 msgstr ""
 
@@ -3374,6 +3371,12 @@ msgstr ""
 msgid "Submit to GitHub"
 msgstr ""
 
+msgid "New Release"
+msgstr ""
+
+msgid "Release Notes"
+msgstr ""
+
 msgid "Help translate this project"
 msgstr ""
 
@@ -4683,9 +4686,6 @@ msgstr ""
 msgid "Extract the upgrade archive, and apply the new files"
 msgstr ""
 
-msgid "Release Notes"
-msgstr ""
-
 msgid "File Name:"
 msgstr ""
 
@@ -4940,9 +4940,6 @@ msgid "invalid export value"
 msgstr ""
 
 msgid "Can't delete yourself"
-msgstr ""
-
-msgid "success"
 msgstr ""
 
 msgid "The role could not be found."

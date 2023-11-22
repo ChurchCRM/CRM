@@ -8404,10 +8404,6 @@ msgid "Can't delete yourself"
 msgstr "Impossibile eliminare te stesso"
 
 #: 
-msgid "success"
-msgstr "Successo"
-
-#: 
 msgid "The role could not be found."
 msgstr "Il ruolo non è stato trovato."
 

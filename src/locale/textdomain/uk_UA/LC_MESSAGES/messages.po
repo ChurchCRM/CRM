@@ -8378,10 +8378,6 @@ msgid "Can't delete yourself"
 msgstr "Не вдається видалити себе"
 
 #: 
-msgid "success"
-msgstr "успіху"
-
-#: 
 msgid "The role could not be found."
 msgstr "Роль не вдалося знайти."
 

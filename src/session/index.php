@@ -73,7 +73,7 @@ function beginSession(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/');
 
     $pageArgs['prefilledUserName'] = '';
-    // Defermine if approprirate to pre-fill the username field
+    // Determine if appropriate to pre-fill the username field
     if (isset($_GET['username'])) {
         $pageArgs['prefilledUserName'] = $_GET['username'];
     } elseif (isset($_SESSION['username'])) {

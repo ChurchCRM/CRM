@@ -8575,10 +8575,6 @@ msgid "Can't delete yourself"
 msgstr "Você não pode se deletar"
 
 #: 
-msgid "success"
-msgstr "Sucesso"
-
-#: 
 msgid "The role could not be found."
 msgstr "A função não pôde ser encontrada."
 

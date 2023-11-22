@@ -2089,7 +2089,6 @@
     "User must have Edit Records permission": "L'utilisateur doit avoir l'autorisation de modifier des enregistrements",
     "User must have Finance permission": "L'utilisateur doit avoir l'autorisation Finance",
     "Can't delete yourself": "Vous ne pouvez pas effacer votre compte",
-    "success": "succès",
     "The role could not be found.": "Le rôle est introuvable",
     "Add Menu": "Ajouter un menu",
     "Menu Name": "Nom du menu",

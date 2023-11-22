@@ -8492,10 +8492,6 @@ msgid "Can't delete yourself"
 msgstr "无法删除自己"
 
 #: 
-msgid "success"
-msgstr "成功"
-
-#: 
 msgid "The role could not be found."
 msgstr "找不到这个角色。"
 

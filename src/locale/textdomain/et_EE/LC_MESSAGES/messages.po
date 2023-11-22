@@ -5968,10 +5968,6 @@ msgid "Can't delete yourself"
 msgstr "Ei saa ennast kustutada"
 
 #: 
-msgid "success"
-msgstr "edu"
-
-#: 
 msgid "The role could not be found."
 msgstr "Rolli ei leitud."
 

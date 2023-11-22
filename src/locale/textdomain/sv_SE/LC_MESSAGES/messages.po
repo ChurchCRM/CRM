@@ -8527,10 +8527,6 @@ msgid "Can't delete yourself"
 msgstr "Kan inte ta bort dig själv"
 
 #: 
-msgid "success"
-msgstr "Framgång"
-
-#: 
 msgid "The role could not be found."
 msgstr "Rollen kunde inte hittas."
 
