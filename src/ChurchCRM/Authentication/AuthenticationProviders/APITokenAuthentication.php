@@ -6,22 +6,20 @@ use ChurchCRM\Authentication\AuthenticationResult;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\Authentication\Requests\AuthenticationRequest;
 use ChurchCRM\Exceptions\NotImplementedException;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
 
 class APITokenAuthentication implements IAuthenticationProvider
 {
-    /***
-     * @var ChurchCRM\User
-     */
-    private $currentUser;
+    private ?User $currentUser = null;
 
-    public function getCurrentUser()
+    public function getCurrentUser(): ?User
     {
         return $this->currentUser;
     }
 
-    public function authenticate(AuthenticationRequest $AuthenticationRequest)
+    public function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
     {
         if (!$AuthenticationRequest instanceof APITokenAuthenticationRequest) {
             throw new \Exception('Unable to process request as APITokenAuthenticationRequest');
@@ -43,19 +41,19 @@ class APITokenAuthentication implements IAuthenticationProvider
 
     public function validateUserSessionIsActive(bool $updateLastOperationTimestamp): AuthenticationResult
     {
-        // APITokens are sessionless, so just always say false.
+        // APITokens are session-less, so just always say false.
         $authenticationResult = new AuthenticationResult();
         $authenticationResult->isAuthenticated = false;
 
         return $authenticationResult;
     }
 
-    public function endSession()
+    public function endSession(): void
     {
         $this->currentUser = null;
     }
 
-    public function getPasswordChangeURL()
+    public function getPasswordChangeURL(): string
     {
         throw new NotImplementedException();
     }
