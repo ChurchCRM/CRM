@@ -43,8 +43,8 @@ function getSystemCalendars(Request $request, Response $response, array $args)
 function getSystemCalendarEvents(Request $request, Response $response, array $args)
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-    $start = $request->getQueryParam('start', '');
-    $end = $request->getQueryParam('end', '');
+    $start = $request->getQueryParams()['start'];
+    $end = $request->getQueryParams()['end'];
     if ($Calendar) {
         $events = $Calendar->getEvents($start, $end);
         $response->getBody()->write(json_encode($events));
@@ -67,8 +67,8 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 function getSystemCalendarFullCalendarEvents($request, Response $response, $args)
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-    $start = $request->getQueryParam('start', '');
-    $end = $request->getQueryParam('end', '');
+    $start = $request->getQueryParams()['start'];
+    $end = $request->getQueryParams()['end'];
     if (!$Calendar) {
         return $response->withStatus(404);
     }
@@ -115,8 +115,8 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
     if (!$calendar) {
         return $response->withStatus(404);
     }
-    $start = $request->getQueryParam('start', '');
-    $end = $request->getQueryParam('end', '');
+    $start = $request->getQueryParams()['start'];
+    $end = $request->getQueryParams()['end'];
     $Events = EventQuery::create()
         ->filterByStart(['min' => $start])
         ->filterByEnd(['max' => $end])
