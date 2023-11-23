@@ -20,7 +20,7 @@ class PropertyAPIMiddleware
 
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
-        $propertyId = SlimUtils::getRouteArgument($request,'propertyId');
+        $propertyId = SlimUtils::getRouteArgument($request, 'propertyId');
         $response = new Response();
         if (empty(trim($propertyId))) {
             return $response->withStatus(412, gettext('Missing') . ' PropertyId');
