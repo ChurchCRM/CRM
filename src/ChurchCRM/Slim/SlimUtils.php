@@ -4,6 +4,7 @@ namespace ChurchCRM\Slim\Request;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteContext;
 
 class SlimUtils
 {
@@ -36,5 +37,17 @@ class SlimUtils
 
     public static function getURIParamString(Request $request, string $pramName): string {
         return $request->getQueryParams()[$pramName];
+    }
+
+    public static function getRouteArgument(Request $request, string $name): string {
+        $routeContext = RouteContext::fromRequest($request);
+        $route = $routeContext->getRoute();
+
+        // return NotFound for non-existent route
+        if (empty($route)) {
+            throw new HttpNotFoundException($request);
+        }
+
+        return $route->getArgument($name);
     }
 }
