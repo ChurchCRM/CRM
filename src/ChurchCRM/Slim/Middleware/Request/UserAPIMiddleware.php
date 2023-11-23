@@ -14,7 +14,7 @@ class UserAPIMiddleware
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
         $response = new Response();
-        $userId = SlimUtils::getRouteArgument($request,'userId');
+        $userId = SlimUtils::getRouteArgument($request, 'userId');
         if (empty(trim($userId))) {
             return $response->withStatus(412, gettext('Missing') . ' UserId');
         }

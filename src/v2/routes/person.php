@@ -18,7 +18,7 @@ function viewPersonNotFound(Request $request, Response $response, array $args)
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
         'memberType' => 'Person',
-        'id'         => SlimUtils::getURIParamInt($request,'id'),
+        'id'         => SlimUtils::getURIParamInt($request, 'id'),
     ];
 
     return $renderer->render($response, 'not-found-view.php', $pageArgs);

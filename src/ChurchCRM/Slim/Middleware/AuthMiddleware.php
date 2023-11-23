@@ -12,7 +12,6 @@ class AuthMiddleware
 {
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
-
         if (!$this->isPath($request, 'public')) {
             $apiKey = $request->getHeader('x-api-key');
             if (!empty($apiKey)) {

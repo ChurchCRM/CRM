@@ -14,7 +14,7 @@ $app->group('/calendars', function (RouteCollectorProxy $group) {
 function serveCalendarPage($request, $response)
 {
     $renderer = new PhpRenderer('templates/calendar/');
-    $eventSource = SystemURLs::getRootPath() . '/api/public/calendar/' . SlimUtils::getRouteArgument($request,'CalendarAccessToken') . '/fullcalendar';
+    $eventSource = SystemURLs::getRootPath() . '/api/public/calendar/' . SlimUtils::getRouteArgument($request, 'CalendarAccessToken') . '/fullcalendar';
     $calendarName = $request->getAttribute('calendar')->getName();
 
     return $renderer->render($response, 'calendar.php', ['eventSource' => $eventSource, 'calendarName' => $calendarName]);
