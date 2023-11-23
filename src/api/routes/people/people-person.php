@@ -12,21 +12,20 @@ use ChurchCRM\Utils\MiscUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+use \Slim\HttpCache\Cache;
+
+$app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
 
 // This group does not load the person via middleware (to speed up the page loads)
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->get('/thumbnail', function (Request $request, Response $response, array $args) {
-        $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $photo = new Photo('Person', $args['personId']);
-
-        return $response->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
+        return SlimUtils::renderPhoto($response, $photo);
     });
 
     $group->get('/photo', function (Request $request, Response $response, array $args) {
-        $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $photo = new Photo('Person', $args['personId']);
-
-        return $response->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
+        return SlimUtils::renderPhoto($response, $photo);
     });
 });
 

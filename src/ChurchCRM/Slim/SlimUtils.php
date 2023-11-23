@@ -2,9 +2,12 @@
 
 namespace ChurchCRM\Slim\Request;
 
+use ChurchCRM\dto\Photo;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteContext;
+use Slim\HttpCache\CacheProvider;
+use Psr\Http\Message\StreamInterface;
 
 class SlimUtils
 {
@@ -49,5 +52,16 @@ class SlimUtils
         }
 
         return $route->getArgument($name);
+    }
+
+    public static function renderPhoto(Response $response, Photo $photo): Response {
+
+        /*$response = $response
+            ->withBody($photo->getPhotoBytes())
+            ->withHeader('Content-type', $photo->getPhotoContentType());*/
+
+        $cacheProvider = new CacheProvider();
+        return $cacheProvider->withEtag($response, $photo->getPhotoURI());
+
     }
 }
