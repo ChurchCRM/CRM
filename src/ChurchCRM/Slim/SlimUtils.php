@@ -33,16 +33,19 @@ class SlimUtils
             ->withStatus(302);
     }
 
-    public static function getURIParamInt(Request $request, string $pramName): string {
+    public static function getURIParamInt(Request $request, string $pramName): string
+    {
         $val = SlimUtils::getURIParamString($request, $pramName);
         return intval($val);
     }
 
-    public static function getURIParamString(Request $request, string $pramName): string {
+    public static function getURIParamString(Request $request, string $pramName): string
+    {
         return $request->getQueryParams()[$pramName];
     }
 
-    public static function getRouteArgument(Request $request, string $name): string {
+    public static function getRouteArgument(Request $request, string $name): string
+    {
         $routeContext = RouteContext::fromRequest($request);
         $route = $routeContext->getRoute();
 
@@ -54,14 +57,13 @@ class SlimUtils
         return $route->getArgument($name);
     }
 
-    public static function renderPhoto(Response $response, Photo $photo): Response {
-
+    public static function renderPhoto(Response $response, Photo $photo): Response
+    {
         /*$response = $response
             ->withBody($photo->getPhotoBytes())
             ->withHeader('Content-type', $photo->getPhotoContentType());*/
 
         $cacheProvider = new CacheProvider();
         return $cacheProvider->withEtag($response, $photo->getPhotoURI());
-
     }
 }

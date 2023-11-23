@@ -13,7 +13,7 @@ class FamilyAPIMiddleware
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
         $response = new Response();
-        $familyId = SlimUtils::getRouteArgument($request,'familyId');
+        $familyId = SlimUtils::getRouteArgument($request, 'familyId');
         if (empty(trim($familyId))) {
             return $response->withStatus(412, gettext('Missing') . ' FamilyId');
         }

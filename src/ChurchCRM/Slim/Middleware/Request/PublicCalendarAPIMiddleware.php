@@ -24,7 +24,7 @@ class PublicCalendarAPIMiddleware
             return $response->withStatus(403, gettext('External Calendar API is disabled'));
         }
 
-        $CAT = SlimUtils::getRouteArgument($request,'CalendarAccessToken');
+        $CAT = SlimUtils::getRouteArgument($request, 'CalendarAccessToken');
         if (empty(trim($CAT))) {
             return SlimUtils::renderJSON($response, ['message' => gettext('Missing calendar access token')], 400);
         }
