@@ -1,11 +1,11 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\Slim\Request\SlimUtils;
 
 $app->group('/person', function (RouteCollectorProxy $group) {
     $group->get('/not-found', 'viewPersonNotFound');

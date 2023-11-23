@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -27,7 +28,7 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
     });
 
     $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
-        $familyId = $request->getAttribute('route')->getArgument('familyId');
+        $familyId = SlimUtils::getRouteArgument($request, 'familyId');
         $query = PledgeQuery::create()->filterByFamId($familyId);
         if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
             $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
