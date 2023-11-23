@@ -52,11 +52,11 @@
  */
 class JSMin
 {
-    const ORD_LF = 10;
-    const ORD_SPACE = 32;
-    const ACTION_KEEP_A = 1;
-    const ACTION_DELETE_A = 2;
-    const ACTION_DELETE_A_B = 3;
+    public const ORD_LF = 10;
+    public const ORD_SPACE = 32;
+    public const ACTION_KEEP_A = 1;
+    public const ACTION_DELETE_A = 2;
+    public const ACTION_DELETE_A_B = 3;
 
     protected $a = "\n";
     protected $b = '';
@@ -142,6 +142,7 @@ class JSMin
             case self::ACTION_KEEP_A:
                 $this->output .= $this->a;
                 // fallthrough
+                // no break
             case self::ACTION_DELETE_A:
                 $this->a = $this->b;
                 if ($this->a === "'" || $this->a === '"') { // string literal
@@ -166,6 +167,7 @@ class JSMin
                     }
                 }
                 // fallthrough
+                // no break
             case self::ACTION_DELETE_A_B:
                 $this->b = $this->next();
                 if ($this->b === '/' && $this->isRegexpLiteral()) { // RegExp literal
