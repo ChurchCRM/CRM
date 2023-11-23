@@ -33,7 +33,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
             array_push($return, $values);
         }
 
-        return SlimUtils::renderJSON($response,$return);
+        return SlimUtils::renderJSON($response, $return);
     });
 
     $group->get('/groupsInCart', function () {

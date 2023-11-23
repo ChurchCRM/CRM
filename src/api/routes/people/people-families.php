@@ -70,7 +70,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             ->limit(100)
             ->find();
 
-        return SlimUtils::renderJSON($response,['families' => $families->toArray()]);
+        return SlimUtils::renderJSON($response, ['families' => $families->toArray()]);
     });
 
     $group->get('/self-verify', function (Request $request, Response $response, array $args) {
@@ -81,7 +81,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             ->limit(100)
             ->find();
 
-        return SlimUtils::renderJSON($response,['families' => $verificationNotes->toArray()]);
+        return SlimUtils::renderJSON($response, ['families' => $verificationNotes->toArray()]);
     });
 
     $group->get('/pending-self-verify', function (Request $request, Response $response, array $args) {
@@ -95,7 +95,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             ->limit(100)
             ->find();
 
-        return SlimUtils::renderJSON($response,['families' => $pendingTokens->toArray()]);
+        return SlimUtils::renderJSON($response, ['families' => $pendingTokens->toArray()]);
     });
 
     $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args) {

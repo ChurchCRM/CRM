@@ -36,7 +36,7 @@ function getAllPersonProperties(Request $request, Response $response, array $arg
         ->filterByProClass('p')
         ->find();
 
-    return SlimUtils::renderJSON($response,$properties->toArray());
+    return SlimUtils::renderJSON($response, $properties->toArray());
 }
 
 function addPropertyToPerson(Request $request, Response $response, array $args)
@@ -59,7 +59,7 @@ function getAllFamilyProperties(Request $request, Response $response, array $arg
         ->filterByProClass('f')
         ->find();
 
-    return SlimUtils::renderJSON($response,$properties->toArray());
+    return SlimUtils::renderJSON($response, $properties->toArray());
 }
 
 function getPersonProperties(Request $request, Response $response, array $args)
@@ -102,7 +102,7 @@ function getProperties(Response $response, $type, $id)
         }
     }
 
-    return SlimUtils::renderJSON($response,$finalProperties);
+    return SlimUtils::renderJSON($response, $finalProperties);
 }
 
 function addPropertyToFamily(Request $request, Response $response, array $args)
@@ -135,12 +135,12 @@ function addProperty(Request $request, Response $response, $id, $property)
 
     if ($personProperty) {
         if (empty($property->getProPrompt()) || $personProperty->getPropertyValue() == $propertyValue) {
-            return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The property is already assigned.')]);
+            return SlimUtils::renderJSON($response, ['success' => true, 'msg' => gettext('The property is already assigned.')]);
         }
 
         $personProperty->setPropertyValue($propertyValue);
         if ($personProperty->save()) {
-            return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
+            return SlimUtils::renderJSON($response, ['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
         } else {
             return $response->withStatus(500, gettext('The property could not be assigned.'));
         }
@@ -151,7 +151,7 @@ function addProperty(Request $request, Response $response, $id, $property)
         $personProperty->setPropertyValue($propertyValue);
         $personProperty->save();
 
-        return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
+        return SlimUtils::renderJSON($response, ['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
     }
 
     return $response->withStatus(500, gettext('The property could not be assigned.'));
@@ -170,7 +170,7 @@ function removeProperty($response, $id, $property)
 
     $personProperty->delete();
     if ($personProperty->isDeleted()) {
-        return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
+        return SlimUtils::renderJSON($response, ['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
     } else {
         return $response->withStatus(500, gettext('The property could not be unassigned.'));
     }

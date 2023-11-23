@@ -22,7 +22,7 @@ function getMenus(Request $request, Response $response, array $args)
 {
     $links = MenuLinkQuery::create()->orderByOrder()->find();
 
-    return SlimUtils::renderJSON($response,['menus' => $links->toArray()]);
+    return SlimUtils::renderJSON($response, ['menus' => $links->toArray()]);
 }
 
 function addMenu(Request $request, Response $response, array $args)
@@ -33,7 +33,7 @@ function addMenu(Request $request, Response $response, array $args)
     if ($link->validate()) {
         $link->save();
 
-        return SlimUtils::renderJSON($response,$link->toArray());
+        return SlimUtils::renderJSON($response, $link->toArray());
     }
 
     return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),

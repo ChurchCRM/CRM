@@ -51,7 +51,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
 
     $group->get(
         '/numbers',
-        fn (Request $request, Response $response, array $args) => SlimUtils::renderJSON($response,MenuEventsCount::getNumberBirthDates())
+        fn (Request $request, Response $response, array $args) => SlimUtils::renderJSON($response, MenuEventsCount::getNumberBirthDates())
     );
 
     $group->get('/self-register', function (Request $request, Response $response, array $args) {

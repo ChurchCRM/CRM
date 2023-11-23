@@ -21,7 +21,7 @@ function getUserSetting(Request $request, Response $response, array $args)
         $value = $setting->getValue();
     }
 
-    return SlimUtils::renderJSON($response,['value' => $value]);
+    return SlimUtils::renderJSON($response, ['value' => $value]);
 }
 
 function updateUserSetting(Request $request, Response $response, array $args)
@@ -32,5 +32,5 @@ function updateUserSetting(Request $request, Response $response, array $args)
     $input = (object) $request->getParsedBody();
     $user->setSetting($settingName, $input->value);
 
-    return SlimUtils::renderJSON($response,['value' => $user->getSetting($settingName)->getValue()]);
+    return SlimUtils::renderJSON($response, ['value' => $user->getSetting($settingName)->getValue()]);
 }

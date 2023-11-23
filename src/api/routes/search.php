@@ -33,5 +33,5 @@ $app->get('/search/{query}', function (Request $request, Response $response, arr
         array_push($resultsArray, $provider->getSearchResults($query));
     }
 
-    return SlimUtils::renderJSON($response,array_values(array_filter($resultsArray)));
+    return SlimUtils::renderJSON($response, array_values(array_filter($resultsArray)));
 });

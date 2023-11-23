@@ -29,7 +29,7 @@ function refresh2farecoverycodes(Request $request, Response $response, array $ar
 {
     $user = AuthenticationManager::getCurrentUser();
 
-    return SlimUtils::renderJSON($response,['TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()]);
+    return SlimUtils::renderJSON($response, ['TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()]);
 }
 
 function remove2fasecret(Request $request, Response $response, array $args)
@@ -37,7 +37,7 @@ function remove2fasecret(Request $request, Response $response, array $args)
     $user = AuthenticationManager::getCurrentUser();
     $user->remove2FAKey();
 
-    return SlimUtils::renderJSON($response,[]);
+    return SlimUtils::renderJSON($response, []);
 }
 
 function get2faqrcode(Request $request, Response $response, array $args)
@@ -59,5 +59,5 @@ function test2FAEnrollmentCode(Request $request, Response $response, array $args
         LoggerUtils::getAuthLogger()->notice('Unsuccessful 2FA enrollment for user: ' . $user->getUserName());
     }
 
-    return SlimUtils::renderJSON($response,['IsEnrollmentCodeValid' => $result]);
+    return SlimUtils::renderJSON($response, ['IsEnrollmentCodeValid' => $result]);
 }

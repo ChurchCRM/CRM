@@ -16,12 +16,12 @@ $app->group('/public/data', function (RouteCollectorProxy $group) {
 
 function getCountries(Request $request, Response $response, array $args)
 {
-    return SlimUtils::renderJSON($response,array_values(Countries::getAll()));
+    return SlimUtils::renderJSON($response, array_values(Countries::getAll()));
 }
 
 function getStates(Request $request, Response $response, array $args)
 {
     $states = new States($args['countryCode']);
 
-    return SlimUtils::renderJSON($response,$states->getAll());
+    return SlimUtils::renderJSON($response, $states->getAll());
 }

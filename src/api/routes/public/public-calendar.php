@@ -18,7 +18,7 @@ function getJSON(Request $request, Response $response)
 {
     $events = $request->getAttribute('events');
 
-    return SlimUtils::renderJSON($response,$events->toArray());
+    return SlimUtils::renderJSON($response, $events->toArray());
 }
 
 function getICal($request, $response)

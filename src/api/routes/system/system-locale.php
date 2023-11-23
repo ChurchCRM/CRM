@@ -49,5 +49,5 @@ function getDBTerms(Request $request, Response $response, array $p_args)
         array_push($terms, $term['qrp_Description']);
     }
 
-    return SlimUtils::renderJSON($response,['terms' => $terms]);
+    return SlimUtils::renderJSON($response, ['terms' => $terms]);
 }

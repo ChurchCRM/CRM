@@ -29,12 +29,14 @@ class SlimUtils
             ->withStatus(302);
     }
 
-    public static function getURIParamInt(Request $request, string $pramName): string {
+    public static function getURIParamInt(Request $request, string $pramName): string
+    {
         $val = SlimUtils::getURIParamString($request, $pramName);
         return intval($val);
     }
 
-    public static function getURIParamString(Request $request, string $pramName): string {
+    public static function getURIParamString(Request $request, string $pramName): string
+    {
         return $request->getQueryParams()[$pramName];
     }
 }

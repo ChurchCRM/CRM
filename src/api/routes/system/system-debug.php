@@ -13,7 +13,7 @@ $app->group('/system/debug', function (RouteCollectorProxy $group) {
 
 function getSystemURLAPI(Request $request, Response $response, array $args)
 {
-    return SlimUtils::renderJSON($response,[
+    return SlimUtils::renderJSON($response, [
         'RootPath'     => SystemURLs::getRootPath(),
         'ImagesRoot'   => SystemURLs::getImagesRoot(),
         'DocumentRoot' => SystemURLs::getDocumentRoot(),

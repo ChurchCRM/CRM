@@ -34,5 +34,5 @@ function getPersonFieldsByType(Request $request, Response $response, array $p_ar
         array_push($keyValue, ['id' => $field->getId(), 'value' => $field->getName()]);
     }
 
-    return SlimUtils::renderJSON($response,$keyValue);
+    return SlimUtils::renderJSON($response, $keyValue);
 }
