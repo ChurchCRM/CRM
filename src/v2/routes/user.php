@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -22,9 +23,9 @@ function viewUserNotFound(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/common/');
 
     $pageArgs = [
-        'sRootPath'  => SystemURLs::getRootPath(),
+        'sRootPath' => SystemURLs::getRootPath(),
         'memberType' => 'User',
-        'id'         => $request->getParam('id'),
+        'id' => SlimUtils::getURIParamInt($request,'id'),
     ];
 
     return $renderer->render($response, 'not-found-view.php', $pageArgs);
@@ -43,12 +44,12 @@ function viewUser(Request $request, Response $response, array $args)
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return $response->withRedirect(SystemURLs::getRootPath() . '/v2/admin/user/not-found?id=' . $args['id']);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/admin/user/not-found?id=' . $args['id']);
     }
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'user'      => $user,
+        'user' => $user,
     ];
 
     return $renderer->render($response, 'user.php', $pageArgs);
@@ -69,22 +70,22 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return $response->withRedirect(SystemURLs::getRootPath() . '/v2/admin/user/not-found?id=' . $args['id']);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/admin/user/not-found?id=' . $args['id']);
     }
 
     if ($user->equals($curUser)) {
         // Don't allow the current user (if admin) to set their new password
         // make the user go through the "self-service" password change procedure
-        return $response->withRedirect(SystemURLs::getRootPath() . '/v2/user/current/changepassword');
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/user/current/changepassword');
     }
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'user'      => $user,
+        'user' => $user,
     ];
 
     if ($request->getMethod() === 'POST') {
-        $loginRequestBody = (object) $request->getParsedBody();
+        $loginRequestBody = (object)$request->getParsedBody();
 
         try {
             $user->adminSetUserPassword($loginRequestBody->NewPassword1);

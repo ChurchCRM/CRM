@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
+use ChurchCRM\Slim\Request\SlimUtils;
 
 $app->group('/person', function (RouteCollectorProxy $group) {
     $group->get('/not-found', 'viewPersonNotFound');
@@ -17,7 +18,7 @@ function viewPersonNotFound(Request $request, Response $response, array $args)
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
         'memberType' => 'Person',
-        'id'         => $request->getParam('id'),
+        'id'         => SlimUtils::getURIParamInt($request,'id'),
     ];
 
     return $renderer->render($response, 'not-found-view.php', $pageArgs);

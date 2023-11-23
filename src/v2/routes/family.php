@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -32,20 +33,20 @@ function listFamilies(Request $request, Response $response, array $args)
     }
     if (strtolower($sMode) === 'inactive') {
         $families = FamilyQuery::create()
-          ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
-              ->orderByName()
-              ->find();
+            ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
+            ->orderByName()
+            ->find();
     } else {
         $sMode = 'Active';
         $families = FamilyQuery::create()
-          ->filterByDateDeactivated(null)
-              ->orderByName()
-              ->find();
+            ->filterByDateDeactivated(null)
+            ->orderByName()
+            ->find();
     }
     $pageArgs = [
-        'sMode'     => $sMode,
+        'sMode' => $sMode,
         'sRootPath' => SystemURLs::getRootPath(),
-        'families'  => $families,
+        'families' => $families,
     ];
 
     return $renderer->render($response, 'family-list.php', $pageArgs);
@@ -56,9 +57,9 @@ function viewFamilyNotFound(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/common/');
 
     $pageArgs = [
-        'sRootPath'  => SystemURLs::getRootPath(),
+        'sRootPath' => SystemURLs::getRootPath(),
         'memberType' => 'Family',
-        'id'         => $request->getParam('id'),
+        'id' => SlimUtils::getURIParamInt($request,'id'),
     ];
 
     return $renderer->render($response, 'not-found-view.php', $pageArgs);
@@ -72,7 +73,7 @@ function viewFamily(Request $request, Response $response, array $args)
     $family = FamilyQuery::create()->findPk($familyId);
 
     if (empty($family)) {
-        return $response->withRedirect(SystemURLs::getRootPath() . '/v2/family/not-found?id=' . $args['id']);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/family/not-found?id=' . $args['id']);
     }
 
     $timelineService = new TimelineService();
@@ -102,11 +103,11 @@ function viewFamily(Request $request, Response $response, array $args)
     }
 
     $pageArgs = [
-        'sRootPath'           => SystemURLs::getRootPath(),
-        'family'              => $family,
-        'familyTimeline'      => $timelineService->getForFamily($family->getId()),
+        'sRootPath' => SystemURLs::getRootPath(),
+        'family' => $family,
+        'familyTimeline' => $timelineService->getForFamily($family->getId()),
         'allFamilyProperties' => $allFamilyProperties,
-        'familyCustom'        => $familyCustom,
+        'familyCustom' => $familyCustom,
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);
