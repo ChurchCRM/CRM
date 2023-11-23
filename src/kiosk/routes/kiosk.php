@@ -21,14 +21,14 @@ $app->post('/checkin', function (Request $request, Response $response, array $ar
     $input = (object) $request->getParsedBody();
     $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input->PersonId);
 
-    return SlimUtils::renderJSON($response,$status);
+    return SlimUtils::renderJSON($response, $status);
 });
 
 $app->post('/checkout', function (Request $request, Response $response, array $args) use ($app) {
     $input = (object) $request->getParsedBody();
     $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input->PersonId);
 
-    return SlimUtils::renderJSON($response,$status);
+    return SlimUtils::renderJSON($response, $status);
 });
 
 $app->post('/triggerNotification', function (Request $request, Response $response, array $args) use ($app) {
@@ -43,7 +43,7 @@ $app->post('/triggerNotification', function (Request $request, Response $respons
     $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType() . '-' . $Person->getId());
     $status = $Notification->send();
 
-    return SlimUtils::renderJSON($response,$status);
+    return SlimUtils::renderJSON($response, $status);
 });
 
 $app->get('/activeClassMembers', fn (Request $request, Response $response, array $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());
