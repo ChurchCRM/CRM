@@ -35,7 +35,7 @@ $app->group('/', function (RouteCollectorProxy $group) {
     $group->post('', function (Request $request, Response $response, array $args) {
         $setupData = $request->getParsedBody();
 
-        $template = file_get_contents(SystemURLs::getDocumentRoot().'/Include/Config.php.example');
+        $template = file_get_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php.example');
 
 
         $template = str_replace('||DB_SERVER_NAME||', $setupData['DB_SERVER_NAME'], $template);
