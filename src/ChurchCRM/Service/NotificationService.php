@@ -18,7 +18,7 @@ class NotificationService
             if (isset($tempNotifications->TTL)) {
                 $_SESSION['SystemNotifications'] = $tempNotifications;
                 $expires = (new \DateTimeImmutable())
-                    ->add(new \DateInterval('PT'.$_SESSION['SystemNotifications']->TTL.'S'));
+                    ->add(new \DateInterval('PT' . $_SESSION['SystemNotifications']->TTL . 'S'));
                 $_SESSION['SystemNotifications']->expires = $expires;
             }
         } catch (\Exception $ex) {

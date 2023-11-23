@@ -33,12 +33,12 @@ class EventsMenuItems implements DashboardItemInterface
 
     private static function getNumberEventsOfToday()
     {
-        $start_date = date('Y-m-d ').' 00:00:00';
-        $end_date = date('Y-m-d H:i:s', strtotime($start_date.' +1 day'));
+        $start_date = date('Y-m-d ') . ' 00:00:00';
+        $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' +1 day'));
 
         return EventQuery::create()
-            ->where("event_start <= '".$start_date."' AND event_end >= '".$end_date."'") /* the large events */
-            ->_or()->where("event_start>='".$start_date."' AND event_end <= '".$end_date."'") /* the events of the day */
+            ->where("event_start <= '" . $start_date . "' AND event_end >= '" . $end_date . "'") /* the large events */
+            ->_or()->where("event_start>='" . $start_date . "' AND event_end <= '" . $end_date . "'") /* the events of the day */
             ->count();
     }
 
@@ -57,8 +57,8 @@ class EventsMenuItems implements DashboardItemInterface
         return $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)
             ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
-            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'MONTH('.FamilyTableMap::COL_FAM_WEDDINGDATE.') ='.date('m'), Criteria::CUSTOM)
-            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'DAY('.FamilyTableMap::COL_FAM_WEDDINGDATE.') ='.date('d'), Criteria::CUSTOM)
+            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'MONTH(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . date('m'), Criteria::CUSTOM)
+            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'DAY(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . date('d'), Criteria::CUSTOM)
             ->orderByWeddingdate('DESC')
             ->count();
     }

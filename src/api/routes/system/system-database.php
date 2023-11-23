@@ -32,7 +32,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
 
     $group->post('/backup', function (Request $request, Response $response, array $args) {
         $input = (object) $request->getParsedBody();
-        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')).'-'.date(SystemConfig::getValue('sDateFilenameFormat'));
+        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
         $BackupType = $input->BackupType;
         $Backup = new BackupJob(
             $BaseName,
@@ -49,7 +49,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
     $group->post('/backupRemote', function (Request $request, Response $response, array $args) {
         if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
             $input = (object) $request->getParsedBody();
-            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')).'-'.date(SystemConfig::getValue('sDateFilenameFormat'));
+            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
             $BackupType = $input->BackupType;
             $Backup = new BackupJob(
                 $BaseName,
@@ -123,7 +123,7 @@ function exportChMeetings(Request $request, Response $response, array $p_args)
     rewind($stream);
 
     $response = $response->withHeader('Content-Type', 'text/csv');
-    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv"');
+    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv"');
 
     return $response->withBody(new \Slim\Http\Stream($stream));
 }
@@ -150,13 +150,13 @@ function resetDatabase(Request $request, Response $response, array $p_args)
 
     foreach ($dbTablesSQLs as $dbTable) {
         if ($dbTable[1] == 'VIEW') {
-            $alterSQL = 'DROP VIEW '.$dbTable[0].' ;';
+            $alterSQL = 'DROP VIEW ' . $dbTable[0] . ' ;';
         } else {
-            $alterSQL = 'DROP TABLE '.$dbTable[0].' ;';
+            $alterSQL = 'DROP TABLE ' . $dbTable[0] . ' ;';
         }
 
         $dbAlterStatement = $connection->exec($alterSQL);
-        $logger->debug('DB Update: '.$alterSQL.' done.');
+        $logger->debug('DB Update: ' . $alterSQL . ' done.');
     }
 
     AuthenticationManager::endSession();
@@ -178,8 +178,8 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
     $logger->info('Families deleted');
 
     // Delete Family Photos
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot().'/Family/', Photo::getValidExtensions());
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot().'/Family/thumbnails/', Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . '/Family/', Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . '/Family/thumbnails/', Photo::getValidExtensions());
     $logger->info('family photos deleted');
 
     Person2group2roleP2g2rQuery::create()->deleteAll($connection);
@@ -198,8 +198,8 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
     $logger->info('Persons aide from person logged in deleted');
 
     // Delete Person Photos
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot().'/Person/', Photo::getValidExtensions());
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot().'/Person/thumbnails/', Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . '/Person/', Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . '/Person/thumbnails/', Photo::getValidExtensions());
 
     $logger->info('people photos deleted');
 

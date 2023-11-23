@@ -19,7 +19,7 @@ class ChurchMetaData
         }
 
         if (!empty(self::getChurchCity())) {
-            array_push($address, self::getChurchCity().',');
+            array_push($address, self::getChurchCity() . ',');
         }
 
         if (!empty(self::getChurchState())) {

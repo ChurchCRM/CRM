@@ -112,7 +112,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
 
             return $response->withStatus(500)
                 ->withJson([
-                    'message' => gettext('Error sending email(s)').' - '.gettext('Please check logs for more information'),
+                    'message' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
                     'trace'   => $e->getMessage(),
                 ]);
         }
@@ -130,7 +130,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         $family->createTimeLineNote('verify-URL');
 
         return $response
-            ->withJson(['url' => SystemURLs::getURL().'/external/verify/'.$token->getToken()]);
+            ->withJson(['url' => SystemURLs::getURL() . '/external/verify/' . $token->getToken()]);
     });
 
     $group->post('/verify/now', function (Request $request, Response $response, array $args) {

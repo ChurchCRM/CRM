@@ -37,6 +37,7 @@ $app->group('/', function (RouteCollectorProxy $group) {
 
         $template = file_get_contents(SystemURLs::getDocumentRoot().'/Include/Config.php.example');
 
+
         $template = str_replace('||DB_SERVER_NAME||', $setupData['DB_SERVER_NAME'], $template);
         $template = str_replace('||DB_SERVER_PORT||', $setupData['DB_SERVER_PORT'], $template);
         $template = str_replace('||DB_NAME||', $setupData['DB_NAME'], $template);
@@ -45,7 +46,7 @@ $app->group('/', function (RouteCollectorProxy $group) {
         $template = str_replace('||ROOT_PATH||', $setupData['ROOT_PATH'], $template);
         $template = str_replace('||URL||', $setupData['URL'], $template);
 
-        file_put_contents(SystemURLs::getDocumentRoot().'/Include/Config.php', $template);
+        file_put_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php', $template);
 
         return $response->withStatus(200);
     });

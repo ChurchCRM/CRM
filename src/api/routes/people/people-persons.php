@@ -27,7 +27,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
     $group->get('/search/{query}', function (Request $request, Response $response, array $args) {
         $query = $args['query'];
 
-        $searchLikeString = '%'.$query.'%';
+        $searchLikeString = '%' . $query . '%';
         $people = PersonQuery::create()->
         filterByFirstName($searchLikeString, Criteria::LIKE)->
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->

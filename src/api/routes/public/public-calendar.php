@@ -26,7 +26,7 @@ function getICal($request, $response)
 {
     $calendar = $request->getAttribute('calendar');
     $events = $request->getAttribute('events');
-    $calendarName = $calendar->getName().': '.ChurchMetaData::getChurchName();
+    $calendarName = $calendar->getName() . ': ' . ChurchMetaData::getChurchName();
     $CalendarICS = new iCal($events, $calendarName);
     $body = $response->getBody();
     $body->write($CalendarICS->toString());

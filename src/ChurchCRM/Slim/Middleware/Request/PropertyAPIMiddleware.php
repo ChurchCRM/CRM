@@ -21,17 +21,17 @@ class PropertyAPIMiddleware
         $propertyId = $request->getAttribute('route')->getArgument('propertyId');
 
         if (empty(trim($propertyId))) {
-            return $response->withStatus(412, gettext('Missing').' PropertyId');
+            return $response->withStatus(412, gettext('Missing') . ' PropertyId');
         }
 
         $property = PropertyQuery::create()->findPk($propertyId);
 
         if (empty($property)) {
-            LoggerUtils::getAppLogger()->debug('Pro Type is '.$property->getPropertyType()->getPrtClass().' Looking for '.$this->type);
+            LoggerUtils::getAppLogger()->debug('Pro Type is ' . $property->getPropertyType()->getPrtClass() . ' Looking for ' . $this->type);
 
-            return $response->withStatus(412, 'PropertyId : '.$propertyId.' '.gettext('not found'));
+            return $response->withStatus(412, 'PropertyId : ' . $propertyId . ' ' . gettext('not found'));
         } elseif ($property->getPropertyType()->getPrtClass() != $this->type) {
-            return $response->withStatus(500, 'PropertyId : '.$propertyId.' '.gettext(' has a type mismatch'));
+            return $response->withStatus(500, 'PropertyId : ' . $propertyId . ' ' . gettext(' has a type mismatch'));
         }
 
         $request = $request->withAttribute('property', $property);

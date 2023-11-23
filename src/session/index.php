@@ -17,6 +17,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 $app = AppFactory::create();
 $app->setBasePath('/session');
 
+
 require __DIR__.'/../Include/slim/error-handler.php';
 
 $app->addRoutingMiddleware();

@@ -43,7 +43,7 @@ function delMenu(Request $request, Response $response, array $args)
 {
     $link = MenuLinkQuery::create()->findPk($args['linkId']);
     if (empty($link)) {
-        return $response->withStatus(404, gettext('Link Not found').': '.$args['linkId']);
+        return $response->withStatus(404, gettext('Link Not found') . ': ' . $args['linkId']);
     }
     $link->delete();
 

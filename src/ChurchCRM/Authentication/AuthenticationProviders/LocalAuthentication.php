@@ -27,7 +27,7 @@ class LocalAuthentication implements IAuthenticationProvider
     public function getPasswordChangeURL(): string
     {
         // this shouldn't really be called, but it's necessary to implement the IAuthenticationProvider interface
-        return SystemURLs::getRootPath().'/v2/user/current/changepassword';
+        return SystemURLs::getRootPath() . '/v2/user/current/changepassword';
     }
 
     public static function getIsTwoFactorAuthSupported(): bool
@@ -131,7 +131,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 // Only redirect the user to the 2FA sign-ing page if it's
                 // enabled both at system AND user level.
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath().'/session/two-factor';
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
                 $this->bPendingTwoFactorAuth = true;
                 LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
             } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled()) {
@@ -157,7 +157,7 @@ class LocalAuthentication implements IAuthenticationProvider
             } else {
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath().'/session/two-factor';
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
             }
         }
 

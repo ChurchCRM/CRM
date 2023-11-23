@@ -10,7 +10,7 @@ interface IAuthenticationProvider
 {
     public function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult;
 
-    public function validateUserSessionIsActive(bool $updateLastOperationTimestamp);
+    public function validateUserSessionIsActive(bool $updateLastOperationTimestamp): AuthenticationResult;
 
     public function getCurrentUser(): ?User;
 

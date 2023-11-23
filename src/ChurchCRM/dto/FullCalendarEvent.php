@@ -29,8 +29,8 @@ class FullCalendarEvent
         $fce->end = $CRMEvent->getEnd('c');
         $fce->allDay = ($CRMEvent->getEnd() == null ? true : false);
         $fce->id = $CRMEvent->getId();
-        $fce->backgroundColor = '#'.$CRMCalendar->getBackgroundColor();
-        $fce->textColor = '#'.$CRMCalendar->getForegroundColor();
+        $fce->backgroundColor = '#' . $CRMCalendar->getBackgroundColor();
+        $fce->textColor = '#' . $CRMCalendar->getForegroundColor();
         $fce->editable = $CRMEvent->isEditable();
 
         $url = $CRMEvent->getURL();

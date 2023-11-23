@@ -53,7 +53,7 @@ function changepassword(Request $request, Response $response, array $args)
 
                 return $renderer->render($response, 'common/success-changepassword.php', $pageArgs);
             } catch (PasswordChangeException $pwChangeExc) {
-                $pageArgs['s'.$pwChangeExc->AffectedPassword.'PasswordError'] = $pwChangeExc->getMessage();
+                $pageArgs['s' . $pwChangeExc->AffectedPassword . 'PasswordError'] = $pwChangeExc->getMessage();
             }
         }
 

@@ -148,7 +148,7 @@ function NewAccessToken($request, Response $response, $args)
     $Calendar = CalendarQuery::create()
         ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404, gettext('Not Found: Unknown calendar id').': '.$args['id']);
+        return $response->withStatus(404, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
     }
     $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
     $Calendar->save();
@@ -164,7 +164,7 @@ function DeleteAccessToken($request, Response $response, $args)
     $Calendar = CalendarQuery::create()
       ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404, gettext('Not Found: Unknown calendar id').': '.$args['id']);
+        return $response->withStatus(404, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
     }
     $Calendar->setAccessToken(null);
     $Calendar->save();
@@ -192,7 +192,7 @@ function deleteUserCalendar(Request $request, Response $response, $args)
     $Calendar = CalendarQuery::create()
         ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404, gettext('Not Found: Unknown calendar id').': '.$args['id']);
+        return $response->withStatus(404, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
     }
     $Calendar->delete();
 

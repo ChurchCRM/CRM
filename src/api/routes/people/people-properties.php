@@ -129,7 +129,7 @@ function addProperty(Request $request, Response $response, $id, $property)
     if (!empty($property->getProPrompt())) {
         $data = $request->getParsedBody();
         $propertyValue = empty($data['value']) ? 'N/A' : $data['value'];
-        LoggerUtils::getAppLogger()->debug('final value is: '.$propertyValue);
+        LoggerUtils::getAppLogger()->debug('final value is: ' . $propertyValue);
     }
 
     if ($personProperty) {

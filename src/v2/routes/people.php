@@ -25,12 +25,12 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
     ];
 
     if ($request->getQueryParam('EmailsError')) {
-        $errorArgs = ['sGlobalMessage' => gettext('Error sending email(s)').' - '.gettext('Please check logs for more information'), 'sGlobalMessageClass' => 'danger'];
+        $errorArgs = ['sGlobalMessage' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'), 'sGlobalMessageClass' => 'danger'];
         $pageArgs = array_merge($pageArgs, $errorArgs);
     }
 
     if ($request->getQueryParam('AllPDFsEmailed')) {
-        $headerArgs = ['sGlobalMessage' => gettext('PDFs successfully emailed ').$request->getQueryParam('AllPDFsEmailed').' '.gettext('families').'.',
+        $headerArgs = ['sGlobalMessage' => gettext('PDFs successfully emailed ') . $request->getQueryParam('AllPDFsEmailed') . ' ' . gettext('families') . '.',
             'sGlobalMessageClass'       => 'success'];
         $pageArgs = array_merge($pageArgs, $headerArgs);
     }
@@ -99,15 +99,15 @@ function listPeople(Request $request, Response $response, array $args)
         switch ($id) {
             case 0:
                 $filterByGender = gettext('Unassigned');
-                $sMode = $sMode.' - '.$filterByGender;
+                $sMode = $sMode . ' - ' . $filterByGender;
                 break;
             case 1:
                 $filterByGender = gettext('Male');
-                $sMode = $sMode.' - '.$filterByGender;
+                $sMode = $sMode . ' - ' . $filterByGender;
                 break;
             case 2:
                 $filterByGender = gettext('Female');
-                $sMode = $sMode.' - '.$filterByGender;
+                $sMode = $sMode . ' - ' . $filterByGender;
                 break;
         }
     }

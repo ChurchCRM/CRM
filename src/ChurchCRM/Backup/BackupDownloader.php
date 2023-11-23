@@ -10,8 +10,8 @@ class BackupDownloader
 {
     public static function downloadBackup($filename)
     {
-        $path = SystemURLs::getDocumentRoot()."/tmp_attach/ChurchCRMBackups/$filename";
-        LoggerUtils::getAppLogger()->info('Download requested for :'.$path);
+        $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
+        LoggerUtils::getAppLogger()->info('Download requested for :' . $path);
         if (file_exists($path)) {
             if ($fd = fopen($path, 'r')) {
                 $fsize = filesize($path);
@@ -20,28 +20,28 @@ class BackupDownloader
                 switch ($ext) {
                     case 'gz':
                         header('Content-type: application/x-gzip');
-                        header('Content-Disposition: attachment; filename="'.$path_parts['basename'].'"');
+                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
                         break;
                     case 'tar.gz':
                         header('Content-type: application/x-gzip');
-                        header('Content-Disposition: attachment; filename="'.$path_parts['basename'].'"');
+                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
                         break;
                     case 'sql':
                         header('Content-type: text/plain');
-                        header('Content-Disposition: attachment; filename="'.$path_parts['basename'].'"');
+                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
                         break;
                     case 'gpg':
                         header('Content-type: application/pgp-encrypted');
-                        header('Content-Disposition: attachment; filename="'.$path_parts['basename'].'"');
+                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
                         break;
                     case 'zip':
                         header('Content-type: application/zip');
-                        header('Content-Disposition: attachment; filename="'.$path_parts['basename'].'"');
+                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
                         break;
                         // add more headers for other content types here
                     default:
                         header('Content-type: application/octet-stream');
-                        header('Content-Disposition: filename="'.$path_parts['basename'].'"');
+                        header('Content-Disposition: filename="' . $path_parts['basename'] . '"');
                         break;
                 }
                 header("Content-length: $fsize");
@@ -54,10 +54,10 @@ class BackupDownloader
                 LoggerUtils::getAppLogger()->debug('Backup file contents sent');
             }
             fclose($fd);
-            FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot().'/tmp_attach/', true);
+            FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/tmp_attach/', true);
             LoggerUtils::getAppLogger()->debug('Removed backup file from server filesystem');
         } else {
-            $message = 'Requested download does not exist: '.$path;
+            $message = 'Requested download does not exist: ' . $path;
             LoggerUtils::getAppLogger()->error($message);
 
             throw new \Exception($message, 500);

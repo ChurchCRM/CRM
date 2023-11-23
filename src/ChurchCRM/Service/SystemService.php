@@ -11,13 +11,13 @@ use ChurchCRM\Utils\LoggerUtils;
 use PDO;
 use Propel\Runtime\Propel;
 
-require SystemURLs::getDocumentRoot().'/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
+require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
 class SystemService
 {
     public static function getInstalledVersion()
     {
-        $composerFile = file_get_contents(SystemURLs::getDocumentRoot().'/composer.json');
+        $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
         $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
         $version = $composerJson['version'];
 
@@ -69,7 +69,7 @@ class SystemService
 
             $unmetNames = array_map(fn ($o) => (string) $o->getName(), $unmet);
 
-            return 'Missing Prerequisites: '.json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
+            return 'Missing Prerequisites: ' . json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
         }
     }
 
@@ -97,8 +97,8 @@ class SystemService
             try {
                 if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {
                     // if there was no previous backup, or if the interval suggests we do a backup now.
-                    LoggerUtils::getAppLogger()->info('Starting a backup job.  Last backup run: '.SystemConfig::getValue('sLastBackupTimeStamp'));
-                    $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')).'-'.date(SystemConfig::getValue('sDateFilenameFormat'));
+                    LoggerUtils::getAppLogger()->info('Starting a backup job.  Last backup run: ' . SystemConfig::getValue('sLastBackupTimeStamp'));
+                    $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
                     $Backup = new BackupJob($BaseName, BackupType::FULL_BACKUP, SystemConfig::getValue('bBackupExtraneousImages'), false, '');
                     $Backup->execute();
                     $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
@@ -106,18 +106,18 @@ class SystemService
                     SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
                     LoggerUtils::getAppLogger()->info('Backup job successful');
                 } else {
-                    LoggerUtils::getAppLogger()->info('Not starting a backup job.  Last backup run: '.SystemConfig::getValue('sLastBackupTimeStamp').'.');
+                    LoggerUtils::getAppLogger()->info('Not starting a backup job.  Last backup run: ' . SystemConfig::getValue('sLastBackupTimeStamp') . '.');
                 }
             } catch (\Exception $exc) {
                 // an error in the auto-backup shouldn't prevent the page from loading...
-                LoggerUtils::getAppLogger()->warning('Failure executing backup job: '.$exc->getMessage());
+                LoggerUtils::getAppLogger()->warning('Failure executing backup job: ' . $exc->getMessage());
             }
         }
         if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
             if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'), SystemConfig::getValue('iIntegrityCheckInterval'))) {
                 // if there was no integrity check, or if the interval suggests we do one now.
                 LoggerUtils::getAppLogger()->info('Starting application integrity check');
-                $integrityCheckFile = SystemURLs::getDocumentRoot().'/integrityCheck.json';
+                $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
                 $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity, JSON_THROW_ON_ERROR));
                 $now = new \DateTime();  // update the LastBackupTimeStamp.
@@ -125,10 +125,10 @@ class SystemService
                 if ($appIntegrity['status'] === 'success') {
                     LoggerUtils::getAppLogger()->info('Application integrity check passed');
                 } else {
-                    LoggerUtils::getAppLogger()->warning('Application integrity check failed: '.$appIntegrity['message']);
+                    LoggerUtils::getAppLogger()->warning('Application integrity check failed: ' . $appIntegrity['message']);
                 }
             } else {
-                LoggerUtils::getAppLogger()->debug('Not starting application integrity check.  Last application integrity check run: '.SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
+                LoggerUtils::getAppLogger()->debug('Not starting application integrity check.  Last application integrity check run: ' . SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
             }
         }
         if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'), SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
@@ -178,6 +178,6 @@ class SystemService
         $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         $factor = floor((strlen($bytes) - 1) / 3);
 
-        return sprintf("%.{$decimals}f", $bytes / 1024 ** $factor).@$size[$factor];
+        return sprintf("%.{$decimals}f", $bytes / 1024 ** $factor) . @$size[$factor];
     }
 }

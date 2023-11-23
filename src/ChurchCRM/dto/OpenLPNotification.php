@@ -23,7 +23,7 @@ class OpenLPNotification
 
     private function getAuthorizationHeader()
     {
-        return base64_encode(SystemConfig::getValue('sOLPUserName').':'.SystemConfig::getValue('sOLPPassword'));
+        return base64_encode(SystemConfig::getValue('sOLPUserName') . ':' . SystemConfig::getValue('sOLPPassword'));
     }
 
     public function send()
@@ -40,11 +40,11 @@ class OpenLPNotification
             ],
         ];
         if (SystemConfig::getValue('sOLPUserName')) {
-            $headers['http']['header'] = 'Authorization: Basic '.$this->getAuthorizationHeader()."\r\n";
+            $headers['http']['header'] = 'Authorization: Basic ' . $this->getAuthorizationHeader() . "\r\n";
         }
         //return json_encode($headers);
         $request = ['request' => ['text' => $this->AlertText]];
-        $url = $this->OLPAddress.'/api/alert?data='.urlencode(json_encode($request));
+        $url = $this->OLPAddress . '/api/alert?data=' . urlencode(json_encode($request));
         $context = stream_context_create($headers);
         $response = file_get_contents($url, false, $context);
 

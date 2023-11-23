@@ -50,7 +50,7 @@ function getMailchimpEmailNotInCRM(Request $request, Response $response, array $
                 }
             }
         }
-        LoggerUtils::getAppLogger()->debug('MailChimp list '.$listId.' now has '.count($mailchimpListMembers).' members');
+        LoggerUtils::getAppLogger()->debug('MailChimp list ' . $listId . ' now has ' . count($mailchimpListMembers) . ' members');
 
         return $response->withJson(['id' => $list['id'], 'name' => $list['name'], 'members' => $mailchimpListMembers]);
     } else {
@@ -93,7 +93,7 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
                 }
             }
         }
-        LoggerUtils::getAppLogger()->debug('MailChimp list '.$listId.' now has '.count($mailchimpListMembers).' members');
+        LoggerUtils::getAppLogger()->debug('MailChimp list ' . $listId . ' now has ' . count($mailchimpListMembers) . ' members');
 
         return $response->withJson(['id' => $list['id'], 'name' => $list['name'], 'members' => $personsNotInMailchimp]);
     } else {

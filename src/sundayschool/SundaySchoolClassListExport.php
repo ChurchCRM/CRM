@@ -24,8 +24,8 @@ header('Pragma: no-cache');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Content-Description: File Transfer');
-header('Content-Type: text/csv;charset='.SystemConfig::getValue('sCSVExportCharset'));
-header('Content-Disposition: attachment; filename=SundaySchool-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
+header('Content-Type: text/csv;charset=' . SystemConfig::getValue('sCSVExportCharset'));
+header('Content-Disposition: attachment; filename=SundaySchool-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
 header('Content-Transfer-Encoding: binary');
 
 $delimiter = SystemConfig::getValue('sCSVExportDelimiter');
@@ -34,7 +34,7 @@ $out = fopen('php://output', 'w');
 
 //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
 if (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') {
-    fputs($out, $bom = (chr(0xEF).chr(0xBB).chr(0xBF)));
+    fputs($out, $bom = (chr(0xEF) . chr(0xBB) . chr(0xBF)));
 }
 
 fputcsv($out, [InputUtils::translateSpecialCharset('Class'),
@@ -126,7 +126,7 @@ foreach ($groups as $group) {
         $props = ' ';
         if ($lst_OptionName === 'Student' && !empty($assignedProperties)) {
             foreach ($assignedProperties as $property) {
-                $props .= $property->getProName().', ';
+                $props .= $property->getProName() . ', ';
             }
 
             $props = chop($props, ', ');
@@ -134,7 +134,7 @@ foreach ($groups as $group) {
 
         $birthDate = '';
         if ($birthYear != '' && !$birthDate && (!$member->getFlags() || $lst_OptionName === 'Student')) {
-            $publishDate = DateTime::createFromFormat('Y-m-d', $birthYear.'-'.$birthMonth.'-'.$birthDay);
+            $publishDate = DateTime::createFromFormat('Y-m-d', $birthYear . '-' . $birthMonth . '-' . $birthDay);
             $birthDate = $publishDate->format(SystemConfig::getValue('sDateFormatLong'));
         }
 
@@ -144,9 +144,9 @@ foreach ($groups as $group) {
             InputUtils::translateSpecialCharset($firstName),
             InputUtils::translateSpecialCharset($lastname),
             $birthDate, $mobilePhone, $homePhone,
-            InputUtils::translateSpecialCharset($Address1).' '.InputUtils::translateSpecialCharset($Address2).' '.InputUtils::translateSpecialCharset($city).' '.InputUtils::translateSpecialCharset($state).' '.$zip,
-            InputUtils::translateSpecialCharset($dadFirstName).' '.InputUtils::translateSpecialCharset($dadLastName), $dadCellPhone, $dadEmail,
-            InputUtils::translateSpecialCharset($momFirstName).' '.InputUtils::translateSpecialCharset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
+            InputUtils::translateSpecialCharset($Address1) . ' ' . InputUtils::translateSpecialCharset($Address2) . ' ' . InputUtils::translateSpecialCharset($city) . ' ' . InputUtils::translateSpecialCharset($state) . ' ' . $zip,
+            InputUtils::translateSpecialCharset($dadFirstName) . ' ' . InputUtils::translateSpecialCharset($dadLastName), $dadCellPhone, $dadEmail,
+            InputUtils::translateSpecialCharset($momFirstName) . ' ' . InputUtils::translateSpecialCharset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
     }
 }
 

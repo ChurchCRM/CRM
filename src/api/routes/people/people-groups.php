@@ -134,7 +134,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
             if ($groupRoleMembership->getPersonId() == $person->getId()) {
                 $groupRoleMembership->delete();
                 $note = new Note();
-                $note->setText(gettext('Deleted from group').': '.$group->getName());
+                $note->setText(gettext('Deleted from group') . ': ' . $group->getName());
                 $note->setType('group');
                 $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                 $note->setPerId($person->getId());
@@ -163,7 +163,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         $group->addPerson2group2roleP2g2r($p2g2r);
         $group->save();
         $note = new Note();
-        $note->setText(gettext('Added to group').': '.$group->getName());
+        $note->setText(gettext('Added to group') . ': ' . $group->getName());
         $note->setType('group');
         $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
         $note->setPerId($person->getId());

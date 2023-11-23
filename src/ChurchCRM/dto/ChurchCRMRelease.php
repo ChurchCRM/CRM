@@ -50,7 +50,7 @@ class ChurchCRMRelease
     public function __toString()
     {
         try {
-            return (string) $this->MAJOR.'.'.$this->MINOR.'.'.$this->PATCH;
+            return (string) $this->MAJOR . '.' . $this->MINOR . '.' . $this->PATCH;
         } catch (\Exception $exception) {
             return '';
         }
@@ -59,7 +59,7 @@ class ChurchCRMRelease
     public function getDownloadURL()
     {
         foreach ($this->rawRelease['assets'] as $asset) {
-            if ($asset['name'] == 'ChurchCRM-'.$this->rawRelease['name'].'.zip') {
+            if ($asset['name'] == 'ChurchCRM-' . $this->rawRelease['name'] . '.zip') {
                 $url = $asset['browser_download_url'];
             }
         }

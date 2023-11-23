@@ -19,7 +19,7 @@ class ResetPasswordEmail extends BaseUserEmail
 
     protected function buildMessageBody()
     {
-        return gettext('You ChurchCRM updated password has been changed').':';
+        return gettext('You ChurchCRM updated password has been changed') . ':';
     }
 
     public function getTokens()

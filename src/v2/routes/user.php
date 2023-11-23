@@ -43,7 +43,7 @@ function viewUser(Request $request, Response $response, array $args)
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return $response->withRedirect(SystemURLs::getRootPath().'/v2/admin/user/not-found?id='.$args['id']);
+        return $response->withRedirect(SystemURLs::getRootPath() . '/v2/admin/user/not-found?id=' . $args['id']);
     }
 
     $pageArgs = [
@@ -69,13 +69,13 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return $response->withRedirect(SystemURLs::getRootPath().'/v2/admin/user/not-found?id='.$args['id']);
+        return $response->withRedirect(SystemURLs::getRootPath() . '/v2/admin/user/not-found?id=' . $args['id']);
     }
 
     if ($user->equals($curUser)) {
         // Don't allow the current user (if admin) to set their new password
         // make the user go through the "self-service" password change procedure
-        return $response->withRedirect(SystemURLs::getRootPath().'/v2/user/current/changepassword');
+        return $response->withRedirect(SystemURLs::getRootPath() . '/v2/user/current/changepassword');
     }
 
     $pageArgs = [
@@ -91,7 +91,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
 
             return $renderer->render($response, 'common/success-changepassword.php', $pageArgs);
         } catch (PasswordChangeException $pwChangeExc) {
-            $pageArgs['s'.$pwChangeExc->AffectedPassword.'PasswordError'] = $pwChangeExc->getMessage();
+            $pageArgs['s' . $pwChangeExc->AffectedPassword . 'PasswordError'] = $pwChangeExc->getMessage();
         }
     }
 

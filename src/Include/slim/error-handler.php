@@ -28,10 +28,10 @@ $container['errorHandler'] = fn ($container) => function ($request, $response, $
 $container['notFoundHandler'] = fn ($container) => fn ($request, $response) => $container['response']
     ->withStatus(404)
     ->withHeader('Content-Type', 'text/html')
-    ->write("Can't find route for ".$request->getMethod().' on '.$request->getUri());
+    ->write("Can't find route for " . $request->getMethod() . ' on ' . $request->getUri());
 
 $container['notAllowedHandler'] = fn ($container) => fn ($request, $response, $methods) => $container['response']
     ->withStatus(405)
     ->withHeader('Allow', implode(', ', $methods))
     ->withHeader('Content-type', 'text/html')
-    ->write('Method must be one of: '.implode(', ', $methods));
+    ->write('Method must be one of: ' . implode(', ', $methods));

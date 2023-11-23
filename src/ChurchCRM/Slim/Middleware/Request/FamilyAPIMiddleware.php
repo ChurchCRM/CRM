@@ -12,12 +12,12 @@ class FamilyAPIMiddleware
     {
         $familyId = $request->getAttribute('route')->getArgument('familyId');
         if (empty(trim($familyId))) {
-            return $response->withStatus(412, gettext('Missing').' FamilyId');
+            return $response->withStatus(412, gettext('Missing') . ' FamilyId');
         }
 
         $family = FamilyQuery::create()->findPk($familyId);
         if (empty($family)) {
-            return $response->withStatus(412, 'FamilyId: '.$familyId.' '.gettext('not found'));
+            return $response->withStatus(412, 'FamilyId: ' . $familyId . ' ' . gettext('not found'));
         }
 
         $request = $request->withAttribute('family', $family);
