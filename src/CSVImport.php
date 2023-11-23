@@ -8,7 +8,7 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
-  *
+ *
  ******************************************************************************/
 
 namespace ChurchCRM;
@@ -172,36 +172,33 @@ if (isset($_POST['UploadCSV'])) {
 
         fclose($pFile);
 
-        $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
+        $sSQL = 'SELECT custom_Field, custom_Name, type_ID FROM person_custom_master ORDER BY custom_Order';
         $rsCustomFields = RunQuery($sSQL);
 
         $sPerCustomFieldList = '';
         while ($aRow = mysqli_fetch_array($rsCustomFields)) {
-            extract($aRow);
             // No easy way to import person-from-group or custom-list types
-            if ($type_ID != 9 && $type_ID != 12) {
-                $sPerCustomFieldList .= '<option value="' . $custom_Field . '">' . $custom_Name . "</option>\n";
+            if (!in_array($aRow['type_ID'], [9, 12])) {
+                $sPerCustomFieldList .= '<option value="' . $aRow['custom_Field'] . '">' . $aRow['custom_Name'] . "</option>";
             }
         }
 
-        $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
+        $sSQL = 'SELECT fam_custom_Field, fam_custom_Name, type_ID FROM family_custom_master ORDER BY fam_custom_Order';
         $rsfamCustomFields = RunQuery($sSQL);
 
         $sFamCustomFieldList = '';
         while ($aRow = mysqli_fetch_array($rsfamCustomFields)) {
-            extract($aRow);
-            if ($type_ID != 9 && $type_ID != 12) {
-                $sFamCustomFieldList .= '<option value="f' . $fam_custom_Field . '">' . $fam_custom_Name . "</option>\n";
+            if (!in_array($aRow['type_ID'], [9, 12])) {
+                $sFamCustomFieldList .= '<option value="f' . $aRow['fam_custom_Field'] . '">' . $aRow['fam_custom_Name'] . "</option>";
             }
         }
 
         // Get Field Security List Matrix
-        $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
+        $sSQL = 'SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
         $rsSecurityGrp = RunQuery($sSQL);
 
         while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-            extract($aRow);
-            $aSecurityType[$lst_OptionID] = $lst_OptionName;
+            $aSecurityType[$aRow['lst_OptionID']] = $aRow['lst_OptionName'];
         }
 
         // add select boxes for import destination mapping
@@ -267,7 +264,7 @@ if (isset($_POST['UploadCSV'])) {
         require 'Include/CountryDropDown.php';
         echo gettext('Default country if none specified otherwise');
 
-        $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
+        $sSQL = 'SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
         $rsClassifications = RunQuery($sSQL); ?>
         <BR><BR>
         <select name="Classification">
@@ -276,9 +273,8 @@ if (isset($_POST['UploadCSV'])) {
 
             <?php
             while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                extract($aRow);
-                echo '<option value="' . $lst_OptionID . '"';
-                echo '>' . $lst_OptionName . '&nbsp;';
+                echo '<option value="' . $aRow['lst_OptionID'] . '"';
+                echo '>' . $aRow['lst_OptionName'] . '&nbsp;';
             } ?>
         </select>
         <?= gettext('Classification') ?>
@@ -342,20 +338,18 @@ if (isset($_POST['DoImport'])) {
         }
 
         if ($bHasCustom) {
-            $sSQL = 'SELECT * FROM person_custom_master';
+            $sSQL = 'SELECT custom_Field, type_ID FROM person_custom_master';
             $rsCustomFields = RunQuery($sSQL);
 
             while ($aRow = mysqli_fetch_array($rsCustomFields)) {
-                extract($aRow);
-                $aCustomTypes[$custom_Field] = $type_ID;
+                $aCustomTypes[$aRow['custom_Field']] = $aRow['type_ID'];
             }
 
-            $sSQL = 'SELECT * FROM family_custom_master';
+            $sSQL = 'SELECT fam_custom_Field, type_ID FROM family_custom_master';
             $rsfamCustomFields = RunQuery($sSQL);
 
             while ($aRow = mysqli_fetch_array($rsfamCustomFields)) {
-                extract($aRow);
-                $afamCustomTypes[$fam_custom_Field] = $type_ID;
+                $afamCustomTypes[$aRow['fam_custom_Field']] = $aRow['type_ID'];
             }
         }
 
@@ -589,7 +583,8 @@ if (isset($_POST['DoImport'])) {
             if (isset($_POST['MakeFamilyRecords'])) {
                 $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
                 $rsPersonID = RunQuery($sSQL);
-                extract(mysqli_fetch_array($rsPersonID));
+                $aRow = mysqli_fetch_array($rsPersonID);
+                $iPersonID = $aRow['iPersonID'];
                 $sSQL = 'SELECT * FROM person_per WHERE per_ID = ' . $iPersonID;
                 $rsNewPerson = RunQuery($sSQL);
                 extract(mysqli_fetch_array($rsNewPerson));
@@ -616,8 +611,8 @@ if (isset($_POST['DoImport'])) {
                 $rsExistingFamily = RunQuery($sSQL);
                 $famid = 0;
                 if (mysqli_num_rows($rsExistingFamily) > 0) {
-                    extract(mysqli_fetch_array($rsExistingFamily));
-                    $famid = $fam_ID;
+                    $aRow = mysqli_fetch_array($rsExistingFamily);
+                    $famid = $aRow['fam_ID'];
                     if (array_key_exists($famid, $Families)) {
                         $Families[$famid]->addMember(
                             $per_ID,
@@ -736,7 +731,8 @@ if (isset($_POST['DoImport'])) {
             // Get the last inserted person ID and insert a dummy row in the person_custom table
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
             $rsPersonID = RunQuery($sSQL);
-            extract(mysqli_fetch_array($rsPersonID));
+            $aRow = mysqli_fetch_array($rsPersonID);
+            $iPersonID = $aRow['iPersonID'];
             $note = new Note();
             $note->setPerId($iPersonID);
             $note->setText(gettext('Imported'));
