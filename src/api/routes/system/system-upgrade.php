@@ -11,13 +11,13 @@ $app->group('/systemupgrade', function (RouteCollectorProxy $group) {
     $group->get('/downloadlatestrelease', function ($request, Response $response, $args) {
         $upgradeFile = ChurchCRMReleaseManager::downloadLatestRelease();
 
-        return SlimUtils::renderJSON($response,$upgradeFile);
+        return SlimUtils::renderJSON($response, $upgradeFile);
     });
 
     $group->post('/doupgrade', function (Request $request, Response $response, array $args) {
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $upgradeResult = ChurchCRMReleaseManager::doUpgrade($input->fullPath, $input->sha1);
 
-        return SlimUtils::renderJSON($response,$upgradeResult);
+        return SlimUtils::renderJSON($response, $upgradeResult);
     });
 })->add(AdminRoleAuthMiddleware::class);

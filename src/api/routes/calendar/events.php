@@ -114,7 +114,7 @@ function getEventAudience($request, Response $response, $args)
 
 function newEvent(Request $request, Response $response, array $args)
 {
-    $input = (object) $request->getParsedBody();
+    $input = (object)$request->getParsedBody();
 
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::Create()
@@ -156,8 +156,8 @@ function updateEvent(Request $request, Response $response, array $args)
     $Event->fromArray($input);
     $Event->setId($id);
     $PinnedCalendars = CalendarQuery::Create()
-            ->filterById($input['PinnedCalendars'], Criteria::IN)
-            ->find();
+        ->filterById($input['PinnedCalendars'], Criteria::IN)
+        ->find();
     $Event->setCalendars($PinnedCalendars);
 
     $Event->save();
@@ -165,7 +165,7 @@ function updateEvent(Request $request, Response $response, array $args)
 
 function setEventTime($request, Response $response, $args)
 {
-    $input = (object) $request->getParsedBody();
+    $input = (object)$request->getParsedBody();
 
     $event = EventQuery::Create()
         ->findOneById($args['id']);
@@ -212,7 +212,7 @@ function unusedSetEventAttendance()
 
 function deleteEvent(Request $request, Response $response, array $args)
 {
-    $input = (object) $request->getParsedBody();
+    $input = (object)$request->getParsedBody();
 
     $event = EventQuery::Create()
         ->findOneById($args['id']);

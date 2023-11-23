@@ -33,7 +33,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
             array_push($return, $values);
         }
 
-        return SlimUtils::renderJSON($response,$return);
+        return SlimUtils::renderJSON($response, $return);
     });
 
     $group->get('/groupsInCart', function () {
@@ -98,7 +98,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
 
 $app->group('/groups', function (RouteCollectorProxy $group) {
     $group->post('/', function (Request $request, Response $response, array $args) {
-        $groupSettings = (object) $request->getParsedBody();
+        $groupSettings = (object)$request->getParsedBody();
         $group = new Group();
         if ($groupSettings->isSundaySchool) {
             $group->makeSundaySchool();
@@ -110,7 +110,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
 
     $group->post('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args) {
         $groupID = $args['groupID'];
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
         $group->setName($input->groupName);
         $group->setType($input->groupType);
@@ -149,7 +149,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $group = GroupQuery::create()->findPk($groupID);
         $p2g2r = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($groupID)
@@ -189,7 +189,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
     $group->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
         if (isset($input->groupRoleName)) {
             $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();

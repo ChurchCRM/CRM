@@ -19,18 +19,18 @@ function genAPIKey(Request $request, Response $response, array $args)
     $user->save();
     $user->createTimeLineNote('api-key-regen');
 
-    return SlimUtils::renderJSON($response,['apiKey' => $user->getApiKey()]);
+    return SlimUtils::renderJSON($response, ['apiKey' => $user->getApiKey()]);
 }
 
 function updateUserConfig(Request $request, Response $response, array $args)
 {
     $user = $request->getAttribute('user');
     $userConfigName = $args['key'];
-    $parsedBody = (object) $request->getParsedBody();
+    $parsedBody = (object)$request->getParsedBody();
     $newValue = $parsedBody->value;
     $user->setUserConfigString($userConfigName, $newValue);
     $user->save();
     if ($user->getUserConfigString($userConfigName) == $newValue) {
-        return SlimUtils::renderJSON($response,[$userConfigName => $newValue]);
+        return SlimUtils::renderJSON($response, [$userConfigName => $newValue]);
     }
 }

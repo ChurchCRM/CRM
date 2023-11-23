@@ -51,7 +51,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
 
     $group->get(
         '/numbers',
-        fn (Request $request, Response $response, array $args) => SlimUtils::renderJSON($response,MenuEventsCount::getNumberBirthDates())
+        fn(Request $request, Response $response, array $args) => SlimUtils::renderJSON($response, MenuEventsCount::getNumberBirthDates())
     );
 
     $group->get('/self-register', function (Request $request, Response $response, array $args) {
@@ -97,8 +97,8 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
             array_push($families, ['id' => $family->getId(), 'name' => $family->getName()]);
         }
         array_push($emails, [
-            'email'    => $email,
-            'people'   => $people,
+            'email' => $email,
+            'people' => $people,
             'families' => $families,
         ]);
     }
@@ -109,11 +109,11 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
 function getLatestPersons(Request $request, Response $response, array $args)
 {
     $people = PersonQuery::create()
-    ->leftJoinWithFamily()
-    ->where('Family.DateDeactivated is null')
-    ->orderByDateEntered('DESC')
-    ->limit(10)
-    ->find();
+        ->leftJoinWithFamily()
+        ->where('Family.DateDeactivated is null')
+        ->orderByDateEntered('DESC')
+        ->limit(10)
+        ->find();
 
     return SlimUtils::renderJSON($response, buildFormattedPersonList($people, true, false, false));
 }

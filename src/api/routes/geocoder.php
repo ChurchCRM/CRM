@@ -13,9 +13,9 @@ $app->group('/geocoder', function (RouteCollectorProxy $group) {
 /**
  * A method that return GeoLocation based on an address.
  *
- * @param \Slim\Http\Request  $p_request  The request.
+ * @param \Slim\Http\Request $p_request The request.
  * @param \Slim\Http\Response $p_response The response.
- * @param array               $p_args     Arguments
+ * @param array $p_args Arguments
  *
  * @return \Slim\Http\Response The augmented response.
  */

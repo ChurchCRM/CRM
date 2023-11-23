@@ -22,5 +22,5 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
         'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
 
-    return SlimUtils::renderJSON($response,['issueBody' => $issueDescription]);
+    return SlimUtils::renderJSON($response, ['issueBody' => $issueDescription]);
 });

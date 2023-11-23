@@ -162,7 +162,7 @@ function DeleteAccessToken($request, Response $response, $args)
         return $response->withStatus(400, gettext('Invalid request: Missing calendar id'));
     }
     $Calendar = CalendarQuery::create()
-      ->findOneById($args['id']);
+        ->findOneById($args['id']);
     if (!$Calendar) {
         return $response->withStatus(404, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
     }
@@ -174,7 +174,7 @@ function DeleteAccessToken($request, Response $response, $args)
 
 function NewCalendar(Request $request, Response $response, $args)
 {
-    $input = (object) $request->getParsedBody();
+    $input = (object)$request->getParsedBody();
     $Calendar = new Calendar();
     $Calendar->setName($input->Name);
     $Calendar->setForegroundColor($input->ForegroundColor);

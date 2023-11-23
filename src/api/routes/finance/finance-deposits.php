@@ -12,7 +12,7 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/deposits', function (RouteCollectorProxy $group) {
     $group->post('', function (Request $request, Response $response, array $args) {
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $deposit = new Deposit();
         $deposit->setType($input->depositType);
         $deposit->setComment($input->depositComment);
@@ -40,7 +40,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group) {
 
     $group->post('/{id:[0-9]+}', function (Request $request, Response $response, array $args) {
         $id = $args['id'];
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $appDeposit = DepositQuery::create()->findOneById($id);
         $appDeposit->setType($input->depositType);
         $appDeposit->setComment($input->depositComment);

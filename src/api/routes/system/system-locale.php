@@ -17,9 +17,9 @@ $app->group('/locale', function (RouteCollectorProxy $group) {
 /**
  * A method that gets locale terms from the db for po generation.
  *
- * @param \Slim\Http\Request  $p_request  The request.
+ * @param \Slim\Http\Request $p_request The request.
  * @param \Slim\Http\Response $p_response The response.
- * @param array               $p_args     Arguments
+ * @param array $p_args Arguments
  *
  * @return \Slim\Http\Response The augmented response.
  */
@@ -49,5 +49,5 @@ function getDBTerms(Request $request, Response $response, array $p_args)
         array_push($terms, $term['qrp_Description']);
     }
 
-    return SlimUtils::renderJSON($response,['terms' => $terms]);
+    return SlimUtils::renderJSON($response, ['terms' => $terms]);
 }

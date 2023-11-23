@@ -88,8 +88,8 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
                         array_push($emails, $person->getWorkEmail());
                     }
                     array_push($personsNotInMailchimp, ['id' => $person->getId(),
-                        'name'                               => $person->getFullName(),
-                        'emails'                             => $emails,
+                        'name' => $person->getFullName(),
+                        'emails' => $emails,
                     ]);
                 }
             }
@@ -109,7 +109,7 @@ function getFamilyStatus(Request $request, Response $response, array $args)
     $emailToLists = [];
     if (!empty($family->getEmail())) {
         array_push($emailToLists, ['email' => $family->getEmail(), 'emailMD5' => md5($family->getEmail()),
-            'list'                         => $mailchimpService->isEmailInMailChimp($family->getEmail())]);
+            'list' => $mailchimpService->isEmailInMailChimp($family->getEmail())]);
     }
     $response->getBody()->write(json_encode($emailToLists));
 
@@ -123,11 +123,11 @@ function getPersonStatus(Request $request, Response $response, array $args)
     $emailToLists = [];
     if (!empty($person->getEmail())) {
         array_push($emailToLists, ['email' => $person->getEmail(), 'emailMD5' => md5($person->getEmail()),
-            'list'                         => $mailchimpService->isEmailInMailChimp($person->getEmail())]);
+            'list' => $mailchimpService->isEmailInMailChimp($person->getEmail())]);
     }
     if (!empty($person->getWorkEmail())) {
         array_push($emailToLists, ['email' => $person->getWorkEmail(), 'emailMD5' => md5($person->getWorkEmail()),
-            'list'                         => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())]);
+            'list' => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())]);
     }
     $response->getBody()->write(json_encode($emailToLists));
 

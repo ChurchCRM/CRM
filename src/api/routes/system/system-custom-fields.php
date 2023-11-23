@@ -15,9 +15,9 @@ $app->group('/system/custom-fields', function (RouteCollectorProxy $group) {
 /**
  * A method that does the work to handle getting an existing person custom fields by type.
  *
- * @param \Slim\Http\Request  $p_request  The request.
+ * @param \Slim\Http\Request $p_request The request.
  * @param \Slim\Http\Response $p_response The response.
- * @param array               $p_args     Arguments
+ * @param array $p_args Arguments
  *
  * @return \Slim\Http\Response The augmented response.
  */
@@ -34,5 +34,5 @@ function getPersonFieldsByType(Request $request, Response $response, array $p_ar
         array_push($keyValue, ['id' => $field->getId(), 'value' => $field->getName()]);
     }
 
-    return SlimUtils::renderJSON($response,$keyValue);
+    return SlimUtils::renderJSON($response, $keyValue);
 }
