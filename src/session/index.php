@@ -12,19 +12,19 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Slim\Views\PhpRenderer;
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 $app->setBasePath('/session');
 
 
-require __DIR__.'/../Include/slim/error-handler.php';
+require __DIR__ . '/../Include/slim/error-handler.php';
 
 $app->addRoutingMiddleware();
 $app->add(new VersionMiddleware());
 $container = $app->getContainer();
 
-require __DIR__.'/routes/password-reset.php';
+require __DIR__ . '/routes/password-reset.php';
 
 $app->get('/begin', 'beginSession');
 $app->post('/begin', 'beginSession');
