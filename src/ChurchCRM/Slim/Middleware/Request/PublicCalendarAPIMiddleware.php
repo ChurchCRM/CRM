@@ -7,21 +7,24 @@ use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use DateTime;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Psr\Http\Message\ResponseInterface as Response;
+use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 class PublicCalendarAPIMiddleware
 {
-    public function __invoke(Request $request, Response $response, callable $next)
+    public function __invoke(Request $request, RequestHandler $handler): Response
     {
+        $response = new Response();
         if (!SystemConfig::getBooleanValue('bEnableExternalCalendarAPI')) {
             return $response->withStatus(403, gettext('External Calendar API is disabled'));
         }
 
-        $CAT = $request->getAttribute('route')->getArgument('CalendarAccessToken');
+        $CAT = SlimUtils::getRouteArgument($request,'CalendarAccessToken');
         if (empty(trim($CAT))) {
             return SlimUtils::renderJSON($response, ['message' => gettext('Missing calendar access token')], 400);
         }
@@ -37,7 +40,7 @@ class PublicCalendarAPIMiddleware
         $events = $this->getEvents($request, $calendar);
         $request = $request->withAttribute('events', $events);
 
-        return $next($request, $response);
+        return $handler->handle($request);
     }
 
     private function getEvents(Request $request, Calendar $calendar)

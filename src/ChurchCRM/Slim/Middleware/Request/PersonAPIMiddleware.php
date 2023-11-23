@@ -3,14 +3,17 @@
 namespace ChurchCRM\Slim\Middleware\Request;
 
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use Psr\Http\Message\ResponseInterface as Response;
+use ChurchCRM\Slim\Request\SlimUtils;
+use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 class PersonAPIMiddleware
 {
-    public function __invoke(Request $request, Response $response, callable $next)
+    public function __invoke(Request $request, RequestHandler $handler): Response
     {
-        $personId = $request->getAttribute('route')->getArgument('personId');
+        $response = new Response();
+        $personId = SlimUtils::getRouteArgument($request,'personId');
         if (empty(trim($personId))) {
             return $response->withStatus(412, gettext('Missing') . ' PersonId');
         }
@@ -22,6 +25,6 @@ class PersonAPIMiddleware
 
         $request = $request->withAttribute('person', $person);
 
-        return $next($request, $response);
+        return $handler->handle($request);
     }
 }

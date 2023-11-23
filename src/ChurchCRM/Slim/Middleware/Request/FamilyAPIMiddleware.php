@@ -3,14 +3,17 @@
 namespace ChurchCRM\Slim\Middleware\Request;
 
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use Psr\Http\Message\ResponseInterface as Response;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
+use Laminas\Diactoros\Response;
 
 class FamilyAPIMiddleware
 {
-    public function __invoke(Request $request, Response $response, callable $next)
+    public function __invoke(Request $request, RequestHandler $handler): Response
     {
-        $familyId = $request->getAttribute('route')->getArgument('familyId');
+        $response = new Response();
+        $familyId = SlimUtils::getRouteArgument($request,'familyId');
         if (empty(trim($familyId))) {
             return $response->withStatus(412, gettext('Missing') . ' FamilyId');
         }
@@ -22,6 +25,6 @@ class FamilyAPIMiddleware
 
         $request = $request->withAttribute('family', $family);
 
-        return $next($request, $response);
+        return $handler->handle($request);
     }
 }
