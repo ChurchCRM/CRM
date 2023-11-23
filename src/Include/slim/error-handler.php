@@ -2,7 +2,7 @@
 
 use ChurchCRM\Utils\LoggerUtils;
 
-error_reporting(E_ALL);
+error_reporting(E_ERROR);
 ini_set('display_errors', true);
 ini_set('log_errors', true);
 ini_set('error_log', LoggerUtils::buildLogFilePath('slim'));
