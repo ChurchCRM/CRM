@@ -6,7 +6,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Slim\Request\JsonResponse;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Propel;
@@ -46,7 +46,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
             array_push($return, $values);
         }
 
-        return JsonResponse::render($response, $return);
+        return SlimUtils::renderJSON($response, $return);
     });
 
     $group->get(
@@ -61,7 +61,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
             ->limit(100)
             ->find();
 
-        return JsonResponse::render($response, ['people' => $people->toArray()]);
+        return SlimUtils::renderJSON($response, ['people' => $people->toArray()]);
     });
 });
 
@@ -69,7 +69,7 @@ function getAllRolesAPI(Request $request, Response $response, array $args)
 {
     $roles = ListOptionQuery::create()->getFamilyRoles();
 
-    return JsonResponse::render($response, $roles->toArray());
+    return SlimUtils::renderJSON($response, $roles->toArray());
 }
 
 /**
@@ -103,7 +103,7 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
         ]);
     }
 
-    return JsonResponse::render($response, ['emails' => $emails]);
+    return SlimUtils::renderJSON($response, ['emails' => $emails]);
 }
 
 function getLatestPersons(Request $request, Response $response, array $args)
@@ -115,7 +115,7 @@ function getLatestPersons(Request $request, Response $response, array $args)
     ->limit(10)
     ->find();
 
-    return JsonResponse::render($response, buildFormattedPersonList($people, true, false, false));
+    return SlimUtils::renderJSON($response, buildFormattedPersonList($people, true, false, false));
 }
 
 function getUpdatedPersons(Request $request, Response $response, array $args)
@@ -127,7 +127,7 @@ function getUpdatedPersons(Request $request, Response $response, array $args)
         ->limit(10)
         ->find();
 
-    return JsonResponse::render($response, buildFormattedPersonList($people, false, true, false));
+    return SlimUtils::renderJSON($response, buildFormattedPersonList($people, false, true, false));
 }
 
 function getPersonsWithBirthdays(Request $request, Response $response, array $args)
@@ -137,7 +137,7 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
         ->filterByBirthDay(date('d'))
         ->find();
 
-    return JsonResponse::render($response, buildFormattedPersonList($people, false, false, true));
+    return SlimUtils::renderJSON($response, buildFormattedPersonList($people, false, false, true));
 }
 
 function buildFormattedPersonList(Collection $people, bool $created, bool $edited, bool $birthday)

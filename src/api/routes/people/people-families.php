@@ -11,7 +11,7 @@ use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
-use ChurchCRM\Slim\Request\JsonResponse;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -137,7 +137,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             $note->save();
         }
 
-        return JsonResponse::render($response, ['success' => true]);
+        return SlimUtils::renderJSON($response, ['success' => true]);
     });
 });
 
@@ -151,7 +151,7 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
         ->orderByWeddingdate('DESC')
         ->find();
 
-    return JsonResponse::render($response, buildFormattedFamilies($families, false, false, true));
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families, false, false, true));
 }
 function getLatestFamilies(Request $request, Response $response, array $p_args)
 {
@@ -161,7 +161,7 @@ function getLatestFamilies(Request $request, Response $response, array $p_args)
         ->limit(10)
         ->find();
 
-    return JsonResponse::render($response, buildFormattedFamilies($families, true, false, false));
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families, true, false, false));
 }
 
 function getUpdatedFamilies(Request $request, Response $response, array $p_args)
@@ -174,7 +174,7 @@ function getUpdatedFamilies(Request $request, Response $response, array $p_args)
 
     $formattedList = buildFormattedFamilies($families, false, true, false);
 
-    return JsonResponse::render($response, $formattedList);
+    return SlimUtils::renderJSON($response, $formattedList);
 }
 
 function buildFormattedFamilies($families, bool $created, bool $edited, bool $wedding): array

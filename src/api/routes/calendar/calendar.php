@@ -6,7 +6,7 @@ use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
-use ChurchCRM\Slim\Request\JsonResponse;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\Collection\ObjectCollection;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -60,7 +60,7 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
     if ($Calendar) {
         $event = $Calendar->getEventById($args['eventid']);
 
-        return JsonResponse::render($response, $event);
+        return SlimUtils::renderJSON($response, $event);
     }
 }
 
@@ -77,7 +77,7 @@ function getSystemCalendarFullCalendarEvents($request, Response $response, $args
         return $response->withStatus(404);
     }
 
-    return JsonResponse::render($response, EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar)));
+    return SlimUtils::renderJSON($response, EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar)));
 }
 
 function getUserCalendars(Request $request, Response $response, array $args)
@@ -102,7 +102,7 @@ function getUserCalendarEvents(Request $request, Response $response, array $p_ar
             ->filterByCalendar($Calendar)
             ->find();
         if ($Events) {
-            return JsonResponse::render($response, $Events);
+            return SlimUtils::renderJSON($response, $Events);
         }
     }
 }
@@ -126,7 +126,7 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
         return $response->withStatus(404);
     }
 
-    return JsonResponse::render($response, EventsObjectCollectionToFullCalendar($Events, $calendar));
+    return SlimUtils::renderJSON($response, EventsObjectCollectionToFullCalendar($Events, $calendar));
 }
 
 function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar $calendar): array
@@ -153,7 +153,7 @@ function NewAccessToken($request, Response $response, $args)
     $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
     $Calendar->save();
 
-    return JsonResponse::render($response, $Calendar);
+    return SlimUtils::renderJSON($response, $Calendar);
 }
 
 function DeleteAccessToken($request, Response $response, $args)
@@ -169,7 +169,7 @@ function DeleteAccessToken($request, Response $response, $args)
     $Calendar->setAccessToken(null);
     $Calendar->save();
 
-    return JsonResponse::render($response, $Calendar);
+    return SlimUtils::renderJSON($response, $Calendar);
 }
 
 function NewCalendar(Request $request, Response $response, $args)
@@ -181,7 +181,7 @@ function NewCalendar(Request $request, Response $response, $args)
     $Calendar->setBackgroundColor($input->BackgroundColor);
     $Calendar->save();
 
-    return JsonResponse::render($response, $Calendar);
+    return SlimUtils::renderJSON($response, $Calendar);
 }
 
 function deleteUserCalendar(Request $request, Response $response, $args)
@@ -196,5 +196,5 @@ function deleteUserCalendar(Request $request, Response $response, $args)
     }
     $Calendar->delete();
 
-    return JsonResponse::renderSuccess($response);
+    return SlimUtils::renderSuccessJSON($response);
 }

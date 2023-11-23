@@ -5,7 +5,7 @@ use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
-use ChurchCRM\Slim\Request\JsonResponse;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -26,7 +26,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group) {
             ->filterByDate(['min' => date('Y-m-d', strtotime('-90 days'))])
             ->find();
 
-        return JsonResponse::render($response, $list->toArray());
+        return SlimUtils::renderJSON($response, $list->toArray());
     });
 
     $group->get('', function (Request $request, Response $response, array $args) {
