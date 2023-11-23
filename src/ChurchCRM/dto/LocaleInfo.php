@@ -19,7 +19,7 @@ class LocaleInfo
         if (!empty($userLocale)) {
             $this->locale = $userLocale->getValue();
         }
-        $localesFile = file_get_contents(SystemURLs::getDocumentRoot().'/locale/locales.json');
+        $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json');
         $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
         foreach ($locales as $key => $value) {
             if ($value['locale'] == $this->locale) {
@@ -97,7 +97,7 @@ class LocaleInfo
         $localArray = [];
         array_push($localArray, $this->getLanguageCode());
         foreach ($utfList as $item) {
-            array_push($localArray, $this->getLanguageCode().$item);
+            array_push($localArray, $this->getLanguageCode() . $item);
         }
 
         return $localArray;

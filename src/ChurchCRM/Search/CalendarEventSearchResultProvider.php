@@ -41,7 +41,7 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider
             if (!empty($events)) {
                 $id++;
                 foreach ($events as $event) {
-                    array_push($searchResults, new SearchResult('event-name-'.$id, $event->getTitle(), $event->getViewURI()));
+                    array_push($searchResults, new SearchResult('event-name-' . $id, $event->getTitle(), $event->getViewURI()));
                 }
             }
         } catch (\Exception $e) {

@@ -86,7 +86,7 @@ class PdfEnvelopeReport extends ChurchInfoReport
     {
         extract($aRow); // Get a row from family_fam
 
-        return $fam_Envelope.' '.$this->makeSalutation($fam_ID);
+        return $fam_Envelope . ' ' . $this->makeSalutation($fam_ID);
     }
 
     // Number of lines is only for the $text parameter
@@ -127,7 +127,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('EnvelopeAssignments-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
+    $pdf->Output('EnvelopeAssignments-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

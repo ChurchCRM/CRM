@@ -44,7 +44,7 @@ class AuthenticationManager
         try {
             $currentUser = self::getAuthenticationProvider()->getCurrentUser();
             if (empty($currentUser)) {
-                throw new \Exception('No current user provided by current authentication provider: '.get_class(self::getAuthenticationProvider()));
+                throw new \Exception('No current user provided by current authentication provider: ' . get_class(self::getAuthenticationProvider()));
             }
 
             return $currentUser;
@@ -122,7 +122,7 @@ class AuthenticationManager
         $result = self::getAuthenticationProvider()->authenticate($AuthenticationRequest);
 
         if (null !== $result->nextStepURL) {
-            $logger->debug('Authentication requires additional step: '.$result->nextStepURL);
+            $logger->debug('Authentication requires additional step: ' . $result->nextStepURL);
             RedirectUtils::redirect($result->nextStepURL);
         }
 
@@ -130,7 +130,7 @@ class AuthenticationManager
             $redirectLocation = array_key_exists('location', $_SESSION) ? $_SESSION['location'] : 'Menu.php';
             NotificationService::updateNotifications();
             $logger->debug(
-                'Authentication Successful; redirecting to: '.$redirectLocation
+                'Authentication Successful; redirecting to: ' . $redirectLocation
             );
             RedirectUtils::redirect($redirectLocation);
         }
@@ -176,7 +176,7 @@ class AuthenticationManager
                 ]);
                 $loginUrl = self::getSessionBeginURL();
                 if (!str_contains(self::getSessionBeginURL(), $_SERVER['REQUEST_URI'])) {
-                    $loginUrl .= '?'.$queryParams;
+                    $loginUrl .= '?' . $queryParams;
                 }
                 RedirectUtils::redirect($loginUrl);
             } elseif (null !== $result->nextStepURL) {
@@ -197,7 +197,7 @@ class AuthenticationManager
 
     public static function getSessionBeginURL(): string
     {
-        return SystemURLs::getRootPath().'/session/begin';
+        return SystemURLs::getRootPath() . '/session/begin';
     }
 
     public static function getForgotPasswordURL(): string
@@ -207,6 +207,6 @@ class AuthenticationManager
         // this URL will need to be configuable by the system administrator
         // since they likely will not want users attempting to reset ChurchCRM passwords
         // but rather redirect users to some other password reset mechanism.
-        return SystemURLs::getRootPath().'/session/forgot-password/reset-request';
+        return SystemURLs::getRootPath() . '/session/forgot-password/reset-request';
     }
 }

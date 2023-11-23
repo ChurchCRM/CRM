@@ -28,7 +28,7 @@ $app->group('/', function () use ($app) {
 
     $app->post('', function ($request, $response, $args) {
         $setupDate = $request->getParsedBody();
-        $template = file_get_contents(SystemURLs::getDocumentRoot().'/Include/Config.php.example');
+        $template = file_get_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php.example');
 
         $template = str_replace('||DB_SERVER_NAME||', $setupDate['DB_SERVER_NAME'], $template);
         $template = str_replace('||DB_SERVER_PORT||', $setupDate['DB_SERVER_PORT'], $template);
@@ -38,7 +38,7 @@ $app->group('/', function () use ($app) {
         $template = str_replace('||ROOT_PATH||', $setupDate['ROOT_PATH'], $template);
         $template = str_replace('||URL||', $setupDate['URL'], $template);
 
-        file_put_contents(SystemURLs::getDocumentRoot().'/Include/Config.php', $template);
+        file_put_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php', $template);
 
         return $response->withStatus(200);
     });

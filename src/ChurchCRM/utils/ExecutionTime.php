@@ -43,8 +43,8 @@ class ExecutionTime
 
     public function __toString()
     {
-        return 'This process used '.$this->runTime($this->endTime, $this->startTime, 'utime').
-        " ms for its computations\nIt spent ".$this->runTime($this->endTime, $this->startTime, 'stime').
+        return 'This process used ' . $this->runTime($this->endTime, $this->startTime, 'utime') .
+        " ms for its computations\nIt spent " . $this->runTime($this->endTime, $this->startTime, 'stime') .
         " ms in system calls\n";
     }
 }

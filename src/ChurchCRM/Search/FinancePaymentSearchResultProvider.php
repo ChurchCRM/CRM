@@ -44,7 +44,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
             $Payments = PledgeQuery::create()
             ->withColumn('SUM(Pledge.Amount)', 'GroupAmount')
             ->withColumn('CONCAT("#",Pledge.Id)', 'displayName')
-            ->withColumn('CONCAT("'.SystemURLs::getRootPath().'/DepositSlipEditor.php?DepositSlipID=",Pledge.DepId)', 'uri')
+            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Pledge.DepId)', 'uri')
             //->limit(SystemConfig::getValue("bSearchIncludePaymentsMax")) // this can't be limited here due to how Propel ORM doesn't handle HAVING clause nicely, so we do it in PHP
             ->groupByGroupKey()
             ->find();
@@ -55,7 +55,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
                     // I can't seem to get the SQL HAVING clause to work through Propel ORM to use
                     // both MIN and MAX value.  Just filter it in PHP
                     if ($Payment->getVirtualColumn('GroupAmount') >= $min && $Payment->getVirtualColumn('GroupAmount') <= $max) {
-                        array_push($searchResults, new SearchResult('finance-payment-'.$id, '$'.$Payment->getVirtualColumn('GroupAmount').' Payment on Deposit '.$Payment->getDepid(), $Payment->getVirtualColumn('uri')));
+                        array_push($searchResults, new SearchResult('finance-payment-' . $id, '$' . $Payment->getVirtualColumn('GroupAmount') . ' Payment on Deposit ' . $Payment->getDepid(), $Payment->getVirtualColumn('uri')));
                     }
                 }
             }
@@ -75,7 +75,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
             $Payments = PledgeQuery::create()
             ->filterByCheckNo("$SearchQuery", Criteria::EQUAL)
             ->withColumn('CONCAT("#",Pledge.Id)', 'displayName')
-            ->withColumn('CONCAT("'.SystemURLs::getRootPath().'/DepositSlipEditor.php?DepositSlipID=",Pledge.DepId)', 'uri')
+            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Pledge.DepId)', 'uri')
             ->limit(SystemConfig::getValue('bSearchIncludePaymentsMax'))
             ->groupByGroupKey()
             ->find();
@@ -83,7 +83,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
             if (!empty($Payments)) {
                 $id++;
                 foreach ($Payments as $Payment) {
-                    array_push($searchResults, new SearchResult('finance-payment-'.$id, 'Check '.$Payment->getCheckNo().' on Deposit '.$Payment->getDepId(), $Payment->getVirtualColumn('uri')));
+                    array_push($searchResults, new SearchResult('finance-payment-' . $id, 'Check ' . $Payment->getCheckNo() . ' on Deposit ' . $Payment->getDepId(), $Payment->getVirtualColumn('uri')));
                 }
             }
         } catch (\Exception $e) {

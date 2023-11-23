@@ -32,10 +32,10 @@ class GeoUtils
                     $provider = new BingMaps($adapter, SystemConfig::getValue('sBingMapKey'));
                     break;
             }
-            $logger->debug('Using: Geo Provider -  '.$provider->getName());
+            $logger->debug('Using: Geo Provider -  ' . $provider->getName());
             $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
             $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
-            $logger->debug('We have '.$result->count().' results');
+            $logger->debug('We have ' . $result->count() . ' results');
             if (!empty($result)) {
                 $firstResult = $result->get(0);
                 $coordinates = $firstResult->getCoordinates();
@@ -43,7 +43,7 @@ class GeoUtils
                 $long = $coordinates->getLongitude();
             }
         } catch (\Exception $exception) {
-            $logger->warning('issue creating geoCoder '.$exception->getMessage());
+            $logger->warning('issue creating geoCoder ' . $exception->getMessage());
         }
 
         return [
@@ -57,9 +57,9 @@ class GeoUtils
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::getCurrentLocale();
         $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
-        $url = $url.'language='.$localeInfo->getShortLocale();
-        $url = $url.'&origins='.urlencode($address1);
-        $url = $url.'&destinations='.urlencode($address2);
+        $url = $url . 'language=' . $localeInfo->getShortLocale();
+        $url = $url . '&origins=' . urlencode($address1);
+        $url = $url . '&destinations=' . urlencode($address2);
         $logger->debug($url);
         $gMapsResponse = file_get_contents($url);
         $details = json_decode($gMapsResponse, true, 512, JSON_THROW_ON_ERROR);

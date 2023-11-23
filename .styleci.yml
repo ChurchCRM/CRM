@@ -1,6 +1,6 @@
 risky: false
 version: 8.1
-preset: recommended
+preset: psr12
 monolithic: true
 
 tab-width: 4
@@ -9,9 +9,8 @@ use-tabs: false
 enabled:
 - assign_null_coalescing_to_coalesce_equal
 - backtick_to_shell_exec
- 
-disabled:
 
+disabled:
 
 finder:
   path:

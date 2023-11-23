@@ -69,7 +69,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
     $pdf->SetFont('Times', 'B', 16);
 
-    $pdf->writeAt($nameX, $yTitle, $group->getName().' - ');
+    $pdf->writeAt($nameX, $yTitle, $group->getName() . ' - ');
 
     $FYString = MakeFYString($iFYID);
     $pdf->writeAt($phoneX, $yTitle, $FYString);
@@ -119,18 +119,18 @@ for ($i = 0; $i < $nGrps; $i++) {
                 if (!$bFirstTeacher2) {
                     $teacherString2 .= ', ';
                 }
-                $teacherString2 .= $person->getFullName().' '.$phone;
+                $teacherString2 .= $person->getFullName() . ' ' . $phone;
                 $bFirstTeacher2 = false;
             } else {
                 if (!$bFirstTeacher1) {
                     $teacherString1 .= ', ';
                 }
-                $teacherString1 .= $person->getFullName().' '.$phone;
+                $teacherString1 .= $person->getFullName() . ' ' . $phone;
                 $bFirstTeacher1 = false;
             }
             $teacherCount++;
         } elseif ($lst_OptionName == gettext('Liaison')) {
-            $liaisonString .= gettext('Liaison').':'.$person->getFullName().' '.$phone.' ';
+            $liaisonString .= gettext('Liaison') . ':' . $person->getFullName() . ' ' . $phone . ' ';
         } elseif ($lst_OptionName === 'Student') {
             $elt = ['perID' => $groupRoleMembership->getPersonId()];
 
@@ -174,7 +174,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
             $imgName = $person->getPhoto()->getThumbnailURI();
 
-            $birthdayStr = change_date_for_place_holder($person->getBirthYear().'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
+            $birthdayStr = change_date_for_place_holder($person->getBirthYear() . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
             $pdf->writeAt($birthdayX, $y, $birthdayStr);
 
             if ($withPictures) {
@@ -211,13 +211,13 @@ for ($i = 0; $i < $nGrps; $i++) {
             $props = '';
             if (!empty($assignedProperties)) {
                 foreach ($assignedProperties as $property) {
-                    $props .= $property->getProName().', ';
+                    $props .= $property->getProName() . ', ';
                 }
 
                 $props = chop($props, ', ');
 
                 if (strlen($props) > 0) {
-                    $props = ' !!! '.$props;
+                    $props = ' !!! ' . $props;
 
                     $pdf->SetFont('Times', 'B', 10);
                     $pdf->writeAt($nameX, $y + 3.5, $props);
@@ -250,9 +250,9 @@ for ($i = 0; $i < $nGrps; $i++) {
         if (!empty($family)) {
             $addrStr = $family->getAddress1();
             if ($fam_Address2 != '') {
-                $addrStr .= ' '.$family->getAddress2();
+                $addrStr .= ' ' . $family->getAddress2();
             }
-            $addrStr .= ', '.$family->getCity().', '.$family->getState().'  '.$family->getZip();
+            $addrStr .= ', ' . $family->getCity() . ', ' . $family->getState() . '  ' . $family->getZip();
         }
         $pdf->writeAt($parentsX, $y, $addrStr);
 
@@ -271,7 +271,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
-    $pdf->Output('ClassList'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
+    $pdf->Output('ClassList' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

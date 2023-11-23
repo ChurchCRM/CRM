@@ -50,8 +50,8 @@ class Photo
     private function setURIs($photoPath)
     {
         $this->photoURI = $photoPath;
-        $this->thubmnailPath = SystemURLs::getImagesRoot().'/'.$this->photoType.'/thumbnails/';
-        $this->photoThumbURI = $this->thubmnailPath.$this->id.'.jpg';
+        $this->thubmnailPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/';
+        $this->photoThumbURI = $this->thubmnailPath . $this->id . '.jpg';
     }
 
     private function shouldRefreshPhotoFile($photoFile): bool
@@ -91,11 +91,11 @@ class Photo
 
     private function photoHunt()
     {
-        $baseName = SystemURLs::getImagesRoot().'/'.$this->photoType.'/'.$this->id;
+        $baseName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id;
         $extensions = Photo::$validExtensions;
 
         foreach ($extensions as $ext) {
-            $photoFiles = [$baseName.'.'.$ext, $baseName.'-remote.'.$ext, $baseName.'-initials.'.$ext];
+            $photoFiles = [$baseName . '.' . $ext, $baseName . '-remote.' . $ext, $baseName . '-initials.' . $ext];
             foreach ($photoFiles as $photoFile) {
                 if (is_file($photoFile)) {
                     $this->setURIs($photoFile);
@@ -146,7 +146,7 @@ class Photo
     {
         $image = $this->getGDImage($this->getPhotoURI());
         $this->delete();
-        $targetPath = SystemURLs::getImagesRoot().'/'.$this->photoType.'/'.$this->id.'.png';
+        $targetPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
         imagepng($image, $targetPath);
         $this->setURIs($targetPath);
     }
@@ -165,7 +165,7 @@ class Photo
                 $sourceGDImage = imagecreatefrompng($sourceImagePath);
                 break;
             default:
-                throw new \Exception('Unsupported image type: '.$sourceImageType);
+                throw new \Exception('Unsupported image type: ' . $sourceImageType);
         }
 
         return $sourceGDImage;
@@ -235,7 +235,7 @@ class Photo
 
         $photo = imagecreatefromstring(file_get_contents($url));
         if ($photo) {
-            $photoPath = $baseName.'-remote.png';
+            $photoPath = $baseName . '-remote.png';
             imagepng($photo, $photoPath);
 
             return $photoPath;
@@ -258,7 +258,7 @@ class Photo
                 $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
                 $photo = imagecreatefromstring(file_get_contents($photoURL));
                 if ($photo) {
-                    $photoPath = $baseName.'-remote.png';
+                    $photoPath = $baseName . '-remote.png';
                     imagepng($photo, $photoPath);
 
                     return $photoPath;
@@ -297,11 +297,11 @@ class Photo
     private function renderInitials()
     {
         $initials = $this->getInitialsString();
-        $targetPath = SystemURLs::getImagesRoot().'/'.$this->photoType.'/'.$this->id.'-initials.png';
+        $targetPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '-initials.png';
         $height = SystemConfig::getValue('iPhotoHeight');
         $width = SystemConfig::getValue('iPhotoWidth');
         $pointSize = SystemConfig::getValue('iInitialsPointSize');
-        $font = SystemURLs::getDocumentRoot().'/fonts/Roboto-Regular.ttf';
+        $font = SystemURLs::getDocumentRoot() . '/fonts/Roboto-Regular.ttf';
         $image = imagecreatetruecolor($width, $height);
         $bgcolor = $this->getRandomColor($image);
         $white = imagecolorallocate($image, 255, 255, 255);
@@ -317,7 +317,7 @@ class Photo
     public function setImageFromBase64($base64)
     {
         $this->delete();
-        $fileName = SystemURLs::getImagesRoot().'/'.$this->photoType.'/'.$this->id.'.png';
+        $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
         $img = str_replace('data:image/png;base64,', '', $base64);
         $img = str_replace(' ', '+', $img);
         $fileData = base64_decode($img);
@@ -346,7 +346,7 @@ class Photo
             $this->delete();
         }
         $this->photoURI = $this->photoHunt();
-        $this->photoThumbURI = SystemURLs::getImagesRoot().'/'.$this->photoType.'/thumbnails/'.$this->id.'.jpg';
+        $this->photoThumbURI = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/' . $this->id . '.jpg';
     }
 
     public function isInitials(): bool

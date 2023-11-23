@@ -143,7 +143,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
             </div>
         </div>
     </div>
-<?php
+    <?php
 }  //END IF block for Finance permissions to include HTML for Deposit Chart
 ?>
 

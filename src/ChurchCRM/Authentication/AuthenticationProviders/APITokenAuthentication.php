@@ -30,7 +30,7 @@ class APITokenAuthentication implements IAuthenticationProvider
         $this->currentUser = UserQuery::create()->findOneByApiKey($AuthenticationRequest->APIToken);
 
         if (!empty($this->currentUser)) {
-            LoggerUtils::getAuthLogger()->debug(gettext('User authenticated via API Key: ').$this->currentUser->getName());
+            LoggerUtils::getAuthLogger()->debug(gettext('User authenticated via API Key: ') . $this->currentUser->getName());
             $authenticationResult->isAuthenticated = true;
         } else {
             LoggerUtils::getAuthLogger()->warning(gettext('Unsuccessful API Key authentication attempt'));
