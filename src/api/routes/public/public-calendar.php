@@ -1,10 +1,9 @@
 <?php
 
-// Routes
-
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\iCal;
 use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -19,7 +18,7 @@ function getJSON(Request $request, Response $response)
 {
     $events = $request->getAttribute('events');
 
-    return $response->withJson($events->toArray());
+    return SlimUtils::renderJSON($response,$events->toArray());
 }
 
 function getICal($request, $response)

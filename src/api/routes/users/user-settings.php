@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -20,7 +21,7 @@ function getUserSetting(Request $request, Response $response, array $args)
         $value = $setting->getValue();
     }
 
-    return $response->withJson(['value' => $value]);
+    return SlimUtils::renderJSON($response,['value' => $value]);
 }
 
 function updateUserSetting(Request $request, Response $response, array $args)
@@ -31,5 +32,5 @@ function updateUserSetting(Request $request, Response $response, array $args)
     $input = (object) $request->getParsedBody();
     $user->setSetting($settingName, $input->value);
 
-    return $response->withJson(['value' => $user->getSetting($settingName)->getValue()]);
+    return SlimUtils::renderJSON($response,['value' => $user->getSetting($settingName)->getValue()]);
 }

@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\QueryParameterOptionsQuery;
 use ChurchCRM\model\ChurchCRM\QueryParametersQuery;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -48,5 +49,5 @@ function getDBTerms(Request $request, Response $response, array $p_args)
         array_push($terms, $term['qrp_Description']);
     }
 
-    return $response->withJson(['terms' => $terms]);
+    return SlimUtils::renderJSON($response,['terms' => $terms]);
 }

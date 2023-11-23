@@ -8,6 +8,7 @@ use ChurchCRM\Search\FinancePaymentSearchResultProvider;
 use ChurchCRM\Search\GroupSearchResultProvider;
 use ChurchCRM\Search\iSearchResultProvider;
 use ChurchCRM\Search\PersonSearchResultProvider;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -32,5 +33,5 @@ $app->get('/search/{query}', function (Request $request, Response $response, arr
         array_push($resultsArray, $provider->getSearchResults($query));
     }
 
-    return $response->withJson(array_values(array_filter($resultsArray)));
+    return SlimUtils::renderJSON($response,array_values(array_filter($resultsArray)));
 });

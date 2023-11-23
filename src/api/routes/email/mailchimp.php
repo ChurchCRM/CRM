@@ -4,6 +4,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -52,7 +53,7 @@ function getMailchimpEmailNotInCRM(Request $request, Response $response, array $
         }
         LoggerUtils::getAppLogger()->debug('MailChimp list ' . $listId . ' now has ' . count($mailchimpListMembers) . ' members');
 
-        return $response->withJson(['id' => $list['id'], 'name' => $list['name'], 'members' => $mailchimpListMembers]);
+        return SlimUtils::renderJSON($response, ['id' => $list['id'], 'name' => $list['name'], 'members' => $mailchimpListMembers]);
     } else {
         return $response->withStatus(404, gettext('List not found'));
     }
@@ -95,7 +96,7 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
         }
         LoggerUtils::getAppLogger()->debug('MailChimp list ' . $listId . ' now has ' . count($mailchimpListMembers) . ' members');
 
-        return $response->withJson(['id' => $list['id'], 'name' => $list['name'], 'members' => $personsNotInMailchimp]);
+        return SlimUtils::renderJSON($response, ['id' => $list['id'], 'name' => $list['name'], 'members' => $personsNotInMailchimp]);
     } else {
         return $response->withStatus(404, gettext('List not inList'));
     }

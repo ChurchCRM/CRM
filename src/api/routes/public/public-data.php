@@ -2,6 +2,7 @@
 
 use ChurchCRM\data\Countries;
 use ChurchCRM\data\States;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -15,12 +16,12 @@ $app->group('/public/data', function (RouteCollectorProxy $group) {
 
 function getCountries(Request $request, Response $response, array $args)
 {
-    return $response->withJson(array_values(Countries::getAll()));
+    return SlimUtils::renderJSON($response,array_values(Countries::getAll()));
 }
 
 function getStates(Request $request, Response $response, array $args)
 {
     $states = new States($args['countryCode']);
 
-    return $response->withJson($states->getAll());
+    return SlimUtils::renderJSON($response,$states->getAll());
 }

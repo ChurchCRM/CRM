@@ -89,8 +89,8 @@ function viewFamily(Request $request, Response $response, array $args)
     }
     $appFamilyCustomFields = $rawQry->findOneByFamId($familyId);
 
+    $familyCustom = [];
     if ($appFamilyCustomFields) {
-        $familyCustom = [];
         foreach ($allFamilyCustomFields as $customfield) {
             if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 $value = $appFamilyCustomFields->getVirtualColumn($customfield->getField());

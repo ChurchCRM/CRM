@@ -3,6 +3,7 @@
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -13,7 +14,7 @@ class MailChimpMiddleware
         $mailchimpService = new MailChimpService();
 
         if (!$mailchimpService->isActive()) {
-            return $response->withStatus(412)->withJson(['message' =>  gettext('Mailchimp is not active')]);
+            return SlimUtils::renderJSON($response, ['message' =>  gettext('Mailchimp is not active')], 412);
         }
         $request = $request->withAttribute('mailchimpService', $mailchimpService);
 

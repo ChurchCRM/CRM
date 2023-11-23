@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -66,7 +67,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->delete('/photo', function (Request $request, Response $response, array $args) {
         $person = $request->getAttribute('person');
 
-        return $response->withJson(['success' => $person->deletePhoto()]);
+        return SlimUtils::renderJSON($response,['success' => $person->deletePhoto()]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
 })->add(PersonAPIMiddleware::class);
 
@@ -82,12 +83,12 @@ function setPersonRoleAPI(Request $request, Response $response, array $args)
     }
 
     if ($person->getFmrId() == $roleId) {
-        return $response->withJson(['success' => true, 'msg' => gettext('The role is already assigned.')]);
+        return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The role is already assigned.')]);
     }
 
     $person->setFmrId($role->getOptionId());
     if ($person->save()) {
-        return $response->withJson(['success' => true, 'msg' => gettext('The role is successfully assigned.')]);
+        return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The role is successfully assigned.')]);
     } else {
         return $response->withStatus(500, gettext('The role could not be assigned.'));
     }

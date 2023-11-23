@@ -2,6 +2,7 @@
 
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -18,7 +19,7 @@ function genAPIKey(Request $request, Response $response, array $args)
     $user->save();
     $user->createTimeLineNote('api-key-regen');
 
-    return $response->withJson(['apiKey' => $user->getApiKey()]);
+    return SlimUtils::renderJSON($response,['apiKey' => $user->getApiKey()]);
 }
 
 function updateUserConfig(Request $request, Response $response, array $args)
@@ -30,6 +31,6 @@ function updateUserConfig(Request $request, Response $response, array $args)
     $user->setUserConfigString($userConfigName, $newValue);
     $user->save();
     if ($user->getUserConfigString($userConfigName) == $newValue) {
-        return $response->withJson([$userConfigName => $newValue]);
+        return SlimUtils::renderJSON($response,[$userConfigName => $newValue]);
     }
 }

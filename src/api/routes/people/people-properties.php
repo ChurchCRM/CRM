@@ -8,6 +8,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PropertyAPIMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -35,7 +36,7 @@ function getAllPersonProperties(Request $request, Response $response, array $arg
         ->filterByProClass('p')
         ->find();
 
-    return $response->withJson($properties->toArray());
+    return SlimUtils::renderJSON($response,$properties->toArray());
 }
 
 function addPropertyToPerson(Request $request, Response $response, array $args)
@@ -58,7 +59,7 @@ function getAllFamilyProperties(Request $request, Response $response, array $arg
         ->filterByProClass('f')
         ->find();
 
-    return $response->withJson($properties->toArray());
+    return SlimUtils::renderJSON($response,$properties->toArray());
 }
 
 function getPersonProperties(Request $request, Response $response, array $args)
@@ -101,7 +102,7 @@ function getProperties(Response $response, $type, $id)
         }
     }
 
-    return $response->withJson($finalProperties);
+    return SlimUtils::renderJSON($response,$finalProperties);
 }
 
 function addPropertyToFamily(Request $request, Response $response, array $args)
@@ -134,12 +135,12 @@ function addProperty(Request $request, Response $response, $id, $property)
 
     if ($personProperty) {
         if (empty($property->getProPrompt()) || $personProperty->getPropertyValue() == $propertyValue) {
-            return $response->withJson(['success' => true, 'msg' => gettext('The property is already assigned.')]);
+            return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The property is already assigned.')]);
         }
 
         $personProperty->setPropertyValue($propertyValue);
         if ($personProperty->save()) {
-            return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
+            return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
         } else {
             return $response->withStatus(500, gettext('The property could not be assigned.'));
         }
@@ -150,7 +151,7 @@ function addProperty(Request $request, Response $response, $id, $property)
         $personProperty->setPropertyValue($propertyValue);
         $personProperty->save();
 
-        return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
+        return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
     }
 
     return $response->withStatus(500, gettext('The property could not be assigned.'));
@@ -169,7 +170,7 @@ function removeProperty($response, $id, $property)
 
     $personProperty->delete();
     if ($personProperty->isDeleted()) {
-        return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
+        return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
     } else {
         return $response->withStatus(500, gettext('The property could not be unassigned.'));
     }

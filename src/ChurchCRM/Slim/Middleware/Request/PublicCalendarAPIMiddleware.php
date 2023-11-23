@@ -23,14 +23,14 @@ class PublicCalendarAPIMiddleware
 
         $CAT = $request->getAttribute('route')->getArgument('CalendarAccessToken');
         if (empty(trim($CAT))) {
-            return $response->withStatus(400)->withJson(['message' => gettext('Missing calendar access token')]);
+            return SlimUtils::renderJSON($response, ['message' => gettext('Missing calendar access token')], 400);
         }
 
         $calendar = CalendarQuery::create()
             ->filterByAccessToken($CAT)
             ->findOne();
         if (empty($calendar)) {
-            return $response->withStatus(404)->withJson(['message' => gettext('Calendar access token not found')]);
+            return SlimUtils::renderJSON($response, ['message' => gettext('Calendar access token not found')], 404);
         }
 
         $request = $request->withAttribute('calendar', $calendar);

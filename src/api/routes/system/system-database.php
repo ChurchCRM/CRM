@@ -17,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
@@ -43,7 +44,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
         );
         $Backup->execute();
 
-        return $response->withJson($Backup);
+        return SlimUtils::renderJSON($response,$Backup);
     });
 
     $group->post('/backupRemote', function (Request $request, Response $response, array $args) {
@@ -61,7 +62,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
             $Backup->execute();
             $copyStatus = $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
 
-            return $response->withJson($copyStatus);
+            return SlimUtils::renderJSON($response,$copyStatus);
         } else {
             throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
         }
@@ -71,7 +72,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
         $RestoreJob = new RestoreJob();
         $RestoreJob->execute();
 
-        return $response->withJson($RestoreJob);
+        return SlimUtils::renderJSON($response,$RestoreJob);
     });
 
     $group->get('/download/{filename}', function (Request $request, Response $response, array $args) {
@@ -161,7 +162,7 @@ function resetDatabase(Request $request, Response $response, array $p_args)
 
     AuthenticationManager::endSession();
 
-    return $response->withJson(['success' => true, 'msg' => gettext('The database has been cleared.')]);
+    return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The database has been cleared.')]);
 }
 
 function clearPeopleTables(Request $request, Response $response, array $p_args)
@@ -206,5 +207,5 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
     NoteQuery::create()->filterByPerId($curUserId, Criteria::NOT_EQUAL)->delete($connection);
     $logger->info('Notes deleted');
 
-    return $response->withJson(['success' => true, 'msg' => gettext('The people and families has been cleared from the database.')]);
+    return SlimUtils::renderJSON($response,['success' => true, 'msg' => gettext('The people and families has been cleared from the database.')]);
 }

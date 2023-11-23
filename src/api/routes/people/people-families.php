@@ -41,12 +41,12 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             }
         }
 
-        return $response->withJson(['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
+        return SlimUtils::renderJSON($response, ['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
     });
 
     $group->get(
         '/numbers',
-        fn (Request $request, Response $response, array $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries())
+        fn (Request $request, Response $response, array $args) => SlimUtils::renderJSON($response, MenuEventsCount::getNumberAnniversaries())
     );
 
     $group->get('/search/{query}', function (Request $request, Response $response, array $args) {
@@ -60,7 +60,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             array_push($results, $family->toSearchArray());
         }
 
-        return $response->withJson(json_encode(['Families' => $results], JSON_THROW_ON_ERROR));
+        return SlimUtils::renderJSON($response, ['Families' => $results]);
     });
 
     $group->get('/self-register', function (Request $request, Response $response, array $args) {
@@ -70,7 +70,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             ->limit(100)
             ->find();
 
-        return $response->withJson(['families' => $families->toArray()]);
+        return SlimUtils::renderJSON($response,['families' => $families->toArray()]);
     });
 
     $group->get('/self-verify', function (Request $request, Response $response, array $args) {
@@ -81,7 +81,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             ->limit(100)
             ->find();
 
-        return $response->withJson(['families' => $verificationNotes->toArray()]);
+        return SlimUtils::renderJSON($response,['families' => $verificationNotes->toArray()]);
     });
 
     $group->get('/pending-self-verify', function (Request $request, Response $response, array $args) {
@@ -95,7 +95,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             ->limit(100)
             ->find();
 
-        return $response->withJson(['families' => $pendingTokens->toArray()]);
+        return SlimUtils::renderJSON($response,['families' => $pendingTokens->toArray()]);
     });
 
     $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args) {

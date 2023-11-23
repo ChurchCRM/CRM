@@ -3,6 +3,7 @@
 use ChurchCRM\model\ChurchCRM\MenuLink;
 use ChurchCRM\model\ChurchCRM\MenuLinkQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\ORMUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -21,7 +22,7 @@ function getMenus(Request $request, Response $response, array $args)
 {
     $links = MenuLinkQuery::create()->orderByOrder()->find();
 
-    return $response->withJson(['menus' => $links->toArray()]);
+    return SlimUtils::renderJSON($response,['menus' => $links->toArray()]);
 }
 
 function addMenu(Request $request, Response $response, array $args)
@@ -32,11 +33,11 @@ function addMenu(Request $request, Response $response, array $args)
     if ($link->validate()) {
         $link->save();
 
-        return $response->withJson($link->toArray());
+        return SlimUtils::renderJSON($response,$link->toArray());
     }
 
-    return $response->withStatus(400)->withJson(['error' => gettext('Validation Error'),
-        'failures'                                       => ORMUtils::getValidationErrors($link->getValidationFailures())]);
+    return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),
+        'failures'                                       => ORMUtils::getValidationErrors($link->getValidationFailures())], 400);
 }
 
 function delMenu(Request $request, Response $response, array $args)

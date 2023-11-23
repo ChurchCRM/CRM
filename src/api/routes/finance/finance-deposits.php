@@ -94,6 +94,6 @@ $app->group('/deposits', function (RouteCollectorProxy $group) {
             ->find()
             ->toArray();
 
-        return $response->withJson($Pledges);
+        return SlimUtils::renderJSON($response, $Pledges);
     });
 })->add(FinanceRoleAuthMiddleware::class);

@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -21,14 +22,14 @@ function refresh2fasecret(Request $request, Response $response, array $args)
     $secret = $user->provisionNew2FAKey();
     LoggerUtils::getAuthLogger()->info('Began 2FA enrollment for user: ' . $user->getUserName());
 
-    return $response->withJson(['TwoFAQRCodeDataUri' => LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $secret)->writeDataUri()]);
+    return SlimUtils::renderJSON($response, ['TwoFAQRCodeDataUri' => LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $secret)->writeDataUri()]);
 }
 
 function refresh2farecoverycodes(Request $request, Response $response, array $args)
 {
     $user = AuthenticationManager::getCurrentUser();
 
-    return $response->withJson(['TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()]);
+    return SlimUtils::renderJSON($response,['TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()]);
 }
 
 function remove2fasecret(Request $request, Response $response, array $args)
@@ -36,7 +37,7 @@ function remove2fasecret(Request $request, Response $response, array $args)
     $user = AuthenticationManager::getCurrentUser();
     $user->remove2FAKey();
 
-    return $response->withJson([]);
+    return SlimUtils::renderJSON($response,[]);
 }
 
 function get2faqrcode(Request $request, Response $response, array $args)
@@ -58,5 +59,5 @@ function test2FAEnrollmentCode(Request $request, Response $response, array $args
         LoggerUtils::getAuthLogger()->notice('Unsuccessful 2FA enrollment for user: ' . $user->getUserName());
     }
 
-    return $response->withJson(['IsEnrollmentCodeValid' => $result]);
+    return SlimUtils::renderJSON($response,['IsEnrollmentCodeValid' => $result]);
 }

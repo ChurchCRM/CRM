@@ -3,6 +3,7 @@
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -12,14 +13,14 @@ class EventsMiddleware
     {
         $eventId = $request->getAttribute('route')->getArgument('id');
         if (empty(trim($eventId))) {
-            return $response->withStatus(400)->withJson(['message' => gettext('Missing event id')]);
+            return SlimUtils::renderJSON($response, ['message' => gettext('Missing event id')], 400);
         }
 
         $event = EventQuery::Create()
           ->findPk($eventId);
 
         if (empty($event)) {
-            return $response->withStatus(404)->withJson(['message' => gettext('Event not found')]);
+            return SlimUtils::renderJSON($response, ['message' => gettext('Event not found')], 404);
         }
         $request = $request->withAttribute('event', $event);
 

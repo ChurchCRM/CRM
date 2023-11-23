@@ -3,6 +3,7 @@
 use ChurchCRM\dto\Notification;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
@@ -20,14 +21,14 @@ $app->post('/checkin', function (Request $request, Response $response, array $ar
     $input = (object) $request->getParsedBody();
     $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input->PersonId);
 
-    return $response->withJson($status);
+    return SlimUtils::renderJSON($response,$status);
 });
 
 $app->post('/checkout', function (Request $request, Response $response, array $args) use ($app) {
     $input = (object) $request->getParsedBody();
     $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input->PersonId);
 
-    return $response->withJson($status);
+    return SlimUtils::renderJSON($response,$status);
 });
 
 $app->post('/triggerNotification', function (Request $request, Response $response, array $args) use ($app) {
@@ -40,9 +41,9 @@ $app->post('/triggerNotification', function (Request $request, Response $respons
     $Notification->setPerson($Person);
     $Notification->setRecipients($Person->getFamily()->getAdults());
     $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType() . '-' . $Person->getId());
-    $Status = $Notification->send();
+    $status = $Notification->send();
 
-    return $response->withJson($Status);
+    return SlimUtils::renderJSON($response,$status);
 });
 
 $app->get('/activeClassMembers', fn (Request $request, Response $response, array $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());

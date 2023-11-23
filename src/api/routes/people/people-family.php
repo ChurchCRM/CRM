@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -30,7 +31,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
     });
 
     $group->post('/photo', function (Request $request, Response $response, array $args) {
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $family = $request->getAttribute('family');
         $family->setImageFromBase64($input->imgBase64);
 
@@ -40,7 +41,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->delete('/photo', function (Request $request, Response $response, array $args) {
         $family = $request->getAttribute('family');
 
-        return $response->withJson(['status' => $family->deletePhoto()]);
+        return SlimUtils::renderJSON($response, ['status' => $family->deletePhoto()]);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->get('/thumbnail', function (Request $request, Response $response, array $args) {
@@ -73,7 +74,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         );
         $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
 
-        return $response->withJson($geoLocationInfo);
+        return SlimUtils::renderJSON($response, $geoLocationInfo);
     });
 
     $group->get('/nav', function (Request $request, Response $response, array $args) {
@@ -97,7 +98,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
             $familyNav['NextFamilyId'] = $tempFamily->getId();
         }
 
-        return $response->withJson($familyNav);
+        return SlimUtils::renderJSON($response, $familyNav);
     });
 
     $group->post('/verify', function (Request $request, Response $response, array $args) {
@@ -107,14 +108,13 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
             $family->sendVerifyEmail();
 
             return $response->withStatus(200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             LoggerUtils::getAppLogger()->error($e->getMessage());
 
-            return $response->withStatus(500)
-                ->withJson([
-                    'message' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
-                    'trace'   => $e->getMessage(),
-                ]);
+            return SlimUtils::renderJSON($response, [
+                'message' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
+                'trace' => $e->getMessage(),
+            ], 500);
         }
     });
 
@@ -129,8 +129,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         $token->save();
         $family->createTimeLineNote('verify-URL');
 
-        return $response
-            ->withJson(['url' => SystemURLs::getURL() . '/external/verify/' . $token->getToken()]);
+        return SlimUtils::renderJSON($response, ['url' => SystemURLs::getURL() . '/external/verify/' . $token->getToken()]);
     });
 
     $group->post('/verify/now', function (Request $request, Response $response, array $args) {
