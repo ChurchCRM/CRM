@@ -18,7 +18,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group) {
         $deposit->setComment($input->depositComment);
         $deposit->setDate($input->depositDate);
         $deposit->save();
-        return SlimUtils::renderJSON($response,  $deposit->toArray());
+        return SlimUtils::renderJSON($response, $deposit->toArray());
     });
 
     $group->get('/dashboard', function (Request $request, Response $response, array $args) {
@@ -30,12 +30,12 @@ $app->group('/deposits', function (RouteCollectorProxy $group) {
     });
 
     $group->get('', function (Request $request, Response $response, array $args) {
-        return SlimUtils::renderJSON($response,  ['Deposits' => DepositQuery::create()->find()->toArray()]);
+        return SlimUtils::renderJSON($response, ['Deposits' => DepositQuery::create()->find()->toArray()]);
     });
 
     $group->get('/{id:[0-9]+}', function (Request $request, Response $response, array $args) {
         $id = $args['id'];
-        return SlimUtils::renderJSON($response,  DepositQuery::create()->findOneById($id)->toArray());
+        return SlimUtils::renderJSON($response, DepositQuery::create()->findOneById($id)->toArray());
     });
 
     $group->post('/{id:[0-9]+}', function (Request $request, Response $response, array $args) {
@@ -47,14 +47,14 @@ $app->group('/deposits', function (RouteCollectorProxy $group) {
         $appDeposit->setDate($input->depositDate);
         $appDeposit->setClosed($input->depositClosed);
         $appDeposit->save();
-        return SlimUtils::renderJSON($response,  $appDeposit->toArray());
+        return SlimUtils::renderJSON($response, $appDeposit->toArray());
     });
 
     $group->get('/{id:[0-9]+}/ofx', function (Request $request, Response $response, array $args) {
         $id = $args['id'];
         $OFX = DepositQuery::create()->findOneById($id)->getOFX();
         header($OFX->header);
-        return SlimUtils::renderJSON($response,  $OFX->content);
+        return SlimUtils::renderJSON($response, $OFX->content);
     });
 
     $group->get('/{id:[0-9]+}/pdf', function (Request $request, Response $response, array $args) {
