@@ -268,41 +268,42 @@ class Countries
         ];
     }
 
-    private static function getSingleName(Country $Country)
+    private static function getSingleName(Country $Country): string
     {
         return $Country->getCountryName();
     }
 
-    public static function getNames()
+    public static function getNames(): array
     {
         self::initializeCountries();
 
-        return array_map(['self', 'getSingleName'], self::$countries);
+        return array_map(['static', 'getSingleName'], self::$countries);
     }
 
-    public static function getAll()
+    public static function getAll(): array
     {
         self::initializeCountries();
 
         return self::$countries;
     }
 
-    public static function getCountry(string $CountryCode)
+    public static function getCountry(string $CountryCode): Country
     {
         self::initializeCountries();
 
         return self::$countries[$CountryCode];
     }
 
-    public static function getCountryByName(string $CountryName)
+    public static function getCountryByName(string $CountryName): ?Country
     {
         if (empty($CountryName)) {
             return null;
         }
+
         self::initializeCountries();
         $result = array_filter(self::$countries, fn ($e) => $e->getCountryName() === $CountryName);
         if (count($result) === 1) {
-            return current($result);
+            return $result[0];
         }
 
         throw new \Exception(gettext('Invalid country name supplied'));
