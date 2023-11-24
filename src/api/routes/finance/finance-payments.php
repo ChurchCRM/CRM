@@ -12,7 +12,7 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/payments', function (RouteCollectorProxy $group) {
     $group->get('/', function (Request $request, Response $response, array $args) {
         $financialService = $this->get('FinancialService');
-        return SlimUtils::renderJSON($request,['payments' => $financialService->getPayments()->toArray()]);
+        return SlimUtils::renderJSON($request, ['payments' => $financialService->getPayments()->toArray()]);
     });
 
     $group->post('/', function (Request $request, Response $response, array $args) {
