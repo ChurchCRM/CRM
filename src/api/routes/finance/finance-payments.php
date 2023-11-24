@@ -12,13 +12,13 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/payments', function (RouteCollectorProxy $group) {
     $group->get('/', function (Request $request, Response $response, array $args) {
         $financialService = $this->get('FinancialService');
-        return SlimUtils::renderJSON($request, ['payments' => $financialService->getPayments()->toArray()]);
+        return SlimUtils::renderJSON($response, ['payments' => $financialService->getPayments()->toArray()]);
     });
 
     $group->post('/', function (Request $request, Response $response, array $args) {
         $payment = $request->getParsedBody();
         $financialService = $this->get('FinancialService');
-        return SlimUtils::renderJSON($request, ['payment' => $financialService->submitPledgeOrPayment($payment)]);
+        return SlimUtils::renderJSON($response, ['payment' => $financialService->submitPledgeOrPayment($payment)]);
     });
 
     $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
@@ -53,7 +53,7 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
             array_push($rows, $newRow);
         }
 
-        return SlimUtils::renderJSON($request, ['data' => $rows]);
+        return SlimUtils::renderJSON($response, ['data' => $rows]);
     });
 
     $group->delete('/{groupKey}', function (Request $request, Response $response, array $args) {

@@ -9,7 +9,7 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/cart', function (RouteCollectorProxy $group) {
     $group->get('/', function (Request $request, Response $response, array $args) {
         $cart = ['PeopleCart' => $_SESSION['aPeopleCart']];
-        return SlimUtils::renderJSON($request, $cart);
+        return SlimUtils::renderJSON($response, $cart);
     });
 
     $group->post('/', function (Request $request, Response $response, array $args) {
