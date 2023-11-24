@@ -812,18 +812,22 @@ if (isset($_POST['DoImport'])) {
                 RunQuery($sSQL);
             }
 
-            $sSQL = 'UPDATE family_fam SET fam_WeddingDate = ' . "'" . $family->WeddingDate . "'";
-
-            if ($family->Phone != '') {
-                $sSQL .= ', fam_HomePhone =' . "'" . $family->Phone . "'";
+            $valuesToUpdate = [];
+            if ($family->WeddingDate !== '') {
+                $valuesToUpdate[] = "fam_WeddingDate='$family->WeddingDate'";
             }
-
-            if ($family->Envelope != 0) {
-                $sSQL .= ', fam_Envelope  = ' . $family->Envelope;
+            if ($family->Phone !== '') {
+                $valuesToUpdate[] = "fam_HomePhone='$family->Phone'";
             }
-
-            $sSQL .= ' WHERE fam_ID = ' . $fid;
-            RunQuery($sSQL);
+            if ($family->Envelope !== 0) {
+                $valuesToUpdate[] = "fam_Envelope='$family->Envelope'";
+            }
+            if (!empty($valuesToUpdate)) {
+                $sSQL = 'UPDATE family_fam SET ' .
+                    implode(',', $valuesToUpdate) .
+                    " WHERE fam_ID = $fid";
+                RunQuery($sSQL);
+            }
         }
 
         $iStage = 3;
