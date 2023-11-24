@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -15,8 +16,7 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
             ->joinWithEvent(Criteria::LEFT_JOIN)
             ->endUse()
             ->find();
-
-        return $response->write($Kiosks->toJSON());
+        return SlimUtils::renderJSON($response, $Kiosks->toArray());
     });
 
     $group->post('/allowRegistration', function (Request $request, Response $response, array $args) {
@@ -24,7 +24,7 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
         $window->add(new \DateInterval('PT05S'));
         SystemConfig::setValue('sKioskVisibilityTimestamp', $window->format('Y-m-d H:i:s'));
 
-        return $response->write(json_encode(['visibleUntil' => $window]));
+        return SlimUtils::renderJSON($response, ['visibleUntil' => $window]);
     });
 
     $group->post('/{kioskId:[0-9]+}/reloadKiosk', function (Request $request, Response $response, array $args) {
@@ -33,7 +33,7 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
             ->findOneById($kioskId)
             ->reloadKiosk();
 
-        return $response->write(json_encode($reload, JSON_THROW_ON_ERROR));
+        return SlimUtils::renderJSON($response, $reload->toArray());
     });
 
     $group->post('/{kioskId:[0-9]+}/identifyKiosk', function (Request $request, Response $response, array $args) {
@@ -42,7 +42,7 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
             ->findOneById($kioskId)
             ->identifyKiosk();
 
-        return $response->write(json_encode($identify, JSON_THROW_ON_ERROR));
+        return SlimUtils::renderJSON($response, $identify->toArray());
     });
 
     $group->post('/{kioskId:[0-9]+}/acceptKiosk', function (Request $request, Response $response, array $args) {
@@ -52,16 +52,16 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
             ->setAccepted(true)
             ->save();
 
-        return $response->write(json_encode($accept, JSON_THROW_ON_ERROR));
+        return SlimUtils::renderJSON($response, $accept->toArray());
     });
 
     $group->post('/{kioskId:[0-9]+}/setAssignment', function (Request $request, Response $response, array $args) {
         $kioskId = $args['kioskId'];
-        $input = (object) $request->getParsedBody();
+        $input = $request->getParsedBody();
         $accept = KioskDeviceQuery::create()
             ->findOneById($kioskId)
-            ->setAssignment($input->assignmentType, $input->eventId);
+            ->setAssignment($input['assignmentType'], $input['eventId']);
 
-        return $response->write(json_encode($accept, JSON_THROW_ON_ERROR));
+        return SlimUtils::renderJSON($response, $accept->toArray());
     });
 });
