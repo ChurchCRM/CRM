@@ -12,7 +12,7 @@ class EventsMiddleware
 {
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
-        $eventId = SlimUtils::getRouteArgument($request,'id');
+        $eventId = SlimUtils::getRouteArgument($request, 'id');
         if (empty(trim($eventId))) {
             $response = new Response();
             return SlimUtils::renderJSON($response, ['message' => gettext('Missing event id')], 400);

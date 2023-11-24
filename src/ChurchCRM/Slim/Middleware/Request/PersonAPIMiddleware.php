@@ -13,7 +13,7 @@ class PersonAPIMiddleware
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
         $response = new Response();
-        $personId = SlimUtils::getRouteArgument($request,'personId');
+        $personId = SlimUtils::getRouteArgument($request, 'personId');
         if (empty(trim($personId))) {
             return $response->withStatus(412, gettext('Missing') . ' PersonId');
         }

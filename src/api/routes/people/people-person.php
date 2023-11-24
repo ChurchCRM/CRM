@@ -12,7 +12,7 @@ use ChurchCRM\Utils\MiscUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
-use \Slim\HttpCache\Cache;
+use Slim\HttpCache\Cache;
 
 $app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
 
