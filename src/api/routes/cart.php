@@ -13,22 +13,22 @@ $app->group('/cart', function (RouteCollectorProxy $group) {
     });
 
     $group->post('/', function (Request $request, Response $response, array $args) {
-        $cartPayload = (object)$request->getParsedBody();
-        if (isset($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
-            Cart::addPersonArray($cartPayload->Persons);
-        } elseif (isset($cartPayload->Family)) {
-            Cart::addFamily($cartPayload->Family);
-        } elseif (isset($cartPayload->Group)) {
-            Cart::addGroup($cartPayload->Group);
+        $cartPayload = $request->getParsedBody();
+        if (isset($cartPayload['Persons']) && count($cartPayload['Persons']) > 0) {
+            Cart::addPersonArray($cartPayload['Persons']);
+        } elseif (isset($cartPayload['Family'])) {
+            Cart::addFamily($cartPayload['Family']);
+        } elseif (isset($cartPayload['Group'])) {
+            Cart::addGroup($cartPayload['Group']);
         } else {
-            throw new Exception(gettext('POST to cart requires a Persons array, FamilyID, or GroupID'), 500);
+            return $response->withStatus(400, gettext('POST to cart requires a Persons array, FamilyID, or GroupID'));
         }
         return SlimUtils::renderSuccessJSON($response);
     });
 
     $group->post('/emptyToGroup', function (Request $request, Response $response, array $args) {
-        $cartPayload = (object)$request->getParsedBody();
-        Cart::emptyToGroup($cartPayload->groupID, $cartPayload->groupRoleID);
+        $cartPayload = $request->getParsedBody();
+        Cart::emptyToGroup($cartPayload['groupID'], $cartPayload['groupRoleID']);
 
         return SlimUtils::renderJSON($response, [
             'status' => 'success',
@@ -38,7 +38,7 @@ $app->group('/cart', function (RouteCollectorProxy $group) {
 
     $group->post('/removeGroup', function (Request $request, Response $response, array $args) {
         $cartPayload = $request->getParsedBody();
-        Cart::removeGroup($cartPayload->Group);
+        Cart::removeGroup($cartPayload['Group']);
         return SlimUtils::renderJSON($response, [
             'status' => 'success',
             'message' => gettext('records(s) successfully deleted from the selected Group.'),
@@ -49,10 +49,10 @@ $app->group('/cart', function (RouteCollectorProxy $group) {
      * delete. This will empty the cart.
      */
     $group->delete('/', function (Request $request, Response $response, array $args) {
-        $cartPayload = (object)$request->getParsedBody();
+        $cartPayload = $request->getParsedBody();
         $sMessage = gettext('Your cart is empty');
-        if (isset($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
-            Cart::removePersonArray($cartPayload->Persons);
+        if (isset($cartPayload['Persons']) && count($cartPayload['Persons']) > 0) {
+            Cart::removePersonArray($cartPayload['Persons']);
         } else {
             if (count($_SESSION['aPeopleCart']) > 0) {
                 $_SESSION['aPeopleCart'] = [];

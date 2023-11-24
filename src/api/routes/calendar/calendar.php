@@ -167,14 +167,14 @@ function DeleteAccessToken($request, Response $response, $args)
 
 function NewCalendar(Request $request, Response $response, $args)
 {
-    $input = (object)$request->getParsedBody();
+    $input = $request->getParsedBody();
     $Calendar = new Calendar();
     $Calendar->setName($input->Name);
-    $Calendar->setForegroundColor($input->ForegroundColor);
-    $Calendar->setBackgroundColor($input->BackgroundColor);
+    $Calendar->setForegroundColor($input['ForegroundColor']);
+    $Calendar->setBackgroundColor($input['BackgroundColor']);
     $Calendar->save();
 
-    return SlimUtils::renderJSON($response, $Calendar);
+    return SlimUtils::renderJSON($response, $Calendar->toArray());
 }
 
 function deleteUserCalendar(Request $request, Response $response, $args)

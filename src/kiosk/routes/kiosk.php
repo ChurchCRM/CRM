@@ -18,24 +18,24 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 $app->get('/heartbeat', fn (Request $request, Response $response, array $args) => json_encode($app->kiosk->heartbeat(), JSON_THROW_ON_ERROR));
 
 $app->post('/checkin', function (Request $request, Response $response, array $args) use ($app) {
-    $input = (object) $request->getParsedBody();
-    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input->PersonId);
+    $input = $request->getParsedBody();
+    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input['PersonId']);
 
     return SlimUtils::renderJSON($response, $status);
 });
 
 $app->post('/checkout', function (Request $request, Response $response, array $args) use ($app) {
-    $input = (object) $request->getParsedBody();
-    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input->PersonId);
+    $input = $request->getParsedBody();
+    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input['PersonId']);
 
     return SlimUtils::renderJSON($response, $status);
 });
 
 $app->post('/triggerNotification', function (Request $request, Response $response, array $args) use ($app) {
-    $input = (object) $request->getParsedBody();
+    $input = $request->getParsedBody();
 
     $Person = PersonQuery::create()
-            ->findOneById($input->PersonId);
+            ->findOneById($input['PersonId']);
 
     $Notification = new Notification();
     $Notification->setPerson($Person);

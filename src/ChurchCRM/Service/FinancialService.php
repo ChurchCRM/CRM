@@ -160,7 +160,7 @@ class FinancialService
         //Validate that the fund selection is valid:
         //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
         //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
-        $FundSplit = json_decode($payment->FundSplit, null, 512, JSON_THROW_ON_ERROR);
+        $FundSplit = $payment['FundSplit'];
         if (count($FundSplit) >= 1 && $FundSplit[0]->FundID != 'None') { // split
             $nonZeroFundAmountEntered = 0;
             foreach ($FundSplit as $fun_id => $fund) {

@@ -32,15 +32,15 @@ $app->group('/database', function (RouteCollectorProxy $group) {
     $group->get('/people/export/chmeetings', 'exportChMeetings');
 
     $group->post('/backup', function (Request $request, Response $response, array $args) {
-        $input = (object) $request->getParsedBody();
+        $input = $request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
         $BackupType = $input->BackupType;
         $Backup = new BackupJob(
             $BaseName,
             $BackupType,
             SystemConfig::getValue('bBackupExtraneousImages'),
-            $input->EncryptBackup ?? '',
-            $input->BackupPassword ?? ''
+            $input['EncryptBackup'] ?? '',
+            $input['BackupPassword'] ?? ''
         );
         $Backup->execute();
 
@@ -49,15 +49,15 @@ $app->group('/database', function (RouteCollectorProxy $group) {
 
     $group->post('/backupRemote', function (Request $request, Response $response, array $args) {
         if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-            $input = (object) $request->getParsedBody();
+            $input = $request->getParsedBody();
             $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
-            $BackupType = $input->BackupType;
+            $BackupType = $input['BackupType'];
             $Backup = new BackupJob(
                 $BaseName,
                 $BackupType,
                 SystemConfig::getValue('bBackupExtraneousImages'),
-                $input->EncryptBackup ?? '',
-                $input->BackupPassword ?? ''
+                $input['EncryptBackup'] ?? '',
+                $input['BackupPassword'] ?? ''
             );
             $Backup->execute();
             $copyStatus = $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));

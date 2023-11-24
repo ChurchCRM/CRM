@@ -15,8 +15,8 @@ $app->group('/systemupgrade', function (RouteCollectorProxy $group) {
     });
 
     $group->post('/doupgrade', function (Request $request, Response $response, array $args) {
-        $input = (object)$request->getParsedBody();
-        $upgradeResult = ChurchCRMReleaseManager::doUpgrade($input->fullPath, $input->sha1);
+        $input = $request->getParsedBody();
+        $upgradeResult = ChurchCRMReleaseManager::doUpgrade($input['fullPath'], $input['sha1']);
 
         return SlimUtils::renderJSON($response, $upgradeResult);
     });

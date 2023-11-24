@@ -115,30 +115,30 @@ function getEventAudience($request, Response $response, $args)
 
 function newEvent(Request $request, Response $response, array $args)
 {
-    $input = (object)$request->getParsedBody();
+    $input = $request->getParsedBody();
 
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::Create()
-        ->findOneById($input->Type);
+        ->findOneById($input['Type']);
     if (!$type) {
         return $response->withStatus(400, gettext('invalid event type id'));
     }
 
     $calendars = CalendarQuery::create()
-        ->filterById($input->PinnedCalendars)
+        ->filterById($input['PinnedCalendars'])
         ->find();
-    if (count($calendars) != count($input->PinnedCalendars)) {
+    if (count($calendars) != count($input['PinnedCalendars'])) {
         return $response->withStatus(400, gettext('invalid calendar pinning'));
     }
 
     // we have event type and pined calendars.  now create the event.
     $event = new Event();
-    $event->setTitle($input->Title);
+    $event->setTitle($input['Title']);
     $event->setEventType($type);
-    $event->setDesc($input->Desc);
-    $event->setStart(str_replace('T', ' ', $input->Start));
-    $event->setEnd(str_replace('T', ' ', $input->End));
-    $event->setText(InputUtils::filterHTML($input->Text));
+    $event->setDesc($input['Desc']);
+    $event->setStart(str_replace('T', ' ', $input['Start']));
+    $event->setEnd(str_replace('T', ' ', $input['End']));
+    $event->setText(InputUtils::filterHTML($input['Text']));
     $event->setCalendars($calendars);
     $event->save();
 
@@ -164,15 +164,15 @@ function updateEvent(Request $request, Response $response, array $args)
 
 function setEventTime($request, Response $response, $args)
 {
-    $input = (object)$request->getParsedBody();
+    $input = $request->getParsedBody();
 
     $event = EventQuery::Create()
         ->findOneById($args['id']);
     if (!$event) {
         return $response->withStatus(404);
     }
-    $event->setStart($input->startTime);
-    $event->setEnd($input->endTime);
+    $event->setStart($input['startTime']);
+    $event->setEnd($input['endTime']);
     $event->save();
 
     return SlimUtils::renderSuccessJSON($response);
@@ -209,10 +209,7 @@ function unusedSetEventAttendance()
 
 function deleteEvent(Request $request, Response $response, array $args)
 {
-    $input = (object)$request->getParsedBody();
-
-    $event = EventQuery::Create()
-        ->findOneById($args['id']);
+    $event = EventQuery::Create()->findOneById($args['id']);
     if (!$event) {
         return $response->withStatus(404);
     }

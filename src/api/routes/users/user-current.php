@@ -50,9 +50,9 @@ function get2faqrcode(Request $request, Response $response, array $args)
 
 function test2FAEnrollmentCode(Request $request, Response $response, array $args)
 {
-    $requestParsedBody = (object)$request->getParsedBody();
+    $requestParsedBody = $request->getParsedBody();
     $user = AuthenticationManager::getCurrentUser();
-    $result = $user->confirmProvisional2FACode($requestParsedBody->enrollmentCode);
+    $result = $user->confirmProvisional2FACode($requestParsedBody['enrollmentCode']);
     if ($result) {
         LoggerUtils::getAuthLogger()->info('Completed 2FA enrollment for user: ' . $user->getUserName());
     } else {

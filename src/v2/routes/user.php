@@ -85,10 +85,10 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     ];
 
     if ($request->getMethod() === 'POST') {
-        $loginRequestBody = (object)$request->getParsedBody();
+        $loginRequestBody = $request->getParsedBody();
 
         try {
-            $user->adminSetUserPassword($loginRequestBody->NewPassword1);
+            $user->adminSetUserPassword($loginRequestBody['NewPassword1']);
 
             return $renderer->render($response, 'common/success-changepassword.php', $pageArgs);
         } catch (PasswordChangeException $pwChangeExc) {

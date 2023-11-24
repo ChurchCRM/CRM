@@ -22,8 +22,8 @@ function getConfigValueByNameAPI(Request $request, Response $response, array $ar
 function setConfigValueByNameAPI(Request $request, Response $response, array $args)
 {
     $configName = $args['configName'];
-    $input = (object)$request->getParsedBody();
-    SystemConfig::setValue($configName, $input->value);
+    $input = $request->getParsedBody();
+    SystemConfig::setValue($configName, $input['value']);
 
     return SlimUtils::renderJSON($response, ['value' => SystemConfig::getValue($configName)]);
 }

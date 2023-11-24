@@ -46,10 +46,10 @@ function changepassword(Request $request, Response $response, array $args)
         // ChangePassword only works with LocalAuthentication
 
         if ($request->getMethod() === 'POST') {
-            $loginRequestBody = (object) $request->getParsedBody();
+            $loginRequestBody = $request->getParsedBody();
 
             try {
-                $curUser->userChangePassword($loginRequestBody->OldPassword, $loginRequestBody->NewPassword1);
+                $curUser->userChangePassword($loginRequestBody['OldPassword'], $loginRequestBody['NewPassword1']);
 
                 return $renderer->render($response, 'common/success-changepassword.php', $pageArgs);
             } catch (PasswordChangeException $pwChangeExc) {

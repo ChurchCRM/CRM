@@ -46,8 +46,8 @@ function processTwoFactorGet(Request $request, Response $response, array $args)
 
 function processTwoFactorPost(Request $request, Response $response, array $args)
 {
-    $loginRequestBody = (object) $request->getParsedBody();
-    $request = new LocalTwoFactorTokenRequest($loginRequestBody->TwoFACode);
+    $loginRequestBody = $request->getParsedBody();
+    $request = new LocalTwoFactorTokenRequest($loginRequestBody['TwoFACode']);
     AuthenticationManager::authenticate($request);
 }
 
@@ -65,8 +65,8 @@ function beginSession(Request $request, Response $response, array $args)
     ];
 
     if ($request->getMethod() == 'POST') {
-        $loginRequestBody = (object) $request->getParsedBody();
-        $request = new LocalUsernamePasswordRequest($loginRequestBody->User, $loginRequestBody->Password);
+        $loginRequestBody = $request->getParsedBody();
+        $request = new LocalUsernamePasswordRequest($loginRequestBody['User'], $loginRequestBody['Password']);
         $authenticationResult = AuthenticationManager::authenticate($request);
         $pageArgs['sErrorText'] = $authenticationResult->message;
     }

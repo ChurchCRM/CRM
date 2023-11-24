@@ -21,26 +21,26 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
 {
     $family = new Family();
 
-    $familyMetadata = (object)$request->getParsedBody();
+    $familyMetadata = $request->getParsedBody();
 
-    $family->setName($familyMetadata->Name);
-    $family->setAddress1($familyMetadata->Address1);
-    $family->setAddress2($familyMetadata->Address2);
-    $family->setCity($familyMetadata->City);
-    $family->setState($familyMetadata->State);
-    $family->setCountry($familyMetadata->Country);
-    $family->setZip($familyMetadata->Zip);
-    $family->setHomePhone($familyMetadata->HomePhone);
-    $family->setWorkPhone($familyMetadata->WorkPhone);
-    $family->setCellPhone($familyMetadata->CellPhone);
-    $family->setEmail($familyMetadata->Email);
+    $family->setName($familyMetadata['Name']);
+    $family->setAddress1($familyMetadata['Address1']);
+    $family->setAddress2($familyMetadata['Address2']);
+    $family->setCity($familyMetadata['City']);
+    $family->setState($familyMetadata['State']);
+    $family->setCountry($familyMetadata['Country']);
+    $family->setZip($familyMetadata['Zip']);
+    $family->setHomePhone($familyMetadata['HomePhone']);
+    $family->setWorkPhone($familyMetadata['WorkPhone']);
+    $family->setCellPhone($familyMetadata['CellPhone']);
+    $family->setEmail($familyMetadata['Email']);
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new DateTime());
 
     $familyMembers = [];
 
     if ($family->validate()) {
-        foreach ($familyMetadata->people as $personMetaData) {
+        foreach ($familyMetadata['people'] as $personMetaData) {
             $person = new Person();
             $person->setEnteredBy(Person::SELF_REGISTER);
             $person->setDateEntered(new DateTime());

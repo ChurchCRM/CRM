@@ -12,9 +12,9 @@ $app = AppFactory::create();
 $container = $app->getContainer();
 $app->setBasePath('/api');
 
-// Add middleware - executed in reverse order of appearing here.
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
+$app->addBodyParsingMiddleware();
 
 // Set up
 require __DIR__ . '/dependencies.php';

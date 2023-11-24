@@ -29,8 +29,8 @@ function updateUserSetting(Request $request, Response $response, array $args)
     $user = $request->getAttribute('user');
     $settingName = $args['settingName'];
 
-    $input = (object)$request->getParsedBody();
-    $user->setSetting($settingName, $input->value);
+    $input = $request->getParsedBody();
+    $user->setSetting($settingName, $input['value']);
 
     return SlimUtils::renderJSON($response, ['value' => $user->getSetting($settingName)->getValue()]);
 }

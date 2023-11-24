@@ -9,7 +9,7 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/register', function (RouteCollectorProxy $group) {
     $group->post('', function (Request $request, Response $response, array $args) {
-        $input = (object) $request->getParsedBody();
+        $input = $request->getParsedBody();
 
         $registrationData = new \stdClass();
         $registrationData->sName = SystemConfig::getValue('sChurchName');
@@ -19,10 +19,10 @@ $app->group('/register', function (RouteCollectorProxy $group) {
         $registrationData->sZip = SystemConfig::getValue('sChurchZip');
         $registrationData->sCountry = SystemConfig::getValue('sChurchCountry');
         $registrationData->sEmail = SystemConfig::getValue('sChurchEmail');
-        $registrationData->ChurchCRMURL = $input->ChurchCRMURL;
+        $registrationData->ChurchCRMURL = $input['ChurchCRMURL'];
         $registrationData->Version = SystemService::getInstalledVersion();
 
-        $registrationData->sComments = $input->emailmessage;
+        $registrationData->sComments = $input['emailmessage'];
         $curlService = curl_init('https://demo.churchcrm.io/register.php');
 
         curl_setopt($curlService, CURLOPT_POST, true);

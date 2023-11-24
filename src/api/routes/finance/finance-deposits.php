@@ -12,11 +12,11 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/deposits', function (RouteCollectorProxy $group) {
     $group->post('', function (Request $request, Response $response, array $args) {
-        $input = (object)$request->getParsedBody();
+        $input = $request->getParsedBody();
         $deposit = new Deposit();
-        $deposit->setType($input->depositType);
-        $deposit->setComment($input->depositComment);
-        $deposit->setDate($input->depositDate);
+        $deposit->setType($input['depositType']);
+        $deposit->setComment($input['depositComment']);
+        $deposit->setDate($input['depositDate']);
         $deposit->save();
         return SlimUtils::renderJSON($response, $deposit->toArray());
     });
@@ -40,12 +40,12 @@ $app->group('/deposits', function (RouteCollectorProxy $group) {
 
     $group->post('/{id:[0-9]+}', function (Request $request, Response $response, array $args) {
         $id = $args['id'];
-        $input = (object)$request->getParsedBody();
+        $input = $request->getParsedBody();
         $appDeposit = DepositQuery::create()->findOneById($id);
-        $appDeposit->setType($input->depositType);
-        $appDeposit->setComment($input->depositComment);
-        $appDeposit->setDate($input->depositDate);
-        $appDeposit->setClosed($input->depositClosed);
+        $appDeposit->setType($input['depositType']);
+        $appDeposit->setComment($input['depositComment']);
+        $appDeposit->setDate($input['depositDate']);
+        $appDeposit->setClosed($input['depositClosed']);
         $appDeposit->save();
         return SlimUtils::renderJSON($response, $appDeposit->toArray());
     });

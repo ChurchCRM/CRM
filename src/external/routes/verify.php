@@ -35,14 +35,14 @@ $app->group('/verify', function (RouteCollectorProxy $group) {
         if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());
             if ($family != null) {
-                $body = (object) $request->getParsedBody();
+                $body = $request->getParsedBody();
                 $note = new Note();
                 $note->setFamily($family);
                 $note->setType('verify');
                 $note->setEntered(Person::SELF_VERIFY);
                 $note->setText(gettext('No Changes'));
-                if (!empty($body->message)) {
-                    $note->setText($body->message);
+                if (!empty($body['message'])) {
+                    $note->setText($body['message']);
                 }
                 $note->save();
             }
