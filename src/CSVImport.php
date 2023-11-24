@@ -34,40 +34,42 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
  **/
 class Family
 {
-    public $Members = [];       // array for member data
-    public $MemberCount = 0;   // obvious
-    public $WeddingDate = '';   // one per family
-    public $Phone = '';         // one per family
-    public $Envelope = 0;      // one per family
-    public $_nAdultMale = 0;   // if one adult male
-    public $_nAdultFemale = 0; // and 1 adult female we assume spouses
-    public $_type;         // 0=patriarch, 1=martriarch
+    public array $Members = [];       // array for member data
+    public int $MemberCount = 0;   // obvious
+    public string $WeddingDate = '';   // one per family
+    public string $Phone = '';         // one per family
+    public int $Envelope = 0;      // one per family
+    public int $_nAdultMale = 0;   // if one adult male
+    public int $_nAdultFemale = 0; // and 1 adult female we assume spouses
+    public int $_type;         // 0=patriarch, 1=martriarch
 
     // constructor, initialize variables
-    public function __construct($famtype)
+    public function __construct(int $famtype)
     {
         $this->_type = $famtype;
     }
 
     /** Add what we need to know about members for role assignment later **/
-    public function addMember($PersonID, $Gender, $Age, $Wedding, $Phone, $Envelope)
+    public function addMember(int $PersonID, int $Gender, int $Age, string $Wedding = '', $Phone = '', $Envelope = 0): void
     {
         // add member with un-assigned role
-        $this->Members[] = ['personid'     => $PersonID,
-                                 'age'     => $Age,
-                                 'gender'  => $Gender,
-                                 'role'    => 0,
-                                 'phone'   => $Phone,
-                                 'envelope' => $Envelope, ];
-        if ($Wedding != '') {
+        $this->Members[] = [
+            'personid'     => $PersonID,
+            'age'     => $Age,
+            'gender'  => $Gender,
+            'role'    => 0,
+            'phone'   => $Phone,
+            'envelope' => $Envelope,
+        ];
+        if ($Wedding !== '') {
             $this->WeddingDate = $Wedding;
         }
-        if ($Envelope != 0) {
+        if ($Envelope !== 0) {
             $this->Envelope = $Envelope;
         }
         $this->MemberCount++;
         if ($Age > 18) {
-            $Gender == 1 ? $this->_nAdultMale++ : $this->_nAdultFemale++;
+            $Gender === 1 ? $this->_nAdultMale++ : $this->_nAdultFemale++;
         }
     }
 
