@@ -5,13 +5,15 @@ use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
 use ChurchCRM\Slim\Request\SlimUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 $app->group('/calendars', function (RouteCollectorProxy $group) {
     $group->get('/{CalendarAccessToken}', 'serveCalendarPage');
     $group->get('/{CalendarAccessToken}/', 'serveCalendarPage');
 })->add(PublicCalendarAPIMiddleware::class);
 
-function serveCalendarPage($request, $response)
+function serveCalendarPage(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/calendar/');
     $eventSource = SystemURLs::getRootPath() . '/api/public/calendar/' . SlimUtils::getRouteArgument($request, 'CalendarAccessToken') . '/fullcalendar';

@@ -12,6 +12,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $app = AppFactory::create();
 $container = $app->getContainer();
 
+$app->setBasePath('/external');
+
 // Set up
 require __DIR__ . '/../Include/slim/error-handler.php';
 
@@ -19,10 +21,6 @@ require __DIR__ . '/../Include/slim/error-handler.php';
 require __DIR__ . '/routes/register.php';
 require __DIR__ . '/routes/verify.php';
 require __DIR__ . '/routes/calendar.php';
-
-if (SystemConfig::debugEnabled()) {
-    $app->addErrorMiddleware(true, true, true);
-}
 
 // Run app
 $app->run();

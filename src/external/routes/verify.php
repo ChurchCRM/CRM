@@ -6,6 +6,8 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 $app->group('/verify', function (RouteCollectorProxy $group) {
     $group->get('/{token}', function (Request $request, Response $response, array $args) {
