@@ -390,7 +390,7 @@ $(document).ready(function () {
     function updateUserSetting(setting, value) {
         window.CRM.APIRequest({
             method: "POST",
-            path: "/user/" + window.CRM.userId + "/setting/" + setting,
+            path: "user/" + window.CRM.userId + "/setting/" + setting,
             dataType: "json",
             data: JSON.stringify({ value: value }),
         }).done(function () {
