@@ -24,7 +24,7 @@ $sWhichReport = InputUtils::legacyFilterInput($_GET['WhichReport']);
 function TopPledgersLevel($iFYID, $iPercent)
 {
     // Get pledges for this fiscal year, highest first
-    $sSQL = 'SELECT plg_Amount FROM pledge_plg 
+    $sSQL = 'SELECT plg_Amount FROM pledge_plg
 			 WHERE plg_FYID = ' . $iFYID . ' AND plg_PledgeOrPayment="Pledge" ORDER BY plg_Amount DESC';
     $rsPledges = RunQuery($sSQL);
     $pledgeCount = mysqli_num_rows($rsPledges);
@@ -142,7 +142,7 @@ function CanvassBriefingSheets($iFYID)
     $iNumQuestions = count($aQuestions);
 
     // Get all the families which need canvassing
-    $sSQL = 'SELECT *, a.per_FirstName AS CanvasserFirstName, a.per_LastName AS CanvasserLastName FROM family_fam 
+    $sSQL = 'SELECT *, a.per_FirstName AS CanvasserFirstName, a.per_LastName AS CanvasserLastName FROM family_fam
 	         LEFT JOIN person_per a ON fam_Canvasser = a.per_ID
 			 WHERE fam_OkToCanvass="TRUE" AND fam_Canvasser>0 ORDER BY fam_Canvasser, fam_Name';
     $rsFamilies = RunQuery($sSQL);
@@ -193,7 +193,7 @@ function CanvassBriefingSheets($iFYID)
         $curY += 5;
 
         // Get pledges for this fiscal year, this family
-        $sSQL = 'SELECT plg_Amount FROM pledge_plg 
+        $sSQL = 'SELECT plg_Amount FROM pledge_plg
 				 WHERE plg_FYID = ' . $iFYID . ' AND plg_PledgeOrPayment="Pledge" AND plg_FamID = ' . $aFamily['fam_ID'] . ' ORDER BY plg_Amount DESC';
         $rsPledges = RunQuery($sSQL);
 
@@ -223,7 +223,7 @@ function CanvassBriefingSheets($iFYID)
 
         //Get the family members for this family
         $sSQL = 'SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender,
-				per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags, 
+				per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags,
 				per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail,
 				cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole
 				FROM person_per

@@ -328,7 +328,6 @@ if ($output === 'pdf') {
             $pdf->SetFont('Courier', '', 9);
             $pdf->Cell(25, $summaryIntervalY, $totalAmountStr, 0, 1, 'R');
             $curY = $pdf->GetY();
-            $curY = $pdf->GetY();
 
             if ($curY > $bottom_border1) {
                 $pdf->addPage();
