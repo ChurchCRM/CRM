@@ -3,6 +3,7 @@
 use ChurchCRM\dto\Notification\UiNotification;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\TaskService;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
