@@ -34,26 +34,19 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
  **/
 class Family
 {
-    public $Members;       // array for member data
-    public $MemberCount;   // obvious
-    public $WeddingDate;   // one per family
-    public $Phone;         // one per family
-    public $Envelope;      // one per family
-    public $_nAdultMale;   // if one adult male
-    public $_nAdultFemale; // and 1 adult female we assume spouses
+    public $Members = [];       // array for member data
+    public $MemberCount = 0;   // obvious
+    public $WeddingDate = '';   // one per family
+    public $Phone = '';         // one per family
+    public $Envelope = 0;      // one per family
+    public $_nAdultMale = 0;   // if one adult male
+    public $_nAdultFemale = 0; // and 1 adult female we assume spouses
     public $_type;         // 0=patriarch, 1=martriarch
 
     // constructor, initialize variables
     public function __construct($famtype)
     {
         $this->_type = $famtype;
-        $this->MemberCount = 0;
-        $this->Envelope = 0;
-        $this->_nAdultMale = 0;
-        $this->_nAdultFemale = 0;
-        $this->Members = [];
-        $this->WeddingDate = '';
-        $this->Phone = '';
     }
 
     /** Add what we need to know about members for role assignment later **/
