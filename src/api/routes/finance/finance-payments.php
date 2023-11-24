@@ -8,15 +8,18 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+use ChurchCRM\Service\FinancialService;
 
 $app->group('/payments', function (RouteCollectorProxy $group) {
     $group->get('/', function (Request $request, Response $response, array $args) {
+        /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');
         return SlimUtils::renderJSON($response, ['payments' => $financialService->getPayments()->toArray()]);
     });
 
     $group->post('/', function (Request $request, Response $response, array $args) {
         $payment = $request->getParsedBody();
+        /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');
         return SlimUtils::renderJSON($response, ['payment' => $financialService->submitPledgeOrPayment($payment)]);
     });
