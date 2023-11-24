@@ -132,8 +132,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->post('/verify/now', function (Request $request, Response $response, array $args) {
         $family = $request->getAttribute('family');
         $family->verify();
-        $response->getBody()->write(json_encode(['message' => 'Success']));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderSuccessJSON($response);
     });
 })->add(FamilyAPIMiddleware::class);

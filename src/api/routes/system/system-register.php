@@ -38,8 +38,6 @@ $app->group('/register', function (RouteCollectorProxy $group) {
         // =Turn off the registration flag so the menu option is less obtrusive
         SystemConfig::setValue('bRegistered', '1');
 
-        $response->getBody()->write(json_encode(['status' => 'success']));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderSuccessJSON($response);
     });
 })->add(AdminRoleAuthMiddleware::class);

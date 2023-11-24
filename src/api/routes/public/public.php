@@ -11,6 +11,5 @@ $app->group('/public', function (RouteCollectorProxy $group) {
 function getEcho(Request $request, Response $response, array $p_args)
 {
     $response->getBody()->write(json_encode(['message' => 'echo']));
-
     return $response->withHeader('Content-Type', 'application/json');
 }

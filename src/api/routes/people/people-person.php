@@ -43,9 +43,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
         }
         $person->delete();
 
-        $response->getBody()->write(json_encode(['status' => 'success']));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);
 
     $group->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
@@ -58,9 +56,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
         $person = $request->getAttribute('person');
         $input = (object)$request->getParsedBody();
         $person->setImageFromBase64($input->imgBase64);
-        $response->getBody()->write(json_encode(['status' => 'success']));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderSuccessJSON($response);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->delete('/photo', function (Request $request, Response $response, array $args) {

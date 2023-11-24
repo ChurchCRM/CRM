@@ -259,9 +259,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
 
-            $response->getBody()->write(json_encode(['status' => 'success']));
-
-            return $response->withHeader('Content-Type', 'application/json');
+            return SlimUtils::renderSuccessJSON($response);
         } else {
             return $response->withStatus(500, gettext('invalid status value'));
         }
@@ -279,9 +277,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
 
-            $response->getBody()->write(json_encode(['status' => 'success']));
-
-            return $response->withHeader('Content-Type', 'application/json');
+            return SlimUtils::renderSuccessJSON($response);
         } else {
             return $response->withStatus(500, gettext('invalid export value'));
         }

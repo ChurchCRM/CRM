@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventCounts;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -141,9 +142,7 @@ function newEvent(Request $request, Response $response, array $args)
     $event->setCalendars($calendars);
     $event->save();
 
-    $response->getBody()->write(json_encode(['status' => 'success']));
-
-    return $response->withHeader('Content-Type', 'application/json');
+    return SlimUtils::renderSuccessJSON($response);
 }
 
 function updateEvent(Request $request, Response $response, array $args)
@@ -176,9 +175,7 @@ function setEventTime($request, Response $response, $args)
     $event->setEnd($input->endTime);
     $event->save();
 
-    $response->getBody()->write(json_encode(['status' => 'success']));
-
-    return $response->withHeader('Content-Type', 'application/json');
+    return SlimUtils::renderSuccessJSON($response);
 }
 
 function unusedSetEventAttendance()
@@ -221,7 +218,5 @@ function deleteEvent(Request $request, Response $response, array $args)
     }
     $event->delete();
 
-    $response->getBody()->write(json_encode(['status' => 'success']));
-
-    return $response->withHeader('Content-Type', 'application/json');
+    return SlimUtils::renderSuccessJSON($response);
 }
