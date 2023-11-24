@@ -342,10 +342,21 @@ if ($output === 'pdf') {
                 }
             }
             $pdf->SetFont('Times', '', 10);
-            $pdf->finishPage($curY);
+            $pdf->finishPage(
+                $curY,
+                $fam_ID,
+                $fam_Name,
+                $fam_Address1,
+                $fam_Address2,
+                $fam_City,
+                $fam_State,
+                $fam_Zip,
+                $fam_Country
+            );
         }
 
         // Start Page for New Family
+        $cnt = 0;
         if ($fam_ID != $currentFamilyID) {
             $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope);
             $summaryDateX = SystemConfig::getValue('leftX');
@@ -367,7 +378,6 @@ if ($output === 'pdf') {
             //$curY = $pdf->GetY();
             $totalAmount = 0;
             $totalNonDeductible = 0;
-            $cnt = 0;
             $currentFamilyID = $fam_ID;
         }
         // Format Data
@@ -453,7 +463,17 @@ if ($output === 'pdf') {
             }
         }
         $pdf->SetFont('Times', '', 10);
-        $pdf->finishPage($curY);
+        $pdf->finishPage(
+            $curY,
+            $fam_ID,
+            $fam_Name,
+            $fam_Address1,
+            $fam_Address2,
+            $fam_City,
+            $fam_State,
+            $fam_Zip,
+            $fam_Country
+        );
     }
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
