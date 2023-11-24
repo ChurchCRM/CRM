@@ -9,9 +9,7 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/cart', function (RouteCollectorProxy $group) {
     $group->get('/', function (Request $request, Response $response, array $args) {
         $cart = ['PeopleCart' => $_SESSION['aPeopleCart']];
-        $response->getBody()->write(json_encode($cart));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderJSON($request, $cart);
     });
 
     $group->post('/', function (Request $request, Response $response, array $args) {
@@ -25,9 +23,7 @@ $app->group('/cart', function (RouteCollectorProxy $group) {
         } else {
             throw new Exception(gettext('POST to cart requires a Persons array, FamilyID, or GroupID'), 500);
         }
-        $response->getBody()->write(json_encode(['status' => 'success']));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderSuccessJSON($response);
     });
 
     $group->post('/emptyToGroup', function (Request $request, Response $response, array $args) {
@@ -43,12 +39,10 @@ $app->group('/cart', function (RouteCollectorProxy $group) {
     $group->post('/removeGroup', function (Request $request, Response $response, array $args) {
         $cartPayload = $request->getParsedBody();
         Cart::removeGroup($cartPayload->Group);
-        $response->getBody()->write(json_encode([
+        return SlimUtils::renderJSON($response, [
             'status' => 'success',
             'message' => gettext('records(s) successfully deleted from the selected Group.'),
-        ]));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        ]);
     });
 
     /**

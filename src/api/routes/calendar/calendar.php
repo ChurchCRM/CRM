@@ -35,9 +35,7 @@ $app->group('/systemcalendars', function (RouteCollectorProxy $group) {
 
 function getSystemCalendars(Request $request, Response $response, array $args)
 {
-    $response->getBody()->write(json_encode(SystemCalendars::getCalendarList()->toJSON()));
-
-    return $response->withHeader('Content-Type', 'application/json');
+    return SlimUtils::renderJSON($response, SystemCalendars::getCalendarList()->toArray());
 }
 
 function getSystemCalendarEvents(Request $request, Response $response, array $args)
@@ -47,9 +45,7 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
     $end = $request->getQueryParams()['end'];
     if ($Calendar) {
         $events = $Calendar->getEvents($start, $end);
-        $response->getBody()->write(json_encode($events));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderJSON($response, $events);
     }
 }
 
@@ -59,7 +55,6 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 
     if ($Calendar) {
         $event = $Calendar->getEventById($args['eventid']);
-
         return SlimUtils::renderJSON($response, $event);
     }
 }
@@ -88,9 +83,7 @@ function getUserCalendars(Request $request, Response $response, array $args)
     }
     $Calendars = $CalendarQuery->find();
     if ($Calendars) {
-        $response->getBody()->write(json_encode($Calendars->toJSON()));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderJSON($response, $Calendars->toArray());
     }
 }
 
@@ -102,7 +95,7 @@ function getUserCalendarEvents(Request $request, Response $response, array $p_ar
             ->filterByCalendar($Calendar)
             ->find();
         if ($Events) {
-            return SlimUtils::renderJSON($response, $Events);
+            return SlimUtils::renderJSON($response, $Events->toArray());
         }
     }
 }
