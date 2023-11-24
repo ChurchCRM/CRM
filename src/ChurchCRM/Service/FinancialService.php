@@ -84,15 +84,6 @@ class FinancialService
         return $deposit_total;
     }
 
-    public function getPaymentJSON($payments)
-    {
-        if ($payments) {
-            return json_encode(['payments' => $payments], JSON_THROW_ON_ERROR);
-        } else {
-            return false;
-        }
-    }
-
     public function getPayments($depID)
     {
         requireUserGroupMembership('bFinance');

@@ -12,19 +12,13 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/payments', function (RouteCollectorProxy $group) {
     $group->get('/', function (Request $request, Response $response, array $args) {
         $financialService = $this->get('FinancialService');
-        $response->getBody()->write(json_encode($financialService->getPaymentJSON($financialService->getPayments())));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderJSON($request,['payments' => $financialService->getPayments()->toArray()]);
     });
 
     $group->post('/', function (Request $request, Response $response, array $args) {
         $payment = $request->getParsedBody();
         $financialService = $this->get('FinancialService');
-
-        echo json_encode(
-            ['payment' => $financialService->submitPledgeOrPayment($payment)],
-            JSON_THROW_ON_ERROR
-        );
+        return SlimUtils::renderJSON($request, ['payment' => $financialService->submitPledgeOrPayment($payment)]);
     });
 
     $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
@@ -59,15 +53,13 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
             array_push($rows, $newRow);
         }
 
-        $response->getBody()->write(json_encode(['data' => $rows]));
-
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderJSON($request, ['data' => $rows]);
     });
 
     $group->delete('/{groupKey}', function (Request $request, Response $response, array $args) {
         $groupKey = $args['groupKey'];
         $financialService = $this->get('FinancialService');
         $financialService->deletePayment($groupKey);
-        echo json_encode(['status' => 'ok']);
+        return SlimUtils::renderSuccessJSON($request);
     });
 })->add(FinanceRoleAuthMiddleware::class);
