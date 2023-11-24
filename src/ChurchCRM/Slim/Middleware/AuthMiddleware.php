@@ -12,7 +12,7 @@ class AuthMiddleware
 {
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
-        if (!str_contains($request->getUri(),'api/public')) {
+        if (!str_contains($request->getUri(), 'api/public')) {
             $apiKey = $request->getHeader('x-api-key');
             if (!empty($apiKey)) {
                 $authenticationResult = AuthenticationManager::authenticate(new APITokenAuthenticationRequest($apiKey[0]));
