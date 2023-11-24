@@ -25,6 +25,28 @@ class PdfDirectory extends ChurchInfoReport
     public $_NCols = 3;
     public $_PS = 'Letter';
     public $sSortBy = '';
+    private string $sChurchNameEncoded;
+    private string $sChurchAddressEncoded;
+    private string $sChurchCityEncoded;
+    private string $sChurchStateEncoded;
+
+    public function __construct($nc = 1, $paper = 'letter', $fs = 10, $ls = 4)
+    {
+        parent::__construct('P', 'mm', $paper);
+        $this->_Char_Size = $fs;
+        $this->_LS = $ls;
+        $this->SetMargins(0, 0);
+
+        $this->setCharSize($this->_Char_Size);
+        $this->SetAutoPageBreak(false);
+        $this->_NCols = $nc;
+        $this->_ColWidth = 190 / $nc - $this->_Gutter;
+
+        $this->sChurchNameEncoded = iconv('UTF-8', 'ISO-8859-1', SystemConfig::getValue('sChurchName'));
+        $this->sChurchAddressEncoded = iconv('UTF-8', 'ISO-8859-1', SystemConfig::getValue('sChurchAddress'));
+        $this->sChurchCityEncoded = iconv('UTF-8', 'ISO-8859-1', SystemConfig::getValue('sChurchCity'));
+        $this->sChurchStateEncoded = iconv('UTF-8', 'ISO-8859-1', SystemConfig::getValue('sChurchState'));
+    }
 
     public function header()
     {
@@ -38,7 +60,14 @@ class PdfDirectory extends ChurchInfoReport
             //Move to the right
             $this->SetX($this->_Margin_Left);
             //Framed title
-            $this->Cell($this->w - ($this->_Margin_Left * 2), 10, SystemConfig::getValue('sChurchName') . ' - ' . gettext('Directory'), 1, 0, 'C');
+            $this->Cell(
+                $this->w - ($this->_Margin_Left * 2),
+                10,
+                $this->sChurchNameEncoded . ' - ' . gettext('Directory'),
+                1,
+                0,
+                'C'
+            );
             $this->SetY(25);
         }
     }
@@ -74,12 +103,25 @@ class PdfDirectory extends ChurchInfoReport
         //Line break
         $this->Ln(5);
         //Move to the right
-        $this->MultiCell(197, 10, "\n\n\n" . SystemConfig::getValue('sChurchName') . "\n\n" . gettext('Directory') . "\n\n", 0, 'C');
+        $this->MultiCell(
+            197,
+            10,
+            "\n\n\n" . $this->sChurchNameEncoded . "\n\n" . gettext('Directory') . "\n\n",
+            0,
+            'C'
+        );
         $this->Ln(5);
         $today = date(SystemConfig::getValue('sDateFormatLong'));
         $this->MultiCell(197, 10, $today . "\n\n", 0, 'C');
 
-        $sContact = sprintf("%s\n%s, %s  %s\n\n%s\n\n", SystemConfig::getValue('sChurchAddress'), SystemConfig::getValue('sChurchCity'), SystemConfig::getValue('sChurchState'), SystemConfig::getValue('sChurchZip'), SystemConfig::getValue('sChurchPhone'));
+        $sContact = sprintf(
+            "%s\n%s, %s  %s\n\n%s\n\n",
+            $this->sChurchAddressEncoded,
+            $this->sChurchCityEncoded,
+            $this->sChurchStateEncoded,
+            SystemConfig::getValue('sChurchZip'),
+            SystemConfig::getValue('sChurchPhone')
+        );
         $this->MultiCell(197, 10, $sContact, 0, 'C');
         $this->Cell(10);
         $sDirectoryDisclaimer = iconv('UTF-8', 'ISO-8859-1', $sDirectoryDisclaimer);
@@ -95,20 +137,6 @@ class PdfDirectory extends ChurchInfoReport
             $this->_Char_Size = $pt;
             $this->SetFont($this->_Font, '', $this->_Char_Size);
         }
-    }
-
-    // Constructor
-    public function __construct($nc = 1, $paper = 'letter', $fs = 10, $ls = 4)
-    {
-        parent::__construct('P', 'mm', $paper);
-        $this->_Char_Size = $fs;
-        $this->_LS = $ls;
-        $this->SetMargins(0, 0);
-
-        $this->setCharSize($this->_Char_Size);
-        $this->SetAutoPageBreak(false);
-        $this->_NCols = $nc;
-        $this->_ColWidth = 190 / $nc - $this->_Gutter;
     }
 
     public function addCustomField($order, $use)
