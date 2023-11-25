@@ -83,8 +83,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
     }
 
     $family->save();
-
-    return $response->withHeader('Content-Type', 'application/json')->write($family->exportTo('JSON'));
+    return SlimUtils::renderJSON($response, $family->toArray());
 }
 
 function registerPersonAPI(Request $request, Response $response, array $args)
