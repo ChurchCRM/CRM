@@ -15,7 +15,7 @@ $app->setBasePath('/v2');
 
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
-
+$app->addBodyParsingMiddleware();
 
 // common
 require __DIR__ . '/../Include/slim/error-handler.php';

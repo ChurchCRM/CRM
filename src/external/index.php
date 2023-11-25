@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
 
 require '../Include/Config.php';
@@ -10,9 +11,13 @@ require '../Include/Config.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
-$container = $app->getContainer();
-
 $app->setBasePath('/external');
+
+$app->add(VersionMiddleware::class);
+$app->addRoutingMiddleware();
+$app->addBodyParsingMiddleware();
+
+$container = $app->getContainer();
 
 // Set up
 require __DIR__ . '/../Include/slim/error-handler.php';

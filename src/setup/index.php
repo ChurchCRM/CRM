@@ -22,11 +22,11 @@ $app->setBasePath('/setup');
 
 require __DIR__ . '/../Include/slim/error-handler.php';
 
+$app->add(VersionMiddleware::class);
 $app->addRoutingMiddleware();
-$app->add(new VersionMiddleware());
-$container = $app->getContainer();
-
 $app->addBodyParsingMiddleware();
+
+$container = $app->getContainer();
 
 require __DIR__ . '/routes/setup.php';
 
