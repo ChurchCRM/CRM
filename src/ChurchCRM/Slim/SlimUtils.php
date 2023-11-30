@@ -5,9 +5,9 @@ namespace ChurchCRM\Slim\Request;
 use ChurchCRM\dto\Photo;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteContext;
 use Slim\HttpCache\CacheProvider;
-use Psr\Http\Message\StreamInterface;
 
 class SlimUtils
 {
