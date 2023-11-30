@@ -14,8 +14,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/groups', function (RouteCollectorProxy $group) {
-    $group->get('/', function () {
-        echo GroupQuery::create()->find()->toJSON();
+    $group->get('/', function (Request $request, Response $response) {
+        return SlimUtils::renderJSON($response, GroupQuery::create()->find()->toArray());
     });
 
     // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
