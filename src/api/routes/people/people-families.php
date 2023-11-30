@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -100,8 +101,11 @@ $app->group('/families', function (RouteCollectorProxy $group) {
 
     $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args) {
         $scanString = $args['scanString'];
+
+        /** @var FinancialService $financialService */
         $financialService = $this->get('FinancialService');
-        echo $financialService->getMemberByScanString($scanString);
+
+        return SlimUtils::renderJSON($response, $financialService->getMemberByScanString($scanString));
     });
 
     /**

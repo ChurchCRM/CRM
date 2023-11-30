@@ -88,7 +88,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
  * @param \Slim\Http\Response $p_response The response.
  * @param array               $p_args     Arguments
  *
- * @return \Slim\Http\Response The augmented response.
+ * @return Response The augmented response.
  */
 function exportChMeetings(Request $request, Response $response, array $p_args)
 {
@@ -115,28 +115,30 @@ function exportChMeetings(Request $request, Response $response, array $p_args)
         array_push($list, $chPerson);
     }
 
-    $stream = fopen('php://memory', 'w+');
-    fputcsv($stream, $header_data);
+    $out = fopen('php://temp', 'w+');
+    fputcsv($out, $header_data);
     foreach ($list as $fields) {
-        fputcsv($stream, $fields, ',');
+        fputcsv($out, $fields, ',');
     }
-
-    rewind($stream);
+    rewind($out);
+    $csvData = stream_get_contents($out);
+    fclose($out);
 
     $response = $response->withHeader('Content-Type', 'text/csv');
     $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv"');
+    $response->getBody()->write($csvData);
 
-    return $response->withBody(new \Slim\Http\Stream($stream));
+    return $response;
 }
 
 /**
  * A method that drops all db tables.
  *
- * @param \Slim\Http\Request  $p_request  The request.
- * @param \Slim\Http\Response $p_response The response.
- * @param array               $p_args     Arguments
+ * @param Request  $request  The request.
+ * @param Response $response The response.
+ * @param array               $args     Arguments
  *
- * @return \Slim\Http\Response The augmented response.
+ * @return Response The augmented response.
  */
 function resetDatabase(Request $request, Response $response, array $p_args)
 {
