@@ -20,31 +20,31 @@ class FinancialService
         PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
-    public function getMemberByScanString($tScanString)
+    public function getMemberByScanString($tScanString): array
     {
         requireUserGroupMembership('bFinance');
-        if (SystemConfig::getValue('bUseScannedChecks')) {
-            $micrObj = new MICRFunctions(); // Instantiate the MICR class
-            $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
-            if ($routeAndAccount) {
-                $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
-                $rsFam = RunQuery($sSQL);
-                $row = mysqli_fetch_array($rsFam);
-                $iCheckNo = $micrObj->findCheckNo($tScanString);
 
-                return json_encode([
-                    'ScanString'      => $tScanString,
-                    'RouteAndAccount' => $routeAndAccount,
-                    'CheckNumber'     => $iCheckNo,
-                    'fam_ID'          => $row['fam_ID'],
-                    'fam_Name'        => $row['fam_Name'],
-                ], JSON_THROW_ON_ERROR);
-            } else {
-                throw new \Exception('error in locating family');
-            }
-        } else {
+        if (!SystemConfig::getValue('bUseScannedChecks')) {
             throw new \Exception('Scanned Checks is disabled');
         }
+
+        $micrObj = new MICRFunctions(); // Instantiate the MICR class
+        $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
+        if (!$routeAndAccount) {
+            throw new \Exception('error in locating family');
+        }
+        $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
+        $rsFam = RunQuery($sSQL);
+        $row = mysqli_fetch_array($rsFam);
+        $iCheckNo = $micrObj->findCheckNo($tScanString);
+
+        return [
+            'ScanString'      => $tScanString,
+            'RouteAndAccount' => $routeAndAccount,
+            'CheckNumber'     => $iCheckNo,
+            'fam_ID'          => $row['fam_ID'],
+            'fam_Name'        => $row['fam_Name'],
+        ];
     }
 
     public function setDeposit($depositType, $depositComment, $depositDate, $iDepositSlipID = null, $depositClosed = false)
