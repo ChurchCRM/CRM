@@ -169,7 +169,7 @@ function NewCalendar(Request $request, Response $response, $args)
 {
     $input = $request->getParsedBody();
     $Calendar = new Calendar();
-    $Calendar->setName($input->Name);
+    $Calendar->setName($input['Name']);
     $Calendar->setForegroundColor($input['ForegroundColor']);
     $Calendar->setBackgroundColor($input['BackgroundColor']);
     $Calendar->save();
