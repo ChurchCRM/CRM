@@ -5,10 +5,6 @@
 window.CRM.APIRequest = function (options) {
     if (!options.method) {
         options.method = "GET";
-    } else if (options.method === "DELETE") {
-        options.method = "POST";
-        options.data = JSON.stringify({ _METHOD: "DELETE" });
-        options.dataType = "json";
     } else {
         options.dataType = "json";
     }
