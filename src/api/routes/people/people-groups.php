@@ -171,7 +171,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         $note->save();
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
-            ->filterByPersonId($input->PersonID)
+            ->filterByPersonId($input['PersonID'])
             ->findByGroupId($groupID);
         return SlimUtils::renderJSON($response, $members->toArray());
     });
