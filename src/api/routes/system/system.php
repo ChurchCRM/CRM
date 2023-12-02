@@ -14,14 +14,14 @@ $app->group('/system', function (RouteCollectorProxy $group) {
     $group->post('/background/csp-report', 'logCSPReportAPI');
 });
 
-function logCSPReportAPI(Request $request, Response $response, array $args)
+function logCSPReportAPI(Request $request, Response $response, array $args): Response
 {
     $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     $log = json_encode($input, JSON_PRETTY_PRINT);
     LoggerUtils::getCSPLogger()->debug($log);
 }
 
-function getUiNotificationAPI(Request $request, Response $response, array $args)
+function getUiNotificationAPI(Request $request, Response $response, array $args): Response
 {
     if (NotificationService::isUpdateRequired()) {
         NotificationService::updateNotifications();

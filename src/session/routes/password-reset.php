@@ -18,7 +18,8 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group) {
     if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
         $group->get('/reset-request', 'forgotPassword');
         $group->post('/reset-request', 'userPasswordReset');
-        $group->get('/set/{token}', function (Request $request, Response $response, array $args) {
+        $group->get('/set/{token}', function (Request $request, Response $response, array $args): Response
+        {
             $renderer = new PhpRenderer('templates');
             $token = TokenQuery::create()->findPk($args['token']);
             $haveUser = false;
@@ -45,7 +46,8 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group) {
             return $renderer->render($response, 'error.php', ['message' => gettext('Unable to reset password')]);
         });
     } else {
-        $group->get('/{foo:.*}', function (Request $request, Response $response, array $args) {
+        $group->get('/{foo:.*}', function (Request $request, Response $response, array $args): Response
+        {
             $renderer = new PhpRenderer('templates');
 
             return $renderer->render($response, '/error.php', ['message' => gettext('Password reset not available.  Please contact your system administrator')]);

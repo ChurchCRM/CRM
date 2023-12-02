@@ -14,12 +14,12 @@ $app->group('/system/config/{configName}', function (RouteCollectorProxy $group)
     $group->post('/', 'setConfigValueByNameAPI');
 })->add(AdminRoleAuthMiddleware::class);
 
-function getConfigValueByNameAPI(Request $request, Response $response, array $args)
+function getConfigValueByNameAPI(Request $request, Response $response, array $args): Response
 {
     return SlimUtils::renderJSON($response, ['value' => SystemConfig::getValue($args['configName'])]);
 }
 
-function setConfigValueByNameAPI(Request $request, Response $response, array $args)
+function setConfigValueByNameAPI(Request $request, Response $response, array $args): Response
 {
     $configName = $args['configName'];
     $input = $request->getParsedBody();

@@ -33,7 +33,7 @@ $app->group('/events', function (RouteCollectorProxy $group) {
     $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
 });
 
-function getAllEvents($request, Response $response, $args)
+function getAllEvents(Request $request, Response $response, array $args): Response
 {
     $Events = EventQuery::create()
         ->find();
@@ -43,7 +43,7 @@ function getAllEvents($request, Response $response, $args)
     return $response->withStatus(404);
 }
 
-function getEventTypes($request, Response $response, $args)
+function getEventTypes(Request $request, Response $response, array $args): Response
 {
     $EventTypes = EventTypeQuery::Create()
         ->orderByName()
@@ -64,7 +64,7 @@ function getEvent(Request $request, Response $response, $args)
     return $response->withStatus(404);
 }
 
-function getEventPrimaryContact(Request $request, Response $response, array $args)
+function getEventPrimaryContact(Request $request, Response $response, array $args): Response
 {
     $Event = EventQuery::create()
         ->findOneById($args['id']);
@@ -77,7 +77,7 @@ function getEventPrimaryContact(Request $request, Response $response, array $arg
     return $response->withStatus(404);
 }
 
-function getEventSecondaryContact(Request $request, Response $response, array $args)
+function getEventSecondaryContact(Request $request, Response $response, array $args): Response
 {
     $Contact = EventQuery::create()
         ->findOneById($args['id'])
@@ -88,7 +88,7 @@ function getEventSecondaryContact(Request $request, Response $response, array $a
     return $response->withStatus(404);
 }
 
-function getEventLocation(Request $request, Response $response, array $args)
+function getEventLocation(Request $request, Response $response, array $args): Response
 {
     $Location = EventQuery::create()
         ->findOneById($args['id'])
@@ -100,7 +100,7 @@ function getEventLocation(Request $request, Response $response, array $args)
     return $response->withStatus(404);
 }
 
-function getEventAudience($request, Response $response, $args)
+function getEventAudience(Request $request, Response $response, array $args): Response
 {
     $Audience = EventQuery::create()
         ->findOneById($args['id'])
@@ -112,7 +112,7 @@ function getEventAudience($request, Response $response, $args)
     return $response->withStatus(404);
 }
 
-function newEvent(Request $request, Response $response, array $args)
+function newEvent(Request $request, Response $response, array $args): Response
 {
     $input = $request->getParsedBody();
 
@@ -144,7 +144,7 @@ function newEvent(Request $request, Response $response, array $args)
     return SlimUtils::renderSuccessJSON($response);
 }
 
-function updateEvent(Request $request, Response $response, array $args)
+function updateEvent(Request $request, Response $response, array $args): Response
 {
     $e = new Event();
     //$e->getId();
@@ -161,7 +161,7 @@ function updateEvent(Request $request, Response $response, array $args)
     $Event->save();
 }
 
-function setEventTime($request, Response $response, $args)
+function setEventTime(Request $request, Response $response, array $args): Response
 {
     $input = $request->getParsedBody();
 
@@ -206,7 +206,7 @@ function unusedSetEventAttendance()
     }
 }
 
-function deleteEvent(Request $request, Response $response, array $args)
+function deleteEvent(Request $request, Response $response, array $args): Response
 {
     $event = EventQuery::Create()->findOneById($args['id']);
     if (!$event) {

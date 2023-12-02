@@ -11,7 +11,7 @@ $app->group('/system/debug', function (RouteCollectorProxy $group) {
     $group->get('/urls', 'getSystemURLAPI');
 })->add(AdminRoleAuthMiddleware::class);
 
-function getSystemURLAPI(Request $request, Response $response, array $args)
+function getSystemURLAPI(Request $request, Response $response, array $args): Response
 {
     return SlimUtils::renderJSON($response, [
         'RootPath' => SystemURLs::getRootPath(),

@@ -24,7 +24,8 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
     $group->get('/birthday', 'getPersonsWithBirthdays');
 
     // search person by Name
-    $group->get('/search/{query}', function (Request $request, Response $response, array $args) {
+    $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response
+    {
         $query = $args['query'];
 
         $searchLikeString = '%' . $query . '%';
@@ -51,10 +52,11 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
 
     $group->get(
         '/numbers',
-        fn (Request $request, Response $response, array $args) => SlimUtils::renderJSON($response, MenuEventsCount::getNumberBirthDates())
+        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, MenuEventsCount::getNumberBirthDates())
     );
 
-    $group->get('/self-register', function (Request $request, Response $response, array $args) {
+    $group->get('/self-register', function (Request $request, Response $response, array $args): Response
+    {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
@@ -65,7 +67,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
     });
 });
 
-function getAllRolesAPI(Request $request, Response $response, array $args)
+function getAllRolesAPI(Request $request, Response $response, array $args): Response
 {
     $roles = ListOptionQuery::create()->getFamilyRoles();
 
@@ -75,7 +77,7 @@ function getAllRolesAPI(Request $request, Response $response, array $args)
 /**
  * A method that review dup emails in the db and returns families and people where that email is used.
  */
-function getEmailDupesAPI(Request $request, Response $response, array $args)
+function getEmailDupesAPI(Request $request, Response $response, array $args): Response
 {
     $connection = Propel::getConnection();
     $dupEmailsSQL = "select email, total from ( SELECT email, COUNT(*) AS total FROM ( SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != '' UNION SELECT per_email AS email, 'person_home' AS type, per_id AS id FROM person_per WHERE per_email IS NOT NULL AND per_email != '' UNION SELECT per_WorkEmail AS email, 'person_work' AS type, per_id AS id FROM person_per WHERE per_WorkEmail IS NOT NULL AND per_WorkEmail != '') as allEmails group by email) as dupEmails where total > 1";
@@ -106,7 +108,7 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
     return SlimUtils::renderJSON($response, ['emails' => $emails]);
 }
 
-function getLatestPersons(Request $request, Response $response, array $args)
+function getLatestPersons(Request $request, Response $response, array $args): Response
 {
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
@@ -118,7 +120,7 @@ function getLatestPersons(Request $request, Response $response, array $args)
     return SlimUtils::renderJSON($response, buildFormattedPersonList($people, true, false, false));
 }
 
-function getUpdatedPersons(Request $request, Response $response, array $args)
+function getUpdatedPersons(Request $request, Response $response, array $args): Response
 {
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
@@ -130,7 +132,7 @@ function getUpdatedPersons(Request $request, Response $response, array $args)
     return SlimUtils::renderJSON($response, buildFormattedPersonList($people, false, true, false));
 }
 
-function getPersonsWithBirthdays(Request $request, Response $response, array $args)
+function getPersonsWithBirthdays(Request $request, Response $response, array $args): Response
 {
     $people = PersonQuery::create()
         ->filterByBirthMonth(date('m'))

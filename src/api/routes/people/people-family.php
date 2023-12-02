@@ -22,26 +22,30 @@ use Slim\HttpCache\CacheProvider;
 $app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
 
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
-    $group->get('/photo', function (Request $request, Response $response, array $args) {
+    $group->get('/photo', function (Request $request, Response $response, array $args): Response
+    {
         $photo = new Photo('Family', $args['familyId']);
         return SlimUtils::renderPhoto($response, $photo);
     });
 
-    $group->post('/photo', function (Request $request, Response $response, array $args) {
-        $input = (object)$request->getParsedBody();
+    $group->post('/photo', function (Request $request, Response $response, array $args): Response
+    {
+        $input = $request->getParsedBody();
         $family = $request->getAttribute('family');
-        $family->setImageFromBase64($input->imgBase64);
+        $family->setImageFromBase64($input['imgBase64']);
 
         return $response->withStatus(200);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
-    $group->delete('/photo', function (Request $request, Response $response, array $args) {
+    $group->delete('/photo', function (Request $request, Response $response, array $args): Response
+    {
         $family = $request->getAttribute('family');
 
         return SlimUtils::renderJSON($response, ['status' => $family->deletePhoto()]);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
-    $group->get('/thumbnail', function (Request $request, Response $response, array $args) {
+    $group->get('/thumbnail', function (Request $request, Response $response, array $args): Response
+    {
         $this->cache->withExpires(
             $response,
             MiscUtils::getPhotoCacheExpirationTimestamp()
@@ -53,7 +57,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
             ->withHeader('Content-type', $photo->getThumbnailContentType());
     });
 
-    $group->get('', function (Request $request, Response $response, array $args) {
+    $group->get('', function (Request $request, Response $response, array $args): Response
+    {
         $family = $request->getAttribute('family');
 
         return $response
@@ -61,7 +66,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
             ->write($family->exportTo('JSON'));
     });
 
-    $group->get('/geolocation', function (Request $request, Response $response, array $args) {
+    $group->get('/geolocation', function (Request $request, Response $response, array $args): Response
+    {
         $family = $request->getAttribute('family');
         $familyAddress = $family->getAddress();
         $familyLatLong = GeoUtils::getLatLong($familyAddress);
@@ -74,7 +80,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, $geoLocationInfo);
     });
 
-    $group->get('/nav', function (Request $request, Response $response, array $args) {
+    $group->get('/nav', function (Request $request, Response $response, array $args): Response
+    {
         $family = $request->getAttribute('family');
         $familyNav = [];
         $familyNav['PreFamilyId'] = 0;
@@ -98,7 +105,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, $familyNav);
     });
 
-    $group->post('/verify', function (Request $request, Response $response, array $args) {
+    $group->post('/verify', function (Request $request, Response $response, array $args): Response
+    {
         $family = $request->getAttribute('family');
 
         try {
@@ -115,7 +123,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         }
     });
 
-    $group->get('/verify/url', function (Request $request, Response $response, array $args) {
+    $group->get('/verify/url', function (Request $request, Response $response, array $args): Response
+    {
         $family = $request->getAttribute('family');
         TokenQuery::create()
             ->filterByType('verifyFamily')
@@ -129,7 +138,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, ['url' => SystemURLs::getURL() . '/external/verify/' . $token->getToken()]);
     });
 
-    $group->post('/verify/now', function (Request $request, Response $response, array $args) {
+    $group->post('/verify/now', function (Request $request, Response $response, array $args): Response
+    {
         $family = $request->getAttribute('family');
         $family->verify();
         return SlimUtils::renderSuccessJSON($response);

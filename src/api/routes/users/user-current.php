@@ -16,7 +16,7 @@ $app->group('/user/current', function (RouteCollectorProxy $group) {
     $group->get('/get2faqrcode', 'get2faqrcode');
 });
 
-function refresh2fasecret(Request $request, Response $response, array $args)
+function refresh2fasecret(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
     $secret = $user->provisionNew2FAKey();
@@ -25,14 +25,14 @@ function refresh2fasecret(Request $request, Response $response, array $args)
     return SlimUtils::renderJSON($response, ['TwoFAQRCodeDataUri' => LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $secret)->writeDataUri()]);
 }
 
-function refresh2farecoverycodes(Request $request, Response $response, array $args)
+function refresh2farecoverycodes(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
 
     return SlimUtils::renderJSON($response, ['TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()]);
 }
 
-function remove2fasecret(Request $request, Response $response, array $args)
+function remove2fasecret(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
     $user->remove2FAKey();
@@ -40,7 +40,7 @@ function remove2fasecret(Request $request, Response $response, array $args)
     return SlimUtils::renderJSON($response, []);
 }
 
-function get2faqrcode(Request $request, Response $response, array $args)
+function get2faqrcode(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
     $response = $response->withHeader('Content-Type', 'image/png');
@@ -48,7 +48,7 @@ function get2faqrcode(Request $request, Response $response, array $args)
     return $response->write(LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $user->getDecryptedTwoFactorAuthSecret())->writeString());
 }
 
-function test2FAEnrollmentCode(Request $request, Response $response, array $args)
+function test2FAEnrollmentCode(Request $request, Response $response, array $args): Response
 {
     $requestParsedBody = $request->getParsedBody();
     $user = AuthenticationManager::getCurrentUser();

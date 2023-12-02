@@ -9,7 +9,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/kiosks', function (RouteCollectorProxy $group) {
-    $group->get('/', function (Request $request, Response $response, array $args) {
+    $group->get('/', function (Request $request, Response $response, array $args): Response
+    {
         $Kiosks = KioskDeviceQuery::create()
             ->joinWithKioskAssignment(Criteria::LEFT_JOIN)
             ->useKioskAssignmentQuery()
@@ -19,7 +20,8 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
         return SlimUtils::renderStringJSON($response, $Kiosks->toJSON());
     });
 
-    $group->post('/allowRegistration', function (Request $request, Response $response, array $args) {
+    $group->post('/allowRegistration', function (Request $request, Response $response, array $args): Response
+    {
         $window = new \DateTime();
         $window->add(new \DateInterval('PT05S'));
         SystemConfig::setValue('sKioskVisibilityTimestamp', $window->format('Y-m-d H:i:s'));
@@ -27,7 +29,8 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, ['visibleUntil' => $window]);
     });
 
-    $group->post('/{kioskId:[0-9]+}/reloadKiosk', function (Request $request, Response $response, array $args) {
+    $group->post('/{kioskId:[0-9]+}/reloadKiosk', function (Request $request, Response $response, array $args): Response
+    {
         $kioskId = $args['kioskId'];
         $reload = KioskDeviceQuery::create()
             ->findOneById($kioskId)
@@ -36,7 +39,8 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, $reload->toArray());
     });
 
-    $group->post('/{kioskId:[0-9]+}/identifyKiosk', function (Request $request, Response $response, array $args) {
+    $group->post('/{kioskId:[0-9]+}/identifyKiosk', function (Request $request, Response $response, array $args): Response
+    {
         $kioskId = $args['kioskId'];
         $identify = KioskDeviceQuery::create()
             ->findOneById($kioskId)
@@ -45,7 +49,8 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, $identify->toArray());
     });
 
-    $group->post('/{kioskId:[0-9]+}/acceptKiosk', function (Request $request, Response $response, array $args) {
+    $group->post('/{kioskId:[0-9]+}/acceptKiosk', function (Request $request, Response $response, array $args): Response
+    {
         $kioskId = $args['kioskId'];
         $accept = KioskDeviceQuery::create()
             ->findOneById($kioskId)
@@ -55,7 +60,8 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, $accept->toArray());
     });
 
-    $group->post('/{kioskId:[0-9]+}/setAssignment', function (Request $request, Response $response, array $args) {
+    $group->post('/{kioskId:[0-9]+}/setAssignment', function (Request $request, Response $response, array $args): Response
+    {
         $kioskId = $args['kioskId'];
         $input = $request->getParsedBody();
         $accept = KioskDeviceQuery::create()

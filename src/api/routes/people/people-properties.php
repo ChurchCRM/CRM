@@ -30,7 +30,7 @@ $app->group('/people/properties', function (RouteCollectorProxy $group) {
     $group->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
 })->add(MenuOptionsRoleAuthMiddleware::class);
 
-function getAllPersonProperties(Request $request, Response $response, array $args)
+function getAllPersonProperties(Request $request, Response $response, array $args): Response
 {
     $properties = PropertyQuery::create()
         ->filterByProClass('p')
@@ -39,21 +39,21 @@ function getAllPersonProperties(Request $request, Response $response, array $arg
     return SlimUtils::renderJSON($response, $properties->toArray());
 }
 
-function addPropertyToPerson(Request $request, Response $response, array $args)
+function addPropertyToPerson(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');
 
     return addProperty($request, $response, $person->getId(), $request->getAttribute('property'));
 }
 
-function removePropertyFromPerson(Request $request, Response $response, array $args)
+function removePropertyFromPerson(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');
 
     return removeProperty($response, $person->getId(), $request->getAttribute('property'));
 }
 
-function getAllFamilyProperties(Request $request, Response $response, array $args)
+function getAllFamilyProperties(Request $request, Response $response, array $args): Response
 {
     $properties = PropertyQuery::create()
         ->filterByProClass('f')
@@ -62,14 +62,14 @@ function getAllFamilyProperties(Request $request, Response $response, array $arg
     return SlimUtils::renderJSON($response, $properties->toArray());
 }
 
-function getPersonProperties(Request $request, Response $response, array $args)
+function getPersonProperties(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');
 
     return getProperties($response, 'p', $person->getId());
 }
 
-function getFamilyProperties(Request $request, Response $response, array $args)
+function getFamilyProperties(Request $request, Response $response, array $args): Response
 {
     $family = $request->getAttribute('family');
 
@@ -105,14 +105,14 @@ function getProperties(Response $response, $type, $id)
     return SlimUtils::renderJSON($response, $finalProperties);
 }
 
-function addPropertyToFamily(Request $request, Response $response, array $args)
+function addPropertyToFamily(Request $request, Response $response, array $args): Response
 {
     $family = $request->getAttribute('family');
 
     return addProperty($request, $response, $family->getId(), $request->getAttribute('property'));
 }
 
-function removePropertyFromFamily(Request $request, Response $response, array $args)
+function removePropertyFromFamily(Request $request, Response $response, array $args): Response
 {
     $family = $request->getAttribute('family');
 

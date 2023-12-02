@@ -18,14 +18,14 @@ $app->group('/system/menu', function (RouteCollectorProxy $group) {
     $group->delete('/{linkId:[0-9]+}', 'delMenu');
 })->add(AdminRoleAuthMiddleware::class);
 
-function getMenus(Request $request, Response $response, array $args)
+function getMenus(Request $request, Response $response, array $args): Response
 {
     $links = MenuLinkQuery::create()->orderByOrder()->find();
 
     return SlimUtils::renderJSON($response, ['menus' => $links->toArray()]);
 }
 
-function addMenu(Request $request, Response $response, array $args)
+function addMenu(Request $request, Response $response, array $args): Response
 {
     $link = new MenuLink();
     $link->fromJSON($request->getBody());
@@ -40,7 +40,7 @@ function addMenu(Request $request, Response $response, array $args)
         'failures' => ORMUtils::getValidationErrors($link->getValidationFailures())], 400);
 }
 
-function delMenu(Request $request, Response $response, array $args)
+function delMenu(Request $request, Response $response, array $args): Response
 {
     $link = MenuLinkQuery::create()->findPk($args['linkId']);
     if (empty($link)) {

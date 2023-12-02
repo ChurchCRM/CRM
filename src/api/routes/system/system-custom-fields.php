@@ -12,16 +12,7 @@ $app->group('/system/custom-fields', function (RouteCollectorProxy $group) {
     $group->get('/person/', 'getPersonFieldsByType');
 })->add(AdminRoleAuthMiddleware::class);
 
-/**
- * A method that does the work to handle getting an existing person custom fields by type.
- *
- * @param \Slim\Http\Request $p_request The request.
- * @param \Slim\Http\Response $p_response The response.
- * @param array $p_args Arguments
- *
- * @return \Slim\Http\Response The augmented response.
- */
-function getPersonFieldsByType(Request $request, Response $response, array $p_args)
+function getPersonFieldsByType(Request $request, Response $response, array $args): Response
 {
     $params = $request->getQueryParams();
     $typeId = $params['typeId'];

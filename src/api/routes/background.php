@@ -12,14 +12,14 @@ $app->group('/background', function (RouteCollectorProxy $group) {
     $group->post('/timerjobs', 'runTimerJobsAPI');
 });
 
-function getPageCommonData(Request $request, Response $response, array $p_args)
+function getPageCommonData(Request $request, Response $response, array $args): Response
 {
     $pageName = $request->getQueryParams()['name'];
     $DashboardValues = NewDashboardService::getValues($pageName);
     return SlimUtils::renderJSON($response, $DashboardValues);
 }
 
-function runTimerJobsAPI(Request $request, Response $response, array $p_args)
+function runTimerJobsAPI(Request $request, Response $response, array $args): Response
 {
     SystemService::runTimerJobs();
     return $response;

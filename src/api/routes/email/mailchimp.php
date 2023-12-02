@@ -19,7 +19,7 @@ $app->group('/mailchimp/', function (RouteCollectorProxy $group) {
     $group->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
 })->add(MailChimpMiddleware::class);
 
-function getMailchimpList(Request $request, Response $response, array $args)
+function getMailchimpList(Request $request, Response $response, array $args): Response
 {
     $listId = $args['id'];
 
@@ -31,7 +31,7 @@ function getMailchimpList(Request $request, Response $response, array $args)
     return $response->withHeader('Content-Type', 'application/json');
 }
 
-function getMailchimpEmailNotInCRM(Request $request, Response $response, array $args)
+function getMailchimpEmailNotInCRM(Request $request, Response $response, array $args): Response
 {
     $listId = $args['id'];
 
@@ -59,7 +59,7 @@ function getMailchimpEmailNotInCRM(Request $request, Response $response, array $
     }
 }
 
-function getMailChimpMissingSubscribed(Request $request, Response $response, array $args)
+function getMailChimpMissingSubscribed(Request $request, Response $response, array $args): Response
 {
     $listId = $args['id'];
 
@@ -102,7 +102,7 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
     }
 }
 
-function getFamilyStatus(Request $request, Response $response, array $args)
+function getFamilyStatus(Request $request, Response $response, array $args): Response
 {
     $family = $request->getAttribute('family');
     $mailchimpService = $request->getAttribute('mailchimpService');
@@ -116,7 +116,7 @@ function getFamilyStatus(Request $request, Response $response, array $args)
     return $response->withHeader('Content-Type', 'application/json');
 }
 
-function getPersonStatus(Request $request, Response $response, array $args)
+function getPersonStatus(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');
     $mailchimpService = $request->getAttribute('mailchimpService');

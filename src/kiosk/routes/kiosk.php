@@ -8,7 +8,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-$app->get('/', function (Request $request, Response $response, array $args) {
+$app->get('/', function (Request $request, Response $response, array $args): Response
+{
     $renderer = new PhpRenderer('templates/kioskDevices/');
     $pageObjects = ['sRootPath' => $_SESSION['sRootPath']];
 

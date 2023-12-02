@@ -11,7 +11,7 @@ $app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $grou
     $group->post('/{settingName}', 'updateUserSetting');
 })->add(UserAPIMiddleware::class);
 
-function getUserSetting(Request $request, Response $response, array $args)
+function getUserSetting(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $settingName = $args['settingName'];
@@ -24,7 +24,7 @@ function getUserSetting(Request $request, Response $response, array $args)
     return SlimUtils::renderJSON($response, ['value' => $value]);
 }
 
-function updateUserSetting(Request $request, Response $response, array $args)
+function updateUserSetting(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $settingName = $args['settingName'];

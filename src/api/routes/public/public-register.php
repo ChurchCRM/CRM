@@ -17,7 +17,7 @@ $app->group('/public/register', function (RouteCollectorProxy $group) {
     $group->post('/person/', 'registerPersonAPI');
 })->add(PublicRegistrationAuthMiddleware::class);
 
-function registerFamilyAPI(Request $request, Response $response, array $args)
+function registerFamilyAPI(Request $request, Response $response, array $args): Response
 {
     $family = new Family();
 
@@ -86,7 +86,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
     return SlimUtils::renderJSON($response, $family->toArray());
 }
 
-function registerPersonAPI(Request $request, Response $response, array $args)
+function registerPersonAPI(Request $request, Response $response, array $args): Response
 {
     $person = new Person();
     $person->fromJSON($request->getBody());

@@ -8,13 +8,15 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/systemupgrade', function (RouteCollectorProxy $group) {
-    $group->get('/downloadlatestrelease', function ($request, Response $response, $args) {
+    $group->get('/downloadlatestrelease', function (Request $request, Response $response, array $args): Response
+    {
         $upgradeFile = ChurchCRMReleaseManager::downloadLatestRelease();
 
         return SlimUtils::renderJSON($response, $upgradeFile);
     });
 
-    $group->post('/doupgrade', function (Request $request, Response $response, array $args) {
+    $group->post('/doupgrade', function (Request $request, Response $response, array $args): Response
+    {
         $input = $request->getParsedBody();
         $upgradeResult = ChurchCRMReleaseManager::doUpgrade($input['fullPath'], $input['sha1']);
 

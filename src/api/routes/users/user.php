@@ -12,7 +12,7 @@ $app->group('/user/{userId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->post('/config/{key}', 'updateUserConfig');
 })->add(UserAPIMiddleware::class);
 
-function genAPIKey(Request $request, Response $response, array $args)
+function genAPIKey(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $user->setApiKey(User::randomApiKey());
@@ -22,7 +22,7 @@ function genAPIKey(Request $request, Response $response, array $args)
     return SlimUtils::renderJSON($response, ['apiKey' => $user->getApiKey()]);
 }
 
-function updateUserConfig(Request $request, Response $response, array $args)
+function updateUserConfig(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $userConfigName = $args['key'];

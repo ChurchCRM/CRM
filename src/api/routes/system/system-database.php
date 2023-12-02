@@ -31,7 +31,8 @@ $app->group('/database', function (RouteCollectorProxy $group) {
 
     $group->get('/people/export/chmeetings', 'exportChMeetings');
 
-    $group->post('/backup', function (Request $request, Response $response, array $args) {
+    $group->post('/backup', function (Request $request, Response $response, array $args): Response
+    {
         $input = $request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
         $BackupType = $input['BackupType'];
@@ -50,7 +51,8 @@ $app->group('/database', function (RouteCollectorProxy $group) {
         );
     });
 
-    $group->post('/backupRemote', function (Request $request, Response $response, array $args) {
+    $group->post('/backupRemote', function (Request $request, Response $response, array $args): Response
+    {
         if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
             $input = $request->getParsedBody();
             $BaseName = preg_replace(
@@ -79,7 +81,8 @@ $app->group('/database', function (RouteCollectorProxy $group) {
         }
     });
 
-    $group->post('/restore', function (Request $request, Response $response, array $args) {
+    $group->post('/restore', function (Request $request, Response $response, array $args): Response
+    {
         $RestoreJob = new RestoreJob();
         $RestoreJob->execute();
 
@@ -89,13 +92,14 @@ $app->group('/database', function (RouteCollectorProxy $group) {
         );
     });
 
-    $group->get('/download/{filename}', function (Request $request, Response $response, array $args) {
+    $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response
+    {
         $filename = $args['filename'];
         BackupDownloader::downloadBackup($filename);
     });
 })->add(AdminRoleAuthMiddleware::class);
 
-function exportChMeetings(Request $request, Response $response, array $p_args)
+function exportChMeetings(Request $request, Response $response, array $args): Response
 {
     $header_data = [
         'First Name',
@@ -232,7 +236,7 @@ function resetDatabase(Request $request, Response $response)
     );
 }
 
-function clearPeopleTables(Request $request, Response $response, array $p_args)
+function clearPeopleTables(Request $request, Response $response, array $args): Response
 {
     $connection = Propel::getConnection();
     $logger = LoggerUtils::getAppLogger();

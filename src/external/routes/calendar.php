@@ -13,7 +13,7 @@ $app->group('/calendars', function (RouteCollectorProxy $group) {
     $group->get('/{CalendarAccessToken}/', 'serveCalendarPage');
 })->add(PublicCalendarAPIMiddleware::class);
 
-function serveCalendarPage(Request $request, Response $response, array $args)
+function serveCalendarPage(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/calendar/');
     $eventSource = SystemURLs::getRootPath() . '/api/public/calendar/' . SlimUtils::getRouteArgument($request, 'CalendarAccessToken') . '/fullcalendar';

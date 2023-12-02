@@ -11,7 +11,7 @@ $app->group('/public/user', function (RouteCollectorProxy $group) {
     $group->post('/login/', 'userLogin');
 });
 
-function userLogin(Request $request, Response $response, array $args)
+function userLogin(Request $request, Response $response, array $args): Response
 {
     $body = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     if (!empty($body->userName)) {

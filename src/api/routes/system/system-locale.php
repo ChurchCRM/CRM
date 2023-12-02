@@ -14,16 +14,7 @@ $app->group('/locale', function (RouteCollectorProxy $group) {
     $group->get('/database/terms', 'getDBTerms');
 })->add(AdminRoleAuthMiddleware::class);
 
-/**
- * A method that gets locale terms from the db for po generation.
- *
- * @param \Slim\Http\Request $p_request The request.
- * @param \Slim\Http\Response $p_response The response.
- * @param array $p_args Arguments
- *
- * @return \Slim\Http\Response The augmented response.
- */
-function getDBTerms(Request $request, Response $response, array $p_args)
+function getDBTerms(Request $request, Response $response, array $args): Response
 {
     $terms = [];
 

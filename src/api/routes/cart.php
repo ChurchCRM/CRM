@@ -7,12 +7,14 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/cart', function (RouteCollectorProxy $group) {
-    $group->get('/', function (Request $request, Response $response, array $args) {
+    $group->get('/', function (Request $request, Response $response, array $args): Response
+    {
         $cart = ['PeopleCart' => $_SESSION['aPeopleCart']];
         return SlimUtils::renderJSON($response, $cart);
     });
 
-    $group->post('/', function (Request $request, Response $response, array $args) {
+    $group->post('/', function (Request $request, Response $response, array $args): Response
+    {
         $cartPayload = $request->getParsedBody();
         if (isset($cartPayload['Persons']) && count($cartPayload['Persons']) > 0) {
             Cart::addPersonArray($cartPayload['Persons']);
@@ -26,7 +28,8 @@ $app->group('/cart', function (RouteCollectorProxy $group) {
         return SlimUtils::renderSuccessJSON($response);
     });
 
-    $group->post('/emptyToGroup', function (Request $request, Response $response, array $args) {
+    $group->post('/emptyToGroup', function (Request $request, Response $response, array $args): Response
+    {
         $cartPayload = $request->getParsedBody();
         Cart::emptyToGroup($cartPayload['groupID'], $cartPayload['groupRoleID']);
 
@@ -36,7 +39,8 @@ $app->group('/cart', function (RouteCollectorProxy $group) {
         ]);
     });
 
-    $group->post('/removeGroup', function (Request $request, Response $response, array $args) {
+    $group->post('/removeGroup', function (Request $request, Response $response, array $args): Response
+    {
         $cartPayload = $request->getParsedBody();
         Cart::removeGroup($cartPayload['Group']);
         return SlimUtils::renderJSON($response, [
@@ -48,7 +52,8 @@ $app->group('/cart', function (RouteCollectorProxy $group) {
     /**
      * delete. This will empty the cart.
      */
-    $group->delete('/', function (Request $request, Response $response, array $args) {
+    $group->delete('/', function (Request $request, Response $response, array $args): Response
+    {
         $cartPayload = $request->getParsedBody();
         $sMessage = gettext('Your cart is empty');
         if (isset($cartPayload['Persons']) && count($cartPayload['Persons']) > 0) {

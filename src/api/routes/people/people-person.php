@@ -18,25 +18,29 @@ $app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
 
 // This group does not load the person via middleware (to speed up the page loads)
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
-    $group->get('/thumbnail', function (Request $request, Response $response, array $args) {
+    $group->get('/thumbnail', function (Request $request, Response $response, array $args): Response
+    {
         $photo = new Photo('Person', $args['personId']);
         return SlimUtils::renderPhoto($response, $photo);
     });
 
-    $group->get('/photo', function (Request $request, Response $response, array $args) {
+    $group->get('/photo', function (Request $request, Response $response, array $args): Response
+    {
         $photo = new Photo('Person', $args['personId']);
         return SlimUtils::renderPhoto($response, $photo);
     });
 });
 
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
-    $group->get('', function (Request $request, Response $response, array $args) {
+    $group->get('', function (Request $request, Response $response, array $args): Response
+    {
         $person = $request->getAttribute('person');
 
         return $response->withHeader('Content-Type', 'application/json')->write($person->exportTo('JSON'));
     });
 
-    $group->delete('', function (Request $request, Response $response, array $args) {
+    $group->delete('', function (Request $request, Response $response, array $args): Response
+    {
         $person = $request->getAttribute('person');
         if (AuthenticationManager::getCurrentUser()->getId() == $person->getId()) {
             return $response->withStatus(403, gettext("Can't delete yourself"));
@@ -48,25 +52,28 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
 
     $group->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
 
-    $group->post('/addToCart', function (Request $request, Response $response, array $args) {
+    $group->post('/addToCart', function (Request $request, Response $response, array $args): Response
+    {
         Cart::addPerson($args['personId']);
     });
 
-    $group->post('/photo', function (Request $request, Response $response, array $args) {
+    $group->post('/photo', function (Request $request, Response $response, array $args): Response
+    {
         $person = $request->getAttribute('person');
-        $input = (object)$request->getParsedBody();
-        $person->setImageFromBase64($input->imgBase64);
+        $input = $request->getParsedBody();
+        $person->setImageFromBase64($input['imgBase64']);
         return SlimUtils::renderSuccessJSON($response);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
-    $group->delete('/photo', function (Request $request, Response $response, array $args) {
+    $group->delete('/photo', function (Request $request, Response $response, array $args): Response
+    {
         $person = $request->getAttribute('person');
 
         return SlimUtils::renderJSON($response, ['success' => $person->deletePhoto()]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
 })->add(PersonAPIMiddleware::class);
 
-function setPersonRoleAPI(Request $request, Response $response, array $args)
+function setPersonRoleAPI(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');
 

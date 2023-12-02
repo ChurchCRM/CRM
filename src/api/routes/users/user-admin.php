@@ -22,7 +22,7 @@ $app->group('/user/{userId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->get('/permissions', 'getUserPermissionsAPI');
 })->add(AdminRoleAuthMiddleware::class)->add(UserAPIMiddleware::class);
 
-function resetPasswordAPI(Request $request, Response $response, array $args)
+function resetPasswordAPI(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $password = $user->resetPasswordToRandom();
@@ -38,7 +38,7 @@ function resetPasswordAPI(Request $request, Response $response, array $args)
     }
 }
 
-function disableTwoFactor(Request $request, Response $response, array $args)
+function disableTwoFactor(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $user->disableTwoFactorAuthentication();
@@ -46,7 +46,7 @@ function disableTwoFactor(Request $request, Response $response, array $args)
     return $response->withStatus(200);
 }
 
-function resetLogin(Request $request, Response $response, array $args)
+function resetLogin(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $user->setFailedLogins(0);
@@ -60,7 +60,7 @@ function resetLogin(Request $request, Response $response, array $args)
     return $response->withStatus(200);
 }
 
-function deleteUser(Request $request, Response $response, array $args)
+function deleteUser(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $userName = $user->getName();
@@ -80,7 +80,7 @@ function deleteUser(Request $request, Response $response, array $args)
     return SlimUtils::renderJSON($response, ['user' => $userName]);
 }
 
-function getUserPermissionsAPI(Request $request, Response $response, array $args)
+function getUserPermissionsAPI(Request $request, Response $response, array $args): Response
 {
     $userId = $args['userId'];
     $user = UserQuery::create()->findPk($userId);
