@@ -16,14 +16,18 @@ class SlimUtils
         return self::renderJSON($response, ['status' => 'success']);
     }
 
-    public static function renderJSON(Response $response, array $obj, int $status = 200): Response
+    public static function renderStringJSON(Response $response, string $json, int $status = 200): Response
     {
-        $response->getBody()->write(json_encode($obj));
+        $response->getBody()->write($json);
         $response = $response->withHeader('Content-Type', 'application/json');
         if ($status !== 200) {
             $response = $response->withStatus($status);
         }
         return $response;
+    }
+    public static function renderJSON(Response $response, array $obj, int $status = 200): Response
+    {
+        return self::renderStringJson($response, json_encode($obj), $status);
     }
 
     public static function renderRedirect(Response $response, string $url): Response
