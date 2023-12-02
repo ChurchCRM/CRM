@@ -35,7 +35,7 @@ $app->group('/systemcalendars', function (RouteCollectorProxy $group) {
 
 function getSystemCalendars(Request $request, Response $response, array $args)
 {
-    return SlimUtils::renderJSON($response, SystemCalendars::getCalendarList()->toArray());
+    return SlimUtils::renderStringJSON($response, SystemCalendars::getCalendarList()->toJSON());
 }
 
 function getSystemCalendarEvents(Request $request, Response $response, array $args)
