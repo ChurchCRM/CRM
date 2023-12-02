@@ -37,10 +37,9 @@ function getAllEvents($request, Response $response, $args)
 {
     $Events = EventQuery::create()
         ->find();
-    if ($Events) {
-        return $response->write($Events->toJSON());
+    if (!empty($Events)) {
+        return SlimUtils::renderStringJSON($response, $Events->toJSON());
     }
-
     return $response->withStatus(404);
 }
 
@@ -49,10 +48,9 @@ function getEventTypes($request, Response $response, $args)
     $EventTypes = EventTypeQuery::Create()
         ->orderByName()
         ->find();
-    if ($EventTypes) {
-        return $response->write($EventTypes->toJSON());
+    if (!empty($EventTypes)) {
+        return SlimUtils::renderStringJSON($response, $EventTypes->toJSON());
     }
-
     return $response->withStatus(404);
 }
 
@@ -60,20 +58,22 @@ function getEvent(Request $request, Response $response, $args)
 {
     $Event = $request->getAttribute('event');
 
-    return $response->write($Event->toJSON());
+    if (!empty($Event)) {
+        return SlimUtils::renderStringJSON($response, $Event->toJSON());
+    }
+    return $response->withStatus(404);
 }
 
 function getEventPrimaryContact(Request $request, Response $response, array $args)
 {
     $Event = EventQuery::create()
         ->findOneById($args['id']);
-    if ($Event) {
+    if (!empty($Event)) {
         $Contact = $Event->getPersonRelatedByPrimaryContactPersonId();
         if ($Contact) {
-            return $response->write($Contact->toJSON());
+            return SlimUtils::renderStringJSON($response, $Contact->toJSON());
         }
     }
-
     return $response->withStatus(404);
 }
 
@@ -82,10 +82,9 @@ function getEventSecondaryContact(Request $request, Response $response, array $a
     $Contact = EventQuery::create()
         ->findOneById($args['id'])
         ->getPersonRelatedBySecondaryContactPersonId();
-    if ($Contact) {
-        return $response->write($Contact->toJSON());
+    if (!empty($Contact)) {
+        return SlimUtils::renderStringJSON($response, $Contact->toJSON());
     }
-
     return $response->withStatus(404);
 }
 
@@ -94,8 +93,8 @@ function getEventLocation(Request $request, Response $response, array $args)
     $Location = EventQuery::create()
         ->findOneById($args['id'])
         ->getLocation();
-    if ($Location) {
-        return $response->write($Location->toJSON());
+    if (!empty($Location)) {
+        return SlimUtils::renderStringJSON($response, $Location->toJSON());
     }
 
     return $response->withStatus(404);
@@ -106,8 +105,8 @@ function getEventAudience($request, Response $response, $args)
     $Audience = EventQuery::create()
         ->findOneById($args['id'])
         ->getEventAudiencesJoinGroup();
-    if ($Audience) {
-        return $response->write($Audience->toJSON());
+    if (!empty($Audience)) {
+        return SlimUtils::renderStringJSON($response,$Audience->toJSON());
     }
 
     return $response->withStatus(404);
@@ -120,7 +119,7 @@ function newEvent(Request $request, Response $response, array $args)
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::Create()
         ->findOneById($input['Type']);
-    if (!$type) {
+    if (empty($type)) {
         return $response->withStatus(400, gettext('invalid event type id'));
     }
 
