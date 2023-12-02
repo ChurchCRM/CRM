@@ -16,7 +16,7 @@ $app->group('/kiosks', function (RouteCollectorProxy $group) {
             ->joinWithEvent(Criteria::LEFT_JOIN)
             ->endUse()
             ->find();
-        return SlimUtils::renderJSON($response, $Kiosks->toArray());
+        return SlimUtils::renderStringJSON($response, $Kiosks->toJSON());
     });
 
     $group->post('/allowRegistration', function (Request $request, Response $response, array $args) {
