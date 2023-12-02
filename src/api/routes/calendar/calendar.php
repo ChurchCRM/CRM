@@ -83,7 +83,7 @@ function getUserCalendars(Request $request, Response $response, array $args)
     }
     $Calendars = $CalendarQuery->find();
     if ($Calendars) {
-        return SlimUtils::renderStringJSON($response, $Calendars->toArray());
+        return SlimUtils::renderStringJSON($response, $Calendars->toJSON());
     }
 }
 
@@ -95,7 +95,7 @@ function getUserCalendarEvents(Request $request, Response $response, array $p_ar
             ->filterByCalendar($Calendar)
             ->find();
         if ($Events) {
-            return SlimUtils::renderJSON($response, $Events->toArray());
+            return SlimUtils::renderStringJSON($response, $Events->toJSON());
         }
     }
 }
