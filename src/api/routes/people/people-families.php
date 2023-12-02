@@ -23,8 +23,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
     $group->get('/updated', 'getUpdatedFamilies');
     $group->get('/anniversaries', 'getFamiliesWithAnniversaries');
 
-    $group->get('/email/without', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()->joinWithPerson()->find();
 
         $familiesWithoutEmails = [];
@@ -51,8 +50,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
         fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, MenuEventsCount::getNumberAnniversaries())
     );
 
-    $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
         $query = $args['query'];
         $results = [];
         $q = FamilyQuery::create()
@@ -66,8 +64,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, ['Families' => $results]);
     });
 
-    $group->get('/self-register', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
@@ -77,8 +74,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, ['families' => $families->toArray()]);
     });
 
-    $group->get('/self-verify', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/self-verify', function (Request $request, Response $response, array $args): Response {
         $verificationNotes = NoteQuery::create()
             ->filterByEnteredBy(Person::SELF_VERIFY)
             ->orderByDateEntered(Criteria::DESC)
@@ -89,8 +85,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, ['families' => $verificationNotes->toArray()]);
     });
 
-    $group->get('/pending-self-verify', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/pending-self-verify', function (Request $request, Response $response, array $args): Response {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::TYPE_FAMILY_VERIFY)
             ->filterByRemainingUses(['min' => 1])
@@ -104,8 +99,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, ['families' => $pendingTokens->toArray()]);
     });
 
-    $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args): Response {
         $scanString = $args['scanString'];
 
         /** @var FinancialService $financialService */
@@ -118,8 +112,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
      * Update the family status to activated or deactivated with :familyId and :status true/false.
      * Pass true to activate and false to deactivate.     *.
      */
-    $group->post('/{familyId:[0-9]+}/activate/{status}', function (Request $request, Response $response, array $args): Response
-    {
+    $group->post('/{familyId:[0-9]+}/activate/{status}', function (Request $request, Response $response, array $args): Response {
         $familyId = $args['familyId'];
         $newStatus = $args['status'];
 

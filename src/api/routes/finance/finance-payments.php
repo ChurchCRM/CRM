@@ -11,23 +11,20 @@ use Slim\Routing\RouteCollectorProxy;
 use ChurchCRM\Service\FinancialService;
 
 $app->group('/payments', function (RouteCollectorProxy $group) {
-    $group->get('/', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/', function (Request $request, Response $response, array $args): Response {
         /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');
         return SlimUtils::renderJSON($response, ['payments' => $financialService->getPayments()->toArray()]);
     });
 
-    $group->post('/', function (Request $request, Response $response, array $args): Response
-    {
+    $group->post('/', function (Request $request, Response $response, array $args): Response {
         $payment = $request->getParsedBody();
         /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');
         return SlimUtils::renderJSON($response, ['payment' => $financialService->submitPledgeOrPayment($payment)]);
     });
 
-    $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args): Response {
         $familyId = SlimUtils::getRouteArgument($request, 'familyId');
         $query = PledgeQuery::create()->filterByFamId($familyId);
         if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
@@ -62,8 +59,7 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, ['data' => $rows]);
     });
 
-    $group->delete('/{groupKey}', function (Request $request, Response $response, array $args): Response
-    {
+    $group->delete('/{groupKey}', function (Request $request, Response $response, array $args): Response {
         $groupKey = $args['groupKey'];
         $financialService = $this->get('FinancialService');
         $financialService->deletePayment($groupKey);

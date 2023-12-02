@@ -10,8 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 $app->group('/verify', function (RouteCollectorProxy $group) {
-    $group->get('/{token}', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/{token}', function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/verify/');
         $token = TokenQuery::create()->findPk($args['token']);
         $haveFamily = false;
@@ -31,8 +30,7 @@ $app->group('/verify', function (RouteCollectorProxy $group) {
         }
     });
 
-    $group->post('/{token}', function (Request $request, Response $response, array $args): Response
-    {
+    $group->post('/{token}', function (Request $request, Response $response, array $args): Response {
         $token = TokenQuery::create()->findPk($args['token']);
         if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());

@@ -8,8 +8,7 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 $app->group('/', function (RouteCollectorProxy $group) {
-    $group->get('', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('', function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
         if (version_compare(phpversion(), '8.1.0', '<')) {
@@ -19,24 +18,21 @@ $app->group('/', function (RouteCollectorProxy $group) {
         return $renderer->render($response, $renderPage, ['sRootPath' => SystemURLs::getRootPath()]);
     });
 
-    $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args): Response {
         $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
         $response->getBody()->write(json_encode($AppIntegrity['status']));
 
         return $response->withHeader('Content-Type', 'application/json');
     });
 
-    $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response {
         $required = AppIntegrityService::getApplicationPrerequisites();
         $response->getBody()->write(json_encode($required));
 
         return $response->withHeader('Content-Type', 'application/json');
     });
 
-    $group->post('', function (Request $request, Response $response, array $args): Response
-    {
+    $group->post('', function (Request $request, Response $response, array $args): Response {
         $setupData = $request->getParsedBody();
 
         $template = file_get_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php.example');

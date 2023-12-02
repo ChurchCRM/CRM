@@ -31,8 +31,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
 
     $group->get('/people/export/chmeetings', 'exportChMeetings');
 
-    $group->post('/backup', function (Request $request, Response $response, array $args): Response
-    {
+    $group->post('/backup', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
         $BackupType = $input['BackupType'];
@@ -51,8 +50,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
         );
     });
 
-    $group->post('/backupRemote', function (Request $request, Response $response, array $args): Response
-    {
+    $group->post('/backupRemote', function (Request $request, Response $response, array $args): Response {
         if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
             $input = $request->getParsedBody();
             $BaseName = preg_replace(
@@ -81,8 +79,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
         }
     });
 
-    $group->post('/restore', function (Request $request, Response $response, array $args): Response
-    {
+    $group->post('/restore', function (Request $request, Response $response, array $args): Response {
         $RestoreJob = new RestoreJob();
         $RestoreJob->execute();
 
@@ -92,8 +89,7 @@ $app->group('/database', function (RouteCollectorProxy $group) {
         );
     });
 
-    $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response {
         $filename = $args['filename'];
         BackupDownloader::downloadBackup($filename);
     });

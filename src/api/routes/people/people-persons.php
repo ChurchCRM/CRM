@@ -24,8 +24,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
     $group->get('/birthday', 'getPersonsWithBirthdays');
 
     // search person by Name
-    $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
         $query = $args['query'];
 
         $searchLikeString = '%' . $query . '%';
@@ -55,8 +54,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
         fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, MenuEventsCount::getNumberBirthDates())
     );
 
-    $group->get('/self-register', function (Request $request, Response $response, array $args): Response
-    {
+    $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
