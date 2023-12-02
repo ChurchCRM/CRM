@@ -106,7 +106,7 @@ function getEventAudience($request, Response $response, $args)
         ->findOneById($args['id'])
         ->getEventAudiencesJoinGroup();
     if (!empty($Audience)) {
-        return SlimUtils::renderStringJSON($response,$Audience->toJSON());
+        return SlimUtils::renderStringJSON($response, $Audience->toJSON());
     }
 
     return $response->withStatus(404);
