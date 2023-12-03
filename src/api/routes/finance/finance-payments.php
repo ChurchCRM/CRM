@@ -14,14 +14,22 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
     $group->get('/', function (Request $request, Response $response, array $args): Response {
         /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');
-        return SlimUtils::renderJSON($response, ['payments' => $financialService->getPayments()->toArray()]);
+
+        return SlimUtils::renderJSON(
+            $response,
+            ['payments' => $financialService->getPayments()]
+        );
     });
 
     $group->post('/', function (Request $request, Response $response, array $args): Response {
         $payment = $request->getParsedBody();
         /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');
-        return SlimUtils::renderJSON($response, ['payment' => $financialService->submitPledgeOrPayment($payment)]);
+
+        return SlimUtils::renderJSON(
+            $response,
+            ['payment' => $financialService->submitPledgeOrPayment($payment)]
+        );
     });
 
     $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args): Response {
@@ -63,6 +71,7 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
         $groupKey = $args['groupKey'];
         $financialService = $this->get('FinancialService');
         $financialService->deletePayment($groupKey);
-        return SlimUtils::renderSuccessJSON($request);
+
+        return SlimUtils::renderSuccessJSON($response);
     });
 })->add(FinanceRoleAuthMiddleware::class);

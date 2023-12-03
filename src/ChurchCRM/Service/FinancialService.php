@@ -84,7 +84,7 @@ class FinancialService
         return $deposit_total;
     }
 
-    public function getPayments($depID)
+    public function getPayments($depID = null)
     {
         requireUserGroupMembership('bFinance');
         $sSQL = 'SELECT * from pledge_plg
