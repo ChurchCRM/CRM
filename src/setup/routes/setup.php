@@ -2,10 +2,13 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/', function () use ($app) {
-    $app->get('', function ($request, $response, $args) {
+$app->group('/', function (RouteCollectorProxy $group) {
+    $group->get('', function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
         if (version_compare(phpversion(), '8.1.0', '<')) {
@@ -15,28 +18,33 @@ $app->group('/', function () use ($app) {
         return $renderer->render($response, $renderPage, ['sRootPath' => SystemURLs::getRootPath()]);
     });
 
-    $app->get('SystemIntegrityCheck', function ($request, $response, $args) {
+    $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args): Response {
         $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
-        echo $AppIntegrity['status'];
+        $response->getBody()->write(json_encode($AppIntegrity['status']));
+
+        return $response->withHeader('Content-Type', 'application/json');
     });
 
-    $app->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
+    $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response {
         $required = AppIntegrityService::getApplicationPrerequisites();
+        $response->getBody()->write(json_encode($required));
 
-        return $response->withJson($required);
+        return $response->withHeader('Content-Type', 'application/json');
     });
 
-    $app->post('', function ($request, $response, $args) {
-        $setupDate = $request->getParsedBody();
+    $group->post('', function (Request $request, Response $response, array $args): Response {
+        $setupData = $request->getParsedBody();
+
         $template = file_get_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php.example');
 
-        $template = str_replace('||DB_SERVER_NAME||', $setupDate['DB_SERVER_NAME'], $template);
-        $template = str_replace('||DB_SERVER_PORT||', $setupDate['DB_SERVER_PORT'], $template);
-        $template = str_replace('||DB_NAME||', $setupDate['DB_NAME'], $template);
-        $template = str_replace('||DB_USER||', $setupDate['DB_USER'], $template);
-        $template = str_replace('||DB_PASSWORD||', $setupDate['DB_PASSWORD'], $template);
-        $template = str_replace('||ROOT_PATH||', $setupDate['ROOT_PATH'], $template);
-        $template = str_replace('||URL||', $setupDate['URL'], $template);
+
+        $template = str_replace('||DB_SERVER_NAME||', $setupData['DB_SERVER_NAME'], $template);
+        $template = str_replace('||DB_SERVER_PORT||', $setupData['DB_SERVER_PORT'], $template);
+        $template = str_replace('||DB_NAME||', $setupData['DB_NAME'], $template);
+        $template = str_replace('||DB_USER||', $setupData['DB_USER'], $template);
+        $template = str_replace('||DB_PASSWORD||', $setupData['DB_PASSWORD'], $template);
+        $template = str_replace('||ROOT_PATH||', $setupData['ROOT_PATH'], $template);
+        $template = str_replace('||URL||', $setupData['URL'], $template);
 
         file_put_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php', $template);
 

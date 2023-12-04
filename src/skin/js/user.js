@@ -28,7 +28,7 @@ $(".user-setting-checkbox").click(function () {
 
     window.CRM.APIRequest({
         method: "POST",
-        path: "/user/" + window.CRM.userId + "/setting/" + setting,
+        path: "user/" + window.CRM.userId + "/setting/" + setting,
         dataType: "json",
         data: data,
     }).done(function () {
@@ -48,7 +48,7 @@ $(".user-setting-select").change(function () {
 
     window.CRM.APIRequest({
         method: "POST",
-        path: "/user/" + window.CRM.userId + "/setting/" + setting,
+        path: "user/" + window.CRM.userId + "/setting/" + setting,
         dataType: "json",
         data: data,
     });
@@ -83,7 +83,7 @@ $(document).ready(function () {
         let setting = thisCheckbox.data("setting-name");
         window.CRM.APIRequest({
             method: "GET",
-            path: "/user/" + window.CRM.userId + "/setting/" + setting,
+            path: "user/" + window.CRM.userId + "/setting/" + setting,
         }).done(function (data) {
             if (data.value !== "") {
                 thisCheckbox.prop("checked", true);
@@ -96,7 +96,7 @@ $(document).ready(function () {
         let setting = thisSelect.data("setting-name");
         window.CRM.APIRequest({
             method: "GET",
-            path: "/user/" + window.CRM.userId + "/setting/" + setting,
+            path: "user/" + window.CRM.userId + "/setting/" + setting,
         }).done(function (data) {
             if (data.value !== "") {
                 thisSelect.val(data.value).change();

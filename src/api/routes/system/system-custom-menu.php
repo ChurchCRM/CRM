@@ -3,27 +3,29 @@
 use ChurchCRM\model\ChurchCRM\MenuLink;
 use ChurchCRM\model\ChurchCRM\MenuLinkQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\ORMUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/system/menu', function () use ($app) {
-    $app->get('', 'getMenus');
-    $app->get('/', 'getMenus');
-    $app->put('', 'addMenu');
-    $app->put('/', 'addMenu');
-    $app->delete('{linkId:[0-9]+}', 'delMenu');
-    $app->delete('/{linkId:[0-9]+}', 'delMenu');
-})->add(new AdminRoleAuthMiddleware());
+$app->group('/system/menu', function (RouteCollectorProxy $group) {
+    $group->get('', 'getMenus');
+    $group->get('/', 'getMenus');
+    $group->put('', 'addMenu');
+    $group->put('/', 'addMenu');
+    $group->delete('{linkId:[0-9]+}', 'delMenu');
+    $group->delete('/{linkId:[0-9]+}', 'delMenu');
+})->add(AdminRoleAuthMiddleware::class);
 
-function getMenus(Request $request, Response $response, array $args)
+function getMenus(Request $request, Response $response, array $args): Response
 {
     $links = MenuLinkQuery::create()->orderByOrder()->find();
 
-    return $response->withJson(['menus' => $links->toArray()]);
+    return SlimUtils::renderJSON($response, ['menus' => $links->toArray()]);
 }
 
-function addMenu(Request $request, Response $response, array $args)
+function addMenu(Request $request, Response $response, array $args): Response
 {
     $link = new MenuLink();
     $link->fromJSON($request->getBody());
@@ -31,14 +33,14 @@ function addMenu(Request $request, Response $response, array $args)
     if ($link->validate()) {
         $link->save();
 
-        return $response->withJson($link->toArray());
+        return SlimUtils::renderJSON($response, $link->toArray());
     }
 
-    return $response->withStatus(400)->withJson(['error' => gettext('Validation Error'),
-        'failures'                                       => ORMUtils::getValidationErrors($link->getValidationFailures())]);
+    return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),
+        'failures' => ORMUtils::getValidationErrors($link->getValidationFailures())], 400);
 }
 
-function delMenu(Request $request, Response $response, array $args)
+function delMenu(Request $request, Response $response, array $args): Response
 {
     $link = MenuLinkQuery::create()->findPk($args['linkId']);
     if (empty($link)) {

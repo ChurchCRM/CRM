@@ -4,15 +4,16 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 // entity can be a person, family, or business
-$app->group('/people', function () use ($app) {
-    $app->get('', 'listPeople');
-    $app->get('/', 'listPeople');
-    $app->get('/verify', 'viewPeopleVerify');
+$app->group('/people', function (RouteCollectorProxy $group) {
+    $group->get('/verify', 'viewPeopleVerify');
+    $group->get('/', 'listPeople');
+    $group->get('', 'listPeople');
 });
 
 function viewPeopleVerify(Request $request, Response $response, array $args)
@@ -23,13 +24,14 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
         'sRootPath' => SystemURLs::getRootPath(),
     ];
 
-    if ($request->getQueryParam('EmailsError')) {
+    if ($request->getQueryParams()['EmailsError']) {
         $errorArgs = ['sGlobalMessage' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'), 'sGlobalMessageClass' => 'danger'];
         $pageArgs = array_merge($pageArgs, $errorArgs);
     }
 
-    if ($request->getQueryParam('AllPDFsEmailed')) {
-        $headerArgs = ['sGlobalMessage' => gettext('PDFs successfully emailed ') . $request->getQueryParam('AllPDFsEmailed') . ' ' . gettext('families') . '.',
+    $queryParam = $request->getQueryParams()['AllPDFsEmailed'];
+    if ($queryParam) {
+        $headerArgs = ['sGlobalMessage' => gettext('PDFs successfully emailed ') . $queryParam . ' ' . gettext('families') . '.',
             'sGlobalMessageClass'       => 'success'];
         $pageArgs = array_merge($pageArgs, $headerArgs);
     }

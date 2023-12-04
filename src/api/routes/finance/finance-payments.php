@@ -3,29 +3,37 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+use ChurchCRM\Service\FinancialService;
 
-$app->group('/payments', function () use ($app) {
-    $app->get('/', function (Request $request, Response $response, array $args) use ($app) {
+$app->group('/payments', function (RouteCollectorProxy $group) {
+    $group->get('/', function (Request $request, Response $response, array $args): Response {
+        /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');
 
-        echo $financialService->getPaymentJSON($app->FinancialService->getPayments());
-    });
-
-    $app->post('/', function ($request, $response, $args) {
-        $payment = $request->getParsedBody();
-        $financialService = $this->get('FinancialService');
-
-        echo json_encode(
-            ['payment' => $financialService->submitPledgeOrPayment($payment)],
-            JSON_THROW_ON_ERROR
+        return SlimUtils::renderJSON(
+            $response,
+            ['payments' => $financialService->getPayments()]
         );
     });
 
-    $app->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
-        $familyId = $request->getAttribute('route')->getArgument('familyId');
+    $group->post('/', function (Request $request, Response $response, array $args): Response {
+        $payment = $request->getParsedBody();
+        /** @var FinancialService  $financialService */
+        $financialService = $this->get('FinancialService');
+
+        return SlimUtils::renderJSON(
+            $response,
+            ['payment' => $financialService->submitPledgeOrPayment($payment)]
+        );
+    });
+
+    $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args): Response {
+        $familyId = SlimUtils::getRouteArgument($request, 'familyId');
         $query = PledgeQuery::create()->filterByFamId($familyId);
         if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
             $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
@@ -56,12 +64,14 @@ $app->group('/payments', function () use ($app) {
             array_push($rows, $newRow);
         }
 
-        return $response->withJson(['data' => $rows]);
+        return SlimUtils::renderJSON($response, ['data' => $rows]);
     });
 
-    $app->delete('/{groupKey}', function (Request $request, Response $response, array $args) use ($app) {
+    $group->delete('/{groupKey}', function (Request $request, Response $response, array $args): Response {
         $groupKey = $args['groupKey'];
-        $app->FinancialService->deletePayment($groupKey);
-        echo json_encode(['status' => 'ok']);
+        $financialService = $this->get('FinancialService');
+        $financialService->deletePayment($groupKey);
+
+        return SlimUtils::renderSuccessJSON($response);
     });
-})->add(new FinanceRoleAuthMiddleware());
+})->add(FinanceRoleAuthMiddleware::class);

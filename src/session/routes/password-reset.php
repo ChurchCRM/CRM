@@ -9,15 +9,16 @@ use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/forgot-password', function () use ($app) {
+$app->group('/forgot-password', function (RouteCollectorProxy $group) {
     if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
-        $app->get('/reset-request', 'forgotPassword');
-        $app->post('/reset-request', 'userPasswordReset');
-        $app->get('/set/{token}', function ($request, $response, $args) use ($app) {
+        $group->get('/reset-request', 'forgotPassword');
+        $group->post('/reset-request', 'userPasswordReset');
+        $group->get('/set/{token}', function (Request $request, Response $response, array $args): Response {
             $renderer = new PhpRenderer('templates');
             $token = TokenQuery::create()->findPk($args['token']);
             $haveUser = false;
@@ -44,7 +45,7 @@ $app->group('/forgot-password', function () use ($app) {
             return $renderer->render($response, 'error.php', ['message' => gettext('Unable to reset password')]);
         });
     } else {
-        $app->get('/{foo:.*}', function ($request, $response, $args) {
+        $group->get('/{foo:.*}', function (Request $request, Response $response, array $args): Response {
             $renderer = new PhpRenderer('templates');
 
             return $renderer->render($response, '/error.php', ['message' => gettext('Password reset not available.  Please contact your system administrator')]);
@@ -52,7 +53,7 @@ $app->group('/forgot-password', function () use ($app) {
     }
 });
 
-function forgotPassword($request, $response, $args)
+function forgotPassword(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/password/');
     $pageArgs = [

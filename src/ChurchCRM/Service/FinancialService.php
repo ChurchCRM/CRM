@@ -20,31 +20,31 @@ class FinancialService
         PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
-    public function getMemberByScanString($tScanString)
+    public function getMemberByScanString($tScanString): array
     {
         requireUserGroupMembership('bFinance');
-        if (SystemConfig::getValue('bUseScannedChecks')) {
-            $micrObj = new MICRFunctions(); // Instantiate the MICR class
-            $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
-            if ($routeAndAccount) {
-                $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
-                $rsFam = RunQuery($sSQL);
-                $row = mysqli_fetch_array($rsFam);
-                $iCheckNo = $micrObj->findCheckNo($tScanString);
 
-                return json_encode([
-                    'ScanString'      => $tScanString,
-                    'RouteAndAccount' => $routeAndAccount,
-                    'CheckNumber'     => $iCheckNo,
-                    'fam_ID'          => $row['fam_ID'],
-                    'fam_Name'        => $row['fam_Name'],
-                ], JSON_THROW_ON_ERROR);
-            } else {
-                throw new \Exception('error in locating family');
-            }
-        } else {
+        if (!SystemConfig::getValue('bUseScannedChecks')) {
             throw new \Exception('Scanned Checks is disabled');
         }
+
+        $micrObj = new MICRFunctions(); // Instantiate the MICR class
+        $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
+        if (!$routeAndAccount) {
+            throw new \Exception('error in locating family');
+        }
+        $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
+        $rsFam = RunQuery($sSQL);
+        $row = mysqli_fetch_array($rsFam);
+        $iCheckNo = $micrObj->findCheckNo($tScanString);
+
+        return [
+            'ScanString'      => $tScanString,
+            'RouteAndAccount' => $routeAndAccount,
+            'CheckNumber'     => $iCheckNo,
+            'fam_ID'          => $row['fam_ID'],
+            'fam_Name'        => $row['fam_Name'],
+        ];
     }
 
     public function setDeposit($depositType, $depositComment, $depositDate, $iDepositSlipID = null, $depositClosed = false)
@@ -84,16 +84,7 @@ class FinancialService
         return $deposit_total;
     }
 
-    public function getPaymentJSON($payments)
-    {
-        if ($payments) {
-            return json_encode(['payments' => $payments], JSON_THROW_ON_ERROR);
-        } else {
-            return false;
-        }
-    }
-
-    public function getPayments($depID)
+    public function getPayments($depID = null)
     {
         requireUserGroupMembership('bFinance');
         $sSQL = 'SELECT * from pledge_plg
@@ -169,7 +160,7 @@ class FinancialService
         //Validate that the fund selection is valid:
         //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
         //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
-        $FundSplit = json_decode($payment->FundSplit, null, 512, JSON_THROW_ON_ERROR);
+        $FundSplit = $payment['FundSplit'];
         if (count($FundSplit) >= 1 && $FundSplit[0]->FundID != 'None') { // split
             $nonZeroFundAmountEntered = 0;
             foreach ($FundSplit as $fun_id => $fund) {

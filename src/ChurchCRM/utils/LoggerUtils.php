@@ -13,6 +13,7 @@ class LoggerUtils
     private static ?\Monolog\Handler\StreamHandler $appLogHandler = null;
     private static ?\Monolog\Logger $cspLogger = null;
     private static ?\Monolog\Logger $authLogger = null;
+    private static ?\Monolog\Logger $slimLogger = null;
     private static ?\Monolog\Handler\StreamHandler $authLogHandler = null;
     private static ?string $correlationId = null;
 
@@ -32,7 +33,22 @@ class LoggerUtils
 
     public static function buildLogFilePath($type)
     {
-        return $logFilePrefix = SystemURLs::getDocumentRoot() . '/logs/' . date('Y-m-d') . '-' . $type . '.log';
+        return SystemURLs::getDocumentRoot() . '/logs/' . date('Y-m-d') . '-' . $type . '.log';
+    }
+
+    /**
+     * @return Logger
+     */
+    public static function getSlimMVCLogger(): Logger
+    {
+        if (self::$slimLogger === null) {
+            $slimLogger = new Logger('slim-app');
+            $streamHandler = new StreamHandler(self::buildLogFilePath('slim'), SystemConfig::getValue('sLogLevel'));
+            $slimLogger->pushHandler($streamHandler);
+            self::$slimLogger = $slimLogger;
+        }
+
+        return self::$slimLogger;
     }
 
     /**

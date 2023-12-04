@@ -2,24 +2,17 @@
 
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use ChurchCRM\Slim\Request\SlimUtils;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/system/custom-fields', function () use ($app) {
-    $app->get('/person', 'getPersonFieldsByType');
-    $app->get('/person/', 'getPersonFieldsByType');
-})->add(new AdminRoleAuthMiddleware());
+$app->group('/system/custom-fields', function (RouteCollectorProxy $group) {
+    $group->get('/person', 'getPersonFieldsByType');
+    $group->get('/person/', 'getPersonFieldsByType');
+})->add(AdminRoleAuthMiddleware::class);
 
-/**
- * A method that does the work to handle getting an existing person custom fields by type.
- *
- * @param \Slim\Http\Request  $p_request  The request.
- * @param \Slim\Http\Response $p_response The response.
- * @param array               $p_args     Arguments
- *
- * @return \Slim\Http\Response The augmented response.
- */
-function getPersonFieldsByType(Request $request, Response $response, array $p_args)
+function getPersonFieldsByType(Request $request, Response $response, array $args): Response
 {
     $params = $request->getQueryParams();
     $typeId = $params['typeId'];
@@ -32,5 +25,5 @@ function getPersonFieldsByType(Request $request, Response $response, array $p_ar
         array_push($keyValue, ['id' => $field->getId(), 'value' => $field->getName()]);
     }
 
-    return $response->withJson($keyValue);
+    return SlimUtils::renderJSON($response, $keyValue);
 }

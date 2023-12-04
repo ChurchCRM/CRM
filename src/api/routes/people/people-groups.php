@@ -8,14 +8,18 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/groups', function () use ($app) {
-    $app->get('/', function () {
-        echo GroupQuery::create()->find()->toJSON();
+$app->group('/groups', function (RouteCollectorProxy $group) {
+    $group->get('/', function (Request $request, Response $response) {
+        return SlimUtils::renderJSON($response, GroupQuery::create()->find()->toArray());
     });
 
     // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
-    $app->get('/calendars', function ($request, $response, $args) {
+    $group->get('/calendars', function (Request $request, Response $response, array $args): Response {
         $groups = GroupQuery::Create()
             ->orderByName()
             ->find();
@@ -29,10 +33,10 @@ $app->group('/groups', function () use ($app) {
             array_push($return, $values);
         }
 
-        return $response->withJson($return);
+        return SlimUtils::renderJSON($response, $return);
     });
 
-    $app->get('/groupsInCart', function () {
+    $group->get('/groupsInCart', function (Request $request, Response $response, array $args): Response {
         $groupsInCart = [];
         $groups = GroupQuery::create()->find();
         foreach ($groups as $group) {
@@ -40,18 +44,18 @@ $app->group('/groups', function () use ($app) {
                 array_push($groupsInCart, $group->getId());
             }
         }
-        echo json_encode(['groupsInCart' => $groupsInCart], JSON_THROW_ON_ERROR);
+        return SlimUtils::renderJSON($response, ['groupsInCart' => $groupsInCart]);
     });
 
-    $app->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
-        echo GroupQuery::create()->findOneById($args['groupID'])->toJSON();
+    $group->get('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
+        return SlimUtils::renderJSON($response, GroupQuery::create()->findOneById($args['groupID'])->toArray());
     });
 
-    $app->get('/{groupID:[0-9]+}/cartStatus', function ($request, $response, $args) {
-        echo GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart();
+    $group->get('/{groupID:[0-9]+}/cartStatus', function (Request $request, Response $response, array $args): Response {
+        return SlimUtils::renderJSON($response, GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart());
     });
 
-    $app->get('/{groupID:[0-9]+}/members', function ($request, $response, $args) {
+    $group->get('/{groupID:[0-9]+}/members', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
@@ -73,55 +77,55 @@ $app->group('/groups', function () use ($app) {
             }
         }
 
-        echo $members->toJSON();
+        return SlimUtils::renderJSON($response, $members->toArray());
     });
 
-    $app->get('/{groupID:[0-9]+}/events', function ($request, $response, $args) {
+    $group->get('/{groupID:[0-9]+}/events', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->findByGroupId($groupID);
-        echo $members->toJSON();
+        return SlimUtils::renderJSON($response, $members->toArray());
     });
 
-    $app->get('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
+    $group->get('/{groupID:[0-9]+}/roles', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $group = GroupQuery::create()->findOneById($groupID);
         $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
-        echo $roles->toJSON();
+        return SlimUtils::renderJSON($response, $roles->toArray());
     });
 });
 
-$app->group('/groups', function () use ($app) {
-    $app->post('/', function ($request, $response, $args) {
-        $groupSettings = (object) $request->getParsedBody();
+$app->group('/groups', function (RouteCollectorProxy $group) {
+    $group->post('/', function (Request $request, Response $response, array $args): Response {
+        $groupSettings = $request->getParsedBody();
         $group = new Group();
-        if ($groupSettings->isSundaySchool) {
+        if ($groupSettings['isSundaySchool']) {
             $group->makeSundaySchool();
         }
-        $group->setName($groupSettings->groupName);
+        $group->setName($groupSettings['groupName']);
         $group->save();
-        echo $group->toJSON();
+        return SlimUtils::renderJSON($response, $group->toArray());
     });
 
-    $app->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
-        $input = (object) $request->getParsedBody();
+        $input = $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
-        $group->setName($input->groupName);
-        $group->setType($input->groupType);
-        $group->setDescription($input->description);
+        $group->setName($input['groupName']);
+        $group->setType($input['groupType']);
+        $group->setDescription($input['description']);
         $group->save();
-        echo $group->toJSON();
+        return SlimUtils::renderJSON($response, $group->toArray());
     });
 
-    $app->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $group->delete('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         GroupQuery::create()->findOneById($groupID)->delete();
-        echo json_encode(['status' => 'success']);
+        return SlimUtils::renderSuccessJSON($response);
     });
 
-    $app->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
+    $group->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
@@ -138,21 +142,21 @@ $app->group('/groups', function () use ($app) {
                 $note->save();
             }
         }
-        echo json_encode(['success' => 'true']);
+        return SlimUtils::renderSuccessJSON($response);
     });
 
-    $app->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
-        $input = (object) $request->getParsedBody();
+        $input = $request->getParsedBody();
         $group = GroupQuery::create()->findPk($groupID);
         $p2g2r = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($groupID)
             ->filterByPersonId($userID)
             ->findOneOrCreate();
-        if ($input->RoleID) {
-            $p2g2r->setRoleId($input->RoleID);
+        if ($input['RoleID']) {
+            $p2g2r->setRoleId($input['RoleID']);
         } else {
             $p2g2r->setRoleId($group->getDefaultRole());
         }
@@ -167,83 +171,83 @@ $app->group('/groups', function () use ($app) {
         $note->save();
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
-            ->filterByPersonId($input->PersonID)
+            ->filterByPersonId($input['PersonID'])
             ->findByGroupId($groupID);
-        echo $members->toJSON();
+        return SlimUtils::renderJSON($response, $members->toArray());
     });
 
-    $app->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $roleID = $request->getParsedBody()['roleID'];
         $membership = Person2group2roleP2g2rQuery::create()->filterByGroupId($groupID)->filterByPersonId($userID)->findOne();
         $membership->setRoleId($roleID);
         $membership->save();
-        echo $membership->toJSON();
+        return SlimUtils::renderJSON($response, $membership->toArray());
     });
 
-    $app->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        $input = (object) $request->getParsedBody();
+        $input = $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
-        if (isset($input->groupRoleName)) {
+        if (isset($input['groupRoleName'])) {
             $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
-            $groupRole->setOptionName($input->groupRoleName);
+            $groupRole->setOptionName($input['groupRoleName']);
             $groupRole->save();
 
             return json_encode(['success' => true]);
-        } elseif (isset($input->groupRoleOrder)) {
+        } elseif (isset($input['groupRoleOrder'])) {
             $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
-            $groupRole->setOptionSequence($input->groupRoleOrder);
+            $groupRole->setOptionSequence($input['groupRoleOrder']);
             $groupRole->save();
 
-            return json_encode(['success' => true]);
+            return SlimUtils::renderSuccessJSON($response);
         }
 
-        echo json_encode(['success' => false]);
+        return SlimUtils::renderJSON($response, ['success' => false]);
     });
 
-    $app->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
+    $group->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
         $groupService = $this->get('GroupService');
 
-        echo json_encode($groupService->deleteGroupRole($groupID, $roleID), JSON_THROW_ON_ERROR);
+        return SlimUtils::renderJSON($response, $groupService->deleteGroupRole($groupID, $roleID));
     });
 
-    $app->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/roles', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $roleName = $request->getParsedBody()['roleName'];
         $groupService = $this->get('GroupService');
 
-        echo $groupService->addGroupRole($groupID, $roleName);
+        return SlimUtils::renderJSON($response, $groupService->addGroupRole($groupID, $roleName));
     });
 
-    $app->post('/{groupID:[0-9]+}/defaultRole', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/defaultRole', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $roleID = $request->getParsedBody()['roleID'];
         $group = GroupQuery::create()->findPk($groupID);
         $group->setDefaultRole($roleID);
         $group->save();
-        echo json_encode(['success' => true]);
+        return SlimUtils::renderSuccessJSON($response);
     });
 
-    $app->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
         $groupService = $this->get('GroupService');
 
         if ($input['GroupSpecificPropertyStatus']) {
             $groupService->enableGroupSpecificProperties($groupID);
-            echo json_encode(['status' => 'group specific properties enabled']);
+            return SlimUtils::renderJSON($response, ['status' => 'group specific properties enabled']);
         } else {
             $groupService->disableGroupSpecificProperties($groupID);
-            echo json_encode(['status' => 'group specific properties disabled']);
+            return SlimUtils::renderJSON($response, ['status' => 'group specific properties disabled']);
         }
     });
 
-    $app->post('/{groupID:[0-9]+}/settings/active/{value}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/settings/active/{value}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
@@ -255,13 +259,13 @@ $app->group('/groups', function () use ($app) {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
 
-            return $response->withJson(['status' => 'success']);
+            return SlimUtils::renderSuccessJSON($response);
         } else {
             return $response->withStatus(500, gettext('invalid status value'));
         }
     });
 
-    $app->post('/{groupID:[0-9]+}/settings/email/export/{value}', function ($request, $response, $args) {
+    $group->post('/{groupID:[0-9]+}/settings/email/export/{value}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
@@ -273,9 +277,9 @@ $app->group('/groups', function () use ($app) {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
 
-            return $response->withJson(['status' => 'success']);
+            return SlimUtils::renderSuccessJSON($response);
         } else {
             return $response->withStatus(500, gettext('invalid export value'));
         }
     });
-})->add(new ManageGroupRoleAuthMiddleware());
+})->add(ManageGroupRoleAuthMiddleware::class);

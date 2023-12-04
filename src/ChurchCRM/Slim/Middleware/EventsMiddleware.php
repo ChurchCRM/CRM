@@ -3,26 +3,29 @@
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\model\ChurchCRM\EventQuery;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use ChurchCRM\Slim\Request\SlimUtils;
+use Laminas\Diactoros\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 class EventsMiddleware
 {
-    public function __invoke(Request $request, Response $response, callable $next)
+    public function __invoke(Request $request, RequestHandler $handler): Response
     {
-        $eventId = $request->getAttribute('route')->getArgument('id');
+        $eventId = SlimUtils::getRouteArgument($request, 'id');
         if (empty(trim($eventId))) {
-            return $response->withStatus(400)->withJson(['message' => gettext('Missing event id')]);
+            $response = new Response();
+            return SlimUtils::renderJSON($response, ['message' => gettext('Missing event id')], 400);
         }
 
-        $event = EventQuery::Create()
-          ->findPk($eventId);
+        $event = EventQuery::Create()->findPk($eventId);
 
         if (empty($event)) {
-            return $response->withStatus(404)->withJson(['message' => gettext('Event not found')]);
+            $response = new Response();
+            return SlimUtils::renderJSON($response, ['message' => gettext('Event not found')], 404);
         }
         $request = $request->withAttribute('event', $event);
 
-        return $next($request, $response);
+        return $handler->handle($request);
     }
 }

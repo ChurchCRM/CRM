@@ -11,16 +11,19 @@ use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/families', function () use ($app) {
-    $app->get('/latest', 'getLatestFamilies');
-    $app->get('/updated', 'getUpdatedFamilies');
-    $app->get('/anniversaries', 'getFamiliesWithAnniversaries');
+$app->group('/families', function (RouteCollectorProxy $group) {
+    $group->get('/latest', 'getLatestFamilies');
+    $group->get('/updated', 'getUpdatedFamilies');
+    $group->get('/anniversaries', 'getFamiliesWithAnniversaries');
 
-    $app->get('/email/without', function ($request, $response, $args) {
+    $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()->joinWithPerson()->find();
 
         $familiesWithoutEmails = [];
@@ -39,15 +42,15 @@ $app->group('/families', function () use ($app) {
             }
         }
 
-        return $response->withJson(['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
+        return SlimUtils::renderJSON($response, ['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
     });
 
-    $app->get(
+    $group->get(
         '/numbers',
-        fn ($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries())
+        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, MenuEventsCount::getNumberAnniversaries())
     );
 
-    $app->get('/search/{query}', function ($request, $response, $args) {
+    $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
         $query = $args['query'];
         $results = [];
         $q = FamilyQuery::create()
@@ -58,20 +61,20 @@ $app->group('/families', function () use ($app) {
             array_push($results, $family->toSearchArray());
         }
 
-        return $response->withJson(json_encode(['Families' => $results], JSON_THROW_ON_ERROR));
+        return SlimUtils::renderJSON($response, ['Families' => $results]);
     });
 
-    $app->get('/self-register', function ($request, $response, $args) {
+    $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
 
-        return $response->withJson(['families' => $families->toArray()]);
+        return SlimUtils::renderJSON($response, ['families' => $families->toArray()]);
     });
 
-    $app->get('/self-verify', function ($request, $response, $args) {
+    $group->get('/self-verify', function (Request $request, Response $response, array $args): Response {
         $verificationNotes = NoteQuery::create()
             ->filterByEnteredBy(Person::SELF_VERIFY)
             ->orderByDateEntered(Criteria::DESC)
@@ -79,10 +82,10 @@ $app->group('/families', function () use ($app) {
             ->limit(100)
             ->find();
 
-        return $response->withJson(['families' => $verificationNotes->toArray()]);
+        return SlimUtils::renderJSON($response, ['families' => $verificationNotes->toArray()]);
     });
 
-    $app->get('/pending-self-verify', function ($request, $response, $args) {
+    $group->get('/pending-self-verify', function (Request $request, Response $response, array $args): Response {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::TYPE_FAMILY_VERIFY)
             ->filterByRemainingUses(['min' => 1])
@@ -93,19 +96,23 @@ $app->group('/families', function () use ($app) {
             ->limit(100)
             ->find();
 
-        return $response->withJson(['families' => $pendingTokens->toArray()]);
+        return SlimUtils::renderJSON($response, ['families' => $pendingTokens->toArray()]);
     });
 
-    $app->get('/byCheckNumber/{scanString}', function ($request, $response, $args) use ($app) {
+    $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args): Response {
         $scanString = $args['scanString'];
-        echo $app->FinancialService->getMemberByScanString($scanString);
+
+        /** @var FinancialService $financialService */
+        $financialService = $this->get('FinancialService');
+
+        return SlimUtils::renderJSON($response, $financialService->getMemberByScanString($scanString));
     });
 
     /**
      * Update the family status to activated or deactivated with :familyId and :status true/false.
      * Pass true to activate and false to deactivate.     *.
      */
-    $app->post('/{familyId:[0-9]+}/activate/{status}', function ($request, $response, $args) {
+    $group->post('/{familyId:[0-9]+}/activate/{status}', function (Request $request, Response $response, array $args): Response {
         $familyId = $args['familyId'];
         $newStatus = $args['status'];
 
@@ -134,11 +141,11 @@ $app->group('/families', function () use ($app) {
             $note->save();
         }
 
-        return $response->withJson(['success' => true]);
+        return SlimUtils::renderJSON($response, ['success' => true]);
     });
 });
 
-function getFamiliesWithAnniversaries(Request $request, Response $response, array $p_args)
+function getFamiliesWithAnniversaries(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
@@ -148,9 +155,10 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
         ->orderByWeddingdate('DESC')
         ->find();
 
-    return $response->withJson(buildFormattedFamilies($families, false, false, true));
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families, false, false, true));
 }
-function getLatestFamilies(Request $request, Response $response, array $p_args)
+
+function getLatestFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
@@ -158,10 +166,10 @@ function getLatestFamilies(Request $request, Response $response, array $p_args)
         ->limit(10)
         ->find();
 
-    return $response->withJson(buildFormattedFamilies($families, true, false, false));
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families, true, false, false));
 }
 
-function getUpdatedFamilies(Request $request, Response $response, array $p_args)
+function getUpdatedFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
@@ -171,7 +179,7 @@ function getUpdatedFamilies(Request $request, Response $response, array $p_args)
 
     $formattedList = buildFormattedFamilies($families, false, true, false);
 
-    return $response->withJson($formattedList);
+    return SlimUtils::renderJSON($response, $formattedList);
 }
 
 function buildFormattedFamilies($families, bool $created, bool $edited, bool $wedding): array

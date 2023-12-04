@@ -2,23 +2,25 @@
 
 use ChurchCRM\Service\NewDashboardService;
 use ChurchCRM\Service\SystemService;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use ChurchCRM\Slim\Request\SlimUtils;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/background', function () use ($app) {
-    $app->get('/page', 'getPageCommonData');
-    $app->post('/timerjobs', 'runTimerJobsAPI');
+$app->group('/background', function (RouteCollectorProxy $group) {
+    $group->get('/page', 'getPageCommonData');
+    $group->post('/timerjobs', 'runTimerJobsAPI');
 });
 
-function getPageCommonData(Request $request, Response $response, array $p_args)
+function getPageCommonData(Request $request, Response $response, array $args): Response
 {
-    $pageName = $request->getQueryParam('name', '');
+    $pageName = $request->getQueryParams()['name'];
     $DashboardValues = NewDashboardService::getValues($pageName);
-
-    return $response->withJson($DashboardValues);
+    return SlimUtils::renderJSON($response, $DashboardValues);
 }
 
-function runTimerJobsAPI(Request $request, Response $response, array $args)
+function runTimerJobsAPI(Request $request, Response $response, array $args): Response
 {
     SystemService::runTimerJobs();
+    return $response;
 }

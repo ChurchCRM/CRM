@@ -7,50 +7,50 @@ use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventCounts;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/events', function () use ($app) {
-    $app->get('/', 'getAllEvents');
-    $app->get('', 'getAllEvents');
-    $app->get('/types', 'getEventTypes');
-    $app->get('/{id}', 'getEvent')->add(new EventsMiddleware());
-    $app->get('/{id}/', 'getEvent')->add(new EventsMiddleware());
-    $app->get('/{id}/primarycontact', 'getEventPrimaryContact');
-    $app->get('/{id}/secondarycontact', 'getEventSecondaryContact');
-    $app->get('/{id}/location', 'getEventLocation');
-    $app->get('/{id}/audience', 'getEventAudience');
+$app->group('/events', function (RouteCollectorProxy $group) {
+    $group->get('/', 'getAllEvents');
+    $group->get('', 'getAllEvents');
+    $group->get('/types', 'getEventTypes');
+    $group->get('/{id}', 'getEvent')->add(new EventsMiddleware());
+    $group->get('/{id}/', 'getEvent')->add(new EventsMiddleware());
+    $group->get('/{id}/primarycontact', 'getEventPrimaryContact');
+    $group->get('/{id}/secondarycontact', 'getEventSecondaryContact');
+    $group->get('/{id}/location', 'getEventLocation');
+    $group->get('/{id}/audience', 'getEventAudience');
 
-    $app->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $app->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $app->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
-    $app->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
+    $group->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
 
-    $app->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
+    $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
 });
 
-function getAllEvents($request, Response $response, $args)
+function getAllEvents(Request $request, Response $response, array $args): Response
 {
     $Events = EventQuery::create()
         ->find();
-    if ($Events) {
-        return $response->write($Events->toJSON());
+    if (!empty($Events)) {
+        return SlimUtils::renderStringJSON($response, $Events->toJSON());
     }
-
     return $response->withStatus(404);
 }
 
-function getEventTypes($request, Response $response, $args)
+function getEventTypes(Request $request, Response $response, array $args): Response
 {
     $EventTypes = EventTypeQuery::Create()
         ->orderByName()
         ->find();
-    if ($EventTypes) {
-        return $response->write($EventTypes->toJSON());
+    if (!empty($EventTypes)) {
+        return SlimUtils::renderStringJSON($response, $EventTypes->toJSON());
     }
-
     return $response->withStatus(404);
 }
 
@@ -58,92 +58,93 @@ function getEvent(Request $request, Response $response, $args)
 {
     $Event = $request->getAttribute('event');
 
-    return $response->write($Event->toJSON());
-}
-
-function getEventPrimaryContact($request, $response, $args)
-{
-    $Event = EventQuery::create()
-        ->findOneById($args['id']);
-    if ($Event) {
-        $Contact = $Event->getPersonRelatedByPrimaryContactPersonId();
-        if ($Contact) {
-            return $response->write($Contact->toJSON());
-        }
+    if (!empty($Event)) {
+        return SlimUtils::renderStringJSON($response, $Event->toJSON());
     }
-
     return $response->withStatus(404);
 }
 
-function getEventSecondaryContact($request, $response, $args)
+function getEventPrimaryContact(Request $request, Response $response, array $args): Response
+{
+    $Event = EventQuery::create()
+        ->findOneById($args['id']);
+    if (!empty($Event)) {
+        $Contact = $Event->getPersonRelatedByPrimaryContactPersonId();
+        if ($Contact) {
+            return SlimUtils::renderStringJSON($response, $Contact->toJSON());
+        }
+    }
+    return $response->withStatus(404);
+}
+
+function getEventSecondaryContact(Request $request, Response $response, array $args): Response
 {
     $Contact = EventQuery::create()
         ->findOneById($args['id'])
         ->getPersonRelatedBySecondaryContactPersonId();
-    if ($Contact) {
-        return $response->write($Contact->toJSON());
+    if (!empty($Contact)) {
+        return SlimUtils::renderStringJSON($response, $Contact->toJSON());
     }
-
     return $response->withStatus(404);
 }
 
-function getEventLocation($request, $response, $args)
+function getEventLocation(Request $request, Response $response, array $args): Response
 {
     $Location = EventQuery::create()
         ->findOneById($args['id'])
         ->getLocation();
-    if ($Location) {
-        return $response->write($Location->toJSON());
+    if (!empty($Location)) {
+        return SlimUtils::renderStringJSON($response, $Location->toJSON());
     }
 
     return $response->withStatus(404);
 }
 
-function getEventAudience($request, Response $response, $args)
+function getEventAudience(Request $request, Response $response, array $args): Response
 {
     $Audience = EventQuery::create()
         ->findOneById($args['id'])
         ->getEventAudiencesJoinGroup();
-    if ($Audience) {
-        return $response->write($Audience->toJSON());
+    if (!empty($Audience)) {
+        return SlimUtils::renderStringJSON($response, $Audience->toJSON());
     }
 
     return $response->withStatus(404);
 }
 
-function newEvent($request, $response, $args)
+function newEvent(Request $request, Response $response, array $args): Response
 {
-    $input = (object) $request->getParsedBody();
+    $input = $request->getParsedBody();
 
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::Create()
-        ->findOneById($input->Type);
-    if (!$type) {
+        ->findOneById($input['Type']);
+    if (empty($type)) {
         return $response->withStatus(400, gettext('invalid event type id'));
     }
 
     $calendars = CalendarQuery::create()
-        ->filterById($input->PinnedCalendars)
+        ->filterById($input['PinnedCalendars'])
         ->find();
-    if (count($calendars) != count($input->PinnedCalendars)) {
+    if (count($calendars) != count($input['PinnedCalendars'])) {
         return $response->withStatus(400, gettext('invalid calendar pinning'));
     }
 
     // we have event type and pined calendars.  now create the event.
     $event = new Event();
-    $event->setTitle($input->Title);
+    $event->setTitle($input['Title']);
     $event->setEventType($type);
-    $event->setDesc($input->Desc);
-    $event->setStart(str_replace('T', ' ', $input->Start));
-    $event->setEnd(str_replace('T', ' ', $input->End));
-    $event->setText(InputUtils::filterHTML($input->Text));
+    $event->setDesc($input['Desc']);
+    $event->setStart(str_replace('T', ' ', $input['Start']));
+    $event->setEnd(str_replace('T', ' ', $input['End']));
+    $event->setText(InputUtils::filterHTML($input['Text']));
     $event->setCalendars($calendars);
     $event->save();
 
-    return $response->withJson(['status' => 'success']);
+    return SlimUtils::renderSuccessJSON($response);
 }
 
-function updateEvent($request, $response, $args)
+function updateEvent(Request $request, Response $response, array $args): Response
 {
     $e = new Event();
     //$e->getId();
@@ -153,27 +154,27 @@ function updateEvent($request, $response, $args)
     $Event->fromArray($input);
     $Event->setId($id);
     $PinnedCalendars = CalendarQuery::Create()
-            ->filterById($input['PinnedCalendars'], Criteria::IN)
-            ->find();
+        ->filterById($input['PinnedCalendars'], Criteria::IN)
+        ->find();
     $Event->setCalendars($PinnedCalendars);
 
     $Event->save();
 }
 
-function setEventTime($request, Response $response, $args)
+function setEventTime(Request $request, Response $response, array $args): Response
 {
-    $input = (object) $request->getParsedBody();
+    $input = $request->getParsedBody();
 
     $event = EventQuery::Create()
         ->findOneById($args['id']);
     if (!$event) {
         return $response->withStatus(404);
     }
-    $event->setStart($input->startTime);
-    $event->setEnd($input->endTime);
+    $event->setStart($input['startTime']);
+    $event->setEnd($input['endTime']);
     $event->save();
 
-    return $response->withJson(['status' => 'success']);
+    return SlimUtils::renderSuccessJSON($response);
 }
 
 function unusedSetEventAttendance()
@@ -205,16 +206,13 @@ function unusedSetEventAttendance()
     }
 }
 
-function deleteEvent($request, $response, $args)
+function deleteEvent(Request $request, Response $response, array $args): Response
 {
-    $input = (object) $request->getParsedBody();
-
-    $event = EventQuery::Create()
-        ->findOneById($args['id']);
+    $event = EventQuery::Create()->findOneById($args['id']);
     if (!$event) {
         return $response->withStatus(404);
     }
     $event->delete();
 
-    return $response->withJson(['status' => 'success']);
+    return SlimUtils::renderSuccessJSON($response);
 }

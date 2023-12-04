@@ -1,15 +1,17 @@
 <?php
 
 use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use ChurchCRM\Slim\Request\SlimUtils;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/user/{userId:[0-9]+}/setting', function () use ($app) {
-    $app->get('/{settingName}', 'getUserSetting');
-    $app->post('/{settingName}', 'updateUserSetting');
-})->add(new UserAPIMiddleware());
+$app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $group) {
+    $group->get('/{settingName}', 'getUserSetting');
+    $group->post('/{settingName}', 'updateUserSetting');
+})->add(UserAPIMiddleware::class);
 
-function getUserSetting(Request $request, Response $response, array $args)
+function getUserSetting(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $settingName = $args['settingName'];
@@ -19,16 +21,16 @@ function getUserSetting(Request $request, Response $response, array $args)
         $value = $setting->getValue();
     }
 
-    return $response->withJson(['value' => $value]);
+    return SlimUtils::renderJSON($response, ['value' => $value]);
 }
 
-function updateUserSetting(Request $request, Response $response, array $args)
+function updateUserSetting(Request $request, Response $response, array $args): Response
 {
     $user = $request->getAttribute('user');
     $settingName = $args['settingName'];
 
-    $input = (object) $request->getParsedBody();
-    $user->setSetting($settingName, $input->value);
+    $input = $request->getParsedBody();
+    $user->setSetting($settingName, $input['value']);
 
-    return $response->withJson(['value' => $user->getSetting($settingName)->getValue()]);
+    return SlimUtils::renderJSON($response, ['value' => $user->getSetting($settingName)->getValue()]);
 }

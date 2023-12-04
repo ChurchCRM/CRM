@@ -3,10 +3,14 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/register', function () use ($app) {
-    $app->post('', function ($request, $response, $args) {
-        $input = (object) $request->getParsedBody();
+$app->group('/register', function (RouteCollectorProxy $group) {
+    $group->post('', function (Request $request, Response $response, array $args): Response {
+        $input = $request->getParsedBody();
 
         $registrationData = new \stdClass();
         $registrationData->sName = SystemConfig::getValue('sChurchName');
@@ -16,10 +20,10 @@ $app->group('/register', function () use ($app) {
         $registrationData->sZip = SystemConfig::getValue('sChurchZip');
         $registrationData->sCountry = SystemConfig::getValue('sChurchCountry');
         $registrationData->sEmail = SystemConfig::getValue('sChurchEmail');
-        $registrationData->ChurchCRMURL = $input->ChurchCRMURL;
+        $registrationData->ChurchCRMURL = $input['ChurchCRMURL'];
         $registrationData->Version = SystemService::getInstalledVersion();
 
-        $registrationData->sComments = $input->emailmessage;
+        $registrationData->sComments = $input['emailmessage'];
         $curlService = curl_init('https://demo.churchcrm.io/register.php');
 
         curl_setopt($curlService, CURLOPT_POST, true);
@@ -35,6 +39,6 @@ $app->group('/register', function () use ($app) {
         // =Turn off the registration flag so the menu option is less obtrusive
         SystemConfig::setValue('bRegistered', '1');
 
-        return $response->withJson(['status' => 'success']);
+        return SlimUtils::renderSuccessJSON($response);
     });
-})->add(new AdminRoleAuthMiddleware());
+})->add(AdminRoleAuthMiddleware::class);

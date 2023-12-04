@@ -3,18 +3,20 @@
 namespace ChurchCRM\Slim\Middleware\Request\Setting;
 
 use ChurchCRM\dto\SystemConfig;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Laminas\Diactoros\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 abstract class BaseAuthSettingMiddleware
 {
-    public function __invoke(Request $request, Response $response, callable $next)
+    public function __invoke(Request $request, RequestHandler $handler): Response
     {
         if (!SystemConfig::getBooleanValue($this->getSettingName())) {
+            $response = new Response();
             return $response->withStatus(403, $this->getSettingName() . ' ' . gettext('is disabled'));
         }
 
-        return $next($request, $response);
+        return $handler->handle($request);
     }
 
     abstract protected function getSettingName();

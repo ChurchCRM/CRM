@@ -5,23 +5,16 @@ use ChurchCRM\model\ChurchCRM\QueryParameterOptionsQuery;
 use ChurchCRM\model\ChurchCRM\QueryParametersQuery;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use ChurchCRM\Slim\Request\SlimUtils;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/locale', function () use ($app) {
-    $app->get('/database/terms', 'getDBTerms');
-})->add(new AdminRoleAuthMiddleware());
+$app->group('/locale', function (RouteCollectorProxy $group) {
+    $group->get('/database/terms', 'getDBTerms');
+})->add(AdminRoleAuthMiddleware::class);
 
-/**
- * A method that gets locale terms from the db for po generation.
- *
- * @param \Slim\Http\Request  $p_request  The request.
- * @param \Slim\Http\Response $p_response The response.
- * @param array               $p_args     Arguments
- *
- * @return \Slim\Http\Response The augmented response.
- */
-function getDBTerms(Request $request, Response $response, array $p_args)
+function getDBTerms(Request $request, Response $response, array $args): Response
 {
     $terms = [];
 
@@ -47,5 +40,5 @@ function getDBTerms(Request $request, Response $response, array $p_args)
         array_push($terms, $term['qrp_Description']);
     }
 
-    return $response->withJson(['terms' => $terms]);
+    return SlimUtils::renderJSON($response, ['terms' => $terms]);
 }

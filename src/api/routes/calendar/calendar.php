@@ -6,64 +6,64 @@ use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\Collection\ObjectCollection;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/calendars', function () use ($app) {
-    $app->get('', 'getUserCalendars');
-    $app->post('', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
-    $app->get('/', 'getUserCalendars');
-    $app->post('/', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
-    $app->get('/{id}', 'getUserCalendars');
-    $app->delete('/{id}', 'deleteUserCalendar');
-    $app->get('/{id}/events', 'UserCalendar');
-    $app->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
-    $app->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
-    $app->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(new AddEventsRoleAuthMiddleware());
+$app->group('/calendars', function (RouteCollectorProxy $group) {
+    $group->get('', 'getUserCalendars');
+    $group->post('', 'NewCalendar')->add(AddEventsRoleAuthMiddleware::class);
+    $group->get('/', 'getUserCalendars');
+    $group->post('/', 'NewCalendar')->add(AddEventsRoleAuthMiddleware::class);
+    $group->get('/{id}', 'getUserCalendars');
+    $group->delete('/{id}', 'deleteUserCalendar');
+    $group->get('/{id}/events', 'UserCalendar');
+    $group->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
+    $group->post('/{id}/NewAccessToken', 'NewAccessToken')->add(AddEventsRoleAuthMiddleware::class);
+    $group->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(AddEventsRoleAuthMiddleware::class);
 });
 
-$app->group('/systemcalendars', function () use ($app) {
-    $app->get('', 'getSystemCalendars');
-    $app->get('/', 'getSystemCalendars');
-    $app->get('/{id}/events', 'getSystemCalendarEvents');
-    $app->get('/{id}/events/{eventid}', 'getSystemCalendarEventById');
-    $app->get('/{id}/fullcalendar', 'getSystemCalendarFullCalendarEvents');
+$app->group('/systemcalendars', function (RouteCollectorProxy $group) {
+    $group->get('', 'getSystemCalendars');
+    $group->get('/', 'getSystemCalendars');
+    $group->get('/{id}/events', 'getSystemCalendarEvents');
+    $group->get('/{id}/events/{eventid}', 'getSystemCalendarEventById');
+    $group->get('/{id}/fullcalendar', 'getSystemCalendarFullCalendarEvents');
 });
 
-function getSystemCalendars(Request $request, Response $response, array $args)
+function getSystemCalendars(Request $request, Response $response, array $args): Response
 {
-    return $response->write(SystemCalendars::getCalendarList()->toJSON());
+    return SlimUtils::renderStringJSON($response, SystemCalendars::getCalendarList()->toJSON());
 }
 
-function getSystemCalendarEvents(Request $request, Response $response, array $args)
+function getSystemCalendarEvents(Request $request, Response $response, array $args): Response
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-    $start = $request->getQueryParam('start', '');
-    $end = $request->getQueryParam('end', '');
+    $start = $request->getQueryParams()['start'];
+    $end = $request->getQueryParams()['end'];
     if ($Calendar) {
         $events = $Calendar->getEvents($start, $end);
-
-        return $response->withJson($events->toJSON());
+        return SlimUtils::renderJSON($response, $events);
     }
 }
 
-function getSystemCalendarEventById(Request $request, Response $response, array $args)
+function getSystemCalendarEventById(Request $request, Response $response, array $args): Response
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
 
     if ($Calendar) {
         $event = $Calendar->getEventById($args['eventid']);
-
-        return $response->withJson($event->toJSON());
+        return SlimUtils::renderJSON($response, $event);
     }
 }
 
-function getSystemCalendarFullCalendarEvents($request, Response $response, $args)
+function getSystemCalendarFullCalendarEvents(Request $request, Response $response, array $args): Response
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-    $start = $request->getQueryParam('start', '');
-    $end = $request->getQueryParam('end', '');
+    $start = $request->getQueryParams()['start'];
+    $end = $request->getQueryParams()['end'];
     if (!$Calendar) {
         return $response->withStatus(404);
     }
@@ -72,10 +72,10 @@ function getSystemCalendarFullCalendarEvents($request, Response $response, $args
         return $response->withStatus(404);
     }
 
-    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar)), JSON_THROW_ON_ERROR));
+    return SlimUtils::renderJSON($response, EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar)));
 }
 
-function getUserCalendars(Request $request, Response $response, array $args)
+function getUserCalendars(Request $request, Response $response, array $args): Response
 {
     $CalendarQuery = CalendarQuery::create();
     if (isset($args['id'])) {
@@ -83,24 +83,11 @@ function getUserCalendars(Request $request, Response $response, array $args)
     }
     $Calendars = $CalendarQuery->find();
     if ($Calendars) {
-        return $response->write($Calendars->toJSON());
+        return SlimUtils::renderStringJSON($response, $Calendars->toJSON());
     }
 }
 
-function getUserCalendarEvents(Request $request, Response $response, array $p_args)
-{
-    $Calendar = CalendarQuery::create()->findOneById($p_args['id']);
-    if ($Calendar) {
-        $Events = EventQuery::create()
-            ->filterByCalendar($Calendar)
-            ->find();
-        if ($Events) {
-            return $response->withJson($Events->toJSON());
-        }
-    }
-}
-
-function getUserCalendarFullCalendarEvents($request, Response $response, $args)
+function getUserCalendarFullCalendarEvents(Request $request, Response $response, array $args): Response
 {
     $CalendarID = $args['id'];
     $calendar = CalendarQuery::create()
@@ -108,8 +95,8 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
     if (!$calendar) {
         return $response->withStatus(404);
     }
-    $start = $request->getQueryParam('start', '');
-    $end = $request->getQueryParam('end', '');
+    $start = $request->getQueryParams()['start'];
+    $end = $request->getQueryParams()['end'];
     $Events = EventQuery::create()
         ->filterByStart(['min' => $start])
         ->filterByEnd(['max' => $end])
@@ -119,12 +106,7 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
         return $response->withStatus(404);
     }
 
-    return $response->write(
-        json_encode(
-            EventsObjectCollectionToFullCalendar($Events, $calendar),
-            JSON_THROW_ON_ERROR
-        )
-    );
+    return SlimUtils::renderJSON($response, EventsObjectCollectionToFullCalendar($Events, $calendar));
 }
 
 function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar $calendar): array
@@ -138,7 +120,7 @@ function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar
     return $formattedEvents;
 }
 
-function NewAccessToken($request, Response $response, $args)
+function NewAccessToken(Request $request, Response $response, array $args): Response
 {
     if (!isset($args['id'])) {
         return $response->withStatus(400, gettext('Invalid request: Missing calendar id'));
@@ -151,35 +133,35 @@ function NewAccessToken($request, Response $response, $args)
     $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
     $Calendar->save();
 
-    return $Calendar->toJSON();
+    return SlimUtils::renderJSON($response, $Calendar);
 }
 
-function DeleteAccessToken($request, Response $response, $args)
+function DeleteAccessToken(Request $request, Response $response, array $args): Response
 {
     if (!isset($args['id'])) {
         return $response->withStatus(400, gettext('Invalid request: Missing calendar id'));
     }
     $Calendar = CalendarQuery::create()
-      ->findOneById($args['id']);
+        ->findOneById($args['id']);
     if (!$Calendar) {
         return $response->withStatus(404, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
     }
     $Calendar->setAccessToken(null);
     $Calendar->save();
 
-    return $Calendar->toJSON();
+    return SlimUtils::renderJSON($response, $Calendar);
 }
 
 function NewCalendar(Request $request, Response $response, $args)
 {
-    $input = (object) $request->getParsedBody();
+    $input = $request->getParsedBody();
     $Calendar = new Calendar();
-    $Calendar->setName($input->Name);
-    $Calendar->setForegroundColor($input->ForegroundColor);
-    $Calendar->setBackgroundColor($input->BackgroundColor);
+    $Calendar->setName($input['Name']);
+    $Calendar->setForegroundColor($input['ForegroundColor']);
+    $Calendar->setBackgroundColor($input['BackgroundColor']);
     $Calendar->save();
 
-    return $response->withJson($Calendar->toArray());
+    return SlimUtils::renderJSON($response, $Calendar->toArray());
 }
 
 function deleteUserCalendar(Request $request, Response $response, $args)
@@ -194,5 +176,5 @@ function deleteUserCalendar(Request $request, Response $response, $args)
     }
     $Calendar->delete();
 
-    return $response->withJson(['status' => 'success']);
+    return SlimUtils::renderSuccessJSON($response);
 }

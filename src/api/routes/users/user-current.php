@@ -2,43 +2,45 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/user/current', function () use ($app) {
-    $app->post('/refresh2fasecret', 'refresh2fasecret');
-    $app->post('/refresh2farecoverycodes', 'refresh2farecoverycodes');
-    $app->post('/remove2fasecret', 'remove2fasecret');
-    $app->post('/test2FAEnrollmentCode', 'test2FAEnrollmentCode');
-    $app->get('/get2faqrcode', 'get2faqrcode');
+$app->group('/user/current', function (RouteCollectorProxy $group) {
+    $group->post('/refresh2fasecret', 'refresh2fasecret');
+    $group->post('/refresh2farecoverycodes', 'refresh2farecoverycodes');
+    $group->post('/remove2fasecret', 'remove2fasecret');
+    $group->post('/test2FAEnrollmentCode', 'test2FAEnrollmentCode');
+    $group->get('/get2faqrcode', 'get2faqrcode');
 });
 
-function refresh2fasecret(Request $request, Response $response, array $args)
+function refresh2fasecret(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
     $secret = $user->provisionNew2FAKey();
     LoggerUtils::getAuthLogger()->info('Began 2FA enrollment for user: ' . $user->getUserName());
 
-    return $response->withJson(['TwoFAQRCodeDataUri' => LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $secret)->writeDataUri()]);
+    return SlimUtils::renderJSON($response, ['TwoFAQRCodeDataUri' => LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $secret)->writeDataUri()]);
 }
 
-function refresh2farecoverycodes(Request $request, Response $response, array $args)
+function refresh2farecoverycodes(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
 
-    return $response->withJson(['TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()]);
+    return SlimUtils::renderJSON($response, ['TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()]);
 }
 
-function remove2fasecret(Request $request, Response $response, array $args)
+function remove2fasecret(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
     $user->remove2FAKey();
 
-    return $response->withJson([]);
+    return SlimUtils::renderJSON($response, []);
 }
 
-function get2faqrcode(Request $request, Response $response, array $args)
+function get2faqrcode(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
     $response = $response->withHeader('Content-Type', 'image/png');
@@ -46,16 +48,16 @@ function get2faqrcode(Request $request, Response $response, array $args)
     return $response->write(LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $user->getDecryptedTwoFactorAuthSecret())->writeString());
 }
 
-function test2FAEnrollmentCode(Request $request, Response $response, array $args)
+function test2FAEnrollmentCode(Request $request, Response $response, array $args): Response
 {
-    $requestParsedBody = (object) $request->getParsedBody();
+    $requestParsedBody = $request->getParsedBody();
     $user = AuthenticationManager::getCurrentUser();
-    $result = $user->confirmProvisional2FACode($requestParsedBody->enrollmentCode);
+    $result = $user->confirmProvisional2FACode($requestParsedBody['enrollmentCode']);
     if ($result) {
         LoggerUtils::getAuthLogger()->info('Completed 2FA enrollment for user: ' . $user->getUserName());
     } else {
         LoggerUtils::getAuthLogger()->notice('Unsuccessful 2FA enrollment for user: ' . $user->getUserName());
     }
 
-    return $response->withJson(['IsEnrollmentCodeValid' => $result]);
+    return SlimUtils::renderJSON($response, ['IsEnrollmentCodeValid' => $result]);
 }

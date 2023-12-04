@@ -9,13 +9,11 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-$app->group('', function () use ($app) {
-    $app->get('/dashboard', 'viewDashboard');
-});
+$app->get('/dashboard', 'viewDashboard');
 
 function viewDashboard(Request $request, Response $response, array $args)
 {

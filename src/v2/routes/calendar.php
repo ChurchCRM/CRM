@@ -5,13 +5,14 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/calendar', function () use ($app) {
-    $app->get('/', 'getCalendar');
-    $app->get('', 'getCalendar');
+$app->group('/calendar', function (RouteCollectorProxy $group) {
+    $group->get('/', 'getCalendar');
+    $group->get('', 'getCalendar');
 });
 
 function getCalendar(Request $request, Response $response, array $args)

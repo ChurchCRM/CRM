@@ -6,15 +6,14 @@ require '../Include/Config.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\KioskDevice;
-use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use Slim\App;
 
 // Instantiate the app
 $app = new App();
 $container = $app->getContainer();
+
 if (SystemConfig::debugEnabled()) {
-    $container['settings']['displayErrorDetails'] = true;
+    $app->addErrorMiddleware(true, true, true);
 }
 
 // Set up
@@ -27,7 +26,7 @@ $windowOpen = new DateTime(SystemConfig::getValue('sKioskVisibilityTimestamp')) 
 
 if (isset($_COOKIE['kioskCookie'])) {
     $g = hash('sha256', $_COOKIE['kioskCookie']);
-    $Kiosk = KioskDeviceQuery::create()
+    $Kiosk = \ChurchCRM\Base\KioskDeviceQuery::create()
           ->findOneByGUIDHash($g);
     if ($Kiosk === null) {
         setcookie('kioskCookie', '', ['expires' => time() - 3600]);
@@ -39,7 +38,7 @@ if (!isset($_COOKIE['kioskCookie'])) {
     if ($windowOpen) {
         $guid = uniqid();
         setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
-        $Kiosk = new KioskDevice();
+        $Kiosk = new \ChurchCRM\KioskDevice();
         $Kiosk->setGUIDHash(hash('sha256', $guid));
         $Kiosk->setAccepted($false);
         $Kiosk->save();

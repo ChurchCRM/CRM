@@ -13,6 +13,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $curYear = (new DateTime())->format("Y");
 $familyAddress = $family->getAddress();
 $mailchimp = new MailChimpService();
+
+$iFYID = CurrentFY();
+if (array_key_exists('idefaultFY', $_SESSION)) {
+    $iFYID = MakeFYString($_SESSION['idefaultFY']);
+}
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -110,16 +115,16 @@ $mailchimp = new MailChimpService();
                         <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
                                 class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
                         <?php if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { ?>
-                            <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&FYID=<?= MakeFYString($_SESSION['idefaultFY']) ?>&amp;linkBack=v2/family/<?= $family->getId() ?>">
-                                <i class="fas fa-refresh"></i><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
+                            <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&FYID=<?= $iFYID ?>&linkBack=v2/family/<?= $family->getId() ?>">
+                                <i class="fas fa-refresh"></i><?= $iFYID . gettext(" Canvass Entry") ?></a>
                         <?php } ?>
 
                         <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Pledge">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
                                 <i class="fa fa-hand-holding-dollar"></i><?= gettext("Add a new pledge") ?></a>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Payment">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
                                 <i class="fa-solid fa-money-bill-transfer"></i><?= gettext("Add a new payment") ?></a>
                         <?php } ?>
                         </div>

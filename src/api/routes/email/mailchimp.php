@@ -4,30 +4,34 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/mailchimp/', function () use ($app) {
-    $app->get('list/{id}', 'getMailchimpList');
-    $app->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');
-    $app->get('list/{id}/not-subscribed', 'getMailChimpMissingSubscribed');
-    $app->get('person/{personId}', 'getPersonStatus')->add(new PersonAPIMiddleware());
-    $app->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
-})->add(new MailChimpMiddleware());
+$app->group('/mailchimp/', function (RouteCollectorProxy $group) {
+    $group->get('list/{id}', 'getMailchimpList');
+    $group->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');
+    $group->get('list/{id}/not-subscribed', 'getMailChimpMissingSubscribed');
+    $group->get('person/{personId}', 'getPersonStatus')->add(new PersonAPIMiddleware());
+    $group->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
+})->add(MailChimpMiddleware::class);
 
-function getMailchimpList(Request $request, Response $response, array $args)
+function getMailchimpList(Request $request, Response $response, array $args): Response
 {
     $listId = $args['id'];
 
     $mailchimpService = $request->getAttribute('mailchimpService');
     $list = $mailchimpService->getList($listId);
 
-    return $response->withJson(['list' => $list]);
+    $response->getBody()->write(json_encode(['list' => $list]));
+
+    return $response->withHeader('Content-Type', 'application/json');
 }
 
-function getMailchimpEmailNotInCRM(Request $request, Response $response, array $args)
+function getMailchimpEmailNotInCRM(Request $request, Response $response, array $args): Response
 {
     $listId = $args['id'];
 
@@ -49,13 +53,13 @@ function getMailchimpEmailNotInCRM(Request $request, Response $response, array $
         }
         LoggerUtils::getAppLogger()->debug('MailChimp list ' . $listId . ' now has ' . count($mailchimpListMembers) . ' members');
 
-        return $response->withJson(['id' => $list['id'], 'name' => $list['name'], 'members' => $mailchimpListMembers]);
+        return SlimUtils::renderJSON($response, ['id' => $list['id'], 'name' => $list['name'], 'members' => $mailchimpListMembers]);
     } else {
         return $response->withStatus(404, gettext('List not found'));
     }
 }
 
-function getMailChimpMissingSubscribed(Request $request, Response $response, array $args)
+function getMailChimpMissingSubscribed(Request $request, Response $response, array $args): Response
 {
     $listId = $args['id'];
 
@@ -84,48 +88,50 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
                         array_push($emails, $person->getWorkEmail());
                     }
                     array_push($personsNotInMailchimp, ['id' => $person->getId(),
-                        'name'                               => $person->getFullName(),
-                        'emails'                             => $emails,
+                        'name' => $person->getFullName(),
+                        'emails' => $emails,
                     ]);
                 }
             }
         }
         LoggerUtils::getAppLogger()->debug('MailChimp list ' . $listId . ' now has ' . count($mailchimpListMembers) . ' members');
 
-        return $response->withJson(['id' => $list['id'], 'name' => $list['name'], 'members' => $personsNotInMailchimp]);
+        return SlimUtils::renderJSON($response, ['id' => $list['id'], 'name' => $list['name'], 'members' => $personsNotInMailchimp]);
     } else {
         return $response->withStatus(404, gettext('List not inList'));
     }
 }
 
-function getFamilyStatus(Request $request, Response $response, array $args)
+function getFamilyStatus(Request $request, Response $response, array $args): Response
 {
     $family = $request->getAttribute('family');
     $mailchimpService = $request->getAttribute('mailchimpService');
     $emailToLists = [];
     if (!empty($family->getEmail())) {
         array_push($emailToLists, ['email' => $family->getEmail(), 'emailMD5' => md5($family->getEmail()),
-            'list'                         => $mailchimpService->isEmailInMailChimp($family->getEmail())]);
+            'list' => $mailchimpService->isEmailInMailChimp($family->getEmail())]);
     }
+    $response->getBody()->write(json_encode($emailToLists));
 
-    return $response->withJson($emailToLists);
+    return $response->withHeader('Content-Type', 'application/json');
 }
 
-function getPersonStatus(Request $request, Response $response, array $args)
+function getPersonStatus(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');
     $mailchimpService = $request->getAttribute('mailchimpService');
     $emailToLists = [];
     if (!empty($person->getEmail())) {
         array_push($emailToLists, ['email' => $person->getEmail(), 'emailMD5' => md5($person->getEmail()),
-            'list'                         => $mailchimpService->isEmailInMailChimp($person->getEmail())]);
+            'list' => $mailchimpService->isEmailInMailChimp($person->getEmail())]);
     }
     if (!empty($person->getWorkEmail())) {
         array_push($emailToLists, ['email' => $person->getWorkEmail(), 'emailMD5' => md5($person->getWorkEmail()),
-            'list'                         => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())]);
+            'list' => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())]);
     }
+    $response->getBody()->write(json_encode($emailToLists));
 
-    return $response->withJson($emailToLists);
+    return $response->withHeader('Content-Type', 'application/json');
 }
 
 function getPeopleWithEmails()

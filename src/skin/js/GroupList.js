@@ -39,7 +39,7 @@ $(document).ready(function () {
         ajax: {
             url: window.CRM.root + "/api/groups/",
             type: "GET",
-            dataSrc: "Groups",
+            dataSrc: "",
         },
         columns: [
             {

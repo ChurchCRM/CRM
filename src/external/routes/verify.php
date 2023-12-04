@@ -4,10 +4,13 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
+use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
-$app->group('/verify', function () use ($app) {
-    $app->get('/{token}', function ($request, $response, $args) {
+$app->group('/verify', function (RouteCollectorProxy $group) {
+    $group->get('/{token}', function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/verify/');
         $token = TokenQuery::create()->findPk($args['token']);
         $haveFamily = false;
@@ -27,19 +30,19 @@ $app->group('/verify', function () use ($app) {
         }
     });
 
-    $app->post('/{token}', function ($request, $response, $args) {
+    $group->post('/{token}', function (Request $request, Response $response, array $args): Response {
         $token = TokenQuery::create()->findPk($args['token']);
         if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());
             if ($family != null) {
-                $body = (object) $request->getParsedBody();
+                $body = $request->getParsedBody();
                 $note = new Note();
                 $note->setFamily($family);
                 $note->setType('verify');
                 $note->setEntered(Person::SELF_VERIFY);
                 $note->setText(gettext('No Changes'));
-                if (!empty($body->message)) {
-                    $note->setText($body->message);
+                if (!empty($body['message'])) {
+                    $note->setText($body['message']);
                 }
                 $note->save();
             }
@@ -47,11 +50,4 @@ $app->group('/verify', function () use ($app) {
 
         return $response->withStatus(200);
     });
-
-    /*$app->post('/', function ($request, $response, $args) {
-        $body = $request->getParsedBody();
-        $renderer = new PhpRenderer("templates/verify/");
-        $family = PersonQuery::create()->findByEmail($body["email"]);
-        return $renderer->render($response, "view-info.php", array("family" => $family));
-    });*/
 });

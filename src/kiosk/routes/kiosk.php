@@ -3,49 +3,50 @@
 use ChurchCRM\dto\Notification;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-$app->get('/', function ($request, $response, $args) {
+$app->get('/', function (Request $request, Response $response, array $args): Response {
     $renderer = new PhpRenderer('templates/kioskDevices/');
     $pageObjects = ['sRootPath' => $_SESSION['sRootPath']];
 
     return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
 });
 
-$app->get('/heartbeat', fn ($request, $response, $args) => json_encode($app->kiosk->heartbeat(), JSON_THROW_ON_ERROR));
+$app->get('/heartbeat', fn (Request $request, Response $response, array $args) => json_encode($app->kiosk->heartbeat(), JSON_THROW_ON_ERROR));
 
-$app->post('/checkin', function ($request, $response, $args) use ($app) {
-    $input = (object) $request->getParsedBody();
-    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input->PersonId);
+$app->post('/checkin', function (Request $request, Response $response, array $args) use ($app) {
+    $input = $request->getParsedBody();
+    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input['PersonId']);
 
-    return $response->withJson($status);
+    return SlimUtils::renderJSON($response, $status);
 });
 
-$app->post('/checkout', function ($request, $response, $args) use ($app) {
-    $input = (object) $request->getParsedBody();
-    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input->PersonId);
+$app->post('/checkout', function (Request $request, Response $response, array $args) use ($app) {
+    $input = $request->getParsedBody();
+    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input['PersonId']);
 
-    return $response->withJson($status);
+    return SlimUtils::renderJSON($response, $status);
 });
 
-$app->post('/triggerNotification', function ($request, $response, $args) use ($app) {
-    $input = (object) $request->getParsedBody();
+$app->post('/triggerNotification', function (Request $request, Response $response, array $args) use ($app) {
+    $input = $request->getParsedBody();
 
     $Person = PersonQuery::create()
-            ->findOneById($input->PersonId);
+            ->findOneById($input['PersonId']);
 
     $Notification = new Notification();
     $Notification->setPerson($Person);
     $Notification->setRecipients($Person->getFamily()->getAdults());
     $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType() . '-' . $Person->getId());
-    $Status = $Notification->send();
+    $status = $Notification->send();
 
-    return $response->withJson($Status);
+    return SlimUtils::renderJSON($response, $status);
 });
 
-$app->get('/activeClassMembers', fn ($request, $response, $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());
+$app->get('/activeClassMembers', fn (Request $request, Response $response, array $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());
 
 $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface $request, Response $response, $args) {
     $photo = new Photo('Person', $args['PersonId']);

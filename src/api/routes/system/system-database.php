@@ -17,126 +17,189 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/database', function () use ($app) {
-    $app->delete('/reset', 'resetDatabase');
-    $app->delete('/people/clear', 'clearPeopleTables');
+$app->group('/database', function (RouteCollectorProxy $group) {
+    $group->delete('/reset', 'resetDatabase');
+    $group->delete('/people/clear', 'clearPeopleTables');
 
-    $app->get('/people/export/chmeetings', 'exportChMeetings');
+    $group->get('/people/export/chmeetings', 'exportChMeetings');
 
-    $app->post('/backup', function ($request, $response, $args) {
-        $input = (object) $request->getParsedBody();
+    $group->post('/backup', function (Request $request, Response $response, array $args): Response {
+        $input = $request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
-        $BackupType = $input->BackupType;
+        $BackupType = $input['BackupType'];
         $Backup = new BackupJob(
             $BaseName,
             $BackupType,
             SystemConfig::getValue('bBackupExtraneousImages'),
-            $input->EncryptBackup ?? '',
-            $input->BackupPassword ?? ''
+            $input['EncryptBackup'] ?? '',
+            $input['BackupPassword'] ?? ''
         );
         $Backup->execute();
 
-        return $response->withJson($Backup);
+        return SlimUtils::renderJSON(
+            $response,
+            json_decode(json_encode($Backup), (bool) JSON_OBJECT_AS_ARRAY)
+        );
     });
 
-    $app->post('/backupRemote', function ($request, $response, $args) {
+    $group->post('/backupRemote', function (Request $request, Response $response, array $args): Response {
         if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-            $input = (object) $request->getParsedBody();
-            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
-            $BackupType = $input->BackupType;
+            $input = $request->getParsedBody();
+            $BaseName = preg_replace(
+                '/[^a-zA-Z0-9\-_]/',
+                '',
+                SystemConfig::getValue('sChurchName')
+            ) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+            $BackupType = $input['BackupType'];
             $Backup = new BackupJob(
                 $BaseName,
                 $BackupType,
                 SystemConfig::getValue('bBackupExtraneousImages'),
-                $input->EncryptBackup ?? '',
-                $input->BackupPassword ?? ''
+                $input['EncryptBackup'] ?? '',
+                $input['BackupPassword'] ?? ''
             );
             $Backup->execute();
-            $copyStatus = $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
+            $copyStatus = $Backup->copyToWebDAV(
+                SystemConfig::getValue('sExternalBackupEndpoint'),
+                SystemConfig::getValue('sExternalBackupUsername'),
+                SystemConfig::getValue('sExternalBackupPassword')
+            );
 
-            return $response->withJson($copyStatus);
+            return SlimUtils::renderJSON($response, ['copyStatus' => $copyStatus]);
         } else {
             throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
         }
     });
 
-    $app->post('/restore', function ($request, $response, $args) {
+    $group->post('/restore', function (Request $request, Response $response, array $args): Response {
         $RestoreJob = new RestoreJob();
         $RestoreJob->execute();
 
-        return $response->withJson($RestoreJob);
+        return SlimUtils::renderJSON(
+            $response,
+            json_decode(json_encode($RestoreJob), (bool) JSON_OBJECT_AS_ARRAY)
+        );
     });
 
-    $app->get('/download/{filename}', function ($request, $response, $args) {
+    $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response {
         $filename = $args['filename'];
         BackupDownloader::downloadBackup($filename);
     });
-})->add(new AdminRoleAuthMiddleware());
+})->add(AdminRoleAuthMiddleware::class);
 
-/**
- * A method that drops all db tables.
- *
- * @param \Slim\Http\Request  $p_request  The request.
- * @param \Slim\Http\Response $p_response The response.
- * @param array               $p_args     Arguments
- *
- * @return \Slim\Http\Response The augmented response.
- */
-function exportChMeetings(Request $request, Response $response, array $p_args)
+function exportChMeetings(Request $request, Response $response, array $args): Response
 {
     $header_data = [
-        'First Name', 'Last Name', 'Middle Name', 'Gender',
-        'Marital Status', 'Anniversary', 'Engagement Date',
-        'Birthdate', 'Mobile Phone', 'Home Phone', 'Email',
-        'Facebook', 'School', 'Grade', 'Employer', 'Job Title', 'Talents And Hobbies',
-        'Address Line', 'Address Line 2', 'City', 'State', 'ZIP Code', 'Notes', 'Join Date',
-        'Family Id', 'Family Role',
-        'Baptism Date', 'Baptism Location', 'Nickname',
+        'First Name',
+        'Last Name',
+        'Middle Name',
+        'Gender',
+        'Marital Status',
+        'Anniversary',
+        'Engagement Date',
+        'Birthdate',
+        'Mobile Phone',
+        'Home Phone',
+        'Email',
+        'Facebook',
+        'School',
+        'Grade',
+        'Employer',
+        'Job Title',
+        'Talents And Hobbies',
+        'Address Line',
+        'Address Line 2',
+        'City',
+        'State',
+        'ZIP Code',
+        'Notes',
+        'Join Date',
+        'Family Id',
+        'Family Role',
+        'Baptism Date',
+        'Baptism Location',
+        'Nickname',
     ];
     $people = PersonQuery::create()->find();
     $list = [];
     foreach ($people as $person) {
         $family = $person->getFamily();
-        $annaversery = ($family ? $family->getWeddingdate(SystemConfig::getValue('sDateFormatShort')) : '');
+        $anniversary = ($family ? $family->getWeddingdate(SystemConfig::getValue('sDateFormatShort')) : '');
         $familyRole = $person->getFamilyRoleName();
         if ($familyRole == 'Head of Household') {
             $familyRole = 'Primary';
         }
 
-        $chPerson = [$person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, '', $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), '', '', '', '', '', $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), '', $person->getMembershipDate(SystemConfig::getValue('sDateFormatShort')), $family ? $family->getId() : '', $familyRole, '', '', ''];
+        $chPerson = [
+            $person->getFirstName(),
+            $person->getLastName(),
+            $person->getMiddleName(),
+            $person->getGenderName(),
+            '',
+            $anniversary,
+            '',
+            $person->getFormattedBirthDate(),
+            $person->getCellPhone(),
+            $person->getHomePhone(),
+            $person->getEmail(),
+            $person->getFacebookID(),
+            '',
+            '',
+            '',
+            '',
+            '',
+            $person->getAddress1(),
+            $person->getAddress2(),
+            $person->getCity(),
+            $person->getState(),
+            $person->getZip(),
+            '',
+            $person->getMembershipDate(SystemConfig::getValue('sDateFormatShort')),
+            $family ? $family->getId() : '',
+            $familyRole,
+            '',
+            '',
+            ''
+        ];
         array_push($list, $chPerson);
     }
 
-    $stream = fopen('php://memory', 'w+');
-    fputcsv($stream, $header_data);
+    $out = fopen('php://temp', 'w+');
+    fputcsv($out, $header_data);
     foreach ($list as $fields) {
-        fputcsv($stream, $fields, ',');
+        fputcsv($out, $fields, ',');
     }
-
-    rewind($stream);
+    rewind($out);
+    $csvData = stream_get_contents($out);
+    fclose($out);
 
     $response = $response->withHeader('Content-Type', 'text/csv');
-    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv"');
+    $response = $response->withHeader(
+        'Content-Disposition',
+        'attachment; filename="ChMeetings-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv"'
+    );
+    $response->getBody()->write($csvData);
 
-    return $response->withBody(new \Slim\Http\Stream($stream));
+    return $response;
 }
 
 /**
  * A method that drops all db tables.
  *
- * @param \Slim\Http\Request  $p_request  The request.
- * @param \Slim\Http\Response $p_response The response.
- * @param array               $p_args     Arguments
+ * @param Request  $request  The request.
+ * @param Response $response The response.
  *
- * @return \Slim\Http\Response The augmented response.
+ * @return Response The augmented response.
  */
-function resetDatabase(Request $request, Response $response, array $p_args)
+function resetDatabase(Request $request, Response $response)
 {
     $connection = Propel::getConnection();
     $logger = LoggerUtils::getAppLogger();
@@ -160,10 +223,16 @@ function resetDatabase(Request $request, Response $response, array $p_args)
 
     AuthenticationManager::endSession();
 
-    return $response->withJson(['success' => true, 'msg' => gettext('The database has been cleared.')]);
+    return SlimUtils::renderJSON(
+        $response,
+        [
+            'success' => true,
+            'msg' => gettext('The database has been cleared.')
+        ]
+    );
 }
 
-function clearPeopleTables(Request $request, Response $response, array $p_args)
+function clearPeopleTables(Request $request, Response $response, array $args): Response
 {
     $connection = Propel::getConnection();
     $logger = LoggerUtils::getAppLogger();
@@ -205,5 +274,11 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
     NoteQuery::create()->filterByPerId($curUserId, Criteria::NOT_EQUAL)->delete($connection);
     $logger->info('Notes deleted');
 
-    return $response->withJson(['success' => true, 'msg' => gettext('The people and families has been cleared from the database.')]);
+    return SlimUtils::renderJSON(
+        $response,
+        [
+            'success' => true,
+            'msg' => gettext('The people and families has been cleared from the database.')
+        ]
+    );
 }

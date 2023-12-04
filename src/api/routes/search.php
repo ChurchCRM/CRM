@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : api/routes/search.php
- *  last change : 2017/10/29 Philippe Logel
- *  description : Search terms like : Firstname, Lastname, phone, address,
- *                                 groups, families, etc...
- *
- ******************************************************************************/
-
 use ChurchCRM\Search\AddressSearchResultProvider;
 use ChurchCRM\Search\CalendarEventSearchResultProvider;
 use ChurchCRM\Search\FamilySearchResultProvider;
@@ -17,11 +8,14 @@ use ChurchCRM\Search\FinancePaymentSearchResultProvider;
 use ChurchCRM\Search\GroupSearchResultProvider;
 use ChurchCRM\Search\iSearchResultProvider;
 use ChurchCRM\Search\PersonSearchResultProvider;
+use ChurchCRM\Slim\Request\SlimUtils;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 // Routes search
 
 // search for a string in Persons, families, groups, Financial Deposits and Payments
-$app->get('/search/{query}', function ($request, $response, $args) {
+$app->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
     $query = $args['query'];
     $resultsArray = [];
     $resultsProviders = [
@@ -39,5 +33,5 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         array_push($resultsArray, $provider->getSearchResults($query));
     }
 
-    return $response->withJson(array_values(array_filter($resultsArray)));
+    return SlimUtils::renderJSON($response, array_values(array_filter($resultsArray)));
 });

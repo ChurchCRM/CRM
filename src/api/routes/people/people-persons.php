@@ -6,23 +6,25 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Propel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/persons', function () use ($app) {
-    $app->get('/roles', 'getAllRolesAPI');
-    $app->get('/roles/', 'getAllRolesAPI');
-    $app->get('/duplicate/emails', 'getEmailDupesAPI');
+$app->group('/persons', function (RouteCollectorProxy $group) {
+    $group->get('/roles', 'getAllRolesAPI');
+    $group->get('/roles/', 'getAllRolesAPI');
+    $group->get('/duplicate/emails', 'getEmailDupesAPI');
 
-    $app->get('/latest', 'getLatestPersons');
-    $app->get('/updated', 'getUpdatedPersons');
-    $app->get('/birthday', 'getPersonsWithBirthdays');
+    $group->get('/latest', 'getLatestPersons');
+    $group->get('/updated', 'getUpdatedPersons');
+    $group->get('/birthday', 'getPersonsWithBirthdays');
 
     // search person by Name
-    $app->get('/search/{query}', function ($request, $response, $args) {
+    $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
         $query = $args['query'];
 
         $searchLikeString = '%' . $query . '%';
@@ -44,36 +46,36 @@ $app->group('/persons', function () use ($app) {
             array_push($return, $values);
         }
 
-        return $response->withJson($return);
+        return SlimUtils::renderJSON($response, $return);
     });
 
-    $app->get(
+    $group->get(
         '/numbers',
-        fn ($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberBirthDates())
+        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, MenuEventsCount::getNumberBirthDates())
     );
 
-    $app->get('/self-register', function ($request, $response, $args) {
+    $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
 
-        return $response->withJson(['people' => $people->toArray()]);
+        return SlimUtils::renderJSON($response, ['people' => $people->toArray()]);
     });
 });
 
-function getAllRolesAPI(Request $request, Response $response, array $p_args)
+function getAllRolesAPI(Request $request, Response $response, array $args): Response
 {
     $roles = ListOptionQuery::create()->getFamilyRoles();
 
-    return $response->withJson($roles->toArray());
+    return SlimUtils::renderJSON($response, $roles->toArray());
 }
 
 /**
  * A method that review dup emails in the db and returns families and people where that email is used.
  */
-function getEmailDupesAPI(Request $request, Response $response, array $args)
+function getEmailDupesAPI(Request $request, Response $response, array $args): Response
 {
     $connection = Propel::getConnection();
     $dupEmailsSQL = "select email, total from ( SELECT email, COUNT(*) AS total FROM ( SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != '' UNION SELECT per_email AS email, 'person_home' AS type, per_id AS id FROM person_per WHERE per_email IS NOT NULL AND per_email != '' UNION SELECT per_WorkEmail AS email, 'person_work' AS type, per_id AS id FROM person_per WHERE per_WorkEmail IS NOT NULL AND per_WorkEmail != '') as allEmails group by email) as dupEmails where total > 1";
@@ -95,28 +97,28 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
             array_push($families, ['id' => $family->getId(), 'name' => $family->getName()]);
         }
         array_push($emails, [
-            'email'    => $email,
-            'people'   => $people,
+            'email' => $email,
+            'people' => $people,
             'families' => $families,
         ]);
     }
 
-    return $response->withJson(['emails' => $emails]);
+    return SlimUtils::renderJSON($response, ['emails' => $emails]);
 }
 
-function getLatestPersons(Request $request, Response $response, array $p_args)
+function getLatestPersons(Request $request, Response $response, array $args): Response
 {
     $people = PersonQuery::create()
-    ->leftJoinWithFamily()
-    ->where('Family.DateDeactivated is null')
-    ->orderByDateEntered('DESC')
-    ->limit(10)
-    ->find();
+        ->leftJoinWithFamily()
+        ->where('Family.DateDeactivated is null')
+        ->orderByDateEntered('DESC')
+        ->limit(10)
+        ->find();
 
-    return $response->withJson(buildFormattedPersonList($people, true, false, false));
+    return SlimUtils::renderJSON($response, buildFormattedPersonList($people, true, false, false));
 }
 
-function getUpdatedPersons(Request $request, Response $response, array $p_args)
+function getUpdatedPersons(Request $request, Response $response, array $args): Response
 {
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
@@ -125,17 +127,17 @@ function getUpdatedPersons(Request $request, Response $response, array $p_args)
         ->limit(10)
         ->find();
 
-    return $response->withJson(buildFormattedPersonList($people, false, true, false));
+    return SlimUtils::renderJSON($response, buildFormattedPersonList($people, false, true, false));
 }
 
-function getPersonsWithBirthdays(Request $request, Response $response, array $p_args)
+function getPersonsWithBirthdays(Request $request, Response $response, array $args): Response
 {
     $people = PersonQuery::create()
         ->filterByBirthMonth(date('m'))
         ->filterByBirthDay(date('d'))
         ->find();
 
-    return $response->withJson(buildFormattedPersonList($people, false, false, true));
+    return SlimUtils::renderJSON($response, buildFormattedPersonList($people, false, false, true));
 }
 
 function buildFormattedPersonList(Collection $people, bool $created, bool $edited, bool $birthday)
