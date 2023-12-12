@@ -644,7 +644,7 @@ msgstr "Email (BCC)"
 
 #: 
 msgid "Create Directory From Cart"
-msgstr "Crear directorio desde separador"
+msgstr "Crear directorio desde carrito"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -8248,7 +8248,7 @@ msgstr "Nuevo calendario"
 #: 
 #, fuzzy
 msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI deshabilitado, pero algunos calendarios tienen token de acceso"
+msgstr "bEnableExternalCalendarAPI deshabilitado, pero algunos calendarios tienen tokens de acceso"
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
@@ -9395,4 +9395,76 @@ msgstr "Fecha de nacimiento inválida: falta el mes o el día de nacimiento."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Fecha de nacimiento inválida: falta el mes y el día de nacimiento."
+
+#: 
+msgid "System"
+msgstr "Sistema"
+
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Amhárico - Etiopía"
+
+#: 
+msgid "Czech"
+msgstr "Checo"
+
+#: 
+msgid "Finnish"
+msgstr "Finés"
+
+#: 
+msgid "Greek"
+msgstr "Griego"
+
+#: 
+msgid "Turkish"
+msgstr "Turco"
+
+#: 
+msgid "Ukrainian"
+msgstr "Ucraniano"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Cuando haga clic en \"Enviar a GitHub\", será redirigido a la página de problemas de GitHub con la información de su sistema precargada."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Enviar a GitHub"
+
+#: 
+msgid "Change role"
+msgstr "Cambiar rol"
+
+#: 
+msgid "Closed"
+msgstr "Cerrado"
+
+#: 
+msgid "Delete this person?"
+msgstr "Borrar a esta persona?"
+
+#: 
+msgid "Deposit ID"
+msgstr "ID de Depósito"
+
+#: 
+msgid "Deposit Total"
+msgstr "Depósito Total"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Estado del Carrito de Grupo"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "Si esto no funciona, copie y pegue el siguiente enlace en su navegador"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "Recibió este correo electrónico porque recibimos una solicitud de actividad en su cuenta. Si no solicitó esto, puede eliminar este correo electrónico de forma segura."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Para dejar de recibir estos correos, puede contactar a"
 
