@@ -46,10 +46,12 @@ jobs:
       run: npm run locale-download
 
     - name: Push changes to ${{ steps.package-version.outputs.current-version}} locale branch
-      uses: peter-evans/create-pull-request@v3
+      uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: 'locale/${{ steps.package-version.outputs.current-version}}'
         delete-branch: true
+        labels: Localization
+        milestone: ${{ steps.package-version.outputs.current-version}}
         title: "${{ steps.package-version.outputs.current-version}} POEditor Update - ${{ steps.date.outputs.date }}"
         commit-message: 'Loacle Gen & Download on ${{ steps.date.outputs.date }}'
