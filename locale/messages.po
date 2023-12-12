@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-20 23:01-0800\n"
+"POT-Creation-Date: 2023-12-11 19:44-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-11-21T07:01:44.766Z\n"
-"PO-Revision-Date: 2023-11-21T07:01:44.767Z\n"
+"POT-Creation-Date: 2023-12-12T03:44:17.958Z\n"
+"PO-Revision-Date: 2023-12-12T03:44:17.959Z\n"
 "Language: en\n"
 
 msgid "Backup Database"
@@ -5904,6 +5904,27 @@ msgid "Non-Attender"
 msgstr ""
 
 msgid "Non-Attender (staff)"
+msgstr ""
+
+msgid "2016/2017"
+msgstr ""
+
+msgid "2017/2018"
+msgstr ""
+
+msgid "2018/2019"
+msgstr ""
+
+msgid "2019/2020"
+msgstr ""
+
+msgid "2020/2021"
+msgstr ""
+
+msgid "2021/2022"
+msgstr ""
+
+msgid "2022/2023"
 msgstr ""
 
 msgid "Minimum Age"
