@@ -8,6 +8,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use PHPMailer\PHPMailer\PHPMailer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
@@ -90,34 +91,34 @@ function getMailListUnSubscribersMVC(Request $request, Response $response, array
 {
     $mailchimpService = new MailChimpService();
     $list = $mailchimpService->getList($args['listId']);
-    if ($list) {
-        $renderer = new PhpRenderer('templates/email/');
-        $pageArgs = [
-            'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => _('People not in') . ' ' . $list['name'],
-            'listId'     => $list['id'],
-        ];
-
-        return $renderer->render($response, 'mailchimp-unsubscribers.php', $pageArgs);
+    if (!$list) {
+        throw new HttpNotFoundException(gettext('Invalid List id') . ': ' . $args['listId']);
     }
 
-    return $response->withStatus(404, gettext('Invalid List id') . ': ' . $args['listId']);
+    $renderer = new PhpRenderer('templates/email/');
+    $pageArgs = [
+        'sRootPath'  => SystemURLs::getRootPath(),
+        'sPageTitle' => _('People not in') . ' ' . $list['name'],
+        'listId'     => $list['id'],
+    ];
+
+    return $renderer->render($response, 'mailchimp-unsubscribers.php', $pageArgs);
 }
 
 function getMailListMissingMVC(Request $request, Response $response, array $args)
 {
     $mailchimpService = new MailChimpService();
     $list = $mailchimpService->getList($args['listId']);
-    if ($list) {
-        $renderer = new PhpRenderer('templates/email/');
-        $pageArgs = [
-            'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => $list['name'] . ' ' . _('Audience not in the ChurchCRM'),
-            'listId'     => $list['id'],
-        ];
-
-        return $renderer->render($response, 'mailchimp-missing.php', $pageArgs);
+    if (!$list) {
+        throw new HttpNotFoundException(gettext('Invalid List id') . ': ' . $args['listId']);
     }
 
-    return $response->withStatus(404, gettext('Invalid List id') . ': ' . $args['listId']);
+    $renderer = new PhpRenderer('templates/email/');
+    $pageArgs = [
+        'sRootPath'  => SystemURLs::getRootPath(),
+        'sPageTitle' => $list['name'] . ' ' . _('Audience not in the ChurchCRM'),
+        'listId'     => $list['id'],
+    ];
+
+    return $renderer->render($response, 'mailchimp-missing.php', $pageArgs);
 }

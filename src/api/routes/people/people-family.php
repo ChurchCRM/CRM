@@ -3,6 +3,7 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
@@ -27,15 +28,18 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         return SlimUtils::renderPhoto($response, $photo);
     });
 
-    $group->post('/photo', function (Request $request, Response $response, array $args): Response {
+    $group->post('/photo', function (Request $request, Response $response): Response {
         $input = $request->getParsedBody();
+
+        /** @var Family $family */
         $family = $request->getAttribute('family');
         $family->setImageFromBase64($input['imgBase64']);
 
-        return $response->withStatus(200);
+        return SlimUtils::renderSuccessJSON($response);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
         $family = $request->getAttribute('family');
 
         return SlimUtils::renderJSON($response, ['status' => $family->deletePhoto()]);
@@ -48,21 +52,25 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
         );
         $photo = new Photo('Family', $args['familyId']);
 
-        return $response
-            ->write($photo->getThumbnailBytes())
-            ->withHeader('Content-type', $photo->getThumbnailContentType());
+        $response
+            ->withHeader('Content-type', $photo->getThumbnailContentType())
+            ->getBody()
+                ->write($photo->getThumbnailBytes());
+
+        return $response;
     });
 
     $group->get('', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
         $family = $request->getAttribute('family');
 
-        return $response
-            ->withHeader('Content-Type', 'application/json')
-            ->write($family->exportTo('JSON'));
+        return SlimUtils::renderJSON($response, $family->toArray());
     });
 
     $group->get('/geolocation', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
         $family = $request->getAttribute('family');
+
         $familyAddress = $family->getAddress();
         $familyLatLong = GeoUtils::getLatLong($familyAddress);
         $familyDrivingInfo = GeoUtils::drivingDistanceMatrix(
@@ -75,7 +83,9 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
     });
 
     $group->get('/nav', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
         $family = $request->getAttribute('family');
+
         $familyNav = [];
         $familyNav['PreFamilyId'] = 0;
         $familyNav['NextFamilyId'] = 0;
@@ -99,12 +109,13 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
     });
 
     $group->post('/verify', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
         $family = $request->getAttribute('family');
 
         try {
             $family->sendVerifyEmail();
 
-            return $response->withStatus(200);
+            return SlimUtils::renderSuccessJSON($response);
         } catch (Exception $e) {
             LoggerUtils::getAppLogger()->error($e->getMessage());
 
@@ -116,7 +127,9 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
     });
 
     $group->get('/verify/url', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
         $family = $request->getAttribute('family');
+
         TokenQuery::create()
             ->filterByType('verifyFamily')
             ->filterByReferenceId($family->getId())
@@ -130,8 +143,10 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
     });
 
     $group->post('/verify/now', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
         $family = $request->getAttribute('family');
         $family->verify();
+
         return SlimUtils::renderSuccessJSON($response);
     });
 })->add(FamilyAPIMiddleware::class);

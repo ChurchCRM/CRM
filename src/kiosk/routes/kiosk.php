@@ -5,7 +5,8 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
 $app->get('/', function (Request $request, Response $response, array $args): Response {
@@ -51,5 +52,7 @@ $app->get('/activeClassMembers', fn (Request $request, Response $response, array
 $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface $request, Response $response, $args) {
     $photo = new Photo('Person', $args['PersonId']);
 
-    return $response->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
+    $response->getBody()->write($photo->getPhotoBytes());
+
+    return $response->withAddedHeader('Content-type', $photo->getPhotoContentType());
 });

@@ -11,6 +11,8 @@ use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpForbiddenException;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
 
@@ -39,7 +41,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->delete('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         if (AuthenticationManager::getCurrentUser()->getId() == $person->getId()) {
-            return $response->withStatus(403, gettext("Can't delete yourself"));
+            throw new HttpForbiddenException($request, gettext("Can't delete yourself"));
         }
         $person->delete();
 
@@ -50,6 +52,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
 
     $group->post('/addToCart', function (Request $request, Response $response, array $args): Response {
         Cart::addPerson($args['personId']);
+        return SlimUtils::renderSuccessJSON($response);
     });
 
     $group->post('/photo', function (Request $request, Response $response, array $args): Response {
@@ -74,7 +77,7 @@ function setPersonRoleAPI(Request $request, Response $response, array $args): Re
     $role = ListOptionQuery::create()->filterByOptionId($roleId)->findOne();
 
     if (empty($role)) {
-        return $response->withStatus(404, gettext('The role could not be found.'));
+        throw new HttpNotFoundException($request, gettext('The role could not be found.'));
     }
 
     if ($person->getFmrId() == $roleId) {
@@ -85,6 +88,6 @@ function setPersonRoleAPI(Request $request, Response $response, array $args): Re
     if ($person->save()) {
         return SlimUtils::renderJSON($response, ['success' => true, 'msg' => gettext('The role is successfully assigned.')]);
     } else {
-        return $response->withStatus(500, gettext('The role could not be assigned.'));
+        throw new Exception(gettext('The role could not be assigned.'));
     }
 }

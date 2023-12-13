@@ -11,6 +11,8 @@ use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpBadRequestException;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
@@ -69,23 +71,23 @@ function userPasswordReset(Request $request, Response $response, array $args)
     $logger = LoggerUtils::getAppLogger();
     $body = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     $userName = strtolower(trim($body->userName));
-    if (!empty($userName)) {
-        $user = UserQuery::create()->findOneByUserName($userName);
-        if (!empty($user) && !empty($user->getEmail())) {
-            $token = new Token();
-            $token->build('password', $user->getId());
-            $token->save();
-            $email = new ResetPasswordTokenEmail($user, $token->getToken());
-            if (!$email->send()) {
-                LoggerUtils::getAppLogger()->error($email->getError());
-            }
-            LoggerUtils::getAuthLogger()->info('Password reset token for ' . $user->getUserName() . ' sent to email address: ' . $user->getEmail());
-
-            return $response->withStatus(200);
-        } else {
-            return $response->withStatus(404, gettext('User') . ' [' . $userName . '] ' . gettext('no found or user without an email'));
-        }
+    if (empty($userName)) {
+        throw new HttpBadRequestException(gettext('UserName not set'));
     }
 
-    return $response->withStatus(400, gettext('UserName not set'));
+    $user = UserQuery::create()->findOneByUserName($userName);
+    if (empty($user) || empty($user->getEmail())) {
+        throw new HttpNotFoundException(gettext('User') . ' [' . $userName . '] ' . gettext('no found or user without an email'));
+    }
+
+    $token = new Token();
+    $token->build('password', $user->getId());
+    $token->save();
+    $email = new ResetPasswordTokenEmail($user, $token->getToken());
+    if (!$email->send()) {
+        $logger->error($email->getError());
+    }
+    $logger->info('Password reset token for ' . $user->getUserName() . ' sent to email address: ' . $user->getEmail());
+
+    return $response->withStatus(200);
 }
