@@ -406,7 +406,8 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             $rsFam = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsFam);
             if ($numRows) {
-                $iFamily = $rsFam['fam_ID'];
+                $aRow = mysqli_fetch_array($rsDeposit);
+                $iFamily = $aRow['fam_ID'];
             }
         }
     } else {
@@ -731,7 +732,7 @@ require 'Include/Header.php';
           data: "",
           processResults: function (data, params) {
             var results = [];
-            var families = JSON.parse(data).Families
+            var families = data?.Families ?? [];
             $.each(families, function(key, object) {
               results.push({
                 id: object.Id,
@@ -765,9 +766,7 @@ require 'Include/Header.php';
   {
     if ($("#Method option:selected").val()==="CHECK") {
       $("#checkNumberGroup").show();
-    }
-    else
-    {
+    } else {
       $("#checkNumberGroup").hide();
       $("#CheckNo").val('');
     }
@@ -776,8 +775,7 @@ require 'Include/Header.php';
     var Total = 0;
       $(".FundAmount").each(function(object){
         var FundAmount = Number($(this).val());
-        if (FundAmount >0 )
-        {
+        if (FundAmount > 0) {
           Total += FundAmount;
         }
       });
