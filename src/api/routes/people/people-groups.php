@@ -252,16 +252,16 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
             $group = GroupQuery::create()->findOneById($groupID);
-            if ($group != null) {
-                $group->setActive($flag);
-                $group->save();
-            } else {
-                return $response->withStatus(500, gettext('invalid group id'));
+            if ($group === null) {
+                throw new \Exception(gettext('invalid group id'));
             }
+
+            $group->setActive($flag);
+            $group->save();
 
             return SlimUtils::renderSuccessJSON($response);
         } else {
-            return $response->withStatus(500, gettext('invalid status value'));
+            throw new \Exception(gettext('invalid status value'));
         }
     });
 
@@ -270,16 +270,16 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
             $group = GroupQuery::create()->findOneById($groupID);
-            if ($group != null) {
-                $group->setIncludeInEmailExport($flag);
-                $group->save();
-            } else {
-                return $response->withStatus(500, gettext('invalid group id'));
+            if ($group === null) {
+                throw new \Exception(gettext('invalid group id'));
             }
+
+            $group->setIncludeInEmailExport($flag);
+            $group->save();
 
             return SlimUtils::renderSuccessJSON($response);
         } else {
-            return $response->withStatus(500, gettext('invalid export value'));
+            throw new \Exception(gettext('invalid export value'));
         }
     });
 })->add(ManageGroupRoleAuthMiddleware::class);

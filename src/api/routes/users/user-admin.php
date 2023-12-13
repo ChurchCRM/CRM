@@ -30,7 +30,7 @@ function resetPasswordAPI(Request $request, Response $response, array $args): Re
     $user->createTimeLineNote('password-reset');
     $email = new ResetPasswordEmail($user, $password);
     if ($email->send()) {
-        return $response->withStatus(200);
+        return SlimUtils::renderSuccessJSON($response);
     } else {
         LoggerUtils::getAppLogger()->error($email->getError());
 
@@ -43,7 +43,7 @@ function disableTwoFactor(Request $request, Response $response, array $args): Re
     $user = $request->getAttribute('user');
     $user->disableTwoFactorAuthentication();
 
-    return $response->withStatus(200);
+    return SlimUtils::renderSuccessJSON($response);
 }
 
 function resetLogin(Request $request, Response $response, array $args): Response
@@ -57,7 +57,7 @@ function resetLogin(Request $request, Response $response, array $args): Response
         LoggerUtils::getAppLogger()->warning($email->getError());
     }
 
-    return $response->withStatus(200);
+    return SlimUtils::renderSuccessJSON($response);
 }
 
 function deleteUser(Request $request, Response $response, array $args): Response

@@ -7,6 +7,7 @@ use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\ORMUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/system/menu', function (RouteCollectorProxy $group) {
@@ -36,17 +37,23 @@ function addMenu(Request $request, Response $response, array $args): Response
         return SlimUtils::renderJSON($response, $link->toArray());
     }
 
-    return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),
-        'failures' => ORMUtils::getValidationErrors($link->getValidationFailures())], 400);
+    return SlimUtils::renderJSON(
+        $response,
+        [
+            'error' => gettext('Validation Error'),
+            'failures' => ORMUtils::getValidationErrors($link->getValidationFailures())
+        ],
+        400
+    );
 }
 
 function delMenu(Request $request, Response $response, array $args): Response
 {
     $link = MenuLinkQuery::create()->findPk($args['linkId']);
     if (empty($link)) {
-        return $response->withStatus(404, gettext('Link Not found') . ': ' . $args['linkId']);
+        throw new HttpNotFoundException($request, gettext('Link Not found') . ': ' . $args['linkId']);
     }
     $link->delete();
 
-    return $response->withStatus(200);
+    return SlimUtils::renderSuccessJSON($response);
 }

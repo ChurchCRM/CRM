@@ -103,11 +103,9 @@ class Notification
             $send = (bool) $this->sendProjector();
             array_push($methods, 'projector: ' . $send);
         }
-        $sendStatus = [
+        return [
             'status'  => '',
             'methods' => $methods,
         ];
-
-        return json_encode($sendStatus, JSON_THROW_ON_ERROR);
     }
 }
