@@ -406,7 +406,8 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             $rsFam = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsFam);
             if ($numRows) {
-                $iFamily = $rsFam['fam_ID'];
+                $aRow = mysqli_fetch_array($rsDeposit);
+                $iFamily = $aRow['fam_ID'];
             }
         }
     } else {
