@@ -1,12 +1,15 @@
 <?php
 
-echo "=============================================== \n";
-echo "========== Building locale from DB started === \n";
-echo "=============================================== \n\n";
+echo <<<HEREDOC
+===============================================
+========== Building locale from DB started ===
+===============================================
 
-$filename = '../BuildConfig.json';
+HEREDOC;
 
-if (file_exists($filename)) {
+$filename = '..'.DIRECTORY_SEPARATOR.'BuildConfig.json';
+
+if (is_file($filename)) {
     $buildConfig = file_get_contents($filename);
     $config = json_decode($buildConfig, true);
 
@@ -41,10 +44,10 @@ select DISTINCT qrp_Description term, "" as translation, "queryparameters_qrp" a
         echo "DB read complete \n";
 
         foreach ($db->query($query) as $row) {
-            $stringFile = $stringsDir.'/'.$row['cntx'].'.php';
-            if (!file_exists($stringFile)) {
+            $stringFile = $stringsDir.DIRECTORY_SEPARATOR.$row['cntx'].'.php';
+            if (!is_file($stringFile)) {
                 file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
-                array_push($stringFiles, $stringFile);
+                $stringFiles[] = $stringFile;
             }
             $rawDBTerm = $row['term'];
             $dbTerm = addslashes($rawDBTerm);
@@ -54,7 +57,7 @@ select DISTINCT qrp_Description term, "" as translation, "queryparameters_qrp" a
             file_put_contents($stringFile, "\r\n?>", FILE_APPEND);
         }
 
-        $stringFile = $stringsDir.'/settings-countries.php';
+        $stringFile = $stringsDir.DIRECTORY_SEPARATOR.'settings-countries.php';
         require '../src/ChurchCRM/data/Countries.php';
         require '../src/ChurchCRM/data/Country.php';
         file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
@@ -64,9 +67,11 @@ select DISTINCT qrp_Description term, "" as translation, "queryparameters_qrp" a
         }
         file_put_contents($stringFile, "\r\n?>", FILE_APPEND);
 
-        $stringFile = $stringsDir.'/settings-locales.php';
+        $stringFile = $stringsDir.DIRECTORY_SEPARATOR.'settings-locales.php';
         file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
-        $localesFile = file_get_contents('../src/locale/locales.json');
+        $localesFile = file_get_contents(
+            implode(DIRECTORY_SEPARATOR, ['..','src','locale','locales.json'])
+        );
         $locales = json_decode($localesFile, true);
         foreach ($locales as $key => $value) {
             file_put_contents($stringFile, 'gettext("'.$key."\");\r\n", FILE_APPEND);
