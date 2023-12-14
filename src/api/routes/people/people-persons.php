@@ -43,7 +43,7 @@ $app->group('/persons', function (RouteCollectorProxy $group) {
             $values['text'] = $person->getFullName();
             $values['uri'] = $person->getViewURI();
 
-            array_push($return, $values);
+            $return[] = $values;
         }
 
         return SlimUtils::renderJSON($response, $return);
@@ -89,18 +89,18 @@ function getEmailDupesAPI(Request $request, Response $response, array $args): Re
         $dbPeople = PersonQuery::create()->filterByEmail($email)->_or()->filterByWorkEmail($email)->find();
         $people = [];
         foreach ($dbPeople as $person) {
-            array_push($people, ['id' => $person->getId(), 'name' => $person->getFullName()]);
+            $people[] = ['id' => $person->getId(), 'name' => $person->getFullName()];
         }
         $families = [];
         $dbFamilies = FamilyQuery::create()->findByEmail($email);
         foreach ($dbFamilies as $family) {
-            array_push($families, ['id' => $family->getId(), 'name' => $family->getName()]);
+            $families[] = ['id' => $family->getId(), 'name' => $family->getName()];
         }
-        array_push($emails, [
+        $emails[] = [
             'email' => $email,
             'people' => $people,
             'families' => $families,
-        ]);
+        ];
     }
 
     return SlimUtils::renderJSON($response, ['emails' => $emails]);
@@ -163,7 +163,7 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
             $formattedPerson['Birthday'] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
         }
 
-        array_push($formattedList, $formattedPerson);
+        $formattedList[] = $formattedPerson;
     }
 
     return ['people' => $formattedList];

@@ -42,7 +42,7 @@ class PersonService
                 }
                 $values['familyRole'] = $familyRole;
             }
-            array_push($return, $values);
+            $return[] = $values;
         }
 
         return $return;
@@ -72,7 +72,7 @@ class PersonService
         while ($row = mysqli_fetch_array($rsPeopleWithEmails)) {
             if ($lastPersonId != $row['per_ID']) {
                 if ($lastPersonId != 0) {
-                    array_push($people, $person);
+                    $people[] = $person;
                 }
                 $person = [];
                 $person['id'] = $row['per_ID'];
@@ -87,7 +87,7 @@ class PersonService
                 $lastPersonId = $row['per_ID'];
             }
         }
-        array_push($people, $person);
+        $people[] = $person;
 
         return $people;
     }

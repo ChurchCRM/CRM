@@ -24,7 +24,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
             if (!empty($Person)) {
                 $email = $Person->getEmail();
                 if (!empty($email)) {
-                    array_push($toAddresses, $email);
+                    $toAddresses[] = $email;
                 }
             }
         }

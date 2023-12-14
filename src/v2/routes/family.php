@@ -96,7 +96,7 @@ function viewFamily(Request $request, Response $response, array $args)
                 $value = $appFamilyCustomFields->getVirtualColumn($customfield->getField());
                 if (!empty($value)) {
                     $item = new PeopleCustomField($customfield, $value);
-                    array_push($familyCustom, $item);
+                    $familyCustom[] = $item;
                 }
             }
         }

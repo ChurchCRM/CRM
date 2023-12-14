@@ -53,18 +53,18 @@ $thisClassChildren = $sundaySchoolService->getKidsFullDetails($iGroupId);
 
 foreach ($thisClassChildren as $child) {
     if (!empty($child['dadEmail'])) {
-        array_push($ParentsEmails, $child['dadEmail']);
+        $ParentsEmails[] = $child['dadEmail'];
     }
     if (!empty($child['momEmail'])) {
-        array_push($ParentsEmails, $child['momEmail']);
+        $ParentsEmails[] = $child['momEmail'];
     }
     if (!empty($child['kidEmail'])) {
-        array_push($KidsEmails, $child['kidEmail']);
+        $KidsEmails[] = $child['kidEmail'];
     }
 }
 
 foreach ($rsTeachers as $teacher) {
-    array_push($TeachersEmails, $teacher['per_Email']);
+    $TeachersEmails[] = $teacher['per_Email'];
 }
 
 require '../Include/Header.php';

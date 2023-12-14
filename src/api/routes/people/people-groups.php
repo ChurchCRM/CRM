@@ -30,7 +30,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
             $values['groupID'] = $group->getID();
             $values['name'] = $group->getName();
 
-            array_push($return, $values);
+            $return[] = $values;
         }
 
         return SlimUtils::renderJSON($response, $return);
@@ -41,7 +41,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         $groups = GroupQuery::create()->find();
         foreach ($groups as $group) {
             if ($group->checkAgainstCart()) {
-                array_push($groupsInCart, $group->getId());
+                $groupsInCart[] = $group->getId();
             }
         }
         return SlimUtils::renderJSON($response, ['groupsInCart' => $groupsInCart]);

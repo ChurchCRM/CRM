@@ -22,7 +22,7 @@ class SundaySchoolService
         while ($row = mysqli_fetch_assoc($rsClassCounts)) {
             if ($lastClassId != $row['grp_id']) {
                 if ($lastClassId != 0) {
-                    array_push($classInfo, $curClass);
+                    $classInfo[] = $curClass;
                 }
                 $curClass = [];
                 $curClass['id'] = $row['grp_id'];
@@ -39,7 +39,7 @@ class SundaySchoolService
             }
         }
         if (!empty($curClass)) {
-            array_push($classInfo, $curClass);
+            $classInfo[] = $curClass;
         }
 
         return $classInfo;
@@ -60,7 +60,7 @@ class SundaySchoolService
         $rsMembers = RunQuery($sql);
         $members = [];
         while ($row = mysqli_fetch_assoc($rsMembers)) {
-            array_push($members, $row);
+            $members[] = $row;
         }
 
         return $members;
@@ -164,14 +164,14 @@ class SundaySchoolService
     public function getKidsFullDetails($groupId)
     {
         // Get all the groups
-        $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender, 
-                kid.per_FirstName firstName, kid.per_Email kidEmail, kid.per_LastName LastName, 
-                  kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, 
-                  kid.per_CellPhone mobilePhone, kid.per_Flags flags, 
-                
+        $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender,
+                kid.per_FirstName firstName, kid.per_Email kidEmail, kid.per_LastName LastName,
+                  kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear,
+                  kid.per_CellPhone mobilePhone, kid.per_Flags flags,
+
                 fam.fam_HomePhone homePhone,fam.fam_id,
 
-                dad.per_ID dadId, dad.per_FirstName dadFirstName, dad.per_LastName dadLastName, 
+                dad.per_ID dadId, dad.per_FirstName dadFirstName, dad.per_LastName dadLastName,
                   dad.per_CellPhone dadCellPhone, dad.per_Email dadEmail,
                 mom.per_ID momId, mom.per_FirstName momFirstName, mom.per_LastName momLastName, mom.per_CellPhone momCellPhone, mom.per_Email momEmail,
                 fam.fam_Email famEmail, fam.fam_Address1 Address1, fam.fam_Address2 Address2, fam.fam_City city, fam.fam_State state, fam.fam_Zip zip
@@ -190,7 +190,7 @@ class SundaySchoolService
         $rsKids = RunQuery($sSQL);
         $kids = [];
         while ($row = mysqli_fetch_assoc($rsKids)) {
-            array_push($kids, $row);
+            $kids[] = $row;
         }
 
         return $kids;
@@ -234,7 +234,7 @@ SQL;
         $rsKidsMissing = RunQuery($sSQL);
         $kids = [];
         while ($row = mysqli_fetch_array($rsKidsMissing)) {
-            array_push($kids, $row);
+            $kids[] = $row;
         }
 
         return $kids;

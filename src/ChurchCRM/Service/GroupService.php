@@ -112,7 +112,7 @@ class GroupService
         }
 
         while ($row = mysqli_fetch_assoc($rsList)) {
-            array_push($groupRoles, $row);
+            $groupRoles[] = $row;
         }
 
         return $groupRoles;
@@ -325,7 +325,7 @@ class GroupService
                 if (array_key_exists('displayName', $dbPerson)) {
                     $person['displayName'] = $dbPerson->getFullName();
                     $person['groupRole'] = $row['lst_OptionName'];
-                    array_push($members, $person);
+                    $members[] = $person;
                 }
             }
         }

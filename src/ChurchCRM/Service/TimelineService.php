@@ -34,7 +34,7 @@ class TimelineService
 
         $sortedTimeline = [];
         foreach ($timeline as $date => $item) {
-            array_push($sortedTimeline, $item);
+            $sortedTimeline[] = $item;
         }
 
         return $sortedTimeline;
@@ -88,7 +88,7 @@ class TimelineService
 
         $sortedTimeline = [];
         foreach ($timeline as $date => $item) {
-            array_push($sortedTimeline, $item);
+            $sortedTimeline[] = $item;
         }
 
         return $sortedTimeline;

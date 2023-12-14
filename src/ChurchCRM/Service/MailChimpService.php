@@ -57,12 +57,12 @@ class MailChimpService
                     ]
                 );
                 foreach ($listmembers['members'] as $member) {
-                    array_push($list['members'], [
-                        'email'  => strtolower($member['email_address']),
-                        'first'  => $member['merge_fields']['FNAME'],
-                        'last'   => $member['merge_fields']['LNAME'],
+                    $list['members'][] = [
+                        'email' => strtolower($member['email_address']),
+                        'first' => $member['merge_fields']['FNAME'],
+                        'last' => $member['merge_fields']['LNAME'],
                         'status' => $member['status'],
-                    ]);
+                    ];
                 }
                 LoggerUtils::getAppLogger()->debug('MailChimp list ' . $list['id'] . ' membership ' . count($list['members']));
             }
@@ -90,7 +90,7 @@ class MailChimpService
         foreach ($lists as $list) {
             $data = $this->myMailchimp->get('lists/' . $list['id'] . '/members/' . md5($email));
             LoggerUtils::getAppLogger()->debug($email . ' is ' . $data['status'] . ' to ' . $list['name']);
-            array_push($listsStatus, ['name' => $list['name'], 'status' => $data['status'], 'stats' => $data['stats']]);
+            $listsStatus[] = ['name' => $list['name'], 'status' => $data['status'], 'stats' => $data['stats']];
         }
 
         return $listsStatus;

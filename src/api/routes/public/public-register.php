@@ -68,7 +68,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
                 return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),
                     'failures' => ORMUtils::getValidationErrors($person->getValidationFailures())], 401);
             }
-            array_push($familyMembers, $person);
+            $familyMembers[] = $person;
         }
     } else {
         return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),

@@ -169,7 +169,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
             '',
             ''
         ];
-        array_push($list, $chPerson);
+        $list[] = $chPerson;
     }
 
     $out = fopen('php://temp', 'w+');

@@ -201,18 +201,18 @@ class Person extends BasePerson implements PhotoInterface
             if (!empty($this->getAddress2())) {
                 $tmp = $tmp . ' ' . $this->getAddress2();
             }
-            array_push($address, $tmp);
+            $address[] = $tmp;
             if (!empty($this->getCity())) {
-                array_push($address, $this->getCity() . ',');
+                $address[] = $this->getCity() . ',';
             }
             if (!empty($this->getState())) {
-                array_push($address, $this->getState());
+                $address[] = $this->getState();
             }
             if (!empty($this->getZip())) {
-                array_push($address, $this->getZip());
+                $address[] = $this->getZip();
             }
             if (!empty($this->getCountry())) {
-                array_push($address, $this->getCountry());
+                $address[] = $this->getCountry();
             }
 
             return implode(' ', $address);

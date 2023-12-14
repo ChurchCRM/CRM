@@ -60,10 +60,10 @@ class TaskService
         $tasks = [];
         foreach ($this->taskClasses as $taskClass) {
             if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && AuthenticationManager::getCurrentUser()->isAdmin()))) {
-                array_push($tasks, ['title' => $taskClass->getTitle(),
-                    'link'                  => $taskClass->getLink(),
-                    'admin'                 => $taskClass->isAdmin(),
-                    'desc'                  => $taskClass->getDesc()]);
+                $tasks[] = ['title' => $taskClass->getTitle(),
+                    'link' => $taskClass->getLink(),
+                    'admin' => $taskClass->isAdmin(),
+                    'desc' => $taskClass->getDesc()];
             }
         }
 
@@ -75,10 +75,7 @@ class TaskService
         $tasks = [];
         foreach ($this->notificationClasses as $taskClass) {
             if ($taskClass->isActive()) {
-                array_push(
-                    $tasks,
-                    new UiNotification($taskClass->getTitle(), 'wrench', $taskClass->getLink(), $taskClass->getDesc(), $taskClass->isAdmin() ? 'warning' : 'info', '12000', 'bottom', 'left')
-                );
+                $tasks[] = new UiNotification($taskClass->getTitle(), 'wrench', $taskClass->getLink(), $taskClass->getDesc(), $taskClass->isAdmin() ? 'warning' : 'info', '12000', 'bottom', 'left');
             }
         }
 

@@ -128,7 +128,7 @@ class FinancialService
             $values->plg_NonDeductible = $plg_NonDeductible;
             $values->plg_GroupKey = $plg_GroupKey;
 
-            array_push($payments, $values);
+            $payments[] = $values;
         }
 
         return $payments;
@@ -329,7 +329,7 @@ class FinancialService
             $fund['Amount'] = $plg_amount;
             $fund['NonDeductible'] = $plg_NonDeductible;
             $fund['Comment'] = $plg_comment;
-            array_push($payment->funds, $fund);
+            $payment->funds[] = $fund;
             $total += $plg_amount;
             $onePlgID = $aRow['plg_plgID'];
             $oneFundID = $aRow['plg_fundID'];
@@ -551,14 +551,13 @@ class FinancialService
             throw new \Exception('No Payments on this Deposit', 404);
         }
         foreach ($payments[0] as $key => $value) {
-            array_push($line, $key);
+            $line[] = $key;
         }
         $retstring = implode(',', $line) . "\n";
-        $line = [];
         foreach ($payments as $payment) {
             $line = [];
             foreach ($payment as $key => $value) {
-                array_push($line, str_replace(',', '', $value));
+                $line[] = str_replace(',', '', $value);
             }
             $retstring .= implode(',', $line) . "\n";
         }
@@ -597,7 +596,7 @@ class FinancialService
             $currency->Name = $row['cdem_denominationName'];
             $currency->Value = $row['cdem_denominationValue'];
             $currency->cClass = $row['cdem_denominationClass'];
-            array_push($currencies, $currency);
+            $currencies[] = $currency;
         } // end while
 
         return $currencies;
@@ -616,7 +615,7 @@ class FinancialService
             $fund->ID = $aRow['fun_ID'];
             $fund->Name = $aRow['fun_Name'];
             $fund->Description = $aRow['fun_Description'];
-            array_push($funds, $fund);
+            $funds[] = $fund;
         } // end while
 
         return $funds;

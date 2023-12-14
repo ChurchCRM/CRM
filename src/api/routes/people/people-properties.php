@@ -98,7 +98,7 @@ function getProperties(Response $response, $type, $id)
                 $tempProp['allowEdit'] = false;
                 $tempProp['allowDelete'] = false;
             }
-            array_push($finalProperties, $tempProp);
+            $finalProperties[] = $tempProp;
         }
     }
 

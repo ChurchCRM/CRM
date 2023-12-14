@@ -44,7 +44,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
             if (!empty($Deposits)) {
                 $id++;
                 foreach ($Deposits->toArray() as $Deposit) {
-                    array_push($searchResults, new SearchResult('finance-deposit-' . $id, $Deposit['displayName'], $Deposit['uri']));
+                    $searchResults[] = new SearchResult('finance-deposit-' . $id, $Deposit['displayName'], $Deposit['uri']);
                 }
             }
         } catch (\Exception $e) {

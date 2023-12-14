@@ -142,7 +142,7 @@ function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar
     $formattedEvents = [];
     foreach ($events as $event) {
         $fce = FullCalendarEvent::createFromEvent($event, $calendar);
-        array_push($formattedEvents, $fce);
+        $formattedEvents[] = $fce;
     }
 
     return $formattedEvents;

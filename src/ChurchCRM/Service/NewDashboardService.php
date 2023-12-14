@@ -20,7 +20,7 @@ class NewDashboardService
         $ReturnValues = [];
         foreach ($DashboardItems as $DashboardItem) {
             if ($DashboardItem::shouldInclude($PageName)) {
-                array_push($ReturnValues, $DashboardItem);
+                $ReturnValues[] = $DashboardItem;
             }
         }
 

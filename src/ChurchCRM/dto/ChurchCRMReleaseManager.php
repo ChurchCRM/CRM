@@ -66,13 +66,13 @@ class ChurchCRMReleaseManager
                 if ($release->isPreRelease()) {
                     if (SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade')) {
                         $logger->debug('bAllowPrereleaseUpgrade allows upgrade to a pre-release version.  Including ' . $release . ' for consideration');
-                        array_push($eligibleReleases, $release);
+                        $eligibleReleases[] = $release;
                     } else {
                         $logger->debug('bAllowPrereleaseUpgrade disallows upgrade to a pre-release version.  Not including ' . $release . ' for consideration');
                     }
                 } else {
                     $logger->debug($release . ' is not a pre-release version. Including for consideration');
-                    array_push($eligibleReleases, $release);
+                    $eligibleReleases[] = $release;
                 }
             }
 

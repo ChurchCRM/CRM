@@ -37,7 +37,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
                     }
                 }
                 if (!$hasEmail) {
-                    array_push($familiesWithoutEmails, $family->toArray());
+                    $familiesWithoutEmails[] = $family->toArray();
                 }
             }
         }
@@ -58,7 +58,7 @@ $app->group('/families', function (RouteCollectorProxy $group) {
             ->limit(15)
             ->find();
         foreach ($q as $family) {
-            array_push($results, $family->toSearchArray());
+            $results[] = $family->toSearchArray();
         }
 
         return SlimUtils::renderJSON($response, ['Families' => $results]);
@@ -215,7 +215,7 @@ function buildFormattedFamilies($families, bool $created, bool $edited, bool $we
             $formattedFamily['WeddingDate'] = $value;
         }
 
-        array_push($formattedList, $formattedFamily);
+        $formattedList[] = $formattedFamily;
     }
 
     return ['families' => $formattedList];

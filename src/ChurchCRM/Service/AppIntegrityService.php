@@ -95,19 +95,19 @@ class AppIntegrityService
                         $actualHash = sha1_file($currentFile);
                         if ($actualHash != $file->sha1) {
                             $logger->warning('File hash mismatch: ' . $file->filename . '. Expected: ' . $file->sha1 . '; Got: ' . $actualHash);
-                            array_push($signatureFailures, [
-                                'filename'     => $file->filename,
-                                'status'       => 'Hash Mismatch',
+                            $signatureFailures[] = [
+                                'filename' => $file->filename,
+                                'status' => 'Hash Mismatch',
                                 'expectedhash' => $file->sha1,
-                                'actualhash'   => $actualHash,
-                            ]);
+                                'actualhash' => $actualHash,
+                            ];
                         }
                     } else {
                         $logger->warning('File Missing: ' . $file->filename);
-                        array_push($signatureFailures, [
+                        $signatureFailures[] = [
                             'filename' => $file->filename,
-                            'status'   => 'File Missing',
-                        ]);
+                            'status' => 'File Missing',
+                        ];
                     }
                 }
             } else {

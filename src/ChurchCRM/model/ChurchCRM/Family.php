@@ -27,7 +27,7 @@ use Propel\Runtime\Map\TableMap;
  */
 class Family extends BaseFamily implements PhotoInterface
 {
-    private ?\ChurchCRM\dto\Photo $photo = null;
+    private ?Photo $photo = null;
 
     public function getAddress()
     {
@@ -37,22 +37,22 @@ class Family extends BaseFamily implements PhotoInterface
             if (!empty($this->getAddress2())) {
                 $tmp = $tmp . ' ' . $this->getAddress2();
             }
-            array_push($address, $tmp);
+            $address[] = $tmp;
         }
 
         if (!empty($this->getCity())) {
-            array_push($address, $this->getCity() . ',');
+            $address[] = $this->getCity() . ',';
         }
 
         if (!empty($this->getState())) {
-            array_push($address, $this->getState());
+            $address[] = $this->getState();
         }
 
         if (!empty($this->getZip())) {
-            array_push($address, $this->getZip());
+            $address[] = $this->getZip();
         }
         if (!empty($this->getCountry())) {
-            array_push($address, $this->getCountry());
+            $address[] = $this->getCountry();
         }
 
         return implode(' ', $address);
@@ -145,7 +145,7 @@ class Family extends BaseFamily implements PhotoInterface
         $foundPeople = [];
         foreach ($this->getPeople() as $person) {
             if (!in_array($person->getFmrId(), $roleIds)) {
-                array_push($foundPeople, $person);
+                $foundPeople[] = $person;
             }
         }
 
@@ -158,7 +158,7 @@ class Family extends BaseFamily implements PhotoInterface
         $foundPeople = [];
         foreach ($this->getPeople() as $person) {
             if (in_array($person->getFmrId(), $roleIds)) {
-                array_push($foundPeople, $person);
+                $foundPeople[] = $person;
             }
         }
 
@@ -174,16 +174,16 @@ class Family extends BaseFamily implements PhotoInterface
     {
         $emails = [];
         if (!(empty($this->getEmail()))) {
-            array_push($emails, $this->getEmail());
+            $emails[] = $this->getEmail();
         }
         foreach ($this->getPeopleSorted() as $person) {
             $email = $person->getEmail();
             if ($email != null) {
-                array_push($emails, $email);
+                $emails[] = $email;
             }
             $email = $person->getWorkEmail();
             if ($email != null) {
-                array_push($emails, $email);
+                $emails[] = $email;
             }
         }
 
@@ -288,7 +288,7 @@ class Family extends BaseFamily implements PhotoInterface
         } elseif (count($HoH) > 1) {
             $HoHs = [];
             foreach ($HoH as $person) {
-                array_push($HoHs, $person->getFirstName());
+                $HoHs[] = $person->getFirstName();
             }
 
             return $this->getName() . ': ' . join(',', $HoHs) . ' - ' . $this->getAddress();
@@ -406,7 +406,7 @@ class Family extends BaseFamily implements PhotoInterface
     {
         $names = [];
         foreach ($this->getPeopleSorted() as $person) {
-            array_push($names, $person->getFirstName());
+            $names[] = $person->getFirstName();
         }
 
         return implode(', ', $names);

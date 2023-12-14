@@ -37,7 +37,7 @@ class GroupSearchResultProvider extends BaseSearchResultProvider
             if (!empty($groups)) {
                 $id++;
                 foreach ($groups as $group) {
-                    array_push($searchResults, new SearchResult('group-name-' . $id, $group->getName(), $group->getViewURI()));
+                    $searchResults[] = new SearchResult('group-name-' . $id, $group->getName(), $group->getViewURI());
                 }
             }
         } catch (\Exception $e) {
