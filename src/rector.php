@@ -22,6 +22,10 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/sundayschool',
         __DIR__ . '/v2',
     ]);
+    $rectorConfig->skip([
+        __DIR__ . '/ChurchCRM/model/ChurchCRM/Base',
+        __DIR__ . '/ChurchCRM/model/ChurchCRM/Map',
+    ]);
 
     // register a single rule
     $rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);

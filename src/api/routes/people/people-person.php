@@ -35,7 +35,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
 
-        return $response->withHeader('Content-Type', 'application/json')->write($person->exportTo('JSON'));
+        return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
     });
 
     $group->delete('', function (Request $request, Response $response, array $args): Response {

@@ -27,7 +27,7 @@ class SlimUtils
     }
     public static function renderJSON(Response $response, array $obj, int $status = 200): Response
     {
-        return self::renderStringJson($response, json_encode($obj), $status);
+        return self::renderStringJson($response, json_encode($obj, JSON_THROW_ON_ERROR), $status);
     }
 
     public static function renderRedirect(Response $response, string $url): Response

@@ -29,9 +29,13 @@ $app->group('/deposits', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, $list->toArray());
     });
 
-    $group->get('', function (Request $request, Response $response, array $args): Response {
-        return SlimUtils::renderStringJSON($response, DepositQuery::create()->find()->toJSON());
-    });
+    $group->get(
+        '',
+        fn(Request $request, Response $response, array $args): Response => SlimUtils::renderStringJSON(
+            $response,
+            DepositQuery::create()->find()->toJSON()
+        )
+    );
 
     $group->get('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $id = $args['id'];

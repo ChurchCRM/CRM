@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -20,16 +21,14 @@ $app->group('/', function (RouteCollectorProxy $group) {
 
     $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args): Response {
         $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
-        $response->getBody()->write(json_encode($AppIntegrity['status']));
 
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderJSON($response, $AppIntegrity['status']);
     });
 
     $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response {
         $required = AppIntegrityService::getApplicationPrerequisites();
-        $response->getBody()->write(json_encode($required));
 
-        return $response->withHeader('Content-Type', 'application/json');
+        return SlimUtils::renderJSON($response, $required);
     });
 
     $group->post('', function (Request $request, Response $response, array $args): Response {

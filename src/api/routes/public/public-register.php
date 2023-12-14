@@ -38,41 +38,45 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     $family->setDateEntered(new DateTime());
 
     $familyMembers = [];
+    if (!$family->validate()) {
+        return SlimUtils::renderJSON(
+            $response,
+            [
+                'error' => gettext('Validation Error'),
+                'failures' => ORMUtils::getValidationErrors($family->getValidationFailures())
+            ],
+            400
+        );
+    }
+    foreach ($familyMetadata['people'] as $personMetaData) {
+        $person = new Person();
+        $person->setEnteredBy(Person::SELF_REGISTER);
+        $person->setDateEntered(new DateTime());
+        $person->setFirstName($personMetaData['firstName']);
+        $person->setLastName($personMetaData['lastName']);
+        $person->setGender($personMetaData['gender']);
+        $person->setFmrId($personMetaData['role']);
+        $person->setEmail($personMetaData['email']);
+        $person->setCellPhone($personMetaData['cellPhone']);
+        $person->setHomePhone($personMetaData['homePhone']);
+        $person->setWorkPhone($personMetaData['workPhone']);
+        $person->setFlags($personMetaData['hideAge'] ? '1' : 0);
 
-    if ($family->validate()) {
-        foreach ($familyMetadata['people'] as $personMetaData) {
-            $person = new Person();
-            $person->setEnteredBy(Person::SELF_REGISTER);
-            $person->setDateEntered(new DateTime());
-            $person->setFirstName($personMetaData['firstName']);
-            $person->setLastName($personMetaData['lastName']);
-            $person->setGender($personMetaData['gender']);
-            $person->setFmrId($personMetaData['role']);
-            $person->setEmail($personMetaData['email']);
-            $person->setCellPhone($personMetaData['cellPhone']);
-            $person->setHomePhone($personMetaData['homePhone']);
-            $person->setWorkPhone($personMetaData['workPhone']);
-            $person->setFlags($personMetaData['hideAge'] ? '1' : 0);
-
-            $birthday = $personMetaData['birthday'];
-            if (!empty($birthday)) {
-                $birthdayDate = DateTime::createFromFormat('m/d/Y', $birthday);
-                $person->setBirthDay($birthdayDate->format('d'));
-                $person->setBirthMonth($birthdayDate->format('m'));
-                $person->setBirthYear($birthdayDate->format('Y'));
-            }
-
-            if (!$person->validate()) {
-                LoggerUtils::getAppLogger()->error('Public Reg Error with the following data: ' . json_encode($personMetaData, JSON_THROW_ON_ERROR));
-
-                return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),
-                    'failures' => ORMUtils::getValidationErrors($person->getValidationFailures())], 401);
-            }
-            $familyMembers[] = $person;
+        $birthday = $personMetaData['birthday'];
+        if (!empty($birthday)) {
+            $birthdayDate = DateTime::createFromFormat('m/d/Y', $birthday);
+            $person->setBirthDay($birthdayDate->format('d'));
+            $person->setBirthMonth($birthdayDate->format('m'));
+            $person->setBirthYear($birthdayDate->format('Y'));
         }
-    } else {
-        return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),
-            'failures' => ORMUtils::getValidationErrors($family->getValidationFailures())], 400);
+
+        if (!$person->validate()) {
+            LoggerUtils::getAppLogger()->error('Public Reg Error with the following data: ' . json_encode($personMetaData, JSON_THROW_ON_ERROR));
+
+            return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),
+                'failures' => ORMUtils::getValidationErrors($person->getValidationFailures())], 401);
+        }
+        $familyMembers[] = $person;
     }
 
     $family->save();
@@ -92,12 +96,18 @@ function registerPersonAPI(Request $request, Response $response, array $args): R
     $person->fromJSON($request->getBody());
     $person->setEnteredBy(Person::SELF_REGISTER);
     $person->setDateEntered(new DateTime());
-    if ($person->validate()) {
-        $person->save();
-
-        return $response->withHeader('Content-Type', 'application/json')->write($person->exportTo('JSON'));
+    if (!$person->validate()) {
+        return SlimUtils::renderJSON(
+            $response,
+            [
+                'error' => gettext('Validation Error'),
+                'failures' => ORMUtils::getValidationErrors($person->getValidationFailures())
+            ],
+            400
+        );
     }
 
-    return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),
-        'failures' => ORMUtils::getValidationErrors($person->getValidationFailures())], 400);
+    $person->save();
+
+    return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
 }

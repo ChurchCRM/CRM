@@ -14,9 +14,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/groups', function (RouteCollectorProxy $group) {
-    $group->get('/', function (Request $request, Response $response) {
-        return SlimUtils::renderJSON($response, GroupQuery::create()->find()->toArray());
-    });
+    $group->get(
+        '/',
+        fn(Request $request, Response $response) => SlimUtils::renderJSON(
+            $response,
+            GroupQuery::create()->find()->toArray()
+        )
+    );
 
     // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
     $group->get('/calendars', function (Request $request, Response $response, array $args): Response {
@@ -47,13 +51,21 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         return SlimUtils::renderJSON($response, ['groupsInCart' => $groupsInCart]);
     });
 
-    $group->get('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        return SlimUtils::renderJSON($response, GroupQuery::create()->findOneById($args['groupID'])->toArray());
-    });
+    $group->get(
+        '/{groupID:[0-9]+}',
+        fn(Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
+            $response,
+            GroupQuery::create()->findOneById($args['groupID'])->toArray()
+        )
+    );
 
-    $group->get('/{groupID:[0-9]+}/cartStatus', function (Request $request, Response $response, array $args): Response {
-        return SlimUtils::renderJSON($response, GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart());
-    });
+    $group->get(
+        '/{groupID:[0-9]+}/cartStatus',
+        fn(Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
+            $response,
+            GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart()
+        )
+    );
 
     $group->get('/{groupID:[0-9]+}/members', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];

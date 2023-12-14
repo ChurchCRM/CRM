@@ -27,9 +27,7 @@ function getMailchimpList(Request $request, Response $response, array $args): Re
     $mailchimpService = $request->getAttribute('mailchimpService');
     $list = $mailchimpService->getList($listId);
 
-    $response->getBody()->write(json_encode(['list' => $list]));
-
-    return $response->withHeader('Content-Type', 'application/json');
+    return SlimUtils::renderJSON($response, ['list' => $list]);
 }
 
 function getMailchimpEmailNotInCRM(Request $request, Response $response, array $args): Response
@@ -57,7 +55,14 @@ function getMailchimpEmailNotInCRM(Request $request, Response $response, array $
     }
     LoggerUtils::getAppLogger()->debug('MailChimp list ' . $listId . ' now has ' . count($mailchimpListMembers) . ' members');
 
-    return SlimUtils::renderJSON($response, ['id' => $list['id'], 'name' => $list['name'], 'members' => $mailchimpListMembers]);
+    return SlimUtils::renderJSON(
+        $response,
+        [
+            'id' => $list['id'],
+            'name' => $list['name'],
+            'members' => $mailchimpListMembers
+        ]
+    );
 }
 
 function getMailChimpMissingSubscribed(Request $request, Response $response, array $args): Response
@@ -101,7 +106,14 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
     }
     LoggerUtils::getAppLogger()->debug('MailChimp list ' . $listId . ' now has ' . count($mailchimpListMembers) . ' members');
 
-    return SlimUtils::renderJSON($response, ['id' => $list['id'], 'name' => $list['name'], 'members' => $personsNotInMailchimp]);
+    return SlimUtils::renderJSON(
+        $response,
+        [
+            'id' => $list['id'],
+            'name' => $list['name'],
+            'members' => $personsNotInMailchimp
+        ]
+    );
 }
 
 function getFamilyStatus(Request $request, Response $response, array $args): Response
@@ -116,9 +128,8 @@ function getFamilyStatus(Request $request, Response $response, array $args): Res
             'list' => $mailchimpService->isEmailInMailChimp($family->getEmail())
         ];
     }
-    $response->getBody()->write(json_encode($emailToLists));
 
-    return $response->withHeader('Content-Type', 'application/json');
+    return SlimUtils::renderJSON($response, $emailToLists);
 }
 
 function getPersonStatus(Request $request, Response $response, array $args): Response
@@ -140,9 +151,8 @@ function getPersonStatus(Request $request, Response $response, array $args): Res
             'list' => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())
         ];
     }
-    $response->getBody()->write(json_encode($emailToLists));
 
-    return $response->withHeader('Content-Type', 'application/json');
+    return SlimUtils::renderJSON($response, $emailToLists);
 }
 
 function getPeopleWithEmails()
@@ -157,13 +167,10 @@ function getPeopleWithEmails()
     return $list;
 }
 
-function checkEmailInList($email, $memberList)
+function checkEmailInList(string $email, array $memberList): bool
 {
     $email = trim(strtolower($email));
     $key = array_search($email, array_column($memberList, 'email'));
-    if ($key > 0) {
-        return true;
-    }
 
-    return false;
+    return $key > 0;
 }
