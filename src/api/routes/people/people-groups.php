@@ -16,7 +16,7 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/groups', function (RouteCollectorProxy $group) {
     $group->get(
         '/',
-        fn(Request $request, Response $response) => SlimUtils::renderJSON(
+        fn (Request $request, Response $response) => SlimUtils::renderJSON(
             $response,
             GroupQuery::create()->find()->toArray()
         )
@@ -53,7 +53,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
 
     $group->get(
         '/{groupID:[0-9]+}',
-        fn(Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
+        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
             $response,
             GroupQuery::create()->findOneById($args['groupID'])->toArray()
         )
@@ -61,7 +61,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
 
     $group->get(
         '/{groupID:[0-9]+}/cartStatus',
-        fn(Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
+        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
             $response,
             GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart()
         )

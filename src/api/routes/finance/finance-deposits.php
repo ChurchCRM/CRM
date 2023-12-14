@@ -31,7 +31,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group) {
 
     $group->get(
         '',
-        fn(Request $request, Response $response, array $args): Response => SlimUtils::renderStringJSON(
+        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderStringJSON(
             $response,
             DepositQuery::create()->find()->toJSON()
         )
