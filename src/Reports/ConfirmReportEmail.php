@@ -158,7 +158,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->SetFont('Times', '', 10);
     $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_Email);
     if (!empty($fam_Email)) {
-        array_push($emaillist, $fam_Email);
+        $emaillist[] = $fam_Email;
     }
 
     $curY += SystemConfig::getValue('incrementY');
@@ -218,7 +218,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $pdf->writeAtCell($XRole, $curY, $XEmail - $XRole, $sFamRole);
         $pdf->writeAtCell($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
         if (!empty($per_Email)) {
-            array_push($emaillist, $per_Email);
+            $emaillist[] = $per_Email;
         }
         if ($per_BirthYear) {
             $birthdayStr = $per_BirthMonth . '/' . $per_BirthDay . '/' . $per_BirthYear;

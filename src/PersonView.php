@@ -738,7 +738,7 @@ $bOkToEdit = (
                                                             <?php
                                                             $assignedPropertiesArray = [];
                                                             foreach ($assignedProperties as $assignedProperty) {
-                                                                array_push($assignedPropertiesArray, $assignedProperty->getPropertyId());
+                                                                $assignedPropertiesArray[] = $assignedProperty->getPropertyId();
                                                             }
                                                             while ($aRow = mysqli_fetch_array($rsProperties)) {
                                                                 extract($aRow);

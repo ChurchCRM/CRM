@@ -46,7 +46,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
             if (!empty($families)) {
                 $id++;
                 foreach ($families as $family) {
-                    array_push($searchResults, new SearchResult('family-name-' . $id, $family->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')), $family->getViewURI()));
+                    $searchResults[] = new SearchResult('family-name-' . $id, $family->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')), $family->getViewURI());
                 }
             }
 
@@ -74,7 +74,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
             $families = $familyQuery->endUse()->find();
             foreach ($families as $family) {
                 $id++;
-                array_push($searchResults, new SearchResult('family-custom-prop-' . $id, $family->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')), $family->getViewURI()));
+                $searchResults[] = new SearchResult('family-custom-prop-' . $id, $family->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')), $family->getViewURI());
             }
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());

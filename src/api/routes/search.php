@@ -1,12 +1,12 @@
 <?php
 
 use ChurchCRM\Search\AddressSearchResultProvider;
+use ChurchCRM\Search\BaseSearchResultProvider;
 use ChurchCRM\Search\CalendarEventSearchResultProvider;
 use ChurchCRM\Search\FamilySearchResultProvider;
 use ChurchCRM\Search\FinanceDepositSearchResultProvider;
 use ChurchCRM\Search\FinancePaymentSearchResultProvider;
 use ChurchCRM\Search\GroupSearchResultProvider;
-use ChurchCRM\Search\iSearchResultProvider;
 use ChurchCRM\Search\PersonSearchResultProvider;
 use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -29,8 +29,8 @@ $app->get('/search/{query}', function (Request $request, Response $response, arr
     ];
 
     foreach ($resultsProviders as $provider) {
-        /* @var $provider iSearchResultProvider */
-        array_push($resultsArray, $provider->getSearchResults($query));
+        /* @var BaseSearchResultProvider $provider */
+        $resultsArray[] = $provider->getSearchResults($query);
     }
 
     return SlimUtils::renderJSON($response, array_values(array_filter($resultsArray)));

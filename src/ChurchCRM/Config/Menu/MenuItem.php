@@ -28,12 +28,12 @@ class MenuItem
         if (empty($menuItem->getIcon())) {
             $menuItem->setIcon('fa-angle-double-right');
         }
-        array_push($this->subItems, $menuItem);
+        $this->subItems[] = $menuItem;
     }
 
     public function addCounter(MenuCounter $counter)
     {
-        array_push($this->counters, $counter);
+        $this->counters[] = $counter;
     }
 
     public function getURI()

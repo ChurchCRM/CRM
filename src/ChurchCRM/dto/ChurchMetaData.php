@@ -15,22 +15,22 @@ class ChurchMetaData
     {
         $address = [];
         if (!empty(self::getChurchAddress())) {
-            array_push($address, self::getChurchAddress());
+            $address[] = self::getChurchAddress();
         }
 
         if (!empty(self::getChurchCity())) {
-            array_push($address, self::getChurchCity() . ',');
+            $address[] = self::getChurchCity() . ',';
         }
 
         if (!empty(self::getChurchState())) {
-            array_push($address, self::getChurchState());
+            $address[] = self::getChurchState();
         }
 
         if (!empty(self::getChurchZip())) {
-            array_push($address, self::getChurchZip());
+            $address[] = self::getChurchZip();
         }
         if (!empty(self::getChurchCountry())) {
-            array_push($address, self::getChurchCountry());
+            $address[] = self::getChurchCountry();
         }
 
         return implode(' ', $address);

@@ -134,7 +134,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         } elseif ($lst_OptionName === 'Student') {
             $elt = ['perID' => $groupRoleMembership->getPersonId()];
 
-            array_push($students, $elt);
+            $students[] = $elt;
         }
     }
 

@@ -11,12 +11,12 @@ $sundaySchoolService = new SundaySchoolService();
 $groups = GroupQuery::create()->filterByActive(true)->filterByIncludeInEmailExport(true)->find();
 
 $colNames = [];
-array_push($colNames, 'CRM ID');
-array_push($colNames, 'FirstName');
-array_push($colNames, 'LastName');
-array_push($colNames, 'Email');
+$colNames[] = 'CRM ID';
+$colNames[] = 'FirstName';
+$colNames[] = 'LastName';
+$colNames[] = 'Email';
 foreach ($groups as $group) {
-    array_push($colNames, $group->getName());
+    $colNames[] = $group->getName();
 }
 
 $sundaySchoolsParents = [];
@@ -27,10 +27,10 @@ foreach ($groups as $group) {
         $parentIds = [];
         foreach ($kids as $kid) {
             if ($kid['dadId'] != '') {
-                array_push($parentIds, $kid['dadId']);
+                $parentIds[] = $kid['dadId'];
             }
             if ($kid['momId'] != '') {
-                array_push($parentIds, $kid['momId']);
+                $parentIds[] = $kid['momId'];
             }
         }
         $sundaySchoolsParents[$group->getId()] = $parentIds;
@@ -46,10 +46,12 @@ $out = fopen('php://output', 'w');
 fputcsv($out, $colNames);
 foreach ($personService->getPeopleEmailsAndGroups() as $person) {
     $row = [];
-    array_push($row, $person['id']);
-    array_push($row, $person['firstName']);
-    array_push($row, $person['lastName']);
-    array_push($row, $person['email']);
+
+    $row[] = $person['id'];
+    $row[] = $person['firstName'];
+    $row[] = $person['lastName'];
+    $row[] = $person['email'];
+
     foreach ($groups as $group) {
         $groupRole = $person[$group->getName()];
         if ($groupRole == '' && $group->isSundaySchool()) {
@@ -57,7 +59,7 @@ foreach ($personService->getPeopleEmailsAndGroups() as $person) {
                 $groupRole = 'Parent';
             }
         }
-        array_push($row, $groupRole);
+        $row[] = $groupRole;
     }
     fputcsv($out, $row);
 }

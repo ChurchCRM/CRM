@@ -61,7 +61,7 @@ $app->group('/payments', function (RouteCollectorProxy $group) {
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
             $newRow['EditedBy'] = $row->getPerson()->getFullName();
             $newRow['Fund'] = $row->getPledgeName();
-            array_push($rows, $newRow);
+            $rows[] = $newRow;
         }
 
         return SlimUtils::renderJSON($response, ['data' => $rows]);

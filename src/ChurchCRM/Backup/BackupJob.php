@@ -139,7 +139,7 @@ class BackupJob extends JobBase
             if ($this->shouldBackupImageFile($imageFile)) {
                 $localName = substr(str_replace(SystemURLs::getDocumentRoot(), '', $imageFile->getRealPath()), 1);
                 $phar->addFile($imageFile->getRealPath(), $localName);
-                array_push($imagesAddedToArchive, $imageFile->getRealPath());
+                $imagesAddedToArchive[] = $imageFile->getRealPath();
             }
         }
         LoggerUtils::getAppLogger()->debug('Images files added to archive: ' . join(';', $imagesAddedToArchive));

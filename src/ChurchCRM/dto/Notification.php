@@ -40,7 +40,7 @@ class Notification
     {
         $emailaddresses = [];
         foreach ($this->recipients as $recipient) {
-            array_push($emailaddresses, $recipient->getEmail());
+            $emailaddresses[] = $recipient->getEmail();
         }
 
         try {
@@ -93,21 +93,19 @@ class Notification
         $methods = [];
         if (SystemConfig::hasValidMailServerSettings()) {
             $send = $this->sendEmail();
-            array_push($methods, 'email: ' . $send);
+            $methods[] = 'email: ' . $send;
         }
         if (SystemConfig::hasValidSMSServerSettings()) {
             $send = (bool) $this->sendSMS();
-            array_push($methods, 'sms: ' . $send);
+            $methods[] = 'sms: ' . $send;
         }
         if (SystemConfig::hasValidOpenLPSettings()) {
             $send = (bool) $this->sendProjector();
-            array_push($methods, 'projector: ' . $send);
+            $methods[] = 'projector: ' . $send;
         }
-        $sendStatus = [
+        return [
             'status'  => '',
             'methods' => $methods,
         ];
-
-        return json_encode($sendStatus, JSON_THROW_ON_ERROR);
     }
 }

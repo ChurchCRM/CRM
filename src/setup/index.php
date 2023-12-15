@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
 

@@ -28,7 +28,7 @@ foreach ($classStats as $class) {
     $teachers = $teachers + $class['teachers'];
     $classKids = $sundaySchoolService->getKidsFullDetails($class['id']);
     foreach ($classKids as $kid) {
-        array_push($familyIds, $kid['fam_id']);
+        $familyIds[] = $kid['fam_id'];
         if ($kid['kidGender'] == '1') {
             $maleKids++;
         } elseif ($kid['kidGender'] == '2') {

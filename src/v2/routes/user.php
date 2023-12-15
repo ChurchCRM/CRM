@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Slim\Request\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpForbiddenException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
@@ -38,7 +39,7 @@ function viewUser(Request $request, Response $response, array $args)
     $userId = $args['id'];
 
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
-        return $response->withStatus(403);
+        throw new HttpForbiddenException($request);
     }
 
     $user = UserQuery::create()->findPk($userId);
@@ -64,7 +65,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     // make sure that the currently logged in user has
     // admin permissions to change other users' passwords
     if (!$curUser->isAdmin()) {
-        return $response->withStatus(403);
+        throw new HttpForbiddenException($request);
     }
 
     $user = UserQuery::create()->findPk($userId);

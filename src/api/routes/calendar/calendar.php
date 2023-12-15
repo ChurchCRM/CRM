@@ -10,6 +10,8 @@ use ChurchCRM\Slim\Request\SlimUtils;
 use Propel\Runtime\Collection\ObjectCollection;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpBadRequestException;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/calendars', function (RouteCollectorProxy $group) {
@@ -19,7 +21,7 @@ $app->group('/calendars', function (RouteCollectorProxy $group) {
     $group->post('/', 'NewCalendar')->add(AddEventsRoleAuthMiddleware::class);
     $group->get('/{id}', 'getUserCalendars');
     $group->delete('/{id}', 'deleteUserCalendar');
-    $group->get('/{id}/events', 'UserCalendar');
+    $group->get('/{id}/events', 'getUserCalendarEvents');
     $group->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
     $group->post('/{id}/NewAccessToken', 'NewAccessToken')->add(AddEventsRoleAuthMiddleware::class);
     $group->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(AddEventsRoleAuthMiddleware::class);
@@ -41,35 +43,42 @@ function getSystemCalendars(Request $request, Response $response, array $args): 
 function getSystemCalendarEvents(Request $request, Response $response, array $args): Response
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-    $start = $request->getQueryParams()['start'];
-    $end = $request->getQueryParams()['end'];
-    if ($Calendar) {
-        $events = $Calendar->getEvents($start, $end);
-        return SlimUtils::renderJSON($response, $events);
+    if (!$Calendar) {
+        throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
+
+    $start = $request->getQueryParams()['start'] ?? '';
+    $end = $request->getQueryParams()['end'] ?? '';
+
+    $events = $Calendar->getEvents($start, $end);
+
+    return SlimUtils::renderJSON($response, $events);
 }
 
 function getSystemCalendarEventById(Request $request, Response $response, array $args): Response
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-
-    if ($Calendar) {
-        $event = $Calendar->getEventById($args['eventid']);
-        return SlimUtils::renderJSON($response, $event);
+    if (!$Calendar) {
+        throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
+
+    $event = $Calendar->getEventById($args['eventid']);
+
+    return SlimUtils::renderJSON($response, $event);
 }
 
 function getSystemCalendarFullCalendarEvents(Request $request, Response $response, array $args): Response
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-    $start = $request->getQueryParams()['start'];
-    $end = $request->getQueryParams()['end'];
     if (!$Calendar) {
-        return $response->withStatus(404);
+        throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
+
+    $start = $request->getQueryParams()['start'] ?? '';
+    $end = $request->getQueryParams()['end'] ?? '';
     $Events = $Calendar->getEvents($start, $end);
     if (!$Events) {
-        return $response->withStatus(404);
+        throw new HttpNotFoundException($request, 'Events not found!');
     }
 
     return SlimUtils::renderJSON($response, EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar)));
@@ -82,9 +91,11 @@ function getUserCalendars(Request $request, Response $response, array $args): Re
         $CalendarQuery->filterById($args['id']);
     }
     $Calendars = $CalendarQuery->find();
-    if ($Calendars) {
-        return SlimUtils::renderStringJSON($response, $Calendars->toJSON());
+    if (!$Calendars) {
+        throw new HttpNotFoundException($request, 'No calendars returned');
     }
+
+    return SlimUtils::renderStringJSON($response, $Calendars->toJSON());
 }
 
 function getUserCalendarFullCalendarEvents(Request $request, Response $response, array $args): Response
@@ -93,7 +104,7 @@ function getUserCalendarFullCalendarEvents(Request $request, Response $response,
     $calendar = CalendarQuery::create()
         ->findOneById($CalendarID);
     if (!$calendar) {
-        return $response->withStatus(404);
+        throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
     $start = $request->getQueryParams()['start'];
     $end = $request->getQueryParams()['end'];
@@ -103,10 +114,27 @@ function getUserCalendarFullCalendarEvents(Request $request, Response $response,
         ->filterByCalendar($calendar)
         ->find();
     if (!$Events) {
-        return $response->withStatus(404);
+        throw new HttpNotFoundException($request, 'Events not found!');
     }
 
     return SlimUtils::renderJSON($response, EventsObjectCollectionToFullCalendar($Events, $calendar));
+}
+
+
+function getUserCalendarEvents(Request $request, Response $response, array $args): Response
+{
+    $CalendarID = $args['id'];
+    $calendar = CalendarQuery::create()
+        ->findOneById($CalendarID);
+    if (!$calendar) {
+        throw new HttpNotFoundException($request, 'Calendar ID not found!');
+    }
+    $start = $request->getQueryParams()['start'] ?? '';
+    $end = $request->getQueryParams()['end'] ?? '';
+
+    $events = $calendar->getEvents($start, $end);
+
+    return SlimUtils::renderJSON($response, $events);
 }
 
 function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar $calendar): array
@@ -114,7 +142,7 @@ function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar
     $formattedEvents = [];
     foreach ($events as $event) {
         $fce = FullCalendarEvent::createFromEvent($event, $calendar);
-        array_push($formattedEvents, $fce);
+        $formattedEvents[] = $fce;
     }
 
     return $formattedEvents;
@@ -123,33 +151,33 @@ function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar
 function NewAccessToken(Request $request, Response $response, array $args): Response
 {
     if (!isset($args['id'])) {
-        return $response->withStatus(400, gettext('Invalid request: Missing calendar id'));
+        throw new HttpBadRequestException($request, gettext('Invalid request: Missing calendar id'));
     }
     $Calendar = CalendarQuery::create()
         ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
+        throw new HttpBadRequestException($request, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
     }
     $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
     $Calendar->save();
 
-    return SlimUtils::renderJSON($response, $Calendar);
+    return SlimUtils::renderJSON($response, $Calendar->toArray());
 }
 
 function DeleteAccessToken(Request $request, Response $response, array $args): Response
 {
     if (!isset($args['id'])) {
-        return $response->withStatus(400, gettext('Invalid request: Missing calendar id'));
+        throw new HttpBadRequestException($request, gettext('Invalid request: Missing calendar id'));
     }
     $Calendar = CalendarQuery::create()
         ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
+        throw new HttpBadRequestException($request, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
     }
     $Calendar->setAccessToken(null);
     $Calendar->save();
 
-    return SlimUtils::renderJSON($response, $Calendar);
+    return SlimUtils::renderJSON($response, $Calendar->toArray());
 }
 
 function NewCalendar(Request $request, Response $response, $args)
@@ -167,12 +195,12 @@ function NewCalendar(Request $request, Response $response, $args)
 function deleteUserCalendar(Request $request, Response $response, $args)
 {
     if (!isset($args['id'])) {
-        return $response->withStatus(400, gettext('Invalid request: Missing calendar id'));
+        throw new HttpBadRequestException($request, gettext('Invalid request: Missing calendar id'));
     }
     $Calendar = CalendarQuery::create()
         ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
+        throw new HttpBadRequestException($request, gettext('Not Found: Unknown calendar id') . ': ' . $args['id']);
     }
     $Calendar->delete();
 

@@ -29,7 +29,7 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
     $notifications = [];
     foreach (NotificationService::getNotifications() as $notification) {
         $uiNotification = new UiNotification($notification->title, 'bell', $notification->link, '', 'danger', '8000', 'bottom', 'left');
-        array_push($notifications, $uiNotification);
+        $notifications[] = $uiNotification;
     }
 
     $taskSrv = new TaskService();

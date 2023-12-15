@@ -22,7 +22,7 @@ function getPersonFieldsByType(Request $request, Response $response, array $args
     $keyValue = [];
 
     foreach ($fields as $field) {
-        array_push($keyValue, ['id' => $field->getId(), 'value' => $field->getName()]);
+        $keyValue[] = ['id' => $field->getId(), 'value' => $field->getName()];
     }
 
     return SlimUtils::renderJSON($response, $keyValue);

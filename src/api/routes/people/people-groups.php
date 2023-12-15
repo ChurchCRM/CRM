@@ -14,9 +14,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/groups', function (RouteCollectorProxy $group) {
-    $group->get('/', function (Request $request, Response $response) {
-        return SlimUtils::renderJSON($response, GroupQuery::create()->find()->toArray());
-    });
+    $group->get(
+        '/',
+        fn (Request $request, Response $response) => SlimUtils::renderJSON(
+            $response,
+            GroupQuery::create()->find()->toArray()
+        )
+    );
 
     // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
     $group->get('/calendars', function (Request $request, Response $response, array $args): Response {
@@ -30,7 +34,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
             $values['groupID'] = $group->getID();
             $values['name'] = $group->getName();
 
-            array_push($return, $values);
+            $return[] = $values;
         }
 
         return SlimUtils::renderJSON($response, $return);
@@ -41,19 +45,27 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         $groups = GroupQuery::create()->find();
         foreach ($groups as $group) {
             if ($group->checkAgainstCart()) {
-                array_push($groupsInCart, $group->getId());
+                $groupsInCart[] = $group->getId();
             }
         }
         return SlimUtils::renderJSON($response, ['groupsInCart' => $groupsInCart]);
     });
 
-    $group->get('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        return SlimUtils::renderJSON($response, GroupQuery::create()->findOneById($args['groupID'])->toArray());
-    });
+    $group->get(
+        '/{groupID:[0-9]+}',
+        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
+            $response,
+            GroupQuery::create()->findOneById($args['groupID'])->toArray()
+        )
+    );
 
-    $group->get('/{groupID:[0-9]+}/cartStatus', function (Request $request, Response $response, array $args): Response {
-        return SlimUtils::renderJSON($response, GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart());
-    });
+    $group->get(
+        '/{groupID:[0-9]+}/cartStatus',
+        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
+            $response,
+            GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart()
+        )
+    );
 
     $group->get('/{groupID:[0-9]+}/members', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
@@ -252,16 +264,16 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
             $group = GroupQuery::create()->findOneById($groupID);
-            if ($group != null) {
-                $group->setActive($flag);
-                $group->save();
-            } else {
-                return $response->withStatus(500, gettext('invalid group id'));
+            if ($group === null) {
+                throw new \Exception(gettext('invalid group id'));
             }
+
+            $group->setActive($flag);
+            $group->save();
 
             return SlimUtils::renderSuccessJSON($response);
         } else {
-            return $response->withStatus(500, gettext('invalid status value'));
+            throw new \Exception(gettext('invalid status value'));
         }
     });
 
@@ -270,16 +282,16 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
             $group = GroupQuery::create()->findOneById($groupID);
-            if ($group != null) {
-                $group->setIncludeInEmailExport($flag);
-                $group->save();
-            } else {
-                return $response->withStatus(500, gettext('invalid group id'));
+            if ($group === null) {
+                throw new \Exception(gettext('invalid group id'));
             }
+
+            $group->setIncludeInEmailExport($flag);
+            $group->save();
 
             return SlimUtils::renderSuccessJSON($response);
         } else {
-            return $response->withStatus(500, gettext('invalid export value'));
+            throw new \Exception(gettext('invalid export value'));
         }
     });
 })->add(ManageGroupRoleAuthMiddleware::class);

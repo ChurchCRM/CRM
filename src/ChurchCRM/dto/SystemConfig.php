@@ -26,7 +26,7 @@ class SystemConfig
         $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
         $languagesChoices = [];
         foreach ($locales as $key => $value) {
-            array_push($languagesChoices, gettext($key) . ':' . $value['locale']);
+            $languagesChoices[] = gettext($key) . ':' . $value['locale'];
         }
 
         return ['Choices' => $languagesChoices];
@@ -73,7 +73,7 @@ class SystemConfig
             $familyRoles = ListOptionQuery::create()->getFamilyRoles();
 
             foreach ($familyRoles as $familyRole) {
-                array_push($roles, $familyRole->getOptionName() . ':' . $familyRole->getOptionId());
+                $roles[] = $familyRole->getOptionName() . ':' . $familyRole->getOptionId();
             }
         } catch (Exception $e) {
         }

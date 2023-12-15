@@ -23,7 +23,7 @@ class Cart
             throw new \Exception(gettext('PersonID for Cart must be numeric'), 400);
         }
         if ($PersonID !== null && !in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
-            array_push($_SESSION['aPeopleCart'], (int) $PersonID);
+            $_SESSION['aPeopleCart'][] = (int)$PersonID;
         }
     }
 
@@ -194,7 +194,7 @@ class Cart
         $emailAddressArray = [];
         foreach ($people as $cartPerson) {
             if (!empty($cartPerson->getEmail())) {
-                array_push($emailAddressArray, $cartPerson->getEmail());
+                $emailAddressArray[] = $cartPerson->getEmail();
             }
         }
         $delimiter = AuthenticationManager::getCurrentUser()->getUserConfigString('sMailtoDelimiter');
@@ -213,7 +213,7 @@ class Cart
         $SMSNumberArray = [];
         foreach ($people as $cartPerson) {
             if (!empty($cartPerson->getCellPhone())) {
-                array_push($SMSNumberArray, $cartPerson->getCellPhone());
+                $SMSNumberArray[] = $cartPerson->getCellPhone();
             }
         }
         $sSMSLink = implode(',', $SMSNumberArray);

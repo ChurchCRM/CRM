@@ -44,8 +44,15 @@ function get2faqrcode(Request $request, Response $response, array $args): Respon
 {
     $user = AuthenticationManager::getCurrentUser();
     $response = $response->withHeader('Content-Type', 'image/png');
+    $response->getBody()
+        ->write(
+            LocalAuthentication::getTwoFactorQRCode(
+                $user->getUserName(),
+                $user->getDecryptedTwoFactorAuthSecret()
+            )->writeString()
+        );
 
-    return $response->write(LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $user->getDecryptedTwoFactorAuthSecret())->writeString());
+    return $response;
 }
 
 function test2FAEnrollmentCode(Request $request, Response $response, array $args): Response

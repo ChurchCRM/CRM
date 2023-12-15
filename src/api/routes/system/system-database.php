@@ -46,7 +46,15 @@ $app->group('/database', function (RouteCollectorProxy $group) {
 
         return SlimUtils::renderJSON(
             $response,
-            json_decode(json_encode($Backup), (bool) JSON_OBJECT_AS_ARRAY)
+            json_decode(
+                json_encode(
+                    $Backup,
+                    JSON_THROW_ON_ERROR
+                ),
+                (bool) JSON_OBJECT_AS_ARRAY,
+                512,
+                JSON_THROW_ON_ERROR
+            )
         );
     });
 
@@ -85,13 +93,23 @@ $app->group('/database', function (RouteCollectorProxy $group) {
 
         return SlimUtils::renderJSON(
             $response,
-            json_decode(json_encode($RestoreJob), (bool) JSON_OBJECT_AS_ARRAY)
+            json_decode(
+                json_encode(
+                    $RestoreJob,
+                    JSON_THROW_ON_ERROR
+                ),
+                (bool) JSON_OBJECT_AS_ARRAY,
+                512,
+                JSON_THROW_ON_ERROR
+            )
         );
     });
 
     $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response {
         $filename = $args['filename'];
         BackupDownloader::downloadBackup($filename);
+
+        return SlimUtils::renderSuccessJSON($response);
     });
 })->add(AdminRoleAuthMiddleware::class);
 
@@ -169,7 +187,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
             '',
             ''
         ];
-        array_push($list, $chPerson);
+        $list[] = $chPerson;
     }
 
     $out = fopen('php://temp', 'w+');
@@ -199,7 +217,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
  *
  * @return Response The augmented response.
  */
-function resetDatabase(Request $request, Response $response)
+function resetDatabase(Request $request, Response $response): Response
 {
     $connection = Propel::getConnection();
     $logger = LoggerUtils::getAppLogger();

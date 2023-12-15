@@ -24,7 +24,7 @@ class SystemCalendars
         $calendars = [];
         foreach ($systemCalendarNames as $systemCalendarName) {
             if ($systemCalendarName::isAvailable()) {
-                array_push($calendars, new $systemCalendarName());
+                $calendars[] = new $systemCalendarName();
             }
         }
 

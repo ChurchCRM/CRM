@@ -232,7 +232,7 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
                         $arr['Longitude'] = $family->getLongitude();
                         $arr['Name'] = $family->getName();
                         $arr['Classification'] = $class->GetClsId();
-                        array_push($arrPlotItems, $arr);
+                        $arrPlotItems[] = $arr;
                     }
                 }
             } else {
@@ -249,7 +249,7 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
                     $arr['Longitude'] = $latLng['Longitude'];
                     $arr['Name'] = $member->getFullName();
                     $arr['Classification'] = $member->getClsId();
-                    array_push($arrPlotItems, $arr);
+                    $arrPlotItems[] = $arr;
                 }
             } //end IF $plotFamily
 

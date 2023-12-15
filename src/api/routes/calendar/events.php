@@ -12,6 +12,8 @@ use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpBadRequestException;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/events', function (RouteCollectorProxy $group) {
@@ -37,10 +39,11 @@ function getAllEvents(Request $request, Response $response, array $args): Respon
 {
     $Events = EventQuery::create()
         ->find();
-    if (!empty($Events)) {
-        return SlimUtils::renderStringJSON($response, $Events->toJSON());
+    if (empty($Events)) {
+        throw new HttpNotFoundException($request);
     }
-    return $response->withStatus(404);
+
+    return SlimUtils::renderStringJSON($response, $Events->toJSON());
 }
 
 function getEventTypes(Request $request, Response $response, array $args): Response
@@ -48,24 +51,25 @@ function getEventTypes(Request $request, Response $response, array $args): Respo
     $EventTypes = EventTypeQuery::Create()
         ->orderByName()
         ->find();
-    if (!empty($EventTypes)) {
-        return SlimUtils::renderStringJSON($response, $EventTypes->toJSON());
+    if (empty($EventTypes)) {
+        throw new HttpNotFoundException($request);
     }
-    return $response->withStatus(404);
+    return SlimUtils::renderStringJSON($response, $EventTypes->toJSON());
 }
 
 function getEvent(Request $request, Response $response, $args)
 {
     $Event = $request->getAttribute('event');
 
-    if (!empty($Event)) {
-        return SlimUtils::renderStringJSON($response, $Event->toJSON());
+    if (empty($Event)) {
+        throw new HttpNotFoundException($request);
     }
-    return $response->withStatus(404);
+    return SlimUtils::renderStringJSON($response, $Event->toJSON());
 }
 
 function getEventPrimaryContact(Request $request, Response $response, array $args): Response
 {
+    /** @var Event $Event */
     $Event = EventQuery::create()
         ->findOneById($args['id']);
     if (!empty($Event)) {
@@ -74,7 +78,7 @@ function getEventPrimaryContact(Request $request, Response $response, array $arg
             return SlimUtils::renderStringJSON($response, $Contact->toJSON());
         }
     }
-    return $response->withStatus(404);
+    throw new HttpNotFoundException($request);
 }
 
 function getEventSecondaryContact(Request $request, Response $response, array $args): Response
@@ -83,9 +87,9 @@ function getEventSecondaryContact(Request $request, Response $response, array $a
         ->findOneById($args['id'])
         ->getPersonRelatedBySecondaryContactPersonId();
     if (!empty($Contact)) {
-        return SlimUtils::renderStringJSON($response, $Contact->toJSON());
+        throw new HttpNotFoundException($request);
     }
-    return $response->withStatus(404);
+    return SlimUtils::renderStringJSON($response, $Contact->toJSON());
 }
 
 function getEventLocation(Request $request, Response $response, array $args): Response
@@ -93,11 +97,11 @@ function getEventLocation(Request $request, Response $response, array $args): Re
     $Location = EventQuery::create()
         ->findOneById($args['id'])
         ->getLocation();
-    if (!empty($Location)) {
-        return SlimUtils::renderStringJSON($response, $Location->toJSON());
+    if (empty($Location)) {
+        throw new HttpNotFoundException($request);
     }
 
-    return $response->withStatus(404);
+    return SlimUtils::renderStringJSON($response, $Location->toJSON());
 }
 
 function getEventAudience(Request $request, Response $response, array $args): Response
@@ -105,11 +109,11 @@ function getEventAudience(Request $request, Response $response, array $args): Re
     $Audience = EventQuery::create()
         ->findOneById($args['id'])
         ->getEventAudiencesJoinGroup();
-    if (!empty($Audience)) {
-        return SlimUtils::renderStringJSON($response, $Audience->toJSON());
+    if (empty($Audience)) {
+        throw new HttpNotFoundException($request);
     }
 
-    return $response->withStatus(404);
+    return SlimUtils::renderStringJSON($response, $Audience->toJSON());
 }
 
 function newEvent(Request $request, Response $response, array $args): Response
@@ -120,14 +124,14 @@ function newEvent(Request $request, Response $response, array $args): Response
     $type = EventTypeQuery::Create()
         ->findOneById($input['Type']);
     if (empty($type)) {
-        return $response->withStatus(400, gettext('invalid event type id'));
+        throw new HttpBadRequestException($request, gettext('invalid event type id'));
     }
 
     $calendars = CalendarQuery::create()
         ->filterById($input['PinnedCalendars'])
         ->find();
-    if (count($calendars) != count($input['PinnedCalendars'])) {
-        return $response->withStatus(400, gettext('invalid calendar pinning'));
+    if (count($calendars) !== count($input['PinnedCalendars'])) {
+        throw new HttpBadRequestException($request, gettext('invalid calendar pinning'));
     }
 
     // we have event type and pined calendars.  now create the event.
@@ -146,9 +150,8 @@ function newEvent(Request $request, Response $response, array $args): Response
 
 function updateEvent(Request $request, Response $response, array $args): Response
 {
-    $e = new Event();
-    //$e->getId();
     $input = $request->getParsedBody();
+    /** @var Event $Event */
     $Event = $request->getAttribute('event');
     $id = $Event->getId();
     $Event->fromArray($input);
@@ -159,6 +162,8 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     $Event->setCalendars($PinnedCalendars);
 
     $Event->save();
+
+    return SlimUtils::renderSuccessJSON($response);
 }
 
 function setEventTime(Request $request, Response $response, array $args): Response
@@ -168,7 +173,7 @@ function setEventTime(Request $request, Response $response, array $args): Respon
     $event = EventQuery::Create()
         ->findOneById($args['id']);
     if (!$event) {
-        return $response->withStatus(404);
+        throw new HttpNotFoundException($request);
     }
     $event->setStart($input['startTime']);
     $event->setEnd($input['endTime']);
@@ -210,7 +215,7 @@ function deleteEvent(Request $request, Response $response, array $args): Respons
 {
     $event = EventQuery::Create()->findOneById($args['id']);
     if (!$event) {
-        return $response->withStatus(404);
+        throw new HttpNotFoundException($request);
     }
     $event->delete();
 

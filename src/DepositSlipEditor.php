@@ -189,16 +189,19 @@ foreach ($thisDeposit->getFundTotals() as $tmpfund) {
     $label = $tmpfund['Name'];
     $data = $tmpfund['Total'];
     $backgroundColor = '#' . random_color();
-    array_push($fundLabels, $label);
-    array_push($fundData, $data);
-    array_push($fundBackgroundColor, $backgroundColor);
+
+    $fundLabels[] = $label;
+    $fundData[] = $data;
+    $fundBackgroundColor[] = $backgroundColor;
 }
 
   $pledgeData = [];
+
   $data = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalCash() : '0';
-  array_push($pledgeData, $data);
+  $pledgeData[] = $data;
+
   $data = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalChecks() : '0';
-  array_push($pledgeData, $data);
+  $pledgeData[] = $data;
 
 ?>
 
