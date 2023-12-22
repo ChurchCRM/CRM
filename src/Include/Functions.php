@@ -722,7 +722,7 @@ function displayCustomField($type, ?string $data, $special)
 //
 // Generates an HTML form <input> line for a custom field
 //
-function formCustomField($type, string $fieldname, $data, string $special, $bFirstPassFlag): void
+function formCustomField($type, string $fieldname, $data, ?string $special, $bFirstPassFlag): void
 {
     global $cnInfoCentral;
 
@@ -1066,7 +1066,7 @@ function parseAndValidateDate($data, $locale = 'US', $pasfut = 'future')
 //
 // Returns false if the data is not valid, true otherwise.
 //
-function validateCustomField($type, &$data, $col_Name, array &$aErrors): bool
+function validateCustomField($type, &$data, $col_Name, ?array &$aErrors): bool
 {
     global $aLocaleInfo;
     $bErrorFlag = false;
