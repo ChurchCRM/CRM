@@ -11,7 +11,7 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true, LoggerUtils::getSl
 // Get the default error handler and register my custom error renderer.
 $errorHandler = $errorMiddleware->getDefaultErrorHandler();
 
-$container['errorHandler'] = fn ($container) => function ($request, $response, $exception) use ($container) {
+$container['errorHandler'] = fn ($container): \Closure => function ($request, $response, $exception) use ($container) {
     $data = [
         'code'    => $exception->getCode(),
         'message' => $exception->getMessage(),
@@ -25,12 +25,12 @@ $container['errorHandler'] = fn ($container) => function ($request, $response, $
         ->write(json_encode($data, JSON_THROW_ON_ERROR));
 };
 
-$container['notFoundHandler'] = fn ($container) => fn ($request, $response) => $container['response']
+$container['notFoundHandler'] = fn ($container): \Closure => fn ($request, $response) => $container['response']
     ->withStatus(404)
     ->withHeader('Content-Type', 'text/html')
     ->write("Can't find route for " . $request->getMethod() . ' on ' . $request->getUri());
 
-$container['notAllowedHandler'] = fn ($container) => fn ($request, $response, $methods) => $container['response']
+$container['notAllowedHandler'] = fn ($container): \Closure => fn ($request, $response, $methods) => $container['response']
     ->withStatus(405)
     ->withHeader('Allow', implode(', ', $methods))
     ->withHeader('Content-type', 'text/html')

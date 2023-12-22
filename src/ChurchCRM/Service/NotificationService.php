@@ -54,7 +54,7 @@ class NotificationService
      * If session does not contain notifications, or if the notification TTL has expired, return true
      * otherwise return false.
      */
-    public static function isUpdateRequired()
+    public static function isUpdateRequired(): bool
     {
         return !isset($_SESSION['SystemNotifications']) || $_SESSION['SystemNotifications']->expires < new \DateTimeImmutable();
     }

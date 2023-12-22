@@ -7,7 +7,10 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class DashboardService
 {
-    public function getAgeStats()
+    /**
+     * @return int[]
+     */
+    public function getAgeStats(): array
     {
         $ageStats = [];
         $people = PersonQuery::create()->find();
@@ -26,7 +29,7 @@ class DashboardService
         return $ageStats;
     }
 
-    public function getFamilyCount()
+    public function getFamilyCount(): array
     {
         $familyCount = FamilyQuery::Create()
             ->filterByDateDeactivated()
@@ -36,7 +39,7 @@ class DashboardService
         return $data;
     }
 
-    public function getPersonCount()
+    public function getPersonCount(): array
     {
         $personCount = PersonQuery::Create('per')
             ->useFamilyQuery('fam', 'left join')
@@ -48,14 +51,25 @@ class DashboardService
         return $data;
     }
 
-    public function getPersonStats()
+    /**
+     * @return array<string, string>
+     */
+    public function getPersonStats(): array
     {
         $data = [];
-        $sSQL = 'select lst_OptionName as Classification, count(*) as count
-                from person_per INNER JOIN list_lst ON  per_cls_ID = lst_OptionID
-                LEFT JOIN family_fam ON family_fam.fam_ID = person_per.per_fam_ID
-                WHERE lst_ID =1 and family_fam.fam_DateDeactivated is null
-                group by per_cls_ID, lst_OptionName order by count desc;';
+        $sSQL = <<<SQL
+SELECT
+    lst_OptionName as Classification,
+    count(*) as count
+FROM person_per
+INNER JOIN list_lst ON  per_cls_ID = lst_OptionID
+LEFT JOIN family_fam ON family_fam.fam_ID = person_per.per_fam_ID
+WHERE
+    lst_ID = 1 AND
+    family_fam.fam_DateDeactivated IS NULL
+GROUP BY per_cls_ID, lst_OptionName
+ORDER BY count DESC;
+SQL;
         $rsClassification = RunQuery($sSQL);
         while ($row = mysqli_fetch_array($rsClassification)) {
             $data[$row['Classification']] = $row['count'];
@@ -64,7 +78,7 @@ class DashboardService
         return $data;
     }
 
-    public function getGroupStats()
+    public function getGroupStats(): array
     {
         $sSQL = 'select
         (select count(*) from group_grp) as Group_cnt,

@@ -14,7 +14,7 @@ class PdfAddressReport extends ChurchInfoReport
     private $sFamily;
     private $sLastName;
 
-    private function numLinesInFpdfCell($w, $txt)
+    private function numLinesInFpdfCell(int $w, $txt): int
     {
         //Computes the number of lines a MultiCell of width w will take
         $cw = &$this->CurrentFont['cw'];
@@ -68,7 +68,7 @@ class PdfAddressReport extends ChurchInfoReport
 
     // Sets the character size
     // This changes the line height too
-    public function setCharSize($pt)
+    public function setCharSize($pt): void
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -92,7 +92,7 @@ class PdfAddressReport extends ChurchInfoReport
         $this->setCharSize(12);
     }
 
-    public function checkLines($numlines)
+    public function checkLines($numlines): void
     {
         $CurY = $this->GetY();  // Temporarily store off the position
 
@@ -108,7 +108,7 @@ class PdfAddressReport extends ChurchInfoReport
     }
 
     // Number of lines is only for the $text parameter
-    public function addRecord($fam_Str, $sLuStr, $sErrStr)
+    public function addRecord($fam_Str, string $sLuStr, string $sErrStr): void
     {
         $sLuStr .= "\n" . $sErrStr;
 

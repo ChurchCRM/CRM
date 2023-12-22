@@ -5,6 +5,7 @@ namespace ChurchCRM\model\ChurchCRM;
 use ChurchCRM\dto\KioskAssignmentTypes;
 use ChurchCRM\model\ChurchCRM\Base\KioskDevice as BaseKioskDevice;
 use ChurchCRM\Utils\MiscUtils;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 class KioskDevice extends BaseKioskDevice
 {
@@ -13,7 +14,7 @@ class KioskDevice extends BaseKioskDevice
         return $this->getKioskAssignments()[0];
     }
 
-    public function setAssignment($assignmentType, $eventId)
+    public function setAssignment($assignmentType, $eventId): void
     {
         $assignment = $this->getActiveAssignment();
         if ($assignment === null) {
@@ -25,7 +26,7 @@ class KioskDevice extends BaseKioskDevice
         $assignment->save();
     }
 
-    public function heartbeat()
+    public function heartbeat(): array
     {
         $this->setLastHeartbeat(date('Y-m-d H:i:s'))
         ->save();
@@ -55,7 +56,7 @@ class KioskDevice extends BaseKioskDevice
         return $commands;
     }
 
-    public function reloadKiosk()
+    public function reloadKiosk(): bool
     {
         $this->setPendingCommands('Reload');
         $this->save();
@@ -63,7 +64,7 @@ class KioskDevice extends BaseKioskDevice
         return true;
     }
 
-    public function identifyKiosk()
+    public function identifyKiosk(): bool
     {
         $this->setPendingCommands('Identify');
         $this->save();
@@ -71,9 +72,9 @@ class KioskDevice extends BaseKioskDevice
         return true;
     }
 
-    public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function preInsert(ConnectionInterface $con = null): bool
     {
-        if (!isset($this->getName())) {
+        if (empty($this->getName())) {
             $this->setName(MiscUtils::randomWord());
         }
 

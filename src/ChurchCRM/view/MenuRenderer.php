@@ -7,7 +7,7 @@ use ChurchCRM\Config\Menu\MenuItem;
 
 class MenuRenderer
 {
-    public static function renderMenu()
+    public static function renderMenu(): void
     {
         Menu::init();
         foreach (Menu::getMenu() as $menuItem) {
@@ -21,7 +21,7 @@ class MenuRenderer
         }
     }
 
-    private static function renderMenuItem(MenuItem $menuItem)
+    private static function renderMenuItem(MenuItem $menuItem): void
     {
         ?>
         <li class="nav-item<?= $menuItem->isActive() ? " active" : ""?>">
@@ -36,7 +36,7 @@ class MenuRenderer
         <?php
     }
 
-    private static function renderSubMenuItem(MenuItem $menuItem)
+    private static function renderSubMenuItem(MenuItem $menuItem): void
     {
         ?>
         <div class="nav-item<?= $menuItem->openMenu() ? " menu-open active" : "" ?>">
@@ -64,7 +64,7 @@ class MenuRenderer
     }
 
 
-    private static function renderMenuCounters(MenuItem $menuItem)
+    private static function renderMenuCounters(MenuItem $menuItem): void
     {
         if ($menuItem->hasCounters()) {
             ?>

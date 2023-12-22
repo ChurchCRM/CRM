@@ -17,7 +17,7 @@
 
 // This file contains functions specifically related to address labels
 
-function FontSelect($fieldname)
+function FontSelect($fieldname): void
 {
     $sFPDF_PATH = 'vendor/setasign/fpdf';
 
@@ -55,7 +55,7 @@ function FontSelect($fieldname)
     echo '</tr>';
 }
 
-function FontSizeSelect($fieldname)
+function FontSizeSelect($fieldname): void
 {
     $sizes = ['default', 6, 7, 8, 9, 10, 11, 12, 14, 16, 18];
     echo '<tr>';
@@ -74,7 +74,7 @@ function FontSizeSelect($fieldname)
     echo '</tr>';
 }
 
-function LabelSelect($fieldname)
+function LabelSelect($fieldname): void
 {
     $labels = ['Tractor', '5160', '5161', '5162', '5163', '5164', '8600', 'L7163'];
     echo '<tr>';
@@ -93,7 +93,7 @@ function LabelSelect($fieldname)
     echo '</tr>';
 }
 
-function LabelGroupSelect($fieldname)
+function LabelGroupSelect($fieldname): void
 {
     echo '<tr><td class="LabelColumn">' . gettext('Label Grouping') . '</td>';
     echo '<td class="TextColumn">';
@@ -113,7 +113,7 @@ function LabelGroupSelect($fieldname)
     echo '>' . gettext('Grouped by Family') . '<br></td></tr>';
 }
 
-function ToParentsOfCheckBox($fieldname)
+function ToParentsOfCheckBox($fieldname): void
 {
     echo '<tr><td class="LabelColumn">' . gettext('To the parents of') . ':</td>';
     echo '<td class="TextColumn">';
@@ -127,7 +127,7 @@ function ToParentsOfCheckBox($fieldname)
     echo '><br></td></tr>';
 }
 
-function StartRowStartColumn()
+function StartRowStartColumn(): void
 {
     echo '
 	<tr>
@@ -146,7 +146,7 @@ function StartRowStartColumn()
 	</tr>';
 }
 
-function IgnoreIncompleteAddresses()
+function IgnoreIncompleteAddresses(): void
 {
     echo '
 	<tr>
@@ -158,7 +158,7 @@ function IgnoreIncompleteAddresses()
 	</tr>';
 }
 
-function LabelFileType()
+function LabelFileType(): void
 {
     echo '
 	<tr>

@@ -18,21 +18,21 @@ $app->get('/', function (Request $request, Response $response, array $args): Res
 
 $app->get('/heartbeat', fn (Request $request, Response $response, array $args) => json_encode($app->kiosk->heartbeat(), JSON_THROW_ON_ERROR));
 
-$app->post('/checkin', function (Request $request, Response $response, array $args) use ($app) {
+$app->post('/checkin', function (Request $request, Response $response, array $args) use ($app): Response {
     $input = $request->getParsedBody();
     $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input['PersonId']);
 
     return SlimUtils::renderJSON($response, $status);
 });
 
-$app->post('/checkout', function (Request $request, Response $response, array $args) use ($app) {
+$app->post('/checkout', function (Request $request, Response $response, array $args) use ($app): Response {
     $input = $request->getParsedBody();
     $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input['PersonId']);
 
     return SlimUtils::renderJSON($response, $status);
 });
 
-$app->post('/triggerNotification', function (Request $request, Response $response, array $args) use ($app) {
+$app->post('/triggerNotification', function (Request $request, Response $response, array $args) use ($app): Response {
     $input = $request->getParsedBody();
 
     $Person = PersonQuery::create()
@@ -49,7 +49,7 @@ $app->post('/triggerNotification', function (Request $request, Response $respons
 
 $app->get('/activeClassMembers', fn (Request $request, Response $response, array $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());
 
-$app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface $request, Response $response, $args) {
+$app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface $request, Response $response, array $args) {
     $photo = new Photo('Person', $args['PersonId']);
 
     $response->getBody()->write($photo->getPhotoBytes());

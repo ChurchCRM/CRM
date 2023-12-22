@@ -20,7 +20,7 @@ class FamilyVerificationEmail extends BaseEmail
         $this->mail->msgHTML($this->buildMessage());
     }
 
-    public function getTokens()
+    public function getTokens(): array
     {
         $myTokens = ['toName' => $this->familyName . ' ' . gettext('Family'),
             'body'            => SystemConfig::getValue('sConfirm1'),
@@ -29,12 +29,12 @@ class FamilyVerificationEmail extends BaseEmail
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    protected function getFullURL()
+    protected function getFullURL(): string
     {
         return SystemURLs::getURL() . '/external/verify/' . $this->token->getToken();
     }
 
-    protected function getButtonText()
+    protected function getButtonText(): string
     {
         return gettext('Verify');
     }

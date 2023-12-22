@@ -6,6 +6,7 @@ use ChurchCRM\dto\Photo;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
+use Slim\Interfaces\RouteInterface;
 use Slim\Routing\RouteContext;
 use Slim\HttpCache\CacheProvider;
 
@@ -54,7 +55,7 @@ class SlimUtils
         $route = $routeContext->getRoute();
 
         // return NotFound for non-existent route
-        if (empty($route)) {
+        if (!$route instanceof RouteInterface) {
             throw new HttpNotFoundException($request);
         }
 

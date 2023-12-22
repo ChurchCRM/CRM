@@ -15,7 +15,7 @@ use Slim\Views\PhpRenderer;
 
 $app->get('/dashboard', 'viewDashboard');
 
-function viewDashboard(Request $request, Response $response, array $args)
+function viewDashboard(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/root/');
 

@@ -38,7 +38,7 @@ class PdfAttendance extends ChurchInfoReport
     public function drawAttendanceCalendar(
         $nameX,
         $yTop,
-        $aNames,
+        array $aNames,
         $tTitle,
         $extraLines,
         $tFirstSunday,
@@ -52,7 +52,7 @@ class PdfAttendance extends ChurchInfoReport
         $tNoSchool7,
         $tNoSchool8,
         $rptHeader,
-        $imgs,
+        array $imgs,
         $with_img
     ) {
         $startMonthX = 60;

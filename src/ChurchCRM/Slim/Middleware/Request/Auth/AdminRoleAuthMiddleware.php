@@ -9,7 +9,7 @@ class AdminRoleAuthMiddleware extends BaseAuthRoleMiddleware
         return $this->user->isAdmin();
     }
 
-    protected function noRoleMessage()
+    protected function noRoleMessage(): string
     {
         return gettext('User must be an Admin');
     }

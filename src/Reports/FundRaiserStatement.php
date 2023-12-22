@@ -48,7 +48,7 @@ class PdfFundRaiserStatement extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country)
+    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country): float
     {
         global $letterhead;
         $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
@@ -56,7 +56,7 @@ class PdfFundRaiserStatement extends ChurchInfoReport
         return $curY;
     }
 
-    public function finishPage($curY)
+    public function finishPage($curY): void
     {
     }
 

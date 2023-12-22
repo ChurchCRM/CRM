@@ -9,14 +9,14 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class Cart
 {
-    private static function checkCart()
+    private static function checkCart(): void
     {
         if (!isset($_SESSION['aPeopleCart'])) {
             $_SESSION['aPeopleCart'] = [];
         }
     }
 
-    public static function addPerson($PersonID)
+    public static function addPerson($PersonID): void
     {
         self::checkCart();
         if (!is_numeric($PersonID)) {
@@ -27,14 +27,14 @@ class Cart
         }
     }
 
-    public static function addPersonArray($PersonArray)
+    public static function addPersonArray($PersonArray): void
     {
         foreach ($PersonArray as $PersonID) {
             Cart::addPerson($PersonID);
         }
     }
 
-    public static function addGroup($GroupID)
+    public static function addGroup($GroupID): void
     {
         if (!is_numeric($GroupID)) {
             throw new \Exception(gettext('GroupID for Cart must be numeric'), 400);
@@ -47,7 +47,7 @@ class Cart
         }
     }
 
-    public static function addFamily($FamilyID)
+    public static function addFamily($FamilyID): void
     {
         if (!is_numeric($FamilyID)) {
             throw new \Exception(gettext('FamilyID for Cart must be numeric'), 400);
@@ -60,14 +60,14 @@ class Cart
         }
     }
 
-    public static function intersectArrayWithPeopleCart($aIDs)
+    public static function intersectArrayWithPeopleCart($aIDs): void
     {
         if (isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
             $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'], $aIDs);
         }
     }
 
-    public static function removePerson($PersonID)
+    public static function removePerson($PersonID): void
     {
         // make sure the cart array exists
         // we can't remove anybody if there is no cart
@@ -80,7 +80,7 @@ class Cart
         }
     }
 
-    public static function removePersonArray($aIDs)
+    public static function removePersonArray($aIDs): void
     {
         // make sure the cart array exists
         // we can't remove anybody if there is no cart
@@ -89,7 +89,7 @@ class Cart
         }
     }
 
-    public static function removeGroup($GroupID)
+    public static function removeGroup($GroupID): void
     {
         if (!is_numeric($GroupID)) {
             throw new \Exception(gettext('GroupID for Cart must be numeric'), 400);
@@ -102,12 +102,12 @@ class Cart
         }
     }
 
-    public static function hasPeople()
+    public static function hasPeople(): bool
     {
         return array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) != 0;
     }
 
-    public static function countPeople()
+    public static function countPeople(): int
     {
         return count($_SESSION['aPeopleCart']);
     }
@@ -140,7 +140,7 @@ class Cart
         return $persons->count();
     }
 
-    public static function emptyToGroup($GroupID, $RoleID)
+    public static function emptyToGroup($GroupID, $RoleID): void
     {
         $iCount = 0;
 
@@ -187,7 +187,7 @@ class Cart
         return $people;
     }
 
-    public static function getEmailLink()
+    public static function getEmailLink(): string
     {
         /* @var $cartPerson ChurchCRM\Person */
         $people = Cart::getCartPeople();
@@ -206,7 +206,7 @@ class Cart
         return $sEmailLink;
     }
 
-    public static function getSMSLink()
+    public static function getSMSLink(): string
     {
         /* @var $cartPerson ChurchCRM\Person */
         $people = Cart::getCartPeople();
@@ -221,7 +221,7 @@ class Cart
         return $sSMSLink;
     }
 
-    public static function emptyAll()
+    public static function emptyAll(): void
     {
         Cart::removePersonArray($_SESSION['aPeopleCart']);
     }

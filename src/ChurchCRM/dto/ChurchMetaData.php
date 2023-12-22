@@ -11,7 +11,7 @@ class ChurchMetaData
         return SystemConfig::getValue('sChurchName');
     }
 
-    public static function getChurchFullAddress()
+    public static function getChurchFullAddress(): string
     {
         $address = [];
         if (!empty(self::getChurchAddress())) {
@@ -99,7 +99,7 @@ class ChurchMetaData
         return SystemConfig::getValue('sTimeZone');
     }
 
-    private static function updateLatLng()
+    private static function updateLatLng(): void
     {
         if (!empty(self::getChurchFullAddress())) {
             $latLng = GeoUtils::getLatLong(self::getChurchFullAddress());

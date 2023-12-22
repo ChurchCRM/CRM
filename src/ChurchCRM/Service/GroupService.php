@@ -12,7 +12,7 @@ class GroupService
      * @param int $groupID  Group ID from which  to remove the user
      * @param int $personID UserID to remove from the group
      */
-    public function removeUserFromGroup($groupID, $personID)
+    public function removeUserFromGroup($groupID, $personID): void
     {
         requireUserGroupMembership('bManageGroups');
         $sSQL = 'DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ' . $personID . ' AND p2g2r_grp_ID = ' . $groupID;
@@ -53,7 +53,7 @@ class GroupService
      * @param int $personID UserID to remove from the group
      * @param int $roleID   Role ID to set to the person
      */
-    public function addUserToGroup(int $iGroupID, int $iPersonID, int $iRoleID)
+    public function addUserToGroup(int $iGroupID, int $iPersonID, int $iRoleID): array
     {
         requireUserGroupMembership('bManageGroups');
         //
@@ -96,7 +96,7 @@ class GroupService
      *
      * @return array representing the roles of the group
      */
-    public function getGroupRoles($groupID)
+    public function getGroupRoles($groupID): array
     {
         $groupRoles = [];
         $sSQL = 'SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
@@ -118,7 +118,7 @@ class GroupService
         return $groupRoles;
     }
 
-    public function setGroupRoleOrder($groupID, $groupRoleID, $groupRoleOrder)
+    public function setGroupRoleOrder(string $groupID, string $groupRoleID, string $groupRoleOrder): void
     {
         requireUserGroupMembership('bManageGroups');
         $sSQL = 'UPDATE list_lst
@@ -130,7 +130,7 @@ class GroupService
         RunQuery($sSQL);
     }
 
-    public function getGroupRoleOrder($groupID, $groupRoleID)
+    public function getGroupRoleOrder(string $groupID, string $groupRoleID)
     {
         $sSQL = 'SELECT list_lst.lst_OptionSequence FROM list_lst
                 INNER JOIN group_grp
@@ -144,7 +144,7 @@ class GroupService
         return $rowOrder[0];
     }
 
-    public function deleteGroupRole($groupID, $groupRoleID)
+    public function deleteGroupRole(string $groupID, string $groupRoleID)
     {
         requireUserGroupMembership('bManageGroups');
         $sSQL = 'SELECT * FROM list_lst
@@ -209,7 +209,7 @@ class GroupService
         }
     }
 
-    public function addGroupRole($groupID, $groupRoleName)
+    public function addGroupRole(string $groupID, string $groupRoleName): string
     {
         requireUserGroupMembership('bManageGroups');
         if (strlen($groupRoleName) == 0) {
@@ -259,7 +259,7 @@ class GroupService
         ], JSON_THROW_ON_ERROR);
     }
 
-    public function enableGroupSpecificProperties($groupID)
+    public function enableGroupSpecificProperties(string $groupID): void
     {
         requireUserGroupMembership('bManageGroups');
         $sSQL = 'UPDATE group_grp SET grp_hasSpecialProps = true
@@ -280,7 +280,7 @@ class GroupService
         }
     }
 
-    public function disableGroupSpecificProperties($groupID)
+    public function disableGroupSpecificProperties(string $groupID): void
     {
         requireUserGroupMembership('bManageGroups');
         $sSQLp = 'DROP TABLE groupprop_' . $groupID;
@@ -296,7 +296,10 @@ class GroupService
         RunQuery($sSQL);
     }
 
-    public function getGroupMembers($groupID, $personID = null)
+    /**
+     * @return array<mixed, array<'displayName'|'groupRole', mixed>>
+     */
+    public function getGroupMembers(string $groupID, $personID = null): array
     {
         global $cnInfoCentral;
         $whereClause = '';

@@ -100,7 +100,7 @@ class PdfLabel extends ChurchInfoReport
         }
     }
 
-    public function setFormat($format)
+    public function setFormat(array $format): void
     {
         $this->_Metric = $format['metric'];
         $this->_Avery_Name = $format['name'];
@@ -149,7 +149,7 @@ class PdfLabel extends ChurchInfoReport
 
     // Sets the character size
     // This changes the line height too
-    public function setCharSize($pt)
+    public function setCharSize($pt): void
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -159,7 +159,7 @@ class PdfLabel extends ChurchInfoReport
     }
 
     // Print a label
-    public function addPdfLabel($texte)
+    public function addPdfLabel($texte): void
     {
         // We are in a new page, then we must add a page
         if ($this->_COUNTX == 0 && $this->_COUNTY == 0) {

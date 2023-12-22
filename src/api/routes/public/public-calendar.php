@@ -8,13 +8,13 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/public/calendar', function (RouteCollectorProxy $group) {
+$app->group('/public/calendar', function (RouteCollectorProxy $group): void {
     $group->get('/{CalendarAccessToken}/events', 'getJSON');
     $group->get('/{CalendarAccessToken}/ics', 'getICal');
     $group->get('/{CalendarAccessToken}/fullcalendar', 'getPublicCalendarFullCalendarEvents');
 })->add(PublicCalendarAPIMiddleware::class);
 
-function getJSON(Request $request, Response $response)
+function getJSON(Request $request, Response $response): Response
 {
     $events = $request->getAttribute('events');
 
@@ -34,7 +34,7 @@ function getICal($request, $response)
         ->withHeader('Content-Disposition', 'attachment; filename=calendar.ics');
 }
 
-function getPublicCalendarFullCalendarEvents($request, Response $response)
+function getPublicCalendarFullCalendarEvents($request, Response $response): Response
 {
     $calendar = $request->getAttribute('calendar');
     $events = $request->getAttribute('events');

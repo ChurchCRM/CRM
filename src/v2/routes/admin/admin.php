@@ -7,13 +7,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/admin', function (RouteCollectorProxy $group) {
+$app->group('/admin', function (RouteCollectorProxy $group): void {
     $group->get('/debug', 'debugPage');
     $group->get('/menus', 'menuPage');
     $group->get('/database/reset', 'dbResetPage');
 })->add(AdminRoleAuthMiddleware::class);
 
-function debugPage(Request $request, Response $response, array $args)
+function debugPage(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/admin/');
 
@@ -25,7 +25,7 @@ function debugPage(Request $request, Response $response, array $args)
     return $renderer->render($response, 'debug.php', $pageArgs);
 }
 
-function menuPage(Request $request, Response $response, array $args)
+function menuPage(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/admin/');
 
@@ -37,7 +37,7 @@ function menuPage(Request $request, Response $response, array $args)
     return $renderer->render($response, 'menus.php', $pageArgs);
 }
 
-function dbResetPage(Request $request, Response $response, array $args)
+function dbResetPage(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/admin/');
 

@@ -37,7 +37,7 @@ class MICRFunctions
         }
     }
 
-    public function findRoute($micr)
+    public function findRoute($micr): string
     {
         $routeAndAccount = $this->findRouteAndAccount($micr);
         $breakChar = strpos($routeAndAccount, 't', 1);
@@ -45,7 +45,7 @@ class MICRFunctions
         return mb_substr($micr, 1, $breakChar - 1);
     }
 
-    public function findAccount($micr)
+    public function findAccount($micr): string
     {
         $routeAndAccount = $this->findRouteAndAccount($micr);
         $breakChar = strpos($routeAndAccount, 't', 1);

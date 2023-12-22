@@ -4,12 +4,16 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\Dashboard\ClassificationDashboardItem;
 use ChurchCRM\Dashboard\CurrentLocaleMetadata;
+use ChurchCRM\Dashboard\DashboardItemInterface;
 use ChurchCRM\Dashboard\EventsMenuItems;
 use ChurchCRM\Dashboard\SystemUpdateMenuItem;
 
 class NewDashboardService
 {
-    public static function getDashboardItems($PageName)
+    /**
+     * @return DashboardItemInterface[]
+     */
+    public static function getDashboardItems($PageName): array
     {
         $DashboardItems = [
             EventsMenuItems::class,
@@ -27,7 +31,10 @@ class NewDashboardService
         return $ReturnValues;
     }
 
-    public static function getValues($PageName)
+    /**
+     * @return array<string, array<string, string>>
+     */
+    public static function getValues($PageName): array
     {
         $ReturnValues = [];
         foreach (self::getDashboardItems($PageName) as $DashboardItem) {

@@ -191,7 +191,7 @@ if ($output === 'pdf') {
             $this->SetAutoPageBreak(false);
         }
 
-        public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope)
+        public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fam_envelope): float
         {
             global $letterhead, $sDateStart, $sDateEnd, $iDepID;
             $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
@@ -218,7 +218,7 @@ if ($output === 'pdf') {
             return $curY;
         }
 
-        public function finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country)
+        public function finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country): void
         {
             global $remittance;
             $curY += 2 * SystemConfig::getValue('incrementY');

@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use ChurchCRM\Service\FinancialService;
 
-$app->group('/payments', function (RouteCollectorProxy $group) {
+$app->group('/payments', function (RouteCollectorProxy $group): void {
     $group->get('/', function (Request $request, Response $response, array $args): Response {
         /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');

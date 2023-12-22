@@ -7,11 +7,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/person', function (RouteCollectorProxy $group) {
+$app->group('/person', function (RouteCollectorProxy $group): void {
     $group->get('/not-found', 'viewPersonNotFound');
 });
 
-function viewPersonNotFound(Request $request, Response $response, array $args)
+function viewPersonNotFound(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/common/');
 

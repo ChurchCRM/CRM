@@ -18,7 +18,7 @@ class Token extends BaseToken
     public const TYPE_FAMILY_VERIFY = 'verifyFamily';
     private const TYPE_PASSWORD = 'password';
 
-    public function build($type, $referenceId)
+    public function build($type, $referenceId): void
     {
         $this->setReferenceId($referenceId);
         $this->setToken(uniqid());
@@ -35,17 +35,17 @@ class Token extends BaseToken
         $this->setType($type);
     }
 
-    public function isVerifyFamilyToken()
+    public function isVerifyFamilyToken(): bool
     {
         return self::TYPE_FAMILY_VERIFY === $this->getType();
     }
 
-    public function isPasswordResetToken()
+    public function isPasswordResetToken(): bool
     {
         return self::TYPE_PASSWORD === $this->getType();
     }
 
-    public function isValid()
+    public function isValid(): bool
     {
         $hasUses = true;
         if ($this->getRemainingUses() !== null) {

@@ -14,6 +14,7 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
+use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 
 /**
@@ -29,7 +30,7 @@ class Family extends BaseFamily implements PhotoInterface
 {
     private ?Photo $photo = null;
 
-    public function getAddress()
+    public function getAddress(): string
     {
         $address = [];
         if (!empty($this->getAddress1())) {
@@ -58,7 +59,7 @@ class Family extends BaseFamily implements PhotoInterface
         return implode(' ', $address);
     }
 
-    public function getViewURI()
+    public function getViewURI(): string
     {
         return SystemURLs::getRootPath() . '/v2/family/' . $this->getId();
     }
@@ -85,7 +86,7 @@ class Family extends BaseFamily implements PhotoInterface
         return '';
     }
 
-    public function postInsert(ConnectionInterface $con = null)
+    public function postInsert(ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('create');
         if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
@@ -96,14 +97,14 @@ class Family extends BaseFamily implements PhotoInterface
         }
     }
 
-    public function postUpdate(ConnectionInterface $con = null)
+    public function postUpdate(ConnectionInterface $con = null): void
     {
         if (!empty($this->getDateLastEdited())) {
             $this->createTimeLineNote('edit');
         }
     }
 
-    public function getPeopleSorted()
+    public function getPeopleSorted(): array
     {
         $familyMembersParents = array_merge($this->getHeadPeople(), $this->getSpousePeople());
         $familyMembersChildren = $this->getChildPeople();
@@ -112,27 +113,30 @@ class Family extends BaseFamily implements PhotoInterface
         return array_merge($familyMembersParents, $familyMembersChildren, $familyMembersOther);
     }
 
-    public function getHeadPeople()
+    public function getHeadPeople(): array
     {
         return $this->getPeopleByRole('sDirRoleHead');
     }
 
-    public function getSpousePeople()
+    public function getSpousePeople(): array
     {
         return $this->getPeopleByRole('sDirRoleSpouse');
     }
 
-    public function getAdults()
+    public function getAdults(): array
     {
         return array_merge($this->getHeadPeople(), $this->getSpousePeople());
     }
 
-    public function getChildPeople()
+    public function getChildPeople(): array
     {
         return $this->getPeopleByRole('sDirRoleChild');
     }
 
-    public function getOtherPeople()
+    /**
+     * @return Person[]
+     */
+    public function getOtherPeople(): array
     {
         $roleIds = array_merge(
             explode(',', SystemConfig::getValue('sDirRoleHead')),
@@ -152,7 +156,10 @@ class Family extends BaseFamily implements PhotoInterface
         return $foundPeople;
     }
 
-    private function getPeopleByRole($roleConfigName)
+    /**
+     * @return Person[]
+     */
+    private function getPeopleByRole(string $roleConfigName): array
     {
         $roleIds = explode(',', SystemConfig::getValue($roleConfigName));
         $foundPeople = [];
@@ -166,11 +173,11 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
-     * @throws \Propel\Runtime\Exception\PropelException
+     * @throws PropelException
      *
      * @return array
      */
-    public function getEmails()
+    public function getEmails(): array
     {
         $emails = [];
         if (!(empty($this->getEmail()))) {
@@ -190,7 +197,7 @@ class Family extends BaseFamily implements PhotoInterface
         return $emails;
     }
 
-    public function createTimeLineNote($type)
+    public function createTimeLineNote($type): void
     {
         $note = new Note();
         $note->setFamId($this->getId());
@@ -225,10 +232,7 @@ class Family extends BaseFamily implements PhotoInterface
         $note->save();
     }
 
-    /***
-     * @return ChurchCRM\dto\Photo
-     */
-    public function getPhoto()
+    public function getPhoto(): ?Photo
     {
         if (!$this->photo) {
             $this->photo = new Photo('Family', $this->getId());
@@ -237,7 +241,7 @@ class Family extends BaseFamily implements PhotoInterface
         return $this->photo;
     }
 
-    public function deletePhoto()
+    public function deletePhoto(): bool
     {
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
@@ -255,7 +259,7 @@ class Family extends BaseFamily implements PhotoInterface
         return false;
     }
 
-    public function setImageFromBase64($base64)
+    public function setImageFromBase64($base64): bool
     {
         if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
             $note = new Note();
@@ -272,7 +276,7 @@ class Family extends BaseFamily implements PhotoInterface
         return false;
     }
 
-    public function verify()
+    public function verify(): void
     {
         $this->createTimeLineNote('verify');
     }
@@ -297,7 +301,7 @@ class Family extends BaseFamily implements PhotoInterface
         }
     }
 
-    public function hasLatitudeAndLongitude()
+    public function hasLatitudeAndLongitude(): bool
     {
         return !empty($this->getLatitude()) && !empty($this->getLongitude());
     }
@@ -305,7 +309,7 @@ class Family extends BaseFamily implements PhotoInterface
     /**
      * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
      */
-    public function updateLanLng()
+    public function updateLanLng(): void
     {
         if (!empty($this->getAddress()) && (!$this->hasLatitudeAndLongitude())) {
             $latLng = GeoUtils::getLatLong($this->getAddress());
@@ -326,7 +330,7 @@ class Family extends BaseFamily implements PhotoInterface
         return $array;
     }
 
-    public function toSearchArray()
+    public function toSearchArray(): array
     {
         $searchArray = [
             'Id'          => $this->getId(),
@@ -337,7 +341,7 @@ class Family extends BaseFamily implements PhotoInterface
         return $searchArray;
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         return empty($this->getDateDeactivated());
     }
@@ -351,7 +355,7 @@ class Family extends BaseFamily implements PhotoInterface
             ->find();
     }
 
-    public function sendVerifyEmail()
+    public function sendVerifyEmail(): bool
     {
         $familyEmails = $this->getEmails();
 
@@ -377,7 +381,7 @@ class Family extends BaseFamily implements PhotoInterface
         return true;
     }
 
-    public function isSendNewsletter()
+    public function isSendNewsletter(): bool
     {
         return $this->getSendNewsletter() == 'TRUE';
     }
@@ -402,7 +406,7 @@ class Family extends BaseFamily implements PhotoInterface
         }
     }
 
-    public function getFirstNameSalutation()
+    public function getFirstNameSalutation(): string
     {
         $names = [];
         foreach ($this->getPeopleSorted() as $person) {

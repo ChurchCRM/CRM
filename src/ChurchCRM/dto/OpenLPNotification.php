@@ -16,12 +16,12 @@ class OpenLPNotification
         $this->OLPPassword = $OLPPassword;
     }
 
-    public function setAlertText($text)
+    public function setAlertText($text): void
     {
         $this->AlertText = (string) $text;
     }
 
-    private function getAuthorizationHeader()
+    private function getAuthorizationHeader(): string
     {
         return base64_encode(SystemConfig::getValue('sOLPUserName') . ':' . SystemConfig::getValue('sOLPPassword'));
     }

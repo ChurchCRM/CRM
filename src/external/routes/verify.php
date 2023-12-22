@@ -9,7 +9,7 @@ use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-$app->group('/verify', function (RouteCollectorProxy $group) {
+$app->group('/verify', function (RouteCollectorProxy $group): void {
     $group->get('/{token}', function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/verify/');
         $token = TokenQuery::create()->findPk($args['token']);

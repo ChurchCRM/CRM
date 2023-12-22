@@ -30,7 +30,7 @@ class ChurchInfoReport extends FPDF
     // Sorry -- This should really be set in database, but it is needed before all the report settings
     // are read from the database.
 
-    public $paperFormat = 'Letter';
+    public string $paperFormat = 'Letter';
 
     public function stripPhone($phone)
     {
@@ -51,7 +51,7 @@ class ChurchInfoReport extends FPDF
         return $phone;
     }
 
-    public function printRightJustified($x, $y, $str)
+    public function printRightJustified($x, $y, $str): void
     {
         $strconv = iconv('UTF-8', 'ISO-8859-1', $str);
         $iLen = strlen($strconv);
@@ -60,7 +60,7 @@ class ChurchInfoReport extends FPDF
         $this->Write(SystemConfig::getValue('incrementY'), $strconv);
     }
 
-    public function printRightJustifiedCell($x, $y, $wid, $str)
+    public function printRightJustifiedCell($x, $y, $wid, $str): void
     {
         $strconv = iconv('UTF-8', 'ISO-8859-1', $str);
         $iLen = strlen($strconv);
@@ -68,7 +68,7 @@ class ChurchInfoReport extends FPDF
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'R');
     }
 
-    public function printCenteredCell($x, $y, $wid, $str)
+    public function printCenteredCell($x, $y, $wid, $str): void
     {
         $strconv = iconv('UTF-8', 'ISO-8859-1', $str);
         $iLen = strlen($strconv);
@@ -76,21 +76,21 @@ class ChurchInfoReport extends FPDF
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'C');
     }
 
-    public function writeAt($x, $y, $str)
+    public function writeAt($x, $y, $str): void
     {
         $strconv = iconv('UTF-8', 'ISO-8859-1', $str);
         $this->SetXY($x, $y);
         $this->Write(SystemConfig::getValue('incrementY'), $strconv);
     }
 
-    public function writeAtCell($x, $y, $wid, $str)
+    public function writeAtCell($x, $y, $wid, $str): void
     {
         $strconv = iconv('UTF-8', 'ISO-8859-1', $str);
         $this->SetXY($x, $y);
         $this->MultiCell($wid, 4, $strconv, 1);
     }
 
-    public function startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead = '')
+    public function startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, $letterhead = ''): float
     {
         $this->addPage();
 
@@ -137,7 +137,7 @@ class ChurchInfoReport extends FPDF
         return $curY;
     }
 
-    public function makeSalutation($famID)
+    public function makeSalutation($famID): string
     {
         $family = FamilyQuery::create()->findPk($famID);
 

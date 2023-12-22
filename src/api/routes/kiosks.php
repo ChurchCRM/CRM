@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/kiosks', function (RouteCollectorProxy $group) {
+$app->group('/kiosks', function (RouteCollectorProxy $group): void {
     $group->get('/', function (Request $request, Response $response): Response {
         $KiosksArray = [];
         try {

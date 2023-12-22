@@ -60,7 +60,7 @@ require '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="ROOT_PATH">Root Path</label>
                 <input type="text" name="ROOT_PATH" id="ROOT_PATH"
-                       value="<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>" class="form-control"
+                       value="<?= SystemURLs::getRootPath() ?>" class="form-control"
                        aria-describedby="ROOT_PATH_HELP">
                 <small id="ROOT_PATH_HELP" class="form-text text-muted">
                     Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )

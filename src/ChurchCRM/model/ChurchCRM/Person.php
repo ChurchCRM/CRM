@@ -27,19 +27,19 @@ class Person extends BasePerson implements PhotoInterface
 {
     public const SELF_REGISTER = -1;
     public const SELF_VERIFY = -2;
-    private ?\ChurchCRM\dto\Photo $photo = null;
+    private ?Photo $photo = null;
 
-    public function getFullName()
+    public function getFullName(): string
     {
         return $this->getFormattedName(SystemConfig::getValue('iPersonNameStyle'));
     }
 
-    public function isMale()
+    public function isMale(): bool
     {
         return $this->getGender() == 1;
     }
 
-    public function isFemale()
+    public function isFemale(): bool
     {
         return $this->getGender() == 2;
     }
@@ -138,7 +138,7 @@ class Person extends BasePerson implements PhotoInterface
         return $classificationName;
     }
 
-    public function postInsert(ConnectionInterface $con = null)
+    public function postInsert(ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('create');
         if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
@@ -149,14 +149,14 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
-    public function postUpdate(ConnectionInterface $con = null)
+    public function postUpdate(ConnectionInterface $con = null): void
     {
         if (!empty($this->getDateLastEdited())) {
             $this->createTimeLineNote('edit');
         }
     }
 
-    private function createTimeLineNote($type)
+    private function createTimeLineNote(string $type): void
     {
         $note = new Note();
         $note->setPerId($this->getId());
@@ -549,7 +549,10 @@ class Person extends BasePerson implements PhotoInterface
 
     //  return array of person properties
     // created for the person-list.php datatable
-    public function getPropertiesString()
+    /**
+     * @return string[]
+     */
+    public function getPropertiesString(): array
     {
         $personProperties = PropertyQuery::create()
           ->filterByProClass('p')
@@ -567,7 +570,10 @@ class Person extends BasePerson implements PhotoInterface
 
     // return array of person custom fields
     // created for the person-list.php datatable
-    public function getCustomFields()
+    /**
+     * @return string[]
+     */
+    public function getCustomFields(): array
     {
         // get list of custom field column names
         $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
@@ -599,7 +605,10 @@ class Person extends BasePerson implements PhotoInterface
 
     // return array of person groups
     // created for the person-list.php datatable
-    public function getGroups()
+    /**
+     * @return string[]
+     */
+    public function getGroups(): array
     {
         $GroupList = GroupQuery::create()
         ->leftJoinPerson2group2roleP2g2r()
@@ -614,7 +623,7 @@ class Person extends BasePerson implements PhotoInterface
         return $group;
     }
 
-    public function getNumericCellPhone()
+    public function getNumericCellPhone(): string
     {
         return '1' . preg_replace('/[^\.0-9]/', '', $this->getCellPhone());
     }
@@ -623,7 +632,7 @@ class Person extends BasePerson implements PhotoInterface
     {
         $this->getPhoto()->refresh();
 
-        return parent::postSave($con);
+        parent::postSave($con);
     }
 
     public function getAge(?\DateTimeInterface $now = null): string
@@ -633,7 +642,7 @@ class Person extends BasePerson implements PhotoInterface
         if ($birthDate === null || $this->hideAge()) {
             return false;
         }
-        if (empty($now)) {
+        if (!$now instanceof \DateTimeInterface) {
             $now = new \DateTimeImmutable('today');
         }
         $age = date_diff($now, $birthDate);
@@ -645,7 +654,7 @@ class Person extends BasePerson implements PhotoInterface
         return sprintf(ngettext('%d year old', '%d years old', $age->y), $age->y);
     }
 
-    public function getNumericAge()
+    public function getNumericAge(): int
     {
         $birthDate = $this->getBirthDate();
         if ($birthDate === null || $this->hideAge()) {

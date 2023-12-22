@@ -194,7 +194,7 @@ class PdfReminderReport extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fundOnlyString, $iFYID)
+    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fundOnlyString, $iFYID): float
     {
         $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
         $curY += 2 * SystemConfig::getValue('incrementY');
@@ -205,7 +205,7 @@ class PdfReminderReport extends ChurchInfoReport
         return $curY;
     }
 
-    public function finishPage($curY)
+    public function finishPage($curY): void
     {
         $curY += 2 * SystemConfig::getValue('incrementY');
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely') . ',');

@@ -4,6 +4,7 @@ namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Group as BaseGroup;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'group_grp' table.
@@ -18,17 +19,17 @@ class Group extends BaseGroup
 {
     protected $typeSundaySchool = 4;
 
-    public function isSundaySchool()
+    public function isSundaySchool(): bool
     {
         return $this->getType() == $this->typeSundaySchool;
     }
 
-    public function makeSundaySchool()
+    public function makeSundaySchool(): void
     {
         $this->setType($this->typeSundaySchool);
     }
 
-    public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function preSave(ConnectionInterface $con = null): bool
     {
         requireUserGroupMembership('bManageGroups');
         parent::preSave($con);
@@ -36,7 +37,7 @@ class Group extends BaseGroup
         return true;
     }
 
-    public function preUpdate(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function preUpdate(ConnectionInterface $con = null): bool
     {
         requireUserGroupMembership('bManageGroups');
         parent::preUpdate($con);
@@ -44,7 +45,7 @@ class Group extends BaseGroup
         return true;
     }
 
-    public function preDelete(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function preDelete(ConnectionInterface $con = null): bool
     {
         requireUserGroupMembership('bManageGroups');
         parent::preDelete($con);
@@ -52,7 +53,7 @@ class Group extends BaseGroup
         return true;
     }
 
-    public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function preInsert(ConnectionInterface $con = null): bool
     {
         requireUserGroupMembership('bManageGroups');
         $defaultRole = 1;
@@ -67,7 +68,7 @@ class Group extends BaseGroup
         return true;
     }
 
-    public function postInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function postInsert(ConnectionInterface $con = null): bool
     {
         $optionList = ['Member'];
         if ($this->isSundaySchool()) {
@@ -90,7 +91,7 @@ class Group extends BaseGroup
         return true;
     }
 
-    public function checkAgainstCart()
+    public function checkAgainstCart(): bool
     {
         $groupMemberships = $this->getPerson2group2roleP2g2rsJoinPerson();
         $bNoneInCart = true;
@@ -120,7 +121,7 @@ class Group extends BaseGroup
         return false;
     }
 
-    public function getViewURI()
+    public function getViewURI(): string
     {
         return SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $this->getId();
     }

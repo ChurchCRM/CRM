@@ -14,7 +14,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 
 class FinancialService
 {
-    public function deletePayment($groupKey)
+    public function deletePayment($groupKey): void
     {
         requireUserGroupMembership('bFinance');
         PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
@@ -47,7 +47,7 @@ class FinancialService
         ];
     }
 
-    public function setDeposit($depositType, $depositComment, $depositDate, $iDepositSlipID = null, $depositClosed = false)
+    public function setDeposit(string $depositType, string $depositComment, string $depositDate, $iDepositSlipID = null, $depositClosed = false): void
     {
         if ($iDepositSlipID) {
             $sSQL = "UPDATE deposit_dep SET dep_Date = '" . $depositDate . "', dep_Comment = '" . $depositComment . "', dep_EnteredBy = " . AuthenticationManager::getCurrentUser()->getId() . ', dep_Closed = ' . intval($depositClosed) . ' WHERE dep_ID = ' . $iDepositSlipID . ';';
@@ -84,7 +84,10 @@ class FinancialService
         return $deposit_total;
     }
 
-    public function getPayments($depID = null)
+    /**
+     * @return \stdClass[]
+     */
+    public function getPayments($depID = null): array
     {
         requireUserGroupMembership('bFinance');
         $sSQL = 'SELECT * from pledge_plg
@@ -134,17 +137,17 @@ class FinancialService
         return $payments;
     }
 
-    public function getPaymentViewURI($groupKey)
+    public function getPaymentViewURI(string $groupKey): string
     {
         return SystemURLs::getRootPath() . '/PledgeEditor.php?GroupKey=' . $groupKey;
     }
 
-    public function getViewURI($Id)
+    public function getViewURI(string $Id): string
     {
         return SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
     }
 
-    private function validateDate($payment)
+    private function validateDate(array $payment): void
     {
         // Validate Date
         if (strlen($payment->Date) > 0) {
@@ -155,7 +158,7 @@ class FinancialService
         }
     }
 
-    private function validateFund($payment)
+    private function validateFund(array $payment): void
     {
         //Validate that the fund selection is valid:
         //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
@@ -183,7 +186,7 @@ class FinancialService
         }
     }
 
-    public function locateFamilyCheck($checkNumber, $fam_ID)
+    public function locateFamilyCheck(string $checkNumber, string $fam_ID)
     {
         requireUserGroupMembership('bFinance');
         $sSQL = 'SELECT count(plg_FamID) from pledge_plg
@@ -194,7 +197,7 @@ class FinancialService
         return mysqli_fetch_array($rCount)[0];
     }
 
-    public function validateChecks($payment)
+    public function validateChecks($payment): void
     {
         requireUserGroupMembership('bFinance');
         //validate that the payment options are valid
@@ -214,7 +217,7 @@ class FinancialService
         }
     }
 
-    public function processCurrencyDenominations($payment, $groupKey)
+    public function processCurrencyDenominations($payment, string $groupKey): void
     {
         $currencyDenoms = json_decode($payment->cashDenominations, null, 512, JSON_THROW_ON_ERROR);
         foreach ($currencyDenoms as $cdom) {
@@ -299,7 +302,7 @@ class FinancialService
         }
     }
 
-    public function submitPledgeOrPayment($payment)
+    public function submitPledgeOrPayment(array $payment): string
     {
         requireUserGroupMembership('bFinance');
         $this->validateFund($payment);
@@ -310,7 +313,7 @@ class FinancialService
         return $this->getPledgeorPayment($groupKey);
     }
 
-    public function getPledgeorPayment($GroupKey)
+    public function getPledgeorPayment(string $GroupKey): string
     {
         requireUserGroupMembership('bFinance');
         $total = 0;
@@ -341,7 +344,7 @@ class FinancialService
         return json_encode($payment, JSON_THROW_ON_ERROR);
     }
 
-    private function generateBankDepositSlip($thisReport)
+    private function generateBankDepositSlip($thisReport): void
     {
         // --------------------------------
         // BEGIN FRONT OF BANK DEPOSIT SLIP
@@ -398,7 +401,7 @@ class FinancialService
         }
     }
 
-    private function generateDepositSummary($thisReport)
+    private function generateDepositSummary($thisReport): void
     {
         $thisReport->depositSummaryParameters->title->x = 85;
         $thisReport->depositSummaryParameters->title->y = 7;
@@ -519,7 +522,7 @@ class FinancialService
         $this->generateWitnessSignature($thisReport);
     }
 
-    private function generateWitnessSignature($thisReport)
+    private function generateWitnessSignature($thisReport): void
     {
         $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->write(8, 'Witness 1');
@@ -536,11 +539,11 @@ class FinancialService
         $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
     }
 
-    public function getDepositPDF($depID)
+    public function getDepositPDF($depID): void
     {
     }
 
-    public function getDepositCSV($depID)
+    public function getDepositCSV(string $depID): \stdClass
     {
         requireUserGroupMembership('bFinance');
         $retstring = '';
@@ -570,7 +573,7 @@ class FinancialService
         return $CSVReturn;
     }
 
-    public function getCurrencyTypeOnDeposit($currencyID, $depositID)
+    public function getCurrencyTypeOnDeposit(string $currencyID, string $depositID)
     {
         $currencies = [];
         // Get the list of Currency denominations
@@ -583,7 +586,10 @@ class FinancialService
         return mysqli_fetch_array($rscurrencyDenomination)[0];
     }
 
-    public function getCurrency()
+    /**
+     * @return \stdClass[]
+     */
+    public function getCurrency(): array
     {
         $currencies = [];
         // Get the list of Currency denominations
@@ -602,7 +608,10 @@ class FinancialService
         return $currencies;
     }
 
-    public function getActiveFunds()
+    /**
+     * @return \stdClass[]
+     */
+    public function getActiveFunds(): array
     {
         requireUserGroupMembership('bFinance');
         $funds = [];

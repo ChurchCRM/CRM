@@ -10,7 +10,7 @@ class PdfDepositReport extends ChurchInfoReport
 
     // Sets the character size
     // This changes the line height too
-    public function setCharSize($pt)
+    public function setCharSize($pt): void
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -18,7 +18,7 @@ class PdfDepositReport extends ChurchInfoReport
         }
     }
 
-    public function printRightJustified($x, $y, $str)
+    public function printRightJustified($x, $y, $str): void
     {
         $iLen = strlen($str);
         $nMoveBy = 10 - 2 * $iLen;

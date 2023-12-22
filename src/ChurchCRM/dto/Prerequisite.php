@@ -16,7 +16,7 @@ class Prerequisite implements \JsonSerializable
         $this->testFunction = $testFunction;
     }
 
-    public function isPrerequisiteMet()
+    public function isPrerequisiteMet(): ?bool
     {
         $callable = $this->testFunction;
         if ($this->savedTestResult === null) {
@@ -26,17 +26,17 @@ class Prerequisite implements \JsonSerializable
         return $this->savedTestResult;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getWikiLink()
+    public function getWikiLink(): string
     {
         return 'https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites#' . MiscUtils::getGitHubWikiAnchorLink($this->name);
     }
 
-    public function getStatusText()
+    public function getStatusText(): string
     {
         if ($this->isPrerequisiteMet()) {
             return gettext('Passed');

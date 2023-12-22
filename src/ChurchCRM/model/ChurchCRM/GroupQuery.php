@@ -18,7 +18,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class GroupQuery extends BaseGroupQuery
 {
-    public function preSelect(ConnectionInterface $con)
+    public function preSelect(ConnectionInterface $con): void
     {
         $this->leftJoinPerson2group2roleP2g2r();
         $this->withColumn('COUNT(person2group2role_p2g2r.PersonId)', 'memberCount');

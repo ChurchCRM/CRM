@@ -8,7 +8,7 @@ class InputUtils
 {
     private static string $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
 
-    public static function legacyFilterInputArr($arr, $key, $type = 'string', $size = 1)
+    public static function legacyFilterInputArr(array $arr, $key, $type = 'string', $size = 1)
     {
         if (array_key_exists($key, $arr)) {
             return InputUtils::legacyFilterInput($arr[$key], $type, $size);
@@ -26,28 +26,28 @@ class InputUtils
         return (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') ? gettext($string) : iconv('UTF-8', SystemConfig::getValue('sCSVExportCharset'), gettext($string));
     }
 
-    public static function filterString($sInput)
+    public static function filterString($sInput): string
     {
         // or use htmlspecialchars( stripslashes( ))
         return strip_tags(trim($sInput));
     }
 
-    public static function filterHTML($sInput)
+    public static function filterHTML($sInput): string
     {
         return strip_tags(trim($sInput), self::$AllowedHTMLTags);
     }
 
-    public static function filterChar($sInput, $size = 1)
+    public static function filterChar($sInput, $size = 1): string
     {
         return mb_substr(trim($sInput), 0, $size);
     }
 
-    public static function filterInt($sInput)
+    public static function filterInt($sInput): int
     {
         return (int) intval(trim($sInput));
     }
 
-    public static function filterFloat($sInput)
+    public static function filterFloat($sInput): float
     {
         return (float) floatval(trim($sInput));
     }

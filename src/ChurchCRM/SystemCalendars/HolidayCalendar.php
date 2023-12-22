@@ -3,6 +3,7 @@
 namespace ChurchCRM\SystemCalendars;
 
 use ChurchCRM\data\Countries;
+use ChurchCRM\data\Country;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Interfaces\SystemCalendar;
 use ChurchCRM\model\ChurchCRM\Event;
@@ -15,37 +16,37 @@ class HolidayCalendar implements SystemCalendar
     public static function isAvailable()
     {
         $systemCountry = Countries::getCountryByName(SystemConfig::getValue('sChurchCountry'));
-        if (!empty($systemCountry)) {
+        if ($systemCountry instanceof Country) {
             return $systemCountry->getCountryNameYasumi() !== null;
         }
     }
 
-    public function getAccessToken()
+    public function getAccessToken(): bool
     {
         return false;
     }
 
-    public function getBackgroundColor()
+    public function getBackgroundColor(): string
     {
         return '6dfff5';
     }
 
-    public function getForegroundColor()
+    public function getForegroundColor(): string
     {
         return '000000';
     }
 
-    public function getId()
+    public function getId(): int
     {
         return 2;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return gettext('Holidays');
     }
 
-    public function getEvents($start, $end)
+    public function getEvents($start, $end): ObjectCollection
     {
         $Country = Countries::getCountryByName(SystemConfig::getValue('sChurchCountry'));
         $year = date('Y');
@@ -61,12 +62,12 @@ class HolidayCalendar implements SystemCalendar
         return $events;
     }
 
-    public function getEventById($Id)
+    public function getEventById($Id): bool
     {
         return false;
     }
 
-    private function yasumiHolidayToEvent(Holiday $holiday)
+    private function yasumiHolidayToEvent(Holiday $holiday): Event
     {
         $id = crc32($holiday->getName() . $holiday->getTimestamp());
         $holidayEvent = new Event();

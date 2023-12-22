@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/system/menu', function (RouteCollectorProxy $group) {
+$app->group('/system/menu', function (RouteCollectorProxy $group): void {
     $group->get('', 'getMenus');
     $group->get('/', 'getMenus');
     $group->put('', 'addMenu');

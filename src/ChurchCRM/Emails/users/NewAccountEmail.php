@@ -12,17 +12,17 @@ class NewAccountEmail extends BaseUserEmail
         parent::__construct($user);
     }
 
-    protected function getSubSubject()
+    protected function getSubSubject(): string
     {
         return gettext('Your New Account');
     }
 
-    protected function buildMessageBody()
+    protected function buildMessageBody(): string
     {
         return gettext('A ChurchCRM account was created for you') . ':';
     }
 
-    public function getTokens()
+    public function getTokens(): array
     {
         $parentTokens = parent::getTokens();
         $myTokens = ['password' => $this->password,

@@ -4,7 +4,7 @@ namespace ChurchCRM;
 
 class ArrayUtils
 {
-    public static function inArrayRecursive($needle, $haystack)
+    public static function inArrayRecursive($needle, $haystack): bool
     {
         $it = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($haystack));
         foreach ($it as $element) {

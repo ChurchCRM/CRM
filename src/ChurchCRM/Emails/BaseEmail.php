@@ -14,7 +14,7 @@ abstract class BaseEmail
 {
     /** @var PHPMailer */
     protected $mail;
-    protected $mustache;
+    protected \Mustache_Engine $mustache;
 
     public function __construct($toAddresses)
     {
@@ -30,7 +30,7 @@ abstract class BaseEmail
         $this->mustache = new Mustache_Engine(['loader' => new Mustache_Loader_FilesystemLoader(SystemURLs::getDocumentRoot() . '/views/email', $options)]);
     }
 
-    private function setConnection()
+    private function setConnection(): void
     {
         $this->mail = new PHPMailer();
         $this->mail->IsSMTP();
@@ -64,7 +64,7 @@ abstract class BaseEmail
         return $this->mail->ErrorInfo;
     }
 
-    public function addStringAttachment($string, $filename)
+    public function addStringAttachment($string, $filename): void
     {
         $this->mail->addStringAttachment($string, $filename);
     }
@@ -74,12 +74,15 @@ abstract class BaseEmail
         return $this->mustache->render($this->getMustacheTemplateName(), $this->getTokens());
     }
 
-    protected function getMustacheTemplateName()
+    protected function getMustacheTemplateName(): string
     {
         return 'BaseEmail';
     }
 
-    protected function getCommonTokens()
+    /**
+     * @return array<string, string>
+     */
+    protected function getCommonTokens(): array
     {
         $commonTokens = [
             'toEmails'             => $this->mail->getToAddresses(),

@@ -10,37 +10,37 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 class AnniversariesCalendar implements SystemCalendar
 {
-    public static function isAvailable()
+    public static function isAvailable(): bool
     {
         return true;
     }
 
-    public function getAccessToken()
+    public function getAccessToken(): bool
     {
         return false;
     }
 
-    public function getBackgroundColor()
+    public function getBackgroundColor(): string
     {
         return '000000';
     }
 
-    public function getForegroundColor()
+    public function getForegroundColor(): string
     {
         return 'FFFFFF';
     }
 
-    public function getId()
+    public function getId(): int
     {
         return 1;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return gettext('Anniversaries');
     }
 
-    public function getEvents($start, $end)
+    public function getEvents($start, $end): ObjectCollection
     {
         $families = FamilyQuery::create()
             ->filterByWeddingdate('', Criteria::NOT_EQUAL)
@@ -49,7 +49,7 @@ class AnniversariesCalendar implements SystemCalendar
         return $this->familyCollectionToEvents($families);
     }
 
-    public function getEventById($Id)
+    public function getEventById($Id): ObjectCollection
     {
         $families = FamilyQuery::create()
             ->filterByWeddingdate('', Criteria::NOT_EQUAL)
@@ -59,7 +59,7 @@ class AnniversariesCalendar implements SystemCalendar
         return $this->familyCollectionToEvents($families);
     }
 
-    private function familyCollectionToEvents(ObjectCollection $Families)
+    private function familyCollectionToEvents(ObjectCollection $Families): ObjectCollection
     {
         $events = new ObjectCollection();
         $events->setModel(Event::class);

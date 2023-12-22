@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/system', function (RouteCollectorProxy $group) {
+$app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/notification', 'getUiNotificationAPI');
     $group->post('/background/csp-report', 'logCSPReportAPI');
 });

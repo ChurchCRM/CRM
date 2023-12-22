@@ -84,6 +84,6 @@ class TaskService
 
     public function getActivePreUpgradeTasks(): array
     {
-        return array_filter($this->taskClasses, fn ($k) => $k instanceof PreUpgradeTaskInterface && $k->isActive());
+        return array_filter($this->taskClasses, fn ($k): bool => $k instanceof PreUpgradeTaskInterface && $k->isActive());
     }
 }

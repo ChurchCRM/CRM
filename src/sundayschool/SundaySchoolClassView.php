@@ -259,7 +259,7 @@ require '../Include/Header.php';
 </div>
 
 <?php
-function implodeUnique($array, $withQuotes)
+function implodeUnique($array, $withQuotes): string
 {
           array_unique($array);
           asort($array);

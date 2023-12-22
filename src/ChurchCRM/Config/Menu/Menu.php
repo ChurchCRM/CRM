@@ -14,9 +14,9 @@ class Menu
     /**
      * @var Config[]
      */
-    private static $menuItems;
+    private static ?array $menuItems = null;
 
-    public static function init()
+    public static function init(): void
     {
         self::$menuItems = self::buildMenuItems();
         /*if (!empty($menuItems)) {
@@ -24,12 +24,12 @@ class Menu
         }*/
     }
 
-    public static function getMenu()
+    public static function getMenu(): ?array
     {
         return self::$menuItems;
     }
 
-    private static function buildMenuItems()
+    private static function buildMenuItems(): array
     {
         return [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'Menu.php', true, 'fa-tachometer-alt'),
@@ -47,7 +47,7 @@ class Menu
         ];
     }
 
-    private static function getCalendarMenu()
+    private static function getCalendarMenu(): MenuItem
     {
         $calendarMenu = new MenuItem(gettext('Calendar'), 'v2/calendar', SystemConfig::getBooleanValue('bEnabledCalendar'), 'fa-calendar');
         $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-blue'));
@@ -57,7 +57,7 @@ class Menu
         return $calendarMenu;
     }
 
-    private static function getPeopleMenu()
+    private static function getPeopleMenu(): MenuItem
     {
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-users');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'PeopleDashboard.php'));
@@ -82,7 +82,7 @@ class Menu
         return $peopleMenu;
     }
 
-    private static function getGroupMenu()
+    private static function getGroupMenu(): MenuItem
     {
         $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-tag');
         $groupMenu->addSubMenu(new MenuItem(gettext('List Groups'), 'GroupList.php'));
@@ -92,7 +92,7 @@ class Menu
         foreach ($listOptions as $listOption) {
             if ($listOption->getOptionId() != 4) {// we avoid the sundaySchool, it's done under
                 $tmpMenu = self::addGroupSubMenus($listOption->getOptionName(), $listOption->getOptionId(), 'GroupView.php?GroupID=');
-                if (!empty($tmpMenu)) {
+                if ($tmpMenu instanceof MenuItem) {
                     $groupMenu->addSubMenu($tmpMenu);
                 }
             }
@@ -100,7 +100,7 @@ class Menu
 
         // now we're searching the unclassified groups
         $tmpMenu = self::addGroupSubMenus(gettext('Unassigned'), 0, 'GroupView.php?GroupID=');
-        if (!empty($tmpMenu)) {
+        if ($tmpMenu instanceof MenuItem) {
             $groupMenu->addSubMenu($tmpMenu);
         }
 
@@ -113,20 +113,20 @@ class Menu
         return $groupMenu;
     }
 
-    private static function getSundaySchoolMenu()
+    private static function getSundaySchoolMenu(): MenuItem
     {
         $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-child');
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'sundayschool/SundaySchoolDashboard.php'));
         // now we're searching the unclassified groups
         $tmpMenu = self::addGroupSubMenus(gettext('Classes'), 4, 'sundayschool/SundaySchoolClassView.php?groupId=');
-        if (!empty($tmpMenu)) {
+        if ($tmpMenu instanceof MenuItem) {
             $sundaySchoolMenu->addSubMenu($tmpMenu);
         }
 
         return $sundaySchoolMenu;
     }
 
-    private static function getEventsMenu()
+    private static function getEventsMenu(): MenuItem
     {
         $eventsMenu = new MenuItem(gettext('Events'), '', SystemConfig::getBooleanValue('bEnabledEvents'), 'fa-ticket-alt');
         $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'EventEditor.php', AuthenticationManager::getCurrentUser()->isAddEventEnabled()));
@@ -138,7 +138,7 @@ class Menu
         return $eventsMenu;
     }
 
-    private static function getDepositsMenu()
+    private static function getDepositsMenu(): MenuItem
     {
         $depositsMenu = new MenuItem(gettext('Deposit'), '', SystemConfig::getBooleanValue('bEnabledFinance') && AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'fa-cash-register');
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'FindDepositSlip.php', AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
@@ -155,7 +155,7 @@ class Menu
         return $depositsMenu;
     }
 
-    private static function getFundraisersMenu()
+    private static function getFundraisersMenu(): MenuItem
     {
         $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', SystemConfig::getBooleanValue('bEnabledFundraiser'), 'fa-money-bill-alt');
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'FundRaiserEditor.php?FundRaiserID=-1'));
@@ -172,7 +172,7 @@ class Menu
         return $fundraiserMenu;
     }
 
-    private static function getReportsMenu()
+    private static function getReportsMenu(): MenuItem
     {
         $reportsMenu = new MenuItem(gettext('Data/Reports'), '', true, 'fa-file-pdf');
         $reportsMenu->addSubMenu(new MenuItem(gettext('Canvass Automation'), 'CanvassAutomation.php'));
@@ -181,7 +181,7 @@ class Menu
         return $reportsMenu;
     }
 
-    private static function addGroupSubMenus($menuName, $groupId, $viewURl)
+    private static function addGroupSubMenus($menuName, $groupId, string $viewURl): ?MenuItem
     {
         $groups = GroupQuery::Create()->filterByType($groupId)->orderByName()->find();
         if (!$groups->isEmpty()) {
@@ -196,7 +196,7 @@ class Menu
         return null;
     }
 
-    private static function getAdminMenu()
+    private static function getAdminMenu(): MenuItem
     {
         $menu = new MenuItem(gettext('Admin'), '', true, 'fa-tools');
         $menu->addSubMenu(new MenuItem(gettext('Edit General Settings'), 'SystemSettings.php', AuthenticationManager::getCurrentUser()->isAdmin()));
@@ -214,7 +214,7 @@ class Menu
         return $menu;
     }
 
-    private static function getCustomMenu()
+    private static function getCustomMenu(): MenuItem
     {
         $menu = new MenuItem(gettext('Links'), '', SystemConfig::getBooleanValue('bEnabledMenuLinks'), 'fa-link');
         $menuLinks = MenuLinkQuery::create()->orderByOrder()->find();

@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/locale', function (RouteCollectorProxy $group) {
+$app->group('/locale', function (RouteCollectorProxy $group): void {
     $group->get('/database/terms', 'getDBTerms');
 })->add(AdminRoleAuthMiddleware::class);
 

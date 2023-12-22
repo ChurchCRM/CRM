@@ -33,7 +33,7 @@ class Photo
         return Photo::$validExtensions;
     }
 
-    public function createThumbnail()
+    public function createThumbnail(): void
     {
         $this->ensureThumbnailsPath();
         $thumbWidth = SystemConfig::getValue('iThumbnailWidth');
@@ -47,14 +47,14 @@ class Photo
         imagejpeg($tmp_img, $this->photoThumbURI, 50);
     }
 
-    private function setURIs($photoPath)
+    private function setURIs($photoPath): void
     {
         $this->photoURI = $photoPath;
         $this->thubmnailPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/';
         $this->photoThumbURI = $this->thubmnailPath . $this->id . '.jpg';
     }
 
-    private function shouldRefreshPhotoFile($photoFile): bool
+    private function shouldRefreshPhotoFile(string $photoFile): bool
     {
         if (!$this->remotesEnabled) {
             // if remotes are disabled, and the image contains remote, then we should re-gen
@@ -89,7 +89,7 @@ class Photo
         return false;
     }
 
-    private function photoHunt()
+    private function photoHunt(): void
     {
         $baseName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id;
         $extensions = Photo::$validExtensions;
@@ -142,7 +142,7 @@ class Photo
         $this->renderInitials();
     }
 
-    private function convertToPNG()
+    private function convertToPNG(): void
     {
         $image = $this->getGDImage($this->getPhotoURI());
         $this->delete();
@@ -171,7 +171,7 @@ class Photo
         return $sourceGDImage;
     }
 
-    private function ensureThumbnailsPath()
+    private function ensureThumbnailsPath(): void
     {
         if (!file_exists($this->thubmnailPath)) {
             mkdir($this->thubmnailPath);
@@ -208,7 +208,7 @@ class Photo
         return $this->thumbnailContentType;
     }
 
-    public function getThumbnailURI()
+    public function getThumbnailURI(): ?string
     {
         if (!is_file($this->photoThumbURI)) {
             $this->createThumbnail();
@@ -222,7 +222,7 @@ class Photo
         return $this->photoURI;
     }
 
-    private function loadFromGravatar($email, $baseName)
+    private function loadFromGravatar($email, string $baseName)
     {
         $s = 60;
         $d = '404';
@@ -244,7 +244,7 @@ class Photo
         return false;
     }
 
-    private function loadFromGoogle($email, $baseName)
+    private function loadFromGoogle($email, string $baseName)
     {
         $url = 'http://picasaweb.google.com/data/entry/api/user/';
         $url .= strtolower(trim($email));
@@ -278,7 +278,7 @@ class Photo
         return imagecolorallocate($image, $red, $green, $blue);
     }
 
-    private function getInitialsString()
+    private function getInitialsString(): string
     {
         $retstr = '';
         if ($this->photoType == 'Person') {
@@ -294,7 +294,7 @@ class Photo
         return $retstr;
     }
 
-    private function renderInitials()
+    private function renderInitials(): void
     {
         $initials = $this->getInitialsString();
         $targetPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '-initials.png';
@@ -314,7 +314,7 @@ class Photo
         $this->setURIs($targetPath);
     }
 
-    public function setImageFromBase64($base64)
+    public function setImageFromBase64($base64): void
     {
         $this->delete();
         $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
@@ -340,7 +340,7 @@ class Photo
         return !in_array(false, $deleted);
     }
 
-    public function refresh()
+    public function refresh(): void
     {
         if (strpos($this->photoURI, 'initials') || strpos($this->photoURI, 'remote')) {
             $this->delete();

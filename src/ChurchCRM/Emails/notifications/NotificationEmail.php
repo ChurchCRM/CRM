@@ -17,12 +17,12 @@ class NotificationEmail extends BaseEmail
         $this->mail->msgHTML($this->buildMessage());
     }
 
-    protected function getSubSubject()
+    protected function getSubSubject(): string
     {
         return gettext('Notification');
     }
 
-    public function getTokens()
+    public function getTokens(): array
     {
         $myTokens = [
             'toName' => gettext('Guardian(s) of') . ' ' . $this->notificationSource,

@@ -32,7 +32,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
         return $this->formatSearchGroup();
     }
 
-    private function getPaymentsWithValuesInRange(int $min, int $max)
+    private function getPaymentsWithValuesInRange(int $min, int $max): array
     {
         $searchResults = [];
         $id = 0;
@@ -66,7 +66,10 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
         return array_slice($searchResults, 0, SystemConfig::getValue('bSearchIncludePaymentsMax')); // since Propel ORM won't handle limit() nicely, do it in PHP
     }
 
-    private function getPaymentSearchResults(string $SearchQuery)
+    /**
+     * @return SearchResult[]
+     */
+    private function getPaymentSearchResults(string $SearchQuery): array
     {
         $searchResults = [];
         $id = 0;

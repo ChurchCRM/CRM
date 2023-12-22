@@ -16,7 +16,7 @@ class SystemURLs
     private static $documentRoot;
     private static ?string $CSPNonce = null;
 
-    public static function init($rootPath, $urls, $documentRoot)
+    public static function init($rootPath, $urls, $documentRoot): void
     {
         // Avoid consecutive slashes when $sRootPath = '/'
         if ($rootPath === '/') {
@@ -42,7 +42,7 @@ class SystemURLs
         return self::$documentRoot;
     }
 
-    public static function getImagesRoot()
+    public static function getImagesRoot(): string
     {
         return self::$documentRoot . '/Images';
     }
@@ -82,7 +82,7 @@ class SystemURLs
         return $URL;
     }
 
-    private static function isValidRootPath()
+    private static function isValidRootPath(): bool
     {
         //if (stripos(self::$rootPath, "http") !== true ) {
         //    return false;
@@ -93,7 +93,7 @@ class SystemURLs
     // check if bLockURL is set and if so if the current page is accessed via an allowed URL
     // including the desired protocol, hostname, and path.
     // An array of authorized URL's is specified in Config.php in the $URL array
-    public static function checkAllowedURL($bLockURL, $URL)
+    public static function checkAllowedURL($bLockURL, array $URL): void
     {
         if (isset($bLockURL) && ($bLockURL === true)) {
             // get the URL of this page
@@ -120,7 +120,7 @@ class SystemURLs
         }
     }
 
-    public static function getCSPNonce()
+    public static function getCSPNonce(): ?string
     {
         return self::$CSPNonce;
     }

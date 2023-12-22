@@ -6,7 +6,7 @@ class Countries
 {
     private static ?array $countries = null;
 
-    private static function initializeCountries()
+    private static function initializeCountries(): void
     {
         self::$countries = [
             'AF' => new Country('AF', 'Afghanistan (‫افغانستان‬‎)'),
@@ -301,7 +301,7 @@ class Countries
         }
 
         self::initializeCountries();
-        $result = array_filter(self::$countries, fn ($e) => $e->getCountryName() === $CountryName);
+        $result = array_filter(self::$countries, fn ($e): bool => $e->getCountryName() === $CountryName);
         if (count($result) === 1) {
             return $result[0];
         }

@@ -12,7 +12,10 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 class SystemCalendars
 {
-    private static function getCalendars()
+    /**
+     * @return SystemCalendar[]
+     */
+    private static function getCalendars(): array
     {
         $systemCalendarNames = [
             BirthdaysCalendar::class,
@@ -31,7 +34,7 @@ class SystemCalendars
         return $calendars;
     }
 
-    public static function getCalendarList()
+    public static function getCalendarList(): ObjectCollection
     {
         $calendars = new ObjectCollection();
         $calendars->setModel(Calendar::class);
@@ -55,7 +58,7 @@ class SystemCalendars
         return $requestedCalendar;
     }
 
-    public static function toPropelCalendar(SystemCalendar $calendar)
+    public static function toPropelCalendar(SystemCalendar $calendar): Calendar
     {
         $procalendar = new Calendar();
         $procalendar->setId($calendar->getId());

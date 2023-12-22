@@ -8,7 +8,7 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Exception\HttpUnauthorizedException;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/public/user', function (RouteCollectorProxy $group) {
+$app->group('/public/user', function (RouteCollectorProxy $group): void {
     $group->post('/login', 'userLogin');
     $group->post('/login/', 'userLogin');
 });

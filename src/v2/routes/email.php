@@ -12,7 +12,7 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/email', function (RouteCollectorProxy $group) {
+$app->group('/email', function (RouteCollectorProxy $group): void {
     $group->get('/debug', 'testEmailConnectionMVC')->add(AdminRoleAuthMiddleware::class);
     $group->get('/dashboard', 'getEmailDashboardMVC');
     $group->get('/duplicate', 'getDuplicateEmailsMVC');
@@ -23,7 +23,7 @@ $app->group('/email', function (RouteCollectorProxy $group) {
     $group->get('/', 'getEmailDashboardMVC');
 });
 
-function getEmailDashboardMVC(Request $request, Response $response, array $args)
+function getEmailDashboardMVC(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/email/');
     $mailchimp = new MailChimpService();
@@ -38,7 +38,7 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
     return $renderer->render($response, 'dashboard.php', $pageArgs);
 }
 
-function testEmailConnectionMVC(Request $request, Response $response, array $args)
+function testEmailConnectionMVC(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/email/');
 
@@ -77,17 +77,17 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
     return $renderer->render($response, 'debug.php', $pageArgs);
 }
 
-function getDuplicateEmailsMVC(Request $request, Response $response, array $args)
+function getDuplicateEmailsMVC(Request $request, Response $response, array $args): Response
 {
     return renderPage($response, 'templates/email/', 'duplicate.php', _('Duplicate Emails'));
 }
 
-function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args)
+function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args): Response
 {
     return renderPage($response, 'templates/email/', 'without.php', _('Families Without Emails'));
 }
 
-function getMailListUnSubscribersMVC(Request $request, Response $response, array $args)
+function getMailListUnSubscribersMVC(Request $request, Response $response, array $args): Response
 {
     $mailchimpService = new MailChimpService();
     $list = $mailchimpService->getList($args['listId']);
@@ -105,7 +105,7 @@ function getMailListUnSubscribersMVC(Request $request, Response $response, array
     return $renderer->render($response, 'mailchimp-unsubscribers.php', $pageArgs);
 }
 
-function getMailListMissingMVC(Request $request, Response $response, array $args)
+function getMailListMissingMVC(Request $request, Response $response, array $args): Response
 {
     $mailchimpService = new MailChimpService();
     $list = $mailchimpService->getList($args['listId']);

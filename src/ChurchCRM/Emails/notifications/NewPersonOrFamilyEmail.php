@@ -44,7 +44,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         }
     }
 
-    public function getTokens()
+    public function getTokens(): array
     {
         $myTokens = [
             'toName' => gettext('Church Greeter'),

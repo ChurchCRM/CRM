@@ -25,7 +25,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/database', function (RouteCollectorProxy $group) {
+$app->group('/database', function (RouteCollectorProxy $group): void {
     $group->delete('/reset', 'resetDatabase');
     $group->delete('/people/clear', 'clearPeopleTables');
 

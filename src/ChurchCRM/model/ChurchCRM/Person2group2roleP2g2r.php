@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2r as BasePerson2group2roleP2g2r;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'person2group2role_p2g2r' table.
@@ -15,7 +16,7 @@ use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2r as BasePerson2group2ro
  */
 class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
 {
-    public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function preSave(ConnectionInterface $con = null): bool
     {
         requireUserGroupMembership('bManageGroups');
         parent::preSave($con);
@@ -23,7 +24,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
         return true;
     }
 
-    public function preUpdate(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function preUpdate(ConnectionInterface $con = null): bool
     {
         requireUserGroupMembership('bManageGroups');
         parent::preUpdate($con);
@@ -31,7 +32,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
         return true;
     }
 
-    public function preDelete(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function preDelete(ConnectionInterface $con = null): bool
     {
         requireUserGroupMembership('bManageGroups');
         parent::preDelete($con);
@@ -39,7 +40,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
         return true;
     }
 
-    public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    public function preInsert(ConnectionInterface $con = null): bool
     {
         requireUserGroupMembership('bManageGroups');
         parent::preInsert($con);

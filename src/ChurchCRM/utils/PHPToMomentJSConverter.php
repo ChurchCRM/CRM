@@ -50,7 +50,7 @@ class PHPToMomentJSConverter
         'U' => 'X',
     ];
 
-    public static function convertFormatString($string)
+    public static function convertFormatString($string): string
     {
         //borrowed from https://stackoverflow.com/questions/30186611/php-dateformat-to-moment-js-format
         $momentFormat = strtr($string, self::$replacements);

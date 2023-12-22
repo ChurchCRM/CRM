@@ -10,37 +10,37 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 class BirthdaysCalendar implements SystemCalendar
 {
-    public static function isAvailable()
+    public static function isAvailable(): bool
     {
         return true;
     }
 
-    public function getAccessToken()
+    public function getAccessToken(): bool
     {
         return false;
     }
 
-    public function getBackgroundColor()
+    public function getBackgroundColor(): string
     {
         return '0000FF';
     }
 
-    public function getForegroundColor()
+    public function getForegroundColor(): string
     {
         return 'FFFFFF';
     }
 
-    public function getId()
+    public function getId(): int
     {
         return 0;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return gettext('Birthdays');
     }
 
-    public function getEvents($start, $end)
+    public function getEvents($start, $end): ObjectCollection
     {
         $people = PersonQuery::create()
             ->filterByBirthDay('', Criteria::NOT_EQUAL)
@@ -49,7 +49,7 @@ class BirthdaysCalendar implements SystemCalendar
         return $this->peopleCollectionToEvents($people);
     }
 
-    public function getEventById($Id)
+    public function getEventById($Id): ObjectCollection
     {
         $people = PersonQuery::create()
             ->filterByBirthDay('', Criteria::NOT_EQUAL)
@@ -59,7 +59,7 @@ class BirthdaysCalendar implements SystemCalendar
         return $this->peopleCollectionToEvents($people);
     }
 
-    private function peopleCollectionToEvents(ObjectCollection $People)
+    private function peopleCollectionToEvents(ObjectCollection $People): ObjectCollection
     {
         $events = new ObjectCollection();
         $events->setModel(Event::class);

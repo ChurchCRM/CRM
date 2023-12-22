@@ -7,12 +7,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/cart', function (RouteCollectorProxy $group) {
+$app->group('/cart', function (RouteCollectorProxy $group): void {
     $group->get('/', 'getCartView');
     $group->get('', 'getCartView');
 });
 
-function getCartView(Request $request, Response $response, array $args)
+function getCartView(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/cart/');
 

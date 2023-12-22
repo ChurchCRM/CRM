@@ -23,7 +23,7 @@ class MenuItem
         $this->icon = $icon;
     }
 
-    public function addSubMenu(MenuItem $menuItem)
+    public function addSubMenu(MenuItem $menuItem): void
     {
         if (empty($menuItem->getIcon())) {
             $menuItem->setIcon('fa-angle-double-right');
@@ -31,7 +31,7 @@ class MenuItem
         $this->subItems[] = $menuItem;
     }
 
-    public function addCounter(MenuCounter $counter)
+    public function addCounter(MenuCounter $counter): void
     {
         $this->counters[] = $counter;
     }
@@ -51,7 +51,7 @@ class MenuItem
         return '';
     }
 
-    public function setIcon($icon)
+    public function setIcon($icon): void
     {
         $this->icon = $icon;
     }
@@ -68,7 +68,7 @@ class MenuItem
     /**
      * @return bool
      */
-    public function isExternal()
+    public function isExternal(): bool
     {
         return $this->external;
     }
@@ -78,17 +78,17 @@ class MenuItem
         return $this->icon;
     }
 
-    public function isMenu()
+    public function isMenu(): bool
     {
         return !empty($this->subItems);
     }
 
-    public function getSubItems()
+    public function getSubItems(): array
     {
         return $this->subItems;
     }
 
-    public function hasVisibleSubMenus()
+    public function hasVisibleSubMenus(): bool
     {
         foreach ($this->subItems as $item) {
             if ($item->isVisible()) {
@@ -99,17 +99,17 @@ class MenuItem
         return false;
     }
 
-    public function getCounters()
+    public function getCounters(): array
     {
         return $this->counters;
     }
 
-    public function hasCounters()
+    public function hasCounters(): bool
     {
         return !empty($this->counters);
     }
 
-    public function isVisible()
+    public function isVisible(): bool
     {
         if ($this->hasPermission && (!empty($this->uri) || $this->hasVisibleSubMenus())) {
             return true;
@@ -118,7 +118,7 @@ class MenuItem
         return false;
     }
 
-    public function openMenu()
+    public function openMenu(): bool
     {
         foreach ($this->subItems as $item) {
             if ($item->isActive()) {
@@ -129,7 +129,7 @@ class MenuItem
         return false;
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         if (empty($this->uri)) {
             return false;

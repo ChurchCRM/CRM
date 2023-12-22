@@ -8,7 +8,7 @@ use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-$app->group('/register', function (RouteCollectorProxy $group) {
+$app->group('/register', function (RouteCollectorProxy $group): void {
     $enableSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
 
     if ($enableSelfReg) {

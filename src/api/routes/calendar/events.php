@@ -16,7 +16,7 @@ use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/events', function (RouteCollectorProxy $group) {
+$app->group('/events', function (RouteCollectorProxy $group): void {
     $group->get('/', 'getAllEvents');
     $group->get('', 'getAllEvents');
     $group->get('/types', 'getEventTypes');
@@ -57,7 +57,7 @@ function getEventTypes(Request $request, Response $response, array $args): Respo
     return SlimUtils::renderStringJSON($response, $EventTypes->toJSON());
 }
 
-function getEvent(Request $request, Response $response, $args)
+function getEvent(Request $request, Response $response, $args): Response
 {
     $Event = $request->getAttribute('event');
 
@@ -182,7 +182,7 @@ function setEventTime(Request $request, Response $response, array $args): Respon
     return SlimUtils::renderSuccessJSON($response);
 }
 
-function unusedSetEventAttendance()
+function unusedSetEventAttendance(): void
 {
     if ($input->Total > 0 || $input->Visitors || $input->Members) {
         $eventCount = new EventCounts();

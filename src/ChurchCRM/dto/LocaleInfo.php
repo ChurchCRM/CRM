@@ -61,7 +61,7 @@ class LocaleInfo
         return $this->locale;
     }
 
-    public function getShortLocale()
+    public function getShortLocale(): string
     {
         return substr($this->getLocale(), 0, 2);
     }
@@ -81,7 +81,7 @@ class LocaleInfo
         return $this->dataTables;
     }
 
-    public function getThousandSeparator()
+    public function getThousandSeparator(): string
     {
         $sep = ',';
         if ($this->language == 'it_IT') {
@@ -91,7 +91,7 @@ class LocaleInfo
         return $sep;
     }
 
-    public function getLocaleArray()
+    public function getLocaleArray(): array
     {
         $utfList = ['.utf8', '.UTF8', '.utf-8', '.UTF-8'];
         $localArray = [];
@@ -103,7 +103,10 @@ class LocaleInfo
         return $localArray;
     }
 
-    public function getLocaleInfo()
+    /**
+     * @return array<string, string>
+     */
+    public function getLocaleInfo(): array
     {
         $localeInfo = localeconv();
         // patch some missing data for Italian.  This shouldn't be necessary!

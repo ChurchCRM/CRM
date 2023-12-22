@@ -22,7 +22,7 @@ class MailChimpService
         }
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         if ($this->isActive) {
             return true;
@@ -75,7 +75,7 @@ class MailChimpService
         return $_SESSION['MailChimpLists'];
     }
 
-    public function isEmailInMailChimp($email)
+    public function isEmailInMailChimp(?string $email)
     {
         if (empty($email)) {
             return new Exception(gettext('No email passed in'));

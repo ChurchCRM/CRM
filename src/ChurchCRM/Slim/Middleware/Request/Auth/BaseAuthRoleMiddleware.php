@@ -14,8 +14,9 @@ abstract class BaseAuthRoleMiddleware
 
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
-        $this->user = AuthenticationManager::getCurrentUser();
-        if (empty($this->user)) {
+        try {
+            $this->user = AuthenticationManager::getCurrentUser();
+        } catch (\Throwable $ex) {
             $response = new Response();
             return $response->withStatus(401, gettext('No logged in user'));
         }

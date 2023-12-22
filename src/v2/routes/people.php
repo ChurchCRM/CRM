@@ -10,13 +10,13 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 // entity can be a person, family, or business
-$app->group('/people', function (RouteCollectorProxy $group) {
+$app->group('/people', function (RouteCollectorProxy $group): void {
     $group->get('/verify', 'viewPeopleVerify');
     $group->get('/', 'listPeople');
     $group->get('', 'listPeople');
 });
 
-function viewPeopleVerify(Request $request, Response $response, array $args)
+function viewPeopleVerify(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/people/');
 
@@ -39,7 +39,7 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
     return $renderer->render($response, 'people-verify-view.php', $pageArgs);
 }
 
-function listPeople(Request $request, Response $response, array $args)
+function listPeople(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/people/');
     // Filter received user input as needed

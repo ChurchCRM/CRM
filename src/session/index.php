@@ -32,7 +32,7 @@ $app->get('/end', 'endSession');
 $app->get('/two-factor', 'processTwoFactorGet');
 $app->post('/two-factor', 'processTwoFactorPost');
 
-function processTwoFactorGet(Request $request, Response $response, array $args)
+function processTwoFactorGet(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/');
     $curUser = AuthenticationManager::getCurrentUser();
@@ -44,19 +44,19 @@ function processTwoFactorGet(Request $request, Response $response, array $args)
     return $renderer->render($response, 'two-factor.php', $pageArgs);
 }
 
-function processTwoFactorPost(Request $request, Response $response, array $args)
+function processTwoFactorPost(Request $request, Response $response, array $args): void
 {
     $loginRequestBody = $request->getParsedBody();
     $request = new LocalTwoFactorTokenRequest($loginRequestBody['TwoFACode']);
     AuthenticationManager::authenticate($request);
 }
 
-function endSession(Request $request, Response $response, array $args)
+function endSession(Request $request, Response $response, array $args): void
 {
     AuthenticationManager::endSession();
 }
 
-function beginSession(Request $request, Response $response, array $args)
+function beginSession(Request $request, Response $response, array $args): Response
 {
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),

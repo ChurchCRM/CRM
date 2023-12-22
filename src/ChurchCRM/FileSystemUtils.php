@@ -6,7 +6,7 @@ use ChurchCRM\Utils\LoggerUtils;
 
 class FileSystemUtils
 {
-    public static function recursiveRemoveDirectory($directory, $retainParentFolderAndFiles = false)
+    public static function recursiveRemoveDirectory($directory, $retainParentFolderAndFiles = false): void
     {
         //sourced from http://stackoverflow.com/questions/11267086/php-unlink-all-files-within-a-directory-and-then-deleting-that-directory
         foreach (glob("{$directory}/*") as $file) {
@@ -21,7 +21,7 @@ class FileSystemUtils
         }
     }
 
-    public static function recursiveCopyDirectory($src, $dst)
+    public static function recursiveCopyDirectory($src, $dst): void
     {
         //sourced from http://stackoverflow.com/questions/9835492/move-all-files-and-folders-in-a-folder-to-another
         // Function to Copy folders and files
@@ -41,7 +41,7 @@ class FileSystemUtils
         }
     }
 
-    public static function deleteFiles($path, $extArray)
+    public static function deleteFiles(string $path, $extArray): void
     {
         foreach ($extArray as $ext) {
             LoggerUtils::getAppLogger()->info('Deleting files: ' . $path . '*.' . $ext);
@@ -51,7 +51,7 @@ class FileSystemUtils
         }
     }
 
-    public static function moveDir(string $src, string $dest)
+    public static function moveDir(string $src, string $dest): bool
     {
         $logger = LoggerUtils::getAppLogger();
 

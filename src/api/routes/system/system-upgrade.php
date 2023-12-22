@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/systemupgrade', function (RouteCollectorProxy $group) {
+$app->group('/systemupgrade', function (RouteCollectorProxy $group): void {
     $group->get('/downloadlatestrelease', function (Request $request, Response $response, array $args): Response {
         $upgradeFile = ChurchCRMReleaseManager::downloadLatestRelease();
 

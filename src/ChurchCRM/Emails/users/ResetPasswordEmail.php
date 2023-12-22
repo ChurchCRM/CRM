@@ -12,17 +12,17 @@ class ResetPasswordEmail extends BaseUserEmail
         parent::__construct($user);
     }
 
-    protected function getSubSubject()
+    protected function getSubSubject(): string
     {
         return gettext('Password Reset');
     }
 
-    protected function buildMessageBody()
+    protected function buildMessageBody(): string
     {
         return gettext('You ChurchCRM updated password has been changed') . ':';
     }
 
-    public function getTokens()
+    public function getTokens(): array
     {
         $parentTokens = parent::getTokens();
         $myTokens = ['password' => $this->password,

@@ -14,7 +14,7 @@ class PdfGroupDirectory extends ChurchInfoReport
     public $sFamily;
     public $sLastName;
 
-    public function header()
+    public function header(): void
     {
         if ($this->PageNo() == 1) {
             global $sGroupName;
@@ -34,7 +34,7 @@ class PdfGroupDirectory extends ChurchInfoReport
         }
     }
 
-    public function footer()
+    public function footer(): void
     {
         //Go to 1.5 cm from bottom
         $this->SetY(-15);
@@ -46,7 +46,7 @@ class PdfGroupDirectory extends ChurchInfoReport
 
     // Sets the character size
     // This changes the line height too
-    public function setCharSize($pt)
+    public function setCharSize($pt): void
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -64,7 +64,7 @@ class PdfGroupDirectory extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function checkLines($numlines)
+    public function checkLines($numlines): void
     {
         $CurY = $this->GetY();  // Temporarily store off the position
 
@@ -103,7 +103,7 @@ class PdfGroupDirectory extends ChurchInfoReport
     */
 
     // This prints the name in BOLD
-    public function printName($sName)
+    public function printName($sName): void
     {
         $this->SetFont($this->_Font, 'B', 12);
         $_PosX = $this->_Margin_Left + ($this->_Column * 108);
@@ -115,7 +115,7 @@ class PdfGroupDirectory extends ChurchInfoReport
     }
 
     // Number of lines is only for the $text parameter
-    public function addRecord($sName, $text, $numlines)
+    public function addRecord($sName, $text, $numlines): void
     {
         $this->checkLines($numlines);
 

@@ -12,7 +12,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/mailchimp/', function (RouteCollectorProxy $group) {
+$app->group('/mailchimp/', function (RouteCollectorProxy $group): void {
     $group->get('list/{id}', 'getMailchimpList');
     $group->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');
     $group->get('list/{id}/not-subscribed', 'getMailChimpMissingSubscribed');

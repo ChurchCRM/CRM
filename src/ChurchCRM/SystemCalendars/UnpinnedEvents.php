@@ -7,32 +7,32 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 
 class UnpinnedEvents implements SystemCalendar
 {
-    public static function isAvailable()
+    public static function isAvailable(): bool
     {
         return true;
     }
 
-    public function getAccessToken()
+    public function getAccessToken(): bool
     {
         return false;
     }
 
-    public function getBackgroundColor()
+    public function getBackgroundColor(): string
     {
         return 'FF0000';
     }
 
-    public function getForegroundColor()
+    public function getForegroundColor(): string
     {
         return 'FFFFFF';
     }
 
-    public function getId()
+    public function getId(): int
     {
         return 3;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return gettext('Unpinned Events');
     }

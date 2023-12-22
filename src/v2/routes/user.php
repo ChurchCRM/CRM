@@ -11,7 +11,7 @@ use Slim\Exception\HttpForbiddenException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/user', function (RouteCollectorProxy $group) {
+$app->group('/user', function (RouteCollectorProxy $group): void {
     $group->get('/not-found', 'viewUserNotFound');
     $group->get('/{id}/changePassword', 'adminChangeUserPassword');
     $group->post('/{id}/changePassword', 'adminChangeUserPassword');
@@ -19,7 +19,7 @@ $app->group('/user', function (RouteCollectorProxy $group) {
     $group->get('/{id}', 'viewUser');
 });
 
-function viewUserNotFound(Request $request, Response $response, array $args)
+function viewUserNotFound(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/common/');
 
@@ -32,7 +32,7 @@ function viewUserNotFound(Request $request, Response $response, array $args)
     return $renderer->render($response, 'not-found-view.php', $pageArgs);
 }
 
-function viewUser(Request $request, Response $response, array $args)
+function viewUser(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/user/');
     $curUser = AuthenticationManager::getCurrentUser();
@@ -56,7 +56,7 @@ function viewUser(Request $request, Response $response, array $args)
     return $renderer->render($response, 'user.php', $pageArgs);
 }
 
-function adminChangeUserPassword(Request $request, Response $response, array $args)
+function adminChangeUserPassword(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/');
     $userId = $args['id'];

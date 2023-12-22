@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/public/data', function (RouteCollectorProxy $group) {
+$app->group('/public/data', function (RouteCollectorProxy $group): void {
     $group->get('/countries', 'getCountries');
     $group->get('/countries/', 'getCountries');
     $group->get('/countries/{countryCode}/states', 'getStates');
