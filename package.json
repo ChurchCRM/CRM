@@ -16,7 +16,7 @@
     "bugs": {
         "url": "https://github.com/ChurchCRM/CRM/issues"
     },
-    "homepage": "https://www.churchcrm.io",
+    "homepage": "https://churchcrm.io",
     "scripts": {
         "clean": "rm -rf node_modules/ src/vendor/ src/skin/external",
         "preinstall": "grunt clean",

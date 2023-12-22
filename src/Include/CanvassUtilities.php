@@ -4,7 +4,7 @@
  *
  *  filename    : /Include/CanvassUtilities.php
  *  last change : 2005-02-21
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2005 Michael Wilt
   *
  ******************************************************************************/

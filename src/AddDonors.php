@@ -3,7 +3,7 @@
 /*******************************************************************************
  *
  *  filename    : AddDonors.php
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2009 Michael Wilt
  *
  * This script adds people who have donated but not registered as buyers to the

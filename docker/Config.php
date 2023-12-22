@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : Include/Config.php
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  description : global configuration
  *
  ******************************************************************************/

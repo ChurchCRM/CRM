@@ -6,7 +6,7 @@
  *  last change : 2002-04-22
  *  description : footer that appear on the bottom of all pages
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, Philippe Logel
   *
  ******************************************************************************/
@@ -27,7 +27,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <div class="float-right d-none d-sm-block">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
-    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
+    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
     | <a href="https://twitter.com/church_crm" target="_blank"><i class="fa-brands fa-twitter"></i> <?= gettext("Follow us on Twitter") ?></a>
     | <span class="fi fi-squared"></span>
 </footer>

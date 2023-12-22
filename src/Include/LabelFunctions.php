@@ -3,7 +3,7 @@
 /*******************************************************************************
  *
  *  filename    : /Include/LabelFunctions.php
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *
  *  Contributors:
  *  2006 Ed Davis

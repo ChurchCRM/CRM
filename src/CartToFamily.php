@@ -6,7 +6,7 @@
  *  last change : 2003-10-09
  *  description : Add cart records to a family
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
   *
  ******************************************************************************/

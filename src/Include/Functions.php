@@ -3,7 +3,7 @@
 /*******************************************************************************
  *
  *  filename    : /Include/Functions.php
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-1012 Michael Wilt
 

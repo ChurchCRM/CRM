@@ -4,7 +4,7 @@
  *
  *  filename    : FamilyEditor.php
  *  last change : 2003-01-04
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
   *
  ******************************************************************************/

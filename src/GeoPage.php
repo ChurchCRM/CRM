@@ -3,7 +3,7 @@
 /*******************************************************************************
  *
  *  filename    : GeoPage.php
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2004-2005 Michael Wilt
  *
  *  Additional Contributors:

@@ -6,7 +6,7 @@
 *  last change : 2003-08-30
 *  description : Creates a Member directory
 *
-*  http://www.churchcrm.io/
+*  https://churchcrm.io/
 *  Copyright 2003  Jason York, 2004-2005 Michael Wilt, Richard Bondi
 
 ******************************************************************************/

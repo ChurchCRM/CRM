@@ -6,7 +6,7 @@
  *  last change : 2003-06-04
  *  description : property assign
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
   *
  ******************************************************************************/

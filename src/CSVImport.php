@@ -6,7 +6,7 @@
  *  last change : 2003-10-02
  *  description : Tool for importing CSV person data into InfoCentral
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *
  ******************************************************************************/

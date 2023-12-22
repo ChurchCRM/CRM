@@ -4,7 +4,7 @@
  *
  *  filename    : Dashboard.php
  *  last change : 2014-11-29
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2014
   *
  ******************************************************************************/

@@ -3,7 +3,7 @@
 /*******************************************************************************
 *
 *  filename    : ConvertIndividualToFamily.php
-*  website     : http://www.churchcrm.io
+*  website     : https://churchcrm.io
 *  description : utility to convert individuals to families
 *
 *  Must be run manually by an administrator.  Type this URL.
