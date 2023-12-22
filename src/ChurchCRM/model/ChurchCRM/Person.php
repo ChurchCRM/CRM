@@ -630,7 +630,7 @@ class Person extends BasePerson implements PhotoInterface
     {
         $birthDate = $this->getBirthDate();
 
-        if ($this->hideAge()) {
+        if ($birthDate === null || $this->hideAge()) {
             return false;
         }
         if (empty($now)) {
@@ -648,7 +648,7 @@ class Person extends BasePerson implements PhotoInterface
     public function getNumericAge()
     {
         $birthDate = $this->getBirthDate();
-        if ($this->hideAge()) {
+        if ($birthDate === null || $this->hideAge()) {
             return false;
         }
         if (empty($now)) {
