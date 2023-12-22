@@ -817,7 +817,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, $bFi
                 echo ' selected';
             }
             echo '>' . gettext('Unassigned') . '</option>';
-            echo '<option value="0">-----------------------</option>';
+            echo '<option value="" disabled>-----------------------</option>';
 
             while ($aRow = mysqli_fetch_array($rsGroupPeople)) {
                 extract($aRow);
@@ -869,7 +869,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, $bFi
 
             echo '<select class="form-control" name="' . $fieldname . '">';
             echo '<option value="0" selected>' . gettext('Unassigned') . '</option>';
-            echo '<option value="0">-----------------------</option>';
+            echo '<option value="" disabled>-----------------------</option>';
 
             while ($aRow = mysqli_fetch_array($rsListOptions)) {
                 extract($aRow);

@@ -264,7 +264,7 @@ if (isset($_POST['UploadCSV'])) {
         <BR><BR>
         <select name="Classification">
             <option value="0"><?= gettext('Unassigned') ?></option>
-            <option value="0">-----------------------</option>
+            <option value="" disabled>-----------------------</option>
 
             <?php
             while ($aRow = mysqli_fetch_array($rsClassifications)) {

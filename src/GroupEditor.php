@@ -94,7 +94,7 @@ require 'Include/Header.php';
             ?>
             <select class="form-control input-small" name="GroupType" <?= $hide ?>>
               <option value="0"><?= gettext('Unassigned') ?></option>
-              <option value="0">-----------------------</option>
+              <option value="" disabled>-----------------------</option>
               <?php
                 foreach ($rsGroupTypes as $groupType) {
                     echo '<option value="' . $groupType->getOptionId() . '"';
