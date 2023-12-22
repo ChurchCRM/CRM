@@ -144,6 +144,7 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
 {
     $formattedList = [];
 
+    /** @var Person $person */
     foreach ($people as $person) {
         $formattedPerson = [];
         $formattedPerson['PersonId'] = $person->getId();
@@ -160,7 +161,12 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
         }
 
         if ($birthday && $person->getBirthDate()) {
-            $formattedPerson['Birthday'] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedPerson['Birthday'] = date_format(
+                $person->getBirthDate(),
+                $person->hideAge() ?
+                    SystemConfig::getValue('sDateFormatNoYear') :
+                    SystemConfig::getValue('sDateFormatLong')
+            );
         }
 
         $formattedList[] = $formattedPerson;

@@ -4,6 +4,7 @@ namespace ChurchCRM\Backup;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
 use Defuse\Crypto\File;
 use Exception;
@@ -76,7 +77,7 @@ class BackupJob extends JobBase
             curl_setopt($ch, CURLOPT_INFILE, $fh);
             curl_setopt($ch, CURLOPT_INFILESIZE, $this->BackupFile->getSize());
             LoggerUtils::getAppLogger()->debug('Beginning to send file');
-            $time = new \ChurchCRM\Utils\ExecutionTime();
+            $time = new ExecutionTime();
             $result = curl_exec($ch);
             if (curl_error($ch)) {
                 $error_msg = curl_error($ch);
@@ -178,7 +179,7 @@ class BackupJob extends JobBase
 
     public function execute()
     {
-        $time = new \ChurchCRM\Utils\ExecutionTime();
+        $time = new ExecutionTime();
         LoggerUtils::getAppLogger()->info('Beginning backup job. Type: ' . $this->BackupType . '. BaseName: ' . $this->BackupFileBaseName);
         if ($this->BackupType == BackupType::FULL_BACKUP) {
             $this->createFullArchive();

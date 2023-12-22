@@ -16,7 +16,7 @@ class MiscUtils
         }
     }
 
-    public static function randomToken()
+    public static function randomToken(): string
     {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $apiKey = []; //remember to declare $apiKey as an array
@@ -29,7 +29,7 @@ class MiscUtils
         return implode($apiKey); //turn the array into a string
     }
 
-    public static function randomWord($length = 6)
+    public static function randomWord(int $length = 6): string
     {
         $cons = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z', 'pt', 'gl', 'gr', 'ch', 'ph', 'ps', 'sh', 'st', 'th', 'wh'];
         $cons_cant_start = ['ck', 'cm', 'dr', 'ds', 'ft', 'gh', 'gn', 'kr', 'ks', 'ls', 'lt', 'lr', 'mp', 'mt', 'ms', 'ng', 'ns', 'rd', 'rg', 'rs', 'rt', 'ss', 'ts', 'tch'];
@@ -50,7 +50,7 @@ class MiscUtils
         return $word;
     }
 
-    public static function getRandomCache($baseCacheTime, $variability)
+    public static function getRandomCache(int $baseCacheTime, int $variability): int
     {
         $var = random_int(0, $variability);
         $dir = random_int(0, 1);
@@ -61,7 +61,7 @@ class MiscUtils
         }
     }
 
-    public static function getPhotoCacheExpirationTimestamp()
+    public static function getPhotoCacheExpirationTimestamp(): int
     {
         $cacheLength = SystemConfig::getValue('iPhotoClientCacheDuration');
         $cacheLength = MiscUtils::getRandomCache($cacheLength, 0.5 * $cacheLength);
@@ -69,10 +69,10 @@ class MiscUtils
         return time() + $cacheLength;
     }
 
-    public static function formatAge(int $Month, int $Day, int $Year)
+    public static function formatAge(int $Month, int $Day, ?int $Year = null): string
     {
-        if ($Year === null || $Year === 0) {
-            return;
+        if (empty($Year === null)) {
+            return '';
         }
 
         $birthDate = MiscUtils::birthDate($Year, $Month, $Day);
@@ -89,33 +89,35 @@ class MiscUtils
 
     // Format a BirthDate
     // Optionally, the separator may be specified.  Default is YEAR-MN-DY
-    public static function formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
+    public static function formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags): string
     {
-        $birthDate = MiscUtils::birthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
-        if (!$birthDate) {
+        try {
+            $birthDate = MiscUtils::birthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
+        } catch (\Throwable $ex) {
             return false;
         }
-        if ($bFlags || $per_BirthYear === null || $per_BirthYear === '') {
+
+        if ($bFlags || empty($per_BirthYear)) {
             return $birthDate->format(SystemConfig::getValue('sDateFormatNoYear'));
         }
 
         return $birthDate->format(SystemConfig::getValue('sDateFormatLong'));
     }
 
-    public static function birthDate($year, $month, $day)
+    public static function birthDate($year, $month, $day): \DateTimeImmutable
     {
-        if (!$day !== null && $day !== '' && $month !== null && $month !== '') {
-            if ($year === null || $year === '') {
-                $year = 1900;
+        if (!empty($day) && !empty($month)) {
+            if (empty($year)) {
+                $year = 0;
             }
 
-            return date_create($year . '-' . $month . '-' . $day);
+            return new \DateTimeImmutable($year . '-' . $month . '-' . $day);
         }
 
-        return false;
+        throw new \Exception('unexpected error');
     }
 
-    public static function getGitHubWikiAnchorLink($text)
+    public static function getGitHubWikiAnchorLink(string $text): string
     {
         // roughly adapted from https://gist.github.com/asabaylus/3071099#gistcomment-1593627
         $anchor = strtolower($text);
@@ -127,7 +129,7 @@ class MiscUtils
         return $anchor;
     }
 
-    public static function dashesToCamelCase($string, $capitalizeFirstCharacter = false)
+    public static function dashesToCamelCase(string $string, bool $capitalizeFirstCharacter = false): string
     {
         $str = str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
 

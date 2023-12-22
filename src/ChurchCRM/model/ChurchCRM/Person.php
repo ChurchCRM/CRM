@@ -19,8 +19,6 @@ use Propel\Runtime\Map\TableMap;
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
  *
- *
- *
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
@@ -56,20 +54,20 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
-    public function hideAge()
+    public function hideAge(): bool
     {
-        return $this->getFlags() == 1 || $this->getBirthYear() == '' || $this->getBirthYear() == '0';
+        return $this->getFlags() === 1 || empty($this->getBirthYear());
     }
 
-    public function getBirthDate()
+    public function getBirthDate(): ?\DateTimeImmutable
     {
         if (
-            $this->getBirthDay() !== null && $this->getBirthDay() !== '' &&
-            $this->getBirthMonth() !== null && $this->getBirthMonth() !== ''
+            !empty($this->getBirthDay()) &
+            !empty($this->getBirthMonth())
         ) {
             $birthYear = $this->getBirthYear();
-            if ($birthYear === '') {
-                $birthYear = 1900;
+            if (empty($birthYear)) {
+                $birthYear = 0;
             }
 
             return \DateTimeImmutable::createFromFormat('Y-m-d', $birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
@@ -91,7 +89,7 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
-    public function getViewURI()
+    public function getViewURI(): string
     {
         return SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->getId();
     }
@@ -107,7 +105,7 @@ class Person extends BasePerson implements PhotoInterface
         return $familyRole;
     }
 
-    public function getFamilyRoleName()
+    public function getFamilyRoleName(): string
     {
         $roleName = '';
         $role = $this->getFamilyRole();
@@ -181,7 +179,7 @@ class Person extends BasePerson implements PhotoInterface
         $note->save();
     }
 
-    public function isUser()
+    public function isUser(): bool
     {
         $user = UserQuery::create()->findPk($this->getId());
 
@@ -190,10 +188,8 @@ class Person extends BasePerson implements PhotoInterface
 
     /**
      * Get address of  a person. If empty, return family address.
-     *
-     * @return string
      */
-    public function getAddress()
+    public function getAddress(): string
     {
         if (!empty($this->getAddress1())) {
             $address = [];
@@ -228,10 +224,8 @@ class Person extends BasePerson implements PhotoInterface
 
     /**
      * Get name of a person family.
-     *
-     * @return string
      */
-    public function getFamilyName()
+    public function getFamilyName(): string
     {
         if ($this->getFamily()) {
             return $this->getFamily()
@@ -243,10 +237,8 @@ class Person extends BasePerson implements PhotoInterface
 
     /**
      * Get name of a person family.
-     *
-     * @return string
      */
-    public function getFamilyCountry()
+    public function getFamilyCountry(): string
     {
         if ($this->getFamily()) {
             return $this->getFamily()
@@ -261,10 +253,8 @@ class Person extends BasePerson implements PhotoInterface
      * 0 = Home
      * 1 = Work
      * 2 = Cell.
-     *
-     * @return string
      */
-    public function getFamilyPhone($type)
+    public function getFamilyPhone(int $type): string
     {
         switch ($type) {
             case 0:
@@ -296,7 +286,7 @@ class Person extends BasePerson implements PhotoInterface
      *
      * @return array
      */
-    public function getLatLng()
+    public function getLatLng(): array
     {
         $address = $this->getAddress(); //if person address empty, this will get Family address
         $lat = 0;
@@ -308,7 +298,7 @@ class Person extends BasePerson implements PhotoInterface
                 $lng = $latLng['Longitude'];
             }
         } else {
-            // Philippe Logel : this is usefull when a person don't have a family : ie not an address
+            // note: this is useful when a person don't have a family (i.e. not an address)
             if (!empty($this->getFamily())) {
                 if (!$this->getFamily()->hasLatitudeAndLongitude()) {
                     $this->getFamily()->updateLanLng();
@@ -324,7 +314,7 @@ class Person extends BasePerson implements PhotoInterface
         ];
     }
 
-    public function deletePhoto()
+    public function deletePhoto(): bool
     {
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
@@ -342,7 +332,7 @@ class Person extends BasePerson implements PhotoInterface
         return false;
     }
 
-    public function getPhoto()
+    public function getPhoto(): Photo
     {
         if (!$this->photo) {
             $this->photo = new Photo('Person', $this->getId());
@@ -351,7 +341,7 @@ class Person extends BasePerson implements PhotoInterface
         return $this->photo;
     }
 
-    public function setImageFromBase64($base64)
+    public function setImageFromBase64($base64): bool
     {
         if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
             $note = new Note();
@@ -379,12 +369,8 @@ class Person extends BasePerson implements PhotoInterface
      * $Style = 6  :  "LastName, Title FirstName"
      * $Style = 7  :  "LastName FirstName"
      * $Style = 8  :  "LastName, FirstName Middlename".
-     *
-     * @param $Style
-     *
-     * @return string
      */
-    public function getFormattedName($Style)
+    public function getFormattedName(int $Style): string
     {
         $nameString = '';
         switch ($Style) {
@@ -640,11 +626,11 @@ class Person extends BasePerson implements PhotoInterface
         return parent::postSave($con);
     }
 
-    public function getAge($now = null)
+    public function getAge(?\DateTimeInterface $now = null): string
     {
         $birthDate = $this->getBirthDate();
 
-        if ($this->hideAge()) {
+        if ($birthDate === null || $this->hideAge()) {
             return false;
         }
         if (empty($now)) {
@@ -662,7 +648,7 @@ class Person extends BasePerson implements PhotoInterface
     public function getNumericAge()
     {
         $birthDate = $this->getBirthDate();
-        if ($this->hideAge()) {
+        if ($birthDate === null || $this->hideAge()) {
             return false;
         }
         if (empty($now)) {
@@ -678,8 +664,7 @@ class Person extends BasePerson implements PhotoInterface
         return $ageValue;
     }
 
-    /* Philippe Logel 2017 */
-    public function getFullNameWithAge()
+    public function getFullNameWithAge(): string
     {
         return $this->getFullName() . ' ' . $this->getAge();
     }
@@ -692,12 +677,12 @@ class Person extends BasePerson implements PhotoInterface
         return $array;
     }
 
-    public function getThumbnailURL()
+    public function getThumbnailURL(): string
     {
         return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
     }
 
-    public function getEmail()
+    public function getEmail(): ?string
     {
         if (parent::getEmail() == null) {
             $family = $this->getFamily();
