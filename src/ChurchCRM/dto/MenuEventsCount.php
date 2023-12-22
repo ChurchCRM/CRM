@@ -11,6 +11,7 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -27,12 +28,15 @@ class MenuEventsCount
         return $peopleWithBirthDays;
     }
 
-    public static function getNumberBirthDates()
+    public static function getNumberBirthDates(): int
     {
         return count(self::getBirthDates());
     }
 
-    public static function getAnniversaries()
+    /**
+     * @return Family[]
+     */
+    public static function getAnniversaries(): array
     {
         $Anniversaries = FamilyQuery::create()
               ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
@@ -52,7 +56,7 @@ class MenuEventsCount
         return $families;
     }
 
-    public static function getNumberAnniversaries()
+    public static function getNumberAnniversaries(): int
     {
         return count(self::getAnniversaries());
     }

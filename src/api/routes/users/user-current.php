@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/user/current', function (RouteCollectorProxy $group) {
+$app->group('/user/current', function (RouteCollectorProxy $group): void {
     $group->post('/refresh2fasecret', 'refresh2fasecret');
     $group->post('/refresh2farecoverycodes', 'refresh2farecoverycodes');
     $group->post('/remove2fasecret', 'remove2fasecret');

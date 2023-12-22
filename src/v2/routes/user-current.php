@@ -10,13 +10,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/user/current', function (RouteCollectorProxy $group) {
+$app->group('/user/current', function (RouteCollectorProxy $group): void {
     $group->get('/enroll2fa', 'enroll2fa');
     $group->get('/changepassword', 'changepassword');
     $group->post('/changepassword', 'changepassword');
 });
 
-function enroll2fa(Request $request, Response $response, array $args)
+function enroll2fa(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/user/');
     $curUser = AuthenticationManager::getCurrentUser();
@@ -32,7 +32,7 @@ function enroll2fa(Request $request, Response $response, array $args)
     }
 }
 
-function changepassword(Request $request, Response $response, array $args)
+function changepassword(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/');
     $authenticationProvider = AuthenticationManager::getAuthenticationProvider();

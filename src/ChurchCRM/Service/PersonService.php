@@ -7,7 +7,10 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
 {
-    public function search($searchTerm, $includeFamilyRole = true)
+    /**
+     * @return array<mixed, array<'address'|'displayName'|'familyID'|'familyRole'|'firstName'|'id'|'lastName'|'role'|'thumbnailURI'|'title'|'uri', mixed>>
+     */
+    public function search(string $searchTerm, $includeFamilyRole = true): array
     {
         $searchLikeString = '%' . $searchTerm . '%';
         $people = PersonQuery::create()->
@@ -48,7 +51,10 @@ class PersonService
         return $return;
     }
 
-    public function getPeopleEmailsAndGroups()
+    /**
+     * @return array<mixed, array<int|string, mixed>>
+     */
+    public function getPeopleEmailsAndGroups(): array
     {
         $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_ID, group_grp.grp_Name, lst_OptionName
 	            from person_per

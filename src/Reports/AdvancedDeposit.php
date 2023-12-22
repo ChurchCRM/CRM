@@ -227,7 +227,7 @@ if ($output === 'pdf') {
             $this->SetAutoPageBreak(false);
         }
 
-        public function printRightJustified($x, $y, $str)
+        public function printRightJustified($x, $y, $str): void
         {
             $iLen = strlen($str);
             $nMoveBy = 2 * $iLen;
@@ -329,7 +329,7 @@ if ($output === 'pdf') {
             return $curY;
         }
 
-        public function finishPage($page)
+        public function finishPage($page): void
         {
             $footer = "Page $page   Generated on " . date(SystemConfig::getValue('sDateTimeFormat'));
             $this->SetFont('Times', 'I', 9);

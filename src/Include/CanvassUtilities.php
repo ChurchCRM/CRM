@@ -9,31 +9,31 @@
   *
  ******************************************************************************/
 
-function CanvassSetDefaultFY($iFYID)
+function CanvassSetDefaultFY(string $iFYID): void
 {
     $sSQL = "UPDATE user_usr SET usr_defaultFY='" . $iFYID . "';";
     RunQuery($sSQL);
 }
 
-function CanvassSetAllOkToCanvass()
+function CanvassSetAllOkToCanvass(): void
 {
     $sSQL = "UPDATE family_fam SET fam_OkToCanvass='TRUE' WHERE 1;";
     RunQuery($sSQL);
 }
 
-function CanvassClearAllOkToCanvass()
+function CanvassClearAllOkToCanvass(): void
 {
     $sSQL = "UPDATE family_fam SET fam_OkToCanvass='FALSE' WHERE 1;";
     RunQuery($sSQL);
 }
 
-function CanvassClearCanvasserAssignments()
+function CanvassClearCanvasserAssignments(): void
 {
     $sSQL = 'UPDATE family_fam SET fam_Canvasser=0 WHERE 1;';
     RunQuery($sSQL);
 }
 
-function CanvassGetCanvassers($groupName)
+function CanvassGetCanvassers(string $groupName)
 {
     // Find the canvassers group
     $sSQL = 'SELECT grp_ID AS iCanvassGroup FROM group_grp WHERE grp_Name="' . $groupName . '";';
@@ -55,7 +55,7 @@ function CanvassGetCanvassers($groupName)
     return $rsCanvassers;
 }
 
-function CanvassAssignCanvassers($groupName)
+function CanvassAssignCanvassers($groupName): string
 {
     $rsCanvassers = CanvassGetCanvassers($groupName);
 
@@ -81,7 +81,7 @@ function CanvassAssignCanvassers($groupName)
     return $ret;
 }
 
-function CanvassAssignNonPledging($groupName, $iFYID)
+function CanvassAssignNonPledging($groupName, string $iFYID): string
 {
     $rsCanvassers = CanvassGetCanvassers($groupName);
 

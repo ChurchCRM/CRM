@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/public/register', function (RouteCollectorProxy $group) {
+$app->group('/public/register', function (RouteCollectorProxy $group): void {
     $group->post('/family', 'registerFamilyAPI');
     $group->post('/family/', 'registerFamilyAPI');
     $group->post('/person', 'registerPersonAPI');

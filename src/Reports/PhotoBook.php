@@ -47,7 +47,7 @@ class PdfPhotoBook extends ChurchInfoReport
         $this->FYIDString = MakeFYString($iFYID);
     }
 
-    public function drawGroup($iGroupID)
+    public function drawGroup($iGroupID): void
     {
         $this->group = GroupQuery::Create()->findOneById($iGroupID);
         $this->SetMargins(0, 0); // use our own margin logic.
@@ -59,7 +59,7 @@ class PdfPhotoBook extends ChurchInfoReport
         $this->drawGroupMebersByRole('Student', gettext('Students'));
     }
 
-    private function drawPageHeader($title)
+    private function drawPageHeader(string $title): void
     {
         $this->currentX = $this->pageMarginL;
         $this->currentY = $this->pageMarginT;
@@ -72,7 +72,7 @@ class PdfPhotoBook extends ChurchInfoReport
         $this->Line($this->pageMarginL, 25.25, $this->GetPageWidth() - $this->pageMarginR, 25.25);
     }
 
-    private function drawPersonBlock($name, $thumbnailURI)
+    private function drawPersonBlock($name, $thumbnailURI): void
     {
         // Draw a bounding box around the image placeholder centered around the name text.
         $this->currentX += $this->personMarginL;
@@ -103,7 +103,7 @@ class PdfPhotoBook extends ChurchInfoReport
         $this->currentX += $this->personMarginR;
     }
 
-    private function drawGroupMebersByRole($roleName, $roleDisplayName)
+    private function drawGroupMebersByRole(string $roleName, string $roleDisplayName): void
     {
         $RoleListID = $this->group->getRoleListId();
         $groupRole = ListOptionQuery::create()->filterById($RoleListID)->filterByOptionName($roleName)->findOne();

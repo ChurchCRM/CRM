@@ -13,10 +13,10 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/groups', function (RouteCollectorProxy $group) {
+$app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->get(
         '/',
-        fn (Request $request, Response $response) => SlimUtils::renderJSON(
+        fn (Request $request, Response $response): Response => SlimUtils::renderJSON(
             $response,
             GroupQuery::create()->find()->toArray()
         )
@@ -108,7 +108,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
     });
 });
 
-$app->group('/groups', function (RouteCollectorProxy $group) {
+$app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/', function (Request $request, Response $response, array $args): Response {
         $groupSettings = $request->getParsedBody();
         $group = new Group();

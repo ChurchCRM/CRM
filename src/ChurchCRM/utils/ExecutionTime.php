@@ -16,13 +16,13 @@ class ExecutionTime
         $this->startR = getrusage();
     }
 
-    public function end()
+    public function end(): void
     {
         $this->endTime = microtime(true);
         $this->endR = getrusage();
     }
 
-    public function getMilliseconds()
+    public function getMilliseconds(): float
     {
         // if End() has not yet been called, this returns the current number of running seconds.
         // Otherwise, returns the ending number of seconds
@@ -35,13 +35,13 @@ class ExecutionTime
         return round($value, 2);
     }
 
-    private function runTime($ru, $rus, $index)
+    private function runTime(array $ru, array $rus, string $index)
     {
         return ($ru["ru_$index.tv_sec"] * 1000 + intval($ru["ru_$index.tv_usec"] / 1000))
         - ($rus["ru_$index.tv_sec"] * 1000 + intval($rus["ru_$index.tv_usec"] / 1000));
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return 'This process used ' . $this->runTime($this->endTime, $this->startTime, 'utime') .
         " ms for its computations\nIt spent " . $this->runTime($this->endTime, $this->startTime, 'stime') .

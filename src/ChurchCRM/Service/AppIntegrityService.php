@@ -154,23 +154,23 @@ class AppIntegrityService
     {
         $prerequisites = [
             new Prerequisite('PHP 8.1+', fn () => version_compare(PHP_VERSION, '8.1.0', '>=')),
-            new Prerequisite('PCRE and UTF-8 Support', fn () => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
-            new Prerequisite('Multibyte Encoding', fn () => extension_loaded('mbstring')),
-            new Prerequisite('PHP Phar', fn () => extension_loaded('phar')),
-            new Prerequisite('PHP Session', fn () => extension_loaded('session')),
-            new Prerequisite('PHP XML', fn () => extension_loaded('xml')),
-            new Prerequisite('PHP EXIF', fn () => extension_loaded('exif')),
-            new Prerequisite('PHP iconv', fn () => extension_loaded('iconv')),
-            new Prerequisite('Mod Rewrite or Equivalent', fn () => AppIntegrityService::hasModRewrite()),
-            new Prerequisite('GD Library for image manipulation', fn () => extension_loaded('gd') && function_exists('gd_info')),
-            new Prerequisite('FreeType Library', fn () => function_exists('imagettftext')),
-            new Prerequisite('FileInfo Extension for image manipulation', fn () => extension_loaded('fileinfo')),
-            new Prerequisite('cURL', fn () => function_exists('curl_version')),
-            new Prerequisite('locale gettext', fn () => function_exists('bindtextdomain') && function_exists('gettext')),
-            new Prerequisite('Include/Config file is writeable', fn () => is_writable(SystemURLs::getDocumentRoot() . '/Include/') || is_writable(SystemURLs::getDocumentRoot() . '/Include/Config.php')),
-            new Prerequisite('Images directory is writeable', fn () => AppIntegrityService::testImagesWriteable()),
-            new Prerequisite('PHP ZipArchive', fn () => extension_loaded('zip')),
-            new Prerequisite('Mysqli Functions', fn () => function_exists('mysqli_connect')),
+            new Prerequisite('PCRE and UTF-8 Support', fn (): bool => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
+            new Prerequisite('Multibyte Encoding', fn (): bool => extension_loaded('mbstring')),
+            new Prerequisite('PHP Phar', fn (): bool => extension_loaded('phar')),
+            new Prerequisite('PHP Session', fn (): bool => extension_loaded('session')),
+            new Prerequisite('PHP XML', fn (): bool => extension_loaded('xml')),
+            new Prerequisite('PHP EXIF', fn (): bool => extension_loaded('exif')),
+            new Prerequisite('PHP iconv', fn (): bool => extension_loaded('iconv')),
+            new Prerequisite('Mod Rewrite or Equivalent', fn (): bool => AppIntegrityService::hasModRewrite()),
+            new Prerequisite('GD Library for image manipulation', fn (): bool => extension_loaded('gd') && function_exists('gd_info')),
+            new Prerequisite('FreeType Library', fn (): bool => function_exists('imagettftext')),
+            new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => extension_loaded('fileinfo')),
+            new Prerequisite('cURL', fn (): bool => function_exists('curl_version')),
+            new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
+            new Prerequisite('Include/Config file is writeable', fn (): bool => is_writable(SystemURLs::getDocumentRoot() . '/Include/') || is_writable(SystemURLs::getDocumentRoot() . '/Include/Config.php')),
+            new Prerequisite('Images directory is writeable', fn (): bool => AppIntegrityService::testImagesWriteable()),
+            new Prerequisite('PHP ZipArchive', fn (): bool => extension_loaded('zip')),
+            new Prerequisite('Mysqli Functions', fn (): bool => function_exists('mysqli_connect')),
         ];
 
         return $prerequisites;
@@ -183,7 +183,7 @@ class AppIntegrityService
     {
         return array_filter(
             AppIntegrityService::getApplicationPrerequisites(),
-            fn ($prereq) => !$prereq->isPrerequisiteMet()
+            fn ($prereq): bool => !$prereq->isPrerequisiteMet()
         );
     }
 

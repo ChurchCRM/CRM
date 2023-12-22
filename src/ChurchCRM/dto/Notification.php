@@ -11,27 +11,27 @@ class Notification
 {
     protected $projectorText;
     protected $recipients;
-    protected $person;
+    protected ?Person $person = null;
 
-    public function setRecipients($recipients)
+    public function setRecipients($recipients): void
     {
         $this->recipients = $recipients;
     }
 
-    public function setSMSText($text)
+    public function setSMSText($text): void
     {
     }
 
-    public function setEmailText($text)
+    public function setEmailText($text): void
     {
     }
 
-    public function setPerson(Person $Person)
+    public function setPerson(Person $Person): void
     {
         $this->person = $Person;
     }
 
-    public function setProjectorText($text)
+    public function setProjectorText(string $text): void
     {
         $this->projectorText = $text;
     }
@@ -53,7 +53,7 @@ class Notification
         }
     }
 
-    private function sendSMS()
+    private function sendSMS(): bool
     {
         try {
             $client = new Client(new Basic(SystemConfig::getValue('sNexmoAPIKey'), SystemConfig::getValue('sNexmoAPISecret')));
@@ -88,7 +88,7 @@ class Notification
         }
     }
 
-    public function send()
+    public function send(): array
     {
         $methods = [];
         if (SystemConfig::hasValidMailServerSettings()) {

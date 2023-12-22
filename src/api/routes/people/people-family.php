@@ -22,7 +22,7 @@ use Slim\HttpCache\CacheProvider;
 
 $app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
 
-$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group) {
+$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
         $photo = new Photo('Family', $args['familyId']);
         return SlimUtils::renderPhoto($response, $photo);

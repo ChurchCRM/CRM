@@ -42,7 +42,7 @@ class BackupJob extends JobBase
      * @param BackupType $BackupType
      * @param bool       $IncludeExtraneousFiles
      */
-    public function __construct($BaseName, $BackupType, $IncludeExtraneousFiles, $EncryptBackup, $BackupPassword)
+    public function __construct(string $BaseName, $BackupType, $IncludeExtraneousFiles, $EncryptBackup, $BackupPassword)
     {
         $this->BackupType = $BackupType;
         $this->TempFolder = $this->createEmptyTempFolder();
@@ -60,7 +60,7 @@ class BackupJob extends JobBase
         );
     }
 
-    public function copyToWebDAV($Endpoint, $Username, $Password)
+    public function copyToWebDAV(string $Endpoint, string $Username, string $Password)
     {
         LoggerUtils::getAppLogger()->info('Beginning to copy backup to: ' . $Endpoint);
 
@@ -97,7 +97,7 @@ class BackupJob extends JobBase
         return $result;
     }
 
-    private function captureSQLFile(\SplFileInfo $SqlFilePath)
+    private function captureSQLFile(\SplFileInfo $SqlFilePath): void
     {
         global $sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD;
         LoggerUtils::getAppLogger()->debug('Beginning to backup database to: ' . $SqlFilePath->getPathname());
@@ -114,7 +114,7 @@ class BackupJob extends JobBase
         }
     }
 
-    private function shouldBackupImageFile(SplFileInfo $ImageFile)
+    private function shouldBackupImageFile(SplFileInfo $ImageFile): bool
     {
         $isExtraneousFile = strpos($ImageFile->getFileName(), '-initials') != false ||
         strpos($ImageFile->getFileName(), '-remote') != false ||
@@ -123,7 +123,7 @@ class BackupJob extends JobBase
         return $ImageFile->isFile() && !(!$this->IncludeExtraneousFiles && $isExtraneousFile); //todo: figure out this logic
     }
 
-    private function createFullArchive()
+    private function createFullArchive(): void
     {
         $imagesAddedToArchive = [];
         $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName . '.tar');
@@ -157,7 +157,7 @@ class BackupJob extends JobBase
         LoggerUtils::getAppLogger()->debug('Temp Database backup deleted: ' . $SqlFile);
     }
 
-    private function createGZSql()
+    private function createGZSql(): void
     {
         $SqlFile = new \SplFileInfo($this->TempFolder . '/' . 'ChurchCRM-Database.sql');
         $this->captureSQLFile($SqlFile);
@@ -168,7 +168,7 @@ class BackupJob extends JobBase
         unlink($SqlFile->getPathname());
     }
 
-    private function encryptBackupFile()
+    private function encryptBackupFile(): void
     {
         LoggerUtils::getAppLogger()->info('Encrypting backup file: ' . $this->BackupFile);
         $tempfile = new \SplFileInfo($this->BackupFile->getPathname() . 'temp');
@@ -177,7 +177,7 @@ class BackupJob extends JobBase
         LoggerUtils::getAppLogger()->info('Finished ecrypting backup file');
     }
 
-    public function execute()
+    public function execute(): bool
     {
         $time = new ExecutionTime();
         LoggerUtils::getAppLogger()->info('Beginning backup job. Type: ' . $this->BackupType . '. BaseName: ' . $this->BackupFileBaseName);

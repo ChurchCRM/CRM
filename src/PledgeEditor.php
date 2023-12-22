@@ -427,7 +427,6 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 
 // Set Current Deposit setting for user
 if ($iCurrentDeposit) {
-    /* @var $currentUser \ChurchCRM\User */
     $currentUser = AuthenticationManager::getCurrentUser();
     $currentUser->setCurrentDeposit($iCurrentDeposit);
     $currentUser->save();

@@ -43,7 +43,7 @@ class AuthenticationManager
     {
         try {
             $currentUser = self::getAuthenticationProvider()->getCurrentUser();
-            if (empty($currentUser)) {
+            if (!$currentUser instanceof User) {
                 throw new \Exception('No current user provided by current authentication provider: ' . get_class(self::getAuthenticationProvider()));
             }
 

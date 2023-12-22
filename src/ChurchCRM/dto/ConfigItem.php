@@ -44,7 +44,7 @@ class ConfigItem
         return $this->url;
     }
 
-    public function setDBConfigObject($dbConfigItem)
+    public function setDBConfigObject($dbConfigItem): void
     {
         $this->dbConfigItem = $dbConfigItem;
         $this->value = $dbConfigItem->getValue();
@@ -64,12 +64,12 @@ class ConfigItem
         }
     }
 
-    public function getBooleanValue()
+    public function getBooleanValue(): bool
     {
         return boolval($this->getValue());
     }
 
-    public function setValue($value)
+    public function setValue($value): void
     {
         if ($value == $this->getDefault()) {
           //if the value is being set to the default value

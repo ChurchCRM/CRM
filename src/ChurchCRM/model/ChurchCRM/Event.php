@@ -31,17 +31,17 @@ class Event extends BaseEvent
         return $array;
     }
 
-    public function isEditable()
+    public function isEditable(): bool
     {
         return $this->editable;
     }
 
-    public function setEditable($editable)
+    public function setEditable(bool $editable): void
     {
         $this->editable = $editable;
     }
 
-    public function checkInPerson($PersonId)
+    public function checkInPerson($PersonId): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
@@ -57,7 +57,7 @@ class Event extends BaseEvent
         return ['status' => 'success'];
     }
 
-    public function checkOutPerson($PersonId)
+    public function checkOutPerson($PersonId): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
@@ -73,7 +73,7 @@ class Event extends BaseEvent
         return ['status' => 'success'];
     }
 
-    public function getViewURI()
+    public function getViewURI(): string
     {
         return SystemURLs::getRootPath() . '/EventEditor.php?calendarAction=' . $this->getID();
     }

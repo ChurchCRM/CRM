@@ -16,14 +16,14 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/family', function (RouteCollectorProxy $group) {
+$app->group('/family', function (RouteCollectorProxy $group): void {
     $group->get('/not-found', 'viewFamilyNotFound');
     $group->get('/{id}', 'viewFamily');
     $group->get('/', 'listFamilies');
     $group->get('', 'listFamilies');
 });
 
-function listFamilies(Request $request, Response $response, array $args)
+function listFamilies(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/people/');
     $sMode = 'Active';
@@ -52,7 +52,7 @@ function listFamilies(Request $request, Response $response, array $args)
     return $renderer->render($response, 'family-list.php', $pageArgs);
 }
 
-function viewFamilyNotFound(Request $request, Response $response, array $args)
+function viewFamilyNotFound(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/common/');
 
@@ -65,7 +65,7 @@ function viewFamilyNotFound(Request $request, Response $response, array $args)
     return $renderer->render($response, 'not-found-view.php', $pageArgs);
 }
 
-function viewFamily(Request $request, Response $response, array $args)
+function viewFamily(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/people/');
 

@@ -16,9 +16,9 @@ use Propel\Runtime\Collection\ObjectCollection;
 class iCal
 {
     private string $icsHeader;
-    private \Propel\Runtime\Collection\ObjectCollection $eventsArray;
+    private ObjectCollection $eventsArray;
 
-    public function __construct(ObjectCollection $Events, $CalendarName)
+    public function __construct(ObjectCollection $Events, string $CalendarName)
     {
         $this->eventsArray = $Events;
         $this->icsHeader = "BEGIN:VCALENDAR\r\n" .
@@ -30,7 +30,7 @@ class iCal
                     "X-WR-CALDESC:\r\n";
     }
 
-    private function eventToVEVENT(Event $event)
+    private function eventToVEVENT(Event $event): string
     {
         $now = new \DateTime();
         $UTC = new \DateTimeZone('UTC');
@@ -44,7 +44,7 @@ class iCal
           "END:VEVENT\r\n";
     }
 
-    public function toString()
+    public function toString(): string
     {
         $iCal = $this->icsHeader;
         foreach ($this->eventsArray as $event) {

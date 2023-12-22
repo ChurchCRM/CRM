@@ -56,7 +56,7 @@ class LocalAuthentication implements IAuthenticationProvider
 
     public function endSession(): void
     {
-        if (!empty($this->currentUser)) {
+        if ($this->currentUser instanceof User) {
             //$this->currentUser->setDefaultFY($_SESSION['idefaultFY']);
             $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
             $this->currentUser->save();

@@ -6,7 +6,7 @@ class KeyManager
 {
     private static $TwoFASecretKey;
 
-    public static function init($TwoFASecretKey)
+    public static function init($TwoFASecretKey): void
     {
         self::$TwoFASecretKey = $TwoFASecretKey;
     }
@@ -16,7 +16,7 @@ class KeyManager
         return self::$TwoFASecretKey;
     }
 
-    public static function getAreAllSecretsDefined()
+    public static function getAreAllSecretsDefined(): bool
     {
         return !empty(self::$TwoFASecretKey);
     }

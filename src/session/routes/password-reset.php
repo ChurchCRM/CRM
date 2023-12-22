@@ -16,7 +16,7 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/forgot-password', function (RouteCollectorProxy $group) {
+$app->group('/forgot-password', function (RouteCollectorProxy $group): void {
     if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
         $group->get('/reset-request', 'forgotPassword');
         $group->post('/reset-request', 'userPasswordReset');
@@ -55,7 +55,7 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group) {
     }
 });
 
-function forgotPassword(Request $request, Response $response, array $args)
+function forgotPassword(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/password/');
     $pageArgs = [

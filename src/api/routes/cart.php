@@ -7,7 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/cart', function (RouteCollectorProxy $group) {
+$app->group('/cart', function (RouteCollectorProxy $group): void {
     $group->get('/', function (Request $request, Response $response, array $args): Response {
         $cart = ['PeopleCart' => $_SESSION['aPeopleCart']];
         return SlimUtils::renderJSON($response, $cart);

@@ -14,7 +14,7 @@ use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/calendars', function (RouteCollectorProxy $group) {
+$app->group('/calendars', function (RouteCollectorProxy $group): void {
     $group->get('', 'getUserCalendars');
     $group->post('', 'NewCalendar')->add(AddEventsRoleAuthMiddleware::class);
     $group->get('/', 'getUserCalendars');
@@ -27,7 +27,7 @@ $app->group('/calendars', function (RouteCollectorProxy $group) {
     $group->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(AddEventsRoleAuthMiddleware::class);
 });
 
-$app->group('/systemcalendars', function (RouteCollectorProxy $group) {
+$app->group('/systemcalendars', function (RouteCollectorProxy $group): void {
     $group->get('', 'getSystemCalendars');
     $group->get('/', 'getSystemCalendars');
     $group->get('/{id}/events', 'getSystemCalendarEvents');
@@ -180,7 +180,7 @@ function DeleteAccessToken(Request $request, Response $response, array $args): R
     return SlimUtils::renderJSON($response, $Calendar->toArray());
 }
 
-function NewCalendar(Request $request, Response $response, $args)
+function NewCalendar(Request $request, Response $response, $args): Response
 {
     $input = $request->getParsedBody();
     $Calendar = new Calendar();
@@ -192,7 +192,7 @@ function NewCalendar(Request $request, Response $response, $args)
     return SlimUtils::renderJSON($response, $Calendar->toArray());
 }
 
-function deleteUserCalendar(Request $request, Response $response, $args)
+function deleteUserCalendar(Request $request, Response $response, array $args): Response
 {
     if (!isset($args['id'])) {
         throw new HttpBadRequestException($request, gettext('Invalid request: Missing calendar id'));

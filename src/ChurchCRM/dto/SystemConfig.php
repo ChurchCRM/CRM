@@ -13,14 +13,14 @@ class SystemConfig
     /**
      * @var Config[]
      */
-    private static $configs;
+    private static ?array $configs = null;
 
     /**
      * @var array<string, string[]>
      */
-    private static $categories;
+    private static ?array $categories = null;
 
-    private static function getSupportedLocales()
+    private static function getSupportedLocales(): array
     {
         $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json');
         $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
@@ -32,7 +32,7 @@ class SystemConfig
         return ['Choices' => $languagesChoices];
     }
 
-    public static function getMonoLogLevels()
+    public static function getMonoLogLevels(): array
     {
         return [
             'Choices' => [
@@ -48,7 +48,7 @@ class SystemConfig
         ];
     }
 
-    public static function getNameChoices()
+    public static function getNameChoices(): array
     {
         return [
             'Choices' => [
@@ -65,7 +65,7 @@ class SystemConfig
         ];
     }
 
-    public static function getFamilyRoleChoices()
+    public static function getFamilyRoleChoices(): array
     {
         $roles = [];
 
@@ -81,7 +81,7 @@ class SystemConfig
         return ['Choices' => $roles];
     }
 
-    private static function buildConfigs()
+    private static function buildConfigs(): array
     {
         return [
             'sLogLevel'                            => new ConfigItem(4, 'sLogLevel', 'choice', '200', gettext('Event Log severity to write, used by ORM and App Logs'), '', json_encode(SystemConfig::getMonoLogLevels(), JSON_THROW_ON_ERROR)),
@@ -268,7 +268,7 @@ class SystemConfig
         ];
     }
 
-    private static function buildCategories()
+    private static function buildCategories(): array
     {
         return [
             gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sHomeAreaCode', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite', 'sChurchFB', 'sChurchTwitter'],
@@ -292,7 +292,7 @@ class SystemConfig
     /**
      * @param Config[] $configs
      */
-    public static function init($configs = null)
+    public static function init($configs = null): void
     {
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
@@ -317,7 +317,7 @@ class SystemConfig
     /**
      * @param Config[] $configs
      */
-    private static function scrapeDBConfigs($configs)
+    private static function scrapeDBConfigs($configs): void
     {
         foreach ($configs as $config) {
             if (isset(self::$configs[$config->getName()])) {
@@ -354,7 +354,7 @@ class SystemConfig
         return self::$configs[$name]->getBooleanValue();
     }
 
-    public static function setValue(string $name, $value)
+    public static function setValue(string $name, $value): void
     {
         if (!isset(self::$configs[$name])) {
             throw new \Exception(gettext('An invalid configuration name has been requested') . ': ' . $name);
@@ -363,7 +363,7 @@ class SystemConfig
         self::$configs[$name]->setValue($value);
     }
 
-    public static function setValueById($Id, $value)
+    public static function setValueById(string $Id, $value): void
     {
         $success = false;
         foreach (self::$configs as $configItem) {

@@ -10,7 +10,7 @@ class SQLUtils
      *
      * @param string path to sql file
      */
-    public static function sqlImport($fileName, $mysqli)
+    public static function sqlImport(string $fileName, $mysqli): void
     {
         $delimiter = ';';
         $fileHandle = fopen($fileName, 'r');
@@ -122,7 +122,7 @@ class SQLUtils
      *
      * @return bool
      */
-    private static function isQuoted($offset, $text)
+    private static function isQuoted($offset, $text): bool
     {
         if ($offset > strlen($text)) {
             $offset = strlen($text);
@@ -141,7 +141,7 @@ class SQLUtils
         return $isQuoted;
     }
 
-    private static function query($sql, $mysqli)
+    private static function query($sql, $mysqli): void
     {
         if (preg_match("/DEFINER\s*=.*@.*/", $sql)) {
             return;

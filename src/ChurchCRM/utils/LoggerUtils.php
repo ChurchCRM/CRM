@@ -9,15 +9,15 @@ use Monolog\Logger;
 
 class LoggerUtils
 {
-    private static ?\Monolog\Logger $appLogger = null;
+    private static ?Logger $appLogger = null;
     private static ?\Monolog\Handler\StreamHandler $appLogHandler = null;
-    private static ?\Monolog\Logger $cspLogger = null;
-    private static ?\Monolog\Logger $authLogger = null;
-    private static ?\Monolog\Logger $slimLogger = null;
+    private static ?Logger $cspLogger = null;
+    private static ?Logger $authLogger = null;
+    private static ?Logger $slimLogger = null;
     private static ?\Monolog\Handler\StreamHandler $authLogHandler = null;
     private static ?string $correlationId = null;
 
-    public static function getCorrelationId()
+    public static function getCorrelationId(): ?string
     {
         if (empty(self::$correlationId)) {
             self::$correlationId = uniqid();
@@ -26,12 +26,12 @@ class LoggerUtils
         return self::$correlationId;
     }
 
-    public static function getLogLevel()
+    public static function getLogLevel(): int
     {
         return intval(SystemConfig::getValue('sLogLevel'));
     }
 
-    public static function buildLogFilePath($type)
+    public static function buildLogFilePath(string $type): string
     {
         return SystemURLs::getDocumentRoot() . '/logs/' . date('Y-m-d') . '-' . $type . '.log';
     }
@@ -54,7 +54,7 @@ class LoggerUtils
     /**
      * @return Logger
      */
-    public static function getAppLogger($level = null)
+    public static function getAppLogger($level = null): ?Logger
     {
         if (self::$appLogger === null) {
             // if $level is null
@@ -67,7 +67,7 @@ class LoggerUtils
             //hold a reference to the handler object so that resetAppLoggerLevel can be called later on
             self::$appLogHandler = new StreamHandler(self::buildLogFilePath('app'), $level);
             self::$appLogger->pushHandler(self::$appLogHandler);
-            self::$appLogger->pushProcessor(function ($entry) {
+            self::$appLogger->pushProcessor(function (array $entry): array {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
                 $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
                 $entry['extra']['correlation_id'] = self::getCorrelationId();
@@ -79,7 +79,7 @@ class LoggerUtils
         return self::$appLogger;
     }
 
-    private static function getCaller()
+    private static function getCaller(): array
     {
         $callers = debug_backtrace();
         $call = [];
@@ -96,7 +96,7 @@ class LoggerUtils
     /**
      * @return Logger
      */
-    public static function getAuthLogger($level = null)
+    public static function getAuthLogger($level = null): ?Logger
     {
         if (self::$authLogger === null) {
             // if $level is null
@@ -109,7 +109,7 @@ class LoggerUtils
             //hold a reference to the handler object so that resetAppLoggerLevel can be called later on
             self::$authLogHandler = new StreamHandler(self::buildLogFilePath('auth'), $level);
             self::$authLogger->pushHandler(self::$authLogHandler);
-            self::$authLogger->pushProcessor(function ($entry) {
+            self::$authLogger->pushProcessor(function (array $entry): array {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
                 $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
                 $entry['extra']['correlation_id'] = self::getCorrelationId();
@@ -122,7 +122,7 @@ class LoggerUtils
         return self::$authLogger;
     }
 
-    public static function resetAppLoggerLevel()
+    public static function resetAppLoggerLevel(): void
     {
         // if the app log handler was initialized (in the boostrapper) to a specific level
         // before the database initialization occurred
@@ -130,7 +130,7 @@ class LoggerUtils
         self::$appLogHandler->setLevel(self::getLogLevel());
     }
 
-    public static function getCSPLogger()
+    public static function getCSPLogger(): ?Logger
     {
         if (self::$cspLogger === null) {
             self::$cspLogger = new Logger('cspLogger');

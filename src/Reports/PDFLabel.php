@@ -26,7 +26,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\Utils\InputUtils;
 
-function GroupBySalutation($famID, $aAdultRole, $aChildRole)
+function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
 {
     // Function to place the name(s) on a label when grouping multiple
     // family members on the same label.
@@ -249,7 +249,7 @@ function MakeADCArray($sADClist)
     return $aReturnArray;
 }
 
-function ZipBundleSort($inLabels)
+function ZipBundleSort(array $inLabels)
 {
     //
     // Description:
@@ -601,7 +601,7 @@ function ZipBundleSort($inLabels)
     }
 }
 
-function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete)
+function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete): string
 {
     // $mode is "indiv" or "fam"
 

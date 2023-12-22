@@ -14,22 +14,22 @@ class ResetPasswordTokenEmail extends BaseUserEmail
         parent::__construct($user);
     }
 
-    protected function getSubSubject()
+    protected function getSubSubject(): string
     {
         return gettext('Password Reset Link');
     }
 
-    protected function buildMessageBody()
+    protected function buildMessageBody(): string
     {
         return gettext('You can reset your ChurchCRM password by clicking this link') . ':';
     }
 
-    protected function getFullURL()
+    protected function getFullURL(): string
     {
         return SystemURLs::getURL() . '/session/forgot-password/set/' . $this->token;
     }
 
-    protected function getButtonText()
+    protected function getButtonText(): string
     {
         return gettext('Reset Password');
     }

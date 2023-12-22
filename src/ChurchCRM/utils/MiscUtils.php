@@ -89,7 +89,7 @@ class MiscUtils
 
     // Format a BirthDate
     // Optionally, the separator may be specified.  Default is YEAR-MN-DY
-    public static function formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags): string
+    public static function formatBirthDate($per_BirthYear, ?string $per_BirthMonth, ?string $per_BirthDay, $sSeparator, $bFlags): string
     {
         try {
             $birthDate = MiscUtils::birthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
@@ -104,7 +104,7 @@ class MiscUtils
         return $birthDate->format(SystemConfig::getValue('sDateFormatLong'));
     }
 
-    public static function birthDate($year, $month, $day): \DateTimeImmutable
+    public static function birthDate($year, ?string $month, ?string $day): \DateTimeImmutable
     {
         if (!empty($day) && !empty($month)) {
             if (empty($year)) {

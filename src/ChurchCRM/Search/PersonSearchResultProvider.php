@@ -24,7 +24,10 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
         return $this->formatSearchGroup();
     }
 
-    private function getPersonSearchResultsByPartialName(string $SearchQuery)
+    /**
+     * @return SearchResult[]
+     */
+    private function getPersonSearchResultsByPartialName(string $SearchQuery): array
     {
         $searchResults = [];
         $id = 0;

@@ -10,12 +10,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-$app->group('/calendar', function (RouteCollectorProxy $group) {
+$app->group('/calendar', function (RouteCollectorProxy $group): void {
     $group->get('/', 'getCalendar');
     $group->get('', 'getCalendar');
 });
 
-function getCalendar(Request $request, Response $response, array $args)
+function getCalendar(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/calendar/');
 

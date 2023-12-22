@@ -14,11 +14,14 @@ use ChurchCRM\Utils\RedirectUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
+use Propel\Runtime\Connection\ConnectionWrapper;
+use Propel\Runtime\Connection\DebugPDO;
 use Propel\Runtime\Propel;
+use Propel\Runtime\ServiceContainer\ServiceContainerInterface;
 
 class Bootstrapper
 {
-    private static ?\Propel\Runtime\Connection\ConnectionManagerSingle $manager = null;
+    private static ?ConnectionManagerSingle $manager = null;
     private static ?string $dbClassName = null;
     private static $databaseServerName;
     private static $databasePort;
@@ -27,15 +30,12 @@ class Bootstrapper
     private static $databaseName;
     private static $rootPath;
     private static $lockURL;
-    private static $allowableURLs;
-    /**
-     *
-     * @var Logger
-     */
-    private static $bootStrapLogger;
-    private static ?\Propel\Runtime\ServiceContainer\ServiceContainerInterface $serviceContainer = null;
+    private static ?array $allowableURLs = null;
 
-    public static function init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL)
+    private static ?Logger $bootStrapLogger = null;
+    private static ?ServiceContainerInterface $serviceContainer = null;
+
+    public static function init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, array $URL): void
     {
         global $debugBootstrapper;
         self::$databaseServerName = $sSERVERNAME;
@@ -83,10 +83,8 @@ class Bootstrapper
     }
     /***
      * Gets a LocaleInfo object for the currently configured system sLanguage
-     *
-     * @return ChurchCRM\LocaleInfo
      */
-    public static function getCurrentLocale()
+    public static function getCurrentLocale(): LocaleInfo
     {
         $userLocale = "";
         try {
@@ -97,7 +95,7 @@ class Bootstrapper
         return new LocaleInfo(SystemConfig::getValue('sLanguage'), $userLocale);
     }
 
-    private static function configureLocale()
+    private static function configureLocale(): void
     {
         global $aLocaleInfo,$localeInfo;
         if (SystemConfig::getValue('sTimeZone')) {
@@ -125,7 +123,7 @@ class Bootstrapper
         self::$bootStrapLogger->debug("Locale configuration complete");
     }
 
-    private static function initMySQLI()
+    private static function initMySQLI(): void
     {
         global $cnInfoCentral; // need to stop using this everywhere....
         self::$bootStrapLogger->debug("Initializing MySQLi to " . self::$databaseServerName . " as " . self::$databaseUser);
@@ -156,7 +154,7 @@ class Bootstrapper
             Bootstrapper::systemFailure('Could not connect to the MySQL database <strong>' . self::$databaseName . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . mysqli_error($cnInfoCentral));
         self::$bootStrapLogger->debug("Database selected: " . self::$databaseName);
     }
-    private static function testMYSQLI()
+    private static function testMYSQLI(): void
     {
         global $cnInfoCentral; // need to stop using this everywhere....
         // Do we have a connection to the database? If not, log it and tell the user
@@ -179,14 +177,11 @@ class Bootstrapper
             Bootstrapper::systemFailure('Could not connect to MySQL on <strong>' . self::$databaseServerName . '</strong> on port <strong>' . self::$databasePort . '</strong> as <strong>' . self::$databaseUser . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . $sMYSQLERROR, 'Database Connection Failure');
         }
     }
-    private static function initPropel()
+    private static function initPropel(): void
     {
         self::$bootStrapLogger->debug("Initializing Propel ORM");
         // ==== ORM
-        self::$dbClassName = '\\' . \Propel\Runtime\Connection\ConnectionWrapper::class;
-        /**
-         * @var \Propel\Runtime\ServiceContainer\StandardServiceContainer
-         */
+        self::$dbClassName = '\\' . ConnectionWrapper::class;
         self::$serviceContainer = Propel::getServiceContainer();
         self::$serviceContainer->checkVersion('2.0.0-dev');
         self::$serviceContainer->setAdapterClass('default', 'mysql');
@@ -197,7 +192,7 @@ class Bootstrapper
         self::$serviceContainer->setDefaultDatasource('default');
         self::$bootStrapLogger->debug("Initialized Propel ORM");
     }
-    private static function isDatabaseEmpty()
+    private static function isDatabaseEmpty(): bool
     {
         self::$bootStrapLogger->debug("Checking for ChurchCRM Database tables");
         $connection = Propel::getConnection();
@@ -212,7 +207,7 @@ class Bootstrapper
         self::$bootStrapLogger->debug("Found " . count($results) . " Database tables");
         return false;
     }
-    private static function installChurchCRMSchema()
+    private static function installChurchCRMSchema(): void
     {
         self::$bootStrapLogger->info("Installing ChurchCRM Schema");
         $connection = Propel::getConnection();
@@ -224,7 +219,7 @@ class Bootstrapper
         $version->save();
         self::$bootStrapLogger->info("Installed ChurchCRM Schema version: " . SystemService::getInstalledVersion());
     }
-    public static function initSession()
+    public static function initSession(): void
     {
         // Initialize the session
         $sessionName = 'CRM-' . hash("md5", SystemURLs::getDocumentRoot());
@@ -233,7 +228,7 @@ class Bootstrapper
         session_start();
         self::$bootStrapLogger->debug("Session initialized: " . $sessionName);
     }
-    private static function configureLogging()
+    private static function configureLogging(): void
     {
         // PHP Logs
         $phpLogPath = LoggerUtils::buildLogFilePath("php");
@@ -246,19 +241,19 @@ class Bootstrapper
             $ormLogPath = LoggerUtils::buildLogFilePath("orm");
             $ormLogger = new Logger('ormLogger');
             self::$bootStrapLogger->debug("Configuring ORM logs at :" . $ormLogPath);
-            self::$dbClassName = '\\' . \Propel\Runtime\Connection\DebugPDO::class;
+            self::$dbClassName = '\\' . DebugPDO::class;
             self::$manager->setConfiguration(self::buildConnectionManagerConfig());
             $ormLogger->pushHandler(new StreamHandler($ormLogPath, LoggerUtils::getLogLevel()));
             self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
         }
     }
 
-    public static function getDSN()
+    public static function getDSN(): string
     {
         return 'mysql:host=' . self::$databaseServerName . ';port=' . self::$databasePort . ';dbname=' . self::$databaseName;
     }
 
-    private static function buildConnectionManagerConfig()
+    private static function buildConnectionManagerConfig(): array
     {
         if (self::$databasePort === null) {
             self::$databasePort = 3306;
@@ -278,7 +273,7 @@ class Bootstrapper
             ],
         ];
     }
-    private static function configureUserEnvironment()  // TODO: This function needs to stop creating global variable-variables.
+    private static function configureUserEnvironment(): void  // TODO: This function needs to stop creating global variable-variables.
     {
         global $cnInfoCentral;
         if (AuthenticationManager::validateUserSessionIsActive(false)) {      // set on POST to /session/begin
@@ -298,7 +293,7 @@ class Bootstrapper
         }
     }
 
-    public static function systemFailure($message, $header = 'Setup failure')
+    public static function systemFailure($message, $header = 'Setup failure'): void
     {
         $sPageTitle = $header;
         if (!SystemConfig::isInitialized()) {
@@ -315,7 +310,7 @@ class Bootstrapper
         require '../Include/FooterNotLoggedIn.php';
         exit();
     }
-    public static function isDBCurrent()
+    public static function isDBCurrent(): bool
     {
         $dbVersion = SystemService::getDBVersion();
         $installVersion = SystemService::getInstalledVersion();

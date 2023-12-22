@@ -4,6 +4,7 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
+use Geocoder\Collection;
 use Geocoder\Provider\BingMaps\BingMaps;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\Query\GeocodeQuery;
@@ -12,7 +13,7 @@ use Http\Adapter\Guzzle7\Client;
 
 class GeoUtils
 {
-    public static function getLatLong($address)
+    public static function getLatLong(string $address): array
     {
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::getCurrentLocale();
@@ -36,7 +37,7 @@ class GeoUtils
             $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
             $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
             $logger->debug('We have ' . $result->count() . ' results');
-            if (!empty($result)) {
+            if ($result instanceof Collection) {
                 $firstResult = $result->get(0);
                 $coordinates = $firstResult->getCoordinates();
                 $lat = $coordinates->getLatitude();
@@ -52,7 +53,7 @@ class GeoUtils
         ];
     }
 
-    public static function drivingDistanceMatrix($address1, $address2)
+    public static function drivingDistanceMatrix($address1, $address2): array
     {
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::getCurrentLocale();
@@ -74,7 +75,7 @@ class GeoUtils
     // Function takes latitude and longitude
     // of two places as input and returns the
     // distance in miles.
-    public static function latLonDistance($lat1, $lon1, $lat2, $lon2)
+    public static function latLonDistance($lat1, $lon1, $lat2, $lon2): string
     {
         // Formula for calculating radians between
         // latitude and longitude pairs.
@@ -115,7 +116,7 @@ class GeoUtils
         return $distance_f;
     }
 
-    public static function latLonBearing($lat1, $lon1, $lat2, $lon2)
+    public static function latLonBearing($lat1, $lon1, $lat2, $lon2): string
     {
         // Formula for determining the bearing from ($lat1,$lon1) to ($lat2,$lon2)
 

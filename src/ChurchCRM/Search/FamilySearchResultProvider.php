@@ -29,7 +29,10 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
         return $this->formatSearchGroup();
     }
 
-    private function getFamilySearchResultsByPartialName(string $SearchQuery)
+    /**
+     * @return SearchResult[]
+     */
+    private function getFamilySearchResultsByPartialName(string $SearchQuery): array
     {
         $searchResults = [];
         $id = 0;
@@ -56,7 +59,10 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
         }
     }
 
-    private function getFamilySearchResultsByCustomProperties(string $SearchQuery)
+    /**
+     * @return SearchResult[]
+     */
+    private function getFamilySearchResultsByCustomProperties(string $SearchQuery): array
     {
         $searchResults = [];
         $id = 0;

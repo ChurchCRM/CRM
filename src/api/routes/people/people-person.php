@@ -19,7 +19,7 @@ use Slim\HttpCache\Cache;
 $app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
 
 // This group does not load the person via middleware (to speed up the page loads)
-$app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
+$app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->get('/thumbnail', function (Request $request, Response $response, array $args): Response {
         $photo = new Photo('Person', $args['personId']);
         return SlimUtils::renderPhoto($response, $photo);
@@ -31,7 +31,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
     });
 });
 
-$app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group) {
+$app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
 

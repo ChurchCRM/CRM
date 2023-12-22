@@ -24,7 +24,10 @@ class AddressSearchResultProvider extends BaseSearchResultProvider
         return $this->formatSearchGroup();
     }
 
-    private function getPersonSearchResultsByPartialAddress(string $SearchQuery)
+    /**
+     * @return SearchResult[]
+     */
+    private function getPersonSearchResultsByPartialAddress(string $SearchQuery): array
     {
         $searchResults = [];
         $id = 0;

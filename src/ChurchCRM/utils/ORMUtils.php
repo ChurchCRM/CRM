@@ -4,7 +4,10 @@ namespace ChurchCRM\Utils;
 
 class ORMUtils
 {
-    public static function getValidationErrors($failures)
+    /**
+     * @return non-falsy-string[]
+     */
+    public static function getValidationErrors($failures): array
     {
         $validationErrors = [];
         foreach ($failures as $failure) {

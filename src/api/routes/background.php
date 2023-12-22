@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/background', function (RouteCollectorProxy $group) {
+$app->group('/background', function (RouteCollectorProxy $group): void {
     $group->get('/page', 'getPageCommonData');
     $group->post('/timerjobs', 'runTimerJobsAPI');
 });

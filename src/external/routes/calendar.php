@@ -8,7 +8,7 @@ use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-$app->group('/calendars', function (RouteCollectorProxy $group) {
+$app->group('/calendars', function (RouteCollectorProxy $group): void {
     $group->get('/{CalendarAccessToken}', 'serveCalendarPage');
     $group->get('/{CalendarAccessToken}/', 'serveCalendarPage');
 })->add(PublicCalendarAPIMiddleware::class);

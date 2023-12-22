@@ -21,7 +21,7 @@ use ChurchCRM\Utils\MiscUtils;
 $iFYID = InputUtils::legacyFilterInput($_GET['FYID'], 'int');
 $sWhichReport = InputUtils::legacyFilterInput($_GET['WhichReport']);
 
-function TopPledgersLevel($iFYID, $iPercent)
+function TopPledgersLevel(string $iFYID, $iPercent)
 {
     // Get pledges for this fiscal year, highest first
     $sSQL = 'SELECT plg_Amount FROM pledge_plg
@@ -36,7 +36,7 @@ function TopPledgersLevel($iFYID, $iPercent)
 
 require '../Include/CanvassUtilities.php';
 
-function CanvassProgressReport($iFYID)
+function CanvassProgressReport(string $iFYID): void
 {
     // Instantiate the directory class and build the report.
     $pdf = new PdfCanvassBriefingReport();
@@ -133,7 +133,7 @@ function CanvassProgressReport($iFYID)
     $pdf->Output('CanvassProgress' . date(SystemConfig::getValue('sDateFormatLong')) . '.pdf', 'D');
 }
 
-function CanvassBriefingSheets($iFYID)
+function CanvassBriefingSheets(string $iFYID): void
 {
     // Instantiate the directory class and build the report.
     $pdf = new PdfCanvassBriefingReport();
@@ -308,7 +308,7 @@ function CanvassBriefingSheets($iFYID)
     $pdf->Output('CanvassBriefing' . date(SystemConfig::getValue('sDateFormatLong')) . '.pdf', 'D');
 }
 
-function CanvassSummaryReport($iFYID)
+function CanvassSummaryReport(string $iFYID): void
 {
     // Instantiate the directory class and build the report.
     $pdf = new PdfCanvassBriefingReport();
@@ -363,7 +363,7 @@ function CanvassSummaryReport($iFYID)
     $pdf->Output('CanvassSummary' . date(SystemConfig::getValue('sDateFormatLong')) . '.pdf', 'D');
 }
 
-function CanvassNotInterestedReport($iFYID)
+function CanvassNotInterestedReport(string $iFYID): void
 {
     // Instantiate the directory class and build the report.
     $pdf = new PdfCanvassBriefingReport();

@@ -19,7 +19,10 @@ class TimelineService
         $this->currentUser = AuthenticationManager::getCurrentUser();
     }
 
-    public function getForFamily(int $familyID)
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function getForFamily(int $familyID): array
     {
         $timeline = [];
         $familyNotes = NoteQuery::create()->findByFamId($familyID);
@@ -40,7 +43,10 @@ class TimelineService
         return $sortedTimeline;
     }
 
-    private function eventsForPerson(int $personID)
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    private function eventsForPerson(int $personID): array
     {
         $timeline = [];
         $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
@@ -64,7 +70,10 @@ class TimelineService
         return $timeline;
     }
 
-    private function notesForPerson(int $personID, ?string $noteType = null)
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    private function notesForPerson(int $personID, ?string $noteType = null): array
     {
         $timeline = [];
         $personQuery = NoteQuery::create()
@@ -82,7 +91,10 @@ class TimelineService
         return $timeline;
     }
 
-    private function sortTimeline($timeline)
+    /**
+     * @return array<string, mixed>[]
+     */
+    private function sortTimeline(array $timeline): array
     {
         krsort($timeline);
 
@@ -94,14 +106,14 @@ class TimelineService
         return $sortedTimeline;
     }
 
-    public function getNotesForPerson(int $personID)
+    public function getNotesForPerson(int $personID): array
     {
         $timeline = $this->notesForPerson($personID, 'note');
 
         return $this->sortTimeline($timeline);
     }
 
-    public function getForPerson(int $personID)
+    public function getForPerson(int $personID): array
     {
         $timeline = array_merge(
             $this->notesForPerson($personID, null),
@@ -147,7 +159,7 @@ class TimelineService
         return $item;
     }
 
-    public function createTimeLineItem($id, $type, $datetime, $year, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
+    public function createTimeLineItem(string $id, $type, string $datetime, $year, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
     {
         $item['slim'] = true;
         $item['type'] = $type;

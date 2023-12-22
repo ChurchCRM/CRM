@@ -60,7 +60,7 @@ class PeopleCustomField
     /**
      * @return mixed
      */
-    public function getLink()
+    public function getLink(): ?string
     {
         return $this->link;
     }
@@ -76,7 +76,7 @@ class PeopleCustomField
     /**
      * @return mixed
      */
-    public function getValue()
+    public function getValue(): string
     {
         return $this->value;
     }
@@ -84,7 +84,7 @@ class PeopleCustomField
     /**
      * @return mixed
      */
-    public function getIcon()
+    public function getIcon(): string
     {
         return $this->icon;
     }

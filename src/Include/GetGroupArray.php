@@ -5,10 +5,12 @@
  *  filename    : Include/GetGroupArray.php
  *  last change : 2003-08-30
  *  description : Get information about group members into an array
-  *
+ *
  ******************************************************************************/
-
-function GetGroupArray($iGroupID)
+/**
+ * @return non-empty-array[]
+ */
+function GetGroupArray(string $iGroupID): array
 {
     //Get the Properties assigned to this Group
     $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID

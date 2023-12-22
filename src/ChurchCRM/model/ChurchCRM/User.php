@@ -30,47 +30,47 @@ class User extends BaseUser
         return $this->getPersonId();
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->getPerson()->getFullName();
     }
 
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->getPerson()->getEmail();
     }
 
-    public function getFullName()
+    public function getFullName(): string
     {
         return $this->getPerson()->getFullName();
     }
 
-    public function isAddRecordsEnabled()
+    public function isAddRecordsEnabled(): bool
     {
         return $this->isAdmin() || $this->isAddRecords();
     }
 
-    public function isEditRecordsEnabled()
+    public function isEditRecordsEnabled(): bool
     {
         return $this->isAdmin() || $this->isEditRecords();
     }
 
-    public function isDeleteRecordsEnabled()
+    public function isDeleteRecordsEnabled(): bool
     {
         return $this->isAdmin() || $this->isDeleteRecords();
     }
 
-    public function isMenuOptionsEnabled()
+    public function isMenuOptionsEnabled(): bool
     {
         return $this->isAdmin() || $this->isMenuOptions();
     }
 
-    public function isManageGroupsEnabled()
+    public function isManageGroupsEnabled(): bool
     {
         return $this->isAdmin() || $this->isManageGroups();
     }
 
-    public function isFinanceEnabled()
+    public function isFinanceEnabled(): bool
     {
         if (SystemConfig::getBooleanValue('bEnabledFinance')) {
             return $this->isAdmin() || $this->isFinance();
@@ -79,72 +79,72 @@ class User extends BaseUser
         return false;
     }
 
-    public function isNotesEnabled()
+    public function isNotesEnabled(): bool
     {
         return $this->isAdmin() || $this->isNotes();
     }
 
-    public function isEditSelfEnabled()
+    public function isEditSelfEnabled(): bool
     {
         return $this->isAdmin() || $this->isEditSelf();
     }
 
-    public function isCanvasserEnabled()
+    public function isCanvasserEnabled(): bool
     {
         return $this->isAdmin() || $this->isCanvasser();
     }
 
-    public function updatePassword($password)
+    public function updatePassword(string $password): void
     {
         $this->setPassword($this->hashPassword($password));
     }
 
-    public function isPasswordValid($password)
+    public function isPasswordValid(string $password): bool
     {
         return $this->getPassword() == $this->hashPassword($password);
     }
 
-    public function hashPassword($password)
+    public function hashPassword(string $password): string
     {
         return hash('sha256', $password . $this->getPersonId());
     }
 
-    public function isAddEventEnabled() // TODO: Create permission to manag event deletion see https://github.com/ChurchCRM/CRM/issues/4726
+    public function isAddEventEnabled(): bool // TODO: Create permission to manag event deletion see https://github.com/ChurchCRM/CRM/issues/4726
     {
         return $this->isAddEvent();
     }
 
-    public function isAddEvent()
+    public function isAddEvent(): bool
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
-    public function isCSVExportEnabled()
+    public function isCSVExportEnabled(): bool
     {
         return $this->isCSVExport();
     }
 
-    public function isCSVExport()
+    public function isCSVExport(): bool
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bExportCSV');
     }
 
-    public function isEmailEnabled()
+    public function isEmailEnabled(): bool
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
     }
 
-    public function isCreateDirectoryEnabled()
+    public function isCreateDirectoryEnabled(): bool
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
     }
 
-    public function isLocked()
+    public function isLocked(): bool
     {
         return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
     }
 
-    public function resetPasswordToRandom()
+    public function resetPasswordToRandom(): string
     {
         $password = User::randomPassword();
         $this->updatePassword($password);
@@ -154,7 +154,7 @@ class User extends BaseUser
         return $password;
     }
 
-    public static function randomPassword()
+    public static function randomPassword(): string
     {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $pass = []; //remember to declare $pass as an array
@@ -167,22 +167,22 @@ class User extends BaseUser
         return implode($pass); //turn the array into a string
     }
 
-    public static function randomApiKey()
+    public static function randomApiKey(): string
     {
         return MiscUtils::randomToken();
     }
 
-    public function postInsert(ConnectionInterface $con = null)
+    public function postInsert(ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('created');
     }
 
-    public function postDelete(ConnectionInterface $con = null)
+    public function postDelete(ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('deleted');
     }
 
-    public function createTimeLineNote($type)
+    public function createTimeLineNote($type): void
     {
         $note = new Note();
         $note->setPerId($this->getPersonId());
@@ -216,7 +216,7 @@ class User extends BaseUser
         $note->save();
     }
 
-    public function isEnabledSecurity($securityConfigName)
+    public function isEnabledSecurity($securityConfigName): bool
     {
         if ($this->isAdmin()) {
             return true;
@@ -283,7 +283,7 @@ class User extends BaseUser
         }
     }
 
-    public function setSetting($name, $value)
+    public function setSetting($name, $value): void
     {
         $setting = $this->getSetting($name);
         if (!$setting) {
@@ -313,7 +313,7 @@ class User extends BaseUser
         return null;
     }
 
-    public function getStyle()
+    public function getStyle(): string
     {
         $skin = $this->getSetting(UserSetting::UI_STYLE) ?? 'skin-red';
         $cssClasses = [];
@@ -324,12 +324,12 @@ class User extends BaseUser
         return implode(' ', $cssClasses);
     }
 
-    public function isShowPledges()
+    public function isShowPledges(): bool
     {
         return $this->getSettingValue(UserSetting::FINANCE_SHOW_PLEDGES) == 'true';
     }
 
-    public function isShowPayments()
+    public function isShowPayments(): bool
     {
         return $this->getSettingValue(UserSetting::FINANCE_SHOW_PAYMENTS) == 'true';
     }
@@ -369,7 +369,7 @@ class User extends BaseUser
         return $isKeyValid;
     }
 
-    public function remove2FAKey()
+    public function remove2FAKey(): void
     {
         $this->setTwoFactorAuthSecret(null);
         $this->save();
@@ -380,24 +380,24 @@ class User extends BaseUser
         return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::getTwoFASecretKey());
     }
 
-    private function getDecryptedTwoFactorAuthRecoveryCodes()
+    private function getDecryptedTwoFactorAuthRecoveryCodes(): array
     {
         return explode(',', Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::getTwoFASecretKey()));
     }
 
-    public function disableTwoFactorAuthentication()
+    public function disableTwoFactorAuthentication(): void
     {
         $this->setTwoFactorAuthRecoveryCodes(null);
         $this->setTwoFactorAuthSecret(null);
         $this->save();
     }
 
-    public function is2FactorAuthEnabled()
+    public function is2FactorAuthEnabled(): bool
     {
         return !empty($this->getTwoFactorAuthSecret());
     }
 
-    public function getNewTwoFARecoveryCodes()
+    public function getNewTwoFARecoveryCodes(): array
     {
         // generate an array of 2FA recovery codes, and store as an encrypted, comma-separated list
         $recoveryCodes = [];
@@ -426,7 +426,7 @@ class User extends BaseUser
         }
     }
 
-    public function isTwoFaRecoveryCodeValid($twoFaRecoveryCode)
+    public function isTwoFaRecoveryCodeValid($twoFaRecoveryCode): bool
     {
         // checks for validity of a 2FA recovery code
         // if the specified code was valid, the code is also removed.
@@ -442,7 +442,7 @@ class User extends BaseUser
         return false;
     }
 
-    public function adminSetUserPassword($newPassword)
+    public function adminSetUserPassword(string $newPassword): void
     {
         $this->updatePassword($newPassword);
         $this->setNeedPasswordChange(false);
@@ -450,7 +450,7 @@ class User extends BaseUser
         $this->createTimeLineNote('password-changed-admin');
     }
 
-    public function userChangePassword($oldPassword, $newPassword)
+    public function userChangePassword($oldPassword, $newPassword): void
     {
         if (!$this->isPasswordValid($oldPassword)) {
             throw new PasswordChangeException('Old', gettext('Incorrect password supplied for current user'));
@@ -478,7 +478,7 @@ class User extends BaseUser
         $this->createTimeLineNote('password-changed');
     }
 
-    private function getIsPasswordPermissible($newPassword)
+    private function getIsPasswordPermissible($newPassword): bool
     {
         $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('aDisallowedPasswords')));
         $aBadPasswords[] = strtolower($this->getPerson()->getFirstName());

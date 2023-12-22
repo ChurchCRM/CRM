@@ -7,10 +7,10 @@ use ChurchCRM\Utils\MiscUtils;
 
 class States
 {
-    private $countryCode;
-    private $states = [];
+    private string $countryCode;
+    private array $states = [];
 
-    public function __construct($countryCode)
+    public function __construct(string $countryCode)
     {
         $this->countryCode = $countryCode;
 
@@ -23,12 +23,12 @@ class States
         }
     }
 
-    public function getNames()
+    public function getNames(): array
     {
         return array_values($this->states);
     }
 
-    public function getAll()
+    public function getAll(): array
     {
         return $this->states;
     }

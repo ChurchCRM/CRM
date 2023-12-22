@@ -14,7 +14,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/persons', function (RouteCollectorProxy $group) {
+$app->group('/persons', function (RouteCollectorProxy $group): void {
     $group->get('/roles', 'getAllRolesAPI');
     $group->get('/roles/', 'getAllRolesAPI');
     $group->get('/duplicate/emails', 'getEmailDupesAPI');

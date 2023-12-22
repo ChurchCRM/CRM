@@ -36,7 +36,7 @@ class AuthMiddleware
         return $handler->handle($request);
     }
 
-    private function isPath(Request $request, $pathPart)
+    private function isPath(Request $request, string $pathPart): bool
     {
         $pathAry = explode('/', $request->getUri()->getPath());
         if (!empty($pathAry) && $pathAry[0] === $pathPart) {

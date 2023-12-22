@@ -22,7 +22,7 @@ use ChurchCRM\model\ChurchCRM\MenuConfigQuery;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\PHPToMomentJSConverter;
 
-function Header_modals()
+function Header_modals(): void
 {
     ?>
     <!-- Issue Report Modal -->
@@ -60,7 +60,7 @@ function Header_modals()
     <?php
 }
 
-function Header_body_scripts()
+function Header_body_scripts(): void
 {
     $localeInfo = Bootstrapper::getCurrentLocale();
     $tableSizeSetting =  AuthenticationManager::getCurrentUser()->getSetting("ui.table.size");

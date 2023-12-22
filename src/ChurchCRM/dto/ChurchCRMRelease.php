@@ -4,8 +4,17 @@ namespace ChurchCRM\dto;
 
 class ChurchCRMRelease
 {
+    /**
+     * @var string
+     */
     public $MAJOR;
+    /**
+     * @var string
+     */
     public $MINOR;
+    /**
+     * @var string
+     */
     public $PATCH;
 
     private array $rawRelease;
@@ -19,7 +28,7 @@ class ChurchCRMRelease
         $this->PATCH = $versions[2];
     }
 
-    public function equals(ChurchCRMRelease $b)
+    public function equals(ChurchCRMRelease $b): bool
     {
         return $this->MAJOR == $b->MAJOR && $this->MINOR == $b->MINOR && $this->PATCH == $b->PATCH;
     }
@@ -47,7 +56,7 @@ class ChurchCRMRelease
         }
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         try {
             return (string) $this->MAJOR . '.' . $this->MINOR . '.' . $this->PATCH;

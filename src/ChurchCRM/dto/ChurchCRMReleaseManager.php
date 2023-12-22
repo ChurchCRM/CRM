@@ -29,7 +29,7 @@ class ChurchCRMReleaseManager
             return new ChurchCRMRelease(@['name' => $releaseString]);
         } else {
             LoggerUtils::getAppLogger()->debug('Attempting to service query for release string ' . $releaseString . ' from GitHub release cache');
-            $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'], fn ($r) => $r->__toString() === $releaseString));
+            $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'], fn ($r): bool => $r->__toString() === $releaseString));
             if (count($requestedRelease) === 1 && $requestedRelease[0] instanceof ChurchCRMRelease) {
                 // this should be the case 99% of the time - the current version of the software has exactly one release on the GitHub account
                 LoggerUtils::getAppLogger()->debug('Query for release string ' . $releaseString . ' serviced from GitHub release cache');
@@ -76,7 +76,7 @@ class ChurchCRMReleaseManager
                 }
             }
 
-            usort($eligibleReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b) => $a->compareTo($b) < 0);
+            usort($eligibleReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): bool => $a->compareTo($b) < 0);
 
             $logger->debug('Found ' . count($eligibleReleases) . ' eligible ChurchCRM releases on GitHub');
         } catch (\Exception $ex) {
@@ -87,7 +87,7 @@ class ChurchCRMReleaseManager
         return $eligibleReleases;
     }
 
-    public static function checkForUpdates()
+    public static function checkForUpdates(): void
     {
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
     }
@@ -111,7 +111,7 @@ class ChurchCRMReleaseManager
     private static function getHighestReleaseInArray(array $eligibleUpgradeTargetReleases)
     {
         if (count($eligibleUpgradeTargetReleases) > 0) {
-            usort($eligibleUpgradeTargetReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b) => $a->compareTo($b) < 0);
+            usort($eligibleUpgradeTargetReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): bool => $a->compareTo($b) < 0);
 
             return $eligibleUpgradeTargetReleases[0];
         }
@@ -121,7 +121,7 @@ class ChurchCRMReleaseManager
 
     private static function getReleaseNextPatch(array $rs, ChurchCRMRelease $currentRelease)
     {
-        $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease) {
+        $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease): bool {
             $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR === $currentRelease->MINOR) && ($r->PATCH > $currentRelease->PATCH);
             LoggerUtils::getAppLogger()->debug('Release ' . $r . ' is' . ($isSameMajorAndMinorWithGreaterPatch ? ' ' : ' not ') . 'a possible patch upgrade target');
 
@@ -133,7 +133,7 @@ class ChurchCRMReleaseManager
 
     private static function getReleaseNextMinor(array $rs, ChurchCRMRelease $currentRelease)
     {
-        $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease) {
+        $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease): bool {
             $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR > $currentRelease->MINOR);
             LoggerUtils::getAppLogger()->debug('Release ' . $r . ' is' . ($isSameMajorAndMinorWithGreaterPatch ? ' ' : ' not ') . 'a possible minor upgrade target');
 
@@ -145,7 +145,7 @@ class ChurchCRMReleaseManager
 
     private static function getReleaseNextMajor(array $rs, ChurchCRMRelease $currentRelease)
     {
-        $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease) {
+        $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease): bool {
             $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR > $currentRelease->MAJOR);
             LoggerUtils::getAppLogger()->debug('Release ' . $r . ' is' . ($isSameMajorAndMinorWithGreaterPatch ? ' ' : ' not ') . 'a possible major upgrade target');
 
@@ -180,7 +180,7 @@ class ChurchCRMReleaseManager
         return $nextStepRelease;
     }
 
-    public static function downloadLatestRelease()
+    public static function downloadLatestRelease(): array
     {
         // this is a proxy function.  For now, just download the nest step release
         $releaseToDownload = ChurchCRMReleaseManager::getNextReleaseStep(ChurchCRMReleaseManager::getReleaseFromString($_SESSION['sSoftwareInstalledVersion']));
@@ -188,7 +188,7 @@ class ChurchCRMReleaseManager
         return ChurchCRMReleaseManager::downloadRelease($releaseToDownload);
     }
 
-    public static function downloadRelease(ChurchCRMRelease $release)
+    public static function downloadRelease(ChurchCRMRelease $release): array
     {
         LoggerUtils::getAppLogger()->info('Downloading release: ' . $release);
         $logger = LoggerUtils::getAppLogger();
@@ -213,7 +213,7 @@ class ChurchCRMReleaseManager
         return $returnFile;
     }
 
-    public static function preShutdown()
+    public static function preShutdown(): void
     {
         // this is kind of code-smell
         // since this callback will be invoked upon PHP timeout
@@ -233,7 +233,7 @@ class ChurchCRMReleaseManager
         }
     }
 
-    public static function doUpgrade($zipFilename, $sha1)
+    public static function doUpgrade(string $zipFilename, string $sha1)
     {
         self::$isUpgradeInProgress = true;
         // temporarily disable PHP's error display so that

@@ -28,7 +28,10 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
         return $this->formatSearchGroup();
     }
 
-    private function getDepositSearchResults(string $SearchQuery)
+    /**
+     * @return SearchResult[]
+     */
+    private function getDepositSearchResults(string $SearchQuery): array
     {
         $searchResults = [];
         $id = 0;

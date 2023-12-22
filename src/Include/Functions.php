@@ -146,7 +146,7 @@ function CurrentFY()
 }
 
 // PrintFYIDSelect: make a fiscal year selection menu.
-function PrintFYIDSelect($iFYID, $selectName)
+function PrintFYIDSelect($iFYID, $selectName): void
 {
     echo sprintf('<select class="form-control" name="%s">', $selectName);
 
@@ -186,7 +186,7 @@ function MakeFYString($iFYID)
 
 // Runs an SQL query.  Returns the result resource.
 // By default stop on error, unless a second (optional) argument is passed as false.
-function RunQuery($sSQL, $bStopOnError = true)
+function RunQuery(string $sSQL, $bStopOnError = true)
 {
     global $cnInfoCentral;
     mysqli_query($cnInfoCentral, "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
@@ -207,7 +207,7 @@ function RunQuery($sSQL, $bStopOnError = true)
 //
 // Adds a volunteer opportunity assignment to a person
 //
-function AddVolunteerOpportunity($iPersonID, $iVolID)
+function AddVolunteerOpportunity(string $iPersonID, string $iVolID)
 {
     $sSQL = 'INSERT INTO person2volunteeropp_p2vo (p2vo_per_ID, p2vo_vol_ID) VALUES (' . $iPersonID . ', ' . $iVolID . ')';
     $result = RunQuery($sSQL, false);
@@ -215,7 +215,7 @@ function AddVolunteerOpportunity($iPersonID, $iVolID)
     return $result;
 }
 
-function RemoveVolunteerOpportunity($iPersonID, $iVolID)
+function RemoveVolunteerOpportunity(string $iPersonID, string $iVolID): void
 {
     $sSQL = 'DELETE FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = ' . $iPersonID . ' AND p2vo_vol_ID = ' . $iVolID;
     RunQuery($sSQL);
@@ -272,7 +272,7 @@ function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
 // Function value returns 0 if no info was given, 1 if person info was used, and 2 if family info was used.
 // We do address lines 1 and 2 in together because separately we might end up with half family address and half person address!
 //
-function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddress1, $sPersonAddress2, $sFamilyAddress1, $sFamilyAddress2, $bFormat = false)
+function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddress1, $sPersonAddress2, ?string $sFamilyAddress1, ?string $sFamilyAddress2, $bFormat = false)
 {
     if (SystemConfig::getValue('bShowFamilyData')) {
         if ($bFormat) {
@@ -326,7 +326,7 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
     }
 }
 
-function ChopLastCharacter($sText)
+function ChopLastCharacter($sText): string
 {
     return mb_substr($sText, 0, strlen($sText) - 1);
 }
@@ -354,7 +354,7 @@ function FormatDateOutput()
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
 // bWithtime 1 to be displayed
-function FormatDate($dDate, $bWithTime = false)
+function FormatDate($dDate, $bWithTime = false): string
 {
     if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00') {
         return '';
@@ -541,7 +541,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
 // $Style = 2  :  "LastName, Title FirstName MiddleName, Suffix"
 // $Style = 3  :  "LastName, Title FirstName MiddleInitial., Suffix"
 //
-function FormatFullName($Title, $FirstName, $MiddleName, $LastName, $Suffix, $Style)
+function FormatFullName(?string $Title, string $FirstName, ?string $MiddleName, ?string $LastName, ?string $Suffix, $Style): string
 {
     $nameString = '';
 
@@ -615,7 +615,7 @@ function FormatFullName($Title, $FirstName, $MiddleName, $LastName, $Suffix, $St
 }
 
 // Generate a nicely formatted string for "FamilyName - Address / City, State" with available data
-function FormatAddressLine($Address, $City, $State)
+function FormatAddressLine(string $Address, string $City, string $State): string
 {
     $sText = '';
 
@@ -638,7 +638,7 @@ function FormatAddressLine($Address, $City, $State)
 //
 // Formats the data for a custom field for display-only uses
 //
-function displayCustomField($type, $data, $special)
+function displayCustomField($type, ?string $data, $special)
 {
     global $cnInfoCentral;
 
@@ -722,7 +722,7 @@ function displayCustomField($type, $data, $special)
 //
 // Generates an HTML form <input> line for a custom field
 //
-function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
+function formCustomField($type, string $fieldname, $data, string $special, $bFirstPassFlag): void
 {
     global $cnInfoCentral;
 
@@ -1066,7 +1066,7 @@ function parseAndValidateDate($data, $locale = 'US', $pasfut = 'future')
 //
 // Returns false if the data is not valid, true otherwise.
 //
-function validateCustomField($type, &$data, $col_Name, &$aErrors)
+function validateCustomField($type, &$data, $col_Name, array &$aErrors): bool
 {
     global $aLocaleInfo;
     $bErrorFlag = false;
@@ -1147,7 +1147,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
 //
 // $special is currently only used for the phone country and the list ID for custom drop-down choices.
 //
-function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
+function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special): void
 {
     switch ($type) {
     // boolean
@@ -1304,7 +1304,7 @@ function FontFromName($fontname)
 }
 
 // Added for AddEvent.php
-function createTimeDropdown($start, $stop, $mininc, $hoursel, $minsel)
+function createTimeDropdown($start, $stop, $mininc, $hoursel, $minsel): void
 {
     for ($hour = $start; $hour <= $stop; $hour++) {
         if ($hour == '0') {
@@ -1524,7 +1524,10 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
     }
 }
 
-function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSearchTerm = 0)
+/**
+ * @return non-falsy-string[]
+ */
+function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSearchTerm = 0): array
 {
     if ($classification) {
         if ($sSearchTerm) {
@@ -1581,7 +1584,7 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
     return $familyArray;
 }
 
-function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse)
+function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse): string
 {
     //Get Families for the drop-down
     $familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
@@ -1596,7 +1599,7 @@ function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse)
     return $html;
 }
 
-function genGroupKey($methodSpecificID, $famID, $fundIDs, $date)
+function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, string $date)
 {
     $uniqueNum = 0;
     while (1) {
@@ -1632,17 +1635,17 @@ function requireUserGroupMembership($allowedRoles = null)
     throw new Exception('User is not authorized to access ' . debug_backtrace()[1]['function'], 401);
 }
 
-function random_color_part()
+function random_color_part(): string
 {
     return str_pad(dechex(random_int(0, 255)), 2, '0', STR_PAD_LEFT);
 }
 
-function random_color()
+function random_color(): string
 {
     return random_color_part() . random_color_part() . random_color_part();
 }
 
-function generateGroupRoleEmailDropdown($roleEmails, $href)
+function generateGroupRoleEmailDropdown($roleEmails, string $href): void
 {
     $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {

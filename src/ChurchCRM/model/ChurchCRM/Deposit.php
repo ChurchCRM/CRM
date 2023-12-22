@@ -21,14 +21,14 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Deposit extends BaseDeposit
 {
-    public function preDelete(ConnectionInterface $con = null)
+    public function preDelete(ConnectionInterface $con = null): bool
     {
         $this->getPledges()->delete();
 
         return true;
     }
 
-    public function getOFX()
+    public function getOFX(): \stdClass
     {
         $OFXReturn = new \stdClass();
         if ($this->getPledges()->count() == 0) {
@@ -81,7 +81,7 @@ class Deposit extends BaseDeposit
         return $OFXReturn;
     }
 
-    private function generateCashDenominations($thisReport)
+    private function generateCashDenominations(\stdClass $thisReport): void
     {
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $cashDenominations = ['0.01', '0.05', '0.10', '0.25', '0.50', '1.00'];
@@ -114,7 +114,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->Cell(50, 10, 'Total Cash', 1, 2, 'L');
     }
 
-    private function generateTotalsByCurrencyType($thisReport)
+    private function generateTotalsByCurrencyType(\stdClass $thisReport): void
     {
         $thisReport->pdf->SetFont('Times', 'B', 10);
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
@@ -131,7 +131,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalCash()));
     }
 
-    private function generateTotalsByFund($thisReport)
+    private function generateTotalsByFund(\stdClass $thisReport): void
     {
         $thisReport->pdf->SetFont('Times', 'B', 10);
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
@@ -149,7 +149,7 @@ class Deposit extends BaseDeposit
         }
     }
 
-    private function generateQBDepositSlip($thisReport)
+    private function generateQBDepositSlip(\stdClass $thisReport): void
     {
         $thisReport->pdf->addPage();
 
@@ -224,7 +224,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->SetFont('Courier', '', 8);
     }
 
-    private function generateDepositSummary($thisReport)
+    private function generateDepositSummary(\stdClass $thisReport): void
     {
         $thisReport->depositSummaryParameters->title->x = 85;
         $thisReport->depositSummaryParameters->title->y = 7;
@@ -362,7 +362,7 @@ class Deposit extends BaseDeposit
         $this->generateWitnessSignature($thisReport);
     }
 
-    private function generateWitnessSignature($thisReport)
+    private function generateWitnessSignature(\stdClass $thisReport): void
     {
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
         $thisReport->curY = $thisReport->pdf->GetPageHeight() - 30;
@@ -381,7 +381,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
     }
 
-    public function getPDF()
+    public function getPDF(): void
     {
         requireUserGroupMembership('bFinance');
         $Report = new \stdClass();

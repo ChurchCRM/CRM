@@ -36,7 +36,7 @@ class PdfEnvelopeReport extends ChurchInfoReport
 
     // Sets the character size
     // This changes the line height too
-    public function setCharSize($pt)
+    public function setCharSize($pt): void
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -60,7 +60,7 @@ class PdfEnvelopeReport extends ChurchInfoReport
         $this->setCharSize(12);
     }
 
-    public function checkLines($numlines)
+    public function checkLines($numlines): void
     {
         $CurY = $this->GetY();  // Temporarily store off the position
 
@@ -82,7 +82,7 @@ class PdfEnvelopeReport extends ChurchInfoReport
     }
 
     // This function formats the string for a family
-    public function sGetFamilyString($aRow)
+    public function sGetFamilyString($aRow): string
     {
         extract($aRow); // Get a row from family_fam
 
@@ -90,7 +90,7 @@ class PdfEnvelopeReport extends ChurchInfoReport
     }
 
     // Number of lines is only for the $text parameter
-    public function addRecord($text, $numlines)
+    public function addRecord($text, $numlines): void
     {
         $numlines++; // add an extra blank line after record
         $this->checkLines($numlines);

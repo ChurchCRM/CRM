@@ -4,7 +4,10 @@ namespace ChurchCRM\Service;
 
 class SundaySchoolService
 {
-    public function getClassStats()
+    /**
+     * @return mixed[][]|array<'id'|'kids'|'name'|'teachers', string>[]
+     */
+    public function getClassStats(): array
     {
         $sSQL = 'select grp.grp_id, grp.grp_name, lst.lst_OptionName, count(*) as total
               from person_per,group_grp grp, person2group2role_p2g2r person_grp, list_lst lst
@@ -45,7 +48,10 @@ class SundaySchoolService
         return $classInfo;
     }
 
-    public function getClassByRole($groupId, $role)
+    /**
+     * @return \non-empty-array<\string, \string>[]
+     */
+    public function getClassByRole(string $groupId, string $role): array
     {
         $sql = 'select person_per.*
               from person_per,group_grp grp, person2group2role_p2g2r person_grp, list_lst lst
@@ -66,7 +72,7 @@ class SundaySchoolService
         return $members;
     }
 
-    public function getKidsGender($groupId)
+    public function getKidsGender(string $groupId): array
     {
         $kids = $this->getClassByRole($groupId, 'Student');
         $boys = 0;
@@ -89,7 +95,7 @@ class SundaySchoolService
         return ['Boys' => $boys, 'Girls' => $girls, 'Unknown' => $unknown];
     }
 
-    public function getKidsBirthdayMonth($groupId)
+    public function getKidsBirthdayMonth(string $groupId): array
     {
         $kids = $this->getClassByRole($groupId, 'Student');
         $Jan = 0;
@@ -161,7 +167,10 @@ class SundaySchoolService
         ];
     }
 
-    public function getKidsFullDetails($groupId)
+    /**
+     * @return \non-empty-array<\string, \string>[]
+     */
+    public function getKidsFullDetails(string $groupId): array
     {
         // Get all the groups
         $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender,
@@ -196,7 +205,10 @@ class SundaySchoolService
         return $kids;
     }
 
-    public function getKidsWithoutClasses()
+    /**
+     * @return non-empty-array[]
+     */
+    public function getKidsWithoutClasses(): array
     {
         $sSQL = <<<'SQL'
 select

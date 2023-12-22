@@ -1,5 +1,5 @@
-
 <?php
+
 /*******************************************************************************
  *
  *  filename    : /Include/EnvelopeFunctions.php
@@ -8,7 +8,7 @@
   *
  ******************************************************************************/
 
-function EnvelopeAssignAllFamilies($bMembersOnly)
+function EnvelopeAssignAllFamilies($bMembersOnly): string
 {
     $sSQL = 'SELECT per_fam_ID, per_LastName FROM person_per';
     if ($bMembersOnly) {

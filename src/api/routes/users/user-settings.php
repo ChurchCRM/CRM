@@ -6,7 +6,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $group) {
+$app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $group): void {
     $group->get('/{settingName}', 'getUserSetting');
     $group->post('/{settingName}', 'updateUserSetting');
 })->add(UserAPIMiddleware::class);

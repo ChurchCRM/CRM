@@ -26,12 +26,9 @@ class RestoreJob extends JobBase
      * @var bool
      */
     private $IsBackupEncrypted;
-    /**
-     * @var string
-     */
-    private $restorePassword;
+    private ?string $restorePassword = null;
 
-    private function isIncomingFileFailed()
+    private function isIncomingFileFailed(): bool
     {
         // Not actually sure what this is supposed to do, but it was working before??
         return $_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0;
@@ -57,7 +54,7 @@ class RestoreJob extends JobBase
         LoggerUtils::getAppLogger()->info('Restore job created; ready to execute');
     }
 
-    private function decryptBackup()
+    private function decryptBackup(): void
     {
         LoggerUtils::getAppLogger()->info('Decrypting file: ' . $this->RestoreFile);
         $this->restorePassword = InputUtils::filterString($_POST['restorePassword']);
@@ -78,7 +75,7 @@ class RestoreJob extends JobBase
         }
     }
 
-    private function discoverBackupType()
+    private function discoverBackupType(): void
     {
         switch ($this->RestoreFile->getExtension()) {
             case 'gz':
@@ -95,7 +92,7 @@ class RestoreJob extends JobBase
         }
     }
 
-    private function restoreSQLBackup($SQLFileInfo)
+    private function restoreSQLBackup(string $SQLFileInfo): void
     {
         $connection = Propel::getConnection();
         LoggerUtils::getAppLogger()->debug('Restoring SQL file from: ' . $SQLFileInfo);
@@ -103,7 +100,7 @@ class RestoreJob extends JobBase
         LoggerUtils::getAppLogger()->debug('Finished restoring SQL table');
     }
 
-    private function restoreFullBackup()
+    private function restoreFullBackup(): void
     {
         LoggerUtils::getAppLogger()->debug('Restoring full archive');
         $phar = new PharData($this->RestoreFile);
@@ -124,7 +121,7 @@ class RestoreJob extends JobBase
         LoggerUtils::getAppLogger()->debug('Finished restoring full archive');
     }
 
-    private function restoreGZSQL()
+    private function restoreGZSQL(): void
     {
         LoggerUtils::getAppLogger()->debug('Decompressing gzipped SQL file: ' . $this->RestoreFile);
         $gzf = gzopen($this->RestoreFile, 'r');
@@ -141,7 +138,7 @@ class RestoreJob extends JobBase
         unlink($SqlFile->getPathname());
     }
 
-    private function postRestoreCleanup()
+    private function postRestoreCleanup(): void
     {
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
@@ -152,7 +149,7 @@ class RestoreJob extends JobBase
         LoggerUtils::getAppLogger()->debug('Reset System Settings for: bEnableExternalBackupTarget and sLastIntegrityCheckTimeStamp');
     }
 
-    public function execute()
+    public function execute(): void
     {
         LoggerUtils::getAppLogger()->info('Executing restore job');
 

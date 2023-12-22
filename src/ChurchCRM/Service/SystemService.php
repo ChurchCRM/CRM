@@ -29,12 +29,12 @@ class SystemService
         return (new \DateTime())->format('Y');
     }
 
-    public function getConfigurationSetting($settingName, $settingValue)
+    public function getConfigurationSetting($settingName, $settingValue): void
     {
         requireUserGroupMembership('bAdmin');
     }
 
-    public function setConfigurationSetting($settingName, $settingValue)
+    public function setConfigurationSetting($settingName, $settingValue): void
     {
         requireUserGroupMembership('bAdmin');
     }
@@ -67,13 +67,13 @@ class SystemService
         } else {
             $unmet = AppIntegrityService::getUnmetPrerequisites();
 
-            $unmetNames = array_map(fn ($o) => (string) $o->getName(), $unmet);
+            $unmetNames = array_map(fn ($o): string => (string) $o->getName(), $unmet);
 
             return 'Missing Prerequisites: ' . json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
         }
     }
 
-    private static function isTimerThresholdExceeded(string $LastTime, int $ThresholdHours)
+    private static function isTimerThresholdExceeded(string $LastTime, int $ThresholdHours): bool
     {
         if (empty($LastTime)) {
             return true;
@@ -89,7 +89,7 @@ class SystemService
         return $diff >= $ThresholdHours;
     }
 
-    public static function runTimerJobs()
+    public static function runTimerJobs(): void
     {
         LoggerUtils::getAppLogger()->debug('Starting background job processing');
         //start the external backup timer job
@@ -173,7 +173,7 @@ class SystemService
         }
     }
 
-    private static function humanFilesize($bytes, $decimals = 2)
+    private static function humanFilesize($bytes, $decimals = 2): string
     {
         $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         $factor = floor((strlen($bytes) - 1) / 3);

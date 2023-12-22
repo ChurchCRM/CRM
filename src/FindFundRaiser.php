@@ -102,7 +102,6 @@ require 'Include/Header.php';
 // List Fundraisers
 // Save record limit if changed
 if (isset($_GET['Number'])) {
-    /* @var $currentUser \ChurchCRM\User */
     $currentUser = AuthenticationManager::getCurrentUser();
     $currentUser->setSearchLimit(InputUtils::legacyFilterInput($_GET['Number'], 'int'));
     $currentUser->save();

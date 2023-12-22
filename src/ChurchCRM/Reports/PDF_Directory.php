@@ -48,7 +48,7 @@ class PdfDirectory extends ChurchInfoReport
         $this->sChurchStateEncoded = iconv('UTF-8', 'ISO-8859-1', SystemConfig::getValue('sChurchState'));
     }
 
-    public function header()
+    public function header(): void
     {
         global $bDirUseTitlePage;
 
@@ -72,7 +72,7 @@ class PdfDirectory extends ChurchInfoReport
         }
     }
 
-    public function footer()
+    public function footer(): void
     {
         global $bDirUseTitlePage;
 
@@ -90,7 +90,7 @@ class PdfDirectory extends ChurchInfoReport
         }
     }
 
-    public function titlePage()
+    public function titlePage(): void
     {
         global $sDirectoryDisclaimer;
         //Select Arial bold 15
@@ -131,7 +131,7 @@ class PdfDirectory extends ChurchInfoReport
 
     // Sets the character size
     // This changes the line height too
-    public function setCharSize($pt)
+    public function setCharSize($pt): void
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -139,12 +139,12 @@ class PdfDirectory extends ChurchInfoReport
         }
     }
 
-    public function addCustomField($order, $use)
+    public function addCustomField($order, $use): void
     {
         $this->_Custom[$order] = $use;
     }
 
-    public function nbLines($w, $txt)
+    public function nbLines($w, $txt): int
     {
         //Computes the number of lines a MultiCell of width w will take
         $cw = &$this->CurrentFont['cw'];
@@ -196,7 +196,7 @@ class PdfDirectory extends ChurchInfoReport
         return $nl;
     }
 
-    public function checkLines($numlines, $img)
+    public function checkLines($numlines, $img): void
     {
         // Need to determine if we will extend beyoned 17mm from the bottom of
         // the page.
@@ -224,7 +224,7 @@ class PdfDirectory extends ChurchInfoReport
 
     // This function prints out the heading when a letter
     // changes.
-    public function addHeader($sLetter)
+    public function addHeader($sLetter): void
     {
         $this->checkLines(2, null);
         $this->SetTextColor(255);
@@ -242,7 +242,7 @@ class PdfDirectory extends ChurchInfoReport
     }
 
     // This prints the family name in BOLD
-    public function printName($sName)
+    public function printName($sName): void
     {
         $this->SetFont($this->_Font, 'BU', $this->_Char_Size);
 //        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
@@ -286,7 +286,7 @@ class PdfDirectory extends ChurchInfoReport
         }
     }
 
-    public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
+    public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags): string
     {
         if ($bDirBirthday && $per_BirthDay > 0 && $per_BirthMonth > 0) {
             return MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '/', $per_Flags);
@@ -296,7 +296,7 @@ class PdfDirectory extends ChurchInfoReport
     }
 
     // This function formats the string for the family info
-    public function sGetFamilyString($aRow)
+    public function sGetFamilyString($aRow): string
     {
         global $bDirFamilyPhone;
         global $bDirFamilyWork;
@@ -428,7 +428,7 @@ class PdfDirectory extends ChurchInfoReport
     }
 
     // This function formats the string for other family member records
-    public function sGetMemberString($aRow)
+    public function sGetMemberString($aRow): string
     {
         global $bDirPersonalPhone;
         global $bDirPersonalWork;
@@ -477,7 +477,7 @@ class PdfDirectory extends ChurchInfoReport
     }
 
     // Number of lines is only for the $text parameter
-    public function addRecord($sName, $text, $numlines, $fid, $pid)
+    public function addRecord($sName, $text, $numlines, $fid, $pid): void
     {
         $dirimg = '';
         if ($fid !== null) {
