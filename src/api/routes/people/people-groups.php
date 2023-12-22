@@ -208,7 +208,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
             $groupRole->setOptionName($input['groupRoleName']);
             $groupRole->save();
 
-            return json_encode(['success' => true]);
+            return SlimUtils::renderSuccessJSON($response);
         } elseif (isset($input['groupRoleOrder'])) {
             $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
             $groupRole->setOptionSequence($input['groupRoleOrder']);
@@ -216,8 +216,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
 
             return SlimUtils::renderSuccessJSON($response);
         }
-
-        return SlimUtils::renderJSON($response, ['success' => false]);
+        throw new \Exception(gettext('invalid group request'));
     });
 
     $group->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {

@@ -215,7 +215,7 @@ if ($output === 'pdf') {
     $summaryIntervalY = 4;
     $page = 1;
 
-    class PdfTaxReport extends ChurchInfoReport
+    class PdfAdvancedDepositReport extends ChurchInfoReport
     {
         // Constructor
         public function __construct()
@@ -338,7 +338,7 @@ if ($output === 'pdf') {
     }
 
     // Instantiate the directory class and build the report.
-    $pdf = new PdfTaxReport();
+    $pdf = new PdfAdvancedDepositReport();
 
     $curY = $pdf->startFirstPage();
     $curX = 0;

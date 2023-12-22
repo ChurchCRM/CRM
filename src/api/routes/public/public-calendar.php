@@ -39,5 +39,5 @@ function getPublicCalendarFullCalendarEvents($request, Response $response)
     $calendar = $request->getAttribute('calendar');
     $events = $request->getAttribute('events');
 
-    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($events, $calendar), JSON_THROW_ON_ERROR));
+    return SlimUtils::renderJSON($response, EventsObjectCollectionToFullCalendar($events, $calendar));
 }
