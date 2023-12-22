@@ -6,7 +6,7 @@
  *  last change : 2003-06-23
  *  description : Add cart records to a group
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt, Logel Philippe
   *
  ******************************************************************************/

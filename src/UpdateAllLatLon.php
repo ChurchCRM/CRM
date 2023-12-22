@@ -4,7 +4,7 @@
  *
  *  filename    : UpdateAllLatLon.php
  *  last change : 2013-02-02
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *
  ******************************************************************************/
 

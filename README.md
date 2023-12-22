@@ -15,7 +15,7 @@ ChurchCRM is an open-source church management system designed to help congregati
 
 ## 🚀 Get Started
 
-If you're new to ChurchCRM, the [official website](https://www.churchcrm.io/) is a great place to start. You'll find documentation, FAQs, and more to help you understand and make the most of our system.
+If you're new to ChurchCRM, the [official website](https://churchcrm.io/) is a great place to start. You'll find documentation, FAQs, and more to help you understand and make the most of our system.
 
 To test out the demo, visit our [Demo System via Softaculous](https://softaculous.com/demos/churchcrm).
 
@@ -23,7 +23,7 @@ To test out the demo, visit our [Demo System via Softaculous](https://softaculou
 
 One of ChurchCRM's strengths is its commitment to inclusivity. We are proud to support localization in **40+ languages**, making the platform accessible to diverse communities around the world. Whether you speak English, Spanish, French, or any of the other supported languages, you can use ChurchCRM in a way that feels familiar and comfortable.
 
-Join our [localization team on poeditor.com](https://poeditor.com/join/project/RABdnDSqAt) to add any support for your language. 
+Join our [localization team on poeditor.com](https://poeditor.com/join/project/RABdnDSqAt) to add any support for your language.
 
 ## 💡 How to Contribute
 
@@ -58,7 +58,7 @@ A big thank you to all our contributors, past and present. Your efforts help mak
 
 ## 🌐 Stay Connected
 
-- [Website](https://www.churchcrm.io/)
+- [Website](https://churchcrm.io/)
 - [Matrix Chat](https://gitter.im/ChurchCRM/CRM)
 - [Documentation](https://github.com/ChurchCRM/ChurchCRM/wiki)
 

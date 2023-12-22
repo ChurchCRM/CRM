@@ -3,7 +3,7 @@
 /*******************************************************************************
  *
  *  filename    : Include/Header-functions.php
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  description : page header used for most pages
  *
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt

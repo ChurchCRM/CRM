@@ -4,7 +4,7 @@
  *
  *  filename    : QueryView.php
  *  last change : 2012-07-22
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *                Copyright 2004-2012 Michael Wilt
   *

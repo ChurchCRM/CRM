@@ -4,7 +4,7 @@
  *
  *  filename    : CanvassAutomation.php
  *  last change : 2005-02-21
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2001-2005 Deane Barker, Chris Gebhardt, Michael Wilt, Tim Dearborn
   *
  ******************************************************************************/

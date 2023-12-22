@@ -3,7 +3,7 @@
 /*******************************************************************************
 *
 *  filename    : person-list.php
-*  website     : http://www.churchcrm.io
+*  website     : https://churchcrm.io
 *  copyright   : Copyright 2019 Troy Smith
 *
 ******************************************************************************/

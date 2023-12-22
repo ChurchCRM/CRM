@@ -6,7 +6,7 @@
  *  last change : 2016-01-04
  *  description : Creates a backup file of the database.
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
   *
  ******************************************************************************/

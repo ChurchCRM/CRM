@@ -6,7 +6,7 @@
  *  last change : 2003-01-07
  *  description : displays a list of all users
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
 

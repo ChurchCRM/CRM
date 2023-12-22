@@ -4,7 +4,7 @@
  *
  *  filename    : PersonCustomFieldsEditor.php
  *  last change : 2003-03-28
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
  *
  *  function    : Editor for custom person fields

@@ -6,7 +6,7 @@
  *  last change : 2003-03-14
  *  description : Configure report generation
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2004-2012 Chris Gebhardt, Michael Wilt
   *
  ******************************************************************************/

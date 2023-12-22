@@ -4,7 +4,7 @@
  *
  *  filename    : QueryList.php
  *  last change : 2003-01-07
- *  website     : http://www.churchcrm.io
+ *  website     : https://churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
   *
  ******************************************************************************/

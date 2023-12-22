@@ -5,7 +5,7 @@
  *  filename    : PrintView.php
  *  last change : 2003-01-29
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *  update 2017 : Philippe Logel
  *

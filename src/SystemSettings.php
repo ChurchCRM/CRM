@@ -5,7 +5,7 @@
  *  filename    : SystemSettings.php
  *  description : setup de systema settings
  *
- *  http://www.churchcrm.io/
+ *  https://churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
  ******************************************************************************/
