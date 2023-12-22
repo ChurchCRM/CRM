@@ -19,6 +19,8 @@ function logCSPReportAPI(Request $request, Response $response, array $args): Res
     $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     $log = json_encode($input, JSON_PRETTY_PRINT);
     LoggerUtils::getCSPLogger()->debug($log);
+
+    return SlimUtils::renderSuccessJSON($response);
 }
 
 function getUiNotificationAPI(Request $request, Response $response, array $args): Response

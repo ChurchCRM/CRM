@@ -208,7 +208,7 @@ $app->group('/groups', function (RouteCollectorProxy $group) {
             $groupRole->setOptionName($input['groupRoleName']);
             $groupRole->save();
 
-            return json_encode(['success' => true]);
+            return SlimUtils::renderJSON($response, ['success' => true]);
         } elseif (isset($input['groupRoleOrder'])) {
             $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
             $groupRole->setOptionSequence($input['groupRoleOrder']);
