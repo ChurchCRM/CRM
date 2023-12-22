@@ -144,6 +144,7 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
 {
     $formattedList = [];
 
+    /** @var Person $person */
     foreach ($people as $person) {
         $formattedPerson = [];
         $formattedPerson['PersonId'] = $person->getId();

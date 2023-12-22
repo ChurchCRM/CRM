@@ -64,12 +64,12 @@ class Person extends BasePerson implements PhotoInterface
     public function getBirthDate()
     {
         if (
-            $this->getBirthDay() !== null && $this->getBirthDay() !== '' &&
-            $this->getBirthMonth() !== null && $this->getBirthMonth() !== ''
+            !empty($this->getBirthDay()) &
+            !empty($this->getBirthMonth())
         ) {
             $birthYear = $this->getBirthYear();
-            if ($birthYear === '') {
-                $birthYear = 1900;
+            if (empty($birthYear)) {
+                $birthYear = 0;
             }
 
             return \DateTimeImmutable::createFromFormat('Y-m-d', $birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
