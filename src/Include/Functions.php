@@ -541,7 +541,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
 // $Style = 2  :  "LastName, Title FirstName MiddleName, Suffix"
 // $Style = 3  :  "LastName, Title FirstName MiddleInitial., Suffix"
 //
-function FormatFullName(?string $Title, string $FirstName, ?string $MiddleName, ?string $LastName, ?string $Suffix, $Style): string
+function FormatFullName(?string $Title, ?string $FirstName, ?string $MiddleName, ?string $LastName, ?string $Suffix, $Style): string
 {
     $nameString = '';
 
@@ -615,7 +615,7 @@ function FormatFullName(?string $Title, string $FirstName, ?string $MiddleName, 
 }
 
 // Generate a nicely formatted string for "FamilyName - Address / City, State" with available data
-function FormatAddressLine(string $Address, string $City, string $State): string
+function FormatAddressLine(?string $Address, ?string $City, ?string $State): string
 {
     $sText = '';
 
