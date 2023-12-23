@@ -257,9 +257,8 @@ SQL;
 
                     mysqli_data_seek($rsCartItems, 0);
                     while ($aRow = mysqli_fetch_array($rsCartItems)) {
-                        extract($aRow);
                         if ($per_fam_ID == 0) {
-                            echo '<option value="' . $per_ID . '">' . $per_FirstName . ' ' . $per_LastName . '</option>';
+                            echo sprintf('<option value="%s">%s %s</option>', $aRow['per_ID'], $aRow['per_FirstName'], $aRow['per_LastName']);
                         }
                     }
 
