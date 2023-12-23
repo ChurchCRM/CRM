@@ -640,7 +640,7 @@ require 'Include/Header.php';
                         <label><?= gettext('Gender') ?>:</label>
                         <select id="Gender" name="Gender" class="form-control">
                             <option value="0"><?= gettext('Select Gender') ?></option>
-                            <option value="0" disabled>-----------------------</option>
+                            <option value="" disabled>-----------------------</option>
                             <option value="1" <?php if ($iGender == 1) {
                                 echo 'selected';
                                               } ?>><?= gettext('Male') ?></option>
@@ -791,7 +791,7 @@ require 'Include/Header.php';
                 <label><?= gettext('Family Role') ?>:</label>
                 <select name="FamilyRole" class="form-control">
                     <option value="0"><?= gettext('Unassigned') ?></option>
-                    <option value="0" disabled>-----------------------</option>
+                    <option value="" disabled>-----------------------</option>
                     <?php while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                         extract($aRow);
                         echo '<option value="' . $lst_OptionID . '"';
@@ -808,7 +808,7 @@ require 'Include/Header.php';
                 <select name="Family" id="famailyId" class="form-control">
                     <option value="0" selected><?= gettext('Unassigned') ?></option>
                     <option value="-1"><?= gettext('Create a new family (using last name)') ?></option>
-                    <option value="0" disabled>-----------------------</option>
+                    <option value="" disabled>-----------------------</option>
                     <?php while ($aRow = mysqli_fetch_array($rsFamilies)) {
                         extract($aRow);
 
@@ -1143,7 +1143,7 @@ require 'Include/Header.php';
                 <label><?= gettext('Classification') ?>:</label>
                 <select id="Classification" name="Classification" class="form-control">
                   <option value="0"><?= gettext('Unassigned') ?></option>
-                  <option value="0" disabled>-----------------------</option>
+                  <option value="" disabled>-----------------------</option>
                   <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
                             extract($aRow);
                             echo '<option value="' . $lst_OptionID . '"';

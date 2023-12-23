@@ -1086,7 +1086,7 @@ require 'Include/Header.php';
                     <option value="0" <?php if ($aClassification[$iCount] == 0) {
                         echo 'selected';
                                       } ?>><?= gettext('Unassigned') ?></option>
-                    <option value="0" disabled>-----------------------</option>
+                    <option value="" disabled>-----------------------</option>
                     <?php
                     //Get Classifications for the drop-down
                     $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
