@@ -36,9 +36,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $sFamilyName = InputUtils::legacyFilterInput($_POST['FamilyName']);
 
         $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate']);
-        if (strlen($dWeddingDate) > 0) {
-            $dWeddingDate = '"' . $dWeddingDate . '"';
-        } else {
+        if (strlen($dWeddingDate) === 0) {
             $dWeddingDate = null;
         }
 
