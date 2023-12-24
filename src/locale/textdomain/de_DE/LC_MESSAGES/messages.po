@@ -428,6 +428,10 @@ msgid "Assign To Non Pledging"
 msgstr "Den Nichtunterstützern hinzufügen"
 
 #: 
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "Weisen Sie den nicht verpfändenden Familien nach dem Zufallsprinzip Wahlwerber zu.  Die Akquisiteure stammen aus der Gruppe der \"Mutigen Akquisiteure\"."
+
+#: 
 msgid "Clear Canvasser Assignments"
 msgstr "Zuordnung der Aktionsmitarbeiter aufheben."
 
@@ -444,8 +448,16 @@ msgid "Enable Canvass for All Families"
 msgstr "Aktion für alle Familien freischalten."
 
 #: 
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "Aktivieren Sie das Feld &quot;Ok To Canvass&quot; für alle Familien."
+
+#: 
 msgid "Disable Canvass for All Families"
 msgstr "Aktion für alle Familien abschalten"
+
+#: 
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
+msgstr "Deaktivieren Sie das Feld &quot;Ok To Canvass&quot; für alle Familien"
 
 #: 
 msgid "Briefing Sheets"
@@ -460,12 +472,24 @@ msgid "Progress Report"
 msgstr "Fortschrittsbericht"
 
 #: 
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "Generieren Sie eine PDF-Datei mit einem Fortschrittsbericht.  Der Fortschrittsbericht enthält Informationen über den Gesamtfortschritt der Wahlwerbung und den Fortschritt der einzelnen Wahlwerber."
+
+#: 
 msgid "Summary Report"
 msgstr "Zusammenfassungsbericht"
 
 #: 
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "Generieren Sie eine PDF-Datei mit einem zusammenfassenden Bericht.  Der zusammenfassende Bericht enthält Kommentare, die aus den Umfragedaten extrahiert wurden."
+
+#: 
 msgid "Not Interested Report"
 msgstr "Bericht über nicht Interessierte"
+
+#: 
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "Generieren Sie eine PDF-Datei, die einen Bericht über die Familien enthält, die von der Person, die die Umfrage durchgeführt hat, als \"nicht interessiert\" gekennzeichnet wurden."
 
 #: 
 msgid " Canvass Input for the "
@@ -1207,6 +1231,18 @@ msgid "Optional"
 msgstr "Optional"
 
 #: 
+msgid "Enter a list of the attendance counts you want to include with this event."
+msgstr "Geben Sie eine Liste der Teilnehmerzahlen ein, die Sie in diese Veranstaltung aufnehmen möchten."
+
+#: 
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
+msgstr "Trennen Sie jeden count_name mit einem Komma. z.B. Mitglieder, Besucher, Campus, Kinder"
+
+#: 
+msgid "Every event type includes a Total count, you do not need to include it."
+msgstr "Jeder Ereignistyp enthält eine Gesamtzahl, die Sie nicht angeben müssen."
+
+#: 
 msgid "Add Event Type"
 msgstr "Veranstaltungsart hinzufügen"
 
@@ -1768,6 +1804,10 @@ msgid "Summary Data"
 msgstr "Zusammengefasste Daten"
 
 #: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+msgstr "Stimmberechtigte Mitglieder müssen innerhalb dieser vielen Jahre<br> eine Spende geleistet haben (0, um keine Spende zu benötigen):"
+
+#: 
 msgid "CSV"
 msgstr "CSV"
 
@@ -2022,6 +2062,10 @@ msgstr "Aktivieren Sie gruppenspezifische Eigenschaften"
 #, fuzzy
 msgid "Group Roles"
 msgstr "Gruppenrollen"
+
+#: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "Änderungen des Gruppenrollennamens werden gespeichert, sobald das Feld den Fokus verliert"
 
 #: 
 #, fuzzy
@@ -2429,6 +2473,10 @@ msgstr "Rolle / Geschlecht"
 #: 
 msgid "Count"
 msgstr "Anzahl"
+
+#: 
+msgid "People Classification"
+msgstr "Klassifizierung von Personen"
 
 #: 
 msgid "Gender Demographics"
@@ -4664,6 +4712,10 @@ msgid "Start Time"
 msgstr "Beginn"
 
 #: 
+msgid "Filter by Fund"
+msgstr "Nach Fonds filtern"
+
+#: 
 msgid "Add New Deposit: "
 msgstr "Neue Einzahlung hinzufügen: "
 
@@ -4678,6 +4730,10 @@ msgstr "gruppenspezifische Eigenschaften ausschalten"
 #: 
 msgid "'Default Option'"
 msgstr "'voreingestellte Option'"
+
+#: 
+msgid "Text Group"
+msgstr "Text Gruppe"
 
 #: 
 msgid "Group Properties"
@@ -4757,8 +4813,16 @@ msgid "Minimum length a user may set their password to"
 msgstr "Mindestlänge für ein Passwort, das ein Benutzer setzen kann"
 
 #: 
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr "Eine durch Kommata getrennte Liste nicht zulässiger (zu offensichtlicher) Kennwörter."
+
+#: 
 msgid "Default City"
 msgstr "voreingestellter Ort"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "Standardstatus - muss eine Abkürzung mit 2 Buchstaben sein"
 
 #: 
 msgid "Default account for receiving a copy of all emails"
@@ -4797,16 +4861,68 @@ msgid "Longitude of the church, used to center the Google map"
 msgstr "Längengrad der Kirche, der zur Zentrierung der Google-Karte verwendet wird"
 
 #: 
+msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
+msgstr "Setzen Sie true, um die Eingabe von Adressen im Personen-Editor zu deaktivieren.  Setzen Sie false, um die Eingabe von Adressen im Personen-Editor zu aktivieren."
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "Setzen Sie true, um die Eingabe des Freundschaftsdatums im Personen-Editor zu deaktivieren.  Setzen Sie false, um die Eingabe des Freundschaftsdatums im Personen-Editor zu aktivieren."
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "Setzen Sie true, um die Verwaltung von Newsletter-Abonnements im Familien-Editor zu deaktivieren."
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "Setzen Sie true, um die Eingabe des Hochzeitsdatums im Familien-Editor zu deaktivieren.  Setzen Sie false, um die Eingabe des Hochzeitsdatums im Familien-Editor zu aktivieren."
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "Setzen Sie true, um die Eingabe von Breiten- und Längengrad im Familien-Editor zu deaktivieren.  Setzen Sie false, um die Eingabe von Breiten- und Längengraden im Familien-Editor zu aktivieren.  Die Suchvorgänge werden weiterhin durchgeführt, nur nicht angezeigt."
+
+#: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Setze auf true um Spendenbriefumschläge zu aktivieren."
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "Geben Sie den HTML-Code ein, der oben auf jeder Seite als Kopfzeile angezeigt wird. Achten Sie darauf, Ihre Tags zu schließen! Hinweis: Sie müssen Ihren Browser ein zweites Mal neu laden, um die neue Kopfzeile zu sehen."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Anzahl der Schecks für Einzahlungsscheinbericht"
 
 #: 
+msgid "Set true to enable use of scanned checks"
+msgstr "Setzen Sie true, um die Verwendung von gescannten Prüfungen zu aktivieren."
+
+#: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Längeneinheit für Entfernungen: Meilen oder Kilometer."
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "Namen der Marker für Google Maps in der Reihenfolge der Klassifizierung"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "Nicht abzugsfähige Zahlungen ermöglichen"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "Setzen Sie true, um die Selbstregistrierung der Familie zu aktivieren."
+
+#: 
+msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
+msgstr "ChurchCRM wurde registriert.  Das ChurchCRM-Team verwendet die Registrierungsdaten, um die Nutzung zu verfolgen.  Diese Informationen werden vertraulich behandelt und niemals weitergegeben oder verkauft.  Wenn dieses Feld wahr ist, ändert sich die Registrierungsoption im Admin-Menü in Registrierung aktualisieren."
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "Linker Rand (1 = 1/100stel Zoll)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "Linienstärke (1 = 1/100 Zoll)"
 
 #: 
 msgid "Church City"
@@ -4829,8 +4945,64 @@ msgid "Home area code of the church"
 msgstr "Ortsvorwahl der Gemeinde"
 
 #: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "Formulierung für die oberste Zeile des Steuerberichts. Die Daten werden an das Ende dieser Zeile angehängt."
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "Formulierung für die unterste Zeile des Steuerberichts."
+
+#: 
+msgid "Tax Report signer"
+msgstr "Unterzeichner des Steuerberichts"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "Formulierung für den Bericht über die Pledge-Erinnerung"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "Unterzeichner der Pledge-Erinnerung"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "Formulierung für den Bericht über die Pledge-Erinnerung - Keine Aufzeichnung eines Pledges"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "Wortlaut des Berichts über die Pfanderinnerung - Keine Aufzeichnung der Zahlungen"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "Formulierung für den Bericht zur Bestätigung und Korrektur von Datenbankinformationen"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "Unterzeichner des Berichts über die Bestätigung von Datenbankinformationen und Korrekturen"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "Formulierungen für den zusammenfassenden Bericht über die Verpfändung"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "Formulierungen für den Verzeichnisbericht"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "Pfad und Datei für den Briefkopf der Kirche"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "Benutzerbilder auf Gravatar nachschlagen, wenn kein lokales Bild vorhanden ist"
+
+#: 
 msgid "Enable Remote Backups to Cloud Services"
 msgstr "Remote Backups zu Cloud-Diensten aktivieren"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "Cloud-Service-Typ (Unterstützte Werte: WebDAV, Lokal)"
 
 #: 
 msgid "Remote Backup Username"
@@ -4841,8 +5013,16 @@ msgid "Remote Backup Password"
 msgstr "Remote Backup Passwort"
 
 #: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "Intervall in Stunden für automatische Remote-Backups"
+
+#: 
 msgid "Last Backup Timestamp"
 msgstr "Zeit des letzten Backups"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "QuickBooks Einzahlungsschein-Einstellungen"
 
 #: 
 msgid "Enable Integrity Check"
@@ -5025,16 +5205,76 @@ msgid "Field value"
 msgstr "Feldwert"
 
 #: 
+msgid "The minimum age for which you want records returned."
+msgstr "Das Mindestalter, für das Sie Datensätze zurückerhalten möchten."
+
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Das maximale Alter, für das Sie Datensätze zurückerhalten möchten."
+
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Das gewünschte Geschlecht, nach dem die Datenbank durchsucht werden soll."
+
+#: 
 msgid "Select the desired family role."
 msgstr "Wählen Sie die gewünschte Familienrolle"
+
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Das Geschlecht, für das Sie Datensätze zurückerhalten möchten."
+
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Die Eigenschaft, für die Sie die Personendaten zurückerhalten möchten."
+
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Bitte wählen Sie das Anfangsdatum, um die Gesamtbeiträge für jedes Mitglied zu berechnen (z. B. JJJJ-MM-TT). HINWEIS: Sie können nur Daten auswählen, die Spenden enthalten."
+
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Bitte geben Sie das letzte Datum für die Berechnung der Gesamtbeiträge für jedes Mitglied ein (d.h. JJJJ-MM-TT)."
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Geben Sie einen beliebigen Teil der folgenden Daten ein: Name, Stadt, Bundesland, Postleitzahl, Telefon privat, E-Mail oder E-Mail geschäftlich."
+
+#: 
+msgid "Select field to search for."
+msgstr "Wählen Sie das Feld, nach dem Sie suchen möchten."
+
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Der Geburtstagsmonat, für den Sie Datensätze zurückerhalten möchten."
+
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Die Sonntagsschulklasse, für die Sie die Unterlagen zurückhaben möchten."
 
 #: 
 msgid "Group of registered students"
 msgstr "Gruppe von registrierten Schülern"
 
 #: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Der Monat des Mitgliedsjubiläums, für den Sie die Daten zurückerhalten möchten."
+
+#: 
 msgid "Choose a volunteer opportunity"
 msgstr "Wählen Sie eine Freiwilligenarbeit "
+
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Anzahl der Monate seit der Freundschaft"
+
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Erstes Steuerjahr zum Vergleich"
+
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Zweites Steuerjahr zum Vergleich"
 
 #: 
 msgid "Pledged this year"
@@ -5063,6 +5303,10 @@ msgstr "Zweite Freiwilligenarbeitswahl"
 #: 
 msgid "Choose customer person field"
 msgstr "Wähle ein spezielles Personenfeld"
+
+#: 
+msgid "Match custom field to this value"
+msgstr "Benutzerdefiniertes Feld auf diesen Wert abstimmen"
 
 #: 
 msgid "Family Member Count"
@@ -5113,8 +5357,48 @@ msgid "Recent friends"
 msgstr "Neue Freunde"
 
 #: 
+msgid "Families to Canvass"
+msgstr "Familien zur Wahlwerbung"
+
+#: 
+msgid "Pledge comparison"
+msgstr "Pfandvergleich"
+
+#: 
+msgid "Missing pledges"
+msgstr "Fehlende Zusagen"
+
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Familienverpflichtung nach Steuerjahr"
+
+#: 
 msgid "CustomSearch"
 msgstr "Benutzerdefinierte Suche"
+
+#: 
+msgid "Returns each family and the total number of people assigned to them."
+msgstr "Gibt jede Familie und die Gesamtzahl der ihr zugeordneten Personen zurück."
+
+#: 
+msgid "Returns any person records with ages between two given ages."
+msgstr "Gibt alle Personendatensätze zurück, deren Alter zwischen zwei vorgegebenen Altersangaben liegt."
+
+#: 
+msgid "Total of records matching a given gender."
+msgstr "Summe der Datensätze, die einem bestimmten Geschlecht entsprechen."
+
+#: 
+msgid "Selects person records with the family role and gender specified."
+msgstr "Wählt Personendatensätze mit der angegebenen Familienrolle und dem angegebenen Geschlecht aus."
+
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Gibt Personendatensätze zurück, denen die angegebene Eigenschaft zugewiesen ist."
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Suchen Sie nach einem beliebigen Teil des Namens, der Stadt, des Bundeslandes, der Postleitzahl, der Telefonnummer zu Hause, der E-Mail-Adresse oder der E-Mail-Adresse am Arbeitsplatz."
 
 #: 
 msgid "People with birthdays in a particular month"
@@ -5193,6 +5477,10 @@ msgid "Allow user to add new event"
 msgstr "Benutzer darf neue Ereignisse hinzufügen"
 
 #: 
+msgid "Canvass Progress Report"
+msgstr "Fortschrittsbericht zur Wahlwerbung"
+
+#: 
 msgid "Done"
 msgstr "Erledigt"
 
@@ -5213,6 +5501,10 @@ msgid "Pledge status"
 msgstr "Status der Zuwendung"
 
 #: 
+msgid "Canvass Summary Report"
+msgstr "Zusammenfassender Bericht zur Wahlbeteiligung"
+
+#: 
 msgid "Suggestion"
 msgstr "Vorschlag"
 
@@ -5223,6 +5515,10 @@ msgstr "WehalbUninteressiert"
 #: 
 msgid "Comments"
 msgstr "Kommentare"
+
+#: 
+msgid "Canvass Not Interested Report"
+msgstr "Canvass Nicht Interessiert Bericht"
 
 #: 
 msgid "Weekly on"
@@ -5319,6 +5615,26 @@ msgstr "Sicherheitsgruppen"
 #: 
 msgid "Security Groups Editor"
 msgstr "Sicherheitsgruppen-Editor"
+
+#: 
+msgid "Group Member Role"
+msgstr "Rolle des Gruppenmitglieds"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "Rollen der Gruppenmitglieder Herausgeber"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "Option \"Benutzerdefinierte Liste"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "Benutzerdefinierte Listenoptionen für Personen"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "Editor für benutzerdefinierte Listenoptionen"
 
 #: 
 msgid "Custom List Option"
@@ -5769,16 +6085,36 @@ msgid "Guadeloupe"
 msgstr "Guadeloupe"
 
 #: 
+msgid "Guam"
+msgstr "Guam"
+
+#: 
 msgid "Guatemala"
 msgstr "Guatemala"
+
+#: 
+msgid "Guernsey"
+msgstr "Guernsey"
 
 #: 
 msgid "Guinea (Guinée)"
 msgstr "Guinea"
 
 #: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "Guinea-Bissau (Guiné Bissau)"
+
+#: 
+msgid "Guyana"
+msgstr "Guyana"
+
+#: 
 msgid "Haiti"
 msgstr "Haiti"
+
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "Heard & McDonald Inseln"
 
 #: 
 msgid "Honduras"
@@ -5901,6 +6237,10 @@ msgid "Luxembourg"
 msgstr "Luxemburg"
 
 #: 
+msgid "Macau (澳門)"
+msgstr "Macau (澳門)"
+
+#: 
 msgid "Macedonia (FYROM) (Македонија)"
 msgstr "Mazedonien"
 
@@ -5929,6 +6269,10 @@ msgid "Malta"
 msgstr "Malta"
 
 #: 
+msgid "Marshall Islands"
+msgstr "Marshallinseln"
+
+#: 
 msgid "Martinique"
 msgstr "Martinique"
 
@@ -5941,8 +6285,16 @@ msgid "Mauritius (Moris)"
 msgstr "Mauritius"
 
 #: 
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#: 
 msgid "Mexico (México)"
 msgstr "Mexiko"
+
+#: 
+msgid "Micronesia"
+msgstr "Mikronesien"
 
 #: 
 msgid "Moldova (Republica Moldova)"
@@ -6041,6 +6393,10 @@ msgid "Pakistan (‫پاکستان‬‎)"
 msgstr "Pakistan"
 
 #: 
+msgid "Palau"
+msgstr "Palau"
+
+#: 
 msgid "Palestine (‫فلسطين‬‎)"
 msgstr "Palestina"
 
@@ -6065,6 +6421,10 @@ msgid "Philippines"
 msgstr "Philippinen"
 
 #: 
+msgid "Pitcairn Islands"
+msgstr "Pitcairn-Inseln"
+
+#: 
 msgid "Poland (Polska)"
 msgstr "Polen"
 
@@ -6075,6 +6435,10 @@ msgstr "Portugal"
 #: 
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
+
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "Katar (قطر)"
 
 #: 
 msgid "Réunion (La Réunion)"
@@ -6091,6 +6455,18 @@ msgstr "Russland"
 #: 
 msgid "Rwanda"
 msgstr "Ruanda"
+
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "St. Barthélemy (St. Barthélemy)"
+
+#: 
+msgid "Saint Helena"
+msgstr "Sankt Helena"
+
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "St. Kitts und Nevis"
 
 #: 
 msgid "Saint Lucia"
@@ -6186,8 +6562,24 @@ msgid "Sri Lanka (ශ්‍රී ලංකාව)"
 msgstr "Sri Lanka"
 
 #: 
+msgid "St. Vincent & Grenadines"
+msgstr "St. Vincent und die Grenadinen"
+
+#: 
 msgid "Sudan (‫السودان‬‎)"
 msgstr "Sudan"
+
+#: 
+msgid "Suriname"
+msgstr "Surinam"
+
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "Svalbard und Jan Mayen (Svalbard og Jan Mayen)"
+
+#: 
+msgid "Swaziland"
+msgstr "Swasiland"
 
 #: 
 msgid "Sweden (Sverige)"
@@ -6206,6 +6598,10 @@ msgid "Taiwan (台灣)"
 msgstr "Taiwan"
 
 #: 
+msgid "Tajikistan"
+msgstr "Tadschikistan"
+
+#: 
 msgid "Tanzania"
 msgstr "Tanzania"
 
@@ -6214,8 +6610,20 @@ msgid "Thailand (ไทย)"
 msgstr "Thailand"
 
 #: 
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+#: 
 msgid "Togo"
 msgstr "Togo"
+
+#: 
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: 
+msgid "Tonga"
+msgstr "Tonga"
 
 #: 
 msgid "Trinidad and Tobago"
@@ -6551,6 +6959,10 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "Die vorherige Integritätsprüfung wurde bestanden.  Alle Systemdatei-Hashes stimmen mit den erwarteten Werten überein."
 
 #: 
+msgid "Church Checking Account Number"
+msgstr "Girokontonummer der Kirche"
+
+#: 
 msgid "Missing Role Data for Some People"
 msgstr "Fehlende Rollendaten für einige Personen"
 
@@ -6587,8 +6999,16 @@ msgid "An invalid configuration name has been requested"
 msgstr "Es wurde ein ungültiger Konfigurationsname angefordert"
 
 #: 
+msgid "An invalid configuration id has been requested"
+msgstr "Es wurde eine ungültige Konfigurations-ID angefordert"
+
+#: 
 msgid "Profile Image uploaded"
 msgstr "Profilbild hochgeladen"
+
+#: 
+msgid "payments(s)?"
+msgstr "Zahlung(en)?"
 
 #: 
 msgid "Please ensure this what you want to do.</p>"
@@ -6623,6 +7043,10 @@ msgid "Please select a Family."
 msgstr "Bitte wähle eine Familie."
 
 #: 
+msgid "Coordinate data base file name:"
+msgstr "Dateiname der Koordinatendatenbank:"
+
+#: 
 msgid "Intersect With Cart"
 msgstr "Schnittmenge mit Wagen"
 
@@ -6633,6 +7057,10 @@ msgstr "Familienmitglieder"
 #: 
 msgid "select an option"
 msgstr "eine Option wählen"
+
+#: 
+msgid "Direct me"
+msgstr "Direkt zu mir"
 
 #: 
 msgid "Your cart is empty"
@@ -6685,6 +7113,14 @@ msgstr "Person wurde für dieses Event bereits eingecheckt"
 #: 
 msgid "CheckOut Person"
 msgstr "Person auschecken"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "Einchecken in Eintrag löschen"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "Erwachsene Check-Out Person"
 
 #: 
 msgid "Adult Name (Optional)"
@@ -8772,12 +9208,32 @@ msgid "Login Info"
 msgstr "Anmeldeinfo‘s"
 
 #: 
+msgid "Login Count"
+msgstr "Anzahl der Anmeldungen"
+
+#: 
 msgid "Failed Login"
 msgstr "Fehlgeschlagene Anmeldung(en)"
 
 #: 
 msgid "Permissions"
 msgstr "Berechtigungen"
+
+#: 
+msgid "Manage Notes"
+msgstr "Notizen verwalten"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "Generierung eines neuen API-Schlüssels fehlgeschlagen"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "Zusammenfassung des Pfandes nach Familie"
+
+#: 
+msgid "Pledge"
+msgstr "Verpfändung"
 
 #: 
 msgid "Paid"
@@ -8804,16 +9260,84 @@ msgid "This field is required"
 msgstr "Dieses Feld ist erforderlich"
 
 #: 
+msgid "Text"
+msgstr "Text"
+
+#: 
+msgid "Event Description"
+msgstr "Ereignis Beschreibung"
+
+#: 
 msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
 msgstr "Die Registrierung Ihres ChurchCRM-Benutzerkontos bei der Zwei-Faktor-Authentifizierung bietet eine zusätzliche Sicherheitsebene gegen Angreifer, die versuchen auf Ihr Konto zuzugreifen."
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "ChurchCRM Two factor unterstützt jede TOTP-Authentifizierungsanwendung, d.h. Sie haben die freie Wahl zwischen Microsoft Authenticator, Google Authenticator, Authy, LastPass und anderen"
 
 #: 
 msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
 msgstr "Um sich bei ChurchCRM anmelden, geben Sie Ihren Benutzernamen und Ihr Passwort wie gewohnt ein"
 
 #: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "Sie müssen jedoch auch einen einmaligen Code von Ihrem Authentifizierungsgerät eingeben, um Ihre Anmeldung abzuschließen"
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "Nach erfolgreicher Eingabe Ihrer Anmeldedaten und des einmaligen Codes werden Sie wie gewohnt eingeloggt"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "Um zu verhindern, dass Sie aus Ihrem ChurchCRM-Konto ausgesperrt werden, stellen Sie bitte sicher, dass Sie bereit sind, die Zwei-Faktor-Anmeldung abzuschließen, bevor Sie auf \"Start\" klicken"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "Mit Beginn der Registrierung werden alle zuvor registrierten 2-Faktor-Geräte und Wiederherstellungscodes ungültig."
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "Wenn Sie auf \"Weiter\" klicken, werden Sie aufgefordert, einen QR-Code zu scannen, um Ihre Authentifikator-App zu registrieren."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "Um die Anmeldung zu bestätigen, müssen Sie den von Ihrer Authentifizierungs-App generierten Code eingeben"
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "Nach der Bestätigung der App-Registrierung werden Einmal-Wiederherstellungscodes generiert und angezeigt."
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "Wiederherstellungscodes können anstelle eines von Ihrer Authentifizierungs-App generierten Codes verwendet werden."
+
+#: 
 msgid "Store these in a secure location"
 msgstr "An einem sicherem Ort speichern"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "Registrierung für die Zwei-Faktor-Authentifizierung beginnen"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "2-Faktor-Authentifizierung Geheimnis"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "2-Faktor-Authentifizierungsgeheimnis neu generieren"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "2-Faktor-Authentifizierung entfernen Geheimnis"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "TOTP-Code zur Bestätigung der Anmeldung eingeben"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "2-Faktor-Authentifizierung - Anmeldeerfolg"
 
 #: 
 msgid "Please store these recovery codes in a safe location"
@@ -8828,6 +9352,10 @@ msgid "Event Attendance"
 msgstr "Teilnahme an der Veranstaltung"
 
 #: 
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "Erstellung von Anwesenheits- und Nicht-Anwesenheitsberichten für Veranstaltungen"
+
+#: 
 msgid "Help translate this project"
 msgstr "Helfen Sie mit dieses Projekt zu übersetzen"
 
@@ -8836,12 +9364,24 @@ msgid "Credit Card People"
 msgstr "Kreditkartenmenschen"
 
 #: 
+msgid "People who are configured to pay by credit card."
+msgstr "Personen, die für die Zahlung per Kreditkarte konfiguriert sind."
+
+#: 
 msgid "Afrikaans"
 msgstr "Afrikanisch"
 
 #: 
+msgid " has a type mismatch"
+msgstr " hat eine Typinkongruenz"
+
+#: 
 msgid "Loading"
 msgstr "Lädt"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "Rückübertragung von Familieneigentum"
 
 #: 
 msgid "Do you want to remove"
@@ -8868,6 +9408,10 @@ msgid "Api Key"
 msgstr "API Schlüssel"
 
 #: 
+msgid "Regen API Key"
+msgstr "Regenerations-API-Schlüssel"
+
+#: 
 msgid "View Family Page"
 msgstr "Familienseite anzeigen"
 
@@ -8884,6 +9428,18 @@ msgid "Family has no emails to use"
 msgstr "Die Familie hat keine E-Mailadresse"
 
 #: 
+msgid "Boxed Layout"
+msgstr "Boxed Layout"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "Aktivieren Sie das Boxed Layout"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "Seitenleiste umklappen"
+
+#: 
 msgid "Toggle the left sidebar's state (open or collapse)"
 msgstr "Tabelleneinstellungen"
 
@@ -8896,8 +9452,16 @@ msgid "Page length"
 msgstr "Länge der Seite"
 
 #: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "Ändern Sie die anfängliche Seitenlänge (Anzahl der Zeilen pro Seite)"
+
+#: 
 msgid "User Interface"
 msgstr "Benutzeroberfläche"
+
+#: 
+msgid "Locale"
+msgstr "Schauplatz"
 
 #: 
 msgid "Override system locale"
@@ -8914,4 +9478,104 @@ msgstr "Ungültiges Geburtsdatum: Monat oder Tag fehlt."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ungültiges Gebursdatum: Monat und Tag fehlen."
+
+#: 
+msgid "System"
+msgstr "System"
+
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Amharisch - Äthiopien"
+
+#: 
+msgid "Czech"
+msgstr "Tschechisch"
+
+#: 
+msgid "Finnish"
+msgstr "Finnisch"
+
+#: 
+msgid "Greek"
+msgstr "Griechisch"
+
+#: 
+msgid "Turkish"
+msgstr "Türkisch"
+
+#: 
+msgid "Ukrainian"
+msgstr "Ukrainisch"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Wenn Sie auf \"Submit to GitHub\" klicken, werden Sie auf die GitHub Issues-Seite weitergeleitet, auf der Ihre Systeminformationen bereits ausgefüllt sind."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "An GitHub übermitteln"
+
+#: 
+msgid "Change role"
+msgstr "Rolle ändern"
+
+#: 
+msgid "Closed"
+msgstr "Geschlossen"
+
+#: 
+msgid "Delete this person?"
+msgstr "Diese Person löschen?"
+
+#: 
+msgid "Deposit ID"
+msgstr "Kaution ID"
+
+#: 
+msgid "Deposit Total"
+msgstr "Einzahlung Gesamt"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Status des Gruppenwagens"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "Wenn das nicht funktioniert, kopieren Sie den folgenden Link und fügen ihn in Ihren Browser ein"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "Sie haben diese E-Mail erhalten, weil wir eine Anfrage zu Aktivitäten in Ihrem Konto erhalten haben. Wenn Sie dies nicht angefordert haben, können Sie diese E-Mail sicher löschen."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Um diese E-Mails nicht mehr zu erhalten, können Sie eine E-Mail an"
+
+#: 
+msgid "2016/2017"
+msgstr "2016/2017"
+
+#: 
+msgid "2017/2018"
+msgstr "2017/2018"
+
+#: 
+msgid "2018/2019"
+msgstr "2018/2019"
+
+#: 
+msgid "2019/2020"
+msgstr "2019/2020"
+
+#: 
+msgid "2020/2021"
+msgstr "2020/2021"
+
+#: 
+msgid "2021/2022"
+msgstr "2021/2022"
+
+#: 
+msgid "2022/2023"
+msgstr "2022/2023"
 
