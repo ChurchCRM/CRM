@@ -38,7 +38,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
     foreach ($_SESSION['aPeopleCart'] as $element) {
         // Enter ID into event
         $sSQL = 'INSERT IGNORE INTO event_attend (event_id, person_id)';
-        $sSQL .= " VALUES ('" . $iEventID . "','" . $_SESSION['aPeopleCart'][$element['key']] . "')";
+        $sSQL .= " VALUES ('" . $iEventID . "','" . $element . "')";
         RunQuery($sSQL);
         $iCount++;
     }

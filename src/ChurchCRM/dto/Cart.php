@@ -153,7 +153,7 @@ class Cart
         foreach ($_SESSION['aPeopleCart'] as $element) {
             $personGroupRole = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($GroupID)
-            ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
+            ->filterByPersonId($element)
             ->findOneOrCreate()
             ->setRoleId($RoleID)
             ->save();
