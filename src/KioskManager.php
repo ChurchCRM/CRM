@@ -40,9 +40,7 @@ require 'Include/Header.php';
       </div>
       <div class="card-body">
         <table id="KioskTable" style="width:100%">
-
         </table>
-
       </div>
     </div>
   </div>
@@ -51,48 +49,39 @@ require 'Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 
   function renderKioskAssignment(data) {
-
-    if(data.Accepted){
+    if (data.Accepted) {
       var options ='<option value="None">None</option>';
       var currentAssignment = data.KioskAssignments[0];
-      for (var i=0; i < window.CRM.events.futureEvents.length; i++)
-      {
-        var event = window.CRM.events.futureEvents[i];
-        if (currentAssignment !== undefined && currentAssignment.EventId === event.Id)
-        {
-          options += '<option selected value="1-'+event.Id+'">Event - '+event.Title+'</option>';
-        }
-        else
-        {
-          options += '<option value="1-'+event.Id+'">Event - '+event.Title+'</option>';
-        }
-
+      if (window.CRM?.events?.futureEvents) {
+          for (var i = 0; i < window.CRM.events.futureEvents.length; i++) {
+              var event = window.CRM.events.futureEvents[i];
+              if (currentAssignment?.EventId === event.Id) {
+                  options += '<option selected value="1-' + event.Id + '">Event - ' + event.Title + '</option>';
+              } else {
+                  options += '<option value="1-' + event.Id + '">Event - ' + event.Title + '</option>';
+              }
+          }
       }
 
         return '<select class="assignmentMenu" data-kioskid="'+data.Id+'">'+ options +'</select>';
-    }
-    else
-    {
-    return "Kiosk must be accepted";
+    } else {
+        return "Kiosk must be accepted";
     }
   }
 
   $('#isNewKioskRegistrationActive').change(function() {
-    if ($("#isNewKioskRegistrationActive").prop('checked')){
+    if ($("#isNewKioskRegistrationActive").prop('checked')) {
       window.CRM.kiosks.enableRegistration().done(function(data) {
        window.CRM.secondsLeft = moment(data.visibleUntil.date).unix() - moment().unix();
        window.CRM.discoverInterval = setInterval(function(){
-         window.CRM.secondsLeft-=1;
-         if (window.CRM.secondsLeft > 0)
-         {
+         window.CRM.secondsLeft -= 1;
+         if (window.CRM.secondsLeft > 0) {
             $("#isNewKioskRegistrationActive").next(".toggle-group").children(".toggle-on").html("Active for "+window.CRM.secondsLeft+" seconds");
          }
-         else
-         {
+         else {
            clearInterval(window.CRM.discoverInterval);
            $('#isNewKioskRegistrationActive').bootstrapToggle('off');
          }
-
        },1000)
      });
     }
@@ -100,10 +89,10 @@ require 'Include/Header.php';
   })
 
 
-  $(document).on("change",".assignmentMenu",function(event){
+  $(document).on("change", ".assignmentMenu", function(event) {
     var kioskId = $(event.currentTarget).data("kioskid");
     var selected = $(event.currentTarget).val();
-    window.CRM.kiosks.setAssignment(kioskId,selected);
+    window.CRM.kiosks.setAssignment(kioskId, selected);
   })
 
   $(document).ready(function(){
@@ -111,7 +100,13 @@ require 'Include/Header.php';
     var dataTableConfig = {
     ajax: {
       url: window.CRM.root + "/api/kiosks/",
-      dataSrc: "KioskDevices"
+      dataSrc: "KioskDevices",
+      statusCode: {
+          401: function (xhr, error, thrown) {
+              window.location = window.location.origin + '/session/begin?location=' + window.location.pathname;
+              return false
+          }
+      }
     },
     columns: [
       {
@@ -128,19 +123,15 @@ require 'Include/Header.php';
       {
         width: 'auto',
         title: 'Assignment',
-        data: function (row,type,set,meta){
-          if (row.KioskAssignments.length > 0)
-          {
+        data: function (row, type, set, meta) {
+          if ((row?.KioskAssignments ?? []).length > 0) {
             return row.KioskAssignments[0];
-          }
-          else
-          {
+          } else {
             return "None";
           }
 
         },
-        render: function (data,type,full,meta)
-        {
+        render: function (data, type, full, meta) {
           return renderKioskAssignment(full);
         }
 
@@ -158,11 +149,9 @@ require 'Include/Header.php';
         title: 'Accepted',
         data: 'Accepted',
         render: function (data, type, full, meta) {
-          if (full.Accepted)
-          {
+          if (full.Accepted) {
             return "True";
-          }
-          else {
+          } else {
             return "False";
           }
 
