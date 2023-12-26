@@ -27,7 +27,7 @@ $app->group('/kiosks', function (RouteCollectorProxy $group): void {
             );
         }
 
-        return SlimUtils::renderJSON($response, $KiosksArray);
+        return SlimUtils::renderJSON($response, ['KioskDevices' => $KiosksArray]);
     });
 
     $group->post('/allowRegistration', function (Request $request, Response $response, array $args): Response {
