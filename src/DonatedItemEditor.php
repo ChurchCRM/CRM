@@ -15,6 +15,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\DonatedItem;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -68,9 +69,24 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     }
     // New DonatedItem or deposit
     if (strlen($iDonatedItemID) < 1) {
-        $sSQL = 'INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_picture, di_EnteredBy, di_EnteredDate)
-		VALUES (' . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" . html_entity_decode($sTitle) . "','" . html_entity_decode($sDescription) . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "','" . $nMinimumPrice . "','" . mysqli_real_escape_string($cnInfoCentral, $sPictureURL) . "'";
-        $sSQL .= ',' . AuthenticationManager::getCurrentUser()->getId() . ",'" . date('YmdHis') . "')";
+        $donatedItem = new DonatedItem();
+        $donatedItem
+            ->setFrId($iCurrentFundraiser)
+            ->setItem($sItem)
+            ->setMultibuy($bMultibuy)
+            ->setDonorId($iDonor)
+            ->setBuyerId($iBuyer)
+            ->setTitle(html_entity_decode($sTitle))
+            ->setDescription(html_entity_decode($sDescription))
+            ->setSellprice($nSellPrice)
+            ->setEstprice($nEstPrice)
+            ->setMaterialValue($nMaterialValue)
+            ->setMinimum($nMinimumPrice)
+            ->setPicture($sPictureURL)
+            ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
+            ->setEntereddate(date('YmdHis'));
+        $donatedItem->save();
+
         $bGetKeyBack = true;
     // Existing record (update)
     } else {

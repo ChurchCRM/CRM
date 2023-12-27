@@ -124,16 +124,12 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
 
-    if (is_numeric($nLatitude)) {
-        $nLatitude = "'" . $nLatitude . "'";
-    } else {
-        $nLatitude = 'NULL';
+    if (!is_numeric($nLatitude)) {
+        $nLatitude = null;
     }
 
-    if (is_numeric($nLongitude)) {
-        $nLongitude = "'" . $nLongitude . "'";
-    } else {
-        $nLongitude = 'NULL';
+    if (!is_numeric($nLongitude)) {
+        $nLongitude = null;
     }
 
     $nEnvelope = 0;
@@ -226,6 +222,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     // Validate Wedding Date if one was entered
+    $dWeddingDate = null;
     if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != '')) {
         $dateString = parseAndValidateDate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
         if ($dateString === false) {
@@ -233,10 +230,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                                 . gettext('Not a valid Wedding Date') . '</span>';
             $bErrorFlag = true;
         } else {
-            $dWeddingDate = "'$dateString'";
+            $dWeddingDate = $dateString;
         }
-    } else {
-        $dWeddingDate = 'NULL';
     }
 
     // Validate Email
@@ -245,8 +240,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $sEmailError = '<span style="color: red; ">'
                                 . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
-        } else {
-            $sEmail = $sEmail;
+            $sEmail = null;
         }
     }
 
@@ -277,59 +271,40 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         }
 
         //Write the base SQL depending on the Action
-        if ($bSendNewsLetter) {
-            $bSendNewsLetterString = "'TRUE'";
-        } else {
-            $bSendNewsLetterString = "'FALSE'";
-        }
-        if ($bOkToCanvass) {
-            $bOkToCanvassString = "'TRUE'";
-        } else {
-            $bOkToCanvassString = "'FALSE'";
-        }
+        $bSendNewsLetterString = $bSendNewsLetter ? 'TRUE' : 'FALSE';
+        $bOkToCanvassString = $bOkToCanvass ? 'TRUE' : 'FALSE';
+
         if ($iFamilyID < 1) {
-            $sSQL = "INSERT INTO family_fam (
-						fam_Name,
-						fam_Address1,
-						fam_Address2,
-						fam_City,
-						fam_State,
-						fam_Zip,
-						fam_Country,
-						fam_HomePhone,
-						fam_WorkPhone,
-						fam_CellPhone,
-						fam_Email,
-						fam_WeddingDate,
-						fam_DateEntered,
-						fam_EnteredBy,
-						fam_SendNewsLetter,
-						fam_OkToCanvass,
-						fam_Canvasser,
-						fam_Latitude,
-						fam_Longitude,
-						fam_Envelope)
-					VALUES ('" .
-                        $sName . "','" .
-                        $sAddress1 . "','" .
-                        $sAddress2 . "','" .
-                        $sCity . "','" .
-                        $sState . "','" .
-                        $sZip . "','" .
-                        $sCountry . "','" .
-                        $sHomePhone . "','" .
-                        $sWorkPhone . "','" .
-                        $sCellPhone . "','" .
-                        $sEmail . "'," .
-                        $dWeddingDate . ",'" .
-                        date('YmdHis') . "'," .
-                        AuthenticationManager::getCurrentUser()->getId() . ',' .
-                        $bSendNewsLetterString . ',' .
-                        $bOkToCanvassString . ",'" .
-                        $iCanvasser . "'," .
-                        $nLatitude . ',' .
-                        $nLongitude . ',' .
-                        $nEnvelope . ')';
+            $family = new \ChurchCRM\model\ChurchCRM\Family();
+            $family
+                ->setName($sName)
+                ->setAddress1($sAddress1)
+                ->setAddress2($sAddress2)
+                ->setCity($sCity)
+                ->setState($sState)
+                ->setZip($sZip)
+                ->setHomePhone($sHomePhone)
+                ->setWorkPhone($sWorkPhone)
+                ->setCellPhone($sCellPhone)
+                ->setDateEntered(date('YmdHis'))
+                ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
+                ->setSendNewsletter($bSendNewsLetterString)
+                ->setOkToCanvass($bOkToCanvassString)
+                ->setCanvasser($iCanvasser)
+                ->setEnvelope($nEnvelope);
+            if ($dWeddingDate) {
+                $family->setWeddingdate($dWeddingDate);
+            }
+            if ($sEmail) {
+                $family->setEmail($sEmail);
+            }
+            if ($nLatitude) {
+                $family->setLatitude($nLatitude);
+            }
+            if ($nLatitude) {
+                $family->setLongitude($nLongitude);
+            }
+            $family->save();
             $bGetKeyBack = true;
         } else {
             $sSQL = "UPDATE family_fam SET fam_Name='" . $sName . "'," .
@@ -338,20 +313,20 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         "fam_City='" . $sCity . "'," .
                         "fam_State='" . $sState . "'," .
                         "fam_Zip='" . $sZip . "'," .
-                        'fam_Latitude=' . $nLatitude . ',' .
-                        'fam_Longitude=' . $nLongitude . ',' .
+                        'fam_Latitude=' . ($nLatitude ? "\"$nLatitude\"" : '"NULL"') . ',' .
+                        'fam_Longitude=' . ($nLongitude ? "\"$nLongitude\"" : '"NULL"') . ',' .
                         "fam_Country='" . $sCountry . "'," .
                         "fam_HomePhone='" . $sHomePhone . "'," .
                         "fam_WorkPhone='" . $sWorkPhone . "'," .
                         "fam_CellPhone='" . $sCellPhone . "'," .
-                        "fam_Email='" . $sEmail . "'," .
-                        'fam_WeddingDate=' . $dWeddingDate . ',' .
+                        "fam_Email='" . ($sEmail ?? '') . "'," .
+                        'fam_WeddingDate=' . ($dWeddingDate ? "\"$dWeddingDate\"" : '"NULL"') . ',' .
                         'fam_Envelope=' . $nEnvelope . ',' .
                         "fam_DateLastEdited='" . date('YmdHis') . "'," .
                         'fam_EditedBy = ' . AuthenticationManager::getCurrentUser()->getId() . ',' .
-                        'fam_SendNewsLetter = ' . $bSendNewsLetterString;
+                        'fam_SendNewsLetter = "' . $bSendNewsLetterString . '"';
             if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) {
-                $sSQL .= ', fam_OkToCanvass = ' . $bOkToCanvassString .
+                $sSQL .= ', fam_OkToCanvass = "' . $bOkToCanvassString . '"' .
                                     ", fam_Canvasser = '" . $iCanvasser . "'";
             }
             $sSQL .= ' WHERE fam_ID = ' . $iFamilyID;
@@ -797,7 +772,7 @@ require 'Include/Header.php';
         </div><!-- /.box-header -->
         <div class="card-body">
             <?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
-                if ($dWeddingDate == 'NULL') {
+                if (empty($dWeddingDate)) {
                     $dWeddingDate = '';
                 } ?>
                 <div class="row">

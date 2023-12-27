@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class GroupService
@@ -242,10 +243,14 @@ class GroupService
                 $newOptionID = $aTemp[0] + 1;
 
                 // Insert into the appropriate options table
-                $sSQL = 'INSERT INTO list_lst (lst_ID, lst_OptionID, lst_OptionName, lst_OptionSequence)
-                        VALUES (' . $listID . ',' . $newOptionID . ",'" . $groupRoleName . "'," . $newOptionSequence . ')';
+                $listOption = new ListOption();
+                $listOption
+                    ->setId($listID)
+                    ->setOptionId($newOptionID)
+                    ->setOptionName($groupRoleName)
+                    ->setOptionSequence($newOptionSequence);
+                $listOption->save();
 
-                RunQuery($sSQL);
                 $iNewNameError = 0;
             }
         }

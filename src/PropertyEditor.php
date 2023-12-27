@@ -14,6 +14,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\Property;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -84,13 +85,20 @@ if (isset($_POST['Submit'])) {
     if (!$bError) {
         //Vary the SQL depending on if we're adding or editing
         if ($iPropertyID == 0) {
-            $sSQL = "INSERT INTO property_pro (pro_Class,pro_prt_ID,pro_Name,pro_Description,pro_Prompt) VALUES ('" . $sType . "'," . $iClass . ",'" . $sName . "','" . $sDescription . "','" . $sPrompt . "')";
+            $property = new Property();
+            $property
+                ->setProClass($sType)
+                ->setProPrtId($iClass)
+                ->setProName($sName)
+                ->setProDescription($sDescription)
+                ->setProPrompt($sPrompt);
+            $property->save();
         } else {
             $sSQL = 'UPDATE property_pro SET pro_prt_ID = ' . $iClass . ", pro_Name = '" . $sName . "', pro_Description = '" . $sDescription . "', pro_Prompt = '" . $sPrompt . "' WHERE pro_ID = " . $iPropertyID;
-        }
 
-        //Execute the SQL
-        RunQuery($sSQL);
+            //Execute the SQL
+            RunQuery($sSQL);
+        }
 
         //Route back to the list
         RedirectUtils::redirect('PropertyList.php?Type=' . $sType);

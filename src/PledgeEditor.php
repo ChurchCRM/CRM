@@ -18,6 +18,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\MICRFunctions;
+use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -357,9 +358,26 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                         $sGroupKey = genGroupKey('cash', $iFamily, $fun_id, $dDate);
                     }
                 }
-                $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
-			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount[$fun_id] . "','" . $iSchedule . "','" . $iMethod . "','" . $sComment[$fun_id] . "'";
-                $sSQL .= ",'" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId() . ",'" . $PledgeOrPayment . "'," . $fun_id . ',' . $iCurrentDeposit . ',' . $iCheckNo . ",'" . $tScanString . "','" . $iAutID . "','" . $nNonDeductible[$fun_id] . "','" . $sGroupKey . "')";
+                $pledge = new Pledge();
+                $pledge
+                    ->setFamId($iFamily)
+                    ->setFyId($iFYID)
+                    ->setDate($dDate)
+                    ->setAmount($nAmount[$fun_id])
+                    ->setSchedule($iSchedule)
+                    ->setMethod($iMethod)
+                    ->setComment($sComment[$fun_id])
+                    ->setDateLastEdited(date('YmdHis'))
+                    ->setEditedBy(AuthenticationManager::getCurrentUser()->getId())
+                    ->setPledgeOrPayment($PledgeOrPayment)
+                    ->setFundId($fun_id)
+                    ->setDepId($iCurrentDeposit)
+                    ->setCheckNo($iCheckNo)
+                    ->setScanString($tScanString)
+                    ->setAutId($iAutID)
+                    ->setNondeductible($nNonDeductible[$fun_id])
+                    ->setGroupKey($sGroupKey);
+                $pledge->save();
             }
             if (isset($sSQL)) {
                 RunQuery($sSQL);

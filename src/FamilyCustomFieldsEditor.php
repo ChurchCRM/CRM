@@ -20,6 +20,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -151,8 +152,13 @@ if (isset($_POST['SaveChanges'])) {
                     }
 
                     // Insert into the lists table with an example option.
-                    $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'" . gettext('Default Option') . "')";
-                    RunQuery($sSQL);
+                    $listOption = new ListOption();
+                    $listOption
+                        ->setId($newListID)
+                        ->setOptionId(1)
+                        ->setOptionSequence(1)
+                        ->setOptionName(gettext('Default Option'));
+                    $listOption->save();
 
                     $newSpecial = "'$newListID'";
                 } else {

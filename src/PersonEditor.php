@@ -19,6 +19,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -404,8 +405,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $rsPersonID = RunQuery($sSQL);
             $aRow = mysqli_fetch_array($rsPersonID);
             $iPersonID = $aRow['iPersonID'];
-            $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('" . $iPersonID . "')";
-            RunQuery($sSQL);
+
+            $personCustom = new PersonCustom();
+            $personCustom->setPerId($iPersonID);
+            $personCustom->save();
+
             $note->setPerId($iPersonID);
             $note->setText(gettext('Created'));
             $note->setType('create');

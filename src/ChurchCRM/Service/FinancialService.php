@@ -9,7 +9,9 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\MICRFunctions;
+use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 
 class FinancialService
@@ -59,9 +61,14 @@ class FinancialService
             }
             RunQuery($sSQL);
         } else {
-            $sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy,  dep_Type)
-            VALUES ('" . $depositDate . "','" . $depositComment . "'," . AuthenticationManager::getCurrentUser()->getId() . ",'" . $depositType . "')";
-            RunQuery($sSQL);
+            $deposit = new Deposit();
+            $deposit
+                ->setDate($depositDate)
+                ->setComment($depositComment)
+                ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
+                ->setType($depositType);
+            $deposit->save();
+
             $sSQL = 'SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep';
             $rsDepositSlipID = RunQuery($sSQL);
             $iDepositSlipID = mysqli_fetch_array($rsDepositSlipID)[0];
@@ -255,49 +262,38 @@ class FinancialService
                         $sGroupKey = genGroupKey('cash', $payment->FamilyID, $Fund->FundID, $payment->Date);
                     }
                 }
-                $sSQL = "INSERT INTO pledge_plg
-                    (plg_famID,
-                    plg_FYID,
-                    plg_date,
-                    plg_amount,
-                    plg_schedule,
-                    plg_method,
-                    plg_comment,
-                    plg_DateLastEdited,
-                    plg_EditedBy,
-                    plg_PledgeOrPayment,
-                    plg_fundID,
-                    plg_depID,
-                    plg_CheckNo,
-                    plg_scanString,
-                    plg_aut_ID,
-                    plg_NonDeductible,
-                    plg_GroupKey)
-                    VALUES ('" .
-                $payment->FamilyID . "','" .
-                $payment->FYID . "','" .
-                $payment->Date . "','" .
-                $Fund->Amount . "','" .
-                ($payment->schedule ?? 'NULL') . "','" .
-                $payment->iMethod . "','" .
-                $Fund->Comment . "','" .
-                date('YmdHis') . "'," .
-                AuthenticationManager::getCurrentUser()->getId() . ",'" .
-                $payment->type . "'," .
-                $Fund->FundID . ',' .
-                $payment->DepositID . ',' .
-                ($payment->iCheckNo ?? 'NULL') . ",'" .
-                ($payment->tScanString ?? 'NULL') . "','" .
-                ($payment->iAutID ?? 'NULL') . "','" .
-                ($Fund->NonDeductible ?? 'NULL') . "','" .
-                $sGroupKey . "')";
 
-                if (isset($sSQL)) {
-                    RunQuery($sSQL);
-                    unset($sSQL);
-
-                    return $sGroupKey;
+                $pledge = new Pledge();
+                $pledge
+                    ->setFamId($payment->FamilyID)
+                    ->setFyId($payment->FYID)
+                    ->setDate($payment->Date)
+                    ->setAmount($Fund->Amount)
+                    ->setMethod($payment->iMethod)
+                    ->setComment($Fund->Comment)
+                    ->setDateLastEdited(date('YmdHis'))
+                    ->setEditedBy(AuthenticationManager::getCurrentUser()->getId())
+                    ->setPledgeOrPayment($payment->type)
+                    ->setFundId($Fund->FundID)
+                    ->setDepId($payment->DepositID)
+                    ->setGroupKey($sGroupKey);
+                if ($payment->schedule) {
+                    $pledge->setSchedule($payment->schedule);
                 }
+                if ($payment->iCheckNo) {
+                    $pledge->setCheckNo($payment->iCheckNo);
+                }
+                if ($payment->tScanString) {
+                    $pledge->setScanString($payment->tScanString);
+                }
+                if ($payment->iAutID) {
+                    $pledge->setAutId($payment->iAutID);
+                }
+                if ($Fund->NonDeductible) {
+                    $pledge->setNondeductible($Fund->NonDeductible);
+                }
+                $pledge->save();
+                return $sGroupKey;
             }
         }
     }
