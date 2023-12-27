@@ -392,12 +392,12 @@ $bOkToEdit = (
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
         <div class="row">
-            <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
+            <a class="btn btn-app" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
             <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
                 ?>
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+                <a class="btn btn-app" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
+                <a class="btn btn-app" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
                 <?php
             }
             if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
@@ -438,13 +438,13 @@ $bOkToEdit = (
         <div class="card">
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link active" href="#family" data-toggle="tab"><?= gettext('Family') ?></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab"><?= gettext('Timeline') ?></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#groups" data-toggle="tab"><?= gettext('Assigned Groups') ?></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#volunteer" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#properties" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
+                    <li class="nav-item"><a class="nav-link active" id="nav-item-family" href="#family" data-toggle="tab"><?= gettext('Family') ?></a></li>
+                    <li class="nav-item"><a class="nav-link" id="nav-item-timeline" href="#timeline" data-toggle="tab"><?= gettext('Timeline') ?></a></li>
+                    <li class="nav-item"><a class="nav-link" id="nav-item-groups" href="#groups" data-toggle="tab"><?= gettext('Assigned Groups') ?></a></li>
+                    <li class="nav-item"><a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
+                    <li class="nav-item"><a class="nav-link" id="nav-item-properties" href="#properties" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
                     <?php if ($mailchimp->isActive()) { ?>
-                        <li class="nav-item"><a class="nav-link" href="#mailchimp" data-toggle="tab"><?= gettext('Mailchimp') ?></a></li>
+                        <li class="nav-item"><a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-toggle="tab"><?= gettext('Mailchimp') ?></a></li>
                     <?php } ?>
                 </ul>
             </div>
