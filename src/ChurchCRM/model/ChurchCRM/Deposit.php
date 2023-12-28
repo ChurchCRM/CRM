@@ -226,10 +226,17 @@ class Deposit extends BaseDeposit
 
     private function generateDepositSummary(\stdClass $thisReport): void
     {
+        $thisReport->depositSummaryParameters = new \stdClass();
+
+        $thisReport->depositSummaryParameters->title = new \stdClass();
         $thisReport->depositSummaryParameters->title->x = 85;
         $thisReport->depositSummaryParameters->title->y = 7;
+
+        $thisReport->depositSummaryParameters->date = new \stdClass();
         $thisReport->depositSummaryParameters->date->x = 185;
         $thisReport->depositSummaryParameters->date->y = 7;
+
+        $thisReport->depositSummaryParameters->summary = new \stdClass();
         $thisReport->depositSummaryParameters->summary->x = 12;
         $thisReport->depositSummaryParameters->summary->y = 15;
         $thisReport->depositSummaryParameters->summary->intervalY = 4;
@@ -238,6 +245,7 @@ class Deposit extends BaseDeposit
         $thisReport->depositSummaryParameters->summary->FromX = 80;
         $thisReport->depositSummaryParameters->summary->MemoX = 120;
         $thisReport->depositSummaryParameters->summary->AmountX = 185;
+
         $thisReport->depositSummaryParameters->aggregateX = 135;
 
         $thisReport->pdf->addPage();
