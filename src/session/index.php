@@ -11,9 +11,13 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Slim\Views\PhpRenderer;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$container = new ContainerBuilder();
+$container->compile();
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath('/session');
 

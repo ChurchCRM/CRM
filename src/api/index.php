@@ -7,9 +7,13 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+$container = new ContainerBuilder();
+require __DIR__ . '/dependencies.php';
+$container->compile();
+AppFactory::setContainer($container);
 $app = AppFactory::create();
-$container = $app->getContainer();
 $app->setBasePath('/api');
 
 $app->add(VersionMiddleware::class);
@@ -17,7 +21,6 @@ $app->add(AuthMiddleware::class);
 $app->addBodyParsingMiddleware();
 
 // Set up
-require __DIR__ . '/dependencies.php';
 require __DIR__ . '/../Include/slim/error-handler.php';
 
 // calendar

@@ -16,7 +16,7 @@ $app->get('/', function (Request $request, Response $response, array $args): Res
     return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
 });
 
-$app->get('/heartbeat', fn (Request $request, Response $response, array $args) => SlimUtils::renderJSON($response, $app->kiosk->heartbeat()));
+$app->get('/heartbeat', fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, $app->kiosk->heartbeat()));
 
 $app->post('/checkin', function (Request $request, Response $response, array $args) use ($app): Response {
     $input = $request->getParsedBody();

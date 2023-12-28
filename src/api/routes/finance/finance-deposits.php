@@ -38,12 +38,13 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     );
 
     $group->get('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $id = $args['id'];
-        return SlimUtils::renderJSON($response, DepositQuery::create()->findOneById($id)->toArray());
+        $id = (int) $args['id'];
+        $deposit = DepositQuery::create()->findOneById($id);
+        return SlimUtils::renderJSON($response, $deposit->toArray());
     });
 
     $group->post('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $id = $args['id'];
+        $id = (int) $args['id'];
         $input = $request->getParsedBody();
         $appDeposit = DepositQuery::create()->findOneById($id);
         $appDeposit->setType($input['depositType']);
@@ -55,22 +56,25 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     });
 
     $group->get('/{id:[0-9]+}/ofx', function (Request $request, Response $response, array $args): Response {
-        $id = $args['id'];
-        $OFX = DepositQuery::create()->findOneById($id)->getOFX();
+        $id = (int) $args['id'];
+        $deposit = DepositQuery::create()->findOneById($id);
+        $OFX = $deposit->getOFX();
         header($OFX->header);
         return SlimUtils::renderJSON($response, $OFX->content);
     });
 
     $group->get('/{id:[0-9]+}/pdf', function (Request $request, Response $response, array $args): Response {
-        $id = $args['id'];
-        DepositQuery::create()->findOneById($id)->getPDF();
+        $id = (int) $args['id'];
+        $deposit = DepositQuery::create()->findOneById($id);
+        $deposit->getPDF();
+        return SlimUtils::renderSuccessJSON($response);
     });
 
     $group->get('/{id:[0-9]+}/csv', function (Request $request, Response $response, array $args): Response {
-        $id = $args['id'];
-        //echo DepositQuery::create()->findOneById($id)->toCSV();
-        header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
-        echo PledgeQuery::create()->filterByDepId($id)
+        $id = (int) $args['id'];
+
+        $filename = 'ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
+        $csvData = PledgeQuery::create()->filterByDepId($id)
             ->joinDonationFund()->useDonationFundQuery()
             ->withColumn('DonationFund.Name', 'DonationFundName')
             ->endUse()
@@ -79,16 +83,26 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             ->endUse()
             ->find()
             ->toCSV();
+
+        $response = $response->withHeader('Content-Type', 'text/csv');
+        $response = $response->withHeader('Content-Disposition', 'attachment; filename=' . $filename);
+
+        $response->getBody()->write($csvData);
+
+        return $response;
     });
 
     $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $id = $args['id'];
-        DepositQuery::create()->findOneById($id)->delete();
-        return SlimUtils::renderSuccessJSON($request);
+        $id = (int) $args['id'];
+        $deposit = DepositQuery::create()->findOneById($id);
+        if ($deposit) {
+            $deposit->delete();
+        }
+        return SlimUtils::renderSuccessJSON($response);
     });
 
     $group->get('/{id:[0-9]+}/pledges', function (Request $request, Response $response, array $args): Response {
-        $id = $args['id'];
+        $id = (int) $args['id'];
         $Pledges = PledgeQuery::create()
             ->filterByDepId($id)
             ->groupByGroupKey()

@@ -8,9 +8,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+$container = new ContainerBuilder();
+AppFactory::setContainer($container);
 $app = AppFactory::create();
-$container = $app->getContainer();
 $app->setBasePath('/v2');
 
 $app->add(VersionMiddleware::class);

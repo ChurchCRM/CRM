@@ -87,39 +87,4 @@ require 'Include/Header.php';
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  $('#deleteSelectedRows').click(function () {
-    var deletedRows = dataT.rows('.selected').data()
-    bootbox.confirm({
-      title:'<?= gettext("Confirm Delete") ?>',
-      message: '<p><?= gettext("Are you sure you want to delete the selected"); ?> '+ deletedRows.length + ' <?= gettext("Deposit(s)"); ?>?' +
-        '</p><p><?= gettext("This will also delete all payments associated with this deposit"); ?></p>'+
-        '<p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>'+
-        '<p><?= gettext("Please ensure this what you want to do.") ?></p>',
-      buttons: {
-        cancel : {
-          label: '<?= gettext("Close"); ?>'
-        },
-        confirm: {
-          label: '<?php echo gettext("Delete"); ?>'
-        }
-      },
-      callback: function ( result ) {
-        if ( result )
-        {
-          $.each(deletedRows, function (index, value) {
-            window.CRM.APIRequest({
-              method: 'DELETE',
-              path: 'deposits/' + value.Id
-            })
-              .done(function (data) {
-                dataT.rows('.selected').remove().draw(false);
-              });
-          });
-        }
-      }
-    });
-  });
-</script>
-
 <?php require "Include/Footer.php" ?>
