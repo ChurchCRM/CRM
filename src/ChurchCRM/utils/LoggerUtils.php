@@ -35,10 +35,6 @@ class LoggerUtils
     {
         return SystemURLs::getDocumentRoot() . '/logs/' . date('Y-m-d') . '-' . $type . '.log';
     }
-
-    /**
-     * @return Logger
-     */
     public static function getSlimMVCLogger(): Logger
     {
         if (self::$slimLogger === null) {

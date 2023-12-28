@@ -1,6 +1,65 @@
 var dataT = 0;
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function() {
+    function updateSelectedCount() {
+        var selectedRows = dataT.rows(".selected").data().length;
+        $("#deleteSelectedRows").prop("disabled", !selectedRows);
+        $("#deleteSelectedRows").text(
+            "Delete (" + selectedRows + ") Selected Rows",
+        );
+        $("#exportSelectedRows").prop("disabled", !selectedRows);
+        $("#exportSelectedRows").html(
+            '<i class="fa fa-download"></i> Export (' +
+            selectedRows +
+            ") Selected Rows (OFX)",
+        );
+        $("#exportSelectedRowsCSV").prop("disabled", !selectedRows);
+        $("#exportSelectedRowsCSV").html(
+            '<i class="fa fa-download"></i> Export (' +
+            selectedRows +
+            ") Selected Rows (CSV)",
+        );
+        $("#generateDepositSlip").prop("disabled", !selectedRows);
+        $("#generateDepositSlip").html(
+            '<i class="fa fa-download"></i> Generate Deposit Split for Selected (' +
+            selectedRows +
+            ") Rows (PDF)",
+        );
+    }
+
+    $('#deleteSelectedRows').click(function () {
+        var deletedRows = dataT.rows('.selected').data()
+        bootbox.confirm({
+            title: i18next.t("Confirm Delete"),
+            message: '<p>' + i18next.t("Are you sure you want to delete the selected") + ' ' + deletedRows.length + ' ' + i18next.t("Deposit(s)") + '?</p>' +
+                '<p>' + i18next.t("This will also delete all payments associated with this deposit") + '</p>' +
+                '<p>' + i18next.t("This action CANNOT be undone, and may have legal implications!") + '</p>' +
+                '<p>' + i18next.t("Please ensure this what you want to do.") + '</p>',
+            buttons: {
+                cancel : {
+                    label: i18next.t("Close")
+                },
+                confirm: {
+                    label: i18next.t("Delete")
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    $.each(deletedRows, function (index, value) {
+                        window.CRM.APIRequest({
+                            method: 'DELETE',
+                            path: 'deposits/' + value.Id
+                        })
+                            .done(function (data) {
+                                dataT.rows('.selected').remove().draw(false);
+                                updateSelectedCount();
+                            });
+                    });
+                }
+            }
+        });
+    });
+
     $("#depositDate")
         .datepicker({ format: "yyyy-mm-dd", language: window.CRM.lang })
         .datepicker("setDate", new Date());
@@ -117,29 +176,7 @@ $(document).ready(function () {
 
     $("#depositsTable tbody").on("click", "tr", function () {
         $(this).toggleClass("selected");
-        var selectedRows = dataT.rows(".selected").data().length;
-        $("#deleteSelectedRows").prop("disabled", !selectedRows);
-        $("#deleteSelectedRows").text(
-            "Delete (" + selectedRows + ") Selected Rows",
-        );
-        $("#exportSelectedRows").prop("disabled", !selectedRows);
-        $("#exportSelectedRows").html(
-            '<i class="fa fa-download"></i> Export (' +
-                selectedRows +
-                ") Selected Rows (OFX)",
-        );
-        $("#exportSelectedRowsCSV").prop("disabled", !selectedRows);
-        $("#exportSelectedRowsCSV").html(
-            '<i class="fa fa-download"></i> Export (' +
-                selectedRows +
-                ") Selected Rows (CSV)",
-        );
-        $("#generateDepositSlip").prop("disabled", !selectedRows);
-        $("#generateDepositSlip").html(
-            '<i class="fa fa-download"></i> Generate Deposit Split for Selected (' +
-                selectedRows +
-                ") Rows (PDF)",
-        );
+        updateSelectedCount();
     });
 
     $(".exportButton").click(function (sender) {
