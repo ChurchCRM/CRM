@@ -35,7 +35,7 @@ if (isset($_POST['SQL'])) {
 }
 
 if (isset($_POST['CSV'])) {
-    ExportQueryResults();
+    ExportQueryResults($sSQL, $rsQueryResults);
     exit;
 }
 
@@ -50,7 +50,7 @@ require 'Include/Header.php';
 </tr></table></center>
 
 <p align="center">
-    <textarea style="font-family:courier,fixed; font-size:9pt; padding:1;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
+    <textarea style="font-family:courier,fixed; font-size:9pt; padding:1rem;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
 </p>
 <p align="center">
     <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Execute SQL') ?>">
@@ -63,17 +63,13 @@ require 'Include/Header.php';
 
 if (isset($_POST['SQL'])) {
     if (strtolower(mb_substr($sSQL, 0, 6)) === 'select') {
-        RunFreeQuery();
+        RunFreeQuery($sSQL, $rsQueryResults);
     }
 }
 
-function ExportQueryResults()
+function ExportQueryResults(string $sSQL, &$rsQueryResults)
 {
     global $cnInfoCentral;
-    global $aRowClass;
-    global $rsQueryResults;
-    global $sSQL;
-    global $iQueryID;
 
     $sCSVstring = '';
 
@@ -114,17 +110,15 @@ function ExportQueryResults()
 }
 
 //Display the count of the recordset
+if (isset($_POST['SQL'])) {
     echo '<p align="center">';
     echo mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned');
     echo '</p>';
+}
 
-function RunFreeQuery()
+function RunFreeQuery(string $sSQL, &$rsQueryResults)
 {
     global $cnInfoCentral;
-    global $aRowClass;
-    global $rsQueryResults;
-    global $sSQL;
-    global $iQueryID;
 
     //Run the SQL
     $rsQueryResults = RunQuery($sSQL);
@@ -174,7 +168,7 @@ function RunFreeQuery()
         echo '</table>';
         echo '<p align="center">';
 
-        if (count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php?>
+        if ($aHiddenFormField && count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php?>
             <form method="post" action="CartView.php"><p align="center">
                 <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
                 <input type="submit" class="btn btn-default" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
@@ -185,7 +179,7 @@ function RunFreeQuery()
         }
 
         echo '<p align="center"><a href="QueryList.php">' . gettext('Return to Query Menu') . '</a></p>';
-        echo '<br><p class="ShadedBox" style="border-style: solid; margin-left: 50px; margin-right: 50 px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', htmlspecialchars($sSQL)) . '</span></p>';
+        echo '<br><p class="ShadedBox" style="border-style: solid; margin-left: 50px; margin-right: 50px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', htmlspecialchars($sSQL)) . '</span></p>';
     }
 }
 
