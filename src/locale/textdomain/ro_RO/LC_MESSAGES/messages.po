@@ -8825,7 +8825,7 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "un an"
 msgstr[1] "de %d ani"
-msgstr[2] "de % ani"
+msgstr[2] "de %d ani"
 
 #: 
 msgid "Unsupported PHP Version"

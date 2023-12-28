@@ -2176,7 +2176,7 @@
     "%d year old": {
         "one": "un an",
         "few": "de %d ani",
-        "other": "de % ani"
+        "other": "de %d ani"
     },
     "Unsupported PHP Version": "Versiune PHP neacceptată",
     "Support for this PHP version will soon be removed.  Current PHP Version: ": "În curând suportul pentru această versiune de PHP nu va mai fi disponibil. Versiunea PHP curentă",
