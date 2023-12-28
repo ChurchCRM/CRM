@@ -9,10 +9,11 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\KioskDevice;
 use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use Slim\Factory\AppFactory;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-// Instantiate the app
+$container = new ContainerBuilder();
+AppFactory::setContainer($container);
 $app = AppFactory::create();
-$container = $app->getContainer();
 $app->setBasePath('/kiosk');
 
 if (SystemConfig::debugEnabled()) {

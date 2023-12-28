@@ -4,12 +4,15 @@ use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
+use Psr\Container\ContainerInterface;
 
 // DIC configuration
+/** @var ContainerInterface $container */
 
-$container['PersonService'] = new PersonService();
-$container['GroupService'] = new GroupService();
+$container->set('PersonService', new PersonService());
 
-$container['FinancialService'] = new FinancialService();
+$container->set('GroupService', new GroupService());
 
-$container['SystemService'] = new SystemService();
+$container->set('FinancialService', new FinancialService());
+
+$container->set('SystemService', new SystemService());
