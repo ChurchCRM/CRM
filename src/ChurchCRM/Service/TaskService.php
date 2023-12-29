@@ -26,9 +26,9 @@ use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 class TaskService
 {
     /**
-     * @var ObjectCollection|TaskInterface[]
+     * @var TaskInterface[]
      */
-    private $taskClasses;
+    private array $taskClasses;
     private array $notificationClasses = [
         //  new LatestReleaseTask()
     ];
@@ -60,10 +60,12 @@ class TaskService
         $tasks = [];
         foreach ($this->taskClasses as $taskClass) {
             if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && AuthenticationManager::getCurrentUser()->isAdmin()))) {
-                $tasks[] = ['title' => $taskClass->getTitle(),
+                $tasks[] = [
+                    'title' => $taskClass->getTitle(),
                     'link' => $taskClass->getLink(),
                     'admin' => $taskClass->isAdmin(),
-                    'desc' => $taskClass->getDesc()];
+                    'desc' => $taskClass->getDesc()
+                ];
             }
         }
 
@@ -75,7 +77,7 @@ class TaskService
         $tasks = [];
         foreach ($this->notificationClasses as $taskClass) {
             if ($taskClass->isActive()) {
-                $tasks[] = new UiNotification($taskClass->getTitle(), 'wrench', $taskClass->getLink(), $taskClass->getDesc(), $taskClass->isAdmin() ? 'warning' : 'info', '12000', 'bottom', 'left');
+                $tasks[] = new UiNotification($taskClass->getTitle(), 'wrench', $taskClass->getLink(), $taskClass->getDesc(), $taskClass->isAdmin() ? 'warning' : 'info', 12000, 'bottom', 'left');
             }
         }
 
