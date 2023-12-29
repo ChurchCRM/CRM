@@ -22,7 +22,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
     $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args): Response {
         $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
 
-        return SlimUtils::renderJSON($response, $AppIntegrity['status']);
+        return SlimUtils::renderStringJSON($response, $AppIntegrity['status']);
     });
 
     $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response {
