@@ -11,7 +11,7 @@ use Monolog\Logger;
 class SystemConfig
 {
     /**
-     * @var Config[]
+     * @var Config[]|null
      */
     private static ?array $configs = null;
 

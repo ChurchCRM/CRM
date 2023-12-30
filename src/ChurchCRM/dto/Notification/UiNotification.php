@@ -6,29 +6,25 @@ use JsonSerializable;
 
 class UiNotification implements JsonSerializable
 {
-    private $title;
-    private $message;
-    private $url;
-    private $type;
-    private $icon;
-    private $delay;
-    private $placement;
-    private $align;
+    private string $title;
+    private string $message;
+    private string $url;
+    private string $type;
+    private string $icon;
+    private int $delay;
+    private string $placement;
+    private string $align;
 
-    /**
-     * UiNotification constructor.
-     *
-     * @param $title
-     * @param $message
-     * @param $url
-     * @param $type
-     * @param $icon
-     * @param $delay
-     * @param $placement
-     * @param $align
-     */
-    public function __construct($title, $icon, $url = '', $message = '', $type = 'info', $delay = 4000, $placement = 'top', $align = 'right')
-    {
+    public function __construct(
+        string $title,
+        string $icon,
+        string $url = '',
+        string $message = '',
+        string $type = 'info',
+        int $delay = 4000,
+        string $placement = 'top',
+        string $align = 'right'
+    ) {
         $this->title = $title;
         $this->message = $message;
         $this->url = $url;
@@ -39,66 +35,42 @@ class UiNotification implements JsonSerializable
         $this->align = $align;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @return string
-     */
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->message;
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * @return string
-     */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getIcon()
+    public function getIcon(): string
     {
         return $this->icon;
     }
 
-    /**
-     * @return int
-     */
-    public function getDelay()
+    public function getDelay(): int
     {
         return $this->delay;
     }
 
-    /**
-     * @return string
-     */
-    public function getPlacement()
+    public function getPlacement(): string
     {
         return $this->placement;
     }
 
-    /**
-     * @return string
-     */
-    public function getAlign()
+    public function getAlign(): string
     {
         return $this->align;
     }

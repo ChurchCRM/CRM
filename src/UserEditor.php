@@ -32,8 +32,6 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-;
-
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {

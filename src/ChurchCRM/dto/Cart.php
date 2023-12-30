@@ -22,7 +22,7 @@ class Cart
         if (!is_numeric($PersonID)) {
             throw new \Exception(gettext('PersonID for Cart must be numeric'), 400);
         }
-        if ($PersonID !== null && !in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
+        if (!in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
             $_SESSION['aPeopleCart'][] = (int)$PersonID;
         }
     }

@@ -30,10 +30,8 @@ if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
 
 // Was the form submitted?
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_POST['EventID'])) {
-        // Get the PersonID
     $iEventID = InputUtils::legacyFilterInput($_POST['EventID'], 'int');
 
-    // Loop through the session array
     $iCount = 0;
     foreach ($_SESSION['aPeopleCart'] as $element) {
         // Enter ID into event
@@ -54,7 +52,7 @@ $sPageTitle = gettext('Add Cart to Event');
 require 'Include/Header.php';
 
 if (count($_SESSION['aPeopleCart']) > 0) {
-    $sSQL = 'SELECT * FROM events_event';
+    $sSQL = 'SELECT event_id, event_title FROM events_event';
     $rsEvents = RunQuery($sSQL); ?>
 <div class="card">
 <p align="center"><?= gettext('Select the event to which you would like to add your cart') ?>:</p>
@@ -74,8 +72,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         // Create the group select drop-down
                         echo '<select name="EventID">';
                         while ($aRow = mysqli_fetch_array($rsEvents)) {
-                            extract($aRow);
-                            echo '<option value="' . $event_id . '">' . $event_title . '</option>';
+                            echo '<option value="' . $aRow['event_id'] . '">' . $aRow['event_title'] . '</option>';
                         }
                         echo '</select>'; ?>
                 </td>

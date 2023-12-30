@@ -4,18 +4,9 @@ namespace ChurchCRM\dto;
 
 class ChurchCRMRelease
 {
-    /**
-     * @var string
-     */
-    public $MAJOR;
-    /**
-     * @var string
-     */
-    public $MINOR;
-    /**
-     * @var string
-     */
-    public $PATCH;
+    public string $MAJOR;
+    public string $MINOR;
+    public string $PATCH;
 
     private array $rawRelease;
 
@@ -30,10 +21,10 @@ class ChurchCRMRelease
 
     public function equals(ChurchCRMRelease $b): bool
     {
-        return $this->MAJOR == $b->MAJOR && $this->MINOR == $b->MINOR && $this->PATCH == $b->PATCH;
+        return $this->MAJOR === $b->MAJOR && $this->MINOR === $b->MINOR && $this->PATCH === $b->PATCH;
     }
 
-    public function compareTo(ChurchCRMRelease $b)
+    public function compareTo(ChurchCRMRelease $b): int
     {
         if ($this->MAJOR < $b->MAJOR) {
             return -1;
@@ -59,21 +50,21 @@ class ChurchCRMRelease
     public function __toString(): string
     {
         try {
-            return (string) $this->MAJOR . '.' . $this->MINOR . '.' . $this->PATCH;
+            return $this->MAJOR . '.' . $this->MINOR . '.' . $this->PATCH;
         } catch (\Exception $exception) {
             return '';
         }
     }
 
-    public function getDownloadURL()
+    public function getDownloadURL(): string
     {
         foreach ($this->rawRelease['assets'] as $asset) {
             if ($asset['name'] == 'ChurchCRM-' . $this->rawRelease['name'] . '.zip') {
-                $url = $asset['browser_download_url'];
+                return $asset['browser_download_url'];
             }
         }
 
-        return $url;
+        throw new \Exception('download url not found!');
     }
 
     public function getReleaseNotes(): string
@@ -85,6 +76,6 @@ class ChurchCRMRelease
     {
         // yeah, it's a boolean in the JSON, but
         // let's check it to be sure this function returns a boolean.
-        return $this->rawRelease['prerelease'] == true;
+        return (bool) $this->rawRelease['prerelease'] === true;
     }
 }
