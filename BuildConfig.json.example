@@ -12,10 +12,10 @@
                 "server": "localhost",
                 "database": {
                     "server": "localhost",
-                    "port" : "3309",
+                    "port" : "3306",
                     "database": "churchcrm",
                     "user":"churchcrm",
-                    "password": "churchcrm"
+                    "password": "changeme"
                 },
                 "admin-api-key": ""
             }

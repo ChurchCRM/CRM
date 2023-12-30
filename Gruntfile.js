@@ -387,7 +387,6 @@ module.exports = function (grunt) {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
                     filters: ["translated"],
-                    tags: '<%= package.version %>',
                     type: 'po', // export type (check out the doc)
                     dest: 'src/locale/textdomain/?/LC_MESSAGES/messages.po'
                     // grunt style dest files
@@ -397,20 +396,16 @@ module.exports = function (grunt) {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
                     filters: ["translated"],
-                    tags: '<%= package.version %>',
-                    type: 'mo', // export type (check out the doc)
+                    type: 'mo',
                     dest: 'src/locale/textdomain/?/LC_MESSAGES/messages.mo'
-                    // grunt style dest files
                 }
             },
             getJSTranslations: {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
                     filters: ["translated"],
-                    tags: '<%= package.version %>',
-                    type: 'key_value_json', // export type (check out the doc)
+                    type: 'key_value_json',
                     dest: 'locale/JSONKeys/?.json'
-                    // grunt style dest files
                 }
             },
             options: {

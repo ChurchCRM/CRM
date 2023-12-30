@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-11 19:44-0800\n"
+"POT-Creation-Date: 2023-12-30 09:56-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-12-12T03:44:17.958Z\n"
-"PO-Revision-Date: 2023-12-12T03:44:17.959Z\n"
+"POT-Creation-Date: 2023-12-30T17:56:03.108Z\n"
+"PO-Revision-Date: 2023-12-30T17:56:03.110Z\n"
 "Language: en\n"
 
 msgid "Backup Database"
@@ -1218,8 +1218,9 @@ msgstr ""
 
 msgid ""
 "Unavailable person info inherited from assigned family for display?\rThis "
-"option causes certain info from a person's assigned family record to be"
-"\rdisplayed IF the corresponding info has NOT been entered for that person. "
+"option causes certain info from a person's assigned family record to "
+"be\rdisplayed IF the corresponding info has NOT been entered for that "
+"person. "
 msgstr ""
 
 msgid "Internationalization (I18n) support"
@@ -2808,15 +2809,6 @@ msgid "Export Selected Rows (CSV)"
 msgstr ""
 
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr ""
-
-msgid "Deposit(s)"
-msgstr ""
-
-msgid "This will also delete all payments associated with this deposit"
-msgstr ""
-
-msgid "Please ensure this what you want to do."
 msgstr ""
 
 msgid "Fundraiser Listing"
@@ -4930,6 +4922,9 @@ msgstr ""
 msgid "Added to group"
 msgstr ""
 
+msgid "invalid group request"
+msgstr ""
+
 msgid "invalid group id"
 msgstr ""
 
@@ -4957,19 +4952,19 @@ msgstr ""
 msgid "The property is already assigned."
 msgstr ""
 
-msgid "The property is successfully assigned."
+msgid "The property could not be assigned."
 msgstr ""
 
-msgid "The property could not be assigned."
+msgid "The property is successfully assigned."
 msgstr ""
 
 msgid "The record could not be found."
 msgstr ""
 
-msgid "The property is successfully unassigned."
+msgid "The property could not be unassigned."
 msgstr ""
 
-msgid "The property could not be unassigned."
+msgid "The property is successfully unassigned."
 msgstr ""
 
 msgid "Validation Error"
@@ -5101,10 +5096,10 @@ msgstr ""
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
-msgid "no found or user without an email"
+msgid "UserName not set"
 msgstr ""
 
-msgid "UserName not set"
+msgid "no found or user without an email"
 msgstr ""
 
 msgid "Login"
@@ -5303,10 +5298,10 @@ msgstr ""
 msgid "Families Without Emails"
 msgstr ""
 
-msgid "People not in"
+msgid "Invalid List id"
 msgstr ""
 
-msgid "Invalid List id"
+msgid "People not in"
 msgstr ""
 
 msgid "Audience not in the ChurchCRM"
@@ -7051,6 +7046,9 @@ msgstr ""
 msgid "Deposit Total"
 msgstr ""
 
+msgid "Deposit(s)"
+msgstr ""
+
 msgid "Details"
 msgstr ""
 
@@ -7197,6 +7195,9 @@ msgstr ""
 msgid "Please confirm the password reset of this user"
 msgstr ""
 
+msgid "Please ensure this what you want to do."
+msgstr ""
+
 msgid "Please select target group for members"
 msgstr ""
 
@@ -7266,6 +7267,9 @@ msgid "There was a problem retrieving the requested object"
 msgstr ""
 
 msgid "This field is required"
+msgstr ""
+
+msgid "This will also delete all payments associated with this deposit"
 msgstr ""
 
 msgid ""
