@@ -1,3 +1,153 @@
+# 5.4.0
+
+<!-- Release notes generated using configuration in .github/release.yml at master -->
+
+## What's Changed
+
+### 🪲 Bugs
+* fix issue with group list datatable by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6729
+* finding and fixing in the slim upgrade branch by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6730
+* fix issue with delete api routes by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6731
+* fix calendar and other scenarios with similar errors by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6732
+* fix issues in finance payment routes by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6739
+* fix select2 on PledgeEditor by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6753
+* Fix dashboard birthdays and address various minor code smells by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6762
+* allow minimal person data to be entered by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6769
+* fix various errors when interacting with 'cart' by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6767
+* [slim-upgrade] fix kiosk url so works as well as it did before by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6774
+### 💬 Localization
+* 5.4.0 POEditor Update - 2023-12-12 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6745
+* 5.4.0 POEditor Update - 2023-12-15 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6749
+* 5.4.0 POEditor Update - 2023-12-23 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6768
+* 5.4.0 POEditor Update - 2023-12-24 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6770
+* 5.4.0 POEditor Update - 2023-12-26 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6771
+### Inner Beauty
+* Starting 5.4.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6740
+* fix typo in POEditor commit message by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6750
+* update all www.churchcrm.io to churchcrm.io by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6763
+* add more minor code smell by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6764
+* add more types to php code by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6765
+* throw http exceptions when possible, try to pass around arrays instead of stringified arrays by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6752
+
+### 👒 Dependencies
+* [Snyk] Upgrade flag-icons from 6.13.2 to 6.14.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6727
+* [Snyk] Upgrade i18next from 23.6.0 to 23.7.1 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6733
+* [Snyk] Upgrade flag-icons from 6.14.0 to 6.15.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6734
+* [Snyk] Upgrade i18next from 23.7.1 to 23.7.3 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6735
+* Slim upgrade to v4 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6606
+* [Snyk] Upgrade i18next from 23.7.3 to 23.7.6 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6741
+* [Snyk] Upgrade react-datepicker from 4.21.0 to 4.23.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6748
+* [Snyk] Upgrade i18next from 23.7.6 to 23.7.7 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6755
+* [Snyk] Upgrade fullcalendar from 6.1.9 to 6.1.10 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6759
+* [Snyk] Upgrade @fortawesome/fontawesome-free from 6.4.2 to 6.5.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6758
+* [Snyk] Upgrade react-datepicker from 4.23.0 to 4.24.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6760
+* [Snyk] Upgrade @fortawesome/fontawesome-free from 6.5.0 to 6.5.1 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6761
+* [Snyk] Upgrade chart.js from 4.4.0 to 4.4.1 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6775
+### Other Changes
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6543
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6696
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6708
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6717
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6723
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6725
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6736
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6737
+* Apply fixes from StyleCI by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6754
+* make sure dashed lines aren't selectable by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6766
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6772
+* add ids to anchors, write some test for profile page by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6778
+* rename cypress specs with typos by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6780
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.3.1...5.4.0
+
+# 5.3.1
+
+<!-- Release notes generated using configuration in .github/release.yml at master -->
+
+## What's Changed
+### 🪲 Bugs
+* fix tax report incorrect args in `ChurchCRM\Reports\PdfTaxReport::finishPage()` by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6718
+* fix diacritics for directory report by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6719
+* add missing fiscal years for pledge comparison by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6720
+### 💬 Localization
+* 5.3.1 POEditor Update - 2023-11-22 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6702
+### Inner Beauty
+* Started 5.3.1 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6699
+* Add php types to auth classes by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6703
+* align styleci and phpcs to same psr12 coding standard by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6705
+* remove use of extract in CSVImport.php by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6710
+### Other Changes
+* reformat README with markdown best practice, add repo stats by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6701
+* Apply fixes from StyleCI by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6707
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.3.0...5.3.1
+
+# 5.3.0
+
+<!-- Release notes generated using configuration in .github/release.yml at 3ae48af8b207ae68423e0086d50797bee99b5f51 -->
+
+## What's Changed
+### 🛠 Breaking Changes
+* No Longer Support PHP 8.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6683
+
+### Other Changes
+* Upgrade System Updates by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6685
+
+### 🪲 Bugs
+* Added missing Fiscal Year to Query View by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6626
+### Inner Beauty
+* PHP Import cleanup vis phpStorm by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6692
+* moved from docker-compose  to docker compose by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6687
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.2.3...5.3.0
+
+# 5.2.3
+
+<!-- Release notes generated using configuration in .github/release.yml at be4959b8ac452fdd28e77683f5c622ea3ee3cda9 -->
+
+## What's Changed
+
+### 🪲 Bugs
+* fix error in /api/families/updated by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6668
+* Fix sunday school page bug by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6675
+* Fix sunday school graphs by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6680
+### 💬 Localization
+* 5.2.3 POEditor Update - 2023-11-17 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6678
+### Inner Beauty
+* Starting 5.2.3 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6676
+* make build faster by running things in parallel, switch release to node script for consistency by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6679
+### Other Changes
+* Apply fixes from StyleCI by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6674
+* Update README.md by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6677
+* tell user what version of php they're running for quality of life by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6682
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.2.2...5.2.3
+
+# 5.2.2
+
+<!-- Release notes generated using configuration in .github/release.yml at 448bf6319317c250a0cef249583b6bd032fe3823 -->
+
+## What's Changed
+### 🪲 Bugs
+* UI Bugs: PDF Labels & Group to Cart by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6661
+* fix error when updating Family by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6654
+* allow for empty birthday when initially inputting person by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6652
+* fix adding group roles by properly retrieving required service from the container by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6665
+### 💬 Localization
+* 5.2.2 POEditor Update - 2023-11-13 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6662
+### Inner Beauty
+* Build/5.2.2 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6660
+* Js minor cleanup by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6666
+### Other Changes
+* add debug step request to bug issue, comment out user prompts by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6667
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.2.1...5.2.2
+
 # 5.2.1
 
 <!-- Release notes generated using configuration in .github/release.yml at 423fe651ee875fd4a78777230bec39fca912d6b8 -->
@@ -101,7 +251,7 @@ We'd like to thank all the contributors who worked on this release!
 - [@DawoudIO](https://github.com/DawoudIO)
 - [@github-actions[bot]](https://github.com/apps/github-actions)
 - [@DAcodedBEAT](https://github.com/DAcodedBEAT)
- 
+
 - ## What's Changed
 * remove tooltip by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6596
 * More https corrections by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6594

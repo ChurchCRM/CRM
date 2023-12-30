@@ -91,7 +91,7 @@ class AppIntegrityService
             if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) === $signatureData->sha1) {
                 foreach ($signatureData->files as $file) {
                     $currentFile = SystemURLs::getDocumentRoot() . '/' . $file->filename;
-                    if (file_exists($currentFile)) {
+                    if (is_file($currentFile)) {
                         $actualHash = sha1_file($currentFile);
                         if ($actualHash != $file->sha1) {
                             $logger->warning('File hash mismatch: ' . $file->filename . '. Expected: ' . $file->sha1 . '; Got: ' . $actualHash);
