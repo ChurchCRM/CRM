@@ -2377,4 +2377,3 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on: Fri, 29 Dec 2023 19:56:57 -0500
-{"status":"success"}
