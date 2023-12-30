@@ -171,10 +171,10 @@ class BackupJob extends JobBase
     private function encryptBackupFile(): void
     {
         LoggerUtils::getAppLogger()->info('Encrypting backup file: ' . $this->BackupFile);
-        $tempfile = new \SplFileInfo($this->BackupFile->getPathname() . 'temp');
-        rename($this->BackupFile, $tempfile);
-        File::encryptFileWithPassword($tempfile, $this->BackupFile, $this->BackupPassword);
-        LoggerUtils::getAppLogger()->info('Finished ecrypting backup file');
+        $tempFile = new \SplFileInfo($this->BackupFile->getPathname() . 'temp');
+        rename($this->BackupFile, $tempFile);
+        File::encryptFileWithPassword($tempFile, $this->BackupFile, $this->BackupPassword);
+        LoggerUtils::getAppLogger()->info('Finished encrypting backup file');
     }
 
     public function execute(): bool
