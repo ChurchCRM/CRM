@@ -776,10 +776,6 @@ msgid "Bank"
 msgstr "בנק"
 
 #: 
-msgid "Month"
-msgstr "חודש"
-
-#: 
 msgid "Year"
 msgstr "שנה"
 
@@ -814,10 +810,6 @@ msgstr "עבר"
 #: 
 msgid "Warning: Signature mismatch"
 msgstr "אזהרה: החתימה אינה תואמת "
-
-#: 
-msgid "Estonian"
-msgstr "אסטונית"
 
 #: 
 msgid "Generate Backup"
@@ -904,11 +896,6 @@ msgstr "הסר מסנן"
 #: 
 msgid "Add Person"
 msgstr "הוסף אדם"
-
-#: 
-#, fuzzy
-msgid "Portuguese - Portugal"
-msgstr "פוטוגזית - פורטוגל"
 
 #: 
 msgid "Holiday"

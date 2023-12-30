@@ -944,10 +944,6 @@ msgid "Bank"
 msgstr "Banka"
 
 #: 
-msgid "Month"
-msgstr "Muaj"
-
-#: 
 msgid "Year"
 msgstr "Viti:"
 

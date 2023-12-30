@@ -976,10 +976,6 @@ msgid "Bank"
 msgstr "Bank"
 
 #: 
-msgid "Month"
-msgstr "Hónap"
-
-#: 
 msgid "Year"
 msgstr "Év"
 

@@ -57,14 +57,6 @@ msgid "Zip Code"
 msgstr "Postal Code"
 
 #: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Enter any part of the following: Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
-
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Search by any part of Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
-
-#: 
 msgid "Show neighbors with these classifications:"
 msgstr "Show neighbours with these classifications:"
 

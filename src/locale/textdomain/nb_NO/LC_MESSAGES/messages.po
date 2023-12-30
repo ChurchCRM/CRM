@@ -1026,10 +1026,6 @@ msgid "Bank"
 msgstr "Bank"
 
 #: 
-msgid "Month"
-msgstr "Måned"
-
-#: 
 msgid "Year"
 msgstr "År"
 

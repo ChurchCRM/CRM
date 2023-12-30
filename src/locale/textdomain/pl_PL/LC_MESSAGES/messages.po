@@ -1017,10 +1017,6 @@ msgid "Bank"
 msgstr "Bank"
 
 #: 
-msgid "Month"
-msgstr "Miesiąc"
-
-#: 
 msgid "Year"
 msgstr "Rok"
 
@@ -3947,26 +3943,6 @@ msgid "People Properties"
 msgstr "Osoby - właściwości"
 
 #: 
-msgid "Regular Attender"
-msgstr "Sympatycy"
-
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Członkowie, sympatycy itp."
-
-#: 
-msgid "People with birthdays in a particular month"
-msgstr "Osoby urodzone w danym miesiącu"
-
-#: 
-msgid "People who are members"
-msgstr "Osoby będące członkami"
-
-#: 
-msgid "Allow user to add new event"
-msgstr "Zezwól użytkownikom na tworzenie wydarzeń"
-
-#: 
 msgid "All Events of Type"
 msgstr "Wszystkie wydarzenia według typu"
 
@@ -4368,10 +4344,6 @@ msgid "Include family custom properties in global search."
 msgstr "Uwzględnij dodatkowe własności rodziny w wyszukiwaniu."
 
 #: 
-msgid "Latvia (Latvija)"
-msgstr "Łotwa"
-
-#: 
 msgid "You are about to add a new deposit without a comment"
 msgstr "Zamierzasz dodać nowy depozyt bez komentarza"
 
@@ -4450,10 +4422,6 @@ msgstr "Wykryto Nieobsługiwany Typ Wpłaty"
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Wsparcie dla eGive, kart płatniczych i wpłat bankowych zostało zakończone. Stare raporty mogą przestać działać w kolejnych wersjach."
-
-#: 
-msgid "Estonian"
-msgstr "Estoński"
 
 #: 
 msgid "Error decoding integrity check result file"
@@ -4683,10 +4651,6 @@ msgid "Add Person"
 msgstr "Dodaj Osobę"
 
 #: 
-msgid "Portuguese - Portugal"
-msgstr "Portugalski"
-
-#: 
 msgid "Holiday"
 msgstr "Święto"
 
@@ -4894,10 +4858,6 @@ msgstr "Osoby nie na liście"
 #: 
 msgid "Audience not in the CRM"
 msgstr "Uczestnicy z poza CRM"
-
-#: 
-msgid "Hebrew"
-msgstr "Hebrajski"
 
 #: 
 msgid "Not Subscribed "

@@ -649,22 +649,6 @@ msgid " Since:"
 msgstr "Od:"
 
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#: 
 msgid " in this category."
 msgstr "v této kategorii."
 
