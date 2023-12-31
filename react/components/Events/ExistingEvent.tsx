@@ -172,12 +172,11 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   delete() {
     fetch(CRMRoot + "/api/events/" + this.props.eventId, {
       credentials: "include",
-      method: "POST",
+      method: "DELETE",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ _METHOD: "DELETE" }),
     }).then(() => this.exit());
   }
 

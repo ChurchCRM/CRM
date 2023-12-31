@@ -298,7 +298,7 @@ $(document).ready(function () {
 
     $("#deletePhoto").click(function () {
         $.ajax({
-            type: "POST",
+            type: "DELETE",
             url:
                 window.CRM.root +
                 "/api/family/" +
@@ -306,9 +306,6 @@ $(document).ready(function () {
                 "/photo",
             encode: true,
             dataType: "json",
-            data: {
-                _METHOD: "DELETE",
-            },
         }).done(function (data) {
             location.reload();
         });

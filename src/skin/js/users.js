@@ -30,7 +30,6 @@ function deleteUser(userId, userName) {
                 window.CRM.APIRequest({
                     method: "DELETE",
                     path: "user/" + userId + "/",
-                    data: { _METHOD: "DELETE" },
                 }).done(function () {
                     window.location.href = window.CRM.root + "/UserList.php";
                 });

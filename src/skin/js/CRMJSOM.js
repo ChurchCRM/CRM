@@ -125,9 +125,9 @@ window.CRM.cart = {
     },
     removePerson: function (Persons, callback) {
         window.CRM.APIRequest({
-            method: "POST",
+            method: "DELETE",
             path: "cart/",
-            data: JSON.stringify({ _METHOD: "DELETE", Persons: Persons }),
+            data: JSON.stringify({ Persons: Persons }),
         }).done(function (data) {
             window.CRM.cart.refresh();
             if (callback) {
