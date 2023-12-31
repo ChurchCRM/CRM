@@ -394,7 +394,7 @@ window.CRM.groups = {
                 window.CRM.groups
                     .getRoles(selectOptions.GroupID)
                     .done(function (rdata) {
-                        rolesList = $.map(rdata.ListOptions, function (item) {
+                        rolesList = $.map(rdata, function (item) {
                             var o = {
                                 text: i18next.t(item.OptionName), // to translate the Teacher and Student in localize text
                                 id: item.OptionId,
@@ -426,7 +426,7 @@ window.CRM.groups = {
         bootbox.dialog(options).init(initFunction).show();
 
         window.CRM.groups.get().done(function (rdata) {
-            groupsList = $.map(rdata.Groups, function (item) {
+            groupsList = $.map(rdata, function (item) {
                 var o = {
                     text: item.Name,
                     id: item.Id,
@@ -442,14 +442,14 @@ window.CRM.groups = {
 
             $groupSelect2.on("select2:select", function (e) {
                 var targetGroupId = $(
-                    "#targetGroupSelection option:selected",
+                    "#targetGroupSelection option:selected"
                 ).val();
                 $parent = $("#targetRoleSelection").parent();
                 $("#targetRoleSelection").empty();
                 window.CRM.groups
                     .getRoles(targetGroupId)
                     .done(function (rdata) {
-                        rolesList = $.map(rdata.ListOptions, function (item) {
+                        rolesList = $.map(rdata, function (item) {
                             var o = {
                                 text: i18next.t(item.OptionName), // this is for the Teacher and Student role
                                 id: item.OptionId,
