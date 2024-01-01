@@ -109,11 +109,10 @@ $("document").ready(function () {
     $(document).on("click", ".deleteRole", function (e) {
         var roleID = e.currentTarget.id.split("-")[1];
         $.ajax({
-            method: "POST",
+            method: "DELETE",
             url:
                 window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
             encode: true,
-            data: { _METHOD: "DELETE" },
             dataType: "json",
         }).done(function (data) {
             dataT.clear();
