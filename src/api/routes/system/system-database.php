@@ -109,7 +109,7 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
         $filename = $args['filename'];
         BackupDownloader::downloadBackup($filename);
 
-        return SlimUtils::renderSuccessJSON($response);
+        return $response;
     });
 })->add(AdminRoleAuthMiddleware::class);
 
