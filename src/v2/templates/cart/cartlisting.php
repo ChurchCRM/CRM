@@ -33,7 +33,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
             </td>
             <td><?= $Person->getAddress() ?></td>
             <td><?= $Person->getEmail() ?></td>
-            <td><a class="RemoveFromPeopleCart" data-personid="<?= $Person->getId() ?>"><?= gettext('Remove') ?></a>
+            <td><button class="RemoveFromPeopleCart" data-personid="<?= $Person->getId() ?>"><?= gettext('Remove') ?></button>
             </td>
             <td><?= $Person->getClassificationName() ?></td>
             <td><?= $Person->getFamilyRoleName() ?></td>
