@@ -69,7 +69,7 @@ class SlimUtils
         $response = $response->withHeader('Content-type', $photo->getPhotoContentType());
 
         $response->getBody()->write($photo->getPhotoBytes());
-        
+
         return $response;
     }
 }
