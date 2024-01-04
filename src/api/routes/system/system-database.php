@@ -168,7 +168,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
             $person->getCellPhone(),
             $person->getHomePhone(),
             $person->getEmail(),
-            $person->getFacebookID(),
+            $person->getFacebook(),
             '',
             '',
             '',

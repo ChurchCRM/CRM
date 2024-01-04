@@ -64,6 +64,9 @@ function changepassword(Request $request, Response $response, array $args): Resp
         // i.e. SSO will usually be a password change "portal," so we would redirect here.
         // but this will come later when we add more AuthenticationProviders
         RedirectUtils::absoluteRedirect($authenticationProvider->getPasswordChangeURL());
+
+        // unused but provided to complete the function signature
+        return $response;
     } else {
         // we're not using LocalAuth, and the AuthProvider does not specify a password change url
         // so tell the user we can't help them
