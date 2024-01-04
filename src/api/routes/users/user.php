@@ -30,7 +30,10 @@ function updateUserConfig(Request $request, Response $response, array $args): Re
     $newValue = $parsedBody['value'];
     $user->setUserConfigString($userConfigName, $newValue);
     $user->save();
-    if ($user->getUserConfigString($userConfigName) == $newValue) {
-        return SlimUtils::renderJSON($response, [$userConfigName => $newValue]);
+
+    if ($user->getUserConfigString($userConfigName) !== $newValue) {
+        throw new \Exception('user config string does not match provided value');
     }
+
+    return SlimUtils::renderJSON($response, [$userConfigName => $newValue]);
 }
