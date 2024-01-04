@@ -64,11 +64,12 @@ class SlimUtils
 
     public static function renderPhoto(Response $response, Photo $photo): Response
     {
-        /*$response = $response
-            ->withBody($photo->getPhotoBytes())
-            ->withHeader('Content-type', $photo->getPhotoContentType());*/
-
         $cacheProvider = new CacheProvider();
-        return $cacheProvider->withEtag($response, $photo->getPhotoURI());
+        $response = $cacheProvider->withEtag($response, $photo->getPhotoURI());
+        $response = $response->withHeader('Content-type', $photo->getPhotoContentType());
+
+        $response->getBody()->write($photo->getPhotoBytes());
+
+        return $response;
     }
 }
