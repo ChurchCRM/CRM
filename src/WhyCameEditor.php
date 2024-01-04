@@ -18,6 +18,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\model\ChurchCRM\WhyCame;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -41,16 +42,20 @@ if (isset($_POST['Submit'])) {
 
     // New input (add)
     if (strlen($iWhyCameID) < 1) {
-        $sSQL = 'INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs)
-				VALUES (' . $iPerson . ', "' . $tJoin . '", "' . $tCome . '", "' . $tSuggest . '", "' . $tHearOfUs . '")';
-
+        $whyCame = new WhyCame();
+        $whyCame
+            ->setPerId($iPerson)
+            ->setJoin($tJoin)
+            ->setCome($tCome)
+            ->setSuggest($tSuggest)
+            ->setHearOfUs($tHearOfUs);
+        $whyCame->save();
     // Existing record (update)
     } else {
         $sSQL = 'UPDATE whycame_why SET why_join = "' . $tJoin . '", why_come = "' . $tCome . '", why_suggest = "' . $tSuggest . '", why_hearOfUs = "' . $tHearOfUs . '" WHERE why_per_ID = ' . $iPerson;
+        //Execute the SQL
+        RunQuery($sSQL);
     }
-
-    //Execute the SQL
-    RunQuery($sSQL);
 
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)

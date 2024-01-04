@@ -19,7 +19,9 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\model\ChurchCRM\EventAttend;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups & Roles permission
@@ -34,11 +36,17 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
 
     $iCount = 0;
     foreach ($_SESSION['aPeopleCart'] as $element) {
-        // Enter ID into event
-        $sSQL = 'INSERT IGNORE INTO event_attend (event_id, person_id)';
-        $sSQL .= " VALUES ('" . $iEventID . "','" . $element . "')";
-        RunQuery($sSQL);
-        $iCount++;
+        try {
+            $eventAttend = new EventAttend();
+            $eventAttend
+                ->setEventId($iEventID)
+                ->setPersonId($element);
+            $eventAttend->save();
+            $iCount++;
+        } catch (\Throwable $ex) {
+            $logger = LoggerUtils::getAppLogger();
+            $logger->error('An error occurred when saving event attendance', ['exception' => $ex]);
+        }
     }
     Cart::emptyAll();
 

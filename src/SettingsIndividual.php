@@ -17,6 +17,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\UserConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -63,10 +64,16 @@ if (isset($_POST['save'])) {
                 list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type,
                     $ucfg_tooltip, $ucfg_permission) = $aDefaultRow;
 
-                $sSQL = "INSERT INTO userconfig_ucfg VALUES ($iPersonID, $id, "
-                . "'$ucfg_name', '$ucfg_value', '$ucfg_type', '$ucfg_tooltip', "
-                . "$ucfg_permission, ' ')";
-                $rsResult = RunQuery($sSQL);
+                $userConfig = new UserConfig();
+                $userConfig
+                    ->setPeronId($iPersonID)
+                    ->setId($id)
+                    ->setName($ucfg_name)
+                    ->setValue($ucfg_value)
+                    ->setType($ucfg_type)
+                    ->setTooltip($ucfg_tooltip)
+                    ->setPermission($ucfg_permission);
+                $userConfig->save();
             } else {
                 echo '<BR> Error: Software BUG 3216';
                 exit;

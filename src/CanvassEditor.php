@@ -14,6 +14,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\CanvassData;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -66,22 +67,21 @@ if (isset($_POST['Submit'])) {
 
     // New canvas input (add)
     if ($iCanvassID < 1) {
-        $sSQL = 'INSERT INTO canvassdata_can (can_famID, can_Canvasser, can_FYID, can_date, can_Positive,
-		                                      can_Critical, can_Insightful, can_Financial, can_Suggestion,
-											  can_NotInterested, can_WhyNotInterested)
-					VALUES (' . $iFamily . ',' .
-                            $iCanvasser . ',' .
-                            $iFYID . ',' .
-                            '"' . $dDate . '",' .
-                            '"' . $tPositive . '",' .
-                            '"' . $tCritical . '",' .
-                            '"' . $tInsightful . '",' .
-                            '"' . $tFinancial . '",' .
-                            '"' . $tSuggestion . '",' .
-                            '"' . $bNotInterested . '",' .
-                            '"' . $tWhyNotInterested . '")';
-        //Execute the SQL
-        RunQuery($sSQL);
+        $canvassData = new CanvassData();
+        $canvassData
+            ->setFamilyId($iFamily)
+            ->setCanvasser($iCanvasser)
+            ->setFyid($iFYID)
+            ->setDate($dDate)
+            ->setPositive($tPositive)
+            ->setCritical($tCritical)
+            ->setInsightful($tInsightful)
+            ->setFinancial($tFinancial)
+            ->setSuggestion($tSuggestion)
+            ->setNotInterested($bNotInterested)
+            ->setWhyNotInterested($tWhyNotInterested);
+        $canvassData->save();
+
         $sSQL = 'SELECT MAX(can_ID) AS iCanvassID FROM canvassdata_can';
         $rsLastEntry = RunQuery($sSQL);
         $newRec = mysqli_fetch_array($rsLastEntry);

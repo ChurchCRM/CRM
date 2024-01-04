@@ -25,6 +25,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
@@ -67,28 +68,19 @@ while ($aRow = mysqli_fetch_array($rsList)) {
     $per_Country = mysqli_real_escape_string($cnInfoCentral, $per_Country);
     $per_HomePhone = mysqli_real_escape_string($cnInfoCentral, $per_HomePhone);
 
-    $sSQL = "INSERT INTO family_fam (
-                fam_Name,
-                fam_Address1,
-                fam_Address2,
-                fam_City,
-                fam_State,
-                fam_Zip,
-                fam_Country,
-                fam_HomePhone,
-                fam_DateEntered,
-                fam_EnteredBy)
-            VALUES ('" .
-                $per_LastName . "','" .
-                $per_Address1 . "','" .
-                $per_Address2 . "','" .
-                $per_City . "','" .
-                $per_State . "','" .
-                $per_Zip . "','" .
-                $per_Country . "','" .
-                $per_HomePhone . "'," .
-                'NOW()' . ",'" .
-                $curUserId . "')";
+    $family = new Family();
+    $family
+        ->setName($per_LastName)
+        ->setAddress1($per_Address1)
+        ->setAddress2($per_Address2)
+        ->setCity($per_City)
+        ->setState($per_State)
+        ->setZip($per_Zip)
+        ->setCountry($per_Country)
+        ->setHomePhone($per_HomePhone)
+        ->setDateEntered(new DateTimeImmutable())
+        ->setEnteredBy($curUserId);
+    $family->save();
 
     echo '<br>' . $sSQL;
     // RunQuery to add family record

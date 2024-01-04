@@ -12,6 +12,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -246,10 +247,14 @@ if (isset($_POST['SaveChanges'])) {
             $rsOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsOpps);
             $newOrder = $numRows + 1;
-            $sSQL = "INSERT INTO `volunteeropportunity_vol`
-           ( `vol_Order` , `vol_Name` , `vol_Description`)
-           VALUES ( '" . $newOrder . "', '" . $newFieldName . "', '" . $newFieldDesc . "');";
-            RunQuery($sSQL);
+
+            $volunteerOpp = new VolunteerOpportunity();
+            $volunteerOpp
+                ->setOrder($newOrder)
+                ->setName($newFieldName)
+                ->setDescription($newFieldDesc);
+            $volunteerOpp->save();
+
             $bNewNameError = false;
         }
     }

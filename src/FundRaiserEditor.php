@@ -14,6 +14,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -60,8 +61,15 @@ if (isset($_POST['FundRaiserSubmit'])) {
     if (!$bErrorFlag) {
         // New deposit slip
         if ($iFundRaiserID <= 0) {
-            $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES (' .
-            "'" . $dDate . "','" . $sTitle . "','" . $sDescription . "'," . AuthenticationManager::getCurrentUser()->getId() . ",'" . date('YmdHis') . "')";
+            $fundraiser = new FundRaiser();
+            $fundraiser
+                ->setDate($dDate)
+                ->setTitle($sTitle)
+                ->setDescription($sDescription)
+                ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
+                ->setEnteredDate(date('YmdHis'));
+            $fundraiser->save();
+
             $bGetKeyBack = true;
         // Existing record (update)
         } else {

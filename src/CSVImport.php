@@ -20,7 +20,9 @@ require 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyCustom;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -619,48 +621,37 @@ if (isset($_POST['DoImport'])) {
                         );
                     }
                 } else {
-                    $sSQL = 'INSERT INTO family_fam (fam_ID,
-                                                     fam_Name,
-                                                     fam_Address1,
-                                                     fam_Address2,
-                                                     fam_City,
-                                                     fam_State,
-                                                     fam_Zip,
-                                                     fam_Country,
-                                                     fam_HomePhone,
-                                                     fam_WorkPhone,
-                                                     fam_CellPhone,
-                                                     fam_Email,
-                                                     fam_DateEntered,
-                                                     fam_EnteredBy)
-                             VALUES (NULL, ' .
-                                     '"' . $per_LastName . '", ' .
-                                     '"' . $sAddress1 . '", ' .
-                                     '"' . $sAddress2 . '", ' .
-                                     '"' . $sCity . '", ' .
-                                     '"' . $sState . '", ' .
-                                     '"' . $sZip . '", ' .
-                                     '"' . $per_Country . '", ' .
-                                     '"' . $per_HomePhone . '", ' .
-                                     '"' . $per_WorkPhone . '", ' .
-                                     '"' . $per_CellPhone . '", ' .
-                                     '"' . $per_Email . '",' .
-                                     '"' . date('YmdHis') . '",' .
-                                     '"' . AuthenticationManager::getCurrentUser()->getId() . '");';
-                    RunQuery($sSQL);
+                    $family = new \ChurchCRM\model\ChurchCRM\Family();
+                    $family
+                        ->setName($per_LastName)
+                        ->setAddress1($sAddress1)
+                        ->setAddress2($sAddress2)
+                        ->setCity($sCity)
+                        ->setState($sState)
+                        ->setZip($sZip)
+                        ->setHomePhone($per_HomePhone)
+                        ->setWorkPhone($per_WorkPhone)
+                        ->setCellPhone($per_CellPhone)
+                        ->setEmail($per_Email)
+                        ->setDateEntered(date('YmdHis'))
+                        ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
+                    $family->save();
 
                     $sSQL = 'SELECT LAST_INSERT_ID()';
                     $rsFid = RunQuery($sSQL);
                     $aFid = mysqli_fetch_array($rsFid);
                     $famid = $aFid[0];
+
                     $note = new Note();
                     $note->setFamId($famid);
                     $note->setText(gettext('Imported'));
                     $note->setType('create');
                     $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                     $note->save();
-                    $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
-                    RunQuery($sSQL);
+
+                    $familyCustom = new FamilyCustom();
+                    $familyCustom->setFamId($famid);
+                    $familyCustom->save();
 
                     $fFamily = new Family(InputUtils::legacyFilterInput($_POST['FamilyMode'], 'int'));
                     $fFamily->addMember(
@@ -681,8 +672,9 @@ if (isset($_POST['DoImport'])) {
                     $sSQL = "SELECT fam_id FROM family_custom WHERE fam_id = $famid";
                     $rsFamCustomID = RunQuery($sSQL);
                     if (mysqli_num_rows($rsFamCustomID) === 0) {
-                        $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
-                        RunQuery($sSQL);
+                        $familyCustom = new FamilyCustom();
+                        $familyCustom->setFamId($famid);
+                        $familyCustom->save();
                     }
 
                     // Build the family_custom SQL
@@ -728,6 +720,7 @@ if (isset($_POST['DoImport'])) {
             $rsPersonID = RunQuery($sSQL);
             $aRow = mysqli_fetch_array($rsPersonID);
             $iPersonID = $aRow['iPersonID'];
+
             $note = new Note();
             $note->setPerId($iPersonID);
             $note->setText(gettext('Imported'));
@@ -735,8 +728,9 @@ if (isset($_POST['DoImport'])) {
             $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $note->save();
             if ($bHasCustom) {
-                $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
-                RunQuery($sSQL);
+                $personCustom = new PersonCustom();
+                $personCustom->setPerId($iPersonID);
+                $personCustom->save();
 
                 // Build the person_custom SQL
                 for ($col = 0; $col < $numCol; $col++) {

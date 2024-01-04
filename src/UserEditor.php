@@ -27,6 +27,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewAccountEmail;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\UserConfig;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -297,10 +298,17 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
                 list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type,
                     $ucfg_tooltip, $ucfg_permission, $ucfg_cat) = $aDefaultRow;
 
-                $sSQL = "INSERT INTO userconfig_ucfg VALUES ($iPersonID, $id, "
-                    . "'$ucfg_name', '$ucfg_value', '$ucfg_type', '" . htmlentities(addslashes($ucfg_tooltip), ENT_NOQUOTES, 'UTF-8') . "', "
-                    . "'$ucfg_permission', '$ucfg_cat')";
-                $rsResult = RunQuery($sSQL);
+                $userConfig = new UserConfig();
+                $userConfig
+                    ->setPeronId($iPersonID)
+                    ->setId($id)
+                    ->setName($ucfg_name)
+                    ->setValue($ucfg_value)
+                    ->setType($ucfg_type)
+                    ->setTooltip($ucfg_tooltip)
+                    ->setPermission($ucfg_permission)
+                    ->setCat($ucfg_cat);
+                $userConfig->save();
             } else {
                 echo '<br> Error on line ' . __LINE__ . ' of file ' . __FILE__;
                 exit;

@@ -17,6 +17,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -199,10 +200,14 @@ if (isset($_POST['AddField'])) {
             $newOptionID = $aTemp[0] + 1;
 
             // Insert into the appropriate options table
-            $sSQL = 'INSERT INTO list_lst (lst_ID, lst_OptionID, lst_OptionName, lst_OptionSequence)
-					VALUES (' . $listID . ',' . $newOptionID . ",'" . $newFieldName . "'," . $newOptionSequence . ')';
+            $listOption = new ListOption();
+            $listOption
+                ->setId($listID)
+                ->setOptionId($newOptionID)
+                ->setOptionName($newFieldName)
+                ->setOptionSequence($newOptionSequence);
+            $listOption->save();
 
-            RunQuery($sSQL);
             $iNewNameError = 0;
         }
     }
