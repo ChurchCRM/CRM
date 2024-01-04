@@ -4,7 +4,7 @@ use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
-use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 // DIC configuration
 /** @var ContainerInterface $container */

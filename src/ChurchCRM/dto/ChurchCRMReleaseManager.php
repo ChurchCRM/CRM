@@ -233,7 +233,7 @@ class ChurchCRMReleaseManager
         }
     }
 
-    public static function doUpgrade(string $zipFilename, string $sha1)
+    public static function doUpgrade(string $zipFilename, string $sha1): void
     {
         self::$isUpgradeInProgress = true;
         // temporarily disable PHP's error display so that
@@ -249,43 +249,53 @@ class ChurchCRMReleaseManager
         $logger->info('Beginning upgrade process');
         $logger->info('PHP max_execution_time is now: ' . ini_get('max_execution_time'));
         $logger->info('Beginning hash validation on ' . $zipFilename);
-        if ($sha1 === sha1_file($zipFilename)) {
-            $logger->info('Hash validation succeeded on ' . $zipFilename . ' Got: ' . sha1_file($zipFilename));
 
-            $zip = new \ZipArchive();
-            if ($zip->open($zipFilename) === true) {
-                $logger->info('Extracting ' . $zipFilename . ' to: ' . SystemURLs::getDocumentRoot() . '/Upgrade');
-
-                $executionTime = new ExecutionTime();
-                $isSuccessful = $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-                MiscUtils::throwIfFailed($isSuccessful);
-
-                $zip->close();
-
-                $logger->info('Extraction completed.  Took:' . $executionTime->getMilliseconds());
-                $logger->info('Moving extracted zip into place');
-
-                $executionTime = new ExecutionTime();
-
-                FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
-                $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
-            }
-            $logger->info('Deleting zip archive: ' . $zipFilename);
-            unlink($zipFilename);
-
-            SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
-            $logger->debug('Set sLastIntegrityCheckTimeStamp to null');
-            $logger->info('Upgrade process complete');
-            ini_set('display_errors', $displayErrors);
-            self::$isUpgradeInProgress = false;
-
-            return 'success';
-        } else {
+        $actualSha1 = sha1_file($zipFilename);
+        if ($sha1 !== $actualSha1) {
             self::$isUpgradeInProgress = false;
             ini_set('display_errors', $displayErrors);
-            $logger->error('Hash validation failed on ' . $zipFilename . '. Expected: ' . $sha1 . '. Got: ' . sha1_file($zipFilename));
+            $message = 'hash validation failure';
+            $logger->error(
+                $message,
+                [
+                    'zipFilename' => $zipFilename,
+                    'expectedHash' => $sha1,
+                    'actualHash' => $actualSha1,
+                ]
+            );
 
-            return 'hash validation failure';
+            throw new \Exception($message);
         }
+
+        $logger->info('Hash validation succeeded on ' . $zipFilename . ' Got: ' . $actualSha1);
+
+        $zip = new \ZipArchive();
+        if ($zip->open($zipFilename) === true) {
+            $logger->info('Extracting ' . $zipFilename . ' to: ' . SystemURLs::getDocumentRoot() . '/Upgrade');
+
+            $executionTime = new ExecutionTime();
+            $isSuccessful = $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
+            MiscUtils::throwIfFailed($isSuccessful);
+
+            $zip->close();
+
+            $logger->info('Extraction completed.  Took:' . $executionTime->getMilliseconds());
+            $logger->info('Moving extracted zip into place');
+
+            $executionTime = new ExecutionTime();
+
+            FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
+        }
+        $logger->info('Deleting zip archive: ' . $zipFilename);
+        unlink($zipFilename);
+
+        SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
+        $logger->debug('Set sLastIntegrityCheckTimeStamp to null');
+        $logger->info('Upgrade process complete');
+        ini_set('display_errors', $displayErrors);
+        self::$isUpgradeInProgress = false;
+
+        return;
     }
 }
