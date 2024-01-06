@@ -71,7 +71,7 @@ class MiscUtils
 
     public static function formatAge(int $Month, int $Day, ?int $Year = null): string
     {
-        if (empty($Year === null)) {
+        if (empty($Year)) {
             return '';
         }
 
