@@ -56,19 +56,23 @@ class Photo
 
     private function shouldRefreshPhotoFile(string $photoFile): bool
     {
+        $logger = LoggerUtils::getAppLogger();
+
         if (!$this->remotesEnabled) {
             // if remotes are disabled, and the image contains remote, then we should re-gen
             return strpos($photoFile, 'remote') !== false;
         }
 
         // default defined in SystemConfig.php
-        $interval = \DateInterval::createFromDateString('72 hours');
+        $defaultInterval = \DateInterval::createFromDateString('72 hours');
 
+        $interval = null;
         try {
             // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
             $remotePhotoCacheDuration = SystemConfig::getValue('iRemotePhotoCacheDuration');
             if (!$remotePhotoCacheDuration) {
-                LoggerUtils::getAppLogger()->error(
+                // log error and use default value
+                $logger->error(
                     'config iRemotePhotoCacheDuration somehow not set, please investigate',
                     ['stacktrace' => debug_backtrace()]
                 );
@@ -77,7 +81,18 @@ class Photo
                 MiscUtils::throwIfFailed($interval);
             }
         } catch (\Throwable $exception) {
-            // use default value
+            // log error and use default value
+            $logger->error(
+                'invalid config provided for iRemotePhotoCacheDuration',
+                [
+                    'iRemotePhotoCacheDuration' => SystemConfig::getValue('iRemotePhotoCacheDuration'),
+                    'exception' => $exception,
+                ]
+            );
+        }
+
+        if ($interval === null) {
+            $interval = $defaultInterval;
         }
         $remoteCacheThreshold = new \DateTimeImmutable();
         $remoteCacheThreshold = $remoteCacheThreshold->sub($interval);
