@@ -52,7 +52,7 @@ class InputUtils
         return (float) floatval(trim($sInput));
     }
 
-    public static function filterDate($sInput)
+    public static function filterDate($sInput): string
     {
         // Attempts to take a date in any format and convert it to YYYY-MM-DD format
         // Logel Philippe

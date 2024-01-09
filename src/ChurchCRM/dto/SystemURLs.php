@@ -52,7 +52,7 @@ class SystemURLs
         return self::$urls;
     }
 
-    public static function getSupportURL($topic = '')
+    public static function getSupportURL($topic = ''): string
     {
         $supportURLs = [
             'HttpsTask'                     => 'https://github.com/ChurchCRM/CRM/wiki/SSL',

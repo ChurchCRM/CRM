@@ -412,7 +412,7 @@ function FormatDate($dDate, $bWithTime = false): string
     }
 }
 
-function AlternateRowStyle($sCurrentStyle)
+function AlternateRowStyle($sCurrentStyle): string
 {
     if ($sCurrentStyle == 'RowColorA') {
         return 'RowColorB';
@@ -443,7 +443,7 @@ function ConvertToBoolean($sInput)
     }
 }
 
-function ConvertFromBoolean($sInput)
+function ConvertFromBoolean($sInput): int
 {
     if ($sInput) {
         return 1;

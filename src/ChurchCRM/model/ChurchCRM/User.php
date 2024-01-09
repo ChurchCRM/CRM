@@ -411,7 +411,7 @@ class User extends BaseUser
         return $recoveryCodes;
     }
 
-    public function isTwoFACodeValid($twoFACode)
+    public function isTwoFACodeValid($twoFACode): bool
     {
         $google2fa = new Google2FA();
         $window = 2; //TODO: make this a system config
