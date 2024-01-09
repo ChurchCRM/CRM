@@ -93,7 +93,7 @@ if ($sGroupKey) {
 
         // Security: User must have Finance permission or be the one who entered this record originally
         if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() == $aRow['plg_EditedBy'])) {
-            RedirectUtils::redirect('Menu.php');
+            RedirectUtils::redirect('v2/dashboard');
             exit;
         }
     }
@@ -670,7 +670,7 @@ require 'Include/Header.php';
     } else {
         $cancelText = 'Return';
     } ?>
-    <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'Menu.php' ?>';">
+    <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'v2/dashboard' ?>';">
     </div>
   </div>
 </div>

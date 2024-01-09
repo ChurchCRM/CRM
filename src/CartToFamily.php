@@ -22,7 +22,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have add records permission
 if (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

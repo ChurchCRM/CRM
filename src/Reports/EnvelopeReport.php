@@ -18,7 +18,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

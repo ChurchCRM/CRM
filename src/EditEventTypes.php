@@ -21,9 +21,11 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    header('Location: Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
+    exit;
 }
 $sPageTitle = gettext('Edit Event Types');
 require 'Include/Header.php';

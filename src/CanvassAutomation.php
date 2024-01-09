@@ -24,7 +24,7 @@ $sPageTitle = gettext('Canvass Automation');
 
 // Security: User must have canvasser permission to use this form
 if (!AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

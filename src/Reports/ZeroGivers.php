@@ -21,7 +21,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 
@@ -35,7 +35,7 @@ $remittance = InputUtils::legacyFilterInput($_POST['remittance']);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

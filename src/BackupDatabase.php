@@ -22,7 +22,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

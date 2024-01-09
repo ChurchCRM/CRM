@@ -21,7 +21,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
 if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

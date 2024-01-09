@@ -23,7 +23,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Check for Create Directory user permission.
 if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

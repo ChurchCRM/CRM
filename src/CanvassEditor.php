@@ -20,7 +20,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have canvasser permission to use this form
 if (!AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 
@@ -244,7 +244,7 @@ require 'Include/Header.php';
             <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                 echo $linkBack;
                                                                 } else {
-                                                                    echo 'Menu.php';
+                                                                    echo 'v2/dashboard';
                                                                 } ?>';">
 
     </div>

@@ -127,7 +127,7 @@ class AuthenticationManager
         }
 
         if ($result->isAuthenticated && !$result->preventRedirect) {
-            $redirectLocation = array_key_exists('location', $_SESSION) ? $_SESSION['location'] : 'Menu.php';
+            $redirectLocation = $_SESSION['location'] ?? 'v2/dashboard';
             NotificationService::updateNotifications();
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation

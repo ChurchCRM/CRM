@@ -24,7 +24,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups permission
 if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

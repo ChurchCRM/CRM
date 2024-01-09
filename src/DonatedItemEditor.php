@@ -312,7 +312,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
                 <?php endif; ?>
                 <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel"
-                onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'Menu.php'; ?>';">
+                onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'v2/dashboard'; ?>';">
             </div>
 
         </div>

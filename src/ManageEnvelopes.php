@@ -24,7 +24,7 @@ $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

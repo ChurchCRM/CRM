@@ -179,7 +179,7 @@ $MenuFirst = 1;
   <!-- Left side column. contains the sidebar -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Logo -->
-      <a href="<?= SystemURLs::getRootPath() ?>/Menu.php" class="brand-link">
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="brand-link">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png" alt="ChurchCRM Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <!-- logo for regular state and mobile devices -->

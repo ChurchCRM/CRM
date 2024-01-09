@@ -30,7 +30,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

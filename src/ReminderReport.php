@@ -19,7 +19,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 
@@ -51,7 +51,7 @@ if (isset($_POST['Submit'])) {
             <div class="col-sm-offset-2 col-sm-8">
                 <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
                 <button type="button" class="btn btn-default" name="Cancel"
-                        onclick="javascript:document.location='Menu.php';"><?= gettext('Cancel') ?></button>
+                        onclick="javascript:document.location='v2/dashboard';"><?= gettext('Cancel') ?></button>
             </div>
         </div>
 

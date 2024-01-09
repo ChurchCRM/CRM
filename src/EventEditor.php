@@ -28,11 +28,13 @@ require 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Church Event Editor');
 
 if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-    header('Location: Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
+    exit;
 }
 
 $sAction = 'Create Event';
