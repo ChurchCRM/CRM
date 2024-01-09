@@ -169,7 +169,7 @@ class LocalAuthentication implements IAuthenticationProvider
         $authenticationResult = new AuthenticationResult();
 
         // First check to see if a `user` key exists on the session.
-        if (null === $this->currentUser) {
+        if (!$this->currentUser instanceof User) {
             $authenticationResult->isAuthenticated = false;
             LoggerUtils::getAuthLogger()->debug('No active user session.');
 

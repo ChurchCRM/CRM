@@ -36,5 +36,6 @@ return static function (RectorConfig $rectorConfig): void {
         LevelSetList::UP_TO_PHP_74,
         SetList::GMAGICK_TO_IMAGICK,
         SetList::TYPE_DECLARATION,
+        SetList::INSTANCEOF,
     ]);
 };

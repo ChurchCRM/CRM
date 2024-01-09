@@ -61,7 +61,7 @@ class AuthenticationManager
         $currentSessionUserName = 'Unknown';
 
         try {
-            if (self::getCurrentUser() !== null) {
+            if (self::getCurrentUser() instanceof User) {
                 $currentSessionUserName = self::getCurrentUser()->getName();
             }
         } catch (\Exception $e) {
