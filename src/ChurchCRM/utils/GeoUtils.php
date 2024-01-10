@@ -37,12 +37,10 @@ class GeoUtils
             $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
             $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
             $logger->debug('We have ' . $result->count() . ' results');
-            if ($result instanceof Collection) {
-                $firstResult = $result->get(0);
-                $coordinates = $firstResult->getCoordinates();
-                $lat = $coordinates->getLatitude();
-                $long = $coordinates->getLongitude();
-            }
+            $firstResult = $result->get(0);
+            $coordinates = $firstResult->getCoordinates();
+            $lat = $coordinates->getLatitude();
+            $long = $coordinates->getLongitude();
         } catch (\Exception $exception) {
             $logger->warning('issue creating geoCoder ' . $exception->getMessage());
         }

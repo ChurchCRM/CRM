@@ -10,11 +10,11 @@ use Monolog\Logger;
 class LoggerUtils
 {
     private static ?Logger $appLogger = null;
-    private static ?\Monolog\Handler\StreamHandler $appLogHandler = null;
+    private static ?StreamHandler $appLogHandler = null;
     private static ?Logger $cspLogger = null;
     private static ?Logger $authLogger = null;
     private static ?Logger $slimLogger = null;
-    private static ?\Monolog\Handler\StreamHandler $authLogHandler = null;
+    private static ?StreamHandler $authLogHandler = null;
     private static ?string $correlationId = null;
 
     public static function getCorrelationId(): ?string
@@ -37,7 +37,7 @@ class LoggerUtils
     }
     public static function getSlimMVCLogger(): Logger
     {
-        if (self::$slimLogger === null) {
+        if (!self::$slimLogger instanceof Logger) {
             $slimLogger = new Logger('slim-app');
             $streamHandler = new StreamHandler(self::buildLogFilePath('slim'), SystemConfig::getValue('sLogLevel'));
             $slimLogger->pushHandler($streamHandler);
@@ -52,7 +52,7 @@ class LoggerUtils
      */
     public static function getAppLogger($level = null): ?Logger
     {
-        if (self::$appLogger === null) {
+        if (!self::$appLogger instanceof Logger) {
             // if $level is null
             // (meaning this function was invoked without explicitly setting the level),
             //  then get the level from the database
@@ -94,7 +94,7 @@ class LoggerUtils
      */
     public static function getAuthLogger($level = null): ?Logger
     {
-        if (self::$authLogger === null) {
+        if (!self::$authLogger instanceof Logger) {
             // if $level is null
             // (meaning this function was invoked without explicitly setting the level),
             //  then get the level from the database
@@ -128,7 +128,7 @@ class LoggerUtils
 
     public static function getCSPLogger(): ?Logger
     {
-        if (self::$cspLogger === null) {
+        if (!self::$cspLogger instanceof Logger) {
             self::$cspLogger = new Logger('cspLogger');
             self::$cspLogger->pushHandler(new StreamHandler(self::buildLogFilePath('csp'), self::getLogLevel()));
         }

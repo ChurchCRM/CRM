@@ -256,7 +256,7 @@ class PdfDirectory extends ChurchInfoReport
         $this->SetFont($this->_Font, '', $this->_Char_Size);
     }
 
-    public function sGetCustomString($rsCustomFields, $aRow)
+    public function sGetCustomString($rsCustomFields, $aRow): string
     {
         $numCustomFields = mysqli_num_rows($rsCustomFields);
         if ($numCustomFields > 0) {

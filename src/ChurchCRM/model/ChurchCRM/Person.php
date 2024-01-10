@@ -639,7 +639,7 @@ class Person extends BasePerson implements PhotoInterface
     {
         $birthDate = $this->getBirthDate();
 
-        if ($birthDate === null || $this->hideAge()) {
+        if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
         if (!$now instanceof \DateTimeInterface) {
@@ -657,7 +657,7 @@ class Person extends BasePerson implements PhotoInterface
     public function getNumericAge(): int
     {
         $birthDate = $this->getBirthDate();
-        if ($birthDate === null || $this->hideAge()) {
+        if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
         if (empty($now)) {
