@@ -8,12 +8,12 @@ $(document).ready(function () {
             "/roles",
         dataType: "json",
     }).done(function (data) {
-        window.CRM.groupRoles = data.ListOptions;
+        window.CRM.groupRoles = data?.ListOptions ?? [];
         $("#newRoleSelection").select2({
-            data: $(window.CRM.groupRoles).map(function () {
+            data: window.CRM.groupRoles.map((groupRole)=> {
                 return {
-                    id: this.OptionId,
-                    text: i18next.t(this.OptionName),
+                    id: groupRole.OptionId,
+                    text: i18next.t(groupRole.OptionName),
                 };
             }),
         });
@@ -261,7 +261,7 @@ function initDataTable() {
                         },
                     )[0];
                     return (
-                        i18next.t(thisRole.OptionName) +
+                        i18next.t(thisRole?.OptionName) +
                         '<button class="changeMembership" data-personid=' +
                         full.PersonId +
                         '><i class="fas fa-pen"></i></button>'
