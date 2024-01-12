@@ -89,7 +89,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             }
         }
 
-        return SlimUtils::renderJSON($response, $members->toArray());
+        return SlimUtils::renderJSON($response, ['Person2group2roleP2g2rs' => $members->toArray()]);
     });
 
     $group->get('/{groupID:[0-9]+}/events', function (Request $request, Response $response, array $args): Response {
