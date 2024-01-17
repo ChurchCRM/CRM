@@ -49,7 +49,7 @@
         "azuyalabs/yasumi": "^2.4.0",
         "defuse/php-encryption": "^2.3.1",
         "drewm/mailchimp-api": "^2.5.4",
-        "endroid/qr-code": "^3.9.7",
+        "endroid/qr-code": "^5.0.4",
         "geocoder-php/bing-maps-provider": "^4.2.0",
         "geocoder-php/google-maps-provider": "^4.6.0",
         "ifsnop/mysqldump-php": "^v2.9",
