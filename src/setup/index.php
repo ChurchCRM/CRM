@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 if (file_exists('../Include/Config.php')) {
     header('Location: ../');
@@ -16,6 +17,9 @@ $rootPath = str_replace('/setup/index.php', '', $_SERVER['SCRIPT_NAME']);
 SystemURLs::init($rootPath, '', __DIR__ . '/../');
 SystemConfig::init();
 
+$container = new ContainerBuilder();
+$container->compile();
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath('/setup');
 
