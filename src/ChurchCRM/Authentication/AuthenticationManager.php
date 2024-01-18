@@ -172,7 +172,7 @@ class AuthenticationManager
                 );
 
                 $queryParams = http_build_query([
-                    'redirect_uri' => $_SERVER['REQUEST_URI'],
+                    'location' => $_SERVER['REQUEST_URI'],
                 ]);
                 $loginUrl = self::getSessionBeginURL();
                 if (!str_contains(self::getSessionBeginURL(), $_SERVER['REQUEST_URI'])) {
