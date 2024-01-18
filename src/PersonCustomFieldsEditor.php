@@ -127,7 +127,7 @@ require 'Include/Header.php'; ?>
                     // The "c#" naming scheme is necessary because MySQL 3.23 doesn't allow numeric-only field (table column) names.
                     $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM person_custom');
                     $fieldInfo = mysqli_fetch_field_direct($fields, $last);
-                    $newFieldNum = mb_substr($fieldInfo->name, 1) + 1;
+                    $newFieldNum = (int) mb_substr($fieldInfo->name, 1) + 1;
 
                     // If we're inserting a new custom-list type field, create a new list and get its ID
                     if ($newFieldType == 12) {

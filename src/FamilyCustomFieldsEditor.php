@@ -136,7 +136,7 @@ if (isset($_POST['SaveChanges'])) {
                 // doesn't allow numeric-only field (table column) names.
                 $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM family_custom');
                 $fieldInfo = mysqli_fetch_field_direct($fields, $last);
-                $newFieldNum = mb_substr($fieldInfo->name, 1) + 1;
+                $newFieldNum = (int) mb_substr($fieldInfo->name, 1) + 1;
 
                 // If we're inserting a new custom-list type field,
                 // create a new list and get its ID
