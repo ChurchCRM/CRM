@@ -2321,15 +2321,4 @@
     "Family has no emails to use": "La famiglia non ha email da usare",
     "Boxed Layout": "Layout in scatola",
     "Activate the boxed layout": "Attiva il layout in scatola",
-    "Toggle Sidebar": "Attiva/disattiva barra laterale",
-    "Toggle the left sidebar's state (open or collapse)": "Attiva/disattiva lo stato della barra laterale sinistra (apri o comprimi)",
-    "Tables Settings": "Impostazioni tabelle",
-    "Page length": "Lunghezza pagina",
-    "Change the initial page length (number of rows per page)": "Modificare la lunghezza della pagina iniziale (numero di righe per pagina)",
-    "User Interface": "Interfaccia Utente",
-    "Locale": "Luogo",
-    "Override system locale": "Sostituisci le impostazioni internazionali del sistema",
-    "Deleted": "Eliminato",
-    "Invalid Birth Date: Missing birth month or day.": "Data di nascita non valida: mese o giorno di nascita mancante.",
-    "Invalid Birth Date: Missing birth month and day.": "Data di nascita non valida: mese e giorno di nascita mancanti."
-}
+    "Toggle 
