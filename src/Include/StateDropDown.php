@@ -1,7 +1,6 @@
 <?php
 
-global $sState;
-// Need access to the Country code...
+// Country Code $sCountry is already set when this is invoked
 //
 use ChurchCRM\data\States;
 use ChurchCRM\data\Country;
@@ -12,24 +11,21 @@ $optionTags = [
     '<option value="">' . gettext('Unassigned') . '</option>',
     '<option value="" disabled>--------------------</option>',
 ];
-LoggerUtils::getAppLogger()->warning("input sCountry is now ".$sCountry);
-//$Country=Countries::getCountryByName($sCountry);
-$Country=Countries::getCountry("US");
-if ($Country instanceof Country) {
-	LoggerUtils::getAppLogger()->warning("input mainCountry is now <".$Country->getCountryName()."> with code ".$Country->getCountryCode());
+$Country=Countries::getCountryByName($sCountry);
+if (! $Country instanceof Country) {
+	LoggerUtils::getAppLogger()->warning("Lookup of <".$sCountry."> returns value not of Country class?");
 }
 else {
-	LoggerUtils::getAppLogger()->warning("Lookup of <".$sCountry."> is not part of Country class?");
-}
-$lowerCountryCode=strtolower($Country->getCountryCode());
-$TheStates=new States($lowerCountryCode);
-//$TheStates=new States("US");
-foreach ($TheStates->getNames() as $state) {
-    $selected = '';
-    if ($sState === $state) {
-        $selected = 'selected';
-    }
-    $optionTags[] = '<option value="' . $state . '" ' . $selected . '>' . gettext($state) . '</option>';
+        $lowerCountryCode=strtolower($Country->getCountryCode());
+        // Must cast to lowercase because ultimately this looks up files with lc names
+        $TheStates=new States($lowerCountryCode);
+        foreach ($TheStates->getNames() as $state) {
+            $selected = '';
+            if ($sState === $state) {
+                $selected = 'selected';
+            }
+            $optionTags[] = '<option value="' . $state . '" ' . $selected . '>' . gettext($state) . '</option>';
+        }
 }
 $optionsHtmlString = implode('', $optionTags);
 
