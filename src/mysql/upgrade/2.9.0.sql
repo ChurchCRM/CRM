@@ -19,8 +19,9 @@ DEALLOCATE PREPARE stmt;
 END IF;
 END;
 
-CALL AddColumnIfNotExists('person_per', 'per_FacebookID', 'bigint(20) unsigned default NULL AFTER per_Flags');
-CALL AddColumnIfNotExists('person_per', 'per_Twitter', 'varchar(50) default NULL AFTER per_FacebookID');
+-- --NOTE-- removed in 4.4.0 so commenting out --
+-- CALL AddColumnIfNotExists('person_per', 'per_FacebookID', 'bigint(20) unsigned default NULL AFTER per_Flags');
+CALL AddColumnIfNotExists('person_per', 'per_Twitter', 'varchar(50) default NULL AFTER per_Flags');
 CALL AddColumnIfNotExists('person_per', 'per_LinkedIn', 'varchar(50) default NULL AFTER per_Twitter');
 
 ALTER TABLE person_custom_master
