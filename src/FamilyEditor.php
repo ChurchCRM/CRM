@@ -307,7 +307,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->save();
             $bGetKeyBack = true;
         } else {
-                        //'fam_Latitude=' . ($nLatitude ? "\"$nLatitude\"" : '"NULL"') . ',' .
             $sSQL = "UPDATE family_fam SET fam_Name='" . $sName . "'," .
                         "fam_Address1='" . $sAddress1 . "'," .
                         "fam_Address2='" . $sAddress2 . "'," .
