@@ -307,20 +307,21 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->save();
             $bGetKeyBack = true;
         } else {
+                        //'fam_Latitude=' . ($nLatitude ? "\"$nLatitude\"" : '"NULL"') . ',' .
             $sSQL = "UPDATE family_fam SET fam_Name='" . $sName . "'," .
                         "fam_Address1='" . $sAddress1 . "'," .
                         "fam_Address2='" . $sAddress2 . "'," .
                         "fam_City='" . $sCity . "'," .
                         "fam_State='" . $sState . "'," .
                         "fam_Zip='" . $sZip . "'," .
-                        'fam_Latitude=' . ($nLatitude ? "\"$nLatitude\"" : '"NULL"') . ',' .
-                        'fam_Longitude=' . ($nLongitude ? "\"$nLongitude\"" : '"NULL"') . ',' .
+                        'fam_Latitude=' . ($nLatitude ? "\"$nLatitude\"" : 'NULL') . ',' .
+                        'fam_Longitude=' . ($nLongitude ? "\"$nLongitude\"" : 'NULL') . ',' .
                         "fam_Country='" . $sCountry . "'," .
                         "fam_HomePhone='" . $sHomePhone . "'," .
                         "fam_WorkPhone='" . $sWorkPhone . "'," .
                         "fam_CellPhone='" . $sCellPhone . "'," .
                         "fam_Email='" . ($sEmail ?? '') . "'," .
-                        'fam_WeddingDate=' . ($dWeddingDate ? "\"$dWeddingDate\"" : '"NULL"') . ',' .
+                        'fam_WeddingDate=' . ($dWeddingDate ? "\"$dWeddingDate\"" : 'NULL') . ',' .
                         'fam_Envelope=' . $nEnvelope . ',' .
                         "fam_DateLastEdited='" . date('YmdHis') . "'," .
                         'fam_EditedBy = ' . AuthenticationManager::getCurrentUser()->getId() . ',' .
