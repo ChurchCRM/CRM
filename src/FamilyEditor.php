@@ -313,14 +313,14 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         "fam_City='" . $sCity . "'," .
                         "fam_State='" . $sState . "'," .
                         "fam_Zip='" . $sZip . "'," .
-                        'fam_Latitude=' . ($nLatitude ? "\"$nLatitude\"" : '"NULL"') . ',' .
-                        'fam_Longitude=' . ($nLongitude ? "\"$nLongitude\"" : '"NULL"') . ',' .
+                        'fam_Latitude=' . ($nLatitude ? "\"$nLatitude\"" : 'NULL') . ',' .
+                        'fam_Longitude=' . ($nLongitude ? "\"$nLongitude\"" : 'NULL') . ',' .
                         "fam_Country='" . $sCountry . "'," .
                         "fam_HomePhone='" . $sHomePhone . "'," .
                         "fam_WorkPhone='" . $sWorkPhone . "'," .
                         "fam_CellPhone='" . $sCellPhone . "'," .
                         "fam_Email='" . ($sEmail ?? '') . "'," .
-                        'fam_WeddingDate=' . ($dWeddingDate ? "\"$dWeddingDate\"" : '"NULL"') . ',' .
+                        'fam_WeddingDate=' . ($dWeddingDate ? "\"$dWeddingDate\"" : 'NULL') . ',' .
                         'fam_Envelope=' . $nEnvelope . ',' .
                         "fam_DateLastEdited='" . date('YmdHis') . "'," .
                         'fam_EditedBy = ' . AuthenticationManager::getCurrentUser()->getId() . ',' .
