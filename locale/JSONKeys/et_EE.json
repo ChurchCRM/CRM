@@ -1003,7 +1003,7 @@
     "View All People": "Kuva kõik isikud",
     "Add New Family": "Lisage uus pere",
     "Events": "Üritused",
-    "Fundraiser": "korjandused",
+    "Fundraiser": "Korjandused",
     "Email Export": "E-posti eksport",
     "List": "Nimekiri",
     "Import Data": "Andmete importimine",
@@ -2314,7 +2314,7 @@
     "Today's Birthdays": "Täna on sünnipäev",
     "Today's Wedding Anniversaries": "Täna on pulmaaastapäev",
     "Api Key": "Api võti",
-    "Regen API Key": "Regen API võti",
+    "Regen API Key": "Regenereeri API võti",
     "View Family Page": "Vaata perelehte",
     "View Person Page": "Vaata isikulehte",
     "Verify": "Kinnitage",
@@ -2356,5 +2356,6 @@
     "2019/2020": "2019/2020",
     "2020/2021": "2020/2021",
     "2021/2022": "2021/2022",
-    "2022/2023": "2022/2023"
+    "2022/2023": "2022/2023",
+    "invalid group request": "kehtetu rühmataotlus"
 }

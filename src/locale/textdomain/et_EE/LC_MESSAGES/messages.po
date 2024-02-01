@@ -4032,7 +4032,7 @@ msgstr "Üritused"
 
 #: 
 msgid "Fundraiser"
-msgstr "korjandused"
+msgstr "Korjandused"
 
 #: 
 msgid "Email Export"
@@ -9281,7 +9281,7 @@ msgstr "Api võti"
 
 #: 
 msgid "Regen API Key"
-msgstr "Regen API võti"
+msgstr "Regenereeri API võti"
 
 #: 
 msgid "View Family Page"
@@ -9450,4 +9450,8 @@ msgstr "2021/2022"
 #: 
 msgid "2022/2023"
 msgstr "2022/2023"
+
+#: 
+msgid "invalid group request"
+msgstr "kehtetu rühmataotlus"
 
