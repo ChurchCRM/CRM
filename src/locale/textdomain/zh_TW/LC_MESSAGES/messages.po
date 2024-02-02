@@ -8942,13 +8942,13 @@ msgstr "日曆活動的最大數量"
 #: 
 msgid "%d month old"
 msgid_plural "%d months old"
-msgstr[0] "％d個月大\n"
+msgstr[other] "％d個月大\n"
 "Plural: ％d個月大"
 
 #: 
 msgid "%d year old"
 msgid_plural "%d years old"
-msgstr[0] "%d歲大\n"
+msgstr[other] "%d歲大\n"
 "Plural: %d歲大"
 
 #: 
