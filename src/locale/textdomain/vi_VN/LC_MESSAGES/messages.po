@@ -8724,12 +8724,12 @@ msgstr "Số sự kiện lịch tối đa"
 #: 
 msgid "%d month old"
 msgid_plural "%d months old"
-msgstr[0] "% d tháng tuổi"
+msgstr[other] "% d tháng tuổi"
 
 #: 
 msgid "%d year old"
 msgid_plural "%d years old"
-msgstr[0] "% d tuổi"
+msgstr[other] "% d tuổi"
 
 #: 
 msgid "Unsupported PHP Version"
