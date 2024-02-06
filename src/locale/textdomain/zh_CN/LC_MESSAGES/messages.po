@@ -8828,12 +8828,12 @@ msgstr "日历活动的最大数量"
 #: 
 msgid "%d month old"
 msgid_plural "%d months old"
-msgstr[0] "％d个月大"
+msgstr[other] "％d个月大"
 
 #: 
 msgid "%d year old"
 msgid_plural "%d years old"
-msgstr[0] "％d岁"
+msgstr[other] "％d岁"
 
 #: 
 msgid "Unsupported PHP Version"
