@@ -3404,7 +3404,7 @@ msgstr "No hay familias que necesiten ser asignadas a escrutadores"
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Escrutadores asignados al azar a las familias% d."
+msgstr "Escrutadores asignados al azar a las familias %d."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."

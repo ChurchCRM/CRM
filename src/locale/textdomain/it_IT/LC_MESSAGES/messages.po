@@ -3416,11 +3416,11 @@ msgstr "Non ci sono le famiglie hanno bisogno procacciatori assegnati"
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Propagandisti assegnati a caso alle famiglie% d."
+msgstr "Propagandisti assegnati a caso alle famiglie %d."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Propagandisti assegnati in modo casuale a% d non costituzione in pegno famiglie."
+msgstr "Propagandisti assegnati in modo casuale a %d non costituzione in pegno famiglie."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."

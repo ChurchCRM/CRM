@@ -3537,11 +3537,11 @@ msgstr "Nenhuma família precisa de visitadoes atribuídos"
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Visitadores atribuídos aleatoriamente para famílias% d."
+msgstr "Visitadores atribuídos aleatoriamente para famílias %d."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Visitadores atribuídos aleatoriamente para% d não comprometendo as famílias."
+msgstr "Visitadores atribuídos aleatoriamente para %d não comprometendo as famílias."
 
 #: 
 #, fuzzy
@@ -9133,4 +9133,100 @@ msgstr "Problema de autenticação"
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
 msgstr "Digite a nova senha do utilizador. As senhas definidas administrativamente não estão sujeitas a requisitos de comprimento ou complexidade"
+
+#: 
+msgid "No email passed in"
+msgstr "Nenhum email fornecido"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp não está ativo"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "Listas"
+
+#: 
+msgid "loading"
+msgstr "A carregar"
+
+#: 
+msgid "List not found"
+msgstr "Lista não encontrada"
+
+#: 
+msgid "Hebrew"
+msgstr "Hebreu"
+
+#: 
+msgid "Passwords"
+msgstr "Palavras pass"
+
+#: 
+msgid "2FA"
+msgstr "Autenticação de dois fatores"
+
+#: 
+msgid "Session Timeout"
+msgstr "Sessão expirada"
+
+#: 
+msgid "Max Failed Login"
+msgstr "Máximo de tentativas erradas de autenticação"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "Ativar o reset da palavra passe"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Enviar email a utilizadores apagados"
+
+#: 
+msgid "Loading"
+msgstr "A carregar"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Aniversariantes de hoje"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Aniversários de casamento de hoje"
+
+#: 
+msgid "Deleted"
+msgstr "Apagado"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Dia de aniversário inválido: Dia ou mês em falta."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Dia de aniversário inválido:  Dia e mês em falta."
+
+#: 
+msgid "Czech"
+msgstr "Checo"
+
+#: 
+msgid "Finnish"
+msgstr "Finlandês"
+
+#: 
+msgid "Greek"
+msgstr "Grego"
+
+#: 
+msgid "Turkish"
+msgstr "Turco"
+
+#: 
+msgid "2020/2021"
+msgstr "2020"
 

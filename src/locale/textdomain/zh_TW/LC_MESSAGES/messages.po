@@ -22,7 +22,7 @@ msgstr "取消"
 
 #: 
 msgid "Save"
-msgstr "保存"
+msgstr "儲存"
 
 #: 
 msgid "Unassigned"

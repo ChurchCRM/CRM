@@ -3403,11 +3403,11 @@ msgstr "Жодним сім’ям не потрібні призначені д
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Наглядачі, довільно призначені для% d сімей."
+msgstr "Наглядачі, довільно призначені для %d сімей."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Наглядачі, довільно призначені для% d сімей, які не беруть заставу."
+msgstr "Наглядачі, довільно призначені для %d сімей, які не беруть заставу."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."

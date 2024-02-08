@@ -2957,11 +2957,11 @@ msgstr "Nem családtagjaik canvassers célhoz"
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers rendelt véletlenszerűen% d családoknak."
+msgstr "Canvassers rendelt véletlenszerűen %d családoknak."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers rendelt véletlenszerűen% d nem zálogjog családok."
+msgstr "Canvassers rendelt véletlenszerűen %d nem zálogjog családok."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
