@@ -1,5 +1,23 @@
-alter table person_per
-    add per_Facebook varchar(50) null after per_FacebookID;
+IF NOT EXISTS (
+   SELECT NULL
+   FROM INFORMATION_SCHEMA.COLUMNS
+   WHERE
+    table_name = 'person_per' AND
+    column_name = 'per_Facebook'
+)  THEN
+    ALTER TABLE person_per
+    ADD per_Facebook VARCHAR(50) NULL;
+END IF;
 
-alter table person_per
-    drop column per_FacebookID;
+IF EXISTS (
+   SELECT NULL
+   FROM INFORMATION_SCHEMA.COLUMNS
+   WHERE
+    table_name = 'person_per' AND
+    column_name = 'per_FacebookID'
+)  THEN
+    ALTER TABLE person_per
+    DROP COLUMN per_FacebookID;
+END IF;
+
+

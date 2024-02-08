@@ -3403,11 +3403,11 @@ msgstr "Ükski perekond ei vaja eraldatud tugiisikut"
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Tugiisikud, kes on juhuslikult määratud% d perekondadele."
+msgstr "Tugiisikud, kes on juhuslikult määratud %d perekondadele."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Tugiisikud, mis on juhuslikult määratud% d peredele kes ei anneta."
+msgstr "Tugiisikud, mis on juhuslikult määratud %d peredele kes ei anneta."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -4032,7 +4032,7 @@ msgstr "Üritused"
 
 #: 
 msgid "Fundraiser"
-msgstr "korjandused"
+msgstr "Korjandused"
 
 #: 
 msgid "Email Export"
@@ -8715,14 +8715,14 @@ msgstr "Kalendrisündmuste maksimaalne arv"
 #: 
 msgid "%d month old"
 msgid_plural "%d months old"
-msgstr[0] "% kuune"
-msgstr[1] "Mitmuses:%  kuud vana"
+msgstr[0] "%d kuune"
+msgstr[1] "%d kuud vana"
 
 #: 
 msgid "%d year old"
 msgid_plural "%d years old"
-msgstr[0] "% aastane"
-msgstr[1] "% aastane"
+msgstr[0] "%d aastane"
+msgstr[1] "%d aastane"
 
 #: 
 msgid "Unsupported PHP Version"
@@ -9281,7 +9281,7 @@ msgstr "Api võti"
 
 #: 
 msgid "Regen API Key"
-msgstr "Regen API võti"
+msgstr "Regenereeri API võti"
 
 #: 
 msgid "View Family Page"
@@ -9450,4 +9450,8 @@ msgstr "2021/2022"
 #: 
 msgid "2022/2023"
 msgstr "2022/2023"
+
+#: 
+msgid "invalid group request"
+msgstr "kehtetu rühmataotlus"
 

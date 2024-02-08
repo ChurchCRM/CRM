@@ -3382,11 +3382,11 @@ msgstr "Ingen familier trenger canvassers tildelt"
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers tildelt tilfeldig til% d familier."
+msgstr "Canvassers tildelt tilfeldig til %d familier."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers tildelt tilfeldig til% d ikke-pantsettelse familier."
+msgstr "Canvassers tildelt tilfeldig til %d ikke-pantsettelse familier."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."

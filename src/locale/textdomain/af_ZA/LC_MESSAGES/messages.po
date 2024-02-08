@@ -8721,8 +8721,8 @@ msgstr[1] " %d maande oud"
 #: 
 msgid "%d year old"
 msgid_plural "%d years old"
-msgstr[0] "% d jaar oud"
-msgstr[1] "% d jare oud"
+msgstr[0] "%d jaar oud"
+msgstr[1] "%d jare oud"
 
 #: 
 msgid "Unsupported PHP Version"
