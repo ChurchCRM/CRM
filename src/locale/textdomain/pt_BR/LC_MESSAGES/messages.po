@@ -76,21 +76,21 @@ msgstr "Backup do Banco de Dados"
 #: 
 #, fuzzy
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Esta ferramenta vai te ajudar a fazer o backup manual do banco de dados."
+msgstr "Esta ferramenta vai te ajudar a fazer o backup manual do banco de dados do ChurchCRM."
 
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Você deve fazer um backup manualmente, pelo menos uma vez por semana, a menos que você programe um backup automático."
+msgstr "Você deve fazer um backup manualmente, pelo menos uma vez por semana, a menos que você tenha um backup automático programado para seus sistemas."
 
 #: 
 #, fuzzy
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Depois de baixar o arquivo de backup, você deve fazer duas cópias. Guarde-as em locais separados à prova de fogo, água e etc."
+msgstr "Depois de baixar o arquivo de backup, você deve fazer duas cópias. Guarde uma delas localmente, em um local seguro à prova de fogo, e a outra em um local seguro, mas distante (como um escritório ou na nuvem)."
 
 #: 
 #, fuzzy
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Se for armazenar backup do banco de dados do ChurchCRM em algum lugar potencialmente acessível por outras pessoas, é altamente recomendável  criptografar os dados."
+msgstr "Se você tem preocupações a respeito da confidencialidade dos dados armazenados no banco de dados do ChurchCRM, você deve criptografar os dados de backup, caso este seja armazenado em um local potencialmente acessível por outras pessoas."
 
 #: 
 msgid "Select archive type"
@@ -99,7 +99,7 @@ msgstr "Selecione o tipo de arquivo"
 #: 
 #, fuzzy
 msgid "Encrypt backup file with a password?"
-msgstr "Criptografar o banco de dados com uma senha?"
+msgstr "Criptografar o backup com uma senha?"
 
 #: 
 msgid "Re-type Password"
@@ -147,7 +147,7 @@ msgstr "Sobrenome"
 #: 
 #, fuzzy
 msgid "Required"
-msgstr "Requerido"
+msgstr "Obrigatório"
 
 #: 
 msgid "First Name"
@@ -167,7 +167,7 @@ msgstr "Envelope"
 
 #: 
 msgid "Work/Other Email"
-msgstr "Outro E-mail"
+msgstr "Trabalho/Outro e-mail"
 
 #: 
 msgid "Membership Date"
@@ -188,7 +188,7 @@ msgstr "Papel na Família"
 #: 
 #, fuzzy
 msgid "Depends whether using person or family output method"
-msgstr "Depende se o uso de método de saída Pessoa ou Família"
+msgstr "Depende se o uso de método de saída pessoal ou familiar"
 
 #: 
 #, fuzzy
@@ -198,12 +198,12 @@ msgstr "Seleção de Campo Personalizado"
 #: 
 #, fuzzy
 msgid "Custom Person Fields"
-msgstr "Personalizar Pessoas"
+msgstr "Campos personalizados de pessoas"
 
 #: 
 #, fuzzy
 msgid "Custom Family Fields"
-msgstr "Personalizar Famílias"
+msgstr "Campos personalizados de famílias"
 
 #: 
 #, fuzzy
@@ -213,7 +213,7 @@ msgstr "Filtros"
 #: 
 #, fuzzy
 msgid "Records to export"
-msgstr "Campos para Exportar"
+msgstr "Registros para exportar"
 
 #: 
 #, fuzzy
@@ -350,12 +350,12 @@ msgstr "Celular"
 #: 
 #, fuzzy
 msgid "Work / Other Email"
-msgstr "Outro e-mail"
+msgstr "Trabalho / Outro e-mail"
 
 #: 
 #, fuzzy
 msgid "Birth Date"
-msgstr "Data de Aniversário"
+msgstr "Data de nascimento"
 
 #: 
 #, fuzzy
@@ -405,7 +405,7 @@ msgstr "Classificação"
 #: 
 #, fuzzy
 msgid "Perform Import"
-msgstr "Faça a importação"
+msgstr "Executar importação"
 
 #: 
 #, fuzzy
@@ -425,12 +425,12 @@ msgstr "Dados importados com sucesso."
 #: 
 #, fuzzy
 msgid "persons were imported"
-msgstr "pessoas importadas"
+msgstr "pessoas foram importadas"
 
 #: 
 #, fuzzy
 msgid "Canvass Automation"
-msgstr "Automação de Visitação"
+msgstr "Automação de Visitas"
 
 #: 
 #, fuzzy
@@ -445,32 +445,32 @@ msgstr "Visitadores"
 #: 
 #, fuzzy
 msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
+msgstr "Visitadores Incansáveis"
 
 #: 
 #, fuzzy
 msgid "Cleared all canvasser assignments."
-msgstr "Apuradas todas as atribuições de visitações."
+msgstr "Atribuições de visitações limpas."
 
 #: 
 #, fuzzy
 msgid "Set Ok To Canvass for all families."
-msgstr "Definir Ok para visitação de todas as famílias."
+msgstr "Autorizada visitação de todas as famílias."
 
 #: 
 #, fuzzy
 msgid "Disabled Ok To Canvass for all families."
-msgstr "Ok para desabilitar visitação para todas as famílias."
+msgstr "Autorização para visitação desativada para todas as famílias."
 
 #: 
 #, fuzzy
 msgid "ClearAllOkToCanvass button not confimed."
-msgstr "Clear All Ok To Canvass botão não confimed."
+msgstr "Limpar todas as autorizações de visita não confirmado."
 
 #: 
 #, fuzzy
 msgid "Set default fiscal year"
-msgstr "Definir padrão ano fiscal"
+msgstr "Definir ano fiscal padrão"
 
 #: 
 #, fuzzy
@@ -485,17 +485,17 @@ msgstr "Atribuir Visitadores"
 #: 
 #, fuzzy
 msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Atribuir aleatoriamente visitantes a todas as famílias. Os Visitantes são escolhidos do Grupo & quot; Visitantes& quot;."
+msgstr "Atribuir aleatoriamente visitantes a todas as famílias. Os visitantes são escolhidos do grupo &quot;Visitantes&quot;."
 
 #: 
 #, fuzzy
 msgid "Assign To Non Pledging"
-msgstr "Atribuir a não Prometendo"
+msgstr "Atribuir a faltosos"
 
 #: 
 #, fuzzy
 msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Atribuir aleatoriamente visitantes a famílias faltosas. Os Visitantes são escolhidos do Grupo & quot; Visitantes& quot;."
+msgstr "Atribuir aleatoriamente visitantes a famílias faltosas. Os visitantes são escolhidos do grupo &quot;Visitadores Incansáveis&quot;."
 
 #: 
 #, fuzzy
@@ -505,12 +505,12 @@ msgstr "Limpar Atribuições de Visitadores"
 #: 
 #, fuzzy
 msgid "Clear all the canvasser assignments for all families."
-msgstr "Apagar todas as associações de visitantes a todas as famílias."
+msgstr "Apagar todas as atribuições de visitantes a todas as famílias."
 
 #: 
 #, fuzzy
 msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr " Nota importante: esta ação acarretará a perda de quaisquer atribuições de Visitantes que foram feitas à mão."
+msgstr "Nota importante: esta ação acarretará a perda de quaisquer atribuições de Visitantes que foram feitas à mão."
 
 #: 
 #, fuzzy
@@ -525,7 +525,7 @@ msgstr "Selecione o campo &quot;Ok para Visitantes&quot; para todas as Famílias
 #: 
 #, fuzzy
 msgid "Disable Canvass for All Families"
-msgstr "Desativar Visitação para Todos"
+msgstr "Desativar visitas para todas as famílias"
 
 #: 
 #, fuzzy
@@ -575,11 +575,11 @@ msgstr "Gerar um PDF contendo um relatório das famílias marcadas com &quot;Nã
 #: 
 #, fuzzy
 msgid " Canvass Input for the "
-msgstr " Entrada De Visitação para o "
+msgstr " Entrada De Visitação para "
 
 #: 
 msgid "Canvasser"
-msgstr "Colportor"
+msgstr "Visitador"
 
 #: 
 #, fuzzy
@@ -628,7 +628,7 @@ msgstr "Selecione o evento para o qual você gostaria de adicionar seu carrinho"
 #: 
 #, fuzzy
 msgid "OR"
-msgstr "ou"
+msgstr "OU"
 
 #: 
 #, fuzzy
@@ -638,7 +638,7 @@ msgstr "Adicione novo evento"
 #: 
 #, fuzzy
 msgid "Your cart is empty!"
-msgstr "Seu Carrinho está vazio"
+msgstr "Seu Carrinho está vazio!"
 
 #: 
 #, fuzzy
@@ -677,7 +677,7 @@ msgstr "Se está adicionando uma nova Família, preencha as informações abaixo
 
 #: 
 msgid "Use address/contact data from"
-msgstr "Use endereço de"
+msgstr "Usar endereço/contato de"
 
 #: 
 #, fuzzy
@@ -725,7 +725,7 @@ msgstr "Adicione ao grupo"
 #: 
 #, fuzzy
 msgid "View Your Cart"
-msgstr "Veja seu Carrinho"
+msgstr "Ver seu Carrinho"
 
 #: 
 #, fuzzy
@@ -760,16 +760,16 @@ msgstr "Esvaziar carrinho em um evento"
 #: 
 #, fuzzy
 msgid "Map Cart"
-msgstr "Mapa carrinho"
+msgstr "Ver mapa do carrinho"
 
 #: 
 msgid "Name Tags"
-msgstr "Etiquetas"
+msgstr "Tags"
 
 #: 
 #, fuzzy
 msgid "Email Cart"
-msgstr "E-mail Carrinho"
+msgstr "Enviar e-mail para o carrinho"
 
 #: 
 #, fuzzy
@@ -784,12 +784,12 @@ msgstr "Criar diretório a partir do Carrinho"
 #: 
 #, fuzzy
 msgid "Bulk Mail Presort"
-msgstr "Bulk Mail classificar previamente"
+msgstr "Pré-ordenar e-mails em massa"
 
 #: 
 #, fuzzy
 msgid "Quiet Presort"
-msgstr "Pré-seleção silenciosa"
+msgstr "Pré-ordenação silenciosa"
 
 #: 
 #, fuzzy
@@ -819,12 +819,12 @@ msgstr "Não"
 #: 
 #, fuzzy
 msgid "Developer Chat"
-msgstr "Bate-pado de Desenvolvedor"
+msgstr "Bate-papo de Desenvolvedor"
 
 #: 
 #, fuzzy
 msgid "Event Checkin"
-msgstr "Checar evento"
+msgstr "Check-in do evento"
 
 #: 
 msgid "Select the event to which you would like to check people in for"
@@ -843,17 +843,17 @@ msgstr "Adicionar visitante"
 #: 
 #, fuzzy
 msgid "CheckIn"
-msgstr "Incluir"
+msgstr "Chegada"
 
 #: 
 #, fuzzy
 msgid "CheckOut"
-msgstr "Retirar"
+msgstr "Saída"
 
 #: 
 #, fuzzy
 msgid "Checked In Time"
-msgstr "Adicionado no tempo"
+msgstr "Hora de chegada"
 
 #: 
 #, fuzzy
@@ -863,12 +863,12 @@ msgstr "Adicionado por"
 #: 
 #, fuzzy
 msgid "Checked Out Time"
-msgstr "Horário de retirada"
+msgstr "Horário de saída"
 
 #: 
 #, fuzzy
 msgid "Checked Out By"
-msgstr "Retirado por"
+msgstr "Adicionado por"
 
 #: 
 #, fuzzy
@@ -878,7 +878,7 @@ msgstr "Ação"
 #: 
 #, fuzzy
 msgid "No Attendees Assigned to Event"
-msgstr "Não há pessoas incluidas neste evento"
+msgstr "Não há pessoas incluídas neste evento"
 
 #: 
 #, fuzzy
@@ -888,7 +888,7 @@ msgstr "Membro"
 #: 
 #, fuzzy
 msgid " of the"
-msgstr " da"
+msgstr " de"
 
 #: 
 #, fuzzy
@@ -913,7 +913,7 @@ msgstr "Converter todos"
 #: 
 #, fuzzy
 msgid "Deposit Slip Number: "
-msgstr "Número de erro do depósito: "
+msgstr "Número do depósito: "
 
 #: 
 #, fuzzy
@@ -923,17 +923,17 @@ msgstr "Detalhes do Depósito: "
 #: 
 #, fuzzy
 msgid "Close deposit slip (remember to press Save)"
-msgstr "Fecha erro do depósito (lembre-se de pressionar Salvar)"
+msgstr "Fechar depósito (lembre-se de clicar em Salvar)"
 
 #: 
 #, fuzzy
 msgid "Deposit Slip Report"
-msgstr "Relatório de erro do depósito"
+msgstr "Relatório do depósito"
 
 #: 
 #, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
-msgstr "Nota importante: transações com falha serão excluídos permanantly quando o comprovante de depósito está fechada."
+msgstr "Nota importante: transações com falha serão excluídos de forma permanente quando o depósito for fechado."
 
 #: 
 #, fuzzy
@@ -943,7 +943,7 @@ msgstr "Resumo dos Depósitos: "
 #: 
 #, fuzzy
 msgid "Payments on this deposit slip:"
-msgstr "Pagamentos neste depósito de erros:"
+msgstr "Pagamentos neste depósito:"
 
 #: 
 #, fuzzy
@@ -953,7 +953,7 @@ msgstr "Importar eGive"
 #: 
 #, fuzzy
 msgid "Add Payment"
-msgstr "Incluir pagamento"
+msgstr "Adicionar pagamento"
 
 #: 
 #, fuzzy
@@ -978,12 +978,12 @@ msgstr "Selecione as classificações para incluir"
 #: 
 #, fuzzy
 msgid "Which role is the head of household?"
-msgstr "Quem é o(a) chefe da casa?"
+msgstr "Quem é o(a) chefe da família?"
 
 #: 
 #, fuzzy
 msgid "Which role is the spouse?"
-msgstr "Quem é a esposa?"
+msgstr "Quem é o/a cônjuge?"
 
 #: 
 #, fuzzy
@@ -1002,7 +1002,7 @@ msgstr "Endereço"
 #: 
 #, fuzzy
 msgid "Birthday"
-msgstr "Aniversário"
+msgstr "Nascimento"
 
 #: 
 #, fuzzy
@@ -1073,7 +1073,7 @@ msgstr "Título da página"
 #: 
 #, fuzzy
 msgid "Use Title Page"
-msgstr "Use título na página"
+msgstr "Usar título na página"
 
 #: 
 #, fuzzy
@@ -1083,7 +1083,7 @@ msgstr "Nome da igreja"
 #: 
 #, fuzzy
 msgid "Disclaimer"
-msgstr "Renúncia"
+msgstr "Aviso"
 
 #: 
 #, fuzzy
@@ -1097,8 +1097,7 @@ msgstr "Editor de Itens Doados"
 #: 
 #, fuzzy
 msgid "Save and Add"
-msgstr "Salvar e Adicionar\n"
-""
+msgstr "Salvar e Adicionar"
 
 #: 
 msgid "Item"
@@ -1111,7 +1110,7 @@ msgstr "Vários itens"
 #: 
 #, fuzzy
 msgid "Sell to everyone"
-msgstr "Vender a todos"
+msgstr "Vender para todos"
 
 #: 
 msgid "Estimated Price"
@@ -1144,7 +1143,7 @@ msgstr "Descrição"
 #: 
 #, fuzzy
 msgid "Picture URL"
-msgstr "URL da Figura"
+msgstr "URL da Imagem"
 
 #: 
 #, fuzzy
@@ -1159,12 +1158,12 @@ msgstr "Você tem certeza que quer apagar este fundo?"
 #: 
 #, fuzzy
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Atenção: as mudanças de campo serão perdidos se você não \"Guardar alterações\" antes de usar um apagar ou &#39;adicionar novo \"botão!"
+msgstr "Atenção: as mudanças no campo serão perdidas se você não clicar em 'Salvar mudanças' antes de usar um apagar ou 'adicionar novo' botão!"
 
 #: 
 #, fuzzy
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
-msgstr "Campos inválidos ou selecções. As alterações não salvas! Por favor, corrija e tente novamente!"
+msgstr "Campos ou seleções inválidas. As alterações não foram salvas! Por favor, corrija e tente novamente!"
 
 #: 
 #, fuzzy
@@ -1179,7 +1178,7 @@ msgstr "Ativo"
 #: 
 #, fuzzy
 msgid "Save Changes"
-msgstr "Gravar mudanças"
+msgstr "Salvar mudanças"
 
 #: 
 #, fuzzy
@@ -1209,7 +1208,7 @@ msgstr "Tipo de evento"
 #: 
 #, fuzzy
 msgid "Save Name"
-msgstr "Gravar nome"
+msgstr "Salvar nome"
 
 #: 
 msgid "Recurrence Pattern"
@@ -1293,7 +1292,7 @@ msgstr "Visitantes no evento"
 #: 
 #, fuzzy
 msgid "There "
-msgstr "Existe "
+msgstr "Há "
 
 #: 
 #, fuzzy
@@ -1347,11 +1346,11 @@ msgstr "erros. Por favor, veja abaixo"
 
 #: 
 msgid "Items with a "
-msgstr "Itens nº"
+msgstr "Itens com um/a "
 
 #: 
 msgid " are required"
-msgstr " é obrigadtório"
+msgstr " é obrigatório"
 
 #: 
 #, fuzzy
@@ -1433,7 +1432,7 @@ msgstr "Sábados"
 #: 
 #, fuzzy
 msgid "DEFAULT START TIME"
-msgstr "Tempo de Início Padrão"
+msgstr "HORÁRIO DE INÍCIO PADRÃO"
 
 #: 
 #, fuzzy
@@ -1469,7 +1468,7 @@ msgstr "Adicionar tipo de evento"
 #: 
 #, fuzzy
 msgid "Custom Family Fields Editor"
-msgstr "Editor de Campos Personalizados de Famílias"
+msgstr "Editor de campos personalizados de família"
 
 #: 
 #, fuzzy
@@ -1479,12 +1478,12 @@ msgstr "Opção padrão"
 #: 
 #, fuzzy
 msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Atenção: Ao excluir este campo, você vai perder todos os dados irrevogáveis de família atribuídos para este campo!"
+msgstr "Atenção: Ao excluir este campo, você vai perder todos os dados de família atribuídos para este campo de forma irrevogável!"
 
 #: 
 #, fuzzy
 msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "AVISO! Os botões de setas e excluir tem efeito imediato. As alterações no nome do campo serão perdidas se você não salva-las antes de usar qualquer um dos botões. "
+msgstr "AVISO! Os botões de setas e excluir tem efeito imediato. As alterações no nome do campo serão perdidas se você não as salvar antes de usar qualquer um dos botões cima, baixo, apagar ou 'adicionar novo'!"
 
 #: 
 #, fuzzy
@@ -1499,7 +1498,7 @@ msgstr "Opção especial"
 #: 
 #, fuzzy
 msgid "Security Option"
-msgstr "Segurança"
+msgstr "Opção de segurança"
 
 #: 
 #, fuzzy
@@ -1529,7 +1528,7 @@ msgstr "Esse nome de campo já existe."
 #: 
 #, fuzzy
 msgid "Add New Field"
-msgstr "Adicionar"
+msgstr "Adicionar novo campo"
 
 #: 
 #, fuzzy
@@ -1554,7 +1553,7 @@ msgstr "Data de nascimento inválida."
 #: 
 #, fuzzy
 msgid "Not a valid Wedding Date"
-msgstr "Data de casamento inválida"
+msgstr "Não é uma data de casamento válida"
 
 #: 
 #, fuzzy
@@ -1586,7 +1585,7 @@ msgstr "Atribua um Visitador"
 
 #: 
 msgid "Assign a Brave Canvasser"
-msgstr "Atribua um Canvasser Brave"
+msgstr "Atribuir um Visitador Incansável"
 
 #: 
 #, fuzzy
@@ -1596,7 +1595,7 @@ msgstr "Informações do Envelope"
 #: 
 #, fuzzy
 msgid "Custom Fields"
-msgstr "Campos Personalizados"
+msgstr "Campos personalizados"
 
 #: 
 #, fuzzy
@@ -1714,7 +1713,7 @@ msgstr "Lista de Famílias"
 #: 
 #, fuzzy
 msgid "Add Family"
-msgstr "   Adicionar Família"
+msgstr "Adicionar Família"
 
 #: 
 #, fuzzy
@@ -1764,7 +1763,7 @@ msgstr "Upload de foto"
 #: 
 #, fuzzy
 msgid "Delete Photo"
-msgstr "apagar foto"
+msgstr "Excluir foto"
 
 #: 
 #, fuzzy
@@ -1784,7 +1783,7 @@ msgstr "Linha do Tempo"
 #: 
 #, fuzzy
 msgid "Pledges and Payments"
-msgstr "Promessas e Pagamentos"
+msgstr "Compromissos e Pagamentos"
 
 #: 
 #, fuzzy
@@ -1794,7 +1793,7 @@ msgstr "Não há propriedades atribuídas."
 #: 
 #, fuzzy
 msgid "Value"
-msgstr "VALOR"
+msgstr "Valor"
 
 #: 
 #, fuzzy
@@ -1803,7 +1802,7 @@ msgstr "Editar Valor"
 
 #: 
 msgid "Assign a New Property"
-msgstr "Atribuir uma Nova pPopriedade"
+msgstr "Atribuir uma Nova Propriedade"
 
 #: 
 #, fuzzy
@@ -1823,7 +1822,7 @@ msgstr "Atualizado por"
 #: 
 #, fuzzy
 msgid "Show Pledges"
-msgstr "Mostra promessas"
+msgstr "Mostrar compromissos"
 
 #: 
 #, fuzzy
@@ -1842,7 +1841,7 @@ msgstr "Atualização"
 #: 
 #, fuzzy
 msgid "Pledge or Payment"
-msgstr "Promessa ou pagamento"
+msgstr "Compromisso ou pagamento"
 
 #: 
 #, fuzzy
@@ -1852,7 +1851,7 @@ msgstr "Data"
 #: 
 #, fuzzy
 msgid "NonDeductible"
-msgstr "Não dedutivel"
+msgstr "Não dedutível"
 
 #: 
 #, fuzzy
@@ -1872,7 +1871,7 @@ msgstr "Comentário"
 #: 
 #, fuzzy
 msgid "Add a new pledge"
-msgstr "Incluir nova promessa"
+msgstr "Adicionar novo compromisso"
 
 #: 
 #, fuzzy
@@ -1906,7 +1905,7 @@ msgstr "Você quer continuar?"
 
 #: 
 msgid "You are about to email copy of the family information to the following emails"
-msgstr "Você está prestes a enviar e-mail com cópia das informações da família em para os seguintes e-mails"
+msgstr "Você está prestes a enviar um e-mail com cópia das informações da família em para os seguintes e-mails"
 
 #: 
 #, fuzzy
@@ -1931,16 +1930,16 @@ msgstr "Selecione o tipo de relatório"
 #: 
 #, fuzzy
 msgid "Pledge Summary"
-msgstr "Resumo das promessas"
+msgstr "Resumo dos compromissos"
 
 #: 
 msgid "Pledge Family Summary"
-msgstr "Resumo das promessas"
+msgstr "Resumo dos compromissos da família"
 
 #: 
 #, fuzzy
 msgid "Pledge Reminders"
-msgstr "Lembrete das promessas"
+msgstr "Lembrete de compromisso"
 
 #: 
 #, fuzzy
@@ -1950,12 +1949,12 @@ msgstr "Membros votantes"
 #: 
 #, fuzzy
 msgid "Giving Report (Tax Statements)"
-msgstr "Relatório de ofertas (Taxas)"
+msgstr "Relatório de ofertas (Declaração de impostos)"
 
 #: 
 #, fuzzy
 msgid "Zero Givers"
-msgstr "Nenhum Doador"
+msgstr "Pessoa com nenhuma doação"
 
 #: 
 #, fuzzy
@@ -2069,7 +2068,7 @@ msgstr "Incluir:"
 #: 
 #, fuzzy
 msgid "Only Payments with Pledges"
-msgstr "Somente pagamentos com promessas"
+msgstr "Somente pagamentos com compromissos"
 
 #: 
 #, fuzzy
@@ -2084,7 +2083,7 @@ msgstr "Criar:"
 #: 
 #, fuzzy
 msgid "Only Families with unpaid pledges"
-msgstr "Somente familiares com promessas não pagas"
+msgstr "Somente famílias com compromisso não pagos"
 
 #: 
 #, fuzzy
@@ -2114,7 +2113,7 @@ msgstr "Branco"
 #: 
 #, fuzzy
 msgid "Remittance Slip:"
-msgstr "Erro de remessa:"
+msgstr "Comprovante de transferência:"
 
 #: 
 #, fuzzy
@@ -2144,7 +2143,7 @@ msgstr "Resumo das informações"
 #: 
 #, fuzzy
 msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Membros votantes devem ter feito <br> uma doação dentro desta muitos anos <br> (0 para não exigir uma doação):"
+msgstr "Membros votantes devem ter feito<br> uma doação dentro de muitos anos<br> (0 para não exigir uma doação):"
 
 #: 
 #, fuzzy
@@ -2243,15 +2242,15 @@ msgstr "Adicionar Item Doado"
 
 #: 
 msgid "Generate Catalog"
-msgstr "Criar Eetiquetas"
+msgstr "Gerar Catálogo"
 
 #: 
 msgid "Generate Bid Sheets"
-msgstr "Criar Etiquetas"
+msgstr "Gerar planilhas de lances"
 
 #: 
 msgid "Generate Certificates"
-msgstr "Criar Relatório"
+msgstr "Gerar Certificados"
 
 #: 
 msgid "Donated items for this fundraiser"
@@ -2279,7 +2278,7 @@ msgstr "Valor de Material"
 
 #: 
 msgid "Minimum Price"
-msgstr "Máxima Distância"
+msgstr "Preço mínimo"
 
 #: 
 #, fuzzy
@@ -2319,7 +2318,7 @@ msgstr "Street Atlas EUA"
 #: 
 #, fuzzy
 msgid "Include families in coordinate file:"
-msgstr "incluir familiares no arquivo de coordenadas:"
+msgstr "Incluir famílias no arquivo de coordenadas:"
 
 #: 
 #, fuzzy
@@ -2405,7 +2404,7 @@ msgstr "do grupo"
 #: 
 #, fuzzy
 msgid "Select a group"
-msgstr "Selecione um grupo"
+msgstr "Selecionar um grupo"
 
 #: 
 #, fuzzy
@@ -2469,7 +2468,7 @@ msgstr "Editor de Propriedades dos Grupos"
 #: 
 #, fuzzy
 msgid "This group currently has no properties!  You can add them in the Group Editor."
-msgstr "Este grupo atualmente não tem propriedades! Você pode adicioná-los no Editor de Grupos."
+msgstr "Este grupo atualmente não tem propriedades! Você pode adicioná-las no Editor de Grupos."
 
 #: 
 #, fuzzy
@@ -2608,7 +2607,7 @@ msgstr "Isso também irá excluir todos os papéis e dados do Grupo de proprieda
 #: 
 #, fuzzy
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "Todos os "
+msgstr "Todos os membros e propriedades do grupo serão destruídos. Os próprios membros do grupo não serão alterados."
 
 #: 
 msgid "Please select target group for members"
@@ -2622,7 +2621,7 @@ msgstr "Adicionar membros do grupo ao Carrinho"
 #: 
 #, fuzzy
 msgid "Map this group"
-msgstr "Mapear este grupo"
+msgstr "Mapa deste grupo"
 
 #: 
 #, fuzzy
@@ -2639,7 +2638,7 @@ msgstr "Papel padrão"
 
 #: 
 msgid "Group-Specific Properties"
-msgstr "Propriedades especificas do grupo"
+msgstr "Propriedades específicas do grupo"
 
 #: 
 #, fuzzy
@@ -2678,7 +2677,7 @@ msgstr "Mover os Membros Selecionados do grupo"
 #: 
 #, fuzzy
 msgid "Add Group Member: "
-msgstr "Adicionar Membro do Grupo"
+msgstr "Adicionar Membro do Grupo: "
 
 #: 
 #, fuzzy
@@ -2727,7 +2726,7 @@ msgstr "Não foi registrada o número de presentes"
 
 #: 
 msgid "Attendees"
-msgstr "presentes("
+msgstr "Presentes"
 
 #: 
 #, fuzzy
@@ -2742,12 +2741,12 @@ msgstr "Login ou senha inválidos"
 #: 
 #, fuzzy
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Muitos não logins: sua conta foi bloqueada. Entre em contato com um administrador."
+msgstr "Muitos tentativas de logins: sua conta foi bloqueada. Entre em contato com um administrador."
 
 #: 
 #, fuzzy
 msgid "Please Login"
-msgstr "Por favor faça o login"
+msgstr "Por favor, faça o login"
 
 #: 
 #, fuzzy
@@ -2771,7 +2770,7 @@ msgstr "Gerenciador de envelope"
 
 #: 
 msgid "Update Family Records"
-msgstr "Nova Família"
+msgstr "Atualizar registros da família"
 
 #: 
 #, fuzzy
@@ -2780,7 +2779,7 @@ msgstr "Atualizar Envelopes"
 
 #: 
 msgid "Confirm"
-msgstr "Confirma exclusão"
+msgstr "Confirmar"
 
 #: 
 msgid "Sort by"
@@ -2788,21 +2787,21 @@ msgstr "Ordenar por:"
 
 #: 
 msgid "Zero"
-msgstr "Pessoa"
+msgstr "Zero"
 
 #: 
 msgid "Assign starting at #"
-msgstr "Assinalada por:"
+msgstr "Atribuição começando em:"
 
 #: 
 #, fuzzy
 msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Não é possível exibir o mapa devido à falta da Latitude ou Longitude da Igreja . Por favor, atualize o endereço da igreja no menu de configurações."
+msgstr "Não é possível exibir o mapa devido à falta da Latitude ou Longitude da Igreja. Por favor, atualize o endereço da igreja no menu de configurações."
 
 #: 
 #, fuzzy
 msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "A chave de API do Google Map não está definida. O mapa irá funcionar para um pequeno grupo de locais. Por favor, crie uma chave nas seções mapas do menu de configuração."
+msgstr "A chave de API do Google Map não está definida. O mapa irá funcionar para um pequeno grupo de localizações. Por favor, crie uma chave nas seções mapas do menu de configuração."
 
 #: 
 #, fuzzy
@@ -2855,7 +2854,7 @@ msgstr "Atualizar as coordenadas de todas as Famílias"
 #: 
 #, fuzzy
 msgid "Volunteer Opportunities"
-msgstr "Voluntariado"
+msgstr "Oportunidades de voluntariado"
 
 #: 
 #, fuzzy
@@ -2875,7 +2874,7 @@ msgstr "Pessoas"
 #: 
 #, fuzzy
 msgid "See All People"
-msgstr "Ver Todos os Pessoas"
+msgstr "Ver Todas os Pessoas"
 
 #: 
 #, fuzzy
@@ -2978,12 +2977,12 @@ msgstr "Nota Excluir Confirmação"
 
 #: 
 msgid "Please confirm deletion of this note"
-msgstr "Por favor confirme a exclusão desta nota"
+msgstr "Por favor, confirme a exclusão desta nota"
 
 #: 
 #, fuzzy
 msgid "Yes, delete this record"
-msgstr "Sim, apague este registro"
+msgstr "Sim, apagar este registro"
 
 #: 
 #, fuzzy
@@ -3018,7 +3017,7 @@ msgstr "Opção"
 #: 
 #, fuzzy
 msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
-msgstr "AVISO! Ao remover uma atribuição, ela será excluída do perfil de todas as pessoas à que foi atribuída.  "
+msgstr "AVISO! Ao remover uma atribuição, ela será excluída do perfil de todas as pessoas à que foi atribuída."
 
 #: 
 #, fuzzy
@@ -3062,7 +3061,7 @@ msgstr " com esse nome já existe."
 
 #: 
 msgid "Buyer Number Editor"
-msgstr "Editor de Usuário"
+msgstr "Editor de número de comprador"
 
 #: 
 msgid "Generate Statement"
@@ -3084,12 +3083,12 @@ msgstr "Nenhum Selecionado"
 
 #: 
 msgid "Add Buyer"
-msgstr "Criar Novo"
+msgstr "Criar comprador"
 
 #: 
 #, fuzzy
 msgid "Generate Statements for Selected"
-msgstr "Declarações para gerar Selecionado"
+msgstr "Gerar Declarações para Selecionado"
 
 #: 
 msgid "Select"
@@ -3098,12 +3097,12 @@ msgstr "Selecionar"
 #: 
 #, fuzzy
 msgid "Custom Person Fields Editor"
-msgstr "Editor de Campos Personalizados de Pessoas"
+msgstr "Editor de campos personalizados de pessoa"
 
 #: 
 #, fuzzy
 msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Atenção: Ao excluir este campo, você vai perder todos os dados irrevokably pessoa designada para este campo!"
+msgstr "Atenção: Ao excluir este campo, você vai perder todos os dados pessoa designada para este campo de forma irrevogável!"
 
 #: 
 #, fuzzy
@@ -3128,7 +3127,7 @@ msgstr "Não é uma data de ingresso válida"
 #: 
 #, fuzzy
 msgid "Not a valid Membership Date"
-msgstr "Não é uma Data de Membresia válida!"
+msgstr "Não é uma Data de Membresia válida"
 
 #: 
 #, fuzzy
@@ -3171,7 +3170,7 @@ msgstr "Selecione o Mês"
 
 #: 
 msgid "Birth Day"
-msgstr "Dia do Aniversário"
+msgstr "Dia do nascimento"
 
 #: 
 #, fuzzy
@@ -3199,7 +3198,7 @@ msgstr "Informação da Membresia"
 
 #: 
 msgid "Friend Date"
-msgstr "Visitante desde "
+msgstr "Visitante desde"
 
 #: 
 #, fuzzy
@@ -3283,7 +3282,7 @@ msgstr "Detalhes da transação eletrônica"
 #: 
 #, fuzzy
 msgid "NonDeductible amount can't be greater than total amount."
-msgstr "Quantia não deductivel não pode ser maior que a quantia total."
+msgstr "Quantia não dedutível não pode ser maior que a quantia total."
 
 #: 
 #, fuzzy
@@ -3298,27 +3297,27 @@ msgstr "Deve especificar não-zero número de cheque"
 #: 
 #, fuzzy
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Verifique o número não é válido para &#39;CAIXA&#39; pagamento"
+msgstr "Número de cheque não é válido para pagamentos com 'DINHEIRO'"
 
 #: 
 #, fuzzy
 msgid "Pledge Editor"
-msgstr "Editor de Promessa"
+msgstr "Editor de compromisso"
 
 #: 
 #, fuzzy
 msgid "Payment Editor: "
-msgstr "Editor de Pagamento:"
+msgstr "Editor de Pagamento: "
 
 #: 
 #, fuzzy
 msgid " Deposit Slip #"
-msgstr "Erro de Deposito nº"
+msgstr " Depósito nº"
 
 #: 
 #, fuzzy
 msgid " more entries will fit."
-msgstr "mais entradas vai caber."
+msgstr " mais entradas irão caber."
 
 #: 
 #, fuzzy
@@ -3328,7 +3327,7 @@ msgstr "Editor de Pagamento | Modificar Pagamentos Existentes"
 #: 
 #, fuzzy
 msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Editor de Pagamentos | Novo Depósito Será Criado"
+msgstr "Editor de Pagamentos - Novo Depósito Será Criado"
 
 #: 
 #, fuzzy
@@ -3380,17 +3379,17 @@ msgstr "Data do Pagamento"
 #: 
 #, fuzzy
 msgid "Scan check"
-msgstr "Digitalizar verificar"
+msgstr "Digitalizar cheque"
 
 #: 
 #, fuzzy
 msgid "find family from check account #"
-msgstr "encontrar a família da conta de verificação #"
+msgstr "encontrar a família da conta corrente #"
 
 #: 
 #, fuzzy
 msgid "Set default check account number for family"
-msgstr "Definir número de conta padrão de verificação para a família"
+msgstr "Definir número de conta corrente padrão para a família"
 
 #: 
 msgid "Fund Name"
@@ -3398,7 +3397,7 @@ msgstr "Nome do Banco"
 
 #: 
 msgid "Non-deductible amount"
-msgstr "Não dedutivel"
+msgstr "Não dedutível"
 
 #: 
 #, fuzzy
@@ -3427,7 +3426,7 @@ msgstr "Notas:"
 #: 
 #, fuzzy
 msgid "Entered:"
-msgstr " Atribuído:"
+msgstr "Atribuído:"
 
 #: 
 #, fuzzy
@@ -3437,16 +3436,16 @@ msgstr "por"
 #: 
 #, fuzzy
 msgid "Property successfully assigned."
-msgstr "Propriedade assinalada com sucesso."
+msgstr "Propriedade atribuída com sucesso."
 
 #: 
 #, fuzzy
 msgid " Property Assignment"
-msgstr "Atribuição de propriedade"
+msgstr " Atribuição de propriedade"
 
 #: 
 msgid "Assigning"
-msgstr "Assinado por"
+msgstr "Atribuindo"
 
 #: 
 #, fuzzy
@@ -3465,7 +3464,7 @@ msgstr "Excluindo esta propriedade também vai apagar todas as atribuições des
 #: 
 #, fuzzy
 msgid "No, cancel this deletion"
-msgstr "Cancelar"
+msgstr "Não, cancelar esta exclusão"
 
 #: 
 #, fuzzy
@@ -3484,7 +3483,7 @@ msgstr "Selecione um tipo de propriedade"
 #: 
 #, fuzzy
 msgid "A"
-msgstr "A"
+msgstr "Um(a)"
 
 #: 
 #, fuzzy
@@ -3514,12 +3513,12 @@ msgstr "Prompt"
 #: 
 #, fuzzy
 msgid "Property Type Delete Confirmation"
-msgstr "Propriedade Confirmação de exclusão Tipo"
+msgstr "Confirmação de exclusão de tipo de propriedade"
 
 #: 
 #, fuzzy
 msgid "Warning"
-msgstr "Aviso:"
+msgstr "Aviso"
 
 #: 
 #, fuzzy
@@ -3529,7 +3528,7 @@ msgstr "Este tipo de propriedade ainda está sendo usado por pelo menos uma prop
 #: 
 #, fuzzy
 msgid "If you delete this type, you will also remove all properties using"
-msgstr "Se eliminar este tipo, você também vai remover todas as propriedades que utilizam"
+msgstr "Se excluir este tipo, também vai remover todas as propriedades que utilizam"
 
 #: 
 #, fuzzy
@@ -3538,7 +3537,7 @@ msgstr "e perder as atribuições de propriedade correspondentes."
 
 #: 
 msgid "Please confirm deletion of this Property Type"
-msgstr "Por favor, confirme a exclusão deste tipo de imóvel"
+msgstr "Por favor, confirme a exclusão deste tipo de propriedade"
 
 #: 
 #, fuzzy
@@ -3568,21 +3567,21 @@ msgstr "Propriedades"
 #: 
 #, fuzzy
 msgid " Property Unassignment"
-msgstr " Propriedade não assinalada"
+msgstr " Propriedade não atribuída"
 
 #: 
 #, fuzzy
 msgid "Please confirm removal of this property from this"
-msgstr "Por favor confirme a exclusão desta propriedade"
+msgstr "Por favor, confirme a exclusão desta propriedade"
 
 #: 
 msgid "Unassigning"
-msgstr "Não assinalada:"
+msgstr "Removendo atribuição:"
 
 #: 
 #, fuzzy
 msgid "Yes, unassign this Property"
-msgstr "Cancelar a atribuição"
+msgstr "Sim, remover esta atribuição"
 
 #: 
 #, fuzzy
@@ -3592,12 +3591,12 @@ msgstr "Não, retenha esta atribuição"
 #: 
 #, fuzzy
 msgid "Query Listing"
-msgstr "Listagem consulta"
+msgstr "Listagem de consultas"
 
 #: 
 #, fuzzy
 msgid "Run a Free-Text Query"
-msgstr "Executar uma consulta de Texto livre"
+msgstr "Executar uma consulta de texto livre"
 
 #: 
 #, fuzzy
@@ -3612,7 +3611,7 @@ msgstr "Exporte os resultados para um arquivo CSV"
 #: 
 #, fuzzy
 msgid "Execute SQL"
-msgstr "Execute SQL"
+msgstr "Executar SQL"
 
 #: 
 #, fuzzy
@@ -3632,7 +3631,7 @@ msgstr "Adicionar resultados ao carrinho"
 #: 
 #, fuzzy
 msgid "Intersect Results With Cart"
-msgstr "Fazer intersecção dos resultados com o carrinho"
+msgstr "Cruzar resultados com o carrinho"
 
 #: 
 #, fuzzy
@@ -3647,12 +3646,12 @@ msgstr "Retornar ao menu de consulta"
 #: 
 #, fuzzy
 msgid "Query View"
-msgstr "Mostrar consulta"
+msgstr "Ver consulta"
 
 #: 
 #, fuzzy
 msgid "This value is required."
-msgstr "Este valor é requerido."
+msgstr "Este valor é obrigatório."
 
 #: 
 #, fuzzy
@@ -3682,12 +3681,12 @@ msgstr "Este valor não pode ser menor que "
 #: 
 #, fuzzy
 msgid "Run Query Again"
-msgstr "Rodar a consulta novamente"
+msgstr "Executar a consulta novamente"
 
 #: 
 #, fuzzy
 msgid "Execute Query"
-msgstr "Rodar a pesquisa"
+msgstr "Executar a consulta"
 
 #: 
 #, fuzzy
@@ -3697,7 +3696,7 @@ msgstr "Enviar"
 #: 
 #, fuzzy
 msgid "Pledge Reminder Report"
-msgstr "Relatório Lembrete promessa"
+msgstr "Relatório de lembrete de compromisso"
 
 #: 
 #, fuzzy
@@ -3707,7 +3706,7 @@ msgstr "Relatórios de Comparecimento a Evento"
 #: 
 #, fuzzy
 msgid "Restore Database"
-msgstr "Recuperar Banco de Dados"
+msgstr "Restaurar banco de dados"
 
 #: 
 #, fuzzy
@@ -3717,7 +3716,7 @@ msgstr "Todas as doações desta família foram transferidos para outra família
 #: 
 #, fuzzy
 msgid "Family Delete Confirmation"
-msgstr "Confirmação família Excluir"
+msgstr "Confirmar exclusão de família"
 
 #: 
 msgid "Please confirm deletion of"
@@ -3726,21 +3725,21 @@ msgstr "Por favor, confirme a exclusão de"
 #: 
 #, fuzzy
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Desculpe, não há registros de doações de família. Esta família não pode ser excluído."
+msgstr "Desculpe, não há registros de doações de família. Esta família não pode ser excluída."
 
 #: 
 #, fuzzy
 msgid "Return to Family View"
-msgstr "Retorrna para a visualização de Famílias"
+msgstr "Retornar para a visualização de Famílias"
 
 #: 
 #, fuzzy
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "ATENÇÃO: Esta família tem registros de doações e não pode ser excluído até que essas doações são associados com outra família."
+msgstr "ATENÇÃO: Esta família tem registros de doações e não pode ser excluída até que essas doações sejam associadas com outra família."
 
 #: 
 msgid "Please select another family with whom to associate these donations:"
-msgstr "Selecione outra família para associação"
+msgstr "Selecione outra família para associar essas doações"
 
 #: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
@@ -3749,12 +3748,12 @@ msgstr "AVISO: Esta ação não pode ser desfeita"
 #: 
 #, fuzzy
 msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "Atual família com doações"
+msgstr "FAMÍLIA ATUAL COM DOAÇÕES"
 
 #: 
 #, fuzzy
 msgid "Please confirm deletion of this family record:"
-msgstr "Confirme a remoção desta família:"
+msgstr "Por favor, confirme a exclusão desta família:"
 
 #: 
 #, fuzzy
@@ -3764,7 +3763,7 @@ msgstr "Nota: Isso também irá excluir todas as notas associadas a este registr
 #: 
 #, fuzzy
 msgid "Delete Family Record ONLY"
-msgstr "Deletar apenas o dados da Família"
+msgstr "Deletar os dados da Família SOMENTE"
 
 #: 
 #, fuzzy
@@ -3789,11 +3788,11 @@ msgstr "Minhas Configurações de Usuário"
 #: 
 #, fuzzy
 msgid "Variable name"
-msgstr "NOME DA VARIÁVEL"
+msgstr "Nome da variável"
 
 #: 
 msgid "Current Value"
-msgstr "Valor Atual:"
+msgstr "Valor Atual"
 
 #: 
 #, fuzzy
@@ -3836,7 +3835,7 @@ msgstr "Atualizar Latitude e Longiude"
 #: 
 #, fuzzy
 msgid "User Delete Confirmation"
-msgstr "Confirmação de remoção de usuário"
+msgstr "Confirmação de exclusão de usuário"
 
 #: 
 #, fuzzy
@@ -3900,7 +3899,7 @@ msgstr "Editar"
 #: 
 #, fuzzy
 msgid "(Edit own family only.)"
-msgstr "(Edit própria família apenas.)"
+msgstr "(Editar própria família apenas.)"
 
 #: 
 #, fuzzy
@@ -3915,7 +3914,7 @@ msgstr "Configurações"
 #: 
 #, fuzzy
 msgid "(Grants all privileges.)"
-msgstr "(Concede todos os privilégios.)"
+msgstr "(Conceder todos os privilégios.)"
 
 #: 
 msgid "Style"
@@ -3954,12 +3953,12 @@ msgstr "Total de Logins"
 #: 
 #, fuzzy
 msgid "Failed Logins"
-msgstr "Logins fracassados"
+msgstr "Logins com falha"
 
 #: 
 #, fuzzy
 msgid "You must enter the same password in both boxes"
-msgstr "Entre com a senha em ambos os campos"
+msgstr "Você deve digitar a mesma senha em ambos os campos"
 
 #: 
 #, fuzzy
@@ -3984,7 +3983,7 @@ msgstr "Digite sua senha atual e sua nova senha duas vezes. As senhas devem ter 
 #: 
 #, fuzzy
 msgid "characters in length."
-msgstr "número de carateres "
+msgstr "caracteres no total."
 
 #: 
 msgid "Old Password"
@@ -4000,29 +3999,29 @@ msgstr "Confirme a Nova Senha"
 
 #: 
 msgid "Please confirm the password reset of this user"
-msgstr "Confirma reset de Senha deste Usuário"
+msgstr "Por favor, confirme a redefinição de senha deste usuário"
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Excluir Confirmação de Voluntariado"
+msgstr "Confirmação de exclusão de oportunidade de voluntariado"
 
 #: 
 msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Há pessoas designadas para este Voluntariado."
+msgstr "Há pessoas designadas para esta oportunidade de voluntariado."
 
 #: 
 #, fuzzy
 msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Oportunidade voluntário será atribuído para as seguintes pessoas."
+msgstr "Oportunidade de voluntariado será atribuída para as seguintes pessoas."
 
 #: 
 msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Excluir"
+msgstr "Sim, excluir esta oportunidade de voluntariado"
 
 #: 
 #, fuzzy
 msgid "Volunteer Opportunity Editor"
-msgstr "Voluntariado"
+msgstr "Editor de oportunidade de voluntariado"
 
 #: 
 #, fuzzy
@@ -4032,7 +4031,7 @@ msgstr "Nenhuma oportunidade foi adicionada ainda"
 #: 
 #, fuzzy
 msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "NOTA! Somente as alterações como: ADICIONAR, EXCLUIR e PEDIR são imediatas. Alterações nos campos Nome ou Descrição, devem ser salvas pressionando 'Salvar Alterações'."
+msgstr "NOTA: as mudanças ADICIONAR, EXCLUIR e ORDENAR são salvas imediatamente. Mudanças nos campos Nome ou Descrição devem ser salvas, clicando em 'Salvar Alterações'."
 
 #: 
 #, fuzzy
@@ -4042,7 +4041,7 @@ msgstr "Adicionar nova oportunidade"
 #: 
 #, fuzzy
 msgid "\"Why Came\" notes for "
-msgstr "Por que veio "
+msgstr "Anotações para \"Por que veio\" "
 
 #: 
 #, fuzzy
@@ -4072,25 +4071,25 @@ msgstr "Importar do eGive"
 #: 
 #, fuzzy
 msgid "Re-import to selected family"
-msgstr "Re-importação a família selecionada"
+msgstr "Re-importar a família selecionada"
 
 #: 
 msgid "Data import results: "
-msgstr "Dados importados com sucesso."
+msgstr "Resultados dos dados importados: "
 
 #: 
 msgid " gifts were imported, "
-msgstr "pessoas importadas"
+msgstr " doações importadas, "
 
 #: 
 #, fuzzy
 msgid " gifts unchanged, and "
-msgstr "presentes inalterada e"
+msgstr " doações inalteradas e "
 
 #: 
 #, fuzzy
 msgid " gifts not imported due to problems"
-msgstr "presentes não importados devido a problemas"
+msgstr " doações não importados devido a problemas"
 
 #: 
 msgid "Back to Deposit Slip"
@@ -4099,36 +4098,36 @@ msgstr "Voltar ao Depósito"
 #: 
 #, fuzzy
 msgid "Fatal error in eGive API datastream: '"
-msgstr "Erro fatal no eGive API datastream: &#39;"
+msgstr "Erro fatal na API eGive: '"
 
 #: 
 #, fuzzy
 msgid "eMail Dashboard"
-msgstr "E-MAIL"
+msgstr "Painel de E-mail"
 
 #: 
 #, fuzzy
 msgid "No families need canvassers assigned"
-msgstr "Nenhuma família precisa de visitadoes atribuídos"
+msgstr "Nenhuma família precisa de visitadores atribuídos"
 
 #: 
 #, fuzzy
 msgid "Canvassers assigned at random to %d families."
-msgstr "Visitadores atribuídos aleatoriamente para famílias% d."
+msgstr "Visitadores atribuídos aleatoriamente para %d famílias."
 
 #: 
 #, fuzzy
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Visitadores atribuídos aleatoriamente para% d não comprometendo as famílias."
+msgstr "Visitadores atribuídos aleatoriamente para %d famílias faltosas."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Apenas membros (familiares com pelo menos um membro da igreja)"
+msgstr "Atribuir números de envelope para todas as famílias com pelo menos um membro."
 
 #: 
 #, fuzzy
 msgid "Assigned envelope numbers to all families."
-msgstr "Atribuídos números envelope para todas as famílias."
+msgstr "Atribuídos números de envelope para todas as famílias."
 
 #: 
 #, fuzzy
@@ -4198,37 +4197,37 @@ msgstr "Obrigado por registrar a sua instalação do ChurchCRM."
 #: 
 #, fuzzy
 msgid "PDFs successfully emailed "
-msgstr "PDF enviado por e-mail com sucesso "
+msgstr "PDFs enviado por e-mail com sucesso "
 
 #: 
 #, fuzzy
 msgid "PDF successfully emailed to family members."
-msgstr "PDF enviado com sucesso por e-mail aos membros da Família"
+msgstr "PDF enviado com sucesso por e-mail aos membros da família."
 
 #: 
 #, fuzzy
 msgid "Failed to email PDF to family members."
-msgstr "Falha ao enviar PDF por e-mail aos membros da Família"
+msgstr "Falha ao enviar PDF por e-mail aos membros da família."
 
 #: 
 #, fuzzy
 msgid "Group successfully added to the Cart."
-msgstr "Grupo adicionado com êxito ao carrinho."
+msgstr "Grupo adicionado com sucesso ao carrinho."
 
 #: 
 #, fuzzy
 msgid "Group successfully removed from the Cart."
-msgstr "Grupo removido com êxito do carrinho."
+msgstr "Grupo removido com sucesso do carrinho."
 
 #: 
 #, fuzzy
 msgid "Profile Image successfully removed."
-msgstr "Imagem do Perfil Removida com Sucesso"
+msgstr "Imagem do Perfil removida com sucesso"
 
 #: 
 #, fuzzy
 msgid "Profile Image successfully updated."
-msgstr "Imagem do Perfil Atualizada com Sucesso"
+msgstr "Imagem do Perfil atualizada com sucesso"
 
 #: 
 #, fuzzy
@@ -4238,7 +4237,7 @@ msgstr "Erro ao enviar a Imagem do Perfil."
 #: 
 #, fuzzy
 msgid "Selected record successfully removed from the Cart."
-msgstr "Registro selecionado com sucesso removido do carrinho."
+msgstr "Registro selecionado removido com sucesso do carrinho."
 
 #: 
 msgid "Your cart has been successfully emptied"
@@ -4323,22 +4322,22 @@ msgstr "Número muito grande. Deve estar entre -2147483648 e 2147483647"
 #: 
 #, fuzzy
 msgid "Money amount too large. Maximum is $999999999.99"
-msgstr "Quantidade de dinheiro muito grande. Máxima é de 999.999.999,99 dólares americanos"
+msgstr "Quantidade de dinheiro muito grande. Máximo é de $999.999.999,99."
 
 #: 
 #, fuzzy
 msgid " Bold Italic"
-msgstr "Negrito Itálico"
+msgstr " Negrito Itálico"
 
 #: 
 #, fuzzy
 msgid " Italic"
-msgstr "Itálico"
+msgstr " Itálico"
 
 #: 
 #, fuzzy
 msgid " Bold"
-msgstr "Negrito"
+msgstr " Negrito"
 
 #: 
 msgid "Error making API Call to"
@@ -4356,7 +4355,7 @@ msgstr "Reportar problema!"
 #: 
 #, fuzzy
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
-msgstr "Nenhuma informação pessoal identificável será submetida a menos que você inclua-a propositadamente."
+msgstr "Nenhuma informação pessoal identificável será enviada, a menos que você a inclua de propósito."
 
 #: 
 #, fuzzy
@@ -4412,7 +4411,7 @@ msgstr "Para os pais de"
 
 #: 
 msgid "Start Row"
-msgstr "Comece Row"
+msgstr "Linha Inicial"
 
 #: 
 msgid "Start Column"
@@ -4420,7 +4419,7 @@ msgstr "Coluna Inicial"
 
 #: 
 msgid "Ignore Incomplete<br>Addresses"
-msgstr "Ignorar incompleta <br> Endereços"
+msgstr "Ignorar Endereços<br>Incompletos"
 
 #: 
 msgid "File Type"
@@ -4434,17 +4433,17 @@ msgstr "itens"
 #: 
 #, fuzzy
 msgid "Did not pledge"
-msgstr "Não promessa"
+msgstr "Não se comprometeu"
 
 #: 
 #, fuzzy
 msgid "Top pledger"
-msgstr "Empenhador topo"
+msgstr "Maior doador"
 
 #: 
 #, fuzzy
 msgid "Pledged"
-msgstr "Vinculados"
+msgstr "Compromissados"
 
 #: 
 #, fuzzy
@@ -4488,7 +4487,7 @@ msgstr "Membro/Participante"
 #: 
 #, fuzzy
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Esta opção requer pelo menos a versão 3.22 do MySQL! Aperto o botão Voltar do navegador para retornar ao ChurchCRM."
+msgstr "Esta opção requer pelo menos a versão 3.22 do MySQL! Aperte o botão Voltar do navegador para retornar ao ChurchCRM."
 
 #: 
 #, fuzzy
@@ -4502,12 +4501,12 @@ msgstr "Celular"
 
 #: 
 msgid "Estimated value "
-msgstr "Valor estimado"
+msgstr "Valor estimado "
 
 #: 
 #, fuzzy
 msgid "Donated by "
-msgstr "Doado pelo"
+msgstr "Doado por "
 
 #: 
 msgid "Paddle"
@@ -4571,12 +4570,13 @@ msgstr "Valor pago: ________________"
 #: 
 #, fuzzy
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
-msgstr "Pago por () Caixa () Cheque () Cartão de crédito ________________________________ Exp __ / __"
+msgstr "Pago com () Dinheiro () Cheque () Cartão de crédito ________________________________ Exp __ / __"
 
 #: 
 #, fuzzy
 msgid "                                        Signature ________________________________________________________________"
-msgstr "Assinatura ________________________________________________________________"
+msgstr "␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣Assinatura\n"
+"________________________________________________________________"
 
 #: 
 #, fuzzy
@@ -4616,22 +4616,22 @@ msgstr "Diretório de grupo"
 #: 
 #, fuzzy
 msgid "Please detach this slip and mail with your next gift."
-msgstr "Por favor, retire este deslizamento e-mail com o seu próximo presente."
+msgstr "Por favor, destaque esta mala direta com sua próxima doação."
 
 #: 
 #, fuzzy
 msgid "Please mail you next gift to "
-msgstr "Por favor, envie-lhe presente ao lado"
+msgstr "Por favor, envie a doação ao lado "
 
 #: 
 #, fuzzy
 msgid "Gift Amount:"
-msgstr "Valor presente:"
+msgstr "Valor de doação:"
 
 #: 
 #, fuzzy
 msgid "Gift Designation:"
-msgstr "Designação de presente:"
+msgstr "Destino da doação:"
 
 #: 
 msgid "Sunday School"
@@ -4720,7 +4720,7 @@ msgstr "E-mail da Mãe"
 #: 
 #, fuzzy
 msgid "Compose New Message"
-msgstr "Compor uma nova Mensagem"
+msgstr "Escrever uma nova mensagem"
 
 #: 
 #, fuzzy
@@ -4760,7 +4760,7 @@ msgstr "Painel da Escola Bíblica Dominical"
 #: 
 #, fuzzy
 msgid "Classes"
-msgstr "Classes"
+msgstr "Turmas"
 
 #: 
 #, fuzzy
@@ -4770,7 +4770,7 @@ msgstr "Relatório da Escola Bíblica Dominical"
 #: 
 #, fuzzy
 msgid "Generate class lists and attendance sheets"
-msgstr "Gerar controle de freqüências às aulas"
+msgstr "Gerar listas de turmas e listas de presença"
 
 #: 
 #, fuzzy
@@ -4780,11 +4780,11 @@ msgstr "Exportar Todas as Classes, Crianças e Pais para um arquivo CSV"
 #: 
 #, fuzzy
 msgid "Students not in a Sunday School Class"
-msgstr "Alunos sem Classe na Escola Bíblica Dominical"
+msgstr "Alunos sem turmas na Escola Bíblica Dominical"
 
 #: 
 msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Gerar controle de freqüências às aulas"
+msgstr "Ao menos um grupo deve ser selecionado para gerar listas de turmas ou listas de presença"
 
 #: 
 #, fuzzy
@@ -4793,12 +4793,12 @@ msgstr "Detalhes do Relatório"
 
 #: 
 msgid "To select multiple hold CTL"
-msgstr "Use a tecla CONTROL para selecionar vários"
+msgstr "Use a tecla CTRL para selecionar vários"
 
 #: 
 #, fuzzy
 msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Múltiplos Grupos terão uma quebra de página entre eles <br>"
+msgstr "Múltiplos Grupos terão uma quebra de página entre eles<br>"
 
 #: 
 #, fuzzy
@@ -4833,7 +4833,7 @@ msgstr "Criar uma lista da classe"
 #: 
 #, fuzzy
 msgid "Create Attendance Sheet"
-msgstr "Criar controle de freqüência"
+msgstr "Criar controle de presença"
 
 #: 
 #, fuzzy
@@ -4891,7 +4891,7 @@ msgstr "Importar Dados"
 #: 
 #, fuzzy
 msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Você está certo de que deseja EXCLUIR esta pessoa do Evento ID nº:"
+msgstr "Você está certo de que deseja EXCLUIR esta pessoa do Evento ID nº: "
 
 #: 
 msgid "Date Range"
@@ -4900,7 +4900,7 @@ msgstr "Intervalo de Datas"
 #: 
 #, fuzzy
 msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "A exclusão deste TIPO de evento NÃO vai apagar todos os eventos existentes ou contadores de presença. Tem certeza de que deseja excluir Tipo de Evento ID: ␣"
+msgstr "A exclusão deste TIPO de evento NÃO vai apagar todos os eventos existentes ou contagem de presença. Tem certeza de que deseja excluir Tipo de Evento ID: ␣"
 
 #: 
 #, fuzzy
@@ -4955,7 +4955,7 @@ msgstr "Esta ação substituirá os números dos envelopes das famílias no banc
 #: 
 #, fuzzy
 msgid "Family Select"
-msgstr "Selecionar Família "
+msgstr "Selecionar Família"
 
 #: 
 #, fuzzy
@@ -4965,7 +4965,7 @@ msgstr "com pelo menos um:"
 #: 
 #, fuzzy
 msgid "Welcome to"
-msgstr "Bem-vindo a "
+msgstr "Bem-vindo a"
 
 #: 
 #, fuzzy
@@ -4995,7 +4995,7 @@ msgstr "Carregar Arquivos"
 #: 
 #, fuzzy
 msgid "No Restore Running"
-msgstr "Nenhuma Restauração Rodando"
+msgstr "Nenhuma Restauração em execução"
 
 #: 
 #, fuzzy
@@ -5010,7 +5010,7 @@ msgstr "Faça o Login para restaurar o Banco de Dados"
 #: 
 #, fuzzy
 msgid "Restore Error."
-msgstr "Erro de Restauração"
+msgstr "Erro de Restauração."
 
 #: 
 #, fuzzy
@@ -5019,12 +5019,12 @@ msgstr "Informações da Igreja"
 
 #: 
 msgid "User Setup"
-msgstr "Usuários"
+msgstr "Configuração de Usuários"
 
 #: 
 #, fuzzy
 msgid "Email Setup"
-msgstr "E-mail"
+msgstr "Configuração do e-mail"
 
 #: 
 #, fuzzy
@@ -5054,7 +5054,7 @@ msgstr "Configurações do Editor JSON"
 #: 
 #, fuzzy
 msgid "Default Value"
-msgstr "VALOR PADRÃO"
+msgstr "Valor padrão"
 
 #: 
 #, fuzzy
@@ -5069,7 +5069,7 @@ msgstr "Verdadeiro"
 #: 
 #, fuzzy
 msgid "Edit Settings"
-msgstr "Configurações"
+msgstr "Editar Configurações"
 
 #: 
 #, fuzzy
@@ -5099,7 +5099,7 @@ msgstr "Passo 2: Obter o Pacote de atualização no servidor"
 #: 
 #, fuzzy
 msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Obter os últimos arquivos do ChurchCRM na página de versões no GitHub"
+msgstr "Obter os últimos arquivos do ChurchCRM na página de lançamentos do GitHub"
 
 #: 
 #, fuzzy
@@ -5164,12 +5164,12 @@ msgstr "Campanhas:"
 #: 
 #, fuzzy
 msgid "Unsubscribed count:"
-msgstr "Contador de desinscrição"
+msgstr "Contagem de assinaturas canceladas:"
 
 #: 
 #, fuzzy
 msgid "Unsubscribed count since last send:"
-msgstr "Desinscritos desde o último envio"
+msgstr "Assinaturas canceladas desde o último envio:"
 
 #: 
 #, fuzzy
@@ -5179,7 +5179,7 @@ msgstr "Contadores zerados:"
 #: 
 #, fuzzy
 msgid "Cleaned count since last send:"
-msgstr "Contador desde o último envio:"
+msgstr "Contadores limpos desde o último envio:"
 
 #: 
 #, fuzzy
@@ -5254,7 +5254,7 @@ msgstr "Estado do Backup:"
 #: 
 #, fuzzy
 msgid "No Backup Running"
-msgstr "Nenhum Backup Rodando"
+msgstr "Nenhum Backup em Execução"
 
 #: 
 #, fuzzy
@@ -5289,12 +5289,12 @@ msgstr "então atualize"
 #: 
 #, fuzzy
 msgid "For more info see our "
-msgstr "Para mais informações veja nosso "
+msgstr "Para mais informações, veja nossa "
 
 #: 
 #, fuzzy
 msgid "support docs."
-msgstr "documentos suportados."
+msgstr "documentação de suporte."
 
 #: 
 #, fuzzy
@@ -5359,12 +5359,12 @@ msgstr "Comentário do Depósito"
 #: 
 #, fuzzy
 msgid "Your previous session timed out.  Please login again."
-msgstr "A sua sessão anterior expirou. Por favor faça o login outra vez."
+msgstr "A sua sessão expirou. Por favor, faça o login novamente."
 
 #: 
 #, fuzzy
 msgid "Register a new Family"
-msgstr "Registre uma nova família"
+msgstr "Registrar uma nova família"
 
 #: 
 #, fuzzy
@@ -5424,26 +5424,26 @@ msgstr "------------------------------------------------------------------------
 #: 
 #, fuzzy
 msgid "Buyer # "
-msgstr "Comprador #"
+msgstr "Comprador nº "
 
 #: 
 msgid "Envelope:"
-msgstr "Envelope"
+msgstr "Envelope:"
 
 #: 
 #, fuzzy
 msgid ", Phone: "
-msgstr ", Telefone:"
+msgstr ", Telefone: "
 
 #: 
 #, fuzzy
 msgid "Voting members "
-msgstr "Membros votantes"
+msgstr "Membros votantes "
 
 #: 
 #, fuzzy
 msgid "Restore Running, Please wait."
-msgstr "Restauração Rodando, por favor espere."
+msgstr "Restauração em execução. Por favor, aguarde."
 
 #: 
 #, fuzzy
@@ -5478,7 +5478,7 @@ msgstr "Ano fiscal:"
 #: 
 #, fuzzy
 msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Nota importante: esta ação acarretará a perda de qualquer campo &quot;Ok para Visitantes&quot; que foram feitas à mão."
+msgstr "Nota importante: esta ação acarretará a perda do campo &quot;Ok para Visitantes&quot; que foi ajustado manualmente."
 
 #: 
 #, fuzzy
@@ -5522,11 +5522,11 @@ msgstr "Fechado:"
 
 #: 
 msgid "Start Date: "
-msgstr "Data de início:"
+msgstr "Data de início: "
 
 #: 
 msgid "End Date: "
-msgstr "Data de término:"
+msgstr "Data de término: "
 
 #: 
 #, fuzzy
@@ -5540,7 +5540,7 @@ msgstr "Configurações Gerais"
 
 #: 
 msgid "There were "
-msgstr "fazem"
+msgstr "foram "
 
 #: 
 #, fuzzy
@@ -5614,7 +5614,7 @@ msgstr "Grupos"
 #: 
 #, fuzzy
 msgid "Error: You must enter a name"
-msgstr "Erro: Você deve entrar um nome"
+msgstr "Erro: Você deve digitar um nome"
 
 #: 
 #, fuzzy
@@ -5628,7 +5628,7 @@ msgstr "Total R$"
 #: 
 #, fuzzy
 msgid "with this property.."
-msgstr "com esta propriedade."
+msgstr "com esta propriedade.."
 
 #: 
 #, fuzzy
@@ -5648,12 +5648,12 @@ msgstr "Inclua apenas essas classificações no diretório, separadas por vírgu
 #: 
 #, fuzzy
 msgid "These are the family role numbers designated as head of house"
-msgstr "Estes são os números papel familiar designados como chefe da casa"
+msgstr "Estes são os números do papel familiar designados como chefe da casa"
 
 #: 
 #, fuzzy
 msgid "These are the family role numbers designated as spouse"
-msgstr "Estes são os números papel familiar designados como esposa"
+msgstr "Estes são os números do papel familiar designados como cônjuge"
 
 #: 
 #, fuzzy
@@ -5663,7 +5663,7 @@ msgstr "Estes são os números de papíes famíliares designados como filhos"
 #: 
 #, fuzzy
 msgid "Queries for which user must have finance permissions to use:"
-msgstr "Consultas para as quais o usuário deve ter permissões de para acessar finanças:"
+msgstr "Consultas para as quais o usuário deve ter permissões de finanças para acessar:"
 
 #: 
 #, fuzzy
@@ -5673,7 +5673,7 @@ msgstr "Só os administradores terão acesso ao sistema de exportação CSV e ao
 #: 
 #, fuzzy
 msgid "Minimum length a user may set their password to"
-msgstr "O tamanho mínimo da senha de um usuário pode é"
+msgstr "O tamanho mínimo da senha de um usuário pode ter é"
 
 #: 
 #, fuzzy
@@ -5693,7 +5693,7 @@ msgstr "Estado Padrão - Deve ter uma abreviatura de 2 letras"
 #: 
 #, fuzzy
 msgid "Default account for receiving a copy of all emails"
-msgstr "Conta padrão para receber a cópia de todos os e-mails"
+msgstr "Conta padrão para receber uma cópia de todos os e-mails"
 
 #: 
 #, fuzzy
@@ -5727,7 +5727,7 @@ msgstr "Primeiro mês do ano fiscal"
 #: 
 #, fuzzy
 msgid "Latitude of the church, used to center the Google map"
-msgstr "Latitude da igreja, usada para centralizar o mapa do Google "
+msgstr "Latitude da igreja, usada para centralizar o mapa do Google"
 
 #: 
 #, fuzzy
@@ -5742,7 +5742,7 @@ msgstr "Defina verdadeiro para desabilitar a entrada de endereço no Editor Pess
 #: 
 #, fuzzy
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Defina verdadeiro para desabilitar a entrada de endereço no Editor Pessoal. "
+msgstr "Defina verdadeiro para desabilitar a entrada de endereço no Editor de Pessoa. Defina falso para habilitar a entrada de endereço no Editor de Pessoa."
 
 #: 
 #, fuzzy
@@ -5752,7 +5752,7 @@ msgstr "Defina verdadeiro para desabilitar o gerenciamento de inscrições de bo
 #: 
 #, fuzzy
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Defina verdadeiro para desabilitar a entrada da Data de Casamento no Editor de Famílias. Defina falso para habilitar a entrada da Data de Casamento no Editor de Famílias. "
+msgstr "Defina verdadeiro para desabilitar a entrada da Data de Casamento no Editor de Famílias. Defina falso para habilitar a entrada da Data de Casamento no Editor de Famílias."
 
 #: 
 #, fuzzy
@@ -5772,12 +5772,12 @@ msgstr "Digite no código HTML que será exibido como um cabeçalho no topo de c
 #: 
 #, fuzzy
 msgid "Number of checks for Deposit Slip Report"
-msgstr "Número de cheques para Relatório de Recibo de Depósito"
+msgstr "Número de cheques para Relatório de Depósito"
 
 #: 
 #, fuzzy
 msgid "Set true to enable use of scanned checks"
-msgstr "Defina verdadeiro para habilitar o uso de rastreio de cheques"
+msgstr "Defina verdadeiro para habilitar o uso de cheques digitalizados"
 
 #: 
 #, fuzzy
@@ -5807,12 +5807,12 @@ msgstr "ChurchCRM foi registrado. A equipe ChurchCRM usa informações de regist
 #: 
 #, fuzzy
 msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Margem Esquerda (1 = 1/100 da polegada)"
+msgstr "Margem Esquerda (1 = 1/100 de polegada)"
 
 #: 
 #, fuzzy
 msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Espessura da Linha (1 = 1/100da polegada"
+msgstr "Espessura da Linha (1 = 1/100 de polegada)"
 
 #: 
 #, fuzzy
@@ -5822,32 +5822,32 @@ msgstr "Cidade da Igreja"
 #: 
 #, fuzzy
 msgid "Church State"
-msgstr "Estado  da Igreja"
+msgstr "Estado da Igreja"
 
 #: 
 #, fuzzy
 msgid "Church Zip"
-msgstr "CEP  da Igreja"
+msgstr "CEP da Igreja"
 
 #: 
 #, fuzzy
 msgid "Church Phone"
-msgstr "Telefone  da Igreja"
+msgstr "Telefone da Igreja"
 
 #: 
 #, fuzzy
 msgid "Home area code of the church"
-msgstr "Código de área  da Igreja"
+msgstr "DDD da Igreja"
 
 #: 
 #, fuzzy
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
-msgstr "Termo para a linha superior do relatório de taxa. As datas serão acrescentados ao final desta linha."
+msgstr "Frase para a linha superior do relatório de impostos. As datas serão adicionadas ao final desta linha."
 
 #: 
 #, fuzzy
 msgid "Verbage for bottom line of tax report."
-msgstr "Termo para a linha inferior do relatório de taxa."
+msgstr "Frase para a linha inferior do relatório de imposts."
 
 #: 
 #, fuzzy
@@ -5857,22 +5857,22 @@ msgstr "Signatário do Relatório de Taxa"
 #: 
 #, fuzzy
 msgid "Verbage for the pledge reminder report"
-msgstr "Termo para o relatório de lembrete de promessas"
+msgstr "Frase para o relatório de lembrete de compromisso"
 
 #: 
 #, fuzzy
 msgid "Pledge Reminder Signer"
-msgstr "Signatário do Lembrete de Promessas"
+msgstr "Signatário do lembrete de compromisso"
 
 #: 
 #, fuzzy
 msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Termo para o relatório de lembrete de promessas - Nenhum registro de promessa"
+msgstr "Frase para o relatório de lembrete de compromissos - Nenhum registro de compromisso"
 
 #: 
 #, fuzzy
 msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Termo para o relatório de lembrete de promessas - Nenhum registro de pagamentos"
+msgstr "Frase para o relatório de lembrete de compromissos - Nenhum registro de pagamentos"
 
 #: 
 #, fuzzy
@@ -5887,12 +5887,12 @@ msgstr "Signatário do relatório de confirmação de informação de banco de d
 #: 
 #, fuzzy
 msgid "Verbage for the pledge summary report"
-msgstr "Termo para um relatório de resumo de promessas"
+msgstr "Frase para o relatório de resumo de compromissos"
 
 #: 
 #, fuzzy
 msgid "Verbage for the directory report"
-msgstr "Termo para um relatório de diretório"
+msgstr "Frase para o relatório de diretório"
 
 #: 
 #, fuzzy
@@ -5902,7 +5902,7 @@ msgstr "Caminho do Arquivo de Cabeçalho de Carta da Igreja"
 #: 
 #, fuzzy
 msgid "lookup user images on Gravatar when no local image is present"
-msgstr "pesquisar imagens de usuário no Gravatar quando nenhuma imagem local está presente "
+msgstr "pesquisar imagens de usuário no Gravatar quando nenhuma imagem local está presente"
 
 #: 
 #, fuzzy
@@ -5937,7 +5937,7 @@ msgstr "Data e hora do último backup"
 #: 
 #, fuzzy
 msgid "QuickBooks Deposit Ticket Settings"
-msgstr "Configurações de ingressos de depósito do QuickBooks"
+msgstr "Configurações de registros de depósito do QuickBooks"
 
 #: 
 #, fuzzy
@@ -5992,7 +5992,7 @@ msgstr "Relatórios de Depósitos"
 #: 
 #, fuzzy
 msgid "Edit Deposit Slip"
-msgstr "Editar Depósito Errado"
+msgstr "Editar Depósito"
 
 #: 
 #, fuzzy
@@ -6017,7 +6017,7 @@ msgstr "Ver Compradores"
 #: 
 #, fuzzy
 msgid "Add Donors to Buyer List"
-msgstr "Adicionar Doadores"
+msgstr "Adicionar compradores para esta lista de doação"
 
 #: 
 #, fuzzy
@@ -6057,8 +6057,7 @@ msgstr "CEP"
 #: 
 #, fuzzy
 msgid "2012/2013"
-msgstr "2012/2013 \n"
-""
+msgstr "2012/2013"
 
 #: 
 #, fuzzy
@@ -6138,7 +6137,7 @@ msgstr "Alunos Registrados"
 #: 
 #, fuzzy
 msgid "Volunteer opportunities"
-msgstr "Oportunidades de Voluntariado"
+msgstr "Oportunidades de voluntariado"
 
 #: 
 #, fuzzy
@@ -6163,7 +6162,7 @@ msgstr "Campo personalizado"
 #: 
 #, fuzzy
 msgid "Field value"
-msgstr "Valor do Campo "
+msgstr "Valor do Campo"
 
 #: 
 #, fuzzy
@@ -6183,12 +6182,12 @@ msgstr "Gênero desejado para buscar no banco de dados:"
 #: 
 #, fuzzy
 msgid "Select the desired family role."
-msgstr "Selecione o papel familiar desejado"
+msgstr "Selecione o papel familiar desejado."
 
 #: 
 #, fuzzy
 msgid "The gender for which you would like records returned."
-msgstr "Gênero do qual você deseja obter registros. "
+msgstr "Gênero do qual você deseja obter registros."
 
 #: 
 #, fuzzy
@@ -6198,17 +6197,17 @@ msgstr "Propriedade da qual você deseja obter registros de pessoas."
 #: 
 #, fuzzy
 msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Por favor, escolha a data de início para calcular as contribuições totais para cada membro (isto é AAAA-MM-DD). NOTA: Você só pode escolher as datas que contenham doações."
+msgstr "Por favor, escolha a data de início para calcular as contribuições totais para cada membro (no formato AAAA-MM-DD). NOTA: Você só pode escolher as datas que contenham doações."
 
 #: 
 #, fuzzy
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Por favor, indique a última data para calcular as contribuições totais para cada membro (isto é AAAA-MM-DD)."
+msgstr "Por favor, indique a última data para calcular as contribuições totais para cada membro (no formato AAAA-MM-DD)."
 
 #: 
 #, fuzzy
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Entre qualquer parte de: Nome, Cidade, Estado, CEP, Telefone de casa, E-mail ou E-mai de Trabalho."
+msgstr "Digite qualquer parte de: Nome, Cidade, Estado, CEP, Telefone de casa, E-mail ou E-mail de Trabalho."
 
 #: 
 #, fuzzy
@@ -6218,12 +6217,12 @@ msgstr "Selecione o campo para a busca."
 #: 
 #, fuzzy
 msgid "The birthday month for which you would like records returned."
-msgstr "O mês de aniversário para o qual você deseja obter registros. "
+msgstr "O mês de aniversário para o qual você deseja obter registros."
 
 #: 
 #, fuzzy
 msgid "The sunday school class for which you would like records returned."
-msgstr "A classe da CD/UV da qual você gostaria de obter os registros."
+msgstr "A classe da escola dominical da qual você gostaria de obter os registros."
 
 #: 
 #, fuzzy
@@ -6233,7 +6232,7 @@ msgstr "Grupo de alunos registrados"
 #: 
 #, fuzzy
 msgid "The membership anniversary month for which you would like records returned."
-msgstr "O mês de aniversários dos membros do qual você gostaria de obter os registros."
+msgstr "O mês de aniversário dos membros do qual você gostaria de obter os registros."
 
 #: 
 #, fuzzy
@@ -6258,7 +6257,7 @@ msgstr "Segundo  Ano Fiscal para comparação"
 #: 
 #, fuzzy
 msgid "Pledged this year"
-msgstr "Promessas deste ano"
+msgstr "Compromissos deste ano"
 
 #: 
 #, fuzzy
@@ -6293,7 +6292,7 @@ msgstr "Escolher campo personalizado das pessoas"
 #: 
 #, fuzzy
 msgid "Match custom field to this value"
-msgstr "Casar campo personalizado com este valor"
+msgstr "Combinar campo personalizado com este valor"
 
 #: 
 #, fuzzy
@@ -6363,17 +6362,17 @@ msgstr "Famílias para visitação"
 #: 
 #, fuzzy
 msgid "Pledge comparison"
-msgstr "Comparação de Promessas"
+msgstr "Comparação de compromissos"
 
 #: 
 #, fuzzy
 msgid "Missing pledges"
-msgstr "Promessas Perdidas"
+msgstr "Compromissos não cumpridos"
 
 #: 
 #, fuzzy
 msgid "Family Pledge by Fiscal Year"
-msgstr "Promessas Familiares por Ano Fiscal"
+msgstr "Compromissos Familiares por Ano Fiscal"
 
 #: 
 #, fuzzy
@@ -6388,27 +6387,27 @@ msgstr "Retornar cada família e o total de pessoas atribuídas a elas."
 #: 
 #, fuzzy
 msgid "Returns any person records with ages between two given ages."
-msgstr "Retornar qualquer registro de pessoas com idades entre as duas idades dadas."
+msgstr "Retornar qualquer registro de pessoas com idades entre duas idades fornecidas."
 
 #: 
 #, fuzzy
 msgid "Total of records matching a given gender."
-msgstr "Total de registros combinando com um dado gênero"
+msgstr "Total de registros que cobinam com um determinado gênero"
 
 #: 
 #, fuzzy
 msgid "Selects person records with the family role and gender specified."
-msgstr "Selecionar registros pessoais com função familiar ou gênero especificados."
+msgstr "Selecionar registros pessoais com função familiar e gênero especificados."
 
 #: 
 #, fuzzy
 msgid "Returns person records which are assigned the given property."
-msgstr "Selecionar registros pessoais com função familiar ou gênero especificados."
+msgstr "Selecionar registros pessoais que tenham esta propriedade atribuída."
 
 #: 
 #, fuzzy
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Buscar por qualquer parte do Nome, Cidade, Estado, CEP, Telefone Residencial, e-mail ou e-mail de serviço"
+msgstr "Buscar por qualquer parte do Nome, Cidade, Estado, CEP, Telefone Residencial, e-mail ou e-mail de trabalho."
 
 #: 
 #, fuzzy
@@ -6438,7 +6437,7 @@ msgstr "Pessoas que são membros"
 #: 
 #, fuzzy
 msgid "Find volunteers for a particular opportunity"
-msgstr "Procurar voluntários para um oportunidade em particular"
+msgstr "Encontrar voluntários para uma oportunidade em particular"
 
 #: 
 #, fuzzy
@@ -6453,17 +6452,17 @@ msgstr "Pessoas em Famílias que aceitam visitação."
 #: 
 #, fuzzy
 msgid "Compare pledges between two fiscal years"
-msgstr "Comparar promessas entre dois anos fiscais"
+msgstr "Comparar compromissos entre dois anos fiscais"
 
 #: 
 #, fuzzy
 msgid "Find people who pledged one year but not another"
-msgstr "Encontrar pessoas que prometeram em um ano mas não no outro"
+msgstr "Encontrar pessoas que se comprometeram em um ano mas não no outro"
 
 #: 
 #, fuzzy
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Resumo das promessas por nome de família por fundo por ano fiscal"
+msgstr "Resumo dos compromissos por nome de família por fundo por ano fiscal"
 
 #: 
 #, fuzzy
@@ -6483,7 +6482,7 @@ msgstr "Última Edição"
 #: 
 #, fuzzy
 msgid "User permission to send email via mailto: links"
-msgstr "Permissão de usuário para mandar e-mails via mailto: links "
+msgstr "Permissão de usuário para mandar e-mails via mailto: links"
 
 #: 
 #, fuzzy
@@ -6503,7 +6502,7 @@ msgstr "Permissão para o usuário exportar arquivos CSV"
 #: 
 #, fuzzy
 msgid "Allow user to add new event"
-msgstr "Permite ao usuário adicionar um novo evento"
+msgstr "Permitir ao usuário adicionar um novo evento"
 
 #: 
 #, fuzzy
@@ -6518,7 +6517,7 @@ msgstr "Feito"
 #: 
 #, fuzzy
 msgid "Assigned"
-msgstr "Assinado"
+msgstr "Atribuído"
 
 #: 
 #, fuzzy
@@ -6533,7 +6532,7 @@ msgstr "Total"
 #: 
 #, fuzzy
 msgid "Pledge status"
-msgstr "Estado das promessas"
+msgstr "Estado dos compromissos"
 
 #: 
 #, fuzzy
@@ -6693,17 +6692,17 @@ msgstr "Editor de Papeis de Membro de Grupo"
 #: 
 #, fuzzy
 msgid "Person Custom List Option"
-msgstr "Lista de Opções de Personalizações de Pessoa"
+msgstr "Lista de Opções de Personalização de Pessoa"
 
 #: 
 #, fuzzy
 msgid "Person Custom List Options"
-msgstr " Lista de Opções de Personalização de Pessoa"
+msgstr "Lista de Opções de Personalização de Pessoa"
 
 #: 
 #, fuzzy
 msgid "Person Custom List Options Editor"
-msgstr "Editor de Lista de Opções de Personalização de Pessoa"
+msgstr "Editor de Lista de Opções de Personalizações de Pessoa"
 
 #: 
 #, fuzzy
@@ -6778,7 +6777,7 @@ msgstr "milhas"
 #: 
 #, fuzzy
 msgid "kilometers"
-msgstr "kilômetros"
+msgstr "quilômetros"
 
 #: 
 #, fuzzy
@@ -7153,7 +7152,7 @@ msgstr "Egito"
 #: 
 #, fuzzy
 msgid "El Salvador"
-msgstr "El Salvador "
+msgstr "El Salvador"
 
 #: 
 #, fuzzy
@@ -7718,7 +7717,7 @@ msgstr "Reunião"
 #: 
 #, fuzzy
 msgid "Romania (România)"
-msgstr "Roménia"
+msgstr "Romênia"
 
 #: 
 #, fuzzy
@@ -7993,7 +7992,7 @@ msgstr "Uganda"
 #: 
 #, fuzzy
 msgid "Ukraine (Україна)"
-msgstr "Ulcrânia"
+msgstr "Ucrânia"
 
 #: 
 #, fuzzy
@@ -8073,7 +8072,7 @@ msgstr "Por favor, verifique a informação da sua família"
 #: 
 #, fuzzy
 msgid "Church Address is not Set."
-msgstr "O endereço da igreja não está configurado"
+msgstr "O endereço da igreja não está configurado."
 
 #: 
 #, fuzzy
@@ -8088,7 +8087,7 @@ msgstr "Informação do servidor SMTP em branco"
 #: 
 #, fuzzy
 msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "O seu sistema podria ser mais seguro com a instalação de um certificado TLS/SSL."
+msgstr "O seu sistema poderia ser mais seguro com a instalação de um certificado TLS/SSL."
 
 #: 
 msgid "Missing Classification Data"
@@ -8101,12 +8100,12 @@ msgstr "Classificação de dados perdida para algumas pessoas"
 
 #: 
 msgid "Missing Gender Data"
-msgstr "Dado de gênero perdido"
+msgstr "Dados de gênero perdido"
 
 #: 
 #, fuzzy
 msgid "Missing Gender Data for Some People"
-msgstr "Dado de gênero perdido para algumas pessoas"
+msgstr "Dados de gênero perdido para algumas pessoas"
 
 #: 
 msgid "Missing Role Data"
@@ -8175,7 +8174,7 @@ msgstr "Visite nosso site"
 #: 
 #, fuzzy
 msgid "Request Family Info Verification"
-msgstr "Solicitar Confirmação de Informações da Família"
+msgstr "Solicitar verificação de Informações da Família"
 
 #: 
 #, fuzzy
@@ -8190,7 +8189,7 @@ msgstr "Verificação On-line"
 #: 
 #, fuzzy
 msgid "Verified In Person"
-msgstr "Verificada na Pessoa"
+msgstr "Verificação Pessoalmente"
 
 #: 
 #, fuzzy
@@ -8329,12 +8328,12 @@ msgstr "Falhou"
 #: 
 #, fuzzy
 msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "A verificação de integridade anterior passou. Todos os hashes de arquivos de sistema correspondem aos valores esperados."
+msgstr "A verificação de integridade passou. Todos os hashes de arquivos de sistema correspondem aos valores esperados."
 
 #: 
 #, fuzzy
 msgid "Church Checking Account Number"
-msgstr "Número da Conta de Verificação da Igreja"
+msgstr "Número da Conta Corrente da Igreja"
 
 #: 
 #, fuzzy
@@ -8349,7 +8348,7 @@ msgstr "O tamanho máximo do arquivo para o PHP é muito pequeno"
 #: 
 #, fuzzy
 msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Aumente os limites do upload do PHP para permitir o upload de foto de celular e restaurar o backup."
+msgstr "Aumente os limites de upload do PHP para permitir o upload de foto de celular e restaurar o backup."
 
 #: 
 #, fuzzy
@@ -8364,12 +8363,12 @@ msgstr "Família ativa"
 #: 
 #, fuzzy
 msgid "families"
-msgstr "Famílias"
+msgstr "famílias"
 
 #: 
 #, fuzzy
 msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Tipo de ingresso de depósito. QBDT - Quickbooks"
+msgstr "Tipo de registro de depósito. QBDT - Quickbooks"
 
 #: 
 #, fuzzy
@@ -8399,22 +8398,22 @@ msgstr "pagamento(s)?"
 #: 
 #, fuzzy
 msgid "Please ensure this what you want to do.</p>"
-msgstr "Por favor, assegure-se que é isso que você pretende fazer. </ P>"
+msgstr "Por favor, assegure-se que é isso que você pretende fazer.</p>"
 
 #: 
 #, fuzzy
 msgid " this Family"
-msgstr "esta família"
+msgstr " esta Família"
 
 #: 
 #, fuzzy
 msgid "Confirm Deactivation"
-msgstr "Confirme a Desativação"
+msgstr "Confirmar Desativação"
 
 #: 
 #, fuzzy
 msgid "Confirm Activation"
-msgstr "Confirme a ativação"
+msgstr "Confirmar Ativação"
 
 #: 
 #, fuzzy
@@ -8464,7 +8463,7 @@ msgstr "Me direcione"
 #: 
 #, fuzzy
 msgid "Your cart is empty"
-msgstr "O seu carrinho está vazio"
+msgstr "Seu carrinho está vazio"
 
 #: 
 #, fuzzy
@@ -8489,12 +8488,12 @@ msgstr "A propriedade não pôde ser atribuída."
 #: 
 #, fuzzy
 msgid "The property is successfully unassigned."
-msgstr "A propriedade foi desatribuída com sucesso."
+msgstr "A propriedade foi removida com sucesso."
 
 #: 
 #, fuzzy
 msgid "The property could not be unassigned."
-msgstr "A propriedade não pôde ser desatribuída."
+msgstr "A propriedade não pôde ser removida."
 
 #: 
 #, fuzzy
@@ -8529,7 +8528,7 @@ msgstr "Pessoas que fizeram Check-out"
 #: 
 #, fuzzy
 msgid "Delete Checkin in Entry"
-msgstr "Deletar entrada de check-in"
+msgstr "Excluir check-in na entrada"
 
 #: 
 #, fuzzy
@@ -8554,7 +8553,7 @@ msgstr "Selecione verdadeiro para permitir o sobrenome vazio no editor de pessoa
 #: 
 #, fuzzy
 msgid "Display bill counts on deposit slip"
-msgstr "Exibir conta conta no comprovante de depósito"
+msgstr "Exibir conta (despesa) no comprovante de depósito"
 
 #: 
 #, fuzzy
@@ -8664,7 +8663,7 @@ msgstr "Legenda"
 #: 
 #, fuzzy
 msgid "assigned"
-msgstr "Assinatura"
+msgstr "atribuído"
 
 #: 
 #, fuzzy
@@ -8749,7 +8748,7 @@ msgstr "Zoom do Google Maps"
 #: 
 #, fuzzy
 msgid "Select GeoCoder Provider"
-msgstr "Selecione o ser provedor de GeoCode"
+msgstr "Selecione o seu provedor de GeoCode"
 
 #: 
 #, fuzzy
@@ -8794,22 +8793,22 @@ msgstr "usuário do sistema excluído"
 #: 
 #, fuzzy
 msgid "system user password reset"
-msgstr "Reinicializar a senha de usuário do sistema"
+msgstr "redefinir a senha de usuário do sistema"
 
 #: 
 #, fuzzy
 msgid "system user changed password"
-msgstr "senha do usuário do sistema mudada"
+msgstr "senha do usuário do sistema alterada"
 
 #: 
 #, fuzzy
 msgid "system user password changed by admin"
-msgstr "Senha do usuário do sistema alterada pelo administrador"
+msgstr "senha do usuário do sistema alterada pelo administrador"
 
 #: 
 #, fuzzy
 msgid "system user login reset"
-msgstr "Login do usuário do sistema reinicializado"
+msgstr "login do usuário do sistema redefinido"
 
 #: 
 #, fuzzy
@@ -8869,37 +8868,37 @@ msgstr "EMERGÊNCIA"
 #: 
 #, fuzzy
 msgid "Title FirstName MiddleName LastName"
-msgstr "Título Primeiro Nome Nome do Meio Último Nome"
+msgstr "Título PrimeiroNome NomeDoMeio Sobrenome"
 
 #: 
 #, fuzzy
 msgid "Title FirstName MiddleInitial. LastName"
-msgstr "Título Primeiro Nome Nome do Meio. Último Nome"
+msgstr "Título PrimeiroNome NomeDoMeio. Sobrenome"
 
 #: 
 #, fuzzy
 msgid "LastName, Title FirstName MiddleName"
-msgstr " Último Nome, Título Primeiro Nome Nome do Meio"
+msgstr "Sobrenome, Título PrimeiroNome NomeDoMeio"
 
 #: 
 #, fuzzy
 msgid "LastName, Title FirstName MiddleInitial"
-msgstr " Último Nome, Título Primeiro Nome Inicial do Nome do Meio"
+msgstr "Sobrenome, Título PrimeiroNome InicialDoNomeDoMeio"
 
 #: 
 #, fuzzy
 msgid "FirstName MiddleName LastName"
-msgstr "Primeiro Nome Nome do Meio Último Nome"
+msgstr "PrimeiroNome NomeDoMeio Sobrenome"
 
 #: 
 #, fuzzy
 msgid "Title FirstName LastName"
-msgstr "Título Primeiro Nome Último Nome"
+msgstr "Título PrimeiroNome Sobrenome"
 
 #: 
 #, fuzzy
 msgid "LastName, Title FirstName"
-msgstr "Último Nome, Título Primeiro Nome"
+msgstr "Sobrenome, Título PrimeiroNome"
 
 #: 
 #, fuzzy
@@ -8909,12 +8908,12 @@ msgstr "Severidade do Log do evento a ser escrito, usado pelo ORM e Logs de App.
 #: 
 #, fuzzy
 msgid "Time zone"
-msgstr "Zona de Tempo"
+msgstr "Fuso horário"
 
 #: 
 #, fuzzy
 msgid "Nexmo SMS API Key"
-msgstr "Chave API do NEXMO SMS"
+msgstr "Chave API do Nexmo SMS"
 
 #: 
 #, fuzzy
@@ -8974,7 +8973,7 @@ msgstr "Responsável por"
 #: 
 #, fuzzy
 msgid "A notification was triggered by the classroom teacher at"
-msgstr "Uma notificação foi desencadeada pelo professor da sala de aula em"
+msgstr "Uma notificação foi disparada pelo professor da sala de aula em"
 
 #: 
 #, fuzzy
@@ -8984,32 +8983,32 @@ msgstr "Por favor, vá para esta localização"
 #: 
 #, fuzzy
 msgid "You ChurchCRM updated password has been changed"
-msgstr "A sua senha do ChurchCRM foi mudada."
+msgstr "A sua senha do ChurchCRM foi alterada"
 
 #: 
 #, fuzzy
 msgid "Password Reset Link"
-msgstr "Link de resete da senha"
+msgstr "Link de redefinição de senha"
 
 #: 
 #, fuzzy
 msgid "Reset Password"
-msgstr "resetar a senha"
+msgstr "Redefinir a senha"
 
 #: 
 #, fuzzy
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "Como parte da recuperação, becapes externos "
+msgstr "Como parte da recuperação, backups externos foram desativados. Se você deseja continuar com os backups automáticos, você deve reabilitá-los manualmente, na configuração bEnableExternalBackupTarget."
 
 #: 
 #, fuzzy
 msgid "Unable to reset password"
-msgstr "Impossível resetar a sua senha"
+msgstr "Não foi possível redefinir a sua senha"
 
 #: 
 #, fuzzy
 msgid "Reset your password"
-msgstr "Resetar a sua senha"
+msgstr "Redefinir a sua senha"
 
 #: 
 #, fuzzy
@@ -9019,12 +9018,12 @@ msgstr "Desculpe, não podemos processar seu pedido neste momento."
 #: 
 #, fuzzy
 msgid "Login Name is Required"
-msgstr "Nome de usuário solicitado"
+msgstr "Nome de usuário é obrigatório"
 
 #: 
 #, fuzzy
 msgid "A new password was sent to you. Please check your email"
-msgstr "Uma nova senha foi enviada para você. Por favor cheque seu e-mail."
+msgstr "Uma nova senha foi enviada para você. Por favor, verifique seu e-mail"
 
 #: 
 #, fuzzy
@@ -9039,12 +9038,12 @@ msgstr "Reportar um problema"
 #: 
 #, fuzzy
 msgid "Enable New Kiosk Registration"
-msgstr "Abilitar o requistro de um novo quiosque"
+msgstr "Habilitar o registro de um novo quiosque"
 
 #: 
 #, fuzzy
 msgid "Active Kiosks"
-msgstr "Quiosques ativo"
+msgstr "Quiosques ativos"
 
 #: 
 #, fuzzy
@@ -9054,12 +9053,12 @@ msgstr "Eu esqueci a minha senha"
 #: 
 #, fuzzy
 msgid "Attendees Checked In"
-msgstr "Participantes Checados"
+msgstr "Participantes registrados"
 
 #: 
 #, fuzzy
 msgid "Text Cart"
-msgstr "Texto do Carrinho"
+msgstr "SMS para Carrinho"
 
 #: 
 #, fuzzy
@@ -9099,32 +9098,32 @@ msgstr "Detalhes"
 #: 
 #, fuzzy
 msgid "Verification email sent"
-msgstr "Verificação de E-mail enviado"
+msgstr "Verificação de e-mail enviada"
 
 #: 
 #, fuzzy
 msgid "Confirm Enable Group Specific Properties"
-msgstr "Confirmar habilitação de propriedade específicas de grupo"
+msgstr "Confirmar habilitação de propriedades específicas de grupo"
 
 #: 
 #, fuzzy
 msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
-msgstr "Isso criará uma tabela de propriedades específicas do grupo para este grupo. Em seguida, você deve adicionar as propriedades necessárias com o Editor de formulários de propriedades específicas do grupo."
+msgstr "Isso criará uma tabela de propriedades específicas do grupo para este grupo. Em seguida, você deve adicionar as propriedades necessárias com o Editor de formulários de propriedades específicas de grupo."
 
 #: 
 #, fuzzy
 msgid "Confirm Disable Group Specific Properties"
-msgstr "Confirmar desabilitação de propriedade específicas de grupo"
+msgstr "Confirmar desativação de propriedades específicas de grupo"
 
 #: 
 #, fuzzy
 msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
-msgstr "Tem certeza de que deseja remover as propriedades da pessoa específica do grupo? Todos os dados das propriedades dos membros do grupo serão perdidos!"
+msgstr "Tem a certeza de que pretende remover as propriedades pessoais específicas do grupo? Todos os dados das propriedades dos membros do grupo serão perdidos!"
 
 #: 
 #, fuzzy
 msgid "Role Name"
-msgstr "Regra do nome"
+msgstr "Nome do Papel"
 
 #: 
 #, fuzzy
@@ -9159,27 +9158,27 @@ msgstr "Adicionar todos"
 #: 
 #, fuzzy
 msgid "Are you sure you want to remove the selected group members?"
-msgstr "Você está certo de que deseja remover os membros do grupo selecionados?"
+msgstr "Você tem certeza de que deseja remover os membros do grupo selecionados?"
 
 #: 
 #, fuzzy
 msgid "Do you want to delete this person?  This cannot be undone."
-msgstr "Deseja  excluir esta pessoa? Isso não pode ser desfeito."
+msgstr "Deseja excluir esta pessoa? Isso não pode ser desfeito."
 
 #: 
 #, fuzzy
 msgid "Are you sure you want to unassign this property?"
-msgstr "Tem certeza de que deseja desatribuir essa propriedade?"
+msgstr "Tem certeza de que deseja remover essa propriedade?"
 
 #: 
 #, fuzzy
 msgid "Select a family"
-msgstr "Selecione a família"
+msgstr "Selecione uma família"
 
 #: 
 #, fuzzy
 msgid "Release Notes"
-msgstr "Notas da  Versão"
+msgstr "Notas da Versão"
 
 #: 
 #, fuzzy
@@ -9207,7 +9206,7 @@ msgstr "Página do Twitter da sua igreja"
 #: 
 #, fuzzy
 msgid "lookup user images on Google when no local image is present"
-msgstr "Procurar imagens de usuários no Google quando não existirem imagens locais presentes"
+msgstr "procurar imagens no Google quando não existirem imagens locais presentes"
 
 #: 
 #, fuzzy
@@ -9237,7 +9236,7 @@ msgstr "Indonésio - Indonésia"
 #: 
 #, fuzzy
 msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "Colocar no carriho requer um array de Pessoas, ID de Famílias ou ID de Grupos"
+msgstr "Colocar no carrinho requer um array de Pessoas, ID de Famílias ou ID de Grupos"
 
 #: 
 #, fuzzy
@@ -9247,22 +9246,22 @@ msgstr "registro(s) adicionado(s) com sucesso ao grupo selecionado"
 #: 
 #, fuzzy
 msgid "To export to another For european CharSet use ;"
-msgstr "Para exportar para outro formato europeu CharSet use ;"
+msgstr "Para exportar para outro formato conjunto de caracteres europeu use ;"
 
 #: 
 #, fuzzy
 msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "O padrão é UTF-8, para conjunto de caracteres europeu use o Windows-1252, por exemplo, para o idioma francês."
+msgstr "O padrão é UTF-8. Para conjunto de caracteres europeu use o Windows-1252, por exemplo, para o idioma francês."
 
 #: 
 #, fuzzy
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
-msgstr "Para definição do formato da data no Date-Picker: yyyy-mm-dd, em francês use dd/mm/yyyy por exemplo."
+msgstr "Para definição do formato da data no Date-Picker, o padrão é: yyyy-mm-dd. Em francês (por exemplo): dd/mm/yyyy."
 
 #: 
 #, fuzzy
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
-msgstr "Para definição do formato da data no Date-Picker: Y-m-d, em francês use d/m/Y por exemplo."
+msgstr "Para definição do formato da data no Date-Picker, por padrão: Y-m-d. Em francês (por exemplo): d/m/Y."
 
 #: 
 #, fuzzy
@@ -9272,7 +9271,7 @@ msgstr "Lista dos ID das pessoas, separadas por vírgulas, que devem ser notific
 #: 
 #, fuzzy
 msgid "Allow unauthenticated reads of events from the external calendar API"
-msgstr "Permitir leitura de eventos de API de calendários externos sem autenticação "
+msgstr "Permitir leitura de eventos da API de calendários externos sem autenticação"
 
 #: 
 #, fuzzy
@@ -9292,7 +9291,7 @@ msgstr "Boas Vindas da Igreja"
 #: 
 #, fuzzy
 msgid "External Calendar API is disabled"
-msgstr "API de Calendário Externo está desabilitada."
+msgstr "API de Calendário Externo está desabilitada"
 
 #: 
 #, fuzzy
@@ -9307,7 +9306,7 @@ msgstr "Grupo de Escola Bíblica Dominical não pode ser modificado, somente nes
 #: 
 #, fuzzy
 msgid "You can create/delete sunday school group. "
-msgstr "Você pode criar/deletar grupo da escola bíblica dominical. "
+msgstr "Você pode criar/excluir grupo da escola bíblica dominical. "
 
 #: 
 #, fuzzy
@@ -9317,7 +9316,7 @@ msgstr "Adicione novos papéis, mas não modificar ou renomear os papéis de Alu
 #: 
 #, fuzzy
 msgid "E"
-msgstr "E"
+msgstr "L"
 
 #: 
 #, fuzzy
@@ -9347,12 +9346,12 @@ msgstr "NNE"
 #: 
 #, fuzzy
 msgid "NNW"
-msgstr "NNW"
+msgstr "NNO"
 
 #: 
 #, fuzzy
 msgid "NW"
-msgstr "NW"
+msgstr "NO"
 
 #: 
 #, fuzzy
@@ -9367,27 +9366,27 @@ msgstr "SE"
 #: 
 #, fuzzy
 msgid "SSW"
-msgstr "SSW"
+msgstr "SSO"
 
 #: 
 #, fuzzy
 msgid "SW"
-msgstr "SW"
+msgstr "SO"
 
 #: 
 #, fuzzy
 msgid "W"
-msgstr "W"
+msgstr "O"
 
 #: 
 #, fuzzy
 msgid "WNW"
-msgstr "WNW"
+msgstr "ONO"
 
 #: 
 #, fuzzy
 msgid "WSW"
-msgstr "WSW"
+msgstr "OSO"
 
 #: 
 #, fuzzy
@@ -9402,7 +9401,7 @@ msgstr "Pocurar famílias"
 #: 
 #, fuzzy
 msgid "Show Family Head of House Names"
-msgstr "Mostrar o cabeça das famílias das casas"
+msgstr "Mostrar o chefe da família"
 
 #: 
 #, fuzzy
@@ -9437,7 +9436,7 @@ msgstr "Número máximo de Famílias"
 #: 
 #, fuzzy
 msgid "Maximum number of Family H.O.H Names"
-msgstr "Número máximo de Famílias Nomes HOH"
+msgstr "Número máximo de nomes de chefes de família"
 
 #: 
 #, fuzzy
@@ -9487,7 +9486,7 @@ msgstr "Por favor, selecione o papel para os membros"
 #: 
 #, fuzzy
 msgid "GroupID required for role selection prompt"
-msgstr "ID do grupo desejado para a regra selecionada"
+msgstr "ID do grupo é obrigatório para a regra selecionada"
 
 #: 
 #, fuzzy
@@ -9497,7 +9496,7 @@ msgstr "Selecione o Grupo e o papel"
 #: 
 #, fuzzy
 msgid "Are you sure you want to remove this person's membership from"
-msgstr "Você tem certeza de que você quer remover esta pessoa "
+msgstr "Você tem certeza de que você quer remover esta pessoa de"
 
 #: 
 #, fuzzy
@@ -9527,17 +9526,17 @@ msgstr "SSE"
 #: 
 #, fuzzy
 msgid "Height to use for images"
-msgstr "Altura para usar para imagens"
+msgstr "Altura para usar em imagens"
 
 #: 
 #, fuzzy
 msgid "Width to use for images"
-msgstr "Largura para usar para imagens"
+msgstr "Largura para usar em imagens"
 
 #: 
 #, fuzzy
 msgid "Width to use for thumbnails"
-msgstr "Largura para usar para miniaturas"
+msgstr "Largura para usar em miniaturas"
 
 #: 
 #, fuzzy
@@ -9547,7 +9546,7 @@ msgstr "Tamanho do ponto a ser usado para miniaturas iniciais"
 #: 
 #, fuzzy
 msgid "Client cache seconds for images"
-msgstr "Segundos de cache do cliente para imagens"
+msgstr "Cache no cliente (em segundos) para imagens"
 
 #: 
 #, fuzzy
@@ -9582,7 +9581,7 @@ msgstr "Papel no grupo"
 #: 
 #, fuzzy
 msgid "Members from group"
-msgstr "membros do grupo"
+msgstr "Membros do grupo"
 
 #: 
 #, fuzzy
@@ -9597,7 +9596,7 @@ msgstr "Membros para o carrinho"
 #: 
 #, fuzzy
 msgid "OR Create a Group and add the CART in ONE ACTION"
-msgstr "Ou crie um grupo de adicione-o ao carrinho com uma única ação"
+msgstr "Ou crie um grupo e adicione-o ao carrinho com uma única ação"
 
 #: 
 #, fuzzy
@@ -9652,8 +9651,7 @@ msgstr "Texto do Sermão"
 #: 
 #, fuzzy
 msgid "Change Settings"
-msgstr "Configurações\n"
-""
+msgstr "Configurações"
 
 #: 
 #, fuzzy
@@ -9668,12 +9666,12 @@ msgstr "PessoaID para o carrinho tem que ser numérico"
 #: 
 #, fuzzy
 msgid "GroupID for Cart must be numeric"
-msgstr "GurpoD para o carrinho tem que ser numérico"
+msgstr "GurpoID para o carrinho tem que ser numérico"
 
 #: 
 #, fuzzy
 msgid "FamilyID for Cart must be numeric"
-msgstr "FamíliaD para o carrinho tem que ser numérico"
+msgstr "FamíliaID para o carrinho tem que ser numérico"
 
 #: 
 #, fuzzy
@@ -9689,13 +9687,13 @@ msgstr "Numero máximo de pessoas"
 #: 
 #, fuzzy
 msgid "Field where Father Of Confession is listed, must be a people of group type"
-msgstr "Campo onde o Pai Espiritual é listado deve ser do tipo \"Pessoa do Grupo\"."
+msgstr "Campo onde o Líder de Aconselhamento é listado, deve ser uma pessoa do tipo de grupo"
 
 #. What is a Confession?
 #: 
 #, fuzzy
 msgid "Field where last Confession is stored, must be a date type"
-msgstr "Campo onde a última Confissão foi armazenada deve ser do tipo data."
+msgstr "Campo onde o último Aconselhamento é armazenada, deve ser do tipo data"
 
 #: 
 #, fuzzy
@@ -9720,7 +9718,7 @@ msgstr "Relatórios de Pessoas"
 #: 
 #, fuzzy
 msgid "People Dashboard"
-msgstr "PESSOAS"
+msgstr "Painel de Pessoas"
 
 #: 
 #, fuzzy
@@ -9755,7 +9753,7 @@ msgstr "Atualização Necessária"
 #: 
 #, fuzzy
 msgid "Current DB Version: "
-msgstr "Versão Atual do Banco de Dados:  "
+msgstr "Versão Atual do Banco de Dados: "
 
 #: 
 #, fuzzy
@@ -9770,13 +9768,12 @@ msgstr "Atualizar o banco de dados"
 #: 
 #, fuzzy
 msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Mostrar aniversários no início do CRM"
+msgstr "Mostrar aniversários ao abrir o CRM"
 
 #: 
 #, fuzzy
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "\n"
-"Número de segundos após a carga da página até o banner desaparecer, padrão 10 segundos"
+msgstr "Número de segundos após a página carregar até o banner desaparecer, padrão 10 segundos"
 
 #: 
 #, fuzzy
@@ -9786,8 +9783,7 @@ msgstr "Ajuda e Manual"
 #: 
 #, fuzzy
 msgid "Contributing"
-msgstr "\n"
-"Contribuindo"
+msgstr "Contribuindo"
 
 #: 
 #, fuzzy
@@ -9797,12 +9793,12 @@ msgstr "Ativar automaticamente a criptografia SMTP, se oferecido pelo servidor d
 #: 
 #, fuzzy
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
-msgstr "Definir o sistema de criptografia para usar - SSL (reprovado) ou TSL"
+msgstr "Definir o sistema de criptografia para usar - SSL (reprovado) ou TLS"
 
 #: 
 #, fuzzy
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
-msgstr "Intervalo de atualização assíncrona dinâmica do Serviço do Painel. Padrão 60 segundos"
+msgstr "Intervalo do Serviço de atualização dinâmica do Painel. Padrão 60 segundos"
 
 #: 
 #, fuzzy
@@ -9877,7 +9873,7 @@ msgstr "Excluído do Grupo"
 #: 
 #, fuzzy
 msgid "Added to group"
-msgstr "Adicionar ao grupo"
+msgstr "Adicionado ao grupo"
 
 #: 
 #, fuzzy
@@ -9887,7 +9883,7 @@ msgstr "Não conseguimos encontrar quem você estava procurando."
 #: 
 #, fuzzy
 msgid "return to People Dashboard"
-msgstr "retornar a PESSOAS"
+msgstr "retornar para o Painel de Pessoas"
 
 #: 
 #, fuzzy
@@ -9897,7 +9893,7 @@ msgstr "O usuário deve ter permissão de MenuOptions"
 #: 
 #, fuzzy
 msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Host SMTP não está configurado, por favor visite a página de configurações"
+msgstr "Host SMTP não está configurado, por favor acesse a página de configurações"
 
 #: 
 #, fuzzy
@@ -9932,7 +9928,7 @@ msgstr "Aniversários"
 #: 
 #, fuzzy
 msgid "New Family Notification Email Error"
-msgstr "Erro de notificação via E-mail para Nova Família "
+msgstr "Erro de notificação via E-mail para Nova Família"
 
 #: 
 #, fuzzy
@@ -9972,7 +9968,7 @@ msgstr "As pessoas e famílias foram removidas do banco de dados."
 #: 
 #, fuzzy
 msgid "Self Registrations"
-msgstr "Próprios Registros"
+msgstr "Auto Registros"
 
 #: 
 #, fuzzy
@@ -10007,7 +10003,7 @@ msgstr "de"
 #: 
 #, fuzzy
 msgid "Are you sure you want to change the end time for "
-msgstr "Tem certeza de que deseja alterar a hora final?"
+msgstr "Tem certeza de que deseja alterar a hora final para "
 
 #: 
 #, fuzzy
@@ -10022,7 +10018,7 @@ msgstr "Novo Token de Acesso"
 #: 
 #, fuzzy
 msgid "Delete Access Token"
-msgstr "Deletar Token de Acesso"
+msgstr "Excluir Token de Acesso"
 
 #: 
 #, fuzzy
@@ -10107,7 +10103,7 @@ msgstr "Ativar menu Calendário."
 #: 
 #, fuzzy
 msgid "Enable Fundraiser menu."
-msgstr "Ativar menu Campanhas."
+msgstr "Ativar menu de Campanhas."
 
 #: 
 #, fuzzy
@@ -10142,12 +10138,12 @@ msgstr "Depurar"
 #: 
 #, fuzzy
 msgid "Family Custom Fields"
-msgstr "Campos Personalizados das Famílias"
+msgstr "Campos personalizados de família"
 
 #: 
 #, fuzzy
 msgid "Person Custom Fields"
-msgstr "Campos Personalizados de Pessoas"
+msgstr "Campos personalizados de pessoa"
 
 #: 
 #, fuzzy
@@ -10187,7 +10183,7 @@ msgstr "Siga-nos no Twitter"
 #: 
 #, fuzzy
 msgid "invalid event type id"
-msgstr "Tipo de evento inválido"
+msgstr "ID do tipo de evento inválido"
 
 #: 
 #, fuzzy
@@ -10217,7 +10213,7 @@ msgstr "Usuário ou Senha Inválidos"
 #: 
 #, fuzzy
 msgid "Find Duplicate Emails"
-msgstr "Encontre E-mails Duplicados"
+msgstr "Encontrar e-mails duplicados"
 
 #: 
 #, fuzzy
@@ -10297,7 +10293,7 @@ msgstr "Endereço de Link"
 #: 
 #, fuzzy
 msgid "Start with http:// or https://"
-msgstr "omece com http:// ou https://"
+msgstr "Começa com http:// ou https://"
 
 #: 
 #, fuzzy
@@ -10377,7 +10373,7 @@ msgstr "Incluir dados demográficos e de contato no corpo de notificação via e
 #: 
 #, fuzzy
 msgid "Include family custom properties in global search."
-msgstr "Inclua propriedades personalizadas da família na pesquisa"
+msgstr "Inclua propriedades personalizadas de família na pesquisa"
 
 #: 
 msgid "Latvia (Latvija)"
@@ -10421,7 +10417,7 @@ msgstr "Aprovado"
 #: 
 #, fuzzy
 msgid "PHP Max Execution Time is too Short"
-msgstr "Tempo máximo de execução do PHP é curto"
+msgstr "Tempo máximo de execução do PHP é curto demais"
 
 #: 
 #, fuzzy
@@ -10476,7 +10472,7 @@ msgstr "Compreendo"
 #: 
 #, fuzzy
 msgid "Unsupported Deposit Types Detected"
-msgstr "Tipos de depósito não suportados"
+msgstr "Tipos de depósito não suportados detectado"
 
 #: 
 #, fuzzy
@@ -10506,12 +10502,12 @@ msgstr "Gerar Backup"
 #: 
 #, fuzzy
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Ponto final do backup remoto. Se WebDAV, isso deve ser codificado por url"
+msgstr "Ponto de acesso do backup remoto. Se for WebDAV, isso deve ser codificado por url. "
 
 #: 
 #, fuzzy
 msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Inclua arquivos de imagem iniciais, arquivos de imagem remotos (gravatar) e miniaturas no backup. Em geral, esses arquivos podem ser reproduzidos após uma restauração e adicionar muito pouco valor ao arquivo de backup com grande despesa de tempo de execução e armazenamento."
+msgstr "Inclua arquivos de imagem iniciais, arquivos de imagem remotos (gravatar) e miniaturas no backup. Em geral, esses arquivos podem ser reproduzidos após uma restauração e aumentam muito pouco valor arquivo de backup, gerando apenas um grande gasto de tempo de execução e armazenamento."
 
 #: 
 #, fuzzy
@@ -10535,7 +10531,7 @@ msgstr "Histograma de Idade"
 #: 
 #, fuzzy
 msgid "Missing event id"
-msgstr "Falta ID do evento"
+msgstr "ID do evento faltando"
 
 #: 
 #, fuzzy
@@ -10546,14 +10542,15 @@ msgstr "Evento não encontrado"
 #, fuzzy
 msgid "Session timeout length in seconds\n"
 "Set to zero to disable session timeouts."
-msgstr "Tempo limite da sessão em segundos. Defina 0 para desativar o tempo limite da sessão."
+msgstr "Tempo limite da sessão em segundos.\n"
+"Defina 0 para desativar o tempo limite da sessão."
 
 #: 
 #, fuzzy
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Quantidade mínima que uma nova senha deve diferenciar da antiga\n"
-"(# de caracteres alterados)\n"
+"(número de caracteres alterados)\n"
 "Defina 0 para desativar esse recurso."
 
 #: 
@@ -10582,7 +10579,7 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 "This option causes certain info from a person's assigned family record to be\n"
 "displayed IF the corresponding info has NOT been entered for that person. "
 msgstr "Informações indisponíveis de uma pessoa de uma família atribuída?\n"
-"Essa opção exibe informações de uma família atribuída a uma pessoa SE a informação correspondente NÃO foi informada para pessoa."
+"Essa opção exibe informações de uma família atribuída a uma pessoa SE a informação correspondente NÃO foi informada para pessoa. "
 
 #: 
 #, fuzzy
@@ -10607,7 +10604,7 @@ msgstr "Baixar cartas da família"
 #: 
 #, fuzzy
 msgid "Send family email"
-msgstr "Enviar e-mail pra família"
+msgstr "Enviar e-mail para a família"
 
 #: 
 #, fuzzy
@@ -10637,27 +10634,27 @@ msgstr "Erro ao enviar e-mail(s)"
 #: 
 #, fuzzy
 msgid "Please check logs for more information"
-msgstr "Analisar logs para mais informações"
+msgstr "Por favor, verifique os logs para mais informações"
 
 #: 
 #, fuzzy
 msgid "Verification URL"
-msgstr "Verificar o URL"
+msgstr "URL de Verificação"
 
 #: 
 #, fuzzy
 msgid "Reset System"
-msgstr "Resetar o sistema"
+msgstr "Redefinir o sistema"
 
 #: 
 #, fuzzy
 msgid "Unexpected Person Id"
-msgstr "ID inesperado"
+msgstr "ID de Pessoa inesperado"
 
 #: 
 #, fuzzy
 msgid "Interval in Hours for software update check"
-msgstr "Intervalo para verificação de atualização"
+msgstr "Intervalo (em horas) para verificação de atualização do sistema"
 
 #: 
 #, fuzzy
@@ -10701,17 +10698,17 @@ msgstr "Versão do PHP não suportada"
 #: 
 #, fuzzy
 msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Suporte com esta versão do PHP será removida em breve. Versão atual:"
+msgstr "O suporte a esta versão do PHP será removido em breve. Versão atual do PHP: "
 
 #: 
 #, fuzzy
 msgid "Missing PHP ZipArchive"
-msgstr "PHP Zip ausente"
+msgstr "PHP ZipArchive ausente"
 
 #: 
 #, fuzzy
 msgid "PHP ZipArchive required to support upgrade"
-msgstr "PHP Zip é necessário para atualização"
+msgstr "PHP ZipArchive é necessário para atualização"
 
 #: 
 #, fuzzy
@@ -10726,7 +10723,7 @@ msgstr "Remover resultados do carrinho"
 #: 
 #, fuzzy
 msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Atenção: Tarefas de atualização detectadas"
+msgstr "Atenção: Tarefas de pré-atualização detectadas"
 
 #: 
 #, fuzzy
@@ -10736,32 +10733,32 @@ msgstr "Foram identificadas algumas condições que podem impedir uma atualizaç
 #: 
 #, fuzzy
 msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Revise estas tarefas antes de continuar com a atualização:"
+msgstr "Por favor, revise e conclua estas tarefas antes de continuar com a atualização:"
 
 #: 
 #, fuzzy
 msgid "Database Reset Functions"
-msgstr "Função de redefinição da base de dados"
+msgstr "Funções de redefinição da base de dados"
 
 #: 
 #, fuzzy
 msgid "Reset Members"
-msgstr "Resetar membros"
+msgstr "Redefinir membros"
 
 #: 
 #, fuzzy
 msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Isto vai remover todos os dados do membro, pessoas, e famílias. Não pode ser desfeito."
+msgstr "Isto vai remover todos os dados de membros, pessoas e famílias. Não pode ser desfeito."
 
 #: 
 #, fuzzy
 msgid "Reset Families/People"
-msgstr "Resetar Famílias/Pessoas"
+msgstr "Redefinir Famílias/Pessoas"
 
 #: 
 #, fuzzy
 msgid "Reset Database"
-msgstr "Resetar base de dados"
+msgstr "Redefinir banco de dados"
 
 #: 
 #, fuzzy
@@ -10826,22 +10823,22 @@ msgstr "Obrigado por registrar sua família"
 #: 
 #, fuzzy
 msgid "Register another family!"
-msgstr "Registrar outra família"
+msgstr "Registrar outra família!"
 
 #: 
 #, fuzzy
 msgid "Done, show me the homepage!"
-msgstr "Pronto, voltar para a homepage!"
+msgstr "Pronto, voltar para a tela inicial!"
 
 #: 
 #, fuzzy
 msgid "User authenticated via API Key: "
-msgstr "Usuário autenticado via API Key"
+msgstr "Usuário autenticado via chave de API: "
 
 #: 
 #, fuzzy
 msgid "Unsuccessful API Key authentication attempt"
-msgstr "Erro na tentativa de autenticar via API Key"
+msgstr "Tentativa malsucedida de autenticar via chave de API"
 
 #: 
 #, fuzzy
@@ -10851,7 +10848,7 @@ msgstr "Eventos não fixados"
 #: 
 #, fuzzy
 msgid "LastName, FirstName MiddleName"
-msgstr "Sobrenome, Primeiro Nome, Nome do meio"
+msgstr "Sobrenome, PrimeiroNome, NomeDoMeio"
 
 #: 
 #, fuzzy
@@ -10861,27 +10858,27 @@ msgstr "Gerenciar autenticação de 2 fatores"
 #: 
 #, fuzzy
 msgid "Two Factor Status"
-msgstr "Status da autenticação de dois fatores"
+msgstr "Status da autenticação de 2 fatores"
 
 #: 
 #, fuzzy
 msgid "Please confirm disabling 2 Factor Auth for this user"
-msgstr "por favor confirme se deseja desabilitar a autenticação de 2 fatores para esse usuário."
+msgstr "Por favor, confirme se deseja desabilitar a autenticação de 2 fatores para esse usuário."
 
 #: 
 #, fuzzy
 msgid "Please enter 2FA code"
-msgstr "Insira o código 2FA"
+msgstr "Insira o código da autenticação de 2 fatores"
 
 #: 
 #, fuzzy
 msgid "2FA Code"
-msgstr "Código 2FA"
+msgstr "Código da autenticação de 2 fatores"
 
 #: 
 #, fuzzy
 msgid "2 Factor Authentication enrollment"
-msgstr "Regsitro de autenticação de 2 fatores"
+msgstr "Registro de autenticação de 2 fatores"
 
 #: 
 #, fuzzy
@@ -10891,47 +10888,47 @@ msgstr "Configuração de 2 fatores não suportada"
 #: 
 #, fuzzy
 msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Não é possível iniciar oregistro da autenticação de 2 fatores"
+msgstr "Não foi possível iniciar o registro da autenticação de 2 fatores"
 
 #: 
 #, fuzzy
 msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Autenticação de 2 fatores precisa de usuários administradores para configurar alguns parametros"
+msgstr "Autenticação de 2 fatores requer que usuários administradores configurem alguns parâmetros"
 
 #: 
 #, fuzzy
 msgid "System configuration "
-msgstr "Configuração do sistema"
+msgstr "Configuração do sistema "
 
 #: 
 #, fuzzy
 msgid "Must be set to 'true'"
-msgstr "Defina como verdadeiro"
+msgstr "Defina como 'true'"
 
 #: 
 #, fuzzy
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "include/Config.php deve ser encriptado com uma chave de 2 fatores na base de dados."
+msgstr "Include/Config.php deve definir uma chave de criptografia para armazenar chaves secretas da autenticação de 2 fatores no banco de dados, definindo um valor para"
 
 #: 
 #, fuzzy
 msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Google maps usa API Key para geocódigos de endereços"
+msgstr "Chave de API do Google Maps usado para geocódigos de endereços"
 
 #: 
 #, fuzzy
 msgid "Send an email notifying users when their account has been deleted"
-msgstr "Envie um email notificando o usuário quando a conta for deletada"
+msgstr "Enviar um email notificando o usuário quando a conta deles for excluída"
 
 #: 
 #, fuzzy
 msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Google maps usa API Key para renderizar mapas no navegador"
+msgstr "Chave de API do Google Maps usado para renderizar mapas no navegador"
 
 #: 
 #, fuzzy
 msgid "Incorrect password supplied for current user"
-msgstr "Senha incorreta "
+msgstr "Senha incorreta fornecida para o usuário atual"
 
 #: 
 #, fuzzy
@@ -10941,12 +10938,12 @@ msgstr "Sua nova senha precisa ser diferente da antiga"
 #: 
 #, fuzzy
 msgid "Your new password is too similar to your old one."
-msgstr "sua nova senha é muito parecida com a antiga"
+msgstr "Sua nova senha é parecida demais com a antiga"
 
 #: 
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
-msgstr "Reset de senha não disponível. Entre em contato com o administrador do sistema"
+msgstr "Redefinição de senha não disponível. Entre em contato com o administrador do sistema"
 
 #: 
 #, fuzzy
@@ -11046,7 +11043,7 @@ msgstr "Público fora do CRM"
 #: 
 #, fuzzy
 msgid "Hebrew"
-msgstr "Hebreu"
+msgstr "Hebraico"
 
 #: 
 #, fuzzy
@@ -11056,7 +11053,7 @@ msgstr "Taxa livre"
 #: 
 #, fuzzy
 msgid "Not Subscribed "
-msgstr "Não inscrito"
+msgstr "Não inscrito "
 
 #: 
 #, fuzzy
@@ -11076,12 +11073,12 @@ msgstr "Senhas"
 #: 
 #, fuzzy
 msgid "2FA"
-msgstr "Autenticação por dois fatores"
+msgstr "Autenticação de 2 fatores"
 
 #: 
 #, fuzzy
 msgid "Session Timeout"
-msgstr "Sessão terminada"
+msgstr "Sessão com tempo esgotado"
 
 #: 
 #, fuzzy
@@ -11091,12 +11088,12 @@ msgstr "Máximo de Logins com falha"
 #: 
 #, fuzzy
 msgid "Enable Password Reset"
-msgstr "Ativar Resetar Senha"
+msgstr "Ativar Redefinição de Senha"
 
 #: 
 #, fuzzy
 msgid "Send email to Deleted Users"
-msgstr "Enviar e-mail para usuários deletados"
+msgstr "Enviar e-mail para usuários excluídos"
 
 #: 
 #, fuzzy
@@ -11106,7 +11103,7 @@ msgstr "Tamanho mínimo de senha"
 #: 
 #, fuzzy
 msgid "Min Password Characters Delta"
-msgstr "Quantidade mínima de caracteres delta"
+msgstr "Quantidade mínima da diferença de caracteres"
 
 #: 
 #, fuzzy
@@ -11116,17 +11113,17 @@ msgstr "Desativar senhas"
 #: 
 #, fuzzy
 msgid "Enable 2FA"
-msgstr "Ativar Autenticação por dois fatores"
+msgstr "Ativar autenticação de 2 fatores"
 
 #: 
 #, fuzzy
 msgid "Require 2FA"
-msgstr "Requer Autenticação por dois fatores"
+msgstr "Requer autenticação de 2 fatores"
 
 #: 
 #, fuzzy
 msgid "2FA Application Name"
-msgstr "Aplicativo de Autenticação por dois fatores"
+msgstr "Aplicativo de autenticação de 2 fatores"
 
 #: 
 #, fuzzy
@@ -11156,17 +11153,17 @@ msgstr "Editar Notas"
 #: 
 #, fuzzy
 msgid "Failed generate a new API Key"
-msgstr "Falha ao gerar uma nova chave API"
+msgstr "Falha ao gerar uma nova chave de API"
 
 #: 
 #, fuzzy
 msgid "Pledge Summary By Family"
-msgstr "Resumo de petições por Família"
+msgstr "Resumo dos compromissos por Família"
 
 #: 
 #, fuzzy
 msgid "Pledge"
-msgstr "Petições"
+msgstr "Compromisso"
 
 #: 
 #, fuzzy
@@ -11211,12 +11208,12 @@ msgstr "Descrição do evento"
 #: 
 #, fuzzy
 msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Inscrever sua conta de usuário ChurchCRM na autenticação por dois fatores fornece uma camada adicional de defesa contra malfeitores que tentam acessar sua conta."
+msgstr "Inscrever sua conta de usuário ChurchCRM na autenticação de 2 fatores fornece uma camada adicional de defesa contra malfeitores que tentam acessar sua conta."
 
 #: 
 #, fuzzy
 msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "Autenticação por dois fatores do ChurchCRM suporta qualquer aplicativo de autenticador TOTP, então você é livre para escolher entre Microsoft Authenticator, Google Authenticator, Authy, LastPass e outros"
+msgstr "Autenticação de 2 fatores do ChurchCRM suporta qualquer aplicativo de autenticador TOTP, então você é livre para escolher entre Microsoft Authenticator, Google Authenticator, Authy, LastPass e outros"
 
 #: 
 #, fuzzy
@@ -11236,27 +11233,27 @@ msgstr "Depois de inserir com sucesso as suas credenciais e o código de uso ún
 #: 
 #, fuzzy
 msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Para evitar o bloqueio de sua conta ChurchCRM, certifique-se de que está pronto para completar a inscrição de dois fatores antes de clicar em começar"
+msgstr "Para evitar ficar trancado do lado de fora da sua conta ChurchCRM, certifique-se de que está pronto para completar a configuração de 2 fatores antes de clicar em começar"
 
 #: 
 #, fuzzy
 msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "A inscrição inicial invalidará todos os dispositivos de 2 fatores e códigos de recuperação inscritos anteriormente."
+msgstr "A configuração inicial invalidará todos os dispositivos de 2 fatores e códigos de recuperação registrados anteriormente."
 
 #: 
 #, fuzzy
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
-msgstr "Ao clicar em Avançar, você será solicitado a ler um código QR para inscrever seu aplicativo autenticador."
+msgstr "Ao clicar em Avançar, você será solicitado a ler um código QR para configuras seu aplicativo autenticador."
 
 #: 
 #, fuzzy
 msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
-msgstr "Para confirmar a inscrição, você precisará inserir o código gerado pelo seu aplicativo autenticador"
+msgstr "Para confirmar a configuração, você precisará inserir o código gerado pelo seu aplicativo autenticador"
 
 #: 
 #, fuzzy
 msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
-msgstr "Depois de confirmar a inscrição do aplicativo, os códigos de recuperação de uso único serão gerados e exibidos."
+msgstr "Depois de confirmar a configuração do aplicativo, os códigos de recuperação de uso único serão gerados e exibidos."
 
 #: 
 #, fuzzy
@@ -11271,7 +11268,7 @@ msgstr "Armazene-os em um local seguro"
 #: 
 #, fuzzy
 msgid "Begin Two Factor Authentication Enrollment"
-msgstr "Inicie o registro de autenticação de dois fatores"
+msgstr "Iniciar o registro de autenticação de 2 fatores"
 
 #: 
 #, fuzzy
@@ -11281,22 +11278,22 @@ msgstr "Segredo de autenticação de 2 fatores"
 #: 
 #, fuzzy
 msgid "Regenerate 2 Factor Authentication Secret"
-msgstr "Regenerar segredo de autenticação de fator 2"
+msgstr "Recriar a chave de autenticação de 2 fatores"
 
 #: 
 #, fuzzy
 msgid "Remove 2 Factor Authentication Secret"
-msgstr "Remover segredo de autenticação de 2 fatores"
+msgstr "Remover chave de autenticação de 2 fatores"
 
 #: 
 #, fuzzy
 msgid "Enter TOTP code to confirm enrollment"
-msgstr "Digite o código TOTP para confirmar a inscrição"
+msgstr "Digite o código TOTP para confirmar a configuração"
 
 #: 
 #, fuzzy
 msgid "2 Factor Authentication Enrollment Success"
-msgstr "Sucesso na inscrição de autenticação de 2 fatores"
+msgstr "Sucesso na configuração da autenticação de 2 fatores"
 
 #: 
 #, fuzzy
@@ -11306,7 +11303,7 @@ msgstr "Guarde esses códigos de recuperação em um local seguro"
 #: 
 #, fuzzy
 msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
-msgstr "Se você perder o acesso ao seu aplicativo autenticador recém-inscrito, será necessário usar um código de recuperação para obter acesso à sua conta"
+msgstr "Se você perder o acesso ao seu aplicativo autenticador recém-configurado, será necessário usar um código de recuperação para obter acesso à sua conta"
 
 #: 
 #, fuzzy
@@ -11341,7 +11338,7 @@ msgstr "Africanos"
 #: 
 #, fuzzy
 msgid " has a type mismatch"
-msgstr "tem um tipo de incompatibilidade"
+msgstr " tem um tipo de incompatibilidade"
 
 #: 
 #, fuzzy
@@ -11371,7 +11368,7 @@ msgstr "Ver Pessoas Desativadas"
 #: 
 #, fuzzy
 msgid "Today's Birthdays"
-msgstr "Aniversários"
+msgstr "Aniversários de hoje"
 
 #: 
 #, fuzzy
@@ -11381,12 +11378,12 @@ msgstr "Aniversários de Casamento"
 #: 
 #, fuzzy
 msgid "Api Key"
-msgstr "Chave API"
+msgstr "Chave de API"
 
 #: 
 #, fuzzy
 msgid "Regen API Key"
-msgstr "Regerar Chave API"
+msgstr "Recriar Chave de API"
 
 #: 
 #, fuzzy
@@ -11436,12 +11433,12 @@ msgstr "Configuração das Tabelas"
 #: 
 #, fuzzy
 msgid "Page length"
-msgstr "Cumprimento da Página"
+msgstr "Comprimento da Página"
 
 #: 
 #, fuzzy
 msgid "Change the initial page length (number of rows per page)"
-msgstr "Alterar o cumprimento da página inicial (número de linhas por página)"
+msgstr "Alterar o comprimento da página inicial (número de linhas por página)"
 
 #: 
 #, fuzzy
@@ -11472,4 +11469,108 @@ msgstr "Data de nascimento inválida: faltando o dia ou mês de nascimento."
 #, fuzzy
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Data de nascimento inválida: faltando o dia e mês de nascimento."
+
+#: 
+msgid "System"
+msgstr "Sistema"
+
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Amárico – Etiópia"
+
+#: 
+msgid "Czech"
+msgstr "Tcheco"
+
+#: 
+msgid "Finnish"
+msgstr "Finlandês"
+
+#: 
+msgid "Greek"
+msgstr "Grego"
+
+#: 
+msgid "Turkish"
+msgstr "Turco"
+
+#: 
+msgid "Ukrainian"
+msgstr "Ucraniano"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Quando você clica em \"Enviar para o GitHub\", você será redirecionado para a página de problemas do GitHub, com as informações do seu sistema pré-preenchidas."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Enviar para o GitHub"
+
+#: 
+msgid "Change role"
+msgstr "Alterar papel"
+
+#: 
+msgid "Closed"
+msgstr "Fechad"
+
+#: 
+msgid "Delete this person?"
+msgstr "Excluir essa pessoa?"
+
+#: 
+msgid "Deposit ID"
+msgstr "ID Depósito"
+
+#: 
+msgid "Deposit Total"
+msgstr "Total do Depósito"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Status do carrinho de grupo"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "Se isto não funcionar, copie e cole o seguinte link no seu navegador"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "Você recebeu este e-mail porque nós recebemos uma solicitação para atividade na sua conta. Se você não fez essa solicitação, você pode apagar este e-mail com segurança."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Para parar de receber estes e-mail, você pode mandar um e-mail para"
+
+#: 
+msgid "2016/2017"
+msgstr "2016/2017"
+
+#: 
+msgid "2017/2018"
+msgstr "2017/2018"
+
+#: 
+msgid "2018/2019"
+msgstr "2018/2019"
+
+#: 
+msgid "2019/2020"
+msgstr "2019/2020"
+
+#: 
+msgid "2020/2021"
+msgstr "2020/2021"
+
+#: 
+msgid "2021/2022"
+msgstr "2021/2022"
+
+#: 
+msgid "2022/2023"
+msgstr "2022/2023"
+
+#: 
+msgid "invalid group request"
+msgstr "solicitação de grupo inválida"
 

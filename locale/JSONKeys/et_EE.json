@@ -846,8 +846,8 @@
     "Fatal error in eGive API datastream: '": "Saatuslik viga eGive API andmevoos: '",
     "eMail Dashboard": "e-posti töölaud",
     "No families need canvassers assigned": "Ükski perekond ei vaja eraldatud tugiisikut",
-    "Canvassers assigned at random to %d families.": "Tugiisikud, kes on juhuslikult määratud% d perekondadele.",
-    "Canvassers assigned at random to %d non-pledging families.": "Tugiisikud, mis on juhuslikult määratud% d peredele kes ei anneta.",
+    "Canvassers assigned at random to %d families.": "Tugiisikud, kes on juhuslikult määratud %d perekondadele.",
+    "Canvassers assigned at random to %d non-pledging families.": "Tugiisikud, mis on juhuslikult määratud %d peredele kes ei anneta.",
     "Assigned envelope numbers to all families with at least one member.": "Määra ümbriku numbrid kõigile peredele, kus on vähemalt üks liige.",
     "Assigned envelope numbers to all families.": "Määra ümbrikute numbrid kõigile peredele.",
     "Version": "Versioon",
@@ -1003,7 +1003,7 @@
     "View All People": "Kuva kõik isikud",
     "Add New Family": "Lisage uus pere",
     "Events": "Üritused",
-    "Fundraiser": "korjandused",
+    "Fundraiser": "Korjandused",
     "Email Export": "E-posti eksport",
     "List": "Nimekiri",
     "Import Data": "Andmete importimine",
@@ -2169,12 +2169,12 @@
     "Search Calendar Events": "Otsi kalendrisündmusi",
     "Maximum number of Calendar Events": "Kalendrisündmuste maksimaalne arv",
     "%d month old": {
-        "one": "% kuune",
-        "other": "Mitmuses:%  kuud vana"
+        "one": "%d kuune",
+        "other": "%d kuud vana"
     },
     "%d year old": {
-        "one": "% aastane",
-        "other": "% aastane"
+        "one": "%d aastane",
+        "other": "%d aastane"
     },
     "Unsupported PHP Version": "Toetamata PHP versioon",
     "Support for this PHP version will soon be removed.  Current PHP Version: ": "Selle PHP versiooni tugi eemaldatakse peagi.  Praegune PHP versioon: ",
@@ -2314,7 +2314,7 @@
     "Today's Birthdays": "Täna on sünnipäev",
     "Today's Wedding Anniversaries": "Täna on pulmaaastapäev",
     "Api Key": "Api võti",
-    "Regen API Key": "Regen API võti",
+    "Regen API Key": "Regenereeri API võti",
     "View Family Page": "Vaata perelehte",
     "View Person Page": "Vaata isikulehte",
     "Verify": "Kinnitage",
@@ -2356,5 +2356,6 @@
     "2019/2020": "2019/2020",
     "2020/2021": "2020/2021",
     "2021/2022": "2021/2022",
-    "2022/2023": "2022/2023"
+    "2022/2023": "2022/2023",
+    "invalid group request": "kehtetu rühmataotlus"
 }

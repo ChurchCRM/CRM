@@ -3420,11 +3420,11 @@ msgstr "Không gia đình nào cần chỉ định người duyệt"
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers được chỉ định ngẫu nhiên cho% d họ."
+msgstr "Canvassers được chỉ định ngẫu nhiên cho %d họ."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers được chỉ định ngẫu nhiên cho% d họ không cầm cố."
+msgstr "Canvassers được chỉ định ngẫu nhiên cho %d họ không cầm cố."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -8724,12 +8724,12 @@ msgstr "Số sự kiện lịch tối đa"
 #: 
 msgid "%d month old"
 msgid_plural "%d months old"
-msgstr[0] "% d tháng tuổi"
+msgstr[0] "%d tháng tuổi"
 
 #: 
 msgid "%d year old"
 msgid_plural "%d years old"
-msgstr[0] "% d tuổi"
+msgstr[0] "%d tuổi"
 
 #: 
 msgid "Unsupported PHP Version"

@@ -846,7 +846,7 @@
     "Fatal error in eGive API datastream: '": "Error fatal en eGive flujo de datos API: '",
     "eMail Dashboard": "Dashboard de correo electrónico",
     "No families need canvassers assigned": "No hay familias que necesiten ser asignadas a escrutadores",
-    "Canvassers assigned at random to %d families.": "Escrutadores asignados al azar a las familias% d.",
+    "Canvassers assigned at random to %d families.": "Escrutadores asignados al azar a las familias %d.",
     "Canvassers assigned at random to %d non-pledging families.": "Escrutadores asignados al azar a %d familias no donadoras.",
     "Assigned envelope numbers to all families with at least one member.": "Asignación de números de Sobre para todas las familias con al menos un miembro.",
     "Assigned envelope numbers to all families.": "numeros asignados de sobres para todaslas familias",

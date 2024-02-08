@@ -14,7 +14,7 @@ CREATE TABLE `permissions` (
 -- Dumping data for table `permissions`
 --
 
-INSERT INTO `permissions` (`permission_id`, `permission_name`, `permission_desc`) VALUES
+INSERT IGNORE INTO `permissions` (`permission_id`, `permission_name`, `permission_desc`) VALUES
 (1, 'addPeople', 'Add People'),
 (3, 'updatePeople', 'Update People'),
 (4, 'deletePeopleRecords', 'Delete People Records'),
@@ -72,7 +72,7 @@ CREATE TABLE `roles` (
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`role_id`, `role_name`, `role_desc`) VALUES
+INSERT IGNORE INTO `roles` (`role_id`, `role_name`, `role_desc`) VALUES
 (1, 'Welcome Committee', NULL),
 (2, 'Clergy', NULL);
 
