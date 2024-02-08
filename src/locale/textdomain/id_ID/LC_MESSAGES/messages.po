@@ -3406,11 +3406,11 @@ msgstr "Tidak ada keluarga yang membutuhkan canvasser"
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers ditugaskan secara acak ke% d keluarga."
+msgstr "Canvassers ditugaskan secara acak ke %d keluarga."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers ditugaskan secara acak ke% d keluarga yang tidak berjanji."
+msgstr "Canvassers ditugaskan secara acak ke %d keluarga yang tidak berjanji."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."

@@ -2173,8 +2173,8 @@
         "other": " %d maande oud"
     },
     "%d year old": {
-        "one": "% d jaar oud",
-        "other": "% d jare oud"
+        "one": "%d jaar oud",
+        "other": "%d jare oud"
     },
     "Unsupported PHP Version": "Nie-ondersteunde PHP-weergawe",
     "Support for this PHP version will soon be removed.  Current PHP Version: ": "Ondersteuning vir hierdie PHP-weergawe sal binnekort verwyder word. Huidige PHP-weergawe: ",

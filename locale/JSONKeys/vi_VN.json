@@ -846,8 +846,8 @@
     "Fatal error in eGive API datastream: '": "Lỗi nghiêm trọng trong luồng dữ liệu API eGive: '",
     "eMail Dashboard": "Trang tổng quan eMail",
     "No families need canvassers assigned": "Không gia đình nào cần chỉ định người duyệt",
-    "Canvassers assigned at random to %d families.": "Canvassers được chỉ định ngẫu nhiên cho% d họ.",
-    "Canvassers assigned at random to %d non-pledging families.": "Canvassers được chỉ định ngẫu nhiên cho% d họ không cầm cố.",
+    "Canvassers assigned at random to %d families.": "Canvassers được chỉ định ngẫu nhiên cho %d họ.",
+    "Canvassers assigned at random to %d non-pledging families.": "Canvassers được chỉ định ngẫu nhiên cho %d họ không cầm cố.",
     "Assigned envelope numbers to all families with at least one member.": "Đã chỉ định số phong bì cho tất cả các gia đình có ít nhất một thành viên.",
     "Assigned envelope numbers to all families.": "Chỉ định số phong bì cho tất cả các gia đình.",
     "Version": "Phiên bản",
@@ -2169,10 +2169,10 @@
     "Search Calendar Events": "Tìm kiếm sự kiện trên lịch",
     "Maximum number of Calendar Events": "Số sự kiện lịch tối đa",
     "%d month old": {
-        "other": "% d tháng tuổi"
+        "other": "%d tháng tuổi"
     },
     "%d year old": {
-        "other": "% d tuổi"
+        "other": "%d tuổi"
     },
     "Unsupported PHP Version": "Phiên bản PHP không được hỗ trợ",
     "Support for this PHP version will soon be removed.  Current PHP Version: ": "Hỗ trợ cho phiên bản PHP này sẽ sớm bị loại bỏ. Phiên bản PHP hiện tại:",
