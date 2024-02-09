@@ -29,10 +29,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
 
 if ($_GET['all'] == 'true') {
     $bDoAll = true;

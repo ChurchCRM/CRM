@@ -17,10 +17,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
 
 //Set the page title
 $sPageTitle = gettext('Property Delete Confirmation');

@@ -22,10 +22,7 @@ use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Check for Create Directory user permission.
-if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled());
 
 // Get and filter the classifications selected
 $aClasses = [];

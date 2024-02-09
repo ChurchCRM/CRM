@@ -29,26 +29,17 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-            RedirectUtils::redirect('v2/dashboard');
-            exit;
-        }
+        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
         break;
 
     case 'grptypes':
     case 'grproles':
-        if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-            RedirectUtils::redirect('v2/dashboard');
-            exit;
-        }
+        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
         break;
 
     case 'custom':
     case 'famcustom':
-        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-            RedirectUtils::redirect('v2/dashboard');
-            exit;
-        }
+        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
         break;
     default:
         RedirectUtils::redirect('v2/dashboard');

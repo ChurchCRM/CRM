@@ -17,13 +17,24 @@ class InputUtils
         }
     }
 
-    public static function translateSpecialCharset($string)
+    public static function translateSpecialCharset($string): string
     {
         if (empty($string)) {
             return '';
         }
 
-        return (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') ? gettext($string) : iconv('UTF-8', SystemConfig::getValue('sCSVExportCharset'), gettext($string));
+        if (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') {
+            return gettext($string);
+        }
+
+        $resultString = iconv(
+            'UTF-8',
+            SystemConfig::getValue('sCSVExportCharset'),
+            gettext($string)
+        );
+        MiscUtils::throwIfFailed($resultString);
+
+        return $resultString;
     }
 
     public static function filterString($sInput): string

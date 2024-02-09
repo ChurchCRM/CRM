@@ -32,10 +32,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Church Event Editor');
 
-if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddEvent());
 
 $sAction = 'Create Event';
 require 'Include/Header.php';

@@ -26,10 +26,7 @@ use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
 
 /**
  * A monogamous society is assumed, however  it can be patriarchal or matriarchal

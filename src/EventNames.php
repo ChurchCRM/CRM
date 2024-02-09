@@ -24,10 +24,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddEvent());
 
 $sPageTitle = gettext('Edit Event Types');
 

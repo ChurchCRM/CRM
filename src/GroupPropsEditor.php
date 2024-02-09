@@ -20,10 +20,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
-if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled());
 
 $sPageTitle = gettext('Group Member Properties Editor');
 

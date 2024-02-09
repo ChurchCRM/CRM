@@ -20,10 +20,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
-if (!AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isNotesEnabled());
 
 //Set the page title
 $sPageTitle = gettext('Note Delete Confirmation');

@@ -23,10 +23,7 @@ use ChurchCRM\Utils\RedirectUtils;
 $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
-if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
 
 $envelopesToWrite = [];
 // get the array of envelopes of interest, indexed by family id

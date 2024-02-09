@@ -19,10 +19,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have property and classification editing permission
-if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
 
 $sClassError = '';
 $sNameError = '';

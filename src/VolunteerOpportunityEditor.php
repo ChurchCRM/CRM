@@ -19,11 +19,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have proper permission
 // For now ... require $bAdmin
 // Future ... $bManageVol
-
-if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
 
 // top down design....
 // title line
@@ -59,10 +55,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
 
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
-        RedirectUtils::redirect('v2/dashboard');
-        exit;
-    }
+    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
 
     $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     $rsOpps = RunQuery($sSQL);
@@ -120,10 +113,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
 if (($sAction == 'ConfDelete') && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
-        RedirectUtils::redirect('v2/dashboard');
-        exit;
-    }
+    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
 
     // get the order value for the record being deleted
     $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";

@@ -35,10 +35,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
-if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
 
 $iPersonID = -1;
 $vNewUser = false;

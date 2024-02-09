@@ -18,10 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
-if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
 
 // Get the Group, Property, and Action from the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');

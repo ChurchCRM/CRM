@@ -19,10 +19,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have canvasser permission to use this form
-if (!AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCanvasserEnabled());
 
 require 'Include/CanvassUtilities.php';
 
