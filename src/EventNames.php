@@ -24,9 +24,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-    header('Location: Menu.php');
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddEvent());
 
 $sPageTitle = gettext('Edit Event Types');
 

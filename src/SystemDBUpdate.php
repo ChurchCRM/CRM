@@ -13,7 +13,7 @@ $bSuppressSessionTests = true; // DO NOT MOVE
 require 'Include/Functions.php';
 
 if (Bootstrapper::isDBCurrent()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 
@@ -23,7 +23,7 @@ if (isset($_GET['upgrade']) && InputUtils::filterString($_GET['upgrade']) === "t
         $logger->info("Beginning database upgrade");
         UpgradeService::upgradeDatabaseVersion();
         $logger->info("Complete database upgrade; redirecting to Main menu");
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         exit;
     } catch (\Exception $ex) {
         $errorMessage = $ex->getMessage();

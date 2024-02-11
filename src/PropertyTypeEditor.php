@@ -18,10 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have property and classification editing permission
-if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
 
 //Set the page title
 $sPageTitle = gettext('Property Type Editor');

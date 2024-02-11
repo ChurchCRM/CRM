@@ -26,7 +26,7 @@ abstract class BaseUserEmail extends BaseEmail
 
     abstract protected function getSubSubject();
 
-    public function getTokens()
+    public function getTokens(): array
     {
         $myTokens = ['toName' => $this->user->getPerson()->getFirstName(),
             'userName'        => $this->user->getUserName(),
@@ -37,7 +37,7 @@ abstract class BaseUserEmail extends BaseEmail
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    protected function getFullURL()
+    protected function getFullURL(): string
     {
         return SystemURLs::getURL() . '/session/begin?username=' . $this->user->getUserName();
     }

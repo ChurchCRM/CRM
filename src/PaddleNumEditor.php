@@ -154,7 +154,7 @@ require 'Include/Header.php';
             <input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                 echo $linkBack;
                                                                 } else {
-                                                                    echo 'Menu.php';
+                                                                    echo 'v2/dashboard';
                                                                 } ?>';">
         </td>
     </tr>

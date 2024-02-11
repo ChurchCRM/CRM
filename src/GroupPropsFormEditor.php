@@ -25,10 +25,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
-if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
 
 // Get the Group from the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');

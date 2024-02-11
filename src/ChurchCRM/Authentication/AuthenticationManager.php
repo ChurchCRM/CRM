@@ -127,7 +127,7 @@ class AuthenticationManager
         }
 
         if ($result->isAuthenticated && !$result->preventRedirect) {
-            $redirectLocation = array_key_exists('location', $_SESSION) ? $_SESSION['location'] : 'Menu.php';
+            $redirectLocation = $_SESSION['location'] ?? 'v2/dashboard';
             NotificationService::updateNotifications();
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
@@ -208,5 +208,11 @@ class AuthenticationManager
         // since they likely will not want users attempting to reset ChurchCRM passwords
         // but rather redirect users to some other password reset mechanism.
         return SystemURLs::getRootPath() . '/session/forgot-password/reset-request';
+    }
+    public static function redirectHomeIfFalse(bool $hasAccess): void
+    {
+        if (!$hasAccess) {
+            RedirectUtils::redirect('v2/dashboard');
+        }
     }
 }

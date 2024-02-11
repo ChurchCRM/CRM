@@ -23,10 +23,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups permission
-if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
 
 //Set the page title
 $sPageTitle = gettext('Group Editor');

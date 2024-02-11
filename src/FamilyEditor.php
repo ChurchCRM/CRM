@@ -38,17 +38,17 @@ if (array_key_exists('FamilyID', $_GET)) {
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
     if (!(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() || (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId()))) {
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         exit;
     }
 
     $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_ID = ' . $iFamilyID;
     if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         exit;
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

@@ -20,10 +20,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
 
 if (!empty($_POST['classList'])) {
     $classList = $_POST['classList'];
@@ -74,7 +71,7 @@ if (array_key_exists('only_owe', $_POST)) {
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 
