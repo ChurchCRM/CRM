@@ -635,8 +635,12 @@ class Person extends BasePerson implements PhotoInterface
         parent::postSave($con);
     }
 
-    public function getAge(?\DateTimeInterface $now = null): string
+    public function getAge(?\DateTimeInterface $now = null): ?string
     {
+        if ($this->getBirthYear() === null) {
+            return null;
+        }
+
         $birthDate = $this->getBirthDate();
 
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
