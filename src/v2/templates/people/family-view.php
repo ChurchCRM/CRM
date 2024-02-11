@@ -287,7 +287,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                                 if ($formattedBirthday) {?>
                                                 <i class="fa fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
-                                                    <?= $formattedBirthday ?>  <?= $person->getAge()?>
+                                                    <?= $formattedBirthday ?>  <?= $person->getAge() ?? sprintf('(%s)', gettext('not found')) ?>
                                                 </i>
                                                 <?php } ?>
                                             </li>

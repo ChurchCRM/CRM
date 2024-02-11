@@ -22,10 +22,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
 
 // Save Settings
 if (isset($_POST['save'])) {
@@ -158,7 +155,7 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 <tr>
     <td colspan='3' class='text-center'>
         <input type=submit class='btn btn-primary' name=save value="<?=  gettext('Save Settings') ?> ">
-        <input type=submit class=btn name=cancel value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
+        <input type=submit class=btn name=cancel value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
     </td>
 </tr>
 </table>

@@ -18,10 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
 
 $sReportType = '';
 
@@ -69,7 +66,7 @@ if ($sReportType == '') {
     // First Pass Cancel, Next Buttons
     echo "<tr><td>&nbsp;</td>
         <td><input type=button class='btn btn-default' name=Cancel value='" . gettext('Cancel') . "'
-        onclick=\"javascript:document.location='Menu.php';\">
+        onclick=\"javascript:document.location='v2/dashboard';\">
         <input type=submit class='btn btn-primary' name=Submit1 value='" . gettext('Next') . "'>
         </td></tr>
         </table></form>";

@@ -148,7 +148,7 @@ require 'Include/Header.php';
                         <p align="center">
                             <BR>
                             <input id="CreateReportBtn" type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Create Report') ?>">
-                            <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
+                            <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
                         </p>
                     </form>
 

@@ -118,7 +118,7 @@ for ($row = 0; $row < 10; $row += 1) {
             <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                 echo $linkBack;
                                                                 } else {
-                                                                    echo 'Menu.php';
+                                                                    echo 'v2/dashboard';
                                                                 } ?>';">
         </td>
     </tr>

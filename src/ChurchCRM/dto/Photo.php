@@ -143,11 +143,13 @@ class Photo
                 }
 
                 if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
-                    $photoPath = $this->loadFromGravatar($personEmail, $baseName);
-                    if ($photoPath) {
+                    try {
+                        $photoPath = $this->loadFromGravatar($personEmail, $baseName);
                         $this->setURIs($photoPath);
 
                         return;
+                    } catch (\Exception $e) {
+                        // do nothing
                     }
                 }
             }
@@ -166,7 +168,7 @@ class Photo
         $this->setURIs($targetPath);
     }
 
-    private function getGDImage($sourceImagePath)
+    private function getGDImage($sourceImagePath): \GdImage
     {
         $sourceImageType = exif_imagetype($sourceImagePath);
         switch ($sourceImageType) {
@@ -182,6 +184,7 @@ class Photo
             default:
                 throw new \Exception('Unsupported image type: ' . $sourceImageType);
         }
+        MiscUtils::throwIfFailed($sourceGDImage);
 
         return $sourceGDImage;
     }
@@ -193,18 +196,24 @@ class Photo
         }
     }
 
-    public function getThumbnailBytes()
+    public function getThumbnailBytes(): string
     {
         if (!file_exists($this->photoThumbURI)) {
             $this->createThumbnail();
         }
 
-        return file_get_contents($this->photoThumbURI);
+        $content = file_get_contents($this->photoThumbURI);
+        MiscUtils::throwIfFailed($content);
+
+        return $content;
     }
 
-    public function getPhotoBytes()
+    public function getPhotoBytes(): string|false
     {
-        return file_get_contents($this->photoURI);
+        $content = file_get_contents($this->photoURI);
+        MiscUtils::throwIfFailed($content);
+
+        return $content;
     }
 
     public function getPhotoContentType()
@@ -237,7 +246,7 @@ class Photo
         return $this->photoURI;
     }
 
-    private function loadFromGravatar($email, string $baseName)
+    private function loadFromGravatar($email, string $baseName): string
     {
         $s = 60;
         $d = '404';
@@ -256,10 +265,10 @@ class Photo
             return $photoPath;
         }
 
-        return false;
+        throw new \Exception('Gravatar not found');
     }
 
-    private function loadFromGoogle($email, string $baseName)
+    private function loadFromGoogle($email, string $baseName): string|false
     {
         $url = 'http://picasaweb.google.com/data/entry/api/user/';
         $url .= strtolower(trim($email));
@@ -284,7 +293,7 @@ class Photo
         return false;
     }
 
-    private function getRandomColor($image)
+    private function getRandomColor(\GdImage $image): int|false
     {
         $red = random_int(0, 150);
         $green = random_int(0, 150);
@@ -318,6 +327,7 @@ class Photo
         $pointSize = SystemConfig::getValue('iInitialsPointSize');
         $font = SystemURLs::getDocumentRoot() . '/fonts/Roboto-Regular.ttf';
         $image = imagecreatetruecolor($width, $height);
+        MiscUtils::throwIfFailed($image);
         $bgcolor = $this->getRandomColor($image);
         $white = imagecolorallocate($image, 255, 255, 255);
         imagefilledrectangle($image, 0, 0, $height, $width, $bgcolor);
