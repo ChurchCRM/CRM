@@ -19,10 +19,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
@@ -36,7 +33,7 @@ $only_owe = InputUtils::legacyFilterInput($_POST['only_owe']);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 

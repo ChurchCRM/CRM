@@ -49,7 +49,7 @@ if ($iPersonID > 0) {
     $per_fam_ID = $aRow['per_fam_ID'];
 
     if (mysqli_num_rows($rsPerson) == 0) {
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         exit;
     }
 
@@ -60,11 +60,11 @@ if ($iPersonID > 0) {
         (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
         )
     ) {
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         exit;
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 // Get Field Security List Matrix

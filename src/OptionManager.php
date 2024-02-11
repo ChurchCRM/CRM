@@ -27,32 +27,23 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-            RedirectUtils::redirect('Menu.php');
-            exit;
-        }
+        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
         break;
 
     case 'grptypes':
     case 'grproles':
     case 'groupcustom':
-        if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-            RedirectUtils::redirect('Menu.php');
-            exit;
-        }
+        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
         break;
 
     case 'custom':
     case 'famcustom':
     case 'securitygrp':
-        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-            RedirectUtils::redirect('Menu.php');
-            exit;
-        }
+        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
         break;
 
     default:
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         break;
 }
 
@@ -105,7 +96,7 @@ switch ($mode) {
 
         // Validate that this list ID is really for a group roles list. (for security)
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::redirect('Menu.php');
+            RedirectUtils::redirect('v2/dashboard');
             break;
         }
 
@@ -126,7 +117,7 @@ switch ($mode) {
 
         // Validate that this is a valid person-custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::redirect('Menu.php');
+            RedirectUtils::redirect('v2/dashboard');
             break;
         }
 
@@ -144,7 +135,7 @@ switch ($mode) {
 
         // Validate that this is a valid group-specific-property field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::redirect('Menu.php');
+            RedirectUtils::redirect('v2/dashboard');
             break;
         }
 
@@ -162,13 +153,13 @@ switch ($mode) {
 
         // Validate that this is a valid family_custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::redirect('Menu.php');
+            RedirectUtils::redirect('v2/dashboard');
             break;
         }
 
         break;
     default:
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         break;
 }
 
@@ -381,7 +372,7 @@ for ($row = 1; $row <= $numRows; $row++) {
     } elseif ($mode != 'grproles') {
         ?>
         <input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
-        echo 'Menu.php'; ?>';">
+        echo 'v2/dashboard'; ?>';">
         <?php
     } ?>
     </div>

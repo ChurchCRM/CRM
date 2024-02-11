@@ -41,8 +41,8 @@ if (!empty($_GET['location'])) {
 AuthenticationManager::ensureAuthentication();
 
 if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
-    // Index.php -> Menu.php
-    header('Location: ' . SystemURLs::getRootPath() . '/Menu.php');
+    // Index.php -> v2/dashboard
+    header('Location: ' . SystemURLs::getRootPath() . '/v2/dashboard');
     exit;
 } elseif (file_exists($shortName)) {
     // Try actual path

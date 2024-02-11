@@ -28,7 +28,7 @@ $iQueryID = InputUtils::legacyFilterInput($_GET['QueryID'], 'int');
 $aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
 
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
-    RedirectUtils::redirect('Menu.php');
+    RedirectUtils::redirect('v2/dashboard');
     exit;
 }
 
