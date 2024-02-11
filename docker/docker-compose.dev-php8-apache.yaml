@@ -61,5 +61,3 @@ services:
       - ${DEV_MAILSERVER_GUI_PORT:-8025}:8025
     hostname: crm-hostname
 
-
-
