@@ -112,7 +112,7 @@ class Cart
         return count($_SESSION['aPeopleCart']);
     }
 
-    public static function convertCartToString($aCartArray)
+    public static function convertCartToString($aCartArray): string
     {
         // Implode the array
         $sCartString = implode(',', $aCartArray);

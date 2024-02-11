@@ -19,11 +19,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have proper permission
 // For now ... require $bAdmin
 // Future ... $bManageVol
-
-if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
 
 // top down design....
 // title line
@@ -59,10 +55,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
 
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
-        RedirectUtils::redirect('Menu.php');
-        exit;
-    }
+    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
 
     $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     $rsOpps = RunQuery($sSQL);
@@ -120,10 +113,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
 if (($sAction == 'ConfDelete') && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
-        RedirectUtils::redirect('Menu.php');
-        exit;
-    }
+    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
 
     // get the order value for the record being deleted
     $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
@@ -408,7 +398,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 <td width="40%" align="center" valign="bottom">
 <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
 &nbsp;
-<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='Menu.php'">
+<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='v2/dashboard'">
 </td>
 <td width="30%"></td>
 </tr>

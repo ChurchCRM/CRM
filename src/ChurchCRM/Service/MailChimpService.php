@@ -75,14 +75,14 @@ class MailChimpService
         return $_SESSION['MailChimpLists'];
     }
 
-    public function isEmailInMailChimp(?string $email)
+    public function isEmailInMailChimp(?string $email): array
     {
         if (empty($email)) {
-            return new Exception(gettext('No email passed in'));
+            throw new Exception(gettext('No email passed in'));
         }
 
         if (!$this->isActive()) {
-            return new Exception(gettext('Mailchimp is not active'));
+            throw new Exception(gettext('Mailchimp is not active'));
         }
 
         $lists = $this->getListsFromCache();

@@ -21,10 +21,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Check for Create Directory user permission.
-if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled());
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Directory reports');
@@ -285,7 +282,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 <p align="center">
 <BR>
 <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
-<input type="button" class="btn btn-default" name="Cancel" <?= 'value="' . gettext('Cancel') . '"' ?> onclick="javascript:document.location='Menu.php';">
+<input type="button" class="btn btn-default" name="Cancel" <?= 'value="' . gettext('Cancel') . '"' ?> onclick="javascript:document.location='v2/dashboard';">
 </p>
 </form>
 </div>

@@ -28,12 +28,11 @@ require 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Church Event Editor');
 
-if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-    header('Location: Menu.php');
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddEvent());
 
 $sAction = 'Create Event';
 require 'Include/Header.php';

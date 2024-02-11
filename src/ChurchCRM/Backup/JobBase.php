@@ -16,7 +16,7 @@ class JobBase
      */
     protected $TempFolder;
 
-    protected function createEmptyTempFolder()
+    protected function createEmptyTempFolder(): string
     {
         // both backup and restore operations require a clean temporary working folder.  Create it.
         $TempFolder = SystemURLs::getDocumentRoot() . '/tmp_attach/ChurchCRMBackups';

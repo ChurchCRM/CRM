@@ -32,7 +32,7 @@ class Menu
     private static function buildMenuItems(): array
     {
         return [
-            'Dashboard'    => new MenuItem(gettext('Dashboard'), 'Menu.php', true, 'fa-tachometer-alt'),
+            'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-tachometer-alt'),
             'Calendar'     => self::getCalendarMenu(),
             'People'       => self::getPeopleMenu(),
             'Groups'       => self::getGroupMenu(),

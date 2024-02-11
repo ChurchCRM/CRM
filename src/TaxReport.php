@@ -19,10 +19,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::redirect('Menu.php');
-    exit;
-}
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly'));
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Tax Report');
@@ -51,7 +48,7 @@ if (isset($_POST['Submit'])) {
             <div class="col-sm-offset-2 col-sm-8">
                 <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
                 <button type="button" class="btn btn-default" name="Cancel"
-                        onclick="javascript:document.location='Menu.php';"><?= gettext('Cancel') ?></button>
+                        onclick="javascript:document.location='v2/dashboard';"><?= gettext('Cancel') ?></button>
             </div>
         </div>
 

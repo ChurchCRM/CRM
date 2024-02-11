@@ -60,7 +60,7 @@ class BackupJob extends JobBase
         );
     }
 
-    public function copyToWebDAV(string $Endpoint, string $Username, string $Password)
+    public function copyToWebDAV(string $Endpoint, string $Username, string $Password): bool
     {
         LoggerUtils::getAppLogger()->info('Beginning to copy backup to: ' . $Endpoint);
 
@@ -78,7 +78,7 @@ class BackupJob extends JobBase
             curl_setopt($ch, CURLOPT_INFILESIZE, $this->BackupFile->getSize());
             LoggerUtils::getAppLogger()->debug('Beginning to send file');
             $time = new ExecutionTime();
-            $result = curl_exec($ch);
+            $result = (bool) curl_exec($ch);
             if (curl_error($ch)) {
                 $error_msg = curl_error($ch);
             }

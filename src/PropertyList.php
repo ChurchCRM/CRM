@@ -35,7 +35,7 @@ switch ($sType) {
         break;
 
     default:
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         exit;
         break;
 }

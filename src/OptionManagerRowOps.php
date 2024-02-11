@@ -29,29 +29,20 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-            RedirectUtils::redirect('Menu.php');
-            exit;
-        }
+        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
         break;
 
     case 'grptypes':
     case 'grproles':
-        if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-            RedirectUtils::redirect('Menu.php');
-            exit;
-        }
+        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
         break;
 
     case 'custom':
     case 'famcustom':
-        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-            RedirectUtils::redirect('Menu.php');
-            exit;
-        }
+        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
         break;
     default:
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         break;
 }
 
@@ -82,7 +73,7 @@ switch ($mode) {
         $sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = " . $listID;
         $rsTemp = RunQuery($sSQL);
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::redirect('Menu.php');
+            RedirectUtils::redirect('v2/dashboard');
             break;
         }
 
@@ -160,7 +151,7 @@ switch ($sAction) {
 
         // If no valid action was specified, abort
     default:
-        RedirectUtils::redirect('Menu.php');
+        RedirectUtils::redirect('v2/dashboard');
         break;
 }
 
