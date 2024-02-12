@@ -12,12 +12,12 @@ $optionTags = [
     '<option value="" disabled>--------------------</option>',
 ];
 $Country = Countries::getCountryByName($sCountry);
-if (! $Country instanceof Country) {
+if (!$Country instanceof Country) {
     LoggerUtils::getAppLogger()->warning("Lookup of <" . $sCountry . "> returns value not of Country class?");
 } else {
-        $lowerCountryCode = strtolower($Country->getCountryCode());
-        // Must cast to lowercase because ultimately this looks up files with lc names
-        $TheStates = new States($lowerCountryCode);
+    $lowerCountryCode = strtolower($Country->getCountryCode());
+    // Must cast to lowercase because ultimately this looks up files with lc names
+    $TheStates = new States($lowerCountryCode);
     foreach ($TheStates->getNames() as $state) {
         $selected = '';
         if ($sState === $state) {
