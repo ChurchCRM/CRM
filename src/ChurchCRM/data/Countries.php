@@ -303,7 +303,8 @@ class Countries
         self::initializeCountries();
         $result = array_filter(self::$countries, fn ($e): bool => $e->getCountryName() === $CountryName);
         if (count($result) === 1) {
-            return $result[0];
+            // Note that array_values() is needed because array_filter does not return  continuous array
+            return array_values($result)[0];
         }
 
         throw new \Exception(gettext('Invalid country name supplied'));
