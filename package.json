@@ -85,7 +85,7 @@
         "jquery-validation": "^1.19.5",
         "node-sass": "^9.0.0",
         "pace-js": "^1.2.4",
-        "react-bootstrap": "^2.9.2",
+        "react-bootstrap": "^2.10.0",
         "react-datepicker": "^4.25.0",
         "react-select": "^5.7.7",
         "select2": "^4.0.13"
