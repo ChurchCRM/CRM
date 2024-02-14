@@ -21,7 +21,6 @@ $(".jsonSettingsEdit").on("click", function (event) {
     var cfgvalue = jQuery.parseJSON(
         $("input[name='new_value[" + cfgid + "]']").val(),
     );
-    console.log(cfgvalue);
     $("#JSONSettingsDiv").html("");
     $.each(cfgvalue, function (key, value) {
         $("#JSONSettingsDiv").append(getRender(key, value, 0));

@@ -27,7 +27,6 @@ function doBackup(isRemote) {
         };
         $("#backupstatus").css("color", "orange");
         $("#backupstatus").html("Backup Running, Please wait.");
-        console.log(formData);
 
         //process the form
         window.CRM.APIRequest({
