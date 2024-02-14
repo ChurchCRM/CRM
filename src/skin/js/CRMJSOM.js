@@ -394,12 +394,11 @@ window.CRM.groups = {
                 window.CRM.groups
                     .getRoles(selectOptions.GroupID)
                     .done(function (rdata) {
-                        rolesList = $.map(rdata, function (item) {
-                            var o = {
+                        rolesList = rdata.map(function (item) {
+                            return {
                                 text: i18next.t(item.OptionName), // to translate the Teacher and Student in localize text
                                 id: item.OptionId,
                             };
-                            return o;
                         });
                         $("#targetRoleSelection").select2({
                             data: rolesList,
@@ -418,7 +417,6 @@ window.CRM.groups = {
                     RoleID: $("#targetRoleSelection option:selected").val(),
                     GroupID: $("#targetGroupSelection option:selected").val(),
                 };
-                console.log(selection);
                 selectionCallback(selection);
             };
         }
@@ -426,12 +424,11 @@ window.CRM.groups = {
         bootbox.dialog(options).init(initFunction).show();
 
         window.CRM.groups.get().done(function (rdata) {
-            groupsList = $.map(rdata, function (item) {
-                var o = {
+            groupsList = rdata.map(function (item) {
+                return {
                     text: item.Name,
                     id: item.Id,
                 };
-                return o;
             });
             $("#targetGroupSelection")
                 .parents(".bootbox")
@@ -449,12 +446,11 @@ window.CRM.groups = {
                 window.CRM.groups
                     .getRoles(targetGroupId)
                     .done(function (rdata) {
-                        rolesList = $.map(rdata, function (item) {
-                            var o = {
+                        rolesList = rdata.map(function (item) {
+                            return {
                                 text: i18next.t(item.OptionName), // this is for the Teacher and Student role
                                 id: item.OptionId,
                             };
-                            return o;
                         });
                         $("#targetRoleSelection").select2({
                             data: rolesList,
