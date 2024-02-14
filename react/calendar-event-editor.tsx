@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import CRMEvent from "./interfaces/CRMEvent";
 import ExistingEvent from "./components/Events/ExistingEvent";
 declare global {
   interface Window {
