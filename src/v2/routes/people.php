@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -58,10 +59,25 @@ function listPeople(Request $request, Response $response, array $args): Response
         $familyActiveStatus = 'all';
     }
 
+    $ids = SystemConfig::getValue('sInactiveClasification');
+
+    if ($ids == '') {
+        #worls the same if group doesn't exist and keeps queries tidier
+        $ids = '-1';
+    }
+
+    #parsing the string and reconstruct it back should be enough to mitigate the sql injection vector in here.
+    $str_arr = explode(",", $ids);
+    $inactive_classes = array_filter($str_arr, function ($k) {
+        return is_numeric($k);
+    });
+    $inactive_classes_str = implode(",", $inactive_classes);
+
+
     if ($familyActiveStatus === 'active') {
-        $members->leftJoinFamily()->where('family_fam.fam_DateDeactivated is null');
+        $members->leftJoinFamily()->where('(family_fam.fam_DateDeactivated is null) and (per_cls_id not in (' . $inactive_classes_str . ') )');
     } elseif ($familyActiveStatus === 'inactive') {
-        $members->leftJoinFamily()->where('family_fam.fam_DateDeactivated is not null');
+        $members->leftJoinFamily()->where('(family_fam.fam_DateDeactivated is not null) or (per_cls_id in (' . $inactive_classes_str . ') )');
     }
 
     $members->find();

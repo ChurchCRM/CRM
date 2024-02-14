@@ -16,6 +16,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\InputUtils;
@@ -312,7 +313,13 @@ if ($bErrorFlag) {
 <br>
 <table cellpadding="3" width="30%" align="center">
 
+
 <?php
+    $ids = SystemConfig::getValue('sInactiveClasification');
+    $str_arr = explode (",", $ids);  
+    $inactive_classes = array_filter($str_arr, function ($k) { return is_numeric($k); });
+
+
 for ($row = 1; $row <= $numRows; $row++) {
     ?>
     <tr align="center">
@@ -337,7 +344,9 @@ for ($row = 1; $row <= $numRows; $row++) {
             }
             if ($numRows > 0) {
                 echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=delete"><i class="fa fa-times"></i></a>';
-            } ?>
+            } 
+            ?>
+            
         </td>
         <td class="TextColumn">
             <span class="SmallText">
@@ -354,7 +363,15 @@ for ($row = 1; $row <= $numRows; $row++) {
         <?php
         if ($mode == 'grproles') {
             echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-default" value="' . gettext('Make Default') . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . '&ListID=' . $listID . '&ID=' . $aIDs[$row] . "&Action=makedefault';\" ></td>";
-        } ?>
+        } 
+        if($mode == "classes" ){
+            echo "<td>";
+            $check = in_array($aIDs[$row],$inactive_classes)?"checked":"";
+            echo "<input type=\"checkbox\" onclick=\"$.get('OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=Inactive')\" $check >";
+            echo gettext("Inactive");
+            echo "</td>";
+        }
+        ?>
 
     </tr>
     <?php

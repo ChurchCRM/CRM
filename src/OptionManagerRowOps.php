@@ -16,6 +16,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\dto\SystemConfig;
 
 // Get the Order, ID, Mode, and Action from the querystring
 if (array_key_exists('Order', $_GET)) {
@@ -149,6 +150,22 @@ switch ($sAction) {
         RunQuery($sSQL);
         break;
 
+    case 'Inactive':
+        $ids = SystemConfig::getValue('sInactiveClasification');
+        $str_arr = explode(",", $ids);
+        $inactive_classes = array_filter($str_arr, function ($k) {
+            return is_numeric($k);
+        });
+        if (in_array($iID, $inactive_classes)) {
+            unset($inactive_classes[array_search($iID, $inactive_classes)]);
+        } else {
+            $inactive_classes[] = $iID;
+        }
+
+        $inactive_classes_str = implode(",", $inactive_classes);
+        SystemConfig::setValue('sInactiveClasification', $inactive_classes_str);
+
+        break;
         // If no valid action was specified, abort
     default:
         RedirectUtils::redirect('v2/dashboard');
