@@ -430,7 +430,6 @@ require 'Include/Header.php';
                 $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ? 'true' : 'false' ?>).change();
                 $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>).change();
                 $("#deleteGroupButton").click(function() {
-                  console.log("click");
                   bootbox.setDefaults({
                                     locale: window.CRM.shortLocale}),
                   bootbox.confirm({
