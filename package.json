@@ -71,12 +71,12 @@
         "bootstrap-toggle": "^2.2.2",
         "bootstrap-validator": "^0.11.9",
         "chart.js": "^4.4.1",
-        "ckeditor4": "4.24.0",
+        "ckeditor4": "^4.24.0",
         "daterangepicker": "^3.1.0",
         "flag-icons": "^7.1.0",
         "fullcalendar": "^6.1.10",
         "i18n": "^0.15.1",
-        "i18next": "^23.7.18",
+        "i18next": "^23.8.2",
         "icheck-bootstrap": "^3.0.1",
         "inputmask": "^5.0.8",
         "jquery": "^3.7.1",
@@ -85,8 +85,8 @@
         "jquery-validation": "^1.19.5",
         "node-sass": "^9.0.0",
         "pace-js": "^1.2.4",
-        "react-bootstrap": "^2.10.0",
-        "react-datepicker": "^4.25.0",
+        "react-bootstrap": "^2.10.1",
+        "react-datepicker": "^6.1.0",
         "react-select": "^5.7.7",
         "select2": "^4.0.13"
     },
@@ -112,16 +112,16 @@
         "i18next-parser": "^8.12.0",
         "node-sha1": "^1.0.1",
         "npm-run-all": "^4.1.5",
-        "prettier": "^3.2.2",
+        "prettier": "^3.2.5",
         "tar": "^6.1.12",
         "ts-loader": "^9.5.1",
         "typescript": "^5.3.3",
-        "webpack": "^5.76.0",
+        "webpack": "^5.90.1",
         "webpack-cli": "^5.0.0"
     },
     "optionalDependencies": {
         "cy-verify-downloads": "^0.2.3",
-        "cypress": "^13.6.3",
+        "cypress": "^13.6.4",
         "grunt-poeditor-gd": "^0.2.1"
     }
 }
