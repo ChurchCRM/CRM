@@ -10,6 +10,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\MICRFunctions;
 use ChurchCRM\model\ChurchCRM\Deposit;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
@@ -52,14 +53,18 @@ class FinancialService
     public function setDeposit(string $depositType, string $depositComment, string $depositDate, $iDepositSlipID = null, $depositClosed = false): void
     {
         if ($iDepositSlipID) {
-            $sSQL = "UPDATE deposit_dep SET dep_Date = '" . $depositDate . "', dep_Comment = '" . $depositComment . "', dep_EnteredBy = " . AuthenticationManager::getCurrentUser()->getId() . ', dep_Closed = ' . intval($depositClosed) . ' WHERE dep_ID = ' . $iDepositSlipID . ';';
-            $bGetKeyBack = false;
+            $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
+            $deposit
+                ->setDate($depositDate)
+                ->setComment($depositComment)
+                ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
+                ->setClosed(intval($depositClosed));
+            $deposit->save();
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
                 $q = 'DELETE FROM pledge_plg WHERE plg_depID = ' . $iDepositSlipID . ' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
                 RunQuery($q);
             }
-            RunQuery($sSQL);
         } else {
             $deposit = new Deposit();
             $deposit
@@ -68,10 +73,9 @@ class FinancialService
                 ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setType($depositType);
             $deposit->save();
+            $deposit->reload();
 
-            $sSQL = 'SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep';
-            $rsDepositSlipID = RunQuery($sSQL);
-            $iDepositSlipID = mysqli_fetch_array($rsDepositSlipID)[0];
+            $iDepositSlipID = $deposit->getId();
         }
         $_SESSION['iCurrentDeposit'] = $iDepositSlipID;
     }

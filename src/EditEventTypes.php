@@ -20,6 +20,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -51,8 +52,9 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $editing = 'FALSE';
             $eName = $_POST['newEvtName'];
             $theID = $_POST['EN_tyid'];
-            $sSQL = "UPDATE event_types SET type_name='" . InputUtils::legacyFilterInput($eName) . "' WHERE type_id='" . InputUtils::legacyFilterInput($theID) . "'";
-            RunQuery($sSQL);
+            $eventType = EventTypeQuery::create()->findOneById(InputUtils::legacyFilterInput($theID));
+            $eventType->setName(InputUtils::legacyFilterInput($eName));
+            $eventType->save();
             $theID = '';
             $_POST['Action'] = '';
             break;
@@ -61,8 +63,9 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $editing = 'FALSE';
             $eTime = $_POST['newEvtStartTime'];
             $theID = $_POST['EN_tyid'];
-            $sSQL = "UPDATE event_types SET type_defstarttime='" . InputUtils::legacyFilterInput($eTime) . "' WHERE type_id='" . InputUtils::legacyFilterInput($theID) . "'";
-            RunQuery($sSQL);
+            $eventType = EventTypeQuery::create()->findOneById(InputUtils::legacyFilterInput($theID));
+            $eventType->setDefStartTime(InputUtils::legacyFilterInput($eTime));
+            $eventType->save();
             $theID = '';
             $_POST['Action'] = '';
             break;
