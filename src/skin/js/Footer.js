@@ -56,7 +56,6 @@ $("document").ready(function () {
 
     $(document).on("click", ".emptyCart", function (e) {
         window.CRM.cart.empty(function (data) {
-            console.log(data.cartPeople);
             $(data.cartPeople).each(function (index, data) {
                 personButton = $("a[data-cartpersonid='" + data + "']");
                 $(personButton).addClass("AddToPeopleCart");

@@ -52,7 +52,6 @@ $(".fundSplitInputBox").on("change", function () {
         grandtotal += fundval * 1;
     });
     if (formatCurrency(grandtotal) === formatCurrency($("#grandTotal").val())) {
-        console.log("split value is OK");
         $("#FundSelection .box-header h4").removeClass("fa fa-exclamation");
         $("#FundSelection .box-header h4").addClass("fa fa-check");
     } else {
@@ -63,7 +62,6 @@ $(".fundSplitInputBox").on("change", function () {
 
 $(document).ready(function () {
     $("#MatchEnvelope").click(function () {
-        console.log("matchenvelopecliked");
         $.ajax({
             type: "GET", // define the type of HTTP verb we want to use (POST for our form)
             url:
@@ -72,7 +70,6 @@ $(document).ready(function () {
             dataType: "json", // what type of data do we expect back from the server
             encode: true,
         }).done(function (data) {
-            console.log(data);
             $("[name=FamilyName]").val(data.Name);
             $("[name=FamilyID]:eq(1)").val(data.fam_ID);
         });
@@ -87,7 +84,6 @@ $(document).ready(function () {
             dataType: "json", // what type of data do we expect back from the server
             encode: true,
         }).done(function (data) {
-            console.log(data);
             $("[name=FamilyName]").val(data.fam_Name);
             $("[name=CheckNo]").val(data.CheckNumber);
         });
@@ -101,9 +97,7 @@ $(document).ready(function () {
         var funds = new Array();
         if ($("select[name=FundSplit]").val() == "0") {
             $(".fundrow").each(function (i, el) {
-                console.log($(this).attr("id"));
                 var fundID = $(this).attr("id").split("_")[1];
-                console.log(fundID);
                 var amount = $("input[name=" + fundID + "_Amount]").val();
                 var nondedamount = $(
                     "input[name=" + fundID + "_NonDeductible]",
@@ -129,7 +123,6 @@ $(document).ready(function () {
     }
 
     function setFundData(funds) {
-        console.log("Fund Split Length: " + funds.length);
         if (funds.length > 1) {
             $("#FundSelection").show();
             $("#SingleComment").hide();
@@ -206,7 +199,6 @@ $(document).ready(function () {
     }
 
     function renderFormData(payment) {
-        console.log("Rendering Payment Data: " + JSON.stringify(payment));
         if (payment.iMethod === "CASH") {
             $("#CashEnter").show();
             $("#CheckEnter").hide();
@@ -216,8 +208,6 @@ $(document).ready(function () {
         }
         setFundData(payment.funds);
         var family = JSON.parse(payment.Family);
-        console.log(family.fam_ID);
-        console.log(family.Name);
         $("[name=FamilyID]:eq(1)").val(family.fam_ID);
         $("input[name=FamilyName]").val(family.Name);
         $("input[name=Date]").val(payment.Date);
@@ -234,8 +224,6 @@ $(document).ready(function () {
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
         var formData = getSubmitFormData();
-
-        console.log(formData);
 
         //process the form
         $.ajax({
@@ -303,7 +291,6 @@ $(document).ready(function () {
         },
     });
     $("#FamilyName").on("select2:select", function (e) {
-        console.log(e);
         $("input[name=FamilyID]").val(e.params.data.familyID);
     });
 });

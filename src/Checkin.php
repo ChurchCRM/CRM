@@ -403,7 +403,6 @@ if (isset($_POST['EventID'])) {
                     dataType: 'json',
                     type: 'GET',
                     success: function (data) {
-                        console.log(data);
                         response($.map(data, function (item) {
                             return {
                                 label: item.text,

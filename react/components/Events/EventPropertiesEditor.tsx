@@ -2,7 +2,6 @@ import * as React from "react";
 import CRMEvent from "../../interfaces/CRMEvent";
 import Calendar from "../../interfaces/Calendar";
 import EventType from "../../interfaces/EventType";
-import { Modal, FormControl } from "react-bootstrap";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
 

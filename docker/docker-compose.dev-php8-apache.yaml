@@ -38,6 +38,8 @@ services:
       - mailserver
     env_file:
       - .env
+    extra_hosts:
+       - host.docker.internal:host-gateway
     depends_on:
       database:
         condition: service_healthy
@@ -58,6 +60,4 @@ services:
       - ${DEV_MAILSERVER_PORT:-1025}:1025
       - ${DEV_MAILSERVER_GUI_PORT:-8025}:8025
     hostname: crm-hostname
-
-
 
