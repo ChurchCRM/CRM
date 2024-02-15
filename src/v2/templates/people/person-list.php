@@ -17,7 +17,13 @@ use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 
 
-function emptyOrUnassigned($stuff){
+/**
+ * This will avoid to call the db twice one to check if empty the other one to return the value
+ * no caching was being done by the ORM so lets keep the value and return if not empty
+ *
+ * @var mixed $stuff
+ */
+function emptyOrUnassigned($stuff) {
     #This will avoid to call the db twice one to check if empty the other one to return the value
     #no caching was being done by the ORM so lets keep the value and return if not empty
     return empty($stuff) ? 'Unassigned' : $stuff;
@@ -180,7 +186,7 @@ foreach ($ListItem as $element) {
                 <?php
             }
             //lets clean all the customs that don't have anyone associated.
-            foreach($CustomList as $key=>$value){
+            foreach($CustomList as $key => $value){
                 if($value > 0) {
                     $tmp[] = $key;
                 }
