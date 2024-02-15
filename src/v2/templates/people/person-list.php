@@ -16,22 +16,23 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 
-
 /**
  * This will avoid to call the db twice one to check if empty the other one to return the value
  * no caching was being done by the ORM so lets keep the value and return if not empty
  *
  * @var mixed $stuff
  */
-function emptyOrUnassigned($stuff) {
+function emptyOrUnassigned($stuff)
+{
     #This will avoid to call the db twice one to check if empty the other one to return the value
     #no caching was being done by the ORM so lets keep the value and return if not empty
     return empty($stuff) ? 'Unassigned' : $stuff;
 }
 
-function emptyOrUnassignedJSON($stuff){
+function emptyOrUnassignedJSON($stuff)
+{
     #Same as above but return json encoded
-    return empty($stuff) ? 'Unassigned' : json_encode($stuff, JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR);
+    return empty($stuff) ? 'Unassigned' : json_encode($stuff, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 }
 
 //Set the page title
@@ -56,10 +57,10 @@ foreach ($ListItem as $element) {
     $PropertyList[] = $element->getProName();
 }
 
-$option_name =fn ($t1, $t2) => $t1 .":". $t2;
+$option_name = fn ($t1, $t2) => $t1 . ":" . $t2;
 
 
-$allPersonCustomFields= PersonCustomMasterQuery::create()->find();
+$allPersonCustomFields = PersonCustomMasterQuery::create()->find();
 
 
 
@@ -77,10 +78,10 @@ $CustomList["Unassigned"] = 1;
 foreach ($ListItem as $element) {
     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
         $CustomList[$element["Name"]] = 0;
-        $CustomMapping[$element["Id"]] = array("Name"=>$element["Name"], "Elements"=>array());
-        if(in_array($element["TypeId"], [12]) ){
+        $CustomMapping[$element["Id"]] = ["Name" => $element["Name"], "Elements" => []];
+        if (in_array($element["TypeId"], [12])) {
             $ListElements = ListOptionQuery::create()->select(['OptionName', 'OptionId'])->filterById($element["Special"])->find()->toArray();
-            foreach ($ListElements as $element2){
+            foreach ($ListElements as $element2) {
                 $CustomList[$option_name($element["Name"], $element2["OptionName"])] = 0;
                 $CustomMapping[$element["Id"]]["Elements"][$element2["OptionId"]] = $element2["OptionName"];
             }
@@ -185,13 +186,13 @@ foreach ($ListItem as $element) {
                 <?php
             }
             //lets clean all the customs that don't have anyone associated.
-            foreach($CustomList as $key => $value){
-                if($value > 0) {
+            foreach ($CustomList as $key => $value) {
+                if ($value > 0) {
                     $tmp[] = $key;
                 }
             }
-            $CustomList=$tmp;
-            
+            $CustomList = $tmp;
+
 
             ?>
             </tr>
