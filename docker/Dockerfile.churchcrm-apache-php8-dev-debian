@@ -16,7 +16,7 @@ RUN apt-get update && \
 RUN docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
-RUN docker-php-ext-install -j$(nproc) gd
+RUN docker-php-ext-install -j$(nproc) gd && pecl install xdebug && docker-php-ext-enable xdebug
 
 COPY ./apache/default.conf /etc/apache2/apache2.conf
 RUN a2enmod rewrite
