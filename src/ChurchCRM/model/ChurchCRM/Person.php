@@ -573,11 +573,8 @@ class Person extends BasePerson implements PhotoInterface
     /**
      * @return string[]
      */
-    public function getCustomFields(&$allPersonCustomFields, &$customMapping, &$CustomList, $name_func): array
+    public function getCustomFields($allPersonCustomFields, $customMapping, &$CustomList, $name_func): array
     {
-        // Moving this up so we don't have to this once per person instead we do it once and it's done
-        //$allPersonCustomFields= PersonCustomMasterQuery::create()->find();
-
         // add custom fields to person_custom table since they are not defined in the propel schema
         $rawQry = PersonCustomQuery::create();
         foreach ($allPersonCustomFields as $customfield) {
@@ -591,18 +588,16 @@ class Person extends BasePerson implements PhotoInterface
         // get custom column names and values
         $personCustom = [];
         if ($thisPersonCustomFields) {
-            #Lets use the map created instead of querying the column name
+            //Lets use the map created instead of querying the column name
             foreach ($thisPersonCustomFields->getVirtualColumns() as $column => $value) {
-                //we tested security just before adding the columns should be fine to not test again after .01 seconds
-                //if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 if (!empty($value)) {
-                    $temp = $customMapping[$column]["Name"];
+                    $temp = $customMapping[$column]['Name'];
                     $personCustom[] = $temp;
                     $CustomList[$temp] += 1;
 
 
-                    if (array_key_exists($value, $customMapping[$column]["Elements"])) {
-                        $temp = $name_func($customMapping[$column]["Name"], $customMapping[$column]["Elements"][$value]);
+                    if (array_key_exists($value, $customMapping[$column]['Elements'])) {
+                        $temp = $name_func($customMapping[$column]['Name'], $customMapping[$column]['Elements'][$value]);
                         $personCustom[] = $temp;
                         $CustomList[$temp] += 1;
                     }

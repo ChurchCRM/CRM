@@ -50,9 +50,8 @@ foreach ($ListItem as $element) {
     $PropertyList[] = $element->getProName();
 }
 
-$option_name =function ($t1, $t2){
-    return $t1 .":". $t2;
-};
+$option_name =fn ($t1, $t2) => $t1 .":". $t2;
+
 
 $allPersonCustomFields= PersonCustomMasterQuery::create()->find();
 
@@ -62,9 +61,9 @@ $allPersonCustomFields= PersonCustomMasterQuery::create()->find();
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity', 'Id', 'TypeId', 'Special'])->find();
 
 // CREATE A MAPPING FOR CUSTOMS LIKE THIS
-# CustomMapping = {"c1":{"Name":"Father of confession", "Elements":{23:"option1", 24:"option2"}}, c2.... }
-# allowing not only for search if has a custom set but also if is set to a given value.
-$CustomMapping[] = array();
+// CustomMapping = {"c1":{"Name":"Father of confession", "Elements":{23:"option1", 24:"option2"}}, c2.... }
+// allowing not only for search if has a custom set but also if is set to a given value.
+$CustomMapping = [];
 
 //setting unassigned to 1 so is not deleted
 $CustomList["Unassigned"] = 1;
@@ -73,7 +72,7 @@ foreach ($ListItem as $element) {
     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
         $CustomList[$element["Name"]] = 0;
         $CustomMapping[$element["Id"]] = array("Name"=>$element["Name"], "Elements"=>array());
-        if(in_array($element["TypeId"], [9, 12]) ){
+        if(in_array($element["TypeId"], [12]) ){
             $ListElements = ListOptionQuery::create()->select(['OptionName', 'OptionId'])->filterById($element["Special"])->find()->toArray();
             foreach ($ListElements as $element2){
                 $CustomList[$option_name($element["Name"], $element2["OptionName"])] = 0;
