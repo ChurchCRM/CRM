@@ -62,11 +62,11 @@ function listPeople(Request $request, Response $response, array $args): Response
     $ids = SystemConfig::getValue('sInactiveClasification');
 
     if ($ids == '') {
-        #worls the same if group doesn't exist and keeps queries tidier
+        //works the same if group doesn't exist and keeps queries tidier
         $ids = '-1';
     }
 
-    #parsing the string and reconstruct it back should be enough to mitigate the sql injection vector in here.
+    //parsing the string and reconstruct it back should be enough to mitigate the sql injection vector in here.
     $str_arr = explode(",", $ids);
     $inactive_classes = array_filter($str_arr, function ($k) {
         return is_numeric($k);
