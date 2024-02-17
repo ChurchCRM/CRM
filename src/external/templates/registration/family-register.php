@@ -26,7 +26,7 @@ if (!empty($sHeader)) {
         position: relative;
     }
 </style>
-<div class="register-box" style="width: 75%;">
+<div class="register-box" style="min-height: 100vh; width: 75%;">
     <div class="register-logo">
         <a href="<?= SystemURLs::getRootPath() ?>/"><?= $headerHTML ?></a>
         <h3><?= gettext("Register your family") ?></h3>
@@ -211,6 +211,7 @@ if (!empty($sHeader)) {
             </section>
         </div>
     </form>
+    <br/>
 </div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery.steps/jquery.steps.min.js"></script>
@@ -220,3 +221,4 @@ if (!empty($sHeader)) {
 <?php
 // Add the page footer
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");
+?>
