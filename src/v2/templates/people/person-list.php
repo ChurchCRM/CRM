@@ -24,11 +24,14 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
  */
 function emptyOrUnassigned($stuff)
 {
-    #This will avoid to call the db twice one to check if empty the other one to return the value
-    #no caching was being done by the ORM so lets keep the value and return if not empty
     return empty($stuff) ? 'Unassigned' : $stuff;
 }
 
+/**
+ * Same as previous but return json encoded
+ *
+ * @var mixed $stuff
+ */
 function emptyOrUnassignedJSON($stuff)
 {
     #Same as above but return json encoded
