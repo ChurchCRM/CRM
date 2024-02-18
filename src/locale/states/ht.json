@@ -1,10 +1,10 @@
 {
-    "": "Artibonite",
-    "": "Centre",
-    "": "Grande'Anse",
-    "": "Nippes",
-    "": "Nord",
-    "": "Ouest",
-    "": "Sud",
-    "": "Sud-Est"
+    "AE": "Artibonite",
+    "CE": "Centre",
+    "GE": "Grande'Anse",
+    "NS": "Nippes",
+    "ND": "Nord",
+    "QT": "Ouest",
+    "SD": "Sud",
+    "ST": "Sud-Est"
 }
