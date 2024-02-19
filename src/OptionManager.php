@@ -315,7 +315,7 @@ if ($bErrorFlag) {
 
 
 <?php
-    $ids = SystemConfig::getValue('sInactiveClasification');
+    $ids = SystemConfig::getValue('sInactiveClassification');
     $str_arr = explode(',', $ids);
     $inactive_classes = array_filter($str_arr, fn($k)=>is_numeric($k));
 
