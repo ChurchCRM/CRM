@@ -4,6 +4,7 @@ require '../Include/Config.php';
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$rootPath = str_replace('/api/index.php', '', $_SERVER['SCRIPT_NAME']);
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
@@ -14,7 +15,7 @@ require __DIR__ . '/dependencies.php';
 $container->compile();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
-$app->setBasePath('/api');
+$app->setBasePath($rootPath . '/api');
 
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
