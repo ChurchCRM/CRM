@@ -61,7 +61,7 @@ function listPeople(Request $request, Response $response, array $args): Response
 
     $ids = SystemConfig::getValue('sInactiveClassification');
 
-    if ($ids == '') {
+    if ($ids === '') {
         //works the same if group doesn't exist and keeps queries tidier
         $ids = '-1';
     }
