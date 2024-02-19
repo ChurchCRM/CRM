@@ -5,6 +5,7 @@ require '../Include/Functions.php';
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$rootPath = str_replace('/v2/index.php', '', $_SERVER['SCRIPT_NAME']);
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
@@ -13,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 $container = new ContainerBuilder();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
-$app->setBasePath('/v2');
+$app->setBasePath($rootPath . '/v2');
 
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
