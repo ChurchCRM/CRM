@@ -12,8 +12,8 @@ if (file_exists('../Include/Config.php')) {
 }
 
 require_once __DIR__ . '/../vendor/autoload.php';
-
 $rootPath = str_replace('/setup/index.php', '', $_SERVER['SCRIPT_NAME']);
+
 SystemURLs::init($rootPath, '', __DIR__ . '/../');
 SystemConfig::init();
 
@@ -21,7 +21,7 @@ $container = new ContainerBuilder();
 $container->compile();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
-$app->setBasePath('/setup');
+$app->setBasePath($rootPath . '/setup');
 
 require __DIR__ . '/../Include/slim/error-handler.php';
 
