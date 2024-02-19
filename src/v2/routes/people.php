@@ -69,9 +69,7 @@ function listPeople(Request $request, Response $response, array $args): Response
     //parsing the string and reconstruct it back should be enough to mitigate the sql injection vector in here.
     $str_arr = explode(",", $ids);
     $inactive_classes = array_filter($str_arr, fn ($k) => is_numeric($k));
-    
     $inactive_classes_str = implode(",", $inactive_classes);
-
 
     if ($familyActiveStatus === 'active') {
         $members->leftJoinFamily()->where('(family_fam.fam_DateDeactivated is null) and (per_cls_id not in (' . $inactive_classes_str . ') )');
