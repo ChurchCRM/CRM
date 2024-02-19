@@ -32,7 +32,7 @@ function emptyOrUnassigned($stuff)
  *
  * @var mixed $stuff
  */
-function emptyOrUnassignedJSON($stuff)
+function emptyOrUnassignedJSON($stuff): string
 {
     #Same as above but return json encoded
     return empty($stuff) ? 'Unassigned' : json_encode($stuff, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
