@@ -154,7 +154,7 @@ switch ($sAction) {
         $ids = SystemConfig::getValue('sInactiveClasification');
         $str_arr = explode(',', $ids);
 
-        $inactive_classes = array_filter($str_arr, fn($k) => is_numeric($k));
+        $inactive_classes = array_filter($str_arr, fn ($k) => is_numeric($k));
 
         if (in_array($iID, $inactive_classes)) {
             unset($inactive_classes[array_search($iID, $inactive_classes)]);
