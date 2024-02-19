@@ -364,7 +364,7 @@ for ($row = 1; $row <= $numRows; $row++) {
         if ($mode == 'grproles') {
             echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-default" value="' . gettext('Make Default') . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . '&ListID=' . $listID . '&ID=' . $aIDs[$row] . "&Action=makedefault';\" ></td>";
         }
-        if ($mode == "classes") {
+        if ($mode === 'classes') {
             echo "<td>";
             $check = in_array($aIDs[$row], $inactive_classes) ? "checked" : "";
             echo "<input type=\"checkbox\" onclick=\"$.get('OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=Inactive')\" $check >";
