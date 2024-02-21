@@ -916,8 +916,11 @@ function ParseDate(string $sDate, int $iDateMode): array
     return $aDate;
 }
 
-function GetAge($Month, $Day, $Year): bool
+function GetAge($Month, $Day, $Year): int
 {
+    if ($Year == null) {
+        return -1;
+    }
     if ($Year > 0) {
         if ($Year == date('Y')) {
             return 0;
