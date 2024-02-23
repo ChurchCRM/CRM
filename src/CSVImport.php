@@ -127,11 +127,9 @@ if (isset($_POST['UploadCSV'])) {
         $csvError = gettext('No file selected for upload.');
     } else {
         // Valid file, so save it and display the import mapping form.
-        $csvTempFile = 'import.csv';
-        $system_temp = ini_get('session.save_path');
-        if (strlen($system_temp) > 0) {
-            $csvTempFile = $system_temp . '/' . $csvTempFile;
-        }
+        // Use a temp filename in the system temp dir, and save in SESSION
+        $csvTempFile = tempnam(sys_get_temp_dir(), 'csvimport');
+        $_SESSION['csvTempFile'] = $csvTempFile;
         move_uploaded_file($_FILES['CSVfile']['tmp_name'], $csvTempFile);
 
         // create the file pointer
@@ -196,10 +194,11 @@ if (isset($_POST['UploadCSV'])) {
         }
 
         // add select boxes for import destination mapping
+        // and provide with unique id to assist with testing
         for ($col = 0; $col < $numCol; $col++) {
             ?>
             <td>
-            <select name="<?= 'col' . $col ?>" class="columns">
+            <select id="<?= 'SelField' . $col ?>" name="<?= 'col' . $col ?>" class="columns">
                 <option value="0"><?= gettext('Ignore this Field') ?></option>
                 <option value="1"><?= gettext('Title') ?></option>
                 <option value="2"><?= gettext('First Name') ?></option>
@@ -288,14 +287,10 @@ if (isset($_POST['DoImport'])) {
     $bHasCustom = false;
     $bHasFamCustom = false;
 
-    $csvTempFile = 'import.csv';
-    $system_temp = ini_get('session.save_path');
-    if (strlen($system_temp) > 0) {
-        $csvTempFile = $system_temp . '/' . $csvTempFile;
-    }
+    //Get the temp filename stored in the session
+    $csvTempFile = $_SESSION['csvTempFile'];
 
     $Families = [];
-
     // make sure the file still exists
     if (file_exists($csvTempFile)) {
         // create the file pointer
