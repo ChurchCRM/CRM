@@ -602,7 +602,6 @@ class Person extends BasePerson implements PhotoInterface
                         $CustomList[$temp] += 1;
                     }
                 }
-                //}
             }
         }
 

@@ -24,14 +24,16 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
  */
 function emptyOrUnassigned($stuff)
 {
-    #This will avoid to call the db twice one to check if empty the other one to return the value
-    #no caching was being done by the ORM so lets keep the value and return if not empty
     return empty($stuff) ? 'Unassigned' : $stuff;
 }
 
-function emptyOrUnassignedJSON($stuff)
+/**
+ * Same as previous but return json encoded
+ *
+ * @var mixed $stuff
+ */
+function emptyOrUnassignedJSON($stuff): string
 {
-    #Same as above but return json encoded
     return empty($stuff) ? 'Unassigned' : json_encode($stuff, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 }
 
@@ -57,7 +59,7 @@ foreach ($ListItem as $element) {
     $PropertyList[] = $element->getProName();
 }
 
-$option_name = fn ($t1, $t2) => $t1 . ":" . $t2;
+$option_name = fn (string $t1, string $t2) => $t1 . ':' . $t2;
 
 
 $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
