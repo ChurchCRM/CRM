@@ -151,7 +151,7 @@ switch ($sAction) {
         break;
 
     case 'Inactive':
-        $ids = SystemConfig::getValue('sInactiveClasification');
+        $ids = SystemConfig::getValue('sInactiveClassification');
         $str_arr = explode(",", $ids);
         $inactive_classes = array_filter($str_arr, function ($k) {
             return is_numeric($k);
@@ -163,7 +163,7 @@ switch ($sAction) {
         }
 
         $inactive_classes_str = implode(",", $inactive_classes);
-        SystemConfig::setValue('sInactiveClasification', $inactive_classes_str);
+        SystemConfig::setValue('sInactiveClassification', $inactive_classes_str);
 
         break;
         // If no valid action was specified, abort
