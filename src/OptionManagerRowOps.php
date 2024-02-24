@@ -151,18 +151,18 @@ switch ($sAction) {
         break;
 
     case 'Inactive':
-        $ids = SystemConfig::getValue('sInactiveClassification');
-        $str_arr = explode(",", $ids);
-        $inactive_classes = array_filter($str_arr, function ($k) {
-            return is_numeric($k);
-        });
+        $ids = SystemConfig::getValue('sInactiveClasification');
+        $str_arr = explode(',', $ids);
+
+        $inactive_classes = array_filter($str_arr, fn ($k) => is_numeric($k));
+
         if (in_array($iID, $inactive_classes)) {
             unset($inactive_classes[array_search($iID, $inactive_classes)]);
         } else {
             $inactive_classes[] = $iID;
         }
 
-        $inactive_classes_str = implode(",", $inactive_classes);
+        $inactive_classes_str = implode(',', $inactive_classes);
         SystemConfig::setValue('sInactiveClassification', $inactive_classes_str);
 
         break;
