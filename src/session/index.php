@@ -15,11 +15,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$rootPath = str_replace('/session/index.php', '', $_SERVER['SCRIPT_NAME']);
 $container = new ContainerBuilder();
 $container->compile();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
-$app->setBasePath('/session');
+$app->setBasePath($rootPath . '/session');
 
 
 require __DIR__ . '/../Include/slim/error-handler.php';
