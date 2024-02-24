@@ -3,7 +3,7 @@ context("CSVImport", () => {
     cy.loginAdmin("CSVImport.php");
     cy.get("input[type='file']").selectFile('cypress/data/test_import.csv')
     cy.get("input[type='submit']").click();
-    cy.contains('Total number of rows in the CSV file:2');
+    cy.contains('Total number of rows in the CSV file:3');
     cy.get('#SelField0').select("Last Name",{force:true});
     cy.get('#SelField1').select("First Name",{force:true});
     cy.get('#SelField2').select("Address 1",{force:true});
