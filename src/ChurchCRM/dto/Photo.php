@@ -13,7 +13,7 @@ class Photo
     private $id;
     private $photoURI;
     private ?string $photoThumbURI = null;
-    private ?string $thubmnailPath = null;
+    private ?string $thumbnailPath = null;
     private $photoContentType;
     private $thumbnailContentType;
     private bool $remotesEnabled;
@@ -50,8 +50,8 @@ class Photo
     private function setURIs($photoPath): void
     {
         $this->photoURI = $photoPath;
-        $this->thubmnailPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/';
-        $this->photoThumbURI = $this->thubmnailPath . $this->id . '.jpg';
+        $this->thumbnailPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/';
+        $this->photoThumbURI = $this->thumbnailPath . $this->id . '.jpg';
     }
 
     private function shouldRefreshPhotoFile(string $photoFile): bool
@@ -191,8 +191,8 @@ class Photo
 
     private function ensureThumbnailsPath(): void
     {
-        if (!file_exists($this->thubmnailPath)) {
-            mkdir($this->thubmnailPath);
+        if (!file_exists($this->thumbnailPath)) {
+            mkdir($this->thumbnailPath);
         }
     }
 
