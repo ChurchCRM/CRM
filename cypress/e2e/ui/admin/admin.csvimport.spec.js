@@ -1,9 +1,10 @@
-context("CSVImport", () => {
-  it("Verify CSV Import", () => {
-    cy.loginAdmin("CSVImport.php");
-    cy.get("input[type='file']").selectFile('cypress/data/test_import.csv')
-    cy.get("input[type='submit']").click();
+context('CSVImport', () => {
+  it('Verify CSV Import', () => {
+    cy.loginAdmin('CSVImport.php');
+    cy.get('#CSVFileChooser').selectFile('cypress/data/test_import.csv')
+    cy.get('#UploadCSVBtn').click();
     cy.contains('Total number of rows in the CSV file:3');
+    // It is not clear why, but it seems that force:true was needed to get the selections to work
     cy.get('#SelField0').select("Last Name",{force:true});
     cy.get('#SelField1').select("First Name",{force:true});
     cy.get('#SelField2').select("Address 1",{force:true});
@@ -14,7 +15,7 @@ context("CSVImport", () => {
     cy.get('#SelField7').select("Birth Date",{force:true});
     cy.get('#SelField8').select("Home Phone",{force:true});
     // Now that we have mapped the right fields, do the import
-    cy.get("input[type='submit']").click();
+    cy.get('#DoImportBtn').click();
     cy.contains('Data import successful.');
   });
 });
