@@ -272,7 +272,7 @@ if (isset($_POST['UploadCSV'])) {
         </select>
         <?= gettext('Classification') ?>
         <BR><BR>
-        <input type="submit" class="btn btn-primary" value="<?= gettext('Perform Import') ?>" name="DoImport">
+        <input id="DoImportBtn" type="submit" class="btn btn-primary" value="<?= gettext('Perform Import') ?>" name="DoImport">
         </form>
 
         <?php
@@ -821,9 +821,9 @@ if ($iStage === 1) {
     // Display the select file form?>
     <p style="color: red"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
-            <input class="icTinyButton" type="file" name="CSVfile">
+            <input id="CSVFileChooser" class="icTinyButton" type="file" name="CSVfile">
             <p></p>
-            <input type="submit" class="btn btn-success" value=" <?= gettext('Upload CSV File') ?> " name="UploadCSV">
+            <input id="UploadCSVBtn" type="submit" class="btn btn-success" value=" <?= gettext('Upload CSV File') ?> " name="UploadCSV">
         </form>
     </p>
     <?php
