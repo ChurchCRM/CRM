@@ -55,6 +55,9 @@ context("Standard Family", () => {
         cy.get('input[name="Address1"').type("4222 Clinton Way");
         cy.get('input[name="City"]').clear().type("Los Angelas");
         cy.get('select[name="State"]').select("CA", { force: true });
+        // Add clearing of Lat/Long to verify these can be null, instead of default 0
+        cy.get('input[name="Latitude"]').clear();
+        cy.get('input[name="Longitude"]').clear();
         cy.get('input[name="FirstName1"]').type("Mike");
         cy.get('input[name="FirstName2"]').type("Carol");
         cy.get('input[name="FirstName3"]').type("Alice");
