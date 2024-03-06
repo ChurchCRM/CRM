@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\Utils\MiscUtils;
+
 class OpenLPNotification
 {
     protected $OLPAddress;
@@ -26,7 +28,7 @@ class OpenLPNotification
         return base64_encode(SystemConfig::getValue('sOLPUserName') . ':' . SystemConfig::getValue('sOLPPassword'));
     }
 
-    public function send()
+    public function send(): string
     {
         $headers = [
             'http' => [
@@ -47,6 +49,8 @@ class OpenLPNotification
         $url = $this->OLPAddress . '/api/alert?data=' . urlencode(json_encode($request));
         $context = stream_context_create($headers);
         $response = file_get_contents($url, false, $context);
+
+        MiscUtils::throwIfFailed($response);
 
         return $response;
     }
