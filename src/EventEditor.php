@@ -528,10 +528,10 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     <td colspan="3" class="TextColumn">
                         <input type="radio" name="EventStatus" value="0" <?php if ($iEventStatus == 0) {
                             echo 'checked';
-                        } ?>/> <?= _('Active')?>
+                                                                         } ?>/> <?= _('Active')?>
                         <input type="radio" name="EventStatus" value="1" <?php if ($iEventStatus == 1) {
                             echo 'checked';
-                        } ?>/> <?= _('Inactive')?>
+                                                                         } ?>/> <?= _('Inactive')?>
                     </td>
                 </tr>
 

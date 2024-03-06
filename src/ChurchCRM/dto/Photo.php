@@ -47,7 +47,7 @@ class Photo
         imagejpeg($tmp_img, $this->photoThumbURI, 50);
     }
 
-    private function setURIs($photoPath): void
+    private function setURIs(string $photoPath): void
     {
         $this->photoURI = $photoPath;
         $this->thumbnailPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/';
