@@ -127,11 +127,9 @@ if (isset($_POST['UploadCSV'])) {
         $csvError = gettext('No file selected for upload.');
     } else {
         // Valid file, so save it and display the import mapping form.
-        $csvTempFile = 'import.csv';
-        $system_temp = ini_get('session.save_path');
-        if (strlen($system_temp) > 0) {
-            $csvTempFile = $system_temp . '/' . $csvTempFile;
-        }
+        // Use a temp filename in the system temp dir, and save in SESSION
+        $csvTempFile = tempnam(sys_get_temp_dir(), 'csvimport');
+        $_SESSION['csvTempFile'] = $csvTempFile;
         move_uploaded_file($_FILES['CSVfile']['tmp_name'], $csvTempFile);
 
         // create the file pointer
@@ -196,10 +194,11 @@ if (isset($_POST['UploadCSV'])) {
         }
 
         // add select boxes for import destination mapping
+        // and provide with unique id to assist with testing
         for ($col = 0; $col < $numCol; $col++) {
             ?>
             <td>
-            <select name="<?= 'col' . $col ?>" class="columns">
+            <select id="<?= 'SelField' . $col ?>" name="<?= 'col' . $col ?>" class="columns">
                 <option value="0"><?= gettext('Ignore this Field') ?></option>
                 <option value="1"><?= gettext('Title') ?></option>
                 <option value="2"><?= gettext('First Name') ?></option>
@@ -273,7 +272,7 @@ if (isset($_POST['UploadCSV'])) {
         </select>
         <?= gettext('Classification') ?>
         <BR><BR>
-        <input type="submit" class="btn btn-primary" value="<?= gettext('Perform Import') ?>" name="DoImport">
+        <input id="DoImportBtn" type="submit" class="btn btn-primary" value="<?= gettext('Perform Import') ?>" name="DoImport">
         </form>
 
         <?php
@@ -288,14 +287,10 @@ if (isset($_POST['DoImport'])) {
     $bHasCustom = false;
     $bHasFamCustom = false;
 
-    $csvTempFile = 'import.csv';
-    $system_temp = ini_get('session.save_path');
-    if (strlen($system_temp) > 0) {
-        $csvTempFile = $system_temp . '/' . $csvTempFile;
-    }
+    //Get the temp filename stored in the session
+    $csvTempFile = $_SESSION['csvTempFile'];
 
     $Families = [];
-
     // make sure the file still exists
     if (file_exists($csvTempFile)) {
         // create the file pointer
@@ -826,9 +821,9 @@ if ($iStage === 1) {
     // Display the select file form?>
     <p style="color: red"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
-            <input class="icTinyButton" type="file" name="CSVfile">
+            <input id="CSVFileChooser" class="icTinyButton" type="file" name="CSVfile">
             <p></p>
-            <input type="submit" class="btn btn-success" value=" <?= gettext('Upload CSV File') ?> " name="UploadCSV">
+            <input id="UploadCSVBtn" type="submit" class="btn btn-success" value=" <?= gettext('Upload CSV File') ?> " name="UploadCSV">
         </form>
     </p>
     <?php
@@ -916,8 +911,11 @@ function ParseDate(string $sDate, int $iDateMode): array
     return $aDate;
 }
 
-function GetAge($Month, $Day, $Year): bool
+function GetAge(int $Month, int $Day, ?int $Year): int
 {
+    if ($Year === null) {
+        return -1;
+    }
     if ($Year > 0) {
         if ($Year == date('Y')) {
             return 0;

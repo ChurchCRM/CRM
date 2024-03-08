@@ -4617,10 +4617,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Vô hiệu thuộc tính Ban/Mục vụ đặc biệt"
 
 #: 
-msgid "'Default Option'"
-msgstr "'Tùy chọn mặc định'"
-
-#: 
 msgid "Text Group"
 msgstr "Nhóm văn bản"
 

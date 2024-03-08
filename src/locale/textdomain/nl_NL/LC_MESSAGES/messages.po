@@ -4613,10 +4613,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Uitschakelen van de groep specifieke eigenschappen"
 
 #: 
-msgid "'Default Option'"
-msgstr "Standaard optie"
-
-#: 
 msgid "Text Group"
 msgstr "Tekst groep"
 

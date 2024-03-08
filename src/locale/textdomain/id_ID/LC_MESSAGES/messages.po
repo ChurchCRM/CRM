@@ -4603,10 +4603,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Nonaktifkan Properti Spesifik Grup"
 
 #: 
-msgid "'Default Option'"
-msgstr "'Pilihan standar'"
-
-#: 
 msgid "Text Group"
 msgstr "Grup Teks"
 
