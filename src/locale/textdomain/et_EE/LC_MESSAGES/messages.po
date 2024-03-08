@@ -4600,10 +4600,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Keela rühmaspetsiifilised atribuudid"
 
 #: 
-msgid "'Default Option'"
-msgstr "'Vaikevalik'"
-
-#: 
 msgid "Text Group"
 msgstr "Tekstigrupp"
 

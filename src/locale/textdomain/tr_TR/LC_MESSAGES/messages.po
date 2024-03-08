@@ -4597,10 +4597,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Gruba özgü özellikleri devre dışı bırakın"
 
 #: 
-msgid "'Default Option'"
-msgstr "'Varsayılan seçenek'"
-
-#: 
 msgid "Text Group"
 msgstr "Metin grubu"
 

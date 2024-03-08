@@ -4733,10 +4733,6 @@ msgid "Disable Group Specific Properties"
 msgstr "禁用群組特定的屬性"
 
 #: 
-msgid "'Default Option'"
-msgstr "'默認選項'"
-
-#: 
 msgid "Text Group"
 msgstr "文字組"
 
