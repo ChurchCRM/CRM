@@ -159,10 +159,23 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                 }
             } else {
                 if ($undupCount == 0) {
-                    $sSQL = 'UPDATE user_usr SET usr_AddRecords = ' . $AddRecords . ', usr_EditRecords = ' . $EditRecords . ', usr_DeleteRecords = ' . $DeleteRecords . ', usr_MenuOptions = ' . $MenuOptions . ', usr_ManageGroups = ' . $ManageGroups . ', usr_Finance = ' . $Finance . ', usr_Notes = ' . $Notes . ', usr_Admin = ' . $Admin . ', usr_Style = "' . $Style . '", usr_UserName = "' . $sUserName . '", usr_EditSelf = "' . $EditSelf . '", usr_Canvasser = ' . $Canvasser . ' WHERE usr_per_ID = ' . $iPersonID;
-                    // Execute the SQL
-                    RunQuery($sSQL);
-                    $user = UserQuery::create()->findPk($iPersonID);
+                    $user = UserQuery::create()->findOneByPersonId($iPersonID);
+                    $user
+                        ->setAddRecords($AddRecords)
+                        ->setEditRecords($EditRecords)
+                        ->setDeleteRecords($DeleteRecords)
+                        ->setMenuOptions($MenuOptions)
+                        ->setManageGroups($ManageGroups)
+                        ->setFinance($Finance)
+                        ->setNotes($Notes)
+                        ->setAdmin($Admin)
+                        ->setUserStyle($Style)
+                        ->setUserName($sUserName)
+                        ->setEditSelf($EditSelf)
+                        ->setCanvasser($Canvasser);
+                    $user->save();
+                    $user->reload();
+
                     $user->createTimeLineNote("updated");
                 } else {
                     // Set the error text for duplicate when currently existing

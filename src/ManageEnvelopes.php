@@ -17,6 +17,7 @@ require 'Include/EnvelopeFunctions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
@@ -46,8 +47,9 @@ if (isset($_POST['Confirm'])) {
         }
     }
     foreach ($envelopesToWrite as $fam_ID => $envelope) {
-        $dSQL = "UPDATE family_fam SET fam_Envelope='" . $envelope . "' WHERE fam_ID='" . $fam_ID . "'";
-        RunQuery($dSQL);
+        $family = FamilyQuery::create()->findOneById($fam_ID);
+        $family->setEnvelope($envelope);
+        $family->save();
     }
 }
 

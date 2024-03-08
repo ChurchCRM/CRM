@@ -438,8 +438,9 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         $tScanString = InputUtils::legacyFilterInput($_POST['ScanInput']);
         $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
         $iFamily = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');
-        $sSQL = 'UPDATE family_fam SET fam_scanCheck="' . $routeAndAccount . '" WHERE fam_ID = ' . $iFamily;
-        RunQuery($sSQL);
+        $family = \ChurchCRM\model\ChurchCRM\FamilyQuery::create()->findOneById($iFamily);
+        $family->setScanCheck($routeAndAccount);
+        $family->save();
     }
 }
 

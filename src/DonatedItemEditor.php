@@ -16,6 +16,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonatedItem;
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -90,14 +91,25 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
         $bGetKeyBack = true;
     // Existing record (update)
     } else {
-        $sSQL = 'UPDATE donateditem_di SET di_FR_ID = ' . $iCurrentFundraiser . ", di_Item = '" . $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ', di_buyer_ID = ' . $iBuyer . ", di_title = '" . html_entity_decode($sTitle) . "', di_description = '" . html_entity_decode($sDescription) . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_minimum = '" . $nMinimumPrice . "', di_picture = '" . mysqli_real_escape_string($cnInfoCentral, $sPictureURL) . "', di_EnteredBy=" . AuthenticationManager::getCurrentUser()->getId() . ", di_EnteredDate = '" . date('YmdHis') . "'";
-        $sSQL .= ' WHERE di_ID = ' . $iDonatedItemID;
-        echo '<br><br><br><br><br><br>' . $sSQL;
+        $donatedItem = DonatedItemQuery::create()->findOneById($iDonatedItemID);
+        $donatedItem
+            ->setFrId($iCurrentFundraiser)
+            ->setItem($sItem)
+            ->setMultibuy($bMultibuy)
+            ->setDonorId($iDonor)
+            ->setBuyerId($iBuyer)
+            ->setTitle(html_entity_decode($sTitle))
+            ->setDescription(html_entity_decode($sDescription))
+            ->setSellprice($nSellPrice)
+            ->setEstprice($nEstPrice)
+            ->setMaterialValue($nMaterialValue)
+            ->setMinimum($nMinimumPrice)
+            ->setPicture($sPictureURL)
+            ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
+            ->setEntereddate(date('YmdHis'));
+        $donatedItem->save();
         $bGetKeyBack = false;
     }
-
-    //Execute the SQL
-    RunQuery($sSQL);
 
     // If this is a new DonatedItem or deposit, get the key back
     if ($bGetKeyBack) {

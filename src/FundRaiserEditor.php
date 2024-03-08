@@ -15,6 +15,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -69,23 +70,22 @@ if (isset($_POST['FundRaiserSubmit'])) {
                 ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
                 ->setEnteredDate(date('YmdHis'));
             $fundraiser->save();
+            $fundraiser->reload();
 
-            $bGetKeyBack = true;
+            $iFundRaiserID = $fundraiser->getId();
         // Existing record (update)
         } else {
-            $sSQL = "UPDATE fundraiser_fr SET fr_date = '" . $dDate . "', fr_title = '" . $sTitle . "', fr_description = '" . $sDescription . "', fr_EnteredBy = " . AuthenticationManager::getCurrentUser()->getId() . ", fr_EnteredDate='" . date('YmdHis') . "' WHERE fr_ID = " . $iFundRaiserID . ';';
-            $bGetKeyBack = false;
+            $fundraiser = FundRaiserQuery::create()->findOneById($iFundRaiserID);
+            $fundraiser
+                ->setDate($dDate)
+                ->setTitle($sTitle)
+                ->setDescription($sDescription)
+                ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
+                ->setEnteredDate(date('YmdHis'));
+            $fundraiser->save();
         }
-        //Execute the SQL
-        RunQuery($sSQL);
 
-        // If this is a new fundraiser, get the key back
-        if ($bGetKeyBack) {
-            $sSQL = 'SELECT MAX(fr_ID) AS iFundRaiserID FROM fundraiser_fr';
-            $rsFundRaiserID = RunQuery($sSQL);
-            extract(mysqli_fetch_array($rsFundRaiserID));
-            $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
-        }
+        $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 
         if (isset($_POST['FundRaiserSubmit'])) {
             if ($linkBack != '') {

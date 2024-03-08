@@ -13,6 +13,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -42,8 +43,11 @@ if (isset($_POST['EnterWinners'])) {
         $di = $_POST["Item$row"];
         $price = $_POST["SellPrice$row"];
         if ($buyer > 0 && $di > 0 && $price > 0) {
-            $sSQL = "UPDATE donateditem_di SET di_buyer_id=$buyer, di_sellprice=$price WHERE di_ID=$di";
-            RunQuery($sSQL);
+            $donatedItem = DonatedItemQuery::create()->findOneById($di);
+            $donatedItem
+                ->setBuyerId($buyer)
+                ->setSellprice($price);
+            $donatedItem->save();
         }
     }
     RedirectUtils::redirect($linkBack);

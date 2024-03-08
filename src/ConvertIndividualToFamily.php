@@ -26,6 +26,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
@@ -98,21 +99,19 @@ while ($aRow = mysqli_fetch_array($rsList)) {
     echo '<br><br>';
 
     // Now update person record
-    $sSQL = 'UPDATE person_per ' .
-            "SET per_fam_ID='$iFamilyID'," .
-            '    per_Address1=NULL,' .
-            '    per_Address2=NULL,' .
-            '    per_City=NULL,' .
-            '    per_State=NULL,' .
-            '    per_Zip=NULL,' .
-            '    per_Country=NULL,' .
-            '    per_HomePhone=NULL,' .
-            '    per_DateLastEdited=NOW(),' .
-            "    per_EditedBy='$curUserId' " .
-            "WHERE per_ID='$per_ID'";
-
-    echo '<br>' . $sSQL;
-    RunQuery($sSQL);
+    $person = PersonQuery::create()->findOneById($per_ID);
+    $person
+        ->setFamId($iFamilyID)
+        ->setAddress1(null)
+        ->setAddress2(null)
+        ->setCity(null)
+        ->setState(null)
+        ->setZip(null)
+        ->setCountry(null)
+        ->setHomePhone(null)
+        ->setDateLastEdited(new \DateTimeImmutable())
+        ->setEditedBy($curUserId);
+    $person->save();
 
     echo '<br><br><br>';
     echo "$per_FirstName $per_LastName (per_ID = $per_ID) is now part of the ";

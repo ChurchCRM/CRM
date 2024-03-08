@@ -21,8 +21,10 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyCustom;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -656,8 +658,10 @@ if (isset($_POST['DoImport'])) {
                     );
                     $Families[$famid] = $fFamily;
                 }
-                $sSQL = 'UPDATE person_per SET per_fam_ID = ' . $famid . ' WHERE per_ID = ' . $per_ID;
-                RunQuery($sSQL);
+
+                $person = PersonQuery::create()->findOneById($per_ID);
+                $person->setFamId($famid);
+                $person->save();
 
                 if ($bHasFamCustom) {
                     // Check if family_custom record exists
@@ -789,26 +793,23 @@ if (isset($_POST['DoImport'])) {
                     default:
                         $iRole = 0;
                 }
-                $sSQL = 'UPDATE person_per SET per_fmr_ID = ' . $iRole . ' WHERE per_ID = ' . $member['personid'];
-                RunQuery($sSQL);
+
+                $person = PersonQuery::create()->findOneById($member['personid']);
+                $person->setFmrId($iRole);
+                $person->save();
             }
 
-            $valuesToUpdate = [];
+            $familyModel = FamilyQuery::create()->findOneById($fid);
             if ($family->WeddingDate !== '') {
-                $valuesToUpdate[] = "fam_WeddingDate='$family->WeddingDate'";
+                $familyModel->setWeddingdate($family->WeddingDate);
             }
             if ($family->Phone !== '') {
-                $valuesToUpdate[] = "fam_HomePhone='$family->Phone'";
+                $familyModel->setHomePhone($family->Phone);
             }
             if ($family->Envelope !== 0) {
-                $valuesToUpdate[] = "fam_Envelope='$family->Envelope'";
+                $familyModel->setEnvelope($family->Envelope);
             }
-            if (!empty($valuesToUpdate)) {
-                $sSQL = 'UPDATE family_fam SET ' .
-                    implode(',', $valuesToUpdate) .
-                    " WHERE fam_ID = $fid";
-                RunQuery($sSQL);
-            }
+            $familyModel->save();
         }
 
         $iStage = 3;

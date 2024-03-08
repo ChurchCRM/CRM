@@ -15,6 +15,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\CanvassData;
+use ChurchCRM\model\ChurchCRM\CanvassDataQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -78,26 +79,22 @@ if (isset($_POST['Submit'])) {
             ->setNotInterested($bNotInterested)
             ->setWhyNotInterested($tWhyNotInterested);
         $canvassData->save();
-
-        $sSQL = 'SELECT MAX(can_ID) AS iCanvassID FROM canvassdata_can';
-        $rsLastEntry = RunQuery($sSQL);
-        $newRec = mysqli_fetch_array($rsLastEntry);
-        $iCanvassID = $newRec['iCanvassID'];
+        $canvassData->reload();
+        $iCanvassID = $canvassData->getId();
     } else {
-        $sSQL = 'UPDATE canvassdata_can SET can_famID=' . $iFamily . ',' .
-                                          'can_Canvasser=' . $iCanvasser . ',' .
-                                          'can_FYID=' . $iFYID . ',' .
-                                          'can_date="' . $dDate . '",' .
-                                          'can_Positive="' . $tPositive . '",' .
-                                          'can_Critical="' . $tCritical . '",' .
-                                          'can_Insightful="' . $tInsightful . '",' .
-                                          'can_Financial="' . $tFinancial . '",' .
-                                          'can_Suggestion="' . $tSuggestion . '",' .
-                                          'can_NotInterested="' . $bNotInterested . '",' .
-                                          'can_WhyNotInterested="' . $tWhyNotInterested .
-                                          '" WHERE can_FamID = ' . $iFamily;
-        //Execute the SQL
-        RunQuery($sSQL);
+        $canvassData = CanvassDataQuery::create()->findOneByFamilyId($iFamily);
+        $canvassData
+            ->setCanvasser($iCanvasser)
+            ->setFyid($iFYID)
+            ->setDate($dDate)
+            ->setPositive($tPositive)
+            ->setCritical($tCritical)
+            ->setInsightful($tInsightful)
+            ->setFinancial($tFinancial)
+            ->setSuggestion($tSuggestion)
+            ->setNotInterested($bNotInterested)
+            ->setWhyNotInterested($tWhyNotInterested);
+        $canvassData->save();
     }
 
     if (isset($_POST['Submit'])) {
