@@ -4600,10 +4600,6 @@ msgid "Disable Group Specific Properties"
 msgstr "خصائص محددة تعطيل المجموعة"
 
 #: 
-msgid "'Default Option'"
-msgstr "'الخيار الافتراضي'"
-
-#: 
 msgid "Text Group"
 msgstr "المجموعة النص"
 

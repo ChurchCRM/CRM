@@ -4599,10 +4599,6 @@ msgid "Disable Group Specific Properties"
 msgstr "የቡድን የተወሰኑ ንብረቶችን አሰናክል"
 
 #: 
-msgid "'Default Option'"
-msgstr "'ነባሪ አማራጭ'"
-
-#: 
 msgid "Text Group"
 msgstr "የጽሑፍ ቡድን"
 

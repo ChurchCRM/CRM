@@ -4703,10 +4703,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Dezactivează proprietățile specifice grupului"
 
 #: 
-msgid "'Default Option'"
-msgstr "'Implicit'"
-
-#: 
 msgid "Text Group"
 msgstr "Grup text"
 

@@ -5574,11 +5574,6 @@ msgstr "Desabilitar Propriedades Específicas do Grupo"
 
 #: 
 #, fuzzy
-msgid "'Default Option'"
-msgstr "'Opção padrão'"
-
-#: 
-#, fuzzy
 msgid "Text Group"
 msgstr "Grupo de texto"
 

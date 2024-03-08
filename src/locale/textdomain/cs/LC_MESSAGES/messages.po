@@ -641,10 +641,6 @@ msgid ", Phone: "
 msgstr ", Telefon:"
 
 #: 
-msgid "'Default Option'"
-msgstr "'Výchozí možnost'"
-
-#: 
 msgid " Since:"
 msgstr "Od:"
 

@@ -6,7 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -4597,10 +4597,6 @@ msgstr "Valor estimado"
 #: 
 msgid "Disable Group Specific Properties"
 msgstr "Deshabilitar propiedades específicas de grupo"
-
-#: 
-msgid "'Default Option'"
-msgstr "'Opción por defecto'"
 
 #: 
 msgid "Text Group"
