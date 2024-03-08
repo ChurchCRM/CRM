@@ -3,7 +3,7 @@
 -- Host: database	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	11.2.2-MariaDB-1:11.2.2+maria~ubu2204
--- Date: Wed, 03 Jan 2024 23:43:44 -0500
+-- Date: Thu, 07 Mar 2024 20:36:58 -0500
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -200,7 +200,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','crmEmailServer:1025'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20240103-232541'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2050,'bEnabledMenuLinks',''),(2060,'IncludeDataInNewPersonNotifications',''),(2061,'bSearchIncludeFamilyCustomProperties',''),(2062,'bBackupExtraneousImages',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20240103-232420'),(2065,'bAllowPrereleaseUpgrade',''),(2069,'bRequire2FA',''),(2071,'bSendUserDeletedEmail',''),(20142,'bHSTSEnable','');
+INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','crmEmailServer:1025'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20240307-203649'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2050,'bEnabledMenuLinks',''),(2060,'IncludeDataInNewPersonNotifications',''),(2061,'bSearchIncludeFamilyCustomProperties',''),(2062,'bBackupExtraneousImages',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20240307-203650'),(2065,'bAllowPrereleaseUpgrade',''),(2069,'bRequire2FA',''),(2071,'bSendUserDeletedEmail',''),(20142,'bHSTSEnable','');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -2222,7 +2222,7 @@ CREATE TABLE `user_usr` (
 LOCK TABLES `user_usr` WRITE;
 /*!40000 ALTER TABLE `user_usr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2024-01-03 23:43:28',363,0,0,0,0,0,0,0,0,1,10,'skin-red',1,1,'2016-01-01',23,5,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(3,'6d6abba93a4ea780f575e39b2ef6281357dd4e0b1a74ff3f459ee52fbb6614d8',0,'2022-12-29 18:40:16',0,0,1,1,1,1,1,1,1,0,10,'skin-yellow-light',0,0,'2016-01-01',26,0,'tony.wade@example.com','JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL),(95,'ed7162b5a395e9ba3f9012eda6e9d2150d5ab76cdb082dc4a1422b4f2da2d102',1,'2022-12-29 21:01:30',0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2024-03-07 20:36:36',365,0,0,0,0,0,0,0,0,1,10,'skin-red',1,1,'2016-01-01',23,5,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(3,'6d6abba93a4ea780f575e39b2ef6281357dd4e0b1a74ff3f459ee52fbb6614d8',0,'2022-12-29 18:40:16',0,0,1,1,1,1,1,1,1,0,10,'skin-yellow-light',0,0,'2016-01-01',26,0,'tony.wade@example.com','JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL),(95,'ed7162b5a395e9ba3f9012eda6e9d2150d5ab76cdb082dc4a1422b4f2da2d102',1,'2022-12-29 21:01:30',0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -2244,7 +2244,7 @@ CREATE TABLE `version_ver` (
   `ver_update_end` datetime DEFAULT NULL,
   PRIMARY KEY (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2254,12 +2254,12 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55'),(20,'5.0.5','2023-10-21 19:04:42','2023-10-21 19:04:42'),(21,'5.1.0','2023-10-31 23:33:49','2023-10-31 23:33:49'),(22,'5.2.2','2023-11-05 12:28:43','2023-11-05 12:28:43'),(23,'5.2.3','2023-11-16 12:39:14','2023-11-16 12:39:14'),(24,'5.3.0','2023-11-18 11:10:21','2023-11-18 11:10:21'),(25,'5.3.1','2023-11-21 02:04:10','2023-11-21 02:04:10'),(27,'5.4.0','2023-12-03 20:27:58','2023-12-03 20:27:58'),(29,'5.4.3','2024-01-03 23:24:10','2024-01-03 23:24:10'),(30,'5.5.0','2024-01-03 23:43:18','2024-01-03 23:43:18');
+INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55'),(20,'5.0.5','2023-10-21 19:04:42','2023-10-21 19:04:42'),(21,'5.1.0','2023-10-31 23:33:49','2023-10-31 23:33:49'),(22,'5.2.2','2023-11-05 12:28:43','2023-11-05 12:28:43'),(23,'5.2.3','2023-11-16 12:39:14','2023-11-16 12:39:14'),(24,'5.3.0','2023-11-18 11:10:21','2023-11-18 11:10:21'),(25,'5.3.1','2023-11-21 02:04:10','2023-11-21 02:04:10'),(27,'5.4.0','2023-12-03 20:27:58','2023-12-03 20:27:58'),(29,'5.4.3','2024-01-03 23:24:10','2024-01-03 23:24:10'),(30,'5.5.0','2024-01-03 23:43:18','2024-01-03 23:43:18'),(31,'5.6.0','2024-03-07 20:35:26','2024-03-07 20:35:26');
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `version_ver` with 28 row(s)
+-- Dumped table `version_ver` with 29 row(s)
 --
 
 --
@@ -2376,4 +2376,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Wed, 03 Jan 2024 23:43:45 -0500
+-- Dump completed on: Thu, 07 Mar 2024 20:36:59 -0500
