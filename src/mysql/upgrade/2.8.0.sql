@@ -1,23 +1,3 @@
-/* make add column if not exists procedure */
-DROP PROCEDURE IF EXISTS AddColumnIfNotExists;
-CREATE PROCEDURE AddColumnIfNotExists(IN tableName VARCHAR(255), IN columnName VARCHAR(255), IN columnDesc VARCHAR(255))
-BEGIN
-    DECLARE columnExists INT;
-
--- Check if the column exists
-SELECT COUNT(*)
-INTO columnExists
-FROM INFORMATION_SCHEMA.COLUMNS
-WHERE table_name = tableName AND column_name = columnName;
-
--- Add the column if it doesn't exist
-IF columnExists = 0 THEN
-        SET @addColumnQuery = CONCAT('ALTER TABLE `', tableName, '` ADD COLUMN `', columnName, '` ', columnDesc);
-PREPARE stmt FROM @addColumnQuery;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
-END IF;
-END;
 
 DROP TABLE IF EXISTS `kioskdevice_kdev`;
 CREATE TABLE `kioskdevice_kdev` (
@@ -44,8 +24,8 @@ CREATE TABLE `kioskassginment_kasm` (
   UNIQUE KEY `kasm_ID` (`kasm_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CALL AddColumnIfNotExists('events_event', 'event_grpid', 'mediumint(9) AFTER event_typename');
-CALL AddColumnIfNotExists('event_types', 'type_grpid', 'mediumint(9) AFTER type_active');
+ALTER TABLE events_event ADD COLUMN event_grpid mediumint(9) AFTER event_typename;
+ALTER TABLE event_types ADD COLUMN  type_grpid mediumint(9) AFTER type_active;
 
 ALTER TABLE `tokens` CHANGE COLUMN `type` `type` VARCHAR(50);
 
@@ -76,5 +56,3 @@ update config_cfg set cfg_name = 'iChurchLongitude' where cfg_name = 'nChurchLon
 
 /** array **/
 update config_cfg set cfg_name = 'aDisallowedPasswords' where cfg_name = 'sDisallowedPasswords';
-
-DROP PROCEDURE IF EXISTS AddColumnIfNotExists;

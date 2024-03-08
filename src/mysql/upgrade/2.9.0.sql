@@ -1,28 +1,8 @@
-/* make add column if not exists procedure */
-DROP PROCEDURE IF EXISTS AddColumnIfNotExists;
-CREATE PROCEDURE AddColumnIfNotExists(IN tableName VARCHAR(255), IN columnName VARCHAR(255), IN columnDesc VARCHAR(255))
-BEGIN
-    DECLARE columnExists INT;
 
--- Check if the column exists
-SELECT COUNT(*)
-INTO columnExists
-FROM INFORMATION_SCHEMA.COLUMNS
-WHERE table_name = tableName AND column_name = columnName;
-
--- Add the column if it doesn't exist
-IF columnExists = 0 THEN
-        SET @addColumnQuery = CONCAT('ALTER TABLE `', tableName, '` ADD COLUMN `', columnName, '` ', columnDesc);
-PREPARE stmt FROM @addColumnQuery;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
-END IF;
-END;
 
 -- --NOTE-- removed in 4.4.0 so commenting out --
--- CALL AddColumnIfNotExists('person_per', 'per_FacebookID', 'bigint(20) unsigned default NULL AFTER per_Flags');
-CALL AddColumnIfNotExists('person_per', 'per_Twitter', 'varchar(50) default NULL AFTER per_Flags');
-CALL AddColumnIfNotExists('person_per', 'per_LinkedIn', 'varchar(50) default NULL AFTER per_Twitter');
+ALTER TABLE person_per ADD COLUMN per_Twitter varchar(50) default NULL AFTER per_Flags;
+ALTER TABLE person_per ADD COLUMN per_LinkedIn varchar(50) default NULL AFTER per_Twitter;
 
 ALTER TABLE person_custom_master
   ADD PRIMARY KEY (custom_Field);
@@ -64,5 +44,3 @@ CREATE TABLE `church_location_role` (
   `role_title` INT NOT NULL,  #Thi
   PRIMARY KEY (`location_id`, `role_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-
-DROP PROCEDURE IF EXISTS AddColumnIfNotExists;
