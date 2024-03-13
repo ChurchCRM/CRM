@@ -3,7 +3,7 @@ MODIFY `cfg_type` ENUM('text','number','date','boolean','textarea','json','choic
 
 ALTER TABLE `config_cfg`
 ADD COLUMN
-`cfg_data` text default NULL AFTER `cfg_order`;
+`cfg_data` text default NULL;
 
 Update `config_cfg` set
 `cfg_data` = '{"Choices":["smtp","SendMail"]}',

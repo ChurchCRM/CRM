@@ -51,7 +51,7 @@ class SystemService
     public static function getDBVersion()
     {
         $connection = Propel::getConnection();
-        $query = 'select * from version_ver order by ver_update_end desc limit 1';
+        $query = 'select * from version_ver order by ver_id desc limit 1';
         $statement = $connection->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
