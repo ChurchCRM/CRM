@@ -91,8 +91,6 @@ foreach ($ListItem as $element) {
     }
 }
 
-
-
 // get person group list
 $ListItem = GroupQuery::create()->find();
 $GroupList[] = "Unassigned";
@@ -194,7 +192,6 @@ foreach ($ListItem as $element) {
                 }
             }
             $CustomList = $tmp;
-
 
             ?>
             </tr>
