@@ -202,7 +202,7 @@ class AppIntegrityService
         //   This header comes from index.php (which is the target of .htaccess for invalid URLs)
 
         $check = false;
-        $logger = LoggerUtils::getAppLogger();
+        $logger = LoggerUtils::getAppLogger('DEBUG');
 
         if (isset($_SERVER['HTTP_MOD_REWRITE'])) {
             $logger->debug("Webserver configuration has set mod_rewrite variable: {$_SERVER['HTTP_MOD_REWRITE']}");
@@ -213,6 +213,12 @@ class AppIntegrityService
                 $check = in_array('mod_rewrite', apache_get_modules());
             }
             $logger->debug("Apache mod_rewrite check status: $check");
+            if (empty($check)) {
+                if (!empty(shell_exec('/usr/sbin/apachectl -M | grep rewrite'))) {
+                    $logger->debug('Found rewrite module enabled using apachectl');
+                    $check = true;
+                }
+            }
         } else {
             $logger->debug('PHP is not running through Apache');
         }
