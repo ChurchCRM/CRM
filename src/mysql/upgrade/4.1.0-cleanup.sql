@@ -1,61 +1,29 @@
-/**
-    autopayment_aut had a warning about removing data, now time to remove.
- */
 DROP TABLE if exists autopayment_aut;
 
-/*
- * Drop index where they are a primary key
- */
-
-/* make drop index if exists procedure because the app still supports old mysql versions */
-DROP PROCEDURE IF EXISTS DropIndexIfExists;
-CREATE PROCEDURE DropIndexIfExists(IN tableName VARCHAR(255), IN indexName VARCHAR(255))
-BEGIN
-    DECLARE indexExists INT;
-
-    -- Check if the index exists
-SELECT COUNT(*)
-INTO indexExists
-FROM information_schema.statistics
-WHERE table_name = tableName AND index_name = indexName;
-
--- Drop the index if it exists
-IF indexExists > 0 THEN
-        SET @dropIndexQuery = CONCAT('ALTER TABLE `', tableName, '` DROP INDEX `', indexName, '`');
-PREPARE stmt FROM @dropIndexQuery;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
-END IF;
-END;
-
-/* remove the indexes */
-CALL DropIndexIfExists('canvassdata_can', 'can_ID');
-CALL DropIndexIfExists('config_cfg', 'cfg_id');
-CALL DropIndexIfExists('donateditem_di', 'di_ID');
-CALL DropIndexIfExists('donationfund_fun', 'fun_ID');
-CALL DropIndexIfExists('family_fam', 'fam_ID');
-CALL DropIndexIfExists('fundraiser_fr', 'fr_ID');
-CALL DropIndexIfExists('group_grp', 'grp_ID_2');
-CALL DropIndexIfExists('group_grp', 'grp_ID');
-CALL DropIndexIfExists('multibuy_mb', 'mb_ID');
-CALL DropIndexIfExists('paddlenum_pn', 'pn_ID');
-CALL DropIndexIfExists('person_per', 'per_ID');
-CALL DropIndexIfExists('person2volunteeropp_p2vo', 'p2vo_ID');
-CALL DropIndexIfExists('property_pro', 'pro_ID_2');
-CALL DropIndexIfExists('property_pro', 'pro_ID');
-CALL DropIndexIfExists('propertytype_prt', 'prt_ID_2');
-CALL DropIndexIfExists('propertytype_prt', 'prt_ID');
-CALL DropIndexIfExists('query_qry', 'qry_ID_2');
-CALL DropIndexIfExists('query_qry', 'qry_ID');
-CALL DropIndexIfExists('queryparameteroptions_qpo', 'qpo_ID');
-CALL DropIndexIfExists('queryparameters_qrp', 'qrp_ID_2');
-CALL DropIndexIfExists('queryparameters_qrp', 'qrp_ID');
-CALL DropIndexIfExists('user_usr', 'usr_per_ID');
-CALL DropIndexIfExists('volunteeropportunity_vol', 'vol_ID');
-CALL DropIndexIfExists('kioskdevice_kdev', 'kdev_ID');
-
-/* drop the procedure after usage */
-DROP PROCEDURE IF EXISTS DropIndexIfExists;
+ALTER TABLE canvassdata_can DROP INDEX can_ID;
+ALTER TABLE config_cfg DROP INDEX cfg_id;
+ALTER TABLE donateditem_di DROP INDEX di_ID;
+ALTER TABLE donationfund_fun DROP INDEX fun_ID;
+ALTER TABLE family_fam DROP INDEX fam_ID;
+ALTER TABLE fundraiser_fr DROP INDEX fr_ID;
+ALTER TABLE group_grp DROP INDEX grp_ID_2;
+ALTER TABLE group_grp DROP INDEX grp_ID;
+ALTER TABLE multibuy_mb DROP INDEX mb_ID;
+ALTER TABLE paddlenum_pn DROP INDEX pn_ID;
+ALTER TABLE person_per DROP INDEX per_ID;
+ALTER TABLE person2volunteeropp_p2vo DROP INDEX p2vo_ID;
+ALTER TABLE property_pro DROP INDEX pro_ID_2;
+ALTER TABLE property_pro DROP INDEX pro_ID;
+ALTER TABLE propertytype_prt DROP INDEX prt_ID_2;
+ALTER TABLE propertytype_prt DROP INDEX prt_ID;
+ALTER TABLE query_qry DROP INDEX qry_ID_2;
+ALTER TABLE query_qry DROP INDEX qry_ID;
+ALTER TABLE queryparameteroptions_qpo DROP INDEX qpo_ID;
+ALTER TABLE queryparameters_qrp DROP INDEX qrp_ID_2;
+ALTER TABLE queryparameters_qrp DROP INDEX qrp_ID;
+ALTER TABLE user_usr DROP INDEX usr_per_ID;
+ALTER TABLE volunteeropportunity_vol DROP INDEX vol_ID;
+ALTER TABLE kioskdevice_kdev DROP INDEX kdev_ID;
 
 /**
   Missing auto increment for the table

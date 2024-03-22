@@ -1,5 +1,10 @@
-DELETE FROM config_cfg
-WHERE cfg_id IN (2, 4, 15, 17, 24, 32, 35, 999);
+alter table version_ver add `ver_update_start` datetime DEFAULT NULL;
+
+alter table version_ver add `ver_update_end` datetime DEFAULT NULL;
+
+alter table version_ver drop column `ver_date`;
+
+DELETE FROM config_cfg WHERE cfg_id IN (2, 4, 15, 17, 24, 32, 35, 999);
 
 INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value, cfg_type, cfg_default, cfg_tooltip, cfg_section, cfg_category)
 VALUES

@@ -4593,10 +4593,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Απενεργοποιήστε τις ειδικές ιδιότητες ομάδας"
 
 #: 
-msgid "'Default Option'"
-msgstr "\"Προεπιλογή\""
-
-#: 
 msgid "Text Group"
 msgstr "Ομάδα κειμένου"
 

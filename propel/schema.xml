@@ -623,6 +623,7 @@
         <column name="usr_defaultFY" phpName="DefaultFY" type="SMALLINT" size="9" required="true" defaultValue="10"/>
         <column name="usr_currentDeposit" phpName="CurrentDeposit" type="SMALLINT" size="9" required="true" defaultValue="0"/>
         <column name="usr_UserName" phpName="UserName" type="VARCHAR" size="32" required="true"/>
+        <column name="usr_Style" phpName="UserStyle" type="VARCHAR" size="50" />
         <column name="usr_ApiKey" phpName="ApiKey" type="VARCHAR" size="255" />
         <column name="usr_TwoFactorAuthSecret" phpName="TwoFactorAuthSecret" type="VARCHAR" size="255" />
         <column name="usr_TwoFactorAuthLastKeyTimestamp" phpName="TwoFactorAuthLastKeyTimestamp" type="SMALLINT" size="9" />

@@ -23,6 +23,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Utils\InputUtils;
 
 $eType = 'All';
@@ -65,8 +66,9 @@ if (isset($_POST['Action']) && isset($_POST['EID']) && AuthenticationManager::ge
         $sSQL = 'DELETE FROM eventcounts_evtcnt WHERE evtcnt_eventid = ' . $eID;
         RunQuery($sSQL);
     } elseif ($action == 'Activate' && $eID) {
-        $sSQL = 'UPDATE events_event SET inactive = 0 WHERE event_id = ' . $eID . ' LIMIT 1';
-        RunQuery($sSQL);
+        $event = EventQuery::create()->findOneById($eID);
+        $event->setInActive(0);
+        $event->save();
     }
 }
 

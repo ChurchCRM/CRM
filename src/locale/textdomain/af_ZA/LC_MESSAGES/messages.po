@@ -4599,10 +4599,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Skakel groepspesifieke eienskappe uit"
 
 #: 
-msgid "'Default Option'"
-msgstr "'Standaardopsie'"
-
-#: 
 msgid "Text Group"
 msgstr "Teksgroep"
 
