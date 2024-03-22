@@ -17,6 +17,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -129,8 +130,12 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
                 throw new \Exception(sprintf('person (%d) does not have role in post body', $iPersonID));
             }
 
-            $sSQL = 'UPDATE person_per SET per_fam_ID = ' . $iFamilyID . ', per_fmr_ID = ' . $iFamilyRoleID . ' WHERE per_ID = ' . $iPersonID;
-            RunQuery($sSQL);
+            $person = PersonQuery::create()->findOneById($iPersonID);
+            $person
+                ->setFamId($iFamilyID)
+                ->setFmrId($iFamilyRoleID);
+            $person->save();
+
             $iCount++;
         }
 

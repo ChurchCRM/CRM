@@ -4615,10 +4615,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Disabilita proprietà specifiche del Gruppo"
 
 #: 
-msgid "'Default Option'"
-msgstr "'Opzione predefinita'"
-
-#: 
 msgid "Text Group"
 msgstr "Gruppo di testo"
 

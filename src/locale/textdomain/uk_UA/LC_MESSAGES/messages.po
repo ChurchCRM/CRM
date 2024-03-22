@@ -4598,10 +4598,6 @@ msgid "Disable Group Specific Properties"
 msgstr "Вимкніть властивості групи"
 
 #: 
-msgid "'Default Option'"
-msgstr "'Параметр за замовчуванням'"
-
-#: 
 msgid "Text Group"
 msgstr "Текстова група"
 

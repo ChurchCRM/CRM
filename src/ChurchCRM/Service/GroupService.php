@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class GroupService
@@ -72,10 +73,22 @@ class GroupService
             $iRoleID = $Row[0];
         }
 
-        $sSQL = 'INSERT INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID) VALUES (' . $iPersonID . ', ' . $iGroupID . ', ' . $iRoleID . ')';
-        $result = RunQuery($sSQL, false);
+        $result = false;
+        try {
+            $person2group2role = new Person2group2roleP2g2r();
+            $person2group2role
+                ->setPersonId($iPersonID)
+                ->setGroupId($iGroupID)
+                ->setRoleId($iRoleID);
+            $person2group2role->save();
+            $result = true;
+        } catch (\Throwable $t) {
+            // do nothing
+        }
+
         if ($result) {
             // Check if this group has special properties
+
             $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = ' . $iGroupID;
             $rsTemp = RunQuery($sSQL);
             $rowTemp = mysqli_fetch_row($rsTemp);

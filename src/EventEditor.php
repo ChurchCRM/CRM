@@ -28,6 +28,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -342,18 +343,21 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $sCountNotes = $_POST['EventCountNotes'];
 
     // If no errors, then update.
-    if ($iErrors == 0) {
+    if ($iErrors === 0) {
         if ($EventExists == 0) {
-            $sSQL = "INSERT events_event
-                     SET `event_type` = '" . InputUtils::legacyFilterInput($iTypeID) . "',
-                     `event_title` = '" . InputUtils::legacyFilterInput($sEventTitle) . "',
-                     `event_desc` = '" . InputUtils::legacyFilterInput($sEventDesc) . "',
-                     `event_text` = '" . InputUtils::filterHTML($sEventText) . "',
-                     `event_start` = '" . InputUtils::legacyFilterInput($sEventStart) . "',
-                     `event_end` = '" . InputUtils::legacyFilterInput($sEventEnd) . "',
-                     `inactive` = '" . InputUtils::legacyFilterInput($iEventStatus) . "';";
-            RunQuery($sSQL);
-            $iEventID = mysqli_insert_id($cnInfoCentral);
+            $event = new Event();
+            $event
+                ->setType(InputUtils::legacyFilterInput($iTypeID))
+                ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
+                ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
+                ->setText(InputUtils::filterHTML($sEventText))
+                ->setStart(InputUtils::legacyFilterInput($sEventStart))
+                ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
+                ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
+            $event->save();
+            $event->reload();
+
+            $iEventID = $event->getId();
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
                 $sSQL = "INSERT eventcounts_evtcnt
@@ -367,17 +371,16 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 RunQuery($sSQL);
             }
         } else {
-            $sSQL = "UPDATE events_event
-                     SET `event_type` = '" . InputUtils::legacyFilterInput($iTypeID) . "',
-                     `event_title` = '" . InputUtils::legacyFilterInput($sEventTitle) . "',
-                     `event_desc` = '" . InputUtils::legacyFilterInput($sEventDesc) . "',
-                     `event_text` = '" . InputUtils::filterHTML($sEventText) . "',
-                     `event_start` = '" . InputUtils::legacyFilterInput($sEventStart) . "',
-                     `event_end` = '" . InputUtils::legacyFilterInput($sEventEnd) . "',
-                     `inactive` = '" . InputUtils::legacyFilterInput($iEventStatus) . "'
-                      WHERE `event_id` = '" . InputUtils::legacyFilterInput($iEventID) . "';";
-            echo $sSQL;
-            RunQuery($sSQL);
+            $event = EventQuery::create()->findOneById(InputUtils::legacyFilterInput($iEventID));
+            $event
+                ->setType(InputUtils::legacyFilterInput($iTypeID))
+                ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
+                ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
+                ->setText(InputUtils::filterHTML($sEventText))
+                ->setStart(InputUtils::legacyFilterInput($sEventStart))
+                ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
+                ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
+            $event->save();
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
                 $sSQL = "INSERT eventcounts_evtcnt
@@ -407,7 +410,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     </div>
     <div class='box-header'>
         <?php
-        if ($iErrors != 0) {
+        if ($iErrors !== 0) {
             echo "<div class='alert alert-danger'>" . gettext('There were ') . $iErrors . gettext(' errors. Please see below') . '</div>';
         } else {
             echo '<div>' . gettext('Items with a ') . '<span style="color: red">*</span>' . gettext(' are required') . '</div>';
@@ -528,10 +531,10 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     <td colspan="3" class="TextColumn">
                         <input type="radio" name="EventStatus" value="0" <?php if ($iEventStatus == 0) {
                             echo 'checked';
-                        } ?>/> <?= _('Active')?>
+                                                                         } ?>/> <?= _('Active')?>
                         <input type="radio" name="EventStatus" value="1" <?php if ($iEventStatus == 1) {
                             echo 'checked';
-                        } ?>/> <?= _('Inactive')?>
+                                                                         } ?>/> <?= _('Inactive')?>
                     </td>
                 </tr>
 

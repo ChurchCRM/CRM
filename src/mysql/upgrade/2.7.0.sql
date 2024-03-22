@@ -1,26 +1,5 @@
-/* make add column if not exists procedure */
-DROP PROCEDURE IF EXISTS AddColumnIfNotExists;
-CREATE PROCEDURE AddColumnIfNotExists(IN tableName VARCHAR(255), IN columnName VARCHAR(255), IN columnDesc VARCHAR(255))
-BEGIN
-    DECLARE columnExists INT;
-
--- Check if the column exists
-SELECT COUNT(*)
-INTO columnExists
-FROM INFORMATION_SCHEMA.COLUMNS
-WHERE table_name = tableName AND column_name = columnName;
-
--- Add the column if it doesn't exist
-IF columnExists = 0 THEN
-        SET @addColumnQuery = CONCAT('ALTER TABLE `', tableName, '` ADD COLUMN `', columnName, '` ', columnDesc);
-PREPARE stmt FROM @addColumnQuery;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
-END IF;
-END;
-
-CALL AddColumnIfNotExists('group_grp', 'grp_active', 'BOOLEAN NOT NULL DEFAULT 1 AFTER grp_hasSpecialProps');
-CALL AddColumnIfNotExists('group_grp', 'grp_include_email_export', 'BOOLEAN NOT NULL DEFAULT 1 AFTER grp_active');
+ALTER TABLE group_grp ADD grp_active BOOLEAN  DEFAULT 1 NOT NULL AFTER grp_hasSpecialProps;
+ALTER TABLE group_grp ADD grp_include_email_export BOOLEAN  DEFAULT 1  NOT NULL AFTER grp_active;
 
 ALTER TABLE queryparameteroptions_qpo
   MODIFY qpo_Value VARCHAR(255) NOT NULL DEFAULT '';
@@ -35,6 +14,4 @@ DELETE FROM userconfig_ucfg where ucfg_name = "sFromEmailAddress";
 DELETE FROM userconfig_ucfg where ucfg_name = "sFromName";
 DELETE FROM userconfig_ucfg where ucfg_name = "bSendPHPMail";
 
-CALL AddColumnIfNotExists('event_attend', 'attend_id', 'INT PRIMARY KEY AUTO_INCREMENT FIRST');
-
-DROP PROCEDURE IF EXISTS AddColumnIfNotExists;
+ALTER TABLE event_attend ADD COLUMN attend_id INT PRIMARY KEY AUTO_INCREMENT FIRST;

@@ -13,6 +13,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
+use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -156,10 +157,9 @@ if ($iRowNum == 0) {
             $aRow = mysqli_fetch_array($rsOrder);
             extract($aRow);
             $num_vol_Order = $Max_vol_Order + $row;
-            $sSQL = 'UPDATE `volunteeropportunity_vol` ' .
-                    "SET `vol_Order` = '" . $num_vol_Order . "' " .
-                    "WHERE `vol_ID` = '" . $vol_ID . "'";
-            RunQuery($sSQL);
+            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($vol_ID);
+            $volunteerOpp->setOrder($num_vol_Order);
+            $volunteerOpp->save();
         }
     }
 
@@ -174,10 +174,9 @@ if ($iRowNum == 0) {
         $aRow = mysqli_fetch_array($rsOpps);
         extract($aRow);
         if ($orderCounter != $vol_Order) { // found hole, update all records to the end
-            $sSQL = 'UPDATE `volunteeropportunity_vol` ' .
-                 "SET `vol_Order` = '" . $orderCounter . "' " .
-                 "WHERE `vol_ID` = '" . $vol_ID . "'";
-            RunQuery($sSQL);
+            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($vol_ID);
+            $volunteerOpp->setOrder($orderCounter);
+            $volunteerOpp->save();
         }
         ++$orderCounter;
     }
@@ -217,11 +216,11 @@ if (isset($_POST['SaveChanges'])) {
     if (!$bErrorFlag) {
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
             if (array_key_exists($iFieldID, $aNameFields)) {
-                $sSQL = "UPDATE volunteeropportunity_vol
-	                     SET vol_Name = '" . $aNameFields[$iFieldID] . "',
-	                     vol_Description = '" . $aDescFields[$iFieldID] .
-                         "' WHERE vol_ID = '" . $aIDFields[$iFieldID] . "';";
-                RunQuery($sSQL);
+                $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($aIDFields[$iFieldID]);
+                $volunteerOpp
+                    ->setName($aNameFields[$iFieldID])
+                    ->setDescription($aDescFields[$iFieldID]);
+                $volunteerOpp->save();
             }
         }
     }
@@ -291,17 +290,15 @@ if ($numRows == 0) {
         }
 
         if (array_key_exists($swapRow, $aIDFields)) {
-            $sSQL = "UPDATE volunteeropportunity_vol
-	               SET vol_Order = '" . $newRow . "' " .
-            "WHERE vol_ID = '" . $aIDFields[$swapRow] . "';";
-            RunQuery($sSQL);
+            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($aIDFields[$swapRow]);
+            $volunteerOpp->setOrder($newRow);
+            $volunteerOpp->save();
         }
 
         if (array_key_exists($newRow, $aIDFields)) {
-            $sSQL = "UPDATE volunteeropportunity_vol
-	               SET vol_Order = '" . $swapRow . "' " .
-            "WHERE vol_ID = '" . $aIDFields[$newRow] . "';";
-            RunQuery($sSQL);
+            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($aIDFields[$newRow]);
+            $volunteerOpp->setOrder($swapRow);
+            $volunteerOpp->save();
         }
 
         // now update internal data to match
