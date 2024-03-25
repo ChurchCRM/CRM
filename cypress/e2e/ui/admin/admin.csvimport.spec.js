@@ -1,4 +1,11 @@
-context('CSVImport', () => {
+context('CSVImport', 
+  {
+    retries: {
+      runMode: 0,
+      openMode: 0,
+    },
+  },
+  () => {
   it('Verify CSV Import', () => {
     cy.loginAdmin('CSVImport.php');
     cy.get('#CSVFileChooser').selectFile('cypress/data/test_import.csv')
