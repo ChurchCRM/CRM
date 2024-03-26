@@ -9464,3 +9464,7 @@ msgstr "Recibió este correo electrónico porque recibimos una solicitud de acti
 msgid "To stop receiving these emails, you can email"
 msgstr "Para dejar de recibir estos correos, puede contactar a"
 
+#: 
+msgid "invalid group request"
+msgstr "Solicitud de grupo inválida"
+
