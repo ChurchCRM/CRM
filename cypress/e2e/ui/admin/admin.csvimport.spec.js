@@ -1,4 +1,11 @@
-context('CSVImport', () => {
+context('CSVImport', 
+  {
+    retries: {
+      runMode: 0,
+      openMode: 0,
+    },
+  },
+  () => {
   it('Verify CSV Import', () => {
     cy.loginAdmin('CSVImport.php');
     cy.get('#CSVFileChooser').selectFile('cypress/data/test_import.csv')
@@ -17,6 +24,11 @@ context('CSVImport', () => {
     // Now that we have mapped the right fields, do the import
     cy.get('#DoImportBtn').click();
     cy.contains('Data import successful.');
+    // Now verify everyone was added to the family (expect 3 members)
+    cy.request("GET", "/api/search/ImportTest").then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body[0].children.length).to.eq(3);
+    });
   });
 });
 
