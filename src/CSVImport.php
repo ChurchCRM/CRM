@@ -639,7 +639,7 @@ if (isset($_POST['DoImport'])) {
                     $family->reload();
                     // Now retrieve the ID just inserted
                     $famid = $family->getId();
-                    $logger->info("The new family has id=$famid");
+                    $logger->debug("The new family has id=$famid");
 
                     $note = new Note();
                     $note->setFamId($famid);
