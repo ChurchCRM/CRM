@@ -16,6 +16,27 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 
+/**
+ * This will avoid to call the db twice one to check if empty the other one to return the value
+ * no caching was being done by the ORM so lets keep the value and return if not empty
+ *
+ * @var mixed $stuff
+ */
+function emptyOrUnassigned($stuff)
+{
+    return empty($stuff) ? 'Unassigned' : $stuff;
+}
+
+/**
+ * Same as previous but return json encoded
+ *
+ * @var mixed $stuff
+ */
+function emptyOrUnassignedJSON($stuff): string
+{
+    return empty($stuff) ? 'Unassigned' : json_encode($stuff, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+}
+
 //Set the page title
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -37,14 +58,39 @@ $PropertyList[] = "Unassigned";
 foreach ($ListItem as $element) {
     $PropertyList[] = $element->getProName();
 }
+
+$option_name = fn (string $t1, string $t2) => $t1 . ':' . $t2;
+
+
+$allPersonCustomFields = PersonCustomMasterQuery::create()->find();
+
+
+
 // person custom list
-$ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity'])->find();
-$CustomList[] = "Unassigned";
+$ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity', 'Id', 'TypeId', 'Special'])->find();
+
+// CREATE A MAPPING FOR CUSTOMS LIKE THIS
+// CustomMapping = {"c1":{"Name":"Father of confession", "Elements":{23:"option1", 24:"option2"}}, c2.... }
+// allowing not only for search if has a custom set but also if is set to a given value.
+$CustomMapping = [];
+
+//setting unassigned to 1 so is not deleted
+$CustomList["Unassigned"] = 1;
+
 foreach ($ListItem as $element) {
     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
-        $CustomList[] = $element["Name"];
+        $CustomList[$element["Name"]] = 0;
+        $CustomMapping[$element["Id"]] = ["Name" => $element["Name"], "Elements" => []];
+        if (in_array($element["TypeId"], [12])) {
+            $ListElements = ListOptionQuery::create()->select(['OptionName', 'OptionId'])->filterById($element["Special"])->find()->toArray();
+            foreach ($ListElements as $element2) {
+                $CustomList[$option_name($element["Name"], $element2["OptionName"])] = 0;
+                $CustomMapping[$element["Id"]]["Elements"][$element2["OptionId"]] = $element2["OptionName"];
+            }
+        }
     }
 }
+
 // get person group list
 $ListItem = GroupQuery::create()->find();
 $GroupList[] = "Unassigned";
@@ -131,14 +177,22 @@ foreach ($ListItem as $element) {
                 <td><?= $person->getHomePhone() ?></td>
                 <td><?= $person->getCellPhone() ?></td>
                 <td><?= $person->getEmail() ?></td>
-                <td><?= empty($person->getGenderName()) ? 'Unassigned' : $person->getGenderName() ?></td>
-                <td><?= empty($person->getClassificationName()) ? 'Unassigned' : $person->getClassificationName() ?></td>
-                <td><?= empty($person->getFamilyRoleName()) ? 'Unassigned' : $person->getFamilyRoleName() ?></td>
-                <td><?= empty($person->getPropertiesString()) ? 'Unassigned' : json_encode($person->getPropertiesString(), JSON_THROW_ON_ERROR) ?></td>
-                <td><?= empty($person->getCustomFields()) ? 'Unassigned' : json_encode($person->getCustomFields(), JSON_THROW_ON_ERROR) ?></td>
-                <td><?= empty($person->getGroups()) ? 'Unassigned' : json_encode($person->getGroups(), JSON_THROW_ON_ERROR) ?></td>
+                <td><?= emptyOrUnassigned($person->getGenderName()) ?></td>
+                <td><?= emptyOrUnassigned($person->getClassificationName()) ?></td>
+                <td><?= emptyOrUnassigned($person->getFamilyRoleName()) ?></td>
+                <td><?= emptyOrUnassignedJSON($person->getPropertiesString()) ?></td>
+                <td><?= emptyOrUnassignedJSON($person->getCustomFields($allPersonCustomFields, $CustomMapping, $CustomList, $option_name)) ?></td>
+                <td><?= emptyOrUnassignedJSON($person->getGroups()) ?></td>
                 <?php
             }
+            //lets clean all the customs that don't have anyone associated.
+            foreach ($CustomList as $key => $value) {
+                if ($value > 0) {
+                    $tmp[] = $key;
+                }
+            }
+            $CustomList = $tmp;
+
             ?>
             </tr>
             </tbody>
