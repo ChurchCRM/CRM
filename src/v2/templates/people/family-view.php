@@ -310,11 +310,13 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                 <h3 class="card-title"><i class="fa fa-hashtag"></i> <?= gettext("Properties") ?></h3>
                 <div class="card-tools pull-right">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
+                    <button id="add-family-property" type="button" class="btn btn-box-tool" style="display: block;">
+                        <i class="fa fa-plus-circle text-blue"></i>
+                    </button>
                     <?php } ?>
 
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                            class="fa fa-minus"></i>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fa fa-minus"></i>
                     </button>
                 </div>
             </div>
@@ -326,12 +328,12 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                     </i>
                 </div>
 
-                <div id="family-property-no-data" class="alert alert-warning hidden">
+                <div id="family-property-no-data" class="alert alert-warning" style="display: block;">
                     <i class="fa fa-question-circle fa-fw fa-lg"></i>
                     <span><?= gettext("No property assignments.") ?></span>
                 </div>
 
-                <table id="family-property-table" class="table table-striped table-bordered data-table hidden" cellspacing="0" width="100%">
+                <table id="family-property-table" class="table table-striped table-bordered data-table" cellspacing="0" width="100%" style="display: block;">
                     <thead>
                         <tr>
                             <th width="50"></th>
