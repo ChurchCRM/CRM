@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 
     var datatTablesVer = "1.10.18";
 
-    const sass = require('node-sass');
+    const sass = require('sass');
 
 // Project configuration.
     grunt.initConfig({
