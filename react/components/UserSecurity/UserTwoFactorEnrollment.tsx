@@ -5,8 +5,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
   nextButtonEventHandler: Function;
 }> = ({ nextButtonEventHandler }) => {
   return (
-    <div>
-      <div className="col-lg-12">
+    <div className="col-lg-12">
         <div className="box" id="TwoFAEnrollmentSteps">
           <div className="box-body">
             <p>
@@ -87,6 +86,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
 
             <div className="clearfix"></div>
             <button
+              id="begin2faEnrollment"
               className="btn btn-success"
               onClick={() => {
                 nextButtonEventHandler();
@@ -97,7 +97,6 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
@@ -119,15 +118,14 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
   currentTwoFAPinStatus,
 }) => {
   return (
-    <div>
-      <div className="col-lg-12">
+    <div className="col-lg-12">
         <div className="box">
           <div className="box-header">
             <h4>{window.i18next.t("2 Factor Authentication Secret")}</h4>
           </div>
           <div className="box-body">
             <div className="col-lg-6">
-              <img src={TwoFAQRCodeDataUri} />
+              <img id="2faQrCodeDataUri" src={TwoFAQRCodeDataUri}  alt="2FA QR Code Data URI" />
             </div>
             <div className="col-lg-6">
               <div className="row">
@@ -171,7 +169,6 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
@@ -327,17 +324,14 @@ class UserTwoFactorEnrollment extends React.Component<
   render() {
     if (this.state.currentView === "intro") {
       return (
-        <div>
           <div className="row">
             <TwoFAEnrollmentWelcome
               nextButtonEventHandler={this.nextButtonEventHandler}
             />
           </div>
-        </div>
       );
     } else if (this.state.currentView === "BeginEnroll") {
       return (
-        <div>
           <div className="row">
             <TwoFAEnrollmentGetQR
               TwoFAQRCodeDataUri={this.state.TwoFAQRCodeDataUri}
@@ -348,7 +342,6 @@ class UserTwoFactorEnrollment extends React.Component<
               currentTwoFAPinStatus={this.state.currentTwoFAPinStatus}
             />
           </div>
-        </div>
       );
     } else if (this.state.currentView === "success") {
       return (
