@@ -1,5 +1,20 @@
 /// <reference types="cypress" />
 
+context("User 2FA", () => {
+    it("Ensure QR code displays", () => {
+        cy.loginStandard("v2/user/current/enroll2fa");
+        cy.get("#begin2faEnrollment")
+            .should("exist")
+            .should("be.visible")
+            .should("be.enabled")
+            .click();
+        cy.get("#2faQrCodeDataUri")
+            .should("exist")
+            .should("be.visible")
+            .should("have.attr", "src");
+    });
+});
+
 context("Standard User Password", () => {
     it("Change with invalid password", () => {
         cy.loginStandard("v2/user/current/changepassword");
