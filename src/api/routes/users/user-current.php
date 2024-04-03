@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Slim\Request\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Endroid\QrCode\Writer\PngWriter;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -20,9 +21,22 @@ function refresh2fasecret(Request $request, Response $response, array $args): Re
 {
     $user = AuthenticationManager::getCurrentUser();
     $secret = $user->provisionNew2FAKey();
+
     LoggerUtils::getAuthLogger()->info('Began 2FA enrollment for user: ' . $user->getUserName());
 
-    return SlimUtils::renderJSON($response, ['TwoFAQRCodeDataUri' => LocalAuthentication::getTwoFactorQRCode($user->getUserName(), $secret)->writeDataUri()]);
+    $writer = new PngWriter();
+    $qrCode = LocalAuthentication::getTwoFactorQRCode(
+        $user->getUserName(),
+        $secret
+    );
+    $result = $writer->write($qrCode);
+
+    return SlimUtils::renderJSON(
+        $response,
+        [
+            'TwoFAQRCodeDataUri' => $result->getDataUri()
+        ]
+    );
 }
 
 function refresh2farecoverycodes(Request $request, Response $response, array $args): Response
