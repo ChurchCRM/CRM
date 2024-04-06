@@ -570,7 +570,7 @@ window.CRM.dashboard = {
             $("#translationInfo").html(
                 data.name + " [" + window.CRM.locale + "]",
             );
-            if (data.countryFlagCode !== "us" && data.poPerComplete < 90) {
+            if (data.displayPerCompleted) {
                 $("#translationPer").html(data.poPerComplete + "%");
                 $("#localePer").removeClass("hidden");
             }
@@ -586,7 +586,7 @@ window.CRM.dashboard = {
         window.CRM.APIRequest({
             method: "GET",
             path:
-                "background/page?name=" +
+                "background/page?token=" + Math.random() + "&name=" +
                 window.CRM.PageName.replace(window.CRM.root, ""),
             suppressErrorDialog: true,
         }).done(function (data) {
