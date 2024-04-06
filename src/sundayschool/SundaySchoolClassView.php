@@ -171,12 +171,13 @@ require '../Include/Header.php';
       <!-- Bar chart -->
       <div class="card card-primary">
         <div class="card-header">
-          <i class="fa fa-chart-bar"></i>
-
           <h3 class="card-title"><?= gettext('Birthdays by Month') ?></h3>
+            <div class="card-tools">
+                <i class="fa fa-chart-bar"></i>
+            </div>
         </div>
         <div class="card-body">
-          <div class="disableSelection" style="width: 100%; height: 300px;">
+          <div class="disableSelection">
               <canvas id="bar-chart"></canvas>
           </div>
         </div>
@@ -188,12 +189,13 @@ require '../Include/Header.php';
       <!-- Donut chart -->
       <div class="card card-primary">
         <div class="card-header">
-          <i class="fa fa-chart-bar"></i>
-
           <h3 class="card-title"><?= gettext('Gender') ?></h3>
+            <div class="card-tools">
+                <i class="fa fa-chart-bar"></i>
+            </div>
         </div>
         <div class="card-body">
-          <canvas id="donut-chart" style="width: 100%; height: 300px;"></canvas>
+          <canvas id="donut-chart"></canvas>
         </div>
         <!-- /.box-body-->
       </div>
