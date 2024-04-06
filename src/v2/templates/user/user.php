@@ -71,9 +71,9 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         <b><?= _("Locale")?></b></label>
-                        <select id="user-locale-setting" class="pull-right user-setting-select" data-setting-name="ui.locale">
+                        <select id="user-locale-setting" class="pull-right user-setting-select" data-setting-name="ui.locale" data-reload="true">
                         </select>
-                    <p><?= _("Override system locale")?>: <?= Bootstrapper::getCurrentLocale()->getName() ?></p>
+                    <p><?= _("Override system locale")?>: <?= Bootstrapper::getCurrentLocale()->getSystemLocale() ?></p>
                 </div>
             </div>
         </div>
