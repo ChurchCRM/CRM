@@ -61,17 +61,6 @@
         "datePicker": true,
         "select2": true
     },
-    "Tamil - India": {
-        "poEditor": "ta",
-        "locale": "ta_IN",
-        "languageCode": "ta",
-        "countryCode": "IN",
-        "dataTables": "Tamil",
-        "fullCalendar": true,
-        "fullCalendarLocale": "ta-in",
-        "datePicker": true,
-        "select2": false
-    },
     "Czech": {
         "poEditor": "cs",
         "locale": "cs",
@@ -325,6 +314,17 @@
         "fullCalendar": true,
         "datePicker": true,
         "select2": true
+    },
+    "Tamil - India": {
+        "poEditor": "ta",
+        "locale": "ta_IN",
+        "languageCode": "ta",
+        "countryCode": "IN",
+        "dataTables": "Tamil",
+        "fullCalendar": true,
+        "fullCalendarLocale": "ta-in",
+        "datePicker": true,
+        "select2": false
     },
     "Thai": {
         "poEditor": "th",
