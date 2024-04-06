@@ -7523,7 +7523,8 @@ msgid "Your Church's Facebook Page"
 msgstr "الكنيسة لديك صفحة الفيسبوك"
 
 #: 
-msgid "Your Church's Twitter Page"
+#, fuzzy
+msgid "Your Church's X Page"
 msgstr "كنيستك التغريد الصفحة"
 
 #: 
@@ -7845,18 +7846,6 @@ msgstr "أو إنشاء المجموعة وإضافة السلة في عمل و�
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "إنشاء مجموعة + أضف العربة"
-
-#: 
-msgid "Facebook"
-msgstr "فيس بوك"
-
-#: 
-msgid "Twitter"
-msgstr "تويتر"
-
-#: 
-msgid "LinkedIn"
-msgstr "لينك دلن"
 
 #: 
 msgid "Move Event"
@@ -8304,7 +8293,8 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM URL الإخطارات الوسطى"
 
 #: 
-msgid "Follow us on Twitter"
+#, fuzzy
+msgid "Follow us on"
 msgstr "تابعونا على تويتر"
 
 #: 

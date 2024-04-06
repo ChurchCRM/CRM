@@ -7526,8 +7526,9 @@ msgid "Your Church's Facebook Page"
 msgstr "Halaman Facebook Gereja Anda"
 
 #: 
-msgid "Your Church's Twitter Page"
-msgstr "Halaman Twitter Gereja Anda"
+#, fuzzy
+msgid "Your Church's X Page"
+msgstr "Halaman X Gereja Anda"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -7848,18 +7849,6 @@ msgstr "ATAU Buat Grup dan tambahkan CART dalam SATU AKSI"
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "Buat Grup + ADD Cart"
-
-#: 
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-msgid "LinkedIn"
-msgstr "LinkedIn"
 
 #: 
 msgid "Move Event"
@@ -8307,8 +8296,9 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL Pemberitahuan Pusat ChurchCRM"
 
 #: 
-msgid "Follow us on Twitter"
-msgstr "Ikuti kami di Twitter"
+#, fuzzy
+msgid "Follow us on"
+msgstr "Ikuti kami di"
 
 #: 
 msgid "invalid event type id"

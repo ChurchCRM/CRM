@@ -7530,8 +7530,9 @@ msgid "Your Church's Facebook Page"
 msgstr "La page Facebook de l'église"
 
 #: 
-msgid "Your Church's Twitter Page"
-msgstr "La page Twitter de l'église"
+#, fuzzy
+msgid "Your Church's X Page"
+msgstr "La page X de l'église"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -7852,18 +7853,6 @@ msgstr "OU créer un groupe et ajouter le contenu du Panier en Une Action"
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "Créer Groupe + Ajouter au Pannier"
-
-#: 
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-msgid "LinkedIn"
-msgstr "LinkedIn"
 
 #: 
 msgid "Move Event"
@@ -8311,8 +8300,9 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL de notifications de ChurchCRM"
 
 #: 
-msgid "Follow us on Twitter"
-msgstr "Suivez-nous sur Twitter"
+#, fuzzy
+msgid "Follow us on"
+msgstr "Suivez-nous sur"
 
 #: 
 msgid "invalid event type id"
