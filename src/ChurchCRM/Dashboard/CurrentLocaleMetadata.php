@@ -28,14 +28,11 @@ class CurrentLocaleMetadata implements DashboardItemInterface
         $poLocales = json_decode($poLocalesFile, true, 512, JSON_THROW_ON_ERROR);
         $rawPOData = $poLocales['result']['languages'];
         $data['poPerComplete'] = 0;
-        $data['displayPerCompleted'] = false;
-        if (!preg_match('#^en_(.*)$#i', $localeInfo->getLocale())) {
-            foreach ($rawPOData as $poLocale) {
-                if (strtolower($localeInfo->getPoLocaleId()) === strtolower($poLocale['code'])) {
-                    $data['poPerComplete'] = $poLocale['percentage'];
-                    $data['displayPerCompleted'] = true;
-                    break;
-                }
+        $data['displayPerCompleted'] = !str_starts_with($localeInfo->getLocale(), "en");
+        foreach ($rawPOData as $poLocale) {
+            if (strtolower($localeInfo->getPoLocaleId()) === strtolower($poLocale['code'])) {
+                $data['poPerComplete'] = $poLocale['percentage'];
+                break;
             }
         }
 
