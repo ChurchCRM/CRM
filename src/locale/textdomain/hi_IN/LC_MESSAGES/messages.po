@@ -1,0 +1,481 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: hi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "क्वेरी निष्पादित नहीं कर सकता"
+
+#: 
+msgid "Delete"
+msgstr "मिटाना"
+
+#: 
+msgid "Cancel"
+msgstr "बचाना"
+
+#: 
+msgid "Save"
+msgstr "सौंपे नहीं गए"
+
+#: 
+msgid "Unassigned"
+msgstr "कोई नहीं"
+
+#: 
+msgid "None"
+msgstr "कोई नहीं"
+
+#: 
+msgid "City"
+msgstr "शहर"
+
+#: 
+msgid "State"
+msgstr "\n"
+"राज्य"
+
+#: 
+msgid "Country"
+msgstr "देश"
+
+#: 
+msgid "Phone"
+msgstr "फ़ोन"
+
+#: 
+msgid "Email"
+msgstr "ईमेल"
+
+#: 
+msgid "Credit Card"
+msgstr "क्रेडिट कार्ड"
+
+#: 
+msgid "Backup Database"
+msgstr "बैकअप डेटाबेस"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "यह टूल ChurchCRM डेटाबेस का मैन्युअल रूप से बैकअप लेने में आपकी सहायता करेगा।"
+
+#: 
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "आपको सप्ताह में कम से कम एक बार मैन्युअल बैकअप बनाना चाहिए, जब तक कि आपके पास पहले से ही आपके सिस्टम के लिए नियमित बैकअप प्रक्रिया न हो।"
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "बैकअप फ़ाइल डाउनलोड करने के बाद, आपको दो प्रतियां बनानी चाहिए। उनमें से एक को साइट पर अग्निरोधक तिजोरी में रखें और दूसरे को साइट से बाहर किसी सुरक्षित स्थान पर रखें।"
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "यदि आप चर्चसीआरएम डेटाबेस में संग्रहीत डेटा की गोपनीयता के बारे में चिंतित हैं, तो आपको बैकअप डेटा को एन्क्रिप्ट करना चाहिए यदि इसे किसी ऐसे स्थान पर संग्रहीत किया जाएगा जो संभावित रूप से दूसरों के लिए सुलभ हो।"
+
+#: 
+msgid "Select archive type"
+msgstr "संग्रह प्रकार चुनें"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "बैकअप फ़ाइल को पासवर्ड से एन्क्रिप्ट करें?"
+
+#: 
+msgid "Re-type Password"
+msgstr "पासवर्ड फिर से लिखें"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "बैकअप जेनरेट करें और बाह्य संग्रहण में भेजें"
+
+#: 
+msgid "Batch Winner Entry"
+msgstr "बैच विजेता प्रवेश"
+
+#: 
+msgid "Winner"
+msgstr "विजेता"
+
+#: 
+msgid "Price"
+msgstr "कीमत"
+
+#: 
+msgid "Enter Winners"
+msgstr "विजेताओं को दर्ज करें"
+
+#: 
+msgid "CSV Export"
+msgstr "सीएसवी निर्यात"
+
+#: 
+msgid "Field Selection"
+msgstr "फ़ील्ड चयन"
+
+#: 
+msgid "Last Name"
+msgstr "उपनाम"
+
+#: 
+msgid "Required"
+msgstr "आवश्यक"
+
+#: 
+msgid "First Name"
+msgstr "पहला नाम"
+
+#: 
+msgid "Middle Name"
+msgstr "मध्य नाम"
+
+#: 
+msgid "Zip"
+msgstr "ज़िप"
+
+#: 
+msgid "Envelope"
+msgstr "लिफ़ाफ़ा"
+
+#: 
+msgid "Work/Other Email"
+msgstr "कार्य/अन्य ईमेल"
+
+#: 
+msgid "Membership Date"
+msgstr "सदस्यता तिथि"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "जन्म/वर्षगांठ तिथि"
+
+#: 
+msgid "Age / Years Married"
+msgstr "विवाह की आयु/वर्ष"
+
+#: 
+msgid "Family Role"
+msgstr "पारिवारिक भूमिका"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "निर्भर करता है कि व्यक्ति या परिवार आउटपुट पद्धति का उपयोग कर रहा है या नहीं"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "कस्टम फ़ील्ड चयन"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "कस्टम व्यक्ति फ़ील्ड"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "कस्टम पारिवारिक फ़ील्ड"
+
+#: 
+msgid "Filters"
+msgstr "फिल्टर"
+
+#: 
+msgid "Records to export"
+msgstr "निर्यात करने के लिए रिकॉर्ड"
+
+#: 
+msgid "Based on filters below.."
+msgstr "नीचे दिए गए फ़िल्टर के आधार पर.."
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "कार्ट में लोग (फ़िल्टर अनदेखा)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "एकाधिक का चयन करने के लिए Ctrl कुंजी का उपयोग करें"
+
+#: 
+msgid "Don't Filter"
+msgstr "फ़िल्टर न करें"
+
+#: 
+msgid "Male"
+msgstr "पुरुष"
+
+#: 
+msgid "Female"
+msgstr "महिला"
+
+#: 
+msgid "Group Membership"
+msgstr "समूह सदस्यता"
+
+#: 
+msgid "From:"
+msgstr "जारीकर्ता या से:"
+
+#: 
+msgid "To:"
+msgstr "को:"
+
+#: 
+msgid "Birthday Date"
+msgstr "जन्मदिन की तारीख"
+
+#: 
+msgid "Anniversary Date"
+msgstr "सालगिरह की तिथि"
+
+#: 
+msgid "Output Method:"
+msgstr "आउटपुट विधि:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "सीएसवी व्यक्तिगत रिकॉर्ड"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "सीएसवी संयुक्त परिवार"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "व्यक्तियों को कार्ट में जोड़ें"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "अपूर्ण मेल पते वाले रिकॉर्ड छोड़ें"
+
+#: 
+msgid "Create File"
+msgstr "फ़ाइल बनाएँ"
+
+#: 
+msgid "No file selected for upload."
+msgstr "अपलोड के लिए कोई फ़ाइल चयनित नहीं है."
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "CSV फ़ाइल में पंक्तियों की कुल संख्या:"
+
+#: 
+msgid "Ignore this Field"
+msgstr "इस फ़ील्ड पर ध्यान न दें"
+
+#: 
+msgid "Title"
+msgstr "शीर्षक"
+
+#: 
+msgid "Suffix"
+msgstr "प्रत्यय"
+
+#: 
+msgid "Gender"
+msgstr "लिंग"
+
+#: 
+msgid "Donation Envelope"
+msgstr "दान लिफ़ाफ़ा"
+
+#: 
+msgid "Home Phone"
+msgstr "घर का फोन"
+
+#: 
+msgid "Work Phone"
+msgstr "ऑफिस का फोन"
+
+#: 
+msgid "Mobile Phone"
+msgstr "चल दूरभाष"
+
+#: 
+msgid "Work / Other Email"
+msgstr "कार्य/अन्य ईमेल"
+
+#: 
+msgid "Birth Date"
+msgstr "जन्म तिथि"
+
+#: 
+msgid "Wedding Date"
+msgstr "शादी की तारीख"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "पहली CSV पंक्ति को अनदेखा करें (हेडर को बाहर करने के लिए)"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "अंतिम नाम और पते के आधार पर पारिवारिक रिकॉर्ड बनाएं"
+
+#: 
+msgid "Patriarch"
+msgstr "कुलपति"
+
+#: 
+msgid "Matriarch"
+msgstr "कुलमाता"
+
+#: 
+msgid "Family Type: used with Make Family records... option above"
+msgstr "परिवार प्रकार: परिवार रिकॉर्ड बनाएं...ऊपर दिए गए विकल्प के साथ प्रयोग किया जाता है"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "ध्यान दें: विभाजक (डैश, आदि) या उसकी कमी कोई मायने नहीं रखती"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "यदि कोई अन्यथा निर्दिष्ट नहीं है तो डिफ़ॉल्ट देश"
+
+#: 
+msgid "Classification"
+msgstr "वर्गीकरण"
+
+#: 
+msgid "Perform Import"
+msgstr "आयात करें"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "त्रुटि: अपलोड की गई CSV फ़ाइल अब मौजूद नहीं है!"
+
+#: 
+msgid "Upload CSV File"
+msgstr "सीएसवी फ़ाइल अपलोड करें"
+
+#: 
+msgid "Data import successful."
+msgstr "डेटा आयात सफल."
+
+#: 
+msgid "persons were imported"
+msgstr "व्यक्तियों का आयात किया गया"
+
+#: 
+msgid "Canvass Automation"
+msgstr "कैनवास स्वचालन"
+
+#: 
+msgid "Not confirmed."
+msgstr "पुष्टि नहीं।"
+
+#: 
+msgid "Canvassers"
+msgstr "प्रचार करने वाले"
+
+#: 
+msgid "BraveCanvassers"
+msgstr "बहादुर कैनवासर्स"
+
+#: 
+msgid "Cleared all canvasser assignments."
+msgstr "सभी कैनवसर असाइनमेंट साफ़ कर दिए गए।"
+
+#: 
+msgid "Set Ok To Canvass for all families."
+msgstr "सभी परिवारों के लिए ओके टू कैनवस सेट करें।"
+
+#: 
+msgid "Disabled Ok To Canvass for all families."
+msgstr "विकलांगों के लिए सभी परिवारों के लिए कैनवास ठीक है।"
+
+#: 
+msgid "ClearAllOkToCanvass button not confimed."
+msgstr "ClearAllOkToCanvass बटन की पुष्टि नहीं हुई।"
+
+#: 
+msgid "Set default fiscal year"
+msgstr "डिफ़ॉल्ट वित्तीय वर्ष सेट करें"
+
+#: 
+msgid "Check to confirm"
+msgstr "पुष्टि करने के लिए जांचें"
+
+#: 
+msgid "Assign Canvassers"
+msgstr "कैनवसर्स को असाइन करें"
+
+#: 
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "सभी परिवारों को बेतरतीब ढंग से प्रचारकर्ता सौंपें।. \n"
+"कैनवसर्स &quot;Canvassers&quot; से हैं समूह।"
+
+#: 
+msgid "Assign To Non Pledging"
+msgstr "गैर प्रतिज्ञा को सौंपें"
+
+#: 
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "प्रतिज्ञा न करने वाले परिवारों को बेतरतीब ढंग से प्रचारकर्ता सौंपें।. कैनवसर्स &quot;BraveCanvassers&quot; से हैं समूह।"
+
+#: 
+msgid "Clear Canvasser Assignments"
+msgstr "कैनवेसर असाइनमेंट साफ़ करें"
+
+#: 
+msgid "Clear all the canvasser assignments for all families."
+msgstr "\n"
+"सभी परिवारों के लिए सभी प्रचार कार्य साफ़ करें।"
+
+#: 
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "महत्वपूर्ण नोट: इससे हाथ से बनाया गया कोई भी कैनवसर असाइनमेंट खो जाएगा।"
+
+#: 
+msgid "Enable Canvass for All Families"
+msgstr "Enable Canvass for All Families"
+
+#: 
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+
+#: 
+msgid "Disable Canvass for All Families"
+msgstr "Disable Canvass for All Families"
+
+#: 
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
+msgstr "सभी परिवारों के लिए फ़ील्ड प्राप्त करने के लिए, &quot;Ok से Canvass&quot; को बंद करें"
+
+#: 
+msgid "Briefing Sheets"
+msgstr "ब्रीफिंग शीट"
+
+#: 
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "सभी परिवारों के लिए कैनवासर द्वारा क्रमबद्ध ब्रीफिंग शीट वाली एक पीडीएफ तैयार करें।"
+
+#: 
+msgid "Progress Report"
+msgstr "प्रगति रिपोर्ट"
+
+#: 
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "प्रगति रिपोर्ट युक्त एक पीडीएफ तैयार करें। प्रगति रिपोर्ट में कैनवस की समग्र प्रगति और व्यक्तिगत कैनवसर्स की प्रगति की जानकारी शामिल है।"
+
+#: 
+msgid "Summary Report"
+msgstr "सारांश रिपोर्ट"
+
+#: 
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "एक सारांश रिपोर्ट युक्त एक पीडीएफ तैयार करें। सारांश रिपोर्ट में कैनवास डेटा से निकाली गई टिप्पणियाँ शामिल हैं।"
+
+#: 
+msgid "Not Interested Report"
+msgstr "रुचि नहीं रिपोर्ट"
+
+#: 
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "एक पीडीएफ तैयार करें जिसमें &quot;रुचि नहीं है&quot; चिह्नित परिवारों की रिपोर्ट शामिल हो। प्रचारक द्वारा."
+
+#: 
+msgid " Canvass Input for the "
+msgstr "␣के लिए कैनवस इनपुट"
+

@@ -1,0 +1,3847 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: ta\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "வினவலை இயக்க முடியாது."
+
+#: 
+msgid "Delete"
+msgstr "அழி"
+
+#: 
+msgid "Cancel"
+msgstr "ரத்து செய்"
+
+#: 
+msgid "Save"
+msgstr "சேமிக்கவும்"
+
+#: 
+msgid "Unassigned"
+msgstr "ஒதுக்கப்படாதது"
+
+#: 
+msgid "None"
+msgstr "இல்லை"
+
+#: 
+msgid "City"
+msgstr "நகரம்"
+
+#: 
+msgid "State"
+msgstr "மாநிலம்"
+
+#: 
+msgid "Country"
+msgstr "நாடு"
+
+#: 
+msgid "Phone"
+msgstr "தொலைபேசி"
+
+#: 
+msgid "Email"
+msgstr "மின்னஞ்சல்"
+
+#: 
+msgid "Credit Card"
+msgstr "கடன் அட்டை/கிரெடிட் கார்டு"
+
+#: 
+msgid "Backup Database"
+msgstr "காப்பு தரவுத்தளம் or தகவல்கள் தளம்"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "சர்ச்சிஆர்எம் தரவுத்தளத்தை கைமுறையாக காப்புப் பிரதி எடுக்க இந்தக் கருவி உங்களுக்கு உதவும்"
+
+#: 
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "உங்கள் கணினிகளுக்கான வழக்கமான காப்புப்பிரதி செயல்முறையை நீங்கள் ஏற்கனவே வைத்திருக்காவிட்டால், வாரத்திற்கு ஒரு முறையாவது கைமுறையாக காப்புப் பிரதி எடுக்க வேண்டும்"
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "காப்பு கோப்பைப் பதிவிறக்கிய பிறகு, நீங்கள் இரண்டு நகல்களை உருவாக்க வேண்டும். அவற்றில் ஒன்றைத் நெருப்பினால் பாதிக்கப்படாத பாதுகாப்பான இடத்திலும், மற்றொன்றை தளத்திற்கு வெளியே பாதுகாப்பான இடத்திலும் வைக்கவும்"
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "சர்ச்சிஆர்எம் தரவுத்தளத்தில் சேமிக்கப்பட்ட தரவின் ரகசியத்தன்மை குறித்து நீங்கள் கவலைப்படுகிறீர்கள் என்றால், பிறருக்கு அணுகக்கூடிய வகையில் எங்காவது சேமிக்கப்பட்டால், காப்புப் பிரதித் தரவை என்க்ரிப்ட் அல்லது குறியாக்கம் அல்லது மறைக்குறியீடு செய்ய வேண்டும்"
+
+#: 
+msgid "Select archive type"
+msgstr "காப்பக வகையைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "கடவுச்சொல் மூலம் காப்புப் பிரதி கோப்பை குறியாக்கம் அல்லது என்க்ரிப்ட் செய்யவா?"
+
+#: 
+msgid "Re-type Password"
+msgstr "கடவுச்சொல்லை மீண்டும் தட்டச்சு செய்க"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "வெளிப்புற சேமிப்பகத்திற்கு காப்புப்பிரதியை உருவாக்கி அனுப்பவும்"
+
+#: 
+msgid "Batch Winner Entry"
+msgstr "தொகுதி வெற்றியாளர் நுழைவு"
+
+#: 
+msgid "Winner"
+msgstr "வெற்றியாளர்"
+
+#: 
+msgid "Price"
+msgstr "விலை"
+
+#: 
+msgid "Enter Winners"
+msgstr "வெற்றியாளர்களை உள்ளிடவும் அல்லது நுழைவை அழுத்தவும்"
+
+#: 
+msgid "CSV Export"
+msgstr "CSV ஏற்றுமதி"
+
+#: 
+msgid "Field Selection"
+msgstr "புலத் தேர்வு"
+
+#: 
+msgid "Last Name"
+msgstr "கடைசி பெயர்"
+
+#: 
+msgid "Required"
+msgstr "தேவை"
+
+#: 
+msgid "First Name"
+msgstr "முதல் பெயர்"
+
+#: 
+msgid "Middle Name"
+msgstr "நடு பெயர்"
+
+#: 
+msgid "Zip"
+msgstr "அஞ்சல் குறியீடு எண்"
+
+#: 
+msgid "Envelope"
+msgstr "உறை"
+
+#: 
+msgid "Work/Other Email"
+msgstr "வேலை/பிற மின்னஞ்சல்"
+
+#: 
+msgid "Membership Date"
+msgstr "உறுப்பினர் தேதி"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "பிறந்த தேதி / ஆண்டுவிழா"
+
+#: 
+msgid "Age / Years Married"
+msgstr "வயது / திருமணமான ஆண்டுகள்"
+
+#: 
+msgid "Family Role"
+msgstr "குடும்ப பங்கு"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "நபர் அல்லது குடும்ப வெளியீட்டு முறையைப் பயன்படுத்துவதைப் பொறுத்தது"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "தனிப்விருப்ப புல தேர்வு"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "தனிப்விருப்ப நபர் புலங்கள்"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "தனிப்விருப்ப குடும்ப புலங்கள்"
+
+#: 
+msgid "Filters"
+msgstr "வடிகட்டிகள்"
+
+#: 
+msgid "Records to export"
+msgstr "ஏற்றுமதி செய்ய வேண்டிய பதிவுகள்"
+
+#: 
+msgid "Based on filters below.."
+msgstr "கீழே உள்ள வடிகட்டிகள் அல்லது வடிப்பான்களின் அடிப்படையில்.."
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "கார்ட்டில் உள்ளவர்கள் (வடிகட்டிகள் அல்லது வடிப்பான்கள் புறக்கணிக்கப்பட்டது)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "பலவற்றைத் தேர்ந்தெடுக்க Ctrl விசையைப் பயன்படுத்தவும்"
+
+#: 
+msgid "Don't Filter"
+msgstr "வடிகட்ட வேண்டாம்"
+
+#: 
+msgid "Male"
+msgstr "ஆண்"
+
+#: 
+msgid "Female"
+msgstr "பெண்"
+
+#: 
+msgid "Group Membership"
+msgstr "குழு உறுப்பினர்"
+
+#: 
+msgid "From:"
+msgstr "விடுநர்:"
+
+#: 
+msgid "To:"
+msgstr "பெறுநர்:"
+
+#: 
+msgid "Birthday Date"
+msgstr "பிறந்தநாள் தேதி"
+
+#: 
+msgid "Anniversary Date"
+msgstr "ஆண்டுவிழா தேதி"
+
+#: 
+msgid "Output Method:"
+msgstr "வெளியீட்டு முறை:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "CSV தனிப்பட்ட பதிவுகள்"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV குடும்பங்களை இணைக்கவும்"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "கார்ட்டில் அல்லது மென்வண்டியில் தனிநபர்களைச் சேர்க்கவும்"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "முழுமையற்ற அஞ்சல் முகவரி பதிவுகளைத் தவிர்க்கவும்"
+
+#: 
+msgid "Create File"
+msgstr "கோப்பை உருவாக்கவும்"
+
+#: 
+msgid "No file selected for upload."
+msgstr "பதிவேற்றுவதற்கு கோப்பு எதுவும் தேர்ந்தெடுக்கப்படவில்லை."
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "CSV கோப்பில் உள்ள வரிசைகளின் மொத்த எண்ணிக்கை:"
+
+#: 
+msgid "Ignore this Field"
+msgstr "இந்த புலத்தை புறக்கணிக்கவும்"
+
+#: 
+msgid "Title"
+msgstr "தலைப்பு"
+
+#: 
+msgid "Suffix"
+msgstr "பின்னொட்டு"
+
+#: 
+msgid "Gender"
+msgstr "பாலினம்"
+
+#: 
+msgid "Donation Envelope"
+msgstr "நன்கொடை உறை"
+
+#: 
+msgid "Home Phone"
+msgstr "வீட்டு தொலைபேசி"
+
+#: 
+msgid "Work Phone"
+msgstr "அலுவலக தொலைபேசி"
+
+#: 
+msgid "Mobile Phone"
+msgstr "கைபேசி"
+
+#: 
+msgid "Work / Other Email"
+msgstr "வேலை / பிற மின்னஞ்சல்"
+
+#: 
+msgid "Birth Date"
+msgstr "பிறந்த தேதி"
+
+#: 
+msgid "Wedding Date"
+msgstr "திருமண தேதி"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "முதல் CSV வரிசையை புறக்கணிக்கவும் (தலைப்பை விலக்க)"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "கடைசி பெயர் மற்றும் முகவரியின் அடிப்படையில் குடும்ப பதிவுகளை உருவாக்கவும்"
+
+#: 
+msgid "Patriarch"
+msgstr "தேசபக்தர்"
+
+#: 
+msgid "Matriarch"
+msgstr "குடும்பம் அல்லது அமைப்பின் பெண் தலைவி"
+
+#: 
+msgid "Family Type: used with Make Family records... option above"
+msgstr "குடும்ப வகை: குடும்ப பதிவுகளை உருவாக்குதல் பயன்படுத்தப்பட்டியிருக்கிறது... விருப்ப தேர்வு மேலே உள்ளது"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "குறிப்பு: பிரிப்பான்கள் (இணை சிறு கோடுகள், முதலியன) அல்லது அவைகள் இல்லாவிட்டாலும் ஒரு பொருட்டல்ல"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "எதுவும் குறிப்பிடப்படவில்லை எனில் இயல்பு நாடு"
+
+#: 
+msgid "Classification"
+msgstr "வகைப்பாடு"
+
+#: 
+msgid "Perform Import"
+msgstr "இறக்குமதி செய்யவும்"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "பிழை: பதிவேற்றப்பட்ட CSV கோப்பு இனி இருக்காது!"
+
+#: 
+msgid "Upload CSV File"
+msgstr "CSV கோப்பைப் பதிவேற்றவும்"
+
+#: 
+msgid "Data import successful."
+msgstr "தகவல்கள் இறக்குமதி வெற்றிகரமாக உள்ளது"
+
+#: 
+msgid "persons were imported"
+msgstr "நபர்கள் இறக்குமதி செய்யப்பட்டனர்"
+
+#: 
+msgid "Canvass Automation"
+msgstr "தானியியங்கி ஆதரவுதிரட்டுதல்"
+
+#: 
+msgid "Not confirmed."
+msgstr "உறுதி செய்யப்படவில்லை"
+
+#: 
+msgid "Canvassers"
+msgstr "ஆதரவுதிரட்டுபவர்கள்"
+
+#: 
+msgid "BraveCanvassers"
+msgstr "துணிச்சலான ஆதரவுதிரட்டுபவர்கள்"
+
+#: 
+msgid "Cleared all canvasser assignments."
+msgstr "ஆதரவுதிரட்டுபவர்கள் பணிகள் அனைத்தும் அழிக்கப்பட்டன"
+
+#: 
+msgid "Set Ok To Canvass for all families."
+msgstr "அனைத்து குடும்பங்களுக்கும் ஆதரவுதிரட்ட ஓகே அமைக்கவும்"
+
+#: 
+msgid "Disabled Ok To Canvass for all families."
+msgstr "அனைத்து குடும்பங்களுக்கும் ஆதரவுதிரட்ட ஓகே முடக்கப்பட்டுள்ளது"
+
+#: 
+msgid "ClearAllOkToCanvass button not confimed."
+msgstr "ClearAllOkToCanvass பொத்தான் உறுதிப்படுத்தப்படவில்லை"
+
+#: 
+msgid "Set default fiscal year"
+msgstr "இயல்புநிலை நிதியாண்டை அமைக்கவும்"
+
+#: 
+msgid "Check to confirm"
+msgstr "உறுதிப்படுத்த சரிபார்க்கவும்"
+
+#: 
+msgid "Assign Canvassers"
+msgstr "ஆதரவுதிரட்டுபவர்களை நியமியுங்கள்"
+
+#: 
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "அனைத்து குடும்பங்களுக்கும் ஆதரவுதிரட்டுபவர்களை தோராயமாக நியமிக்கவும். ஆதரவுதிரட்டுபவர்கள் &quot;Canvassers&quot; குழுவிலிருந்து நியமிக்கபட்டார்கள்"
+
+#: 
+msgid "Assign To Non Pledging"
+msgstr "உறுதிமொழி இல்லாமைக்கு நியமிக்கவும்"
+
+#: 
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "உறுதியளிக்காத குடும்பங்களுக்கு ஆதரவுதிரட்டுபவர்களை தோராயமாக நியமிக்கவும். ஆதரவுதிரட்டுபவர்கள் &quot;BraveCanvassers&quot; குழுவிலிருந்து எடுக்கபட்டவர்கள்"
+
+#: 
+msgid "Clear Canvasser Assignments"
+msgstr "ஆதரவுதிரட்டுபவர்கள் பணிகளை அழிக்கவும்"
+
+#: 
+msgid "Clear all the canvasser assignments for all families."
+msgstr "அனைத்து குடும்பங்களுக்கான அனைத்து ஆதரவுதிரட்டுபவர்கள் பணிகளையும் அழிக்கவும்."
+
+#: 
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "முக்கிய குறிப்பு: இது கையால் செய்யப்பட்ட எந்த ஆதரவுதிரட்டுபவர்களின் பணிகளையும் இழக்கச்செய்யும்."
+
+#: 
+msgid "Enable Canvass for All Families"
+msgstr "அனைத்து குடும்பங்களுக்கும் ஆதரவுதிரட்டுதலை செயல்படுத்து"
+
+#: 
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "அனைத்து குடும்பங்களுக்கான களத்தை பெறுவதற்கு Canvass&quot;  லிருந்து &quot;Ok க்கு இயக்கவும்"
+
+#: 
+msgid "Disable Canvass for All Families"
+msgstr "அனைத்து குடும்பங்களுக்கும் ஆதரவுதிரட்டுதலை முடக்கு"
+
+#: 
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
+msgstr "அனைத்து குடும்பங்களுக்கான களத்தை பெறுவதற்கு Canvass&quot;  லிருந்து &quot;Ok க்கு முடக்கவும்"
+
+#: 
+msgid "Briefing Sheets"
+msgstr "விளக்க தாள்கள்"
+
+#: 
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "கேன்வாஸர் மூலம் வரிசைப்படுத்தப்பட்ட விளக்க தாள்களைக் கொண்ட PDFஐ அனைத்து குடும்பங்களுக்காக உருவாக்கவும்."
+
+#: 
+msgid "Progress Report"
+msgstr "வளர்ச்சி அறிக்கை"
+
+#: 
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "முன்னேற்ற அறிக்கையைக் கொண்ட PDFஐ உருவாக்கவும். முன்னேற்ற அறிக்கையில் ஆதரவுதிரட்டுதலின் ஒட்டுமொத்த முன்னேற்றம் மற்றும் தனிப்பட்ட ஆதரவுதிரட்டுபவர்களின் முன்னேற்றம் பற்றிய தகவல்கள் அடங்கியிருக்கும்."
+
+#: 
+msgid "Summary Report"
+msgstr "சுருக்க அறிக்கை"
+
+#: 
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "சுருக்க அறிக்கையைக் கொண்ட PDF ஐ உருவாக்கவும். சுருக்க அறிக்கையானது ஆதரவுதிரட்டுதலின் தகவலிருந்து பிரித்தெடுக்கப்பட்ட கருத்துகளை உள்ளடக்கியது."
+
+#: 
+msgid "Not Interested Report"
+msgstr "ஆர்வமில்லாத அறிக்கை"
+
+#: 
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "ஆதரவுதிரட்டுபவர்களால் PDF கோப்பு வடிவத்தில் &quot;Not Interested&quot; எனக் குறிக்கப்பட்ட குடும்பங்களின் அறிக்கை  உருவாக்கப்படும்"
+
+#: 
+msgid " Canvass Input for the "
+msgstr "␣க்கான ஆதரவுதிரட்டுதலின் உள்ளீட்டை செய்யவும்"
+
+#: 
+msgid "Canvasser"
+msgstr "ஆதரவுதிரட்டுபவர்"
+
+#: 
+msgid "Positive"
+msgstr "நேர்மறை"
+
+#: 
+msgid "Critical"
+msgstr "முக்கியமானது"
+
+#: 
+msgid "Insightful"
+msgstr "நுண்ணறிவு"
+
+#: 
+msgid "Financial"
+msgstr "நிதி"
+
+#: 
+msgid "Suggestions"
+msgstr "பரிந்துரைகள்"
+
+#: 
+msgid "Not Interested"
+msgstr "ஆர்வம் இல்லை"
+
+#: 
+msgid "Why Not Interested?"
+msgstr "ஏன் ஆர்வம் இல்லை?"
+
+#: 
+msgid "Add Cart to Event"
+msgstr "நிகழ்வில் மென்வண்டியைச் சேர்க்கவும்"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "உங்கள் மென்மென்வண்டியில் நீங்கள் சேர்க்க விரும்பும் நிகழ்வைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "OR"
+msgstr "அல்லது"
+
+#: 
+msgid "Add New Event"
+msgstr "புதிய நிகழ்வைச் சேர்க்கவும்"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "உங்கள் மென்வண்டி காலியாக உள்ளது!"
+
+#: 
+msgid "No family name entered!"
+msgstr "குடும்பப் பெயர் சேர்க்கபடவில்லை!"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "குடும்பத்தில் மென்வண்டியைச் சேர்க்கவும்"
+
+#: 
+msgid "Name"
+msgstr "பெயர்"
+
+#: 
+msgid "Assign Role"
+msgstr "நியமிக்கப்பட்ட பங்கு"
+
+#: 
+msgid "Already in a family"
+msgstr "ஏற்கனவே ஒரு குடும்பத்தில் உள்ளது"
+
+#: 
+msgid "Create new family"
+msgstr "புதிய குடும்பத்தை உருவாக்குங்கள்"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "புதிய குடும்பத்தைச் சேர்த்தால், கீழே தகவலை உள்ளிடவும்"
+
+#: 
+msgid "Use address/contact data from"
+msgstr "இலிருந்து முகவரி/தொடர்புத் தகவலைப் பயன்படுத்தவும்"
+
+#: 
+msgid "Only the new data below"
+msgstr "புதிய தகவல் மட்டுமே கீழே உள்ளது"
+
+#: 
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(அமெரிக்கா மற்றும் கனடாவைத் தவிர மற்ற நாடுகளுக்கு உரைப் பெட்டியைப் பயன்படுத்தவும்)"
+
+#: 
+msgid "Do not auto-format"
+msgstr "தானாக வடிவமைக்க வேண்டாம்"
+
+#: 
+msgid "Add to Family"
+msgstr "குடும்பத்தில் சேர்க்கவும்"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "குழுவில் மென்வண்டியைச் சேர்க்கவும்"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "உங்கள் மென்வண்டியில் நீங்கள் சேர்க்க விரும்பும் குழுவைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Select Group"
+msgstr "குழுவைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "No Group Selected"
+msgstr "குழு எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
+
+#: 
+msgid "Add to Group"
+msgstr "குழுவில் சேர்க்கவும்"
+
+#: 
+msgid "View Your Cart"
+msgstr "உங்கள் மென்வண்டியைப் பார்க்கவும்"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "உங்கள் மென்வண்டியில் பொருட்கள் எதுவும் இல்லை"
+
+#: 
+msgid "Back to Menu"
+msgstr "பட்டியலுக்குத் திரும்பு"
+
+#: 
+msgid "Empty Cart"
+msgstr "காலி மென்வண்டி"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "குழுவிற்கு மென்வண்டியை காலி செய்யவும்"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "குடும்பத்திற்கு மென்வண்டியை காலி செய்யவும்"
+
+#: 
+msgid "Empty Cart to Event"
+msgstr "நிகழ்வுக்கு மென்வண்டியை காலி செய்யவும்"
+
+#: 
+msgid "Map Cart"
+msgstr "வரைபட மென்வண்டி"
+
+#: 
+msgid "Name Tags"
+msgstr "பெயர் குறிச்சொற்கள்"
+
+#: 
+msgid "Email Cart"
+msgstr "மின்னஞ்சல் மென்வண்டி"
+
+#: 
+msgid "Email (BCC)"
+msgstr "மின்னஞ்சல் (BCC)"
+
+#: 
+msgid "Create Directory From Cart"
+msgstr "மென்வண்டியில் இருந்து கோப்பகத்தை உருவாக்கவும்"
+
+#: 
+msgid "Bulk Mail Presort"
+msgstr "மொத்த அஞ்சல் முன்வகைபடுத்தும் நிலையம்"
+
+#: 
+msgid "Quiet Presort"
+msgstr "அமைதியான முன்வகைபடுத்து"
+
+#: 
+msgid "Your cart contains"
+msgstr "உங்கள் மென்வண்டி கொண்டுள்ளது"
+
+#: 
+msgid "persons from"
+msgstr "இந்த நபர்களிள் இருந்து"
+
+#: 
+msgid "Remove"
+msgstr "அகற்று"
+
+#: 
+msgid "Yes"
+msgstr "ஆம்"
+
+#: 
+msgid "No"
+msgstr "இல்லை"
+
+#: 
+msgid "Developer Chat"
+msgstr "உருவாக்குபவர் பேச்சு"
+
+#: 
+msgid "Event Checkin"
+msgstr "நிகழ்வு சரிபார்ப்பு"
+
+#: 
+msgid "Select the event to which you would like to check people in for"
+msgstr "நீங்கள் மக்களைச் அனுமதிக்க விரும்பும் நிகழ்வைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Select Event"
+msgstr "நிகழ்வைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Add Visitor"
+msgstr "பார்வையாளரைச் சேர்க்கவும்"
+
+#: 
+msgid "CheckIn"
+msgstr "உள்ளே சேர்த்தல்"
+
+#: 
+msgid "CheckOut"
+msgstr "வெளியேற்றுதல்"
+
+#: 
+msgid "Checked In Time"
+msgstr "நுழைவு நேரம்"
+
+#: 
+msgid "Checked In By"
+msgstr "யார் மூலம் நுழைவு சரிபார்க்கப்பட்டது"
+
+#: 
+msgid "Checked Out Time"
+msgstr "வெளியேற்றும்  நேரம்"
+
+#: 
+msgid "Checked Out By"
+msgstr "யார் மூலம் வெளியேற்றுதல் சரிபார்க்கப்பட்டது"
+
+#: 
+msgid "Action"
+msgstr "செயல்"
+
+#: 
+msgid "No Attendees Assigned to Event"
+msgstr "நிகழ்வுக்கு பங்கேற்பாளர்கள் யாரும் ஒதுக்கப்படவில்லை"
+
+#: 
+msgid "Member"
+msgstr "உறுப்பினர்"
+
+#: 
+msgid " of the"
+msgstr "␣ இன்"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(நியமிக்கப்பட்ட குடும்பம் இல்லை)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "தனிநபர்களை குடும்பங்களாக மாற்றவும்"
+
+#: 
+msgid "Convert Next"
+msgstr "அடுத்து மாற்றவும்"
+
+#: 
+msgid "Convert All"
+msgstr "அனைத்தையும் மாற்றவும்"
+
+#: 
+msgid "Deposit Slip Number: "
+msgstr "வைப்பு சீட்டு எண்:"
+
+#: 
+msgid "Deposit Details: "
+msgstr "வைப்பு விவரங்கள்:"
+
+#: 
+msgid "Close deposit slip (remember to press Save)"
+msgstr "வைப்பு சீட்டை மூடு (சேமி என்பதை அழுத்த மறக்க வேண்டாம்)"
+
+#: 
+msgid "Deposit Slip Report"
+msgstr "வைப்பு சீட்டு அறிக்கை"
+
+#: 
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgstr "முக்கிய குறிப்பு: வைப்பு சீட்டை மூடும்போது தோல்வியடைந்த பரிவர்த்தனைகள் நிரந்தரமாக நீக்கப்படும்."
+
+#: 
+msgid "Deposit Summary: "
+msgstr "வைப்புச் சுருக்கம்:"
+
+#: 
+msgid "Payments on this deposit slip:"
+msgstr "இந்த வைப்புச் சீட்டில் பணம் செலுத்துதல்:"
+
+#: 
+msgid "Import eGive"
+msgstr "eGive ஐ இறக்குமதி செய்யவும்"
+
+#: 
+msgid "Add Payment"
+msgstr "கட்டணத்தைச் சேர்க்கவும்"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "அங்கீகரிக்கப்பட்ட பரிவர்த்தனைகளை ஏற்றவும்"
+
+#: 
+msgid "Run Transactions"
+msgstr "பரிவர்த்தனைகளை இயக்கவும்"
+
+#: 
+msgid "Directory reports"
+msgstr "அடைவு அறிக்கைகள்"
+
+#: 
+msgid "Select classifications to include"
+msgstr "சேர்க்க வேண்டிய வகைப்பாடுகளைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Which role is the head of household?"
+msgstr "குடும்பத் தலைவரின் பங்கு அல்லது வேலை என்ன?"
+
+#: 
+msgid "Which role is the spouse?"
+msgstr "வாழ்க்கைத் துணைவியின் பங்கு அல்லது வேலை என்ன?"
+
+#: 
+msgid "Which role is a child?"
+msgstr "குழந்தையின் பங்கு அல்லது வேலை என்ன?"
+
+#: 
+msgid "Information to Include"
+msgstr "சேர்க்க வேண்டிய தகவல்"
+
+#: 
+msgid "Address"
+msgstr "முகவரி"
+
+#: 
+msgid "Birthday"
+msgstr "பிறந்தநாள்"
+
+#: 
+msgid "Family Home Phone"
+msgstr "குடும்ப வீட்டு தொலைபேசி"
+
+#: 
+msgid "Family Work Phone"
+msgstr "குடும்ப வேலை தொலைபேசி"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "குடும்ப கைபேசி"
+
+#: 
+msgid "Family Email"
+msgstr "குடும்ப மின்னஞ்சல்"
+
+#: 
+msgid "Personal Home Phone"
+msgstr "தனிப்பட்ட வீட்டு தொலைபேசி"
+
+#: 
+msgid "Personal Work Phone"
+msgstr "தனிப்பட்ட வேலை தொலைபேசி"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "தனிப்பட்ட கைப்பேசி"
+
+#: 
+msgid "Personal Email"
+msgstr "தனிப்பட்ட மின்னஞ்சல்"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "தனிப்பட்ட வேலை/மற்ற மின்னஞ்சல்"
+
+#: 
+msgid "Photos"
+msgstr "புகைப்படங்கள்"
+
+#: 
+msgid "Number of Columns"
+msgstr "நெடுவரிசைகளின் எண்ணிக்கை"
+
+#: 
+msgid "Paper Size"
+msgstr "காகித அளவு"
+
+#: 
+msgid "Font Size"
+msgstr "எழுத்துரு அளவு"
+
+#: 
+msgid "Title page"
+msgstr "தலைப்பு பக்கம்"
+
+#: 
+msgid "Use Title Page"
+msgstr "தலைப்புப் பக்கத்தைப் பயன்படுத்தவும்"
+
+#: 
+msgid "Church Name"
+msgstr "சர்ச் பெயர்"
+
+#: 
+msgid "Disclaimer"
+msgstr "மறுப்பு"
+
+#: 
+msgid "Create Directory"
+msgstr "\n"
+"கோப்பகத்தை உருவாக்கவும்"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "நன்கொடை பொருள் ஆசிரியர்"
+
+#: 
+msgid "Save and Add"
+msgstr "சேமித்து சேர்"
+
+#: 
+msgid "Item"
+msgstr "பொருள்"
+
+#: 
+msgid "Multiple items"
+msgstr "பல பொருட்கள்"
+
+#: 
+msgid "Sell to everyone"
+msgstr "அனைவருக்கும் விற்கவும்"
+
+#: 
+msgid "Estimated Price"
+msgstr "மதிப்பிடப்பட்ட விலை"
+
+#: 
+msgid "Multiple"
+msgstr "பல"
+
+#: 
+msgid "Final Price"
+msgstr "இறுதி விலை"
+
+#: 
+msgid "Replicate item"
+msgstr "உருப்படியை நகலெடுக்கவும்"
+
+#: 
+msgid "Go"
+msgstr "போ"
+
+#: 
+msgid "Description"
+msgstr "விளக்கம்"
+
+#: 
+msgid "Picture URL"
+msgstr "URLலின் படம்"
+
+#: 
+msgid "Donation Fund Editor"
+msgstr "நன்கொடை நிதி ஆசிரியர்"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "இந்த நிதியை நிச்சயமாக நீக்க விரும்புகிறீர்களா?"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
+msgstr "எச்சரிக்கை: நீக்கு அல்லது 'புதியதைச் சேர்' பொத்தானைப் பயன்படுத்துவதற்கு முன், 'மாற்றங்களைச் சேமி' செய்யாவிட்டால், புல மாற்றங்கள் இழக்கப்படும்!"
+
+#: 
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "தவறான புலங்கள் அல்லது தேர்வுகள். மாற்றங்கள் சேமிக்கப்படவில்லை! தயவு செய்து திருத்தி மீண்டும் முயற்சிக்கவும்!"
+
+#: 
+msgid "No funds have been added yet"
+msgstr "இன்னும் நிதி சேர்க்கப்படவில்லை"
+
+#: 
+msgid "Active"
+msgstr "செயலில் உள்ளது"
+
+#: 
+msgid "Save Changes"
+msgstr "மாற்றங்களை சேமியுங்கள்"
+
+#: 
+msgid "Add New Fund"
+msgstr "புதிய நிதியைச் சேர்க்கவும்"
+
+#: 
+msgid "Church Event Editor"
+msgstr "சபை நிகழ்வு திருத்தும் ஆசிரியர்"
+
+#: 
+msgid "Edit Event Types"
+msgstr "நிகழ்வு வகைகளைத் திருத்தவும்"
+
+#: 
+msgid "Edit Event Type"
+msgstr "நிகழ்வு வகையைத் திருத்தவும்"
+
+#: 
+msgid "Event Type"
+msgstr "நிகழ்வு வகை"
+
+#: 
+msgid "Save Name"
+msgstr "பெயரைச் சேமிக்கவும்"
+
+#: 
+msgid "Recurrence Pattern"
+msgstr "மறுநிகழ்வு முறை"
+
+#: 
+msgid "Attendance Counts"
+msgstr "வருகை எண்ணிக்கை"
+
+#: 
+msgid "Add counter"
+msgstr "கணக்கிடுகிளவனை அதாவது கவுண்டரைச் சேர்க்கவும்"
+
+#: 
+msgid "Return to Event Types"
+msgstr "நிகழ்வு வகைகளுக்குத் திரும்பு"
+
+#: 
+msgid "Family"
+msgstr "குடும்பம்"
+
+#: 
+msgid "Type"
+msgstr "வகை"
+
+#: 
+msgid "Fiscal Year"
+msgstr "நிதியாண்டு"
+
+#: 
+msgid "Amount"
+msgstr "தொகை"
+
+#: 
+msgid "Fund"
+msgstr "நிதி"
+
+#: 
+msgid "Bank"
+msgstr "வங்கி"
+
+#: 
+msgid "Month"
+msgstr "மாதம்"
+
+#: 
+msgid "Year"
+msgstr "ஆண்டு"
+
+#: 
+msgid "Edit"
+msgstr "தொகு"
+
+#: 
+msgid "Event Attendees"
+msgstr "நிகழ்வு பங்கேற்பாளர்கள்"
+
+#: 
+msgid "Event Nonattendees"
+msgstr "நிகழ்வில் கலந்து கொள்ளாதவர்கள்"
+
+#: 
+msgid "Event Guests"
+msgstr "நிகழ்வு விருந்தினர்கள்"
+
+#: 
+msgid "There "
+msgstr "அங்கு␣"
+
+#: 
+msgid "Event Title"
+msgstr "நிகழ்வு தலைப்பு"
+
+#: 
+msgid "Event Date"
+msgstr "நிகழ்வு தேதி"
+
+#: 
+msgid "Attending Members"
+msgstr "கலந்துகொள்ளும் உறுப்பினர்கள்"
+
+#: 
+msgid "Non-Attending Members"
+msgstr "கலந்து கொள்ளாத உறுப்பினர்கள்"
+
+#: 
+msgid "Guests"
+msgstr "விருந்தினர்கள்"
+
+#: 
+msgid "There are no events in this category"
+msgstr "இந்த வகையில் நிகழ்வுகள் எதுவும் இல்லை"
+
+#: 
+msgid "Create Event"
+msgstr "நிகழ்வை உருவாக்கவும்"
+
+#: 
+msgid "Create a new Event"
+msgstr "புதிய நிகழ்வை உருவாக்கவும்"
+
+#: 
+msgid "Editing Event ID: "
+msgstr "நிகழ்வு ஐடியைத் திருத்துதல்:"
+
+#: 
+msgid " errors. Please see below"
+msgstr "␣ பிழைகள். கீழே பார்க்கவும்"
+
+#: 
+msgid "Items with a "
+msgstr "a␣ கொண்ட பொருட்கள்"
+
+#: 
+msgid " are required"
+msgstr "␣ தேவை"
+
+#: 
+msgid "Select your event type"
+msgstr "உங்கள் நிகழ்வு வகையைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "You must pick an event type."
+msgstr "நிகழ்வின் வகையைத் தேர்ந்தெடுக்க வேண்டும்."
+
+#: 
+msgid "Event Desc"
+msgstr "நிகழ்வு விளக்கம்"
+
+#: 
+msgid "No Attendance counts recorded"
+msgstr "வருகை எண்ணிக்கை பதிவு செய்யப்படவில்லை"
+
+#: 
+msgid "Attendance Notes: "
+msgstr "வருகை குறிப்புகள்:␣"
+
+#: 
+msgid "Event Sermon"
+msgstr "நிகழ்வு பிரசங்கம்"
+
+#: 
+msgid "Event Status"
+msgstr "நிகழ்வு நிலை"
+
+#: 
+msgid "Return to Events"
+msgstr "நிகழ்வுகளுக்குத் திரும்பு"
+
+#: 
+msgid "EVENT TYPE NAME"
+msgstr "நிகழ்வு வகை பெயர்"
+
+#: 
+msgid "Sundays"
+msgstr "ஞாயிற்றுக்கிழமைகள்"
+
+#: 
+msgid "Mondays"
+msgstr "திங்கட்கிழமைகள்"
+
+#: 
+msgid "Tuesdays"
+msgstr "செவ்வாய் கிழமைகள்"
+
+#: 
+msgid "Wednesdays"
+msgstr "புதன்கிழமைகள்"
+
+#: 
+msgid "Thursdays"
+msgstr "வியாழன்"
+
+#: 
+msgid "Fridays"
+msgstr "வெள்ளிக்கிழமைகள்"
+
+#: 
+msgid "Saturdays"
+msgstr "சனிக்கிழமைகளில்"
+
+#: 
+msgid "DEFAULT START TIME"
+msgstr "இயல்புநிலை தொடக்க நேரம்"
+
+#: 
+msgid "ATTENDANCE COUNTS"
+msgstr "வருகை எண்ணிக்கை"
+
+#: 
+msgid "Optional"
+msgstr "விருப்பத்திற்குரியது"
+
+#: 
+msgid "Enter a list of the attendance counts you want to include with this event."
+msgstr "இந்த நிகழ்வில் நீங்கள் சேர்க்க விரும்பும் வருகை எண்ணிக்கையின் பட்டியலை உள்ளிடவும்."
+
+#: 
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
+msgstr "ஒவ்வொரு எண்ணும்_பெயரையும் கமாவால் பிரிக்கவும். எ.கா. உறுப்பினர்கள், பார்வையாளர்கள், வளாகம், குழந்தைகள்"
+
+#: 
+msgid "Every event type includes a Total count, you do not need to include it."
+msgstr "ஒவ்வொரு நிகழ்வு வகையிலும் மொத்த எண்ணிக்கை இருக்கும், நீங்கள் அதைச் சேர்க்க வேண்டியதில்லை."
+
+#: 
+msgid "Add Event Type"
+msgstr "நிகழ்வு வகையைச் சேர்க்கவும்"
+
+#: 
+msgid "Custom Family Fields Editor"
+msgstr "தனிவிருப்ப குடும்ப புலங்கள் ஆசிரியர் அல்லது திருத்துபவர்"
+
+#: 
+msgid "Default Option"
+msgstr "இயல்புநிலை விருப்பம்"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
+msgstr "எச்சரிக்கை: இந்தப் புலத்தை நீக்குவதன் மூலம், இந்தப் புலத்திற்காக ஒதுக்கப்பட்ட அனைத்து குடும்பத் தரவையும் நீங்கள் திரும்பப் பெறமுடியாமல் இழப்பீர்கள்!"
+
+#: 
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "எச்சரிக்கை: அம்புக்குறி மற்றும் நீக்கு பொத்தான்கள் உடனடியாக நடைமுறைக்கு வரும். மேல், கீழ், நீக்கு அல்லது 'புதியதைச் சேர்' பொத்தானைப் பயன்படுத்துவதற்கு முன், 'மாற்றங்களைச் சேமி' செய்யாவிட்டால் புலத்தின் பெயர் மாற்றங்கள் இழக்கப்படும்!"
+
+#: 
+msgid "No custom Family fields have been added yet"
+msgstr "தனிவிருப்ப குடும்ப புலங்கள் எதுவும் இதுவரை சேர்க்கப்படவில்லை"
+
+#: 
+msgid "Special option"
+msgstr "சிறப்பு விருப்பம்"
+
+#: 
+msgid "Security Option"
+msgstr "பாதுகாப்பு விருப்பம்"
+
+#: 
+msgid "You must select a group."
+msgstr "நீங்கள் ஒரு குழுவைத் தேர்ந்தெடுக்க வேண்டும்."
+
+#: 
+msgid "Edit List Options"
+msgstr "பட்டியல் விருப்பங்களைத் திருத்தவும்"
+
+#: 
+msgid "Help on types.."
+msgstr "வகைகளில் உதவி.."
+
+#: 
+msgid "You must enter a name"
+msgstr "நீங்கள் ஒரு பெயரை உள்ளிட வேண்டும்"
+
+#: 
+msgid "That field name already exists."
+msgstr "அந்தப் புலத்தின் பெயர் ஏற்கனவே உள்ளது."
+
+#: 
+msgid "Add New Field"
+msgstr "புதிய புலத்தைச் சேர்க்கவும்"
+
+#: 
+msgid "Family Editor"
+msgstr "குடும்ப திருத்துநர்/ஆசிரியர்"
+
+#: 
+msgid "First name must be entered"
+msgstr "முதல் பெயரை உள்ளிட வேண்டும்"
+
+#: 
+msgid "Invalid Year: allowable values are 1901 to 2155"
+msgstr "தவறான ஆண்டு: அனுமதிக்கப்பட்ட மதிப்புகள் 1901 முதல் 2155 வரை"
+
+#: 
+msgid "Invalid Birth Date."
+msgstr "தவறான பிறந்த தேதி."
+
+#: 
+msgid "Not a valid Wedding Date"
+msgstr "சரியான திருமண தேதி இல்லை"
+
+#: 
+msgid "Email is Not Valid"
+msgstr "மின்னஞ்சல் செல்லுபடியாகாது"
+
+#: 
+msgid "Family Info"
+msgstr "குடும்பத் தகவல்"
+
+#: 
+msgid "Contact Info"
+msgstr "தொடர்பு தகவல்"
+
+#: 
+msgid "Other Info"
+msgstr "மற்ற தகவல்"
+
+#: 
+msgid "Ok To Canvass"
+msgstr "ஆதரவு திரட்டுதலுக்கு/கேன்வாஸ் செய்ய சரி"
+
+#: 
+msgid "Assign a Canvasser"
+msgstr "ஒரு ஆதரவு திரட்டுபவரை/கேன்வாஸரை நியமிக்கவும்"
+
+#: 
+msgid "Assign a Brave Canvasser"
+msgstr "ஒரு துணிச்சலான ஆதரவு திரட்டுபவரை/கேன்வாஸரை நியமிக்கவும்"
+
+#: 
+msgid "Envelope Info"
+msgstr "உறை தகவல்"
+
+#: 
+msgid "Custom Fields"
+msgstr "விருப்ப புலங்கள்"
+
+#: 
+msgid "Family Members"
+msgstr "குடும்ப உறுப்பினர்கள்"
+
+#: 
+msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
+msgstr "நீங்கள் இப்போது குடும்ப உறுப்பினர்களை உருவாக்கலாம் அல்லது பின்னர் சேர்க்கலாம். அனைத்து உள்ளீடுகளும் <i>புதிய</i> நபர் பதிவுகளாக மாறும்."
+
+#: 
+msgid "First"
+msgstr "முதலில்"
+
+#: 
+msgid "Middle"
+msgstr "நடுத்தர"
+
+#: 
+msgid "Last"
+msgstr "கடைசி"
+
+#: 
+msgid "Role"
+msgstr "வேலை/பங்கு"
+
+#: 
+msgid "Select Gender"
+msgstr "பாலினத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Select Role"
+msgstr "வேலை/பாத்திரத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Unknown"
+msgstr "தெரியாதது/தெரியவில்லை"
+
+#: 
+msgid "January"
+msgstr "ஜனவரி"
+
+#: 
+msgid "February"
+msgstr "பிப்ரவரி"
+
+#: 
+msgid "March"
+msgstr "மார்ச்"
+
+#: 
+msgid "April"
+msgstr "ஏப்ரல்"
+
+#: 
+msgid "May"
+msgstr "மே"
+
+#: 
+msgid "June"
+msgstr "ஜூன்"
+
+#: 
+msgid "July"
+msgstr "ஜூலை"
+
+#: 
+msgid "August"
+msgstr "ஆகஸ்ட்"
+
+#: 
+msgid "September"
+msgstr "செப்டம்பர்"
+
+#: 
+msgid "October"
+msgstr "அக்டோபர்"
+
+#: 
+msgid "November"
+msgstr "நவம்பர்"
+
+#: 
+msgid "December"
+msgstr "டிசம்பர்"
+
+#: 
+msgid "Unk"
+msgstr "Unk"
+
+#: 
+msgid "Family List"
+msgstr "குடும்பப் பட்டியல்"
+
+#: 
+msgid "Add Family"
+msgstr "குடும்பத்தைச் சேர்க்கவும்"
+
+#: 
+msgid "Created"
+msgstr "உருவாக்கப்பட்டது"
+
+#: 
+msgid "Edited"
+msgstr "திருத்தப்பட்டது"
+
+#: 
+msgid "Envelope Number"
+msgstr "உறை எண்"
+
+#: 
+msgid "Verify Info"
+msgstr "தகவலைச் சரிபார்க்கவும்"
+
+#: 
+msgid "Add New Member"
+msgstr "புதிய உறுப்பினரைச் சேர்க்கவும்"
+
+#: 
+msgid "Previous Family"
+msgstr "முந்தைய குடும்பம்"
+
+#: 
+msgid "Next Family"
+msgstr "அடுத்த குடும்பம்"
+
+#: 
+msgid "Delete this Family"
+msgstr "இந்தக் குடும்பத்தை நீக்கு"
+
+#: 
+msgid "Upload Photo"
+msgstr "புகைப்படத்தைப் பதிவேற்றவும்"
+
+#: 
+msgid "Delete Photo"
+msgstr "புகைப்படத்தை நீக்கு"
+
+#: 
+msgid "Add a Note"
+msgstr "குறிப்பைச் சேர்க்கவும்"
+
+#: 
+msgid "Add All Family Members to Cart"
+msgstr "அனைத்து குடும்ப உறுப்பினர்களையும் மென்வண்டியில் சேர்க்கவும்"
+
+#: 
+msgid "Timeline"
+msgstr "காலவரிசை"
+
+#: 
+msgid "Pledges and Payments"
+msgstr "உறுதிமொழிகள் மற்றும் கொடுக்கவேண்டியது"
+
+#: 
+msgid "No property assignments."
+msgstr "சொத்து ஒதுக்கீடுகள் இல்லை."
+
+#: 
+msgid "Value"
+msgstr "மதிப்பு"
+
+#: 
+msgid "Edit Value"
+msgstr "மதிப்பைத் திருத்தவும்"
+
+#: 
+msgid "Assign a New Property"
+msgstr "புதிய சொத்தை நியமிங்கள்/ஒதுக்குங்கள்"
+
+#: 
+msgid "Assign"
+msgstr "நியமி"
+
+#: 
+msgid "Date Updated"
+msgstr "தேதி புதுப்பிக்கப்பட்டது"
+
+#: 
+msgid "Updated By"
+msgstr "மூலம் புதுப்பிக்கப்பட்டது"
+
+#: 
+msgid "Show Pledges"
+msgstr "உறுதிமொழிகளைக் காட்டு"
+
+#: 
+msgid "Show Payments"
+msgstr "கட்டணங்களைக் காட்டு"
+
+#: 
+msgid "Since"
+msgstr "இருந்து"
+
+#: 
+msgid "Update"
+msgstr "புதுப்பிக்கவும்"
+
+#: 
+msgid "Pledge or Payment"
+msgstr "உறுதிமொழி அல்லது பணம் செலுத்துதல்"
+
+#: 
+msgid "Date"
+msgstr "தேதி"
+
+#: 
+msgid "NonDeductible"
+msgstr "கழிக்க முடியாதது"
+
+#: 
+msgid "Schedule"
+msgstr "அட்டவணை"
+
+#: 
+msgid "Method"
+msgstr "முறை"
+
+#: 
+msgid "Comment"
+msgstr "கருத்து"
+
+#: 
+msgid "Add a new pledge"
+msgstr "புதிய உறுதிமொழியைச் சேர்க்கவும்"
+
+#: 
+msgid "Add a new payment"
+msgstr "புதிய கட்டணத்தைச் சேர்க்கவும்"
+
+#: 
+msgid " Canvass Entry"
+msgstr "␣ ஆதரவு திரட்டுதல் நுழைவு"
+
+#: 
+msgid "Close"
+msgstr "மூடு"
+
+#: 
+msgid "Confirm Delete"
+msgstr "நீக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "சுயவிவரப் புகைப்படத்தை நீக்க உள்ளீர்கள், இந்த செயல்முறை திரும்பி பெற முடியாதது."
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "தொடர வேண்டுமா?"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "குடும்பத் தகவலின் நகலை பின்வரும் மின்னஞ்சல்களுக்கு மின்னஞ்சல் செய்ய உள்ளீர்கள்"
+
+#: 
+msgid "Financial Reports"
+msgstr "நிதி அறிக்கைகள்"
+
+#: 
+msgid "No records were returned from the previous report."
+msgstr "முந்தைய அறிக்கையிலிருந்து எந்தப் பதிவுகளும் திரும்பப் பெறப்படவில்லை."
+
+#: 
+msgid "Report Type:"
+msgstr "அறிக்கை வகை:"
+
+#: 
+msgid "Select Report Type"
+msgstr "அறிக்கை வகையைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Pledge Summary"
+msgstr "உறுதிமொழி சுருக்கம்"
+
+#: 
+msgid "Pledge Family Summary"
+msgstr "உறுதிமொழி குடும்பச் சுருக்கம்"
+
+#: 
+msgid "Pledge Reminders"
+msgstr "உறுதிமொழி நினைவூட்டல்கள்"
+
+#: 
+msgid "Voting Members"
+msgstr "வாக்களிக்கும் உறுப்பினர்கள்"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "அறிக்கையை வழங்குதல் (வரி அறிக்கைகள்)"
+
+#: 
+msgid "Zero Givers"
+msgstr "ஜீரோ கொடுப்பவர்கள்"
+
+#: 
+msgid "Individual Deposit Report"
+msgstr "தனிப்பட்ட வைப்பு அறிக்கை"
+
+#: 
+msgid "Advanced Deposit Report"
+msgstr "மேம்பட்ட வைப்பு அறிக்கை"
+
+#: 
+msgid "Next"
+msgstr "அடுத்தது"
+
+#: 
+msgid "Filter by Family"
+msgstr "குடும்பத்தின்படி வடிகட்டவும்"
+
+#: 
+msgid "Report Start Date:"
+msgstr "அறிக்கை தொடக்க தேதி:"
+
+#: 
+msgid "Report End Date:"
+msgstr "அறிக்கை முடிவு தேதி:"
+
+#: 
+msgid "Apply Report Dates To:"
+msgstr "அறிக்கை தேதிகளுக்கு இங்கு விண்ணப்பிக்கவும்:"
+
+#: 
+msgid "Deposit Date (Default)"
+msgstr "டெபாசிட் தேதி (இயல்புநிலை)"
+
+#: 
+msgid "Payment Date"
+msgstr "கட்டணம் தேதி"
+
+#: 
+msgid "Filter by Deposit:"
+msgstr "வைப்பு மூலம் வடிகட்டவும்:"
+
+#: 
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "டெபாசிட் தேர்ந்தெடுக்கப்பட்டால், தேதி அளவுகோல் புறக்கணிக்கப்படும்."
+
+#: 
+msgid "All deposits within date range"
+msgstr "அனைத்து வைப்புகளும் தேதி வரம்பிற்குள்"
+
+#: 
+msgid "Filter by Payment Type:"
+msgstr "கட்டண வகையின்படி வடிகட்டவும்:"
+
+#: 
+msgid "All Methods"
+msgstr "அனைத்து முறைகள்"
+
+#: 
+msgid "Check"
+msgstr "காசோலை"
+
+#: 
+msgid "Cash"
+msgstr "பணம்"
+
+#: 
+msgid "Bank Draft"
+msgstr "வங்கி வரைவு"
+
+#: 
+msgid "eGive"
+msgstr "eGive"
+
+#: 
+msgid "Minimum Total Amount:"
+msgstr "குறைந்தபட்ச மொத்தத் தொகை:"
+
+#: 
+msgid "0 - No Minimum"
+msgstr "0 - குறைந்தபட்சம் இல்லை"
+
+#: 
+msgid "Other Settings"
+msgstr "பிற அமைப்புகள்"
+
+#: 
+msgid "Include:"
+msgstr "உள்ளடக்கம்/சேர்த்தல்:"
+
+#: 
+msgid "Only Payments with Pledges"
+msgstr "உறுதிமொழிகளுடன் மட்டுமே பணம் செலுத்துதல்"
+
+#: 
+msgid "All Payments"
+msgstr "அனைத்து கொடுக்க வேண்டிய பணம்/கொடுப்பனவுகள்"
+
+#: 
+msgid "Generate:"
+msgstr "உருவாக்கு:"
+
+#: 
+msgid "Only Families with unpaid pledges"
+msgstr "செலுத்தப்படாத உறுதிமொழிகளைக் கொண்ட குடும்பங்கள் மட்டுமே"
+
+#: 
+msgid "All Families"
+msgstr "அனைத்து குடும்பங்களும்"
+
+#: 
+msgid "Report Heading:"
+msgstr "அறிக்கை தலைப்பு:"
+
+#: 
+msgid "Graphic"
+msgstr "கிராஃபிக்/கணினி வரைகலை"
+
+#: 
+msgid "Church Address"
+msgstr "சபையின்/தேவாலய முகவரி"
+
+#: 
+msgid "Blank"
+msgstr "வெற்று இடம்"
+
+#: 
+msgid "Remittance Slip:"
+msgstr "பணம் அனுப்பும் சீட்டு:"
+
+#: 
+msgid "Sort Data by:"
+msgstr "இதன்படி தரவை/தகவல்களை வரிசைப்படுத்தவும்:"
+
+#: 
+msgid "Deposit"
+msgstr "வைப்பு"
+
+#: 
+msgid "All Data"
+msgstr "அனைத்து தரவு/தகவல்கள்"
+
+#: 
+msgid "Moderate Detail"
+msgstr "மிதமான விவரம்"
+
+#: 
+msgid "Summary Data"
+msgstr "சுருக்கமான தரவு/தகவல்கள்"
+
+#: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+msgstr "வாக்களிக்கும் உறுப்பினர்கள் இந்த பல வருடங்களுக்குள்<br> நன்கொடை அளித்திருக்க வேண்டும்<br> (0 நன்கொடை தேவையில்லை):"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
+msgid "Back"
+msgstr "பின்பானது/மீண்டும்"
+
+#: 
+msgid "Create Report"
+msgstr "அறிக்கையை உருவாக்கவும்"
+
+#: 
+msgid "Deposit Listing"
+msgstr "வைப்பு/டெபாசிட் பட்டியல்"
+
+#: 
+msgid "Add New Deposit"
+msgstr "புதிய வைப்புத்தொகையைச் சேர்க்கவும்"
+
+#: 
+msgid "Deposits: "
+msgstr "வைப்புத்தொகை:␣"
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளை நீக்கு"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளை ஏற்றுமதி செய்யவும் (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளை ஏற்றுமதி செய்யவும் (CSV)"
+
+#: 
+msgid "Fundraiser Listing"
+msgstr "நிதி திரட்டுபவர் பட்டியல்"
+
+#: 
+msgid "Date Start"
+msgstr "தேதி தொடக்கம்"
+
+#: 
+msgid "Apply Filters"
+msgstr "வடிப்பான்களைப் பயன்படுத்து"
+
+#: 
+msgid "Date End"
+msgstr "தேதி முடிவு"
+
+#: 
+msgid "Clear Filters"
+msgstr "வடிகட்டிகளை அழி"
+
+#: 
+msgid "Previous Page"
+msgstr "முந்தைய பக்கம்"
+
+#: 
+msgid "Next Page"
+msgstr "அடுத்த பக்கம்"
+
+#: 
+msgid "Display:"
+msgstr "காட்சி:"
+
+#: 
+msgid "Number"
+msgstr "எண்"
+
+#: 
+msgid "Create New Fund Raiser"
+msgstr "புதிய நிதி திரட்டலை/திரட்டுபவரை உருவாக்கவும்"
+
+#: 
+msgid "Add Donated Item"
+msgstr "நன்கொடை பொருளைச் சேர்க்கவும்"
+
+#: 
+msgid "Generate Catalog"
+msgstr "பட்டியலை உருவாக்கவும்"
+
+#: 
+msgid "Generate Bid Sheets"
+msgstr "ஏலத் தாள்களை உருவாக்கவும்"
+
+#: 
+msgid "Generate Certificates"
+msgstr "சான்றிதழ்களை உருவாக்கவும்"
+
+#: 
+msgid "Donated items for this fundraiser"
+msgstr "இந்த நிதி திரட்டலுக்கான பொருட்களை நன்கொடையாக வழங்கினார்"
+
+#: 
+msgid "Donor"
+msgstr "நன்கொடையாளர்"
+
+#: 
+msgid "Buyer"
+msgstr "வாங்குபவர்"
+
+#: 
+msgid "Sale Price"
+msgstr "விற்பனை விலை"
+
+#: 
+msgid "Material Value"
+msgstr "பொருள் மதிப்பு"
+
+#: 
+msgid "Minimum Price"
+msgstr "குறைந்தபட்ச விலை"
+
+#: 
+msgid "Family Geographic Utilities"
+msgstr "குடும்ப புவியியல் பயன்பாடுகள்"
+
+#: 
+msgid "Select Family:"
+msgstr "குடும்பத்தைத் தேர்ந்தெடுக்கவும்:"
+
+#: 
+msgid "Maximum number of neighbors:"
+msgstr "அண்டை வீட்டுக்காரர் அதிகபட்ச எண்ணிக்கை:"
+
+#: 
+msgid "Maximum distance"
+msgstr "அதிகபட்ச தூரம்"
+
+#: 
+msgid "Data file format:"
+msgstr "தரவு/தகவல்கள் கோப்பு வடிவம்:"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "ஜிபிஎஸ் விஷுவலைசர்/காட்சிப்படுத்துபவர்"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "தெரு நிலவரைத் தொகுப்பு/நிலப்படங்களின் தொகுப்பு அமெரிக்கா"
+
+#: 
+msgid "Include families in coordinate file:"
+msgstr "ஒருங்கிணைந்த கோப்பில் குடும்பங்களைச் சேர்க்கவும்:"
+
+#: 
+msgid "Neighbor Families"
+msgstr "அண்டை குடும்பங்கள்"
+
+#: 
+msgid "Make Data File"
+msgstr "தரவு/தகவல்கள் கோப்பை உருவாக்கவும்"
+
+#: 
+msgid "Show Neighbors"
+msgstr "அண்டை நாடுகளைக் காட்டு"
+
+#: 
+msgid "Distance"
+msgstr "தூரம்"
+
+#: 
+msgid "Direction"
+msgstr "திசையில்"
+
+#: 
+msgid "Latitude"
+msgstr "அட்சரேகை"
+
+#: 
+msgid "Longitude"
+msgstr "தீர்க்கரேகை"
+
+#: 
+msgid "Add to Cart"
+msgstr "பெட்டகத்தில்/மின்வண்டி சேர்"
+
+#: 
+msgid "Intersect with Cart"
+msgstr "மின்வண்டியுடன் வெட்டுங்கள்"
+
+#: 
+msgid "Remove from Cart"
+msgstr "மின்வண்டியில் இருந்து அகற்று"
+
+#: 
+msgid "Text for Event ID: "
+msgstr "நிகழ்வு ஐடிக்கான உரை:"
+
+#: 
+msgid "Group Editor"
+msgstr "குழு திருத்துநர்/ஆசிரியர்"
+
+#: 
+msgid "Group Settings"
+msgstr "குழு அமைப்புகள்"
+
+#: 
+msgid "Type of Group"
+msgstr "குழுவின் வகை"
+
+#: 
+msgid "Group Member Roles"
+msgstr "குழு உறுப்பினர் பாத்திரங்கள்/வேலைகள்"
+
+#: 
+msgid "Clone roles"
+msgstr "குளோன்/படியெடுப்பு/படியெடுப்பு  வேலைகள்/பாத்திரங்கள்"
+
+#: 
+msgid "from group"
+msgstr "குழுவிலிருந்து"
+
+#: 
+msgid "Select a group"
+msgstr "ஒரு குழுவைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Group Specific Properties: "
+msgstr "குழு குறிப்பிட்ட பண்புகள்:␣"
+
+#: 
+msgid "Enabled"
+msgstr "இயக்கப்பட்டது"
+
+#: 
+msgid "Edit Group-Specific Properties Form"
+msgstr "குழு-குறிப்பிட்ட பண்புகள் படிவத்தைத் திருத்தவும்"
+
+#: 
+msgid "Disabled"
+msgstr "முடக்கப்பட்டது"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "குழு குறிப்பிட்ட பண்புகளை இயக்கு"
+
+#: 
+msgid "Group Roles"
+msgstr "குழு பாத்திரங்கள்/வேலைகள்"
+
+#: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "பெட்டியின் கவனத்தை இழந்தவுடன் குழுவின் பெயர் மாற்றங்கள் சேமிக்கப்படும்"
+
+#: 
+msgid "New Role"
+msgstr "புதிய பாத்திரம்/வேலை"
+
+#: 
+msgid "Add New Role"
+msgstr "புதிய வேலையை/பாத்திரத்தைச் சேர்க்கவும்"
+
+#: 
+msgid "Group Listing"
+msgstr "குழு பட்டியல்"
+
+#: 
+msgid "Add New Group"
+msgstr "புதிய குழுவைச் சேர்க்கவும்"
+
+#: 
+msgid "Group Member Properties Editor"
+msgstr "குழு உறுப்பினர் பண்புகள் திருத்துநர்/ஆசிரியர்"
+
+#: 
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr "இந்தக் குழுவில் தற்போது சொத்துக்கள் எதுவும் இல்லை! நீங்கள் அவற்றை குழு திருத்துநரில்/எடிட்டரில் சேர்க்கலாம்."
+
+#: 
+msgid "Return to Person Record"
+msgstr "நபர் பதிவுக்குத் திரும்பு"
+
+#: 
+msgid "Editing"
+msgstr "திருத்துதல்/எடிட்டிங்"
+
+#: 
+msgid "data for member"
+msgstr "உறுப்பினருக்கான தகவல்கள்/தரவு"
+
+#: 
+msgid "Group-Specific Properties Form Editor:"
+msgstr "குழு-குறிப்பிட்ட பண்புகள் படிவம் எடிட்டர்/திருத்துநர்:"
+
+#: 
+msgid "No properties have been added yet"
+msgstr "இதுவரை சொத்துக்கள் எதுவும் சேர்க்கப்படவில்லை"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+msgstr "எச்சரிக்கை: மேல், கீழ், நீக்கு அல்லது 'புதியதைச் சேர்' பொத்தானைப் பயன்படுத்துவதற்கு முன், 'மாற்றங்களைச் சேமி' செய்யாவிட்டால், புல மாற்றங்கள் இழக்கப்படும்!"
+
+#: 
+msgid "Show in"
+msgstr "காண்பிக்க"
+
+#: 
+msgid "Person View"
+msgstr "நபர் பார்வைக்கு"
+
+#: 
+msgid "Group reports"
+msgstr "குழு அறிக்கைகள்"
+
+#: 
+msgid "Select the group you would like to report"
+msgstr "நீங்கள் புகாரளிக்க விரும்பும் குழுவைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "No Role Selected"
+msgstr "எந்தப் வேலையும் /பாத்திரமும் தேர்ந்தெடுக்கப்படவில்லை"
+
+#: 
+msgid "Only cart persons?"
+msgstr "மென்வண்டி ஆட்கள் மட்டுமா?"
+
+#: 
+msgid "Report Model"
+msgstr "அறிக்கை மாதிரி"
+
+#: 
+msgid "Report for group and role selected"
+msgstr "குழு மற்றும் தேர்ந்தெடுக்கப்பட்ட பங்கிற்கான/பாத்திரத்திற்கான அறிக்கை"
+
+#: 
+msgid "Report for any role in group selected"
+msgstr "தேர்ந்தெடுக்கப்பட்ட குழுவில் ஏதேனும் ஒரு பங்கிற்கான/பாத்திரத்திற்கான அறிக்கை"
+
+#: 
+msgid "Select which information you want to include"
+msgstr "நீங்கள் சேர்க்க விரும்பும் தகவலைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Standard Info"
+msgstr "நிலையான தகவல்"
+
+#: 
+msgid "Other Email"
+msgstr "மற்ற மின்னஞ்சல்"
+
+#: 
+msgid "GroupRole"
+msgstr "குழு பங்கு"
+
+#: 
+msgid "Group-Specific Property Fields"
+msgstr "குழு-குறிப்பிட்ட சொத்து புலங்கள்"
+
+#: 
+msgid "Undefined"
+msgstr "வரையறுக்கப்படாதது"
+
+#: 
+msgid "Group View"
+msgstr "குழு பார்வை"
+
+#: 
+msgid "Group Functions"
+msgstr "குழு செயல்பாடுகள்"
+
+#: 
+msgid "Edit this Group"
+msgstr "இந்த குழுவை திருத்தவும்"
+
+#: 
+msgid "Delete this Group"
+msgstr "இந்த குழுவை நீக்கவும்"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "குழுவை நீக்கு என்பதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "இந்தக் குழுப் பதிவை நீக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "இது இந்தக் குழுப் பதிவோடு தொடர்புடைய அனைத்துப் பங்கையும்/பாத்திரங்களையும் குழு-குறிப்பிட்ட சொத்துத் தரவையும்/தகவல்களையும் நீக்கும்."
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "அனைத்து குழு உறுப்பினர்களும் சொத்துக்களும் அழிக்கப்படும். குழு உறுப்பினர்கள் தாமாக மாற்றப்பட மாட்டார்கள்."
+
+#: 
+msgid "Please select target group for members"
+msgstr "உறுப்பினர்களுக்கான இலக்குக் குழுவைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Add Group Members to Cart"
+msgstr "மென் வண்டியில்/கார்ட்டில் குழு உறுப்பினர்களைச் சேர்க்கவும்"
+
+#: 
+msgid "Map this group"
+msgstr "இந்த குழுவை வரைபடமாக்குங்கள்"
+
+#: 
+msgid "Email Group"
+msgstr "மின்னஞ்சல் குழு"
+
+#: 
+msgid "Total Members"
+msgstr "மொத்த உறுப்பினர்கள்"
+
+#: 
+msgid "Default Role"
+msgstr "இயல்புநிலை பங்கு"
+
+#: 
+msgid "Group-Specific Properties"
+msgstr "குழு-குறிப்பிட்ட பண்புகள்"
+
+#: 
+msgid "Disabled for this group."
+msgstr "இந்தக் குழுவிற்கு முடக்கப்பட்டது."
+
+#: 
+msgid "Assigned Properties"
+msgstr "ஒதுக்கப்பட்ட பண்புகள்"
+
+#: 
+msgid "Group Members:"
+msgstr "குழு உறுப்பினர்கள்:"
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "குழுவிலிருந்து தேர்ந்தெடுக்கப்பட்ட உறுப்பினர்களை நீக்கவும்"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "கார்ட்டில்/மென் வண்டியில் தேர்ந்தெடுக்கப்பட்ட உறுப்பினர்களைச் சேர்க்கவும்"
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "தேர்ந்தெடுக்கப்பட்ட உறுப்பினர்களை குழுவில் சேர்க்கவும்"
+
+#: 
+msgid "Move Selected Members to Group"
+msgstr "தேர்ந்தெடுக்கப்பட்ட உறுப்பினர்களை குழுவிற்கு நகர்த்தவும்"
+
+#: 
+msgid "Add Group Member: "
+msgstr "குழு உறுப்பினரைச் சேர்க்கவும்:␣"
+
+#: 
+msgid "Letters and Mailing Labels"
+msgstr "கடிதங்கள் மற்றும் அஞ்சல் லேபிள்கள்"
+
+#: 
+msgid "Newsletter labels"
+msgstr "செய்திமடல் லேபிள்கள்"
+
+#: 
+msgid "Confirm data labels"
+msgstr " தகவல்/தரவு விவரத்துணுக்குகளை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Listing Events of Type = "
+msgstr "வகை நிகழ்வுகளை பட்டியலிடுதல் =␣"
+
+#: 
+msgid "Listing All Church Events"
+msgstr "அனைத்து சபை/தேவாலய நிகழ்வுகளையும் பட்டியலிடுதல்"
+
+#: 
+msgid "Select Event Types To Display"
+msgstr "காண்பிக்க நிகழ்வு வகைகளைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Display Events in Year"
+msgstr "வருடத்தில் நிகழ்வுகளைக் காண்பிக்கவும்"
+
+#: 
+msgid "Start Date/Time"
+msgstr "தொடக்க தேதி/நேரம்"
+
+#: 
+msgid "No Attendance Recorded"
+msgstr "வருகை பதிவு செய்யப்படவில்லை"
+
+#: 
+msgid "Attendees"
+msgstr "பங்கேற்பாளர்கள்"
+
+#: 
+msgid " Monthly Averages"
+msgstr "␣ மாதாந்திர சராசரிகள்"
+
+#: 
+msgid "Invalid login or password"
+msgstr "தவறான உள்நுழைவு அல்லது கடவுச்சொல்"
+
+#: 
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr "பல தோல்வியுற்ற உள்நுழைவுகள்: உங்கள் கணக்கு பூட்டப்பட்டுள்ளது. நிர்வாகியைத் தொடர்பு கொள்ளவும்."
+
+#: 
+msgid "Please Login"
+msgstr "தயவுசெய்து உள்நுழையவும்"
+
+#: 
+msgid "Email/Username"
+msgstr "மின்னஞ்சல்/பயனர் பெயர்"
+
+#: 
+msgid "Password"
+msgstr "கடவுச்சொல்"
+
+#: 
+msgid "Login"
+msgstr "உள்நுழைய"
+
+#: 
+msgid "Envelope Manager"
+msgstr "உறை மேலாளர்"
+
+#: 
+msgid "Update Family Records"
+msgstr "குடும்பப் பதிவுகளைப் புதுப்பிக்கவும்"
+
+#: 
+msgid "Update Envelopes"
+msgstr "உறைகளை புதுப்பிக்கவும்"
+
+#: 
+msgid "Confirm"
+msgstr "உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Sort by"
+msgstr "வரிசைப்படுத்துபவர்"
+
+#: 
+msgid "Zero"
+msgstr "பூஜ்யம்"
+
+#: 
+msgid "Assign starting at #"
+msgstr "# இல் தொடங்கி ஒதுக்கவும்/நியமிக்கவும்"
+
+#: 
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr "பை/தேவாலய அட்சரேகை அல்லது தீர்க்கரேகை இல்லாததால் வரைபடத்தைக் காட்ட முடியவில்லை. அமைப்புகள் பட்டியலில் தேவாலய முகவரியை புதுப்பிக்கவும்."
+
+#: 
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
+msgstr "Google Map API விசை அமைக்கப்படவில்லை. சிறிய இடங்களுக்கு வரைபடம் வேலை செய்யும். அமைப்பு பட்டியலின் வரைபடப் பிரிவுகளில் ஒரு விசையை உருவாக்கவும்."
+
+#: 
+msgid "Member Role Change"
+msgstr "உறுப்பினர் பதவி/பங்கு மாற்றம்"
+
+#: 
+msgid "Member's Name"
+msgstr "உறுப்பினர் பெயர்"
+
+#: 
+msgid "Current Role"
+msgstr "தற்போதய பொறுப்பு"
+
+#: 
+msgid "All People"
+msgstr "அனைத்து மக்கள்"
+
+#: 
+msgid "Classifications Manager"
+msgstr "வகைப்பாடு மேலாளர்"
+
+#: 
+msgid "Email All"
+msgstr "அனைவருக்கும் மின்னஞ்சல் அனுப்பு"
+
+#: 
+msgid "Email All (BCC)"
+msgstr "அனைவருக்கும் மின்னஞ்சல் அனுப்பு (BCC)"
+
+#: 
+msgid "Family Roles"
+msgstr "குடும்ப பங்குகள்/பாத்திரங்கள்"
+
+#: 
+msgid "Family Geographic"
+msgstr "குடும்ப புவியியல்"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "அனைத்து குடும்ப ஒருங்கிணைப்புகளையும் புதுப்பிக்கவும்"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "தன்னார்வ வாய்ப்புகள்"
+
+#: 
+msgid "Families"
+msgstr "குடும்பங்கள்"
+
+#: 
+msgid "See all Families"
+msgstr "அனைத்து குடும்பங்களையும் பார்க்கவும்"
+
+#: 
+msgid "People"
+msgstr "மக்கள்"
+
+#: 
+msgid "See All People"
+msgstr "எல்லா மக்களையும் பார்க்கவும்"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "ஞாயிறு பள்ளி குழந்தைகள்"
+
+#: 
+msgid "More info"
+msgstr "மேலும் தகவல்"
+
+#: 
+msgid "Reports on groups and roles"
+msgstr "குழுக்கள் மற்றும் பாத்திரங்கள்/பங்கை/வேலையை  பற்றிய அறிக்கைகள்"
+
+#: 
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "தேர்ந்தெடுக்கப்பட்ட குழு மற்றும் பாத்திரங்கள்/பங்கை/வேலையை பற்றிய அறிக்கை (இது பல பக்க PDF ஆக இருக்கலாம்)."
+
+#: 
+msgid "Generate letters and mailing labels."
+msgstr "கடிதங்கள் மற்றும் அஞ்சல் சிட்டை/விவரத்துணுக்குகளை/லேபிள்களை உருவாக்கவும்."
+
+#: 
+msgid "Role / Gender"
+msgstr "பங்கு / பாலினம்"
+
+#: 
+msgid "Count"
+msgstr "எண்ணுங்கள்"
+
+#: 
+msgid "People Classification"
+msgstr "மக்கள் வகைப்பாடு"
+
+#: 
+msgid "Gender Demographics"
+msgstr "பாலின புள்ளிவிவரங்கள்"
+
+#: 
+msgid "Men"
+msgstr "ஆண்கள்"
+
+#: 
+msgid "Women"
+msgstr "பெண்கள்"
+
+#: 
+msgid "Boys"
+msgstr "சிறுவர்கள்"
+
+#: 
+msgid "Girls"
+msgstr "சிறுமிகள்"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "ஞாயிறு பள்ளி வகுப்புகள்"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "வைப்பு கண்காணிப்பு"
+
+#: 
+msgid "Latest Families"
+msgstr "சமீபத்திய குடும்பங்கள்"
+
+#: 
+msgid "Family Name"
+msgstr "குடும்பப் பெயர்"
+
+#: 
+msgid "Updated Families"
+msgstr "புதுப்பிக்கப்பட்ட குடும்பங்கள்"
+
+#: 
+msgid "Updated"
+msgstr "புதுப்பிக்கப்பட்டது"
+
+#: 
+msgid "Note Delete Confirmation"
+msgstr "குறிப்பு நீக்குதல் உறுதிப்படுத்தல்"
+
+#: 
+msgid "Please confirm deletion of this note"
+msgstr "இந்தக் குறிப்பை நீக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Yes, delete this record"
+msgstr "ஆம், இந்தப் பதிவை நீக்கவும்"
+
+#: 
+msgid "(this action cannot be undone)"
+msgstr "(இந்தச் செயலைச் செயல்தவிர்க்க முடியாது)"
+
+#: 
+msgid "Note Editor"
+msgstr "குறிப்பு திருத்துநர்"
+
+#: 
+msgid "Private"
+msgstr "தனியார்"
+
+#: 
+msgid "Person"
+msgstr "நபர்"
+
+#: 
+msgid "Group"
+msgstr "குழு"
+
+#: 
+msgid "Option"
+msgstr "தேர்வு விருப்பம்"
+
+#: 
+msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgstr "எச்சரிக்கை: அகற்றுவது, பணியமர்த்தப்பட்ட அனைவருக்குமான அனைத்துப் பணிகளையும் மீட்டமைக்கும்!"
+
+#: 
+msgid "Error: Duplicate"
+msgstr "பிழை: நகல்"
+
+#: 
+msgid "Default"
+msgstr "இயல்புநிலை"
+
+#: 
+msgid "Duplicate name found."
+msgstr "நகல் பெயர் கண்டறியப்பட்டது."
+
+#: 
+msgid "Make Default"
+msgstr "இயல்புநிலையை உருவாக்கவும்"
+
+#: 
+msgid "Exit"
+msgstr "வெளியேறு"
+
+#: 
+msgid "Add New"
+msgstr "புதிதாக சேர்க்கவும்"
+
+#: 
+msgid "Error: A "
+msgstr "பிழை: ஏ␣"
+
+#: 
+msgid " by that name already exists."
+msgstr "␣ அந்த பெயரில் ஏற்கனவே உள்ளது."
+
+#: 
+msgid "Buyer Number Editor"
+msgstr "வாங்குபவர் எண் திருத்துநர்/எடிட்டர்"
+
+#: 
+msgid "Generate Statement"
+msgstr "அறிக்கையை உருவாக்கவும்"
+
+#: 
+msgid "Buyers for this fundraiser:"
+msgstr "இந்த நிதி திரட்டலுக்கான வாங்குபவர்கள்:"
+
+#: 
+msgid "Select all"
+msgstr "அனைத்தையும் தெரிவுசெய்"
+
+#: 
+msgid "Select none"
+msgstr "யாரும்யில்லை என்பதை தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Add Buyer"
+msgstr "வாங்குபவரைச் சேர்க்கவும்"
+
+#: 
+msgid "Generate Statements for Selected"
+msgstr "தேர்ந்தெடுக்கப்பட்டவர்களுக்கான அறிக்கைகளை உருவாக்கவும்"
+
+#: 
+msgid "Select"
+msgstr "தேர்ந்தெடு"
+
+#: 
+msgid "Custom Person Fields Editor"
+msgstr "தனிவிருப்ப நபர் புலங்கள் திருத்துநர்/ஆசிரியர்"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
+msgstr "எச்சரிக்கை: இந்தப் புலத்தை நீக்குவதன் மூலம், இந்தப் புலத்திற்காக ஒதுக்கப்பட்ட அனைத்து நபர் தகவல்களையும்/தரவையும் நீங்கள் திரும்பப் பெறமுடியாமல் இழப்பீர்கள்!"
+
+#: 
+msgid "No custom person fields have been added yet"
+msgstr "தனிவிருப்ப  நபர் புலங்கள் எதுவும் இதுவரை சேர்க்கப்படவில்லை"
+
+#: 
+msgid "Person Editor"
+msgstr "நபர் திருத்துநர்/ஆசிரியர்"
+
+#: 
+msgid "You must enter a Last Name if no Family is selected."
+msgstr "குடும்பம் எதுவும் தேர்ந்தெடுக்கப்படவில்லை என்றால், நீங்கள் கடைசி பெயரை உள்ளிட வேண்டும்."
+
+#: 
+msgid "Not a valid Friend Date"
+msgstr "தவறான நண்பர் தேதி"
+
+#: 
+msgid "Not a valid Membership Date"
+msgstr "சரியான உறுப்பினர் தேதி இல்லை"
+
+#: 
+msgid "Work Email is Not Valid"
+msgstr "பணி மின்னஞ்சல் செல்லுபடியாகாது"
+
+#: 
+msgid "Red text"
+msgstr "சிவப்பு உரை"
+
+#: 
+msgid "indicates items inherited from the associated family record."
+msgstr "தொடர்புடைய குடும்பப் பதிவேட்டில் இருந்து பெறப்பட்ட பொருட்களைக் குறிக்கிறது."
+
+#: 
+msgid "Personal Info"
+msgstr "தனிப்பட்ட தகவல்"
+
+#: 
+msgid "Mr., Mrs., Dr., Rev."
+msgstr "திரு, திருமதி, டாக்டர், ரெவ்."
+
+#: 
+msgid "Jr., Sr., III"
+msgstr "ஜூனியர், சீனியர், III"
+
+#: 
+msgid "Birth Month"
+msgstr "பிறந்த மாதம்"
+
+#: 
+msgid "Select Month"
+msgstr "மாதத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Birth Day"
+msgstr "பிறந்த நாள்"
+
+#: 
+msgid "Select Day"
+msgstr "நாளைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Birth Year"
+msgstr "பிறந்த வருடம்"
+
+#: 
+msgid "Hide Age"
+msgstr "வயதை மறை"
+
+#: 
+msgid "Create a new family (using last name)"
+msgstr "ஒரு புதிய குடும்பத்தை உருவாக்கவும் (குடும்பப் பெயரைப் பயன்படுத்தி)"
+
+#: 
+msgid "Membership Info"
+msgstr "உறுப்பினர் தகவல்"
+
+#: 
+msgid "Friend Date"
+msgstr "நண்பர் தேதி"
+
+#: 
+msgid "Person Profile"
+msgstr "நபர் சுயவிவரம்"
+
+#: 
+msgid "Not assigned"
+msgstr "நியமிக்கப்படவில்லை"
+
+#: 
+msgid "About Me"
+msgstr "என்னை பற்றி"
+
+#: 
+msgid "Printable Page"
+msgstr "அச்சிடக்கூடிய பக்கம்"
+
+#: 
+msgid "Edit \"Why Came\" Notes"
+msgstr "\"ஏன் வந்தது\" குறிப்புகளைத் திருத்தவும்"
+
+#: 
+msgid "Delete this Record"
+msgstr "இந்த பதிவை நீக்கவும்"
+
+#: 
+msgid "Make User"
+msgstr "பயனரை உருவாக்குங்கள்"
+
+#: 
+msgid "Edit User"
+msgstr "பயனரைத் திருத்து"
+
+#: 
+msgid "List Members"
+msgstr "உறுப்பினர்கள் பட்டியல் "
+
+#: 
+msgid "No group assignments."
+msgstr "குழு பணிகள் இல்லை."
+
+#: 
+msgid "Change Role"
+msgstr "வேலையை/பாத்திரத்தை மாற்றவும்"
+
+#: 
+msgid "Update Properties"
+msgstr "பண்புகளை புதுப்பிக்கவும்"
+
+#: 
+msgid "Assign New Group"
+msgstr "புதிய குழுவை ஒதுக்கவும்"
+
+#: 
+msgid "No volunteer opportunity assignments."
+msgstr "தன்னார்வ வாய்ப்பு பணிகள் இல்லை."
+
+#: 
+msgid "Assign a New Volunteer Opportunity"
+msgstr "ஒரு புதிய தன்னார்வ வாய்ப்பை வழங்கவும்"
+
+#: 
+msgid "Electronic Transaction Details"
+msgstr "மின்னணு பரிவர்த்தனை விவரங்கள்"
+
+#: 
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "கழிக்க முடியாத தொகை மொத்த தொகையை விட அதிகமாக இருக்கக்கூடாது."
+
+#: 
+msgid "At least one fund must have a non-zero amount."
+msgstr "குறைந்தபட்சம் ஒரு நிதியில்/ஃபண்டில் பூஜ்ஜியம் அல்லாத தொகை இருக்க வேண்டும்."
+
+#: 
+msgid "Must specify non-zero check number"
+msgstr "பூஜ்ஜியம் அல்லாத காசோலை எண்ணைக் குறிப்பிட வேண்டும்"
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "'CASH'/'பணம்' கட்டணத்திற்குச் சரிபார்ப்பு எண் செல்லாது"
+
+#: 
+msgid "Pledge Editor"
+msgstr "உறுதிமொழி திருத்துநர்/ஆசிரியர்"
+
+#: 
+msgid "Payment Editor: "
+msgstr "கட்டண திருத்துநர்/எடிட்டர்:"
+
+#: 
+msgid " Deposit Slip #"
+msgstr "␣ வைப்பு சீட்டு #"
+
+#: 
+msgid " more entries will fit."
+msgstr "␣ மேலும் உள்ளீடுகள் பொருந்தும்."
+
+#: 
+msgid "Payment Editor - Modify Existing Payment"
+msgstr "கட்டண திருத்துநர்/எடிட்டர் - ஏற்கனவே உள்ள கட்டணத்தை மாற்றவும்"
+
+#: 
+msgid "Payment Editor - New Deposit Slip Will Be Created"
+msgstr "கட்டண திருத்தி - புதிய வைப்பு சீட்டு உருவாக்கப்படும்"
+
+#: 
+msgid "Deposit closed"
+msgstr "வைப்பு/டெபாசிட் மூடப்பட்டது"
+
+#: 
+msgid "Find family->"
+msgstr "குடும்பத்தைக் கண்டுபிடி->"
+
+#: 
+msgid "Payment Schedule"
+msgstr "கட்டண அட்டவணை"
+
+#: 
+msgid "Select Schedule"
+msgstr "அட்டவணையைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Weekly"
+msgstr "வாரந்தோறும்"
+
+#: 
+msgid "Monthly"
+msgstr "மாதாந்திர"
+
+#: 
+msgid "Quarterly"
+msgstr "காலாண்டு"
+
+#: 
+msgid "Once"
+msgstr "ஒருமுறை"
+
+#: 
+msgid "Other"
+msgstr "மற்றவை"
+
+#: 
+msgid "Payment by"
+msgstr "மூலம் பணம் செலுத்துதல்"
+
+#: 
+msgid "Scan check"
+msgstr "நுட்பமாய்ச் சோதித்து/ஸ்கேன் சரிபார்க்கவும்"
+
+#: 
+msgid "find family from check account #"
+msgstr "காசோலை கணக்கிலிருந்து குடும்பத்தைக் கண்டறியவும் #"
+
+#: 
+msgid "Set default check account number for family"
+msgstr "குடும்பத்திற்கான இயல்புநிலை காசோலை கணக்கு எண்ணை அமைக்கவும்"
+
+#: 
+msgid "Fund Name"
+msgstr "நிதியின் பெயர்"
+
+#: 
+msgid "Non-deductible amount"
+msgstr "கழிக்க முடியாத தொகை"
+
+#: 
+msgid "Printable View"
+msgstr "அச்சிடக்கூடிய காட்சி"
+
+#: 
+msgid "Age"
+msgstr "வயது"
+
+#: 
+msgid "Assigned Groups"
+msgstr "ஒதுக்கப்பட்ட குழுக்கள்"
+
+#: 
+msgid "Group Name"
+msgstr "குழு பெயர்"
+
+#: 
+msgid "Notes:"
+msgstr "குறிப்புகள்:"
+
+#: 
+msgid "Entered:"
+msgstr "உள்ளிட்டது:"
+
+#: 
+msgid "by"
+msgstr "மூலம்"
+
+#: 
+msgid "Property successfully assigned."
+msgstr "சொத்து வெற்றிகரமாக ஒதுக்கப்பட்டது."
+
+#: 
+msgid " Property Assignment"
+msgstr "␣ சொத்து ஒதுக்கீடு"
+
+#: 
+msgid "Assigning"
+msgstr "நியமித்தல்/ஒதுக்குதல்"
+
+#: 
+msgid "Property Delete Confirmation"
+msgstr "சொத்து நீக்கம் உறுதிப்படுத்தல்"
+
+#: 
+msgid "Please confirm deletion of this property"
+msgstr "இந்த சொத்தை நீக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgstr "இந்தச் சொத்தை நீக்குவது, இந்தச் சொத்தின் அனைத்துப் பணிகளும் மக்கள், குடும்பம் அல்லது குழுப் பதிவுகள் ஆகியவற்றையும் நீக்கிவிடும்."
+
+#: 
+msgid "No, cancel this deletion"
+msgstr "இல்லை, இந்த நீக்குதலை ரத்துசெய்யவும்"
+
+#: 
+msgid "Property Editor"
+msgstr "சொத்து திருத்துநர்/ஆசிரியர்"
+
+#: 
+msgid "You must select a type"
+msgstr "நீங்கள் ஒரு வகையைத் தேர்ந்தெடுக்க வேண்டும்"
+
+#: 
+msgid "Select Property Type"
+msgstr "சொத்து வகையைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "A"
+msgstr "ஏ"
+
+#: 
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr "ஒரு உடனடியாக மதிப்பை உள்ளிடுவது ஒரு இலவச வடிவ மதிப்பை இணைக்க அனுமதிக்கும்.  "
+
+#: 
+msgid "Property List"
+msgstr "சொத்து பட்டியல்"
+
+#: 
+msgid "Add a New"
+msgstr "புதியதைச் சேர்க்கவும்"
+
+#: 
+msgid "Property"
+msgstr "சொத்து"
+
+#: 
+msgid "Prompt"
+msgstr "உடனடியாக"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "சொத்து வகை நீக்குதல் உறுதிப்படுத்தல்"
+
+#: 
+msgid "Warning"
+msgstr "எச்சரிக்கை"
+
+#: 
+msgid "This property type is still being used by at least one property."
+msgstr "இந்த சொத்து வகை இன்னும் குறைந்தது ஒரு சொத்தாலாவது பயன்படுத்தப்படுகிறது."
+
+#: 
+msgid "If you delete this type, you will also remove all properties using"
+msgstr "இந்த வகையை நீக்கினால், அனைத்து பண்புகளையும் அகற்றுவீர்கள் இதை பயன்படுத்தி"
+
+#: 
+msgid "it and lose any corresponding property assignments."
+msgstr "அது மற்றும் தொடர்புடைய சொத்து ஒதுக்கீடுகளை இழக்க நேரிடும்."
+
+#: 
+msgid "Please confirm deletion of this Property Type"
+msgstr "இந்த சொத்து வகையை நீக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Property Type Editor"
+msgstr "சொத்து வகை திருத்துநர்/எடிட்டர்"
+
+#: 
+msgid "Property Type List"
+msgstr "சொத்து வகை பட்டியல்"
+
+#: 
+msgid "Add a New Property Type"
+msgstr "புதிய சொத்து வகையைச் சேர்க்கவும்"
+
+#: 
+msgid "Class"
+msgstr "வர்க்கம்"
+
+#: 
+msgid "Properties"
+msgstr "பண்புகள்"
+
+#: 
+msgid " Property Unassignment"
+msgstr "␣சொத்து நியமித்தல்/ஒதுக்குதல்"
+
+#: 
+msgid "Please confirm removal of this property from this"
+msgstr "இதிலிருந்து இந்த சொத்தை அகற்றுவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Unassigning"
+msgstr "நியமிக்கபடாதது/ஒதுக்குதல்"
+
+#: 
+msgid "Yes, unassign this Property"
+msgstr "ஆம், இந்தச் சொத்தை ஒதுக்க வேண்டாம்"
+
+#: 
+msgid "No, retain this assignment"
+msgstr "இல்லை, இந்த வேலையைத் தக்கவைத்துக்கொள்"
+
+#: 
+msgid "Query Listing"
+msgstr "வினவல் பட்டியல்"
+
+#: 
+msgid "Run a Free-Text Query"
+msgstr "இலவச உரை வினவலை இயக்கவும்"
+
+#: 
+msgid "Free-Text Query"
+msgstr "இலவச உரை வினவல்"
+
+#: 
+msgid "Export Results to CSV file"
+msgstr "முடிவுகளை CSV கோப்பில் ஏற்றுமதி செய்யவும்"
+
+#: 
+msgid "Execute SQL"
+msgstr "SQL ஐ இயக்கவும்"
+
+#: 
+msgid "An error occurred: "
+msgstr "பிழை ஏற்பட்டது:␣"
+
+#: 
+msgid " record(s) returned"
+msgstr "␣பதிவு(கள்) திரும்பியது"
+
+#: 
+msgid "Add Results To Cart"
+msgstr "மென்வண்டியில்/கார்ட்டில் முடிவுகளைச் சேர்க்கவும்"
+
+#: 
+msgid "Intersect Results With Cart"
+msgstr "மென்வண்டியுடன் முடிவுகளை வெட்டுங்கள்"
+
+#: 
+msgid "Remove Results From Cart"
+msgstr "மென்வண்டியில்/கார்ட்டில் இருந்து முடிவுகளை அகற்று"
+
+#: 
+msgid "Return to Query Menu"
+msgstr "வினவல் பட்டியலுக்கு/மெனுவுக்குத் திரும்பு"
+
+#: 
+msgid "Query View"
+msgstr "வினவல் பார்வை"
+
+#: 
+msgid "This value is required."
+msgstr "இந்த மதிப்பு தேவை."
+
+#: 
+msgid "This value must be numeric."
+msgstr "இந்த மதிப்பு எண்ணாக இருக்க வேண்டும்."
+
+#: 
+msgid "This value must be at least "
+msgstr "இந்த மதிப்பு குறைந்தபட்சம்␣ ஆக இருக்க வேண்டும்"
+
+#: 
+msgid "This value cannot be more than "
+msgstr "இந்த மதிப்பு␣ ஐ விட அதிகமாக இருக்கக்கூடாது"
+
+#: 
+msgid " characters long"
+msgstr "␣ எழுத்துக்கள் நீளமானது"
+
+#: 
+msgid "This value cannot be less than "
+msgstr "இந்த மதிப்பு␣ ஐ விட குறைவாக இருக்கக்கூடாது"
+
+#: 
+msgid "Run Query Again"
+msgstr "வினவலை மீண்டும் இயக்கவும்"
+
+#: 
+msgid "Execute Query"
+msgstr "வினவலை இயக்கவும்"
+
+#: 
+msgid "Send"
+msgstr "அனுப்பு"
+
+#: 
+msgid "Pledge Reminder Report"
+msgstr "உறுதிமொழி நினைவூட்டல் அறிக்கை"
+
+#: 
+msgid "Event Attendance Reports"
+msgstr "நிகழ்வு வருகை அறிக்கைகள்"
+
+#: 
+msgid "Restore Database"
+msgstr "தகவல்/தரவுத்தளத்தை மீட்டமை"
+
+#: 
+msgid "All donations from this family have been moved to another family."
+msgstr "இந்த குடும்பத்தின் அனைத்து நன்கொடைகள் வேறு குடும்பத்திற்கு மாற்றப்பட்டுள்ளன."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "குடும்ப நீக்குதல் உறுதிப்படுத்தல்"
+
+#: 
+msgid "Please confirm deletion of"
+msgstr "நீக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
+msgstr "மன்னிக்கவும், இந்தக் குடும்பத்திலிருந்து நன்கொடைகள் பற்றிய பதிவுகள் உள்ளன. இந்தக் குடும்பம் நீக்கப்படாமல் இருக்கலாம்."
+
+#: 
+msgid "Return to Family View"
+msgstr "குடும்பப் பார்வைக்குத் திரும்பு"
+
+#: 
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
+msgstr "எச்சரிக்கை: இந்தக் குடும்பத்தில் நன்கொடைகள் பற்றிய பதிவுகள் உள்ளன, மேலும் இந்த நன்கொடைகள் வேறொரு குடும்பத்துடன் இணைக்கப்படும் வரை அவை நீக்கப்படாமல் போகலாம்."
+
+#: 
+msgid "Please select another family with whom to associate these donations:"
+msgstr "இந்த நன்கொடைகளை இணைக்கும் மற்றொரு குடும்பத்தைத் தேர்ந்தெடுக்கவும்:"
+
+#: 
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr "எச்சரிக்கை: இந்தச் செயலைச் செயல்தவிர்க்க முடியாது மேலும் சட்டரீதியான தாக்கங்களையும் ஏற்படுத்தலாம்!"
+
+#: 
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr "நன்கொடைகளுடன் தற்போதைய குடும்பம்"
+
+#: 
+msgid "Please confirm deletion of this family record:"
+msgstr "இந்தக் குடும்பப் பதிவை நீக்குவதை உறுதிப்படுத்தவும்:"
+
+#: 
+msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr "குறிப்பு: இது இந்தக் குடும்பப் பதிவோடு தொடர்புடைய எல்லா குறிப்புகளையும் நீக்கும்."
+
+#: 
+msgid "Delete Family Record ONLY"
+msgstr "குடும்பப் பதிவை மட்டும் நீக்கவும்"
+
+#: 
+msgid "Delete Family Record AND Family Members"
+msgstr "குடும்ப பதிவு மற்றும் குடும்ப உறுப்பினர்களை நீக்கவும்"
+
+#: 
+msgid "Filter and Cart"
+msgstr "வடிகட்டி மற்றும் மென்வண்டி"
+
+#: 
+msgid "Listing"
+msgstr "பட்டியல்"
+
+#: 
+msgid "My User Settings"
+msgstr "எனது பயனர் அமைப்புகள்"
+
+#: 
+msgid "Variable name"
+msgstr "மாறுபடுகிற பெயர்"
+
+#: 
+msgid "Current Value"
+msgstr "தற்போதைய மதிப்பு"
+
+#: 
+msgid "Save Settings"
+msgstr "அமைப்புகளைச் சேமிக்கவும்"
+
+#: 
+msgid "Default User Settings"
+msgstr "இயல்புநிலை பயனர் அமைப்புகள்"
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
+msgstr "புதிய பயனர்களுக்கு அவர்களின் தற்போதைய மதிப்பை மாற்றுவதற்கான திறனை வழங்க, அனுமதி உண்மை என்பதை அமைக்கவும்.<BR>"
+
+#: 
+msgid "Permission"
+msgstr "அனுமதி"
+
+#: 
+msgid "System Settings"
+msgstr "கணினி அமைப்புகளை"
+
+#: 
+msgid "Tax Report"
+msgstr "வரி அறிக்கை"
+
+#: 
+msgid "Calendar Year"
+msgstr "காலண்டர் ஆண்டு"
+
+#: 
+msgid "Update Latitude & Longitude"
+msgstr "அட்சரேகை மற்றும் தீர்க்கரேகையைப் புதுப்பிக்கவும்"
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "பயனர் நீக்குதல் உறுதிப்படுத்தல்"
+
+#: 
+msgid "Please confirm removal of user status from"
+msgstr "இதிலிருந்து பயனர் நிலையை அகற்றுவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "User Editor"
+msgstr "பயனர் திருத்துநர்/ஆசிரியர்"
+
+#: 
+msgid "Note: Changes will not take effect until next logon."
+msgstr "குறிப்பு: அடுத்த உள்நுழைவு வரை மாற்றங்கள் நடைமுறைக்கு வராது."
+
+#: 
+msgid "Person to Make User"
+msgstr "பயனர் செய்ய வேண்டிய நபர்"
+
+#: 
+msgid "User"
+msgstr "பயனர்"
+
+#: 
+msgid "Login Name"
+msgstr "உள்நுழைவு பெயர்"
+
+#: 
+msgid "Add Records"
+msgstr "பதிவுகளைச் சேர்க்கவும்"
+
+#: 
+msgid "Edit Records"
+msgstr "பதிவுகளைத் திருத்து"
+
+#: 
+msgid "Delete Records"
+msgstr "பதிவுகளை நீக்கு"
+
+#: 
+msgid "Manage Properties and Classifications"
+msgstr "பண்புகள் மற்றும் வகைப்பாடுகளை நிர்வகிக்கவும்"
+
+#: 
+msgid "Manage Groups and Roles"
+msgstr "குழுக்கள் மற்றும் வேலைகளை/பாத்திரங்களை நிர்வகிக்கவும்"
+
+#: 
+msgid "Manage Donations and Finance"
+msgstr "நன்கொடைகள் மற்றும் நிதியை நிர்வகிக்கவும்"
+
+#: 
+msgid "View, Add and Edit Notes"
+msgstr "குறிப்புகளைப் பார்க்கவும், சேர்க்கவும் மற்றும் தகவல் திருத்தம் செய்யவும்"
+
+#: 
+msgid "Edit Self"
+msgstr "தன்னை பற்றிய தகவல் திருத்தம் செய்யவும்"
+
+#: 
+msgid "(Edit own family only.)"
+msgstr "(சொந்த குடும்பத்தை பற்றிய தகவலை மட்டும் திருத்தம் செய்யவும்.)"
+
+#: 
+msgid "(Canvass volunteer.)"
+msgstr "(தன்னார்வதொண்டர்களின் ஆதரவை திரட்டவும்)"
+
+#: 
+msgid "Admin"
+msgstr "நிர்வாகம்"
+
+#: 
+msgid "(Grants all privileges.)"
+msgstr "(அனைத்து சலுகைகளையும் வழங்குகிறது.)"
+
+#: 
+msgid "You have"
+msgstr "உங்களிடம் உள்ளது"
+
+#: 
+msgid "task(s)"
+msgstr "பணி(கள்)"
+
+#: 
+msgid "Home"
+msgstr "வீடு"
+
+#: 
+msgid "Font"
+msgstr "எழுத்துரு"
+
+#: 
+msgid "Label Type"
+msgstr "லேபிள்/விவரத்துணுக்கு வகை"
+
+#: 
+msgid "Label Grouping"
+msgstr "லேபிள்/விவரத்துணுக்கு குழுவாக்கம்"
+
+#: 
+msgid "All Individuals"
+msgstr "அனைத்து தனிநபர்கள்"
+
+#: 
+msgid "Grouped by Family"
+msgstr "குடும்பத்தால் குழுவாக்கப்பட்டது"
+
+#: 
+msgid "To the parents of"
+msgstr "பெற்றோருக்கு என்ற"
+
+#: 
+msgid "Start Row"
+msgstr "தொடக்க வரிசை"
+
+#: 
+msgid "Start Column"
+msgstr "தொடக்க நெடுவரிசை"
+
+#: 
+msgid "Ignore Incomplete<br>Addresses"
+msgstr "முழுமையற்ற<br>முகவரிகளைப் புறக்கணிக்கவும்"
+
+#: 
+msgid "File Type"
+msgstr "கோப்பு வகை"
+
+#: 
+msgid "items"
+msgstr "பொருட்களை"
+
+#: 
+msgid "Did not pledge"
+msgstr "உறுதிமொழி எடுக்கவில்லை"
+
+#: 
+msgid "Top pledger"
+msgstr "மேல் உறுதிமொழியாளர்"
+
+#: 
+msgid "Pledged"
+msgstr "உறுதிமொழி எடுத்தார்"
+
+#: 
+msgid "M/F"
+msgstr "எம்/எஃப்"
+
+#: 
+msgid "Liaison"
+msgstr "தொடர்பு"
+
+#: 
+msgid "City, State, Zip"
+msgstr "நகரம், மாநிலம், ஜிப்"
+
+#: 
+msgid "Send Newsletter"
+msgstr "செய்திமடல் அனுப்பவும்"
+
+#: 
+msgid "Member Name"
+msgstr "உறுப்பினர் பெயர்"
+
+#: 
+msgid "Adult/Child"
+msgstr "பெரியவர்/குழந்தை"
+
+#: 
+msgid "Cell Phone"
+msgstr "கைப்பேசி"
+
+#: 
+msgid "Member/Friend"
+msgstr "உறுப்பினர்/நண்பர்"
+
+#: 
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr "இந்த விருப்பத்திற்கு குறைந்தபட்சம் MySQL இன் பதிப்பு 3.22 தேவை! ChurchCRM மிற்குத் திரும்ப, பிரவுசர் பேக்/மீண்டும் உலாவி பட்டனை அழுத்தவும்."
+
+#: 
+msgid "Work"
+msgstr "வேலை"
+
+#: 
+msgid "Cell"
+msgstr "செல்/கைப்பேசி"
+
+#: 
+msgid "Estimated value "
+msgstr "மதிப்பிடப்பட்ட மதிப்பு␣"
+
+#: 
+msgid "Donated by "
+msgstr "நன்கொடை வழங்கியது␣"
+
+#: 
+msgid "Paddle"
+msgstr "துடுப்பு"
+
+#: 
+msgid "Bid"
+msgstr "ஏலம்"
+
+#: 
+msgid "Minimum bid "
+msgstr "குறைந்தபட்ச ஏலம்␣"
+
+#: 
+msgid "All Funds"
+msgstr "அனைத்து நிதிகள்"
+
+#: 
+msgid " for all funds"
+msgstr "␣ அனைத்து நிதிகளுக்கும்"
+
+#: 
+msgid " for fund "
+msgstr "␣நிதிக்காக␣"
+
+#: 
+msgid "for funds "
+msgstr "நிதிக்காக␣"
+
+#: 
+msgid "Donated Items:"
+msgstr "நன்கொடை பொருட்கள்:"
+
+#: 
+msgid "Purchased Items:"
+msgstr "வாங்கிய பொருட்கள்:"
+
+#: 
+msgid "Total of all purchases: $"
+msgstr "அனைத்து வாங்குதல்களின் மொத்தம்: $"
+
+#: 
+msgid "Total purchases: $"
+msgstr "மொத்த கொள்முதல்: $"
+
+#: 
+msgid "Amount paid: ________________"
+msgstr "பணம் செலுத்தப்பட்டது: ________________"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "செலுத்தப்பட்டது ( ) ரொக்கம் ( ) காசோலை ( ) கிரெடிட் கார்டு/கடன் அட்டை __ __ __ __ __ __ __ __ __ __கலாவதி__/__"
+
+#: 
+msgid "                                        Signature ________________________________________________________________"
+msgstr "␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣கையெழுத்து_______________________________________________________________"
+
+#: 
+msgid "Totals"
+msgstr "மொத்தம்"
+
+#: 
+msgid "Certificate of Ownership"
+msgstr "உரிமைச் சான்றிதழ்"
+
+#: 
+msgid "Directory"
+msgstr "அடைவு"
+
+#: 
+msgid "Page"
+msgstr "பக்கம்"
+
+#: 
+msgid "Wedding"
+msgstr "திருமணம்"
+
+#: 
+msgid "and"
+msgstr "மற்றும்"
+
+#: 
+msgid "Group Directory"
+msgstr "குழு அடைவு"
+
+#: 
+msgid "Please detach this slip and mail with your next gift."
+msgstr "தயவு செய்து இந்த சீட்டை பிரித்து உங்கள் அடுத்த பரிசுடன் மின்னஞ்சல் செய்யவும்."
+
+#: 
+msgid "Please mail you next gift to "
+msgstr "அடுத்த பரிசை உங்களுக்கு ␣க்கு அனுப்பவும்"
+
+#: 
+msgid "Gift Amount:"
+msgstr "பரிசுத் தொகை:"
+
+#: 
+msgid "Gift Designation:"
+msgstr "பரிசு பதவி:"
+
+#: 
+msgid "Sunday School"
+msgstr "ஞாயிறு பள்ளி"
+
+#: 
+msgid "Sunday School Class Functions"
+msgstr "ஞாயிறு பள்ளி வகுப்பு செயல்பாடுகள்"
+
+#: 
+msgid "Toggle Dropdown"
+msgstr "கீழ்தோன்றலை நிலைமாற்று"
+
+#: 
+msgid "Teachers"
+msgstr "ஆசிரியர்கள்"
+
+#: 
+msgid "Send Message"
+msgstr "செய்தி அனுப்ப"
+
+#: 
+msgid "View Profile"
+msgstr "சுயவிவரம் காண"
+
+#: 
+msgid "Quick Status"
+msgstr "விரைவான நிலை"
+
+#: 
+msgid "Birthdays by Month"
+msgstr "மாதவாரியாக பிறந்தநாள்"
+
+#: 
+msgid "Students"
+msgstr "மாணவர்கள்"
+
+#: 
+msgid "Mobile"
+msgstr "கைபேசி"
+
+#: 
+msgid "Home Address"
+msgstr "வீட்டு முகவரி"
+
+#: 
+msgid "Dad Name"
+msgstr "அப்பா பெயர்"
+
+#: 
+msgid "Dad Mobile"
+msgstr "அப்பா மொபைல்/கைபேசி"
+
+#: 
+msgid "Dad Email"
+msgstr "அப்பா மின்னஞ்சல்"
+
+#: 
+msgid "Mom Name"
+msgstr "அம்மா பெயர்"
+
+#: 
+msgid "Mom Mobile"
+msgstr "அம்மா மொபைல்/கைபேசி"
+
+#: 
+msgid "Mom Email"
+msgstr "அம்மா மின்னஞ்சல்"
+
+#: 
+msgid "Compose New Message"
+msgstr "புதிய செய்தியை எழுதுங்கள்"
+
+#: 
+msgid "Kids Emails"
+msgstr "குழந்தைகள் மின்னஞ்சல்கள்"
+
+#: 
+msgid "Parents Emails"
+msgstr "பெற்றோர் மின்னஞ்சல்கள்"
+
+#: 
+msgid "Teachers Emails"
+msgstr "ஆசிரியர்களின் மின்னஞ்சல்கள்"
+
+#: 
+msgid "Attachment"
+msgstr "இணைப்பு"
+
+#: 
+msgid "Max. 32MB"
+msgstr "அதிகபட்சம். 32எம்பி"
+
+#: 
+msgid "Discard"
+msgstr "நிராகரி"
+
+#: 
+msgid "Sunday School Dashboard"
+msgstr "ஞாயிறு பள்ளி டாஷ்போர்டு/தகவல்கள் நிர்வகிக்கும் பலகை"
+
+#: 
+msgid "Classes"
+msgstr "வகுப்புகள்"
+
+#: 
+msgid "Sunday School Reports"
+msgstr "ஞாயிறு பள்ளி அறிக்கைகள்"
+
+#: 
+msgid "Generate class lists and attendance sheets"
+msgstr "வகுப்பு பட்டியல்கள் மற்றும் வருகை தாள்களை உருவாக்கவும்"
+
+#: 
+msgid "Export All Classes, Kids, and Parent to CSV file"
+msgstr "அனைத்து வகுப்புகள், குழந்தைகள் மற்றும் பெற்றோரை CSV கோப்பிற்கு ஏற்றுமதி செய்யவும்"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "ஞாயிறு பள்ளி வகுப்பில் மாணவர்கள் இல்லை"
+
+#: 
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr "வகுப்புப் பட்டியல்கள் அல்லது வருகைத் தாளை உருவாக்க குறைந்தபட்சம் ஒரு குழுவையாவது தேர்ந்தெடுக்க வேண்டும்."
+
+#: 
+msgid "Report Details"
+msgstr "அறிக்கை விவரங்கள்"
+
+#: 
+msgid "To select multiple hold CTL"
+msgstr "மல்டிபிள் ஹோல்ட் /பல பிடி CTLஐத் தேர்ந்தெடுக்க"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups<br>"
+msgstr "பல குழுக்களுக்கு<br> இடையில் ஒரு பக்க இடைவெளி இருக்கும்"
+
+#: 
+msgid "List all Roles (unchecked will list Teacher/Student roles only)"
+msgstr "அனைத்து வேலைகளையும்/பாத்திரங்களையும் பட்டியலிடுங்கள் (தேர்வு செய்யப்படாதது ஆசிரியர்/மாணவர் வேலைகளையும்/பாத்திரங்களை மட்டும் பட்டியலிடும்)"
+
+#: 
+msgid "First Sunday"
+msgstr "முதல் ஞாயிறு"
+
+#: 
+msgid "Last Sunday"
+msgstr "கடந்த ஞாயிறு"
+
+#: 
+msgid "No Sunday School"
+msgstr "ஞாயிறு பள்ளி இல்லை"
+
+#: 
+msgid "Extra Students"
+msgstr "கூடுதல் மாணவர்கள்"
+
+#: 
+msgid "Extra Teachers"
+msgstr "கூடுதல் ஆசிரியர்கள்"
+
+#: 
+msgid "Create Class List"
+msgstr "வகுப்பு பட்டியலை உருவாக்கவும்"
+
+#: 
+msgid "Create Attendance Sheet"
+msgstr "வருகை தாளை உருவாக்கவும்"
+
+#: 
+msgid "System Users"
+msgstr "கணினி பயனர்கள்"
+
+#: 
+msgid "Calendar"
+msgstr "நாட்காட்டி"
+
+#: 
+msgid "Members"
+msgstr "உறுப்பினர்கள்"
+
+#: 
+msgid " has a type mismatch"
+msgstr "␣ வகை பொருத்தமின்மை உள்ளது"
+
+#: 
+msgid "Loading"
+msgstr "ஏற்றுகிறது"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "குடும்பச் சொத்து ஒதுக்குதல்"
+
+#: 
+msgid "Do you want to remove"
+msgstr "நீக்க வேண்டுமா"
+
+#: 
+msgid "View Active People"
+msgstr "செயலில் உள்ளவர்களைக் காண்க"
+
+#: 
+msgid "View Inactive People"
+msgstr "செயலற்ற நபர்களைக் காண்க"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "இன்றைய பிறந்தநாள்"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "இன்று திருமண நாள்"
+
+#: 
+msgid "Api Key"
+msgstr "API விசை"
+
+#: 
+msgid "Regen API Key"
+msgstr "Regen API விசை"
+
+#: 
+msgid "View Family Page"
+msgstr "குடும்பப் பக்கத்தைப் பார்க்கவும்"
+
+#: 
+msgid "View Person Page"
+msgstr "நபர் பக்கத்தைப் பார்க்கவும்"
+
+#: 
+msgid "Verify"
+msgstr "சரிபார்க்கவும்"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "குடும்பத்தில் பயன்படுத்த மின்னஞ்சல்கள் இல்லை"
+
+#: 
+msgid "Boxed Layout"
+msgstr "தொகுக்கப்பட்ட தளவமைப்பு"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "பெட்டி அமைப்பைச் செயல்படுத்தவும்"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "பக்கப்பட்டியை மாற்று"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "இடது பக்கப்பட்டியின் நிலையை மாற்றவும் (திறந்த அல்லது சரிவு)"
+
+#: 
+msgid "Tables Settings"
+msgstr "அட்டவணை அமைப்புகள்"
+
+#: 
+msgid "Page length"
+msgstr "பக்க நீளம்"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "ஆரம்ப பக்க நீளத்தை மாற்றவும் (ஒரு பக்கத்திற்கு வரிசைகளின் எண்ணிக்கை)"
+
+#: 
+msgid "User Interface"
+msgstr "பயனர் இடைமுகம்"
+
+#: 
+msgid "Locale"
+msgstr "உள்ளூர்"
+
+#: 
+msgid "Override system locale"
+msgstr "சிஸ்டம் லோகேலை மேலெழுதவும்"
+
+#: 
+msgid "Deleted"
+msgstr "நீக்கப்பட்டது"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "தவறான பிறந்த தேதி: பிறந்த மாதம் அல்லது நாள் இல்லை."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "தவறான பிறந்த தேதி: பிறந்த மாதம் மற்றும் நாள் இல்லை."
+
+#: 
+msgid "System"
+msgstr "அமைப்பு"
+
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "அம்ஹாரிக் - எத்தியோப்பியா"
+
+#: 
+msgid "Czech"
+msgstr "செக்"
+
+#: 
+msgid "Finnish"
+msgstr "ஃபின்னிஷ்"
+
+#: 
+msgid "Greek"
+msgstr "கிரேக்கம்"
+
+#: 
+msgid "Turkish"
+msgstr "துருக்கிய"
+
+#: 
+msgid "Ukrainian"
+msgstr "உக்ரைனியன்"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "\"GitHub க்கு சமர்ப்பி\" என்பதைக் கிளிக் செய்யும் போது, உங்கள் கணினித் தகவல் முன்பே நிரப்பப்பட்ட GitHub சிக்கல்கள் பக்கத்திற்குச் செல்லப்படுவீர்கள்."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "GitHub இல் சமர்ப்பிக்கவும்"
+
+#: 
+msgid "Change role"
+msgstr "பாத்திரத்தை மாற்றவும்"
+
+#: 
+msgid "Closed"
+msgstr "மூடப்பட்டது"
+
+#: 
+msgid "Delete this person?"
+msgstr "இவரை நீக்கவா?"
+
+#: 
+msgid "Deposit ID"
+msgstr "டெபாசிட் வைப்பு அடையாள எண்"
+
+#: 
+msgid "Deposit Total"
+msgstr "மொத்த வைப்பு"
+
+#: 
+msgid "Group Cart Status"
+msgstr "குழு வண்டியின் நிலை"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "அது வேலை செய்யவில்லை என்றால், உங்கள் உலாவியில் பின்வரும் இணைப்பை நகலெடுத்து ஒட்டவும்"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "உங்கள் கணக்கில் நடவடிக்கைக்கான கோரிக்கையை நாங்கள் பெற்றதால் இந்த மின்னஞ்சலைப் பெற்றுள்ளீர்கள். நீங்கள் இதைக் கோரவில்லை என்றால், இந்த மின்னஞ்சலைப் பாதுகாப்பாக நீக்கலாம்."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "இந்த மின்னஞ்சல்களைப் பெறுவதை நிறுத்த, நீங்கள் மின்னஞ்சல் செய்யலாம்"
+
+#: 
+msgid "2016/2017"
+msgstr "2017/2018"
+
+#: 
+msgid "2017/2018"
+msgstr "2017/2018"
+
+#: 
+msgid "2018/2019"
+msgstr "2018/2019"
+
+#: 
+msgid "2019/2020"
+msgstr "2019/2020"
+
+#: 
+msgid "2020/2021"
+msgstr "2020/2021"
+
+#: 
+msgid "2021/2022"
+msgstr "2021/2022"
+
+#: 
+msgid "2022/2023"
+msgstr "2022/2023"
+
+#: 
+msgid "invalid group request"
+msgstr "தவறான குழு கோரிக்கை"
+
