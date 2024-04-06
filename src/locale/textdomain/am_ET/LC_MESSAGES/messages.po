@@ -7524,7 +7524,8 @@ msgid "Your Church's Facebook Page"
 msgstr "የቤተክርስቲያንህ የፌስቡክ ገጽ"
 
 #: 
-msgid "Your Church's Twitter Page"
+#, fuzzy
+msgid "Your Church's X Page"
 msgstr "የቤተክርስቲያንህ ትዊተር ገጽ"
 
 #: 
@@ -7846,18 +7847,6 @@ msgstr "ወይም ቡድን ይፍጠሩ እና CART ን በአንድ ድርጊ�
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "ቡድን + ADD ጋሪ ፍጠር "
-
-#: 
-msgid "Facebook"
-msgstr "ፌስቡክ"
-
-#: 
-msgid "Twitter"
-msgstr "ትዊተር"
-
-#: 
-msgid "LinkedIn"
-msgstr "ሊንኪድእን"
 
 #: 
 msgid "Move Event"
@@ -8306,7 +8295,8 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM ማዕከላዊ ማሳወቂያዎች URL"
 
 #: 
-msgid "Follow us on Twitter"
+#, fuzzy
+msgid "Follow us on"
 msgstr "በትዊተር ላይ ይከታተሉን"
 
 #: 

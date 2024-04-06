@@ -7554,8 +7554,9 @@ msgid "Your Church's Facebook Page"
 msgstr "Página de Facebook de Su iglesia"
 
 #: 
-msgid "Your Church's Twitter Page"
-msgstr "Página de Twitter de Su iglesia"
+#, fuzzy
+msgid "Your Church's X Page"
+msgstr "Página de X de Su iglesia"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -7876,18 +7877,6 @@ msgstr "O Cree un grupo y agregue al carrito en una acción"
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "Crear grupo + agregar al carrito"
-
-#: 
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-msgid "LinkedIn"
-msgstr "LinkedIn"
 
 #: 
 msgid "Move Event"
@@ -8335,8 +8324,9 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL Central de Notificaciones de ChurchCRM"
 
 #: 
-msgid "Follow us on Twitter"
-msgstr "Síganos en Twitter"
+#, fuzzy
+msgid "Follow us on"
+msgstr "Síganos en"
 
 #: 
 msgid "invalid event type id"
@@ -9463,4 +9453,8 @@ msgstr "Recibió este correo electrónico porque recibimos una solicitud de acti
 #: 
 msgid "To stop receiving these emails, you can email"
 msgstr "Para dejar de recibir estos correos, puede contactar a"
+
+#: 
+msgid "invalid group request"
+msgstr "Solicitud de grupo inválida"
 

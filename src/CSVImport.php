@@ -27,9 +27,11 @@ use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
 
+$logger = LoggerUtils::getAppLogger();
 /**
  * A monogamous society is assumed, however  it can be patriarchal or matriarchal
  **/
@@ -477,9 +479,9 @@ if (isset($_POST['DoImport'])) {
                             $aDate = ParseDate($sDate, $iDateMode);
                             $sSQLpersonData .= $aDate[0] . ',' . $aDate[1] . ',' . $aDate[2] . ',';
                             // Save these for role calculation
-                            $iBirthYear = $aDate[0];
-                            $iBirthMonth = $aDate[1];
-                            $iBirthDay = $aDate[2];
+                            $iBirthYear = (int)$aDate[0];
+                            $iBirthMonth = (int)$aDate[1];
+                            $iBirthDay = (int)$aDate[2];
                             break;
 
                         // Membership date.. parse multiple date standards
@@ -599,11 +601,13 @@ if (isset($_POST['DoImport'])) {
                     $sSQL = 'SELECT f.fam_ID FROM family_fam f, family_custom c
                              WHERE f.fam_ID = c.fam_ID AND c.' . addslashes(mb_substr($field, 1)) . " = '" . addslashes($field_value) . "'";
                 }
+                $logger->debug("Checking for existing family with: $sSQL");
                 $rsExistingFamily = RunQuery($sSQL);
                 $famid = 0;
                 if (mysqli_num_rows($rsExistingFamily) > 0) {
                     $aRow = mysqli_fetch_array($rsExistingFamily);
                     $famid = $aRow['fam_ID'];
+                    $logger->debug("Found an existing family: with id=$famid");
                     if (array_key_exists($famid, $Families)) {
                         $Families[$famid]->addMember(
                             $per_ID,
@@ -615,6 +619,7 @@ if (isset($_POST['DoImport'])) {
                         );
                     }
                 } else {
+                    $logger->debug("No new family found -make one");
                     $family = new \ChurchCRM\model\ChurchCRM\Family();
                     $family
                         ->setName($per_LastName)
@@ -630,11 +635,11 @@ if (isset($_POST['DoImport'])) {
                         ->setDateEntered(date('YmdHis'))
                         ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                     $family->save();
-
-                    $sSQL = 'SELECT LAST_INSERT_ID()';
-                    $rsFid = RunQuery($sSQL);
-                    $aFid = mysqli_fetch_array($rsFid);
-                    $famid = $aFid[0];
+                    // Call reload() to update our object fully
+                    $family->reload();
+                    // Now retrieve the ID just inserted
+                    $famid = $family->getId();
+                    $logger->debug("The new family has id=$famid");
 
                     $note = new Note();
                     $note->setFamId($famid);
@@ -648,6 +653,7 @@ if (isset($_POST['DoImport'])) {
                     $familyCustom->save();
 
                     $fFamily = new Family(InputUtils::legacyFilterInput($_POST['FamilyMode'], 'int'));
+                    $logger->debug("Adding family member with per_id=$per_ID");
                     $fFamily->addMember(
                         $per_ID,
                         $iGender,
@@ -782,13 +788,13 @@ if (isset($_POST['DoImport'])) {
             foreach ($family->Members as $member) {
                 switch ($member['role']) {
                     case 1:
-                        $iRole = $aDirRoleHead[0];
+                        $iRole = (int)$aDirRoleHead[0];
                         break;
                     case 2:
-                        $iRole = $aDirRoleSpouse[0];
+                        $iRole = (int)$aDirRoleSpouse[0];
                         break;
                     case 3:
-                        $iRole = $aDirRoleChild[0];
+                        $iRole = (int)$aDirRoleChild[0];
                         break;
                     default:
                         $iRole = 0;

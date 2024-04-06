@@ -7627,8 +7627,9 @@ msgid "Your Church's Facebook Page"
 msgstr "Pargina de Facebook a bisericii"
 
 #: 
-msgid "Your Church's Twitter Page"
-msgstr "Pargina de Twitter a bisericii"
+#, fuzzy
+msgid "Your Church's X Page"
+msgstr "Pargina de X a bisericii"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -7949,18 +7950,6 @@ msgstr "SAU creați un grup și adăugați coșul într-o singură acțiune"
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "Creați grup + ADD coș"
-
-#: 
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-msgid "LinkedIn"
-msgstr "LikedIn"
 
 #: 
 msgid "Move Event"
@@ -8408,8 +8397,9 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL-ul pentru Notificări Centrale ChurchCRM"
 
 #: 
-msgid "Follow us on Twitter"
-msgstr "Urmărește-ne pe Twitter"
+#, fuzzy
+msgid "Follow us on"
+msgstr "Urmărește-ne pe"
 
 #: 
 msgid "invalid event type id"

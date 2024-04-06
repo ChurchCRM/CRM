@@ -19,7 +19,7 @@ class AppIntegrityService
         if (AppIntegrityService::$IntegrityCheckDetails === null) {
             $logger->debug('Integrity check results not cached; reloading from file');
             if (is_file($integrityCheckFile)) {
-                $logger->info('Integrity check result file found at: ' . $integrityCheckFile);
+                $logger->debug('Integrity check result file found at: ' . $integrityCheckFile);
 
                 try {
                     $integrityCheckFileContents = file_get_contents($integrityCheckFile);
@@ -74,7 +74,7 @@ class AppIntegrityService
         $signatureFile = SystemURLs::getDocumentRoot() . '/signatures.json';
         $signatureFailures = [];
         if (is_file($signatureFile)) {
-            $logger->info('Signature file found at: ' . $signatureFile);
+            $logger->debug('Signature file found at: ' . $signatureFile);
 
             try {
                 $signatureFileContents = file_get_contents($signatureFile);
@@ -205,7 +205,7 @@ class AppIntegrityService
         $logger = LoggerUtils::getAppLogger();
 
         if (isset($_SERVER['HTTP_MOD_REWRITE'])) {
-            $logger->debug("Webserver configuration has set mod_rewrite variable: {$_SERVER['HTTP_MOD_REWRITE']}");
+            $logger->info("Webserver configuration has set mod_rewrite variable: {$_SERVER['HTTP_MOD_REWRITE']}");
             $check = strtolower($_SERVER['HTTP_MOD_REWRITE']) === 'on';
         } elseif (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
             $logger->debug('PHP is running through Apache; looking for mod_rewrite');
@@ -213,6 +213,12 @@ class AppIntegrityService
                 $check = in_array('mod_rewrite', apache_get_modules());
             }
             $logger->debug("Apache mod_rewrite check status: $check");
+            if (empty($check)) {
+                if (!empty(shell_exec('/usr/sbin/apachectl -M | grep rewrite'))) {
+                    $logger->debug('Found rewrite module enabled using apachectl');
+                    $check = true;
+                }
+            }
         } else {
             $logger->debug('PHP is not running through Apache');
         }

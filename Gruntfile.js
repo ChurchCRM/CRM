@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 
     var datatTablesVer = "1.10.18";
 
-    const sass = require('node-sass');
+    const sass = require('sass');
 
 // Project configuration.
     grunt.initConfig({
@@ -190,17 +190,6 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/pace/pace.js'],
                         dest: 'src/skin/external/pace/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
-                        src: [
-                            'node_modules/flot/source/jquery.canvaswrapper.js',
-                            'node_modules/flot/source/jquery.colorhelpers.js',
-                            'node_modules/flot/source/jquery.flot*.js'
-                        ],
-                        dest: 'src/skin/external/flot/'
                     },
                     {
                         expand: true,
@@ -512,42 +501,41 @@ module.exports = function (grunt) {
     grunt.registerTask('genLocaleJSFiles', '', function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
         for (var key in locales ) {
-            var localeConfig = locales[key];
-            var locale = localeConfig["locale"];
-            var countryCode = localeConfig["countryCode"];
-            var languageCode = localeConfig["languageCode"];
-            var enableFullCalendar = localeConfig["fullCalendar"];
-            var enableDatePicker = localeConfig["datePicker"];
-            var enableSelect2 = localeConfig["select2"];
+            let localeConfig = locales[key];
+            let locale = localeConfig["locale"];
+            let languageCode = localeConfig["languageCode"];
+            let enableFullCalendar = localeConfig["fullCalendar"];
+            let enableDatePicker = localeConfig["datePicker"];
+            let enableSelect2 = localeConfig["select2"];
 
-            var tempFile = 'locale/JSONKeys/'+locale+'.json';
-            var poTerms = grunt.file.read(tempFile);
-            if (poTerms == "") {
+            let tempFile = 'locale/JSONKeys/'+locale+'.json';
+            let poTerms = grunt.file.read(tempFile);
+            if (poTerms === "") {
                 poTerms = "{}";
             }
-            var jsFileContent = '// Source: ' + tempFile;
-            jsFileContent = jsFileContent + "\ntry {window.CRM.i18keys = " + poTerms + ";} catch(e) {};\n";
+            let jsFileContent = '// Source POEditor: ' + tempFile;
+            jsFileContent = jsFileContent + "\ntry {window.CRM.i18keys = " + poTerms + ";} catch(e) {}\n";
 
             if (enableFullCalendar) {
-                var tempLangCode = languageCode.toLowerCase();
+                let tempLangCode = languageCode.toLowerCase();
                 if (localeConfig.hasOwnProperty("fullCalendarLocale")) {
                     tempLangCode = localeConfig["fullCalendarLocale"];
                 }
                 tempFile = 'node_modules/@fullcalendar/core/locales/'+tempLangCode+'.js';
-                var fullCalendar = grunt.file.read(tempFile);
-                jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
-                jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {};\n";
+                let fullCalendar = grunt.file.read(tempFile);
+                jsFileContent = jsFileContent + '\n// Source fullcalendar: ' + tempFile;
+                jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {}\n";
             }
             if (enableDatePicker) {
                 tempFile = 'node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.'+languageCode+'.min.js';
-                var datePicker = grunt.file.read(tempFile);
-                jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
-                jsFileContent = jsFileContent + '\n' + "try {"+datePicker+"} catch(e) {};\n"
+                let datePicker = grunt.file.read(tempFile);
+                jsFileContent = jsFileContent + '\n// Source datepicker: ' + tempFile;
+                jsFileContent = jsFileContent + '\n' + "try {"+datePicker+"} catch(e) {}\n"
             }
             if (enableSelect2) {
                 tempFile = 'node_modules/select2/dist/js/i18n/'+languageCode+'.js';
-                jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
-                var select2 = grunt.file.read(tempFile);
+                jsFileContent = jsFileContent + '\n// Source select2: ' + tempFile;
+                let select2 = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n' + "try {"+select2+"} catch(e) {}"
             }
             grunt.file.write('src/locale/js/'+locale+'.js', jsFileContent );

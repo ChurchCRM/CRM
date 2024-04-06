@@ -5,334 +5,365 @@
         "languageCode": "af",
         "countryCode": "ZA",
         "dataTables": "Afrikaans",
-        "fullCalendar" : true,
-        "fullCalendarLocale" : "af",
+        "fullCalendar": true,
+        "fullCalendarLocale": "af",
         "datePicker": false,
         "select2": false
     },
-  "Albanian": {
-    "poEditor": "sq",
-    "locale": "sq_AL",
-    "languageCode": "sq",
-    "countryCode": "AL",
-    "dataTables": "Albanian",
-    "fullCalendar" : true,
-    "fullCalendarLocale" : "sq",
-    "datePicker": true,
-    "select2": false
-  },
-  "Arabic - Egypt": {
-    "poEditor": "ar",
-    "locale": "ar_EG",
-    "languageCode": "ar",
-    "countryCode": "EG",
-    "dataTables": "Arabic",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Amharic - Ethiopia": {
-    "poEditor": "am",
-    "locale": "am_ET",
-    "languageCode": "am",
-    "countryCode": "ET",
-    "dataTables": "Amharic",
-    "fullCalendar" : false,
-    "datePicker": false,
-    "select2": false
-  },
-  "Chinese - China": {
-    "poEditor": "zh-CN",
-    "locale": "zh_CN",
-    "languageCode": "zh-CN",
-    "countryCode": "",
-    "dataTables": "Chinese",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Chinese - Taiwan": {
-    "poEditor": "zh-TW",
-    "locale": "zh_TW",
-    "languageCode": "zh-TW",
-    "countryCode": "TW",
-    "dataTables": "Chinese-traditional",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Czech": {
-    "poEditor": "cs",
-    "locale": "cs",
-    "languageCode": "cs",
-    "countryCode": "CZ",
-    "dataTables": "Czech",
-    "fullCalendar" : true,
-    "datePicker": false,
-    "select2": true
-  },
-  "Dutch - Netherlands": {
-    "poEditor": "nl",
-    "locale": "nl_NL",
-    "languageCode": "nl",
-    "countryCode": "NL",
-    "dataTables": "Dutch",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "English - Australia": {
-    "poEditor": "en-au",
-    "locale": "en_AU",
-    "languageCode": "en",
-    "countryCode": "AU",
-    "dataTables": "English",
-    "fullCalendar" : true,
-    "fullCalendarLocale" : "en-au",
-    "datePicker": false,
-    "select2": false
-  },
-  "English - Canada": {
-    "poEditor": "en-ca",
-    "locale": "en_CA",
-    "languageCode": "en",
-    "countryCode": "CA",
-    "dataTables": "English",
-    "fullCalendar" : false,
-    "datePicker": false,
-    "select2": false
-  },
-  "English - Great Britain": {
-    "poEditor": "en",
-    "locale": "en_GB",
-    "languageCode": "en",
-    "countryCode": "GB",
-    "dataTables": "English",
-    "fullCalendar" : true,
-    "fullCalendarLocale" : "en-gb",
-    "datePicker": false,
-    "select2": false
-  },
-  "English - United States": {
-    "poEditor": "en-US",
-    "locale": "en_US",
-    "languageCode": "en",
-    "countryCode": "US",
-    "dataTables": "English",
-    "fullCalendar" : false,
-    "datePicker": false,
-    "select2": false
-  },
-  "Estonian": {
-    "poEditor": "et",
-    "locale": "et_EE",
-    "languageCode": "et",
-    "countryCode": "EE",
-    "dataTables": "Estonian",
-    "fullCalendar" : true,
-    "fullCalendarLocale" : "et",
-    "datePicker": true,
-    "select2": false
-  },
-  "Finnish": {
-    "poEditor": "fi",
-    "locale": "fi_FI",
-    "languageCode": "fi",
-    "countryCode": "FI",
-    "dataTables": "Finnish",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "French - France": {
-    "poEditor": "fr",
-    "locale": "fr_FR",
-    "languageCode": "fr",
-    "countryCode": "FR",
-    "dataTables": "French",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "German - Germany": {
-    "poEditor": "de",
-    "locale": "de_DE",
-    "languageCode": "de",
-    "countryCode": "DE",
-    "dataTables": "German",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Greek": {
-    "poEditor": "el",
-    "locale": "el_GR",
-    "languageCode": "el",
-    "countryCode": "GR",
-    "dataTables": "Greek",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Hebrew": {
-    "poEditor": "he",
-    "locale": "he_IL",
-    "languageCode": "he",
-    "countryCode": "HE",
-    "dataTables": "Hebrew",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Hungarian": {
-    "poEditor": "hu",
-    "locale": "hu_HU",
-    "languageCode": "hu",
-    "countryCode": "HU",
-    "dataTables": "Hungarian",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Indonesian - Indonesia": {
-    "poEditor": "id",
-    "locale": "id_ID",
-    "languageCode": "id",
-    "countryCode": "ID",
-    "dataTables": "Indonesian",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Italian - Italy": {
-    "poEditor": "it",
-    "locale": "it_IT",
-    "languageCode": "it",
-    "countryCode": "IT",
-    "dataTables": "Italian",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Norwegian": {
-    "poEditor": "nb",
-    "locale": "nb_NO",
-    "languageCode": "nb",
-    "countryCode": "NO",
-    "dataTables": "Norwegian-Bokmal",
-    "fullCalendar" : true,
-    "datePicker": false,
-    "select2": true
-  },
-  "Polish": {
-    "poEditor": "pl",
-    "locale": "pl_PL",
-    "languageCode": "pl",
-    "countryCode": "PL",
-    "dataTables": "Polish",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Portuguese - Brazil": {
-    "poEditor": "pt-br",
-    "locale": "pt_BR",
-    "languageCode": "pt-BR",
-    "countryCode": "BR",
-    "dataTables": "Portuguese",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Portuguese - Portugal": {
-    "poEditor": "pt",
-    "locale": "pt_PT",
-    "languageCode": "pt-PT",
-    "countryCode": "PT",
-    "dataTables": "Portuguese",
-    "fullCalendar" : true,
-    "fullCalendarLocale" : "pt",
-    "datePicker": false,
-    "select2": false
-  },
-  "Romanian - Romania": {
-    "poEditor": "ro",
-    "locale": "ro_RO",
-    "languageCode": "ro",
-    "countryCode": "RO",
-    "dataTables": "Romanian",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Russian": {
-    "poEditor": "ru",
-    "locale": "ru_RU",
-    "languageCode": "ru",
-    "countryCode": "RU",
-    "dataTables": "Russian",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Spanish - Spain": {
-    "poEditor": "es",
-    "locale": "es_ES",
-    "languageCode": "es",
-    "countryCode": "ES",
-    "dataTables": "Spanish",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Sami (Northern) (Sweden)": {
-    "poEditor": "sv",
-    "locale": "sv_SE",
-    "languageCode": "sv",
-    "countryCode": "SE",
-    "dataTables": "Swedish",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Thai": {
-    "poEditor": "th",
-    "locale": "th_TH",
-    "languageCode": "th",
-    "countryCode": "TH",
-    "dataTables": "Thai",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Turkish": {
-    "poEditor": "tr",
-    "locale": "tr_TR",
-    "languageCode": "tr",
-    "countryCode": "TR",
-    "dataTables": "Turkish",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Ukrainian": {
-    "poEditor": "uk",
-    "locale": "uk_UA",
-    "languageCode": "uk",
-    "countryCode": "UA",
-    "dataTables": "Ukrainian",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  },
-  "Vietnamese": {
-    "poEditor": "vi",
-    "locale": "vi_VN",
-    "languageCode": "vi",
-    "countryCode": "VN",
-    "dataTables": "Vietnamese",
-    "fullCalendar" : true,
-    "datePicker": true,
-    "select2": true
-  }
+    "Albanian": {
+        "poEditor": "sq",
+        "locale": "sq_AL",
+        "languageCode": "sq",
+        "countryCode": "AL",
+        "dataTables": "Albanian",
+        "fullCalendar": true,
+        "fullCalendarLocale": "sq",
+        "datePicker": true,
+        "select2": false
+    },
+    "Arabic - Egypt": {
+        "poEditor": "ar",
+        "locale": "ar_EG",
+        "languageCode": "ar",
+        "countryCode": "EG",
+        "dataTables": "Arabic",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Amharic - Ethiopia": {
+        "poEditor": "am",
+        "locale": "am_ET",
+        "languageCode": "am",
+        "countryCode": "ET",
+        "dataTables": "Amharic",
+        "fullCalendar": false,
+        "datePicker": false,
+        "select2": false
+    },
+    "Chinese - China": {
+        "poEditor": "zh-CN",
+        "locale": "zh_CN",
+        "languageCode": "zh-CN",
+        "countryCode": "cn",
+        "dataTables": "Chinese",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Chinese - Taiwan": {
+        "poEditor": "zh-TW",
+        "locale": "zh_TW",
+        "languageCode": "zh-TW",
+        "countryCode": "TW",
+        "dataTables": "Chinese-traditional",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Czech": {
+        "poEditor": "cs",
+        "locale": "cs",
+        "languageCode": "cs",
+        "countryCode": "CZ",
+        "dataTables": "Czech",
+        "fullCalendar": true,
+        "datePicker": false,
+        "select2": true
+    },
+    "Dutch - Netherlands": {
+        "poEditor": "nl",
+        "locale": "nl_NL",
+        "languageCode": "nl",
+        "countryCode": "NL",
+        "dataTables": "Dutch",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "English - Australia": {
+        "poEditor": "en-au",
+        "locale": "en_AU",
+        "languageCode": "en",
+        "countryCode": "AU",
+        "dataTables": "English",
+        "fullCalendar": true,
+        "fullCalendarLocale": "en-au",
+        "datePicker": false,
+        "select2": false
+    },
+    "English - Canada": {
+        "poEditor": "en-ca",
+        "locale": "en_CA",
+        "languageCode": "en",
+        "countryCode": "CA",
+        "dataTables": "English",
+        "fullCalendar": false,
+        "datePicker": false,
+        "select2": false
+    },
+    "English - Great Britain": {
+        "poEditor": "en",
+        "locale": "en_GB",
+        "languageCode": "en",
+        "countryCode": "GB",
+        "dataTables": "English",
+        "fullCalendar": true,
+        "fullCalendarLocale": "en-gb",
+        "datePicker": false,
+        "select2": false
+    },
+    "English - United States": {
+        "poEditor": "en-US",
+        "locale": "en_US",
+        "languageCode": "en",
+        "countryCode": "US",
+        "dataTables": "English",
+        "fullCalendar": false,
+        "datePicker": false,
+        "select2": false
+    },
+    "Estonian": {
+        "poEditor": "et",
+        "locale": "et_EE",
+        "languageCode": "et",
+        "countryCode": "EE",
+        "dataTables": "Estonian",
+        "fullCalendar": true,
+        "fullCalendarLocale": "et",
+        "datePicker": true,
+        "select2": false
+    },
+    "Finnish": {
+        "poEditor": "fi",
+        "locale": "fi_FI",
+        "languageCode": "fi",
+        "countryCode": "FI",
+        "dataTables": "Finnish",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "French - France": {
+        "poEditor": "fr",
+        "locale": "fr_FR",
+        "languageCode": "fr",
+        "countryCode": "FR",
+        "dataTables": "French",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "German - Germany": {
+        "poEditor": "de",
+        "locale": "de_DE",
+        "languageCode": "de",
+        "countryCode": "DE",
+        "dataTables": "German",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Greek": {
+        "poEditor": "el",
+        "locale": "el_GR",
+        "languageCode": "el",
+        "countryCode": "GR",
+        "dataTables": "Greek",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Hebrew": {
+        "poEditor": "he",
+        "locale": "he_IL",
+        "languageCode": "he",
+        "countryCode": "IL",
+        "dataTables": "Hebrew",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Hindi - India": {
+        "poEditor": "hi",
+        "locale": "hi_IN",
+        "languageCode": "hi",
+        "countryCode": "IN",
+        "dataTables": "Hindi",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Hungarian": {
+        "poEditor": "hu",
+        "locale": "hu_HU",
+        "languageCode": "hu",
+        "countryCode": "HU",
+        "dataTables": "Hungarian",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Indonesian - Indonesia": {
+        "poEditor": "id",
+        "locale": "id_ID",
+        "languageCode": "id",
+        "countryCode": "ID",
+        "dataTables": "Indonesian",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Italian - Italy": {
+        "poEditor": "it",
+        "locale": "it_IT",
+        "languageCode": "it",
+        "countryCode": "IT",
+        "dataTables": "Italian",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Japanese": {
+        "poEditor": "ja",
+        "locale": "ja",
+        "languageCode": "ja",
+        "countryCode": "jp",
+        "dataTables": "Japanese",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Norwegian": {
+        "poEditor": "nb",
+        "locale": "nb_NO",
+        "languageCode": "nb",
+        "countryCode": "NO",
+        "dataTables": "Norwegian-Bokmal",
+        "fullCalendar": true,
+        "datePicker": false,
+        "select2": true
+    },
+    "Polish": {
+        "poEditor": "pl",
+        "locale": "pl_PL",
+        "languageCode": "pl",
+        "countryCode": "PL",
+        "dataTables": "Polish",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Portuguese - Brazil": {
+        "poEditor": "pt-br",
+        "locale": "pt_BR",
+        "languageCode": "pt-BR",
+        "countryCode": "BR",
+        "dataTables": "Portuguese",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Portuguese - Portugal": {
+        "poEditor": "pt",
+        "locale": "pt_PT",
+        "languageCode": "pt-PT",
+        "countryCode": "PT",
+        "dataTables": "Portuguese",
+        "fullCalendar": true,
+        "fullCalendarLocale": "pt",
+        "datePicker": false,
+        "select2": false
+    },
+    "Romanian - Romania": {
+        "poEditor": "ro",
+        "locale": "ro_RO",
+        "languageCode": "ro",
+        "countryCode": "RO",
+        "dataTables": "Romanian",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Russian": {
+        "poEditor": "ru",
+        "locale": "ru_RU",
+        "languageCode": "ru",
+        "countryCode": "RU",
+        "dataTables": "Russian",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Spanish - Spain": {
+        "poEditor": "es",
+        "locale": "es_ES",
+        "languageCode": "es",
+        "countryCode": "ES",
+        "dataTables": "Spanish",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Sami (Northern) (Sweden)": {
+        "poEditor": "sv",
+        "locale": "sv_SE",
+        "languageCode": "sv",
+        "countryCode": "SE",
+        "dataTables": "Swedish",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Tamil - India": {
+        "poEditor": "ta",
+        "locale": "ta_IN",
+        "languageCode": "ta",
+        "countryCode": "IN",
+        "dataTables": "Tamil",
+        "fullCalendar": true,
+        "fullCalendarLocale": "ta-in",
+        "datePicker": true,
+        "select2": false
+    },
+    "Thai": {
+        "poEditor": "th",
+        "locale": "th_TH",
+        "languageCode": "th",
+        "countryCode": "TH",
+        "dataTables": "Thai",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Turkish": {
+        "poEditor": "tr",
+        "locale": "tr_TR",
+        "languageCode": "tr",
+        "countryCode": "TR",
+        "dataTables": "Turkish",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Ukrainian": {
+        "poEditor": "uk",
+        "locale": "uk_UA",
+        "languageCode": "uk",
+        "countryCode": "UA",
+        "dataTables": "Ukrainian",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Vietnamese": {
+        "poEditor": "vi",
+        "locale": "vi_VN",
+        "languageCode": "vi",
+        "countryCode": "VN",
+        "dataTables": "Vietnamese",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    }
 }

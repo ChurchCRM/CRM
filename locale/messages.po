@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-07 17:49-0800\n"
+"POT-Creation-Date: 2024-04-06 12:29-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-03-08T01:49:27.531Z\n"
-"PO-Revision-Date: 2024-03-08T01:49:27.532Z\n"
+"POT-Creation-Date: 2024-04-06T19:30:01.002Z\n"
+"PO-Revision-Date: 2024-04-06T19:30:01.003Z\n"
 "Language: en\n"
 
 msgid "Backup Database"
@@ -3218,7 +3218,7 @@ msgstr ""
 msgid "All rights reserved"
 msgstr ""
 
-msgid "Follow us on Twitter"
+msgid "Follow us on"
 msgstr ""
 
 msgid "You have"
@@ -3839,15 +3839,6 @@ msgid "Create a new family (using last name)"
 msgstr ""
 
 msgid "None State"
-msgstr ""
-
-msgid "Facebook"
-msgstr ""
-
-msgid "Twitter"
-msgstr ""
-
-msgid "LinkedIn"
 msgstr ""
 
 msgid "Membership Info"
@@ -7162,6 +7153,9 @@ msgstr ""
 msgid "Not all members of this group are in the cart"
 msgstr ""
 
+msgid "Not Subscribed"
+msgstr ""
+
 msgid "Not Subscribed "
 msgstr ""
 
@@ -7205,6 +7199,9 @@ msgid "Please store these recovery codes in a safe location"
 msgstr ""
 
 msgid "Pledge or Payment"
+msgstr ""
+
+msgid "property"
 msgstr ""
 
 msgid ""
