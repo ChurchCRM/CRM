@@ -7684,8 +7684,8 @@ msgstr "您的教會的Facebook頁面"
 
 #: 
 #, fuzzy
-msgid "Your Church's Twitter Page"
-msgstr "您的教會的Twitter頁面"
+msgid "Your Church's X Page"
+msgstr "您的教會的X頁面"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -8009,18 +8009,6 @@ msgstr "或創建一個組並在一個動作中添加購物車"
 msgid "Create Group + ADD Cart"
 msgstr "建立群組＋新增購物車\n"
 ""
-
-#: 
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-msgid "LinkedIn"
-msgstr "LinkedIn"
 
 #: 
 msgid "Move Event"
@@ -8477,7 +8465,8 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM中央通知URL"
 
 #: 
-msgid "Follow us on Twitter"
+#, fuzzy
+msgid "Follow us on"
 msgstr "在推特上關注我們"
 
 #: 

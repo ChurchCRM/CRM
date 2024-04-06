@@ -7522,8 +7522,9 @@ msgid "Your Church's Facebook Page"
 msgstr "Teie koguduse Facebooki leht"
 
 #: 
-msgid "Your Church's Twitter Page"
-msgstr "Teie koguduse Twitteri leht"
+#, fuzzy
+msgid "Your Church's X Page"
+msgstr "Teie koguduse X leht"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -7844,18 +7845,6 @@ msgstr "VÕI looge grupp ja lisage KORVI ÜHES TEGEVUSES"
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "Loo grupp + LISA KORVI"
-
-#: 
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-msgid "LinkedIn"
-msgstr "LinkedIn"
 
 #: 
 msgid "Move Event"
@@ -8303,8 +8292,9 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM-i keskseadete URL"
 
 #: 
-msgid "Follow us on Twitter"
-msgstr "Jälgi meid Twitteris"
+#, fuzzy
+msgid "Follow us on"
+msgstr "Jälgi meid"
 
 #: 
 msgid "invalid event type id"

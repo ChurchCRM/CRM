@@ -7522,8 +7522,9 @@ msgid "Your Church's Facebook Page"
 msgstr "U Kerk se Facebook-bladsy"
 
 #: 
-msgid "Your Church's Twitter Page"
-msgstr "U Kerk se Twitter-bladsy"
+#, fuzzy
+msgid "Your Church's X Page"
+msgstr "U Kerk se X-bladsy"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -7844,18 +7845,6 @@ msgstr "OF Skep 'n groep en voeg die karretjie by een aksie"
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "Skep groep + ADD Cart"
-
-#: 
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-msgid "LinkedIn"
-msgstr "LinkedIn"
 
 #: 
 msgid "Move Event"
@@ -8303,8 +8292,9 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL van die ChurchCRM Central Notifications"
 
 #: 
-msgid "Follow us on Twitter"
-msgstr "volg ons op Twitter"
+#, fuzzy
+msgid "Follow us on"
+msgstr "volg ons op"
 
 #: 
 msgid "invalid event type id"
