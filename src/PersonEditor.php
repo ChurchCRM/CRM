@@ -1104,10 +1104,10 @@ require 'Include/Header.php';
                     </div>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="Twitter"><?= gettext('Twitter') ?>:</label>
+                    <label for="Twitter">X:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-x-twitter"></i>
                         </div>
                         <input type="text" name="Twitter"
                                value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
