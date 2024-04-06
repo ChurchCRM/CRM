@@ -15,6 +15,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Property;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -91,10 +92,13 @@ if (isset($_POST['Submit'])) {
                 ->setProPrompt($sPrompt);
             $property->save();
         } else {
-            $sSQL = 'UPDATE property_pro SET pro_prt_ID = ' . $iClass . ", pro_Name = '" . $sName . "', pro_Description = '" . $sDescription . "', pro_Prompt = '" . $sPrompt . "' WHERE pro_ID = " . $iPropertyID;
-
-            //Execute the SQL
-            RunQuery($sSQL);
+            $property = PropertyQuery::create()->findOneByProId($iPropertyID);
+            $property
+                ->setProPrtId($iClass)
+                ->setProName($sName)
+                ->setProDescription($sDescription)
+                ->setProPrompt($sPrompt);
+            $property->save();
         }
 
         //Route back to the list

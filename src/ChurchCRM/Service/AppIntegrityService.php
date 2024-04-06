@@ -205,14 +205,20 @@ class AppIntegrityService
         $logger = LoggerUtils::getAppLogger();
 
         if (isset($_SERVER['HTTP_MOD_REWRITE'])) {
-            $logger->debug("Webserver configuration has set mod_rewrite variable: {$_SERVER['HTTP_MOD_REWRITE']}");
+            $logger->info("Webserver configuration has set mod_rewrite variable: {$_SERVER['HTTP_MOD_REWRITE']}");
             $check = strtolower($_SERVER['HTTP_MOD_REWRITE']) === 'on';
         } elseif (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
-            $logger->debug('PHP is running through Apache; looking for mod_rewrite');
+            $logger->info('PHP is running through Apache; looking for mod_rewrite');
             if (function_exists('apache_get_modules')) {
                 $check = in_array('mod_rewrite', apache_get_modules());
             }
-            $logger->debug("Apache mod_rewrite check status: $check");
+            $logger->info("Apache mod_rewrite check status: $check");
+            if (empty($check)) {
+                if (!empty(shell_exec('/usr/sbin/apachectl -M | grep rewrite'))) {
+                    $logger->info('Found rewrite module enabled using apachectl');
+                    $check = true;
+                }
+            }
         } else {
             $logger->debug('PHP is not running through Apache');
         }

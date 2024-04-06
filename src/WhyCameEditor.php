@@ -19,6 +19,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\model\ChurchCRM\WhyCame;
+use ChurchCRM\model\ChurchCRM\WhyCameQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -52,9 +53,13 @@ if (isset($_POST['Submit'])) {
         $whyCame->save();
     // Existing record (update)
     } else {
-        $sSQL = 'UPDATE whycame_why SET why_join = "' . $tJoin . '", why_come = "' . $tCome . '", why_suggest = "' . $tSuggest . '", why_hearOfUs = "' . $tHearOfUs . '" WHERE why_per_ID = ' . $iPerson;
-        //Execute the SQL
-        RunQuery($sSQL);
+        $whyCame = WhyCameQuery::create()->findOneByPerId($iPerson);
+        $whyCame
+            ->setJoin($tJoin)
+            ->setCome($tCome)
+            ->setSuggest($tSuggest)
+            ->setHearOfUs($tHearOfUs);
+        $whyCame->save();
     }
 
     if (isset($_POST['Submit'])) {

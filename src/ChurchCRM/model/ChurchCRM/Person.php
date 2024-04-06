@@ -573,11 +573,8 @@ class Person extends BasePerson implements PhotoInterface
     /**
      * @return string[]
      */
-    public function getCustomFields(): array
+    public function getCustomFields($allPersonCustomFields, $customMapping, &$CustomList, $name_func): array
     {
-        // get list of custom field column names
-        $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
-
         // add custom fields to person_custom table since they are not defined in the propel schema
         $rawQry = PersonCustomQuery::create();
         foreach ($allPersonCustomFields as $customfield) {
@@ -587,14 +584,22 @@ class Person extends BasePerson implements PhotoInterface
         }
         $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
 
+
         // get custom column names and values
         $personCustom = [];
-        if ($rawQry->count() > 0) {
-            foreach ($allPersonCustomFields as $customfield) {
-                if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
-                    $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
-                    if (!empty($value)) {
-                        $personCustom[] = $customfield->getName();
+        if ($thisPersonCustomFields) {
+            //Lets use the map created instead of querying the column name
+            foreach ($thisPersonCustomFields->getVirtualColumns() as $column => $value) {
+                if (!empty($value)) {
+                    $temp = $customMapping[$column]['Name'];
+                    $personCustom[] = $temp;
+                    $CustomList[$temp] += 1;
+
+
+                    if (array_key_exists($value, $customMapping[$column]['Elements'])) {
+                        $temp = $name_func($customMapping[$column]['Name'], $customMapping[$column]['Elements'][$value]);
+                        $personCustom[] = $temp;
+                        $CustomList[$temp] += 1;
                     }
                 }
             }

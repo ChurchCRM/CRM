@@ -2348,5 +2348,6 @@
     "Group Cart Status": "Estado del Carrito de Grupo",
     "If that doesn't work, copy and paste the following link in your browser": "Si esto no funciona, copie y pegue el siguiente enlace en su navegador",
     "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email.": "Recibió este correo electrónico porque recibimos una solicitud de actividad en su cuenta. Si no solicitó esto, puede eliminar este correo electrónico de forma segura.",
-    "To stop receiving these emails, you can email": "Para dejar de recibir estos correos, puede contactar a"
+    "To stop receiving these emails, you can email": "Para dejar de recibir estos correos, puede contactar a",
+    "invalid group request": "Solicitud de grupo inválida"
 }

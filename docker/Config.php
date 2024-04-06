@@ -13,7 +13,7 @@ $dbPort = '3306';
 $sUSER = 'churchcrm';
 $sPASSWORD = 'changeme';
 $sDATABASE = 'churchcrm';
-//$TwoFASecretKey = 'ChangeThisToASecureRandomStringBeforeUse';
+$TwoFASecretKey = 'ChangeThisToASecureRandomStringBeforeUse';
 
 // Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
 //

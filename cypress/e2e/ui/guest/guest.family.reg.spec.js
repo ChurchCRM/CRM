@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 
 context("Family Reg", () => {
-
     it("Family of 2", () => {
         cy.visit("external/register/");
         cy.contains("Main St. Cathedral");

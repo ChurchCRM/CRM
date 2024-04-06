@@ -21,7 +21,10 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
@@ -148,6 +151,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $iCanvasser = 0;
+    $bOkToCanvass = false;
     if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { // Only take modifications to this field if the current user is a canvasser
         $bOkToCanvass = isset($_POST['OkToCanvass']);
         if (array_key_exists('Canvasser', $_POST)) {
@@ -165,7 +169,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     if (array_key_exists('PropertyID', $_POST)) {
         $iPropertyID = InputUtils::legacyFilterInput($_POST['PropertyID'], 'int');
     }
-    $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate']);
+    $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate'] ?? '');
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
     $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
@@ -222,16 +226,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     // Validate Wedding Date if one was entered
-    $dWeddingDate = null;
-    if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != '')) {
-        $dateString = parseAndValidateDate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
-        if ($dateString === false) {
-            $sWeddingDateError = '<span style="color: red; ">'
-                                . gettext('Not a valid Wedding Date') . '</span>';
-            $bErrorFlag = true;
-        } else {
-            $dWeddingDate = $dateString;
-        }
+    $dateString = parseAndValidateDate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
+    if ((strlen($dWeddingDate) > 0) && $dateString === false) {
+        $sWeddingDateError = '<span style="color: red; ">'
+                            . gettext('Not a valid Wedding Date') . '</span>';
+        $bErrorFlag = true;
+    } else {
+        $dWeddingDate = $dateString;
     }
 
     // Validate Email
@@ -274,75 +275,44 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $bSendNewsLetterString = $bSendNewsLetter ? 'TRUE' : 'FALSE';
         $bOkToCanvassString = $bOkToCanvass ? 'TRUE' : 'FALSE';
 
-        if ($iFamilyID < 1) {
-            $family = new \ChurchCRM\model\ChurchCRM\Family();
-            $family
-                ->setName($sName)
-                ->setAddress1($sAddress1)
-                ->setAddress2($sAddress2)
-                ->setCity($sCity)
-                ->setState($sState)
-                ->setZip($sZip)
-                ->setHomePhone($sHomePhone)
-                ->setWorkPhone($sWorkPhone)
-                ->setCellPhone($sCellPhone)
-                ->setDateEntered(date('YmdHis'))
-                ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
-                ->setSendNewsletter($bSendNewsLetterString)
-                ->setOkToCanvass($bOkToCanvassString)
-                ->setCanvasser($iCanvasser)
-                ->setEnvelope($nEnvelope);
-            if ($dWeddingDate) {
-                $family->setWeddingdate($dWeddingDate);
-            }
-            if ($sEmail) {
-                $family->setEmail($sEmail);
-            }
-            if ($nLatitude) {
-                $family->setLatitude($nLatitude);
-            }
-            if ($nLatitude) {
-                $family->setLongitude($nLongitude);
-            }
-            $family->save();
-            $bGetKeyBack = true;
-        } else {
-            $sSQL = "UPDATE family_fam SET fam_Name='" . $sName . "'," .
-                        "fam_Address1='" . $sAddress1 . "'," .
-                        "fam_Address2='" . $sAddress2 . "'," .
-                        "fam_City='" . $sCity . "'," .
-                        "fam_State='" . $sState . "'," .
-                        "fam_Zip='" . $sZip . "'," .
-                        'fam_Latitude=' . ($nLatitude ? "\"$nLatitude\"" : 'NULL') . ',' .
-                        'fam_Longitude=' . ($nLongitude ? "\"$nLongitude\"" : 'NULL') . ',' .
-                        "fam_Country='" . $sCountry . "'," .
-                        "fam_HomePhone='" . $sHomePhone . "'," .
-                        "fam_WorkPhone='" . $sWorkPhone . "'," .
-                        "fam_CellPhone='" . $sCellPhone . "'," .
-                        "fam_Email='" . ($sEmail ?? '') . "'," .
-                        'fam_WeddingDate=' . ($dWeddingDate ? "\"$dWeddingDate\"" : 'NULL') . ',' .
-                        'fam_Envelope=' . $nEnvelope . ',' .
-                        "fam_DateLastEdited='" . date('YmdHis') . "'," .
-                        'fam_EditedBy = ' . AuthenticationManager::getCurrentUser()->getId() . ',' .
-                        'fam_SendNewsLetter = "' . $bSendNewsLetterString . '"';
-            if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) {
-                $sSQL .= ', fam_OkToCanvass = "' . $bOkToCanvassString . '"' .
-                                    ", fam_Canvasser = '" . $iCanvasser . "'";
-            }
-            $sSQL .= ' WHERE fam_ID = ' . $iFamilyID;
-            $bGetKeyBack = false;
+        $family = new \ChurchCRM\model\ChurchCRM\Family();
+        if ($iFamilyID >= 1) {
+            $family = FamilyQuery::create()->findPk($iFamilyID);
         }
-
-        //Execute the SQL
-        RunQuery($sSQL);
+        $family
+            ->setName($sName)
+            ->setAddress1($sAddress1)
+            ->setAddress2($sAddress2)
+            ->setCity($sCity)
+            ->setState($sState)
+            ->setZip($sZip)
+            ->setHomePhone($sHomePhone)
+            ->setWorkPhone($sWorkPhone)
+            ->setCellPhone($sCellPhone)
+            ->setDateEntered(date('YmdHis'))
+            ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
+            ->setSendNewsletter($bSendNewsLetterString)
+            ->setOkToCanvass($bOkToCanvassString)
+            ->setCanvasser($iCanvasser)
+            ->setEnvelope($nEnvelope);
+        if ($dWeddingDate) {
+            $family->setWeddingdate($dWeddingDate);
+        }
+        if ($sEmail) {
+            $family->setEmail($sEmail);
+        }
+        if ($nLatitude) {
+            $family->setLatitude($nLatitude);
+        }
+        if ($nLatitude) {
+            $family->setLongitude($nLongitude);
+        }
+        $family->save();
+        $family->reload();
 
         //If the user added a new record, we need to key back to the route to the FamilyView page
-        if ($bGetKeyBack) {
-            //Get the key back
-            $sSQL = 'SELECT MAX(fam_ID) AS iFamilyID FROM family_fam';
-            $rsLastEntry = RunQuery($sSQL);
-            extract(mysqli_fetch_array($rsLastEntry));
-
+        if ($iFamilyID < 1) {
+            $iFamilyID = $family->getId();
             $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $iFamilyID . "')";
             RunQuery($sSQL);
 
@@ -366,43 +336,31 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         $sLastNameToEnter = $sName;
                     }
 
-                    RunQuery('LOCK TABLES person_per WRITE, person_custom WRITE');
-                    $sSQL = "INSERT INTO person_per (
-								per_FirstName,
-								per_MiddleName,
-								per_LastName,
-                        per_Suffix,
-								per_fam_ID,
-								per_fmr_ID,
-								per_DateEntered,
-								per_EnteredBy,
-								per_Gender,
-								per_BirthDay,
-								per_BirthMonth,
-								per_BirthYear,
-								per_cls_ID)
-							VALUES (
-								'$aFirstNames[$iCount]',
-								'$aMiddleNames[$iCount]',
-								'$sLastNameToEnter',
-								'$aSuffix[$iCount]',
-								$iFamilyID,
-								$aRoles[$iCount],
-								'" . date('YmdHis') . "',
-								" . AuthenticationManager::getCurrentUser()->getId() . ",
-								$aGenders[$iCount],
-								$aBirthDays[$iCount],
-								$aBirthMonths[$iCount],
-								$aBirthYears[$iCount],
-								$aClassification[$iCount])";
-                    RunQuery($sSQL);
-                    $dbPersonId = mysqli_insert_id($cnInfoCentral);
+                    $person = new Person();
+                    $person
+                        ->setFirstName($aFirstNames[$iCount])
+                        ->setMiddleName($aMiddleNames[$iCount])
+                        ->setLastName($sLastNameToEnter)
+                        ->setSuffix($aSuffix[$iCount])
+                        ->setFamId($iFamilyID)
+                        ->setFmrId($aRoles[$iCount])
+                        ->setDateEntered(date('YmdHis'))
+                        ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
+                        ->setGender($aGenders[$iCount])
+                        ->setBirthDay($aBirthDays[$iCount])
+                        ->setBirthMonth($aBirthMonths[$iCount])
+                        ->setBirthYear($aBirthYears[$iCount])
+                        ->setClsId($aClassification[$iCount]);
+                    $person->save();
+                    $person->reload();
+                    $dbPersonId = $person->getId();
                     $note = new Note();
                     $note->setPerId($dbPersonId);
                     $note->setText(gettext('Created via Family'));
                     $note->setType('create');
                     $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                     $note->save();
+                    RunQuery('LOCK TABLES person_custom WRITE');
                     $sSQL = 'INSERT INTO person_custom (per_ID) VALUES ('
                                 . $dbPersonId . ')';
                     RunQuery($sSQL);
@@ -432,10 +390,22 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     } else {
                         $sLastNameToEnter = $sName;
                     }
-                    $sBirthYearScript = ($aUpdateBirthYear[$iCount] & 1) ? 'per_BirthYear=' . $aBirthYears[$iCount] . ', ' : '';
                     //RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
-                    $sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Suffix='" . $aSuffix[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "', " . $sBirthYearScript . "per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
-                    RunQuery($sSQL);
+                    $person = PersonQuery::create()->findOneById($aPersonIDs[$iCount]);
+                    $person
+                        ->setFirstName($aFirstNames[$iCount])
+                        ->setMiddleName($aMiddleNames[$iCount])
+                        ->setLastName($aLastNames[$iCount])
+                        ->setSuffix($aSuffix[$iCount])
+                        ->setGender($aGenders[$iCount])
+                        ->setFmrId($aRoles[$iCount])
+                        ->setBirthMonth($aBirthMonths[$iCount])
+                        ->setBirthDay($aBirthDays[$iCount])
+                        ->setClsId($aClassification);
+                    if ($aUpdateBirthYear[$iCount] & 1) {
+                        $person->setBirthYear($aBirthYears[$iCount]);
+                    }
+                    $person->save();
                     //RunQuery("UNLOCK TABLES");
 
                     $note = new Note();
