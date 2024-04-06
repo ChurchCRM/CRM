@@ -40,7 +40,7 @@ $(".user-setting-checkbox").click(function () {
     });
 });
 
-$(".user-setting-select").change(function () {
+$(".user-setting-select").click(function () {
     let thisCheckbox = $(this);
     let optionSelected = $(this).find("option:selected");
     let setting = thisCheckbox.data("setting-name");
@@ -52,6 +52,13 @@ $(".user-setting-select").change(function () {
         dataType: "json",
         data: data,
     });
+
+    let reload = thisCheckbox.data("reload");
+    if (reload) {
+        window.location.reload();
+    }
+
+
 });
 
 $(document).ready(function () {
