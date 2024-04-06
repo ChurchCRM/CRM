@@ -196,17 +196,6 @@ module.exports = function (grunt) {
                         filter: 'isFile',
                         flatten: true,
                         src: [
-                            'node_modules/flot/source/jquery.canvaswrapper.js',
-                            'node_modules/flot/source/jquery.colorhelpers.js',
-                            'node_modules/flot/source/jquery.flot*.js'
-                        ],
-                        dest: 'src/skin/external/flot/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
-                        src: [
                             'node_modules/i18next/dist/umd/i18next.min.js'
                         ],
                         dest: 'src/skin/external/i18next/'
