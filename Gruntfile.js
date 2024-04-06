@@ -511,7 +511,7 @@ module.exports = function (grunt) {
 
             var tempFile = 'locale/JSONKeys/'+locale+'.json';
             var poTerms = grunt.file.read(tempFile);
-            if (poTerms == "") {
+            if (poTerms === "") {
                 poTerms = "{}";
             }
             var jsFileContent = '// Source: ' + tempFile;
