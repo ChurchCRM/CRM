@@ -1,4 +1,4 @@
-$("#regenApiKey").click(function () {
+$("#regenApiKey").on("click",function () {
     $.ajax({
         type: "POST",
         url:
@@ -18,7 +18,7 @@ $("#regenApiKey").click(function () {
     });
 });
 
-$(".user-setting-checkbox").click(function () {
+$(".user-setting-checkbox").on("click", function () {
     let thisCheckbox = $(this);
     let setting = thisCheckbox.data("setting-name");
     let cssClass = thisCheckbox.data("layout");
@@ -40,7 +40,7 @@ $(".user-setting-checkbox").click(function () {
     });
 });
 
-$(".user-setting-select").change(function () {
+$(".user-setting-select").on( "focusout", function () {
     let thisCheckbox = $(this);
     let optionSelected = $(this).find("option:selected");
     let setting = thisCheckbox.data("setting-name");
@@ -51,7 +51,14 @@ $(".user-setting-select").change(function () {
         path: "user/" + window.CRM.userId + "/setting/" + setting,
         dataType: "json",
         data: data,
+    }).done(function () {
+        let reload = thisCheckbox.data("reload");
+        if (reload) {
+            window.location.reload();
+        }
     });
+
+
 });
 
 $(document).ready(function () {
@@ -74,7 +81,7 @@ $(document).ready(function () {
                 );
                 localeOptions.append(newOption);
             });
-            localeOptions.change();
+            localeOptions.trigger("select");
         },
     });
 
