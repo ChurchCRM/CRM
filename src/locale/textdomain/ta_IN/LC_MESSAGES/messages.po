@@ -1266,8 +1266,9 @@ msgid "First name must be entered"
 msgstr "முதல் பெயரை உள்ளிட வேண்டும்"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "தவறான ஆண்டு: அனுமதிக்கப்பட்ட மதிப்புகள் 1901 முதல் 2155 வரை"
+#, fuzzy
+msgid "Invalid Year: allowable values are 1801 to 2155"
+msgstr "தவறான ஆண்டு: அனுமதிக்கப்பட்ட மதிப்புகள் 1801 முதல் 2155 வரை"
 
 #: 
 msgid "Invalid Birth Date."

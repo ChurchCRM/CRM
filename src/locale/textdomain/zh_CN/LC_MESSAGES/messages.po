@@ -1303,8 +1303,9 @@ msgid "First name must be entered"
 msgstr "必须输入名字"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "无效的年份：允许值是1901到2155"
+#, fuzzy
+msgid "Invalid Year: allowable values are 1801 to 2155"
+msgstr "无效的年份：允许值是1801到2155"
 
 #: 
 msgid "Invalid Birth Date."
@@ -3657,8 +3658,9 @@ msgid "Invalid Year"
 msgstr "无效的年份"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "超出范围：允许的值是1901到2155"
+#, fuzzy
+msgid "Out of range: Allowable values are 1801 to 2155"
+msgstr "超出范围：允许的值是1801到2155"
 
 #: 
 msgid "Invalid Number"
