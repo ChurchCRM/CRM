@@ -7540,8 +7540,9 @@ msgid "Your Church's Facebook Page"
 msgstr "Trang Facebook của Giáo hội của bạn"
 
 #: 
-msgid "Your Church's Twitter Page"
-msgstr "Trang Twitter của Giáo hội của bạn"
+#, fuzzy
+msgid "Your Church's X Page"
+msgstr "Trang X của Giáo hội của bạn"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -7862,18 +7863,6 @@ msgstr "HOẶC Tạo nhóm và thêm GIỎ HÀNG trong MỘT HÀNH ĐỘNG"
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "Tạo nhóm + THÊM giỏ hàng"
-
-#: 
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-msgid "LinkedIn"
-msgstr "LinkedIn"
 
 #: 
 msgid "Move Event"
@@ -8321,8 +8310,9 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL thông báo trung tâm của ChurchCRM"
 
 #: 
-msgid "Follow us on Twitter"
-msgstr "theo dõi chúng tối trên Twitter"
+#, fuzzy
+msgid "Follow us on"
+msgstr "theo dõi chúng tối trên"
 
 #: 
 msgid "invalid event type id"

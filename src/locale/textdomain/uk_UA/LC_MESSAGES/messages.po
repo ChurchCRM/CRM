@@ -7521,8 +7521,9 @@ msgid "Your Church's Facebook Page"
 msgstr "Сторінка Вашої Церкви у Facebook"
 
 #: 
-msgid "Your Church's Twitter Page"
-msgstr "Сторінка Вашої Церкви у Twitter"
+#, fuzzy
+msgid "Your Church's X Page"
+msgstr "Сторінка Вашої Церкви у X"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -7843,18 +7844,6 @@ msgstr "АБО Створіть групу та додайте КОРЗИНУ З
 #: 
 msgid "Create Group + ADD Cart"
 msgstr "Створити групу + ДОДАТИ кошик"
-
-#: 
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-msgid "LinkedIn"
-msgstr "LinkedIn"
 
 #: 
 msgid "Move Event"
@@ -8302,8 +8291,9 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL-адреса центральних сповіщень ChurchCRM"
 
 #: 
-msgid "Follow us on Twitter"
-msgstr "Слідуйте за нами в Twitter"
+#, fuzzy
+msgid "Follow us on"
+msgstr "Слідуйте за нами в"
 
 #: 
 msgid "invalid event type id"
