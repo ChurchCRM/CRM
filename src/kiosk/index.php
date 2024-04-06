@@ -33,13 +33,13 @@ if (isset($_COOKIE['kioskCookie'])) {
     $g = hash('sha256', $_COOKIE['kioskCookie']);
     $Kiosk = KioskDeviceQuery::create()
           ->findOneByGUIDHash($g);
+
+    $app->kiosk = $Kiosk;
     if ($Kiosk === null) {
         setcookie('kioskCookie', '', ['expires' => time() - 3600]);
         header('Location: ' . $_SERVER['REQUEST_URI']);
     }
-}
-
-if (!isset($_COOKIE['kioskCookie'])) {
+} else {
     if ($windowOpen) {
         $guid = uniqid();
         setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
@@ -47,12 +47,14 @@ if (!isset($_COOKIE['kioskCookie'])) {
         $Kiosk->setGUIDHash(hash('sha256', $guid));
         $Kiosk->setAccepted(false);
         $Kiosk->save();
+
+        $app->kiosk = $Kiosk;
     } else {
         header('HTTP/1.1 401 Unauthorized');
         exit;
     }
 }
-$app->kiosk = $Kiosk;
+
 
 // Run app
 $app->run();
