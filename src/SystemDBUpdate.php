@@ -56,7 +56,7 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
         ?>
         <div class="row center-block">
                 <p></br></p>
-                <form>
+                <form id="dbUpgradeForm">
                     <input type="hidden" name="upgrade" value="true"/>
                     <button type="submit" class="btn btn-primary btn-block btn-flat" id="upgradeDatabase"><i
                             class="fa fa-database"></i> <?= gettext('Upgrade database') ?></button>
@@ -73,6 +73,5 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
         <?php
     } ?>
 </div>
-
 
 <?php require 'Include/FooterNotLoggedIn.php'; ?>

@@ -3,7 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
-$sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('People Verify Dashboard');
+$sPageTitle = gettext('People Verify Dashboard');
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
