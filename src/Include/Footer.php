@@ -28,7 +28,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
     <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
-    | <a href="https://twitter.com/church_crm" target="_blank"><i class="fa-brands fa-twitter"></i> <?= gettext("Follow us on Twitter") ?></a>
+    | <a href="https://twitter.com/church_crm" target="_blank"><?= gettext("Follow us on") ?> <i class="fa-brands fa-x-twitter"></i> </a>
     | <span class="fi fi-squared"></span>
 </footer>
 
