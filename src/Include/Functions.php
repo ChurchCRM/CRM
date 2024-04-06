@@ -1096,8 +1096,8 @@ function validateCustomField($type, &$data, $col_Name, ?array &$aErrors): bool
                 if (!is_numeric($data) || strlen($data) != 4) {
                     $aErrors[$col_Name] = gettext('Invalid Year');
                     $bErrorFlag = true;
-                } elseif ($data > 2155 || $data < 1901) {
-                    $aErrors[$col_Name] = gettext('Out of range: Allowable values are 1901 to 2155');
+                } elseif ($data > 2155 || $data < 1801) {
+                    $aErrors[$col_Name] = gettext('Out of range: Allowable values are 1801 to 2155');
                     $bErrorFlag = true;
                 }
             }

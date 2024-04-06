@@ -905,7 +905,7 @@ function ParseDate(string $sDate, int $iDateMode): array
             }
             break;
     }
-    if ((int) $aDate[0] < 1901 || (int) $aDate[0] > 2155) {
+    if ((int) $aDate[0] < 1801 || (int) $aDate[0] > 2155) {
         $aDate[0] = 'NULL';
     }
     if ((int) $aDate[1] < 0 || (int) $aDate[1] > 12) {
