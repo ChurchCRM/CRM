@@ -1,0 +1,954 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "クエリを実行できません"
+
+#: 
+msgid "Delete"
+msgstr "削除"
+
+#: 
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: 
+msgid "Save"
+msgstr "保存"
+
+#: 
+msgid "Unassigned"
+msgstr "未割り当て"
+
+#: 
+msgid "None"
+msgstr "なし"
+
+#: 
+msgid "City"
+msgstr "市町村"
+
+#: 
+msgid "State"
+msgstr "都道府県"
+
+#: 
+msgid "Country"
+msgstr "国"
+
+#: 
+msgid "Phone"
+msgstr "電話番号"
+
+#: 
+msgid "Email"
+msgstr "メールアドレス"
+
+#: 
+msgid "Credit Card"
+msgstr "クレジットカード"
+
+#: 
+msgid "Backup Database"
+msgstr "バックアップデータベース"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "このツールは、手動でChurchCRMデータベースをバックアップする際に役立ちます"
+
+#: 
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "すでにシステムの定期的なバックアップ手順がある場合を除き、少なくとも週に1回は手動でバックアップを取る必要があります"
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "バックアップ ファイルをダウンロードしたら、コピーを 2 つ作成する必要があります　そのうちの 1 つをサイト内の耐火金庫に置き、もう 1 つをサイト外の安全な場所に置きます"
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "ChurchCRM データベースに保存されているデータの機密性が心配な場合は、他の人がアクセスできる可能性のある場所にバックアップ データを保存する場合は、バックアップ データを暗号化する必要があります"
+
+#: 
+msgid "Select archive type"
+msgstr "アーカイブの種類を選択してください"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "バックアップファイルをパスワードで暗号化しますか?"
+
+#: 
+msgid "Re-type Password"
+msgstr "パスワードを再入力してください"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "バックアップを生成して外部ストレージに送信する"
+
+#: 
+msgid "Price"
+msgstr "価格"
+
+#: 
+msgid "CSV Export"
+msgstr "CSVエクスポート"
+
+#: 
+msgid "Field Selection"
+msgstr "フィールドの選択"
+
+#: 
+msgid "Last Name"
+msgstr "姓"
+
+#: 
+msgid "Required"
+msgstr "必須"
+
+#: 
+msgid "First Name"
+msgstr "名"
+
+#: 
+msgid "Middle Name"
+msgstr "ミドルネーム"
+
+#: 
+msgid "Zip"
+msgstr "郵便番号"
+
+#: 
+msgid "Work/Other Email"
+msgstr "仕事/その他のメールアドレス"
+
+#: 
+msgid "Membership Date"
+msgstr "会員登録日"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "生年月日 / 記念日"
+
+#: 
+msgid "Age / Years Married"
+msgstr "年齢 / 結婚年数"
+
+#: 
+msgid "Family Role"
+msgstr "家族のロール"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "個人または家族のどちらの出力方法を使用するかによって異なります"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "カスタムフィールドの選択"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "カスタム個人フィールド"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "カスタム家族フィールド"
+
+#: 
+msgid "Filters"
+msgstr "フィルター"
+
+#: 
+msgid "Records to export"
+msgstr "エクスポートするレコード"
+
+#: 
+msgid "Based on filters below.."
+msgstr "以下のフィルターに基づいて"
+
+#: 
+msgid "Don't Filter"
+msgstr "フィルタリングしない"
+
+#: 
+msgid "Male"
+msgstr "男性"
+
+#: 
+msgid "Female"
+msgstr "女性"
+
+#: 
+msgid "Birthday Date"
+msgstr "生年月日"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "メールアドレスが不完全なレコードをスキップする"
+
+#: 
+msgid "Create File"
+msgstr "ファイルを作成"
+
+#: 
+msgid "No file selected for upload."
+msgstr "アップロードするファイルが選択されていません"
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "CSV ファイルの合計行数"
+
+#: 
+msgid "Ignore this Field"
+msgstr "このフィールドを無視します"
+
+#: 
+msgid "Title"
+msgstr "タイトル"
+
+#: 
+msgid "Gender"
+msgstr "性別"
+
+#: 
+msgid "Home Phone"
+msgstr "固定電話"
+
+#: 
+msgid "Work Phone"
+msgstr "勤務先電話"
+
+#: 
+msgid "Mobile Phone"
+msgstr "携帯電話"
+
+#: 
+msgid "Birth Date"
+msgstr "生年月日"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "CSV の最初の行を無視します 　ヘッダーを除外するため"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "姓と住所に基づいて家族記録を作成する"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "注意　区切り文字  ダッシュなど の有無は関係ありません"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "特に指定がない場合のデフォルトの国"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "エラー　アップロードされた CSV ファイルはもう存在しません"
+
+#: 
+msgid "Upload CSV File"
+msgstr "CSVファイルをアップロードする"
+
+#: 
+msgid "Data import successful."
+msgstr "データのインポートが成功しました"
+
+#: 
+msgid "Set default fiscal year"
+msgstr "デフォルトの会計年度を設定する"
+
+#: 
+msgid "Clear all the canvasser assignments for all families."
+msgstr "すべての家族のすべての勧誘者の割り当てをクリアします"
+
+#: 
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "重要な注意事項　これにより、手動で行われたすべてのキャンバス担当者の割り当てが失われます"
+
+#: 
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "すべての家族向けのブリーフィング シートを含む PDF を、相談者ごとに並べて生成します"
+
+#: 
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "進捗レポートを含む PDF を生成します　進捗レポートには、キャンバスの全体的な進捗状況と個々のキャンバス担当者の進捗状況に関する情報が含まれます"
+
+#: 
+msgid "Summary Report"
+msgstr "概要レポート"
+
+#: 
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "概要レポートを含む PDF を生成します。概要レポートには、キャンバス データから抽出されたコメントが含まれます"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "カートに追加したいイベントを選択してください"
+
+#: 
+msgid "Add New Event"
+msgstr "新しいイベントを追加"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "あなたのカートは空です！"
+
+#: 
+msgid "No family name entered!"
+msgstr "家族名が入力されていません!"
+
+#: 
+msgid "Name"
+msgstr "名前"
+
+#: 
+msgid "Already in a family"
+msgstr "すでに家族に含まれています"
+
+#: 
+msgid "Create new family"
+msgstr "新しい家族を作成する"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "新しい家族を追加する場合は、以下のデータを入力してください"
+
+#: 
+msgid "Do not auto-format"
+msgstr "自動フォーマットしない"
+
+#: 
+msgid "Add to Family"
+msgstr "家族を追加する"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "カートをグループに追加"
+
+#: 
+msgid "Select Group"
+msgstr "グループを選択"
+
+#: 
+msgid "Add to Group"
+msgstr "グループに追加"
+
+#: 
+msgid "Back to Menu"
+msgstr "メニューに戻る"
+
+#: 
+msgid "Create Directory From Cart"
+msgstr "カートからのディレクトリ作成"
+
+#: 
+msgid "Remove"
+msgstr "削除"
+
+#: 
+msgid "Yes"
+msgstr "はい"
+
+#: 
+msgid "No"
+msgstr "いいえ"
+
+#: 
+msgid "Convert All"
+msgstr "全て変換"
+
+#: 
+msgid "Address"
+msgstr "住所"
+
+#: 
+msgid "Birthday"
+msgstr "生年月日"
+
+#: 
+msgid "Font Size"
+msgstr "フォントサイズ"
+
+#: 
+msgid "Title page"
+msgstr "タイトルページ"
+
+#: 
+msgid "Use Title Page"
+msgstr "タイトルページを使う"
+
+#: 
+msgid "Church Name"
+msgstr "教会名"
+
+#: 
+msgid "Create Directory"
+msgstr "ディレクトリを作成"
+
+#: 
+msgid "Save and Add"
+msgstr "保存と追加"
+
+#: 
+msgid "Item"
+msgstr "アイテム"
+
+#: 
+msgid "Multiple"
+msgstr "複数"
+
+#: 
+msgid "Go"
+msgstr "進む"
+
+#: 
+msgid "Description"
+msgstr "説明"
+
+#: 
+msgid "Save Changes"
+msgstr "変更内容を保存"
+
+#: 
+msgid "Event Type"
+msgstr "イベントタイプ"
+
+#: 
+msgid "Save Name"
+msgstr "名前を保存"
+
+#: 
+msgid "Family"
+msgstr "家族"
+
+#: 
+msgid "Amount"
+msgstr "量"
+
+#: 
+msgid "Bank"
+msgstr "銀行"
+
+#: 
+msgid "Month"
+msgstr "月"
+
+#: 
+msgid "Year"
+msgstr "年"
+
+#: 
+msgid "Edit"
+msgstr "編集"
+
+#: 
+msgid "Event Attendees"
+msgstr "イベント参加者"
+
+#: 
+msgid "Event Nonattendees"
+msgstr "イベント不参加者"
+
+#: 
+msgid "Event Guests"
+msgstr "イベントゲスト"
+
+#: 
+msgid "Sundays"
+msgstr "日曜日"
+
+#: 
+msgid "Mondays"
+msgstr "月曜日"
+
+#: 
+msgid "Tuesdays"
+msgstr "火曜日"
+
+#: 
+msgid "Wednesdays"
+msgstr "水曜日"
+
+#: 
+msgid "Thursdays"
+msgstr "木曜日"
+
+#: 
+msgid "Fridays"
+msgstr "金曜日"
+
+#: 
+msgid "Saturdays"
+msgstr "土曜日"
+
+#: 
+msgid "Optional"
+msgstr "オプション"
+
+#: 
+msgid "Default Option"
+msgstr "デフォルトオプション"
+
+#: 
+msgid "You must enter a name"
+msgstr "名前を入力する必要があります"
+
+#: 
+msgid "Add New Field"
+msgstr "新しいフィールドを追加する"
+
+#: 
+msgid "Family Info"
+msgstr "家族情報"
+
+#: 
+msgid "Contact Info"
+msgstr "連絡先情報"
+
+#: 
+msgid "Other Info"
+msgstr "他の情報"
+
+#: 
+msgid "Custom Fields"
+msgstr "カスタムフィールド"
+
+#: 
+msgid "Family Members"
+msgstr "家族のメンバー"
+
+#: 
+msgid "January"
+msgstr "1月"
+
+#: 
+msgid "February"
+msgstr "2月"
+
+#: 
+msgid "March"
+msgstr "3月"
+
+#: 
+msgid "April"
+msgstr "4月"
+
+#: 
+msgid "May"
+msgstr "5月"
+
+#: 
+msgid "June"
+msgstr "6月"
+
+#: 
+msgid "July"
+msgstr "7月"
+
+#: 
+msgid "August"
+msgstr "8月"
+
+#: 
+msgid "September"
+msgstr "9月"
+
+#: 
+msgid "October"
+msgstr "10月"
+
+#: 
+msgid "November"
+msgstr "11月"
+
+#: 
+msgid "December"
+msgstr "12月"
+
+#: 
+msgid "Add Family"
+msgstr "家族を追加"
+
+#: 
+msgid "Add New Member"
+msgstr "新しいメンバーを追加"
+
+#: 
+msgid "Previous Family"
+msgstr "前の家族"
+
+#: 
+msgid "Next Family"
+msgstr "次の家族"
+
+#: 
+msgid "Delete this Family"
+msgstr "この家族を削除"
+
+#: 
+msgid "Upload Photo"
+msgstr "写真をアップロード"
+
+#: 
+msgid "Delete Photo"
+msgstr "写真を削除"
+
+#: 
+msgid "Value"
+msgstr "値"
+
+#: 
+msgid "Edit Value"
+msgstr "値を編集"
+
+#: 
+msgid "Date Updated"
+msgstr "更新日"
+
+#: 
+msgid "Updated By"
+msgstr "更新者"
+
+#: 
+msgid "Update"
+msgstr "更新"
+
+#: 
+msgid "Date"
+msgstr "日付"
+
+#: 
+msgid "Schedule"
+msgstr "スケジュール"
+
+#: 
+msgid "Comment"
+msgstr "コメント"
+
+#: 
+msgid "Close"
+msgstr "閉じる"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "プロフィール写真を削除しようとしています　この手順は元に戻せません"
+
+#: 
+msgid "Next"
+msgstr "次"
+
+#: 
+msgid "Church Address"
+msgstr "教会住所"
+
+#: 
+msgid "Blank"
+msgstr "銀行"
+
+#: 
+msgid "All Data"
+msgstr "全てのデータ"
+
+#: 
+msgid "Summary Data"
+msgstr "概要データ"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
+msgid "Back"
+msgstr "戻る"
+
+#: 
+msgid "Create Report"
+msgstr "レポートを作成する"
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "選択した行を削除"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "選択した行をエクスポート　OFX"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "選択した行をエクスポート　CSV"
+
+#: 
+msgid "Apply Filters"
+msgstr "フィルターを適用する"
+
+#: 
+msgid "Previous Page"
+msgstr "前のページ"
+
+#: 
+msgid "Next Page"
+msgstr "次のページ"
+
+#: 
+msgid "Display:"
+msgstr "表示"
+
+#: 
+msgid "Number"
+msgstr "番号"
+
+#: 
+msgid "Group Member Roles"
+msgstr "グループメンバーのロール"
+
+#: 
+msgid "Clone roles"
+msgstr "ロールをクローンする"
+
+#: 
+msgid "Enabled"
+msgstr "有効"
+
+#: 
+msgid "Disabled"
+msgstr "無効"
+
+#: 
+msgid "Group Roles"
+msgstr "グループロール"
+
+#: 
+msgid "New Role"
+msgstr "新しいロール"
+
+#: 
+msgid "Add New Role"
+msgstr "新しいロールを追加"
+
+#: 
+msgid "Editing"
+msgstr "編集中"
+
+#: 
+msgid "Other Email"
+msgstr "他のメールアドレス"
+
+#: 
+msgid "Undefined"
+msgstr "未定義"
+
+#: 
+msgid "Delete this Group"
+msgstr "このグループを削除"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "グループの削除の確認"
+
+#: 
+msgid "Email Group"
+msgstr "メールアドレスグループ"
+
+#: 
+msgid "Total Members"
+msgstr "メンバー数"
+
+#: 
+msgid "Default Role"
+msgstr "デフォルトロール"
+
+#: 
+msgid "Please Login"
+msgstr "ログインしてください"
+
+#: 
+msgid "Email/Username"
+msgstr "メールアドレス/ユーザー名"
+
+#: 
+msgid "Password"
+msgstr "パスワード"
+
+#: 
+msgid "Login"
+msgstr "ログイン"
+
+#: 
+msgid "Confirm"
+msgstr "確認"
+
+#: 
+msgid "Member Role Change"
+msgstr "メンバーのロールを変更"
+
+#: 
+msgid "Current Role"
+msgstr "現在のロール"
+
+#: 
+msgid "All People"
+msgstr "全員"
+
+#: 
+msgid "Men"
+msgstr "男性"
+
+#: 
+msgid "Women"
+msgstr "女性"
+
+#: 
+msgid "Boys"
+msgstr "男の子"
+
+#: 
+msgid "Girls"
+msgstr "女の子"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "姓, 名, ミドルネーム"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "2FAコードを入力してください"
+
+#: 
+msgid "2FA Code"
+msgstr "2FAコード"
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "新しいパスワードが以前のパスワードと似すぎています"
+
+#: 
+msgid "Password reset not available.  Please contact your system administrator"
+msgstr "パスワードのリセットができません　システム管理者にお問い合わせください"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "新しいユーザーパスワードを入力します　管理者が設定したパスワードには、長さや複雑さの要件は適用されません"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "ChurchCRMのインストール情報"
+
+#: 
+msgid "Web Server"
+msgstr "Webサーバ"
+
+#: 
+msgid "Email Information"
+msgstr "メールアドレス情報"
+
+#: 
+msgid "Passwords"
+msgstr "パスワード"
+
+#: 
+msgid "2FA"
+msgstr "2FA - 2要素認証"
+
+#: 
+msgid "Login Info"
+msgstr "ログイン情報"
+
+#: 
+msgid "Failed Login"
+msgstr "ログインに失敗"
+
+#: 
+msgid "Start Date"
+msgstr "開始日"
+
+#: 
+msgid "End Date"
+msgstr "終了日"
+
+#: 
+msgid "Text"
+msgstr "テキスト"
+
+#: 
+msgid "Event Description"
+msgstr "イベントの説明"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "登録を開始すると、以前に登録した 2 要素デバイスとリカバリ コードが無効になります"
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "次へ　をクリックすると、QR コードをスキャンして認証アプリを登録するように求められます"
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "登録を確認するには、認証アプリによって生成されたコードを入力する必要があります"
+
+#: 
+msgid "Api Key"
+msgstr "APIキー"
+
+#: 
+msgid "Regen API Key"
+msgstr "APIを再作成する"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "初期ページ長　ページあたりの行数　を変更します"
+
+#: 
+msgid "User Interface"
+msgstr "ユーザーインターフェース"
+
+#: 
+msgid "System"
+msgstr "システム"
+
+#: 
+msgid "Czech"
+msgstr "チェコ語"
+
+#: 
+msgid "Finnish"
+msgstr "フィンランド語"
+
+#: 
+msgid "Greek"
+msgstr "ギリシャ語"
+
+#: 
+msgid "Turkish"
+msgstr "トルコ語"
+
+#: 
+msgid "Ukrainian"
+msgstr "ウクライナ語"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "GitHub に送信　をクリックすると、システム情報が事前に入力された GitHub のissueページに移動します"
+
+#: 
+msgid "Submit to GitHub"
+msgstr "GitHub に送信"
+
+#: 
+msgid "Change role"
+msgstr "ロールを変更"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "これが機能しない場合は、次のリンクをコピーしてブラウザに貼り付けてください"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "このメールは、あなたのアカウントに対するアクティビティのリクエストを受け取ったために受信しました　リクエストしていない場合は、このメールを削除しても安全です"
+
