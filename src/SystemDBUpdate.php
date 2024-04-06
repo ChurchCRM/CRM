@@ -74,5 +74,10 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
     } ?>
 </div>
 
+<script type="text/javascript">
+    $("#upgradeDatabase").on("click", function() {
+        $(this).prop("disabled", true);
+    });
+</script>
 
 <?php require 'Include/FooterNotLoggedIn.php'; ?>
