@@ -9195,8 +9195,8 @@ msgstr "Página do Facebook da sua igreja"
 
 #: 
 #, fuzzy
-msgid "Your Church's Twitter Page"
-msgstr "Página do Twitter da sua igreja"
+msgid "Your Church's X Page"
+msgstr "Página do X da sua igreja"
 
 #: 
 #, fuzzy
@@ -9597,21 +9597,6 @@ msgstr "Ou crie um grupo e adicione-o ao carrinho com uma única ação"
 #, fuzzy
 msgid "Create Group + ADD Cart"
 msgstr "Crie um grupo e adicione ao carrinho"
-
-#: 
-#, fuzzy
-msgid "Facebook"
-msgstr "Facebook"
-
-#: 
-#, fuzzy
-msgid "Twitter"
-msgstr "Twitter"
-
-#: 
-#, fuzzy
-msgid "LinkedIn"
-msgstr "LinkedIn"
 
 #: 
 #, fuzzy
@@ -10172,8 +10157,8 @@ msgstr "URL de notificações da ChurchCRM Central"
 
 #: 
 #, fuzzy
-msgid "Follow us on Twitter"
-msgstr "Siga-nos no Twitter"
+msgid "Follow us on"
+msgstr "Siga-nos no"
 
 #: 
 #, fuzzy

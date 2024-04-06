@@ -1085,9 +1085,9 @@ require 'Include/Header.php';
                     <label for="Facebook">
                         <?php
                         if ($bFacebook) {
-                            echo '<span style="color: red;">' . gettext('Facebook') . ':</span></td>';
+                            echo '<span style="color: red;">Facebook:</span></td>';
                         } else {
-                            echo gettext('Facebook') . ':</td>';
+                            echo 'Facebook:</td>';
                         }
                         ?>
                     </label>
@@ -1118,7 +1118,7 @@ require 'Include/Header.php';
                     </div>
                 </div>
                 <div class="form-group col-md-4">
-                      <label for="LinkedIn"><?= gettext('LinkedIn') ?>:</label>
+                      <label for="LinkedIn">LinkedIn:</label>
                       <div class="input-group">
                           <div class="input-group-addon">
                               <i class="fa-brands fa-linkedin"></i>
