@@ -1,29 +1,24 @@
-$(document).ready(function () {
+$(function () {
     if (!window.CRM.currentActive) {
         $("#family-deactivated").removeClass("d-none");
     }
 
-    $.ajax({
-        url:
-            window.CRM.root +
-            "/api/family/" +
-            window.CRM.currentFamily +
-            "/nav",
-        encode: true,
-        dataType: "json",
-    }).done(function (data) {
-        if (data["PreFamilyId"]) {
+    window.CRM.APIRequest({
+        path: `family/${window.CRM.currentFamily}/nav`,
+    }).then(function (data) {
+        if (data?.PreFamilyId) {
             $("#lastFamily").attr(
                 "href",
-                window.CRM.root + "/v2/family/" + data["PreFamilyId"],
+                `${window.CRM.root}/v2/family/${data.PreFamilyId}`,
             );
         } else {
             $("#lastFamily").addClass("hidden");
         }
-        if (data["NextFamilyId"]) {
+
+        if (data?.NextFamilyId) {
             $("#nextFamily").attr(
                 "href",
-                window.CRM.root + "/v2/family/" + data["NextFamilyId"],
+                `${window.CRM.root}/v2/family/${data.NextFamilyId}`,
             );
         } else {
             $("#nextFamily").addClass("hidden");
@@ -34,127 +29,99 @@ $(document).ready(function () {
     let selectedFamilyProperties = [];
     window.CRM.APIRequest({
         path: "people/properties/family",
-    }).done(function (data) {
-        masterFamilyProperties = data;
+    }).then(function (masterData) {
+        masterFamilyProperties = masterData;
 
         window.CRM.APIRequest({
-            path: "people/properties/family/" + window.CRM.currentFamily,
-        }).done(function (data) {
+            path: `people/properties/family/${window.CRM.currentFamily}`,
+        }).then(function (data) {
+            $("#family-property-loading").hide();
+
             if (masterFamilyProperties.length > data.length) {
-                $("#add-family-property").removeClass("hidden");
+                $("#add-family-property").show();
             }
 
-            $("#family-property-loading").addClass("hidden");
             if (data.length === 0) {
-                $("#family-property-no-data").removeClass("hidden");
+                $("#family-property-no-data").show();
             } else {
-                $("#family-property-table").removeClass("hidden");
+                $("#family-property-table").show();
                 $.each(data, function (key, prop) {
-                    let propId = prop.id;
-                    let editIcon = "";
-                    let deleteIcon = "";
-                    let propName = prop.name;
-                    let propVal = prop.value;
+                    let {
+                        id: propId,
+                        name: propName,
+                        value: propVal,
+                        allowEdit,
+                        allowDelete,
+                    } = prop;
                     selectedFamilyProperties.push(propId);
-                    if (prop.allowEdit) {
-                        editIcon =
-                            "<a href='" +
-                            window.CRM.root +
-                            "/PropertyAssign.php?FamilyID=" +
-                            window.CRM.currentFamily +
-                            "&PropertyID=" +
-                            propId +
-                            "'><button type='button' class='btn btn-xs btn-primary'><i class='fa fa-pen'></i></button></a>";
-                    }
-                    if (prop.allowDelete) {
-                        deleteIcon =
-                            "<div class='btn btn-xs btn-danger delete-property' data-property-id='" +
-                            propId +
-                            "' data-property-name='" +
-                            propName +
-                            "'><i class='fa fa-trash'></i></div>";
-                    }
 
-                    $("#family-property-table tr:last").after(
-                        "<tr><td>" +
-                            deleteIcon +
-                            " " +
-                            editIcon +
-                            "</td><td>" +
-                            propName +
-                            "</td><td>" +
-                            propVal +
-                            "</td></tr>",
+                    let editIcon = allowEdit
+                        ? `<a href="${window.CRM.root}/PropertyAssign.php?FamilyID=${window.CRM.currentFamily}&PropertyID=${propId}"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pen"></i></button></a>`
+                        : "";
+                    let deleteIcon = allowDelete
+                        ? `<div class="btn btn-xs btn-danger delete-property" data-property-id="${propId}" data-property-name="${propName}"><i class="fa fa-trash"></i></div>`
+                        : "";
+
+                    $("#family-property-table").append(
+                        `<tr><td>${deleteIcon} ${editIcon}</td><td>${propName}</td><td>${propVal}</td></tr>`,
                     );
                 });
-                $(".delete-property").click(function () {
-                    let propId = $(this).attr("data-property-id");
-                    bootbox.confirm({
-                        title: i18next.t("Family Property Unassignment"),
-                        message:
-                            i18next.t("Do you want to remove") +
-                            " " +
-                            $(this).attr("data-property-name") +
-                            " " +
-                            "property",
-                        locale: window.CRM.locale,
-                        callback: function (result) {
-                            if (result) {
-                                window.CRM.APIRequest({
-                                    path:
-                                        "people/properties/family/" +
-                                        window.CRM.currentFamily +
-                                        "/" +
-                                        propId,
-                                    method: "DELETE",
-                                }).done(function (data) {
-                                    location.reload();
-                                });
-                            }
-                        },
-                    });
-                });
+
+                $(".delete-property").on("click", deleteProperty);
             }
         });
     });
 
-    $("#add-family-property").click(function () {
-        let inputOptions = [];
-        $.each(masterFamilyProperties, function (index, masterProp) {
-            if ($.inArray(masterProp.ProId, selectedFamilyProperties) == -1) {
-                inputOptions.push({
-                    text: masterProp.ProName,
-                    value: masterProp.ProId,
-                });
-            }
-        });
+    $("#add-family-property").on("click", function () {
+        let inputOptions = masterFamilyProperties
+            .filter(
+                (masterProp) =>
+                    !selectedFamilyProperties.includes(masterProp.ProId),
+            )
+            .map(({ ProName: text, ProId: value }) => ({ text, value }));
+
         bootbox.prompt({
             title: i18next.t("Assign a New Property"),
             locale: window.CRM.locale,
             inputType: "select",
             inputOptions: inputOptions,
             callback: function (result) {
-                window.CRM.APIRequest({
-                    path:
-                        "people/properties/family/" +
-                        window.CRM.currentFamily +
-                        "/" +
-                        result,
-                    method: "POST",
-                }).done(function (data) {
-                    location.reload();
-                });
+                if (result) {
+                    window.CRM.APIRequest({
+                        path: `people/properties/family/${window.CRM.currentFamily}/${result}`,
+                        method: "POST",
+                    }).then(function () {
+                        location.reload();
+                    });
+                }
             },
         });
     });
 
-    var dataTableConfig = {
+    function deleteProperty() {
+        let propId = $(this).attr("data-property-id");
+        let propName = $(this).attr("data-property-name");
+
+        bootbox.confirm({
+            title: i18next.t("Family Property Unassignment"),
+            message: `${i18next.t("Do you want to remove")} ${propName} ${i18next.t("property")}`,
+            locale: window.CRM.locale,
+            callback: function (result) {
+                if (result) {
+                    window.CRM.APIRequest({
+                        path: `people/properties/family/${window.CRM.currentFamily}/${propId}`,
+                        method: "DELETE",
+                    }).then(function () {
+                        location.reload();
+                    });
+                }
+            },
+        });
+    }
+
+    let dataTableConfig = {
         ajax: {
-            url:
-                window.CRM.root +
-                "/api/payments/family/" +
-                window.CRM.currentFamily +
-                "/list",
+            url: `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list`,
             dataSrc: "data",
         },
         columns: [
@@ -248,30 +215,30 @@ $(document).ready(function () {
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $("#pledge-payment-v2-table").DataTable(dataTableConfig);
 
-    $("#onlineVerify").click(function () {
+    $("#onlineVerify").on("click", function () {
         window.CRM.APIRequest({
             method: "POST",
             path: "family/" + window.CRM.currentFamily + "/verify",
-        }).done(function () {
+        }).then(function () {
             $("#confirm-verify").modal("hide");
             showGlobalMessage(i18next.t("Verification email sent"), "success");
         });
     });
 
-    $("#verifyNow").click(function () {
+    $("#verifyNow").on("click", function () {
         window.CRM.APIRequest({
             method: "POST",
             path: "family/" + window.CRM.currentFamily + "/verify/now",
-        }).done(function () {
+        }).then(function () {
             $("#confirm-verify").modal("hide");
             showGlobalMessage(i18next.t("Verification recorded"), "success");
         });
     });
 
-    $("#verifyURL").click(function () {
+    $("#verifyURL").on("click", function () {
         window.CRM.APIRequest({
             path: "family/" + window.CRM.currentFamily + "/verify/url",
-        }).done(function (data) {
+        }).then(function (data) {
             $("#confirm-verify").modal("hide");
             bootbox.alert({
                 title: i18next.t("Verification URL"),
@@ -280,85 +247,60 @@ $(document).ready(function () {
         });
     });
 
-    $("#verifyDownloadPDF").click(function () {
+    $("#verifyDownloadPDF").on("click", function () {
         window.open(
-            window.CRM.root +
-                "/Reports/ConfirmReport.php?familyId=" +
-                window.CRM.currentFamily,
+            `${window.CRM.root}/Reports/ConfirmReport.php?familyId=${window.CRM.currentFamily}`,
             "_blank",
         );
         $("#confirm-verify").modal("hide");
     });
 
-    $("#AddFamilyToCart").click(function () {
+    $("#AddFamilyToCart").on("click", function () {
         window.CRM.cart.addFamily($(this).data("familyid"));
     });
 
     // Photos
-
-    $("#deletePhoto").click(function () {
+    $("#deletePhoto").on("click", function () {
         $.ajax({
             type: "DELETE",
-            url:
-                window.CRM.root +
-                "/api/family/" +
-                window.CRM.currentFamily +
-                "/photo",
+            url: `${window.CRM.root}/api/family/${window.CRM.currentFamily}/photo`,
             encode: true,
             dataType: "json",
-        }).done(function (data) {
+        }).then(function () {
             location.reload();
         });
     });
 
-    $("#view-larger-image-btn").click(function () {
+    $("#view-larger-image-btn").on("click", function () {
         bootbox.alert({
             title: i18next.t("Family Photo"),
             message:
                 '<img class="img-rounded img-responsive center-block" src="' +
-                window.CRM.root +
-                "/api/family/" +
-                window.CRM.currentFamily +
-                '/photo" />',
+                `${window.CRM.root}/api/family/${window.CRM.currentFamily}/photo` +
+                '"/>',
             backdrop: true,
         });
     });
 
-    $("#activateDeactivate").click(function () {
-        popupTitle =
-            window.CRM.currentActive == true
-                ? i18next.t("Confirm Deactivation")
-                : i18next.t("Confirm Activation");
-        if (window.CRM.currentActive == true) {
-            popupMessage =
-                i18next.t("Please confirm deactivation of family") +
-                ": " +
-                window.CRM.currentFamilyName;
-        } else {
-            popupMessage =
-                i18next.t("Please confirm activation of family") +
-                ": " +
-                window.CRM.currentFamilyName;
-        }
+    $("#activateDeactivate").on("click", function () {
+        let popupTitle = window.CRM.currentActive
+            ? i18next.t("Confirm Deactivation")
+            : i18next.t("Confirm Activation");
+        let popupMessage = window.CRM.currentActive
+            ? `${i18next.t("Please confirm deactivation of family")}: ${window.CRM.currentFamilyName}`
+            : `${i18next.t("Please confirm activation of family")}: ${window.CRM.currentFamilyName}`;
 
         bootbox.confirm({
             title: popupTitle,
-            message: '<p style="color: red">' + popupMessage + "</p>",
+            message: `<p style="color: red">${popupMessage}</p>`,
             callback: function (result) {
                 if (result) {
                     window.CRM.APIRequest({
                         method: "POST",
-                        path:
-                            "families/" +
-                            window.CRM.currentFamily +
-                            "/activate/" +
-                            !window.CRM.currentActive,
-                    }).done(function (data) {
-                        if (data.success == true) {
-                            window.location.href =
-                                window.CRM.root +
-                                "/v2/family/" +
-                                window.CRM.currentFamily;
+                        path: `families/${window.CRM.currentFamily}/activate/${!window.CRM.currentActive}`,
+                    }).then(function (data) {
+                        if (data.success) {
+                            window.location.href = `${window.CRM.root}/v2/family/${window.CRM.currentFamily}`;
                         }
                     });
                 }
@@ -366,71 +308,60 @@ $(document).ready(function () {
         });
     });
 
-    $("#ShowPledges").click(function () {
+    $("#ShowPledges").on("change", function () {
         updateUserSetting(
             "finance.show.pledges",
-            $("#ShowPledges").prop("checked") ? "true" : "false",
+            $(this).prop("checked") ? "true" : "false",
         );
     });
 
-    $("#ShowPayments").click(function () {
+    $("#ShowPayments").on("change", function () {
         updateUserSetting(
             "finance.show.payments",
-            $("#ShowPayments").prop("checked") ? "true" : "false",
+            $(this).prop("checked") ? "true" : "false",
         );
     });
 
-    $("#ShowSinceDate").change(function () {
-        updateUserSetting("finance.show.since", $("#ShowSinceDate").val());
+    $("#ShowSinceDate").on("change", function () {
+        updateUserSetting("finance.show.since", $(this).val());
     });
 
     function updateUserSetting(setting, value) {
         window.CRM.APIRequest({
             method: "POST",
-            path: "user/" + window.CRM.userId + "/setting/" + setting,
+            path: `user/${window.CRM.userId}/setting/${setting}`,
             dataType: "json",
             data: JSON.stringify({ value: value }),
-        }).done(function () {
+        }).then(function () {
             //TODO NOT WORKING $("#pledge-payment-table").DataTable().ajax.reload();
             window.location.reload();
         });
     }
 
     if (window.CRM.plugin.mailchimp) {
-        $.ajax({
+        window.CRM.APIRequest({
             type: "GET",
+            path: `mailchimp/family/${window.CRM.currentFamily}`,
             dataType: "json",
-            url:
-                window.CRM.root +
-                "/api/mailchimp/family/" +
-                window.CRM.currentFamily,
-            success: function (data, status, xmlHttpReq) {
-                for (emailData of data) {
-                    let htmlVal = "";
-                    let eamilMD5 = emailData["emailMD5"];
-                    for (list of emailData["list"]) {
-                        let listName = list["name"];
-                        let listStatus = list["status"];
-                        if (listStatus != 404) {
-                            let listOpenRate =
-                                list["stats"]["avg_open_rate"] * 100;
-                            htmlVal =
-                                htmlVal +
-                                listName +
-                                " (" +
-                                listStatus +
-                                ") - " +
-                                listOpenRate +
-                                "% " +
-                                i18next.t("open rate");
-                        }
+        }).then(function (data) {
+            for (let emailData of data) {
+                let htmlVal = "";
+                let emailMD5 = emailData["emailMD5"];
+                for (let list of emailData["list"]) {
+                    let {
+                        name: listName,
+                        status: listStatus,
+                        stats: { avg_open_rate: listOpenRate },
+                    } = list;
+                    if (listStatus !== 404) {
+                        htmlVal += `${listName} (${listStatus}) - ${listOpenRate * 100}% ${i18next.t("open rate")}`;
                     }
-                    if (htmlVal === "") {
-                        htmlVal = i18next.t("Not Subscribed ");
-                    }
-                    $("#" + eamilMD5).html(htmlVal);
                 }
-            },
+                if (htmlVal === "") {
+                    htmlVal = i18next.t("Not Subscribed");
+                }
+                $(`#${emailMD5}`).html(htmlVal);
+            }
         });
     }
 });
