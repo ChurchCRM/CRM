@@ -184,6 +184,16 @@
         "datePicker": true,
         "select2": true
     },
+    "Hindi - India": {
+        "poEditor": "hi",
+        "locale": "hi_IN",
+        "languageCode": "hi",
+        "countryCode": "IN",
+        "dataTables": "Hindi",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
     "Hungarian": {
         "poEditor": "hu",
         "locale": "hu_HU",
@@ -304,6 +314,17 @@
         "fullCalendar": true,
         "datePicker": true,
         "select2": true
+    },
+    "Tamil - India": {
+        "poEditor": "ta",
+        "locale": "ta_IN",
+        "languageCode": "ta",
+        "countryCode": "IN",
+        "dataTables": "Tamil",
+        "fullCalendar": true,
+        "fullCalendarLocale": "ta-in",
+        "datePicker": true,
+        "select2": false
     },
     "Thai": {
         "poEditor": "th",
