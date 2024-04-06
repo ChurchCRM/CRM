@@ -35,6 +35,9 @@ $birthDayMonthChartJSON = json_encode($birthDayMonthChartArray, JSON_THROW_ON_ER
 
 $genderChartArray = [];
 foreach ($sundaySchoolService->getKidsGender($iGroupId) as $gender => $kidsCount) {
+    if ($kidsCount === 0) {
+        continue;
+    }
     $genderChartArray[] = [
         'label' => gettext($gender),
         'data' => $kidsCount
@@ -168,12 +171,15 @@ require '../Include/Header.php';
       <!-- Bar chart -->
       <div class="card card-primary">
         <div class="card-header">
-          <i class="fa fa-chart-bar"></i>
-
           <h3 class="card-title"><?= gettext('Birthdays by Month') ?></h3>
+            <div class="card-tools">
+                <i class="fa fa-chart-bar"></i>
+            </div>
         </div>
         <div class="card-body">
-          <div class="disableSelection" id="bar-chart" style="width: 100%; height: 300px;"></div>
+          <div class="disableSelection">
+              <canvas id="bar-chart"></canvas>
+          </div>
         </div>
         <!-- /.box-body-->
       </div>
@@ -183,12 +189,13 @@ require '../Include/Header.php';
       <!-- Donut chart -->
       <div class="card card-primary">
         <div class="card-header">
-          <i class="fa fa-chart-bar"></i>
-
           <h3 class="card-title"><?= gettext('Gender') ?></h3>
+            <div class="card-tools">
+                <i class="fa fa-chart-bar"></i>
+            </div>
         </div>
         <div class="card-body">
-          <div id="donut-chart" style="width: 100%; height: 300px;"></div>
+          <canvas id="donut-chart"></canvas>
         </div>
         <!-- /.box-body-->
       </div>
@@ -331,29 +338,11 @@ function implodeUnique($array, $withQuotes): string
   <!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!-- JQUERY CANVAS WRAPPER for flot -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.canvaswrapper.js"></script>
-<!-- JQUERY COLOR HELPERS for flot -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.colorhelpers.js"></script>
-<!-- FLOT CHARTS -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.js"></script>
-<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.resize.js"></script>
-<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.pie.js"></script>
-<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.categories.js"></script>
-<!-- FLOT SATURATED PLUGIN -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.saturated.js"></script>
-<!-- FLOT BROWSER PLUGIN -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.browser.js"></script>
-<!-- FLOT DRAW SERIES PLUGIN -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.drawSeries.js"></script>
-<!-- FLOT UI CONSTANTS -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.uiConstants.js"></script>
+<!-- chartjs -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/chart.umd.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  $(document).ready(function () {
+  $(function () {
 
     var dataTable = $('.data-table').DataTable(window.CRM.plugin.dataTable);
 
@@ -373,74 +362,81 @@ function implodeUnique($array, $withQuotes): string
 
     var birthDateColumn = dataTable.column(':contains(Birth Date)');
 
-    var hideBirthDayFilter = function() {
-      plot.unhighlight();
+    function hideBirthDayFilter() {
       birthDateColumn
         .search('')
         .draw();
 
       birthDayFilter.hide();
-    };
+    }
 
     var birthDayFilter = $('.birthday-filter');
     var birthDayMonth = birthDayFilter.find('.month');
     birthDayFilter.find('i.fa-close')
       .bind('click', hideBirthDayFilter);
 
-    $("#bar-chart").bind("plotclick", function (event, pos, item) {
-      plot.unhighlight();
+    document.getElementById('bar-chart').onclick = function(event) {
+      var activePoints = barChart.getElementsAtEvent(event);
 
-      if (!item) {
-        hideBirthDayFilter();
-        return;
+      // If no active points, hide the filter and return
+      if (activePoints.length === 0) {
+          hideBirthDayFilter();
+          return;
       }
 
-      var month = bar_data.data[item.dataIndex][0];
+      var monthIndex = activePoints[0]._index;
+      var month = barChart.data.labels[monthIndex];
 
-      birthDateColumn
-        .search(month.substr(0, 3))
-        .draw();
-
+      // Update filter text
       birthDayMonth.text(month);
       birthDayFilter.show();
 
-      plot.highlight(item.series, item.datapoint);
-    });
+      // Highlight the selected bar
+      activePoints.forEach(function(point) {
+          // Apply highlight styling as needed
+          point.custom = point.custom || {};
+          point.custom.backgroundColor = 'red';
+      });
+
+      barChart.update();
+    };
   });
 
   /*
    * BAR CHART
    * ---------
    */
+  var barData = <?= $birthDayMonthChartJSON ?>;
+  var barLabels = barData.map(data => data[0]);
+  var barValues = barData.map(data => data[1]);
+  var maxBarValue = Math.max(...barValues);
 
-  var bar_data = {
-    data: <?= $birthDayMonthChartJSON ?>,
-    color: "#3c8dbc"
+  var barChartConfig = {
+      type: 'bar',
+      data: {
+          labels: barLabels,
+          datasets: [{
+              label: 'Birthdays by Month',
+              borderColor: '#3c8dbc',
+              backgroundColor: '#9ec5de',
+              borderWidth: 2,
+              data: barValues
+          }]
+      },
+      options: {
+        scales: {
+          y: {
+            max: maxBarValue + 1,
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1,
+            }
+          }
+        }
+      }
   };
 
- var plot = $.plot("#bar-chart", [bar_data], {
-    grid: {
-      borderWidth: 1,
-      borderColor: "#f3f3f3",
-      tickColor: "#f3f3f3",
-      hoverable:true,
-      clickable:true
-    },
-    series: {
-      bars: {
-        show: true,
-        barWidth: 0.5,
-        align: "center"
-      }
-    },
-    xaxis: {
-      mode: "categories",
-      tickLength: 0
-    },
-    yaxis: {
-      tickSize: 1
-    }
-  });
+  var barChart = new Chart(document.getElementById('bar-chart'), barChartConfig);
 
   /* END BAR CHART */
 
@@ -449,28 +445,27 @@ function implodeUnique($array, $withQuotes): string
    * -----------
    */
 
-  var donutData = <?=$genderChartJSON ?>;
+  var donutData = <?= $genderChartJSON ?>;
+  var donutLabels = donutData.map(data => data.label);
+  var donutValues = donutData.map(data => data.data);
 
-  $.plot("#donut-chart", donutData, {
-    series: {
-      pie: {
-        show: true,
-        radius: 1,
-        innerRadius: 0.5,
-        label: {
-          show: true,
-          radius: 2 / 3,
-          formatter: labelFormatter,
-          threshold: 0.1
-        }
-
+  var donutChartConfig = {
+      type: 'doughnut',
+      data: {
+          labels: donutLabels,
+          datasets: [{
+              data: donutValues,
+              backgroundColor: ['#3c8dbc', '#ff851b']
+          }]
+      },
+      options: {
+          legend: {
+              position: 'bottom'
+          }
       }
-    },
-    legend: {
-      show: false,
-      position: "sw",
-    }
-  });
+  };
+
+  var donutChart = new Chart(document.getElementById('donut-chart'), donutChartConfig);
   /*
    * END DONUT CHART
    */
