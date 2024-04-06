@@ -11,15 +11,21 @@ use ChurchCRM\model\ChurchCRM\KioskDevice;
 use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use ChurchCRM\Slim\Middleware\AuthMiddleware;
+use ChurchCRM\Slim\Middleware\VersionMiddleware;
 
 $container = new ContainerBuilder();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($rootPath . '/kiosk');
 
-if (SystemConfig::debugEnabled()) {
-    $app->addErrorMiddleware(true, true, true);
-}
+$app->add(VersionMiddleware::class);
+$app->add(AuthMiddleware::class);
+$app->addBodyParsingMiddleware();
+
+// Set up
+require __DIR__ . '/../Include/slim/error-handler.php';
+
 
 // Set up
 require __DIR__ . '/../Include/slim/error-handler.php';
