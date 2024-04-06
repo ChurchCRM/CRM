@@ -570,7 +570,7 @@ window.CRM.dashboard = {
             $("#translationInfo").html(
                 data.name + " [" + window.CRM.locale + "]",
             );
-            if (data.displayPerCompleted) {
+            if (data.displayPerCompleted && data.poPerComplete < 90) {
                 $("#translationPer").html(data.poPerComplete + "%");
                 $("#localePer").removeClass("hidden");
             }
