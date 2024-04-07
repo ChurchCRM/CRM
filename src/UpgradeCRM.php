@@ -235,6 +235,7 @@ Header_body_scripts();
 
  $("#applyUpdate").click(function(){
    $("#status3").html('<i class="fa fa-circle-notch fa-spin"></i>');
+   $("#updatePhase").slideUp();
    window.CRM.APIRequest({
       method : 'POST',
       path : 'systemupgrade/doupgrade',
@@ -244,7 +245,6 @@ Header_body_scripts();
       })
     }).done(function(data){
       $("#status3").html('<i class="fa fa-check" style="color:green"></i>');
-      $("#updatePhase").slideUp();
       $("#finalPhase").show("slow");
     });
  });
