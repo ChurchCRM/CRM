@@ -1093,11 +1093,8 @@ function validateCustomField($type, &$data, $col_Name, ?array &$aErrors): bool
     // Handler for 4-digit year
         case 6:
             if (strlen($data) != 0) {
-                if (!is_numeric($data) || strlen($data) != 4) {
+                if (!is_numeric($data) || strlen($data) != 4 || $data < 0) {
                     $aErrors[$col_Name] = gettext('Invalid Year');
-                    $bErrorFlag = true;
-                } elseif ($data < 0) {
-                    $aErrors[$col_Name] = gettext('Out of range: Allowable values > 0');
                     $bErrorFlag = true;
                 }
             }
