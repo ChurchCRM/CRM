@@ -1284,8 +1284,9 @@ msgid "First name must be entered"
 msgstr "Tên cần được nhập vào"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Năm không hợp lệ: giá trị cho phép là 1901 đến 2155"
+#, fuzzy
+msgid "Invalid Year: allowable values are 1801 to 2155"
+msgstr "Năm không hợp lệ: giá trị cho phép là 1801 đến 2155"
 
 #: 
 msgid "Invalid Birth Date."
@@ -3579,8 +3580,9 @@ msgid "Invalid Year"
 msgstr "Năm không hợp lệ"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Ngoài phạm vi: Giá trị cho phép là 1901 đến 2155"
+#, fuzzy
+msgid "Out of range: Allowable values are 1801 to 2155"
+msgstr "Ngoài phạm vi: Giá trị cho phép là 1801 đến 2155"
 
 #: 
 msgid "Invalid Number"

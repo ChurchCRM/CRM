@@ -1303,8 +1303,9 @@ msgid "First name must be entered"
 msgstr "Prenumele trebuie să fie introdus"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Anul invalid: Valorile admisibile sunt 1901-2155"
+#, fuzzy
+msgid "Invalid Year: allowable values are 1801 to 2155"
+msgstr "Anul invalid: Valorile admisibile sunt 1801-2155"
 
 #: 
 msgid "Invalid Birth Date."
@@ -3652,8 +3653,9 @@ msgid "Invalid Year"
 msgstr "Anul invalid"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Din gama: Valorile admisibile sunt 1901-2155"
+#, fuzzy
+msgid "Out of range: Allowable values are 1801 to 2155"
+msgstr "Din gama: Valorile admisibile sunt 1801-2155"
 
 #: 
 msgid "Invalid Number"

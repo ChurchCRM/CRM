@@ -1271,8 +1271,9 @@ msgid "First name must be entered"
 msgstr "Deve essere inserito un nome"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Fuori dall'intervallo: i valori permessi vanno da 1901 a 2155"
+#, fuzzy
+msgid "Invalid Year: allowable values are 1801 to 2155"
+msgstr "Fuori dall'intervallo: i valori permessi vanno da 1801 a 2155"
 
 #: 
 msgid "Invalid Birth Date."
@@ -3575,8 +3576,9 @@ msgid "Invalid Year"
 msgstr "Anno non valido"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Fuori dall'intervallo: i valori permessi vanno da 1901 a 2155"
+#, fuzzy
+msgid "Out of range: Allowable values are 1801 to 2155"
+msgstr "Fuori dall'intervallo: i valori permessi vanno da 1801 a 2155"
 
 #: 
 msgid "Invalid Number"
