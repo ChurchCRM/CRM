@@ -1269,11 +1269,6 @@ msgid "First name must be entered"
 msgstr "Voornaam moet ingetoetst worden"
 
 #: 
-#, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "Ongeldig Jaar: Geldige waardes zijn van 1801 tot 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Ongeldige Geboortedatum."
 
@@ -3570,11 +3565,6 @@ msgstr "Geen geldige Datum"
 #: 
 msgid "Invalid Year"
 msgstr "Ongeldig Jaar"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "Ongeldig: Jaar moet tussen 1801 en 2155 zijn"
 
 #: 
 msgid "Invalid Number"

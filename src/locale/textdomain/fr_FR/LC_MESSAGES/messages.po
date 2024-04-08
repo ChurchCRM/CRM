@@ -1272,11 +1272,6 @@ msgid "First name must be entered"
 msgstr "Le prénom doit être saisi"
 
 #: 
-#, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "Année invalide:  les valeurs doivent être comprise entre 1801 et 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Date de naissance invalide."
 
@@ -3567,11 +3562,6 @@ msgstr "Date invalide"
 #: 
 msgid "Invalid Year"
 msgstr "Année Invalide"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "Erreur:  les valeurs doivent être entre 1801 et 2155"
 
 #: 
 msgid "Invalid Number"

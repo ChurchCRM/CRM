@@ -1132,11 +1132,6 @@ msgid "First name must be entered"
 msgstr "Emri i parë duhet të lidhet"
 
 #: 
-#, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "Viti i pavlefshëm: Vlerat e lejuara janë 1801-2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Invalid Data e lindjes."
 
@@ -2955,11 +2950,6 @@ msgstr "Nuk është një datë e vlefshme"
 #: 
 msgid "Invalid Year"
 msgstr "Viti i pavlefshëm"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "Nga varg: Vlerat e lejuara janë 1801-2155"
 
 #: 
 msgid "Invalid Number"

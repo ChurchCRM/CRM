@@ -1266,11 +1266,6 @@ msgid "First name must be entered"
 msgstr "Ad girilmeli"
 
 #: 
-#, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "Geçersiz Yıl: İzin verilen değerler 1801 ila 2155'tir"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Geçersiz doğum tarihi."
 
@@ -3560,11 +3555,6 @@ msgstr "Geçerli bir tarih değil"
 #: 
 msgid "Invalid Year"
 msgstr "Geçersiz yıl"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "Aralık dışı: İzin verilen değerler 1801 ila 2155"
 
 #: 
 msgid "Invalid Number"

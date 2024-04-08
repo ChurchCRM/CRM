@@ -1301,11 +1301,6 @@ msgid "First name must be entered"
 msgstr "Имя должно быть введено"
 
 #: 
-#, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "Неверный Год: допустимые значения от 1801 до 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Недопустимая дата рождения."
 
@@ -3632,11 +3627,6 @@ msgstr "Не действует дата"
 #: 
 msgid "Invalid Year"
 msgstr "Неверный год"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "Вне диапазона: Допустимые значения от 1801 до 2155"
 
 #: 
 msgid "Invalid Number"

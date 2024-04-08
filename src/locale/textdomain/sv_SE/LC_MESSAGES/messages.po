@@ -1309,11 +1309,6 @@ msgid "First name must be entered"
 msgstr "Tilltalsnamn måste anges"
 
 #: 
-#, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "Ogiltig år: Måste vara mellan 1801 till 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Ogiltig födelsedatum."
 
@@ -3691,11 +3686,6 @@ msgstr "Ogiltig datum"
 #: 
 msgid "Invalid Year"
 msgstr "Ogiltig år"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "Utanför omfång: Tillåten värden är 1801 till 2155"
 
 #: 
 msgid "Invalid Number"

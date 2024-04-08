@@ -1243,11 +1243,6 @@ msgid "First name must be entered"
 msgstr "Fornavnet må skrives"
 
 #: 
-#, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "Ugyldig år: tillatte verdier er 1801-2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Ugyldig Fødselsdato."
 
@@ -3525,11 +3520,6 @@ msgstr "Ikke en gyldig dato"
 #: 
 msgid "Invalid Year"
 msgstr "Ugyldig år"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "Utenfor rekkevidde: Tillatte verdier er 1801-2155"
 
 #: 
 msgid "Invalid Number"

@@ -1268,11 +1268,6 @@ msgid "First name must be entered"
 msgstr "የመጀመሪያ ስም መግባት አለበት።"
 
 #: 
-#, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "ልክ ያልሆነ ዓመት፡ የሚፈቀዱ እሴቶች ከ1801 እስከ 2155 ናቸው።"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "ልክ ያልሆነ የልደት ቀን።"
 
@@ -3562,11 +3557,6 @@ msgstr "የሚሰራ ቀን አይደለም"
 #: 
 msgid "Invalid Year"
 msgstr "ልክ ያልሆነ ዓመት"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "ከክልል ውጪ፡ የሚፈቀዱ እሴቶች ከ1801 እስከ 2155 ናቸው"
 
 #: 
 msgid "Invalid Number"

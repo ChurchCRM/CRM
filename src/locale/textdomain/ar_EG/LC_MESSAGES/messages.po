@@ -1267,11 +1267,6 @@ msgid "First name must be entered"
 msgstr "يجب ادخال الاسم الاول"
 
 #: 
-#, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "السنة غير صحيحة : القيمة المسموحة من 1801 حتى 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "تاريخ الميلاد غير صحيح"
 
@@ -3561,11 +3556,6 @@ msgstr "تاريخ غير صحيح"
 #: 
 msgid "Invalid Year"
 msgstr "السنة غير صحيحة"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "خارج النطاق: القيم المسموح بها هي 1801-2155"
 
 #: 
 msgid "Invalid Number"

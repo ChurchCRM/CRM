@@ -1542,11 +1542,6 @@ msgstr "Primeiro nome deve ser inserido"
 
 #: 
 #, fuzzy
-msgid "Invalid Year: allowable values are 1801 to 2155"
-msgstr "Ano inválido: valores permitidos vão de 1801 a 2155"
-
-#: 
-#, fuzzy
 msgid "Invalid Birth Date."
 msgstr "Data de nascimento inválida."
 
@@ -4303,11 +4298,6 @@ msgstr "Não é uma data válida"
 #, fuzzy
 msgid "Invalid Year"
 msgstr "Ano inválido"
-
-#: 
-#, fuzzy
-msgid "Out of range: Allowable values are 1801 to 2155"
-msgstr "Fora do intervalo: Os valores permitidos são 1801-2155"
 
 #: 
 #, fuzzy
