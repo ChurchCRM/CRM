@@ -208,7 +208,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $bErrorFlag = true;
         } elseif ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0)) {
             if ($aBirthYears[$iCount] < 0) {
-                $aBirthDateError[$iCount] = gettext('Invalid Year: allowable values are > 0');
+                $aBirthDateError[$iCount] = gettext('Invalid Year');
                 $bErrorFlag = true;
             } elseif ($aBirthMonths[$iCount] > 0 && $aBirthDays[$iCount] > 0) {
                 if (!checkdate($aBirthMonths[$iCount], $aBirthDays[$iCount], $aBirthYears[$iCount])) {

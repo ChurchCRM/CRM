@@ -222,7 +222,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iBirthYear == 0) { // If zero set to NULL
             $iBirthYear = null;
         } elseif ($iBirthYear < 0) {
-            $sBirthYearError = gettext('Invalid Year: allowable values are > 0');
+            $sBirthYearError = gettext('Invalid Year');
             $bErrorFlag = true;
         } elseif ($iBirthMonth > 0 && $iBirthDay > 0) {
             if (!checkdate($iBirthMonth, $iBirthDay, $iBirthYear)) {
