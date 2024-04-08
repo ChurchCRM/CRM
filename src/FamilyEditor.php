@@ -207,8 +207,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $aBirthDateError[$iCount] = gettext('Invalid Birth Date: Missing birth month and day.');
             $bErrorFlag = true;
         } elseif ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0)) {
-            if (($aBirthYears[$iCount] > 2155) || ($aBirthYears[$iCount] < 1801)) {
-                $aBirthDateError[$iCount] = gettext('Invalid Year: allowable values are 1801 to 2155');
+            if ($aBirthYears[$iCount] < 0) {
+                $aBirthDateError[$iCount] = gettext('Invalid Year: allowable values are > 0');
                 $bErrorFlag = true;
             } elseif ($aBirthMonths[$iCount] > 0 && $aBirthDays[$iCount] > 0) {
                 if (!checkdate($aBirthMonths[$iCount], $aBirthDays[$iCount], $aBirthYears[$iCount])) {

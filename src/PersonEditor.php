@@ -221,8 +221,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     } elseif (strlen($iBirthYear) > 0) {
         if ($iBirthYear == 0) { // If zero set to NULL
             $iBirthYear = null;
-        } elseif ($iBirthYear > 2155 || $iBirthYear < 1801) {
-            $sBirthYearError = gettext('Invalid Year: allowable values are 1801 to 2155');
+        } elseif ($iBirthYear < 0) {
+            $sBirthYearError = gettext('Invalid Year: allowable values are > 0');
             $bErrorFlag = true;
         } elseif ($iBirthMonth > 0 && $iBirthDay > 0) {
             if (!checkdate($iBirthMonth, $iBirthDay, $iBirthYear)) {
