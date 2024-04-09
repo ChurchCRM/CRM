@@ -1266,10 +1266,6 @@ msgid "First name must be entered"
 msgstr "Voornaam moet ingevul word"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Ongeldige jaar: toelaatbare waardes is 1901 tot 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Ongeldige geboortedatum."
 
@@ -3559,10 +3555,6 @@ msgstr "Nie 'n geldige datum nie"
 #: 
 msgid "Invalid Year"
 msgstr "Ongeldige jaar"
-
-#: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Buite die omvang: Toelaatbare waardes is 1901 tot 2155"
 
 #: 
 msgid "Invalid Number"

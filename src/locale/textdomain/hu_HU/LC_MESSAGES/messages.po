@@ -1171,10 +1171,6 @@ msgid "First name must be entered"
 msgstr "Először nevet kell beírni"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Érvénytelen év: megengedett értékek 1901-2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Érvénytelen Születési dátum."
 
@@ -3075,10 +3071,6 @@ msgstr "Nem érvényes dátum"
 #: 
 msgid "Invalid Year"
 msgstr "Érvénytelen év"
-
-#: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Out of tartomány: megengedett értékek 1901-2155"
 
 #: 
 msgid "Invalid Number"
