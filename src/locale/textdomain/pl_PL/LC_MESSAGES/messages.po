@@ -1231,10 +1231,6 @@ msgid "First name must be entered"
 msgstr "Musisz podać Imię"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Niepoprawny Rok: dopuszczalny przedział to 1901 - 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Nieprawidłowa Data Urodzenia."
 
@@ -3502,10 +3498,6 @@ msgstr "Nie prawidłowa Data"
 #: 
 msgid "Invalid Year"
 msgstr "Nie poprawny Rok"
-
-#: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Dopuszczalny przedział to 1901 do 2155"
 
 #: 
 msgid "Invalid Number"
