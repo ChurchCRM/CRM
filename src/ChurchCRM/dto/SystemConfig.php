@@ -209,7 +209,7 @@ class SystemConfig
             'bEnableLostPassword'                  => new ConfigItem(2004, 'bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem(2013, 'sChurchWebSite', 'text', '', gettext("Your Church's Website")),
             'sChurchFB'                            => new ConfigItem(2014, 'sChurchFB', 'text', '', gettext("Your Church's Facebook Page")),
-            'sChurchTwitter'                       => new ConfigItem(2015, 'sChurchTwitter', 'text', '', gettext("Your Church's Twitter Page")),
+            'sChurchTwitter'                       => new ConfigItem(2015, 'sChurchTwitter', 'text', '', gettext("Your Church's X Page")),
             'bEnableGooglePhotos'                  => new ConfigItem(2016, 'bEnableGooglePhotos', 'boolean', '1', gettext('lookup user images on Google when no local image is present')),
             'sNewPersonNotificationRecipientIDs'   => new ConfigItem(2018, 'sNewPersonNotificationRecipientIDs', 'text', '', gettext('Comma Separated list of PersonIDs of people to notify when a new family or person is added')),
             'bEnableExternalCalendarAPI'           => new ConfigItem(2017, 'bEnableExternalCalendarAPI', 'boolean', '0', gettext('Allow unauthenticated reads of events from the external calendar API')),

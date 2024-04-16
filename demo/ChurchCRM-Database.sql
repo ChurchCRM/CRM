@@ -1655,7 +1655,7 @@ CREATE TABLE `person_per` (
   `per_WorkEmail` varchar(50) DEFAULT NULL,
   `per_BirthMonth` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `per_BirthDay` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `per_BirthYear` year(4) DEFAULT NULL,
+  `per_BirthYear` smallint(4) unsigned DEFAULT NULL,
   `per_MembershipDate` date DEFAULT NULL,
   `per_Gender` tinyint(1) unsigned NOT NULL DEFAULT 0,
   `per_fmr_ID` tinyint(3) unsigned NOT NULL DEFAULT 0,

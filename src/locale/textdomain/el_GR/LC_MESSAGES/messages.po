@@ -1266,10 +1266,6 @@ msgid "First name must be entered"
 msgstr "Πρέπει να εισαχθεί το όνομα"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Μη έγκυρο έτος: οι επιτρεπόμενες τιμές είναι 1901 έως 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Μη έγκυρη ημερομηνία γέννησης."
 
@@ -3555,10 +3551,6 @@ msgstr "Δεν είναι έγκυρη ημερομηνία"
 #: 
 msgid "Invalid Year"
 msgstr "Μη έγκυρο έτος"
-
-#: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Εκτός εύρους: Οι επιτρεπόμενες τιμές είναι 1901 έως 2155"
 
 #: 
 msgid "Invalid Number"

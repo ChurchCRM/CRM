@@ -1267,10 +1267,6 @@ msgid "First name must be entered"
 msgstr "Eesnimi tuleb sisestada"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Vale aasta: lubatud väärtused on vahemikus 1901 kuni 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Vale sünniaeg."
 
@@ -3560,10 +3556,6 @@ msgstr "Pole kehtiv kuupäev"
 #: 
 msgid "Invalid Year"
 msgstr "Kehtetu aasta"
-
-#: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Väljaspool vahemikku: lubatud väärtused on vahemikus 1901 kuni 2155"
 
 #: 
 msgid "Invalid Number"
