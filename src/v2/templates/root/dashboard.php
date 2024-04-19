@@ -88,7 +88,9 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div><!-- ./col -->
         <?php
-    } ?>
+    }
+    if ($eventsEnabled) {
+    ?>
     <div class="col-lg-2 col-xs-4">
         <!-- small box -->
         <div class="small-box bg-yellow">
@@ -108,6 +110,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </a>
         </div>
     </div><!-- ./col -->
+    <?php
+    } ?>
 </div><!-- /.row -->
 
 <div class="row">

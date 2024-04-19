@@ -50,6 +50,7 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         'dashboardCounts'     => $dashboardCounts,
         'sundaySchoolEnabled' => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
         'depositEnabled'      => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),
+        'eventsEnabled'       => SystemConfig::getBooleanValue('bEnabledEvents'),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
