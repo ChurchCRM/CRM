@@ -59,7 +59,7 @@ class Menu
 
     private static function getPeopleMenu(): MenuItem
     {
-        $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-users');
+        $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-user');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'PeopleDashboard.php'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Person'), 'PersonEditor.php', AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()));
         $peopleMenu->addSubMenu(new MenuItem(gettext('View Active People'), 'v2/people'));
@@ -84,7 +84,7 @@ class Menu
 
     private static function getGroupMenu(): MenuItem
     {
-        $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-tag');
+        $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
         $groupMenu->addSubMenu(new MenuItem(gettext('List Groups'), 'GroupList.php'));
 
         $listOptions = ListOptionQuery::Create()->filterById(3)->orderByOptionSequence()->find();
@@ -115,7 +115,7 @@ class Menu
 
     private static function getSundaySchoolMenu(): MenuItem
     {
-        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-child');
+        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-children');
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'sundayschool/SundaySchoolDashboard.php'));
         // now we're searching the unclassified groups
         $tmpMenu = self::addGroupSubMenus(gettext('Classes'), 4, 'sundayschool/SundaySchoolClassView.php?groupId=');

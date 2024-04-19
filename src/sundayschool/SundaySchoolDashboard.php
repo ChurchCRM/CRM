@@ -58,7 +58,7 @@ require '../Include/Header.php';
         class="fa fa-file-pdf"></i><?= gettext('Reports'); ?></a>
     <a href="SundaySchoolClassListExport.php" class="btn btn-app"
        title="<?= gettext('Export All Classes, Kids, and Parent to CSV file'); ?>"><i
-        class="fa fa-file-excel"></i><?= gettext('Export to CSV') ?></a><br/>
+        class="fa fa-file-csv"></i><?= gettext('Export to CSV') ?></a><br/>
   </div>
 </div>
 <!-- Small boxes (Stat box) -->
@@ -89,7 +89,7 @@ require '../Include/Header.php';
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-orange"><i class="fa fa-child"></i></span>
+      <span class="info-box-icon bg-orange"><i class="fa fa-children"></i></span>
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Students') ?></span>
         <span class="info-box-number"> <?= $kids ?></span>
@@ -100,7 +100,7 @@ require '../Include/Header.php';
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-gray"><i class="fa fa-user"></i></span>
+      <span class="info-box-icon bg-gray"><i class="fa fa-people-roof"></i></span>
 
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Families') ?></span>
@@ -112,7 +112,7 @@ require '../Include/Header.php';
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-blue"><i class="fa fa-male"></i></span>
+      <span class="info-box-icon bg-blue"><i class="fa fa-child"></i></span>
 
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Boys') ?></span>
@@ -124,7 +124,7 @@ require '../Include/Header.php';
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-fuchsia"><i class="fa fa-female"></i></span>
+      <span class="info-box-icon bg-fuchsia"><i class="fa fa-child-dress"></i></span>
 
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Girls') ?></span>
