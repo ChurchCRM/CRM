@@ -28,8 +28,10 @@ class MenuRenderer
             <a href="<?= $menuItem->getURI() ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?> class="nav-link">
                 <i class='nav-icon fa <?= $menuItem->getIcon() ?>'></i>
                 <p>
-                    <?= $menuItem->getName() ?>
-                    <?php self::renderMenuCounters($menuItem) ?>
+                    <span><?= $menuItem->getName() ?></span>
+                    <span class="right">
+                        <?php self::renderMenuCounters($menuItem) ?>
+                    </span>
                 </p>
             </a>
         </li>
@@ -70,7 +72,7 @@ class MenuRenderer
             ?>
 
                 <?php foreach ($menuItem->getCounters() as $counter) { ?>
-                    <small class='right badge <?= $counter->getCss() ?>'
+                    <small class='badge <?= $counter->getCss() ?>'
                            id='<?= $counter->getName() ?>'><?= $counter->getInitValue() ?></small>
                 <?php } ?>
 
