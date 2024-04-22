@@ -214,9 +214,13 @@ class AppIntegrityService
             }
             $logger->debug("Apache mod_rewrite check status: $check");
             if (empty($check)) {
-                if (!empty(shell_exec('/usr/sbin/apachectl -M | grep rewrite'))) {
-                    $logger->debug('Found rewrite module enabled using apachectl');
-                    $check = true;
+                try {
+                    if (!empty(shell_exec('/usr/sbin/apachectl -M | grep rewrite'))) {
+                        $logger->debug('Found rewrite module enabled using apachectl');
+                        $check = true;
+                    }
+                } catch (\Throwable) {
+                    // do nothing
                 }
             }
         } else {
