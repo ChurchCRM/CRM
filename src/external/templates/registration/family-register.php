@@ -59,7 +59,7 @@ if (!empty($sHeader)) {
                 <div class="form-group has-feedback">
                     <div class="row">
                         <div class="col-lg-3">
-                            <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" required>
+                            <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" required value="<?= SystemConfig::getValue('sDefaultZip') ?>">
                         </div>
                         <div class="col-lg-9">
                             <select id="familyCountry" name="familyCountry" class="form-control select2" data-system-default="<?= SystemConfig::getValue('sDefaultCountry')?>">
