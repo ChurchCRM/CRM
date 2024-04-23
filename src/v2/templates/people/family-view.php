@@ -148,7 +148,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
                             <?php
                             if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
-                                <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
+                                <li><i class="fa-li fa fa-newspaper"></i><?= gettext("Send Newsletter") ?>:
                                     <span style="color:<?= ($family->isSendNewsletter() ? "green" : "red") ?>"><i
                                             class="fa fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                                 </li>

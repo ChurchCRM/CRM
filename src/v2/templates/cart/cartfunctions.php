@@ -12,22 +12,22 @@ use ChurchCRM\dto\SystemURLs;
     <a href="#" id="emptyCart" class="btn btn-app emptyCart"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
         ?>
-      <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
+      <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('Empty Cart to Group') ?></a>
         <?php
     }
     if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
         ?>
       <a href="<?= SystemURLs::getRootPath() . "/CartToFamily.php"?>" class="btn btn-app"><i
-          class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
+          class="fa fa-people-roof"></i><?= gettext('Empty Cart to Family') ?></a>
     <?php }
     ?>
     <a href="<?= SystemURLs::getRootPath() . "/CartToEvent.php"?>" class="btn btn-app"><i
-        class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
+        class="fa fa-ticket-alt"></i><?= gettext('Empty Cart to Event') ?></a>
 
     <?php if (AuthenticationManager::getCurrentUser()->isCSVExport()) {
         ?>
       <a href="<?= SystemURLs::getRootPath() . "/CSVExport.php?Source=cart" ?>" class="btn btn-app"><i
-          class="fa fa-file-excel"></i><?= gettext('CSV Export') ?></a>
+          class="fa fa-file-csv"></i><?= gettext('CSV Export') ?></a>
     <?php }
     ?>
     <a href="<?= SystemURLs::getRootPath() . "/MapUsingGoogle.php?GroupID=0"?>" class="btn btn-app"><i
