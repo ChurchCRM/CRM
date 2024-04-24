@@ -36,6 +36,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
             $searchLikeString = '%' . $SearchQuery . '%';
             $people = PersonQuery::create()->
                 filterByFirstName($searchLikeString, Criteria::LIKE)->
+                _or()->filterByMiddleName($searchLikeString, Criteria::LIKE)->
                 _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
                 _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
                 _or()->filterByWorkEmail($searchLikeString, Criteria::LIKE)->
