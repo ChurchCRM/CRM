@@ -22,7 +22,6 @@ HEREDOC;
 
         $db_server = $localDBEnv['server'];
         $db_port = $localDBEnv['port'];
-
         $db_name = $localDBEnv['database'];
         $db_username = $localDBEnv['user'];
         $db_password = $localDBEnv['password'];
@@ -72,28 +71,28 @@ SQL;
         $stringFile = $stringsDir . DIRECTORY_SEPARATOR . 'settings-countries.php';
         require '../src/ChurchCRM/data/Countries.php';
         require '../src/ChurchCRM/data/Country.php';
-        
+
         file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
-        
+
         foreach (ChurchCRM\data\Countries::getNames() as $country) {
             file_put_contents($stringFile, 'gettext("' . addslashes($country) . '");\r\n', FILE_APPEND);
         }
-        
+
         file_put_contents($stringFile, "\r\n?>" . "\r\n", FILE_APPEND);
 
         // Create and populate settings-locales.php
         $stringFile = $stringsDir . DIRECTORY_SEPARATOR . 'settings-locales.php';
         file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
-        
+
         $localesFile = file_get_contents(implode(DIRECTORY_SEPARATOR, ['..', 'src', 'locale', 'locales.json']));
         $locales = json_decode($localesFile, true);
         
         foreach ($locales as $key => $value) {
             file_put_contents($stringFile, 'gettext("' . $key . '");\r\n', FILE_APPEND);
         }
-        
+
         file_put_contents($stringFile, "\r\n?>" . "\r\n", FILE_APPEND);
-        
+
         echo $stringFile . ' updated' . PHP_EOL;
     }
 } else {
