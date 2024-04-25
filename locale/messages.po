@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-08 12:53-0700\n"
+"POT-Creation-Date: 2024-04-25 11:41-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-04-08T19:41:49.594Z\n"
-"PO-Revision-Date: 2024-04-08T19:41:49.595Z\n"
+"POT-Creation-Date: 2024-04-25T18:41:57.240Z\n"
+"PO-Revision-Date: 2024-04-25T18:41:57.241Z\n"
 "Language: en\n"
 
 msgid "Backup Database"
@@ -5781,13 +5781,13 @@ msgstr ""
 msgid "Missing pledges"
 msgstr ""
 
-msgid "Credit Card People"
-msgstr ""
-
 msgid "Family Pledge by Fiscal Year"
 msgstr ""
 
 msgid "CustomSearch"
+msgstr ""
+
+msgid "Missing people"
 msgstr ""
 
 msgid "Returns each family and the total number of people assigned to them."
@@ -5840,9 +5840,6 @@ msgstr ""
 msgid "Find people who pledged one year but not another"
 msgstr ""
 
-msgid "People who are configured to pay by credit card."
-msgstr ""
-
 msgid ""
 "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr ""
@@ -5851,6 +5848,9 @@ msgid "Find volunteers for who match two specific opportunity codes"
 msgstr ""
 
 msgid "Find people with a custom field value"
+msgstr ""
+
+msgid "Find people who didn't attend an event"
 msgstr ""
 
 msgid "Zip Code"
@@ -5866,21 +5866,6 @@ msgid "2014/2015"
 msgstr ""
 
 msgid "2015/2016"
-msgstr ""
-
-msgid "WorkEmail"
-msgstr ""
-
-msgid "Regular Attender"
-msgstr ""
-
-msgid "Guest"
-msgstr ""
-
-msgid "Non-Attender"
-msgstr ""
-
-msgid "Non-Attender (staff)"
 msgstr ""
 
 msgid "2016/2017"
@@ -5902,6 +5887,21 @@ msgid "2021/2022"
 msgstr ""
 
 msgid "2022/2023"
+msgstr ""
+
+msgid "WorkEmail"
+msgstr ""
+
+msgid "Regular Attender"
+msgstr ""
+
+msgid "Guest"
+msgstr ""
+
+msgid "Non-Attender"
+msgstr ""
+
+msgid "Non-Attender (staff)"
 msgstr ""
 
 msgid "Minimum Age"
@@ -5941,6 +5941,9 @@ msgid "Custom field"
 msgstr ""
 
 msgid "Field value"
+msgstr ""
+
+msgid "Event"
 msgstr ""
 
 msgid "The minimum age for which you want records returned."
@@ -6027,6 +6030,9 @@ msgid "Choose customer person field"
 msgstr ""
 
 msgid "Match custom field to this value"
+msgstr ""
+
+msgid "Select the desired event"
 msgstr ""
 
 msgid "Afghanistan (‫افغانستان‬‎)"
