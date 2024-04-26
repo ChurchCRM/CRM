@@ -11292,16 +11292,6 @@ msgstr "Ajude a traduzir este projeto"
 
 #: 
 #, fuzzy
-msgid "Credit Card People"
-msgstr "Pessoas com cartão de crédito"
-
-#: 
-#, fuzzy
-msgid "People who are configured to pay by credit card."
-msgstr "Pessoas que configuraram pagamento por cartão de crédito"
-
-#: 
-#, fuzzy
 msgid "Afrikaans"
 msgstr "Africanos"
 
