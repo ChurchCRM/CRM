@@ -45,9 +45,11 @@ class MenuRenderer
             <a href="#" class="nav-link">
                 <i class="nav-icon fa <?= $menuItem->getIcon() ?>"></i>
                 <p>
-                    <b><?= $menuItem->getName() ?></b>
-                    <?php self::renderMenuCounters($menuItem) ?>
-                    <i class="right fas fa-angle-left"></i>
+                    <span><?= $menuItem->getName() ?></span>
+                    <span class="right">
+                        <?php self::renderMenuCounters($menuItem) ?>
+                        <i class="fas fa-angle-left"></i>
+                    </span>
                 </p>
             </a>
             <ul class="nav nav-treeview">

@@ -9231,14 +9231,6 @@ msgid "Help translate this project"
 msgstr "ይህንን ፕሮጀክት ለመተርጎም ያግዙ"
 
 #: 
-msgid "Credit Card People"
-msgstr "ኤቲኤም ተጠቃሚዎች"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "በኤቲኤም ለመክፈል የተዋቀሩ ሰዎች"
-
-#: 
 msgid "Afrikaans"
 msgstr "\n"
 "አፍሪካንስ"
