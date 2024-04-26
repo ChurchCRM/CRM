@@ -9310,14 +9310,6 @@ msgid "Help translate this project"
 msgstr "Ajutați la traducerea acestui proiect"
 
 #: 
-msgid "Credit Card People"
-msgstr "Persoane cu Card de Credit"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Persoanele care sunt configurate să plătească cu card de credit"
-
-#: 
 msgid "Afrikaans"
 msgstr "Africană"
 
