@@ -553,7 +553,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sAddress2 = '';
         $sCity = SystemConfig::getValue('sDefaultCity');
         $sState = SystemConfig::getValue('sDefaultState');
-        $sZip = '';
+        $sZip = SystemConfig::getValue('sDefaultZip');
         $sCountry = SystemConfig::getValue('sDefaultCountry');
         $sHomePhone = '';
         $sWorkPhone = '';

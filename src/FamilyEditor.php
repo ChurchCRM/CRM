@@ -531,6 +531,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sCity = SystemConfig::getValue('sDefaultCity');
         $sCountry = SystemConfig::getValue('sDefaultCountry');
         $sState = SystemConfig::getValue('sDefaultState');
+        $sZip = SystemConfig::getValue('sDefaultZip');
         $iClassification = '0';
         $iFamilyMemberRows = 6;
         $bOkToCanvass = 1;
@@ -539,7 +540,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sName = '';
         $sAddress1 = '';
         $sAddress2 = '';
-        $sZip = '';
         $sHomePhone = '';
         $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
         $sWorkPhone = '';
