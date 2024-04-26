@@ -9315,14 +9315,6 @@ msgid "Help translate this project"
 msgstr "帮助翻译这个项目"
 
 #: 
-msgid "Credit Card People"
-msgstr "信用卡人"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置为通过信用卡付款的人。"
-
-#: 
 msgid "Afrikaans"
 msgstr "南非语"
 

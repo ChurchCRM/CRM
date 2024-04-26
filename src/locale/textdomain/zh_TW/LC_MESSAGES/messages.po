@@ -9518,16 +9518,6 @@ msgstr "幫助翻譯此專案"
 
 #: 
 #, fuzzy
-msgid "Credit Card People"
-msgstr "信用卡人"
-
-#: 
-#, fuzzy
-msgid "People who are configured to pay by credit card."
-msgstr "配置為通過信用卡付款的人。"
-
-#: 
-#, fuzzy
 msgid "Afrikaans"
 msgstr "南非語"
 
