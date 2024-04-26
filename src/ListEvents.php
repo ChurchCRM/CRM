@@ -115,7 +115,7 @@ if ($eType === 'All') {
 }
 $rsOpps = RunQuery($sSQL);
 $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-@extract($aRow); // @ needed to suppress error messages when no church events
+if ($aRow != null) extract($aRow);
 $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
 for ($r = 1; $r <= $numRows; $r++) {

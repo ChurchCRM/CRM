@@ -9216,14 +9216,6 @@ msgid "Help translate this project"
 msgstr "Giúp dịch dự án này"
 
 #: 
-msgid "Credit Card People"
-msgstr "Người có thẻ tín dụng"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Những người được định cấu hình để thanh toán bằng thẻ tín dụng."
-
-#: 
 msgid "Afrikaans"
 msgstr "Người Afrikaans"
 
