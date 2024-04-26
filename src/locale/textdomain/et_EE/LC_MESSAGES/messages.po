@@ -9210,14 +9210,6 @@ msgid "Help translate this project"
 msgstr "Aidake seda projekti tõlkida"
 
 #: 
-msgid "Credit Card People"
-msgstr "Krediitkaardiga inimesed"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Inimesed, kes on seadistatud maksma krediitkaardiga."
-
-#: 
 msgid "Afrikaans"
 msgstr "afrikaani keel"
 

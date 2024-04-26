@@ -9196,14 +9196,6 @@ msgid "Help translate this project"
 msgstr "Допоможіть перекласти цей проект"
 
 #: 
-msgid "Credit Card People"
-msgstr "Кредитні картки людей"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Люди, які налаштовані платити кредитною карткою."
-
-#: 
 msgid "Afrikaans"
 msgstr "Африкаанс"
 
