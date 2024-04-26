@@ -15,6 +15,7 @@ class PersonService
         $searchLikeString = '%' . $searchTerm . '%';
         $people = PersonQuery::create()->
         filterByFirstName($searchLikeString, Criteria::LIKE)->
+        _or()->filterByMiddleName($searchLikeString, Criteria::LIKE)->
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
         _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
         limit(15)->find();
