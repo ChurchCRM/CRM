@@ -1,9 +1,9 @@
 -- mysqldump-php https://github.com/ifsnop/mysqldump-php
 --
--- Host: database	Database: churchcrm
+-- Host: localhost	Database: churchcrm
 -- ------------------------------------------------------
--- Server version 	11.2.2-MariaDB-1:11.2.2+maria~ubu2204
--- Date: Thu, 25 Apr 2024 14:52:11 -0400
+-- Server version 	11.3.2-MariaDB
+-- Date: Fri, 26 Apr 2024 13:38:02 +0000
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -485,7 +485,6 @@ CREATE TABLE `events_event` (
   `event_start` datetime NOT NULL,
   `event_end` datetime NOT NULL,
   `inactive` int(1) NOT NULL DEFAULT 0,
-  `event_typename` varchar(40) NOT NULL DEFAULT '',
   `location_id` int(11) DEFAULT NULL,
   `secondary_contact_person_id` int(11) DEFAULT NULL,
   `primary_contact_person_id` int(11) DEFAULT NULL,
@@ -501,7 +500,7 @@ CREATE TABLE `events_event` (
 LOCK TABLES `events_event` WRITE;
 /*!40000 ALTER TABLE `events_event` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `events_event` VALUES (1,2,'Sunday School Class Changes','This is when the students move to new classes','','2016-11-20 12:30:00','2016-11-20 13:30:00',0,'Sunday School',NULL,NULL,NULL,NULL),(2,1,'Christmas Service','christmas service','','2016-12-24 22:30:00','2016-12-25 01:30:00',0,'Church Service',NULL,NULL,NULL,NULL),(3,2,'Summer Camp','Summer Camp','','2017-06-06 09:30:00','2017-06-11 09:30:00',0,'Sunday School',NULL,NULL,NULL,NULL);
+INSERT INTO `events_event` VALUES (1,2,'Sunday School Class Changes','This is when the students move to new classes','','2016-11-20 12:30:00','2016-11-20 13:30:00',0,NULL,NULL,NULL,NULL),(2,1,'Christmas Service','christmas service','','2016-12-24 22:30:00','2016-12-25 01:30:00',0,NULL,NULL,NULL,NULL),(3,2,'Summer Camp','Summer Camp','','2017-06-06 09:30:00','2017-06-11 09:30:00',0,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `events_event` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -2376,4 +2375,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Thu, 25 Apr 2024 14:52:12 -0400
+-- Dump completed on: Fri, 26 Apr 2024 13:38:02 +0000
