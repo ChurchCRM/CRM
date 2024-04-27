@@ -26,11 +26,11 @@ if ($sAction == 'Delete') {
 }
 // Construct the form
 ?>
-<div class='box'>
-  <div class='box-header'>
-    <h3 class='box-title'><?= gettext('Attendees for Event ID:') . ' ' . $EventID ?></h3>
+<div class='card'>
+  <div class='card-header'>
+    <h3 class='card-title'><?= gettext('Attendees for Event ID:') . ' ' . $EventID ?></h3>
   </div>
-  <div class='box-body'>
+  <div class='card-body'>
     <strong><?= gettext('Name')?>:</strong> <?= $EvtName ?><br/>
     <strong><?= gettext('Date')?>:</strong> <?= $EvtDate ?><br/>
     <strong><?= gettext('Description')?>:</strong><br/>

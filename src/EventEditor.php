@@ -414,7 +414,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         }
         ?>
     </div>
-    <div class='box-body'>
+    <div class='card-body'>
 
     <form method="post" action="EventEditor.php" name="EventsEditor">
         <input type="hidden" name="EventID" value="<?= ($iEventID) ?>">
