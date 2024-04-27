@@ -6987,11 +6987,8 @@ msgid "Person's Name"
 msgstr "Nombre de la persona"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Nombre de adulto (Opcional)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Registrado por (Opcional)"
 
 #: 
@@ -7009,10 +7006,6 @@ msgstr "Borrar registro en Entrada"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Adulto Registrando Salida de persona"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nombre de adulto (Opcional)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -9441,4 +9434,8 @@ msgstr "Para dejar de recibir estos correos, puede contactar a"
 #: 
 msgid "invalid group request"
 msgstr "Solicitud de grupo inválida"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nombre de adulto (Opcional)"
 

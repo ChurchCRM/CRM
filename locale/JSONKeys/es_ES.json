@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "La propiedad no puedo ser desasignada.",
     "Select event": "Seleccionar evento",
     "Person's Name": "Nombre de la persona",
-    "Adult Name(Optional)": "Nombre de adulto (Opcional)",
-    "Checked in By(Optional)": "Registrado por (Opcional)",
+    "Checked in By (Optional)": "Registrado por (Opcional)",
     "Person has been already checked in for this event": "La persona ya ingresó a este evento",
     "CheckOut Person": "Registrar Salida de persona",
     "Delete Checkin in Entry": "Borrar registro en Entrada",
     "Adult Checking Out Person": "Adulto Registrando Salida de persona",
-    "Adult Name (Optional)": "Nombre de adulto (Opcional)",
     "Text before name in emails/reports": "Texto antes del nombre en correo electrónicos/reportes",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Colocar en verdadero para permitir apellidos vacíos en Editor de personas. Colocar en falso para validar el apellido y heredar de familia cuando se encuentre vacío.",
     "Display bill counts on deposit slip": "Mostrar cuenta en ficha de depósitos ",
@@ -2342,5 +2340,6 @@
     "If that doesn't work, copy and paste the following link in your browser": "Si esto no funciona, copie y pegue el siguiente enlace en su navegador",
     "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email.": "Recibió este correo electrónico porque recibimos una solicitud de actividad en su cuenta. Si no solicitó esto, puede eliminar este correo electrónico de forma segura.",
     "To stop receiving these emails, you can email": "Para dejar de recibir estos correos, puede contactar a",
-    "invalid group request": "Solicitud de grupo inválida"
+    "invalid group request": "Solicitud de grupo inválida",
+    "Adult Name (Optional)": "Nombre de adulto (Opcional)"
 }

@@ -6956,11 +6956,8 @@ msgid "Person's Name"
 msgstr "Kişinin adı"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Yetişkin adı (isteğe bağlı)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "(İsteğe bağlı) tarafından check -in yapıldı"
 
 #: 
@@ -6978,10 +6975,6 @@ msgstr "Girişte Check'i Sil"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Yetişkin Kişiyi Kontrol Etme"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Yetişkin adı (isteğe bağlı)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -9317,4 +9310,8 @@ msgstr "Geçersiz Doğum Tarihi: Ek ay veya gün eksik."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Geçersiz Doğum Tarihi: Aylık ve Gündüz Eksik."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Yetişkin adı (isteğe bağlı)"
 

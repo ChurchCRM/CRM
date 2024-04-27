@@ -6978,11 +6978,8 @@ msgid "Person's Name"
 msgstr "Bezoeker"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Volwassen naam (optioneel)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Uitgeboekt door:"
 
 #: 
@@ -7000,10 +6997,6 @@ msgstr "Verwijder boekingsdatum"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Volwassen persoon die uitcheckt"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Naam ambtsdrager"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -9340,4 +9333,8 @@ msgstr "Ongeldige geboortedatum: geboortemaand of -dag ontbreekt."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ongeldige geboortedatum: geboortemaand en -dag ontbreken."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Naam ambtsdrager (optioneel)"
 

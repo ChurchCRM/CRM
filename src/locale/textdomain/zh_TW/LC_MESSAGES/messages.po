@@ -7115,11 +7115,8 @@ msgid "Person's Name"
 msgstr "會員名稱"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Adult Name(可選)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "簽到名(可選)"
 
 #: 
@@ -7138,10 +7135,6 @@ msgstr "刪除條目中的簽到"
 #, fuzzy
 msgid "Adult Checking Out Person"
 msgstr "成人登出人員"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Adult Name(可選)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -9730,4 +9723,8 @@ msgstr "存款總額"
 #, fuzzy
 msgid "Group Cart Status"
 msgstr "群組購物車狀態"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Adult Name(可選)"
 

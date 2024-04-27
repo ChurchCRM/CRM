@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "ንብረቱ ያልተመደበ ሊሆን አይችልም።",
     "Select event": "ክስተት ይምረጡ",
     "Person's Name": "የሰው ስም",
-    "Adult Name(Optional)": "የአዋቂዎች ስም (አማራጭ)",
-    "Checked in By(Optional)": "መዝግቦ ያስገባው ሰው(ከተፈለገ)",
+    "Checked in By (Optional)": "መዝግቦ ያስገባው ሰው(ከተፈለገ)",
     "Person has been already checked in for this event": "ሰው አስቀድሞ ለዚህ ክስተት ተመዝግቦ ገብቷል።",
     "CheckOut Person": "የተመዘገበውን አስወጣ",
     "Delete Checkin in Entry": "መግቢያ ዝርዝርን ሰርዝ",
     "Adult Checking Out Person": "አዋቂዎች የሆነ ይዞ ሚወጣ",
-    "Adult Name (Optional)": "የአዋቂዎች ስም (አማራጭ)",
     "Text before name in emails/reports": "በኢሜል/ሪፖርቶች ውስጥ ከስም በፊት ይፃፉ",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "በሰው አርታዒ ውስጥ ባዶ የአያት ስም ለመፍቀድ ከፈለጉ እውነትን ይምረጡ። የአያት ስም ለማረጋገጥ እና ባዶ ሲቀር ከቤተሰብ መረጃ ለመውሰድ ሀሰትን ይምረጡ።",
     "Display bill counts on deposit slip": "የማሳያ ሂሳቡ በተቀማጭ ወረቀት ላይ ይቆጠራል",
@@ -2323,5 +2321,6 @@
     "Override system locale": "የስርዓት አካባቢን ይሽሩ",
     "Deleted": "ተሰርዟል",
     "Invalid Birth Date: Missing birth month or day.": "ልክ ያልሆነ የልደት ቀን፡ የጠፋ የልደት ወር ወይም ቀን።",
-    "Invalid Birth Date: Missing birth month and day.": "ልክ ያልሆነ የልደት ቀን፡ የጠፋ የልደት ወር እና ቀን"
+    "Invalid Birth Date: Missing birth month and day.": "ልክ ያልሆነ የልደት ቀን፡ የጠፋ የልደት ወር እና ቀን",
+    "Adult Name (Optional)": "የአዋቂዎች ስም (አማራጭ)"
 }

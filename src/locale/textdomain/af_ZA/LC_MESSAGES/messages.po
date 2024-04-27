@@ -6958,11 +6958,8 @@ msgid "Person's Name"
 msgstr "Persoon se naam"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Volwasse naam (opsioneel)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Aangebreek deur (opsioneel)"
 
 #: 
@@ -6980,10 +6977,6 @@ msgstr "Vee Checkin in Invoer uit"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Volwasse persoon wat uitklok"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Volwasse naam (opsioneel)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -9320,4 +9313,9 @@ msgstr "Ongeldige geboortedatum: Geboortemaand of -dag ontbreek."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ongeldige geboortedatum: Geboortemaand en -dag ontbreek."
+
+#: 
+#, fuzzy
+msgid "Adult Name (Optional)"
+msgstr "Volwasse naam (opsioneel)"
 

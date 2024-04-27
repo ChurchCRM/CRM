@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "Cette propriété ne peut pas être retirée.",
     "Select event": "Sélectionner un événement",
     "Person's Name": "Nom de la Personne",
-    "Adult Name(Optional)": "Nom de l'adulte (Optionnel)",
-    "Checked in By(Optional)": "Inscris par (Optionnel)",
+    "Checked in By (Optional)": "Inscris par (Optionnel)",
     "Person has been already checked in for this event": "Cette personne a déjà été inscris pour cet événement",
     "CheckOut Person": "Désinscrire une personne",
     "Delete Checkin in Entry": "Effacer l'inscription",
     "Adult Checking Out Person": "Adulte autorisé à chercher",
-    "Adult Name (Optional)": "Nom de l'adulte (Optionnel)",
     "Text before name in emails/reports": "Texte avant le nom dans les emails/rapports",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Cocher Vrai pour autoriser un nom de famille vide dans le Gestionnaire d'individu. Cocher Faux pour valider le nom de famille et de l’héritier de la famille quand le champ est vide.",
     "Display bill counts on deposit slip": "Afficher le nombre de Factures sur le bordereau de dépôt",
@@ -2323,5 +2321,6 @@
     "Override system locale": "Remplacer les paramètres régionaux du système",
     "Deleted": "Supprimé",
     "Invalid Birth Date: Missing birth month or day.": "Date de naissance invalide : Mois ou jour de naissance manquant.",
-    "Invalid Birth Date: Missing birth month and day.": "Date de naissance invalide : Mois ou jour de naissance manquant."
+    "Invalid Birth Date: Missing birth month and day.": "Date de naissance invalide : Mois ou jour de naissance manquant.",
+    "Adult Name (Optional)": "Nom de l'adulte (Optionnel)"
 }

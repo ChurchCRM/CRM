@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "属性无法取消分配。",
     "Select event": "选择活动",
     "Person's Name": "会员名称",
-    "Adult Name(Optional)": "Adult Name(可选)",
-    "Checked in By(Optional)": "签到名(可选)",
+    "Checked in By (Optional)": "签到名(可选)",
     "Person has been already checked in for this event": "此人已经对本事件签到",
     "CheckOut Person": "签退人员",
     "Delete Checkin in Entry": "删除条目中的签到",
     "Adult Checking Out Person": "成人结帐人",
-    "Adult Name (Optional)": "Adult Name(可选)",
     "Text before name in emails/reports": "电子邮件/报告中姓名前的文字",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "设置为是将允许在Person Editor（人员编辑）中允许姓氏为空值。设置为false(否)将验证姓氏，并在其空值时从家族继承。",
     "Display bill counts on deposit slip": "在存款单上显示账单计数",
@@ -2317,5 +2315,6 @@
     "Change the initial page length (number of rows per page)": "更改初始页面长度（每页的行数）",
     "User Interface": "用户界面",
     "Locale": "区域设置",
-    "Override system locale": "覆盖系统区域设置"
+    "Override system locale": "覆盖系统区域设置",
+    "Adult Name (Optional)": "Adult Name(可选)"
 }

@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "Thuộc tính không thể được hủy chỉ định.",
     "Select event": "Chọn sự kiện",
     "Person's Name": "Tên của người đó",
-    "Adult Name(Optional)": "Tên người lớn (Tùy chọn)",
-    "Checked in By(Optional)": "Đã đăng ký bởi (Tùy chọn)",
+    "Checked in By (Optional)": "Đã đăng ký bởi (Tùy chọn)",
     "Person has been already checked in for this event": "Một người đã được đăng ký cho sự kiện này",
     "CheckOut Person": "CheckOut Person",
     "Delete Checkin in Entry": "Xóa đăng ký trong mục nhập",
     "Adult Checking Out Person": "Người lớn trả phòng",
-    "Adult Name (Optional)": "Tên người lớn (Tùy chọn)",
     "Text before name in emails/reports": "Văn bản trước tên trong email / báo cáo",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Đặt true để cho phép họ trống trong Person Editor. Đặt false để xác thực họ và kế thừa từ gia đình khi để trống.",
     "Display bill counts on deposit slip": "Hiển thị số lượng hóa đơn trên phiếu gửi tiền",
@@ -2318,5 +2316,6 @@
     "Change the initial page length (number of rows per page)": "Thay đổi độ dài trang ban đầu (số hàng trên mỗi trang)",
     "User Interface": "Giao diện người dùng",
     "Locale": "Ngôn ngữ",
-    "Override system locale": "Ghi đè ngôn ngữ hệ thống"
+    "Override system locale": "Ghi đè ngôn ngữ hệ thống",
+    "Adult Name (Optional)": "Tên người lớn (Tùy chọn)"
 }

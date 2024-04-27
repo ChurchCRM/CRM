@@ -8492,12 +8492,7 @@ msgstr "Nome da Pessoa"
 
 #: 
 #, fuzzy
-msgid "Adult Name(Optional)"
-msgstr "Nome adulto (Opcional)"
-
-#: 
-#, fuzzy
-msgid "Checked in By(Optional)"
+msgid "Checked in By (Optional)"
 msgstr "Inscrito por (Opcional)"
 
 #: 
@@ -8519,11 +8514,6 @@ msgstr "Excluir check-in na entrada"
 #, fuzzy
 msgid "Adult Checking Out Person"
 msgstr "Pessoas adultas realizando o check-out"
-
-#: 
-#, fuzzy
-msgid "Adult Name (Optional)"
-msgstr "Nome adulto (Opcional)"
 
 #: 
 #, fuzzy
@@ -11533,4 +11523,8 @@ msgstr "2022/2023"
 #: 
 msgid "invalid group request"
 msgstr "solicitação de grupo inválida"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nome adulto (Opcional)"
 

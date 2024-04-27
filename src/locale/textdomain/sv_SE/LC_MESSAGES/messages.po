@@ -7106,11 +7106,8 @@ msgid "Person's Name"
 msgstr "Personens namn"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Vuxennamn (valfritt)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Checka in av (valfritt)"
 
 #: 
@@ -7128,10 +7125,6 @@ msgstr "Radera incheckning i posten"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Vuxen checka ut person"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Vuxennamn (valfritt)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -9401,4 +9394,8 @@ msgstr "Api Nyckel"
 #: 
 msgid "Regen API Key"
 msgstr "Regen API-nyckel"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Vuxennamn (valfritt)"
 

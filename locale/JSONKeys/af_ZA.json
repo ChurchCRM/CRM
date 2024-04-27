@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "Die eiendom kon nie onttrek word nie.",
     "Select event": "Kies gebeurtenis",
     "Person's Name": "Persoon se naam",
-    "Adult Name(Optional)": "Volwasse naam (opsioneel)",
-    "Checked in By(Optional)": "Aangebreek deur (opsioneel)",
+    "Checked in By (Optional)": "Aangebreek deur (opsioneel)",
     "Person has been already checked in for this event": "Persoon is reeds vir hierdie geleentheid aangemeld",
     "CheckOut Person": "CheckOut Persoon",
     "Delete Checkin in Entry": "Vee Checkin in Invoer uit",
     "Adult Checking Out Person": "Volwasse persoon wat uitklok",
-    "Adult Name (Optional)": "Volwasse naam (opsioneel)",
     "Text before name in emails/reports": "SMS voor naam in e-posse / verslae",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Stel waar om leë van in Person Editor te laat. Stel vals om die naam te bekragtig en erf van die gesin as dit leeg gelaat word.",
     "Display bill counts on deposit slip": "Vertoon rekeningtellings op depositostrokie",
@@ -2323,5 +2321,6 @@
     "Override system locale": "Ignoreer stelsel-lokaal",
     "Deleted": "Geskrap",
     "Invalid Birth Date: Missing birth month or day.": "Ongeldige geboortedatum: Geboortemaand of -dag ontbreek.",
-    "Invalid Birth Date: Missing birth month and day.": "Ongeldige geboortedatum: Geboortemaand en -dag ontbreek."
+    "Invalid Birth Date: Missing birth month and day.": "Ongeldige geboortedatum: Geboortemaand en -dag ontbreek.",
+    "Adult Name (Optional)": "Volwasse naam (opsioneel)"
 }

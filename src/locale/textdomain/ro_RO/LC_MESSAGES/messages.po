@@ -7063,11 +7063,8 @@ msgid "Person's Name"
 msgstr "Nume persoane"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Nume adult (opțional)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Verificat de (opțional)"
 
 #: 
@@ -7085,10 +7082,6 @@ msgstr "Șterge înregistrare checkin"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Persoană pentru check-out pentru adulți"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nume adult (opțional)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -9480,4 +9473,8 @@ msgstr "Total depozit"
 #: 
 msgid "Group Cart Status"
 msgstr "Stare coș grup"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nume adult (opțional)"
 
