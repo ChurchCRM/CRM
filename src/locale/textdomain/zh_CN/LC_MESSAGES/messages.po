@@ -8566,7 +8566,8 @@ msgid "Records"
 msgstr "记录"
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "嵌入事件ID"
 
 #: 

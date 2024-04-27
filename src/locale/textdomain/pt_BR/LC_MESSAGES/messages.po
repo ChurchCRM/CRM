@@ -10361,8 +10361,8 @@ msgstr "Registros"
 
 #: 
 #, fuzzy
-msgid "Emptied into Event ID"
-msgstr "Esvaziado para o ID do Evento"
+msgid "Emptied into Event"
+msgstr "Esvaziado para o do Evento"
 
 #: 
 #, fuzzy

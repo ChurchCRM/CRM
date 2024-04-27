@@ -2108,7 +2108,7 @@
     "Families Without Emails": "Сім'ї без електронної пошти",
     "Record": "Запис",
     "Records": "Записи",
-    "Emptied into Event ID": "Порожній в ідентифікаторі події",
+    "Emptied into Event": "Порожній в ідентифікаторі події",
     "integrityCheck.json file missing": "Файл integritetCheck.json відсутній",
     "Passed": "Пройшов",
     "PHP Max Execution Time is too Short": "Макс. Час виконання PHP занадто короткий",

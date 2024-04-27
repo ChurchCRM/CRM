@@ -8462,8 +8462,9 @@ msgid "Records"
 msgstr "Rekaman"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Dikosongkan ke Event ID"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Dikosongkan ke Event"
 
 #: 
 msgid "integrityCheck.json file missing"

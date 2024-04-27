@@ -2108,7 +2108,7 @@
     "Families Without Emails": "Familles sans e-mail",
     "Record": "Enregistrement",
     "Records": "Enregistrements",
-    "Emptied into Event ID": "Vidé dans ID d'événement",
+    "Emptied into Event": "Vidé dans d'événement",
     "integrityCheck.json file missing": "fichier integrityCheck.json manquant",
     "Passed": "Réussi",
     "PHP Max Execution Time is too Short": "PHP Max Execution Time est trop court",

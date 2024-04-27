@@ -2107,7 +2107,7 @@
     "Families Without Emails": "Οικογένειες χωρίς email",
     "Record": "Ρεκόρ",
     "Records": "Εγγραφές",
-    "Emptied into Event ID": "Αδειάστηκε στο Αναγνωριστικό συμβάντος",
+    "Emptied into Event": "Αδειάστηκε στο Αναγνωριστικό συμβάντος",
     "integrityCheck.json file missing": "Λείπει το αρχείο integrityCheck.json",
     "Passed": "Πέρασε",
     "PHP Max Execution Time is too Short": "Ο χρόνος εκτέλεσης του PHP Max είναι πολύ μικρός",

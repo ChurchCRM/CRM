@@ -2108,7 +2108,7 @@
     "Families Without Emails": "E -posta olmadan aileler",
     "Record": "Kayıt",
     "Records": "Kayıtlar",
-    "Emptied into Event ID": "Olay kimliğine boşaltıldı",
+    "Emptied into Event": "Olay kimliğine boşaltıldı",
     "integrityCheck.json file missing": "IntegrityCheck.json Dosyası Eksik",
     "Passed": "Geçti",
     "PHP Max Execution Time is too Short": "PHP Max Yürütme Süresi Çok Kısa",

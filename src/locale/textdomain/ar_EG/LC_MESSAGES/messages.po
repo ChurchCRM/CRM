@@ -8459,7 +8459,8 @@ msgid "Records"
 msgstr "سجلات"
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "أفرغت إلى معرف الحدث"
 
 #: 

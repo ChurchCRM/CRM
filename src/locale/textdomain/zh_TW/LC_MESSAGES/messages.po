@@ -8640,7 +8640,7 @@ msgstr "記錄"
 
 #: 
 #, fuzzy
-msgid "Emptied into Event ID"
+msgid "Emptied into Event"
 msgstr "清空事件代碼"
 
 #: 

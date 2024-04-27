@@ -8606,8 +8606,9 @@ msgid "Records"
 msgstr "Uppgifter"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Tömd i händelse-ID"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Tömd i händelse"
 
 #: 
 msgid "integrityCheck.json file missing"

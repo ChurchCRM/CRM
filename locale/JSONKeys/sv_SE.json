@@ -2108,7 +2108,7 @@
     "Families Without Emails": "Familjer utan e-post",
     "Record": "Spela in",
     "Records": "Uppgifter",
-    "Emptied into Event ID": "Tömd i händelse-ID",
+    "Emptied into Event": "Tömd i händelse",
     "integrityCheck.json file missing": "integrityCheck.json-fil saknas",
     "Passed": "passerade",
     "PHP Max Execution Time is too Short": "PHP Max exekveringstid är för kort",

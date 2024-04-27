@@ -8587,8 +8587,9 @@ msgid "Records"
 msgstr "Datensätze"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "In Ereignis-ID geleert"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "In Ereignis geleert"
 
 #: 
 msgid "integrityCheck.json file missing"

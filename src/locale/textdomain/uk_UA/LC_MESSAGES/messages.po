@@ -8457,7 +8457,8 @@ msgid "Records"
 msgstr "Записи"
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "Порожній в ідентифікаторі події"
 
 #: 

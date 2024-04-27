@@ -8452,7 +8452,8 @@ msgid "Records"
 msgstr "Εγγραφές"
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "Αδειάστηκε στο Αναγνωριστικό συμβάντος"
 
 #: 

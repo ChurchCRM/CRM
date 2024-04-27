@@ -2108,7 +2108,7 @@
     "Families Without Emails": "Gia đình không có email",
     "Record": "Ghi lại",
     "Records": "Hồ sơ",
-    "Emptied into Event ID": "Đã hết vào ID sự kiện",
+    "Emptied into Event": "Đã hết vào sự kiện",
     "integrityCheck.json file missing": "thiếu tệp tin liêm chính.json",
     "Passed": "Thông qua",
     "PHP Max Execution Time is too Short": "Thời gian thực thi tối đa của PHP quá ngắn",

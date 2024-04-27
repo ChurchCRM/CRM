@@ -8476,8 +8476,9 @@ msgid "Records"
 msgstr "Hồ sơ"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Đã hết vào ID sự kiện"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Đã hết vào sự kiện"
 
 #: 
 msgid "integrityCheck.json file missing"
