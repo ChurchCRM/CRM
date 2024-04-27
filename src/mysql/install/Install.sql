@@ -196,7 +196,6 @@ CREATE TABLE `events_event` (
   `event_start` datetime NOT NULL,
   `event_end` datetime NOT NULL,
   `inactive` int(1) NOT NULL default '0',
-  `event_typename` varchar(40) NOT NULL default '',
   `location_id` INT DEFAULT NULL,
   `primary_contact_person_id` INT DEFAULT NULL,
   `secondary_contact_person_id` INT DEFAULT NULL,
