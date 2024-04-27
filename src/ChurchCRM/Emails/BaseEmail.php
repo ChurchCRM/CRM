@@ -26,7 +26,6 @@ abstract class BaseEmail
 
         $loader = new FilesystemLoader('../views/email');
         $this->twig = new Environment($loader);
-
     }
 
     private function setConnection(): void
@@ -112,7 +111,7 @@ abstract class BaseEmail
 
     abstract public function getTokens(): array;
 
-    abstract protected function getFullURL() : string;
+    abstract protected function getFullURL(): string;
 
-    abstract protected function getButtonText() : string;
+    abstract protected function getButtonText(): string;
 }
