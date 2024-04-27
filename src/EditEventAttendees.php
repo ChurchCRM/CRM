@@ -4,6 +4,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext('Church Event Editor');
@@ -24,6 +25,15 @@ if ($sAction == 'Delete') {
     RunQuery($dpeSQL);
     $ShowAttendees = 1;
 }
+
+if ($EventID === null) {
+    $EventID = InputUtils::legacyFilterInput($_GET['eventId'], 'int');
+}
+
+if ($EventID == "") {
+    RedirectUtils::redirect('ListEvents.php');
+}
+
 // Construct the form
 ?>
 <div class='card'>
