@@ -120,9 +120,9 @@
                     <td align="center" valign="top" style="padding: 36px 24px;">
                         <a href="{{churchCRMURL}}" target="_blank" style="display: inline-block;">
                             <h1>{{churchName}}</h1>
-                            {{# churchLogo}}
+                            {% if churchLogo %}
                             <img src="{{churchCRMURL}}/{{churchLogo}}" alt="Logo" border="0" width="48" style="display: block; width: 48px; max-width: 48px; min-width: 48px;">
-                            {{/ churchLogo}}
+                            {% endif %}
                         </a>
                     </td>
                 </tr>
@@ -159,34 +159,34 @@
                         <p>
                             {{body}}
                         </p>
-                        {{# userName}}
+                        {% if userName %}
                         <p>
                             {{userNameText}}: {{userName}}<br/>
-                            {{# password}}
+                            {% if password%}
                             {{passwordText}}: {{password}}
-                            {{/ password}}
+                            {% endif %}
                         <p/>
-                        {{/ userName}}
+                        {% endif %}
 
-                        {{# IncludeDataInNewFamilyNotifications }}
+                        {% if IncludeDataInNewFamilyNotifications %}
                             <p>{{FamilyEmail}}</p>
                             <p>{{FamilyPhone}}</p>
                             <p>{{FamilyAddress}}</p>
-                        {{/ IncludeDataInNewFamilyNotifications}}
+                        {% endif %}
 
-                        {{# IncludeDataInNewPersonNotifications }}
+                        {% if IncludeDataInNewPersonNotifications %}
                             <p>{{PersonEmail}}</p>
                             <p>{{PersonPhone}}</p>
                             <p>{{PersonAddress}}</p>
                             <p>{{PersonAge}}</p>
-                        {{/ IncludeDataInNewPersonNotifications}}
+                        {% endif %}
 
                         </p>
                     </td>
                 </tr>
                 <!-- end copy -->
 
-                {{# fullURL }}
+                {% if fullURL %}
                 <!-- start button -->
                 <tr>
                     <td align="left" bgcolor="#ffffff">
@@ -215,13 +215,13 @@
                     </td>
                 </tr>
                 <!-- end copy -->
-                {{/ fullURL }}
+                {% endif %}
 
                 <!-- start copy -->
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
-                        <p>{{ # sGreeterCustomMsg1 }}{{ sGreeterCustomMsg1 }}{{ / sGreeterCustomMsg1 }}</p>
-                        <p>{{ # sGreeterCustomMsg2 }}{{ sGreeterCustomMsg2 }}{{ / sGreeterCustomMsg2 }}</p>
+                        <p>{% if sGreeterCustomMsg1 %}{{ sGreeterCustomMsg1 }}{% endif %}</p>
+                        <p>{% if sGreeterCustomMsg2 %}{{ sGreeterCustomMsg2 }}{% endif %}</p>
                         <p style="margin: 0;">{{confirmSincerely}},<br> {{confirmSigner}}</p>
                     </td>
                 </tr>
