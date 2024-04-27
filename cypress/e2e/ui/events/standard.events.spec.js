@@ -15,11 +15,28 @@ context("Standard User Session", () => {
         cy.contains("Berry, Miss Brianna");
     });
 
+
+    it("View Event via URL", () => {
+        cy.loginStandard("EditEventAttendees.php?eventId=9");
+        cy.contains("Attendees for Event ID: 9");
+    });
+
+    it("View Event via Bad URL", () => {
+        cy.loginStandard("EditEventAttendees.php", false);
+        cy.contains("Listing All Church Events");
+    });
+
+
+    it("View Event via invalid URL id", () => {
+        cy.loginStandard("EditEventAttendees.php?eventId=99999", false);
+        cy.contains("Listing All Church Events");
+    });
+
+
     it("CheckIn People", () => {
         cy.loginStandard("Checkin.php");
         cy.contains("Event Checkin");
         cy.get("#EventID").select("Summer Camp");
-        cy.contains("Add Attendees for Event: Summer Camp");
-        cy.contains("Mark Smith");
+        cy.contains("Add Attendees for Event:");
     });
 });

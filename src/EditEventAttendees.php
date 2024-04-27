@@ -6,6 +6,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 
 $sPageTitle = gettext('Church Event Editor');
 require 'Include/Header.php';
@@ -30,7 +31,9 @@ if ($EventID === null) {
     $EventID = InputUtils::legacyFilterInput($_GET['eventId'], 'int');
 }
 
-if ($EventID == "") {
+$event = EventQuery::create()->findPk($EventID);
+
+if (empty($event)) {
     RedirectUtils::redirect('ListEvents.php');
 }
 
@@ -38,7 +41,7 @@ if ($EventID == "") {
 ?>
 <div class='card'>
   <div class='card-header'>
-    <h3 class='card-title'><?= gettext('Attendees for Event ID:') . ' ' . $EventID ?></h3>
+    <h3 class='card-title'><?= gettext('Attendees for Event ID:') . ' ' . $event->getTitle() ?></h3>
   </div>
   <div class='card-body'>
     <strong><?= gettext('Name')?>:</strong> <?= $EvtName ?><br/>
