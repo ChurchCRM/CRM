@@ -24,7 +24,7 @@ abstract class BaseUserEmail extends BaseEmail
         $this->mail->msgHTML($this->buildMessage());
     }
 
-    abstract protected function getSubSubject() :string;
+    abstract protected function getSubSubject(): string;
 
     public function getTokens(): array
     {
@@ -47,5 +47,5 @@ abstract class BaseUserEmail extends BaseEmail
         return $this->user->getUserName();
     }
 
-    abstract protected function buildMessageBody() : string;
+    abstract protected function buildMessageBody(): string;
 }
