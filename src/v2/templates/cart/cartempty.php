@@ -12,7 +12,7 @@ if (!array_key_exists('Message', $_GET)) {
     switch ($_GET['Message']) {
         case 'aMessage':
             ?>
-      <p class="text-center callout callout-info"><?= $_GET['iCount'] . ' ' . ($_GET['iCount'] == 1 ? gettext('Record') : gettext('Records')) . ' ' . gettext("Emptied into Event ID") . ':' . $_GET['iEID'] ?> </p>
+      <p class="text-center callout callout-info"><?= $_GET['iCount'] . ' ' . ($_GET['iCount'] == 1 ? gettext('Record') : gettext('Records')) . ' ' . gettext("Emptied into Event ID") . ':' ?> <a href="<?= SystemURLs::getRootPath()?>/EditEventAttendees.php?eventId=<?=$_GET['iEID']?>"><?=$_GET['iEID']?></a> </p>
             <?php
             break;
     }
