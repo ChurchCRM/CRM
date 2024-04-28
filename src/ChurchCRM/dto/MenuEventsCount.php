@@ -28,11 +28,6 @@ class MenuEventsCount
         return $peopleWithBirthDays;
     }
 
-    public static function getNumberBirthDates(): int
-    {
-        return count(self::getBirthDates());
-    }
-
     /**
      * @return Family[]
      */
