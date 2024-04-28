@@ -25,7 +25,6 @@ $sPageTitle = gettext('Deposit Listing');
 // Security: User must have finance permission to use this form
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::redirect('index.php');
-    exit;
 }
 
 require 'Include/Header.php';

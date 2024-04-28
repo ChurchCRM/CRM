@@ -80,4 +80,3 @@ switch ($sAction) {
 
 // Reload the Form Editor page
 RedirectUtils::redirect('PersonCustomFieldsEditor.php');
-exit;

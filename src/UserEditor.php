@@ -334,7 +334,6 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
     }
 
     RedirectUtils::redirect('UserList.php');
-    exit;
 }
 
 // Set the page title and include HTML header

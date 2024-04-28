@@ -34,7 +34,6 @@ $iMinimum = InputUtils::legacyFilterInput($_POST['minimum'], 'int');
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 if (!empty($_POST['classList'])) {

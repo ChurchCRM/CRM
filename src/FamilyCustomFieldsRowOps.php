@@ -81,4 +81,3 @@ switch ($sAction) {
 
 // Reload the Form Editor page
 RedirectUtils::redirect('FamilyCustomFieldsEditor.php');
-exit;

@@ -50,7 +50,6 @@ if ($iPersonID > 0) {
 
     if (mysqli_num_rows($rsPerson) == 0) {
         RedirectUtils::redirect('v2/dashboard');
-        exit;
     }
 
     if (
@@ -61,11 +60,9 @@ if ($iPersonID > 0) {
         )
     ) {
         RedirectUtils::redirect('v2/dashboard');
-        exit;
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 // Get Field Security List Matrix
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
