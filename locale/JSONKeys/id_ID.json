@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "Properti tidak dapat dibatalkan penetapannya.",
     "Select event": "Pilih acara",
     "Person's Name": "Nama orang",
-    "Adult Name(Optional)": "Nama Dewasa (Opsional)",
-    "Checked in By(Optional)": "Diperiksa oleh (Opsional)",
+    "Checked in By (Optional)": "Diperiksa oleh (Opsional)",
     "Person has been already checked in for this event": "Orang telah masuk untuk acara ini",
     "CheckOut Person": "Orang CheckOut",
     "Delete Checkin in Entry": "Hapus Checkin di Entri",
     "Adult Checking Out Person": "Orang Dewasa yang Memeriksa",
-    "Adult Name (Optional)": "Nama Dewasa (Opsional)",
     "Text before name in emails/reports": "Teks sebelum nama di email / laporan",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Set true untuk mengizinkan nama belakang kosong di Person Editor. Set false untuk memvalidasi nama belakang dan mewarisi dari keluarga ketika dibiarkan kosong.",
     "Display bill counts on deposit slip": "Menampilkan jumlah tagihan pada slip setoran",
@@ -2110,7 +2108,7 @@
     "Families Without Emails": "Keluarga Tanpa Email",
     "Record": "Merekam",
     "Records": "Rekaman",
-    "Emptied into Event ID": "Dikosongkan ke Event ID",
+    "Emptied into Event": "Dikosongkan ke Event",
     "integrityCheck.json file missing": "file integrityCheck.json hilang",
     "Passed": "Lolos",
     "PHP Max Execution Time is too Short": "Waktu Eksekusi \"PHP Max\" terlalu pendek",
@@ -2336,5 +2334,6 @@
     "Delete this person?": "Hapus orang ini?",
     "Deposit ID": "ID Deposit",
     "Deposit Total": "Total Deposit",
-    "Group Cart Status": "Status Keranjang Kelompok"
+    "Group Cart Status": "Status Keranjang Kelompok",
+    "Adult Name (Optional)": "Nama Dewasa (Opsional)"
 }

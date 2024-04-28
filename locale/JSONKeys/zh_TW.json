@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "屬性無法取消分配。",
     "Select event": "選擇活動",
     "Person's Name": "會員名稱",
-    "Adult Name(Optional)": "Adult Name(可選)",
-    "Checked in By(Optional)": "簽到名(可選)",
+    "Checked in By (Optional)": "簽到名(可選)",
     "Person has been already checked in for this event": "此人已經對本事件簽到",
     "CheckOut Person": "簽退人員",
     "Delete Checkin in Entry": "刪除條目中的簽到",
     "Adult Checking Out Person": "成人登出人員",
-    "Adult Name (Optional)": "Adult Name(可選)",
     "Text before name in emails/reports": "電子郵件/報告中姓名前的文字",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "設置為是將允許在Person Editor（人員編輯）中允許姓氏為空值。設置為false(否)將驗證姓氏，並在其空值時從家族繼承。",
     "Display bill counts on deposit slip": "在存款單上顯示賬單計數",
@@ -2110,7 +2108,7 @@
     "Families Without Emails": "無Email家庭",
     "Record": "記錄",
     "Records": "記錄",
-    "Emptied into Event ID": "清空事件代碼",
+    "Emptied into Event": "清空事件代碼",
     "integrityCheck.json file missing": "無integrityCheck.json檔案",
     "Passed": "通過",
     "PHP Max Execution Time is too Short": "PHP最大執行時間太短",
@@ -2336,5 +2334,6 @@
     "Delete this person?": "刪除此人？",
     "Deposit ID": "存款編號",
     "Deposit Total": "存款總額",
-    "Group Cart Status": "群組購物車狀態"
+    "Group Cart Status": "群組購物車狀態",
+    "Adult Name (Optional)": "Adult Name(可選)"
 }

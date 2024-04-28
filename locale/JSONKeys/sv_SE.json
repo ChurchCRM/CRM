@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "Fastigheten kunde inte tilldelas.",
     "Select event": "Välj händelse",
     "Person's Name": "Personens namn",
-    "Adult Name(Optional)": "Vuxennamn (valfritt)",
-    "Checked in By(Optional)": "Checka in av (valfritt)",
+    "Checked in By (Optional)": "Checka in av (valfritt)",
     "Person has been already checked in for this event": "Personen har redan checkats in för det här evenemanget",
     "CheckOut Person": "CheckOut Person",
     "Delete Checkin in Entry": "Radera incheckning i posten",
     "Adult Checking Out Person": "Vuxen checka ut person",
-    "Adult Name (Optional)": "Vuxennamn (valfritt)",
     "Text before name in emails/reports": "Text före namn i e-postmeddelanden / rapporter",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Ställ in true för att tillåta tomt efternamn i Person Editor. Ställ in falskt för att validera efternamnet och ärva från familjen när det lämnas tomt.",
     "Display bill counts on deposit slip": "Visa räkningar räknas på insättningsslipp",
@@ -2110,7 +2108,7 @@
     "Families Without Emails": "Familjer utan e-post",
     "Record": "Spela in",
     "Records": "Uppgifter",
-    "Emptied into Event ID": "Tömd i händelse-ID",
+    "Emptied into Event": "Tömd i händelse",
     "integrityCheck.json file missing": "integrityCheck.json-fil saknas",
     "Passed": "passerade",
     "PHP Max Execution Time is too Short": "PHP Max exekveringstid är för kort",
@@ -2306,5 +2304,6 @@
     "Today's Birthdays": "Dagens födelsedagar",
     "Today's Wedding Anniversaries": "Dagens bröllopsdagar",
     "Api Key": "Api Nyckel",
-    "Regen API Key": "Regen API-nyckel"
+    "Regen API Key": "Regen API-nyckel",
+    "Adult Name (Optional)": "Vuxennamn (valfritt)"
 }

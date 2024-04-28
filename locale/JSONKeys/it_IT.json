@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "La proprietà non può essere non assegnata.",
     "Select event": "Seleziona evento",
     "Person's Name": "Nome della persona",
-    "Adult Name(Optional)": "Nome adulto (facoltativo)",
-    "Checked in By(Optional)": "Check-in da (facoltativo)",
+    "Checked in By (Optional)": "Check-in da (facoltativo)",
     "Person has been already checked in for this event": "La persona è già stata registrata per questo evento",
     "CheckOut Person": "CheckOut Person",
     "Delete Checkin in Entry": "Elimina registrazione in entrata",
     "Adult Checking Out Person": "Adulto controllando persona",
-    "Adult Name (Optional)": "Nome adulto (facoltativo)",
     "Text before name in emails/reports": "Testo prima del nome nelle e-mail / rapporti",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Impostare true per consentire il cognome vuoto nell'Editor persone. Imposta false per convalidare il cognome e ereditare dalla famiglia quando è vuoto.",
     "Display bill counts on deposit slip": "Visualizzare i conteggi delle fatture sulla ricevuta di deposito",
@@ -2110,7 +2108,7 @@
     "Families Without Emails": "Famiglie senza e-mail",
     "Record": "Disco",
     "Records": "Records",
-    "Emptied into Event ID": "Svuotato nell'ID evento",
+    "Emptied into Event": "Svuotato nell' evento",
     "integrityCheck.json file missing": "file integrityCheck.json mancante",
     "Passed": "Superato",
     "PHP Max Execution Time is too Short": "PHP Il tempo massimo di esecuzione è troppo breve",
@@ -2323,5 +2321,6 @@
     "Override system locale": "Sostituisci le impostazioni internazionali del sistema",
     "Deleted": "Eliminato",
     "Invalid Birth Date: Missing birth month or day.": "Data di nascita non valida: mese o giorno di nascita mancante.",
-    "Invalid Birth Date: Missing birth month and day.": "Data di nascita non valida: mese e giorno di nascita mancanti."
+    "Invalid Birth Date: Missing birth month and day.": "Data di nascita non valida: mese e giorno di nascita mancanti.",
+    "Adult Name (Optional)": "Nome adulto (facoltativo)"
 }
