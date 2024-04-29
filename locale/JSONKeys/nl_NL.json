@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "De toewijzing van deze eigenschap kan niet ongedaan worden gemaakt.",
     "Select event": "Selecteer activiteit",
     "Person's Name": "Bezoeker",
-    "Adult Name(Optional)": "Volwassen naam (optioneel)",
-    "Checked in By(Optional)": "Uitgeboekt door:",
+    "Checked in By (Optional)": "Uitgeboekt door:",
     "Person has been already checked in for this event": "De persoon is al voor deze activiteit toegevoegd",
     "CheckOut Person": "Persoon uitboeken",
     "Delete Checkin in Entry": "Verwijder boekingsdatum",
     "Adult Checking Out Person": "Volwassen persoon die uitcheckt",
-    "Adult Name (Optional)": "Naam ambtsdrager",
     "Text before name in emails/reports": "Tekst voor naam in e-mails/rapporten",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Stel waar in om een lege achternaam toe te staan in de Persoonseditor. Stel niet waar in om de achternaam te valideren en van familie te erven als deze leeg is.",
     "Display bill counts on deposit slip": "Toon rekeningtellingen op stortingsbewijs",
@@ -2110,7 +2108,7 @@
     "Families Without Emails": "Gezinnen zonder e-mail adres",
     "Record": "Gegevensrij",
     "Records": "Rijen",
-    "Emptied into Event ID": "Geleegd in Gebeurtenis-ID",
+    "Emptied into Event": "Geleegd in Gebeurtenis",
     "integrityCheck.json file missing": "integrityCheck.json bestand ontbreekt",
     "Passed": "Gestopt",
     "PHP Max Execution Time is too Short": "PHP Max Execution De tijd is te kort",
@@ -2323,5 +2321,6 @@
     "Override system locale": "Lokale instelling van systeem overschrijven",
     "Deleted": "Verwijderd",
     "Invalid Birth Date: Missing birth month or day.": "Ongeldige geboortedatum: geboortemaand of -dag ontbreekt.",
-    "Invalid Birth Date: Missing birth month and day.": "Ongeldige geboortedatum: geboortemaand en -dag ontbreken."
+    "Invalid Birth Date: Missing birth month and day.": "Ongeldige geboortedatum: geboortemaand en -dag ontbreken.",
+    "Adult Name (Optional)": "Naam ambtsdrager (optioneel)"
 }

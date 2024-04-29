@@ -6976,11 +6976,8 @@ msgid "Person's Name"
 msgstr "Tên của người đó"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Tên người lớn (Tùy chọn)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Đã đăng ký bởi (Tùy chọn)"
 
 #: 
@@ -6998,10 +6995,6 @@ msgstr "Xóa đăng ký trong mục nhập"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Người lớn trả phòng"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Tên người lớn (Tùy chọn)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8483,8 +8476,9 @@ msgid "Records"
 msgstr "Hồ sơ"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Đã hết vào ID sự kiện"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Đã hết vào sự kiện"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9314,4 +9308,8 @@ msgstr "Ngôn ngữ"
 #: 
 msgid "Override system locale"
 msgstr "Ghi đè ngôn ngữ hệ thống"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Tên người lớn (Tùy chọn)"
 
