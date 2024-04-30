@@ -7152,11 +7152,8 @@ msgid "Person's Name"
 msgstr "Nome da Pessoa"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Nome adulto (Opcional)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Inscrito por (Opcional)"
 
 #: 
@@ -7174,10 +7171,6 @@ msgstr "Deletar entrada de check-in"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Pessoas adultas realizando o check-out"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nome adulto (Opcional)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8662,8 +8655,9 @@ msgid "Records"
 msgstr "Registos"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Esvaziado para o ID do Evento"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Esvaziado para o do Evento"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9207,4 +9201,8 @@ msgstr "Turco"
 #: 
 msgid "2020/2021"
 msgstr "2020"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nome adulto (Opcional)"
 
