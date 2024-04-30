@@ -109,6 +109,9 @@ abstract class BaseEmail
         return $commonTokens;
     }
 
+    /**
+     * @return array<string, string>
+     */
     abstract public function getTokens(): array;
 
     abstract protected function getFullURL(): string;
