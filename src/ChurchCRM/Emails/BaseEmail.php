@@ -13,7 +13,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 abstract class BaseEmail
 {
     /** @var PHPMailer */
-    protected $mail;
+    protected PHPMailer $mail;
     protected Environment $twig;
 
     public function __construct($toAddresses)
