@@ -20,7 +20,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have finance permission or be the one who created this deposit
-if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() == $thisDeposit->getEnteredby())) {
+if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() === $thisDeposit->getEnteredby())) {
     RedirectUtils::redirect('v2/dashboard');
 }
 
