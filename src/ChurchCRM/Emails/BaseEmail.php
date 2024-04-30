@@ -14,7 +14,7 @@ abstract class BaseEmail
 {
     /** @var PHPMailer */
     protected $mail;
-    protected $twig;
+    protected Environment $twig;
 
     public function __construct($toAddresses)
     {
