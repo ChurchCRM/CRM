@@ -42,11 +42,9 @@ if ($iDepositSlipID) {
     // Security: User must have finance permission or be the one who created this deposit
     if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() == $thisDeposit->getEnteredby())) {
         RedirectUtils::redirect('v2/dashboard');
-        exit;
     }
 } elseif ($iDepositSlipID == 0) {
     RedirectUtils::redirect('FindDepositSlip.php');
-    exit;
 } else {
     RedirectUtils::redirect('v2/dashboard');
 }
