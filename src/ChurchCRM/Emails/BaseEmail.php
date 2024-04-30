@@ -12,7 +12,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 abstract class BaseEmail
 {
-    /** @var PHPMailer */
     protected PHPMailer $mail;
     protected Environment $twig;
 
