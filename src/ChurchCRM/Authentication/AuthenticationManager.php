@@ -215,4 +215,11 @@ class AuthenticationManager
             RedirectUtils::redirect('v2/dashboard');
         }
     }
+
+    public static function redirectHomeIfNotAdmin(): void
+    {
+        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+            RedirectUtils::securityRedirect('Admin');
+        }
+    }
 }

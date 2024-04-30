@@ -17,7 +17,6 @@ $sPageTitle = gettext('Upgrade ChurchCRM');
 
 if (!AuthenticationManager::validateUserSessionIsActive(false) || !AuthenticationManager::getCurrentUser()->isAdmin()) {
     RedirectUtils::redirect('index.php');
-    exit;
 }
 $expertMode = false;
 if (isset($_GET['expertmode'])) {

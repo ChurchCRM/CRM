@@ -78,7 +78,6 @@ if (!$output) {
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 // Build SQL Query

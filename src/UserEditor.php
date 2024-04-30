@@ -35,7 +35,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 $iPersonID = -1;
 $vNewUser = false;
@@ -334,7 +334,6 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
     }
 
     RedirectUtils::redirect('UserList.php');
-    exit;
 }
 
 // Set the page title and include HTML header

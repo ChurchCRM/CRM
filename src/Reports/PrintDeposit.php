@@ -52,7 +52,6 @@ if (!$iDepositSlipID && array_key_exists('iCurrentDeposit', $_SESSION)) {
 // If no DepositSlipId, redirect to the menu
 if ((!AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly && $output != 'pdf') || !$iDepositSlipID) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 if ($output === 'pdf') {
