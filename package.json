@@ -76,7 +76,7 @@
         "flag-icons": "^7.2.1",
         "fullcalendar": "^6.1.11",
         "i18n": "^0.15.1",
-        "i18next": "^23.10.1",
+        "i18next": "^23.11.0",
         "icheck-bootstrap": "^3.0.1",
         "inputmask": "^5.0.8",
         "jquery": "^3.7.1",
