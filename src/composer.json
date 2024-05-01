@@ -1,5 +1,6 @@
 {
     "name": "churchcrm/crm",
+    "description": "Free Church CRM Software",
     "version": "5.8.0",
     "type": "project",
     "keywords": [
@@ -18,7 +19,7 @@
     "support": {
         "email": "info@churchcrm.io",
         "issues": "https://github.com/ChurchCRM/CRM/issues",
-        "irc": "https://gitter.im/ChurchCRM/CRM",
+        "chat": "https://gitter.im/ChurchCRM/CRM",
         "source": "https://github.com/ChurchCRM/CRM",
         "docs": "https://github.com/ChurchCRM/CRM/wiki"
     },
