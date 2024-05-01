@@ -1,12 +1,14 @@
 <?php
 
-namespace ChurchCRM\Emails;
+namespace ChurchCRM\Emails\users;
+
+use ChurchCRM\model\ChurchCRM\User;
 
 class ResetPasswordEmail extends BaseUserEmail
 {
-    protected $password;
+    protected string $password;
 
-    public function __construct($user, $password)
+    public function __construct(User $user, string $password)
     {
         $this->password = $password;
         parent::__construct($user);

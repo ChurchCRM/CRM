@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM\Emails;
+namespace ChurchCRM\Emails\users;
 
 class UnlockedEmail extends BaseUserEmail
 {

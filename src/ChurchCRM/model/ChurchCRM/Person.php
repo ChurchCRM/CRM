@@ -6,7 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Service\GroupService;

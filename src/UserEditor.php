@@ -24,7 +24,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\NewAccountEmail;
+use ChurchCRM\Emails\users\NewAccountEmail;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserConfig;

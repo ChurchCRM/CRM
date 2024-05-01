@@ -9,7 +9,7 @@ use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\LockedEmail;
+use ChurchCRM\Emails\users\LockedEmail;
 use ChurchCRM\KeyManager;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;

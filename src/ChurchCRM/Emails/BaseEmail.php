@@ -15,7 +15,10 @@ abstract class BaseEmail
     protected PHPMailer $mail;
     protected Environment $twig;
 
-    public function __construct($toAddresses)
+    /**
+     * @param string[] $toAddresses
+     */
+    public function __construct(array $toAddresses)
     {
         $this->setConnection();
         $this->mail->setFrom(ChurchMetaData::getChurchEmail(), ChurchMetaData::getChurchName());
@@ -47,7 +50,7 @@ abstract class BaseEmail
         }
     }
 
-    public function send()
+    public function send(): bool
     {
         if (SystemConfig::hasValidMailServerSettings()) {
             return $this->mail->send();
@@ -56,17 +59,17 @@ abstract class BaseEmail
         return false; // we don't have a valid setting so let us make sure we don't crash.
     }
 
-    public function getError()
+    public function getError(): string
     {
         return $this->mail->ErrorInfo;
     }
 
-    public function addStringAttachment($string, $filename): void
+    public function addStringAttachment(string $string, string $filename): void
     {
         $this->mail->addStringAttachment($string, $filename);
     }
 
-    protected function buildMessage()
+    protected function buildMessage(): string
     {
         return $this->twig->render($this->getTemplateName(), $this->getTokens());
     }
