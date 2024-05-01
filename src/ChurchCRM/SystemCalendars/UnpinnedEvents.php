@@ -2,8 +2,9 @@
 
 namespace ChurchCRM\SystemCalendars;
 
-use ChurchCRM\Interfaces\SystemCalendar;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Collection\ObjectCollection;
 
 class UnpinnedEvents implements SystemCalendar
 {
@@ -37,23 +38,23 @@ class UnpinnedEvents implements SystemCalendar
         return gettext('Unpinned Events');
     }
 
-    public function getEvents($start, $end)
+    public function getEvents(string $start, string $end)
     {
         $Events = EventQuery::create()
-        ->filterByStart(['min' => $start])
-        ->filterByEnd(['max' => $end])
-        ->useCalendarEventQuery(null, \Propel\Runtime\ActiveQuery\Criteria::LEFT_JOIN)
-          ->filterByCalendarId(null)
-        ->endUse()
-        ->find();
+            ->filterByStart(['min' => $start])
+            ->filterByEnd(['max' => $end])
+            ->useCalendarEventQuery(null, Criteria::LEFT_JOIN)
+                ->filterByCalendarId(null)
+            ->endUse()
+            ->find();
 
         return $Events;
     }
 
-    public function getEventById($Id)
+    public function getEventById(int $Id)
     {
         $Event = EventQuery::create()
-        ->findOneById($Id);
+            ->findOneById($Id);
 
         return $Event;
     }

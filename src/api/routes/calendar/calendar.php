@@ -69,7 +69,12 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 
 function getSystemCalendarFullCalendarEvents(Request $request, Response $response, array $args): Response
 {
-    $Calendar = SystemCalendars::getCalendarById($args['id']);
+    if (!is_numeric($args['id'])) {
+        throw new InvalidArgumentException('Calendar ID must be an integer!');
+    }
+
+    $calendarId = (int) $args['id'];
+    $Calendar = SystemCalendars::getCalendarById($calendarId);
     if (!$Calendar) {
         throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
