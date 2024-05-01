@@ -73,7 +73,7 @@ abstract class BaseEmail
 
     protected function getTemplateName(): string
     {
-        return 'BaseEmail.html';
+        return 'BaseEmail.html.twig';
     }
 
     /**
