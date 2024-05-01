@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "Proprietatea nu a putut fi ștearsă",
     "Select event": "Selectează eveniment",
     "Person's Name": "Nume persoane",
-    "Adult Name(Optional)": "Nume adult (opțional)",
-    "Checked in By(Optional)": "Verificat de (opțional)",
+    "Checked in By (Optional)": "Verificat de (opțional)",
     "Person has been already checked in for this event": "Persoana a fost deja înregistrată pentru acest eveniment",
     "CheckOut Person": "Persoană checkout",
     "Delete Checkin in Entry": "Șterge înregistrare checkin",
     "Adult Checking Out Person": "Persoană pentru check-out pentru adulți",
-    "Adult Name (Optional)": "Nume adult (opțional)",
     "Text before name in emails/reports": "Text înainte de nume în email-uri/rapoarte",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Setați true pentru a permite numele de familie necompletat în Editorul de persoane. Setați false pentru a valida numele de familie și a moșteni de la familie atunci când este necompletat.",
     "Display bill counts on deposit slip": "Afișarea numărului de facturi pe bonul de depozit",
@@ -2110,7 +2108,7 @@
     "Families Without Emails": "Familii fără email-uri",
     "Record": "Înregistrare",
     "Records": "Înregistrări",
-    "Emptied into Event ID": "Emptied into Event ID",
+    "Emptied into Event": "Emptied into Event",
     "integrityCheck.json file missing": "Lipsa fisier integrityCheck.json",
     "Passed": "A trecut",
     "PHP Max Execution Time is too Short": "Timpul maxim de execuție PHP este prea scurt",
@@ -2340,5 +2338,6 @@
     "Delete this person?": "Ștergi această personă",
     "Deposit ID": "Depozit ID",
     "Deposit Total": "Total depozit",
-    "Group Cart Status": "Stare coș grup"
+    "Group Cart Status": "Stare coș grup",
+    "Adult Name (Optional)": "Nume adult (opțional)"
 }

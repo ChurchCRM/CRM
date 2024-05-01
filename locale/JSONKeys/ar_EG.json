@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "الخاصية لا يمكن أن يكون غير معين.",
     "Select event": "حدد الحدث",
     "Person's Name": "اسم الشخص",
-    "Adult Name(Optional)": "اسم الكبار (اختياري)",
-    "Checked in By(Optional)": "إيداعه بواسطة (اختياري)",
+    "Checked in By (Optional)": "إيداعه بواسطة (اختياري)",
     "Person has been already checked in for this event": "وقد تم التحقق من الشخص بالفعل في هذا الحدث",
     "CheckOut Person": "CheckOut (سحب) شخص",
     "Delete Checkin in Entry": "حذف الإيداع في الدخول",
     "Adult Checking Out Person": "الكبار فحص خارج شخص",
-    "Adult Name (Optional)": "اسم الكبار (اختياري)",
     "Text before name in emails/reports": "النص قبل الاسم في رسائل البريد الإلكتروني / تقارير",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "تعيين صحيح للسماح اللقب فارغة في محرر شخص. مجموعة كاذبة للتحقق من صحة اسم العائلة ويرث من العائلة عندما غادر فارغ.",
     "Display bill counts on deposit slip": "التهم عرض مشروع قانون على قسيمة الإيداع",
@@ -2110,7 +2108,7 @@
     "Families Without Emails": "عائلات بدون ايميل",
     "Record": "سجل",
     "Records": "سجلات",
-    "Emptied into Event ID": "أفرغت إلى معرف الحدث",
+    "Emptied into Event": "أفرغت إلى معرف الحدث",
     "integrityCheck.json file missing": "ملف المفقودين integrityCheck.json",
     "Passed": "تم الاجتياز بنجاح",
     "PHP Max Execution Time is too Short": "PHP ماكس تنفيذ الوقت هو أيضا قصيرة",
@@ -2331,5 +2329,6 @@
     "Override system locale": "تجاوز لغة النظام",
     "Deleted": "تم المسح",
     "Invalid Birth Date: Missing birth month or day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح.",
-    "Invalid Birth Date: Missing birth month and day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح."
+    "Invalid Birth Date: Missing birth month and day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح.",
+    "Adult Name (Optional)": "اسم الكبار (اختياري)"
 }

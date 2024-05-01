@@ -7087,11 +7087,8 @@ msgid "Person's Name"
 msgstr "Name der Person"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Name des Erwachsenen (optional)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Eingecheckt von (optional)"
 
 #: 
@@ -7109,10 +7106,6 @@ msgstr "Einchecken in Eintrag löschen"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Erwachsene Check-Out Person"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Name des Erwachsenen (optional)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8594,8 +8587,9 @@ msgid "Records"
 msgstr "Datensätze"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "In Ereignis-ID geleert"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "In Ereignis geleert"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9548,4 +9542,9 @@ msgstr "2021/2022"
 #: 
 msgid "2022/2023"
 msgstr "2022/2023"
+
+#: 
+#, fuzzy
+msgid "Adult Name (Optional)"
+msgstr "Name des Erwachsenen (optional)"
 

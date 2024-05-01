@@ -1734,13 +1734,11 @@
     "The property could not be unassigned.": "Власність не може бути відмінена.",
     "Select event": "Виберіть подію",
     "Person's Name": "Ім'я особи",
-    "Adult Name(Optional)": "Ім'я дорослого (необов’язково)",
-    "Checked in By(Optional)": "Зареєструвався (необов’язково)",
+    "Checked in By (Optional)": "Зареєструвався (необов’язково)",
     "Person has been already checked in for this event": "Людина вже зареєстрована на цю подію",
     "CheckOut Person": "CheckOut Person",
     "Delete Checkin in Entry": "Видалити реєстрацію в записі",
     "Adult Checking Out Person": "Дорослий, який виписує особу",
-    "Adult Name (Optional)": "Ім'я дорослого (необов’язково)",
     "Text before name in emails/reports": "Текст перед назвою в електронних листах / звітах",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Встановіть значення true, щоб дозволити порожнє прізвище в редакторі особи. Встановіть значення false, щоб перевірити прізвище та успадкувати від родини, якщо воно залишається порожнім.",
     "Display bill counts on deposit slip": "Відображати рахунок рахунку на депозитному листі",
@@ -2110,7 +2108,7 @@
     "Families Without Emails": "Сім'ї без електронної пошти",
     "Record": "Запис",
     "Records": "Записи",
-    "Emptied into Event ID": "Порожній в ідентифікаторі події",
+    "Emptied into Event": "Порожній в ідентифікаторі події",
     "integrityCheck.json file missing": "Файл integritetCheck.json відсутній",
     "Passed": "Пройшов",
     "PHP Max Execution Time is too Short": "Макс. Час виконання PHP занадто короткий",
@@ -2315,5 +2313,6 @@
     "Override system locale": "Замінити локальний рівень системи",
     "Deleted": "Видалено",
     "Invalid Birth Date: Missing birth month or day.": "Недійсна дата народження: відсутній місяць або день народження.",
-    "Invalid Birth Date: Missing birth month and day.": "Недійсна дата народження: відсутні місяць і день народження."
+    "Invalid Birth Date: Missing birth month and day.": "Недійсна дата народження: відсутні місяць і день народження.",
+    "Adult Name (Optional)": "Ім'я дорослого (необов’язково)"
 }
