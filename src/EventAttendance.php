@@ -15,6 +15,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !empty($_POST['Event'])) {
     if ($_POST['Choice'] == 'Attendees') {
@@ -24,7 +25,8 @@ if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !emp
 		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext('Event Attendees');
     } elseif ($_POST['Choice'] == 'Nonattendees') {
-        $aSQL = 'SELECT DISTINCT(person_id) FROM event_attend WHERE event_id = ' . $_POST['Event'];
+        $iEventId = InputUtils::legacyFilterInput($_POST['Event'], 'int');
+        $aSQL = 'SELECT DISTINCT(person_id) FROM event_attend WHERE event_id = ' . $iEventId;
         $raOpps = RunQuery($aSQL);
         $aArr = [];
         while ($aRow = mysqli_fetch_row($raOpps)) {
