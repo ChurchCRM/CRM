@@ -1080,7 +1080,7 @@
     "Backup Status:": "የመጠባበቂያ ሁኔታ:",
     "No Backup Running": "መጠባበቂያ እየሰራ አይደለም",
     "Anonymous": "ስም የለሽ",
-    "Attendees for Event ID:": "የክስተት መታወቂያ ተሳታፊዎች:",
+    "Attendees for Event": "የክስተት መታወቂያ ተሳታፊዎች:",
     "is not configured": "አልተዋቀረም",
     "Please update the": "እባክዎ ያዘምኑት",
     "API key in Setting->": "በማቀናበር ውስጥ የAPI ቁልፍ",

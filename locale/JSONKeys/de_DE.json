@@ -1080,7 +1080,7 @@
     "Backup Status:": "Backup Status:",
     "No Backup Running": "Kein Backup läuft",
     "Anonymous": "Anonym",
-    "Attendees for Event ID:": "Teilnehmer an Event mit iD:",
+    "Attendees for Event": "Teilnehmer an Event mit",
     "is not configured": "ist nicht konfiguriert",
     "Please update the": "Bitte update die",
     "API key in Setting->": "API key in Einstellungen->",

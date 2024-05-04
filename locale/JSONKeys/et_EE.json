@@ -1080,7 +1080,7 @@
     "Backup Status:": "Varundamise olek:",
     "No Backup Running": "Varundamist ei tehta",
     "Anonymous": "Anonüümne",
-    "Attendees for Event ID:": "Ürituse ID-l osalejad:",
+    "Attendees for Event": "Ürituse osalejad:",
     "is not configured": "pole konfigureeritud",
     "Please update the": "Palun värskendage",
     "API key in Setting->": "API võti seadistuses->",

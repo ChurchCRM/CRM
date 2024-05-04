@@ -4468,8 +4468,9 @@ msgid "Anonymous"
 msgstr "Anonym"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Teilnehmer an Event mit iD:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Teilnehmer an Event mit"
 
 #: 
 msgid "is not configured"

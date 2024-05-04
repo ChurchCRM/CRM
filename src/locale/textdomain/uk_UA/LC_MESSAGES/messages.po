@@ -4338,7 +4338,8 @@ msgid "Anonymous"
 msgstr "Анонім"
 
 #: 
-msgid "Attendees for Event ID:"
+#, fuzzy
+msgid "Attendees for Event"
 msgstr "Учасники ідентифікатора події:"
 
 #: 

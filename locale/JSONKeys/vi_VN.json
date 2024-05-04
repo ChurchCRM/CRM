@@ -1080,7 +1080,7 @@
     "Backup Status:": "Trạng thái sao lưu:",
     "No Backup Running": "Không có bản sao lưu nào",
     "Anonymous": "Vô danh",
-    "Attendees for Event ID:": "Những người tham dự cho ID sự kiện:",
+    "Attendees for Event": "Những người tham dự cho sự kiện:",
     "is not configured": "không được cấu hình",
     "Please update the": "Vui lòng cập nhật",
     "API key in Setting->": "Khóa API trong Cài đặt->",

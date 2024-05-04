@@ -4339,7 +4339,8 @@ msgid "Anonymous"
 msgstr "ስም የለሽ"
 
 #: 
-msgid "Attendees for Event ID:"
+#, fuzzy
+msgid "Attendees for Event"
 msgstr "የክስተት መታወቂያ ተሳታፊዎች:"
 
 #: 

@@ -1080,7 +1080,7 @@
     "Backup Status:": "Yedekleme Durumu:",
     "No Backup Running": "Yedekleme Yok",
     "Anonymous": "Anonim",
-    "Attendees for Event ID:": "Etkinlik Kimliği için katılımcılar:",
+    "Attendees for Event": "Etkinlik Kimliği için katılımcılar:",
     "is not configured": "yapılandırılmamış",
     "Please update the": "Lütfen güncelleyin",
     "API key in Setting->": "Ayarda API Anahtarı->",

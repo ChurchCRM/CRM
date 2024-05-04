@@ -4487,8 +4487,9 @@ msgid "Anonymous"
 msgstr "Anonym"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Deltagare för evenemangs-ID:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Deltagare för evenemangs"
 
 #: 
 msgid "is not configured"

@@ -4339,8 +4339,9 @@ msgid "Anonymous"
 msgstr "Anónimo"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Asistentes para evento ID:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Asistentes para evento"
 
 #: 
 msgid "is not configured"
@@ -4653,7 +4654,7 @@ msgstr "Estos son los números de roles de familia designados como cabezas del h
 
 #: 
 msgid "These are the family role numbers designated as spouse"
-msgstr "Límite de tiempo de sesión en segundos\\rColocar en cero para deshabilitar límites de tiempo de sesión."
+msgstr "Estos son los números de rol familiar designados como cónyuge"
 
 #: 
 msgid "These are the family role numbers designated as child"

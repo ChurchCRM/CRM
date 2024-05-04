@@ -1080,7 +1080,7 @@
     "Backup Status:": "Stato del backup:",
     "No Backup Running": "Nessun backup in esecuzione",
     "Anonymous": "Anonimo\n",
-    "Attendees for Event ID:": "Partecipanti per ID evento:",
+    "Attendees for Event": "Partecipanti evento",
     "is not configured": "non è configurato",
     "Please update the": "Si prega di aggiornare il",
     "API key in Setting->": "Chiave API in Impostazioni->",

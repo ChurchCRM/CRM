@@ -5253,8 +5253,8 @@ msgstr "Anônimo"
 
 #: 
 #, fuzzy
-msgid "Attendees for Event ID:"
-msgstr "Participantes do evento ID:"
+msgid "Attendees for Event"
+msgstr "Participantes do evento"
 
 #: 
 #, fuzzy

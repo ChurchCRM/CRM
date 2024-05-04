@@ -4340,7 +4340,8 @@ msgid "Anonymous"
 msgstr "مجهول"
 
 #: 
-msgid "Attendees for Event ID:"
+#, fuzzy
+msgid "Attendees for Event"
 msgstr "الحضور لمعرف الحدث:"
 
 #: 

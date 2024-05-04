@@ -4333,8 +4333,9 @@ msgid "Anonymous"
 msgstr "Ανώνυμος"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Συμμετέχοντες για Αναγνωριστικό εκδήλωσης:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Συμμετέχοντες για Αναγνωριστικό εκδήλωσης"
 
 #: 
 msgid "is not configured"

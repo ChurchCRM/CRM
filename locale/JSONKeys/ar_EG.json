@@ -1080,7 +1080,7 @@
     "Backup Status:": "الحالة النسخ الاحتياطي:",
     "No Backup Running": "لا تشغيل النسخ الاحتياطي",
     "Anonymous": "مجهول",
-    "Attendees for Event ID:": "الحضور لمعرف الحدث:",
+    "Attendees for Event": "الحضور لمعرف الحدث:",
     "is not configured": "لم يتم تكوين",
     "Please update the": "يرجى تحديث",
     "API key in Setting->": "مفتاح API في Setting->",

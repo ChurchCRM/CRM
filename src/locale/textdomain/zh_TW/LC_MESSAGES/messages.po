@@ -4473,8 +4473,9 @@ msgid "Anonymous"
 msgstr "匿名"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "活動ID：的與會者"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "活動 的與會者"
 
 #: 
 msgid "is not configured"
