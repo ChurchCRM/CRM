@@ -50,5 +50,4 @@ class MenuEventsCount
 
         return $families;
     }
-
 }
