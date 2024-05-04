@@ -1,21 +1,17 @@
 <?php
 
-namespace ChurchCRM\Emails;
+namespace ChurchCRM\Emails\users;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Emails\BaseEmail;
 use ChurchCRM\model\ChurchCRM\User;
 
 abstract class BaseUserEmail extends BaseEmail
 {
-    protected $user;
+    protected User $user;
 
-    /**
-     * BaseUserEmail constructor.
-     *
-     * @param $user User
-     */
-    public function __construct($user)
+    public function __construct(User $user)
     {
         parent::__construct([$user->getEmail()]);
         $this->user = $user;
@@ -24,11 +20,12 @@ abstract class BaseUserEmail extends BaseEmail
         $this->mail->msgHTML($this->buildMessage());
     }
 
-    abstract protected function getSubSubject();
+    abstract protected function getSubSubject(): string;
 
     public function getTokens(): array
     {
-        $myTokens = ['toName' => $this->user->getPerson()->getFirstName(),
+        $myTokens = [
+            'toName' => $this->user->getPerson()->getFirstName(),
             'userName'        => $this->user->getUserName(),
             'userNameText'    => gettext('Email/Username'),
             'body'            => $this->buildMessageBody(),
@@ -42,10 +39,10 @@ abstract class BaseUserEmail extends BaseEmail
         return SystemURLs::getURL() . '/session/begin?username=' . $this->user->getUserName();
     }
 
-    protected function getButtonText()
+    protected function getButtonText(): string
     {
         return $this->user->getUserName();
     }
 
-    abstract protected function buildMessageBody();
+    abstract protected function buildMessageBody(): string;
 }

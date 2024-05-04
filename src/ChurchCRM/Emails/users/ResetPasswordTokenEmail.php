@@ -1,16 +1,17 @@
 <?php
 
-namespace ChurchCRM\Emails;
+namespace ChurchCRM\Emails\users;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\User;
 
 class ResetPasswordTokenEmail extends BaseUserEmail
 {
-    protected $token;
+    protected string $token;
 
-    public function __construct($user, $token)
+    public function __construct(User $user, string $tokenString)
     {
-        $this->token = $token;
+        $this->token = $tokenString;
         parent::__construct($user);
     }
 

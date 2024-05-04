@@ -18,7 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be administrator to use this page.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 // Get the Group, Property, and Action from the querystring
 $iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'], 'int');
@@ -80,4 +80,3 @@ switch ($sAction) {
 
 // Reload the Form Editor page
 RedirectUtils::redirect('PersonCustomFieldsEditor.php');
-exit;

@@ -48,7 +48,6 @@ if (!empty($_GET['mode'])) {
 
 if (isset($_GET['CancelFamily'])) {
     RedirectUtils::redirect("v2/family/$iFamilyID");
-    exit;
 }
 
 $DonationMessage = '';

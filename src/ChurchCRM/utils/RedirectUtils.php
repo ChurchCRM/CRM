@@ -35,7 +35,7 @@ class RedirectUtils
 
     public static function securityRedirect(string $missingRole): void
     {
-        LoggerUtils::getAppLogger()->info('Security Redirect Request due to Role: ' . $missingRole);
+        LoggerUtils::getAppLogger()->warning('Security Redirect Request due to Role: ' . $missingRole);
         self::Redirect('v2/dashboard');
     }
 }

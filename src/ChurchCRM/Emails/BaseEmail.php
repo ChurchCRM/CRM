@@ -6,17 +6,19 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
-use Mustache_Engine;
-use Mustache_Loader_FilesystemLoader;
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
 use PHPMailer\PHPMailer\PHPMailer;
 
 abstract class BaseEmail
 {
-    /** @var PHPMailer */
-    protected $mail;
-    protected \Mustache_Engine $mustache;
+    protected PHPMailer $mail;
+    protected Environment $twig;
 
-    public function __construct($toAddresses)
+    /**
+     * @param string[] $toAddresses
+     */
+    public function __construct(array $toAddresses)
     {
         $this->setConnection();
         $this->mail->setFrom(ChurchMetaData::getChurchEmail(), ChurchMetaData::getChurchName());
@@ -24,10 +26,8 @@ abstract class BaseEmail
             $this->mail->addAddress($email);
         }
 
-        // use .html instead of .mustache for default template extension
-        $options = ['extension' => '.html'];
-
-        $this->mustache = new Mustache_Engine(['loader' => new Mustache_Loader_FilesystemLoader(SystemURLs::getDocumentRoot() . '/views/email', $options)]);
+        $loader = new FilesystemLoader('../views/email');
+        $this->twig = new Environment($loader);
     }
 
     private function setConnection(): void
@@ -50,7 +50,7 @@ abstract class BaseEmail
         }
     }
 
-    public function send()
+    public function send(): bool
     {
         if (SystemConfig::hasValidMailServerSettings()) {
             return $this->mail->send();
@@ -59,24 +59,24 @@ abstract class BaseEmail
         return false; // we don't have a valid setting so let us make sure we don't crash.
     }
 
-    public function getError()
+    public function getError(): string
     {
         return $this->mail->ErrorInfo;
     }
 
-    public function addStringAttachment($string, $filename): void
+    public function addStringAttachment(string $string, string $filename): void
     {
         $this->mail->addStringAttachment($string, $filename);
     }
 
-    protected function buildMessage()
+    protected function buildMessage(): string
     {
-        return $this->mustache->render($this->getMustacheTemplateName(), $this->getTokens());
+        return $this->twig->render($this->getTemplateName(), $this->getTokens());
     }
 
-    protected function getMustacheTemplateName(): string
+    protected function getTemplateName(): string
     {
-        return 'BaseEmail';
+        return 'BaseEmail.html.twig';
     }
 
     /**
@@ -111,9 +111,12 @@ abstract class BaseEmail
         return $commonTokens;
     }
 
-    abstract public function getTokens();
+    /**
+     * @return array<string, string>
+     */
+    abstract public function getTokens(): array;
 
-    abstract protected function getFullURL();
+    abstract protected function getFullURL(): string;
 
-    abstract protected function getButtonText();
+    abstract protected function getButtonText(): string;
 }

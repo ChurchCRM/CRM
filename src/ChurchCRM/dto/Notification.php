@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Emails\NotificationEmail;
+use ChurchCRM\Emails\notifications\NotificationEmail;
 use ChurchCRM\model\ChurchCRM\Person;
 use Vonage\Client;
 use Vonage\Client\Credentials\Basic;

@@ -5,7 +5,6 @@ namespace ChurchCRM\SystemCalendars;
 use ChurchCRM\data\Countries;
 use ChurchCRM\data\Country;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Interfaces\SystemCalendar;
 use ChurchCRM\model\ChurchCRM\Event;
 use Propel\Runtime\Collection\ObjectCollection;
 use Yasumi\Holiday;
@@ -13,12 +12,14 @@ use Yasumi\Yasumi;
 
 class HolidayCalendar implements SystemCalendar
 {
-    public static function isAvailable()
+    public static function isAvailable(): bool
     {
         $systemCountry = Countries::getCountryByName(SystemConfig::getValue('sChurchCountry'));
         if ($systemCountry instanceof Country) {
             return $systemCountry->getCountryNameYasumi() !== null;
         }
+
+        return false;
     }
 
     public function getAccessToken(): bool
@@ -46,15 +47,15 @@ class HolidayCalendar implements SystemCalendar
         return gettext('Holidays');
     }
 
-    public function getEvents($start, $end): ObjectCollection
+    public function getEvents(string $start, string $end)
     {
         $Country = Countries::getCountryByName(SystemConfig::getValue('sChurchCountry'));
         $year = date('Y');
-        $holidays = Yasumi::create($Country->getCountryNameYasumi(), $year);
+        $holidays = Yasumi::create($Country->getCountryNameYasumi(), (int) $year);
         $events = new ObjectCollection();
         $events->setModel(Event::class);
 
-        foreach ($holidays as $holiday) {
+        foreach ($holidays->getHolidays() as $holiday) {
             $event = $this->yasumiHolidayToEvent($holiday);
             $events->push($event);
         }
@@ -62,7 +63,7 @@ class HolidayCalendar implements SystemCalendar
         return $events;
     }
 
-    public function getEventById($Id): bool
+    public function getEventById(int $Id)
     {
         return false;
     }

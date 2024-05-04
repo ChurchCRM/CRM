@@ -21,7 +21,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 //Set the page title
 $sPageTitle = gettext('Restore Database');

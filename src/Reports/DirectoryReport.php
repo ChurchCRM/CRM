@@ -80,19 +80,19 @@ $sChurchPhone = InputUtils::legacyFilterInput($_POST['sChurchPhone']);
 $bDirUseTitlePage = isset($_POST['bDirUseTitlePage']);
 
 $bNumberofColumns = InputUtils::legacyFilterInput($_POST['NumCols'] ?? '1', 'int');
-$bPageSize = InputUtils::legacyFilterInput($_POST['PageSize'] ?? 'letter', 'int');
+$sPageSize = InputUtils::legacyFilterInput($_POST['PageSize']);
 $bFontSz = InputUtils::legacyFilterInput($_POST['FSize'] ?? '8', 'int');
 $bLineSp = $bFontSz / 3;
 
-if ($bPageSize != 'letter' && $bPageSize != 'a4') {
-    $bPageSize = 'legal';
+if ($sPageSize != 'letter' && $sPageSize != 'a4') {
+    $sPageSize = 'legal';
 }
 
-//echo "ncols={$bNumberofColumns}  page size={$bPageSize}";
+//echo "ncols={$bNumberofColumns}  page size={$sPageSize}";
 
 // Instantiate the directory class and build the report.
 //echo "font sz = {$bFontSz} and line sp={$bLineSp}";
-$pdf = new PdfDirectory($bNumberofColumns, $bPageSize, $bFontSz, $bLineSp);
+$pdf = new PdfDirectory($bNumberofColumns, $sPageSize, $bFontSz, $bLineSp);
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';

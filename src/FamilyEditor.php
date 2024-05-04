@@ -18,7 +18,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -42,17 +42,14 @@ if (array_key_exists('FamilyID', $_GET)) {
 if ($iFamilyID > 0) {
     if (!(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() || (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId()))) {
         RedirectUtils::redirect('v2/dashboard');
-        exit;
     }
 
     $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_ID = ' . $iFamilyID;
     if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
         RedirectUtils::redirect('v2/dashboard');
-        exit;
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 // Get the lists of canvassers
