@@ -45,11 +45,6 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, ['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
     });
 
-    $group->get(
-        '/numbers',
-        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, MenuEventsCount::getNumberAnniversaries())
-    );
-
     $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
         $query = $args['query'];
         $results = [];

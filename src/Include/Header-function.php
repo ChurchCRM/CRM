@@ -18,7 +18,6 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\MenuConfigQuery;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\PHPToMomentJSConverter;
 
