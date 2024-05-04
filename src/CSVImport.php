@@ -29,7 +29,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\LoggerUtils;
 
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 $logger = LoggerUtils::getAppLogger();
 /**

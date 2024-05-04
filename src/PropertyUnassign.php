@@ -21,7 +21,6 @@ use ChurchCRM\Utils\RedirectUtils;
 // Otherwise, re-direct them to the main menu.
 if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 //Get the new property value from the post collection
@@ -69,7 +68,6 @@ if (isset($_GET['PersonID']) && AuthenticationManager::getCurrentUser()->isEditR
 } else {
     // Somebody tried to call the script with no options
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 //Do we have confirmation?
@@ -77,7 +75,6 @@ if (isset($_GET['Confirmed'])) {
     $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_record_ID = ' . $iRecordID . ' AND r2p_pro_ID = ' . $iPropertyID;
     RunQuery($sSQL);
     RedirectUtils::redirect($sBackPage);
-    exit;
 }
 
 //Get the name of the property

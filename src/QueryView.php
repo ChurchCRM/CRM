@@ -29,7 +29,6 @@ $aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
 
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 //Include the header

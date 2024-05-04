@@ -22,7 +22,7 @@ $sPageTitle = gettext('Free-Text Query');
 
 // Security: User must be an Admin to access this page.  It allows unrestricted database access!
 // Otherwise, re-direct them to the main menu.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 if (isset($_POST['SQL'])) {
     //Assign the value locally

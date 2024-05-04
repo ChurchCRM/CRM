@@ -1,14 +1,18 @@
 <?php
 
-namespace ChurchCRM\Emails;
+namespace ChurchCRM\Emails\notifications;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Emails\BaseEmail;
 
 class NotificationEmail extends BaseEmail
 {
-    private $notificationSource;
+    private string $notificationSource;
 
-    public function __construct($toAddresses, $notificationSource)
+    /**
+     * @param string[] $toAddresses
+     */
+    public function __construct(array $toAddresses, string $notificationSource)
     {
         $this->notificationSource = $notificationSource;
         parent::__construct($toAddresses);
@@ -32,13 +36,13 @@ class NotificationEmail extends BaseEmail
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    protected function getFullURL()
+    protected function getFullURL(): string
     {
-        // TODO: Implement getFullURL() method.
+        return '';
     }
 
-    protected function getButtonText()
+    protected function getButtonText(): string
     {
-        // TODO: Implement getButtonText() method.
+        return '';
     }
 }

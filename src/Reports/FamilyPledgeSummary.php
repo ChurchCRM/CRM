@@ -72,7 +72,6 @@ if (array_key_exists('only_owe', $_POST)) {
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 // Get all the families

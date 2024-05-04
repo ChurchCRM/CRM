@@ -20,7 +20,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have proper permission
 // For now ... require $bAdmin
 // Future ... $bManageVol
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 // top down design....
 // title line

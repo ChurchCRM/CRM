@@ -1,9 +1,9 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Emails\AccountDeletedEmail;
-use ChurchCRM\Emails\ResetPasswordEmail;
-use ChurchCRM\Emails\UnlockedEmail;
+use ChurchCRM\Emails\users\AccountDeletedEmail;
+use ChurchCRM\Emails\users\ResetPasswordEmail;
+use ChurchCRM\Emails\users\UnlockedEmail;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;

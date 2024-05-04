@@ -50,11 +50,6 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, $return);
     });
 
-    $group->get(
-        '/numbers',
-        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, MenuEventsCount::getNumberBirthDates())
-    );
-
     $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
