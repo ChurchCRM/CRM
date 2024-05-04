@@ -91,4 +91,3 @@ switch ($sAction) {
 
 // Reload the Form Editor page
 RedirectUtils::redirect('GroupPropsFormEditor.php?GroupID=' . $iGroupID);
-exit;

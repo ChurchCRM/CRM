@@ -1,17 +1,24 @@
 <?php
 
-namespace ChurchCRM\Emails;
+namespace ChurchCRM\Emails\notifications;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Emails\BaseEmail;
+use ChurchCRM\Exceptions\NotImplementedException;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class NewPersonOrFamilyEmail extends BaseEmail
 {
+    /** @var Family|Person|mixed */
     private $relatedObject;
 
+    /**
+     * @param Family|Person|mixed $RelatedObject
+     * @throws \PHPMailer\PHPMailer\Exception
+     */
     public function __construct($RelatedObject)
     {
         $this->relatedObject = $RelatedObject;
@@ -20,7 +27,11 @@ class NewPersonOrFamilyEmail extends BaseEmail
         $recipientPeople = explode(',', SystemConfig::getValue('sNewPersonNotificationRecipientIDs'));
 
         foreach ($recipientPeople as $PersonID) {
-            $Person = PersonQuery::create()->findOneById($PersonID);
+            if (!is_numeric($PersonID)) {
+                continue;
+            }
+
+            $Person = PersonQuery::create()->findOneById((int) $PersonID);
             if (!empty($Person)) {
                 $email = $Person->getEmail();
                 if (!empty($email)) {
@@ -35,13 +46,15 @@ class NewPersonOrFamilyEmail extends BaseEmail
         $this->mail->msgHTML($this->buildMessage());
     }
 
-    protected function getSubSubject()
+    protected function getSubSubject(): string
     {
         if ($this->relatedObject instanceof Person) {
             return gettext('New Person Added');
         } elseif ($this->relatedObject instanceof Family) {
             return gettext('New Family Added');
         }
+
+        throw new NotImplementedException();
     }
 
     public function getTokens(): array
@@ -75,21 +88,25 @@ class NewPersonOrFamilyEmail extends BaseEmail
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    protected function getFullURL()
+    protected function getFullURL(): string
     {
         if ($this->relatedObject instanceof Family) {
             return SystemURLs::getURL() . '/v2/family/' . $this->relatedObject->getId();
         } elseif ($this->relatedObject instanceof Person) {
             return SystemURLs::getURL() . '/PersonView.php?PersonID=' . $this->relatedObject->getId();
         }
+
+        return '';
     }
 
-    protected function getButtonText()
+    protected function getButtonText(): string
     {
         if ($this->relatedObject instanceof Family) {
             return gettext('View Family Page');
         } elseif ($this->relatedObject instanceof Person) {
             return gettext('View Person Page');
         }
+
+        return '';
     }
 }

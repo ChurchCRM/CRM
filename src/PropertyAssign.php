@@ -23,7 +23,6 @@ use ChurchCRM\Utils\RedirectUtils;
 // Otherwise, re-direct them to the main menu.
 if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 $sValue = '';

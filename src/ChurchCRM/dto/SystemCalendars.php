@@ -2,11 +2,11 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Interfaces\SystemCalendar;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\SystemCalendars\AnniversariesCalendar;
 use ChurchCRM\SystemCalendars\BirthdaysCalendar;
 use ChurchCRM\SystemCalendars\HolidayCalendar;
+use ChurchCRM\SystemCalendars\SystemCalendar;
 use ChurchCRM\SystemCalendars\UnpinnedEvents;
 use Propel\Runtime\Collection\ObjectCollection;
 

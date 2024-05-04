@@ -94,7 +94,6 @@ if ($sGroupKey) {
         // Security: User must have Finance permission or be the one who entered this record originally
         if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() == $aRow['plg_EditedBy'])) {
             RedirectUtils::redirect('v2/dashboard');
-            exit;
         }
     }
 }

@@ -34,7 +34,6 @@ $only_owe = InputUtils::legacyFilterInput($_POST['only_owe']);
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 if (!empty($_POST['classList'])) {

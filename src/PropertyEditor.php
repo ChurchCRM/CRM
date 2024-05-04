@@ -50,7 +50,6 @@ switch ($sType) {
 
     default:
         RedirectUtils::redirect('v2/dashboard');
-        exit;
         break;
 }
 
