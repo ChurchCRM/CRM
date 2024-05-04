@@ -4343,8 +4343,9 @@ msgid "Anonymous"
 msgstr "Anonim"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Peserta untuk ID Peristiwa:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Peserta untuk Peristiwa"
 
 #: 
 msgid "is not configured"
@@ -6962,11 +6963,8 @@ msgid "Person's Name"
 msgstr "Nama orang"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Nama Dewasa (Opsional)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Diperiksa oleh (Opsional)"
 
 #: 
@@ -6984,10 +6982,6 @@ msgstr "Hapus Checkin di Entri"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Orang Dewasa yang Memeriksa"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nama Dewasa (Opsional)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8469,8 +8463,9 @@ msgid "Records"
 msgstr "Rekaman"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Dikosongkan ke Event ID"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Dikosongkan ke Event"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9372,4 +9367,8 @@ msgstr "Total Deposit"
 #: 
 msgid "Group Cart Status"
 msgstr "Status Keranjang Kelompok"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nama Dewasa (Opsional)"
 

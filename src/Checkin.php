@@ -85,7 +85,7 @@ if ($EventID > 0) {
                         <label class="col-md-2 control-label"><?= gettext('Select Event'); ?></label>
                         <div class="col-md-10 inputGroupContainer">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-calendar-check"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-calendar-check fa-2xl"> </i> </span> &nbsp;
                                 <select id="EventID" name="EventID" class="form-control" onchange="this.form.submit()">
                                     <option value="<?= $EventID; ?>"
                                             disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?> ><?= gettext('Select event') ?></option>
@@ -137,7 +137,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                             <label for="child" class="col-sm-2 control-label"><?= gettext("Person's Name") ?></label>
                             <div class="col-sm-5 inputGroupContainer">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-child fa-2xl"></i></span> &nbsp;
                                     <input type="text" class="form-control" id="child"
                                            placeholder="<?= gettext("Person's Name"); ?>" required tabindex=1>
                                 </div>
@@ -149,12 +149,12 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                         <hr>
                         <div class="form-group">
                             <label for="adult"
-                                   class="col-sm-2 control-label"><?= gettext('Adult Name(Optional)') ?></label>
+                                   class="col-sm-2 control-label"><?= gettext('Adult Name (Optional)') ?></label>
                             <div class="col-sm-5 inputGroupContainer">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-user fa-2xl"></i></span> &nbsp;
                                     <input type="text" class="form-control" id="adult"
-                                           placeholder="<?= gettext('Checked in By(Optional)'); ?>" tabindex=2>
+                                           placeholder="<?= gettext('Checked in By (Optional)'); ?>" tabindex=2>
                                 </div>
                             </div>
                             <div id="adultDetails" class="col-sm-5 text-center"></div>
