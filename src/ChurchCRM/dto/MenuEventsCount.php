@@ -51,8 +51,4 @@ class MenuEventsCount
         return $families;
     }
 
-    public static function getNumberAnniversaries(): int
-    {
-        return count(self::getAnniversaries());
-    }
 }
