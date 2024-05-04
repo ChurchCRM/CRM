@@ -17,8 +17,8 @@ context("Standard User Session", () => {
 
 
     it("View Event via URL", () => {
-        cy.loginStandard("EditEventAttendees.php?eventId=9");
-        cy.contains("Attendees for Event ID: 9");
+        cy.loginStandard("EditEventAttendees.php?eventId=3");
+        cy.contains("Attendees for Event ID: Summer Camp");
     });
 
     it("View Event via Bad URL", () => {

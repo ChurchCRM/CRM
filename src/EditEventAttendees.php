@@ -41,7 +41,7 @@ if (empty($event)) {
 ?>
 <div class='card'>
   <div class='card-header'>
-    <h3 class='card-title'><?= gettext('Attendees for Event ID:') . ' ' . $event->getTitle() ?></h3>
+    <h3 class='card-title'><?= gettext('Attendees for Event') . ' : ' . $event->getTitle() ?></h3>
   </div>
   <div class='card-body'>
     <strong><?= gettext('Name')?>:</strong> <?= $EvtName ?><br/>
