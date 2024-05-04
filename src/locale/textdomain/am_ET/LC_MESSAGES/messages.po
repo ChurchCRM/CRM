@@ -6960,11 +6960,8 @@ msgid "Person's Name"
 msgstr "የሰው ስም"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "የአዋቂዎች ስም (አማራጭ)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "መዝግቦ ያስገባው ሰው(ከተፈለገ)"
 
 #: 
@@ -6982,10 +6979,6 @@ msgstr "መግቢያ ዝርዝርን ሰርዝ"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "አዋቂዎች የሆነ ይዞ ሚወጣ"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "የአዋቂዎች ስም (አማራጭ)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8468,7 +8461,8 @@ msgid "Records"
 msgstr "መዝገቦች "
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "በክስተቱ መታወቂያ ባዶ "
 
 #: 
@@ -9342,4 +9336,9 @@ msgstr "ልክ ያልሆነ የልደት ቀን፡ የጠፋ የልደት ወር
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "ልክ ያልሆነ የልደት ቀን፡ የጠፋ የልደት ወር እና ቀን"
+
+#: 
+#, fuzzy
+msgid "Adult Name (Optional)"
+msgstr "የአዋቂዎች ስም (አማራጭ)"
 

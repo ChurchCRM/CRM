@@ -6958,11 +6958,8 @@ msgid "Person's Name"
 msgstr "Isiku nimi"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Täiskasvanu nimi (valikuline)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Sisse registreeritud (valikuline)"
 
 #: 
@@ -6980,10 +6977,6 @@ msgstr "Kustuta sisseregistreerimine"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Täiskasvanud väljaregistreeriv isik"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Täiskasvanu nimi (valikuline)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8465,8 +8458,9 @@ msgid "Records"
 msgstr "Kirjed"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Eemaldatud sündmuse ID-ks"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Eemaldatud sündmuse"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9424,4 +9418,8 @@ msgstr "2022/2023"
 #: 
 msgid "invalid group request"
 msgstr "kehtetu rühmataotlus"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Täiskasvanu nimi (valikuline)"
 

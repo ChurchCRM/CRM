@@ -6952,11 +6952,8 @@ msgid "Person's Name"
 msgstr "Όνομα Μέλους"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Όνομα ενήλικα (Προαιρετικό)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Έγινε check in από (Προαιρετικό)"
 
 #: 
@@ -6974,10 +6971,6 @@ msgstr "Διαγραφή Checkin στην Καταχώριση"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Ενήλικος που κάνει check out"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Όνομα ενήλικα (Προαιρετικό)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8459,7 +8452,8 @@ msgid "Records"
 msgstr "Εγγραφές"
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "Αδειάστηκε στο Αναγνωριστικό συμβάντος"
 
 #: 
@@ -9301,4 +9295,8 @@ msgstr "Μη έγκυρη ημερομηνία γέννησης: Λείπει ο
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Μη έγκυρη ημερομηνία γέννησης: Λείπει ο μήνας και η ημέρα γέννησης."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Όνομα ενήλικα (Προαιρετικό)"
 
