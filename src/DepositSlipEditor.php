@@ -37,13 +37,13 @@ if ($iDepositSlipID) {
     if ($thisDeposit) {
         $noDeposit = false;
         // Set the session variable for default payment type so the new payment form will come up correctly
-        if ($thisDeposit->getType() == 'Bank') {
+        if ($thisDeposit->getType() === 'Bank') {
             $_SESSION['idefaultPaymentMethod'] = 'CHECK';
-        } elseif ($thisDeposit->getType() == 'CreditCard') {
+        } elseif ($thisDeposit->getType() === 'CreditCard') {
             $_SESSION['idefaultPaymentMethod'] = 'CREDITCARD';
-        } elseif ($thisDeposit->getType() == 'BankDraft') {
+        } elseif ($thisDeposit->getType() === 'BankDraft') {
             $_SESSION['idefaultPaymentMethod'] = 'BANKDRAFT';
-        } elseif ($thisDeposit->getType() == 'eGive') {
+        } elseif ($thisDeposit->getType() === 'eGive') {
             $_SESSION['idefaultPaymentMethod'] = 'EGIVE';
         }
     }
