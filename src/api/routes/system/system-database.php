@@ -150,7 +150,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
     $list = [];
     foreach ($people as $person) {
         $family = $person->getFamily();
-        $anniversary = ($family ? $family->getWeddingdate(SystemConfig::getValue('sDateFormatShort')) : '');
+        $anniversary = ($family ? $family->getWeddingdate(SystemConfig::getValue('sDateFormatLong')) : '');
         $familyRole = $person->getFamilyRoleName();
         if ($familyRole == 'Head of Household') {
             $familyRole = 'Primary';
@@ -180,7 +180,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
             $person->getState(),
             $person->getZip(),
             '',
-            $person->getMembershipDate(SystemConfig::getValue('sDateFormatShort')),
+            $person->getMembershipDate(SystemConfig::getValue('sDateFormatLong')),
             $family ? $family->getId() : '',
             $familyRole,
             '',
