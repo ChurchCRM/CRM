@@ -385,43 +385,52 @@ function initializeCalendar() {
     window.CRM.isCalendarLoading = false;
     // initialize the calendar
     // -----------------------------------------------------------------
-    window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
-        headerToolbar: {
-            start: "prev,next today",
-            center: "title",
-            end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
-        },
-        height: 600,
-        selectable: true,
-        editable: window.CRM.calendarJSArgs.isModifiable,
-        eventDrop: window.moveEventModal.handleEventDrop,
-        eventResize: window.moveEventModal.handleEventResize,
-        selectMirror: true,
-        select: window.showNewEventForm, // This starts the React app
-        eventClick: function (info) {
-            var { event: eventData, jsEvent } = info;
-            jsEvent.preventDefault(); // don't let the browser navigate
+    window.CRM.fullcalendar = new FullCalendar.Calendar(
+        document.getElementById("calendar"),
+        {
+            headerToolbar: {
+                start: "prev,next today",
+                center: "title",
+                end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+            },
+            height: 600,
+            selectable: true,
+            editable: window.CRM.calendarJSArgs.isModifiable,
+            eventDrop: window.moveEventModal.handleEventDrop,
+            eventResize: window.moveEventModal.handleEventResize,
+            selectMirror: true,
+            select: window.showNewEventForm, // This starts the React app
+            eventClick: function (info) {
+                var { event: eventData, jsEvent } = info;
+                jsEvent.preventDefault(); // don't let the browser navigate
 
-            var eventSourceParams = eventData.source.url.split("/");
-            var eventSourceType = eventSourceParams[eventSourceParams.length - 3];
-            if (eventData.url) {  // this event has a URL, so we should redirect the user to that URL
-                window.open(eventData.url);
-            } else if (eventData.editable || (eventData.startEditable || eventData.durationEditable)) {
-                // this event is "Editable", so we should display the edit form.
-                //
-                // NOTE: for some reaons, `editable` field is not in the event so we're estimating
-                //   this value based on `startEditable` and `durationEditable`
-                window.showEventForm(eventData); // This starts the React app
-            } else {
-                // but holidays don't currently have a URL from the backend #4962
-                alert(i18next.t("Holiday") + ": " + eventData.title);
-            }
+                var eventSourceParams = eventData.source.url.split("/");
+                var eventSourceType =
+                    eventSourceParams[eventSourceParams.length - 3];
+                if (eventData.url) {
+                    // this event has a URL, so we should redirect the user to that URL
+                    window.open(eventData.url);
+                } else if (
+                    eventData.editable ||
+                    eventData.startEditable ||
+                    eventData.durationEditable
+                ) {
+                    // this event is "Editable", so we should display the edit form.
+                    //
+                    // NOTE: for some reaons, `editable` field is not in the event so we're estimating
+                    //   this value based on `startEditable` and `durationEditable`
+                    window.showEventForm(eventData); // This starts the React app
+                } else {
+                    // but holidays don't currently have a URL from the backend #4962
+                    alert(i18next.t("Holiday") + ": " + eventData.title);
+                }
+            },
+            locale: window.CRM.lang,
+            loading: function (isLoading, view) {
+                window.CRM.isCalendarLoading = isLoading;
+            },
         },
-        locale: window.CRM.lang,
-        loading: function (isLoading, view) {
-            window.CRM.isCalendarLoading = isLoading;
-        },
-    });
+    );
 }
 
 function getCalendarFilterElement(calendar, type, parent) {
@@ -499,9 +508,7 @@ function registerCalendarSelectionEvents() {
                     return element.url === eventSourceURL;
                 });
             if (!alreadyPresent) {
-                window.CRM.fullcalendar.addEventSource(
-                    eventSourceURL,
-                );
+                window.CRM.fullcalendar.addEventSource(eventSourceURL);
             }
         } else {
             var eventSource = window.CRM.fullcalendar
@@ -640,7 +647,7 @@ function displayAccessTokenAPITest() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
     //window.CRM.calendarJSArgs.isModifiable = false;
     initializeCalendar();
     initializeFilterSettings();

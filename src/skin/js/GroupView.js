@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }).then(function (data) {
         window.CRM.groupRoles = data ?? [];
         $("#newRoleSelection").select2({
-            data: window.CRM.groupRoles.map((groupRole)=> {
+            data: window.CRM.groupRoles.map((groupRole) => {
                 return {
                     id: groupRole.OptionId,
                     text: i18next.t(groupRole.OptionName),
@@ -65,7 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#deleteSelectedRows").on("click", function () {
-        var deletedRows = window.CRM.DataTableAPI.rows(".selected").data().toArray();
+        var deletedRows = window.CRM.DataTableAPI.rows(".selected")
+            .data()
+            .toArray();
         bootbox.confirm({
             message:
                 i18next.t(
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         window.CRM.groups
                             .removePerson(
                                 window.CRM.currentGroup,
-                                value.PersonId
+                                value.PersonId,
                             )
                             .then(function () {
                                 var dataTableAPI = window.CRM.DataTableAPI;
@@ -101,9 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         }
                                     })
                                     .remove();
-                                dataTableAPI.rows()
-                                    .invalidate()
-                                    .draw(true);
+                                dataTableAPI.rows().invalidate().draw(true);
                             });
                     });
                 }
@@ -114,11 +114,12 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#addSelectedToCart").on("click", function () {
         if (window.CRM.DataTableAPI.rows(".selected").length > 0) {
             var selectedPersons = {
-                Persons: window.CRM.DataTableAPI.rows(".selected").data().toArray().map(
-                    function (val, i) {
+                Persons: window.CRM.DataTableAPI.rows(".selected")
+                    .data()
+                    .toArray()
+                    .map(function (val, i) {
                         return val.PersonId;
-                    },
-                ),
+                    }),
             };
             window.CRM.cart.addPerson(selectedPersons.Persons);
         }
@@ -133,12 +134,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.CRM.groups.selectTypes.Role,
             },
             function (data) {
-                selectedRows = window.CRM.DataTableAPI.rows(".selected").data().toArray();
-                selectedRows.forEach(function(row) {
+                selectedRows = window.CRM.DataTableAPI.rows(".selected")
+                    .data()
+                    .toArray();
+                selectedRows.forEach(function (row) {
                     window.CRM.groups.addPerson(
                         data.GroupID,
                         row.PersonId,
-                        data.RoleID
+                        data.RoleID,
                     );
                 });
             },
@@ -153,26 +156,30 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.CRM.groups.selectTypes.Role,
             },
             function (data) {
-                selectedRows = window.CRM.DataTableAPI.rows(".selected").data().toArray();
-                selectedRows.forEach(function(value, index) {
+                selectedRows = window.CRM.DataTableAPI.rows(".selected")
+                    .data()
+                    .toArray();
+                selectedRows.forEach(function (value, index) {
                     window.CRM.groups.addPerson(
                         data.GroupID,
                         value.PersonId,
-                        data.RoleID
+                        data.RoleID,
                     );
 
-                    window.CRM.groups.removePerson(window.CRM.currentGroup, value.PersonId)
-                        .then(function() {
+                    window.CRM.groups
+                        .removePerson(window.CRM.currentGroup, value.PersonId)
+                        .then(function () {
                             var dataTableAPI = window.CRM.DataTableAPI;
-                            dataTableAPI.row(function(idx, data, node) {
-                                if (data.PersonId == value.PersonId) {
-                                    return true;
-                                }
-                            }).remove();
+                            dataTableAPI
+                                .row(function (idx, data, node) {
+                                    if (data.PersonId == value.PersonId) {
+                                        return true;
+                                    }
+                                })
+                                .remove();
                             dataTableAPI.rows().invalidate().draw(true);
                         });
                 });
-
             },
         );
     });

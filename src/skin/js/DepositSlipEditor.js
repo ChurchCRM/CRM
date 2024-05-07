@@ -11,7 +11,7 @@ function initPaymentTable() {
                     depositSlipID +
                     "&GroupKey=" +
                     full.GroupKey +
-                    '\'><i class="fa ' +
+                    "'><i class=\"fa " +
                     (isDepositClosed ? "fa-search-plus" : "fa-pencil") +
                     '"></i></a>' +
                     familyName
