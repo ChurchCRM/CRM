@@ -8,6 +8,7 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. Query = pertanyaan
 #: 
 msgid "Cannot execute query."
 msgstr "Tidak bisa jalankan kueri."
@@ -1151,6 +1152,7 @@ msgstr "Kembali kepada kegiatan-kegiatan"
 msgid "EVENT TYPE NAME"
 msgstr "Nama tipe kegiatan"
 
+#. Please create menu to support 2 options like Sunday or Sabbath.
 #: 
 msgid "Sundays"
 msgstr "Hari minggu "
@@ -2370,6 +2372,7 @@ msgstr "Orang-orang"
 msgid "See All People"
 msgstr "Lihat Semua Orang"
 
+#. Please create a menu support user to select Sunday or Sabbath... So this software can reach all
 #: 
 msgid "Sunday School Kids"
 msgstr "Anak Sekolah Minggu"

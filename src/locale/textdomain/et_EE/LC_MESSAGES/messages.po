@@ -65,7 +65,6 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "See tööriist aitab sul kokku pakkida ChurchCRM andmebaasi."
 
 #: 
-#, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Sa peaksid tegema käsitsi varukoopia oma andmebaasist vähemalt kord nädalas, kui just su süsteem ei tee seda automaatselt."
 
@@ -9419,6 +9418,38 @@ msgstr "2022/2023"
 #: 
 msgid "invalid group request"
 msgstr "kehtetu rühmataotlus"
+
+#: 
+msgid "Hindi - India"
+msgstr "Hindi - India"
+
+#: 
+msgid "Japanese"
+msgstr "Jaapani keeles"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamil - India"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Pole tellitud"
+
+#: 
+msgid "property"
+msgstr "omadus"
+
+#: 
+msgid "Default Zip"
+msgstr "Vaikimisi ZIP"
+
+#: 
+msgid "Credit Card People"
+msgstr "Krediitkaardi inimesed"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Inimesed kes on konfigureeritud krediitkaardiga maksma."
 
 #: 
 msgid "Adult Name (Optional)"
