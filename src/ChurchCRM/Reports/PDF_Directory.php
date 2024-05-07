@@ -337,7 +337,7 @@ class PdfDirectory extends ChurchInfoReport
             $sFamilyStr .= '   ' . gettext('Email') . ': ' . $fam_Email . "\n";
         }
         if ($bDirWedding && ($fam_WeddingDate > 0)) {
-            $sFamilyStr .= '   ' . gettext('Wedding') . ': ' . date(SystemConfig::getValue('sDateFormatShort'), strtotime($fam_WeddingDate)) . "\n";
+            $sFamilyStr .= '   ' . gettext('Wedding') . ': ' . date(SystemConfig::getValue('sDateFormatLong'), strtotime($fam_WeddingDate)) . "\n";
         }
 
         return $sFamilyStr;
