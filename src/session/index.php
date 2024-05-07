@@ -63,28 +63,27 @@ function endSession(Request $request, Response $response, array $args): void
 
 function beginSession(Request $request, Response $response, array $args): Response
 {
+    $queryParamStr = $request->getUri()->getQuery();
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),
-        'localAuthNextStepURL' => AuthenticationManager::getSessionBeginURL(),
+        'localAuthNextStepURL' => AuthenticationManager::getSessionBeginURL($queryParamStr),
         'forgotPasswordURL'    => AuthenticationManager::getForgotPasswordURL(),
     ];
 
-    if ($request->getMethod() == 'POST') {
+    if ($request->getMethod() === 'POST') {
+        $redirectPath = $request->getQueryParams()['location'] ?? null;
         $loginRequestBody = $request->getParsedBody();
-        $request = new LocalUsernamePasswordRequest($loginRequestBody['User'], $loginRequestBody['Password']);
+        $request = new LocalUsernamePasswordRequest($loginRequestBody['User'], $loginRequestBody['Password'], $redirectPath);
         $authenticationResult = AuthenticationManager::authenticate($request);
         $pageArgs['sErrorText'] = $authenticationResult->message;
     }
 
     $renderer = new PhpRenderer('templates/');
 
-    $pageArgs['prefilledUserName'] = '';
     // Determine if appropriate to pre-fill the username field
-    if (isset($_GET['username'])) {
-        $pageArgs['prefilledUserName'] = $_GET['username'];
-    } elseif (isset($_SESSION['username'])) {
-        $pageArgs['prefilledUserName'] = $_SESSION['username'];
-    }
+    $pageArgs['prefilledUserName'] = $request->getQueryParams()['username'] ??
+        $request->getServerParams()['username'] ??
+        '';
 
     return $renderer->render($response, 'begin-session.php', $pageArgs);
 }

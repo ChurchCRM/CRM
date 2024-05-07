@@ -127,7 +127,11 @@ class AuthenticationManager
         }
 
         if ($result->isAuthenticated && !$result->preventRedirect) {
-            $redirectLocation = $_SESSION['location'] ?? 'v2/dashboard';
+            $redirectLocation = null;
+            if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
+                $redirectLocation = $AuthenticationRequest->redirectPath;
+            }
+            $redirectLocation = $redirectLocation ?? $_SESSION['location'] ?? 'v2/dashboard';
             NotificationService::updateNotifications();
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
@@ -195,16 +199,21 @@ class AuthenticationManager
         }
     }
 
-    public static function getSessionBeginURL(): string
+    public static function getSessionBeginURL(?string $queryParams = null): string
     {
-        return SystemURLs::getRootPath() . '/session/begin';
+        $url = SystemURLs::getRootPath() . '/session/begin';
+        if (!empty($queryParams)) {
+            $url .= '?' . $queryParams;
+        }
+
+        return $url;
     }
 
     public static function getForgotPasswordURL(): string
     {
         // this assumes we're using local authentication
         // TODO: when we implement other authentication providers (SAML/etc)
-        // this URL will need to be configuable by the system administrator
+        // this URL will need to be configurable by the system administrator
         // since they likely will not want users attempting to reset ChurchCRM passwords
         // but rather redirect users to some other password reset mechanism.
         return SystemURLs::getRootPath() . '/session/forgot-password/reset-request';
