@@ -75,7 +75,8 @@ SQL;
         file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
 
         foreach (ChurchCRM\data\Countries::getNames() as $country) {
-            file_put_contents($stringFile, 'gettext("' . addslashes($country) . '");\r\n', FILE_APPEND);
+            $countryTerm = addslashes($country);
+            file_put_contents($stringFile, "gettext('" . $countryTerm . "');\r\n", FILE_APPEND);
         }
 
         file_put_contents($stringFile, "\r\n?>" . "\r\n", FILE_APPEND);
@@ -88,7 +89,7 @@ SQL;
         $locales = json_decode($localesFile, true);
         
         foreach ($locales as $key => $value) {
-            file_put_contents($stringFile, 'gettext("' . $key . '");\r\n', FILE_APPEND);
+            file_put_contents($stringFile, "gettext('" . $key . "');\r\n", FILE_APPEND);
         }
 
         file_put_contents($stringFile, "\r\n?>" . "\r\n", FILE_APPEND);
