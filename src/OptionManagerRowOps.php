@@ -14,9 +14,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Get the Order, ID, Mode, and Action from the querystring
 if (array_key_exists('Order', $_GET)) {
@@ -151,19 +152,21 @@ switch ($sAction) {
         break;
 
     case 'Inactive':
-        $ids = SystemConfig::getValue('sInactiveClassification');
-        $str_arr = explode(',', $ids);
+        $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
+        $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k));
 
-        $inactive_classes = array_filter($str_arr, fn ($k) => is_numeric($k));
-
-        if (in_array($iID, $inactive_classes)) {
-            unset($inactive_classes[array_search($iID, $inactive_classes)]);
-        } else {
-            $inactive_classes[] = $iID;
+        if (count($aInactiveClassificationIds) !== count($aInactiveClasses))  {
+            LoggerUtils::getAppLogger()->warning('Encountered invalid configuration(s) for sInactiveClassification, please fix this');
         }
 
-        $inactive_classes_str = implode(',', $inactive_classes);
-        SystemConfig::setValue('sInactiveClassification', $inactive_classes_str);
+        if (in_array($iID, $aInactiveClasses)) {
+            unset($aInactiveClasses[array_search($iID, $aInactiveClasses)]);
+        } else {
+            $aInactiveClasses[] = $iID;
+        }
+
+        $sInactiveClasses = implode(',', $aInactiveClasses);
+        SystemConfig::setValue('sInactiveClassification', $sInactiveClasses);
 
         break;
         // If no valid action was specified, abort
