@@ -4,12 +4,14 @@ namespace ChurchCRM\Authentication\Requests;
 
 class LocalUsernamePasswordRequest extends AuthenticationRequest
 {
-    public $username;
-    public $password;
+    public string $username;
+    public string $password;
+    public ?string $redirectPath = null;
 
-    public function __construct($username, $password)
+    public function __construct(string $username, string $password, ?string $redirectPath = null)
     {
         $this->username = $username;
         $this->password = $password;
+        $this->redirectPath = $redirectPath;
     }
 }

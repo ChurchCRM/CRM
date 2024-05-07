@@ -640,7 +640,7 @@ class Person extends BasePerson implements PhotoInterface
         parent::postSave($con);
     }
 
-    public function getAge(?\DateTimeInterface $now = null): ?string
+    public function getAge(?string $date = null): ?string
     {
         if ($this->getBirthYear() === null) {
             return null;
@@ -651,9 +651,7 @@ class Person extends BasePerson implements PhotoInterface
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
-        if (!$now instanceof \DateTimeInterface) {
-            $now = new \DateTimeImmutable('today');
-        }
+        $now = $date == null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
         $age = date_diff($now, $birthDate);
 
         if ($age->y < 1) {

@@ -4334,7 +4334,8 @@ msgid "Anonymous"
 msgstr "அநாமதேய"
 
 #: 
-msgid "Attendees for Event ID:"
+#, fuzzy
+msgid "Attendees for Event"
 msgstr "நிகழ்வு ஐடிக்கு பங்கேற்பாளர்கள்:"
 
 #: 

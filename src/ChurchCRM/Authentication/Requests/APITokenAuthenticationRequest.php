@@ -4,9 +4,10 @@ namespace ChurchCRM\Authentication\Requests;
 
 class APITokenAuthenticationRequest extends AuthenticationRequest
 {
-    public function __construct($APIToken)
+    public string $APIToken;
+
+    public function __construct(string $APIToken)
     {
         $this->APIToken = $APIToken;
     }
-    public $APIToken;
 }

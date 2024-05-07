@@ -1,4 +1,4 @@
-$("#regenApiKey").on("click",function () {
+$("#regenApiKey").on("click", function () {
     $.ajax({
         type: "POST",
         url:
@@ -40,7 +40,7 @@ $(".user-setting-checkbox").on("click", function () {
     });
 });
 
-$(".user-setting-select").on( "focusout", function () {
+$(".user-setting-select").on("focusout", function () {
     let thisCheckbox = $(this);
     let optionSelected = $(this).find("option:selected");
     let setting = thisCheckbox.data("setting-name");
@@ -57,8 +57,6 @@ $(".user-setting-select").on( "focusout", function () {
             window.location.reload();
         }
     });
-
-
 });
 
 $(document).ready(function () {

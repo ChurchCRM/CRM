@@ -4353,7 +4353,8 @@ msgid "Anonymous"
 msgstr "Anoniem"
 
 #: 
-msgid "Attendees for Event ID:"
+#, fuzzy
+msgid "Attendees for Event"
 msgstr "Deelnemers van de activiteit:"
 
 #: 
@@ -6978,11 +6979,8 @@ msgid "Person's Name"
 msgstr "Bezoeker"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Volwassen naam (optioneel)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Uitgeboekt door:"
 
 #: 
@@ -7000,10 +6998,6 @@ msgstr "Verwijder boekingsdatum"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Volwassen persoon die uitcheckt"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Naam ambtsdrager"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8486,8 +8480,9 @@ msgid "Records"
 msgstr "Rijen"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Geleegd in Gebeurtenis-ID"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Geleegd in Gebeurtenis"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9340,4 +9335,8 @@ msgstr "Ongeldige geboortedatum: geboortemaand of -dag ontbreekt."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ongeldige geboortedatum: geboortemaand en -dag ontbreken."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Naam ambtsdrager (optioneel)"
 

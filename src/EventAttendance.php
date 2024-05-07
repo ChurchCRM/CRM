@@ -15,16 +15,19 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !empty($_POST['Event'])) {
+    $iEventId = InputUtils::legacyFilterInput($_POST['Event'], 'int');
+
     if ($_POST['Choice'] == 'Attendees') {
         $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country, t1.per_Gender
                 FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4
-                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $_POST['Event'] . " AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID IN ('1','2','5')
+                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID IN ('1','2','5')
 		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext('Event Attendees');
     } elseif ($_POST['Choice'] == 'Nonattendees') {
-        $aSQL = 'SELECT DISTINCT(person_id) FROM event_attend WHERE event_id = ' . $_POST['Event'];
+        $aSQL = 'SELECT DISTINCT(person_id) FROM event_attend WHERE event_id = ' . $iEventId;
         $raOpps = RunQuery($aSQL);
         $aArr = [];
         while ($aRow = mysqli_fetch_row($raOpps)) {
@@ -46,7 +49,7 @@ if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !emp
     } elseif ($_POST['Choice'] == 'Guests') {
         $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_HomePhone, t1.per_Country, t1.per_Gender
                 FROM person_per AS t1, events_event AS t2, event_attend AS t3
-                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $_POST['Event'] . " AND per_cls_ID IN ('0','3')
+                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND per_cls_ID IN ('0','3')
 		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext('Event Guests');
     }

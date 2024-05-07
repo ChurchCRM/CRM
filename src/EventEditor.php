@@ -402,13 +402,10 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 // Construct the form
 ?>
 
-<div class='box'>
-    <div class='box-header'>
-        <h3 class='box-title'>
-            <?= ($EventExists == 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ') . $iEventID ?>
-        </h3>
-    </div>
-    <div class='box-header'>
+<div class='card'>
+    <div class='card-header'>
+        <h3><?= ($EventExists == 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ') . $iEventID ?></h3>
+
         <?php
         if ($iErrors !== 0) {
             echo "<div class='alert alert-danger'>" . gettext('There were ') . $iErrors . gettext(' errors. Please see below') . '</div>';
@@ -417,6 +414,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         }
         ?>
     </div>
+    <div class='card-body'>
 
     <form method="post" action="EventEditor.php" name="EventsEditor">
         <input type="hidden" name="EventID" value="<?= ($iEventID) ?>">
@@ -546,10 +544,11 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             } // if (empty($iTypeID))?>
         </table>
     </form>
+    </div>
 </div>
 
-<div>
-    <a href="ListEvents.php" class='btn btn-default'>
+<div class="card-footer">
+    <a href="ListEvents.php" class='btn btn-secondary'>
         <i class='fa fa-chevron-left'></i>
         <?= gettext('Return to Events') ?>
     </a>

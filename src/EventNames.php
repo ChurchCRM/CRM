@@ -162,7 +162,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
   <div class='card card-primary'>
-    <div class='box-body'>
+    <div class='card-body'>
       <form name="UpdateEventNames" action="EventNames.php" method="POST" class='form-horizontal'>
         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
         <div class='row form-group'>
@@ -272,7 +272,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     } ?>
   </div>
 
-  <div class='box-body'>
+  <div class='card-body'>
     <?php
     if ($numRows > 0) {
         ?>

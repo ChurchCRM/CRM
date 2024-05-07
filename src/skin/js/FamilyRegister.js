@@ -143,7 +143,8 @@ $(document).ready(function () {
     }).done(function (data) {
         let familyCountry = $("#familyCountry");
         $.each(data, function (idx, country) {
-            let selected = familyCountry.data("system-default") === country.name;
+            let selected =
+                familyCountry.data("system-default") === country.name;
             familyCountry.append(
                 new Option(country.name, country.code, selected, selected),
             );

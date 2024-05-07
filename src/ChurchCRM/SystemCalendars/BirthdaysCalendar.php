@@ -63,15 +63,17 @@ class BirthdaysCalendar implements SystemCalendar
         $events = new ObjectCollection();
         $events->setModel(Event::class);
         foreach ($People as $person) {
-            $birthday = new Event();
-            $birthday->setId($person->getId());
-            $birthday->setEditable(false);
-            $year = date('Y');
-            $birthday->setStart($year . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
-            $age = $person->getAge($birthday->getStart());
-            $birthday->setTitle(gettext('Birthday') . ': ' . $person->getFullName() . ($age ? ' (' . $age . ')' : ''));
-            $birthday->setURL($person->getViewURI());
-            $events->push($birthday);
+            for ($year = date('Y'); $year <= date('Y') + 1; $year++) {
+                $birthday = new Event();
+                $birthday->setId($person->getId());
+                $birthday->setEditable(false);
+                $eventDate = $year . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay();
+                $birthday->setStart($eventDate);
+                $age = $person->getAge($eventDate);
+                $birthday->setTitle($person->getFullName() . ($age ? ' (' . $age . ')' : ''));
+                $birthday->setURL($person->getViewURI());
+                $events->push($birthday);
+            }
         }
 
         return $events;

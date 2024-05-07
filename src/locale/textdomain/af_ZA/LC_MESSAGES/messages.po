@@ -4339,8 +4339,10 @@ msgid "Anonymous"
 msgstr "Anoniem"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Deelnemers aan geleentheid-ID:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Deelnemers aan geleentheid\n"
+""
 
 #: 
 msgid "is not configured"
@@ -6958,11 +6960,8 @@ msgid "Person's Name"
 msgstr "Persoon se naam"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Volwasse naam (opsioneel)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Aangebreek deur (opsioneel)"
 
 #: 
@@ -6980,10 +6979,6 @@ msgstr "Vee Checkin in Invoer uit"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Volwasse persoon wat uitklok"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Volwasse naam (opsioneel)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8465,8 +8460,9 @@ msgid "Records"
 msgstr "Rekords"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Leeggestel in gebeurtenis-ID"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Leeggestel in gebeurtenis"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9320,4 +9316,117 @@ msgstr "Ongeldige geboortedatum: Geboortemaand of -dag ontbreek."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ongeldige geboortedatum: Geboortemaand en -dag ontbreek."
+
+#: 
+msgid "System"
+msgstr "Stelsel"
+
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Amharies - Ethiopië"
+
+#: 
+msgid "Czech"
+msgstr "Tsjeggies"
+
+#: 
+msgid "Finnish"
+msgstr "Fins"
+
+#: 
+msgid "Greek"
+msgstr "Grieks"
+
+#: 
+msgid "Turkish"
+msgstr "Turks"
+
+#: 
+msgid "Ukrainian"
+msgstr "Oekraïens"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Wanneer jy op \"Dien in na GitHub\" klik, sal jy na die GitHub-kwessiesbladsy verwys word met jou stelselinligting vooraf ingevul."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Dien in na GitHub"
+
+#: 
+msgid "Change role"
+msgstr "Verander rol"
+
+#: 
+msgid "Closed"
+msgstr "Gesluit"
+
+#: 
+msgid "Delete this person?"
+msgstr "Vee hierdie persoon uit?"
+
+#: 
+msgid "Deposit ID"
+msgstr "Deposito ID"
+
+#: 
+msgid "Deposit Total"
+msgstr "Deposito Totaal"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Groepmandjiestatus"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "As dit nie werk nie, kopieer en plak die volgende skakel in jou blaaier"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "Jy het hierdie e-pos ontvang omdat ons 'n versoek vir aktiwiteit op jou rekening ontvang het. As jy dit nie versoek het nie, kan jy hierdie e-pos veilig uitvee."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Om op te hou om hierdie e-posse te ontvang, kan jy e-pos"
+
+#: 
+msgid "invalid group request"
+msgstr "ongeldige groepversoek"
+
+#: 
+msgid "Hindi - India"
+msgstr "Hindi - Indië"
+
+#: 
+msgid "Japanese"
+msgstr "Japannese"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamil - Indië"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Nie ingeteken nie"
+
+#: 
+msgid "property"
+msgstr "eiendom"
+
+#: 
+msgid "Default Zip"
+msgstr "Standaard Poskode"
+
+#: 
+msgid "Credit Card People"
+msgstr "Kredietkaartmense"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Mense wat opgestel is om met kredietkaart te betaal."
+
+#: 
+#, fuzzy
+msgid "Adult Name (Optional)"
+msgstr "Volwasse naam (opsioneel)"
 

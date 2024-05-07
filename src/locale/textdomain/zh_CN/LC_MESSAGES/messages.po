@@ -4449,8 +4449,9 @@ msgid "Anonymous"
 msgstr "匿名"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "活动ID：的与会者"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "活动 的与会者"
 
 #: 
 msgid "is not configured"
@@ -7068,11 +7069,8 @@ msgid "Person's Name"
 msgstr "会员名称"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Adult Name(可选)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "签到名(可选)"
 
 #: 
@@ -7090,10 +7088,6 @@ msgstr "删除条目中的签到"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "成人结帐人"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Adult Name(可选)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8573,7 +8567,8 @@ msgid "Records"
 msgstr "记录"
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "嵌入事件ID"
 
 #: 
@@ -9413,4 +9408,8 @@ msgstr "区域设置"
 #: 
 msgid "Override system locale"
 msgstr "覆盖系统区域设置"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Adult Name(可选)"
 

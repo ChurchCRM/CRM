@@ -4354,8 +4354,9 @@ msgstr "Anonimo\n"
 ""
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Partecipanti per ID evento:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Partecipanti evento"
 
 #: 
 msgid "is not configured"
@@ -6983,11 +6984,8 @@ msgid "Person's Name"
 msgstr "Nome della persona"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Nome adulto (facoltativo)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Check-in da (facoltativo)"
 
 #: 
@@ -7005,10 +7003,6 @@ msgstr "Elimina registrazione in entrata"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Adulto controllando persona"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nome adulto (facoltativo)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8490,8 +8484,9 @@ msgid "Records"
 msgstr "Records"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Svuotato nell'ID evento"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Svuotato nell' evento"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9344,4 +9339,8 @@ msgstr "Data di nascita non valida: mese o giorno di nascita mancante."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Data di nascita non valida: mese e giorno di nascita mancanti."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nome adulto (facoltativo)"
 

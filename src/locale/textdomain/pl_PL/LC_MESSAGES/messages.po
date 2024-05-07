@@ -4380,8 +4380,9 @@ msgid "Records"
 msgstr "Wpisy"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Przekształcono na id Wydarzenia"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Przekształcono na Wydarzenia"
 
 #: 
 msgid "integrityCheck.json file missing"

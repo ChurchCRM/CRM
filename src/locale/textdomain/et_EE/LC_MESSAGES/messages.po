@@ -65,7 +65,6 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "See tööriist aitab sul kokku pakkida ChurchCRM andmebaasi."
 
 #: 
-#, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Sa peaksid tegema käsitsi varukoopia oma andmebaasist vähemalt kord nädalas, kui just su süsteem ei tee seda automaatselt."
 
@@ -4340,8 +4339,9 @@ msgid "Anonymous"
 msgstr "Anonüümne"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Ürituse ID-l osalejad:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Ürituse osalejad:"
 
 #: 
 msgid "is not configured"
@@ -6958,11 +6958,8 @@ msgid "Person's Name"
 msgstr "Isiku nimi"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Täiskasvanu nimi (valikuline)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Sisse registreeritud (valikuline)"
 
 #: 
@@ -6980,10 +6977,6 @@ msgstr "Kustuta sisseregistreerimine"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Täiskasvanud väljaregistreeriv isik"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Täiskasvanu nimi (valikuline)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8465,8 +8458,9 @@ msgid "Records"
 msgstr "Kirjed"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Eemaldatud sündmuse ID-ks"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Eemaldatud sündmuse"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9424,4 +9418,40 @@ msgstr "2022/2023"
 #: 
 msgid "invalid group request"
 msgstr "kehtetu rühmataotlus"
+
+#: 
+msgid "Hindi - India"
+msgstr "Hindi - India"
+
+#: 
+msgid "Japanese"
+msgstr "Jaapani keeles"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamil - India"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Pole tellitud"
+
+#: 
+msgid "property"
+msgstr "omadus"
+
+#: 
+msgid "Default Zip"
+msgstr "Vaikimisi ZIP"
+
+#: 
+msgid "Credit Card People"
+msgstr "Krediitkaardi inimesed"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Inimesed kes on konfigureeritud krediitkaardiga maksma."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Täiskasvanu nimi (valikuline)"
 

@@ -127,7 +127,11 @@ class AuthenticationManager
         }
 
         if ($result->isAuthenticated && !$result->preventRedirect) {
-            $redirectLocation = $_SESSION['location'] ?? 'v2/dashboard';
+            $redirectLocation = null;
+            if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
+                $redirectLocation = $AuthenticationRequest->redirectPath;
+            }
+            $redirectLocation ??= $_SESSION['location'] ?? 'v2/dashboard';
             NotificationService::updateNotifications();
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
@@ -171,11 +175,12 @@ class AuthenticationManager
                     'Session not authenticated.  Redirecting to login page'
                 );
 
-                $queryParams = http_build_query([
-                    'location' => $_SERVER['REQUEST_URI'],
-                ]);
+                $redirectPath = $_GET['location'] ?? $_SESSION['location'] ?? null;
                 $loginUrl = self::getSessionBeginURL();
-                if (!str_contains(self::getSessionBeginURL(), $_SERVER['REQUEST_URI'])) {
+                if (!empty($redirectPath)) {
+                    $queryParams = http_build_query([
+                        'location' => $redirectPath,
+                    ]);
                     $loginUrl .= '?' . $queryParams;
                 }
                 RedirectUtils::redirect($loginUrl);
@@ -183,6 +188,13 @@ class AuthenticationManager
                 LoggerUtils::getAuthLogger()->debug(
                     'Session authenticated, but redirect requested by authentication provider.'
                 );
+                $redirectPath = $_GET['location'] ?? $_SESSION['location'] ?? null;
+                if (!empty($redirectPath)) {
+                    $queryParams = http_build_query([
+                        'location' => $redirectPath,
+                    ]);
+                    $result->nextStepURL .= '?' . $queryParams;
+                }
                 RedirectUtils::redirect($result->nextStepURL);
             }
             LoggerUtils::getAuthLogger()->debug('Session valid');
@@ -195,16 +207,21 @@ class AuthenticationManager
         }
     }
 
-    public static function getSessionBeginURL(): string
+    public static function getSessionBeginURL(?string $redirectPath = null): string
     {
-        return SystemURLs::getRootPath() . '/session/begin';
+        $url = SystemURLs::getRootPath() . '/session/begin';
+        if (!empty($redirectPath)) {
+            $url .= '?location=' . urlencode($redirectPath);
+        }
+
+        return $url;
     }
 
     public static function getForgotPasswordURL(): string
     {
         // this assumes we're using local authentication
         // TODO: when we implement other authentication providers (SAML/etc)
-        // this URL will need to be configuable by the system administrator
+        // this URL will need to be configurable by the system administrator
         // since they likely will not want users attempting to reset ChurchCRM passwords
         // but rather redirect users to some other password reset mechanism.
         return SystemURLs::getRootPath() . '/session/forgot-password/reset-request';

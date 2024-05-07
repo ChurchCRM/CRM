@@ -1071,7 +1071,7 @@
     "Backup Status:": "Статус резервного копирования:",
     "No Backup Running": "Резервное копирование не выполняется",
     "Anonymous": "Анонимный",
-    "Attendees for Event ID:": "Участники для события ID:",
+    "Attendees for Event": "Участники для события",
     "is not configured": "не настроен",
     "Please update the": "Пожалуйста обновите",
     "API key in Setting->": "Ключ API в Настройках->",

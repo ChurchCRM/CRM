@@ -1670,30 +1670,6 @@
 							"response": []
 						},
 						{
-							"name": "Families: Today's Anniversaries Count",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/families/numbers",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"families",
-										"numbers"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Families: Get Self Register",
 							"request": {
 								"method": "GET",
