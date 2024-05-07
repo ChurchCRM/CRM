@@ -33,4 +33,16 @@ context("Finance Deposits", () => {
         cy.get("#DepositSlipEditor").submit();
         cy.url().should("contains", "DepositSlipEditor.php");
     });
+
+    it("Edit Deposit without an ID", () => {
+        cy.loginAdmin("DepositSlipEditor.php?DepositSlipID=9999", false);
+        cy.url().should("contains", "FindDepositSlip.php");
+        cy.contains("Deposit Listing");
+    });
+
+    it("Open Deposit with the Bad / deleted Deposits id", () => {
+        cy.loginAdmin("DepositSlipEditor.php?", false);
+        cy.url().should("contains", "FindDepositSlip.php");
+        cy.contains("Deposit Listing");
+    });
 });

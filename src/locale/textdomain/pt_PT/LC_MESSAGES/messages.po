@@ -1305,10 +1305,6 @@ msgid "First name must be entered"
 msgstr "Primeiro nome tem de ser inserido"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Ano inválido: valores permitidos vão de 1901 a 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Data de nascimento inválida."
 
@@ -3702,10 +3698,6 @@ msgid "Invalid Year"
 msgstr "Ano inválido"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Fora do intervalo: Os valores permitidos são 1901-2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Número inválido"
 
@@ -4510,8 +4502,9 @@ msgid "Anonymous"
 msgstr "Anônimo"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Participantes do evento ID:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Participantes do evento"
 
 #: 
 msgid "is not configured"
@@ -7160,11 +7153,8 @@ msgid "Person's Name"
 msgstr "Nome da Pessoa"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Nome adulto (Opcional)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Inscrito por (Opcional)"
 
 #: 
@@ -7182,10 +7172,6 @@ msgstr "Deletar entrada de check-in"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Pessoas adultas realizando o check-out"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nome adulto (Opcional)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8670,8 +8656,9 @@ msgid "Records"
 msgstr "Registos"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Esvaziado para o ID do Evento"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Esvaziado para o do Evento"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9215,4 +9202,8 @@ msgstr "Turco"
 #: 
 msgid "2020/2021"
 msgstr "2020"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nome adulto (Opcional)"
 

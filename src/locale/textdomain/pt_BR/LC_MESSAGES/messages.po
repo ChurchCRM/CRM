@@ -1542,11 +1542,6 @@ msgstr "Primeiro nome deve ser inserido"
 
 #: 
 #, fuzzy
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Ano inválido: valores permitidos vão de 1901 a 2155"
-
-#: 
-#, fuzzy
 msgid "Invalid Birth Date."
 msgstr "Data de nascimento inválida."
 
@@ -4306,11 +4301,6 @@ msgstr "Ano inválido"
 
 #: 
 #, fuzzy
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Fora do intervalo: Os valores permitidos são 1901-2155"
-
-#: 
-#, fuzzy
 msgid "Invalid Number"
 msgstr "Número inválido"
 
@@ -5263,8 +5253,8 @@ msgstr "Anônimo"
 
 #: 
 #, fuzzy
-msgid "Attendees for Event ID:"
-msgstr "Participantes do evento ID:"
+msgid "Attendees for Event"
+msgstr "Participantes do evento"
 
 #: 
 #, fuzzy
@@ -8502,12 +8492,7 @@ msgstr "Nome da Pessoa"
 
 #: 
 #, fuzzy
-msgid "Adult Name(Optional)"
-msgstr "Nome adulto (Opcional)"
-
-#: 
-#, fuzzy
-msgid "Checked in By(Optional)"
+msgid "Checked in By (Optional)"
 msgstr "Inscrito por (Opcional)"
 
 #: 
@@ -8529,11 +8514,6 @@ msgstr "Excluir check-in na entrada"
 #, fuzzy
 msgid "Adult Checking Out Person"
 msgstr "Pessoas adultas realizando o check-out"
-
-#: 
-#, fuzzy
-msgid "Adult Name (Optional)"
-msgstr "Nome adulto (Opcional)"
 
 #: 
 #, fuzzy
@@ -10381,8 +10361,8 @@ msgstr "Registros"
 
 #: 
 #, fuzzy
-msgid "Emptied into Event ID"
-msgstr "Esvaziado para o ID do Evento"
+msgid "Emptied into Event"
+msgstr "Esvaziado para o do Evento"
 
 #: 
 #, fuzzy
@@ -11302,16 +11282,6 @@ msgstr "Ajude a traduzir este projeto"
 
 #: 
 #, fuzzy
-msgid "Credit Card People"
-msgstr "Pessoas com cartão de crédito"
-
-#: 
-#, fuzzy
-msgid "People who are configured to pay by credit card."
-msgstr "Pessoas que configuraram pagamento por cartão de crédito"
-
-#: 
-#, fuzzy
 msgid "Afrikaans"
 msgstr "Africanos"
 
@@ -11553,4 +11523,8 @@ msgstr "2022/2023"
 #: 
 msgid "invalid group request"
 msgstr "solicitação de grupo inválida"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nome adulto (Opcional)"
 

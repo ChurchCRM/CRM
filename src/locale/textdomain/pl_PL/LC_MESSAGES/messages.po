@@ -1231,10 +1231,6 @@ msgid "First name must be entered"
 msgstr "Musisz podać Imię"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Niepoprawny Rok: dopuszczalny przedział to 1901 - 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Nieprawidłowa Data Urodzenia."
 
@@ -3504,10 +3500,6 @@ msgid "Invalid Year"
 msgstr "Nie poprawny Rok"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Dopuszczalny przedział to 1901 do 2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Nie poprawny liczba"
 
@@ -4388,8 +4380,9 @@ msgid "Records"
 msgstr "Wpisy"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Przekształcono na id Wydarzenia"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Przekształcono na Wydarzenia"
 
 #: 
 msgid "integrityCheck.json file missing"

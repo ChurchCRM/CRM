@@ -8,6 +8,7 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. Query = pertanyaan
 #: 
 msgid "Cannot execute query."
 msgstr "Tidak bisa jalankan kueri."
@@ -1151,6 +1152,7 @@ msgstr "Kembali kepada kegiatan-kegiatan"
 msgid "EVENT TYPE NAME"
 msgstr "Nama tipe kegiatan"
 
+#. Please create menu to support 2 options like Sunday or Sabbath.
 #: 
 msgid "Sundays"
 msgstr "Hari minggu "
@@ -1267,10 +1269,6 @@ msgstr "Sunting Keluarga"
 #: 
 msgid "First name must be entered"
 msgstr "Nama pertama harus dimasukkan"
-
-#: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Data Tahun yang tidak valid: Data yang diperbolehkan diantara 1901 sampai 2155"
 
 #: 
 msgid "Invalid Birth Date."
@@ -2374,6 +2372,7 @@ msgstr "Orang-orang"
 msgid "See All People"
 msgstr "Lihat Semua Orang"
 
+#. Please create a menu support user to select Sunday or Sabbath... So this software can reach all
 #: 
 msgid "Sunday School Kids"
 msgstr "Anak Sekolah Minggu"
@@ -3565,10 +3564,6 @@ msgid "Invalid Year"
 msgstr "Tahun Tidak Valid"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Di luar kisaran: Nilai yang diperbolehkan adalah 1901 hingga 2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Nomor Tidak Valid"
 
@@ -4351,8 +4346,9 @@ msgid "Anonymous"
 msgstr "Anonim"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Peserta untuk ID Peristiwa:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Peserta untuk Peristiwa"
 
 #: 
 msgid "is not configured"
@@ -6970,11 +6966,8 @@ msgid "Person's Name"
 msgstr "Nama orang"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Nama Dewasa (Opsional)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Diperiksa oleh (Opsional)"
 
 #: 
@@ -6992,10 +6985,6 @@ msgstr "Hapus Checkin di Entri"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Orang Dewasa yang Memeriksa"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nama Dewasa (Opsional)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8477,8 +8466,9 @@ msgid "Records"
 msgstr "Rekaman"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Dikosongkan ke Event ID"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Dikosongkan ke Event"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9210,14 +9200,6 @@ msgid "Help translate this project"
 msgstr "Bantu terjemahkan proyek ini"
 
 #: 
-msgid "Credit Card People"
-msgstr "Pengguna Kartu Kredit"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Orang yang terkonfigurasi untuk membayar dengan kartu kredit"
-
-#: 
 msgid "Afrikaans"
 msgstr "Afrika"
 
@@ -9388,4 +9370,8 @@ msgstr "Total Deposit"
 #: 
 msgid "Group Cart Status"
 msgstr "Status Keranjang Kelompok"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nama Dewasa (Opsional)"
 

@@ -19,6 +19,11 @@ use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
+// Security: User must have finance permission or be the one who created this deposit
+if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() === $thisDeposit->getEnteredby())) {
+    RedirectUtils::redirect('v2/dashboard');
+}
+
 $iDepositSlipID = 0;
 $thisDeposit = 0;
 
@@ -26,29 +31,26 @@ if (array_key_exists('DepositSlipID', $_GET)) {
     $iDepositSlipID = InputUtils::legacyFilterInput($_GET['DepositSlipID'], 'int');
 }
 
+$noDeposit = true;
 if ($iDepositSlipID) {
     $thisDeposit = DepositQuery::create()->findOneById($iDepositSlipID);
-    // Set the session variable for default payment type so the new payment form will come up correctly
-    if ($thisDeposit->getType() == 'Bank') {
-        $_SESSION['idefaultPaymentMethod'] = 'CHECK';
-    } elseif ($thisDeposit->getType() == 'CreditCard') {
-        $_SESSION['idefaultPaymentMethod'] = 'CREDITCARD';
-    } elseif ($thisDeposit->getType() == 'BankDraft') {
-        $_SESSION['idefaultPaymentMethod'] = 'BANKDRAFT';
-    } elseif ($thisDeposit->getType() == 'eGive') {
-        $_SESSION['idefaultPaymentMethod'] = 'EGIVE';
+    if ($thisDeposit) {
+        $noDeposit = false;
+        // Set the session variable for default payment type so the new payment form will come up correctly
+        if ($thisDeposit->getType() === 'Bank') {
+            $_SESSION['idefaultPaymentMethod'] = 'CHECK';
+        } elseif ($thisDeposit->getType() === 'CreditCard') {
+            $_SESSION['idefaultPaymentMethod'] = 'CREDITCARD';
+        } elseif ($thisDeposit->getType() === 'BankDraft') {
+            $_SESSION['idefaultPaymentMethod'] = 'BANKDRAFT';
+        } elseif ($thisDeposit->getType() === 'eGive') {
+            $_SESSION['idefaultPaymentMethod'] = 'EGIVE';
+        }
     }
+}
 
-    // Security: User must have finance permission or be the one who created this deposit
-    if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() == $thisDeposit->getEnteredby())) {
-        RedirectUtils::redirect('v2/dashboard');
-        exit;
-    }
-} elseif ($iDepositSlipID == 0) {
+if ($noDeposit) {
     RedirectUtils::redirect('FindDepositSlip.php');
-    exit;
-} else {
-    RedirectUtils::redirect('v2/dashboard');
 }
 
 //Set the page title

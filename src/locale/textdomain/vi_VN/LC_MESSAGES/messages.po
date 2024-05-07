@@ -1284,10 +1284,6 @@ msgid "First name must be entered"
 msgstr "Tên cần được nhập vào"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Năm không hợp lệ: giá trị cho phép là 1901 đến 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Ngày sinh không hợp lệ."
 
@@ -3579,10 +3575,6 @@ msgid "Invalid Year"
 msgstr "Năm không hợp lệ"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Ngoài phạm vi: Giá trị cho phép là 1901 đến 2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Số không hợp lệ"
 
@@ -4365,8 +4357,9 @@ msgid "Anonymous"
 msgstr "Vô danh"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Những người tham dự cho ID sự kiện:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Những người tham dự cho sự kiện:"
 
 #: 
 msgid "is not configured"
@@ -6984,11 +6977,8 @@ msgid "Person's Name"
 msgstr "Tên của người đó"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Tên người lớn (Tùy chọn)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Đã đăng ký bởi (Tùy chọn)"
 
 #: 
@@ -7006,10 +6996,6 @@ msgstr "Xóa đăng ký trong mục nhập"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Người lớn trả phòng"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Tên người lớn (Tùy chọn)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8491,8 +8477,9 @@ msgid "Records"
 msgstr "Hồ sơ"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Đã hết vào ID sự kiện"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Đã hết vào sự kiện"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9224,14 +9211,6 @@ msgid "Help translate this project"
 msgstr "Giúp dịch dự án này"
 
 #: 
-msgid "Credit Card People"
-msgstr "Người có thẻ tín dụng"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Những người được định cấu hình để thanh toán bằng thẻ tín dụng."
-
-#: 
 msgid "Afrikaans"
 msgstr "Người Afrikaans"
 
@@ -9330,4 +9309,8 @@ msgstr "Ngôn ngữ"
 #: 
 msgid "Override system locale"
 msgstr "Ghi đè ngôn ngữ hệ thống"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Tên người lớn (Tùy chọn)"
 

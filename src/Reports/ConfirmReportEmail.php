@@ -16,7 +16,7 @@ require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\FamilyVerificationEmail;
+use ChurchCRM\Emails\verify\FamilyVerificationEmail;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;

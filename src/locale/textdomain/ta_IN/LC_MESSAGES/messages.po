@@ -1266,10 +1266,6 @@ msgid "First name must be entered"
 msgstr "முதல் பெயரை உள்ளிட வேண்டும்"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "தவறான ஆண்டு: அனுமதிக்கப்பட்ட மதிப்புகள் 1901 முதல் 2155 வரை"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "தவறான பிறந்த தேதி."
 
@@ -3234,6 +3230,378 @@ msgid "(Grants all privileges.)"
 msgstr "(அனைத்து சலுகைகளையும் வழங்குகிறது.)"
 
 #: 
+msgid "Style"
+msgstr "உடை"
+
+#: 
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr "இந்தப் பயனரின் தற்போதைய மதிப்பை மாற்றுவதற்கான திறனை வழங்க, அனுமதி சரி என்பதை அமைக்கவும்."
+
+#: 
+msgid "User Listing"
+msgstr "பயனர் பட்டியல்"
+
+#: 
+msgid "New User"
+msgstr "புதிய பயனர்"
+
+#: 
+msgid "User Settings"
+msgstr "பயனர் அமைப்புகள்"
+
+#: 
+msgid "Last Login"
+msgstr "கடைசி உள்நுழைவு"
+
+#: 
+msgid "Total Logins"
+msgstr "மொத்த உள்நுழைவுகள்"
+
+#: 
+msgid "Failed Logins"
+msgstr "தோல்வியுற்ற உள்நுழைவுகள்"
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "இரண்டு பெட்டிகளிலும் ஒரே கடவுச்சொல்லை உள்ளிட வேண்டும்"
+
+#: 
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "உங்கள் கடவுச்சொல் தேர்வு மிகவும் தெளிவாக உள்ளது. தயவு செய்து வேறு ஏதாவது தேர்வு செய்யவும்."
+
+#: 
+msgid "Your new password must be at least"
+msgstr "உங்கள் புதிய கடவுச்சொல் குறைந்தபட்சம் இருக்க வேண்டும்"
+
+#: 
+msgid "characters"
+msgstr "பாத்திரங்கள்"
+
+#: 
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
+msgstr "உங்கள் தற்போதைய கடவுச்சொல்லை உள்ளிடவும், பின்னர் உங்கள் புதிய கடவுச்சொல்லை இரண்டு முறை உள்ளிடவும். கடவுச்சொற்கள் குறைந்தபட்சம் இருக்க வேண்டும்"
+
+#: 
+msgid "characters in length."
+msgstr "நீளமுள்ள எழுத்துக்கள்."
+
+#: 
+msgid "Old Password"
+msgstr "பழைய கடவுச்சொல்"
+
+#: 
+msgid "New Password"
+msgstr "புதிய கடவுச்சொல்"
+
+#: 
+msgid "Confirm New Password"
+msgstr "புதிய கடவு சொல்லை உறுதி செய்"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "இந்தப் பயனரின் கடவுச்சொல் மீட்டமைப்பை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "தன்னார்வ வாய்ப்பு நீக்குதல் உறுதிப்படுத்தல்"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity."
+msgstr "இந்த தன்னார்வ வாய்ப்பிற்கு நியமிக்கப்பட்டவர்கள் உள்ளனர்."
+
+#: 
+msgid "Volunteer Opportunity will be unassigned for the following people."
+msgstr "பின்வரும் நபர்களுக்கு தன்னார்வ வாய்ப்பு ஒதுக்கப்படாது."
+
+#: 
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr "ஆம், இந்த தன்னார்வ வாய்ப்பை நீக்கவும்"
+
+#: 
+msgid "Volunteer Opportunity Editor"
+msgstr "தன்னார்வ வாய்ப்பு ஆசிரியர்"
+
+#: 
+msgid "No volunteer opportunities have been added yet"
+msgstr "தன்னார்வ வாய்ப்புகள் எதுவும் இதுவரை சேர்க்கப்படவில்லை"
+
+#: 
+msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
+msgstr "குறிப்பு: சேர்த்தல், நீக்குதல் மற்றும் வரிசைப்படுத்துதல் மாற்றங்கள் உடனடியாக செய்யப்படுகின்றன. பெயர் அல்லது டெஸ்க் புலங்களுக்கான மாற்றங்கள் 'மாற்றங்களைச் சேமி' என்பதை அழுத்துவதன் மூலம் சேமிக்கப்பட வேண்டும்"
+
+#: 
+msgid "Add New Opportunity"
+msgstr "புதிய வாய்ப்பைச் சேர்க்கவும்"
+
+#: 
+msgid "\"Why Came\" notes for "
+msgstr "␣க்கான \"ஏன் வந்தது\" குறிப்புகள்"
+
+#: 
+msgid "Why did you come to the church?"
+msgstr "நீங்கள் ஏன் தேவாலயத்திற்கு வந்தீர்கள்?"
+
+#: 
+msgid "Why do you keep coming?"
+msgstr "ஏன் தொடர்ந்து வருகிறீர்கள்?"
+
+#: 
+msgid "Do you have any suggestions for us?"
+msgstr "எங்களுக்கு ஏதேனும் பரிந்துரைகள் உள்ளதா?"
+
+#: 
+msgid "How did you learn of the church?"
+msgstr "தேவாலயத்தைப் பற்றி நீங்கள் எவ்வாறு கற்றுக்கொண்டீர்கள்?"
+
+#: 
+msgid "eGive Import"
+msgstr "eGive இறக்குமதி"
+
+#: 
+msgid "Re-import to selected family"
+msgstr "தேர்ந்தெடுக்கப்பட்ட குடும்பத்திற்கு மீண்டும் இறக்குமதி செய்யவும்"
+
+#: 
+msgid "Data import results: "
+msgstr "தரவு இறக்குமதி முடிவுகள்: ␣"
+
+#: 
+msgid " gifts were imported, "
+msgstr "␣ பரிசுகள் இறக்குமதி செய்யப்பட்டன, ␣"
+
+#: 
+msgid " gifts unchanged, and "
+msgstr "␣ பரிசுகள் மாறாமல், மற்றும் ␣"
+
+#: 
+msgid " gifts not imported due to problems"
+msgstr "␣ பிரச்சனைகள் காரணமாக பரிசுகள் இறக்குமதி செய்யப்படவில்லை"
+
+#: 
+msgid "Back to Deposit Slip"
+msgstr "␣ பிரச்சனைகள் காரணமாக பரிசுகள் இறக்குமதி செய்யப்படவில்லை"
+
+#: 
+msgid "Fatal error in eGive API datastream: '"
+msgstr "eGive API டேட்டாஸ்ட்ரீமில் அபாயகரமான பிழை: '"
+
+#: 
+msgid "eMail Dashboard"
+msgstr "eGive API டேட்டாஸ்ட்ரீமில் அபாயகரமான பிழை: '"
+
+#: 
+msgid "No families need canvassers assigned"
+msgstr "எந்தவொரு குடும்பத்திற்கும் கேன்வாஸர்களை ஒதுக்க வேண்டியதில்லை"
+
+#: 
+msgid "Canvassers assigned at random to %d families."
+msgstr "கேன்வாசர்கள் %d குடும்பங்களுக்கு சீரற்ற முறையில் ஒதுக்கப்பட்டுள்ளன."
+
+#: 
+msgid "Canvassers assigned at random to %d non-pledging families."
+msgstr "%d உறுதியளிக்காத குடும்பங்களுக்கு கேன்வாசர்கள் சீரற்ற முறையில் ஒதுக்கப்பட்டுள்ளன."
+
+#: 
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr "குறைந்தபட்சம் ஒரு உறுப்பினரைக் கொண்ட அனைத்து குடும்பங்களுக்கும் உறை எண்கள் ஒதுக்கப்பட்டுள்ளன."
+
+#: 
+msgid "Assigned envelope numbers to all families."
+msgstr "அனைத்து குடும்பங்களுக்கும் உறை எண்கள் ஒதுக்கப்பட்டுள்ளன."
+
+#: 
+msgid "Version"
+msgstr "பதிப்பு"
+
+#: 
+msgid "Copyright"
+msgstr "காப்புரிமை"
+
+#: 
+msgid "All rights reserved"
+msgstr "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை"
+
+#: 
+msgid "True / False"
+msgstr "சரி தவறு"
+
+#: 
+msgid "Text Field (50 char)"
+msgstr "உரை புலம் (50 எழுத்துகள்)"
+
+#: 
+msgid "Text Field (100 char)"
+msgstr "உரை புலம் (100 எழுத்துகள்)"
+
+#: 
+msgid "Text Field (long)"
+msgstr "உரை புலம் (நீண்ட)"
+
+#: 
+msgid "Season"
+msgstr "பருவம்"
+
+#: 
+msgid "Person from Group"
+msgstr "குழுவிலிருந்து நபர்"
+
+#: 
+msgid "Money"
+msgstr "பணம்"
+
+#: 
+msgid "Phone Number"
+msgstr "தொலைபேசி எண்"
+
+#: 
+msgid "Custom Drop-Down List"
+msgstr "தனிப்பயன் கீழ்தோன்றும் பட்டியல்"
+
+#: 
+msgid "Thank you for registering your ChurchCRM installation."
+msgstr "உங்கள் சர்ச்சிஆர்எம் நிறுவலைப் பதிவு செய்ததற்கு நன்றி."
+
+#: 
+msgid "PDFs successfully emailed "
+msgstr "PDF கள் வெற்றிகரமாக மின்னஞ்சல் அனுப்பப்பட்டன ␣"
+
+#: 
+msgid "PDF successfully emailed to family members."
+msgstr "குடும்ப உறுப்பினர்களுக்கு PDF வெற்றிகரமாக மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
+msgid "Failed to email PDF to family members."
+msgstr "குடும்ப உறுப்பினர்களுக்கு PDF மின்னஞ்சல் அனுப்ப முடியவில்லை."
+
+#: 
+msgid "Group successfully added to the Cart."
+msgstr "கார்ட்டில் குழு வெற்றிகரமாக சேர்க்கப்பட்டது."
+
+#: 
+msgid "Group successfully removed from the Cart."
+msgstr "கார்ட்டில் இருந்து குழு வெற்றிகரமாக அகற்றப்பட்டது."
+
+#: 
+msgid "Profile Image successfully removed."
+msgstr "சுயவிவரப் படம் வெற்றிகரமாக அகற்றப்பட்டது."
+
+#: 
+msgid "Profile Image successfully updated."
+msgstr "சுயவிவரப் படம் வெற்றிகரமாக புதுப்பிக்கப்பட்டது."
+
+#: 
+msgid "Profile Image upload Error."
+msgstr "சுயவிவரப் படத்தைப் பதிவேற்றுவதில் பிழை."
+
+#: 
+msgid "Selected record successfully removed from the Cart."
+msgstr "கார்ட்டில் இருந்து தேர்ந்தெடுக்கப்பட்ட பதிவு வெற்றிகரமாக அகற்றப்பட்டது."
+
+#: 
+msgid "Your cart has been successfully emptied"
+msgstr "உங்கள் கார்ட் வெற்றிகரமாக காலி செய்யப்பட்டது"
+
+#: 
+msgid "item(s) added to the Cart."
+msgstr "கார்ட்டில் உருப்படி(கள்) சேர்க்கப்பட்டது."
+
+#: 
+msgid "Select Fiscal Year"
+msgstr "நிதி ஆண்டைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "pm"
+msgstr "மாலை"
+
+#: 
+msgid "am"
+msgstr "நான்"
+
+#: 
+msgid "Invalid Editor ID!"
+msgstr "தவறான எடிட்டர் ஐடி!"
+
+#: 
+msgid "Select Season"
+msgstr "பருவத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Winter"
+msgstr "குளிர்காலம்"
+
+#: 
+msgid "Spring"
+msgstr "வசந்த"
+
+#: 
+msgid "Summer"
+msgstr "கோடை"
+
+#: 
+msgid "Fall"
+msgstr "வீழ்ச்சி"
+
+#: 
+msgid "Error: Invalid Editor ID!"
+msgstr "பிழை: தவறான எடிட்டர் ஐடி!"
+
+#: 
+msgid "Not a valid date"
+msgstr "சரியான தேதி இல்லை"
+
+#: 
+msgid "Invalid Year"
+msgstr "தவறான ஆண்டு"
+
+#: 
+msgid "Invalid Number"
+msgstr "தவறான எண்"
+
+#: 
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr "எண்ணிக்கை மிகப் பெரியது. -2147483648 மற்றும் 2147483647 இடையே இருக்க வேண்டும்"
+
+#: 
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "பணத்தின் அளவு மிகப் பெரியது. அதிகபட்சம் $999999999.99"
+
+#: 
+msgid " Bold Italic"
+msgstr "␣ தடித்த சாய்வு"
+
+#: 
+msgid " Italic"
+msgstr "␣ சாய்வு"
+
+#: 
+msgid " Bold"
+msgstr "␣ தைரியமான"
+
+#: 
+msgid "Error making API Call to"
+msgstr "API அழைப்பைச் செய்வதில் பிழை"
+
+#: 
+msgid "Error text"
+msgstr "பிழை உரை"
+
+#: 
+msgid "Issue Report!"
+msgstr "பிரச்சினை அறிக்கை!"
+
+#: 
+msgid "No personally identifiable information will be submitted unless you purposefully include it."
+msgstr "நீங்கள் வேண்டுமென்றே அதைச் சேர்க்கும் வரை தனிப்பட்ட முறையில் அடையாளம் காணக்கூடிய தகவல்கள் எதுவும் சமர்ப்பிக்கப்படாது."
+
+#: 
+msgid "Dashboard"
+msgstr "டாஷ்போர்டு"
+
+#: 
+msgid "Change Password"
+msgstr "கடவுச்சொல்லை மாற்று"
+
+#: 
 msgid "You have"
 msgstr "உங்களிடம் உள்ளது"
 
@@ -3632,6 +4000,568 @@ msgstr "நாட்காட்டி"
 #: 
 msgid "Members"
 msgstr "உறுப்பினர்கள்"
+
+#: 
+msgid "Add New Person"
+msgstr "புதிய நபரைச் சேர்க்கவும்"
+
+#: 
+msgid "View All People"
+msgstr "அனைத்து மக்களையும் பார்க்கவும்"
+
+#: 
+msgid "Add New Family"
+msgstr "புதிய குடும்பத்தைச் சேர்க்கவும்"
+
+#: 
+msgid "Events"
+msgstr "நிகழ்வுகள்"
+
+#: 
+msgid "Fundraiser"
+msgstr "நிதி திரட்டுபவர்"
+
+#: 
+msgid "Email Export"
+msgstr "மின்னஞ்சல் ஏற்றுமதி"
+
+#: 
+msgid "List"
+msgstr "பட்டியல்"
+
+#: 
+msgid "Import Data"
+msgstr "தரவு இறக்குமதி"
+
+#: 
+msgid "Are you sure you want to DELETE this person from Event ID: "
+msgstr "நிகழ்வு ஐடியிலிருந்து இவரை நிச்சயமாக நீக்க விரும்புகிறீர்களா: ␣"
+
+#: 
+msgid "Date Range"
+msgstr "தேதி வரம்பு"
+
+#: 
+msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
+msgstr "இந்த நிகழ்வை நீக்குவது TYPE ஏற்கனவே உள்ள எந்த நிகழ்வுகளையும் அல்லது வருகை எண்ணிக்கையையும் நீக்காது. நிகழ்வு வகை ஐடியை நிச்சயமாக நீக்க விரும்புகிறீர்களா: ␣"
+
+#: 
+msgid "Are you sure you want to delete the selected"
+msgstr "தேர்ந்தெடுக்கப்பட்டதை நிச்சயமாக நீக்க விரும்புகிறீர்களா"
+
+#: 
+msgid "Deposit(s)"
+msgstr "வைப்பு(கள்)"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "இது இந்த வைப்புத்தொகையுடன் தொடர்புடைய அனைத்து கட்டணங்களையும் நீக்கும்"
+
+#: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "இந்தச் செயலைச் செயல்தவிர்க்க முடியாது, மேலும் சட்டரீதியான தாக்கங்களையும் ஏற்படுத்தலாம்!"
+
+#: 
+msgid "Please ensure this what you want to do."
+msgstr "நீங்கள் என்ன செய்ய விரும்புகிறீர்கள் என்பதை உறுதிப்படுத்தவும்."
+
+#: 
+msgid "Deposit Type"
+msgstr "வைப்பு வகை"
+
+#: 
+msgid "Deposit Date"
+msgstr "டெபாசிட் தேதி"
+
+#: 
+msgid "Details:"
+msgstr "விவரங்கள்:"
+
+#: 
+msgid "File Missing"
+msgstr "கோப்பு காணவில்லை"
+
+#: 
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr "இது இந்தப் பக்கத்தில் தேர்ந்தெடுக்கப்பட்டவற்றுடன் தரவுத்தளத்தில் உள்ள குடும்ப உறை எண்களை மேலெழுதும். தொடரவா?"
+
+#: 
+msgid "Family Select"
+msgstr "குடும்பத் தேர்வு"
+
+#: 
+msgid "with at least one:"
+msgstr "குறைந்தது ஒருவருடன்:"
+
+#: 
+msgid "Welcome to"
+msgstr "வரவேற்கிறோம்"
+
+#: 
+msgid "Select Database Files"
+msgstr "தரவுத்தள கோப்புகளைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Select a backup file to restore"
+msgstr "மீட்டமைக்க காப்புப்பிரதி கோப்பைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
+msgstr "எச்சரிக்கை: இது ஏற்கனவே உள்ள தரவுத்தளத்தை முற்றிலும் அழித்து, அதை காப்புப்பிரதியுடன் மாற்றும்"
+
+#: 
+msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
+msgstr "சர்ச்இன்ஃபோவிலிருந்து காப்புப்பிரதியை அல்லது சர்ச்சிஆர்எம்மின் முந்தைய பதிப்பைப் பதிவேற்றினால், அது தானாகவே தற்போதைய தரவுத்தள திட்டத்திற்கு மேம்படுத்தப்படும்."
+
+#: 
+msgid "Upload Files"
+msgstr "கோப்புகளைப் பதிவேற்றவும்"
+
+#: 
+msgid "No Restore Running"
+msgstr "மீட்டமை இயக்கம் இல்லை"
+
+#: 
+msgid "Restore Complete"
+msgstr "முழுமையாக மீட்டமை"
+
+#: 
+msgid "Login to restored Database"
+msgstr "மீட்டெடுக்கப்பட்ட தரவுத்தளத்தில் உள்நுழைக"
+
+#: 
+msgid "Restore Error."
+msgstr "மீட்டமை பிழை."
+
+#: 
+msgid "Church Information"
+msgstr "தேவாலய தகவல்"
+
+#: 
+msgid "User Setup"
+msgstr "பயனர் அமைப்பு"
+
+#: 
+msgid "Email Setup"
+msgstr "மின்னஞ்சல் அமைப்பு"
+
+#: 
+msgid "Map Settings"
+msgstr "வரைபட அமைப்புகள்"
+
+#: 
+msgid "Report Settings"
+msgstr "அறிக்கை அமைப்புகள்"
+
+#: 
+msgid "Localization"
+msgstr "உள்ளூர்மயமாக்கல்"
+
+#: 
+msgid "Setting saved"
+msgstr "அமைப்பு சேமிக்கப்பட்டது"
+
+#: 
+msgid "Edit JSON Settings"
+msgstr "JSON அமைப்புகளைத் திருத்து"
+
+#: 
+msgid "Default Value"
+msgstr "இயல்புநிலை மதிப்பு"
+
+#: 
+msgid "False"
+msgstr "பொய்"
+
+#: 
+msgid "True"
+msgstr "உண்மை"
+
+#: 
+msgid "Edit Settings"
+msgstr "அமைப்புகளைத் திருத்து"
+
+#: 
+msgid "Upgrade ChurchCRM"
+msgstr "சர்ச்சிஆர்எம்மை மேம்படுத்தவும்"
+
+#: 
+msgid "Step 1: Backup Database"
+msgstr "படி 1: காப்புப் பிரதி தரவுத்தளம்"
+
+#: 
+msgid "Please create a database backup before beginning the upgrade process."
+msgstr "மேம்படுத்தல் செயல்முறையைத் தொடங்கும் முன் தரவுத்தள காப்புப்பிரதியை உருவாக்கவும்."
+
+#: 
+msgid "Generate Database Backup"
+msgstr "தரவுத்தள காப்புப்பிரதியை உருவாக்கவும்"
+
+#: 
+msgid "Step 2: Fetch Update Package on Server"
+msgstr "படி 2: சர்வரில் புதுப்பிப்பு தொகுப்பைப் பெறவும்"
+
+#: 
+msgid "Fetch the latest files from the ChurchCRM GitHub release page"
+msgstr "ChurchCRM GitHub வெளியீட்டுப் பக்கத்திலிருந்து சமீபத்திய கோப்புகளைப் பெறவும்"
+
+#: 
+msgid "Fetch Update Files"
+msgstr "புதுப்பிப்பு கோப்புகளைப் பெறவும்"
+
+#: 
+msgid "Step 3: Apply Update Package on Server"
+msgstr "படி 3: சர்வரில் புதுப்பிப்பு தொகுப்பைப் பயன்படுத்தவும்"
+
+#: 
+msgid "Extract the upgrade archive, and apply the new files"
+msgstr "மேம்படுத்தல் காப்பகத்தைப் பிரித்தெடுத்து, புதிய கோப்புகளைப் பயன்படுத்தவும்"
+
+#: 
+msgid "Full Path:"
+msgstr "முழு பாதை:"
+
+#: 
+msgid "SHA1:"
+msgstr "SHA1:"
+
+#: 
+msgid "Upgrade System"
+msgstr "கணினியை மேம்படுத்தவும்"
+
+#: 
+msgid "Step 4: Login"
+msgstr "படி 4: உள்நுழைக"
+
+#: 
+msgid "Login to Upgraded System"
+msgstr "மேம்படுத்தப்பட்ட கணினியில் உள்நுழைக"
+
+#: 
+msgid "Backup Complete, Ready for Download."
+msgstr "காப்புப்பிரதி முடிந்தது, பதிவிறக்கம் தயாராக உள்ளது."
+
+#: 
+msgid "Backup Error."
+msgstr "காப்புப் பிழை."
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "காப்புப் பிரதி பதிவிறக்கம் செய்யப்பட்டது, சர்வரில் உள்ள நகல் அகற்றப்பட்டது"
+
+#: 
+msgid "Campaigns:"
+msgstr "பிரச்சாரங்கள்:"
+
+#: 
+msgid "Unsubscribed count:"
+msgstr "குழுசேராத எண்ணிக்கை:"
+
+#: 
+msgid "Unsubscribed count since last send:"
+msgstr "கடைசியாக அனுப்பியதிலிருந்து குழுவிலகியவர்களின் எண்ணிக்கை:"
+
+#: 
+msgid "Cleaned count:"
+msgstr "சுத்தம் செய்யப்பட்ட எண்ணிக்கை:"
+
+#: 
+msgid "Cleaned count since last send:"
+msgstr "கடைசியாக அனுப்பியதில் இருந்து சுத்தம் செய்யப்பட்ட எண்ணிக்கை:"
+
+#: 
+msgid "Functions"
+msgstr "செயல்பாடுகள்"
+
+#: 
+msgid "Add New Class"
+msgstr "புதிய வகுப்பைச் சேர்க்கவும்"
+
+#: 
+msgid "Export to CSV"
+msgstr "CSVக்கு ஏற்றுமதி செய்"
+
+#: 
+msgid "Add"
+msgstr "கூட்டு"
+
+#: 
+msgid "Enter Name"
+msgstr "பெயரை உள்ளிடுக"
+
+#: 
+msgid "Update Church Info"
+msgstr "சர்ச் தகவலைப் புதுப்பிக்கவும்"
+
+#: 
+msgid "Set Church Address"
+msgstr "தேவாலய முகவரியை அமைக்கவும்"
+
+#: 
+msgid "Set Email Settings"
+msgstr "மின்னஞ்சல் அமைப்புகளை அமைக்கவும்"
+
+#: 
+msgid "New Release"
+msgstr "புதிய வெளியீடு"
+
+#: 
+msgid "Application Integrity Check Failed"
+msgstr "பயன்பாட்டின் நேர்மை சரிபார்ப்பு தோல்வியடைந்தது"
+
+#: 
+msgid "Self Registration"
+msgstr "சுய பதிவு"
+
+#: 
+msgid "Restore Status:"
+msgstr "நிலையை மீட்டமை:"
+
+#: 
+msgid "No coordinates found"
+msgstr "ஆயத்தொகுப்புகள் எதுவும் இல்லை"
+
+#: 
+msgid "Backup Status:"
+msgstr "காப்புப் பிரதி நிலை:"
+
+#: 
+msgid "No Backup Running"
+msgstr "காப்புப்பிரதி இயங்கவில்லை"
+
+#: 
+msgid "Anonymous"
+msgstr "அநாமதேய"
+
+#: 
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "நிகழ்வு ஐடிக்கு பங்கேற்பாளர்கள்:"
+
+#: 
+msgid "is not configured"
+msgstr "கட்டமைக்கப்படவில்லை"
+
+#: 
+msgid "Please update the"
+msgstr "தயவுசெய்து புதுப்பிக்கவும்"
+
+#: 
+msgid "API key in Setting->"
+msgstr "Setting-> இல் API விசை"
+
+#: 
+msgid "then update"
+msgstr "பின்னர் புதுப்பிக்கவும்"
+
+#: 
+msgid "For more info see our "
+msgstr "மேலும் தகவலுக்கு எங்கள் ␣ பார்க்கவும்"
+
+#: 
+msgid "support docs."
+msgstr "ஆதரவு ஆவணங்கள்."
+
+#: 
+msgid "Yearly"
+msgstr "\n"
+"ஆண்டுதோறும்"
+
+#: 
+msgid "Registration Complete"
+msgstr "பதிவு முடிந்தது"
+
+#: 
+msgid "Register"
+msgstr "பதிவு"
+
+#: 
+msgid "Register your family"
+msgstr "உங்கள் குடும்பத்தை பதிவு செய்யுங்கள்"
+
+#: 
+msgid "How many people are in your family"
+msgstr "உங்களுடைய குடும்பத்தில் எத்தனை பேர் உள்ளனர்"
+
+#: 
+msgid "Add All Classes"
+msgstr "அனைத்து வகுப்புகளையும் சேர்க்கவும்"
+
+#: 
+msgid "Clear All Classes"
+msgstr "அனைத்து வகுப்புகளையும் அழிக்கவும்"
+
+#: 
+msgid "Add All Families"
+msgstr "அனைத்து குடும்பங்களையும் சேர்க்கவும்"
+
+#: 
+msgid "Clear All Families"
+msgstr "அனைத்து குடும்பங்களையும் அழிக்கவும்"
+
+#: 
+msgid "Add All Funds"
+msgstr "அனைத்து நிதிகளையும் சேர்க்கவும்"
+
+#: 
+msgid "Clear All Funds"
+msgstr "அனைத்து நிதிகளையும் அழிக்கவும்"
+
+#: 
+msgid "Deposit Comment"
+msgstr "டெபாசிட் கருத்து"
+
+#: 
+msgid "Your previous session timed out.  Please login again."
+msgstr "உங்கள் முந்தைய அமர்வு நேரம் முடிந்தது. மீண்டும் உள்நுழையவும்."
+
+#: 
+msgid "Register a new Family"
+msgstr "புதிய குடும்பத்தை பதிவு செய்யுங்கள்"
+
+#: 
+msgid "Signature definition file signature failed validation"
+msgstr "கையொப்ப வரையறை கோப்பு கையொப்பம் சரிபார்ப்பு தோல்வியடைந்தது"
+
+#: 
+msgid "Signature definition File Missing"
+msgstr "கையொப்ப வரையறை கோப்பு காணவில்லை"
+
+#: 
+msgid "One or more files failed signature validation"
+msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட கோப்புகள் கையொப்ப சரிபார்ப்பில் தோல்வியடைந்தன"
+
+#: 
+msgid "Configure HTTPS"
+msgstr "HTTPS ஐ உள்ளமைக்கவும்"
+
+#: 
+msgid "Files failing integrity check"
+msgstr "கோப்புகளின் நேர்மை சரிபார்ப்பில் தோல்வி"
+
+#: 
+msgid "Family:"
+msgstr "குடும்பம்:"
+
+#: 
+msgid "item"
+msgstr "பொருள்"
+
+#: 
+msgid "Address 1"
+msgstr "முகவரி 1"
+
+#: 
+msgid "Address 2"
+msgstr "முகவரி 2"
+
+#: 
+msgid "Cell phone"
+msgstr "கைப்பேசி"
+
+#: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "------------------------------------------------- ------------------------------------------------- -------------------------------------------"
+
+#: 
+msgid "Buyer # "
+msgstr "வாங்குபவர் # ␣"
+
+#: 
+msgid "Envelope:"
+msgstr "உறை:"
+
+#: 
+msgid ", Phone: "
+msgstr ", தொலைபேசி: ␣"
+
+#: 
+msgid "Voting members "
+msgstr "வாக்களிக்கும் உறுப்பினர்கள் ␣"
+
+#: 
+msgid "Restore Running, Please wait."
+msgstr "இயக்கத்தை மீட்டமைக்கவும், காத்திருக்கவும்."
+
+#: 
+msgid "Family Members:"
+msgstr "குடும்ப உறுப்பினர்கள்:"
+
+#: 
+msgid "Anniversary"
+msgstr "ஆண்டுவிழா"
+
+#: 
+msgid "Notes"
+msgstr "குறிப்புகள்"
+
+#: 
+msgid "Reports"
+msgstr "அறிக்கைகள்"
+
+#: 
+msgid "File Name:"
+msgstr "கோப்பு பெயர்:"
+
+#: 
+msgid "Fiscal Year:"
+msgstr "நிதியாண்டு:"
+
+#: 
+msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
+msgstr "முக்கிய குறிப்பு: இது \"ஒகே டு கேன்வாஸ்\" கையால் அமைக்கப்பட்ட புலங்கள்."
+
+#: 
+msgid "Canvasser:"
+msgstr "கேன்வாஸர்:"
+
+#: 
+msgid "Add Attendees for Event"
+msgstr "நிகழ்வுக்கு பங்கேற்பாளர்களைச் சேர்க்கவும்"
+
+#: 
+msgid "family"
+msgstr "குடும்பம்"
+
+#: 
+msgid "Anniversary Date:"
+msgstr "ஆண்டுவிழா தேதி:"
+
+#: 
+msgid "Date Entered:"
+msgstr "உள்ளிட்ட தேதி:"
+
+#: 
+msgid "CSV Import"
+msgstr "CSV இறக்குமதி"
+
+#: 
+msgid "Comment:"
+msgstr "கருத்து:"
+
+#: 
+msgid "Closed:"
+msgstr "மூடப்பட்டது:"
+
+#: 
+msgid "Start Date: "
+msgstr "தொடக்க தேதி: ␣"
+
+#: 
+msgid "End Date: "
+msgstr "முடிவு தேதி: ␣"
+
+#: 
+msgid "Members:"
+msgstr "உறுப்பினர்கள்:"
+
+#: 
+msgid "Edit General Settings"
+msgstr "பொது அமைப்புகளைத் திருத்தவும்"
+
+#: 
+msgid "There were "
+msgstr "␣ இருந்தன"
 
 #: 
 msgid " has a type mismatch"

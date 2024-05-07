@@ -1303,10 +1303,6 @@ msgid "First name must be entered"
 msgstr "Prenumele trebuie să fie introdus"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Anul invalid: Valorile admisibile sunt 1901-2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Data Nasterii invalid."
 
@@ -3652,10 +3648,6 @@ msgid "Invalid Year"
 msgstr "Anul invalid"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Din gama: Valorile admisibile sunt 1901-2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Numărul de invalid"
 
@@ -4451,8 +4443,9 @@ msgid "Anonymous"
 msgstr "Anonim"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Participanți pentru id eveniment:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Participanți pentru eveniment:"
 
 #: 
 msgid "is not configured"
@@ -7071,11 +7064,8 @@ msgid "Person's Name"
 msgstr "Nume persoane"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Nume adult (opțional)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Verificat de (opțional)"
 
 #: 
@@ -7093,10 +7083,6 @@ msgstr "Șterge înregistrare checkin"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Persoană pentru check-out pentru adulți"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nume adult (opțional)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8578,8 +8564,9 @@ msgid "Records"
 msgstr "Înregistrări"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Emptied into Event"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9318,14 +9305,6 @@ msgid "Help translate this project"
 msgstr "Ajutați la traducerea acestui proiect"
 
 #: 
-msgid "Credit Card People"
-msgstr "Persoane cu Card de Credit"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Persoanele care sunt configurate să plătească cu card de credit"
-
-#: 
 msgid "Afrikaans"
 msgstr "Africană"
 
@@ -9496,4 +9475,8 @@ msgstr "Total depozit"
 #: 
 msgid "Group Cart Status"
 msgstr "Stare coș grup"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nume adult (opțional)"
 

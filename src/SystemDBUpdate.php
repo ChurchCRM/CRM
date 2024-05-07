@@ -14,7 +14,6 @@ require 'Include/Functions.php';
 
 if (Bootstrapper::isDBCurrent()) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 $logger = LoggerUtils::getAppLogger();
@@ -24,7 +23,6 @@ if (isset($_GET['upgrade']) && InputUtils::filterString($_GET['upgrade']) === "t
         UpgradeService::upgradeDatabaseVersion();
         $logger->info("Complete database upgrade; redirecting to Main menu");
         RedirectUtils::redirect('v2/dashboard');
-        exit;
     } catch (\Exception $ex) {
         $errorMessage = $ex->getMessage();
         $logger->error("Error updating database: " . $errorMessage, ['exception' => $ex]);

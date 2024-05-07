@@ -94,7 +94,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
       <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app"><i class="fa fa-user"></i><?= gettext('All People') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app"><i class="fas fa-clipboard-check"></i><?= gettext('Verify People') ?></a>
       <div class="btn btn-app"><span class="badge <?=$selfRegColor?>"><?= $selfRegText?></span><i class="fa fa-user-plus"></i><?= gettext('Self Register') ?></div>
-      <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
+      <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-app"><i class="fa fa-people-roof"></i><?= gettext('All Families') ?></a>
       <br/>
       <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext('Family Map') ?></a>
       <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext('Family Geographic') ?></a>
@@ -152,7 +152,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         </p>
       </div>
       <div class="icon">
-        <i class="fa fa-user-friends"></i>
+        <i class="fa fa-people-roof"></i>
       </div>
       <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -196,7 +196,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         </p>
       </div>
       <div class="icon">
-        <i class="fa fa-child"></i>
+        <i class="fa fa-children"></i>
       </div>
       <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
         <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -221,7 +221,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
       <div class="icon">
         <i class="fa fa-users"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath() ?>/grouplist" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
         <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>

@@ -24,7 +24,7 @@ use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sPageTitle = gettext('Edit Event Types');
 require 'Include/Header.php';
@@ -122,9 +122,9 @@ if ($numCounts) {
 
 // Construct the form
 ?>
-<div class='box'>
-  <div class='box-header'>
-    <h3 class='box-title'><?= gettext('Edit Event Type') ?></h3>
+<div class='card'>
+  <div class='card-header'>
+    <h3 class='card-title'><?= gettext('Edit Event Type') ?></h3>
   </div>
 
   <form method="POST" action="EditEventTypes.php" name="EventTypeEditForm">

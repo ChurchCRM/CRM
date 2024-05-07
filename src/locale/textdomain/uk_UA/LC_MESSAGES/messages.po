@@ -1267,10 +1267,6 @@ msgid "First name must be entered"
 msgstr "Потрібно ввести ім’я"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Недійсний рік: допустимі значення - від 1901 до 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Недійсна дата народження."
 
@@ -3562,10 +3558,6 @@ msgid "Invalid Year"
 msgstr "Недійсний рік"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Поза діапазоном: Допустимі значення - від 1901 до 2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Недійсний номер"
 
@@ -4346,7 +4338,8 @@ msgid "Anonymous"
 msgstr "Анонім"
 
 #: 
-msgid "Attendees for Event ID:"
+#, fuzzy
+msgid "Attendees for Event"
 msgstr "Учасники ідентифікатора події:"
 
 #: 
@@ -6965,11 +6958,8 @@ msgid "Person's Name"
 msgstr "Ім'я особи"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Ім'я дорослого (необов’язково)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Зареєструвався (необов’язково)"
 
 #: 
@@ -6987,10 +6977,6 @@ msgstr "Видалити реєстрацію в записі"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Дорослий, який виписує особу"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Ім'я дорослого (необов’язково)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8472,7 +8458,8 @@ msgid "Records"
 msgstr "Записи"
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "Порожній в ідентифікаторі події"
 
 #: 
@@ -9204,14 +9191,6 @@ msgid "Help translate this project"
 msgstr "Допоможіть перекласти цей проект"
 
 #: 
-msgid "Credit Card People"
-msgstr "Кредитні картки людей"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Люди, які налаштовані платити кредитною карткою."
-
-#: 
 msgid "Afrikaans"
 msgstr "Африкаанс"
 
@@ -9322,4 +9301,8 @@ msgstr "Недійсна дата народження: відсутній мі�
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Недійсна дата народження: відсутні місяць і день народження."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Ім'я дорослого (необов’язково)"
 

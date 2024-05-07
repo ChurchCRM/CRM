@@ -82,6 +82,7 @@ $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
 
 ?>
+<div class="card">
 <table cellpadding="1" align="center" cellspacing="0" class='table'>
 <tr>
 <td align="center" width="50%"><p><strong><?= gettext('Select Event Types To Display') ?></strong></p>
@@ -115,7 +116,7 @@ if ($eType === 'All') {
 }
 $rsOpps = RunQuery($sSQL);
 $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-@extract($aRow); // @ needed to suppress error messages when no church events
+if ($aRow != null) extract($aRow);
 $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
 for ($r = 1; $r <= $numRows; $r++) {
@@ -142,6 +143,7 @@ for ($r = 1; $r <= $numRows; $r++) {
 </td>
 </tr>
 </table>
+</div>
 <?php
 
 // Get data for the form as it now exists..
@@ -198,11 +200,11 @@ foreach ($allMonths as $mKey => $mVal) {
 
     if ($numRows > 0) {
         ?>
-  <div class='box'>
-    <div class='box-header'>
-      <h3 class='box-title'><?= ($numRows == 1 ? gettext('There is') : gettext('There are')) . ' ' . $numRows . ' ' . ($numRows == 1 ? gettext('event') : gettext('events')) . ' ' . 'for' . '  ' . gettext(date('F', mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
+  <div class='card'>
+    <div class='card-header'>
+      <h3 class='card-title'><?= ($numRows == 1 ? gettext('There is') : gettext('There are')) . ' ' . $numRows . ' ' . ($numRows == 1 ? gettext('event') : gettext('events')) . ' ' . 'for' . '  ' . gettext(date('F', mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
     </div>
-    <div class='box-body'>
+    <div class='card-body'>
   <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
     <thead>
       <tr class="TableHeader">

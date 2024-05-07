@@ -40,7 +40,7 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     case 'securitygrp':
-        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
+        AuthenticationManager::redirectHomeIfNotAdmin();
         break;
 
     default:

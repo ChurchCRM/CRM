@@ -1310,10 +1310,6 @@ msgid "First name must be entered"
 msgstr "必須輸入名字"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "無效的年份：允許值是1901到2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "無效的出生日期。"
 
@@ -3671,10 +3667,6 @@ msgid "Invalid Year"
 msgstr "無效的年份"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "超出範圍：允許的值是1901到2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "無效的號碼"
 
@@ -4481,8 +4473,9 @@ msgid "Anonymous"
 msgstr "匿名"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "活動ID：的與會者"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "活動 的與會者"
 
 #: 
 msgid "is not configured"
@@ -7123,11 +7116,8 @@ msgid "Person's Name"
 msgstr "會員名稱"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Adult Name(可選)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "簽到名(可選)"
 
 #: 
@@ -7146,10 +7136,6 @@ msgstr "刪除條目中的簽到"
 #, fuzzy
 msgid "Adult Checking Out Person"
 msgstr "成人登出人員"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Adult Name(可選)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8655,7 +8641,7 @@ msgstr "記錄"
 
 #: 
 #, fuzzy
-msgid "Emptied into Event ID"
+msgid "Emptied into Event"
 msgstr "清空事件代碼"
 
 #: 
@@ -9526,16 +9512,6 @@ msgstr "幫助翻譯此專案"
 
 #: 
 #, fuzzy
-msgid "Credit Card People"
-msgstr "信用卡人"
-
-#: 
-#, fuzzy
-msgid "People who are configured to pay by credit card."
-msgstr "配置為通過信用卡付款的人。"
-
-#: 
-#, fuzzy
 msgid "Afrikaans"
 msgstr "南非語"
 
@@ -9748,4 +9724,8 @@ msgstr "存款總額"
 #, fuzzy
 msgid "Group Cart Status"
 msgstr "群組購物車狀態"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Adult Name(可選)"
 

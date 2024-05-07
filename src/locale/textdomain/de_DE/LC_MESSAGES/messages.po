@@ -1307,10 +1307,6 @@ msgid "First name must be entered"
 msgstr "Der Vorname muss eingegeben werden"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Ungültiges Jahr: Erlaubt sind Eingaben von 1901 bis 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Ungültiger Geburtstag."
 
@@ -3671,10 +3667,6 @@ msgid "Invalid Year"
 msgstr "Ungültiges Jahr"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Außerhalb der Grenzen: Erlaubt sind Werte zwischen 1901 bis 2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Ungültige Nummer"
 
@@ -4476,8 +4468,9 @@ msgid "Anonymous"
 msgstr "Anonym"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Teilnehmer an Event mit iD:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Teilnehmer an Event mit"
 
 #: 
 msgid "is not configured"
@@ -7095,11 +7088,8 @@ msgid "Person's Name"
 msgstr "Name der Person"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Name des Erwachsenen (optional)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Eingecheckt von (optional)"
 
 #: 
@@ -7117,10 +7107,6 @@ msgstr "Einchecken in Eintrag löschen"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Erwachsene Check-Out Person"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Name des Erwachsenen (optional)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8602,8 +8588,9 @@ msgid "Records"
 msgstr "Datensätze"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "In Ereignis-ID geleert"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "In Ereignis geleert"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9346,14 +9333,6 @@ msgid "Help translate this project"
 msgstr "Helfen Sie mit dieses Projekt zu übersetzen"
 
 #: 
-msgid "Credit Card People"
-msgstr "Kreditkartenmenschen"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personen, die für die Zahlung per Kreditkarte konfiguriert sind."
-
-#: 
 msgid "Afrikaans"
 msgstr "Afrikanisch"
 
@@ -9564,4 +9543,9 @@ msgstr "2021/2022"
 #: 
 msgid "2022/2023"
 msgstr "2022/2023"
+
+#: 
+#, fuzzy
+msgid "Adult Name (Optional)"
+msgstr "Name des Erwachsenen (optional)"
 

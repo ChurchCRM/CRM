@@ -1301,10 +1301,6 @@ msgid "First name must be entered"
 msgstr "Имя должно быть введено"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Неверный Год: допустимые значения от 1901 до 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Недопустимая дата рождения."
 
@@ -3633,10 +3629,6 @@ msgid "Invalid Year"
 msgstr "Неверный год"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Вне диапазона: Допустимые значения от 1901 до 2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Неверный номер"
 
@@ -4424,8 +4416,9 @@ msgid "Anonymous"
 msgstr "Анонимный"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Участники для события ID:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Участники для события"
 
 #: 
 msgid "is not configured"

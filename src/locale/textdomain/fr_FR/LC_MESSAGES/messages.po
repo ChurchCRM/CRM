@@ -1272,10 +1272,6 @@ msgid "First name must be entered"
 msgstr "Le prénom doit être saisi"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Année invalide:  les valeurs doivent être comprise entre 1901 et 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Date de naissance invalide."
 
@@ -3568,10 +3564,6 @@ msgid "Invalid Year"
 msgstr "Année Invalide"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Erreur:  les valeurs doivent être entre 1901 et 2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Numéro invalide"
 
@@ -4354,8 +4346,9 @@ msgid "Anonymous"
 msgstr "Anonyme"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Participants à l&#39;événement ID :"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Participants à l&#39;événement"
 
 #: 
 msgid "is not configured"
@@ -6973,11 +6966,8 @@ msgid "Person's Name"
 msgstr "Nom de la Personne"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Nom de l'adulte (Optionnel)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Inscris par (Optionnel)"
 
 #: 
@@ -6995,10 +6985,6 @@ msgstr "Effacer l'inscription"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Adulte autorisé à chercher"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nom de l'adulte (Optionnel)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8481,8 +8467,9 @@ msgid "Records"
 msgstr "Enregistrements"
 
 #: 
-msgid "Emptied into Event ID"
-msgstr "Vidé dans ID d'événement"
+#, fuzzy
+msgid "Emptied into Event"
+msgstr "Vidé dans d'événement"
 
 #: 
 msgid "integrityCheck.json file missing"
@@ -9225,14 +9212,6 @@ msgid "Help translate this project"
 msgstr "Aidez à traduire ce projet"
 
 #: 
-msgid "Credit Card People"
-msgstr "Les gens de la carte de crédit"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Les personnes qui ont payer par carte de crédit."
-
-#: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
 
@@ -9344,4 +9323,8 @@ msgstr "Date de naissance invalide : Mois ou jour de naissance manquant."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Date de naissance invalide : Mois ou jour de naissance manquant."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nom de l'adulte (Optionnel)"
 

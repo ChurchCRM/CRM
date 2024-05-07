@@ -38,7 +38,7 @@
                 required="true" defaultValue="0"/>
         <column name="per_BirthDay" phpName="BirthDay" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"
                 required="true" defaultValue="0"/>
-        <column name="per_BirthYear" phpName="BirthYear" type="INTEGER" size="4"/>
+        <column name="per_BirthYear" phpName="BirthYear" type="SMALLINT" size="4" sqlType="smallint(4)"/>
         <column name="per_MembershipDate" phpName="MembershipDate" type="DATE"/>
         <column name="per_Gender" phpName="Gender" type="TINYINT" size="1" sqlType="tinyint(1) unsigned" required="true"
                 defaultValue="false"/>
@@ -504,14 +504,6 @@
         <column name="event_start" phpName="Start" type="TIMESTAMP" required="true"/>
         <column name="event_end" phpName="End" type="TIMESTAMP" required="true"/>
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
-        <!--
-            event_typename is deprecated, and should be removed with 4.1.0.
-            https://github.com/ChurchCRM/CRM/issues/5149
-            This field denormalizes the event type data by storing a string representation of the event type name
-            represented by the field in the event_types table having a foreign key relationship with this table's
-            event_type property.  This denormalized event type name storage is unnecessary.
-        -->
-        <column name="event_typename" phpName="TypeName" type="VARCHAR" size="40" required="true" defaultValue=""/>
         <column name="location_id" phpName="LocationId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>

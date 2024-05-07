@@ -30,6 +30,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
         $searchLikeString = '%' . $query . '%';
         $people = PersonQuery::create()->
         filterByFirstName($searchLikeString, Criteria::LIKE)->
+        _or()->filterByMiddleName($searchLikeString, Criteria::LIKE)->
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
         _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
         limit(15)->find();
@@ -48,11 +49,6 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
 
         return SlimUtils::renderJSON($response, $return);
     });
-
-    $group->get(
-        '/numbers',
-        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, MenuEventsCount::getNumberBirthDates())
-    );
 
     $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
         $people = PersonQuery::create()

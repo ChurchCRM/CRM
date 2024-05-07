@@ -3,8 +3,8 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\ResetPasswordEmail;
-use ChurchCRM\Emails\ResetPasswordTokenEmail;
+use ChurchCRM\Emails\users\ResetPasswordEmail;
+use ChurchCRM\Emails\users\ResetPasswordTokenEmail;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;

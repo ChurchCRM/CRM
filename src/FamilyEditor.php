@@ -18,7 +18,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -42,17 +42,14 @@ if (array_key_exists('FamilyID', $_GET)) {
 if ($iFamilyID > 0) {
     if (!(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() || (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId()))) {
         RedirectUtils::redirect('v2/dashboard');
-        exit;
     }
 
     $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_ID = ' . $iFamilyID;
     if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
         RedirectUtils::redirect('v2/dashboard');
-        exit;
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::redirect('v2/dashboard');
-    exit;
 }
 
 // Get the lists of canvassers
@@ -207,8 +204,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $aBirthDateError[$iCount] = gettext('Invalid Birth Date: Missing birth month and day.');
             $bErrorFlag = true;
         } elseif ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0)) {
-            if (($aBirthYears[$iCount] > 2155) || ($aBirthYears[$iCount] < 1901)) {
-                $aBirthDateError[$iCount] = gettext('Invalid Year: allowable values are 1901 to 2155');
+            if ($aBirthYears[$iCount] < 0) {
+                $aBirthDateError[$iCount] = gettext('Invalid Year');
                 $bErrorFlag = true;
             } elseif ($aBirthMonths[$iCount] > 0 && $aBirthDays[$iCount] > 0) {
                 if (!checkdate($aBirthMonths[$iCount], $aBirthDays[$iCount], $aBirthYears[$iCount])) {
@@ -531,6 +528,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sCity = SystemConfig::getValue('sDefaultCity');
         $sCountry = SystemConfig::getValue('sDefaultCountry');
         $sState = SystemConfig::getValue('sDefaultState');
+        $sZip = SystemConfig::getValue('sDefaultZip');
         $iClassification = '0';
         $iFamilyMemberRows = 6;
         $bOkToCanvass = 1;
@@ -539,7 +537,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sName = '';
         $sAddress1 = '';
         $sAddress2 = '';
-        $sZip = '';
         $sHomePhone = '';
         $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
         $sWorkPhone = '';

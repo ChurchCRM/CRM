@@ -1268,10 +1268,6 @@ msgid "First name must be entered"
 msgstr "የመጀመሪያ ስም መግባት አለበት።"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "ልክ ያልሆነ ዓመት፡ የሚፈቀዱ እሴቶች ከ1901 እስከ 2155 ናቸው።"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "ልክ ያልሆነ የልደት ቀን።"
 
@@ -3563,10 +3559,6 @@ msgid "Invalid Year"
 msgstr "ልክ ያልሆነ ዓመት"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "ከክልል ውጪ፡ የሚፈቀዱ እሴቶች ከ1901 እስከ 2155 ናቸው"
-
-#: 
 msgid "Invalid Number"
 msgstr "ልክ ያልሆነ ቁጥር"
 
@@ -4347,7 +4339,8 @@ msgid "Anonymous"
 msgstr "ስም የለሽ"
 
 #: 
-msgid "Attendees for Event ID:"
+#, fuzzy
+msgid "Attendees for Event"
 msgstr "የክስተት መታወቂያ ተሳታፊዎች:"
 
 #: 
@@ -6968,11 +6961,8 @@ msgid "Person's Name"
 msgstr "የሰው ስም"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "የአዋቂዎች ስም (አማራጭ)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "መዝግቦ ያስገባው ሰው(ከተፈለገ)"
 
 #: 
@@ -6990,10 +6980,6 @@ msgstr "መግቢያ ዝርዝርን ሰርዝ"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "አዋቂዎች የሆነ ይዞ ሚወጣ"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "የአዋቂዎች ስም (አማራጭ)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8476,7 +8462,8 @@ msgid "Records"
 msgstr "መዝገቦች "
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "በክስተቱ መታወቂያ ባዶ "
 
 #: 
@@ -9239,14 +9226,6 @@ msgid "Help translate this project"
 msgstr "ይህንን ፕሮጀክት ለመተርጎም ያግዙ"
 
 #: 
-msgid "Credit Card People"
-msgstr "ኤቲኤም ተጠቃሚዎች"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "በኤቲኤም ለመክፈል የተዋቀሩ ሰዎች"
-
-#: 
 msgid "Afrikaans"
 msgstr "\n"
 "አፍሪካንስ"
@@ -9358,4 +9337,9 @@ msgstr "ልክ ያልሆነ የልደት ቀን፡ የጠፋ የልደት ወር
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "ልክ ያልሆነ የልደት ቀን፡ የጠፋ የልደት ወር እና ቀን"
+
+#: 
+#, fuzzy
+msgid "Adult Name (Optional)"
+msgstr "የአዋቂዎች ስም (አማራጭ)"
 

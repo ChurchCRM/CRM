@@ -40,7 +40,7 @@ switch ($mode) {
 
     case 'custom':
     case 'famcustom':
-        AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin());
+        AuthenticationManager::redirectHomeIfNotAdmin();
         break;
     default:
         RedirectUtils::redirect('v2/dashboard');
@@ -174,4 +174,3 @@ switch ($sAction) {
 
 // Reload the option manager page
 RedirectUtils::redirect("OptionManager.php?mode=$mode&ListID=$listID");
-exit;

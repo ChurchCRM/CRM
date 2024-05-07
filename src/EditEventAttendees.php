@@ -4,7 +4,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 
 $sPageTitle = gettext('Church Event Editor');
 require 'Include/Header.php';
@@ -24,13 +26,24 @@ if ($sAction == 'Delete') {
     RunQuery($dpeSQL);
     $ShowAttendees = 1;
 }
+
+if ($EventID === null) {
+    $EventID = InputUtils::legacyFilterInput($_GET['eventId'], 'int');
+}
+
+$event = EventQuery::create()->findPk($EventID);
+
+if (empty($event)) {
+    RedirectUtils::redirect('ListEvents.php');
+}
+
 // Construct the form
 ?>
-<div class='box'>
-  <div class='box-header'>
-    <h3 class='box-title'><?= gettext('Attendees for Event ID:') . ' ' . $EventID ?></h3>
+<div class='card'>
+  <div class='card-header'>
+    <h3 class='card-title'><?= gettext('Attendees for Event') . ' : ' . $event->getTitle() ?></h3>
   </div>
-  <div class='box-body'>
+  <div class='card-body'>
     <strong><?= gettext('Name')?>:</strong> <?= $EvtName ?><br/>
     <strong><?= gettext('Date')?>:</strong> <?= $EvtDate ?><br/>
     <strong><?= gettext('Description')?>:</strong><br/>
@@ -75,7 +88,7 @@ if ($numAttRows != 0) {
           <input type="hidden" name="EName" value="<?= $EvtName ?>">
           <input type="hidden" name="EDesc" value="<?= $EvtDesc ?>">
           <input type="hidden" name="EDate" value="<?= $EvtDate ?>">
-          <input type="submit" name="Action" value="<?= gettext('Delete') ?>" class="btn btn-default" onClick="return confirm("<?= gettext('Are you sure you want to DELETE this person from Event ID: ') . $EventID ?>")">
+          <input type="submit" name="Action" value="<?= gettext('Delete') ?>" class="btn btn-danger" onClick="return confirm("<?= gettext('Are you sure you want to DELETE this person from Event ID: ') . $EventID ?>")">
       </form>
      </td>
     </tr>

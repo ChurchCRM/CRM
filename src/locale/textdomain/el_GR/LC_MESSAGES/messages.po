@@ -1266,10 +1266,6 @@ msgid "First name must be entered"
 msgstr "Πρέπει να εισαχθεί το όνομα"
 
 #: 
-msgid "Invalid Year: allowable values are 1901 to 2155"
-msgstr "Μη έγκυρο έτος: οι επιτρεπόμενες τιμές είναι 1901 έως 2155"
-
-#: 
 msgid "Invalid Birth Date."
 msgstr "Μη έγκυρη ημερομηνία γέννησης."
 
@@ -3557,10 +3553,6 @@ msgid "Invalid Year"
 msgstr "Μη έγκυρο έτος"
 
 #: 
-msgid "Out of range: Allowable values are 1901 to 2155"
-msgstr "Εκτός εύρους: Οι επιτρεπόμενες τιμές είναι 1901 έως 2155"
-
-#: 
 msgid "Invalid Number"
 msgstr "Μη έγκυρος αριθμός"
 
@@ -4341,8 +4333,9 @@ msgid "Anonymous"
 msgstr "Ανώνυμος"
 
 #: 
-msgid "Attendees for Event ID:"
-msgstr "Συμμετέχοντες για Αναγνωριστικό εκδήλωσης:"
+#, fuzzy
+msgid "Attendees for Event"
+msgstr "Συμμετέχοντες για Αναγνωριστικό εκδήλωσης"
 
 #: 
 msgid "is not configured"
@@ -6960,11 +6953,8 @@ msgid "Person's Name"
 msgstr "Όνομα Μέλους"
 
 #: 
-msgid "Adult Name(Optional)"
-msgstr "Όνομα ενήλικα (Προαιρετικό)"
-
-#: 
-msgid "Checked in By(Optional)"
+#, fuzzy
+msgid "Checked in By (Optional)"
 msgstr "Έγινε check in από (Προαιρετικό)"
 
 #: 
@@ -6982,10 +6972,6 @@ msgstr "Διαγραφή Checkin στην Καταχώριση"
 #: 
 msgid "Adult Checking Out Person"
 msgstr "Ενήλικος που κάνει check out"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Όνομα ενήλικα (Προαιρετικό)"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -8467,7 +8453,8 @@ msgid "Records"
 msgstr "Εγγραφές"
 
 #: 
-msgid "Emptied into Event ID"
+#, fuzzy
+msgid "Emptied into Event"
 msgstr "Αδειάστηκε στο Αναγνωριστικό συμβάντος"
 
 #: 
@@ -9199,14 +9186,6 @@ msgid "Help translate this project"
 msgstr "Βοηθήστε στη μετάφραση αυτού του έργου"
 
 #: 
-msgid "Credit Card People"
-msgstr "Άνθρωποι πιστωτικών καρτών"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Άτομα που έχουν ρυθμιστεί να πληρώνουν με πιστωτική κάρτα."
-
-#: 
 msgid "Afrikaans"
 msgstr "Αφρικάανς"
 
@@ -9317,4 +9296,8 @@ msgstr "Μη έγκυρη ημερομηνία γέννησης: Λείπει ο
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Μη έγκυρη ημερομηνία γέννησης: Λείπει ο μήνας και η ημέρα γέννησης."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Όνομα ενήλικα (Προαιρετικό)"
 
