@@ -65,8 +65,8 @@ if (!empty($_POST['classList'])) {
 }
 
 $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_envelope, plg_date, plg_amount, plg_method, plg_comment, plg_CheckNo, fun_Name, plg_PledgeOrPayment, plg_NonDeductible FROM family_fam
-	INNER JOIN pledge_plg ON fam_ID=plg_FamID
-	LEFT JOIN donationfund_fun ON plg_fundID=fun_ID';
+    INNER JOIN pledge_plg ON fam_ID=plg_FamID
+    LEFT JOIN donationfund_fun ON plg_fundID=fun_ID';
 
 $sSQL .= " WHERE plg_PledgeOrPayment='Payment' ";
 
@@ -241,7 +241,8 @@ if ($output === 'pdf') {
                 }
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
                 $curY += SystemConfig::getValue('incrementY');
-                if ($fam_Country != '' && $fam_Country != 'USA' && $fam_Country != 'United States') {
+                $sDefaultCountry = SystemConfig::getValue('sDefaultCountry');
+                if ($fam_Country != '' && $fam_Country != $sDefaultCountry) {
                     $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Country);
                     $curY += SystemConfig::getValue('incrementY');
                 }
@@ -255,7 +256,7 @@ if ($output === 'pdf') {
                 }
                 $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  ' . SystemConfig::getValue('sChurchZip'));
                 $curY += SystemConfig::getValue('incrementY');
-                if ($fam_Country != '' && $fam_Country != 'USA' && $fam_Country != 'United States') {
+                if ($fam_Country != '' && $fam_Country != $sDefaultCountry) {
                     $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, $fam_Country);
                     $curY += SystemConfig::getValue('incrementY');
                 }
@@ -282,7 +283,7 @@ if ($output === 'pdf') {
         // Check for minimum amount
         if ($iMinimum > 0) {
             $temp = "SELECT SUM(plg_amount) AS total_gifts FROM pledge_plg
-				WHERE plg_FamID=$fam_ID AND $aSQLCriteria[1]";
+                WHERE plg_FamID=$fam_ID AND $aSQLCriteria[1]";
             $rsMinimum = RunQuery($temp);
             [$total_gifts] = mysqli_fetch_row($rsMinimum);
             if ($iMinimum > $total_gifts) {

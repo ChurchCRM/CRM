@@ -42,7 +42,7 @@ foreach ($families as $family) {
     }
     $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
 
-    if ($family->getCountry() != '' && $family->getCountry() != 'USA' && $family->getCountry() != 'United States') {
+    if ($family->getCountry() != '' && $family->getCountry() != $sDefaultCountry) {
         $labelText .= "\n" . $family->getCountry();
     }
 

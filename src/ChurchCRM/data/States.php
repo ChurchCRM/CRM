@@ -12,9 +12,8 @@ class States
 
     public function __construct(string $countryCode)
     {
-        $this->countryCode = $countryCode;
-
         $stateFileName = SystemURLs::getDocumentRoot() . '/locale/states/' . $countryCode . '.json';
+
         if (is_file($stateFileName)) {
             $statesFile = file_get_contents($stateFileName);
             MiscUtils::throwIfFailed($statesFile);
