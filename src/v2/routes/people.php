@@ -71,7 +71,7 @@ function listPeople(Request $request, Response $response, array $args): Response
     $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
     $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k));
 
-    if (count($aInactiveClassificationIds) !== count($aInactiveClasses))  {
+    if (count($aInactiveClassificationIds) !== count($aInactiveClasses)) {
         LoggerUtils::getAppLogger()->warning('Encountered invalid configuration(s) for sInactiveClassification, please fix this');
     }
 
