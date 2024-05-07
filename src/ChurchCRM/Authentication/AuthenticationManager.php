@@ -131,7 +131,7 @@ class AuthenticationManager
             if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
                 $redirectLocation = $AuthenticationRequest->redirectPath;
             }
-            $redirectLocation = $redirectLocation ?? $_SESSION['location'] ?? 'v2/dashboard';
+            $redirectLocation ??= $_SESSION['location'] ?? 'v2/dashboard';
             NotificationService::updateNotifications();
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
