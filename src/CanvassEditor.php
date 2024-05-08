@@ -88,7 +88,7 @@ if (isset($_POST['Submit'])) {
     }
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-        if (!empty($linkBack)) {
+        if ($linkBack) {
             RedirectUtils::redirect($linkBack);
         } else {
             RedirectUtils::redirect('CanvassEditor.php?FamilyID=' . $iFamily . '&FYID=' . $iFYID . '&CanvassID=' . $iCanvassID . '&linkBack=', $linkBack);
