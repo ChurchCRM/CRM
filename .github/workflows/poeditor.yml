@@ -17,7 +17,7 @@ jobs:
         # fetch full history so things like auto-changelog work properly
         fetch-depth: 0
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -37,7 +37,7 @@ jobs:
         npm install grunt-cli --save-dev
 
     - name: Create BuildConfig File
-      uses: jsdaniell/create-json@1.1.2
+      uses: jsdaniell/create-json@v1.2.3
       with:
         name: "BuildConfig.json"
         json: '{"POEditor": { "id": "77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}'
@@ -46,7 +46,7 @@ jobs:
       run: npm run locale-download
 
     - name: Push changes to ${{ steps.package-version.outputs.current-version}} locale branch
-      uses: peter-evans/create-pull-request@v5
+      uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: 'locale/${{ steps.package-version.outputs.current-version}}'
