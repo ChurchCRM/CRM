@@ -63,7 +63,7 @@ class Notification
         return true;
     }
 
-    private function sendProjector()
+    private function sendProjector(): string|false
     {
         $OLPAlert = new OpenLPNotification(
             SystemConfig::getValue('sOLPURL'),
