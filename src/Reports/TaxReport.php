@@ -197,9 +197,8 @@ if ($output === 'pdf') {
             }
             $blurb = SystemConfig::getValue('sTaxReport1') . ' ' . $DateString . '.';
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
-            $curY += 2 * SystemConfig::getValue('incrementY');
 
-            return $curY;
+            return $curY + 2 * SystemConfig::getValue('incrementY');
         }
 
         public function finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country): void

@@ -18,7 +18,6 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
 
     public function getSearchResults(string $SearchQuery)
     {
-        $searchResults = [];
         if (SystemConfig::getBooleanValue('bSearchIncludeFamilies')) {
             $this->addSearchResults($this->getFamilySearchResultsByPartialName($SearchQuery));
         }

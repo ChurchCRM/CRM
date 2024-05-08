@@ -15,8 +15,8 @@ class ConfigItem
     private $url;
     private $data;
     private $dbConfigItem;
-    private $section = null;
-    private $category = null;
+    private $section;
+    private $category;
 
     public function __construct($id, $name, $type, $default, $tooltip = '', $url = '', $data = '')
     {

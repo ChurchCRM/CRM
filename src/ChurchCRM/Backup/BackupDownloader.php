@@ -32,9 +32,6 @@ class BackupDownloader
             $ext = strtolower($path_parts['extension']);
             switch ($ext) {
                 case 'gz':
-                    header('Content-type: application/x-gzip');
-                    header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
-                    break;
                 case 'tar.gz':
                     header('Content-type: application/x-gzip');
                     header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');

@@ -283,12 +283,10 @@ class Person extends BasePerson implements PhotoInterface
     /**
      * * If person address found, return latitude and Longitude of person address
      * else return family latitude and Longitude.
-     *
-     * @return array
      */
     public function getLatLng(): array
     {
-        $address = $this->getAddress(); //if person address empty, this will get Family address
+        $this->getAddress(); //if person address empty, this will get Family address
         $lat = 0;
         $lng = 0;
         if (!empty($this->getAddress1())) {
@@ -299,13 +297,11 @@ class Person extends BasePerson implements PhotoInterface
             }
         } else {
             // note: this is useful when a person don't have a family (i.e. not an address)
-            if (!empty($this->getFamily())) {
-                if (!$this->getFamily()->hasLatitudeAndLongitude()) {
-                    $this->getFamily()->updateLanLng();
-                }
-                $lat = $this->getFamily()->getLatitude();
-                $lng = $this->getFamily()->getLongitude();
+            if (!$this->getFamily()->hasLatitudeAndLongitude()) {
+                $this->getFamily()->updateLanLng();
             }
+            $lat = $this->getFamily()->getLatitude();
+            $lng = $this->getFamily()->getLongitude();
         }
 
         return [
@@ -538,13 +534,11 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getProperties()
     {
-        $personProperties = PropertyQuery::create()
+        return PropertyQuery::create()
           ->filterByProClass('p')
           ->useRecordPropertyQuery()
           ->filterByRecordId($this->getId())
           ->find();
-
-        return $personProperties;
     }
 
     //  return array of person properties
@@ -573,7 +567,7 @@ class Person extends BasePerson implements PhotoInterface
     /**
      * @return string[]
      */
-    public function getCustomFields($allPersonCustomFields, $customMapping, &$CustomList, $name_func): array
+    public function getCustomFields($allPersonCustomFields, array $customMapping, array &$CustomList, $name_func): array
     {
         // add custom fields to person_custom table since they are not defined in the propel schema
         $rawQry = PersonCustomQuery::create();

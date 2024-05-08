@@ -121,7 +121,7 @@ class GroupService
         $rsList = RunQuery($sSQL);
 
         // Validate that this list ID is really for a group roles list. (for security)
-        if (mysqli_num_rows($rsList) == 0) {
+        if (mysqli_num_rows($rsList) === 0) {
             throw new \Exception('invalid request');
         }
 
@@ -158,7 +158,7 @@ class GroupService
         return $rowOrder[0];
     }
 
-    public function deleteGroupRole(string $groupID, string $groupRoleID)
+    public function deleteGroupRole(string $groupID, string $groupRoleID): array
     {
         requireUserGroupMembership('bManageGroups');
         $sSQL = 'SELECT * FROM list_lst

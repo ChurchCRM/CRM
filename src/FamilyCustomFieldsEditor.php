@@ -104,9 +104,9 @@ if (isset($_POST['SaveChanges'])) {
         $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
         $newFieldSec = $_POST['newFieldSec'];
 
-        if (strlen($newFieldName) == 0) {
+        if (strlen($newFieldName) === 0) {
             $bNewNameError = true;
-        } elseif (strlen($newFieldType) == 0 || $newFieldType < 1) {
+        } elseif (strlen($newFieldType) === 0 || $newFieldType < 1) {
             // This should never happen, but check anyhow.
             // $bNewTypeError = true;
         } else {

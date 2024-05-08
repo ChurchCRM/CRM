@@ -8,13 +8,8 @@ use ChurchCRM\Utils\LoggerUtils;
 
 class JobBase
 {
-    /** @var BackupType */
-    protected $BackupType;
-
-    /**
-     * @var string
-     */
-    protected $TempFolder;
+    protected string $BackupType;
+    protected string $TempFolder;
 
     protected function createEmptyTempFolder(): string
     {

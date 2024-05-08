@@ -25,7 +25,7 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
     $sSQL = 'SELECT * FROM family_fam WHERE fam_ID=' . $famID;
     $rsFamInfo = RunQuery($sSQL);
 
-    if (mysqli_num_rows($rsFamInfo) == 0) {
+    if (mysqli_num_rows($rsFamInfo) === 0) {
         return 'Invalid Family' . $famID;
     }
 
@@ -533,16 +533,14 @@ function ZipBundleSort(array $inLabels)
     unset($Zips);
     $n = count($inLabels);
     $zc = $n;
-    if ($zc > 0) {
-        $NoteText = ['Note' => '******* Presort MIXED ADC '];
-        $NameText = ['Name' => '** ' . $zc . ' Addresses in Bundle *'];
-        $AddressText = ['Address' => '** ' . $nTotalLabels . ' Total Addresses *'];
-        $CityText = ['City' => '******* Presort MIXED ADC   '];
-        $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
-        for ($i = 0; $i < $n; $i++) {
-            $outList[] = array_merge($inLabels[$i], $NoteText);
-            $nmadc++;
-        }
+    $NoteText = ['Note' => '******* Presort MIXED ADC '];
+    $NameText = ['Name' => '** ' . $zc . ' Addresses in Bundle *'];
+    $AddressText = ['Address' => '** ' . $nTotalLabels . ' Total Addresses *'];
+    $CityText = ['City' => '******* Presort MIXED ADC   '];
+    $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
+    for ($i = 0; $i < $n; $i++) {
+        $outList[] = array_merge($inLabels[$i], $NoteText);
+        $nmadc++;
     }
 
     if (count($outList) > 0) {
@@ -656,7 +654,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         // Now sort the label list by presort bundle definitions
         $zipLabels = ZipBundleSort($sLabelList);
         if ($iBulkMailPresort == 2) {
-            foreach ($zipLabels as $i => $sLT) {
+            foreach ($zipLabels as $sLT) {
                 $pdf->addPdfLabel(sprintf(
                     "%s\n%s\n%s\n%s, %s %s",
                     $sLT['Note'],
@@ -668,7 +666,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 ));
             }
         } else {
-            foreach ($zipLabels as $i => $sLT) {
+            foreach ($zipLabels as $sLT) {
                 $pdf->addPdfLabel(sprintf(
                     "%s\n%s\n%s, %s %s",
                     $sLT['Name'],
@@ -680,7 +678,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             }
         }
     } else {
-        foreach ($sLabelList as $i => $sLT) {
+        foreach ($sLabelList as $sLT) {
             $pdf->addPdfLabel(sprintf(
                 "%s\n%s\n%s, %s %s",
                 $sLT['Name'],
@@ -787,7 +785,7 @@ if ($sFileType === 'PDF') {
 
     $sCSVOutput .= '"' . InputUtils::translateSpecialCharset('Greeting') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('Name') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('Address') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('City') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('State') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('Zip') . '"' . "\n";
 
-    foreach ($aLabelList as $i => $sLT) {
+    foreach ($aLabelList as $sLT) {
         if ($iBulkCode) {
             $sCSVOutput .= '"' . $sLT['Note'] . '"' . $delimiter;
         }

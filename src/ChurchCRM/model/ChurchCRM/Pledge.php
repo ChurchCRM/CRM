@@ -18,7 +18,7 @@ use Propel\Runtime\Map\TableMap;
  */
 class Pledge extends BasePledge
 {
-    public function getFormattedFY()
+    public function getFormattedFY(): string
     {
         return MakeFYString($this->getFyId());
     }
@@ -26,7 +26,6 @@ class Pledge extends BasePledge
     /**
      * Code to be run before deleting the object in database.
      *
-     * @param ConnectionInterface $con
      *
      * @return bool
      */
