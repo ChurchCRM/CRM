@@ -14,7 +14,9 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Get the Order, ID, Mode, and Action from the querystring
@@ -149,6 +151,24 @@ switch ($sAction) {
         RunQuery($sSQL);
         break;
 
+    case 'Inactive':
+        $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
+        $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k));
+
+        if (count($aInactiveClassificationIds) !== count($aInactiveClasses)) {
+            LoggerUtils::getAppLogger()->warning('Encountered invalid configuration(s) for sInactiveClassification, please fix this');
+        }
+
+        if (in_array($iID, $aInactiveClasses)) {
+            unset($aInactiveClasses[array_search($iID, $aInactiveClasses)]);
+        } else {
+            $aInactiveClasses[] = $iID;
+        }
+
+        $sInactiveClasses = implode(',', $aInactiveClasses);
+        SystemConfig::setValue('sInactiveClassification', $sInactiveClasses);
+
+        break;
         // If no valid action was specified, abort
     default:
         RedirectUtils::redirect('v2/dashboard');
