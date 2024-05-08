@@ -15,7 +15,6 @@ context("Standard User Session", () => {
         cy.contains("Berry, Miss Brianna");
     });
 
-
     it("View Event via URL", () => {
         cy.loginStandard("EditEventAttendees.php?eventId=3");
         cy.contains("Attendees for Event : Summer Camp");
@@ -26,12 +25,10 @@ context("Standard User Session", () => {
         cy.contains("Listing All Church Events");
     });
 
-
     it("View Event via invalid URL id", () => {
         cy.loginStandard("EditEventAttendees.php?eventId=99999", false);
         cy.contains("Listing All Church Events");
     });
-
 
     it("CheckIn People", () => {
         cy.loginStandard("Checkin.php");

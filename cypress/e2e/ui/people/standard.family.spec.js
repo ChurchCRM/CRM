@@ -62,10 +62,12 @@ context("Standard Family", () => {
         cy.get('input[name="Longitude"]').clear();
 
         // Fill in Other Info section
-        const weddingYear = '2024';
-        const weddingMonth = '04';
-        const weddingDay = '03';
-        cy.get('#WeddingDate').type(`${weddingYear}-${weddingMonth}-${weddingDay}`);
+        const weddingYear = "2024";
+        const weddingMonth = "04";
+        const weddingDay = "03";
+        cy.get("#WeddingDate").type(
+            `${weddingYear}-${weddingMonth}-${weddingDay}`,
+        );
 
         // Fill in Family Members
         cy.get('input[name="FirstName1"]').type("Mike");
