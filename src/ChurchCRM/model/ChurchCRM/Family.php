@@ -67,9 +67,7 @@ class Family extends BaseFamily implements PhotoInterface
     public function getWeddingDay()
     {
         if ($this->getWeddingdate() !== null && $this->getWeddingdate() !== '') {
-            $day = $this->getWeddingdate()->format('d');
-
-            return $day;
+            return $this->getWeddingdate()->format('d');
         }
 
         return '';
@@ -78,9 +76,7 @@ class Family extends BaseFamily implements PhotoInterface
     public function getWeddingMonth()
     {
         if ($this->getWeddingdate() !== null && $this->getWeddingdate() !== '') {
-            $month = $this->getWeddingdate()->format('m');
-
-            return $month;
+            return $this->getWeddingdate()->format('m');
         }
 
         return '';
@@ -174,8 +170,6 @@ class Family extends BaseFamily implements PhotoInterface
 
     /**
      * @throws PropelException
-     *
-     * @return array
      */
     public function getEmails(): array
     {
@@ -332,13 +326,11 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function toSearchArray(): array
     {
-        $searchArray = [
+        return [
             'Id'          => $this->getId(),
             'displayName' => $this->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')),
             'uri'         => SystemURLs::getRootPath() . '/v2/family/' . $this->getId(),
         ];
-
-        return $searchArray;
     }
 
     public function isActive(): bool

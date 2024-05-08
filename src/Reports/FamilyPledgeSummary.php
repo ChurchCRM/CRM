@@ -95,7 +95,7 @@ if (!empty($_POST['family'])) {
     foreach ($_POST['family'] as $famID) {
         $fam[$count++] = InputUtils::legacyFilterInput($famID, 'int');
     }
-    if ($count == 1) {
+    if ($count === 1) {
         if ($fam[0]) {
             $sSQL .= " AND fam_ID='$fam[0]' ";
         }
@@ -117,7 +117,7 @@ if (!empty($_POST['funds'])) {
     foreach ($_POST['funds'] as $fundID) {
         $fund[$fundCount++] = InputUtils::legacyFilterInput($fundID, 'int');
     }
-    if ($fundCount == 1) {
+    if ($fundCount === 1) {
         if ($fund[0]) {
             $sSQLFundCriteria .= " AND plg_fundID='$fund[0]' ";
         }
@@ -132,7 +132,7 @@ if (!empty($_POST['funds'])) {
 
 // Make the string describing the fund filter
 if ($fundCount > 0) {
-    if ($fundCount == 1) {
+    if ($fundCount === 1) {
         if ($fund[0] == gettext('All Funds')) {
             $fundOnlyString = gettext(' for all funds');
         } else {
@@ -222,7 +222,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $temp = "SELECT plg_plgID FROM pledge_plg
             WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID" . $sSQLFundCriteria;
         $rsPledgeCheck = RunQuery($temp);
-        if (mysqli_num_rows($rsPledgeCheck) == 0) {
+        if (mysqli_num_rows($rsPledgeCheck) === 0) {
             continue;
         }
     }
@@ -235,7 +235,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $rsPledges = RunQuery($sSQL);
 
     // If there is no pledge or a payment go to next family
-    if (mysqli_num_rows($rsPledges) == 0) {
+    if (mysqli_num_rows($rsPledges) === 0) {
         continue;
     }
 
@@ -269,8 +269,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     $totalAmountPledges = 0;
 
-    if (mysqli_num_rows($rsPledges) == 0) {
-    } else {
+    if (mysqli_num_rows($rsPledges) != 0) {
         $totalAmount = 0;
         $cnt = 0;
         while ($aRow = mysqli_fetch_array($rsPledges)) {
@@ -296,8 +295,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPayments = 0;
-    if (mysqli_num_rows($rsPledges) == 0) {
-    } else {
+    if (mysqli_num_rows($rsPledges) != 0) {
         $totalAmount = 0;
         $cnt = 0;
         while ($aRow = mysqli_fetch_array($rsPledges)) {

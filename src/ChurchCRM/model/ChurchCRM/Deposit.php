@@ -280,8 +280,6 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->Write(8, 'Amount');
         $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
 
-        $totalAmount = 0;
-
         //while ($aRow = mysqli_fetch_array($rsPledges))
         foreach ($this->getPledges() as $payment) {
             $thisReport->pdf->SetFont('Times', '', 10);
@@ -426,55 +424,47 @@ class Deposit extends BaseDeposit
 
     public function getTotalChecks()
     {
-        $totalCash = PledgeQuery::create()
+        return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CHECK')
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
-
-        return $totalCash;
     }
 
     public function getTotalCash()
     {
-        $totalCash = PledgeQuery::create()
+        return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CASH')
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
-
-        return $totalCash;
     }
 
     public function getCountChecks()
     {
-        $countCash = PledgeQuery::create()
+        return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->groupByGroupKey()
             ->filterByMethod('CHECK')
             ->find()
             ->count();
-
-        return $countCash;
     }
 
     public function getCountCash()
     {
-        $countCash = PledgeQuery::create()
+        return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->groupByGroupKey()
             ->filterByMethod('CASH')
             ->find()
             ->count();
-
-        return $countCash;
     }
 
     public function getFundTotals()
     {
-        $funds = PledgeQuery::create()
+        return PledgeQuery::create()
         ->filterByDepId($this->getId())
         ->groupByFundId()
         ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'Total')
@@ -483,8 +473,6 @@ class Deposit extends BaseDeposit
         ->orderBy(DonationFundTableMap::COL_FUN_NAME)
         ->select(['Name', 'Total'])
         ->find();
-
-        return $funds;
     }
 
     public function getPledgesJoinAll(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)

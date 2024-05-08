@@ -375,7 +375,7 @@ if ($sZip != '') {
     $sAssignedGroups = ',';
 
     //Was anything returned?
-    if (mysqli_num_rows($rsAssignedGroups) == 0) {
+    if (mysqli_num_rows($rsAssignedGroups) === 0) {
         echo '<p align"center">' . gettext('No group assignments.') . '</p>';
     } else {
         echo '<table width="100%" cellpadding="4" cellspacing="0">';
@@ -447,7 +447,7 @@ if ($sZip != '') {
     $sAssignedProperties = ',';
 
     //Was anything returned?
-    if (mysqli_num_rows($rsAssignedProperties) == 0) {
+    if (mysqli_num_rows($rsAssignedProperties) === 0) {
         echo '<p align"center">' . gettext('No property assignments.') . '</p>';
     } else {
         echo '<table width="100%" cellpadding="4" cellspacing="0">';

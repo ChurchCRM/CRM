@@ -242,13 +242,13 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
     while ($current_type = current($type)) {
         $id = key($type);
         // Filter Input
-        if ($current_type == 'text' || $current_type == 'textarea') {
+        if ($current_type === 'text' || $current_type === 'textarea') {
             $value = InputUtils::legacyFilterInput($new_value[$id]);
-        } elseif ($current_type == 'number') {
+        } elseif ($current_type === 'number') {
             $value = InputUtils::legacyFilterInput($new_value[$id], 'float');
-        } elseif ($current_type == 'date') {
+        } elseif ($current_type === 'date') {
             $value = InputUtils::legacyFilterInput($new_value[$id], 'date');
-        } elseif ($current_type == 'boolean') {
+        } elseif ($current_type === 'boolean') {
             if ($new_value[$id] != '1') {
                 $value = '';
             } else {
@@ -267,7 +267,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
             . "WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID ";
         $bRowExists = true;
         $iNumRows = mysqli_num_rows(RunQuery($sSQL));
-        if ($iNumRows == 0) {
+        if ($iNumRows === 0) {
             $bRowExists = false;
         }
 
@@ -357,7 +357,7 @@ require 'Include/Header.php';
                         <?php
                     } ?>
 
-                    <?php if (isset($sErrorText) != '') {
+                    <?php if (isset($sErrorText) !== '') {
                         ?>
                         <tr>
                             <td align="center" colspan="2">

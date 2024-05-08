@@ -51,7 +51,6 @@ class ChurchInfoReport extends FPDF
     public function printRightJustifiedCell($x, $y, $wid, $str): void
     {
         $strconv = iconv('UTF-8', 'ISO-8859-1', $str);
-        $iLen = strlen($strconv);
         $this->SetXY($x, $y);
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'R');
     }
@@ -59,7 +58,6 @@ class ChurchInfoReport extends FPDF
     public function printCenteredCell($x, $y, $wid, $str): void
     {
         $strconv = iconv('UTF-8', 'ISO-8859-1', $str);
-        $iLen = strlen($strconv);
         $this->SetXY($x, $y);
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'C');
     }
@@ -119,10 +117,9 @@ class ChurchInfoReport extends FPDF
         if ($fam_Country != '' && $fam_Country != SystemConfig::getValue('sDefaultCountry')) {
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Country);
             $curY += SystemConfig::getValue('incrementY');
-        }
-        $curY += 5.0; // mm to get away from the second window
+        } // mm to get away from the second window
 
-        return $curY;
+        return $curY + 5.0;
     }
 
     public function makeSalutation($famID): string

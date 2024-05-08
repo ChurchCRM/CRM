@@ -39,7 +39,7 @@ class AnniversariesCalendar implements SystemCalendar
         return gettext('Anniversaries');
     }
 
-    public function getEvents(string $start, string $end)
+    public function getEvents(string $start, string $end): ObjectCollection
     {
         $families = FamilyQuery::create()
             ->filterByWeddingdate('', Criteria::NOT_EQUAL)
@@ -48,7 +48,7 @@ class AnniversariesCalendar implements SystemCalendar
         return $this->familyCollectionToEvents($families);
     }
 
-    public function getEventById(int $Id)
+    public function getEventById(int $Id): ObjectCollection
     {
         $families = FamilyQuery::create()
             ->filterByWeddingdate('', Criteria::NOT_EQUAL)

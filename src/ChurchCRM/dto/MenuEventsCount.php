@@ -20,12 +20,10 @@ class MenuEventsCount
 {
     public static function getBirthDates()
     {
-        $peopleWithBirthDays = PersonQuery::create()
+        return PersonQuery::create()
             ->filterByBirthMonth(date('m'))
             ->filterByBirthDay(date('d'))
             ->find();
-
-        return $peopleWithBirthDays;
     }
 
     /**

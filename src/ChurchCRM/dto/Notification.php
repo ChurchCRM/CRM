@@ -9,11 +9,11 @@ use Vonage\Client\Credentials\Basic;
 
 class Notification
 {
-    protected $projectorText;
-    protected $recipients;
+    protected string $projectorText;
+    protected array $recipients;
     protected ?Person $person = null;
 
-    public function setRecipients($recipients): void
+    public function setRecipients(array $recipients): void
     {
         $this->recipients = $recipients;
     }
@@ -36,72 +36,74 @@ class Notification
         $this->projectorText = $text;
     }
 
-    private function sendEmail()
+    private function sendEmail(): bool
     {
         $emailaddresses = [];
         foreach ($this->recipients as $recipient) {
             $emailaddresses[] = $recipient->getEmail();
         }
 
-        try {
-            $email = new NotificationEmail($emailaddresses, $this->person->getFullName());
-            $emailStatus = $email->send();
+        $email = new NotificationEmail($emailaddresses, $this->person->getFullName());
 
-            return $emailStatus;
-        } catch (\Exception $ex) {
-            return false;
-        }
+        return $email->send();
     }
 
     private function sendSMS(): bool
     {
-        try {
-            $client = new Client(new Basic(SystemConfig::getValue('sNexmoAPIKey'), SystemConfig::getValue('sNexmoAPISecret')));
+        $client = new Client(new Basic(SystemConfig::getValue('sNexmoAPIKey'), SystemConfig::getValue('sNexmoAPISecret')));
 
-            foreach ($this->recipients as $recipient) {
-                $message = $client->message()->sendText([
-                    'to'   => $recipient->getNumericCellPhone(),
-                    'from' => SystemConfig::getValue('sNexmoFromNumber'),
-                    'text' => gettext('Notification for') . ' ' . $this->person->getFullName(),
-                ]);
-            }
-
-            return true;
-        } catch (\Exception $ex) {
-            return false;
+        foreach ($this->recipients as $recipient) {
+            $client->message()->sendText(
+                $recipient->getNumericCellPhone(),
+                SystemConfig::getValue('sNexmoFromNumber'),
+                gettext('Notification for') . ' ' . $this->person->getFullName()
+            );
         }
+
+        return true;
     }
 
-    private function sendProjector()
+    private function sendProjector(): string|false
     {
-        try {
-            $OLPAlert = new OpenLPNotification(
-                SystemConfig::getValue('sOLPURL'),
-                SystemConfig::getValue('sOLPUserName'),
-                SystemConfig::getValue('sOLPPassword')
-            );
-            $OLPAlert->setAlertText($this->projectorText);
+        $OLPAlert = new OpenLPNotification(
+            SystemConfig::getValue('sOLPURL'),
+            SystemConfig::getValue('sOLPUserName'),
+            SystemConfig::getValue('sOLPPassword')
+        );
+        $OLPAlert->setAlertText($this->projectorText);
 
-            return $OLPAlert->send();
-        } catch (\Exception $ex) {
-            return false;
-        }
+        return $OLPAlert->send();
     }
 
     public function send(): array
     {
         $methods = [];
         if (SystemConfig::hasValidMailServerSettings()) {
-            $send = $this->sendEmail();
-            $methods[] = 'email: ' . $send;
+            $sendEmail = false;
+            try {
+                $sendEmail = $this->sendEmail();
+            } catch (\Throwable) {
+                // do nothing
+            }
+            $methods[] = 'email: ' . $sendEmail;
         }
         if (SystemConfig::hasValidSMSServerSettings()) {
-            $send = (bool) $this->sendSMS();
-            $methods[] = 'sms: ' . $send;
+            $sendSms = false;
+            try {
+                $sendSms = $this->sendSMS();
+            } catch (\Throwable) {
+                // do nothing
+            }
+            $methods[] = 'sms: ' . $sendSms;
         }
         if (SystemConfig::hasValidOpenLPSettings()) {
-            $send = (bool) $this->sendProjector();
-            $methods[] = 'projector: ' . $send;
+            $sendOpenLp = false;
+            try {
+                $sendOpenLp = (bool) $this->sendProjector();
+            } catch (\Throwable) {
+                // do nothing
+            }
+            $methods[] = 'projector: ' . $sendOpenLp;
         }
         return [
             'status'  => '',

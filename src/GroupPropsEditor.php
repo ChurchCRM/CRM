@@ -101,7 +101,7 @@ if (isset($_POST['GroupPropSubmit'])) {
 
 require 'Include/Header.php';
 
-if (mysqli_num_rows($rsPropList) == 0) {
+if (mysqli_num_rows($rsPropList) === 0) {
 ?>
     <form>
         <h3><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></h3>

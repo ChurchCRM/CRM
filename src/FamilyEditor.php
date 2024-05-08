@@ -13,12 +13,12 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Family Editor');
 
 $iFamilyID = -1;
+$family = null;
 
 // Get the FamilyID from the querystring
 if (array_key_exists('FamilyID', $_GET)) {
@@ -32,8 +32,8 @@ if ($iFamilyID > 0) {
         RedirectUtils::redirect('v2/dashboard');
     }
 
-    $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_ID = ' . $iFamilyID;
-    if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
+    $family = FamilyQuery::create()->findOneById($iFamilyID);
+    if ($family === null) {
         RedirectUtils::redirect('v2/dashboard');
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
@@ -417,29 +417,29 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 } else {
     //FirstPass
     //Are we editing or adding?
-    if ($iFamilyID > 0) {
+    if ($family) {
         //Editing....
         //Get the information on this family
         $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
         $rsFamily = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsFamily));
 
-        $iFamilyID = $fam_ID;
-        $sName = $fam_Name;
-        $sAddress1 = $fam_Address1;
-        $sAddress2 = $fam_Address2;
-        $sCity = $fam_City;
-        $sState = $fam_State;
-        $sZip = $fam_Zip;
-        $sCountry = $fam_Country;
-        $sHomePhone = $fam_HomePhone;
-        $sWorkPhone = $fam_WorkPhone;
-        $sCellPhone = $fam_CellPhone;
-        $sEmail = $fam_Email;
-        $bSendNewsLetter = ($fam_SendNewsLetter == 'TRUE');
-        $dWeddingDate = $fam_WeddingDate;
-        $nLatitude = $fam_Latitude;
-        $nLongitude = $fam_Longitude;
+        $iFamilyID = $family->getId();
+        $sName = $family->getName();
+        $sAddress1 = $family->getAddress1();
+        $sAddress2 = $family->getAddress2();
+        $sCity = $family->getCity();
+        $sState = $family->getState();
+        $sZip = $family->getZip();
+        $sCountry = $family->getCountry();
+        $sHomePhone = $family->getHomePhone();
+        $sWorkPhone = $family->getWorkPhone();
+        $sCellPhone = $family->getCellPhone();
+        $sEmail = $family->getEmail();
+        $bSendNewsLetter = $family->getSendNewsletter() === 'TRUE';
+        $dWeddingDate = $family->getWeddingdate(SystemConfig::getValue("sDatePickerFormat"));
+        $nLatitude = $family->getLatitude();
+        $nLongitude = $family->getLongitude();
 
         // Expand the phone number
         $sHomePhone = ExpandPhoneNumber($sHomePhone, $sCountry, $bNoFormat_HomePhone);

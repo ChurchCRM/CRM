@@ -47,7 +47,7 @@ class HolidayCalendar implements SystemCalendar
         return gettext('Holidays');
     }
 
-    public function getEvents(string $start, string $end)
+    public function getEvents(string $start, string $end): ObjectCollection
     {
         $Country = Countries::getCountryByName(SystemConfig::getValue('sChurchCountry'));
         $year = date('Y');
@@ -63,9 +63,12 @@ class HolidayCalendar implements SystemCalendar
         return $events;
     }
 
-    public function getEventById(int $Id)
+    public function getEventById(int $Id): ObjectCollection
     {
-        return false;
+        $emptySet = new ObjectCollection();
+        $emptySet->setModel(Event::class);
+
+        return $emptySet;
     }
 
     private function yasumiHolidayToEvent(Holiday $holiday): Event

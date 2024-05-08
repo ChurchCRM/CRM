@@ -61,7 +61,7 @@ class InputUtils
             return 0;
         }
 
-        return (int) intval(trim($sInput));
+        return intval(trim($sInput));
     }
 
     public static function filterFloat($sInput): float
@@ -72,7 +72,7 @@ class InputUtils
             return 0;
         }
 
-        return (float) floatval(trim($sInput));
+        return floatval(trim($sInput));
     }
 
     public static function filterDate($sInput): string
@@ -106,6 +106,8 @@ class InputUtils
                     return self::filterFloat($sInput);
                 case 'date':
                     return self::filterDate($sInput);
+                default:
+                    throw new \InvalidArgumentException('Invalid "type" for legacyFilterInput provided');
             }
         } else {
             return '';

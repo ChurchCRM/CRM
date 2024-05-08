@@ -157,14 +157,12 @@ function getPersonStatus(Request $request, Response $response, array $args): Res
 
 function getPeopleWithEmails()
 {
-    $list = PersonQuery::create()
+    return PersonQuery::create()
         ->filterByEmail(null, Criteria::NOT_EQUAL)
         ->_or()
         ->filterByWorkEmail(null, Criteria::NOT_EQUAL)
         ->orderById()
         ->find();
-
-    return $list;
 }
 
 function checkEmailInList(string $email, array $memberList): bool

@@ -31,7 +31,7 @@ $sSQL = 'SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID = ' . $iQueryID . ' 
 $rsParameters = RunQuery($sSQL);
 
 // If the form was submitted or there are no parameters, run the query
-if (isset($_POST['Submit']) || mysqli_num_rows($rsParameters) == 0) {
+if (isset($_POST['Submit']) || mysqli_num_rows($rsParameters) === 0) {
     //Check that all validation rules were followed
     ValidateInput();
 

@@ -45,7 +45,6 @@ class PdfAttendance extends ChurchInfoReport
         }
 
         $yTitle = 20;
-        $yTeachers = $yTitle + $yIncrement;
         $nameX = 10 + $yIncrement / 2;
         $numMembers = 0;
         $aNameCount = 0;
