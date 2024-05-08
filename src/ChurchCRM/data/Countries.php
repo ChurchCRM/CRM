@@ -277,7 +277,7 @@ class Countries
     {
         self::initializeCountries();
 
-        return array_map(['static', 'getSingleName'], self::$countries);
+        return array_map([__CLASS__, 'getSingleName'], self::$countries);
     }
 
     public static function getAll(): array
@@ -303,7 +303,7 @@ class Countries
         self::initializeCountries();
         $result = array_filter(self::$countries, fn ($e): bool => $e->getCountryName() === $CountryName);
         if (count($result) === 1) {
-            // Note that array_values() is needed because array_filter does not return  continuous array
+            // Note that array_values() is needed because array_filter does not return a continuous array
             return array_values($result)[0];
         }
 
