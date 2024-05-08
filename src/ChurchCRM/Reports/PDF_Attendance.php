@@ -99,7 +99,6 @@ class PdfAttendance extends ChurchInfoReport
 
         // Main loop which draws each page
         for ($p = 0; $p < $nPages; $p++) {
-
             // Paint the title section: class name and year on the top, then teachers/liaison
             if ($p > 0) {
                 $this->addPage();
