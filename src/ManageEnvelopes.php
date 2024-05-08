@@ -204,7 +204,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
 <?php
 
 /**
- * make an array of envelopes indexed by family id, subject to the classification filter if specified.
+ * Make an array of envelopes indexed by family id, subject to the classification filter if specified.
  *
  * @param int|null $classification
  *
