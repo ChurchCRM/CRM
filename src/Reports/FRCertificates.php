@@ -12,23 +12,28 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Reports\PdfCertificatesReport;
+use ChurchCRM\Utils\InputUtils;
 
-$iCurrentFundraiser = $_GET['CurrentFundraiser'];
+if (!isset($_GET['CurrentFundraiser'])) {
+    throw new \InvalidArgumentException('Missing required CurrentFundraiser parameter');
+}
+$iCurrentFundraiser = (int) InputUtils::legacyFilterInput($_GET['CurrentFundraiser'], 'int');
+
+$fundraiser = FundRaiserQuery::create()->findOneById($iCurrentFundraiser);
+if ($fundraiser === null) {
+    throw new \InvalidArgumentException('No results found for provided CurrentFundraiser parameter');
+}
+
 $curY = 0;
 
-// Get the information about this fundraiser
-$sSQL = 'SELECT * FROM fundraiser_fr WHERE fr_ID=' . $iCurrentFundraiser;
-$rsFR = RunQuery($sSQL);
-$thisFR = mysqli_fetch_array($rsFR);
-extract($thisFR);
-
 // Get all the donated items
-$sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $iCurrentFundraiser . ' ORDER BY di_item';
+$sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $fundraiser->getId() . ' ORDER BY di_item';
 $rsItems = RunQuery($sSQL);
 
 $pdf = new PdfCertificatesReport();
-$pdf->SetTitle($fr_title);
+$pdf->SetTitle($fundraiser->getTitle());
 
 // Loop through items
 while ($oneItem = mysqli_fetch_array($rsItems)) {
@@ -44,13 +49,13 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
     if ($di_estprice > 0) {
         $pdf->Write(8, gettext('Estimated value ') . '$' . $di_estprice . '.  ');
     }
-    if ($per_LastName != '') {
+    if ($per_LastName !== '') {
         $pdf->Write(8, gettext('Donated by ') . $per_FirstName . ' ' . $per_LastName . ".\n\n");
     }
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if (SystemConfig::getValue('iPDFOutputType') == 1) {
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('FRCertificates' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

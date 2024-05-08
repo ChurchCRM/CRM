@@ -15,52 +15,62 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Base\FundRaiser;
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\Utils\InputUtils;
 
-$iCurrentFundraiser = $_GET['CurrentFundraiser'];
+if (!isset($_GET['CurrentFundraiser'])) {
+    throw new \InvalidArgumentException('Missing required CurrentFundraiser parameter');
+}
 
-$curY = 0;
+$iCurrentFundraiser = (int) InputUtils::legacyFilterInput($_GET['CurrentFundraiser'], 'int');
 
 class PdfFRCatalogReport extends ChurchInfoReport
 {
-    // Constructor
-    public function __construct()
+    public int $curY = 0;
+    private FundRaiser $fundraiser;
+
+    public function __construct(FundRaiser $fundraiser)
     {
         parent::__construct('P', 'mm', $this->paperFormat);
+
         $this->SetFont('Times', '', 10);
         $this->SetMargins(10, 20);
 
         $this->addPage();
         $this->SetAutoPageBreak(true, 25);
+
+        $this->fundraiser = $fundraiser;
     }
 
-    public function addPage($orientation = '', $format = '', $rotation = 0): void
+    public function addPage($orientation = '', $size = '', $rotation = 0): void
     {
-        global $fr_title, $fr_description, $curY;
-
-        parent::addPage($orientation, $format, $rotation);
+        parent::addPage($orientation, $size, $rotation);
 
         $this->SetFont('Times', 'B', 16);
-        $this->Write(8, $fr_title . "\n");
-        $curY += 8;
-        $this->Write(8, $fr_description . "\n\n");
-        $curY += 8;
+        $this->Write(8, $this->fundraiser->getTitle() . "\n");
+        $this->curY += 8;
+
+        $this->Write(8, $this->fundraiser->getDescription() . "\n\n");
+        $this->curY += 8;
+
         $this->SetFont('Times', '', 12);
     }
 }
 
 // Get the information about this fundraiser
-$sSQL = 'SELECT * FROM fundraiser_fr WHERE fr_ID=' . $iCurrentFundraiser;
-$rsFR = RunQuery($sSQL);
-$thisFR = mysqli_fetch_array($rsFR);
-extract($thisFR);
+$fundraiser = FundRaiserQuery::create()->findOneById($iCurrentFundraiser);
+if ($fundraiser === null) {
+    throw new \InvalidArgumentException('No results found for provided CurrentFundraiser parameter');
+}
 
 // Get all the donated items
-$sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $iCurrentFundraiser .
+$sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID=' . $fundraiser->getId() .
 ' ORDER BY SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)';
 $rsItems = RunQuery($sSQL);
 
-$pdf = new PdfFRCatalogReport();
-$pdf->SetTitle($fr_title);
+$pdf = new PdfFRCatalogReport($fundraiser);
+$pdf->SetTitle($fundraiser->getTitle());
 
 // Loop through items
 $idFirstChar = '';
@@ -104,7 +114,7 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if (SystemConfig::getValue('iPDFOutputType') == 1) {
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('FRCatalog' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();
