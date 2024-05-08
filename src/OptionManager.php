@@ -17,8 +17,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $mode = trim($_GET['mode']);
@@ -313,6 +315,13 @@ if ($bErrorFlag) {
 <table cellpadding="3" width="30%" align="center">
 
 <?php
+    $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
+    $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k));
+
+    if (count($aInactiveClassificationIds) !== count($aInactiveClasses))  {
+        LoggerUtils::getAppLogger()->warning('Encountered invalid configuration(s) for sInactiveClassification, please fix this');
+    }
+
 for ($row = 1; $row <= $numRows; $row++) {
     ?>
     <tr align="center">
@@ -338,6 +347,7 @@ for ($row = 1; $row <= $numRows; $row++) {
             if ($numRows > 0) {
                 echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=delete"><i class="fa fa-times"></i></a>';
             } ?>
+
         </td>
         <td class="TextColumn">
             <span class="SmallText">
@@ -354,6 +364,13 @@ for ($row = 1; $row <= $numRows; $row++) {
         <?php
         if ($mode == 'grproles') {
             echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-default" value="' . gettext('Make Default') . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . '&ListID=' . $listID . '&ID=' . $aIDs[$row] . "&Action=makedefault';\" ></td>";
+        }
+        if ($mode === 'classes') {
+            echo "<td>";
+            $check = in_array($aIDs[$row], $aInactiveClasses) ? "checked" : "";
+            echo "<input id='inactive$aIDs[$row]' type=\"checkbox\" onclick=\"$.get('OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=Inactive')\" $check >";
+            echo gettext("Inactive");
+            echo "</td>";
         } ?>
 
     </tr>
