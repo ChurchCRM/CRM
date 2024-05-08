@@ -65,9 +65,6 @@ class MenuItem
         return $this->name;
     }
 
-    /**
-     * @return bool
-     */
     public function isExternal(): bool
     {
         return $this->external;

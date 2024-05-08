@@ -69,7 +69,7 @@ function listPeople(Request $request, Response $response, array $args): Response
 
     //parsing the string and reconstruct it back should be enough to mitigate the sql injection vector in here.
     $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
-    $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k));
+    $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k): bool => is_numeric($k));
 
     if (count($aInactiveClassificationIds) !== count($aInactiveClasses)) {
         LoggerUtils::getAppLogger()->warning('Encountered invalid configuration(s) for sInactiveClassification, please fix this');

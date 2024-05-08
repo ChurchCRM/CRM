@@ -55,12 +55,12 @@ class InputUtils
 
     public static function filterInt($sInput): int
     {
-        return (int) intval(trim($sInput));
+        return intval(trim($sInput));
     }
 
     public static function filterFloat($sInput): float
     {
-        return (float) floatval(trim($sInput));
+        return floatval(trim($sInput));
     }
 
     public static function filterDate($sInput): string

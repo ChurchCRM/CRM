@@ -22,13 +22,11 @@ class KioskAssignment extends BaseKioskAssignment
     private function getActiveEvent()
     {
         if ($this->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {
-            $Event = EventQuery::create()
+            return EventQuery::create()
             ->filterByStart('now', Criteria::LESS_EQUAL)
             ->filterByEnd('now', Criteria::GREATER_EQUAL)
             ->filterById($this->getEventId())
             ->findOne();
-
-            return $Event;
         } else {
             throw new \Exception('This kiosk does not support group attendance');
         }
@@ -42,7 +40,7 @@ class KioskAssignment extends BaseKioskAssignment
             $groupTypeJoin->addForeignValueCondition('list_lst', 'lst_ID', '', $this->getActiveEvent()->getGroup()->getRoleListId(), Join::EQUAL);
             $groupTypeJoin->setJoinType(Criteria::LEFT_JOIN);
 
-            $ssClass = PersonQuery::create()
+            return PersonQuery::create()
                 ->joinWithPerson2group2roleP2g2r()
                 ->usePerson2group2roleP2g2rQuery()
                   ->filterByGroupId($this->getEvent()->getGroupId())
@@ -54,8 +52,6 @@ class KioskAssignment extends BaseKioskAssignment
                  ->withColumn('(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)', 'status')
                 ->select(['Id', 'FirstName', 'LastName', 'status'])
                 ->find();
-
-            return $ssClass;
         } else {
             throw new \Exception('This kiosk does not support group attendance');
         }

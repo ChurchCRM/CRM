@@ -59,7 +59,7 @@ foreach ($ListItem as $element) {
     $PropertyList[] = $element->getProName();
 }
 
-$option_name = fn (string $t1, string $t2) => $t1 . ':' . $t2;
+$option_name = fn (string $t1, string $t2): string => $t1 . ':' . $t2;
 
 
 $allPersonCustomFields = PersonCustomMasterQuery::create()->find();

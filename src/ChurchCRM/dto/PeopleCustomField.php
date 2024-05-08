@@ -57,9 +57,6 @@ class PeopleCustomField
         return $this->formattedValue;
     }
 
-    /**
-     * @return mixed
-     */
     public function getLink(): ?string
     {
         return $this->link;
@@ -73,17 +70,11 @@ class PeopleCustomField
         return $this->name;
     }
 
-    /**
-     * @return mixed
-     */
     public function getValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * @return mixed
-     */
     public function getIcon(): string
     {
         return $this->icon;

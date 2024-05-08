@@ -35,9 +35,8 @@ class PdfConfirmReport extends ChurchInfoReport
         $curY += 2 * SystemConfig::getValue('incrementY');
         $blurb = SystemConfig::getValue('sConfirm1');
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
-        $curY += 2 * SystemConfig::getValue('incrementY');
 
-        return $curY;
+        return $curY + 2 * SystemConfig::getValue('incrementY');
     }
 
     public function finishPage($curY): void

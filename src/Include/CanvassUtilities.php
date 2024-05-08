@@ -39,7 +39,7 @@ function CanvassGetCanvassers(string $groupName)
     $sSQL = 'SELECT grp_ID AS iCanvassGroup FROM group_grp WHERE grp_Name="' . $groupName . '";';
     $rsGroupData = RunQuery($sSQL);
     $aGroupData = mysqli_fetch_array($rsGroupData);
-    if (mysqli_num_rows($rsGroupData) == 0) {
+    if (mysqli_num_rows($rsGroupData) === 0) {
         return 0;
     }
     extract($aGroupData);
@@ -76,9 +76,7 @@ function CanvassAssignCanvassers($groupName): string
         RunQuery($sSQL);
     }
 
-    $ret = sprintf(gettext('Canvassers assigned at random to %d families.'), $numFamilies);
-
-    return $ret;
+    return sprintf(gettext('Canvassers assigned at random to %d families.'), $numFamilies);
 }
 
 function CanvassAssignNonPledging($groupName, string $iFYID): string
@@ -110,7 +108,6 @@ function CanvassAssignNonPledging($groupName, string $iFYID): string
             RunQuery($sSQL);
         }
     }
-    $ret = sprintf(gettext('Canvassers assigned at random to %d non-pledging families.'), $numFamilies);
 
-    return $ret;
+    return sprintf(gettext('Canvassers assigned at random to %d non-pledging families.'), $numFamilies);
 }

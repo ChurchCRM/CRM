@@ -152,8 +152,8 @@ class AppIntegrityService
      */
     public static function getApplicationPrerequisites(): array
     {
-        $prerequisites = [
-            new Prerequisite('PHP 8.1+', fn () => version_compare(PHP_VERSION, '8.1.0', '>=')),
+        return [
+            new Prerequisite('PHP 8.1+', fn (): bool => version_compare(PHP_VERSION, '8.1.0', '>=')),
             new Prerequisite('PCRE and UTF-8 Support', fn (): bool => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
             new Prerequisite('Multibyte Encoding', fn (): bool => extension_loaded('mbstring')),
             new Prerequisite('PHP Phar', fn (): bool => extension_loaded('phar')),
@@ -172,8 +172,6 @@ class AppIntegrityService
             new Prerequisite('PHP ZipArchive', fn (): bool => extension_loaded('zip')),
             new Prerequisite('Mysqli Functions', fn (): bool => function_exists('mysqli_connect')),
         ];
-
-        return $prerequisites;
     }
 
     /**

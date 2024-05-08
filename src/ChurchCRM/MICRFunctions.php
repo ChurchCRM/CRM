@@ -78,7 +78,7 @@ class MICRFunctions
         }
     }
 
-    public function findCheckNo($micr)
+    public function findCheckNo($micr): string
     {
         $formatID = $this->identifyFormat($micr);
         if ($formatID == $this->CHECKNO_FIRST) {

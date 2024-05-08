@@ -28,7 +28,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 //Get the GroupID out of the querystring
-$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
+$iGroupID = (int) InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
 if ($iGroupID < 1) {
     RedirectUtils::redirect('GroupList.php');
@@ -286,7 +286,7 @@ require 'Include/Header.php';
             $sAssignedProperties = ',';
 
             //Was anything returned?
-            if (mysqli_num_rows($rsAssignedProperties) == 0) {
+            if (mysqli_num_rows($rsAssignedProperties) === 0) {
                 // No, indicate nothing returned
                 echo '<p>' . gettext('No property assignments') . '.</p>';
             } else {

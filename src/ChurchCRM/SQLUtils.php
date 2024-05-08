@@ -119,8 +119,6 @@ class SQLUtils
      *
      * @param int    $offset
      * @param string $text
-     *
-     * @return bool
      */
     private static function isQuoted($offset, $text): bool
     {

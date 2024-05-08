@@ -30,7 +30,7 @@ $sPageTitle = gettext('Person Editor');
 
 //Get the PersonID out of the querystring
 if (array_key_exists('PersonID', $_GET)) {
-    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
+    $iPersonID = (int) InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 } else {
     $iPersonID = 0;
 }
@@ -46,17 +46,17 @@ if ($iPersonID > 0) {
     $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = ' . $iPersonID;
     $rsPerson = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsPerson);
-    $per_fam_ID = $aRow['per_fam_ID'];
+    $per_fam_ID = (int) $aRow['per_fam_ID'];
 
-    if (mysqli_num_rows($rsPerson) == 0) {
+    if (mysqli_num_rows($rsPerson) === 0) {
         RedirectUtils::redirect('v2/dashboard');
     }
 
     if (
         !(
         AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ||
-        (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iPersonID == AuthenticationManager::getCurrentUser()->getId()) ||
-        (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
+        (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iPersonID === AuthenticationManager::getCurrentUser()->getId()) ||
+        (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID === AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
         )
     ) {
         RedirectUtils::redirect('v2/dashboard');

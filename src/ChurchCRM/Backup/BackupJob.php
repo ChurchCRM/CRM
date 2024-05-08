@@ -17,32 +17,13 @@ use SplFileInfo;
 class BackupJob extends JobBase
 {
     private string $BackupFileBaseName;
-
     private ?\SplFileInfo $BackupFile = null;
-    /**
-     * @var bool
-     */
-    private $IncludeExtraneousFiles;
-    /**
-     * @var string
-     */
-    public $BackupDownloadFileName;
-    /**
-     * @var bool
-     */
-    public $shouldEncrypt;
+    private bool $IncludeExtraneousFiles;
+    public string $BackupDownloadFileName;
+    public bool $shouldEncrypt;
+    public string $BackupPassword;
 
-    /**
-     * @var string
-     */
-    public $BackupPassword;
-
-    /**
-     * @param string     $BaseName
-     * @param BackupType $BackupType
-     * @param bool       $IncludeExtraneousFiles
-     */
-    public function __construct(string $BaseName, $BackupType, $IncludeExtraneousFiles, $EncryptBackup, $BackupPassword)
+    public function __construct(string $BaseName, string $BackupType, bool $IncludeExtraneousFiles, bool $EncryptBackup, string $BackupPassword)
     {
         $this->BackupType = $BackupType;
         $this->TempFolder = $this->createEmptyTempFolder();

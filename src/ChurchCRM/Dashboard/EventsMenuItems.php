@@ -17,13 +17,11 @@ class EventsMenuItems implements DashboardItemInterface
 
     public static function getDashboardItemValue(): array
     {
-        $activeEvents = [
+        return [
             'Events'        => self::getNumberEventsOfToday(),
             'Birthdays'     => self::getNumberBirthDates(),
             'Anniversaries' => self::getNumberAnniversaries(),
         ];
-
-        return $activeEvents;
     }
 
     public static function shouldInclude(string $PageName): bool
@@ -48,8 +46,6 @@ class EventsMenuItems implements DashboardItemInterface
             ->filterByBirthMonth(date('m'))
             ->filterByBirthDay(date('d'))
             ->count();
-
-        return $peopleWithBirthDays;
     }
 
     private static function getNumberAnniversaries()

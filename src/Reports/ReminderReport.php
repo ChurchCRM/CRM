@@ -190,15 +190,14 @@ class PdfReminderReport extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fundOnlyString, $iFYID): float
+    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fundOnlyString, int $iFYID): float
     {
         $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
         $curY += 2 * SystemConfig::getValue('incrementY');
         $blurb = SystemConfig::getValue('sReminder1') . MakeFYString($iFYID) . $fundOnlyString . '.';
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
-        $curY += 2 * SystemConfig::getValue('incrementY');
 
-        return $curY;
+        return $curY + 2 * SystemConfig::getValue('incrementY');
     }
 
     public function finishPage($curY): void
@@ -222,7 +221,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $temp = "SELECT plg_plgID FROM pledge_plg
             WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID" . $sSQLFundCriteria;
         $rsPledgeCheck = RunQuery($temp);
-        if (mysqli_num_rows($rsPledgeCheck) == 0) {
+        if (mysqli_num_rows($rsPledgeCheck) === 0) {
             continue;
         }
     }
@@ -235,7 +234,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $rsPledges = RunQuery($sSQL);
 
     // If there is no pledge or a payment go to next family
-    if (mysqli_num_rows($rsPledges) == 0) {
+    if (mysqli_num_rows($rsPledges) === 0) {
         continue;
     }
 
@@ -291,7 +290,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     $summaryIntervalY = 4;
 
-    if (mysqli_num_rows($rsPledges) == 0) {
+    if (mysqli_num_rows($rsPledges) === 0) {
         $curY += $summaryIntervalY;
         $noPledgeString = SystemConfig::getValue('sReminderNoPledge') . '(' . $fundOnlyString . ')';
         $pdf->writeAt($summaryDateX, $curY, $noPledgeString);
@@ -358,7 +357,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     $totalAmountPayments = 0;
     $fundPaymentTotal = [];
-    if (mysqli_num_rows($rsPledges) == 0) {
+    if (mysqli_num_rows($rsPledges) === 0) {
         $curY += $summaryIntervalY;
         $pdf->writeAt($summaryDateX, $curY, SystemConfig::getValue('sReminderNoPayments'));
         $curY += 2 * $summaryIntervalY;

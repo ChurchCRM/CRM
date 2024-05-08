@@ -76,7 +76,7 @@ class SystemService
         } else {
             $unmet = AppIntegrityService::getUnmetPrerequisites();
 
-            $unmetNames = array_map(fn ($o): string => (string) $o->getName(), $unmet);
+            $unmetNames = array_map(fn ($o): string => $o->getName(), $unmet);
 
             return 'Missing Prerequisites: ' . json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
         }

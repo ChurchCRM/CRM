@@ -99,7 +99,7 @@ function CanvassProgressReport(string $iFYID): void
                             ' AND can_FYID=' . $iFYID;
                 $rsCanvassData = RunQuery($sSQL);
 
-                if (mysqli_num_rows($rsCanvassData) == 1) {
+                if (mysqli_num_rows($rsCanvassData) === 1) {
                     $thisCanvasserDone++;
                 }
             }

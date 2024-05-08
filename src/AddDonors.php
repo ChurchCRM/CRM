@@ -61,7 +61,7 @@ while ($donorRow = mysqli_fetch_array($rsDonors)) {
     $sSQL = "SELECT pn_per_id FROM paddlenum_pn WHERE pn_per_id='$donorID' AND pn_FR_ID = '$iFundRaiserID'";
     $rsBuyer = RunQuery($sSQL);
 
-    if ($donorID > 0 && mysqli_num_rows($rsBuyer) == 0) {
+    if ($donorID > 0 && mysqli_num_rows($rsBuyer) === 0) {
         $sSQL = "INSERT INTO paddlenum_pn (pn_Num, pn_fr_ID, pn_per_ID)
 		                VALUES ('$extraPaddleNum', '$iFundRaiserID', '$donorID')";
         RunQuery($sSQL);

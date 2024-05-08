@@ -19,18 +19,16 @@ function GetGroupArray(string $iGroupID): array
 		   LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
 		   WHERE pro_Class = 'g' AND r2p_record_ID = " . $iGroupID .
     ' ORDER BY prt_Name, pro_Name';
-    $rsAssignedProperties = RunQuery($sSQL);
+    RunQuery($sSQL);
 
     // Get the group's role list ID
     $sSQL = 'SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =' . $iGroupID;
     $aTemp = mysqli_fetch_array(RunQuery($sSQL));
     $iRoleListID = $aTemp[0];
-    $bHasSpecialProps = ($aTemp[1] == 'true');
 
     // Get the roles
     $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = ' . $iRoleListID . ' ORDER BY lst_OptionSequence';
-    $rsRoles = RunQuery($sSQL);
-    $numRoles = mysqli_num_rows($rsRoles);
+    RunQuery($sSQL);
 
     // Get the members of the groups along with their family data
     $sSQL = "SELECT per_ID, per_FirstName, per_MiddleName, per_LastName, per_Title,

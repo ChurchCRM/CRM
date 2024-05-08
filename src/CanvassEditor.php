@@ -26,11 +26,11 @@ require 'Include/CanvassUtilities.php';
 
 $iCanvassID = 0;
 if (array_key_exists('CanvassID', $_GET)) {
-    $iCanvassID = InputUtils::legacyFilterInput($_GET['CanvassID'], 'int');
+    $iCanvassID = (int) InputUtils::legacyFilterInput($_GET['CanvassID'], 'int');
 }
 $linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
-$iFamily = InputUtils::legacyFilterInput($_GET['FamilyID']);
-$iFYID = InputUtils::legacyFilterInput($_GET['FYID']);
+$iFamily = (int) InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
+$iFYID = (int) InputUtils::legacyFilterInput($_GET['FYID'], 'int');
 
 $sDateError = '';
 $bNotInterested = false;
@@ -58,54 +58,56 @@ if (isset($_POST['Submit'])) {
     $tFinancial = InputUtils::legacyFilterInput($_POST['Financial']);
     $tSuggestion = InputUtils::legacyFilterInput($_POST['Suggestion']);
     $bNotInterested = isset($_POST['NotInterested']);
-    if ($bNotInterested == '') {
-        $bNotInterested = 0;
-    }
     $tWhyNotInterested = InputUtils::legacyFilterInput($_POST['WhyNotInterested']);
 
     // New canvas input (add)
-    if ($iCanvassID < 1) {
-        $canvassData = new CanvassData();
-        $canvassData
-            ->setFamilyId($iFamily)
-            ->setCanvasser($iCanvasser)
-            ->setFyid($iFYID)
-            ->setDate($dDate)
-            ->setPositive($tPositive)
-            ->setCritical($tCritical)
-            ->setInsightful($tInsightful)
-            ->setFinancial($tFinancial)
-            ->setSuggestion($tSuggestion)
-            ->setNotInterested($bNotInterested)
-            ->setWhyNotInterested($tWhyNotInterested);
-        $canvassData->save();
-        $canvassData->reload();
-        $iCanvassID = $canvassData->getId();
+    $newCanvas = $iCanvassID < 1;
+    $canvassData = new CanvassData();
+    if ($newCanvas) {
+        $canvassData->setFamilyId($iFamily);
     } else {
         $canvassData = CanvassDataQuery::create()->findOneByFamilyId($iFamily);
-        $canvassData
-            ->setCanvasser($iCanvasser)
-            ->setFyid($iFYID)
-            ->setDate($dDate)
-            ->setPositive($tPositive)
-            ->setCritical($tCritical)
-            ->setInsightful($tInsightful)
-            ->setFinancial($tFinancial)
-            ->setSuggestion($tSuggestion)
-            ->setNotInterested($bNotInterested)
-            ->setWhyNotInterested($tWhyNotInterested);
-        $canvassData->save();
     }
 
+    $canvassData
+        ->setCanvasser($iCanvasser)
+        ->setFyid($iFYID)
+        ->setDate($dDate)
+        ->setPositive($tPositive)
+        ->setCritical($tCritical)
+        ->setInsightful($tInsightful)
+        ->setFinancial($tFinancial)
+        ->setSuggestion($tSuggestion)
+        ->setNotInterested($bNotInterested)
+        ->setWhyNotInterested($tWhyNotInterested);
+    $canvassData->save();
+
+    if ($newCanvas) {
+        $canvassData->reload();
+        $iCanvassID = $canvassData->getId();
+    }
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-        if ($linkBack != '') {
+        if (!empty($linkBack)) {
             RedirectUtils::redirect($linkBack);
         } else {
             RedirectUtils::redirect('CanvassEditor.php?FamilyID=' . $iFamily . '&FYID=' . $iFYID . '&CanvassID=' . $iCanvassID . '&linkBack=', $linkBack);
         }
     }
 } else {
+    // Set some default values
+    $iCanvasser = AuthenticationManager::getCurrentUser()->getId();
+    $dDate = date('Y-m-d');
+
+    $dDate = '';
+    $tPositive = '';
+    $tCritical = '';
+    $tInsightful = '';
+    $tFinancial = '';
+    $tSuggestion = '';
+    $bNotInterested = false;
+    $tWhyNotInterested = '';
+
     $sSQL = 'SELECT * FROM canvassdata_can WHERE can_famID = ' . $iFamily . ' AND can_FYID=' . $iFYID;
     $rsCanvass = RunQuery($sSQL);
     if (mysqli_num_rows($rsCanvass) > 0) {
@@ -122,19 +124,6 @@ if (isset($_POST['Submit'])) {
         $tSuggestion = $can_Suggestion;
         $bNotInterested = $can_NotInterested;
         $tWhyNotInterested = $can_WhyNotInterested;
-    } else {
-        // Set some default values
-        $iCanvasser = AuthenticationManager::getCurrentUser()->getId();
-        $dDate = date('Y-m-d');
-
-        $dDate = '';
-        $tPositive = '';
-        $tCritical = '';
-        $tInsightful = '';
-        $tFinancial = '';
-        $tSuggestion = '';
-        $bNotInterested = false;
-        $tWhyNotInterested = '';
     }
 }
 

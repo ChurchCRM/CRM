@@ -92,7 +92,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
         $rsFamilyMembers = RunQuery($sSQL);
 
-        if (mysqli_num_rows($rsFamilyMembers) == 0) {
+        if (mysqli_num_rows($rsFamilyMembers) === 0) {
             $curY += 5;
         }
 

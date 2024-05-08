@@ -61,9 +61,7 @@ class AuthenticationManager
         $currentSessionUserName = 'Unknown';
 
         try {
-            if (self::getCurrentUser() instanceof User) {
-                $currentSessionUserName = self::getCurrentUser()->getName();
-            }
+            $currentSessionUserName = self::getCurrentUser()->getName();
         } catch (\Exception $e) {
             //unable to get name of user logging out. Don't really care.
         }

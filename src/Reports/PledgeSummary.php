@@ -30,7 +30,7 @@ if (!$iFYID) {
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output !== 'pdf') {
     RedirectUtils::redirect('v2/dashboard');
 }
 
@@ -65,10 +65,12 @@ $sSQL = 'SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID
 // Filter by Fund
 if (!empty($_POST['funds'])) {
     $count = 0;
+    $fund = [];
+
     foreach ($_POST['funds'] as $fundID) {
         $fund[$count++] = InputUtils::legacyFilterInput($fundID, 'int');
     }
-    if ($count == 1) {
+    if ($count === 1) {
         if ($fund[0]) {
             $sSQL .= " AND plg_fundID='$fund[0]' ";
         }
@@ -120,7 +122,6 @@ if ($output === 'pdf') {
     $paidThisFam = [];
     $pledgeThisFam = [];
     $totRows = mysqli_num_rows($rsPledges);
-    $thisRow = 0;
     $fundName = '';
     $plg_famID = 0;
 
@@ -134,7 +135,7 @@ if ($output === 'pdf') {
             $fundName = 'Unassigned';
         }
 
-        if ($plg_famID != $curFam || $thisRow == $totRows) {
+        if ($thisRow === $totRows) {
             // Switching families.  Post the results for the previous family and initialize for the new family
 
             mysqli_data_seek($rsFunds, 0);

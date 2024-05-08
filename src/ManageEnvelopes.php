@@ -18,6 +18,7 @@ require 'Include/EnvelopeFunctions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
@@ -25,6 +26,15 @@ $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+
+$iClassification = null;
+if (isset($_POST['Classification'])) {
+    $iClassification = (int) InputUtils::legacyFilterInput($_POST['Classification'], 'int');
+    $_SESSION['classification'] = $iClassification;
+} elseif (isset($_SESSION['classification'])) {
+    $iClassification = (int) $_SESSION['classification'];
+}
+
 
 $envelopesToWrite = [];
 // get the array of envelopes of interest, indexed by family id
@@ -38,9 +48,10 @@ if (isset($_POST['Confirm'])) {
     foreach ($familyArray as $fam_ID => $fam_Data) {
         $key = 'EnvelopeID_' . $fam_ID;
         if (isset($_POST[$key])) {
-            $newEnvelope = $_POST[$key];
+            $newEnvelope = (int) InputUtils::legacyFilterInput($_POST[$key], 'int');
             $priorEnvelope = $envelopesByFamID[$fam_ID];
-            if ($newEnvelope != $priorEnvelope) {
+
+            if ($newEnvelope !== $priorEnvelope) {
                 $envelopesToWrite[$fam_ID] = $newEnvelope;
                 $envelopesByFamID[$fam_ID] = $newEnvelope;
             }
@@ -53,15 +64,6 @@ if (isset($_POST['Confirm'])) {
     }
 }
 
-if (isset($_POST['Classification'])) {
-    $iClassification = $_POST['Classification'];
-    $_SESSION['classification'] = $iClassification;
-} elseif (isset($_SESSION['classification'])) {
-    $iClassification = $_SESSION['classification'];
-} else {
-    $iClassification = 0;
-}
-
 if (isset($_POST['SortBy'])) {
     $sSortBy = $_POST['SortBy'];
 } else {
@@ -69,7 +71,7 @@ if (isset($_POST['SortBy'])) {
 }
 
 if (isset($_POST['AssignStartNum'])) {
-    $iAssignStartNum = $_POST['AssignStartNum'];
+    $iAssignStartNum = (int) InputUtils::legacyFilterInput($_POST['AssignStartNum'], 'int');
 } else {
     $iAssignStartNum = 1;
 }
@@ -214,8 +216,16 @@ foreach ($arrayToLoop as $fam_ID => $value) {
 
 <?php
 
-// make an array of envelopes indexed by family id, subject to the classification filter if specified.
-function getEnvelopes($classification)
+/**
+ * make an array of envelopes indexed by family id, subject to the classification filter if specified.
+ *
+ * @param int|null $classification
+ *
+ * @return array<int, int>
+ *
+ * @throws Exception
+ */
+function getEnvelopes(?int $classification = null): array
 {
     if ($classification) {
         $sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification . "'";
@@ -228,7 +238,7 @@ function getEnvelopes($classification)
     $envelopes = [];
     while ($aRow = mysqli_fetch_array($dEnvelopes)) {
         extract($aRow);
-        $envelopes[$fam_ID] = $fam_Envelope;
+        $envelopes[(int) $fam_ID] = (int) $fam_Envelope;
     }
 
     return $envelopes;

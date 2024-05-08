@@ -9,10 +9,7 @@ class PdfAddressReport extends ChurchInfoReport
     private int $_Margin_Top = 12;         // Top margin
     private int $_Char_Size = 12;        // Character size
     private int $_CurLine = 2;
-    private int $_Column = 0;
     private string $_Font = 'Times';
-    private $sFamily;
-    private $sLastName;
 
     private function numLinesInFpdfCell(int $w, $txt): int
     {

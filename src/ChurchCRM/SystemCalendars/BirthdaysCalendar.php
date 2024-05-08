@@ -39,7 +39,7 @@ class BirthdaysCalendar implements SystemCalendar
         return gettext('Birthdays');
     }
 
-    public function getEvents(string $start, string $end)
+    public function getEvents(string $start, string $end): ObjectCollection
     {
         $people = PersonQuery::create()
             ->filterByBirthDay('', Criteria::NOT_EQUAL)
@@ -48,7 +48,7 @@ class BirthdaysCalendar implements SystemCalendar
         return $this->peopleCollectionToEvents($people);
     }
 
-    public function getEventById(int $Id)
+    public function getEventById(int $Id): ObjectCollection
     {
         $people = PersonQuery::create()
             ->filterByBirthDay('', Criteria::NOT_EQUAL)
@@ -63,7 +63,7 @@ class BirthdaysCalendar implements SystemCalendar
         $events = new ObjectCollection();
         $events->setModel(Event::class);
         foreach ($People as $person) {
-            for ($year = date('Y'); $year <= date('Y') + 1; $year++) {
+            for ($year = (int) date('Y'); $year <= (int) date('Y') + 1; $year++) {
                 $birthday = new Event();
                 $birthday->setId($person->getId());
                 $birthday->setEditable(false);

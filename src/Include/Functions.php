@@ -34,16 +34,14 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
 // if magic_quotes off and array
 function addslashes_deep($value)
 {
-    $value = is_array($value) ?
-    array_map('addslashes_deep', $value) :
-    addslashes($value);
-
-    return $value;
+    return is_array($value) ?
+        array_map('addslashes_deep', $value) :
+        addslashes($value);
 }
 
 // If Magic Quotes is turned off, do the same thing manually..
 if (!isset($_SESSION['bHasMagicQuotes'])) {
-    foreach ($_REQUEST as $key => $value) {
+    foreach ($_REQUEST as $value) {
         $value = addslashes_deep($value);
     }
 }
@@ -133,10 +131,10 @@ if (isset($_POST['BulkAddToCart'])) {
 //
 
 // Returns the current fiscal year
-function CurrentFY()
+function CurrentFY(): int
 {
-    $yearNow = date('Y');
-    $monthNow = date('m');
+    $yearNow = (int) date('Y');
+    $monthNow = (int) date('m');
     $FYID = $yearNow - 1996;
     if ($monthNow >= SystemConfig::getValue('iFYMonth') && SystemConfig::getValue('iFYMonth') > 1) {
         $FYID += 1;
@@ -146,7 +144,7 @@ function CurrentFY()
 }
 
 // PrintFYIDSelect: make a fiscal year selection menu.
-function PrintFYIDSelect($iFYID, $selectName): void
+function PrintFYIDSelect(int $iFYID, string $selectName): void
 {
     echo sprintf('<select class="form-control" name="%s">', $selectName);
 
@@ -173,14 +171,12 @@ function PrintFYIDSelect($iFYID, $selectName): void
 }
 
 // Formats a fiscal year string
-function MakeFYString($iFYID)
+function MakeFYString(int $iFYID): string
 {
-    $monthNow = date('m');
-
     if (SystemConfig::getValue('iFYMonth') == 1) {
         return (string) (1996 + $iFYID);
     } else {
-        return (string) (1995 + $iFYID) . '/' . mb_substr(1996 + $iFYID, 2, 2);
+        return 1995 + $iFYID . '/' . mb_substr(1996 + $iFYID, 2, 2);
     }
 }
 
@@ -210,9 +206,8 @@ function RunQuery(string $sSQL, $bStopOnError = true)
 function AddVolunteerOpportunity(string $iPersonID, string $iVolID)
 {
     $sSQL = 'INSERT INTO person2volunteeropp_p2vo (p2vo_per_ID, p2vo_vol_ID) VALUES (' . $iPersonID . ', ' . $iVolID . ')';
-    $result = RunQuery($sSQL, false);
 
-    return $result;
+    return RunQuery($sSQL, false);
 }
 
 function RemoveVolunteerOpportunity(string $iPersonID, string $iVolID): void
@@ -221,7 +216,7 @@ function RemoveVolunteerOpportunity(string $iPersonID, string $iVolID): void
     RunQuery($sSQL);
 }
 
-function convertCartToString($aCartArray)
+function convertCartToString(array $aCartArray): string
 {
     // Implode the array
     $sCartString = implode(',', $aCartArray);
@@ -244,7 +239,7 @@ function convertCartToString($aCartArray)
  * If neither family nor person info is available, return an empty string.
  *****************************************************************************/
 
-function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
+function SelectWhichInfo(string $sPersonInfo, string $sFamilyInfo, bool $bFormat = false): string
 {
     $finalData = '';
     $isFamily = false;
@@ -272,7 +267,7 @@ function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
 // Function value returns 0 if no info was given, 1 if person info was used, and 2 if family info was used.
 // We do address lines 1 and 2 in together because separately we might end up with half family address and half person address!
 //
-function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddress1, $sPersonAddress2, ?string $sFamilyAddress1, ?string $sFamilyAddress2, $bFormat = false)
+function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddress1, $sPersonAddress2, ?string $sFamilyAddress1, ?string $sFamilyAddress2, bool $bFormat = false)
 {
     if (SystemConfig::getValue('bShowFamilyData')) {
         if ($bFormat) {
@@ -326,17 +321,23 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
     }
 }
 
-function ChopLastCharacter($sText): string
+function ChopLastCharacter(string $sText): string
 {
     return mb_substr($sText, 0, strlen($sText) - 1);
 }
 
-function change_date_for_place_holder($string)
+function change_date_for_place_holder(string $string): string
 {
-    return ((strtotime($string) != "") ? date(SystemConfig::getValue("sDatePickerFormat"), strtotime($string)) : strtotime($string));
+    $timestamp = strtotime($string);
+
+    if ($timestamp !== false) {
+        return date(SystemConfig::getValue("sDatePickerFormat"), $timestamp);
+    }
+
+    return '';
 }
 
-function FormatDateOutput()
+function FormatDateOutput(): string
 {
     $fmt = SystemConfig::getValue("sDateFormatLong");
 
@@ -346,15 +347,14 @@ function FormatDateOutput()
 
     $fmt = str_replace("d", "%d", $fmt);
     $fmt = str_replace("m", "%B", $fmt);
-    $fmt = str_replace("Y", "%Y", $fmt);
 
-    return $fmt;
+    return str_replace("Y", "%Y", $fmt);
 }
 
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
 // bWithtime 1 to be displayed
-function FormatDate($dDate, $bWithTime = false): string
+function FormatDate($dDate, bool $bWithTime = false): string
 {
     if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00') {
         return '';
@@ -412,16 +412,16 @@ function FormatDate($dDate, $bWithTime = false): string
     }
 }
 
-function AlternateRowStyle($sCurrentStyle): string
+function AlternateRowStyle(string $sCurrentStyle): string
 {
-    if ($sCurrentStyle == 'RowColorA') {
+    if ($sCurrentStyle === 'RowColorA') {
         return 'RowColorB';
     } else {
         return 'RowColorA';
     }
 }
 
-function ConvertToBoolean($sInput)
+function ConvertToBoolean(string $sInput): bool
 {
     if (empty($sInput)) {
         return false;
@@ -527,7 +527,6 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
 
                 return $sPhoneNumber;
             }
-            break;
 
     // If the country is unknown, we don't know how to format it, so leave it untouched
         default:
@@ -630,9 +629,8 @@ function FormatAddressLine(?string $Address, ?string $City, ?string $State): str
     if ($City != '' && $State != '') {
         $sText .= ', ';
     }
-    $sText .= $State;
 
-    return $sText;
+    return $sText . $State;
 }
 
 //
@@ -655,7 +653,6 @@ function displayCustomField($type, ?string $data, $special)
     // Handler for date fields
         case 2:
             return FormatDate($data);
-        break;
     // Handler for text fields, years, seasons, numbers, money
         case 3:
         case 4:
@@ -663,7 +660,6 @@ function displayCustomField($type, ?string $data, $special)
         case 8:
         case 10:
             return $data;
-        break;
 
     // Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
         case 5:
@@ -674,12 +670,10 @@ function displayCustomField($type, ?string $data, $special)
           }
           */
             return $data;
-        break;
 
     // Handler for season.  Capitalize the word for nicer display.
         case 7:
             return ucfirst($data);
-        break;
 
     // Handler for "person from group"
         case 9:
@@ -692,12 +686,10 @@ function displayCustomField($type, ?string $data, $special)
             } else {
                 return '';
             }
-            break;
 
     // Handler for phone numbers
         case 11:
             return ExpandPhoneNumber($data, $special, $dummy);
-        break;
 
     // Handler for custom lists
         case 12:
@@ -710,12 +702,10 @@ function displayCustomField($type, ?string $data, $special)
             } else {
                 return '';
             }
-            break;
 
     // Otherwise, display error for debugging.
         default:
             return gettext('Invalid Editor ID!');
-        break;
     }
 }
 
@@ -925,28 +915,25 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
                 $sYear = mb_substr($sLastCentury, 0, 2) . $sYear;
             }
         }
-    } elseif (strlen($sYear) == 4) {
-        $sYear = $sYear;
+    } elseif (strlen($sYear) === 4) {
     } else {
         return false;
     }
 
     // Parse the Month
     // Take a one or two character month and return a two character month
-    if (strlen($sMonth) == 1) {
+    if (strlen($sMonth) === 1) {
         $sMonth = '0' . $sMonth;
-    } elseif (strlen($sMonth) == 2) {
-        $sMonth = $sMonth;
+    } elseif (strlen($sMonth) === 2) {
     } else {
         return false;
     }
 
     // Parse the Day
     // Take a one or two character day and return a two character day
-    if (strlen($sDay) == 1) {
+    if (strlen($sDay) === 1) {
         $sDay = '0' . $sDay;
-    } elseif (strlen($sDay) == 2) {
-        $sDay = $sDay;
+    } elseif (strlen($sDay) === 2) {
     } else {
         return false;
     }
@@ -983,7 +970,7 @@ function parseAndValidateDate($data, $locale = 'US', $pasfut = 'future')
     // Determine if the delimiter is "-" or "/".  The delimiter must appear
     // twice or a FALSE will be returned.
 
-    if (mb_substr_count($data, '-') == 2) {
+    if (mb_substr_count($data, '-') === 2) {
         // Assume format is Y-M-D
         $iFirstDelimiter = strpos($data, '-');
         $iSecondDelimiter = strpos($data, '-', $iFirstDelimiter + 1);
@@ -1103,7 +1090,7 @@ function validateCustomField($type, &$data, $col_Name, ?array &$aErrors): bool
     // Handler for integer numbers
         case 8:
             if (strlen($data) != 0) {
-                if ($aLocalInfo['thousands_sep']) {
+                if ($aLocaleInfo['thousands_sep']) {
                     $data = preg_replace('/' . $aLocaleInfo['thousands_sep'] . '/i', '', $data);  // remove any thousands separators
                 }
                 if (!is_numeric($data)) {
@@ -1175,6 +1162,8 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
 
     // year
         case 6:
+        case 10:
+        case 5:
             if (strlen($data) > 0) {
                 $sSQL .= $col_Name . " = '" . $data . "', ";
             } else {
@@ -1193,14 +1182,6 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
 
     // integer, money
         case 8:
-        case 10:
-            if (strlen($data) > 0) {
-                $sSQL .= $col_Name . " = '" . $data . "', ";
-            } else {
-                $sSQL .= $col_Name . ' = NULL, ';
-            }
-            break;
-
     // list selects
         case 9:
         case 12:
@@ -1214,14 +1195,6 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
     // strings
         case 3:
         case 4:
-        case 5:
-            if (strlen($data) > 0) {
-                $sSQL .= $col_Name . " = '" . $data . "', ";
-            } else {
-                $sSQL .= $col_Name . ' = NULL, ';
-            }
-            break;
-
     // phone
         case 11:
             if (strlen($data) > 0) {
@@ -1250,27 +1223,23 @@ function formatNumber($iNumber, $sMode = 'integer')
     switch ($sMode) {
         case 'money':
             return $aLocaleInfo['currency_symbol'] . ' ' . number_format($iNumber, $aLocaleInfo['frac_digits'], $aLocaleInfo['mon_decimal_point'], $aLocaleInfo['mon_thousands_sep']);
-        break;
 
         case 'intmoney':
             return $aLocaleInfo['currency_symbol'] . ' ' . number_format($iNumber, 0, '', $aLocaleInfo['mon_thousands_sep']);
-        break;
 
         case 'float':
             $iDecimals = 2; // need to calculate # decimals in original number
             return number_format($iNumber, $iDecimals, $aLocaleInfo['mon_decimal_point'], $aLocaleInfo['mon_thousands_sep']);
-        break;
 
         case 'integer':
         default:
             return number_format($iNumber, 0, '', $aLocaleInfo['mon_thousands_sep']);
-        break;
     }
 }
 
 
 
-function FilenameToFontname($filename, $family)
+function FilenameToFontname(string $filename, string $family)
 {
     if ($filename == $family) {
         return ucfirst($family);
@@ -1287,7 +1256,7 @@ function FilenameToFontname($filename, $family)
     }
 }
 
-function FontFromName($fontname)
+function FontFromName(string $fontname)
 {
     $fontinfo = explode(' ', $fontname);
     switch (count($fontinfo)) {
@@ -1524,7 +1493,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
 /**
  * @return non-falsy-string[]
  */
-function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSearchTerm = 0): array
+function getFamilyList(string $sDirRoleHead, string $sDirRoleSpouse, int $classification = 0, ?string $sSearchTerm = null): array
 {
     if ($classification) {
         if ($sSearchTerm) {
@@ -1581,7 +1550,7 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
     return $familyArray;
 }
 
-function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse): string
+function buildFamilySelect(int $iFamily, string $sDirRoleHead, string $sDirRoleSpouse): string
 {
     //Get Families for the drop-down
     $familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
@@ -1642,7 +1611,7 @@ function random_color(): string
     return random_color_part() . random_color_part() . random_color_part();
 }
 
-function generateGroupRoleEmailDropdown($roleEmails, string $href): void
+function generateGroupRoleEmailDropdown(array $roleEmails, string $href): void
 {
     $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {
