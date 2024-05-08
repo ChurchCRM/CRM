@@ -1,9 +1,10 @@
 <?php
 
 echo <<<HEREDOC
-===============================================
-========== Building locale from DB started ===
-===============================================
+=====================================================
+========== Building locale from DB started ==========
+=====================================================
+
 
 HEREDOC;
 
@@ -87,7 +88,7 @@ SQL;
 
         $localesFile = file_get_contents(implode(DIRECTORY_SEPARATOR, ['..', 'src', 'locale', 'locales.json']));
         $locales = json_decode($localesFile, true);
-        
+
         foreach ($locales as $key => $value) {
             file_put_contents($stringFile, "gettext('" . $key . "');\r\n", FILE_APPEND);
         }
@@ -102,8 +103,9 @@ SQL;
 
 echo <<<HEREDOC
 
-===============================================
-========== Building locale from DB end ===
-===============================================
+=====================================================
+==========   Building locale from DB end   ==========
+=====================================================
+
 
 HEREDOC;
