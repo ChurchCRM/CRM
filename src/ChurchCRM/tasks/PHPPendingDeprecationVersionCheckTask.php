@@ -6,9 +6,11 @@ use ChurchCRM\dto\SystemURLs;
 
 class PHPPendingDeprecationVersionCheckTask implements TaskInterface, PreUpgradeTaskInterface
 {
+    private const REQUIRED_PHP_VERSION = '8.1.0';
+
     public function isActive(): bool
     {
-        return PHP_VERSION_ID < 80100;
+        return version_compare(PHP_VERSION, self::REQUIRED_PHP_VERSION, '<');
     }
 
     public function isAdmin(): bool
@@ -28,6 +30,6 @@ class PHPPendingDeprecationVersionCheckTask implements TaskInterface, PreUpgrade
 
     public function getDesc(): string
     {
-        return gettext('Support for this PHP version will soon be removed.  Current PHP Version: ' . PHP_VERSION . '. Minimum Required PHP Version: 8.1.0');
+        return gettext('Support for this PHP version will soon be removed.  Current PHP Version: ' . PHP_VERSION . '. Minimum Required PHP Version: ' . self::REQUIRED_PHP_VERSION);
     }
 }
