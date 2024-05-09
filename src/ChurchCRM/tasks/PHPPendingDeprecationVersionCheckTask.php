@@ -8,7 +8,7 @@ class PHPPendingDeprecationVersionCheckTask implements TaskInterface, PreUpgrade
 {
     public function isActive(): bool
     {
-        return version_compare(PHP_VERSION, $this::REQUIRED_PHP_VERSION, '<');
+        return PHP_VERSION_ID < 80100;
     }
 
     public function isAdmin(): bool
@@ -28,6 +28,6 @@ class PHPPendingDeprecationVersionCheckTask implements TaskInterface, PreUpgrade
 
     public function getDesc(): string
     {
-        return gettext('Support for this PHP version will soon be removed.  Current PHP Version: ' . PHP_VERSION . '. Minimum Required PHP Version: ' . $this::REQUIRED_PHP_VERSION);
+        return gettext('Support for this PHP version will soon be removed.  Current PHP Version: ' . PHP_VERSION . '. Minimum Required PHP Version: 8.1.0');
     }
 }
