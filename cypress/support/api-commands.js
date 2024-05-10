@@ -46,6 +46,11 @@ Cypress.Commands.add(
             body: body,
         }).then((resp) => {
             expect(expectedStatus).to.eq(resp.status);
+
+            if (!resp.body) {
+                return null;
+            }
+
             return JSON.parse(JSON.stringify(resp.body));
         });
     },
