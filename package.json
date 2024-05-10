@@ -76,7 +76,7 @@
         "flag-icons": "^7.2.1",
         "fullcalendar": "^6.1.11",
         "i18n": "^0.15.1",
-        "i18next": "^23.11.2",
+        "i18next": "^23.11.4",
         "icheck-bootstrap": "^3.0.1",
         "inputmask": "^5.0.8",
         "jquery": "^3.7.1",
@@ -84,13 +84,13 @@
         "jquery-steps": "^1.1.0",
         "jquery-validation": "^1.19.5",
         "pace-js": "^1.2.4",
-        "react-bootstrap": "^2.10.1",
+        "react-bootstrap": "^2.10.2",
         "react-datepicker": "^6.9.0",
         "react-select": "^5.7.7",
         "select2": "^4.0.13"
     },
     "devDependencies": {
-        "@types/jquery": "^3.5.29",
+        "@types/jquery": "^3.5.30",
         "babel-cli": "^6.26.0",
         "babel-core": "^6.26.3",
         "babel-loader": "^9.1.0",
@@ -107,21 +107,21 @@
         "grunt-http": "^2.3.3",
         "grunt-lineending": "^1.0.0",
         "grunt-sass": "^3.1.0",
-        "i18next-conv": "^14.0.0",
+        "i18next-conv": "^15.0.0",
         "i18next-parser": "^8.13.0",
         "node-sha1": "^1.0.1",
         "npm-run-all": "^4.1.5",
         "prettier": "^3.2.5",
-        "sass": "^1.72.0",
-        "tar": "^6.1.12",
+        "sass": "^1.77.0",
+        "tar": "^7.1.0",
         "ts-loader": "^9.5.1",
-        "typescript": "^5.3.3",
-        "webpack": "^5.90.3",
+        "typescript": "^5.4.5",
+        "webpack": "^5.91.0",
         "webpack-cli": "^5.0.0"
     },
     "optionalDependencies": {
-        "cy-verify-downloads": "^0.2.3",
-        "cypress": "^13.6.6",
+        "cy-verify-downloads": "^0.2.4",
+        "cypress": "^13.9.0",
         "grunt-poeditor-gd": "^0.2.1"
     }
 }
