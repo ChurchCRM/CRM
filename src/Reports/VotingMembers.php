@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/VotingMembers.php
-*  last change : 2005-03-26
-*  description : Creates a PDF with names of voting members for a particular fiscal year
-
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -16,12 +8,13 @@ require '../Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 
-//Get the Fiscal Year ID out of the querystring
+// Get the Fiscal Year ID out of the query string
 $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 if (!$iFYID) {
     $iFYID = CurrentFY();
 }
-$_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
+// Remember the chosen Fiscal Year ID
+$_SESSION['idefaultFY'] = $iFYID;
 $iRequireDonationYears = InputUtils::legacyFilterInput($_POST['RequireDonationYears'], 'int');
 $output = InputUtils::legacyFilterInput($_POST['output']);
 
@@ -116,8 +109,9 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 $curY += 5;
 $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, 'Number of Voting Members: ' . $votingMemberCount);
 
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if (SystemConfig::getValue('iPDFOutputType') == 1) {
+// Needed for IE when using a shared SSL certificate
+header('Pragma: public');
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('VotingMembers' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

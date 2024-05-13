@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/GroupReport.php
-*  last change : 2003-09-09
-*  description : Creates a group-member directory
-*
-*  https://churchcrm.io/
-*  Copyright 2003  Chris Gebhardt, Jason York
-
-******************************************************************************/
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -78,10 +67,6 @@ if ($bOnlyCartMembers && count($_SESSION['aPeopleCart']) > 0) {
 $sSQL .= ' ORDER BY per_LastName';
 
 $rsRecords = RunQuery($sSQL);
-
-// This is used for the headings for the letter changes.
-// Start out with something that isn't a letter to force the first one to work
-// $sLastLetter = "0";
 
 while ($aRow = mysqli_fetch_array($rsRecords)) {
     $OutStr = '';
@@ -155,20 +140,11 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         $numlines++;
     }
 
-    //if ($numlines > 1)
-    //{
-    /* if (strtoupper($sLastLetter) != strtoupper(mb_substr($pdf->sFamily,0,1)))
-    {
-        $pdf->checkLines($numlines+2);
-        $sLastLetter = strtoupper(mb_substr($pdf->sFamily,0,1));
-        $pdf->addHeader($sLastLetter);
-    } */
     $pdf->addRecord($pdf->sFamily, $OutStr, $numlines);
-    // }
 }
-
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if (SystemConfig::getValue('iPDFOutputType') == 1) {
+// Needed for IE when using a shared SSL certificate
+header('Pragma: public');
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('GroupDirectory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

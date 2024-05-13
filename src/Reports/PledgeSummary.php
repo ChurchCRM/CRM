@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/ReminderReport.php
-*  last change : 2005-03-26
-*  description : Creates a PDF of the current deposit slip
-
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -27,7 +19,8 @@ $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 if (!$iFYID) {
     $iFYID = CurrentFY();
 }
-$_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
+// Remember the chosen Fiscal Year ID
+$_SESSION['idefaultFY'] = $iFYID;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
@@ -80,16 +73,13 @@ if (!empty($_POST['funds'])) {
         $sSQL .= ') ';
     }
 }
-// Order by Fund Active, Fund Name
-//$sSQL .= " ORDER BY fundActive, fundName";
+
 // Order by Family so the related pledges and payments will be together
 $sSQL .= ' ORDER BY plg_famID';
 
-// Run Query
 $rsPledges = RunQuery($sSQL);
 
 // Create PDF Report
-// *****************
 if ($output === 'pdf') {
     class PdfPledgeSummaryReport extends ChurchInfoReport
     {
@@ -124,7 +114,8 @@ if ($output === 'pdf') {
     $fundName = '';
     $plg_famID = 0;
 
-    for ($thisRow = 0; $thisRow <= $totRows; $thisRow += 1) { // go through the loop one extra time
+    // Go through the loop one extra time
+    for ($thisRow = 0; $thisRow <= $totRows; $thisRow += 1) {
         if ($thisRow < $totRows) {
             $aRow = mysqli_fetch_array($rsPledges);
             extract($aRow);
@@ -136,7 +127,6 @@ if ($output === 'pdf') {
 
         if ($plg_famID != $curFam || $thisRow == $totRows) {
             // Switching families.  Post the results for the previous family and initialize for the new family
-
             mysqli_data_seek($rsFunds, 0);
             while ($row = mysqli_fetch_array($rsFunds)) {
                 $fun_name = $row['fun_Name'];
@@ -229,7 +219,8 @@ if ($output === 'pdf') {
     $pdf->SetFont('Times', '', 10);
     $curY += SystemConfig::getValue('incrementY');
 
-    mysqli_data_seek($rsFunds, 0); // Change this to print out funds in active / alpha order.
+    // Change this to print out funds in active / alpha order
+    mysqli_data_seek($rsFunds, 0);
     while ($row = mysqli_fetch_array($rsFunds)) {
         $fun_name = $row['fun_Name'];
         if ($pledgeFundTotal[$fun_name] > 0 || $paymentFundTotal[$fun_name] > 0) {
@@ -264,16 +255,15 @@ if ($output === 'pdf') {
         $pdf->printRightJustified($paymentCountX, $curY, $paymentCnt['Unassigned']);
         $curY += SystemConfig::getValue('incrementY');
     }
-
-    header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-    if (SystemConfig::getValue('iPDFOutputType') == 1) {
+    // Needed for IE when using a shared SSL certificate
+    header('Pragma: public');
+    if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
         $pdf->Output('PledgeSummaryReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {
         $pdf->Output();
     }
 
 // Output a text file
-// ##################
 } elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
@@ -289,10 +279,10 @@ if ($output === 'pdf') {
     // Remove trailing delimiter and add eol
     $buffer = mb_substr($buffer, 0, -1) . $eol;
 
-    // Add data
     while ($row = mysqli_fetch_row($rsPledges)) {
         foreach ($row as $field) {
-            $field = str_replace($delimiter, ' ', $field);    // Remove any delimiters from data
+            // Remove any delimiters from data
+            $field = str_replace($delimiter, ' ', $field);
             $buffer .= $field . $delimiter;
         }
         // Remove trailing delimiter and add eol

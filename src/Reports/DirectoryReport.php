@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/DirectoryReport.php
-*  last change : 2003-08-30
-*  description : Creates a Member directory
-*
-*  https://churchcrm.io/
-*  Copyright 2003  Jason York, 2004-2005 Michael Wilt, Richard Bondi
-
-******************************************************************************/
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -18,8 +7,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfDirectory;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Check for Create Directory user permission.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled());
@@ -88,10 +77,10 @@ if ($sPageSize != 'letter' && $sPageSize != 'a4') {
     $sPageSize = 'legal';
 }
 
-//echo "ncols={$bNumberofColumns}  page size={$sPageSize}";
+LoggerUtils::getAppLogger()->debug("ncols = {$bNumberofColumns} page size = {$sPageSize}");
 
-// Instantiate the directory class and build the report.
-//echo "font sz = {$bFontSz} and line sp={$bLineSp}";
+// Instantiate the directory class and build the report
+LoggerUtils::getAppLogger()->debug("font sz = {$bFontSz} and line sp = {$bLineSp}");
 $pdf = new PdfDirectory($bNumberofColumns, $sPageSize, $bFontSz, $bLineSp);
 
 // Get the list of custom person fields
@@ -193,7 +182,8 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
     $isFamily = false;
 
-    if ($memberCount > 1) { // Here we have a family record.
+    if ($memberCount > 1) {
+        // Here we have a family record
         $iFamilyID = $per_fam_ID;
         $isFamily = true;
 
@@ -267,8 +257,6 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
 
         if ($bDirAddress) {
-            //            if (strlen($sAddress1)) { $OutStr .= $sAddress1 . "\n";  }
-            //            if (strlen($sAddress2)) { $OutStr .= $sAddress2 . "\n";  }
             if (strlen($sAddress1)) {
                 $OutStr .= $sAddress1;
             }
@@ -317,7 +305,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $pdf->addHeader($sLastLetter);
         }
 
-        // if photo include pass the id, otherwise 0 equates to no family/pers
+        // If photo include pass the ID, otherwise 0 equates to no family/person
         $fid = 0;
         $pid = 0;
         if ($bDirPhoto) {
@@ -327,7 +315,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
                 $pid = $per_ID;
             }
         }
-        $pdf->addRecord($pdf->sRecordName, $OutStr, $numlines, $fid, $pid);  // another hack: added +1
+        $pdf->addRecord($pdf->sRecordName, $OutStr, $numlines, $fid, $pid);
     }
 }
 
@@ -335,9 +323,9 @@ if ($mysqlversion == 3 && $mysqlsubversion >= 22) {
     $sSQL = 'DROP TABLE IF EXISTS tmp;';
     mysqli_query($cnInfoCentral, $sSQL);
 }
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-
-if (SystemConfig::getValue('iPDFOutputType') == 1) {
+// Needed for IE when using a shared SSL certificate
+header('Pragma: public');
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('Directory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

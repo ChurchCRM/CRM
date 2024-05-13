@@ -10,7 +10,6 @@ use ChurchCRM\view\MenuRenderer;
 
 $taskService = new TaskService();
 
-//
 // Turn ON output buffering
 ob_start();
 

@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/NewsLetterLabels.php
-*  last change : 2003-08-30
-*  description : Creates a PDF with all the newletter mailing labels
-
-******************************************************************************/
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -58,9 +50,9 @@ foreach ($families as $family) {
 
     $pdf->addPdfLabel($labelText);
 }
-
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if (SystemConfig::getValue('iPDFOutputType') == 1) {
+// Needed for IE when using a shared SSL certificate
+header('Pragma: public');
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('NewsLetterLabels' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

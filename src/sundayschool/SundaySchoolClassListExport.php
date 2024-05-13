@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : sundayschol/SundaySchoolClassListExport.php
-*  last change : 2017-11-03 Philippe Logel
-*  description : Creates a csv for a Sunday School Class List
-
-******************************************************************************/
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -32,7 +24,7 @@ $delimiter = SystemConfig::getValue('sCSVExportDelimiter');
 
 $out = fopen('php://output', 'w');
 
-//add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
+// Add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
 if (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') {
     fputs($out, $bom = (chr(0xEF) . chr(0xBB) . chr(0xBF)));
 }
@@ -53,7 +45,7 @@ fputcsv($out, [InputUtils::translateSpecialCharset('Class'),
     InputUtils::translateSpecialCharset('Mom Email'),
     InputUtils::translateSpecialCharset('Properties')], $delimiter);
 
-// only the unday groups
+// Only the Sunday groups
 $groups = GroupQuery::create()
                     ->orderByName(Criteria::ASC)
                     ->filterByType(4)
@@ -66,7 +58,7 @@ foreach ($groups as $group) {
     $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
                             ->joinWithPerson()
                             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
-                            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce per_LastName, per_FirstName
+                            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME)
                             ->findByGroupId($iGroupID);
 
     foreach ($groupRoleMemberships as $groupRoleMembership) {
@@ -100,10 +92,10 @@ foreach ($groups as $group) {
             $zip = $family->getZip();
 
             if ($lst_OptionName === 'Student') {
-                // only for a student
+                // Only for a student
                 $FAmembers = FamilyQuery::create()->findOneByID($famID)->getAdults();
 
-                // il faut encore chercher les membres de la famille
+                // We still have to look for family members
                 foreach ($FAmembers as $maf) {
                     if ($maf->getGender() == 1) {
                         // Dad

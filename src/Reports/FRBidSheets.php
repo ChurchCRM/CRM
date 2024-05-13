@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/FRBidSheets.php
-*  last change : 2003-08-30
-*  description : Creates a PDF with a silent auction bid sheet for every item.
-
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -91,9 +83,9 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
         $pdf->Cell($widBid, $lineHeight, '', 1, 1);
     }
 }
-
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if (SystemConfig::getValue('iPDFOutputType') == 1) {
+// Needed for IE when using a shared SSL certificate
+header('Pragma: public');
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('FRBidSheets' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();
