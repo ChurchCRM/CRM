@@ -7,6 +7,8 @@ require '../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu
@@ -52,7 +54,7 @@ class PdfEnvelopeReport extends ChurchInfoReport
         $this->setCharSize(12);
     }
 
-    public function checkLines($numlines): void
+    public function checkLines(int $numlines): void
     {
         // Temporarily store off the position
         $CurY = $this->GetY();
@@ -76,12 +78,9 @@ class PdfEnvelopeReport extends ChurchInfoReport
     }
 
     // This function formats the string for a family
-    public function sGetFamilyString($aRow): string
+    public function sGetFamilyString(Family $family): string
     {
-        // Get a row from family_fam
-        extract($aRow);
-
-        return $fam_Envelope . ' ' . $this->makeSalutation($fam_ID);
+        return $family->getEnvelope() . ' ' . $this->makeSalutation($family->getId());
     }
 
     // Number of lines is only for the $text parameter
@@ -103,14 +102,11 @@ class PdfEnvelopeReport extends ChurchInfoReport
 // Instantiate the directory class and build the report.
 $pdf = new PdfEnvelopeReport();
 
-$sSQL = 'SELECT fam_ID, fam_Envelope FROM family_fam WHERE fam_Envelope>0 ORDER BY fam_Envelope';
-$rsRecords = RunQuery($sSQL);
+$families = FamilyQuery::Create()->orderByEnvelope()->filterByEnvelope(0, 'Criteria::GREATER_THAN')->find();
 
-while ($aRow = mysqli_fetch_array($rsRecords)) {
+foreach ($families as $family) {
     $OutStr = '';
-    extract($aRow);
-
-    $OutStr = $pdf->sGetFamilyString($aRow);
+    $OutStr = $pdf->sGetFamilyString($family);
 
     // Count the number of lines in the output string
     if (strlen($OutStr)) {

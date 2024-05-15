@@ -85,7 +85,7 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
     }
 
     // Generate Salutation for Adults in family
-    if ($numAdult == 1) {
+    if ($numAdult === 1) {
         extract($aAdult[0]);
         $sNameAdult = $per_FirstName . ' ' . $per_LastName;
     } elseif ($numAdult == 2) {
