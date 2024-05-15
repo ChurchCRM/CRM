@@ -13,7 +13,6 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Families';
-        parent::__construct();
     }
 
     public function getSearchResults(string $SearchQuery)

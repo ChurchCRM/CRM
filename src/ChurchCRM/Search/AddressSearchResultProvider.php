@@ -12,7 +12,6 @@ class AddressSearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Address';
-        parent::__construct();
     }
 
     public function getSearchResults(string $SearchQuery)

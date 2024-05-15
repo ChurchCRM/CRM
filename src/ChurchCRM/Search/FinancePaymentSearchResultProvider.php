@@ -14,7 +14,6 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Payments';
-        parent::__construct();
     }
 
     public function getSearchResults(string $SearchQuery)

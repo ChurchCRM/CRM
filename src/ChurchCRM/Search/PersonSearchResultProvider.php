@@ -12,7 +12,6 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Persons';
-        parent::__construct();
     }
 
     public function getSearchResults(string $SearchQuery)

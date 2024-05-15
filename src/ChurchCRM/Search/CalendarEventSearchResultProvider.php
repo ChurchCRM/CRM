@@ -12,7 +12,6 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Calendar Events';
-        parent::__construct();
     }
 
     public function getSearchResults(string $SearchQuery)
