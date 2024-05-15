@@ -901,8 +901,9 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
                 $sYear = mb_substr($sLastCentury, 0, 2) . $sYear;
             }
         }
-    } elseif (strlen($sYear) === 4) {
-    } else {
+    }
+    // If the $sYear is not YYYY, return false.
+    if (strlen($sYear) !== 4) {
         return false;
     }
 
@@ -910,8 +911,9 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
     // Take a one or two character month and return a two character month
     if (strlen($sMonth) === 1) {
         $sMonth = '0' . $sMonth;
-    } elseif (strlen($sMonth) === 2) {
-    } else {
+    }
+    // If the $sMonth is not MM, return false.
+    if (strlen($sMonth) !== 2) {
         return false;
     }
 
@@ -919,8 +921,9 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
     // Take a one or two character day and return a two character day
     if (strlen($sDay) === 1) {
         $sDay = '0' . $sDay;
-    } elseif (strlen($sDay) === 2) {
-    } else {
+    }
+    // If the $sDay is not DD, return false.
+    if (strlen($sDay) !== 2) {
         return false;
     }
 
