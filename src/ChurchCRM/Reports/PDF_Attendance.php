@@ -171,9 +171,8 @@ class PdfAttendance extends ChurchInfoReport
             $dWhichMonthDate = $dWhichSunday;
             $whichMonth = date('n', $dWhichMonthDate);
 
-            $bFlag = true;
-
-            while ($bFlag) {
+            $bInProgressFlag = true;
+            while ($bInProgressFlag) {
                 $dayListX[$dayCounter] = $dayX;
 
                 $dayListNum[$dayCounter] = date('d', $dWhichSunday);
@@ -218,7 +217,7 @@ class PdfAttendance extends ChurchInfoReport
 
                 if (strtotime($tWhichSunday) >= strtotime($tLastSunday)) {
                     // Done - set flag for end of while loop
-                    $bFlag = false;
+                    $bInProgressFlag = false;
                 }
 
                 // Increment the date by one week
