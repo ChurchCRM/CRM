@@ -187,7 +187,9 @@ class Person extends BasePerson implements PhotoInterface
     }
 
     /**
-     * Get address of  a person. If empty, return family address.
+     * Get full address string of a person.
+     *
+     * If the address is not defined on the person record, return family address if one exists.
      */
     public function getAddress(): string
     {
@@ -197,6 +199,7 @@ class Person extends BasePerson implements PhotoInterface
             if (!empty($this->getAddress2())) {
                 $tmp = $tmp . ' ' . $this->getAddress2();
             }
+
             $address[] = $tmp;
             if (!empty($this->getCity())) {
                 $address[] = $this->getCity() . ',';
@@ -212,13 +215,10 @@ class Person extends BasePerson implements PhotoInterface
             }
 
             return implode(' ', $address);
-        } else {
-            if ($this->getFamily()) {
-                return $this->getFamily()
-                    ->getAddress();
-            }
+        } elseif ($this->getFamily()) {
+            return $this->getFamily()->getAddress();
         }
-        //if it reaches here, no address found. return empty $address
+
         return '';
     }
 
@@ -281,27 +281,32 @@ class Person extends BasePerson implements PhotoInterface
     }
 
     /**
-     * * If person address found, return latitude and Longitude of person address
-     * else return family latitude and Longitude.
+     * If person address found, return latitude and Longitude of person address
+     * Otherwise, return the family latitude and Longitude.
      */
     public function getLatLng(): array
     {
-        $this->getAddress(); //if person address empty, this will get Family address
+        $bUseFamilyAddress = !empty($this->getAddress1()) && $this->getFamily();
+
         $lat = 0;
         $lng = 0;
-        if (!empty($this->getAddress1())) {
-            $latLng = GeoUtils::getLatLong($this->getAddress());
+        if ($bUseFamilyAddress && $this->getFamily()->hasLatitudeAndLongitude()) {
+            $lat = $this->getFamily()->getLatitude();
+            $lng = $this->getFamily()->getLongitude();
+        } else {
+            // if person address is empty, this will get Family address
+            $sFullAddress = $this->getAddress();
+
+            $latLng = GeoUtils::getLatLong($sFullAddress);
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 $lat = $latLng['Latitude'];
                 $lng = $latLng['Longitude'];
             }
-        } else {
-            // note: this is useful when a person don't have a family (i.e. not an address)
-            if (!$this->getFamily()->hasLatitudeAndLongitude()) {
+
+            if ($bUseFamilyAddress) {
+                // if we are using a family address, cache the result to avoid additional work in the future
                 $this->getFamily()->updateLanLng();
             }
-            $lat = $this->getFamily()->getLatitude();
-            $lng = $this->getFamily()->getLongitude();
         }
 
         return [
