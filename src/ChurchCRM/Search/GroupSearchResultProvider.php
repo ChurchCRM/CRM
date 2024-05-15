@@ -12,7 +12,6 @@ class GroupSearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Groups';
-        parent::__construct();
     }
 
     public function getSearchResults(string $SearchQuery)
