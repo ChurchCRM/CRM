@@ -27,7 +27,7 @@ class PersonService
             $values['lastName'] = $person->getLastName();
             $values['displayName'] = $person->getFullName();
             $values['uri'] = $person->getViewURI();
-            $values['thumbnailURI'] = $person->getThumbnailURI();
+            $values['thumbnailURI'] = $person->getPhoto()->getThumbnailURI();
             $values['title'] = $person->getTitle();
             $values['address'] = $person->getAddress();
             $values['role'] = $person->getFamilyRoleName();

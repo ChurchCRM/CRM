@@ -11,15 +11,13 @@ use Propel\Runtime\ActiveQuery\Join;
 /**
  * Skeleton subclass for representing a row from the 'kioskassginment_kasm' table.
  *
- *
- *
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
 class KioskAssignment extends BaseKioskAssignment
 {
-    private function getActiveEvent()
+    private function getActiveEvent(): ?Event
     {
         if ($this->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {
             return EventQuery::create()
@@ -43,13 +41,13 @@ class KioskAssignment extends BaseKioskAssignment
             return PersonQuery::create()
                 ->joinWithPerson2group2roleP2g2r()
                 ->usePerson2group2roleP2g2rQuery()
-                  ->filterByGroupId($this->getEvent()->getGroupId())
-                  ->joinGroup()
-                  ->addJoinObject($groupTypeJoin)
+                    ->filterByGroup($this->getEvent()->getGroups())
+                    ->joinGroup()
+                    ->addJoinObject($groupTypeJoin)
                 ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME, 'RoleName')
                 ->endUse()
-                 ->leftJoin('EventAttend')
-                 ->withColumn('(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)', 'status')
+                    ->leftJoin('EventAttend')
+                    ->withColumn('(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)', 'status')
                 ->select(['Id', 'FirstName', 'LastName', 'status'])
                 ->find();
         } else {

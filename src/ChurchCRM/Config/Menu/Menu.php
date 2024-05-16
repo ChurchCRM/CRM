@@ -12,7 +12,7 @@ use ChurchCRM\model\ChurchCRM\MenuLinkQuery;
 class Menu
 {
     /**
-     * @var Config[]
+     * @var array<string, MenuItem>|null
      */
     private static ?array $menuItems = null;
 
