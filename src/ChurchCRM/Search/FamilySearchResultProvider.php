@@ -36,15 +36,21 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
         $id = 0;
 
         try {
-            $families = FamilyQuery::create()->
-            filterByName("%$SearchQuery%", Criteria::LIKE)->
-            _or()->filterByHomePhone("%$SearchQuery%", Criteria::LIKE)->
-            _or()->filterByEmail("%$SearchQuery%", Criteria::LIKE)->
-            _or()->filterByCellPhone("%$SearchQuery%", Criteria::LIKE)->
-            _or()->filterByWorkPhone("%$SearchQuery%", Criteria::LIKE)->
-            limit(SystemConfig::getValue('bSearchIncludeFamiliesMax'))->find();
+            $families = FamilyQuery::create()
+                ->filterByName("%$SearchQuery%", Criteria::LIKE)
+                ->_or()
+                ->filterByHomePhone("%$SearchQuery%", Criteria::LIKE)
+                ->_or()
+                ->filterByEmail("%$SearchQuery%", Criteria::LIKE)
+                ->_or()
+                ->filterByCellPhone("%$SearchQuery%", Criteria::LIKE)
+                ->_or()
+                ->filterByWorkPhone("%$SearchQuery%", Criteria::LIKE)
+                ->limit(SystemConfig::getValue('bSearchIncludeFamiliesMax'))
+                ->find();
 
-            if (!empty($families)) {
+
+            if ($families->count() > 0) {
                 $id++;
                 foreach ($families as $family) {
                     $searchResults[] = new SearchResult('family-name-' . $id, $family->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')), $family->getViewURI());
@@ -53,7 +59,8 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
 
             return $searchResults;
         } catch (\Exception $e) {
-            LoggerUtils::getAppLogger()->warning($e->getMessage());
+            LoggerUtils::getAppLogger()->warning($e->getMessage(), ['exception' => $e]);
+            throw $e;
         }
     }
 

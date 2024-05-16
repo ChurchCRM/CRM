@@ -73,9 +73,9 @@ class RestoreJob extends JobBase
         switch ($this->RestoreFile->getExtension()) {
             case 'gz':
                 $basename = $this->RestoreFile->getBasename();
-                if (substr($basename, strlen($basename) - 6, 6) == 'tar.gz') {
+                if (str_ends_with($basename, 'tar.gz')) {
                     $this->BackupType = BackupType::FULL_BACKUP;
-                } elseif (substr($basename, strlen($basename) - 6, 6) == 'sql.gz') {
+                } elseif (str_ends_with($basename, 'sql.gz')) {
                     $this->BackupType = BackupType::GZSQL;
                 }
                 break;

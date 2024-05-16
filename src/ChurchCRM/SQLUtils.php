@@ -8,7 +8,7 @@ class SQLUtils
     /**
      * Import SQL from file.
      *
-     * @param string path to sql file
+     * @param string $fileName path to sql file
      */
     public static function sqlImport(string $fileName, $mysqli): void
     {
@@ -139,7 +139,7 @@ class SQLUtils
         return $isQuoted;
     }
 
-    private static function query($sql, $mysqli): void
+    private static function query(string $sql, $mysqli): void
     {
         if (preg_match("/DEFINER\s*=.*@.*/", $sql)) {
             return;

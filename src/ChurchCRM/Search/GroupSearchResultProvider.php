@@ -36,7 +36,7 @@ class GroupSearchResultProvider extends BaseSearchResultProvider
                 ->filterByName("%$SearchQuery%", Criteria::LIKE)
                 ->limit(SystemConfig::getValue('bSearchIncludeGroupsMax'))
                 ->find();
-            if (!empty($groups)) {
+            if ($groups->count() > 0) {
                 $id++;
                 foreach ($groups as $group) {
                     $searchResults[] = new SearchResult('group-name-' . $id, $group->getName(), $group->getViewURI());

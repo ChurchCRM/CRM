@@ -44,7 +44,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
                 _or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
                 limit(SystemConfig::getValue('bSearchIncludePersonsMax'))->find();
 
-            if (!empty($people)) {
+            if ($people->count() > 0) {
                 $id++;
                 foreach ($people as $person) {
                     $searchResults[] = new SearchResult('person-name-' . $id, $person->getFullName(), $person->getViewURI());

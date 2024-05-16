@@ -48,7 +48,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
             ->groupByGroupKey()
             ->find();
 
-            if (!empty($Payments)) {
+            if ($Payments->count() > 0) {
                 $id++;
                 foreach ($Payments as $Payment) {
                     // I can't seem to get the SQL HAVING clause to work through Propel ORM to use
@@ -82,7 +82,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
             ->groupByGroupKey()
             ->find();
 
-            if (!empty($Payments)) {
+            if ($Payments->count() > 0) {
                 $id++;
                 foreach ($Payments as $Payment) {
                     $searchResults[] = new SearchResult('finance-payment-' . $id, 'Check ' . $Payment->getCheckNo() . ' on Deposit ' . $Payment->getDepId(), $Payment->getVirtualColumn('uri'));

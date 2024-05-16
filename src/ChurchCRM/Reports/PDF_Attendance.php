@@ -72,6 +72,7 @@ class PdfAttendance extends ChurchInfoReport
         $prevThisName = '';
         $aNameCount = 0;
         $NameList = [];
+        $imgList = [];
         for ($row = 0; $row < count($aNames); $row++) {
             $person = $aNames[$row];
             $thisName = $person->getFullName();
@@ -79,7 +80,7 @@ class PdfAttendance extends ChurchInfoReport
             // Special handling for a person listed twice -- only show once in the Attendance Calendar
             // This happens when a child is listed in two different families (parents divorced and
             // both active in the church)
-            if ($thisName != $prevThisName) {
+            if ($thisName !== $prevThisName) {
                 $NameList[$aNameCount] = $thisName;
                 $imgList[$aNameCount++] = $imgs[$row];
                 $logger->debug("Adding {$thisName} to NameList at {$aNameCount}");
@@ -96,6 +97,8 @@ class PdfAttendance extends ChurchInfoReport
         $numMembers = count($NameList);
         $nPages = ceil($numMembers / $MaxLinesPerPage);
         $logger->debug("nPages = {$nPages}");
+
+        $bottomY = 0;
 
         // Main loop which draws each page
         for ($p = 0; $p < $nPages; $p++) {
@@ -136,7 +139,7 @@ class PdfAttendance extends ChurchInfoReport
                     $this->Line($nameX - $yIncrement, $y + $yIncrement, $nameX, $y);
                     $this->Line($nameX - $yIncrement, $y, $nameX, $y + $yIncrement);
 
-                    if ($NameList[$row] != '   ' && strlen($imgList[$row]) > 5 && file_exists($imgList[$row])) {
+                    if ($NameList[$row] != '   ' && strlen($imgList[$row]) > 5 && is_file($imgList[$row])) {
                         [$width, $height] = getimagesize($imgList[$row]);
                         $factor = $yIncrement / $height;
                         $nw = $width * $factor;
@@ -163,6 +166,7 @@ class PdfAttendance extends ChurchInfoReport
             $noSchoolCnt = 0;
             $heavyVerticalXCnt = 0;
             $lightVerticalXCnt = 0;
+            $aLightVerticalX = [];
 
             $tWhichSunday = $tFirstSunday;
             $dWhichSunday = strtotime($tWhichSunday);

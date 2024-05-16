@@ -98,7 +98,7 @@ class Person extends BasePerson implements PhotoInterface
     {
         $familyRole = null;
         $roleId = $this->getFmrId();
-        if (isset($roleId) && $roleId !== 0) {
+        if ($roleId !== 0) {
             $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
         }
 
@@ -507,7 +507,7 @@ class Person extends BasePerson implements PhotoInterface
         $this->deletePhoto();
 
         $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
-        if (!empty($obj)) {
+        if ($obj->count() > 0) {
             $groupService = new GroupService();
             foreach ($obj as $group2roleP2g2r) {
                 $groupService->removeUserFromGroup($group2roleP2g2r->getGroupId(), $group2roleP2g2r->getPersonId());
@@ -664,9 +664,8 @@ class Person extends BasePerson implements PhotoInterface
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
-        if (empty($now)) {
-            $now = date_create('today');
-        }
+
+        $now = date_create('today');
         $age = date_diff($now, $birthDate);
         if ($age->y < 1) {
             $ageValue = 0;
