@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/ClassAttendance.php
-*  last change : 2013-02-22
-*  description : Creates a PDF for a Sunday School Class Attendance List
-*  Udpdated    : 2017-10-23
-*                Philippe Logel
-******************************************************************************/
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -20,11 +11,12 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\Reports\PdfAttendance;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
 $nGrps = count($aGrp);
-//echo $iGroupID;
+LoggerUtils::getAppLogger()->debug("Group ID = {$iGroupID}");
 
 $iFYID = InputUtils::legacyFilterInput($_GET['FYID'], 'int');
 
@@ -33,7 +25,7 @@ $tLastSunday = InputUtils::legacyFilterInput($_GET['LastSunday']);
 $tAllRoles = InputUtils::legacyFilterInput($_GET['AllRoles'], 'int');
 $withPictures = InputUtils::legacyFilterInput($_GET['withPictures'], 'int');
 
-//echo "all roles ={$tAllRoles}";
+LoggerUtils::getAppLogger()->debug("All roles = {$tAllRoles}");
 
 $tNoSchool1 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool1');
 $tNoSchool2 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool2');
@@ -82,7 +74,7 @@ $pdf = new PdfAttendance();
 
 for ($i = 0; $i < $nGrps; $i++) {
     $iGroupID = $aGrp[$i];
-    //  uset($aStudents);
+
     if ($i > 0) {
         $pdf->addPage();
     }
@@ -93,7 +85,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
     $reportHeader = str_pad($group->getName(), 95) . $FYString;
 
-    // Build the teacher string- first teachers, then the liaison
+    // Build the teacher string -- first teachers, then the liaison
     $teacherString = gettext('Teachers') . ': ';
     $bFirstTeacher = true;
     $iTeacherCnt = 0;
@@ -103,7 +95,7 @@ for ($i = 0; $i < $nGrps; $i++) {
     $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
-            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce per_LastName, per_FirstName
+            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME)
             ->findByGroupId($iGroupID);
 
     if ($tAllRoles != 1) {
@@ -131,7 +123,8 @@ for ($i = 0; $i < $nGrps; $i++) {
             $lst_OptionName = $groupRole->getOptionName();
 
             if ($lst_OptionName === 'Teacher') {
-                $aTeachers[$iTeacherCnt] = $person; // Make an array of teachers while we're here
+                // Make an array of teachers while we're here
+                $aTeachers[$iTeacherCnt] = $person;
                 if (!$bFirstTeacher) {
                     $teacherString .= ', ';
                 }
@@ -186,7 +179,7 @@ for ($i = 0; $i < $nGrps; $i++) {
             $withPictures
         );
 
-        // we start a new page
+        // We start a new page
         if ($y > $yTeachers + 10) {
             $pdf->addPage();
         }
@@ -213,9 +206,7 @@ for ($i = 0; $i < $nGrps; $i++) {
             $withPictures
         );
     } else {
-        //
-        // print all roles on the attendance sheet
-        //
+        // Print all roles on the attendance sheet
         $iStudentCnt = 0;
 
         unset($aStudents);
@@ -253,9 +244,9 @@ for ($i = 0; $i < $nGrps; $i++) {
         );
     }
 }
-
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1) {
+// Needed for IE when using a shared SSL certificate
+header('Pragma: public');
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('ClassAttendance' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

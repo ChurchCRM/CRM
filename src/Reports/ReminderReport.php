@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/ReminderReport.php
-*  last change : 2005-03-26
-*  description : Creates a PDF of the current deposit slip
-*  Copyright 2004-2005  Michael Wilt, Timothy Dearborn
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -21,12 +13,13 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
 
-//Get the Fiscal Year ID out of the querystring
+// Get the Fiscal Year ID out of the query string
 $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 if (!$iFYID) {
     $iFYID = CurrentFY();
 }
-$_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
+// Remember the chosen Fiscal Year ID
+$_SESSION['idefaultFY'] = $iFYID;
 $output = InputUtils::legacyFilterInput($_POST['output']);
 $pledge_filter = InputUtils::legacyFilterInput($_POST['pledge_filter']);
 $only_owe = InputUtils::legacyFilterInput($_POST['only_owe']);
@@ -66,7 +59,7 @@ if (!empty($_POST['classList'])) {
         $notInClassList .= ')';
     }
 
-    // all classes were selected. this should behave as if no filter classes were specified
+    // All classes were selected -- this should behave as if no filter classes were specified
     if ($notInClassList === '()') {
         unset($classList);
     }
@@ -125,7 +118,6 @@ if (!$criteria) {
 }
 $sSQL .= $criteria;
 
-//var_dump($sSQL);
 $rsFamilies = RunQuery($sSQL);
 
 $sSQLFundCriteria = '';
@@ -176,7 +168,6 @@ $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun
 $rsFunds = RunQuery($sSQL);
 
 // Create PDF Report
-// *****************
 class PdfReminderReport extends ChurchInfoReport
 {
     // Constructor
@@ -473,7 +464,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->finishPage($curY);
 }
 
-if (SystemConfig::getValue('iPDFOutputType') == 1) {
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('ReminderReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

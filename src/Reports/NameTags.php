@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/NameTags.php
-*  last change : 2012-06-26
-*  description : Creates a PDF with name tags
-
-******************************************************************************/
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -29,8 +21,6 @@ $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 if ($sFontSize != 'default') {
     $pdf->setCharSize($sFontSize);
 }
-//if($sFontSize != "default")
-//  $pdf->SetFontSize($sFontSize);
 
 $sSQL = 'SELECT * FROM person_per WHERE per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_LastName';
 $rsPersons = RunQuery($sSQL);
@@ -81,9 +71,9 @@ while ($aPer = mysqli_fetch_array($rsPersons)) {
         $pdf->setCharSize($sFontSize);
     }
 }
-
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if (SystemConfig::getValue('iPDFOutputType') == 1) {
+// Needed for IE when using a shared SSL certificate
+header('Pragma: public');
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('NameTags' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

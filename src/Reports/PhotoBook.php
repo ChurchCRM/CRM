@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/PhotoBook.php
-*  last change : 2017-11-04 Philippe Logel
-*  description : Creates a PDF for a Sunday School Class List
-*
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -50,7 +42,8 @@ class PdfPhotoBook extends ChurchInfoReport
     public function drawGroup($iGroupID): void
     {
         $this->group = GroupQuery::Create()->findOneById($iGroupID);
-        $this->SetMargins(0, 0); // use our own margin logic.
+        // Use our own margin logic.
+        $this->SetMargins(0, 0);
         $this->SetFont('Times', '', 14);
         $this->SetAutoPageBreak(false);
         $this->addPage();
@@ -91,7 +84,7 @@ class PdfPhotoBook extends ChurchInfoReport
             $this->Line($this->currentX + $this->personImageWidth, $this->currentY, $this->currentX, $this->currentY + $this->personImageHeight);
         }
 
-        // move the cursor, and draw the teacher name
+        // Move the cursor, and draw the teacher name
         $this->currentX -= $offset;
         $this->currentY += $this->personImageHeight + 2;
         $this->writeAt($this->currentX, $this->currentY, $name);
@@ -138,9 +131,9 @@ $pdf = new PdfPhotoBook($iFYID);
 foreach ($aGrp as $groupID) {
     $pdf->drawGroup($groupID);
 }
-
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1) {
+// Needed for IE when using a shared SSL certificate
+header('Pragma: public');
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('ClassList' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

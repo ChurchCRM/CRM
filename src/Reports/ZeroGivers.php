@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/ZeroGivers.php
-*  last change : 2005-03-26
-*  description : Creates a PDF with all the tax letters for a particular calendar year.
-*  Copyright 2012 Michael Wilt
-*
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -52,11 +43,8 @@ if ($sDateStart > $sDateEnd) {
     $sDateEnd = $temp;
 }
 
-// Build SQL Query
-// Build SELECT SQL Portion
 $sSQL = "SELECT DISTINCT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country FROM family_fam LEFT OUTER JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID=1 AND fam_ID NOT IN (SELECT DISTINCT plg_FamID FROM pledge_plg WHERE plg_date BETWEEN '$sDateStart' AND '$sDateEnd' AND plg_PledgeOrPayment = 'Payment') ORDER BY fam_ID";
 
-//Execute SQL Statement
 $rsReport = RunQuery($sSQL);
 
 // Exit if no rows returned
@@ -66,8 +54,6 @@ if ($iCountRows < 1) {
 }
 
 // Create Giving Report -- PDF
-// ***************************
-
 if ($output === 'pdf') {
     // Set up bottom border values
     if ($remittance === 'yes') {
@@ -135,14 +121,13 @@ if ($output === 'pdf') {
         $pdf->finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     }
 
-    if (SystemConfig::getValue('iPDFOutputType') == 1) {
+    if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
         $pdf->Output('ZeroGivers' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {
         $pdf->Output();
     }
 
 // Output a text file
-// ##################
 } elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
@@ -159,7 +144,8 @@ if ($output === 'pdf') {
     // Add data
     while ($row = mysqli_fetch_row($rsReport)) {
         foreach ($row as $field) {
-            $field = str_replace($delimiter, ' ', $field);    // Remove any delimiters from data
+            // Remove any delimiters from data
+            $field = str_replace($delimiter, ' ', $field);
             $buffer .= $field . $delimiter;
         }
         // Remove trailing delimiter and add eol

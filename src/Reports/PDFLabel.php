@@ -1,30 +1,12 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/PDFLabel.php
-*  website     : https://churchcrm.io
-*  description : Creates a PDF document containing the addresses of
-*                The people in the Cart
-*
-*  Copyright 2003  Jason York
-*
-*  Portions based on code by LPA (lpasseb@numericable.fr)
-*  and Steve Dillon (steved@mad.scientist.com) from www.fpdf.org
-*
-*  Additional Contributions by
-*  2006,2010 Ed Davis
-*  2006 Stephen Shaffer
-*
-
-******************************************************************************/
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
 {
@@ -75,7 +57,7 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
         $bAdult = false;
         $bChild = false;
 
-        // check if this person is adult
+        // Check if this person is adult
         foreach ($aAdultRole as $value) {
             if ($per_fmr_ID == $value) {
                 $aAdult[$numAdult++] = $member;
@@ -83,7 +65,7 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
             }
         }
 
-        // now check if this person is a child.  Note, if child and adult directory roles
+        // Now check if this person is a child.  Note, if child and adult directory roles
         // overlap the person will only be listed once as an adult (can't be adult and
         // child simultaneously ... even if directory roles suggest otherwise)
         if (!$bAdult) {
@@ -102,7 +84,8 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
         }
     }
 
-    if ($numAdult == 1) { // Generate Salutation for Adults in family
+    // Generate Salutation for Adults in family
+    if ($numAdult === 1) {
         extract($aAdult[0]);
         $sNameAdult = $per_FirstName . ' ' . $per_LastName;
     } elseif ($numAdult == 2) {
@@ -122,11 +105,13 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
         }
     } elseif ($numAdult > 2) {
         $sNameAdult = $fam_Name;
-    } // end if ($numAdult ...)
+    }
 
-    $bSameLastNames = true;  // Assume all last names are the same
+    // Assume all last names are the same
+    $bSameLastNames = true;
 
-    if ($numChild > 0) { // Salutation for children grouped together
+    // Salutation for children grouped together
+    if ($numChild > 0) {
         $firstMember = mysqli_fetch_array($rsMembers);
         extract($aChild[0]);
         $firstFirstName = $per_FirstName;
@@ -204,13 +189,13 @@ function MakeADCArray($sADClist)
     // The end of each row is marked with the pipe | symbol
     // keep fetching rows until gone
     while (mb_substr_count($sADClist, '|')) {
-        // find end of current row
+        // Find end of current row
         $endOfRow = strpos($sADClist, '|');
         if ($endOfRow) {
             $currentRow = mb_substr($sADClist, 0, $endOfRow);
             $sADClist = mb_substr($sADClist, $endOfRow + 1);
 
-            // find the current adc (hint, last item listed)
+            // Find the current adc (hint, last item listed)
             $currentRow = trim($currentRow);
             $adc = mb_substr($currentRow, strrpos($currentRow, ' '));
             $adc = trim($adc, " ,\t\n\r\0\x0B");
@@ -224,13 +209,15 @@ function MakeADCArray($sADClist)
                 if (strpos($currentRow, ',')) {
                     $nugget = trim(mb_substr($currentRow, 0, strpos($currentRow, ',')));
                     $currentRow = trim(mb_substr($currentRow, strpos($currentRow, ',') + 1));
-                } else {  // parsing last element
+                } else {
+                    // Parsing last element
                     $nugget = trim($currentRow, " ,\t\n\r\0\x0B");
                     $currentRow = '';
                 }
 
                 $dash = strpos($nugget, '-');
-                if ($dash) {   // range of
+                // Range of
+                if ($dash) {
                     $start = intval(mb_substr($nugget, 0, $dash));
                     $end = intval(mb_substr($nugget, $dash + 1));
                     if ($end >= $start) {
@@ -251,7 +238,6 @@ function MakeADCArray($sADClist)
 
 function ZipBundleSort(array $inLabels)
 {
-    //
     // Description:
     // sorts an input array $inLabels() for presort bundles
     //
@@ -403,18 +389,16 @@ function ZipBundleSort(array $inLabels)
 
     $adc = MakeADCArray($sADClist);
 
-    //foreach ($adc as $key => $value)
-    //    echo "key = $key, value = $value <br>";
+    if (SystemConfig::debugEnabled()) {
+        foreach ($adc as $key => $value) {
+            LoggerUtils::getAppLogger()->debug("key = $key, value = $value");
+        }
+    }
 
-    //
     // Step 1 - create an array of only the zipcodes of length 5
-    //
-    // 80
-
-    // $iMinBundleSize = 15;  // Minimum number of labels allowed in a bundle
-    $iZip5MinBundleSize = 15;  // Minimum number of labels allowed in a 5 digit zip code bundle
-    $iZip3MinBundleSize = 10;  // Minimum number of labels allowed in a 3 digit zip code bundle
-    $iAdcMinBundleSize = 10;  // Minimum number of labels allowed in an ADC bundle
+    $iZip5MinBundleSize = 15; // Minimum number of labels allowed in a 5 digit zip code bundle
+    $iZip3MinBundleSize = 10; // Minimum number of labels allowed in a 3 digit zip code bundle
+    $iAdcMinBundleSize = 10; // Minimum number of labels allowed in an ADC bundle
 
     $n = count($inLabels);
     $nTotalLabels = $n;
@@ -423,18 +407,11 @@ function ZipBundleSort(array $inLabels)
         $Zips[$i] = intval(mb_substr($inLabels[$i]['Zip'], 0, 5));
     }
 
-    //
-    // perform a count of the array values
-    //
-
     $ZipCounts = array_count_values($Zips);
-
-    //
-    // walk through the input array and pull all matching records where count >= $iZip5MinBundleSize
-    //
 
     $nz5 = 0;
 
+    // Walk through the input array and pull all matching records where count >= $iZip5MinBundleSize
     foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip5MinBundleSize) {
             $NoteText = ['Note' => '******* Presort ZIP-5 ' . $z];
@@ -445,17 +422,14 @@ function ZipBundleSort(array $inLabels)
             for ($i = 0; $i < $n; $i++) {
                 if (intval(mb_substr($inLabels[$i]['Zip'], 0, 5)) == $z) {
                     $outList[] = array_merge($inLabels[$i], $NoteText);
-                    $inLabels[$i]['Zip'] = -1; // done
+                    $inLabels[$i]['Zip'] = -1;
                     $nz5++;
                 }
             }
         }
     }
 
-    //
-    //  remove processed labels for inLabels array
-    //
-
+    // Remove processed labels for inLabels array
     for ($i = 0; $i < $n; $i++) {
         if ($inLabels[$i]['Zip'] != -1) {
             $inLabels2[] = $inLabels[$i];
@@ -464,30 +438,21 @@ function ZipBundleSort(array $inLabels)
     unset($inLabels);
     $inLabels = $inLabels2;
 
-    //
     // Pass 2 looking for ZIP3 bundles
-    //
-
     unset($Zips);
     $n = count($inLabels);
 
-    //print_r($inLabels);
+    LoggerUtils::getAppLogger()->debug(print_r($inLabels));
 
     for ($i = 0; $i < $n; $i++) {
         $Zips[$i] = intval(mb_substr($inLabels[$i]['Zip'], 0, 3));
     }
 
-    //
-    // perform a count of the array values
-    //
-
     $ZipCounts = array_count_values($Zips);
 
-    //
-    // walk through the input array and pull all matching records where count >= $iZip3MinBundleSize
-    //
-
     $nz3 = 0;
+
+    // Walk through the input array and pull all matching records where count >= $iZip3MinBundleSize
     foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip3MinBundleSize) {
             $NoteText = ['Note' => '******* Presort ZIP-3 ' . $z];
@@ -514,10 +479,7 @@ function ZipBundleSort(array $inLabels)
     unset($inLabels);
     $inLabels = $inLabels2;
 
-    //
     // Pass 3 looking for ADC bundles
-    //
-
     unset($Zips);
     $n = count($inLabels);
 
@@ -526,17 +488,11 @@ function ZipBundleSort(array $inLabels)
             $Zips[$i] = $adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))];
         }
     }
-    //
-    // perform a count of the array values
-    //
+
     unset($ZipCounts);
     if (isset($Zips)) {
         $ZipCounts = array_count_values($Zips);
     }
-
-    //
-    // walk through the input array and pull all matching records where count >= $iAdcMinBundleSize
-    //
 
     $ncounts = 0;
     if (isset($ZipCounts)) {
@@ -544,6 +500,7 @@ function ZipBundleSort(array $inLabels)
     }
     $nadc = 0;
     if ($ncounts) {
+        // Walk through the input array and pull all matching records where count >= $iAdcMinBundleSize
         foreach ($ZipCounts as $z => $zc) {
             if ($zc >= $iAdcMinBundleSize) {
                 $NoteText = ['Note' => '******* Presort ADC ' . $z];
@@ -554,7 +511,7 @@ function ZipBundleSort(array $inLabels)
                 for ($i = 0; $i < $n; $i++) {
                     if ($adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))] == $z) {
                         $outList[] = array_merge($inLabels[$i], $NoteText);
-                        $inLabels[$i]['Zip'] = -1; // done
+                        $inLabels[$i]['Zip'] = -1;
                         $nadc++;
                     }
                 }
@@ -571,9 +528,7 @@ function ZipBundleSort(array $inLabels)
     unset($inLabels);
     $inLabels = $inLabels2;
 
-    //
     // Pass 4 looking for remaining Mixed ADC bundles
-    //
     $nmadc = 0;
     unset($Zips);
     $n = count($inLabels);
@@ -589,10 +544,6 @@ function ZipBundleSort(array $inLabels)
             $nmadc++;
         }
     }
-
-    //
-    // return the results
-    //
 
     if (count($outList) > 0) {
         return $outList;
@@ -698,13 +649,11 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             if (!$bOnlyComplete || (strlen($sAddress) && strlen($sCity) && strlen($sState) && strlen($sZip))) {
                 $sLabelList[] = ['Name' => $sName, 'Address' => $sAddress, 'City' => $sCity, 'State' => $sState, 'Zip' => $sZip]; //,'fam_ID'=>$aRow['fam_ID']);
             }
-        } // end of foreach loop
-    } // end of while loop
+        }
+    }
 
     if ($iBulkMailPresort) {
-        //
-        // now sort the label list by presort bundle definitions
-        //
+        // Now sort the label list by presort bundle definitions
         $zipLabels = ZipBundleSort($sLabelList);
         if ($iBulkMailPresort == 2) {
             foreach ($zipLabels as $i => $sLT) {
@@ -717,7 +666,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                     $sLT['State'],
                     $sLT['Zip']
                 ));
-            } // end while
+            }
         } else {
             foreach ($zipLabels as $i => $sLT) {
                 $pdf->addPdfLabel(sprintf(
@@ -728,8 +677,8 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                     $sLT['State'],
                     $sLT['Zip']
                 ));
-            } // end while
-        } // end of if ($BulkMailPresort == 2)
+            }
+        }
     } else {
         foreach ($sLabelList as $i => $sLT) {
             $pdf->addPdfLabel(sprintf(
@@ -740,8 +689,8 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 $sLT['State'],
                 $sLT['Zip']
             ));
-        } // end while
-    } // end of if($iBulkMailPresort)
+        }
+    }
 
     if (isset($zipLabels)) {
         return serialize($zipLabels);
@@ -750,10 +699,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     }
 }
 
-// Main body of PHP file begins here
-
 // Standard format
-
 $startcol = InputUtils::legacyFilterInput($_GET['startcol'], 'int');
 if ($startcol < 1) {
     $startcol = 1;
@@ -825,14 +771,16 @@ $aLabelList = unserialize(
 );
 
 if ($sFileType === 'PDF') {
-    header('Pragma: public');  // Needed for IE when using a shared SSL certificate
+    // Needed for IE when using a shared SSL certificate
+    header('Pragma: public');
 
-    if (SystemConfig::getValue('iPDFOutputType') == 1) {
+    if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
         $pdf->Output('Labels-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {
         $pdf->Output();
     }
-} else { // File Type must be CSV
+} else {
+    // File Type must be CSV
     $delimiter = SystemConfig::getValue('sCSVExportDelimiter');
 
     $sCSVOutput = '';
@@ -875,7 +823,7 @@ if ($sFileType === 'PDF') {
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
 
-    //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
+    // Add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
     if (SystemConfig::getValue('sCSVExportCharset') == 'UTF-8') {
         echo "\xEF\xBB\xBF";
     }

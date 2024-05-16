@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/ClassList.php
-*  last change : 2017-11-04 Philippe Logel
-*  description : Creates a PDF for a Sunday School Class List
-*
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -88,7 +80,7 @@ for ($i = 0; $i < $nGrps; $i++) {
     $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
                             ->joinWithPerson()
                             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
-                            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce ORDER BY per_LastName, per_FirstName
+                            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME)
                             ->findByGroupId($iGroupID);
 
     $students = [];
@@ -190,8 +182,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $pdf->Line($nameX - $imageHeight, $y, $nameX - $imageHeight, $y + $imageHeight);
                 $pdf->Line($nameX, $y, $nameX, $y + $imageHeight);
 
-                // we build the cross in the case of there's no photo
-                //$this->SetLineWidth(0.25);
+                // We build the cross in the case of there's no photo
                 $pdf->Line($nameX - $imageHeight, $y + $imageHeight, $nameX, $y);
                 $pdf->Line($nameX - $imageHeight, $y, $nameX, $y + $imageHeight);
 
@@ -270,7 +261,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1) {
+if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('ClassList' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();
