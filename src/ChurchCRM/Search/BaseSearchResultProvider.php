@@ -9,7 +9,7 @@ abstract class BaseSearchResultProvider
     /* @var SearchResult[] */
     protected array $searchResults = [];
 
-    abstract public function getSearchResults(string $SearchQuery);
+    abstract public function getSearchResults(string $SearchQuery): SearchResultGroup;
 
     protected function formatSearchGroup(): SearchResultGroup
     {

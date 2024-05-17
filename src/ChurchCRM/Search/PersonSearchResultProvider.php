@@ -14,7 +14,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
         $this->pluralNoun = 'Persons';
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (SystemConfig::getBooleanValue('bSearchIncludePersons')) {
             $this->addSearchResults($this->getPersonSearchResultsByPartialName($SearchQuery));

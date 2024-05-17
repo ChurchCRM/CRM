@@ -14,7 +14,7 @@ class GroupSearchResultProvider extends BaseSearchResultProvider
         $this->pluralNoun = 'Groups';
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (SystemConfig::getBooleanValue('bSearchIncludeGroups')) {
             $this->addSearchResults($this->getPersonSearchResultsByPartialName($SearchQuery));

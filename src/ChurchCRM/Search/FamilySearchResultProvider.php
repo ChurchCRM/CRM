@@ -15,7 +15,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
         $this->pluralNoun = 'Families';
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (SystemConfig::getBooleanValue('bSearchIncludeFamilies')) {
             $this->addSearchResults($this->getFamilySearchResultsByPartialName($SearchQuery));
