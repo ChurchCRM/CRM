@@ -516,7 +516,7 @@ require 'Include/Header.php';
                         <label for="Date"><?= gettext('Date') ?></label>
                         <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>"><span style="color: red;"><?= $sDateError ?></span>
                         <label for="FYID"><?= gettext('Fiscal Year') ?></label>
-                        <?php PrintFYIDSelect($iFYID, 'FYID') ?>
+                        <?php PrintFYIDSelect('FYID', $iFYID) ?>
 
                         <?php if ($dep_Type === 'Bank' && SystemConfig::getValue('bUseDonationEnvelopes')) {
                         ?>

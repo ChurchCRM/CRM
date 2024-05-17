@@ -130,7 +130,7 @@ function CurrentFY(): int
 }
 
 // PrintFYIDSelect: make a fiscal year selection menu.
-function PrintFYIDSelect(int $iFYID, string $selectName): void
+function PrintFYIDSelect(string $selectName, int $iFYID = null): void
 {
     echo sprintf('<select class="form-control" name="%s">', $selectName);
 
