@@ -14,7 +14,7 @@ class AddressSearchResultProvider extends BaseSearchResultProvider
         $this->pluralNoun = 'Address';
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (SystemConfig::getBooleanValue('bSearchIncludeAddresses')) {
             $this->addSearchResults($this->getPersonSearchResultsByPartialAddress($SearchQuery));

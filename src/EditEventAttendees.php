@@ -72,6 +72,7 @@ if ($numAttRows != 0) {
         $sRowClass = AlternateRowStyle($sRowClass);
 
         $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+
         $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
         $sEmail = SelectWhichInfo($per_Email, $fam_Email, false); ?>
     <tr class="<?= $sRowClass ?>">

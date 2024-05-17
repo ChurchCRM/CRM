@@ -225,15 +225,18 @@ function convertCartToString(array $aCartArray): string
  * If neither family nor person info is available, return an empty string.
  */
 
-function SelectWhichInfo(string $sPersonInfo, string $sFamilyInfo, bool $bFormat = false): string
+function SelectWhichInfo(string $sPersonInfo = null, string $sFamilyInfo = null, bool $bFormat = false): string
 {
+    $sPersonInfo ??= '';
+    $sFamilyInfo ??= '';
+
     $finalData = '';
     $isFamily = false;
 
     if (SystemConfig::getValue('bShowFamilyData')) {
-        if ($sPersonInfo != '') {
+        if ($sPersonInfo !== '') {
             $finalData = $sPersonInfo;
-        } elseif ($sFamilyInfo != '') {
+        } elseif ($sFamilyInfo !== '') {
             $isFamily = true;
             $finalData = $sFamilyInfo;
         }
@@ -482,30 +485,33 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
 // Expands a collapsed phone number into the proper format for a known country.
 //
 // If, during expansion, an unknown format is found, the original will be returned
-// and the a boolean flag $bWeird will be set.  Unfortunately, because PHP does not
+// and the boolean flag $bWeird will be set.  Unfortunately, because PHP does not
 // allow for pass-by-reference in conjunction with a variable-length argument list,
 // a dummy variable will have to be passed even if this functionality is unneeded.
 //
 // Need to add other countries besides the US...
 //
-function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
+function ExpandPhoneNumber(string $sPhoneNumber = null, string $sPhoneCountry = null, &$bWeird): string
 {
+    $sPhoneNumber ??= '';
+    $sPhoneCountry ??= '';
+
     $bWeird = false;
     $length = strlen($sPhoneNumber);
 
     switch ($sPhoneCountry) {
         case 'United States' || 'Canada':
-            if ($length == 0) {
+            if ($length === 0) {
                 return '';
-            } elseif (mb_substr($sPhoneNumber, 7, 1) == 'e') {
+            } elseif (mb_substr($sPhoneNumber, 7, 1) === 'e') {
                 // 7 digit phone # with extension
                 return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 4) . ' Ext.' . mb_substr($sPhoneNumber, 8, 6);
-            } elseif (mb_substr($sPhoneNumber, 10, 1) == 'e') {
+            } elseif (mb_substr($sPhoneNumber, 10, 1) === 'e') {
                 // 10 digit phone # with extension
                 return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 3) . '-' . mb_substr($sPhoneNumber, 6, 4) . ' Ext.' . mb_substr($sPhoneNumber, 11, 6);
-            } elseif ($length == 7) {
+            } elseif ($length === 7) {
                 return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 4);
-            } elseif ($length == 10) {
+            } elseif ($length === 10) {
                 return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 3) . '-' . mb_substr($sPhoneNumber, 6, 4);
             } else {
                 // Otherwise, there is something weird stored, so just leave it untouched and set the flag
@@ -514,7 +520,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
                 return $sPhoneNumber;
             }
 
-    // If the country is unknown, we don't know how to format it, so leave it untouched
+        // If the country is unknown, we don't know how to format it, so leave it untouched
         default:
             return $sPhoneNumber;
     }

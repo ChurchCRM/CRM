@@ -16,7 +16,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
         $this->pluralNoun = 'Payments';
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             if (SystemConfig::getBooleanValue('bSearchIncludePayments')) {

@@ -16,7 +16,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
         $this->pluralNoun = 'Deposits';
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             if (SystemConfig::getBooleanValue('bSearchIncludeDeposits')) {

@@ -18,6 +18,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
     $query = $args['query'];
     $resultsArray = [];
+
+    /* @var BaseSearchResultProvider[] $resultsProviders */
     $resultsProviders = [
         new PersonSearchResultProvider(),
         new AddressSearchResultProvider(),
@@ -29,8 +31,10 @@ $app->get('/search/{query}', function (Request $request, Response $response, arr
     ];
 
     foreach ($resultsProviders as $provider) {
-        /* @var BaseSearchResultProvider $provider */
-        $resultsArray[] = $provider->getSearchResults($query);
+        $searchResult = $provider->getSearchResults($query);
+        if (count($searchResult->results) > 0) {
+            $resultsArray[] = $searchResult;
+        }
     }
 
     return SlimUtils::renderJSON($response, array_values(array_filter($resultsArray)));
