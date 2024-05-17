@@ -49,7 +49,7 @@ if (!empty($sHeader)) {
                             <input id="familyCity" name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>"  required value="<?= SystemConfig::getValue('sDefaultCity') ?>">
                         </div>
                         <div class="col-lg-6">
-                            <input id="familyStateInput" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" required value="<?= SystemConfig::getValue('sDefaultState') ?>">
+                            <input id="familyStateInput" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" value="<?= SystemConfig::getValue('sDefaultState') ?>">
                             <select id="familyStateSelect" name="familyState" class="form-control select2 hidden" data-system-default="<?= SystemConfig::getValue('sDefaultState')?>">
                             </select>
                             </select>
