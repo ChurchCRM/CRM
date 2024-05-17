@@ -331,9 +331,16 @@ function ChopLastCharacter($sText): string
     return mb_substr($sText, 0, strlen($sText) - 1);
 }
 
-function change_date_for_place_holder($string)
+function change_date_for_place_holder(string $string = null): string
 {
-    return ((strtotime($string) != "") ? date(SystemConfig::getValue("sDatePickerFormat"), strtotime($string)) : strtotime($string));
+    $string ??= '';
+    $timestamp = strtotime($string);
+
+    if ($timestamp !== false) {
+        return date(SystemConfig::getValue("sDatePickerFormat"), $timestamp);
+    }
+
+    return '';
 }
 
 function FormatDateOutput()
