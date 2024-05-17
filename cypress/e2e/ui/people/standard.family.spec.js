@@ -55,7 +55,7 @@ context("Standard Family", () => {
         // Fill in Family Info section
         cy.get("#FamilyName").type("Troy" + Cypress._.random(0, 1e6));
         cy.get('input[name="Address1"').type("4222 Clinton Way");
-        cy.get('input[name="City"]').clear().type("Los Angelas");
+        cy.get('input[name="City"]').clear().type("Los Angeles");
         cy.get('select[name="State"]').select("CA", { force: true });
         // Add clearing of Lat/Long to verify these can be null, instead of default 0
         cy.get('input[name="Latitude"]').clear();
@@ -92,7 +92,7 @@ context("Standard Family", () => {
         cy.contains("Greg Troy");
         cy.contains("Marcia Troy");
         cy.contains("Peter Troy");
-        cy.contains("4222 Clinton Way Los Angelas, CA");
+        cy.contains("4222 Clinton Way Los Angeles, CA");
         cy.contains(`${weddingMonth}/${weddingDay}/${weddingYear}`);
     });
 });
