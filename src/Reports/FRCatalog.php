@@ -113,7 +113,6 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
     $pdf->Write(6, "\n");
 }
 
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('FRCatalog' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {

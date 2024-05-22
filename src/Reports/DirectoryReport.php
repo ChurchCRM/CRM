@@ -323,8 +323,7 @@ if ($mysqlversion == 3 && $mysqlsubversion >= 22) {
     $sSQL = 'DROP TABLE IF EXISTS tmp;';
     mysqli_query($cnInfoCentral, $sSQL);
 }
-// Needed for IE when using a shared SSL certificate
-header('Pragma: public');
+
 if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('Directory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {

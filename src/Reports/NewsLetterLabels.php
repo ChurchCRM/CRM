@@ -50,8 +50,7 @@ foreach ($families as $family) {
 
     $pdf->addPdfLabel($labelText);
 }
-// Needed for IE when using a shared SSL certificate
-header('Pragma: public');
+
 if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('NewsLetterLabels' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {

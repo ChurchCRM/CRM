@@ -131,8 +131,7 @@ $pdf = new PdfPhotoBook($iFYID);
 foreach ($aGrp as $groupID) {
     $pdf->drawGroup($groupID);
 }
-// Needed for IE when using a shared SSL certificate
-header('Pragma: public');
+
 if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('ClassList' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {

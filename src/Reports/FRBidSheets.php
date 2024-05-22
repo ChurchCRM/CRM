@@ -83,8 +83,7 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
         $pdf->Cell($widBid, $lineHeight, '', 1, 1);
     }
 }
-// Needed for IE when using a shared SSL certificate
-header('Pragma: public');
+
 if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('FRBidSheets' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {

@@ -343,7 +343,6 @@ foreach ($families as $family) {
     $pdf->finishPage($curY);
 }
 
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output($filename, 'D');
 } else {

@@ -54,7 +54,6 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
     }
 }
 
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('FRCertificates' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {

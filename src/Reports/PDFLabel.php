@@ -771,9 +771,6 @@ $aLabelList = unserialize(
 );
 
 if ($sFileType === 'PDF') {
-    // Needed for IE when using a shared SSL certificate
-    header('Pragma: public');
-
     if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
         $pdf->Output('Labels-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {

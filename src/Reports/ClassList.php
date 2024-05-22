@@ -260,7 +260,6 @@ for ($i = 0; $i < $nGrps; $i++) {
     $pdf->writeAt($phoneX - 7, $y + 5, FormatDate(date('Y-m-d')));
 }
 
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('ClassList' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
