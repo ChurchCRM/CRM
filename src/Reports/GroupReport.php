@@ -142,8 +142,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
     $pdf->addRecord($pdf->sFamily, $OutStr, $numlines);
 }
-// Needed for IE when using a shared SSL certificate
-header('Pragma: public');
+
 if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
     $pdf->Output('GroupDirectory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {

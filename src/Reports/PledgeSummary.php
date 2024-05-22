@@ -255,8 +255,7 @@ if ($output === 'pdf') {
         $pdf->printRightJustified($paymentCountX, $curY, $paymentCnt['Unassigned']);
         $curY += SystemConfig::getValue('incrementY');
     }
-    // Needed for IE when using a shared SSL certificate
-    header('Pragma: public');
+
     if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
         $pdf->Output('PledgeSummaryReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {

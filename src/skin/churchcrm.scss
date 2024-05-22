@@ -10,9 +10,6 @@
 // Import Libraries
 
 // The only library we do not embed is Bootstrap, because it's very big
-// and we don't want to incur IE's CSS limits.
-// ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
-
 @import 'external/bootstrap-datepicker/bootstrap-datepicker.standalone.min.css';
 @import 'external/bootstrap-daterangepicker/daterangepicker.css';
 @import 'external/datatables/datatables.min.css';

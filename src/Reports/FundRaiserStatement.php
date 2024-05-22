@@ -29,10 +29,10 @@ if ($iPaddleNumID > 0) {
 
 $sSQL = 'SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
                 a.per_FirstName as paddleFirstName, a.per_LastName as paddleLastName, a.per_Email as paddleEmail,
-				b.fam_ID, b.fam_Name, b.fam_Address1, b.fam_Address2, b.fam_City, b.fam_State, b.fam_Zip, b.fam_Country                
+				b.fam_ID, b.fam_Name, b.fam_Address1, b.fam_Address2, b.fam_City, b.fam_State, b.fam_Zip, b.fam_Country
          FROM paddlenum_pn
          LEFT JOIN person_per a ON pn_per_ID=a.per_ID
-         LEFT JOIN family_fam b ON fam_ID = a.per_fam_ID 
+         LEFT JOIN family_fam b ON fam_ID = a.per_fam_ID
          WHERE pn_FR_ID =' . $iFundRaiserID . $selectOneCrit . ' ORDER BY pn_Num';
 $rsPaddleNums = RunQuery($sSQL);
 
@@ -108,7 +108,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
 		                a.per_LastName as buyerLastName,
 		                a.per_Email as buyerEmail,
 		                b.fam_homephone as buyerPhone
-		                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id 
+		                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id
 		                                    LEFT JOIN family_fam b on a.per_fam_id = b.fam_id
 		                WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_donor_id = ' . $pn_per_ID;
         $rsDonatedItems = RunQuery($sSQL);
@@ -197,7 +197,7 @@ SELECT
     b.di_sellprice
 FROM multibuy_mb
 LEFT JOIN donateditem_di b ON mb_item_ID=b.di_ID
-LEFT JOIN person_per a ON b.di_donor_id=a.per_ID 
+LEFT JOIN person_per a ON b.di_donor_id=a.per_ID
 LEFT JOIN family_fam c ON a.per_fam_id = c.fam_ID
 WHERE b.di_FR_ID=$iFundRaiserID AND mb_per_ID=$pn_per_ID;
 SQL;
@@ -243,5 +243,4 @@ SQL;
     }
 }
 
-header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 $pdf->Output('FundRaiserStatement' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
