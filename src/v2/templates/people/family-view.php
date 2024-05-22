@@ -231,7 +231,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                     <div class="card-body box-profile">
                                         <a href="<?= $person->getViewURI()?>" ?>
                                             <img class="profile-user-img img-responsive img-circle initials-image"
-                                                 src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
+                                                 src="<?= $person->getThumbnailURL() ?>">
                                             <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
                                         </a>
                                         <p class="text-muted text-center"><i
