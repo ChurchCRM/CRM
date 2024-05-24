@@ -272,7 +272,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 function confirmDeleteField( Field ) {
-    var answer = confirm (<?= "'" . gettext('Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!') . "'" ?>)
+    var answer = confirm (<?= "'" . gettext('Warning: By deleting this field, you will irrevokably lose all family data assigned for this field!') . "'" ?>)
     if ( answer )
     {
         window.location="FamilyCustomFieldsRowOps.php?Field=" + Field +"&Action=delete";
@@ -284,7 +284,7 @@ function confirmDeleteField( Field ) {
 </script>
 <div class="alert alert-warning">
         <i class="fa fa-ban"></i>
-        <?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+        <?= gettext("Warning: Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
 </div>
 <form method="post" action="FamilyCustomFieldsEditor.php" name="FamilyCustomFieldsEditor">
     <div class="table-responsive">
@@ -301,13 +301,13 @@ if ($numRows == 0) {
     <tr><td colspan="7">
     <?php
     if ($bErrorFlag) {
-        echo '<span class="LargeText" style="color: red;"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
+        echo '<span class="LargeText" style="color: red;">' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
     } ?>
     </td></tr>
         <tr>
             <th><?= gettext('Type') ?></th>
             <th><?= gettext('Name') ?></th>
-            <th><?= gettext('Special option') ?></th>
+            <th><?= gettext('Special Option') ?></th>
             <th><?= gettext('Security Option') ?></th>
             <th><?= gettext('Delete') ?></th>
         </tr>
@@ -323,7 +323,7 @@ if ($numRows == 0) {
                 <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35" maxlength="40">
                 <?php
                 if ($aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                    echo '<span style="color: red;">' . gettext('You must enter a name') . ' </span>';
                 } ?>
             </td>
             <td class="TextColumn" align="center">
@@ -348,7 +348,7 @@ if ($numRows == 0) {
 
                 echo '</select>';
                 if ($aSpecialErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
+                    echo '<span style="color: red;">' . gettext('You must select a group.') . '</span>';
                 }
             } elseif ($aTypeFields[$row] == 12) {
                 // TLH 6-23-07 Added scrollbars to the popup so long lists can be edited.
@@ -410,18 +410,18 @@ if ($numRows == 0) {
                         echo '>' . $aPropTypes[$iOptionID];
                     }
                         echo '</select>';
-                    ?><BR>
-                    <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
+                    ?><br>
+                    <a href="<?= SystemURLs::getSupportURL() ?>/Custom-Fields-Types"><?= gettext('Help on types...') ?></a>
                     </td>
                     <td valign="top">
                         <div><?= gettext('Name') ?>:</div>
                         <input type="text" name="newFieldName" size="30" maxlength="40">
                         <?php
                         if ($bNewNameError) {
-                            echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                            echo '<div><span style="color: red;">' . gettext('You must enter a name') . '</span></div>';
                         }
                         if ($bDuplicateNameError) {
-                            echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
+                            echo '<div><span style="color: red;">' . gettext('That field name already exists.') . '</span></div>';
                         }
                         ?>
                         &nbsp;

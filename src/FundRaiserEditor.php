@@ -120,13 +120,13 @@ if (isset($_POST['FundRaiserSubmit'])) {
 if ($iFundRaiserID > 0) {
     //Get the items for this fundraiser
     $sSQL = "SELECT di_ID, di_Item, di_multibuy,
-	                a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
-	                b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
-	                di_title, di_sellprice, di_estprice, di_materialvalue, di_minimum
-	         FROM donateditem_di
-	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
-	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-	         WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY di_multibuy,SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)";
+                    a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
+                    b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
+                    di_title, di_sellprice, di_estprice, di_materialvalue, di_minimum
+             FROM donateditem_di
+             LEFT JOIN person_per a ON di_donor_ID=a.per_ID
+             LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
+             WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY di_multibuy,SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)";
     $rsDonatedItems = RunQuery($sSQL);
 } else {
     $rsDonatedItems = 0;

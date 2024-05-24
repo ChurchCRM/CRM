@@ -88,4 +88,3 @@ echo '</table></div></div>';
 
 require 'Include/Footer.php';
 
-?>

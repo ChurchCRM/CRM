@@ -105,10 +105,10 @@ require 'Include/Header.php';
             if ($thisGroup->isSundaySchool()) {
                 ?>
                 <b><?= gettext("Sunday School") ?></b>
-                <p><?= gettext("Sunday School group can't be modified, only in this two cases :")?></p>
+                <p><?= gettext("Sunday School group can't be modified, only in this two cases:")?></p>
                 <ul>
                                 <li>
-                                    <?= gettext("You can create/delete sunday school group. ")?>
+                                    <?= gettext("You can create/delete sunday school group.")?>
                                 </li>
                                 <li>
                                     <?= gettext("Add new roles, but not modify or rename the Student and the Teacher roles.")?>

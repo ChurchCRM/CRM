@@ -269,12 +269,12 @@ SQL;
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?= gettext('Address') ?> 1:</td>
+        <td class="LabelColumn"><?= gettext('Address 1') ?>:</td>
         <td class="TextColumn"><input type="text" Name="Address1" value="<?= $sAddress1 ?>" size="50" maxlength="250"></td>
     </tr>
 
     <tr>
-        <td class="LabelColumn"><?= gettext('Address') ?> 2:</td>
+        <td class="LabelColumn"><?= gettext('Address 2') ?>:</td>
         <td class="TextColumn"><input type="text" Name="Address2" value="<?= $sAddress2 ?>" size="50" maxlength="250"></td>
     </tr>
 
@@ -287,7 +287,7 @@ SQL;
         <td class="LabelColumn"><?= gettext('State') ?>:</td>
         <td class="TextColumn">
                     <?php require 'Include/StateDropDown.php'; ?>
-            OR
+            <?php ' ' . gettext('OR') . ' '; ?>
             <input type="text" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
                 echo $sState;
                                                           } ?>" size="20" maxlength="30">

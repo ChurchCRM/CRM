@@ -52,27 +52,24 @@ require 'Include/Header.php'; ?>
 
 <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
     //Display the new property link
-    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=" . $sType . '">' . gettext('Add a New') . ' ' . $sTypeName . ' ' . gettext('Property') . '</a></p>';
+    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=" . $sType . '">' . gettext('Add a New Property Type') . '</a></p>';
 }
 
 //Start the table
 echo "<table class='table'>";
 echo '<tr>';
 echo '<th valign="top">' . gettext('Name') . '</th>';
-echo '<th valign="top">' . gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this Property...') . '</b></th>';
+echo '<th valign="top">' . gettext('Description') . '</th>';
 echo '<th valign="top">' . gettext('Prompt') . '</th>';
 if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    echo '<td valign="top"><b>' . gettext('Edit') . '</b></td>';
-    echo '<td valign="top"><b>' . gettext('Delete') . '</b></td>';
+    echo '<td valign="top">' . gettext('Edit') . '</td>';
+    echo '<td valign="top">' . gettext('Delete') . '</td>';
 }
 echo '</tr>';
-
-echo '<tr><td>&nbsp;</td></tr>';
 
 //Initialize the row shading
 $sRowClass = 'RowColorA';
 $iPreviousPropertyType = -1;
-$sBlankLine = '';
 
 //Loop through the records
 while ($aRow = mysqli_fetch_array($rsProperties)) {
@@ -83,9 +80,7 @@ while ($aRow = mysqli_fetch_array($rsProperties)) {
     //Did the Type change?
     if ($iPreviousPropertyType != $prt_ID) {
         //Write the header row
-        echo $sBlankLine;
         echo '<tr class="RowColorA"><td colspan="5"><b>' . $prt_Name . '</b></td></tr>';
-        $sBlankLine = '<tr><td>&nbsp;</td></tr>';
 
         //Reset the row color
         $sRowClass = 'RowColorA';
@@ -94,13 +89,9 @@ while ($aRow = mysqli_fetch_array($rsProperties)) {
     $sRowClass = AlternateRowStyle($sRowClass);
 
     echo '<tr class="' . $sRowClass . '">';
-    echo '<td valign="top">' . $pro_Name . '&nbsp;</td>';
-    echo '<td valign="top">';
-    if (strlen($pro_Description) > 0) {
-        echo '...' . $pro_Description;
-    }
-    echo '&nbsp;</td>';
-    echo '<td valign="top">' . $pro_Prompt . '&nbsp;</td>';
+    echo '<td valign="top">' . $pro_Name . '</td>';
+    echo '<td valign="top">' . $pro_Description .  '</td>';
+    echo '<td valign="top">' . $pro_Prompt . '</td>';
     if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
         echo "<td valign=\"top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=" . $pro_ID . '&Type=' . $sType . '">' . gettext('Edit') . '</a></td>';
         echo "<td valign=\"top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=" . $pro_ID . '&Type=' . $sType . '">' . gettext('Delete') . '</a></td>';
@@ -116,4 +107,3 @@ echo '</table></div>';
 
 require 'Include/Footer.php';
 
-?>

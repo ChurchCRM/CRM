@@ -116,7 +116,7 @@ require 'Include/Header.php';
 if (mysqli_num_rows($rsPropList) == 0) {
     ?>
   <form>
-    <h3><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></h3>
+    <h3><?= gettext('This group currently has no properties! You can add them in the Group Editor.') ?></h3>
     <BR>
     <input type="button" class="btn btn-default" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
   </form>
@@ -126,7 +126,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
 
   <div class="box ">
     <div class="card-header">
-      <h3 class="card-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName . ' ' . $per_LastName ?> </i></h3>
+      <h3 class="card-title"><?= gettext('Editing data for member') ?> <i><?= $per_FirstName . ' ' . $per_LastName ?></i></h3>
     </div>
     <div class="card-body">
       <form method="post" action="GroupPropsEditor.php?<?= 'PersonID=' . $iPersonID . '&GroupID=' . $iGroupID ?>" name="GroupPropEditor">

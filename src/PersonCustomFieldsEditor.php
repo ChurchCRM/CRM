@@ -261,7 +261,7 @@ require 'Include/Header.php'; ?>
   <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 
     function confirmDeleteField(event) {
-      var answer = confirm("<?= gettext('Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!') ?>")
+      var answer = confirm("<?= gettext('Warning: By deleting this field, you will irrevokably lose all person data assigned for this field!') ?>")
       if (answer) {
         window.location = href = "PersonCustomFieldsRowOps.php?Field=" + event + "&Action=delete"
         return true;
@@ -290,7 +290,7 @@ require 'Include/Header.php'; ?>
           <td colspan="6">
             <?php
             if ($bErrorFlag) {
-                echo '<span class="LargeText" style="color: red;"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
+                echo '<span class="LargeText" style="color: red;">' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
             } ?>
           </td>
         </tr>
@@ -317,7 +317,7 @@ require 'Include/Header.php'; ?>
                      maxlength="40">
                 <?php
                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                    echo '<span style="color: red;">' . gettext('You must enter a name') . ' </span>';
                 } ?>
             </td>
             <td class="TextColumn" align="center">
@@ -341,7 +341,7 @@ require 'Include/Header.php'; ?>
 
                         echo '</select>';
                         if ($aSpecialErrors[$row]) {
-                            echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
+                            echo '<span style="color: red;">' . gettext('You must select a group.') . '</span>';
                         }
                     } elseif ($aTypeFields[$row] == 12) {
                         echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=custom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">" . gettext('Edit List Options') . '</a>';
@@ -414,17 +414,17 @@ require 'Include/Header.php'; ?>
                 }
                 echo '</select>';
                 ?><BR>
-                <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
+                <a href="<?= SystemURLs::getSupportURL() ?>/Custom-Fields-Types"><?= gettext('Help on types...') ?></a>
               </td>
               <td valign="top">
                 <div><?= gettext('Name') ?>:</div>
                 <input type="text" name="newFieldName" size="30" maxlength="40">
                 <?php
                 if ($bNewNameError) {
-                    echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                    echo '<div><span style="color: red;">' . gettext('You must enter a name') . '</span></div>';
                 }
                 if ($bDuplicateNameError) {
-                    echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
+                    echo '<div><span style="color: red;">' . gettext('That field name already exists.') . '</span></div>';
                 }
                 ?>
                 &nbsp;
@@ -441,11 +441,9 @@ require 'Include/Header.php'; ?>
           </table>
         </td>
       </tr>
-
     </table>
 </div>
   </form>
-
 </div>
 
 <?php require 'Include/Footer.php'; ?>

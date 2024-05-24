@@ -163,7 +163,7 @@ if ($donationFunds->count() == 0) {
                 <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
                 <?php
                 if ($aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' .</span>';
+                    echo '<span style="color: red;">' . gettext('You must enter a name') . ' .</span>';
                 } ?>
             </td>
 

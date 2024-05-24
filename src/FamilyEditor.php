@@ -609,11 +609,11 @@ require 'Include/Header.php';
                 <p/>
                 <div class="row">
                     <div class="col-md-6">
-                        <label><?= gettext('Address') ?> 1:</label>
+                        <label><?= gettext('Address 1') ?>:</label>
                             <input type="text" Name="Address1" value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250"  class="form-control">
                     </div>
                     <div class="col-md-6">
-                        <label><?= gettext('Address') ?> 2:</label>
+                        <label><?= gettext('Address 2') ?>:</label>
                         <input type="text" Name="Address2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250"  class="form-control">
                     </div>
                     <div class="col-md-6">
@@ -635,7 +635,6 @@ require 'Include/Header.php';
                     <div class="form-group col-md-3">
                         <label><?= gettext('Zip')?>:</label>
                         <input type="text" Name="Zip"  class="form-control" <?php
-                            // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
                         if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
                             echo 'style="text-transform:uppercase" ';
                         }
@@ -648,8 +647,7 @@ require 'Include/Header.php';
                         </select>
                     </div>
                 </div>
-                <?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
-                    if (!$bHaveXML) { // No point entering if values will just be overwritten?>
+                <?php if (SystemConfig::getValue('bHideLatLon') == false) { ?>
                 <div class="row">
                     <div class="form-group col-md-3">
                         <label><?= gettext('Latitude') ?>:</label>
@@ -660,9 +658,7 @@ require 'Include/Header.php';
                         <input type="text" class="form-control" Name="Longitude" value="<?= $nLongitude ?>" size="30" maxlength="50">
                     </div>
                 </div>
-                        <?php
-                    }
-                } /* Lat/Lon can be hidden - General Settings */ ?>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -718,7 +714,7 @@ require 'Include/Header.php';
                         <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span style="color: red;"><?php echo '<BR>' . $sEmailError ?></span>
                     </div>
                 </div>
-                <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
+                <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { ?>
                 <div class="form-group col-md-4">
                     <label><?= gettext('Send Newsletter') ?>:</label><br/>
                     <input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) {
@@ -738,7 +734,7 @@ require 'Include/Header.php';
             </div>
         </div><!-- /.box-header -->
         <div class="card-body">
-            <?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
+            <?php if (!SystemConfig::getValue('bHideWeddingDate')) {
                 if (empty($dWeddingDate)) {
                     $dWeddingDate = '';
                 } ?>
@@ -752,9 +748,9 @@ require 'Include/Header.php';
                     </div>
                 </div>
                 <?php
-            } /* Wedding date can be hidden - General Settings */ ?>
+            } ?>
             <div class="row">
-                <?php if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { // Only show this field if the current user is a canvasser?>
+                <?php if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { ?>
                     <div class="form-group col-md-4">
                         <label><?= gettext('Ok To Canvass') ?>: </label><br/>
                         <input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) {
@@ -803,7 +799,7 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { /* Donation envelopes can be hidden - General Settings */ ?>
+    <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { ?>
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3><?= gettext('Envelope Info') ?></h3>
@@ -815,9 +811,7 @@ require 'Include/Header.php';
             <div class="row">
                 <div class="form-group col-md-4">
                     <label><?= gettext('Envelope Number') ?>:</label>
-                    <input type="text" Name="Envelope" <?php if ($fam_Envelope) {
-                        echo ' value="' . $fam_Envelope;
-                                                       } ?>" size="30" maxlength="50">
+                    <input type="text" Name="Envelope" value="<?= $fam_Envelope ?>" size="30" maxlength="50">
                 </div>
             </div>
         </div>
@@ -872,7 +866,7 @@ require 'Include/Header.php';
     <tr>
         <td colspan="2">
         <div class="MediumText">
-            <center><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later.  All entries will become <i>new</i> person records.') : '' ?></center>
+            <center><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later. All entries will become a new person record.') : '' ?></center>
         </div><br><br>
             <div class="table-responsive">
         <table cellpadding="3" cellspacing="0" width="100%">
@@ -997,22 +991,17 @@ require 'Include/Header.php';
             </td>
             <td class="TextColumn">
                 <select name="BirthDay<?= $iCount ?>">
-                    <option value="0"><?= gettext('Unk')?></option>
-                    <?php for ($x = 1; $x < 32; $x++) {
-                        if ($x < 10) {
-                            $sDay = '0' . $x;
-                        } else {
-                            $sDay = $x;
-                        } ?>
-                    <option value="<?= $sDay ?>" <?php if ($aBirthDays[$iCount] == $x) {
+                    <option value="0"><?= gettext('Unknown')?></option>
+                    <?php for ($sDay = 1; $sDay < 32; $sDay++) { ?>
+                    <option value="<?= $sDay ?>" <?php if ($aBirthDays[$iCount] == $sDay) {
                         echo 'selected';
-                                   } ?>><?= $x ?></option>
+                                   } ?>><?= $sDay ?></option>
                         <?php
                     } ?>
                 </select>
             </td>
             <td class="TextColumn">
-            <?php	if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount]) {
+            <?php if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount]) {
                     $UpdateBirthYear = 1; ?>
                 <input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
                 <div><span style="color: red;"><?php if (array_key_exists($iCount, $aBirthDateError)) {

@@ -322,7 +322,7 @@ if ($numRows == 0) {
 ?>
 <tr>
     <td colspan="5">
-        <div class="callout callout-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
+        <div class="callout callout-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate. Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
     </td>
 </tr>
 <tr>

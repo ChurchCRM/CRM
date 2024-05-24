@@ -335,8 +335,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iPersonID < 1) {
             $iEnvelope = 0;
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_Facebook, per_Twitter, per_LinkedIn)
-			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . ',' . $iBirthDay . ',' . $iBirthYear . ',' . $iEnvelope . ',' . $iFamily . ',' . $iFamilyRole . ',';
+            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_Facebook, per_Twitter, per_LinkedIn) VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . ',' . $iBirthDay . ',' . $iBirthYear . ',' . $iEnvelope . ',' . $iFamily . ',' . $iFamilyRole . ',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"' . $dMembershipDate . '"';
             } else {
@@ -615,8 +614,7 @@ require 'Include/Header.php';
     <div class="alert alert-info alert-dismissable">
         <i class="fa fa-info"></i>
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong><span
-                style="color: red;"><?= gettext('Red text') ?></span></strong> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
+        <?php echo gettext('Red text indicates items inherited from the associated family record.'); ?>
     </div>
     <?php if ($bErrorFlag) {
         ?>
@@ -825,7 +823,7 @@ require 'Include/Header.php';
     </div>
     <div class="card card-info clearfix">
         <div class="card-header">
-            <h3 class="card-title"><?= gettext('Contact Info') ?></h3>
+            <h3 class="card-title"><?= gettext('Contact Information') ?></h3>
             <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
@@ -840,7 +838,7 @@ require 'Include/Header.php';
                                     echo '<span style="color: red;">';
                                 }
 
-                                echo gettext('Address') . ' 1:';
+                                echo gettext('Address 1') . ':';
 
                                 if ($bFamilyAddress1) {
                                     echo '</span>';
@@ -856,7 +854,7 @@ require 'Include/Header.php';
                                     echo '<span style="color: red;">';
                                 }
 
-                                echo gettext('Address') . ' 2:';
+                                echo gettext('Address 2') . ':';
 
                                 if ($bFamilyAddress2) {
                                     echo '</span>';
@@ -1133,7 +1131,7 @@ require 'Include/Header.php';
     </div>
     <div class="card card-info clearfix">
         <div class="card-header">
-            <h3 class="card-title"><?= gettext('Membership Info') ?></h3>
+            <h3 class="card-title"><?= gettext('Membership Information') ?></h3>
             <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>

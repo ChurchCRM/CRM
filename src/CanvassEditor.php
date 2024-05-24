@@ -43,7 +43,7 @@ $fam_Name = $fam_NameArray['fam_Name'];
 
 $fyStr = MakeFYString($iFYID);
 
-$sPageTitle = gettext($fyStr . ' Canvass Input for the ' . $fam_Name . ' family');
+$sPageTitle = $fyStr . gettext(' Canvass Input for ') . $fam_Name;
 
 //Is this the second pass?
 if (isset($_POST['Submit'])) {

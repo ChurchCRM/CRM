@@ -304,8 +304,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         } elseif ($iMethod === 'CHECK' && !$sGroupKey) {
             $chkKey = $iFamily . '|' . $iCheckNo;
             if (array_key_exists($chkKey, $checkHash)) {
-                $text = "Check number '" . $iCheckNo . "' for selected family already exists.";
-                $sCheckNoError = '<span style="color: red; ">' . gettext($text) . '</span>';
+                $sCheckNoError = '<span style="color: red; ">' . gettext('Check number for selected family already exists:') . $iCheckNo . '</span>';
                 $bErrorFlag = true;
             }
         }
@@ -393,7 +392,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             }
         } elseif (isset($_POST['PledgeSubmitAndAdd'])) {
             //Reload to editor to add another record
-            RedirectUtils::redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=" . $PledgeOrPayment . '&linkBack=', $linkBack);
+            RedirectUtils::redirect('PledgeEditor.php?CurrentDeposit=' . $iCurrentDeposit . '&PledgeOrPayment=' . $PledgeOrPayment . '&linkBack=', $linkBack);
         }
     } // end if !$bErrorFlag
 } elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck'])) {
@@ -539,7 +538,7 @@ require 'Include/Header.php';
           <input  class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
                 <?php if (!$dep_Closed) {
                     ?>
-            <input class="form-control" type="submit" class="btn btn-default" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
+            <input class="form-control" type="submit" class="btn btn-default" value="<?= gettext('Find family') ?>" name="MatchEnvelope">
                     <?php
                 } ?>
 

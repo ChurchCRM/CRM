@@ -90,12 +90,12 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Address') ?> 1:</label>
+            <label><?= gettext('Address 1') ?>:</label>
             <input type="checkbox" name="Address1" value="1" checked>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Address') ?> 2:</label>
+            <label><?= gettext('Address 2') ?>:</label>
             <input type="checkbox" name="Address2" value="1" checked>
           </div>
 
@@ -263,7 +263,7 @@ require 'Include/Header.php';
               <!-- /.box-header -->
               <div class="card-body no-padding">
                 <select name="Source">
-                  <option value="filters"><?= gettext('Based on filters below..') ?></option>
+                  <option value="filters"><?= gettext('Based on filters below...') ?></option>
                   <option value="cart" <?php if (array_key_exists('Source', $_GET) && $_GET['Source'] == 'cart') {
                         echo 'selected';
                                        } ?>><?= gettext('People in Cart (filters ignored)') ?></option>

@@ -217,11 +217,9 @@ require 'Include/Header.php';
                         <?php
                     }
                     ?>
-
             </table>
             </td>
             </tr>
-
             </table>
             </tr>
     </table>

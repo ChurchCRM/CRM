@@ -317,7 +317,7 @@ if ($numRows == 0) {
             <td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="25" maxlength="40">
                 <?php
                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                    echo '<span style="color: red;">' . gettext('You must enter a name') . ' </span>';
                 } ?>
             </td>
 
@@ -347,7 +347,7 @@ if ($numRows == 0) {
                 echo '</select>';
 
                 if ($aSpecialErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
+                    echo '<span style="color: red;">' . gettext('You must select a group.') . '</span>';
                 }
             } elseif ($aTypeFields[$row] == 12) {
                 echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=groupcustom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">Edit List Options</a>";
@@ -396,7 +396,7 @@ if ($numRows == 0) {
                     }
                         echo '</select>';
                     ?><BR>
-                    <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
+                    <a href="<?= SystemURLs::getSupportURL() ?>/Custom-Fields-Types"><?= gettext('Help on types...') ?></a>
                     </td>
                     <td valign="top">
                         <div><?= gettext('Name') ?>:</div>
@@ -424,11 +424,9 @@ if ($numRows == 0) {
             </table>
             </td>
         </tr>
-
     </table>
     </div>
     </form>
-
 </div>
 
 <?php require 'Include/Footer.php' ?>

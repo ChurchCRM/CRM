@@ -408,9 +408,9 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
         <?php
         if ($iErrors !== 0) {
-            echo "<div class='alert alert-danger'>" . gettext('There were ') . $iErrors . gettext(' errors. Please see below') . '</div>';
+            echo "<div class='alert alert-danger'>" . gettext('There were errors. Please see below') . '</div>';
         } else {
-            echo '<div>' . gettext('Items with a ') . '<span style="color: red">*</span>' . gettext(' are required') . '</div>';
+            echo '<div>' . gettext('Items with a * are required') . '</div>';
         }
         ?>
     </div>

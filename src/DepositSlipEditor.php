@@ -232,7 +232,7 @@ foreach ($thisDeposit->getFundTotals() as $tmpfund) {
       var deletedRows = dataT.rows('.selected').data();
       bootbox.confirm({
         title:'<?= gettext("Confirm Delete")?>',
-        message: '<p><?= gettext("Are you sure you want to delete the selected")?> ' + deletedRows.length + ' <?= gettext("payments(s)?") ?></p>' +
+        message: '<p><?= gettext("Are you sure you want to delete the selected payment(s)?") ?></p>' +
         '<p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>'+
         '<p><?= gettext("Please ensure this what you want to do.</p>") ?>',
         buttons: {
