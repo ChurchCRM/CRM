@@ -18,7 +18,10 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
+use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -29,28 +32,32 @@ use ChurchCRM\Utils\RedirectUtils;
 $sPageTitle = gettext('Person Editor');
 
 //Get the PersonID out of the querystring
+$iPersonID = 0;
 if (array_key_exists('PersonID', $_GET)) {
     $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
-} else {
-    $iPersonID = 0;
 }
+$isNewPerson = $iPersonID === 0;
 
 $sPreviousPage = '';
 if (array_key_exists('previousPage', $_GET)) {
     $sPreviousPage = InputUtils::legacyFilterInput($_GET['previousPage']);
 }
 
+$queryParamFamilyId = null;
+if (array_key_exists('FamilyID', $_GET)) {
+    $queryParamFamilyId = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
+}
+
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if ($iPersonID > 0) {
-    $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = ' . $iPersonID;
-    $rsPerson = RunQuery($sSQL);
-    $aRow = mysqli_fetch_array($rsPerson);
-    $per_fam_ID = $aRow['per_fam_ID'];
-
-    if (mysqli_num_rows($rsPerson) == 0) {
+$person = null;
+if (!$isNewPerson) {
+    $person = PersonQuery::create()->findOneById($iPersonID);
+    if ($person === null) {
         RedirectUtils::redirect('v2/dashboard');
     }
+
+    $per_fam_ID = $person->getFamId();
 
     if (
         !(
@@ -64,6 +71,7 @@ if ($iPersonID > 0) {
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::redirect('v2/dashboard');
 }
+
 // Get Field Security List Matrix
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
 $rsSecurityGrp = RunQuery($sSQL);
@@ -99,6 +107,60 @@ $bNoFormat_CellPhone = false;
 $sFacebookError = false;
 $sTwitterError = false;
 $sLinkedInError = false;
+
+//Set defaults as if we are adding a new Person
+$sTitle = '';
+$sFirstName = '';
+$sMiddleName = '';
+$sLastName = '';
+$sSuffix = '';
+$iGender = 0;
+$sAddress1 = '';
+$sAddress2 = '';
+$sCity = SystemConfig::getValue('sDefaultCity');
+$sState = SystemConfig::getValue('sDefaultState');
+$sZip = SystemConfig::getValue('sDefaultZip');
+$sCountry = SystemConfig::getValue('sDefaultCountry');
+$sHomePhone = '';
+$sWorkPhone = '';
+$sCellPhone = '';
+$sEmail = '';
+$sWorkEmail = '';
+$iBirthMonth = 0;
+$iBirthDay = 0;
+$iBirthYear = 0;
+$bHideAge = 0;
+$iOriginalFamily = 0;
+$iFamily = 0;
+$iFamilyRole = 0;
+$dMembershipDate = '';
+$dFriendDate = date('Y-m-d');
+$iClassification = 0;
+$iViewAgeFlag = 0;
+$sPhoneCountry = '';
+
+$sFacebook = '';
+$sTwitter = '';
+$sLinkedIn = '';
+
+$sHomePhone = '';
+$sWorkPhone = '';
+$sCellPhone = '';
+
+//The following values are True booleans if the family record has a value for the
+//indicated field.  These are used to highlight field headers in red.
+$bFamilyAddress1 = 0;
+$bFamilyAddress2 = 0;
+$bFamilyCity = 0;
+$bFamilyState = 0;
+$bFamilyZip = 0;
+$bFamilyCountry = 0;
+$bFamilyHomePhone = 0;
+$bFamilyWorkPhone = 0;
+$bFamilyCellPhone = 0;
+$bFamilyEmail = 0;
+$bHomeBound = false;
+$aCustomData = [];
 
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
@@ -140,13 +202,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     $iFamily = InputUtils::legacyFilterInput($_POST['Family'], 'int');
     $iFamilyRole = InputUtils::legacyFilterInput($_POST['FamilyRole'], 'int');
+    $family = null;
 
     // Get their family's country in case person's country was not entered
     if ($iFamily > 0) {
-        $sSQL = 'SELECT fam_Country FROM family_fam WHERE fam_ID = ' . $iFamily;
-        $rsFamCountry = RunQuery($sSQL);
-        $aRow = mysqli_fetch_array($rsFamCountry);
-        $fam_Country = $aRow['fam_Country'];
+        $family = FamilyQuery::create()->findOneById($iFamily);
+        $fam_Country = $family->getCountry();
     }
 
     $sCountryTest = SelectWhichInfo($sCountry, $fam_Country, false);
@@ -191,7 +252,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $bNoFormat_CellPhone = isset($_POST['NoFormat_CellPhone']);
 
     //Adjust variables as needed
-    if ($iFamily == 0) {
+    if ($iFamily === 0) {
         $iFamilyRole = 0;
     }
 
@@ -201,10 +262,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sLastNameError = gettext('You must enter a Last Name if no Family is selected.');
             $bErrorFlag = true;
         } else {
-            $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = ' . $iFamily;
-            $rsFamName = RunQuery($sSQL);
-            $aTemp = mysqli_fetch_array($rsFamName);
-            $sLastName = $aTemp[0];
+            $sLastName = $family->getName();
         }
     }
 
@@ -212,11 +270,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if ($iBirthMonth > 0 xor $iBirthDay > 0) {
         $sBirthDateError = gettext('Invalid Birth Date: Missing birth month or day.');
         $bErrorFlag = true;
-    } elseif ($iBirthYear > 0 && $iBirthMonth == 0 && $iBirthDay == 0) {
+    } elseif ($iBirthYear > 0 && $iBirthMonth === 0 && $iBirthDay === 0) {
         $sBirthDateError = gettext('Invalid Birth Date: Missing birth month and day.');
         $bErrorFlag = true;
     } elseif (strlen($iBirthYear) > 0) {
-        if ($iBirthYear == 0) { // If zero set to NULL
+        if ($iBirthYear === 0) { // If zero set to NULL
             $iBirthYear = null;
         } elseif ($iBirthYear < 0) {
             $sBirthYearError = gettext('Invalid Year');
@@ -231,7 +289,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Friend Date if one was entered
     if (strlen($dFriendDate) > 0) {
-        $dateString = parseAndValidateDate($dFriendDate, $locale = 'US', $pasfut = 'past');
+        $dateString = parseAndValidateDate($dFriendDate, 'US', 'past');
         if ($dateString === false) {
             $sFriendDateError = '<span style="color: red; ">'
                 . gettext('Not a valid Friend Date') . '</span>';
@@ -243,35 +301,29 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Membership Date if one was entered
     if (strlen($dMembershipDate) > 0) {
-        $dateString = parseAndValidateDate($dMembershipDate, $locale = 'US', $pasfut = 'past');
-        if ($dateString === false) {
+        $dMembershipDate = parseAndValidateDate($dMembershipDate, 'US', 'past');
+        if ($dMembershipDate === false) {
             $sMembershipDateError = '<span style="color: red; ">'
                 . gettext('Not a valid Membership Date') . '</span>';
             $bErrorFlag = true;
-        } else {
-            $dMembershipDate = $dateString;
         }
     }
 
     // Validate Email
     if (strlen($sEmail) > 0) {
-        if (checkEmail($sEmail) == false) {
+        if (!checkEmail($sEmail)) {
             $sEmailError = '<span style="color: red; ">'
                 . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
-        } else {
-            $sEmail = $sEmail;
         }
     }
 
     // Validate Work Email
     if (strlen($sWorkEmail) > 0) {
-        if (checkEmail($sWorkEmail) == false) {
+        if (!checkEmail($sWorkEmail)) {
             $sWorkEmailError = '<span style="color: red; ">'
                 . gettext('Work Email is Not Valid') . '</span>';
             $bErrorFlag = true;
-        } else {
-            $sWorkEmail = $sWorkEmail;
         }
     }
 
@@ -305,24 +357,31 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         }
 
         //If no birth year, set to NULL
-        if ((strlen($iBirthYear) != 4)) {
-            $iBirthYear = 'NULL';
-        } else {
-            $iBirthYear = "'$iBirthYear'";
+        if (strlen($iBirthYear) !== 4) {
+            $iBirthYear = null;
         }
 
         // New Family (add)
         // Family will be named by the Last Name.
-        if ($iFamily == -1) {
-            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
-					VALUES ('" . $sLastName . "','" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId() . ')';
-            //Execute the SQL
-            RunQuery($sSQL);
-            //Get the key back
-            $sSQL = 'SELECT MAX(fam_ID) AS iFamily FROM family_fam';
-            $rsLastEntry = RunQuery($sSQL);
-            $aRow = mysqli_fetch_array($rsLastEntry);
-            $iFamily = $aRow['iFamily'];
+        if ($iFamily === -1) {
+            $family = new Family();
+            $family
+                ->setName($sLastName)
+                ->setAddress1($sAddress1)
+                ->setAddress2($sAddress2)
+                ->setCity($sCity)
+                ->setState($sState)
+                ->setZip($sZip)
+                ->setCountry($sCountry)
+                ->setHomePhone($sHomePhone)
+                ->setWorkPhone($sWorkPhone)
+                ->setCellPhone($sCellPhone)
+                ->setEmail($sEmail)
+                ->setDateEntered(new DateTimeImmutable())
+                ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
+            $family->save();
+            $family->reload();
+            $iFamily = $family->getId();
         }
 
         if ($bHideAge) {
@@ -331,77 +390,70 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $per_Flags = 0;
         }
 
-        // New Person (add)
-        if ($iPersonID < 1) {
-            $iEnvelope = 0;
+        $person = new Person();
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_Facebook, per_Twitter, per_LinkedIn)
-			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . ',' . $iBirthDay . ',' . $iBirthYear . ',' . $iEnvelope . ',' . $iFamily . ',' . $iFamilyRole . ',';
-            if (strlen($dMembershipDate) > 0) {
-                $sSQL .= '"' . $dMembershipDate . '"';
-            } else {
-                $sSQL .= 'NULL';
-            }
-            $sSQL .= ',' . $iClassification . ",'" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId() . ',';
-
-            if (strlen($dFriendDate) > 0) {
-                $sSQL .= '"' . $dFriendDate . '"';
-            } else {
-                $sSQL .= 'NULL';
-            }
-
-            $sSQL .= ', ' . $per_Flags;
-            $sSQL .= ', "' . $sFacebook . '"';
-            $sSQL .= ', "' . $sTwitter . '"';
-            $sSQL .= ', "' . $sLinkedIn . '"';
-            $sSQL .= ')';
-
-            $bGetKeyBack = true;
-
-        // Existing person (update)
-        } else {
-            $sSQL = "UPDATE person_per SET per_Title = '" . $sTitle . "',per_FirstName = '" . $sFirstName . "',per_MiddleName = '" . $sMiddleName . "', per_LastName = '" . $sLastName . "', per_Suffix = '" . $sSuffix . "', per_Gender = " . $iGender . ", per_Address1 = '" . $sAddress1 . "', per_Address2 = '" . $sAddress2 . "', per_City = '" . $sCity . "', per_State = '" . $sState . "', per_Zip = '" . $sZip . "', per_Country = '" . $sCountry . "', per_HomePhone = '" . $sHomePhone . "', per_WorkPhone = '" . $sWorkPhone . "', per_CellPhone = '" . $sCellPhone . "', per_Email = '" . $sEmail . "', per_WorkEmail = '" . $sWorkEmail . "', per_BirthMonth = " . $iBirthMonth . ', per_BirthDay = ' . $iBirthDay . ', ' . 'per_BirthYear = ' . $iBirthYear . ', per_fam_ID = ' . $iFamily . ', per_Fmr_ID = ' . $iFamilyRole . ', per_cls_ID = ' . $iClassification . ', per_MembershipDate = ';
-            if (strlen($dMembershipDate) > 0) {
-                $sSQL .= '"' . $dMembershipDate . '"';
-            } else {
-                $sSQL .= 'NULL';
-            }
-
-            if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-                $sSQL .= ', per_Envelope = ' . $iEnvelope;
-            }
-
-            $sSQL .= ", per_DateLastEdited = '" . date('YmdHis') . "', per_EditedBy = " . AuthenticationManager::getCurrentUser()->getId() . ', per_FriendDate =';
-
-            if (strlen($dFriendDate) > 0) {
-                $sSQL .= '"' . $dFriendDate . '"';
-            } else {
-                $sSQL .= 'NULL';
-            }
-
-            $sSQL .= ', per_Flags=' . $per_Flags;
-
-            $sSQL .= ', per_Facebook="' . $sFacebook . '"';
-            $sSQL .= ', per_Twitter="' . $sTwitter . '"';
-            $sSQL .= ', per_LinkedIn="' . $sLinkedIn . '"';
-
-            $sSQL .= ' WHERE per_ID = ' . $iPersonID;
-
-            $bGetKeyBack = false;
+        // If a person already exists, update the preexisting record.
+        $personAlreadyExist = $iPersonID > 0;
+        if ($personAlreadyExist) {
+            $person = PersonQuery::create()->findOneById($iPersonID);
         }
 
-        //Execute the SQL
-        RunQuery($sSQL);
+        $person
+            ->setTitle($sTitle)
+            ->setFirstName($sFirstName)
+            ->setMiddleName($sMiddleName)
+            ->setLastName($sLastName)
+            ->setSuffix($sSuffix)
+            ->setGender($iGender)
+            ->setAddress1($sAddress1)
+            ->setAddress2($sAddress2)
+            ->setCity($sCity)
+            ->setState($sState)
+            ->setZip($sZip)
+            ->setCountry($sCountry)
+            ->setHomePhone($sHomePhone)
+            ->setWorkPhone($sWorkPhone)
+            ->setCellPhone($sCellPhone)
+            ->setEmail($sEmail)
+            ->setWorkEmail($sWorkEmail)
+            ->setBirthYear($iBirthYear)
+            ->setBirthMonth($iBirthMonth)
+            ->setBirthDay($iBirthDay)
+            ->setFamId($iFamily)
+            ->setFmrId($iFamilyRole)
+            ->setClsId($iClassification)
+            ->setDateEntered(date('YmdHis'))
+            ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
+            ->setFlags($per_Flags)
+            ->setFacebook($sFacebook)
+            ->setTwitter($sTwitter)
+            ->setLinkedIn($sLinkedIn);
 
+        if (strlen($dMembershipDate) > 0) {
+            $person->setMembershipDate($dMembershipDate);
+        } else {
+            $person->setMembershipDate(null);
+        }
+
+        if (strlen($dFriendDate) > 0) {
+            $person->setFriendDate($dFriendDate);
+        } else {
+            $person->setFriendDate(null);
+        }
+
+        if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+            $person->setEnvelope($iEnvelope);
+        }
+
+
+        $person->save();
+        $person->reload();
 
         $note = new Note();
         $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
         // If this is a new person, get the key back and insert a blank row into the person_custom table
-        if ($bGetKeyBack) {
-            $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
-            $rsPersonID = RunQuery($sSQL);
-            $aRow = mysqli_fetch_array($rsPersonID);
-            $iPersonID = $aRow['iPersonID'];
+        if (!$personAlreadyExist) {
+            $iPersonID = $person->getId();
 
             $personCustom = new PersonCustom();
             $personCustom->setPerId($iPersonID);
@@ -410,7 +462,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Created'));
             $note->setType('create');
-
 
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
@@ -426,7 +477,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         }
         $note->save();
 
-        $photo = new Photo("Person", $iPersonID);
+        $photo = new Photo('Person', $iPersonID);
         $photo->refresh();
 
         // Update the custom person fields.
@@ -450,7 +501,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         }
 
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-        if ($sPreviousPage != '') {
+        if ($sPreviousPage !== '') {
             $sPreviousPage = str_replace(';', '&', $sPreviousPage);
             RedirectUtils::redirect($sPreviousPage . $iPersonID);
         } elseif (isset($_POST['PersonSubmit'])) {
@@ -467,7 +518,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 } else {
     //FirstPass
     //Are we editing or adding?
-    if ($iPersonID > 0) {
+
+    if (!$isNewPerson) {
         //Editing....
         //Get all the data on this record
 
@@ -537,62 +589,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if (mysqli_num_rows($rsCustomData) >= 1) {
             $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
         }
-    } else {
-        //Adding....
-        //Set defaults
-        $sTitle = '';
-        $sFirstName = '';
-        $sMiddleName = '';
-        $sLastName = '';
-        $sSuffix = '';
-        $iGender = '';
-        $sAddress1 = '';
-        $sAddress2 = '';
-        $sCity = SystemConfig::getValue('sDefaultCity');
-        $sState = SystemConfig::getValue('sDefaultState');
-        $sZip = SystemConfig::getValue('sDefaultZip');
-        $sCountry = SystemConfig::getValue('sDefaultCountry');
-        $sHomePhone = '';
-        $sWorkPhone = '';
-        $sCellPhone = '';
-        $sEmail = '';
-        $sWorkEmail = '';
-        $iBirthMonth = 0;
-        $iBirthDay = 0;
-        $iBirthYear = 0;
-        $bHideAge = 0;
-        $iOriginalFamily = 0;
-        $iFamily = '0';
-        $iFamilyRole = '0';
-        $dMembershipDate = '';
-        $dFriendDate = date('Y-m-d');
-        $iClassification = '0';
-        $iViewAgeFlag = 0;
-        $sPhoneCountry = '';
-
-        $sFacebook = '';
-        $sTwitter = '';
-        $sLinkedIn = '';
-
-
-        $sHomePhone = '';
-        $sWorkPhone = '';
-        $sCellPhone = '';
-
-        //The following values are True booleans if the family record has a value for the
-        //indicated field.  These are used to highlight field headers in red.
-        $bFamilyAddress1 = 0;
-        $bFamilyAddress2 = 0;
-        $bFamilyCity = 0;
-        $bFamilyState = 0;
-        $bFamilyZip = 0;
-        $bFamilyCountry = 0;
-        $bFamilyHomePhone = 0;
-        $bFamilyWorkPhone = 0;
-        $bFamilyCellPhone = 0;
-        $bFamilyEmail = 0;
-        $bHomeBound = false;
-        $aCustomData = [];
     }
 }
 
@@ -642,10 +638,10 @@ require 'Include/Header.php';
                         <select id="Gender" name="Gender" class="form-control">
                             <option value="0"><?= gettext('Select Gender') ?></option>
                             <option value="" disabled>-----------------------</option>
-                            <option value="1" <?php if ($iGender == 1) {
+                            <option value="1" <?php if ($iGender === 1) {
                                 echo 'selected';
                                               } ?>><?= gettext('Male') ?></option>
-                            <option value="2" <?php if ($iGender == 2) {
+                            <option value="2" <?php if ($iGender === 2) {
                                 echo 'selected';
                                               } ?>><?= gettext('Female') ?></option>
                         </select>
@@ -699,7 +695,7 @@ require 'Include/Header.php';
                 <p/>
                 <div class="row">
                     <div class="col-md-2">
-                        <label><?= gettext('Birth Month') ?>:</label>
+                        <label for="BirthMonth">><?= gettext('Birth Month') ?>:</label>
                         <select id="BirthMonth" name="BirthMonth" class="form-control">
                             <option value="0" <?php if ($iBirthMonth == 0) {
                                 echo 'selected';
@@ -743,7 +739,7 @@ require 'Include/Header.php';
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label><?= gettext('Birth Day') ?>:</label>
+                        <label for="BirthDay"><?= gettext('Birth Day') ?>:</label>
                         <select id="BirthDay" name="BirthDay" class="form-control">
                             <option value="0" ><?= gettext('Select Day') ?></option>
                             <?php for ($x = 1; $x < 32; $x++) {
@@ -759,7 +755,7 @@ require 'Include/Header.php';
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label><?= gettext('Birth Year') ?>:</label>
+                        <label for="BirthYear"><?= gettext('Birth Year') ?>:</label>
                         <input type="text" id="BirthYear" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
                                placeholder="yyyy" class="form-control">
                         <?php if ($sBirthYearError) {
@@ -805,16 +801,17 @@ require 'Include/Header.php';
             </div>
 
             <div class="form-group col-md-6">
-                <label><?= gettext('Family'); ?>:</label>
-                <select name="Family" id="famailyId" class="form-control">
+                <label for="familyId"><?= gettext('Family'); ?>:</label>
+                <select name="Family" id="familyId" class="form-control">
                     <option value="0" selected><?= gettext('Unassigned') ?></option>
                     <option value="-1"><?= gettext('Create a new family (using last name)') ?></option>
                     <option value="" disabled>-----------------------</option>
                     <?php while ($aRow = mysqli_fetch_array($rsFamilies)) {
                         extract($aRow);
+                        $fam_ID = (int) $fam_ID;
 
                         echo '<option value="' . $fam_ID . '"';
-                        if ($iFamily == $fam_ID || $_GET['FamilyID'] == $fam_ID) {
+                        if ($iFamily === $fam_ID || $queryParamFamilyId === $fam_ID) {
                             echo ' selected';
                         }
                         echo '>' . $fam_Name . '&nbsp;' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
@@ -1140,21 +1137,22 @@ require 'Include/Header.php';
         </div><!-- /.box-header -->
         <div class="card-body">
             <div class="row">
-              <div class="form-group col-md-3 col-lg-3">
-                <label><?= gettext('Classification') ?>:</label>
-                <select id="Classification" name="Classification" class="form-control">
-                  <option value="0"><?= gettext('Unassigned') ?></option>
-                  <option value="" disabled>-----------------------</option>
-                  <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
+                <div class="form-group col-md-3 col-lg-3">
+                    <label for="Classification"><?= gettext('Classification') ?>:</label>
+                    <select id="Classification" name="Classification" class="form-control">
+                        <option value="0"><?= gettext('Unassigned') ?></option>
+                        <option value="" disabled>-----------------------</option>
+                        <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
                             extract($aRow);
                             echo '<option value="' . $lst_OptionID . '"';
-                        if ($iClassification == $lst_OptionID) {
-                            echo ' selected';
-                        }
+                            if ($iClassification == $lst_OptionID) {
+                                echo ' selected';
+                            }
                             echo '>' . $lst_OptionName . '&nbsp;';
-                  } ?>
-                </select>
-              </div>
+                            }
+                        ?>
+                    </select>
+                </div>
                 <div class="form-group col-md-3 col-lg-3">
                     <label><?= gettext('Membership Date') ?>:</label>
                     <div class="input-group">
@@ -1237,7 +1235,7 @@ require 'Include/Header.php';
                             echo '<input type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PersonSubmitAndAdd">';
     } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"
-           onclick="javascript:document.location='v2/people';">
+           onclick="document.location='v2/people';">
         <p><br/></p>
     </div>
 </form>
@@ -1245,7 +1243,7 @@ require 'Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     $(function() {
         $("[data-mask]").inputmask();
-        $("#famailyId").select2();;
+        $("#familyId").select2();
     });
 </script>
 
