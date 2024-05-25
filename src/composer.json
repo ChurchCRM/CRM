@@ -90,5 +90,14 @@
             "php": "8.1"
         },
         "sort-packages": true
+    },
+    "scripts": {
+        "orm-gen": "php vendor/bin/propel --config-dir=propel model:build",
+        "sql-gen": "php vendor/bin/propel --config-dir=propel sql:build",
+        "graph-viz": "php vendor/bin/propel --config-dir=propel graphviz:generate",
+        "datadictionary": "php vendor/bin/propel --config-dir=propel datadictionary:generate",
+        "post-autoload-dump": [
+            "@orm-gen"
+        ]
     }
 }
