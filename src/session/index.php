@@ -73,8 +73,8 @@ function beginSession(Request $request, Response $response, array $args): Respon
 
     if ($request->getMethod() === 'POST') {
         $loginRequestBody = $request->getParsedBody();
-        $request = new LocalUsernamePasswordRequest($loginRequestBody['User'], $loginRequestBody['Password'], $redirectPath);
-        $authenticationResult = AuthenticationManager::authenticate($request);
+        $userPassRequest = new LocalUsernamePasswordRequest($loginRequestBody['User'], $loginRequestBody['Password'], $redirectPath);
+        $authenticationResult = AuthenticationManager::authenticate($userPassRequest);
         $pageArgs['sErrorText'] = $authenticationResult->message;
     }
 
