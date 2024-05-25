@@ -55,11 +55,23 @@ class InputUtils
 
     public static function filterInt($sInput): int
     {
+        // added this to prevent deprecation warning:
+        //   PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated
+        if ($sInput === null) {
+            return 0;
+        }
+
         return (int) intval(trim($sInput));
     }
 
     public static function filterFloat($sInput): float
     {
+        // added this to prevent deprecation warning:
+        //   PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated
+        if ($sInput === null) {
+            return 0;
+        }
+
         return (float) floatval(trim($sInput));
     }
 
