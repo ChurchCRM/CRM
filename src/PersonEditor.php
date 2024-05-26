@@ -532,7 +532,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sMiddleName = $per_MiddleName;
         $sLastName = $per_LastName;
         $sSuffix = $per_Suffix;
-        $iGender = $per_Gender;
+        $iGender = (int) $per_Gender;
         $sAddress1 = $per_Address1;
         $sAddress2 = $per_Address2;
         $sCity = $per_City;
@@ -544,17 +544,17 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sCellPhone = $per_CellPhone;
         $sEmail = $per_Email;
         $sWorkEmail = $per_WorkEmail;
-        $iBirthMonth = $per_BirthMonth;
-        $iBirthDay = $per_BirthDay;
-        $iBirthYear = $per_BirthYear;
+        $iBirthMonth = is_numeric($per_BirthMonth) ? (int) $per_BirthMonth : null;
+        $iBirthDay = is_numeric($per_BirthDay) ? (int) $per_BirthDay : null;
+        $iBirthYear = is_numeric($per_BirthYear) ? (int) $per_BirthYear : null;
         $bHideAge = ($per_Flags & 1) != 0;
         $iOriginalFamily = $per_fam_ID;
-        $iFamily = $per_fam_ID;
-        $iFamilyRole = $per_fmr_ID;
+        $iFamily = (int) $per_fam_ID;
+        $iFamilyRole = (int) $per_fmr_ID;
         $dMembershipDate = $per_MembershipDate;
         $dFriendDate = $per_FriendDate;
-        $iClassification = $per_cls_ID;
-        $iViewAgeFlag = $per_Flags;
+        $iClassification = (int) $per_cls_ID;
+        $iViewAgeFlag = (int) $per_Flags;
 
         $sFacebook = $per_Facebook;
         $sTwitter = $per_Twitter;
@@ -695,7 +695,7 @@ require 'Include/Header.php';
                 <p />
                 <div class="row">
                     <div class="col-md-2">
-                        <label for="BirthMonth">><?= gettext('Birth Month') ?>:</label>
+                        <label for="BirthMonth"><?= gettext('Birth Month') ?>:</label>
                         <select id="BirthMonth" name="BirthMonth" class="form-control">
                             <option value="0" <?php if ($iBirthMonth === 0) {
                                 echo 'selected';
