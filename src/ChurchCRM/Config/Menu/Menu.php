@@ -90,7 +90,7 @@ class Menu
         $listOptions = ListOptionQuery::Create()->filterById(3)->orderByOptionSequence()->find();
 
         foreach ($listOptions as $listOption) {
-            if ($listOption->getOptionId() != 4) {// we avoid the sundaySchool, it's done under
+            if ($listOption->getOptionId() !== 4) {// we avoid the sundaySchool, it's done under
                 $tmpMenu = self::addGroupSubMenus($listOption->getOptionName(), $listOption->getOptionId(), 'GroupView.php?GroupID=');
                 if ($tmpMenu instanceof MenuItem) {
                     $groupMenu->addSubMenu($tmpMenu);
@@ -187,7 +187,14 @@ class Menu
         if (!$groups->isEmpty()) {
             $unassignedGroups = new MenuItem($menuName, '', true, 'fa-tag');
             foreach ($groups as $group) {
-                $unassignedGroups->addSubMenu(new MenuItem($group->getName(), $viewURl . $group->getID(), true, 'fa-user-tag'));
+                $unassignedGroups->addSubMenu(
+                    new MenuItem(
+                        $group->getName(),
+                        $viewURl . $group->getID(),
+                        true,
+                        'fa-user-tag'
+                    )
+                );
             }
 
             return $unassignedGroups;
