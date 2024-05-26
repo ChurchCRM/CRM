@@ -17,16 +17,46 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
-if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !empty($_POST['Event'])) {
-    $iEventId = InputUtils::legacyFilterInput($_POST['Event'], 'int');
+$sPostChoice = null;
+if (array_key_exists('Choice', $_POST)) {
+    $sPostChoice = InputUtils::legacyFilterInput($_POST['Choice']);
+}
 
-    if ($_POST['Choice'] == 'Attendees') {
+$sPostAction = null;
+if (array_key_exists('Action', $_POST)) {
+    $sPostAction = InputUtils::legacyFilterInput($_POST['Action']);
+}
+
+$sGetAction = null;
+if (array_key_exists('Action', $_GET)) {
+    $sGetAction = InputUtils::legacyFilterInput($_GET['Action']);
+}
+
+$sPostEvent = null;
+if (array_key_exists('Event', $_POST)) {
+    $sPostEvent = InputUtils::legacyFilterInput($_POST['Event']);
+}
+
+$sGetEvent = null;
+if (array_key_exists('Event', $_GET)) {
+    $sGetEvent = InputUtils::legacyFilterInput($_GET['Event']);
+}
+
+$sGetType = null;
+if (array_key_exists('Type', $_GET)) {
+    $sGetType = InputUtils::legacyFilterInput($_GET['Type']);
+}
+
+if ($sPostAction === 'Retrieve' && !empty($sPostEvent)) {
+    $iEventId = InputUtils::legacyFilterInput($sPostEvent, 'int');
+
+    if ($sPostChoice === 'Attendees') {
         $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country, t1.per_Gender
                 FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4
                 WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID IN ('1','2','5')
 		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext('Event Attendees');
-    } elseif ($_POST['Choice'] == 'Nonattendees') {
+    } elseif ($sPostChoice === 'Nonattendees') {
         $aSQL = 'SELECT DISTINCT(person_id) FROM event_attend WHERE event_id = ' . $iEventId;
         $raOpps = RunQuery($aSQL);
         $aArr = [];
@@ -46,18 +76,18 @@ if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !emp
 			ORDER BY t1.per_LastName, t1.per_ID";
         }
         $sPageTitle = gettext('Event Nonattendees');
-    } elseif ($_POST['Choice'] == 'Guests') {
+    } elseif ($sPostChoice === 'Guests') {
         $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_HomePhone, t1.per_Country, t1.per_Gender
                 FROM person_per AS t1, events_event AS t2, event_attend AS t3
                 WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND per_cls_ID IN ('0','3')
 		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext('Event Guests');
     }
-} elseif (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && !empty($_GET['Event'])) {
-    $sSQL = 'SELECT * FROM events_event WHERE event_type = ' . $_GET['Event'] . ' ORDER BY event_start';
+} elseif ($sGetAction === 'List' && !empty($sGetEvent)) {
+    $sSQL = 'SELECT * FROM events_event WHERE event_type = ' . $sGetEvent . ' ORDER BY event_start';
 
-    //I change textt from All $_GET['Type'] Events to All Events of type . $_GET['Type'], because it don´t work for portuguese, spanish, french and so on
-    $sPageTitle = gettext('All Events of Type') . ': ' . $_GET['Type'];
+    // Page title text was changed from "All $_GET['Type'] Events" to "All Events of type $_GET['Type']" because it doesn't work for portuguese, spanish, french, and so on
+    $sPageTitle = gettext('All Events of Type') . ': ' . $sGetType;
 } else {
     $sSQL = 'SELECT * FROM events_event ORDER BY event_start';
 }
@@ -72,7 +102,7 @@ for ($row = 1; $row <= $numRows; $row++) {
     $aRow = mysqli_fetch_assoc($rsOpps);
     extract($aRow);
 
-    if (array_key_exists('Action', $_GET) & $_GET['Action'] == 'List') {
+    if ($sGetAction === 'List') {
         $aEventID[$row] = $event_id;
         $aEventTitle[$row] = htmlentities(stripslashes($event_title), ENT_NOQUOTES, 'UTF-8');
         $aEventStartDateTime[$row] = $event_start;
@@ -120,7 +150,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 </div>
 
 
-<?php  if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows > 0) { ?>
+<?php  if ($sGetAction === 'List' && $numRows > 0) { ?>
 <div class="card">
     <div class="card-header">
         <h3> <?= ($numRows == 1 ? gettext('There is') : gettext('There are')) . ' ' . $numRows . ' ' . ($numRows == 1 ? gettext('event') : gettext('events')) . gettext(' in this category.') ?></h3>
@@ -144,7 +174,7 @@ for ($row = 1; $row <= $numRows; $row++) {
            <td  align="center">
              <form name="Attend" action="EventAttendance.php" method="POST">
                <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
-               <input type="hidden" name="Type" value="<?= $_GET['Type'] ?>">
+               <input type="hidden" name="Type" value="<?= $sGetType ?>">
                <input type="hidden" name="Action" value="Retrieve">
                <input type="hidden" name="Choice" value="Attendees">
                 <?php
@@ -164,7 +194,7 @@ for ($row = 1; $row <= $numRows; $row++) {
            <td>
              <form name="NonAttend" action="EventAttendance.php" method="POST">
                <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
-               <input type="hidden" name="Type" value="<?= $_GET['Type'] ?>">
+               <input type="hidden" name="Type" value="<?= $sGetType ?>">
                <input type="hidden" name="Action" value="Retrieve">
                <input type="hidden" name="Choice" value="Nonattendees">
                <input id="Non-Attending-<?=$row?>" type="submit" name="Type" value="<?= gettext('Non-Attending Members') . ' [' . ($tNumTotal - $cNumAttend) . ']' ?>" class="btn btn-default">
@@ -173,7 +203,7 @@ for ($row = 1; $row <= $numRows; $row++) {
            <td>
              <form name="GuestAttend" action="EventAttendance.php" method="POST">
                <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
-               <input type="hidden" name="Type" value="<?= $_GET['Type'] ?>">
+               <input type="hidden" name="Type" value="<?= $sGetType ?>">
                <input type="hidden" name="Action" value="Retrieve">
                <input type="hidden" name="Choice" value="Guests">
                 <?php $gSQL = 'SELECT COUNT(per_ID) AS gCount FROM person_per as t1, events_event as t2, event_attend as t3
@@ -194,10 +224,10 @@ for ($row = 1; $row <= $numRows; $row++) {
             $("#eventsTable").DataTable(window.CRM.plugin.dataTable);
         });
     </script>
-<?php } elseif ($_POST['Action'] == 'Retrieve' && $numRows > 0) { ?>
+<?php } elseif ($sPostAction === 'Retrieve' && $numRows > 0) { ?>
 <div class="card">
    <div class="card-header">
-     <h3><?= gettext('There ' . ($numRows == 1 ? 'was ' . $numRows . ' ' . $_POST['Choice'] : 'were ' . $numRows . ' ' . $_POST['Choice'])) . ' for this Event' ?></h3>
+     <h3><?= gettext('There ' . ($numRows == 1 ? 'was ' . $numRows . ' ' . $sPostChoice : 'were ' . $numRows . ' ' . $sPostChoice)) . ' for this Event' ?></h3>
    </div>
     <div class="card-body">
        <table class="table table-striped data-table" id="peopleTable">
