@@ -1,14 +1,13 @@
 {
     "name": "churchcrm/crm",
     "description": "Free Church CRM Software",
-    "version": "5.8.0",
+    "license": "MIT",
     "type": "project",
+    "version": "5.8.0",
     "keywords": [
         "church",
         "crm"
     ],
-    "homepage": "https://churchcrm.io",
-    "license": "MIT",
     "authors": [
         {
             "name": "George Dawoud",
@@ -16,21 +15,13 @@
             "role": "Lead Developer"
         }
     ],
+    "homepage": "https://churchcrm.io",
     "support": {
         "email": "info@churchcrm.io",
         "issues": "https://github.com/ChurchCRM/CRM/issues",
         "chat": "https://gitter.im/ChurchCRM/CRM",
         "source": "https://github.com/ChurchCRM/CRM",
         "docs": "https://github.com/ChurchCRM/CRM/wiki"
-    },
-    "config": {
-        "platform": {
-            "php": "8.1"
-        },
-        "sort-packages": true,
-        "allow-plugins": {
-            "php-http/discovery": true
-        }
     },
     "require": {
         "php": ">=8.1",
@@ -48,15 +39,14 @@
         "ext-zip": "*",
         "ext-zlib": "*",
         "azuyalabs/yasumi": "^2.7.0",
-        "defuse/php-encryption": "^v2.4.0",
+        "defuse/php-encryption": "^2.4.0",
         "drewm/mailchimp-api": "^2.5.4",
         "endroid/qr-code": "^5.0.6",
         "geocoder-php/bing-maps-provider": "^4.3.0",
         "geocoder-php/google-maps-provider": "^4.7.1",
-        "ifsnop/mysqldump-php": "^v2.12",
+        "ifsnop/mysqldump-php": "^2.12",
         "knplabs/github-api": "^3.12.0",
         "monolog/monolog": "^2.9.2",
-        "twig/twig": "^3.9.3",
         "php-http/guzzle7-adapter": "^1.0.0",
         "php-http/message": "^1.11.1",
         "phpmailer/phpmailer": "^6.9.1",
@@ -66,29 +56,48 @@
         "slim/http-cache": "^1.1.0",
         "slim/php-view": "^3.2.0",
         "slim/slim": "^4.13.0",
-        "symfony/dependency-injection": "^v6.0.20",
+        "symfony/dependency-injection": "^6.0.20",
         "symfony/translation": "^5.4.35",
+        "twig/twig": "^3.9.3",
         "verot/class.upload.php": "^2.1.6",
         "vonage/client": "^2.4.0"
-    },
-    "autoload": {
-        "classmap": [
-            "ChurchCRM/"
-        ],
-        "psr-4": {
-            "\\": "bin/",
-            "ChurchCRM\\": "ChurchCRM/"
-        }
-    },
-    "repositories": {
-        "packagist": {
-            "url": "https://packagist.org",
-            "type": "composer"
-        }
     },
     "require-dev": {
         "phpstan/phpstan": "^1.10",
         "rector/rector": "^1.0",
         "squizlabs/php_codesniffer": "^3.7"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.org"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "ChurchCRM\\": "ChurchCRM/",
+            "\\": "bin/"
+        },
+        "classmap": [
+            "ChurchCRM/"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        },
+        "platform": {
+            "php": "8.1"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "orm-gen": "php vendor/bin/propel --config-dir=propel model:build",
+        "sql-gen": "php vendor/bin/propel --config-dir=propel sql:build",
+        "graph-viz": "php vendor/bin/propel --config-dir=propel graphviz:generate",
+        "datadictionary": "php vendor/bin/propel --config-dir=propel datadictionary:generate",
+        "post-autoload-dump": [
+            "@orm-gen"
+        ]
     }
 }
