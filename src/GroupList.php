@@ -25,6 +25,7 @@ require 'Include/Header.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Utils\InputUtils;
 
 $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 
@@ -38,7 +39,7 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 <?php
   echo '<option>' . gettext("Unassigned") . '</option>';
 foreach ($rsGroupTypes as $groupType) {
-    echo '<option>' . $groupType->getOptionName() . '</option>';
+    echo '<option>' . InputUtils::legacyFilterInput($groupType->getOptionName()) . '</option>';
 } ?>
 </select>
 </label>

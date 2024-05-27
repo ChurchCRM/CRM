@@ -68,17 +68,19 @@ window.CRM.renderPrerequisite = function (prerequisite) {
             html: "&#x2717;",
         };
     }
-    var id = prerequisite.Name.replace(/[^A-z0-9]/g, "");
+
+    var id = prerequisite.Name.replace(/[^A-Za-z0-9]/g, "");
     window.CRM.prerequisites[id] = prerequisite.Satisfied;
     var domElement = "#" + id;
-    var prerequisite = $("<tr>", { id: id })
+
+    var prerequisiteElement = $("<tr>", { id: id })
         .append($("<td>", { text: prerequisite.Name }))
         .append($("<td>", td));
 
     if ($(domElement).length !== 0) {
-        $(domElement).replaceWith(prerequisite);
+        $(domElement).replaceWith(prerequisiteElement);
     } else {
-        $("#prerequisites").append(prerequisite);
+        $("#prerequisites").append(prerequisiteElement);
     }
 };
 

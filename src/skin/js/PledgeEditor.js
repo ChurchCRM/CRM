@@ -4,7 +4,7 @@ function formatCurrency(total) {
         neg = true;
         total = Math.abs(total);
     }
-    return parseFloat(total, 10)
+    return parseFloat(total)
         .toFixed(2)
         .replace(/(\d)(?=(\d{3})+\.)/g, "$1,")
         .toString();
@@ -94,7 +94,7 @@ $(document).ready(function () {
     });
 
     function getFundSubmitData() {
-        var funds = new Array();
+        var funds = [];
         if ($("select[name=FundSplit]").val() == "0") {
             $(".fundrow").each(function (i, el) {
                 var fundID = $(this).attr("id").split("_")[1];
@@ -144,7 +144,7 @@ $(document).ready(function () {
     }
 
     function getDenominationSubmitData() {
-        var denominations = new Array();
+        var denominations = [];
         $(".denominationInputBox").each(function (i, el) {
             var currencyObject = {
                 currencyID: $(el).attr("Name").split("-")[1],
@@ -165,7 +165,7 @@ $(document).ready(function () {
             comment: $("input[name=OneComment]").val(),
             total: $("input[name=TotalAmount]").val(),
             DepositID: $("input[name=DepositID]").val(),
-            type: $("input[name=PledgeOrPayment").val(),
+            type: $("input[name=PledgeOrPayment]").val(),
         };
         if ($("select[name=Method]").val() === "CASH") {
             fd["cashDenominations"] = getDenominationSubmitData();
@@ -235,10 +235,11 @@ $(document).ready(function () {
         }).done(function (data) {
             var submitType = $("button[type=submit][clicked=true]").val();
             if (submitType === "Save") {
+                var unescapedDepositId = $("input[name=DepositID]").val();
                 window.location.href =
                     "DepositSlipEditor.php?DepositSlipID=" +
-                    $("input[name=DepositID]").val();
-            } else if ((submitType = "Save and Add")) {
+                    encodeURIComponent(unescapedDepositId);
+            } else if (submitType === "Save and Add") {
                 window.location.href = "PledgeEditor.php";
             }
         });
@@ -264,7 +265,7 @@ $(document).ready(function () {
             data: "",
             processResults: function (data, params) {
                 var idKey = 1;
-                var results = new Array();
+                var results = [];
                 var groupName = Object.keys(data)[0];
                 var ckeys = data[groupName];
                 var resultGroup = {
@@ -273,7 +274,7 @@ $(document).ready(function () {
                     children: [],
                 };
                 idKey++;
-                var children = new Array();
+                var children = [];
                 $.each(ckeys, function (ckey, cvalue) {
                     var childObject = {
                         id: idKey,

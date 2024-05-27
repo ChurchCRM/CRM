@@ -28,7 +28,7 @@ class MenuRenderer
             <a href="<?= $menuItem->getURI() ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?> class="nav-link">
                 <i class='nav-icon fa <?= $menuItem->getIcon() ?>'></i>
                 <p>
-                    <span><?= $menuItem->getName() ?></span>
+                    <span><?= htmlspecialchars($menuItem->getName()) ?></span>
                     <span class="right">
                         <?php self::renderMenuCounters($menuItem) ?>
                     </span>
@@ -45,7 +45,7 @@ class MenuRenderer
             <a href="#" class="nav-link">
                 <i class="nav-icon fa <?= $menuItem->getIcon() ?>"></i>
                 <p>
-                    <span><?= $menuItem->getName() ?></span>
+                    <span><?= htmlspecialchars($menuItem->getName()) ?></span>
                     <span class="right">
                         <?php self::renderMenuCounters($menuItem) ?>
                         <i class="fas fa-angle-left"></i>

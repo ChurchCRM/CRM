@@ -26,7 +26,6 @@ $(document).ready(function () {
                 $("#groupName").val(null);
                 dataT.ajax.reload(); // PL : We should reload the table after we add a group so the button add to group is disabled
             });
-        } else {
         }
     });
 
@@ -47,14 +46,36 @@ $(document).ready(function () {
                 title: i18next.t("Group Name"),
                 data: "Name",
                 render: function (data, type, full, meta) {
-                    return (
-                        "<a href='GroupView.php?GroupID=" +
-                        full.Id +
-                        "'> <i class=\"fa fa-eye\"></i></a> <a href='GroupEditor.php?GroupID=" +
-                        full.Id +
-                        '\'><i class="fa fa-pen"></i></a> ' +
-                        data
-                    );
+                    const container = document.createElement('div');
+
+                    // clickable icon for viewing
+                    const link1 = document.createElement('a');
+                    link1.href = 'GroupView.php?GroupID=' + full.Id;
+
+                    const icon1 = document.createElement('i');
+                    icon1.className = 'fa fa-eye';
+
+                    link1.appendChild(icon1);
+
+                    // clickable icon for editing
+                    const link2 = document.createElement('a');
+                    link2.href = 'GroupEditor.php?GroupID=' + full.Id;
+
+                    const icon2 = document.createElement('i');
+                    icon2.className = 'fa fa-pen';
+
+                    link2.appendChild(icon2);
+
+                    // add it all to the encapsulating element
+                    container.appendChild(link1);
+                    container.appendChild(document.createTextNode(' '));
+                    container.appendChild(link2);
+                    container.appendChild(document.createTextNode(' '));
+
+                    const dataText = document.createTextNode(data);
+                    container.appendChild(dataText);
+
+                    return container.outerHTML;
                 },
             },
             {

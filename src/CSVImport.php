@@ -161,7 +161,7 @@ if (isset($_POST['UploadCSV'])) {
 
             echo '<tr>';
             for ($col = 0; $col < $numCol; $col++) {
-                echo '<td>' . $aData[$col] . '&nbsp;</td>';
+                echo '<td>' . htmlspecialchars($aData[$col]) . '&nbsp;</td>';
             }
             echo '</tr>';
         }
@@ -296,7 +296,7 @@ if (isset($_POST['DoImport'])) {
 
     $Families = [];
     // make sure the file still exists
-    if (file_exists($csvTempFile)) {
+    if (is_file($csvTempFile)) {
         // create the file pointer
         $pFile = fopen($csvTempFile, 'r');
 
