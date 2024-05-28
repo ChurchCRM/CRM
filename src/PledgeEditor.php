@@ -61,7 +61,7 @@ if (array_key_exists('GroupKey', $_GET)) {
     $sGroupKey = InputUtils::legacyFilterInput($_GET['GroupKey'], 'string');
 } // this will only be set if someone pressed the 'edit' button on the Pledge or Deposit line
 if (array_key_exists('CurrentDeposit', $_GET)) {
-    $iCurrentDeposit = InputUtils::legacyFilterInput($_GET['CurrentDeposit'], 'integer');
+    $iCurrentDeposit = InputUtils::legacyFilterInput($_GET['CurrentDeposit'], 'int');
 }
 $linkBack = InputUtils::legacyFilterInput($_GET['linkBack'], 'string');
 $iFamily = 0;
