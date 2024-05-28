@@ -14,39 +14,45 @@ class AppIntegrityService
     private static function getIntegrityCheckData()
     {
         $logger = LoggerUtils::getAppLogger();
-
         $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
-        if (AppIntegrityService::$IntegrityCheckDetails === null) {
-            $logger->debug('Integrity check results not cached; reloading from file');
-            if (is_file($integrityCheckFile)) {
-                $logger->debug("Integrity check result file found at: {integrityCheckFile}", [
+        if (AppIntegrityService::$IntegrityCheckDetails !== null) {
+            $logger->debug('Integrity check results already cached; not reloading from file');
+
+            return AppIntegrityService::$IntegrityCheckDetails;
+        }
+
+        $logger->debug('Integrity check results not cached; reloading from file');
+
+        if (is_file($integrityCheckFile)) {
+            $logger->debug("Integrity check result file found at: {integrityCheckFile}", [
+                'integrityCheckFile' => $integrityCheckFile,
+            ]);
+
+            try {
+                $integrityCheckFileContents = file_get_contents($integrityCheckFile);
+                MiscUtils::throwIfFailed($integrityCheckFileContents);
+                AppIntegrityService::$IntegrityCheckDetails = json_decode($integrityCheckFileContents, null, 512, JSON_THROW_ON_ERROR);
+            } catch (\Exception $e) {
+                $logger->warning("Error decoding integrity check result file: {integrityCheckFile}", [
                     'integrityCheckFile' => $integrityCheckFile,
+                    'exception' => $e,
                 ]);
 
-                try {
-                    $integrityCheckFileContents = file_get_contents($integrityCheckFile);
-                    MiscUtils::throwIfFailed($integrityCheckFileContents);
-                    AppIntegrityService::$IntegrityCheckDetails = json_decode($integrityCheckFileContents, null, 512, JSON_THROW_ON_ERROR);
-                } catch (\Exception $e) {
-                    $logger->warning("Error decoding integrity check result file: {integrityCheckFile}", [
-                        'integrityCheckFile' => $integrityCheckFile,
-                        'exception' => $e,
-                    ]);
-                    AppIntegrityService::$IntegrityCheckDetails = new \stdClass();
-                    AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
-                    AppIntegrityService::$IntegrityCheckDetails->message = gettext('Error decoding integrity check result file');
-                }
-            } else {
-                $logger->debug("Integrity check result file not found at: {integrityCheckFile}", [
-                    'integrityCheckFile' => $integrityCheckFile,
-                ]);
                 AppIntegrityService::$IntegrityCheckDetails = new \stdClass();
                 AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
-                AppIntegrityService::$IntegrityCheckDetails->message = gettext('integrityCheck.json file missing');
+                AppIntegrityService::$IntegrityCheckDetails->message = gettext('Error decoding integrity check result file');
             }
-        } else {
-            $logger->debug('Integrity check results already cached; not reloading from file');
+
+            return AppIntegrityService::$IntegrityCheckDetails;
         }
+
+        $logger->debug("Integrity check result file not found at: {integrityCheckFile}", [
+                    'integrityCheckFile' => $integrityCheckFile,
+                ]);
+
+        AppIntegrityService::$IntegrityCheckDetails = new \stdClass();
+        AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
+        AppIntegrityService::$IntegrityCheckDetails->message = gettext('integrityCheck.json file missing');
 
         return AppIntegrityService::$IntegrityCheckDetails;
     }
@@ -77,7 +83,6 @@ class AppIntegrityService
     public static function verifyApplicationIntegrity(): array
     {
         $logger = LoggerUtils::getAppLogger();
-
         $signatureFile = SystemURLs::getDocumentRoot() . '/signatures.json';
         $signatureFailures = [];
         if (is_file($signatureFile)) {
@@ -153,11 +158,11 @@ class AppIntegrityService
                 'message' => gettext('One or more files failed signature validation'),
                 'files'   => $signatureFailures,
             ];
-        } else {
-            return [
-                'status' => 'success',
-            ];
         }
+
+        return [
+            'status' => 'success',
+        ];
     }
 
     private static function verifyDirectoryWriteable(string $path): bool
@@ -223,70 +228,44 @@ class AppIntegrityService
 
     public static function hasModRewrite(): bool
     {
-        // mod_rewrite can be tricky to detect properly.
-        // First check if it's loaded as an apache module
-        // Second check (if supported) if apache cli lists the module
-        // Third, finally try calling a known invalid URL on this installation
-        //   and check for a header that would only be present if .htaccess was processed.
-        //   This header comes from index.php (which is the target of .htaccess for invalid URLs)
-
-        $check = false;
         $logger = LoggerUtils::getAppLogger();
 
-        if (isset($_SERVER['HTTP_MOD_REWRITE'])) {
-            $logger->info("Webserver configuration has set mod_rewrite variable: {$_SERVER['HTTP_MOD_REWRITE']}");
-            $check = strtolower($_SERVER['HTTP_MOD_REWRITE']) === 'on';
-        } elseif (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
-            $logger->debug('PHP is running through Apache; looking for mod_rewrite');
-            if (function_exists('apache_get_modules')) {
-                $check = in_array('mod_rewrite', apache_get_modules());
-            }
-            $logger->debug("Apache mod_rewrite check status: $check");
-            if (empty($check)) {
-                try {
-                    if (!empty(shell_exec('/usr/sbin/apachectl -M | grep rewrite'))) {
-                        $logger->debug('Found rewrite module enabled using apachectl');
-                        $check = true;
-                    }
-                } catch (\Throwable) {
-                    // do nothing
+        if (function_exists('curl_version')) {
+            $ch = curl_init();
+
+            $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
+            $request_scheme = $request_url_parser['scheme'] ?? 'http';
+            $request_host = $request_url_parser['host'] ?? $_SERVER['HTTP_HOST'];
+            // Run a test against an URL we know does not exist to check for ModRewrite like functionality
+            $rewrite_chk_url = $request_scheme . '://' . $request_host . SystemURLs::getRootPath() . '/INVALID';
+            $logger->debug("Testing CURL loopback check to: $rewrite_chk_url");
+
+            curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HEADER, true);
+            curl_setopt($ch, CURLOPT_NOBODY, true);
+
+            $result = curl_exec($ch);
+            curl_close($ch);
+
+            $header = [];
+            $headers = substr($result, 0, strpos($result, "\r\n\r\n"));
+
+            foreach (explode("\r\n", $headers) as $lineKey => $line) {
+                if ($lineKey === 0) {
+                    $header['status'] = $line;
                 }
+
+                list($key, $value) = explode(': ', $line);
+                $header[$key] = $value;
             }
-        } else {
-            $logger->debug('PHP is not running through Apache');
+
+            $logger->debug('CURL loopback check header observed: ' . (array_key_exists('crm', $header) ? 'true' : 'false'));
+            return array_key_exists('crm', $header) && $header['crm'] === 'would redirect';
         }
 
-        if ($check === false) {
-            $logger->debug('Previous rewrite checks failed');
-            if (function_exists('curl_version')) {
-                $ch = curl_init();
-                $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
-                $request_scheme = $request_url_parser['scheme'] ?? 'http';
-                $rewrite_chk_url = $request_scheme . '://' . $_SERVER['SERVER_ADDR'] . SystemURLs::getRootPath() . '/INVALID';
-                $logger->debug("Testing CURL loopback check to: $rewrite_chk_url");
-                curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($ch, CURLOPT_HEADER, 1);
-                curl_setopt($ch, CURLOPT_NOBODY, 1);
-                $output = curl_exec($ch);
-                curl_close($ch);
-                $headers = [];
-                $data = explode("\n", $output);
-                $headers['status'] = $data[0];
-                array_shift($data);
-                foreach ($data as $part) {
-                    if (strpos($part, ':')) {
-                        $middle = explode(':', $part);
-                        $headers[trim($middle[0])] = trim($middle[1]);
-                    }
-                }
-                $check = $headers['CRM'] === 'would redirect';
-                $logger->debug('CURL loopback check headers observed: ' . ($check ? 'true' : 'false'));
-            }
-        }
-
-        return $check;
+        return false;
     }
 }
