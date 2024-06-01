@@ -1,62 +1,98 @@
-sudo apt update ; sudo apt upgrade -y 
-sudo apt install unzip wget git -y
-sudo apt install apache2 -y
-sudo apt install mysql-server -y
+#!/usr/bin/env sh
 
-sudo apt install php libapache2-mod-php -y
-sudo apt install php-curl php-cli php-dev php-gd php-intl php-json php-mysql php-bcmath php-mbstring php-soap php-xml php-zip -y
+# Error on unset variable or parameter and exit
+set -u
+
+DATABASE_NAME="$1"
+DATABASE_USERNAME="$2"
+DATABASE_PASSWORD="$3"
+
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -y \
+  apache2 \
+  curl \
+  gawk \
+  libapache2-mod-php \
+  mariadb-client \
+  mariadb-server \
+  php \
+  php-bcmath \
+  php-cli \
+  php-curl \
+  php-dev \
+  php-gd \
+  php-intl \
+  php-mbstring \
+  php-mysql \
+  php-soap \
+  php-xml \
+  php-zip \
+  unzip \
+  wget
+
 cd /tmp
-git clone https://github.com/ChurchCRM/CRM.git
-cd /var/www
-sudo rm -rf html
-sudo cp -r /tmp/CRM/src /var/www/html
-sudo rm -rf /tmp/CRM
-cd /var/www/html/
-sudo find . -exec chown www-data:www-data "{}" \;
-sudo find . -type f -exec chmod 644 "{}" \;
-sudo find . -type d -exec chmod 755 "{}" \;
-sudo chmod 755 /var/www/html/Include
-sudo chmod 755 /var/www/html/Images
-sudo a2enmod rewrite
-sudo systemctl restart apache2 
+VERSION=$(curl -Is https://github.com/ChurchCRM/CRM/releases/latest | awk -F\/ '/^location:/ {sub(/\r$/, "", $NF); print $NF}')
+wget "https://github.com/ChurchCRM/CRM/releases/download/$VERSION/ChurchCRM-$VERSION.zip" || exit
+unzip "ChurchCRM-$VERSION.zip" && rm "ChurchCRM-$VERSION.zip"
+sudo chown -R www-data:www-data churchcrm
+sudo mv churchcrm /var/www/html/
 
-## Creating the database ##Please change the variables 
-## Please make sure to secure your Mysql server 
-BIN_MYSQL=$(which mysql)
-DB_HOST='localhost'
-DB_NAME='' ## Enter the database name 
-DB_USER='' ## enter the database username 
-DB_PASS='' ## enter the password 
-sudo mysql -e "CREATE DATABASE ${DB_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
-sudo mysql -e "CREATE USER ${DB_USER}@localhost IDENTIFIED BY '${DB_PASS}';"
-sudo mysql -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'localhost';"
-sudo mysql -e "FLUSH PRIVILEGES;"
+sudo systemctl enable apache2.service mariadb.service
 
-# Define the domain name of the server
-DOMAIN=""
-# Set-up the required BookStack apache config
+## Creating the database
+sudo mariadb -uroot -p -e "CREATE DATABASE ${DATABASE_NAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE USER ${DATABASE_USERNAME}@'localhost' IDENTIFIED BY '${DATABASE_PASSWORD}';
+GRANT ALL ON ${DATABASE_NAME}.* TO '${DATABASE_USERNAME}'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;"
+
+echo "Please make sure to secure your database server:"
+echo " sudo mysql_secure_installation"
+
+PHP_CONF_D_PATH="/etc/php/conf.d/churchcrm.ini"
+PHP_VERSION=$(php -r 'echo phpversion();' | cut -d '.' -f 1,2)
+
+if [ "$PHP_VERSION" = "8.3" ]
+then
+  PHP_CONF_D_PATH="/etc/php/8.3/apache2/conf.d/99-churchcrm.ini"
+fi
+
+# Set-up the required PHP configuration
+sudo tee "$PHP_CONF_D_PATH" << 'TXT'
+file_uploads = On
+allow_url_fopen = On
+short_open_tag = On
+memory_limit = 256M
+upload_max_filesize = 100M
+max_execution_time = 360
+TXT
+
+# Set-up the required Apache configuration
 sudo tee /etc/apache2/sites-available/churchcrm.conf << 'TXT'
 <VirtualHost *:80>
 
 ServerAdmin webmaster@localhost
-DocumentRoot /var/www/html/
+DocumentRoot /var/www/html/churchcrm/
+ServerName ChurchCRM
 
-<Directory /var/www/html/>
+<Directory /var/www/html/churchcrm/>
     Options -Indexes +FollowSymLinks
     AllowOverride All
     Require all granted
 </Directory>
 
-ErrorLog \${APACHE_LOG_DIR}/error.log
-CustomLog \${APACHE_LOG_DIR}/access.log combined
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
 
 </VirtualHost>
 TXT
 
-# Disable the default apache site and enable churchcrm
+# Enable apache rewrite module
+sudo a2enmod rewrite
+
+# Disable the default apache site and enable ChurchCRM
 sudo a2dissite 000-default.conf
 sudo a2ensite churchcrm.conf
 
-# Restart apache to load new config
-sudo systemctl restart apache2
-
+# Restart apache to load new configuration
+sudo systemctl restart apache2.service
