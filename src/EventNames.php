@@ -1,21 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : EventNames.php
- *  last change : 2005-09-10
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2005 Todd Pillars
- *
- *  function    : List all Church Events
-  *
- *
- *  Modified by Stephen Shaffer, Oct 2006
- *  feature changes - added recurring defaults and customizable attendance count
- *  fields
- *
- ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -24,20 +8,17 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddEvent());
+if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
+    RedirectUtils::securityRedirect('AddEvent');
+}
 
 $sPageTitle = gettext('Edit Event Types');
 
 require 'Include/Header.php';
 
-//
-//  process the ACTION button inputs from the form page
-//
-
 if (isset($_POST['Action'])) {
     switch (InputUtils::legacyFilterInput($_POST['Action'])) {
         case 'CREATE':
-        // Insert into the event_name table
             $eName = $_POST['newEvtName'];
             $eTime = $_POST['newEvtStartTime'];
             $eDOM = $_POST['newEvtRecurDOM'];
@@ -46,13 +27,15 @@ if (isset($_POST['Action'])) {
             $eRecur = $_POST['newEvtTypeRecur'];
             $eCntLst = $_POST['newEvtTypeCntLst'];
             $eCntArray = array_filter(array_map('trim', explode(',', $eCntLst)));
-            $eCntArray[] = 'Total';
+            // Normally, the order should not matter. The problem arises if the
+            // subscript already exists among others. Here, keeping it at the
+            // head of the array would be needed in some (or most) PHP versions
+            // especially if it is used in loops that take a total value without
+            // being part of the rest of the array.
+            array_unshift($eCntArray, 'Total');
             $eCntNum = count($eCntArray);
             $theID = $_POST['theID'];
 
-          # We need to be able to handle database configurations where MySQL Strict mode is enabled. (#4273)
-          # See: https://dev.mysql.com/doc/refman/en/sql-mode.html#sql-mode-strict
-          # Special thanks to @chiebert (GitHub) for the fix!
             $insert = "INSERT INTO event_types (type_name";
             $values = " VALUES ('" . InputUtils::legacyFilterInput($eName) . "'";
             if (!empty($eTime)) {
