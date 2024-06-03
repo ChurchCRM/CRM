@@ -198,7 +198,7 @@
 								""
 							]
 						},
-						"description": "get all notitication to show the user"
+						"description": "get all notification to show the user"
 					},
 					"response": []
 				}
@@ -947,7 +947,7 @@
 								"105"
 							]
 						},
-						"description": "return perosn by Id"
+						"description": "return person by Id"
 					},
 					"response": [
 						{
@@ -1071,7 +1071,7 @@
 										"105"
 									]
 								},
-								"description": "return perosn by Id"
+								"description": "return person by Id"
 							},
 							"response": [
 								{
@@ -3119,7 +3119,7 @@
 										}
 									]
 								},
-								"description": "get all notitication to show the user"
+								"description": "get all notification to show the user"
 							},
 							"response": []
 						},
@@ -3144,7 +3144,7 @@
 										"timer"
 									]
 								},
-								"description": "get all notitication to show the user"
+								"description": "get all notification to show the user"
 							},
 							"response": []
 						}
@@ -3173,7 +3173,7 @@
 								"notification"
 							]
 						},
-						"description": "get all notitication to show the user"
+						"description": "get all notification to show the user"
 					},
 					"response": []
 				}

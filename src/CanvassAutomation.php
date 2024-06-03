@@ -80,7 +80,7 @@ if (isset($_POST['ClearAllOkToCanvass'])) {
         CanvassClearAllOkToCanvass();
         $processNews = gettext('Disabled Ok To Canvass for all families.');
     } else {
-        $processNews = gettext('ClearAllOkToCanvass button not confimed.');
+        $processNews = gettext('ClearAllOkToCanvass button not confirmed.');
     }
 }
 if (isset($_POST['BriefingSheets'])) {

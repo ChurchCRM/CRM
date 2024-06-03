@@ -181,7 +181,7 @@ class LocalAuthentication implements IAuthenticationProvider
         ];
         LoggerUtils::getAuthLogger()->debug('Processing session for user', $logCtx);
 
-        // Next, make sure the user in the sesion still exists in the database.
+        // Next, make sure the user in the session still exists in the database.
         try {
             $this->currentUser->reload();
         } catch (\Exception $exc) {

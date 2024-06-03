@@ -215,7 +215,7 @@
 ### Inner Beauty
 * introduce phpcs and conform to psr12 by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6600
 * Build: 5.1.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6604
-* Remove System regestration feature by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6605
+* Remove System registration feature by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6605
 * Moved from Custom github action for Release Notes to github builtin  by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6609
 * better utilize docker layer cache, make `up` rebuild by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6612
 ### 👒 Dependencies
@@ -273,12 +273,12 @@ We'd like to thank all the contributors who worked on this release!
 ## :beetle: Bugs
 
 - Bug fixes - User Setting / View Person / CVS Import [#6581](https://github.com/ChurchCRM/CRM/pull/6581)
-- Removed Intelligent Search Technolgy as a tool [#6585](https://github.com/ChurchCRM/CRM/pull/6585)
-- intelligentsearch was shutdown  [#6584](https://github.com/ChurchCRM/CRM/issues/6584)
+- Removed Intelligent Search Technology as a tool [#6585](https://github.com/ChurchCRM/CRM/pull/6585)
+- intelligent search was shutdown  [#6584](https://github.com/ChurchCRM/CRM/issues/6584)
 
 ## :gear: Inner Beauty
 
-- spelling dashbaord/dashboard [#6590](https://github.com/ChurchCRM/CRM/pull/6590)
+- spelling dashboard/dashboard [#6590](https://github.com/ChurchCRM/CRM/pull/6590)
 
 ## :heart: Contributors
 
@@ -289,10 +289,10 @@ We'd like to thank all the contributors who worked on this release!
 - ## What's Changed
 * Bug fixes - User Setting / View Person / CVS Import by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6581
 * 5.0.4 Locale update & Czech locale added by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6583
-* Removed Intelligent Search Technolgy as a tool by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6585
+* Removed Intelligent Search Technology as a tool by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6585
 * Test/ensure load top pages by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6586
 * 5.0.4 POEditor Update - 2023-10-29 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6587
-* spelling dashbaord/dashboard by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6590
+* spelling dashboard/dashboard by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6590
 * Footer copyright by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6593
 * Update Config.php.example by @brianteeman in https://github.com/ChurchCRM/CRM/pull/6592
 
@@ -789,20 +789,17 @@ Relasesed on (3.1.2021)
 - 4.3.2 POEditor Update - 2020-12-10 [#5612](https://github.com/ChurchCRM/CRM/pull/5612)
 
 
-Language | Translations | Percentage
--- | -- | --
-Vietnamese | 1 581 | 66.40%
-Arabic | 116 | 4.87%
-Indonesian | 73 | 3.07%
-Polish | 48 | 2.02%
-German | 25 | 1.05%
-Slovenian | 16 | 0.67%
-Russian | 10 | 0.42%
-Estonian | 5 | 0.21%
-Spanish | 3 | 0.13%
-
-
-
+| Language   | Translations | Percentage |
+|------------|--------------|------------|
+| Vietnamese | 1 581        | 66.40%     |
+| Arabic     | 116          | 4.87%      |
+| Indonesian | 73           | 3.07%      |
+| Polish     | 48           | 2.02%      |
+| German     | 25           | 1.05%      |
+| Slovenian  | 16           | 0.67%      |
+| Russian    | 10           | 0.42%      |
+| Estonian   | 5            | 0.21%      |
+| Spanish    | 3            | 0.13%      |
 
 ## :beetle: Bugs
 
@@ -826,11 +823,11 @@ Relasesed on (12.9.2020)
 
 New Terms updated
 
-Language | Translations | Percentage
--- | -- | --
-French | 68 | 2.86%
-Portuguese (BR) | 57 | 2.39%
-Chinese (TW) | 1 | 0.04%
+| Language        | Translations | Percentage |
+|-----------------|--------------|------------|
+| French          | 68           | 2.86%      |
+| Portuguese (BR) | 57           | 2.39%      |
+| Chinese (TW)    | 1            | 0.04%      |
 
 ## :bug: Bug
 - Docker is now using PHP 7.4.13 [#5600](https://github.com/ChurchCRM/CRM/pull/5600)
@@ -1210,7 +1207,7 @@ Released on (02.20.2020)
 ## :beetle: Bugs
 
 - Cannot Load Interface After Initial Setup [#5164](https://github.com/ChurchCRM/CRM/issues/5164)
-- Backup Timerjobs API throwing error 500 preventing uprgade [#5159](https://github.com/ChurchCRM/CRM/issues/5159)
+- Backup Timerjobs API throwing error 500 preventing upgrade [#5159](https://github.com/ChurchCRM/CRM/issues/5159)
 - The installer does not recognize file permissions Include/Config and Images, when fixed and finished the installer login got stuck on the page localhost/setup [#5146](https://github.com/ChurchCRM/CRM/issues/5146)
 
 # 4.0.1

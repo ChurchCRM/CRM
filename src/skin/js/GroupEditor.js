@@ -138,7 +138,7 @@ $("document").ready(function () {
         if (roleSequenceAction === "roleUp") {
             newRoleSequence = Number(currentRoleSequence) - 1; //decrease the role's sequence number
         } else if (roleSequenceAction === "roleDown") {
-            newRoleSequence = Number(currentRoleSequence) + 1; // increase the role's sequenc number
+            newRoleSequence = Number(currentRoleSequence) + 1; // increase the role's sequence number
         }
 
         replaceRow = dataT.row(function (idx, data, node) {

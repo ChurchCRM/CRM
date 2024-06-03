@@ -345,7 +345,7 @@ class User extends BaseUser
         $key = $google2fa->generateSecretKey();
         // store the temporary 2FA key in a private variable on this User object
         // we don't want to update the database with the new key until we've confirmed
-        // that the user is capapble of generating valid 2FA codes
+        // that the user is capable of generating valid 2FA codes
         // encrypt the 2FA key since this object and its properties are serialized into the $_SESSION store
         // which is generally written to disk.
         $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManager::getTwoFASecretKey());

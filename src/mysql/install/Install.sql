@@ -1261,7 +1261,7 @@ CREATE TABLE `church_location_role` (
   `location_id` INT NOT NULL,
   `role_id` INT NOT NULL,
   `role_order` INT NOT NULL,
-  `role_title` INT NOT NULL,  #Thi
+  `role_title` INT NOT NULL,
   PRIMARY KEY (`location_id`, `role_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 

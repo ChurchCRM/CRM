@@ -139,7 +139,7 @@ class GeoUtils
         $x = cos($lat1) * sin($lat2) - sin($lat1) * cos($lat2) * cos($lon2 - $lon1);
         $bearing = atan2($y, $x);
 
-        // Covert from radians to degrees
+        // Convert from radians to degrees
         $bearing = sprintf('%5.1f', rad2deg($bearing));
 
         // Convert to directions
