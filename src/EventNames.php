@@ -141,7 +141,7 @@ for ($row = 1; $row <= $numRows; $row++) {
     // recur types = 1-DOW for weekly, 2-DOM for monthly, 3-DOY for yearly.
     // repeats on DOW, DOM or DOY
     //
-    // new - check the count definintions table for a list of count fields
+    // new - check the count definitions table for a list of count fields
     $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
     $cOpps = RunQuery($cSQL);
     $numCounts = mysqli_num_rows($cOpps);

@@ -16,13 +16,13 @@
 //          + : Now Positions start @ (1,1).. then the first image @top-left of a page is (1,1)
 //          + : Added in the description of a label :
 //                font-size     : default char size (can be changed by calling setCharSize(xx);
-//                paper-size    : Size of the paper for this sheet (thanx to Al Canton)
+//                paper-size    : Size of the paper for this sheet (thanks to Al Canton)
 //                metric        : type of unit used in this description
 //                              You can define your label properties in inches by setting metric to 'in'
-//                              and printing in millimiter by setting unit to 'mm' in constructor.
+//                              and printing in millimeter by setting unit to 'mm' in constructor.
 //              Added some labels :
-//                5160, 5161, 5162, 5163,5164 : thanx to Al Canton : acanton@adams-blake.com
-//                8600                         : thanx to Kunal Walia : kunal@u.washington.edu
+//                5160, 5161, 5162, 5163,5164 : thanks to Al Canton : acanton@adams-blake.com
+//                8600                         : thanks to Kunal Walia : kunal@u.washington.edu
 //          + : Added 3mm to the position of labels to avoid errors
 ////////////////////////////////////////////////////
 

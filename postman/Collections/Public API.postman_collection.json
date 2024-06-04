@@ -114,7 +114,7 @@
 					"response": []
 				},
 				{
-					"name": "Public Data: Canadian Provices",
+					"name": "Public Data: Canadian Provinces",
 					"request": {
 						"method": "GET",
 						"header": [],

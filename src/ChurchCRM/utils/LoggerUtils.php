@@ -113,8 +113,8 @@ class LoggerUtils
 
     public static function resetAppLoggerLevel(): void
     {
-        // If the app log handler was initialized (in the boostrapper) to a specific level
-        // before the database initialization occurred
+        // If the app log handler was initialized (in the bootstrapper) to a specific level
+        // before the database initialization occurred,
         // we provide a function to reset the app logger to what's defined in the database.
         self::$appLogHandler->setLevel(self::getLogLevel());
     }
