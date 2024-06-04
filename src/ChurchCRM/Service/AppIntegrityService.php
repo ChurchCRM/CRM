@@ -19,20 +19,27 @@ class AppIntegrityService
         if (AppIntegrityService::$IntegrityCheckDetails === null) {
             $logger->debug('Integrity check results not cached; reloading from file');
             if (is_file($integrityCheckFile)) {
-                $logger->debug('Integrity check result file found at: ' . $integrityCheckFile);
+                $logger->debug("Integrity check result file found at: {integrityCheckFile}", [
+                    'integrityCheckFile' => $integrityCheckFile,
+                ]);
 
                 try {
                     $integrityCheckFileContents = file_get_contents($integrityCheckFile);
                     MiscUtils::throwIfFailed($integrityCheckFileContents);
                     AppIntegrityService::$IntegrityCheckDetails = json_decode($integrityCheckFileContents, null, 512, JSON_THROW_ON_ERROR);
                 } catch (\Exception $e) {
-                    $logger->warning('Error decoding integrity check result file: ' . $integrityCheckFile, ['exception' => $e]);
+                    $logger->warning("Error decoding integrity check result file: {integrityCheckFile}", [
+                        'integrityCheckFile' => $integrityCheckFile,
+                        'exception' => $e,
+                    ]);
                     AppIntegrityService::$IntegrityCheckDetails = new \stdClass();
                     AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
                     AppIntegrityService::$IntegrityCheckDetails->message = gettext('Error decoding integrity check result file');
                 }
             } else {
-                $logger->debug('Integrity check result file not found at: ' . $integrityCheckFile);
+                $logger->debug("Integrity check result file not found at: {integrityCheckFile}", [
+                    'integrityCheckFile' => $integrityCheckFile,
+                ]);
                 AppIntegrityService::$IntegrityCheckDetails = new \stdClass();
                 AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
                 AppIntegrityService::$IntegrityCheckDetails->message = gettext('integrityCheck.json file missing');
@@ -55,8 +62,8 @@ class AppIntegrityService
 
     public static function getIntegrityCheckMessage(): string
     {
-        if (AppIntegrityService::getIntegrityCheckData()->status !== 'failure') {
-            AppIntegrityService::$IntegrityCheckDetails->message = gettext('The previous integrity check passed.  All system file hashes match the expected values.');
+        if (AppIntegrityService::getIntegrityCheckStatus() === 'Passed') {
+            AppIntegrityService::$IntegrityCheckDetails->message = gettext('The previous integrity check passed. All system file hashes match the expected values.');
         }
 
         return AppIntegrityService::$IntegrityCheckDetails->message;
@@ -74,14 +81,19 @@ class AppIntegrityService
         $signatureFile = SystemURLs::getDocumentRoot() . '/signatures.json';
         $signatureFailures = [];
         if (is_file($signatureFile)) {
-            $logger->debug('Signature file found at: ' . $signatureFile);
+            $logger->debug("Signature file found at: {signatureFile}", [
+                'signatureFile' => $signatureFile,
+            ]);
 
             try {
                 $signatureFileContents = file_get_contents($signatureFile);
                 MiscUtils::throwIfFailed($signatureFileContents);
                 $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
             } catch (\Exception $e) {
-                $logger->warning('Error decoding signature definition file: ' . $signatureFile, ['exception' => $e]);
+                $logger->warning("Error decoding signature definition file: {signatureFile}", [
+                    'signatureFile' => $signatureFile,
+                    'exception' => $e,
+                ]);
 
                 return [
                     'status'  => 'failure',
@@ -93,8 +105,12 @@ class AppIntegrityService
                     $currentFile = SystemURLs::getDocumentRoot() . '/' . $file->filename;
                     if (is_file($currentFile)) {
                         $actualHash = sha1_file($currentFile);
-                        if ($actualHash != $file->sha1) {
-                            $logger->warning('File hash mismatch: ' . $file->filename . '. Expected: ' . $file->sha1 . '; Got: ' . $actualHash);
+                        if ($actualHash !== $file->sha1) {
+                            $logger->warning("File hash mismatch: {filename}. Expected: {expectedHash}; Got: {actualHash}", [
+                                'filename' => $file->filename,
+                                'expectedHash' => $file->sha1,
+                                'actualHash' => $actualHash,
+                            ]);
                             $signatureFailures[] = [
                                 'filename' => $file->filename,
                                 'status' => 'Hash Mismatch',
@@ -103,7 +119,9 @@ class AppIntegrityService
                             ];
                         }
                     } else {
-                        $logger->warning('File Missing: ' . $file->filename);
+                        $logger->warning("File Missing: {filename}", [
+                            'filename' => $file->filename,
+                        ]);
                         $signatureFailures[] = [
                             'filename' => $file->filename,
                             'status' => 'File Missing',
@@ -119,7 +137,9 @@ class AppIntegrityService
                 ];
             }
         } else {
-            $logger->warning('Signature definition file not found at: ' . $signatureFile);
+            $logger->warning("Signature definition file not found at: {signatureFile}", [
+                'signatureFile' => $signatureFile,
+            ]);
 
             return [
                 'status'  => 'failure',
@@ -140,11 +160,18 @@ class AppIntegrityService
         }
     }
 
-    private static function testImagesWriteable(): bool
+    private static function verifyDirectoryWriteable(string $path): bool
     {
-        return is_writable(SystemURLs::getDocumentRoot() . '/Images/') &&
-            is_writable(SystemURLs::getDocumentRoot() . '/Images/Family') &&
-            is_writable(SystemURLs::getDocumentRoot() . '/Images/Person');
+        $logger = LoggerUtils::getAppLogger();
+
+        if (is_dir($path) && is_writable($path)) {
+            return true;
+        }
+
+        $logger->warning("Directory is not writeable: {path}", [
+            'path' => $path,
+        ]);
+        return  false;
     }
 
     /**
@@ -167,8 +194,10 @@ class AppIntegrityService
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => extension_loaded('fileinfo')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_version')),
             new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
-            new Prerequisite('Include/Config file is writeable', fn (): bool => is_writable(SystemURLs::getDocumentRoot() . '/Include/') || is_writable(SystemURLs::getDocumentRoot() . '/Include/Config.php')),
-            new Prerequisite('Images directory is writeable', fn (): bool => AppIntegrityService::testImagesWriteable()),
+            new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/') && is_writable(SystemURLs::getDocumentRoot() . '/Include/Config.php')),
+            new Prerequisite('Images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/')),
+            new Prerequisite('Family images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Family')),
+            new Prerequisite('Person images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Person')),
             new Prerequisite('PHP ZipArchive', fn (): bool => extension_loaded('zip')),
             new Prerequisite('Mysqli Functions', fn (): bool => function_exists('mysqli_connect')),
         ];
