@@ -3,17 +3,16 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-// Set the page title and include HTML header
 $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
-
 
 $headerHTML = '<b>Church</b>CRM';
 $sHeader = SystemConfig::getValue("sHeader");
 $sChurchName = SystemConfig::getValue("sChurchName");
+
 if (!empty($sHeader)) {
     $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
-} else if (!empty($sChurchName)) {
+} elseif (!empty($sChurchName)) {
     $headerHTML = $sChurchName;
 }
 
@@ -59,7 +58,7 @@ if (!empty($sHeader)) {
                 <div class="form-group has-feedback">
                     <div class="row">
                         <div class="col-lg-3">
-                            <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" required value="<?= SystemConfig::getValue('sDefaultZip') ?>">
+                            <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" value="<?= SystemConfig::getValue('sDefaultZip') ?>">
                         </div>
                         <div class="col-lg-9">
                             <select id="familyCountry" name="familyCountry" class="form-control select2" data-system-default="<?= SystemConfig::getValue('sDefaultCountry')?>">
