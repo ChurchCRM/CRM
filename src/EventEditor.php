@@ -1,27 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : EventEditor.php
- *  last change : 2005-09-10
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2005 Todd Pillars
- *                Copyright 2012 Michael Wilt
- *
- *  function    : Editor for Church Events
- *
- ******************************************************************************/
-
-// table fields
-//  event_id       int(11)
-//  event_type     enum('CS', 'SS', 'VOL')
-//  event_title    varchar(255)
-//  event_desc     varchar(255)
-//  event_text     text
-//  event_start    datetime
-//  event_end      datetime
-//  inactive       int(1) default 0
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -32,12 +10,15 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
+if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
+    RedirectUtils::securityRedirect('AddEvent');
+}
+
 $sPageTitle = gettext('Church Event Editor');
 
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddEvent());
+require 'Include/Header.php';
 
 $sAction = 'Create Event';
-require 'Include/Header.php';
 
 if (isset($_GET['calendarAction'])) {
     $sAction = 'Edit';
@@ -51,33 +32,26 @@ if (isset($_GET['calendarAction'])) {
         $sOpp = $_POST['EID'];
     } // from EDIT button on event listing
 
+    $tyid = 0;
+
     if (array_key_exists('EN_tyid', $_POST)) {
         $tyid = $_POST['EN_tyid'];
-    } else {  // from event type list page
-        $tyid = 0;
     }
 }
 
+$EventExists = 0;
 $iEventID = 0;
 $iErrors = 0;
 
-if (!$sAction) {
-    $sAction = 'Create Event';
-}
-
-//
-// process the action inputs
-//
 if ($sAction === 'Create Event' && !empty($tyid)) {
-    //
-    // user is coming from the event types screen and thus there
+
+    // User is coming from the event types screen and thus there
     // is no existing event in the event_event table
     //
     // will use the event type information to smart-prefill the
     // event fields...but still allow the user to edit everything
     // except event type since event type is tied to the attendance count fields
-    //
-    $EventExists = 0;
+
     $sSQL = "SELECT * FROM event_types WHERE type_id=$tyid";
     $rsOpps = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsOpps);
@@ -112,10 +86,9 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     }
     $nCnts = $iNumCounts;
     $sCountNotes = '';
-    //
-    // this switch manages the smart-prefill of the form based on the event type
+
+    // This switch manages the smart-prefill of the form based on the event type
     // definitions, recurrence type, etc.
-    //
     switch ($sDefRecurType) {
         case 'none':
             $sEventStartDate = date('Y-m-d');
@@ -128,13 +101,13 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             break;
 
         case 'weekly':
-            // check for the last occurrence of this type_id in the events table and
+            // Check for the last occurrence of this type_id in the events table and
             // create a new event based on this date reference
             $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
             $ecOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($ecOpps);
             if ($numRows > 0) {
-                // use the most recent event if it exists
+                // Use the most recent event if it exists
                 $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
                 extract($ecRow);
                 $aStartTokens = explode(' ', $event_start);
@@ -149,7 +122,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 $iEventEndHour = $iEventStartHour + 1;
                 $iEventEndMins = $iEventStartMins;
             } else {
-                // use the event type definition
+                // Use the event type definition
                 $sEventStartDate = date('Y-m-d', strtotime("last $iDefRecurDOW"));
                 $aStartTimeTokens = explode(':', $sDefStartTime);
                 $iEventStartHour = $aStartTimeTokens[0];
@@ -161,13 +134,13 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             break;
 
         case 'monthly':
-            // check for the last occurrence of this type_id in the events table and
+            // Check for the last occurrence of this type_id in the events table and
             // create a new event based on this date reference
             $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
             $ecOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($ecOpps);
             if ($numRows > 0) {
-                // use the most recent event if it exists
+                // Use the most recent event if it exists
                 $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
                 extract($ecRow);
                 $aStartTokens = explode(' ', $event_start);
@@ -182,7 +155,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 $iEventEndHour = intval($aEventStartTimeTokens[0]) + 1;
                 $iEventEndMins = $aEventStartTimeTokens[1];
             } else {
-                // use the event type definition
+                // Use the event type definition
                 $currentDOM = date('d');
                 if ($currentDOM < $iDefRecurDOM) {
                     $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, date('m') - 1, $iDefRecurDOM, date('Y')));
@@ -204,7 +177,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $ecOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($ecOpps);
             if ($numRows > 0) {
-                // use the most recent event if it exists
+                // Use the most recent event, if it exists
                 $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
                 extract($ecRow);
                 $aStartTokens = explode(' ', $event_start);
@@ -219,15 +192,18 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 $iEventEndHour = intval($aEventStartTimeTokens[0]) + 1;
                 $iEventEndMins = $aEventStartTimeTokens[1];
             } else {
-                // use the event type definition
+                // Use the event type definition
                 $currentDOY = time();
                 $defaultDOY = strtotime($sDefRecurDOY);
-                if ($currentDOY < $defaultDOY) {  // event is future
+                if ($currentDOY < $defaultDOY) {
+                    // Event is in the future
                     $sEventStartDate = $sDefRecurDOY;
-                } elseif ($currentDOY > $defaultDOY + (365 * 24 * 60 * 60)) {  // event is over 1 year past
+                } elseif ($currentDOY > $defaultDOY + (365 * 24 * 60 * 60)) {
+                    // Event is over 1 year in the past
                     $aDMY = explode('-', $sDefRecurDOY);
                     $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y') - 1));
-                } else { // event is past
+                } else {
+                    // Event is past
                     $aDMY = explode('-', $sDefRecurDOY);
                     $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y')));
                 }
@@ -247,7 +223,6 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $iEventStatus = 0;
     $iTypeID = $type_id;
 } elseif ($sAction = 'Edit' && !empty($sOpp)) {
-    // Get data for the form as it now exists..
     $EventExists = 1;
     $sSQL = "SELECT * FROM events_event as t1, event_types as t2 WHERE t1.event_type = t2.type_id AND t1.event_id ='" . $sOpp . "' LIMIT 1";
     $rsOpps = RunQuery($sSQL);
@@ -274,11 +249,11 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $iEventStatus = $inactive;
 
     $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
-    //        echo $cvSQL;
+
     $cvOpps = RunQuery($sSQL);
     $iNumCounts = mysqli_num_rows($cvOpps);
     $nCnts = $iNumCounts;
-    //        echo "numcounts = {$aNumCounts}\n\l";
+
     if ($iNumCounts) {
         for ($c = 0; $c < $iNumCounts; $c++) {
             $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
@@ -290,17 +265,16 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         }
     }
 } elseif (isset($_POST['SaveChanges'])) {
-    // Does the user want to save changes to text fields?
-    $iEventID = $_POST['EventID'];
-    $iTypeID = $_POST['EventTypeID'];
-    $EventExists = $_POST['EventExists'];
-    $sEventTitle = $_POST['EventTitle'];
-    $sEventDesc = $_POST['EventDesc'];
+    $iEventID = InputUtils::legacyFilterInput($_POST['EventID'], 'int');
+    $iTypeID = InputUtils::legacyFilterInput($_POST['EventTypeID'], 'int');
+    $EventExists = InputUtils::legacyFilterInput($_POST['EventExists'], 'int');
+    $sEventTitle = InputUtils::legacyFilterInput($_POST['EventTitle']);
+    $sEventDesc = InputUtils::legacyFilterInput($_POST['EventDesc']);
     if (empty($_POST['EventTypeID'])) {
         $bEventTypeError = true;
         $iErrors++;
     } else {
-        $sSQL = "SELECT type_name FROM event_types WHERE type_id = '" . InputUtils::legacyFilterInput($iTypeID) . "' LIMIT 1";
+        $sSQL = "SELECT type_name FROM event_types WHERE type_id = '" . $iTypeID . "' LIMIT 1";
         $rsOpps = RunQuery($sSQL);
         $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
         extract($aRow);
@@ -342,15 +316,14 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
     $sCountNotes = $_POST['EventCountNotes'];
 
-    // If no errors, then update.
     if ($iErrors === 0) {
-        if ($EventExists == 0) {
+        if ($EventExists === 0) {
             $event = new Event();
             $event
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
                 ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
-                ->setText(InputUtils::filterHTML($sEventText))
+                ->setText(InputUtils::legacyFilterInput($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
@@ -376,7 +349,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
                 ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
-                ->setText(InputUtils::filterHTML($sEventText))
+                ->setText(InputUtils::legacyFilterInput($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
@@ -398,19 +371,17 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         header('Location: ListEvents.php');
     }
 }
-
-// Construct the form
 ?>
 
 <div class='card'>
     <div class='card-header'>
-        <h3><?= ($EventExists == 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ') . $iEventID ?></h3>
+        <h3><?= ($EventExists === 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ') . $iEventID ?></h3>
 
         <?php
-        if ($iErrors !== 0) {
-            echo "<div class='alert alert-danger'>" . gettext('There were ') . $iErrors . gettext(' errors. Please see below') . '</div>';
-        } else {
+        if ($iErrors === 0) {
             echo '<div>' . gettext('Items with a ') . '<span style="color: red">*</span>' . gettext(' are required') . '</div>';
+        } else {
+            echo "<div class='alert alert-danger'>" . gettext('There were ') . $iErrors . gettext(' errors. Please see below') . '</div>';
         }
         ?>
     </div>
@@ -450,7 +421,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 </tr>
 
                 <?php
-            } else { // if (empty($iTypeID))?>
+            } else { ?>
                 <tr>
                     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Type') ?>:</td>
                     <td colspan="3" class="TextColumn">
@@ -459,7 +430,6 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                         <?= ($iTypeID . '-' . $sTypeName) ?>
                     </td>
                 </tr>
-
                 <tr>
                     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Title') ?>:</td>
                     <td colspan="1" class="TextColumn">
@@ -480,15 +450,13 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                         <input type="text" name="EventDateRange" value=""
                                maxlength="10" id="EventDateRange" size="50" class='form-control' width="100%" style="width: 100%" required>
                     </td>
-
                 </tr>
-
                 <tr>
                     <td class="LabelColumn"><?= gettext('Attendance Counts') ?></td>
                     <td class="TextColumn" colspan="3">
                         <input type="hidden" name="NumAttendCounts" value="<?= $nCnts ?>">
                         <?php
-                        if ($nCnts == 0) {
+                        if ($nCnts === 0) {
                             echo gettext('No Attendance counts recorded');
                         } else {
                             ?>
@@ -504,8 +472,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                                     </td>
                                     </tr>
                                     <?php
-                                } //end for loop
-                                ?>
+                                } ?>
                                 <tr>
                                     <td><strong><?= gettext('Attendance Notes: ') ?>&nbsp;</strong></td>
                                     <td><input type="text" name="EventCountNotes" value="<?= $sCountNotes ?>" class='form-control'>
@@ -513,8 +480,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                                 </tr>
                             </table>
                             <?php
-                        } //endif
-                        ?>
+                        } ?>
                     </td>
                 </tr>
 
@@ -541,7 +507,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     <td><input type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary"></td>
                 </tr>
                 <?php
-            } // if (empty($iTypeID))?>
+            } ?>
         </table>
     </form>
     </div>

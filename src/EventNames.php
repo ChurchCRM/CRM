@@ -1,21 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : EventNames.php
- *  last change : 2005-09-10
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2005 Todd Pillars
- *
- *  function    : List all Church Events
-  *
- *
- *  Modified by Stephen Shaffer, Oct 2006
- *  feature changes - added recurring defaults and customizable attendance count
- *  fields
- *
- ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -30,14 +14,9 @@ $sPageTitle = gettext('Edit Event Types');
 
 require 'Include/Header.php';
 
-//
-//  process the ACTION button inputs from the form page
-//
-
 if (isset($_POST['Action'])) {
     switch (InputUtils::legacyFilterInput($_POST['Action'])) {
         case 'CREATE':
-        // Insert into the event_name table
             $eName = $_POST['newEvtName'];
             $eTime = $_POST['newEvtStartTime'];
             $eDOM = $_POST['newEvtRecurDOM'];
@@ -50,9 +29,6 @@ if (isset($_POST['Action'])) {
             $eCntNum = count($eCntArray);
             $theID = $_POST['theID'];
 
-          # We need to be able to handle database configurations where MySQL Strict mode is enabled. (#4273)
-          # See: https://dev.mysql.com/doc/refman/en/sql-mode.html#sql-mode-strict
-          # Special thanks to @chiebert (GitHub) for the fix!
             $insert = "INSERT INTO event_types (type_name";
             $values = " VALUES ('" . InputUtils::legacyFilterInput($eName) . "'";
             if (!empty($eTime)) {
@@ -87,7 +63,7 @@ if (isset($_POST['Action'])) {
                 $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . InputUtils::legacyFilterInput($theID) . "','" . InputUtils::legacyFilterInput($cCnt) . "') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
                 RunQuery($sSQL);
             }
-            RedirectUtils::redirect('EventNames.php'); // clear POST
+            RedirectUtils::redirect('EventNames.php');
             break;
 
         case 'DELETE':
@@ -102,13 +78,10 @@ if (isset($_POST['Action'])) {
     }
 }
 
-// Get data for the form as it now exists.
-
 $sSQL = 'SELECT * FROM event_types ORDER BY type_id';
 $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
 
-        // Create arrays of the event types
 for ($row = 1; $row <= $numRows; $row++) {
     $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
     extract($aRow);
@@ -354,7 +327,6 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function () {
-//Added by @saulowulhynek to translation of datatable nav terms
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);
   });
 </script>
