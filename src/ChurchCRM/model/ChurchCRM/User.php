@@ -89,11 +89,6 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isEditSelf();
     }
 
-    public function isCanvasserEnabled(): bool
-    {
-        return $this->isAdmin() || $this->isCanvasser();
-    }
-
     public function updatePassword(string $password): void
     {
         $this->setPassword($this->hashPassword($password));
@@ -249,10 +244,6 @@ class User extends BaseUser
         }
 
         if ($securityConfigName == 'bNotes' && $this->isNotesEnabled()) {
-            return true;
-        }
-
-        if ($securityConfigName == 'bCanvasser' && $this->isCanvasserEnabled()) {
             return true;
         }
 
