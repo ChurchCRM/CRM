@@ -159,10 +159,6 @@
         <column name="fam_SendNewsLetter" phpName="SendNewsletter" type="CHAR" sqlType="enum('FALSE','TRUE')"
                 required="true" defaultValue="FALSE"/>
         <column name="fam_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
-        <column name="fam_OkToCanvass" phpName="OkToCanvass" type="CHAR" sqlType="enum('FALSE','TRUE')" required="true"
-                defaultValue="FALSE"/>
-        <column name="fam_Canvasser" phpName="Canvasser" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
-                required="true" defaultValue="0"/>
         <column name="fam_Latitude" phpName="Latitude" type="DOUBLE"/>
         <column name="fam_Longitude" phpName="Longitude" type="DOUBLE"/>
         <column name="fam_Envelope" phpName="Envelope" type="SMALLINT" size="9" required="true" defaultValue="0"/>
@@ -312,28 +308,6 @@
         </vendor>
     </table>
 
-    <table name="canvassdata_can" idMethod="native" phpName="CanvassData" description="this contains information about the results of canvassing families">
-        <column name="can_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
-                autoIncrement="true" required="true"/>
-        <column name="can_famID" phpName="FamilyId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-        <column name="can_Canvasser" phpName="Canvasser" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-        <column name="can_FYID" phpName="Fyid" type="SMALLINT" size="9"/>
-        <column name="can_date" phpName="Date" type="DATE"/>
-        <column name="can_Positive" phpName="Positive" type="LONGVARCHAR"/>
-        <column name="can_Critical" phpName="Critical" type="LONGVARCHAR"/>
-        <column name="can_Insightful" phpName="Insightful" type="LONGVARCHAR"/>
-        <column name="can_Financial" phpName="Financial" type="LONGVARCHAR"/>
-        <column name="can_Suggestion" phpName="Suggestion" type="LONGVARCHAR"/>
-        <column name="can_NotInterested" phpName="NotInterested" type="BOOLEAN" size="1" required="true"
-                defaultValue="false"/>
-        <column name="can_WhyNotInterested" phpName="WhyNotInterested" type="LONGVARCHAR"/>
-        <unique name="can_ID">
-            <unique-column name="can_ID"/>
-        </unique>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
     <table name="deposit_dep" idMethod="native" phpName="Deposit" description="This records deposits / payments">
         <column name="dep_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
@@ -632,7 +606,6 @@
         <column name="usr_CalNoSchool7" phpName="CalNoSchool7" type="DATE"/>
         <column name="usr_CalNoSchool8" phpName="CalNoSchool8" type="DATE"/>
         <column name="usr_SearchFamily" phpName="Searchfamily" type="TINYINT" size="3"/>
-        <column name="usr_Canvasser" phpName="Canvasser" type="BOOLEAN" size="1" required="true" defaultValue="0"/>
         <index name="usr_per_ID">
             <index-column name="usr_per_ID"/>
         </index>
