@@ -70,7 +70,7 @@ if (isset($_POST['Action'])) {
                 $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . InputUtils::legacyFilterInput($theID) . "','" . InputUtils::legacyFilterInput($cCnt) . "') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
                 RunQuery($sSQL);
             }
-            RedirectUtils::redirect('EventNames.php'); // clear POST
+            RedirectUtils::redirect('EventNames.php');
             break;
 
         case 'DELETE':
@@ -85,13 +85,10 @@ if (isset($_POST['Action'])) {
     }
 }
 
-// Get data for the form as it now exists.
-
 $sSQL = 'SELECT * FROM event_types ORDER BY type_id';
 $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
 
-        // Create arrays of the event types
 for ($row = 1; $row <= $numRows; $row++) {
     $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
     extract($aRow);
@@ -337,7 +334,6 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function () {
-//Added by @saulowulhynek to translation of datatable nav terms
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);
   });
 </script>
