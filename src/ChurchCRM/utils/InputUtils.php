@@ -8,7 +8,7 @@ class InputUtils
 {
     private static string $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
 
-    public static function legacyFilterInputArr(array $arr, $key, $type = 'string', $size = 1)
+    public static function legacyFilterInputArr(array $arr, $key, $type = 'string', $size = 1): string|int|float
     {
         if (array_key_exists($key, $arr)) {
             return InputUtils::legacyFilterInput($arr[$key], $type, $size);
@@ -89,7 +89,7 @@ class InputUtils
     // Sanitizes user input as a security measure
     // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
     // Note that a database connection must already be established for the mysqli_real_escape_string function to work.
-    public static function legacyFilterInput($sInput, $type = 'string', $size = 1)
+    public static function legacyFilterInput($sInput, $type = 'string', $size = 1): string|int|float
     {
         global $cnInfoCentral;
         if (strlen($sInput) > 0) {

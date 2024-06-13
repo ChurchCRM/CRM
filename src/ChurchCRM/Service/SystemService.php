@@ -4,6 +4,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\BackupType;
+use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
@@ -73,13 +74,13 @@ class SystemService
     {
         if (AppIntegrityService::arePrerequisitesMet()) {
             return 'All Prerequisites met';
-        } else {
-            $unmet = AppIntegrityService::getUnmetPrerequisites();
-
-            $unmetNames = array_map(fn ($o): string => $o->getName(), $unmet);
-
-            return 'Missing Prerequisites: ' . json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
         }
+
+        $unmet = AppIntegrityService::getUnmetPrerequisites();
+
+        $unmetNames = array_map(fn (Prerequisite $o): string => $o->getName(), $unmet);
+
+        return 'Missing Prerequisites: ' . json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
     }
 
     private static function isTimerThresholdExceeded(string $LastTime, int $ThresholdHours): bool

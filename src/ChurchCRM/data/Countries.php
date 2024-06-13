@@ -277,7 +277,7 @@ class Countries
     {
         self::initializeCountries();
 
-        return array_map([__CLASS__, 'getSingleName'], self::$countries);
+        return array_map([self::class, 'getSingleName'], self::$countries);
     }
 
     public static function getAll(): array

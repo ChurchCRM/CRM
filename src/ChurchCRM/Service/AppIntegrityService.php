@@ -256,7 +256,7 @@ class AppIntegrityService
                     $header['status'] = $line;
                 }
 
-                list($key, $value) = explode(': ', $line);
+                [$key, $value] = explode(': ', $line);
                 $header[$key] = $value;
             }
 
