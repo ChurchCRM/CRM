@@ -6,24 +6,24 @@ namespace ChurchCRM;
 
 class MICRFunctions
 {
-    public $CHECKNO_FIRST = 1; // o<check>o t<route>t <account>o
-    public $ROUTE_FIRST1 = 2;   // t<route>t <account>o <check>
-    public $ROUTE_FIRST2 = 3;   // t<route>t o<account>o <check>
-    public $NOT_RECOGNIZED = 4;
+    public int $CHECKNO_FIRST = 1; // o<check>o t<route>t <account>o
+    public int $ROUTE_FIRST1 = 2;   // t<route>t <account>o <check>
+    public int $ROUTE_FIRST2 = 3;   // t<route>t o<account>o <check>
+    public int $NOT_RECOGNIZED = 4;
 
-    public function identifyFormat($micr)
+    public function identifyFormat(string $micr): int
     {
         // t000000000t0000o0000000000000o ROUTE_FIRST2
         // t000000000t 0000000000o   0000 ROUTE_FIRST1
         // o000000o t000000000t 0000000000o CHECKNO_FIRST
 
         $firstChar = mb_substr($micr, 0, 1);
-        if ($firstChar == 'o') {
+        if ($firstChar === 'o') {
             return $this->CHECKNO_FIRST;
         } elseif ($firstChar == 't') {
             $firstSmallO = strpos($micr, 'o');
             $secondSmallO = strrpos($micr, 'o');
-            if ($firstSmallO == $secondSmallO) {
+            if ($firstSmallO === $secondSmallO) {
                 // Only one 'o'
                 $len = strlen($micr);
                 if ($len - $firstSmallO > 12) {
@@ -35,9 +35,11 @@ class MICRFunctions
                 return $this->ROUTE_FIRST2;
             }
         }
+
+        throw new \InvalidArgumentException('Unknown format provided');
     }
 
-    public function findRoute($micr): string
+    public function findRoute(string $micr): string
     {
         $routeAndAccount = $this->findRouteAndAccount($micr);
         $breakChar = strpos($routeAndAccount, 't', 1);
@@ -45,7 +47,7 @@ class MICRFunctions
         return mb_substr($micr, 1, $breakChar - 1);
     }
 
-    public function findAccount($micr): string
+    public function findAccount(string $micr): string
     {
         $routeAndAccount = $this->findRouteAndAccount($micr);
         $breakChar = strpos($routeAndAccount, 't', 1);
@@ -53,7 +55,7 @@ class MICRFunctions
         return mb_substr($routeAndAccount, $breakChar + 1, strlen($micr) - $breakChar);
     }
 
-    public function findRouteAndAccount($micr)
+    public function findRouteAndAccount(string $micr): string
     {
         $formatID = $this->identifyFormat($micr);
 
@@ -78,7 +80,7 @@ class MICRFunctions
         }
     }
 
-    public function findCheckNo($micr): string
+    public function findCheckNo(string $micr): string
     {
         $formatID = $this->identifyFormat($micr);
         if ($formatID == $this->CHECKNO_FIRST) {

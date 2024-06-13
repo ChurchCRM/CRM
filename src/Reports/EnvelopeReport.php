@@ -84,7 +84,7 @@ class PdfEnvelopeReport extends ChurchInfoReport
     }
 
     // Number of lines is only for the $text parameter
-    public function addRecord($text, $numlines): void
+    public function addRecord($text, int $numlines): void
     {
         // Add an extra blank line after record
         $numlines++;
@@ -105,7 +105,6 @@ $pdf = new PdfEnvelopeReport();
 $families = FamilyQuery::Create()->orderByEnvelope()->filterByEnvelope(0, 'Criteria::GREATER_THAN')->find();
 
 foreach ($families as $family) {
-    $OutStr = '';
     $OutStr = $pdf->sGetFamilyString($family);
 
     // Count the number of lines in the output string

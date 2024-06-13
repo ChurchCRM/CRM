@@ -71,8 +71,7 @@ class SQLUtils
     /**
      * Remove comments from sql.
      *
-     * @param string sql
-     * @param bool is multicomment line
+     * @param bool $isMultiComment is multicomment line
      *
      * @return string
      */
@@ -94,7 +93,7 @@ class SQLUtils
         while (preg_match('{--\s|#|/\*[^!]}sUi', $sql, $matched, PREG_OFFSET_CAPTURE, $offset)) {
             [$comment, $foundOn] = $matched[0];
             if (self::isQuoted($foundOn, $sql)) {
-                $offset = $foundOn + strlen($comment);
+                $offset = (int) $foundOn + strlen($comment);
             } else {
                 if (mb_substr($comment, 0, 2) == '/*') {
                     $closedOn = strpos($sql, '*/', $foundOn);
@@ -116,11 +115,8 @@ class SQLUtils
 
     /**
      * Check if "offset" position is quoted.
-     *
-     * @param int    $offset
-     * @param string $text
      */
-    private static function isQuoted($offset, $text): bool
+    private static function isQuoted(int $offset, string $text): bool
     {
         if ($offset > strlen($text)) {
             $offset = strlen($text);

@@ -17,13 +17,13 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 
 class FinancialService
 {
-    public function deletePayment($groupKey): void
+    public function deletePayment(string $groupKey): void
     {
         requireUserGroupMembership('bFinance');
         PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
-    public function getMemberByScanString($tScanString): array
+    public function getMemberByScanString(string $tScanString): array
     {
         requireUserGroupMembership('bFinance');
 

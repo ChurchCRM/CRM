@@ -20,7 +20,7 @@ $iFYID = InputUtils::legacyFilterInput($_GET['FYID'], 'int');
 class PdfPhotoBook extends ChurchInfoReport
 {
     private $group;
-    private $FYIDString;
+    private string $FYIDString;
     private ?int $currentX = null;
     private ?int $currentY = null;
     private int $pageMarginL = 15;
