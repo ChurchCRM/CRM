@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyTypeEditor.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -20,10 +10,9 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have property and classification editing permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
 
-//Set the page title
 $sPageTitle = gettext('Property Type Editor');
 
-//Get the PropertyID
+// Get the PropertyID
 $iPropertyTypeID = 0;
 if (array_key_exists('PropertyTypeID', $_GET)) {
     $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
@@ -33,19 +22,18 @@ $sClass = '';
 $sNameError = '';
 $bError = false;
 
-//Was the form submitted?
 if (isset($_POST['Submit'])) {
     $sName = InputUtils::legacyFilterInput($_POST['Name']);
     $sDescription = InputUtils::legacyFilterInput($_POST['Description']);
     $sClass = InputUtils::legacyFilterInput($_POST['Class'], 'char', 1);
 
-    //Did they enter a name?
+    // Did they enter a name?
     if (strlen($sName) < 1) {
         $sNameError = '<span style="color: red;">' . gettext('You must enter a name') . '</span>';
         $bError = true;
     }
 
-    //If no errors, let's update
+    // If no errors, let's update
     if (!$bError) {
         //Vary the SQL depending on if we're adding or editing
         if ($iPropertyTypeID == '') {

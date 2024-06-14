@@ -1,20 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : WhyCameEditor.php
- *  last change : 2004-6-12
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt, Michael Wilt
- *
-
-
-
-
- *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -34,7 +19,7 @@ extract(mysqli_fetch_array($rsPerson));
 
 $sPageTitle = gettext('"Why Came" notes for ') . $per_FirstName . ' ' . $per_LastName;
 
-//Is this the second pass?
+// Is this the second pass?
 if (isset($_POST['Submit'])) {
     $tJoin = InputUtils::legacyFilterInput($_POST['Join']);
     $tCome = InputUtils::legacyFilterInput($_POST['Come']);

@@ -1,23 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : ListEvents.php
-*  website     : https://churchcrm.io
-*  function    : List all Church Events
-*
-*  copyright   : Copyright 2005 Todd Pillars
-*
-*
-*  Additional Contributors:
-*  2007 Ed Davis
-*  update 2017 Philippe Logel
-*
-*
-*
-*
-******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -45,15 +27,13 @@ if ($eType != 'All') {
     $sPageTitle = gettext('Listing All Church Events');
 }
 
-// retrieve the year selector
-
+// Retrieve the year selector
 if (isset($_POST['WhichYear'])) {
     $EventYear = InputUtils::legacyFilterInput($_POST['WhichYear'], 'int');
 } else {
     $EventYear = date('Y');
 }
 
-///////////////////////
 require 'Include/Header.php';
 
 if (isset($_POST['Action']) && isset($_POST['EID']) && AuthenticationManager::getCurrentUser()->isAddEvent()) {

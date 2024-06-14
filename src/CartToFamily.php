@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : CartToFamily.php
- *  last change : 2003-10-09
- *  description : Add cart records to a family
- *
- *  https://churchcrm.io/
- *  Copyright 2003 Chris Gebhardt
-  *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

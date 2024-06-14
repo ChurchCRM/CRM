@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PersonCustomFieldsRowOps.php
- *  last change : 2003-03-30
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
- *
- *  function    : Row operations for the person custom fields form
- *******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

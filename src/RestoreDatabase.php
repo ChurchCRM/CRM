@@ -1,18 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : RestoreDatabase.php
- *  last change : 2016-01-04
- *
-
-
-
-
- *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -23,7 +10,6 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have Manage Groups permission
 AuthenticationManager::redirectHomeIfNotAdmin();
 
-//Set the page title
 $sPageTitle = gettext('Restore Database');
 require 'Include/Header.php';
 ?>

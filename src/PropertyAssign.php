@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyAssign.php
- *  last change : 2003-06-04
- *  description : property assign
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
-  *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

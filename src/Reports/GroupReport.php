@@ -47,14 +47,14 @@ $rsProps = RunQuery($sSQL);
 $bHasProps = (mysqli_num_rows($rsProps) > 0);
 
 $sSQL = 'SELECT * FROM person_per
-			LEFT JOIN family_fam ON per_fam_ID = fam_ID ';
+            LEFT JOIN family_fam ON per_fam_ID = fam_ID ';
 
 if ($bHasProps) {
     $sSQL .= 'LEFT JOIN groupprop_' . $iGroupID . ' ON groupprop_' . $iGroupID . '.per_ID = person_per.per_ID ';
 }
 
 $sSQL .= 'LEFT JOIN person2group2role_p2g2r ON p2g2r_per_ID = person_per.per_ID
-			WHERE p2g2r_grp_ID = ' . $iGroupID;
+            WHERE p2g2r_grp_ID = ' . $iGroupID;
 
 if ($iRoleID > 0) {
     $sSQL .= ' AND p2g2r_rle_ID = ' . $iRoleID;

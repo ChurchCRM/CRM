@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : VolunteerOpportunityEditor.php
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2005 Michael Wilt
- *
- ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

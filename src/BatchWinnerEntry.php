@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : BatchWinnerEntry.php
- *  last change : 2011-04-01
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2011 Michael Wilt
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

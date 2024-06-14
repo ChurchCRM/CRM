@@ -1,18 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : OptionsManager.php
- *  last change : 2003-04-16
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2003 Chris Gebhardt
- *
- *  OptionName : Interface for editing simple selection options such as those
- *              : used for Family Roles, Classifications, and Group Types
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

@@ -11,7 +11,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-//Set the page title
 $sPageTitle = gettext('View on Map');
 
 require 'Include/Header.php';

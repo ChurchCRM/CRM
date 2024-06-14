@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyUnassign.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -23,7 +13,7 @@ if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled() && !Authen
     RedirectUtils::redirect('v2/dashboard');
 }
 
-//Get the new property value from the post collection
+// Get the new property value from the post collection
 $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 
 // Is there a PersonID in the querystring?

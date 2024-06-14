@@ -1,21 +1,7 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : Checkin.php
- *  last change : 2007-xx-x
- *  description : Quickly add attendees to an event
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *  Copyright 2005 Todd Pillars
- *  Copyright 2012 Michael Wilt
-  *
- ******************************************************************************/
-
 $sPageTitle = gettext('Event Checkin');
 
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/Header.php';
@@ -34,7 +20,6 @@ $CheckoutOrDelete = false;
 $event = null;
 $iChildID = 0 ;
 $iAdultID = 0;
-
 
 if (array_key_exists('EventID', $_POST)) {
     $EventID = InputUtils::legacyFilterInput($_POST['EventID'], 'int');

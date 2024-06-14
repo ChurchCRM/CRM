@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : DonatedItemReplicate.php
- *  last change : 2015-01-01
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2015 Michael Wilt
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

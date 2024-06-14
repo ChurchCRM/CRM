@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : OptionManagerRowOps.php
- *  last change : 2003-04-09
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
- *
- *  function    : Row operations for the option manager
- *******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : QuerySQL.php
- *  last change : 2003-01-04
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -17,7 +7,6 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
 
-//Set the page title
 $sPageTitle = gettext('Free-Text Query');
 
 // Security: User must be an Admin to access this page.  It allows unrestricted database access!
@@ -25,7 +14,7 @@ $sPageTitle = gettext('Free-Text Query');
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 if (isset($_POST['SQL'])) {
-    //Assign the value locally
+    // Assign the value locally
     $sSQL = stripslashes(trim($_POST['SQL']));
 } else {
     $sSQL = '';
@@ -40,24 +29,25 @@ require 'Include/Header.php';
 ?>
 
 <form method="post">
+    <center>
+        <table>
+            <tr>
+                <td class="LabelColumn"> <?= gettext('Export Results to CSV file') ?> </td>
+                <td class="TextColumn"><input name="CSV" type="checkbox" id="CSV" value="1"></td>
+            </tr>
+        </table>
+    </center>
 
-<center><table><tr>
-    <td class="LabelColumn"> <?= gettext('Export Results to CSV file') ?> </td>
-    <td class="TextColumn"><input name="CSV" type="checkbox" id="CSV" value="1"></td>
-</tr></table></center>
-
-<p align="center">
-    <textarea style="font-family:courier,fixed; font-size:9pt; padding:1rem;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
-</p>
-<p align="center">
-    <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Execute SQL') ?>">
-</p>
+    <p align="center">
+        <textarea style="font-family:courier,fixed; font-size:9pt; padding:1rem;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
+    </p>
+    <p align="center">
+        <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Execute SQL') ?>">
+    </p>
 
 </form>
 
 <?php
-
-
 if (isset($_POST['SQL'])) {
     if (strtolower(mb_substr($sSQL, 0, 6)) === 'select') {
         RunFreeQuery($sSQL, $rsQueryResults);
@@ -135,8 +125,8 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
             $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
             if ($fieldInfo->name != 'AddToCart') {
                 echo '  <td align="center">
-							<b>' . $fieldInfo->name . '</b>
-							</td>';
+                            <b>' . $fieldInfo->name . '</b>
+                            </td>';
             }
         }
 
@@ -165,14 +155,17 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
         echo '</table>';
         echo '<p align="center">';
 
-        if ($aHiddenFormField && count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php?>
-            <form method="post" action="CartView.php"><p align="center">
-                <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
-                <input type="submit" class="btn btn-default" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
-                <input type="submit" class="btn btn-default" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
-                <input type="submit" class="btn btn-default" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
-            </p></form>
-            <?php
+        if ($aHiddenFormField && count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php
+?>
+            <form method="post" action="CartView.php">
+                <p align="center">
+                    <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
+                    <input type="submit" class="btn btn-default" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
+                    <input type="submit" class="btn btn-default" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
+                    <input type="submit" class="btn btn-default" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
+                </p>
+            </form>
+<?php
         }
 
         echo '<p align="center"><a href="QueryList.php">' . gettext('Return to Query Menu') . '</a></p>';
@@ -181,5 +174,3 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
 }
 
 require 'Include/Footer.php';
-
-?>

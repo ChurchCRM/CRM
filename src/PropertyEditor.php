@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyEditor.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -25,16 +15,16 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $sClassError = '';
 $sNameError = '';
 
-//Get the PropertyID
+// Get the PropertyID
 $iPropertyID = 0;
 if (array_key_exists('PropertyID', $_GET)) {
     $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 }
 
-//Get the Type
+// Get the Type
 $sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);
 
-//Based on the type, set the TypeName
+// Based on the type, set the TypeName
 switch ($sType) {
     case 'p':
         $sTypeName = gettext('Person');

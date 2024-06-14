@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : UpdateAllLatLon.php
- *  last change : 2013-02-02
- *  website     : https://churchcrm.io
- *
- ******************************************************************************/
-
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 

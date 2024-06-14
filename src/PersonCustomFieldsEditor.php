@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PersonCustomFieldsEditor.php
- *  last change : 2003-03-28
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
- *
- *  function    : Editor for custom person fields
-  ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -26,17 +16,15 @@ $sPageTitle = gettext('Custom Person Fields Editor');
 
 require 'Include/Header.php'; ?>
 
-
 <div class="card card-body">
-
-  <?php
+    <?php
 
     $bErrorFlag = false;
     $bNewNameError = false;
     $bDuplicateNameError = false;
     $aNameErrors = [];
 
-  // Does the user want to save changes to text fields?
+    // Does the user want to save changes to text fields?
     if (isset($_POST['SaveChanges'])) {
         // Fill in the other needed custom field data arrays not gathered from the form submit
         $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
@@ -84,10 +72,10 @@ require 'Include/Header.php'; ?>
         if (!$bErrorFlag) {
             for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
                 $sSQL = "UPDATE person_custom_master
-					SET custom_Name = '" . $aNameFields[$iFieldID] . "',
-						custom_Special = " . $aSpecialFields[$iFieldID] . ",
-						custom_FieldSec = " . $aFieldSecurity[$iFieldID] . "
-					WHERE custom_Field = '" . $aFieldFields[$iFieldID] . "';";
+                    SET custom_Name = '" . $aNameFields[$iFieldID] . "',
+                        custom_Special = " . $aSpecialFields[$iFieldID] . ",
+                        custom_FieldSec = " . $aFieldSecurity[$iFieldID] . "
+                    WHERE custom_Field = '" . $aFieldFields[$iFieldID] . "';";
                 RunQuery($sSQL);
             }
         }
@@ -102,7 +90,7 @@ require 'Include/Header.php'; ?>
                 $bNewNameError = true;
             } elseif (strlen($newFieldType) == 0 || $newFieldType < 1) {
                 // This should never happen, but check anyhow.
-          // $bNewTypeError = true;
+                // $bNewTypeError = true;
             } else {
                 $sSQL = 'SELECT custom_Name FROM person_custom_master';
                 $rsCustomNames = RunQuery($sSQL);
@@ -154,8 +142,8 @@ require 'Include/Header.php'; ?>
                     // Insert into the master table
                     $newOrderID = $last + 1;
                     $sSQL = "INSERT INTO person_custom_master
-						(custom_Order , custom_Field , custom_Name ,  custom_Special , custom_FieldSec, type_ID)
-						VALUES ('" . $newOrderID . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', " . $newSpecial . ", '" . $newFieldSec . "', '" . $newFieldType . "');";
+                        (custom_Order , custom_Field , custom_Name ,  custom_Special , custom_FieldSec, type_ID)
+                        VALUES ('" . $newOrderID . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', " . $newSpecial . ", '" . $newFieldSec . "', '" . $newFieldType . "');";
                     RunQuery($sSQL);
 
                     // Insert into the custom fields table
@@ -163,13 +151,13 @@ require 'Include/Header.php'; ?>
 
                     switch ($newFieldType) {
                         case 1:
-                                  $sSQL .= "ENUM('false', 'true')";
+                            $sSQL .= "ENUM('false', 'true')";
                             break;
                         case 2:
-                                $sSQL .= 'DATE';
+                            $sSQL .= 'DATE';
                             break;
                         case 3:
-                              $sSQL .= 'VARCHAR(50)';
+                            $sSQL .= 'VARCHAR(50)';
                             break;
                         case 4:
                             $sSQL .= 'VARCHAR(100)';
@@ -225,7 +213,7 @@ require 'Include/Header.php'; ?>
             $aFieldSecurity[$row] = $custom_FieldSec;
         }
     }
-  // Prepare Security Group list
+    // Prepare Security Group list
     $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
     $rsSecurityGrp = RunQuery($sSQL);
     $aSecurityType = [];
@@ -256,196 +244,191 @@ require 'Include/Header.php'; ?>
         return $sOptList;
     }
 
-  // Construct the form
+    // Construct the form
     ?>
-  <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+        function confirmDeleteField(event) {
+            var answer = confirm("<?= gettext('Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!') ?>")
+            if (answer) {
+                window.location = href = "PersonCustomFieldsRowOps.php?Field=" + event + "&Action=delete"
+                return true;
+            }
+            event.preventDefault ? event.preventDefault() : event.returnValue = false;
+            return false;
+        }
+    </script>
 
-    function confirmDeleteField(event) {
-      var answer = confirm("<?= gettext('Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!') ?>")
-      if (answer) {
-        window.location = href = "PersonCustomFieldsRowOps.php?Field=" + event + "&Action=delete"
-        return true;
-      }
-      event.preventDefault ? event.preventDefault() : event.returnValue = false;
-      return false;
-    }
-  </script>
+    <div class="alert alert-warning">
+        <i class="fa fa-ban"></i>
+        <?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+    </div>
+    <form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor">
+        <div class="table-responsive">
+            <table class="table">
 
-  <div class="alert alert-warning">
-    <i class="fa fa-ban"></i>
-    <?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
-  </div>
-  <form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor">
-<div class="table-responsive">
-    <table class="table">
-
-      <?php
-        if ($numRows == 0) {
-            ?>
-       <h2><?= gettext('No custom person fields have been added yet') ?></h2>
-            <?php
-        } else {
-            ?>
-        <tr>
-          <td colspan="6">
-            <?php
-            if ($bErrorFlag) {
-                echo '<span class="LargeText" style="color: red;"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
-            } ?>
-          </td>
-        </tr>
-
-        <tr>
-          <th><?= gettext('Type') ?></th>
-          <th><?= gettext('Name') ?></th>
-          <th><?= gettext('Special option') ?></th>
-          <th><?= gettext('Security Option') ?></th>
-          <th><?= gettext('Delete') ?></th>
-        </tr>
-
-            <?php
-
-            for ($row = 1; $row <= $numRows; $row++) {
-                ?>
-          <tr>
-            <td class="TextColumn">
-                <?= $aPropTypes[$aTypeFields[$row]] ?>
-            </td>
-            <td class="TextColumn" align="center">
-              <input type="text" name="<?= $row ?>name"
-                     value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35"
-                     maxlength="40">
                 <?php
-                if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                if ($numRows == 0) {
+                ?>
+                    <h2><?= gettext('No custom person fields have been added yet') ?></h2>
+                <?php
+                } else {
+                ?>
+                    <tr>
+                        <td colspan="6">
+                            <?php
+                            if ($bErrorFlag) {
+                                echo '<span class="LargeText" style="color: red;"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
+                            } ?>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th><?= gettext('Type') ?></th>
+                        <th><?= gettext('Name') ?></th>
+                        <th><?= gettext('Special option') ?></th>
+                        <th><?= gettext('Security Option') ?></th>
+                        <th><?= gettext('Delete') ?></th>
+                    </tr>
+
+                    <?php
+
+                    for ($row = 1; $row <= $numRows; $row++) {
+                    ?>
+                        <tr>
+                            <td class="TextColumn">
+                                <?= $aPropTypes[$aTypeFields[$row]] ?>
+                            </td>
+                            <td class="TextColumn" align="center">
+                                <input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35" maxlength="40">
+                                <?php
+                                if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
+                                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                                } ?>
+                            </td>
+                            <td class="TextColumn" align="center">
+                                <?php
+                                if ($aTypeFields[$row] == 9) {
+                                    echo '<select name="' . $row . 'special">';
+                                    echo '<option value="0" selected>Select a group</option>';
+
+                                    $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
+                                    $rsGroupList = RunQuery($sSQL);
+
+                                    while ($aRow = mysqli_fetch_array($rsGroupList)) {
+                                        extract($aRow);
+
+                                        echo '<option value="' . $grp_ID . '"';
+                                        if ($aSpecialFields[$row] == $grp_ID) {
+                                            echo ' selected';
+                                        }
+                                        echo '>' . $grp_Name . '</option>';
+                                    }
+
+                                    echo '</select>';
+                                    if ($aSpecialErrors[$row]) {
+                                        echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
+                                    }
+                                } elseif ($aTypeFields[$row] == 12) {
+                                    echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=custom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">" . gettext('Edit List Options') . '</a>';
+                                } else {
+                                    echo '&nbsp;';
+                                } ?>
+
+                            </td>
+                            <td class="TextColumn" align="center" nowrap>
+                                <?php
+                                if (isset($aSecurityType[$aFieldSecurity[$row]])) {
+                                    echo GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]);
+                                } else {
+                                    echo GetSecurityList($aSecurityGrp, $row . 'FieldSec');
+                                } ?>
+                            </td>
+                            <td>
+                                <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="delete" onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);" )">
+                            </td>
+                            <td class="TextColumn" width="5%" nowrap>
+                                <?php
+                                if ($row != 1) {
+                                    echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                                }
+                                if ($row < $numRows) {
+                                    echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                                } ?>
+
+                            </td>
+                        </tr>
+                    <?php
+                    } ?>
+
+                    <tr>
+                        <td colspan="7">
+                            <table width="100%">
+                                <tr>
+                                    <td width="30%"></td>
+                                    <td width="40%" align="center" valign="bottom">
+                                        <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
+                                    </td>
+                                    <td width="30%"></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                    </tr>
+                <?php
                 } ?>
-            </td>
-            <td class="TextColumn" align="center">
-                  <?php
-                    if ($aTypeFields[$row] == 9) {
-                        echo '<select name="' . $row . 'special">';
-                        echo '<option value="0" selected>Select a group</option>';
+                <tr>
+                    <td colspan="7">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <table width="100%">
+                            <tr>
+                                <td width="15%"></td>
+                                <td valign="top">
+                                    <div><?= gettext('Type') ?>:</div>
+                                    <?php
+                                    echo '<select name="newFieldType">';
 
-                        $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
-                        $rsGroupList = RunQuery($sSQL);
+                                    for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
+                                        echo '<option value="' . $iOptionID . '"';
+                                        echo '>' . $aPropTypes[$iOptionID] . '</option>';
+                                    }
+                                    echo '</select>';
+                                    ?><BR>
+                                    <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
+                                </td>
+                                <td valign="top">
+                                    <div><?= gettext('Name') ?>:</div>
+                                    <input type="text" name="newFieldName" size="30" maxlength="40">
+                                    <?php
+                                    if ($bNewNameError) {
+                                        echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                                    }
+                                    if ($bDuplicateNameError) {
+                                        echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
+                                    }
+                                    ?>
+                                    &nbsp;
+                                </td>
+                                <td valign="top" nowrap>
+                                    <div><?= gettext('Security Option') ?></div>
+                                    <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
+                                </td>
+                                <td>
+                                    <input type="submit" class="btn btn-primary" value="<?= gettext('Add New Field') ?>" Name="AddField">
+                                </td>
+                                <td width="15%"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
 
-                        while ($aRow = mysqli_fetch_array($rsGroupList)) {
-                            extract($aRow);
-
-                            echo '<option value="' . $grp_ID . '"';
-                            if ($aSpecialFields[$row] == $grp_ID) {
-                                echo ' selected';
-                            }
-                            echo '>' . $grp_Name . '</option>';
-                        }
-
-                        echo '</select>';
-                        if ($aSpecialErrors[$row]) {
-                            echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
-                        }
-                    } elseif ($aTypeFields[$row] == 12) {
-                        echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=custom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">" . gettext('Edit List Options') . '</a>';
-                    } else {
-                        echo '&nbsp;';
-                    } ?>
-
-            </td>
-            <td class="TextColumn" align="center" nowrap>
-                  <?php
-                    if (isset($aSecurityType[$aFieldSecurity[$row]])) {
-                        echo GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]);
-                    } else {
-                        echo GetSecurityList($aSecurityGrp, $row . 'FieldSec');
-                    } ?>
-            </td>
-            <td>
-              <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="delete"
-                     onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);" )">
-            </td>
-            <td class="TextColumn" width="5%" nowrap>
-                  <?php
-                    if ($row != 1) {
-                        echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
-                    }
-                    if ($row < $numRows) {
-                        echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
-                    } ?>
-
-            </td>
-          </tr>
-                <?php
-            } ?>
-
-        <tr>
-          <td colspan="7">
-            <table width="100%">
-              <tr>
-                <td width="30%"></td>
-                <td width="40%" align="center" valign="bottom">
-                  <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>"
-                         Name="SaveChanges">
-                </td>
-                <td width="30%"></td>
-              </tr>
             </table>
-          </td>
-          <td>
-        </tr>
-            <?php
-        } ?>
-      <tr>
-        <td colspan="7">
-          <hr>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="7">
-          <table width="100%">
-            <tr>
-              <td width="15%"></td>
-              <td valign="top">
-                <div><?= gettext('Type') ?>:</div>
-                <?php
-                echo '<select name="newFieldType">';
-
-                for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                    echo '<option value="' . $iOptionID . '"';
-                    echo '>' . $aPropTypes[$iOptionID] . '</option>';
-                }
-                echo '</select>';
-                ?><BR>
-                <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
-              </td>
-              <td valign="top">
-                <div><?= gettext('Name') ?>:</div>
-                <input type="text" name="newFieldName" size="30" maxlength="40">
-                <?php
-                if ($bNewNameError) {
-                    echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
-                }
-                if ($bDuplicateNameError) {
-                    echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
-                }
-                ?>
-                &nbsp;
-              </td>
-              <td valign="top" nowrap>
-                <div><?= gettext('Security Option') ?></div>
-                <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
-              </td>
-              <td>
-                <input type="submit" class="btn btn-primary" value="<?= gettext('Add New Field') ?>" Name="AddField">
-              </td>
-              <td width="15%"></td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-
-    </table>
-</div>
-  </form>
+        </div>
+    </form>
 
 </div>
-
-<?php require 'Include/Footer.php'; ?>
+<?php
+require 'Include/Footer.php';

@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : GetText.php
- *  last change : 2005-09-08
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2005 Todd Pillars
- *
- *  function    : Get Text from Church Events Table in popup window
-  *
- ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

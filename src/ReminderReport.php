@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : ReminderReport.php
- *  last change : 2003-09-03
- *  description : form to invoke user access report
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

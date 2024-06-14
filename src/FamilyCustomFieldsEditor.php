@@ -1,20 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : FamilyCustomFieldsEditor.php
-*  website     : https://churchcrm.io
-*  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
-*  Clone from PersonCustomFieldsEditor.php
-*
-*  function    : Editor for family custom fields
-*
-*  Additional Contributors:
-*  2007 Ed Davis
-*
-
-******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -32,7 +17,6 @@ $sPageTitle = gettext('Custom Family Fields Editor');
 require 'Include/Header.php'; ?>
 
 <div class="card card-body">
-
 
 <?php
 

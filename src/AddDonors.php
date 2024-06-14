@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : AddDonors.php
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2009 Michael Wilt
- *
- * This script adds people who have donated but not registered as buyers to the
- * buyer list so they can get statements too.
- *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -41,7 +29,7 @@ if ($iFundRaiserID > 0) {
 
 // Get all the people listed as donors for this fundraiser
 $sSQL = "SELECT a.per_id as donorID FROM donateditem_di
-    	     LEFT JOIN person_per a ON di_donor_ID=a.per_ID
+             LEFT JOIN person_per a ON di_donor_ID=a.per_ID
          WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY a.per_id";
 $rsDonors = RunQuery($sSQL);
 
@@ -63,7 +51,7 @@ while ($donorRow = mysqli_fetch_array($rsDonors)) {
 
     if ($donorID > 0 && mysqli_num_rows($rsBuyer) == 0) {
         $sSQL = "INSERT INTO paddlenum_pn (pn_Num, pn_fr_ID, pn_per_ID)
-		                VALUES ('$extraPaddleNum', '$iFundRaiserID', '$donorID')";
+                        VALUES ('$extraPaddleNum', '$iFundRaiserID', '$donorID')";
         RunQuery($sSQL);
         $extraPaddleNum = $extraPaddleNum + 1;
     }

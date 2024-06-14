@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PersonView.php
- *  last change : 2003-04-14
- *  description : Displays all the information about a single person
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -22,8 +10,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
-
-;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -38,10 +24,8 @@ if (empty($person)) {
     exit;
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Person Profile');
 require 'Include/Header.php';
-
 
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {

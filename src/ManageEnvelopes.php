@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : ManageEnvelopes.php
- *  last change : 2005-02-21
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2006 Michael Wilt
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -20,14 +10,13 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
-//Set the page title
 $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
 
 $envelopesToWrite = [];
-// get the array of envelopes of interest, indexed by family id
+// Get the array of envelopes of interest, indexed by family ID
 $envelopesByFamID = getEnvelopes($iClassification);
 
 // get the array of family name/description strings, also indexed by family id

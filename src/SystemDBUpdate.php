@@ -29,7 +29,6 @@ if (isset($_GET['upgrade']) && InputUtils::filterString($_GET['upgrade']) === "t
     }
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('System Upgrade');
 require 'Include/HeaderNotLoggedIn.php'; ?>
 

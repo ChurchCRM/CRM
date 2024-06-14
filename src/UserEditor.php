@@ -1,24 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : UserEditor.php
- *  description : form for adding and editing users
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
- *
- *  Updated 2005-03-19 by Everette L Mills: Updated to remove error that could be created
- *  by use of duplicate usernames
- *
- *  Additional Contributors:
- *  2006 Ed Davis
- *
-
-
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -59,7 +40,7 @@ if (isset($_GET['ErrorText'])) {
     $sErrorText = '';
 }
 
-//Value to help determine correct return state on error
+// Value to help determine correct return state on error
 if (isset($_POST['NewUser'])) {
     $NewUser = InputUtils::legacyFilterInput($_POST['NewUser'], 'string');
 }

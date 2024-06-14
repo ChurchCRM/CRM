@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : NoteEditor.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -24,7 +14,6 @@ use ChurchCRM\Utils\RedirectUtils;
 // Otherwise, re-direct them to the main menu.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isNotesEnabled());
 
-//Set the page title
 $sPageTitle = gettext('Note Editor');
 
 if (isset($_GET['PersonID'])) {
@@ -39,38 +28,38 @@ if (isset($_GET['FamilyID'])) {
     $iFamilyID = 0;
 }
 
-//To which page do we send the user if they cancel?
+// To which page do we send the user if they cancel?
 if ($iPersonID > 0) {
     $sBackPage = 'PersonView.php?PersonID=' . $iPersonID;
 } else {
     $sBackPage = 'v2/family/' . $iFamilyID;
 }
 
-//Has the form been submitted?
+// Has the form been submitted?
 if (isset($_POST['Submit'])) {
     //Initialize the ErrorFlag
     $bErrorFlag = false;
 
-    //Assign all variables locally
+    // Assign all variables locally
     $iNoteID = InputUtils::legacyFilterInput($_POST['NoteID'], 'int');
     $sNoteText = InputUtils::filterHTML($_POST['NoteText'], 'htmltext');
 
-    //If they didn't check the private box, set the value to 0
+    // If they didn't check the private box, set the value to 0
     if (isset($_POST['Private'])) {
         $bPrivate = 1;
     } else {
         $bPrivate = 0;
     }
 
-    //Did they enter text for the note?
+    // Did they enter text for the note?
     if ($sNoteText == '') {
         $sNoteTextError = '<br><span style="color: red;">You must enter text for this note.</span>';
         $bErrorFlag = true;
     }
 
-    //Were there any errors?
+    // Were there any errors?
     if (!$bErrorFlag) {
-        //Are we adding or editing?
+        // Are we adding or editing?
         if ($iNoteID <= 0) {
             $note = new Note();
             $note->setPerId($iPersonID);
@@ -89,17 +78,17 @@ if (isset($_POST['Submit'])) {
             $note->save();
         }
 
-        //Send them back to wherever they came from
+        // Send them back to wherever they came from
         RedirectUtils::redirect($sBackPage);
     }
 } else {
-    //Are we adding or editing?
+    // Are we adding or editing?
     if (isset($_GET['NoteID'])) {
-        //Get the NoteID from the querystring
+        // Get the NoteID from the querystring
         $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
         $dbNote = NoteQuery::create()->findPk($iNoteID);
 
-        //Assign everything locally
+        // Assign everything locally
         $sNoteText = $dbNote->getText();
         $bPrivate = $dbNote->getPrivate();
         $iPersonID = $dbNote->getPerId();
@@ -136,8 +125,6 @@ require 'Include/Header.php';
   </p>
 </form>
 
-<?php require 'Include/Footer.php' ?>
-
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -146,3 +133,5 @@ require 'Include/Header.php';
     language : window.CRM.lang
   });
 </script>
+<?php
+require 'Include/Footer.php';

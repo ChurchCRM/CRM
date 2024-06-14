@@ -28,10 +28,10 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/ChurchCRM/model/ChurchCRM/Map',
     ]);
 
-    // register a single rule
+    // Register a single rule
     $rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);
 
-    // define sets of rules
+    // Define sets of rules
     $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_74,
         SetList::GMAGICK_TO_IMAGICK,

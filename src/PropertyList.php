@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyList.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -17,10 +7,10 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-//Get the type to display
+// Get the type to display
 $sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);
 
-//Based on the type, set the TypeName
+// Based on the type, set the TypeName
 switch ($sType) {
     case 'p':
         $sTypeName = gettext('Person');
@@ -39,10 +29,9 @@ switch ($sType) {
         break;
 }
 
-//Set the page title
 $sPageTitle = $sTypeName . ' ' . gettext('Property List');
 
-//Get the properties
+// Get the properties
 $sSQL = "SELECT * FROM property_pro, propertytype_prt WHERE prt_ID = pro_prt_ID AND pro_Class = '" . $sType . "' ORDER BY prt_Name,pro_Name";
 $rsProperties = RunQuery($sSQL);
 

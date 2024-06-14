@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : CSVExport.php
- *  description : options for creating csv file
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -22,11 +11,11 @@ if (!AuthenticationManager::getCurrentUser()->isCSVExport()) {
     RedirectUtils::securityRedirect("CSVExport");
 }
 
-//Get Classifications for the drop-down
+// Get Classifications for the drop-down
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
 $rsClassifications = RunQuery($sSQL);
 
-//Get Family Roles for the drop-down
+// Get Family Roles for the drop-down
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
 $rsFamilyRoles = RunQuery($sSQL);
 

@@ -1,22 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : GeoPage.php
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2004-2005 Michael Wilt
- *
- *  Additional Contributors:
- *  2006 Ed Davis
- *
- *
- *  Copyright Contributors
-  *
-
- *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -437,4 +420,3 @@ $families = FamilyQuery::create()
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GeoPage.js"></script>
 <?php
 require 'Include/Footer.php';
-?>

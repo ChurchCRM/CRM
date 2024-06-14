@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PersonEditor.php
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
- *                Copyright 2004-2005 Michael Wilt
- *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -28,10 +18,9 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-//Set the page title
 $sPageTitle = gettext('Person Editor');
 
-//Get the PersonID out of the querystring
+// Get the PersonID out of the querystring
 $iPersonID = 0;
 if (array_key_exists('PersonID', $_GET)) {
     $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
