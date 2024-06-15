@@ -363,14 +363,6 @@ msgid "Canvass Automation"
 msgstr "Automatisch onderzoek"
 
 #: 
-msgid "Not confirmed."
-msgstr "Niet bevestigd."
-
-#: 
-msgid "Summary Report"
-msgstr "Samenvattings Rapport"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Voeg werkbestand toe aan activiteit"
 
@@ -4174,30 +4166,6 @@ msgid "Attendees for Event"
 msgstr "Deelnemers van de activiteit:"
 
 #: 
-msgid "is not configured"
-msgstr "is niet geconfigureerd"
-
-#: 
-msgid "Please update the"
-msgstr "Svp update de"
-
-#: 
-msgid "API key in Setting->"
-msgstr "API-sleutel in Setting->"
-
-#: 
-msgid "then update"
-msgstr "dan update"
-
-#: 
-msgid "For more info see our "
-msgstr "Voor meer info zie onze"
-
-#: 
-msgid "support docs."
-msgstr "ondersteunende documentatie"
-
-#: 
 msgid "Yearly"
 msgstr "Jaarlijks"
 
@@ -5165,30 +5133,6 @@ msgstr "Gebruikersrechten om CSV-bestanden te exporteren"
 #: 
 msgid "Allow user to add new event"
 msgstr "Gebruiker mag activiteit toevoegen"
-
-#: 
-msgid "Done"
-msgstr "Klaar"
-
-#: 
-msgid "Assigned"
-msgstr "Gekoppeld"
-
-#: 
-msgid "Percent"
-msgstr "Percentage"
-
-#: 
-msgid "Total"
-msgstr "Totaal"
-
-#: 
-msgid "Suggestion"
-msgstr "Suggestie"
-
-#: 
-msgid "Comments"
-msgstr "Opmerkingen"
 
 #: 
 msgid "Weekly on"
@@ -6816,10 +6760,6 @@ msgid "Your New Account"
 msgstr "Uw nieuwe account"
 
 #: 
-msgid "Password Changed"
-msgstr "Wachtwoord veranderd"
-
-#: 
 msgid "Password Reset"
 msgstr "Wachtwoord reset"
 
@@ -6958,10 +6898,6 @@ msgstr "Uw account is afgesloten"
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Er is voor u een account gemaakt"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Uw wachtwoord is gewijzigd"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

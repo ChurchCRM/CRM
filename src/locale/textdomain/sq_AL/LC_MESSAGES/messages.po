@@ -327,14 +327,6 @@ msgid "Canvass Automation"
 msgstr "Automatizimi anketim"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nuk është konfirmuar."
-
-#: 
-msgid "Summary Report"
-msgstr "Raporti përmbledhës"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Shto te Shporta Event"
 

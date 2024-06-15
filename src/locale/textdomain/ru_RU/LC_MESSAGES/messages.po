@@ -381,14 +381,6 @@ msgid "Canvass Automation"
 msgstr "Canvass Автоматизация"
 
 #: 
-msgid "Not confirmed."
-msgstr "Не подтверждено."
-
-#: 
-msgid "Summary Report"
-msgstr "Краткий отчет"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Добавить корзину Событие"
 
@@ -4233,30 +4225,6 @@ msgid "Attendees for Event"
 msgstr "Участники для события"
 
 #: 
-msgid "is not configured"
-msgstr "не настроен"
-
-#: 
-msgid "Please update the"
-msgstr "Пожалуйста обновите"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Ключ API в Настройках->"
-
-#: 
-msgid "then update"
-msgstr "затем обновить"
-
-#: 
-msgid "For more info see our "
-msgstr "Для получения дополнительной информации смотрите наш"
-
-#: 
-msgid "support docs."
-msgstr "документв поддержки"
-
-#: 
 msgid "Yearly"
 msgstr "Ежегодно"
 
@@ -5122,30 +5090,6 @@ msgstr "Разрешение пользователя на экспорт фай
 #: 
 msgid "Allow user to add new event"
 msgstr "Разрешить пользователю добавлять новое событие"
-
-#: 
-msgid "Done"
-msgstr "Готово"
-
-#: 
-msgid "Assigned"
-msgstr "Назначено"
-
-#: 
-msgid "Percent"
-msgstr "Процент"
-
-#: 
-msgid "Total"
-msgstr "Всего"
-
-#: 
-msgid "Suggestion"
-msgstr "Suggestion"
-
-#: 
-msgid "Comments"
-msgstr "комментарии"
 
 #: 
 msgid "Weekly on"

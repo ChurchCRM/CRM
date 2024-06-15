@@ -381,14 +381,6 @@ msgid "Canvass Automation"
 msgstr "Insamlingskampanj automation"
 
 #: 
-msgid "Not confirmed."
-msgstr "Icke bekräftade"
-
-#: 
-msgid "Summary Report"
-msgstr "Sammandragsrapport"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Lägg korgen till evenemang"
 
@@ -4304,30 +4296,6 @@ msgid "Attendees for Event"
 msgstr "Deltagare för evenemangs"
 
 #: 
-msgid "is not configured"
-msgstr "är inte konfigurerad"
-
-#: 
-msgid "Please update the"
-msgstr "Uppdatera"
-
-#: 
-msgid "API key in Setting->"
-msgstr "API-nyckel i inställning-&gt;"
-
-#: 
-msgid "then update"
-msgstr "uppdatera sedan"
-
-#: 
-msgid "For more info see our "
-msgstr "För mer info se vår"
-
-#: 
-msgid "support docs."
-msgstr "supportdokument."
-
-#: 
 msgid "Yearly"
 msgstr "Årlig"
 
@@ -5289,30 +5257,6 @@ msgstr "Användarbehörighet att exportera CSV-filer"
 #: 
 msgid "Allow user to add new event"
 msgstr "Låt användaren lägga till en ny händelse"
-
-#: 
-msgid "Done"
-msgstr "Gjort"
-
-#: 
-msgid "Assigned"
-msgstr "Tilldelad"
-
-#: 
-msgid "Percent"
-msgstr "Procent"
-
-#: 
-msgid "Total"
-msgstr "Total"
-
-#: 
-msgid "Suggestion"
-msgstr "Förslag"
-
-#: 
-msgid "Comments"
-msgstr "kommentarer"
 
 #: 
 msgid "Weekly on"
@@ -6940,10 +6884,6 @@ msgid "Your New Account"
 msgstr "Ditt nya konto"
 
 #: 
-msgid "Password Changed"
-msgstr "Lösenordet ändrat"
-
-#: 
 msgid "Password Reset"
 msgstr "Lösenordsåterställning"
 
@@ -7082,10 +7022,6 @@ msgstr "Ditt ChurchCRM-konto var låst."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Ett ChurchCRM-konto skapades för dig"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Ditt ChurchCRM-lösenord ändrades"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

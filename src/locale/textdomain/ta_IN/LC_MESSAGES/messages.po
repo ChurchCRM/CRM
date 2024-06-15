@@ -361,14 +361,6 @@ msgid "Canvass Automation"
 msgstr "தானியியங்கி ஆதரவுதிரட்டுதல்"
 
 #: 
-msgid "Not confirmed."
-msgstr "உறுதி செய்யப்படவில்லை"
-
-#: 
-msgid "Summary Report"
-msgstr "சுருக்க அறிக்கை"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "நிகழ்வில் மென்வண்டியைச் சேர்க்கவும்"
 
@@ -4153,30 +4145,6 @@ msgstr "அநாமதேய"
 #, fuzzy
 msgid "Attendees for Event"
 msgstr "நிகழ்வு ஐடிக்கு பங்கேற்பாளர்கள்:"
-
-#: 
-msgid "is not configured"
-msgstr "கட்டமைக்கப்படவில்லை"
-
-#: 
-msgid "Please update the"
-msgstr "தயவுசெய்து புதுப்பிக்கவும்"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Setting-> இல் API விசை"
-
-#: 
-msgid "then update"
-msgstr "பின்னர் புதுப்பிக்கவும்"
-
-#: 
-msgid "For more info see our "
-msgstr "மேலும் தகவலுக்கு எங்கள் ␣ பார்க்கவும்"
-
-#: 
-msgid "support docs."
-msgstr "ஆதரவு ஆவணங்கள்."
 
 #: 
 msgid "Yearly"

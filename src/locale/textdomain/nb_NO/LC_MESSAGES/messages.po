@@ -375,14 +375,6 @@ msgid "Canvass Automation"
 msgstr "Canvass Automation"
 
 #: 
-msgid "Not confirmed."
-msgstr "Ikke bekreftet."
-
-#: 
-msgid "Summary Report"
-msgstr "Oppsummeringsrapport"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Legg Cart til Event"
 

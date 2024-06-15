@@ -362,14 +362,6 @@ msgid "Canvass Automation"
 msgstr "التشغيل الآلي للافتقاد"
 
 #: 
-msgid "Not confirmed."
-msgstr "غير مؤكد."
-
-#: 
-msgid "Summary Report"
-msgstr "تقرير ملخص"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "إضافة سلة التسوق للحدث"
 
@@ -4161,30 +4153,6 @@ msgid "Attendees for Event"
 msgstr "الحضور لمعرف الحدث:"
 
 #: 
-msgid "is not configured"
-msgstr "لم يتم تكوين"
-
-#: 
-msgid "Please update the"
-msgstr "يرجى تحديث"
-
-#: 
-msgid "API key in Setting->"
-msgstr "مفتاح API في Setting->"
-
-#: 
-msgid "then update"
-msgstr "تحديث فحينئذ"
-
-#: 
-msgid "For more info see our "
-msgstr "لمزيد من المعلومات راجع موقعنا"
-
-#: 
-msgid "support docs."
-msgstr "مستندات الدعم."
-
-#: 
 msgid "Yearly"
 msgstr "سنوي"
 
@@ -5146,30 +5114,6 @@ msgstr "إذن المستخدم إلى ملفات CSV تصدير"
 #: 
 msgid "Allow user to add new event"
 msgstr "السماح للمستخدم إضافة حدث جديد"
-
-#: 
-msgid "Done"
-msgstr "منجز"
-
-#: 
-msgid "Assigned"
-msgstr "تعيين"
-
-#: 
-msgid "Percent"
-msgstr "نسبه مئويه"
-
-#: 
-msgid "Total"
-msgstr "مجموع"
-
-#: 
-msgid "Suggestion"
-msgstr "اقتراح"
-
-#: 
-msgid "Comments"
-msgstr "تعليقات"
 
 #: 
 msgid "Weekly on"
@@ -6797,10 +6741,6 @@ msgid "Your New Account"
 msgstr "حسابك الجديد"
 
 #: 
-msgid "Password Changed"
-msgstr "تم تغيير كلمة السر"
-
-#: 
 msgid "Password Reset"
 msgstr "إعادة تعيين كلمة المرور"
 
@@ -6939,10 +6879,6 @@ msgstr "تم تأمين حساب ChurchCRM الخاص بك."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "تم إنشاء حساب A ChurchCRM لك"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "تم تغيير كلمة المرور الخاصة بك ChurchCRM"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

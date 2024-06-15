@@ -363,14 +363,6 @@ msgid "Canvass Automation"
 msgstr "Sensus Otomatis"
 
 #: 
-msgid "Not confirmed."
-msgstr "Belum terkonfirmasi"
-
-#: 
-msgid "Summary Report"
-msgstr "Rangkuman laporan"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Tambahkan cart di Acara"
 
@@ -4167,30 +4159,6 @@ msgid "Attendees for Event"
 msgstr "Peserta untuk Peristiwa"
 
 #: 
-msgid "is not configured"
-msgstr "tidak dikonfigurasi"
-
-#: 
-msgid "Please update the"
-msgstr "Harap perbarui"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Kunci API di Pengaturan->"
-
-#: 
-msgid "then update"
-msgstr "kemudian perbarui"
-
-#: 
-msgid "For more info see our "
-msgstr "Untuk info lebih lanjut lihat "
-
-#: 
-msgid "support docs."
-msgstr "mendukung dokumen."
-
-#: 
 msgid "Yearly"
 msgstr "Tahunan"
 
@@ -5152,30 +5120,6 @@ msgstr "Izin pengguna untuk mengekspor file CSV"
 #: 
 msgid "Allow user to add new event"
 msgstr "Izinkan pengguna menambahkan acara baru"
-
-#: 
-msgid "Done"
-msgstr "Selesai"
-
-#: 
-msgid "Assigned"
-msgstr "Ditugaskan"
-
-#: 
-msgid "Percent"
-msgstr "Persen"
-
-#: 
-msgid "Total"
-msgstr "Total"
-
-#: 
-msgid "Suggestion"
-msgstr "Saran"
-
-#: 
-msgid "Comments"
-msgstr "Komentar"
 
 #: 
 msgid "Weekly on"
@@ -6803,10 +6747,6 @@ msgid "Your New Account"
 msgstr "Akun Baru Anda"
 
 #: 
-msgid "Password Changed"
-msgstr "Kata sandi berubah"
-
-#: 
 msgid "Password Reset"
 msgstr "Reset Kata Sandi"
 
@@ -6945,10 +6885,6 @@ msgstr "Akun ChurchCRM Anda dikunci."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Akun ChurchCRM dibuat untuk Anda"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Kata sandi ChurchCRM Anda telah diubah"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

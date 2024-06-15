@@ -321,14 +321,6 @@ msgid "persons were imported"
 msgstr "osoby byly importovány"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nepotvrzeno."
-
-#: 
-msgid "Summary Report"
-msgstr "Souhrnná zpráva"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Přidat košík do události"
 

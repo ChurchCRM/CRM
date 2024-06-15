@@ -434,16 +434,6 @@ msgstr "Automação de Visitas"
 
 #: 
 #, fuzzy
-msgid "Not confirmed."
-msgstr "Não confirmado."
-
-#: 
-#, fuzzy
-msgid "Summary Report"
-msgstr "Relatório Resumido"
-
-#: 
-#, fuzzy
 msgid "Add Cart to Event"
 msgstr "Adicionar Carrinho a um Evento"
 
@@ -5031,36 +5021,6 @@ msgstr "Participantes do evento"
 
 #: 
 #, fuzzy
-msgid "is not configured"
-msgstr "não está configurado"
-
-#: 
-#, fuzzy
-msgid "Please update the"
-msgstr "Por favor, atualize o"
-
-#: 
-#, fuzzy
-msgid "API key in Setting->"
-msgstr "Chave da API em Configurações->"
-
-#: 
-#, fuzzy
-msgid "then update"
-msgstr "então atualize"
-
-#: 
-#, fuzzy
-msgid "For more info see our "
-msgstr "Para mais informações, veja nossa "
-
-#: 
-#, fuzzy
-msgid "support docs."
-msgstr "documentação de suporte."
-
-#: 
-#, fuzzy
 msgid "Yearly"
 msgstr "Anualmente"
 
@@ -6251,36 +6211,6 @@ msgstr "Permissão para o usuário exportar arquivos CSV"
 #, fuzzy
 msgid "Allow user to add new event"
 msgstr "Permitir ao usuário adicionar um novo evento"
-
-#: 
-#, fuzzy
-msgid "Done"
-msgstr "Feito"
-
-#: 
-#, fuzzy
-msgid "Assigned"
-msgstr "Atribuído"
-
-#: 
-#, fuzzy
-msgid "Percent"
-msgstr "Por cento"
-
-#: 
-#, fuzzy
-msgid "Total"
-msgstr "Total"
-
-#: 
-#, fuzzy
-msgid "Suggestion"
-msgstr "Sugestão"
-
-#: 
-#, fuzzy
-msgid "Comments"
-msgstr "Comentários"
 
 #: 
 #, fuzzy
@@ -8290,11 +8220,6 @@ msgstr "Sua nova Conta"
 
 #: 
 #, fuzzy
-msgid "Password Changed"
-msgstr "Senha Alterada"
-
-#: 
-#, fuzzy
 msgid "Password Reset"
 msgstr "Senha Resetada"
 
@@ -8467,11 +8392,6 @@ msgstr "A sua conta do churchCRM foi bloqueada."
 #, fuzzy
 msgid "A ChurchCRM account was created for you"
 msgstr "Um conta do ChurchCRM foi criada para você"
-
-#: 
-#, fuzzy
-msgid "Your ChurchCRM password was changed"
-msgstr "A sua senha do ChurchCRM foi alterada"
 
 #: 
 #, fuzzy

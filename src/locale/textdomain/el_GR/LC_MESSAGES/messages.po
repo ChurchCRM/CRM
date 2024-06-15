@@ -361,14 +361,6 @@ msgid "Canvass Automation"
 msgstr "Αυτοματισμός καμβά"
 
 #: 
-msgid "Not confirmed."
-msgstr "Δεν έχει επιβεβαιωθεί."
-
-#: 
-msgid "Summary Report"
-msgstr "Συνοπτική αναφορά"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Προσθήκη καλαθιού στην εκδήλωση"
 
@@ -4154,30 +4146,6 @@ msgid "Attendees for Event"
 msgstr "Συμμετέχοντες για Αναγνωριστικό εκδήλωσης"
 
 #: 
-msgid "is not configured"
-msgstr "δεν έχει ρυθμιστεί"
-
-#: 
-msgid "Please update the"
-msgstr "Παρακαλούμε ενημερώστε το"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Κλειδί API στο Setting->"
-
-#: 
-msgid "then update"
-msgstr "στη συνέχεια ενημερώστε"
-
-#: 
-msgid "For more info see our "
-msgstr "Για περισσότερες πληροφορίες δείτε μας "
-
-#: 
-msgid "support docs."
-msgstr "έγγραφα υποστήριξης."
-
-#: 
 msgid "Yearly"
 msgstr "Ετήσια"
 
@@ -5139,30 +5107,6 @@ msgstr "Άδεια χρήστη για εξαγωγή αρχείων CSV"
 #: 
 msgid "Allow user to add new event"
 msgstr "Επιτρέψτε στον χρήστη να προσθέσει νέο συμβάν"
-
-#: 
-msgid "Done"
-msgstr "Ολοκληρώθηκε"
-
-#: 
-msgid "Assigned"
-msgstr "Ανατεθεί"
-
-#: 
-msgid "Percent"
-msgstr "Τοις εκατό"
-
-#: 
-msgid "Total"
-msgstr "Σύνολο"
-
-#: 
-msgid "Suggestion"
-msgstr "Πρόταση"
-
-#: 
-msgid "Comments"
-msgstr "Σχόλια"
 
 #: 
 msgid "Weekly on"
@@ -6790,10 +6734,6 @@ msgid "Your New Account"
 msgstr "Ο νέος σας λογαριασμός"
 
 #: 
-msgid "Password Changed"
-msgstr "Ο κωδικός άλλαξε"
-
-#: 
 msgid "Password Reset"
 msgstr "ΕΠΑΝΑΦΟΡΑ ΚΩΔΙΚΟΥ"
 
@@ -6932,10 +6872,6 @@ msgstr "Ο λογαριασμός σας στο ChurchCRM κλειδώθηκε."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Ένας λογαριασμός ChurchCRM δημιουργήθηκε για εσάς"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Ο κωδικός πρόσβασής σας στο ChurchCRM άλλαξε"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

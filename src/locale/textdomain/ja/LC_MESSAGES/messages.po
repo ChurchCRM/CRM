@@ -261,10 +261,6 @@ msgid "Data import successful."
 msgstr "データのインポートが成功しました"
 
 #: 
-msgid "Summary Report"
-msgstr "概要レポート"
-
-#: 
 msgid "Select the event to which you would like to add your cart"
 msgstr "カートに追加したいイベントを選択してください"
 
