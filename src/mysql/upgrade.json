@@ -383,7 +383,7 @@
             "5.8.0"
         ],
         "scripts": [
-
+            "/mysql/upgrade/5.9.0.sql"
         ],
         "dbVersion": "5.9.0"
     }
