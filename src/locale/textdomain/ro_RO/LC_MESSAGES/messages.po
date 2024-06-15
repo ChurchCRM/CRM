@@ -379,14 +379,6 @@ msgid "Canvass Automation"
 msgstr "Automatizarea Colectării de Informații"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nu a fost confirmat."
-
-#: 
-msgid "Summary Report"
-msgstr "Raportul de sinteză"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Adauga in cos la eveniment"
 
@@ -4260,30 +4252,6 @@ msgid "Attendees for Event"
 msgstr "Participanți pentru eveniment:"
 
 #: 
-msgid "is not configured"
-msgstr "nu este configurat"
-
-#: 
-msgid "Please update the"
-msgstr "Actualizați vă rog"
-
-#: 
-msgid "API key in Setting->"
-msgstr "cheie API în Setări ->"
-
-#: 
-msgid "then update"
-msgstr "actualizarea"
-
-#: 
-msgid "For more info see our "
-msgstr "Pentru mai multe informații revedeți"
-
-#: 
-msgid "support docs."
-msgstr "documentație."
-
-#: 
 msgid "Yearly"
 msgstr "Anual"
 
@@ -5245,30 +5213,6 @@ msgstr "Permisiunea utilizatorului de a exporta fișiere CSV"
 #: 
 msgid "Allow user to add new event"
 msgstr "Permite utilizatorului să adauge un eveniment nou"
-
-#: 
-msgid "Done"
-msgstr "Finalizat"
-
-#: 
-msgid "Assigned"
-msgstr "Alocat"
-
-#: 
-msgid "Percent"
-msgstr "Procent"
-
-#: 
-msgid "Total"
-msgstr "Total"
-
-#: 
-msgid "Suggestion"
-msgstr "Sugestie"
-
-#: 
-msgid "Comments"
-msgstr "Comentarii"
 
 #: 
 msgid "Weekly on"
@@ -6897,10 +6841,6 @@ msgid "Your New Account"
 msgstr "Noul tău cont"
 
 #: 
-msgid "Password Changed"
-msgstr "Parolă schimbată"
-
-#: 
 msgid "Password Reset"
 msgstr "Parolă resetată"
 
@@ -7039,10 +6979,6 @@ msgstr "Contul tău ChurchCRM a fost blocat."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Un cont CurchCRM a fost creat pentru tine"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Parola pentru contul CurchCRM a fost schimbată"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

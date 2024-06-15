@@ -296,10 +296,6 @@ msgid "persons were imported"
 msgstr "האנשים יובאו בהצלחה"
 
 #: 
-msgid "Summary Report"
-msgstr "דו\"ח סיכום"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "הוסף סל לאירוע"
 

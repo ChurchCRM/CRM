@@ -362,14 +362,6 @@ msgid "Canvass Automation"
 msgstr "Canvass-automaatio"
 
 #: 
-msgid "Not confirmed."
-msgstr "Ei vahvistettu."
-
-#: 
-msgid "Summary Report"
-msgstr "Yhteenvetoraportti"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Lisää tapahtuma koriin"
 

@@ -362,14 +362,6 @@ msgid "Canvass Automation"
 msgstr "Automatización de sondeo"
 
 #: 
-msgid "Not confirmed."
-msgstr "No confirmado."
-
-#: 
-msgid "Summary Report"
-msgstr "Reporte resumido"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Añadir carrito al evento"
 
@@ -4159,30 +4151,6 @@ msgid "Attendees for Event"
 msgstr "Asistentes para evento"
 
 #: 
-msgid "is not configured"
-msgstr "no está configurado"
-
-#: 
-msgid "Please update the"
-msgstr "Por favor actualizar la"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Llave de API en ajuste->"
-
-#: 
-msgid "then update"
-msgstr "después actualizar"
-
-#: 
-msgid "For more info see our "
-msgstr "Para más información vea nuestros "
-
-#: 
-msgid "support docs."
-msgstr "documentos de soporte."
-
-#: 
 msgid "Yearly"
 msgstr "Anual"
 
@@ -5147,30 +5115,6 @@ msgstr "Permiso de usuario para exportar archivos CSV"
 #: 
 msgid "Allow user to add new event"
 msgstr "Permitir a usuario agregar nuevo evento"
-
-#: 
-msgid "Done"
-msgstr "Hecho"
-
-#: 
-msgid "Assigned"
-msgstr "Asignado"
-
-#: 
-msgid "Percent"
-msgstr "Porcentaje"
-
-#: 
-msgid "Total"
-msgstr "Total"
-
-#: 
-msgid "Suggestion"
-msgstr "Sugerencia"
-
-#: 
-msgid "Comments"
-msgstr "Comentarios"
 
 #: 
 msgid "Weekly on"
@@ -6823,10 +6767,6 @@ msgid "Your New Account"
 msgstr "Su nueva cuenta"
 
 #: 
-msgid "Password Changed"
-msgstr "Contraseña Cambiada"
-
-#: 
 msgid "Password Reset"
 msgstr "Restablecer contraseña"
 
@@ -6965,10 +6905,6 @@ msgstr "Su cuenta de ChurchCRM fue bloqueada."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Una cuenta de ChurchCRM fue creada para used"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Su contraseña de ChurchCRM fue cambiada"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

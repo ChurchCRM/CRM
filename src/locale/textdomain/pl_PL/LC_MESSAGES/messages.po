@@ -380,14 +380,6 @@ msgid "Canvass Automation"
 msgstr "Automatyzacja Ankiety"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nie potrwierdzone."
-
-#: 
-msgid "Summary Report"
-msgstr "Raport Podsumowujący"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Dodaj Koszyk do Wydarzenia"
 

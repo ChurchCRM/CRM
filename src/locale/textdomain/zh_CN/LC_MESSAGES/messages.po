@@ -379,14 +379,6 @@ msgid "Canvass Automation"
 msgstr "招商自动化"
 
 #: 
-msgid "Not confirmed."
-msgstr "没有得到证实。"
-
-#: 
-msgid "Summary Report"
-msgstr "总结报告"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "加入购物车事件"
 
@@ -4266,30 +4258,6 @@ msgid "Attendees for Event"
 msgstr "活动 的与会者"
 
 #: 
-msgid "is not configured"
-msgstr "未配置"
-
-#: 
-msgid "Please update the"
-msgstr "请更新"
-
-#: 
-msgid "API key in Setting->"
-msgstr "API密钥，设置 - >"
-
-#: 
-msgid "then update"
-msgstr "然后更新"
-
-#: 
-msgid "For more info see our "
-msgstr "有关详情，请参阅我们的"
-
-#: 
-msgid "support docs."
-msgstr "支持文档。"
-
-#: 
 msgid "Yearly"
 msgstr "每年"
 
@@ -5251,30 +5219,6 @@ msgstr "用户导出CSV文件的权限"
 #: 
 msgid "Allow user to add new event"
 msgstr "允许用户添加新活动"
-
-#: 
-msgid "Done"
-msgstr "完成"
-
-#: 
-msgid "Assigned"
-msgstr "已指派"
-
-#: 
-msgid "Percent"
-msgstr "百分比"
-
-#: 
-msgid "Total"
-msgstr "总计"
-
-#: 
-msgid "Suggestion"
-msgstr "建议"
-
-#: 
-msgid "Comments"
-msgstr "评价"
 
 #: 
 msgid "Weekly on"
@@ -6902,10 +6846,6 @@ msgid "Your New Account"
 msgstr "您的新账户"
 
 #: 
-msgid "Password Changed"
-msgstr "密码已更改"
-
-#: 
 msgid "Password Reset"
 msgstr "重设密码"
 
@@ -7044,10 +6984,6 @@ msgstr "您的ChurchCRM账户已被锁定。"
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "为您创建了一个ChurchCRM账户"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "您的ChurchCRM密码已更改"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

@@ -361,14 +361,6 @@ msgid "Canvass Automation"
 msgstr "Canvass Otomasyonu"
 
 #: 
-msgid "Not confirmed."
-msgstr "Onaylanmadı."
-
-#: 
-msgid "Summary Report"
-msgstr "Özet raporu"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Etkinliğe Sepet Ekle"
 
@@ -4158,30 +4150,6 @@ msgid "Attendees for Event"
 msgstr "Etkinlik Kimliği için katılımcılar:"
 
 #: 
-msgid "is not configured"
-msgstr "yapılandırılmamış"
-
-#: 
-msgid "Please update the"
-msgstr "Lütfen güncelleyin"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Ayarda API Anahtarı->"
-
-#: 
-msgid "then update"
-msgstr "sonra güncelleme"
-
-#: 
-msgid "For more info see our "
-msgstr "Daha fazla bilgi için bkz."
-
-#: 
-msgid "support docs."
-msgstr "Destek dokümanları."
-
-#: 
 msgid "Yearly"
 msgstr "Yıllık"
 
@@ -5143,30 +5111,6 @@ msgstr "CSV dosyalarını dışa aktarmak için kullanıcı izni"
 #: 
 msgid "Allow user to add new event"
 msgstr "Kullanıcının yeni etkinlik eklemesine izin verin"
-
-#: 
-msgid "Done"
-msgstr "Tamamlandı"
-
-#: 
-msgid "Assigned"
-msgstr "Atanmış"
-
-#: 
-msgid "Percent"
-msgstr "Yüzde"
-
-#: 
-msgid "Total"
-msgstr "Toplam"
-
-#: 
-msgid "Suggestion"
-msgstr "Öneri"
-
-#: 
-msgid "Comments"
-msgstr "Yorumlar"
 
 #: 
 msgid "Weekly on"
@@ -6794,10 +6738,6 @@ msgid "Your New Account"
 msgstr "Yeni Hesabınız"
 
 #: 
-msgid "Password Changed"
-msgstr "Şifre değişti"
-
-#: 
 msgid "Password Reset"
 msgstr "Parola sıfırlama"
 
@@ -6936,10 +6876,6 @@ msgstr "ChurchCRM hesabınız kilitlendi."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Sizin için bir ChurchCRM hesabı oluşturuldu"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "ChurchCRM şifreniz değiştirildi"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

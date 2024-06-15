@@ -361,14 +361,6 @@ msgid "Canvass Automation"
 msgstr "Tugiisiku automatiseerimine"
 
 #: 
-msgid "Not confirmed."
-msgstr "Pole kinnitatud."
-
-#: 
-msgid "Summary Report"
-msgstr "Kokkuvõtlik aruanne"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Lisa korv üritusele"
 
@@ -4160,30 +4152,6 @@ msgid "Attendees for Event"
 msgstr "Ürituse osalejad:"
 
 #: 
-msgid "is not configured"
-msgstr "pole konfigureeritud"
-
-#: 
-msgid "Please update the"
-msgstr "Palun värskendage"
-
-#: 
-msgid "API key in Setting->"
-msgstr "API võti seadistuses->"
-
-#: 
-msgid "then update"
-msgstr "siis värskenda"
-
-#: 
-msgid "For more info see our "
-msgstr "Lisateavet leiate meie lehelt"
-
-#: 
-msgid "support docs."
-msgstr "abikumendid."
-
-#: 
 msgid "Yearly"
 msgstr "Aastas"
 
@@ -5144,30 +5112,6 @@ msgstr "Kasutaja luba CSV-failide eksportimiseks"
 #: 
 msgid "Allow user to add new event"
 msgstr "Luba kasutajal lisada uus sündmus"
-
-#: 
-msgid "Done"
-msgstr "Valmis"
-
-#: 
-msgid "Assigned"
-msgstr "Määratud"
-
-#: 
-msgid "Percent"
-msgstr "Protsent"
-
-#: 
-msgid "Total"
-msgstr "Kokku"
-
-#: 
-msgid "Suggestion"
-msgstr "Soovitus"
-
-#: 
-msgid "Comments"
-msgstr "Kommentaarid"
 
 #: 
 msgid "Weekly on"
@@ -6795,10 +6739,6 @@ msgid "Your New Account"
 msgstr "Teie uus konto"
 
 #: 
-msgid "Password Changed"
-msgstr "Parool muudetud"
-
-#: 
 msgid "Password Reset"
 msgstr "Parooli lähtestamine"
 
@@ -6937,10 +6877,6 @@ msgstr "Teie ChurchCRM-i konto lukustati."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Teie jaoks loodi ChurchCRM-i konto"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Teie ChurchCRM-i parool on muudetud"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

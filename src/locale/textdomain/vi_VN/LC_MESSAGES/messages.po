@@ -377,14 +377,6 @@ msgid "Canvass Automation"
 msgstr "Tự động hóa Canvass"
 
 #: 
-msgid "Not confirmed."
-msgstr "Không được xác nhận."
-
-#: 
-msgid "Summary Report"
-msgstr "Báo cáo hồ sơ tổng hợp"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Thêm vào giỏ rồi gửi đến Sự kiện"
 
@@ -4178,30 +4170,6 @@ msgid "Attendees for Event"
 msgstr "Những người tham dự cho sự kiện:"
 
 #: 
-msgid "is not configured"
-msgstr "không được cấu hình"
-
-#: 
-msgid "Please update the"
-msgstr "Vui lòng cập nhật"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Khóa API trong Cài đặt->"
-
-#: 
-msgid "then update"
-msgstr "sau đó cập nhật"
-
-#: 
-msgid "For more info see our "
-msgstr "Để biết thêm thông tin, hãy xem của chúng tôi"
-
-#: 
-msgid "support docs."
-msgstr "tài liệu hỗ trợ."
-
-#: 
 msgid "Yearly"
 msgstr "Hàng năm"
 
@@ -5163,30 +5131,6 @@ msgstr "Thành viên có quyền xuất tập tin CSV"
 #: 
 msgid "Allow user to add new event"
 msgstr "Cho phép Thành viên thêm sự kiện mới"
-
-#: 
-msgid "Done"
-msgstr "Làm xong"
-
-#: 
-msgid "Assigned"
-msgstr "Giao"
-
-#: 
-msgid "Percent"
-msgstr "Phần trăm"
-
-#: 
-msgid "Total"
-msgstr "Toàn bộ"
-
-#: 
-msgid "Suggestion"
-msgstr "Gợi ý"
-
-#: 
-msgid "Comments"
-msgstr "Bình luận"
 
 #: 
 msgid "Weekly on"
@@ -6814,10 +6758,6 @@ msgid "Your New Account"
 msgstr "Tài khoản mới của bạn"
 
 #: 
-msgid "Password Changed"
-msgstr "Mật khẩu đã được thay đổi"
-
-#: 
 msgid "Password Reset"
 msgstr "Đặt lại mật khẩu"
 
@@ -6956,10 +6896,6 @@ msgstr "Tài khoản ChurchCRM của bạn đã bị khóa."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Một tài khoản ChurchCRM đã được tạo cho bạn"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Mật khẩu ChurchCRM của bạn đã được thay đổi"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

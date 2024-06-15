@@ -352,14 +352,6 @@ msgid "Canvass Automation"
 msgstr "Korteskedés Automation"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nem megerősítik."
-
-#: 
-msgid "Summary Report"
-msgstr "Összefoglaló jelentés"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Add kosárba a rendezvény"
 

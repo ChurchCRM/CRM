@@ -362,14 +362,6 @@ msgid "Canvass Automation"
 msgstr "Автоматизація агітаторів"
 
 #: 
-msgid "Not confirmed."
-msgstr "Не підтверджено."
-
-#: 
-msgid "Summary Report"
-msgstr "Зведений звіт"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Додати кошик до події"
 
@@ -4159,30 +4151,6 @@ msgid "Attendees for Event"
 msgstr "Учасники ідентифікатора події:"
 
 #: 
-msgid "is not configured"
-msgstr "не налаштовано"
-
-#: 
-msgid "Please update the"
-msgstr "Будь ласка, оновіть"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Ключ API у Setting->"
-
-#: 
-msgid "then update"
-msgstr "потім оновіть"
-
-#: 
-msgid "For more info see our "
-msgstr "Для отримання додаткової інформації дивіться наш "
-
-#: 
-msgid "support docs."
-msgstr "Документи підтримки."
-
-#: 
 msgid "Yearly"
 msgstr "Щорічно"
 
@@ -5144,30 +5112,6 @@ msgstr "Дозвіл користувача на експорт файлів CSV
 #: 
 msgid "Allow user to add new event"
 msgstr "Дозволити користувачеві додавати нову подію"
-
-#: 
-msgid "Done"
-msgstr "Готово"
-
-#: 
-msgid "Assigned"
-msgstr "Призначений"
-
-#: 
-msgid "Percent"
-msgstr "Відсоток"
-
-#: 
-msgid "Total"
-msgstr "Всього"
-
-#: 
-msgid "Suggestion"
-msgstr "Пропозиція"
-
-#: 
-msgid "Comments"
-msgstr "Коментарі"
 
 #: 
 msgid "Weekly on"
@@ -6795,10 +6739,6 @@ msgid "Your New Account"
 msgstr "Ваш новий рахунок"
 
 #: 
-msgid "Password Changed"
-msgstr "Пароль змінено"
-
-#: 
 msgid "Password Reset"
 msgstr "Скидання пароля"
 
@@ -6937,10 +6877,6 @@ msgstr "Ваш обліковий запис ChurchCRM був заблокова
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Для вас був створений обліковий запис ChurchCRM"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Ваш пароль ChurchCRM змінено"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"

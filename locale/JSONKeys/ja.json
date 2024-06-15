@@ -62,7 +62,6 @@
     "ERROR: the uploaded CSV file no longer exists!": "エラー　アップロードされた CSV ファイルはもう存在しません",
     "Upload CSV File": "CSVファイルをアップロードする",
     "Data import successful.": "データのインポートが成功しました",
-    "Summary Report": "概要レポート",
     "Select the event to which you would like to add your cart": "カートに追加したいイベントを選択してください",
     "Add New Event": "新しいイベントを追加",
     "Your cart is empty!": "あなたのカートは空です！",
