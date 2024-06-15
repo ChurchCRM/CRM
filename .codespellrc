@@ -1,0 +1,5 @@
+[codespell]
+skip = *.po,package.json,package-lock.json,./node_modules,./locale,./src/composer.json,./src/composer.lock,./src/signatures.json,./src/locale,./src/vendor,./src/skin/dist,./src/skin/external,./src/skin/js-react,./src/ChurchCRM/model/ChurchCRM/Base,./src/ChurchCRM/model/ChurchCRM/Map
+count = true
+quiet-level = 3
+ignore-words-list = checkin,aCount,currentY,sLanguage

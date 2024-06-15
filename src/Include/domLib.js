@@ -143,7 +143,7 @@ function domLib_isDescendantOf(in_object, in_ancestor) {
                 in_object = tmp_object;
             }
         } catch (e) {
-            // in case we get some wierd error, just assume we haven't gone out yet
+            // in case we get some weird error, just assume we haven't gone out yet
             return true;
         }
     }

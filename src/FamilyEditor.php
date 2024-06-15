@@ -9,10 +9,8 @@
   *
  ******************************************************************************/
 
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Include/CanvassUtilities.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
@@ -51,10 +49,6 @@ if ($iFamilyID > 0) {
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::redirect('v2/dashboard');
 }
-
-// Get the lists of canvassers
-$rsCanvassers = CanvassGetCanvassers(gettext('Canvassers'));
-$rsBraveCanvassers = CanvassGetCanvassers(gettext('BraveCanvassers'));
 
 // Get the list of custom person fields
 $sSQL = 'SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order';
@@ -145,21 +139,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         }
     } else {
         $nEnvelope = "'0'";
-    }
-
-    $iCanvasser = 0;
-    $bOkToCanvass = false;
-    if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { // Only take modifications to this field if the current user is a canvasser
-        $bOkToCanvass = isset($_POST['OkToCanvass']);
-        if (array_key_exists('Canvasser', $_POST)) {
-            $iCanvasser = InputUtils::legacyFilterInput($_POST['Canvasser']);
-        }
-        if ((!$iCanvasser) && array_key_exists('BraveCanvasser', $_POST)) {
-            $iCanvasser = InputUtils::legacyFilterInput($_POST['BraveCanvasser']);
-        }
-        if (empty($iCanvasser)) {
-            $iCanvasser = 0;
-        }
     }
 
     $iPropertyID = 0;
@@ -270,7 +249,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         //Write the base SQL depending on the Action
         $bSendNewsLetterString = $bSendNewsLetter ? 'TRUE' : 'FALSE';
-        $bOkToCanvassString = $bOkToCanvass ? 'TRUE' : 'FALSE';
 
         $family = new \ChurchCRM\model\ChurchCRM\Family();
         if ($iFamilyID >= 1) {
@@ -289,8 +267,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setDateEntered(date('YmdHis'))
             ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
             ->setSendNewsletter($bSendNewsLetterString)
-            ->setOkToCanvass($bOkToCanvassString)
-            ->setCanvasser($iCanvasser)
             ->setEnvelope($nEnvelope);
         if ($dWeddingDate) {
             $family->setWeddingdate($dWeddingDate);
@@ -473,8 +449,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sCellPhone = $fam_CellPhone;
         $sEmail = $fam_Email;
         $bSendNewsLetter = ($fam_SendNewsLetter == 'TRUE');
-        $bOkToCanvass = ($fam_OkToCanvass == 'TRUE');
-        $iCanvasser = $fam_Canvasser;
         $dWeddingDate = $fam_WeddingDate;
         $nLatitude = $fam_Latitude;
         $nLongitude = $fam_Longitude;
@@ -531,7 +505,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sZip = SystemConfig::getValue('sDefaultZip');
         $iClassification = '0';
         $iFamilyMemberRows = 6;
-        $bOkToCanvass = 1;
 
         $iFamilyID = -1;
         $sName = '';
@@ -545,7 +518,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $bNoFormat_CellPhone = isset($_POST['NoFormat_CellPhone']);
         $sEmail = '';
         $bSendNewsLetter = 'TRUE';
-        $iCanvasser = -1;
         $dWeddingDate = '';
         $nLatitude = 0.0;
         $nLongitude = 0.0;
@@ -753,54 +725,6 @@ require 'Include/Header.php';
                 </div>
                 <?php
             } /* Wedding date can be hidden - General Settings */ ?>
-            <div class="row">
-                <?php if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { // Only show this field if the current user is a canvasser?>
-                    <div class="form-group col-md-4">
-                        <label><?= gettext('Ok To Canvass') ?>: </label><br/>
-                        <input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) {
-                                echo ' checked ';
-                                                                            } ?> >
-                    </div>
-                    <?php
-                }
-
-                if ($rsCanvassers != 0 && mysqli_num_rows($rsCanvassers) > 0) {
-                    ?>
-                <div class="form-group col-md-4">
-                    <label><?= gettext('Assign a Canvasser') ?>:</label>
-                    <?php // Display all canvassers
-                    echo "<select name='Canvasser' class=\"form-control\"><option value=\"0\">None selected</option>";
-                    while ($aCanvasser = mysqli_fetch_array($rsCanvassers)) {
-                        echo '<option value="' . $aCanvasser['per_ID'] . '"';
-                        if ($aCanvasser['per_ID'] == $iCanvasser) {
-                            echo ' selected';
-                        }
-                        echo '>';
-                        echo $aCanvasser['per_FirstName'] . ' ' . $aCanvasser['per_LastName'];
-                        echo '</option>';
-                    }
-                    echo '</select></div>';
-                }
-
-                if ($rsBraveCanvassers != 0 && mysqli_num_rows($rsBraveCanvassers) > 0) {
-                    ?>
-                    <div class="form-group col-md-4">
-                        <label><?= gettext('Assign a Brave Canvasser') ?>: </label>
-
-                        <?php // Display all canvassers
-                        echo "<select name='BraveCanvasser' class=\"form-control\"><option value=\"0\">None selected</option>";
-                        while ($aBraveCanvasser = mysqli_fetch_array($rsBraveCanvassers)) {
-                            echo '<option value="' . $aBraveCanvasser['per_ID'] . '"';
-                            if ($aBraveCanvasser['per_ID'] == $iCanvasser) {
-                                echo ' selected';
-                            }
-                            echo '>';
-                            echo $aBraveCanvasser['per_FirstName'] . ' ' . $aBraveCanvasser['per_LastName'];
-                            echo '</option>';
-                        }
-                        echo '</select></div>';
-                } ?>
-            </div>
         </div>
     </div>
     <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { /* Donation envelopes can be hidden - General Settings */ ?>

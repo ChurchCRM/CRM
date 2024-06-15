@@ -48,7 +48,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <li><b><?= gettext("Manage Groups and Roles") ?>:</b> <?= $user->isAdmin() || $user->isManageGroups() ? _("Yes") : _("No") ?></li>
                 <li><b><?= gettext("Manage Donations and Finance") ?>:</b> <?= $user->isAdmin() || $user->isFinance() ? _("Yes") : _("No") ?></li>
                 <li><b><?= gettext("Manage Notes") ?>:</b> <?= $user->isAdmin() || $user->isNotes() ? _("Yes") : _("No") ?></li>
-                <li><b><?= gettext("Canvasser") ?>:</b> <?= $user->isAdmin() || $user->isCanvasser() ? _("Yes") : _("No") ?></li>
             </div>
         </div>
     </div>

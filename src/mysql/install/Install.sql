@@ -15,33 +15,6 @@ CREATE TABLE `version_ver` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `canvassdata_can`
---
-
-CREATE TABLE `canvassdata_can` (
-  `can_ID` mediumint(9) unsigned NOT NULL auto_increment,
-  `can_famID` mediumint(9) NOT NULL default '0',
-  `can_Canvasser` mediumint(9) NOT NULL default '0',
-  `can_FYID` mediumint(9) default NULL,
-  `can_date` date default NULL,
-  `can_Positive` text,
-  `can_Critical` text,
-  `can_Insightful` text,
-  `can_Financial` text,
-  `can_Suggestion` text,
-  `can_NotInterested` tinyint(1) NOT NULL default '0',
-  `can_WhyNotInterested` text,
-  PRIMARY KEY  (`can_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `canvassdata_can`
---
-
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `config_cfg`
 --
 
@@ -355,8 +328,6 @@ CREATE TABLE `family_fam` (
   `fam_scanCredit` text,
   `fam_SendNewsLetter` enum('FALSE','TRUE') NOT NULL default 'FALSE',
   `fam_DateDeactivated` date default NULL,
-  `fam_OkToCanvass` enum('FALSE','TRUE') NOT NULL default 'FALSE',
-  `fam_Canvasser` smallint(5) unsigned NOT NULL default '0',
   `fam_Latitude` double default NULL,
   `fam_Longitude` double default NULL,
   `fam_Envelope` mediumint(9) NOT NULL default '0',
@@ -498,7 +469,6 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (5, 7, 7, 'bManageGroups'),
   (5, 8, 8, 'bFinance'),
   (5, 9, 9, 'bNotes'),
-  (5, 11, 11, 'bCanvasser'),
   (10, 1, 1, 'Teacher'),
   (10, 2, 2, 'Student'),
   (11, 1, 1, 'Member'),
@@ -926,7 +896,6 @@ INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qr
   (24, 'SELECT per_ID as AddToCart, CONCAT(''<a href=PersonView.php?PersonID='',per_ID,''>'',per_FirstName,'' '',per_LastName,''</a>'') AS Name FROM person_per WHERE per_cls_id =1', 'Select all members', 'People who are members', 0),
   (25, 'SELECT per_ID as AddToCart, CONCAT(''<a href=PersonView.php?PersonID='',per_ID,''>'',per_FirstName,'' '',per_LastName,''</a>'') AS Name FROM person_per LEFT JOIN person2volunteeropp_p2vo ON per_id = p2vo_per_ID WHERE p2vo_vol_ID = ~volopp~ ORDER BY per_LastName', 'Volunteers', 'Find volunteers for a particular opportunity', 1),
   (26, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per WHERE DATE_SUB(NOW(),INTERVAL ~friendmonths~ MONTH)<per_FriendDate ORDER BY per_MembershipDate', 'Recent friends', 'Friends who signed up in previous months', 0),
-  (27, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass="TRUE" ORDER BY fam_Zip', 'Families to Canvass', 'People in families that are ok to canvass.', 0),
   (28, 'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=''Pledge'' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=''Pledge'' order by fam_Name', 'Pledge comparison', 'Compare pledges between two fiscal years', 1),
   (30, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)', 'Missing pledges', 'Find people who pledged one year but not another', 1),
   (32, 'SELECT fam_Name, fam_Envelope, b.fun_Name as Fund_Name, a.plg_amount as Pledge from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid~ and a.plg_PledgeOrPayment=\'Pledge\' and a.plg_amount>0 join donationfund_fun b on b.fun_ID = a.plg_fundID order by fam_Name, a.plg_fundID', 'Family Pledge by Fiscal Year', 'Pledge summary by family name for each fund for the selected fiscal year', 1),
@@ -1059,7 +1028,6 @@ CREATE TABLE `user_usr` (
   `usr_CalNoSchool7` date default NULL,
   `usr_CalNoSchool8` date default NULL,
   `usr_SearchFamily` tinyint(3) default NULL,
-  `usr_Canvasser` tinyint(1) NOT NULL default '0',
   `usr_TwoFactorAuthSecret` VARCHAR(255) NULL,
   `usr_TwoFactorAuthLastKeyTimestamp` INT NULL,
   `usr_TwoFactorAuthRecoveryCodes` TEXT NULL,
@@ -1078,10 +1046,9 @@ INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, 
                         `usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
                         `usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`, `usr_EditSelf`,
                         `usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`,
-                        `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`,
-                        `usr_Canvasser`)
+                        `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`)
 VALUES
-  (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
+  (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 
 --
@@ -1261,7 +1228,7 @@ CREATE TABLE `church_location_role` (
   `location_id` INT NOT NULL,
   `role_id` INT NOT NULL,
   `role_order` INT NOT NULL,
-  `role_title` INT NOT NULL,  #Thi
+  `role_title` INT NOT NULL,
   PRIMARY KEY (`location_id`, `role_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
@@ -1302,7 +1269,6 @@ INSERT INTO `permissions` (`permission_id`, `permission_name`, `permission_desc`
 (9, 'crudDonations', 'Manage Donations'),
 (10, 'curdFinance', 'Manage Finance'),
 (11, 'curdNotes', 'Manage Notes'),
-(12, 'canvasser', 'Canvasser volunteer'),
 (13, 'editSelf', 'Edit own family only'),
 (14, 'emailMailto', 'Allow to see Mailto Links'),
 (15, 'createDirectory', 'Create Directories'),

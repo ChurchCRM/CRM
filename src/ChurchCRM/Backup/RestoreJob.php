@@ -144,7 +144,7 @@ class RestoreJob extends JobBase
         //This can be very troublesome for users in a testing environment.
         LoggerUtils::getAppLogger()->debug('Starting post-restore cleanup');
         SystemConfig::setValue('bEnableExternalBackupTarget', '0');
-        $this->Messages[] = gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting.');
+        $this->Messages[] = gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting.');
         SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
         LoggerUtils::getAppLogger()->debug('Reset System Settings for: bEnableExternalBackupTarget and sLastIntegrityCheckTimeStamp');
     }

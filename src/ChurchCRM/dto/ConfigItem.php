@@ -80,7 +80,7 @@ class ConfigItem
         } else {
             //if the value is being set to a non-default value
             if (!isset($this->dbConfigItem)) {
-                //create the item if it doesnt exist
+                //create the item if it doesn't exist
                 $this->dbConfigItem = new Config();
                 $this->dbConfigItem->setId($this->getId());
                 $this->dbConfigItem->setName($this->getName());

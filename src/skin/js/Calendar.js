@@ -417,7 +417,7 @@ function initializeCalendar() {
                 ) {
                     // this event is "Editable", so we should display the edit form.
                     //
-                    // NOTE: for some reaons, `editable` field is not in the event so we're estimating
+                    // NOTE: for some reason, `editable` field is not in the event, so we're estimating
                     //   this value based on `startEditable` and `durationEditable`
                     window.showEventForm(eventData); // This starts the React app
                 } else {

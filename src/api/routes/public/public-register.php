@@ -19,10 +19,17 @@ $app->group('/public/register', function (RouteCollectorProxy $group): void {
 
 function registerFamilyAPI(Request $request, Response $response, array $args): Response
 {
+    $familyMetadata = [];
+
+    foreach ($request->getParsedBody() as $key => $value) {
+        if (is_string($value)) {
+            $familyMetadata[$key] = htmlspecialchars(trim(strip_tags($value)), ENT_QUOTES, 'UTF-8');
+        } else {
+            $familyMetadata[$key] = $value;
+        }
+    };
+
     $family = new Family();
-
-    $familyMetadata = $request->getParsedBody();
-
     $family->setName($familyMetadata['Name']);
     $family->setAddress1($familyMetadata['Address1']);
     $family->setAddress2($familyMetadata['Address2']);
@@ -37,7 +44,6 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new DateTime());
 
-    $familyMembers = [];
     if (!$family->validate()) {
         return SlimUtils::renderJSON(
             $response,
@@ -48,6 +54,9 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
             400
         );
     }
+
+    $familyMembers = [];
+
     foreach ($familyMetadata['people'] as $personMetaData) {
         $person = new Person();
         $person->setEnteredBy(Person::SELF_REGISTER);
@@ -63,6 +72,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
         $person->setFlags($personMetaData['hideAge'] ? '1' : 0);
 
         $birthday = $personMetaData['birthday'];
+
         if (!empty($birthday)) {
             $birthdayDate = DateTime::createFromFormat('m/d/Y', $birthday);
             $person->setBirthDay($birthdayDate->format('d'));
@@ -76,10 +86,12 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
             return SlimUtils::renderJSON($response, ['error' => gettext('Validation Error'),
                 'failures' => ORMUtils::getValidationErrors($person->getValidationFailures())], 401);
         }
+
         $familyMembers[] = $person;
     }
 
     $family->save();
+
     foreach ($familyMembers as $person) {
         $person->setFamily($family);
         $family->addPerson($person);
@@ -87,6 +99,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     }
 
     $family->save();
+
     return SlimUtils::renderJSON($response, $family->toArray());
 }
 
@@ -96,6 +109,7 @@ function registerPersonAPI(Request $request, Response $response, array $args): R
     $person->fromJSON($request->getBody());
     $person->setEnteredBy(Person::SELF_REGISTER);
     $person->setDateEntered(new DateTime());
+
     if (!$person->validate()) {
         return SlimUtils::renderJSON(
             $response,

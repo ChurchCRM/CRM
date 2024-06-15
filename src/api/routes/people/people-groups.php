@@ -78,7 +78,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $p = $member->getPerson();
             $fam = $p->getFamily();
 
-            // Philippe Logel : this is usefull when a person don't have a family : ie not an address
+            // Philippe Logel : this is useful when a person don't have a family : ie not an address
             if (!empty($fam)) {
                 $p->setAddress1($fam->getAddress1());
                 $p->setAddress2($fam->getAddress2());

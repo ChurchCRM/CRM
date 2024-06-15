@@ -114,11 +114,6 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                         } ?>
                         <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
                                 class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
-                        <?php if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { ?>
-                            <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&FYID=<?= $iFYID ?>&linkBack=v2/family/<?= $family->getId() ?>">
-                                <i class="fas fa-refresh"></i><?= $iFYID . gettext(" Canvass Entry") ?></a>
-                        <?php } ?>
-
                         <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">

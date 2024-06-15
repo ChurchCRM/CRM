@@ -119,7 +119,7 @@ if (
     }
     $_SESSION['idefaultDate'] = $dDate;
 
-    // set from drop-down if set, saved session default, or by calcuation
+    // set from drop-down if set, saved session default, or by calculation
     $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
     if (!$iFYID) {
         $iFYID = $_SESSION['idefaultFY'];

@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use Monolog\Processor\PsrLogMessageProcessor;
 
 class LoggerUtils
 {
@@ -35,6 +36,7 @@ class LoggerUtils
     {
         return SystemURLs::getDocumentRoot() . '/logs/' . date('Y-m-d') . '-' . $type . '.log';
     }
+
     public static function getSlimMVCLogger(): Logger
     {
         if (!self::$slimLogger instanceof Logger) {
@@ -53,16 +55,14 @@ class LoggerUtils
     public static function getAppLogger($level = null): ?Logger
     {
         if (!self::$appLogger instanceof Logger) {
-            // if $level is null
-            // (meaning this function was invoked without explicitly setting the level),
-            //  then get the level from the database
             if ($level === null) {
                 $level = self::getLogLevel();
             }
+
             self::$appLogger = new Logger('defaultLogger');
-            //hold a reference to the handler object so that resetAppLoggerLevel can be called later on
             self::$appLogHandler = new StreamHandler(self::buildLogFilePath('app'), $level);
             self::$appLogger->pushHandler(self::$appLogHandler);
+            self::$appLogger->pushProcessor(new PsrLogMessageProcessor());
             self::$appLogger->pushProcessor(function (array $entry): array {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
                 $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
@@ -92,18 +92,11 @@ class LoggerUtils
     /**
      * @return Logger
      */
-    public static function getAuthLogger($level = null): ?Logger
+    public static function getAuthLogger(): ?Logger
     {
         if (!self::$authLogger instanceof Logger) {
-            // if $level is null
-            // (meaning this function was invoked without explicitly setting the level),
-            //  then get the level from the database
-            if ($level === null) {
-                $level = self::getLogLevel();
-            }
             self::$authLogger = new Logger('authLogger');
-            //hold a reference to the handler object so that resetAppLoggerLevel can be called later on
-            self::$authLogHandler = new StreamHandler(self::buildLogFilePath('auth'), $level);
+            self::$authLogHandler = new StreamHandler(self::buildLogFilePath('auth'), SystemConfig::getValue('sLogLevel'));
             self::$authLogger->pushHandler(self::$authLogHandler);
             self::$authLogger->pushProcessor(function (array $entry): array {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
@@ -120,8 +113,8 @@ class LoggerUtils
 
     public static function resetAppLoggerLevel(): void
     {
-        // if the app log handler was initialized (in the boostrapper) to a specific level
-        // before the database initialization occurred
+        // If the app log handler was initialized (in the bootstrapper) to a specific level
+        // before the database initialization occurred,
         // we provide a function to reset the app logger to what's defined in the database.
         self::$appLogHandler->setLevel(self::getLogLevel());
     }
