@@ -377,154 +377,6 @@ msgid "Canvass Automation"
 msgstr "Tự động hóa Canvass"
 
 #: 
-msgid "Not confirmed."
-msgstr "Không được xác nhận."
-
-#: 
-msgid "Canvassers"
-msgstr "Canvassers"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Đã xóa tất cả các nhiệm vụ vượt qua trình duyệt."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Đặt Ok thành Canvass cho tất cả các gia đình."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Đã tắt Ok To Canvass cho tất cả các gia đình."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "Nút ClearAllOkToCanvass không bị giới hạn."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Thiết lập năm tài chính mặc định"
-
-#: 
-msgid "Check to confirm"
-msgstr "Chọn để xác nhận"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Chỉ định Canvassers"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Chỉ định ngẫu nhiên các canvassers cho tất cả các Gia đình. Canvassers được lấy từ &quot; Canvassers &quot; Nhóm."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Chuyển nhượng cho không cầm cố"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Chỉ định ngẫu nhiên các canvassers cho các Gia đình không cam kết. Canvassers được lấy từ & quot; BraveCanvassers & quot; Nhóm."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Xóa nhiệm vụ canvasser"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Xóa tất cả các nhiệm vụ canvasser cho tất cả các gia đình."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Lưu ý quan trọng: điều này sẽ làm mất bất kỳ nhiệm vụ canvasser nào đã được thực hiện bằng tay."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Bật Canvass cho tất cả gia đình"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "Bật nút & quot; Ok Để vượt qua & quot; trường dành cho tất cả các Gia đình."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Tắt Canvass cho tất cả gia đình"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Tắt nút & quot; Ok Để Canvass & quot; trường cho tất cả các gia đình"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Bảng tóm tắt"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Tạo một tệp PDF chứa các tờ tóm tắt cho tất cả các Gia đình, được sắp xếp theo canvasser."
-
-#: 
-msgid "Progress Report"
-msgstr "Báo cáo Tiến độ"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Tạo tệp PDF có chứa báo cáo tiến trình. Báo cáo tiến độ bao gồm thông tin về tiến độ tổng thể của canvass và tiến độ của từng canvass."
-
-#: 
-msgid "Summary Report"
-msgstr "Báo cáo hồ sơ tổng hợp"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Tạo tệp PDF có chứa báo cáo tóm tắt. Báo cáo tóm tắt bao gồm các nhận xét được trích xuất từ ​​dữ liệu canvass."
-
-#: 
-msgid "Not Interested Report"
-msgstr "Báo cáo không quan tâm"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Tạo tệp PDF có chứa báo cáo về các họ được đánh dấu & quot; Không quan tâm & quot; bởi canvasser."
-
-#: 
-msgid " Canvass Input for the "
-msgstr "Đầu vào Canvass cho"
-
-#: 
-msgid "Canvasser"
-msgstr "Canvasser"
-
-#: 
-msgid "Positive"
-msgstr "Dương tính"
-
-#: 
-msgid "Critical"
-msgstr "Bình luận"
-
-#: 
-msgid "Insightful"
-msgstr "Sâu sắc"
-
-#: 
-msgid "Financial"
-msgstr "Tài chính"
-
-#: 
-msgid "Suggestions"
-msgstr "Gợi ý:"
-
-#: 
-msgid "Not Interested"
-msgstr "Không quan tâm"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Vì sao bạn không quan tâm ?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Thêm vào giỏ rồi gửi đến Sự kiện"
 
@@ -1308,18 +1160,6 @@ msgid "Other Info"
 msgstr "Thông tin khác"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "Ok để Canvass"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "Chỉ định một Canvasser"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "Chỉ định một Canvasser dũng cảm"
-
-#: 
 msgid "Envelope Info"
 msgstr "Thông tin phong bì"
 
@@ -1554,10 +1394,6 @@ msgstr "Thêm một cam kết mới"
 #: 
 msgid "Add a new payment"
 msgstr "Thêm một khoản thanh toán mới"
-
-#: 
-msgid " Canvass Entry"
-msgstr "Canvass Entry"
 
 #: 
 msgid "Close"
@@ -3239,10 +3075,6 @@ msgid "(Edit own family only.)"
 msgstr "(Chỉ chỉnh sửa gia đình riêng.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Tình nguyện viên Canvass.)"
-
-#: 
 msgid "Admin"
 msgstr "Quản trị"
 
@@ -3409,18 +3241,6 @@ msgstr "Lỗi nghiêm trọng trong luồng dữ liệu API eGive: '"
 #: 
 msgid "eMail Dashboard"
 msgstr "Trang tổng quan eMail"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Không gia đình nào cần chỉ định người duyệt"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers được chỉ định ngẫu nhiên cho %d họ."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers được chỉ định ngẫu nhiên cho %d họ không cầm cố."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3677,18 +3497,6 @@ msgstr "Loại tệp"
 #: 
 msgid "items"
 msgstr "mặt hàng"
-
-#: 
-msgid "Did not pledge"
-msgstr "Không cam kết"
-
-#: 
-msgid "Top pledger"
-msgstr "Người cầm cố hàng đầu"
-
-#: 
-msgid "Pledged"
-msgstr "Cam kết"
 
 #: 
 msgid "M/F"
@@ -4362,30 +4170,6 @@ msgid "Attendees for Event"
 msgstr "Những người tham dự cho sự kiện:"
 
 #: 
-msgid "is not configured"
-msgstr "không được cấu hình"
-
-#: 
-msgid "Please update the"
-msgstr "Vui lòng cập nhật"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Khóa API trong Cài đặt->"
-
-#: 
-msgid "then update"
-msgstr "sau đó cập nhật"
-
-#: 
-msgid "For more info see our "
-msgstr "Để biết thêm thông tin, hãy xem của chúng tôi"
-
-#: 
-msgid "support docs."
-msgstr "tài liệu hỗ trợ."
-
-#: 
 msgid "Yearly"
 msgstr "Hàng năm"
 
@@ -4528,14 +4312,6 @@ msgstr "Tên tệp:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Năm tài chính:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Lưu ý quan trọng: điều này sẽ làm mất bất kỳ & quot; Ok Để Canvass & quot; các trường đã được thiết lập bằng tay."
-
-#: 
-msgid "Canvasser:"
-msgstr "Canvasser:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5355,50 +5131,6 @@ msgstr "Thành viên có quyền xuất tập tin CSV"
 #: 
 msgid "Allow user to add new event"
 msgstr "Cho phép Thành viên thêm sự kiện mới"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "Báo cáo tiến độ canvass"
-
-#: 
-msgid "Done"
-msgstr "Làm xong"
-
-#: 
-msgid "Assigned"
-msgstr "Giao"
-
-#: 
-msgid "Percent"
-msgstr "Phần trăm"
-
-#: 
-msgid "Total"
-msgstr "Toàn bộ"
-
-#: 
-msgid "Pledge status"
-msgstr "Tình trạng cầm cố"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "Báo cáo Tóm tắt Canvass"
-
-#: 
-msgid "Suggestion"
-msgstr "Gợi ý"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "WhyNotInterested"
-
-#: 
-msgid "Comments"
-msgstr "Bình luận"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "Canvass Báo cáo không quan tâm"
 
 #: 
 msgid "Weekly on"
@@ -6833,10 +6565,6 @@ msgid "Failed"
 msgstr "Thất bại"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "Kiểm tra tính toàn vẹn trước đó đã thông qua. Tất cả các hàm băm của tệp hệ thống đều khớp với các giá trị mong đợi."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Số tài khoản kiểm tra nhà thờ"
 
@@ -7030,10 +6758,6 @@ msgid "Your New Account"
 msgstr "Tài khoản mới của bạn"
 
 #: 
-msgid "Password Changed"
-msgstr "Mật khẩu đã được thay đổi"
-
-#: 
 msgid "Password Reset"
 msgstr "Đặt lại mật khẩu"
 
@@ -7172,10 +6896,6 @@ msgstr "Tài khoản ChurchCRM của bạn đã bị khóa."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Một tài khoản ChurchCRM đã được tạo cho bạn"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Mật khẩu ChurchCRM của bạn đã được thay đổi"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7360,10 +7080,6 @@ msgstr "Liên kết đặt lại mật khẩu"
 #: 
 msgid "Reset Password"
 msgstr "Đặt lại mật khẩu"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "Là một phần của quá trình khôi phục, các bản sao lưu bên ngoài đã bị vô hiệu hóa. Nếu bạn muốn tiếp tục sao lưu tự động, bạn phải kích hoạt lại cài đặt bEnableExternalBackupTarget."
 
 #: 
 msgid "Unable to reset password"

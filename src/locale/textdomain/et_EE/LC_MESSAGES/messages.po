@@ -361,154 +361,6 @@ msgid "Canvass Automation"
 msgstr "Tugiisiku automatiseerimine"
 
 #: 
-msgid "Not confirmed."
-msgstr "Pole kinnitatud."
-
-#: 
-msgid "Canvassers"
-msgstr "Tugiisik"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "Julge tugiisik"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Tühjendas kõik tugiisiku ülesanded."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Määrake kõikidele peredele tugiisik OK."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Keela tugiisikud OK kõigide peredele."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "Nuppu TühjendaKõikOkTugiisikud ei peidetud."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Määra peamine aruandlus aasta"
-
-#: 
-msgid "Check to confirm"
-msgstr "Kinnita"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Määrake tugiisik"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Määrake tugiisik juhuslikult kõigile peredele. Tugiisik võetakse &quot;Tugiisik&quot; grupist."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Määrata mitte annetuseks"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Määrake tugiisik neile peredele kes ei anneta. Tugiisik võetakse &quot;JulgeteTugiisik&quot; grupist."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Tühjendage tugiisiku ülesanded"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Tühjendage kõik peresid puudutavad tugiisiku ülesanded."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Oluline märkus: see kaotab kõik käsitsi tehtud tugiisiku ülesanded."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Luba tugiisik kõigile peredele"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "Lülitage sisse &quot;Ok Tugiisik&quot; väli kõigile peredele."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Keela tugiisik kõigi perede jaoks"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Lülitage välja &quot;Ok Tugiisik&quot; väli kõigile peredele"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Infolehed"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Genereerige PDF-fail, mis sisaldab tutvustuslehti kõigi perede jaoks, sorteerituna tugiisiku järgi."
-
-#: 
-msgid "Progress Report"
-msgstr "Aruande progress"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Genereerige progressi sisaldav PDF aruanne. Aruanne sisaldab teavet tugiisiku üldise arengu ja üksikute tugiisikute progressi."
-
-#: 
-msgid "Summary Report"
-msgstr "Kokkuvõtlik aruanne"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Genereerige kokkuvõttev PDF aruannet. Kokkuvõtlik aruanne sisaldab tugiisikute kommentaare."
-
-#: 
-msgid "Not Interested Report"
-msgstr "Huvipakkuvaid aruandeid ei ole"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Genereerige PDF-fail, mis sisaldab tugiisiku poolt märgitud perekondade aruannet &quot;Pole huvitatud&quot;."
-
-#: 
-msgid " Canvass Input for the "
-msgstr "Tugiisiku - Mentori sissekanne"
-
-#: 
-msgid "Canvasser"
-msgstr "Tugiisik - Mentor"
-
-#: 
-msgid "Positive"
-msgstr "Positiivne"
-
-#: 
-msgid "Critical"
-msgstr "Kriitiline"
-
-#: 
-msgid "Insightful"
-msgstr "Tähtsusetu"
-
-#: 
-msgid "Financial"
-msgstr "Rahanduslik"
-
-#: 
-msgid "Suggestions"
-msgstr "Ettepanekud"
-
-#: 
-msgid "Not Interested"
-msgstr "Pole huvitatud"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Miks ei ole huvitatud?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Lisa korv üritusele"
 
@@ -1290,18 +1142,6 @@ msgid "Other Info"
 msgstr "Muu teave"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "Ok agiteerima"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "Määrake agiteerija"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "Määrake vapper agiteerija"
-
-#: 
 msgid "Envelope Info"
 msgstr "Ümbriku teave"
 
@@ -1536,10 +1376,6 @@ msgstr "Lisage uus annetus"
 #: 
 msgid "Add a new payment"
 msgstr "Lisage uus makse"
-
-#: 
-msgid " Canvass Entry"
-msgstr "Tugiisikiku kanne"
 
 #: 
 msgid "Close"
@@ -3221,10 +3057,6 @@ msgid "(Edit own family only.)"
 msgstr "(Redigeeri ainult oma perekonda.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Vabatahtlik tugiisik.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
 
@@ -3391,18 +3223,6 @@ msgstr "Saatuslik viga eGive API andmevoos: '"
 #: 
 msgid "eMail Dashboard"
 msgstr "e-posti töölaud"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Ükski perekond ei vaja eraldatud tugiisikut"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Tugiisikud, kes on juhuslikult määratud %d perekondadele."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Tugiisikud, mis on juhuslikult määratud %d peredele kes ei anneta."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3659,18 +3479,6 @@ msgstr "Faili tüüp"
 #: 
 msgid "items"
 msgstr "üksused"
-
-#: 
-msgid "Did not pledge"
-msgstr "Ei lubanud"
-
-#: 
-msgid "Top pledger"
-msgstr "Suurim annetaja"
-
-#: 
-msgid "Pledged"
-msgstr "Annetatud"
 
 #: 
 msgid "M/F"
@@ -4344,30 +4152,6 @@ msgid "Attendees for Event"
 msgstr "Ürituse osalejad:"
 
 #: 
-msgid "is not configured"
-msgstr "pole konfigureeritud"
-
-#: 
-msgid "Please update the"
-msgstr "Palun värskendage"
-
-#: 
-msgid "API key in Setting->"
-msgstr "API võti seadistuses->"
-
-#: 
-msgid "then update"
-msgstr "siis värskenda"
-
-#: 
-msgid "For more info see our "
-msgstr "Lisateavet leiate meie lehelt"
-
-#: 
-msgid "support docs."
-msgstr "abikumendid."
-
-#: 
 msgid "Yearly"
 msgstr "Aastas"
 
@@ -4510,14 +4294,6 @@ msgstr "File Name:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Majandusaasta:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Oluline märkus: see kaotab kõik &quot;Ok tugiisikud&quot; käsitsi seatud väljad."
-
-#: 
-msgid "Canvasser:"
-msgstr "Tugiisik:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5336,50 +5112,6 @@ msgstr "Kasutaja luba CSV-failide eksportimiseks"
 #: 
 msgid "Allow user to add new event"
 msgstr "Luba kasutajal lisada uus sündmus"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "Tugiisiku eduaruanne"
-
-#: 
-msgid "Done"
-msgstr "Valmis"
-
-#: 
-msgid "Assigned"
-msgstr "Määratud"
-
-#: 
-msgid "Percent"
-msgstr "Protsent"
-
-#: 
-msgid "Total"
-msgstr "Kokku"
-
-#: 
-msgid "Pledge status"
-msgstr "Lubaduste staatus"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "Tugiisiku kokkuvõttev aruanne"
-
-#: 
-msgid "Suggestion"
-msgstr "Soovitus"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "MiksPoleHuvitatud"
-
-#: 
-msgid "Comments"
-msgstr "Kommentaarid"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "Tugiisiku mittehuvitatud aruanne"
 
 #: 
 msgid "Weekly on"
@@ -6814,10 +6546,6 @@ msgid "Failed"
 msgstr "Ebaõnnestunud"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "Eelmine terviklikkuse kontroll läbitud. Kõik süsteemifailide räsid vastavad eeldatavatele väärtustele."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Koguduse arvelduskonto number"
 
@@ -7011,10 +6739,6 @@ msgid "Your New Account"
 msgstr "Teie uus konto"
 
 #: 
-msgid "Password Changed"
-msgstr "Parool muudetud"
-
-#: 
 msgid "Password Reset"
 msgstr "Parooli lähtestamine"
 
@@ -7153,10 +6877,6 @@ msgstr "Teie ChurchCRM-i konto lukustati."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Teie jaoks loodi ChurchCRM-i konto"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Teie ChurchCRM-i parool on muudetud"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7341,10 +7061,6 @@ msgstr "Parooli lähtestamise link"
 #: 
 msgid "Reset Password"
 msgstr "Lähtestage parool"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "Taastamise osana on välised varukoopiad keelatud. Kui soovite automaatset varundust jätkata, peate sätte bEnableExternalBackupTarget käsitsi uuesti lubama."
 
 #: 
 msgid "Unable to reset password"

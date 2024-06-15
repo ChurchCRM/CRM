@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-04 11:46-0700\n"
+"POT-Creation-Date: 2024-06-15 15:27-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-05-04T18:47:02.460Z\n"
-"PO-Revision-Date: 2024-05-04T18:47:02.461Z\n"
+"POT-Creation-Date: 2024-06-15T22:28:01.246Z\n"
+"PO-Revision-Date: 2024-06-15T22:28:01.248Z\n"
 "Language: en\n"
 
 msgid "Backup Database"
@@ -316,152 +316,6 @@ msgstr ""
 msgid "persons were imported"
 msgstr ""
 
-msgid "Canvass Automation"
-msgstr ""
-
-msgid "Not confirmed."
-msgstr ""
-
-msgid "Canvassers"
-msgstr ""
-
-msgid "BraveCanvassers"
-msgstr ""
-
-msgid "Cleared all canvasser assignments."
-msgstr ""
-
-msgid "Set Ok To Canvass for all families."
-msgstr ""
-
-msgid "Disabled Ok To Canvass for all families."
-msgstr ""
-
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr ""
-
-msgid "Report Details"
-msgstr ""
-
-msgid "Fiscal Year:"
-msgstr ""
-
-msgid "Set default fiscal year"
-msgstr ""
-
-msgid "Check to confirm"
-msgstr ""
-
-msgid "Assign Canvassers"
-msgstr ""
-
-msgid ""
-"Randomly assign canvassers to all Families.  The Canvassers are taken from "
-"the &quot;Canvassers&quot; Group."
-msgstr ""
-
-msgid "Assign To Non Pledging"
-msgstr ""
-
-msgid ""
-"Randomly assign canvassers to non-pledging Families.  The Canvassers are "
-"taken from the &quot;BraveCanvassers&quot; Group."
-msgstr ""
-
-msgid "Clear Canvasser Assignments"
-msgstr ""
-
-msgid "Clear all the canvasser assignments for all families."
-msgstr ""
-
-msgid ""
-"Important note: this will lose any canvasser assignments that have been made "
-"by hand."
-msgstr ""
-
-msgid "Enable Canvass for All Families"
-msgstr ""
-
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr ""
-
-msgid ""
-"Important note: this will lose any &quot;Ok To Canvass&quot; fields that "
-"have been set by hand."
-msgstr ""
-
-msgid "Disable Canvass for All Families"
-msgstr ""
-
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr ""
-
-msgid "Briefing Sheets"
-msgstr ""
-
-msgid ""
-"Generate a PDF containing briefing sheets for all Families, sorted by "
-"canvasser."
-msgstr ""
-
-msgid "Progress Report"
-msgstr ""
-
-msgid ""
-"Generate a PDF containing a progress report.  The progress report includes "
-"information on the overall progress of the canvass, and the progress of "
-"individual canvassers."
-msgstr ""
-
-msgid "Summary Report"
-msgstr ""
-
-msgid ""
-"Generate a PDF containing a summary report.  The summary report includes "
-"comments extracted from the canvass data."
-msgstr ""
-
-msgid "Not Interested Report"
-msgstr ""
-
-msgid ""
-"Generate a PDF containing a report of the families marked &quot;Not "
-"Interested&quot; by the canvasser."
-msgstr ""
-
-msgid " Canvass Input for the "
-msgstr ""
-
-msgid "Canvasser:"
-msgstr ""
-
-msgid "Date"
-msgstr ""
-
-msgid "Positive"
-msgstr ""
-
-msgid "Critical"
-msgstr ""
-
-msgid "Insightful"
-msgstr ""
-
-msgid "Financial"
-msgstr ""
-
-msgid "Suggestions"
-msgstr ""
-
-msgid "Not Interested"
-msgstr ""
-
-msgid "Why Not Interested?"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
 msgid "Add Cart to Event"
 msgstr ""
 
@@ -637,7 +491,7 @@ msgstr ""
 
 msgid ""
 "As part of the restore, external backups have been disabled.  If you wish to "
-"continue automatic backups, you must manuall re-enable the "
+"continue automatic backups, you must manually re-enable the "
 "bEnableExternalBackupTarget setting."
 msgstr ""
 
@@ -768,6 +622,9 @@ msgid "View Buyers"
 msgstr ""
 
 msgid "Data/Reports"
+msgstr ""
+
+msgid "Canvass Automation"
 msgstr ""
 
 msgid "Query Menu"
@@ -944,7 +801,7 @@ msgid "Passed"
 msgstr ""
 
 msgid ""
-"The previous integrity check passed.  All system file hashes match the "
+"The previous integrity check passed. All system file hashes match the "
 "expected values."
 msgstr ""
 
@@ -1147,7 +1004,8 @@ msgid "These are the family role numbers designated as child"
 msgstr ""
 
 msgid ""
-"Session timeout length in seconds\rSet to zero to disable session timeouts."
+"Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
 msgstr ""
 
 msgid "Queries for which user must have finance permissions to use:"
@@ -1163,21 +1021,25 @@ msgstr ""
 
 msgid ""
 "Minimum amount that a new password must differ from the old one (# of "
-"characters changed)\rSet to zero to disable this feature"
+"characters changed)\n"
+"Set to zero to disable this feature"
 msgstr ""
 
 msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr ""
 
 msgid ""
-"Maximum number of failed logins to allow before a user account is locked."
-"\rOnce the maximum has been reached, an administrator must re-enable the "
-"account.\rThis feature helps to protect against automated password guessing "
-"attacks.\rSet to zero to disable this feature."
+"Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the "
+"account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
 msgstr ""
 
 msgid ""
-"PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
+"PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
 msgstr ""
 
 msgid "Default City"
@@ -1205,10 +1067,10 @@ msgid "SMTP Password"
 msgstr ""
 
 msgid ""
-"Unavailable person info inherited from assigned family for display?\rThis "
-"option causes certain info from a person's assigned family record to "
-"be\rdisplayed IF the corresponding info has NOT been entered for that "
-"person. "
+"Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to "
+"be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
 msgstr ""
 
 msgid "Internationalization (I18n) support"
@@ -1675,6 +1537,9 @@ msgstr ""
 msgid "Google Maps API Key used for rendering maps in browser"
 msgstr ""
 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr ""
+
 msgid "Default Zip"
 msgstr ""
 
@@ -1969,6 +1834,9 @@ msgstr ""
 msgid "Deposit Details: "
 msgstr ""
 
+msgid "Date"
+msgstr ""
+
 msgid "Comment:"
 msgstr ""
 
@@ -1976,6 +1844,9 @@ msgid "Closed:"
 msgstr ""
 
 msgid "Close deposit slip (remember to press Save)"
+msgstr ""
+
+msgid "Save"
 msgstr ""
 
 msgid "Deposit Slip Report"
@@ -2290,16 +2161,16 @@ msgstr ""
 msgid "Editing Event ID: "
 msgstr ""
 
-msgid "There were "
-msgstr ""
-
-msgid " errors. Please see below"
-msgstr ""
-
 msgid "Items with a "
 msgstr ""
 
 msgid " are required"
+msgstr ""
+
+msgid "There were "
+msgstr ""
+
+msgid " errors. Please see below"
 msgstr ""
 
 msgid "Select your event type"
@@ -2507,15 +2378,6 @@ msgstr ""
 msgid "Other Info"
 msgstr ""
 
-msgid "Ok To Canvass"
-msgstr ""
-
-msgid "Assign a Canvasser"
-msgstr ""
-
-msgid "Assign a Brave Canvasser"
-msgstr ""
-
 msgid "Envelope Info"
 msgstr ""
 
@@ -2663,6 +2525,9 @@ msgid "Deposit Date (Default)"
 msgstr ""
 
 msgid "Payment Date"
+msgstr ""
+
+msgid "Fiscal Year:"
 msgstr ""
 
 msgid "Filter by Deposit:"
@@ -3184,17 +3049,6 @@ msgstr ""
 msgid ""
 "All group membership and properties will be destroyed.  The group members "
 "themselves will not be altered."
-msgstr ""
-
-msgid "No families need canvassers assigned"
-msgstr ""
-
-#, php-format
-msgid "Canvassers assigned at random to %d families."
-msgstr ""
-
-#, php-format
-msgid "Canvassers assigned at random to %d non-pledging families."
 msgstr ""
 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -4223,54 +4077,6 @@ msgstr ""
 msgid "item"
 msgstr ""
 
-msgid "Canvass Progress Report"
-msgstr ""
-
-msgid "Done"
-msgstr ""
-
-msgid "Assigned"
-msgstr ""
-
-msgid "Percent"
-msgstr ""
-
-msgid "Total"
-msgstr ""
-
-msgid "Canvasser"
-msgstr ""
-
-msgid "Did not pledge"
-msgstr ""
-
-msgid "Top pledger"
-msgstr ""
-
-msgid "Pledged"
-msgstr ""
-
-msgid "Pledge status"
-msgstr ""
-
-msgid "M/F"
-msgstr ""
-
-msgid "Canvass Summary Report"
-msgstr ""
-
-msgid "Suggestion"
-msgstr ""
-
-msgid "WhyNotInterested"
-msgstr ""
-
-msgid "Comments"
-msgstr ""
-
-msgid "Canvass Not Interested Report"
-msgstr ""
-
 msgid "Teachers"
 msgstr ""
 
@@ -4296,6 +4102,9 @@ msgid "Anniversary Date"
 msgstr ""
 
 msgid "Member Name"
+msgstr ""
+
+msgid "M/F"
 msgstr ""
 
 msgid "Adult/Child"
@@ -4724,9 +4533,6 @@ msgid "Edit Self"
 msgstr ""
 
 msgid "(Edit own family only.)"
-msgstr ""
-
-msgid "(Canvass volunteer.)"
 msgstr ""
 
 msgid "Style"
@@ -5217,6 +5023,9 @@ msgid ""
 "At least one group must be selected to make class lists or attendance sheets."
 msgstr ""
 
+msgid "Report Details"
+msgstr ""
+
 msgid "To select multiple hold CTL"
 msgstr ""
 
@@ -5483,22 +5292,10 @@ msgstr ""
 msgid "Audience not in the CRM"
 msgstr ""
 
-msgid "is not configured"
+msgid "MailChimp is not configured"
 msgstr ""
 
-msgid "Please update the"
-msgstr ""
-
-msgid "API key in Setting->"
-msgstr ""
-
-msgid "then update"
-msgstr ""
-
-msgid "For more info see our "
-msgstr ""
-
-msgid "support docs."
+msgid "Please update the MailChimp API key in:"
 msgstr ""
 
 msgid "Family List"
@@ -5538,9 +5335,6 @@ msgid "Delete this Family"
 msgstr ""
 
 msgid "Add All Family Members to Cart"
-msgstr ""
-
-msgid " Canvass Entry"
 msgstr ""
 
 msgid "Add a new pledge"

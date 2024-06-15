@@ -380,119 +380,6 @@ msgid "Canvass Automation"
 msgstr "Automatyzacja Ankiety"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nie potrwierdzone."
-
-#: 
-msgid "Canvassers"
-msgstr "Ankieterzy"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "Odwarzni Ankieterzy"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Usuń wszystkie przypisania dla Ankietera."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Ustaw 'Wyrażam zgodę na ankietę' dla wszystkich Rodzin."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Usuń 'Wyrażam zgodę na ankietę' dla wszystkich Rodzin."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "Nie zatwierdzono 'Usuń Wyrażam Zgodę'."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Ustaw domyślny rok podatkowy"
-
-#: 
-msgid "Check to confirm"
-msgstr "Zaznacz aby potwierdzić"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Przypisz Ankietera"
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Przypisz do Non Pledging"
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Usuń przyporządkowania dla Ankietera."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Aktywuj Ankietę dla Wszystkich Rodzin."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Wyłącz Ankietę dla Wszystkich Rodzin"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Ankieta"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Wygeneruj plik PDF zawierający Ankiety dla wszystkich rodzin, pogrupowane według Ankietera."
-
-#: 
-msgid "Progress Report"
-msgstr "Raport Postępu"
-
-#: 
-msgid "Summary Report"
-msgstr "Raport Podsumowujący"
-
-#: 
-msgid "Not Interested Report"
-msgstr "Raport Niezainteresowanych"
-
-#: 
-msgid " Canvass Input for the "
-msgstr "Dane Ankiety dla"
-
-#: 
-#, fuzzy
-msgid "Canvasser"
-msgstr "Ankieter"
-
-#: 
-msgid "Positive"
-msgstr "Pozytywny"
-
-#: 
-msgid "Critical"
-msgstr "Negatywny"
-
-#: 
-msgid "Insightful"
-msgstr "Insightful"
-
-#: 
-msgid "Financial"
-msgstr "Finansowy"
-
-#: 
-msgid "Suggestions"
-msgstr "Sugestie"
-
-#: 
-msgid "Not Interested"
-msgstr "Nie zainteresowany"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Dlaczego Nie zainteresowany?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Dodaj Koszyk do Wydarzenia"
 
@@ -1243,21 +1130,6 @@ msgid "Email is Not Valid"
 msgstr "Nie poprawny Email"
 
 #: 
-#, fuzzy
-msgid "Ok To Canvass"
-msgstr "Zgodę na Ankietę"
-
-#: 
-#, fuzzy
-msgid "Assign a Canvasser"
-msgstr "Przypisz Ankietera"
-
-#: 
-#, fuzzy
-msgid "Assign a Brave Canvasser"
-msgstr "Przypisz 'Odwarznego' Ankietera"
-
-#: 
 msgid "Custom Fields"
 msgstr "Pola Dodatkowe"
 
@@ -1445,10 +1317,6 @@ msgstr "Dodaj nowy Datek"
 #: 
 msgid "Add a new payment"
 msgstr "Dodaj nową Płatność"
-
-#: 
-msgid " Canvass Entry"
-msgstr "Wpis Ankiety"
 
 #: 
 msgid "Confirm Delete"
@@ -3157,10 +3025,6 @@ msgid "(Edit own family only.)"
 msgstr "(Edytuj dane Swojej Rodziny)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Wolontariusz Ankieter.)"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "Administrator"
@@ -3333,18 +3197,6 @@ msgstr "Krytyczny problem w systemie eGive:"
 #: 
 msgid "eMail Dashboard"
 msgstr "Strona Główna eMail"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Żadna Rodzina nie potrzebuje przypisania Ankietera"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Ankieterzy losowo przypisani do %d Rodzin."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Ankieterzy losowo przypisani do %d Rodzin (bez datków)."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3577,18 +3429,6 @@ msgstr "Typ Pliku"
 #: 
 msgid "items"
 msgstr "przedmioty (items)"
-
-#: 
-msgid "Did not pledge"
-msgstr "Bez datków"
-
-#: 
-msgid "Top pledger"
-msgstr "Największy datek"
-
-#: 
-msgid "Pledged"
-msgstr "Datek (Pledged)"
 
 #: 
 msgid "M/F"

@@ -362,154 +362,6 @@ msgid "Canvass Automation"
 msgstr "Автоматизація агітаторів"
 
 #: 
-msgid "Not confirmed."
-msgstr "Не підтверджено."
-
-#: 
-msgid "Canvassers"
-msgstr "Агітатори"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "Хоробрий Canvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Усі призначеня агітаторів очищено."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Встановіть Ok To Canvass для всіх сімей."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Інваліди в порядку для всіх сімей."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "Кнопка ClearAllOkToCanvass не збережена."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Встановити фінансовий рік за замовчуванням"
-
-#: 
-msgid "Check to confirm"
-msgstr "Перевірте для підтвердження"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Призначити Canvassers"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Випадковим чином призначити учасників програми для всіх сімей. Полотнища взяті з & quot; Полотнища & quot; Група."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Призначити без застави"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Випадковим чином призначати учасників сімей, які не беруть в обіг сім'ї. Полотнища взяті з \"BraveCanvassers\" & quot; Група."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Очистити завдання Canvasser"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Очистіть усі завдання для всіх родин."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Важливе зауваження: це призведе до втрати будь-яких завдань, які були зроблені вручну."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Увімкніть Canvass для всіх сімей"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "Увімкніть & quot; Ok To Canvass & quot; поле для всіх сімей."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Вимкніть Canvass для всіх сімей"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Вимкніть & quot; Ok To Canvass & quot; поле для всіх сімей"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Інформаційні бюлетені"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Створіть PDF, що містить брифінгові аркуші для всіх сімей, відсортовані за програмою."
-
-#: 
-msgid "Progress Report"
-msgstr "Доповідь про хід роботи"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Створіть PDF, що містить звіт про хід. Звіт про хід включає інформацію про загальний прогрес полотна та про хід окремих користувачів."
-
-#: 
-msgid "Summary Report"
-msgstr "Зведений звіт"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Створіть PDF, що містить зведений звіт. Зведений звіт включає коментарі, витягнуті з даних полотна."
-
-#: 
-msgid "Not Interested Report"
-msgstr "Незацікавлений звіт"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Створіть PDF, що містить звіт сімей з позначкою \"Нецікаво\" & quot; полотнищем."
-
-#: 
-msgid " Canvass Input for the "
-msgstr " Введення полотна для "
-
-#: 
-msgid "Canvasser"
-msgstr "Полотно"
-
-#: 
-msgid "Positive"
-msgstr "Позитивні"
-
-#: 
-msgid "Critical"
-msgstr "Критичний"
-
-#: 
-msgid "Insightful"
-msgstr "Проникливий"
-
-#: 
-msgid "Financial"
-msgstr "Фінансові"
-
-#: 
-msgid "Suggestions"
-msgstr "Пропозиції"
-
-#: 
-msgid "Not Interested"
-msgstr "Не зацікавлений"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Чому вас не цікавить?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Додати кошик до події"
 
@@ -1291,18 +1143,6 @@ msgid "Other Info"
 msgstr "Інша інформація"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "Гаразд, щоб полотна"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "Призначити Canvasser"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "Призначте Хороброго полотнища"
-
-#: 
 msgid "Envelope Info"
 msgstr "Інформація про конверт"
 
@@ -1537,10 +1377,6 @@ msgstr "Додайте нову заставу"
 #: 
 msgid "Add a new payment"
 msgstr "Додайте новий платіж"
-
-#: 
-msgid " Canvass Entry"
-msgstr " Запис полотна"
 
 #: 
 msgid "Close"
@@ -3222,10 +3058,6 @@ msgid "(Edit own family only.)"
 msgstr "(Редагувати лише власну сім’ю.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Полотно волонтера.)"
-
-#: 
 msgid "Admin"
 msgstr "Адміністратор"
 
@@ -3392,18 +3224,6 @@ msgstr "Фатальна помилка в потоці даних API eGive: '"
 #: 
 msgid "eMail Dashboard"
 msgstr "Інформаційна панель електронної пошти"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Жодним сім’ям не потрібні призначені диспетчери"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Наглядачі, довільно призначені для %d сімей."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Наглядачі, довільно призначені для %d сімей, які не беруть заставу."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3660,18 +3480,6 @@ msgstr "Тип файлу"
 #: 
 msgid "items"
 msgstr "предметів"
-
-#: 
-msgid "Did not pledge"
-msgstr "Не дав застави"
-
-#: 
-msgid "Top pledger"
-msgstr "Найвищий заставодавець"
-
-#: 
-msgid "Pledged"
-msgstr "В заставі"
 
 #: 
 msgid "M/F"
@@ -4343,30 +4151,6 @@ msgid "Attendees for Event"
 msgstr "Учасники ідентифікатора події:"
 
 #: 
-msgid "is not configured"
-msgstr "не налаштовано"
-
-#: 
-msgid "Please update the"
-msgstr "Будь ласка, оновіть"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Ключ API у Setting->"
-
-#: 
-msgid "then update"
-msgstr "потім оновіть"
-
-#: 
-msgid "For more info see our "
-msgstr "Для отримання додаткової інформації дивіться наш "
-
-#: 
-msgid "support docs."
-msgstr "Документи підтримки."
-
-#: 
 msgid "Yearly"
 msgstr "Щорічно"
 
@@ -4509,14 +4293,6 @@ msgstr "Ім'я файлу:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Фінансовий рік:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Важлива примітка: при цьому буде втрачено будь-яке & quot; Ok To Canvass & quot; поля, встановлені вручну."
-
-#: 
-msgid "Canvasser:"
-msgstr "Полотно:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5336,50 +5112,6 @@ msgstr "Дозвіл користувача на експорт файлів CSV
 #: 
 msgid "Allow user to add new event"
 msgstr "Дозволити користувачеві додавати нову подію"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "Звіт про хід роботи"
-
-#: 
-msgid "Done"
-msgstr "Готово"
-
-#: 
-msgid "Assigned"
-msgstr "Призначений"
-
-#: 
-msgid "Percent"
-msgstr "Відсоток"
-
-#: 
-msgid "Total"
-msgstr "Всього"
-
-#: 
-msgid "Pledge status"
-msgstr "Статус застави"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "Зворотний звіт полотна"
-
-#: 
-msgid "Suggestion"
-msgstr "Пропозиція"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "ЧомуНецікаво"
-
-#: 
-msgid "Comments"
-msgstr "Коментарі"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "Полотна не цікавить звіт"
 
 #: 
 msgid "Weekly on"
@@ -6814,10 +6546,6 @@ msgid "Failed"
 msgstr "Помилка"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "Попередня перевірка цілісності пройдена. Усі хеші системних файлів відповідають очікуваним значенням."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Номер церковного чекового рахунку"
 
@@ -7011,10 +6739,6 @@ msgid "Your New Account"
 msgstr "Ваш новий рахунок"
 
 #: 
-msgid "Password Changed"
-msgstr "Пароль змінено"
-
-#: 
 msgid "Password Reset"
 msgstr "Скидання пароля"
 
@@ -7153,10 +6877,6 @@ msgstr "Ваш обліковий запис ChurchCRM був заблокова
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Для вас був створений обліковий запис ChurchCRM"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Ваш пароль ChurchCRM змінено"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7341,10 +7061,6 @@ msgstr "Посилання для скидання пароля"
 #: 
 msgid "Reset Password"
 msgstr "Скинути пароль"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "В рамках відновлення зовнішні резервні копії були вимкнені. Якщо ви хочете продовжити автоматичне резервне копіювання, вам слід вручну ввімкнути налаштування bEnableExternalBackupTarget."
 
 #: 
 msgid "Unable to reset password"

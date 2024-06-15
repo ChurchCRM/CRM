@@ -362,154 +362,6 @@ msgid "Canvass Automation"
 msgstr "التشغيل الآلي للافتقاد"
 
 #: 
-msgid "Not confirmed."
-msgstr "غير مؤكد."
-
-#: 
-msgid "Canvassers"
-msgstr "خدام الافتقاد"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "مسح جميع مهام الخدام المفتقدين."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "تفعيل الأفتقاد لجميع الأسر."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "تعطيل الأفتقاد لجميع الأسر."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "زر ClearAllOkToCanvass لا و confimed."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "تعيين السنة المالية الافتراضية"
-
-#: 
-msgid "Check to confirm"
-msgstr "تحقق للتأكد"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "تعيين مفتقدين"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "تعيين خدام افتقاد عشوائيا لجميع الأسر. خدام الأفتقاد تحدد من مجموعة \"خدام الأفتقاد\"."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "تعيين لعدم إعلان التبرعات"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "عشوائيا فيقومون تعيين لعائلات غير لإعلان التبرعات. تؤخذ فيقومون من \"BraveCanvassers\" المجموعة."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "مسح تعيين المفتقدين"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "مسح كافة المهام المطوف بالمدينة إلتماسا للأصوات لجميع الأسر."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "ملاحظة هامة: سوف يتم مسح أي مهام لخدام الأفتقاد التي ادخلت باليد."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "تفعيل الافتقاد لكل العائلات"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "تشغيل حقل \"موافق للأفتقاد\" لجميع الأسر."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "تعطيل الافتقاد لكل العائلات"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "إيقاف \"موافق للأفتقاد\" لجميع الأسر"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "أوراق الإحاطة"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "إنشاء PDF تحتوي على أوراق توجيهية لجميع الأسر، مرتبة حسب خدام الأفتقاد."
-
-#: 
-msgid "Progress Report"
-msgstr "تقرير التطور"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "توليد PDF تتضمن تقريرا مرحليا. ويتضمن التقرير المرحلي معلومات عن التقدم الشامل للبالتعميم، وتقدم فيقومون الفردية."
-
-#: 
-msgid "Summary Report"
-msgstr "تقرير ملخص"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "توليد PDF التي تحتوي على تقرير موجز. ويتضمن التقرير ملخص تعليقات المستخرجة من البيانات بالتعميم."
-
-#: 
-msgid "Not Interested Report"
-msgstr "تقرير غير مهتم"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "توليد PDF التي تحتوي على تقرير أسر وضع علامة \"غير مهتم\" من قبل المطوف بالمدينة إلتماسا للأصوات."
-
-#: 
-msgid " Canvass Input for the "
-msgstr " إدخال الأفتقاد ل "
-
-#: 
-msgid "Canvasser"
-msgstr "خادم افتقاد"
-
-#: 
-msgid "Positive"
-msgstr "إيجابي"
-
-#: 
-msgid "Critical"
-msgstr "حرج"
-
-#: 
-msgid "Insightful"
-msgstr "الثاقبة"
-
-#: 
-msgid "Financial"
-msgstr "الأمور المالية"
-
-#: 
-msgid "Suggestions"
-msgstr "اقتراحات"
-
-#: 
-msgid "Not Interested"
-msgstr "غير مهتم"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "لماذا لا تهتم؟"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "إضافة سلة التسوق للحدث"
 
@@ -1291,18 +1143,6 @@ msgid "Other Info"
 msgstr "بيانات اخرى"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "موافق للافتقاد"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "تعيين مفتقد"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "تعيين الشجعان المطوف بالمدينة إلتماسا للأصوات"
-
-#: 
 msgid "Envelope Info"
 msgstr "معلومات المظروف"
 
@@ -1537,10 +1377,6 @@ msgstr "إضافة التعهد الجديد"
 #: 
 msgid "Add a new payment"
 msgstr "إضافة دفعة جديدة"
-
-#: 
-msgid " Canvass Entry"
-msgstr "بالتعميم الدخول"
 
 #: 
 msgid "Close"
@@ -3222,10 +3058,6 @@ msgid "(Edit own family only.)"
 msgstr "(تحرير الأسرة الخاصة فقط.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(جمع الأصوات المتطوعين.)"
-
-#: 
 msgid "Admin"
 msgstr "ادمن"
 
@@ -3392,18 +3224,6 @@ msgstr "خطأ فادح في داتاستريم API eGive: \""
 #: 
 msgid "eMail Dashboard"
 msgstr "أرسل لوحة"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "لا تحتاج الأسر فيقومون تعيين"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "فيقومون تعيين عشوائيا ل %d الأسر."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "فيقومون تعيين عشوائيا ل %d أسر غير التعهد."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3660,18 +3480,6 @@ msgstr "نوع الملف"
 #: 
 msgid "items"
 msgstr "العناصر"
-
-#: 
-msgid "Did not pledge"
-msgstr "لم نتعهد"
-
-#: 
-msgid "Top pledger"
-msgstr "كبار المرتهن"
-
-#: 
-msgid "Pledged"
-msgstr "تعهد"
 
 #: 
 msgid "M/F"
@@ -4345,30 +4153,6 @@ msgid "Attendees for Event"
 msgstr "الحضور لمعرف الحدث:"
 
 #: 
-msgid "is not configured"
-msgstr "لم يتم تكوين"
-
-#: 
-msgid "Please update the"
-msgstr "يرجى تحديث"
-
-#: 
-msgid "API key in Setting->"
-msgstr "مفتاح API في Setting->"
-
-#: 
-msgid "then update"
-msgstr "تحديث فحينئذ"
-
-#: 
-msgid "For more info see our "
-msgstr "لمزيد من المعلومات راجع موقعنا"
-
-#: 
-msgid "support docs."
-msgstr "مستندات الدعم."
-
-#: 
 msgid "Yearly"
 msgstr "سنوي"
 
@@ -4511,14 +4295,6 @@ msgstr "اسم الملف:"
 #: 
 msgid "Fiscal Year:"
 msgstr "السنة المالية:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "ملاحظة هامة: هذا سوف تفقد أية حقول \"طيب لجمع الأصوات\" التي تم وضعها باليد."
-
-#: 
-msgid "Canvasser:"
-msgstr "المطوف بالمدينة إلتماسا للأصوات:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5338,50 +5114,6 @@ msgstr "إذن المستخدم إلى ملفات CSV تصدير"
 #: 
 msgid "Allow user to add new event"
 msgstr "السماح للمستخدم إضافة حدث جديد"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "التقرير المرحلي بالتعميم"
-
-#: 
-msgid "Done"
-msgstr "منجز"
-
-#: 
-msgid "Assigned"
-msgstr "تعيين"
-
-#: 
-msgid "Percent"
-msgstr "نسبه مئويه"
-
-#: 
-msgid "Total"
-msgstr "مجموع"
-
-#: 
-msgid "Pledge status"
-msgstr "وضع تعهد"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "بالتعميم تقرير موجز"
-
-#: 
-msgid "Suggestion"
-msgstr "اقتراح"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "WhyNotInterested"
-
-#: 
-msgid "Comments"
-msgstr "تعليقات"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "بالتعميم تقرير غير مهتم"
 
 #: 
 msgid "Weekly on"
@@ -6816,10 +6548,6 @@ msgid "Failed"
 msgstr "فشل"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "مرت التحقق من التكامل السابق. كل التجزئة ملف نظام تطابق القيم المتوقعة."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "الكنيسة التحقق من رقم الحساب"
 
@@ -7013,10 +6741,6 @@ msgid "Your New Account"
 msgstr "حسابك الجديد"
 
 #: 
-msgid "Password Changed"
-msgstr "تم تغيير كلمة السر"
-
-#: 
 msgid "Password Reset"
 msgstr "إعادة تعيين كلمة المرور"
 
@@ -7155,10 +6879,6 @@ msgstr "تم تأمين حساب ChurchCRM الخاص بك."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "تم إنشاء حساب A ChurchCRM لك"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "تم تغيير كلمة المرور الخاصة بك ChurchCRM"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7343,10 +7063,6 @@ msgstr "إعادة تعيين كلمة المرور لينك"
 #: 
 msgid "Reset Password"
 msgstr "إعادة تعيين كلمة المرور"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "كجزء من استعادة، تم تعطيل النسخ الاحتياطي الخارجية. إذا كنت ترغب في مواصلة النسخ الاحتياطي التلقائي، يجب بها يدويا إعادة تمكين الإعداد bEnableExternalBackupTarget."
 
 #: 
 msgid "Unable to reset password"

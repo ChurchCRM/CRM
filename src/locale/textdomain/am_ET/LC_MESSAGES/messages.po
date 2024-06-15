@@ -363,154 +363,6 @@ msgid "Canvass Automation"
 msgstr "የሸራ አውቶሜሽን"
 
 #: 
-msgid "Not confirmed."
-msgstr "አልተረጋገጠም።"
-
-#: 
-msgid "Canvassers"
-msgstr "ሸራ ሰሪዎች"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "ሁሉንም የሸራ ስራዎች አጽድቷል።"
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "ለሁሉም ቤተሰቦች እሺን ወደ ሸራ ያዘጋጁ።"
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "ለሁሉም ቤተሰቦች ከOk To Canvass ተሰናክሏል።"
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "ClearAllOkToCanvass አዝራር አልተረጋገጠም።"
-
-#: 
-msgid "Set default fiscal year"
-msgstr "ነባሪ የበጀት ዓመት ያዘጋጁ"
-
-#: 
-msgid "Check to confirm"
-msgstr "ለማረጋገጥ ያረጋግጡ"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Canvassers መድብ"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "በዘፈቀደ ለሁሉም ቤተሰቦች ሸራዎችን መድቡ። ካንቫሰሮች የተወሰዱት ከ &quot;ከካንቫሰሮች&quot; ቡድን."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "ላልተገባ ቃል መድብ"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "በዘፈቀደ ሸራዎችን ቃል ላልገቡ ቤተሰቦች መድቡ። ካንቫሰሮች የተወሰዱት ከ &quot;ደፋር ካንቫሰሮች&quot; ቡድን."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "የ Canvasser ምደባዎችን አጽዳ"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "ለሁሉም ቤተሰቦች ሁሉንም የሸራ ስራዎች ያጽዱ።"
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "ጠቃሚ ማሳሰቢያ፡ ይህ በእጅ የተሰሩ ማናቸውንም የሸራ ስራዎችን ያጣል።"
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "ሸራ ለሁሉም ቤተሰቦች አንቃ"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "\"Ok To Canvass\" የሚለውን ያብሩ። መስክ ለሁሉም ቤተሰቦች።"
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "ለሁሉም ቤተሰቦች ሸራ አሰናክል"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "\"Ok To Canvass\" የሚለውን ያጥፉ። መስክ ለሁሉም ቤተሰቦች"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "አጭር መግለጫ ሉሆች"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "ለሁሉም ቤተሰቦች በሸራ የተደረደሩ የማጠቃለያ ሉሆችን የያዘ ፒዲኤፍ ይፍጠሩ።"
-
-#: 
-msgid "Progress Report"
-msgstr "የሂደት ሪፖርት"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "የሂደት ሪፖርት የያዘ ፒዲኤፍ ይፍጠሩ። የሂደት ሪፖርቱ የሸራውን አጠቃላይ ሂደት እና የነጠላ ሸራ አድራጊዎችን እድገት መረጃ ያካትታል።"
-
-#: 
-msgid "Summary Report"
-msgstr "ማጠቃለያ ሪፖርት"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "ማጠቃለያ ሪፖርት የያዘ ፒዲኤፍ ይፍጠሩ። የማጠቃለያ ሪፖርቱ ከሸራ ውሂቡ የተወሰዱ አስተያየቶችን ያካትታል።"
-
-#: 
-msgid "Not Interested Report"
-msgstr "ፍላጎት የለኝም ሪፖርት"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "\"የማይፈልጉ\" የሚል ምልክት የተደረገበት የቤተሰብ ሪፖርት የያዘ ፒዲኤፍ ይፍጠሩ። በሸራው."
-
-#: 
-msgid " Canvass Input for the "
-msgstr " የሸራ ግቤት ለ "
-
-#: 
-msgid "Canvasser"
-msgstr "ካንቫሰር"
-
-#: 
-msgid "Positive"
-msgstr "አዎንታዊ"
-
-#: 
-msgid "Critical"
-msgstr "ወሳኝ"
-
-#: 
-msgid "Insightful"
-msgstr "አስተዋይ"
-
-#: 
-msgid "Financial"
-msgstr "የገንዘብ"
-
-#: 
-msgid "Suggestions"
-msgstr "ጥቆማዎች"
-
-#: 
-msgid "Not Interested"
-msgstr "ፍላጎት የለም"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "ለምን ፍላጎት የለኝም?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "ጋሪን ወደ ክስተት ያክሉ"
 
@@ -1292,18 +1144,6 @@ msgid "Other Info"
 msgstr "ሌላ መረጃ"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "እሺ ወደ ካንቫስ"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "ካንቫሰር ይመድቡ"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "ደፋር /ጎበዝ ካንቫሰር ይመድቡ"
-
-#: 
 msgid "Envelope Info"
 msgstr "የፖስታ መረጃ"
 
@@ -1538,10 +1378,6 @@ msgstr "አዲስ ቃል ኪዳን ያክሉ"
 #: 
 msgid "Add a new payment"
 msgstr "አዲስ ክፍያ ጨምር"
-
-#: 
-msgid " Canvass Entry"
-msgstr " የካንቫስ መግቢያ"
 
 #: 
 msgid "Close"
@@ -3223,10 +3059,6 @@ msgid "(Edit own family only.)"
 msgstr "(የራስን ቤተሰብ ብቻ ያርሙ)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(በጎ ፍቃደኞችን ማሳመን)"
-
-#: 
 msgid "Admin"
 msgstr "አስተዳደር"
 
@@ -3393,18 +3225,6 @@ msgstr "በ eGive API datastream ውስጥ ገዳይ ስህተት"
 #: 
 msgid "eMail Dashboard"
 msgstr "የኢሜል"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "ምንም ቤተሰቦች ሸራዎችን መመደብ አያስፈልጋቸውም"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "ሸራ ሰሪዎች በዘፈቀደ ለ%d ቤተሰቦች ተመድበዋል።"
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "ካንቫሰሮች በዘፈቀደ ለ%d ቃል የማይገቡ ቤተሰቦች ተመድበዋል።"
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3661,18 +3481,6 @@ msgstr "የፋይል አይነት"
 #: 
 msgid "items"
 msgstr "እቃዎች"
-
-#: 
-msgid "Did not pledge"
-msgstr "ቃል አልገባም"
-
-#: 
-msgid "Top pledger"
-msgstr "ከፍተኛ ቃል ኪዳን"
-
-#: 
-msgid "Pledged"
-msgstr "ቃል ገብተዋል"
 
 #: 
 msgid "M/F"
@@ -4344,30 +4152,6 @@ msgid "Attendees for Event"
 msgstr "የክስተት መታወቂያ ተሳታፊዎች:"
 
 #: 
-msgid "is not configured"
-msgstr "አልተዋቀረም"
-
-#: 
-msgid "Please update the"
-msgstr "እባክዎ ያዘምኑት"
-
-#: 
-msgid "API key in Setting->"
-msgstr "በማቀናበር ውስጥ የAPI ቁልፍ"
-
-#: 
-msgid "then update"
-msgstr "ከዚያም አዘምን"
-
-#: 
-msgid "For more info see our "
-msgstr "ለበለጠ መረጃ የእኛን ይመልከቱ "
-
-#: 
-msgid "support docs."
-msgstr "የድጋፍ ሰነዶች."
-
-#: 
 msgid "Yearly"
 msgstr "በየአመቱ"
 
@@ -4510,14 +4294,6 @@ msgstr "የመዝገብ ስም:"
 #: 
 msgid "Fiscal Year:"
 msgstr "የበጀት ዓመት:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "ጠቃሚ ማሳሰቢያ: ይህ ማንኛውንም &quot;Ok ወደ ካንቫስ&quot; በእጅ የተቀመጡ መስኮች."
-
-#: 
-msgid "Canvasser:"
-msgstr "ካንቫሰር:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5338,50 +5114,6 @@ msgstr "የCSV ፋይሎችን ወደ ውጭ ለመላክ የተጠቃሚ ፍቃ
 #: 
 msgid "Allow user to add new event"
 msgstr "ተጠቃሚ አዲስ ክስተት እንዲያክል ፍቀድለት"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "የስራ ሂደት ሪፖርት"
-
-#: 
-msgid "Done"
-msgstr "ተከናውኗል"
-
-#: 
-msgid "Assigned"
-msgstr "ተመድቧል"
-
-#: 
-msgid "Percent"
-msgstr "በመቶኛ"
-
-#: 
-msgid "Total"
-msgstr "ጠቅላላ"
-
-#: 
-msgid "Pledge status"
-msgstr "የቃል ኪዳን ሁኔታ"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "የሸራ ማጠቃለያ ዘገባ"
-
-#: 
-msgid "Suggestion"
-msgstr "ጥቆማ"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "ለምን ፍላጎት የለኝም"
-
-#: 
-msgid "Comments"
-msgstr "አስተያየቶች"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "ሸራ ፍላጎት የሌለው ሪፖርት"
 
 #: 
 msgid "Weekly on"
@@ -6817,10 +6549,6 @@ msgid "Failed"
 msgstr "አልተሳካም"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "ያለፈው የታማኝነት ማረጋገጫ አልፏል። ሁሉም የስርዓት ፋይል hashes ከተጠበቁት እሴቶች ጋር ይዛመዳሉ።"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "የቤተ ክርስቲያን ማረጋገጫ መለያ ቁጥር"
 
@@ -7014,10 +6742,6 @@ msgid "Your New Account"
 msgstr "የእርስዎ አዲስ መለያ"
 
 #: 
-msgid "Password Changed"
-msgstr "የይለፍ ቃል ተቀይሯል።"
-
-#: 
 msgid "Password Reset"
 msgstr "የይለፍ ቃል ዳግም ለመፍጠር"
 
@@ -7156,10 +6880,6 @@ msgstr "የChurchCRM መለያህ ተቆልፏል"
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "የChurchCRM መለያ ለእርስዎ ተፈጥሯል"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "የእርስዎ ChurchCRM ይለፍ ቃል ተቀይሯል"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7344,10 +7064,6 @@ msgstr "የይለፍ ቃል ዳግም ማስጀመሪያ ማስፈንጠሪያ"
 #: 
 msgid "Reset Password"
 msgstr "የይለፍ ቃል ይቀይሩ"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "ወደ ነበርበት የመመለስ አካል፣ ውጫዊ ምትኬዎች ተከልክለዋል። በራሱ ምትኬዎችን መቀጠል ከፈለጉ የbEnableExternalBackupTarget ቅንብሩን እንደገና ማንቃት አለብዎት"
 
 #: 
 msgid "Unable to reset password"

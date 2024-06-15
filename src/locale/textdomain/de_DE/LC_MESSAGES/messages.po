@@ -380,155 +380,6 @@ msgid "Canvass Automation"
 msgstr "Automatische Aktion"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nicht bestätigt."
-
-#: 
-msgid "Canvassers"
-msgstr "Mitarbeiter der Aktion"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "Mutige Aktionsmitarbeiter"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Alle Zuordnungen zu Aktionsmitarbeitern gelöscht."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Aktion allen Familien zuordnen."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Die Zuordnung der Aktion zu allen Familien aufheben."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "AlleAktionenLöschen nicht gesetzt."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Einstellen der Voreinstellung des Steuerjahrs"
-
-#: 
-msgid "Check to confirm"
-msgstr "Auswählen zum Bestätigen"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Aktionsmitarbeiter zuordnen"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Aktionsitarbeiter werden zufällig zu Familien hinzugefügt. Die Aktionsitarbeiter werden aus der entsprechenden Gruppe entnommen."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Den Nichtunterstützern hinzufügen"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Weisen Sie den nicht verpfändenden Familien nach dem Zufallsprinzip Wahlwerber zu.  Die Akquisiteure stammen aus der Gruppe der \"Mutigen Akquisiteure\"."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Zuordnung der Aktionsmitarbeiter aufheben."
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Lösche alle Zuweisungen von Mitarbeitern der Aktion zu den Familien."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Wichtiger Hinweis: Dadurch werden alle manuell zugewiesenen Mitarbeiter verloren."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Aktion für alle Familien freischalten."
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "Aktivieren Sie das Feld &quot;Ok To Canvass&quot; für alle Familien."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Aktion für alle Familien abschalten"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Deaktivieren Sie das Feld &quot;Ok To Canvass&quot; für alle Familien"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Informationsblatt"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Erstelle ein PDF das alle Informationsblätter für alle Familien enthält, sortiert nach Aktionsmitarbeitern."
-
-#: 
-msgid "Progress Report"
-msgstr "Fortschrittsbericht"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Generieren Sie eine PDF-Datei mit einem Fortschrittsbericht.  Der Fortschrittsbericht enthält Informationen über den Gesamtfortschritt der Wahlwerbung und den Fortschritt der einzelnen Wahlwerber."
-
-#: 
-msgid "Summary Report"
-msgstr "Zusammenfassungsbericht"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Generieren Sie eine PDF-Datei mit einem zusammenfassenden Bericht.  Der zusammenfassende Bericht enthält Kommentare, die aus den Umfragedaten extrahiert wurden."
-
-#: 
-msgid "Not Interested Report"
-msgstr "Bericht über nicht Interessierte"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Generieren Sie eine PDF-Datei, die einen Bericht über die Familien enthält, die von der Person, die die Umfrage durchgeführt hat, als \"nicht interessiert\" gekennzeichnet wurden."
-
-#: 
-msgid " Canvass Input for the "
-msgstr "Aktionseingabe für"
-
-#: 
-#, fuzzy
-msgid "Canvasser"
-msgstr "Aktionsmitarbeiter"
-
-#: 
-msgid "Positive"
-msgstr "Positiv"
-
-#: 
-msgid "Critical"
-msgstr "Kritisch"
-
-#: 
-msgid "Insightful"
-msgstr "Einsichtig"
-
-#: 
-msgid "Financial"
-msgstr "Finanzen"
-
-#: 
-msgid "Suggestions"
-msgstr "Vorschläge"
-
-#: 
-msgid "Not Interested"
-msgstr "Nicht interessiert"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Warum kein Interesse?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Korb zur Veranstaltung hinzufügen"
 
@@ -1331,21 +1182,6 @@ msgid "Other Info"
 msgstr "Andere Informationen"
 
 #: 
-#, fuzzy
-msgid "Ok To Canvass"
-msgstr "Ok für die Aktion"
-
-#: 
-#, fuzzy
-msgid "Assign a Canvasser"
-msgstr "Einen Aktionsmitarbeiter zuweisen"
-
-#: 
-#, fuzzy
-msgid "Assign a Brave Canvasser"
-msgstr "Einen mutigen Aktionsmitarbeiter zuweisen"
-
-#: 
 msgid "Envelope Info"
 msgstr "Briefumschlag Informationen"
 
@@ -1581,10 +1417,6 @@ msgstr "Eine neue Spendenzusage hinzufügen"
 #: 
 msgid "Add a new payment"
 msgstr "Eine neue Zahlung hinzufügen"
-
-#: 
-msgid " Canvass Entry"
-msgstr "Aktionseintrag"
 
 #: 
 msgid "Close"
@@ -3321,10 +3153,6 @@ msgid "(Edit own family only.)"
 msgstr "(Nur eigene Familie ändern.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Aktionsmitarbeiter)"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "Adminstrator"
@@ -3500,18 +3328,6 @@ msgstr "Schwerer Fehler in eGive API datastream:"
 #: 
 msgid "eMail Dashboard"
 msgstr "eMail-Dashboard"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Familien müssen nicht Aktionsmitarbeitern zugewiesen werden"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Aktionsmitarbeiter werden zufällig an %d Familien zugewiesen."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Aktionsmitarbeiter werden zufällig an %d nicht unterstützende Familien zugewiesen."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3776,18 +3592,6 @@ msgstr "Dateityp"
 #: 
 msgid "items"
 msgstr "Sachen"
-
-#: 
-msgid "Did not pledge"
-msgstr "Hat keine Spenden zugesagt"
-
-#: 
-msgid "Top pledger"
-msgstr "Top Spendenzusager"
-
-#: 
-msgid "Pledged"
-msgstr "Spenden zugesagt"
 
 #: 
 msgid "M/F"
@@ -4473,30 +4277,6 @@ msgid "Attendees for Event"
 msgstr "Teilnehmer an Event mit"
 
 #: 
-msgid "is not configured"
-msgstr "ist nicht konfiguriert"
-
-#: 
-msgid "Please update the"
-msgstr "Bitte update die"
-
-#: 
-msgid "API key in Setting->"
-msgstr "API key in Einstellungen->"
-
-#: 
-msgid "then update"
-msgstr "danach aktualisiere"
-
-#: 
-msgid "For more info see our "
-msgstr "Für weitere Informationen siehe "
-
-#: 
-msgid "support docs."
-msgstr "Dokumentation."
-
-#: 
 msgid "Yearly"
 msgstr "jährlich"
 
@@ -4639,14 +4419,6 @@ msgstr "Dateiname:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Geschäftsjahr:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Wichtiger Hinweis: Dadurch gehen alle \"Ok Zur Akquisition\"-Felder verloren, die von Hand gesetzt wurden."
-
-#: 
-msgid "Canvasser:"
-msgstr "Akquisiteur:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5464,50 +5236,6 @@ msgstr "Benutzer darf CSV-Dateien exportieren."
 #: 
 msgid "Allow user to add new event"
 msgstr "Benutzer darf neue Ereignisse hinzufügen"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "Fortschrittsbericht zur Wahlwerbung"
-
-#: 
-msgid "Done"
-msgstr "Erledigt"
-
-#: 
-msgid "Assigned"
-msgstr "Zugewiesen"
-
-#: 
-msgid "Percent"
-msgstr "Prozent"
-
-#: 
-msgid "Total"
-msgstr "Gesamt"
-
-#: 
-msgid "Pledge status"
-msgstr "Status der Zuwendung"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "Zusammenfassender Bericht zur Wahlbeteiligung"
-
-#: 
-msgid "Suggestion"
-msgstr "Vorschlag"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "WehalbUninteressiert"
-
-#: 
-msgid "Comments"
-msgstr "Kommentare"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "Canvass Nicht Interessiert Bericht"
 
 #: 
 msgid "Weekly on"
@@ -6944,10 +6672,6 @@ msgid "Failed"
 msgstr "Fehlgeschlagen"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "Die vorherige Integritätsprüfung wurde bestanden.  Alle Systemdatei-Hashes stimmen mit den erwarteten Werten überein."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Girokontonummer der Kirche"
 
@@ -7141,10 +6865,6 @@ msgid "Your New Account"
 msgstr "Dein neuer Account"
 
 #: 
-msgid "Password Changed"
-msgstr "Passwort geändert"
-
-#: 
 msgid "Password Reset"
 msgstr "Passwort zurücksetzen"
 
@@ -7283,10 +7003,6 @@ msgstr "Dein ChurchCRM-Account wurde gesperrt."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Ein ChurchCRM-Account wurde für Sie erstellt"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Dein ChurchCRM-Passwort wurde geändert."
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7471,10 +7187,6 @@ msgstr "Link zum Zurücksetzen des Passworts"
 #: 
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "Als Teil der Wiederherstellung wurden externe Backups deaktiviert.  Wenn Sie die automatischen Backups fortsetzen möchten, müssen Sie die Einstellung bEnableExternalBackupTarget manuell wieder aktivieren."
 
 #: 
 msgid "Unable to reset password"

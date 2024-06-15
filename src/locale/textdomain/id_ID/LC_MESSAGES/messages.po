@@ -363,154 +363,6 @@ msgid "Canvass Automation"
 msgstr "Sensus Otomatis"
 
 #: 
-msgid "Not confirmed."
-msgstr "Belum terkonfirmasi"
-
-#: 
-msgid "Canvassers"
-msgstr "Petugas Sensus"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "Pengajak Pemberani"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Menghapus semua tugas pengajak."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Atur sebagai pengajak untuk semua keluarga."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Nonaktifkan sebagai pengajak untuk semua keluarga."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "Tombol hapus sebagai pengajak tidak dikonfigurasikan."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Atur tahun fiskal"
-
-#: 
-msgid "Check to confirm"
-msgstr "Tandai sebagai konfirmasi"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Tetapkan Kanvasser"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Secara acak tetapkan canvasser ke semua Keluarga. Pengajak diambil dari &quot; Pengajak &quot; Kelompok."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Tetapkan Untuk Tidak Menjanjikan"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Secara acak tetapkan pengajak ke Keluarga yang tidak berjanji. Pengajak diambil dari &quot; Pengajak Utama &quot; Kelompok."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Hapus Penugasan Pengajak"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Hapus semua tugas pengajak untuk semua keluarga."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Catatan penting: ini akan kehilangan tugas pengajak yang telah dibuat dengan tangan."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Aktifkan Palang untuk Semua Keluarga"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "Aktifkan tautan &quot; Oke Ke kanvas &quot; bidang untuk semua Keluarga."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Matikan Palang untuk Semua Keluarga"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Matikan tautan &quot; Oke Ke kanvas &quot; bidang untuk semua Keluarga"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "lembar pengarahan"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Hasilkan PDF yang berisi lembar pengarahan untuk semua Keluarga, yang diurutkan berdasarkan pemilih."
-
-#: 
-msgid "Progress Report"
-msgstr "Laporan perkembangan"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Hasilkan PDF berisi laporan kemajuan. Laporan kemajuan mencakup informasi tentang kemajuan keseluruhan dari sensus, dan kemajuan dari masing-masing pemilih."
-
-#: 
-msgid "Summary Report"
-msgstr "Rangkuman laporan"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Hasilkan PDF berisi laporan ringkasan. Laporan ringkasan termasuk komentar yang diambil dari data sensus."
-
-#: 
-msgid "Not Interested Report"
-msgstr "Laporan Tidak Tertarik"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Hasilkan PDF yang berisi lembar pengarahan untuk semua Keluarga, diurutkan berdasarkan pengajak."
-
-#: 
-msgid " Canvass Input for the "
-msgstr "Masukkan pengajak untuk"
-
-#: 
-msgid "Canvasser"
-msgstr "Peminta dukungan"
-
-#: 
-msgid "Positive"
-msgstr "Positif"
-
-#: 
-msgid "Critical"
-msgstr "Kritis"
-
-#: 
-msgid "Insightful"
-msgstr "Berwawasan"
-
-#: 
-msgid "Financial"
-msgstr "Finansial"
-
-#: 
-msgid "Suggestions"
-msgstr "Saran-saran"
-
-#: 
-msgid "Not Interested"
-msgstr "Tidak berminat"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Mengapa tidak berminat ?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Tambahkan cart di Acara"
 
@@ -1295,18 +1147,6 @@ msgid "Other Info"
 msgstr "Info lainnya"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "Ok ke pengajak"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "Tugaskan ke pengajak"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "Tugaskan ke pengajak utama"
-
-#: 
 msgid "Envelope Info"
 msgstr "Keterangan Amplop"
 
@@ -1541,10 +1381,6 @@ msgstr "Tambahkan janji baru"
 #: 
 msgid "Add a new payment"
 msgstr "Tambahkan pembayaran baru"
-
-#: 
-msgid " Canvass Entry"
-msgstr "Entri Pengajak"
 
 #: 
 msgid "Close"
@@ -3228,10 +3064,6 @@ msgid "(Edit own family only.)"
 msgstr "(Edit keluarga sendiri saja.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Canvass relawan.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
 
@@ -3398,18 +3230,6 @@ msgstr "Kesalahan fatal dalam datastream API eGive: '"
 #: 
 msgid "eMail Dashboard"
 msgstr "Dasbor Surel"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Tidak ada keluarga yang membutuhkan canvasser"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers ditugaskan secara acak ke %d keluarga."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers ditugaskan secara acak ke %d keluarga yang tidak berjanji."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3666,18 +3486,6 @@ msgstr "Jenis File"
 #: 
 msgid "items"
 msgstr "barang"
-
-#: 
-msgid "Did not pledge"
-msgstr "Tidak berjanji"
-
-#: 
-msgid "Top pledger"
-msgstr "Pledger teratas"
-
-#: 
-msgid "Pledged"
-msgstr "Dijanjikan"
 
 #: 
 msgid "M/F"
@@ -4351,30 +4159,6 @@ msgid "Attendees for Event"
 msgstr "Peserta untuk Peristiwa"
 
 #: 
-msgid "is not configured"
-msgstr "tidak dikonfigurasi"
-
-#: 
-msgid "Please update the"
-msgstr "Harap perbarui"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Kunci API di Pengaturan->"
-
-#: 
-msgid "then update"
-msgstr "kemudian perbarui"
-
-#: 
-msgid "For more info see our "
-msgstr "Untuk info lebih lanjut lihat "
-
-#: 
-msgid "support docs."
-msgstr "mendukung dokumen."
-
-#: 
 msgid "Yearly"
 msgstr "Tahunan"
 
@@ -4517,14 +4301,6 @@ msgstr "Nama file:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Tahun fiskal:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Catatan penting: ini akan kehilangan semua & quot; Ok To Canvass & quot; bidang yang telah ditetapkan dengan tangan."
-
-#: 
-msgid "Canvasser:"
-msgstr "Seorang yg meminta suara:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5344,50 +5120,6 @@ msgstr "Izin pengguna untuk mengekspor file CSV"
 #: 
 msgid "Allow user to add new event"
 msgstr "Izinkan pengguna menambahkan acara baru"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "Laporan Kemajuan Canvass"
-
-#: 
-msgid "Done"
-msgstr "Selesai"
-
-#: 
-msgid "Assigned"
-msgstr "Ditugaskan"
-
-#: 
-msgid "Percent"
-msgstr "Persen"
-
-#: 
-msgid "Total"
-msgstr "Total"
-
-#: 
-msgid "Pledge status"
-msgstr "Status janji"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "Laporan Ringkasan Kanvas"
-
-#: 
-msgid "Suggestion"
-msgstr "Saran"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "WhyNotInterested"
-
-#: 
-msgid "Comments"
-msgstr "Komentar"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "Laporan Canvass Tidak Tertarik"
 
 #: 
 msgid "Weekly on"
@@ -6822,10 +6554,6 @@ msgid "Failed"
 msgstr "Gagal"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "Pemeriksaan integritas sebelumnya berlalu. Semua hash file sistem cocok dengan nilai yang diharapkan."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Nomor Rekening Pengecekan Gereja"
 
@@ -7019,10 +6747,6 @@ msgid "Your New Account"
 msgstr "Akun Baru Anda"
 
 #: 
-msgid "Password Changed"
-msgstr "Kata sandi berubah"
-
-#: 
 msgid "Password Reset"
 msgstr "Reset Kata Sandi"
 
@@ -7161,10 +6885,6 @@ msgstr "Akun ChurchCRM Anda dikunci."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Akun ChurchCRM dibuat untuk Anda"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Kata sandi ChurchCRM Anda telah diubah"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7349,10 +7069,6 @@ msgstr "Tautan Reset Kata Sandi"
 #: 
 msgid "Reset Password"
 msgstr "Setel Ulang Kata Sandi"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "Sebagai bagian dari pemulihan, cadangan eksternal telah dinonaktifkan. Jika Anda ingin melanjutkan pencadangan otomatis, Anda harus mengaktifkan kembali pengaturan bEnableExternalBackupTarget."
 
 #: 
 msgid "Unable to reset password"

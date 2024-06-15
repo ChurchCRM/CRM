@@ -375,127 +375,6 @@ msgid "Canvass Automation"
 msgstr "Canvass Automation"
 
 #: 
-msgid "Not confirmed."
-msgstr "Ikke bekreftet."
-
-#: 
-msgid "Canvassers"
-msgstr "Canvassers"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Fjernet alle canvasser oppdrag."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Satt OK å canvass for alle familier."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Deaktivert OK å canvass for alle familier."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "ClearAllOkToCanvass knappen ikke confimed."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Sett standard regnskapsåret"
-
-#: 
-msgid "Check to confirm"
-msgstr "Sjekk for å bekrefte"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Tildele Canvassers"
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Tildele til ikke Pantsettelse"
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Klare Canvasser Oppdrag"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Fjern alle lerreter tildeliger til alle familier"
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Viktig: du vil miste alle lerreter som er laget for hånd"
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Aktiver canvass for alle familier"
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Deaktiver canvass for alle familier"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Briefing Sheets"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Generere en PDF-fil med briefing ark for alle familier, sortert etter canvasser."
-
-#: 
-msgid "Progress Report"
-msgstr "Progress Report"
-
-#: 
-msgid "Summary Report"
-msgstr "Oppsummeringsrapport"
-
-#: 
-msgid "Not Interested Report"
-msgstr "Ikke interessert Rapporter"
-
-#: 
-msgid " Canvass Input for the "
-msgstr "Canvass Input for"
-
-#: 
-#, fuzzy
-msgid "Canvasser"
-msgstr "Canvasser"
-
-#: 
-msgid "Positive"
-msgstr "Positiv"
-
-#: 
-msgid "Critical"
-msgstr "Kritisk"
-
-#: 
-msgid "Insightful"
-msgstr "Innsiktsfulle"
-
-#: 
-msgid "Financial"
-msgstr "Financial"
-
-#: 
-msgid "Suggestions"
-msgstr "Forslag"
-
-#: 
-msgid "Not Interested"
-msgstr "Ikke interessert"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Hvorfor ikke er interessert?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Legg Cart til Event"
 
@@ -1267,21 +1146,6 @@ msgid "Other Info"
 msgstr "Annen Informasjon"
 
 #: 
-#, fuzzy
-msgid "Ok To Canvass"
-msgstr "Ok å canvass"
-
-#: 
-#, fuzzy
-msgid "Assign a Canvasser"
-msgstr "Tilordne en Canvasser"
-
-#: 
-#, fuzzy
-msgid "Assign a Brave Canvasser"
-msgstr "Tildele en Brave Canvasser"
-
-#: 
 msgid "Envelope Info"
 msgstr "Brev Informasjon"
 
@@ -1517,10 +1381,6 @@ msgstr "Legg til en ny pant"
 #: 
 msgid "Add a new payment"
 msgstr "Legg til en ny betaling"
-
-#: 
-msgid " Canvass Entry"
-msgstr "Canvass Entry"
 
 #: 
 msgid "Close"
@@ -3202,10 +3062,6 @@ msgid "(Edit own family only.)"
 msgstr "(Rediger egen familie bare.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Canvass frivillig.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
 
@@ -3371,18 +3227,6 @@ msgstr "Redigere Deposit Slip"
 #: 
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Fatal feil i eGive API datastrøm: &#39;"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Ingen familier trenger canvassers tildelt"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers tildelt tilfeldig til %d familier."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers tildelt tilfeldig til %d ikke-pantsettelse familier."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3595,18 +3439,6 @@ msgstr "File Type"
 #: 
 msgid "items"
 msgstr "elementer"
-
-#: 
-msgid "Did not pledge"
-msgstr "Gjorde ikke pantsette"
-
-#: 
-msgid "Top pledger"
-msgstr "Top Pledger"
-
-#: 
-msgid "Pledged"
-msgstr "Pantsatt"
 
 #: 
 msgid "M/F"

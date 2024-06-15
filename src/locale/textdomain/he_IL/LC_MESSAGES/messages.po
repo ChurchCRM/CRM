@@ -296,55 +296,6 @@ msgid "persons were imported"
 msgstr "האנשים יובאו בהצלחה"
 
 #: 
-msgid "Set default fiscal year"
-msgstr "הזן ערך ברירת מחדל לשנת תקציב"
-
-#: 
-msgid "Check to confirm"
-msgstr "סמן לאישור"
-
-#. Need context
-#: 
-msgid "Briefing Sheets"
-msgstr "דפי תדרוך"
-
-#: 
-msgid "Progress Report"
-msgstr "דו\"ח התקדמות"
-
-#: 
-msgid "Summary Report"
-msgstr "דו\"ח סיכום"
-
-#: 
-msgid "Positive"
-msgstr "חיובי"
-
-#: 
-msgid "Critical"
-msgstr "קריטי"
-
-#: 
-msgid "Insightful"
-msgstr "בעל תובנה"
-
-#: 
-msgid "Financial"
-msgstr "פיננסי"
-
-#: 
-msgid "Suggestions"
-msgstr "הצעות"
-
-#: 
-msgid "Not Interested"
-msgstr "לא מעוניין"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "מדוע לא מעוניין?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "הוסף סל לאירוע"
 

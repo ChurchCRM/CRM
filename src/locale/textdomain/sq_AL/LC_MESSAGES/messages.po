@@ -327,138 +327,6 @@ msgid "Canvass Automation"
 msgstr "Automatizimi anketim"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nuk është konfirmuar."
-
-#: 
-msgid "Canvassers"
-msgstr "Canvassers"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Pastruar të gjitha detyrat mbledh vota duke vizituar."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Bëje Ok të diskutoj për të gjitha familjet."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Me aftësi të kufizuara Ok të diskutoj për të gjitha familjet."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "Button ClearAllOkToCanvass nuk confimed."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Bëje vit fiskal parazgjedhur"
-
-#: 
-msgid "Check to confirm"
-msgstr "Kontrollo për të konfirmuar"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Cakto Canvassers"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Rastësisht caktojë canvassers të gjitha familjeve. Të Canvassers janë taken nga Canvassers Group."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Cakto To Jo duke u zotuar"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Rastësisht caktojë canvassers Familjeve jo duke u zotuar. Të Canvassers janë taken nga BraveCanvassers Group."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Detyrat e qarta mbledh vota duke vizituar"
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Aktivizo diskutoj për të gjitha familjet"
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Disable diskutoj për të gjitha familjet"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Sheets njoftuese"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Të gjenerojë një PDF që përmban fletë udhëzuese për të gjitha familjet, të renditura sipas mbledh vota duke vizituar."
-
-#: 
-msgid "Progress Report"
-msgstr "Raporti i progresi"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Të gjenerojë një PDF që përmban një raport progresi. Raporti i progresit përfshin information për progresin e përgjithshëm të pëlhurë, dhe progresin e canvassers individuale."
-
-#: 
-msgid "Summary Report"
-msgstr "Raporti përmbledhës"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Të gjenerojë një PDF që përmban një raport përmbledhës. Raporti përmbledhës përfshin comments nxjerrë nga të dhënat anketim."
-
-#: 
-msgid "Not Interested Report"
-msgstr "Raporti nuk Interesuar"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Generate një PDF që përmban një raport i familjeve shënuar nuk është e interesuar nga mbledh vota duke vizituar."
-
-#: 
-msgid " Canvass Input for the "
-msgstr " Diskutoj Input për "
-
-#: 
-msgid "Canvasser"
-msgstr "Mbledh vota duke vizituar"
-
-#: 
-msgid "Positive"
-msgstr "Pozitiv"
-
-#: 
-msgid "Critical"
-msgstr "Kritik"
-
-#: 
-msgid "Insightful"
-msgstr "Insightful"
-
-#: 
-msgid "Financial"
-msgstr "Financiar"
-
-#: 
-msgid "Suggestions"
-msgstr "Sugjerime"
-
-#: 
-msgid "Not Interested"
-msgstr "Jo të interesuar"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Pse jo të interesuar?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Shto te Shporta Event"
 
@@ -1144,18 +1012,6 @@ msgid "Email is Not Valid"
 msgstr "Email nuk është i vlefshëm"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "Ok të diskutoj"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "Cakto një mbledh vota duke vizituar"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "Cakto një trim mbledh vota duke vizituar"
-
-#: 
 msgid "Custom Fields"
 msgstr "Fushat Custom"
 
@@ -1342,10 +1198,6 @@ msgstr "Shto një premtim të ri"
 #: 
 msgid "Add a new payment"
 msgstr "Shto një pagesë të re"
-
-#: 
-msgid " Canvass Entry"
-msgstr " Diskutoj Hyrja"
 
 #: 
 msgid "Confirm Delete"
@@ -2679,10 +2531,6 @@ msgid "(Edit own family only.)"
 msgstr "(Edit familjen e vet vetëm.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Vullnetar anketim.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
 
@@ -2825,18 +2673,6 @@ msgstr "Mbrapsht në faturën e depozitës"
 #: 
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Gabim Fatal në Datastream eGive API: '"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Nuk ka familje duhet canvassers caktuar"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers caktuar në mënyrë të rastësishme në %d familjeve."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers caktuar në mënyrë të rastësishme në %d jo duke u zotuar për familjet."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3010,18 +2846,6 @@ msgstr "Lloji i dokumentit"
 #: 
 msgid "items"
 msgstr "artikuj"
-
-#: 
-msgid "Did not pledge"
-msgstr "A nuk peng"
-
-#: 
-msgid "Top pledger"
-msgstr "Top pengdhënësi"
-
-#: 
-msgid "Pledged"
-msgstr "U zotua"
 
 #: 
 msgid "M/F"

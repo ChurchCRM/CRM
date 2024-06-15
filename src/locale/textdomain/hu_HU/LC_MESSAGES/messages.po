@@ -352,119 +352,6 @@ msgid "Canvass Automation"
 msgstr "Korteskedés Automation"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nem megerősítik."
-
-#: 
-msgid "Canvassers"
-msgstr "Canvassers"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Tiszta minden kortes feladatokat."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Állítsa Ok A korteskedés minden család."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Tiltott Ok A korteskedés minden család."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "ClearAllOkToCanvass gomb nem confimed."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Alapértelmezett pénzügyi év"
-
-#: 
-msgid "Check to confirm"
-msgstr "Ellenőrizze a megerősítéshez"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Hozzárendelése Canvassers"
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Hozzárendelés Non Pledging"
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Kódolatlan kortes Hozzárendelések"
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Engedélyezze a korteskedés for All Families"
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Tiltása korteskedés for All Families"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Briefing Sheets"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Hozzon létre egy PDF tartalmazó tájékoztató lapot az összes családok szerint rendezve kortes."
-
-#: 
-msgid "Progress Report"
-msgstr "Elért eredményekről szóló jelentés"
-
-#: 
-msgid "Summary Report"
-msgstr "Összefoglaló jelentés"
-
-#: 
-msgid "Not Interested Report"
-msgstr "Nem érdekelt bejelentése"
-
-#: 
-msgid " Canvass Input for the "
-msgstr "Korteskedés Hozzájárulás a"
-
-#: 
-#, fuzzy
-msgid "Canvasser"
-msgstr "Kortes"
-
-#: 
-msgid "Positive"
-msgstr "Pozitív"
-
-#: 
-msgid "Critical"
-msgstr "Kritikai"
-
-#: 
-msgid "Insightful"
-msgstr "Éleslátó"
-
-#: 
-msgid "Financial"
-msgstr "Pénzügyi"
-
-#: 
-msgid "Suggestions"
-msgstr "Javaslatok"
-
-#: 
-msgid "Not Interested"
-msgstr "Nem érdekel"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Miért nem érdekel?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Add kosárba a rendezvény"
 
@@ -1183,21 +1070,6 @@ msgid "Email is Not Valid"
 msgstr "Email nem érvényes"
 
 #: 
-#, fuzzy
-msgid "Ok To Canvass"
-msgstr "Ok To korteskedés"
-
-#: 
-#, fuzzy
-msgid "Assign a Canvasser"
-msgstr "Hozzárendelése kortes"
-
-#: 
-#, fuzzy
-msgid "Assign a Brave Canvasser"
-msgstr "Hozzárendelése Brave kortes"
-
-#: 
 msgid "Custom Fields"
 msgstr "Egyéni mezők"
 
@@ -1385,10 +1257,6 @@ msgstr "Új fogadalmat"
 #: 
 msgid "Add a new payment"
 msgstr "Új fizetési"
-
-#: 
-msgid " Canvass Entry"
-msgstr "Korteskedés bejegyzés"
 
 #: 
 msgid "Confirm Delete"
@@ -2795,10 +2663,6 @@ msgid "(Edit own family only.)"
 msgstr "(Szerkesztés saját családja csak.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Korteskedés önkéntes.)"
-
-#: 
 msgid "(Grants all privileges.)"
 msgstr "(Ad minden jogosultságokat.)"
 
@@ -2946,18 +2810,6 @@ msgstr "Vissza Befizetés Slip"
 #: 
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Végzetes hiba eGive API Datastream: \""
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Nem családtagjaik canvassers célhoz"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers rendelt véletlenszerűen %d családoknak."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers rendelt véletlenszerűen %d nem zálogjog családok."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3146,18 +2998,6 @@ msgstr "Fájl típus"
 #: 
 msgid "items"
 msgstr "tételek"
-
-#: 
-msgid "Did not pledge"
-msgstr "Nem jelölt"
-
-#: 
-msgid "Top pledger"
-msgstr "Top zálogadós"
-
-#: 
-msgid "Pledged"
-msgstr "Elzálogosított"
 
 #: 
 msgid "M/F"

@@ -361,154 +361,6 @@ msgid "Canvass Automation"
 msgstr "Canvass Otomasyonu"
 
 #: 
-msgid "Not confirmed."
-msgstr "Onaylanmadı."
-
-#: 
-msgid "Canvassers"
-msgstr "Terketçiler"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "Bravecanvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Tüm Canvasser atamalarını temizledi."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Tüm aileler için başa çıkın."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Tüm aileler için devre dışı bırakıldı."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "ClearAlloktocanvass düğmesi konferanslı değil."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Varsayılan mali yılı ayarlayın"
-
-#: 
-msgid "Check to confirm"
-msgstr "Onaylamak için kontrol edin"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Canvasser atama"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Tüm ailelere rastgele kanvaser atayın. Canvassers \"kanvaserlerden\" alınır; Grup."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Taahhüt etmemeye atayın"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Canvasser'ları rastgele terketmeyen ailelere atar. Canvassers \"Bravecanvassers\" dan alınır; Grup."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Canvasser atamalarını temizleyin"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Tüm aileler için tüm Canvasser ödevlerini temizleyin."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Önemli Not: Bu, elle yapılan herhangi bir kanvasçı atamasını kaybedecektir."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Tüm aileler için kanvas'ı etkinleştirin"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "\"Tamam\" ı açın \"ı açın; Tüm aileler için alan."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Tüm aileler için kanvas'ı devre dışı bırakın"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "\"Tamam\" ı kapatın; Tüm aileler için alan"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Brifing sayfaları"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Canvasser tarafından sıralanan tüm aileler için brifing sayfaları içeren bir PDF oluşturun."
-
-#: 
-msgid "Progress Report"
-msgstr "İlerleme raporu"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "İlerleme raporu içeren bir PDF oluşturun. İlerleme raporu, kanvanın genel ilerlemesi ve bireysel kanvasların ilerlemesi hakkında bilgi içerir."
-
-#: 
-msgid "Summary Report"
-msgstr "Özet raporu"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Özet rapor içeren bir PDF oluşturun. Özet rapor, Canvass verilerinden çıkarılan yorumları içerir."
-
-#: 
-msgid "Not Interested Report"
-msgstr "İlgilenmiyor Rapor"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "\"İlgilenmeyen\" olarak işaretlenmiş ailelerin bir raporunu içeren bir PDF oluşturun; Canvasser tarafından."
-
-#: 
-msgid " Canvass Input for the "
-msgstr " Canvass girişi"
-
-#: 
-msgid "Canvasser"
-msgstr "Avcı"
-
-#: 
-msgid "Positive"
-msgstr "Pozitif"
-
-#: 
-msgid "Critical"
-msgstr "Eleştirel"
-
-#: 
-msgid "Insightful"
-msgstr "Anlayışlı"
-
-#: 
-msgid "Financial"
-msgstr "Parasal"
-
-#: 
-msgid "Suggestions"
-msgstr "Öneriler"
-
-#: 
-msgid "Not Interested"
-msgstr "İlgilenmiyorum"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Neden ilgilenmiyorsunuz?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Etkinliğe Sepet Ekle"
 
@@ -1290,18 +1142,6 @@ msgid "Other Info"
 msgstr "Diğer bilgiler"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "Tamam"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "Bir kanvaser atayın"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "Cesur bir kanvaser atayın"
-
-#: 
 msgid "Envelope Info"
 msgstr "Zarf Bilgisi"
 
@@ -1536,10 +1376,6 @@ msgstr "Yeni bir rehin ekle"
 #: 
 msgid "Add a new payment"
 msgstr "Yeni bir ödeme ekle"
-
-#: 
-msgid " Canvass Entry"
-msgstr " Canvass girişi"
 
 #: 
 msgid "Close"
@@ -3221,10 +3057,6 @@ msgid "(Edit own family only.)"
 msgstr "(Yalnızca kendi ailesini düzenleyin.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Canvass Gönüllü.)"
-
-#: 
 msgid "Admin"
 msgstr "Yönetici"
 
@@ -3391,18 +3223,6 @@ msgstr "EGIVE API veri akışında ölümcül hata: '"
 #: 
 msgid "eMail Dashboard"
 msgstr "E -posta Gösterge Tablosu"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Hiçbir ailenin atanan kanvaserlere ihtiyacı yok"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Canvassers rastgele %d ailelere atandı."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Canvassers rastgele %D-Plozda olmayan ailelere atanmıştır."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3659,18 +3479,6 @@ msgstr "Dosya tipi"
 #: 
 msgid "items"
 msgstr "öğeler"
-
-#: 
-msgid "Did not pledge"
-msgstr "Söz vermedi"
-
-#: 
-msgid "Top pledger"
-msgstr "TOP VERİ"
-
-#: 
-msgid "Pledged"
-msgstr "Sözlü"
 
 #: 
 msgid "M/F"
@@ -4342,30 +4150,6 @@ msgid "Attendees for Event"
 msgstr "Etkinlik Kimliği için katılımcılar:"
 
 #: 
-msgid "is not configured"
-msgstr "yapılandırılmamış"
-
-#: 
-msgid "Please update the"
-msgstr "Lütfen güncelleyin"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Ayarda API Anahtarı->"
-
-#: 
-msgid "then update"
-msgstr "sonra güncelleme"
-
-#: 
-msgid "For more info see our "
-msgstr "Daha fazla bilgi için bkz."
-
-#: 
-msgid "support docs."
-msgstr "Destek dokümanları."
-
-#: 
 msgid "Yearly"
 msgstr "Yıllık"
 
@@ -4508,14 +4292,6 @@ msgstr "Dosya adı:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Mali yıl:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Önemli Not: Bu, \"Tamam\" ı kaybedecektir. Elle ayarlanmış alanlar."
-
-#: 
-msgid "Canvasser:"
-msgstr "Canvasser:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5335,50 +5111,6 @@ msgstr "CSV dosyalarını dışa aktarmak için kullanıcı izni"
 #: 
 msgid "Allow user to add new event"
 msgstr "Kullanıcının yeni etkinlik eklemesine izin verin"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "Canvass İlerleme Raporu"
-
-#: 
-msgid "Done"
-msgstr "Tamamlandı"
-
-#: 
-msgid "Assigned"
-msgstr "Atanmış"
-
-#: 
-msgid "Percent"
-msgstr "Yüzde"
-
-#: 
-msgid "Total"
-msgstr "Toplam"
-
-#: 
-msgid "Pledge status"
-msgstr "Rehin Durumu"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "Canvass Özet Raporu"
-
-#: 
-msgid "Suggestion"
-msgstr "Öneri"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "Neden İlişkili"
-
-#: 
-msgid "Comments"
-msgstr "Yorumlar"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "Canvass İlgilenmiyor Rapor"
 
 #: 
 msgid "Weekly on"
@@ -6813,10 +6545,6 @@ msgid "Failed"
 msgstr "Arızalı"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "Önceki bütünlük kontrolü geçti. Tüm sistem dosyası karmalar beklenen değerlerle eşleşir."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Kilise Kontrol Hesap Numarası"
 
@@ -7010,10 +6738,6 @@ msgid "Your New Account"
 msgstr "Yeni Hesabınız"
 
 #: 
-msgid "Password Changed"
-msgstr "Şifre değişti"
-
-#: 
 msgid "Password Reset"
 msgstr "Parola sıfırlama"
 
@@ -7152,10 +6876,6 @@ msgstr "ChurchCRM hesabınız kilitlendi."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Sizin için bir ChurchCRM hesabı oluşturuldu"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "ChurchCRM şifreniz değiştirildi"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7340,10 +7060,6 @@ msgstr "Parola Sıfırlama Bağlantısı"
 #: 
 msgid "Reset Password"
 msgstr "Şifreyi yenile"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "Geri yüklemenin bir parçası olarak harici yedekler devre dışı bırakılmıştır. Otomatik yedeklemelere devam etmek istiyorsanız, BenableExternalBackuptarget ayarını yeniden etkinleştirmeniz gerekir."
 
 #: 
 msgid "Unable to reset password"

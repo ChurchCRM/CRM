@@ -361,154 +361,6 @@ msgid "Canvass Automation"
 msgstr "Αυτοματισμός καμβά"
 
 #: 
-msgid "Not confirmed."
-msgstr "Δεν έχει επιβεβαιωθεί."
-
-#: 
-msgid "Canvassers"
-msgstr "Καμβάδες"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Εκκαθάριση όλων των αναθέσεων του καμβαδιστή."
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Ρυθμίστε το Ok To Canvass για όλες τις οικογένειες."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Απενεργοποίηση Ok To Canvass για όλες τις οικογένειες."
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "Το κουμπί ClearAllOkToCanvass δεν επιβεβαιώθηκε."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Ορισμός προεπιλεγμένου οικονομικού έτους"
-
-#: 
-msgid "Check to confirm"
-msgstr "Ελέγξτε για επιβεβαίωση"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Εκχώρηση Canvassers"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Εκχωρήστε τυχαία καμβάδες σε όλες τις οικογένειες. Τα Canvassers προέρχονται από το &quot;Canvassers&quot; Ομάδα."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Εκχώρηση σε μη δεσμευτική"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Αναθέστε τυχαία εκτελεστές σε μη δεσμευμένες οικογένειες. Τα Canvassers προέρχονται από το &quot;BraveCanvassers&quot; Ομάδα."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Εκκαθάριση εργασιών Canvasser"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Διαγράψτε όλες τις αναθέσεις του καμβά για όλες τις οικογένειες."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Σημαντική σημείωση: θα χαθούν τυχόν αναθέσεις καμβάς που έχουν γίνει με το χέρι."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Ενεργοποίηση καμβά για όλες τις οικογένειες"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "Ενεργοποιήστε το &quot;Ok To Canvass&quot; πεδίο για όλες τις οικογένειες."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Απενεργοποίηση καμβά για όλες τις οικογένειες"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Απενεργοποιήστε το &quot;Ok To Canvass&quot; πεδίο για όλες τις οικογένειες"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Φύλλα ενημέρωσης"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Δημιουργήστε ένα PDF που περιέχει ενημερωτικά φύλλα για όλες τις οικογένειες, ταξινομημένα κατά μετρητή."
-
-#: 
-msgid "Progress Report"
-msgstr "Εκθεση προόδου"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Δημιουργήστε ένα PDF που περιέχει μια αναφορά προόδου. Η αναφορά προόδου περιλαμβάνει πληροφορίες σχετικά με τη συνολική πρόοδο του καμβά και την πρόοδο μεμονωμένων μελετητών."
-
-#: 
-msgid "Summary Report"
-msgstr "Συνοπτική αναφορά"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Δημιουργήστε ένα PDF που περιέχει μια συνοπτική αναφορά. Η συνοπτική αναφορά περιλαμβάνει σχόλια που εξάγονται από τα δεδομένα του καμβά."
-
-#: 
-msgid "Not Interested Report"
-msgstr "Αναφορά \"Δεν ενδιαφέρομαι\"."
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Δημιουργήστε ένα PDF που περιέχει μια αναφορά των οικογενειών με την ένδειξη \"Δεν ενδιαφέρομαι\"; από τον καμβατζή."
-
-#: 
-msgid " Canvass Input for the "
-msgstr " Εισαγωγή καμβά για το "
-
-#: 
-msgid "Canvasser"
-msgstr "Ζητών πελατεία"
-
-#: 
-msgid "Positive"
-msgstr "Θετικός"
-
-#: 
-msgid "Critical"
-msgstr "Κρίσιμος"
-
-#: 
-msgid "Insightful"
-msgstr "Διορατικός"
-
-#: 
-msgid "Financial"
-msgstr "Χρηματοοικονομική"
-
-#: 
-msgid "Suggestions"
-msgstr "Προτάσεις"
-
-#: 
-msgid "Not Interested"
-msgstr "Δεν ενδιαφέρομαι"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Γιατί δεν ενδιαφέρεστε;"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Προσθήκη καλαθιού στην εκδήλωση"
 
@@ -1290,18 +1142,6 @@ msgid "Other Info"
 msgstr "Άλλες Πληροφορίες"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "Ok To Canvass"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "Εκχωρήστε έναν Canvasser"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "Αναθέστε έναν γενναίο καμβά"
-
-#: 
 msgid "Envelope Info"
 msgstr "Πληροφορίες φακέλου"
 
@@ -1536,10 +1376,6 @@ msgstr "Προσθέστε μια νέα υπόσχεση"
 #: 
 msgid "Add a new payment"
 msgstr "Προσθήκη νέας πληρωμής"
-
-#: 
-msgid " Canvass Entry"
-msgstr " Καταχώριση καμβά"
 
 #: 
 msgid "Close"
@@ -3217,10 +3053,6 @@ msgid "(Edit own family only.)"
 msgstr "(Επεξεργασία μόνο της οικογένειας.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Εθελοντής Canvass.)"
-
-#: 
 msgid "Admin"
 msgstr "Διαχειριστής"
 
@@ -3387,18 +3219,6 @@ msgstr "Θανατηφόρο σφάλμα στη ροή δεδομένων eGive
 #: 
 msgid "eMail Dashboard"
 msgstr "Πίνακας ελέγχου ηλεκτρονικού ταχυδρομείου"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Καμία οικογένεια δεν χρειάζεται να οριστούν καμβάδες"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Κατασκευαστές που εκχωρήθηκαν τυχαία σε %d οικογένειες."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Εκπαιδευτές εκχωρήθηκαν τυχαία σε %d οικογένειες που δεν έχουν υποσχεθεί."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3655,18 +3475,6 @@ msgstr "Τύπος αρχείου"
 #: 
 msgid "items"
 msgstr "είδη"
-
-#: 
-msgid "Did not pledge"
-msgstr "Δεν δεσμεύτηκε"
-
-#: 
-msgid "Top pledger"
-msgstr "Κορυφαίος ενεχυραστής"
-
-#: 
-msgid "Pledged"
-msgstr "Δεσμευμένος"
 
 #: 
 msgid "M/F"
@@ -4338,30 +4146,6 @@ msgid "Attendees for Event"
 msgstr "Συμμετέχοντες για Αναγνωριστικό εκδήλωσης"
 
 #: 
-msgid "is not configured"
-msgstr "δεν έχει ρυθμιστεί"
-
-#: 
-msgid "Please update the"
-msgstr "Παρακαλούμε ενημερώστε το"
-
-#: 
-msgid "API key in Setting->"
-msgstr "Κλειδί API στο Setting->"
-
-#: 
-msgid "then update"
-msgstr "στη συνέχεια ενημερώστε"
-
-#: 
-msgid "For more info see our "
-msgstr "Για περισσότερες πληροφορίες δείτε μας "
-
-#: 
-msgid "support docs."
-msgstr "έγγραφα υποστήριξης."
-
-#: 
 msgid "Yearly"
 msgstr "Ετήσια"
 
@@ -4504,14 +4288,6 @@ msgstr "Ονομα αρχείου:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Οικονομικό έτος:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Σημαντική σημείωση: αυτό θα χάσει κάθε \"Ok To Canvass\"; πεδία που έχουν ρυθμιστεί με το χέρι."
-
-#: 
-msgid "Canvasser:"
-msgstr "Ζητών πελατεία:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5331,50 +5107,6 @@ msgstr "Άδεια χρήστη για εξαγωγή αρχείων CSV"
 #: 
 msgid "Allow user to add new event"
 msgstr "Επιτρέψτε στον χρήστη να προσθέσει νέο συμβάν"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "Έκθεση προόδου καμβά"
-
-#: 
-msgid "Done"
-msgstr "Ολοκληρώθηκε"
-
-#: 
-msgid "Assigned"
-msgstr "Ανατεθεί"
-
-#: 
-msgid "Percent"
-msgstr "Τοις εκατό"
-
-#: 
-msgid "Total"
-msgstr "Σύνολο"
-
-#: 
-msgid "Pledge status"
-msgstr "Κατάσταση ενεχύρου"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "Συνοπτική αναφορά καμβά"
-
-#: 
-msgid "Suggestion"
-msgstr "Πρόταση"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "Γιατί Δεν Ενδιαφέρομαι"
-
-#: 
-msgid "Comments"
-msgstr "Σχόλια"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "Καμβάς Αναφορά Δεν Ενδιαφέρομαι"
 
 #: 
 msgid "Weekly on"
@@ -6809,10 +6541,6 @@ msgid "Failed"
 msgstr "Απέτυχε"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "Ο προηγούμενος έλεγχος ακεραιότητας πέρασε. Όλοι οι κατακερματισμοί αρχείων συστήματος αντιστοιχούν στις αναμενόμενες τιμές."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Αριθμός λογαριασμού ελέγχου Εκκλησίας"
 
@@ -7006,10 +6734,6 @@ msgid "Your New Account"
 msgstr "Ο νέος σας λογαριασμός"
 
 #: 
-msgid "Password Changed"
-msgstr "Ο κωδικός άλλαξε"
-
-#: 
 msgid "Password Reset"
 msgstr "ΕΠΑΝΑΦΟΡΑ ΚΩΔΙΚΟΥ"
 
@@ -7148,10 +6872,6 @@ msgstr "Ο λογαριασμός σας στο ChurchCRM κλειδώθηκε."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Ένας λογαριασμός ChurchCRM δημιουργήθηκε για εσάς"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Ο κωδικός πρόσβασής σας στο ChurchCRM άλλαξε"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7336,10 +7056,6 @@ msgstr "Σύνδεσμος επαναφοράς κωδικού πρόσβαση�
 #: 
 msgid "Reset Password"
 msgstr "Επαναφέρετε τον κωδικό πρόσβασης"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "Ως μέρος της επαναφοράς, τα εξωτερικά αντίγραφα ασφαλείας έχουν απενεργοποιηθεί. Εάν θέλετε να συνεχίσετε την αυτόματη δημιουργία αντιγράφων ασφαλείας, πρέπει να ενεργοποιήσετε ξανά τη ρύθμιση bEnableExternalBackupTarget με μη αυτόματο τρόπο."
 
 #: 
 msgid "Unable to reset password"

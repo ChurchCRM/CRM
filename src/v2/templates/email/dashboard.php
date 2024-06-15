@@ -77,11 +77,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-lg-12 col-md-7 col-sm-3">
             <div class="card card-body">
                 <div class="alert alert-warning">
-                    <h4><i class="fa fa-ban"></i> MailChimp <?= gettext('is not configured') ?></h4>
-                    <?= gettext('Please update the') ?> MailChimp <?= gettext('API key in Setting->') ?><a
-                        href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Edit General Settings') ?></a>,
-                    <?= gettext('then update') ?> sMailChimpApiKey. <?= gettext('For more info see our ') ?><a
-                        href="<?= SystemURLs::getSupportURL() ?>"> MailChimp <?= gettext('support docs.') ?></a>
+                    <h4><i class="fa fa-ban"></i> <?= gettext('MailChimp is not configured') ?></h4>
+                    <?= gettext('Please update the MailChimp API key in:') ?> <a
+                        href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php#Integration"><?= gettext('Integration') ?></a>
                 </div>
             </div>
         </div>

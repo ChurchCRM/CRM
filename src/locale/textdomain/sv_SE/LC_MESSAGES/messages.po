@@ -381,155 +381,6 @@ msgid "Canvass Automation"
 msgstr "Insamlingskampanj automation"
 
 #: 
-msgid "Not confirmed."
-msgstr "Icke bekräftade"
-
-#: 
-msgid "Canvassers"
-msgstr "Insamlingskampanj arbetare"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "Modiga insamlingskampanj arbetare"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Renasade alla insamlingskampanj arbetsuppgifter"
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Ställa in godkände för insamlingskampanj för alla familjer"
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Ställa in icke godkände för insamlingskampanj för alla familjer"
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "RensaAllaGodkändeFörInsamlingskampanj knappen ej bekräftade"
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Förinställde bokföringsår"
-
-#: 
-msgid "Check to confirm"
-msgstr "Bocka av för att bekräfta"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Ange insamlingskampanj arbetare"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Tilldela canvassers slumpmässigt till alla familjer. Canvassers är hämtade från 'Canvassers' -gruppen."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Ange som icke donator"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Tilldela canvassers slumpmässigt till icke-pantsatta familjer. Canvassers är hämtade från 'BraveCanvassers' -gruppen."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Rensa insamlingskampanj arbetsuppgifter"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Rensa alla uppsatser för alla familjer."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Viktig anmärkning: detta kommer att förlora alla uppdrag som görs för hand."
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Tillåt insamlingskampanj för alla familjer"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "Slå på fältet 'Ok To Canvass' för alla familjer."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Tillåt inte insamlingskampanj för alla familjer"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Stäng av fältet 'Ok To Canvass' för alla familjer"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Genomgångsblad"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Skapa en PDF fil som innehåller genomgångsblad för alla familjer, sorterat efter insamlingskampanj arbetare"
-
-#: 
-msgid "Progress Report"
-msgstr "Framstegsrapport"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Generera en PDF som innehåller en lägesrapport. Lägesrapporten innehåller information om canvassens totala framsteg och individuella canvassers framsteg."
-
-#: 
-msgid "Summary Report"
-msgstr "Sammandragsrapport"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Generera en PDF som innehåller en sammanfattande rapport. Den sammanfattande rapporten innehåller kommentarer extraherade från canvassdata."
-
-#: 
-msgid "Not Interested Report"
-msgstr "Ej intresserad rapport"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Skapa en PDF som innehåller en rapport om familjerna markerade 'Inte intresserad' av dukaren."
-
-#: 
-msgid " Canvass Input for the "
-msgstr " Insamlingskampanj inmatning för "
-
-#: 
-#, fuzzy
-msgid "Canvasser"
-msgstr "Insamlingskampanj arbetare"
-
-#: 
-msgid "Positive"
-msgstr "Positiv"
-
-#: 
-msgid "Critical"
-msgstr "Kritiskt"
-
-#: 
-msgid "Insightful"
-msgstr "Insiktsrikt"
-
-#: 
-msgid "Financial"
-msgstr "Finansiell"
-
-#: 
-msgid "Suggestions"
-msgstr "Förslag"
-
-#: 
-msgid "Not Interested"
-msgstr "Ej intresserad"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Varför ej intresserad"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Lägg korgen till evenemang"
 
@@ -1333,21 +1184,6 @@ msgid "Other Info"
 msgstr "Annan information"
 
 #: 
-#, fuzzy
-msgid "Ok To Canvass"
-msgstr "Godkände för insamlingskampanjor"
-
-#: 
-#, fuzzy
-msgid "Assign a Canvasser"
-msgstr "Ange en insamlingskampanj arbetare"
-
-#: 
-#, fuzzy
-msgid "Assign a Brave Canvasser"
-msgstr "Ange en modig insamlingskampanj arbetare"
-
-#: 
 msgid "Envelope Info"
 msgstr "Kuvertinfo"
 
@@ -1583,10 +1419,6 @@ msgstr "Lägg till en ny löfte om betalningar"
 #: 
 msgid "Add a new payment"
 msgstr "Lägg till en ny betalning"
-
-#: 
-msgid " Canvass Entry"
-msgstr " Insamlingskampanj inmatning"
 
 #: 
 msgid "Close"
@@ -3341,10 +3173,6 @@ msgid "(Edit own family only.)"
 msgstr "(Redigera din egen familj endast.)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Insamlingskampanj frivilliga)"
-
-#: 
 msgid "Admin"
 msgstr "Administration"
 
@@ -3521,18 +3349,6 @@ msgstr "Allvarligt fel i eGive API dataström: '"
 #: 
 msgid "eMail Dashboard"
 msgstr "E-post instrumentbräda"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Inga familjer behöver insamlingskampanj arbetare tilldelad"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Insamlingskampanj arbetare tilldelad slumpmässigt till %d familjer"
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Insamlingskampanj arbetare tilldelad slumpmässigt till %d familjer som inte ger löfte om bidrag."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3797,18 +3613,6 @@ msgstr "Filtyp"
 #: 
 msgid "items"
 msgstr "saker"
-
-#: 
-msgid "Did not pledge"
-msgstr "Har inte gett bidragslöfte"
-
-#: 
-msgid "Top pledger"
-msgstr "Toppen på att ge bidragslöfte"
-
-#: 
-msgid "Pledged"
-msgstr "Gav bidragslöfte"
 
 #: 
 msgid "M/F"
@@ -4492,30 +4296,6 @@ msgid "Attendees for Event"
 msgstr "Deltagare för evenemangs"
 
 #: 
-msgid "is not configured"
-msgstr "är inte konfigurerad"
-
-#: 
-msgid "Please update the"
-msgstr "Uppdatera"
-
-#: 
-msgid "API key in Setting->"
-msgstr "API-nyckel i inställning-&gt;"
-
-#: 
-msgid "then update"
-msgstr "uppdatera sedan"
-
-#: 
-msgid "For more info see our "
-msgstr "För mer info se vår"
-
-#: 
-msgid "support docs."
-msgstr "supportdokument."
-
-#: 
 msgid "Yearly"
 msgstr "Årlig"
 
@@ -4658,14 +4438,6 @@ msgstr "Filnamn:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Räkenskapsår:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Viktig anmärkning: detta förlorar alla 'Ok To Canvass' -fält som har ställts in för hand."
-
-#: 
-msgid "Canvasser:"
-msgstr "VALARBETARE:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5485,50 +5257,6 @@ msgstr "Användarbehörighet att exportera CSV-filer"
 #: 
 msgid "Allow user to add new event"
 msgstr "Låt användaren lägga till en ny händelse"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "Canvass Progress Report"
-
-#: 
-msgid "Done"
-msgstr "Gjort"
-
-#: 
-msgid "Assigned"
-msgstr "Tilldelad"
-
-#: 
-msgid "Percent"
-msgstr "Procent"
-
-#: 
-msgid "Total"
-msgstr "Total"
-
-#: 
-msgid "Pledge status"
-msgstr "Pantstatus"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "Canvass sammanfattningsrapport"
-
-#: 
-msgid "Suggestion"
-msgstr "Förslag"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "WhyNotInterested"
-
-#: 
-msgid "Comments"
-msgstr "kommentarer"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "Canvass Inte intresserad rapport"
 
 #: 
 msgid "Weekly on"
@@ -6963,10 +6691,6 @@ msgid "Failed"
 msgstr "misslyckades"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "Den föregående integritetskontrollen passerade. Alla systemfil hascher matchar de förväntade värdena."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Kyrkan kontrollerar kontonummer"
 
@@ -7160,10 +6884,6 @@ msgid "Your New Account"
 msgstr "Ditt nya konto"
 
 #: 
-msgid "Password Changed"
-msgstr "Lösenordet ändrat"
-
-#: 
 msgid "Password Reset"
 msgstr "Lösenordsåterställning"
 
@@ -7302,10 +7022,6 @@ msgstr "Ditt ChurchCRM-konto var låst."
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Ett ChurchCRM-konto skapades för dig"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Ditt ChurchCRM-lösenord ändrades"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7490,10 +7206,6 @@ msgstr "Länk till återställning av lösenord"
 #: 
 msgid "Reset Password"
 msgstr "Återställ lösenord"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "Som en del av återställningen har externa säkerhetskopior inaktiverats. Om du vill fortsätta med automatiska säkerhetskopior måste du manuellt aktivera inställningen bEnableExternalBackupTarget igen."
 
 #: 
 msgid "Unable to reset password"

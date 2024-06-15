@@ -321,46 +321,6 @@ msgid "persons were imported"
 msgstr "osoby byly importovány"
 
 #: 
-msgid "Not confirmed."
-msgstr "Nepotvrzeno."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Nastavit výchozí fiskální rok"
-
-#: 
-msgid "Progress Report"
-msgstr "Zpráva o průběhu"
-
-#: 
-msgid "Summary Report"
-msgstr "Souhrnná zpráva"
-
-#: 
-msgid "Positive"
-msgstr "Pozitivní"
-
-#: 
-msgid "Critical"
-msgstr "Kritický"
-
-#: 
-msgid "Financial"
-msgstr "Finanční"
-
-#: 
-msgid "Suggestions"
-msgstr "Návrhy"
-
-#: 
-msgid "Not Interested"
-msgstr "Nezájem"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Proč nezájem?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Přidat košík do události"
 
@@ -583,10 +543,6 @@ msgstr "Přidat rodinu"
 #: 
 msgid "Add a Note"
 msgstr "Přidat poznámku"
-
-#: 
-msgid " Canvass Entry"
-msgstr "Zadání agendy"
 
 #: 
 msgid " Monthly Averages"

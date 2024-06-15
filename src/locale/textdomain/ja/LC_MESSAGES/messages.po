@@ -261,34 +261,6 @@ msgid "Data import successful."
 msgstr "データのインポートが成功しました"
 
 #: 
-msgid "Set default fiscal year"
-msgstr "デフォルトの会計年度を設定する"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "すべての家族のすべての勧誘者の割り当てをクリアします"
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "重要な注意事項　これにより、手動で行われたすべてのキャンバス担当者の割り当てが失われます"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "すべての家族向けのブリーフィング シートを含む PDF を、相談者ごとに並べて生成します"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "進捗レポートを含む PDF を生成します　進捗レポートには、キャンバスの全体的な進捗状況と個々のキャンバス担当者の進捗状況に関する情報が含まれます"
-
-#: 
-msgid "Summary Report"
-msgstr "概要レポート"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "概要レポートを含む PDF を生成します。概要レポートには、キャンバス データから抽出されたコメントが含まれます"
-
-#: 
 msgid "Select the event to which you would like to add your cart"
 msgstr "カートに追加したいイベントを選択してください"
 

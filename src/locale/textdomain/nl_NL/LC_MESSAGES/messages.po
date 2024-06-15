@@ -363,154 +363,6 @@ msgid "Canvass Automation"
 msgstr "Automatisch onderzoek"
 
 #: 
-msgid "Not confirmed."
-msgstr "Niet bevestigd."
-
-#: 
-msgid "Canvassers"
-msgstr "Enqueteurs"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "MoedigeEnqueteurs"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "Verwijder alle koppelingen enquêteurs"
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "Ok om een Enquete te houden voor alle gezinnen."
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "Verwijder Ok om een enquete te houden voor alle gezinnen"
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "LedigAlleKlaarVoorEnquete knop niet bevestigt."
-
-#: 
-msgid "Set default fiscal year"
-msgstr "Zet standaard fiscaal jaar"
-
-#: 
-msgid "Check to confirm"
-msgstr "Controleer om te bevestigen"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "Koppel enqueteurs"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Willekeurig enqueteurs toekennen aan alle gezinnen. De enqueteurs worden geselecteerd uit de &quot;Enqueteurs&quot; Groep."
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "Toewijzen aan geen bijdrage"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Willekeurig aanwervers toekennen aan niet-gevende gezinnen. De aanwervers worden geselecteerd uit de &quot;MoedigeEnqueteur&quot; Groep."
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "Ledig enquêteurs Toewijzingen"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "Wis alle aanwerver toekenningen voor alle gezinnen."
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Let Op: Hiermee gaan alle handmatig toekenningen van aanwervers verloren"
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "Laat enquête voor alle gezinnen toe"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "De &quot;Aanwerven Ok&quot;  veld aan zetten voor alle gezinnen."
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "Sta Enquête voor alle gezinnen niet meer toe"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "De &quot;Aanwerven Ok&quot;  veld uit zetten voor alle gezinnen"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "Aanwijzings Blad"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Maak een PDF met aanwijzings-blad voor alle gezinnen, gesorteerd op enquêteurs."
-
-#: 
-msgid "Progress Report"
-msgstr "Voortgangsrapport"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Genereer een PDF met een voortgangsrapport. De voortgangsrapport bevat informatie over de algehele voortgang van het aanwerven, en voortgang van individuele Enquêteurs"
-
-#: 
-msgid "Summary Report"
-msgstr "Samenvattings Rapport"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Genereer een PDF met een samenvatting. De samenvatting bevat commentaar vanuit de enquete data."
-
-#: 
-msgid "Not Interested Report"
-msgstr "Niet geinterresseerd Rapport"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Genereer een PDF met een overzicht van famileis gemarkeerd als &quot;Niet geïnteresseerd&quot; door de Enqueteur "
-
-#: 
-msgid " Canvass Input for the "
-msgstr "Enqueteurs Input voor de "
-
-#: 
-msgid "Canvasser"
-msgstr "Enqueteur "
-
-#: 
-msgid "Positive"
-msgstr "Positief"
-
-#: 
-msgid "Critical"
-msgstr "Kritisch"
-
-#: 
-msgid "Insightful"
-msgstr "Inzicht"
-
-#: 
-msgid "Financial"
-msgstr "Financieel"
-
-#: 
-msgid "Suggestions"
-msgstr "Suggesties"
-
-#: 
-msgid "Not Interested"
-msgstr "Niet Geinteresseerd"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "Waarom niet Geinterresseerd?"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Voeg werkbestand toe aan activiteit"
 
@@ -1293,18 +1145,6 @@ msgid "Other Info"
 msgstr "Overige gegevens"
 
 #: 
-msgid "Ok To Canvass"
-msgstr "Onderzoek is akkoord"
-
-#: 
-msgid "Assign a Canvasser"
-msgstr "Wijs een Enqueteur toe"
-
-#: 
-msgid "Assign a Brave Canvasser"
-msgstr "Wijs een moedige Enqueteur toe:"
-
-#: 
 msgid "Envelope Info"
 msgstr "Envelop info"
 
@@ -1539,10 +1379,6 @@ msgstr "Nieuwe toezegging"
 #: 
 msgid "Add a new payment"
 msgstr "Nieuwe betaling"
-
-#: 
-msgid " Canvass Entry"
-msgstr "Enquete intoetsen"
 
 #: 
 msgid "Close"
@@ -3230,10 +3066,6 @@ msgid "(Edit own family only.)"
 msgstr "(Bewerk alleen uw eigen gezin)"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "(Enquete vrijwiliger.)"
-
-#: 
 msgid "Admin"
 msgstr "Instellingen"
 
@@ -3400,18 +3232,6 @@ msgstr "Fatale fout in eGive API Datastream: &#39;"
 #: 
 msgid "eMail Dashboard"
 msgstr "E-mail menu"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "Geen gezinnen hebben een koppeling nodig met een enquêteur"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "Enqueteus zijn willekeurig gekoppeld aan %d families."
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Enqueteurs zijn willekeurig gekoppeld aan %d families die niet bijdragen."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3669,18 +3489,6 @@ msgstr "Bestand Type"
 #: 
 msgid "items"
 msgstr "objects"
-
-#: 
-msgid "Did not pledge"
-msgstr "Nog geen Bijdrage"
-
-#: 
-msgid "Top pledger"
-msgstr "Top Bijdrager"
-
-#: 
-msgid "Pledged"
-msgstr "Bijgedragen"
 
 #: 
 msgid "M/F"
@@ -4358,30 +4166,6 @@ msgid "Attendees for Event"
 msgstr "Deelnemers van de activiteit:"
 
 #: 
-msgid "is not configured"
-msgstr "is niet geconfigureerd"
-
-#: 
-msgid "Please update the"
-msgstr "Svp update de"
-
-#: 
-msgid "API key in Setting->"
-msgstr "API-sleutel in Setting->"
-
-#: 
-msgid "then update"
-msgstr "dan update"
-
-#: 
-msgid "For more info see our "
-msgstr "Voor meer info zie onze"
-
-#: 
-msgid "support docs."
-msgstr "ondersteunende documentatie"
-
-#: 
 msgid "Yearly"
 msgstr "Jaarlijks"
 
@@ -4524,14 +4308,6 @@ msgstr "Bestandsnaam:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Fiscaal jaar:"
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Belangrijke opmerking: hiermee verlies je alle &quot;Ok To Canvass&quot; velden die met de hand zijn ingesteld."
-
-#: 
-msgid "Canvasser:"
-msgstr "Enqueteur"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5357,50 +5133,6 @@ msgstr "Gebruikersrechten om CSV-bestanden te exporteren"
 #: 
 msgid "Allow user to add new event"
 msgstr "Gebruiker mag activiteit toevoegen"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "Werving-voortgangsrapport"
-
-#: 
-msgid "Done"
-msgstr "Klaar"
-
-#: 
-msgid "Assigned"
-msgstr "Gekoppeld"
-
-#: 
-msgid "Percent"
-msgstr "Percentage"
-
-#: 
-msgid "Total"
-msgstr "Totaal"
-
-#: 
-msgid "Pledge status"
-msgstr "Beloftestatus"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "Overzichtsrapport wervingen"
-
-#: 
-msgid "Suggestion"
-msgstr "Suggestie"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "WhyNotInterested"
-
-#: 
-msgid "Comments"
-msgstr "Opmerkingen"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "Wervingen niet geïnteresseerd rapport"
 
 #: 
 msgid "Weekly on"
@@ -6835,10 +6567,6 @@ msgid "Failed"
 msgstr "Mislukt"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "De vorige integriteitscontrole is geslaagd. Alle systeembestand-hashes komen overeen met de verwachte waarden."
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Kerk rekeningnummer controleren"
 
@@ -7032,10 +6760,6 @@ msgid "Your New Account"
 msgstr "Uw nieuwe account"
 
 #: 
-msgid "Password Changed"
-msgstr "Wachtwoord veranderd"
-
-#: 
 msgid "Password Reset"
 msgstr "Wachtwoord reset"
 
@@ -7174,10 +6898,6 @@ msgstr "Uw account is afgesloten"
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Er is voor u een account gemaakt"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "Uw wachtwoord is gewijzigd"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7362,10 +7082,6 @@ msgstr "Password Reset Link"
 #: 
 msgid "Reset Password"
 msgstr "Reset Password"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "Als onderdeel van het herstel zijn externe back-ups uitgeschakeld. Als u door wilt gaan met automatische back-ups, moet u de instelling bEnableExternalBackupTarget handmatig opnieuw inschakelen."
 
 #: 
 msgid "Unable to reset password"

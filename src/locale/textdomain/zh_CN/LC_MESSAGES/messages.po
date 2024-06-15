@@ -379,155 +379,6 @@ msgid "Canvass Automation"
 msgstr "招商自动化"
 
 #: 
-msgid "Not confirmed."
-msgstr "没有得到证实。"
-
-#: 
-msgid "Canvassers"
-msgstr "检查工作"
-
-#: 
-msgid "BraveCanvassers"
-msgstr "BraveCanvassers"
-
-#: 
-msgid "Cleared all canvasser assignments."
-msgstr "清除所有助选任务。"
-
-#: 
-msgid "Set Ok To Canvass for all families."
-msgstr "设置好要为所有的家庭招商。"
-
-#: 
-msgid "Disabled Ok To Canvass for all families."
-msgstr "残疾人OK（确定），游说所有家庭。"
-
-#: 
-msgid "ClearAllOkToCanvass button not confimed."
-msgstr "没有透射电镜ClearAllOkToCanvass按钮。"
-
-#: 
-msgid "Set default fiscal year"
-msgstr "默认情况下财年"
-
-#: 
-msgid "Check to confirm"
-msgstr "检查并确认"
-
-#: 
-msgid "Assign Canvassers"
-msgstr "指派检查工作"
-
-#: 
-msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "随机指派接票者至所有家庭。各拉票者会由 &quot;拉票者&quot;群组中取得"
-
-#: 
-msgid "Assign To Non Pledging"
-msgstr "“指定给非认捐"
-
-#: 
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "随机指派布道者到未宣誓的家庭。布道者从&quot;BraveCanvassers&quot; Group.中产生。"
-
-#: 
-msgid "Clear Canvasser Assignments"
-msgstr "清除兜揽分配"
-
-#: 
-msgid "Clear all the canvasser assignments for all families."
-msgstr "于所有家庭除清拉票者的工作"
-
-#: 
-msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "重要提示：这将会失去每位拉票者工作"
-
-#: 
-msgid "Enable Canvass for All Families"
-msgstr "启动招商，让所有家庭"
-
-#: 
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "于所有家庭开启&quot;可以拉票&quot;栏位"
-
-#: 
-msgid "Disable Canvass for All Families"
-msgstr "禁用所有家庭招商"
-
-#: 
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "于所有家庭关闭&quot;可以拉票&quot;栏位"
-
-#: 
-msgid "Briefing Sheets"
-msgstr "简报表"
-
-#: 
-msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "生成一个PDF含简报表为所有的家庭，由助选的排序。"
-
-#: 
-msgid "Progress Report"
-msgstr "进度报告"
-
-#: 
-msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "汇出一个包含进度报告的PDF。 进度报告包括有关布道的总体进展信息，以及具体布道者的进展信息。"
-
-#: 
-msgid "Summary Report"
-msgstr "总结报告"
-
-#: 
-msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "汇出包含摘要报告的PDF。 摘要报告包括从布道数据中提取的注释。"
-
-#: 
-msgid "Not Interested Report"
-msgstr "不感兴趣报告"
-
-#: 
-msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "汇出包含布道者标示了&quot;Not Interested&quot;的家庭报告。 "
-
-#: 
-msgid " Canvass Input for the "
-msgstr "招商输入"
-
-#: 
-#, fuzzy
-msgid "Canvasser"
-msgstr "兜揽"
-
-#: 
-msgid "Positive"
-msgstr "积极"
-
-#: 
-msgid "Critical"
-msgstr "批评"
-
-#: 
-msgid "Insightful"
-msgstr "见识"
-
-#: 
-msgid "Financial"
-msgstr "金融"
-
-#: 
-msgid "Suggestions"
-msgstr "建议"
-
-#: 
-msgid "Not Interested"
-msgstr "不感兴趣"
-
-#: 
-msgid "Why Not Interested?"
-msgstr "为什么不感兴趣？"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "加入购物车事件"
 
@@ -1327,21 +1178,6 @@ msgid "Other Info"
 msgstr "其他资料"
 
 #: 
-#, fuzzy
-msgid "Ok To Canvass"
-msgstr "OK（确定）招商"
-
-#: 
-#, fuzzy
-msgid "Assign a Canvasser"
-msgstr "分配兜揽"
-
-#: 
-#, fuzzy
-msgid "Assign a Brave Canvasser"
-msgstr "指派勇者兜揽"
-
-#: 
 msgid "Envelope Info"
 msgstr "信封资料"
 
@@ -1577,10 +1413,6 @@ msgstr "添加新的服务承诺"
 #: 
 msgid "Add a new payment"
 msgstr "添加一个新的支付"
-
-#: 
-msgid " Canvass Entry"
-msgstr "招商入口"
 
 #: 
 msgid "Close"
@@ -3310,10 +3142,6 @@ msgid "(Edit own family only.)"
 msgstr "（编辑自己的家庭。）"
 
 #: 
-msgid "(Canvass volunteer.)"
-msgstr "（招商志愿者。）"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "管理员："
@@ -3486,18 +3314,6 @@ msgstr "在eGive API数据流的致命错误："
 #: 
 msgid "eMail Dashboard"
 msgstr "电子邮件仪表板"
-
-#: 
-msgid "No families need canvassers assigned"
-msgstr "没有家庭需要分配拉票"
-
-#: 
-msgid "Canvassers assigned at random to %d families."
-msgstr "检查工作在随机分配到％d的家庭。"
-
-#: 
-msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "％d个非质押家庭随机分配的检查工作。"
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3762,18 +3578,6 @@ msgstr "文件类型"
 #: 
 msgid "items"
 msgstr "项目"
-
-#: 
-msgid "Did not pledge"
-msgstr "没有承诺"
-
-#: 
-msgid "Top pledger"
-msgstr "前质"
-
-#: 
-msgid "Pledged"
-msgstr "已抵押"
 
 #: 
 msgid "M/F"
@@ -4454,30 +4258,6 @@ msgid "Attendees for Event"
 msgstr "活动 的与会者"
 
 #: 
-msgid "is not configured"
-msgstr "未配置"
-
-#: 
-msgid "Please update the"
-msgstr "请更新"
-
-#: 
-msgid "API key in Setting->"
-msgstr "API密钥，设置 - >"
-
-#: 
-msgid "then update"
-msgstr "然后更新"
-
-#: 
-msgid "For more info see our "
-msgstr "有关详情，请参阅我们的"
-
-#: 
-msgid "support docs."
-msgstr "支持文档。"
-
-#: 
 msgid "Yearly"
 msgstr "每年"
 
@@ -4620,14 +4400,6 @@ msgstr "文件名："
 #: 
 msgid "Fiscal Year:"
 msgstr "财政年度："
-
-#: 
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "重要提示：这会丢失全部手动设置的&quot;Ok To Canvass&quot;栏位."
-
-#: 
-msgid "Canvasser:"
-msgstr "布道者："
 
 #: 
 msgid "Add Attendees for Event"
@@ -5447,50 +5219,6 @@ msgstr "用户导出CSV文件的权限"
 #: 
 msgid "Allow user to add new event"
 msgstr "允许用户添加新活动"
-
-#: 
-msgid "Canvass Progress Report"
-msgstr "布道进展报告"
-
-#: 
-msgid "Done"
-msgstr "完成"
-
-#: 
-msgid "Assigned"
-msgstr "已指派"
-
-#: 
-msgid "Percent"
-msgstr "百分比"
-
-#: 
-msgid "Total"
-msgstr "总计"
-
-#: 
-msgid "Pledge status"
-msgstr "承诺状态"
-
-#: 
-msgid "Canvass Summary Report"
-msgstr "布道简要报告"
-
-#: 
-msgid "Suggestion"
-msgstr "建议"
-
-#: 
-msgid "WhyNotInterested"
-msgstr "为什么不感兴趣"
-
-#: 
-msgid "Comments"
-msgstr "评价"
-
-#: 
-msgid "Canvass Not Interested Report"
-msgstr "布道不感兴趣报告"
 
 #: 
 msgid "Weekly on"
@@ -6925,10 +6653,6 @@ msgid "Failed"
 msgstr "失败"
 
 #: 
-msgid "The previous integrity check passed.  All system file hashes match the expected values."
-msgstr "已通过完整性检查。所有系统文件都与预期值哈希匹配。"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "教堂检查账号"
 
@@ -7122,10 +6846,6 @@ msgid "Your New Account"
 msgstr "您的新账户"
 
 #: 
-msgid "Password Changed"
-msgstr "密码已更改"
-
-#: 
 msgid "Password Reset"
 msgstr "重设密码"
 
@@ -7264,10 +6984,6 @@ msgstr "您的ChurchCRM账户已被锁定。"
 #: 
 msgid "A ChurchCRM account was created for you"
 msgstr "为您创建了一个ChurchCRM账户"
-
-#: 
-msgid "Your ChurchCRM password was changed"
-msgstr "您的ChurchCRM密码已更改"
 
 #: 
 msgid "You can reset your ChurchCRM password by clicking this link"
@@ -7452,10 +7168,6 @@ msgstr "密码重置链接"
 #: 
 msgid "Reset Password"
 msgstr "重置密码"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
-msgstr "外部备份作为还原的一部分已被禁用。如果要继续自动备份，则必须手动重新启用bEnableExternalBackupTarget设置。"
 
 #: 
 msgid "Unable to reset password"
