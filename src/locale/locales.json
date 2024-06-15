@@ -305,6 +305,16 @@
         "datePicker": true,
         "select2": true
     },
+    "Swahili": {
+        "poEditor": "sw",
+        "locale": "sw",
+        "languageCode": "sw",
+        "countryCode": "SW",
+        "dataTables": "Swahili",
+        "fullCalendar": false,
+        "datePicker": true,
+        "select2": false
+    },
     "Sami (Northern) (Sweden)": {
         "poEditor": "sv",
         "locale": "sv_SE",
