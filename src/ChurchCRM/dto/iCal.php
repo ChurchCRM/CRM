@@ -50,8 +50,7 @@ class iCal
         foreach ($this->eventsArray as $event) {
             $iCal .= $this->eventToVEVENT($event);
         }
-        $iCal .= 'END:VCALENDAR';
 
-        return $iCal;
+        return $iCal . 'END:VCALENDAR';
     }
 }

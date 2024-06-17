@@ -198,9 +198,9 @@ class Bootstrapper
         $connection = Propel::getConnection();
         $query = "SHOW TABLES FROM `" . self::$databaseName . "`";
         $statement = $connection->prepare($query);
-        $resultset = $statement->execute();
+        $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        if (count($results) == 0) {
+        if (count($results) === 0) {
             self::$bootStrapLogger->debug("No database tables found");
             return true;
         }

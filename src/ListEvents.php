@@ -116,7 +116,9 @@ if ($eType === 'All') {
 }
 $rsOpps = RunQuery($sSQL);
 $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-if ($aRow != null) extract($aRow);
+if ($aRow != null) {
+    extract($aRow);
+}
 $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
 for ($r = 1; $r <= $numRows; $r++) {

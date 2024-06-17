@@ -198,7 +198,7 @@ EOD;
                 <p><?= gettext('Details:') ?> <?= AppIntegrityService::getIntegrityCheckMessage() ?></p>
                 <?php
                 if (count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0) {
-                ?>
+                    ?>
                     <p><?= gettext('Files failing integrity check') ?>:
                     <table class="display responsive no-wrap" width="100%" id="fileIntegrityCheckResultsTable">
                         <thead>
@@ -208,7 +208,7 @@ EOD;
                         </thead>
                         <?php
                         foreach (AppIntegrityService::getFilesFailingIntegrityCheck() as $file) {
-                        ?>
+                            ?>
                             <tr>
                                 <td><?= $file->filename ?></td>
                                 <td><?= $file->expectedhash ?></td>
@@ -221,11 +221,11 @@ EOD;
                                     } ?>
                                 </td>
                             </tr>
-                        <?php
+                            <?php
                         }
                         ?>
                     </table>
-                <?php
+                    <?php
                 }
                 ?>
             </div>

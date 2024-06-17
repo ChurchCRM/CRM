@@ -14,10 +14,9 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Deposits';
-        parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             if (SystemConfig::getBooleanValue('bSearchIncludeDeposits')) {
@@ -44,7 +43,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
                 ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
                 ->limit(SystemConfig::getValue('bSearchIncludeDepositsMax'))->find();
 
-            if (!empty($Deposits)) {
+            if ($Deposits->count() > 0) {
                 $id++;
                 foreach ($Deposits->toArray() as $Deposit) {
                     $searchResults[] = new SearchResult('finance-deposit-' . $id, $Deposit['displayName'], $Deposit['uri']);

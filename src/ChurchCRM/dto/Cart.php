@@ -180,11 +180,9 @@ class Cart
 
     public static function getCartPeople()
     {
-        $people = PersonQuery::create()
+        return PersonQuery::create()
             ->filterById($_SESSION['aPeopleCart'])
             ->find();
-
-        return $people;
     }
 
     public static function getEmailLink(): string
@@ -216,9 +214,8 @@ class Cart
                 $SMSNumberArray[] = $cartPerson->getCellPhone();
             }
         }
-        $sSMSLink = implode(',', $SMSNumberArray);
 
-        return $sSMSLink;
+        return implode(',', $SMSNumberArray);
     }
 
     public static function emptyAll(): void

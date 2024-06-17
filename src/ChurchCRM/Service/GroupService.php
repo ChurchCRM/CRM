@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
@@ -14,7 +15,7 @@ class GroupService
      * @param int $groupID  Group ID from which  to remove the user
      * @param int $personID UserID to remove from the group
      */
-    public function removeUserFromGroup($groupID, $personID): void
+    public function removeUserFromGroup(int $groupID, int $personID): void
     {
         requireUserGroupMembership('bManageGroups');
         $sSQL = 'DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ' . $personID . ' AND p2g2r_grp_ID = ' . $groupID;
@@ -110,7 +111,7 @@ class GroupService
      *
      * @return array representing the roles of the group
      */
-    public function getGroupRoles($groupID): array
+    public function getGroupRoles(int $groupID): array
     {
         $groupRoles = [];
         $sSQL = 'SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
@@ -121,7 +122,7 @@ class GroupService
         $rsList = RunQuery($sSQL);
 
         // Validate that this list ID is really for a group roles list. (for security)
-        if (mysqli_num_rows($rsList) == 0) {
+        if (mysqli_num_rows($rsList) === 0) {
             throw new \Exception('invalid request');
         }
 
@@ -158,7 +159,7 @@ class GroupService
         return $rowOrder[0];
     }
 
-    public function deleteGroupRole(string $groupID, string $groupRoleID)
+    public function deleteGroupRole(string $groupID, string $groupRoleID): array
     {
         requireUserGroupMembership('bManageGroups');
         $sSQL = 'SELECT * FROM list_lst
@@ -341,9 +342,10 @@ class GroupService
         while ($row = mysqli_fetch_assoc($result)) {
             //on teste si les propriétés sont bonnes
             if (array_key_exists('p2g2r_per_ID', $row) && array_key_exists('lst_OptionName', $row)) {
+                /** @var Person|null $dbPerson */
                 $dbPerson = PersonQuery::create()->findPk($row['p2g2r_per_ID']);
 
-                if (array_key_exists('displayName', $dbPerson)) {
+                if ($dbPerson instanceof Person) {
                     $person['displayName'] = $dbPerson->getFullName();
                     $person['groupRole'] = $row['lst_OptionName'];
                     $members[] = $person;

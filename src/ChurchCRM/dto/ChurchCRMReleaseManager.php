@@ -295,7 +295,5 @@ class ChurchCRMReleaseManager
         $logger->info('Upgrade process complete');
         ini_set('display_errors', $displayErrors);
         self::$isUpgradeInProgress = false;
-
-        return;
     }
 }

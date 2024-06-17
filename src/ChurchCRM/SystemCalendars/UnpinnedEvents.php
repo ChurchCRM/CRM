@@ -38,24 +38,20 @@ class UnpinnedEvents implements SystemCalendar
         return gettext('Unpinned Events');
     }
 
-    public function getEvents(string $start, string $end)
+    public function getEvents(string $start, string $end): ObjectCollection
     {
-        $Events = EventQuery::create()
+        return EventQuery::create()
             ->filterByStart(['min' => $start])
             ->filterByEnd(['max' => $end])
             ->useCalendarEventQuery(null, Criteria::LEFT_JOIN)
                 ->filterByCalendarId(null)
             ->endUse()
             ->find();
-
-        return $Events;
     }
 
-    public function getEventById(int $Id)
+    public function getEventById(int $Id): ObjectCollection
     {
-        $Event = EventQuery::create()
-            ->findOneById($Id);
-
-        return $Event;
+        return EventQuery::create()
+            ->findById($Id);
     }
 }

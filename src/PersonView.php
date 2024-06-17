@@ -586,7 +586,7 @@ $bOkToEdit = (
                             <div class="main-box-body clearfix">
                                 <?php
                                 //Was anything returned?
-                                if (mysqli_num_rows($rsAssignedGroups) == 0) {
+                                if (mysqli_num_rows($rsAssignedGroups) === 0) {
                                     ?>
                                     <br>
                                     <div class="alert alert-warning">
@@ -682,7 +682,7 @@ $bOkToEdit = (
                             <div class="main-box-body clearfix">
                                 <?php
                                 $sAssignedProperties = ','; ?>
-                                <?php if (mysqli_num_rows($rsAssignedProperties) == 0) : ?>
+                                <?php if (mysqli_num_rows($rsAssignedProperties) === 0) : ?>
                                     <br>
                                     <div class="alert alert-warning">
                                         <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
@@ -786,7 +786,7 @@ $bOkToEdit = (
                                 $sAssignedVolunteerOpps = ',';
 
                                 //Was anything returned?
-                                if (mysqli_num_rows($rsAssignedVolunteerOpps) == 0) {
+                                if (mysqli_num_rows($rsAssignedVolunteerOpps) === 0) {
                                     ?>
                                     <br>
                                     <div class="alert alert-warning">

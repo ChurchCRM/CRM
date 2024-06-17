@@ -34,9 +34,8 @@ class DashboardService
         $familyCount = FamilyQuery::Create()
             ->filterByDateDeactivated()
             ->count();
-        $data = ['familyCount' => $familyCount];
 
-        return $data;
+        return ['familyCount' => $familyCount];
     }
 
     public function getPersonCount(): array
@@ -46,9 +45,8 @@ class DashboardService
                 ->filterByDateDeactivated(null)
             ->endUse()
             ->count();
-        $data = ['personCount' => $personCount];
 
-        return $data;
+        return ['personCount' => $personCount];
     }
 
     /**
@@ -93,9 +91,8 @@ SQL;
         ';
         $rsQuickStat = RunQuery($sSQL);
         $row = mysqli_fetch_array($rsQuickStat);
-        $data = ['groups' => $row['Group_cnt'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
 
-        return $data;
+        return ['groups' => $row['Group_cnt'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
     }
 
     /**

@@ -12,10 +12,9 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Persons';
-        parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (SystemConfig::getBooleanValue('bSearchIncludePersons')) {
             $this->addSearchResults($this->getPersonSearchResultsByPartialName($SearchQuery));
@@ -45,7 +44,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
                 _or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
                 limit(SystemConfig::getValue('bSearchIncludePersonsMax'))->find();
 
-            if (!empty($people)) {
+            if ($people->count() > 0) {
                 $id++;
                 foreach ($people as $person) {
                     $searchResults[] = new SearchResult('person-name-' . $id, $person->getFullName(), $person->getViewURI());

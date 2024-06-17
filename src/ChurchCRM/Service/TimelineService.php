@@ -36,7 +36,7 @@ class TimelineService
         krsort($timeline);
 
         $sortedTimeline = [];
-        foreach ($timeline as $date => $item) {
+        foreach ($timeline as $item) {
             $sortedTimeline[] = $item;
         }
 
@@ -99,7 +99,7 @@ class TimelineService
         krsort($timeline);
 
         $sortedTimeline = [];
-        foreach ($timeline as $date => $item) {
+        foreach ($timeline as $item) {
             $sortedTimeline[] = $item;
         }
 
@@ -124,8 +124,6 @@ class TimelineService
     }
 
     /**
-     * @param Note $dbNote
-     *
      * @return mixed|null
      */
     public function noteToTimelineItem(Note $dbNote)
@@ -180,11 +178,7 @@ class TimelineService
                 $item['style'] = 'fa-calendar bg-green';
                 break;
             case 'verify':
-                $item['style'] = 'fa-circle-check bg-teal';
-                break;
             case 'verify-link':
-                $item['style'] = 'fa-circle-check bg-teal';
-                break;
             case 'verify-URL':
                 $item['style'] = 'fa-circle-check bg-teal';
                 break;

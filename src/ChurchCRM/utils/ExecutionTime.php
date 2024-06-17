@@ -5,21 +5,17 @@ namespace ChurchCRM\Utils;
 class ExecutionTime
 {
     // inspired from https://stackoverflow.com/a/22885011
-    private $startTime;
-    private $endTime;
-    private $startR;
-    private $endR;
+    private float $startTime;
+    private ?float $endTime = null;
 
     public function __construct()
     {
         $this->startTime = microtime(true);
-        $this->startR = getrusage();
     }
 
     public function end(): void
     {
         $this->endTime = microtime(true);
-        $this->endR = getrusage();
     }
 
     public function getMilliseconds(): float
@@ -35,16 +31,12 @@ class ExecutionTime
         return round($value, 2);
     }
 
-    private function runTime(array $ru, array $rus, string $index)
-    {
-        return ($ru["ru_$index.tv_sec"] * 1000 + intval($ru["ru_$index.tv_usec"] / 1000))
-        - ($rus["ru_$index.tv_sec"] * 1000 + intval($rus["ru_$index.tv_usec"] / 1000));
-    }
-
     public function __toString(): string
     {
-        return 'This process used ' . $this->runTime($this->endTime, $this->startTime, 'utime') .
-        " ms for its computations\nIt spent " . $this->runTime($this->endTime, $this->startTime, 'stime') .
-        " ms in system calls\n";
+        if ($this->endTime === null) {
+            return 'This process is still running: ' . $this->getMilliseconds() . ' ms.';
+        }
+
+        return 'This process completed in ' . $this->getMilliseconds() . ' ms.';
     }
 }

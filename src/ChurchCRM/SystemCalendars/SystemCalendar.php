@@ -17,17 +17,9 @@ interface SystemCalendar
 
     public function getBackgroundColor(): string;
 
-    /**
-     * @return ObjectCollection|array
-     */
-    public function getEvents(string $start, string $end);
+    public function getEvents(string $start, string $end): ObjectCollection;
 
-    /**
-     * TODO: this seems wrong. please fix this.
-     *
-     * @return ObjectCollection|array|Event|false
-     */
-    public function getEventById(int $Id);
+    public function getEventById(int $Id): ObjectCollection;
 
     public static function isAvailable(): bool;
 }

@@ -9,8 +9,8 @@ use ChurchCRM\Utils\MiscUtils;
 
 class Photo
 {
-    private $photoType;
-    private $id;
+    private string $photoType;
+    private int $id;
     private $photoURI;
     private ?string $photoThumbURI = null;
     private ?string $thumbnailPath = null;
@@ -20,7 +20,7 @@ class Photo
 
     public static $validExtensions = ['png', 'jpeg', 'jpg'];
 
-    public function __construct($photoType, $id)
+    public function __construct(string $photoType, int $id)
     {
         $this->photoType = $photoType;
         $this->id = $id;
@@ -251,8 +251,6 @@ class Photo
         $s = 60;
         $d = '404';
         $r = 'g';
-        $img = false;
-        $atts = [];
         $url = 'https://www.gravatar.com/avatar/';
         $url .= md5(strtolower(trim($email)));
         $url .= "?s=$s&d=$d&r=$r";

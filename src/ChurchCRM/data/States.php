@@ -7,13 +7,10 @@ use ChurchCRM\Utils\MiscUtils;
 
 class States
 {
-    private string $countryCode;
     private array $states = [];
 
     public function __construct(string $countryCode)
     {
-        $this->countryCode = $countryCode;
-
         $stateFileName = SystemURLs::getDocumentRoot() . '/locale/states/' . $countryCode . '.json';
         if (is_file($stateFileName)) {
             $statesFile = file_get_contents($stateFileName);

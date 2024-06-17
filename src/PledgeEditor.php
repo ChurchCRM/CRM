@@ -72,7 +72,7 @@ if (array_key_exists('GroupKey', $_GET)) {
     $sGroupKey = InputUtils::legacyFilterInput($_GET['GroupKey'], 'string');
 } // this will only be set if someone pressed the 'edit' button on the Pledge or Deposit line
 if (array_key_exists('CurrentDeposit', $_GET)) {
-    $iCurrentDeposit = InputUtils::legacyFilterInput($_GET['CurrentDeposit'], 'integer');
+    $iCurrentDeposit = InputUtils::legacyFilterInput($_GET['CurrentDeposit'], 'int');
 }
 $linkBack = InputUtils::legacyFilterInput($_GET['linkBack'], 'string');
 $iFamily = 0;
@@ -531,7 +531,7 @@ require 'Include/Header.php';
           <label for="Date"><?= gettext('Date') ?></label>
           <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>" ><span style="color: red;"><?= $sDateError ?></span>
           <label for="FYID"><?= gettext('Fiscal Year') ?></label>
-           <?php PrintFYIDSelect($iFYID, 'FYID') ?>
+           <?php PrintFYIDSelect('FYID', $iFYID) ?>
 
           <?php if ($dep_Type === 'Bank' && SystemConfig::getValue('bUseDonationEnvelopes')) {
                 ?>

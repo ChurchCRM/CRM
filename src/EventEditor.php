@@ -44,7 +44,6 @@ $iEventID = 0;
 $iErrors = 0;
 
 if ($sAction === 'Create Event' && !empty($tyid)) {
-
     // User is coming from the event types screen and thus there
     // is no existing event in the event_event table
     //
