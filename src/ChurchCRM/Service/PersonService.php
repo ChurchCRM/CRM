@@ -13,7 +13,12 @@ class PersonService
     public function search(string $searchTerm, $includeFamilyRole = true): array
     {
         $searchLikeString = '%' . $searchTerm . '%';
-        $people = PersonQuery::create()->filterByFirstName($searchLikeString, Criteria::LIKE)->_or()->filterByMiddleName($searchLikeString, Criteria::LIKE)->_or()->filterByLastName($searchLikeString, Criteria::LIKE)->_or()->filterByEmail($searchLikeString, Criteria::LIKE)->limit(15)->find();
+        $people = PersonQuery::create()
+            ->filterByFirstName($searchLikeString, Criteria::LIKE)
+            ->_or()->filterByMiddleName($searchLikeString, Criteria::LIKE)
+            ->_or()->filterByLastName($searchLikeString, Criteria::LIKE)
+            ->_or()->filterByEmail($searchLikeString, Criteria::LIKE)
+            ->limit(15)->find();
         $return = [];
         foreach ($people as $person) {
             $values['id'] = $person->getId();
