@@ -18,6 +18,7 @@
     <rule ref="PSR12"/>
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
     <rule ref="Generic.PHP.BacktickOperator"/>
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
     <rule ref="Squiz.Operators.ValidLogicalOperators"/>
 
     <!-- Don't hide tokenizer exceptions -->
@@ -35,6 +36,13 @@
                 <element key="is_null" value="null"/>
                 <element key="create_function" value="null"/>
             </property>
+        </properties>
+    </rule>
+
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4" />
+            <property name="tabIndent" value="false" />
         </properties>
     </rule>
 </ruleset>

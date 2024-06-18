@@ -1641,9 +1641,9 @@ class GoogleMapAPI
         ];
         if ($iconShadowImage) {
             $icon_info = array_merge($icon_info, [
-                'shadow'            => $iconShadowImage,
-                'shadowWidth'                                         => $_shadow_info[0],
-                'shadowHeight'                                        => $_shadow_info[1],
+                'shadow'        => $iconShadowImage,
+                'shadowWidth'   => $_shadow_info[0],
+                'shadowHeight'  => $_shadow_info[1],
             ]);
         }
 

@@ -8,7 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
