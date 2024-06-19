@@ -67,9 +67,6 @@ function FamilyInfoByDistance($iFamily)
     return $resultsByDistance;
 }
 
-/* End of functions ... code starts here */
-
-//Set the page title
 $sPageTitle = gettext('Family Geographic Utilities');
 
 // Create array with Classification Information (lst_ID = 1)

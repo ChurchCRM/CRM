@@ -49,7 +49,6 @@ $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER B
 $rsPropList = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsPropList);
 
-// Set the page title
 $sPageTitle = gettext('Group View') . ' : ' . $thisGroup->getName();
 
 require 'Include/Header.php';
@@ -201,7 +200,6 @@ require 'Include/Header.php';
         </button>
     </div>
 </div>
-
 
 <div class="card">
     <div class="card-header with-border">
@@ -365,8 +363,6 @@ require 'Include/Header.php';
                                 echo '<br><br><br>';
                             }
                                 ?>
-
-
 
                 </td>
             </tr>

@@ -309,7 +309,6 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
     RedirectUtils::redirect('UserList.php');
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('User Editor');
 require 'Include/Header.php';
 
@@ -465,7 +464,6 @@ require 'Include/Header.php';
                 </tr>
                 <?php
 
-
                 //First get default settings, then overwrite with settings from this user
 
                 // Get default settings
@@ -559,5 +557,5 @@ require 'Include/Header.php';
         $("#personSelect").select2();
     });
 </script>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

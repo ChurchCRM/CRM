@@ -187,5 +187,5 @@ require 'Include/Header.php';
   var groupID =<?= $iGroupID ?>;
 </script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupEditor.js"></script>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

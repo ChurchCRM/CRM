@@ -174,5 +174,5 @@ if ($numCounts) {
     <?= gettext('Return to Event Types') ?>
   </a>
 </div>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

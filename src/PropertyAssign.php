@@ -136,7 +136,6 @@ if ($sAction === 'edit') {
     $sValue = $aRow['r2p_Value'];
 }
 
-// Set the page title and include HTML header
 $sPageTitle = $sTypeName . ' : ' . gettext(' Property Assignment');
 require 'Include/Header.php';
 ?>
@@ -177,5 +176,5 @@ require 'Include/Header.php';
                                                                } echo '"' ?> name="Submit"></p>
 
 </form>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

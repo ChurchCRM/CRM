@@ -238,7 +238,6 @@ require 'Include/Header.php';
 
 </form>
 
-
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function() {
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
@@ -265,6 +264,5 @@ require 'Include/Header.php';
   });
 </script>
 <script src="skin/js/SystemSettings.js"></script>
-
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

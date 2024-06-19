@@ -180,7 +180,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sZip = InputUtils::legacyFilterInput($_POST['Zip']);
     }
 
-    // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
         $sZip = strtoupper($sZip);
     }
@@ -433,7 +432,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             $person->setEnvelope($iEnvelope);
         }
-
 
         $person->save();
         $person->reload();
@@ -910,7 +908,6 @@ require 'Include/Header.php';
                         </label>
                         <input type="text" name="Zip" class="form-control"
                             <?php
-                            // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
                             if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
                                 echo 'style="text-transform:uppercase" ';
                             }
@@ -1242,5 +1239,5 @@ require 'Include/Header.php';
         $("#familyId").select2();
     });
 </script>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

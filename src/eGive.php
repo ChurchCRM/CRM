@@ -20,7 +20,14 @@ include 'Include/eGiveConfig.php'; // Specific account information is in here
 
 $familySelectHtml = buildFamilySelect(0, 0, 0);
 
-// If a family is deleted, and donations are found, the egive_egv table is updated at the same time that donations are transferred.  But if there aren't donations at the time, and there's still and egive ID, we need to get that changed.  So, we'll build an array of all the family IDs here, and then NOT cache the egiveID to familyID association in the loop below.  There's probably a nicer way to do this with an SQL join,  but this seems more explicit.
+// If a family is deleted, and donations are found, the egive_egv table
+// is updated at the same time that donations are transferred.  But if
+// there aren't donations at the time, and there's still and egive ID, we
+// need to get that changed.  So, we'll build an array of all the family
+// IDs here, and then NOT cache the egiveID to familyID association in the
+// loop below.  There's probably a nicer way to do this with an SQL join,
+// but this seems more explicit.
+
 $sSQL = 'SELECT fam_ID FROM family_fam';
 $rsFamIDs = RunQuery($sSQL);
 while ($aRow = mysqli_fetch_array($rsFamIDs)) {
@@ -60,7 +67,6 @@ while ($aRow = mysqli_fetch_array($rsPlgIDs)) {
     $eGiveExisting[$key] = $amount;
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('eGive Import');
 require 'Include/Header.php';
 

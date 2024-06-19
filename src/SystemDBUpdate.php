@@ -36,9 +36,7 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
 
 <div class="error-page">
 
-
     <h2 class="headline text-yellow">426</h2>
-
 
     <div class="error-content">
         <div class="row">

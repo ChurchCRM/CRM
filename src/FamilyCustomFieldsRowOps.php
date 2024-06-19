@@ -24,7 +24,7 @@ switch ($sAction) {
         RunQuery($sSQL);
         break;
 
-        // Move a field down:  Swap the fam_custom_Order (ordering) of the selected row and the one below it
+        // Move a field down: Swap the fam_custom_Order (ordering) of the selected row and the one below it
     case 'down':
         $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . $iOrderID . "' WHERE fam_custom_Order = '" . ($iOrderID + 1) . "'";
         RunQuery($sSQL);

@@ -1,29 +1,9 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : ChurchCRM/Reports/PdfAttendance.php
-*  last change : 2017-10-23
-*  description : Creates a PDF for a Sunday School Class Attendance List
-*  Udpdated    : 2017-10-26
-*                Philippe Logel
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 class PdfAttendance extends ChurchInfoReport
 {
-    /////////////////////////////////////////////////////////////////////////////
-//
-    // function modified by S. Shaffer 3/2006 to change the following
-    // (1) handle the case where the list of names covers more than one page
-    // (2) rearranged some of the code to make it clearer for multi-page
-//
-//    for information contact Steve Shaffer at stephen@shaffers4christ.com
-//
-    /////////////////////////////////////////////////////////////////////////////
-
-    // Constructor
     public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);

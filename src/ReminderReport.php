@@ -13,7 +13,6 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValu
     RedirectUtils::redirect('v2/dashboard');
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Pledge Reminder Report');
 require 'Include/Header.php';
 
@@ -49,4 +48,3 @@ if (isset($_POST['Submit'])) {
 </div>
 <?php
 require 'Include/Footer.php';
-?>

@@ -80,7 +80,6 @@ if (isset($_POST['save'])) {
     RedirectUtils::redirect('SettingsIndividual.php'); // to reflect the tooltip change, we have to refresh the page
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('My User Settings');
 require 'Include/Header.php';
 
@@ -152,7 +151,6 @@ $rsConfigs = RunQuery($sSQL);
                 }
                 ?>
 
-
                 <tr>
                     <td>&nbsp;</td>
                     <td>
@@ -166,4 +164,3 @@ $rsConfigs = RunQuery($sSQL);
 </div>
 <?php
 require 'Include/Footer.php';
-?>

@@ -38,7 +38,6 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
     RedirectUtils::redirect('v2/cart?Action=EmptyCart&Message=aMessage&iCount=' . $iCount . '&iEID=' . $iEventID);
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Add Cart to Event');
 require 'Include/Header.php';
 
@@ -84,4 +83,3 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 }
 
 require 'Include/Footer.php';
-?>

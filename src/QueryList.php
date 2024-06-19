@@ -48,5 +48,4 @@ require 'Include/Header.php';
 
 </div>
 <?php
-
 require 'Include/Footer.php';

@@ -370,4 +370,3 @@ $(document).ready(function() {
 </div>
 <?php
 require 'Include/Footer.php';
-?>

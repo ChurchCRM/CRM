@@ -43,5 +43,5 @@ require 'Include/Header.php';
         </td>
     </tr>
 </table>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

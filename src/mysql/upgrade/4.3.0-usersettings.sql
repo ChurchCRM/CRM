@@ -1,4 +1,3 @@
-
 --
 -- Table structure for table `user_settings`
 --
@@ -9,10 +8,6 @@ CREATE TABLE `user_settings` (
   `setting_name` varchar(50) NOT NULL,
   `setting_value` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `user_settings`
@@ -34,5 +29,3 @@ insert ignore into user_settings select usr_per_ID as user_id, "finance.FY" as  
 
 /** move items from user config table **/
 insert ignore into user_settings select ucfg_per_id as user_id, "ui.email.delimiter" as  setting_name, ucfg_value as setting_value from userconfig_ucfg where ucfg_name = 'sMailtoDelimiter';
-
-

@@ -427,5 +427,5 @@ if ($numRows == 0) {
     </div>
     </form>
 </div>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

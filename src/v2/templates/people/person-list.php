@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : person-list.php
-*  website     : https://churchcrm.io
-*  copyright   : Copyright 2019 Troy Smith
-*
-******************************************************************************/
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -37,22 +29,21 @@ function emptyOrUnassignedJSON($stuff): string
     return empty($stuff) ? 'Unassigned' : json_encode($stuff, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 }
 
-//Set the page title
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
-// classification list
+// Classification list
 $ListItem =  ListOptionQuery::create()->select('OptionName')->filterById(1)->find()->toArray();
 $ClassificationList[] = "Unassigned";
 foreach ($ListItem as $element) {
     $ClassificationList[] = $element;
 }
-// role list
+// Role list
 $ListItem = ListOptionQuery::create()->select('OptionName')->filterById(2)->find()->toArray();
 $RoleList[] = "Unassigned";
 foreach ($ListItem as $element) {
     $RoleList[] = $element;
 }
-// person properties list
+// Person properties list
 $ListItem = PropertyQuery::create()->filterByProClass("p")->find();
 $PropertyList[] = "Unassigned";
 foreach ($ListItem as $element) {
@@ -61,12 +52,9 @@ foreach ($ListItem as $element) {
 
 $option_name = fn (string $t1, string $t2) => $t1 . ':' . $t2;
 
-
 $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
 
-
-
-// person custom list
+// Person custom list
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity', 'Id', 'TypeId', 'Special'])->find();
 
 // CREATE A MAPPING FOR CUSTOMS LIKE THIS
@@ -74,7 +62,7 @@ $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity', 
 // allowing not only for search if has a custom set but also if is set to a given value.
 $CustomMapping = [];
 
-//setting unassigned to 1 so is not deleted
+// Setting unassigned to 1 so it is not deleted
 $CustomList["Unassigned"] = 1;
 
 foreach ($ListItem as $element) {
@@ -91,7 +79,7 @@ foreach ($ListItem as $element) {
     }
 }
 
-// get person group list
+// Get person group list
 $ListItem = GroupQuery::create()->find();
 $GroupList[] = "Unassigned";
 foreach ($ListItem as $element) {
@@ -275,7 +263,6 @@ foreach ($ListItem as $element) {
 
         oTable = $('#members').DataTable(dataTableConfig);
 
-
         $('.filter-Gender').select2({
             multiple: true,
             placeholder: i18next.t('Select') + " " + i18next.t('Gender')
@@ -435,7 +422,5 @@ foreach ($ListItem as $element) {
     });
 
 </script>
-
 <?php
 require SystemURLs::getDocumentRoot() .  '/Include/Footer.php';
-?>

@@ -233,7 +233,5 @@ require '../Include/HeaderNotLoggedIn.php';
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery.steps/jquery.steps.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/setup.js"></script>
-
 <?php
 require '../Include/FooterNotLoggedIn.php';
-?>

@@ -6,9 +6,9 @@ INSERT IGNORE INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, 
 
 DELETE FROM `config_cfg` WHERE cfg_id = 3;
 
-/*Convert the Group Special Properties Field from an ENUM("true","false")
-  to a proper BOOLEAN field without losing data.
-*/
+/* Convert the Group Special Properties Field from an ENUM("true","false")
+ * to a proper BOOLEAN field without losing data.
+ */
 ALTER TABLE group_grp
 MODIFY grp_hasSpecialProps INT(1);
 

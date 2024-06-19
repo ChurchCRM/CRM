@@ -160,8 +160,5 @@ if (mysqli_num_rows($rsPropList) == 0) {
         </div>
     </div>
 <?php
-} ?>
-
-<?php
+}
 require 'Include/Footer.php';
-?>

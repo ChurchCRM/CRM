@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/FRCertificates.php
-*  last change : 2003-08-30
-*  description : Creates a PDF with a silent auction bid sheet for every item.
-
-******************************************************************************/
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 

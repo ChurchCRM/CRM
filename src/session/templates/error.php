@@ -21,5 +21,4 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
   <!-- /.error-page -->
 
 <?php
-// Add the page footer
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

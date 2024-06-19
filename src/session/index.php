@@ -22,7 +22,6 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($rootPath . '/session');
 
-
 require __DIR__ . '/../Include/slim/error-handler.php';
 
 $app->addRoutingMiddleware();

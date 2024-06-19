@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-//Set the page title
 $sPageTitle = gettext('People Verify Dashboard');
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -32,7 +31,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -47,7 +45,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
-
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
@@ -110,7 +107,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#families-complete").DataTable(dataTableConfig);
 
-
           dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/families/pending-self-verify",
@@ -147,7 +143,5 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         $("#families-pending").DataTable(dataTableConfig);
     });
 </script>
-
 <?php
 require SystemURLs::getDocumentRoot() .  '/Include/Footer.php';
-?>

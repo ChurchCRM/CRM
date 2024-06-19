@@ -111,7 +111,6 @@ for ($row = 1; $row <= $numRows; $row++) {
 // Construct the form
 ?>
 
-
 <div class="card">
     <div class="card-header">
         <h3><?php echo gettext("Event Attendance"); ?></h3>
@@ -137,7 +136,6 @@ for ($row = 1; $row <= $numRows; $row++) {
         ?>
     </div>
 </div>
-
 
 <?php if ($sGetAction === 'List' && $numRows > 0) { ?>
     <div class="card">
@@ -246,12 +244,9 @@ for ($row = 1; $row <= $numRows; $row++) {
             $("#peopleTable").DataTable(window.CRM.plugin.dataTable);
         });
     </script>
-
 <?php } else { ?>
     <div class="warning">
         <?= $_GET ? gettext('There are no events in this category') : "" ?>
     </div>
-<?php } ?>
-
-
-<?php require 'Include/Footer.php' ?>
+<?php }
+require 'Include/Footer.php';

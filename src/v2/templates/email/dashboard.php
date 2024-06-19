@@ -88,4 +88,3 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 }
 
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
-?>

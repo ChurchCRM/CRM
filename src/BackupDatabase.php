@@ -53,4 +53,5 @@ require 'Include/Header.php';
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/BackupDatabase.js"></script>
 
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

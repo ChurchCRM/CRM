@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/FundRaiserStatement.php
-*  last change : 2009-04-17
-*  description : Creates a PDF with one or more fund raiser statements
-*  copyright   : Copyright 2009 Michael Wilt
-
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -20,7 +11,7 @@ use ChurchCRM\Utils\InputUtils;
 $iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
-//Get the paddlenum records for this fundraiser
+// Get the paddlenum records for this fundraiser
 if ($iPaddleNumID > 0) {
     $selectOneCrit = ' AND pn_ID=' . $iPaddleNumID . ' ';
 } else {

@@ -20,7 +20,7 @@ $sPageTitle = gettext('Family Editor');
 
 $iFamilyID = -1;
 
-//Get the FamilyID from the querystring
+// Get the FamilyID from the querystring
 if (array_key_exists('FamilyID', $_GET)) {
     $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
 }
@@ -105,7 +105,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     if (array_key_exists('Longitude', $_POST)) {
         $nLongitude = InputUtils::legacyFilterInput($_POST['Longitude'], 'float');
     }
-
 
     if (!is_numeric($nLatitude)) {
         $nLatitude = null;
@@ -542,9 +541,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 }
 
 require 'Include/Header.php';
-
 ?>
-
 <form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>" id="familyEditor">
     <input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
     <input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
@@ -978,5 +975,5 @@ require 'Include/Header.php';
                                                 echo '</td></tr></form></table>';
                                                         ?>
                                                         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyEditor.js"></script>
-
-                                                        <?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

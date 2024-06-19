@@ -623,7 +623,6 @@
         </vendor>
     </table>
 
-
     <table name="userconfig_ucfg" idMethod="native" phpName="UserConfig">
         <column name="ucfg_per_id" phpName="PeronId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true"/>
         <column name="ucfg_id" phpName="Id" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
@@ -656,7 +655,6 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-
 
     <table name="volunteeropportunity_vol" idMethod="native" phpName="VolunteerOpportunity" description="This contains the names and descriptions of volunteer opportunities">
         <column name="vol_ID" phpName="Id" type="INTEGER" size="3" primaryKey="true" autoIncrement="true" required="true"/>
@@ -715,7 +713,6 @@
       </index>
      </table>
 
-
     <table name="kioskassginment_kasm" idMethod="native" phpName="KioskAssignment">
       <column name="kasm_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
       <column name="kasm_kdevId" phpName="KioskId" type="INTEGER" size="9" />
@@ -733,8 +730,6 @@
         <reference local="kasm_EventId" foreign="event_id"/>
       </foreign-key>
      </table>
-
-
 
     <table name="tokens" idMethod="native" phpName="Token">
         <column name="token" phpName="Token" type="VARCHAR" primaryKey="true" required="true"/>
@@ -839,7 +834,6 @@
         <column name="location_phone" type="VARCHAR" size="45" required="true" defaultValue=""/>
         <column name="location_email" type="VARCHAR" size="45" required="true" defaultValue=""/>
         <column name="location_timzezone" type="VARCHAR" size="45" required="true" defaultValue="" />
-
 
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
@@ -956,9 +950,6 @@
      <parameter name="Engine" value="InnoDB"/>
    </vendor>
  </table>
-
-
-
 
  <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryparameteroptionsQpo" description="Defines the values for the parameters for each query">
    <column name="qpo_ID" phpName="QpoId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>

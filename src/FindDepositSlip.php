@@ -74,5 +74,5 @@ require 'Include/Header.php';
 </div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
-
-<?php require "Include/Footer.php" ?>
+<?php
+require 'Include/Footer.php';

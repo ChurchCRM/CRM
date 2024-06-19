@@ -49,5 +49,5 @@ if ($resArr) {
         </td>
     </tr>
 </table>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

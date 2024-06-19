@@ -1,16 +1,8 @@
 <?php
 
-/*******************************************************************************
- *
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2017
- *
- ******************************************************************************/
-
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
-//Set the page title
 $sPageTitle = gettext('Self Registrations');
 require '../Include/Header.php';
 
@@ -47,7 +39,6 @@ use ChurchCRM\dto\SystemURLs;
         </div>
     </div>
 </div>
-
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
@@ -86,7 +77,6 @@ use ChurchCRM\dto\SystemURLs;
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
         $("#families").DataTable(dataTableConfig);
-
 
         dataTableConfig = {
             ajax: {
@@ -127,7 +117,5 @@ use ChurchCRM\dto\SystemURLs;
         $("#people").DataTable(dataTableConfig);
     });
 </script>
-
 <?php
 require '../Include/Footer.php';
-?>

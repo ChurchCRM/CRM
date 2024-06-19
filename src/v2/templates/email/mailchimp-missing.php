@@ -18,7 +18,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
         var dataTableConfig = {
@@ -53,7 +52,5 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         return people.length;
     }
 </script>
-
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
-?>

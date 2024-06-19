@@ -26,7 +26,6 @@ $app->addBodyParsingMiddleware();
 // Set up
 require __DIR__ . '/../Include/slim/error-handler.php';
 
-
 // Set up
 require __DIR__ . '/../Include/slim/error-handler.php';
 
@@ -60,7 +59,6 @@ if (isset($_COOKIE['kioskCookie'])) {
         exit;
     }
 }
-
 
 // Run app
 $app->run();

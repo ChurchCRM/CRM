@@ -12,7 +12,6 @@ $linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
 $iPerson = InputUtils::legacyFilterInput($_GET['PersonID']);
 $iWhyCameID = InputUtils::legacyFilterInput($_GET['WhyCameID']);
 
-//Get name
 $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per where per_ID = ' . $iPerson;
 $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
@@ -109,4 +108,5 @@ require 'Include/Header.php';
     </table>
   </div>
 </div>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

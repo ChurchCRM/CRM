@@ -19,7 +19,7 @@ $envelopesToWrite = [];
 // Get the array of envelopes of interest, indexed by family ID
 $envelopesByFamID = getEnvelopes($iClassification);
 
-// get the array of family name/description strings, also indexed by family id
+// Get the array of family name/description strings, also indexed by family ID
 $familyArray = getFamilyList(SystemConfig::getValue('sDirRoleHead'), SystemConfig::getValue('sDirRoleSpouse'), $iClassification);
 asort($familyArray);
 
@@ -101,8 +101,6 @@ if (isset($_POST['PrintReport'])) {
 }
 
 ?>
-
-
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEnvelopesModal"><?= gettext('Update Family Records') ?></button>
 <button type="submit" class="btn btn-default" name="PrintReport"><i class="fa fa-print"></i></button>
@@ -203,7 +201,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
 
 <?php
 
-// make an array of envelopes indexed by family id, subject to the classification filter if specified.
+// Make an array of envelopes indexed by family ID, subject to the classification filter if specified.
 function getEnvelopes($classification)
 {
     if ($classification) {
@@ -224,4 +222,3 @@ function getEnvelopes($classification)
 }
 
 require 'Include/Footer.php';
-?>

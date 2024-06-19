@@ -9,7 +9,6 @@ use ChurchCRM\Service\SystemService;
       <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved')?>.
     </div>
 
-
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.full.min.js"></script>
 
   <!-- Bootstrap 3.3.5 -->

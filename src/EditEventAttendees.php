@@ -101,4 +101,5 @@ if ($numAttRows != 0) {
 ?>
 </table>
 </div>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

@@ -80,7 +80,5 @@ require 'Include/Header.php';
     return false;
   });
 </script>
-
 <?php
 require 'Include/Footer.php';
-?>

@@ -55,7 +55,6 @@ extract($rsCurrentRole);
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $grp_RoleListID ORDER BY lst_OptionSequence";
 $rsAllRoles = RunQuery($sSQL);
 
-// Include the header
 require 'Include/Header.php'
 
 ?>
@@ -113,4 +112,3 @@ require 'Include/Header.php'
 </form>
 <?php
 require 'Include/Footer.php';
-

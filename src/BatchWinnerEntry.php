@@ -23,10 +23,9 @@ if ($iCurrentFundraiser) {
     extract(mysqli_fetch_array($rsDeposit));
 }
 
-//Set the page title
 $sPageTitle = gettext('Batch Winner Entry');
 
-//Is this the second pass?
+// Is this the second pass?
 if (isset($_POST['EnterWinners'])) {
     for ($row = 0; $row < 10; $row += 1) {
         $buyer = $_POST["Paddle$row"];
@@ -120,5 +119,5 @@ for ($row = 0; $row < 10; $row += 1) {
 </div>
 </form>
 </div>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

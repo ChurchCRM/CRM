@@ -76,25 +76,8 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 // Format the BirthDate
 $dBirthDate = MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
-//if ($per_BirthMonth > 0 && $per_BirthDay > 0)
-//{
-//  $dBirthDate = $per_BirthMonth . "/" . $per_BirthDay;
-//  if (is_numeric($per_BirthYear))
-//  {
-//      $dBirthDate .= "/" . $per_BirthYear;
-//  }
-//}
-//elseif (is_numeric($per_BirthYear))
-//{
-//  $dBirthDate = $per_BirthYear;
-//}
-//else
-//{
-//  $dBirthDate = "";
-//}
 
 // Assign the values locally, after selecting whether to display the family or person information
-
 SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
 $sCity = SelectWhichInfo($per_City, $fam_City, false);
 $sState = SelectWhichInfo($per_State, $fam_State, false);
@@ -119,7 +102,6 @@ $sCellPhone = SelectWhichInfo(
 
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Printable View');
 $iTableSpacerWidth = 10;
 require 'Include/Header-Short.php';
@@ -162,10 +144,9 @@ require 'Include/Header-Short.php';
                     echo $sState;
                 }
 
-                // bevand10 2012-04-28 Replace space with &nbsp; in zip/postcodes, to ensure they do not wrap on output.
-                if ($sZip != '') {
-                    echo ' ' . str_replace(' ', '&nbsp;', trim($sZip));
-                }
+if ($sZip != '') {
+    echo ' ' . str_replace(' ', '&nbsp;', trim($sZip));
+}
 
                 if ($sCountry != '') {
                     echo '<br>' . $sCountry;

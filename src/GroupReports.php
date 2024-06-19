@@ -137,13 +137,10 @@ require 'Include/Header.php';
                             <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
                         </p>
                     </form>
-
                 </div>
             </div>
         </div>
     </div>
-
-            <?php
-} ?>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+}
+require 'Include/Footer.php';

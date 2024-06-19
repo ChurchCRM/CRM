@@ -4,7 +4,6 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Login');
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
@@ -68,7 +67,6 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                         <!-- /.col -->
                     </div>
                 </form>
-
 
                 <!-- /.social-auth-links -->
                 <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) { ?>

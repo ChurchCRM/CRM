@@ -106,7 +106,6 @@ if (isset($_GET['Confirmed'])) {
     RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/family');
 }
 
-
 //Get the family record in question
 $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
 $rsFamily = RunQuery($sSQL);

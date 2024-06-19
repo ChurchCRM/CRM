@@ -52,8 +52,7 @@ if (isset($_POST['Action']) && isset($_POST['EID']) && AuthenticationManager::ge
     }
 }
 
-/// top of main form
-//
+// Top of main form
 $sSQL = 'SELECT DISTINCT event_types.*
          FROM event_types
          RIGHT JOIN events_event ON event_types.type_id=events_event.event_type
@@ -346,7 +345,5 @@ foreach ($allMonths as $mKey => $mVal) {
     $('#listEvents').DataTable(window.CRM.plugin.dataTable);
   });
 </script>
-
 <?php
 require 'Include/Footer.php';
-?>

@@ -60,10 +60,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
 
-//
 // Prepare the MySQL query
-//
-
 $sJoinFamTable = ' LEFT JOIN family_fam ON per_fam_ID = fam_ID ';
 $sPerTable = 'person_per';
 

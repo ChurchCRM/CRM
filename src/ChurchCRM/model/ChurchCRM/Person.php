@@ -584,7 +584,6 @@ class Person extends BasePerson implements PhotoInterface
         }
         $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
 
-
         // get custom column names and values
         $personCustom = [];
         if ($thisPersonCustomFields) {
@@ -594,7 +593,6 @@ class Person extends BasePerson implements PhotoInterface
                     $temp = $customMapping[$column]['Name'];
                     $personCustom[] = $temp;
                     $CustomList[$temp] += 1;
-
 
                     if (array_key_exists($value, $customMapping[$column]['Elements'])) {
                         $temp = $name_func($customMapping[$column]['Name'], $customMapping[$column]['Elements'][$value]);

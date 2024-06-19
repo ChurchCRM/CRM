@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : Include/ReportsConfig.php
- *  last change : 2003-03-14
- *  description : Configure report generation
- *
- *  https://churchcrm.io/
- *  Copyright 2004-2012 Chris Gebhardt, Michael Wilt
-  *
- ******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 use ChurchCRM\dto\SystemConfig;
@@ -24,7 +13,6 @@ use FPDF;
 
 class ChurchInfoReport extends FPDF
 {
-    //
     // Paper size for all PDF report documents
     // Sizes: A3, A4, A5, Letter, Legal, or a 2-element array for custom size
     // Sorry -- This should really be set in database, but it is needed before all the report settings

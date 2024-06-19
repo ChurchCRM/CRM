@@ -1847,7 +1847,7 @@ class GoogleMapAPI
         $_output .= " * Original Link http://www.phpinsider.com/php/code/GoogleMapAPI/\n";
         $_output .= " *************************************************/\n";
 
-        // create global info window ( so we can auto close it )
+        // Create global info window ( so we can auto close it )
         $_script .= 'var infowindow = new google.maps.InfoWindow();';
 
         if ($this->street_view_dom_id != '') {

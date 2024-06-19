@@ -1,26 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : ConvertIndividualToFamily.php
-*  website     : https://churchcrm.io
-*  description : utility to convert individuals to families
-*
-*  Must be run manually by an administrator.  Type this URL.
-*    http://www.mydomain.com/churchcrm/ConvertIndividualToFamily.php
-*
-*  By default this script does one at a time.  To do all entries
-*  at once use this URL
-*    http://www.mydomain.com/churchcrm/ConvertIndividualToFamily.php?all=true
-*
-*  Your URL may vary.  Replace "churchcrm" with $sRootPath
-*
-*  Contributors:
-*  2007 Ed Davis
-
-******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -36,7 +15,6 @@ if ($_GET['all'] == 'true') {
     $bDoAll = true;
 }
 
-//Set the page title
 $sPageTitle = gettext('Convert Individuals to Families');
 
 require 'Include/Header.php';

@@ -35,11 +35,6 @@ if (isset($_POST['adult-id'])) {
     $iAdultID = InputUtils::legacyFilterInput($_POST['adult-id'], 'int');
 }
 
-//
-// process the action inputs
-//
-
-//Start off by first picking the event to check people in for
 $activeEvents = EventQuery::Create()
     ->filterByInActive(1, Criteria::NOT_EQUAL)
     ->find();
@@ -203,7 +198,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
         $attendee->save();
     }
 
-
     //delete
     if (isset($_POST['Delete'])) {
         EventAttendQuery::create()
@@ -284,10 +278,8 @@ if (
     </form>
     <?php
 }
-//End checkout
-//**********************************************************************************************************
 
-//Populate data table
+// Populate data table
 if (isset($_POST['EventID'])) {
     ?>
     <div class="card card-primary">
@@ -306,7 +298,7 @@ if (isset($_POST['EventID'])) {
                 <tbody>
 
                 <?php
-                //Get Event Attendees details
+                // Get Event Attendees details
                 $eventAttendees = EventAttendQuery::create()
                     ->filterByEventId($EventID)
                     ->find();
@@ -444,7 +436,6 @@ function loadPerson($iPersonID)
     } else {
         $familyRole = gettext('(No assigned family)');
     }
-
 
     $html = '<div class="text-center">' .
         '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle() . ' ' . $person->getFullName() . '</h4></a>' .

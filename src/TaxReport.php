@@ -43,4 +43,5 @@ if (isset($_POST['Submit'])) {
 
     </form>
 </div>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

@@ -455,7 +455,6 @@ $bOkToEdit = (
                                                 <img style="width:40px; height:40px;display:inline-block" src="<?= $sRootPath . '/api/person/' . $familyMember->getId() . '/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
                                                 <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
-
                                             </td>
                                             <td class="text-center">
                                                 <?= $familyMember->getFamilyRoleName() ?>
@@ -492,7 +491,6 @@ $bOkToEdit = (
                             <?php
                         } ?>
                     </div>
-
 
                     <div class="tab-pane" id="timeline">
                         <ul class="timeline timeline-inverse">
@@ -901,7 +899,6 @@ $bOkToEdit = (
             window.CRM.currentPersonID = <?= $iPersonID ?>;
             window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
 
-
             $("#deletePhoto").click(function() {
                 window.CRM.APIRequest({
                     method: "DELETE",
@@ -925,14 +922,12 @@ $bOkToEdit = (
                 window.CRM.photoUploader.show();
             });
 
-
             $(document).ready(function() {
                 $("#input-volunteer-opportunities").select2();
                 $("#input-person-properties").select2();
 
                 $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
                 $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
-
 
                 contentExists(window.CRM.root + "/api/person/" + window.CRM.currentPersonID + "/photo", function(success) {
                     if (success) {
@@ -950,5 +945,5 @@ $bOkToEdit = (
 
             });
         </script>
-
-        <?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

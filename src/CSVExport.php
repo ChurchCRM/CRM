@@ -40,7 +40,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('CSV Export');
 require 'Include/Header.php';
 ?>
@@ -56,7 +55,6 @@ require 'Include/Header.php';
             <label><?= gettext('Last Name') ?>:</label>
             <?= gettext('Required') ?>
           </div>
-
 
           <div class="col-md-4">
             <label><?= gettext('Title') ?>:</label>
@@ -449,5 +447,5 @@ require 'Include/Header.php';
   </div>
 
 </form>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

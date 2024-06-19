@@ -251,4 +251,5 @@ require 'Include/Header.php';
 <!-- /.box -->
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/users.js" ></script>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

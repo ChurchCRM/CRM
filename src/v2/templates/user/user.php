@@ -3,7 +3,6 @@
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 
-//Set the page title
 $sPageTitle = gettext("User") . " - " . $user->getFullName();
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -104,5 +103,5 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     window.CRM.viewUserId = <?= $user->getId() ?>;
 </script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/user.js"></script>
-
-<?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+<?php
+include SystemURLs::getDocumentRoot() . '/Include/Footer.php';

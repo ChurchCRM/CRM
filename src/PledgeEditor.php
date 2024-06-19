@@ -163,7 +163,6 @@ if (
         $rsResults = RunQuery($sSQL);
         list($numGroupKeys, $PledgeOrPayment, $fundId, $dDate, $iFYID, $iCheckNo, $iSchedule, $iMethod, $iCurrentDeposit) = mysqli_fetch_row($rsResults);
 
-
         $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
         $rsFam = RunQuery($sSQL);
         $fam_NameArray = mysqli_fetch_array($rsFam);
@@ -267,7 +266,6 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         $sAmountError[$fun_id] = gettext('At least one fund must have a non-zero amount.');
         $bErrorFlag = true;
     }
-
 
     if (array_key_exists('ScanInput', $_POST)) {
         $tScanString = InputUtils::legacyFilterInput($_POST['ScanInput']);
@@ -439,7 +437,6 @@ if ($iCurrentDeposit) {
     $currentUser->save();
 }
 
-//Set the page title
 if ($PledgeOrPayment === 'Pledge') {
     $sPageTitle = gettext('Pledge Editor');
 } elseif ($iCurrentDeposit) {
@@ -494,7 +491,6 @@ require 'Include/Header.php';
 ?>
 
 <form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= $sGroupKey ?>&PledgeOrPayment=<?= $PledgeOrPayment ?>&linkBack=<?= $linkBack ?>" name="PledgeEditor">
-
 
     <div class="row">
         <div class="col-lg-12">
@@ -568,7 +564,6 @@ require 'Include/Header.php';
 
                     </div>
 
-
                     <div class="col-lg-6">
                         <label for="Method"><?= gettext('Payment by') ?></label>
                         <select class="form-control" name="Method" id="Method">
@@ -609,8 +604,6 @@ require 'Include/Header.php';
                             } ?>
                         </select>
 
-
-
                         <?php if ($PledgeOrPayment === 'Payment' && $dep_Type === 'Bank') {
                         ?>
                             <div id="checkNumberGroup">
@@ -619,7 +612,6 @@ require 'Include/Header.php';
                             </div>
                         <?php
                         } ?>
-
 
                         <label for="TotalAmount"><?= gettext('Total $') ?></label>
                         <input class="form-control" type="number" step="any" name="TotalAmount" id="TotalAmount" disabled />
@@ -721,7 +713,6 @@ require 'Include/Header.php';
         </div>
     </div>
 
-
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -789,6 +780,5 @@ require 'Include/Header.php';
         $("#TotalAmount").val(Total);
     }
 </script>
-
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

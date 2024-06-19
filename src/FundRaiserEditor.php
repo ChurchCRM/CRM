@@ -48,7 +48,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
         }
     }
 
-    //If no errors, then let's update...
+    // If no errors, then let's update...
     if (!$bErrorFlag) {
         // New deposit slip
         if ($iFundRaiserID <= 0) {
@@ -258,4 +258,5 @@ require 'Include/Header.php';
         </table>
     </div>
 </div>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

@@ -43,7 +43,6 @@ if ($noDeposit) {
     RedirectUtils::redirect('FindDepositSlip.php');
 }
 
-//Set the page title
 $sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number: ') . $iDepositSlipID;
 
 //Is this the second pass?
@@ -171,7 +170,6 @@ require 'Include/Header.php';
   </div>
 </div>
 
-
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/js/DepositSlipEditor.js"></script>
 <?php
   $fundLabels = [];
@@ -258,5 +256,4 @@ foreach ($thisDeposit->getFundTotals() as $tmpfund) {
   });
 </script>
 <?php
-  require 'Include/Footer.php';
-?>
+require 'Include/Footer.php';

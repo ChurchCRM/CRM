@@ -72,9 +72,6 @@ while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
     echo '</tr>';
 }
 
-//End the table
 echo '</table></div></div>';
 
 require 'Include/Footer.php';
-
-?>

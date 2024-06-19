@@ -78,7 +78,6 @@ require 'Include/Header.php';
 
   })
 
-
   $(document).on("change", ".assignmentMenu", function(event) {
     var kioskId = $(event.currentTarget).data("kioskid");
     var selected = $(event.currentTarget).val();
@@ -170,8 +169,5 @@ require 'Include/Header.php';
   })
 
 </script>
-
 <?php
-
 require 'Include/Footer.php';
-?>

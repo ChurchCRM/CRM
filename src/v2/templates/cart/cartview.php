@@ -27,7 +27,5 @@ echo $this->fetch('cartlisting.php', $data);
 
   });
 </script>
-
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
-?>

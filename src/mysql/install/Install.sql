@@ -11,14 +11,11 @@ CREATE TABLE `version_ver` (
   UNIQUE KEY `ver_version` (`ver_version`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
 
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `config_cfg`
 --
-
-
 
 CREATE TABLE `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
@@ -45,7 +42,6 @@ CREATE TABLE `deposit_dep` (
 --
 -- Dumping data for table `deposit_dep`
 --
-
 
 -- --------------------------------------------------------
 
@@ -87,7 +83,6 @@ CREATE TABLE `email_message_pending_emp` (
 -- Dumping data for table `email_message_pending_emp`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -105,7 +100,6 @@ CREATE TABLE `email_recipient_pending_erp` (
 --
 -- Dumping data for table `email_recipient_pending_erp`
 --
-
 
 -- --------------------------------------------------------
 
@@ -153,7 +147,6 @@ CREATE TABLE `eventcounts_evtcnt` (
 -- Dumping data for table `eventcounts_evtcnt`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -179,7 +172,6 @@ CREATE TABLE `events_event` (
 --
 -- Dumping data for table `events_event`
 --
-
 
 -- --------------------------------------------------------
 
@@ -213,7 +205,6 @@ CREATE TABLE `event_attend` (
 -- Dumping data for table `event_attend`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -243,7 +234,6 @@ INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_de
   (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1);
 
 -- --------------------------------------------------------
-
 
 CREATE TABLE `calendars` (
   `calendar_id` INT NOT NULL auto_increment,
@@ -279,7 +269,6 @@ CREATE TABLE `family_custom` (
 -- Dumping data for table `family_custom`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -298,7 +287,6 @@ CREATE TABLE `family_custom_master` (
 --
 -- Dumping data for table `family_custom_master`
 --
-
 
 -- --------------------------------------------------------
 
@@ -338,7 +326,6 @@ CREATE TABLE `family_fam` (
 -- Dumping data for table `family_fam`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -359,7 +346,6 @@ CREATE TABLE `groupprop_master` (
 --
 -- Dumping data for table `groupprop_master`
 --
-
 
 -- --------------------------------------------------------
 
@@ -383,7 +369,6 @@ CREATE TABLE `group_grp` (
 --
 -- Dumping data for table `group_grp`
 --
-
 
 -- --------------------------------------------------------
 
@@ -415,7 +400,6 @@ CREATE TABLE `istlookup_lu` (
 --
 -- Dumping data for table `istlookup_lu`
 --
-
 
 -- --------------------------------------------------------
 
@@ -499,7 +483,6 @@ CREATE TABLE `note_nte` (
 -- Dumping data for table `note_nte`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -518,7 +501,6 @@ CREATE TABLE `person2group2role_p2g2r` (
 -- Dumping data for table `person2group2role_p2g2r`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -536,7 +518,6 @@ CREATE TABLE `person2volunteeropp_p2vo` (
 -- Dumping data for table `person2volunteeropp_p2vo`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -551,7 +532,6 @@ CREATE TABLE `person_custom` (
 --
 -- Dumping data for table `person_custom`
 --
-
 
 -- --------------------------------------------------------
 
@@ -572,7 +552,6 @@ CREATE TABLE `person_custom_master` (
 --
 -- Dumping data for table `person_custom_master`
 --
-
 
 -- --------------------------------------------------------
 
@@ -660,7 +639,6 @@ CREATE TABLE `pledge_plg` (
 --
 -- Dumping data for table `pledge_plg`
 --
-
 
 -- --------------------------------------------------------
 
@@ -919,7 +897,6 @@ CREATE TABLE `record2property_r2p` (
 -- Dumping data for table `record2property_r2p`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -949,7 +926,6 @@ CREATE TABLE `result_res` (
 --
 -- Dumping data for table `result_res`
 --
-
 
 -- --------------------------------------------------------
 
@@ -984,7 +960,6 @@ INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_valu
   (1, 1, 'sMailtoDelimiter', ',', 'text', 'user permission to send email via mailto: links', 'TRUE', ''),
   (1, 5, 'bCreateDirectory', '1', 'boolean', 'User permission to create directories', 'TRUE', ''),
   (1, 6, 'bExportCSV', '1', 'boolean', 'User permission to export CSV files', 'TRUE', '');
-
 
 -- --------------------------------------------------------
 
@@ -1050,7 +1025,6 @@ INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, 
 VALUES
   (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
-
 --
 -- Table structure for table `user_settings`
 --
@@ -1071,7 +1045,6 @@ CREATE TABLE `user_settings` (
 ALTER TABLE `user_settings`
   ADD PRIMARY KEY (`user_id`,`setting_name`);
 
-
 -- --------------------------------------------------------
 
 --
@@ -1090,7 +1063,6 @@ CREATE TABLE `volunteeropportunity_vol` (
 --
 -- Dumping data for table `volunteeropportunity_vol`
 --
-
 
 -- --------------------------------------------------------
 
@@ -1189,8 +1161,6 @@ CREATE TABLE `kioskassginment_kasm` (
   UNIQUE KEY `kasm_ID` (`kasm_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-
-
 CREATE TABLE `tokens` (
   `token` VARCHAR(99) NOT NULL,
   `type` VARCHAR(50) NOT NULL,
@@ -1214,7 +1184,6 @@ CREATE TABLE `locations` (
   `location_timzezone` VARCHAR(45) NULL,
   PRIMARY KEY (`location_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-
 
 CREATE TABLE `church_location_person` (
   `location_id` INT NOT NULL,

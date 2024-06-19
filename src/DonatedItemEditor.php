@@ -36,7 +36,7 @@ if ($iCurrentFundraiser) {
 
 $sPageTitle = gettext('Donated Item Editor');
 
-//Is this the second pass?
+// Is this the second pass?
 if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
     $sItem = InputUtils::legacyFilterInputArr($_POST, 'Item');
@@ -317,5 +317,5 @@ require 'Include/Header.php';
         </div>
     </div>
 </form>
-
-<?php require 'Include/Footer.php'; ?>
+<?php
+require 'Include/Footer.php';

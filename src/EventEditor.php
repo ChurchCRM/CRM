@@ -543,7 +543,7 @@ $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
     });
 </script>
 
-<?php require 'Include/Footer.php' ?>
+<?php require 'Include/Footer.php'; ?>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
 

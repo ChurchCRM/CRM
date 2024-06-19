@@ -98,7 +98,6 @@ class Family
     }
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('CSV Import');
 require 'Include/Header.php'; ?>
 
@@ -946,4 +945,3 @@ function GetAge(int $Month, int $Day, ?int $Year): int
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
 <?php
 require 'Include/Footer.php';
-?>

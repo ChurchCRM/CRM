@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : Reports/ConfirmReportEmail.php
- *  last change : 2014-11-28
- *  description : Creates a email with all the confirmation letters asking member
- *                families to verify the information in the database.
- *
- ******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';

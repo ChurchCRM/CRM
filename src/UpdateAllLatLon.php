@@ -49,4 +49,4 @@ if ($families->count() > 0) {
     <?php
 }
 
-require 'Include/Footer.php'; ?>
+require 'Include/Footer.php';

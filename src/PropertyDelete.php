@@ -54,5 +54,5 @@ require 'Include/Header.php';
 </p>
 
 </p>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

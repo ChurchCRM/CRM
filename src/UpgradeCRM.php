@@ -259,7 +259,6 @@ function downloadbutton(filename) {
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
 
 <?php
-// Add the page footer
 require 'Include/FooterNotLoggedIn.php';
 
 // Turn OFF output buffering

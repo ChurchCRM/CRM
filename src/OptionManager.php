@@ -368,7 +368,6 @@ for ($row = 1; $row <= $numRows; $row++) {
   <br/>
     <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
 
-
     <?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
         ?>
         <input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
@@ -411,4 +410,3 @@ if ($embedded) {
 } else {
     include 'Include/Footer.php';
 }
-?>

@@ -49,7 +49,6 @@ if (isset($_POST['save'])) {
     }
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Default User Settings');
 require 'Include/Header.php';
 

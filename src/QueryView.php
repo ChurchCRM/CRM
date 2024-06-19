@@ -19,7 +19,6 @@ if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array($iQ
     RedirectUtils::redirect('v2/dashboard');
 }
 
-// Include the header
 require 'Include/Header.php';
 
 // Get the query information
@@ -284,7 +283,6 @@ function DoQuery()
     <?php
 }
 
-
 // Displays the name and description of the query
 function DisplayQueryInfo()
 {
@@ -298,7 +296,6 @@ function DisplayQueryInfo()
 </div>
     <?php
 }
-
 
 function getQueryFormInput($queryParameters)
 {
@@ -415,4 +412,3 @@ function DisplayParameterForm()
 }
 
 require 'Include/Footer.php';
-

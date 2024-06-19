@@ -16,7 +16,6 @@ require 'Include/Header.php';
 ?>
 <div class="card card-body">
 <form method="POST" action="Reports/DirectoryReport.php">
-
 <?php
 
 // Get classifications for the selects
@@ -256,14 +255,12 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
         </td>
     </tr>
 
-
 </table>
 </div>
 
 <?php if (array_key_exists('cartdir', $_GET)) {
              echo '<input type="hidden" name="cartdir" value="M">';
 } ?>
-
 
 <p align="center">
 <BR>
@@ -272,4 +269,5 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 </p>
 </form>
 </div>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

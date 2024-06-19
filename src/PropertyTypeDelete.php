@@ -58,5 +58,5 @@ if (isset($_GET['Warn'])) {
     <a href="PropertyTypeList.php?Type=<?= $sType ?>"><?= gettext('No, cancel this deletion') ?></a>
 
 </p>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';
