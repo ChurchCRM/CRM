@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\SystemService;
 
-//Set the page title
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
@@ -252,5 +251,5 @@ EOD;
         document.addEventListener("DOMContentLoaded", callback);
     }
 </script>
-
-<?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+<?php
+include SystemURLs::getDocumentRoot() . '/Include/Footer.php';

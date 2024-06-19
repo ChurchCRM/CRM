@@ -1,18 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : OptionsManager.php
- *  last change : 2003-04-16
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2003 Chris Gebhardt
- *
- *  OptionName : Interface for editing simple selection options such as those
- *              : used for Family Roles, Classifications, and Group Types
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -381,7 +368,6 @@ for ($row = 1; $row <= $numRows; $row++) {
   <br/>
     <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
 
-
     <?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
         ?>
         <input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
@@ -424,4 +410,3 @@ if ($embedded) {
 } else {
     include 'Include/Footer.php';
 }
-?>

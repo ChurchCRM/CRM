@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyTypeEditor.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -20,10 +10,9 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have property and classification editing permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
 
-//Set the page title
 $sPageTitle = gettext('Property Type Editor');
 
-//Get the PropertyID
+// Get the PropertyID
 $iPropertyTypeID = 0;
 if (array_key_exists('PropertyTypeID', $_GET)) {
     $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
@@ -33,40 +22,39 @@ $sClass = '';
 $sNameError = '';
 $bError = false;
 
-//Was the form submitted?
 if (isset($_POST['Submit'])) {
     $sName = InputUtils::legacyFilterInput($_POST['Name']);
     $sDescription = InputUtils::legacyFilterInput($_POST['Description']);
     $sClass = InputUtils::legacyFilterInput($_POST['Class'], 'char', 1);
 
-    //Did they enter a name?
+    // Did they enter a name?
     if (strlen($sName) < 1) {
         $sNameError = '<span style="color: red;">' . gettext('You must enter a name') . '</span>';
         $bError = true;
     }
 
-    //If no errors, let's update
+    // If no errors, let's update
     if (!$bError) {
-        //Vary the SQL depending on if we're adding or editing
+        // Vary the SQL depending on if we're adding or editing
         if ($iPropertyTypeID == '') {
             $sSQL = "INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('" . $sClass . "','" . $sName . "','" . $sDescription . "')";
         } else {
             $sSQL = "UPDATE propertytype_prt SET prt_Class = '" . $sClass . "', prt_Name = '" . $sName . "', prt_Description = '" . $sDescription . "' WHERE prt_ID = " . $iPropertyTypeID;
         }
 
-        //Execute the SQL
+        // Execute the SQL
         RunQuery($sSQL);
 
-        //Route back to the list
+        // Route back to the list
         RedirectUtils::redirect('PropertyTypeList.php');
     }
 } elseif ($iPropertyTypeID > 0) {
-    //Get the data on this property
+    // Get the data on this property
     $sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = ' . $iPropertyTypeID;
     $rsProperty = mysqli_fetch_array(RunQuery($sSQL));
     extract($rsProperty);
 
-    //Assign values locally
+    // Assign values locally
     $sName = $prt_Name;
     $sDescription = $prt_Description;
     $sClass = $prt_Class;
@@ -116,5 +104,5 @@ require 'Include/Header.php';
     </div>
 </form>
 </div>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

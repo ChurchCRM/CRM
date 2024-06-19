@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : MemberRoleChange.php
- *  last change : 2003-04-03
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001-2003 Deane Barker, Lewis Franklin
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -20,19 +10,18 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have Manage Groups & Roles permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
 
-//Set the page title
 $sPageTitle = gettext('Member Role Change');
 
-//Get the GroupID from the querystring
+// Get the GroupID from the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
-//Get the PersonID from the querystring
+// Get the PersonID from the querystring
 $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 
-//Get the return location flag from the querystring
+// Get the return location flag from the querystring
 $iReturn = $_GET['Return'];
 
-//Was the form submitted?
+// Was the form submitted?
 if (isset($_POST['Submit'])) {
     //Get the new role
     $iNewRole = InputUtils::legacyFilterInput($_POST['NewRole']);
@@ -49,7 +38,7 @@ if (isset($_POST['Submit'])) {
     }
 }
 
-//Get their current role
+// Get their current role
 $sSQL = 'SELECT per_FirstName, per_LastName, grp_Name, grp_RoleListID, lst_OptionID, ' .
         'lst_OptionName AS sRoleName, p2g2r_rle_ID AS iRoleID ' .
         'FROM person_per ' .
@@ -62,11 +51,10 @@ $sSQL = 'SELECT per_FirstName, per_LastName, grp_Name, grp_RoleListID, lst_Optio
 $rsCurrentRole = mysqli_fetch_array(RunQuery($sSQL));
 extract($rsCurrentRole);
 
-//Get all the possible roles
+// Get all the possible roles
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $grp_RoleListID ORDER BY lst_OptionSequence";
 $rsAllRoles = RunQuery($sSQL);
 
-//Include the header
 require 'Include/Header.php'
 
 ?>
@@ -92,17 +80,16 @@ require 'Include/Header.php'
             <select name="NewRole">
                 <?php
 
-                //Loop through all the possible roles
+                // Loop through all the possible roles
                 while ($aRow = mysqli_fetch_array($rsAllRoles)) {
                     extract($aRow);
 
-                    //If this is the current role, select it
+                    // If this is the current role, select it
                     if ($iRoleID == $lst_OptionID) {
                         $sSelected = 'selected';
                     } else {
                         $sSelected = '';
                     }
-                    //Write the <option> tag
                     echo '<option value="' . $lst_OptionID . '" ' . $sSelected . '>' . gettext($lst_OptionName) . '</option>';
                 }
                 ?>
@@ -123,5 +110,5 @@ require 'Include/Header.php'
     </tr>
 </table>
 </form>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

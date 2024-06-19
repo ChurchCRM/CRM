@@ -1,20 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : /Include/LabelFunctions.php
- *  website     : https://churchcrm.io
- *
- *  Contributors:
- *  2006 Ed Davis
- *
- *
- *  Copyright 2006 Contributors
-  *
-
- *
- ******************************************************************************/
-
 // This file contains functions specifically related to address labels
 
 function FontSelect($fieldname): void
@@ -130,45 +115,45 @@ function ToParentsOfCheckBox($fieldname): void
 function StartRowStartColumn(): void
 {
     echo '
-	<tr>
-	<td class="LabelColumn">' . gettext('Start Row') . ':
-	</td>
-	<td class="TextColumn">
-	<input type="text" name="startrow" id="startrow" maxlength="2" size="3" value="1">
-	</td>
-	</tr>
-	<tr>
-	<td class="LabelColumn">' . gettext('Start Column') . ':
-	</td>
-	<td class="TextColumn">
-	<input type="text" name="startcol" id="startcol" maxlength="2" size="3" value="1">
-	</td>
-	</tr>';
+    <tr>
+    <td class="LabelColumn">' . gettext('Start Row') . ':
+    </td>
+    <td class="TextColumn">
+    <input type="text" name="startrow" id="startrow" maxlength="2" size="3" value="1">
+    </td>
+    </tr>
+    <tr>
+    <td class="LabelColumn">' . gettext('Start Column') . ':
+    </td>
+    <td class="TextColumn">
+    <input type="text" name="startcol" id="startcol" maxlength="2" size="3" value="1">
+    </td>
+    </tr>';
 }
 
 function IgnoreIncompleteAddresses(): void
 {
     echo '
-	<tr>
-	<td class="LabelColumn">' . gettext('Ignore Incomplete<br>Addresses') . ':
-	</td>
-	<td class="TextColumn">
-	<input type="checkbox" name="onlyfull" id="onlyfull" value="1" checked>
-	</td>
-	</tr>';
+    <tr>
+    <td class="LabelColumn">' . gettext('Ignore Incomplete<br>Addresses') . ':
+    </td>
+    <td class="TextColumn">
+    <input type="checkbox" name="onlyfull" id="onlyfull" value="1" checked>
+    </td>
+    </tr>';
 }
 
 function LabelFileType(): void
 {
     echo '
-	<tr>
-		<td class="LabelColumn">' . gettext('File Type') . ':
-		</td>
-		<td class="TextColumn">
-			<select name="filetype">
-				<option value="PDF">PDF</option>
-				<option value="CSV">CSV</option>
-			</select>
-		</td>
-	</tr>';
+    <tr>
+        <td class="LabelColumn">' . gettext('File Type') . ':
+        </td>
+        <td class="TextColumn">
+            <select name="filetype">
+                <option value="PDF">PDF</option>
+                <option value="CSV">CSV</option>
+            </select>
+        </td>
+    </tr>';
 }

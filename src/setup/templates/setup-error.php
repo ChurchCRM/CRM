@@ -1,6 +1,5 @@
 <?php
 
-
 $sPageTitle = 'ChurchCRM – Setup Error';
 require '../Include/HeaderNotLoggedIn.php';
 ?>
@@ -11,11 +10,9 @@ require '../Include/HeaderNotLoggedIn.php';
         padding: 15px;
         position: relative;
     }
-
 </style>
 <h1 class="text-center">Welcome to ChurchCRM Setup Error</h1>
 <p/><br/>
-
   <div class="error-page">
     <h2 class="headline text-yellow">500</h2>
     <div class="error-content">
@@ -26,7 +23,5 @@ require '../Include/HeaderNotLoggedIn.php';
     <!-- /.error-content -->
   </div>
   <!-- /.error-page -->
-
 <?php
 require '../Include/FooterNotLoggedIn.php';
-?>

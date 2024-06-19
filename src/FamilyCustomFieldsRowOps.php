@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : FamilyCustomFieldsRowOps.php
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
- *                Copyright 2004-2012 Michael Wilt
- *  Cloned from PersonCustomFieldsRowOps.php
- *
- *  function    : Row operations for the Family custom fields form
- *******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -27,7 +16,7 @@ $sField = InputUtils::legacyFilterInput($_GET['Field']);
 $sAction = $_GET['Action'];
 
 switch ($sAction) {
-    // Move a field up:  Swap the fam_custom_Order (ordering) of the selected row and the one above it
+    // Move a field up: Swap the fam_custom_Order (ordering) of the selected row and the one above it
     case 'up':
         $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . $iOrderID . "' WHERE fam_custom_Order = '" . ($iOrderID - 1) . "'";
         RunQuery($sSQL);
@@ -35,7 +24,7 @@ switch ($sAction) {
         RunQuery($sSQL);
         break;
 
-        // Move a field down:  Swap the fam_custom_Order (ordering) of the selected row and the one below it
+        // Move a field down: Swap the fam_custom_Order (ordering) of the selected row and the one below it
     case 'down':
         $sSQL = "UPDATE family_custom_master SET fam_custom_Order = '" . $iOrderID . "' WHERE fam_custom_Order = '" . ($iOrderID + 1) . "'";
         RunQuery($sSQL);

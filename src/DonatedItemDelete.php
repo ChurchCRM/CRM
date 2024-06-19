@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/PaddleNumDelete.php
-*  last change : 2011-04-03
-*  description : Deletes a specific donated item
-*  copyright   : Copyright 2009 Michael Wilt
-
-******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 

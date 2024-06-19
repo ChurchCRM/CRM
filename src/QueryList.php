@@ -1,21 +1,10 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : QueryList.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 
-//Set the page title
 $sPageTitle = gettext('Query Listing');
 
 $sSQL = 'SELECT * FROM query_qry ORDER BY qry_Name';
@@ -59,5 +48,4 @@ require 'Include/Header.php';
 
 </div>
 <?php
-
 require 'Include/Footer.php';

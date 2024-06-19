@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : Reports/ConfirmReportEmail.php
- *  last change : 2014-11-28
- *  description : Creates a email with all the confirmation letters asking member
- *                families to verify the information in the database.
- *
- ******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -165,9 +156,9 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $curY += SystemConfig::getValue('incrementY');
 
     $sSQL = 'SELECT *, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole FROM person_per
-				LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-				LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-				WHERE per_fam_ID = ' . $fam_ID . ' ORDER BY per_fmr_ID';
+                LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
+                LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
+                WHERE per_fam_ID = ' . $fam_ID . ' ORDER BY per_fmr_ID';
     $rsFamilyMembers = RunQuery($sSQL);
 
     $XName = 10;
@@ -296,11 +287,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
         // Get the Groups this Person is assigned to
         $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
-				FROM group_grp
-				LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
-				LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
-				WHERE person2group2role_p2g2r.p2g2r_per_ID = ' . $per_ID . '
-				ORDER BY grp_Name';
+                FROM group_grp
+                LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
+                LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
+                WHERE person2group2role_p2g2r.p2g2r_per_ID = ' . $per_ID . '
+                ORDER BY grp_Name';
         $rsAssignedGroups = RunQuery($sSQL);
         if (mysqli_num_rows($rsAssignedGroups) > 0) {
             $groupStr = 'Assigned groups for ' . $per_FirstName . ' ' . $per_LastName . ': ';

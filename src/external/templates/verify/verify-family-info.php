@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 
-// Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
 
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
@@ -108,7 +107,6 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
     </div>
   </div>
 
-
   <script  src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapsRenderKey") ?>"></script>
   <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     <?php if ($doShowMap) { ?>
@@ -165,8 +163,6 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
     </div>
   </div>
 
-
-
 <style>
 
   #verifyBox {
@@ -206,5 +202,4 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyVerify.js"></script>
 
 <?php
-// Add the page footer
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

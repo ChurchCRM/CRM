@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyAssign.php
- *  last change : 2003-06-04
- *  description : property assign
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
-  *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -148,7 +136,6 @@ if ($sAction === 'edit') {
     $sValue = $aRow['r2p_Value'];
 }
 
-// Set the page title and include HTML header
 $sPageTitle = $sTypeName . ' : ' . gettext(' Property Assignment');
 require 'Include/Header.php';
 ?>
@@ -189,5 +176,5 @@ require 'Include/Header.php';
                                                                } echo '"' ?> name="Submit"></p>
 
 </form>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

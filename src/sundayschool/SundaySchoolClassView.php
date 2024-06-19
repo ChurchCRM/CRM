@@ -483,4 +483,3 @@ function implodeUnique($array, $withQuotes): string
 </script>
 <?php
 require '../Include/Footer.php';
-?>

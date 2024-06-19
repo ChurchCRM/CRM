@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyUnassign.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -23,7 +13,7 @@ if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled() && !Authen
     RedirectUtils::redirect('v2/dashboard');
 }
 
-//Get the new property value from the post collection
+// Get the new property value from the post collection
 $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 
 // Is there a PersonID in the querystring?
@@ -83,7 +73,6 @@ $rsProperty = RunQuery($sSQL);
 $aRow = mysqli_fetch_array($rsProperty);
 $sPropertyName = $aRow['pro_Name'];
 
-//Set the page title
 $sPageTitle = $sTypeName . gettext(' Property Unassignment');
 
 //Include the header
@@ -92,7 +81,6 @@ require 'Include/Header.php';
 ?>
 
 <?= gettext('Please confirm removal of this property from this') . ' ' . $sTypeName ?>:
-
 
 <table class="table table-striped">
     <tr>
@@ -110,5 +98,5 @@ require 'Include/Header.php';
 
     <a class="btn btn-danger" href="PropertyUnassign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID . '&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
 </div>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

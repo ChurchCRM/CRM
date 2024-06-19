@@ -43,7 +43,7 @@ class DashboardService
     {
         $personCount = PersonQuery::Create('per')
             ->useFamilyQuery('fam', 'left join')
-                ->filterByDateDeactivated(null)
+            ->filterByDateDeactivated(null)
             ->endUse()
             ->count();
         $data = ['personCount' => $personCount];
@@ -88,7 +88,7 @@ SQL;
           INNER JOIN group_grp ON grp_ID = p2g2r_grp_ID
           LEFT JOIN family_fam ON fam_ID = per_fam_ID
           where fam_DateDeactivated is  null and
-	            p2g2r_rle_ID = 2 and grp_Type = 4) as SundaySchoolKidsCount
+                p2g2r_rle_ID = 2 and grp_Type = 4) as SundaySchoolKidsCount
         from dual ;
         ';
         $rsQuickStat = RunQuery($sSQL);

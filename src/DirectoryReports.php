@@ -1,18 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : DirectoryReports.php
- *  last change : 2003-09-03
- *  description : form to invoke directory report
- *
- *  https://churchcrm.io/
- *  Copyright 2003 Chris Gebhardt
- *  Copyright 2004-2012 Michael Wilt
-  *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -23,14 +10,12 @@ use ChurchCRM\Utils\RedirectUtils;
 // Check for Create Directory user permission.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled());
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Directory reports');
 require 'Include/Header.php';
 
 ?>
 <div class="card card-body">
 <form method="POST" action="Reports/DirectoryReport.php">
-
 <?php
 
 // Get classifications for the selects
@@ -270,14 +255,12 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
         </td>
     </tr>
 
-
 </table>
 </div>
 
 <?php if (array_key_exists('cartdir', $_GET)) {
              echo '<input type="hidden" name="cartdir" value="M">';
 } ?>
-
 
 <p align="center">
 <BR>
@@ -286,4 +269,5 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 </p>
 </form>
 </div>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

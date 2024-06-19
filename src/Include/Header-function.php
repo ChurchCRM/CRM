@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : Include/Header-functions.php
- *  website     : https://churchcrm.io
- *  description : page header used for most pages
- *
- *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
- *  Update 2017 Philippe Logel
- *
- *
- ******************************************************************************/
-
 require_once 'Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
@@ -104,4 +92,3 @@ function Header_body_scripts(): void
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
     <?php
 }
-?>

@@ -6,7 +6,7 @@ require 'Include/Functions.php';
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
 
-//Get the FamilyID out of the querystring
+// Get the FamilyID out of the querystring
 $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
 
 $family = FamilyQuery::create()

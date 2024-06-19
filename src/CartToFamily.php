@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : CartToFamily.php
- *  last change : 2003-10-09
- *  description : Add cart records to a family
- *
- *  https://churchcrm.io/
- *  Copyright 2003 Chris Gebhardt
-  *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -145,7 +133,6 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
     }
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Add Cart to Family');
 require 'Include/Header.php';
 
@@ -238,7 +225,6 @@ SQL;
         <td></td>
         <td><p class="MediumLargeText"><?= gettext('If adding a new family, enter data below.') ?></p></td>
     </tr>
-
 
     <tr>
         <td class="LabelColumn"><?= gettext('Family Name') ?>:</td>
@@ -363,4 +349,5 @@ SQL;
         }
         ?>
 </div>
-<?php require 'Include/Footer.php'; ?>
+<?php
+require 'Include/Footer.php';

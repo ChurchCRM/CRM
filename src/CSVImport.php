@@ -1,19 +1,7 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : CSVImport.php
- *  last change : 2003-10-02
- *  description : Tool for importing CSV person data into InfoCentral
- *
- *  https://churchcrm.io/
- *  Copyright 2003 Chris Gebhardt
- *
- ******************************************************************************/
-
 namespace ChurchCRM;
 
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -32,6 +20,7 @@ use ChurchCRM\Utils\LoggerUtils;
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 $logger = LoggerUtils::getAppLogger();
+
 /**
  * A monogamous society is assumed, however  it can be patriarchal or matriarchal
  **/
@@ -109,7 +98,6 @@ class Family
     }
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('CSV Import');
 require 'Include/Header.php'; ?>
 
@@ -957,4 +945,3 @@ function GetAge(int $Month, int $Day, ?int $Year): int
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
 <?php
 require 'Include/Footer.php';
-?>

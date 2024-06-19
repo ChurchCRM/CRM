@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PersonView.php
- *  last change : 2003-04-14
- *  description : Displays all the information about a single person
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -22,8 +10,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
-
-;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -38,10 +24,8 @@ if (empty($person)) {
     exit;
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Person Profile');
 require 'Include/Header.php';
-
 
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
@@ -471,7 +455,6 @@ $bOkToEdit = (
                                                 <img style="width:40px; height:40px;display:inline-block" src="<?= $sRootPath . '/api/person/' . $familyMember->getId() . '/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
                                                 <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
-
                                             </td>
                                             <td class="text-center">
                                                 <?= $familyMember->getFamilyRoleName() ?>
@@ -508,7 +491,6 @@ $bOkToEdit = (
                             <?php
                         } ?>
                     </div>
-
 
                     <div class="tab-pane" id="timeline">
                         <ul class="timeline timeline-inverse">
@@ -917,7 +899,6 @@ $bOkToEdit = (
             window.CRM.currentPersonID = <?= $iPersonID ?>;
             window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
 
-
             $("#deletePhoto").click(function() {
                 window.CRM.APIRequest({
                     method: "DELETE",
@@ -941,14 +922,12 @@ $bOkToEdit = (
                 window.CRM.photoUploader.show();
             });
 
-
             $(document).ready(function() {
                 $("#input-volunteer-opportunities").select2();
                 $("#input-person-properties").select2();
 
                 $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
                 $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
-
 
                 contentExists(window.CRM.root + "/api/person/" + window.CRM.currentPersonID + "/photo", function(success) {
                     if (success) {
@@ -966,5 +945,5 @@ $bOkToEdit = (
 
             });
         </script>
-
-        <?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

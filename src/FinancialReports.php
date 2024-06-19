@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : FinancialReports.php
- *  last change : 2005-03-26
- *  description : form to invoke financial reports
-  *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -30,7 +21,6 @@ if ($sReportType == '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Financial Reports');
 if ($sReportType) {
     $sPageTitle .= ': ' . gettext($sReportType);
@@ -380,4 +370,3 @@ $(document).ready(function() {
 </div>
 <?php
 require 'Include/Footer.php';
-?>

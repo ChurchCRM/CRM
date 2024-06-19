@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-//Set the page title
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
@@ -99,5 +98,5 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         });
     });
 </script>
-
-<?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+<?php
+include SystemURLs::getDocumentRoot() . '/Include/Footer.php';

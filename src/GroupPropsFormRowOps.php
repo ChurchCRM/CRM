@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : GroupPropsFormRowOps.php
- *  last change : 2013-02-09
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
- *
- *  function    : Row operations for the group-specific properties form
- *******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -37,23 +27,18 @@ if ($grp_hasSpecialProps == false) {
 }
 
 switch ($sAction) {
-    // Move a field up:  Swap the prop_ID (ordering) of the selected row and the one above it
     case 'up':
         $sSQL = "UPDATE groupprop_master SET prop_ID = '" . $iPropID . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . ($iPropID - 1) . "'";
         RunQuery($sSQL);
         $sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($iPropID - 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
         RunQuery($sSQL);
         break;
-
-        // Move a field down:  Swap the prop_ID (ordering) of the selected row and the one below it
     case 'down':
         $sSQL = "UPDATE groupprop_master SET prop_ID = '" . $iPropID . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . ($iPropID + 1) . "'";
         RunQuery($sSQL);
         $sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($iPropID + 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
         RunQuery($sSQL);
         break;
-
-        // Delete a field from the form
     case 'delete':
         // Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
         $sSQL = "SELECT type_ID,prop_Special FROM groupprop_master WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
@@ -70,7 +55,7 @@ switch ($sAction) {
         $sSQL = "DELETE FROM groupprop_master WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . $iPropID . "'";
         RunQuery($sSQL);
 
-        $sSQL = 'SELECT *	FROM groupprop_master WHERE grp_ID = ' . $iGroupID;
+        $sSQL = 'SELECT *    FROM groupprop_master WHERE grp_ID = ' . $iGroupID;
         $rsPropList = RunQuery($sSQL);
         $numRows = mysqli_num_rows($rsPropList);
 
@@ -82,8 +67,6 @@ switch ($sAction) {
             }
         }
         break;
-
-        // If no valid action was specified, abort and return to the GroupView
     default:
         RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
         break;

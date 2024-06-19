@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PledgeDelete.php
- *  last change : 2004-6-12
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt, Michael Wilt
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -17,7 +7,6 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-//Set the page title
 $sPageTitle = gettext('Confirm Delete');
 
 $linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
@@ -27,7 +16,7 @@ $sGroupKey = InputUtils::legacyFilterInput($_GET['GroupKey'], 'string');
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
 
-//Is this the second pass?
+// Is this the second pass?
 if (isset($_POST['Delete'])) {
     $sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $sGroupKey . "';";
     RunQuery($sSQL);
@@ -54,5 +43,5 @@ require 'Include/Header.php';
         </td>
     </tr>
 </table>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

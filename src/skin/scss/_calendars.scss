@@ -1,36 +1,41 @@
-.modal-table{ 
-  table-layout:fixed;
-  width:100%
+.modal-table {
+    table-layout: fixed;
+    width: 100%
 }
 
 .modal-table td {
-  word-wrap: break-word;
+    word-wrap: break-word;
 }
 
-.modal-table select, .modal-table input, .modal-table textarea {
-  width:100%;
+.modal-table select,
+.modal-table input,
+.modal-table textarea {
+    width: 100%;
 }
 
-.calendar-filter-row .col-xs-1, .calendar-filter-row .col-xs-7, .calendar-filter-row  .col-xs-4  {
-  padding-left:5px; padding-right:5px;
+.calendar-filter-row .col-xs-1,
+.calendar-filter-row .col-xs-7,
+.calendar-filter-row .col-xs-4 {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .calendar-filter-text {
-  display:inline-block; 
-  padding-left:5px; 
-  padding-right:5px;
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
-.form-field-error { 
-  color: red;
+.form-field-error {
+    color: red;
 }
 
 .RequiredFormFieldUnsatisfied {
-  color: red;
-  display: inline-block;
-  margin-left: 10px;
+    color: red;
+    display: inline-block;
+    margin-left: 10px;
 }
 
 .RequiredFormFieldSatisfied {
-  visibility: hidden;
+    visibility: hidden;
 }

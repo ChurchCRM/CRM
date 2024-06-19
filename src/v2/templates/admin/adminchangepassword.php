@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-//Set the page title
 $sPageTitle = gettext("Change Password") . ": " . $user->getFullName();
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -38,4 +37,5 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PasswordChange.js"></script>
-<?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+<?php
+include SystemURLs::getDocumentRoot() . '/Include/Footer.php';

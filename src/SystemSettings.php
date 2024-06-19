@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : SystemSettings.php
- *  description : setup de systema settings
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -25,7 +14,6 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security
 AuthenticationManager::redirectHomeIfNotAdmin();
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('System Settings');
 
 // Save Settings
@@ -40,7 +28,7 @@ if (isset($_POST['save'])) {
     while ($current_type = current($type)) {
         $id = key($type);
         // Filter Input
-        if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
+        if ($id == $iHTMLHeaderRow) { // Special handling of header value so HTML doesn't get removed
             $value = InputUtils::filterHTML($new_value[$id]);
         } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
             $value = InputUtils::filterString($new_value[$id]);
@@ -250,7 +238,6 @@ require 'Include/Header.php';
 
 </form>
 
-
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function() {
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
@@ -277,6 +264,5 @@ require 'Include/Header.php';
   });
 </script>
 <script src="skin/js/SystemSettings.js"></script>
-
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

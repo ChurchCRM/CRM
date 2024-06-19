@@ -22,7 +22,6 @@ CREATE TABLE `calendars` (
   UNIQUE KEY `accesstoken` (`accesstoken`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-
 DROP TABLE IF EXISTS `calendar_events`;
 # This is a join-table to link an event with a calendar
 CREATE TABLE `calendar_events` (

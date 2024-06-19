@@ -1,20 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : WhyCameEditor.php
- *  last change : 2004-6-12
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt, Michael Wilt
- *
-
-
-
-
- *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -27,14 +12,13 @@ $linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
 $iPerson = InputUtils::legacyFilterInput($_GET['PersonID']);
 $iWhyCameID = InputUtils::legacyFilterInput($_GET['WhyCameID']);
 
-//Get name
 $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per where per_ID = ' . $iPerson;
 $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
 $sPageTitle = gettext('"Why Came" notes for ') . $per_FirstName . ' ' . $per_LastName;
 
-//Is this the second pass?
+// Is this the second pass?
 if (isset($_POST['Submit'])) {
     $tJoin = InputUtils::legacyFilterInput($_POST['Join']);
     $tCome = InputUtils::legacyFilterInput($_POST['Come']);
@@ -124,4 +108,5 @@ require 'Include/Header.php';
     </table>
   </div>
 </div>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

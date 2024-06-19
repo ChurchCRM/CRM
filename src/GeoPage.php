@@ -1,22 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : GeoPage.php
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2004-2005 Michael Wilt
- *
- *  Additional Contributors:
- *  2006 Ed Davis
- *
- *
- *  Copyright Contributors
-  *
-
- *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -84,9 +67,6 @@ function FamilyInfoByDistance($iFamily)
     return $resultsByDistance;
 }
 
-/* End of functions ... code starts here */
-
-//Set the page title
 $sPageTitle = gettext('Family Geographic Utilities');
 
 // Create array with Classification Information (lst_ID = 1)
@@ -437,4 +417,3 @@ $families = FamilyQuery::create()
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GeoPage.js"></script>
 <?php
 require 'Include/Footer.php';
-?>

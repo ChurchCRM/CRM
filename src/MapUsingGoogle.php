@@ -11,7 +11,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-//Set the page title
 $sPageTitle = gettext('View on Map');
 
 require 'Include/Header.php';
@@ -167,7 +166,6 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
             lat: <?= ChurchMetaData::getChurchLatitude() ?>,
             lng: <?= ChurchMetaData::getChurchLongitude() ?>};
 
-
         var markerIcons = <?= json_encode($markerIcons) ?>;
         var iconsJSON = <?= $icons->toJSON() ?>;
         var icons = iconsJSON.ListOptions;
@@ -312,4 +310,4 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
     </script>
     <?php
 }
-require 'Include/Footer.php' ?>
+require 'Include/Footer.php';

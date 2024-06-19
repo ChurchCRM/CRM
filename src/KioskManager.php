@@ -1,20 +1,10 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : Dashboard.php
- *  last change : 2014-11-29
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2014
-  *
- ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
 
-//Set the page title
 $sPageTitle = gettext('Kiosk Manager');
 
 require 'Include/Header.php';
@@ -87,7 +77,6 @@ require 'Include/Header.php';
     }
 
   })
-
 
   $(document).on("change", ".assignmentMenu", function(event) {
     var kioskId = $(event.currentTarget).data("kioskid");
@@ -180,8 +169,5 @@ require 'Include/Header.php';
   })
 
 </script>
-
 <?php
-
 require 'Include/Footer.php';
-?>

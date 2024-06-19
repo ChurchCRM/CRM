@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyDelete.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -19,14 +9,13 @@ use ChurchCRM\Utils\RedirectUtils;
 
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
 
-//Set the page title
 $sPageTitle = gettext('Property Delete Confirmation');
 
 // Get the Type and Property
 $sType = $_GET['Type'];
 $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 
-//Do we have deletion confirmation?
+// Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
     $sSQL = 'DELETE FROM property_pro WHERE pro_ID = ' . $iPropertyID;
     RunQuery($sSQL);
@@ -37,7 +26,7 @@ if (isset($_GET['Confirmed'])) {
     RedirectUtils::redirect('PropertyList.php?Type=' . $sType);
 }
 
-//Get the family record in question
+// Get the family record in question
 $sSQL = 'SELECT * FROM property_pro WHERE pro_ID = ' . $iPropertyID;
 $rsProperty = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsProperty));
@@ -65,5 +54,5 @@ require 'Include/Header.php';
 </p>
 
 </p>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

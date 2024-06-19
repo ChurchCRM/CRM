@@ -23,5 +23,4 @@ if (!array_key_exists('Message', $_GET)) {
   <a href="<?= SystemURLs::getRootPath()?>/" class="btn btn-primary"><?=gettext('Back to Menu')?></a>
 </p>
 <?php
-
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

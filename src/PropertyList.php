@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyList.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -17,10 +7,10 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-//Get the type to display
+// Get the type to display
 $sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);
 
-//Based on the type, set the TypeName
+// Based on the type, set the TypeName
 switch ($sType) {
     case 'p':
         $sTypeName = gettext('Person');
@@ -39,10 +29,9 @@ switch ($sType) {
         break;
 }
 
-//Set the page title
 $sPageTitle = $sTypeName . ' ' . gettext('Property List');
 
-//Get the properties
+// Get the properties
 $sSQL = "SELECT * FROM property_pro, propertytype_prt WHERE prt_ID = pro_prt_ID AND pro_Class = '" . $sType . "' ORDER BY prt_Name,pro_Name";
 $rsProperties = RunQuery($sSQL);
 
@@ -55,7 +44,7 @@ require 'Include/Header.php'; ?>
     echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=" . $sType . '">' . gettext('Add a New') . ' ' . $sTypeName . ' ' . gettext('Property') . '</a></p>';
 }
 
-//Start the table
+// Start the table
 echo "<table class='table'>";
 echo '<tr>';
 echo '<th valign="top">' . gettext('Name') . '</th>';
@@ -69,18 +58,18 @@ echo '</tr>';
 
 echo '<tr><td>&nbsp;</td></tr>';
 
-//Initialize the row shading
+// Initialize the row shading
 $sRowClass = 'RowColorA';
 $iPreviousPropertyType = -1;
 $sBlankLine = '';
 
-//Loop through the records
+// Loop through the records
 while ($aRow = mysqli_fetch_array($rsProperties)) {
     $pro_Prompt = '';
     $pro_Description = '';
     extract($aRow);
 
-    //Did the Type change?
+    // Did the Type change?
     if ($iPreviousPropertyType != $prt_ID) {
         //Write the header row
         echo $sBlankLine;
@@ -107,13 +96,10 @@ while ($aRow = mysqli_fetch_array($rsProperties)) {
     }
     echo '</tr>';
 
-    //Store the PropertyType
+    // Store the PropertyType
     $iPreviousPropertyType = $prt_ID;
 }
 
-//End the table
 echo '</table></div>';
 
 require 'Include/Footer.php';
-
-?>

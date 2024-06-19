@@ -13,12 +13,12 @@ class PersonService
     public function search(string $searchTerm, $includeFamilyRole = true): array
     {
         $searchLikeString = '%' . $searchTerm . '%';
-        $people = PersonQuery::create()->
-        filterByFirstName($searchLikeString, Criteria::LIKE)->
-        _or()->filterByMiddleName($searchLikeString, Criteria::LIKE)->
-        _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
-        _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
-        limit(15)->find();
+        $people = PersonQuery::create()
+            ->filterByFirstName($searchLikeString, Criteria::LIKE)
+            ->_or()->filterByMiddleName($searchLikeString, Criteria::LIKE)
+            ->_or()->filterByLastName($searchLikeString, Criteria::LIKE)
+            ->_or()->filterByEmail($searchLikeString, Criteria::LIKE)
+            ->limit(15)->find();
         $return = [];
         foreach ($people as $person) {
             $values['id'] = $person->getId();
@@ -58,8 +58,8 @@ class PersonService
     public function getPeopleEmailsAndGroups(): array
     {
         $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_ID, group_grp.grp_Name, lst_OptionName
-	            from person_per
-    		        left JOIN person2group2role_p2g2r on
+                from person_per
+                    left JOIN person2group2role_p2g2r on
                   person2group2role_p2g2r.p2g2r_per_ID = person_per.per_id
 
                 left JOIN group_grp ON

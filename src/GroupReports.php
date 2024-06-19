@@ -1,18 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : GroupReports.php
- *  last change : 2003-09-03
- *  description : Detailed reports on group members
- *
- *  https://churchcrm.io/
- *  Copyright 2003 Federico Nebiolo, Chris Gebhardt
- *  Copyright 2004-2012 Michael Wilt
-  *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -22,7 +9,6 @@ use ChurchCRM\Utils\InputUtils;
 $sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
 $rsGroups = RunQuery($sSQL);
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Group reports');
 require 'Include/Header.php';
 ?>
@@ -151,13 +137,10 @@ require 'Include/Header.php';
                             <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
                         </p>
                     </form>
-
                 </div>
             </div>
         </div>
     </div>
-
-            <?php
-} ?>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+}
+require 'Include/Footer.php';

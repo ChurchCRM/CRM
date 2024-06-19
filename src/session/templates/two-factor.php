@@ -3,7 +3,6 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Login');
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 

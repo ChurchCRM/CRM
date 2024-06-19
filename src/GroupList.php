@@ -1,24 +1,8 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : GroupList.php
-*  website     : https://churchcrm.io
-*  copyright   : Copyright 2001, 2002 Deane Barker
-*  update      : 2017-11-02, Philippe Logel
-*
-*
-*  Additional Contributors:
-*  2006 Ed Davis
-*  2016 Charles Crossan
-
-******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-//Set the page title
 $sPageTitle = gettext('Group Listing');
 require 'Include/Header.php';
 
@@ -45,15 +29,12 @@ foreach ($rsGroupTypes as $groupType) {
 </label>
 </p>
 
-
-
 <div class="card card-body">
 <table class="table" id="groupsTable">
 </table>
 <?php
 if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-    ?>
-
+?>
 
 <br>
 <form action="#" method="get" class="form">
@@ -84,7 +65,5 @@ $( document).ready(function() {
 });
 
 </script>
-
 <?php
 require 'Include/Footer.php';
-?>

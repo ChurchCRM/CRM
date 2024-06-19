@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : ReminderReport.php
- *  last change : 2003-09-03
- *  description : form to invoke user access report
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -22,7 +13,6 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValu
     RedirectUtils::redirect('v2/dashboard');
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Pledge Reminder Report');
 require 'Include/Header.php';
 
@@ -58,4 +48,3 @@ if (isset($_POST['Submit'])) {
 </div>
 <?php
 require 'Include/Footer.php';
-?>

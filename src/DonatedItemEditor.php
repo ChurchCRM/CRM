@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : DonatedItemEditor.php
- *  last change : 2009-04-15
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2009 Michael Wilt
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -44,10 +34,9 @@ if ($iCurrentFundraiser) {
     extract(mysqli_fetch_array($rsDeposit));
 }
 
-//Set the page title
 $sPageTitle = gettext('Donated Item Editor');
 
-//Is this the second pass?
+// Is this the second pass?
 if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
     $sItem = InputUtils::legacyFilterInputArr($_POST, 'Item');
@@ -89,7 +78,7 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
         $donatedItem->save();
 
         $bGetKeyBack = true;
-    // Existing record (update)
+        // Existing record (update)
     } else {
         $donatedItem = DonatedItemQuery::create()->findOneById($iDonatedItemID);
         $donatedItem
@@ -131,21 +120,21 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
         RedirectUtils::redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     }
 } else {
-  //FirstPass
+    //FirstPass
     //Are we editing or adding?
     if (strlen($iDonatedItemID) > 0) {
         //Editing....
         //Get all the data on this record
 
         $sSQL = "SELECT di_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID,
-		                   a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
-	                       b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
-	                       di_title, di_description, di_sellprice, di_estprice, di_materialvalue,
-	                       di_minimum, di_picture
-	         FROM donateditem_di
-	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
-	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-	         WHERE di_ID = '" . $iDonatedItemID . "'";
+                           a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
+                           b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
+                           di_title, di_description, di_sellprice, di_estprice, di_materialvalue,
+                           di_minimum, di_picture
+             FROM donateditem_di
+             LEFT JOIN person_per a ON di_donor_ID=a.per_ID
+             LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
+             WHERE di_ID = '" . $iDonatedItemID . "'";
         $rsDonatedItem = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsDonatedItem));
 
@@ -213,29 +202,29 @@ require 'Include/Header.php';
                             <label><?= gettext('Donor'); ?>:</label>
                             <select name="Donor" id="Donor" class="form-control select2">
                                 <option value="0" selected><?= gettext('Unassigned') ?></option>
-<?php
-$rsPeople = RunQuery($sPeopleSQL);
-while ($aRow = mysqli_fetch_array($rsPeople)) {
-    extract($aRow);
-    echo '<option value="' . $per_ID . '"';
-    if ($iDonor == $per_ID) {
-        echo ' selected';
-    }
-    echo '>' . $per_LastName . ', ' . $per_FirstName;
-    echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-}
-?>
+                                <?php
+                                $rsPeople = RunQuery($sPeopleSQL);
+                                while ($aRow = mysqli_fetch_array($rsPeople)) {
+                                    extract($aRow);
+                                    echo '<option value="' . $per_ID . '"';
+                                    if ($iDonor == $per_ID) {
+                                        echo ' selected';
+                                    }
+                                    echo '>' . $per_LastName . ', ' . $per_FirstName;
+                                    echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                                }
+                                ?>
                             </select>
                         </div>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-    $(document).ready(function() {
-    $("#Donor").select2();
-});
-</script>
+                        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                            $(document).ready(function() {
+                                $("#Donor").select2();
+                            });
+                        </script>
 
                         <div class="form-group">
                             <label><?= gettext('Title') ?>:</label>
-                            <input type="text" name="Title" id="Title" value="<?= htmlentities($sTitle) ?>" class="form-control"/>
+                            <input type="text" name="Title" id="Title" value="<?= htmlentities($sTitle) ?>" class="form-control" />
                         </div>
 
                         <div class="form-group">
@@ -258,26 +247,26 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                     <div class="col-md-4 col-xs-6">
                         <div class="form-group">
                             <label><?= gettext('Buyer') ?>:</label>
-<?php if ($bMultibuy) {
-    echo gettext('Multiple');
-} else {
-    ?>
-                        <select name="Buyer" class="form-control">
-                          <option value="0" selected><?= gettext('Unassigned') ?></option>
-    <?php
-    $rsBuyers = RunQuery($sPaddleSQL);
-    while ($aRow = mysqli_fetch_array($rsBuyers)) {
-        extract($aRow);
-        echo '<option value="' . $pn_per_ID . '"';
-        if ($iBuyer == $pn_per_ID) {
-            echo ' selected';
-        }
-        echo '>' . $pn_Num . ': ' . $buyerFirstName . ' ' . $buyerLastName;
-    }
-}
-?>
+                            <?php if ($bMultibuy) {
+                                echo gettext('Multiple');
+                            } else {
+                            ?>
+                                <select name="Buyer" class="form-control">
+                                    <option value="0" selected><?= gettext('Unassigned') ?></option>
+                                <?php
+                                $rsBuyers = RunQuery($sPaddleSQL);
+                                while ($aRow = mysqli_fetch_array($rsBuyers)) {
+                                    extract($aRow);
+                                    echo '<option value="' . $pn_per_ID . '"';
+                                    if ($iBuyer == $pn_per_ID) {
+                                        echo ' selected';
+                                    }
+                                    echo '>' . $pn_Num . ': ' . $buyerFirstName . ' ' . $buyerLastName;
+                                }
+                            }
+                                ?>
 
-                            </select>
+                                </select>
                         </div>
 
                         <div class="form-group">
@@ -290,8 +279,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                             <div class="input-group">
                                 <input type="text" name="NumberCopies" id="NumberCopies" value="0" class="form-control">
                                 <span class="input-group-btn">
-                                    <input type="button" class="btn btn-primary" value="<?= gettext('Go') ?>" name="DonatedItemReplicate"
-                                    onclick="javascript:document.location = 'DonatedItemReplicate.php?DonatedItemID=<?= $iDonatedItemID ?>&Count=' + NumberCopies.value">
+                                    <input type="button" class="btn btn-primary" value="<?= gettext('Go') ?>" name="DonatedItemReplicate" onclick="javascript:document.location = 'DonatedItemReplicate.php?DonatedItemID=<?= $iDonatedItemID ?>&Count=' + NumberCopies.value">
                                 </span>
                             </div>
                         </div>
@@ -310,7 +298,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                         </div>
 
                         <?php if ($sPictureURL != '') : ?>
-                            <div class="form-group"><img src="<?= htmlentities($sPictureURL) ?>"/></div>
+                            <div class="form-group"><img src="<?= htmlentities($sPictureURL) ?>" /></div>
                         <?php endif; ?>
 
                     </div>
@@ -323,12 +311,11 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                 <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) : ?>
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
                 <?php endif; ?>
-                <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel"
-                onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'v2/dashboard'; ?>';">
+                <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel" onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'v2/dashboard'; ?>';">
             </div>
 
         </div>
     </div>
 </form>
-
-<?php require 'Include/Footer.php'; ?>
+<?php
+require 'Include/Footer.php';

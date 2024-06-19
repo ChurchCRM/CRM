@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyTypeDelete.php
- *  last change : 2003-06-04
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -20,13 +10,12 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have property and classification editing permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
 
-//Set the page title
 $sPageTitle = gettext('Property Type Delete Confirmation');
 
-//Get the PersonID from the querystring
+// Get the PersonID from the querystring
 $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
 
-//Do we have deletion confirmation?
+// Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
     $sSQL = 'DELETE FROM propertytype_prt WHERE prt_ID = ' . $iPropertyTypeID;
     RunQuery($sSQL);
@@ -69,5 +58,5 @@ if (isset($_GET['Warn'])) {
     <a href="PropertyTypeList.php?Type=<?= $sType ?>"><?= gettext('No, cancel this deletion') ?></a>
 
 </p>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

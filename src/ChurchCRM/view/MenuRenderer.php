@@ -67,7 +67,6 @@ class MenuRenderer
         <?php
     }
 
-
     private static function renderMenuCounters(MenuItem $menuItem): void
     {
         if ($menuItem->hasCounters()) {

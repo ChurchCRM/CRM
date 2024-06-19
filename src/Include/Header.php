@@ -51,7 +51,6 @@ $MenuFirst = 1;
                 <a href="<?= SystemURLs::getRootPath()?>/" class="nav-link">Home</a>
             </li>
 
-
         </ul>
 
         <!-- Right navbar links -->
@@ -73,7 +72,6 @@ $MenuFirst = 1;
                     </a>
                 </div>
             </li>
-
 
             <!-- Locale Dropdown Menu -->
             <li class="nav-item dropdown show">
@@ -104,7 +102,6 @@ $MenuFirst = 1;
                     <span id="cart-dropdown-menu"></span>
                 </div>
             </li>
-
 
             <!-- Support Dropdown Menu -->
             <li class="nav-item dropdown show">

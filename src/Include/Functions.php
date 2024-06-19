@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : /Include/Functions.php
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
- *                Copyright 2004-1012 Michael Wilt
-
- ******************************************************************************/
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
@@ -21,17 +12,12 @@ $personService = new PersonService();
 $systemService = new SystemService();
 $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 
-//
 // Basic security checks:
-//
-
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
 }
-// End of basic security checks
 
-
-// if magic_quotes off and array
+// If magic_quotes off and array
 function addslashes_deep($value)
 {
     $value = is_array($value) ?
@@ -237,12 +223,12 @@ function convertCartToString($aCartArray)
     return $sCartString;
 }
 
-/******************************************************************************
+/*
  * Returns the proper information to use for a field.
  * Person info overrides Family info if they are different.
  * If using family info and bFormat set, generate HTML tags for text color red.
  * If neither family nor person info is available, return an empty string.
- *****************************************************************************/
+ */
 
 function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
 {
@@ -393,7 +379,6 @@ function FormatDate($dDate, $bWithTime = false): string
     . "DATE_FORMAT('$dDate', '%k') as h, "
     . "DATE_FORMAT('$dDate', ':%i') as m";
     extract(mysqli_fetch_array(RunQuery($sSQL)));
-
 
     if ($h > 11) {
         $sAMPM = gettext('pm');
@@ -1274,8 +1259,6 @@ function formatNumber($iNumber, $sMode = 'integer')
         break;
     }
 }
-
-
 
 function FilenameToFontname($filename, $family)
 {

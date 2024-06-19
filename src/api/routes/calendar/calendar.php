@@ -125,7 +125,6 @@ function getUserCalendarFullCalendarEvents(Request $request, Response $response,
     return SlimUtils::renderJSON($response, EventsObjectCollectionToFullCalendar($Events, $calendar));
 }
 
-
 function getUserCalendarEvents(Request $request, Response $response, array $args): Response
 {
     $CalendarID = $args['id'];

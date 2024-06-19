@@ -3,7 +3,6 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 
-// Set the page title and include HTML header
 $sPageTitle = $calendarName;
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
@@ -50,5 +49,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <?php
-// Add the page footer
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

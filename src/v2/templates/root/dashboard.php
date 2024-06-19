@@ -2,10 +2,8 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-//Set the page title
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
-
 
 <!-- Small boxes (Stat box) -->
 <div class="row">
@@ -198,5 +196,5 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
 </div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MainDashboard.js"></script>
-
-<?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+<?php
+include SystemURLs::getDocumentRoot() . '/Include/Footer.php';

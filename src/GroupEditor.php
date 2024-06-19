@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : GroupEditor.php
- *  last change : 2003-04-15
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
- *                Copyright 2004-2012 Michael Wilt
- *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -25,10 +14,10 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have Manage Groups permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
 
-//Set the page title
 $sPageTitle = gettext('Group Editor');
 $groupService = new GroupService();
-//Get the GroupID from the querystring.  Redirect to Menu if no groupID is present, since this is an edit-only form.
+
+// Get the GroupID from the querystring.  Redirect to Menu if no groupID is present, since this is an edit-only form.
 if (array_key_exists('GroupID', $_GET)) {
     $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 } else {
@@ -198,5 +187,5 @@ require 'Include/Header.php';
   var groupID =<?= $iGroupID ?>;
 </script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupEditor.js"></script>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

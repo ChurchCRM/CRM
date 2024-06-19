@@ -16,4 +16,3 @@ if (empty($message)) {
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
-?>

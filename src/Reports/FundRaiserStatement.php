@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/FundRaiserStatement.php
-*  last change : 2009-04-17
-*  description : Creates a PDF with one or more fund raiser statements
-*  copyright   : Copyright 2009 Michael Wilt
-
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -20,7 +11,7 @@ use ChurchCRM\Utils\InputUtils;
 $iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
-//Get the paddlenum records for this fundraiser
+// Get the paddlenum records for this fundraiser
 if ($iPaddleNumID > 0) {
     $selectOneCrit = ' AND pn_ID=' . $iPaddleNumID . ' ';
 } else {
@@ -29,7 +20,7 @@ if ($iPaddleNumID > 0) {
 
 $sSQL = 'SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
                 a.per_FirstName as paddleFirstName, a.per_LastName as paddleLastName, a.per_Email as paddleEmail,
-				b.fam_ID, b.fam_Name, b.fam_Address1, b.fam_Address2, b.fam_City, b.fam_State, b.fam_Zip, b.fam_Country
+                b.fam_ID, b.fam_Name, b.fam_Address1, b.fam_Address2, b.fam_City, b.fam_State, b.fam_Zip, b.fam_Country
          FROM paddlenum_pn
          LEFT JOIN person_per a ON pn_per_ID=a.per_ID
          LEFT JOIN family_fam b ON fam_ID = a.per_fam_ID
@@ -104,13 +95,13 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
 
         // Get donated items and make the table
         $sSQL = 'SELECT di_item, di_title, di_buyer_id, di_sellprice,
-		                a.per_FirstName as buyerFirstName,
-		                a.per_LastName as buyerLastName,
-		                a.per_Email as buyerEmail,
-		                b.fam_homephone as buyerPhone
-		                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id
-		                                    LEFT JOIN family_fam b on a.per_fam_id = b.fam_id
-		                WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_donor_id = ' . $pn_per_ID;
+                        a.per_FirstName as buyerFirstName,
+                        a.per_LastName as buyerLastName,
+                        a.per_Email as buyerEmail,
+                        b.fam_homephone as buyerPhone
+                        FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id
+                                            LEFT JOIN family_fam b on a.per_fam_id = b.fam_id
+                        WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_donor_id = ' . $pn_per_ID;
         $rsDonatedItems = RunQuery($sSQL);
 
         $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
@@ -148,13 +139,13 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
 
         // Get individual auction items first
         $sSQL = 'SELECT di_item, di_title, di_donor_id, di_sellprice,
-		                a.per_FirstName as donorFirstName,
-		                a.per_LastName as donorLastName,
-		                a.per_Email as donorEmail,
-		                b.fam_homePhone as donorPhone
-		                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_donor_id
-		                                    LEFT JOIN family_fam b on a.per_fam_id=b.fam_id
-		                WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_buyer_id = ' . $pn_per_ID;
+                        a.per_FirstName as donorFirstName,
+                        a.per_LastName as donorLastName,
+                        a.per_Email as donorEmail,
+                        b.fam_homePhone as donorPhone
+                        FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_donor_id
+                                            LEFT JOIN family_fam b on a.per_fam_id=b.fam_id
+                        WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_buyer_id = ' . $pn_per_ID;
         $rsPurchasedItems = RunQuery($sSQL);
 
         $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);

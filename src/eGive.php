@@ -1,14 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : eGive.php
- *  last change : 2009-08-27
- *  description : Tool for importing eGive data
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -29,7 +20,13 @@ include 'Include/eGiveConfig.php'; // Specific account information is in here
 
 $familySelectHtml = buildFamilySelect(0, 0, 0);
 
-// if a family is deleted, and donations are found, the egive_egv table is updated at the same time that donations are transferred.  But if there aren't donations at the time, and there's still and egive ID, we need to get that changed.  So, we'll build an array of all the family IDs here, and then NOT cache the egiveID to familyID association in the loop below.  There's probably a nicer way to do this with an SQL join,  but this seems more explicit.
+// If a family is deleted, and donations are found, the egive_egv table
+// is updated at the same time that donations are transferred.  But if
+// there aren't donations at the time, and there's still and egive ID, we
+// need to get that changed.  So, we'll build an array of all the family
+// IDs here, and then NOT cache the egiveID to familyID association in the
+// loop below.  There's probably a nicer way to do this with an SQL join,
+// but this seems more explicit.
 
 $sSQL = 'SELECT fam_ID FROM family_fam';
 $rsFamIDs = RunQuery($sSQL);
@@ -38,7 +35,7 @@ while ($aRow = mysqli_fetch_array($rsFamIDs)) {
     $famIDs[] = $fam_ID;
 }
 
-// get array of all existing payments into a 'cache' so we don't have to keep querying the DB
+// Get array of all existing payments into a 'cache' so we don't have to keep querying the DB
 $sSQL = 'SELECT egv_egiveID, egv_famID from egive_egv';
 $egiveIDs = RunQuery($sSQL);
 while ($aRow = mysqli_fetch_array($egiveIDs)) {
@@ -48,7 +45,7 @@ while ($aRow = mysqli_fetch_array($egiveIDs)) {
     }
 }
 
-// get array of all existing donation/fund ids to names so we don't have to keep querying the DB
+// Get array of all existing donation/fund ids to names so we don't have to keep querying the DB
 $sSQL = 'SELECT fun_ID, fun_Name, fun_Description from donationfund_fun';
 $fundData = RunQuery($sSQL);
 while ($aRow = mysqli_fetch_array($fundData)) {
@@ -68,9 +65,8 @@ while ($aRow = mysqli_fetch_array($rsPlgIDs)) {
 
     $key = eGiveExistingKey($plg_CheckNo, $plg_FamID, $plg_date, $plg_fundID, $plg_comment);
     $eGiveExisting[$key] = $amount;
-} // end while
+}
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('eGive Import');
 require 'Include/Header.php';
 
@@ -79,20 +75,13 @@ if (isset($_POST['ApiGet'])) {
     $endDate = $_POST['EndDate'];
 
     $url = $eGiveURL . '/api/login/?apiKey=' . $eGiveApiKey;
-    //var_dump($url);
     $fp = fopen($url, 'r');
-
-    //$meta_data = stream_get_meta_data($fp);
-    //foreach($meta_data['wrapper_data'] as $response) {
-    //}
 
     $json = stream_get_contents($fp);
     fclose($fp);
 
     $api_error = 1;
     $logon = get_api_data($json);
-    //$status = $logon["status"];
-    //$message = $login["message"];
 
     if ($logon && $logon['status'] == 'success') {
         $api_error = 0;
@@ -104,7 +93,6 @@ if (isset($_POST['ApiGet'])) {
         }
         $url .= '/?token=' . $token;
 
-        //var_dump($url);
         $fp = fopen($url, 'r');
 
         $json = stream_get_contents($fp);
@@ -182,7 +170,7 @@ if (isset($_POST['ApiGet'])) {
                     }
                 }
 
-                if ($amount) { // eGive records can be 'zero' for two reasons:  a) intentional zero to suspend giving, or b) rejected bank transfer
+                if ($amount) { // eGive records can be 'zero' for two reasons: a) intentional zero to suspend giving, or b) rejected bank transfer
                     ksort($amount, SORT_NUMERIC);
                     $fundIds = implode(',', array_keys($amount));
                     $groupKey = genGroupKey($transId, $famID, $fundIds, $date);
@@ -207,7 +195,7 @@ if (isset($_POST['ApiGet'])) {
     $json = stream_get_contents($fp);
     fclose($fp);
 
-    // don't know if it makes sense to check the logout success here...  we've already gotten data, cratering the transaction because the logout didn't work seems dumb.  In fact, I don't even check the logout success....  because of that very reason.
+    // Don't know if it makes sense to check the logout success here...  we've already gotten data, cratering the transaction because the logout didn't work seems dumb.  In fact, I don't even check the logout success....  because of that very reason.
     $logout = json_decode($json, true);
 
     $_SESSION['giftDataMissingEgiveID'] = $giftDataMissingEgiveID;
@@ -282,7 +270,7 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $f
     $keyExisting = eGiveExistingKey($transId, $famID, $date, $fundId, $comment);
     if ($eGiveExisting && array_key_exists($keyExisting, $eGiveExisting)) {
         ++$importNoChange;
-    } elseif ($famID) { //  insert a new record
+    } elseif ($famID) { // Insert a new record
         $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('" . $famID . "','" . $iFYID . "','" . $date . "','" . $amount . "','" . $frequency . "','EGIVE','" . $comment . "','" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId() . ",'Payment'," . $fundId . ",'" . $iDepositSlipID . "','" . $transId . "','0','" . $groupKey . "')";
         ++$importCreated;
         RunQuery($sSQL);
@@ -324,7 +312,7 @@ function importDoneFixOrContinue()
     global $familySelectHtml; ?>
     <form method="post" action="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>">
     <?php
-    if ($importError) { // the only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.?>
+    if ($importError) { // The only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.?>
         <p>New eGive Name(s) and ID(s) have been imported and must be associated with the appropriate Family.  Use the pulldown in the <b>Family</b> column to select the Family, based on the eGive name, and then press the Re-Import button.<br><br>If you cannot make the assignment now, you can safely go Back to the Deposit Slip, and Re-import this data at a later time.  Its possible you may need to view eGive data using the Web View in order to make an accurate Family assignment.</p>
         <table border=1>
         <tr><td><b>eGive Name</b></td><td><b>eGive ID</b></td><td><b>Family</b></td><td><b>Set eGive ID into Family</b></td></tr>
@@ -395,7 +383,7 @@ require 'Include/Footer.php';
 
 function yearFirstDate($date)
 {
-    $dateArray = explode('/', $date); // this date is in mm/dd/yy format.  churchCRM needs it in yyyy-mm-dd format
+    $dateArray = explode('/', $date); // This date is in mm/dd/yy format. churchCRM needs it in yyyy-mm-dd format
     if (strlen($dateArray[2]) == 2) {
         $dateArray[2] += 2000;
     }
@@ -412,5 +400,3 @@ function eGiveExistingKey($transId, $famID, $date, $fundId, $comment)
 
     return $key;
 }
-
-?>

@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : DepositSlipEditor.php
- *  last change : 2014-12-14
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002, 2003-2014 Deane Barker, Chris Gebhardt, Michael Wilt
- *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -53,7 +43,6 @@ if ($noDeposit) {
     RedirectUtils::redirect('FindDepositSlip.php');
 }
 
-//Set the page title
 $sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number: ') . $iDepositSlipID;
 
 //Is this the second pass?
@@ -181,7 +170,6 @@ require 'Include/Header.php';
   </div>
 </div>
 
-
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/js/DepositSlipEditor.js"></script>
 <?php
   $fundLabels = [];
@@ -268,5 +256,4 @@ foreach ($thisDeposit->getFundTotals() as $tmpfund) {
   });
 </script>
 <?php
-  require 'Include/Footer.php';
-?>
+require 'Include/Footer.php';

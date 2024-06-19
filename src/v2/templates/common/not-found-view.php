@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-//Set the page title
 $sPageTitle = gettext("Not Found") . ": " . gettext($memberType);
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -19,5 +18,5 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </p>
     </div>
 </div>
-
-<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php';  ?>
+<?php
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

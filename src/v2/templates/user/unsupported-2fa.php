@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-//Set the page title
 $sPageTitle = gettext("Unsupported Two Factor Authentication Configuration");
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -20,5 +19,5 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </ul>
     </div>
 </div>
-
-<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php';  ?>
+<?php
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

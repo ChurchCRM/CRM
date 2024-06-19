@@ -1,19 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : CartToEvent.php
- *  last change : 2005-09-09
- *  description : Add cart records to an event
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *  Copyright 2005 Todd Pillars
- *  Copyright 2012 Michael Wilt
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -52,7 +38,6 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
     RedirectUtils::redirect('v2/cart?Action=EmptyCart&Message=aMessage&iCount=' . $iCount . '&iEID=' . $iEventID);
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Add Cart to Event');
 require 'Include/Header.php';
 
@@ -98,4 +83,3 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 }
 
 require 'Include/Footer.php';
-?>

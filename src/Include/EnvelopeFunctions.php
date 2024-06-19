@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : /Include/EnvelopeFunctions.php
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2006 Michael Wilt
-  *
- ******************************************************************************/
-
 function EnvelopeAssignAllFamilies($bMembersOnly): string
 {
     $sSQL = 'SELECT per_fam_ID, per_LastName FROM person_per';

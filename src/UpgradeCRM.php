@@ -1,6 +1,5 @@
 <?php
 
-// Include the function library
 require 'Include/Config.php';
 $bSuppressSessionTests = true;
 require 'Include/Functions.php';
@@ -12,7 +11,6 @@ use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\RedirectUtils;
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
 if (!AuthenticationManager::validateUserSessionIsActive(false) || !AuthenticationManager::getCurrentUser()->isAdmin()) {
@@ -261,7 +259,6 @@ function downloadbutton(filename) {
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
 
 <?php
-// Add the page footer
 require 'Include/FooterNotLoggedIn.php';
 
 // Turn OFF output buffering

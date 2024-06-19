@@ -1,5 +1,4 @@
 <?php
-//*******************************************************************************
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
@@ -16,9 +15,8 @@ $EventID = $_POST['EID']; // from ListEvents button=Attendees
 $EvtName = $_POST['EName'];
 $EvtDesc = $_POST['EDesc'];
 $EvtDate = $_POST['EDate'];
-//
-// process the action inputs
-//
+
+// Process the action inputs
 if ($sAction == 'Delete') {
     $dpeEventID = InputUtils::legacyFilterInput($_POST['DelPerEventID'], 'int');
     $dpePerID = InputUtils::legacyFilterInput($_POST['DelPerID'], 'int');
@@ -103,4 +101,5 @@ if ($numAttRows != 0) {
 ?>
 </table>
 </div>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

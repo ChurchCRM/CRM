@@ -1,28 +1,27 @@
-
 @media (max-width: 767px) {
     .skin-blue .main-header .navbar .dropdown-menu li a {
         color: #000000;
     }
 }
 
-.select2-container--default .select2-selection--multiple .select2-selection__choice{background-color:#222D32}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #222D32
+}
 
-
-/* Philippe Logel : file in Header.php */
 .user-header a.item_link {
-  color: #FFF !important ; 
-  cursor:pointer;
-    cursor:hand;
+    color: #FFF !important;
+    cursor: pointer;
+    cursor: hand;
 }
 
 .user-header a.item_link:link {
-  color: #FFF !important; 
-  cursor:pointer;
-    cursor:hand;
+    color: #FFF !important;
+    cursor: pointer;
+    cursor: hand;
 }
 
 .user-header a.item_link:hover {
-  color: #CCCCCC !important ; 
-  cursor:pointer;
-    cursor:hand;
+    color: #CCCCCC !important;
+    cursor: pointer;
+    cursor: hand;
 }

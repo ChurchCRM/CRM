@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyEditor.php
- *  last change : 2003-01-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -25,16 +15,16 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $sClassError = '';
 $sNameError = '';
 
-//Get the PropertyID
+// Get the PropertyID
 $iPropertyID = 0;
 if (array_key_exists('PropertyID', $_GET)) {
     $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 }
 
-//Get the Type
+// Get the Type
 $sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);
 
-//Based on the type, set the TypeName
+// Based on the type, set the TypeName
 switch ($sType) {
     case 'p':
         $sTypeName = gettext('Person');
@@ -53,34 +43,33 @@ switch ($sType) {
         break;
 }
 
-//Set the page title
 $sPageTitle = $sTypeName . ' ' . gettext('Property Editor');
 
 $bError = false;
 $iType = 0;
 
-//Was the form submitted?
+// Was the form submitted?
 if (isset($_POST['Submit'])) {
     $sName = addslashes(InputUtils::legacyFilterInput($_POST['Name']));
     $sDescription = addslashes(InputUtils::legacyFilterInput($_POST['Description']));
     $iClass = InputUtils::legacyFilterInput($_POST['Class'], 'int');
     $sPrompt = InputUtils::legacyFilterInput($_POST['Prompt']);
 
-    //Did they enter a name?
+    // Did they enter a name?
     if (strlen($sName) < 1) {
         $sNameError = '<br><span style="color: red;">' . gettext('You must enter a name') . '</span>';
         $bError = true;
     }
 
-    //Did they select a Type
+    // Did they select a Type
     if (strlen($iClass) < 1) {
         $sClassError = '<br><span style="color: red;">' . gettext('You must select a type') . '</span>';
         $bError = true;
     }
 
-    //If no errors, let's update
+    // If no errors, let's update
     if (!$bError) {
-        //Vary the SQL depending on if we're adding or editing
+        // Vary the SQL depending on if we're adding or editing
         if ($iPropertyID == 0) {
             $property = new Property();
             $property
@@ -100,17 +89,17 @@ if (isset($_POST['Submit'])) {
             $property->save();
         }
 
-        //Route back to the list
+        // Route back to the list
         RedirectUtils::redirect('PropertyList.php?Type=' . $sType);
     }
 } else {
     if ($iPropertyID != 0) {
-        //Get the data on this property
+        // Get the data on this property
         $sSQL = 'SELECT * FROM property_pro WHERE pro_ID = ' . $iPropertyID;
         $rsProperty = mysqli_fetch_array(RunQuery($sSQL));
         extract($rsProperty);
 
-        //Assign values locally
+        // Assign values locally
         $sName = $pro_Name;
         $sDescription = $pro_Description;
         $iType = $pro_prt_ID;
@@ -123,7 +112,7 @@ if (isset($_POST['Submit'])) {
     }
 }
 
-//Get the Property Types
+// Get the Property Types
 $sSQL = "SELECT * FROM propertytype_prt WHERE prt_Class = '" . $sType . "' ORDER BY prt_Name";
 $rsPropertyTypes = RunQuery($sSQL);
 
@@ -181,5 +170,5 @@ require 'Include/Header.php';
     </div>
 </form>
 </div>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

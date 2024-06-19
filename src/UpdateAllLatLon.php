@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : UpdateAllLatLon.php
- *  last change : 2013-02-02
- *  website     : https://churchcrm.io
- *
- ******************************************************************************/
-
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -57,4 +49,4 @@ if ($families->count() > 0) {
     <?php
 }
 
-require 'Include/Footer.php'; ?>
+require 'Include/Footer.php';

@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PropertyTypeList.php
- *  last change : 2003-03-27
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002 Deane Barker
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -20,7 +10,6 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
     RedirectUtils::securityRedirect("Admin");
 }
 
-// Set the page title
 $sPageTitle = gettext('Property Type List');
 
 // Get the properties types
@@ -36,7 +25,7 @@ if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
     echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">" . gettext('Add a New Property Type') . '</a></p>';
 }
 
-//Start the table
+// Start the table
 echo "<table class='table table-hover'>";
 echo '<tr>';
 echo '<th>' . gettext('Name') . '</th>';
@@ -48,10 +37,10 @@ if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
 }
 echo '</tr>';
 
-//Initialize the row shading
+// Initialize the row shading
 $sRowClass = 'RowColorA';
 
-//Loop through the records
+// Loop through the records
 while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
     extract($aRow);
 
@@ -83,9 +72,6 @@ while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
     echo '</tr>';
 }
 
-//End the table
 echo '</table></div></div>';
 
 require 'Include/Footer.php';
-
-?>

@@ -217,5 +217,4 @@ if (!empty($sHeader)) {
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyRegister.js"></script>
 
 <?php
-// Add the page footer
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

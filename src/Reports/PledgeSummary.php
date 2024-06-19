@@ -52,8 +52,8 @@ $pledgeCnt['Unassigned'] = 0;
 
 // Get pledges and payments for this fiscal year
 $sSQL = 'SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID, plg_famID, b.fun_Name AS fundName, b.fun_Active AS fundActive FROM pledge_plg
-		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-		 WHERE plg_FYID = ' . $iFYID;
+         LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
+         WHERE plg_FYID = ' . $iFYID;
 
 // Filter by Fund
 if (!empty($_POST['funds'])) {

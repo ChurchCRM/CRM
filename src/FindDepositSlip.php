@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : FindDepositSlip.php
- *  last change : 2016-02-28
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2016 ChurchCRM
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -19,7 +9,6 @@ use ChurchCRM\Utils\RedirectUtils;
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
-//Set the page title
 $sPageTitle = gettext('Deposit Listing');
 
 // Security: User must have finance permission to use this form
@@ -85,5 +74,5 @@ require 'Include/Header.php';
 </div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
-
-<?php require "Include/Footer.php" ?>
+<?php
+require 'Include/Footer.php';

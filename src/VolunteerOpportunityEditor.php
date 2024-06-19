@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : VolunteerOpportunityEditor.php
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2005 Michael Wilt
- *
- ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -64,20 +56,22 @@ if (($sAction == 'delete') && $iOpp > 0) {
     extract($aRow);
 
     $sPageTitle = gettext('Volunteer Opportunity Delete Confirmation');
-    require 'Include/Header.php'; ?>
+    require 'Include/Header.php';
+?>
     <div class="card card-body">
-    <div class="callout callout-danger"><?= gettext('Please confirm deletion of') ?>:</div>
-    <table class="table">
-        <tr><th>&nbsp;</th>
-        <th><?= gettext('Name') ?></th>
-        <th><?= gettext('Description') ?></th>
-    </tr>
-    <tr>
-        <td><b><?= $vol_Order ?></b></td>
-        <td><?= $vol_Name ?></td>
-        <td><?= $vol_Description ?></td>
-    </tr>
-    </table>
+        <div class="callout callout-danger"><?= gettext('Please confirm deletion of') ?>:</div>
+        <table class="table">
+            <tr>
+                <th>&nbsp;</th>
+                <th><?= gettext('Name') ?></th>
+                <th><?= gettext('Description') ?></th>
+            </tr>
+            <tr>
+                <td><b><?= $vol_Order ?></b></td>
+                <td><?= $vol_Name ?></td>
+                <td><?= $vol_Description ?></td>
+            </tr>
+        </table>
 
     <?php
     // Do some error checking before deleting this Opportunity.
@@ -173,7 +167,7 @@ if ($iRowNum == 0) {
     for ($row = 1; $row <= $numRows; $row++) {
         $aRow = mysqli_fetch_array($rsOpps);
         extract($aRow);
-        if ($orderCounter != $vol_Order) { // found hole, update all records to the end
+        if ($orderCounter != $vol_Order) {
             $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($vol_ID);
             $volunteerOpp->setOrder($orderCounter);
             $volunteerOpp->save();
@@ -231,7 +225,7 @@ if (isset($_POST['SaveChanges'])) {
         if (strlen($newFieldName) == 0) {
             $bNewNameError = true;
         } else { // Insert into table
-            //  there must be an easier way to get the number of rows in order to generate the last order number.
+            // There must be an easier way to get the number of rows in order to generate the last order number.
             $sSQL = 'SELECT * FROM `volunteeropportunity_vol`';
             $rsOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsOpps);
@@ -247,17 +241,17 @@ if (isset($_POST['SaveChanges'])) {
             $bNewNameError = false;
         }
     }
-    // Get data for the form as it now exists..
+    // Get data for the form as it now exists
     $sSQL = 'SELECT * FROM `volunteeropportunity_vol`';
 
     $rsOpps = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsOpps);
 
-    // Create arrays of Vol Opps.
+    // Create arrays of Volunteer Opportunities
     for ($row = 1; $row <= $numRows; $row++) {
         $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
         extract($aRow);
-        $rowIndex = $vol_Order; // is this dangerous?  the vol_Order field had better be correct.
+        $rowIndex = $vol_Order; // Is this dangerous? The vol_Order field had better be correct.
         $aIDFields[$rowIndex] = $vol_ID;
         $aNameFields[$rowIndex] = $vol_Name;
         $aDescFields[$rowIndex] = $vol_Description;
@@ -265,174 +259,175 @@ if (isset($_POST['SaveChanges'])) {
 }
 
 // Construct the form
-
 ?>
-<div class="card card-body">
-<form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
+    <div class="card card-body">
+        <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
-<table class="table">
+            <table class="table">
 
+                <?php
+                if ($numRows == 0) {
+                ?>
+                    <div class="callout callout-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
+                <?php
+                } else { // if an 'action' (up/down arrow clicked, or order was input)
+                    if ($iRowNum && $sAction != '') {
+                        // cast as int and couple with switch for sql injection prevention for $row_num
+                        $swapRow = $iRowNum;
+                        if ($sAction == 'up') {
+                            $newRow = --$iRowNum;
+                        } elseif ($sAction == 'down') {
+                            $newRow = ++$iRowNum;
+                        } else {
+                            $newRow = $iRowNum;
+                        }
+
+                        if (array_key_exists($swapRow, $aIDFields)) {
+                            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($aIDFields[$swapRow]);
+                            $volunteerOpp->setOrder($newRow);
+                            $volunteerOpp->save();
+                        }
+
+                        if (array_key_exists($newRow, $aIDFields)) {
+                            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($aIDFields[$newRow]);
+                            $volunteerOpp->setOrder($swapRow);
+                            $volunteerOpp->save();
+                        }
+
+                        // now update internal data to match
+                        if (array_key_exists($swapRow, $aIDFields)) {
+                            $saveID = $aIDFields[$swapRow];
+                            $saveName = $aNameFields[$swapRow];
+                            $saveDesc = $aDescFields[$swapRow];
+                            $aIDFields[$newRow] = $saveID;
+                            $aNameFields[$newRow] = $saveName;
+                            $aDescFields[$newRow] = $saveDesc;
+                        }
+
+                        if (array_key_exists($newRow, $aIDFields)) {
+                            $aIDFields[$swapRow] = $aIDFields[$newRow];
+                            $aNameFields[$swapRow] = $aNameFields[$newRow];
+                            $aDescFields[$swapRow] = $aDescFields[$newRow];
+                        }
+                    }
+                }
+                ?>
+                <tr>
+                    <td colspan="5">
+                        <div class="callout callout-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <?php
+                        if ($bErrorFlag) {
+                            echo '<div class="callout callout-danger">';
+                            echo gettext('Invalid fields or selections. Changes not saved! Please correct and try again!');
+                            echo '</div>';
+                        }
+                        if (strlen($sDeleteError) > 0) {
+                            echo ' <div class="callout callout-danger">';
+                            echo $sDeleteError;
+                            echo '</div>';
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th><?= gettext('Name') ?></th>
+                    <th><?= gettext('Description') ?></th>
+                </tr>
+
+                <?php
+                for ($row = 1; $row <= $numRows; $row++) {
+                    if (array_key_exists($row, $aNameFields)) {
+                        echo '<tr>';
+                        echo '<td class="LabelColumn"><b>' . $row . '</b></td>';
+                        echo '<td class="TextColumn">';
+                        if ($row == 1) {
+                            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num=' . $row . "\"><i class='fa fa-fw'></i></a>";
+                        } else {
+                            echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . "\"> <i class='fa fa-arrow-up'></i></a> ";
+                        }
+                        if ($row != $numRows) {
+                            echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . "\"> <i class='fa fa-arrow-down'></i></a> ";
+                        } else {
+                            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num=' . $row . "\"> <i class='fa fa-fw'></i></a> ";
+                        }
+
+                        echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . "\"> <i class='fa fa-times'></i></a></td>"; ?>
+
+                        <td class="TextColumn" align="center">
+                            <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
+                            <?php
+
+                            if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
+                                echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                            } ?>
+                        </td>
+
+                        <td class="TextColumn">
+                            <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="40" maxlength="100">
+                        </td>
+
+                        </tr>
+                <?php
+                    }
+                }
+                ?>
+
+                <tr>
+                    <td colspan="5">
+                        <table width="100%">
+                            <tr>
+                                <td width="30%"></td>
+                                <td width="40%" align="center" valign="bottom">
+                                    <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
+                                    &nbsp;
+                                    <input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='v2/dashboard'">
+                                </td>
+                                <td width="30%"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <table width="100%">
+                            <tr>
+                                <td width="15%"></td>
+                                <td valign="top">
+                                    <div><?= gettext('Name') ?>:</div>
+                                    <input type="text" name="newFieldName" size="30" maxlength="30" class="form-control">
+                                    <?php if ($bNewNameError) {
+                                        echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                                    } ?>
+                                    &nbsp;
+                                </td>
+                                <td valign="top">
+                                    <div><?= gettext('Description') ?>:</div>
+                                    <input type="text" name="newFieldDesc" size="40" maxlength="100" class="form-control">
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <input type="submit" class="btn btn-primary" value="<?= gettext('Add New Opportunity') ?>" name="AddField">
+                                </td>
+                                <td width="15%"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 <?php
-if ($numRows == 0) {
-    ?>
-    <div class="callout callout-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
-    <?php
-} else { // if an 'action' (up/down arrow clicked, or order was input)
-    if ($iRowNum && $sAction != '') {
-        // cast as int and couple with switch for sql injection prevention for $row_num
-        $swapRow = $iRowNum;
-        if ($sAction == 'up') {
-            $newRow = --$iRowNum;
-        } elseif ($sAction == 'down') {
-            $newRow = ++$iRowNum;
-        } else {
-            $newRow = $iRowNum;
-        }
-
-        if (array_key_exists($swapRow, $aIDFields)) {
-            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($aIDFields[$swapRow]);
-            $volunteerOpp->setOrder($newRow);
-            $volunteerOpp->save();
-        }
-
-        if (array_key_exists($newRow, $aIDFields)) {
-            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($aIDFields[$newRow]);
-            $volunteerOpp->setOrder($swapRow);
-            $volunteerOpp->save();
-        }
-
-        // now update internal data to match
-        if (array_key_exists($swapRow, $aIDFields)) {
-            $saveID = $aIDFields[$swapRow];
-            $saveName = $aNameFields[$swapRow];
-            $saveDesc = $aDescFields[$swapRow];
-            $aIDFields[$newRow] = $saveID;
-            $aNameFields[$newRow] = $saveName;
-            $aDescFields[$newRow] = $saveDesc;
-        }
-
-        if (array_key_exists($newRow, $aIDFields)) {
-            $aIDFields[$swapRow] = $aIDFields[$newRow];
-            $aNameFields[$swapRow] = $aNameFields[$newRow];
-            $aDescFields[$swapRow] = $aDescFields[$newRow];
-        }
-    }
-} // end if GET
-
-?>
-<tr>
-    <td colspan="5">
-        <div class="callout callout-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
-    </td>
-</tr>
-<tr>
-    <td colspan="5">
-        <?php
-        if ($bErrorFlag) {
-            echo '<div class="callout callout-danger">';
-            echo gettext('Invalid fields or selections. Changes not saved! Please correct and try again!');
-            echo '</div>';
-        }
-        if (strlen($sDeleteError) > 0) {
-            echo ' <div class="callout callout-danger">';
-            echo $sDeleteError;
-            echo '</div>';
-        }
-        ?>
-    </td>
-</tr>
-<tr>
-<th></th>
-<th></th>
-<th><?= gettext('Name') ?></th>
-<th><?= gettext('Description') ?></th>
-</tr>
-
-<?php
-
-for ($row = 1; $row <= $numRows; $row++) {
-    if (array_key_exists($row, $aNameFields)) {
-        echo '<tr>';
-        echo '<td class="LabelColumn"><b>' . $row . '</b></td>';
-        echo '<td class="TextColumn">';
-        if ($row == 1) {
-            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num=' . $row . "\"><i class='fa fa-fw'></i></a>";
-        } else {
-            echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . "\"> <i class='fa fa-arrow-up'></i></a> ";
-        }
-        if ($row != $numRows) {
-            echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . "\"> <i class='fa fa-arrow-down'></i></a> ";
-        } else {
-            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num=' . $row . "\"> <i class='fa fa-fw'></i></a> ";
-        }
-
-        echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . "\"> <i class='fa fa-times'></i></a></td>"; ?>
-
-       <td class="TextColumn" align="center">
-       <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
-        <?php
-
-        if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-            echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
-        } ?>
-       </td>
-
-       <td class="TextColumn">
-       <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="40" maxlength="100">
-       </td>
-
-       </tr>
-        <?php
-    }
-}
-?>
-
-<tr>
-<td colspan="5">
-<table width="100%">
-<tr>
-<td width="30%"></td>
-<td width="40%" align="center" valign="bottom">
-<input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
-&nbsp;
-<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='v2/dashboard'">
-</td>
-<td width="30%"></td>
-</tr>
-</table>
-</td>
-<td>
-</tr>
-
-<tr><td colspan="5"><hr></td></tr>
-<tr>
-<td colspan="5">
-<table width="100%">
-<tr>
-<td width="15%"></td>
-<td valign="top">
-<div><?= gettext('Name') ?>:</div>
-<input type="text" name="newFieldName" size="30" maxlength="30" class="form-control">
-<?php if ($bNewNameError) {
-    echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
-} ?>
-&nbsp;
-</td>
-<td valign="top">
-<div><?= gettext('Description') ?>:</div>
-<input type="text" name="newFieldDesc" size="40" maxlength="100" class="form-control">
-&nbsp;
-</td>
-<td>
-<input type="submit" class="btn btn-primary" value="<?= gettext('Add New Opportunity') ?>" name="AddField">
-</td>
-<td width="15%"></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</form>
-</div>
-
-<?php require 'Include/Footer.php' ?>
+require 'Include/Footer.php';

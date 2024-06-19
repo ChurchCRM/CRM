@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : CartToGroup.php
- *  last change : 2003-06-23
- *  description : Add cart records to a group
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt, Logel Philippe
-  *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -46,16 +34,13 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
     RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID . '&Action=EmptyCart');
 }
 
-$ormGroups = GroupQuery::Create()
-                                ->orderByName()
-                                ->find();
+$ormGroups = GroupQuery::Create()->orderByName()->find();
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Add Cart to Group');
 require 'Include/Header.php';
 
 if (count($_SESSION['aPeopleCart']) > 0) {
-    ?>
+?>
 
   <script src="skin/js/GroupRoles.js"></script>
 
@@ -100,6 +85,4 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         echo '<p align="center" class="LargeText">' . gettext('Your cart is empty!') . '</p>';
 }
 
-
 require 'Include/Footer.php';
-?>

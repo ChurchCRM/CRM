@@ -1,21 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : EventNames.php
- *  last change : 2005-09-10
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2005 Todd Pillars
- *
- *  function    : List all Church Events
-  *
- *
- *  Modified by Stephen Shaffer, Oct 2006
- *  feature changes - added recurring defaults and customizable attendance count
- *  fields
- *
- ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -29,9 +13,6 @@ AuthenticationManager::redirectHomeIfNotAdmin();
 $sPageTitle = gettext('Edit Event Types');
 require 'Include/Header.php';
 
-//
-//  process the ACTION button inputs from the form page
-//
 $editing = 'FALSE';
 $tyid = $_POST['EN_tyid'];
 
@@ -193,5 +174,5 @@ if ($numCounts) {
     <?= gettext('Return to Event Types') ?>
   </a>
 </div>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

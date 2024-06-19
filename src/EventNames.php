@@ -337,5 +337,5 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);
   });
 </script>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

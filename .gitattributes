@@ -1,8 +1,33 @@
-* text=auto
-* eol=lf
-*.jpg binary
-*.git binary
-*.png binary
-*.xcf binary
-*.pdf binary
-*.mo binary
+# Define text file attributes:
+# - Treat them astext
+# - Ensure no CRLF line-endings, neither on checkout nor on checkin
+# - Detect whitespace errors:
+#   - Exposed by default in `git diff --color` on the CLI
+#   - Validate with `git diff --check`
+#   - Deny applying with `git apply --whitespace=error-all`
+#   - Fix automatically with `git apply --whitespace=fix`
+
+*.css  text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=2
+*.html text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=4 diff=html
+*.js   text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=2
+*.json text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=2
+*.lock text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=4
+*.md   text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=2
+*.php  text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=4 diff=php
+*.po   text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=2
+*.sh   text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=2
+*.sql  text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=2
+*.svg  text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=2
+*.twig text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=4
+*.xml  text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=4
+*.yml  text eol=lf whitespace=space-before-tab,tab-in-indent,trailing-space,tabwidth=2
+
+# Define binary file attributes:
+# - Do not treat them as text
+*.gif  binary
+*.ico  binary
+*.jpg  binary
+*.mo   binary
+*.pdf  binary
+*.png  binary
+*.ttf  binary

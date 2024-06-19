@@ -1,15 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : TaxReport.php
- *  last change : 2003-09-03
- *  description : form to invoke tax letter generation
- *
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -21,7 +11,6 @@ use ChurchCRM\Utils\RedirectUtils;
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly'));
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Tax Report');
 require 'Include/Header.php';
 
@@ -54,4 +43,5 @@ if (isset($_POST['Submit'])) {
 
     </form>
 </div>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

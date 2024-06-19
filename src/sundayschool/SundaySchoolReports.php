@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : SundaySchoolReports.php
- *  last change : 2017-11-01
- *  description : form to invoke Sunday School reports
- *
- *  edited by S. Shaffer May/June 2006 - added capability to include multiple groups.  Group reports are printed with a page break between group selections.
- *  edited to add ORM code : Philippe Logel
- *
- ******************************************************************************/
-
-// Include the function library
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -29,7 +17,6 @@ $groups = GroupQuery::create()
                     ->filterByType(4)
                     ->find();
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Sunday School Reports');
 require '../Include/Header.php';
 
@@ -297,4 +284,3 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
 
 <?php
 require '../Include/Footer.php';
-?>

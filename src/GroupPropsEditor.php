@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : GroupPropsEditor.php
- *  last change : 2013-02-07
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
- *                Copyright 2013 Michael Wilt
- *
- *  function    : Editor for the special properties of a group member
-  *
- ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -49,12 +37,12 @@ $rsGroupInfo = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsGroupInfo));
 
 // We assume that the group selected has a special properties table and that it is populated
-//  with values for each group member.
+// with values for each group member.
 
 // Get the properties list for this group: names, descriptions, types and prop_ID for ordering;  will process later..
 
 $sSQL = 'SELECT groupprop_master.* FROM groupprop_master
-			WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
+            WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
 $rsPropList = RunQuery($sSQL);
 
 $aPropErrors = [];
@@ -114,66 +102,63 @@ if (isset($_POST['GroupPropSubmit'])) {
 require 'Include/Header.php';
 
 if (mysqli_num_rows($rsPropList) == 0) {
-    ?>
-  <form>
-    <h3><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></h3>
-    <BR>
-    <input type="button" class="btn btn-default" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
-  </form>
-    <?php
-} else {
-    ?>
-
-  <div class="box ">
-    <div class="card-header">
-      <h3 class="card-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName . ' ' . $per_LastName ?> </i></h3>
-    </div>
-    <div class="card-body">
-      <form method="post" action="GroupPropsEditor.php?<?= 'PersonID=' . $iPersonID . '&GroupID=' . $iGroupID ?>" name="GroupPropEditor">
-
-        <table class="table">
-          <?php
-
-          // Make sure we're at the beginning of the properties list resource (2nd pass code used it)
-            mysqli_data_seek($rsPropList, 0);
-
-            while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
-                extract($rowPropList); ?>
-            <tr>
-              <td><?= $prop_Name ?>: </td>
-              <td>
-                    <?php
-                    $currentFieldData = trim($aPersonProps[$prop_Field]);
-
-                    if ($type_ID == 11) {
-                        $prop_Special = $sPhoneCountry;
-                    }  // ugh.. an argument with special cases!
-
-                    formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
-
-                    if (array_key_exists($prop_Field, $aPropErrors)) {
-                        echo '<span style="color: red; ">' . $aPropErrors[$prop_Field] . '</span>';
-                    } ?>
-              </td>
-              <td><?= $prop_Description ?></td>
-            </tr>
-                <?php
-            } ?>
-          <tr>
-            <td align="center" colspan="3">
-              <br><br>
-              <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupPropSubmit">
-              &nbsp;
-              <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
-            </td>
-          </tr>
-        </table>
-      </form>
-    </div>
-  </div>
-    <?php
-} ?>
-
-<?php
-require 'Include/Footer.php';
 ?>
+    <form>
+        <h3><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></h3>
+        <BR>
+        <input type="button" class="btn btn-default" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
+    </form>
+<?php
+} else {
+?>
+
+    <div class="box ">
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName . ' ' . $per_LastName ?> </i></h3>
+        </div>
+        <div class="card-body">
+            <form method="post" action="GroupPropsEditor.php?<?= 'PersonID=' . $iPersonID . '&GroupID=' . $iGroupID ?>" name="GroupPropEditor">
+
+                <table class="table">
+                    <?php
+
+                    // Make sure we're at the beginning of the properties list resource (2nd pass code used it)
+                    mysqli_data_seek($rsPropList, 0);
+
+                    while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
+                        extract($rowPropList); ?>
+                        <tr>
+                            <td><?= $prop_Name ?>: </td>
+                            <td>
+                                <?php
+                                $currentFieldData = trim($aPersonProps[$prop_Field]);
+
+                                if ($type_ID == 11) {
+                                    $prop_Special = $sPhoneCountry;
+                                }  // ugh.. an argument with special cases!
+
+                                formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
+
+                                if (array_key_exists($prop_Field, $aPropErrors)) {
+                                    echo '<span style="color: red; ">' . $aPropErrors[$prop_Field] . '</span>';
+                                } ?>
+                            </td>
+                            <td><?= $prop_Description ?></td>
+                        </tr>
+                    <?php
+                    } ?>
+                    <tr>
+                        <td align="center" colspan="3">
+                            <br><br>
+                            <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupPropSubmit">
+                            &nbsp;
+                            <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+<?php
+}
+require 'Include/Footer.php';

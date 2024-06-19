@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PledgeDetails.php
- *  copyright   : Copyright 2001, 2002, 2003, 2004 Deane Barker, Chris Gebhardt, Michael Wilt
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -15,10 +7,9 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-//Set the page title
 $sPageTitle = gettext('Electronic Transaction Details');
 
-//Get the PledgeID out of the querystring
+// Get the PledgeID out of the querystring
 $iPledgeID = InputUtils::legacyFilterInput($_GET['PledgeID'], 'int');
 $linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
 
@@ -26,7 +17,7 @@ $linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
 
-//Is this the second pass?
+// Is this the second pass?
 if (isset($_POST['Back'])) {
     RedirectUtils::redirect($linkBack);
 }
@@ -58,5 +49,5 @@ if ($resArr) {
         </td>
     </tr>
 </table>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

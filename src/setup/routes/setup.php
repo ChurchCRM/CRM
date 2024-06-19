@@ -36,7 +36,6 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
         $template = file_get_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php.example');
 
-
         $template = str_replace('||DB_SERVER_NAME||', $setupData['DB_SERVER_NAME'], $template);
         $template = str_replace('||DB_SERVER_PORT||', $setupData['DB_SERVER_PORT'], $template);
         $template = str_replace('||DB_NAME||', $setupData['DB_NAME'], $template);

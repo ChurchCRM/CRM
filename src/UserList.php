@@ -1,22 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : UserList.php
- *  last change : 2003-01-07
- *  description : displays a list of all users
- *
- *  https://churchcrm.io/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
- *
-
-
-
-
- *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -28,13 +11,11 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 // Get all the User records
 $rsUsers = UserQuery::create()->find();
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('System Users');
 require 'Include/Header.php';
 
@@ -270,4 +251,5 @@ require 'Include/Header.php';
 <!-- /.box -->
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/users.js" ></script>
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

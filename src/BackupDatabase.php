@@ -1,17 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : BackupDatabase.php
- *  last change : 2016-01-04
- *  description : Creates a backup file of the database.
- *
- *  https://churchcrm.io/
- *  Copyright 2003 Chris Gebhardt
-  *
- ******************************************************************************/
-
-// Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -23,8 +11,6 @@ use ChurchCRM\Utils\RedirectUtils;
 // Otherwise, re-direct them to the main menu.
 AuthenticationManager::redirectHomeIfNotAdmin();
 
-
-// Set the page title and include HTML header
 $sPageTitle = gettext('Backup Database');
 require 'Include/Header.php';
 
@@ -67,4 +53,5 @@ require 'Include/Header.php';
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/BackupDatabase.js"></script>
 
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

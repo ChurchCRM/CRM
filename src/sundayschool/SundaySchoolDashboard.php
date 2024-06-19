@@ -37,7 +37,6 @@ foreach ($classStats as $class) {
     }
 }
 
-// Set the page title and include HTML header
 $sPageTitle = gettext('Sunday School Dashboard');
 require '../Include/Header.php';
 
@@ -179,7 +178,6 @@ require '../Include/Header.php';
   </div>
 </div>
 
-
 <div class="card card-danger">
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Students not in a Sunday School Class') ?></h3>
@@ -301,4 +299,4 @@ HTML;
 
     <?php
 }
-require '../Include/Footer.php' ?>
+require '../Include/Footer.php';

@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : DonationFundEditor.php
- *  last change : 2003-03-29
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
- *
- *  function    : Editor for donation funds
-  *
- ******************************************************************************/
-
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -50,9 +39,7 @@ $sPageTitle = gettext('Donation Fund Editor');
 
 require 'Include/Header.php'; ?>
 
-
 <div class="card card-body">
-
 
 <?php
 
@@ -158,7 +145,6 @@ if ($donationFunds->count() == 0) {
         ?>
         <tr>
 
-
             <td class="TextColumn" align="center">
                 <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
                 <?php
@@ -233,5 +219,5 @@ if ($donationFunds->count() == 0) {
     </table>
     </form>
 </div>
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

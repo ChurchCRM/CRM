@@ -1,16 +1,5 @@
 <?php
 
-/*******************************************************************************
- *
- *  filename    : PledgeEditor.php
- *  last change : 2012-06-29
- *  website     : https://churchcrm.io
- *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
- *                Copyright 2004-2012Michael Wilt
-  *
- ******************************************************************************/
-
-//Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -174,7 +163,6 @@ if (
         $rsResults = RunQuery($sSQL);
         list($numGroupKeys, $PledgeOrPayment, $fundId, $dDate, $iFYID, $iCheckNo, $iSchedule, $iMethod, $iCurrentDeposit) = mysqli_fetch_row($rsResults);
 
-
         $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
         $rsFam = RunQuery($sSQL);
         $fam_NameArray = mysqli_fetch_array($rsFam);
@@ -278,7 +266,6 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         $sAmountError[$fun_id] = gettext('At least one fund must have a non-zero amount.');
         $bErrorFlag = true;
     }
-
 
     if (array_key_exists('ScanInput', $_POST)) {
         $tScanString = InputUtils::legacyFilterInput($_POST['ScanInput']);
@@ -450,7 +437,6 @@ if ($iCurrentDeposit) {
     $currentUser->save();
 }
 
-//Set the page title
 if ($PledgeOrPayment === 'Pledge') {
     $sPageTitle = gettext('Pledge Editor');
 } elseif ($iCurrentDeposit) {
@@ -506,299 +492,293 @@ require 'Include/Header.php';
 
 <form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= $sGroupKey ?>&PledgeOrPayment=<?= $PledgeOrPayment ?>&linkBack=<?= $linkBack ?>" name="PledgeEditor">
 
-
-<div class="row">
-  <div class="col-lg-12">
-    <div class="card">
-      <div class="card-header with-border">
-        <h3 class="card-title"><?= gettext("Payment Details") ?></h3>
-      </div>
-      <div class="card-body">
-        <input type="hidden" name="FamilyID" id="FamilyID" value="<?= $iFamily ?>">
-        <input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?= $PledgeOrPayment ?>">
-
+    <div class="row">
         <div class="col-lg-12">
-          <label for="FamilyName"><?= gettext('Family') ?></label>
-          <select class="form-control"   id="FamilyName" name="FamilyName" >
-            <option selected ><?= $sFamilyName ?></option>
-          </select>
-        </div>
+            <div class="card">
+                <div class="card-header with-border">
+                    <h3 class="card-title"><?= gettext("Payment Details") ?></h3>
+                </div>
+                <div class="card-body">
+                    <input type="hidden" name="FamilyID" id="FamilyID" value="<?= $iFamily ?>">
+                    <input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?= $PledgeOrPayment ?>">
 
-        <div class="col-lg-6">
-          <?php	if (!$dDate) {
-                $dDate = $dep_Date;
-          } ?>
-          <label for="Date"><?= gettext('Date') ?></label>
-          <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>" ><span style="color: red;"><?= $sDateError ?></span>
-          <label for="FYID"><?= gettext('Fiscal Year') ?></label>
-           <?php PrintFYIDSelect($iFYID, 'FYID') ?>
+                    <div class="col-lg-12">
+                        <label for="FamilyName"><?= gettext('Family') ?></label>
+                        <select class="form-control" id="FamilyName" name="FamilyName">
+                            <option selected><?= $sFamilyName ?></option>
+                        </select>
+                    </div>
 
-          <?php if ($dep_Type === 'Bank' && SystemConfig::getValue('bUseDonationEnvelopes')) {
-                ?>
-          <label for="Envelope"><?= gettext('Envelope Number') ?></label>
-          <input  class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
-                <?php if (!$dep_Closed) {
-                    ?>
-            <input class="form-control" type="submit" class="btn btn-default" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
-                    <?php
-                } ?>
+                    <div class="col-lg-6">
+                        <?php if (!$dDate) {
+                            $dDate = $dep_Date;
+                        } ?>
+                        <label for="Date"><?= gettext('Date') ?></label>
+                        <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>"><span style="color: red;"><?= $sDateError ?></span>
+                        <label for="FYID"><?= gettext('Fiscal Year') ?></label>
+                        <?php PrintFYIDSelect($iFYID, 'FYID') ?>
 
-                <?php
-          } ?>
-
-            <?php if ($PledgeOrPayment === 'Pledge') {
-                ?>
-
-        <label for="Schedule"><?= gettext('Payment Schedule') ?></label>
-          <select name="Schedule" class="form-control">
-              <option value="0"><?= gettext('Select Schedule') ?></option>
-              <option value="Weekly" <?php if ($iSchedule === 'Weekly') {
-                    echo 'selected';
-                                     } ?>><?= gettext('Weekly') ?>
-              </option>
-              <option value="Monthly" <?php if ($iSchedule === 'Monthly') {
-                    echo 'selected';
-                                      } ?>><?= gettext('Monthly') ?>
-              </option>
-              <option value="Quarterly" <?php if ($iSchedule === 'Quarterly') {
-                    echo 'selected';
-                                        } ?>><?= gettext('Quarterly') ?>
-              </option>
-              <option value="Once" <?php if ($iSchedule === 'Once') {
-                    echo 'selected';
-                                   } ?>><?= gettext('Once') ?>
-              </option>
-              <option value="Other" <?php if ($iSchedule === 'Other') {
-                    echo 'selected';
-                                    } ?>><?= gettext('Other') ?>
-              </option>
-          </select>
-
-                <?php
-            } ?>
-
-      </div>
-
-
-      <div class="col-lg-6">
-        <label for="Method"><?= gettext('Payment by') ?></label>
-        <select class="form-control" name="Method" id="Method">
-          <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'Bank' || !$iCurrentDeposit) {
-                ?>
-            <option value="CHECK" <?php if ($iMethod === 'CHECK') {
-                echo 'selected';
-                                  } ?>><?= gettext('Check'); ?>
-            </option>
-            <option value="CASH" <?php if ($iMethod === 'CASH') {
-                echo 'selected';
-                                 } ?>><?= gettext('Cash'); ?>
-            </option>
-                <?php
-          } ?>
-          <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'CreditCard' || !$iCurrentDeposit) {
-                ?>
-            <option value="CREDITCARD" <?php if ($iMethod === 'CREDITCARD') {
-                echo 'selected';
-                                       } ?>><?= gettext('Credit Card') ?>
-            </option>
-                <?php
-          } ?>
-          <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'BankDraft' || !$iCurrentDeposit) {
-                ?>
-            <option value="BANKDRAFT" <?php if ($iMethod === 'BANKDRAFT') {
-                echo 'selected';
-                                      } ?>><?= gettext('Bank Draft') ?>
-            </option>
-                <?php
-          } ?>
-          <?php if ($PledgeOrPayment === 'Pledge') {
-                ?>
-            <option value="EGIVE" <?= $iMethod === 'EGIVE' ? 'selected' : '' ?>>
-                <?=gettext('eGive') ?>
-            </option>
-                <?php
-          } ?>
-        </select>
-
-
-
-        <?php if ($PledgeOrPayment === 'Payment' && $dep_Type === 'Bank') {
-            ?>
-          <div id="checkNumberGroup">
-          <label for="CheckNo"><?= gettext('Check') ?> #</label>
-          <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"/><span style="color: red;"><?= $sCheckNoError ?></span>
-          </div>
-            <?php
-        } ?>
-
-
-        <label for="TotalAmount"><?= gettext('Total $') ?></label>
-        <input class="form-control"  type="number" step="any" name="TotalAmount" id="TotalAmount" disabled />
-
-    </div>
-
-    <div class="col-lg-6">
-       <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type === 'Bank' || $PledgeOrPayment === 'Pledge')) {
-            ?>
-          <td align="center" class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
-          <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea></td>
-            <?php
-       } ?>
-    </div>
-
-    <div class="col-lg-6">
-      <?php if (SystemConfig::getValue('bUseScannedChecks') && $dep_Type === 'Bank') {
-            ?>
-        <input type="submit" class="btn btn-default" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
-        <input type="submit" class="btn btn-default" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
-            <?php
-      } ?>
-    </div>
-
-    <div class="col-lg-12">
-    <?php if (!$dep_Closed) {
-        ?>
-        <br/>
-        <input type="submit" id="saveBtn" class="btn btn-default" value="<?= gettext('Save') ?>" name="PledgeSubmit">
-        <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-            echo '<input id="save-n-add" type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
-        } ?>
-          <?php
-    } ?>
-    <?php if (!$dep_Closed) {
-        $cancelText = 'Cancel';
-    } else {
-        $cancelText = 'Return';
-    } ?>
-    <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'v2/dashboard' ?>';">
-    </div>
-  </div>
-</div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12">
-    <div class="card">
-      <div class="card-header with-border">
-        <h3 class="card-title"><?= gettext("Fund Split") ?></h3>
-      </div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Fund Name') ?></th>
-                <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Amount') ?></th>
-
-                <?php if ($bEnableNonDeductible) {
-                    ?>
-                  <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Non-deductible amount') ?></th>
-                    <?php
-                } ?>
-
-                <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Comment') ?></th>
-             </tr>
-            </thead>
-            <tbody>
-              <?php
-                foreach ($fundId2Name as $fun_id => $fun_name) {
-                    ?>
-                <tr>
-                  <td class="TextColumn"><?= $fun_name ?></td>
-                  <td class="TextColumn">
-                    <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] : "") ?>"><br>
-                    <span style="color: red;"><?= $sAmountError[$fun_id] ?></span>
-                  </td>
-                    <?php
-                    if ($bEnableNonDeductible) {
+                        <?php if ($dep_Type === 'Bank' && SystemConfig::getValue('bUseDonationEnvelopes')) {
                         ?>
-                      <td class="TextColumn">
-                        <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] : "")?>" />
-                        <br>
-                        <span style="color: red;"><?= $sNonDeductibleError[$fun_id]?></span>
-                      </td>
+                            <label for="Envelope"><?= gettext('Envelope Number') ?></label>
+                            <input class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
+                            <?php if (!$dep_Closed) {
+                            ?>
+                                <input class="form-control" type="submit" class="btn btn-default" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
+                            <?php
+                            } ?>
+
                         <?php
-                    } ?>
-                  <td class="TextColumn">
-                    <input  type="text" size=40 name="<?= $fun_id ?>_Comment" id="<?= $fun_id ?>_Comment" value="<?= $sComment[$fun_id] ?>">
-                  </td>
-                </tr>
-                    <?php
-                } ?>
-            </tbody>
-          </table>
+                        } ?>
+
+                        <?php if ($PledgeOrPayment === 'Pledge') {
+                        ?>
+
+                            <label for="Schedule"><?= gettext('Payment Schedule') ?></label>
+                            <select name="Schedule" class="form-control">
+                                <option value="0"><?= gettext('Select Schedule') ?></option>
+                                <option value="Weekly" <?php if ($iSchedule === 'Weekly') {
+                                                            echo 'selected';
+                                                        } ?>><?= gettext('Weekly') ?>
+                                </option>
+                                <option value="Monthly" <?php if ($iSchedule === 'Monthly') {
+                                                            echo 'selected';
+                                                        } ?>><?= gettext('Monthly') ?>
+                                </option>
+                                <option value="Quarterly" <?php if ($iSchedule === 'Quarterly') {
+                                                                echo 'selected';
+                                                            } ?>><?= gettext('Quarterly') ?>
+                                </option>
+                                <option value="Once" <?php if ($iSchedule === 'Once') {
+                                                            echo 'selected';
+                                                        } ?>><?= gettext('Once') ?>
+                                </option>
+                                <option value="Other" <?php if ($iSchedule === 'Other') {
+                                                            echo 'selected';
+                                                        } ?>><?= gettext('Other') ?>
+                                </option>
+                            </select>
+
+                        <?php
+                        } ?>
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="Method"><?= gettext('Payment by') ?></label>
+                        <select class="form-control" name="Method" id="Method">
+                            <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'Bank' || !$iCurrentDeposit) {
+                            ?>
+                                <option value="CHECK" <?php if ($iMethod === 'CHECK') {
+                                                            echo 'selected';
+                                                        } ?>><?= gettext('Check'); ?>
+                                </option>
+                                <option value="CASH" <?php if ($iMethod === 'CASH') {
+                                                            echo 'selected';
+                                                        } ?>><?= gettext('Cash'); ?>
+                                </option>
+                            <?php
+                            } ?>
+                            <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'CreditCard' || !$iCurrentDeposit) {
+                            ?>
+                                <option value="CREDITCARD" <?php if ($iMethod === 'CREDITCARD') {
+                                                                echo 'selected';
+                                                            } ?>><?= gettext('Credit Card') ?>
+                                </option>
+                            <?php
+                            } ?>
+                            <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'BankDraft' || !$iCurrentDeposit) {
+                            ?>
+                                <option value="BANKDRAFT" <?php if ($iMethod === 'BANKDRAFT') {
+                                                                echo 'selected';
+                                                            } ?>><?= gettext('Bank Draft') ?>
+                                </option>
+                            <?php
+                            } ?>
+                            <?php if ($PledgeOrPayment === 'Pledge') {
+                            ?>
+                                <option value="EGIVE" <?= $iMethod === 'EGIVE' ? 'selected' : '' ?>>
+                                    <?= gettext('eGive') ?>
+                                </option>
+                            <?php
+                            } ?>
+                        </select>
+
+                        <?php if ($PledgeOrPayment === 'Payment' && $dep_Type === 'Bank') {
+                        ?>
+                            <div id="checkNumberGroup">
+                                <label for="CheckNo"><?= gettext('Check') ?> #</label>
+                                <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>" /><span style="color: red;"><?= $sCheckNoError ?></span>
+                            </div>
+                        <?php
+                        } ?>
+
+                        <label for="TotalAmount"><?= gettext('Total $') ?></label>
+                        <input class="form-control" type="number" step="any" name="TotalAmount" id="TotalAmount" disabled />
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type === 'Bank' || $PledgeOrPayment === 'Pledge')) {
+                        ?>
+                            <td align="center" class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
+                                <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea>
+                            </td>
+                        <?php
+                        } ?>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <?php if (SystemConfig::getValue('bUseScannedChecks') && $dep_Type === 'Bank') {
+                        ?>
+                            <input type="submit" class="btn btn-default" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
+                            <input type="submit" class="btn btn-default" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
+                        <?php
+                        } ?>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <?php if (!$dep_Closed) {
+                        ?>
+                            <br />
+                            <input type="submit" id="saveBtn" class="btn btn-default" value="<?= gettext('Save') ?>" name="PledgeSubmit">
+                            <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
+                                echo '<input id="save-n-add" type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
+                            } ?>
+                        <?php
+                        } ?>
+                        <?php if (!$dep_Closed) {
+                            $cancelText = 'Cancel';
+                        } else {
+                            $cancelText = 'Return';
+                        } ?>
+                        <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'v2/dashboard' ?>';">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-  </div>
-</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header with-border">
+                    <h3 class="card-title"><?= gettext("Fund Split") ?></h3>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Fund Name') ?></th>
+                                <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Amount') ?></th>
 
+                                <?php if ($bEnableNonDeductible) {
+                                ?>
+                                    <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Non-deductible amount') ?></th>
+                                <?php
+                                } ?>
+
+                                <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Comment') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($fundId2Name as $fun_id => $fun_name) {
+                            ?>
+                                <tr>
+                                    <td class="TextColumn"><?= $fun_name ?></td>
+                                    <td class="TextColumn">
+                                        <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] : "") ?>"><br>
+                                        <span style="color: red;"><?= $sAmountError[$fun_id] ?></span>
+                                    </td>
+                                    <?php
+                                    if ($bEnableNonDeductible) {
+                                    ?>
+                                        <td class="TextColumn">
+                                            <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] : "") ?>" />
+                                            <br>
+                                            <span style="color: red;"><?= $sNonDeductibleError[$fun_id] ?></span>
+                                        </td>
+                                    <?php
+                                    } ?>
+                                    <td class="TextColumn">
+                                        <input type="text" size=40 name="<?= $fun_id ?>_Comment" id="<?= $fun_id ?>_Comment" value="<?= $sComment[$fun_id] ?>">
+                                    </td>
+                                </tr>
+                            <?php
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </form>
 
- <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-  $(document).ready(function() {
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    $(document).ready(function() {
 
-    $("#FamilyName").select2({
-      minimumInputLength: 2,
-      ajax: {
-          url: function (params){
-            var a = window.CRM.root + '/api/families/search/'+ params.term;
-            return a;
-          },
-          dataType: 'json',
-          delay: 250,
-          data: "",
-          processResults: function (data, params) {
-            var results = [];
-            var families = data?.Families ?? [];
-            $.each(families, function(key, object) {
-              results.push({
-                id: object.Id,
-                text: object.displayName
-              });
-            });
-            return {
-              results: results
-            };
-          }
+        $("#FamilyName").select2({
+            minimumInputLength: 2,
+            ajax: {
+                url: function(params) {
+                    var a = window.CRM.root + '/api/families/search/' + params.term;
+                    return a;
+                },
+                dataType: 'json',
+                delay: 250,
+                data: "",
+                processResults: function(data, params) {
+                    var results = [];
+                    var families = data?.Families ?? [];
+                    $.each(families, function(key, object) {
+                        results.push({
+                            id: object.Id,
+                            text: object.displayName
+                        });
+                    });
+                    return {
+                        results: results
+                    };
+                }
+            }
+        });
+
+        $("#FamilyName").on("select2:select", function(e) {
+            $('[name=FamilyID]').val(e.params.data.id);
+        });
+
+        $(".FundAmount").change(function() {
+            CalculateTotal();
+        });
+
+        $("#Method").change(function() {
+            EvalCheckNumberGroup();
+        });
+
+        EvalCheckNumberGroup();
+        CalculateTotal();
+    });
+
+    function EvalCheckNumberGroup() {
+        if ($("#Method option:selected").val() === "CHECK") {
+            $("#checkNumberGroup").show();
+        } else {
+            $("#checkNumberGroup").hide();
+            $("#CheckNo").val('');
         }
-    });
-
-    $("#FamilyName").on("select2:select", function (e) {
-      $('[name=FamilyID]').val(e.params.data.id);
-    });
-
-    $(".FundAmount").change(function(){
-      CalculateTotal();
-    });
-
-    $("#Method").change(function() {
-      EvalCheckNumberGroup();
-    });
-
-    EvalCheckNumberGroup();
-    CalculateTotal();
-  });
-
-  function EvalCheckNumberGroup()
-  {
-    if ($("#Method option:selected").val()==="CHECK") {
-      $("#checkNumberGroup").show();
-    } else {
-      $("#checkNumberGroup").hide();
-      $("#CheckNo").val('');
     }
-  }
-  function CalculateTotal() {
-    var Total = 0;
-      $(".FundAmount").each(function(object){
-        var FundAmount = Number($(this).val());
-        if (FundAmount > 0) {
-          Total += FundAmount;
-        }
-      });
-      $("#TotalAmount").val(Total);
-  }
+
+    function CalculateTotal() {
+        var Total = 0;
+        $(".FundAmount").each(function(object) {
+            var FundAmount = Number($(this).val());
+            if (FundAmount > 0) {
+                Total += FundAmount;
+            }
+        });
+        $("#TotalAmount").val(Total);
+    }
 </script>
-
-
-<?php require 'Include/Footer.php' ?>
+<?php
+require 'Include/Footer.php';

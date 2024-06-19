@@ -1,13 +1,5 @@
 <?php
 
-/*******************************************************************************
-*
-*  filename    : Reports/AdvancedDeposit.php
-*  last change : 2013-02-21
-*  description : Creates a PDF customized Deposit Report .
-
-******************************************************************************/
-
 namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
@@ -203,8 +195,6 @@ if ($iCountRows < 1) {
 }
 
 // Create PDF Report -- PDF
-// ***************************
-
 if ($output === 'pdf') {
     // Set up bottom border value
     $bottom_border = 250;
@@ -351,9 +341,7 @@ if ($output === 'pdf') {
     $currentDepositAmount = 0;
     $currentReportAmount = 0;
 
-    // **********************
     // Sort by Deposit Report
-    // **********************
     if ($sort === 'deposit') {
         if ($detail_level === 'detail') {
             $curY = $pdf->headings($curY);
@@ -512,10 +500,7 @@ if ($output === 'pdf') {
         $curY += 2 * $summaryIntervalY;
         $page = $pdf->pageBreak($page);
     } elseif ($sort === 'fund') {
-        // **********************
         // Sort by Fund  Report
-        // **********************
-
         if ($detail_level === 'detail') {
             $curY = $pdf->headings($curY);
         }
@@ -676,10 +661,7 @@ if ($output === 'pdf') {
         }
         $page = $pdf->pageBreak($page);
     } elseif ($sort === 'family') {
-        // **********************
         // Sort by Family  Report
-        // **********************
-
         while ($aRow = mysqli_fetch_array($rsReport)) {
             extract($aRow);
             if (!$fun_ID) {
