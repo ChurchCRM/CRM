@@ -9148,10 +9148,90 @@ msgid "To stop receiving these emails, you can email"
 msgstr "Para dejar de recibir estos correos, puede contactar a"
 
 #: 
+msgid "2016/2017"
+msgstr "2016/2017"
+
+#: 
+msgid "2017/2018"
+msgstr "2017/2018"
+
+#: 
+msgid "2018/2019"
+msgstr "2018/2019"
+
+#: 
+msgid "2019/2020"
+msgstr "2019/2020"
+
+#: 
+msgid "2020/2021"
+msgstr "2020/2021"
+
+#: 
+msgid "2021/2022"
+msgstr "2021/2022"
+
+#: 
+msgid "2022/2023"
+msgstr "2022/2023"
+
+#: 
 msgid "invalid group request"
 msgstr "Solicitud de grupo inválida"
 
 #: 
+msgid "Hindi - India"
+msgstr "Hindú - India"
+
+#: 
+msgid "Japanese"
+msgstr "Japones"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamil - India"
+
+#: 
+msgid "Not Subscribed"
+msgstr "No Suscrito"
+
+#: 
+msgid "property"
+msgstr "propiedad"
+
+#: 
+msgid "Default Zip"
+msgstr "Código Postal Predeterminado"
+
+#: 
+msgid "Credit Card People"
+msgstr "Personas con Tarjeta de Crédito"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Personas que estén configuradas para pagar con tarjeta de crédito."
+
+#: 
 msgid "Adult Name (Optional)"
 msgstr "Nombre de adulto (Opcional)"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "Como parte de la restauración, se desactivaron las copias de seguridad externas. Si desea continuar con las copias de seguridad automáticas, debe volver a habilitar manualmente la configuración bEnableExternalBackupTarget."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "La verificación de integridad anterior pasó. Todos los hashes de archivos del sistema coinciden con los valores esperados."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "Lista separada por comas de clasificaciones que deberían aparecer como inactivas"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp no está configurado"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "Actualice la clave API de MailChimp en:"
 
