@@ -175,7 +175,6 @@ class Menu
     private static function getReportsMenu(): MenuItem
     {
         $reportsMenu = new MenuItem(gettext('Data/Reports'), '', true, 'fa-file-pdf');
-        $reportsMenu->addSubMenu(new MenuItem(gettext('Canvass Automation'), 'CanvassAutomation.php'));
         $reportsMenu->addSubMenu(new MenuItem(gettext('Query Menu'), 'QueryList.php'));
 
         return $reportsMenu;
