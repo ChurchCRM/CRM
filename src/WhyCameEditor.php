@@ -3,18 +3,22 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\WhyCame;
 use ChurchCRM\model\ChurchCRM\WhyCameQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-$linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
-$iPerson = InputUtils::legacyFilterInput($_GET['PersonID']);
-$iWhyCameID = InputUtils::legacyFilterInput($_GET['WhyCameID']);
+$logger = LoggerUtils::getAppLogger();
 
-$sSQL = 'SELECT per_FirstName, per_LastName FROM person_per where per_ID = ' . $iPerson;
-$rsPerson = RunQuery($sSQL);
-extract(mysqli_fetch_array($rsPerson));
+$linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
+$iPerson = InputUtils::filterInt($_GET['PersonID']);
+$iWhyCameID = InputUtils::filterInt($_GET['WhyCameID']);
+
+$person = PersonQuery::create()->findOneById($iPerson);
+$per_FirstName = $person->getFirstName();
+$per_LastName = $person->getLastName();
 
 $sPageTitle = gettext('"Why Came" notes for ') . $per_FirstName . ' ' . $per_LastName;
 
@@ -56,17 +60,18 @@ if (isset($_POST['Submit'])) {
         }
     }
 } else {
-    $sSQL = 'SELECT * FROM whycame_why WHERE why_per_ID = ' . $iPerson;
-    $rsWhyCame = RunQuery($sSQL);
-    if (mysqli_num_rows($rsWhyCame) > 0) {
-        extract(mysqli_fetch_array($rsWhyCame));
+    $whyCames = WhyCameQuery::create()->findByPerId($iPerson);
+    if (count($whyCames) > 0) {
+        if (count($whyCames) > 1) {
+            $logger->warning('multiple why came records found for person', ['personId' => $iPerson]);
+        }
+        $whyCame = $whyCames[0];
 
-        $iWhyCameID = $why_ID;
-        $tJoin = $why_join;
-        $tCome = $why_come;
-        $tSuggest = $why_suggest;
-        $tHearOfUs = $why_hearOfUs;
-    } else {
+        $iWhyCameID = $whyCame->getId();
+        $tJoin = $whyCame->getJoin();
+        $tCome = $whyCame->getCome();
+        $tSuggest = $whyCame->getSuggest();
+        $tHearOfUs = $whyCame->getHearOfUs();
     }
 }
 
@@ -104,8 +109,8 @@ require 'Include/Header.php';
                                                                 } ?>';">
           </td>
         </tr>
+      </table>
     </form>
-    </table>
   </div>
 </div>
 <?php
