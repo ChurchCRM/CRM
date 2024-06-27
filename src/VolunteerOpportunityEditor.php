@@ -35,15 +35,15 @@ if (array_key_exists('act', $_GET)) {
     $sAction = InputUtils::legacyFilterInput($_GET['act']);
 }
 if (array_key_exists('Opp', $_GET)) {
-    $iOpp = InputUtils::legacyFilterInput($_GET['Opp'], 'int');
+    $iOpp = InputUtils::filterInt($_GET['Opp']);
 }
 if (array_key_exists('row_num', $_GET)) {
-    $iRowNum = InputUtils::legacyFilterInput($_GET['row_num'], 'int');
+    $iRowNum = InputUtils::filterInt($_GET['row_num']);
 }
 
 $sDeleteError = '';
 
-if (($sAction == 'delete') && $iOpp > 0) {
+if ($sAction === 'delete' && $iOpp > 0) {
     // Delete Confirmation Page
 
     // Security: User must have Delete records permission
@@ -105,7 +105,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
     exit;
 }
 
-if (($sAction == 'ConfDelete') && $iOpp > 0) {
+if ($sAction === 'ConfDelete' && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
     AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
@@ -124,7 +124,7 @@ if (($sAction == 'ConfDelete') && $iOpp > 0) {
     RunQuery($sSQL);
 }
 
-if ($iRowNum == 0) {
+if ($iRowNum === 0) {
     // Skip data integrity check if we are only changing the ordering
     // by moving items up or down.
     // System response is too slow to do these checks every time the page
@@ -192,7 +192,7 @@ if (isset($_POST['SaveChanges'])) {
         if (array_key_exists($nameName, $_POST)) {
             $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$nameName]);
 
-            if (strlen($aNameFields[$iFieldID]) == 0) {
+            if (strlen($aNameFields[$iFieldID]) === 0) {
                 $aNameErrors[$iFieldID] = true;
                 $bErrorFlag = true;
             } else {
@@ -222,7 +222,7 @@ if (isset($_POST['SaveChanges'])) {
     if (isset($_POST['AddField'])) { // Check if we're adding a VolOp
         $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
         $newFieldDesc = InputUtils::legacyFilterInput($_POST['newFieldDesc']);
-        if (strlen($newFieldName) == 0) {
+        if (strlen($newFieldName) === 0) {
             $bNewNameError = true;
         } else { // Insert into table
             // There must be an easier way to get the number of rows in order to generate the last order number.
@@ -274,9 +274,9 @@ if (isset($_POST['SaveChanges'])) {
                     if ($iRowNum && $sAction != '') {
                         // cast as int and couple with switch for sql injection prevention for $row_num
                         $swapRow = $iRowNum;
-                        if ($sAction == 'up') {
+                        if ($sAction === 'up') {
                             $newRow = --$iRowNum;
-                        } elseif ($sAction == 'down') {
+                        } elseif ($sAction === 'down') {
                             $newRow = ++$iRowNum;
                         } else {
                             $newRow = $iRowNum;
@@ -346,7 +346,7 @@ if (isset($_POST['SaveChanges'])) {
                         echo '<tr>';
                         echo '<td class="LabelColumn"><b>' . $row . '</b></td>';
                         echo '<td class="TextColumn">';
-                        if ($row == 1) {
+                        if ($row === 1) {
                             echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num=' . $row . "\"><i class='fa fa-fw'></i></a>";
                         } else {
                             echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . "\"> <i class='fa fa-arrow-up'></i></a> ";
