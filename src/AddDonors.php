@@ -10,17 +10,13 @@ $linkBack = '';
 if (array_key_exists('linkBack', $_GET)) {
     InputUtils::legacyFilterInput($_GET['linkBack']);
 }
-$iFundRaiserID = InputUtils::legacyFilterInput($_GET['FundRaiserID']);
+$iFundRaiserID = InputUtils::filterInt($_GET['FundRaiserID']);
 
 if ($linkBack === '') {
     $linkBack = "PaddleNumList.php?FundRaiserID=$iFundRaiserID";
 }
 
 if ($iFundRaiserID > 0) {
-    // Get the current fund raiser record
-    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iFundRaiserID;
-    $rsFRR = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsFRR));
     // Set current fundraiser
     $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 } else {

@@ -1,19 +1,26 @@
 <?php
 
+use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
+
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$sSQL = 'SELECT * FROM events_event WHERE event_id = ' . $_GET['EID'];
-$rsOpps = RunQuery($sSQL);
-$aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH) || die(mysqli_error($cnInfoCentral));
-extract($aRow);
-$aEventID = $event_id;
-$aEventTitle = $event_title;
-$aEventText = $event_text;
+$eidQueryParam = $_GET['EID'];
+$sanitizedEidQueryParam = InputUtils::filterInt($eidQueryParam);
+if ($eidQueryParam !== (string) $sanitizedEidQueryParam) {
+    LoggerUtils::getAppLogger()->warning('Provided event ID does not match sanitized event ID', ['providedEventId' => $eidQueryParam, 'sanitizedEventId' => $sanitizedEidQueryParam]);
+}
+
+$event = EventQuery::create()->findOneById($sanitizedEidQueryParam);
+$aEventID = $event->getId();
+$aEventTitle = $event->getTitle();
+$aEventText = $event->getText();
 ?>
 <html>
 <head><title><?= gettext("Text from") ?> <?= $aEventID ?></title></head>
-</html>
+<body>
 <table cellpadding="4" align="center" cellspacing="0" width="100%">
   <caption>
     <h3><?= gettext('Text for Event ID: ') . $aEventTitle ?></h3>
@@ -26,4 +33,6 @@ $aEventText = $event_text;
       <input type="button" name="Action" value="Close Window" class="btn btn-default" onclick="javascript:window.close()">
     </td>
   </tr>
+</table>
+</body>
 </html>
