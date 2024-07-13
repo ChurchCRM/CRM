@@ -378,15 +378,24 @@
         ],
         "dbVersion": "5.8.0"
     },
-    "current": {
+    "pre-5.9.0": {
         "versions": [
-            "5.8.0",
-            "5.9.0",
-            "5.9.1"
+            "5.8.0"
         ],
         "scripts": [
             "/mysql/upgrade/5.9.0.sql"
         ],
-        "dbVersion": "5.9.2"
+        "dbVersion": "5.9.0"
+    },
+    "current": {
+        "versions": [
+            "5.9.0",
+            "5.9.1",
+            "5.9.2"
+        ],
+        "scripts": [
+
+        ],
+        "dbVersion": "5.9.3"
     }
 }
