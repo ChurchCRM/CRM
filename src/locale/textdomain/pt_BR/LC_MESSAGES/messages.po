@@ -429,11 +429,6 @@ msgstr "pessoas foram importadas"
 
 #: 
 #, fuzzy
-msgid "Canvass Automation"
-msgstr "Automação de Visitas"
-
-#: 
-#, fuzzy
 msgid "Add Cart to Event"
 msgstr "Adicionar Carrinho a um Evento"
 
@@ -6064,11 +6059,6 @@ msgstr "Amigos Recentes"
 
 #: 
 #, fuzzy
-msgid "Families to Canvass"
-msgstr "Famílias para visitação"
-
-#: 
-#, fuzzy
 msgid "Pledge comparison"
 msgstr "Comparação de compromissos"
 
@@ -6151,11 +6141,6 @@ msgstr "Encontrar voluntários para uma oportunidade em particular"
 #, fuzzy
 msgid "Friends who signed up in previous months"
 msgstr "Amigos que se inscreveram em meses anteriores"
-
-#: 
-#, fuzzy
-msgid "People in families that are ok to canvass."
-msgstr "Pessoas em Famílias que aceitam visitação."
 
 #: 
 #, fuzzy

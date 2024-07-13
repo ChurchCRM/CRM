@@ -359,10 +359,6 @@ msgid "persons were imported"
 msgstr "ሰዎች ከውጭ ገቡ"
 
 #: 
-msgid "Canvass Automation"
-msgstr "የሸራ አውቶሜሽን"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "ጋሪን ወደ ክስተት ያክሉ"
 
@@ -4996,10 +4992,6 @@ msgid "Recent friends"
 msgstr "የቅርብ ጓደኞች"
 
 #: 
-msgid "Families to Canvass"
-msgstr "በቤት ያሉ ቤተሰቦች "
-
-#: 
 msgid "Pledge comparison"
 msgstr "የቃል ንጽጽር"
 
@@ -5066,10 +5058,6 @@ msgstr "ለተወሰነ ዕድል ፈቃደኛ ሠራተኞችን ያግኙ"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "ባለፉት ወራት የተመዘገቡ ጓደኞች"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "በቤተሰባቸው ውስጥ ያሉ ሰዎች ለመሳል ደህና የሆኑ።"
 
 #: 
 msgid "Compare pledges between two fiscal years"

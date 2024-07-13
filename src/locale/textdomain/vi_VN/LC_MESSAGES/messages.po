@@ -373,10 +373,6 @@ msgid "persons were imported"
 msgstr "thành viên đã được nhập vào"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Tự động hóa Canvass"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Thêm vào giỏ rồi gửi đến Sự kiện"
 
@@ -5013,10 +5009,6 @@ msgid "Recent friends"
 msgstr "Bạn bè gần đây"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Gia đình để Canvass"
-
-#: 
 msgid "Pledge comparison"
 msgstr "So sánh cam kết"
 
@@ -5083,10 +5075,6 @@ msgstr "Tìm nhân sự cho một mục vụ cụ thể"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Những người bạn đã đăng ký trong những tháng trước"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Những người trong gia đình có thể đi qua được."
 
 #: 
 msgid "Compare pledges between two fiscal years"

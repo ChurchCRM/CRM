@@ -323,10 +323,6 @@ msgid "persons were imported"
 msgstr "persona janë importuar"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Automatizimi anketim"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Shto te Shporta Event"
 

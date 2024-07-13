@@ -358,10 +358,6 @@ msgid "persons were imported"
 msgstr "تم إستيراد بيانات الشخص"
 
 #: 
-msgid "Canvass Automation"
-msgstr "التشغيل الآلي للافتقاد"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "إضافة سلة التسوق للحدث"
 
@@ -4996,10 +4992,6 @@ msgid "Recent friends"
 msgstr "أصدقاء الزوار"
 
 #: 
-msgid "Families to Canvass"
-msgstr "عائلات لجمع الأصوات"
-
-#: 
 msgid "Pledge comparison"
 msgstr "مقارنة تعهد"
 
@@ -5066,10 +5058,6 @@ msgstr "البحث عن متطوعين لفرصة خاصة"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "الأصدقاء الذين وقعت في الأشهر السابقة"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "الناس في العائلات التي لا بأس بها لحشد."
 
 #: 
 msgid "Compare pledges between two fiscal years"

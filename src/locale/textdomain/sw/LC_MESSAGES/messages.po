@@ -357,10 +357,6 @@ msgid "persons were imported"
 msgstr "Watu waliingizwa"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Canvass Automation"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Ongeza Rukwama kwenye Tukio"
 
@@ -4985,10 +4981,6 @@ msgid "Recent friends"
 msgstr "Marafiki wa hivi karibuni"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Familia kwa Canvass"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Ulinganisho wa ahadi"
 
@@ -5055,10 +5047,6 @@ msgstr "Tafuta watu wa kujitolea kwa fursa fulani"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Marafiki waliojiandikisha katika miezi iliyopita"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Watu katika familia ambazo ziko sawa kuvinjari."
 
 #: 
 msgid "Compare pledges between two fiscal years"

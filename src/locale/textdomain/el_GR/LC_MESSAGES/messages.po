@@ -357,10 +357,6 @@ msgid "persons were imported"
 msgstr "εισήχθησαν άτομα"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Αυτοματισμός καμβά"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Προσθήκη καλαθιού στην εκδήλωση"
 
@@ -4989,10 +4985,6 @@ msgid "Recent friends"
 msgstr "Πρόσφατοι φίλοι"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Families to Canvass"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Σύγκριση δεσμεύσεων"
 
@@ -5059,10 +5051,6 @@ msgstr "Βρείτε εθελοντές για μια συγκεκριμένη �
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Φίλοι που εγγράφηκαν τους προηγούμενους μήνες"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Άτομα σε οικογένειες που είναι εντάξει στο καμβά."
 
 #: 
 msgid "Compare pledges between two fiscal years"

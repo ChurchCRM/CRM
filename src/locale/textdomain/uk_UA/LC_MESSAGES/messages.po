@@ -358,10 +358,6 @@ msgid "persons were imported"
 msgstr "персон імпортовано"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Автоматизація агітаторів"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Додати кошик до події"
 
@@ -4994,10 +4990,6 @@ msgid "Recent friends"
 msgstr "Останні друзі"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Сім'ї для полотна"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Порівняння застави"
 
@@ -5064,10 +5056,6 @@ msgstr "Знайдіть волонтерів для певної можливо
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Друзі, які записалися в попередні місяці"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Люди в сім'ях, які можуть розмовляти."
 
 #: 
 msgid "Compare pledges between two fiscal years"

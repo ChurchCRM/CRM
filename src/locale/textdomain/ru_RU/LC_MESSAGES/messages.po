@@ -376,11 +376,6 @@ msgid "persons were imported"
 msgstr "люди были импортированы"
 
 #: 
-#, fuzzy
-msgid "Canvass Automation"
-msgstr "Canvass Автоматизация"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Добавить корзину Событие"
 
@@ -4976,10 +4971,6 @@ msgid "Volunteers"
 msgstr "Волонтеры"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Семьи для обсуждения"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Сравнение залога"
 
@@ -5042,10 +5033,6 @@ msgstr "Найти волонтеров для конкретного случа
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Друзья, которые регистрировались в предыдущие месяцы"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Люди в семьях, которые могут проводить агитацию."
 
 #: 
 msgid "Compare pledges between two fiscal years"

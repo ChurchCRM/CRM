@@ -357,7 +357,3 @@ msgstr "डेटा आयात सफल."
 msgid "persons were imported"
 msgstr "व्यक्तियों का आयात किया गया"
 
-#: 
-msgid "Canvass Automation"
-msgstr "कैनवास स्वचालन"
-

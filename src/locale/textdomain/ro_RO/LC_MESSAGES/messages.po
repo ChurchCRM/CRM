@@ -375,10 +375,6 @@ msgid "persons were imported"
 msgstr "au fost importate persoane"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Automatizarea Colectării de Informații"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Adauga in cos la eveniment"
 
@@ -5095,10 +5091,6 @@ msgid "Recent friends"
 msgstr "Prieteni recenți"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Familii pentru Colectare de Informații"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Comparație gaj"
 
@@ -5165,10 +5157,6 @@ msgstr "Caută voluntari pentru o anumită oportunitate"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Prieteni înregistrați luna trecută"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Persoane din familiile pentru care este permisă Colectarea de Informații."
 
 #: 
 msgid "Compare pledges between two fiscal years"

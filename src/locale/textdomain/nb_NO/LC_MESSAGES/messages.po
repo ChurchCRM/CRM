@@ -371,10 +371,6 @@ msgid "persons were imported"
 msgstr "personer ble importert"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Canvass Automation"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Legg Cart til Event"
 

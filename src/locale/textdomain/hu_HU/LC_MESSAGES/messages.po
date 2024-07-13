@@ -348,10 +348,6 @@ msgid "persons were imported"
 msgstr "személy importálta"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Korteskedés Automation"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Add kosárba a rendezvény"
 

@@ -376,10 +376,6 @@ msgid "persons were imported"
 msgstr "osób zostało zaimportowanych"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Automatyzacja Ankiety"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Dodaj Koszyk do Wydarzenia"
 
