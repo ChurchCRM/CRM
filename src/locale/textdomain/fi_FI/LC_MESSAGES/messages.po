@@ -358,10 +358,6 @@ msgid "persons were imported"
 msgstr "henkilöitä tuotiin"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Canvass-automaatio"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Lisää tapahtuma koriin"
 

@@ -358,10 +358,6 @@ msgid "persons were imported"
 msgstr "personas fueron importadas"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Automatización de sondeo"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Añadir carrito al evento"
 
@@ -4997,10 +4993,6 @@ msgid "Recent friends"
 msgstr "Amigos recientes"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Familias para sondear"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Comparación de promesas"
 
@@ -5067,10 +5059,6 @@ msgstr "Encontrar voluntarios para una oportunidad en particular"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Amigos que se inscribieron en meses anteriores"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Personas en familias que están ok para sondear."
 
 #: 
 msgid "Compare pledges between two fiscal years"

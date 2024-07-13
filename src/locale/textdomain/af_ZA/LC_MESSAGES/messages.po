@@ -357,10 +357,6 @@ msgid "persons were imported"
 msgstr "persone was ingevoer"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Werwings outomatisasie"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Voeg mandjie by die geleentheid"
 
@@ -4996,10 +4992,6 @@ msgid "Recent friends"
 msgstr "Onlangse vriende"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Gesinne na Canvass"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Geloftevergelyking"
 
@@ -5066,10 +5058,6 @@ msgstr "Soek vrywilligers vir 'n spesifieke geleentheid"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Vriende wat die vorige maande ingeskryf het"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Mense in gesinne wat goed kan werf."
 
 #: 
 msgid "Compare pledges between two fiscal years"

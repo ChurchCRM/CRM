@@ -378,10 +378,6 @@ msgid "persons were imported"
 msgstr "人被匯入"
 
 #: 
-msgid "Canvass Automation"
-msgstr "拉票活動自動化"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "加入購物車事件"
 
@@ -5139,10 +5135,6 @@ msgid "Recent friends"
 msgstr "最近的朋友"
 
 #: 
-msgid "Families to Canvass"
-msgstr "家庭到佈道者"
-
-#: 
 msgid "Pledge comparison"
 msgstr "比較承諾"
 
@@ -5210,10 +5202,6 @@ msgstr "為特定的機會尋找志願者"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "在前幾個月註冊的朋友"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "家庭中可以參與佈道的人。"
 
 #: 
 msgid "Compare pledges between two fiscal years"

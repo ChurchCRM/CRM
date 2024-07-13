@@ -357,10 +357,6 @@ msgid "persons were imported"
 msgstr "inimest imporditi"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Tugiisiku automatiseerimine"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Lisa korv üritusele"
 
@@ -4994,10 +4990,6 @@ msgid "Recent friends"
 msgstr "Hiljutised sõbrad"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Pered lisamiseks"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Lubaduste võrdlus"
 
@@ -5064,10 +5056,6 @@ msgstr "Otsige konkreetse võimaluse jaoks vabatahtlikke"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Sõbrad, kes registreerusid eelmistel kuudel"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Inimesed peredes, kes on valmis lisamiseks."
 
 #: 
 msgid "Compare pledges between two fiscal years"

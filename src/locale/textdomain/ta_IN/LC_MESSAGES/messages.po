@@ -357,10 +357,6 @@ msgid "persons were imported"
 msgstr "நபர்கள் இறக்குமதி செய்யப்பட்டனர்"
 
 #: 
-msgid "Canvass Automation"
-msgstr "தானியியங்கி ஆதரவுதிரட்டுதல்"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "நிகழ்வில் மென்வண்டியைச் சேர்க்கவும்"
 

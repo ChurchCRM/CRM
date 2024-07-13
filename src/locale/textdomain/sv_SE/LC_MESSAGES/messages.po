@@ -377,10 +377,6 @@ msgid "persons were imported"
 msgstr "personer importerade"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Insamlingskampanj automation"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Lägg korgen till evenemang"
 
@@ -5139,10 +5135,6 @@ msgid "Recent friends"
 msgstr "Senaste vänner"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Familjer till Canvass"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Pantsjämförelse"
 
@@ -5209,10 +5201,6 @@ msgstr "Hitta volontärer för en viss möjlighet"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Vänner som registrerade sig under tidigare månader"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Personer i familjer som är ok att canvass."
 
 #: 
 msgid "Compare pledges between two fiscal years"

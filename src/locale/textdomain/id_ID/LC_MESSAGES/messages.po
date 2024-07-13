@@ -359,10 +359,6 @@ msgid "persons were imported"
 msgstr "Data telah diimpor"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Sensus Otomatis"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Tambahkan cart di Acara"
 
@@ -5002,10 +4998,6 @@ msgid "Recent friends"
 msgstr "Teman baru"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Keluarga ke Canvass"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Perbandingan janji iman"
 
@@ -5072,10 +5064,6 @@ msgstr "Temukan sukarelawan untuk kesempatan tertentu"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Teman yang mendaftar di bulan sebelumnya"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Orang-orang dalam keluarga yang baik-baik saja untuk menyisir."
 
 #: 
 msgid "Compare pledges between two fiscal years"

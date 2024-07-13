@@ -357,10 +357,6 @@ msgid "persons were imported"
 msgstr "Kişiler ithal edildi"
 
 #: 
-msgid "Canvass Automation"
-msgstr "Canvass Otomasyonu"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "Etkinliğe Sepet Ekle"
 
@@ -4993,10 +4989,6 @@ msgid "Recent friends"
 msgstr "Son Arkadaşlar"
 
 #: 
-msgid "Families to Canvass"
-msgstr "Aileler to Canvass"
-
-#: 
 msgid "Pledge comparison"
 msgstr "Rehin karşılaştırması"
 
@@ -5063,10 +5055,6 @@ msgstr "Belirli bir fırsat için gönüllüleri bulun"
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Önceki aylarda kaydolan arkadaşlar"
-
-#: 
-msgid "People in families that are ok to canvass."
-msgstr "Canvass için uygun ailelerde insanlar."
 
 #: 
 msgid "Compare pledges between two fiscal years"
