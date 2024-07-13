@@ -113,6 +113,26 @@
         "datePicker": false,
         "select2": false
     },
+    "English - South Africa": {
+    "poEditor": "en-za",
+    "locale": "en_ZA",
+    "languageCode": "en",
+    "countryCode": "ZA",
+    "dataTables": "English",
+    "fullCalendar": false,
+    "datePicker": false,
+    "select2": false
+    },
+    "English - Jamaica": {
+        "poEditor": "en-jm",
+        "locale": "en_JM",
+        "languageCode": "en",
+        "countryCode": "JM",
+        "dataTables": "English",
+        "fullCalendar": false,
+        "datePicker": false,
+        "select2": false
+    },
     "English - United States": {
         "poEditor": "en-US",
         "locale": "en_US",

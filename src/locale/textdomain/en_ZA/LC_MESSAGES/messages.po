@@ -1,0 +1,385 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: en-za\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "State"
+msgstr "Province"
+
+#: 
+msgid "Zip"
+msgstr "Postcode"
+
+#: 
+msgid "Work/Other Email"
+msgstr "Work / Other Email"
+
+#: 
+msgid "Based on filters below.."
+msgstr "Based on filters below ..."
+
+#: 
+msgid "Mobile Phone"
+msgstr "Cellphone"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "Select the event which you would like to add to your cart"
+
+#: 
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Use the textbox for countries other than South Africa)"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "Select the group which you would like to add to your cart"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "Load Authorised Transactions"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "Family Cellphone"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "Personal Cellphone"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "Personal Work / Other Email"
+
+#: 
+msgid "Event Nonattendees"
+msgstr "Event Non-attendees"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
+msgstr "Warning:  By deleting this field, you will irrevocably lose all family data assigned for this field!"
+
+#: 
+msgid "No custom Family fields have been added yet"
+msgstr "No custom family fields have been added yet"
+
+#: 
+msgid "Help on types.."
+msgstr "Help on types..."
+
+#: 
+msgid "Unk"
+msgstr "-"
+
+#: 
+msgid "NonDeductible"
+msgstr "Non-deductible"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "You are about to email a copy of the family information to the following emails"
+
+#: 
+msgid "Check"
+msgstr "Cheque"
+
+#: 
+msgid "Generate Catalog"
+msgstr "Generate Catalogue"
+
+#: 
+msgid "Maximum number of neighbors:"
+msgstr "Maximum number of neighbours:"
+
+#: 
+msgid "Neighbor Families"
+msgstr "Neighbour Families"
+
+#: 
+msgid "Show Neighbors"
+msgstr "Show Neighbours"
+
+#: 
+msgid "GroupRole"
+msgstr "Group Role"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
+msgstr "Warning:  By deleting this field, you will irrevocably lose all person data assigned for this field!"
+
+#: 
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "Non-deductible amount can't be greater than total amount."
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "Cheque number not valid for 'CASH' payment"
+
+#: 
+msgid "Scan check"
+msgstr "Scan cheque"
+
+#: 
+msgid "find family from check account #"
+msgstr "find family from cheque account #"
+
+#: 
+msgid "Set default check account number for family"
+msgstr "Set default cheque account number for family"
+
+#: 
+msgid "Fall"
+msgstr "Autumn"
+
+#: 
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "Money amount too large. Maximum is R 999999999.99"
+
+#: 
+msgid "City, State, Zip"
+msgstr "City, Province, Postcode"
+
+#: 
+msgid "Cell Phone"
+msgstr "Cellphone"
+
+#: 
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr "This option requires at least MySQL version 3.22!  Hit browser back button to return to ChurchCRM."
+
+#: 
+msgid "Total of all purchases: $"
+msgstr "Total of all purchases: R"
+
+#: 
+msgid "Total purchases: $"
+msgstr "Total purchases: R"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "Paid by (  ) Cash    (  ) Cheque    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+
+#: 
+msgid "Mobile"
+msgstr "Cell"
+
+#: 
+msgid "Dad Mobile"
+msgstr "Dad Cell"
+
+#: 
+msgid "Mom Mobile"
+msgstr "Mom Cell"
+
+#: 
+msgid "To select multiple hold CTL"
+msgstr "To select multiple press Ctrl key"
+
+#: 
+msgid "Cell phone"
+msgstr "Cellphone"
+
+#: 
+msgid "Total $"
+msgstr "Total R"
+
+#: 
+msgid "with this property.."
+msgstr "with this property..."
+
+#: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "These are the family role numbers designated as head of household"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "Default Province - Must be 2-letter abbreviation!"
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Number of cheques for Deposit Slip Report"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "Set true to enable use of scanned cheques"
+
+#: 
+msgid "Church State"
+msgstr "Church Province"
+
+#: 
+msgid "Church Zip"
+msgstr "Church Postcode"
+
+#: 
+msgid "Zip Code"
+msgstr "Postcode"
+
+#: 
+msgid "WorkEmail"
+msgstr "Work Email"
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Enter any part of the following: Name, City, Province, Postcode, Home Phone, Email, or Work Email."
+
+#: 
+msgid "CustomSearch"
+msgstr "Custom Search"
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Search by any part of Name, City, Province, Postcode, Home Phone, Email, or Work Email."
+
+#: 
+msgid "People in families that are ok to canvass."
+msgstr "People in families that are okay to canvass."
+
+#: 
+msgid "SMTP Server info are blank"
+msgstr "SMTP Server info is blank"
+
+#: 
+msgid "Your system could be more secure by installing an TLS/SSL Cert."
+msgstr "Your system could be more secure by installing a TLS/SSL certificate."
+
+#: 
+msgid "Page not fond"
+msgstr "Page not found"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "Make user-entered zip/postcodes in UPPER-CASE when saving to the database."
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "Church Chequeing Account Number"
+
+#: 
+msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
+msgstr "Increase the PHP upload limits to allow for mobile photo upload, and backup restore."
+
+#: 
+msgid "Show neighbors with these classifications:"
+msgstr "Show neighbours with these classifications:"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "Kiosk Visibility Timestamp"
+
+#: 
+msgid "Check Number"
+msgstr "Cheque Number"
+
+#: 
+msgid "Show Family Head of House Names"
+msgstr "Show Family Head of Household Names"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "Person ID for Cart must be numeric"
+
+#: 
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr "Set the encryption system to use - SSL (deprecated) or TLS"
+
+#: 
+msgid "User must have MenuOptions permission"
+msgstr "User must have Menu Options permission"
+
+#. Shouldn't that be: ID
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "Invalid request: Missing calendar ID"
+
+#. Shouldn't that be: ID
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "Not Found: Unknown calendar ID"
+
+#: 
+msgid "no found or user without an email"
+msgstr "not found or user without an email"
+
+#: 
+msgid "Foreground Color"
+msgstr "Foreground Colour"
+
+#: 
+msgid "Background Color"
+msgstr "Background Colour"
+
+#: 
+msgid "invalid event type id"
+msgstr "invalid event type ID"
+
+#: 
+msgid "invalid group id"
+msgstr "invalid group ID"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Remote Backup Endpoint.  If WebDAV, this must be URL encoded. "
+
+#: 
+msgid "Missing event id"
+msgstr "Missing event ID"
+
+#. Shouldn't that be: ID
+#: 
+msgid "Unexpected Person Id"
+msgstr "Unexpected Person ID"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "2 Factor Authentication enrolment"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "Unable To Begin Two Factor Authentication Enrolment"
+
+#: 
+msgid "List not inList"
+msgstr "List not in List"
+
+#: 
+msgid "Invalid List id"
+msgstr "Invalid List ID"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "Beginning enrolment will invalidate any previously enrolled 2 factor devices and recovery codes."
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "When you click next, you'll be prompted to scan a QR code to enrol your authenticator app."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "To confirm enrolment, you'll need to enter the code generated by your authenticator app"
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "After confirming app enrolment, single-use recovery codes will be generated and displayed."
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "Begin Two Factor Authentication Enrolment"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "Enter TOTP code to confirm enrolment"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "2 Factor Authentication Enrolment Success"
+
+#: 
+msgid "Default Zip"
+msgstr "Default Postcode"
+
