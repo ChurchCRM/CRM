@@ -2153,7 +2153,7 @@
     "Lists": "Listeler",
     "loading": "Yükleniyor",
     "List not found": "Liste bulunamadı",
-    "List not inList": "Liste Inlist değil",
+    "List not in the list": "Liste Inlist değil",
     "People not in": "İnsanlar içeride değil",
     "Invalid List id": "Geçersiz Liste Kimliği",
     "Audience not in the ChurchCRM": "Kilisede izleyici değil",

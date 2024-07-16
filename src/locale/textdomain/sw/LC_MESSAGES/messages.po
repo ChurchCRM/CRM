@@ -8611,7 +8611,8 @@ msgid "List not found"
 msgstr "Orodha haijapatikana"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Orodha si katikaList"
 
 #: 

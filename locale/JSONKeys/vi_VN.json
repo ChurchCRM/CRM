@@ -2151,7 +2151,7 @@
     "Lists": "Danh sách",
     "loading": "Đang tải",
     "List not found": "Danh sách không tìm thấy",
-    "List not inList": "Danh sách không có trong Danh sách",
+    "List not in the list": "Danh sách không có trong Danh sách",
     "People not in": "Những người không ở",
     "Invalid List id": "Id danh sách không hợp lệ",
     "Audience not in the ChurchCRM": "Khán giả không ở trong Nhà thờCRM",

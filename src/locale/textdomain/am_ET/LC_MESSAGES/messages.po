@@ -8656,7 +8656,8 @@ msgid "List not found"
 msgstr "ዝርዝር አልተገኘም።"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "\n"
 "ዝርዝር በዝርዝሩ ውስጥ አይደለም።"
 

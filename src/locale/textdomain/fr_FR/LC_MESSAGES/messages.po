@@ -8648,7 +8648,8 @@ msgid "List not found"
 msgstr "Liste introuvable"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Liste pas dansListe"
 
 #: 

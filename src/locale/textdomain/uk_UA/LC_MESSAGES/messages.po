@@ -8627,7 +8627,8 @@ msgid "List not found"
 msgstr "Список не знайдено"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Список не в списку"
 
 #: 

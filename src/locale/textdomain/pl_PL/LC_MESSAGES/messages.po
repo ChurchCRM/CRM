@@ -4681,8 +4681,9 @@ msgid "List not found"
 msgstr "Lista nie znaleziona"
 
 #: 
-msgid "List not inList"
-msgstr "Lista nie w \"inList\""
+#, fuzzy
+msgid "List not in the list"
+msgstr "Lista nie w Lista"
 
 #: 
 msgid "People not in"

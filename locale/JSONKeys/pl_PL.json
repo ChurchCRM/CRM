@@ -1134,7 +1134,7 @@
     "Lists": "Listy",
     "loading": "ładowanie",
     "List not found": "Lista nie znaleziona",
-    "List not inList": "Lista nie w \"inList\"",
+    "List not in the list": "Lista nie w Lista",
     "People not in": "Osoby nie w",
     "Invalid List id": "Nie prawidłowy 'id' Listy",
     "Audience not in the ChurchCRM": "Uczestnicy z poza ChurchCRM",

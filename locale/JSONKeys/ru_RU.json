@@ -1407,7 +1407,7 @@
     "Lists": "Списки",
     "loading": "загрузка",
     "List not found": "Список не найден",
-    "List not inList": "Список не в inList",
+    "List not in the list": "Список не в Список",
     "People not in": "Люди не в",
     "Invalid List id": "Неверный id списка",
     "Web Server": "Веб-сервер",

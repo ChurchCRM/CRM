@@ -2153,7 +2153,7 @@
     "Lists": "Nimekirjad",
     "loading": "laadimine",
     "List not found": "Nimekirja ei leitud",
-    "List not inList": "Nimekiri pole loendis",
+    "List not in the list": "Nimekiri pole loendis",
     "People not in": "Inimesed, kes pole",
     "Invalid List id": "Vigane loendi ID",
     "Audience not in the ChurchCRM": "Publik pole ChurchCRM-is",

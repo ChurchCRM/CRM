@@ -2144,7 +2144,7 @@
     "Lists": "Τόπος αγώνων",
     "loading": "φόρτωση",
     "List not found": "Η λίστα δεν βρέθηκε",
-    "List not inList": "Λίστα όχι σε Λίστα",
+    "List not in the list": "Λίστα όχι σε Λίστα",
     "People not in": "Άνθρωποι όχι μέσα",
     "Invalid List id": "Μη έγκυρο αναγνωριστικό λίστας",
     "Audience not in the ChurchCRM": "Το κοινό δεν είναι στο ChurchCRM",
