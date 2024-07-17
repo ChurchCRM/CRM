@@ -8636,7 +8636,8 @@ msgid "List not found"
 msgstr "Daftar tidak ditemukan"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Tidak ada dalam daftar"
 
 #: 

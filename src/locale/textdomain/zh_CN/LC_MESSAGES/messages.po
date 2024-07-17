@@ -8742,7 +8742,8 @@ msgid "List not found"
 msgstr "找不到清单"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "列表不在列表中"
 
 #: 

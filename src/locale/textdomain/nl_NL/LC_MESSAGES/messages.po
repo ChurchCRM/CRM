@@ -8661,8 +8661,9 @@ msgid "List not found"
 msgstr "Lijst niet gevonden"
 
 #: 
-msgid "List not inList"
-msgstr "Lijst niet inList"
+#, fuzzy
+msgid "List not in the list"
+msgstr "Lijst niet in Lijst"
 
 #: 
 msgid "People not in"

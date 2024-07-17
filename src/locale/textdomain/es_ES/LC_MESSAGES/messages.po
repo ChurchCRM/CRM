@@ -8675,7 +8675,8 @@ msgid "List not found"
 msgstr "Lista no encontrada"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Lista no enlistada"
 
 #. I don't find a proper short translation. I'll keep it simple.

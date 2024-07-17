@@ -8737,8 +8737,9 @@ msgid "List not found"
 msgstr "Lista nu a fost găsită"
 
 #: 
-msgid "List not inList"
-msgstr "Listă care nu este inList"
+#, fuzzy
+msgid "List not in the list"
+msgstr "Listă care nu este in Listă"
 
 #: 
 msgid "People not in"

@@ -8638,7 +8638,8 @@ msgid "List not found"
 msgstr "Liste bulunamadı"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Liste Inlist değil"
 
 #: 

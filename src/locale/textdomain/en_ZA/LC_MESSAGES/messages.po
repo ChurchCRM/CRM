@@ -237,10 +237,6 @@ msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work 
 msgstr "Search by any part of Name, City, Province, Postcode, Home Phone, Email, or Work Email."
 
 #: 
-msgid "People in families that are ok to canvass."
-msgstr "People in families that are okay to canvass."
-
-#: 
 msgid "SMTP Server info are blank"
 msgstr "SMTP Server info is blank"
 
@@ -342,10 +338,6 @@ msgstr "2 Factor Authentication enrolment"
 #: 
 msgid "Unable To Begin Two Factor Authentication Enrollment"
 msgstr "Unable To Begin Two Factor Authentication Enrolment"
-
-#: 
-msgid "List not inList"
-msgstr "List not in List"
 
 #: 
 msgid "Invalid List id"
