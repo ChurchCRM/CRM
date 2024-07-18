@@ -2153,7 +2153,7 @@
     "Lists": "ዝርዝሮች",
     "loading": "በመጫን ላይ",
     "List not found": "ዝርዝር አልተገኘም።",
-    "List not inList": "\nዝርዝር በዝርዝሩ ውስጥ አይደለም።",
+    "List not in the list": "\nዝርዝር በዝርዝሩ ውስጥ አይደለም።",
     "People not in": "ሰዎች አልገቡም።",
     "Invalid List id": "ልክ ያልሆነ የዝርዝር መታወቂያ",
     "Audience not in the ChurchCRM": "ታዳሚዎች በቤተክርስቲያን CRM ውስጥ አይደሉም",

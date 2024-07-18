@@ -8663,7 +8663,8 @@ msgid "List not found"
 msgstr "Elenco non trovato"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Elenco non in elenco"
 
 #: 

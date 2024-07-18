@@ -2153,7 +2153,7 @@
     "Lists": "Elenchi",
     "loading": "caricamento in corso",
     "List not found": "Elenco non trovato",
-    "List not inList": "Elenco non in elenco",
+    "List not in the list": "Elenco non in elenco",
     "People not in": "Persone non in",
     "Invalid List id": "ID elenco non valido",
     "Audience not in the ChurchCRM": "Pubblico non in ChurchCRM",

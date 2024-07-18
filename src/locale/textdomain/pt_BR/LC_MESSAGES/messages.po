@@ -10580,8 +10580,8 @@ msgstr "Lista não encontrada"
 
 #: 
 #, fuzzy
-msgid "List not inList"
-msgstr "Lista não está inList"
+msgid "List not in the list"
+msgstr "Lista não está in Lista"
 
 #: 
 #, fuzzy

@@ -8647,7 +8647,8 @@ msgid "List not found"
 msgstr "Danh sách không tìm thấy"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Danh sách không có trong Danh sách"
 
 #: 

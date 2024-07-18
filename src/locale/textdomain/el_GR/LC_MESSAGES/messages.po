@@ -8622,7 +8622,8 @@ msgid "List not found"
 msgstr "Η λίστα δεν βρέθηκε"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Λίστα όχι σε Λίστα"
 
 #: 

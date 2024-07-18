@@ -2145,7 +2145,7 @@
     "Lists": "Списки",
     "loading": "завантаження",
     "List not found": "Список не знайдено",
-    "List not inList": "Список не в списку",
+    "List not in the list": "Список не в списку",
     "People not in": "Люди не входять",
     "Invalid List id": "Недійсний ідентифікатор списку",
     "Audience not in the ChurchCRM": "Аудиторія не в ChurchCRM",

@@ -5764,8 +5764,8 @@ msgstr "Список не найден"
 #. what is inList?
 #: 
 #, fuzzy
-msgid "List not inList"
-msgstr "Список не в inList"
+msgid "List not in the list"
+msgstr "Список не в Список"
 
 #: 
 msgid "People not in"

@@ -2155,7 +2155,7 @@
     "Lists": "Liste",
     "loading": "se încarcă",
     "List not found": "Lista nu a fost găsită",
-    "List not inList": "Listă care nu este inList",
+    "List not in the list": "Listă care nu este in Listă",
     "People not in": "Persoane care nu sunt în",
     "Invalid List id": "Id listă invalid",
     "Audience not in the ChurchCRM": "Publicul care nu este în ChurchCRM",

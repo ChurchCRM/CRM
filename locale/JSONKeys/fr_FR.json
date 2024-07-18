@@ -2153,7 +2153,7 @@
     "Lists": "Listes",
     "loading": "Chargement en cours",
     "List not found": "Liste introuvable",
-    "List not inList": "Liste pas dansListe",
+    "List not in the list": "Liste pas dansListe",
     "People not in": "Person non trouvée",
     "Invalid List id": "Identifiant de liste non valide",
     "Audience not in the ChurchCRM": "Public non membre de ChurchCRM",

@@ -8784,7 +8784,8 @@ msgid "List not found"
 msgstr "Listan hittades inte"
 
 #: 
-msgid "List not inList"
+#, fuzzy
+msgid "List not in the list"
 msgstr "Lista inte inList"
 
 #: 

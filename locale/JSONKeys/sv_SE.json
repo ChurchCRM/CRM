@@ -2153,7 +2153,7 @@
     "Lists": "Listor",
     "loading": "läser in",
     "List not found": "Listan hittades inte",
-    "List not inList": "Lista inte inList",
+    "List not in the list": "Lista inte inList",
     "People not in": "Människor inte i",
     "Invalid List id": "Ogiltig lista-id",
     "Audience not in the ChurchCRM": "Publiken inte i ChurchCRM",
