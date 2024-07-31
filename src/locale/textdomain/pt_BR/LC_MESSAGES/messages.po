@@ -11158,6 +11158,70 @@ msgid "invalid group request"
 msgstr "solicitação de grupo inválida"
 
 #: 
+msgid "Hindi - India"
+msgstr "Híndi - Índia"
+
+#: 
+msgid "Japanese"
+msgstr "Japonês"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamil - Índia"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Não inscrito"
+
+#: 
+msgid "property"
+msgstr "propriedade"
+
+#: 
+msgid "Default Zip"
+msgstr "CEP Padrão"
+
+#: 
+msgid "Credit Card People"
+msgstr "Cartão de crédito"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Pessoas sem cartão de crédito configurado para pagamento"
+
+#: 
 msgid "Adult Name (Optional)"
 msgstr "Nome adulto (Opcional)"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "Como parte da restauração, os backups externos foram desativados.  Se desejar continuar os backups automáticos, você deverá reativar manualmente a configuração bEnableExternalBackupTarget."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "A verificação de integridade foi aprovada. Todos os hashes de arquivos do sistema correspondem aos valores esperados."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "Lista separada por vírgulas de classificações que devem aparecer como inativas."
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "O MailChimp não está configurado"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "Por favor, atualize a chave de API do MailChimp."
+
+#: 
+msgid "English - South Africa"
+msgstr "Inglês - África do Sul"
+
+#: 
+msgid "English - Jamaica"
+msgstr "Inglês - Jamaica"
+
+#: 
+msgid "Swahili"
+msgstr "Suaíli"
 

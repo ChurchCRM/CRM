@@ -2274,5 +2274,21 @@
     "2021/2022": "2021/2022",
     "2022/2023": "2022/2023",
     "invalid group request": "solicitação de grupo inválida",
-    "Adult Name (Optional)": "Nome adulto (Opcional)"
+    "Hindi - India": "Híndi - Índia",
+    "Japanese": "Japonês",
+    "Tamil - India": "Tamil - Índia",
+    "Not Subscribed": "Não inscrito",
+    "property": "propriedade",
+    "Default Zip": "CEP Padrão",
+    "Credit Card People": "Cartão de crédito",
+    "People who are configured to pay by credit card.": "Pessoas sem cartão de crédito configurado para pagamento",
+    "Adult Name (Optional)": "Nome adulto (Opcional)",
+    "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting.": "Como parte da restauração, os backups externos foram desativados.  Se desejar continuar os backups automáticos, você deverá reativar manualmente a configuração bEnableExternalBackupTarget.",
+    "The previous integrity check passed. All system file hashes match the expected values.": "A verificação de integridade foi aprovada. Todos os hashes de arquivos do sistema correspondem aos valores esperados.",
+    "Comma separated list of classifications that should appear as inactive": "Lista separada por vírgulas de classificações que devem aparecer como inativas.",
+    "MailChimp is not configured": "O MailChimp não está configurado",
+    "Please update the MailChimp API key in:": "Por favor, atualize a chave de API do MailChimp.",
+    "English - South Africa": "Inglês - África do Sul",
+    "English - Jamaica": "Inglês - Jamaica",
+    "Swahili": "Suaíli"
 }
