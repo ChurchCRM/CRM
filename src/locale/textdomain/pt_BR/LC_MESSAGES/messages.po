@@ -4710,10 +4710,11 @@ msgstr "Selecionar Família"
 msgid "with at least one:"
 msgstr "com pelo menos um:"
 
+#. Welcome in Brazilian Portuguese need a gender flexion where (a) is the female variation, so Bem-vind (o) (a) (male and female)
 #: 
 #, fuzzy
 msgid "Welcome to"
-msgstr "Bem-vindo a"
+msgstr "Bem-vindo(a) à"
 
 #: 
 #, fuzzy

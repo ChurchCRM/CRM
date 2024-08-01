@@ -971,7 +971,7 @@
     "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?": "Esta ação substituirá os números dos envelopes das famílias no banco de dados por aqueles que foram selecionados nesta página. Continuar?",
     "Family Select": "Selecionar Família",
     "with at least one:": "com pelo menos um:",
-    "Welcome to": "Bem-vindo a",
+    "Welcome to": "Bem-vindo(a) à",
     "Select Database Files": "Selecionar arquivo de Banco de Dados",
     "Select a backup file to restore": "Selecione um arquivo de backup para restaurar",
     "CAUTION: This will completely erase the existing database, and replace it with the backup": "CUIDADO: Esta ação irá apagar completamente os dados existentes no banco de dados e reescrevê-las com os dados do backup",
