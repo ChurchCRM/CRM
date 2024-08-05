@@ -1,7 +1,7 @@
 # This is the developer docker-compose.yml file. You can build and Run ChurchCRM
 # from this file by first filling in your password and db info in the .env
-# file and then running "docker-compose -f docker-compose.develop.yaml build", and
-# "docker-compose -f docker-compose.develop.yaml up" in your terminal.
+# file and then running "docker compose -f docker-compose.develop.yaml build", and
+# "docker compose -f docker-compose.develop.yaml up" in your terminal.
 version: "3.6"
 services:
   database:
