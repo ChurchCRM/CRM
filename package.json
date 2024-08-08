@@ -77,7 +77,7 @@
         "jquery": "^3.7.1",
         "jquery-photo-uploader": "^1.0.13",
         "jquery-steps": "^1.1.0",
-        "jquery-validation": "^1.19.5",
+        "jquery-validation": "^1.21.0",
         "pace-js": "^1.2.4",
         "react-bootstrap": "^2.10.2",
         "react-datepicker": "^6.9.0",
