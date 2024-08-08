@@ -141,6 +141,6 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-<?php
+    <?php
 }
 require 'Include/Footer.php';

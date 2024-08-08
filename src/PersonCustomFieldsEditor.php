@@ -268,11 +268,11 @@ require 'Include/Header.php'; ?>
 
                 <?php
                 if ($numRows == 0) {
-                ?>
+                    ?>
                     <h2><?= gettext('No custom person fields have been added yet') ?></h2>
-                <?php
+                    <?php
                 } else {
-                ?>
+                    ?>
                     <tr>
                         <td colspan="6">
                             <?php
@@ -293,7 +293,7 @@ require 'Include/Header.php'; ?>
                     <?php
 
                     for ($row = 1; $row <= $numRows; $row++) {
-                    ?>
+                        ?>
                         <tr>
                             <td class="TextColumn">
                                 <?= $aPropTypes[$aTypeFields[$row]] ?>
@@ -357,7 +357,7 @@ require 'Include/Header.php'; ?>
 
                             </td>
                         </tr>
-                    <?php
+                        <?php
                     } ?>
 
                     <tr>
@@ -374,7 +374,7 @@ require 'Include/Header.php'; ?>
                         </td>
                         <td>
                     </tr>
-                <?php
+                    <?php
                 } ?>
                 <tr>
                     <td colspan="7">

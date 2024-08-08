@@ -168,7 +168,7 @@ function MakeFYString(int $iFYID): string
 
 // Runs an SQL query.  Returns the result resource.
 // By default stop on error, unless a second (optional) argument is passed as false.
-function RunQuery(string $sSQL, $bStopOnError = true)
+function RunQuery(string $sSQL, bool $bStopOnError = true)
 {
     global $cnInfoCentral;
     mysqli_query($cnInfoCentral, "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
@@ -256,7 +256,7 @@ function SelectWhichInfo(string $sPersonInfo = null, string $sFamilyInfo = null,
 // Function value returns 0 if no info was given, 1 if person info was used, and 2 if family info was used.
 // We do address lines 1 and 2 in together because separately we might end up with half family address and half person address!
 //
-function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddress1, $sPersonAddress2, ?string $sFamilyAddress1, ?string $sFamilyAddress2, bool $bFormat = false)
+function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddress1, $sPersonAddress2, ?string $sFamilyAddress1, ?string $sFamilyAddress2, bool $bFormat = false): int
 {
     if (SystemConfig::getValue('bShowFamilyData')) {
         if ($bFormat) {
@@ -704,7 +704,7 @@ function displayCustomField($type, ?string $data, $special)
 //
 // Generates an HTML form <input> line for a custom field
 //
-function formCustomField($type, string $fieldname, $data, ?string $special, $bFirstPassFlag): void
+function formCustomField($type, string $fieldname, $data, ?string $special, bool $bFirstPassFlag): void
 {
     global $cnInfoCentral;
 
@@ -1211,7 +1211,7 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
 
 // Wrapper for number_format that uses the locale information
 // There are three modes: money, integer, and intmoney (whole number money)
-function formatNumber($iNumber, $sMode = 'integer')
+function formatNumber($iNumber, $sMode = 'integer'): string
 {
     global $aLocaleInfo;
 
@@ -1232,7 +1232,7 @@ function formatNumber($iNumber, $sMode = 'integer')
     }
 }
 
-function FilenameToFontname(string $filename, string $family)
+function FilenameToFontname(string $filename, string $family): string
 {
     if ($filename == $family) {
         return ucfirst($family);
@@ -1342,7 +1342,7 @@ function FindMemberClassID()
 // to insert the character string "NULL" because it will be inserted as a MySQL NULL!
 // This will produce a database error if NULL's are not allowed!  Do not use this
 // function if you intend to insert the character string "NULL" into a field.
-function MySQLquote($sfield)
+function MySQLquote($sfield): string
 {
     $sfield = trim($sfield);
 
@@ -1574,7 +1574,7 @@ function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, s
     }
 }
 
-function requireUserGroupMembership($allowedRoles = null)
+function requireUserGroupMembership($allowedRoles = null): bool
 {
     if (!$allowedRoles) {
         throw new Exception('Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.');

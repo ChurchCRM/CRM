@@ -40,7 +40,7 @@ $sPageTitle = gettext('Add Cart to Group');
 require 'Include/Header.php';
 
 if (count($_SESSION['aPeopleCart']) > 0) {
-?>
+    ?>
 
   <script src="skin/js/GroupRoles.js"></script>
 

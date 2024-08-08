@@ -142,9 +142,9 @@ require 'Include/Header.php';
                         } ?>
                         <input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                                                                                                                                                                         echo $linkBack;
-                                                                                                                                                                    } else {
-                                                                                                                                                                        echo 'v2/dashboard';
-                                                                                                                                                                    } ?>';">
+                                                                            } else {
+                                                                                echo 'v2/dashboard';
+                                                                            } ?>';">
                     </td>
                 </tr>
 
@@ -203,7 +203,7 @@ require 'Include/Header.php';
                                                 <td class="LabelColumn"><?= $di_title ?></td>
                                                 <td class="TextColumn"><input type="text" name="MBItem<?= $di_ID ?>" id="MBItem<?= $di_ID ?>" value="<?= $mb_count ?>"></td>
                                             </tr>
-                                        <?php
+                                            <?php
                                         }
                                         ?>
 

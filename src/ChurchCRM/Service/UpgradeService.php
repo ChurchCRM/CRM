@@ -18,7 +18,7 @@ use Propel\Runtime\Propel;
 
 class UpgradeService
 {
-    public static function upgradeDatabaseVersion()
+    public static function upgradeDatabaseVersion(): bool
     {
         $logger = LoggerUtils::getAppLogger();
         $db_version = SystemService::getDBVersion();

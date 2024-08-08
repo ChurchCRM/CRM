@@ -275,7 +275,7 @@ class Family extends BaseFamily implements PhotoInterface
         $this->createTimeLineNote('verify');
     }
 
-    public function getFamilyString($booleanIncludeHOH = true)
+    public function getFamilyString(bool $booleanIncludeHOH = true): string
     {
         $HoH = [];
         if ($booleanIncludeHOH) {

@@ -141,9 +141,9 @@ require 'Include/Header.php';
                     <input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="FundRaiserSubmit">
                     <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                                                                                                                                                                         echo $linkBack;
-                                                                                                                                                                    } else {
-                                                                                                                                                                        echo 'v2/dashboard';
-                                                                                                                                                                    } ?>';">
+                                                                        } else {
+                                                                            echo 'v2/dashboard';
+                                                                        } ?>';">
                     <?php
                     if ($iFundRaiserID > 0) {
                         echo '<input type=button class=btn value="' . gettext('Add Donated Item') . "\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
@@ -250,7 +250,7 @@ require 'Include/Header.php';
                             <a href="DonatedItemDelete.php?DonatedItemID=<?= $di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . $iFundRaiserID ?>">Delete</a>
                         </td>
                     </tr>
-            <?php
+                    <?php
                 } // while
             } // if
             ?>

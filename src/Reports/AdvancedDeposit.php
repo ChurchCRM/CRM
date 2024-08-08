@@ -221,7 +221,7 @@ if ($output === 'pdf') {
             $this->Write(8, $str);
         }
 
-        public function startFirstPage(): int|float
+        public function startFirstPage()
         {
             global $sDateStart, $sDateEnd, $sort, $iDepID, $datetype;
             $this->addPage();

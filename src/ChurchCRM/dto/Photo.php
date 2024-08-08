@@ -208,7 +208,7 @@ class Photo
         return $content;
     }
 
-    public function getPhotoBytes(): string|false
+    public function getPhotoBytes()
     {
         $content = file_get_contents($this->photoURI);
         MiscUtils::throwIfFailed($content);
@@ -266,7 +266,7 @@ class Photo
         throw new \Exception('Gravatar not found');
     }
 
-    private function loadFromGoogle($email, string $baseName): string|false
+    private function loadFromGoogle($email, string $baseName)
     {
         $url = 'http://picasaweb.google.com/data/entry/api/user/';
         $url .= strtolower(trim($email));
@@ -291,7 +291,7 @@ class Photo
         return false;
     }
 
-    private function getRandomColor(\GdImage $image): int|false
+    private function getRandomColor(\GdImage $image)
     {
         $red = random_int(0, 150);
         $green = random_int(0, 150);

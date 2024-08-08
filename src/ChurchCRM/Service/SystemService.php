@@ -34,7 +34,7 @@ class SystemService
         return $composerJson['version'];
     }
 
-    public static function getCopyrightDate()
+    public static function getCopyrightDate(): string
     {
         return (new \DateTime())->format('Y');
     }
