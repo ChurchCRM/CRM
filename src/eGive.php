@@ -83,7 +83,7 @@ if (isset($_POST['ApiGet'])) {
     $api_error = 1;
     $logon = get_api_data($json);
 
-    if ($logon && $logon['status'] == 'success') {
+    if ($logon && $logon['status'] === 'success') {
         $api_error = 0;
         $token = $logon['token'];
 
@@ -98,7 +98,7 @@ if (isset($_POST['ApiGet'])) {
         $json = stream_get_contents($fp);
         fclose($fp);
         $data = get_api_data($json, true);
-        if ($data && $data['status'] == 'success') {
+        if ($data && $data['status'] === 'success') {
             $api_error = 0;
 
             // each transaction has these fields: 'transactionID' 'envelopeID' 'giftID' 'frequency' 'amount'

@@ -82,7 +82,7 @@ function UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction)
         $sSQL = "SELECT * FROM record2property_r2p WHERE r2p_record_ID = $iRecordID AND r2p_pro_ID = $iPropertyID";
         $rsExistingTest = RunQuery($sSQL);
 
-        if (mysqli_num_rows($rsExistingTest) == 0) {
+        if (mysqli_num_rows($rsExistingTest) === 0) {
             $sSQL = "INSERT INTO record2property_r2p (r2p_record_ID,r2p_pro_ID,r2p_Value) VALUES ($iRecordID,$iPropertyID,'$sValue')";
             RunQuery($sSQL);
         }

@@ -124,9 +124,8 @@ class MiscUtils
         $anchor = preg_replace('/[^\w\d\- ]+/', '', $anchor);
         $anchor = preg_replace('/\s/', '-', $anchor);
         $anchor = preg_replace('/\-+$/', '', $anchor);
-        $anchor = str_replace(' ', '-', $anchor);
 
-        return $anchor;
+        return str_replace(' ', '-', $anchor);
     }
 
     public static function dashesToCamelCase(string $string, bool $capitalizeFirstCharacter = false): string

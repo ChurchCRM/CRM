@@ -12,7 +12,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Get the GroupID out of the querystring
-$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
+$iGroupID = (int) InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
 if ($iGroupID < 1) {
     RedirectUtils::redirect('GroupList.php');
@@ -65,7 +65,7 @@ require 'Include/Header.php';
             echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fas fa-pen"></i>' . gettext('Edit this Group') . '</a>';
             echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
 
-        <?php
+            <?php
             if ($thisGroup->getHasSpecialProps()) {
                 echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-list-alt"></i>' . gettext('Edit Group-Specific Properties Form') . '</a>';
             }
@@ -115,7 +115,7 @@ require 'Include/Header.php';
 
             if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
                 // Display link
-        ?>
+                ?>
                 <div class="btn-group">
                     <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-paper-plane"></i><?= gettext('Email Group') ?></a>
                     <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
@@ -138,7 +138,7 @@ require 'Include/Header.php';
                     </ul>
                 </div>
 
-        <?php
+                <?php
             }
         }
         // Group Text Message Comma Delimited - added by RSBC
@@ -190,9 +190,9 @@ require 'Include/Header.php';
         </button>
         <button class="btn btn-info" type="button">
             <?php if ($defaultRole !== null) {
-            ?>
+                ?>
                 <?= gettext('Default Role') ?> <span class="badge"><?= $defaultRole->getOptionName() ?></span>
-            <?php
+                <?php
             } ?>
         </button>
         <button class="btn btn-primary" type="button">
@@ -241,7 +241,7 @@ require 'Include/Header.php';
                         if (!$numRows) {
                             echo '<p><?= gettext("No member properties have been created")?></p>';
                         } else {
-                    ?>
+                            ?>
                             <table width="100%" cellpadding="2" cellspacing="0">
                                 <tr class="TableHeader">
                                     <td><?= gettext('Type') ?></td>
@@ -270,12 +270,12 @@ require 'Include/Header.php';
                     $sAssignedProperties = ',';
 
                     //Was anything returned?
-                    if (mysqli_num_rows($rsAssignedProperties) == 0) {
+                    if (mysqli_num_rows($rsAssignedProperties) === 0) {
                         // No, indicate nothing returned
                         echo '<p>' . gettext('No property assignments') . '.</p>';
                     } else {
                         // Display table of properties
-                            ?>
+                        ?>
                             <table width="100%" cellpadding="2" cellspacing="0">
                                 <tr class="TableHeader">
                                     <td width="15%" valign="top"><b><?= gettext('Type') ?></b>
@@ -339,30 +339,30 @@ require 'Include/Header.php';
                                 }
 
                                 echo '</table>';
+                    }
+
+                    if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+                        echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
+                        echo '<p>';
+                        echo '<span>' . gettext('Assign a New Property:') . '</span>';
+                        echo '<select name="PropertyID">';
+
+                        while ($aRow = mysqli_fetch_array($rsProperties)) {
+                            extract($aRow);
+
+                            //If the property doesn't already exist for this Person, write the <OPTION> tag
+                            if (strlen(strstr($sAssignedProperties, ',' . $pro_ID . ',')) == 0) {
+                                echo '<option value="' . $pro_ID . '">' . $pro_Name . '</option>';
                             }
+                        }
 
-                            if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
-                                echo '<p>';
-                                echo '<span>' . gettext('Assign a New Property:') . '</span>';
-                                echo '<select name="PropertyID">';
-
-                                while ($aRow = mysqli_fetch_array($rsProperties)) {
-                                    extract($aRow);
-
-                                    //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                    if (strlen(strstr($sAssignedProperties, ',' . $pro_ID . ',')) == 0) {
-                                        echo '<option value="' . $pro_ID . '">' . $pro_Name . '</option>';
-                                    }
-                                }
-
-                                echo '</select>';
-                                echo ' <input type="submit" class="btn btn-success" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
-                                echo '</p></form>';
-                            } else {
-                                echo '<br><br><br>';
-                            }
-                                ?>
+                        echo '</select>';
+                        echo ' <input type="submit" class="btn btn-success" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
+                        echo '</p></form>';
+                    } else {
+                        echo '<br><br><br>';
+                    }
+                    ?>
 
                 </td>
             </tr>

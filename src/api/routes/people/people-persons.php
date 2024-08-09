@@ -136,7 +136,7 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
     return SlimUtils::renderJSON($response, buildFormattedPersonList($people, false, false, true));
 }
 
-function buildFormattedPersonList(Collection $people, bool $created, bool $edited, bool $birthday)
+function buildFormattedPersonList(Collection $people, bool $created, bool $edited, bool $birthday): array
 {
     $formattedList = [];
 

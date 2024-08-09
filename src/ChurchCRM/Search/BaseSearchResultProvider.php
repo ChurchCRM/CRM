@@ -4,28 +4,20 @@ namespace ChurchCRM\Search;
 
 abstract class BaseSearchResultProvider
 {
-    /* @var string */
-    protected $pluralNoun;
-    /* @var ChurchCRM\Search\SearchResult[] */
-    protected $searchResults = [];
+    protected string $pluralNoun;
 
-    abstract public function getSearchResults(string $SearchQuery);
+    /* @var SearchResult[] */
+    protected array $searchResults = [];
 
-    protected function formatSearchGroup()
+    abstract public function getSearchResults(string $SearchQuery): SearchResultGroup;
+
+    protected function formatSearchGroup(): SearchResultGroup
     {
-        if (!empty($this->searchResults)) {
-            return new SearchResultGroup(gettext($this->pluralNoun) . ' (' . count($this->searchResults) . ')', $this->searchResults);
-        }
-
-        return [];
+        return new SearchResultGroup(gettext($this->pluralNoun) . ' (' . count($this->searchResults) . ')', $this->searchResults);
     }
 
-    protected function addSearchResults(array $results)
+    protected function addSearchResults(array $results): void
     {
         $this->searchResults = array_merge($this->searchResults, $results);
-    }
-
-    protected function __construct()
-    {
     }
 }

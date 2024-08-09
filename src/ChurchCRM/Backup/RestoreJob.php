@@ -9,6 +9,7 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\SQLUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Defuse\Crypto\Exception\WrongKeyOrModifiedCiphertextException;
 use Defuse\Crypto\File;
 use Exception;
 use PharData;
@@ -17,15 +18,7 @@ use Propel\Runtime\Propel;
 class RestoreJob extends JobBase
 {
     private \SplFileInfo $RestoreFile;
-
-    /**
-     * @var array
-     */
-    public $Messages = [];
-    /**
-     * @var bool
-     */
-    private $IsBackupEncrypted;
+    public array $Messages = [];
     private ?string $restorePassword = null;
 
     private function isIncomingFileFailed(): bool
@@ -64,7 +57,7 @@ class RestoreJob extends JobBase
             File::decryptFileWithPassword($this->RestoreFile, $tempfile, $this->restorePassword);
             rename($tempfile, $this->RestoreFile);
             LoggerUtils::getAppLogger()->info('File decrypted');
-        } catch (\Defuse\Crypto\Exception\WrongKeyOrModifiedCiphertextException $ex) {
+        } catch (WrongKeyOrModifiedCiphertextException $ex) {
             if ($ex->getMessage() == 'Bad version header.') {
                 LoggerUtils::getAppLogger()->info("Bad version header; this file probably wasn't encrypted");
             } else {
@@ -80,9 +73,9 @@ class RestoreJob extends JobBase
         switch ($this->RestoreFile->getExtension()) {
             case 'gz':
                 $basename = $this->RestoreFile->getBasename();
-                if (substr($basename, strlen($basename) - 6, 6) == 'tar.gz') {
+                if (str_ends_with($basename, 'tar.gz')) {
                     $this->BackupType = BackupType::FULL_BACKUP;
-                } elseif (substr($basename, strlen($basename) - 6, 6) == 'sql.gz') {
+                } elseif (str_ends_with($basename, 'sql.gz')) {
                     $this->BackupType = BackupType::GZSQL;
                 }
                 break;

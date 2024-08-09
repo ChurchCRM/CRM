@@ -10,7 +10,7 @@ class PersonService
     /**
      * @return array<mixed, array<'address'|'displayName'|'familyID'|'familyRole'|'firstName'|'id'|'lastName'|'role'|'thumbnailURI'|'title'|'uri', mixed>>
      */
-    public function search(string $searchTerm, $includeFamilyRole = true): array
+    public function search(string $searchTerm, bool $includeFamilyRole = true): array
     {
         $searchLikeString = '%' . $searchTerm . '%';
         $people = PersonQuery::create()
@@ -27,7 +27,7 @@ class PersonService
             $values['lastName'] = $person->getLastName();
             $values['displayName'] = $person->getFullName();
             $values['uri'] = $person->getViewURI();
-            $values['thumbnailURI'] = $person->getThumbnailURI();
+            $values['thumbnailURI'] = $person->getPhoto()->getThumbnailURI();
             $values['title'] = $person->getTitle();
             $values['address'] = $person->getAddress();
             $values['role'] = $person->getFamilyRoleName();

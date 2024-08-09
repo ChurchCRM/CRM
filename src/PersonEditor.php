@@ -23,7 +23,7 @@ $sPageTitle = gettext('Person Editor');
 // Get the PersonID out of the querystring
 $iPersonID = 0;
 if (array_key_exists('PersonID', $_GET)) {
-    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
+    $iPersonID = (int) InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 }
 $isNewPerson = $iPersonID === 0;
 

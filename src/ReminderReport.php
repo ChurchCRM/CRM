@@ -32,7 +32,7 @@ if (isset($_POST['Submit'])) {
         <div class="form-group">
             <label class="control-label col-sm-2" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
             <div class="col-sm-2">
-                <?php PrintFYIDSelect($iFYID, 'FYID') ?>
+                <?php PrintFYIDSelect('FYID', $iFYID) ?>
             </div>
         </div>
 

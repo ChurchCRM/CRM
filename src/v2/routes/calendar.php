@@ -28,7 +28,7 @@ function getCalendar(Request $request, Response $response, array $args): Respons
     return $renderer->render($response, 'calendar.php', $pageArgs);
 }
 
-function getCalendarJSArgs()
+function getCalendarJSArgs(): array
 {
     return [
         'isModifiable'               => AuthenticationManager::getCurrentUser()->isAddEvent(),

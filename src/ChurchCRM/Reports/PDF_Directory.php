@@ -345,7 +345,7 @@ class PdfDirectory extends ChurchInfoReport
 
     // This function formats the string for the head of household.
     // NOTE: This is used for the Head AND Spouse (called twice)
-    public function sGetHeadString($rsCustomFields, $aHead)
+    public function sGetHeadString($rsCustomFields, $aHead): string
     {
         global $bDirBirthday;
         global $bDirPersonalPhone;

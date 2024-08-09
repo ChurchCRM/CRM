@@ -305,9 +305,9 @@ if ($bErrorFlag) {
     $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
     $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k));
 
-    if (count($aInactiveClassificationIds) !== count($aInactiveClasses))  {
-        LoggerUtils::getAppLogger()->warning('Encountered invalid configuration(s) for sInactiveClassification, please fix this');
-    }
+if (count($aInactiveClassificationIds) !== count($aInactiveClasses)) {
+    LoggerUtils::getAppLogger()->warning('Encountered invalid configuration(s) for sInactiveClassification, please fix this');
+}
 
 for ($row = 1; $row <= $numRows; $row++) {
     ?>

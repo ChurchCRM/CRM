@@ -4,8 +4,8 @@ namespace ChurchCRM\Search;
 
 class SearchResultGroup implements \JsonSerializable
 {
-    private string $groupName;
-    private array $results;
+    public string $groupName;
+    public array $results;
 
     public function __construct(string $groupName, array $results)
     {

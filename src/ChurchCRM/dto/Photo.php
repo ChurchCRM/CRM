@@ -9,8 +9,8 @@ use ChurchCRM\Utils\MiscUtils;
 
 class Photo
 {
-    private $photoType;
-    private $id;
+    private string $photoType;
+    private int $id;
     private $photoURI;
     private ?string $photoThumbURI = null;
     private ?string $thumbnailPath = null;
@@ -20,7 +20,7 @@ class Photo
 
     public static $validExtensions = ['png', 'jpeg', 'jpg'];
 
-    public function __construct($photoType, $id)
+    public function __construct(string $photoType, int $id)
     {
         $this->photoType = $photoType;
         $this->id = $id;
@@ -208,7 +208,7 @@ class Photo
         return $content;
     }
 
-    public function getPhotoBytes(): string|false
+    public function getPhotoBytes()
     {
         $content = file_get_contents($this->photoURI);
         MiscUtils::throwIfFailed($content);
@@ -251,8 +251,6 @@ class Photo
         $s = 60;
         $d = '404';
         $r = 'g';
-        $img = false;
-        $atts = [];
         $url = 'https://www.gravatar.com/avatar/';
         $url .= md5(strtolower(trim($email)));
         $url .= "?s=$s&d=$d&r=$r";
@@ -268,7 +266,7 @@ class Photo
         throw new \Exception('Gravatar not found');
     }
 
-    private function loadFromGoogle($email, string $baseName): string|false
+    private function loadFromGoogle($email, string $baseName)
     {
         $url = 'http://picasaweb.google.com/data/entry/api/user/';
         $url .= strtolower(trim($email));
@@ -293,7 +291,7 @@ class Photo
         return false;
     }
 
-    private function getRandomColor(\GdImage $image): int|false
+    private function getRandomColor(\GdImage $image)
     {
         $red = random_int(0, 150);
         $green = random_int(0, 150);

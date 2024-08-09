@@ -57,7 +57,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
 
     $sPageTitle = gettext('Volunteer Opportunity Delete Confirmation');
     require 'Include/Header.php';
-?>
+    ?>
     <div class="card card-body">
         <div class="callout callout-danger"><?= gettext('Please confirm deletion of') ?>:</div>
         <table class="table">
@@ -267,9 +267,9 @@ if (isset($_POST['SaveChanges'])) {
 
                 <?php
                 if ($numRows == 0) {
-                ?>
+                    ?>
                     <div class="callout callout-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
-                <?php
+                    <?php
                 } else { // if an 'action' (up/down arrow clicked, or order was input)
                     if ($iRowNum && $sAction != '') {
                         // cast as int and couple with switch for sql injection prevention for $row_num
@@ -373,7 +373,7 @@ if (isset($_POST['SaveChanges'])) {
                         </td>
 
                         </tr>
-                <?php
+                        <?php
                     }
                 }
                 ?>

@@ -34,7 +34,7 @@ foreach ($rsGroupTypes as $groupType) {
 </table>
 <?php
 if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-?>
+    ?>
 
 <br>
 <form action="#" method="get" class="form">

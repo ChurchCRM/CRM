@@ -34,7 +34,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <!--Populate the table with family details -->
                 <?php foreach ($families as $family) {
                     /* @var Family $family */
-                ?>
+                    ?>
                     <tr>
                         <td><a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
                                 <i class="fa fa-search-plus"></i>

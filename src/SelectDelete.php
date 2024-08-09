@@ -249,34 +249,34 @@ require 'Include/Header.php';
                         <td><?= $plg_DateLastEdited ?>&nbsp;</td>
                         <td><?= $EnteredFirstName . ' ' . $EnteredLastName ?>&nbsp;</td>
                     </tr>
-            <?php
+                    <?php
                 }
                 echo '</table>';
-            } else {
-                // No Donations from family.  Normal delete confirmation
-                echo $DonationMessage;
-                echo "<p class='callout callout-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
-                echo gettext('Note: This will also delete all Notes associated with this Family record.');
-                echo gettext('(this action cannot be undone)') . '</p>';
-                echo '<div>';
-                echo '<strong>' . gettext('Family Name') . ':</strong>';
-                echo '&nbsp;' . $fam_Name;
-                echo '</div><br/>';
-                echo '<div><strong>' . gettext('Family Members:') . '</strong><ul>';
-                //List Family Members
-                $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $iFamilyID;
-                $rsPerson = RunQuery($sSQL);
-                while ($aRow = mysqli_fetch_array($rsPerson)) {
-                    extract($aRow);
-                    echo '<li>' . $per_FirstName . ' ' . $per_LastName . '</li>';
-                    RunQuery($sSQL);
-                }
-                echo '</ul></div>';
-                echo "<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
-                echo "<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
-                echo "<a class='btn btn-info' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
+        } else {
+            // No Donations from family.  Normal delete confirmation
+            echo $DonationMessage;
+            echo "<p class='callout callout-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
+            echo gettext('Note: This will also delete all Notes associated with this Family record.');
+            echo gettext('(this action cannot be undone)') . '</p>';
+            echo '<div>';
+            echo '<strong>' . gettext('Family Name') . ':</strong>';
+            echo '&nbsp;' . $fam_Name;
+            echo '</div><br/>';
+            echo '<div><strong>' . gettext('Family Members:') . '</strong><ul>';
+            //List Family Members
+            $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $iFamilyID;
+            $rsPerson = RunQuery($sSQL);
+            while ($aRow = mysqli_fetch_array($rsPerson)) {
+                extract($aRow);
+                echo '<li>' . $per_FirstName . ' ' . $per_LastName . '</li>';
+                RunQuery($sSQL);
             }
-            ?>
+            echo '</ul></div>';
+            echo "<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
+            echo "<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
+            echo "<a class='btn btn-info' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
+        }
+        ?>
     </div>
 </div>
 <?php

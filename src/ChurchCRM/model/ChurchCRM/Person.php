@@ -98,7 +98,7 @@ class Person extends BasePerson implements PhotoInterface
     {
         $familyRole = null;
         $roleId = $this->getFmrId();
-        if (isset($roleId) && $roleId !== 0) {
+        if ($roleId !== 0) {
             $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
         }
 
@@ -187,7 +187,9 @@ class Person extends BasePerson implements PhotoInterface
     }
 
     /**
-     * Get address of  a person. If empty, return family address.
+     * Get full address string of a person.
+     *
+     * If the address is not defined on the person record, return family address if one exists.
      */
     public function getAddress(): string
     {
@@ -197,6 +199,7 @@ class Person extends BasePerson implements PhotoInterface
             if (!empty($this->getAddress2())) {
                 $tmp = $tmp . ' ' . $this->getAddress2();
             }
+
             $address[] = $tmp;
             if (!empty($this->getCity())) {
                 $address[] = $this->getCity() . ',';
@@ -212,13 +215,10 @@ class Person extends BasePerson implements PhotoInterface
             }
 
             return implode(' ', $address);
-        } else {
-            if ($this->getFamily()) {
-                return $this->getFamily()
-                    ->getAddress();
-            }
+        } elseif ($this->getFamily()) {
+            return $this->getFamily()->getAddress();
         }
-        //if it reaches here, no address found. return empty $address
+
         return '';
     }
 
@@ -281,30 +281,31 @@ class Person extends BasePerson implements PhotoInterface
     }
 
     /**
-     * * If person address found, return latitude and Longitude of person address
-     * else return family latitude and Longitude.
-     *
-     * @return array
+     * If person address found, return latitude and Longitude of person address
+     * Otherwise, return the family latitude and Longitude.
      */
     public function getLatLng(): array
     {
-        $address = $this->getAddress(); //if person address empty, this will get Family address
+        $bUseFamilyAddress = !empty($this->getAddress1()) && $this->getFamily();
+
         $lat = 0;
         $lng = 0;
-        if (!empty($this->getAddress1())) {
-            $latLng = GeoUtils::getLatLong($this->getAddress());
+        if ($bUseFamilyAddress && $this->getFamily()->hasLatitudeAndLongitude()) {
+            $lat = $this->getFamily()->getLatitude();
+            $lng = $this->getFamily()->getLongitude();
+        } else {
+            // if person address is empty, this will get Family address
+            $sFullAddress = $this->getAddress();
+
+            $latLng = GeoUtils::getLatLong($sFullAddress);
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 $lat = $latLng['Latitude'];
                 $lng = $latLng['Longitude'];
             }
-        } else {
-            // note: this is useful when a person don't have a family (i.e. not an address)
-            if (!empty($this->getFamily())) {
-                if (!$this->getFamily()->hasLatitudeAndLongitude()) {
-                    $this->getFamily()->updateLanLng();
-                }
-                $lat = $this->getFamily()->getLatitude();
-                $lng = $this->getFamily()->getLongitude();
+
+            if ($bUseFamilyAddress) {
+                // if we are using a family address, cache the result to avoid additional work in the future
+                $this->getFamily()->updateLanLng();
             }
         }
 
@@ -506,7 +507,7 @@ class Person extends BasePerson implements PhotoInterface
         $this->deletePhoto();
 
         $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
-        if (!empty($obj)) {
+        if ($obj->count() > 0) {
             $groupService = new GroupService();
             foreach ($obj as $group2roleP2g2r) {
                 $groupService->removeUserFromGroup($group2roleP2g2r->getGroupId(), $group2roleP2g2r->getPersonId());
@@ -538,13 +539,11 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getProperties()
     {
-        $personProperties = PropertyQuery::create()
+        return PropertyQuery::create()
           ->filterByProClass('p')
           ->useRecordPropertyQuery()
           ->filterByRecordId($this->getId())
           ->find();
-
-        return $personProperties;
     }
 
     //  return array of person properties
@@ -573,7 +572,7 @@ class Person extends BasePerson implements PhotoInterface
     /**
      * @return string[]
      */
-    public function getCustomFields($allPersonCustomFields, $customMapping, &$CustomList, $name_func): array
+    public function getCustomFields($allPersonCustomFields, array $customMapping, array &$CustomList, $name_func): array
     {
         // add custom fields to person_custom table since they are not defined in the propel schema
         $rawQry = PersonCustomQuery::create();
@@ -665,9 +664,8 @@ class Person extends BasePerson implements PhotoInterface
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
-        if (empty($now)) {
-            $now = date_create('today');
-        }
+
+        $now = date_create('today');
         $age = date_diff($now, $birthDate);
         if ($age->y < 1) {
             $ageValue = 0;

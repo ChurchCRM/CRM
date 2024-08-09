@@ -4,7 +4,15 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
+
+$events = null;
+$aEventID = [];
+$aEventTitle = [];
+$aEventStartDateTime = [];
 
 $sPostChoice = null;
 if (array_key_exists('Choice', $_POST)) {
@@ -41,9 +49,9 @@ if ($sPostAction === 'Retrieve' && !empty($sPostEvent)) {
 
     if ($sPostChoice === 'Attendees') {
         $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country, t1.per_Gender
-                FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4
-                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID IN ('1','2','5')
-        ORDER BY t1.per_LastName, t1.per_ID";
+            FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4
+            WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID IN ('1','2','5')
+    ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext('Event Attendees');
     } elseif ($sPostChoice === 'Nonattendees') {
         $aSQL = 'SELECT DISTINCT(person_id) FROM event_attend WHERE event_id = ' . $iEventId;
@@ -55,21 +63,21 @@ if ($sPostAction === 'Retrieve' && !empty($sPostEvent)) {
         if (count($aArr) > 0) {
             $aArrJoin = implode(',', $aArr);
             $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country, t1.per_Gender
-                    FROM person_per AS t1, family_fam AS t2
-                    WHERE t1.per_fam_ID = t2.fam_ID AND t1.per_ID NOT IN (' . $aArrJoin . ") AND per_cls_ID IN ('1','2','5')
-            ORDER BY t1.per_LastName, t1.per_ID";
+                FROM person_per AS t1, family_fam AS t2
+                WHERE t1.per_fam_ID = t2.fam_ID AND t1.per_ID NOT IN (' . $aArrJoin . ") AND per_cls_ID IN ('1','2','5')
+        ORDER BY t1.per_LastName, t1.per_ID";
         } else {
             $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country, t1.per_Gender
-                        FROM person_per AS t1, family_fam AS t2
-                        WHERE t1.per_fam_ID = t2.fam_ID AND per_cls_ID IN ('1','2','5')
-            ORDER BY t1.per_LastName, t1.per_ID";
+                    FROM person_per AS t1, family_fam AS t2
+                    WHERE t1.per_fam_ID = t2.fam_ID AND per_cls_ID IN ('1','2','5')
+        ORDER BY t1.per_LastName, t1.per_ID";
         }
         $sPageTitle = gettext('Event Nonattendees');
     } elseif ($sPostChoice === 'Guests') {
         $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_HomePhone, t1.per_Country, t1.per_Gender
-                FROM person_per AS t1, events_event AS t2, event_attend AS t3
-                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND per_cls_ID IN ('0','3')
-        ORDER BY t1.per_LastName, t1.per_ID";
+            FROM person_per AS t1, events_event AS t2, event_attend AS t3
+            WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND per_cls_ID IN ('0','3')
+    ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext('Event Guests');
     }
 } elseif ($sGetAction === 'List' && !empty($sGetEvent)) {
@@ -89,24 +97,49 @@ $numRows = mysqli_num_rows($rsOpps);
 // Create arrays of the attendees.
 for ($row = 1; $row <= $numRows; $row++) {
     $aRow = mysqli_fetch_assoc($rsOpps);
-    extract($aRow);
 
-    if ($sGetAction === 'List') {
-        $aEventID[$row] = $event_id;
-        $aEventTitle[$row] = htmlentities(stripslashes($event_title), ENT_NOQUOTES, 'UTF-8');
-        $aEventStartDateTime[$row] = $event_start;
-    } else {
-        $aPersonID[$row] = $per_ID;
-        $aTitle[$row] = $per_Title;
-        $aFistName[$row] = $per_FirstName;
-        $aMiddleName[$row] = $per_MiddleName;
-        $aLastName[$row] = $per_LastName;
-        $aSuffix[$row] = $per_Suffix;
-        $aEmail[$row] = $per_Email;
-        $aGender[$row] = $per_Gender == 1 ? gettext("Male") : gettext("Female");
-        $aHomePhone[$row] = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $per_Country, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
-    }
+    $aPersonID[$row] = $aRow['per_ID'];
+    $aTitle[$row] = $aRow['per_Title'];
+    $aFirstName[$row] = $aRow['per_FirstName'];
+    $aMiddleName[$row] = $aRow['per_MiddleName'];
+    $aLastName[$row] = $aRow['per_LastName'];
+    $aSuffix[$row] = $aRow['per_Suffix'];
+    $aEmail[$row] = $aRow['per_Email'];
+    $aGender[$row] = $aRow['per_Gender'] == 1 ? gettext("Male") : gettext("Female");
+
+    $aHomePhone[$row] = SelectWhichInfo(
+        ExpandPhoneNumber(
+            $aRow['per_HomePhone'],
+            $aRow['per_Country'],
+            $dummy
+        ),
+        ExpandPhoneNumber(
+            $aRow['fam_HomePhone'],
+            $aRow['fam_Country'],
+            $dummy
+        ),
+        true
+    );
 }
+
+$eventsQuery = EventQuery::create()->orderByStart(Criteria::DESC);
+if (array_key_exists('Action', $_GET) && $_GET['Action'] === 'List' && !empty($_GET['Event'])) {
+    $eventType = EventTypeQuery::create()->findOneById($_GET['Event']);
+    $eventsQuery = $eventsQuery->filterByEventType($eventType);
+
+    //  text is All Events of type $_GET['Type'], because it doesn't work for portuguese, spanish, french, etc
+    $sPageTitle = gettext('All Events of Type') . ': ' . $_GET['Type'];
+}
+
+$events = $eventsQuery->find();
+$numRows = $events->count();
+for ($row = 1; $row <= $events->count(); $row++) {
+    $event = $events[$row - 1];
+    $aEventID[$row] = $event->getId();
+    $aEventTitle[$row] = htmlentities(stripslashes($event->getTitle()), ENT_NOQUOTES, 'UTF-8');
+    $aEventStartDateTime[$row] = $event->getStart(\DateTimeInterface::ATOM);
+}
+require 'Include/Header.php';
 
 // Construct the form
 ?>
@@ -127,10 +160,9 @@ for ($row = 1; $row <= $numRows; $row++) {
         // List all events
         for ($row = 1; $row <= $numRows2; $row++) {
             $aRow = mysqli_fetch_array($rsOpps);
-            extract($aRow);
             echo '&nbsp;&nbsp;&nbsp;<a href="EventAttendance.php?Action=List&Event=' .
-                $type_id . '&Type=' . gettext($type_name) . '" title="List All ' .
-                gettext($type_name) . ' Events"><strong>' . gettext($type_name) .
+            $aRow['type_id'] . '&Type=' . gettext($aRow['type_name']) . '" title="List All ' .
+                gettext($aRow['type_name']) . ' Events"><strong>' . gettext($aRow['type_name']) .
                 '</strong></a>' . "<br>\n";
         }
         ?>
@@ -229,7 +261,7 @@ for ($row = 1; $row <= $numRows; $row++) {
                 <tbody>
                     <?php for ($row = 1; $row <= $numRows; $row++) { ?>
                         <tr>
-                            <td><?= FormatFullName($aTitle[$row], $aFistName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>
+                            <td><?= FormatFullName($aTitle[$row], $aFirstName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>
                             <td><?= $aEmail[$row] ? '<a href="mailto:' . $aEmail[$row] . '">' . $aEmail[$row] . '</a>' : '' ?></td>
                             <td><?= $aHomePhone[$row] ? $aHomePhone[$row] : '' ?></td>
                             <td><?= $aGender[$row] ?></td>

@@ -17,13 +17,13 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 
 class FinancialService
 {
-    public function deletePayment($groupKey): void
+    public function deletePayment(string $groupKey): void
     {
         requireUserGroupMembership('bFinance');
         PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
-    public function getMemberByScanString($tScanString): array
+    public function getMemberByScanString(string $tScanString): array
     {
         requireUserGroupMembership('bFinance');
 
@@ -175,9 +175,9 @@ class FinancialService
         //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
         //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
         $FundSplit = $payment['FundSplit'];
-        if (count($FundSplit) >= 1 && $FundSplit[0]->FundID != 'None') { // split
+        if (count($FundSplit) >= 1 && $FundSplit[0]->FundID !== 'None') { // split
             $nonZeroFundAmountEntered = 0;
-            foreach ($FundSplit as $fun_id => $fund) {
+            foreach ($FundSplit as $fund) {
                 //$fun_active = $fundActive[$fun_id];
                 if ($fund->Amount > 0) {
                     $nonZeroFundAmountEntered++;
@@ -234,10 +234,8 @@ class FinancialService
         foreach ($currencyDenoms as $cdom) {
             $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
       VALUES ('" . $groupKey . "','" . $payment->DepositID . "','" . $cdom->currencyID . "','" . $cdom->Count . "')";
-            if (isset($sSQL)) {
-                RunQuery($sSQL);
-                unset($sSQL);
-            }
+            RunQuery($sSQL);
+            unset($sSQL);
         }
     }
 
@@ -344,209 +342,6 @@ class FinancialService
         return json_encode($payment, JSON_THROW_ON_ERROR);
     }
 
-    private function generateBankDepositSlip($thisReport): void
-    {
-        // --------------------------------
-        // BEGIN FRONT OF BANK DEPOSIT SLIP
-        $thisReport->pdf->addPage('L', [187, 84]);
-        $thisReport->pdf->SetFont('Courier', '', 18);
-        // Print Deposit Slip portion of report
-
-        $thisReport->pdf->SetXY($thisReport->date1X, $thisReport->date1Y);
-        $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
-
-        $thisReport->pdf->SetXY($thisReport->customerName1X, $thisReport->customerName1Y);
-        $thisReport->pdf->Write(8, SystemConfig::getValue('sChurchName'));
-
-        $thisReport->pdf->SetXY($thisReport->AccountNumberX, $thisReport->AccountNumberY);
-        $thisReport->pdf->Cell(55, 7, SystemConfig::getValue('sChurchChkAcctNum'), 1, 1, 'R');
-
-        if ($thisReport->deposit->totalCash > 0) {
-            $totalCashStr = sprintf('%.2f', $thisReport->deposit->totalCash);
-            $thisReport->pdf->SetXY($thisReport->cashX, $thisReport->cashY);
-            $thisReport->pdf->Cell(46, 7, $totalCashStr, 1, 1, 'R');
-        }
-
-        if ($thisReport->deposit->totalChecks > 0) {
-            $totalChecksStr = sprintf('%.2f', $thisReport->deposit->totalChecks);
-            $thisReport->pdf->SetXY($thisReport->checksX, $thisReport->checksY);
-            $thisReport->pdf->Cell(46, 7, $totalChecksStr, 1, 1, 'R');
-        }
-
-        $grandTotalStr = sprintf('%.2f', $thisReport->deposit->dep_Total);
-        $cashReceivedStr = sprintf('%.2f', 0);
-
-        $thisReport->pdf->SetXY($thisReport->cashReceivedX, $thisReport->cashReceivedY);
-        $thisReport->pdf->Cell(46, 7, $cashReceivedStr, 1, 1, 'R');
-
-        $thisReport->pdf->SetXY($thisReport->topTotalX, $thisReport->topTotalY);
-        $thisReport->pdf->Cell(46, 7, $grandTotalStr, 1, 1, 'R');
-
-        // --------------------------------
-        // BEGIN BACK OF BANK DEPOSIT SLIP
-
-        $thisReport->pdf->addPage('P', [84, 187]);
-        $numItems = 0;
-        foreach ($thisReport->payments as $payment) {
-            // List all the checks and total the cash
-            if ($payment->plg_method === 'CHECK') {
-                $plgSumStr = sprintf('%.2f', $payment->plg_amount);
-                $thisReport->pdf->SetFontSize(14);
-                $thisReport->pdf->SetXY($thisReport->depositSlipBackCheckNosX, $thisReport->depositSlipBackCheckNosY + $numItems * $thisReport->depositSlipBackCheckNosHeight);
-                $thisReport->pdf->Cell($thisReport->depositSlipBackCheckNosWidth, $thisReport->depositSlipBackCheckNosHeight, $payment->plg_CheckNo, 1, 0, 'L');
-                $thisReport->pdf->SetFontSize(18);
-                $thisReport->pdf->Cell($thisReport->depositSlipBackDollarsWidth, $thisReport->depositSlipBackDollarsHeight, $plgSumStr, 1, 1, 'R');
-                $numItems += 1;
-            }
-        }
-    }
-
-    private function generateDepositSummary($thisReport): void
-    {
-        $thisReport->depositSummaryParameters = new \stdClass();
-
-        $thisReport->depositSummaryParameters->title = new \stdClass();
-        $thisReport->depositSummaryParameters->title->x = 85;
-        $thisReport->depositSummaryParameters->title->y = 7;
-
-        $thisReport->depositSummaryParameters->date = new \stdClass();
-        $thisReport->depositSummaryParameters->date->x = 185;
-        $thisReport->depositSummaryParameters->date->y = 7;
-
-        $thisReport->depositSummaryParameters->summary = new \stdClass();
-        $thisReport->depositSummaryParameters->summary->x = 12;
-        $thisReport->depositSummaryParameters->summary->y = 15;
-        $thisReport->depositSummaryParameters->summary->intervalY = 4;
-        $thisReport->depositSummaryParameters->summary->FundX = 15;
-        $thisReport->depositSummaryParameters->summary->MethodX = 55;
-        $thisReport->depositSummaryParameters->summary->FromX = 80;
-        $thisReport->depositSummaryParameters->summary->MemoX = 120;
-        $thisReport->depositSummaryParameters->summary->AmountX = 185;
-
-        $thisReport->depositSummaryParameters->aggregateX = 135;
-        $thisReport->depositSummaryParameters->displayBillCounts = false;
-
-        $thisReport->pdf->addPage();
-        $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->date->x, $thisReport->depositSummaryParameters->date->y);
-        $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
-
-        $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->title->x, $thisReport->depositSummaryParameters->title->y);
-        $thisReport->pdf->SetFont('Courier', 'B', 20);
-        $thisReport->pdf->Write(8, 'Deposit Summary ' . $thisReport->deposit->dep_ID);
-        $thisReport->pdf->SetFont('Times', 'B', 10);
-
-        $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
-        $thisReport->curY = $thisReport->depositSummaryParameters->summary->y;
-
-        $thisReport->pdf->SetFont('Times', 'B', 10);
-        $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-        $thisReport->pdf->Write(8, 'Chk No.');
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
-        $thisReport->pdf->Write(8, 'Fund');
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MethodX, $thisReport->curY);
-        $thisReport->pdf->Write(8, 'PmtMethod');
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FromX, $thisReport->curY);
-        $thisReport->pdf->Write(8, 'Rcd From');
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
-        $thisReport->pdf->Write(8, 'Memo');
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY);
-        $thisReport->pdf->Write(8, 'Amount');
-        $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
-
-        $totalAmount = 0;
-
-        //while ($aRow = mysqli_fetch_array($rsPledges))
-        foreach ($thisReport->payments as $payment) {
-            $thisReport->pdf->SetFont('Times', '', 10);
-
-            // Format Data
-            if (strlen($payment->plg_CheckNo) > 8) {
-                $payment->plg_CheckNo = '...' . mb_substr($payment->plg_CheckNo, -8, 8);
-            }
-            if (strlen($payment->fun_Name) > 20) {
-                $payment->fun_Name = mb_substr($payment->fun_Name, 0, 20) . '...';
-            }
-            if (strlen($payment->plg_comment) > 40) {
-                $payment->plg_comment = mb_substr($payment->plg_comment, 0, 38) . '...';
-            }
-            if (strlen($payment->familyName) > 25) {
-                $payment->familyName = mb_substr($payment->familyName, 0, 24) . '...';
-            }
-
-            $thisReport->pdf->printRightJustified($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);
-
-            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
-            $thisReport->pdf->Write(8, $payment->fun_Name);
-
-            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MethodX, $thisReport->curY);
-            $thisReport->pdf->Write(8, $payment->plg_method);
-
-            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FromX, $thisReport->curY);
-            $thisReport->pdf->Write(8, $payment->familyName);
-
-            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
-            $thisReport->pdf->Write(8, $payment->plg_comment);
-
-            $thisReport->pdf->SetFont('Courier', '', 8);
-
-            $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->plg_amount);
-
-            $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
-
-            if ($thisReport->curY >= 250) {
-                $thisReport->pdf->addPage();
-                $thisReport->curY = $thisReport->topY;
-            }
-        }
-
-        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
-        $thisReport->pdf->Write(8, 'Deposit total');
-
-        $grandTotalStr = sprintf('%.2f', $thisReport->deposit->dep_Total);
-        $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
-
-        // Now print deposit totals by fund
-        $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
-        if ($thisReport->depositSummaryParameters->displayBillCounts) {
-            $this->generateCashDenominations($thisReport);
-        }
-        $thisReport->curX = $thisReport->depositSummaryParameters->aggregateX;
-        $this->generateTotalsByFund($thisReport);
-
-        $thisReport->curY += $thisReport->summaryIntervalY;
-        $this->generateTotalsByCurrencyType($thisReport);
-        $thisReport->curY += $thisReport->summaryIntervalY * 2;
-
-        $thisReport->curY += 130;
-        $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
-
-        $this->generateWitnessSignature($thisReport);
-    }
-
-    private function generateWitnessSignature($thisReport): void
-    {
-        $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
-        $thisReport->pdf->write(8, 'Witness 1');
-        $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
-
-        $thisReport->curY += 10;
-        $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
-        $thisReport->pdf->write(8, 'Witness 2');
-        $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
-
-        $thisReport->curY += 10;
-        $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
-        $thisReport->pdf->write(8, 'Witness 3');
-        $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
-    }
-
     public function getDepositPDF($depID): void
     {
     }
@@ -556,9 +351,8 @@ class FinancialService
         requireUserGroupMembership('bFinance');
         $retstring = '';
         $line = [];
-        $firstLine = true;
         $payments = $this->getPayments($depID);
-        if (count($payments) == 0) {
+        if (count($payments) === 0) {
             throw new \Exception('No Payments on this Deposit', 404);
         }
         foreach ($payments[0] as $key => $value) {
@@ -567,7 +361,7 @@ class FinancialService
         $retstring = implode(',', $line) . "\n";
         foreach ($payments as $payment) {
             $line = [];
-            foreach ($payment as $key => $value) {
+            foreach ($payment as $value) {
                 $line[] = str_replace(',', '', $value);
             }
             $retstring .= implode(',', $line) . "\n";
@@ -583,7 +377,6 @@ class FinancialService
 
     public function getCurrencyTypeOnDeposit(string $currencyID, string $depositID)
     {
-        $currencies = [];
         // Get the list of Currency denominations
         $sSQL = 'select sum(pdem_denominationQuantity) from pledge_denominations_pdem
                  where  plg_depID = ' . $depositID . '

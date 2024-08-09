@@ -58,9 +58,9 @@ require 'Include/Header.php';
                 <tr class="<?= $sRowClass ?>">
                     <td>
                         <input type="checkbox" name="Chk<?= $pn_ID . '"';
-                                                        if (isset($_GET['SelectAll'])) {
-                                                            echo ' checked="yes"';
-                                                        } ?>></input>
+                        if (isset($_GET['SelectAll'])) {
+                            echo ' checked="yes"';
+                        } ?>></input>
             </td>
             <td>
                 <?= "<a href=\"PaddleNumEditor.php?PaddleNumID=$pn_ID&linkBack=PaddleNumList.php\"> $pn_Num</a>\n" ?>
@@ -73,7 +73,7 @@ require 'Include/Header.php';
                 <a href=" PaddleNumDelete.php?PaddleNumID=<?= $pn_ID . '&linkBack=PaddleNumList.php?FundRaiserID=' . $iFundRaiserID ?>">Delete</a>
                     </td>
                 </tr>
-        <?php
+                <?php
             } // while
         } // if
         ?>

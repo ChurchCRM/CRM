@@ -103,7 +103,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
             if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
                 // Display link
-        ?>
+                ?>
                 <div class="btn-group">
                     <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fas fa-mail-bulk"></i></i><?= gettext('Email All') ?></a>
                     <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
@@ -124,7 +124,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
                     </ul>
                 </div>
-        <?php
+                <?php
             }
         }
         ?>
@@ -174,7 +174,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         </div>
     </div>
     <?php if (SystemConfig::getValue('bEnabledSundaySchool')) {
-    ?>
+        ?>
         <!-- ./col -->
         <div class="col-lg-3 col-md-6 col-sm-6">
             <!-- small box -->
@@ -196,7 +196,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                 </a>
             </div>
         </div>
-    <?php
+        <?php
     } ?>
     <!-- ./col -->
     <div class="col-lg-3 col-md-6 col-sm-6">
@@ -242,10 +242,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                 <?php echo gettext('Report on group and roles selected (it may be a multi-page PDF).'); ?>
                 </p>
                 <?php if (AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
-                ?>
+                    ?>
                     <p><a class="MediumText" href="DirectoryReports.php"><?= gettext('People Directory') ?></a><br><?= gettext('Printable directory of all people, grouped by family where assigned') ?>
                     </p>
-                <?php
+                    <?php
                 } ?>
                 <a class="MediumText" href="LettersAndLabels.php"><?php echo gettext('Letters and Mailing Labels'); ?></a>
                 <br><?php echo gettext('Generate letters and mailing labels.'); ?>
@@ -270,7 +270,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         <th style="width: 40px"><?= gettext('Count') ?></th>
                     </tr>
                     <?php foreach ($personStats as $key => $value) {
-                    ?>
+                        ?>
                         <tr>
                             <td><a href='v2/people?Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
                             <td>
@@ -280,7 +280,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                             </td>
                             <td><span class="badge bg-green"><?= $value ?></span></td>
                         </tr>
-                    <?php
+                        <?php
                     } ?>
                 </table>
                 <!-- /.box-body-->
@@ -313,7 +313,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         $demStatName = $demStat->getOptionName();
                         $genPop = PersonQuery::create()->count();
                         if ($countMale != 0) {
-                    ?>
+                            ?>
                             <tr>
                                 <td><a href="v2/people?Gender=1&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Male') ?></a></td>
                                 <td>
@@ -323,10 +323,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                                 </td>
                                 <td><span class="badge bg-green"><?= $countMale ?></span></td>
                             </tr>
-                        <?php
+                            <?php
                         }
                         if ($countFemale != 0) {
-                        ?>
+                            ?>
                             <tr>
                                 <td><a href="v2/people?Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
                                 <td>
@@ -336,10 +336,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                                 </td>
                                 <td><span class="badge bg-green"><?= $countFemale ?></span></td>
                             </tr>
-                        <?php
+                            <?php
                         }
                         if ($countUnknown != 0) {
-                        ?>
+                            ?>
                             <tr>
                                 <td><a href="v2/people?Gender=0&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Unassigned') ?></a></td>
                                 <td>
@@ -349,7 +349,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                                 </td>
                                 <td><span class="badge bg-green"><?= $countUnknown ?></span></td>
                             </tr>
-                        <?php
+                            <?php
                         }
                     }
                     $countUnknownMale = PersonQuery::create()->filterByFmrId(0)->filterByGender(1)->count();
@@ -368,10 +368,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                             </td>
                             <td><span class="badge bg-green"><?= $countUnknownMale ?></span></td>
                         </tr>
-                    <?php
+                        <?php
                     }
                     if ($countUnknownFemale != 0) {
-                    ?>
+                        ?>
                         <tr>
                             <td><a href="v2/people?Gender=2&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Female') ?></a></td>
                             <td>
@@ -381,10 +381,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                             </td>
                             <td><span class="badge bg-green"><?= $countUnknownFemale ?></span></td>
                         </tr>
-                    <?php
+                        <?php
                     }
                     if ($countUnknownRoleUnknownGender != 0) {
-                    ?>
+                        ?>
                         <tr>
                             <td><a href="v2/people?Gender=0&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Unassigned') ?></a></td>
                             <td>
@@ -394,7 +394,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                             </td>
                             <td><span class="badge bg-green"><?= $countUnknownRoleUnknownGender ?></span></td>
                         </tr>
-                    <?php
+                        <?php
                     }
                     ?>
                 </table>

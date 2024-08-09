@@ -144,9 +144,9 @@ require 'Include/Header-Short.php';
                     echo $sState;
                 }
 
-if ($sZip != '') {
-    echo ' ' . str_replace(' ', '&nbsp;', trim($sZip));
-}
+                if ($sZip != '') {
+                    echo ' ' . str_replace(' ', '&nbsp;', trim($sZip));
+                }
 
                 if ($sCountry != '') {
                     echo '<br>' . $sCountry;
@@ -253,9 +253,9 @@ if ($sZip != '') {
                     <td width="<?= $iTableSpacerWidth ?>"></td>
                     <td class="TextColumnWithBottomBorder"><?php if ($sFamRole != '') {
                                                                 echo $sFamRole;
-                                                            } else {
-                                                                echo gettext('Unassigned');
-                                                            } ?>&nbsp;</td>
+                                                           } else {
+                                                               echo gettext('Unassigned');
+                                                           } ?>&nbsp;</td>
                 </tr>
                 <?php
                 for ($i = 1; $i <= $numColumn2Fields; $i++) {
@@ -312,7 +312,7 @@ if ($sZip != '') {
 <br>
 
 <?php if ($fam_ID) {
-?>
+    ?>
 
     <b><?= gettext('Family Members') ?>:</b>
     <table cellpadding=5 cellspacing=0 width="100%">
@@ -336,7 +336,7 @@ if ($sZip != '') {
             $sRowClass = AlternateRowStyle($sRowClass)
 
             // Display the family member
-        ?>
+            ?>
             <tr class="<?= $sRowClass ?>">
                 <td>
                     <?= $per_FirstName . ' ' . $per_LastName ?>
@@ -359,11 +359,11 @@ if ($sZip != '') {
                 </td>
                 <td><?= MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear) ?></td>
             </tr>
-    <?php
+            <?php
         }
         echo '</table>';
-    }
-    ?>
+}
+?>
     <BR>
     <b><?= gettext('Assigned Groups') ?>:</b>
 
@@ -375,7 +375,7 @@ if ($sZip != '') {
     $sAssignedGroups = ',';
 
     //Was anything returned?
-    if (mysqli_num_rows($rsAssignedGroups) == 0) {
+    if (mysqli_num_rows($rsAssignedGroups) === 0) {
         echo '<p align"center">' . gettext('No group assignments.') . '</p>';
     } else {
         echo '<table width="100%" cellpadding="4" cellspacing="0">';
@@ -447,7 +447,7 @@ if ($sZip != '') {
     $sAssignedProperties = ',';
 
     //Was anything returned?
-    if (mysqli_num_rows($rsAssignedProperties) == 0) {
+    if (mysqli_num_rows($rsAssignedProperties) === 0) {
         echo '<p align"center">' . gettext('No property assignments.') . '</p>';
     } else {
         echo '<table width="100%" cellpadding="4" cellspacing="0">';

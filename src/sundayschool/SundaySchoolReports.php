@@ -194,7 +194,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
         <tr>
           <td><?= gettext('Fiscal Year') ?>:</td>
           <td class="TextColumnWithBottomBorder">
-            <?php PrintFYIDSelect($iFYID, 'FYID') ?>
+            <?php PrintFYIDSelect('FYID', $iFYID) ?>
           </td>
         </tr>
 

@@ -18,7 +18,7 @@ use Propel\Runtime\Propel;
 
 class UpgradeService
 {
-    public static function upgradeDatabaseVersion()
+    public static function upgradeDatabaseVersion(): bool
     {
         $logger = LoggerUtils::getAppLogger();
         $db_version = SystemService::getDBVersion();
@@ -66,11 +66,9 @@ class UpgradeService
                                 throw new \Exception("Invalid upgrade file specified: $scriptName");
                             }
                         }
-                        if (!$errorFlag) {
-                            $version->setUpdateEnd(new \DateTimeImmutable());
-                            $version->save();
-                            sleep(2);
-                        }
+                        $version->setUpdateEnd(new \DateTimeImmutable());
+                        $version->save();
+                        sleep(2);
 
                         // increment the number of scripts executed.
                         // If no scripts run, then there is no supported upgrade path defined in the JSON file

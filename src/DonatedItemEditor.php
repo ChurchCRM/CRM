@@ -250,7 +250,7 @@ require 'Include/Header.php';
                             <?php if ($bMultibuy) {
                                 echo gettext('Multiple');
                             } else {
-                            ?>
+                                ?>
                                 <select name="Buyer" class="form-control">
                                     <option value="0" selected><?= gettext('Unassigned') ?></option>
                                 <?php
@@ -264,7 +264,7 @@ require 'Include/Header.php';
                                     echo '>' . $pn_Num . ': ' . $buyerFirstName . ' ' . $buyerLastName;
                                 }
                             }
-                                ?>
+                            ?>
 
                                 </select>
                         </div>

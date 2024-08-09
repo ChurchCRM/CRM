@@ -12,10 +12,9 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Calendar Events';
-        parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (SystemConfig::getBooleanValue('bSearchIncludeCalendarEvents')) {
             $this->addSearchResults($this->getCalendarEventSearchResultsByPartialName($SearchQuery));
@@ -41,7 +40,7 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider
                 ->filterByDesc("%$SearchQuery%", Criteria::LIKE)
                 ->limit(SystemConfig::getValue('bSearchIncludeGroupsMax'))
                 ->find();
-            if (!empty($events)) {
+            if ($events->count() > 0) {
                 $id++;
                 foreach ($events as $event) {
                     $searchResults[] = new SearchResult('event-name-' . $id, $event->getTitle(), $event->getViewURI());

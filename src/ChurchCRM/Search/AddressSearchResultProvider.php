@@ -12,10 +12,9 @@ class AddressSearchResultProvider extends BaseSearchResultProvider
     public function __construct()
     {
         $this->pluralNoun = 'Address';
-        parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery)
+    public function getSearchResults(string $SearchQuery): SearchResultGroup
     {
         if (SystemConfig::getBooleanValue('bSearchIncludeAddresses')) {
             $this->addSearchResults($this->getPersonSearchResultsByPartialAddress($SearchQuery));
@@ -34,15 +33,20 @@ class AddressSearchResultProvider extends BaseSearchResultProvider
 
         try {
             $searchLikeString = '%' . $SearchQuery . '%';
-            $addresses = FamilyQuery::create()->
-            filterByCity($searchLikeString, Criteria::LIKE)->
-            _or()->filterByAddress1($searchLikeString, Criteria::LIKE)->
-            _or()->filterByAddress2($searchLikeString, Criteria::LIKE)->
-            _or()->filterByZip($searchLikeString, Criteria::LIKE)->
-            _or()->filterByState($searchLikeString, Criteria::LIKE)->
-            limit(SystemConfig::getValue('bSearchIncludeAddressesMax'))->find();
+            $addresses = FamilyQuery::create()
+                ->filterByCity($searchLikeString, Criteria::LIKE)
+                ->_or()
+                ->filterByAddress1($searchLikeString, Criteria::LIKE)
+                ->_or()
+                ->filterByAddress2($searchLikeString, Criteria::LIKE)
+                ->_or()
+                ->filterByZip($searchLikeString, Criteria::LIKE)
+                ->_or()
+                ->filterByState($searchLikeString, Criteria::LIKE)
+                ->limit(SystemConfig::getValue('bSearchIncludeAddressesMax'))
+                ->find();
 
-            if (!empty($addresses)) {
+            if ($addresses->count() > 0) {
                 $id++;
                 foreach ($addresses as $address) {
                     $searchResults[] = new SearchResult('person-address-' . $id, $address->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')), $address->getViewURI());

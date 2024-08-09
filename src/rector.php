@@ -37,5 +37,6 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::GMAGICK_TO_IMAGICK,
         SetList::TYPE_DECLARATION,
         SetList::INSTANCEOF,
+        SetList::DEAD_CODE,
     ]);
 };

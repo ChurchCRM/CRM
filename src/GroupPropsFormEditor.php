@@ -250,13 +250,13 @@ require 'Include/Header.php'; ?>
 
                 <?php
                 if ($numRows == 0) {
-                ?>
+                    ?>
                     <center>
                         <h2><?= gettext('No properties have been added yet') ?></h2>
                     </center>
-                <?php
+                    <?php
                 } else {
-                ?>
+                    ?>
                     <tr>
                         <td colspan="7">
                             <center><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></center>
@@ -285,7 +285,7 @@ require 'Include/Header.php'; ?>
                     <?php
 
                     for ($row = 1; $row <= $numRows; $row++) {
-                    ?>
+                        ?>
                         <tr>
                             <td class="LabelColumn">
                                 <h2><b><?= $row ?></b></h2>
@@ -349,10 +349,10 @@ require 'Include/Header.php'; ?>
                             <td class="TextColumn">
                                 <input type="checkbox" name="<?= $row ?>show" value="1" <?php if ($aPersonDisplayFields[$row]) {
                                                                                             echo ' checked';
-                                                                                        } ?>>
+                                                             } ?>>
                             </td>
                         </tr>
-                    <?php
+                        <?php
                     } ?>
 
                     <tr>
@@ -369,7 +369,7 @@ require 'Include/Header.php'; ?>
                         </td>
                         <td>
                     </tr>
-                <?php
+                    <?php
                 } ?>
                 <tr>
                     <td colspan="7">

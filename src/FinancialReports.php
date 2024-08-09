@@ -189,7 +189,7 @@ if ($sReportType == '') {
     if (in_array($sReportType, ['Pledge Summary', 'Pledge Reminders', 'Pledge Family Summary', 'Voting Members'])) {
         echo '<tr><td class=LabelColumn>' . gettext('Fiscal Year:') . '</td>';
         echo '<td class=TextColumn>';
-        PrintFYIDSelect($iFYID, 'FYID');
+        PrintFYIDSelect('FYID', $iFYID);
         echo '</td></tr>';
     }
 

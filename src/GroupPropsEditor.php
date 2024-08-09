@@ -101,16 +101,16 @@ if (isset($_POST['GroupPropSubmit'])) {
 
 require 'Include/Header.php';
 
-if (mysqli_num_rows($rsPropList) == 0) {
-?>
+if (mysqli_num_rows($rsPropList) === 0) {
+    ?>
     <form>
         <h3><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></h3>
         <BR>
         <input type="button" class="btn btn-default" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
     </form>
-<?php
+    <?php
 } else {
-?>
+    ?>
 
     <div class="box ">
         <div class="card-header">
@@ -145,7 +145,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
                             </td>
                             <td><?= $prop_Description ?></td>
                         </tr>
-                    <?php
+                        <?php
                     } ?>
                     <tr>
                         <td align="center" colspan="3">
@@ -159,6 +159,6 @@ if (mysqli_num_rows($rsPropList) == 0) {
             </form>
         </div>
     </div>
-<?php
+    <?php
 }
 require 'Include/Footer.php';
