@@ -1564,7 +1564,7 @@ class GoogleMapAPI
      */
     public function adjustCenterCoords($lon, $lat)
     {
-        if (strlen((string) $lon) == 0 || strlen((string) $lat) == 0) {
+        if (strlen((string) $lon) === 0 || strlen((string) $lat) === 0) {
             return false;
         }
         $this->_max_lon = (float) max($lon, $this->_max_lon);
@@ -2702,7 +2702,7 @@ class GoogleMapAPI
      */
     public function putCache($address, $lon, $lat)
     {
-        if (!isset($this->dsn) || (strlen($address) == 0 || strlen($lon) == 0 || strlen($lat) == 0)) {
+        if (!isset($this->dsn) || (strlen($address) === 0 || strlen($lon) === 0 || strlen($lat) === 0)) {
             return false;
         }
         // PEAR DB

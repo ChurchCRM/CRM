@@ -18,7 +18,7 @@ $rsItem = RunQuery($sSQL);
 $row = mysqli_fetch_array($rsItem);
 $startItem = $row[0];
 
-if (strlen($startItem) == 2) { // replicated items will sort better if they have a two-digit number
+if (strlen($startItem) === 2) { // replicated items will sort better if they have a two-digit number
     $letter = mb_substr($startItem, 0, 1);
     $number = mb_substr($startItem, 1, 1);
     $startItem = $letter . '0' . $number;

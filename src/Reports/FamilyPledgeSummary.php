@@ -269,7 +269,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     $totalAmountPledges = 0;
 
-    if (mysqli_num_rows($rsPledges) != 0) {
+    if (mysqli_num_rows($rsPledges) !== 0) {
         $totalAmount = 0;
         $cnt = 0;
         while ($aRow = mysqli_fetch_array($rsPledges)) {
@@ -295,7 +295,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPayments = 0;
-    if (mysqli_num_rows($rsPledges) != 0) {
+    if (mysqli_num_rows($rsPledges) !== 0) {
         $totalAmount = 0;
         $cnt = 0;
         while ($aRow = mysqli_fetch_array($rsPledges)) {

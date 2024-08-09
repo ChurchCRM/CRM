@@ -47,7 +47,7 @@ require 'Include/Header.php'; ?>
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
             $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'name']);
 
-            if (strlen($aNameFields[$iFieldID]) == 0) {
+            if (strlen($aNameFields[$iFieldID]) === 0) {
                 $aNameErrors[$iFieldID] = true;
                 $bErrorFlag = true;
             } else {
@@ -86,7 +86,7 @@ require 'Include/Header.php'; ?>
             $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
             $newFieldSec = $_POST['newFieldSec'];
 
-            if (strlen($newFieldName) == 0) {
+            if (strlen($newFieldName) === 0) {
                 $bNewNameError = true;
             } elseif (strlen($newFieldType) === 0 || $newFieldType < 1) {
                 // This should never happen, but check anyhow.

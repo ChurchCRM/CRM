@@ -48,7 +48,7 @@ if (isset($_POST['SaveChanges'])) {
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
         $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'name']);
 
-        if (strlen($aNameFields[$iFieldID]) == 0) {
+        if (strlen($aNameFields[$iFieldID]) === 0) {
             $aNameErrors[$iFieldID] = true;
             $bErrorFlag = true;
         } else {

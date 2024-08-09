@@ -350,12 +350,12 @@ function FormatDate($dDate, bool $bWithTime = false): string
         return '';
     }
 
-    if (strlen($dDate) == 10) { // If only a date was passed append time
+    if (strlen($dDate) === 10) { // If only a date was passed append time
         $dDate = $dDate . ' 12:00:00';
     }  // Use noon to avoid a shift in daylight time causing
     // a date change.
 
-    if (strlen($dDate) != 19) {
+    if (strlen($dDate) !== 19) {
         return '';
     }
 
@@ -714,7 +714,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             echo '<div class="form-group">' .
             '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value="true"' . ($data == 'true' ? 'checked' : '') . '>' . gettext('Yes') . '</label></div>' .
             '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value="false"' . ($data == 'false' ? 'checked' : '') . '>' . gettext('No') . '</label></div>' .
-            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value=""' . (strlen($data) == 0 ? 'checked' : '') . '>' . gettext('Unknown') . '</label></div>' .
+            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value=""' . (strlen($data) === 0 ? 'checked' : '') . '>' . gettext('Unknown') . '</label></div>' .
             '</div>';
             break;
     // Handler for date fields
@@ -884,7 +884,7 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
     // Parse the year
     // Take a 2 or 4 digit year and return a 4 digit year.  Use $pasfut to determine if
     // two digit year maps to past or future 4 digit year.
-    if (strlen($sYear) == 2) {
+    if (strlen($sYear) === 2) {
         $thisYear = date('Y');
         $twoDigit = mb_substr($thisYear, 2, 2);
         if ($sYear == $twoDigit) {
@@ -1029,7 +1029,7 @@ function parseAndValidateDate($data, $locale = 'US', $pasfut = 'future')
     // Now use the date() function to convert timestamp into YYYY-MM-DD
     $dateString = date('Y-m-d', $timeStamp);
 
-    if (strlen($dateString) != 10) {
+    if (strlen($dateString) !== 10) {
         // Common sense says we have a 10 character string.  If not, something is wrong
         // and it's time to bail.
         return false;
@@ -1074,8 +1074,8 @@ function validateCustomField($type, &$data, $col_Name, ?array &$aErrors): bool
 
     // Handler for 4-digit year
         case 6:
-            if (strlen($data) != 0) {
-                if (!is_numeric($data) || strlen($data) != 4 || $data < 0) {
+            if (strlen($data) !== 0) {
+                if (!is_numeric($data) || strlen($data) !== 4 || $data < 0) {
                     $aErrors[$col_Name] = gettext('Invalid Year');
                     $bErrorFlag = true;
                 }
@@ -1084,7 +1084,7 @@ function validateCustomField($type, &$data, $col_Name, ?array &$aErrors): bool
 
     // Handler for integer numbers
         case 8:
-            if (strlen($data) != 0) {
+            if (strlen($data) !== 0) {
                 if ($aLocaleInfo['thousands_sep']) {
                     $data = preg_replace('/' . $aLocaleInfo['thousands_sep'] . '/i', '', $data);  // remove any thousands separators
                 }
@@ -1100,7 +1100,7 @@ function validateCustomField($type, &$data, $col_Name, ?array &$aErrors): bool
 
     // Handler for money amounts
         case 10:
-            if (strlen($data) != 0) {
+            if (strlen($data) !== 0) {
                 if ($aLocaleInfo['mon_thousands_sep']) {
                     $data = preg_replace('/' . $aLocaleInfo['mon_thousands_sep'] . '/i', '', $data);
                 }
@@ -1237,10 +1237,10 @@ function FilenameToFontname(string $filename, string $family): string
     if ($filename == $family) {
         return ucfirst($family);
     } else {
-        if (strlen($filename) - strlen($family) == 2) {
+        if (strlen($filename) - strlen($family) === 2) {
             return ucfirst($family) . gettext(' Bold Italic');
         } else {
-            if (mb_substr($filename, strlen($filename) - 1) == 'i') {
+            if (mb_substr($filename, strlen($filename) - 1) === 'i') {
                 return ucfirst($family) . gettext(' Italic');
             } else {
                 return ucfirst($family) . gettext(' Bold');

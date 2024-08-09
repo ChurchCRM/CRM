@@ -157,7 +157,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         // Make sure first names were entered if editing existing family
         if ($iFamilyID > 0) {
-            if (strlen($aFirstNames[$iCount]) == 0) {
+            if (strlen($aFirstNames[$iCount]) === 0) {
                 $aFirstNameError[$iCount] = gettext('First name must be entered');
                 $bErrorFlag = true;
             }

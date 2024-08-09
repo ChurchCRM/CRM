@@ -118,7 +118,7 @@ $sPropertyName = $aRow['pro_Name'];
 $sPrompt = $aRow['pro_Prompt'];
 
 // If there's no prompt, then just do the insert
-if (strlen($sPrompt) == 0) {
+if (strlen($sPrompt) === 0) {
     UpdateProperty($iRecordID, '', $iPropertyID, $sAction);
 
     // Set the Global Message

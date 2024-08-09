@@ -61,7 +61,7 @@ require 'Include/Header.php'; ?>
         for ($iPropID = 1; $iPropID <= $numRows; $iPropID++) {
             $aNameFields[$iPropID] = InputUtils::legacyFilterInput($_POST[$iPropID . 'name']);
 
-            if (strlen($aNameFields[$iPropID]) == 0) {
+            if (strlen($aNameFields[$iPropID]) === 0) {
                 $aNameErrors[$iPropID] = true;
                 $bErrorFlag = true;
             } else {
@@ -114,7 +114,7 @@ require 'Include/Header.php'; ?>
             $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
             $newFieldDesc = InputUtils::legacyFilterInput($_POST['newFieldDesc']);
 
-            if (strlen($newFieldName) == 0) {
+            if (strlen($newFieldName) === 0) {
                 $bNewNameError = true;
             } else {
                 $sSQL = 'SELECT prop_Name FROM groupprop_master WHERE grp_ID = ' . $iGroupID;
