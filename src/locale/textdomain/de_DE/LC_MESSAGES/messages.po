@@ -9246,7 +9246,27 @@ msgid "2022/2023"
 msgstr "2022/2023"
 
 #: 
+msgid "Japanese"
+msgstr "Japanisch"
+
+#: 
 #, fuzzy
 msgid "Adult Name (Optional)"
 msgstr "Name des Erwachsenen (optional)"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp ist nicht konfiguriert"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "Bitte konfiguriere den MailChimp API Schlüssel in:"
+
+#: 
+msgid "English - South Africa"
+msgstr "Englisch - Südafrika"
+
+#: 
+msgid "English - Jamaica"
+msgstr "Englisch - Jamaika"
 
