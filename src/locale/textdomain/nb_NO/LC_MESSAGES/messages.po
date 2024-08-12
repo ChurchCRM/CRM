@@ -800,6 +800,10 @@ msgid "Final Price"
 msgstr "Økonomi"
 
 #: 
+msgid "Replicate item"
+msgstr "Dupliser gjenstand"
+
+#: 
 msgid "Go"
 msgstr "Gå"
 
@@ -875,6 +879,10 @@ msgstr "Oppmøte teller"
 #: 
 msgid "Add counter"
 msgstr "Legg til teller"
+
+#: 
+msgid "Return to Event Types"
+msgstr "Returnert til arrangementstyper"
 
 #: 
 msgid "Family"
@@ -955,6 +963,10 @@ msgstr "Det er ingen aktiviteter i denne kategorien"
 #: 
 msgid "Create Event"
 msgstr "Lag Arrangement"
+
+#: 
+msgid "Create a new Event"
+msgstr "Oprett nytt arrangement"
 
 #: 
 msgid "Editing Event ID: "
@@ -1606,6 +1618,14 @@ msgid "Deposit Listing"
 msgstr "Innskudd Listing"
 
 #: 
+msgid "Add New Deposit"
+msgstr "Legg til nytt innskudd"
+
+#: 
+msgid "Deposits: "
+msgstr "Inskudd"
+
+#: 
 msgid "Delete Selected Rows"
 msgstr "Slett Valgte Rader"
 
@@ -2179,6 +2199,10 @@ msgid "Family Roles"
 msgstr "Familie Rolle"
 
 #: 
+msgid "Family Geographic"
+msgstr "Familie geografi"
+
+#: 
 msgid "Update All Family Coordinates"
 msgstr "Oppdater alle Family Koordinater"
 
@@ -2564,6 +2588,10 @@ msgstr "Betaling Editor - Endre eksisterende betaling"
 #: 
 msgid "Payment Editor - New Deposit Slip Will Be Created"
 msgstr "Betaling Editor - New Deposit Slip vil bli opprettet"
+
+#: 
+msgid "Deposit closed"
+msgstr "Innskudd lukket"
 
 #: 
 #, fuzzy
@@ -3237,6 +3265,10 @@ msgid "Version"
 msgstr "Versjon"
 
 #: 
+msgid "Copyright"
+msgstr "Opphavsrett"
+
+#: 
 msgid "All rights reserved"
 msgstr "Alle rettigheter reservert"
 
@@ -3299,6 +3331,18 @@ msgstr "Gruppen er lagt til handlevognen."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Gruppe fjernet fra handlekurven."
+
+#: 
+msgid "Profile Image successfully removed."
+msgstr "Fjerning av profilbilde velykket"
+
+#: 
+msgid "Profile Image successfully updated."
+msgstr "Oppdatering av profilbilde velykket"
+
+#: 
+msgid "Profile Image upload Error."
+msgstr "Feil med opplasting av profilbilde"
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -3384,6 +3428,18 @@ msgstr "Kursiv"
 #: 
 msgid " Bold"
 msgstr "Fet"
+
+#: 
+msgid "You have"
+msgstr "Du har"
+
+#: 
+msgid "task(s)"
+msgstr "Oppgave(r)"
+
+#: 
+msgid "Home"
+msgstr "Hjem"
 
 #: 
 #, fuzzy
@@ -3592,6 +3648,102 @@ msgid "Gift Designation:"
 msgstr "Gave Betegnelse:"
 
 #: 
+msgid "Sunday School"
+msgstr "Søndagsskole"
+
+#: 
+msgid "Sunday School Class Functions"
+msgstr "Klassefunskjoner for søndagsskole"
+
+#: 
+msgid "Teachers"
+msgstr "Lærere"
+
+#: 
+msgid "Send Message"
+msgstr "Send melding"
+
+#: 
+msgid "View Profile"
+msgstr "Vis profil"
+
+#: 
+msgid "Quick Status"
+msgstr "Rask status"
+
+#: 
+msgid "Birthdays by Month"
+msgstr "Bursdager etter måned"
+
+#: 
+msgid "Students"
+msgstr "Studenter"
+
+#: 
+msgid "Mobile"
+msgstr "Mobil"
+
+#: 
+msgid "Home Address"
+msgstr "Hjemmeadresse"
+
+#: 
+msgid "Dad Name"
+msgstr "Fars navn"
+
+#: 
+msgid "Dad Mobile"
+msgstr "Fars mobil"
+
+#: 
+msgid "Dad Email"
+msgstr "Fars email"
+
+#: 
+msgid "Mom Name"
+msgstr "Mors navn"
+
+#: 
+msgid "Mom Mobile"
+msgstr "Mors mobil"
+
+#: 
+msgid "Mom Email"
+msgstr "Mors email"
+
+#: 
+msgid "Compose New Message"
+msgstr "Skriv ny melding"
+
+#: 
+msgid "Kids Emails"
+msgstr "Barns epost"
+
+#: 
+msgid "Parents Emails"
+msgstr "Forelres epost"
+
+#: 
+msgid "Teachers Emails"
+msgstr "Lærers epost"
+
+#: 
+msgid "Attachment"
+msgstr "Vedlegg"
+
+#: 
+msgid "Max. 32MB"
+msgstr "Maks 32MB"
+
+#: 
+msgid "Discard"
+msgstr "Forkast"
+
+#: 
+msgid "Classes"
+msgstr "Klasser"
+
+#: 
 msgid "Sunday School Reports"
 msgstr "Søndagsskole rapporter"
 
@@ -3600,9 +3752,21 @@ msgid "Generate class lists and attendance sheets"
 msgstr "Generer klasselister og deltakelse ark"
 
 #: 
+msgid "Export All Classes, Kids, and Parent to CSV file"
+msgstr "Eksporter alle Klasser, Barn og Foreldre til CSV fil"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "Studenter som ikke er i en søndagsskoleklasse"
+
+#: 
 #, fuzzy
 msgid "At least one group must be selected to make class lists or attendance sheets."
 msgstr "Generer klasselister og deltakelse ark"
+
+#: 
+msgid "Report Details"
+msgstr "Raportdetaljer"
 
 #: 
 #, fuzzy
@@ -3641,4 +3805,40 @@ msgstr "Lag Class List"
 #: 
 msgid "Create Attendance Sheet"
 msgstr "Lag Oppmøte Sheet"
+
+#: 
+msgid "System Users"
+msgstr "System brukere"
+
+#: 
+msgid "Calendar"
+msgstr "Kalender"
+
+#: 
+msgid "Members"
+msgstr "Medlemmer"
+
+#: 
+msgid "Add New Person"
+msgstr "Legg til nye person"
+
+#: 
+msgid "View All People"
+msgstr "Vis alle personer"
+
+#: 
+msgid "Add New Family"
+msgstr "Legg til ny familie"
+
+#: 
+msgid "Events"
+msgstr "Arrangementer"
+
+#: 
+msgid "Fundraiser"
+msgstr "Fundrasier"
+
+#: 
+msgid "Email Export"
+msgstr "Eksporte"
 

@@ -9246,13 +9246,57 @@ msgid "2022/2023"
 msgstr "2022/2023"
 
 #: 
+msgid "invalid group request"
+msgstr "ungültige Gruppenanfrage"
+
+#: 
+msgid "Hindi - India"
+msgstr "Hindi - Indien"
+
+#: 
 msgid "Japanese"
 msgstr "Japanisch"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamil - India"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Nicht abboniert"
+
+#: 
+msgid "property"
+msgstr "Eigenschaft"
+
+#: 
+msgid "Default Zip"
+msgstr "Standard-Postleitzahl"
+
+#: 
+msgid "Credit Card People"
+msgstr "Kreditkarteninhaber"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Personen, die für die Zahlung per Kreditkarte konfiguriert sind."
 
 #: 
 #, fuzzy
 msgid "Adult Name (Optional)"
 msgstr "Name des Erwachsenen (optional)"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "Im Rahmen der Wiederherstellung wurden externe Backups deaktiviert.  Wenn Sie weiterhin automatische Backups durchführen möchten, müssen Sie die Einstellung bEnableExternalBackupTarget manuell wieder aktivieren."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "Die vorherige Integritätsprüfung war erfolgreich. Alle Hashes der Systemdateien entsprechen den erwarteten Werten."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "Durch Kommata getrennte Liste von Klassifikationen, die als inaktiv erscheinen sollen"
 
 #: 
 msgid "MailChimp is not configured"
@@ -9269,4 +9313,8 @@ msgstr "Englisch - Südafrika"
 #: 
 msgid "English - Jamaica"
 msgstr "Englisch - Jamaika"
+
+#: 
+msgid "Swahili"
+msgstr "Suaheli"
 
