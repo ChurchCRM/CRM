@@ -72,7 +72,7 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
     $mailchimpService = $request->getAttribute('mailchimpService');
     $list = $mailchimpService->getList($listId);
     if (!$list) {
-        throw new HttpNotFoundException($request, gettext('List not inList'));
+        throw new HttpNotFoundException($request, gettext('List not in the list'));
     }
 
     $mailchimpListMembers = $list['members'];
