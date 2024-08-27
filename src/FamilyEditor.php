@@ -367,7 +367,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         ->setFmrId($aRoles[$iCount])
                         ->setBirthMonth($aBirthMonths[$iCount])
                         ->setBirthDay($aBirthDays[$iCount])
-                        ->setClsId($aClassification);
+                        ->setClsId($aClassification[$iCount]);
                     if ($aUpdateBirthYear[$iCount] & 1) {
                         $person->setBirthYear($aBirthYears[$iCount]);
                     }
