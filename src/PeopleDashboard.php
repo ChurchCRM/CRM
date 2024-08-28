@@ -6,8 +6,6 @@ require 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\DashboardService;
 
 $sPageTitle = gettext('People Dashboard');
@@ -15,33 +13,14 @@ $sPageTitle = gettext('People Dashboard');
 require 'Include/Header.php';
 
 $dashboardService = new DashboardService();
-$personCount = $dashboardService->getPersonCount();
-$personStats = $dashboardService->getPersonStats();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
-$ageStats = $dashboardService->getAgeStats();
-$demographicStats = ListOptionQuery::create()->filterByID('2')->find();
-
-$sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
-        where fam_ID =per_fam_ID and fam_DateDeactivated is  null
-        and per_Gender in (1,2) and
-        per_fmr_ID not in (' . SystemConfig::getValue('sDirRoleChild') . ')
-        group by per_Gender ;';
-$rsAdultsGender = RunQuery($sSQL);
-
-$sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
-          where fam_ID =per_fam_ID and fam_DateDeactivated is  null
-          and per_Gender in (1,2)
-          and per_fmr_ID in (' . SystemConfig::getValue('sDirRoleChild') . ')
-          group by per_Gender ;';
-$rsKidsGender = RunQuery($sSQL);
-
-$sSQL = 'select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;';
-$rsClassification = RunQuery($sSQL);
-$classifications = new stdClass();
-while (list($lst_OptionID, $lst_OptionName) = mysqli_fetch_row($rsClassification)) {
-    $classifications->$lst_OptionName = $lst_OptionID;
-}
+$dashboardStats = $dashboardService->getDashboardStats();
+$personCount = $dashboardStats['personCount'];
+$classificationStats = $dashboardStats['classificationStats'];
+$genderStats = $dashboardStats['genderStats'];
+$ageStats = $dashboardStats['ageStats'];
+$familyRoleStats = $dashboardStats['familyRoleStats'];
 
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
           LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
@@ -158,7 +137,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>
-                    <?= $personCount['personCount'] ?>
+                    <?= $personCount ?>
                 </h3>
 
                 <p>
@@ -269,16 +248,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         <th>% <?= gettext('of People') ?></th>
                         <th style="width: 40px"><?= gettext('Count') ?></th>
                     </tr>
-                    <?php foreach ($personStats as $key => $value) {
+                    <?php foreach (array_keys($classificationStats) as $key) {
                         ?>
                         <tr>
-                            <td><a href='v2/people?Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
+                            <td><a href='v2/people?Classification=<?= $classificationStats[$key]['id'] ?>'><?= gettext($key) ?></a></td>
                             <td>
                                 <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-success" style="width: <?= round($value / $personCount['personCount'] * 100) ?>%"></div>
+                                    <div class="progress-bar progress-bar-success" style="width: <?= round($classificationStats[$key]['count'] / $personCount * 100) ?>%"></div>
                                 </div>
                             </td>
-                            <td><span class="badge bg-green"><?= $value ?></span></td>
+                            <td><span class="badge bg-green"><?= $classificationStats[$key]['count'] ?></span></td>
                         </tr>
                         <?php
                     } ?>
@@ -305,104 +284,35 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         <th>% <?= gettext('of People') ?></th>
                         <th style="width: 40px"><?= gettext('Count') ?></th>
                     </tr>
-                    <?php foreach ($demographicStats as $demStat) {
-                        $countMale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(1)->count();
-                        $countFemale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(2)->count();
-                        $countUnknown = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(0)->count();
-                        $demStatId = $demStat->getOptionID();
-                        $demStatName = $demStat->getOptionName();
-                        $genPop = PersonQuery::create()->count();
-                        if ($countMale != 0) {
-                            ?>
-                            <tr>
-                                <td><a href="v2/people?Gender=1&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Male') ?></a></td>
-                                <td>
-                                    <div class="progress progress-xs progress-striped active">
-                                        <div class="progress-bar progress-bar-success" style="width: <?= round(($countMale / $genPop) * 100) ?>%" title="<?= round(($countMale / $genPop) * 100) ?>%"></div>
-                                    </div>
-                                </td>
-                                <td><span class="badge bg-green"><?= $countMale ?></span></td>
-                            </tr>
-                            <?php
-                        }
-                        if ($countFemale != 0) {
-                            ?>
-                            <tr>
-                                <td><a href="v2/people?Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
-                                <td>
-                                    <div class="progress progress-xs progress-striped active">
-                                        <div class="progress-bar progress-bar-success" style="width: <?= round(($countFemale / $genPop) * 100) ?>%" title="<?= round(($countFemale / $genPop) * 100) ?>%"></div>
-                                    </div>
-                                </td>
-                                <td><span class="badge bg-green"><?= $countFemale ?></span></td>
-                            </tr>
-                            <?php
-                        }
-                        if ($countUnknown != 0) {
-                            ?>
-                            <tr>
-                                <td><a href="v2/people?Gender=0&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Unassigned') ?></a></td>
-                                <td>
-                                    <div class="progress progress-xs progress-striped active">
-                                        <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknown / $genPop) * 100) ?>%" title="<?= round(($countUnknown / $genPop) * 100) ?>%"></div>
-                                    </div>
-                                </td>
-                                <td><span class="badge bg-green"><?= $countUnknown ?></span></td>
-                            </tr>
-                            <?php
-                        }
-                    }
-                    $countUnknownMale = PersonQuery::create()->filterByFmrId(0)->filterByGender(1)->count();
-                    $countUnknownFemale = PersonQuery::create()->filterByFmrId(0)->filterByGender(2)->count();
-                    $countUnknownRoleUnknownGender = PersonQuery::create()->filterByFmrId(0)->filterByGender(0)->count();
+                    <?php
+                    foreach(array_keys($familyRoleStats) as $key){
+                        $genderId = $familyRoleStats[$key]['genderId'];;
+                        $roleId = $familyRoleStats[$key]['roleId'];;
+                        $roldGenderName = $key;
+                        $roleGenderCount = $familyRoleStats[$key]['count'];
 
-                    $genPop = PersonQuery::create()->count();
-                    if ($countUnknownMale != 0) {
-                        ?>
-                        <tr>
-                            <td><a href="v2/people?Gender=1&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Male') ?></a></td>
-                            <td>
-                                <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownMale / $genPop) * 100) ?>%" title="<?= round(($countUnknownMale / $genPop) * 100) ?>%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-green"><?= $countUnknownMale ?></span></td>
-                        </tr>
-                        <?php
-                    }
-                    if ($countUnknownFemale != 0) {
-                        ?>
-                        <tr>
-                            <td><a href="v2/people?Gender=2&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Female') ?></a></td>
-                            <td>
-                                <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownFemale / $genPop) * 100) ?>%" title="<?= round(($countUnknownFemale / $genPop) * 100) ?>%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-green"><?= $countUnknownFemale ?></span></td>
-                        </tr>
-                        <?php
-                    }
-                    if ($countUnknownRoleUnknownGender != 0) {
-                        ?>
-                        <tr>
-                            <td><a href="v2/people?Gender=0&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Unassigned') ?></a></td>
-                            <td>
-                                <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownRoleUnknownGender / $genPop) * 100) ?>%" title="<?= round(($countUnknownRoleUnknownGender / $genPop) * 100) ?>%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-green"><?= $countUnknownRoleUnknownGender ?></span></td>
-                        </tr>
-                        <?php
+                        if ($roleGenderCount !== 0) {
+                            ?>
+                            <tr>
+                                <td><a href="v2/people?Gender=<?= $genderId ?>&FamilyRole=<?= $roleId ?>"><?= $roldGenderName ?></a></td>
+                                <td>
+                                    <div class="progress progress-xs progress-striped active">
+                                        <div class="progress-bar progress-bar-success" style="width: <?= round(($roleGenderCount / $personCount) * 100) ?>%" title="<?= round(($roleGenderCount / $personCount) * 100) ?>%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-green"><?= $roleGenderCount ?></span></td>
+                            </tr>
+                            <?php
+                        }
                     }
                     ?>
                 </table>
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
 
+
+    <div class="col-lg-6">
         <div class="card card-info">
             <div class="card-header">
                 <h3 class="card-title"><i class="fa fa-id-card-clip"></i> <?= gettext('Gender Demographics') ?></h3>
@@ -430,32 +340,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         //Gender Donut
         var pieData = {
             labels: [
+                '<?= gettext('Unassigned') ?>',
                 '<?= gettext('Men') ?>',
                 '<?= gettext('Women') ?>',
                 '<?= gettext('Boys') ?>',
                 '<?= gettext('Girls') ?>'
             ],
             datasets: [{
-                data: [
-                    <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
-                        if ($row['per_Gender'] == 1) {
-                            echo $row['numb'] . ',';
-                        }
-                        if ($row['per_Gender'] == 2) {
-                            echo $row['numb'] . ',';
-                        }
-                    }
-                    while ($row = mysqli_fetch_array($rsKidsGender)) {
-                        if ($row['per_Gender'] == 1) {
-                            echo $row['numb'] . ',';
-                        }
-                        if ($row['per_Gender'] == 2) {
-                            echo $row['numb'];
-                        }
-                    } ?>
-                ],
-                backgroundColor: ["#003399", "#9900ff", "#3399ff", "#009933"],
-                hoverBackgroundColor: ["#3366ff", "#ff66cc", "#99ccff", "#99cc00"]
+                data: <?php echo json_encode($genderStats); ?>,
+                backgroundColor: ["#d1a73a", "#003399", "#9900ff", "#3399ff", "#009933"],
+                hoverBackgroundColor: ["#f6c444", "#3366ff", "#ff66cc", "#99ccff", "#99cc00"]
             }]
         };
 
@@ -478,6 +372,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             responsive: true,
             // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
             maintainAspectRatio: false,
+            // Hide legend of zero value
+            plugins: { legend: { labels: { filter: (legendItem, data) => data.datasets[0].data[legendItem.index] > 0 } } },
         };
 
         var ctx = document.getElementById("gender-donut").getContext('2d');
