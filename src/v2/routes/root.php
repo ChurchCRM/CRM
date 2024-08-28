@@ -25,7 +25,13 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ->filterByDateDeactivated()
         ->count();
 
+    $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
+    if ($sInactiveClassificationIds === '') {
+        $sInactiveClassificationIds = '-1';
+    }
+    $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
     $dashboardCounts['People'] = PersonQuery::create()
+        ->filterByClsId($aInactiveClassificationIds, Criteria::NOT_IN)
         ->leftJoinWithFamily()
         ->where('Family.DateDeactivated is null')
         ->count();
