@@ -51,6 +51,8 @@ class Person extends BasePerson implements PhotoInterface
                 return gettext('Male');
             case 2:
                 return gettext('Female');
+            default:
+                return gettext('Unassigned');
         }
     }
 
@@ -107,7 +109,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getFamilyRoleName(): string
     {
-        $roleName = '';
+        $roleName = 'Unassigned';
         $role = $this->getFamilyRole();
         if ($role !== null) {
             $roleName = $this->getFamilyRole()->getOptionName();
@@ -129,7 +131,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getClassificationName()
     {
-        $classificationName = '';
+        $classificationName = 'Unassigned';
         $classification = $this->getClassification();
         if ($classification !== null) {
             $classificationName = $classification->getOptionName();
