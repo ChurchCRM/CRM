@@ -2,33 +2,19 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
+
+const GENDER_STATS_UNASSIGNED = 0;
+const GENDER_STATS_MAN = 1;
+const GENDER_STATS_WOMAN = 2;
+const GENDER_STATS_BOY = 3;
+const GENDER_STATS_GIRL = 4;
 
 class DashboardService
 {
-    /**
-     * @return int[]
-     */
-    public function getAgeStats(): array
-    {
-        $ageStats = [];
-        $people = PersonQuery::create()->find();
-        foreach ($people as $person) {
-            $personNumericAge = (int) $person->getNumericAge();
-            if ($personNumericAge === 0) {
-                continue;
-            }
-            if (!array_key_exists($personNumericAge, $ageStats)) {
-                $ageStats[$personNumericAge] = 0;
-            }
-            $ageStats[$personNumericAge]++;
-        }
-        ksort($ageStats);
-
-        return $ageStats;
-    }
-
     public function getFamilyCount(): array
     {
         $familyCount = FamilyQuery::Create()
@@ -38,42 +24,75 @@ class DashboardService
         return ['familyCount' => $familyCount];
     }
 
-    public function getPersonCount(): array
+    public function getDashboardStats(): array
     {
-        $personCount = PersonQuery::Create('per')
+        $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
+        if ($sInactiveClassificationIds === '') {
+            $sInactiveClassificationIds = '-1';
+        }
+        $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
+        $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
+
+        $personCount = 0;
+        $ageStats = [];
+        $classificationStats = [];
+        $genderStats = [GENDER_STATS_UNASSIGNED => 0, GENDER_STATS_MAN => 0, GENDER_STATS_WOMAN => 0, GENDER_STATS_BOY => 0, GENDER_STATS_GIRL => 0];
+        $familyRoleStats = [];
+
+        $people = PersonQuery::Create('per')
+            ->filterByClsId($aInactiveClassificationIds, Criteria::NOT_IN)
             ->useFamilyQuery('fam', 'left join')
             ->filterByDateDeactivated(null)
-            ->endUse()
-            ->count();
+            ->endUse();
 
-        return ['personCount' => $personCount];
-    }
+        foreach ($people as $person) {
+            $personCount++;
 
-    /**
-     * @return array<string, string>
-     */
-    public function getPersonStats(): array
-    {
-        $data = [];
-        $sSQL = <<<SQL
-SELECT
-    lst_OptionName as Classification,
-    count(*) as count
-FROM person_per
-INNER JOIN list_lst ON  per_cls_ID = lst_OptionID
-LEFT JOIN family_fam ON family_fam.fam_ID = person_per.per_fam_ID
-WHERE
-    lst_ID = 1 AND
-    family_fam.fam_DateDeactivated IS NULL
-GROUP BY per_cls_ID, lst_OptionName
-ORDER BY count DESC;
-SQL;
-        $rsClassification = RunQuery($sSQL);
-        while ($row = mysqli_fetch_array($rsClassification)) {
-            $data[$row['Classification']] = $row['count'];
+            $classification = $person->getClassificationName();
+            if (!array_key_exists($classification, $classificationStats)) {
+                $classificationStats[$classification]['count'] = 0;
+                $classificationStats[$classification]['id'] = $person->getClsId();
+            }
+            $classificationStats[$classification]['count']++;
+
+            $gender = $person->getGender();
+            if ($gender !== GENDER_STATS_UNASSIGNED && in_array($person->getFmrId(), $aDirRoleChild)) {
+                $gender = $gender + 2;
+            }
+            $genderStats[$gender]++;
+
+            $numericAge = (int) $person->getNumericAge();
+            if ($numericAge !== 0) {
+                if (!array_key_exists($numericAge, $ageStats)) {
+                    $ageStats[$numericAge] = 0;
+                }
+                $ageStats[$numericAge]++;
+            }
+
+            $familyRoleGender = $person->getFamilyRoleName() . ' - ' . $person->getGenderName();
+            if (!array_key_exists($familyRoleGender, $familyRoleStats)) {
+                $familyRoleStats[$familyRoleGender]['count'] = 0;
+                $familyRoleStats[$familyRoleGender]['genderId'] = $person->getGender();
+                $familyRoleStats[$familyRoleGender]['roleId'] = $person->getFmrId();
+            }
+            $familyRoleStats[$familyRoleGender]['count']++;
         }
+        ksort($genderStats);
+        ksort($ageStats);
+        array_multisort(
+            array_column($classificationStats, 'id'),
+            SORT_ASC,
+            $classificationStats
+        );
+        array_multisort(
+            array_column($familyRoleStats, 'roleId'),
+            SORT_ASC,
+            array_column($familyRoleStats, 'genderId'),
+            SORT_ASC,
+            $familyRoleStats
+        );
 
-        return $data;
+        return ['personCount' => $personCount, 'classificationStats' => $classificationStats, 'genderStats' => $genderStats, 'ageStats' => $ageStats, 'familyRoleStats' => $familyRoleStats];
     }
 
     public function getGroupStats(): array
