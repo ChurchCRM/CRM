@@ -260,19 +260,11 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setWorkPhone($sWorkPhone)
             ->setCellPhone($sCellPhone)
             ->setSendNewsletter($bSendNewsLetterString)
-            ->setEnvelope($nEnvelope);
-        if ($dWeddingDate) {
-            $family->setWeddingdate($dWeddingDate);
-        }
-        if ($sEmail) {
-            $family->setEmail($sEmail);
-        }
-        if ($nLatitude) {
-            $family->setLatitude($nLatitude);
-        }
-        if ($nLatitude) {
-            $family->setLongitude($nLongitude);
-        }
+            ->setEnvelope($nEnvelope)
+            ->setWeddingdate($dWeddingDate)
+            ->setEmail($sEmail)
+            ->setLatitude($nLatitude)
+            ->setLongitude($nLongitude);
         $family->save();
         $family->reload();
 
