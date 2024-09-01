@@ -241,6 +241,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $family = new \ChurchCRM\model\ChurchCRM\Family();
         if ($iFamilyID >= 1) {
             $family = FamilyQuery::create()->findPk($iFamilyID);
+            $family
+                ->setDateLastEdited(date('YmdHis'))
+                ->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+        } else {
+            $family
+                ->setDateEntered(date('YmdHis'))
+                ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
         }
         $family
             ->setName($sName)
@@ -252,8 +259,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setHomePhone($sHomePhone)
             ->setWorkPhone($sWorkPhone)
             ->setCellPhone($sCellPhone)
-            ->setDateEntered(date('YmdHis'))
-            ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
             ->setSendNewsletter($bSendNewsLetterString)
             ->setEnvelope($nEnvelope);
         if ($dWeddingDate) {

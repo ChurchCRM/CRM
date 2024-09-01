@@ -384,6 +384,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $personAlreadyExist = $iPersonID > 0;
         if ($personAlreadyExist) {
             $person = PersonQuery::create()->findOneById($iPersonID);
+            $person
+                ->setDateLastEdited(date('YmdHis'))
+                ->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+        } else {
+            $person
+                ->setDateEntered(date('YmdHis'))
+                ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
         }
 
         $person
@@ -410,8 +417,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             ->setFamId($iFamily)
             ->setFmrId($iFamilyRole)
             ->setClsId($iClassification)
-            ->setDateEntered(date('YmdHis'))
-            ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
             ->setFlags($per_Flags)
             ->setFacebook($sFacebook)
             ->setTwitter($sTwitter)
