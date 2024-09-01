@@ -61,6 +61,9 @@ context("Standard Family", () => {
         cy.get('input[name="Latitude"]').clear();
         cy.get('input[name="Longitude"]').clear();
 
+        // Fill in Contact Info section
+        cy.get('input[name="Email"]').type("mike@example.com");
+
         // Fill in Other Info section
         const weddingYear = "2024";
         const weddingMonth = "04";
@@ -93,6 +96,17 @@ context("Standard Family", () => {
         cy.contains("Marcia Troy");
         cy.contains("Peter Troy");
         cy.contains("4222 Clinton Way Los Angeles, CA");
+        cy.contains("mike@example.com");
         cy.contains(`${weddingMonth}/${weddingDay}/${weddingYear}`);
+
+        // Delete Email and WeddingDate
+        cy.get('.edit-family').first().click();
+        cy.get('input[name="Email"]').clear();
+        cy.get("#WeddingDate").clear();
+
+        cy.get("input[id='FamilySubmitBottom']").click();
+
+        cy.should('not.have.text', 'mike@example.com');
+        cy.should('not.have.text', `${weddingMonth}/${weddingDay}/${weddingYear}`);
     });
 });
