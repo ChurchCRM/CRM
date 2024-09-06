@@ -12,17 +12,16 @@ use ChurchCRM\Utils\RedirectUtils;
 $linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
 $iFundRaiserID = InputUtils::legacyFilterInputArr($_GET, 'FundRaiserID');
 
+$fundraiser = null;
 if ($iFundRaiserID > 0) {
-    // Get the current fund raiser record
-    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iFundRaiserID;
-    $rsFRR = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsFRR));
+    // Get the current fundraiser record
+    $fundraiser = FundRaiserQuery::create()->findOneById($iFundRaiserID);
     // Set current fundraiser
     $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 }
 
-if ($iFundRaiserID > 0) {
-    $sPageTitle = gettext('Fundraiser') . ' #' . $iFundRaiserID . ' ' . $fr_title;
+if ($fundraiser) {
+    $sPageTitle = gettext('Fundraiser') . ' #' . $iFundRaiserID . ' ' . $fundraiser->getTitle();
 } else {
     $sPageTitle = gettext('Create New Fund Raiser');
 }
@@ -89,17 +88,12 @@ if (isset($_POST['FundRaiserSubmit'])) {
 } else {
     //FirstPass
     //Are we editing or adding?
-    if ($iFundRaiserID > 0) {
+    if ($fundraiser) {
         //Editing....
         //Get all the data on this record
-
-        $sSQL = 'SELECT * FROM fundraiser_fr WHERE fr_ID = ' . $iFundRaiserID;
-        $rsFundRaiser = RunQuery($sSQL);
-        extract(mysqli_fetch_array($rsFundRaiser));
-
-        $dDate = $fr_date;
-        $sTitle = $fr_title;
-        $sDescription = $fr_description;
+        $dDate = $fundraiser->getDate();
+        $sTitle = $fundraiser->getTitle();
+        $sDescription = $fundraiser->getDescription();
     } else {
         $dDate = '';
         $sTitle = '';
