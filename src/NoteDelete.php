@@ -18,21 +18,18 @@ $sPageTitle = gettext('Note Delete Confirmation');
 $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
 
 // Get the data on this note
-$sSQL = 'SELECT * FROM note_nte WHERE nte_ID = ' . $iNoteID;
-$rsNote = RunQuery($sSQL);
-extract(mysqli_fetch_array($rsNote));
+$note = NoteQuery::create()->findOneById($iNoteID);
 
 // If deleting a note for a person, set the PersonView page as the redirect
-if ($nte_per_ID > 0) {
-    $sReroute = 'PersonView.php?PersonID=' . $nte_per_ID;
-} elseif ($nte_fam_ID > 0) {
+if ($note->getPerId() > 0) {
+    $sReroute = 'PersonView.php?PersonID=' . $note->getPerId();
+} elseif ($note->getFamId() > 0) {
     // If deleting a note for a family, set the FamilyView page as the redirect
-    $sReroute = 'v2/family/' . $nte_fam_ID;
+    $sReroute = 'v2/family/' . $note->getFamId();
 }
 
 // Do we have confirmation?
 if (isset($_GET['Confirmed'])) {
-    $note = NoteQuery::create()->findPk($iNoteID);
     $note->delete();
 
     // Send back to the page they came from
@@ -47,7 +44,7 @@ require 'Include/Header.php';
     <?= gettext('Please confirm deletion of this note') ?>:
   </div>
   <div class="card-body">
-    <?= $nte_Text ?>
+    <?= $note->getText() ?>
   </div>
   <div class="card-footer">
     <a class="btn btn-default" href="<?php echo $sReroute ?>"><?= gettext('Cancel') ?></a>
