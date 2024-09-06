@@ -323,7 +323,7 @@ class Photo
         $height = SystemConfig::getValue('iPhotoHeight');
         $width = SystemConfig::getValue('iPhotoWidth');
         $pointSize = SystemConfig::getValue('iInitialsPointSize');
-        $font = SystemURLs::getDocumentRoot() . '/fonts/Roboto-Regular.ttf';
+        $font = SystemURLs::getDocumentRoot() . '/fonts/' . SystemConfig::getValue('sFont');
         $image = imagecreatetruecolor($width, $height);
         MiscUtils::throwIfFailed($image);
         $bgcolor = $this->getRandomColor($image);
