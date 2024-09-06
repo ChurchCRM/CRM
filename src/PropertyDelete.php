@@ -14,7 +14,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $sPageTitle = gettext('Property Delete Confirmation');
 
 // Get the Type and Property
-$sType = $_GET['Type'];
+$sType = InputUtils::legacyFilterInput($_GET['Type']);
 $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 
 // Do we have deletion confirmation?
