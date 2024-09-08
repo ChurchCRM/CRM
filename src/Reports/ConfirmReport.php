@@ -227,8 +227,8 @@ foreach ($families as $family) {
         $pdf->writeAtCell($XRole, $curY, $XEmail - $XRole, $sFamRole);
         $pdf->writeAtCell($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
 
-        $birthdayStr = MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $null, $null);
-        //If the "HideAge" check box is true, then create a Yes/No representation of the check box.
+        $birthdayStr = MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, false);
+        // If the "HideAge" check box is true, then create a Yes/No representation of the checkbox.
         if ($per_Flags) {
             $hideAgeStr = gettext('Yes');
         } else {

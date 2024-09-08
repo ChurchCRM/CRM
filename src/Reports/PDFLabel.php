@@ -184,8 +184,10 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
     return $aName;
 }
 
-function MakeADCArray($sADClist)
+function MakeADCArray(string $sADClist): array
 {
+    $aReturnArray = [];
+
     // The end of each row is marked with the pipe | symbol
     // keep fetching rows until gone
     while (mb_substr_count($sADClist, '|')) {

@@ -78,6 +78,8 @@ const EventPropertiesEditor: React.FunctionComponent<{
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
               timeCaption="time"
+              selectsRange
+              icon="fa fa-calendar"
             />
           </td>
         </tr>
@@ -95,6 +97,8 @@ const EventPropertiesEditor: React.FunctionComponent<{
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
               timeCaption="time"
+              selectsRange
+              icon="fa fa-calendar"
             />
           </td>
         </tr>

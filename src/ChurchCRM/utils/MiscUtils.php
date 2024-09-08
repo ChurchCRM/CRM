@@ -89,7 +89,7 @@ class MiscUtils
 
     // Format a BirthDate
     // Optionally, the separator may be specified.  Default is YEAR-MN-DY
-    public static function formatBirthDate($per_BirthYear, ?string $per_BirthMonth, ?string $per_BirthDay, $sSeparator, $bFlags): string
+    public static function formatBirthDate($per_BirthYear, ?string $per_BirthMonth, ?string $per_BirthDay, ?bool $bFlags = false): string
     {
         try {
             $birthDate = MiscUtils::birthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);

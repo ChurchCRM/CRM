@@ -243,7 +243,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         }
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $pdf->sRecordName .= ' ' . MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '/', $per_Flags);
+            $pdf->sRecordName .= ' ' . MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $per_Flags);
         }
 
         SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);

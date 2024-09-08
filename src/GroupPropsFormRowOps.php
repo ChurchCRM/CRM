@@ -4,6 +4,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -14,15 +15,13 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 $iPropID = InputUtils::legacyFilterInput($_GET['PropID'], 'int');
 $sField = InputUtils::legacyFilterInput($_GET['Field']);
-$sAction = $_GET['Action'];
+$sAction = InputUtils::legacyFilterInput($_GET['Action']);
 
 // Get the group information
-$sSQL = 'SELECT * FROM group_grp WHERE grp_ID = ' . $iGroupID;
-$rsGroupInfo = RunQuery($sSQL);
-extract(mysqli_fetch_array($rsGroupInfo));
+$group = GroupQuery::create()->findOneById($iGroupID);
 
 // Abort if user tries to load with group having no special properties.
-if ($grp_hasSpecialProps == false) {
+if (!$group->hasSpecialProps()) {
     RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
 }
 

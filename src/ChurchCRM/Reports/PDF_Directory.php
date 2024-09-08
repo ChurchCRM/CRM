@@ -4,6 +4,7 @@ namespace ChurchCRM\Reports;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\PersonCustomQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\MiscUtils;
 
@@ -286,10 +287,10 @@ class PdfDirectory extends ChurchInfoReport
         }
     }
 
-    public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags): string
+    public function getBirthdayString(bool $bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags): string
     {
         if ($bDirBirthday && $per_BirthDay > 0 && $per_BirthMonth > 0) {
-            return MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '/', $per_Flags);
+            return MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $per_Flags);
         }
 
         return '';
