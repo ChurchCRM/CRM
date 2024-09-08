@@ -104,7 +104,7 @@ class Cart
 
     public static function hasPeople(): bool
     {
-        return array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) != 0;
+        return array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) !== 0;
     }
 
     public static function countPeople(): int

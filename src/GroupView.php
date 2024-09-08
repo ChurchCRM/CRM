@@ -351,7 +351,7 @@ require 'Include/Header.php';
                             extract($aRow);
 
                             //If the property doesn't already exist for this Person, write the <OPTION> tag
-                            if (strlen(strstr($sAssignedProperties, ',' . $pro_ID . ',')) == 0) {
+                            if (strlen(strstr($sAssignedProperties, ',' . $pro_ID . ',')) === 0) {
                                 echo '<option value="' . $pro_ID . '">' . $pro_Name . '</option>';
                             }
                         }

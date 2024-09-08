@@ -56,7 +56,7 @@ if (isset($_POST['SaveChanges'])) {
         $donation->setName(InputUtils::filterString($_POST[$iFieldID . 'name']));
         $donation->setDescription(InputUtils::legacyFilterInput($_POST[$iFieldID . 'desc']));
         $donation->setActive($_POST[$iFieldID . 'active'] == 1);
-        if (strlen($donation->getName()) == 0) {
+        if (strlen($donation->getName()) === 0) {
             $aNameErrors[$iFieldID] = true;
             $bErrorFlag &= $aNameErrors[$iFieldID];
         }

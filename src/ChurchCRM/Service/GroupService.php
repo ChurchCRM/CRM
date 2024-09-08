@@ -227,7 +227,7 @@ class GroupService
     public function addGroupRole(string $groupID, string $groupRoleName): string
     {
         requireUserGroupMembership('bManageGroups');
-        if (strlen($groupRoleName) == 0) {
+        if (strlen($groupRoleName) === 0) {
             throw new \Exception('New field name cannot be blank');
         } else {
             // Check for a duplicate option name

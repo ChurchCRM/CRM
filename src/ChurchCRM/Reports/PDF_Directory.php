@@ -359,7 +359,7 @@ class PdfDirectory extends ChurchInfoReport
 
         $sHeadStr = '';
 
-        if (strlen($per_LastName) && (strtolower($per_LastName) != strtolower($this->sLastName))) {
+        if (!empty($per_LastName) && (strtolower($per_LastName) != strtolower($this->sLastName))) {
             $bDifferentLastName = true;
         } else {
             $bDifferentLastName = false;
@@ -421,7 +421,7 @@ class PdfDirectory extends ChurchInfoReport
 
         // If there is no additional information for either head or spouse, there is no
         // need to print the name in the sublist, they are already are in the heading.
-        if (strlen($sHeadStr) == $iTempLen) {
+        if (strlen($sHeadStr) === $iTempLen) {
             return '';
         } else {
             return $sHeadStr;

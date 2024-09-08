@@ -707,7 +707,7 @@ $bOkToEdit = (
                                     </table>
                                 <?php endif; ?>
 
-                                <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) != 0) : ?>
+                                <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
                                     <div class="alert alert-info">
                                         <div>
                                             <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
@@ -825,7 +825,7 @@ $bOkToEdit = (
                                                             while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
                                                                 extract($aRow);
                                                                 //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                                                if (strlen(strstr($sAssignedVolunteerOpps, ',' . $vol_ID . ',')) == 0) {
+                                                                if (strlen(strstr($sAssignedVolunteerOpps, ',' . $vol_ID . ',')) === 0) {
                                                                     echo '<option value="' . $vol_ID . '">' . $vol_Name . '</option>';
                                                                 }
                                                             } ?>

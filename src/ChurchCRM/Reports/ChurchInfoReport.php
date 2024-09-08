@@ -31,7 +31,7 @@ class ChurchInfoReport extends FPDF
         if (mb_substr($phone, 0, 1) == '-') {
             $phone = mb_substr($phone, 1, strlen($phone) - 1);
         }
-        if (strlen($phone) == 7) {
+        if (strlen($phone) === 7) {
             // Fix the missing -
             $phone = mb_substr($phone, 0, 3) . '-' . mb_substr($phone, 3, 4);
         }

@@ -158,7 +158,7 @@ $iNewNameError = 0;
 if (isset($_POST['AddField'])) {
     $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
 
-    if (strlen($newFieldName) == 0) {
+    if (strlen($newFieldName) === 0) {
         $iNewNameError = 1;
     } else {
         // Check for a duplicate option name
@@ -220,7 +220,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($row = 1; $row <= $numRows; $row++) {
-        if (strlen($aNameFields[$row]) == 0) {
+        if (strlen($aNameFields[$row]) === 0) {
             $aNameErrors[$row] = 1;
             $bErrorFlag = true;
         } elseif ($row < $numRows) {
