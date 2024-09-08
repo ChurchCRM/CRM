@@ -4,6 +4,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -12,25 +14,21 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $sPageTitle = gettext('Property Delete Confirmation');
 
 // Get the Type and Property
-$sType = $_GET['Type'];
+$sType = InputUtils::legacyFilterInput($_GET['Type']);
 $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 
 // Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
-    $sSQL = 'DELETE FROM property_pro WHERE pro_ID = ' . $iPropertyID;
-    RunQuery($sSQL);
+    PropertyQuery::create()->findOneByProId($iPropertyID)->delete();
 
-    $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = ' . $iPropertyID;
-    RunQuery($sSQL);
+    $records = RecordPropertyQuery::create()->findByPropertyId($iPropertyID);
+    $records->delete();
 
     RedirectUtils::redirect('PropertyList.php?Type=' . $sType);
 }
 
 // Get the family record in question
-$sSQL = 'SELECT * FROM property_pro WHERE pro_ID = ' . $iPropertyID;
-$rsProperty = RunQuery($sSQL);
-extract(mysqli_fetch_array($rsProperty));
-
+$property = PropertyQuery::create()->findOneByProId($iPropertyID);
 require 'Include/Header.php';
 
 ?>
@@ -40,7 +38,7 @@ require 'Include/Header.php';
 </p>
 
 <p class="ShadedBox">
-    <?= $pro_Name ?>
+    <?= $property->getProName() ?>
 </p>
 
 <p>

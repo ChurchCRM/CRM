@@ -235,7 +235,7 @@ require '../Include/Header.php';
 
         foreach ($thisClassChildren as $child) {
             $hideAge = $child['flags'] == 1 || empty($child['birthYear']);
-            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']); ?>
+            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $child['flags']); ?>
           <tr>
           <td>
             <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $child['kidId'] ?>/thumbnail"

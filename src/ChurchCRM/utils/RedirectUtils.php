@@ -13,7 +13,7 @@ class RedirectUtils
      *
      * @throws \Exception
      */
-    public static function redirect($sRelativeURL): void
+    public static function redirect(string $sRelativeURL): void
     {
         if (substr($sRelativeURL, 0, 1) != '/') {
             $sRelativeURL = '/' . $sRelativeURL;
