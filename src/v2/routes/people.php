@@ -87,9 +87,9 @@ function listPeople(Request $request, Response $response, array $args): Response
 
     $filterByClsId = '';
     if (isset($_GET['Classification'])) {
-        $id = InputUtils::legacyFilterInput($_GET['Classification']);
+        $id = InputUtils::filterInt($_GET['Classification']);
         $option = ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->findOne();
-        if ($id == 0) {
+        if ($id === 0) {
             $filterByClsId = gettext('Unassigned');
             $sMode = $filterByClsId;
         } else {
@@ -100,10 +100,10 @@ function listPeople(Request $request, Response $response, array $args): Response
 
     $filterByFmrId = '';
     if (isset($_GET['FamilyRole'])) {
-        $id = InputUtils::legacyFilterInput($_GET['FamilyRole']);
+        $id = InputUtils::filterInt($_GET['FamilyRole']);
         $option = ListOptionQuery::create()->filterById(2)->filterByOptionId($id)->findOne();
 
-        if ($id == 0) {
+        if ($id === 0) {
             $filterByFmrId = gettext('Unassigned');
             $sMode = $filterByFmrId;
         } else {
@@ -114,7 +114,7 @@ function listPeople(Request $request, Response $response, array $args): Response
 
     $filterByGender = '';
     if (isset($_GET['Gender'])) {
-        $id = InputUtils::legacyFilterInput($_GET['Gender']);
+        $id = InputUtils::filterInt($_GET['Gender']);
 
         switch ($id) {
             case 0:

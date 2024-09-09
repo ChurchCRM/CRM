@@ -208,12 +208,12 @@ class Photo
         return $content;
     }
 
-    public function getPhotoBytes()
+    public function getPhotoBytes(): string
     {
         $content = file_get_contents($this->photoURI);
         MiscUtils::throwIfFailed($content);
 
-        return $content;
+        return (string) $content;
     }
 
     public function getPhotoContentType()

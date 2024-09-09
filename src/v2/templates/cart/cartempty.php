@@ -14,7 +14,7 @@ if (!array_key_exists('Message', $_GET)) {
         case 'aMessage':
             $event = EventQuery::create()->findPk($_GET['iEID']);
             ?>
-      <p class="text-center callout callout-info"><?= $_GET['iCount'] . ' ' . ($_GET['iCount'] == 1 ? gettext('Record') : gettext('Records')) . ' ' . gettext("Emptied into Event") . ':' ?>
+      <p class="text-center callout callout-info"><?= $_GET['iCount'] . ' ' . ((int) $_GET['iCount'] === 1 ? gettext('Record') : gettext('Records')) . ' ' . gettext("Emptied into Event") . ':' ?>
           <a href="<?= SystemURLs::getRootPath()?>/EditEventAttendees.php?eventId=<?=$_GET['iEID']?>"><?=$event->getTitle()?></a> </p>
             <?php
             break;

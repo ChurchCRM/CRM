@@ -77,7 +77,7 @@ function getFamilyProperties(Request $request, Response $response, array $args):
     return getProperties($response, 'f', $family->getId());
 }
 
-function getProperties(Response $response, $type, $id): Response
+function getProperties(Response $response, string $type, int $id): Response
 {
     $properties = RecordPropertyQuery::create()
         ->filterByRecordId($id)
@@ -87,7 +87,7 @@ function getProperties(Response $response, $type, $id): Response
 
     foreach ($properties as $property) {
         $rawProp = $property->getProperty();
-        if ($rawProp->getProClass() == $type) {
+        if ($rawProp->getProClass() === $type) {
             $tempProp = [];
             $tempProp['id'] = $property->getPropertyId();
             $tempProp['name'] = $rawProp->getProName();

@@ -152,7 +152,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
         $family = $person->getFamily();
         $anniversary = ($family ? $family->getWeddingdate(SystemConfig::getValue('sDateFormatLong')) : '');
         $familyRole = $person->getFamilyRoleName();
-        if ($familyRole == 'Head of Household') {
+        if ($familyRole === 'Head of Household') {
             $familyRole = 'Primary';
         }
 
@@ -229,7 +229,7 @@ function resetDatabase(Request $request, Response $response): Response
     $dbTablesSQLs = $statement->fetchAll();
 
     foreach ($dbTablesSQLs as $dbTable) {
-        if ($dbTable[1] == 'VIEW') {
+        if ($dbTable[1] === 'VIEW') {
             $alterSQL = 'DROP VIEW ' . $dbTable[0] . ' ;';
         } else {
             $alterSQL = 'DROP TABLE ' . $dbTable[0] . ' ;';
