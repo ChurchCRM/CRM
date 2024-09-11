@@ -304,10 +304,7 @@ class Photo
     {
         $retstr = '';
         if ($this->photoType == 'Person') {
-            $fullNameArr = PersonQuery::create()->select(['FirstName', 'LastName'])->findOneById($this->id);
-            foreach ($fullNameArr as $name) {
-                $retstr .= mb_strtoupper(mb_substr($name, 0, 1));
-            }
+            $retstr = PersonQuery::create()->findOneById($this->id)->getInitial(SystemConfig::getValue('iPersonInitialStyle'));
         } elseif ($this->photoType == 'Family') {
             $fullNameArr = FamilyQuery::create()->findOneById($this->id)->getName();
             $retstr .= mb_strtoupper(mb_substr($fullNameArr, 0, 1));
