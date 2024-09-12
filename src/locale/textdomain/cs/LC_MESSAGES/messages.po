@@ -154,7 +154,7 @@ msgstr "Období v manželství"
 
 #: 
 msgid "Family Role"
-msgstr "Role v rodině"
+msgstr "Rodinná role"
 
 #: 
 msgid "Depends whether using person or family output method"
@@ -590,7 +590,7 @@ msgstr "Vlož platbu"
 
 #: 
 msgid "Directory reports"
-msgstr "Hlášení adresáře"
+msgstr "Sestavy adresáře"
 
 #: 
 msgid "Information to Include"
@@ -1262,19 +1262,19 @@ msgstr "Chystáte se poslat informace o rodině na následující e-mailové adr
 
 #: 
 msgid "Financial Reports"
-msgstr "Finanční hlášení"
+msgstr "Finanční sestavy"
 
 #: 
 msgid "No records were returned from the previous report."
-msgstr "Z předchozího hlášení nebyly vráceny žádné záznamy."
+msgstr "Z předchozí sestavy nebyly vráceny žádné záznamy."
 
 #: 
 msgid "Report Type:"
-msgstr "Typ hlášení:"
+msgstr "Typ sestavy:"
 
 #: 
 msgid "Select Report Type"
-msgstr "Vyberte typ hlášení"
+msgstr "Vyberte typ sestavy"
 
 #: 
 msgid "Voting Members"
@@ -1290,11 +1290,11 @@ msgstr "Filtrovat podle rodiny"
 
 #: 
 msgid "Report Start Date:"
-msgstr "Datum začátku hlášení:"
+msgstr "Datum začátku sestavy:"
 
 #: 
 msgid "Report End Date:"
-msgstr "Datum konce hlášení:"
+msgstr "Datum konce sestavy:"
 
 #: 
 msgid "Payment Date"
@@ -1350,7 +1350,7 @@ msgstr "Všechny rodiny"
 
 #: 
 msgid "Report Heading:"
-msgstr "Hlavička hlášení:"
+msgstr "Hlavička sestavy:"
 
 #: 
 msgid "All Data"
@@ -1378,7 +1378,7 @@ msgstr "Zpět"
 
 #: 
 msgid "Create Report"
-msgstr "Vytvořit hlášení"
+msgstr "Vytvořit sestavu"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1614,11 +1614,11 @@ msgstr "Zobrazení osob"
 
 #: 
 msgid "Group reports"
-msgstr "Skupinová hlášení"
+msgstr "Skupinové sestavy"
 
 #: 
 msgid "Select the group you would like to report"
-msgstr "Vyberte skupinu, ze které chcete vytvořit hlášení"
+msgstr "Vyberte skupinu, ze které chcete vytvořit sestavu"
 
 #: 
 msgid "No Role Selected"
@@ -1630,15 +1630,15 @@ msgstr "Pouze osoby v košíku?"
 
 #: 
 msgid "Report Model"
-msgstr "Model hlášení"
+msgstr "Model sestavy"
 
 #: 
 msgid "Report for group and role selected"
-msgstr "Hlášení pro vybranou skupinu a roli"
+msgstr "Sestava pro vybranou skupinu a roli"
 
 #: 
 msgid "Report for any role in group selected"
-msgstr "Hlášení pro libovolnou roli ve vybrané skupině"
+msgstr "Sestava pro libovolnou roli ve vybrané skupině"
 
 #: 
 msgid "Select which information you want to include"
@@ -1882,7 +1882,7 @@ msgstr "E-mail všem (BCC)"
 
 #: 
 msgid "Family Roles"
-msgstr "Role rodiny"
+msgstr "Rodinné role"
 
 #: 
 msgid "Family Geographic"
@@ -1922,11 +1922,11 @@ msgstr "Více informací"
 
 #: 
 msgid "Reports on groups and roles"
-msgstr "Hlášení o skupinách a rolích"
+msgstr "Sestavy o skupinách a rolích"
 
 #: 
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
-msgstr "Hlášení o vybrané skupině a rolích (může být vícestránkové PDF)."
+msgstr "Sestava o vybrané skupině a rolích (může být vícestránkové PDF)."
 
 #: 
 msgid "Generate letters and mailing labels."
@@ -2462,7 +2462,7 @@ msgstr "Odeslat"
 
 #: 
 msgid "Event Attendance Reports"
-msgstr "Hlášení o návštěvnosti události"
+msgstr "Sestava o návštěvnosti události"
 
 #: 
 msgid "Restore Database"
@@ -2558,7 +2558,7 @@ msgstr "Nastavení systému"
 
 #: 
 msgid "Tax Report"
-msgstr "Daňové hlášení"
+msgstr "Daňová sestava"
 
 #: 
 msgid "Calendar Year"
@@ -3190,7 +3190,7 @@ msgstr "Třídy"
 
 #: 
 msgid "Sunday School Reports"
-msgstr "Hlášení o nedělní škole"
+msgstr "Sestavy o nedělní škole"
 
 #: 
 msgid "Generate class lists and attendance sheets"
@@ -3210,7 +3210,7 @@ msgstr "Alespoň jedna skupina musí být vybrána pro vytvoření třídních s
 
 #: 
 msgid "Report Details"
-msgstr "Detaily hlášení"
+msgstr "Detaily sestavy"
 
 #: 
 msgid "To select multiple hold CTL"
@@ -3394,7 +3394,7 @@ msgstr "Nastavení map"
 
 #: 
 msgid "Report Settings"
-msgstr "Nastavení hlášení"
+msgstr "Nastavení sestav"
 
 #: 
 msgid "Localization"
@@ -3529,16 +3529,512 @@ msgid "Set Email Settings"
 msgstr "Nastavit "
 
 #: 
+msgid "New Release"
+msgstr "Nová verze"
+
+#: 
+msgid "Application Integrity Check Failed"
+msgstr "Ověření integrity aplikace selhalo"
+
+#: 
+msgid "Self Registration"
+msgstr "Samostatná registrace"
+
+#: 
+msgid "Restore Status:"
+msgstr "Stav obnovy:"
+
+#: 
+msgid "No coordinates found"
+msgstr "Nebyly nalezeny žádné souřadnice"
+
+#: 
+msgid "Backup Status:"
+msgstr "Stav zálohy:"
+
+#: 
+msgid "No Backup Running"
+msgstr "Neprobíhá žádná záloha"
+
+#: 
+msgid "Anonymous"
+msgstr "Anonymní"
+
+#: 
+msgid "Attendees for Event"
+msgstr "Účastníci události"
+
+#: 
+msgid "Yearly"
+msgstr "Ročně"
+
+#: 
+msgid "Registration Complete"
+msgstr "Registrace kompletní"
+
+#: 
+msgid "Register"
+msgstr "Registrovat"
+
+#: 
+msgid "Register your family"
+msgstr "Zaregistrujte svou rodinu"
+
+#: 
+msgid "How many people are in your family"
+msgstr "Kolik členů má vaše rodina"
+
+#: 
+msgid "Add All Classes"
+msgstr "Přidat všechny třídy"
+
+#: 
+msgid "Clear All Classes"
+msgstr "Odstranit všechny třídy"
+
+#: 
+msgid "Add All Families"
+msgstr "Přidat všechny rodiny"
+
+#: 
+msgid "Clear All Families"
+msgstr "Odstranit všechny rodiny"
+
+#: 
+msgid "Add All Funds"
+msgstr "Přidat všechny fondy"
+
+#: 
+msgid "Clear All Funds"
+msgstr "Odstranit všechny fondy"
+
+#: 
+msgid "Your previous session timed out.  Please login again."
+msgstr "Vaše předchozí relace skončila.  Přihlaste se prosím znovu."
+
+#: 
+msgid "Register a new Family"
+msgstr "Registrovat novou rodinu"
+
+#: 
+msgid "Signature definition file signature failed validation"
+msgstr "Podpis souboru s definicí podpisu se nepodařilo ověřit"
+
+#: 
+msgid "Signature definition File Missing"
+msgstr "Chybí soubor s definicí podpisu"
+
+#: 
+msgid "One or more files failed signature validation"
+msgstr "Jeden nebo více souborů neprošlo ověřením podpisu"
+
+#: 
+msgid "Configure HTTPS"
+msgstr "Konfigurovat HTTPS"
+
+#: 
+msgid "Files failing integrity check"
+msgstr "Soubory, u kterých selhala kontrola integrity"
+
+#: 
+msgid "Family:"
+msgstr "Rodina:"
+
+#: 
+msgid "item"
+msgstr "položka"
+
+#: 
+msgid "Address 1"
+msgstr "Adresa 1"
+
+#: 
+msgid "Address 2"
+msgstr "Adresa 2"
+
+#: 
+msgid "Cell phone"
+msgstr "Mobil"
+
+#: 
+msgid "Envelope:"
+msgstr "Obálka:"
+
+#: 
 msgid ", Phone: "
-msgstr ", Telefon:"
+msgstr ", Telefon: "
+
+#: 
+msgid "Voting members "
+msgstr "Hlasovní členové "
+
+#: 
+msgid "Restore Running, Please wait."
+msgstr "Probíhá obnova, prosím čekejte."
+
+#: 
+msgid "Family Members:"
+msgstr "Členové rodiny:"
+
+#: 
+msgid "Anniversary"
+msgstr "Výročí"
+
+#: 
+msgid "Notes"
+msgstr "Poznámky"
 
 #: 
 msgid "Reports"
-msgstr "Hlášení"
+msgstr "Sestavy"
+
+#: 
+msgid "File Name:"
+msgstr "Název souboru:"
+
+#: 
+msgid "Fiscal Year:"
+msgstr "Fiskální rok:"
+
+#: 
+msgid "Add Attendees for Event"
+msgstr "Přidat účastníky události"
+
+#: 
+msgid "family"
+msgstr "rodina"
+
+#: 
+msgid "Anniversary Date:"
+msgstr "Datum výročí:"
+
+#: 
+msgid "Date Entered:"
+msgstr "Zadané datum:"
+
+#: 
+msgid "CSV Import"
+msgstr "CSV Import"
+
+#: 
+msgid "Comment:"
+msgstr "Poznámka:"
+
+#: 
+msgid "Closed:"
+msgstr "Zavřeno:"
+
+#: 
+msgid "Start Date: "
+msgstr "Počáteční datum: "
+
+#: 
+msgid "End Date: "
+msgstr "Konečné datum: "
+
+#: 
+msgid "Members:"
+msgstr "Členové:"
+
+#: 
+msgid "Edit General Settings"
+msgstr "Hlavní nastavení"
+
+#: 
+msgid "There were "
+msgstr "Bylo tam "
+
+#: 
+msgid "Inactive"
+msgstr "Neaktivní"
+
+#: 
+msgid "Start Time"
+msgstr "Čas začátku"
+
+#: 
+msgid "Filter by Fund"
+msgstr "Filtrovat podle fondu"
+
+#: 
+msgid "Disable Group Specific Properties"
+msgstr "Zakázat specifické vlastnosti skupiny"
+
+#: 
+msgid "Text Group"
+msgstr "Poslat SMS skupině"
+
+#: 
+msgid "Group Properties"
+msgstr "Vlastnosti skupiny"
+
+#: 
+msgid "Assign a New Property:"
+msgstr "Přiřaďte novou vlastnost:"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "Vyskytl se problém s načtením požadovaného objektu"
+
+#: 
+msgid "All"
+msgstr "Všechny"
+
+#: 
+msgid "Family Map"
+msgstr "Mapa rodin"
+
+#: 
+msgid "Groups"
+msgstr "Skupiny"
+
+#: 
+msgid "Error: You must enter a name"
+msgstr "Chyba: Musíte zadat jméno"
 
 #: 
 msgid " Since:"
-msgstr "Od:"
+msgstr " Od:"
+
+#: 
+msgid "Total $"
+msgstr "Celkem $"
+
+#: 
+msgid "with this property.."
+msgstr "s touto vlastností.."
+
+#: 
+msgid "with this Property..."
+msgstr "s touto vlastností..."
+
+#: 
+msgid "Church Email"
+msgstr "E-mail sboru"
+
+#: 
+msgid "Include only these classifications in the directory, comma separated"
+msgstr "Do adresáře zahrnout pouze tyto klasifikace oddělené čárkou"
+
+#: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "Toto jsou čísla rodinných rolí, určená jako hlava rodiny"
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "Toto jsou čísla rodinných rolí, určená jako partner/ka"
+
+#: 
+msgid "These are the family role numbers designated as child"
+msgstr "Toto jsou čísla rodinných rolí, určená jako dítě"
+
+#: 
+msgid "Queries for which user must have finance permissions to use:"
+msgstr "Dotazy, pro jejichž použití musí mít uživatel oprávnění Finance:"
+
+#: 
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr "Měli by mít k systému exportu CSV a sestavě adresáře přístup pouze správci?"
+
+#: 
+msgid "Minimum length a user may set their password to"
+msgstr "Minimální délka, na kterou může uživatel nastavit své heslo"
+
+#: 
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr "Seznam nepovolených (příliš zjevných) hesel oddělených čárkou."
+
+#: 
+msgid "Default City"
+msgstr "Výchozí město"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "Výchozí stát - musí být dvoupísmenná zkratka!"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "Výchozí účet pro příjem kopie všech e-mailů"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "Adresa SMTP serveru (mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "Vyžaduje váš server SMTP autentizaci (uživatelské jméno/heslo)?"
+
+#: 
+msgid "SMTP Username"
+msgstr "Uživatelské jméno SMTP"
+
+#: 
+msgid "SMTP Password"
+msgstr "Heslo SMTP"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "Podpora internacionalizace (I18n)"
+
+#: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "Zeměpisná šířka sboru, je použita k vycentrování mapy Google"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "Zeměpisná délka sboru, je použita k vycentrování mapy Google"
+
+#: 
+msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
+msgstr "Nastavením hodnoty true zakážete zadávání adres v Editoru osob.  Nastavením false povolíte zadávání adres v Editoru osob."
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "Nastavením hodnoty true zakážete zadávání data spřátelení v Editoru osob.  Nastavením false povolíte zadávání data spřátelení v Editoru osob."
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "Nastavením hodnoty true zakážete správu odběrů novinek v Editoru rodiny."
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "Nastavením hodnoty true zakážete zadávání data svatby v Editoru rodiny.  Nastavením false povolíte zadávání data svatby v Editoru rodiny."
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "Nastavením hodnoty true zakážete zadávání zeměpisné šířky a délky v Editoru rodiny.  Nastavením false povolíte zadávání zeměpisné šířky a délky v Editoru rodin.  Vyhledávání se stále provádí, pouze se nezobrazuje."
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "Zadejte kód HTML, který se zobrazí jako záhlaví v horní části každé stránky. Nezapomeňte uzavřít značky! Poznámka: Aby se nové záhlaví zobrazilo, je třeba PODRUHÉ OBNOVIT PROHLÍŽEČ."
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "Jednotka měření vzdálenosti, míle nebo km."
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "Názvy značek pro Mapy Google v pořadí podle klasifikace"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "Nastavením hodnoty true povolíte vlastní registraci rodiny."
+
+#: 
+msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
+msgstr "ChurchCRM byl zaregistrován.  Tým ChurchCRM používá informace o registraci ke sledování používání.  Tyto informace jsou důvěrné a nikdy nejsou zveřejňovány ani prodávány.  Pokud je toto pole nastaveno na true, změní se možnost registrace v nabídce správce na aktualizaci registrace."
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "Levý okraj (1 = 1/100 palce)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "Tloušťka čáry (1 = 1/100 palce)"
+
+#: 
+msgid "Church City"
+msgstr "Město sboru"
+
+#: 
+msgid "Church State"
+msgstr "Stát sboru"
+
+#: 
+msgid "Church Zip"
+msgstr "PSČ sboru"
+
+#: 
+msgid "Church Phone"
+msgstr "Telefon sboru"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "vyhledat obrázky uživatelů v aplikaci Gravatar, pokud není k dispozici žádný místní obrázek"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "Povolení vzdáleného zálohování do cloudových služeb"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "Typ cloudové služby (Podporované hodnoty: WebDAV, Local)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "Uživatelské jméno pro vzdálené zálohování"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "Heslo pro vzdálené zálohování"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "Interval v hodinách pro automatické vzdálené zálohování"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "Časové razítko poslední zálohy"
+
+#: 
+msgid "Enable Integrity Check"
+msgstr "Povolit kontrolu integrity"
+
+#: 
+msgid "Interval in Hours for Integrity Check"
+msgstr "Interval v hodinách pro kontrolu integrity"
+
+#: 
+msgid "Last Integrity Check Timestamp"
+msgstr "Časové razítko poslední kontroly integrity"
+
+#: 
+msgid "List Groups"
+msgstr "Vypsat skupiny"
+
+#: 
+msgid "List Church Events"
+msgstr "Vypsat sborové události"
+
+#: 
+msgid "Add Church Event"
+msgstr "Přidat sborovou událost"
+
+#: 
+msgid "List Event Types"
+msgstr "Vypsat typy událostí"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "Check-in a Check-out"
+
+#: 
+msgid "Data/Reports"
+msgstr "Data/Sestavy"
+
+#: 
+msgid "Query Menu"
+msgstr "Nabídka dotazů"
+
+#: 
+msgid "CSV Export Records"
+msgstr "Exportovat záznamy do CSV"
+
+#: 
+msgid "People Properties"
+msgstr "Vlastnosti osob"
+
+#: 
+msgid "Family Properties"
+msgstr "Vlastnosti rodin"
+
+#: 
+msgid "Property Types"
+msgstr "Typy vlastností"
+
+#: 
+msgid "Zip Code"
+msgstr "PSČ"
 
 #: 
 msgid "2012/2013"
@@ -3557,8 +4053,280 @@ msgid "2015/2016"
 msgstr "2015/2016"
 
 #: 
+msgid "WorkEmail"
+msgstr "Pracovní e-mail"
+
+#: 
+msgid "Regular Attender"
+msgstr "Pravidelný návštěvník"
+
+#: 
+msgid "Guest"
+msgstr "Host"
+
+#: 
+msgid "Non-Attender"
+msgstr "Nechodič"
+
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Nechodič (tým)"
+
+#: 
+msgid "Minimum Age"
+msgstr "Minimální věk"
+
+#: 
+msgid "Maximum Age"
+msgstr "Maximální věk"
+
+#: 
+msgid "Beginning Date"
+msgstr "Počáteční datum"
+
+#: 
+msgid "Ending Date"
+msgstr "Koncové datum"
+
+#: 
+msgid "Search"
+msgstr "Hledat"
+
+#: 
+msgid "Field"
+msgstr "Pole"
+
+#: 
+msgid "Registered students"
+msgstr "Registrovaní žáci"
+
+#: 
+msgid "Volunteer opportunities"
+msgstr "Dobrovolnické příležitosti"
+
+#: 
+msgid "Months"
+msgstr "Měsíce"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "První fiskální rok"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Druhý fiskální rok"
+
+#: 
+msgid "Custom field"
+msgstr "Vlastní pole"
+
+#: 
+msgid "Field value"
+msgstr "Hodnota pole"
+
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Minimální věk, pro který chcete vrátit záznamy."
+
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Maximální věk, pro který chcete vrátit záznamy."
+
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Požadované pohlaví, které se má vyhledat v databázi."
+
+#: 
+msgid "Select the desired family role."
+msgstr "Vyberte požadovanou rodinnou roli."
+
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Pohlaví, pro které chcete vrátit záznamy."
+
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Vlastnost, pro kterou si přejete vrátit záznamy o osobách."
+
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Zvolte počáteční datum pro výpočet celkových příspěvků pro každého člena (tj. RRRR-MM-DD). POZNÁMKA: Můžete vybrat pouze data, která obsahují příspěvky."
+
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Zadejte poslední datum pro výpočet celkových příspěvků pro každého člena (tj. RRRR-MM-DD)."
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Zadejte libovolnou část následujících údajů: jméno, město, stát, PSČ, domácí telefon, e-mail nebo pracovní e-mail."
+
+#: 
+msgid "Select field to search for."
+msgstr "Vyberte pole, které chcete vyhledat."
+
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Měsíc narození, pro který chcete vrátit záznamy."
+
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Třída nedělní školy, pro kterou chcete vrátit záznamy."
+
+#: 
+msgid "Group of registered students"
+msgstr "Skupina registrovaných žáků"
+
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Výroční měsíc členství, za který chcete vrátit záznamy."
+
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Vyberte dobrovolnickou příležitost"
+
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Počet měsíců od doby, kdy se stal přítelem"
+
+#: 
+msgid "First fiscal year for comparison"
+msgstr "První fiskální rok pro srovnání"
+
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Druhý fiskální rok pro srovnání"
+
+#: 
+msgid "Pledged this year"
+msgstr "Přispěl tento rok"
+
+#: 
+msgid "but not this year"
+msgstr "ale ne tento rok"
+
+#: 
+msgid "Fiscal Year."
+msgstr "Fiskální rok."
+
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Člen, pravidelný účastník atd."
+
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Výběr první dobrovolnické příležitosti"
+
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Výběr druhé dobrovolnické příležitosti"
+
+#: 
+msgid "Choose customer person field"
+msgstr "Vyberte vlastní pole osoby"
+
+#: 
+msgid "Match custom field to this value"
+msgstr "Porovnat vlastní pole k této hodně"
+
+#: 
+msgid "Family Member Count"
+msgstr "Počet členů rodiny"
+
+#: 
+msgid "Person by Age"
+msgstr "Osoba podle věku"
+
+#: 
+msgid "Total By Gender"
+msgstr "Celkem podle pohlaví"
+
+#: 
+msgid "Person by Role and Gender"
+msgstr "Osoba podle role a pohlaví"
+
+#: 
+msgid "Person by Property"
+msgstr "Osoba podle vlastností"
+
+#: 
+msgid "Advanced Search"
+msgstr "Rozšířené hledání"
+
+#: 
+msgid "Birthdays"
+msgstr "Narozeniny"
+
+#: 
+msgid "Membership anniversaries"
+msgstr "Výročí členství"
+
+#: 
+msgid "Select database users"
+msgstr "Vyberte uživatele databáze"
+
+#: 
+msgid "Select all members"
+msgstr "Vyberte všechny členy"
+
+#: 
+msgid "Volunteers"
+msgstr "Dobrovolníci"
+
+#: 
+msgid "Recent friends"
+msgstr "Nedávní přátelé"
+
+#: 
+msgid "Pledge comparison"
+msgstr "Srovnání příspěvků"
+
+#: 
+msgid "Missing pledges"
+msgstr "Chybějící příspěvky"
+
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Příspěvky rodiny podle fiskálního roku"
+
+#: 
+msgid "CustomSearch"
+msgstr "VlastníHledání"
+
+#: 
+msgid "Returns each family and the total number of people assigned to them."
+msgstr "Vrátí každou rodinu a celkový počet osob k ní přiřazených."
+
+#: 
+msgid "Returns any person records with ages between two given ages."
+msgstr "Vrátí všechny záznamy osob ve věku mezi dvěma zadanými věky."
+
+#: 
+msgid "Total of records matching a given gender."
+msgstr "Celkový počet záznamů odpovídajících danému pohlaví."
+
+#: 
+msgid "Selects person records with the family role and gender specified."
+msgstr "Vybere záznamy osob se zadanou rodinnou rolí a pohlavím."
+
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Vrátí záznamy osob, kterým je přiřazena daná vlastnost."
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Hledat podle libovolné části jména, města, státu, PSČ, domácího telefonu, e-mailu nebo pracovního e-mailu."
+
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Osoby s narozeninami v určitém měsíci"
+
+#: 
 msgid " in this category."
 msgstr "v této kategorii."
+
+#: 
+msgid "Family Roles Editor"
+msgstr "Editor rodinných rolí"
 
 #: 
 msgid " this Family"
@@ -3582,7 +4350,7 @@ msgstr "Přidat vše"
 
 #: 
 msgid "People Reports"
-msgstr "Hlášení o osobách"
+msgstr "Sestavy o osobách"
 
 #: 
 msgid "People Dashboard"
@@ -4308,7 +5076,7 @@ msgstr "Návštěvnost události"
 
 #: 
 msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Generovat hlášení o účasti -A- neúčasti na událostech"
+msgstr "Generovat sestavu o účasti -A- neúčasti na událostech"
 
 #: 
 msgid "Help translate this project"
