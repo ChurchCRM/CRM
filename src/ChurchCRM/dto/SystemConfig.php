@@ -81,6 +81,16 @@ class SystemConfig
         return ['Choices' => $roles];
     }
 
+    public static function getInitialStyleChoices(): array
+    {
+        return [
+            'Choices' => [
+                gettext('One character from FirstName and one character from LastName') . ':0',
+                gettext('Two characters from FirstName') . ':1',
+            ],
+        ];
+    }
+
     private static function buildConfigs(): array
     {
         return [
@@ -198,6 +208,7 @@ class SystemConfig
             'sDepositSlipType'                     => new ConfigItem(2001, 'sDepositSlipType', 'choice', 'QBDT', gettext('Deposit ticket type.  QBDT - Quickbooks'), '', '{"Choices":["QBDT"]}'),
             'bAllowEmptyLastName'                  => new ConfigItem(2010, 'bAllowEmptyLastName', 'boolean', '0', gettext('Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.')),
             'iPersonNameStyle'                     => new ConfigItem(2020, 'iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
+            'iPersonInitialStyle'                  => new ConfigItem(20201, 'iPersonInitialStyle', 'choice', '0', '', '', json_encode(SystemConfig::getInitialStyleChoices(), JSON_THROW_ON_ERROR)),
             'bDisplayBillCounts'                   => new ConfigItem(2002, 'bDisplayBillCounts', 'boolean', '1', gettext('Display bill counts on deposit slip')),
             'sCloudURL'                            => new ConfigItem(2003, 'sCloudURL', 'text', 'http://demo.churchcrm.io/', gettext('ChurchCRM Cloud Access URL')),
             'sNexmoAPIKey'                         => new ConfigItem(2012, 'sNexmoAPIKey', 'text', '', gettext('Nexmo SMS API Key')),
@@ -277,7 +288,7 @@ class SystemConfig
             gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sHomeAreaCode', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite', 'sChurchFB', 'sChurchTwitter'],
             gettext('User Setup')         => ['iMinPasswordLength', 'iMinPasswordChange', 'iMaxFailedLogins', 'iSessionTimeout', 'aDisallowedPasswords', 'bEnableLostPassword', 'bEnable2FA', 'bRequire2FA', 's2FAApplicationName', 'bSendUserDeletedEmail'],
             gettext('Email Setup')        => ['sSMTPHost', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'iSMTPTimeout', 'sToEmailAddress', 'bPHPMailerAutoTLS', 'sPHPMailerSMTPSecure'],
-            gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bShowFamilyData', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'bEnableSelfRegistration', 'bAllowEmptyLastName', 'iPersonNameStyle', 'iProfilePictureListSize', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification'],
+            gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bShowFamilyData', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'bEnableSelfRegistration', 'bAllowEmptyLastName', 'iPersonNameStyle', 'iPersonInitialStyle', 'iProfilePictureListSize', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification'],
             gettext('Enabled Features')   => ['bEnabledFinance', 'bEnabledSundaySchool', 'bEnabledEvents', 'bEnabledCalendar', 'bEnabledFundraiser', 'bEnabledEmail', 'bEnabledMenuLinks'],
             gettext('Map Settings')       => ['sGeoCoderProvider', 'sGoogleMapsGeocodeKey', 'sGoogleMapsRenderKey', 'sBingMapKey', 'sGMapIcons', 'iMapZoom'],
             gettext('Report Settings')    => ['sQBDTSettings', 'leftX', 'incrementY', 'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sPledgeSummary1', 'sPledgeSummary2', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'bDirLetterHead', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'iPDFOutputType'],

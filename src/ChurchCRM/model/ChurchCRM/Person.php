@@ -707,4 +707,25 @@ class Person extends BasePerson implements PhotoInterface
 
         return parent::getEmail();
     }
+
+    /**
+     * Returns a string of a person's full name initial, formatted as specified by $Style
+     * $Style = 0  :  "One character from FirstName and one character from LastName"
+     * $Style = 1  :  "Two characters from FirstName"
+     */
+    public function getInitial(int $Style): string
+    {
+        $initialString = '';
+        switch ($Style) {
+            case 0:
+                $initialString .= mb_strtoupper(mb_substr($this->getFirstName(), 0, 1));
+                $initialString .= mb_strtoupper(mb_substr($this->getLastName(), 0, 1));
+                break;
+            case 1:
+                $fullNameArr = $this->getFirstName();
+                $initialString .= mb_strtoupper(mb_substr($fullNameArr, 0, 2));
+        }
+
+        return $initialString;
+    }
 }
