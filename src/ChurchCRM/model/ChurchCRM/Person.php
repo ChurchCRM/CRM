@@ -687,6 +687,7 @@ class Person extends BasePerson implements PhotoInterface
     {
         $array = parent::toArray();
         $array['Address'] = $this->getAddress();
+        $array['FullName'] = $this->getFullName();
 
         return $array;
     }

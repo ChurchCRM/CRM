@@ -247,9 +247,7 @@ function initDataTable() {
                         '"><a target="_top" href="PersonView.php?PersonID=' +
                         full.PersonId +
                         '">' +
-                        full.Person.FirstName +
-                        " " +
-                        full.Person.LastName +
+                        full.Person.FullName +
                         "</a>"
                     );
                 },
