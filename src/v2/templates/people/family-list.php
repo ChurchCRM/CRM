@@ -21,13 +21,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <thead>
                 <tr>
                     <th><?= gettext('Actions') ?></th>
-                    <th><?= gettext('Name') ?></th>
-                    <th><?= gettext('Address') ?></th>
-                    <th><?= gettext('Home Phone') ?></th>
-                    <th><?= gettext('Cell Phone') ?></th>
-                    <th><?= gettext('Email') ?></th>
-                    <th><?= gettext('Created') ?></th>
-                    <th><?= gettext('Edited') ?></th>
+                    <?php
+                    $columns = json_decode(SystemConfig::getValue('sFamilyListColumns'), null, 512, JSON_THROW_ON_ERROR);
+                    foreach ($columns as $column) {
+                        if ($column->visible === 'true') {
+                            echo '<th>' . gettext($column->name) . '</th>';
+                        }
+                    }
+                    ?>
                 </tr>
             </thead>
             <tbody>
@@ -43,17 +44,19 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <i class="fas fa-pen"></i>
                             </a>
                         </td>
-                        <td><?= $family->getName() ?></td>
-                        <td> <?= $family->getAddress() ?></td>
-                        <td><?= $family->getHomePhone() ?></td>
-                        <td><?= $family->getCellPhone() ?></td>
-                        <td><?= $family->getEmail() ?></td>
-                        <td><?= date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                        <td>
-                            <?php if ($family->getDateLastEdited()) {
-                                echo date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
-                            } ?>
-                        </td>
+
+                        <?php
+                        foreach ($columns as $column) {
+                            if ($column->visible === 'true') {
+                                if (str_starts_with($column->displayFunction, 'getDate')) {
+                                    $columnData = [$family, $column->displayFunction](SystemConfig::getValue('sDateFormatLong'));
+                                } else {
+                                    $columnData = [$family, $column->displayFunction]();
+                                }
+                                echo '<td>' . $columnData . '</td>';
+                            }
+                        }
+                        ?>
                     </tr>
                 <?php } ?>
             </tbody>
