@@ -158,20 +158,27 @@ foreach ($ListItem as $element) {
                             <?php
                     }
                     ?>
-                <td><?= $person->getId() ?></td>
-                <td><?= $person->getLastName()?></td>
-                <td><?= $person->getFirstName()?></td>
-                <td><?= $person->getAddress() ?></td>
-                <td><?= $person->getHomePhone() ?></td>
-                <td><?= $person->getCellPhone() ?></td>
-                <td><?= $person->getEmail() ?></td>
-                <td><?= emptyOrUnassigned($person->getGenderName()) ?></td>
-                <td><?= emptyOrUnassigned($person->getClassificationName()) ?></td>
-                <td><?= emptyOrUnassigned($person->getFamilyRoleName()) ?></td>
-                <td><?= emptyOrUnassignedJSON($person->getPropertiesString()) ?></td>
-                <td><?= emptyOrUnassignedJSON($person->getCustomFields($allPersonCustomFields, $CustomMapping, $CustomList, $option_name)) ?></td>
-                <td><?= emptyOrUnassignedJSON($person->getGroups()) ?></td>
+
                 <?php
+                $columns = json_decode(SystemConfig::getValue('sPersonListColumns'), null, 512, JSON_THROW_ON_ERROR);
+                foreach ($columns as $column) {
+                    echo '<td>';
+                    if ($column->displayFunction === 'getCustomFields') {
+                        $columnData = [$person, $column->displayFunction]($allPersonCustomFields, $CustomMapping, $CustomList, $option_name);
+                    } else {
+                        $columnData = [$person, $column->displayFunction]();
+                    }
+                    if ($column->emptyOrUnassigned === 'true') {
+                        if (is_array($columnData)) {
+                            echo emptyOrUnassignedJSON($columnData);
+                        } else {
+                            echo emptyOrUnassigned($columnData);
+                        }
+                    } else {
+                        echo $columnData;
+                    }
+                    echo '</td>';
+                }
             }
             //lets clean all the customs that don't have anyone associated.
             foreach ($CustomList as $key => $value) {
@@ -201,8 +208,6 @@ foreach ($ListItem as $element) {
 
         // setup datatables
         'use strict';
-        var bVisible = parseInt("<?= SystemConfig::getValue('bHidePersonAddress') ? 0 : 1 ?>");
-
         let dataTableConfig = {
             deferRender: true,
             search: { regex: true },
@@ -210,53 +215,28 @@ foreach ($ListItem as $element) {
                 {
                     title:i18next.t('Actions'),
                 },
-                {
-                    title:i18next.t('Id'),
-                    visible:false
-                },
-                {
-                    title:i18next.t('Last Name'),
-                },
-                {
-                    title:i18next.t('First Name'),
-                },
-                {
-                    title:i18next.t('Address'),
-                    visible:bVisible
-                },
-                {
-                    title:i18next.t('Home Phone'),
-                },
-                {
-                    title:i18next.t('Cell Phone'),
-                },
-                {
-                    title:i18next.t('Email'),
-                },
-                {
-                    title:i18next.t('Gender'),
-                },
-                {
-                    title:i18next.t('Classification'),
-                },
-                {
-                    title:i18next.t('Roles'),
-                },
-                {
-                    title:i18next.t('Properties'),
-                    visible:false
-                },
-                {
-                    title:i18next.t('Custom'),
-                    visible:false
-                },
-                {
-                    title:i18next.t('Group'),
-                    visible:false
+                <?php
+                $firstVisibleColumnId = PHP_INT_MAX;
+                $columnId = 0;
+                $columnIdMap = array();
+                $columns = json_decode(SystemConfig::getValue('sPersonListColumns'), null, 512, JSON_THROW_ON_ERROR);
+                foreach ($columns as $column) {
+                    $columnId++;
+                    $columnIdMap[$column->name] = $columnId;
+                    $columnTitle = ['title' => "i18next.t('{$column->name}')"];
+                    if ($column->visible === 'false') {
+                        $columnTitle['visible'] = 'false';
+                    } else {
+                        if ($firstVisibleColumnId > $columnId) {
+                            $firstVisibleColumnId = $columnId;
+                        }
+                    }
+                    echo str_replace('"', '', json_encode($columnTitle)) . ",\n";
                 }
+                ?>
             ],
-            // sortby name
-            order: [[ 2, "asc" ]]
+            // sort by first visible column
+            order: [[ <?php echo $firstVisibleColumnId ?> , "asc" ]]
         }
 
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
@@ -289,22 +269,22 @@ foreach ($ListItem as $element) {
         });
 
         $('.filter-Gender').on("change", function() {
-            filterColumn(8, $(this).select2('data'), true);
+            filterColumn(<?php echo $columnIdMap['Gender'] ?>, $(this).select2('data'), true);
         });
         $('.filter-Classification').on("change", function() {
-            filterColumn(9, $(this).select2('data'), true);
+            filterColumn(<?php echo $columnIdMap['Classification'] ?>, $(this).select2('data'), true);
         });
         $('.filter-Role').on("change", function() {
-            filterColumn(10, $(this).select2('data'), true);
+            filterColumn(<?php echo $columnIdMap['Role'] ?>, $(this).select2('data'), true);
         });
         $('.filter-Properties').on("change", function() {
-            filterColumn(11, $(this).select2('data'), false);
+            filterColumn(<?php echo $columnIdMap['Properties'] ?>, $(this).select2('data'), false);
         });
         $('.filter-Custom').on("change", function() {
-            filterColumn(12, $(this).select2('data'), false);
+            filterColumn(<?php echo $columnIdMap['Custom'] ?>, $(this).select2('data'), false);
         });
         $('.filter-Group').on("change", function() {
-            filterColumn(13, $(this).select2('data'), false);
+            filterColumn(<?php echo $columnIdMap['Group'] ?>, $(this).select2('data'), false);
         });
 
         function escapeRegExp(string) {
