@@ -93,6 +93,10 @@ msgid "Generate and Ship Backup to External Storage"
 msgstr "Vytvoření a odeslání zálohy do externího úložiště"
 
 #: 
+msgid "Batch Winner Entry"
+msgstr "Hromadné zadání vítězů"
+
+#: 
 msgid "Winner"
 msgstr "Vítěz"
 
@@ -271,6 +275,10 @@ msgstr "Přípona"
 #: 
 msgid "Gender"
 msgstr "Pohlaví"
+
+#: 
+msgid "Donation Envelope"
+msgstr "Dárcovská obálka"
 
 #: 
 msgid "Home Phone"
@@ -485,6 +493,14 @@ msgid "Create Directory From Cart"
 msgstr "Vytvořit adresář z košíku"
 
 #: 
+msgid "Bulk Mail Presort"
+msgstr "Předtřídění hromadné pošty"
+
+#: 
+msgid "Quiet Presort"
+msgstr "Tiché předtřídění"
+
+#: 
 msgid "Your cart contains"
 msgstr "Váš košík obsahuje"
 
@@ -581,12 +597,32 @@ msgid "Convert All"
 msgstr "Převeď vše"
 
 #: 
+msgid "Deposit Slip Number: "
+msgstr "Číslo vkladového listu: "
+
+#: 
+msgid "Deposit Details: "
+msgstr "Podrobnosti o vkladu: "
+
+#: 
+msgid "Close deposit slip (remember to press Save)"
+msgstr "Zavřít doklad o vkladu (nezapomeňte stisknout tlačítko Uložit)"
+
+#: 
+msgid "Deposit Slip Report"
+msgstr "Zpráva o vkladu"
+
+#: 
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Důležité upozornění: neúspěšné transakce budou po uzavření vkladového listu trvale smazány."
 
 #: 
 msgid "Deposit Summary: "
 msgstr "Souhrn vkladů: "
+
+#: 
+msgid "Payments on this deposit slip:"
+msgstr "Platby na tomto vkladovém listu:"
 
 #: 
 msgid "Import eGive"
@@ -707,6 +743,10 @@ msgstr "Odmítnutí odpovědnosti"
 #: 
 msgid "Create Directory"
 msgstr "Vytvoř složku"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "Editor darovaných položek"
 
 #: 
 msgid "Save and Add"
@@ -1309,6 +1349,14 @@ msgid "Date"
 msgstr "Datum"
 
 #: 
+msgid "NonDeductible"
+msgstr "Neodečitatelné"
+
+#: 
+msgid "Schedule"
+msgstr "Plán"
+
+#: 
 msgid "Method"
 msgstr "Metoda"
 
@@ -1377,8 +1425,20 @@ msgid "Voting Members"
 msgstr "Hlasovní členové"
 
 #: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Zpráva o darech (daňové výkazy)"
+
+#: 
 msgid "Zero Givers"
 msgstr "Nepřispívači"
+
+#: 
+msgid "Individual Deposit Report"
+msgstr "Zpráva o individuálním vkladu"
+
+#: 
+msgid "Advanced Deposit Report"
+msgstr "Pokročilá zpráva o vkladech"
 
 #: 
 msgid "Next"
@@ -1397,8 +1457,20 @@ msgid "Report End Date:"
 msgstr "Datum konce sestavy:"
 
 #: 
+msgid "Apply Report Dates To:"
+msgstr "Použít data hlášení na:"
+
+#: 
+msgid "Deposit Date (Default)"
+msgstr "Datum vkladu (výchozí)"
+
+#: 
 msgid "Payment Date"
 msgstr "Datum platby"
+
+#: 
+msgid "Filter by Deposit:"
+msgstr "Filtrovat podle vkladu:"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1473,12 +1545,20 @@ msgid "Report Heading:"
 msgstr "Hlavička sestavy:"
 
 #: 
+msgid "Graphic"
+msgstr "Grafika"
+
+#: 
 msgid "Church Address"
 msgstr "Adresa sboru"
 
 #: 
 msgid "Blank"
 msgstr "Prázdný"
+
+#: 
+msgid "Remittance Slip:"
+msgstr "Příkaz k úhradě:"
 
 #: 
 msgid "Sort Data by:"
@@ -1541,6 +1621,10 @@ msgid "Export Selected Rows (CSV)"
 msgstr "Exportovat označené řádky (CSV)"
 
 #: 
+msgid "Fundraiser Listing"
+msgstr "Seznam sbírek"
+
+#: 
 msgid "Date Start"
 msgstr "Datum začátku"
 
@@ -1571,6 +1655,30 @@ msgstr "Zobrazit:"
 #: 
 msgid "Number"
 msgstr "Číslo"
+
+#: 
+msgid "Create New Fund Raiser"
+msgstr "Vytvořit novou sbírku"
+
+#: 
+msgid "Add Donated Item"
+msgstr "Přidat darovanou položku"
+
+#: 
+msgid "Generate Catalog"
+msgstr "Generovat katalog"
+
+#: 
+msgid "Generate Bid Sheets"
+msgstr "Generovat nabídkové listy"
+
+#: 
+msgid "Generate Certificates"
+msgstr "Generovat certifikáty"
+
+#: 
+msgid "Donated items for this fundraiser"
+msgstr "Darované položky pro tuto sbírku"
 
 #: 
 msgid "Donor"
@@ -1611,6 +1719,14 @@ msgstr "Maximální vzdálenost"
 #: 
 msgid "Data file format:"
 msgstr "Formát datového souboru:"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "Vizualizér GPS"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "Atlas ulic USA"
 
 #: 
 msgid "Include families in coordinate file:"
@@ -1655,6 +1771,10 @@ msgstr "Protnout s košíkem"
 #: 
 msgid "Remove from Cart"
 msgstr "Odstranit z košíku"
+
+#: 
+msgid "Text for Event ID: "
+msgstr "Text pro ID události: "
 
 #: 
 msgid "Group Editor"
@@ -1811,6 +1931,10 @@ msgstr "Jiný e-mail"
 #: 
 msgid "GroupRole"
 msgstr "GroupRole"
+
+#: 
+msgid "Group-Specific Property Fields"
+msgstr "Pole vlastností specifická pro skupinu"
 
 #: 
 msgid "Undefined"
@@ -2129,6 +2253,10 @@ msgid "Sunday School Classes"
 msgstr "Třídy nedělní školy"
 
 #: 
+msgid "Deposit Tracking"
+msgstr "Sledování vkladů"
+
+#: 
 msgid "Latest Families"
 msgstr "Poslední rodiny"
 
@@ -2217,12 +2345,32 @@ msgid " by that name already exists."
 msgstr "toho názvu už existuje."
 
 #: 
+msgid "Buyer Number Editor"
+msgstr "Editor čísla kupujícího"
+
+#: 
+msgid "Generate Statement"
+msgstr "Generovat výkaz"
+
+#: 
+msgid "Buyers for this fundraiser:"
+msgstr "Kupující pro tuto sbírku:"
+
+#: 
 msgid "Select all"
 msgstr "Označit vše"
 
 #: 
 msgid "Select none"
 msgstr "Zrušit označení"
+
+#: 
+msgid "Add Buyer"
+msgstr "Přidat kupujícího"
+
+#: 
+msgid "Generate Statements for Selected"
+msgstr "Generování výkazů pro vybrané"
 
 #: 
 msgid "Select"
@@ -2381,12 +2529,60 @@ msgid "Electronic Transaction Details"
 msgstr "Detaily elektronické transakce"
 
 #: 
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "Neodečitatelná částka nesmí být vyšší než celková částka."
+
+#: 
+msgid "At least one fund must have a non-zero amount."
+msgstr "Alespoň jeden fond musí mít nenulovou částku."
+
+#: 
+msgid "Must specify non-zero check number"
+msgstr "Musí být uvedeno nenulové kontrolní číslo"
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "Číslo šeku není platné pro platbu \"CASH\""
+
+#: 
 msgid "Pledge Editor"
 msgstr "Editor příslibů"
 
 #: 
+msgid "Payment Editor: "
+msgstr "Editor plateb: "
+
+#: 
 msgid " Deposit Slip #"
 msgstr "příjmový doklad #"
+
+#: 
+msgid " more entries will fit."
+msgstr " se vejde více záznamů."
+
+#: 
+msgid "Payment Editor - Modify Existing Payment"
+msgstr "Editor plateb - úprava existující platby"
+
+#: 
+msgid "Payment Editor - New Deposit Slip Will Be Created"
+msgstr "Editor plateb - bude vytvořen nový doklad o vkladu"
+
+#: 
+msgid "Deposit closed"
+msgstr "Vklad uzavřen"
+
+#: 
+msgid "Find family->"
+msgstr "Najít rodinu->"
+
+#: 
+msgid "Payment Schedule"
+msgstr "Splátkový kalendář"
+
+#: 
+msgid "Select Schedule"
+msgstr "Zvolte plán"
 
 #: 
 msgid "Weekly"
@@ -2409,8 +2605,28 @@ msgid "Other"
 msgstr "Jiný"
 
 #: 
+msgid "Payment by"
+msgstr "Platba do"
+
+#: 
+msgid "Scan check"
+msgstr "Kontrola skenování"
+
+#: 
+msgid "find family from check account #"
+msgstr "najít rodinu z kontrolního účtu #"
+
+#: 
+msgid "Set default check account number for family"
+msgstr "Nastavení výchozího čísla kontrolního účtu pro rodinu"
+
+#: 
 msgid "Fund Name"
 msgstr "Název fondu"
+
+#: 
+msgid "Non-deductible amount"
+msgstr "Neodečitatelná částka"
 
 #: 
 msgid "Printable View"
@@ -2479,6 +2695,10 @@ msgstr "Musíte vybrat typ"
 #: 
 msgid "Select Property Type"
 msgstr "Vyberte typ vlastnosti"
+
+#: 
+msgid "A"
+msgstr "A"
 
 #: 
 msgid "Entering a Prompt value will allow the association of a free-form value."
@@ -2715,6 +2935,10 @@ msgstr "Smazat záznam rodiny A členů rodiny"
 #: 
 msgid "Filter and Cart"
 msgstr "Filtr a košík"
+
+#: 
+msgid "Listing"
+msgstr "Seznam"
 
 #: 
 msgid "My User Settings"
@@ -2955,6 +3179,42 @@ msgstr "Máš pro nás nějaká doporučení?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Jak ses o sboru dozvěděl?"
+
+#: 
+msgid "eGive Import"
+msgstr "import eGive"
+
+#: 
+msgid "Re-import to selected family"
+msgstr "Opětovný import do vybrané rodiny"
+
+#: 
+msgid "Data import results: "
+msgstr "Výsledky importu dat: "
+
+#: 
+msgid " gifts were imported, "
+msgstr " darů bylo importováno, "
+
+#: 
+msgid " gifts unchanged, and "
+msgstr " darů beze změny a "
+
+#: 
+msgid " gifts not imported due to problems"
+msgstr " dary, které nebyly importovány z důvodu problémů"
+
+#: 
+msgid "Back to Deposit Slip"
+msgstr "Zpět na vkladový list"
+
+#: 
+msgid "Fatal error in eGive API datastream: '"
+msgstr "Fatální chyba v datovém toku rozhraní eGive API: '"
+
+#: 
+msgid "eMail Dashboard"
+msgstr "Nástěnka e-Mailů"
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3265,12 +3525,64 @@ msgid "Donated by "
 msgstr "Darováno osobou "
 
 #: 
+msgid "Paddle"
+msgstr "Aukční cedulka"
+
+#: 
+msgid "Bid"
+msgstr "Nabídka"
+
+#: 
+msgid "Minimum bid "
+msgstr "Minimální nabídka "
+
+#: 
+msgid "All Funds"
+msgstr "Všechny fondy"
+
+#: 
+msgid " for all funds"
+msgstr " pro všechny fondy"
+
+#: 
+msgid " for fund "
+msgstr " pro fond "
+
+#: 
+msgid "for funds "
+msgstr "pro fondy "
+
+#: 
+msgid "Donated Items:"
+msgstr "Darované předměty:"
+
+#: 
+msgid "Purchased Items:"
+msgstr "Zakoupené položky:"
+
+#: 
+msgid "Total of all purchases: $"
+msgstr "Celkový počet všech nákupů: Kč"
+
+#: 
+msgid "Total purchases: $"
+msgstr "Celkové nákupy: Kč"
+
+#: 
 msgid "Amount paid: ________________"
 msgstr "Zaplacená částka: ________________"
 
 #: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "Hrazeno (  ) hotově   (  ) šekem    (  ) kreditní kartou __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+
+#: 
 msgid "                                        Signature ________________________________________________________________"
 msgstr "␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣Podpis________________________________________________________________"
+
+#: 
+msgid "Totals"
+msgstr "Celkové součty"
 
 #: 
 msgid "Certificate of Ownership"
@@ -3299,6 +3611,18 @@ msgstr "Adresář skupiny"
 #: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Oddělte prosím tento lístek a zašlete jej spolu s dalším darem."
+
+#: 
+msgid "Please mail you next gift to "
+msgstr "Příští dar zašlete na adresu "
+
+#: 
+msgid "Gift Amount:"
+msgstr "Výše daru:"
+
+#: 
+msgid "Gift Designation:"
+msgstr "Označení daru:"
 
 #: 
 msgid "Sunday School"
@@ -3529,6 +3853,10 @@ msgid "Are you sure you want to delete the selected"
 msgstr "Opravdu chcete smazat vybrané"
 
 #: 
+msgid "Deposit(s)"
+msgstr "Vklad(y)"
+
+#: 
 msgid "This will also delete all payments associated with this deposit"
 msgstr "Tím se také odstraní všechny platby spojené s tímto vkladem"
 
@@ -3737,6 +4065,14 @@ msgid "Unsubscribed count since last send:"
 msgstr "Počet odhlášených od posledního odeslání:"
 
 #: 
+msgid "Cleaned count:"
+msgstr "Vyčištěný počet:"
+
+#: 
+msgid "Cleaned count since last send:"
+msgstr "Vyčištěný počet od posledního odeslání:"
+
+#: 
 msgid "Functions"
 msgstr "Funkce"
 
@@ -3849,6 +4185,10 @@ msgid "Clear All Funds"
 msgstr "Odstranit všechny fondy"
 
 #: 
+msgid "Deposit Comment"
+msgstr "Komentář ke vkladu"
+
+#: 
 msgid "Your previous session timed out.  Please login again."
 msgstr "Vaše předchozí relace skončila.  Přihlaste se prosím znovu."
 
@@ -3895,6 +4235,14 @@ msgstr "Adresa 2"
 #: 
 msgid "Cell phone"
 msgstr "Mobil"
+
+#: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
+
+#: 
+msgid "Buyer # "
+msgstr "Kupující # "
 
 #: 
 msgid "Envelope:"
@@ -3995,6 +4343,14 @@ msgstr "Čas začátku"
 #: 
 msgid "Filter by Fund"
 msgstr "Filtrovat podle fondu"
+
+#: 
+msgid "Add New Deposit: "
+msgstr "Přidat nový vklad: "
+
+#: 
+msgid "Estimated value"
+msgstr "Odhadovaná hodnota"
 
 #: 
 msgid "Disable Group Specific Properties"
@@ -4117,6 +4473,10 @@ msgid "Internationalization (I18n) support"
 msgstr "Podpora internacionalizace (I18n)"
 
 #: 
+msgid "First month of the fiscal year"
+msgstr "První měsíc fiskálního roku"
+
+#: 
 msgid "Latitude of the church, used to center the Google map"
 msgstr "Zeměpisná šířka sboru, je použita k vycentrování mapy Google"
 
@@ -4145,8 +4505,20 @@ msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Se
 msgstr "Nastavením hodnoty true zakážete zadávání zeměpisné šířky a délky v Editoru rodiny.  Nastavením false povolíte zadávání zeměpisné šířky a délky v Editoru rodin.  Vyhledávání se stále provádí, pouze se nezobrazuje."
 
 #: 
+msgid "Set true to enable use of donation envelopes"
+msgstr "Nastavením hodnoty true povolíte používání dárcovských obálek"
+
+#: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Zadejte kód HTML, který se zobrazí jako záhlaví v horní části každé stránky. Nezapomeňte uzavřít značky! Poznámka: Aby se nové záhlaví zobrazilo, je třeba PODRUHÉ OBNOVIT PROHLÍŽEČ."
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Počet šeků pro zprávu o vkladových listech"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "Nastavením hodnoty true povolíte používání skenovaných šeků"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -4155,6 +4527,10 @@ msgstr "Jednotka měření vzdálenosti, míle nebo km."
 #: 
 msgid "Names of markers for Google Maps in order of classification"
 msgstr "Názvy značek pro Mapy Google v pořadí podle klasifikace"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "Povolit neodečitatelné platby"
 
 #: 
 msgid "Set true to enable family self registration."
@@ -4189,6 +4565,58 @@ msgid "Church Phone"
 msgstr "Telefon sboru"
 
 #: 
+msgid "Home area code of the church"
+msgstr "Kód domovské oblasti sboru"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "Slovní spojení pro horní řádek daňového hlášení. Na konec tohoto řádku se připojí data."
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "Slovní spojení pro spodní řádek daňového hlášení."
+
+#: 
+msgid "Tax Report signer"
+msgstr "Signatář daňového hlášení"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "Slovní spojení pro připomínkovou zprávu o příslibech"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "Signatář připomínkové zprávy o příslibech"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "Slovní vyjádření ke zprávě o připomenutí příslibů - Žádný záznam o příslibu"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "Znění zprávy o připomenutí příslibů - Žádný záznam o platbách"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "Znění zprávy o potvrzení a opravě informací v databázi"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "Signatář potvrzení informací o databázi a opravné zprávy"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "Text pro souhrnnou zprávu o příslibech"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "Text pro zprávu o adresáři"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "Cesta a soubor hlavičkového papíru sboru"
+
+#: 
 msgid "lookup user images on Gravatar when no local image is present"
 msgstr "vyhledat obrázky uživatelů v aplikaci Gravatar, pokud není k dispozici žádný místní obrázek"
 
@@ -4215,6 +4643,10 @@ msgstr "Interval v hodinách pro automatické vzdálené zálohování"
 #: 
 msgid "Last Backup Timestamp"
 msgstr "Časové razítko poslední zálohy"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "Nastavení vkladového lístku QuickBooks"
 
 #: 
 msgid "Enable Integrity Check"
@@ -4247,6 +4679,38 @@ msgstr "Vypsat typy událostí"
 #: 
 msgid "Check-in and Check-out"
 msgstr "Check-in a Check-out"
+
+#: 
+msgid "View All Deposits"
+msgstr "Zobrazit všechny vklady"
+
+#: 
+msgid "Deposit Reports"
+msgstr "Zprávy o vkladech"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "Upravit doklad o vkladu"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "Zobrazit všechny sbírky"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "Vytvořit novou sbírku"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "Upravit sbírku"
+
+#: 
+msgid "View Buyers"
+msgstr "Zobrazit kupující"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "Přidání dárců do seznamu kupujících"
 
 #: 
 msgid "Data/Reports"
@@ -4633,6 +5097,10 @@ msgid "Weekly on"
 msgstr "Týdně na"
 
 #: 
+msgid "s"
+msgstr "s"
+
+#: 
 msgid "Monthly on"
 msgstr "Měsíčně na"
 
@@ -4729,6 +5197,42 @@ msgid "Group Member Roles Editor"
 msgstr "Editor rolí členů skupin"
 
 #: 
+msgid "Person Custom List Option"
+msgstr "Možnost Vlastní seznam osob"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "Možnosti vlastního seznamu osob"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "Editor možností vlastního seznamu osob"
+
+#: 
+msgid "Custom List Option"
+msgstr "Možnost vlastního seznamu"
+
+#: 
+msgid "Custom List Options"
+msgstr "Možnosti vlastního seznamu"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "Editor možností vlastního seznamu"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "Možnost vlastního seznamu rodiny"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "Možnosti vlastního seznamu rodiny"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "Editor možností vlastního seznamu rodiny"
+
+#: 
 msgid "are not allowed."
 msgstr "nejsou povoleny."
 
@@ -4771,6 +5275,1026 @@ msgstr "WebDAV"
 #: 
 msgid "Local"
 msgstr "Místní"
+
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Afghánistán (افغانستان)"
+
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "Ålandské ostrovy (Ålandy)"
+
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Albánie (Shqipëri)"
+
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "Alžírsko (الجزائر)"
+
+#: 
+msgid "American Samoa"
+msgstr "Americká Samoa"
+
+#: 
+msgid "Andorra"
+msgstr "Andorra"
+
+#: 
+msgid "Angola"
+msgstr "Angola"
+
+#: 
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: 
+msgid "Antarctica"
+msgstr "Antarktida"
+
+#: 
+msgid "Antigua and Barbuda"
+msgstr "Antigua a Barbuda"
+
+#: 
+msgid "Argentina"
+msgstr "Argentina"
+
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "Arménie (Հայաստան)"
+
+#: 
+msgid "Aruba"
+msgstr "Aruba"
+
+#: 
+msgid "Ascension Island"
+msgstr "Ostrov Ascension"
+
+#: 
+msgid "Australia"
+msgstr "Austrálie"
+
+#: 
+msgid "Austria (Österreich)"
+msgstr "Rakousko (Österreich)"
+
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "Ázerbájdžán (Azərbaycan)"
+
+#: 
+msgid "Bahamas"
+msgstr "Bahamy"
+
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "Bahrajn (البحرين)"
+
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "Bangladéš (বাংলাদেশ)"
+
+#: 
+msgid "Barbados"
+msgstr "Barbados"
+
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "Bělorusko (Беларусь)"
+
+#: 
+msgid "Belgium (België)"
+msgstr "Belgie (België)"
+
+#: 
+msgid "Belize"
+msgstr "Belize"
+
+#: 
+msgid "Benin (Bénin)"
+msgstr "Benin (Bénin)"
+
+#: 
+msgid "Bermuda"
+msgstr "Bermudy"
+
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "Bhútán (འབྲུག)"
+
+#: 
+msgid "Bolivia"
+msgstr "Bolívie"
+
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "Bosna a Hercegovina (Босна и Херцеговина)"
+
+#: 
+msgid "Botswana"
+msgstr "Botswana"
+
+#: 
+msgid "Bouvet Island"
+msgstr "Bouvetův ostrov"
+
+#: 
+msgid "Brazil (Brasil)"
+msgstr "Brazílie (Brasil)"
+
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "Britské území v Indickém oceánu"
+
+#: 
+msgid "British Virgin Islands"
+msgstr "Britské Panenské ostrovy"
+
+#: 
+msgid "Brunei"
+msgstr "Brunej"
+
+#: 
+msgid "Bulgaria (България)"
+msgstr "Bulharsko (Bulharsko)"
+
+#: 
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "Burundi (Uburundi)"
+
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "Kambodža (កម្ពុជា)"
+
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "Kamerun (Cameroun)"
+
+#: 
+msgid "Canada"
+msgstr "Kanada"
+
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "Kanárské ostrovy (islas Canarias)"
+
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "Kapverdy (Kabu Verdi)"
+
+#: 
+msgid "Caribbean Netherlands"
+msgstr "Karibik Nizozemsko"
+
+#: 
+msgid "Cayman Islands"
+msgstr "Kajmanské ostrovy"
+
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "Středoafrická republika (République centrafricaine)"
+
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "Ceuta a Melilla (Ceuta y Melilla)"
+
+#: 
+msgid "Chad (Tchad)"
+msgstr "Čad (Tchad)"
+
+#: 
+msgid "Chile"
+msgstr "Chile"
+
+#: 
+msgid "China (中国)"
+msgstr "Čína (中国)"
+
+#: 
+msgid "Christmas Island"
+msgstr "Vánoční ostrov"
+
+#: 
+msgid "Clipperton Island"
+msgstr "Ostrov Clipperton"
+
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "Kokosové ostrovy (Kepulauan Cocos (Keeling))"
+
+#: 
+msgid "Colombia"
+msgstr "Kolumbie"
+
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "Komory (جزر القمر)"
+
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "Kongo (Jamhuri ya Kidemokrasia ya Kongo)"
+
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "Kongo (Republika) (Kongo-Brazzaville)"
+
+#: 
+msgid "Cook Islands"
+msgstr "Cookovy ostrovy"
+
+#: 
+msgid "Costa Rica"
+msgstr "Kostarika"
+
+#: 
+msgid "Côte d’Ivoire"
+msgstr "Pobřeží slonoviny"
+
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "Chorvatsko (Hrvatska)"
+
+#: 
+msgid "Cuba"
+msgstr "Kuba"
+
+#: 
+msgid "Curaçao"
+msgstr "Curaçao"
+
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "Kypr (Κύπρος)"
+
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "Česká republika"
+
+#: 
+msgid "Denmark (Danmark)"
+msgstr "Dánsko (Danmark)"
+
+#: 
+msgid "Diego Garcia"
+msgstr "Diego Garcia"
+
+#: 
+msgid "Djibouti"
+msgstr "Džibutsko"
+
+#: 
+msgid "Dominica"
+msgstr "Dominika"
+
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "Dominikánská republika (República Dominicana)"
+
+#: 
+msgid "Ecuador"
+msgstr "Ekvádor"
+
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "Egypt (مصر)"
+
+#: 
+msgid "El Salvador"
+msgstr "Salvador"
+
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "Rovníková Guinea (Guinea Ecuatorial)"
+
+#: 
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#: 
+msgid "Estonia (Eesti)"
+msgstr "Estonsko (Eesti)"
+
+#: 
+msgid "Ethiopia"
+msgstr "Etiopie"
+
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "Falklandské ostrovy (Islas Malvinas)"
+
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "Faerské ostrovy (Føroyar)"
+
+#: 
+msgid "Fiji"
+msgstr "Fidži"
+
+#: 
+msgid "Finland (Suomi)"
+msgstr "Finsko (Suomi)"
+
+#: 
+msgid "France"
+msgstr "Francie"
+
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "Francouzská Guyana (Guyane française)"
+
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "Francouzská Polynésie (Polynésie française)"
+
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "Francouzská jižní území (Terres australes françaises)"
+
+#: 
+msgid "Gabon"
+msgstr "Gabon"
+
+#: 
+msgid "Gambia"
+msgstr "Gambie"
+
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "Gruzie (საქართველო)"
+
+#: 
+msgid "Germany (Deutschland)"
+msgstr "Německo (Deutschland)"
+
+#: 
+msgid "Ghana (Gaana)"
+msgstr "Ghana (Gaana)"
+
+#: 
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "Řecko (Ελλάδα)"
+
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "Grónsko (Kalaallit Nunaat)"
+
+#: 
+msgid "Grenada"
+msgstr "Grenada"
+
+#: 
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#: 
+msgid "Guam"
+msgstr "Guam"
+
+#: 
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: 
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#: 
+msgid "Guinea (Guinée)"
+msgstr "Guinea (Guinée)"
+
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "Guinea-Bissau (Guiné Bissau)"
+
+#: 
+msgid "Guyana"
+msgstr "Guyana"
+
+#: 
+msgid "Haiti"
+msgstr "Haiti"
+
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "Heardovy a McDonaldovy ostrovy"
+
+#: 
+msgid "Honduras"
+msgstr "Honduras"
+
+#: 
+msgid "Hong Kong (香港)"
+msgstr "Hongkong (香港)"
+
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "Maďarsko (Magyarország)"
+
+#: 
+msgid "Iceland (Ísland)"
+msgstr "Island (Ísland)"
+
+#: 
+msgid "India (भारत)"
+msgstr "Indie (भारत)"
+
+#: 
+msgid "Indonesia"
+msgstr "Indonésie"
+
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "Írán (ایران)"
+
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "Irák (العراق)"
+
+#: 
+msgid "Ireland"
+msgstr "Irsko"
+
+#: 
+msgid "Isle of Man"
+msgstr "Ostrov Man"
+
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "Izrael (ישראל)"
+
+#: 
+msgid "Italy (Italia)"
+msgstr "Itálie (Italia)"
+
+#: 
+msgid "Jamaica"
+msgstr "Jamajka"
+
+#: 
+msgid "Japan (日本)"
+msgstr "Japonsko (日本)"
+
+#: 
+msgid "Jersey"
+msgstr "Jersey"
+
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "Jordánsko (الأردن)"
+
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "Kazachstán (Kazakhstan)"
+
+#: 
+msgid "Kenya"
+msgstr "Keňa"
+
+#: 
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "Kosovo (Kosovë)"
+
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "Kuvajt (الكويت)"
+
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "Kyrgyzstán (Kyrgyzстан)"
+
+#: 
+msgid "Laos (ລາວ)"
+msgstr "Laos (ລາວ)"
+
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "Libanon (لبنان)"
+
+#: 
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: 
+msgid "Liberia"
+msgstr "Libérie"
+
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "Libye (ليبيا)"
+
+#: 
+msgid "Liechtenstein"
+msgstr "Lichtenštejnsko"
+
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "Litva (Lietuva)"
+
+#: 
+msgid "Luxembourg"
+msgstr "Lucembursko"
+
+#: 
+msgid "Macau (澳門)"
+msgstr "Macao (澳門)"
+
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "Makedonie (Makedonie) (Makedonнија)"
+
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "Madagaskar (Madagasikara)"
+
+#: 
+msgid "Malawi"
+msgstr "Malawi"
+
+#: 
+msgid "Malaysia"
+msgstr "Malajsie"
+
+#: 
+msgid "Maldives"
+msgstr "Maledivy"
+
+#: 
+msgid "Mali"
+msgstr "Mali"
+
+#: 
+msgid "Malta"
+msgstr "Malta"
+
+#: 
+msgid "Marshall Islands"
+msgstr "Marshallovy ostrovy"
+
+#: 
+msgid "Martinique"
+msgstr "Martinik"
+
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "Mauritánie (موريتانيا)"
+
+#: 
+msgid "Mauritius (Moris)"
+msgstr "Mauricius (Moris)"
+
+#: 
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#: 
+msgid "Mexico (México)"
+msgstr "Mexiko (México)"
+
+#: 
+msgid "Micronesia"
+msgstr "Mikronésie"
+
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "Moldavsko (Republica Moldova)"
+
+#: 
+msgid "Monaco"
+msgstr "Monako"
+
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "Mongolsko (Монгол)"
+
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "Černá Hora (Crna Gora)"
+
+#: 
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "Maroko (المغرب)"
+
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "Mosambik (Moçambique)"
+
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "Myanmar (Barma) (မြန်မာ)"
+
+#: 
+msgid "Namibia (Namibië)"
+msgstr "Namibie (Namibië)"
+
+#: 
+msgid "Nauru"
+msgstr "Nauru"
+
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "Nepál (नेपाल)"
+
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "Nizozemsko (Nederland)"
+
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "Nová Kaledonie (Nouvelle-Calédonie)"
+
+#: 
+msgid "New Zealand"
+msgstr "Nový Zéland"
+
+#: 
+msgid "Nicaragua"
+msgstr "Nikaragua"
+
+#: 
+msgid "Niger (Nijar)"
+msgstr "Niger (Nijar)"
+
+#: 
+msgid "Nigeria"
+msgstr "Nigérie"
+
+#: 
+msgid "Niue"
+msgstr "Niue"
+
+#: 
+msgid "Norfolk Island"
+msgstr "Ostrov Norfolk"
+
+#: 
+msgid "Northern Mariana Islands"
+msgstr "Severní Mariany"
+
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "Severní Korea (조선 민주주의 인민 공화국)"
+
+#: 
+msgid "Norway (Norge)"
+msgstr "Norsko (Norge)"
+
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "Omán (عُمان)"
+
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "Pákistán (پاکستان)"
+
+#: 
+msgid "Palau"
+msgstr "Palau"
+
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "Palestina (فلسطين)"
+
+#: 
+msgid "Panama (Panamá)"
+msgstr "Panama (Panamá)"
+
+#: 
+msgid "Papua New Guinea"
+msgstr "Papua Nová Guinea"
+
+#: 
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: 
+msgid "Peru (Perú)"
+msgstr "Peru (Perú)"
+
+#: 
+msgid "Philippines"
+msgstr "Filipíny"
+
+#: 
+msgid "Pitcairn Islands"
+msgstr "Pitcairnovy ostrovy"
+
+#: 
+msgid "Poland (Polska)"
+msgstr "Polsko (Polska)"
+
+#: 
+msgid "Portugal"
+msgstr "Portugalsko"
+
+#: 
+msgid "Puerto Rico"
+msgstr "Portoriko"
+
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "Katar (قطر)"
+
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "Réunion (Réunion)"
+
+#: 
+msgid "Romania (România)"
+msgstr "Rumunsko (România)"
+
+#: 
+msgid "Russia (Россия)"
+msgstr "Rusko (Rusko)"
+
+#: 
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "Saint Barthélemy (Saint-Barthélemy)"
+
+#: 
+msgid "Saint Helena"
+msgstr "Svatá Helena"
+
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "Svatý Kryštof a Nevis"
+
+#: 
+msgid "Saint Lucia"
+msgstr "Svatá Lucie"
+
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "Svatý Martin (Saint-Martin (partie française))"
+
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "Saint Pierre a Miquelon (Saint-Pierre-et-Miquelon)"
+
+#: 
+msgid "Samoa"
+msgstr "Samoa"
+
+#: 
+msgid "San Marino"
+msgstr "San Marino"
+
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "Svatý Tomáš a Princův ostrov (São Tomé e Príncipe)"
+
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "Saúdská Arábie (المملكة العربية السعودية)"
+
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "Senegal (Sénégal)"
+
+#: 
+msgid "Serbia (Србија)"
+msgstr "Srbsko (Србија)"
+
+#: 
+msgid "Seychelles"
+msgstr "Seychely"
+
+#: 
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: 
+msgid "Singapore"
+msgstr "Singapur"
+
+#: 
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "Slovensko (Slovensko)"
+
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "Slovinsko (Slovenija)"
+
+#: 
+msgid "Solomon Islands"
+msgstr "Šalamounovy ostrovy"
+
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "Somálsko (Soomaaliya)"
+
+#: 
+msgid "South Africa"
+msgstr "Jihoafrická republika"
+
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "Jižní Georgie a Jižní Sandwichovy ostrovy"
+
+#: 
+msgid "South Korea (대한민국)"
+msgstr "Jižní Korea (대한민국)"
+
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "Jižní Súdán (جنوب السودان)"
+
+#: 
+msgid "Spain (España)"
+msgstr "Španělsko (España)"
+
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "Srí Lanka (ශ්‍රී ලංකාව)"
+
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "Svatý Vincent a Grenadiny"
+
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "Súdán (السودان)"
+
+#: 
+msgid "Suriname"
+msgstr "Surinam"
+
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "Špicberky a Jan Mayen (Svalbard og Jan Mayen)"
+
+#: 
+msgid "Swaziland"
+msgstr "Svazijsko"
+
+#: 
+msgid "Sweden (Sverige)"
+msgstr "Švédsko (Sverige)"
+
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "Švýcarsko (Schweiz)"
+
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "Sýrie (سوريا)"
+
+#: 
+msgid "Taiwan (台灣)"
+msgstr "Tchaj-wan (台灣)"
+
+#: 
+msgid "Tajikistan"
+msgstr "Tádžikistán"
+
+#: 
+msgid "Tanzania"
+msgstr "Tanzanie"
+
+#: 
+msgid "Thailand (ไทย)"
+msgstr "Thajsko (ไทย)"
+
+#: 
+msgid "Timor-Leste"
+msgstr "Východní Timor"
+
+#: 
+msgid "Togo"
+msgstr "Togo"
+
+#: 
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: 
+msgid "Tonga"
+msgstr "Tonga"
+
+#: 
+msgid "Trinidad and Tobago"
+msgstr "Trinidad a Tobago"
+
+#: 
+msgid "Tristan da Cunha"
+msgstr "Tristan da Cunha"
+
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "Tunisko (تونس)"
+
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "Turecko (Türkiye)"
+
+#: 
+msgid "Turkmenistan"
+msgstr "Turkmenistán"
+
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "Turks a Caicos"
+
+#: 
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "Odlehlé ostrovy USA"
+
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "Americké Panenské ostrovy"
+
+#: 
+msgid "Uganda"
+msgstr "Uganda"
+
+#: 
+msgid "Ukraine (Україна)"
+msgstr "Ukrajina (Україна)"
+
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "Spojené arabské emiráty (الإمارات العربية المتحدة)"
+
+#: 
+msgid "United Kingdom"
+msgstr "Spojené království"
+
+#: 
+msgid "United States"
+msgstr "Spojené státy americké"
+
+#: 
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "Uzbekistán (Oʻzbekiston)"
+
+#: 
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "Vatikán (Città del Vaticano)"
+
+#: 
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "Vietnam (Việt Nam)"
+
+#: 
+msgid "Wallis and Futuna"
+msgstr "Wallis a Futuna"
+
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "Západní Sahara (الصحراء الغربية)"
+
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "Jemen (اليمن)"
+
+#: 
+msgid "Zambia"
+msgstr "Zambie"
+
+#: 
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
 
 #: 
 msgid "Please verify your family's information"
@@ -4897,8 +6421,92 @@ msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Převést uživatelem zadané poštovní směrovací číslo při ukládání do databáze na VELKÁ PÍSMENA"
 
 #: 
+msgid "Used to end a letter before Signer"
+msgstr "Používá se k ukončení dopisu před podpisem"
+
+#: 
 msgid "Google Analytics Tracking Code"
 msgstr "Sledovací kód služby Google Analytics"
+
+#: 
+msgid "English - United States"
+msgstr "Angličtina - Spojené státy americké"
+
+#: 
+msgid "English - Canada"
+msgstr "Angličtina - Kanada"
+
+#: 
+msgid "English - Australia"
+msgstr "Angličtina - Austrálie"
+
+#: 
+msgid "English - Great Britain"
+msgstr "Angličtina - Velká Británie"
+
+#: 
+msgid "German - Germany"
+msgstr "Němčina - Německo"
+
+#: 
+msgid "Spanish - Spain"
+msgstr "Španělština - Španělsko"
+
+#: 
+msgid "French - France"
+msgstr "Francouzština - Francie"
+
+#: 
+msgid "Hungarian"
+msgstr "Maďarština"
+
+#: 
+msgid "Italian - Italy"
+msgstr "Italština - Itálie"
+
+#: 
+msgid "Norwegian"
+msgstr "Norština"
+
+#: 
+msgid "Dutch - Netherlands"
+msgstr "Holandština - Nizozemsko"
+
+#: 
+msgid "Polish"
+msgstr "Polština"
+
+#: 
+msgid "Portuguese - Brazil"
+msgstr "Portugalština - Brazílie"
+
+#: 
+msgid "Romanian - Romania"
+msgstr "Rumunština - Rumunsko"
+
+#: 
+msgid "Russian"
+msgstr "Ruština"
+
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "Sámové (severní) (Švédsko)"
+
+#: 
+msgid "Albanian"
+msgstr "Albánština"
+
+#: 
+msgid "Vietnamese"
+msgstr "Vietnamština"
+
+#: 
+msgid "Chinese - China"
+msgstr "Čínština - Čína"
+
+#: 
+msgid "Chinese - Taiwan"
+msgstr "Čínština - Tchaj-wan"
 
 #: 
 msgid "Maximum upload size"
@@ -4943,6 +6551,10 @@ msgstr "Rodina aktivována"
 #: 
 msgid "families"
 msgstr "rodiny"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "Typ vkladového lístku.  QBDT - Quickbooks"
 
 #: 
 msgid "Financial Settings"
@@ -5013,6 +6625,10 @@ msgid "select an option"
 msgstr "vyberte možnost"
 
 #: 
+msgid "Direct me"
+msgstr "Veď mě"
+
+#: 
 msgid "Your cart is empty"
 msgstr "Košík je prázdný"
 
@@ -5049,12 +6665,40 @@ msgid "Person's Name"
 msgstr "Jméno osoby"
 
 #: 
+msgid "Checked in By (Optional)"
+msgstr "Odbaveno kým (nepovinné)"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "Osoba již byla pro tuto událost odhlášena"
+
+#: 
+msgid "CheckOut Person"
+msgstr "Odbavená osoba"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "Odstranění přihlášení v záznamu"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "Dospělá odbavující osoba"
+
+#: 
 msgid "Text before name in emails/reports"
 msgstr "Text před jménem v e-mailech/výkazech"
 
 #: 
 msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
 msgstr "Nastavením true povolíte v Editoru osob prázdné příjmení.  Nastavení na false způsobí, že se příjmení bude ověřovat a dědit z rodiny, pokud zůstane prázdné."
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "Zobrazení počtu účtů na vkladovém dokladu"
+
+#: 
+msgid "ChurchCRM Cloud Access URL"
+msgstr "URL pro přístup ke službě ChurchCRM Cloud"
 
 #: 
 msgid "Your Account was Deleted"
@@ -5145,6 +6789,10 @@ msgid "Payment Details"
 msgstr "Detaily platby"
 
 #: 
+msgid "Fund Split"
+msgstr "Rozdělení fondu"
+
+#: 
 msgid "Showing students with birthdays in"
 msgstr "Zobrazuji žáky s narozeninami v"
 
@@ -5195,6 +6843,10 @@ msgstr "API rozhraní Bing map vyžaduje jedinečný klíč"
 #: 
 msgid "Google Maps Zoom"
 msgstr "Přiblížení Map Google"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "Vyberte poskytovatele GeoCoderu"
 
 #: 
 msgid "Your ChurchCRM account was locked."
@@ -5345,6 +6997,10 @@ msgid "OpenLP Password"
 msgstr "OpenLP heslo"
 
 #: 
+msgid "KioskVisibilityTimestamp"
+msgstr "KioskVisibilityTimestamp"
+
+#: 
 msgid "Show/Hide Lost Password Link on the login screen"
 msgstr "Zobrazení/skrytí odkazu obnovení hesla na přihlašovací obrazovce"
 
@@ -5413,8 +7069,20 @@ msgid "Report an issue"
 msgstr "Nahlašte problém"
 
 #: 
+msgid "Enable New Kiosk Registration"
+msgstr "Povolení registrace nového kiosku"
+
+#: 
+msgid "Active Kiosks"
+msgstr "Aktivní kiosky"
+
+#: 
 msgid "I forgot my password"
 msgstr "Zapomněl jsem heslo"
+
+#: 
+msgid "Attendees Checked In"
+msgstr "Odbavení účastníků"
 
 #: 
 msgid "Text Cart"
@@ -5435,6 +7103,14 @@ msgstr "Deaktivovat"
 #: 
 msgid "Activate"
 msgstr "Aktivovat"
+
+#: 
+msgid "Stack Trace"
+msgstr "Sledování zásobníku"
+
+#: 
+msgid "Check Number"
+msgstr "Kontrolní číslo"
 
 #: 
 msgid "Details"
@@ -5467,6 +7143,10 @@ msgstr "Název role"
 #: 
 msgid "Sequence"
 msgstr "Posloupnost"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "Kontrola stavu košíku"
 
 #: 
 msgid "All members of this group are in the cart"
@@ -5509,6 +7189,14 @@ msgid "Move"
 msgstr "Přesunout"
 
 #: 
+msgid "Arabic - Egypt"
+msgstr "Arabština - Egypt"
+
+#: 
+msgid "Thai"
+msgstr "Thajština"
+
+#: 
 msgid "Your Church's Facebook Page"
 msgstr "FB stránka sboru"
 
@@ -5537,8 +7225,20 @@ msgid "Self Verify"
 msgstr "Vlastní ověření"
 
 #: 
+msgid "Indonesian - Indonesia"
+msgstr "Indonéština - Indonésie"
+
+#: 
+msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+msgstr "POST do košíku vyžaduje pole Persons, FamilyID nebo GroupID"
+
+#: 
 msgid "records(s) successfully added to selected Group."
 msgstr "záznamy úspěšně přidány do vybrané skupiny."
+
+#: 
+msgid "To export to another For european CharSet use ;"
+msgstr "Export do jiného Pro evropskou znakovou sadu použijte ;"
 
 #: 
 msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
@@ -5669,6 +7369,14 @@ msgid "Search Groups"
 msgstr "Prohledat skupiny"
 
 #: 
+msgid "Search Deposits"
+msgstr "Vyhledávání vkladů"
+
+#: 
+msgid "Search Payments"
+msgstr "Vyhledávání plateb"
+
+#: 
 msgid "Quick Search"
 msgstr "Rychlé hledání"
 
@@ -5687,6 +7395,14 @@ msgstr "Maximální počet jmen hlav rodiny"
 #: 
 msgid "Maximum number of Groups"
 msgstr "Maximální počet skupin"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "Maximální počet vkladů"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "Maximální počet plateb"
 
 #: 
 msgid "Maximum number of Addresses"
@@ -5757,6 +7473,14 @@ msgid "Width to use for thumbnails"
 msgstr "Šířka, která se použije pro náhledy"
 
 #: 
+msgid "Point size to use for initials thumbnails"
+msgstr "Výchozí velikost miniatur v bodech"
+
+#: 
+msgid "Client cache seconds for images"
+msgstr "Klientská cache pro obrázky v sekundách"
+
+#: 
 msgid "Server cache time for remote images"
 msgstr "Doba mezipaměti serveru pro vzdálené obrázky"
 
@@ -5765,8 +7489,16 @@ msgid "Recipient Naming Method"
 msgstr "Metoda pojmenování příjemce"
 
 #: 
+msgid "Salutation Utility"
+msgstr "Nástroj pro oslovování"
+
+#: 
 msgid "Add A Group Name"
 msgstr "Přidat jméno skupiny"
+
+#: 
+msgid "Default Name Group"
+msgstr "Výchozí název skupiny"
 
 #: 
 msgid "Group Role"
@@ -5783,6 +7515,26 @@ msgstr "Členové do jiné skupiny"
 #: 
 msgid "Members to cart"
 msgstr "Členové do košíku"
+
+#: 
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr "NEBO Vytvořit skupinu a přidat košík v JEDNÉ AKCI"
+
+#: 
+msgid "Create Group + ADD Cart"
+msgstr "Vytvořit skupinu + PŘIDAT košík"
+
+#: 
+msgid "Move Event"
+msgstr "Přesunout událost"
+
+#: 
+msgid "Resize Event"
+msgstr "Změnit velikost události"
+
+#: 
+msgid "Text from"
+msgstr "Text z"
 
 #: 
 msgid "Profile"
@@ -5823,6 +7575,14 @@ msgstr "Hledat osoby"
 #: 
 msgid "Maximum number of People"
 msgstr "Maximální počet osob"
+
+#: 
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "Pole, ve kterém je uveden Zpovědník, musí být osoby typu skupina"
+
+#: 
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "Pole, do kterého se ukládá poslední zpověď, musí být typu datum"
 
 #: 
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
@@ -5907,6 +7667,10 @@ msgstr "Nastavení použitého šifrovacího systému - ssl (zastaralé) nebo tl
 #: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "Dynamický asynchronní interval obnovování služby Dashboard Service, výchozí 60 sekund"
+
+#: 
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr "Vygenerovat doklad o vkladu pro vybrané řádky (PDF)"
 
 #: 
 msgid "Add All to Cart"
@@ -6181,6 +7945,10 @@ msgid "Person Custom Fields"
 msgstr "Vlastní pole osoby"
 
 #: 
+msgid "Donation Funds"
+msgstr "Dárcovské fondy"
+
+#: 
 msgid "Unable to open file"
 msgstr "Nelze otevřít soubor"
 
@@ -6197,8 +7965,48 @@ msgid "User must have Delete Records permission"
 msgstr "Uživatel musí mít oprávnění Smazat záznamy"
 
 #: 
+msgid "ChurchCRM Central Notifications URL"
+msgstr "Adresa URL centrálních oznámení ChurchCRM"
+
+#: 
 msgid "Follow us on"
 msgstr "Sledujte nás na"
+
+#: 
+msgid "invalid event type id"
+msgstr "neplatné ID typu události"
+
+#: 
+msgid "invalid calendar pinning"
+msgstr "neplatné připnutí kalendáře"
+
+#: 
+msgid "invalid group id"
+msgstr "neplatné ID skupiny"
+
+#: 
+msgid "invalid status value"
+msgstr "neplatná hodnota stavu"
+
+#: 
+msgid "invalid export value"
+msgstr "neplatná hodnota exportu"
+
+#: 
+msgid "Invalid User/Password"
+msgstr "Neplatný uživatel/heslo"
+
+#: 
+msgid "Find Duplicate Emails"
+msgstr "Vyhledání duplicitních e-mailů"
+
+#: 
+msgid "Duplicate Emails"
+msgstr "Duplicitní e-maily"
+
+#: 
+msgid "HTML URL"
+msgstr "HTML URL"
 
 #: 
 msgid "Latest Persons"
@@ -6293,12 +8101,40 @@ msgid "Invalid country name supplied"
 msgstr "Zadán neplatný název země"
 
 #: 
+msgid "LastName FirstName"
+msgstr "Příjmení KřestníJméno"
+
+#: 
 msgid "Holidays"
 msgstr "Svátky"
 
 #: 
 msgid "Person Name"
 msgstr "Jméno osoby"
+
+#: 
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "Vlastní zpráva pro e-mailový sborový pozdrav 1, max. 255 znaků"
+
+#: 
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "Vlastní zpráva pro e-mailový sborový pozdrav 2, max. 255 znaků"
+
+#: 
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "Zahrnout kontaktní a demografické údaje do těla e-mailového oznámení o novém členovi"
+
+#: 
+msgid "Include family custom properties in global search."
+msgstr "Zahrnout vlastní vlastnosti rodiny do globálního vyhledávání."
+
+#: 
+msgid "Latvia (Latvija)"
+msgstr "Lotyšsko (Latvija)"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "Chystáte se přidat nový vklad bez komentáře"
 
 #: 
 msgid "Families Without Emails"
@@ -6329,6 +8165,22 @@ msgid "PHP Max Execution Time is too Short"
 msgstr "PHP Max Execution Time je příliš krátký"
 
 #: 
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "Zvyšte časový limit pro spuštění PHP, abyste mohli zálohovat a obnovovat."
+
+#: 
+msgid "Application Integrity Check"
+msgstr "Kontrola integrity aplikace"
+
+#: 
+msgid "Focus"
+msgstr "Zaměřit"
+
+#: 
+msgid "Unfocus"
+msgstr "Nezaměřovat"
+
+#: 
 msgid "Warning: Signature mismatch"
 msgstr "Varování: Neshoda podpisu"
 
@@ -6353,8 +8205,16 @@ msgid "I Understand"
 msgstr "Rozumím"
 
 #: 
+msgid "Unsupported Deposit Types Detected"
+msgstr "Byly zjištěny nepodporované typy vkladů"
+
+#: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Podpora plateb eGive, kreditní kartou a bankovním převodem byla zrušena.  Stávající nebankovní zprávy již nemusí být v budoucích verzích přístupné."
+
+#: 
+msgid "Estonian"
+msgstr "Estonština"
 
 #: 
 msgid "Error decoding integrity check result file"
@@ -6437,6 +8297,10 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "Zobrazit nedostupné informace o osobě zděděné z přiřazené rodiny?\n"
 "Tato možnost způsobí, že se zobrazí určité informace ze záznamu rodiny osoby, \n"
 "POKUD pro danou osobu NEbyly zadány odpovídající informace. "
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Stisknutím kláves CTRL + C zkopírujete telefonní čísla všech členů skupiny"
 
 #: 
 msgid "Verify People"
@@ -6591,6 +8455,10 @@ msgstr "Smazat filtr"
 #: 
 msgid "Add Person"
 msgstr "Přidat osobu"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portugalština - Portugalsko"
 
 #: 
 msgid "Holiday"
@@ -6801,6 +8669,14 @@ msgid "Audience not in the CRM"
 msgstr "Publikum, které není v CRM"
 
 #: 
+msgid "Hebrew"
+msgstr "Hebrejština"
+
+#: 
+msgid "open rate"
+msgstr "míra otevření"
+
+#: 
 msgid "Not Subscribed "
 msgstr "Nepřihlášený "
 
@@ -6895,6 +8771,10 @@ msgstr "Příslib"
 #: 
 msgid "Paid"
 msgstr "Zaplaceno"
+
+#: 
+msgid "Owe"
+msgstr "Dlužíte"
 
 #: 
 msgid "Start Date"
@@ -7013,6 +8893,10 @@ msgid "Help translate this project"
 msgstr "Pomožte přeložit tento projekt"
 
 #: 
+msgid "Afrikaans"
+msgstr "Afrikánština"
+
+#: 
 msgid " has a type mismatch"
 msgstr " má typový nesoulad"
 
@@ -7047,6 +8931,10 @@ msgstr "Dnešní výročí svadby"
 #: 
 msgid "Api Key"
 msgstr "Klíč API"
+
+#: 
+msgid "Regen API Key"
+msgstr "Znovu generovat klíč API"
 
 #: 
 msgid "View Family Page"
@@ -7119,6 +9007,30 @@ msgstr "Neplatné datum narození: chybí měsíc a den."
 #: 
 msgid "System"
 msgstr "Systém"
+
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Amharština - Etiopie"
+
+#: 
+msgid "Czech"
+msgstr "Čeština"
+
+#: 
+msgid "Finnish"
+msgstr "Finština"
+
+#: 
+msgid "Greek"
+msgstr "Řečtina"
+
+#: 
+msgid "Turkish"
+msgstr "Turečtina"
+
+#: 
+msgid "Ukrainian"
+msgstr "Ukrajinština"
 
 #: 
 msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
@@ -7197,8 +9109,24 @@ msgid "invalid group request"
 msgstr "neplatný skupinový požadavek"
 
 #: 
+msgid "Hindi - India"
+msgstr "Hindština - Indie"
+
+#: 
+msgid "Japanese"
+msgstr "Japonština"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamilština - Indie"
+
+#: 
 msgid "Not Subscribed"
 msgstr "Nepřihlášený"
+
+#: 
+msgid "property"
+msgstr "vlastnost"
 
 #: 
 msgid "Default Zip"
@@ -7235,4 +9163,16 @@ msgstr "MailChimp není nakonfigurován"
 #: 
 msgid "Please update the MailChimp API key in:"
 msgstr "Aktualizujte prosím API klíč MailChimpu v:"
+
+#: 
+msgid "English - South Africa"
+msgstr "Angličtina - Jižní Afrika"
+
+#: 
+msgid "English - Jamaica"
+msgstr "Angličtina - Jamajka"
+
+#: 
+msgid "Swahili"
+msgstr "Svahilština"
 
