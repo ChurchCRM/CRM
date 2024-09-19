@@ -256,6 +256,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setCity($sCity)
             ->setState($sState)
             ->setZip($sZip)
+            ->setCountry($sCountry)
             ->setHomePhone($sHomePhone)
             ->setWorkPhone($sWorkPhone)
             ->setCellPhone($sCellPhone)
