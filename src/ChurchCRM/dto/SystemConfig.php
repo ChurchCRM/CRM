@@ -113,19 +113,6 @@ class SystemConfig
         ];
     }
 
-    public static function getFamilyListColumns(): array
-    {
-        return [
-            'Name'              => new ListColumn('Name', 'getName', 'false', 'true'),
-            'Address'           => new ListColumn('Address', 'getAddress', 'false', 'true'),
-            'Home Phone'        => new ListColumn('Home Phone', 'getHomePhone', 'false', 'true'),
-            'Cell Phone'        => new ListColumn('Cell Phone', 'getCellPhone', 'false', 'true'),
-            'Email'             => new ListColumn('Email', 'getEmail', 'false', 'true'),
-            'Created'           => new ListColumn('Created', 'getDateEntered', 'false', 'true'),
-            'Edited'            => new ListColumn('Edited', 'getDateLastEdited', 'false', 'true'),
-        ];
-    }
-
     private static function buildConfigs(): array
     {
         return [
@@ -315,7 +302,6 @@ class SystemConfig
             'sInactiveClassification'              => new ConfigItem(2073, 'sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
             'sDefaultZip'                          => new ConfigItem(2074, 'sDefaultZip', 'text', '', gettext('Default Zip')),
             'sPersonListColumns'                   => new ConfigItem(2075, 'sPersonListColumns', 'json', json_encode(SystemConfig::getPersonListColumns()), gettext('Person List Columns')),
-            'sFamilyListColumns'                   => new ConfigItem(2076, 'sFamilyListColumns', 'json', json_encode(SystemConfig::getFamilyListColumns()), gettext('Family List Columns')),
         ];
     }
 
@@ -325,7 +311,7 @@ class SystemConfig
             gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sHomeAreaCode', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite', 'sChurchFB', 'sChurchTwitter'],
             gettext('User Setup')         => ['iMinPasswordLength', 'iMinPasswordChange', 'iMaxFailedLogins', 'iSessionTimeout', 'aDisallowedPasswords', 'bEnableLostPassword', 'bEnable2FA', 'bRequire2FA', 's2FAApplicationName', 'bSendUserDeletedEmail'],
             gettext('Email Setup')        => ['sSMTPHost', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'iSMTPTimeout', 'sToEmailAddress', 'bPHPMailerAutoTLS', 'sPHPMailerSMTPSecure'],
-            gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bShowFamilyData', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'bEnableSelfRegistration', 'bAllowEmptyLastName', 'iPersonNameStyle', 'iPersonInitialStyle', 'iProfilePictureListSize', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification', 'sPersonListColumns', 'sFamilyListColumns'],
+            gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bShowFamilyData', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'bEnableSelfRegistration', 'bAllowEmptyLastName', 'iPersonNameStyle', 'iPersonInitialStyle', 'iProfilePictureListSize', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification', 'sPersonListColumns'],
             gettext('Enabled Features')   => ['bEnabledFinance', 'bEnabledSundaySchool', 'bEnabledEvents', 'bEnabledCalendar', 'bEnabledFundraiser', 'bEnabledEmail', 'bEnabledMenuLinks'],
             gettext('Map Settings')       => ['sGeoCoderProvider', 'sGoogleMapsGeocodeKey', 'sGoogleMapsRenderKey', 'sBingMapKey', 'sGMapIcons', 'iMapZoom'],
             gettext('Report Settings')    => ['sQBDTSettings', 'leftX', 'incrementY', 'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sPledgeSummary1', 'sPledgeSummary2', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'bDirLetterHead', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'iPDFOutputType'],
