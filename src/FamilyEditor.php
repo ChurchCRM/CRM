@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -265,6 +266,20 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setEmail($sEmail)
             ->setLatitude($nLatitude)
             ->setLongitude($nLongitude);
+
+        // Update Lat/Long if address changes
+        if (($family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS1)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS2)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_CITY)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_STATE)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_COUNTRY))
+            && (!$family->isColumnModified(FamilyTableMap::COL_FAM_LATITUDE)
+                && !$family->isColumnModified(FamilyTableMap::COL_FAM_LONGITUDE))) {
+            $family->setLatitude(null);
+            $family->setLongitude(null);
+        }
+
         $family->save();
         $family->reload();
 
