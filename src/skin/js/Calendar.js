@@ -407,7 +407,7 @@ function initializeCalendar() {
                 var eventSourceParams = eventData.source.url.split("/");
                 var eventSourceType =
                     eventSourceParams[eventSourceParams.length - 3];
-                if (eventData.url) {
+                if (eventData.url !== "null") {
                     // this event has a URL, so we should redirect the user to that URL
                     window.open(eventData.url);
                 } else if (
