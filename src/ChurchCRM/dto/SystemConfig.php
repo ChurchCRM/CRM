@@ -170,7 +170,7 @@ class SystemConfig
             'iChecksPerDepositForm'                => new ConfigItem(57, 'iChecksPerDepositForm', 'number', '14', gettext('Number of checks for Deposit Slip Report')),
             'bUseScannedChecks'                    => new ConfigItem(58, 'bUseScannedChecks', 'boolean', '0', gettext('Set true to enable use of scanned checks')),
             'sDistanceUnit'                        => new ConfigItem(64, 'sDistanceUnit', 'choice', 'miles', gettext('Unit used to measure distance, miles or km.'), '', '{"Choices":["' . gettext('miles') . '","' . gettext('kilometers') . '"]}'),
-            'sTimeZone'                            => new ConfigItem(65, 'sTimeZone', 'choice', 'America/New_York', gettext('Time zone'), 'http://php.net/manual/en/timezones.php', json_encode(['Choices' => timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
+            'sTimeZone'                            => new ConfigItem(65, 'sTimeZone', 'choice', 'America/New_York', gettext('Time zone'), 'https://www.php.net/manual/en/timezones.php', json_encode(['Choices' => timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
             'sGMapIcons'                           => new ConfigItem(66, 'sGMapIcons', 'text', 'green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', gettext('Names of markers for Google Maps in order of classification')),
             'bForceUppercaseZip'                   => new ConfigItem(67, 'bForceUppercaseZip', 'boolean', '0', gettext('Make user-entered zip/postcodes UPPERCASE when saving to the database.')),
             'bEnableNonDeductible'                 => new ConfigItem(72, 'bEnableNonDeductible', 'boolean', '0', gettext('Enable non-deductible payments')),
