@@ -18,7 +18,7 @@ class EventsMiddleware
             return SlimUtils::renderJSON($response, ['message' => gettext('Missing event id')], 400);
         }
 
-        $event = EventQuery::Create()->findPk($eventId);
+        $event = EventQuery::create()->findPk($eventId);
 
         if (empty($event)) {
             $response = new Response();

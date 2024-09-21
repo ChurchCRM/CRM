@@ -87,7 +87,7 @@ class Menu
         $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
         $groupMenu->addSubMenu(new MenuItem(gettext('List Groups'), 'GroupList.php'));
 
-        $listOptions = ListOptionQuery::Create()->filterById(3)->orderByOptionSequence()->find();
+        $listOptions = ListOptionQuery::create()->filterById(3)->orderByOptionSequence()->find();
 
         foreach ($listOptions as $listOption) {
             if ($listOption->getOptionId() !== 4) {// we avoid the sundaySchool, it's done under
@@ -182,7 +182,7 @@ class Menu
 
     private static function addGroupSubMenus($menuName, $groupId, string $viewURl): ?MenuItem
     {
-        $groups = GroupQuery::Create()->filterByType($groupId)->orderByName()->find();
+        $groups = GroupQuery::create()->filterByType($groupId)->orderByName()->find();
         if (!$groups->isEmpty()) {
             $unassignedGroups = new MenuItem($menuName, '', true, 'fa-tag');
             foreach ($groups as $group) {

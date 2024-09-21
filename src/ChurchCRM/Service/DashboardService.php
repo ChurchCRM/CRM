@@ -17,7 +17,7 @@ class DashboardService
 {
     public function getFamilyCount(): array
     {
-        $familyCount = FamilyQuery::Create()
+        $familyCount = FamilyQuery::create()
             ->filterByDateDeactivated()
             ->count();
 

@@ -35,13 +35,14 @@ if (isset($_POST['adult-id'])) {
     $iAdultID = InputUtils::legacyFilterInput($_POST['adult-id'], 'int');
 }
 
-$activeEvents = EventQuery::Create()
+$activeEvents = EventQuery::create()
     ->filterByInActive(1, Criteria::NOT_EQUAL)
+    ->orderByStart(Criteria::DESC)
     ->find();
 
 if ($EventID > 0) {
     //get Event Details
-    $event = EventQuery::Create()
+    $event = EventQuery::create()
         ->findOneById($EventID);
 }
 ?>

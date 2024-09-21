@@ -79,7 +79,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         $pdf->addPage();
     }
     //Get the data on this group
-    $group = GroupQuery::Create()->findOneById($iGroupID);
+    $group = GroupQuery::create()->findOneById($iGroupID);
 
     $FYString = MakeFYString($iFYID);
 

@@ -23,7 +23,7 @@ $PrivateCalendar->save();
 
 if (count($Events) > 0) {
     foreach ($Events as $Event) {
-        $w = EventQuery::Create()->findOneById($Event['event_id']);
+        $w = EventQuery::create()->findOneById($Event['event_id']);
         if ($Event['event_publicly_visible']) {
             $w->addCalendar($PublicCalendar);
         } else {
