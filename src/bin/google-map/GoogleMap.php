@@ -865,7 +865,7 @@ class GoogleMapAPI
             $elevation_dom_id = 'elevation' . $dom_id;
         }
 
-        if ($start_address != '' && $dest_address != '' && $dom_id != '') {
+        if ($start_address !== '' && $dest_address !== '' && $dom_id !== '') {
             $this->_directions[$dom_id] = [
                 'dom_id'           => $dom_id,
                 'start'            => $start_address,

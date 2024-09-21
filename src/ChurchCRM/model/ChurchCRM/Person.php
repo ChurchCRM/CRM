@@ -44,7 +44,7 @@ class Person extends BasePerson implements PhotoInterface
         return $this->getGender() == 2;
     }
 
-    public function getGenderName()
+    public function getGenderName(): string
     {
         switch (strtolower($this->getGender())) {
             case 1:

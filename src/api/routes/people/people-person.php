@@ -40,7 +40,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
     $group->delete('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
-        if (AuthenticationManager::getCurrentUser()->getId() == $person->getId()) {
+        if (AuthenticationManager::getCurrentUser()->getId() === (int) $person->getId()) {
             throw new HttpForbiddenException($request, gettext("Can't delete yourself"));
         }
         $person->delete();
@@ -73,14 +73,14 @@ function setPersonRoleAPI(Request $request, Response $response, array $args): Re
 {
     $person = $request->getAttribute('person');
 
-    $roleId = $args['roleId'];
+    $roleId = (int) $args['roleId'];
     $role = ListOptionQuery::create()->filterByOptionId($roleId)->findOne();
 
     if (empty($role)) {
         throw new HttpNotFoundException($request, gettext('The role could not be found.'));
     }
 
-    if ($person->getFmrId() == $roleId) {
+    if ((int) $person->getFmrId() === $roleId) {
         return SlimUtils::renderJSON($response, ['success' => true, 'msg' => gettext('The role is already assigned.')]);
     }
 

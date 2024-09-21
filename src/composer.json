@@ -67,6 +67,12 @@
         "rector/rector": "^1.0",
         "squizlabs/php_codesniffer": "^3.7"
     },
+    "replace": {
+        "symfony/polyfill-mbstring": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*"
+    },
     "repositories": {
         "packagist": {
             "type": "composer",

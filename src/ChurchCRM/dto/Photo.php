@@ -14,8 +14,8 @@ class Photo
     private $photoURI;
     private ?string $photoThumbURI = null;
     private ?string $thumbnailPath = null;
-    private $photoContentType;
-    private $thumbnailContentType;
+    private $photoContentType = null;
+    private $thumbnailContentType = null;
     private bool $remotesEnabled;
 
     public static $validExtensions = ['png', 'jpeg', 'jpg'];
@@ -208,12 +208,12 @@ class Photo
         return $content;
     }
 
-    public function getPhotoBytes()
+    public function getPhotoBytes(): string
     {
         $content = file_get_contents($this->photoURI);
         MiscUtils::throwIfFailed($content);
 
-        return $content;
+        return (string) $content;
     }
 
     public function getPhotoContentType()

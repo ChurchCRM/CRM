@@ -9,8 +9,6 @@ class RedirectUtils
     /**
      * Convert a relative URL into an absolute URL and redirect the browser there.
      *
-     * @param string $sRelativeURL
-     *
      * @throws \Exception
      */
     public static function redirect(string $sRelativeURL): void

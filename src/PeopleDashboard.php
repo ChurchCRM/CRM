@@ -285,9 +285,9 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         <th style="width: 40px"><?= gettext('Count') ?></th>
                     </tr>
                     <?php
-                    foreach(array_keys($familyRoleStats) as $key){
-                        $genderId = $familyRoleStats[$key]['genderId'];;
-                        $roleId = $familyRoleStats[$key]['roleId'];;
+                    foreach (array_keys($familyRoleStats) as $key) {
+                        $genderId = $familyRoleStats[$key]['genderId'];
+                        $roleId = $familyRoleStats[$key]['roleId'];
                         $roldGenderName = $key;
                         $roleGenderCount = $familyRoleStats[$key]['count'];
 

@@ -36,9 +36,9 @@ function viewUser(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/user/');
     $curUser = AuthenticationManager::getCurrentUser();
-    $userId = $args['id'];
+    $userId = (int) $args['id'];
 
-    if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
+    if (!$curUser->isAdmin() && $curUser->getId() !== $userId) {
         throw new HttpForbiddenException($request);
     }
 

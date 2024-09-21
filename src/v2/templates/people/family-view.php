@@ -166,21 +166,21 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                 </li>
                                 <?php
                             }
-                            if ($family->getWorkPhone() != "") {
+                            if ($family->getWorkPhone() !== "") {
                                 ?>
                                 <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone") ?>: <span><a
                                             href="tel:<?= $family->getWorkPhone() ?>"><?= $family->getWorkPhone() ?></a></span>
                                 </li>
                                 <?php
                             }
-                            if ($family->getCellPhone() != "") {
+                            if ($family->getCellPhone() !== "") {
                                 ?>
                                 <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone") ?>: <span><a
                                             href="tel:<?= $family->getCellPhone() ?>"><?= $family->getCellPhone() ?></a></span>
                                 </li>
                                 <?php
                             }
-                            if ($family->getEmail() != "") {
+                            if ($family->getEmail() !== "") {
                                 ?>
                                 <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email") ?>:<a
                                         href="mailto:<?= $family->getEmail() ?>">
