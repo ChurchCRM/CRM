@@ -202,10 +202,10 @@ $(document).ready(function () {
                 "/api/mailchimp/person/" +
                 window.CRM.currentPersonID,
             success: function (data, status, xmlHttpReq) {
-                for (emailData of data) {
+                for (const emailData of data) {
                     let htmlVal = "";
-                    let eamilMD5 = emailData["emailMD5"];
-                    for (list of emailData["list"]) {
+                    let emailMD5 = emailData["emailMD5"];
+                    for (const list of emailData["list"]) {
                         let listName = list["name"];
                         let listStatus = list["status"];
                         if (listStatus != 404) {
@@ -227,7 +227,7 @@ $(document).ready(function () {
                     if (htmlVal === "") {
                         htmlVal = i18next.t("Not Subscribed ");
                     }
-                    $("#" + eamilMD5).html(htmlVal);
+                    $("#" + emailMD5).html(htmlVal);
                 }
             },
         });
