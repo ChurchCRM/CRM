@@ -48,7 +48,7 @@ function getAllEvents(Request $request, Response $response, array $args): Respon
 
 function getEventTypes(Request $request, Response $response, array $args): Response
 {
-    $EventTypes = EventTypeQuery::Create()
+    $EventTypes = EventTypeQuery::create()
         ->orderByName()
         ->find();
     if (empty($EventTypes)) {
@@ -121,7 +121,7 @@ function newEvent(Request $request, Response $response, array $args): Response
     $input = $request->getParsedBody();
 
     //fetch all related event objects before committing this event.
-    $type = EventTypeQuery::Create()
+    $type = EventTypeQuery::create()
         ->findOneById($input['Type']);
     if (empty($type)) {
         throw new HttpBadRequestException($request, gettext('invalid event type id'));
@@ -156,7 +156,7 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     $id = $Event->getId();
     $Event->fromArray($input);
     $Event->setId($id);
-    $PinnedCalendars = CalendarQuery::Create()
+    $PinnedCalendars = CalendarQuery::create()
         ->filterById($input['PinnedCalendars'], Criteria::IN)
         ->find();
     $Event->setCalendars($PinnedCalendars);
@@ -170,7 +170,7 @@ function setEventTime(Request $request, Response $response, array $args): Respon
 {
     $input = $request->getParsedBody();
 
-    $event = EventQuery::Create()
+    $event = EventQuery::create()
         ->findOneById($args['id']);
     if (!$event) {
         throw new HttpNotFoundException($request);
@@ -213,7 +213,7 @@ function unusedSetEventAttendance(): void
 
 function deleteEvent(Request $request, Response $response, array $args): Response
 {
-    $event = EventQuery::Create()->findOneById($args['id']);
+    $event = EventQuery::create()->findOneById($args['id']);
     if (!$event) {
         throw new HttpNotFoundException($request);
     }

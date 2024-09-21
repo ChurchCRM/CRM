@@ -47,7 +47,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         $pdf->addPage();
     }
 
-    $group = GroupQuery::Create()->findOneById($iGroupID);
+    $group = GroupQuery::create()->findOneById($iGroupID);
 
     $nameX = 20;
     $birthdayX = 70;

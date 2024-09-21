@@ -102,7 +102,7 @@ class PdfEnvelopeReport extends ChurchInfoReport
 // Instantiate the directory class and build the report.
 $pdf = new PdfEnvelopeReport();
 
-$families = FamilyQuery::Create()->orderByEnvelope()->filterByEnvelope(0, 'Criteria::GREATER_THAN')->find();
+$families = FamilyQuery::create()->orderByEnvelope()->filterByEnvelope(0, 'Criteria::GREATER_THAN')->find();
 
 foreach ($families as $family) {
     $OutStr = $pdf->sGetFamilyString($family);

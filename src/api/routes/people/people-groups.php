@@ -24,7 +24,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
     // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
     $group->get('/calendars', function (Request $request, Response $response, array $args): Response {
-        $groups = GroupQuery::Create()
+        $groups = GroupQuery::create()
             ->orderByName()
             ->find();
 

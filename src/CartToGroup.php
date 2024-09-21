@@ -34,7 +34,7 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
     RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID . '&Action=EmptyCart');
 }
 
-$ormGroups = GroupQuery::Create()->orderByName()->find();
+$ormGroups = GroupQuery::create()->orderByName()->find();
 
 $sPageTitle = gettext('Add Cart to Group');
 require 'Include/Header.php';

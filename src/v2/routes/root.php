@@ -21,7 +21,7 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
 
     $dashboardCounts = [];
 
-    $dashboardCounts['families'] = FamilyQuery::Create()
+    $dashboardCounts['families'] = FamilyQuery::create()
         ->filterByDateDeactivated()
         ->count();
 

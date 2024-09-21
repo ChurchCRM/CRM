@@ -41,7 +41,7 @@ class PdfPhotoBook extends ChurchInfoReport
 
     public function drawGroup($iGroupID): void
     {
-        $this->group = GroupQuery::Create()->findOneById($iGroupID);
+        $this->group = GroupQuery::create()->findOneById($iGroupID);
         // Use our own margin logic.
         $this->SetMargins(0, 0);
         $this->SetFont('Times', '', 14);
