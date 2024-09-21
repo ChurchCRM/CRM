@@ -245,7 +245,6 @@ class SystemConfig
             'iPersonNameStyle'                     => new ConfigItem(2020, 'iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
             'iPersonInitialStyle'                  => new ConfigItem(20201, 'iPersonInitialStyle', 'choice', '0', '', '', json_encode(SystemConfig::getInitialStyleChoices(), JSON_THROW_ON_ERROR)),
             'bDisplayBillCounts'                   => new ConfigItem(2002, 'bDisplayBillCounts', 'boolean', '1', gettext('Display bill counts on deposit slip')),
-            'sCloudURL'                            => new ConfigItem(2003, 'sCloudURL', 'text', 'http://demo.churchcrm.io/', gettext('ChurchCRM Cloud Access URL')),
             'sNexmoAPIKey'                         => new ConfigItem(2012, 'sNexmoAPIKey', 'text', '', gettext('Nexmo SMS API Key')),
             'sNexmoAPISecret'                      => new ConfigItem(2005, 'sNexmoAPISecret', 'password', '', gettext('Nexmo SMS API Secret')),
             'sNexmoFromNumber'                     => new ConfigItem(2006, 'sNexmoFromNumber', 'text', '', gettext('Nexmo SMS From Number')),
