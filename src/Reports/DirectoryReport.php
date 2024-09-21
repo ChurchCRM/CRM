@@ -269,15 +269,15 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             }
         }
         if (($bDirFamilyPhone || $bDirPersonalPhone) && strlen($sHomePhone)) {
-            $TempStr = ExpandPhoneNumber($sHomePhone, SystemConfig::getValue('sDefaultCountry'), $bWierd);
+            $TempStr = ExpandPhoneNumber($sHomePhone, SystemConfig::getValue('sDefaultCountry'), $bWeird);
             $OutStr .= '   ' . gettext('Phone') . ': ' . $TempStr . "\n";
         }
         if (($bDirFamilyWork || $bDirPersonalWork) && strlen($sWorkPhone)) {
-            $TempStr = ExpandPhoneNumber($sWorkPhone, SystemConfig::getValue('sDefaultCountry'), $bWierd);
+            $TempStr = ExpandPhoneNumber($sWorkPhone, SystemConfig::getValue('sDefaultCountry'), $bWeird);
             $OutStr .= '   ' . gettext('Work') . ': ' . $TempStr . "\n";
         }
         if (($bDirFamilyCell || $bDirPersonalCell) && strlen($sCellPhone)) {
-            $TempStr = ExpandPhoneNumber($sCellPhone, SystemConfig::getValue('sDefaultCountry'), $bWierd);
+            $TempStr = ExpandPhoneNumber($sCellPhone, SystemConfig::getValue('sDefaultCountry'), $bWeird);
             $OutStr .= '   ' . gettext('Cell') . ': ' . $TempStr . "\n";
         }
         if (($bDirFamilyEmail || $bDirPersonalEmail) && strlen($sEmail)) {
