@@ -203,6 +203,7 @@ function DoQuery()
     <?php
     $aAddToCartIDs = [];
 
+    $sRowClass = 'RowColorA';
     while ($aRow = mysqli_fetch_array($rsQueryResults)) {
         // Alternate the background color of the row
         $sRowClass = AlternateRowStyle($sRowClass);
@@ -229,7 +230,7 @@ function DoQuery()
             } else {
                 // ...otherwise just render the field
                 // Write the actual value of this row
-                echo '<td>' . $aRow[$iCount] . '</td>';
+                echo '<td>' . htmlspecialchars($aRow[$iCount]) . '</td>';
             }
         }
 
