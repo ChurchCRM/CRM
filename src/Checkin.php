@@ -37,6 +37,7 @@ if (isset($_POST['adult-id'])) {
 
 $activeEvents = EventQuery::create()
     ->filterByInActive(1, Criteria::NOT_EQUAL)
+    ->orderByStart(Criteria::DESC)
     ->find();
 
 if ($EventID > 0) {
