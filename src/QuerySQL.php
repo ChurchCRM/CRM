@@ -74,7 +74,7 @@ function ExportQueryResults(string $sSQL, &$rsQueryResults)
 
         $sCSVstring .= "\n";
 
-        //Loop through the recordsert
+        //Loop through the recordset
         while ($aRow = mysqli_fetch_array($rsQueryResults)) {
             //Loop through the fields and write each one
             for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
@@ -132,7 +132,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
 
         echo '</tr>';
 
-        //Loop through the recordsert
+        //Loop through the recordset
         while ($aRow = mysqli_fetch_array($rsQueryResults)) {
             $sRowClass = AlternateRowStyle($sRowClass);
 
@@ -146,7 +146,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
                     $aHiddenFormField[] = $aRow[$iCount];
                 } else {  //...otherwise just render the field
                     //Write the actual value of this row
-                    echo '<td align="center">' . $aRow[$iCount] . '</td>';
+                    echo '<td align="center">' . htmlspecialchars($aRow[$iCount]) . '</td>';
                 }
             }
             echo '</tr>';
