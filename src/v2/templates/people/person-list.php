@@ -218,7 +218,7 @@ foreach ($ListItem as $element) {
                 <?php
                 $firstVisibleColumnId = PHP_INT_MAX;
                 $columnId = 0;
-                $columnIdMap = array();
+                $columnIdMap = [];
                 $columns = json_decode(SystemConfig::getValue('sPersonListColumns'), null, 512, JSON_THROW_ON_ERROR);
                 foreach ($columns as $column) {
                     $columnId++;
