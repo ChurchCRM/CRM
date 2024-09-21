@@ -115,7 +115,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         $currentStatus = (empty($family->getDateDeactivated()) ? 'true' : 'false');
 
         //update only if the value is different
-        if ($currentStatus != $newStatus) {
+        if ($currentStatus !== $newStatus) {
             if ($newStatus == 'false') {
                 $family->setDateDeactivated(date('YmdHis'));
             } elseif ($newStatus == 'true') {

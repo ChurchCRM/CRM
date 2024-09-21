@@ -14,8 +14,8 @@ class Photo
     private $photoURI;
     private ?string $photoThumbURI = null;
     private ?string $thumbnailPath = null;
-    private $photoContentType;
-    private $thumbnailContentType;
+    private $photoContentType = null;
+    private $thumbnailContentType = null;
     private bool $remotesEnabled;
 
     public static $validExtensions = ['png', 'jpeg', 'jpg'];

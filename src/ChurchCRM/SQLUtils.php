@@ -93,7 +93,7 @@ class SQLUtils
         while (preg_match('{--\s|#|/\*[^!]}sUi', $sql, $matched, PREG_OFFSET_CAPTURE, $offset)) {
             [$comment, $foundOn] = $matched[0];
             if (self::isQuoted($foundOn, $sql)) {
-                $offset = (int) $foundOn + strlen($comment);
+                $offset = $foundOn + strlen($comment);
             } else {
                 if (mb_substr($comment, 0, 2) == '/*') {
                     $closedOn = strpos($sql, '*/', $foundOn);
