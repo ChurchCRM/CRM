@@ -34,13 +34,20 @@
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
     <rule ref="Generic.PHP.BacktickOperator"/>
     <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
-    <rule ref="Squiz.Operators.ValidLogicalOperators"/>
     <rule ref="Generic.WhiteSpace.ScopeIndent">
         <properties>
-            <property name="indent" value="4" />
-            <property name="tabIndent" value="false" />
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="false"/>
         </properties>
     </rule>
+
+    <rule ref="Generic.Files.EndFileNewline"/>
+    <rule ref="PSR12.ControlStructures.BooleanOperatorPlacement"/>
+    <rule ref="Generic.Files.LineEndings"/>
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+    <!-- PHP Version Compatibility -->
+    <rule ref="Generic.PHP.DisallowShortOpenTag"/>
 
     <!-- Don't hide tokenizer exceptions -->
     <rule ref="Internal.Tokenizer.Exception">
