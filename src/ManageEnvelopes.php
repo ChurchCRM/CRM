@@ -16,7 +16,7 @@ $sPageTitle = gettext('Envelope Manager');
 // Security: User must have finance permission to use this form
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
 
-$iClassification = null;
+$iClassification = 0;
 if (isset($_POST['Classification'])) {
     $iClassification = (int) InputUtils::legacyFilterInput($_POST['Classification'], 'int');
     $_SESSION['classification'] = $iClassification;

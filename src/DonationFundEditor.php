@@ -69,8 +69,8 @@ if (isset($_POST['SaveChanges'])) {
 } else {
     // Check if we're adding a fund
     if (isset($_POST['AddField'])) {
-        $checkExisting = DonationFundQuery::create()->filterByName($_POST['newFieldName'])->findOne();
-        if (count($checkExisting) > 0) {
+        $checkExisting = DonationFundQuery::create()->findOneByName($_POST['newFieldName']);
+        if ($checkExisting !== null) {
             $bNewNameError = true;
         } else {
             $donation = new DonationFund();
