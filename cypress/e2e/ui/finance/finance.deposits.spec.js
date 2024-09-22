@@ -1,6 +1,11 @@
 /// <reference types="cypress" />
 
 context("Finance Deposits", () => {
+    it("Envelope Manager", () => {
+        cy.loginAdmin("ManageEnvelopes.php");
+        cy.contains("Envelope Manager");
+    });
+
     it("Create a new Deposit", () => {
         cy.loginAdmin("FindDepositSlip.php");
         cy.contains("Add New Deposit");
