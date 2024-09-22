@@ -6,7 +6,6 @@
 
     <exclude-pattern>*/vendor/*$</exclude-pattern>
     <exclude-pattern>*\.(inc|css|js)</exclude-pattern>
-
     <exclude-pattern>*/ChurchCRM/model/ChurchCRM/Base/*$</exclude-pattern>
     <exclude-pattern>*/ChurchCRM/model/ChurchCRM/Map/*$</exclude-pattern>
 
@@ -15,18 +14,10 @@
     <arg name="parallel" value="75"/>
     <arg value="np"/>
 
+    <!-- PSR12 Standard -->
     <rule ref="PSR12"/>
-    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
-    <rule ref="Generic.PHP.BacktickOperator"/>
-    <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
-    <rule ref="Squiz.Operators.ValidLogicalOperators"/>
 
-    <!-- Don't hide tokenizer exceptions -->
-    <rule ref="Internal.Tokenizer.Exception">
-        <type>error</type>
-    </rule>
-
-    <!-- Ban some functions -->
+    <!-- Forbidden Functions -->
     <rule ref="Generic.PHP.ForbiddenFunctions">
         <properties>
             <property name="forbiddenFunctions" type="array">
@@ -39,10 +30,27 @@
         </properties>
     </rule>
 
+    <!-- Code Quality Rules -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Generic.PHP.BacktickOperator"/>
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
     <rule ref="Generic.WhiteSpace.ScopeIndent">
         <properties>
-            <property name="indent" value="4" />
-            <property name="tabIndent" value="false" />
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="false"/>
         </properties>
+    </rule>
+
+    <rule ref="Generic.Files.EndFileNewline"/>
+    <rule ref="PSR12.ControlStructures.BooleanOperatorPlacement"/>
+    <rule ref="Generic.Files.LineEndings"/>
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+    <!-- PHP Version Compatibility -->
+    <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+
+    <!-- Don't hide tokenizer exceptions -->
+    <rule ref="Internal.Tokenizer.Exception">
+        <type>error</type>
     </rule>
 </ruleset>

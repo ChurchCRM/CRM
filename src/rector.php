@@ -38,5 +38,6 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::TYPE_DECLARATION,
         SetList::INSTANCEOF,
         SetList::DEAD_CODE,
+        SetList::PRIVATIZATION,
     ]);
 };

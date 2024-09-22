@@ -269,14 +269,16 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setLongitude($nLongitude);
 
         // Update Lat/Long if address changes
-        if (($family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS1)
+        if (
+            ($family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS1)
                 || $family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS2)
                 || $family->isColumnModified(FamilyTableMap::COL_FAM_CITY)
                 || $family->isColumnModified(FamilyTableMap::COL_FAM_STATE)
                 || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP)
                 || $family->isColumnModified(FamilyTableMap::COL_FAM_COUNTRY))
             && (!$family->isColumnModified(FamilyTableMap::COL_FAM_LATITUDE)
-                && !$family->isColumnModified(FamilyTableMap::COL_FAM_LONGITUDE))) {
+                && !$family->isColumnModified(FamilyTableMap::COL_FAM_LONGITUDE))
+        ) {
             $family->setLatitude(null);
             $family->setLongitude(null);
         }
