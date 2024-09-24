@@ -239,7 +239,7 @@ class SystemConfig
             'sConfirmSincerely'                    => new ConfigItem(1048, 'sConfirmSincerely', 'text', 'Sincerely', gettext('Used to end a letter before Signer')),
             'sDear'                                => new ConfigItem(1049, 'sDear', 'text', 'Dear', gettext('Text before name in emails/reports')),
             'sGoogleTrackingID'                    => new ConfigItem(1050, 'sGoogleTrackingID', 'text', '', gettext('Google Analytics Tracking Code')),
-            'sMailChimpApiKey'                     => new ConfigItem(2000, 'sMailChimpApiKey', 'text', '', '', 'http://kb.mailchimp.com/accounts/management/about-api-keys'),
+            'sMailChimpApiKey'                     => new ConfigItem(2000, 'sMailChimpApiKey', 'text', '', '', 'https://mailchimp.com/help/about-api-keys/'),
             'sDepositSlipType'                     => new ConfigItem(2001, 'sDepositSlipType', 'choice', 'QBDT', gettext('Deposit ticket type.  QBDT - Quickbooks'), '', '{"Choices":["QBDT"]}'),
             'bAllowEmptyLastName'                  => new ConfigItem(2010, 'bAllowEmptyLastName', 'boolean', '0', gettext('Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.')),
             'iPersonNameStyle'                     => new ConfigItem(2020, 'iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
