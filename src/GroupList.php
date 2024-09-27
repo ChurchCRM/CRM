@@ -52,18 +52,7 @@ if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
 </div>
 
 <script src="skin/js/GroupList.js"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$( document).ready(function() {
-    var gS = localStorage.getItem("groupSelect");
-    if (gS != null)
-    {
-        tf = document.getElementById("table-filter");
-        tf.selectedIndex = gS;
+<script nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 
-        window.groupSelect = tf.value;
-    }
-});
-
-</script>
 <?php
 require 'Include/Footer.php';

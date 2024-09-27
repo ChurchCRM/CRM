@@ -183,7 +183,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <div class="small-box bg-red">
             <div class="inner">
                 <h3>
-                    <?= $groupStats['groups'] - $groupStats['sundaySchoolClasses'] ?>
+                    <?= $groupStats['groups'] ?>
                 </h3>
 
                 <p>
