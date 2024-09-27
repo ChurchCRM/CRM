@@ -75,7 +75,7 @@ function Header_body_scripts(): void
             iDashboardServiceIntervalTime:"<?= SystemConfig::getValue('iDashboardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {
-                    "pageLength": "<?= $tableSize  ?>",
+                    "pageLength": <?= $tableSize ?>,
                     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     "language": {
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
