@@ -48,11 +48,9 @@ if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
     <?php
 }
 ?>
-
 </div>
 
 <script src="skin/js/GroupList.js"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 
 <?php
 require 'Include/Footer.php';
