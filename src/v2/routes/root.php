@@ -41,7 +41,6 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ->count();
 
     $dashboardCounts['Groups'] = GroupQuery::create()
-        ->filterByType(4, Criteria::NOT_EQUAL)
         ->count();
 
     $dashboardCounts['events'] = EventAttendQuery::create()
