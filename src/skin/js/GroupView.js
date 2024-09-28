@@ -314,7 +314,7 @@ function initDataTable() {
             $(row).addClass("groupRow");
         },
     };
-    $.extend(DataTableOpts, window.CRM.plugin.DataTable);
+    $.extend(DataTableOpts, window.CRM.plugin.dataTable);
     window.CRM.DataTableAPI = $("#membersTable").DataTable(DataTableOpts);
 
     $("#isGroupActive").change(function () {
