@@ -63,7 +63,7 @@ A heartfelt thank you to all our contributors, past and present. Your efforts ma
 
 - [Website](https://churchcrm.io/)
 - [Matrix Chat](https://gitter.im/ChurchCRM/CRM)
-- [Documentation](https://github.com/ChurchCRM/ChurchCRM/wiki)
+- [Documentation](https://github.com/ChurchCRM/CRM/wiki)
 
 Happy coding and community building! 🎉
 
