@@ -1246,10 +1246,6 @@ msgid "Created"
 msgstr "Yaratılmış"
 
 #: 
-msgid "Edited"
-msgstr "Düzenlenmiş"
-
-#: 
 msgid "Envelope Number"
 msgstr "Zarf numarası"
 
@@ -6706,10 +6702,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Depozito faturasında fatura sayımlarını göster"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "Churchcrm Bulut Erişim URL'si"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Hesabınız silindi"
 
@@ -7038,7 +7030,8 @@ msgid "Please go to this location"
 msgstr "Lütfen bu konuma gidin"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Siz ChurchCrm Güncellenmiş şifre değiştirildi"
 
 #: 

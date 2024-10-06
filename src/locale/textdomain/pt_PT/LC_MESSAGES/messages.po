@@ -1287,10 +1287,6 @@ msgid "Created"
 msgstr "Criada"
 
 #: 
-msgid "Edited"
-msgstr "Editada"
-
-#: 
 msgid "Envelope Number"
 msgstr "Número do envelope"
 
@@ -6899,10 +6895,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Exibir conta conta no comprovante de depósito"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "URL de Acesso à Nuvem ChurchCRM"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Sua conta foi Deletada."
 
@@ -7231,7 +7223,8 @@ msgid "Please go to this location"
 msgstr "Por favor, vá para esta localização"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "A sua senha do ChurchCRM foi mudada."
 
 #: 

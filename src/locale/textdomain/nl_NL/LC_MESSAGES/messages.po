@@ -1249,10 +1249,6 @@ msgid "Created"
 msgstr "Aangemaakt"
 
 #: 
-msgid "Edited"
-msgstr "Gewijzigd"
-
-#: 
 msgid "Envelope Number"
 msgstr "Envelop Nummer"
 
@@ -6728,10 +6724,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Toon rekeningtellingen op stortingsbewijs"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "URL toegang tot de cloud"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Uw account is verwijderd"
 
@@ -7060,7 +7052,8 @@ msgid "Please go to this location"
 msgstr "Ga alsjeblieft naar deze locatie"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Uw vernieuwde wachtwoord is gewijzigd"
 
 #: 

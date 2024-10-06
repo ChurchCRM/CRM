@@ -1245,10 +1245,6 @@ msgid "Created"
 msgstr "Imetengenezwa"
 
 #: 
-msgid "Edited"
-msgstr "Imehaririwa"
-
-#: 
 msgid "Envelope Number"
 msgstr "Namba ya bahasha"
 
@@ -6697,10 +6693,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Onyesha hesabu za bili kwenye hati ya kuhifadhi"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "ChurchCRM Cloud Access URL"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Akaunti yako Ilifutwa"
 
@@ -7029,7 +7021,8 @@ msgid "Please go to this location"
 msgstr "Tafadhali nenda mahali hapa"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Nenosiri lililosasishwa la wewe ChurchCRM limebadilishwa"
 
 #: 

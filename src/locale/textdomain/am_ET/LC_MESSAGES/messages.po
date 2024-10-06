@@ -1248,10 +1248,6 @@ msgid "Created"
 msgstr "ተፈጥሯል"
 
 #: 
-msgid "Edited"
-msgstr "ተስተካክሏል"
-
-#: 
 msgid "Envelope Number"
 msgstr "የፖስታ ቁጥር"
 
@@ -6710,10 +6706,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "የማሳያ ሂሳቡ በተቀማጭ ወረቀት ላይ ይቆጠራል"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "ChurchCRM የደመና መዳረሻ URL"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "መለያህ ተሰርዟል።"
 
@@ -7042,7 +7034,8 @@ msgid "Please go to this location"
 msgstr "እባክዎ ወደ ሚከተለው ቦታ ይሂዱ"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "የአንተ ChurchCRM የዘመነ የይለፍ ቃል ተለውጧል"
 
 #: 

@@ -1288,10 +1288,6 @@ msgid "Created"
 msgstr "Skapad"
 
 #: 
-msgid "Edited"
-msgstr "Redigerad"
-
-#: 
 msgid "Envelope Number"
 msgstr "Kuvertnummer"
 
@@ -6852,10 +6848,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Visa räkningar räknas på insättningsslipp"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "ChurchCRM Cloud Access URL"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Ditt konto raderades"
 
@@ -7184,7 +7176,8 @@ msgid "Please go to this location"
 msgstr "Gå till den här platsen"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Ditt ChurchCRM-uppdaterade lösenord har ändrats"
 
 #: 

@@ -1246,10 +1246,6 @@ msgid "Created"
 msgstr "Loodud"
 
 #: 
-msgid "Edited"
-msgstr "Muudetud"
-
-#: 
 msgid "Envelope Number"
 msgstr "Ümbriku number"
 
@@ -6707,10 +6703,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Kuva arvete arv sissemakse sedelil"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "ChurchCRM pilve juurdepääsu URL"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Teie konto kustutati"
 
@@ -7039,7 +7031,8 @@ msgid "Please go to this location"
 msgstr "Palun minge sellesse asukohta"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Teie ChurchCRM-i värskendatud parool on muudetud"
 
 #: 

@@ -1275,10 +1275,6 @@ msgid "Created"
 msgstr "Создано "
 
 #: 
-msgid "Edited"
-msgstr "Отредактировано"
-
-#: 
 msgid "Envelope Number"
 msgstr "Конверт Количество"
 
