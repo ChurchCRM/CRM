@@ -1247,10 +1247,6 @@ msgid "Created"
 msgstr "Створено"
 
 #: 
-msgid "Edited"
-msgstr "Відредаговано"
-
-#: 
 msgid "Envelope Number"
 msgstr "Номер конверта"
 
@@ -6707,10 +6703,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Відображати рахунок рахунку на депозитному листі"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "URL-адреса хмарного доступу ChurchCRM"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Ваш рахунок був видалений"
 
@@ -7039,7 +7031,8 @@ msgid "Please go to this location"
 msgstr "Будь ласка, перейдіть за цим місцем"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Оновлений вами пароль для ChurchCRM змінено"
 
 #: 

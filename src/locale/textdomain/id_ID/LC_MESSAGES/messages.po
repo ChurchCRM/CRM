@@ -1251,10 +1251,6 @@ msgid "Created"
 msgstr "Diciptakan"
 
 #: 
-msgid "Edited"
-msgstr "Disunting"
-
-#: 
 msgid "Envelope Number"
 msgstr "No Surat"
 
@@ -6715,10 +6711,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Menampilkan jumlah tagihan pada slip setoran"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "URL Akses Cloud ChurchCRM"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Akun Anda Dihapus"
 
@@ -7047,7 +7039,8 @@ msgid "Please go to this location"
 msgstr "Silakan pergi ke lokasi ini"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Kata sandi Anda yang diperbarui ChurchCRM telah diubah"
 
 #: 

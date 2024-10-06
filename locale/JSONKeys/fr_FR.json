@@ -308,7 +308,6 @@
     "Family List": "Liste des familles",
     "Add Family": "Ajouter une famille",
     "Created": "Créé",
-    "Edited": "Modifié",
     "Envelope Number": "Numéro de l'enveloppe",
     "Verify Info": "Vérifier les infos",
     "Add New Member": "Ajouter un membre",
@@ -1671,7 +1670,6 @@
     "Text before name in emails/reports": "Texte avant le nom dans les emails/rapports",
     "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.": "Cocher Vrai pour autoriser un nom de famille vide dans le Gestionnaire d'individu. Cocher Faux pour valider le nom de famille et de l’héritier de la famille quand le champ est vide.",
     "Display bill counts on deposit slip": "Afficher le nombre de Factures sur le bordereau de dépôt",
-    "ChurchCRM Cloud Access URL": "URL d'accès au Cloud de ChurchCRM",
     "Your Account was Deleted": "Votre compte a été supprimé",
     "Your ChurchCRM Account was Deleted.": "Votre compte ChurchCRM a été supprimé",
     "Account Locked": "Compte verrouillé",
@@ -1754,7 +1752,7 @@
     "Guardian(s) of": "Gardien(s) de",
     "A notification was triggered by the classroom teacher at": "Une notification a été déclenchée par le moniteur de classe à",
     "Please go to this location": "Allez à l'emplacement",
-    "You ChurchCRM updated password has been changed": "La Mise à jour de votre mot de passe ChurchCRM a été effectué",
+    "Your ChurchCRM password has been changed": "La Mise à jour de votre mot de passe ChurchCRM a été effectué",
     "Password Reset Link": "Lien de réinitialisation du Mot de Passe",
     "Reset Password": "Réinitialisation du Mot de Passe",
     "Unable to reset password": "Impossible de réinitialiser le Mot de Passe",
@@ -2248,5 +2246,6 @@
     "Deleted": "Supprimé",
     "Invalid Birth Date: Missing birth month or day.": "Date de naissance invalide : Mois ou jour de naissance manquant.",
     "Invalid Birth Date: Missing birth month and day.": "Date de naissance invalide : Mois ou jour de naissance manquant.",
-    "Adult Name (Optional)": "Nom de l'adulte (Optionnel)"
+    "Adult Name (Optional)": "Nom de l'adulte (Optionnel)",
+    "MailChimp is not configured": "MailChimp n'est pas configuré"
 }

@@ -1282,10 +1282,6 @@ msgid "Created"
 msgstr "Creată"
 
 #: 
-msgid "Edited"
-msgstr "editată"
-
-#: 
 msgid "Envelope Number"
 msgstr "Numărul de plic"
 
@@ -6809,10 +6805,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Afișarea numărului de facturi pe bonul de depozit"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "Adresa URL de acces la ChurchCRM Cloud"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Contul tău a fost șters"
 
@@ -7141,7 +7133,8 @@ msgid "Please go to this location"
 msgstr "Navigați la această locație"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Parola ta actualizată pentru CurchCRM a fost schimbată"
 
 #: 

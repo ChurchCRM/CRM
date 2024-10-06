@@ -1247,10 +1247,6 @@ msgid "Created"
 msgstr "انشاء"
 
 #: 
-msgid "Edited"
-msgstr "تعديل"
-
-#: 
 msgid "Envelope Number"
 msgstr "رقم المظروف"
 
@@ -6709,10 +6705,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "التهم عرض مشروع قانون على قسيمة الإيداع"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "ChurchCRM URL وصول سحابة"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "تم حذف الحساب الخاص بك"
 
@@ -7041,7 +7033,8 @@ msgid "Please go to this location"
 msgstr "يرجى الدخول إلى هذا الموقع"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "تم تغيير كلمة المرور لك ChurchCRM تحديثها"
 
 #: 

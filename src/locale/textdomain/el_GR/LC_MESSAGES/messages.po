@@ -1246,10 +1246,6 @@ msgid "Created"
 msgstr "Δημιουργήθηκε"
 
 #: 
-msgid "Edited"
-msgstr "Επεξεργάστηκε"
-
-#: 
 msgid "Envelope Number"
 msgstr "Αριθμός φακέλου"
 
@@ -6702,10 +6698,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Εμφάνιση μετρήσεων λογαριασμών στο δελτίο κατάθεσης"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "ChurchCRM Cloud Access URL"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Ο λογαριασμός σας διαγράφηκε"
 
@@ -7034,7 +7026,8 @@ msgid "Please go to this location"
 msgstr "Παρακαλώ μεταβείτε σε αυτήν την τοποθεσία"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Ο ενημερωμένος κωδικός πρόσβασης του ChurchCRM έχει αλλάξει"
 
 #: 

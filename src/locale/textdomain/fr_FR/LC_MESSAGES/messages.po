@@ -1252,10 +1252,6 @@ msgid "Created"
 msgstr "Créé"
 
 #: 
-msgid "Edited"
-msgstr "Modifié"
-
-#: 
 msgid "Envelope Number"
 msgstr "Numéro de l'enveloppe"
 
@@ -6715,10 +6711,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Afficher le nombre de Factures sur le bordereau de dépôt"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "URL d'accès au Cloud de ChurchCRM"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Votre compte a été supprimé"
 
@@ -7048,7 +7040,8 @@ msgid "Please go to this location"
 msgstr "Allez à l'emplacement"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "La Mise à jour de votre mot de passe ChurchCRM a été effectué"
 
 #: 
@@ -9032,4 +9025,8 @@ msgstr "Date de naissance invalide : Mois ou jour de naissance manquant."
 #: 
 msgid "Adult Name (Optional)"
 msgstr "Nom de l'adulte (Optionnel)"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp n'est pas configuré"
 

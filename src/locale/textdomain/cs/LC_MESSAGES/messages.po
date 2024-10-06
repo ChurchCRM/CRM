@@ -1245,10 +1245,6 @@ msgid "Created"
 msgstr "Vytvořeno"
 
 #: 
-msgid "Edited"
-msgstr "Upraveno"
-
-#: 
 msgid "Envelope Number"
 msgstr "Číslo obálky"
 
@@ -6697,10 +6693,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Zobrazení počtu účtů na vkladovém dokladu"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "URL pro přístup ke službě ChurchCRM Cloud"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Váš účet byl smazán"
 
@@ -7029,7 +7021,8 @@ msgid "Please go to this location"
 msgstr "Přejděte na tuto stránku"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Vaše aktualizované heslo k ChurchCRM bylo změněno"
 
 #: 

@@ -1264,10 +1264,6 @@ msgid "Created"
 msgstr "Đã tạo"
 
 #: 
-msgid "Edited"
-msgstr "Đã sửa"
-
-#: 
 msgid "Envelope Number"
 msgstr "Số phong bì"
 
@@ -6726,10 +6722,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "Hiển thị số lượng hóa đơn trên phiếu gửi tiền"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "URL truy cập đám mây ChurchCRM"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "Tài khoản của bạn đã bị xóa"
 
@@ -7058,7 +7050,8 @@ msgid "Please go to this location"
 msgstr "Vui lòng đến địa điểm này"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "Mật khẩu của bạn đã được thay đổi"
 
 #: 

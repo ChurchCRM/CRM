@@ -1262,10 +1262,6 @@ msgid "Created"
 msgstr "Opprettet"
 
 #: 
-msgid "Edited"
-msgstr "Endret"
-
-#: 
 msgid "Envelope Number"
 msgstr "Konvolutt nummer"
 

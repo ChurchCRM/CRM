@@ -1288,10 +1288,6 @@ msgid "Created"
 msgstr "已建立"
 
 #: 
-msgid "Edited"
-msgstr "已編輯"
-
-#: 
 msgid "Envelope Number"
 msgstr "信封號碼"
 
@@ -6860,10 +6856,6 @@ msgid "Display bill counts on deposit slip"
 msgstr "在存款單上顯示賬單計數"
 
 #: 
-msgid "ChurchCRM Cloud Access URL"
-msgstr "ChurchCRM雲訪問網址"
-
-#: 
 msgid "Your Account was Deleted"
 msgstr "您的帳戶已被刪除"
 
@@ -7193,7 +7185,8 @@ msgid "Please go to this location"
 msgstr "請到這個位置"
 
 #: 
-msgid "You ChurchCRM updated password has been changed"
+#, fuzzy
+msgid "Your ChurchCRM password has been changed"
 msgstr "您的ChurchCRM密碼更新已成功"
 
 #: 
