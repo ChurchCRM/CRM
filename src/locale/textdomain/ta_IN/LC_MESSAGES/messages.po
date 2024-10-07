@@ -4412,6 +4412,2167 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "கோப்பகத்தில் இந்த வகைப்பாடுகளை மட்டும் சேர்த்து, கமா பிரிக்கப்பட்டது"
 
 #: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "இவையே வீட்டின் தலைவனாக நியமிக்கப்பட்ட குடும்பப் பங்கு எண்கள்"
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "இவை வாழ்க்கைத் துணையாக நியமிக்கப்பட்ட குடும்பப் பங்கு எண்கள்"
+
+#: 
+msgid "These are the family role numbers designated as child"
+msgstr "இவையே குழந்தையாக நியமிக்கப்பட்ட குடும்பப் பங்கு எண்கள்"
+
+#: 
+msgid "Queries for which user must have finance permissions to use:"
+msgstr "எந்தப் பயனருக்குப் பயன்படுத்த நிதி அனுமதிகள் இருக்க வேண்டும் என்ற கேள்விகள்:"
+
+#: 
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr "CSV ஏற்றுமதி அமைப்பு மற்றும் அடைவு அறிக்கையை நிர்வாகிகள் மட்டுமே அணுக வேண்டுமா?"
+
+#: 
+msgid "Minimum length a user may set their password to"
+msgstr "ஒரு பயனர் தனது கடவுச்சொல்லை அமைக்கக்கூடிய குறைந்தபட்ச நீளம்"
+
+#: 
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr "அனுமதிக்கப்படாத (மிகவும் வெளிப்படையான) கடவுச்சொற்களின் காற்புள்ளி (கமாவால்) பிரிக்கப்பட்ட பட்டியல்."
+
+#: 
+msgid "Default City"
+msgstr "இயல்பு நகரம்"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "இயல்புநிலை - 2-எழுத்து சுருக்கமாக இருக்க வேண்டும்!"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "எல்லா மின்னஞ்சல்களின் நகலையும் பெறுவதற்கான இயல்புநிலை கணக்கு"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "SMTP சேவையக முகவரி (mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "உங்கள் SMTP சேவையகத்திற்கு அங்கீகாரம் (பயனர் பெயர்/கடவுச்சொல்) தேவையா?"
+
+#: 
+msgid "SMTP Username"
+msgstr "SMTP பயனர்பெயர்"
+
+#: 
+msgid "SMTP Password"
+msgstr "SMTP கடவுச்சொல்"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "சர்வதேசமயமாக்கல் (I18n) ஆதரவு"
+
+#: 
+msgid "First month of the fiscal year"
+msgstr "நிதியாண்டின் முதல் மாதம்"
+
+#: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "தேவாலயத்தின் அட்சரேகை, கூகிள் வரைபடத்தை மையமாக பயன்படுத்தப்படுகிறது"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "தேவாலயத்தின் தீர்க்கரேகை, கூகிள் வரைபடத்தை மையமாக பயன்படுத்தப்படுகிறது"
+
+#: 
+msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
+msgstr "நபர் எடிட்டரில் முகவரிகளை உள்ளிடுவதை முடக்குவதற்கு சரி என அமைக்கவும். நபர் திருத்துநர் (எடிட்டரில்) முகவரிகளை உள்ளிடுவதை இயக்குவதற்கு தவறு என அமைக்கவும்."
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "தனிப்பட்ட எடிட்டரில் நண்பர் தேதியை உள்ளிடுவதை முடக்குவதற்கு சரி என அமைக்கவும். நபர் எடிட்டரில் நண்பர் தேதியை உள்ளிடுவதை இயக்குவதற்கு தவறானவை அமைக்கவும்."
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "குடும்ப எடிட்டரில் செய்திமடல் சந்தாக்களின் நிர்வாகத்தை முடக்குவதற்கு உண்மையாக அமைக்கவும்."
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "குடும்ப எடிட்டரில் திருமணத் தேதியை உள்ளிடுவதை முடக்குவதற்கு உண்மை அல்லது சரி என்று அமைக்கவும். ஃபேமிலி எடிட்டரில் திருமண தேதியை உள்ளிடுவதை இயக்குவதற்கு தவறு என அமைக்கவும்."
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "குடும்ப எடிட்டரில் அட்சரேகை மற்றும் தீர்க்கரேகையை உள்ளிடுவதை முடக்குவதற்கு உண்மை அல்லது சரி என்று அமைக்கவும். ஃபேமிலி எடிட்டரில் அட்சரேகை மற்றும் தீர்க்கரேகையை உள்ளிடுவதை இயக்குவதற்கு தவறு என அமைக்கவும். தேடல்கள் இன்னும் செய்யப்படுகின்றன, காட்டப்படவில்லை."
+
+#: 
+msgid "Set true to enable use of donation envelopes"
+msgstr "நன்கொடை உறைகளைப் பயன்படுத்துவதற்கு உண்மை அல்லது சரி என்று அமைக்கவும்"
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "HTML குறியீட்டை உள்ளிடவும், அது ஒவ்வொரு பக்கத்தின் மேற்புறத்திலும் தலைப்பாகக் காட்டப்படும். உங்கள் குறிச்சொற்களை மூடுவதை உறுதி செய்யவும்! குறிப்பு: புதிய தலைப்பைப் பார்க்க, உங்கள் உலாவியை இரண்டாவது முறை புதுப்பிக்க வேண்டும்."
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "டெபாசிட் சீட்டு அறிக்கைக்கான காசோலைகளின் எண்ணிக்கை"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "ஸ்கேன் செய்யப்பட்ட காசோலைகளைப் பயன்படுத்துவதற்கு உண்மை அல்லது சரி என்று அமைக்கவும்"
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "தூரம், மைல்கள் அல்லது கிமீ அளவிட பயன்படும் அலகு."
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "வகைப்பாட்டின் வரிசையில் கூகிள் வரைபடத்திற்கான குறிப்பான்களின் பெயர்கள்"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "கழிக்கப்படாத கட்டணங்களை இயக்கவும்"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "குடும்ப சுயப் பதிவைச் செயல்படுத்த, உண்மை அல்லது சரி என்று அமைக்கவும்."
+
+#: 
+msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
+msgstr "சர்ச் சிஆர்எம் பதிவு செய்யப்பட்டுள்ளது. சர்ச்சிஆர்எம் குழு பயன்பாட்டைக் கண்காணிக்க பதிவுத் தகவலைப் பயன்படுத்துகிறது. இந்த தகவல் ரகசியமாக வைக்கப்படும் மற்றும் வெளியிடப்படுவதோ அல்லது விற்கப்படுவதோ இல்லை. இந்த புலம் உண்மையாக இருந்தால், நிர்வாகி மெனுவில் உள்ள பதிவு விருப்பமானது பதிவைப் புதுப்பிப்பதற்கு மாற்றப்படும்."
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "இடது ஓரம் (1 = 1/100வது அங்குலம்)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "கோடு தடிமன் (1 = 1/100வது அங்குலம்"
+
+#: 
+msgid "Church City"
+msgstr "சர்ச் சிட்டி"
+
+#: 
+msgid "Church State"
+msgstr "சர்ச் மாநிலம்"
+
+#: 
+msgid "Church Zip"
+msgstr "சர்ச் ஜிப்/பின் குறியீடு"
+
+#: 
+msgid "Church Phone"
+msgstr "சர்ச் ஃபோன்"
+
+#: 
+msgid "Home area code of the church"
+msgstr "தேவாலயத்தின் முகப்பு பகுதி குறியீடு"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "வரி அறிக்கையின் மேல் வரிக்கான வினைச்சொல். இந்த வரியின் முடிவில் தேதிகள் இணைக்கப்படும்."
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "வரி அறிக்கையின் கீழ்நிலைக்கான சொற்கள்."
+
+#: 
+msgid "Tax Report signer"
+msgstr "வரி அறிக்கை கையொப்பமிட்டவர்"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "உறுதிமொழி நினைவூட்டல் அறிக்கைக்கான சொல்"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "உறுதிமொழி நினைவூட்டல் கையொப்பமிடுபவர்"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "உறுதிமொழி நினைவூட்டல் அறிக்கைக்கான சொல் - உறுதிமொழியின் பதிவு இல்லை"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "உறுதிமொழி நினைவூட்டல் அறிக்கைக்கான வார்த்தை - பணம் செலுத்தியதற்கான பதிவு இல்லை"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "தரவுத்தள தகவல் உறுதிப்படுத்தல் மற்றும் திருத்தம் அறிக்கைக்கான சொல்"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "தரவுத்தள தகவல் உறுதிப்படுத்தல் மற்றும் திருத்தம் அறிக்கை கையொப்பமிடுபவர்"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "உறுதிமொழி சுருக்க அறிக்கைக்கான சொல்"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "அடைவு அறிக்கைக்கான சொல்"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "சர்ச் லெட்டர்ஹெட் பாதை மற்றும் கோப்பு"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "உள்ளூர் படம் இல்லாதபோது, ​​கிராவதரில் பயனர் படங்களைத் தேடுங்கள்"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "கிளவுட் சேவைகளுக்கு தொலை/ரிமோட் காப்புப்பிரதிகளை இயக்கவும்"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "கிளவுட் சேவை வகை (ஆதரவு மதிப்புகள்: WebDAV, உள்ளூர்)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "தொலை/ரிமோட் காப்புப்பிரதி  பயனர்பெயர்"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "தொலை காப்பு கடவுச்சொல்"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "தானியங்கி தொலை/ரிமோட் காப்புப்பிரதிகளுக்கான மணிநேர இடைவெளி"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "கடைசி காப்புப்பிரதி நேரமுத்திரை"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "குவிக்புக்ஸ் வைப்பு/டெபாசிட் டிக்கெட் அமைப்புகள்"
+
+#: 
+msgid "Enable Integrity Check"
+msgstr "ஒருமைப்பாடு சரிபார்ப்பை இயக்கு"
+
+#: 
+msgid "Interval in Hours for Integrity Check"
+msgstr "நேர்மை சோதனைக்கான மணிநேர இடைவெளி"
+
+#: 
+msgid "Last Integrity Check Timestamp"
+msgstr "கடைசி ஒருமைப்பாடு சரிபார்ப்பு நேர முத்திரை"
+
+#: 
+msgid "List Groups"
+msgstr "பட்டியல் குழுக்கள்"
+
+#: 
+msgid "List Church Events"
+msgstr "சர்ச் நிகழ்வுகளை பட்டியலிடுங்கள்"
+
+#: 
+msgid "Add Church Event"
+msgstr "சர்ச் நிகழ்வைச் சேர்க்கவும்"
+
+#: 
+msgid "List Event Types"
+msgstr "நிகழ்வு வகைகளை பட்டியலிடுங்கள்"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "செக்-இன் மற்றும் செக்-அவுட்"
+
+#: 
+msgid "View All Deposits"
+msgstr "அனைத்து வைப்புகளையும் காண்க"
+
+#: 
+msgid "Deposit Reports"
+msgstr "வைப்பு அறிக்கைகள்"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "வைப்புச் சீட்டைத் திருத்தவும்"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "அனைத்து நிதி திரட்டல்களையும் காண்க"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "புதிய நிதி திரட்டலை உருவாக்கவும்"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "நிதி திரட்டலைத் திருத்து"
+
+#: 
+msgid "View Buyers"
+msgstr "வாங்குபவர்களைக் காண்க"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "வாங்குபவர் பட்டியலில் நன்கொடையாளர்களைச் சேர்க்கவும்"
+
+#: 
+msgid "Data/Reports"
+msgstr "தரவு/அறிக்கைகள்"
+
+#: 
+msgid "Query Menu"
+msgstr "வினவல் மெனு"
+
+#: 
+msgid "CSV Export Records"
+msgstr "CSV ஏற்றுமதி பதிவுகள்"
+
+#: 
+msgid "People Properties"
+msgstr "மக்கள் பண்புககள்"
+
+#: 
+msgid "Family Properties"
+msgstr "குடும்ப பண்புகள்"
+
+#: 
+msgid "Property Types"
+msgstr "பண்பு வகைகள்"
+
+#: 
+msgid "Zip Code"
+msgstr "அஞ்சல் குறியீடு"
+
+#: 
+msgid "2012/2013"
+msgstr "2012/2013"
+
+#: 
+msgid "2013/2014"
+msgstr "2013/2014"
+
+#: 
+msgid "2014/2015"
+msgstr "2014/2015"
+
+#: 
+msgid "2015/2016"
+msgstr "2015/2016"
+
+#: 
+msgid "WorkEmail"
+msgstr "பணி மின்னஞ்சல்"
+
+#: 
+msgid "Regular Attender"
+msgstr "வழக்கமான பங்கேற்பாளர்"
+
+#: 
+msgid "Guest"
+msgstr "விருந்தினர்"
+
+#: 
+msgid "Non-Attender"
+msgstr "கலந்து கொள்ளாதவர்"
+
+#: 
+msgid "Non-Attender (staff)"
+msgstr "வருகை தராதவர் (ஊழியர்கள்)"
+
+#: 
+msgid "Minimum Age"
+msgstr "குறைந்தபட்ச வயது"
+
+#: 
+msgid "Maximum Age"
+msgstr "அதிகபட்ச வயது"
+
+#: 
+msgid "Beginning Date"
+msgstr "தொடக்க தேதி"
+
+#: 
+msgid "Ending Date"
+msgstr "முடிவு தேதி"
+
+#: 
+msgid "Search"
+msgstr "தேடு"
+
+#: 
+msgid "Field"
+msgstr "களம்"
+
+#: 
+msgid "Registered students"
+msgstr "பதிவு செய்யப்பட்ட மாணவர்கள்"
+
+#: 
+msgid "Volunteer opportunities"
+msgstr "தன்னார்வ வாய்ப்புகள்"
+
+#: 
+msgid "Months"
+msgstr "மாதங்கள்"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "முதல் நிதியாண்டு"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "இரண்டாவது நிதியாண்டு"
+
+#: 
+msgid "Custom field"
+msgstr "தனிப்பயன் புலம்"
+
+#: 
+msgid "Field value"
+msgstr "புல மதிப்பு"
+
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "நீங்கள் பதிவுகளை திரும்பப் பெற விரும்பும் குறைந்தபட்ச வயது."
+
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "நீங்கள் பதிவுகளை திரும்பப் பெற விரும்பும் அதிகபட்ச வயது."
+
+#: 
+msgid "The desired gender to search the database for."
+msgstr "தரவுத்தளத்தில் தேட விரும்பும் பாலினம்."
+
+#: 
+msgid "Select the desired family role."
+msgstr "விரும்பிய குடும்பப் பாத்திரத்தைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "நீங்கள் பதிவுகளை வழங்க விரும்பும் பாலினம்."
+
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "நபர் பதிவுகளை நீங்கள் திரும்பப் பெற விரும்பும் சொத்து."
+
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "ஒவ்வொரு உறுப்பினருக்கும் (அதாவது YYYY-MM-DD) மொத்த பங்களிப்புகளைக் கணக்கிட தொடக்கத் தேதியைத் தேர்ந்தெடுக்கவும். குறிப்பு: நன்கொடைகள் உள்ள தேதிகளை மட்டுமே நீங்கள் தேர்வு செய்ய முடியும்."
+
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "ஒவ்வொரு உறுப்பினருக்கும் (அதாவது YYYY-MM-DD) மொத்த பங்களிப்புகளை கணக்கிட கடைசி தேதியை உள்ளிடவும்."
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "பின்வருவனவற்றில் ஏதேனும் ஒரு பகுதியை உள்ளிடவும்: பெயர், நகரம், மாநிலம், பின் குறியீடு, வீட்டு தொலைபேசி, மின்னஞ்சல் அல்லது பணி மின்னஞ்சல்."
+
+#: 
+msgid "Select field to search for."
+msgstr "தேடுவதற்கு புலத்தைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "நீங்கள் பதிவு செய்ய விரும்பும் பிறந்த மாதம்."
+
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "நீங்கள் பதிவு செய்ய விரும்பும் ஞாயிறு பள்ளி வகுப்பு."
+
+#: 
+msgid "Group of registered students"
+msgstr "பதிவுசெய்யப்பட்ட மாணவர்களின் குழு"
+
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "நீங்கள் பதிவுசெய்ய விரும்பும் உறுப்பினர் ஆண்டு நிறைவு மாதம்."
+
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "ஒரு தன்னார்வ வாய்ப்பைத் தேர்வுசெய்க"
+
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "நண்பராகி பல மாதங்கள்"
+
+#: 
+msgid "First fiscal year for comparison"
+msgstr "ஒப்பிடுவதற்கு முதல் நிதியாண்டு\n"
+""
+
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "ஒப்பிடுவதற்கு இரண்டாவது நிதியாண்டு"
+
+#: 
+msgid "Pledged this year"
+msgstr "இந்த ஆண்டு உறுதிமொழி எடுத்தார்"
+
+#: 
+msgid "but not this year"
+msgstr "ஆனால் இந்த ஆண்டு இல்லை"
+
+#: 
+msgid "Fiscal Year."
+msgstr "நிதியாண்டு."
+
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "உறுப்பினர், வழக்கமான பங்கேற்பாளர் போன்றவை."
+
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "முதல் தன்னார்வ வாய்ப்பு தேர்வு"
+
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "இரண்டாவது தன்னார்வ வாய்ப்பு தேர்வு"
+
+#: 
+msgid "Choose customer person field"
+msgstr "வாடிக்கையாளர் நபரைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Match custom field to this value"
+msgstr "தனிப்பயன் புலத்தை இந்த மதிப்புடன் பொருத்தவும்"
+
+#: 
+msgid "Family Member Count"
+msgstr "குடும்ப உறுப்பினர் எண்ணிக்கை"
+
+#: 
+msgid "Person by Age"
+msgstr "வயது அடிப்படையில் நபர்"
+
+#: 
+msgid "Total By Gender"
+msgstr "பாலினம் அடிப்படையில் மொத்தம்"
+
+#: 
+msgid "Person by Role and Gender"
+msgstr "பாத்திரம்/வேலை மற்றும் பாலினம் அடிப்படையில் நபர்"
+
+#: 
+msgid "Person by Property"
+msgstr "சொத்து மூலம் நபர்"
+
+#: 
+msgid "Advanced Search"
+msgstr "மேம்பட்ட தேடல்"
+
+#: 
+msgid "Birthdays"
+msgstr "பிறந்தநாள்"
+
+#: 
+msgid "Membership anniversaries"
+msgstr "உறுப்பினர் ஆண்டுவிழா"
+
+#: 
+msgid "Select database users"
+msgstr "தரவுத்தள பயனர்களைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Select all members"
+msgstr "அனைத்து உறுப்பினர்களையும் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Volunteers"
+msgstr "தன்னார்வ தொண்டர்கள்"
+
+#: 
+msgid "Recent friends"
+msgstr "சமீபத்திய நண்பர்கள்"
+
+#: 
+msgid "Pledge comparison"
+msgstr "உறுதிமொழி ஒப்பீடு"
+
+#: 
+msgid "Missing pledges"
+msgstr "உறுதிமொழிகள் காணவில்லை"
+
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "நிதியாண்டு அடிப்படையில் குடும்ப உறுதிமொழி"
+
+#: 
+msgid "CustomSearch"
+msgstr "தனிப்பயன் தேடல்"
+
+#: 
+msgid "Returns each family and the total number of people assigned to them."
+msgstr "ஒவ்வொரு குடும்பத்தையும் அவர்களுக்கு ஒதுக்கப்பட்ட மொத்த நபர்களின் எண்ணிக்கையையும் வழங்குகிறது."
+
+#: 
+msgid "Returns any person records with ages between two given ages."
+msgstr "கொடுக்கப்பட்ட இரண்டு வயதுக்கு இடைப்பட்ட வயதுடைய எந்தவொரு நபரின் பதிவுகளையும் வழங்கும்."
+
+#: 
+msgid "Total of records matching a given gender."
+msgstr "கொடுக்கப்பட்ட பாலினத்துடன் பொருந்திய மொத்த பதிவுகள்."
+
+#: 
+msgid "Selects person records with the family role and gender specified."
+msgstr "குடும்பப் பங்கு மற்றும் பாலினம் குறிப்பிடப்பட்ட நபரின் பதிவுகளைத் தேர்ந்தெடுக்கிறது."
+
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "கொடுக்கப்பட்ட பண்பு ஒதுக்கப்பட்ட நபரின் பதிவுகளை வழங்குகிறது."
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "பெயர், நகரம், மாநிலம், பின் குறியீடு, வீட்டுத் தொலைபேசி, மின்னஞ்சல் அல்லது பணி மின்னஞ்சல் ஆகியவற்றின் எந்தப் பகுதியிலும் தேடுங்கள்."
+
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "குறிப்பிட்ட மாதத்தில் பிறந்தநாள் கொண்டவர்கள்"
+
+#: 
+msgid "Find Registered students"
+msgstr "பதிவுசெய்யப்பட்ட மாணவர்களைக் கண்டறியவும்"
+
+#: 
+msgid "Members who joined in a particular month"
+msgstr "ஒரு குறிப்பிட்ட மாதத்தில் இணைந்த உறுப்பினர்கள்"
+
+#: 
+msgid "People who are registered as database users"
+msgstr "தரவுத்தள பயனர்களாக பதிவுசெய்யப்பட்ட நபர்கள்"
+
+#: 
+msgid "People who are members"
+msgstr "உறுப்பினர்களாக இருப்பவர்கள்"
+
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "ஒரு குறிப்பிட்ட வாய்ப்பிற்கான தன்னார்வலர்களைக் கண்டறியவும்"
+
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "முந்தைய மாதங்களில் பதிவு செய்த நண்பர்கள்"
+
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "இரண்டு நிதியாண்டுகளுக்கு இடையே உள்ள உறுதிமொழிகளை ஒப்பிடுக"
+
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "ஒரு வருடத்தை உறுதிமொழியாகக் கொடுத்தவர்களைக் கண்டறியவும்"
+
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "தேர்ந்தெடுக்கப்பட்ட நிதியாண்டிற்கான ஒவ்வொரு நிதிக்கும் குடும்பப் பெயரின்படி உறுதிமொழிச் சுருக்கம்"
+
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "இரண்டு குறிப்பிட்ட வாய்ப்புக் குறியீடுகளுடன் பொருந்தக்கூடிய தன்னார்வலர்களைக் கண்டறியவும்"
+
+#: 
+msgid "Find people with a custom field value"
+msgstr "தனிப்பயன் புல மதிப்பைக் கொண்ட நபர்களைக் கண்டறியவும்"
+
+#: 
+msgid "Last Edited"
+msgstr "கடைசியாக திருத்தப்பட்டது"
+
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "mailto: links வழியாக மின்னஞ்சல் அனுப்ப பயனர் அனுமதி"
+
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "mailto: links இல் உள்ள மின்னஞ்சல்களைப் பிரிக்க வரையறுக்கவும்"
+
+#: 
+msgid "User permission to create directories"
+msgstr "கோப்பகங்களை உருவாக்க பயனர் அனுமதி"
+
+#: 
+msgid "User permission to export CSV files"
+msgstr "CSV கோப்புகளை ஏற்றுமதி செய்ய பயனர் அனுமதி"
+
+#: 
+msgid "Allow user to add new event"
+msgstr "புதிய நிகழ்வைச் சேர்க்க பயனரை அனுமதிக்கவும்"
+
+#: 
+msgid "Weekly on"
+msgstr "வாரந்தோறும்"
+
+#: 
+msgid "s"
+msgstr "கள்"
+
+#: 
+msgid "Monthly on"
+msgstr "மாதந்தோறும்"
+
+#: 
+msgid "Yearly on"
+msgstr "ஆண்டுதோறும்"
+
+#: 
+msgid "All Events of Type"
+msgstr "அனைத்து வகையான நிகழ்வுகள்"
+
+#: 
+msgid "There is"
+msgstr "உள்ளது"
+
+#: 
+msgid "There are"
+msgstr "உள்ளன"
+
+#: 
+msgid "event"
+msgstr "நிகழ்வு"
+
+#: 
+msgid "events"
+msgstr "நிகழ்வுகள்"
+
+#: 
+msgid " in this category."
+msgstr "இந்த வகையில்."
+
+#: 
+msgid "There currently is"
+msgstr "தற்போது உள்ளது"
+
+#: 
+msgid "There currently are"
+msgstr "தற்போது உள்ளன"
+
+#: 
+msgid "custom event type"
+msgstr "விருப்ப நிகழ்வு வகை"
+
+#: 
+msgid "custom event types"
+msgstr "விருப்ப நிகழ்வு வகைகள்"
+
+#: 
+msgid "Family Roles Editor"
+msgstr "குடும்ப பாத்திரங்களின் திருத்துநர்"
+
+#: 
+msgid "Person Classification"
+msgstr "நபர் வகைப்பாடு"
+
+#: 
+msgid "Person Classifications"
+msgstr "நபர் வகைப்பாடுகள்"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "நபர் வகைப்படுத்தல் திருத்துநர்"
+
+#: 
+msgid "Group Type"
+msgstr "குழு வகை"
+
+#: 
+msgid "Group Types"
+msgstr "குழு வகைகள்"
+
+#: 
+msgid "Group Types Editor"
+msgstr "குழு வகைகள் திருத்துநர்/எடிட்டர்"
+
+#: 
+msgid "Security Group"
+msgstr "பாதுகாப்பு குழு"
+
+#: 
+msgid "Security Groups"
+msgstr "பாதுகாப்பு குழுக்கள்"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "பாதுகாப்பு குழுக்கள் திருத்துநர்"
+
+#: 
+msgid "Group Member Role"
+msgstr "குழு உறுப்பினர் பங்கு"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "குழு உறுப்பினர் பாத்திரங்களின் திருத்துநர்"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "நபர் விருப்ப பட்டியல் விருப்பம்"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "நபர் விருப்ப பட்டியல் விருப்பங்கள்"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "நபர் விருப்ப பட்டியல் விருப்பங்கள் திருத்தி"
+
+#: 
+msgid "Custom List Option"
+msgstr "தனிப்பயன் பட்டியல் விருப்பம்"
+
+#: 
+msgid "Custom List Options"
+msgstr "விருப்ப பட்டியல் விருப்பங்கள்"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "விருப்ப பட்டியல் விருப்பங்கள் திருத்தி"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "குடும்ப விருப்பப் பட்டியல் விருப்பம்"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "குடும்ப விருப்பப் பட்டியல் விருப்பங்கள்"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "குடும்ப தனிப்பயன் பட்டியல் விருப்பங்கள் எடிட்டர்"
+
+#: 
+msgid "are not allowed."
+msgstr "அனுமதிக்கப்படவில்லை."
+
+#: 
+msgid "Name for New"
+msgstr "புதியதுக்கு பெயர்"
+
+#: 
+msgid "Imported"
+msgstr "இறக்குமதி செய்யப்பட்டது"
+
+#: 
+msgid "Created via Family"
+msgstr "குடும்பம் மூலம் உருவாக்கப்பட்டது"
+
+#: 
+msgid "Updated via Family"
+msgstr "குடும்பம் மூலம் புதுப்பிக்கப்பட்டது"
+
+#: 
+msgid "Family Data Verified"
+msgstr "குடும்பத் தரவு சரிபார்க்கப்பட்டது"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "சுயவிவரப் படம் நீக்கப்பட்டது"
+
+#: 
+msgid "miles"
+msgstr "மைல்கள்"
+
+#: 
+msgid "kilometers"
+msgstr "கிலோமீட்டர்கள்"
+
+#: 
+msgid "WebDAV"
+msgstr "வெப்டிஏவி"
+
+#: 
+msgid "Local"
+msgstr "உள்ளூர்"
+
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "ஆப்கானிஸ்தான் (افغانستان)"
+
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "ஆலண்ட் தீவுகள் (ஆலண்ட்)"
+
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "அல்பேனியா (Shqipëri)"
+
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "அல்ஜீரியா (الجزائر)"
+
+#: 
+msgid "American Samoa"
+msgstr "அமெரிக்க சமோவா"
+
+#: 
+msgid "Andorra"
+msgstr "அன்டோரா"
+
+#: 
+msgid "Angola"
+msgstr "அங்கோலா"
+
+#: 
+msgid "Anguilla"
+msgstr "அங்குவிலா"
+
+#: 
+msgid "Antarctica"
+msgstr "அண்டார்டிகா"
+
+#: 
+msgid "Antigua and Barbuda"
+msgstr "ஆன்டிகுவா மற்றும் பார்புடா"
+
+#: 
+msgid "Argentina"
+msgstr "அர்ஜென்டினா"
+
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "ஆர்மீனியா (Հայաստան)"
+
+#: 
+msgid "Aruba"
+msgstr "அருபா"
+
+#: 
+msgid "Ascension Island"
+msgstr "அசென்ஷன் தீவு"
+
+#: 
+msgid "Australia"
+msgstr "ஆஸ்திரேலியா"
+
+#: 
+msgid "Austria (Österreich)"
+msgstr "ஆஸ்திரியா (Österreich)"
+
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "அஜர்பைஜான் (Azərbaycan)"
+
+#: 
+msgid "Bahamas"
+msgstr "பஹாமாஸ்"
+
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "பஹ்ரைன் (البحرين)"
+
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "பங்களாதேஷ் (বাংলাদেশ)"
+
+#: 
+msgid "Barbados"
+msgstr "பார்படாஸ்"
+
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "பெலாரஸ் (பெலாருஸ்)"
+
+#: 
+msgid "Belgium (België)"
+msgstr "பெல்ஜியம் (België)"
+
+#: 
+msgid "Belize"
+msgstr "பெலிஸ்"
+
+#: 
+msgid "Benin (Bénin)"
+msgstr "பெனின் (பெனின்)"
+
+#: 
+msgid "Bermuda"
+msgstr "பெர்முடா"
+
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "பூட்டான் (འབྲུག)"
+
+#: 
+msgid "Bolivia"
+msgstr "பொலிவியா"
+
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "போஸ்னியா மற்றும் ஹெர்சகோவினா (போஸ்னா மற்றும் ஹெர்சிகோவினா)"
+
+#: 
+msgid "Botswana"
+msgstr "போட்ஸ்வானா"
+
+#: 
+msgid "Bouvet Island"
+msgstr "பூவெட் தீவு"
+
+#: 
+msgid "Brazil (Brasil)"
+msgstr "பிரேசில் (பிரேசில்)"
+
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "பிரிட்டிஷ் இந்தியப் பெருங்கடல் பகுதி"
+
+#: 
+msgid "British Virgin Islands"
+msgstr "பிரிட்டிஷ் விர்ஜின் தீவுகள்"
+
+#: 
+msgid "Brunei"
+msgstr "புருனே"
+
+#: 
+msgid "Bulgaria (България)"
+msgstr "பல்கேரியா (България)"
+
+#: 
+msgid "Burkina Faso"
+msgstr "புர்கினா பாசோ"
+
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "புருண்டி (உபுருண்டி)"
+
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "கம்போடியா (កម្ពុជា)"
+
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "கேமரூன் (கேமரூன்)"
+
+#: 
+msgid "Canada"
+msgstr "கனடா"
+
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "கேனரி தீவுகள் (Ilas Canarias)"
+
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "கேப் வெர்டே (கபு வெர்டி)"
+
+#: 
+msgid "Caribbean Netherlands"
+msgstr "கரீபியன் நெதர்லாந்து"
+
+#: 
+msgid "Cayman Islands"
+msgstr "கேமன் தீவுகள்"
+
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "மத்திய ஆப்பிரிக்க குடியரசு (République centrafricaine)"
+
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "சியூடா மற்றும் மெலில்லா (சியூட்டா ஒய் மெலில்லா)"
+
+#: 
+msgid "Chad (Tchad)"
+msgstr "சாட் (Tchad)"
+
+#: 
+msgid "Chile"
+msgstr "சிலி"
+
+#: 
+msgid "China (中国)"
+msgstr "சீனா (中国)"
+
+#: 
+msgid "Christmas Island"
+msgstr "கிறிஸ்துமஸ் தீவு"
+
+#: 
+msgid "Clipperton Island"
+msgstr "கிளிப்பர்டன் தீவு"
+
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "கோகோஸ் (கீலிங்) தீவுகள் (கெபுலாவான் கோகோஸ் (கீலிங்))"
+
+#: 
+msgid "Colombia"
+msgstr "கொலம்பியா"
+
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "கொமொரோஸ் (جزر القمر)"
+
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "காங்கோ (DRC) (ஜம்ஹுரி யா கிடெமோக்ராசியா யா காங்கோ)"
+
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "காங்கோ (குடியரசு) (காங்கோ-பிராசாவில்லி)"
+
+#: 
+msgid "Cook Islands"
+msgstr "குக் தீவுகள்"
+
+#: 
+msgid "Costa Rica"
+msgstr "கோஸ்டா ரிகா"
+
+#: 
+msgid "Côte d’Ivoire"
+msgstr "கோட் டி ஐவரி"
+
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "குரோஷியா (ஹ்ர்வட்ஸ்கா)"
+
+#: 
+msgid "Cuba"
+msgstr "கியூபா"
+
+#: 
+msgid "Curaçao"
+msgstr "குராசோ"
+
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "சைப்ரஸ் (Κύπρος)"
+
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "செக் குடியரசு (Česká republika)"
+
+#: 
+msgid "Denmark (Danmark)"
+msgstr "டென்மார்க் (டான்மார்க்)"
+
+#: 
+msgid "Diego Garcia"
+msgstr "டியாகோ கார்சியா"
+
+#: 
+msgid "Djibouti"
+msgstr "ஜிபூட்டி"
+
+#: 
+msgid "Dominica"
+msgstr "டொமினிகா"
+
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "டொமினிகன் குடியரசு (குடியரசு டொமினிகானா)"
+
+#: 
+msgid "Ecuador"
+msgstr "ஈக்வடார்"
+
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "எகிப்து (مصر)"
+
+#: 
+msgid "El Salvador"
+msgstr "எல் சால்வடார்"
+
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "ஈக்வடோரியல் கினியா (கினி ஈகுவேடோரியல்)"
+
+#: 
+msgid "Eritrea"
+msgstr "எரித்திரியா"
+
+#: 
+msgid "Estonia (Eesti)"
+msgstr "எஸ்டோனியா (ஈஸ்டி)"
+
+#: 
+msgid "Ethiopia"
+msgstr "எத்தியோப்பியா"
+
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "பால்க்லாந்து தீவுகள் (இஸ்லாஸ் மால்வினாஸ்)"
+
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "பரோயே தீவுகள் (Føroyar)"
+
+#: 
+msgid "Fiji"
+msgstr "பிஜி"
+
+#: 
+msgid "Finland (Suomi)"
+msgstr "பின்லாந்து (சுயோமி)"
+
+#: 
+msgid "France"
+msgstr "பிரான்ஸ்"
+
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "பிரெஞ்சு கயானா (Guyane française)"
+
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "பிரெஞ்சு பாலினேசியா (Polynésie française)"
+
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "பிரெஞ்சு தெற்கு பிரதேசங்கள் (டெரஸ் ஆஸ்ட்ரேல்ஸ் ஃபிரான்சைஸ்)"
+
+#: 
+msgid "Gabon"
+msgstr "காபோன்"
+
+#: 
+msgid "Gambia"
+msgstr "காம்பியா"
+
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "ஜார்ஜியா (საქართველო)"
+
+#: 
+msgid "Germany (Deutschland)"
+msgstr "ஜெர்மனி (Deutschland)"
+
+#: 
+msgid "Ghana (Gaana)"
+msgstr "கானா (கானா)"
+
+#: 
+msgid "Gibraltar"
+msgstr "ஜிப்ரால்டர்"
+
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "கிரீஸ் (Ελλάδα)"
+
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "கிரீன்லாந்து (கலாலித் நுனாத்)"
+
+#: 
+msgid "Grenada"
+msgstr "கிரெனடா"
+
+#: 
+msgid "Guadeloupe"
+msgstr "குவாடலூப்"
+
+#: 
+msgid "Guam"
+msgstr "குவாம்"
+
+#: 
+msgid "Guatemala"
+msgstr "குவாத்தமாலா"
+
+#: 
+msgid "Guernsey"
+msgstr "குர்ன்சி"
+
+#: 
+msgid "Guinea (Guinée)"
+msgstr "கினியா (கினி)"
+
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "கினியா-பிசாவ் (கினி பிசாவ்)"
+
+#: 
+msgid "Guyana"
+msgstr "கயானா"
+
+#: 
+msgid "Haiti"
+msgstr "ஹைட்டி"
+
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "ஹார்ட் & மெக்டொனால்ட் தீவுகள்"
+
+#: 
+msgid "Honduras"
+msgstr "ஹோண்டுராஸ்"
+
+#: 
+msgid "Hong Kong (香港)"
+msgstr "ஹாங்காங் (香港)"
+
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "ஹங்கேரி (Magyarország)"
+
+#: 
+msgid "Iceland (Ísland)"
+msgstr "ஐஸ்லாந்து (ஐஸ்லாந்து)"
+
+#: 
+msgid "India (भारत)"
+msgstr "இந்தியா (भारत)"
+
+#: 
+msgid "Indonesia"
+msgstr "இந்தோனேசியா"
+
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "ஈரான் (ایران)"
+
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "ஈராக் (العراق‎)"
+
+#: 
+msgid "Ireland"
+msgstr "அயர்லாந்து"
+
+#: 
+msgid "Isle of Man"
+msgstr "ஐல் ஆஃப் மேன்"
+
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "இஸ்ரேல் (ישראל)"
+
+#: 
+msgid "Italy (Italia)"
+msgstr "இத்தாலி (இத்தாலியா)"
+
+#: 
+msgid "Jamaica"
+msgstr "ஜமைக்கா"
+
+#: 
+msgid "Japan (日本)"
+msgstr "ஜப்பான் (日本)"
+
+#: 
+msgid "Jersey"
+msgstr "ஜெர்சி"
+
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "ஜோர்டான் (الأردن)"
+
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "கஜகஸ்தான் (Казахстан)"
+
+#: 
+msgid "Kenya"
+msgstr "கென்யா"
+
+#: 
+msgid "Kiribati"
+msgstr "கிரிபதி"
+
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "கொசோவோ (கொசோவ்)"
+
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "குவைத் (الكويت)"
+
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "கிர்கிஸ்தான் (Кыргызstan)"
+
+#: 
+msgid "Laos (ລາວ)"
+msgstr "லாவோஸ் (ລາວ)"
+
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "லெபனான் (لبنان)"
+
+#: 
+msgid "Lesotho"
+msgstr "லெசோதோ"
+
+#: 
+msgid "Liberia"
+msgstr "லைபீரியா"
+
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "லிபியா (ليبيا)"
+
+#: 
+msgid "Liechtenstein"
+msgstr "லிச்சென்ஸ்டீன்"
+
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "லிதுவேனியா (லிதுவா)"
+
+#: 
+msgid "Luxembourg"
+msgstr "லக்சம்பர்க்"
+
+#: 
+msgid "Macau (澳門)"
+msgstr "மக்காவ் (澳門)"
+
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "மாசிடோனியா (FYROM) (மகேடோனிஷா)"
+
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "மடகாஸ்கர் (மடகாசிகாரா)"
+
+#: 
+msgid "Malawi"
+msgstr "மலாவி"
+
+#: 
+msgid "Malaysia"
+msgstr "மலேசியா"
+
+#: 
+msgid "Maldives"
+msgstr "மாலத்தீவுகள்"
+
+#: 
+msgid "Mali"
+msgstr "மாலி"
+
+#: 
+msgid "Malta"
+msgstr "மால்டா"
+
+#: 
+msgid "Marshall Islands"
+msgstr "மார்ஷல் தீவுகள்"
+
+#: 
+msgid "Martinique"
+msgstr "மார்டினிக்"
+
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "மொரிட்டானியா (موريتانيا)"
+
+#: 
+msgid "Mauritius (Moris)"
+msgstr "மொரிஷியஸ் (மோரிஸ்)"
+
+#: 
+msgid "Mayotte"
+msgstr "மயோட்டி"
+
+#: 
+msgid "Mexico (México)"
+msgstr "மெக்சிகோ (மெக்ஸிகோ)"
+
+#: 
+msgid "Micronesia"
+msgstr "மைக்ரோனேசியா"
+
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "மால்டோவா (மால்டோவா குடியரசு)"
+
+#: 
+msgid "Monaco"
+msgstr "மொனாக்கோ"
+
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "மங்கோலியா (மங்கோல்)"
+
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "மாண்டினீக்ரோ (Crna Gora)"
+
+#: 
+msgid "Montserrat"
+msgstr "மாண்ட்செராட்"
+
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "மொராக்கோ (المغرب‎)"
+
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "மொசாம்பிக் (மொசாம்பிக்)"
+
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "மியான்மர் (பர்மா) (မြန်မာ)"
+
+#: 
+msgid "Namibia (Namibië)"
+msgstr "நமீபியா (Namibië)"
+
+#: 
+msgid "Nauru"
+msgstr "நவ்ரு"
+
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "நேபாளம் (नेपाल)"
+
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "நெதர்லாந்து (நெதர்லாந்து)"
+
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "நியூ கலிடோனியா (Nouvelle-Calédonie)"
+
+#: 
+msgid "New Zealand"
+msgstr "நியூசிலாந்து"
+
+#: 
+msgid "Nicaragua"
+msgstr "நிகரகுவா"
+
+#: 
+msgid "Niger (Nijar)"
+msgstr "நைஜர் (நிஜார்)"
+
+#: 
+msgid "Nigeria"
+msgstr "நைஜீரியா"
+
+#: 
+msgid "Niue"
+msgstr "நியு"
+
+#: 
+msgid "Norfolk Island"
+msgstr "நார்போக் தீவு"
+
+#: 
+msgid "Northern Mariana Islands"
+msgstr "வடக்கு மரியானா தீவுகள்"
+
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "வட கொரியா (조선 민주주의 인민 공화국)"
+
+#: 
+msgid "Norway (Norge)"
+msgstr "நார்வே (நோர்ஜ்)"
+
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "ஓமன் (عُمان)"
+
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "பாகிஸ்தான் (پاکستان)"
+
+#: 
+msgid "Palau"
+msgstr "பலாவ்"
+
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "பாலஸ்தீனம் (فلسطين)"
+
+#: 
+msgid "Panama (Panamá)"
+msgstr "பனாமா (பனாமா)"
+
+#: 
+msgid "Papua New Guinea"
+msgstr "பப்புவா நியூ கினியா"
+
+#: 
+msgid "Paraguay"
+msgstr "பராகுவே"
+
+#: 
+msgid "Peru (Perú)"
+msgstr "பெரு (Perú)"
+
+#: 
+msgid "Philippines"
+msgstr "பிலிப்பைன்ஸ்"
+
+#: 
+msgid "Pitcairn Islands"
+msgstr "பிட்காயின் தீவுகள்"
+
+#: 
+msgid "Poland (Polska)"
+msgstr "போலந்து (போல்ஸ்கா)"
+
+#: 
+msgid "Portugal"
+msgstr "போர்ச்சுகல்"
+
+#: 
+msgid "Puerto Rico"
+msgstr "போர்ட்டோ ரிக்கோ"
+
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "கத்தார் (قطر)"
+
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "ரீயூனியன் (லா ரீயூனியன்)"
+
+#: 
+msgid "Romania (România)"
+msgstr "ருமேனியா (România)"
+
+#: 
+msgid "Russia (Россия)"
+msgstr "ரஷ்யா (ரஸ்ஸியா)"
+
+#: 
+msgid "Rwanda"
+msgstr "ருவாண்டா"
+
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "செயிண்ட் பார்தெலெமி (செயிண்ட்-பார்தெலெமி)"
+
+#: 
+msgid "Saint Helena"
+msgstr "செயின்ட் ஹெலினா"
+
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "செயின்ட் கிட்ஸ் மற்றும் நெவிஸ்"
+
+#: 
+msgid "Saint Lucia"
+msgstr "செயின்ட் லூசியா"
+
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "செயின்ட் மார்ட்டின் (செயின்ட்-மார்ட்டின் (பார்ட்டி ஃபிரான்சைஸ்))"
+
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "செயிண்ட் பியர் மற்றும் மிக்குலோன் (செயிண்ட்-பியர்-எட்-மிக்குலோன்)"
+
+#: 
+msgid "Samoa"
+msgstr "சமோவா"
+
+#: 
+msgid "San Marino"
+msgstr "சான் மரினோ"
+
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "சாவோ டோம் மற்றும் பிரின்சிபே (சாவோ டோமே இ பிரின்சிப்)"
+
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "சவுதி அரேபியா (المملكة العربية السعودية‎)"
+
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "செனகல் (Sénégal)"
+
+#: 
+msgid "Serbia (Србија)"
+msgstr "செர்பியா (Србија)"
+
+#: 
+msgid "Seychelles"
+msgstr "சீஷெல்ஸ்"
+
+#: 
+msgid "Sierra Leone"
+msgstr "சியரா லியோன்"
+
+#: 
+msgid "Singapore"
+msgstr "சிங்கப்பூர்"
+
+#: 
+msgid "Sint Maarten"
+msgstr "சிண்ட் மார்டன்"
+
+#: 
+msgid "Tanzania"
+msgstr "தான்சானியா"
+
+#: 
+msgid "Thailand (ไทย)"
+msgstr "தாய்லாந்து (ไทย)"
+
+#: 
+msgid "Timor-Leste"
+msgstr "திமோர்-லெஸ்டே"
+
+#: 
+msgid "Togo"
+msgstr "டோகோ"
+
+#: 
+msgid "Tokelau"
+msgstr "டோகேலாவ்"
+
+#: 
+msgid "Tonga"
+msgstr "டோங்கா"
+
+#: 
+msgid "Trinidad and Tobago"
+msgstr "டிரினிடாட் மற்றும் டொபாகோ"
+
+#: 
+msgid "Tristan da Cunha"
+msgstr "டிரிஸ்டன் டா குன்ஹா"
+
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "துனிசியா (تونس)"
+
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "துருக்கி (Türkiye)"
+
+#: 
+msgid "Turkmenistan"
+msgstr "துர்க்மெனிஸ்தான்"
+
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "டர்க்ஸ் மற்றும் கைகோஸ் தீவுகள்"
+
+#: 
+msgid "Tuvalu"
+msgstr "துவாலு"
+
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "யு.எஸ். வெளியூர் தீவுகள்"
+
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "யு.எஸ். விர்ஜின் தீவுகள்"
+
+#: 
+msgid "Uganda"
+msgstr "உகாண்டா"
+
+#: 
+msgid "Ukraine (Україна)"
+msgstr "உக்ரைன் (Україна)"
+
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "ஐக்கிய அரபு எமிரேட்ஸ் (الإمارات العربية المتحدة‎)"
+
+#: 
+msgid "United Kingdom"
+msgstr "ஐக்கிய இராச்சியம்/யூனைடெட் கிங்டெம்"
+
+#: 
+msgid "United States"
+msgstr "அமெரிக்கா"
+
+#: 
+msgid "Uruguay"
+msgstr "உருகுவே"
+
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "உஸ்பெகிஸ்தான் (Oʻzbekiston)"
+
+#: 
+msgid "Vanuatu"
+msgstr "வனுவாடு"
+
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "வத்திக்கான் நகரம் (சிட்டா டெல் வாடிகனோ)"
+
+#: 
+msgid "Venezuela"
+msgstr "வெனிசுலா"
+
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "வியட்நாம் (Việt Nam)"
+
+#: 
+msgid "Wallis and Futuna"
+msgstr "வாலிஸ் மற்றும் ஃபுடுனா"
+
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "மேற்கு சஹாரா (الصحراء الغربية)"
+
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "யேமன் (اليمن)"
+
+#: 
+msgid "Zambia"
+msgstr "ஜாம்பியா"
+
+#: 
+msgid "Zimbabwe"
+msgstr "ஜிம்பாப்வே"
+
+#: 
+msgid "Please verify your family's information"
+msgstr "உங்கள் குடும்பத் தகவலைச் சரிபார்க்கவும்"
+
+#: 
+msgid "Church Address is not Set."
+msgstr "தேவாலய முகவரி அமைக்கப்படவில்லை."
+
+#: 
+msgid "Church Name is set to default value"
+msgstr "சர்ச் பெயர் இயல்பு மதிப்புக்கு அமைக்கப்பட்டுள்ளது"
+
+#: 
+msgid "SMTP Server info are blank"
+msgstr "SMTP சர்வர் தகவல் காலியாக உள்ளது"
+
+#: 
+msgid "Your system could be more secure by installing an TLS/SSL Cert."
+msgstr "TLS/SSL சான்றிதழை நிறுவுவதன் மூலம் உங்கள் கணினி மிகவும் பாதுகாப்பாக இருக்கும்."
+
+#: 
+msgid "Missing Classification Data"
+msgstr "வகைப்பாடு தரவு இல்லை"
+
+#: 
+msgid "Missing Classification Data for Some People"
+msgstr "சிலருக்கு வகைப்படுத்தல் தரவு இல்லை"
+
+#: 
+msgid "Missing Gender Data"
+msgstr "பாலினத் தரவு இல்லை"
+
+#: 
+msgid "Missing Gender Data for Some People"
+msgstr "சிலருக்கு பாலினத் தரவு இல்லை"
+
+#: 
+msgid "Missing Role Data"
+msgstr "பங்குத் தரவு இல்லை"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "சரிபார்ப்புத் தகவலை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "No Changes"
+msgstr "மாற்றங்கள் இல்லை"
+
+#: 
+msgid "Page not fond"
+msgstr "பக்கம் பிடிக்கவில்லை"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "அச்சச்சோ! பக்கம் கிடைக்கவில்லை."
+
+#: 
+msgid "Family Registration"
+msgstr "குடும்பப் பதிவு"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "உங்கள் குடும்பச் சரிபார்ப்பைத் தொடங்க, பின்வருவனவற்றை உள்ளிடவும்"
+
+#: 
+msgid "Family Verification"
+msgstr "குடும்ப சரிபார்ப்பு"
+
+#: 
+msgid "Family Member(s)"
+msgstr "குடும்ப உறுப்பினர்(கள்)"
+
+#: 
+msgid "Work Email"
+msgstr "பணி மின்னஞ்சல்"
+
+#: 
+msgid "Your verification request is complete"
+msgstr "உங்கள் சரிபார்ப்பு கோரிக்கை முடிந்தது"
+
+#: 
+msgid "We encountered an error submitting with your verification data"
+msgstr "உங்கள் சரிபார்ப்புத் தரவைச் சமர்ப்பிப்பதில் பிழையை எதிர்கொண்டோம்"
+
+#: 
+msgid "Visit our Site"
+msgstr "எங்கள் தளத்தைப் பார்வையிடவும்"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "குடும்பத் தகவல் சரிபார்ப்பைக் கோரவும்"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "குடும்பத் தகவலைச் சரிபார்க்க எப்படிக் கோர விரும்புகிறீர்கள் என்பதைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Online Verification"
+msgstr "ஆன்லைன் சரிபார்ப்பு"
+
+#: 
+msgid "Verified In Person"
+msgstr "நேரில் சரிபார்க்கப்பட்டது"
+
+#: 
+msgid "None State"
+msgstr "எந்த மாநிலமும் இல்லை"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "காப்புப்பிரதி காப்பகத்தில் தரவுத்தளம் இல்லை"
+
+#: 
+msgid "Missing Coordinates"
+msgstr "ஆயத்தொலைவுகள் இல்லை"
+
+#: 
+msgid "Family Coordinates Data for Some Families"
+msgstr "சில குடும்பங்களுக்கான குடும்ப ஒருங்கிணைப்பு தரவு"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "தரவுத்தளத்தில் சேமிக்கும் போது பயனர் உள்ளிடப்பட்ட ஜிப்/அஞ்சல் குறியீடுகளை மேல்முகமாக மாற்றவும்."
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "கையொப்பமிடுவதற்கு முன் ஒரு கடிதத்தை முடிக்கப் பயன்படுகிறது"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "கூகுள் அனலிட்டிக்ஸ் கண்காணிப்பு குறியீடு"
+
+#: 
+msgid "English - United States"
+msgstr "ஆங்கிலம் - அமெரிக்கா"
+
+#: 
+msgid "English - Canada"
+msgstr "ஆங்கிலம் - கனடா"
+
+#: 
+msgid "English - Australia"
+msgstr "ஆங்கிலம் - ஆஸ்திரேலியா"
+
+#: 
+msgid "English - Great Britain"
+msgstr "ஆங்கிலம் - கிரேட் பிரிட்டன்"
+
+#: 
+msgid "German - Germany"
+msgstr "ஜெர்மன் - ஜெர்மனி"
+
+#: 
+msgid "Spanish - Spain"
+msgstr "ஸ்பானிஷ் - ஸ்பெயின்"
+
+#: 
+msgid "French - France"
+msgstr "பிரெஞ்சு - பிரான்ஸ்"
+
+#: 
+msgid "Hungarian"
+msgstr "ஹங்கேரியன்"
+
+#: 
+msgid "Italian - Italy"
+msgstr "இத்தாலியன் - இத்தாலி"
+
+#: 
+msgid "Norwegian"
+msgstr "நார்வேஜியன்"
+
+#: 
+msgid "Dutch - Netherlands"
+msgstr "டச்சு - நெதர்லாந்து"
+
+#: 
+msgid "Polish"
+msgstr "போலிஷ்"
+
+#: 
+msgid "Portuguese - Brazil"
+msgstr "போர்த்துகீசியம் - பிரேசில்"
+
+#: 
+msgid "Romanian - Romania"
+msgstr "ரோமானியன் - ருமேனியா"
+
+#: 
+msgid "Russian"
+msgstr "ரஷ்யன்"
+
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "சாமி (வடக்கு) (சுவீடன்)"
+
+#: 
+msgid "Albanian"
+msgstr "அல்பேனியன்"
+
+#: 
+msgid "Vietnamese"
+msgstr "வியட்நாமியர்"
+
+#: 
+msgid "Chinese - China"
+msgstr "சீனம் - சீனா"
+
+#: 
+msgid "Chinese - Taiwan"
+msgstr "சீனம் - தைவான்"
+
+#: 
+msgid "Maximum upload size"
+msgstr "அதிகபட்ச பதிவேற்ற அளவு"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு இந்த சேவையகத்தின் அதிகபட்ச பதிவேற்ற அளவை விட அதிகமாக உள்ளது"
+
+#: 
+msgid "Unmet Application Prerequisites"
+msgstr "பூர்த்தி செய்யப்படாத விண்ணப்ப முன்நிபந்தனைகள்"
+
+#: 
+msgid "Failed"
+msgstr "தோல்வியடைந்தது"
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "சர்ச் சரிபார்ப்பு கணக்கு எண்"
+
+#: 
+msgid "Missing Role Data for Some People"
+msgstr "சிலருக்கு பங்குத் தரவு இல்லை"
+
+#: 
+msgid "PHP Max File size too small"
+msgstr "PHP அதிகபட்ச கோப்பு அளவு மிகவும் சிறியது"
+
+#: 
+msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
+msgstr "மொபைல் புகைப்படப் பதிவேற்றம் மற்றும் காப்புப்பிரதியை மீட்டமைக்க php பதிவேற்ற வரம்புகளை அதிகரிக்கவும்."
+
+#: 
+msgid "Deactivated the Family"
+msgstr "குடும்பத்தை செயலிழக்கச் செய்தது"
+
+#: 
+msgid "Activated the Family"
+msgstr "குடும்பத்தை செயல்படுத்தியது"
+
+#: 
+msgid "families"
+msgstr "குடும்பங்கள்"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "டெபாசிட் டிக்கெட் வகை. QBDT - Quickbooks"
+
+#: 
+msgid "Financial Settings"
+msgstr "நிதி அமைப்புகள்"
+
+#: 
+msgid "An invalid configuration name has been requested"
+msgstr "தவறான கட்டமைப்பு பெயர் கோரப்பட்டுள்ளது"
+
+#: 
+msgid "An invalid configuration id has been requested"
+msgstr "தவறான உள்ளமைவு ஐடி கோரப்பட்டுள்ளது"
+
+#: 
+msgid "Profile Image uploaded"
+msgstr "சுயவிவரப் படம் பதிவேற்றப்பட்டது"
+
+#: 
+msgid "payments(s)?"
+msgstr "கொடுப்பனவுகள்(கள்)?"
+
+#: 
+msgid "Please ensure this what you want to do.</p>"
+msgstr "நீங்கள் என்ன செய்ய விரும்புகிறீர்கள் என்பதை உறுதிப்படுத்தவும்.</p>"
+
+#: 
+msgid " this Family"
+msgstr "இந்த குடும்பம்"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "செயலிழப்பை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Confirm Activation"
+msgstr "செயல்படுத்துவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "குடும்பத்தின் செயலிழப்பை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "குடும்பத்தின் செயல்பாட்டை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Show neighbors with these classifications:"
+msgstr "இந்த வகைப்பாடுகளுடன் அண்டை வீட்டாரைக் காட்டு:"
+
+#: 
+msgid "Please select a Family."
+msgstr "குடும்பத்தைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Coordinate data base file name:"
+msgstr "ஒருங்கிணைப்பு தரவு அடிப்படை கோப்பு பெயர்:"
+
+#: 
+msgid "Intersect With Cart"
+msgstr "வண்டியுடன் வெட்டுங்கள்"
+
+#: 
+msgid "Family Member"
+msgstr "குடும்ப உறுப்பினர்"
+
+#: 
+msgid "select an option"
+msgstr "ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Direct me"
+msgstr "என்னை இயக்கு"
+
+#: 
+msgid "Your cart is empty"
+msgstr "உங்கள் வண்டி காலியாக உள்ளது"
+
+#: 
+msgid "The record could not be found."
+msgstr "பதிவைக் கண்டுபிடிக்க முடியவில்லை."
+
+#: 
+msgid "The property is already assigned."
+msgstr "பண்பு ஏற்கனவே ஒதுக்கப்பட்டுள்ளது."
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "பண்பு வெற்றிகரமாக ஒதுக்கப்பட்டது."
+
+#: 
+msgid "The property could not be assigned."
+msgstr "பண்பு ஒதுக்க முடியவில்லை."
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "பண்பு வெற்றிகரமாக ஒதுக்கப்பட்டது."
+
+#: 
 msgid " has a type mismatch"
 msgstr "␣ வகை பொருத்தமின்மை உள்ளது"
 
