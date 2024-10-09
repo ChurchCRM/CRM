@@ -6093,6 +6093,86 @@ msgid "Sint Maarten"
 msgstr "சிண்ட் மார்டன்"
 
 #: 
+msgid "Slovakia (Slovensko)"
+msgstr "ஸ்லோவாக்கியா (ஸ்லோவென்ஸ்கோ)"
+
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "ஸ்லோவேனியா (ஸ்லோவேனிஜா)"
+
+#: 
+msgid "Solomon Islands"
+msgstr "சாலமன் தீவுகள்"
+
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "சோமாலியா (Soomaaliya)"
+
+#: 
+msgid "South Africa"
+msgstr "தென்னாப்பிரிக்கா"
+
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "தெற்கு ஜார்ஜியா & தெற்கு சாண்ட்விச் தீவுகள்"
+
+#: 
+msgid "South Korea (대한민국)"
+msgstr "தென் கொரியா (대한민국)"
+
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "தெற்கு சூடான் (جنوب السودان)"
+
+#: 
+msgid "Spain (España)"
+msgstr "ஸ்பெயின் (எஸ்பானா)"
+
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "இலங்கை (ஸ்ரீ இலங்கை)"
+
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "செயின்ட் வின்சென்ட் & கிரெனடைன்ஸ்"
+
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "சூடான் (السودان)"
+
+#: 
+msgid "Suriname"
+msgstr "சுரினாம்"
+
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "ஸ்வால்பார்ட் மற்றும் ஜான் மாயன் (ஸ்வால்பார்ட் மற்றும் ஜான் மாயன்)"
+
+#: 
+msgid "Swaziland"
+msgstr "சுவாசிலாந்து"
+
+#: 
+msgid "Sweden (Sverige)"
+msgstr "ஸ்வீடன் (Sverige)"
+
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "சுவிட்சர்லாந்து (ஸ்வீஸ்)"
+
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "சிரியா (سوريا)"
+
+#: 
+msgid "Taiwan (台灣)"
+msgstr "தைவான் (台灣)"
+
+#: 
+msgid "Tajikistan"
+msgstr "தஜிகிஸ்தான்"
+
+#: 
 msgid "Tanzania"
 msgstr "தான்சானியா"
 
@@ -6571,6 +6651,326 @@ msgstr "பண்பு ஒதுக்க முடியவில்லை."
 #: 
 msgid "The property is successfully unassigned."
 msgstr "பண்பு வெற்றிகரமாக ஒதுக்கப்பட்டது."
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "பண்பு ஒதுக்கப்படாமல் இருக்க முடியாது."
+
+#: 
+msgid "Select event"
+msgstr "நிகழ்வைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Person's Name"
+msgstr "நபரின் பெயர்"
+
+#: 
+msgid "Checked in By (Optional)"
+msgstr "உள்நுழைந்துதவர் (விரும்பினால்)"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "இந்த நிகழ்விற்காக நபர் ஏற்கனவே செக்-இன் (உள்நுழைவு)  செய்யப்பட்டுள்ளார்"
+
+#: 
+msgid "CheckOut Person"
+msgstr "வெளியேறும் நபர்"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "உள்நுழைவு தகவலை நீக்கவும்"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "வயது வந்தோருக்கான வெளியேறும் (செக்கிங் அவுட்) நபர்"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "மின்னஞ்சல்கள்/அறிக்கைகளில் பெயருக்கு முன் உரை"
+
+#: 
+msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
+msgstr "நபர்கள் திருத்துநரில் (எடிட்டரில்) காலியான கடைசிப் பெயரை அனுமதிக்க சரி என அமைக்கவும். குடும்பப் பெயரைச் சரிபார்க்க தவறு என அமைக்கவும்."
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "வைப்பு (டெபாசிட்) சீட்டில் பில் எண்ணிக்கையைக் காட்டவும்"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "உங்கள் கணக்கு நீக்கப்பட்டது"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "உங்கள் ChurchCRM கணக்கு நீக்கப்பட்டது."
+
+#: 
+msgid "Account Locked"
+msgstr "கணக்கு பூட்டப்பட்டது"
+
+#: 
+msgid "Your New Account"
+msgstr "உங்கள் புதிய கணக்கு"
+
+#: 
+msgid "Password Reset"
+msgstr "கடவுச்சொல் மீட்டமைப்பு"
+
+#: 
+msgid "Account Unlocked"
+msgstr "கணக்கு திறக்கப்பட்டது"
+
+#: 
+msgid "Part"
+msgstr "பகுதி"
+
+#: 
+msgid "View Photo"
+msgstr "புகைப்படத்தைப் பார்க்கவும்"
+
+#: 
+msgid "Family Photo"
+msgstr "குடும்ப புகைப்படம்"
+
+#: 
+msgid "Quick Settings"
+msgstr "விரைவு அமைப்புகள்"
+
+#: 
+msgid "Status"
+msgstr "நிலை"
+
+#: 
+msgid "Email export"
+msgstr "மின்னஞ்சல் ஏற்றுமதி"
+
+#: 
+msgid "Include"
+msgstr "அடங்கும்"
+
+#: 
+msgid "Exclude"
+msgstr "விலக்கு"
+
+#: 
+msgid "No property assignments"
+msgstr "பண்பு ஒதுக்கீடுகள் இல்லை"
+
+#: 
+msgid "View Cart"
+msgstr "மின்வண்டியைப் பார்க்கவும்"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "உங்கள் வண்டி காலியாக உள்ளது"
+
+#: 
+msgid "View on Map"
+msgstr "வரைபடத்தில் பார்க்கவும்"
+
+#: 
+msgid "Legend"
+msgstr "பழம்பெரும்க்கதை"
+
+#: 
+msgid "assigned"
+msgstr "ஒதுக்கப்பட்டது"
+
+#: 
+msgid "Photo"
+msgstr "புகைப்படம்"
+
+#: 
+msgid "Payment Details"
+msgstr "கட்டண விவரங்கள்"
+
+#: 
+msgid "Fund Split"
+msgstr "நிதிப் பிரிப்பு"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "பிறந்தநாள் கொண்ட மாணவர்களைக் காட்டுகிறது"
+
+#: 
+msgid "Actions"
+msgstr "செயல்கள்"
+
+#: 
+msgid "Action Confirmation"
+msgstr "செயல் உறுதிப்படுத்தல்"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "தோல்வியுற்ற உள்நுழைவு எண்ணிக்கையை மீட்டமைப்பதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "View Active Families"
+msgstr "செயலில் உள்ள குடும்பங்களைக் காண்க (இல்லையெனில், நீங்கள் அதை மெனுவில் பார்க்க முடியாது)"
+
+#: 
+msgid "View Inactive Families"
+msgstr "செயலற்ற குடும்பங்களைக் காண்க"
+
+#: 
+msgid "Families without Geo Info"
+msgstr "புவியியல் தகவல் இல்லாத குடும்பங்கள்"
+
+#: 
+msgid "Notification for"
+msgstr "இதற்கான அறிவிப்பு"
+
+#: 
+msgid "DEBUG"
+msgstr "பிழைத்திருத்தம்"
+
+#: 
+msgid "INFO"
+msgstr "தகவல்"
+
+#: 
+msgid "NOTICE"
+msgstr "அறிவிப்பு"
+
+#: 
+msgid "WARNING"
+msgstr "எச்சரிக்கை"
+
+#: 
+msgid "ERROR"
+msgstr "பிழை"
+
+#: 
+msgid "CRITICAL"
+msgstr "முக்கியமான"
+
+#: 
+msgid "ALERT"
+msgstr "எச்சரிக்கை"
+
+#: 
+msgid "EMERGENCY"
+msgstr "அவசரநிலை"
+
+#: 
+msgid "Title FirstName MiddleName LastName"
+msgstr "தலைப்பு முதல் பெயர் நடுப்பெயர் கடைசி பெயர்"
+
+#: 
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr "தலைப்பு முதல் பெயர் மிடில்இனிஷியல். கடைசி பெயர்"
+
+#: 
+msgid "LastName, Title FirstName MiddleName"
+msgstr "கடைசிப்பெயர், தலைப்பு முதல் பெயர் நடுப்பெயர்"
+
+#: 
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr "கடைசிப்பெயர், தலைப்பு முதல்பெயர் நடுத்தர ஆரம்பம்"
+
+#: 
+msgid "FirstName MiddleName LastName"
+msgstr "முதல்பெயர் நடுப்பெயர் கடைசிப்பெயர்"
+
+#: 
+msgid "Title FirstName LastName"
+msgstr "தலைப்பு முதல் பெயர் கடைசி பெயர்"
+
+#: 
+msgid "LastName, Title FirstName"
+msgstr "கடைசி பெயர், தலைப்பு முதல் பெயர்"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "ORM மற்றும் பயன்பாட்டுப் பதிவுகளால் பயன்படுத்தப்படும் நிகழ்வுப் பதிவின் தீவிரம்"
+
+#: 
+msgid "Time zone"
+msgstr "நேர மண்டலம்"
+
+#: 
+msgid "Nexmo SMS API Key"
+msgstr "Nexmo SMS API விசை"
+
+#: 
+msgid "A new password was sent to you. Please check your email"
+msgstr "புதிய கடவுச்சொல் உங்களுக்கு அனுப்பப்பட்டது. உங்கள் மின்னஞ்சலைச் சரிபார்க்கவும்"
+
+#: 
+msgid "Kiosk Manager"
+msgstr "கியோஸ்க் மேலாளர்"
+
+#: 
+msgid "Report an issue"
+msgstr "சிக்கலைப் புகாரளிக்கவும்"
+
+#: 
+msgid "Enable New Kiosk Registration"
+msgstr "புதிய கியோஸ்க் பதிவை இயக்கு"
+
+#: 
+msgid "Active Kiosks"
+msgstr "செயலில் உள்ள கியோஸ்க்கள்"
+
+#: 
+msgid "I forgot my password"
+msgstr "எனது கடவுச்சொல்லை மறந்துவிட்டேன்"
+
+#: 
+msgid "Attendees Checked In"
+msgstr "பங்கேற்பாளர்கள் செக்-இன் செய்தனர்"
+
+#: 
+msgid "Text Cart"
+msgstr "உரை வண்டி"
+
+#: 
+msgid "Your Church's Website"
+msgstr "உங்கள் தேவாலயத்தின் இணையதளம்"
+
+#: 
+msgid "Self Verification"
+msgstr "சுய சரிபார்ப்பு"
+
+#: 
+msgid "Deactivate"
+msgstr "செயலிழக்கச் செய்"
+
+#: 
+msgid "Activate"
+msgstr "செயல்படுத்து"
+
+#: 
+msgid "Stack Trace"
+msgstr "அடுக்கி வைத்த சுவடு"
+
+#: 
+msgid "Check Number"
+msgstr "எண் சரிபார்க்கவும்"
+
+#: 
+msgid "Details"
+msgstr "விவரங்கள்"
+
+#: 
+msgid "Verification email sent"
+msgstr "சரிபார்ப்பு மின்னஞ்சல் அனுப்பப்பட்டது"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "குழு குறிப்பிட்ட பண்புகளை இயக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "இது இந்தக் குழுவிற்கான குழு-குறிப்பிட்ட பண்புகள் அட்டவணையை உருவாக்கும். குழு-குறிப்பிட்ட பண்புகள் படிவ திருத்துநருடன் தேவையான பண்புகளை நீங்கள் சேர்க்க வேண்டும்."
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "குழு குறிப்பிட்ட பண்புகளை முடக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "குழு-குறிப்பிட்ட நபர் பண்புகளை நிச்சயமாக அகற்ற விரும்புகிறீர்களா? அனைத்து குழு உறுப்பினர் பண்புகளின் தரவு இழக்கப்படும்!"
 
 #: 
 msgid " has a type mismatch"
