@@ -266,11 +266,11 @@ msgstr "Ignoruj toto pole"
 
 #: 
 msgid "Title"
-msgstr "Název"
+msgstr "Titul"
 
 #: 
 msgid "Suffix"
-msgstr "Přípona"
+msgstr "Za jménem"
 
 #: 
 msgid "Gender"
@@ -2418,7 +2418,7 @@ msgstr "Osobní informace"
 
 #: 
 msgid "Mr., Mrs., Dr., Rev."
-msgstr "Paní, Pan, MUDr., Ing."
+msgstr "Mgr., Ing., MUDr., Bc."
 
 #: 
 msgid "Jr., Sr., III"
@@ -2474,7 +2474,7 @@ msgstr "O mně"
 
 #: 
 msgid "Printable Page"
-msgstr "Tisknutelná strana"
+msgstr "Strana pro tisk"
 
 #: 
 msgid "Edit \"Why Came\" Notes"
@@ -2486,7 +2486,7 @@ msgstr "Smazat tento záznam"
 
 #: 
 msgid "Make User"
-msgstr "Učinit osobu"
+msgstr "Vytvořit uživatele"
 
 #: 
 msgid "Edit User"
@@ -4718,7 +4718,7 @@ msgstr "Nabídka dotazů"
 
 #: 
 msgid "CSV Export Records"
-msgstr "Exportovat záznamy do CSV"
+msgstr "Export do CSV"
 
 #: 
 msgid "People Properties"
@@ -4990,7 +4990,7 @@ msgstr "Příspěvky rodiny podle fiskálního roku"
 
 #: 
 msgid "CustomSearch"
-msgstr "VlastníHledání"
+msgstr "Hledání podle vlastních polí"
 
 #: 
 msgid "Returns each family and the total number of people assigned to them."
@@ -6578,7 +6578,7 @@ msgstr "Ujistěte se, že to chcete udělat.</p>"
 
 #: 
 msgid " this Family"
-msgstr " tato rodina"
+msgstr " rodinu"
 
 #: 
 msgid "Confirm Deactivation"
@@ -7059,7 +7059,7 @@ msgstr "Správce kiosku"
 
 #: 
 msgid "Report an issue"
-msgstr "Nahlašte problém"
+msgstr "Nahlásit problém"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8370,16 +8370,16 @@ msgstr "Maximální počet událostí kalendáře"
 #: 
 msgid "%d month old"
 msgid_plural "%d months old"
-msgstr[0] "%d měsíc starý"
-msgstr[1] "%d měsíce starý"
-msgstr[2] "%d měsíců starý"
+msgstr[0] "%d měsíc"
+msgstr[1] "%d měsíce"
+msgstr[2] "%d měsíců"
 
 #: 
 msgid "%d year old"
 msgid_plural "%d years old"
-msgstr[0] "%d rok starý"
-msgstr[1] "%d roky starý"
-msgstr[2] "%d let starý"
+msgstr[0] "%d rok"
+msgstr[1] "%d roky"
+msgstr[2] "%d let"
 
 #: 
 msgid "Unsupported PHP Version"
@@ -8919,7 +8919,7 @@ msgstr "Dnešní narozeniny"
 
 #: 
 msgid "Today's Wedding Anniversaries"
-msgstr "Dnešní výročí svadby"
+msgstr "Dnešní výročí svatby"
 
 #: 
 msgid "Api Key"
@@ -9168,4 +9168,24 @@ msgstr "Angličtina - Jamajka"
 #: 
 msgid "Swahili"
 msgstr "Svahilština"
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "Jedno písmeno z KřestníhoJména a jedno z Příjmení"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "Dvě písmena z KřestníhoJména"
+
+#: 
+msgid "Set font to render initials. Upload custom font to fonts directory"
+msgstr "Zadejte font pro renderování iniciál. Nahrajte vlastní font do složky fontů."
+
+#: 
+msgid "Person List Columns"
+msgstr "Sloupce seznamu osob"
+
+#: 
+msgid "Family List Columns"
+msgstr "Sloupce seznamu rodin"
 
