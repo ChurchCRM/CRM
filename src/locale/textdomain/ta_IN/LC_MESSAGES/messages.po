@@ -4134,9 +4134,8 @@ msgid "Anonymous"
 msgstr "அநாமதேய"
 
 #: 
-#, fuzzy
 msgid "Attendees for Event"
-msgstr "நிகழ்வு ஐடிக்கு பங்கேற்பாளர்கள்:"
+msgstr "நிகழ்வு பங்கேற்பாளர்கள்"
 
 #: 
 msgid "Yearly"
@@ -6813,6 +6812,86 @@ msgid "View Inactive Families"
 msgstr "செயலற்ற குடும்பங்களைக் காண்க"
 
 #: 
+msgid "SMTP Server timeout in sec"
+msgstr "நொடியில் SMTP சர்வர் நேரம் முடிந்தது"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "செயலற்ற குடும்பங்களை விலக்கு"
+
+#: 
+msgid "The role is already assigned."
+msgstr "பங்கு/வேலை ஏற்கனவே ஒதுக்கப்பட்டுள்ளது."
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "பங்கு/வேலை வெற்றிகரமாக ஒதுக்கப்பட்டது."
+
+#: 
+msgid "The role could not be assigned."
+msgstr "பங்கு/வேலையை ஒதுக்க முடியவில்லை.பங்கு"
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "Bing வரைபட APIக்கு தனிப்பட்ட விசை தேவை"
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "கூகுள் வரைபடங்களை பெரிதாக்கு"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "ஜியோகோடர் வழங்குநரைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "உங்கள் சர்ச் சிஆர்எம் (ChurchCRM) கணக்கு பூட்டப்பட்டது."
+
+#: 
+msgid "A ChurchCRM account was created for you"
+msgstr "உங்களுக்காக ஒரு சர்ச் சிஆர்எம் (ChurchCRM) கணக்கு உருவாக்கப்பட்டது"
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "இந்த இணைப்பைக் கிளிக் செய்வதன் மூலம் உங்கள் சர்ச்சிஆர்எம் (ChurchCRM) கடவுச்சொல்லை மீட்டமைக்கலாம்."
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "உங்கள் சர்ச் சிஆர்எம்  (ChurchCRM)  கணக்கு திறக்கப்பட்டது."
+
+#: 
+msgid "system user created"
+msgstr "கணினி பயனர் உருவாக்கப்பட்டது"
+
+#: 
+msgid "system user updated"
+msgstr "கணினி பயனர் புதுப்பிக்கப்பட்டார்"
+
+#: 
+msgid "system user deleted"
+msgstr "கணினி பயனர் நீக்கப்பட்டார்"
+
+#: 
+msgid "system user password reset"
+msgstr "கணினி பயனர் கடவுச்சொல் மீட்டமைப்பு"
+
+#: 
+msgid "system user changed password"
+msgstr "கணினி பயனர் கடவுச்சொல்லை மாற்றினார்"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "கணினி பயனர் கடவுச்சொல் நிர்வாகியால் மாற்றப்பட்டது"
+
+#: 
+msgid "system user login reset"
+msgstr "கணினி பயனர் உள்நுழைவு மீட்டமைப்பு"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "காணாமல் போன குடும்பங்கள்? குடும்ப அட்சரேகை அல்லது தீர்க்கரேகையை இப்போது புதுப்பிக்கவும்."
+
+#: 
 msgid "Families without Geo Info"
 msgstr "புவியியல் தகவல் இல்லாத குடும்பங்கள்"
 
@@ -6893,6 +6972,86 @@ msgid "Nexmo SMS API Key"
 msgstr "Nexmo SMS API விசை"
 
 #: 
+msgid "Nexmo SMS API Secret"
+msgstr "நெக்ஸ்மோ எஸ்எம்எஸ் ஏபிஐ (Nexmo SMS API) ரகசியம்"
+
+#: 
+msgid "Nexmo SMS From Number"
+msgstr "எண்ணிலிருந்து நெக்ஸ்மோ எஸ்எம்எஸ்"
+
+#: 
+msgid "OpenLP URL"
+msgstr "ஓபன்எல்பி (OpenLP) யுஆர்எல் (URL)"
+
+#: 
+msgid "OpenLP Username"
+msgstr "ஓபன்எல்பி (OpenLP) பயனர்பெயர்"
+
+#: 
+msgid "OpenLP Password"
+msgstr "ஓபன்எல்பி (OpenLP) கடவுச்சொல்"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "கியோஸ்க் தெரிவுநிலை நேர முத்திரை"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "உள்நுழைவுத் திரையில் தொலைந்த கடவுச்சொல் இணைப்பைக் காட்டு/மறை"
+
+#: 
+msgid "Backup"
+msgstr "காப்புப்பிரதி"
+
+#: 
+msgid "Integration"
+msgstr "ஒருங்கிணைப்பு"
+
+#: 
+msgid "Notification"
+msgstr "அறிவிப்பு"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "காப்பாளர்(கள்)"
+
+#: 
+msgid "A notification was triggered by the classroom teacher at"
+msgstr "வகுப்பறை ஆசிரியரால் ஒரு அறிவிப்பு வெளியிடப்பட்டது"
+
+#: 
+msgid "Please go to this location"
+msgstr "தயவுசெய்து இந்த இடத்திற்குச் செல்லவும்"
+
+#: 
+msgid "Your ChurchCRM password has been changed"
+msgstr "உங்கள் சர்ச் சிஆர்எம் (ChurchCRM) கடவுச்சொல் மாற்றப்பட்டது"
+
+#: 
+msgid "Password Reset Link"
+msgstr "கடவுச்சொல் மீட்டமைப்பு இணைப்பு"
+
+#: 
+msgid "Reset Password"
+msgstr "கடவுச்சொல்லை மீட்டமைக்கவும்"
+
+#: 
+msgid "Unable to reset password"
+msgstr "கடவுச்சொல்லை மீட்டமைக்க முடியவில்லை"
+
+#: 
+msgid "Reset your password"
+msgstr "உங்கள் கடவுச்சொல்லை மீட்டமைக்கவும்"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "மன்னிக்கவும், இந்த நேரத்தில் உங்கள் கோரிக்கையை எங்களால் செயல்படுத்த முடியவில்லை."
+
+#: 
+msgid "Login Name is Required"
+msgstr "உள்நுழைவு பெயர் தேவை"
+
+#: 
 msgid "A new password was sent to you. Please check your email"
 msgstr "புதிய கடவுச்சொல் உங்களுக்கு அனுப்பப்பட்டது. உங்கள் மின்னஞ்சலைச் சரிபார்க்கவும்"
 
@@ -6971,6 +7130,1775 @@ msgstr "குழு குறிப்பிட்ட பண்புகளை 
 #: 
 msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
 msgstr "குழு-குறிப்பிட்ட நபர் பண்புகளை நிச்சயமாக அகற்ற விரும்புகிறீர்களா? அனைத்து குழு உறுப்பினர் பண்புகளின் தரவு இழக்கப்படும்!"
+
+#: 
+msgid "Role Name"
+msgstr "பாத்திரத்தின் பெயர்"
+
+#: 
+msgid "Sequence"
+msgstr "வரிசை"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "வண்டியின் நிலையைச் சரிபார்க்கிறது"
+
+#: 
+msgid "All members of this group are in the cart"
+msgstr "இந்தக் குழுவின் அனைத்து உறுப்பினர்களும் வண்டியில் உள்ளனர்"
+
+#: 
+msgid "Remove all"
+msgstr "அனைத்தையும் அகற்று"
+
+#: 
+msgid "Not all members of this group are in the cart"
+msgstr "இந்தக் குழுவின் அனைத்து உறுப்பினர்களும் வண்டியில் இல்லை"
+
+#: 
+msgid "Add all"
+msgstr "அனைத்தையும் சேர்க்கவும்"
+
+#: 
+msgid "Are you sure you want to remove the selected group members?"
+msgstr "தேர்ந்தெடுக்கப்பட்ட குழு உறுப்பினர்களை நிச்சயமாக அகற்ற விரும்புகிறீர்களா?"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "இவரை நீக்க வேண்டுமா? இதை செயல் தவிர்க்க முடியாது."
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "இந்தச் பண்பின் ஒதுக்கீட்டை நிச்சயமாக நீக்க விரும்புகிறீர்களா?"
+
+#: 
+msgid "Select a family"
+msgstr "ஒரு குடும்பத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Release Notes"
+msgstr "வெளியீட்டு குறிப்புகள்"
+
+#: 
+msgid "Move"
+msgstr "நகர்த்தவும்"
+
+#: 
+msgid "Arabic - Egypt"
+msgstr "அரபு - எகிப்து"
+
+#: 
+msgid "Thai"
+msgstr "தாய்"
+
+#: 
+msgid "Your Church's Facebook Page"
+msgstr "உங்கள் தேவாலயத்தின் முகநூல் பக்கம்"
+
+#: 
+msgid "Your Church's X Page"
+msgstr "உங்கள் தேவாலயத்தின் X பக்கம்"
+
+#: 
+msgid "lookup user images on Google when no local image is present"
+msgstr "உள்ளூர் படம் இல்லாதபோது கூகுள் இல் பயனர் படங்களைத் தேடுங்கள்"
+
+#: 
+msgid "Self Register"
+msgstr "சுய பதிவு"
+
+#: 
+msgid "List families that were created via self registration."
+msgstr "சுய பதிவு மூலம் உருவாக்கப்பட்ட குடும்பங்களை பட்டியலிடுங்கள்."
+
+#: 
+msgid "Pending Self Verify"
+msgstr "நிலுவையில் உள்ள சுய சரிபார்ப்பு"
+
+#: 
+msgid "Self Verify"
+msgstr "சுய சரிபார்ப்பு"
+
+#: 
+msgid "Indonesian - Indonesia"
+msgstr "இந்தோனேசிய - இந்தோனேசியா"
+
+#: 
+msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+msgstr "மின்வண்டிக்கு (கார்ட்டிற்கு) POST க்கு நபர்கள் வரிசை, குடும்ப ஐடி (FamilyID) அல்லது குழு ஐடி (GroupID) தேவை"
+
+#: 
+msgid "records(s) successfully added to selected Group."
+msgstr "தேர்ந்தெடுக்கப்பட்ட குழுவில் பதிவுகள்(கள்) வெற்றிகரமாகச் சேர்க்கப்பட்டன."
+
+#: 
+msgid "To export to another For european CharSet use ;"
+msgstr "மற்றொன்றுக்கு ஏற்றுமதி செய்ய ஐரோப்பிய சார்செட் பயன்பாட்டிற்கு ;"
+
+#: 
+msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
+msgstr "இயல்புநிலை UTF-8 ஆகும், ஐரோப்பிய சார்செட்டிற்கு விண்டோஸ்(Windows)-1252ஐப் பயன்படுத்தவும், எடுத்துக்காட்டாக பிரெஞ்சு மொழி."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr "தேதி- எடுப்பவர் (Date-Picker) இல் தேதியை வரையறுக்க, இயல்புநிலைக்கு : yyyy-mm-dd, பிரெஞ்சு மொழியில் : dd/mm/yyyy எடுத்துக்காட்டாக."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr "தேதி- எடுப்பவர் (Date-Picker) இல் தேதியை வரையறுக்க, இயல்புநிலைக்கு : Y-m-d, பிரெஞ்சு மொழியில் : d/m/Y எடுத்துக்காட்டாக."
+
+#: 
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr "ஒரு புதிய குடும்பம் அல்லது நபர் சேர்க்கப்படும் போது தெரிவிக்க வேண்டிய நபர்களின் தனிநபர் ஐடிகளின் கமாவால் பிரிக்கப்பட்ட பட்டியல்"
+
+#: 
+msgid "Allow unauthenticated reads of events from the external calendar API"
+msgstr "வெளிப்புற காலண்டர் API இலிருந்து நிகழ்வுகளின் அங்கீகரிக்கப்படாத வாசிப்புகளை அனுமதிக்கவும்"
+
+#: 
+msgid "New Person Added"
+msgstr "புதிய நபர் சேர்க்கப்பட்டார்"
+
+#: 
+msgid "New Family Added"
+msgstr "புதிய குடும்பம் சேர்க்கப்பட்டது"
+
+#: 
+msgid "Church Greeter"
+msgstr "சர்ச் வாழ்த்துபவர்"
+
+#: 
+msgid "External Calendar API is disabled"
+msgstr "வெளிப்புற காலண்டர் API முடக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Special Group Settings : Sunday School Type"
+msgstr "சிறப்பு குழு அமைப்புகள்: ஞாயிறு பள்ளி வகை"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases :"
+msgstr "ஞாயிறு பள்ளி குழுவை மாற்ற முடியாது, இந்த இரண்டு நிகழ்வுகளில் மட்டுமே:"
+
+#: 
+msgid "You can create/delete sunday school group. "
+msgstr "நீங்கள் ஞாயிறு பள்ளிக் குழுவை உருவாக்கலாம்/நீக்கலாம்."
+
+#: 
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr "புதிய பாத்திரங்களைச் சேர்க்கவும், ஆனால் மாணவர் மற்றும் ஆசிரியர் பாத்திரங்களை மாற்றவோ அல்லது மறுபெயரிடவோ வேண்டாம்."
+
+#: 
+msgid "E"
+msgstr "ஈ"
+
+#: 
+msgid "ENE"
+msgstr "இ என் ஈ (ENE)"
+
+#: 
+msgid "ESE"
+msgstr "ஈ எஸ் ஈ (ESE)"
+
+#: 
+msgid "N"
+msgstr "என் (N)"
+
+#: 
+msgid "NE"
+msgstr "என் ஈ (NE)"
+
+#: 
+msgid "NNE"
+msgstr "என் என் இ (NNE)"
+
+#: 
+msgid "NNW"
+msgstr "என் என் டபிள்யூ (NNW)"
+
+#: 
+msgid "NW"
+msgstr "என் டபிள்யூ (NW)"
+
+#: 
+msgid "S"
+msgstr "எஸ் (S)"
+
+#: 
+msgid "SE"
+msgstr "எஸ் ஈ (SE)"
+
+#: 
+msgid "SSW"
+msgstr "எஸ் எஸ் டபிள்யூ(SSW)"
+
+#: 
+msgid "SW"
+msgstr "எஸ் டபிள்யூ (SW)"
+
+#: 
+msgid "W"
+msgstr "டபிள்யூ (W)"
+
+#: 
+msgid "WNW"
+msgstr "டபிள்யூ என் டபிள்யூ (WNW)"
+
+#: 
+msgid "WSW"
+msgstr "டபிள்யூ எஸ் டபிள்யூ (WSM)"
+
+#: 
+msgid "Persons"
+msgstr "நபர்கள்"
+
+#: 
+msgid "Search Family"
+msgstr "குடும்பத்தைத் தேடுங்கள்"
+
+#: 
+msgid "Show Family Head of House Names"
+msgstr "குடும்பத் தலைவரின் வீட்டுப் பெயர்களைக் காட்டு"
+
+#: 
+msgid "Search Groups"
+msgstr "தேடல் குழுக்கள்"
+
+#: 
+msgid "Search Deposits"
+msgstr "(டெபாசிட்) வைப்புகளைத் தேடுங்கள்"
+
+#: 
+msgid "Search Payments"
+msgstr "கொடுப்பனவுகளைத் தேடுங்கள்"
+
+#: 
+msgid "Quick Search"
+msgstr "விரைவான தேடல்"
+
+#: 
+msgid "Search Addresses"
+msgstr "முகவரிகளைத் தேடுங்கள்"
+
+#: 
+msgid "Maximum number of Families"
+msgstr "குடும்பங்களின் அதிகபட்ச எண்ணிக்கை"
+
+#: 
+msgid "Maximum number of Family H.O.H Names"
+msgstr "குடும்ப H.O.H பெயர்களின் அதிகபட்ச எண்ணிக்கை"
+
+#: 
+msgid "Maximum number of Groups"
+msgstr "குழுக்களின் அதிகபட்ச எண்ணிக்கை"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "டெபாசிட்களின் அதிகபட்ச எண்ணிக்கை"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "கட்டணங்களின் அதிகபட்ச எண்ணிக்கை"
+
+#: 
+msgid "Maximum number of Addresses"
+msgstr "முகவரிகளின் அதிகபட்ச எண்ணிக்கை"
+
+#: 
+msgid "Show type of group:"
+msgstr "குழு வகையைக் காட்டு:"
+
+#: 
+msgid "Add Students"
+msgstr "மாணவர்களைச் சேர்க்கவும்"
+
+#: 
+msgid "Edit this Class"
+msgstr "இந்த வகுப்பைத் திருத்தவும்"
+
+#: 
+msgid "OK"
+msgstr "சரி"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "உறுப்பினர்களுக்கான இலக்குப் பாத்திரத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "பங்குத் தேர்வுத் தேவைக்கு குழு ஐடி (GroupID)  தேவை"
+
+#: 
+msgid "Select Group and Role"
+msgstr "குழு மற்றும் பங்கை/வேலையைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "இவரின் உறுப்பினர் அங்கீகாரத்தை (மெம்பர்ஷிப்பை) நிச்சயமாக அகற்ற விரும்புகிறீர்களா"
+
+#: 
+msgid "All Members"
+msgstr "அனைத்து உறுப்பினர்களும்"
+
+#: 
+msgid "PhotoBook"
+msgstr "புகைப்பட புத்தகம்"
+
+#: 
+msgid "With Photos"
+msgstr "புகைப்படங்களுடன்"
+
+#: 
+msgid "Create PhotoBook"
+msgstr "புகைப்பட புத்தகத்தை உருவாக்கவும்"
+
+#: 
+msgid "SSE"
+msgstr "எஸ்எஸ்இ (SSE)"
+
+#: 
+msgid "Height to use for images"
+msgstr "படங்களுக்குப் பயன்படுத்த வேண்டிய உயரம்"
+
+#: 
+msgid "Width to use for images"
+msgstr "படங்களுக்கு பயன்படுத்த அகலம்"
+
+#: 
+msgid "Width to use for thumbnails"
+msgstr "சிறுபடங்களைப் பயன்படுத்துவதற்கான அகலம்"
+
+#: 
+msgid "Point size to use for initials thumbnails"
+msgstr "முதலெழுத்துக்கள் சிறுபடங்களுக்குப் பயன்படுத்த வேண்டிய புள்ளி அளவு"
+
+#: 
+msgid "Client cache seconds for images"
+msgstr "படங்களுக்கானவாடிக்கையாளர் கேச் வினாடிகள்"
+
+#: 
+msgid "Server cache time for remote images"
+msgstr "ரிமோட் படங்களுக்கான சர்வர் கேச் நேரம்"
+
+#: 
+msgid "Recipient Naming Method"
+msgstr "பெறுநர் பெயரிடும் முறை"
+
+#: 
+msgid "Salutation Utility"
+msgstr "வணக்கம் பயன்பாடு"
+
+#: 
+msgid "Add A Group Name"
+msgstr "குழுவின் பெயரைச் சேர்க்கவும்"
+
+#: 
+msgid "Default Name Group"
+msgstr "இயல்புநிலை பெயர் குழு"
+
+#: 
+msgid "Group Role"
+msgstr "குழு பங்கு"
+
+#: 
+msgid "Members from group"
+msgstr "குழுவிலிருந்து உறுப்பினர்கள்"
+
+#: 
+msgid "Members to another group"
+msgstr "மற்றொரு குழுவின் உறுப்பினர்கள்"
+
+#: 
+msgid "Members to cart"
+msgstr "(கார்ட்டு) மின்வண்டிக்கு உறுப்பினர்கள்"
+
+#: 
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr "அல்லது ஒரு குழுவை உருவாக்கி ஒரு செயலில் (கார்ட்டு) மின்வண்டியைச் சேர்க்கவும்"
+
+#: 
+msgid "Create Group + ADD Cart"
+msgstr "குழு + மின்வண்டியை  (கார்ட்டை)  சேர்க்கவும்"
+
+#: 
+msgid "Move Event"
+msgstr "நிகழ்வை நகர்த்தவும்"
+
+#: 
+msgid "Resize Event"
+msgstr "நிகழ்வின் அளவை மாற்றவும்"
+
+#: 
+msgid "Text from"
+msgstr "இருந்து உரை"
+
+#: 
+msgid "Profile"
+msgstr "சுயவிவரம்"
+
+#: 
+msgid "Sign out"
+msgstr "வெளியேறு"
+
+#: 
+msgid "Sermon Text"
+msgstr "பிரசங்க உரை"
+
+#: 
+msgid "Change Settings"
+msgstr "அமைப்புகளை மாற்றவும்"
+
+#: 
+msgid "Unknown Type"
+msgstr "தெரியாத வகை"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "(கார்ட்டு) மின்வண்டிக்கான நபர் ஐடி எண்ணாக இருக்க வேண்டும்"
+
+#: 
+msgid "GroupID for Cart must be numeric"
+msgstr "(கார்ட்டு) மின்வண்டிக்கான குரூப்ஐடி எண்ணாக இருக்க வேண்டும்"
+
+#: 
+msgid "FamilyID for Cart must be numeric"
+msgstr "(கார்ட்டு) மின்வண்டிக்கான குடும்ப ஐடி (FamilyID) எண்ணாக இருக்க வேண்டும்"
+
+#: 
+msgid "Search People"
+msgstr "நபர்களைத் தேடுங்கள்"
+
+#: 
+msgid "Maximum number of People"
+msgstr "அதிகபட்ச மக்கள் எண்ணிக்கை"
+
+#: 
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "ஒப்புதல் வாக்குமூலத்தின் தந்தை பட்டியலிடப்பட்டுள்ள புலம், குழு வகையைச் சேர்ந்தவராக இருக்க வேண்டும்"
+
+#: 
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "கடைசியாக ஒப்புதல் வாக்குமூலம் சேமிக்கப்பட்டுள்ள களம், தேதி வகையாக இருக்க வேண்டும்"
+
+#: 
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "இந்த சர்ச் சிஆர்எம் (ChurchCRM) தரவுத்தளத்தை எச்டிடிபிஎஸ் (HTTPS) வழியாக அணுக வேண்டும்"
+
+#: 
+msgid "People Setup"
+msgstr "மக்கள் அமைப்பு"
+
+#: 
+msgid "Church Services"
+msgstr "தேவாலய சேவைகள்"
+
+#: 
+msgid "People Reports"
+msgstr "மக்கள் அறிக்கைகள்"
+
+#: 
+msgid "People Dashboard"
+msgstr "மக்கள் டாஷ்போர்டு"
+
+#: 
+msgid "People Functions"
+msgstr "மக்கள் செயல்பாடுகள்"
+
+#: 
+msgid "People Directory"
+msgstr "மக்கள் அடைவு"
+
+#: 
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "அனைத்து நபர்களின் அச்சிடக்கூடிய கோப்பகம், ஒதுக்கப்பட்ட குடும்பத்தின் அடிப்படையில் குழுவாக உள்ளது"
+
+#: 
+msgid "of People"
+msgstr "மக்கள்"
+
+#: 
+msgid "System Upgrade"
+msgstr "கணினி மேம்படுத்தல்"
+
+#: 
+msgid "Upgrade Required"
+msgstr "மேம்படுத்தல் தேவை"
+
+#: 
+msgid "Current DB Version: "
+msgstr "தற்போதைய டி. பி (DB) பதிப்பு:"
+
+#: 
+msgid "Current Software Version: "
+msgstr "தற்போதைய மென்பொருள் பதிப்பு:"
+
+#: 
+msgid "Upgrade database"
+msgstr "தரவுத்தளத்தை மேம்படுத்தவும்"
+
+#: 
+msgid "Show Birthdates Anniversaries on start up of the CRM"
+msgstr "சி ஆர் எம் (CRM) இன் தொடக்கத்தில் பிறந்தநாள் ஆண்டுகளைக் காட்டு"
+
+#: 
+msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
+msgstr "பேனர் மறைந்து போகும் வரை பக்கம் ஏற்றப்பட்ட வினாடிகளின் எண்ணிக்கை, இயல்புநிலை 10 வினாடிகள்"
+
+#: 
+msgid "Help & Manual"
+msgstr "உதவி & கையேடு"
+
+#: 
+msgid "Contributing"
+msgstr "பங்களிக்கிறது"
+
+#: 
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr "பரிமாற்றம் சேவையகம் (ரிலேயிங் சர்வர்) வழங்கினால், SMTP குறியாக்கத்தைத் தானாக இயக்கவும்."
+
+#: 
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr "பயன்படுத்த குறியாக்க அமைப்பை அமைக்கவும் - ssl (நிறுத்தப்பட்டது) அல்லது tls"
+
+#: 
+msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr "டாஷ்போர்டு சேவை சக்தி வாய்ந்த (டைனமிக்) ஒத்திசைவற்ற புதுப்பிப்பு இடைவெளி, இயல்புநிலை 60 வினாடிகள்"
+
+#: 
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr "தேர்ந்தெடுக்கப்பட்ட வரிசைகளுக்கு (PDF) வைப்புச் சீட்டை உருவாக்கவும்"
+
+#: 
+msgid "Add All to Cart"
+msgstr "அனைத்தையும் மின்வண்டியில் சேர்க்கவும்"
+
+#: 
+msgid "Remove All from Cart"
+msgstr "கார்ட்டில் இருந்து அனைத்தையும் அகற்று"
+
+#: 
+msgid "records(s) successfully deleted from the selected Group."
+msgstr "தேர்ந்தெடுக்கப்பட்ட குழுவிலிருந்து பதிவுகள்(கள்) வெற்றிகரமாக நீக்கப்பட்டன."
+
+#: 
+msgid "Not Found"
+msgstr "கிடைக்கவில்லை"
+
+#: 
+msgid "Oops!"
+msgstr "அச்சச்சோ!"
+
+#: 
+msgid "Meanwhile, you may"
+msgstr "இதற்கிடையில், நீங்கள் செய்யலாம்"
+
+#: 
+msgid "Database Only (.sql)"
+msgstr "தரவுத்தளம் மட்டும் (.sql)"
+
+#: 
+msgid "Database and Photos (.tar.gz)"
+msgstr "தரவுத்தளம் மற்றும் புகைப்படங்கள் (.tar.gz)"
+
+#: 
+msgid "User must be an Admin"
+msgstr "பயனர் ஒரு நிர்வாகியாக இருக்க வேண்டும்"
+
+#: 
+msgid "No logged in user"
+msgstr "உள்நுழைந்த பயனர் இல்லை"
+
+#: 
+msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
+msgstr "நிலையான சுயவிவரப் பட ஐகான் அளவை மக்கள் பட்டியல்களில் பயன்படுத்த பிக்சல்களில் அமைக்கவும், இயல்புநிலை 85 பிக்சல்கள்."
+
+#: 
+msgid "not found"
+msgstr "காணப்படவில்லை"
+
+#: 
+msgid "Deleted from group"
+msgstr "குழுவிலிருந்து நீக்கப்பட்டது"
+
+#: 
+msgid "Added to group"
+msgstr "குழுவில் சேர்க்கப்பட்டது"
+
+#: 
+msgid "We could not find the person(s) you were looking for."
+msgstr "நீங்கள் தேடும் நபரை எங்களால் கண்டுபிடிக்க முடியவில்லை."
+
+#: 
+msgid "return to People Dashboard"
+msgstr "மக்கள் டாஷ்போர்டுக்குத் திரும்பு"
+
+#: 
+msgid "User must have MenuOptions permission"
+msgstr "பயனருக்கு மெனு விருப்பங்கள் அனுமதி இருக்க வேண்டும்"
+
+#: 
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "SMTP ஹோஸ்ட் அமைக்கப்படவில்லை, அமைப்புகள் பக்கத்தைப் பார்வையிடவும்"
+
+#: 
+msgid "Debug Email Connection"
+msgstr "பிழைத்திருத்த மின்னஞ்சல் இணைப்பு"
+
+#: 
+msgid "This Family is Deactivated"
+msgstr "இந்த குடும்பம் செயலிழக்கப்பட்டது"
+
+#: 
+msgid "Metadata"
+msgstr "மெட்டாடேட்டா"
+
+#: 
+msgid "The database has been cleared."
+msgstr "தரவுத்தளம் அழிக்கப்பட்டது."
+
+#: 
+msgid "User must have bAddEvent permissions"
+msgstr "பயனருக்கு bAddEvent அனுமதிகள் இருக்க வேண்டும்"
+
+#: 
+msgid "Anniversaries"
+msgstr "ஆண்டுவிழாக்கள்"
+
+#: 
+msgid "New Family Notification Email Error"
+msgstr "புதிய குடும்ப அறிவிப்பு மின்னஞ்சல் பிழை"
+
+#: 
+msgid "New Person Notification Email Error"
+msgstr "புதிய நபர் அறிவிப்பு மின்னஞ்சல் பிழை"
+
+#: 
+msgid "View User"
+msgstr "பயனரைக் காண்க"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "தவறான கோரிக்கை: காலண்டர் ஐடி இல்லை"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "கிடைக்கவில்லை: அறியப்படாத காலண்டர் ஐடி"
+
+#: 
+msgid "no found or user without an email"
+msgstr "மின்னஞ்சல் இல்லாமல் இல்லை அல்லது பயனர் இல்லை"
+
+#: 
+msgid "UserName not set"
+msgstr "பயனர்பெயர் அமைக்கப்படவில்லை"
+
+#: 
+msgid "The people and families has been cleared from the database."
+msgstr "தரவுத்தளத்திலிருந்து மக்கள் மற்றும் குடும்பங்கள் அழிக்கப்பட்டுள்ளன."
+
+#: 
+msgid "Self Registrations"
+msgstr "சுய பதிவுகள்"
+
+#: 
+msgid "Public Calendar"
+msgstr "பொது நாட்காட்டி"
+
+#: 
+msgid "Private Calendar"
+msgstr "தனிப்பட்ட நாட்காட்டி"
+
+#: 
+msgid "Username"
+msgstr "பயனர் பெயர்"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "நீங்கள் நிச்சயமாக நகர்த்த விரும்புகிறீர்களா"
+
+#: 
+msgid "from"
+msgstr "இருந்து"
+
+#: 
+msgid "to"
+msgstr "இதுவரை"
+
+#: 
+msgid "Are you sure you want to change the end time for "
+msgstr "இறுதி நேரத்தை நிச்சயமாக மாற்ற விரும்புகிறீர்களா"
+
+#: 
+msgid "Access Token"
+msgstr "அணுகல் டோக்கன்"
+
+#: 
+msgid "New Access Token"
+msgstr "புதிய அணுகல் டோக்கன்"
+
+#: 
+msgid "Delete Access Token"
+msgstr "அணுகல் டோக்கனை நீக்கு"
+
+#: 
+msgid "ICS URL"
+msgstr "ஐ சி எஸ் (ICS) URL"
+
+#: 
+msgid "JSON URL"
+msgstr "JSON URL"
+
+#: 
+msgid "Foreground Color"
+msgstr "முன்புற நிறம்"
+
+#: 
+msgid "Background Color"
+msgstr "பின்னணி நிறம்"
+
+#: 
+msgid "Delete Calendar"
+msgstr "காலெண்டரை நீக்கு"
+
+#: 
+msgid "Invalid Entry"
+msgstr "தவறான நுழைவு"
+
+#: 
+msgid "Calendar Name"
+msgstr "நாட்காட்டி பெயர்"
+
+#: 
+msgid "New Calendar"
+msgstr "புதிய நாட்காட்டி"
+
+#: 
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI முடக்கப்பட்டுள்ளது, ஆனால் சில காலெண்டர்களில் அணுகல் டோக்கன்கள் உள்ளன"
+
+#: 
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr "கேலெண்டர்கள் பகிரப்படுவதற்கு, குறிப்பிட்ட அணுகல் டோக்கனைக் கொண்ட காலெண்டருடன் கூடுதலாக bEnableExternalCalendarAPI அமைப்பும் இயக்கப்பட்டிருக்க வேண்டும்."
+
+#: 
+msgid "Links"
+msgstr "இணைப்புகள்"
+
+#: 
+msgid "Show custom links on the left menu."
+msgstr "இடதுபுற மெனுவில் தனிப்பயன் இணைப்புகளைக் காட்டு."
+
+#: 
+msgid "Enable Sunday School left menu."
+msgstr "ஞாயிறு பள்ளி இடது மெனுவை இயக்கு."
+
+#: 
+msgid "Enable Finance menu"
+msgstr "நிதி மெனுவை இயக்கவும்"
+
+#: 
+msgid "Enable Events menu."
+msgstr "நிகழ்வுகள் மெனுவை இயக்கு."
+
+#: 
+msgid "Enable Calendar menu."
+msgstr "கேலெண்டர் மெனுவை இயக்கு."
+
+#: 
+msgid "Enable Fundraiser menu."
+msgstr "நிதி திரட்டல் மெனுவை இயக்கு."
+
+#: 
+msgid "Enable Email menu."
+msgstr "மின்னஞ்சல் மெனுவை இயக்கவும்."
+
+#: 
+msgid "Enabled Features"
+msgstr "இயக்கப்பட்ட அம்சங்கள்"
+
+#: 
+msgid "Validation Error"
+msgstr "சரிபார்ப்பு பிழை"
+
+#: 
+msgid "Link Not found"
+msgstr "இணைப்பு கிடைக்கவில்லை"
+
+#: 
+msgid "Email Functions"
+msgstr "மின்னஞ்சல் செயல்பாடுகள்"
+
+#: 
+msgid "Debug"
+msgstr "பிழைத்திருத்தம்"
+
+#: 
+msgid "Family Custom Fields"
+msgstr "குடும்ப தனிப்பயன் புலங்கள்"
+
+#: 
+msgid "Person Custom Fields"
+msgstr "நபர் தனிப்பயன் புலங்கள்"
+
+#: 
+msgid "Donation Funds"
+msgstr "நன்கொடை நிதிகள்"
+
+#: 
+msgid "Unable to open file"
+msgstr "கோப்பை திறக்க முடியவில்லை"
+
+#: 
+msgid "Missing calendar access token"
+msgstr "காலெண்டர் அணுகல் டோக்கன் இல்லை"
+
+#: 
+msgid "Calendar access token not found"
+msgstr "கேலெண்டர் அணுகல் டோக்கன் கிடைக்கவில்லை"
+
+#: 
+msgid "User must have Delete Records permission"
+msgstr "பதிவுகளை நீக்க பயனர் அனுமதி பெற்றிருக்க வேண்டும்"
+
+#: 
+msgid "ChurchCRM Central Notifications URL"
+msgstr "சர்ச்சிஆர்எம் மைய அறிவிப்புகள் URL"
+
+#: 
+msgid "Follow us on"
+msgstr "எங்களைப் பின்தொடரவும்"
+
+#: 
+msgid "invalid event type id"
+msgstr "தவறான நிகழ்வு வகை ஐடி"
+
+#: 
+msgid "invalid calendar pinning"
+msgstr "தவறான காலெண்டர் பின்னிணைக்கிறது"
+
+#: 
+msgid "invalid group id"
+msgstr "தவறான குழு ஐடி"
+
+#: 
+msgid "invalid status value"
+msgstr "தவறான நிலை மதிப்பு"
+
+#: 
+msgid "invalid export value"
+msgstr "தவறான ஏற்றுமதி மதிப்பு"
+
+#: 
+msgid "Invalid User/Password"
+msgstr "தவறான பயனர்/கடவுச்சொல்"
+
+#: 
+msgid "Find Duplicate Emails"
+msgstr "நகல் மின்னஞ்சல்களைக் கண்டறியவும்"
+
+#: 
+msgid "Duplicate Emails"
+msgstr "நகல் மின்னஞ்சல்கள்"
+
+#: 
+msgid "HTML URL"
+msgstr "எச்டிஎம்எல் (HTML) URL"
+
+#: 
+msgid "Latest Persons"
+msgstr "சமீபத்திய நபர்கள்"
+
+#: 
+msgid "Updated Persons"
+msgstr "புதுப்பிக்கப்பட்ட நபர்கள்"
+
+#: 
+msgid "Custom Menus"
+msgstr "தனிப்பயன் மெனுக்கள்"
+
+#: 
+msgid "User must have Manage Groups permission"
+msgstr "குழுவை நிர்வகிக்க பயனர் அனுமதி பெற்றிருக்க வேண்டும்"
+
+#: 
+msgid "Missing"
+msgstr "காணவில்லை"
+
+#: 
+msgid "User must have Edit Records permission"
+msgstr "பதிவுகளைத் திருத்துவதற்கு பயனர் அனுமதி பெற்றிருக்க வேண்டும்"
+
+#: 
+msgid "User must have Finance permission"
+msgstr "பயனருக்கு நிதி அனுமதி இருக்க வேண்டும்"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "உங்களை நீக்க முடியாது"
+
+#: 
+msgid "The role could not be found."
+msgstr "பாத்திரத்தை கண்டுபிடிக்க முடியவில்லை."
+
+#: 
+msgid "Add Menu"
+msgstr "மெனுவைச் சேர்க்கவும்"
+
+#: 
+msgid "Menu Name"
+msgstr "மெனு பெயர்"
+
+#: 
+msgid "Max 20 char"
+msgstr "அதிகபட்சம் 20 எழுத்துகள்"
+
+#: 
+msgid "Link Address"
+msgstr "இணைப்பு முகவரி"
+
+#: 
+msgid "Start with http:// or https://"
+msgstr "http:// அல்லது https:// உடன் தொடங்கவும்"
+
+#: 
+msgid "Menus"
+msgstr "மெனுக்கள்"
+
+#: 
+msgid "is disabled"
+msgstr "முடக்கப்பட்டுள்ளது"
+
+#: 
+msgid "System Information"
+msgstr "கணினி தகவல்"
+
+#: 
+msgid "Software Version"
+msgstr "மென்பொருள் பதிப்பு"
+
+#: 
+msgid "Valid Mail Server Settings"
+msgstr "செல்லுபடியாகும் அஞ்சல் சேவையக அமைப்புகள்"
+
+#: 
+msgid "Database"
+msgstr "தரவுத்தளம்"
+
+#: 
+msgid "Database Version"
+msgstr "தரவுத்தள பதிப்பு"
+
+#: 
+msgid "Application Prerequisites"
+msgstr "விண்ணப்ப முன்நிபந்தனைகள்"
+
+#: 
+msgid "Invalid country name supplied"
+msgstr "தவறான நாட்டின் பெயர் வழங்கப்பட்டது"
+
+#: 
+msgid "LastName FirstName"
+msgstr "கடைசி பெயர் முதல் பெயர்"
+
+#: 
+msgid "Holidays"
+msgstr "விடுமுறை நாட்கள்"
+
+#: 
+msgid "Person Name"
+msgstr "நபர் பெயர்"
+
+#: 
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "சர்ச் வாழ்த்துபவர் மின்னஞ்சல் 1, அதிகபட்சம் 255 எழுத்துகளுக்கான தனிப்பயன் செய்தி"
+
+#: 
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "சர்ச் வாழ்த்துபவர் மின்னஞ்சல் 2க்கான தனிப்பயன் செய்தி, அதிகபட்சம் 255 எழுத்துகள்"
+
+#: 
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "புதிய உறுப்பினர் மின்னஞ்சல் அறிவிப்பு அமைப்பில் தொடர்பு மற்றும் மக்கள்தொகைத் தரவைச் சேர்க்கவும்"
+
+#: 
+msgid "Include family custom properties in global search."
+msgstr "உலகளாவிய தேடலில் குடும்ப தனிப்பயன் பண்புகளைச் சேர்க்கவும்."
+
+#: 
+msgid "Latvia (Latvija)"
+msgstr "லாட்வியா (லத்விஜா)"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "கருத்து இல்லாமல் புதிய வைப்புத்தொகையைச் சேர்க்க உள்ளீர்கள்"
+
+#: 
+msgid "Families Without Emails"
+msgstr "மின்னஞ்சல்கள் இல்லாத குடும்பங்கள்"
+
+#: 
+msgid "Record"
+msgstr "பதிவு"
+
+#: 
+msgid "Records"
+msgstr "பதிவுகள்"
+
+#: 
+msgid "Emptied into Event"
+msgstr "நிகழ்வில் காலி"
+
+#: 
+msgid "integrityCheck.json file missing"
+msgstr "integrityCheck.json கோப்பு இல்லை"
+
+#: 
+msgid "Passed"
+msgstr "தேர்ச்சி பெற்றார்"
+
+#: 
+msgid "PHP Max Execution Time is too Short"
+msgstr "PHP அதிகபட்ச செயலாக்க நேரம் மிகக் குறைவு"
+
+#: 
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "காப்புப்பிரதி மற்றும் மீட்டமைக்க அனுமதிக்க PHP செயலாக்க நேர வரம்பை அதிகரிக்கவும்."
+
+#: 
+msgid "Application Integrity Check"
+msgstr "விண்ணப்ப ஒருமைப்பாடு சரிபார்ப்பு"
+
+#: 
+msgid "Focus"
+msgstr "கவனம்"
+
+#: 
+msgid "Unfocus"
+msgstr "கவனம் செலுத்து"
+
+#: 
+msgid "Warning: Signature mismatch"
+msgstr "எச்சரிக்கை: கையொப்பம் பொருந்தவில்லை"
+
+#: 
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "சில சர்ச்சிஆர்எம் (ChurchCRM) கணினி கோப்புகள் கடைசியாக நிறுவப்பட்டதிலிருந்து மாற்றியமைக்கப்பட்டிருக்கலாம்."
+
+#: 
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "இந்த மேம்படுத்தல், கோப்புகளை அதிகாரப்பூர்வ பதிப்பிற்கு மாற்றியமைப்பதன் மூலம் பின்வரும் கோப்புகளுக்கு செய்யப்பட்ட எந்த தனிப்பயனாக்கத்தையும் முற்றிலும் அழித்துவிடும்."
+
+#: 
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "இந்தக் கோப்புகளில் நீங்கள் செய்த மாற்றங்களைப் பராமரிக்க விரும்பினால், இந்த மேம்படுத்தலைத் தொடர்வதற்கு முன், இந்தக் கோப்புகளை கைமுறையாகக் காப்புப் பிரதி எடுக்கவும், பின்னர் மேம்படுத்தல் முடிந்ததும் கோப்புகளை கைமுறையாக மீட்டெடுக்கவும்."
+
+#: 
+msgid "Integrity Check Details:"
+msgstr "நேர்மை சரிபார்ப்பு விவரங்கள்:"
+
+#: 
+msgid "I Understand"
+msgstr "எனக்கு புரிகிறது"
+
+#: 
+msgid "Unsupported Deposit Types Detected"
+msgstr "ஆதரிக்கப்படாத டெபாசிட் வகைகள் கண்டறியப்பட்டன"
+
+#: 
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "eGive, கிரெடிட் கார்டு மற்றும் வங்கி வரைவுப் பணம் செலுத்துவதற்கான ஆதரவு நிறுத்தப்பட்டது. தற்போதுள்ள வங்கி அல்லாத அறிக்கைகளை இனி எதிர்கால பதிப்புகளில் அணுக முடியாது."
+
+#: 
+msgid "Estonian"
+msgstr "எஸ்டோனியன்"
+
+#: 
+msgid "Error decoding integrity check result file"
+msgstr "ஒருமைப்பாடு சரிபார்ப்பு முடிவு கோப்பை டிகோட் செய்வதில் பிழை"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "கையொப்ப வரையறை கோப்பை டிகோட் செய்வதில் பிழை"
+
+#: 
+msgid "Generate Backup"
+msgstr "காப்புப்பிரதியை உருவாக்கவும்"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "ரிமோட் பேக்கப் எண்ட்பாயிண்ட். WebDAV என்றால், இது url குறியிடப்பட்டதாக இருக்க வேண்டும்."
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "காப்புப்பிரதியில் முதலெழுத்துக்கள் படக் கோப்புகள், தொலைநிலைப் படக் கோப்புகள் (gravatar) மற்றும் சிறுபடங்களைச் சேர்க்கவும். இந்த கோப்புகள் பொதுவாக மீட்டமைக்கப்பட்ட பிறகு மீண்டும் உருவாக்க முடியும் மற்றும் செயலாக்க நேரம் மற்றும் சேமிப்பகத்தின் பெரிய செலவில் காப்புப் பிரதி காப்பகத்திற்கு மிகக் குறைந்த மதிப்பைச் சேர்க்கலாம்."
+
+#: 
+msgid "Password (if any)"
+msgstr "கடவுச்சொல் (ஏதேனும் இருந்தால்)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "இந்தப் பக்கத்தில் உள்ள அனைத்து தகவல்களும் சரியானவை."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "பின்வருவனவற்றுடன் எனது குடும்பத் தகவலைப் புதுப்பிக்கவும்"
+
+#: 
+msgid "Age Histogram"
+msgstr "வயது வரலாற்று வரைபடம்"
+
+#: 
+msgid "Missing event id"
+msgstr "நிகழ்வு ஐடி இல்லை"
+
+#: 
+msgid "Event not found"
+msgstr "நிகழ்வு கிடைக்கவில்லை"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "அமர்வு நேரம் முடிவடையும் நேரம் வினாடிகளில்\n"
+"அமர்வு நேரம் முடிவடைவதை முடக்க பூஜ்ஜியமாக அமைக்கவும்."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "புதிய கடவுச்சொல் பழையவற்றிலிருந்து வேறுபட வேண்டிய குறைந்தபட்சத் தொகை (# எழுத்துகள் மாற்றப்பட்டுள்ளன)\n"
+"இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும்"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "ஒரு பயனர் கணக்கு பூட்டப்படுவதற்கு முன் அனுமதிக்கப்படும் தோல்வியுற்ற உள்நுழைவுகளின் அதிகபட்ச எண்ணிக்கை.\n"
+"அதிகபட்சத்தை அடைந்ததும், நிர்வாகி கணக்கை மீண்டும் இயக்க வேண்டும்.\n"
+"இந்த அம்சம் தானியங்கு கடவுச்சொல் யூகிக்கும் தாக்குதல்களிலிருந்து பாதுகாக்க உதவுகிறது.\n"
+"இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும்."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "PDF கையாளுதல் முறை.\n"
+"1 = கோப்பைச் சேமி உரையாடல்\n"
+"2 = தற்போதைய உலாவி சாளரத்தில் திறக்கவும்"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "காட்சிக்காக ஒதுக்கப்பட்ட குடும்பத்திலிருந்து பெறப்பட்ட நபரின் தகவல் கிடைக்கவில்லையா?\n"
+"இந்த விருப்பம் ஒரு நபருக்கு ஒதுக்கப்பட்ட குடும்பப் பதிவில் இருந்து குறிப்பிட்ட தகவலை ஏற்படுத்துகிறது\n"
+"அந்த நபருக்கு தொடர்புடைய தகவல் உள்ளிடப்படவில்லை என்றால் காட்டப்படும்."
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "அனைத்து குழு உறுப்பினர்களின் தொலைபேசி எண்களையும் நகலெடுக்க CTRL + C ஐ அழுத்தவும்"
+
+#: 
+msgid "Verify People"
+msgstr "நபர்களை சரிபார்க்கவும்"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "மக்கள் டாஷ்போர்டைச் சரிபார்க்கிறார்கள்"
+
+#: 
+msgid "Download family letters"
+msgstr "குடும்ப கடிதங்களைப் பதிவிறக்கவும்"
+
+#: 
+msgid "Send family email"
+msgstr "குடும்ப மின்னஞ்சல் அனுப்பவும்"
+
+#: 
+msgid "Verification recorded"
+msgstr "சரிபார்ப்பு பதிவு செய்யப்பட்டது"
+
+#: 
+msgid "Verification URL created"
+msgstr "சரிபார்ப்பு URL உருவாக்கப்பட்டது"
+
+#: 
+msgid "URL"
+msgstr "யு ஆர் எல் (URL)"
+
+#: 
+msgid "PDF"
+msgstr "பி டி எஃப் (PDF)  "
+
+#: 
+msgid "Error sending email(s)"
+msgstr "மின்னஞ்சல்(களை) அனுப்புவதில் பிழை"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "மேலும் தகவலுக்கு பதிவுகளைப் பார்க்கவும்"
+
+#: 
+msgid "Verification URL"
+msgstr "சரிபார்ப்பு URL"
+
+#: 
+msgid "Reset System"
+msgstr "கணினியை மீட்டமைக்கவும்"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "எதிர்பாராத நபர் ஐடி"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "மென்பொருள் புதுப்பிப்பு சரிபார்ப்புக்கான மணிநேர இடைவெளி"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "கடைசி மென்பொருள் புதுப்பிப்பு நேர முத்திரையைச் சரிபார்க்கவும்"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "GitHub இல் 'முன் வெளியீடு' எனக் குறிக்கப்பட்ட வெளியீட்டிற்கு கணினி மேம்படுத்தல்களை அனுமதிக்கவும்"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "கேலெண்டர் நிகழ்வுகளைத் தேடுங்கள்"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "காலண்டர் நிகழ்வுகளின் அதிகபட்ச எண்ணிக்கை"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d மாத வயது\n"
+"பன்மை: %d மாதங்கள் பழையது\n"
+"ஒன்று\n"
+"மற்றவை\n"
+"\n"
+"%d வயது\n"
+"பன்மை: %d வயது\n"
+"ஒன்று\n"
+"மற்றவை\n"
+"\n"
+"ஆதரிக்கப்படாத PHP பதிப்பு"
+msgstr[1] "%d மாத வயது\n"
+"பன்மை: %d மாதங்கள் பழையது"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d வயது"
+msgstr[1] "பன்மை: %d வயது"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "ஆதரிக்கப்படாத PHP பதிப்பு"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "இந்த PHP பதிப்பிற்கான ஆதரவு விரைவில் அகற்றப்படும். தற்போதைய PHP பதிப்பு:"
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "PHP ZipArchive இல்லை"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "மேம்படுத்தலை ஆதரிக்க PHP ZipArchive தேவை"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "மின்வண்டியில் (கார்ட்டில்) முடிவுகளைச் சேர்க்கவும்"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "மின்வண்டியில் (கார்ட்டில்) இருந்து முடிவுகளை அகற்று"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "எச்சரிக்கை: மேம்படுத்தலுக்கு முந்தைய பணிகள் கண்டறியப்பட்டன"
+
+#: 
+msgid "Some conditions have been identified which may prevent a successful upgrade"
+msgstr "வெற்றிகரமான மேம்படுத்தலைத் தடுக்கக்கூடிய சில நிபந்தனைகள் அடையாளம் காணப்பட்டுள்ளன"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "மேம்படுத்தலைத் தொடர்வதற்கு முன், இந்தப் பணிகளைச் சரிபார்த்துத் தணிக்கவும்:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "தரவுத்தள மீட்டமைப்பு செயல்பாடுகள்"
+
+#: 
+msgid "Reset Members"
+msgstr "உறுப்பினர்களை மீட்டமைக்கவும்"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "இது உறுப்பினர் தரவு, நபர்கள் மற்றும் குடும்பங்கள் அனைத்தையும் அகற்றும், செயல்தவிர்க்க முடியாது."
+
+#: 
+msgid "Reset Families/People"
+msgstr "குடும்பங்கள்/மக்கள் மீட்டமை"
+
+#: 
+msgid "Reset Database"
+msgstr "தரவுத்தளத்தை மீட்டமைக்கவும்"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "இது கணினி தரவை மீட்டமைத்து புதிய நிறுவலாக கணினியை மறுதொடக்கம் செய்யும்."
+
+#: 
+msgid "Clear Filter"
+msgstr "வடிகட்டியை அழி"
+
+#: 
+msgid "Add Person"
+msgstr "நபரைச் சேர்க்கவும்"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "போர்த்துகீசியம் - போர்ச்சுகல்"
+
+#: 
+msgid "Holiday"
+msgstr "விடுமுறை"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "2 காரணி அங்கீகாரத்தில் சுய-பதிவு செய்ய பயனர்களை அனுமதிக்கவும்"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "2 காரணி அங்கீகாரத்தில் பயனர்கள் சுய-பதிவு செய்ய வேண்டும்"
+
+#: 
+msgid "ChurchCRM"
+msgstr "சர்ச் சிஆர்எம்"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "அங்கீகரிப்பு பயன்பாட்டில் காட்டப்பட வேண்டிய பயன்பாட்டின் பெயரைக் குறிப்பிடவும்"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Config.php இலிருந்து இரகசிய விசைகள் இல்லை"
+
+#: 
+msgid "Review"
+msgstr "மதிப்பாய்வு"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "உங்கள் குடும்பத்தை பதிவு செய்ததற்கு நன்றி"
+
+#: 
+msgid "Register another family!"
+msgstr "மற்றொரு குடும்பத்தை பதிவு செய்யுங்கள்!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "முடிந்தது, முகப்புப்பக்கத்தைக் காட்டு!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "API விசை மூலம் அங்கீகரிக்கப்பட்ட பயனர்:"
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "API விசை அங்கீகார முயற்சி தோல்வியடைந்தது"
+
+#: 
+msgid "Unpinned Events"
+msgstr "பின் நீக்கப்பட்ட நிகழ்வுகள்"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "கடைசிப்பெயர், முதல்பெயர் நடுப்பெயர்"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "2 காரணி அங்கீகாரத்தை நிர்வகிக்கவும்"
+
+#: 
+msgid "Two Factor Status"
+msgstr "இரண்டு காரணி நிலை"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "இந்தப் பயனருக்கு 2 காரணி அங்கீகாரத்தை முடக்குவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "2FA குறியீட்டை உள்ளிடவும்"
+
+#: 
+msgid "2FA Code"
+msgstr "2FA குறியீடு"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "2 காரணி அங்கீகார பதிவு"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "ஆதரிக்கப்படாத இரண்டு காரணி அங்கீகார கட்டமைப்பு"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "இரண்டு காரணி அங்கீகாரப் பதிவைத் தொடங்க முடியவில்லை"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "இரண்டு காரணி அங்கீகாரத்திற்கு சர்ச்சிஆர்எம் நிர்வாகிகள் சில அளவுருக்களை உள்ளமைக்க வேண்டும்"
+
+#: 
+msgid "System configuration "
+msgstr "கணினி கட்டமைப்பு"
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "'உண்மை' என அமைக்கப்பட வேண்டும்"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "சேர்க்க/Config.php க்கு மதிப்பை அமைப்பதன் மூலம் தரவுத்தளத்தில் 2FA ரகசிய விசைகளை சேமிப்பதற்கான குறியாக்க விசையை வரையறுக்க வேண்டும்."
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "ஜியோகோடிங் முகவரிகளுக்கு கூகுள் வரைபடம் API விசை பயன்படுத்தப்படுகிறது"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "பயனர்களின் கணக்கு நீக்கப்பட்டதைத் தெரிவிக்கும் மின்னஞ்சலை அனுப்பவும்"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "உலாவியில் வரைபடங்களை வழங்குவதற்கு கூகுள் வரைபடம் API விசை பயன்படுத்தப்படுகிறது"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "தற்போதைய பயனருக்கு தவறான கடவுச்சொல் வழங்கப்படுகிறது"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "உங்கள் புதிய கடவுச்சொல் உங்கள் பழைய கடவுச்சொல்லுடன் பொருந்தக்கூடாது."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "உங்கள் புதிய கடவுச்சொல் உங்கள் பழைய கடவுச்சொல்லைப் போலவே உள்ளது."
+
+#: 
+msgid "Password reset not available.  Please contact your system administrator"
+msgstr "கடவுச்சொல் மீட்டமைப்பு கிடைக்கவில்லை. உங்கள் கணினி நிர்வாகியைத் தொடர்பு கொள்ளவும்"
+
+#: 
+msgid "Authentication Issue"
+msgstr "அங்கீகாரச் சிக்கல்"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "புதிய பயனர் கடவுச்சொல்லை உள்ளிடவும். நிர்வாக ரீதியாக அமைக்கப்பட்ட கடவுச்சொற்கள் நீளம் அல்லது சிக்கலான தேவைகளுக்கு உட்பட்டது அல்ல"
+
+#: 
+msgid "No email passed in"
+msgstr "எந்த மின்னஞ்சலும் அனுப்பப்படவில்லை"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "மெயில்சிம்ப் (Mailchimp) செயலில் இல்லை"
+
+#: 
+msgid "Mailchimp"
+msgstr "மெயில்சிம்ப்"
+
+#: 
+msgid "Lists"
+msgstr "பட்டியல்கள்"
+
+#: 
+msgid "loading"
+msgstr "ஏற்றுகிறது"
+
+#: 
+msgid "List not found"
+msgstr "பட்டியல் கிடைக்கவில்லை"
+
+#: 
+msgid "List not in the list"
+msgstr "பட்டியல் பட்டியலில் இல்லை"
+
+#: 
+msgid "People not in"
+msgstr "மக்கள் உள்ளே இல்லை"
+
+#: 
+msgid "Invalid List id"
+msgstr "தவறான பட்டியல் ஐடி"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "சர்ச்சிஆர்எம்மில் பார்வையாளர்கள் இல்லை"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "சர்ச்சிஆர்எம் நிறுவல் தகவல்"
+
+#: 
+msgid "Database Server Version"
+msgstr "தரவுத்தள சர்வர் பதிப்பு"
+
+#: 
+msgid "Web Server"
+msgstr "இணைய சேவையகம்"
+
+#: 
+msgid "Email Information"
+msgstr "மின்னஞ்சல் தகவல்"
+
+#: 
+msgid "List maintenance"
+msgstr "பட்டியல் பராமரிப்பு"
+
+#: 
+msgid "People not in list"
+msgstr "பட்டியலில் இல்லாதவர்கள்"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "பார்வையாளர்கள் CRM இல் இல்லை"
+
+#: 
+msgid "Hebrew"
+msgstr "ஹீப்ரு"
+
+#: 
+msgid "open rate"
+msgstr "திறந்த விகிதம்"
+
+#: 
+msgid "Not Subscribed "
+msgstr "குழுசேரவில்லை"
+
+#: 
+msgid "Global User Settings"
+msgstr "உலகளாவிய பயனர் அமைப்புகள்"
+
+#: 
+msgid "General"
+msgstr "பொது"
+
+#: 
+msgid "Passwords"
+msgstr "கடவுச்சொற்கள்"
+
+#: 
+msgid "2FA"
+msgstr "2எஃப் ஏ (2FA)"
+
+#: 
+msgid "Session Timeout"
+msgstr "அமர்வு நேரம் முடிந்தது"
+
+#: 
+msgid "Max Failed Login"
+msgstr "அதிகபட்ச உள்நுழைவு தோல்வி"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "கடவுச்சொல் மீட்டமைப்பை இயக்கு"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "நீக்கப்பட்ட பயனர்களுக்கு மின்னஞ்சல் அனுப்பவும்"
+
+#: 
+msgid "Min Password Length"
+msgstr "குறைந்தபட்ச கடவுச்சொல் நீளம்"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "குறைந்தபட்ச கடவுச்சொல் எழுத்துக்கள் டெல்டா"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "அனுமதிக்கப்படாத கடவுச்சொற்கள்"
+
+#: 
+msgid "Enable 2FA"
+msgstr "2FA ஐ இயக்கவும்"
+
+#: 
+msgid "Require 2FA"
+msgstr "2FA தேவை"
+
+#: 
+msgid "2FA Application Name"
+msgstr "2FA விண்ணப்பப் பெயர்"
+
+#: 
+msgid "Login Info"
+msgstr "உள்நுழைவு தகவல்"
+
+#: 
+msgid "Login Count"
+msgstr "உள்நுழைவு எண்ணிக்கை"
+
+#: 
+msgid "Failed Login"
+msgstr "உள்நுழைவு தோல்வி"
+
+#: 
+msgid "Permissions"
+msgstr "அனுமதிகள்"
+
+#: 
+msgid "Manage Notes"
+msgstr "குறிப்புகளை நிர்வகிக்கவும்"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "புதிய API விசையை உருவாக்க முடியவில்லை"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "குடும்பத்தின் மூலம் உறுதிமொழி சுருக்கம்"
+
+#: 
+msgid "Pledge"
+msgstr "உறுதிமொழி"
+
+#: 
+msgid "Paid"
+msgstr "செலுத்தப்பட்டது"
+
+#: 
+msgid "Owe"
+msgstr "கடன்"
+
+#: 
+msgid "Start Date"
+msgstr "தொடக்க தேதி"
+
+#: 
+msgid "End Date"
+msgstr "முடிவு தேதி"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "பின் செய்யப்பட்ட காலெண்டர்கள்"
+
+#: 
+msgid "This field is required"
+msgstr "இந்த புலம் தேவை"
+
+#: 
+msgid "Text"
+msgstr "உரை"
+
+#: 
+msgid "Event Description"
+msgstr "நிகழ்வு விளக்கம்"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "உங்கள் சர்ச்சிஆர்எம் பயனர் கணக்கை இரண்டு காரணி அங்கீகாரத்தில் பதிவுசெய்வது, உங்கள் கணக்கை அணுக முயற்சிக்கும் மோசமான நடிகர்களுக்கு எதிராக கூடுதல் பாதுகாப்பை வழங்குகிறது."
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "சர்ச்சிஆர்எம் டூ ஃபேக்டர் எந்த TOTP அங்கீகரிப்பு பயன்பாட்டையும் ஆதரிக்கிறது, எனவே நீங்கள் Microsoft Authenticator, Google Authenticator, Authy, LastPass மற்றும் பிறவற்றிலிருந்து தேர்வு செய்யலாம்."
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "சர்ச்சிஆர்எம்மில் நீங்கள் உள்நுழையும் போது, ​​வழக்கம் போல் உங்கள் பயனர்பெயர் மற்றும் கடவுச்சொல்லை உள்ளிடுவீர்கள்"
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "இருப்பினும், உங்கள் உள்நுழைவை முடிக்க, உங்கள் அங்கீகரிப்பு சாதனத்திலிருந்து ஒரு முறை குறியீட்டை வழங்க வேண்டும்"
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "உங்கள் நற்சான்றிதழ்கள் மற்றும் ஒரு முறை குறியீடு இரண்டையும் வெற்றிகரமாக உள்ளிட்ட பிறகு, நீங்கள் சாதாரணமாக உள்நுழைவீர்கள்"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "உங்கள் சர்ச்சிஆர்எம் கணக்கு பூட்டப்படுவதைத் தடுக்க, தொடங்கு என்பதைக் கிளிக் செய்வதற்கு முன் இரண்டு காரணிப் பதிவை முடிக்க நீங்கள் தயாராக உள்ளீர்கள் என்பதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "தொடக்கப் பதிவு, முன்பு பதிவுசெய்யப்பட்ட 2 காரணி சாதனங்கள் மற்றும் மீட்புக் குறியீடுகள் செல்லுபடியாகாது."
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "அடுத்ததைக் கிளிக் செய்யும் போது, ​​உங்கள் அங்கீகரிப்பு பயன்பாட்டைப் பதிவுசெய்ய, QR குறியீட்டை ஸ்கேன் செய்யும்படி கேட்கப்படுவீர்கள்."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "பதிவை உறுதிப்படுத்த, உங்கள் அங்கீகரிப்பு ஆப்ஸ் உருவாக்கிய குறியீட்டை உள்ளிட வேண்டும்"
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "ஆப்ஸ் பதிவை உறுதிசெய்த பிறகு, ஒற்றைப் பயன்பாட்டு மீட்புக் குறியீடுகள் உருவாக்கப்பட்டு காட்டப்படும்."
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "உங்கள் அங்கீகரிப்பு பயன்பாட்டிலிருந்து உருவாக்கப்பட்ட குறியீட்டிற்குப் பதிலாக மீட்புக் குறியீடுகளைப் பயன்படுத்தலாம்."
+
+#: 
+msgid "Store these in a secure location"
+msgstr "இவற்றை பாதுகாப்பான இடத்தில் சேமிக்கவும்"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "இரண்டு காரணி அங்கீகார பதிவு தொடங்கவும்"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "2 காரணி அங்கீகார ரகசியம்"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "2 காரணி அங்கீகார ரகசியத்தை மீண்டும் உருவாக்கவும்"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "2 காரணி அங்கீகார ரகசியத்தை அகற்று"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "பதிவை உறுதிப்படுத்த TOTP குறியீட்டை உள்ளிடவும்"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "2 காரணி அங்கீகார பதிவு வெற்றி"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "இந்த மீட்புக் குறியீடுகளை பாதுகாப்பான இடத்தில் சேமிக்கவும்"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "புதிதாகப் பதிவுசெய்யப்பட்ட அங்கீகரிப்பு பயன்பாட்டிற்கான அணுகலை நீங்கள் எப்போதாவது இழந்தால், உங்கள் கணக்கிற்கான அணுகலைப் பெற, மீட்புக் குறியீட்டைப் பயன்படுத்த வேண்டும்."
+
+#: 
+msgid "Event Attendance"
+msgstr "நிகழ்வு வருகை"
+
+#: 
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "நிகழ்வுகளுக்கான வருகை -மற்றும்- வருகை இல்லாத அறிக்கைகளை உருவாக்கவும்"
+
+#: 
+msgid "Help translate this project"
+msgstr "இந்தத் திட்டத்தை மொழிபெயர்க்க உதவவும்"
+
+#: 
+msgid "Afrikaans"
+msgstr "ஆஃப்ரிகான்ஸ்"
 
 #: 
 msgid " has a type mismatch"
@@ -7183,4 +9111,92 @@ msgstr "2022/2023"
 #: 
 msgid "invalid group request"
 msgstr "தவறான குழு கோரிக்கை"
+
+#: 
+msgid "Hindi - India"
+msgstr "இந்தி - இந்தியா"
+
+#: 
+msgid "Japanese"
+msgstr "ஜப்பானியர்"
+
+#: 
+msgid "Tamil - India"
+msgstr "தமிழ் - இந்தியா"
+
+#: 
+msgid "Not Subscribed"
+msgstr "குழுசேரவில்லை"
+
+#: 
+msgid "property"
+msgstr "பண்பு"
+
+#: 
+msgid "Default Zip"
+msgstr "இயல்புநிலை பின் குறியீடு"
+
+#: 
+msgid "Credit Card People"
+msgstr "கிரெடிட் கார்டு மக்கள்"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "கிரெடிட் கார்டு மூலம் பணம் செலுத்தும் வகையில் கட்டமைக்கப்பட்ட நபர்கள்."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "வயது வந்தோர் பெயர் (விரும்பினால்)"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "மீட்டெடுப்பின் ஒரு பகுதியாக, வெளிப்புற காப்புப்பிரதிகள் முடக்கப்பட்டுள்ளன. நீங்கள் தானியங்கி காப்புப்பிரதிகளைத் தொடர விரும்பினால், நீங்கள் கைமுறையாக bEnableExternalBackupTarget அமைப்பை மீண்டும் இயக்க வேண்டும்."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "முந்தைய ஒருமைப்பாடு சோதனை நிறைவேற்றப்பட்டது. அனைத்து கணினி கோப்பு ஹாஷ்களும் எதிர்பார்க்கப்படும் மதிப்புகளுடன் பொருந்துகின்றன."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "செயலற்றதாகத் தோன்றும் வகைப்பாடுகளின் கமாவால் பிரிக்கப்பட்ட பட்டியல்"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "அஞ்சல் சிம்ப் (MailChimp) கட்டமைக்கப்படவில்லை"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "அஞ்சல்சிம்ப் (MailChimp) API விசையை இதில் புதுப்பிக்கவும்:"
+
+#: 
+msgid "English - South Africa"
+msgstr "ஆங்கிலம் - தென்னாப்பிரிக்கா"
+
+#: 
+msgid "English - Jamaica"
+msgstr "ஆங்கிலம் - ஜமைக்கா"
+
+#: 
+msgid "Swahili"
+msgstr "சுவாஹிலி"
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "முதல் பெயரிலிருந்து ஒரு எழுத்து மற்றும் கடைசிப் பெயரிலிருந்து ஒரு எழுத்து"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "முதல் பெயரிலிருந்து இரண்டு எழுத்துக்கள்"
+
+#: 
+msgid "Set font to render initials. Upload custom font to fonts directory"
+msgstr "இனிஷியலை வழங்க எழுத்துருவை அமைக்கவும். எழுத்துருக் கோப்பகத்தில் தனிப்பயன் எழுத்துருவைப் பதிவேற்றவும்"
+
+#: 
+msgid "Person List Columns"
+msgstr "நபர் பட்டியல் நெடுவரிசைகள்"
+
+#: 
+msgid "Family List Columns"
+msgstr "குடும்பப் பட்டியல் நெடுவரிசைகள்"
 

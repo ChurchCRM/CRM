@@ -9037,6 +9037,30 @@ msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Data di nascita non valida: mese e giorno di nascita mancanti."
 
 #: 
+msgid "System"
+msgstr "Sistema"
+
+#: 
+msgid "Greek"
+msgstr "Greco"
+
+#: 
+msgid "Turkish"
+msgstr "Turco"
+
+#: 
+msgid "Change role"
+msgstr "Cambia ruolo"
+
+#: 
+msgid "Closed"
+msgstr "Chiuso"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "Hai ricevuto questa email perché abbiamo rilevato una richiesta di attività sul tuo account. Se non hai richiesto questo, puoi tranquillamente eliminare questa email."
+
+#: 
 msgid "Adult Name (Optional)"
 msgstr "Nome adulto (facoltativo)"
 

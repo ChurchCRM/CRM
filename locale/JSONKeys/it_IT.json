@@ -2246,5 +2246,11 @@
     "Deleted": "Eliminato",
     "Invalid Birth Date: Missing birth month or day.": "Data di nascita non valida: mese o giorno di nascita mancante.",
     "Invalid Birth Date: Missing birth month and day.": "Data di nascita non valida: mese e giorno di nascita mancanti.",
+    "System": "Sistema",
+    "Greek": "Greco",
+    "Turkish": "Turco",
+    "Change role": "Cambia ruolo",
+    "Closed": "Chiuso",
+    "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email.": "Hai ricevuto questa email perché abbiamo rilevato una richiesta di attività sul tuo account. Se non hai richiesto questo, puoi tranquillamente eliminare questa email.",
     "Adult Name (Optional)": "Nome adulto (facoltativo)"
 }
