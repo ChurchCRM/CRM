@@ -139,7 +139,6 @@ for ($row = 1; $row <= $events->count(); $row++) {
     $aEventTitle[$row] = htmlentities(stripslashes($event->getTitle()), ENT_NOQUOTES, 'UTF-8');
     $aEventStartDateTime[$row] = $event->getStart(\DateTimeInterface::ATOM);
 }
-require 'Include/Header.php';
 
 // Construct the form
 ?>
