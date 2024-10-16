@@ -9041,12 +9041,36 @@ msgid "System"
 msgstr "Sistema"
 
 #: 
+msgid "Amharic - Ethiopia"
+msgstr "Amarico - Etiopia"
+
+#: 
+msgid "Czech"
+msgstr "Ceco"
+
+#: 
+msgid "Finnish"
+msgstr "Finlandese"
+
+#: 
 msgid "Greek"
 msgstr "Greco"
 
 #: 
 msgid "Turkish"
 msgstr "Turco"
+
+#: 
+msgid "Ukrainian"
+msgstr "Ucraino"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Quando fai clic su \"Invia a GitHub\" verrai indirizzato alla pagina dei problemi di GitHub con le informazioni di sistema precompilate."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Invia a GitHub"
 
 #: 
 msgid "Change role"
@@ -9057,10 +9081,110 @@ msgid "Closed"
 msgstr "Chiuso"
 
 #: 
+msgid "Delete this person?"
+msgstr "Eliminare questa persona?"
+
+#: 
+msgid "Deposit ID"
+msgstr "ID Acconto"
+
+#: 
+msgid "Deposit Total"
+msgstr "Totale Acconto"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Stato del carrello del gruppo"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "Se non funziona, copia e incolla il seguente collegamento nel tuo browser"
+
+#: 
 msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
 msgstr "Hai ricevuto questa email perché abbiamo rilevato una richiesta di attività sul tuo account. Se non hai richiesto questo, puoi tranquillamente eliminare questa email."
 
 #: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Per non ricevere più queste email, puoi inviare un'e-mail"
+
+#: 
+msgid "invalid group request"
+msgstr "richiesta di gruppo non valida"
+
+#: 
+msgid "Hindi - India"
+msgstr "Hindi - India"
+
+#: 
+msgid "Japanese"
+msgstr "Giapponese"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamil-India"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Non iscritto"
+
+#: 
+msgid "property"
+msgstr "Proprietà"
+
+#: 
+msgid "Default Zip"
+msgstr "Codice postale predefinito"
+
+#: 
+msgid "Credit Card People"
+msgstr "Gente della carta di credito"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Persone configurate per pagare con carta di credito."
+
+#: 
 msgid "Adult Name (Optional)"
 msgstr "Nome adulto (facoltativo)"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "Nell'ambito del ripristino, i backup esterni sono stati disabilitati. Se desideri continuare i backup automatici, devi riattivare manualmente l'impostazione bEnableExternalBackupTarget."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "Il precedente controllo di integrità è stato superato. Tutti gli hash dei file di sistema corrispondono ai valori previsti."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "Elenco separato da virgole di classificazioni che dovrebbero apparire come inattive"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp non è configurato"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "Aggiorna la chiave API MailChimp in:"
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "Un carattere da FirstName e un carattere da LastName"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "Due caratteri da FirstName"
+
+#: 
+msgid "Set font to render initials. Upload custom font to fonts directory"
+msgstr "Imposta il carattere per il rendering delle iniziali. Carica il carattere personalizzato nella directory dei caratteri"
+
+#: 
+msgid "Person List Columns"
+msgstr "Colonne dell'elenco delle persone"
+
+#: 
+msgid "Family List Columns"
+msgstr "Colonne dell'elenco delle famiglie"
 
