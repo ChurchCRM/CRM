@@ -2,8 +2,8 @@
 
 namespace ChurchCRM;
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -99,7 +99,7 @@ class Family
 }
 
 $sPageTitle = gettext('CSV Import');
-require 'Include/Header.php'; ?>
+require_once 'Include/Header.php'; ?>
 
 <div class="card">
 <div class="card-header">
@@ -246,7 +246,7 @@ if (isset($_POST['UploadCSV'])) {
         <BR><BR>
         <?php
             $sCountry = SystemConfig::getValue('sDefaultCountry');
-        require 'Include/CountryDropDown.php';
+        require_once 'Include/CountryDropDown.php';
         echo gettext('Default country if none specified otherwise');
 
         $sSQL = 'SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
@@ -944,4 +944,4 @@ function GetAge(int $Month, int $Day, ?int $Year): int
 </script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

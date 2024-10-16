@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -57,7 +57,7 @@ $sPaddleSQL = 'SELECT pn_Num, pn_per_ID,
                       WHERE pn_fr_ID=' . $iCurrentFundraiser . ' ORDER BY pn_Num';
 $rsPaddles = RunQuery($sPaddleSQL);
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 ?>
 <div class="card card-body">
@@ -120,4 +120,4 @@ for ($row = 0; $row < 10; $row += 1) {
 </form>
 </div>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

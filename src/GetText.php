@@ -4,8 +4,8 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 $eidQueryParam = $_GET['EID'];
 $sanitizedEidQueryParam = InputUtils::filterInt($eidQueryParam);

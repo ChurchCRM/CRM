@@ -1,14 +1,14 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 
 $sPageTitle = gettext('Church Event Editor');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 $sAction = $_POST['Action'];
 $EventID = $_POST['EID']; // from ListEvents button=Attendees
@@ -103,4 +103,4 @@ if ($numAttRows != 0) {
 </table>
 </div>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

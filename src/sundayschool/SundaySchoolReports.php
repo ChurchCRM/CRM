@@ -1,7 +1,7 @@
 <?php
 
-require '../Include/Config.php';
-require '../Include/Functions.php';
+require_once '../Include/Config.php';
+require_once '../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -18,7 +18,7 @@ $groups = GroupQuery::create()
                     ->find();
 
 $sPageTitle = gettext('Sunday School Reports');
-require '../Include/Header.php';
+require_once '../Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) {
@@ -283,4 +283,4 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
 </div>
 
 <?php
-require '../Include/Footer.php';
+require_once '../Include/Footer.php';

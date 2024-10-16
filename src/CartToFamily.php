@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -134,7 +134,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 }
 
 $sPageTitle = gettext('Add Cart to Family');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 echo $sError;
 ?>
@@ -272,7 +272,7 @@ SQL;
     <tr>
         <td class="LabelColumn"><?= gettext('State') ?>:</td>
         <td class="TextColumn">
-                    <?php require 'Include/StateDropDown.php'; ?>
+                    <?php require_once 'Include/StateDropDown.php'; ?>
             OR
             <input type="text" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
                 echo $sState;
@@ -292,7 +292,7 @@ SQL;
     <tr>
         <td class="LabelColumn"><?= gettext('Country') ?>:</td>
         <td class="TextColumnWithBottomBorder">
-                    <?php require 'Include/CountryDropDown.php' ?>
+                    <?php require_once 'Include/CountryDropDown.php' ?>
         </td>
     </tr>
 
@@ -350,4 +350,4 @@ SQL;
         ?>
 </div>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

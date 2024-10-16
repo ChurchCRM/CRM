@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -34,7 +34,7 @@ if (isset($_POST['WhichYear'])) {
     $EventYear = date('Y');
 }
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 if (isset($_POST['Action']) && isset($_POST['EID']) && AuthenticationManager::getCurrentUser()->isAddEvent()) {
     $eID = InputUtils::legacyFilterInput($_POST['EID'], 'int');
@@ -348,4 +348,4 @@ foreach ($allMonths as $mKey => $mVal) {
   });
 </script>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

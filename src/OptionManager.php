@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -274,10 +274,10 @@ $sRowClass = 'RowColorA';
 
 // Use a minimal page header if this form is going to be used within a frame
 if ($embedded) {
-    include 'Include/Header-Minimal.php';
-} else {    //It don't work for postuguese because in it adjective come after noum
+    require_once 'Include/Header-Minimal.php';
+} else {    // in portuguese, this doesn't work because adjectives come after nouns
     //$sPageTitle = $adj . ' ' . $noun . "s ".gettext("Editor");
-    include 'Include/Header.php';
+    require_once 'Include/Header.php';
 }
 
 ?>
@@ -408,5 +408,5 @@ if ($iNewNameError > 0) {
 if ($embedded) {
     echo '</body></html>';
 } else {
-    include 'Include/Footer.php';
+    require_once 'Include/Footer.php';
 }

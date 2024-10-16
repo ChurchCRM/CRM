@@ -298,7 +298,7 @@ class Bootstrapper
         if (!SystemConfig::isInitialized()) {
             SystemConfig::init();
         }
-        require '../Include/HeaderNotLoggedIn.php'; ?>
+        require_once '../Include/HeaderNotLoggedIn.php'; ?>
     <div class='container'>
         <h3>ChurchCRM – <?= _($header) ?></h3>
         <div class='alert alert-danger text-center' style='margin-top: 20px;'>
@@ -306,7 +306,7 @@ class Bootstrapper
         </div>
     </div>
         <?php
-        require '../Include/FooterNotLoggedIn.php';
+        require_once '../Include/FooterNotLoggedIn.php';
         exit();
     }
     public static function isDBCurrent(): bool

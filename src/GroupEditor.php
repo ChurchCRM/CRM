@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -27,7 +27,7 @@ if (array_key_exists('GroupID', $_GET)) {
 $thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.
 $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();     // Get Group Types for the drop-down
 $rsGroupRoleSeed = GroupQuery::create()->filterByRoleListId(['min' => 0], $comparison)->find();     //Group Group Role List
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 ?>
 <!-- GROUP SPECIFIC PROPERTIES MODAL-->
 <div class="modal fade" id="groupSpecificPropertiesModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
@@ -188,4 +188,4 @@ require 'Include/Header.php';
 </script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupEditor.js"></script>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

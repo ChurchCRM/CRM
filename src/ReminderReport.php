@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -14,7 +14,7 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValu
 }
 
 $sPageTitle = gettext('Pledge Reminder Report');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['Submit'])) {
@@ -47,4 +47,4 @@ if (isset($_POST['Submit'])) {
     </form>
 </div>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

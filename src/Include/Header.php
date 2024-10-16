@@ -27,7 +27,7 @@ $MenuFirst = 1;
   <meta charset="UTF-8"/>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <?php require 'Header-HTML-Scripts.php'; ?>
+  <?php require_once 'Header-HTML-Scripts.php'; ?>
 </head>
 
 <body class="hold-transition <?= AuthenticationManager::getCurrentUser()->getStyle() ?> sidebar-mini">

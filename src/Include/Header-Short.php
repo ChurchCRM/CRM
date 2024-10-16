@@ -16,7 +16,7 @@ ob_start();
 <html>
 
 <head>
-  <?php require 'Header-HTML-Scripts.php'; ?>
+  <?php require_once 'Header-HTML-Scripts.php'; ?>
 </head>
 
 <body>

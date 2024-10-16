@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -104,7 +104,7 @@ $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
 
 $sPageTitle = gettext('Printable View');
 $iTableSpacerWidth = 10;
-require 'Include/Header-Short.php';
+require_once 'Include/Header-Short.php';
 ?>
 
 <table width="200">
@@ -491,4 +491,4 @@ require 'Include/Header-Short.php';
         }
     }
 
-    require 'Include/Footer-Short.php';
+    require_once 'Include/Footer-Short.php';

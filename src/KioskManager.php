@@ -1,13 +1,13 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('Kiosk Manager');
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 ?>
 <div class="row">
   <div class="col-lg-4 col-md-2 col-sm-2">
@@ -170,4 +170,4 @@ require 'Include/Header.php';
 
 </script>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

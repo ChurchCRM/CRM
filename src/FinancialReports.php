@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -25,7 +25,7 @@ $sPageTitle = gettext('Financial Reports');
 if ($sReportType) {
     $sPageTitle .= ': ' . gettext($sReportType);
 }
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 ?>
 <div class="card card-body">
 
@@ -369,4 +369,4 @@ $(document).ready(function() {
 </script>
 </div>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

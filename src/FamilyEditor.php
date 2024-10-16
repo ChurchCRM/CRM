@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
@@ -555,7 +555,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 }
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 ?>
 <form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>" id="familyEditor">
     <input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
@@ -991,4 +991,4 @@ require 'Include/Header.php';
                             ?>
                                                         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyEditor.js"></script>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

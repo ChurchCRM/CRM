@@ -1,6 +1,6 @@
 <?php
 
-require '../Include/Config.php';
+require_once '../Include/Config.php';
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

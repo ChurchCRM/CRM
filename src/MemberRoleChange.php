@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
@@ -55,7 +55,7 @@ extract($rsCurrentRole);
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $grp_RoleListID ORDER BY lst_OptionSequence";
 $rsAllRoles = RunQuery($sSQL);
 
-require 'Include/Header.php'
+require_once 'Include/Header.php'
 
 ?>
 
@@ -111,4 +111,4 @@ require 'Include/Header.php'
 </table>
 </form>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

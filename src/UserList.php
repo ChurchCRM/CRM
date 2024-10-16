@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -17,7 +17,7 @@ AuthenticationManager::redirectHomeIfNotAdmin();
 $rsUsers = UserQuery::create()->find();
 
 $sPageTitle = gettext('System Users');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 ?>
 <!-- Default box -->
@@ -252,4 +252,4 @@ require 'Include/Header.php';
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/users.js" ></script>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

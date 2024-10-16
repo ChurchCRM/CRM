@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -25,7 +25,7 @@ if (empty($person)) {
 }
 
 $sPageTitle = gettext('Person Profile');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
@@ -946,4 +946,4 @@ $bOkToEdit = (
             });
         </script>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';
