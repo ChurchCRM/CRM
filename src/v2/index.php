@@ -1,7 +1,7 @@
 <?php
 
-require '../Include/Config.php';
-require '../Include/Functions.php';
+require_once '../Include/Config.php';
+require_once '../Include/Functions.php';
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
@@ -16,7 +16,7 @@ $lwDate = date('Y-m-d', $now - (6 * 24 * 60 * 60));
 $iFYID = CurrentFY();
 $iDepositSlipID = InputUtils::legacyFilterInput($_GET['DepositSlipID']);
 
-include 'Include/eGiveConfig.php'; // Specific account information is in here
+require_once 'Include/eGiveConfig.php'; // Specific account information is in here
 
 $familySelectHtml = buildFamilySelect(0, 0, 0);
 
@@ -68,7 +68,7 @@ while ($aRow = mysqli_fetch_array($rsPlgIDs)) {
 }
 
 $sPageTitle = gettext('eGive Import');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 if (isset($_POST['ApiGet'])) {
     $startDate = $_POST['StartDate'];
@@ -379,7 +379,7 @@ function get_api_data($json)
 
 <?php
 
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';
 
 function yearFirstDate($date)
 {

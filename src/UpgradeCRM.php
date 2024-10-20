@@ -1,8 +1,8 @@
 <?php
 
-require 'Include/Config.php';
+require_once 'Include/Config.php';
 $bSuppressSessionTests = true;
-require 'Include/Functions.php';
+require_once 'Include/Functions.php';
 require_once 'Include/Header-function.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
@@ -21,7 +21,7 @@ if (isset($_GET['expertmode'])) {
     $expertMode = true;
 }
 
-require 'Include/HeaderNotLoggedIn.php';
+require_once 'Include/HeaderNotLoggedIn.php';
 Header_modals();
 Header_body_scripts();
 
@@ -259,7 +259,7 @@ function downloadbutton(filename) {
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
 
 <?php
-require 'Include/FooterNotLoggedIn.php';
+require_once 'Include/FooterNotLoggedIn.php';
 
 // Turn OFF output buffering
 ob_end_flush();

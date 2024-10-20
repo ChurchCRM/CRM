@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
@@ -596,7 +596,7 @@ $rsFamilies = RunQuery($sSQL);
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
 $rsFamilyRoles = RunQuery($sSQL);
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 ?>
 <form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?>" name="PersonEditor">
@@ -888,7 +888,7 @@ require 'Include/Header.php';
                                 echo '</span>';
                             } ?>
                         </label>
-                        <?php require 'Include/StateDropDown.php'; ?>
+                        <?php require_once 'Include/StateDropDown.php'; ?>
                     </div>
                     <div class="form-group col-md-2">
                         <label><?= gettext('None State') ?>:</label>
@@ -932,7 +932,7 @@ require 'Include/Header.php';
                                 echo '</span>';
                             } ?>
                         </label>
-                        <?php require 'Include/CountryDropDown.php'; ?>
+                        <?php require_once 'Include/CountryDropDown.php'; ?>
                     </div>
                 </div>
                 <p />
@@ -1245,4 +1245,4 @@ require 'Include/Header.php';
     });
 </script>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

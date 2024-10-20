@@ -1,14 +1,14 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
-require 'Include/LabelFunctions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
+require_once 'Include/LabelFunctions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Letters and Mailing Labels');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) || isset($_POST['SubmitConfirmLabels']) || isset($_POST['SubmitConfirmReportEmail'])) {
@@ -67,4 +67,4 @@ FontSizeSelect('labelfontsize');
   </div>
 </div>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

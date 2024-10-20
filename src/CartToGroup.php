@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
@@ -37,7 +37,7 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
 $ormGroups = GroupQuery::create()->orderByName()->find();
 
 $sPageTitle = gettext('Add Cart to Group');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 if (count($_SESSION['aPeopleCart']) > 0) {
     ?>
@@ -85,4 +85,4 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         echo '<p align="center" class="LargeText">' . gettext('Your cart is empty!') . '</p>';
 }
 
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

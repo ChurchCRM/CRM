@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -12,7 +12,7 @@ use ChurchCRM\Utils\RedirectUtils;
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sPageTitle = gettext('Backup Database');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 ?>
 <div class="card">
@@ -54,4 +54,4 @@ require 'Include/Header.php';
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/BackupDatabase.js"></script>
 
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

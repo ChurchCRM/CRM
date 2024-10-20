@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
@@ -177,7 +177,7 @@ if (isset($_POST['DataFile'])) {
     exit;
 }
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 //Get Families for the list
 $families = FamilyQuery::create()
@@ -416,4 +416,4 @@ $families = FamilyQuery::create()
 </script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GeoPage.js"></script>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

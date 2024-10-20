@@ -8,9 +8,9 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Include the function library
-require 'Include/Config.php';
+require_once 'Include/Config.php';
 $bSuppressSessionTests = true; // DO NOT MOVE
-require 'Include/Functions.php';
+require_once 'Include/Functions.php';
 
 if (Bootstrapper::isDBCurrent()) {
     RedirectUtils::redirect('v2/dashboard');
@@ -30,7 +30,7 @@ if (isset($_GET['upgrade']) && InputUtils::filterString($_GET['upgrade']) === "t
 }
 
 $sPageTitle = gettext('System Upgrade');
-require 'Include/HeaderNotLoggedIn.php'; ?>
+require_once 'Include/HeaderNotLoggedIn.php'; ?>
 
 <p></br></p>
 
@@ -69,4 +69,4 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
     } ?>
 </div>
 
-<?php require 'Include/FooterNotLoggedIn.php'; ?>
+<?php require_once 'Include/FooterNotLoggedIn.php'; ?>

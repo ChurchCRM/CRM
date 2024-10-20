@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -177,7 +177,7 @@ $sPaddleSQL = 'SELECT pn_ID, pn_Num, pn_per_ID,
                       LEFT JOIN person_per a on a.per_ID=pn_per_ID
                       WHERE pn_fr_ID=' . $iCurrentFundraiser . ' ORDER BY pn_Num';
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 ?>
 
 <form method="post" action="DonatedItemEditor.php?<?= 'CurrentFundraiser=' . $iCurrentFundraiser . '&DonatedItemID=' . $iDonatedItemID . '&linkBack=' . $linkBack; ?>" name="DonatedItemEditor">
@@ -318,4 +318,4 @@ require 'Include/Header.php';
     </div>
 </form>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

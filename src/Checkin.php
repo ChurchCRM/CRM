@@ -2,9 +2,9 @@
 
 $sPageTitle = gettext('Event Checkin');
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
-require 'Include/Header.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
+require_once 'Include/Header.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -417,7 +417,7 @@ if (isset($_POST['EventID'])) {
         }
     }
 </script>
-<?php require 'Include/Footer.php';
+<?php require_once 'Include/Footer.php';
 
 function loadPerson($iPersonID)
 {

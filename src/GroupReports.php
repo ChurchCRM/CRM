@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 
@@ -10,7 +10,7 @@ $sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
 $rsGroups = RunQuery($sSQL);
 
 $sPageTitle = gettext('Group reports');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 ?>
 
 <script src="skin/js/GroupRoles.js"></script>
@@ -143,4 +143,4 @@ require 'Include/Header.php';
     </div>
     <?php
 }
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

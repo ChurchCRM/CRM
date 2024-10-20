@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -111,7 +111,7 @@ $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
 $rsFamily = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsFamily));
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 ?>
 <div class="card">
@@ -280,4 +280,4 @@ require 'Include/Header.php';
     </div>
 </div>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

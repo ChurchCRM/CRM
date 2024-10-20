@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
@@ -88,7 +88,7 @@ if ($sPostAction === 'Retrieve' && !empty($sPostEvent)) {
 } else {
     $sSQL = 'SELECT * FROM events_event ORDER BY event_start';
 }
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 // Get data for the form as it now exists..
 $rsOpps = RunQuery($sSQL);
@@ -280,4 +280,4 @@ for ($row = 1; $row <= $events->count(); $row++) {
         <?= $_GET ? gettext('There are no events in this category') : "" ?>
     </div>
 <?php }
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

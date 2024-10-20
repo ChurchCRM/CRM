@@ -1,6 +1,6 @@
 <?php
 
-require '../Include/Config.php';
+require_once '../Include/Config.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;

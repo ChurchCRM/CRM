@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\RedirectUtils;
@@ -41,7 +41,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 $sPageTitle = gettext('CSV Export');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 ?>
 <form method="post" action="CSVCreateFile.php">
   <div class="row">
@@ -448,4 +448,4 @@ require 'Include/Header.php';
 
 </form>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

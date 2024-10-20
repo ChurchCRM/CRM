@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 $URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . '/';
 
 $sPageTitle = 'ChurchCRM – Setup';
-require '../Include/HeaderNotLoggedIn.php';
+require_once '../Include/HeaderNotLoggedIn.php';
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = {
@@ -234,4 +234,4 @@ require '../Include/HeaderNotLoggedIn.php';
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/setup.js"></script>
 <?php
-require '../Include/FooterNotLoggedIn.php';
+require_once '../Include/FooterNotLoggedIn.php';

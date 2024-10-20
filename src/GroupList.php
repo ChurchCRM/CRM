@@ -1,10 +1,10 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 $sPageTitle = gettext('Group Listing');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -53,4 +53,4 @@ if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
 <script src="skin/js/GroupList.js"></script>
 
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

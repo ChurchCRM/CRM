@@ -1,6 +1,6 @@
 <?php
-require '../Include/Config.php';
-require '../Include/Functions.php';
+require_once '../Include/Config.php';
+require_once '../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -38,7 +38,7 @@ foreach ($classStats as $class) {
 }
 
 $sPageTitle = gettext('Sunday School Dashboard');
-require '../Include/Header.php';
+require_once '../Include/Header.php';
 
 ?>
 <div class="card">
@@ -299,4 +299,4 @@ HTML;
 
     <?php
 }
-require '../Include/Footer.php';
+require_once '../Include/Footer.php';

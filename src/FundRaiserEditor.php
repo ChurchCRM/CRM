@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
@@ -122,7 +122,7 @@ if ($iFundRaiserID > 0) {
     $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;        // Probably redundant
 }
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 ?>
 <div class="card card-body">
@@ -253,4 +253,4 @@ require 'Include/Header.php';
     </div>
 </div>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

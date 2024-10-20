@@ -1,6 +1,6 @@
 <?php
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Classification;
@@ -13,7 +13,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 $sPageTitle = gettext('View on Map');
 
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 ?>
@@ -310,4 +310,4 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
     </script>
     <?php
 }
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

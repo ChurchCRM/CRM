@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
@@ -50,7 +50,7 @@ if (array_key_exists('FilterClear', $_GET) && $_GET['FilterClear']) {
     $dDateEnd = '';
     $iID = '';
 }
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 ?>
 <div class="card card-body">
@@ -238,4 +238,4 @@ require 'Include/Header.php';
     ?>
 </div>
 <?php
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';

@@ -1,7 +1,7 @@
 <?php
 
 $sPageTitle = 'ChurchCRM – Setup Error';
-require '../Include/HeaderNotLoggedIn.php';
+require_once '../Include/HeaderNotLoggedIn.php';
 ?>
 <style>
     .wizard .content > .body {
@@ -24,4 +24,4 @@ require '../Include/HeaderNotLoggedIn.php';
   </div>
   <!-- /.error-page -->
 <?php
-require '../Include/FooterNotLoggedIn.php';
+require_once '../Include/FooterNotLoggedIn.php';

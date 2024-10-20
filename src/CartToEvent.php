@@ -1,7 +1,7 @@
 <?php
 
-require 'Include/Config.php';
-require 'Include/Functions.php';
+require_once 'Include/Config.php';
+require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
@@ -39,7 +39,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
 }
 
 $sPageTitle = gettext('Add Cart to Event');
-require 'Include/Header.php';
+require_once 'Include/Header.php';
 
 if (count($_SESSION['aPeopleCart']) > 0) {
     $sSQL = 'SELECT event_id, event_title FROM events_event';
@@ -82,4 +82,4 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         echo '<p align="center" class="callout callout-warning">' . gettext('Your cart is empty!') . '</p>';
 }
 
-require 'Include/Footer.php';
+require_once 'Include/Footer.php';
