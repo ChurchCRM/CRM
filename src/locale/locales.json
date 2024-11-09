@@ -345,6 +345,16 @@
         "datePicker": true,
         "select2": true
     },
+    "Telugu - India": {
+        "poEditor": "te",
+        "locale": "te_IN",
+        "languageCode": "te",
+        "countryCode": "IN",
+        "dataTables": "Tamil",
+        "fullCalendar": false,
+        "datePicker": false,
+        "select2": false
+    },
     "Tamil - India": {
         "poEditor": "ta",
         "locale": "ta_IN",
