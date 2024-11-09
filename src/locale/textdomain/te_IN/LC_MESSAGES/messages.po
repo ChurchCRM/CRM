@@ -1,0 +1,1606 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: te\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "అమలు చేయడం సాధ్యపడదు"
+
+#: 
+msgid "Delete"
+msgstr "తొలగించు"
+
+#: 
+msgid "Cancel"
+msgstr "రద్దు చేయు"
+
+#: 
+msgid "Save"
+msgstr "సేవ్"
+
+#: 
+msgid "Unassigned"
+msgstr "కేటాయించబడలేదు"
+
+#: 
+msgid "None"
+msgstr "ఏదీ లేదు"
+
+#: 
+msgid "City"
+msgstr "నగరం"
+
+#: 
+msgid "State"
+msgstr "రాష్ట్రం"
+
+#: 
+msgid "Country"
+msgstr "దేశం"
+
+#: 
+msgid "Phone"
+msgstr "ఫోన్"
+
+#: 
+msgid "Email"
+msgstr "ఈమెయిల్"
+
+#: 
+msgid "Credit Card"
+msgstr "క్రెడిట్ కార్డ్"
+
+#: 
+msgid "Backup Database"
+msgstr "బ్యాకప్ డేటాబేస్"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "ChurchCRM డేటాబేస్‌ను మాన్యువల్‌గా బ్యాకప్ చేయడంలో ఈ సాధనం మీకు సహాయం చేస్తుంది."
+
+#: 
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "మీరు ఇప్పటికే మీ సిస్టమ్‌ల కోసం సాధారణ బ్యాకప్ విధానాన్ని కలిగి ఉండకపోతే మీరు కనీసం వారానికి ఒకసారి మాన్యువల్ బ్యాకప్ చేయాలి"
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "మీరు బ్యాకప్ ఫైల్‌ను డౌన్‌లోడ్ చేసిన తర్వాత, మీరు రెండు కాపీలు చేయాలి వాటిలో ఒకదాన్ని ఫైర్ ప్రూఫ్ సేఫ్ ఆన్-సైట్‌లో మరియు మరొకటి ఆఫ్-సైట్‌లో సురక్షితమైన ప్రదేశంలో ఉంచండి"
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "ChurchCRM డేటాబేస్‌లో నిల్వ చేయబడిన డేటా యొక్క గోప్యత గురించి మీరు ఆందోళన చెందుతుంటే, బ్యాకప్ డేటాను ఇతరులకు అందుబాటులో ఉండే చోట నిల్వ చేయబడితే మీరు దానిని ఎన్‌క్రిప్ట్ చేయాలి"
+
+#: 
+msgid "Select archive type"
+msgstr "ఆర్కైవ్ రకాన్ని ఎంచుకోండి"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "పాస్‌వర్డ్‌తో బ్యాకప్ ఫైల్‌ను గుప్తీకరించాలా"
+
+#: 
+msgid "Re-type Password"
+msgstr "పాస్వర్డ్ తిరిగి టైప్ చెయ్యండి"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "బాహ్య నిల్వకు బ్యాకప్‌ని రూపొందించండి మరియు రవాణా చేయండి"
+
+#: 
+msgid "Batch Winner Entry"
+msgstr "బ్యాచ్ విన్నర్ ఎంట్రీ"
+
+#: 
+msgid "Winner"
+msgstr "విజేత"
+
+#: 
+msgid "Price"
+msgstr "ధర"
+
+#: 
+msgid "Enter Winners"
+msgstr "విజేతలను నమోదు చేయండి"
+
+#: 
+msgid "CSV Export"
+msgstr "CSV ఎగుమతి"
+
+#: 
+msgid "Field Selection"
+msgstr "ఫీల్డ్ ఎంపిక"
+
+#: 
+msgid "Last Name"
+msgstr "చివరి పేరు"
+
+#: 
+msgid "Required"
+msgstr "అవసరం"
+
+#: 
+msgid "First Name"
+msgstr "మొదటి పేరు"
+
+#: 
+msgid "Middle Name"
+msgstr "మధ్య పేరు"
+
+#: 
+msgid "Zip"
+msgstr "జిప్ చేయండి"
+
+#: 
+msgid "Envelope"
+msgstr "ఎన్వలప్"
+
+#: 
+msgid "Work/Other Email"
+msgstr "పని/ఇతర ఇమెయిల్"
+
+#: 
+msgid "Membership Date"
+msgstr "సభ్యత్వ తేదీ"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "పుట్టిన / వార్షికోత్సవ తేదీ"
+
+#: 
+msgid "Age / Years Married"
+msgstr "వయస్సు / వివాహిత సంవత్సరాలు"
+
+#: 
+msgid "Family Role"
+msgstr "కుటుంబ పాత్ర"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "వ్యక్తి లేదా కుటుంబ అవుట్‌పుట్ పద్ధతిని ఉపయోగిస్తున్నారా అనే దానిపై ఆధారపడి ఉంటుంది"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "అనుకూల ఫీల్డ్ ఎంపిక"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "కస్టమ్ పర్సన్ ఫీల్డ్స్"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "అనుకూల కుటుంబ ఫీల్డ్‌లు"
+
+#: 
+msgid "Filters"
+msgstr "ఫిల్టర్లు"
+
+#: 
+msgid "Records to export"
+msgstr "ఎగుమతి చేయడానికి రికార్డులు"
+
+#: 
+msgid "Based on filters below.."
+msgstr "దిగువ ఫిల్టర్‌ల ఆధారంగా.."
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "కార్ట్‌లోని వ్యక్తులు (ఫిల్టర్‌లు విస్మరించబడ్డాయి)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "బహుళ ఎంచుకోవడానికి Ctrl కీని ఉపయోగించండి"
+
+#: 
+msgid "Don't Filter"
+msgstr "ఫిల్టర్ చేయవద్దు"
+
+#: 
+msgid "Male"
+msgstr "పురుషుడు"
+
+#: 
+msgid "Female"
+msgstr "స్త్రీ"
+
+#: 
+msgid "Group Membership"
+msgstr "గుంపు సభ్యత్వం"
+
+#: 
+msgid "From:"
+msgstr "నుండి:"
+
+#: 
+msgid "To:"
+msgstr "వీరికి:"
+
+#: 
+msgid "Birthday Date"
+msgstr "పుట్టినరోజు తేదీ"
+
+#: 
+msgid "Anniversary Date"
+msgstr "వార్షికోత్సవ తేదీ"
+
+#: 
+msgid "Output Method:"
+msgstr "అవుట్‌పుట్ విధానం:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "CSV వ్యక్తిగత రికార్డులు"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV వ్యక్తిగత రికార్డులు"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "కార్ట్‌కు వ్యక్తులను జోడించండి"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "అసంపూర్ణ మెయిల్ చిరునామాతో రికార్డులను దాటవేయండి"
+
+#: 
+msgid "Create File"
+msgstr "ఫైల్‌ని సృష్టించండి"
+
+#: 
+msgid "No file selected for upload."
+msgstr "అప్‌లోడ్ చేయడానికి ఫైల్ ఏదీ ఎంచుకోబడలేదు."
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "CSV ఫైల్‌లోని మొత్తం అడ్డు వరుసల సంఖ్య:"
+
+#: 
+msgid "Ignore this Field"
+msgstr "ఈ ఫీల్డ్‌ను విస్మరించండి"
+
+#: 
+msgid "Title"
+msgstr "శీర్షిక"
+
+#: 
+msgid "Suffix"
+msgstr "ప్రత్యయం"
+
+#: 
+msgid "Gender"
+msgstr "లింగం"
+
+#: 
+msgid "Donation Envelope"
+msgstr "విరాళం ఎన్వలప్"
+
+#: 
+msgid "Home Phone"
+msgstr "ఇంటి ఫోన్"
+
+#: 
+msgid "Work Phone"
+msgstr "పని ఫోన్"
+
+#: 
+msgid "Mobile Phone"
+msgstr "మొబైల్ ఫోన్"
+
+#: 
+msgid "Work / Other Email"
+msgstr "పని/ఇతర ఇమెయిల్"
+
+#: 
+msgid "Birth Date"
+msgstr "పుట్టిన తేదీ"
+
+#: 
+msgid "Wedding Date"
+msgstr "వివాహ తేదీ"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "మొదటి CSV అడ్డు వరుసను విస్మరించండి (హెడర్‌ను మినహాయించడానికి)"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "ఇంటిపేరు మరియు చిరునామా ఆధారంగా కుటుంబ రికార్డులను రూపొందించండి"
+
+#: 
+msgid "Patriarch"
+msgstr "జాతిపిత"
+
+#: 
+msgid "Matriarch"
+msgstr "మాతృక"
+
+#: 
+msgid "Family Type: used with Make Family records... option above"
+msgstr "కుటుంబ రకం: మేక్ ఫ్యామిలీ రికార్డ్‌లతో ఉపయోగించబడుతుంది... ఎగువన ఎంపిక"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "గమనిక: సెపరేటర్లు (డాష్‌లు మొదలైనవి) లేదా వాటి లేకపోవడం పట్టింపు లేదు"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "ఏదీ పేర్కొనకపోతే డిఫాల్ట్ దేశం"
+
+#: 
+msgid "Classification"
+msgstr "వర్గీకరణ"
+
+#: 
+msgid "Perform Import"
+msgstr "దిగుమతిని అమలు చేయండి"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "లోపం: అప్‌లోడ్ చేసిన CSV ఫైల్ ఉనికిలో లేదు!"
+
+#: 
+msgid "Upload CSV File"
+msgstr "CSV ఫైల్‌ను అప్‌లోడ్ చేయండి"
+
+#: 
+msgid "Data import successful."
+msgstr "డేటా దిగుమతి విజయవంతమైంది."
+
+#: 
+msgid "persons were imported"
+msgstr "డేటా దిగుమతి విజయవంతమైంది"
+
+#: 
+msgid "Add Cart to Event"
+msgstr "ఈవెంట్‌కి కార్ట్‌ని జోడించండి"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "మీరు మీ కార్ట్‌ను జోడించాలనుకుంటున్న ఈవెంట్‌ను ఎంచుకోండి"
+
+#: 
+msgid "OR"
+msgstr "లేదా"
+
+#: 
+msgid "Add New Event"
+msgstr "కొత్త ఈవెంట్‌ని జోడించండి"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "మీ కార్ట్ ఖాళీగా ఉంది!"
+
+#: 
+msgid "No family name entered!"
+msgstr "ఇంటి పేరు నమోదు చేయలేదు!"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "కుటుంబానికి కార్ట్‌ని జోడించండి"
+
+#: 
+msgid "Name"
+msgstr "పేరు"
+
+#: 
+msgid "Assign Role"
+msgstr "పాత్రను కేటాయించండి"
+
+#: 
+msgid "Already in a family"
+msgstr "ఇప్పటికే ఒక కుటుంబంలో"
+
+#: 
+msgid "Create new family"
+msgstr "కొత్త కుటుంబాన్ని సృష్టించండి"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "కొత్త కుటుంబాన్ని జోడిస్తే, దిగువన డేటాను నమోదు చేయండి."
+
+#: 
+msgid "Use address/contact data from"
+msgstr "నుండి చిరునామా/సంప్రదింపు డేటాను ఉపయోగించండి"
+
+#: 
+msgid "Only the new data below"
+msgstr "దిగువన ఉన్న కొత్త డేటా మాత్రమే"
+
+#: 
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(US మరియు కెనడా కాకుండా ఇతర దేశాల కోసం టెక్స్ట్‌బాక్స్‌ని ఉపయోగించండి)"
+
+#: 
+msgid "Do not auto-format"
+msgstr "ఆటో-ఫార్మాట్ చేయవద్దు"
+
+#: 
+msgid "Add to Family"
+msgstr "కుటుంబానికి జోడించండి"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "గుంపుకు కార్ట్‌ని జోడించండి"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "మీరు మీ కార్ట్‌ను జోడించాలనుకుంటున్న సమూహాన్ని ఎంచుకోండి"
+
+#: 
+msgid "Select Group"
+msgstr "సమూహాన్ని ఎంచుకోండి"
+
+#: 
+msgid "No Group Selected"
+msgstr "సమూహం ఎంపిక చేయబడలేదు"
+
+#: 
+msgid "Add to Group"
+msgstr "సమూహానికి జోడించండి"
+
+#: 
+msgid "View Your Cart"
+msgstr "మీ కార్ట్‌ని వీక్షించండి"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "మీ కార్ట్‌లో ఏ వస్తువులు లేవు."
+
+#: 
+msgid "Back to Menu"
+msgstr "తిరిగి మెనూకి"
+
+#: 
+msgid "Empty Cart"
+msgstr "ఖాళీ కార్ట్"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "గుంపుకు ఖాళీ కార్ట్"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "కుటుంబానికి ఖాళీ కార్ట్"
+
+#: 
+msgid "Empty Cart to Event"
+msgstr "ఈవెంట్‌కు ఖాళీ కార్ట్"
+
+#: 
+msgid "Map Cart"
+msgstr "మ్యాప్ కార్ట్"
+
+#: 
+msgid "Name Tags"
+msgstr "పేరు టాగ్లు"
+
+#: 
+msgid "Email Cart"
+msgstr "ఇమెయిల్ కార్ట్"
+
+#: 
+msgid "Email (BCC)"
+msgstr "ఇమెయిల్ (BCC)"
+
+#: 
+msgid "Create Directory From Cart"
+msgstr "కార్ట్ నుండి డైరెక్టరీని సృష్టించండి"
+
+#: 
+msgid "Bulk Mail Presort"
+msgstr "బల్క్ మెయిల్ ప్రిసార్ట్"
+
+#: 
+msgid "Quiet Presort"
+msgstr "నిశ్శబ్ద ప్రిసార్ట్"
+
+#: 
+msgid "Your cart contains"
+msgstr "మీ కార్ట్ కలిగి ఉంది"
+
+#: 
+msgid "persons from"
+msgstr "వ్యక్తులు నుండి"
+
+#: 
+msgid "Remove"
+msgstr "తొలగించు"
+
+#: 
+msgid "Yes"
+msgstr "అవును"
+
+#: 
+msgid "No"
+msgstr "కాదు"
+
+#: 
+msgid "Developer Chat"
+msgstr "డెవలపర్ చాట్"
+
+#: 
+msgid "Event Checkin"
+msgstr "ఈవెంట్ తనిఖీ"
+
+#: 
+msgid "Select the event to which you would like to check people in for"
+msgstr "మీరు వ్యక్తులను తనిఖీ చేయాలనుకుంటున్న ఈవెంట్‌ను ఎంచుకోండి"
+
+#: 
+msgid "Select Event"
+msgstr "ఈవెంట్‌ని ఎంచుకోండి"
+
+#: 
+msgid "Add Visitor"
+msgstr "సందర్శకుడిని జోడించండి"
+
+#: 
+msgid "CheckIn"
+msgstr "చెక్ ఇన్"
+
+#: 
+msgid "CheckOut"
+msgstr "చెక్అవుట్"
+
+#: 
+msgid "Checked In Time"
+msgstr "సమయానికి చెక్ చేసారు"
+
+#: 
+msgid "Checked In By"
+msgstr "ద్వారా తనిఖీ చేయబడింది"
+
+#: 
+msgid "Checked Out Time"
+msgstr "చెక్ అవుట్ సమయం"
+
+#: 
+msgid "Checked Out By"
+msgstr "ద్వారా తనిఖీ చేయబడింది"
+
+#: 
+msgid "Action"
+msgstr "చర్య"
+
+#: 
+msgid "No Attendees Assigned to Event"
+msgstr "ఈవెంట్‌కు హాజరైనవారు ఎవరూ కేటాయించబడలేదు"
+
+#: 
+msgid "Member"
+msgstr "సభ్యుడు"
+
+#: 
+msgid " of the"
+msgstr " యొక్క"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(అసైన్డ్ ఫ్యామిలీ లేదు)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "వ్యక్తులను కుటుంబాలుగా మార్చండి"
+
+#: 
+msgid "Convert Next"
+msgstr "తదుపరి మార్చండి"
+
+#: 
+msgid "Convert All"
+msgstr "అన్నింటినీ మార్చండి"
+
+#: 
+msgid "Deposit Slip Number: "
+msgstr "డిపాజిట్ స్లిప్ నంబర్: "
+
+#: 
+msgid "Deposit Details: "
+msgstr "డిపాజిట్ వివరాలు: "
+
+#: 
+msgid "Close deposit slip (remember to press Save)"
+msgstr "డిపాజిట్ స్లిప్‌ను మూసివేయండి (సేవ్ చేయి నొక్కడం గుర్తుంచుకోండి)"
+
+#: 
+msgid "Deposit Slip Report"
+msgstr "డిపాజిట్ స్లిప్ నివేదిక"
+
+#: 
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgstr "ముఖ్యమైన గమనిక: డిపాజిట్ స్లిప్ మూసివేయబడినప్పుడు విఫలమైన లావాదేవీలు శాశ్వతంగా తొలగించబడతాయి."
+
+#: 
+msgid "Deposit Summary: "
+msgstr "డిపాజిట్ సారాంశం: "
+
+#: 
+msgid "Payments on this deposit slip:"
+msgstr "ఈ డిపాజిట్ స్లిప్‌పై చెల్లింపులు:"
+
+#: 
+msgid "Import eGive"
+msgstr "eGiveని దిగుమతి చేయండి"
+
+#: 
+msgid "Add Payment"
+msgstr "చెల్లింపును జోడించండి"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "అధీకృత లావాదేవీలను లోడ్ చేయండి"
+
+#: 
+msgid "Run Transactions"
+msgstr "లావాదేవీలను అమలు చేయండి"
+
+#: 
+msgid "Directory reports"
+msgstr "డైరెక్టరీ నివేదికలు"
+
+#: 
+msgid "Select classifications to include"
+msgstr "చేర్చడానికి వర్గీకరణలను ఎంచుకోండి"
+
+#: 
+msgid "Which role is the head of household?"
+msgstr "ఇంటి పెద్ద పాత్ర ఏది?"
+
+#: 
+msgid "Which role is the spouse?"
+msgstr "జీవిత భాగస్వామి ఏ పాత్ర?"
+
+#: 
+msgid "Which role is a child?"
+msgstr "పిల్లలది ఏ పాత్ర?"
+
+#: 
+msgid "Information to Include"
+msgstr "చేర్చవలసిన సమాచారం"
+
+#: 
+msgid "Address"
+msgstr "చిరునామా"
+
+#: 
+msgid "Birthday"
+msgstr "పుట్టినరోజు"
+
+#: 
+msgid "Family Home Phone"
+msgstr "కుటుంబ ఇంటి ఫోన్"
+
+#: 
+msgid "Family Work Phone"
+msgstr "కుటుంబ పని ఫోన్"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "కుటుంబ సెల్ ఫోన్"
+
+#: 
+msgid "Family Email"
+msgstr "కుటుంబ ఇమెయిల్"
+
+#: 
+msgid "Personal Home Phone"
+msgstr "వ్యక్తిగత హోమ్ ఫోన్"
+
+#: 
+msgid "Personal Work Phone"
+msgstr "వ్యక్తిగత పని ఫోన్"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "వ్యక్తిగత సెల్ ఫోన్"
+
+#: 
+msgid "Personal Email"
+msgstr "వ్యక్తిగత ఇమెయిల్"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "వ్యక్తిగత పని/ఇతర ఇమెయిల్"
+
+#: 
+msgid "Photos"
+msgstr "ఫోటోలు"
+
+#: 
+msgid "Number of Columns"
+msgstr "నిలువు వరుసల సంఖ్య"
+
+#: 
+msgid "Paper Size"
+msgstr "పేపర్ సైజు"
+
+#: 
+msgid "Font Size"
+msgstr "ఫాంట్ పరిమాణం"
+
+#: 
+msgid "Title page"
+msgstr "శీర్షిక పేజీ"
+
+#: 
+msgid "Use Title Page"
+msgstr "శీర్షిక పేజీని ఉపయోగించండి"
+
+#: 
+msgid "Church Name"
+msgstr "చర్చి పేరు"
+
+#: 
+msgid "Disclaimer"
+msgstr "నిరాకరణ"
+
+#: 
+msgid "Create Directory"
+msgstr "డైరెక్టరీని సృష్టించండి"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "విరాళం ఇచ్చిన అంశం ఎడిటర్"
+
+#: 
+msgid "Save and Add"
+msgstr "సేవ్ మరియు జోడించు"
+
+#: 
+msgid "Item"
+msgstr "అంశం"
+
+#: 
+msgid "Multiple items"
+msgstr "బహుళ అంశాలు"
+
+#: 
+msgid "Sell to everyone"
+msgstr "అందరికీ అమ్మండి"
+
+#: 
+msgid "Estimated Price"
+msgstr "అంచనా ధర"
+
+#: 
+msgid "Multiple"
+msgstr "బహుళ"
+
+#: 
+msgid "Final Price"
+msgstr "చివరి ధర"
+
+#: 
+msgid "Replicate item"
+msgstr "ప్రతిరూపం అంశం"
+
+#: 
+msgid "Go"
+msgstr "వెళ్ళు"
+
+#: 
+msgid "Description"
+msgstr "వివరణ"
+
+#: 
+msgid "Picture URL"
+msgstr "చిత్ర URL"
+
+#: 
+msgid "Donation Fund Editor"
+msgstr "విరాళ నిధి ఎడిటర్"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "మీరు ఖచ్చితంగా ఈ ఫండ్‌ని తొలగించాలనుకుంటున్నారా?"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
+msgstr "హెచ్చరిక: మీరు తొలగింపు లేదా 'కొత్తది జోడించు' బటన్‌ను ఉపయోగించే ముందు 'మార్పులను సేవ్ చేయకపోతే' ఫీల్డ్ మార్పులు కోల్పోతాయి!"
+
+#: 
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "చెల్లని ఫీల్డ్‌లు లేదా ఎంపికలు. మార్పులు సేవ్ చేయబడలేదు! దయచేసి సరిచేసి, మళ్లీ ప్రయత్నించండి!"
+
+#: 
+msgid "No funds have been added yet"
+msgstr "ఇంకా నిధులు జోడించబడలేదు"
+
+#: 
+msgid "Active"
+msgstr "చురుకుగా"
+
+#: 
+msgid "Save Changes"
+msgstr "మార్పులను సేవ్ చేయండి"
+
+#: 
+msgid "Add New Fund"
+msgstr "కొత్త ఫండ్ జోడించండి"
+
+#: 
+msgid "Church Event Editor"
+msgstr "చర్చి ఈవెంట్ ఎడిటర్"
+
+#: 
+msgid "Edit Event Types"
+msgstr "ఈవెంట్ రకాలను సవరించండి"
+
+#: 
+msgid "Edit Event Type"
+msgstr "ఈవెంట్ రకాన్ని సవరించండి"
+
+#: 
+msgid "Event Type"
+msgstr "ఈవెంట్ రకం"
+
+#: 
+msgid "Save Name"
+msgstr "పేరును సేవ్ చేయండి"
+
+#: 
+msgid "Recurrence Pattern"
+msgstr "పునరావృత నమూనా"
+
+#: 
+msgid "Attendance Counts"
+msgstr "హాజరు గణనలు"
+
+#: 
+msgid "Add counter"
+msgstr "కౌంటర్ జోడించండి"
+
+#: 
+msgid "Return to Event Types"
+msgstr "ఈవెంట్ రకాలకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Family"
+msgstr "కుటుంబం"
+
+#: 
+msgid "Type"
+msgstr "టైప్ చేయండి"
+
+#: 
+msgid "Fiscal Year"
+msgstr "ఆర్థిక సంవత్సరం"
+
+#: 
+msgid "Amount"
+msgstr "మొత్తం"
+
+#: 
+msgid "Fund"
+msgstr "నిధి"
+
+#: 
+msgid "Bank"
+msgstr "బ్యాంక్"
+
+#: 
+msgid "Month"
+msgstr "నెల"
+
+#: 
+msgid "Year"
+msgstr "సంవత్సరం"
+
+#: 
+msgid "Edit"
+msgstr "సవరించు"
+
+#: 
+msgid "Event Attendees"
+msgstr "ఈవెంట్ హాజరైనవారు"
+
+#: 
+msgid "Event Nonattendees"
+msgstr "ఈవెంట్ నాన్‌టెండిస్"
+
+#: 
+msgid "Event Guests"
+msgstr "ఈవెంట్ అతిథులు"
+
+#: 
+msgid "There "
+msgstr "అక్కడ "
+
+#: 
+msgid "Event Title"
+msgstr "ఈవెంట్ శీర్షిక"
+
+#: 
+msgid "Event Date"
+msgstr "ఈవెంట్ తేదీ"
+
+#: 
+msgid "Attending Members"
+msgstr "హాజరవుతున్న సభ్యులు"
+
+#: 
+msgid "Non-Attending Members"
+msgstr "హాజరు కాని సభ్యులు"
+
+#: 
+msgid "Guests"
+msgstr "అతిథులు"
+
+#: 
+msgid "There are no events in this category"
+msgstr "ఈ వర్గంలో ఈవెంట్‌లు ఏవీ లేవు"
+
+#: 
+msgid "Create Event"
+msgstr "ఈవెంట్‌ని సృష్టించండి"
+
+#: 
+msgid "Create a new Event"
+msgstr "కొత్త ఈవెంట్‌ని సృష్టించండి"
+
+#: 
+msgid "Editing Event ID: "
+msgstr "ఈవెంట్ IDని సవరించడం: "
+
+#: 
+msgid " errors. Please see below"
+msgstr " లోపాలు. దయచేసి క్రింద చూడండి"
+
+#: 
+msgid "Items with a "
+msgstr "a తో అంశాలు "
+
+#: 
+msgid " are required"
+msgstr " అవసరం"
+
+#: 
+msgid "Select your event type"
+msgstr "మీ ఈవెంట్ రకాన్ని ఎంచుకోండి"
+
+#: 
+msgid "You must pick an event type."
+msgstr "మీరు తప్పనిసరిగా ఈవెంట్ రకాన్ని ఎంచుకోవాలి."
+
+#: 
+msgid "Event Desc"
+msgstr "ఈవెంట్ డెస్క్"
+
+#: 
+msgid "No Attendance counts recorded"
+msgstr "హాజరు గణనలు నమోదు కాలేదు"
+
+#: 
+msgid "Attendance Notes: "
+msgstr "హాజరు గమనికలు: "
+
+#: 
+msgid "Event Sermon"
+msgstr "ఈవెంట్ ప్రసంగం"
+
+#: 
+msgid "Event Status"
+msgstr "ఈవెంట్ స్థితి"
+
+#: 
+msgid "Return to Events"
+msgstr "ఈవెంట్‌లకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "EVENT TYPE NAME"
+msgstr "ఈవెంట్ రకం పేరు"
+
+#: 
+msgid "Sundays"
+msgstr "ఆదివారాలు"
+
+#: 
+msgid "Mondays"
+msgstr "సోమవారాలు"
+
+#: 
+msgid "Tuesdays"
+msgstr "మంగళవారాలు"
+
+#: 
+msgid "Wednesdays"
+msgstr "బుధవారాలు"
+
+#: 
+msgid "Thursdays"
+msgstr "గురువారాలు"
+
+#: 
+msgid "Fridays"
+msgstr "శుక్రవారాలు"
+
+#: 
+msgid "Saturdays"
+msgstr "శనివారాలు"
+
+#: 
+msgid "DEFAULT START TIME"
+msgstr "డిఫాల్ట్ ప్రారంభ సమయం"
+
+#: 
+msgid "ATTENDANCE COUNTS"
+msgstr "హాజరు గణనలు"
+
+#: 
+msgid "Optional"
+msgstr "ఐచ్ఛికం"
+
+#: 
+msgid "Enter a list of the attendance counts you want to include with this event."
+msgstr "ఈ ఈవెంట్‌తో మీరు చేర్చాలనుకుంటున్న హాజరు గణనల జాబితాను నమోదు చేయండి."
+
+#: 
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
+msgstr "ప్రతి కౌంట్_పేరును కామాతో వేరు చేయండి. ఉ.దా. సభ్యులు, సందర్శకులు, క్యాంపస్, పిల్లలు"
+
+#: 
+msgid "Every event type includes a Total count, you do not need to include it."
+msgstr "ప్రతి ఈవెంట్ రకం మొత్తం గణనను కలిగి ఉంటుంది, మీరు దానిని చేర్చవలసిన అవసరం లేదు."
+
+#: 
+msgid "Add Event Type"
+msgstr "ఈవెంట్ రకాన్ని జోడించండి"
+
+#: 
+msgid "Custom Family Fields Editor"
+msgstr "కస్టమ్ ఫ్యామిలీ ఫీల్డ్స్ ఎడిటర్"
+
+#: 
+msgid "Default Option"
+msgstr "డిఫాల్ట్ ఎంపిక"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
+msgstr "హెచ్చరిక: ఈ ఫీల్డ్‌ను తొలగించడం ద్వారా, మీరు ఈ ఫీల్డ్ కోసం కేటాయించిన మొత్తం కుటుంబ డేటాను తిరిగి పొందలేని విధంగా కోల్పోతారు!"
+
+#: 
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "హెచ్చరిక: బాణం మరియు తొలగించు బటన్‌లు వెంటనే ప్రభావం చూపుతాయి. మీరు అప్, డౌన్, డిలీట్ లేదా 'కొత్తది జోడించు' బటన్‌ను ఉపయోగించే ముందు 'మార్పులను సేవ్ చేయకపోతే' ఫీల్డ్ పేరు మార్పులు పోతాయి!"
+
+#: 
+msgid "No custom Family fields have been added yet"
+msgstr "అనుకూల కుటుంబ ఫీల్డ్‌లు ఏవీ ఇంకా జోడించబడలేదు"
+
+#: 
+msgid "Special option"
+msgstr "ప్రత్యేక ఎంపిక"
+
+#: 
+msgid "Security Option"
+msgstr "భద్రతా ఎంపిక"
+
+#: 
+msgid "You must select a group."
+msgstr "మీరు తప్పనిసరిగా సమూహాన్ని ఎంచుకోవాలి."
+
+#: 
+msgid "Edit List Options"
+msgstr "జాబితా ఎంపికలను సవరించండి"
+
+#: 
+msgid "Help on types.."
+msgstr "రకాల సహాయం.."
+
+#: 
+msgid "You must enter a name"
+msgstr "మీరు తప్పనిసరిగా పేరును నమోదు చేయాలి"
+
+#: 
+msgid "That field name already exists."
+msgstr "ఆ ఫీల్డ్ పేరు ఇప్పటికే ఉంది."
+
+#: 
+msgid "Add New Field"
+msgstr "కొత్త ఫీల్డ్‌ని జోడించండి"
+
+#: 
+msgid "Family Editor"
+msgstr "కుటుంబ సంపాదకుడు"
+
+#: 
+msgid "First name must be entered"
+msgstr "మొదటి పేరు తప్పనిసరిగా నమోదు చేయాలి"
+
+#: 
+msgid "Invalid Birth Date."
+msgstr "చెల్లని పుట్టిన తేదీ."
+
+#: 
+msgid "Not a valid Wedding Date"
+msgstr "చెల్లుబాటు అయ్యే వివాహ తేదీ కాదు"
+
+#: 
+msgid "Email is Not Valid"
+msgstr "ఇమెయిల్ చెల్లదు"
+
+#: 
+msgid "Family Info"
+msgstr "కుటుంబ సమాచారం"
+
+#: 
+msgid "Contact Info"
+msgstr "సంప్రదింపు సమాచారం"
+
+#: 
+msgid "Other Info"
+msgstr "ఇతర సమాచారం"
+
+#: 
+msgid "Envelope Info"
+msgstr "ఎన్వలప్ సమాచారం"
+
+#: 
+msgid "Custom Fields"
+msgstr "కస్టమ్ ఫీల్డ్స్"
+
+#: 
+msgid "Family Members"
+msgstr "కుటుంబ సభ్యులు"
+
+#: 
+msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
+msgstr "మీరు ఇప్పుడు కుటుంబ సభ్యులను సృష్టించవచ్చు లేదా తర్వాత వారిని జోడించవచ్చు. అన్ని ఎంట్రీలు <i>కొత్త</i> వ్యక్తి రికార్డులుగా మారతాయి."
+
+#: 
+msgid "First"
+msgstr "మొదటి"
+
+#: 
+msgid "Middle"
+msgstr "మధ్య"
+
+#: 
+msgid "Last"
+msgstr "చివరిది"
+
+#: 
+msgid "Role"
+msgstr "పాత్ర"
+
+#: 
+msgid "Select Gender"
+msgstr "లింగాన్ని ఎంచుకోండి"
+
+#: 
+msgid "Select Role"
+msgstr "పాత్రను ఎంచుకోండి"
+
+#: 
+msgid "Unknown"
+msgstr "తెలియదు"
+
+#: 
+msgid "January"
+msgstr "జనవరి"
+
+#: 
+msgid "February"
+msgstr "ఫిబ్రవరి"
+
+#: 
+msgid "March"
+msgstr "మార్చి"
+
+#: 
+msgid "April"
+msgstr "ఏప్రిల్"
+
+#: 
+msgid "May"
+msgstr "మే"
+
+#: 
+msgid "June"
+msgstr "జూన్"
+
+#: 
+msgid "July"
+msgstr "జూలై"
+
+#: 
+msgid "August"
+msgstr "ఆగస్టు"
+
+#: 
+msgid "September"
+msgstr "సెప్టెంబర్"
+
+#: 
+msgid "October"
+msgstr "అక్టోబర్"
+
+#: 
+msgid "November"
+msgstr "నవంబర్"
+
+#: 
+msgid "December"
+msgstr "డిసెంబర్"
+
+#: 
+msgid "Unk"
+msgstr "Unk"
+
+#: 
+msgid "Family List"
+msgstr "కుటుంబ జాబితా"
+
+#: 
+msgid "Add Family"
+msgstr "కుటుంబాన్ని జోడించండి"
+
+#: 
+msgid "Created"
+msgstr "సృష్టించబడింది"
+
+#: 
+msgid "Envelope Number"
+msgstr "ఎన్వలప్ సంఖ్య"
+
+#: 
+msgid "Verify Info"
+msgstr "సమాచారాన్ని ధృవీకరించండి"
+
+#: 
+msgid "Add New Member"
+msgstr "కొత్త సభ్యుడిని జోడించండి"
+
+#: 
+msgid "Previous Family"
+msgstr "మునుపటి కుటుంబం"
+
+#: 
+msgid "Next Family"
+msgstr "తదుపరి కుటుంబం"
+
+#: 
+msgid "Delete this Family"
+msgstr "ఈ కుటుంబాన్ని తొలగించండి"
+
+#: 
+msgid "Upload Photo"
+msgstr "ఫోటోను అప్‌లోడ్ చేయండి"
+
+#: 
+msgid "Delete Photo"
+msgstr "ఫోటోను తొలగించండి"
+
+#: 
+msgid "Add a Note"
+msgstr "గమనికను జోడించండి"
+
+#: 
+msgid "Add All Family Members to Cart"
+msgstr "కార్ట్‌కి కుటుంబ సభ్యులందరినీ జోడించండి"
+
+#: 
+msgid "Timeline"
+msgstr "కాలక్రమం"
+
+#: 
+msgid "Pledges and Payments"
+msgstr "ప్రతిజ్ఞలు మరియు చెల్లింపులు"
+
+#: 
+msgid "No property assignments."
+msgstr "ఆస్తి కేటాయింపులు లేవు."
+
+#: 
+msgid "Value"
+msgstr "విలువ"
+
+#: 
+msgid "Edit Value"
+msgstr "విలువను సవరించండి"
+
+#: 
+msgid "Assign a New Property"
+msgstr "కొత్త ఆస్తిని కేటాయించండి"
+
+#: 
+msgid "Assign"
+msgstr "కేటాయించండి"
+
+#: 
+msgid "Date Updated"
+msgstr "తేదీ నవీకరించబడింది"
+
+#: 
+msgid "Updated By"
+msgstr "ద్వారా నవీకరించబడింది"
+
+#: 
+msgid "Show Pledges"
+msgstr "ప్రతిజ్ఞలను చూపించు"
+
+#: 
+msgid "Show Payments"
+msgstr "చెల్లింపులను చూపించు"
+
+#: 
+msgid "Since"
+msgstr "నుండి"
+
+#: 
+msgid "Update"
+msgstr "నవీకరించు"
+
+#: 
+msgid "Pledge or Payment"
+msgstr "ప్రతిజ్ఞ లేదా చెల్లింపు"
+
+#: 
+msgid "Date"
+msgstr "తేదీ"
+
+#: 
+msgid "NonDeductible"
+msgstr "నాన్ డిడక్టబుల్"
+
+#: 
+msgid "Schedule"
+msgstr "షెడ్యూల్"
+
+#: 
+msgid "Method"
+msgstr "పద్ధతి"
+
+#: 
+msgid "Comment"
+msgstr "వ్యాఖ్యానించండి"
+
+#: 
+msgid "Add a new pledge"
+msgstr "కొత్త ప్రతిజ్ఞను జోడించండి"
+
+#: 
+msgid "Add a new payment"
+msgstr "కొత్త చెల్లింపును జోడించండి"
+
+#: 
+msgid "Close"
+msgstr "మూసివేయి"
+
+#: 
+msgid "Confirm Delete"
+msgstr "తొలగించడాన్ని నిర్ధారించండి"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "మీరు ప్రొఫైల్ ఫోటోను తొలగించబోతున్నారు, ఈ విధానం తిరిగి పొందలేనిది."
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "మీరు కొనసాగించాలనుకుంటున్నారా?"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "మీరు కుటుంబ సమాచారం యొక్క కాపీని క్రింది ఇమెయిల్‌లకు ఇమెయిల్ చేయబోతున్నారు"
+
+#: 
+msgid "Financial Reports"
+msgstr "ఆర్థిక నివేదికలు"
+
+#: 
+msgid "No records were returned from the previous report."
+msgstr "మునుపటి నివేదిక నుండి ఎటువంటి రికార్డులు తిరిగి ఇవ్వబడలేదు."
+
+#: 
+msgid "Report Type:"
+msgstr "నివేదిక రకం:"
+
+#: 
+msgid "Select Report Type"
+msgstr "నివేదిక రకాన్ని ఎంచుకోండి"
+
+#: 
+msgid "Pledge Summary"
+msgstr "ప్రతిజ్ఞ సారాంశం"
+
+#: 
+msgid "Pledge Family Summary"
+msgstr "ప్రతిజ్ఞ కుటుంబ సారాంశం"
+
+#: 
+msgid "Pledge Reminders"
+msgstr "ప్రతిజ్ఞ రిమైండర్లు"
+
+#: 
+msgid "Voting Members"
+msgstr "ఓటింగ్ సభ్యులు"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "నివేదిక ఇవ్వడం (పన్ను ప్రకటనలు)"
+
+#: 
+msgid "Zero Givers"
+msgstr "జీరో ఇచ్చేవారు"
+
+#: 
+msgid "Individual Deposit Report"
+msgstr "వ్యక్తిగత డిపాజిట్ నివేదిక"
+
+#: 
+msgid "Advanced Deposit Report"
+msgstr "అధునాతన డిపాజిట్ నివేదిక"
+
+#: 
+msgid "Next"
+msgstr "తదుపరి"
+
+#: 
+msgid "Filter by Family"
+msgstr "కుటుంబం వారీగా ఫిల్టర్ చేయండి"
+
+#: 
+msgid "Report Start Date:"
+msgstr "నివేదిక ప్రారంభ తేదీ:"
+
+#: 
+msgid "Report End Date:"
+msgstr "నివేదిక ముగింపు తేదీ:"
+
+#: 
+msgid "Apply Report Dates To:"
+msgstr "రిపోర్ట్ తేదీలను దీనికి వర్తింపజేయండి:"
+
+#: 
+msgid "Deposit Date (Default)"
+msgstr "డిపాజిట్ తేదీ (డిఫాల్ట్)"
+
+#: 
+msgid "Payment Date"
+msgstr "చెల్లింపు తేదీ"
+
+#: 
+msgid "Filter by Deposit:"
+msgstr "డిపాజిట్ ద్వారా ఫిల్టర్ చేయండి:"
+
+#: 
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "డిపాజిట్ ఎంపిక చేయబడితే, తేదీ ప్రమాణాలు విస్మరించబడతాయి."
+
+#: 
+msgid "All deposits within date range"
+msgstr "తేదీ పరిధిలో అన్ని డిపాజిట్లు"
+
+#: 
+msgid "Filter by Payment Type:"
+msgstr "చెల్లింపు రకం ద్వారా ఫిల్టర్ చేయండి:"
+
+#: 
+msgid "All Methods"
+msgstr "అన్ని పద్ధతులు"
+
+#: 
+msgid "Check"
+msgstr "తనిఖీ చేయండి"
+
+#: 
+msgid "Cash"
+msgstr "నగదు"
+
+#: 
+msgid "Bank Draft"
+msgstr "బ్యాంక్ డ్రాఫ్ట్"
+
+#: 
+msgid "eGive"
+msgstr "eGive"
+
+#: 
+msgid "Minimum Total Amount:"
+msgstr "కనిష్ట మొత్తం:"
+
+#: 
+msgid "0 - No Minimum"
+msgstr "0-కనీసం లేదు"
+
+#: 
+msgid "Other Settings"
+msgstr "ఇతర సెట్టింగ్‌లు"
+
+#: 
+msgid "Include:"
+msgstr "చేర్చండి:"
+
+#: 
+msgid "Only Payments with Pledges"
+msgstr "ప్రతిజ్ఞలతో మాత్రమే చెల్లింపులు"
+
+#: 
+msgid "All Payments"
+msgstr "అన్ని చెల్లింపులు"
+
+#: 
+msgid "Generate:"
+msgstr "రూపొందించు:"
+
+#: 
+msgid "Only Families with unpaid pledges"
+msgstr "చెల్లించని హామీలతో కుటుంబాలు మాత్రమే"
+
+#: 
+msgid "All Families"
+msgstr "అన్ని కుటుంబాలు"
+
+#: 
+msgid "Report Heading:"
+msgstr "నివేదిక శీర్షిక:"
+
+#: 
+msgid "Graphic"
+msgstr "గ్రాఫిక్"
+
+#: 
+msgid "Church Address"
+msgstr "చర్చి చిరునామా"
+
+#: 
+msgid "Blank"
+msgstr "ఖాళీ"
+
+#: 
+msgid "Remittance Slip:"
+msgstr "రెమిటెన్స్ స్లిప్:"
+
+#: 
+msgid "Sort Data by:"
+msgstr "దీని ద్వారా డేటాను క్రమబద్ధీకరించండి:"
+
+#: 
+msgid "Deposit"
+msgstr "డిపాజిట్ చేయండి"
+
+#: 
+msgid "All Data"
+msgstr "మొత్తం డేటా"
+
+#: 
+msgid "Moderate Detail"
+msgstr "మితమైన వివరాలు"
+
+#: 
+msgid "Summary Data"
+msgstr "సారాంశం డేటా"
+
+#: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+msgstr "ఓటింగ్ సభ్యులు తప్పనిసరిగా <br> ఈ అనేక సంవత్సరాలలోపు విరాళం అందించి ఉండాలి<br> (0 విరాళం అవసరం లేదు):"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
+msgid "Back"
+msgstr "వెనుకకు"
+
+#: 
+msgid "Create Report"
+msgstr "నివేదికను సృష్టించండి"
+
+#: 
+msgid "Deposit Listing"
+msgstr "డిపాజిట్ జాబితా"
+
+#: 
+msgid "Add New Deposit"
+msgstr "కొత్త డిపాజిట్ జోడించండి"
+
+#: 
+msgid "Deposits: "
+msgstr "డిపాజిట్లు: "
+
