@@ -350,9 +350,9 @@
         "locale": "te_IN",
         "languageCode": "te",
         "countryCode": "IN",
-        "dataTables": "te",
+        "dataTables": "Tamil",
         "fullCalendar": false,
-        "datePicker": true,
+        "datePicker": false,
         "select2": false
     },
     "Tamil - India": {
