@@ -26,7 +26,7 @@ abstract class BaseEmail
             $this->mail->addAddress($email);
         }
 
-        $loader = new FilesystemLoader('templates/email');
+        $loader = new FilesystemLoader(dirname(__FILE__) . '/../../templates/email');
         $this->twig = new Environment($loader);
     }
 
