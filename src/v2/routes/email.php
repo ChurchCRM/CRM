@@ -48,7 +48,7 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
 
     if (empty(SystemConfig::getValue('sSMTPHost'))) {
         $message = gettext('SMTP Host is not setup, please visit the settings page');
-    } else if ( empty(ChurchMetaData::getChurchEmail())) {
+    } elseif (empty(ChurchMetaData::getChurchEmail())) {
         $message = gettext('Church Email not set, please visit the settings page');
     } else {
         $mailer->IsSMTP();
@@ -57,7 +57,7 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
         $mailer->Host = SystemConfig::getValue('sSMTPHost');
         if (SystemConfig::getBooleanValue('bSMTPAuth')) {
             $mailer->SMTPAuth = true;
-            LoggerUtils::getAppLogger()->debug( 'SMTP Auth Used');
+            LoggerUtils::getAppLogger()->debug('SMTP Auth Used');
             $mailer->Username = SystemConfig::getValue('sSMTPUser');
             $mailer->Password = SystemConfig::getValue('sSMTPPass');
         }
