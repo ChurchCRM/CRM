@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Utils\LoggerUtils;
 use PHPMailer\PHPMailer\PHPMailer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -45,14 +46,18 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
     $mailer = new PHPMailer();
     $message = '';
 
-    if (!empty(SystemConfig::getValue('sSMTPHost')) && !empty(ChurchMetaData::getChurchEmail())) {
+    if (empty(SystemConfig::getValue('sSMTPHost'))) {
+        $message = gettext('SMTP Host is not setup, please visit the settings page');
+    } elseif (empty(ChurchMetaData::getChurchEmail())) {
+        $message = gettext('Church Email not set, please visit the settings page');
+    } else {
         $mailer->IsSMTP();
         $mailer->CharSet = 'UTF-8';
         $mailer->Timeout = intval(SystemConfig::getValue('iSMTPTimeout'));
         $mailer->Host = SystemConfig::getValue('sSMTPHost');
         if (SystemConfig::getBooleanValue('bSMTPAuth')) {
             $mailer->SMTPAuth = true;
-            echo 'SMTP Auth Used </br>';
+            LoggerUtils::getAppLogger()->debug('SMTP Auth Used');
             $mailer->Username = SystemConfig::getValue('sSMTPUser');
             $mailer->Password = SystemConfig::getValue('sSMTPPass');
         }
@@ -63,8 +68,6 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
         $mailer->addAddress(ChurchMetaData::getChurchEmail());
         $mailer->Body = 'test email';
         $mailer->Debugoutput = 'html';
-    } else {
-        $message = gettext('SMTP Host is not setup, please visit the settings page');
     }
 
     $pageArgs = [
