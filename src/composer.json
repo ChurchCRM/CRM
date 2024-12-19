@@ -63,8 +63,8 @@
         "vonage/client": "^2.4.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10",
-        "rector/rector": "^1.0",
+        "phpstan/phpstan": "^2.0",
+        "rector/rector": "^2.0",
         "squizlabs/php_codesniffer": "^3.7"
     },
     "replace": {
