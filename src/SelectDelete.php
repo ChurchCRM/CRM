@@ -240,7 +240,7 @@ require_once 'Include/Header.php';
                     <tr class="<?= $sRowClass ?>">
                         <td><?= $plg_PledgeOrPayment ?>&nbsp;</td>
                         <td><?= $fundName ?>&nbsp;</td>
-                        <td><?= MakeFYString($plg_FYID) ?>&nbsp;</td>
+                        <td><?= MakeFYString($plg_FYID ? (int) $plg_FYID : null) ?>&nbsp;</td>
                         <td><?= $plg_date ?>&nbsp;</td>
                         <td><?= $plg_amount ?>&nbsp;</td>
                         <td><?= $plg_schedule ?>&nbsp;</td>

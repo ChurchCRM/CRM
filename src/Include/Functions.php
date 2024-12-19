@@ -143,7 +143,7 @@ function PrintFYIDSelect(string $selectName, int $iFYID = null): void
             $selectedTag = ' selected';
         }
 
-        $selectableOptions[] = sprintf('<option value="%s"', $fy) . $selectedTag . '>' . MakeFYString($fy) . '</option>';
+        $selectableOptions[] = sprintf('<option value="%s"', $fy) . $selectedTag . '>' . MakeFYString((int) $fy) . '</option>';
     }
 
     $selectableOptions = [

@@ -14,7 +14,7 @@ use ChurchCRM\Utils\RedirectUtils;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
 
 // Get the Fiscal Year ID out of the query string
-$iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+$iFYID = (int) InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 if (!$iFYID) {
     $iFYID = CurrentFY();
 }

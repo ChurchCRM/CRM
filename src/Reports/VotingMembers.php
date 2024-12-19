@@ -9,7 +9,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 
 // Get the Fiscal Year ID out of the query string
-$iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+$iFYID = (int) InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 if (!$iFYID) {
     $iFYID = CurrentFY();
 }
