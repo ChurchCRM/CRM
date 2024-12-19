@@ -8,33 +8,36 @@ use ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-class EventsMenuItems implements DashboardItemInterface {
-
-    public static function getDashboardItemName() {
-        return "EventsCounters";
+class EventsMenuItems implements DashboardItemInterface
+{
+    public static function getDashboardItemName()
+    {
+        return 'EventsCounters';
     }
 
-    public static function getDashboardItemValue() {
-        $activeEvents = array (
-            "Events" => self::getNumberEventsOfToday(),
-            "Birthdays" => self::getNumberBirthDates(),
-            "Anniversaries" => self::getNumberAnniversaries()
-        );
+    public static function getDashboardItemValue()
+    {
+        $activeEvents = [
+            'Events'        => self::getNumberEventsOfToday(),
+            'Birthdays'     => self::getNumberBirthDates(),
+            'Anniversaries' => self::getNumberAnniversaries(),
+        ];
 
         return $activeEvents;
     }
 
-    public static function shouldInclude($PageName) {
+    public static function shouldInclude($PageName)
+    {
         return true; // this ID would be found on all pages.
     }
 
     private static function getNumberEventsOfToday()
     {
-        $start_date = date("Y-m-d ")." 00:00:00";
-        $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' +1 day'));
+        $start_date = date('Y-m-d ').' 00:00:00';
+        $end_date = date('Y-m-d H:i:s', strtotime($start_date.' +1 day'));
 
         return EventQuery::create()
-            ->where("event_start <= '".$start_date ."' AND event_end >= '".$end_date."'") /* the large events */
+            ->where("event_start <= '".$start_date."' AND event_end >= '".$end_date."'") /* the large events */
             ->_or()->where("event_start>='".$start_date."' AND event_end <= '".$end_date."'") /* the events of the day */
             ->count();
     }
@@ -54,10 +57,9 @@ class EventsMenuItems implements DashboardItemInterface {
         return $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)
             ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
-            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"MONTH(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('m'),Criteria::CUSTOM)
-            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"DAY(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('d'),Criteria::CUSTOM)
+            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'MONTH('.FamilyTableMap::COL_FAM_WEDDINGDATE.') ='.date('m'), Criteria::CUSTOM)
+            ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'DAY('.FamilyTableMap::COL_FAM_WEDDINGDATE.') ='.date('d'), Criteria::CUSTOM)
             ->orderByWeddingdate('DESC')
             ->count();
     }
-
 }

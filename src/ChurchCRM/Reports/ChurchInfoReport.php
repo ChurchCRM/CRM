@@ -24,12 +24,12 @@ use FPDF;
 class ChurchInfoReport extends FPDF
 {
     //
-  // Paper size for all PDF report documents
-  // Sizes: A3, A4, A5, Letter, Legal, or a 2-element array for custom size
-  // Sorry -- This should really be set in database, but it is needed before all the report settings
-  // are read from the database.
+    // Paper size for all PDF report documents
+    // Sizes: A3, A4, A5, Letter, Legal, or a 2-element array for custom size
+    // Sorry -- This should really be set in database, but it is needed before all the report settings
+    // are read from the database.
 
-  public $paperFormat = 'Letter';
+    public $paperFormat = 'Letter';
 
     public function StripPhone($phone)
     {
@@ -44,7 +44,7 @@ class ChurchInfoReport extends FPDF
         }
         if (strlen($phone) == 7) {
             // Fix the missing -
-      $phone = mb_substr($phone, 0, 3).'-'.mb_substr($phone, 3, 4);
+            $phone = mb_substr($phone, 0, 3).'-'.mb_substr($phone, 3, 4);
         }
 
         return $phone;
@@ -96,14 +96,14 @@ class ChurchInfoReport extends FPDF
         if ($letterhead == 'graphic' && is_readable(SystemConfig::getValue('bDirLetterHead'))) {
             $this->Image(SystemConfig::getValue('bDirLetterHead'), 12, 15, 185);
             $curY = 20 + (SystemConfig::getValue('incrementY') * 3) + 25;
-            $this->WriteAt(170, $curY, date(SystemConfig::getValue("sDateFormatLong")));
+            $this->WriteAt(170, $curY, date(SystemConfig::getValue('sDateFormatLong')));
         } elseif ($letterhead == 'none') {
             $curY = 20 + (SystemConfig::getValue('incrementY') * 3) + 25;
-            $this->WriteAt(170, $curY, date(SystemConfig::getValue("sDateFormatLong")));
+            $this->WriteAt(170, $curY, date(SystemConfig::getValue('sDateFormatLong')));
         } else {
             $dateX = 170;
             $dateY = 25;
-            $this->WriteAt($dateX, $dateY, date(SystemConfig::getValue("sDateFormatLong")));
+            $this->WriteAt($dateX, $dateY, date(SystemConfig::getValue('sDateFormatLong')));
             $curY = 20;
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
             $curY += SystemConfig::getValue('incrementY');
@@ -112,7 +112,7 @@ class ChurchInfoReport extends FPDF
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
             $curY += SystemConfig::getValue('incrementY');
             $curY += SystemConfig::getValue('incrementY'); // Skip another line before the phone/email
-      $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
+            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
             $curY += 25; // mm to move to the second window
         }
         $this->WriteAt(SystemConfig::getValue('leftX'), $curY, $this->MakeSalutation($fam_ID));
@@ -132,13 +132,14 @@ class ChurchInfoReport extends FPDF
             $curY += SystemConfig::getValue('incrementY');
         }
         $curY += 5.0; // mm to get away from the second window
-    return $curY;
+
+        return $curY;
     }
 
     public function MakeSalutation($famID)
     {
         $family = FamilyQuery::create()->findPk($famID);
+
         return $family->getSalutation();
-    
     }
 }

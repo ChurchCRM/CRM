@@ -12,7 +12,6 @@ $app->group('/public/data', function () {
     $this->get('/countries/{countryCode}/states/', 'getStates');
 });
 
-
 function getCountries(Request $request, Response $response, array $args)
 {
     return $response->withJson(array_values(Countries::getAll()));
@@ -21,5 +20,6 @@ function getCountries(Request $request, Response $response, array $args)
 function getStates(Request $request, Response $response, array $args)
 {
     $states = new States($args['countryCode']);
+
     return $response->withJson($states->getAll());
 }

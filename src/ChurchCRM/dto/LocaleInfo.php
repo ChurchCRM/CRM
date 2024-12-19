@@ -19,15 +19,15 @@ class LocaleInfo
         if (!empty($userLocale)) {
             $this->locale = $userLocale->getValue();
         }
-        $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . "/locale/locales.json");
+        $localesFile = file_get_contents(SystemURLs::getDocumentRoot().'/locale/locales.json');
         $locales = json_decode($localesFile, true);
         foreach ($locales as $key => $value) {
-            if ($value["locale"] == $this->locale) {
+            if ($value['locale'] == $this->locale) {
                 $this->name = $key;
-                $this->language = $value["languageCode"];
-                $this->country = $value["countryCode"];
-                $this->dataTables = $value["dataTables"];
-                $this->poLocaleId = $value["poEditor"];
+                $this->language = $value['languageCode'];
+                $this->country = $value['countryCode'];
+                $this->dataTables = $value['dataTables'];
+                $this->poLocaleId = $value['poEditor'];
             }
         }
     }
@@ -97,7 +97,7 @@ class LocaleInfo
         $localArray = [];
         array_push($localArray, $this->getLanguageCode());
         foreach ($utfList as $item) {
-            array_push($localArray, $this->getLanguageCode() . $item);
+            array_push($localArray, $this->getLanguageCode().$item);
         }
 
         return $localArray;

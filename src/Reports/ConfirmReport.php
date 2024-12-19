@@ -70,7 +70,7 @@ class PDF_ConfirmReport extends ChurchInfoReport
 
 // Instantiate the directory class and build the report.
 $pdf = new PDF_ConfirmReport();
-$filename = 'ConfirmReport'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf';
+$filename = 'ConfirmReport'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf';
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
@@ -137,7 +137,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->SetFont('Times', 'B', 10);
     $pdf->WriteAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('City, State, Zip'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->WriteAtCell($dataCol, $curY, $dataWid, ($fam_City.', '.$fam_State.'  '.$fam_Zip));
+    $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_City.', '.$fam_State.'  '.$fam_Zip);
     $curY += SystemConfig::getValue('incrementY');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->WriteAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Home Phone'));
@@ -157,8 +157,8 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->SetFont('Times', 'B', 10);
     $pdf->WriteAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Anniversary Date'));
     $pdf->SetFont('Times', '', 10);
-    if ($fam_WeddingDate != "") {
-        $pdf->WriteAtCell($dataCol, $curY, $dataWid, date_format(date_create($fam_WeddingDate), SystemConfig::getValue("sDateFormatLong")));
+    if ($fam_WeddingDate != '') {
+        $pdf->WriteAtCell($dataCol, $curY, $dataWid, date_format(date_create($fam_WeddingDate), SystemConfig::getValue('sDateFormatLong')));
     }
     $curY += SystemConfig::getValue('incrementY');
 

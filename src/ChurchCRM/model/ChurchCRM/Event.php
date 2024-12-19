@@ -17,71 +17,69 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 class Event extends BaseEvent
 {
+    private $editable;
 
-  private $editable;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->editable = true;
+    }
 
-  public function __construct() {
-    parent::__construct();
-    $this->editable = true;
-  }
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+    {
+        $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
+        $array['PinnedCalendars'] = array_map('intval', Base\CalendarEventQuery::create()
+                ->filterByEventId($this->getId())
+                ->select(Map\CalendarEventTableMap::COL_CALENDAR_ID)
+                ->find()->toArray());
 
-  public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
-  {
+        return $array;
+    }
 
-    $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
-    $array['PinnedCalendars'] = array_map('intval',Base\CalendarEventQuery::create()
-            ->filterByEventId($this->getId())
-            ->select(Map\CalendarEventTableMap::COL_CALENDAR_ID)
-            ->find()->toArray());
-    return $array;
+    public function isEditable()
+    {
+        return $this->editable;
+    }
 
-  }
+    public function setEditable($editable)
+    {
+        $this->editable = $editable;
+    }
 
-  public function isEditable()
-  {
-    return $this->editable;
-  }
+    public function checkInPerson($PersonId)
+    {
+        $AttendanceRecord = EventAttendQuery::create()
+                ->filterByEvent($this)
+                ->filterByPersonId($PersonId)
+                ->findOneOrCreate();
 
-  public function setEditable($editable) {
-    $this->editable = $editable;
-  }
+        $AttendanceRecord->setEvent($this)
+          ->setPersonId($PersonId)
+          ->setCheckinDate(date('Y-m-d H:i:s'))
+          ->setCheckoutDate(null)
+          ->save();
 
-  public function checkInPerson($PersonId)
-  {
-    $AttendanceRecord = EventAttendQuery::create()
-            ->filterByEvent($this)
-            ->filterByPersonId($PersonId)
-            ->findOneOrCreate();
+        return ['status'=>'success'];
+    }
 
-    $AttendanceRecord->setEvent($this)
-      ->setPersonId($PersonId)
-      ->setCheckinDate(date('Y-m-d H:i:s'))
-      ->setCheckoutDate(null)
-      ->save();
+    public function checkOutPerson($PersonId)
+    {
+        $AttendanceRecord = EventAttendQuery::create()
+                ->filterByEvent($this)
+                ->filterByPersonId($PersonId)
+                ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
+                ->findOne();
 
-    return array("status"=>"success");
+        $AttendanceRecord->setEvent($this)
+          ->setPersonId($PersonId)
+          ->setCheckoutDate(date('Y-m-d H:i:s'))
+          ->save();
 
-  }
+        return ['status'=>'success'];
+    }
 
-  public function checkOutPerson($PersonId)
-  {
-    $AttendanceRecord = EventAttendQuery::create()
-            ->filterByEvent($this)
-            ->filterByPersonId($PersonId)
-            ->filterByCheckinDate(NULL,  Criteria::NOT_EQUAL)
-            ->findOne();
-
-    $AttendanceRecord->setEvent($this)
-      ->setPersonId($PersonId)
-      ->setCheckoutDate(date('Y-m-d H:i:s'))
-      ->save();
-
-    return array("status"=>"success");
-
-  }
-
-  public function getViewURI()
-  {
-    return SystemURLs::getRootPath()."/EventEditor.php?calendarAction=".$this->getID();
-  }
+    public function getViewURI()
+    {
+        return SystemURLs::getRootPath().'/EventEditor.php?calendarAction='.$this->getID();
+    }
 }

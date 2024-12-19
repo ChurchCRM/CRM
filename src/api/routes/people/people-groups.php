@@ -56,7 +56,6 @@ $app->group('/groups', function () {
             ->joinWithPerson()
             ->findByGroupId($groupID);
 
-
         // we loop to find the information in the family to add addresses etc ...
         foreach ($members as $member) {
             $p = $member->getPerson();
@@ -93,9 +92,8 @@ $app->group('/groups', function () {
 });
 
 $app->group('/groups', function () {
-
     $this->post('/', function ($request, $response, $args) {
-        $groupSettings = (object)$request->getParsedBody();
+        $groupSettings = (object) $request->getParsedBody();
         $group = new Group();
         if ($groupSettings->isSundaySchool) {
             $group->makeSundaySchool();
@@ -107,7 +105,7 @@ $app->group('/groups', function () {
 
     $this->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
         $group->setName($input->groupName);
         $group->setType($input->groupType);
@@ -122,7 +120,6 @@ $app->group('/groups', function () {
         echo json_encode(['status' => 'success']);
     });
 
-
     $this->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
@@ -133,8 +130,8 @@ $app->group('/groups', function () {
             if ($groupRoleMembership->getPersonId() == $person->getId()) {
                 $groupRoleMembership->delete();
                 $note = new Note();
-                $note->setText(gettext("Deleted from group") . ": " . $group->getName());
-                $note->setType("group");
+                $note->setText(gettext('Deleted from group').': '.$group->getName());
+                $note->setType('group');
                 $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
                 $note->setPerId($person->getId());
                 $note->save();
@@ -147,7 +144,7 @@ $app->group('/groups', function () {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
         $group = GroupQuery::create()->findPk($groupID);
         $p2g2r = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($groupID)
@@ -162,8 +159,8 @@ $app->group('/groups', function () {
         $group->addPerson2group2roleP2g2r($p2g2r);
         $group->save();
         $note = new Note();
-        $note->setText(gettext("Added to group") . ": " . $group->getName());
-        $note->setType("group");
+        $note->setText(gettext('Added to group').': '.$group->getName());
+        $note->setType('group');
         $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
         $note->setPerId($person->getId());
         $note->save();
@@ -187,7 +184,7 @@ $app->group('/groups', function () {
     $this->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        $input = (object)$request->getParsedBody();
+        $input = (object) $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
         if (isset($input->groupRoleName)) {
             $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
@@ -242,7 +239,7 @@ $app->group('/groups', function () {
     $this->post('/{groupID:[0-9]+}/settings/active/{value}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $flag = $args['value'];
-        if ($flag == "true" || $flag == "false") {
+        if ($flag == 'true' || $flag == 'false') {
             $group = GroupQuery::create()->findOneById($groupID);
             if ($group != null) {
                 $group->setActive($flag);
@@ -250,7 +247,8 @@ $app->group('/groups', function () {
             } else {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
-            return $response->withJson(['status' => "success"]);
+
+            return $response->withJson(['status' => 'success']);
         } else {
             return $response->withStatus(500, gettext('invalid status value'));
         }
@@ -259,7 +257,7 @@ $app->group('/groups', function () {
     $this->post('/{groupID:[0-9]+}/settings/email/export/{value}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $flag = $args['value'];
-        if ($flag == "true" || $flag == "false") {
+        if ($flag == 'true' || $flag == 'false') {
             $group = GroupQuery::create()->findOneById($groupID);
             if ($group != null) {
                 $group->setIncludeInEmailExport($flag);
@@ -267,7 +265,8 @@ $app->group('/groups', function () {
             } else {
                 return $response->withStatus(500, gettext('invalid group id'));
             }
-            return $response->withJson(['status' => "success"]);
+
+            return $response->withJson(['status' => 'success']);
         } else {
             return $response->withStatus(500, gettext('invalid export value'));
         }

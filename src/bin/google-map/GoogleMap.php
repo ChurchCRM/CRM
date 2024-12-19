@@ -137,6 +137,7 @@ class GoogleMapAPI
      * that calls the map's onload function using $this->printOnLoadFunction.
      *
      * @var bool
+     *
      * @default true
      */
     public $onload = true;
@@ -189,12 +190,12 @@ class GoogleMapAPI
      */
     public $directions_unit_system = '';
 
-     /**
-      * sets default option for type controls(DEFAULT, HORIZONTAL_BAR, DROPDOWN_MENU).
-      *
-      * @var string
-      */
-     public $type_controls_style = 'DEFAULT';
+    /**
+     * sets default option for type controls(DEFAULT, HORIZONTAL_BAR, DROPDOWN_MENU).
+     *
+     * @var string
+     */
+    public $type_controls_style = 'DEFAULT';
 
     /**
      * default map type google.maps.MapTypeId.(ROADMAP, SATELLITE, HYBRID, TERRAIN).
@@ -346,8 +347,8 @@ class GoogleMapAPI
      */
     public $directions = true;
 
-      /* waypoints  */
-      protected $_waypoints_string = '';
+    /* waypoints  */
+    protected $_waypoints_string = '';
 
     /**
      * determines if map markers bring up an info window.
@@ -363,24 +364,24 @@ class GoogleMapAPI
      */
     public $window_trigger = 'click';
 
-     /**
-      * determines whether or not to use the MarkerClusterer plugin.
-      */
-     public $marker_clusterer = false;
+    /**
+     * determines whether or not to use the MarkerClusterer plugin.
+     */
+    public $marker_clusterer = false;
 
-     /**
-      * set default marker clusterer *webserver* file location.
-      */
-     public $marker_clusterer_location = '/MarkerClusterer-1.0/markerclusterer_compiled.js';
+    /**
+     * set default marker clusterer *webserver* file location.
+     */
+    public $marker_clusterer_location = '/MarkerClusterer-1.0/markerclusterer_compiled.js';
 
-     /**
-      * set default marker clusterer options.
-      */
-     public $marker_clusterer_options = [
+    /**
+     * set default marker clusterer options.
+     */
+    public $marker_clusterer_options = [
         'maxZoom' => 'null',
         'gridSize'=> 'null',
         'styles'  => 'null',
-     ];
+    ];
 
     /**
      * determines if traffic overlay is displayed on map.
@@ -426,16 +427,16 @@ class GoogleMapAPI
      * @deprecated
      */
     public $driving_dir_text = [
-            'dir_to'            => 'Start address: (include addr, city st/region)',
-            'to_button_value'   => 'Get Directions',
-            'to_button_type'    => 'submit',
-            'dir_from'          => 'End address: (include addr, city st/region)',
-            'from_button_value' => 'Get Directions',
-            'from_button_type'  => 'submit',
-            'dir_text'          => 'Directions: ',
-            'dir_tohere'        => 'To here',
-            'dir_fromhere'      => 'From here',
-            ];
+        'dir_to'            => 'Start address: (include addr, city st/region)',
+        'to_button_value'   => 'Get Directions',
+        'to_button_type'    => 'submit',
+        'dir_from'          => 'End address: (include addr, city st/region)',
+        'from_button_value' => 'Get Directions',
+        'from_button_type'  => 'submit',
+        'dir_text'          => 'Directions: ',
+        'dir_tohere'        => 'To here',
+        'dir_fromhere'      => 'From here',
+    ];
 
     /**
      * version number.
@@ -601,13 +602,13 @@ class GoogleMapAPI
      */
     public $_display_js_functions = true;
 
-     /**
-      * Class variable that will store flag to minify js - this can be overwritten after object is instantiated.  Include JSMin.php if
-      * you want to use JS Minification.
-      *
-      * @var bool
-      */
-     public $_minify_js = true;
+    /**
+     * Class variable that will store flag to minify js - this can be overwritten after object is instantiated.  Include JSMin.php if
+     * you want to use JS Minification.
+     *
+     * @var bool
+     */
+    public $_minify_js = true;
 
     /**
      * class constructor.
@@ -1111,37 +1112,37 @@ class GoogleMapAPI
         $this->info_window = false;
     }
 
-     /**
-      * enable elevation marker to be displayed.
-      */
-     public function enableElevationMarker()
-     {
-         $this->elevation_markers = true;
-     }
+    /**
+     * enable elevation marker to be displayed.
+     */
+    public function enableElevationMarker()
+    {
+        $this->elevation_markers = true;
+    }
 
-     /**
-      * disable elevation marker.
-      */
-     public function disableElevationMarker()
-     {
-         $this->elevation_markers = false;
-     }
+    /**
+     * disable elevation marker.
+     */
+    public function disableElevationMarker()
+    {
+        $this->elevation_markers = false;
+    }
 
-     /**
-      * enable elevation to be displayed for directions.
-      */
-     public function enableElevationDirections()
-     {
-         $this->elevation_directions = true;
-     }
+    /**
+     * enable elevation to be displayed for directions.
+     */
+    public function enableElevationDirections()
+    {
+        $this->elevation_directions = true;
+    }
 
-     /**
-      * disable elevation to be displayed for directions.
-      */
-     public function disableElevationDirections()
-     {
-         $this->elevation_directions = false;
-     }
+    /**
+     * disable elevation to be displayed for directions.
+     */
+    public function disableElevationDirections()
+    {
+        $this->elevation_directions = false;
+    }
 
     /**
      * enable map marker clustering.
@@ -1191,7 +1192,7 @@ class GoogleMapAPI
             default:
                 $this->window_trigger = 'click';
                 break;
-            }
+        }
     }
 
     /**
@@ -1330,6 +1331,7 @@ class GoogleMapAPI
         }
         $this->_markers[] = $_marker;
         $this->adjustCenterCoords($_marker['lon'], $_marker['lat']);
+
         // return index of marker
         return count($this->_markers) - 1;
     }
@@ -1495,32 +1497,33 @@ class GoogleMapAPI
         }
         $this->adjustCenterCoords($lon1, $lat1);
         $this->adjustCenterCoords($lon2, $lat2);
+
         // return index of polyline
         return $id;
     }
 
-     /**
-      * function to add an elevation profile for a polyline to the page.
-      */
-     public function addPolylineElevation($polyline_id, $elevation_dom_id, $samples = 256, $width = '', $height = '', $focus_color = '#00ff00')
-     {
-         if (isset($this->_polylines[$polyline_id])) {
-             $this->_elevation_polylines[$polyline_id] = [
+    /**
+     * function to add an elevation profile for a polyline to the page.
+     */
+    public function addPolylineElevation($polyline_id, $elevation_dom_id, $samples = 256, $width = '', $height = '', $focus_color = '#00ff00')
+    {
+        if (isset($this->_polylines[$polyline_id])) {
+            $this->_elevation_polylines[$polyline_id] = [
                 'dom_id'     => $elevation_dom_id,
                 'samples'    => $samples,
                 'width'      => ($width != '' ? $width : str_replace('px', '', $this->width)),
                 'height'     => ($height != '' ? $height : str_replace('px', '', $this->height) / 2),
                 'focus_color'=> $focus_color,
             ];
-         }
-     }
+        }
+    }
 
-     /**
-      * function to add an overlay to the map.
-      */
-     public function addOverlay($bds_lat1, $bds_lon1, $bds_lat2, $bds_lon2, $img_src, $opacity = 100)
-     {
-         $_overlay = [
+    /**
+     * function to add an overlay to the map.
+     */
+    public function addOverlay($bds_lat1, $bds_lon1, $bds_lat2, $bds_lon2, $img_src, $opacity = 100)
+    {
+        $_overlay = [
             'bounds' => [
                 'ne'=> [
                     'lat' => $bds_lat1,
@@ -1533,25 +1536,25 @@ class GoogleMapAPI
             ],
             'img'     => $img_src,
             'opacity' => $opacity / 10,
-         ];
-         $this->adjustCenterCoords($bds_lon1, $bds_lat1);
-         $this->adjustCenterCoords($bds_lon2, $bds_lat2);
-         $this->_overlays[] = $_overlay;
+        ];
+        $this->adjustCenterCoords($bds_lon1, $bds_lat1);
+        $this->adjustCenterCoords($bds_lon2, $bds_lat2);
+        $this->_overlays[] = $_overlay;
 
-         return count($this->_overlays) - 1;
-     }
+        return count($this->_overlays) - 1;
+    }
 
-     /**
-      * function to add a KML overlay to the map.
-      *  *Note that this expects a filename and file parsing/processing is done
-      *  on the client side.
-      */
-     public function addKMLOverlay($file)
-     {
-         $this->_kml_overlays[] = $file;
+    /**
+     * function to add a KML overlay to the map.
+     *  *Note that this expects a filename and file parsing/processing is done
+     *  on the client side.
+     */
+    public function addKMLOverlay($file)
+    {
+        $this->_kml_overlays[] = $file;
 
-         return count($this->_kml_overlays) - 1;
-     }
+        return count($this->_kml_overlays) - 1;
+    }
 
     /**
      * adjust map center coordinates by the given lat/lon point.
@@ -1605,12 +1608,12 @@ class GoogleMapAPI
     {
         $_icon_image_path = strpos($iconImage, 'http') === 0 ? $iconImage : $_SERVER['DOCUMENT_ROOT'].$iconImage;
         if (!($_image_info = @getimagesize($_icon_image_path))) {
-            die('GoogleMapAPI:createMarkerIcon: Error reading image: '.$iconImage);
+            exit('GoogleMapAPI:createMarkerIcon: Error reading image: '.$iconImage);
         }
         if ($iconShadowImage) {
             $_shadow_image_path = strpos($iconShadowImage, 'http') === 0 ? $iconShadowImage : $_SERVER['DOCUMENT_ROOT'].$iconShadowImage;
             if (!($_shadow_info = @getimagesize($_shadow_image_path))) {
-                die('GoogleMapAPI:createMarkerIcon: Error reading shadow image: '.$iconShadowImage);
+                exit('GoogleMapAPI:createMarkerIcon: Error reading shadow image: '.$iconShadowImage);
             }
         }
 
@@ -1628,18 +1631,18 @@ class GoogleMapAPI
         }
 
         $icon_info = [
-                'image'             => $iconImage,
-                'iconWidth'         => $_image_info[0],
-                'iconHeight'        => $_image_info[1],
-                'iconAnchorX'       => $iconAnchorX,
-                'iconAnchorY'       => $iconAnchorY,
-                'infoWindowAnchorX' => $infoWindowAnchorX,
-                'infoWindowAnchorY' => $infoWindowAnchorY,
-                ];
+            'image'             => $iconImage,
+            'iconWidth'         => $_image_info[0],
+            'iconHeight'        => $_image_info[1],
+            'iconAnchorX'       => $iconAnchorX,
+            'iconAnchorY'       => $iconAnchorY,
+            'infoWindowAnchorX' => $infoWindowAnchorX,
+            'infoWindowAnchorY' => $infoWindowAnchorY,
+        ];
         if ($iconShadowImage) {
             $icon_info = array_merge($icon_info, ['shadow'            => $iconShadowImage,
-                                                       'shadowWidth'  => $_shadow_info[0],
-                                                       'shadowHeight' => $_shadow_info[1], ]);
+                'shadowWidth'                                         => $_shadow_info[0],
+                'shadowHeight'                                        => $_shadow_info[1], ]);
         }
 
         return $icon_info;
@@ -2034,7 +2037,6 @@ class GoogleMapAPI
 				";
 
                 if (!empty($this->_markers)) {
-
                     //Add markers to the street view
                     if ($this->street_view_dom_id != '') {
                         $_script .= $this->getAddMarkersJS($this->map_id, $pano = true);
@@ -2146,15 +2148,15 @@ class GoogleMapAPI
 			  ';
             }
 
-             //end JS if mapObj != "undefined" block
+            //end JS if mapObj != "undefined" block
             $_script .= '}'."\n";
         }//end if $this->display_map==true
 
         if (!empty($this->browser_alert)) {
             //TODO:Update with new browser catch SEE ABOVE
-           // $_output .= '} else {' . "\n";
-           // $_output .= 'alert("' . str_replace('"','\"',$this->browser_alert) . '");' . "\n";
-           // $_output .= '}' . "\n";
+            // $_output .= '} else {' . "\n";
+            // $_output .= 'alert("' . str_replace('"','\"',$this->browser_alert) . '");' . "\n";
+            // $_output .= '}' . "\n";
         }
 
         if ($this->onload) {
@@ -2175,18 +2177,18 @@ class GoogleMapAPI
         return $_output;
     }
 
-     /**
-      * function to render utility functions for use on the page.
-      */
-     public function getMapFunctions()
-     {
-         $_script = '';
-         if ($this->_display_js_functions === true) {
-             $_script = $this->getUtilityFunctions();
-         }
+    /**
+     * function to render utility functions for use on the page.
+     */
+    public function getMapFunctions()
+    {
+        $_script = '';
+        if ($this->_display_js_functions === true) {
+            $_script = $this->getUtilityFunctions();
+        }
 
-         return $_script;
-     }
+        return $_script;
+    }
 
     public function getUtilityFunctions()
     {
@@ -2200,8 +2202,8 @@ class GoogleMapAPI
         if (!empty($this->_elevation_polylines) || (!empty($this->_directions) && $this->elevation_directions)) {
             $_script .= $this->getPlotElevationJS();
         }
-         // Utility functions used to distinguish between tabbed and non-tabbed info windows
-         $_script .= 'function isArray(a) {return isObject(a) && a.constructor == Array;}'."\n";
+        // Utility functions used to distinguish between tabbed and non-tabbed info windows
+        $_script .= 'function isArray(a) {return isObject(a) && a.constructor == Array;}'."\n";
         $_script .= 'function isObject(a) {return (a && typeof a == \'object\') || isFunction(a);}'."\n";
         $_script .= 'function isFunction(a) {return typeof a == \'function\';}'."\n";
         $_script .= 'function isEmpty(obj) { for(var i in obj) { return false; } return true; }'."\n";
@@ -2228,7 +2230,8 @@ class GoogleMapAPI
         foreach ($this->_markers as $_marker) {
             $iw_html = str_replace('"', '\"', str_replace(["\n", "\r"], '', $_marker['html']));
             $_output .= 'var point = new google.maps.LatLng('.$_marker['lat'].','.$_marker['lon'].");\n";
-            $_output .= sprintf('%s.push(createMarker(%s%s, point,"%s","%s", %s, %s, "%s", %s ));',
+            $_output .= sprintf(
+                '%s.push(createMarker(%s%s, point,"%s","%s", %s, %s, "%s", %s ));',
                 (($pano == true) ? $_prefix : '').'markers'.$map_id,
                 $_prefix,
                 $map_id,
@@ -2236,8 +2239,8 @@ class GoogleMapAPI
                 str_replace('/', '\/', $iw_html),
                 (isset($_marker['icon_key'])) ? 'icon'.$map_id."['".$_marker['icon_key']."'].image" : "''",
                 (isset($_marker['icon_key']) && isset($_marker['shadow_icon'])) ? 'icon'.$map_id."['".$_marker['icon_key']."'].shadow" : "''",
-                (($this->sidebar) ? $this->sidebar_id : ''),
-                ((isset($_marker['openers']) && count($_marker['openers']) > 0) ? json_encode($_marker['openers']) : "''")
+                ($this->sidebar) ? $this->sidebar_id : '',
+                (isset($_marker['openers']) && count($_marker['openers']) > 0) ? json_encode($_marker['openers']) : "''"
             )."\n";
         }
 
@@ -2310,41 +2313,41 @@ class GoogleMapAPI
         return $_output;
     }
 
-     /**
-      * function to render proper calls for directions - for now can only be used on a map, not a streetview.
-      */
-     public function getAddDirectionsJS()
-     {
-         $_output = '';
+    /**
+     * function to render proper calls for directions - for now can only be used on a map, not a streetview.
+     */
+    public function getAddDirectionsJS()
+    {
+        $_output = '';
 
-         foreach ($this->_directions as $directions) {
-             $dom_id = $directions['dom_id'];
-             $travelModeParams = [];
-             $directionsParams = '';
-             if ($this->walking_directions == true) {
-                 $directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.WALKING";
-             } elseif ($this->biking_directions == true) {
-                 $directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.BICYCLING";
-             } else {
-                 $directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.DRIVING";
-             }
+        foreach ($this->_directions as $directions) {
+            $dom_id = $directions['dom_id'];
+            $travelModeParams = [];
+            $directionsParams = '';
+            if ($this->walking_directions == true) {
+                $directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.WALKING";
+            } elseif ($this->biking_directions == true) {
+                $directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.BICYCLING";
+            } else {
+                $directionsParams .= ", \n travelMode:google.maps.DirectionsTravelMode.DRIVING";
+            }
 
-             if ($this->avoid_highways == true) {
-                 $directionsParams .= ", \n avoidHighways: true";
-             }
-             if ($this->avoid_tollways == true) {
-                 $directionsParams .= ", \n avoidTolls: true";
-             }
+            if ($this->avoid_highways == true) {
+                $directionsParams .= ", \n avoidHighways: true";
+            }
+            if ($this->avoid_tollways == true) {
+                $directionsParams .= ", \n avoidTolls: true";
+            }
 
-             if ($this->directions_unit_system != '') {
-                 if ($this->directions_unit_system == 'METRIC') {
-                     $directionsParams .= ", \n unitSystem: google.maps.DirectionsUnitSystem.METRIC";
-                 } else {
-                     $directionsParams .= ", \n unitSystem: google.maps.DirectionsUnitSystem.IMPERIAL";
-                 }
-             }
+            if ($this->directions_unit_system != '') {
+                if ($this->directions_unit_system == 'METRIC') {
+                    $directionsParams .= ", \n unitSystem: google.maps.DirectionsUnitSystem.METRIC";
+                } else {
+                    $directionsParams .= ", \n unitSystem: google.maps.DirectionsUnitSystem.IMPERIAL";
+                }
+            }
 
-             $_output .= '
+            $_output .= '
 			    directions'.$this->map_id."['$dom_id'] = {
 					displayRenderer:new google.maps.DirectionsRenderer(),
 					directionService:new google.maps.DirectionsService(),
@@ -2378,27 +2381,27 @@ class GoogleMapAPI
 					}
 				});
 			 ';
-         }
+        }
 
-         return $_output;
-     }
+        return $_output;
+    }
 
-     /**
-      * function to get overlay creation JS.
-      */
-     public function getAddOverlayJS()
-     {
-         $_output = '';
-         foreach ($this->_overlays as $_key=>$_overlay) {
-             $_output .= '
+    /**
+     * function to get overlay creation JS.
+     */
+    public function getAddOverlayJS()
+    {
+        $_output = '';
+        foreach ($this->_overlays as $_key=>$_overlay) {
+            $_output .= '
 			 	 var bounds = new google.maps.LatLngBounds(new google.maps.LatLng('.$_overlay['bounds']['ne']['lat'].', '.$_overlay['bounds']['ne']['long'].'), new google.maps.LatLng('.$_overlay['bounds']['sw']['lat'].', '.$_overlay['bounds']['sw']['long']."));
 				 var image = '".$_overlay['img']."';
 			     overlays".$this->map_id."[$_key] = new CustomOverlay(bounds, image, map".$this->map_id.', '.$_overlay['opacity'].');
 			 ';
-         }
+        }
 
-         return $_output;
-     }
+        return $_output;
+    }
 
     /**
      * overridable function to generate the js for the js function for creating a marker.
@@ -2460,12 +2463,12 @@ class GoogleMapAPI
         return $_output;
     }
 
-     /**
-      * Get create overlay js.
-      */
-     public function getCreateOverlayJS()
-     {
-         $_output = "
+    /**
+     * Get create overlay js.
+     */
+    public function getCreateOverlayJS()
+    {
+        $_output = "
 		 	CustomOverlay.prototype = new google.maps.OverlayView();
 			function CustomOverlay(bounds, image, map, opacity){
 				this.bounds_ = bounds;
@@ -2507,8 +2510,8 @@ class GoogleMapAPI
 			}
 		 ";
 
-         return $_output;
-     }
+        return $_output;
+    }
 
     /**
      * print helper function to draw elevation results as a chart.
@@ -2543,12 +2546,12 @@ class GoogleMapAPI
         return $_output;
     }
 
-     /**
-      * create JS that is inside of JS plot elevation function.
-      */
-     public function getElevationMarkerJS()
-     {
-         $_output = "
+    /**
+     * create JS that is inside of JS plot elevation function.
+     */
+    public function getElevationMarkerJS()
+    {
+        $_output = "
 			google.visualization.events.addListener(elevation_data.chart, 'onmouseover', function(e) {
 				if(elevation_data.marker==null){
 					elevation_data.marker = new google.maps.Marker({
@@ -2572,8 +2575,8 @@ class GoogleMapAPI
 			}
 		";
 
-         return $_output;
-     }
+        return $_output;
+    }
 
     /**
      * print map (put at location map will appear).
@@ -2670,11 +2673,11 @@ class GoogleMapAPI
         require_once 'DB.php';
         $_db = &DB::connect($this->dsn);
         if (PEAR::isError($_db)) {
-            die($_db->getMessage());
+            exit($_db->getMessage());
         }
         $_res = &$_db->query("SELECT lon,lat FROM {$this->_db_cache_table} where address = ?", $address);
         if (PEAR::isError($_res)) {
-            die($_res->getMessage());
+            exit($_res->getMessage());
         }
         if ($_row = $_res->fetchRow()) {
             $_ret['lon'] = $_row[0];
@@ -2704,11 +2707,11 @@ class GoogleMapAPI
         require_once 'DB.php';
         $_db = &DB::connect($this->dsn);
         if (PEAR::isError($_db)) {
-            die($_db->getMessage());
+            exit($_db->getMessage());
         }
         $_res = &$_db->query('insert into '.$this->_db_cache_table.' values (?, ?, ?)', [$address, $lon, $lat]);
         if (PEAR::isError($_res)) {
-            die($_res->getMessage());
+            exit($_res->getMessage());
         }
         $_db->disconnect();
 
@@ -2806,33 +2809,32 @@ class GoogleMapAPI
      */
     public function geoGetDistance($lat1, $lon1, $lat2, $lon2, $unit = 'M')
     {
-
-      // calculate miles
-      $M = 69.09 * rad2deg(acos(sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($lon1 - $lon2))));
+        // calculate miles
+        $M = 69.09 * rad2deg(acos(sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($lon1 - $lon2))));
 
         switch (strtoupper($unit)) {
-        case 'K':
-          // kilometers
-          return $M * 1.609344;
-          break;
-        case 'N':
-          // nautical miles
-          return $M * 0.868976242;
-          break;
-        case 'F':
-          // feet
-          return $M * 5280;
-          break;
-        case 'I':
-          // inches
-          return $M * 63360;
-          break;
-        case 'M':
-        default:
-          // miles
-          return $M;
-          break;
-      }
+            case 'K':
+                // kilometers
+                return $M * 1.609344;
+                break;
+            case 'N':
+                // nautical miles
+                return $M * 0.868976242;
+                break;
+            case 'F':
+                // feet
+                return $M * 5280;
+                break;
+            case 'I':
+                // inches
+                return $M * 63360;
+                break;
+            case 'M':
+            default:
+                // miles
+                return $M;
+                break;
+        }
     }
 
     /** #)MS
@@ -2920,22 +2922,23 @@ class GoogleMapAPI
         }
         $this->adjustCenterCoords($lon1, $lat1);
         $this->adjustCenterCoords($lon2, $lat2);
+
         // return index of polyline
         return $id;
     }
 
-     /**#)MS
-     * adds polyline by passed array
-     * if color, weight and opacity are not defined, use the google maps defaults
-     * @param array $polyline_array array of lat/long coords
-     * @param string $id An array id to use to append coordinates to a line
-     * @param string $color the color of the line (format: #000000)
-     * @param string $weight the weight of the line in pixels
-     * @param string $opacity the line opacity (percentage)
-     * @param string $fill_color the polygon color (format: #000000)
-     * @param string $fill_opacity the polygon opacity (percentage)
-     * @return bool|int Array id of newly added point or false
-     */
+    /**#)MS
+    * adds polyline by passed array
+    * if color, weight and opacity are not defined, use the google maps defaults
+    * @param array $polyline_array array of lat/long coords
+    * @param string $id An array id to use to append coordinates to a line
+    * @param string $color the color of the line (format: #000000)
+    * @param string $weight the weight of the line in pixels
+    * @param string $opacity the line opacity (percentage)
+    * @param string $fill_color the polygon color (format: #000000)
+    * @param string $fill_opacity the polygon opacity (percentage)
+    * @return bool|int Array id of newly added point or false
+    */
     public function addPolygonByCoordsArray($polygon_array, $id = false, $color = '', $weight = 0, $opacity = 0, $fill_color = '', $fill_opacity = 0)
     {
         if (!is_array($polygon_array) || count($polygon_array) < 3) {

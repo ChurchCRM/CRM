@@ -4,13 +4,12 @@ namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
 class AdminRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {
-
-    function hasRole()
+    public function hasRole()
     {
         return $this->user->isAdmin();
     }
 
-    function noRoleMessage()
+    public function noRoleMessage()
     {
         return gettext('User must be an Admin');
     }

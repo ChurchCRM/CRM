@@ -2,13 +2,10 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Family;
 use ChurchCRM\ListOptionQuery;
-use ChurchCRM\Person;
 use Slim\Views\PhpRenderer;
 
 $app->group('/register', function () {
-
     $enableSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
 
     if ($enableSelfReg) {
