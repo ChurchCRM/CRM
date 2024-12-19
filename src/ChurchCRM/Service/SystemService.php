@@ -155,7 +155,7 @@ class SystemService
 
     // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size
-    public static function getMaxUploadFileSize($humanFormat = true)
+    public static function getMaxUploadFileSize(bool $humanFormat = true)
     {
         //select maximum upload size
         $max_upload = SystemService::parseSize(ini_get('upload_max_filesize'));
@@ -183,7 +183,7 @@ class SystemService
         }
     }
 
-    private static function humanFilesize($bytes, $decimals = 2): string
+    private static function humanFilesize(float $bytes, $decimals = 2): string
     {
         $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         $factor = floor((strlen($bytes) - 1) / 3);
