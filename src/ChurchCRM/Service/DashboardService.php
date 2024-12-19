@@ -7,23 +7,25 @@ use ChurchCRM\PersonQuery;
 
 class DashboardService
 {
-  public function getAgeStats(){
-    $ageStats = [];
-    $people = PersonQuery::create()->find();
-    foreach($people as $person) {
-        $personNumericAge = (int)$person->getNumericAge();
-        if ($personNumericAge == 0)
-        {
-            continue;
+    public function getAgeStats()
+    {
+        $ageStats = [];
+        $people = PersonQuery::create()->find();
+        foreach ($people as $person) {
+            $personNumericAge = (int) $person->getNumericAge();
+            if ($personNumericAge == 0) {
+                continue;
+            }
+            if (!array_key_exists($personNumericAge, $ageStats)) {
+                $ageStats[$personNumericAge] = 0;
+            }
+            $ageStats[$personNumericAge]++;
         }
-        if(!array_key_exists($personNumericAge,$ageStats)){
-            $ageStats[$personNumericAge] = 0;
-        }
-        $ageStats[$personNumericAge]++;
+        ksort($ageStats);
+
+        return $ageStats;
     }
-    ksort($ageStats);
-    return $ageStats;
-  }
+
     public function getFamilyCount()
     {
         $familyCount = FamilyQuery::Create()
@@ -37,7 +39,7 @@ class DashboardService
     public function getPersonCount()
     {
         $personCount = PersonQuery::Create('per')
-            ->useFamilyQuery('fam','left join')
+            ->useFamilyQuery('fam', 'left join')
                 ->filterByDateDeactivated(null)
             ->endUse()
             ->count();
@@ -61,6 +63,7 @@ class DashboardService
 
         return $data;
     }
+
     public function getGroupStats()
     {
         $sSQL = 'select
@@ -82,8 +85,10 @@ class DashboardService
     }
 
     /**
-     * Return last edited members. Only from active families selected
+     * Return last edited members. Only from active families selected.
+     *
      * @param int $limit
+     *
      * @return array|\ChurchCRM\Person[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
      */
     public function getUpdatedMembers($limit = 12)
@@ -97,8 +102,10 @@ class DashboardService
     }
 
     /**
-     * Newly added members. Only from Active families selected
+     * Newly added members. Only from Active families selected.
+     *
      * @param int $limit
+     *
      * @return array|\ChurchCRM\Person[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
      */
     public function getLatestMembers($limit = 12)

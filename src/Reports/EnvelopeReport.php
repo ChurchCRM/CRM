@@ -8,10 +8,10 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
@@ -133,7 +133,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('EnvelopeAssignments-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('EnvelopeAssignments-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

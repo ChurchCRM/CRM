@@ -11,9 +11,9 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FamilyQuery;
 use ChurchCRM\Reports\PDF_NewsletterLabels;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\FamilyQuery;
 
 $sLabelFormat = InputUtils::LegacyFilterInput($_GET['labeltype']);
 $bRecipientNamingMethod = $_GET['recipientnamingmethod'];
@@ -33,12 +33,12 @@ if ($sFontSize != 'default') {
 
 // Get all the families which receive the newsletter by mail
 $families = FamilyQuery::create()
-        ->filterBySendNewsletter("TRUE")
+        ->filterBySendNewsletter('TRUE')
         ->orderByZip()
         ->find();
 
 foreach ($families as $family) {
-    if ($bRecipientNamingMethod == "familyname") {
+    if ($bRecipientNamingMethod == 'familyname') {
         $labelText = $family->getName();
     } else {
         $labelText = $pdf->MakeSalutation($family->getID());
@@ -60,7 +60,7 @@ foreach ($families as $family) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('NewsLetterLabels'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('NewsLetterLabels'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

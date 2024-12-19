@@ -2,14 +2,14 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
-class AddEventsRoleAuthMiddleware extends BaseAuthRoleMiddleware {
-
-    function hasRole()
+class AddEventsRoleAuthMiddleware extends BaseAuthRoleMiddleware
+{
+    public function hasRole()
     {
         return $this->user->isAddEvent();
     }
 
-    function noRoleMessage()
+    public function noRoleMessage()
     {
         return gettext('User must have bAddEvent permissions');
     }

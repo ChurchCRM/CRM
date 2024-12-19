@@ -13,7 +13,7 @@ $dbPort = '3306';
 $sUSER = 'churchcrm';
 $sPASSWORD = 'changeme';
 $sDATABASE = 'churchcrm';
-#$TwoFASecretKey = 'ChangeThisToASecureRandomStringBeforeUse';
+//$TwoFASecretKey = 'ChangeThisToASecureRandomStringBeforeUse';
 
 // Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
 //
@@ -29,7 +29,7 @@ $sRootPath = '';
 
 // Set $bLockURL=TRUE to enforce https access by specifying exactly
 // which URL's your users may use to log into ChurchCRM.
-$bLockURL = FALSE;
+$bLockURL = false;
 
 // URL[0] is the URL that you prefer most users use when they
 // log in.  These are case sensitive.
@@ -60,5 +60,4 @@ error_reporting(E_ERROR);
 //
 // Absolute path must be specified since this file is called
 // from scripts located in other directories
-require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
-?>
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'LoadConfigs.php';

@@ -31,17 +31,16 @@ class PersonGenderDataCheck implements iTask
 
     public function getLink()
     {
-        return SystemURLs::getRootPath() . '/v2/people?Gender=0';
+        return SystemURLs::getRootPath().'/v2/people?Gender=0';
     }
 
     public function getTitle()
     {
-        return gettext('Missing Gender Data') . " (" . $this->count . ")";
+        return gettext('Missing Gender Data').' ('.$this->count.')';
     }
 
     public function getDesc()
     {
-        return gettext("Missing Gender Data for Some People");
+        return gettext('Missing Gender Data for Some People');
     }
-
 }

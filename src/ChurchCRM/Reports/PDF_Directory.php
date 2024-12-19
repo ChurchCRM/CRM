@@ -3,9 +3,9 @@
 namespace ChurchCRM\Reports;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\MiscUtils;
 
 class PDF_Directory extends ChurchInfoReport
 {
@@ -56,7 +56,7 @@ class PDF_Directory extends ChurchInfoReport
             if ($bDirUseTitlePage) {
                 $iPageNumber--;
             }
-            $this->Cell(0, 10, gettext('Page').' '.$iPageNumber.'    '.date(SystemConfig::getValue("sDateTimeFormat"), time()), 0, 0, 'C');  // in 2.6.0, create a new config for time formatting also
+            $this->Cell(0, 10, gettext('Page').' '.$iPageNumber.'    '.date(SystemConfig::getValue('sDateTimeFormat'), time()), 0, 0, 'C');  // in 2.6.0, create a new config for time formatting also
         }
     }
 
@@ -75,7 +75,7 @@ class PDF_Directory extends ChurchInfoReport
         //Move to the right
         $this->MultiCell(197, 10, "\n\n\n".SystemConfig::getValue('sChurchName')."\n\n".gettext('Directory')."\n\n", 0, 'C');
         $this->Ln(5);
-        $today = date(SystemConfig::getValue("sDateFormatLong"));
+        $today = date(SystemConfig::getValue('sDateFormatLong'));
         $this->MultiCell(197, 10, $today."\n\n", 0, 'C');
 
         $sContact = sprintf("%s\n%s, %s  %s\n\n%s\n\n", SystemConfig::getValue('sChurchAddress'), SystemConfig::getValue('sChurchCity'), SystemConfig::getValue('sChurchState'), SystemConfig::getValue('sChurchZip'), SystemConfig::getValue('sChurchPhone'));
@@ -208,7 +208,7 @@ class PDF_Directory extends ChurchInfoReport
         $this->SetTextColor(255);
         $this->SetFont($this->_Font, 'B', $this->_Char_Size);
 //        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
-         $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
+        $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();
         $this->SetXY($_PosX, $_PosY);
 //        $this->Cell($this->_ColWidth, 5, $sLetter, 1, 1, "C", 1) ;
@@ -216,7 +216,7 @@ class PDF_Directory extends ChurchInfoReport
         $this->SetTextColor(0);
         $this->SetFont($this->_Font, '', $this->_Char_Size);
 //        $this->SetY($this->GetY() + 5);
-    $this->SetY($this->GetY() + $this->_LS);
+        $this->SetY($this->GetY() + $this->_LS);
     }
 
     // This prints the family name in BOLD
@@ -224,13 +224,13 @@ class PDF_Directory extends ChurchInfoReport
     {
         $this->SetFont($this->_Font, 'BU', $this->_Char_Size);
 //        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
-         $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
+        $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();
         $this->SetXY($_PosX, $_PosY);
 //        $this->MultiCell($this->_ColWidth, 5, $sName);
-    $this->MultiCell($this->_ColWidth, $this->_LS, $sName);
+        $this->MultiCell($this->_ColWidth, $this->_LS, $sName);
 //        $this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * 5);
-    $this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * $this->_LS);
+        $this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * $this->_LS);
         $this->SetFont($this->_Font, '', $this->_Char_Size);
     }
 
@@ -266,10 +266,11 @@ class PDF_Directory extends ChurchInfoReport
 
     public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
     {
-      if ($bDirBirthday && $per_BirthDay > 0 && $per_BirthMonth > 0) {
-        return MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "/", $per_Flags);
-      }
-      return '';
+        if ($bDirBirthday && $per_BirthDay > 0 && $per_BirthMonth > 0) {
+            return MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '/', $per_Flags);
+        }
+
+        return '';
     }
 
     // This function formats the string for the family info
@@ -289,9 +290,9 @@ class PDF_Directory extends ChurchInfoReport
         if ($bDirAddress) {
             //            if (strlen($fam_Address1)) { $sFamilyStr .= $fam_Address1 . "\n";  }
 //            if (strlen($fam_Address2)) { $sFamilyStr .= $fam_Address2 . "\n";  }
-          if (strlen($fam_Address1)) {
-              $sFamilyStr .= $fam_Address1;
-          }
+            if (strlen($fam_Address1)) {
+                $sFamilyStr .= $fam_Address1;
+            }
             if (strlen($fam_Address2)) {
                 $sFamilyStr .= '  '.$fam_Address2;
             }
@@ -314,7 +315,7 @@ class PDF_Directory extends ChurchInfoReport
             $sFamilyStr .= '   '.gettext('Email').': '.$fam_Email."\n";
         }
         if ($bDirWedding && ($fam_WeddingDate > 0)) {
-            $sFamilyStr .= '   '.gettext('Wedding').': '.date(SystemConfig::getValue("sDateFormatShort"), strtotime($fam_WeddingDate))."\n";
+            $sFamilyStr .= '   '.gettext('Wedding').': '.date(SystemConfig::getValue('sDateFormatShort'), strtotime($fam_WeddingDate))."\n";
         }
 
         return $sFamilyStr;
@@ -370,7 +371,7 @@ class PDF_Directory extends ChurchInfoReport
 
         $iTempLen = strlen($sHeadStr);
 
-        $sHeadStr .= " " . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
+        $sHeadStr .= ' '.$this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)."\n";
 
         $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 
@@ -427,7 +428,7 @@ class PDF_Directory extends ChurchInfoReport
             $sMemberStr .= ' '.$per_Suffix;
         }
 
-        $sMemberStr .= " " . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
+        $sMemberStr .= ' '.$this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)."\n";
 
         $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 
@@ -457,17 +458,17 @@ class PDF_Directory extends ChurchInfoReport
     public function Add_Record($sName, $text, $numlines, $fid, $pid)
     {
         $dirimg = '';
-        if(!is_null($fid)){
-          $family = FamilyQuery::create()->findOneById($fid);
-          if($family && !($family->getPhoto()->isInitials()) && file_exists($family->getPhoto()->getPhotoURI())) {
-            $dirimg = $family->getPhoto()->getPhotoURI();
-          }
+        if (!is_null($fid)) {
+            $family = FamilyQuery::create()->findOneById($fid);
+            if ($family && !$family->getPhoto()->isInitials() && file_exists($family->getPhoto()->getPhotoURI())) {
+                $dirimg = $family->getPhoto()->getPhotoURI();
+            }
         }
-        if(!is_null($pid)){
-          $person = PersonQuery::create()->findOneById($pid);
-          if ($person && !($person->getPhoto()->isInitials()) && file_exists($person->getPhoto()->getPhotoURI())) {
-            $dirimg = $person->getPhoto()->getPhotoURI();
-          }
+        if (!is_null($pid)) {
+            $person = PersonQuery::create()->findOneById($pid);
+            if ($person && !$person->getPhoto()->isInitials() && file_exists($person->getPhoto()->getPhotoURI())) {
+                $dirimg = $person->getPhoto()->getPhotoURI();
+            }
         }
         $this->Check_Lines($numlines, $dirimg);
 

@@ -2,28 +2,28 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\Notification\UiNotification;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\Notification\UiNotification;
+use ChurchCRM\Tasks\CheckExecutionTimeTask;
 use ChurchCRM\Tasks\CheckUploadSizeTask;
 use ChurchCRM\Tasks\ChurchAddress;
 use ChurchCRM\Tasks\ChurchNameTask;
 use ChurchCRM\Tasks\EmailTask;
 use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
+use ChurchCRM\Tasks\iPreUpgradeTask;
 use ChurchCRM\Tasks\iTask;
 use ChurchCRM\Tasks\LatestReleaseTask;
 use ChurchCRM\Tasks\PersonClassificationDataCheck;
 use ChurchCRM\Tasks\PersonGenderDataCheck;
 use ChurchCRM\Tasks\PersonRoleDataCheck;
+use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
+use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
 use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\RegisteredTask;
-use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
-use ChurchCRM\Tasks\CheckExecutionTimeTask;
-use ChurchCRM\Tasks\iPreUpgradeTask;
-use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
-use ChurchCRM\Tasks\UnsupportedDepositCheck;
-use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
 use ChurchCRM\Tasks\SecretsConfigurationCheckTask;
+use ChurchCRM\Tasks\UnsupportedDepositCheck;
+use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 
 class TaskService
 {
@@ -53,11 +53,11 @@ class TaskService
             new UnsupportedDepositCheck(),
             new SecretsConfigurationCheckTask(),
             new PHPPendingDeprecationVersionCheckTask(),
-            new PHPZipArchiveCheckTask()
+            new PHPZipArchiveCheckTask(),
         ];
 
         $this->notificationClasses = [
-          //  new LatestReleaseTask()
+            //  new LatestReleaseTask()
         ];
     }
 
@@ -67,11 +67,12 @@ class TaskService
         foreach ($this->taskClasses as $taskClass) {
             if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && AuthenticationManager::GetCurrentUser()->isAdmin()))) {
                 array_push($tasks, ['title' => $taskClass->getTitle(),
-                    'link' => $taskClass->getLink(),
-                    'admin' => $taskClass->isAdmin(),
-                    'desc' => $taskClass->getDesc()]);
+                    'link'                  => $taskClass->getLink(),
+                    'admin'                 => $taskClass->isAdmin(),
+                    'desc'                  => $taskClass->getDesc()]);
             }
         }
+
         return $tasks;
     }
 
@@ -80,17 +81,20 @@ class TaskService
         $tasks = [];
         foreach ($this->notificationClasses as $taskClass) {
             if ($taskClass->isActive()) {
-                array_push($tasks,
-                    new UiNotification($taskClass->getTitle(), "wrench", $taskClass->getLink(), $taskClass->getDesc(), ($taskClass->isAdmin() ? "warning" : "info"), "12000", "bottom", "left"));
+                array_push(
+                    $tasks,
+                    new UiNotification($taskClass->getTitle(), 'wrench', $taskClass->getLink(), $taskClass->getDesc(), $taskClass->isAdmin() ? 'warning' : 'info', '12000', 'bottom', 'left')
+                );
             }
         }
+
         return $tasks;
     }
 
-    public function getActivePreUpgradeTasks()  {
-        return array_filter($this->taskClasses, function($k) {
+    public function getActivePreUpgradeTasks()
+    {
+        return array_filter($this->taskClasses, function ($k) {
             return $k instanceof iPreUpgradeTask && $k->isActive();
         });
     }
-
 }

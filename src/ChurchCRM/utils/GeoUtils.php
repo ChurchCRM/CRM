@@ -2,22 +2,18 @@
 
 namespace ChurchCRM\Utils;
 
-use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\LocaleInfo;
 use Geocoder\Provider\BingMaps\BingMaps;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
+use Geocoder\Query\GeocodeQuery;
 use Geocoder\StatefulGeocoder;
 use Http\Adapter\Guzzle7\Client;
-use Geocoder\Query\GeocodeQuery;
-use ChurchCRM\Bootstrapper;
 
 class GeoUtils
 {
-
     public static function getLatLong($address)
     {
-
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::GetCurrentLocale();
 
@@ -26,19 +22,20 @@ class GeoUtils
 
         $lat = 0;
         $long = 0;
+
         try {
-            switch (SystemConfig::getValue("sGeoCoderProvider")) {
-                case "GoogleMaps":
-                    $provider = new GoogleMaps($adapter, null, SystemConfig::getValue("sGoogleMapsGeocodeKey"));
+            switch (SystemConfig::getValue('sGeoCoderProvider')) {
+                case 'GoogleMaps':
+                    $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('sGoogleMapsGeocodeKey'));
                     break;
-                case "BingMaps":
-                    $provider = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));
+                case 'BingMaps':
+                    $provider = new BingMaps($adapter, SystemConfig::getValue('sBingMapKey'));
                     break;
             }
-            $logger->debug("Using: Geo Provider -  ". $provider->getName());
+            $logger->debug('Using: Geo Provider -  '.$provider->getName());
             $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
             $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
-            $logger->debug("We have " . $result->count() . " results");
+            $logger->debug('We have '.$result->count().' results');
             if (!empty($result)) {
                 $firstResult = $result->get(0);
                 $coordinates = $firstResult->getCoordinates();
@@ -46,32 +43,32 @@ class GeoUtils
                 $long = $coordinates->getLongitude();
             }
         } catch (\Exception $exception) {
-            $logger->warning("issue creating geoCoder " . $exception->getMessage());
+            $logger->warning('issue creating geoCoder '.$exception->getMessage());
         }
 
-        return array(
-            'Latitude' => $lat,
-            'Longitude' => $long
-        );
-
+        return [
+            'Latitude'  => $lat,
+            'Longitude' => $long,
+        ];
     }
 
     public static function DrivingDistanceMatrix($address1, $address2)
     {
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::GetCurrentLocale();
-        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
-        $url = $url . "language=" . $localeInfo->getShortLocale();
-        $url = $url . "&origins=" . urlencode($address1);
-        $url = $url . "&destinations=" . urlencode($address2);
+        $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
+        $url = $url.'language='.$localeInfo->getShortLocale();
+        $url = $url.'&origins='.urlencode($address1);
+        $url = $url.'&destinations='.urlencode($address2);
         $logger->debug($url);
         $gMapsResponse = file_get_contents($url);
-        $details = json_decode($gMapsResponse, TRUE);
+        $details = json_decode($gMapsResponse, true);
         $matrixElements = $details['rows'][0]['elements'][0];
-        return array(
+
+        return [
             'distance' => $matrixElements['distance']['text'],
-            'duration' => $matrixElements['duration']['text']
-        );
+            'duration' => $matrixElements['duration']['text'],
+        ];
     }
 
     // Function takes latitude and longitude
@@ -79,7 +76,6 @@ class GeoUtils
     // distance in miles.
     public static function LatLonDistance($lat1, $lon1, $lat2, $lon2)
     {
-
         // Formula for calculating radians between
         // latitude and longitude pairs.
 

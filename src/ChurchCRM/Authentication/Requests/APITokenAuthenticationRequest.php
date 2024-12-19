@@ -1,12 +1,12 @@
 <?php
-namespace ChurchCRM\Authentication\Requests {
 
-    class APITokenAuthenticationRequest extends AuthenticationRequest {
+namespace ChurchCRM\Authentication\Requests;
 
-        public function __construct($APIToken) {
-            $this->APIToken = $APIToken;
-        }
-        public $APIToken;
+class APITokenAuthenticationRequest extends AuthenticationRequest
+{
+    public function __construct($APIToken)
+    {
+        $this->APIToken = $APIToken;
     }
-
+    public $APIToken;
 }
