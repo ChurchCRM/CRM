@@ -100,7 +100,7 @@ function CanvassAssignNonPledging($groupName, $iFYID)
 
         $pledgeCount = mysqli_num_rows($rsPledges);
         if ($pledgeCount == 0) {
-            ++$numFamilies;
+            $numFamilies++;
             if (!($aCanvasser = mysqli_fetch_array($rsCanvassers))) {
                 mysqli_data_seek($rsCanvassers, 0);
                 $aCanvasser = mysqli_fetch_array($rsCanvassers);

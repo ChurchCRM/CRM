@@ -15,5 +15,4 @@ use ChurchCRM\Base\QueryParameterOptions as BaseQueryParameterOptions;
  */
 class QueryParameterOptions extends BaseQueryParameterOptions
 {
-
 }

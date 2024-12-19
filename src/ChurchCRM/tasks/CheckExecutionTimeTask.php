@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
@@ -31,12 +30,11 @@ class CheckExecutionTimeTask
 
     public function getTitle()
     {
-        return gettext('PHP Max Execution Time is too Short') . " (" . $this->executionTime . ")";
+        return gettext('PHP Max Execution Time is too Short').' ('.$this->executionTime.')';
     }
 
     public function getDesc()
     {
-        return gettext("Increase the PHP execution time limit to allow for backup and restore.");
+        return gettext('Increase the PHP execution time limit to allow for backup and restore.');
     }
-
 }

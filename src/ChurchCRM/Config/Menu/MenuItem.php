@@ -15,7 +15,7 @@ class MenuItem
     private $subItems = [];
     private $counters = [];
 
-    public function __construct($name, $uri, $hasPermission = true, $icon = "")
+    public function __construct($name, $uri, $hasPermission = true, $icon = '')
     {
         $this->name = $name;
         $this->uri = $uri;
@@ -26,7 +26,7 @@ class MenuItem
     public function addSubMenu(MenuItem $menuItem)
     {
         if (empty($menuItem->getIcon())) {
-            $menuItem->setIcon("fa-angle-double-right");
+            $menuItem->setIcon('fa-angle-double-right');
         }
         array_push($this->subItems, $menuItem);
     }
@@ -40,12 +40,14 @@ class MenuItem
     {
         //Review SessionVar stuff
         if (!empty($this->uri)) {
-            if (filter_var($this->uri, FILTER_VALIDATE_URL) === FALSE) {
-                return SystemURLs::getRootPath() . "/" . $this->uri;
+            if (filter_var($this->uri, FILTER_VALIDATE_URL) === false) {
+                return SystemURLs::getRootPath().'/'.$this->uri;
             }
             $this->external = true;
+
             return $this->uri;
         }
+
         return '';
     }
 
@@ -57,8 +59,9 @@ class MenuItem
     public function getName()
     {
         if (mb_strlen($this->name) > $this->maxNameStr) {
-            return mb_substr($this->name, 0, $this->maxNameStr - 3) . " ...";
+            return mb_substr($this->name, 0, $this->maxNameStr - 3).' ...';
         }
+
         return $this->name;
     }
 
@@ -92,6 +95,7 @@ class MenuItem
                 return true;
             }
         }
+
         return false;
     }
 
@@ -110,15 +114,18 @@ class MenuItem
         if ($this->hasPermission && (!empty($this->uri) || $this->hasVisibleSubMenus())) {
             return true;
         }
+
         return false;
     }
 
-    public function openMenu() {
+    public function openMenu()
+    {
         foreach ($this->subItems as $item) {
             if ($item->isActive()) {
                 return true;
             }
         }
+
         return false;
     }
 
@@ -127,7 +134,7 @@ class MenuItem
         if (empty($this->uri)) {
             return false;
         }
-        return $_SERVER["REQUEST_URI"] == $this->getURI();
-    }
 
+        return $_SERVER['REQUEST_URI'] == $this->getURI();
+    }
 }

@@ -12,8 +12,9 @@ $app->group('/background', function () {
 
 function getPageCommonData(Request $request, Response $response, array $p_args)
 {
-    $pageName = $request->getQueryParam("name", "");
+    $pageName = $request->getQueryParam('name', '');
     $DashboardValues = NewDashboardService::getValues($pageName);
+
     return $response->withJson($DashboardValues);
 }
 

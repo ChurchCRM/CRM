@@ -23,8 +23,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {

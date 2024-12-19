@@ -12,31 +12,28 @@ use ChurchCRM\Base\Token as BaseToken;
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
- *
  */
 class Token extends BaseToken
 {
-
-    const typeFamilyVerify = "verifyFamily";
-    const typePassword = "password";
+    const typeFamilyVerify = 'verifyFamily';
+    const typePassword = 'password';
 
     public function build($type, $referenceId)
     {
         $this->setReferenceId($referenceId);
         $this->setToken(uniqid());
         switch ($type) {
-            case "verifyFamily":
-                $this->setValidUntilDate(strtotime("+1 week"));
+            case 'verifyFamily':
+                $this->setValidUntilDate(strtotime('+1 week'));
                 $this->setRemainingUses(5);
                 break;
-            case "password":
-                $this->setValidUntilDate(strtotime("+1 day"));
+            case 'password':
+                $this->setValidUntilDate(strtotime('+1 day'));
                 $this->setRemainingUses(1);
                 break;
         }
         $this->setType($type);
     }
-
 
     public function isVerifyFamilyToken()
     {
@@ -60,7 +57,7 @@ class Token extends BaseToken
             $today = new \DateTime();
             $stillValidDate = $this->getValidUntilDate() > $today;
         }
+
         return $stillValidDate && $hasUses;
     }
-
 }

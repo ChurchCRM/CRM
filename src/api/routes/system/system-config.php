@@ -14,13 +14,14 @@ $app->group('/system/config/{configName}', function () {
 
 function getConfigValueByNameAPI(Request $request, Response $response, array $args)
 {
-    return $response->withJson(["value" => SystemConfig::getValue($args['configName'])]);
+    return $response->withJson(['value' => SystemConfig::getValue($args['configName'])]);
 }
 
 function setConfigValueByNameAPI(Request $request, Response $response, array $args)
 {
     $configName = $args['configName'];
-    $input = (object)$request->getParsedBody();
+    $input = (object) $request->getParsedBody();
     SystemConfig::setValue($configName, $input->value);
-    return $response->withJson(["value" => SystemConfig::getValue($configName)]);
+
+    return $response->withJson(['value' => SystemConfig::getValue($configName)]);
 }

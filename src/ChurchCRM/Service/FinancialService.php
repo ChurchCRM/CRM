@@ -5,16 +5,15 @@ namespace ChurchCRM\Service;
 $bSuppressSessionTests = true; // DO NOT MOVE
 require_once dirname(dirname(__FILE__)).'/../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\FamilyQuery;
 use ChurchCRM\MICRReader;
 use ChurchCRM\PledgeQuery;
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 class FinancialService
 {
-
     public function deletePayment($groupKey)
     {
         requireUserGroupMembership('bFinance');
@@ -27,17 +26,17 @@ class FinancialService
         if (SystemConfig::getValue('bUseScannedChecks')) {
             require '../Include/MICRFunctions.php';
             $micrObj = new MICRReader(); // Instantiate the MICR class
-      $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
-      if ($routeAndAccount) {
-          $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="'.$routeAndAccount.'"';
-          $rsFam = RunQuery($sSQL);
-          extract(mysqli_fetch_array($rsFam));
-          $iCheckNo = $micrObj->FindCheckNo($tScanString);
+            $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
+            if ($routeAndAccount) {
+                $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="'.$routeAndAccount.'"';
+                $rsFam = RunQuery($sSQL);
+                extract(mysqli_fetch_array($rsFam));
+                $iCheckNo = $micrObj->FindCheckNo($tScanString);
 
-          return '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
-      } else {
-          throw new \Exception('error in locating family');
-      }
+                return '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
+            } else {
+                throw new \Exception('error in locating family');
+            }
         } else {
             throw new \Exception('Scanned Checks is disabled');
         }
@@ -50,7 +49,7 @@ class FinancialService
             $bGetKeyBack = false;
             if ($depositClosed && ($depositType == 'CreditCard' || $depositType == 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
-        $q = 'DELETE FROM pledge_plg WHERE plg_depID = '.$iDepositSlipID.' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
+                $q = 'DELETE FROM pledge_plg WHERE plg_depID = '.$iDepositSlipID.' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
                 RunQuery($q);
             }
             RunQuery($sSQL);
@@ -74,8 +73,8 @@ class FinancialService
         if ($type) {
             $sqlClause = "AND plg_method = '".$type."'";
         }
-    // Get deposit total
-    $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' ".$sqlClause;
+        // Get deposit total
+        $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' ".$sqlClause;
         $rsDepositTotal = RunQuery($sSQL);
         list($deposit_total) = mysqli_fetch_row($rsDepositTotal);
 
@@ -154,37 +153,37 @@ class FinancialService
     private function validateDate($payment)
     {
         // Validate Date
-    if (strlen($payment->Date) > 0) {
-        list($iYear, $iMonth, $iDay) = sscanf($payment->Date, '%04d-%02d-%02d');
-        if (!checkdate($iMonth, $iDay, $iYear)) {
-            throw new \Exception('Invalid Date');
+        if (strlen($payment->Date) > 0) {
+            list($iYear, $iMonth, $iDay) = sscanf($payment->Date, '%04d-%02d-%02d');
+            if (!checkdate($iMonth, $iDay, $iYear)) {
+                throw new \Exception('Invalid Date');
+            }
         }
-    }
     }
 
     private function validateFund($payment)
     {
         //Validate that the fund selection is valid:
-    //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
-    //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
-    $FundSplit = json_decode($payment->FundSplit);
+        //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
+        //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
+        $FundSplit = json_decode($payment->FundSplit);
         if (count($FundSplit) >= 1 and $FundSplit[0]->FundID != 'None') { // split
-      $nonZeroFundAmountEntered = 0;
+            $nonZeroFundAmountEntered = 0;
             foreach ($FundSplit as $fun_id => $fund) {
                 //$fun_active = $fundActive[$fun_id];
-        if ($fund->Amount > 0) {
-            ++$nonZeroFundAmountEntered;
-        }
+                if ($fund->Amount > 0) {
+                    $nonZeroFundAmountEntered++;
+                }
                 if (SystemConfig::getValue('bEnableNonDeductible') && isset($fund->NonDeductible)) {
                     //Validate the NonDeductible Amount
-          if ($fund->NonDeductible > $fund->Amount) { //Validate the NonDeductible Amount
-            throw new \Exception(gettext("NonDeductible amount can't be greater than total amount."));
-          }
+                    if ($fund->NonDeductible > $fund->Amount) { //Validate the NonDeductible Amount
+                        throw new \Exception(gettext("NonDeductible amount can't be greater than total amount."));
+                    }
                 }
             } // end foreach
-      if (!$nonZeroFundAmountEntered) {
-          throw new \Exception(gettext('At least one fund must have a non-zero amount.'));
-      }
+            if (!$nonZeroFundAmountEntered) {
+                throw new \Exception(gettext('At least one fund must have a non-zero amount.'));
+            }
         } else {
             throw new \Exception('Must select a valid fund');
         }
@@ -204,21 +203,21 @@ class FinancialService
     public function validateChecks($payment)
     {
         requireUserGroupMembership('bFinance');
-    //validate that the payment options are valid
-    //If the payment method is a check, then the check number must be present, and it must not already have been used for this family
-    //if the payment method is cash, there must not be a check number
-    if ($payment->type == 'Payment' and $payment->iMethod == 'CHECK' and !isset($payment->iCheckNo)) {
-        throw new \Exception(gettext('Must specify non-zero check number'));
-    }
-    // detect check inconsistencies
-    if ($payment->type == 'Payment' and isset($payment->iCheckNo)) {
-        if ($payment->iMethod == 'CASH') {
-            throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
-        } //build routine to make sure this check number hasn't been used by this family yet (look at group key)
-      elseif ($payment->iMethod == 'CHECK' and $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
-          throw new \Exception("Check number '".$payment->iCheckNo."' for selected family already exists.");
-      }
-    }
+        //validate that the payment options are valid
+        //If the payment method is a check, then the check number must be present, and it must not already have been used for this family
+        //if the payment method is cash, there must not be a check number
+        if ($payment->type == 'Payment' and $payment->iMethod == 'CHECK' and !isset($payment->iCheckNo)) {
+            throw new \Exception(gettext('Must specify non-zero check number'));
+        }
+        // detect check inconsistencies
+        if ($payment->type == 'Payment' and isset($payment->iCheckNo)) {
+            if ($payment->iMethod == 'CASH') {
+                throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
+            } //build routine to make sure this check number hasn't been used by this family yet (look at group key)
+            elseif ($payment->iMethod == 'CHECK' and $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
+                throw new \Exception("Check number '".$payment->iCheckNo."' for selected family already exists.");
+            }
+        }
     }
 
     public function processCurrencyDenominations($payment, $groupKey)
@@ -237,29 +236,29 @@ class FinancialService
     public function insertPledgeorPayment($payment)
     {
         requireUserGroupMembership('bFinance');
-    // Only set PledgeOrPayment when the record is first created
-    // loop through all funds and create non-zero amount pledge records
-    unset($sGroupKey);
+        // Only set PledgeOrPayment when the record is first created
+        // loop through all funds and create non-zero amount pledge records
+        unset($sGroupKey);
         $FundSplit = json_decode($payment->FundSplit);
         foreach ($FundSplit as $Fund) {
             if ($Fund->Amount > 0) {  //Only insert a row in the pledge table if this fund has a non zero amount.
-        if (!isset($sGroupKey)) {  //a GroupKey references a single familie's payment, and transcends the fund splits.  Sharing the same Group Key for this payment helps clean up reports.
-          if ($payment->iMethod == 'CHECK') {
-              $sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
-          } elseif ($payment->iMethod == 'BANKDRAFT') {
-              if (!$iAutID) {
-                  $iAutID = 'draft';
-              }
-              $sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
-          } elseif ($payment->iMethod == 'CREDITCARD') {
-              if (!$iAutID) {
-                  $iAutID = 'credit';
-              }
-              $sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
-          } else {
-              $sGroupKey = genGroupKey('cash', $payment->FamilyID, $Fund->FundID, $payment->Date);
-          }
-        }
+                if (!isset($sGroupKey)) {  //a GroupKey references a single familie's payment, and transcends the fund splits.  Sharing the same Group Key for this payment helps clean up reports.
+                    if ($payment->iMethod == 'CHECK') {
+                        $sGroupKey = genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                    } elseif ($payment->iMethod == 'BANKDRAFT') {
+                        if (!$iAutID) {
+                            $iAutID = 'draft';
+                        }
+                        $sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                    } elseif ($payment->iMethod == 'CREDITCARD') {
+                        if (!$iAutID) {
+                            $iAutID = 'credit';
+                        }
+                        $sGroupKey = genGroupKey($iAutID, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                    } else {
+                        $sGroupKey = genGroupKey('cash', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                    }
+                }
                 $sSQL = "INSERT INTO pledge_plg
                     (plg_famID,
                     plg_FYID,
@@ -342,7 +341,7 @@ class FinancialService
             $onePlgID = $aRow['plg_plgID'];
             $oneFundID = $aRow['plg_fundID'];
             $iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
-      $fund2PlgIds[$oneFundID] = $onePlgID;
+            $fund2PlgIds[$oneFundID] = $onePlgID;
         }
         $payment->total = $total;
 
@@ -352,12 +351,12 @@ class FinancialService
     private function generateBankDepositSlip($thisReport)
     {
         // --------------------------------
-    // BEGIN FRONT OF BANK DEPOSIT SLIP
-    $thisReport->pdf->AddPage('L', [187, 84]);
+        // BEGIN FRONT OF BANK DEPOSIT SLIP
+        $thisReport->pdf->AddPage('L', [187, 84]);
         $thisReport->pdf->SetFont('Courier', '', 18);
-    // Print Deposit Slip portion of report
+        // Print Deposit Slip portion of report
 
-    $thisReport->pdf->SetXY($thisReport->date1X, $thisReport->date1Y);
+        $thisReport->pdf->SetXY($thisReport->date1X, $thisReport->date1Y);
         $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
 
         $thisReport->pdf->SetXY($thisReport->customerName1X, $thisReport->customerName1Y);
@@ -387,22 +386,22 @@ class FinancialService
         $thisReport->pdf->SetXY($thisReport->topTotalX, $thisReport->topTotalY);
         $thisReport->pdf->Cell(46, 7, $grandTotalStr, 1, 1, 'R');
 
-    // --------------------------------
-    // BEGIN BACK OF BANK DEPOSIT SLIP
+        // --------------------------------
+        // BEGIN BACK OF BANK DEPOSIT SLIP
 
-    $thisReport->pdf->AddPage('P', [84, 187]);
+        $thisReport->pdf->AddPage('P', [84, 187]);
         $numItems = 0;
         foreach ($thisReport->payments as $payment) {
             // List all the checks and total the cash
-      if ($payment->plg_method == 'CHECK') {
-          $plgSumStr = sprintf('%.2f', $payment->plg_amount);
-          $thisReport->pdf->SetFontSize(14);
-          $thisReport->pdf->SetXY($thisReport->depositSlipBackCheckNosX, $thisReport->depositSlipBackCheckNosY + $numItems * $thisReport->depositSlipBackCheckNosHeight);
-          $thisReport->pdf->Cell($thisReport->depositSlipBackCheckNosWidth, $thisReport->depositSlipBackCheckNosHeight, $payment->plg_CheckNo, 1, 0, 'L');
-          $thisReport->pdf->SetFontSize(18);
-          $thisReport->pdf->Cell($thisReport->depositSlipBackDollarsWidth, $thisReport->depositSlipBackDollarsHeight, $plgSumStr, 1, 1, 'R');
-          $numItems += 1;
-      }
+            if ($payment->plg_method == 'CHECK') {
+                $plgSumStr = sprintf('%.2f', $payment->plg_amount);
+                $thisReport->pdf->SetFontSize(14);
+                $thisReport->pdf->SetXY($thisReport->depositSlipBackCheckNosX, $thisReport->depositSlipBackCheckNosY + $numItems * $thisReport->depositSlipBackCheckNosHeight);
+                $thisReport->pdf->Cell($thisReport->depositSlipBackCheckNosWidth, $thisReport->depositSlipBackCheckNosHeight, $payment->plg_CheckNo, 1, 0, 'L');
+                $thisReport->pdf->SetFontSize(18);
+                $thisReport->pdf->Cell($thisReport->depositSlipBackDollarsWidth, $thisReport->depositSlipBackDollarsHeight, $plgSumStr, 1, 1, 'R');
+                $numItems += 1;
+            }
         }
     }
 
@@ -457,49 +456,49 @@ class FinancialService
 
         $totalAmount = 0;
 
-    //while ($aRow = mysqli_fetch_array($rsPledges))
-    foreach ($thisReport->payments as $payment) {
-        $thisReport->pdf->SetFont('Times', '', 10);
+        //while ($aRow = mysqli_fetch_array($rsPledges))
+        foreach ($thisReport->payments as $payment) {
+            $thisReport->pdf->SetFont('Times', '', 10);
 
-      // Format Data
-      if (strlen($payment->plg_CheckNo) > 8) {
-          $payment->plg_CheckNo = '...'.mb_substr($payment->plg_CheckNo, -8, 8);
-      }
-        if (strlen($payment->fun_Name) > 20) {
-            $payment->fun_Name = mb_substr($payment->fun_Name, 0, 20).'...';
+            // Format Data
+            if (strlen($payment->plg_CheckNo) > 8) {
+                $payment->plg_CheckNo = '...'.mb_substr($payment->plg_CheckNo, -8, 8);
+            }
+            if (strlen($payment->fun_Name) > 20) {
+                $payment->fun_Name = mb_substr($payment->fun_Name, 0, 20).'...';
+            }
+            if (strlen($payment->plg_comment) > 40) {
+                $payment->plg_comment = mb_substr($payment->plg_comment, 0, 38).'...';
+            }
+            if (strlen($payment->familyName) > 25) {
+                $payment->familyName = mb_substr($payment->familyName, 0, 24).'...';
+            }
+
+            $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);
+
+            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $payment->fun_Name);
+
+            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MethodX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $payment->plg_method);
+
+            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FromX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $payment->familyName);
+
+            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $payment->plg_comment);
+
+            $thisReport->pdf->SetFont('Courier', '', 8);
+
+            $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->plg_amount);
+
+            $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
+
+            if ($thisReport->curY >= 250) {
+                $thisReport->pdf->AddPage();
+                $thisReport->curY = $thisReport->topY;
+            }
         }
-        if (strlen($payment->plg_comment) > 40) {
-            $payment->plg_comment = mb_substr($payment->plg_comment, 0, 38).'...';
-        }
-        if (strlen($payment->familyName) > 25) {
-            $payment->familyName = mb_substr($payment->familyName, 0, 24).'...';
-        }
-
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
-        $thisReport->pdf->Write(8, $payment->fun_Name);
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MethodX, $thisReport->curY);
-        $thisReport->pdf->Write(8, $payment->plg_method);
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FromX, $thisReport->curY);
-        $thisReport->pdf->Write(8, $payment->familyName);
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
-        $thisReport->pdf->Write(8, $payment->plg_comment);
-
-        $thisReport->pdf->SetFont('Courier', '', 8);
-
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->plg_amount);
-
-        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
-
-        if ($thisReport->curY >= 250) {
-            $thisReport->pdf->AddPage();
-            $thisReport->curY = $thisReport->topY;
-        }
-    }
 
         $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
@@ -509,8 +508,8 @@ class FinancialService
         $grandTotalStr = sprintf('%.2f', $thisReport->deposit->dep_Total);
         $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
 
-    // Now print deposit totals by fund
-    $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
+        // Now print deposit totals by fund
+        $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
         if ($thisReport->depositSummaryParameters->displayBillCounts) {
             $this->generateCashDenominations($thisReport);
         }
@@ -573,8 +572,8 @@ class FinancialService
 
         $CSVReturn = new \stdClass();
         $CSVReturn->content = $retstring;
-    // Export file
-    $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-'.$depID.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv';
+        // Export file
+        $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-'.$depID.'-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv';
 
         return $CSVReturn;
     }
@@ -582,8 +581,8 @@ class FinancialService
     public function getCurrencyTypeOnDeposit($currencyID, $depositID)
     {
         $currencies = [];
-    // Get the list of Currency denominations
-    $sSQL = 'select sum(pdem_denominationQuantity) from pledge_denominations_pdem
+        // Get the list of Currency denominations
+        $sSQL = 'select sum(pdem_denominationQuantity) from pledge_denominations_pdem
                  where  plg_depID = '.$depositID.'
                  AND
                  pdem_denominationID = '.$currencyID;
@@ -595,8 +594,8 @@ class FinancialService
     public function getCurrency()
     {
         $currencies = [];
-    // Get the list of Currency denominations
-    $sSQL = 'SELECT * FROM currency_denominations_cdem';
+        // Get the list of Currency denominations
+        $sSQL = 'SELECT * FROM currency_denominations_cdem';
         $rscurrencyDenomination = RunQuery($sSQL);
         mysqli_data_seek($rscurrencyDenomination, 0);
         while ($row = mysqli_fetch_array($rscurrencyDenomination)) {
@@ -607,7 +606,8 @@ class FinancialService
             $currency->cClass = $row['cdem_denominationClass'];
             array_push($currencies, $currency);
         } // end while
-    return $currencies;
+
+        return $currencies;
     }
 
     public function getActiveFunds()
@@ -616,7 +616,7 @@ class FinancialService
         $funds = [];
         $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
         $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-    $rsFunds = RunQuery($sSQL);
+        $rsFunds = RunQuery($sSQL);
         mysqli_data_seek($rsFunds, 0);
         while ($aRow = mysqli_fetch_array($rsFunds)) {
             $fund = new \stdClass();
@@ -625,6 +625,7 @@ class FinancialService
             $fund->Description = $aRow['fun_Description'];
             array_push($funds, $fund);
         } // end while
-    return $funds;
+
+        return $funds;
     }
 }

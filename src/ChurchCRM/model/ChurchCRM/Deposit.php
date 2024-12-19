@@ -76,7 +76,7 @@ class Deposit extends BaseDeposit
 
         $OFXReturn->content .= '</STMTTRNRS></BANKTRANLIST></OFX>';
         // Export file
-        $OFXReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$this->getId().'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.ofx';
+        $OFXReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$this->getId().'-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.ofx';
 
         return $OFXReturn;
     }
@@ -147,7 +147,6 @@ class Deposit extends BaseDeposit
             $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
             $thisReport->curY += 4;
         }
-
     }
 
     private function generateQBDepositSlip($thisReport)
@@ -352,10 +351,9 @@ class Deposit extends BaseDeposit
         $this->generateTotalsByCurrencyType($thisReport);
         $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
-        if (!empty($this->getComment()))
-        {
-          $thisReport->pdf->SetXY($thisReport->curX,  $thisReport->curY);
-          $thisReport->pdf->MultiCell(0, $thisReport->depositSummaryParameters->summary->intervalY, gettext('Deposit Comment') . ": " . $this->getComment(), 0, 'L');
+        if (!empty($this->getComment())) {
+            $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+            $thisReport->pdf->MultiCell(0, $thisReport->depositSummaryParameters->summary->intervalY, gettext('Deposit Comment').': '.$this->getComment(), 0, 'L');
         }
         $thisReport->curY += 130;
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
@@ -366,7 +364,7 @@ class Deposit extends BaseDeposit
     private function generateWitnessSignature($thisReport)
     {
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
-        $thisReport->curY = $thisReport->pdf->GetPageHeight()  - 30;
+        $thisReport->curY = $thisReport->pdf->GetPageHeight() - 30;
         $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->write(8, 'Witness 1');
         $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
@@ -409,7 +407,7 @@ class Deposit extends BaseDeposit
         $this->generateDepositSummary($Report);
 
         // Export file
-        $Report->pdf->Output('ChurchCRM-DepositReport-'.$this->getId().'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+        $Report->pdf->Output('ChurchCRM-DepositReport-'.$this->getId().'-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
     }
 
     public function getTotalAmount()

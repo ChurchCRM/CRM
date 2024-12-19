@@ -12,7 +12,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->group('/persons', function () {
-
     $this->get('/roles', 'getAllRolesAPI');
     $this->get('/roles/', 'getAllRolesAPI');
     $this->get('/duplicate/emails', 'getEmailDupesAPI');
@@ -25,7 +24,7 @@ $app->group('/persons', function () {
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
 
-        $searchLikeString = '%' . $query . '%';
+        $searchLikeString = '%'.$query.'%';
         $people = PersonQuery::create()->
         filterByFirstName($searchLikeString, Criteria::LIKE)->
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
@@ -57,14 +56,15 @@ $app->group('/persons', function () {
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
+
         return $response->withJson(['people' => $people->toArray()]);
     });
-
 });
 
 function getAllRolesAPI(Request $request, Response $response, array $p_args)
 {
     $roles = ListOptionQuery::create()->getFamilyRoles();
+
     return $response->withJson($roles->toArray());
 }
 
@@ -85,21 +85,21 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
         $dbPeople = PersonQuery::create()->filterByEmail($email)->_or()->filterByWorkEmail($email)->find();
         $people = [];
         foreach ($dbPeople as $person) {
-            array_push($people, ["id" => $person->getId(), "name" => $person->getFullName()]);
+            array_push($people, ['id' => $person->getId(), 'name' => $person->getFullName()]);
         }
         $families = [];
         $dbFamilies = FamilyQuery::create()->findByEmail($email);
         foreach ($dbFamilies as $family) {
-            array_push($families, ["id" => $family->getId(), "name" => $family->getName()]);
+            array_push($families, ['id' => $family->getId(), 'name' => $family->getName()]);
         }
         array_push($emails, [
-            "email" => $email,
-            "people" => $people,
-            "families" => $families
+            'email'    => $email,
+            'people'   => $people,
+            'families' => $families,
         ]);
     }
 
-    return $response->withJson(["emails" => $emails]);
+    return $response->withJson(['emails' => $emails]);
 }
 
 function getLatestPersons(Request $request, Response $response, array $p_args)
@@ -111,7 +111,7 @@ function getLatestPersons(Request $request, Response $response, array $p_args)
     ->limit(10)
     ->find();
 
-    return $response->withJson(buildFormattedPersonList($people, true, false, false ));
+    return $response->withJson(buildFormattedPersonList($people, true, false, false));
 }
 
 function getUpdatedPersons(Request $request, Response $response, array $p_args)
@@ -125,7 +125,6 @@ function getUpdatedPersons(Request $request, Response $response, array $p_args)
 
     return $response->withJson(buildFormattedPersonList($people, false, true, false));
 }
-
 
 function getPersonsWithBirthdays(Request $request, Response $response, array $p_args)
 {
@@ -143,25 +142,25 @@ function buildFormattedPersonList($people, $created, $edited, $birthday)
 
     foreach ($people as $person) {
         $formattedPerson = [];
-        $formattedPerson["PersonId"] = $person->getId();
-        $formattedPerson["FirstName"] = $person->getFirstName();
-        $formattedPerson["LastName"] = $person->getLastName();
-        $formattedPerson["FormattedName"] = $person->getFullName();
-        $formattedPerson["Email"] = $person->getEmail();
+        $formattedPerson['PersonId'] = $person->getId();
+        $formattedPerson['FirstName'] = $person->getFirstName();
+        $formattedPerson['LastName'] = $person->getLastName();
+        $formattedPerson['FormattedName'] = $person->getFullName();
+        $formattedPerson['Email'] = $person->getEmail();
         if ($created) {
-            $formattedPerson["Created"] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedPerson['Created'] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
         }
 
         if ($edited) {
-            $formattedPerson["LastEdited"] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedPerson['LastEdited'] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
         }
 
         if ($birthday) {
-            $formattedPerson["Birthday"] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedPerson['Birthday'] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
         }
-
 
         array_push($formattedList, $formattedPerson);
     }
-    return ["people" => $formattedList];
+
+    return ['people' => $formattedList];
 }

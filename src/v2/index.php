@@ -1,4 +1,5 @@
 <?php
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -11,13 +12,13 @@ use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\App;
 use Slim\Container;
 
-$container = new Container;
+$container = new Container();
 if (SystemConfig::debugEnabled()) {
-    $container["settings"]['displayErrorDetails'] = true;
+    $container['settings']['displayErrorDetails'] = true;
 }
-$container["settings"]['displayErrorDetails'] = true;
-$container["settings"]['logger']['name'] = "slim-app";
-$container["settings"]['logger']['path'] = __DIR__ . '/logs/slim-app.log';
+$container['settings']['displayErrorDetails'] = true;
+$container['settings']['logger']['name'] = 'slim-app';
+$container['settings']['logger']['path'] = __DIR__.'/logs/slim-app.log';
 
 // Add middleware to the application
 $app = new App($container);

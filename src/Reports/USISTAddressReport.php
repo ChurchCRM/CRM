@@ -11,10 +11,10 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_AddressReport;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // If user does not have permission redirect to the menu.
 if (!AuthenticationManager::GetCurrentUser()->isbUSAddressVerificationEnabled()) {
@@ -131,7 +131,7 @@ while ($aRow = mysqli_fetch_array($rsFamilies)) {
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('Addresses-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('Addresses-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

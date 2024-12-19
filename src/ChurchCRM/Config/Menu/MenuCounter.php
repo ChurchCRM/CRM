@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Config\Menu;
 
-
 class MenuCounter
 {
     private $name;
@@ -39,5 +38,4 @@ class MenuCounter
     {
         return $this->initValue;
     }
-
 }

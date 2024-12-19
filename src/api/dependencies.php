@@ -1,6 +1,5 @@
 <?php
 
-
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;

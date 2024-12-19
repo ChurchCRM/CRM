@@ -15,5 +15,4 @@ use ChurchCRM\Base\UserQueryQuery as BaseUserQueryQuery;
  */
 class UserQueryQuery extends BaseUserQueryQuery
 {
-
 }
