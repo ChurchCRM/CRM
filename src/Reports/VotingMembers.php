@@ -40,7 +40,7 @@ $pdf = new PDF_VotingMembers();
 $topY = 10;
 $curY = $topY;
 
-$pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, (gettext('Voting members ').MakeFYString($iFYID)));
+$pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Voting members ').MakeFYString($iFYID));
 $curY += 10;
 
 $votingMemberCount = 0;
@@ -89,7 +89,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
         while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
             extract($aMember);
-            $pdf->WriteAt(SystemConfig::getValue('leftX') + 30, $curY, ($per_FirstName.' '.$per_LastName));
+            $pdf->WriteAt(SystemConfig::getValue('leftX') + 30, $curY, $per_FirstName.' '.$per_LastName);
             $curY += 5;
             if ($curY > 245) {
                 $pdf->AddPage();
@@ -109,7 +109,7 @@ $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, 'Number of Voting Members:
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('VotingMembers'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('VotingMembers'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

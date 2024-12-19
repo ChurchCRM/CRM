@@ -2,33 +2,35 @@
 
 namespace ChurchCRM\Search;
 
-use ChurchCRM\PersonQuery;
-use ChurchCRM\Person;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Search\SearchResult;
-use ChurchCRM\Search\SearchResultGroup;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 
-class PersonSearchResultProvider extends BaseSearchResultProvider  {
+class PersonSearchResultProvider extends BaseSearchResultProvider
+{
     public function __construct()
     {
-        $this->pluralNoun = "Persons";
+        $this->pluralNoun = 'Persons';
         parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery) {
-        if (SystemConfig::getBooleanValue("bSearchIncludePersons")) {
+    public function getSearchResults(string $SearchQuery)
+    {
+        if (SystemConfig::getBooleanValue('bSearchIncludePersons')) {
             $this->addSearchResults($this->getPersonSearchResultsByPartialName($SearchQuery));
         }
+
         return $this->formatSearchGroup();
     }
 
-    private function getPersonSearchResultsByPartialName(string $SearchQuery) {
-        $searchResults = array();
+    private function getPersonSearchResultsByPartialName(string $SearchQuery)
+    {
+        $searchResults = [];
         $id = 0;
+
         try {
-            $searchLikeString = '%' . $SearchQuery . '%';
+            $searchLikeString = '%'.$SearchQuery.'%';
             $people = PersonQuery::create()->
                 filterByFirstName($searchLikeString, Criteria::LIKE)->
                 _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
@@ -37,17 +39,18 @@ class PersonSearchResultProvider extends BaseSearchResultProvider  {
                 _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
                 _or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
                 _or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
-                limit(SystemConfig::getValue("bSearchIncludePersonsMax"))->find();
+                limit(SystemConfig::getValue('bSearchIncludePersonsMax'))->find();
 
             if (!empty($people)) {
                 $id++;
                 foreach ($people as $person) {
-                    array_push($searchResults, new SearchResult("person-name-".$id, $person->getFullName(),$person->getViewURI()));
+                    array_push($searchResults, new SearchResult('person-name-'.$id, $person->getFullName(), $person->getViewURI()));
                 }
             }
         } catch (Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
+
         return $searchResults;
     }
 }

@@ -209,7 +209,7 @@ function MakeADCArray($sADClist)
         $endOfRow = strpos($sADClist, '|');
         if ($endOfRow) {
             $currentRow = mb_substr($sADClist, 0, $endOfRow);
-            $sADClist = mb_substr($sADClist, ($endOfRow + 1));
+            $sADClist = mb_substr($sADClist, $endOfRow + 1);
 
             // find the current adc (hint, last item listed)
             $currentRow = trim($currentRow);
@@ -727,7 +727,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 $sAddress .= "\n".$sAddress2;
             }
 
-            if (!$bOnlyComplete || ((strlen($sAddress)) && strlen($sCity) && strlen($sState) && strlen($sZip))) {
+            if (!$bOnlyComplete || (strlen($sAddress) && strlen($sCity) && strlen($sState) && strlen($sZip))) {
                 $sLabelList[] = ['Name'=>$sName, 'Address'=>$sAddress, 'City'=>$sCity, 'State'=>$sState, 'Zip'=>$sZip]; //,'fam_ID'=>$aRow['fam_ID']);
             }
         } // end of foreach loop
@@ -861,27 +861,26 @@ if ($sFileType == 'PDF') {
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
     if (SystemConfig::getValue('iPDFOutputType') == 1) {
-        $pdf->Output('Labels-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+        $pdf->Output('Labels-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
     } else {
         $pdf->Output();
     }
 } else { // File Type must be CSV
-    $delimiter = SystemConfig::getValue("sCSVExportDelimiter");
+    $delimiter = SystemConfig::getValue('sCSVExportDelimiter');
 
     $sCSVOutput = '';
     if ($iBulkCode) {
         $sCSVOutput .= '"ZipBundle"'.$delimiter;
     }
-    
 
-    $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
+    $sCSVOutput .= '"'.InputUtils::translate_special_charset('Greeting').'"'.$delimiter.'"'.InputUtils::translate_special_charset('Name').'"'.$delimiter.'"'.InputUtils::translate_special_charset('Address').'"'.$delimiter.'"'.InputUtils::translate_special_charset('City').'"'.$delimiter.'"'.InputUtils::translate_special_charset('State').'"'.$delimiter.'"'.InputUtils::translate_special_charset('Zip').'"'."\n";
 
     while (list($i, $sLT) = each($aLabelList)) {
         if ($iBulkCode) {
             $sCSVOutput .= '"'.$sLT['Note'].'"'.$delimiter;
         }
 
-        $iNewline = (strpos($sLT['Name'], "\n"));
+        $iNewline = strpos($sLT['Name'], "\n");
         if ($iNewline === false) { // There is no newline character
             $sCSVOutput .= '""'.$delimiter.'"'.InputUtils::translate_special_charset($sLT['Name']).'"'.$delimiter;
         } else {
@@ -889,7 +888,7 @@ if ($sFileType == 'PDF') {
                             '"'.InputUtils::translate_special_charset(mb_substr($sLT['Name'], $iNewline + 1)).'"'.$delimiter;
         }
 
-        $iNewline = (strpos($sLT['Address'], "\n"));
+        $iNewline = strpos($sLT['Address'], "\n");
         if ($iNewline === false) { // There is no newline character
             $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['Address']).'"'.$delimiter;
         } else {
@@ -902,20 +901,19 @@ if ($sFileType == 'PDF') {
                         '"'.$sLT['Zip'].'"'."\n";
     }
 
-    header('Content-type: application/csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
-    header('Content-Disposition: attachment; filename=Labels-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
+    header('Content-type: application/csv;charset='.SystemConfig::getValue('sCSVExportCharset'));
+    header('Content-Disposition: attachment; filename=Labels-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
-    
+
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-    if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
+    if (SystemConfig::getValue('sCSVExportCharset') == 'UTF-8') {
         echo "\xEF\xBB\xBF";
     }
-    
+
     echo $sCSVOutput;
 }
 
-
-exit();
+exit;

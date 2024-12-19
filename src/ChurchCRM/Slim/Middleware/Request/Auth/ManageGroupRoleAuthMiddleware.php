@@ -2,14 +2,14 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
-class ManageGroupRoleAuthMiddleware extends BaseAuthRoleMiddleware {
-
-    function hasRole()
+class ManageGroupRoleAuthMiddleware extends BaseAuthRoleMiddleware
+{
+    public function hasRole()
     {
         return $this->user->isManageGroupsEnabled();
     }
 
-    function noRoleMessage()
+    public function noRoleMessage()
     {
         return gettext('User must have Manage Groups permission');
     }

@@ -13,12 +13,12 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\ChurchInfoReport;
-use ChurchCRM\Emails\FamilyVerificationEmail;
-use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Emails\FamilyVerificationEmail;
+use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -66,7 +66,7 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
 
         $curY += 4 * SystemConfig::getValue('incrementY');
 
-        $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely'). ",");
+        $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
         $curY += 4 * SystemConfig::getValue('incrementY');
         $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSigner'));
     }
@@ -130,7 +130,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->SetFont('Times', 'B', 10);
     $pdf->WriteAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('City, State, Zip'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->WriteAtCell($dataCol, $curY, $dataWid, ($fam_City.', '.$fam_State.'  '.$fam_Zip));
+    $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_City.', '.$fam_State.'  '.$fam_Zip);
     $curY += SystemConfig::getValue('incrementY');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->WriteAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Home Phone'));
@@ -323,7 +323,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     if (!empty($emaillist)) {
         header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
-        $doc = $pdf->Output('ConfirmReportEmail-'.$fam_ID.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'S');
+        $doc = $pdf->Output('ConfirmReportEmail-'.$fam_ID.'-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'S');
 
         $subject = $fam_Name.' Family Information Review';
 
@@ -332,7 +332,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         }
 
         $mail = new FamilyVerificationEmail($emaillist, $fam_Name);
-        $filename = 'ConfirmReportEmail-'.$fam_Name.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf';
+        $filename = 'ConfirmReportEmail-'.$fam_Name.'-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf';
         $mail->addStringAttachment($doc, $filename);
 
         if ($mail->send()) {
@@ -347,5 +347,5 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 if ($_GET['familyId']) {
     RedirectUtils::Redirect('v2/family/'.$_GET['familyId'].'&PDFEmailed='.$familyEmailSent);
 } else {
-    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/people/verify?AllPDFsEmailed='. $familiesEmailed);
+    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/people/verify?AllPDFsEmailed='.$familiesEmailed);
 }

@@ -174,7 +174,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
             $nextY = $pdf->CellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
             $nextY = $pdf->CellWithWrap($curY, $nextY, $QtyWid, $tableCellY, '1', 0, 'L'); // quantity 1 for all individual items
             $nextY = $pdf->CellWithWrap($curY, $nextY, $TitleWid, $tableCellY, $di_title, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $DonorWid, $tableCellY, ($donorFirstName.' '.$donorLastName), 0, 'L');
+            $nextY = $pdf->CellWithWrap($curY, $nextY, $DonorWid, $tableCellY, $donorFirstName.' '.$donorLastName, 0, 'L');
             $nextY = $pdf->CellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
             $nextY = $pdf->CellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
             $nextY = $pdf->CellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$'.$di_sellprice, 0, 'R');
@@ -202,23 +202,23 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
             $nextY = $pdf->CellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
             $nextY = $pdf->CellWithWrap($curY, $nextY, $QtyWid, $tableCellY, $mb_count, 0, 'L');
             $nextY = $pdf->CellWithWrap($curY, $nextY, $TitleWid, $tableCellY, stripslashes($di_title), 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $DonorWid, $tableCellY, ($donorFirstName.' '.$donorLastName), 0, 'L');
+            $nextY = $pdf->CellWithWrap($curY, $nextY, $DonorWid, $tableCellY, $donorFirstName.' '.$donorLastName, 0, 'L');
             $nextY = $pdf->CellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
             $nextY = $pdf->CellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $PriceWid, $tableCellY, ('$'.($mb_count * $di_sellprice)), 0, 'R');
+            $nextY = $pdf->CellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$'.($mb_count * $di_sellprice), 0, 'R');
             $curY = $nextY;
             $totalAmount += $mb_count * $di_sellprice;
         }
 
         // Report total purchased items
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, (gettext('Total of all purchases: $').$totalAmount));
+        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Total of all purchases: $').$totalAmount);
         $curY += 2 * SystemConfig::getValue('incrementY');
 
         // Make the tear-off record for the bottom of the page
         $curY = 240;
         $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('-----------------------------------------------------------------------------------------------------------------------------------------------'));
         $curY += 2 * SystemConfig::getValue('incrementY');
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, (gettext('Buyer # ').$pn_Num.' : '.$paddleFirstName.' '.$paddleLastName.' : '.gettext('Total purchases: $').$totalAmount.' : '.gettext('Amount paid: ________________')));
+        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Buyer # ').$pn_Num.' : '.$paddleFirstName.' '.$paddleLastName.' : '.gettext('Total purchases: $').$totalAmount.' : '.gettext('Amount paid: ________________'));
         $curY += 2 * SystemConfig::getValue('incrementY');
         $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __'));
         $curY += 2 * SystemConfig::getValue('incrementY');
@@ -229,4 +229,4 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-$pdf->Output('FundRaiserStatement'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+$pdf->Output('FundRaiserStatement'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');

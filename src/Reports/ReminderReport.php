@@ -10,11 +10,11 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
 if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
@@ -473,7 +473,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 }
 
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('ReminderReport'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('ReminderReport'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

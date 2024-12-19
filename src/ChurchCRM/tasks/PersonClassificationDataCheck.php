@@ -31,17 +31,16 @@ class PersonClassificationDataCheck implements iTask
 
     public function getLink()
     {
-        return SystemURLs::getRootPath() . '/v2/people?Classification=0';
+        return SystemURLs::getRootPath().'/v2/people?Classification=0';
     }
 
     public function getTitle()
     {
-        return gettext('Missing Classification Data') . " (" . $this->count . ")";
+        return gettext('Missing Classification Data').' ('.$this->count.')';
     }
 
     public function getDesc()
     {
-        return gettext("Missing Classification Data for Some People");
+        return gettext('Missing Classification Data for Some People');
     }
-
 }

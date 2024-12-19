@@ -41,7 +41,7 @@ class PDF_GroupDirectory extends ChurchInfoReport
         //Select Arial italic 8
         $this->SetFont($this->_Font, 'I', 8);
         //Print centered page number
-        $this->Cell(0, 10, 'Page '.($this->PageNo()), 0, 0, 'C');
+        $this->Cell(0, 10, 'Page '.$this->PageNo(), 0, 0, 'C');
     }
 
     // Sets the character size
@@ -94,20 +94,20 @@ class PDF_GroupDirectory extends ChurchInfoReport
 
     // This function prints out the heading when a letter
     // changes.
-/*	function Add_Header($sLetter)
-    {
-        $this->Check_Lines(2);
-        $this->SetTextColor(255);
-        $this->SetFont($this->_Font,'B',12);
-        $_PosX = $this->_Margin_Left+($this->_Column*108);
-        $_PosY = $this->_Margin_Top+($this->_CurLine*5);
-        $this->SetXY($_PosX, $_PosY);
-        $this->Cell(80, 5, $sLetter, 1, 1, "C", 1) ;
-        $this->SetTextColor(0);
-        $this->SetFont($this->_Font,'',$this->_Char_Size);
-        $this->_CurLine+=2;
-    }
-*/
+    /*	function Add_Header($sLetter)
+        {
+            $this->Check_Lines(2);
+            $this->SetTextColor(255);
+            $this->SetFont($this->_Font,'B',12);
+            $_PosX = $this->_Margin_Left+($this->_Column*108);
+            $_PosY = $this->_Margin_Top+($this->_CurLine*5);
+            $this->SetXY($_PosX, $_PosY);
+            $this->Cell(80, 5, $sLetter, 1, 1, "C", 1) ;
+            $this->SetTextColor(0);
+            $this->SetFont($this->_Font,'',$this->_Char_Size);
+            $this->_CurLine+=2;
+        }
+    */
 
     // This prints the name in BOLD
     public function Print_Name($sName)

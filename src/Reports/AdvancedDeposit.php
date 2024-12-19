@@ -10,11 +10,11 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
 if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
@@ -329,7 +329,7 @@ if ($output == 'pdf') {
 
         public function FinishPage($page)
         {
-            $footer = "Page $page   Generated on ".date(SystemConfig::getValue("sDateTimeFormat"));
+            $footer = "Page $page   Generated on ".date(SystemConfig::getValue('sDateTimeFormat'));
             $this->SetFont('Times', 'I', 9);
             $this->WriteAt(80, 258, $footer);
         }
@@ -877,10 +877,10 @@ if ($output == 'pdf') {
     }
 
     $pdf->FinishPage($page);
-    $pdf->Output('DepositReport-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('DepositReport-'.date(SystemConfig::getValue('sDateFilenameFormat')).'.pdf', 'D');
 
-    // Output a text file
-    // ##################
+// Output a text file
+// ##################
 } elseif ($output == 'csv') {
     // Settings
     $delimiter = ',';
@@ -908,6 +908,6 @@ if ($output == 'pdf') {
 
     // Export file
     header('Content-type: text/x-csv');
-    header("Content-Disposition: attachment; filename='ChurchCRM".date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
+    header("Content-Disposition: attachment; filename='ChurchCRM".date(SystemConfig::getValue('sDateFilenameFormat')).'.csv');
     echo $buffer;
 }

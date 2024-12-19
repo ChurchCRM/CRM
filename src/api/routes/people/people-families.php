@@ -16,7 +16,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->group('/families', function () {
-
     $this->get('/latest', 'getLatestFamilies');
     $this->get('/updated', 'getUpdatedFamilies');
     $this->get('/anniversaries', 'getFamiliesWithAnniversaries');
@@ -37,16 +36,15 @@ $app->group('/families', function () {
                 if (!$hasEmail) {
                     array_push($familiesWithoutEmails, $family->toArray());
                 }
-             }
+            }
         }
 
-        return $response->withJson(["count" => count($familiesWithoutEmails), "families" => $familiesWithoutEmails]);
+        return $response->withJson(['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
     });
 
     $this->get('/numbers', function ($request, $response, $args) {
         return $response->withJson(MenuEventsCount::getNumberAnniversaries());
     });
-
 
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
@@ -59,7 +57,7 @@ $app->group('/families', function () {
             array_push($results, $family->toSearchArray());
         }
 
-        return $response->withJson(json_encode(["Families" => $results]));
+        return $response->withJson(json_encode(['Families' => $results]));
     });
 
     $this->get('/self-register', function ($request, $response, $args) {
@@ -68,6 +66,7 @@ $app->group('/families', function () {
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
+
         return $response->withJson(['families' => $families->toArray()]);
     });
 
@@ -78,22 +77,23 @@ $app->group('/families', function () {
             ->joinWithFamily()
             ->limit(100)
             ->find();
+
         return $response->withJson(['families' => $verificationNotes->toArray()]);
     });
 
     $this->get('/pending-self-verify', function ($request, $response, $args) {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::typeFamilyVerify)
-            ->filterByRemainingUses(array('min' => 1))
-            ->filterByValidUntilDate(array('min' => new DateTime()))
+            ->filterByRemainingUses(['min' => 1])
+            ->filterByValidUntilDate(['min' => new DateTime()])
             ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
-            ->withColumn(FamilyTableMap::COL_FAM_NAME, "FamilyName")
-            ->withColumn(TokenTableMap::COL_REFERENCE_ID, "FamilyId")
+            ->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
+            ->withColumn(TokenTableMap::COL_REFERENCE_ID, 'FamilyId')
             ->limit(100)
             ->find();
+
         return $response->withJson(['families' => $pendingTokens->toArray()]);
     });
-
 
     $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
         $scanString = $args['scanString'];
@@ -102,21 +102,21 @@ $app->group('/families', function () {
 
     /**
      * Update the family status to activated or deactivated with :familyId and :status true/false.
-     * Pass true to activate and false to deactivate.     *
+     * Pass true to activate and false to deactivate.     *.
      */
     $this->post('/{familyId:[0-9]+}/activate/{status}', function ($request, $response, $args) {
-        $familyId = $args["familyId"];
-        $newStatus = $args["status"];
+        $familyId = $args['familyId'];
+        $newStatus = $args['status'];
 
         $family = FamilyQuery::create()->findPk($familyId);
         $currentStatus = (empty($family->getDateDeactivated()) ? 'true' : 'false');
 
         //update only if the value is different
         if ($currentStatus != $newStatus) {
-            if ($newStatus == "false") {
+            if ($newStatus == 'false') {
                 $family->setDateDeactivated(date('YmdHis'));
-            } elseif ($newStatus == "true") {
-                $family->setDateDeactivated(Null);
+            } elseif ($newStatus == 'true') {
+                $family->setDateDeactivated(null);
             }
             $family->save();
 
@@ -132,25 +132,22 @@ $app->group('/families', function () {
             $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
             $note->save();
         }
+
         return $response->withJson(['success' => true]);
-
     });
-
 });
-
 
 function getFamiliesWithAnniversaries(Request $request, Response $response, array $p_args)
 {
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
         ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"MONTH(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('m'),Criteria::CUSTOM)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"DAY(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('d'),Criteria::CUSTOM)
+        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'MONTH('.FamilyTableMap::COL_FAM_WEDDINGDATE.') ='.date('m'), Criteria::CUSTOM)
+        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'DAY('.FamilyTableMap::COL_FAM_WEDDINGDATE.') ='.date('d'), Criteria::CUSTOM)
         ->orderByWeddingdate('DESC')
         ->find();
 
     return $response->withJson(buildFormattedFamilies($families, false, false, true));
-
 }
 function getLatestFamilies(Request $request, Response $response, array $p_args)
 {
@@ -182,22 +179,23 @@ function buildFormattedFamilies($families, $created, $edited, $wedding)
 
     foreach ($families as $family) {
         $formattedFamily = [];
-        $formattedFamily["FamilyId"] = $family->getId();
-        $formattedFamily["Name"] = $family->getName();
-        $formattedFamily["Address"] = $family->getAddress();
+        $formattedFamily['FamilyId'] = $family->getId();
+        $formattedFamily['Name'] = $family->getName();
+        $formattedFamily['Address'] = $family->getAddress();
         if ($created) {
-            $formattedFamily["Created"] = date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedFamily['Created'] = date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
         }
 
         if ($edited) {
-            $formattedFamily["LastEdited"] = date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedFamily['LastEdited'] = date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
         }
 
         if ($wedding) {
-            $formattedFamily["WeddingDate"] = date_format($family->getWeddingdate(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedFamily['WeddingDate'] = date_format($family->getWeddingdate(), SystemConfig::getValue('sDateFormatLong'));
         }
 
         array_push($formattedList, $formattedFamily);
     }
-    return ["families" => $formattedList];
+
+    return ['families' => $formattedList];
 }
