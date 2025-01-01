@@ -15,7 +15,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 // Filter Values
 $output = InputUtils::legacyFilterInput($_POST['output']);
-$iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
+$iFYID = (int) InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 if (!$iFYID) {
     $iFYID = CurrentFY();
 }

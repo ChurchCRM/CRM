@@ -15,7 +15,7 @@ $mailchimp = new MailChimpService();
 
 $iFYID = CurrentFY();
 if (array_key_exists('idefaultFY', $_SESSION)) {
-    $iFYID = MakeFYString($_SESSION['idefaultFY']);
+    $iFYID = MakeFYString((int) $_SESSION['idefaultFY']);
 }
 ?>
 

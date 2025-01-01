@@ -18,7 +18,7 @@ $aGrp = explode(',', $iGroupID);
 $nGrps = count($aGrp);
 LoggerUtils::getAppLogger()->debug("Group ID = {$iGroupID}");
 
-$iFYID = InputUtils::legacyFilterInput($_GET['FYID'], 'int');
+$iFYID = (int) InputUtils::legacyFilterInput($_GET['FYID'], 'int');
 
 $tFirstSunday = InputUtils::legacyFilterInput($_GET['FirstSunday']);
 $tLastSunday = InputUtils::legacyFilterInput($_GET['LastSunday']);
