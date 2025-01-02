@@ -22,6 +22,7 @@
         <column name="per_FirstName" phpName="FirstName" type="VARCHAR" size="50"/>
         <column name="per_MiddleName" phpName="MiddleName" type="VARCHAR" size="50"/>
         <column name="per_LastName" phpName="LastName" type="VARCHAR" size="50"/>
+        <column name="per_NickName" phpName="NickName" type="VARCHAR" size="50"/>
         <column name="per_Suffix" phpName="Suffix" type="VARCHAR" size="50"/>
         <column name="per_Address1" phpName="Address1" type="VARCHAR" size="50"/>
         <column name="per_Address2" phpName="Address2" type="VARCHAR" size="50"/>
