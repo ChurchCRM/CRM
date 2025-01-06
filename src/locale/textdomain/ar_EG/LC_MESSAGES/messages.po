@@ -26,7 +26,7 @@ msgstr "حفظ"
 
 #: 
 msgid "Unassigned"
-msgstr "غير معين"
+msgstr "غير محدد"
 
 #: 
 msgid "None"
@@ -235,11 +235,11 @@ msgstr "طريقة الإخراج:"
 
 #: 
 msgid "CSV Individual Records"
-msgstr "كسف السجلات الفردية بصيغة CSV"
+msgstr "كشف السجلات الفردية بصيغة CSV"
 
 #: 
 msgid "CSV Combine Families"
-msgstr "كسف الأسر مجمعة بصيغة CSV"
+msgstr "كشف الأسر مجمعة بصيغة CSV"
 
 #: 
 msgid "Add Individuals to Cart"
@@ -672,7 +672,7 @@ msgstr "عنوان"
 
 #: 
 msgid "Birthday"
-msgstr "عيد ميلاد"
+msgstr "تاريخ الميلاد"
 
 #: 
 msgid "Family Home Phone"
@@ -2429,7 +2429,7 @@ msgstr "الابن، الأب، III"
 
 #: 
 msgid "Birth Month"
-msgstr "شهر الميلاد"
+msgstr "شهر"
 
 #: 
 msgid "Select Month"
@@ -2437,7 +2437,7 @@ msgstr "اختر الشهر"
 
 #: 
 msgid "Birth Day"
-msgstr "عيد الميلاد"
+msgstr "يوم"
 
 #: 
 msgid "Select Day"
@@ -2445,7 +2445,7 @@ msgstr "اختر يوم"
 
 #: 
 msgid "Birth Year"
-msgstr "سنة الميلاد"
+msgstr "سنة"
 
 #: 
 msgid "Hide Age"
@@ -3655,7 +3655,7 @@ msgstr "الحالة سريعة"
 
 #: 
 msgid "Birthdays by Month"
-msgstr "تاريخ الميلاد بالشهر"
+msgstr "تواريخ الميلاد بالشهر"
 
 #: 
 msgid "Students"
@@ -5029,7 +5029,7 @@ msgstr "البحث بواسطة أي جزء من الاسم، المدينة، �
 
 #: 
 msgid "People with birthdays in a particular month"
-msgstr "الناس مع أعياد الميلاد في شهر معين"
+msgstr "أعياد الميلاد في شهر معين"
 
 #: 
 msgid "Find Registered students"
@@ -6798,7 +6798,7 @@ msgstr "صندوق سبليت"
 
 #: 
 msgid "Showing students with birthdays in"
-msgstr "عرض الطلاب مع أعياد الميلاد في"
+msgstr "عرض تلاميذ أعياد ميلادهم فى"
 
 #: 
 msgid "Actions"
@@ -7648,7 +7648,7 @@ msgstr "قاعدة بيانات الترقية"
 
 #: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "تظهر تواريخ ميلاد والمناسبات السنوية على البدء من CRM"
+msgstr "أظهار تواريخ ميلاد والمناسبات السنوية على البدء من CRM"
 
 #: 
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"

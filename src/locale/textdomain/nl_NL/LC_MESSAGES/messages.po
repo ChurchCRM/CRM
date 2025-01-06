@@ -10,7 +10,7 @@ msgstr ""
 
 #: 
 msgid "Cannot execute query."
-msgstr "Kan de vraag niet beantwoorden."
+msgstr "Kan de query niet uitvoeren."
 
 #: 
 msgid "Delete"
@@ -26,7 +26,7 @@ msgstr "Opslaan"
 
 #: 
 msgid "Unassigned"
-msgstr "Niet toegekend"
+msgstr "Niet toegewezen"
 
 #: 
 msgid "None"
@@ -62,7 +62,7 @@ msgstr "Backup Database"
 
 #: 
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Wizard voor het maken van een handmatige backup van de database"
+msgstr "Wizard voor het maken van een handmatige backup van de ChurchCRM database."
 
 #: 
 #, fuzzy
@@ -9035,6 +9035,194 @@ msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ongeldige geboortedatum: geboortemaand en -dag ontbreken."
 
 #: 
+msgid "System"
+msgstr "Systeem"
+
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Amharic - Ethiopië"
+
+#: 
+msgid "Czech"
+msgstr "Tsjechisch"
+
+#: 
+msgid "Finnish"
+msgstr "Find"
+
+#: 
+msgid "Greek"
+msgstr "Grieks"
+
+#: 
+msgid "Turkish"
+msgstr "Turks"
+
+#: 
+msgid "Ukrainian"
+msgstr "Oekraïens"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Wanneer u klikt op \"Uploaden naar GitHub\", wordt u doorgestuurd naar de GitHub issues pagina, waarbij uw systeeminformatie van te voren ingevuld wordt."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Uploaden naar Github"
+
+#: 
+msgid "Change role"
+msgstr "Verander rol"
+
+#: 
+msgid "Closed"
+msgstr "Gesloten"
+
+#: 
+msgid "Delete this person?"
+msgstr "Deze persoon verwijderen?"
+
+#: 
+msgid "Deposit ID"
+msgstr "Betaling ID"
+
+#: 
+msgid "Deposit Total"
+msgstr "Betaling totaal"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Winkelwagen status"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "Als dat niet werkt, kopieer dan de volgende link en plak die in uw browser."
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "U ontvangt deze email, omdat we een verzoek tot activiteit ontvingen voor uw account. Als u dit verzoek niet zelf hebt ingediend, kunt u dit bericht verwijderen."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Om deze emails niet langer te ontvangen, kunt u een email sturen naar"
+
+#: 
+msgid "2016/2017"
+msgstr "2016/2017"
+
+#: 
+msgid "2017/2018"
+msgstr "2017/2018"
+
+#: 
+msgid "2018/2019"
+msgstr "2018/2019"
+
+#: 
+msgid "2019/2020"
+msgstr "2019/2020"
+
+#: 
+msgid "2020/2021"
+msgstr "2020/2021"
+
+#: 
+msgid "2021/2022"
+msgstr "2021/2022"
+
+#: 
+msgid "2022/2023"
+msgstr "2022/2023"
+
+#: 
+msgid "invalid group request"
+msgstr "Ongeldig groepsverzoek"
+
+#: 
+msgid "Hindi - India"
+msgstr "Hindi - India"
+
+#: 
+msgid "Japanese"
+msgstr "Japans"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamil - India"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Niet geabonneerd"
+
+#: 
+msgid "property"
+msgstr "Bezit"
+
+#: 
+msgid "Default Zip"
+msgstr "Standaard Postcode"
+
+#: 
+msgid "Credit Card People"
+msgstr "Credit Card mensen"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Mensen die staan ingesteld op betaling met creditcard"
+
+#: 
 msgid "Adult Name (Optional)"
 msgstr "Naam ambtsdrager (optioneel)"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "Als onderdeel van het herstel, zijn externe backups uitgeschakeld. Als u door wilt gaan met geautomatiseerde backups moet u de instelling bEnableExternalBackupTarget handmatig aanzetten."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "The voorgaande integriteitscheck is geslaagd. Alle hashes voor de systeembestanden hebben de verwachtte waarde."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "De comma separated file (csv) lijst met classificaties die als inactief zichtbaar hoort te zijn"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "Mailchimp is niet geconfigureerd"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "Update the Mailchimp API sleutel"
+
+#: 
+msgid "English - South Africa"
+msgstr "Engels - Zuid Afrika"
+
+#: 
+msgid "English - Jamaica"
+msgstr "Engels - Jamaica"
+
+#: 
+msgid "Swahili"
+msgstr "Swahili"
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "Een letter van de Voornaam en een letter van de Achternaam"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "Twee letters van de Voornaam"
+
+#: 
+msgid "Set font to render initials. Upload custom font to fonts directory"
+msgstr "Kies een lettertype voor de initialen. Upload een eigen lettertype naar de lettertypen map."
+
+#: 
+msgid "Person List Columns"
+msgstr "Kolommen voor de lijst met personen"
+
+#: 
+msgid "Family List Columns"
+msgstr "Kolommen voor de lijst met families"
 
