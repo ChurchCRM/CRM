@@ -71,6 +71,7 @@ msgid "You should make a manual backup at least once a week unless you already h
 msgstr "Anda harus buat backup manual setidaknya seminggu sekali kecuali jika Anda sudah memiliki prosedur backup reguler."
 
 #: 
+#, fuzzy
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr "Setelah unduh file backup, buatlah dua salinan. Letakkan salah satunya ke dalam lokasi yang sangat aman dan yang satu lagi di tempat aman diluar itu."
 
@@ -9070,6 +9071,136 @@ msgid "Group Cart Status"
 msgstr "Status Keranjang Kelompok"
 
 #: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "Jika gagal, salin dan tempel tautan berikut ini pada peramban Anda"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "Anda menerima surel ini karena kami menerima permintaan aktivitas atas akun Anda. Jika Anda tidak membuat permintaan silahkan hapus surel ini."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Untuk berhenti menerima surel ini, silahkan kirim surel ke"
+
+#: 
+msgid "2016/2017"
+msgstr "2016/2017"
+
+#: 
+msgid "2017/2018"
+msgstr "2017/2018"
+
+#: 
+msgid "2018/2019"
+msgstr "2018/2019"
+
+#: 
+msgid "2019/2020"
+msgstr "2019/2020"
+
+#: 
+msgid "2020/2021"
+msgstr "2020/2021"
+
+#: 
+msgid "2021/2022"
+msgstr "2021/2022"
+
+#: 
+msgid "2022/2023"
+msgstr "2022/2023"
+
+#: 
+msgid "invalid group request"
+msgstr "permintaan grup salah"
+
+#: 
+msgid "Hindi - India"
+msgstr "Hindi - India"
+
+#: 
+msgid "Japanese"
+msgstr "Jepang"
+
+#: 
+msgid "Tamil - India"
+msgstr "Tamil - India"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Belum Berlangganan"
+
+#: 
+msgid "property"
+msgstr "properti"
+
+#: 
+msgid "Default Zip"
+msgstr "Kode Pos Standar"
+
+#: 
+msgid "Credit Card People"
+msgstr "Pengguna Kartu Kredit"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Orang-orang yang membayar dengan kartu kredit."
+
+#: 
 msgid "Adult Name (Optional)"
 msgstr "Nama Dewasa (Opsional)"
+
+#. I was assuming "bEnableExternalBackupTarget" is a something displayed as it is. Do we need to translate it?
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "Sebagai bagian dari pemulihan, cadangan eksternal telah dinonaktifkan. Untuk melanjutkan pencadangan otomatis, Anda harus mengaktifkan kembali setelan bEnableExternalBackupTarget."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "Pengecekan integritas telah berhasil. Semua hash fail sistem sesuai dengan ekspektasi."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "Senarai klasifikasi terpisah koma yang harusnya tampil inaktif"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp belum disetel"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "Silahkan perbarui MailChimp API key di:"
+
+#: 
+msgid "English - South Africa"
+msgstr "Inggris - Afrika Selatan"
+
+#: 
+msgid "English - Jamaica"
+msgstr "Inggris - Jamaika"
+
+#: 
+msgid "Swahili"
+msgstr "Swahili"
+
+#. I assume "FirstName" and "LastName" are variables. Should we translate them?
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "Satu karakter dari FirstName dan satu karakter dari LastName"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "Dua karakter dari FirstName"
+
+#: 
+msgid "Set font to render initials. Upload custom font to fonts directory"
+msgstr "Tentukan font untuk inisial. Unggah custom fonts ke direktori fonts"
+
+#: 
+msgid "Person List Columns"
+msgstr "Kolom Senarai Orang"
+
+#: 
+msgid "Family List Columns"
+msgstr "Kolom Senarai Keluarga"
 
