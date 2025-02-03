@@ -32,6 +32,11 @@ class LoggerUtils
         return intval(SystemConfig::getValue('sLogLevel'));
     }
 
+    public static function isDebugLogLevel(): bool
+    {
+        return SystemConfig::getValue('sLogLevel') == Logger::DEBUG;
+    }
+
     public static function buildLogFilePath(string $type): string
     {
         return SystemURLs::getDocumentRoot() . '/logs/' . date('Y-m-d') . '-' . $type . '.log';
