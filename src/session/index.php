@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -80,8 +81,8 @@ function beginSession(Request $request, Response $response, array $args): Respon
     $renderer = new PhpRenderer('templates/');
 
     // Determine if appropriate to pre-fill the username field
-    $pageArgs['prefilledUserName'] = $request->getQueryParams()['username'] ??
-        $request->getServerParams()['username'] ??
+    $pageArgs['prefilledUserName'] = InputUtils::filterSanitizeString($request->getQueryParams()['username']) ??
+    InputUtils::filterSanitizeString($request->getServerParams()['username']) ??
         '';
 
     return $renderer->render($response, 'begin-session.php', $pageArgs);
