@@ -43,6 +43,11 @@ class InputUtils
         return strip_tags(trim($sInput));
     }
 
+    public static function filterSanitizeString($sInput): string
+    {
+        return filter_var(trim($sInput), FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+
     public static function filterHTML($sInput): string
     {
         return strip_tags(trim($sInput), self::$AllowedHTMLTags);
