@@ -7,7 +7,7 @@ ini_set('display_errors', true);
 ini_set('log_errors', true);
 ini_set('error_log', LoggerUtils::buildLogFilePath('slim'));
 
-$errorMiddleware = $app->addErrorMiddleware(true, true, true, LoggerUtils::getSlimMVCLogger());
+$errorMiddleware = $app->addErrorMiddleware(LoggerUtils::isDebugLogLevel(), true,true, LoggerUtils::getSlimMVCLogger());
 // Get the default error handler and register my custom error renderer.
 $errorHandler = $errorMiddleware->getDefaultErrorHandler();
 
