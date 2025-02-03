@@ -97,16 +97,16 @@ window.calendarPropertiesModal = {
         if (calendar.AccessToken) {
             HTMLURL =
                 window.CRM.fullURL +
-                "external/calendars/" +
+                "/external/calendars/" +
                 calendar.AccessToken;
             icsURL =
                 window.CRM.fullURL +
-                "api/public/calendar/" +
+                "/api/public/calendar/" +
                 calendar.AccessToken +
                 "/ics";
             jsonURL =
                 window.CRM.fullURL +
-                "api/public/calendar/" +
+                "/api/public/calendar/" +
                 calendar.AccessToken +
                 "/events";
         }
