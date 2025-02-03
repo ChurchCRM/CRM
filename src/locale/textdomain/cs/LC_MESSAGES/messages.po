@@ -7021,9 +7021,8 @@ msgid "Please go to this location"
 msgstr "Přejděte na tuto stránku"
 
 #: 
-#, fuzzy
 msgid "Your ChurchCRM password has been changed"
-msgstr "Vaše aktualizované heslo k ChurchCRM bylo změněno"
+msgstr "Vaše heslo k ChurchCRM bylo změněno"
 
 #: 
 msgid "Password Reset Link"
