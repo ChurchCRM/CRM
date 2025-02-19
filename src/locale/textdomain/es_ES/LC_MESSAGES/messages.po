@@ -9217,3 +9217,11 @@ msgstr "MailChimp no está configurado"
 msgid "Please update the MailChimp API key in:"
 msgstr "Actualice la clave API de MailChimp en:"
 
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "1 caracter para el nombre y un caracter para el apellido"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "2 caracteres para el nombre"
+
