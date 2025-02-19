@@ -2285,5 +2285,7 @@
     "The previous integrity check passed. All system file hashes match the expected values.": "La verificación de integridad anterior pasó. Todos los hashes de archivos del sistema coinciden con los valores esperados.",
     "Comma separated list of classifications that should appear as inactive": "Lista separada por comas de clasificaciones que deberían aparecer como inactivas",
     "MailChimp is not configured": "MailChimp no está configurado",
-    "Please update the MailChimp API key in:": "Actualice la clave API de MailChimp en:"
+    "Please update the MailChimp API key in:": "Actualice la clave API de MailChimp en:",
+    "One character from FirstName and one character from LastName": "1 caracter para el nombre y un caracter para el apellido",
+    "Two characters from FirstName": "2 caracteres para el nombre"
 }
