@@ -2286,6 +2286,12 @@
     "Comma separated list of classifications that should appear as inactive": "Lista separada por comas de clasificaciones que deberían aparecer como inactivas",
     "MailChimp is not configured": "MailChimp no está configurado",
     "Please update the MailChimp API key in:": "Actualice la clave API de MailChimp en:",
+    "English - South Africa": "Inglés - Sudafrica",
+    "English - Jamaica": "Inglés - Jamaica",
+    "Swahili": "Suajili",
     "One character from FirstName and one character from LastName": "1 caracter para el nombre y un caracter para el apellido",
-    "Two characters from FirstName": "2 caracteres para el nombre"
+    "Two characters from FirstName": "2 caracteres para el nombre",
+    "Set font to render initials. Upload custom font to fonts directory": "Establezca la fuente para representar las iniciales. Cargue la fuente personalizada en el directorio de fuentes",
+    "Person List Columns": "Columnas de la lista de personas",
+    "Family List Columns": "Columnas de la lista familiar"
 }
