@@ -102,6 +102,7 @@ $sTitle = '';
 $sFirstName = '';
 $sMiddleName = '';
 $sLastName = '';
+$sNickName = '';
 $sSuffix = '';
 $iGender = 0;
 $sAddress1 = '';
@@ -158,6 +159,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sFirstName = InputUtils::legacyFilterInput($_POST['FirstName']);
     $sMiddleName = InputUtils::legacyFilterInput($_POST['MiddleName']);
     $sLastName = InputUtils::legacyFilterInput($_POST['LastName']);
+    $sNickName = InputUtils::legacyFilterInput($_POST['NickName']);
     $sSuffix = InputUtils::legacyFilterInput($_POST['Suffix']);
     $iGender = InputUtils::legacyFilterInput($_POST['Gender'], 'int');
 
@@ -398,6 +400,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             ->setFirstName($sFirstName)
             ->setMiddleName($sMiddleName)
             ->setLastName($sLastName)
+            ->setNickName($sNickName)
             ->setSuffix($sSuffix)
             ->setGender($iGender)
             ->setAddress1($sAddress1)
@@ -523,6 +526,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sFirstName = $per_FirstName;
         $sMiddleName = $per_MiddleName;
         $sLastName = $per_LastName;
+        $sNickName = $per_NickName;
         $sSuffix = $per_Suffix;
         $iGender = (int) $per_Gender;
         $sAddress1 = $per_Address1;
@@ -643,6 +647,12 @@ require_once 'Include/Header.php';
                         <input type="text" name="Title" id="Title"
                                value="<?= htmlentities(stripslashes($sTitle), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control" placeholder="<?= gettext('Mr., Mrs., Dr., Rev.') ?>">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="NickName"><?= gettext('NickName') ?>:</label>
+                        <input type="text" name="NickName" id="NickName"
+                               value="<?= htmlentities(stripslashes($sNickName), ENT_NOQUOTES, 'UTF-8') ?>"
+                               class="form-control" placeholder="<?= gettext('Nickname') ?>">
                     </div>
                 </div>
                 <p />

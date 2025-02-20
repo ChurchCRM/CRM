@@ -565,6 +565,7 @@ CREATE TABLE `person_per` (
   `per_FirstName` varchar(50) default NULL,
   `per_MiddleName` varchar(50) default NULL,
   `per_LastName` varchar(50) default NULL,
+  `per_NickName` varchar(50) default NULL,
   `per_Suffix` varchar(50) default NULL,
   `per_Address1` varchar(50) default NULL,
   `per_Address2` varchar(50) default NULL,
