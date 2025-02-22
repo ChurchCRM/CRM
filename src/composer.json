@@ -51,7 +51,7 @@
         "php-http/message": "^1.11.1",
         "phpmailer/phpmailer": "^6.9.1",
         "pragmarx/google2fa": "^8.0.1",
-        "propel/propel": "2.0.0-alpha12",
+        "propel/propel": "2.0.0-beta1",
         "setasign/fpdf": "^1.8.6",
         "slim/http-cache": "^1.1.0",
         "slim/php-view": "^3.2.0",

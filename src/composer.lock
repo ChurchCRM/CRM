@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "584d6ee03e0579354d5a10e179601464",
+    "content-hash": "845a3c0dd08f6f48f06d175405510ea6",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -2296,16 +2296,16 @@
         },
         {
             "name": "propel/propel",
-            "version": "2.0.0-alpha12",
+            "version": "2.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "540769c4f1feb3faccb4f40f8d9aa5d79fc2b28a"
+                "reference": "a88e6a8b401529568d6c8033cdb3ecb66a141910"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/540769c4f1feb3faccb4f40f8d9aa5d79fc2b28a",
-                "reference": "540769c4f1feb3faccb4f40f8d9aa5d79fc2b28a",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/a88e6a8b401529568d6c8033cdb3ecb66a141910",
+                "reference": "a88e6a8b401529568d6c8033cdb3ecb66a141910",
                 "shasum": ""
             },
             "require": {
@@ -2365,9 +2365,9 @@
             ],
             "support": {
                 "issues": "https://github.com/propelorm/Propel2/issues",
-                "source": "https://github.com/propelorm/Propel2/tree/2.0.0-alpha12"
+                "source": "https://github.com/propelorm/Propel2/tree/2.0.0-beta1"
             },
-            "time": "2021-01-22T12:18:42+00:00"
+            "time": "2021-09-05T12:51:18+00:00"
         },
         {
             "name": "psr/cache",
@@ -5017,7 +5017,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "propel/propel": 15
+        "propel/propel": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,
