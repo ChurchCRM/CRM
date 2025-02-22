@@ -1,8 +1,9 @@
 <?php
+
 $serviceContainer = \Propel\Runtime\Propel::getServiceContainer();
-$serviceContainer->initDatabaseMaps(array (
-  'default' => 
-  array (
+$serviceContainer->initDatabaseMaps(array(
+  'default' =>
+  array(
     0 => '\\ChurchCRM\\model\\ChurchCRM\\Map\\CalendarEventTableMap',
     1 => '\\ChurchCRM\\model\\ChurchCRM\\Map\\CalendarTableMap',
     2 => '\\ChurchCRM\\model\\ChurchCRM\\Map\\ConfigTableMap',
