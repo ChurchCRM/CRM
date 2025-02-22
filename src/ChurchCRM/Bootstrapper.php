@@ -185,10 +185,9 @@ class Bootstrapper
         self::$serviceContainer = Propel::getServiceContainer();
         self::$serviceContainer->checkVersion(2);
         self::$serviceContainer->setAdapterClass('default', 'mysql');
-        self::$manager = new ConnectionManagerSingle();
+        self::$manager = new ConnectionManagerSingle('default');
         self::$manager->setConfiguration(self::buildConnectionManagerConfig());
-        self::$manager->setName('default');
-        self::$serviceContainer->setConnectionManager('default', self::$manager);
+        self::$serviceContainer->setConnectionManager(self::$manager);
         self::$serviceContainer->setDefaultDatasource('default');
         self::$bootStrapLogger->debug("Initialized Propel ORM");
         

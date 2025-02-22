@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore" nameSpace="ChurchCRM\model\ChurchCRM">
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<database name="churchcrm" defaultIdMethod="native" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" defaultPhpNamingMethod="underscore" nameSpace="ChurchCRM\model\ChurchCRM">
 
     <table name="version_ver" idMethod="native" phpName="Version" description="History of all version upgrades applied to this database">
         <column name="ver_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
