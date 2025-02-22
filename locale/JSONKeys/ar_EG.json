@@ -2254,5 +2254,8 @@
     "Deleted": "تم المسح",
     "Invalid Birth Date: Missing birth month or day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح.",
     "Invalid Birth Date: Missing birth month and day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح.",
+    "System": "النظام",
+    "Change role": "تغير الدور",
+    "Delete this person?": "حذف الشخص",
     "Adult Name (Optional)": "اسم الكبار (اختياري)"
 }
