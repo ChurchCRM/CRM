@@ -22,8 +22,6 @@ module.exports = function (grunt) {
 
     var datatTablesVer = "1.10.18";
 
-    const sass = require("sass");
-
     // Project configuration.
     grunt.initConfig({
         package: grunt.file.readJSON("package.json"),
@@ -340,11 +338,6 @@ module.exports = function (grunt) {
             },
         },
         sass: {
-            options: {
-                implementation: sass,
-                sourceMap: true,
-                cacheLocation: process.env["HOME"] + "/node_cache",
-            },
             dist: {
                 files: {
                     "src/skin/churchcrm.min.css": "src/skin/churchcrm.scss",
@@ -698,7 +691,9 @@ module.exports = function (grunt) {
         //  display local master's commit hash
     });
 
-    grunt.loadNpmTasks("grunt-sass");
+    grunt.registerTask('default', ['sass']);
+
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-compress");
