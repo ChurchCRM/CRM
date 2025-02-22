@@ -191,7 +191,8 @@ class Bootstrapper
         self::$serviceContainer->setConnectionManager('default', self::$manager);
         self::$serviceContainer->setDefaultDatasource('default');
         self::$bootStrapLogger->debug("Initialized Propel ORM");
-        require_once __DIR__ . '/../propel/loadDatabase.php';
+        
+        require_once __DIR__ . 'loadDatabase.php';
     }
     private static function isDatabaseEmpty(): bool
     {
