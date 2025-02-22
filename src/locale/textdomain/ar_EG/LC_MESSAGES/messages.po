@@ -9014,6 +9014,18 @@ msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح."
 
 #: 
+msgid "System"
+msgstr "النظام"
+
+#: 
+msgid "Change role"
+msgstr "تغير الدور"
+
+#: 
+msgid "Delete this person?"
+msgstr "حذف الشخص"
+
+#: 
 #, fuzzy
 msgid "Adult Name (Optional)"
 msgstr "اسم الكبار (اختياري)"

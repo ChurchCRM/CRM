@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "5.13.0",
+    "version": "5.14.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -71,7 +71,7 @@
         "flag-icons": "^7.3.2",
         "fullcalendar": "^6.1.15",
         "i18n": "^0.15.1",
-        "i18next": "^24.2.1",
+        "i18next": "^24.2.2",
         "icheck-bootstrap": "^3.0.1",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
@@ -103,7 +103,7 @@
         "grunt-lineending": "^1.0.0",
         "grunt-sass": "^3.1.0",
         "i18next-conv": "^15.1.0",
-        "i18next-parser": "^9.0.2",
+        "i18next-parser": "^9.3.0",
         "node-sha1": "^1.0.1",
         "npm-run-all": "^4.1.5",
         "prettier": "^3.4.2",
