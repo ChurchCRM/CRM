@@ -192,7 +192,7 @@ class Bootstrapper
         self::$serviceContainer->setDefaultDatasource('default');
         self::$bootStrapLogger->debug("Initialized Propel ORM");
         
-        require_once __DIR__ . 'loadDatabase.php';
+        require_once __DIR__ . '/loadDatabase.php';
     }
     private static function isDatabaseEmpty(): bool
     {
