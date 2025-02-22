@@ -6,7 +6,8 @@ use Propel\Runtime\Connection\ConnectionManagerSingle;
 $serviceContainer = Propel::getServiceContainer();
 $serviceContainer->checkVersion(2);
 $serviceContainer->setAdapterClass('default', 'mysql');
-$manager = new ConnectionManagerSingle("churchcrm");
+$manager = new ConnectionManagerSingle("default");
+$manager->setName('dattabase');
 $manager->setConfiguration(array (
   'dsn' => 'mysql:host=database;port=3306;dbname=churchcrm',
   'user' => 'churchcrm',
