@@ -1,3 +1,4 @@
+@use "sass:map";
 // from: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
 // Margin and Padding
 $grid-breakpoints: (
@@ -22,7 +23,7 @@ $spacers: (
 //    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
 //    576px
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
-    $min: map-get($breakpoints, $name
+    $min: map.get($breakpoints, $name
     );
 @return if($min !=0, $min, null);
 }
@@ -55,7 +56,7 @@ $spacers: (
 }
 
 // from: https://github.com/twbs/bootstrap/blob/v4-dev/scss/utilities/_spacing.scss
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
         $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
