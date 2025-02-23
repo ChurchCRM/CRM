@@ -1,3 +1,4 @@
+@use "sass:meta";
 /*! DO NOT MANUALLY EDIT skin/churchcrm.min.css
 
     Please make changes to skin/scss/*.scss and recompile with SASS. http://sass-lang.com/
@@ -26,22 +27,22 @@
 
 // Import ChurchCRM custom styles
 
-@import 'scss/dropdowns';
-@import 'scss/forms';
-@import 'scss/tables';
-@import 'scss/profileImage';
-@import 'scss/shortConfig';
-@import 'scss/leftNav';
-@import 'scss/imageOverlay';
-@import 'scss/maps';
-@import "scss/spacing";
-@import 'scss/SystemNotifications';
-@import 'scss/cartDropdown';
-@import 'scss/strike';
-@import 'scss/calendars';
-@import 'scss/react-datepicker';
-@import 'scss/_two-factor-enrollment';
-@import 'scss/systemSettings';
+@include meta.load-css('scss/dropdowns');
+@include meta.load-css('scss/forms');
+@include meta.load-css('scss/tables');
+@include meta.load-css('scss/profileImage');
+@include meta.load-css('scss/shortConfig');
+@include meta.load-css('scss/leftNav');
+@include meta.load-css('scss/imageOverlay');
+@include meta.load-css('scss/maps');
+@include meta.load-css("scss/spacing");
+@include meta.load-css('scss/SystemNotifications');
+@include meta.load-css('scss/cartDropdown');
+@include meta.load-css('scss/strike');
+@include meta.load-css('scss/calendars');
+@include meta.load-css('scss/react-datepicker');
+@include meta.load-css('scss/_two-factor-enrollment');
+@include meta.load-css('scss/systemSettings');
 
 html, body {
   font-size: 14px;
