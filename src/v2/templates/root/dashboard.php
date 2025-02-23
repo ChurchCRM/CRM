@@ -130,19 +130,15 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php
 if ($depositEnabled) { // If the user has Finance permissions, then let's display the deposit line chart
     ?>
-    <div class="card" id="depositChartRow">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="card card-info">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fa fa-circle-dollar-to-slot"></i> <?= gettext('Deposit Tracking') ?></h3>
-                    <div class="card-tools pull-right">
-                        <div id="deposit-graph" class="chart-legend"></div>
-                    </div>
-                </div><!-- /.box-header -->
-                <div class="card-body" style="height: 200px">
-                    <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
-                </div>
+    <div class="card card-info"  id="depositChartRow">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fa fa-circle-dollar-to-slot"></i> <?= gettext('Deposit Tracking') ?></h3>
+            <div class="card-tools pull-right">
+                <div id="deposit-graph" class="chart-legend"></div>
             </div>
+        </div><!-- /.box-header -->
+        <div class="card-body" style="height: 200px">
+            <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
         </div>
     </div>
     <?php
