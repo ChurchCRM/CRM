@@ -129,12 +129,12 @@ require_once 'Include/Header.php';
 
                         <tr>
                             <td class="LabelColumn"><?= gettext('Title') ?>:</td>
-                            <td class="TextColumn"><input type="text" name="Title" id="Title" value="<?= $sTitle ?>"></td>
+                            <td class="TextColumn"><input type="text" size="50" name="Title" id="Title" value="<?= $sTitle ?>"></td>
                         </tr>
 
                         <tr>
                             <td class="LabelColumn"><?= gettext('Description') ?>:</td>
-                            <td class="TextColumn"><textarea name="Description" id="Description" cols="40" rows="5"><?= $sDescription ?></textarea></td>
+                            <td class="TextColumn"><textarea name="Description" id="Description" cols="50" rows="5"><?= $sDescription ?></textarea></td>
                         </tr>
                     </table>
                 </td>
@@ -142,7 +142,7 @@ require_once 'Include/Header.php';
             <tr>
                 <td align="right">
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FundRaiserSubmit">
-                    <input type="button" class="btn btn-danger" value="<?= gettext('Cancel') ?>" name="FundRaiserCancel" onclick="javascript:document.location='<% strlen($linkBack) > 0 ?  echo $linkBack : echo 'v2/dashboard' ?>';">
+                    <input type="button" class="btn btn-danger" value="<?= gettext('Cancel') ?>" name="FundRaiserCancel" onclick="javascript:document.location='FindFundRaiser.php';">
                 </td>
             </tr>
          
@@ -156,7 +156,7 @@ require_once 'Include/Header.php';
         <td>
         <?php
             if ($iFundRaiserID > 0) {
-                echo '<input type=button class="btn btn-default" value="' . gettext('Add Donated Item') . "\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input id=addItem type=button class="btn btn-default" value="' . gettext('Add Donated Item') . "\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
                 echo '<input type=button class="btn btn-default" value="' . gettext('Generate Catalog') . "\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
                 echo '<input type=button class="btn btn-default" value="' . gettext('Generate Bid Sheets') . "\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
                 echo '<input type=button class="btn btn-default" value="' . gettext('Generate Certificates') . "\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
