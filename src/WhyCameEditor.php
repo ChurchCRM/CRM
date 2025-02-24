@@ -29,26 +29,20 @@ if (isset($_POST['Submit'])) {
     $tSuggest = InputUtils::legacyFilterInput($_POST['Suggest']);
     $tHearOfUs = InputUtils::legacyFilterInput($_POST['HearOfUs']);
 
-    // New input (add)
-    if (strlen($iWhyCameID) < 1) {
+    $whyCame = WhyCameQuery::create()->findOneByPerId($iPerson);
+    if ($whyCame === null) {
+        LoggerUtils::getAppLogger()->info("person id " . $iPerson . " whycame id null" );
         $whyCame = new WhyCame();
-        $whyCame
-            ->setPerId($iPerson)
-            ->setJoin($tJoin)
-            ->setCome($tCome)
-            ->setSuggest($tSuggest)
-            ->setHearOfUs($tHearOfUs);
-        $whyCame->save();
-    // Existing record (update)
-    } else {
-        $whyCame = WhyCameQuery::create()->findOneByPerId($iPerson);
-        $whyCame
-            ->setJoin($tJoin)
-            ->setCome($tCome)
-            ->setSuggest($tSuggest)
-            ->setHearOfUs($tHearOfUs);
-        $whyCame->save();
+        $whyCame->setPerId($iPerson);
     }
+
+    $whyCame
+        ->setJoin($tJoin)
+        ->setCome($tCome)
+        ->setSuggest($tSuggest)
+        ->setHearOfUs($tHearOfUs);
+        
+    $whyCame->save();
 
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
