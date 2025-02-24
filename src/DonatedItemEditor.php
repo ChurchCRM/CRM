@@ -10,9 +10,9 @@ use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-$iDonatedItemID = InputUtils::legacyFilterInputArr($_GET, 'DonatedItemID', 'int');
+$iDonatedItemID = InputUtils::filterInt(InputUtils::legacyFilterInputArr($_GET, 'DonatedItemID', 'int'));
 $linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
-$iCurrentFundraiser = InputUtils::legacyFilterInputArr($_GET, 'CurrentFundraiser');
+$iCurrentFundraiser = InputUtils::filterInt(InputUtils::legacyFilterInputArr($_GET, 'CurrentFundraiser'));
 
 if ($iDonatedItemID > 0) {
     $sSQL = "SELECT * FROM donateditem_di WHERE di_ID = '$iDonatedItemID'";
@@ -22,16 +22,12 @@ if ($iDonatedItemID > 0) {
 }
 
 if ($iCurrentFundraiser) {
-    $_SESSION['iCurrentFundraiser'] = $iCurrentFundraiser;
-} else {
-    $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
-}
-
-// Get the current fundraiser data
-if ($iCurrentFundraiser) {
     $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iCurrentFundraiser;
     $rsDeposit = RunQuery($sSQL);
     extract(mysqli_fetch_array($rsDeposit));
+    $_SESSION['iCurrentFundraiser'] = $iCurrentFundraiser;
+} else {
+    $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
 }
 
 $sPageTitle = gettext('Donated Item Editor');
