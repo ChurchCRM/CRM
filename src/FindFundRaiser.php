@@ -74,8 +74,8 @@ require_once 'Include/Header.php';
             <?php
             foreach ($fundraisers as $fundraiser) { ?>
                 <tr>
-                <td><a href="FundRaiserEditor.php?FundRaiserID=' <?= $fundraiser->getId() ?>'"> <?= $fundraiser->getTitle() ?> </a></td>
-                <td> <?= $fundraiser->getDate()->format($sDateFormat) ?></td>
+                    <td><a href="FundRaiserEditor.php?FundRaiserID=<?= $fundraiser->getId() ?>"> <?= $fundraiser->getTitle() ?> </a></td>
+                    <td><?= $fundraiser->getDate()->format($sDateFormat) ?></td>
                 </tr>
             <?php } ?>
         </tbody>
