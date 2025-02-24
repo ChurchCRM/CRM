@@ -8,20 +8,17 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
-$iCurrentFundraiser = InputUtils::legacyFilterInput($_GET['CurrentFundraiser']);
+$iCurrentFundraiser = InputUtils::filterInt($_GET['CurrentFundraiser']);
 
-if ($iCurrentFundraiser) {
+if ($iCurrentFundraiser >0) {
+    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iCurrentFundraiser;
+    $rsDeposit = RunQuery($sSQL);
+    extract(mysqli_fetch_array($rsDeposit));
     $_SESSION['iCurrentFundraiser'] = $iCurrentFundraiser;
 } else {
     $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
 }
 
-// Get the current fundraiser data
-if ($iCurrentFundraiser) {
-    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iCurrentFundraiser;
-    $rsDeposit = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsDeposit));
-}
 
 $sPageTitle = gettext('Batch Winner Entry');
 
