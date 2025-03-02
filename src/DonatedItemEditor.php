@@ -118,7 +118,7 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
 } else {
     //FirstPass
     //Are we editing or adding?
-    if (strlen($iDonatedItemID) > 0) {
+    if ($iDonatedItemID > 0) {
         //Editing....
         //Get all the data on this record
 
