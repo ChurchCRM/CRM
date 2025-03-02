@@ -54,7 +54,7 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
         $iBuyer = 0;
     }
     // New DonatedItem or deposit
-    if (strlen($iDonatedItemID) < 1) {
+    if ($iDonatedItemID < 1) {
         $donatedItem = new DonatedItem();
         $donatedItem
             ->setFrId($iCurrentFundraiser)
