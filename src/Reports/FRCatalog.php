@@ -9,6 +9,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use Monolog\Logger;
 
 if (!isset($_GET['CurrentFundraiser'])) {
     throw new \InvalidArgumentException('Missing required CurrentFundraiser parameter');
@@ -24,14 +26,13 @@ class PdfFRCatalogReport extends ChurchInfoReport
     public function __construct(FundRaiser $fundraiser)
     {
         parent::__construct('P', 'mm', $this->paperFormat);
+        $this->fundraiser = $fundraiser;
 
         $this->SetFont('Times', '', 10);
         $this->SetMargins(10, 20);
 
         $this->addPage();
         $this->SetAutoPageBreak(true, 25);
-
-        $this->fundraiser = $fundraiser;
     }
 
     public function addPage($orientation = '', $size = '', $rotation = 0): void
