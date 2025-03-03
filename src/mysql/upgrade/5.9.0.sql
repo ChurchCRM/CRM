@@ -5,3 +5,4 @@ DELETE FROM list_lst WHERE lst_OptionName = 'bCanvasser';
 DELETE FROM query_qry WHERE qry_ID = '27';
 ALTER TABLE user_usr DROP COLUMN usr_Canvasser;
 DELETE FROM permissions WHERE permission_name = 'canvasser';
+ALTER TABLE person_per ADD per_NickName VARCHAR(50) NULL;
