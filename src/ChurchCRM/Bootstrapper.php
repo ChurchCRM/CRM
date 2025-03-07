@@ -183,14 +183,15 @@ class Bootstrapper
         // ==== ORM
         self::$dbClassName = '\\' . ConnectionWrapper::class;
         self::$serviceContainer = Propel::getServiceContainer();
-        self::$serviceContainer->checkVersion('2.0.0-dev');
+        self::$serviceContainer->checkVersion(2);
         self::$serviceContainer->setAdapterClass('default', 'mysql');
-        self::$manager = new ConnectionManagerSingle();
+        self::$manager = new ConnectionManagerSingle('default');
         self::$manager->setConfiguration(self::buildConnectionManagerConfig());
-        self::$manager->setName('default');
         self::$serviceContainer->setConnectionManager('default', self::$manager);
         self::$serviceContainer->setDefaultDatasource('default');
         self::$bootStrapLogger->debug("Initialized Propel ORM");
+        
+        require_once __DIR__ . '/loadDatabase.php';
     }
     private static function isDatabaseEmpty(): bool
     {
@@ -262,10 +263,10 @@ class Bootstrapper
             'dsn' => Bootstrapper::getDSN(),
             'user' => self::$databaseUser,
             'password' => self::$databasePassword,
-            'settings' => [
+            'settings' => array (
                 'charset' => 'utf8mb4',
                 'queries' => ["SET sql_mode=(SELECT REPLACE(REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''),'NO_ZERO_DATE',''))"],
-            ],
+            ),
             'classname' => self::$dbClassName,
             'model_paths' => [
                 0 => 'src',

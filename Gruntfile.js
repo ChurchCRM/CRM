@@ -409,7 +409,7 @@ module.exports = function (grunt) {
                             "!Images/Person/thumbnails/*.jpg",
                             "!composer.lock",
                             "!Include/Config.php",
-                            "!propel/propel.php",
+                            "!propel/config.php",
                             "!integrityCheck.json",
                         ],
                         dest: "churchcrm/",
