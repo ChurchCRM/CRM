@@ -6,20 +6,34 @@ context("Finance Deposits", () => {
         cy.contains("Envelope Manager");
     });
 
-    it("Create a new Deposit", () => {
+    it("Create a new Deposit without comment", () => {
         cy.loginAdmin("FindDepositSlip.php");
-        cy.contains("Add New Deposit");
-        cy.contains("Deposits");
-        cy.get("#depositComment").click();
-        cy.get("#depositComment").type("Selenium Test Deposit");
-        cy.get("#addNewDeposit").click();
-
-        cy.contains("Selenium Test Deposit");
-
-        cy.get("#depositComment").click();
         cy.get("#depositComment").clear();
         cy.get("#addNewDeposit").click();
         cy.contains("You are about to add a new deposit without a comment");
+    });
+
+    it("Create a new Deposit", () => {
+        const uniqueSeed = Date.now().toString();
+        const name = "New Test Deposit " + uniqueSeed;
+
+        cy.loginAdmin("FindDepositSlip.php");
+        cy.contains("Add New Deposit");
+        cy.contains("Deposits");
+        cy.get("#depositComment").type(name);
+        cy.get("#addNewDeposit").click();
+
+        cy.url().should("contains", "DepositSlipEditor.php");
+
+        cy.get(".btn-success").click();
+        cy.url().should("contains", "PledgeEditor.php");
+
+        cy.get("#1_Amount").type("1000");
+        cy.get("#CheckNo").type(uniqueSeed);
+
+        cy.get("#saveBtn").click();
+        cy.get("#DepositSlipEditor").submit();
+        cy.url().should("contains", "DepositSlipEditor.php");
     });
 
     it("Open the Deposits page & Add Payment", () => {
@@ -29,11 +43,10 @@ context("Finance Deposits", () => {
 
         cy.get(".btn-success").click();
         cy.url().should("contains", "PledgeEditor.php");
-        // TODO: Select family via Select 2
-        //cy.get('.select2-container--below .select2-selection').click();
-        //cy.get('.select2-search__field').type('Berry{enter}', { delay: 500 });
-        cy.get("#CheckNo").type("111");
+        
         cy.get("#1_Amount").type("1000");
+        cy.get("#CheckNo").type("111");
+
         cy.get("#saveBtn").click();
         cy.get("#DepositSlipEditor").submit();
         cy.url().should("contains", "DepositSlipEditor.php");

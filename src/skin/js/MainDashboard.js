@@ -215,7 +215,7 @@ $(document).ready(function () {
         return "";
     }
 
-    if ($("#depositChartRow").length > 0) {
+    if ($("#depositChartRow").is(":visible")) {
         window.CRM.APIRequest({
             method: "GET",
             path: "deposits/dashboard",
