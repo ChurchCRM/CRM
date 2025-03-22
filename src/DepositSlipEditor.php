@@ -87,7 +87,7 @@ require_once 'Include/Header.php';
           </div>
           <div class="row p-2">
             <div class="col-lg-5 m-2" style="text-align:center">
-              <input type="submit" class="btn btn-default" value="<?php echo gettext('Save'); ?>" name="DepositSlipSubmit">
+              <input type="submit" class="btn btn-primary" value="<?php echo gettext('Save'); ?>" name="DepositSlipSubmit">
             </div>
             <div class="col-lg-5 m-2" style="text-align:center">
               <input type="button" class="btn btn-default" value="<?php echo gettext('Deposit Slip Report'); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo $thisDeposit->getId() ?>/pdf');">
@@ -137,24 +137,27 @@ require_once 'Include/Header.php';
 </div>
 <div class="card">
   <div class="card-header with-border">
-    <h3 class="card-title"><?php echo gettext('Payments on this deposit slip:'); ?></h3>
-    <div class="pull-right">
-      <?php
-        if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()) {
-            if ($thisDeposit->getType() == 'eGive') {
-                echo '<input type=button class=btn value="' . gettext('Import eGive') . "\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
-            } else {
-                echo '<input type=button class="btn btn-success" value="' . gettext('Add Payment') . "\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
-            }
-            if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
-                ?>
-          <input type="submit" class="btn btn-success" value="<?php echo gettext('Load Authorized Transactions'); ?>" name="DepositSlipLoadAuthorized">
-          <input type="submit" class="btn btn-warning" value="<?php echo gettext('Run Transactions'); ?>" name="DepositSlipRunTransactions">
-                <?php
-            }
-        }
-        ?>
-    </div>
+    <h3 class="card-title"><?php echo gettext('Payments on this deposit slip:'); ?> </h3>
+    <div class="card-tools">
+      
+      <div class="pull-right">
+        <?php
+          if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()) {
+              if ($thisDeposit->getType() == 'eGive') {
+                  echo '<input type=button class=btn value="' . gettext('Import eGive') . "\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+              } else {
+                  echo '<input type=button class="btn btn-success" value="' . gettext('Add Payment') . "\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+              }
+              if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
+                  ?>
+            <input type="submit" class="btn btn-success" value="<?php echo gettext('Load Authorized Transactions'); ?>" name="DepositSlipLoadAuthorized">
+            <input type="submit" class="btn btn-warning" value="<?php echo gettext('Run Transactions'); ?>" name="DepositSlipRunTransactions">
+                  <?php
+              }
+          }
+          ?>
+      </div>
+      </div>
   </div>
   <div class="card-body">
     <table class="table" id="paymentsTable" width="100%"></table>
