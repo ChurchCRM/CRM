@@ -119,9 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done(function (data) {
-            data.totalAmount = "";
-            dataT.row.add(data);
-            dataT.rows().invalidate().draw(true);
+            window.location.href = window.CRM.root + "/DepositSlipEditor.php?DepositSlipID="+ data.Id;
         });
     }
 
