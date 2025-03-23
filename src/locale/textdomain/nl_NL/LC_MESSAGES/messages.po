@@ -65,7 +65,6 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Wizard voor het maken van een handmatige backup van de ChurchCRM database."
 
 #: 
-#, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "U zou minstens een keer in de week een back-up moeten maken, tenzij u al een regelmatige back-up procedure van uw applicatie heeft."
 
@@ -226,7 +225,6 @@ msgid "Birthday Date"
 msgstr "Verjaardagsdatum"
 
 #: 
-#, fuzzy
 msgid "Anniversary Date"
 msgstr "Trouwdatum"
 
@@ -615,7 +613,6 @@ msgid "Deposit Slip Report"
 msgstr "Stortings Strook Rapport"
 
 #: 
-#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Belangrijk gegeven: Mislukte transacties zijn permananent verwijderd na het afsluiten van het stortings strookje."
 
@@ -848,7 +845,6 @@ msgid "Save Name"
 msgstr "Naam opslaan"
 
 #: 
-#, fuzzy
 msgid "Recurrence Pattern"
 msgstr "Periodiek Patroon"
 
@@ -1389,7 +1385,6 @@ msgid "Do you want to proceed?"
 msgstr "Wilt u doorgaan ?"
 
 #: 
-#, fuzzy
 msgid "You are about to email copy of the family information to the following emails"
 msgstr "Je staat op het punt gezinsgegevens te versturen naar de volgende e-mailadressen"
 
@@ -1506,7 +1501,6 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
-#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Minimum Totaal Bedrag:"
 
@@ -1991,17 +1985,14 @@ msgid "Email Group"
 msgstr "Email Groep"
 
 #: 
-#, fuzzy
 msgid "Total Members"
 msgstr "Totaal aantal Leden"
 
 #: 
-#, fuzzy
 msgid "Default Role"
 msgstr "Standaard Rol"
 
 #: 
-#, fuzzy
 msgid "Group-Specific Properties"
 msgstr "Groepsspecifieke kenmerken"
 
@@ -2074,7 +2065,6 @@ msgid "No Attendance Recorded"
 msgstr "Geen Aanwezigheid bijgehouden"
 
 #: 
-#, fuzzy
 msgid "Attendees"
 msgstr "Aanwezigen("
 
@@ -2695,7 +2685,6 @@ msgid "Property Editor"
 msgstr "Beheer kenmerken"
 
 #: 
-#, fuzzy
 msgid "You must select a type"
 msgstr "U moet een soort selecteren"
 
@@ -2812,7 +2801,6 @@ msgid "Execute SQL"
 msgstr "Voer SQL uit"
 
 #: 
-#, fuzzy
 msgid "An error occurred: "
 msgstr "Een fout heeft plaatsgevonden: "
 
@@ -2997,7 +2985,6 @@ msgid "User Delete Confirmation"
 msgstr "Bevestiging Verwijderen Gebruiker"
 
 #: 
-#, fuzzy
 msgid "Please confirm removal of user status from"
 msgstr "Bevestig aub verwijdering van gebruikers status van"
 
@@ -3322,9 +3309,8 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Geselecteerde records zijn met success verwijderd uit het werkbestand."
 
 #: 
-#, fuzzy
 msgid "Your cart has been successfully emptied"
-msgstr "U werkbestand is met succes geleegd"
+msgstr "Uw werkbestand is met succes geleegd"
 
 #: 
 msgid "item(s) added to the Cart."
@@ -3507,7 +3493,6 @@ msgid "Adult/Child"
 msgstr "Volwassene / kind"
 
 #: 
-#, fuzzy
 msgid "Cell Phone"
 msgstr "Mobiele Telefoon"
 
@@ -3820,7 +3805,6 @@ msgid "Add New Person"
 msgstr "Personen toevoegen"
 
 #: 
-#, fuzzy
 msgid "View All People"
 msgstr "Personen overzicht"
 
@@ -3956,7 +3940,6 @@ msgid "Church Information"
 msgstr "Over de gemeente"
 
 #: 
-#, fuzzy
 msgid "User Setup"
 msgstr "Instellingen"
 
@@ -4153,7 +4136,6 @@ msgid "Anonymous"
 msgstr "Anoniem"
 
 #: 
-#, fuzzy
 msgid "Attendees for Event"
 msgstr "Deelnemers van de activiteit:"
 
@@ -4426,7 +4408,6 @@ msgid "Church Email"
 msgstr "Email adres van de kerk"
 
 #: 
-#, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Neem alleen deze classificaties in de directory, gescheiden door een komma"
 
@@ -4455,7 +4436,6 @@ msgid "Minimum length a user may set their password to"
 msgstr "Minimale lengte kan een gebruiker zijn wachtwoord ingesteld op"
 
 #: 
-#, fuzzy
 msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Een door komma's gescheiden lijst van niet-toegestane (ook voor de hand liggende) wachtwoorden."
 
@@ -4877,7 +4857,6 @@ msgid "The property for which you would like person records returned."
 msgstr "Records met personen op basis van de gewenste eigenschap."
 
 #: 
-#, fuzzy
 msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Selecteer de begindatum de totale bijdragen voor elk lid (dat wil zeggen YYYY-MM-DD) te berekenen. OPMERKING: U kunt alleen kiezen voor data die donaties bevatten. "
 
@@ -6691,7 +6670,6 @@ msgid "Person's Name"
 msgstr "Bezoeker"
 
 #: 
-#, fuzzy
 msgid "Checked in By (Optional)"
 msgstr "Uitgeboekt door:"
 
@@ -7052,7 +7030,6 @@ msgid "Please go to this location"
 msgstr "Ga alsjeblieft naar deze locatie"
 
 #: 
-#, fuzzy
 msgid "Your ChurchCRM password has been changed"
 msgstr "Uw vernieuwde wachtwoord is gewijzigd"
 
@@ -7225,7 +7202,6 @@ msgid "Your Church's Facebook Page"
 msgstr "De Facebook-pagina van uw kerk"
 
 #: 
-#, fuzzy
 msgid "Your Church's X Page"
 msgstr "De X-pagina van uw kerk"
 
@@ -7902,7 +7878,6 @@ msgid "New Calendar"
 msgstr "Nieuwe kalender"
 
 #: 
-#, fuzzy
 msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
 msgstr "bEnable External Calendar API uitgeschakeld, maar sommige agenda's hebben toegangstokens"
 
@@ -7995,7 +7970,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "De URL voor de centrale meldingen"
 
 #: 
-#, fuzzy
 msgid "Follow us on"
 msgstr "Volg ons op"
 
@@ -8156,7 +8130,6 @@ msgid "Include family custom properties in global search."
 msgstr "Inclusief familie aangepaste eigenschappen in wereldwijd zoeken."
 
 #: 
-#, fuzzy
 msgid "Latvia (Latvija)"
 msgstr "Letland"
 
@@ -8177,7 +8150,6 @@ msgid "Records"
 msgstr "Rijen"
 
 #: 
-#, fuzzy
 msgid "Emptied into Event"
 msgstr "Geleegd in Gebeurtenis"
 
@@ -8444,7 +8416,6 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Waarschuwing: pre-upgradetaken gedetecteerd"
 
 #: 
-#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Er zijn enkele omstandigheden geïdentificeerd die een succesvolle upgrade kunnen verhinderen"
 
@@ -8617,7 +8588,6 @@ msgid "Your new password is too similar to your old one."
 msgstr "Uw nieuwe wachtwoord lijkt te veel op het oude."
 
 #: 
-#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Wachtwoord opnieuw instellen niet beschikbaar. Neem contact op met uw systeembeheerder"
 
@@ -8654,7 +8624,6 @@ msgid "List not found"
 msgstr "Lijst niet gevonden"
 
 #: 
-#, fuzzy
 msgid "List not in the list"
 msgstr "Lijst niet in Lijst"
 
