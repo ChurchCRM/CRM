@@ -463,7 +463,7 @@ if ($output === 'pdf') {
         $pdf->Output();
     }
 
-// Output a text file
+    // Output a text file
 } elseif ($output === 'csv') {
     // Settings
     $delimiter = ',';
