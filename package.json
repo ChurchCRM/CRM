@@ -58,7 +58,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.7.2",
         "admin-lte": "3.2.0",
-        "bootbox": "^6.0.0",
+        "bootbox": "^6.0.2",
         "bootstrap": "^4.6.2",
         "bootstrap-datepicker": "^1.10.0",
         "bootstrap-notify": "^3.1.3",
