@@ -8,7 +8,7 @@ class Country implements \JsonSerializable
     private string $countryName;
     private ?string $countryNameYasumi = null;
 
-    public function __construct(string $CountryCode, string $CountryName, string $CountryNameYasumi = null)
+    public function __construct(string $CountryCode, string $CountryName, ?string $CountryNameYasumi = null)
     {
         $this->countryCode = $CountryCode;
         $this->countryName = $CountryName;
