@@ -605,7 +605,7 @@ module.exports = function (grunt) {
             let poTerms = "{}";
             if (grunt.file.exists(tempFile)) {
                 poTerms = grunt.file.read(tempFile);
-                if (poTerms === null) { 
+                if (poTerms === "") { 
                     poTerms = "{}";
                 }
             }
