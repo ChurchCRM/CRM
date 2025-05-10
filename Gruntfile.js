@@ -605,6 +605,9 @@ module.exports = function (grunt) {
             let poTerms = "{}";
             if (grunt.file.exists(tempFile)) {
                 poTerms = grunt.file.readJSON(tempFile);
+                if (poTerms === null) { 
+                    poTerms = "{}";
+                }
             }
             let jsFileContent = "// Source POEditor: " + tempFile;
             jsFileContent =
