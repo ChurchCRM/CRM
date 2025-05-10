@@ -604,7 +604,10 @@ module.exports = function (grunt) {
             let tempFile = "locale/JSONKeys/" + locale + ".json";
             let poTerms = "{}";
             if (grunt.file.exists(tempFile)) {
-                poTerms = grunt.file.readJSON(tempFile);
+                poTerms = grunt.file.read(tempFile);
+                if (poTerms === null) { 
+                    poTerms = "{}";
+                }
             }
             let jsFileContent = "// Source POEditor: " + tempFile;
             jsFileContent =
