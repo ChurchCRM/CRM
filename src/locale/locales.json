@@ -246,7 +246,7 @@
     },
     "Japanese": {
         "poEditor": "ja",
-        "locale": "ja",
+        "locale": "ja_JP",
         "languageCode": "ja",
         "countryCode": "jp",
         "dataTables": "Japanese",
