@@ -543,34 +543,36 @@ module.exports = function (grunt) {
             supportedPOEditorCodes.push(locales[key]["poEditor"].toLowerCase());
         }
 
-        let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
-        let poEditorLocales = poLocales.result.languages;
+        if (grunt.file.exists("src/locale/poeditor.json")) {
+            let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
+            let poEditorLocales = poLocales.result.languages;
 
-        let localeData = [];
+            let localeData = [];
 
-        for (let key in poEditorLocales) {
-            let name = poEditorLocales[key]["name"];
-            let curCode = poEditorLocales[key]["code"].toLowerCase();
-            let percentage = poEditorLocales[key]["percentage"];
-            if (
-                supportedPOEditorCodes.indexOf(curCode) === -1 &&
-                percentage > 0
-            ) {
-                console.log(
-                    "Missing " +
-                        name +
-                        " (" +
-                        curCode +
-                        ") but has " +
-                        percentage +
-                        " percentage",
-                );
-            } else {
-                localeData.push({
-                    code: curCode,
-                    percentage: percentage,
-                    translations: poEditorLocales[key]["translations"],
-                });
+            for (let key in poEditorLocales) {
+                let name = poEditorLocales[key]["name"];
+                let curCode = poEditorLocales[key]["code"].toLowerCase();
+                let percentage = poEditorLocales[key]["percentage"];
+                if (
+                    supportedPOEditorCodes.indexOf(curCode) === -1 &&
+                    percentage > 0
+                ) {
+                    console.log(
+                        "Missing " +
+                            name +
+                            " (" +
+                            curCode +
+                            ") but has " +
+                            percentage +
+                            " percentage",
+                    );
+                } else {
+                    localeData.push({
+                        code: curCode,
+                        percentage: percentage,
+                        translations: poEditorLocales[key]["translations"],
+                    });
+                }
             }
         }
 
@@ -600,9 +602,9 @@ module.exports = function (grunt) {
             let enableSelect2 = localeConfig["select2"];
 
             let tempFile = "locale/JSONKeys/" + locale + ".json";
-            let poTerms = grunt.file.read(tempFile);
-            if (poTerms === "") {
-                poTerms = "{}";
+            let poTerms = "{}";
+            if (grunt.file.exists(tempFile)) {
+                poTerms = grunt.file.readJSON(tempFile);
             }
             let jsFileContent = "// Source POEditor: " + tempFile;
             jsFileContent =
