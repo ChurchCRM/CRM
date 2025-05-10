@@ -63,7 +63,7 @@
     },
     "Czech": {
         "poEditor": "cs",
-        "locale": "cs",
+        "locale": "cs_CZ",
         "languageCode": "cs",
         "countryCode": "CZ",
         "dataTables": "Czech",
