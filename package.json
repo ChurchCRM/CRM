@@ -79,7 +79,7 @@
         "jquery-steps": "^1.1.0",
         "jquery-validation": "^1.21.0",
         "pace-js": "^1.2.4",
-        "react-bootstrap": "^2.10.9",
+        "react-bootstrap": "^2.10.10",
         "react-datepicker": "^8.4.0",
         "react-select": "^5.10.1",
         "select2": "^4.0.13"
