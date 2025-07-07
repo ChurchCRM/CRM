@@ -60,6 +60,7 @@ msgstr "Karta e kreditit"
 msgid "Backup Database"
 msgstr "Databaza e kopjes rezervë"
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1415,18 +1416,6 @@ msgstr "Data e përfundimit"
 #: 
 msgid "Clear Filters"
 msgstr "Filtrat e qarta"
-
-#: 
-msgid "Previous Page"
-msgstr "Faqja e kaluar"
-
-#: 
-msgid "Next Page"
-msgstr "Faqja tjeter"
-
-#: 
-msgid "Display:"
-msgstr "Paraqitja:"
 
 #: 
 msgid "Number"

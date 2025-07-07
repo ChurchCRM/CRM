@@ -64,6 +64,7 @@ msgstr "Varunda andmebaas"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "See tööriist aitab sul kokku pakkida ChurchCRM andmebaasi."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Sa peaksid tegema käsitsi varukoopia oma andmebaasist vähemalt kord nädalas, kui just su süsteem ei tee seda automaatselt."
@@ -1637,18 +1638,6 @@ msgstr "Lõppkuupäev"
 #: 
 msgid "Clear Filters"
 msgstr "Kustuta filtrid"
-
-#: 
-msgid "Previous Page"
-msgstr "Eelmine leht"
-
-#: 
-msgid "Next Page"
-msgstr "Järgmine leht"
-
-#: 
-msgid "Display:"
-msgstr "Kuva:"
 
 #: 
 msgid "Number"
@@ -8466,7 +8455,6 @@ msgstr "Lisage inimene"
 msgid "Portuguese - Portugal"
 msgstr "Portugali keel - Portugal"
 
-#. need contect, can be püha, vaba päev, puhkus
 #: 
 msgid "Holiday"
 msgstr "Püha"
@@ -8632,6 +8620,7 @@ msgstr "laadimine"
 msgid "List not found"
 msgstr "Nimekirja ei leitud"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

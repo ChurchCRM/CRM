@@ -64,6 +64,7 @@ msgstr "Zálohovat databázi"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Tento nástroj vám pomůže při ručním zálohování databáze ChurchCRM."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Ruční zálohování byste měli provádět alespoň jednou týdně, pokud již nemáte zavedený postup pravidelného zálohování systémů."
@@ -1635,18 +1636,6 @@ msgstr "Datum konce"
 #: 
 msgid "Clear Filters"
 msgstr "Vymazat filtry"
-
-#: 
-msgid "Previous Page"
-msgstr "Předchozí stránka"
-
-#: 
-msgid "Next Page"
-msgstr "Další stránka"
-
-#: 
-msgid "Display:"
-msgstr "Zobrazit:"
 
 #: 
 msgid "Number"
@@ -8616,6 +8605,7 @@ msgstr "nahrávám"
 msgid "List not found"
 msgstr "Seznam nenalezen"
 
+#. typo
 #: 
 msgid "List not in the list"
 msgstr "Seznam není na seznamu"

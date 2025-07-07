@@ -64,6 +64,7 @@ msgstr "Sao lưu dữ liệu"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh"
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1655,18 +1656,6 @@ msgstr "Ngày kết thúc"
 #: 
 msgid "Clear Filters"
 msgstr "Xóa bỏ lọc"
-
-#: 
-msgid "Previous Page"
-msgstr "Trang trước"
-
-#: 
-msgid "Next Page"
-msgstr "Trang tiếp theo"
-
-#: 
-msgid "Display:"
-msgstr "Hiển thị:"
 
 #: 
 msgid "Number"
@@ -8639,6 +8628,7 @@ msgstr "Đang tải"
 msgid "List not found"
 msgstr "Danh sách không tìm thấy"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

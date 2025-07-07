@@ -288,12 +288,10 @@ msgstr "Set the encryption system to use - SSL (deprecated) or TLS"
 msgid "User must have MenuOptions permission"
 msgstr "User must have Menu Options permission"
 
-#. Shouldn't that be: ID
 #: 
 msgid "Invalid request: Missing calendar id"
 msgstr "Invalid request: Missing calendar ID"
 
-#. Shouldn't that be: ID
 #: 
 msgid "Not Found: Unknown calendar id"
 msgstr "Not Found: Unknown calendar ID"
@@ -326,7 +324,6 @@ msgstr "Remote Backup Endpoint.  If WebDAV, this must be URL encoded. "
 msgid "Missing event id"
 msgstr "Missing event ID"
 
-#. Shouldn't that be: ID
 #: 
 msgid "Unexpected Person Id"
 msgstr "Unexpected Person ID"

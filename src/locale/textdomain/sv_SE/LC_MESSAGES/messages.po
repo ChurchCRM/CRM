@@ -64,6 +64,7 @@ msgstr "Säkerhetskopiera databasen"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Detta verktyg hjälper dig att manuellt säkerhetskopiera ChurchCRM-databasen."
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1685,18 +1686,6 @@ msgstr "Slutdatum"
 #: 
 msgid "Clear Filters"
 msgstr "Ta bort filtrar"
-
-#: 
-msgid "Previous Page"
-msgstr "Föregående sida"
-
-#: 
-msgid "Next Page"
-msgstr "Nästa sida"
-
-#: 
-msgid "Display:"
-msgstr "Visning:"
 
 #: 
 msgid "Number"
@@ -8776,6 +8765,7 @@ msgstr "läser in"
 msgid "List not found"
 msgstr "Listan hittades inte"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

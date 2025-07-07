@@ -64,6 +64,7 @@ msgstr "የመረጃ ቋቱን አስቀምጥ"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "ይሄ መሳሪያ የChurchCRM  መረጃ ቋት ለማስቀመጥ ይረዳል"
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1639,18 +1640,6 @@ msgstr "የመጨረሻ ቀን"
 #: 
 msgid "Clear Filters"
 msgstr "ማጣሪያዎችን አጽዳ"
-
-#: 
-msgid "Previous Page"
-msgstr "የቀድሞ ገጽ"
-
-#: 
-msgid "Next Page"
-msgstr "ቀጣይ ገጽ"
-
-#: 
-msgid "Display:"
-msgstr "ማሳያ፡-"
 
 #: 
 msgid "Number"
@@ -8648,6 +8637,7 @@ msgstr "በመጫን ላይ"
 msgid "List not found"
 msgstr "ዝርዝር አልተገኘም።"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

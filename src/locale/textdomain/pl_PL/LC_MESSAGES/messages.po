@@ -64,7 +64,7 @@ msgstr "Archiwizuj Bazę Danych"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "To narzędzie pomoże wykonać ręczną kopię bazy danych ChurchCRM."
 
-#. "regular backup procedule" - I guess that this should be 'procedure'
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1570,18 +1570,6 @@ msgstr "Data Końcowa"
 #: 
 msgid "Clear Filters"
 msgstr "Usuń Sortowanie"
-
-#: 
-msgid "Previous Page"
-msgstr "Poprzednia Strona"
-
-#: 
-msgid "Next Page"
-msgstr "Następna Strona"
-
-#: 
-msgid "Display:"
-msgstr "Wyświetl:"
 
 #: 
 msgid "Number"
@@ -4680,6 +4668,7 @@ msgstr "ładowanie"
 msgid "List not found"
 msgstr "Lista nie znaleziona"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

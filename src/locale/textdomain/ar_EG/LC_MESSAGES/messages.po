@@ -64,6 +64,7 @@ msgstr "النسخ الاحتياطي لقاعدة البيانات"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "هذه الأداة سوف تساعدك في النسخ الاحتياطي لقاعدة بيانات ChurchCRM يدويا."
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1638,18 +1639,6 @@ msgstr "الي تاريخ"
 #: 
 msgid "Clear Filters"
 msgstr "مسح الفلتر"
-
-#: 
-msgid "Previous Page"
-msgstr "السابقة"
-
-#: 
-msgid "Next Page"
-msgstr "التالبة"
-
-#: 
-msgid "Display:"
-msgstr "عرض:"
 
 #: 
 msgid "Number"
@@ -8632,6 +8621,7 @@ msgstr "يتم التحميل "
 msgid "List not found"
 msgstr "القائمه غير موجوده"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

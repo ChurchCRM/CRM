@@ -64,6 +64,7 @@ msgstr "Baza de date de rezervă"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Această unealtă vă va ajuta în crearea manuală a unei copii de rezervă pentru baza de date ChurchCRM."
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1678,18 +1679,6 @@ msgstr "Data de încheiere"
 #: 
 msgid "Clear Filters"
 msgstr "Anuleaza filtre"
-
-#: 
-msgid "Previous Page"
-msgstr "Pagina anterioară"
-
-#: 
-msgid "Next Page"
-msgstr "Pagina următoare"
-
-#: 
-msgid "Display:"
-msgstr "Afișare"
 
 #: 
 msgid "Number"
@@ -8729,6 +8718,7 @@ msgstr "se încarcă"
 msgid "List not found"
 msgstr "Lista nu a fost găsită"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

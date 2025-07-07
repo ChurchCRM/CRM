@@ -64,6 +64,7 @@ msgstr "Backup da Base de Dados"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Esta ferramenta vai te ajudar a fazer o backup manual da base de dados."
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1687,18 +1688,6 @@ msgstr "Data Final"
 #: 
 msgid "Clear Filters"
 msgstr "Limpar filtros"
-
-#: 
-msgid "Previous Page"
-msgstr "Página anterior"
-
-#: 
-msgid "Next Page"
-msgstr "Próxima página"
-
-#: 
-msgid "Display:"
-msgstr "Mostrar:"
 
 #: 
 msgid "Number"

@@ -64,6 +64,7 @@ msgstr "Backup Database"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Questo strumento ti assisterà nel salvataggio del database del ChurchCRM."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Dovresti eseguire un backup manuale almeno una volta alla settimana, a meno che questa procedura non sia già automatizzata"
@@ -1641,18 +1642,6 @@ msgstr "Data Fine"
 #: 
 msgid "Clear Filters"
 msgstr "Azzera filtri"
-
-#: 
-msgid "Previous Page"
-msgstr "Pagina precedente"
-
-#: 
-msgid "Next Page"
-msgstr "Pagina successiva"
-
-#: 
-msgid "Display:"
-msgstr "Visualizza:"
 
 #: 
 msgid "Number"
@@ -8655,6 +8644,7 @@ msgstr "caricamento in corso"
 msgid "List not found"
 msgstr "Elenco non trovato"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

@@ -64,11 +64,11 @@ msgstr "Резервное копирование базы данных"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Этот инструмент поможет вам вручную создать резервную копию базы данных ChurchCRM."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Следует в ручную создавать резервную копию не реже одного раза в неделю, если только у вас нет регулярной процедуры резервного копирования ваших систем."
 
-#. This is too explicit. maybe it would be better to suggest to regularly keep backed up copies in two or more safe locations (on-site, off-site, vault, lockers)?
 #: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr "После загрузки файла резервной копии. Одну копию следует хранить в несгораемом сейфе на месте, и продублированную в безопасном месте за пределами предприятия."
@@ -93,7 +93,6 @@ msgstr "Введите пароль еще раз"
 msgid "Generate and Ship Backup to External Storage"
 msgstr "Создать резервную копию и сохранить на внешнем хранилище"
 
-#. more context required.
 #: 
 msgid "Batch Winner Entry"
 msgstr "Победитель пакетный ввод"
@@ -130,7 +129,6 @@ msgstr "Требуется"
 msgid "First Name"
 msgstr "Имя"
 
-#. In Russian usually there are no Middle names. but there are Father's names. which are totally different. But your list does not have Father's name
 #: 
 #, fuzzy
 msgid "Middle Name"
@@ -148,13 +146,11 @@ msgstr "Конверт"
 msgid "Work/Other Email"
 msgstr "Рабочий/другой адрес эл.почты"
 
-#. Do you mean membership of Church? or membership of some kind of fraction inside the church or is there any other meaning?
 #: 
 #, fuzzy
 msgid "Membership Date"
 msgstr "Дата вступления"
 
-#. Hmm. Birthday? Anniversary date? need context. personal anniversaries or is it related to churches? and is it like 50 years old, 60, 70,... 100?
 #: 
 msgid "Birth / Anniversary Date"
 msgstr "Дата рождения / годовщина"
@@ -176,7 +172,6 @@ msgstr "Зависит ли с помощью человека или выход
 msgid "Custom Field Selection"
 msgstr "Выбор пользовательского поля"
 
-#. Need more context.
 #: 
 #, fuzzy
 msgid "Custom Person Fields"
@@ -250,13 +245,11 @@ msgstr "Метод вывода:"
 msgid "CSV Individual Records"
 msgstr "Персональные данные в CSV файле"
 
-#. need more context
 #: 
 #, fuzzy
 msgid "CSV Combine Families"
 msgstr "CSV комбинат семей"
 
-#. Context please. how to add individuals to cart? to buy?
 #: 
 #, fuzzy
 msgid "Add Individuals to Cart"
@@ -338,7 +331,6 @@ msgstr "Патриарх"
 msgid "Matriarch"
 msgstr "Матриарх"
 
-#. didn't quite understand. what are the family types?
 #: 
 msgid "Family Type: used with Make Family records... option above"
 msgstr "Тип семьи: используется с семейными записями... вариант выше"
@@ -1669,18 +1661,6 @@ msgstr "Дата окончания"
 #: 
 msgid "Clear Filters"
 msgstr "Очистить фильтры"
-
-#: 
-msgid "Previous Page"
-msgstr "Предыдущая страниц"
-
-#: 
-msgid "Next Page"
-msgstr "Следующая страниц"
-
-#: 
-msgid "Display:"
-msgstr "Дисплей:"
 
 #: 
 msgid "Number"
@@ -5415,7 +5395,6 @@ msgstr "Панель Управления Людей"
 msgid "return to People Dashboard"
 msgstr "Вернутся к Панели Управления Людьми"
 
-#. didn't quite understand. do you mean upgrade of system? and do you mean maintain personal data that system update might delete?
 #: 
 #, fuzzy
 msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
@@ -5550,7 +5529,6 @@ msgstr "Поиск событий календаря"
 msgid "Maximum number of Calendar Events"
 msgstr "Максимальное количество событий календаря"
 
-#. https://s3.eu-west-1.amazonaws.com/po-pub/i/4I3Vj2PQsiMuQccur5HkUs7k.jpg
 #: 
 msgid "%d month old"
 msgid_plural "%d months old"
@@ -5757,7 +5735,7 @@ msgstr "загрузка"
 msgid "List not found"
 msgstr "Список не найден"
 
-#. what is inList?
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"
@@ -5784,13 +5762,11 @@ msgstr "Сведения эл.почты"
 msgid "People not in list"
 msgstr "Люди не в списке"
 
-#. without context translation may be wrong
 #: 
 #, fuzzy
 msgid "Audience not in the CRM"
 msgstr "Аудитория не в CRM"
 
-#. Or second translation: Еврейский.
 #: 
 msgid "Hebrew"
 msgstr "Иврит"
@@ -5815,7 +5791,6 @@ msgstr "Пароли"
 msgid "2FA"
 msgstr "2FA"
 
-#. without context might be wrong
 #: 
 #, fuzzy
 msgid "Session Timeout"

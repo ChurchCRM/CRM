@@ -78,6 +78,7 @@ msgstr "Backup do Banco de Dados"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Esta ferramenta vai te ajudar a fazer o backup manual do banco de dados do ChurchCRM."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Você deve fazer um backup manualmente, pelo menos uma vez por semana, a menos que você tenha um backup automático programado para seus sistemas."
@@ -1260,7 +1261,6 @@ msgstr "Opcional"
 msgid "Enter a list of the attendance counts you want to include with this event."
 msgstr "Digite uma lista de presença que você deseja incluir neste evento."
 
-#. I don´t have any tgoog translation to "campus"
 #: 
 #, fuzzy
 msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
@@ -1996,21 +1996,6 @@ msgstr "Limpar filtros"
 
 #: 
 #, fuzzy
-msgid "Previous Page"
-msgstr "Página anterior"
-
-#: 
-#, fuzzy
-msgid "Next Page"
-msgstr "Próxima página"
-
-#: 
-#, fuzzy
-msgid "Display:"
-msgstr "Mostrar:"
-
-#: 
-#, fuzzy
 msgid "Number"
 msgstr "Número"
 
@@ -2218,7 +2203,6 @@ msgstr "Habilitar Propriedades Específicas do Grupo"
 msgid "Group Roles"
 msgstr "Papéis no grupo"
 
-#. The "box loses focus"  sounds as technical term. The user may not understand it.
 #: 
 #, fuzzy
 msgid "Group role name changes are saved as soon as the box loses focus"
@@ -4705,7 +4689,6 @@ msgstr "Selecionar Família"
 msgid "with at least one:"
 msgstr "com pelo menos um:"
 
-#. Welcome in Brazilian Portuguese need a gender flexion where (a) is the female variation, so Bem-vind (o) (a) (male and female)
 #: 
 #, fuzzy
 msgid "Welcome to"
@@ -9267,13 +9250,11 @@ msgstr "Procurar Pessoa"
 msgid "Maximum number of People"
 msgstr "Numero máximo de pessoas"
 
-#. What means  "Father Of Confession"?
 #: 
 #, fuzzy
 msgid "Field where Father Of Confession is listed, must be a people of group type"
 msgstr "Campo onde o Líder de Aconselhamento é listado, deve ser uma pessoa do tipo de grupo"
 
-#. What is a Confession?
 #: 
 #, fuzzy
 msgid "Field where last Confession is stored, must be a date type"
@@ -10569,6 +10550,7 @@ msgstr "Carregando"
 msgid "List not found"
 msgstr "Lista não encontrada"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

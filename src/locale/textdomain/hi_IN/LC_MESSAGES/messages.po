@@ -65,6 +65,7 @@ msgstr "बैकअप डेटाबेस"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "यह टूल ChurchCRM डेटाबेस का मैन्युअल रूप से बैकअप लेने में आपकी सहायता करेगा।"
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "आपको सप्ताह में कम से कम एक बार मैन्युअल बैकअप बनाना चाहिए, जब तक कि आपके पास पहले से ही आपके सिस्टम के लिए नियमित बैकअप प्रक्रिया न हो।"

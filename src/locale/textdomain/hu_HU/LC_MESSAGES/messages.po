@@ -64,6 +64,7 @@ msgstr "Backup Database"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Ez az eszköz segít neked mauális biztonsági mentést csinálni a ChurchCRM adatbázisról."
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1481,18 +1482,6 @@ msgstr "Szűrők alkalmazása"
 #: 
 msgid "Clear Filters"
 msgstr "Szűrők törlése"
-
-#: 
-msgid "Previous Page"
-msgstr "Előző oldal"
-
-#: 
-msgid "Next Page"
-msgstr "Következő oldal"
-
-#: 
-msgid "Display:"
-msgstr "Kijelző:"
 
 #: 
 msgid "Number"

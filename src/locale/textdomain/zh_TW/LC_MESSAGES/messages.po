@@ -64,6 +64,7 @@ msgstr "資料庫備份"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "這工具將會協助您手動備份ChurchCRM資料庫"
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1686,18 +1687,6 @@ msgstr "日期結束"
 #: 
 msgid "Clear Filters"
 msgstr "清除過濾器"
-
-#: 
-msgid "Previous Page"
-msgstr "上一頁"
-
-#: 
-msgid "Next Page"
-msgstr "下一頁"
-
-#: 
-msgid "Display:"
-msgstr "顯示方式："
 
 #: 
 msgid "Number"
@@ -8886,6 +8875,7 @@ msgstr "載入中"
 msgid "List not found"
 msgstr "找不到清單"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

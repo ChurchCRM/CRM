@@ -64,6 +64,7 @@ msgstr "Respaldar la base de datos"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Esta herramienta lo asistirá para respaldar manualmente la base de datos de ChurchCRM."
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1638,18 +1639,6 @@ msgstr "Fecha de Témino"
 #: 
 msgid "Clear Filters"
 msgstr "Limpiar Filtros"
-
-#: 
-msgid "Previous Page"
-msgstr "Hoja Previa"
-
-#: 
-msgid "Next Page"
-msgstr "Hoja Siguiente"
-
-#: 
-msgid "Display:"
-msgstr "Mostrar"
 
 #: 
 msgid "Number"
@@ -4857,7 +4846,6 @@ msgstr "El género por el que quisiera retornar registros."
 msgid "The property for which you would like person records returned."
 msgstr "La propiedad por la cual quisiera retornar registros de personas."
 
-#. Error in english, should be "contain"
 #: 
 #, fuzzy
 msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
@@ -4931,7 +4919,6 @@ msgstr "Primera elección de oportunidad de voluntariado"
 msgid "Second volunteer opportunity choice"
 msgstr "Segunda elección de oportunidad de voluntariado"
 
-#. Should be custom person field
 #: 
 msgid "Choose customer person field"
 msgstr "Elija campo personalizado para persona"
@@ -6353,7 +6340,6 @@ msgstr "No fue posible cargar la información de verificación"
 msgid "No Changes"
 msgstr "No hay Cambios"
 
-#. Found, not fond
 #: 
 #, fuzzy
 msgid "Page not fond"
@@ -6552,7 +6538,6 @@ msgstr "El archivo seleccionado excede el máximo tamaño de carga del servidor 
 msgid "Unmet Application Prerequisites"
 msgstr "Prerequisitos de Aplicación no satisfechos"
 
-#. In the context of a software examination
 #: 
 msgid "Failed"
 msgstr "Fracasó"
@@ -6910,7 +6895,6 @@ msgstr "usuario de sistema borrado"
 msgid "system user password reset"
 msgstr "contraseña de usuario de sistema restablecida"
 
-#. Does this mean that the system user changed the password, or that he password of the system user changed?
 #: 
 msgid "system user changed password"
 msgstr "contraseña de usuario de sistema cambiada"
@@ -8165,7 +8149,6 @@ msgstr "Incluir contacto y datos demográficos en el cuerpo del correo de notifi
 msgid "Include family custom properties in global search."
 msgstr "Incluir propiedades personalizadas de familia en búsqueda global"
 
-#. Is this term being repeated?
 #: 
 #, fuzzy
 msgid "Latvia (Latvija)"
@@ -8280,7 +8263,6 @@ msgstr "Incluir archivos de imágenes iniciales, archivos de imágenes remotas (
 msgid "Password (if any)"
 msgstr "Contraseña (si hubiera)"
 
-#. thie -> this
 #: 
 #, fuzzy
 msgid "All information on this page is correct."
@@ -8339,7 +8321,6 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "¿Desplegar Información no disponible heredando desde la familia asignada?\n"
 "Esta opción causa que cierta información de la familia asignada a la persona pueda ser desplegada SI la información correspondiente NO ha sido ingresada para esa persona."
 
-#. member\'s
 #: 
 msgid "Press CTRL + C to copy all group members\\' phone numbers"
 msgstr "Presionar CTRL + C para copiar todos los números de teléfono de los miembros del grupo"
@@ -8629,7 +8610,6 @@ msgstr "Su nueva contraseña no debe ser igual a la anterior."
 msgid "Your new password is too similar to your old one."
 msgstr "Su nueva contraseña es demasiado similar a la anterior."
 
-#. Availble
 #: 
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
@@ -8667,12 +8647,12 @@ msgstr "cargando"
 msgid "List not found"
 msgstr "Lista no encontrada"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"
 msgstr "Lista no enlistada"
 
-#. I don't find a proper short translation. I'll keep it simple.
 #: 
 msgid "People not in"
 msgstr "Personas no en"
@@ -8995,8 +8975,6 @@ msgstr "Ver página de persona"
 msgid "Verify"
 msgstr "Verificar"
 
-#. "emails" or "correos electrónicos" ? It depends on how is used it in other places of the software.
-#. "emails" is fine by me, since is a very common word around the Spanish-speakers population
 #: 
 msgid "Family has no emails to use"
 msgstr "La familia no tiene correo electrónicos para usar"
@@ -9041,10 +9019,6 @@ msgstr "Localización"
 msgid "Override system locale"
 msgstr "Sobrescribir localización de sistema"
 
-#. Maybe more context could make it more accurate. If it is a woman or a man record, the translation should be:
-#. "Eliminado/a".
-#. Or could be:
-#. "El registro fue eliminado" (without gender)
 #: 
 msgid "Deleted"
 msgstr "Eliminado"

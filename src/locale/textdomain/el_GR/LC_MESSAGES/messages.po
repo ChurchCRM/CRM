@@ -64,6 +64,7 @@ msgstr "Εφεδρική βάση δεδομένων"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Αυτό το εργαλείο θα σας βοηθήσει στη μη αυτόματη δημιουργία αντιγράφων ασφαλείας της βάσης δεδομένων ChurchCRM."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Θα πρέπει να δημιουργείτε ένα μη αυτόματο αντίγραφο ασφαλείας τουλάχιστον μία φορά την εβδομάδα, εκτός εάν έχετε ήδη μια τακτική διαδικασία δημιουργίας αντιγράφων ασφαλείας για τα συστήματά σας."
@@ -1637,18 +1638,6 @@ msgstr "Λήξη ημερομηνίας"
 #: 
 msgid "Clear Filters"
 msgstr "Διαγραφή φίλτρων"
-
-#: 
-msgid "Previous Page"
-msgstr "Προηγούμενη σελίδα"
-
-#: 
-msgid "Next Page"
-msgstr "Επόμενη σελίδα"
-
-#: 
-msgid "Display:"
-msgstr "Απεικόνιση:"
 
 #: 
 msgid "Number"
@@ -8614,6 +8603,7 @@ msgstr "φόρτωση"
 msgid "List not found"
 msgstr "Η λίστα δεν βρέθηκε"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

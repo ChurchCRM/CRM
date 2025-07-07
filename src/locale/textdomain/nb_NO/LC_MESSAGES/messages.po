@@ -64,6 +64,7 @@ msgstr "Backup Database"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Dette verktøyet vil hjelpe deg med å manuelt ta backup av ChurchCRM"
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1655,18 +1656,6 @@ msgstr "Dato Slutt"
 #: 
 msgid "Clear Filters"
 msgstr "Tøm filter"
-
-#: 
-msgid "Previous Page"
-msgstr "Forrige Side"
-
-#: 
-msgid "Next Page"
-msgstr "Neste side"
-
-#: 
-msgid "Display:"
-msgstr "Skjerm:"
 
 #: 
 msgid "Number"

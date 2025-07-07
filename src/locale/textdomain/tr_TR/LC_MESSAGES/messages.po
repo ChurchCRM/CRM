@@ -64,6 +64,7 @@ msgstr "Veritabanı Yedeği"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Bu araç, ChurchCRM veritabanını manuel olarak yedeklemenize yardımcı olacaktır."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Sistemleriniz için düzenli bir yedekleme prosedürünüz yoksa en az haftada bir manuel yedekleme yapmanız gerekir."
@@ -1637,18 +1638,6 @@ msgstr "Tarih sonu"
 #: 
 msgid "Clear Filters"
 msgstr "Temiz filtreler"
-
-#: 
-msgid "Previous Page"
-msgstr "Önceki sayfa"
-
-#: 
-msgid "Next Page"
-msgstr "Sonraki Sayfa"
-
-#: 
-msgid "Display:"
-msgstr "Görüntülemek:"
 
 #: 
 msgid "Number"
@@ -8630,6 +8619,7 @@ msgstr "Yükleniyor"
 msgid "List not found"
 msgstr "Liste bulunamadı"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

@@ -64,6 +64,7 @@ msgstr "Rugsteun databasis"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Hierdie hulpmiddel sal u help om 'n back-up te maak van die ChurchCRM-databasis."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "U moet minstens een keer per week 'n handmatige rugsteun maak, tensy u reeds 'n gereelde rugsteunprosedure vir u stelsels het."
@@ -1637,18 +1638,6 @@ msgstr "Einde van die datum"
 #: 
 msgid "Clear Filters"
 msgstr "Vee filters uit"
-
-#: 
-msgid "Previous Page"
-msgstr "Vorige bladsy"
-
-#: 
-msgid "Next Page"
-msgstr "Volgende bladsy"
-
-#: 
-msgid "Display:"
-msgstr "Vertoon:"
 
 #: 
 msgid "Number"
@@ -8633,6 +8622,7 @@ msgstr "laai"
 msgid "List not found"
 msgstr "Lys nie gevind"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

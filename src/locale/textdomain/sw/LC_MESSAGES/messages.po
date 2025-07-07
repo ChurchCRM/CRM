@@ -64,6 +64,7 @@ msgstr "Hifadhidata ya Hifadhi"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Hii chombo kitakusaidia katika kufanya nakala rudufu ya taarifa kwa mkono."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Unapaswa kufanya nakala rudufu kwa mkono angalau mara moja kwa wiki isipokuwa tayari una taratibu ya kawaida ya kufanya nakala rudufu kwa mfumo wako."
@@ -1635,18 +1636,6 @@ msgstr "Tarehe ya Mwisho"
 #: 
 msgid "Clear Filters"
 msgstr "Futa Vichujio"
-
-#: 
-msgid "Previous Page"
-msgstr "Ukurasa Uliopita"
-
-#: 
-msgid "Next Page"
-msgstr "Ukurasa unaofuata"
-
-#: 
-msgid "Display:"
-msgstr "Onyesha:"
 
 #: 
 msgid "Number"
@@ -8603,6 +8592,7 @@ msgstr "kupakia"
 msgid "List not found"
 msgstr "Orodha haijapatikana"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

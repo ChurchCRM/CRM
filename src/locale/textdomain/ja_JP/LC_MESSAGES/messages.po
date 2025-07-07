@@ -64,6 +64,7 @@ msgstr "バックアップデータベース"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "このツールは、手動でChurchCRMデータベースをバックアップする際に役立ちます"
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "すでにシステムの定期的なバックアップ手順がある場合を除き、少なくとも週に1回は手動でバックアップを取る必要があります"
@@ -659,18 +660,6 @@ msgstr "選択した行をエクスポート　CSV"
 #: 
 msgid "Apply Filters"
 msgstr "フィルターを適用する"
-
-#: 
-msgid "Previous Page"
-msgstr "前のページ"
-
-#: 
-msgid "Next Page"
-msgstr "次のページ"
-
-#: 
-msgid "Display:"
-msgstr "表示"
 
 #: 
 msgid "Number"

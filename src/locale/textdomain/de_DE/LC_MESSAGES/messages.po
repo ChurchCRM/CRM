@@ -64,6 +64,7 @@ msgstr "Datenbank sichern"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Dieses Werkzeug hilft Ihnen, um ein manuelles Backup der ChurchCRM Datenbank zu erstellen."
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1686,18 +1687,6 @@ msgid "Clear Filters"
 msgstr "Filter löschen"
 
 #: 
-msgid "Previous Page"
-msgstr "letzter Seite"
-
-#: 
-msgid "Next Page"
-msgstr "Nächste Seite"
-
-#: 
-msgid "Display:"
-msgstr "Anzeigen:"
-
-#: 
 msgid "Number"
 msgstr "Nummer"
 
@@ -2082,7 +2071,6 @@ msgstr "Gruppen Mitglieder:"
 msgid "Remove Selected Members from group"
 msgstr "entfernen"
 
-#. Cart - ist eigentlich Warenkorb, mir fehlt zur Übersetzung im Moment der Kontext...
 #: 
 msgid "Add Selected Members to Cart"
 msgstr "Ausgewählte Mitglieder zum Warenkorb hinzufügen"
@@ -8757,6 +8745,7 @@ msgstr "am Laden"
 msgid "List not found"
 msgstr "Liste wurde nicht gefunden"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

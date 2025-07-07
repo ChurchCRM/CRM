@@ -64,6 +64,7 @@ msgstr "Створити резервну копію бази даних"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Цей інструмент допоможе вам вручну створити резервну копію бази даних \"ChurchCRM\"."
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -1638,18 +1639,6 @@ msgstr "Дата закінчення"
 #: 
 msgid "Clear Filters"
 msgstr "Очистити фільтри"
-
-#: 
-msgid "Previous Page"
-msgstr "Попередня сторінка"
-
-#: 
-msgid "Next Page"
-msgstr "Наступна сторінка"
-
-#: 
-msgid "Display:"
-msgstr "Дисплей:"
 
 #: 
 msgid "Number"
@@ -8619,6 +8608,7 @@ msgstr "завантаження"
 msgid "List not found"
 msgstr "Список не знайдено"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"

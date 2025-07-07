@@ -8,7 +8,6 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. Query = pertanyaan
 #: 
 msgid "Cannot execute query."
 msgstr "Tidak bisa jalankan kueri."
@@ -65,6 +64,7 @@ msgstr "Backup Database"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Fungsi ini akan menolongmu dalam backup manual database ChurchCRM."
 
+#. yep fixed
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -872,7 +872,6 @@ msgstr "Keluarga"
 msgid "Type"
 msgstr "Tipe"
 
-#. Merriam-Webster menerjemahkan Fiscal Year sebagai "an accounting period of 12 months." Mungkin hal ini berhubungan dengan kebiasaan di Amerika Serikat. Apabila ada rekan yang mengetahui lebih baik dalam penerjemahan kata ini, saya akan sangat berterima kasih.
 #: 
 msgid "Fiscal Year"
 msgstr "Tahun Fiskal"
@@ -1001,7 +1000,6 @@ msgstr "Kembali kepada kegiatan-kegiatan"
 msgid "EVENT TYPE NAME"
 msgstr "Nama tipe kegiatan"
 
-#. Please create menu to support 2 options like Sunday or Sabbath.
 #: 
 msgid "Sundays"
 msgstr "Hari minggu "
@@ -1058,7 +1056,6 @@ msgstr "Setiap tipe kegiatan sudah memiliki perhitungan total, anda tidak perlu 
 msgid "Add Event Type"
 msgstr "Tambahkan tipe kegiatan"
 
-#. Saya kurang mengerti bagaimana menjelaskan field di dalam bahasa Indonesia. Kamus Webster menjelaskan demikian: "a particular area (as of a record in a database) in which the same type of information is regularly recorded."
 #: 
 msgid "Custom Family Fields Editor"
 msgstr "Sunting Field Keluarga secara khusus"
@@ -1646,18 +1643,6 @@ msgid "Clear Filters"
 msgstr "Hapus Filter"
 
 #: 
-msgid "Previous Page"
-msgstr "Halaman sebelumnya"
-
-#: 
-msgid "Next Page"
-msgstr "Halaman berikutnya"
-
-#: 
-msgid "Display:"
-msgstr "Tampilan:"
-
-#: 
 msgid "Number"
 msgstr "Angka"
 
@@ -2201,7 +2186,6 @@ msgstr "Orang-orang"
 msgid "See All People"
 msgstr "Lihat Semua Orang"
 
-#. Please create a menu support user to select Sunday or Sabbath... So this software can reach all
 #: 
 msgid "Sunday School Kids"
 msgstr "Anak Sekolah Minggu"
@@ -8629,6 +8613,7 @@ msgstr "Memuat"
 msgid "List not found"
 msgstr "Daftar tidak ditemukan"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"
@@ -9150,7 +9135,6 @@ msgstr "Orang-orang yang membayar dengan kartu kredit."
 msgid "Adult Name (Optional)"
 msgstr "Nama Dewasa (Opsional)"
 
-#. I was assuming "bEnableExternalBackupTarget" is a something displayed as it is. Do we need to translate it?
 #: 
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
 msgstr "Sebagai bagian dari pemulihan, cadangan eksternal telah dinonaktifkan. Untuk melanjutkan pencadangan otomatis, Anda harus mengaktifkan kembali setelan bEnableExternalBackupTarget."
@@ -9183,7 +9167,6 @@ msgstr "Inggris - Jamaika"
 msgid "Swahili"
 msgstr "Swahili"
 
-#. I assume "FirstName" and "LastName" are variables. Should we translate them?
 #: 
 msgid "One character from FirstName and one character from LastName"
 msgstr "Satu karakter dari FirstName dan satu karakter dari LastName"

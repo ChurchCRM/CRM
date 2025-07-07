@@ -64,6 +64,7 @@ msgstr "బ్యాకప్ డేటాబేస్"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "ChurchCRM డేటాబేస్‌ను మాన్యువల్‌గా బ్యాకప్ చేయడంలో ఈ సాధనం మీకు సహాయం చేస్తుంది."
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "మీరు ఇప్పటికే మీ సిస్టమ్‌ల కోసం సాధారణ బ్యాకప్ విధానాన్ని కలిగి ఉండకపోతే మీరు కనీసం వారానికి ఒకసారి మాన్యువల్ బ్యాకప్ చేయాలి"
