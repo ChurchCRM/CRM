@@ -543,11 +543,11 @@ module.exports = function (grunt) {
             supportedPOEditorCodes.push(locales[key]["poEditor"].toLowerCase());
         }
 
+        let localeData = [];
+
         if (grunt.file.exists("src/locale/poeditor.json")) {
             let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
             let poEditorLocales = poLocales.result.languages;
-
-            let localeData = [];
 
             for (let key in poEditorLocales) {
                 let name = poEditorLocales[key]["name"];
