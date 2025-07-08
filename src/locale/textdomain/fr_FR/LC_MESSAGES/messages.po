@@ -64,6 +64,7 @@ msgstr "Base de donnée de secours"
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Cet assistant va vous aider à sauvegarder manuellement votre base de données ChurchCRM"
 
+#. yep fixed
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Vous devriez effectuer une sauvegarde manuelle au moins une fois par semaine à moins qu'une sauvegarde régulière ne soit déjà en place sur votre système."
@@ -96,12 +97,10 @@ msgstr "Générer et envoyer la sauvegarde vers un stockage externe"
 msgid "Batch Winner Entry"
 msgstr "Entrée du lot gagnant"
 
-#. Not "Winter" (hiver) but "Winner"
 #: 
 msgid "Winner"
 msgstr "Gagnant"
 
-#. Privé is "private", not "price"
 #: 
 msgid "Price"
 msgstr "Prix"
@@ -134,7 +133,6 @@ msgstr "Prénom"
 msgid "Middle Name"
 msgstr "Deuxième prénom"
 
-#. Code is masculine - no "e" for "postal"
 #: 
 msgid "Zip"
 msgstr "Code postal"
@@ -279,7 +277,6 @@ msgstr "Suffixe"
 msgid "Gender"
 msgstr "Sexe"
 
-#. Cotisation?  Don perhaps?
 #: 
 msgid "Donation Envelope"
 msgstr "Dons"
@@ -336,7 +333,6 @@ msgstr "NOTE : avec séparateurs (tirets, etc) ou sans est sans importance"
 msgid "Default country if none specified otherwise"
 msgstr "Pays par défaut si aucune indication contraire"
 
-#. Catégorie plus compréhensible en français que Classification https://fr.wikipedia.org/wiki/Cat%C3%A9gorisation
 #: 
 msgid "Classification"
 msgstr "Catégories"
@@ -798,7 +794,6 @@ msgstr "Description"
 msgid "Picture URL"
 msgstr "URL de l'image"
 
-#. not sure here...
 #: 
 msgid "Donation Fund Editor"
 msgstr "Gestionnaire de la caisse de dons/Comptable"
@@ -1339,7 +1334,6 @@ msgstr "Montrer les paiements"
 msgid "Since"
 msgstr "Depuis"
 
-#. In the process to update the ChurchCRM system, there is a button that ends up with the translation "Système de mise à jour" (I think that's it exactly - just saw it 5 minutes ago).  That sounds like a bad literal translation of "Update System" where "update" is an imperative verb and not a noun.  I can't find this in the POEditor translations - either from an English or French search.  So I don't know the context of this particular "Update" to know whether it's a noun or a verb.  At any rate updating to 2.8.11 still gives this erroneous translation.  So if anyone knows where that text is coming from, the real translation should be something like: "Mettre à jour le système" or "Lancer la mise à jour" or "Commencer la mise à jour".  Thanks!
 #: 
 msgid "Update"
 msgstr "Mise à jour"
@@ -1644,18 +1638,6 @@ msgstr "Date de fin"
 #: 
 msgid "Clear Filters"
 msgstr "Effacer les filtres"
-
-#: 
-msgid "Previous Page"
-msgstr "Page précédente"
-
-#: 
-msgid "Next Page"
-msgstr "Page suivante"
-
-#: 
-msgid "Display:"
-msgstr "Afficher:"
 
 #: 
 msgid "Number"
@@ -3811,7 +3793,6 @@ msgstr "Calendrier"
 msgid "Members"
 msgstr "Membres"
 
-#. La précédente traduction était trop longue.
 #: 
 msgid "Add New Person"
 msgstr "Ajouter une personne"
@@ -6818,7 +6799,6 @@ msgstr "Action confirmée"
 msgid "Please confirm reset failed login count"
 msgstr "Veuillez confirmer l'échec de la réinitialisation de l'identifiant"
 
-#. "Voir" est plus court que "Afficher" (sinon, on ne voit pas dans le menu)
 #: 
 msgid "View Active Families"
 msgstr "Voir les familles actives"
@@ -8188,7 +8168,6 @@ msgstr "Augmenter la limite du temps d'exécution PHP pour permettre la sauvegar
 msgid "Application Integrity Check"
 msgstr "Vérification de l'intégrité de l'application"
 
-#. We need the context, that is in a sentence, otherwise difficult to translate.
 #: 
 msgid "Focus"
 msgstr "le point"
@@ -8640,6 +8619,7 @@ msgstr "Chargement en cours"
 msgid "List not found"
 msgstr "Liste introuvable"
 
+#. typo
 #: 
 #, fuzzy
 msgid "List not in the list"
@@ -8956,11 +8936,11 @@ msgstr "Régénérer la clef API"
 
 #: 
 msgid "View Family Page"
-msgstr "Page du foyer"
+msgstr "Voir page de la Famille"
 
 #: 
 msgid "View Person Page"
-msgstr "Page de la persone"
+msgstr "Voir Page de la personne"
 
 #: 
 msgid "Verify"
@@ -9023,10 +9003,70 @@ msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Date de naissance invalide : Mois ou jour de naissance manquant."
 
 #: 
+msgid "System"
+msgstr "Système"
+
+#: 
+msgid "Greek"
+msgstr "Grec"
+
+#: 
+msgid "Ukrainian"
+msgstr "Ukrainien"
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Envoyer à GitHub"
+
+#: 
+msgid "Change role"
+msgstr "Changer le rôle"
+
+#: 
+msgid "Closed"
+msgstr "Fermé"
+
+#: 
+msgid "Delete this person?"
+msgstr "Effacer cette personne ?"
+
+#: 
+msgid "Deposit ID"
+msgstr "ID de dépôt"
+
+#: 
+msgid "Deposit Total"
+msgstr "Total dépôt"
+
+#: 
 msgid "Adult Name (Optional)"
 msgstr "Nom de l'adulte (Optionnel)"
 
 #: 
 msgid "MailChimp is not configured"
 msgstr "MailChimp n'est pas configuré"
+
+#: 
+msgid "English - South Africa"
+msgstr "Anglais - Afrique du sud"
+
+#: 
+msgid "English - Jamaica"
+msgstr "Anglais - Jamaïque"
+
+#: 
+msgid "Swahili"
+msgstr "Swahili"
+
+#: 
+msgid "Person List Columns"
+msgstr "Colonne Personne"
+
+#: 
+msgid "Family List Columns"
+msgstr "Colonne Famille"
+
+#: 
+msgid "Telugu - India"
+msgstr "Telugu - Inde"
 
