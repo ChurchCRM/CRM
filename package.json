@@ -65,7 +65,7 @@
         "bootstrap-show-password": "^1.3.0",
         "bootstrap-toggle": "^2.2.2",
         "bootstrap-validator": "^0.11.9",
-        "chart.js": "^4.4.9",
+        "chart.js": "^4.5.0",
         "ckeditor4": "^4.25.1",
         "daterangepicker": "^3.1.0",
         "flag-icons": "^7.5.0",
