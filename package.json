@@ -81,7 +81,7 @@
         "pace-js": "^1.2.4",
         "react-bootstrap": "^2.10.10",
         "react-datepicker": "^8.4.0",
-        "react-select": "^5.10.1",
+        "react-select": "^5.10.2",
         "select2": "^4.0.13"
     },
     "devDependencies": {
