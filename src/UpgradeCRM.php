@@ -160,7 +160,7 @@ Header_body_scripts();
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 4: Login') ?></h3>
         <div class="timeline-body" id="finalPhase" <?= $expertMode ? '' : 'style="display: none"' ?>>
-          <a href="Logoff.php" class="btn btn-primary"><?= gettext('Login to Upgraded System') ?> </a>
+          <a href="/session/end" class="btn btn-primary"><?= gettext('Login to Upgraded System') ?> </a>
         </div>
       </div>
     </div>
