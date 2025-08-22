@@ -72,7 +72,7 @@ require_once 'Include/Header.php';
         }
         $("#restorestatus").css("color", "green");
         $("#restorestatus").html("<?= gettext('Restore Complete')?>");
-        $("#restoreNextStep").html('<a href="Logoff.php" class="btn btn-primary"><?= gettext('Login to restored Database')?></a>');
+        $("#restoreNextStep").html('<a href="/session/end" class="btn btn-primary"><?= gettext('Login to restored Database')?></a>');
       }).fail(function () {
       $("#restorestatus").css("color", "red");
       $("#restorestatus").html("<?= gettext('Restore Error.')?>");
