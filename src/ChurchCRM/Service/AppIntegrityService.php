@@ -248,20 +248,10 @@ class AppIntegrityService
             $result = curl_exec($ch);
             curl_close($ch);
 
-            $header = [];
-            $headers = substr($result, 0, strpos($result, "\r\n\r\n"));
+            $isEnabled = preg_match('/^CRM:\s*(.*)$/mi', $result, $matches) === 1;
 
-            foreach (explode("\r\n", $headers) as $lineKey => $line) {
-                if ($lineKey === 0) {
-                    $header['status'] = $line;
-                }
-
-                [$key, $value] = explode(': ', $line);
-                $header[$key] = $value;
-            }
-
-            $logger->debug('CURL loopback check header observed: ' . (array_key_exists('crm', $header) ? 'true' : 'false'));
-            return array_key_exists('crm', $header) && $header['crm'] === 'would redirect';
+            $logger->debug('CURL loopback check header observed: ' . ($isEnabled ? 'true' : 'false'));
+            return $isEnabled;
         }
 
         return false;
