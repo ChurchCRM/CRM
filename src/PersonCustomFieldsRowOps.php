@@ -11,7 +11,7 @@ use ChurchCRM\Utils\RedirectUtils;
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 // Get the Group, Property, and Action from the querystring
-$iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'], 'int');
+$iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'] ?? 1, 'int');
 $sField = InputUtils::legacyFilterInput($_GET['Field']);
 $sAction = $_GET['Action'];
 
@@ -43,7 +43,7 @@ switch ($sAction) {
             RunQuery($sSQL);
         }
 
-        $sSQL = 'ALTER TABLE `person_custom` DROP `' . $sField . '` ;';
+        $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '` ;';
         RunQuery($sSQL);
 
         $sSQL = "DELETE FROM person_custom_master WHERE custom_Field = '" . $sField . "'";
