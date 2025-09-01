@@ -2,10 +2,14 @@
     width: 90px;
 }
 
-.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+.react-datepicker__time-container
+    .react-datepicker__time
+    .react-datepicker__time-box {
     width: 90px;
 }
 
-.react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+.react-datepicker__navigation--next--with-time:not(
+    .react-datepicker__navigation--next--with-today-button
+) {
     right: 100px;
 }
