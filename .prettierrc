@@ -1,3 +1,4 @@
 {
-  "endOfLine": "lf"
+    "semi": true,
+    "endOfLine": "lf"
 }
