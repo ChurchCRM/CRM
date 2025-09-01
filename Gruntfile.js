@@ -352,37 +352,7 @@ module.exports = function (grunt) {
                         dest: "churchcrm/",
                     },
                 ],
-            },
-            tar: {
-                options: {
-                    archive: "target/ChurchCRM-<%= package.version %>.tar.gz",
-                    mode: "tgz",
-                    pretty: true,
-                },
-                files: [
-                    {
-                        expand: true,
-                        cwd: "src/",
-                        src: "<%= projectFiles %>",
-                        dest: "churchcrm/",
-                    },
-                ],
-            },
-            demo: {
-                options: {
-                    archive:
-                        "target/Demo-ChurchCRM-<%= package.version %>.tar.gz",
-                    mode: "tar",
-                    pretty: true,
-                },
-                files: [
-                    {
-                        expand: true,
-                        cwd: "demo/",
-                        src: ["**/*"],
-                    },
-                ],
-            },
+            }
         },
         generateSignatures: {
             sign: {
@@ -456,9 +426,7 @@ module.exports = function (grunt) {
                 files: {
                     "": [
                         "src/vendor/**/*.php",
-                        "src/vendor/**/*.js",
-                        "src/skin/external/**/*.php",
-                        "src/skin/external/**/*.js",
+                        "src/skin/external/**/*.php"
                     ],
                 },
             },

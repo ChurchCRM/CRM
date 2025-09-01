@@ -1,7 +1,7 @@
 //first, define the function that will render the active members
 
 // Listen for any click event on the document
-$(document).on('click', function () {
+$(document).on("click", function () {
     // Sadly, we can't enter full screen on load, but we can do
     // it the first time anything is clicked.
     window.CRM.kiosk.enterFullScreen();

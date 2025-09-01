@@ -5,7 +5,7 @@
     white-space: nowrap;
 }
 
-.strike>span {
+.strike > span {
     position: relative;
     display: inline-block;
 }
@@ -15,8 +15,8 @@
     color: lime;
 }
 
-.strike>span:before,
-.strike>span:after {
+.strike > span:before,
+.strike > span:after {
     content: "";
     position: absolute;
     top: 50%;
@@ -25,12 +25,12 @@
     background: grey;
 }
 
-.strike>span:before {
+.strike > span:before {
     right: 100%;
     margin-right: 15px;
 }
 
-.strike>span:after {
+.strike > span:after {
     left: 100%;
     margin-left: 15px;
 }
