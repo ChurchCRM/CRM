@@ -463,9 +463,7 @@ module.exports = function (grunt) {
                 files: {
                     "": [
                         "src/vendor/**/*.php",
-                        "src/vendor/**/*.js",
-                        "src/skin/external/**/*.php",
-                        "src/skin/external/**/*.js",
+                        "src/skin/external/**/*.php"
                     ],
                 },
             },
