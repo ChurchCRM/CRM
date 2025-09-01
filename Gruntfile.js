@@ -49,10 +49,6 @@ module.exports = function (grunt) {
             "!logs/*.log",
             "!vendor/endroid/qr-code/assets/fonts/noto_sans.otf", // This closes #5099, but TODO: when https://github.com/endroid/qr-code/issues/224 is fixed, we can remove this exclusion.
         ],
-        clean: {
-            skin: ["src/skin/external"],
-            release: ["target"],
-        },
         copy: {
             skin: {
                 files: [
@@ -483,14 +479,6 @@ module.exports = function (grunt) {
         "updateFromPOeditor",
         "Description of the task",
         function (target) {
-            grunt.config("clean", {
-                pofiles: [
-                    "src/locale/*/**/*.po",
-                    "src/locale/*/**/*.mo",
-                    "locale/JSONKeys/*.json",
-                ],
-            });
-            grunt.task.run(["clean:pofiles"]);
             grunt.loadNpmTasks("grunt-poeditor-ab");
             grunt.task.run(["poeditor"]);
         },
@@ -658,7 +646,6 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-compress");
     grunt.loadNpmTasks("grunt-curl");
     grunt.loadNpmTasks("grunt-poeditor-gd");
