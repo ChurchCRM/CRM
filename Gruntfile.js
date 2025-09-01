@@ -486,7 +486,6 @@ module.exports = function (grunt) {
         "updateFromPOeditor",
         "Description of the task",
         function (target) {
-            grunt.task.run(["clean:pofiles"]);
             grunt.loadNpmTasks("grunt-poeditor-ab");
             grunt.task.run(["poeditor"]);
         },
