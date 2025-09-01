@@ -20,7 +20,7 @@
     "scripts": {
         "clean": "rm -rf node_modules/ src/vendor/ src/skin/external",
         "preinstall": "grunt clean",
-        "build:frontend": "npm run build:js",
+        "build:frontend": "npm run build:js && npm run format:web",
         "build:js": "run-p build:js:*",
         "build:js:legacy": "grunt curl-dir && grunt copy && grunt sass && grunt lineending && grunt patchDataTablesCSS",
         "build:js:react": "webpack",
@@ -54,7 +54,7 @@
         "test": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e",
         "test-ui": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress open --e2e --browser chrome",
         "test-via-demo": "cp demo/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run",
-        "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,html,json}\""
+        "format:web": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,html,json}\""
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.7.2",
