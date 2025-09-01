@@ -1,5 +1,3 @@
-*.php
-
 src/locale/states
 src/locale/poeditor.json
 
