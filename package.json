@@ -20,7 +20,7 @@
     "scripts": {
         "clean": "rm -rf node_modules/ src/vendor/ src/skin/external",
         "preinstall": "grunt clean",
-        "build:frontend": "npm run build:js && npm run sass:build && npm run format:web",
+        "build:frontend": "npm run build:js && npm run format:web && npm run sass:build",
         "sass:build":  "sass src/skin/churchcrm.scss src/skin/churchcrm.min.css --no-source-map --style=compressed",
         "sass:watch": "sass --watch src/skin/churchcrm.scss:src/skin/churchcrm.min.css --style=compressed",
         "build:js": "run-p build:js:*",
