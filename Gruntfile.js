@@ -337,13 +337,6 @@ module.exports = function (grunt) {
                 dest: "src/skin/external/jquery-ui/",
             },
         },
-        sass: {
-            dist: {
-                files: {
-                    "src/skin/churchcrm.min.css": "src/skin/churchcrm.scss",
-                },
-            },
-        },
         compress: {
             zip: {
                 options: {
@@ -664,9 +657,6 @@ module.exports = function (grunt) {
         //  display local master's commit hash
     });
 
-    grunt.registerTask('default', ['sass']);
-
-    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-compress");
