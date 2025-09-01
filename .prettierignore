@@ -1,2 +1,6 @@
 *.php
+
 src/locale/states
+src/locale/poeditor.json
+
+src/mysql/upgrade.json

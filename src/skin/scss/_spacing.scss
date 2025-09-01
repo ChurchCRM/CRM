@@ -6,16 +6,26 @@ $grid-breakpoints: (
     sm: 576px,
     md: 768px,
     lg: 992px,
-    xl: 1200px) !default;
+    xl: 1200px,
+) !default;
 
 $spacer: 1rem !default;
 $spacers: (
     0: 0,
-    1: ($spacer * .25),
-    2: ($spacer * .5),
+    1: (
+        $spacer * 0.25,
+    ),
+    2: (
+        $spacer * 0.5,
+    ),
     3: $spacer,
-    4: ($spacer * 1.5),
-    5: ($spacer * 3)) !default;
+    4: (
+        $spacer * 1.5,
+    ),
+    5: (
+        $spacer * 3,
+    ),
+) !default;
 
 // from: https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_breakpoints.scss
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
@@ -23,9 +33,8 @@ $spacers: (
 //    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
 //    576px
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
-    $min: map.get($breakpoints, $name
-    );
-@return if($min !=0, $min, null);
+    $min: map.get($breakpoints, $name);
+    @return if($min !=0, $min, null);
 }
 
 // Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
@@ -36,7 +45,7 @@ $spacers: (
 //    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
 //    "-sm"
 @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
-    @return if(breakpoint-min($name, $breakpoints)==null, "", "-#{$name}");
+    @return if(breakpoint-min($name, $breakpoints) ==null, "", "-#{$name}");
 }
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
@@ -48,9 +57,7 @@ $spacers: (
         @media (min-width: $min) {
             @content;
         }
-    }
-
-    @else {
+    } @else {
         @content;
     }
 }
@@ -62,7 +69,6 @@ $spacers: (
 
         @each $prop, $abbrev in (margin: m, padding: p) {
             @each $size, $length in $spacers {
-
                 .#{$abbrev}#{$infix}-#{$size} {
                     #{$prop}: $length !important;
                 }
@@ -129,7 +135,7 @@ $spacers: (
 }
 
 .row-flex,
-.row-flex>div[class*='col-'] {
+.row-flex > div[class*="col-"] {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
