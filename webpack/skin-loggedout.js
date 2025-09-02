@@ -13,8 +13,7 @@ import 'inputmask';
 import 'bootbox';
 import 'moment';
 import 'pace-js';
-import 'flag-icons';
-import 'select2';
+
 
 import 'jquery-steps/build/jquery.steps.js';
 import 'jquery-steps/demo/css/jquery.steps.css'; // if you want the CSS
