@@ -18,8 +18,8 @@
     },
     "homepage": "https://churchcrm.io",
     "scripts": {
-        "clean": "rm -rf node_modules/ target src/vendor/ src/skin/external",
-        "sass:build":  "sass src/skin/churchcrm.scss src/skin/churchcrm.min.css --no-source-map --style=compressed",
+        "clean": "rm -rf node_modules/ target src/vendor/ src/skin/external src/skin/js-react/ src/skin/v2/",
+        "sass:build": "sass src/skin/churchcrm.scss src/skin/churchcrm.min.css --no-source-map --style=compressed",
         "sass:watch": "sass --watch src/skin/churchcrm.scss:src/skin/churchcrm.min.css --style=compressed",
         "build:js:legacy": "grunt curl-dir && grunt copy && grunt lineending && grunt patchDataTablesCSS",
         "build:js:webpack": "webpack --mode production",
