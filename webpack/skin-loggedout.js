@@ -7,13 +7,3 @@
 import 'bootstrap';
 import 'admin-lte';
 import '@fortawesome/fontawesome-free/js/all';
-
-// Import plugins that depend on jQuery and Bootstrap
-import 'inputmask';
-import 'bootbox';
-import 'moment';
-import 'pace-js';
-
-
-import 'jquery-steps/build/jquery.steps.js';
-import 'jquery-steps/demo/css/jquery.steps.css'; // if you want the CSS
