@@ -185,7 +185,7 @@ class AppIntegrityService
     public static function getApplicationPrerequisites(): array
     {
         return [
-            new Prerequisite('PHP 8.1+', fn (): bool => version_compare(PHP_VERSION, '8.1.0', '>=')),
+            new Prerequisite('PHP 8.2+', fn (): bool => version_compare(PHP_VERSION, '8.2.0', '>=')),
             new Prerequisite('PCRE and UTF-8 Support', fn (): bool => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
             new Prerequisite('Multibyte Encoding', fn (): bool => extension_loaded('mbstring')),
             new Prerequisite('PHP Phar', fn (): bool => extension_loaded('phar')),
