@@ -20,7 +20,7 @@
     "scripts": {
         "clean": "rm -rf node_modules/ target src/vendor/ src/skin/external",
         "build:frontend": "npm run build:js && npm run format:web && npm run sass:build",
-        "sass:build":  "sass src/skin/churchcrm.scss src/skin/churchcrm.min.css --no-source-map --style=compressed",
+        "sass:build": "sass src/skin/churchcrm.scss src/skin/churchcrm.min.css --no-source-map --style=compressed",
         "sass:watch": "sass --watch src/skin/churchcrm.scss:src/skin/churchcrm.min.css --style=compressed",
         "build:js": "run-p build:js:*",
         "build:js:legacy": "grunt curl-dir && grunt copy && grunt lineending && grunt patchDataTablesCSS",
