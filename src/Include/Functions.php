@@ -346,58 +346,23 @@ function FormatDateOutput(): string
 // bWithtime 1 to be displayed
 function FormatDate($dDate, bool $bWithTime = false): string
 {
-    if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00') {
-        return '';
-    }
-
-    if (strlen($dDate) === 10) { // If only a date was passed append time
-        $dDate = $dDate . ' 12:00:00';
-    }  // Use noon to avoid a shift in daylight time causing
-    // a date change.
-
-    if (strlen($dDate) !== 19) {
-        return '';
-    }
-
-    // Verify it is a valid date
-    $sScanString = mb_substr($dDate, 0, 10);
-    [$iYear, $iMonth, $iDay] = sscanf($sScanString, '%04d-%02d-%02d');
-
-    if (!checkdate($iMonth, $iDay, $iYear)) {
-        return 'Unknown';
-    }
-
-    // PHP date() function is not used because it is only robust for dates between
-    // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.
-    // To handle a much wider range of dates use MySQL date functions.
-
-    $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
-    . "DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
-    . "DATE_FORMAT('$dDate', '%k') as h, "
-    . "DATE_FORMAT('$dDate', ':%i') as m";
-    extract(mysqli_fetch_array(RunQuery($sSQL)));
-
-    if ($h > 11) {
-        $sAMPM = gettext('pm');
-        if ($h > 12) {
-            $h = $h - 12;
-        }
-    } else {
-        $sAMPM = gettext('am');
-        if ($h == 0) {
-            $h = 12;
-        }
-    }
-
+    // Parse the date string into a DateTime object
+    $dateObj = new DateTime($dDate);
     $fmt = FormatDateOutput();
 
     $localValue = SystemConfig::getValue("sLanguage");
     setlocale(LC_ALL, $localValue, $localValue . '.UTF-8', $localValue . '.utf8');
 
+    // Use IntlDateFormatter for locale-aware formatting
+    $locale = $localValue;
+    $dateType = \IntlDateFormatter::MEDIUM;
+    $timeType = $bWithTime ? \IntlDateFormatter::SHORT : \IntlDateFormatter::NONE;
+    $formatter = new \IntlDateFormatter($locale, $dateType, $timeType);
+
     if ($bWithTime) {
-        return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
+        return $formatter->format($dateObj);
     } else {
-        return utf8_encode(strftime("$fmt", strtotime($dDate)));
+        return $formatter->format($dateObj);
     }
 }
 
