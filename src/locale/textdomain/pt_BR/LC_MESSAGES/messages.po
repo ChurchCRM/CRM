@@ -11198,3 +11198,11 @@ msgstr "Inglês - Jamaica"
 msgid "Swahili"
 msgstr "Suaíli"
 
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "Um caractere de FirstName e um caractere de LastName"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "Dois personagens de FirstName"
+
