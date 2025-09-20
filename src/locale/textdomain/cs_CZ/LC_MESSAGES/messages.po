@@ -4087,7 +4087,7 @@ msgstr "Nastavit adresu sboru"
 
 #: 
 msgid "Set Email Settings"
-msgstr "Nastavit "
+msgstr "Nastavit e-mail"
 
 #: 
 msgid "New Release"
@@ -9177,4 +9177,12 @@ msgstr "Sloupce seznamu osob"
 #: 
 msgid "Family List Columns"
 msgstr "Sloupce seznamu rodin"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "Sborový e-mail není zadán, přejděte do Nastavení"
+
+#: 
+msgid "Telugu - India"
+msgstr "Telugu - Indie"
 

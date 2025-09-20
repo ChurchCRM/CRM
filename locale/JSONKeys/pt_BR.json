@@ -2285,5 +2285,7 @@
     "Please update the MailChimp API key in:": "Por favor, atualize a chave de API do MailChimp.",
     "English - South Africa": "Inglês - África do Sul",
     "English - Jamaica": "Inglês - Jamaica",
-    "Swahili": "Suaíli"
+    "Swahili": "Suaíli",
+    "One character from FirstName and one character from LastName": "Um caractere de FirstName e um caractere de LastName",
+    "Two characters from FirstName": "Dois personagens de FirstName"
 }
