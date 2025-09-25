@@ -72,12 +72,12 @@ function userPasswordReset(Request $request, Response $response, array $args)
     $body = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     $userName = strtolower(trim($body->userName));
     if (empty($userName)) {
-        throw new HttpBadRequestException(gettext('UserName not set'));
+        throw new HttpBadRequestException($request, gettext('UserName not set'));
     }
 
     $user = UserQuery::create()->findOneByUserName($userName);
     if (empty($user) || empty($user->getEmail())) {
-        throw new HttpNotFoundException(gettext('User') . ' [' . $userName . '] ' . gettext('no found or user without an email'));
+        throw new HttpNotFoundException($request, gettext('User') . ' [' . $userName . '] ' . gettext('no found or user without an email'));
     }
 
     $token = new Token();
