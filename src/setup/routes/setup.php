@@ -8,7 +8,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-
 $app->group('/', function (RouteCollectorProxy $group): void {
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/');
@@ -79,19 +78,42 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 });
 
 
-function sanitize_db_field($value) {
+function sanitize_db_field($value)
+{
     // Allow only letters, numbers, underscore, dash, dot, colon, and @
     return preg_replace('/[^a-zA-Z0-9_\-\.:\@]/', '', $value);
 }
 
-function is_valid_db_field($value) {
-    return preg_match('/^[a-zA-Z0-9_\-\.:\@]+$/', $value);
+// Hostname: letters, numbers, dash, dot, no @ or :
+function is_valid_hostname($value)
+{
+    // Hostnames: RFC 1123, allow a-z, 0-9, dash, dot, no @ or :
+    return preg_match('/^(?=.{1,253}$)([a-zA-Z0-9\-]{1,63}\.)*[a-zA-Z0-9\-]{1,63}$/', $value);
 }
 
-function is_valid_port($value) {
+// DB name: letters, numbers, underscore, dash, dot
+function is_valid_db_name($value)
+{
+    return preg_match('/^[a-zA-Z0-9_\-\.]+$/', $value);
+}
+
+// DB user: allow @ (for Azure), letters, numbers, underscore, dash, dot
+function is_valid_db_user($value)
+{
+    return preg_match('/^[a-zA-Z0-9_\-\.@]+$/', $value);
+}
+
+// DB password: allow anything except empty string
+function is_valid_db_password($value)
+{
+    return strlen($value) > 0;
+}
+function is_valid_port($value)
+{
     return preg_match('/^[0-9]{1,5}$/', $value) && (int)$value > 0 && (int)$value < 65536;
 }
 
-function is_valid_root_path($value) {
+function is_valid_root_path($value)
+{
     return preg_match('#^\/[a-zA-Z0-9_\-\.\/]*$#', $value);
 }
