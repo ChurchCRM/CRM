@@ -43,7 +43,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         $errors = [];
         if (!isset($setupData['DB_SERVER_NAME'])) {
             $errors['DB_SERVER_NAME'] = 'Missing DB_SERVER_NAME';
-        } elseif (!is_valid_db_field($setupData['DB_SERVER_NAME'])) {
+        } elseif (!is_valid_hostname($setupData['DB_SERVER_NAME'])) {
             $errors['DB_SERVER_NAME'] = 'Invalid DB_SERVER_NAME';
         }
         if (!isset($setupData['DB_SERVER_PORT'])) {
@@ -53,17 +53,17 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         }
         if (!isset($setupData['DB_NAME'])) {
             $errors['DB_NAME'] = 'Missing DB_NAME';
-        } elseif (!is_valid_db_field($setupData['DB_NAME'])) {
+        } elseif (!is_valid_db_name($setupData['DB_NAME'])) {
             $errors['DB_NAME'] = 'Invalid DB_NAME';
         }
         if (!isset($setupData['DB_USER'])) {
             $errors['DB_USER'] = 'Missing DB_USER';
-        } elseif (!is_valid_db_field($setupData['DB_USER'])) {
+        } elseif (!is_valid_db_user($setupData['DB_USER'])) {
             $errors['DB_USER'] = 'Invalid DB_USER';
         }
         if (!isset($setupData['DB_PASSWORD'])) {
             $errors['DB_PASSWORD'] = 'Missing DB_PASSWORD';
-        } elseif (!is_valid_db_field($setupData['DB_PASSWORD'])) {
+        } elseif (!is_valid_db_password($setupData['DB_PASSWORD'])) {
             $errors['DB_PASSWORD'] = 'Invalid DB_PASSWORD';
         }
         if (!isset($setupData['ROOT_PATH'])) {
