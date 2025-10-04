@@ -55,6 +55,8 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
         $mailer->CharSet = 'UTF-8';
         $mailer->Timeout = intval(SystemConfig::getValue('iSMTPTimeout'));
         $mailer->Host = SystemConfig::getValue('sSMTPHost');
+        $mailer->SMTPAutoTLS = SystemConfig::getBooleanValue('bPHPMailerAutoTLS');
+        $mailer->SMTPSecure = SystemConfig::getValue('sPHPMailerSMTPSecure');
         if (SystemConfig::getBooleanValue('bSMTPAuth')) {
             $mailer->SMTPAuth = true;
             LoggerUtils::getAppLogger()->debug('SMTP Auth Used');
