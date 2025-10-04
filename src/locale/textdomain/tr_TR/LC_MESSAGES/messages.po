@@ -7781,7 +7781,8 @@ msgid "Not Found: Unknown calendar id"
 msgstr "Bulunmadı: Bilinmeyen Takvim Kimliği"
 
 #: 
-msgid "no found or user without an email"
+#, fuzzy
+msgid "not found or user without an email"
 msgstr "E -posta olmadan bulunamadı veya kullanıcı"
 
 #: 

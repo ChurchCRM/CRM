@@ -7777,7 +7777,8 @@ msgid "Not Found: Unknown calendar id"
 msgstr "Δεν βρέθηκε: Άγνωστο αναγνωριστικό ημερολογίου"
 
 #: 
-msgid "no found or user without an email"
+#, fuzzy
+msgid "not found or user without an email"
 msgstr "δεν βρέθηκε ή χρήστης χωρίς email"
 
 #: 

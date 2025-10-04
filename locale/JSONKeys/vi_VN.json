@@ -1939,7 +1939,7 @@
     "View User": "Xem thành viên",
     "Invalid request: Missing calendar id": "Yêu cầu không hợp lệ: Thiếu id lịch",
     "Not Found: Unknown calendar id": "Không tìm thấy: Id lịch không xác định",
-    "no found or user without an email": "không tìm thấy hoặc người dùng không có email",
+    "not found or user without an email": "không tìm thấy hoặc người dùng không có email",
     "UserName not set": "UserName chưa được đặt",
     "The people and families has been cleared from the database.": "Các thành viên và gia đình đã được xóa sạch khỏi bảng dữ liệu",
     "Self Registrations": "Tự đăng ký",

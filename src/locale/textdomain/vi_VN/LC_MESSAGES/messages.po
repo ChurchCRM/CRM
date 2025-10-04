@@ -7801,7 +7801,8 @@ msgid "Not Found: Unknown calendar id"
 msgstr "Không tìm thấy: Id lịch không xác định"
 
 #: 
-msgid "no found or user without an email"
+#, fuzzy
+msgid "not found or user without an email"
 msgstr "không tìm thấy hoặc người dùng không có email"
 
 #: 

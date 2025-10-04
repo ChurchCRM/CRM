@@ -1939,7 +1939,7 @@
     "View User": "Kullanıcıyı görüntüle",
     "Invalid request: Missing calendar id": "Geçersiz istek: Eksik takvim kimliği",
     "Not Found: Unknown calendar id": "Bulunmadı: Bilinmeyen Takvim Kimliği",
-    "no found or user without an email": "E -posta olmadan bulunamadı veya kullanıcı",
+    "not found or user without an email": "E -posta olmadan bulunamadı veya kullanıcı",
     "UserName not set": "Kullanıcı adı ayarlanmadı",
     "The people and families has been cleared from the database.": "İnsanlar ve aileler veritabanından temizlendi.",
     "Self Registrations": "Kendi Kayıtları",

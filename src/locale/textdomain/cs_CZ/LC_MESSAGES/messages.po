@@ -7770,7 +7770,8 @@ msgid "Not Found: Unknown calendar id"
 msgstr "Nenalezeno: Neznámé ID kalendáře"
 
 #: 
-msgid "no found or user without an email"
+#, fuzzy
+msgid "not found or user without an email"
 msgstr "nenalezen nebo uživatel bez e-mailu"
 
 #: 

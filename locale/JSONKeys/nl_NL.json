@@ -1939,7 +1939,7 @@
     "View User": "Weergave gebruiker",
     "Invalid request: Missing calendar id": "Ongeldig verzoek: agenda-ID ontbreekt",
     "Not Found: Unknown calendar id": "Niets gevonden: onbekende agenda-ID",
-    "no found or user without an email": "Niets gevonden of gebruiker zonder e-mail",
+    "not found or user without an email": "Niets gevonden of gebruiker zonder e-mail",
     "UserName not set": "De gebruikersnaam is niet ingevuld",
     "The people and families has been cleared from the database.": "Personen en gezinnen zijn verwijderd uit de database.",
     "Self Registrations": "Zelf registraties",

@@ -1939,7 +1939,7 @@
     "View User": "Visa användare",
     "Invalid request: Missing calendar id": "Ogiltig begäran: saknas kalender-ID",
     "Not Found: Unknown calendar id": "Inte hittat: Okänt kalender-id",
-    "no found or user without an email": "ingen hittad eller användare utan e-post",
+    "not found or user without an email": "ingen hittad eller användare utan e-post",
     "UserName not set": "Användarnamn inte inställt",
     "The people and families has been cleared from the database.": "Personer och familjerna har rensats från databasen.",
     "Self Registrations": "Självregistrering",

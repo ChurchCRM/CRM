@@ -1938,7 +1938,7 @@
     "View User": "Προβολή χρήστη",
     "Invalid request: Missing calendar id": "Μη έγκυρο αίτημα: Λείπει το αναγνωριστικό ημερολογίου",
     "Not Found: Unknown calendar id": "Δεν βρέθηκε: Άγνωστο αναγνωριστικό ημερολογίου",
-    "no found or user without an email": "δεν βρέθηκε ή χρήστης χωρίς email",
+    "not found or user without an email": "δεν βρέθηκε ή χρήστης χωρίς email",
     "UserName not set": "Όνομα χρήστη δεν έχει οριστεί",
     "The people and families has been cleared from the database.": "Τα άτομα και οι οικογένειες έχουν διαγραφεί από τη βάση δεδομένων.",
     "Self Registrations": "Αυτοεγγραφές",

@@ -1939,7 +1939,7 @@
     "View User": "Kuva kasutaja",
     "Invalid request: Missing calendar id": "Vale taotlus: puudub kalendri ID",
     "Not Found: Unknown calendar id": "Pole leitud: Tundmatu kalendri ID",
-    "no found or user without an email": "ei leitud ega kasuta ilma e-kirjata",
+    "not found or user without an email": "ei leitud ega kasuta ilma e-kirjata",
     "UserName not set": "Kasutajanimi pole määratud",
     "The people and families has been cleared from the database.": "Inimesed ja perekonnad on andmebaasist kustutatud.",
     "Self Registrations": "Enda registreerimised",

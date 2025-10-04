@@ -1938,7 +1938,7 @@
     "View User": "查看用户",
     "Invalid request: Missing calendar id": "请求无效：缺少日历ID",
     "Not Found: Unknown calendar id": "找不到：未知的日历ID",
-    "no found or user without an email": "没有找到或没有电子邮件的用户",
+    "not found or user without an email": "没有找到或没有电子邮件的用户",
     "UserName not set": "用户名未设置",
     "The people and families has been cleared from the database.": "人员和家庭已从数据库中清除。",
     "Self Registrations": "自助注册",

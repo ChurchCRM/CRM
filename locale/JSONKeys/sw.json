@@ -1939,7 +1939,7 @@
     "View User": "Tazama Mtumiaji",
     "Invalid request: Missing calendar id": "Ombi batili: Kitambulisho cha kalenda kinakosekana",
     "Not Found: Unknown calendar id": "Haijapatikana: Kitambulisho cha kalenda kisichojulikana",
-    "no found or user without an email": "hakuna kupatikana au mtumiaji bila barua pepe",
+    "not found or user without an email": "hakuna kupatikana au mtumiaji bila barua pepe",
     "UserName not set": "Jina la mtumiaji halijawekwa",
     "The people and families has been cleared from the database.": "Watu na familia zimeondolewa kwenye hifadhidata.",
     "Self Registrations": "Usajili wa kibinafsi",

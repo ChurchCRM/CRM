@@ -297,7 +297,8 @@ msgid "Not Found: Unknown calendar id"
 msgstr "Not Found: Unknown calendar ID"
 
 #: 
-msgid "no found or user without an email"
+#, fuzzy
+msgid "not found or user without an email"
 msgstr "not found or user without an email"
 
 #: 
