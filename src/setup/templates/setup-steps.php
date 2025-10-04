@@ -74,7 +74,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
             </div>
             <div class="form-group">
                 <label for="URL">Base URL</label>
-                <input type="url" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
+                <input type="text" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
                        aria-describedby="URL_HELP"
                        required>
                 <small id="URL_HELP" class="form-text text-muted">
