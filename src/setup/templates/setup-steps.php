@@ -96,8 +96,8 @@ require_once '../Include/HeaderNotLoggedIn.php';
             </div>
             <div class="form-group">
                 <label for="DB_SERVER_PORT">MySQL Database Server Port</label>
-                <input type="text" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
-                       aria-describedby="DB_SERVER_PORT_HELP" required pattern="^[0-9]{1,5}$" value="3306">
+                <input type="number" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
+                       aria-describedby="DB_SERVER_PORT_HELP" required min="1" max="65535" value="3306">
                 <small id="DB_SERVER_PORT_HELP" class="form-text text-muted">
                     <strong>Default:</strong> <code>3306</code><br>
                     <strong>Rules:</strong> Must be a number between 1 and 65535.
