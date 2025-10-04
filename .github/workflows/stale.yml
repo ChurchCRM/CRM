@@ -1,3 +1,7 @@
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
 name: 'Close stale issues and PRs'
 on:
   schedule:
