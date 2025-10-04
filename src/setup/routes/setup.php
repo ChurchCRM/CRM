@@ -39,18 +39,45 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
         $setupData = $request->getParsedBody();
 
-        // Validate each field
-        if (
-            !isset($setupData['DB_SERVER_NAME'], $setupData['DB_SERVER_PORT'], $setupData['DB_NAME'], $setupData['DB_USER'], $setupData['DB_PASSWORD'], $setupData['ROOT_PATH'], $setupData['URL']) ||
-            !is_valid_db_field($setupData['DB_SERVER_NAME']) ||
-            !is_valid_port($setupData['DB_SERVER_PORT']) ||
-            !is_valid_db_field($setupData['DB_NAME']) ||
-            !is_valid_db_field($setupData['DB_USER']) ||
-            !is_valid_db_field($setupData['DB_PASSWORD']) ||
-            !is_valid_root_path($setupData['ROOT_PATH']) ||
-            !filter_var($setupData['URL'], FILTER_VALIDATE_URL)
-        ) {
-            return $response->withStatus(400, 'Invalid setup data.');
+        // Validate each field and collect errors
+        $errors = [];
+        if (!isset($setupData['DB_SERVER_NAME'])) {
+            $errors['DB_SERVER_NAME'] = 'Missing DB_SERVER_NAME';
+        } elseif (!is_valid_db_field($setupData['DB_SERVER_NAME'])) {
+            $errors['DB_SERVER_NAME'] = 'Invalid DB_SERVER_NAME';
+        }
+        if (!isset($setupData['DB_SERVER_PORT'])) {
+            $errors['DB_SERVER_PORT'] = 'Missing DB_SERVER_PORT';
+        } elseif (!is_valid_port($setupData['DB_SERVER_PORT'])) {
+            $errors['DB_SERVER_PORT'] = 'Invalid DB_SERVER_PORT';
+        }
+        if (!isset($setupData['DB_NAME'])) {
+            $errors['DB_NAME'] = 'Missing DB_NAME';
+        } elseif (!is_valid_db_field($setupData['DB_NAME'])) {
+            $errors['DB_NAME'] = 'Invalid DB_NAME';
+        }
+        if (!isset($setupData['DB_USER'])) {
+            $errors['DB_USER'] = 'Missing DB_USER';
+        } elseif (!is_valid_db_field($setupData['DB_USER'])) {
+            $errors['DB_USER'] = 'Invalid DB_USER';
+        }
+        if (!isset($setupData['DB_PASSWORD'])) {
+            $errors['DB_PASSWORD'] = 'Missing DB_PASSWORD';
+        } elseif (!is_valid_db_field($setupData['DB_PASSWORD'])) {
+            $errors['DB_PASSWORD'] = 'Invalid DB_PASSWORD';
+        }
+        if (!isset($setupData['ROOT_PATH'])) {
+            $errors['ROOT_PATH'] = 'Missing ROOT_PATH';
+        } elseif (!is_valid_root_path($setupData['ROOT_PATH'])) {
+            $errors['ROOT_PATH'] = 'Invalid ROOT_PATH';
+        }
+        if (!isset($setupData['URL'])) {
+            $errors['URL'] = 'Missing URL';
+        } elseif (!filter_var($setupData['URL'], FILTER_VALIDATE_URL)) {
+            $errors['URL'] = 'Invalid URL';
+        }
+        if (!empty($errors)) {
+            return SlimUtils::renderJSON($response->withStatus(400), ['errors' => $errors]);
         }
 
         // Use sanitized values
