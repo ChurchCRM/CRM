@@ -77,7 +77,7 @@ function userPasswordReset(Request $request, Response $response, array $args)
 
     $user = UserQuery::create()->findOneByUserName($userName);
     if (empty($user) || empty($user->getEmail())) {
-        throw new HttpNotFoundException(gettext('User') . ' [' . $userName . '] ' . gettext('no found or user without an email'));
+        throw new HttpNotFoundException($request, gettext('User') . ' [' . $userName . '] ' . gettext('no found or user without an email'));
     }
 
     $token = new Token();

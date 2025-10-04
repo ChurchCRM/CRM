@@ -1,4 +1,4 @@
-$(document).ready(function () {
+    $(document).ready(function () {
     $("#NewPassword1").keyup(function (event) {
         ValidateNewPassword();
     });
