@@ -1,4 +1,5 @@
 <?php
+
 namespace ChurchCRM\Emails;
 
 class TestEmail extends BaseEmail
