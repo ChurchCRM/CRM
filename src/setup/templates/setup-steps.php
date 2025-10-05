@@ -74,7 +74,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
             </div>
             <div class="form-group">
                 <label for="URL">Base URL</label>
-                <input type="url" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
+                <input type="text" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
                        aria-describedby="URL_HELP"
                        required>
                 <small id="URL_HELP" class="form-text text-muted">
@@ -88,38 +88,55 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="DB_SERVER_NAME">MySQL Database Server Name</label>
                 <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" class="form-control"
-                       aria-describedby="DB_SERVER_NAME_HELP" required>
-                <small id="DB_SERVER_NAME_HELP" class="form-text text-muted">Use localhost over 127.0.0.1</small>
+                       aria-describedby="DB_SERVER_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
+                <small id="DB_SERVER_NAME_HELP" class="form-text text-muted">
+                    <strong>Examples:</strong> <code>localhost</code>, <code>127.0.0.1</code>, <code>db.example.com</code><br>
+                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_SERVER_PORT">MySQL Database Server Port</label>
-                <input type="text" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
-                       aria-describedby="DB_SERVER_PORT_HELP" required value="3306">
-                <small id="DB_SERVER_PORT_HELP" class="form-text text-muted">Default MySQL Port is 3306</small>
+                <input type="number" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
+                       aria-describedby="DB_SERVER_PORT_HELP" required min="1" max="65535" value="3306">
+                <small id="DB_SERVER_PORT_HELP" class="form-text text-muted">
+                    <strong>Default:</strong> <code>3306</code><br>
+                    <strong>Rules:</strong> Must be a number between 1 and 65535.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_NAME">Database Name</label>
                 <input type="text" name="DB_NAME" id="DB_NAME" placeholder="churchcrm" class="form-control"
-                       aria-describedby="DB_NAME_HELP" required>
-                <small id="DB_NAME_HELP" class="form-text text-muted"></small>
+                       aria-describedby="DB_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
+                <small id="DB_NAME_HELP" class="form-text text-muted">
+                    <strong>Example:</strong> <code>churchcrm</code><br>
+                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_USER">Database User</label>
                 <input type="text" name="DB_USER" id="DB_USER" placeholder="churchcrm" class="form-control"
-                       aria-describedby="DB_USER_HELP" required>
-                <small id="DB_USER_HELP" class="form-text text-muted">Must have permissions to create tables and views</small>
+                       aria-describedby="DB_USER_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
+                <small id="DB_USER_HELP" class="form-text text-muted">
+                    <strong>Example:</strong> <code>churchcrm</code><br>
+                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.<br>
+                    Must have permissions to create tables and views.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_PASSWORD">Database Password</label>
                 <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" class="form-control"
-                       aria-describedby="DB_PASSWORD_HELP" required>
-                <small id="DB_PASSWORD_HELP" class="form-text text-muted"></small>
+                       aria-describedby="DB_PASSWORD_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@\!\#\$\%\^\&\*\(\)]*$">
+                <small id="DB_PASSWORD_HELP" class="form-text text-muted">
+                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), at (<code>@</code>), and common special characters (<code>! # $ % ^ &amp; * ( )</code>) are allowed.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_PASSWORD2">Confirm Database Password</label>
                 <input type="password" name="DB_PASSWORD2" id="DB_PASSWORD2" class="form-control"
                        aria-describedby="DB_PASSWORD2_HELP" required>
-                <small id="DB_PASSWORD2_HELP" class="form-text text-muted"></small>
+                <small id="DB_PASSWORD2_HELP" class="form-text text-muted">
+                    Must match the password above.
+                </small>
             </div>
         </section>
         <!--
