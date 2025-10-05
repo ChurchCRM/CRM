@@ -7887,7 +7887,8 @@ msgid "Not Found: Unknown calendar id"
 msgstr "找不到：未知的日历ID"
 
 #: 
-msgid "no found or user without an email"
+#, fuzzy
+msgid "not found or user without an email"
 msgstr "没有找到或没有电子邮件的用户"
 
 #: 

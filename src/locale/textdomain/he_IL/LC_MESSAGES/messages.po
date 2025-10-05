@@ -7774,7 +7774,8 @@ msgid "Not Found: Unknown calendar id"
 msgstr "לא נמצא: מזהה לוח שנה לא מוכר"
 
 #: 
-msgid "no found or user without an email"
+#, fuzzy
+msgid "not found or user without an email"
 msgstr "לא נמצא או משתמש ללא אימייל"
 
 #: 

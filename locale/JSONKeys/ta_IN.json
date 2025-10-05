@@ -1939,7 +1939,7 @@
     "View User": "பயனரைக் காண்க",
     "Invalid request: Missing calendar id": "தவறான கோரிக்கை: காலண்டர் ஐடி இல்லை",
     "Not Found: Unknown calendar id": "கிடைக்கவில்லை: அறியப்படாத காலண்டர் ஐடி",
-    "no found or user without an email": "மின்னஞ்சல் இல்லாமல் இல்லை அல்லது பயனர் இல்லை",
+    "not found or user without an email": "மின்னஞ்சல் இல்லாமல் இல்லை அல்லது பயனர் இல்லை",
     "UserName not set": "பயனர்பெயர் அமைக்கப்படவில்லை",
     "The people and families has been cleared from the database.": "தரவுத்தளத்திலிருந்து மக்கள் மற்றும் குடும்பங்கள் அழிக்கப்பட்டுள்ளன.",
     "Self Registrations": "சுய பதிவுகள்",

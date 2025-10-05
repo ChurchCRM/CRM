@@ -1939,7 +1939,7 @@
     "View User": "Ver Utilizador",
     "Invalid request: Missing calendar id": "Solicitação inválida: Sem ID do calendário",
     "Not Found: Unknown calendar id": "Não encontrado: ID do calendário Desconhecido",
-    "no found or user without an email": "Não encontrado ou utilizador sem um E-mail",
+    "not found or user without an email": "Não encontrado ou utilizador sem um E-mail",
     "UserName not set": "Nome de Utilizador não definido",
     "The people and families has been cleared from the database.": "As pessoas e famílias foram removidas da base de dados.",
     "Self Registrations": "Próprios Registos",

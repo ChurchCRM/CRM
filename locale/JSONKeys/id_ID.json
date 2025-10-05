@@ -1939,7 +1939,7 @@
     "View User": "Lihat Pengguna",
     "Invalid request: Missing calendar id": "Permintaan tidak valid: Id kalender tidak ada",
     "Not Found: Unknown calendar id": "Tidak Ditemukan: Id kalender tidak dikenal",
-    "no found or user without an email": "tidak ditemukan atau pengguna tanpa email",
+    "not found or user without an email": "tidak ditemukan atau pengguna tanpa email",
     "UserName not set": "UserName tidak disetel",
     "The people and families has been cleared from the database.": "Orang-orang dan keluarga telah dibersihkan dari database.",
     "Self Registrations": "Pendaftaran Mandiri",

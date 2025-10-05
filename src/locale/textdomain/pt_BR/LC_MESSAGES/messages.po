@@ -9517,7 +9517,7 @@ msgstr "Não encontrado: ID do calendário Desconhecido"
 
 #: 
 #, fuzzy
-msgid "no found or user without an email"
+msgid "not found or user without an email"
 msgstr "Não encontrado ou usuário sem um E-mail"
 
 #: 

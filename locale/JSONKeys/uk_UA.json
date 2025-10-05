@@ -1939,7 +1939,7 @@
     "View User": "Переглянути користувача",
     "Invalid request: Missing calendar id": "Недійсний запит: відсутній ідентифікатор календаря",
     "Not Found: Unknown calendar id": "Не знайдено: невідомий ідентифікатор календаря",
-    "no found or user without an email": "жодного знайденого або користувача без електронної пошти",
+    "not found or user without an email": "жодного знайденого або користувача без електронної пошти",
     "UserName not set": "Ім'я користувача не встановлено",
     "The people and families has been cleared from the database.": "Люди та сім'ї вилучені з бази даних.",
     "Self Registrations": "Самореєстрація",

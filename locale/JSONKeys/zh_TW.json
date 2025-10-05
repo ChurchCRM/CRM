@@ -1939,7 +1939,7 @@
     "View User": "查看用戶",
     "Invalid request: Missing calendar id": "請求無效：缺少日曆ID",
     "Not Found: Unknown calendar id": "找不到：未知的日曆ID",
-    "no found or user without an email": "沒有找到或沒有電子郵件的用戶",
+    "not found or user without an email": "沒有找到或沒有電子郵件的用戶",
     "UserName not set": "用戶名未設置",
     "The people and families has been cleared from the database.": "人員和家庭已從資料庫中清除。",
     "Self Registrations": "自助註冊",

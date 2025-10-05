@@ -61,33 +61,25 @@ require_once '../Include/HeaderNotLoggedIn.php';
                 <label for="ROOT_PATH">Root Path</label>
                 <input type="text" name="ROOT_PATH" id="ROOT_PATH"
                        value="<?= SystemURLs::getRootPath() ?>" class="form-control"
-                       aria-describedby="ROOT_PATH_HELP">
+                       aria-describedby="ROOT_PATH_HELP"
+                       pattern="^\/[a-zA-Z0-9_\-\.\/]*$"
+                       maxlength="64"
+                       required>
                 <small id="ROOT_PATH_HELP" class="form-text text-muted">
-                    Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
-                    <p/>
-                    <i><b>Examples:</b></i>
-                    <p/>
-                    If you will be accessing from <b>http://www.yourdomain.com/churchcrm</b> then you would
-                    enter <b>'/churchcrm'</b> here.
-                    <br/>
-                    If you will be accessing from <b>http://www.yourdomain.com</b> then you leave
-                    this field blank.
-
-                    <p/>
-                    <i><b>NOTE:</b></i>
-                    <p/>
-                    SHOULD Start with slash.<br/>
-                    SHOULD NOT end with slash.<br/>
-                    It is case sensitive.
-                    </ul>
+                    <strong>Examples:</strong><br>
+                    <code>/churchcrm</code> (for <code>http://www.yourdomain.com/churchcrm</code>)<br>
+                    <code>/</code> or <code></code> (for <code>http://www.yourdomain.com</code>)<br>
+                    <strong>Rules:</strong> Must start with a slash (<code>/</code>) if not empty. Do <b>not</b> end with a slash. Case sensitive. Only letters, numbers, <code>_</code>, <code>-</code>, <code>.</code>, <code>/</code> allowed.
                 </small>
             </div>
             <div class="form-group">
                 <label for="URL">Base URL</label>
                 <input type="text" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
-                       aria-describedby="URL_HELP" required>
+                       aria-describedby="URL_HELP"
+                       required>
                 <small id="URL_HELP" class="form-text text-muted">
-                    This is the URL that you prefer most users use when they log in. These are case sensitive.
+                    <strong>Example:</strong> <code>https://www.yourdomain.com/churchcrm/</code><br>
+                    <strong>Rules:</strong> Must be a valid URL, including <code>http://</code> or <code>https://</code>. If using a non-standard port, include it (e.g., <code>https://www.yourdomain.com:8080/churchcrm/</code>). Case sensitive.
                 </small>
             </div>
         </section>
@@ -96,38 +88,55 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="DB_SERVER_NAME">MySQL Database Server Name</label>
                 <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" class="form-control"
-                       aria-describedby="DB_SERVER_NAME_HELP" required>
-                <small id="DB_SERVER_NAME_HELP" class="form-text text-muted">Use localhost over 127.0.0.1</small>
+                       aria-describedby="DB_SERVER_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
+                <small id="DB_SERVER_NAME_HELP" class="form-text text-muted">
+                    <strong>Examples:</strong> <code>localhost</code>, <code>127.0.0.1</code>, <code>db.example.com</code><br>
+                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_SERVER_PORT">MySQL Database Server Port</label>
-                <input type="text" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
-                       aria-describedby="DB_SERVER_PORT_HELP" required value="3306">
-                <small id="DB_SERVER_PORT_HELP" class="form-text text-muted">Default MySQL Port is 3306</small>
+                <input type="number" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
+                       aria-describedby="DB_SERVER_PORT_HELP" required min="1" max="65535" value="3306">
+                <small id="DB_SERVER_PORT_HELP" class="form-text text-muted">
+                    <strong>Default:</strong> <code>3306</code><br>
+                    <strong>Rules:</strong> Must be a number between 1 and 65535.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_NAME">Database Name</label>
                 <input type="text" name="DB_NAME" id="DB_NAME" placeholder="churchcrm" class="form-control"
-                       aria-describedby="DB_NAME_HELP" required>
-                <small id="DB_NAME_HELP" class="form-text text-muted"></small>
+                       aria-describedby="DB_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
+                <small id="DB_NAME_HELP" class="form-text text-muted">
+                    <strong>Example:</strong> <code>churchcrm</code><br>
+                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_USER">Database User</label>
                 <input type="text" name="DB_USER" id="DB_USER" placeholder="churchcrm" class="form-control"
-                       aria-describedby="DB_USER_HELP" required>
-                <small id="DB_USER_HELP" class="form-text text-muted">Must have permissions to create tables and views</small>
+                       aria-describedby="DB_USER_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
+                <small id="DB_USER_HELP" class="form-text text-muted">
+                    <strong>Example:</strong> <code>churchcrm</code><br>
+                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.<br>
+                    Must have permissions to create tables and views.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_PASSWORD">Database Password</label>
                 <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" class="form-control"
-                       aria-describedby="DB_PASSWORD_HELP" required>
-                <small id="DB_PASSWORD_HELP" class="form-text text-muted"></small>
+                       aria-describedby="DB_PASSWORD_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@\!\#\$\%\^\&\*\(\)]*$">
+                <small id="DB_PASSWORD_HELP" class="form-text text-muted">
+                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), at (<code>@</code>), and common special characters (<code>! # $ % ^ &amp; * ( )</code>) are allowed.
+                </small>
             </div>
             <div class="form-group">
                 <label for="DB_PASSWORD2">Confirm Database Password</label>
                 <input type="password" name="DB_PASSWORD2" id="DB_PASSWORD2" class="form-control"
                        aria-describedby="DB_PASSWORD2_HELP" required>
-                <small id="DB_PASSWORD2_HELP" class="form-text text-muted"></small>
+                <small id="DB_PASSWORD2_HELP" class="form-text text-muted">
+                    Must match the password above.
+                </small>
             </div>
         </section>
         <!--

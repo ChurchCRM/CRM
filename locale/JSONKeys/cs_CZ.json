@@ -1939,7 +1939,7 @@
     "View User": "Zobrazit uživatele",
     "Invalid request: Missing calendar id": "Neplatný požadavek: Chybějící ID kalendáře",
     "Not Found: Unknown calendar id": "Nenalezeno: Neznámé ID kalendáře",
-    "no found or user without an email": "nenalezen nebo uživatel bez e-mailu",
+    "not found or user without an email": "nenalezen nebo uživatel bez e-mailu",
     "UserName not set": "UživatelskéJméno není nastaveno",
     "The people and families has been cleared from the database.": "Osoby a rodiny byly z databáze vymazány.",
     "Self Registrations": "Vlastní registrace",
