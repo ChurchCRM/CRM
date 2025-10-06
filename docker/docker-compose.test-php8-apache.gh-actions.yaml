@@ -3,13 +3,6 @@
 
 services:
   database:
-    # Use tmpfs for maximum speed in GitHub Actions
-    volumes:
-      - ../demo:/docker-entrypoint-initdb.d:ro
-      - type: tmpfs
-        target: /var/lib/mysql
-        tmpfs:
-          size: 1G  # GitHub Actions has sufficient RAM
     # More aggressive optimizations for CI speed
     command: >
       --character-set-server=utf8mb4
@@ -28,22 +21,6 @@ services:
   webserver:
     # Use specific user for GitHub Actions
     user: "1001:121"  # GitHub Actions runner user
-    environment:
-      # GitHub Actions specific environment
-      GITHUB_ACTIONS: true
-      CI: true
-      # Optimize for CI
-      PHP_OPCACHE_ENABLE: 0
-      PHP_MEMORY_LIMIT: 1G
-    volumes:
-      # More aggressive caching for GitHub Actions
-      - ../src:/var/www/html:ro,delegated
-      - ../:/home/ChurchCRM:ro,delegated
-      # Use tmpfs for temporary files (cache will use /tmp)
-      - type: tmpfs
-        target: /tmp
-        tmpfs:
-          size: 512M  # Increased size to accommodate cache
     deploy:
       resources:
         limits:
@@ -56,11 +33,6 @@ services:
 
   mailserver:
     # Minimal resources for GitHub Actions
-    volumes:
-      - type: tmpfs
-        target: /tmp
-        tmpfs:
-          size: 64M
     deploy:
       resources:
         limits:
