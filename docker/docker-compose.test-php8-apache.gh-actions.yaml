@@ -39,11 +39,15 @@ services:
       # More aggressive caching for GitHub Actions
       - ../src:/var/www/html:ro,delegated
       - ../:/home/ChurchCRM:ro,delegated
-      # Use tmpfs for temporary files
+      # Use tmpfs for temporary files and cache
       - type: tmpfs
         target: /tmp
         tmpfs:
           size: 256M
+      - type: tmpfs
+        target: /var/www/html/cache
+        tmpfs:
+          size: 128M
     deploy:
       resources:
         limits:
