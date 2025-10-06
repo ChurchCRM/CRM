@@ -1,7 +1,69 @@
-# This is the test docker-compose.yml override file for Github Actions -
-# it is not intended to be used on it's own but instead layered into the
-# normal test docker compose so it can be ran in CI.
+# GitHub Actions specific optimizations
+# This file should be used as an override with the base test compose file
+
 services:
+  database:
+    # Use tmpfs for maximum speed in GitHub Actions
+    volumes:
+      - ../demo:/docker-entrypoint-initdb.d:ro
+      - type: tmpfs
+        target: /var/lib/mysql
+        tmpfs:
+          size: 1G  # GitHub Actions has sufficient RAM
+    # More aggressive optimizations for CI speed
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --skip-character-set-client-handshake
+      --innodb-buffer-pool-size=512M
+      --innodb-log-file-size=128M
+      --innodb-flush-log-at-trx-commit=0
+      --innodb-flush-method=O_DIRECT
+      --sync-binlog=0
+      --skip-name-resolve
+      --query-cache-type=0
+      --tmp-table-size=128M
+      --max-heap-table-size=128M
+
   webserver:
-    user: 1001:121
+    # Use specific user for GitHub Actions
+    user: "1001:121"  # GitHub Actions runner user
+    environment:
+      # GitHub Actions specific environment
+      GITHUB_ACTIONS: true
+      CI: true
+      # Optimize for CI
+      PHP_OPCACHE_ENABLE: 0
+      PHP_MEMORY_LIMIT: 1G
+    volumes:
+      # More aggressive caching for GitHub Actions
+      - ../src:/var/www/html:ro,delegated
+      - ../:/home/ChurchCRM:ro,delegated
+      # Use tmpfs for temporary files
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 256M
+    deploy:
+      resources:
+        limits:
+          # GitHub Actions has generous limits
+          memory: 2G
+          cpus: '4.0'
+        reservations:
+          memory: 1G
+          cpus: '2.0'
+
+  mailserver:
+    # Minimal resources for GitHub Actions
+    volumes:
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 64M
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.25'
 
