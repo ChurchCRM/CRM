@@ -16,7 +16,7 @@ services:
       --collation-server=utf8mb4_unicode_ci
       --skip-character-set-client-handshake
       --innodb-buffer-pool-size=512M
-      --innodb-log-file-size=128M
+      --innodb-redo-log-capacity=128M  
       --innodb-flush-log-at-trx-commit=0
       --innodb-flush-method=O_DIRECT
       --sync-binlog=0
