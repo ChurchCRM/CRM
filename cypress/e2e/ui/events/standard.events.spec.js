@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Standard User Session", () => {
+describe("Standard User Session", () => {
     it("Visit Event Attendance", () => {
         cy.loginStandard("EventAttendance.php");
         cy.contains("Church Service");

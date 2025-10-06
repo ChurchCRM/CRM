@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Standard User Session", () => {
+describe("Standard User Session", () => {
     it("Login and Logout", () => {
         cy.loginStandard("v2/dashboard");
         cy.visit("/session/end");

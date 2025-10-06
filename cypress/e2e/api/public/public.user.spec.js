@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-context("API Public User", () => {
+describe("API Public User", () => {
     it("Login", () => {
-        let user = {
+        const user = {
             userName: "admin",
             password: "changeme",
         };
