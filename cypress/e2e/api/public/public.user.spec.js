@@ -7,15 +7,15 @@ describe("API Public User", () => {
             password: "changeme",
         };
 
-        cy.request({
+        cy.apiRequest({
             method: "POST",
             url: "/api/public/user/login",
             headers: { "content-type": "application/json" },
             body: user,
         }).then((resp) => {
-            const result = JSON.parse(JSON.stringify(resp.body));
             expect(resp.status).to.eq(200);
-            expect(result.apiKey).to.eq(Cypress.env("admin.api.key"));
+            expect(resp.body).to.have.property('apiKey');
+            expect(resp.body.apiKey).to.eq(Cypress.env("admin.api.key"));
         });
     });
 
