@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("API Public Data", () => {
+describe("API Public Data", () => {
     it("Countries", () => {
         cy.request({
             method: "GET",

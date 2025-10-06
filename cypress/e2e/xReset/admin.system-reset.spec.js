@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Admin System Reset", () => {
+describe("Admin System Reset", () => {
     it("Reset Members", () => {
         cy.loginAdmin("v2/admin/database/reset");
         cy.contains(

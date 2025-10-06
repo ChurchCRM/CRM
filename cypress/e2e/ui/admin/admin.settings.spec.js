@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Admin Settings", () => {
+describe("Admin Settings", () => {
     before(() => {
         cy.loginAdmin("SystemSettings.php");
     });
@@ -22,7 +22,7 @@ context("Admin Settings", () => {
     /*  TODO For some reason this resets the user session
 
         it('Update Church Name', () => {
-        let newValue = "New Church -  " + Cypress._.random(0, 1e6)
+        const newValue = "New Church -  " + Cypress._.random(0, 1e6)
         cy.get("input[name='new_value[1003]']").clear().type(newValue);
         cy.get("form[name='SystemSettingsForm']").submit();
         cy.location('pathname').should('include', "/SystemSettings.php");

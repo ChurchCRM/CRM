@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-context("API Private Current User", () => {
+describe("API Private Current User", () => {
     it("Set / GET Current User Settings", () => {
-        let json = { value: "skin-green" };
+        const json = { value: "skin-green" };
         cy.makePrivateUserAPICall(
             "POST",
             "/api/user/3/setting/ui.style",
@@ -25,7 +25,7 @@ context("API Private Current User", () => {
     });
 
     it("Admin Set / GET Other User Settings", () => {
-        let json = { value: "skin-yellow-light" };
+        const json = { value: "skin-yellow-light" };
         cy.makePrivateUserAPICall(
             "POST",
             "/api/user/3/setting/ui.style",

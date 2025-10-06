@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Family Reg", () => {
+describe("Family Reg", () => {
     it("Family of 2", () => {
         cy.visit("external/register/");
         cy.contains("Main St. Cathedral");
@@ -24,6 +24,6 @@ context("Family Reg", () => {
         cy.get(".actions li:nth-child(2) > a").click();
         cy.get(".actions li:nth-child(3) > a").click();
         cy.get(".btn-default").click();
-        cy.url().should("contains", "external/register/");
+        cy.url().should("contain", "external/register/");
     });
 });

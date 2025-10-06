@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-context("Admin Calendar", () => {
+describe("Admin Calendar", () => {
     beforeEach(() => {});
 
     it("Create New Calendar", () => {
-        let title = "Calendar: " + new Date().getTime();
+        const title = "Calendar: " + new Date().getTime();
         cy.loginAdmin("v2/calendar");
         cy.contains("Calendar");
         cy.get("#newCalendarButton").click();

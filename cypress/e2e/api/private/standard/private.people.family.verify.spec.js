@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-context("API Private Family Verify", () => {
+describe("API Private Family Verify", () => {
     it("Verify API", () => {
-        let result = cy.makePrivateUserAPICall(
+        const result = cy.makePrivateUserAPICall(
             "POST",
             "/api/family/2/verify",
             "",
