@@ -2,21 +2,6 @@
 # This file should be used as an override with the base test compose file
 
 services:
-  database:
-    # More aggressive optimizations for CI speed
-    command: >
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_unicode_ci
-      --skip-character-set-client-handshake
-      --innodb-buffer-pool-size=512M
-      --innodb-redo-log-capacity=128M  
-      --innodb-flush-log-at-trx-commit=0
-      --innodb-flush-method=O_DIRECT
-      --sync-binlog=0
-      --skip-name-resolve
-      --query-cache-type=0
-      --tmp-table-size=128M
-      --max-heap-table-size=128M
 
   webserver:
     # Use specific user for GitHub Actions
