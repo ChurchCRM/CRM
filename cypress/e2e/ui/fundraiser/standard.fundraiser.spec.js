@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Fund Raiser", () => {
+describe("Fund Raiser", () => {
     
     it("View All ", () => {
         cy.loginStandard("FundRaiserEditor.php?FundRaiserID=-1");

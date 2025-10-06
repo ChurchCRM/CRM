@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Standard Reports", () => {
+describe("Standard Reports", () => {
     it("Gen Newsletter Labels ", () => {
         cy.loginStandard("LettersAndLabels.php");
         cy.contains("Letters and Mailing Labels");

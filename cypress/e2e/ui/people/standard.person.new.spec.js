@@ -1,7 +1,7 @@
 const personEditorPath = "PersonEditor.php";
 const personViewPath = "PersonView.php";
 
-context("Standard Person", () => {
+describe("Standard Person", () => {
     const uniqueSeed = Date.now().toString();
 
     it("Add Full Person", () => {
@@ -18,19 +18,19 @@ context("Standard Person", () => {
         cy.get("#Classification").select("1");
         cy.get("#PersonSaveButton").click();
 
-        cy.url().should("contains", personViewPath);
+        cy.url().should("contain", personViewPath);
         cy.contains(name);
 
         // make sure edit works
         cy.get('#EditPerson').click();
 
-        cy.url().should("contains", personEditorPath);
+        cy.url().should("contain", personEditorPath);
 
         cy.get("#BirthYear").clear().type("1980");
         cy.get("#Email").clear().type(`bobby${uniqueSeed}@example.com`);
         cy.get("#PersonSaveButton").click();
 
-        cy.url().should("contains", personViewPath);
+        cy.url().should("contain", personViewPath);
         cy.contains(name);
 
     });
@@ -43,18 +43,18 @@ context("Standard Person", () => {
         cy.get("#LastName").type("Hall");
         cy.get("#PersonSaveButton").click();
 
-        cy.url().should("contains", personViewPath);
+        cy.url().should("contain", personViewPath);
         cy.contains(name);
 
         // make sure edit works
         cy.get('#EditPerson').click();
 
-        cy.url().should("contains", personEditorPath);
+        cy.url().should("contain", personEditorPath);
 
         cy.get("#Email").clear().type(`robby${uniqueSeed}@example.com`);
         cy.get("#PersonSaveButton").click();
 
-        cy.url().should("contains", personViewPath);
+        cy.url().should("contain", personViewPath);
         cy.contains(name);
     });
 });

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Admin Debug", () => {
+describe("Admin Debug", () => {
     it("View system debug", () => {
         cy.loginAdmin("v2/admin/debug");
         cy.contains("ChurchCRM Installation Information");

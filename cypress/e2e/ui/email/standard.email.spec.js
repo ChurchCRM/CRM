@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Email Pages", () => {
+describe("Email Pages", () => {
     it("Email Dashboard", () => {
         cy.loginStandard("v2/email/dashboard");
         cy.contains("eMail Dashboard");

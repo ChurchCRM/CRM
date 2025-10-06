@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Standard Family", () => {
+describe("Standard Family", () => {
     it("View Family Lists", () => {
         cy.makePrivateUserAPICall(
             "POST",
@@ -20,7 +20,7 @@ context("Standard Family", () => {
         cy.contains("Active Family List");
 
         cy.visit("v2/family?mode=inactive");
-        cy.contains("Inactive Family List");
+        cy.contains("Inactive Family List").should("be.visible");
         cy.contains("Lewis").should("not.exist");
 
         cy.visit("v2/family/3");
