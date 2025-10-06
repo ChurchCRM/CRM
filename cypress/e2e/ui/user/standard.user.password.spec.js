@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("User 2FA", () => {
+describe("User 2FA", () => {
     it("Ensure QR code displays", () => {
         cy.loginStandard("v2/user/current/enroll2fa");
         cy.get("#begin2faEnrollment")
@@ -15,14 +15,14 @@ context("User 2FA", () => {
     });
 });
 
-context("Standard User Password", () => {
+describe("Standard User Password", () => {
     it("Change with invalid password", () => {
         cy.loginStandard("v2/user/current/changepassword");
         cy.get("#OldPassword").type("ILikePancakes");
         cy.get("#NewPassword1").type("changeyou");
         cy.get("#NewPassword2").type("changeyou");
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contains", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/v2/user/current/changepassword");
         cy.contains("Incorrect password supplied for current user");
     });
 
@@ -32,7 +32,7 @@ context("Standard User Password", () => {
         cy.get("#NewPassword1").type("password");
         cy.get("#NewPassword2").type("password");
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contains", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/v2/user/current/changepassword");
         cy.contains(
             "Your password choice is too obvious. Please choose something else.",
         );
@@ -44,7 +44,7 @@ context("Standard User Password", () => {
         cy.get("#NewPassword1").type("basicjoe");
         cy.get("#NewPassword2").type("basicjoe");
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contains", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/v2/user/current/changepassword");
         cy.contains("Your new password must not match your old one");
     });
 
@@ -54,7 +54,7 @@ context("Standard User Password", () => {
         cy.get("#NewPassword1").type("basicjoe2");
         cy.get("#NewPassword2").type("basicjoe2");
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contains", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/v2/user/current/changepassword");
         cy.contains("Your new password is too similar to your old one");
     });
 
@@ -68,7 +68,7 @@ context("Standard User Password", () => {
             "SomeThingsAreBetterLeftUnChangedJustKidding",
         );
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contains", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/v2/user/current/changepassword");
         cy.contains("Password Change Successful");
 
         cy.visit("/session/end");
@@ -83,7 +83,7 @@ context("Standard User Password", () => {
         cy.get("#NewPassword1").type("basicjoe");
         cy.get("#NewPassword2").type("basicjoe");
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contains", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/v2/user/current/changepassword");
         cy.contains("Password Change Successful");
     });
 });

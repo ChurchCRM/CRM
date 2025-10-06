@@ -1,5 +1,8 @@
-context("Standard Person", () => {
+/// <reference types="cypress" />
+
+describe("Standard Person", () => {
     const uniqueSeed = Date.now().toString();
+    
     it("Add Person only first and last name", () => {
         const name = "Robby " + uniqueSeed;
         cy.loginStandard("PersonEditor.php");
@@ -7,8 +10,8 @@ context("Standard Person", () => {
         cy.get("#LastName").type("Campbell");
         cy.get("#PersonSaveButton").click();
 
-        cy.url().should("contains", "PersonView.php");
-        cy.contains(name);
+        cy.url().should("contain", "PersonView.php");
+        cy.contains(name).should("be.visible");
     });
 
     it("Add Person with middle name", () => {
@@ -18,44 +21,44 @@ context("Standard Person", () => {
         cy.get("#MiddleName").type("Henry");
         cy.get("#LastName").type("Campbell");
         cy.get("#PersonSaveButton").click();
-        cy.url().should("contains", "PersonView.php");
-        cy.contains(firstName);
+        cy.url().should("contain", "PersonView.php");
+        cy.contains(firstName).should("be.visible");
     });
 
     it("Name Search", () => {
         cy.loginStandard("v2/dashboard");
-        cy.request({
+        cy.apiRequest({
             method: "GET",
             url: "/api/search/cam",
         }).then((resp) => {
-            const result = JSON.parse(JSON.stringify(resp.body));
             expect(resp.status).to.eq(200);
-            expect(result.length).be.gte(2);
+            expect(resp.body).to.have.property('length');
+            expect(resp.body.length).to.be.gte(2);
         });
     });
 
     it("Middle Name Search", () => {
         cy.loginStandard("v2/dashboard");
-        cy.request({
+        cy.apiRequest({
             method: "GET",
             url: "/api/search/henry",
         }).then((resp) => {
-            const result = JSON.parse(JSON.stringify(resp.body));
             expect(resp.status).to.eq(200);
-            expect(result.length).be.gte(1);
+            expect(resp.body).to.have.property('length');
+            expect(resp.body.length).to.be.gte(1);
         });
     });
 
     it("Unknown Name Search", () => {
         const unknownName = "nobody " + uniqueSeed;
         cy.loginStandard("v2/dashboard");
-        cy.request({
+        cy.apiRequest({
             method: "GET",
             url: "/api/search/" + unknownName,
         }).then((resp) => {
-            const result = JSON.parse(JSON.stringify(resp.body));
             expect(resp.status).to.eq(200);
-            expect(result.length).be.eq(0);
+            expect(resp.body).to.have.property('length');
+            expect(resp.body.length).to.eq(0);
         });
     });
 });
