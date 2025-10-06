@@ -2,9 +2,21 @@
     "TTL": 300,
     "messages": [
         {
-            "targetVersion": "4.5.4",
-            "adminOnly": true,
-            "title": "Version 5.0.0 has been released, but it requires PHP 8.x"
+            "targetVersion": "5.18.0",
+            "adminOnly": false,
+            "title": "You are running an outdated version of ChurchCRM. Please upgrade to the latest version immediately, which includes critical security fixes."
+        },
+        {
+            "targetVersion": "5.17.0",
+            "adminOnly": false,
+            "title": "You are running an outdated version of ChurchCRM. Please upgrade to the latest version immediately, which includes critical security fixes."
+        },
+        {
+            "targetVersion": "5.16.0",
+            "adminOnly": false,
+            "title": "You are running an outdated version of ChurchCRM. Please upgrade to the latest version immediately, which includes critical security fixes."
         }
+
+        
     ]
 }
