@@ -33,8 +33,8 @@ jobs:
           # Repository token
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           
-          # Debug settings
-          debug-only: ${{ inputs.debug_only || false }}
+          # Debug settings - enable for dry run or debug mode
+          debug-only: ${{ inputs.debug_only == true || inputs.dry_run == true }}
           
           # Stale detection timing
           days-before-issue-stale: 30
@@ -110,6 +110,3 @@ jobs:
           # Additional settings
           ascending: true
           start-date: '2020-01-01T00:00:00Z'  # Don't process very old items
-          
-          # Dry run for manual testing
-          debug-only: ${{ inputs.dry_run || false }}
