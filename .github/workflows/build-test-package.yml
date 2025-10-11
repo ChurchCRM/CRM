@@ -204,7 +204,7 @@ jobs:
         
         # Test API endpoint
         echo "Testing API endpoint..."
-        if curl -f -s http://127.0.0.1/api/public/echo > /dev/null; then
+        if curl --max-time 30 -f -s http://127.0.0.1/api/public/echo > /dev/null; then
           echo "✅ API endpoint is responding"
         else
           echo "❌ API endpoint test failed"
