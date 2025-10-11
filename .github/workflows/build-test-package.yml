@@ -1,88 +1,269 @@
-name: Build, Test and Package
+name: 'Build, Test and Package'
 
 on:
   pull_request:
     branches:    
       - master
+      - develop
     paths-ignore:
       - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
   push:
     branches:
-    - master
+      - master
+      - develop
     paths-ignore:
       - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
+  workflow_dispatch:
+    # Allow manual triggering for testing and releases
+    inputs:
+      skip_tests:
+        description: 'Skip Cypress tests (faster build for testing)'
+        required: false
+        type: boolean
+        default: false
+      skip_docker:
+        description: 'Skip Docker integration tests'
+        required: false
+        type: boolean
+        default: false
+      debug_mode:
+        description: 'Enable debug logging and verbose output'
+        required: false
+        type: boolean
+        default: false
+      node_version:
+        description: 'Node.js version to use'
+        required: false
+        type: choice
+        options:
+          - '18.x'
+          - '20.x'
+          - '22.x'
+        default: '20.x'
 
 jobs:
-  test-n-package:
+  build-test-package:
+    name: 'Build, Test and Package ChurchCRM'
     runs-on: ubuntu-latest
+    
     strategy:
       matrix:
-        node-version: ['20.x']
+        node-version: ['${{ inputs.node_version || "20.x" }}']
+      fail-fast: false
+    
+    env:
+      NODE_ENV: production
+      CI: true
+      DEBUG_MODE: ${{ inputs.debug_mode || false }}
+    
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
       with:
         # fetch full history so things like auto-changelog work properly
         fetch-depth: 0
-    - name: Use Node.js ${{ matrix.node-version }}
+        
+    - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token
         registry-url: 'https://registry.npmjs.org'
 
-    - name: Declare some variables
-      id: vars
+    - name: Get build information
+      id: build-info
       shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-
-    - name: get-npm-version
-      id: package-version
-      uses: martinbeentjes/npm-get-version-action@main
-
-    - name: Get Env Ready
       run: |
-        npm ci
+        echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+        echo "commit_sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
+        echo "build_date=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
+        echo "trigger=${{ github.event_name }}" >> $GITHUB_OUTPUT
 
-    - name: Get Composer Cache Directory
+    - name: Get package version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@v1.3.1
+
+    - name: Cache NPM dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install NPM dependencies
+      run: |
+        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
+          echo "🔍 Installing NPM dependencies with debug info..."
+          npm ci --verbose
+        else
+          echo "📦 Installing NPM dependencies..."
+          npm ci
+        fi
+
+    - name: Get Composer cache directory
       id: composer-cache
       run: |
         cd src
         echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-    - uses: actions/cache@v4
+    - name: Cache Composer dependencies
+      uses: actions/cache@v4
       with:
         path: ${{ steps.composer-cache.outputs.dir }}
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-composer-
 
-    - name: Build App
+    - name: Build application
       run: |
-        npm run package
+        echo "🏗️ Building ChurchCRM application..."
+        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
+          echo "Debug mode: Running with verbose output"
+          npm run package -- --verbose
+        else
+          npm run package
+        fi
+        echo "✅ Build completed successfully"
 
-    - name: Run Docker
+    - name: Validate build artifacts
       run: |
-        npm run ci-docker-test-start
-        docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
-        docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+        echo "🔍 Validating build artifacts..."
+        if [ ! -d "target" ]; then
+          echo "❌ Target directory not found"
+          exit 1
+        fi
+        
+        artifact_count=$(find target -name "ChurchCRM-*.zip" | wc -l)
+        if [ "$artifact_count" -eq 0 ]; then
+          echo "❌ No ChurchCRM package found in target directory"
+          exit 1
+        fi
+        
+        echo "✅ Found $artifact_count package(s) in target directory"
+        ls -la target/ChurchCRM-*
 
-    - name: Test Server
+    - name: Start Docker environment
+      if: inputs.skip_docker != true
       run: |
-          curl -vvv http://127.0.0.1/api/public/echo
+        echo "🐳 Starting Docker test environment..."
+        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
+          echo "Debug: Using verbose Docker output"
+          npm run ci-docker-test-start
           docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
+          echo "Docker logs:"
           docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+        else
+          npm run ci-docker-test-start
+        fi
+        echo "✅ Docker environment started"
 
-    - name: Run Cypress Tests
+    - name: Test server connectivity
+      if: inputs.skip_docker != true
       run: |
-        npm run test
+        echo "🌐 Testing server connectivity..."
+        
+        # Wait for services to be ready
+        echo "Waiting for services to start..."
+        sleep 30
+        
+        # Test API endpoint
+        echo "Testing API endpoint..."
+        if curl -f -s http://127.0.0.1/api/public/echo > /dev/null; then
+          echo "✅ API endpoint is responding"
+        else
+          echo "❌ API endpoint test failed"
+          echo "Docker status:"
+          docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
+          echo "Docker logs:"
+          docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+          exit 1
+        fi
 
-    - name: Stop Docker
+    - name: Run Cypress end-to-end tests
+      if: inputs.skip_tests != true
       run: |
-        npm run ci-docker-test-down
-  
-    - name: Upload zip file
+        echo "🧪 Running Cypress end-to-end tests..."
+        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
+          echo "Debug mode: Running tests with debug output"
+          npm run test -- --config video=true,screenshotOnRunFailure=true
+        else
+          npm run test
+        fi
+        echo "✅ All tests passed"
+
+    - name: Collect test artifacts on failure
+      if: failure() && inputs.skip_tests != true
+      run: |
+        echo "📸 Collecting test artifacts due to failure..."
+        if [ -d "cypress/screenshots" ]; then
+          echo "Screenshots found:"
+          find cypress/screenshots -name "*.png" | head -10
+        fi
+        if [ -d "cypress/videos" ]; then
+          echo "Videos found:"
+          find cypress/videos -name "*.mp4" | head -5
+        fi
+
+    - name: Upload test artifacts on failure
+      if: failure() && inputs.skip_tests != true
       uses: actions/upload-artifact@v4
       with:
-        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}-files
+        name: cypress-test-artifacts-${{ steps.build-info.outputs.commit_sha }}
+        path: |
+          cypress/screenshots
+          cypress/videos
+        retention-days: 7
+
+    - name: Stop Docker environment
+      if: always() && inputs.skip_docker != true
+      run: |
+        echo "🛑 Stopping Docker environment..."
+        npm run ci-docker-test-down
+        echo "✅ Docker environment stopped"
+
+    - name: Create build summary
+      if: always()
+      run: |
+        echo "## 🏗️ Build Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Build Information:**" >> $GITHUB_STEP_SUMMARY
+        echo "- 📦 **Version**: ${{ steps.package-version.outputs.current-version }}" >> $GITHUB_STEP_SUMMARY
+        echo "- 🌿 **Branch**: ${{ steps.build-info.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
+        echo "- 📝 **Commit**: ${{ steps.build-info.outputs.commit_sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "- 🚀 **Trigger**: ${{ steps.build-info.outputs.trigger }}" >> $GITHUB_STEP_SUMMARY
+        echo "- 📅 **Date**: ${{ steps.build-info.outputs.build_date }}" >> $GITHUB_STEP_SUMMARY
+        echo "- 🟢 **Node.js**: ${{ matrix.node-version }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        echo "**Configuration:**" >> $GITHUB_STEP_SUMMARY
+        echo "- 🧪 **Tests**: ${{ inputs.skip_tests == true && 'Skipped' || 'Executed' }}" >> $GITHUB_STEP_SUMMARY
+        echo "- 🐳 **Docker**: ${{ inputs.skip_docker == true && 'Skipped' || 'Used' }}" >> $GITHUB_STEP_SUMMARY
+        echo "- 🔍 **Debug**: ${{ env.DEBUG_MODE }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ -d "target" ]; then
+          echo "**Build Artifacts:**" >> $GITHUB_STEP_SUMMARY
+          for file in target/ChurchCRM-*; do
+            if [ -f "$file" ]; then
+              size=$(ls -lh "$file" | awk '{print $5}')
+              echo "- 📄 \`$(basename "$file")\` ($size)" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+        fi
+
+    - name: Upload build artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}-${{ steps.build-info.outputs.commit_sha }}
         path: target/ChurchCRM-*.*
+        retention-days: 90
+        if-no-files-found: error
