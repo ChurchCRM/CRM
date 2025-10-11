@@ -2,59 +2,171 @@ name: POEditor Locale Download and Audit
 
 on:
   schedule:
+    # Run daily at midnight UTC
     - cron: "0 0 * * *"
+  workflow_dispatch:
+    # Allow manual triggering from GitHub UI
+    inputs:
+      force_update:
+        description: 'Force update even if no changes detected'
+        required: false
+        type: boolean
+        default: false
+      target_branch:
+        description: 'Target branch for the PR (defaults to current version)'
+        required: false
+        type: string
+        default: ''
+      skip_audit:
+        description: 'Skip locale audit step'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
-
-  Download:
+  download:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: ['20.x']
+    
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
       with:
         # fetch full history so things like auto-changelog work properly
         fetch-depth: 0
-    - name: Use Node.js ${{ matrix.node-version }}
+        # Use token for write access
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
         registry-url: 'https://registry.npmjs.org'
 
-    - name: get-npm-version
+    - name: Get package version
       id: package-version
-      uses: martinbeentjes/npm-get-version-action@master
+      uses: martinbeentjes/npm-get-version-action@v1.3.1
 
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-    - name: install locale tools
+    - name: Cache node modules
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install dependencies
       run: |
+        npm ci
         npm install grunt-cli --save-dev
 
-    - name: Create BuildConfig File
+    - name: Validate POEditor configuration
+      run: |
+        if [ -z "${{ secrets.POEDITOR_TOKEN }}" ]; then
+          echo "❌ POEDITOR_TOKEN secret is not set"
+          exit 1
+        fi
+        echo "✅ POEditor token is configured"
+
+    - name: Create BuildConfig file
       uses: jsdaniell/create-json@v1.2.3
       with:
         name: "BuildConfig.json"
         json: '{"POEditor": { "id": "77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}'
 
+    - name: Clean existing locales
+      run: npm run locale-clean
+      
     - name: Download locales from POEditor
-      run: npm run locale-download
+      run: |
+        echo "🌍 Downloading locales from POEditor..."
+        npm run locale-download
+        echo "✅ Locale download completed"
 
-    - name: Push changes to ${{ steps.package-version.outputs.current-version}} locale branch
+    - name: Check for changes
+      id: changes
+      run: |
+        if git diff --quiet; then
+          echo "No locale changes detected"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Locale changes detected"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "Changed files:"
+          git diff --name-only
+        fi
+
+    - name: Determine branch name
+      id: branch
+      run: |
+        if [ -n "${{ inputs.target_branch }}" ]; then
+          echo "branch=${{ inputs.target_branch }}" >> $GITHUB_OUTPUT
+        else
+          echo "branch=locale/${{ steps.package-version.outputs.current-version}}" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create Pull Request
+      if: steps.changes.outputs.has_changes == 'true' || inputs.force_update == true
       uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: 'locale/${{ steps.package-version.outputs.current-version}}'
+        branch: '${{ steps.branch.outputs.branch }}'
         delete-branch: true
-        labels: Localization
+        labels: |
+          localization
+          automated
         milestone: ${{ steps.package-version.outputs.current-version}}
-        title: "${{ steps.package-version.outputs.current-version}} POEditor Update - ${{ steps.date.outputs.date }}"
-        commit-message: 'Locale Gen & Download on ${{ steps.date.outputs.date }}'
+        title: "🌍 POEditor Locale Update - ${{ steps.date.outputs.date }}"
+        commit-message: |
+          🌍 Locale update from POEditor on ${{ steps.date.outputs.date }}
+          
+          - Updated translations from POEditor
+          - Version: ${{ steps.package-version.outputs.current-version}}
+          - Triggered: ${{ github.event_name == 'workflow_dispatch' && 'Manual' || 'Scheduled' }}
+        body: |
+          ## 🌍 Automatic Locale Update
+          
+          This PR contains updated translations downloaded from POEditor.
+          
+          **Details:**
+          - 📅 **Date**: ${{ steps.date.outputs.date }}
+          - 🏷️ **Version**: ${{ steps.package-version.outputs.current-version}}
+          - 🚀 **Trigger**: ${{ github.event_name == 'workflow_dispatch' && 'Manual run' || 'Scheduled daily run' }}
+          - 🔧 **Force Update**: ${{ inputs.force_update == true && 'Yes' || 'No' }}
+          
+          **What's included:**
+          - Updated translation files from POEditor
+          - Generated locale JSON files
+          - Locale audit results
+          
+          This PR was automatically created by the POEditor workflow.
+          
+          ---
+          
+          **Manual Run Options Used:**
+          ${{ inputs.force_update == true && '- ✅ Force update enabled' || '- ❌ Force update disabled' }}
+          ${{ inputs.skip_audit == true && '- ⏩ Audit skipped' || '- 🔍 Audit included' }}
+          ${{ inputs.target_branch != '' && format('- 🎯 Custom branch: {0}', inputs.target_branch) || '- 🎯 Default branch used' }}
 
-    - name: Audit locales from POEditor
-      run: npm run locale-audit
+    - name: Run locale audit
+      if: inputs.skip_audit != true
+      run: |
+        echo "🔍 Running locale audit..."
+        npm run locale-audit
+        echo "✅ Locale audit completed"
+
+    - name: Report results
+      run: |
+        echo "## 📊 Workflow Results"
+        echo "- **Changes detected**: ${{ steps.changes.outputs.has_changes }}"
+        echo "- **PR created**: ${{ (steps.changes.outputs.has_changes == 'true' || inputs.force_update == true) && 'Yes' || 'No' }}"
+        echo "- **Branch**: ${{ steps.branch.outputs.branch }}"
+        echo "- **Audit run**: ${{ inputs.skip_audit != true && 'Yes' || 'Skipped' }}"
+        echo "- **Trigger**: ${{ github.event_name }}"
