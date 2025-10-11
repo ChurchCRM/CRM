@@ -408,20 +408,6 @@ module.exports = function (grunt) {
                 api_token: "<%= buildConfig.POEditor.token %>",
             },
         },
-        lineending: {
-            dist: {
-                options: {
-                    eol: "lf",
-                    overwrite: true,
-                },
-                files: {
-                    "": [
-                        "src/vendor/**/*.php",
-                        "src/skin/external/**/*.php"
-                    ],
-                },
-            },
-        },
     });
 
     grunt.registerTask("hash", "gets a file hash", function (arg1) {
@@ -588,5 +574,4 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-compress");
     grunt.loadNpmTasks("grunt-curl");
     grunt.loadNpmTasks("grunt-poeditor-gd");
-    grunt.loadNpmTasks("grunt-lineending");
 };
