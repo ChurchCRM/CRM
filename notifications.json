@@ -4,7 +4,8 @@
         {
             "targetVersion": "5.20.0",
             "adminOnly": false,
-            "title": "You are running an outdated version of ChurchCRM. Please upgrade to the latest version immediately, which includes critical security fixes."
+            "title": "You are running an outdated version of ChurchCRM. Please upgrade to the latest version immediately, which includes critical security fixes.",
+            "link": "https://github.com/ChurchCRM/CRM/releases"
         },
         {
             "targetVersion": "5.18.0",
