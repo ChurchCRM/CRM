@@ -12,7 +12,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
-        if (version_compare(phpversion(), '8.1.0', '<')) {
+        if (version_compare(phpversion(), '8.2.0', '<')) {
             $renderPage = 'setup-error.php';
         }
 
