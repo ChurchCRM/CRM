@@ -2,28 +2,6 @@
     "TTL": 300,
     "messages": [
         {
-            "targetVersion": "5.20.0",
-            "adminOnly": false,
-            "title": "Security Alert: You are running an outdated version of ChurchCRM",
-            "link": "https://github.com/ChurchCRM/CRM/releases",
-            "message": "Please upgrade to the latest version immediately, which includes critical security fixes."
-        },
-        {
-            "targetVersion": "5.18.0",
-            "adminOnly": false,
-            "title": "You are running an outdated version of ChurchCRM. Please upgrade to the latest version immediately, which includes critical security fixes."
-        },
-        {
-            "targetVersion": "5.17.0",
-            "adminOnly": false,
-            "title": "You are running an outdated version of ChurchCRM. Please upgrade to the latest version immediately, which includes critical security fixes."
-        },
-        {
-            "targetVersion": "5.16.0",
-            "adminOnly": false,
-            "title": "You are running an outdated version of ChurchCRM. Please upgrade to the latest version immediately, which includes critical security fixes."
         }
-
-        
     ]
 }
