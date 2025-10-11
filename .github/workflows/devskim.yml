@@ -69,6 +69,11 @@ jobs:
           restore-keys: |
             devskim-rules-${{ runner.os }}-
 
+      - name: Setup .NET 8.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
       - name: Run DevSkim security scanner
         uses: microsoft/DevSkim-Action@v1.0.14
         id: devskim
