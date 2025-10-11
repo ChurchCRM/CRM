@@ -122,16 +122,41 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-composer-
 
-    - name: Build application
+    - name: Install Composer dependencies
       run: |
-        echo "🏗️ Building ChurchCRM application..."
+        echo "🎼 Installing Composer dependencies..."
         if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-          echo "Debug mode: Running with verbose output"
+          cd src && composer install --no-dev --optimize-autoloader --verbose
+        else
+          cd src && composer install --no-dev --optimize-autoloader
+        fi
+        echo "✅ Composer dependencies installed"
+
+    - name: Build frontend assets
+      run: |
+        echo "� Building frontend assets..."
+        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
+          npm run build:frontend -- --verbose
+        else
+          npm run build:frontend
+        fi
+        echo "✅ Frontend build completed"
+
+    - name: Generate signatures and integrity files
+      run: |
+        echo "🔐 Generating security signatures..."
+        npm run update-signatures
+        echo "✅ Security signatures generated"
+
+    - name: Create distribution package
+      run: |
+        echo "📦 Creating distribution package..."
+        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
           npm run package -- --verbose
         else
           npm run package
         fi
-        echo "✅ Build completed successfully"
+        echo "✅ Package created successfully"
 
     - name: Validate build artifacts
       run: |
@@ -165,14 +190,17 @@ jobs:
         fi
         echo "✅ Docker environment started"
 
+    - name: Wait for services to be ready
+      if: inputs.skip_docker != true
+      run: |
+        echo "⏳ Waiting for services to initialize..."
+        sleep 30
+        echo "✅ Service initialization period completed"
+
     - name: Test server connectivity
       if: inputs.skip_docker != true
       run: |
         echo "🌐 Testing server connectivity..."
-        
-        # Wait for services to be ready
-        echo "Waiting for services to start..."
-        sleep 30
         
         # Test API endpoint
         echo "Testing API endpoint..."
