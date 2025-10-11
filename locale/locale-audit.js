@@ -28,10 +28,10 @@ const path = require('path');
 
 class LocaleAuditor {
     constructor() {
-        this.configPath = 'BuildConfig.json';
-        this.localesPath = 'src/locale/locales.json';
-        this.outputPath = 'src/locale/poeditor.json';
-        this.reportPath = 'locale/poeditor-audit.md';
+        this.configPath = '../BuildConfig.json';
+        this.localesPath = '../src/locale/locales.json';
+        this.outputPath = '../src/locale/poeditor.json';
+        this.reportPath = 'poeditor-audit.md';
         this.config = null;
         this.locales = null;
     }
@@ -295,7 +295,7 @@ class LocaleAuditor {
 
         markdown += `\n## Technical Notes\n\n`;
         markdown += `- **Data Source:** POEditor API (Project ID: ${this.config.POEditor.id})\n`;
-        markdown += `- **Audit Script:** \`scripts/locale-audit.js\`\n`;
+        markdown += `- **Audit Script:** \`locale/locale-audit.js\`\n`;
         markdown += `- **Configuration:** \`src/locale/locales.json\`\n`;
         markdown += `- **Command:** \`npm run locale-audit\`\n\n`;
         markdown += `---\n`;

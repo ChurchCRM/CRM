@@ -124,7 +124,7 @@ These locales have translations available in POEditor but are not currently supp
 ## Technical Notes
 
 - **Data Source:** POEditor API (Project ID: 77079)
-- **Audit Script:** `scripts/locale-audit.js`
+- **Audit Script:** `locale/locale-audit.js`
 - **Configuration:** `src/locale/locales.json`
 - **Command:** `npm run locale-audit`
 
