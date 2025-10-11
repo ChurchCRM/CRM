@@ -134,7 +134,7 @@ jobs:
 
     - name: Build frontend assets
       run: |
-        echo "� Building frontend assets..."
+        echo "🔨 Building frontend assets..."
         if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
           npm run build:frontend -- --verbose
         else
