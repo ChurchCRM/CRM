@@ -7,18 +7,8 @@ on:
   workflow_dispatch:
     # Allow manual triggering from GitHub UI
     inputs:
-      force_update:
-        description: 'Force update even if no changes detected'
-        required: false
-        type: boolean
-        default: false
-      target_branch:
-        description: 'Target branch for the PR (defaults to current version)'
-        required: false
-        type: string
-        default: ''
       skip_audit:
-        description: 'Skip locale audit step'
+        description: 'Skip locale audit step for faster execution'
         required: false
         type: boolean
         default: false
@@ -103,21 +93,12 @@ jobs:
           git diff --name-only
         fi
 
-    - name: Determine branch name
-      id: branch
-      run: |
-        if [ -n "${{ inputs.target_branch }}" ]; then
-          echo "branch=${{ inputs.target_branch }}" >> $GITHUB_OUTPUT
-        else
-          echo "branch=locale/${{ steps.package-version.outputs.current-version}}" >> $GITHUB_OUTPUT
-        fi
-
     - name: Create Pull Request
-      if: steps.changes.outputs.has_changes == 'true' || inputs.force_update == true
+      if: steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch'
       uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: '${{ steps.branch.outputs.branch }}'
+        branch: 'locale/${{ steps.package-version.outputs.current-version}}'
         delete-branch: true
         labels: |
           localization
@@ -139,7 +120,6 @@ jobs:
           - 📅 **Date**: ${{ steps.date.outputs.date }}
           - 🏷️ **Version**: ${{ steps.package-version.outputs.current-version}}
           - 🚀 **Trigger**: ${{ github.event_name == 'workflow_dispatch' && 'Manual run' || 'Scheduled daily run' }}
-          - 🔧 **Force Update**: ${{ inputs.force_update == true && 'Yes' || 'No' }}
           
           **What's included:**
           - Updated translation files from POEditor
@@ -150,10 +130,8 @@ jobs:
           
           ---
           
-          **Manual Run Options Used:**
-          ${{ inputs.force_update == true && '- ✅ Force update enabled' || '- ❌ Force update disabled' }}
+          **Manual Run Options:**
           ${{ inputs.skip_audit == true && '- ⏩ Audit skipped' || '- 🔍 Audit included' }}
-          ${{ inputs.target_branch != '' && format('- 🎯 Custom branch: {0}', inputs.target_branch) || '- 🎯 Default branch used' }}
 
     - name: Run locale audit
       if: inputs.skip_audit != true
@@ -166,7 +144,7 @@ jobs:
       run: |
         echo "## 📊 Workflow Results"
         echo "- **Changes detected**: ${{ steps.changes.outputs.has_changes }}"
-        echo "- **PR created**: ${{ (steps.changes.outputs.has_changes == 'true' || inputs.force_update == true) && 'Yes' || 'No' }}"
-        echo "- **Branch**: ${{ steps.branch.outputs.branch }}"
+        echo "- **PR created**: ${{ (steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch') && 'Yes' || 'No' }}"
+        echo "- **Branch**: locale/${{ steps.package-version.outputs.current-version}}"
         echo "- **Audit run**: ${{ inputs.skip_audit != true && 'Yes' || 'Skipped' }}"
         echo "- **Trigger**: ${{ github.event_name }}"
