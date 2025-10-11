@@ -69,23 +69,59 @@ jobs:
           restore-keys: |
             devskim-rules-${{ runner.os }}-
 
-      - name: Setup .NET 8.0
-        uses: actions/setup-dotnet@v4
+      - name: Setup .NET 6.0
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '6.0.x'
+
+      - name: Install DevSkim CLI manually
+        run: |
+          echo "📥 Installing DevSkim CLI manually..."
+          
+          # Try different installation methods
+          if dotnet tool install --global Microsoft.CST.DevSkim.Cli --version 0.7.104; then
+            echo "✅ DevSkim CLI installed successfully via dotnet tool"
+          elif dotnet tool install --global Microsoft.CST.DevSkim.Cli; then
+            echo "✅ DevSkim CLI installed successfully (latest version)"
+          else
+            echo "❌ Failed to install DevSkim CLI via dotnet tool"
+            echo "🔄 Trying alternative installation method..."
+            
+            # Download and install manually
+            wget -q https://github.com/Microsoft/DevSkim/releases/download/v0.7.104/devskim-linux-x64.zip -O devskim.zip
+            unzip -q devskim.zip -d devskim-cli
+            chmod +x devskim-cli/devskim
+            sudo mv devskim-cli/devskim /usr/local/bin/devskim
+            echo "✅ DevSkim CLI installed manually"
+          fi
+          
+          # Verify installation
+          if command -v devskim >/dev/null 2>&1; then
+            echo "✅ DevSkim CLI is available"
+            devskim --version
+          else
+            echo "❌ DevSkim CLI installation failed"
+            exit 1
+          fi
 
       - name: Run DevSkim security scanner
-        uses: microsoft/DevSkim-Action@v1.0.14
         id: devskim
-        with:
-          # Configure severity level
-          severity-threshold: ${{ inputs.scan_severity || 'medium' }}
-          # Output format
-          output-format: 'sarif'
-          # Include additional file types
-          include-default-rules: true
-          # Custom configuration if available
-          config-file-path: '.devskim.json'
+        run: |
+          echo "🔍 Running DevSkim security analysis..."
+          
+          # Create output directory
+          mkdir -p devskim-output
+          
+          # Run DevSkim with custom configuration
+          if [ -f ".devskim.json" ]; then
+            echo "Using custom DevSkim configuration"
+            devskim analyze . --output-file devskim-results.sarif --output-text-format sarif --severity-threshold ${{ inputs.scan_severity || 'medium' }} --config-file .devskim.json
+          else
+            echo "Using default DevSkim configuration"
+            devskim analyze . --output-file devskim-results.sarif --output-text-format sarif --severity-threshold ${{ inputs.scan_severity || 'medium' }}
+          fi
+          
+          echo "✅ DevSkim analysis completed"
         continue-on-error: true
 
       - name: Check DevSkim results
