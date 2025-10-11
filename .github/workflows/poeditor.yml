@@ -2,59 +2,174 @@ name: POEditor Locale Download and Audit
 
 on:
   schedule:
+    # Run daily at midnight UTC
     - cron: "0 0 * * *"
+  workflow_dispatch:
+    # Allow manual triggering from GitHub UI
+    inputs:
+      operation_mode:
+        description: 'Operation to perform'
+        required: false
+        type: choice
+        options:
+          - 'download-and-audit'
+          - 'audit-only'
+        default: 'download-and-audit'
+      skip_audit:
+        description: 'Skip locale audit step for faster execution (ignored if audit-only mode)'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
-
-  Download:
+  download:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: ['20.x']
+    
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
       with:
         # fetch full history so things like auto-changelog work properly
         fetch-depth: 0
-    - name: Use Node.js ${{ matrix.node-version }}
+        # Use token for write access
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Display operation mode
+      run: |
+        echo "🔧 **Operation Mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
+        case "${{ inputs.operation_mode || 'download-and-audit' }}" in
+          "audit-only")
+            echo "📋 Running audit-only mode - will check locale completeness without downloading"
+            ;;
+          "download-and-audit")
+            echo "🌍 Running full mode - will download locales and run audit"
+            echo "📋 Audit will be ${{ inputs.skip_audit == true && 'skipped' || 'included' }}"
+            ;;
+        esac
+
+    - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
         registry-url: 'https://registry.npmjs.org'
 
-    - name: get-npm-version
+    - name: Get package version
       id: package-version
-      uses: martinbeentjes/npm-get-version-action@master
+      uses: martinbeentjes/npm-get-version-action@v1.3.1
 
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-    - name: install locale tools
+    - name: Cache node modules
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install dependencies
       run: |
+        npm ci
         npm install grunt-cli --save-dev
 
-    - name: Create BuildConfig File
+    - name: Validate POEditor configuration
+      run: |
+        if [ -z "${{ secrets.POEDITOR_TOKEN }}" ]; then
+          echo "❌ POEDITOR_TOKEN secret is not set"
+          exit 1
+        fi
+        echo "✅ POEditor token is configured"
+
+    - name: Create BuildConfig file
       uses: jsdaniell/create-json@v1.2.3
       with:
         name: "BuildConfig.json"
         json: '{"POEditor": { "id": "77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}'
 
+    - name: Clean existing locales
+      if: inputs.operation_mode != 'audit-only'
+      run: npm run locale-clean
+      
     - name: Download locales from POEditor
-      run: npm run locale-download
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "🌍 Downloading locales from POEditor..."
+        npm run locale-download
+        echo "✅ Locale download completed"
 
-    - name: Push changes to ${{ steps.package-version.outputs.current-version}} locale branch
+    - name: Check for changes
+      if: inputs.operation_mode != 'audit-only'
+      id: changes
+      run: |
+        if git diff --quiet; then
+          echo "No locale changes detected"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Locale changes detected"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "Changed files:"
+          git diff --name-only
+        fi
+
+    - name: Create Pull Request
+      if: inputs.operation_mode != 'audit-only' && (steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch')
       uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: 'locale/${{ steps.package-version.outputs.current-version}}'
         delete-branch: true
-        labels: Localization
+        labels: |
+          localization
+          automated
         milestone: ${{ steps.package-version.outputs.current-version}}
-        title: "${{ steps.package-version.outputs.current-version}} POEditor Update - ${{ steps.date.outputs.date }}"
-        commit-message: 'Locale Gen & Download on ${{ steps.date.outputs.date }}'
+        title: "🌍 POEditor Locale Update - ${{ steps.date.outputs.date }}"
+        commit-message: |
+          🌍 Locale update from POEditor on ${{ steps.date.outputs.date }}
+          
+          - Updated translations from POEditor
+          - Version: ${{ steps.package-version.outputs.current-version}}
+          - Triggered: ${{ github.event_name == 'workflow_dispatch' && 'Manual' || 'Scheduled' }}
+        body: |
+          ## 🌍 Automatic Locale Update
+          
+          This PR contains updated translations downloaded from POEditor.
+          
+          **Details:**
+          - 📅 **Date**: ${{ steps.date.outputs.date }}
+          - 🏷️ **Version**: ${{ steps.package-version.outputs.current-version}}
+          - 🚀 **Trigger**: ${{ github.event_name == 'workflow_dispatch' && 'Manual run' || 'Scheduled daily run' }}
+          
+          **What's included:**
+          - Updated translation files from POEditor
+          - Generated locale JSON files
+          - Locale audit results
+          
+          This PR was automatically created by the POEditor workflow.
+          
+          ---
+          
+          **Manual Run Options:**
+          ${{ inputs.operation_mode == 'audit-only' && '- 🔍 Audit-only mode (no downloads)' || inputs.skip_audit == true && '- ⏩ Audit skipped' || '- 🔍 Full download and audit' }}
 
-    - name: Audit locales from POEditor
-      run: npm run locale-audit
+    - name: Run locale audit
+      if: inputs.operation_mode == 'audit-only' || (inputs.operation_mode != 'audit-only' && inputs.skip_audit != true)
+      run: |
+        echo "🔍 Running locale audit..."
+        npm run locale-audit
+        echo "✅ Locale audit completed"
+
+    - name: Report results
+      run: |
+        echo "## 📊 Workflow Results"
+        echo "- **Operation mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
+        echo "- **Changes detected**: ${{ inputs.operation_mode == 'audit-only' && 'N/A (audit-only)' || steps.changes.outputs.has_changes }}"
+        echo "- **PR created**: ${{ inputs.operation_mode == 'audit-only' && 'No (audit-only)' || ((steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch') && 'Yes' || 'No') }}"
+        echo "- **Branch**: ${{ inputs.operation_mode == 'audit-only' && 'N/A' || format('locale/{0}', steps.package-version.outputs.current-version) }}"
+        echo "- **Audit run**: ${{ (inputs.operation_mode == 'audit-only' || (inputs.operation_mode != 'audit-only' && inputs.skip_audit != true)) && 'Yes' || 'Skipped' }}"
+        echo "- **Trigger**: ${{ github.event_name }}"
