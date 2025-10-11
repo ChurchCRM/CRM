@@ -10,7 +10,7 @@ locale/
 ├── db-strings/                  # Database string extraction (temporary)
 ├── JSONKeys/                    # Generated JSON translation files
 ├── locales/                     # i18next translation files
-├── extract-db-locale-terms.php # Database term extraction script
+├── extract-db-locale-terms.js  # Database term extraction script
 ├── i18next-parser.config.js    # i18next parser configuration
 ├── locale-add.js               # Language setup automation script
 ├── locale-audit.js             # Locale completeness audit script
@@ -65,7 +65,7 @@ ChurchCRM uses GNU Gettext for internationalization, supporting multiple output 
 
 - **PHP Files**: Extracted using `xgettext` for PHP
 - **JavaScript/React**: Extracted using `i18next-parser`
-- **Database**: Custom extraction via `extract-db-locale-terms.php`
+- **Database**: Custom extraction via `extract-db-locale-terms.js`
 
 ### Translation Functions
 
@@ -93,7 +93,7 @@ The `locale:gen` script (`update-locale.sh`) performs:
 
 2. **Database Term Extraction**
    ```bash
-   php extract-db-locale-terms.php
+   node extract-db-locale-terms.js
    ```
 
 3. **JavaScript Term Extraction**
@@ -154,6 +154,7 @@ The report is saved to `locale/poeditor-audit.md` and includes:
 - `i18next` - JavaScript internationalization
 - `i18next-conv` - Format conversion
 - `i18next-parser` - Term extraction
+- `mysql2` - Database connectivity for term extraction
 - `grunt-poeditor-gd` - POEditor integration
 
 #### System Tools

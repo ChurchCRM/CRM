@@ -28,10 +28,10 @@ const path = require('path');
 
 class LocaleAuditor {
     constructor() {
-        this.configPath = '../BuildConfig.json';
-        this.localesPath = '../src/locale/locales.json';
-        this.outputPath = '../src/locale/poeditor.json';
-        this.reportPath = 'poeditor-audit.md';
+        this.configPath = path.resolve(__dirname, '../../BuildConfig.json');
+        this.localesPath = path.resolve(__dirname, '../../src/locale/locales.json');
+        this.outputPath = path.resolve(__dirname, '../../src/locale/poeditor.json');
+        this.reportPath = path.resolve(__dirname, '../poeditor-audit.md');
         this.config = null;
         this.locales = null;
     }
