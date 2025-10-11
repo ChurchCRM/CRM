@@ -102,7 +102,6 @@
         "grunt-curl": "^2.5.1",
         "grunt-git": "^1.1.1",
         "grunt-http": "^2.3.3",
-        "grunt-lineending": "^1.0.0",
         "i18next-conv": "^15.1.0",
         "i18next-parser": "^9.3.0",
         "node-sha1": "^1.0.1",
