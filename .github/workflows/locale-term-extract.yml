@@ -40,10 +40,19 @@ jobs:
     - name: Start database early (parallel with setup)
       run: |
         echo "🚀 Starting database early with health checks..."
+        
+        # Create .env file for Docker (required for MariaDB)
+        cp docker/.env .env || echo "Using default environment"
         cp docker/Config.php src/Include/Config.php
         
-        # Start database with health check support
+        # Show what we're starting with
+        echo "📊 Starting database container..."
         docker compose -f docker/docker-compose.test-php8-apache.yaml up -d database
+        
+        # Show container status
+        echo "📋 Container status after start:"
+        docker ps -a
+        
         echo "📊 Database container starting with built-in health checks..."
 
     - name: Setup Node.js ${{ matrix.node-version }}
@@ -109,33 +118,48 @@ jobs:
       run: |
         echo "⏳ Waiting for database health check to pass..."
         
-        # Wait for container to be running
-        timeout=30
-        elapsed=0
-        while [ -z "$(docker ps -q --filter 'name=database')" ]; do
-          if [ "$elapsed" -ge "$timeout" ]; then
-            echo "❌ Database container not found after $timeout seconds"
-            docker ps -a
-            exit 1
-          fi
-          sleep 2
-          elapsed=$((elapsed + 2))
-        done
-        echo "  ✅ Database container is running"
+        # Show all containers first
+        echo "📋 All Docker containers:"
+        docker ps -a
         
-        # Use Docker's built-in health check (same as build-test-package.yml)
+        # Find the actual database container name
+        db_container=$(docker ps -q --filter "ancestor=mariadb" | head -1)
+        if [ -z "$db_container" ]; then
+          echo "❌ No MariaDB container found!"
+          echo "Looking for containers with 'database' in name:"
+          docker ps -a --filter "name=database"
+          echo "All running containers:"
+          docker ps
+          exit 1
+        fi
+        
+        echo "✅ Found database container: $db_container"
+        
+        # Wait for container to be running and healthy
         echo "  Waiting for health check to pass..."
         timeout=120
         elapsed=0
         
-        while [ "$(docker inspect --format='{{.State.Health.Status}}' $(docker ps -q --filter 'name=database'))" != "healthy" ]; do
-          health_status=$(docker inspect --format='{{.State.Health.Status}}' $(docker ps -q --filter 'name=database'))
+        while true; do
+          # Check if container is still running
+          if ! docker ps -q --no-trunc | grep -q "$db_container"; then
+            echo "❌ Database container stopped running!"
+            docker logs "$db_container" --tail=50 || true
+            exit 1
+          fi
+          
+          # Get health status
+          health_status=$(docker inspect --format='{{.State.Health.Status}}' "$db_container" 2>/dev/null || echo "no-health-check")
+          
+          if [ "$health_status" = "healthy" ]; then
+            break
+          fi
           
           if [ "$elapsed" -ge "$timeout" ]; then
             echo "❌ Database health check failed after $timeout seconds"
             echo "Current health status: $health_status"
-            echo "Database logs (last 30 lines):"
-            docker logs $(docker ps -q --filter "name=database") --tail=30 || true
+            echo "Database logs (last 50 lines):"
+            docker logs "$db_container" --tail=50 || true
             exit 1
           fi
           
@@ -151,12 +175,13 @@ jobs:
           # Show progress every 15 seconds
           if [ $((elapsed % 15)) -eq 0 ]; then
             echo "    Health status: $health_status ($elapsed/$timeout seconds)"
+            echo "    Container status: $(docker inspect --format='{{.State.Status}}' "$db_container")"
           fi
         done
         
         # Additional verification - test actual connection
         echo "  ✅ Health check passed! Testing connection..."
-        docker exec $(docker ps -q --filter "name=database") mysql -u churchcrm -pchangeme -e "SELECT 1;" > /dev/null
+        docker exec "$db_container" mysql -u churchcrm -pchangeme -e "SELECT 1;" > /dev/null
         
         echo "✅ Database fully ready for term extraction (health check passed in ${elapsed}s)"
 
