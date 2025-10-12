@@ -37,6 +37,13 @@ jobs:
         # Use token for write access
         token: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Start database early (parallel with setup)
+      run: |
+        echo "🚀 Starting database early while other setup tasks run..."
+        cp docker/Config.php src/Include/Config.php
+        docker compose -f docker/docker-compose.test-php8-apache.yaml up -d database
+        echo "📊 Database container starting in background..."
+
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -96,54 +103,57 @@ jobs:
         EOF
         echo "✅ BuildConfig.json created with Docker database configuration"
 
-    - name: Start Docker database for term extraction
+    - name: Wait for database readiness
       run: |
-        echo "🐳 Starting Docker database for term extraction..."
-        npm run docker:ci:start
+        echo "⏳ Checking database readiness (started earlier)..."
         
-        # Wait for database to be ready
-        echo "⏳ Waiting for database to be ready..."
-        timeout=120
-        interval=3
+        # Wait for database container to be running
+        timeout=30
         elapsed=0
-        
-        # First wait for container to be running
-        echo "  Waiting for database container to start..."
         while [ -z "$(docker ps -q --filter 'name=database')" ]; do
-          if [ "$elapsed" -ge 30 ]; then
-            echo "❌ Database container did not start within 30 seconds"
+          if [ "$elapsed" -ge "$timeout" ]; then
+            echo "❌ Database container not found after $timeout seconds"
             docker ps -a
             exit 1
           fi
           sleep 2
           elapsed=$((elapsed + 2))
         done
+        echo "  ✅ Database container is running"
         
-        echo "  Database container is running, checking MySQL readiness..."
+        # Wait for MySQL to be ready
+        echo "  Waiting for MySQL to accept connections..."
+        timeout=90
         elapsed=0
         
-        # Now check MySQL readiness
-        until docker exec $(docker ps -q --filter "name=database") mysqladmin ping -h"localhost" --silent 2>/dev/null; do
+        until docker exec $(docker ps -q --filter "name=database") mysqladmin ping --silent 2>/dev/null; do
           if [ "$elapsed" -ge "$timeout" ]; then
-            echo "❌ Database did not become ready within $timeout seconds"
-            echo "Docker status:"
-            docker ps -a
-            echo "Database logs:"
-            docker logs $(docker ps -q --filter "name=database") --tail=20 || true
-            echo "ChurchCRM logs:"
-            docker logs $(docker ps -q --filter "name=webserver") --tail=20 || true
+            echo "❌ MySQL not ready within $timeout seconds"
+            echo "Database logs (last 30 lines):"
+            docker logs $(docker ps -q --filter "name=database") --tail=30 || true
             exit 1
           fi
-          sleep $interval
-          elapsed=$((elapsed + interval))
-          echo "  MySQL ping check... ($elapsed/$timeout seconds)"
+          
+          # Progressive check intervals
+          if [ "$elapsed" -lt 30 ]; then
+            sleep 2
+            elapsed=$((elapsed + 2))
+          else
+            sleep 3
+            elapsed=$((elapsed + 3))
+          fi
+          
+          # Show progress every 15 seconds
+          if [ $((elapsed % 15)) -eq 0 ]; then
+            echo "    MySQL initializing... ($elapsed/$timeout seconds)"
+          fi
         done
         
-        # Additional check - try to connect to the database
+        # Quick connection test
         echo "  Testing database connection..."
-        docker exec $(docker ps -q --filter "name=database") mysql -u churchcrm -pchangeme -h localhost -e "SHOW DATABASES;" > /dev/null
+        docker exec $(docker ps -q --filter "name=database") mysql -u churchcrm -pchangeme -e "SELECT 1;" > /dev/null
         
-        echo "✅ Database is ready for term extraction"
+        echo "✅ Database ready for term extraction (total wait: ${elapsed}s)"
 
     - name: Backup original messages.po
       run: cp locale/messages.po locale/messages.po.backup
@@ -273,8 +283,8 @@ jobs:
       if: always()
       run: |
         echo "🧹 Cleaning up Docker containers and temporary files..."
-        # Stop Docker containers
-        npm run docker:ci:down || true
+        # Stop only the database container (since we didn't start webserver)
+        docker compose -f docker/docker-compose.test-php8-apache.yaml down -v || true
         
         # Clean up backup file
         rm -f locale/messages.po.backup
