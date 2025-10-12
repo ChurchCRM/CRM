@@ -1,82 +1,212 @@
-name: 'Build, Test and Package'
+name: 'Build, Test and Package'name: 'Build, Test and Package'
 
-on:
-  pull_request:
-    branches:    
-      - master
-      - develop
+
+
+on:on:
+
+  pull_request:  pull_request:
+
+    branches:        branches:    
+
+      - master      - master
+
+      - develop      - deve        echo "📦 Installing dependencies..."
+
+    paths-ignore:        npm ci
+
+      - '**/*.md'        
+
+      - 'docs/**'        # Verify grunt dependencies are installed
+
+      - 'LICENSE'        echo "🔍 Verifying grunt dependencies..."
+
+      - '.gitignore'        echo "Grunt CLI version:"
+
+  push:        npx grunt --version || echo "⚠️ Grunt CLI not found"
+
+    branches:        
+
+      - master        echo "Checking for required grunt plugins:"
+
+      - develop        npm list grunt-contrib-copy grunt-contrib-compress grunt-curl || echo "⚠️ Some grunt plugins may be missing"
+
+    paths-ignore:        
+
+      - '**/*.md'        # Create grunt wrapper to ensure npx access
+
+      - 'docs/**'        echo "🔧 Creating grunt wrapper script..."
+
+      - 'LICENSE'        mkdir -p ./node_modules/.bin
+
+      - '.gitignore'        echo '#!/bin/bash' > ./node_modules/.bin/grunt
+
+        echo 'npx grunt "$@"' >> ./node_modules/.bin/grunt
+
+jobs:        chmod +x ./node_modules/.bin/grunt
+
+  test-n-package:        
+
+    runs-on: ubuntu-latest        # Ensure BuildConfig.json exists (required by Gruntfile)
+
+    strategy:        if [ ! -f "BuildConfig.json" ]; then
+
+      matrix:          echo "⚠️ BuildConfig.json not found, copying from example..."
+
+        node-version: ['20.x']          cp BuildConfig.json.example BuildConfig.json
+
+                else
+
+    steps:          echo "✅ BuildConfig.json exists"
+
+    - uses: actions/checkout@v4        fi
+
+      with:        
+
+        # fetch full history so things like auto-changelog work properly        # Create reliable wrapper scripts for npm-run-all commands
+
+        fetch-depth: 0        echo "🔧 Creating npm-run-all wrapper scripts..."   paths-ignore:
+
+              - '**/*.md'
+
+    - name: Use Node.js ${{ matrix.node-version }}      - 'docs/**'
+
+      uses: actions/setup-node@v4      - 'LICENSE'
+
+      with:      - '.gitignore'
+
+        node-version: ${{ matrix.node-version }}  push:
+
+        cache: 'npm'    branches:
+
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token      - master
+
+        registry-url: 'https://registry.npmjs.org'      - develop
+
     paths-ignore:
-      - '**/*.md'
-      - 'docs/**'
-      - 'LICENSE'
-      - '.gitignore'
-  push:
-    branches:
-      - master
-      - develop
-    paths-ignore:
-      - '**/*.md'
-      - 'docs/**'
-      - 'LICENSE'
-      - '.gitignore'
+
+    - name: Declare some variables      - '**/*.md'
+
+      id: vars      - 'docs/**'
+
+      shell: bash      - 'LICENSE'
+
+      run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT      - '.gitignore'
+
   workflow_dispatch:
-    # Allow manual triggering for testing and releases
-    inputs:
-      skip_tests:
+
+    - name: get-npm-version    # Allow manual triggering for testing and releases
+
+      id: package-version    inputs:
+
+      uses: martinbeentjes/npm-get-version-action@v1.3.1      skip_tests:
+
         description: 'Skip Cypress tests (faster build for testing)'
-        required: false
-        type: boolean
-        default: false
+
+    - name: Get Env Ready        required: false
+
+      run: |        type: boolean
+
+        npm ci        default: false
+
       skip_docker:
-        description: 'Skip Docker integration tests'
-        required: false
-        type: boolean
-        default: false
-      debug_mode:
+
+    - name: Get Composer Cache Directory        description: 'Skip Docker integration tests'
+
+      id: composer-cache        required: false
+
+      run: |        type: boolean
+
+        cd src        default: false
+
+        echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT      debug_mode:
+
         description: 'Enable debug logging and verbose output'
-        required: false
-        type: boolean
-        default: false
-      node_version:
-        description: 'Node.js version to use'
-        required: false
-        type: choice
+
+    - name: Cache Composer dependencies        required: false
+
+      uses: actions/cache@v4        type: boolean
+
+      with:        default: false
+
+        path: ${{ steps.composer-cache.outputs.dir }}      node_version:
+
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}        description: 'Node.js version to use'
+
+        restore-keys: |        required: false
+
+          ${{ runner.os }}-composer-        type: choice
+
         options:
-          - '18.x'
-          - '20.x'
-          - '22.x'
+
+    - name: Build App          - '18.x'
+
+      run: |          - '20.x'
+
+        npm run package          - '22.x'
+
         default: '20.x'
 
-jobs:
-  build-test-package:
-    name: 'Build, Test and Package ChurchCRM'
-    runs-on: ubuntu-latest
-    
-    env:
-      NODE_ENV: production
-      CI: true
-      DEBUG_MODE: ${{ inputs.debug_mode || false }}
-      NODE_VERSION: ${{ inputs.node_version || '20.x' }}
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        # fetch full history so things like auto-changelog work properly
-        fetch-depth: 0
-        
-    - name: Setup Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        cache: 'npm'
-        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token
-        registry-url: 'https://registry.npmjs.org'
+    - name: Run Docker
 
-    - name: Get build information
-      id: build-info
-      shell: bash
-      run: |
+      run: |jobs:
+
+        npm run docker:ci:start  build-test-package:
+
+        docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a    name: 'Build, Test and Package ChurchCRM'
+
+        docker compose -f docker/docker-compose.test-php8-apache.yaml logs    runs-on: ubuntu-latest
+
+    
+
+    - name: Test Server    env:
+
+      run: |      NODE_ENV: production
+
+        # Test API endpoint      CI: true
+
+        sleep 30      DEBUG_MODE: ${{ inputs.debug_mode || false }}
+
+        curl --max-time 30 -f -s http://127.0.0.1/api/public/echo || {      NODE_VERSION: ${{ inputs.node_version || '20.x' }}
+
+          echo "API test failed. Docker status:"    
+
+          docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a    steps:
+
+          docker compose -f docker/docker-compose.test-php8-apache.yaml logs    - name: Checkout repository
+
+          exit 1      uses: actions/checkout@v4
+
+        }      with:
+
+        # fetch full history so things like auto-changelog work properly
+
+    - name: Run Cypress Tests        fetch-depth: 0
+
+      run: |        
+
+        npm run test    - name: Setup Node.js ${{ env.NODE_VERSION }}
+
+      uses: actions/setup-node@v4
+
+    - name: Stop Docker      with:
+
+      run: |        node-version: ${{ env.NODE_VERSION }}
+
+        npm run docker:ci:down        cache: 'npm'
+
+          # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token
+
+    - name: Upload zip file        registry-url: 'https://registry.npmjs.org'
+
+      uses: actions/upload-artifact@v4
+
+      with:    - name: Get build information
+
+        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}-${{ steps.vars.outputs.branch }}-files      id: build-info
+
+        path: target/ChurchCRM-*.*      shell: bash
+
+        retention-days: 90      run: |
         echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
         echo "commit_sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
         echo "build_date=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
