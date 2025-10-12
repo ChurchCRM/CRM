@@ -88,10 +88,6 @@
     },
     "devDependencies": {
         "@types/jquery": "^3.5.32",
-        "babel-cli": "^6.26.0",
-        "babel-core": "^6.26.3",
-        "babel-loader": "^9.2.1",
-        "babel-preset-react": "^6.24.1",
         "cypress": "^15.3.0",
         "grunt": "^1.6.1",
         "grunt-cli": "^1.5.0",
