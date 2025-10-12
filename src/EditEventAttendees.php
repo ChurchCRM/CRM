@@ -11,10 +11,10 @@ $sPageTitle = gettext('Church Event Editor');
 require_once 'Include/Header.php';
 
 $sAction = $_POST['Action'];
-$EventID = $_POST['EID']; // from ListEvents button=Attendees
-$EvtName = $_POST['EName'];
-$EvtDesc = $_POST['EDesc'];
-$EvtDate = $_POST['EDate'];
+$EventID = InputUtils::legacyFilterInput($_POST['EID'], 'int'); // from ListEvents button=Attendees
+$EvtName = InputUtils::legacyFilterInput($_POST['EName'], 'string');
+$EvtDesc = InputUtils::legacyFilterInput($_POST['EDesc'], 'string');
+$EvtDate = InputUtils::legacyFilterInput($_POST['EDate'], 'string');
 
 // Process the action inputs
 if ($sAction == 'Delete') {
@@ -25,7 +25,7 @@ if ($sAction == 'Delete') {
     $ShowAttendees = 1;
 }
 
-if ($EventID === null) {
+if ($EventID === null || $EventID === '' || $EventID === 0) {
     $EventID = InputUtils::legacyFilterInput($_GET['eventId'], 'int');
 }
 
@@ -42,10 +42,10 @@ if (empty($event)) {
     <h3 class='card-title'><?= gettext('Attendees for Event') . ' : ' . $event->getTitle() ?></h3>
   </div>
   <div class='card-body'>
-    <strong><?= gettext('Name')?>:</strong> <?= $EvtName ?><br/>
-    <strong><?= gettext('Date')?>:</strong> <?= $EvtDate ?><br/>
+    <strong><?= gettext('Name')?>:</strong> <?= htmlspecialchars($EvtName, ENT_QUOTES, 'UTF-8') ?><br/>
+    <strong><?= gettext('Date')?>:</strong> <?= htmlspecialchars($EvtDate, ENT_QUOTES, 'UTF-8') ?><br/>
     <strong><?= gettext('Description')?>:</strong><br/>
-    <?= $EvtDesc ?>
+    <?= htmlspecialchars($EvtDesc, ENT_QUOTES, 'UTF-8') ?>
     <p/>
     <form method="post" action="EditEventAttendees.php" name="AttendeeEditor">
       <input type="hidden" name="EID" value="<?= $EventID  ?>">
@@ -84,9 +84,9 @@ if ($numAttRows != 0) {
           <input type="hidden" name="DelPerID" value="<?= $per_ID ?>">
           <input type="hidden" name="DelPerEventID" value="<?= $EventID ?>">
           <input type="hidden" name="EID" value="<?= $EventID ?>">
-          <input type="hidden" name="EName" value="<?= $EvtName ?>">
-          <input type="hidden" name="EDesc" value="<?= $EvtDesc ?>">
-          <input type="hidden" name="EDate" value="<?= $EvtDate ?>">
+          <input type="hidden" name="EName" value="<?= htmlspecialchars($EvtName, ENT_QUOTES, 'UTF-8') ?>">
+          <input type="hidden" name="EDesc" value="<?= htmlspecialchars($EvtDesc, ENT_QUOTES, 'UTF-8') ?>">
+          <input type="hidden" name="EDate" value="<?= htmlspecialchars($EvtDate, ENT_QUOTES, 'UTF-8') ?>">
           <input type="submit" name="Action" value="<?= gettext('Delete') ?>" class="btn btn-danger" onClick="return confirm("<?= gettext('Are you sure you want to DELETE this person from Event ID: ') . $EventID ?>")">
       </form>
      </td>
