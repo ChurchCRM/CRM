@@ -104,16 +104,12 @@ jobs:
         mkdir -p ./node_modules/.bin
         
         # Create run-p wrapper that uses npx npm-run-all
-        cat > ./node_modules/.bin/run-p << 'EOF'
-#!/bin/bash
-npx npm-run-all --parallel "$@"
-EOF
+        echo '#!/bin/bash' > ./node_modules/.bin/run-p
+        echo 'npx npm-run-all --parallel "$@"' >> ./node_modules/.bin/run-p
         
         # Create run-s wrapper that uses npx npm-run-all  
-        cat > ./node_modules/.bin/run-s << 'EOF'
-#!/bin/bash
-npx npm-run-all --sequential "$@"
-EOF
+        echo '#!/bin/bash' > ./node_modules/.bin/run-s
+        echo 'npx npm-run-all --sequential "$@"' >> ./node_modules/.bin/run-s
         
         # Make scripts executable
         chmod +x ./node_modules/.bin/run-p ./node_modules/.bin/run-s
