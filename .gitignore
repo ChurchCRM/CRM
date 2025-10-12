@@ -8,6 +8,9 @@ node_modules
 BuildConfig.json
 security-checker.phar
 
+# Project temporary files
+temp/
+
 # Uploaded Images
 src/Images/Family
 src/Images/Person

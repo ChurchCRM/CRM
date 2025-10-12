@@ -17,15 +17,23 @@
  */
 
 const fs = require('fs');
-const path = require('path');
 const mysql = require('mysql2/promise');
 const os = require('os');
+const path = require('path');
+
+// Handle command line options
+if (process.argv.includes('--temp-dir')) {
+    const projectRoot = path.resolve(__dirname, '../..');
+    console.log(path.join(projectRoot, 'temp', 'churchcrm-locale-db-strings'));
+    process.exit(0);
+}
 
 class DatabaseTermExtractor {
     constructor() {
         this.configPath = path.resolve(__dirname, '../../BuildConfig.json');
-        // Use a temporary directory that gets cleaned up
-        this.stringsDir = path.join(os.tmpdir(), 'churchcrm-locale-db-strings');
+        // Use project temp directory instead of OS temp
+        const projectRoot = path.resolve(__dirname, '../..');
+        this.stringsDir = path.join(projectRoot, 'temp', 'churchcrm-locale-db-strings');
         this.stringFiles = [];
         this.connection = null;
     }
@@ -78,86 +86,158 @@ class DatabaseTermExtractor {
     }
 
     /**
-     * Extract terms from database tables
+     * Main execution method - generates PO file directly
      */
-    async extractDatabaseTerms() {
-        const query = `
-            SELECT DISTINCT ucfg_tooltip AS term, "" AS translation, "userconfig_ucfg" AS cntx FROM userconfig_ucfg
-            UNION ALL
-            SELECT DISTINCT qry_Name AS term, "" AS translation, "query_qry" AS cntx FROM query_qry
-            UNION ALL
-            SELECT DISTINCT qry_Description AS term, "" AS translation, "query_qry" AS cntx FROM query_qry
-            UNION ALL
-            SELECT DISTINCT qpo_Display AS term, "" AS translation, "queryparameteroptions_qpo" AS cntx FROM queryparameteroptions_qpo
-            UNION ALL
-            SELECT DISTINCT qrp_Name AS term, "" AS translation, "queryparameters_qrp" AS cntx FROM queryparameters_qrp
-            UNION ALL
-            SELECT DISTINCT qrp_Description AS term, "" AS translation, "queryparameters_qrp" AS cntx FROM queryparameters_qrp
-        `;
-
-        const [rows] = await this.connection.execute(query);
-        console.log('DB read complete');
-
-        // Process each term
-        for (const row of rows) {
-            const stringFile = path.join(this.stringsDir, `${row.cntx}.php`);
+    async run() {
+        try {
+            const dbConfig = this.loadConfig();
+            await this.connectDatabase(dbConfig);
             
-            // Create file with PHP opening tag if it doesn't exist
-            if (!fs.existsSync(stringFile)) {
-                fs.writeFileSync(stringFile, "<?php\r\n");
-                this.stringFiles.push(stringFile);
+            // Generate PO file directly instead of creating PHP files
+            const poFile = await this.generateDatabasePoFile();
+            console.log(`\n${poFile} created with database terms`);
+            
+            await this.connection.end();
+            
+            console.log('\n=====================================================');
+            console.log('==========   Building locale from DB end   ==========');
+            console.log('=====================================================\n');
+            
+        } catch (error) {
+            console.error('Error:', error.message);
+            if (this.connection) {
+                await this.connection.end();
             }
-
-            // Escape the term for PHP and add gettext call
-            const dbTerm = this.addslashes(row.term);
-            fs.appendFileSync(stringFile, `gettext('${dbTerm}');\r\n`);
-        }
-
-        // Add PHP closing tags to all created files
-        for (const stringFile of this.stringFiles) {
-            fs.appendFileSync(stringFile, "\r\n?>\r\n");
+            process.exit(1);
         }
     }
-
+    
     /**
-     * Generate countries translation file
+     * Generate a .po file directly with all database terms
      */
-    async generateCountriesFile() {
-        // Load countries data from the JSON equivalent
-        // Since we can't require PHP classes, we'll need to get this data differently
-        const countriesFile = path.join(this.stringsDir, 'settings-countries.php');
-        fs.writeFileSync(countriesFile, "<?php\r\n");
-
-        // We'll need to get countries data from a different source
-        // For now, let's load it from a potential JSON file or hardcode common countries
-        const countries = await this.getCountriesData();
+    async generateDatabasePoFile() {
+        this.ensureStringsDirectory();
         
+        const poFile = path.join(this.stringsDir, 'database-terms.po');
+        const entries = [];
+        
+        // Extract database terms
+        console.log('Extracting database terms...');
+        const [rows] = await this.connection.execute(this.getDatabaseQuery());
+        console.log('DB read complete');
+        
+        for (const row of rows) {
+            if (row.term && row.term.trim() !== '') {
+                entries.push({
+                    msgid: this.escapePo(row.term.trim()),
+                    context: row.cntx || 'database'
+                });
+            }
+        }
+        
+        // Add countries
+        console.log('Adding countries...');
+        const countries = await this.getCountriesData();
         for (const country of countries) {
-            const countryTerm = this.addslashes(country);
-            fs.appendFileSync(countriesFile, `gettext('${countryTerm}');\r\n`);
+            entries.push({
+                msgid: this.escapePo(country),
+                context: 'countries'
+            });
         }
-
-        fs.appendFileSync(countriesFile, "\r\n?>\r\n");
-        console.log(`${countriesFile} updated`);
+        
+        // Add locales
+        console.log('Adding locales...');
+        const locales = await this.getLocalesData();
+        for (const locale of locales) {
+            entries.push({
+                msgid: this.escapePo(locale),
+                context: 'locales'
+            });
+        }
+        
+        // Write PO file
+        this.writePoFile(poFile, entries);
+        
+        return poFile;
     }
-
+    
     /**
-     * Generate locales translation file
+     * Write entries to a PO file
      */
-    async generateLocalesFile() {
-        const stringFile = path.join(this.stringsDir, 'settings-locales.php');
-        fs.writeFileSync(stringFile, "<?php\r\n");
+    writePoFile(filePath, entries) {
+        // Write PO file header
+        const header = `# Database terms extracted from ChurchCRM
+# Generated automatically - do not edit
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Language: \\n"
+"Generated-By: ChurchCRM locale-extract-db.js\\n"
 
-        const localesPath = path.resolve(__dirname, '../../src/locale/locales.json');
-        const localesData = fs.readFileSync(localesPath, 'utf8');
-        const locales = JSON.parse(localesData);
-
-        for (const key in locales) {
-            fs.appendFileSync(stringFile, `gettext('${key}');\r\n`);
+`;
+        
+        fs.writeFileSync(filePath, header);
+        
+        // Write entries
+        for (const entry of entries) {
+            const poEntry = `#. Context: ${entry.context}\nmsgid "${entry.msgid}"\nmsgstr ""\n\n`;
+            fs.appendFileSync(filePath, poEntry);
         }
-
-        fs.appendFileSync(stringFile, "\r\n?>\r\n");
-        console.log(`${stringFile} updated`);
+        
+        console.log(`${filePath} updated with ${entries.length} terms`);
+    }
+    
+    /**
+     * Get locales data from locales.json
+     */
+    async getLocalesData() {
+        try {
+            const localesPath = path.resolve(__dirname, '../../src/locale/locales.json');
+            const localesData = fs.readFileSync(localesPath, 'utf8');
+            const locales = JSON.parse(localesData);
+            return Object.keys(locales);
+        } catch (error) {
+            console.error('Failed to load locales:', error.message);
+            return [];
+        }
+    }
+    
+    /**
+     * Escape strings for PO file format
+     */
+    escapePo(str) {
+        if (!str) return '';
+        return str.replace(/\\/g, '\\\\')
+                  .replace(/"/g, '\\"')
+                  .replace(/\n/g, '\\n')
+                  .replace(/\r/g, '\\r')
+                  .replace(/\t/g, '\\t');
+    }
+    
+    /**
+     * Get the database query for extracting terms
+     */
+    getDatabaseQuery() {
+        return `
+            SELECT DISTINCT ucfg_tooltip AS term, "userconfig_ucfg" AS cntx FROM userconfig_ucfg
+            WHERE ucfg_tooltip IS NOT NULL AND ucfg_tooltip != ""
+            UNION ALL
+            SELECT DISTINCT qry_Name AS term, "query_qry" AS cntx FROM query_qry
+            WHERE qry_Name IS NOT NULL AND qry_Name != ""
+            UNION ALL
+            SELECT DISTINCT qry_Description AS term, "query_qry" AS cntx FROM query_qry
+            WHERE qry_Description IS NOT NULL AND qry_Description != ""
+            UNION ALL
+            SELECT DISTINCT qpo_Display AS term, "queryparameteroptions_qpo" AS cntx FROM queryparameteroptions_qpo
+            WHERE qpo_Display IS NOT NULL AND qpo_Display != ""
+            UNION ALL
+            SELECT DISTINCT qrp_Name AS term, "queryparameters_qrp" AS cntx FROM queryparameters_qrp
+            WHERE qrp_Name IS NOT NULL AND qrp_Name != ""
+            UNION ALL
+            SELECT DISTINCT qrp_Description AS term, "queryparameters_qrp" AS cntx FROM queryparameters_qrp
+            WHERE qrp_Description IS NOT NULL AND qrp_Description != ""
+        `;
     }
 
     /**
@@ -165,7 +245,7 @@ class DatabaseTermExtractor {
      * This ensures we always use the same data as the main application
      */
     async getCountriesData() {
-        const countriesFile = path.resolve(__dirname, 'countries.json');
+        const countriesFile = path.join(this.stringsDir, 'countries.json');
         
         // If countries.json doesn't exist, generate it from the PHP source
         if (!fs.existsSync(countriesFile)) {
@@ -237,38 +317,6 @@ class DatabaseTermExtractor {
                   .replace(/'/g, "\\'")
                   .replace(/"/g, '\\"')
                   .replace(/\0/g, '\\0');
-    }
-
-    /**
-     * Main extraction process
-     */
-    async run() {
-        try {
-            // Load configuration
-            const dbConfig = this.loadConfig();
-
-            // Setup
-            this.ensureStringsDirectory();
-            await this.connectDatabase(dbConfig);
-
-            // Extract terms
-            await this.extractDatabaseTerms();
-            await this.generateCountriesFile();
-            await this.generateLocalesFile();
-
-            // Cleanup
-            if (this.connection) {
-                await this.connection.end();
-            }
-
-            console.log('\n=====================================================');
-            console.log('==========   Building locale from DB end   ==========');
-            console.log('=====================================================\n');
-
-        } catch (error) {
-            console.error('Error:', error.message);
-            process.exit(1);
-        }
     }
 }
 

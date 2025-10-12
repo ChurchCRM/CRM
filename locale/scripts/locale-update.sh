@@ -8,23 +8,27 @@ echo "🚀 Starting locale extraction from $PROJECT_ROOT"
 
 cd "$PROJECT_ROOT"
 
-# Extract PHP Terms
-echo "📄 Extracting PHP terms..."
-cd src
-find . -iname '*.php' | sort | grep -v ./vendor | xargs xgettext --no-location --no-wrap --from-code=UTF-8 -o ../locale/messages.po -L PHP
-
-cd "$PROJECT_ROOT/locale"
-
-# Extract DB Terms
+# Extract DB Terms first to create initial messages.po
 echo "🗄️  Extracting database terms..."
-node scripts/locale-extract-db.js
+node locale/scripts/locale-extract-db.js
 
 # Get the temporary directory path from the Node.js script
-DB_STRINGS_DIR=$(node scripts/locale-extract-db.js --temp-dir)
+DB_STRINGS_DIR=$(node locale/scripts/locale-extract-db.js --temp-dir)
 echo "Using temporary directory: $DB_STRINGS_DIR"
 
-cd "$DB_STRINGS_DIR"
-find . -iname "*.php" | sort | xargs xgettext --no-location --no-wrap --join-existing --from-code=UTF-8 -o "$PROJECT_ROOT/locale/messages.po"
+# Start with database terms as the base
+if [ -f "$DB_STRINGS_DIR/database-terms.po" ]; then
+    echo "� Starting with database terms..."
+    cp "$DB_STRINGS_DIR/database-terms.po" locale/messages.po
+else
+    echo "⚠️  No database terms file found, creating empty messages.po"
+    echo "# ChurchCRM locale file" > locale/messages.po
+fi
+
+# Extract PHP Terms and merge
+echo "📄 Extracting and merging PHP terms..."
+cd src
+find . -iname '*.php' | sort | grep -v ./vendor | xargs xgettext --no-location --no-wrap --join-existing --from-code=UTF-8 -o ../locale/messages.po -L PHP
 
 cd "$PROJECT_ROOT"
 
