@@ -1,4 +1,4 @@
-name: 'DevSkim Security Analysis'
+name: 'Security Analysis vua DevSkim'
 
 on:
   push:
