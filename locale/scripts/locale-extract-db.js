@@ -113,46 +113,34 @@ class DatabaseTermExtractor {
     }
     
     /**
-     * Generate a .po file directly with all database terms
+     * Generate a .po file directly with database terms only
      */
     async generateDatabasePoFile() {
         this.ensureStringsDirectory();
         
         const poFile = path.join(this.stringsDir, 'database-terms.po');
         const entries = [];
+        const seenTerms = new Map(); // Track terms to avoid duplicates
         
-        // Extract database terms
+        // Extract database terms only
         console.log('Extracting database terms...');
         const [rows] = await this.connection.execute(this.getDatabaseQuery());
         console.log('DB read complete');
         
         for (const row of rows) {
             if (row.term && row.term.trim() !== '') {
-                entries.push({
-                    msgid: this.escapePo(row.term.trim()),
-                    context: row.cntx || 'database'
-                });
+                const term = row.term.trim();
+                const context = row.cntx || 'database';
+                
+                // Use the first occurrence of each term (like msgcat --use-first)
+                if (!seenTerms.has(term)) {
+                    seenTerms.set(term, context);
+                    entries.push({
+                        msgid: this.escapePo(term),
+                        context: context
+                    });
+                }
             }
-        }
-        
-        // Add countries
-        console.log('Adding countries...');
-        const countries = await this.getCountriesData();
-        for (const country of countries) {
-            entries.push({
-                msgid: this.escapePo(country),
-                context: 'countries'
-            });
-        }
-        
-        // Add locales
-        console.log('Adding locales...');
-        const locales = await this.getLocalesData();
-        for (const locale of locales) {
-            entries.push({
-                msgid: this.escapePo(locale),
-                context: 'locales'
-            });
         }
         
         // Write PO file
@@ -239,98 +227,14 @@ msgstr ""
             WHERE qrp_Description IS NOT NULL AND qrp_Description != ""
         `;
     }
-
-    /**
-     * Get countries data from the authoritative Countries.php source
-     * This ensures we always use the same data as the main application
-     */
-    async getCountriesData() {
-        const countriesFile = path.join(this.stringsDir, 'countries.json');
-        
-        // If countries.json doesn't exist, generate it from the PHP source
-        if (!fs.existsSync(countriesFile)) {
-            console.log('Generating countries.json from PHP Countries class...');
-            try {
-                const { execSync } = require('child_process');
-                const phpCommand = `php -r "
-                    require 'src/ChurchCRM/data/Countries.php';
-                    require 'src/ChurchCRM/data/Country.php';
-                    \\$countries = ChurchCRM\\data\\Countries::getNames();
-                    echo json_encode(array_values(\\$countries), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-                "`;
-                
-                const output = execSync(phpCommand, { 
-                    cwd: path.resolve(__dirname, '../..'),
-                    encoding: 'utf8' 
-                });
-                
-                fs.writeFileSync(countriesFile, output);
-                console.log('Generated countries.json from authoritative PHP source');
-            } catch (error) {
-                console.error('Failed to generate countries.json from PHP:', error.message);
-                console.log('Falling back to static list...');
-                return this.getFallbackCountries();
-            }
-        }
-        
-        try {
-            const countriesData = fs.readFileSync(countriesFile, 'utf8');
-            return JSON.parse(countriesData);
-        } catch (error) {
-            console.error('Failed to read countries.json:', error.message);
-            return this.getFallbackCountries();
-        }
-    }
-    
-    /**
-     * Fallback country list in case PHP extraction fails
-     */
-    getFallbackCountries() {
-        return [
-            'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Australia',
-            'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium',
-            'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei',
-            'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Chad',
-            'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus',
-            'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt',
-            'El Salvador', 'Estonia', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia',
-            'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guyana', 'Haiti', 'Honduras',
-            'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy',
-            'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kuwait', 'Latvia', 'Lebanon', 'Libya',
-            'Lithuania', 'Luxembourg', 'Madagascar', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Mexico',
-            'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Myanmar', 'Nepal', 'Netherlands',
-            'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Norway', 'Oman', 'Pakistan', 'Panama',
-            'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania', 'Russia',
-            'Saudi Arabia', 'Senegal', 'Serbia', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa',
-            'South Korea', 'Spain', 'Sri Lanka', 'Sudan', 'Sweden', 'Switzerland', 'Syria', 'Taiwan',
-            'Tanzania', 'Thailand', 'Tunisia', 'Turkey', 'Uganda', 'Ukraine', 'United Arab Emirates',
-            'United Kingdom', 'United States', 'Uruguay', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
-        ];
-    }
-
-    /**
-     * PHP addslashes equivalent
-     */
-    addslashes(str) {
-        if (!str) return '';
-        return str.replace(/\\/g, '\\\\')
-                  .replace(/'/g, "\\'")
-                  .replace(/"/g, '\\"')
-                  .replace(/\0/g, '\\0');
-    }
 }
 
 // Run the extractor if this file is executed directly
 if (require.main === module) {
-    // Check for command line arguments
-    if (process.argv.includes('--temp-dir')) {
-        const extractor = new DatabaseTermExtractor();
-        console.log(extractor.stringsDir);
-        process.exit(0);
-    }
-    
     const extractor = new DatabaseTermExtractor();
     extractor.run();
 }
+
+module.exports = DatabaseTermExtractor;
 
 module.exports = DatabaseTermExtractor;
