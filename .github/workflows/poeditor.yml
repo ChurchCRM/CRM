@@ -97,13 +97,13 @@ jobs:
 
     - name: Clean existing locales
       if: inputs.operation_mode != 'audit-only'
-      run: npm run locale-clean
+      run: npm run locale:clean
       
     - name: Download locales from POEditor
       if: inputs.operation_mode != 'audit-only'
       run: |
         echo "🌍 Downloading locales from POEditor..."
-        npm run locale-download
+        npm run locale:download
         echo "✅ Locale download completed"
 
     - name: Check for changes
@@ -164,7 +164,7 @@ jobs:
       if: inputs.operation_mode == 'audit-only' || (inputs.operation_mode != 'audit-only' && inputs.skip_audit != true)
       run: |
         echo "🔍 Running locale audit..."
-        npm run locale-audit
+        npm run locale:audit
         echo "✅ Locale audit completed"
 
     - name: Report results

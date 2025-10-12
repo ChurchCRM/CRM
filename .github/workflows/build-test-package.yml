@@ -63,7 +63,7 @@ jobs:
 
     - name: Run Docker
       run: |
-        npm run ci-docker-test-start
+        npm run docker:ci:start
         docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
         docker compose -f docker/docker-compose.test-php8-apache.yaml logs
 
@@ -79,7 +79,7 @@ jobs:
 
     - name: Stop Docker
       run: |
-        npm run ci-docker-test-down
+        npm run docker:ci:down
   
     - name: Upload zip file
       uses: actions/upload-artifact@v4

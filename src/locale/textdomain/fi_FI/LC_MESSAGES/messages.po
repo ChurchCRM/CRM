@@ -32,10 +32,12 @@ msgstr "Ei määritetty"
 msgid "None"
 msgstr "Ei mitään"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "Kaupunki"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "Lääni"
@@ -48,6 +50,7 @@ msgstr "Maa"
 msgid "Phone"
 msgstr "Puhelin"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "Sähköposti"
@@ -158,6 +161,7 @@ msgstr "Syntymäpäivä"
 msgid "Age / Years Married"
 msgstr "Vuosia avioliitossa"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Family Role"
 msgstr "Rooli perheessä"
@@ -202,10 +206,12 @@ msgstr "Käytä Ctrl näppäintä valitaksesi useamman"
 msgid "Don't Filter"
 msgstr "Älä suodata"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "Mies"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "Nainen"
@@ -274,6 +280,7 @@ msgstr "Otsikko"
 msgid "Suffix"
 msgstr "Jälkiliite"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "Sukupuoli"
@@ -282,6 +289,7 @@ msgstr "Sukupuoli"
 msgid "Donation Envelope"
 msgstr "Lahjoituskuori"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "Puhelin kotiin"
@@ -334,6 +342,7 @@ msgstr "HUOMAA: Erottimet (viivat jne.) tai niiden puutteella ei ole merkitystä
 msgid "Default country if none specified otherwise"
 msgstr "Oletusmaa, jos muuta ei ole määritetty"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "Luokitus"
@@ -386,6 +395,7 @@ msgstr "Ei perheen nimeä annettu!"
 msgid "Add Cart to Family"
 msgstr "Lisää kori perheelle"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nimi"
@@ -574,6 +584,7 @@ msgstr "Toiminta"
 msgid "No Attendees Assigned to Event"
 msgstr "Tapahtumaan ei ole määrätty osallistujia"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Member"
 msgstr "Jäsen"

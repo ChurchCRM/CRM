@@ -32,10 +32,12 @@ msgstr "Nie przypisany"
 msgid "None"
 msgstr "Żaden"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "Miasto"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "Województwo"
@@ -48,6 +50,7 @@ msgstr "Kraj"
 msgid "Phone"
 msgstr "Tel."
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "Email"
@@ -169,6 +172,7 @@ msgstr "Data urodzenia / Data ślubu"
 msgid "Age / Years Married"
 msgstr "Wiek / Lat małżeństwa"
 
+#. Context: queryparameters_qrp
 #: 
 #, fuzzy
 msgid "Family Role"
@@ -216,10 +220,12 @@ msgstr "Użyj klawisza Ctrl aby zaznaczyć kilka"
 msgid "Don't Filter"
 msgstr "Nie filtruj"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "Mężczyzna"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "Kobieta"
@@ -291,6 +297,7 @@ msgstr "Tytuł"
 msgid "Suffix"
 msgstr "Suffix"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "Płeć"
@@ -299,6 +306,7 @@ msgstr "Płeć"
 msgid "Donation Envelope"
 msgstr "Numer Koperty"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "Tel. Domowy"
@@ -351,6 +359,7 @@ msgstr "Podpowiedź: spacje, myślniki, etc. albo ich brak nie ma znaczenia"
 msgid "Default country if none specified otherwise"
 msgstr "Domyślny kraj jeżeli nie wybrano innego"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "Kategoria"
@@ -404,6 +413,7 @@ msgstr "Nie podano nazwy Rodziny!"
 msgid "Add Cart to Family"
 msgstr "Dodaj Koszyk do Rodziny"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nazwa"
@@ -592,6 +602,7 @@ msgstr "Akcja"
 msgid "No Attendees Assigned to Event"
 msgstr "Nie przypisano żadnych uczestników dla tego Wydarzenia"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Member"
 msgstr "Członek"
@@ -883,6 +894,7 @@ msgstr "Rodzina"
 msgid "Type"
 msgstr "Typ"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Fiscal Year"
 msgstr "Rok Podatkowy"
@@ -899,6 +911,7 @@ msgstr "Cel"
 msgid "Bank"
 msgstr "Bank"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Month"
 msgstr "Miesiąc"
@@ -2655,6 +2668,7 @@ msgstr "Lista Właściwości"
 msgid "Add a New"
 msgstr "Dodaj Nową"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Ustawienia"
@@ -2700,6 +2714,7 @@ msgstr "Lista Typów Właściwości"
 msgid "Add a New Property Type"
 msgstr "Dodaj Nowy Typ Właściwości"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Class"
 msgstr "Klasa"
@@ -3762,22 +3777,27 @@ msgstr "Typy wydarzeń"
 msgid "People Properties"
 msgstr "Osoby - właściwości"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Regular Attender"
 msgstr "Sympatycy"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Member, Regular Attender, etc."
 msgstr "Członkowie, sympatycy itp."
 
+#. Context: query_qry
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Osoby urodzone w danym miesiącu"
 
+#. Context: query_qry
 #: 
 msgid "People who are members"
 msgstr "Osoby będące członkami"
 
+#. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
 msgstr "Zezwól użytkownikom na tworzenie wydarzeń"
@@ -4183,6 +4203,7 @@ msgstr "Uwzględnij kontakt i wiek w powiadomieniu email dla nowego użytkownika
 msgid "Include family custom properties in global search."
 msgstr "Uwzględnij dodatkowe własności rodziny w wyszukiwaniu."
 
+#. Context: countries
 #: 
 msgid "Latvia (Latvija)"
 msgstr "Łotwa"
@@ -4268,6 +4289,7 @@ msgstr "Wykryto Nieobsługiwany Typ Wpłaty"
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Wsparcie dla eGive, kart płatniczych i wpłat bankowych zostało zakończone. Stare raporty mogą przestać działać w kolejnych wersjach."
 
+#. Context: locales
 #: 
 msgid "Estonian"
 msgstr "Estoński"
@@ -4499,6 +4521,7 @@ msgstr "Wyczyść Filtr"
 msgid "Add Person"
 msgstr "Dodaj Osobę"
 
+#. Context: locales
 #: 
 msgid "Portuguese - Portugal"
 msgstr "Portugalski"
@@ -4714,6 +4737,7 @@ msgstr "Osoby nie na liście"
 msgid "Audience not in the CRM"
 msgstr "Uczestnicy z poza CRM"
 
+#. Context: locales
 #: 
 msgid "Hebrew"
 msgstr "Hebrajski"
