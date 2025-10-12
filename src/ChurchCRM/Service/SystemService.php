@@ -15,9 +15,6 @@ require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop
 
 class SystemService
 {
-
-
-
     public static function getCopyrightDate(): string
     {
         return (new \DateTime())->format('Y');
