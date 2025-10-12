@@ -110,8 +110,33 @@ jobs:
         retention-days: 90
         if-no-files-found: error
 
-    - name: Create Release (on master branch)
+    - name: Check for source code changes
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+      id: src-changes
+      run: |
+        echo "Checking for changes in /src directory..."
+        
+        # Get the list of changed files in this push
+        changed_files=$(git diff --name-only ${{ github.event.before }}..${{ github.sha }})
+        echo "Changed files:"
+        echo "$changed_files"
+        
+        # Check if any files in src/ directory were changed
+        src_changes=$(echo "$changed_files" | grep '^src/' | wc -l)
+        
+        if [ "$src_changes" -gt 0 ]; then
+          echo "✅ Found $src_changes changes in /src directory"
+          echo "create_release=true" >> $GITHUB_OUTPUT
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$changed_files" | grep '^src/' >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        else
+          echo "ℹ️ No changes found in /src directory - skipping release"
+          echo "create_release=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create Draft Release (on master with src changes)
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push' && steps.src-changes.outputs.create_release == 'true'
       uses: softprops/action-gh-release@v2
       with:
         tag_name: v${{ steps.package-version.outputs.current-version }}
@@ -127,13 +152,30 @@ jobs:
           2. Extract to your web server
           3. Follow the [installation guide](https://github.com/ChurchCRM/CRM/wiki/Installation)
           
-          ### 📝 Changes
-          See the [CHANGELOG.md](https://github.com/ChurchCRM/CRM/blob/master/CHANGELOG.md) for detailed changes in this release.
+          ### 📝 Changes in /src Directory
+          <!-- TODO: Add detailed release notes here before publishing -->
+          
+          **Files changed in this release:**
+          ```
+          ${{ steps.src-changes.outputs.changed_files }}
+          ```
+          
+          **Commit:** ${{ github.sha }}
+          
+          For detailed changes, see the [CHANGELOG.md](https://github.com/ChurchCRM/CRM/blob/master/CHANGELOG.md) or [compare with previous release](https://github.com/ChurchCRM/CRM/compare/v${{ steps.package-version.outputs.current-version }}).
+          
+          ### ✅ Testing
+          - ✅ All automated tests passed
+          - ✅ Build completed successfully
+          - ✅ Docker integration tests passed
+          - ✅ Cypress end-to-end tests passed
           
           ---
           *Built automatically from commit ${{ github.sha }}*
+          
+          **Note:** This is a draft release. Review the changes above and publish when ready.
         files: target/ChurchCRM-*.zip
-        draft: false
+        draft: true
         prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -160,7 +202,13 @@ jobs:
         fi
         
         if [ "${{ github.ref }}" = "refs/heads/master" ] && [ "${{ github.event_name }}" = "push" ]; then
-          echo "**🚀 Release Created:** [v${{ steps.package-version.outputs.current-version }}](https://github.com/ChurchCRM/CRM/releases/tag/v${{ steps.package-version.outputs.current-version }})" >> $GITHUB_STEP_SUMMARY
+          echo "**� Draft Release Created:** [v${{ steps.package-version.outputs.current-version }}](https://github.com/ChurchCRM/CRM/releases/tag/v${{ steps.package-version.outputs.current-version }})" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**📋 Next Steps:**" >> $GITHUB_STEP_SUMMARY
+          echo "1. Go to [Releases](https://github.com/ChurchCRM/CRM/releases)" >> $GITHUB_STEP_SUMMARY
+          echo "2. Edit the draft release notes" >> $GITHUB_STEP_SUMMARY
+          echo "3. Add changelog entries" >> $GITHUB_STEP_SUMMARY
+          echo "4. Publish the release when ready" >> $GITHUB_STEP_SUMMARY
         else
           echo "**📥 Download Artifact:** ChurchCRM-${{ steps.package-version.outputs.current-version }}-${{ steps.vars.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
         fi
