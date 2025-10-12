@@ -148,6 +148,7 @@ jobs:
         npm run update-signatures
         echo "✅ Security signatures generated"
 
+
     - name: Create distribution package
       run: |
         echo "📦 Creating distribution package..."
