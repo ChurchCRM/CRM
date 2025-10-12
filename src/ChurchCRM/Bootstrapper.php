@@ -38,6 +38,10 @@ class Bootstrapper
     public static function init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, array $URL): void
     {
         global $debugBootstrapper;
+        
+        // Set default timezone before any logging to ensure consistent log file naming
+        date_default_timezone_set('UTC');
+        
         self::$databaseServerName = $sSERVERNAME;
         self::$databaseUser = $sUSER;
         self::$databasePassword = $sPASSWORD;
