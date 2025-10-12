@@ -25,4 +25,8 @@ if (SystemConfig::getBooleanValue('bHSTSEnable')) {
     header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
 }
 header('X-Frame-Options: SAMEORIGIN');
-header('Content-Security-Policy-Report-Only:' . join(';', $csp));
+if (SystemConfig::getBooleanValue('bEnforceCSP')) {
+    header('Content-Security-Policy:' . join(';', $csp));
+} else {
+    header('Content-Security-Policy-Report-Only:' . join(';', $csp));
+}
