@@ -68,11 +68,13 @@ class AppIntegrityService
 
     public static function getIntegrityCheckMessage(): string
     {
-        if (AppIntegrityService::getIntegrityCheckStatus() === 'Passed') {
-            AppIntegrityService::$IntegrityCheckDetails->message = gettext('The previous integrity check passed. All system file hashes match the expected values.');
+        $integrityData = AppIntegrityService::getIntegrityCheckData();
+        
+        if (AppIntegrityService::getIntegrityCheckStatus() === gettext('Passed')) {
+            $integrityData->message = gettext('The previous integrity check passed. All system file hashes match the expected values.');
         }
 
-        return AppIntegrityService::$IntegrityCheckDetails->message ?? '';
+        return $integrityData->message ?? '';
     }
 
     public static function getFilesFailingIntegrityCheck()
