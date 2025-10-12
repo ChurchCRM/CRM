@@ -103,29 +103,40 @@ jobs:
           echo "📦 Installing NPM dependencies..."
           npm ci
         fi
+        
+        # Ensure npm-run-all commands are accessible globally
+        echo "Setting up npm-run-all commands..."
+        npm install -g npm-run-all@^4.1.5
 
     - name: Verify build dependencies
       run: |
         echo "🔍 Verifying build dependencies..."
         
-        # Add node_modules/.bin to PATH if not already there
-        export PATH="$PWD/node_modules/.bin:$PATH"
-        
         echo "Checking npm-run-all installation:"
         if command -v run-p >/dev/null 2>&1; then
-          echo "✅ run-p command is available"
+          echo "✅ run-p command is available globally"
           run-p --version
         else
-          echo "❌ run-p command not found in PATH"
-          if [ -f "node_modules/.bin/run-p" ]; then
-            echo "✅ run-p binary exists in node_modules/.bin/"
-            node_modules/.bin/run-p --version
-          else
-            echo "❌ run-p binary not found in node_modules/.bin/"
-            echo "Contents of node_modules/.bin/:"
-            ls -la node_modules/.bin/ | grep -E "(run|npm)" || echo "No run-related binaries found"
-          fi
+          echo "❌ run-p command not found globally"
         fi
+        
+        echo "Checking local node_modules installation:"
+        if [ -f "node_modules/.bin/run-p" ]; then
+          echo "✅ run-p binary exists in node_modules/.bin/"
+          ./node_modules/.bin/run-p --version
+        else
+          echo "❌ run-p binary not found in node_modules/.bin/"
+        fi
+        
+        echo "Testing npx access:"
+        if npx run-p --version >/dev/null 2>&1; then
+          echo "✅ npx run-p works"
+        else
+          echo "❌ npx run-p failed"
+        fi
+        
+        echo "Current PATH:"
+        echo $PATH
 
     - name: Get Composer cache directory
       id: composer-cache
