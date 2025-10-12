@@ -14,17 +14,17 @@ $sPageTitle = gettext('Edit Event Types');
 require_once 'Include/Header.php';
 
 $editing = 'FALSE';
-$tyid = $_POST['EN_tyid'];
+$tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
 
 if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
-    $ctid = mb_substr($_POST['Action'], 7);
+    $ctid = InputUtils::legacyFilterInput(mb_substr($_POST['Action'], 7), 'int');
     $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_countid='$ctid' LIMIT 1";
     RunQuery($sSQL);
 } else {
     switch ($_POST['Action']) {
         case 'ADD':
-            $newCTName = $_POST['newCountName'];
-            $theID = $_POST['EN_tyid'];
+            $newCTName = InputUtils::legacyFilterInput($_POST['newCountName']);
+            $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
             $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$newCTName')";
             RunQuery($sSQL);
             break;
@@ -86,7 +86,7 @@ switch ($aDefRecurType) {
 }
 
 // Get a list of the attendance counts currently associated with thisevent type
-$cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID' ORDER BY evctnm_countid";
+$cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . InputUtils::legacyFilterInput($aTypeID, 'int') . "' ORDER BY evctnm_countid";
 $cOpps = RunQuery($cSQL);
 $numCounts = mysqli_num_rows($cOpps);
 $nr = $numCounts + 2;
