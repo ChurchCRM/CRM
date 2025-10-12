@@ -52,15 +52,11 @@ jobs:
     name: 'Build, Test and Package ChurchCRM'
     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        node-version: ['${{ inputs.node_version || "20.x" }}']
-      fail-fast: false
-    
     env:
       NODE_ENV: production
       CI: true
       DEBUG_MODE: ${{ inputs.debug_mode || false }}
+      NODE_VERSION: ${{ inputs.node_version || '20.x' }}
     
     steps:
     - name: Checkout repository
@@ -69,10 +65,10 @@ jobs:
         # fetch full history so things like auto-changelog work properly
         fetch-depth: 0
         
-    - name: Setup Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
         # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token
         registry-url: 'https://registry.npmjs.org'
@@ -147,7 +143,6 @@ jobs:
         echo "🔐 Generating security signatures..."
         npm run deploy:signatures
         echo "✅ Security signatures generated"
-
 
     - name: Create distribution package
       run: |
@@ -269,7 +264,7 @@ jobs:
         echo "- 📝 **Commit**: ${{ steps.build-info.outputs.commit_sha }}" >> $GITHUB_STEP_SUMMARY
         echo "- 🚀 **Trigger**: ${{ steps.build-info.outputs.trigger }}" >> $GITHUB_STEP_SUMMARY
         echo "- 📅 **Date**: ${{ steps.build-info.outputs.build_date }}" >> $GITHUB_STEP_SUMMARY
-        echo "- 🟢 **Node.js**: ${{ matrix.node-version }}" >> $GITHUB_STEP_SUMMARY
+        echo "- 🟢 **Node.js**: ${{ env.NODE_VERSION }}" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
         echo "**Configuration:**" >> $GITHUB_STEP_SUMMARY
@@ -292,7 +287,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}-${{ steps.build-info.outputs.commit_sha }}
+        name: ChurchCRM-${{ steps.package-version.outputs.current-version }}-${{ steps.build-info.outputs.commit_sha }}
         path: target/ChurchCRM-*.*
         retention-days: 90
         if-no-files-found: error
