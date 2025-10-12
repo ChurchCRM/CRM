@@ -536,39 +536,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("cleanupLocalGit", "clean local git", function () {
-        grunt.loadNpmTasks("grunt-git");
-        grunt.config("gitreset", {
-            task: {
-                options: {
-                    mode: "hard",
-                },
-            },
-        });
-
-        grunt.config("gitcheckout", {
-            master: {
-                options: {
-                    branch: "master",
-                },
-            },
-        });
-
-        grunt.config("gitpull", {
-            master: {
-                options: {
-                    branch: "master",
-                },
-            },
-        });
-        grunt.task.run("gitreset");
-        //  make sure we're on master
-        grunt.task.run("gitcheckout:master");
-        //  ensure local and remote master are up to date
-        grunt.task.run("gitpull:master");
-        //  display local master's commit hash
-    });
-
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-compress");
     grunt.loadNpmTasks("grunt-curl");
