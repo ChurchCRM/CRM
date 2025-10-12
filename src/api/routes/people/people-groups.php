@@ -175,13 +175,13 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
         $group->addPerson2group2roleP2g2r($p2g2r);
         $group->save();
-        
+
         // Check if this group has special properties and add record if needed
         if ($group->getHasSpecialProps()) {
             $sSQL = 'INSERT IGNORE INTO groupprop_' . $groupID . " (per_ID) VALUES ('" . $userID . "')";
             RunQuery($sSQL);
         }
-        
+
         $note = new Note();
         $note->setText(gettext('Added to group') . ': ' . $group->getName());
         $note->setType('group');
