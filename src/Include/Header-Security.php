@@ -1,9 +1,18 @@
 <?php
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Security Headers Configuration
+ * 
+ * This file configures security-related HTTP headers for ChurchCRM:
+ * 
+ * - Content-Security-Policy (CSP): Helps protect against XSS attacks
+ *   By default, CSP is in report-only mode. Enable enforcement via 
+ *   System Settings > bEnforceCSP configuration option.
+ * 
+ * - Strict-Transport-Security (HSTS): Enforces HTTPS connections
+ *   Enable via System Settings > bHSTSEnable configuration option.
+ * 
+ * - X-Frame-Options: Prevents clickjacking attacks
  */
 
 use ChurchCRM\dto\SystemConfig;
@@ -25,8 +34,10 @@ if (SystemConfig::getBooleanValue('bHSTSEnable')) {
     header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
 }
 header('X-Frame-Options: SAMEORIGIN');
+// CSP can be in report-only mode (violations logged but not blocked) or enforcing mode (violations blocked)
+// The mode is controlled by the bEnforceCSP system configuration option
 if (SystemConfig::getBooleanValue('bEnforceCSP')) {
-    header('Content-Security-Policy:' . join(';', $csp));
+    header('Content-Security-Policy: ' . join('; ', $csp));
 } else {
-    header('Content-Security-Policy-Report-Only:' . join(';', $csp));
+    header('Content-Security-Policy-Report-Only: ' . join('; ', $csp));
 }
