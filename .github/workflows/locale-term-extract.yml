@@ -103,20 +103,46 @@ jobs:
         
         # Wait for database to be ready
         echo "⏳ Waiting for database to be ready..."
-        timeout=60
-        interval=2
+        timeout=120
+        interval=3
         elapsed=0
-        until docker exec $(docker ps -q --filter "name=database") mysqladmin ping -h"127.0.0.1" --silent; do
+        
+        # First wait for container to be running
+        echo "  Waiting for database container to start..."
+        while [ -z "$(docker ps -q --filter 'name=database')" ]; do
+          if [ "$elapsed" -ge 30 ]; then
+            echo "❌ Database container did not start within 30 seconds"
+            docker ps -a
+            exit 1
+          fi
+          sleep 2
+          elapsed=$((elapsed + 2))
+        done
+        
+        echo "  Database container is running, checking MySQL readiness..."
+        elapsed=0
+        
+        # Now check MySQL readiness
+        until docker exec $(docker ps -q --filter "name=database") mysqladmin ping -h"localhost" --silent 2>/dev/null; do
           if [ "$elapsed" -ge "$timeout" ]; then
             echo "❌ Database did not become ready within $timeout seconds"
+            echo "Docker status:"
             docker ps -a
-            docker logs $(docker ps -q --filter "name=database") || true
+            echo "Database logs:"
+            docker logs $(docker ps -q --filter "name=database") --tail=20 || true
+            echo "ChurchCRM logs:"
+            docker logs $(docker ps -q --filter "name=webserver") --tail=20 || true
             exit 1
           fi
           sleep $interval
           elapsed=$((elapsed + interval))
-          echo "  Waiting... ($elapsed/$timeout seconds)"
+          echo "  MySQL ping check... ($elapsed/$timeout seconds)"
         done
+        
+        # Additional check - try to connect to the database
+        echo "  Testing database connection..."
+        docker exec $(docker ps -q --filter "name=database") mysql -u churchcrm -pchangeme -h localhost -e "SHOW DATABASES;" > /dev/null
+        
         echo "✅ Database is ready for term extraction"
 
     - name: Backup original messages.po
