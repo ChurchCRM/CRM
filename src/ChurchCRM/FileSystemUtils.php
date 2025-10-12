@@ -69,10 +69,31 @@ class FileSystemUtils
         }
 
         $logger->info('Moving files: ' . $src . ' to ' . $dest);
-        $files = array_diff(scandir($src), ['.', '..']);
-        foreach ($files as $file) {
+        
+        // Get list of files in source and destination
+        $sourceFiles = array_diff(scandir($src), ['.', '..']);
+        $destFiles = array_diff(scandir($dest), ['.', '..']);
+        
+        // Remove files/directories in destination that don't exist in source
+        foreach ($destFiles as $file) {
+            if (!in_array($file, $sourceFiles)) {
+                $destPath = "$dest/$file";
+                if (is_dir($destPath)) {
+                    $logger->info('Removing directory not in new release: ' . $destPath);
+                    self::recursiveRemoveDirectory($destPath);
+                } else {
+                    $logger->info('Removing file not in new release: ' . $destPath);
+                    unlink($destPath);
+                }
+            }
+        }
+        
+        // Move files from source to destination
+        foreach ($sourceFiles as $file) {
             if (is_dir("$src/$file")) {
-                mkdir("$dest/$file");
+                if (!is_dir("$dest/$file")) {
+                    mkdir("$dest/$file");
+                }
                 self::moveDir("$src/$file", "$dest/$file");
             } else {
                 rename("$src/$file", "$dest/$file");
