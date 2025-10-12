@@ -32,10 +32,12 @@ msgstr "Non assigné"
 msgid "None"
 msgstr "Aucun"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "Ville"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "Etat"
@@ -48,6 +50,7 @@ msgstr "Pays"
 msgid "Phone"
 msgstr "Téléphone"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "Email"
@@ -157,6 +160,7 @@ msgstr "Date de naissance / anniversaire de mariage"
 msgid "Age / Years Married"
 msgstr "Nombre d'années de mariage"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Family Role"
 msgstr "Rôle familial"
@@ -201,10 +205,12 @@ msgstr "Utiliser la touche Ctrl pour une sélection multiple"
 msgid "Don't Filter"
 msgstr "Ne pas filtrer"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "Homme"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "Femme"
@@ -273,6 +279,7 @@ msgstr "Titre"
 msgid "Suffix"
 msgstr "Suffixe"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "Sexe"
@@ -281,6 +288,7 @@ msgstr "Sexe"
 msgid "Donation Envelope"
 msgstr "Dons"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "Téléphone Fixe"
@@ -333,6 +341,7 @@ msgstr "NOTE : avec séparateurs (tirets, etc) ou sans est sans importance"
 msgid "Default country if none specified otherwise"
 msgstr "Pays par défaut si aucune indication contraire"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "Catégories"
@@ -385,6 +394,7 @@ msgstr "Pas de nom de famille saisi!"
 msgid "Add Cart to Family"
 msgstr "Ajouter le panier à la famille"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Nom"
@@ -573,6 +583,7 @@ msgstr "Action"
 msgid "No Attendees Assigned to Event"
 msgstr "Aucun participant attribué à Événement"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Member"
 msgstr "Membre"
@@ -870,6 +881,7 @@ msgstr "Famille"
 msgid "Type"
 msgstr "Type"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Fiscal Year"
 msgstr "Année Fiscale"
@@ -886,6 +898,7 @@ msgstr "Capital"
 msgid "Bank"
 msgstr "Banque"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Month"
 msgstr "Mois"
@@ -2699,6 +2712,7 @@ msgstr "Liste des Propriétés"
 msgid "Add a New"
 msgstr "Ajouter une nouvelle"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Propriété"
@@ -2743,6 +2757,7 @@ msgstr "Liste des Types de propriétés"
 msgid "Add a New Property Type"
 msgstr "Ajouter un Type de Propriété"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Class"
 msgstr "Classe"
@@ -4729,335 +4744,419 @@ msgstr "Propriétés des familles"
 msgid "Property Types"
 msgstr "Types de propriétés"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"
 msgstr "Code postal"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "2012/2013"
 msgstr "2012/2013"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "2013/2014"
 msgstr "2013/2014"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "2014/2015"
 msgstr "2014/2015"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "2015/2016"
 msgstr "2015/2016"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "WorkEmail"
 msgstr "Email professionnel"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Regular Attender"
 msgstr "Participant régulier"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Guest"
 msgstr "Invité"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Non-Attender"
 msgstr "Non participant"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Non-Attender (staff)"
 msgstr "Non participant (Staff)"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Minimum Age"
 msgstr "Age minimum"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Maximum Age"
 msgstr "Age maximum"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Beginning Date"
 msgstr "Date de début"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Ending Date"
 msgstr "Date de fin"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Search"
 msgstr "Rechercher"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Field"
 msgstr "Champ"
 
+#. Context: query_qry
+#. Context: queryparameters_qrp
 #: 
 msgid "Registered students"
 msgstr "Étudiants enregistrés"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
 msgstr "Opportunités de volontariat"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Months"
 msgstr "Mois"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "First Fiscal Year"
 msgstr "Première année fiscale"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Second Fiscal Year"
 msgstr "Deuxième année fiscale"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Custom field"
 msgstr "Champ personnalisé"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Field value"
 msgstr "Valeur du Champ"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "The minimum age for which you want records returned."
 msgstr "L'âge minimum pour lequel vous voulez retourner un document."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "The maximum age for which you want records returned."
 msgstr "L'âge maximum pour lequel vous voulez retourner un document."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "The desired gender to search the database for."
 msgstr "Le sexe désiré à rechercher dans la base de données"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Select the desired family role."
 msgstr "Sélectionner le rôle de famille désiré"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "The gender for which you would like records returned."
 msgstr "Le sexe pour lequel vous voudriez retourner des rapports ."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "La propriété pour laquelle vous voudriez que les rapports de personne soient retournés."
 
+#. Context: queryparameters_qrp
 #: 
 #, fuzzy
 msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Veuillez choisir la date de début pour calculer des contributions totales pour chaque membre (c'est-à-dire. JJ-MM-AAAA). NOTE : Vous pouvez seulement choisir des dates où des dons ont été faits."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
 msgstr "Veuillez entrer la dernière date pour calculer les contributions pour chaque membre (i.e. DD-MM-YYYY)."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Renseigner un des champs : Nom, Ville, Etat, Code postal, Téléphone personnel, Email ou Email professionnel"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Select field to search for."
 msgstr "Sélectionner le champ à rechercher."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "The birthday month for which you would like records returned."
 msgstr "Le mois d'anniversaire pour lequel vous voulez retourner les rapports."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "The sunday school class for which you would like records returned."
 msgstr "La classe d'école du dimanche pour laquelle vous voulez retourner les rapports."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Group of registered students"
 msgstr "Groupe d'étudiants enregistrés"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Le mois anniversaire de mariage d'adhésion pour lequel vous voulez retourner un enregistrement."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Choose a volunteer opportunity"
 msgstr "Choisir une opportunité de bénévolats"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Number of months since becoming a friend"
 msgstr "Nombre de mois d'amitié"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "First fiscal year for comparison"
 msgstr "Première année fiscale pour comparaison"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Second fiscal year for comparison"
 msgstr "Deuxième année fiscale pour comparaison"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Pledged this year"
 msgstr "Contributions de l'année"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "but not this year"
 msgstr "mais pas cette année"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Fiscal Year."
 msgstr "Année fiscale."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Member, Regular Attender, etc."
 msgstr "Membre, participant régulier, etc ..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "First volunteer opportunity choice"
 msgstr "Premier choix d'opportunité de bénévolat"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Second volunteer opportunity choice"
 msgstr "Second choix d'opportunité de bénévolat"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Choose customer person field"
 msgstr "Choisir le champ personnalisé de personne"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Match custom field to this value"
 msgstr "Faire correspondre le champ personnalisé à cette valeur"
 
+#. Context: query_qry
 #: 
 msgid "Family Member Count"
 msgstr "Nombre de membres de famille"
 
+#. Context: query_qry
 #: 
 msgid "Person by Age"
 msgstr "Personne par âge"
 
+#. Context: query_qry
 #: 
 msgid "Total By Gender"
 msgstr "Total par sexe"
 
+#. Context: query_qry
 #: 
 msgid "Person by Role and Gender"
 msgstr "Personne par rôle et par sexe"
 
+#. Context: query_qry
 #: 
 msgid "Person by Property"
 msgstr "Personne par propriété"
 
+#. Context: query_qry
 #: 
 msgid "Advanced Search"
 msgstr "Recherche avancée"
 
+#. Context: query_qry
 #: 
 msgid "Birthdays"
 msgstr "Dates d'anniversaire"
 
+#. Context: query_qry
 #: 
 msgid "Membership anniversaries"
 msgstr "Date anniversaire de l'adhésion"
 
+#. Context: query_qry
 #: 
 msgid "Select database users"
 msgstr "Sélectionner les utilisateurs de la Base de Données"
 
+#. Context: query_qry
 #: 
 msgid "Select all members"
 msgstr "Sélectionner tous les membres"
 
+#. Context: query_qry
 #: 
 msgid "Volunteers"
 msgstr "Volontaires"
 
+#. Context: query_qry
 #: 
 msgid "Recent friends"
 msgstr "Amis récents"
 
+#. Context: query_qry
 #: 
 msgid "Pledge comparison"
 msgstr "Comparaison de contribution"
 
+#. Context: query_qry
 #: 
 msgid "Missing pledges"
 msgstr "Contributions manquantes"
 
+#. Context: query_qry
 #: 
 msgid "Family Pledge by Fiscal Year"
 msgstr "Contribution familiale par année fiscale"
 
+#. Context: query_qry
 #: 
 msgid "CustomSearch"
 msgstr "Recherche personnalisé"
 
+#. Context: query_qry
 #: 
 msgid "Returns each family and the total number of people assigned to them."
 msgstr "Renvoyer chaque familles et le nombre total des personnes qui leurs est assignées."
 
+#. Context: query_qry
 #: 
 msgid "Returns any person records with ages between two given ages."
 msgstr "Renvoyer chaque personnes âgé entre deux âges donnés."
 
+#. Context: query_qry
 #: 
 msgid "Total of records matching a given gender."
 msgstr "Nombre total d'enregistrement du sexe spécifié"
 
+#. Context: query_qry
 #: 
 msgid "Selects person records with the family role and gender specified."
 msgstr "Sélectionner les enregistrements de personnes avec un rôle de famille et un sexe spécifié."
 
+#. Context: query_qry
 #: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Renvoyer les enregistrements de personnes qui sont assignées à une propriété spécifié"
 
+#. Context: query_qry
 #: 
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Rechercher par Nom, Ville, Etat, Code postal, Numéro de téléphone personnel, Email ou Email professionnel"
 
+#. Context: query_qry
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Personnes nées un mois particulié"
 
+#. Context: query_qry
 #: 
 msgid "Find Registered students"
 msgstr "Rechercher les étudiant enregistré"
 
+#. Context: query_qry
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Les membres qui nous ont rejoint à un mois particulier"
 
+#. Context: query_qry
 #: 
 msgid "People who are registered as database users"
 msgstr "Personnes qui sont enregistrées comme utilisateurs de la Base de Données "
 
+#. Context: query_qry
 #: 
 msgid "People who are members"
 msgstr "Personnes qui sont membres"
 
+#. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
 msgstr "Rechercher des volontaires pour une opportunitée particulière"
 
+#. Context: query_qry
 #: 
 msgid "Friends who signed up in previous months"
 msgstr "Les amis qui ont souscrit dans les mois précédents"
 
+#. Context: query_qry
 #: 
 msgid "Compare pledges between two fiscal years"
 msgstr "Comparer les contributions entre deux années fiscales."
 
+#. Context: query_qry
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Rechercher les Personnes qui ont contribué une année mais plus par la suite"
 
+#. Context: query_qry
 #: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr "Résumé des contributions par nom de famille pour chaque fond de l'année fiscale sélectionnée"
 
+#. Context: query_qry
 #: 
 msgid "Find volunteers for who match two specific opportunity codes"
 msgstr "Rechercher des volontaires qui correspondent avec deux codes opportunité"
 
+#. Context: query_qry
 #: 
 msgid "Find people with a custom field value"
 msgstr "Rechercher des personnes avec un champ de valeur personnalisé"
@@ -5066,22 +5165,27 @@ msgstr "Rechercher des personnes avec un champ de valeur personnalisé"
 msgid "Last Edited"
 msgstr "Dernière edition"
 
+#. Context: userconfig_ucfg
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Permission de l&#39;utilisateur pour lui envoyer des email via des liens Mailto"
 
+#. Context: userconfig_ucfg
 #: 
 msgid "Delimiter to separate emails in mailto: links"
 msgstr "Délimiteur pour séparer les adresses email dans les liens Mailto"
 
+#. Context: userconfig_ucfg
 #: 
 msgid "User permission to create directories"
 msgstr "Permission de l&#39;utilisateur pour créer des annuaires."
 
+#. Context: userconfig_ucfg
 #: 
 msgid "User permission to export CSV files"
 msgstr "Permission de l&#39;utilisateur pour exporter des fichiers CSV"
 
+#. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
 msgstr "Autoriser les utilisateurs à ajouter un nouvel événement"
@@ -5270,1022 +5374,1277 @@ msgstr "WebDAV"
 msgid "Local"
 msgstr "Local"
 
+#. Context: countries
 #: 
 msgid "Afghanistan (‫افغانستان‬‎)"
 msgstr "Afghanistan (‫افغانستان‬‎)"
 
+#. Context: countries
 #: 
 msgid "Åland Islands (Åland)"
 msgstr "Îles Åland (Åland)"
 
+#. Context: countries
 #: 
 msgid "Albania (Shqipëri)"
 msgstr "Albanie (Shqipëri) "
 
+#. Context: countries
 #: 
 msgid "Algeria (‫الجزائر‬‎)"
 msgstr "Algérie (‫الجزائر‬‎)"
 
+#. Context: countries
 #: 
 msgid "American Samoa"
 msgstr "Samoa américaines"
 
+#. Context: countries
 #: 
 msgid "Andorra"
 msgstr "Andore"
 
+#. Context: countries
 #: 
 msgid "Angola"
 msgstr "Angola"
 
+#. Context: countries
 #: 
 msgid "Anguilla"
 msgstr "Anguilla"
 
+#. Context: countries
 #: 
 msgid "Antarctica"
 msgstr "Antarctique"
 
+#. Context: countries
 #: 
 msgid "Antigua and Barbuda"
 msgstr "Antigua-et-Barbuda"
 
+#. Context: countries
 #: 
 msgid "Argentina"
 msgstr "Argentine"
 
+#. Context: countries
 #: 
 msgid "Armenia (Հայաստան)"
 msgstr "Arménie (Հայաստան)"
 
+#. Context: countries
 #: 
 msgid "Aruba"
 msgstr "Aruba"
 
+#. Context: countries
 #: 
 msgid "Ascension Island"
 msgstr "Îles Ascension"
 
+#. Context: countries
 #: 
 msgid "Australia"
 msgstr "Australie"
 
+#. Context: countries
 #: 
 msgid "Austria (Österreich)"
 msgstr "Autriche (Österreich) "
 
+#. Context: countries
 #: 
 msgid "Azerbaijan (Azərbaycan)"
 msgstr "Azerbaijan (Azərbaycan) "
 
+#. Context: countries
 #: 
 msgid "Bahamas"
 msgstr "Bahamas"
 
+#. Context: countries
 #: 
 msgid "Bahrain (‫البحرين‬‎)"
 msgstr "Bahrain (‫البحرين‬‎) "
 
+#. Context: countries
 #: 
 msgid "Bangladesh (বাংলাদেশ)"
 msgstr "Bangladesh (বাংলাদেশ) "
 
+#. Context: countries
 #: 
 msgid "Barbados"
 msgstr "Barbade"
 
+#. Context: countries
 #: 
 msgid "Belarus (Беларусь)"
 msgstr "Belarus (Беларусь) "
 
+#. Context: countries
 #: 
 msgid "Belgium (België)"
 msgstr "Belgique (België)"
 
+#. Context: countries
 #: 
 msgid "Belize"
 msgstr "Belize"
 
+#. Context: countries
 #: 
 msgid "Benin (Bénin)"
 msgstr "Bénin"
 
+#. Context: countries
 #: 
 msgid "Bermuda"
 msgstr "Bermuda"
 
+#. Context: countries
 #: 
 msgid "Bhutan (འབྲུག)"
 msgstr "Bhutan (འབྲུག) "
 
+#. Context: countries
 #: 
 msgid "Bolivia"
 msgstr "Bolivie"
 
+#. Context: countries
 #: 
 msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
 msgstr "Bosnie et Herzégovine (Босна и Херцеговина) "
 
+#. Context: countries
 #: 
 msgid "Botswana"
 msgstr "Botswana"
 
+#. Context: countries
 #: 
 msgid "Bouvet Island"
 msgstr "Îles de Bouvet"
 
+#. Context: countries
 #: 
 msgid "Brazil (Brasil)"
 msgstr "Brésil"
 
+#. Context: countries
 #: 
 msgid "British Indian Ocean Territory"
 msgstr "Territoire britannique de l'océan Indien"
 
+#. Context: countries
 #: 
 msgid "British Virgin Islands"
 msgstr "Îles Vierges britanniques"
 
+#. Context: countries
 #: 
 msgid "Brunei"
 msgstr "Brunei"
 
+#. Context: countries
 #: 
 msgid "Bulgaria (България)"
 msgstr "Bulgarie (България)"
 
+#. Context: countries
 #: 
 msgid "Burkina Faso"
 msgstr "Burkina Faso"
 
+#. Context: countries
 #: 
 msgid "Burundi (Uburundi)"
 msgstr "Burundi (Uburundi)"
 
+#. Context: countries
 #: 
 msgid "Cambodia (កម្ពុជា)"
 msgstr "Cambodge (កម្ពុជា)"
 
+#. Context: countries
 #: 
 msgid "Cameroon (Cameroun)"
 msgstr "Cameroun"
 
+#. Context: countries
 #: 
 msgid "Canada"
 msgstr "Canada"
 
+#. Context: countries
 #: 
 msgid "Canary Islands (islas Canarias)"
 msgstr "Îles Canarie (islas Canarias) "
 
+#. Context: countries
 #: 
 msgid "Cape Verde (Kabu Verdi)"
 msgstr "Cap vert (Kabu Verdi)"
 
+#. Context: countries
 #: 
 msgid "Caribbean Netherlands"
 msgstr "Caraïbes Pays Bas"
 
+#. Context: countries
 #: 
 msgid "Cayman Islands"
 msgstr "Îles Cayman"
 
+#. Context: countries
 #: 
 msgid "Central African Republic (République centrafricaine)"
 msgstr "République centrafricaine"
 
+#. Context: countries
 #: 
 msgid "Ceuta and Melilla (Ceuta y Melilla)"
 msgstr "Ceuta y Melilla"
 
+#. Context: countries
 #: 
 msgid "Chad (Tchad)"
 msgstr "Tchad"
 
+#. Context: countries
 #: 
 msgid "Chile"
 msgstr "Chili"
 
+#. Context: countries
 #: 
 msgid "China (中国)"
 msgstr "Chine (中国)"
 
+#. Context: countries
 #: 
 msgid "Christmas Island"
 msgstr "Île Christmas"
 
+#. Context: countries
 #: 
 msgid "Clipperton Island"
 msgstr "Île now Clipperton"
 
+#. Context: countries
 #: 
 msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
 msgstr "Îles Cocos (Keeling) (Kepulauan Cocos (Keeling))"
 
+#. Context: countries
 #: 
 msgid "Colombia"
 msgstr "Colombie"
 
+#. Context: countries
 #: 
 msgid "Comoros (‫جزر القمر‬‎)"
 msgstr " Comoros (‫جزر القمر‬‎)"
 
+#. Context: countries
 #: 
 msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
 msgstr "Congo (RDC) (Jamhuri ya Kidemokrasia ya Kongo) "
 
+#. Context: countries
 #: 
 msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr "Congo (République) (Congo-Brazzaville) "
 
+#. Context: countries
 #: 
 msgid "Cook Islands"
 msgstr "Îles Cook"
 
+#. Context: countries
 #: 
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
+#. Context: countries
 #: 
 msgid "Côte d’Ivoire"
 msgstr "Côte d’Ivoire"
 
+#. Context: countries
 #: 
 msgid "Croatia (Hrvatska)"
 msgstr "Croatie (Hrvatska)"
 
+#. Context: countries
 #: 
 msgid "Cuba"
 msgstr "Cuba"
 
+#. Context: countries
 #: 
 msgid "Curaçao"
 msgstr "Curaçao"
 
+#. Context: countries
 #: 
 msgid "Cyprus (Κύπρος)"
 msgstr "Chypre (Κύπρος)"
 
+#. Context: countries
 #: 
 msgid "Czech Republic (Česká republika)"
 msgstr "République Tchèque"
 
+#. Context: countries
 #: 
 msgid "Denmark (Danmark)"
 msgstr "Danemark (Danmark)"
 
+#. Context: countries
 #: 
 msgid "Diego Garcia"
 msgstr "Diego Garcia"
 
+#. Context: countries
 #: 
 msgid "Djibouti"
 msgstr "Djibouti"
 
+#. Context: countries
 #: 
 msgid "Dominica"
 msgstr "Dominique"
 
+#. Context: countries
 #: 
 msgid "Dominican Republic (República Dominicana)"
 msgstr "République dominicaine (República Dominicana) "
 
+#. Context: countries
 #: 
 msgid "Ecuador"
 msgstr "Équateur"
 
+#. Context: countries
 #: 
 msgid "Egypt (‫مصر‬‎)"
 msgstr "Egypte (‫مصر‬‎) "
 
+#. Context: countries
 #: 
 msgid "El Salvador"
 msgstr "Salvador"
 
+#. Context: countries
 #: 
 msgid "Equatorial Guinea (Guinea Ecuatorial)"
 msgstr "Guinée équatoriale"
 
+#. Context: countries
 #: 
 msgid "Eritrea"
 msgstr "Érythrée"
 
+#. Context: countries
 #: 
 msgid "Estonia (Eesti)"
 msgstr "Estonie (Eesti) "
 
+#. Context: countries
 #: 
 msgid "Ethiopia"
 msgstr "Ethiopie"
 
+#. Context: countries
 #: 
 msgid "Falkland Islands (Islas Malvinas)"
 msgstr "Îles Malouines"
 
+#. Context: countries
 #: 
 msgid "Faroe Islands (Føroyar)"
 msgstr "Îles Féroé (Føroyar)"
 
+#. Context: countries
 #: 
 msgid "Fiji"
 msgstr "Fiji"
 
+#. Context: countries
 #: 
 msgid "Finland (Suomi)"
 msgstr "Finlande (Suomi)"
 
+#. Context: countries
 #: 
 msgid "France"
 msgstr "France"
 
+#. Context: countries
 #: 
 msgid "French Guiana (Guyane française)"
 msgstr "Guyane française"
 
+#. Context: countries
 #: 
 msgid "French Polynesia (Polynésie française)"
 msgstr "Polynésie française"
 
+#. Context: countries
 #: 
 msgid "French Southern Territories (Terres australes françaises)"
 msgstr "Terres australes françaises"
 
+#. Context: countries
 #: 
 msgid "Gabon"
 msgstr "Gabon"
 
+#. Context: countries
 #: 
 msgid "Gambia"
 msgstr "Gambie"
 
+#. Context: countries
 #: 
 msgid "Georgia (საქართველო)"
 msgstr "Georgie (საქართველო)"
 
+#. Context: countries
 #: 
 msgid "Germany (Deutschland)"
 msgstr "Allemagne"
 
+#. Context: countries
 #: 
 msgid "Ghana (Gaana)"
 msgstr "Gaana"
 
+#. Context: countries
 #: 
 msgid "Gibraltar"
 msgstr "Gibraltar"
 
+#. Context: countries
 #: 
 msgid "Greece (Ελλάδα)"
 msgstr "Grèce (Ελλάδα)"
 
+#. Context: countries
 #: 
 msgid "Greenland (Kalaallit Nunaat)"
 msgstr "Greenland"
 
+#. Context: countries
 #: 
 msgid "Grenada"
 msgstr "Grenade"
 
+#. Context: countries
 #: 
 msgid "Guadeloupe"
 msgstr "Guadeloupe"
 
+#. Context: countries
 #: 
 msgid "Guam"
 msgstr "Guam"
 
+#. Context: countries
 #: 
 msgid "Guatemala"
 msgstr "Guatemala"
 
+#. Context: countries
 #: 
 msgid "Guernsey"
 msgstr "Guernsey"
 
+#. Context: countries
 #: 
 msgid "Guinea (Guinée)"
 msgstr "Guinée"
 
+#. Context: countries
 #: 
 msgid "Guinea-Bissau (Guiné Bissau)"
 msgstr "Guiné Bissau"
 
+#. Context: countries
 #: 
 msgid "Guyana"
 msgstr "Guyane"
 
+#. Context: countries
 #: 
 msgid "Haiti"
 msgstr "Haïti"
 
+#. Context: countries
 #: 
 msgid "Heard & McDonald Islands"
 msgstr "Îles Heard-et-MacDonald"
 
+#. Context: countries
 #: 
 msgid "Honduras"
 msgstr "Honduras"
 
+#. Context: countries
 #: 
 msgid "Hong Kong (香港)"
 msgstr "Hong Kong (香港) "
 
+#. Context: countries
 #: 
 msgid "Hungary (Magyarország)"
 msgstr "Hngrie (Magyarország)"
 
+#. Context: countries
 #: 
 msgid "Iceland (Ísland)"
 msgstr "Islande (Ísland)"
 
+#. Context: countries
 #: 
 msgid "India (भारत)"
 msgstr "Indes (भारत) "
 
+#. Context: countries
 #: 
 msgid "Indonesia"
 msgstr "Indonésie"
 
+#. Context: countries
 #: 
 msgid "Iran (‫ایران‬‎)"
 msgstr "Iran (‫ایران‬‎) "
 
+#. Context: countries
 #: 
 msgid "Iraq (‫العراق‬‎)"
 msgstr "Iraq (‫العراق‬‎)"
 
+#. Context: countries
 #: 
 msgid "Ireland"
 msgstr "Irlande"
 
+#. Context: countries
 #: 
 msgid "Isle of Man"
 msgstr "Île de Man"
 
+#. Context: countries
 #: 
 msgid "Israel (‫ישראל‬‎)"
 msgstr "Israël (‫ישראל‬‎) "
 
+#. Context: countries
 #: 
 msgid "Italy (Italia)"
 msgstr "Italie (Italia)"
 
+#. Context: countries
 #: 
 msgid "Jamaica"
 msgstr "Jamaïque"
 
+#. Context: countries
 #: 
 msgid "Japan (日本)"
 msgstr "Japon (日本) "
 
+#. Context: countries
 #: 
 msgid "Jersey"
 msgstr "Jersey"
 
+#. Context: countries
 #: 
 msgid "Jordan (‫الأردن‬‎)"
 msgstr "Jordanie (‫الأردن‬‎) "
 
+#. Context: countries
 #: 
 msgid "Kazakhstan (Казахстан)"
 msgstr "Kazakhstan (Казахстан) "
 
+#. Context: countries
 #: 
 msgid "Kenya"
 msgstr "Kenya"
 
+#. Context: countries
 #: 
 msgid "Kiribati"
 msgstr "Kiribati"
 
+#. Context: countries
 #: 
 msgid "Kosovo (Kosovë)"
 msgstr "Kosovo (Kosovë)"
 
+#. Context: countries
 #: 
 msgid "Kuwait (‫الكويت‬‎)"
 msgstr "Koweit (الكويت‬‎)"
 
+#. Context: countries
 #: 
 msgid "Kyrgyzstan (Кыргызстан)"
 msgstr "Kyrgyzstan (Кыргызстан)"
 
+#. Context: countries
 #: 
 msgid "Laos (ລາວ)"
 msgstr "Laos (ລາວ) "
 
+#. Context: countries
 #: 
 msgid "Lebanon (‫لبنان‬‎)"
 msgstr "Liban (‫لبنان‬‎) "
 
+#. Context: countries
 #: 
 msgid "Lesotho"
 msgstr "Lesotho"
 
+#. Context: countries
 #: 
 msgid "Liberia"
 msgstr "Liberia"
 
+#. Context: countries
 #: 
 msgid "Libya (‫ليبيا‬‎)"
 msgstr "Libye (‫ليبيا‬‎)"
 
+#. Context: countries
 #: 
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
+#. Context: countries
 #: 
 msgid "Lithuania (Lietuva)"
 msgstr "Lituanie (Lietuva)"
 
+#. Context: countries
 #: 
 msgid "Luxembourg"
 msgstr "Luxembourg"
 
+#. Context: countries
 #: 
 msgid "Macau (澳門)"
 msgstr "Macao (澳門)"
 
+#. Context: countries
 #: 
 msgid "Macedonia (FYROM) (Македонија)"
 msgstr "Macédoine (FYROM) (Македонија) "
 
+#. Context: countries
 #: 
 msgid "Madagascar (Madagasikara)"
 msgstr "Madagascar (Madagasikara)"
 
+#. Context: countries
 #: 
 msgid "Malawi"
 msgstr "Malawi"
 
+#. Context: countries
 #: 
 msgid "Malaysia"
 msgstr "Malaisie"
 
+#. Context: countries
 #: 
 msgid "Maldives"
 msgstr "Maldives"
 
+#. Context: countries
 #: 
 msgid "Mali"
 msgstr "Mali"
 
+#. Context: countries
 #: 
 msgid "Malta"
 msgstr "Malte"
 
+#. Context: countries
 #: 
 msgid "Marshall Islands"
 msgstr "Îles Marshall"
 
+#. Context: countries
 #: 
 msgid "Martinique"
 msgstr "Martinique"
 
+#. Context: countries
 #: 
 msgid "Mauritania (‫موريتانيا‬‎)"
 msgstr "Mauritanie (‫موريتانيا‬‎) "
 
+#. Context: countries
 #: 
 msgid "Mauritius (Moris)"
 msgstr "Île Maurice"
 
+#. Context: countries
 #: 
 msgid "Mayotte"
 msgstr "Mayotte"
 
+#. Context: countries
 #: 
 msgid "Mexico (México)"
 msgstr "Mexique (México)"
 
+#. Context: countries
 #: 
 msgid "Micronesia"
 msgstr "Micronésie"
 
+#. Context: countries
 #: 
 msgid "Moldova (Republica Moldova)"
 msgstr "Moldovie (Republica Moldova)"
 
+#. Context: countries
 #: 
 msgid "Monaco"
 msgstr "Monaco"
 
+#. Context: countries
 #: 
 msgid "Mongolia (Монгол)"
 msgstr "Mongolie (Монгол)"
 
+#. Context: countries
 #: 
 msgid "Montenegro (Crna Gora)"
 msgstr "Montenegro (Crna Gora)"
 
+#. Context: countries
 #: 
 msgid "Montserrat"
 msgstr "Abbaye de Montserrat"
 
+#. Context: countries
 #: 
 msgid "Morocco (‫المغرب‬‎)"
 msgstr "Maroc (‫المغرب‬‎) "
 
+#. Context: countries
 #: 
 msgid "Mozambique (Moçambique)"
 msgstr "Mozambique (Moçambique)"
 
+#. Context: countries
 #: 
 msgid "Myanmar (Burma) (မြန်မာ)"
 msgstr "Myanmar (Burma) (မြန်မာ) "
 
+#. Context: countries
 #: 
 msgid "Namibia (Namibië)"
 msgstr "Namibie (Namibië) "
 
+#. Context: countries
 #: 
 msgid "Nauru"
 msgstr "Nauru"
 
+#. Context: countries
 #: 
 msgid "Nepal (नेपाल)"
 msgstr "Nepal (नेपाल)"
 
+#. Context: countries
 #: 
 msgid "Netherlands (Nederland)"
 msgstr "Hollande (Nederland)"
 
+#. Context: countries
 #: 
 msgid "New Caledonia (Nouvelle-Calédonie)"
 msgstr "Nouvelle-Calédonie (New Caledonia)"
 
+#. Context: countries
 #: 
 msgid "New Zealand"
 msgstr "Nouvelle Zélande"
 
+#. Context: countries
 #: 
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
+#. Context: countries
 #: 
 msgid "Niger (Nijar)"
 msgstr "Niger (Nijar)"
 
+#. Context: countries
 #: 
 msgid "Nigeria"
 msgstr "Niger"
 
+#. Context: countries
 #: 
 msgid "Niue"
 msgstr "Nioué"
 
+#. Context: countries
 #: 
 msgid "Norfolk Island"
 msgstr "Île Norfolk"
 
+#. Context: countries
 #: 
 msgid "Northern Mariana Islands"
 msgstr "Îles Mariannes du Nord"
 
+#. Context: countries
 #: 
 msgid "North Korea (조선 민주주의 인민 공화국)"
 msgstr "Corée du Nord (조선 민주주의 인민 공화국) "
 
+#. Context: countries
 #: 
 msgid "Norway (Norge)"
 msgstr "Norvège (Norge)"
 
+#. Context: countries
 #: 
 msgid "Oman (‫عُمان‬‎)"
 msgstr "Oman (‫عُمان‬‎)"
 
+#. Context: countries
 #: 
 msgid "Pakistan (‫پاکستان‬‎)"
 msgstr "Pakistan (‫پاکستان‬‎)"
 
+#. Context: countries
 #: 
 msgid "Palau"
 msgstr "Palaos"
 
+#. Context: countries
 #: 
 msgid "Palestine (‫فلسطين‬‎)"
 msgstr "Palestine (‫فلسطين‬‎) "
 
+#. Context: countries
 #: 
 msgid "Panama (Panamá)"
 msgstr "Panama (Panamá)"
 
+#. Context: countries
 #: 
 msgid "Papua New Guinea"
 msgstr "Papouasie-Nouvelle-Guinée"
 
+#. Context: countries
 #: 
 msgid "Paraguay"
 msgstr "Paraguay"
 
+#. Context: countries
 #: 
 msgid "Peru (Perú)"
 msgstr "Perou (Perú)"
 
+#. Context: countries
 #: 
 msgid "Philippines"
 msgstr "Philippines"
 
+#. Context: countries
 #: 
 msgid "Pitcairn Islands"
 msgstr "Îles Pitcairn"
 
+#. Context: countries
 #: 
 msgid "Poland (Polska)"
 msgstr "Pologne (Polska)"
 
+#. Context: countries
 #: 
 msgid "Portugal"
 msgstr "Portugal"
 
+#. Context: countries
 #: 
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
 
+#. Context: countries
 #: 
 msgid "Qatar (‫قطر‬‎)"
 msgstr "Qatar (‫قطر‬‎) "
 
+#. Context: countries
 #: 
 msgid "Réunion (La Réunion)"
 msgstr "Réunion (La Réunion)"
 
+#. Context: countries
 #: 
 msgid "Romania (România)"
 msgstr "Roumanie (România)"
 
+#. Context: countries
 #: 
 msgid "Russia (Россия)"
 msgstr "Russie (Россия)"
 
+#. Context: countries
 #: 
 msgid "Rwanda"
 msgstr "Rwanda"
 
+#. Context: countries
 #: 
 msgid "Saint Barthélemy (Saint-Barthélemy)"
 msgstr "Saint Barthélemy (Saint-Barthélemy)"
 
+#. Context: countries
 #: 
 msgid "Saint Helena"
 msgstr "Saint Héléne"
 
+#. Context: countries
 #: 
 msgid "Saint Kitts and Nevis"
 msgstr "Saint-Christophe-et-Niévès"
 
+#. Context: countries
 #: 
 msgid "Saint Lucia"
 msgstr "Sainte-Lucie"
 
+#. Context: countries
 #: 
 msgid "Saint Martin (Saint-Martin (partie française))"
 msgstr "Saint-Martin (partie française)"
 
+#. Context: countries
 #: 
 msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
 msgstr "Saint-Pierre-et-Miquelon"
 
+#. Context: countries
 #: 
 msgid "Samoa"
 msgstr "Samoa"
 
+#. Context: countries
 #: 
 msgid "San Marino"
 msgstr "Saint-Marin"
 
+#. Context: countries
 #: 
 msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
 msgstr "Sao Tomé-et-Principe  (São Tomé e Príncipe)"
 
+#. Context: countries
 #: 
 msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
 msgstr "Arabie saoudite (‫المملكة العربية السعودية‬‎)"
 
+#. Context: countries
 #: 
 msgid "Senegal (Sénégal)"
 msgstr "Sénégal"
 
+#. Context: countries
 #: 
 msgid "Serbia (Србија)"
 msgstr "Serbie (Србија)"
 
+#. Context: countries
 #: 
 msgid "Seychelles"
 msgstr "Seychelles"
 
+#. Context: countries
 #: 
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
+#. Context: countries
 #: 
 msgid "Singapore"
 msgstr "Singapour"
 
+#. Context: countries
 #: 
 msgid "Sint Maarten"
 msgstr "Saint-Martin"
 
+#. Context: countries
 #: 
 msgid "Slovakia (Slovensko)"
 msgstr "Slovaquie (Slovensko)"
 
+#. Context: countries
 #: 
 msgid "Slovenia (Slovenija)"
 msgstr "Slovenie (Slovenija)"
 
+#. Context: countries
 #: 
 msgid "Solomon Islands"
 msgstr "Îles Salomon"
 
+#. Context: countries
 #: 
 msgid "Somalia (Soomaaliya)"
 msgstr "Somalie (Soomaaliya)"
 
+#. Context: countries
 #: 
 msgid "South Africa"
 msgstr "Afrique du Sud"
 
+#. Context: countries
 #: 
 msgid "South Georgia & South Sandwich Islands"
 msgstr "Géorgie du Sud-et-les Îles Sandwich du Sud"
 
+#. Context: countries
 #: 
 msgid "South Korea (대한민국)"
 msgstr "Corée du sud (대한민국)"
 
+#. Context: countries
 #: 
 msgid "South Sudan (‫جنوب السودان‬‎)"
 msgstr "Soudan du Sud"
 
+#. Context: countries
 #: 
 msgid "Spain (España)"
 msgstr "Espagne (España)"
 
+#. Context: countries
 #: 
 msgid "Sri Lanka (ශ්‍රී ලංකාව)"
 msgstr "Sri Lanka (ශ්‍රී ලංකාව)"
 
+#. Context: countries
 #: 
 msgid "St. Vincent & Grenadines"
 msgstr "St. Vincent & Grenadines"
 
+#. Context: countries
 #: 
 msgid "Sudan (‫السودان‬‎)"
 msgstr "Soudan (‫السودان‬‎)"
 
+#. Context: countries
 #: 
 msgid "Suriname"
 msgstr "Suriname"
 
+#. Context: countries
 #: 
 msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
 msgstr "Svalbard et Jan Mayen (Svalbard og Jan Mayen)"
 
+#. Context: countries
 #: 
 msgid "Swaziland"
 msgstr "Swaziland"
 
+#. Context: countries
 #: 
 msgid "Sweden (Sverige)"
 msgstr "Suède"
 
+#. Context: countries
 #: 
 msgid "Switzerland (Schweiz)"
 msgstr "Suisse"
 
+#. Context: countries
 #: 
 msgid "Syria (‫سوريا‬‎)"
 msgstr "Syrie (‫سوريا‬‎)"
 
+#. Context: countries
 #: 
 msgid "Taiwan (台灣)"
 msgstr "Taiwan (台灣)"
 
+#. Context: countries
 #: 
 msgid "Tajikistan"
 msgstr "Tajikistan"
 
+#. Context: countries
 #: 
 msgid "Tanzania"
 msgstr "Tanzanie"
 
+#. Context: countries
 #: 
 msgid "Thailand (ไทย)"
 msgstr "Thailande (ไทย)"
 
+#. Context: countries
 #: 
 msgid "Timor-Leste"
 msgstr "Timor oriental"
 
+#. Context: countries
 #: 
 msgid "Togo"
 msgstr "Togo"
 
+#. Context: countries
 #: 
 msgid "Tokelau"
 msgstr "Tokelau"
 
+#. Context: countries
 #: 
 msgid "Tonga"
 msgstr "Tonga"
 
+#. Context: countries
 #: 
 msgid "Trinidad and Tobago"
 msgstr "Trinité-et-Tobago"
 
+#. Context: countries
 #: 
 msgid "Tristan da Cunha"
 msgstr "Tristan da Cunha"
 
+#. Context: countries
 #: 
 msgid "Tunisia (‫تونس‬‎)"
 msgstr "Tunisie (‫تونس‬‎)"
 
+#. Context: countries
 #: 
 msgid "Turkey (Türkiye)"
 msgstr "Turquie (Türkiye)"
 
+#. Context: countries
 #: 
 msgid "Turkmenistan"
 msgstr "Turkmenistan"
 
+#. Context: countries
 #: 
 msgid "Turks and Caicos Islands"
 msgstr "Îles Turks-et-Caïcos"
 
+#. Context: countries
 #: 
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
+#. Context: countries
 #: 
 msgid "U.S. Outlying Islands"
 msgstr "Îles mineures éloignées des États-Unis"
 
+#. Context: countries
 #: 
 msgid "U.S. Virgin Islands"
 msgstr "Îles Vierges des États-Unis"
 
+#. Context: countries
 #: 
 msgid "Uganda"
 msgstr "Uganda"
 
+#. Context: countries
 #: 
 msgid "Ukraine (Україна)"
 msgstr "Ukraine (Україна)"
 
+#. Context: countries
 #: 
 msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
 msgstr "Émirats Arabes Unis (‫الإمارات العربية المتحدة‬‎) "
 
+#. Context: countries
 #: 
 msgid "United Kingdom"
 msgstr "Angleterre"
 
+#. Context: countries
 #: 
 msgid "United States"
 msgstr "États unis"
 
+#. Context: countries
 #: 
 msgid "Uruguay"
 msgstr "Uruguay"
 
+#. Context: countries
 #: 
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr "Uzbekistan (Oʻzbekiston)"
 
+#. Context: countries
 #: 
 msgid "Vanuatu"
 msgstr "Vanuatu"
 
+#. Context: countries
 #: 
 msgid "Vatican City (Città del Vaticano)"
 msgstr "Cité du Vatican (Città del Vaticano)"
 
+#. Context: countries
 #: 
 msgid "Venezuela"
 msgstr "Venezuela"
 
+#. Context: countries
 #: 
 msgid "Vietnam (Việt Nam)"
 msgstr "Vietnam (Việt Nam)"
 
+#. Context: countries
 #: 
 msgid "Wallis and Futuna"
 msgstr "Wallis et Futuna"
 
+#. Context: countries
 #: 
 msgid "Western Sahara (‫الصحراء الغربية‬‎)"
 msgstr " ccidental Sahara (‫الصحراء الغربية‬‎)"
 
+#. Context: countries
 #: 
 msgid "Yemen (‫اليمن‬‎)"
 msgstr "Yemen (‫اليمن‬‎)"
 
+#. Context: countries
 #: 
 msgid "Zambia"
 msgstr "Zambie"
 
+#. Context: countries
 #: 
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
@@ -6422,82 +6781,102 @@ msgstr "Utilisé pour mettre fin à une lettre avant Signataire"
 msgid "Google Analytics Tracking Code"
 msgstr "Code de suivi Google Analytics"
 
+#. Context: locales
 #: 
 msgid "English - United States"
 msgstr "Anglais - USA"
 
+#. Context: locales
 #: 
 msgid "English - Canada"
 msgstr "Anglais - Canada"
 
+#. Context: locales
 #: 
 msgid "English - Australia"
 msgstr "Anglais - Australie"
 
+#. Context: locales
 #: 
 msgid "English - Great Britain"
 msgstr "Anglais - Grande Bretagne"
 
+#. Context: locales
 #: 
 msgid "German - Germany"
 msgstr "Allemand - Allemagne"
 
+#. Context: locales
 #: 
 msgid "Spanish - Spain"
 msgstr "Espagnol - Espagne"
 
+#. Context: locales
 #: 
 msgid "French - France"
 msgstr "Français - France"
 
+#. Context: locales
 #: 
 msgid "Hungarian"
 msgstr "Hongrois"
 
+#. Context: locales
 #: 
 msgid "Italian - Italy"
 msgstr "Italien - Italie"
 
+#. Context: locales
 #: 
 msgid "Norwegian"
 msgstr "Norvégien"
 
+#. Context: locales
 #: 
 msgid "Dutch - Netherlands"
 msgstr "Hollandais - Hollande"
 
+#. Context: locales
 #: 
 msgid "Polish"
 msgstr "Polonais"
 
+#. Context: locales
 #: 
 msgid "Portuguese - Brazil"
 msgstr "Portugais - Brésil"
 
+#. Context: locales
 #: 
 msgid "Romanian - Romania"
 msgstr "Roumain - Roumanie"
 
+#. Context: locales
 #: 
 msgid "Russian"
 msgstr "Russe"
 
+#. Context: locales
 #: 
 msgid "Sami (Northern) (Sweden)"
 msgstr "Sami (Northern) (Suède)"
 
+#. Context: locales
 #: 
 msgid "Albanian"
 msgstr "Albanais"
 
+#. Context: locales
 #: 
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
+#. Context: locales
 #: 
 msgid "Chinese - China"
 msgstr "Chinois - Chine"
 
+#. Context: locales
 #: 
 msgid "Chinese - Taiwan"
 msgstr "Chinois - Taiwan"
@@ -7180,10 +7559,12 @@ msgstr "Notes de version"
 msgid "Move"
 msgstr "Déplacer"
 
+#. Context: locales
 #: 
 msgid "Arabic - Egypt"
 msgstr "Arabe - Egypte"
 
+#. Context: locales
 #: 
 msgid "Thai"
 msgstr "Thai"
@@ -7217,6 +7598,7 @@ msgstr "En attente de vérification automatique"
 msgid "Self Verify"
 msgstr "Vérification automatique"
 
+#. Context: locales
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonésien - Indonésie"
@@ -8124,6 +8506,7 @@ msgstr "Inclure les contacts et les données démographiques dans le corps de l'
 msgid "Include family custom properties in global search."
 msgstr "Inclure les propriétés personnalisées des familles dans la recherche globale."
 
+#. Context: countries
 #: 
 msgid "Latvia (Latvija)"
 msgstr "Lettonie (Latvija)"
@@ -8209,6 +8592,7 @@ msgstr "Types de dépôts incorrects"
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "La prise en charge des paiements par eGive, par carte de crédit et par traite bancaire a été abandonnée. Désolé, mais les rapports non bancaires existants pourraient ne plus être accessibles dans les futures versions."
 
+#. Context: locales
 #: 
 msgid "Estonian"
 msgstr "Estonien"
@@ -8451,6 +8835,7 @@ msgstr "Supprimer filtres"
 msgid "Add Person"
 msgstr "Ajouter un individu"
 
+#. Context: locales
 #: 
 msgid "Portuguese - Portugal"
 msgstr "Portugais - Portugal"
@@ -8666,6 +9051,7 @@ msgstr "Personnes non répertoriées"
 msgid "Audience not in the CRM"
 msgstr "Public absent du CRM"
 
+#. Context: locales
 #: 
 msgid "Hebrew"
 msgstr "hébreu"
@@ -8890,6 +9276,7 @@ msgstr "Générer des rapports de présence -ET- d'absence pour les événements
 msgid "Help translate this project"
 msgstr "Aidez à traduire ce projet"
 
+#. Context: locales
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
@@ -9007,10 +9394,12 @@ msgstr "Date de naissance invalide : Mois ou jour de naissance manquant."
 msgid "System"
 msgstr "Système"
 
+#. Context: locales
 #: 
 msgid "Greek"
 msgstr "Grec"
 
+#. Context: locales
 #: 
 msgid "Ukrainian"
 msgstr "Ukrainien"
@@ -9047,14 +9436,17 @@ msgstr "Nom de l'adulte (Optionnel)"
 msgid "MailChimp is not configured"
 msgstr "MailChimp n'est pas configuré"
 
+#. Context: locales
 #: 
 msgid "English - South Africa"
 msgstr "Anglais - Afrique du sud"
 
+#. Context: locales
 #: 
 msgid "English - Jamaica"
 msgstr "Anglais - Jamaïque"
 
+#. Context: locales
 #: 
 msgid "Swahili"
 msgstr "Swahili"
@@ -9067,6 +9459,7 @@ msgstr "Colonne Personne"
 msgid "Family List Columns"
 msgstr "Colonne Famille"
 
+#. Context: locales
 #: 
 msgid "Telugu - India"
 msgstr "Telugu - Inde"
