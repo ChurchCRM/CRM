@@ -92,7 +92,6 @@
         "babel-core": "^6.26.3",
         "babel-loader": "^9.2.1",
         "babel-preset-react": "^6.24.1",
-        "cypress": "^15.3.0",
         "grunt": "^1.6.1",
         "grunt-cli": "^1.5.0",
         "grunt-confirm": "^1.0.8",
@@ -114,7 +113,7 @@
     },
     "optionalDependencies": {
         "cy-verify-downloads": "^0.2.6",
-        "cypress": "^13.17.0",
+        "cypress": "^15.4.0",
         "grunt-poeditor-gd": "^0.2.1"
     }
 }
