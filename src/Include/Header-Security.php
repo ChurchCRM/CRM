@@ -2,16 +2,16 @@
 
 /*
  * Security Headers Configuration
- * 
+ *
  * This file configures security-related HTTP headers for ChurchCRM:
- * 
+ *
  * - Content-Security-Policy (CSP): Helps protect against XSS attacks
- *   By default, CSP is in report-only mode. Enable enforcement via 
+ *   By default, CSP is in report-only mode. Enable enforcement via
  *   System Settings > bEnforceCSP configuration option.
- * 
+ *
  * - Strict-Transport-Security (HSTS): Enforces HTTPS connections
  *   Enable via System Settings > bHSTSEnable configuration option.
- * 
+ *
  * - X-Frame-Options: Prevents clickjacking attacks
  */
 
