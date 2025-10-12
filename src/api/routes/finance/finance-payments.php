@@ -22,7 +22,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
     });
 
     $group->post('/', function (Request $request, Response $response, array $args): Response {
-        $payment = $request->getParsedBody();
+        $payment = (object) $request->getParsedBody();
         /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');
 
