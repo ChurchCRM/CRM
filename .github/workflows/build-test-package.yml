@@ -42,7 +42,17 @@ jobs:
     - name: Declare some variables
       id: vars
       shell: bash
-      run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+      run: |
+        # Extract branch name and sanitize for artifact naming
+        branch_name="${GITHUB_REF#refs/heads/}"
+        # For pull requests, use a cleaner name
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
+          branch_name="pr-${{ github.event.number }}"
+        fi
+        # Replace invalid characters for artifact names
+        safe_branch=$(echo "$branch_name" | sed 's/[\/\\<>:"|?*]/-/g')
+        echo "branch=$branch_name" >> $GITHUB_OUTPUT
+        echo "safe_branch=$safe_branch" >> $GITHUB_OUTPUT
 
     - name: get-npm-version
       id: package-version
@@ -105,7 +115,12 @@ jobs:
     - name: Upload release artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ChurchCRM-${{ steps.package-version.outputs.current-version }}-${{ steps.vars.outputs.branch }}
+        name: >-
+          ${{ github.ref == 'refs/heads/master' && 
+              format('ChurchCRM-{0}', steps.package-version.outputs.current-version) ||
+              (github.event_name == 'pull_request' && 
+               format('ChurchCRM-{0}-PR{1}', steps.package-version.outputs.current-version, github.event.number) ||
+               format('ChurchCRM-{0}-{1}', steps.package-version.outputs.current-version, steps.vars.outputs.safe_branch)) }}
         path: target/ChurchCRM-*.zip
         retention-days: 90
         if-no-files-found: error
@@ -135,6 +150,31 @@ jobs:
           echo "create_release=false" >> $GITHUB_OUTPUT
         fi
 
+    - name: Verify release files before creating draft
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push' && steps.src-changes.outputs.create_release == 'true'
+      run: |
+        echo "📋 Verifying files for draft release..."
+        if [ -d "target" ]; then
+          echo "✅ Target directory exists"
+          ls -la target/
+          
+          # Find the zip file that will be attached
+          zip_files=$(find target -name "ChurchCRM-*.zip" -type f)
+          if [ -n "$zip_files" ]; then
+            echo "✅ Found zip files to attach:"
+            for zip_file in $zip_files; do
+              file_size=$(ls -lh "$zip_file" | awk '{print $5}')
+              echo "  📦 $(basename "$zip_file") ($file_size)"
+            done
+          else
+            echo "❌ No ChurchCRM-*.zip files found in target directory!"
+            exit 1
+          fi
+        else
+          echo "❌ Target directory does not exist!"
+          exit 1
+        fi
+
     - name: Create Draft Release (on master with src changes)
       if: github.ref == 'refs/heads/master' && github.event_name == 'push' && steps.src-changes.outputs.create_release == 'true'
       uses: softprops/action-gh-release@v2
@@ -145,11 +185,11 @@ jobs:
           ## ChurchCRM Release v${{ steps.package-version.outputs.current-version }}
           
           ### 📦 Downloads
-          - **ChurchCRM-${{ steps.package-version.outputs.current-version }}.zip** - Complete installation package
+          - **ChurchCRM-${{ steps.package-version.outputs.current-version }}.zip** - Complete installation package (attached below)
           
           ### 🚀 Installation
-          1. Download the zip file above
-          2. Extract to your web server
+          1. Download the zip file from the "Assets" section below
+          2. Extract to your web server directory
           3. Follow the [installation guide](https://github.com/ChurchCRM/CRM/wiki/Installation)
           
           ### 📝 Changes in /src Directory
@@ -210,5 +250,10 @@ jobs:
           echo "3. Add changelog entries" >> $GITHUB_STEP_SUMMARY
           echo "4. Publish the release when ready" >> $GITHUB_STEP_SUMMARY
         else
-          echo "**📥 Download Artifact:** ChurchCRM-${{ steps.package-version.outputs.current-version }}-${{ steps.vars.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
+          artifact_name="${{ github.ref == 'refs/heads/master' && 
+                             format('ChurchCRM-{0}', steps.package-version.outputs.current-version) ||
+                             (github.event_name == 'pull_request' && 
+                              format('ChurchCRM-{0}-PR{1}', steps.package-version.outputs.current-version, github.event.number) ||
+                              format('ChurchCRM-{0}-{1}', steps.package-version.outputs.current-version, steps.vars.outputs.safe_branch)) }}"
+          echo "**📥 Download Artifact:** $artifact_name" >> $GITHUB_STEP_SUMMARY
         fi
