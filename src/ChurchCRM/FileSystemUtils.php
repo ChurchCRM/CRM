@@ -69,22 +69,22 @@ class FileSystemUtils
         }
 
         $logger->info('Moving files: ' . $src . ' to ' . $dest);
-        
+
         // Get list of files in source and destination
         $sourceFiles = array_diff(scandir($src), ['.', '..']);
         $destFiles = array_diff(scandir($dest), ['.', '..']);
-        
+
         // Remove files/directories in destination that don't exist in source
         foreach ($destFiles as $file) {
             if (!in_array($file, $sourceFiles)) {
                 $destPath = "$dest/$file";
-                
+
                 // Skip removal of user data files that should be preserved during upgrade
                 if (self::shouldPreserveFile($destPath)) {
                     $logger->info('Preserving user data file during upgrade: ' . $destPath);
                     continue;
                 }
-                
+
                 if (is_dir($destPath)) {
                     $logger->info('Removing directory not in new release: ' . $destPath);
                     self::recursiveRemoveDirectory($destPath);
@@ -94,7 +94,7 @@ class FileSystemUtils
                 }
             }
         }
-        
+
         // Move files from source to destination
         foreach ($sourceFiles as $file) {
             if (is_dir("$src/$file")) {
@@ -109,7 +109,7 @@ class FileSystemUtils
 
         return rmdir($src);
     }
-    
+
     private static function shouldPreserveFile(string $path): bool
     {
         // Preserve user-uploaded images in Family and Person directories
@@ -117,17 +117,17 @@ class FileSystemUtils
         if (preg_match('#/Images/(Family|Person)(/.*)?/[^/]+\.(jpg|jpeg|png)$#i', $path)) {
             return true;
         }
-        
+
         // Preserve configuration files
         if (preg_match('#/Include/Config\.php$#', $path)) {
             return true;
         }
-        
+
         // Preserve composer.lock
         if (preg_match('#/composer\.lock$#', $path)) {
             return true;
         }
-        
+
         return false;
     }
 }
