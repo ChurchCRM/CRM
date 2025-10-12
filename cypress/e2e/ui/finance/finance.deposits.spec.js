@@ -63,4 +63,27 @@ describe("Finance Deposits", () => {
         cy.url().should("contain", "FindDepositSlip.php");
         cy.contains("Deposit Listing");
     });
+
+    it("Create a Deposit with XSS attempt - should be sanitized", () => {
+        const uniqueSeed = Date.now().toString();
+        const xssPayload = "<script>alert('XSS')</script>Test" + uniqueSeed;
+        const sanitizedComment = "Test" + uniqueSeed; // The script tags should be stripped
+
+        cy.loginAdmin("FindDepositSlip.php");
+        cy.contains("Add New Deposit");
+        cy.get("#depositComment").type(xssPayload);
+        cy.get("#addNewDeposit").click();
+
+        cy.url().should("contain", "DepositSlipEditor.php");
+        
+        // Verify the comment field contains sanitized text (no script tags)
+        cy.get("#Comment").should("have.value", sanitizedComment);
+        
+        // Navigate back to deposits list
+        cy.visit("/FindDepositSlip.php");
+        
+        // Verify the deposit appears in the table with sanitized comment
+        cy.get("#depositsTable").should("contain", sanitizedComment);
+        cy.get("#depositsTable").should("not.contain", "<script>");
+    });
 });

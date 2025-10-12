@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Utils\InputUtils;
 
 class FinancialService
 {
@@ -56,7 +57,7 @@ class FinancialService
             $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
             $deposit
                 ->setDate($depositDate)
-                ->setComment($depositComment)
+                ->setComment(InputUtils::filterString($depositComment))
                 ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setClosed(intval($depositClosed));
             $deposit->save();
@@ -69,7 +70,7 @@ class FinancialService
             $deposit = new Deposit();
             $deposit
                 ->setDate($depositDate)
-                ->setComment($depositComment)
+                ->setComment(InputUtils::filterString($depositComment))
                 ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setType($depositType);
             $deposit->save();

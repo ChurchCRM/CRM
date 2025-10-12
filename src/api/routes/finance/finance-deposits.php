@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -15,7 +16,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody();
         $deposit = new Deposit();
         $deposit->setType($input['depositType']);
-        $deposit->setComment($input['depositComment']);
+        $deposit->setComment(InputUtils::filterString($input['depositComment']));
         $deposit->setDate($input['depositDate']);
         $deposit->save();
         return SlimUtils::renderJSON($response, $deposit->toArray());
@@ -48,7 +49,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody();
         $appDeposit = DepositQuery::create()->findOneById($id);
         $appDeposit->setType($input['depositType']);
-        $appDeposit->setComment($input['depositComment']);
+        $appDeposit->setComment(InputUtils::filterString($input['depositComment']));
         $appDeposit->setDate($input['depositDate']);
         $appDeposit->setClosed($input['depositClosed']);
         $appDeposit->save();
