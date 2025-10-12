@@ -63,6 +63,36 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
+    - name: Create minimal BuildConfig for term extraction
+      run: |
+        echo "🔧 Creating minimal BuildConfig.json for term extraction..."
+        cat > BuildConfig.json << 'EOF'
+        {
+            "POEditor": {
+                "id": "77079",
+                "token": ""
+            },
+            "GitHub": {
+                "token": ""
+            },
+            "demoKey": "",
+            "Env": {
+                "local": {
+                    "server": "localhost",
+                    "database": {
+                        "server": "localhost",
+                        "port": "3306",
+                        "database": "churchcrm",
+                        "user": "churchcrm",
+                        "password": "changeme"
+                    },
+                    "admin-api-key": ""
+                }
+            }
+        }
+        EOF
+        echo "✅ BuildConfig.json created (database not needed for source code extraction)"
+
     - name: Backup original messages.po
       run: cp locale/messages.po locale/messages.po.backup
 
