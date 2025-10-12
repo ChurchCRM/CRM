@@ -94,49 +94,61 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
 
-    - name: Install NPM dependencies
+    - name: Install dependencies with npm-run-all fix
       run: |
-        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-          echo "🔍 Installing NPM dependencies with debug info..."
-          npm ci --verbose
-        else
-          echo "📦 Installing NPM dependencies..."
-          npm ci
-        fi
+        echo "📦 Installing dependencies..."
+        npm ci
         
-        # Ensure npm-run-all commands are accessible globally
-        echo "Setting up npm-run-all commands..."
-        npm install -g npm-run-all@^4.1.5
+        # Create reliable wrapper scripts for npm-run-all commands
+        echo "� Creating npm-run-all wrapper scripts..."
+        mkdir -p ./node_modules/.bin
+        
+        # Create run-p wrapper that uses npx npm-run-all
+        cat > ./node_modules/.bin/run-p << 'EOF'
+#!/bin/bash
+npx npm-run-all --parallel "$@"
+EOF
+        
+        # Create run-s wrapper that uses npx npm-run-all  
+        cat > ./node_modules/.bin/run-s << 'EOF'
+#!/bin/bash
+npx npm-run-all --sequential "$@"
+EOF
+        
+        # Make scripts executable
+        chmod +x ./node_modules/.bin/run-p ./node_modules/.bin/run-s
+        
+        echo "✅ npm-run-all wrapper scripts created"
 
     - name: Verify build dependencies
       run: |
         echo "🔍 Verifying build dependencies..."
         
-        echo "Checking npm-run-all installation:"
-        if command -v run-p >/dev/null 2>&1; then
-          echo "✅ run-p command is available globally"
-          run-p --version
-        else
-          echo "❌ run-p command not found globally"
-        fi
+        # Add node_modules/.bin to PATH
+        export PATH="$PWD/node_modules/.bin:$PATH"
         
-        echo "Checking local node_modules installation:"
+        echo "Testing our npm-run-all wrapper scripts:"
         if [ -f "node_modules/.bin/run-p" ]; then
-          echo "✅ run-p binary exists in node_modules/.bin/"
-          ./node_modules/.bin/run-p --version
+          echo "✅ run-p wrapper exists"
+          echo "run-p script contents:"
+          cat node_modules/.bin/run-p
+          echo "Testing run-p command:"
+          run-p --help | head -3 || echo "❌ run-p test failed"
         else
-          echo "❌ run-p binary not found in node_modules/.bin/"
+          echo "❌ run-p wrapper not found"
         fi
         
-        echo "Testing npx access:"
-        if npx run-p --version >/dev/null 2>&1; then
-          echo "✅ npx run-p works"
+        if [ -f "node_modules/.bin/run-s" ]; then
+          echo "✅ run-s wrapper exists" 
+          echo "Testing run-s command:"
+          run-s --help | head -3 || echo "❌ run-s test failed"
         else
-          echo "❌ npx run-p failed"
+          echo "❌ run-s wrapper not found"
         fi
         
-        echo "Current PATH:"
-        echo $PATH
+        echo "Testing npm scripts that use run-p:"
+        echo "Available scripts containing 'run-p':"
+        grep -n "run-p\|run-s" package.json || echo "No npm-run-all scripts found"
 
     - name: Get Composer cache directory
       id: composer-cache
@@ -165,24 +177,13 @@ jobs:
     - name: Build frontend assets
       run: |
         echo "🔨 Building frontend assets..."
-        # Ensure node_modules/.bin is in PATH
+        # Ensure node_modules/.bin is in PATH for our wrapper scripts
         export PATH="$PWD/node_modules/.bin:$PATH"
         
-        # Check if run-p is available before building
-        if ! command -v run-p >/dev/null 2>&1; then
-          echo "⚠️ run-p not found in PATH, using npx..."
-          if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-            npx npm run build:frontend -- --verbose
-          else
-            npx npm run build:frontend
-          fi
+        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
+          npm run build:frontend -- --verbose
         else
-          echo "✅ run-p command available, proceeding normally..."
-          if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-            npm run build:frontend -- --verbose
-          else
-            npm run build:frontend
-          fi
+          npm run build:frontend
         fi
         echo "✅ Frontend build completed"
 
