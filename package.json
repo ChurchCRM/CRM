@@ -99,7 +99,6 @@
         "grunt-contrib-compress": "^2.0.0",
         "grunt-contrib-copy": "^1.0.0",
         "grunt-curl": "^2.5.1",
-        "grunt-git": "^1.1.1",
         "i18next-conv": "^15.1.0",
         "i18next-parser": "^9.3.0",
         "mysql2": "^3.15.2",
