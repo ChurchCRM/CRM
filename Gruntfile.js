@@ -460,7 +460,6 @@ module.exports = function (grunt) {
         "updateFromPOeditor",
         "Description of the task",
         function (target) {
-            grunt.loadNpmTasks("grunt-poeditor-ab");
             grunt.task.run(["poeditor"]);
         },
     );
