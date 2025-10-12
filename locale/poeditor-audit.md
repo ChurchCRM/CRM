@@ -1,6 +1,6 @@
 # ChurchCRM Locale Audit Report
 
-**Generated:** 2025-10-11 at 9:05:56 PM
+**Generated:** 2025-10-12 at 1:20:34 AM
 **Total Supported Locales:** 41
 **Complete Locales (≥95%):** 24
 **Incomplete Locales (<50%):** 14
@@ -10,38 +10,38 @@
 
 | Locale | Language | Translations | Percentage | Status |
 |--------|----------|--------------|------------|--------|
-| `cs` | Czech | 2288 | 100% | 🟢 Complete |
-| `he` | Hebrew | 2288 | 100% | 🟢 Complete |
-| `ko` | Korean | 2288 | 100% | 🟢 Complete |
-| `ta` | Tamil | 2288 | 100% | 🟢 Complete |
-| `nl` | Dutch | 2286 | 99.91% | 🟢 Complete |
-| `id` | Indonesian | 2286 | 99.91% | 🟢 Complete |
-| `es` | Spanish | 2286 | 99.91% | 🟢 Complete |
-| `pt-br` | Portuguese (BR) | 2283 | 99.78% | 🟢 Complete |
-| `de` | German | 2281 | 99.69% | 🟢 Complete |
-| `it` | Italian | 2276 | 99.48% | 🟢 Complete |
-| `et` | Estonian | 2273 | 99.34% | 🟢 Complete |
-| `vi` | Vietnamese | 2273 | 99.34% | 🟢 Complete |
-| `sw` | Swahili | 2271 | 99.26% | 🟢 Complete |
-| `af` | Afrikaans | 2266 | 99.04% | 🟢 Complete |
-| `fr` | French | 2255 | 98.56% | 🟢 Complete |
-| `zh-tw` | Chinese (TW) | 2254 | 98.51% | 🟢 Complete |
-| `ro` | Romanian | 2254 | 98.51% | 🟢 Complete |
-| `ar` | Arabic | 2242 | 97.99% | 🟢 Complete |
-| `am` | Amharic | 2239 | 97.86% | 🟢 Complete |
-| `tr` | Turkish | 2239 | 97.86% | 🟢 Complete |
-| `uk` | Ukrainian | 2237 | 97.77% | 🟢 Complete |
-| `el` | Greek | 2236 | 97.73% | 🟢 Complete |
-| `zh-cn` | Chinese | 2235 | 97.68% | 🟢 Complete |
-| `sv` | Swedish | 2222 | 97.12% | 🟢 Complete |
-| `pt` | Portuguese | 2162 | 94.49% | 🟡 Good |
-| `ru` | Russian | 1446 | 63.2% | 🟠 Needs Work |
-| `pl` | Polish | 1170 | 51.14% | 🟠 Needs Work |
-| `nb` | Norwegian Bokmål | 918 | 40.12% | 🔴 Incomplete |
-| `hu` | Hungarian | 769 | 33.61% | 🔴 Incomplete |
-| `sq` | Albanian | 759 | 33.17% | 🔴 Incomplete |
-| `te` | Telugu | 399 | 17.44% | 🔴 Incomplete |
-| `ja` | Japanese | 226 | 9.88% | 🔴 Incomplete |
+| `cs` | Czech | 2288 | 99.96% | 🟢 Complete |
+| `he` | Hebrew | 2288 | 99.96% | 🟢 Complete |
+| `ko` | Korean | 2288 | 99.96% | 🟢 Complete |
+| `ta` | Tamil | 2288 | 99.96% | 🟢 Complete |
+| `nl` | Dutch | 2286 | 99.87% | 🟢 Complete |
+| `id` | Indonesian | 2286 | 99.87% | 🟢 Complete |
+| `es` | Spanish | 2286 | 99.87% | 🟢 Complete |
+| `pt-br` | Portuguese (BR) | 2283 | 99.74% | 🟢 Complete |
+| `de` | German | 2281 | 99.65% | 🟢 Complete |
+| `it` | Italian | 2276 | 99.43% | 🟢 Complete |
+| `et` | Estonian | 2273 | 99.3% | 🟢 Complete |
+| `vi` | Vietnamese | 2273 | 99.3% | 🟢 Complete |
+| `sw` | Swahili | 2271 | 99.21% | 🟢 Complete |
+| `af` | Afrikaans | 2266 | 99% | 🟢 Complete |
+| `fr` | French | 2255 | 98.51% | 🟢 Complete |
+| `zh-tw` | Chinese (TW) | 2254 | 98.47% | 🟢 Complete |
+| `ro` | Romanian | 2254 | 98.47% | 🟢 Complete |
+| `ar` | Arabic | 2242 | 97.95% | 🟢 Complete |
+| `am` | Amharic | 2239 | 97.82% | 🟢 Complete |
+| `tr` | Turkish | 2239 | 97.82% | 🟢 Complete |
+| `uk` | Ukrainian | 2237 | 97.73% | 🟢 Complete |
+| `el` | Greek | 2236 | 97.68% | 🟢 Complete |
+| `zh-cn` | Chinese | 2235 | 97.64% | 🟢 Complete |
+| `sv` | Swedish | 2222 | 97.07% | 🟢 Complete |
+| `pt` | Portuguese | 2162 | 94.45% | 🟡 Good |
+| `ru` | Russian | 1446 | 63.17% | 🟠 Needs Work |
+| `pl` | Polish | 1170 | 51.11% | 🟠 Needs Work |
+| `nb` | Norwegian Bokmål | 918 | 40.1% | 🔴 Incomplete |
+| `hu` | Hungarian | 769 | 33.6% | 🔴 Incomplete |
+| `sq` | Albanian | 759 | 33.16% | 🔴 Incomplete |
+| `te` | Telugu | 399 | 17.43% | 🔴 Incomplete |
+| `ja` | Japanese | 226 | 9.87% | 🔴 Incomplete |
 | `fi` | Finnish | 160 | 6.99% | 🔴 Incomplete |
 | `en-za` | English (ZA) | 91 | 3.98% | 🔴 Incomplete |
 | `hi` | Hindi | 87 | 3.8% | 🔴 Incomplete |
@@ -55,44 +55,44 @@
 ## Summary by Status
 
 ### 🟢 Complete Locales (≥95%) - 24 total
-- **Czech** (`cs`): 100%
-- **Hebrew** (`he`): 100%
-- **Korean** (`ko`): 100%
-- **Tamil** (`ta`): 100%
-- **Dutch** (`nl`): 99.91%
-- **Indonesian** (`id`): 99.91%
-- **Spanish** (`es`): 99.91%
-- **Portuguese (BR)** (`pt-br`): 99.78%
-- **German** (`de`): 99.69%
-- **Italian** (`it`): 99.48%
-- **Estonian** (`et`): 99.34%
-- **Vietnamese** (`vi`): 99.34%
-- **Swahili** (`sw`): 99.26%
-- **Afrikaans** (`af`): 99.04%
-- **French** (`fr`): 98.56%
-- **Chinese (TW)** (`zh-tw`): 98.51%
-- **Romanian** (`ro`): 98.51%
-- **Arabic** (`ar`): 97.99%
-- **Amharic** (`am`): 97.86%
-- **Turkish** (`tr`): 97.86%
-- **Ukrainian** (`uk`): 97.77%
-- **Greek** (`el`): 97.73%
-- **Chinese** (`zh-cn`): 97.68%
-- **Swedish** (`sv`): 97.12%
+- **Czech** (`cs`): 99.96%
+- **Hebrew** (`he`): 99.96%
+- **Korean** (`ko`): 99.96%
+- **Tamil** (`ta`): 99.96%
+- **Dutch** (`nl`): 99.87%
+- **Indonesian** (`id`): 99.87%
+- **Spanish** (`es`): 99.87%
+- **Portuguese (BR)** (`pt-br`): 99.74%
+- **German** (`de`): 99.65%
+- **Italian** (`it`): 99.43%
+- **Estonian** (`et`): 99.3%
+- **Vietnamese** (`vi`): 99.3%
+- **Swahili** (`sw`): 99.21%
+- **Afrikaans** (`af`): 99%
+- **French** (`fr`): 98.51%
+- **Chinese (TW)** (`zh-tw`): 98.47%
+- **Romanian** (`ro`): 98.47%
+- **Arabic** (`ar`): 97.95%
+- **Amharic** (`am`): 97.82%
+- **Turkish** (`tr`): 97.82%
+- **Ukrainian** (`uk`): 97.73%
+- **Greek** (`el`): 97.68%
+- **Chinese** (`zh-cn`): 97.64%
+- **Swedish** (`sv`): 97.07%
 
 ### 🟡 Good Locales (80-94%) - 1 total
-- **Portuguese** (`pt`): 94.49%
+- **Portuguese** (`pt`): 94.45%
 
 ### 🟠 Needs Work (50-79%) - 2 total
-- **Russian** (`ru`): 63.2%
-- **Polish** (`pl`): 51.14%
+- **Russian** (`ru`): 63.17%
+- **Polish** (`pl`): 51.11%
 
 ### 🔴 Incomplete Locales (<50%) - 14 total
-- **Norwegian Bokmål** (`nb`): 40.12%
-- **Hungarian** (`hu`): 33.61%
-- **Albanian** (`sq`): 33.17%
-- **Telugu** (`te`): 17.44%
-- **Japanese** (`ja`): 9.88%
+- **Norwegian Bokmål** (`nb`): 40.1%
+- **Hungarian** (`hu`): 33.6%
+- **Albanian** (`sq`): 33.16%
+- **Telugu** (`te`): 17.43%
+- **Japanese** (`ja`): 9.87%
 - **Finnish** (`fi`): 6.99%
 - **English (ZA)** (`en-za`): 3.98%
 - **Hindi** (`hi`): 3.8%
