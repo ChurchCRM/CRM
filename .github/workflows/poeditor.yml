@@ -1,4 +1,4 @@
-name: POEditor Locale Download and Audit 
+name: Locale POEditor Download and Audit 
 
 on:
   push:
