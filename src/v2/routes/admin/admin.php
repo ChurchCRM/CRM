@@ -56,7 +56,7 @@ function logsPage(Request $request, Response $response, array $args): Response
 
     $logsDir = SystemURLs::getDocumentRoot() . '/logs';
     $logFiles = [];
-    
+
     if (is_dir($logsDir)) {
         $files = scandir($logsDir, SCANDIR_SORT_DESCENDING);
         foreach ($files as $file) {
