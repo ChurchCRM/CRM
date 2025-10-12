@@ -5,7 +5,7 @@ on:
     branches:    
       - master
       - develop
-    paths-ignore:
+        echo "🔧 Creating npm-run-all wrapper scripts..."       echo "🔧 Creating npm-run-all wrapper scripts..."   paths-ignore:
       - '**/*.md'
       - 'docs/**'
       - 'LICENSE'
