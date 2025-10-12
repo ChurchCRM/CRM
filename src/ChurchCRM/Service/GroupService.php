@@ -224,7 +224,7 @@ class GroupService
         }
     }
 
-    public function addGroupRole(string $groupID, string $groupRoleName): string
+    public function addGroupRole(string $groupID, string $groupRoleName): array
     {
         requireUserGroupMembership('bManageGroups');
         if (strlen($groupRoleName) === 0) {
@@ -269,13 +269,13 @@ class GroupService
             }
         }
 
-        return json_encode([
+        return [
             'newRole' => [
                 'roleID'   => $newOptionID,
                 'roleName' => $groupRoleName,
                 'sequence' => $newOptionSequence,
             ],
-        ], JSON_THROW_ON_ERROR);
+        ];
     }
 
     public function enableGroupSpecificProperties(string $groupID): void
