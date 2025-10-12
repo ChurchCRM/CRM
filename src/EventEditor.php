@@ -35,7 +35,7 @@ if (isset($_GET['calendarAction'])) {
     $tyid = 0;
 
     if (array_key_exists('EN_tyid', $_POST)) {
-        $tyid = $_POST['EN_tyid'];
+        $tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
     }
 }
 
@@ -51,7 +51,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     // event fields...but still allow the user to edit everything
     // except event type since event type is tied to the attendance count fields
 
-    $sSQL = "SELECT * FROM event_types WHERE type_id=$tyid";
+    $sSQL = "SELECT * FROM event_types WHERE type_id=" . intval($tyid);
     $rsOpps = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsOpps);
     $ceRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);

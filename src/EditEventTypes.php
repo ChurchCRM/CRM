@@ -14,26 +14,26 @@ $sPageTitle = gettext('Edit Event Types');
 require_once 'Include/Header.php';
 
 $editing = 'FALSE';
-$tyid = $_POST['EN_tyid'];
+$tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
 
 if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
-    $ctid = mb_substr($_POST['Action'], 7);
-    $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_countid='$ctid' LIMIT 1";
+    $ctid = InputUtils::legacyFilterInput(mb_substr($_POST['Action'], 7), 'int');
+    $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_countid='" . intval($ctid) . "' LIMIT 1";
     RunQuery($sSQL);
 } else {
     switch ($_POST['Action']) {
         case 'ADD':
-            $newCTName = $_POST['newCountName'];
-            $theID = $_POST['EN_tyid'];
-            $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$newCTName')";
+            $newCTName = InputUtils::legacyFilterInput($_POST['newCountName']);
+            $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
+            $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . intval($theID) . "','$newCTName')";
             RunQuery($sSQL);
             break;
 
         case 'NAME':
             $editing = 'FALSE';
             $eName = $_POST['newEvtName'];
-            $theID = $_POST['EN_tyid'];
-            $eventType = EventTypeQuery::create()->findOneById(InputUtils::legacyFilterInput($theID));
+            $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
+            $eventType = EventTypeQuery::create()->findOneById(InputUtils::legacyFilterInput($theID, 'int'));
             $eventType->setName(InputUtils::legacyFilterInput($eName));
             $eventType->save();
             $theID = '';
@@ -43,8 +43,8 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
         case 'TIME':
             $editing = 'FALSE';
             $eTime = $_POST['newEvtStartTime'];
-            $theID = $_POST['EN_tyid'];
-            $eventType = EventTypeQuery::create()->findOneById(InputUtils::legacyFilterInput($theID));
+            $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
+            $eventType = EventTypeQuery::create()->findOneById(InputUtils::legacyFilterInput($theID, 'int'));
             $eventType->setDefStartTime(InputUtils::legacyFilterInput($eTime));
             $eventType->save();
             $theID = '';
@@ -54,7 +54,7 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
 }
 
 // Get data for the form as it now exists.
-$sSQL = "SELECT * FROM event_types WHERE type_id='$tyid'";
+$sSQL = "SELECT * FROM event_types WHERE type_id=" . intval($tyid);
 $rsOpps = RunQuery($sSQL);
 $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
 extract($aRow);
