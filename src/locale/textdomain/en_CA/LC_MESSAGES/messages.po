@@ -8,6 +8,7 @@ msgstr ""
 "Language: en-ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "Province"
@@ -52,14 +53,17 @@ msgstr "Church Province"
 msgid "Church Zip"
 msgstr "Church Postal Code"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"
 msgstr "Postal Code"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Enter any part of the following: Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
 
+#. Context: query_qry
 #: 
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Search by any part of Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
