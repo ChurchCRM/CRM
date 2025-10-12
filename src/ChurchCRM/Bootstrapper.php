@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Version;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
@@ -212,12 +213,12 @@ class Bootstrapper
         self::$bootStrapLogger->info("Installing ChurchCRM Schema");
         $connection = Propel::getConnection();
         $version = new Version();
-        $version->setVersion(SystemService::getInstalledVersion());
+        $version->setVersion(VersionUtils::getInstalledVersion());
         $version->setUpdateStart(new \DateTime());
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/install/Install.sql', $connection);
         $version->setUpdateEnd(new \DateTime());
         $version->save();
-        self::$bootStrapLogger->info("Installed ChurchCRM Schema version: " . SystemService::getInstalledVersion());
+        self::$bootStrapLogger->info("Installed ChurchCRM Schema version: " . VersionUtils::getInstalledVersion());
     }
     public static function initSession(): void
     {
@@ -311,8 +312,8 @@ class Bootstrapper
     }
     public static function isDBCurrent(): bool
     {
-        $dbVersion = SystemService::getDBVersion();
-        $installVersion = SystemService::getInstalledVersion();
+        $dbVersion = VersionUtils::getDBVersion();
+        $installVersion = VersionUtils::getInstalledVersion();
         self::$bootStrapLogger->debug("Checking versions: " . $dbVersion . " == " . $installVersion);
         return $dbVersion == $installVersion;
     }
