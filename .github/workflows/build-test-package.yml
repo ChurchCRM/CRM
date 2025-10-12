@@ -88,9 +88,79 @@ jobs:
     - name: Stop Docker
       run: |
         npm run docker:ci:down
+
+    - name: List build artifacts
+      run: |
+        echo "📦 Build artifacts created:"
+        if [ -d "target" ]; then
+          ls -la target/
+          echo ""
+          echo "📊 File sizes:"
+          du -h target/*
+        else
+          echo "❌ No target directory found"
+          exit 1
+        fi
   
-    - name: Upload zip file
+    - name: Upload release artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}-files
-        path: target/ChurchCRM-*.*
+        name: ChurchCRM-${{ steps.package-version.outputs.current-version }}-${{ steps.vars.outputs.branch }}
+        path: target/ChurchCRM-*.zip
+        retention-days: 90
+        if-no-files-found: error
+
+    - name: Create Release (on master branch)
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v${{ steps.package-version.outputs.current-version }}
+        name: ChurchCRM v${{ steps.package-version.outputs.current-version }}
+        body: |
+          ## ChurchCRM Release v${{ steps.package-version.outputs.current-version }}
+          
+          ### 📦 Downloads
+          - **ChurchCRM-${{ steps.package-version.outputs.current-version }}.zip** - Complete installation package
+          
+          ### 🚀 Installation
+          1. Download the zip file above
+          2. Extract to your web server
+          3. Follow the [installation guide](https://github.com/ChurchCRM/CRM/wiki/Installation)
+          
+          ### 📝 Changes
+          See the [CHANGELOG.md](https://github.com/ChurchCRM/CRM/blob/master/CHANGELOG.md) for detailed changes in this release.
+          
+          ---
+          *Built automatically from commit ${{ github.sha }}*
+        files: target/ChurchCRM-*.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build Summary
+      if: always()
+      run: |
+        echo "## 🏗️ Build Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**📦 Version:** ${{ steps.package-version.outputs.current-version }}" >> $GITHUB_STEP_SUMMARY
+        echo "**🌿 Branch:** ${{ steps.vars.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
+        echo "**📝 Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ -d "target" ]; then
+          echo "**📦 Artifacts Created:**" >> $GITHUB_STEP_SUMMARY
+          for file in target/ChurchCRM-*.zip; do
+            if [ -f "$file" ]; then
+              size=$(ls -lh "$file" | awk '{print $5}')
+              echo "- 📄 \`$(basename "$file")\` ($size)" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ github.ref }}" = "refs/heads/master" ] && [ "${{ github.event_name }}" = "push" ]; then
+          echo "**🚀 Release Created:** [v${{ steps.package-version.outputs.current-version }}](https://github.com/ChurchCRM/CRM/releases/tag/v${{ steps.package-version.outputs.current-version }})" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "**📥 Download Artifact:** ChurchCRM-${{ steps.package-version.outputs.current-version }}-${{ steps.vars.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
+        fi
