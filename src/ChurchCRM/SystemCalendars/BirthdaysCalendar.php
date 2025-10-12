@@ -43,6 +43,7 @@ class BirthdaysCalendar implements SystemCalendar
     {
         $people = PersonQuery::create()
             ->filterByBirthDay(0, Criteria::GREATER_THAN)
+            ->filterByBirthMonth(0, Criteria::GREATER_THAN)
             ->find();
 
         return $this->peopleCollectionToEvents($people, $start, $end);
@@ -52,6 +53,7 @@ class BirthdaysCalendar implements SystemCalendar
     {
         $people = PersonQuery::create()
             ->filterByBirthDay(0, Criteria::GREATER_THAN)
+            ->filterByBirthMonth(0, Criteria::GREATER_THAN)
             ->filterById($Id)
             ->find();
 
