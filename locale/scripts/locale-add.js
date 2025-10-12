@@ -10,7 +10,7 @@
  * - Creating locale JavaScript files
  * - Updating system files
  * 
- * Usage: node scripts/locale-add.js [options]
+ * Usage: node locale/locale-add.js [options]
  * 
  * Options:
  *   --name <name>          Language name (e.g., "Korean", "French")
@@ -28,7 +28,7 @@ const { execSync } = require('child_process');
 
 class LanguageSetup {
     constructor() {
-        this.localesPath = 'src/locale/locales.json';
+        this.localesPath = path.resolve(__dirname, '../../src/locale/locales.json');
         this.dryRun = false;
         this.interactive = false;
     }
@@ -88,7 +88,7 @@ class LanguageSetup {
         console.log(`
 🌍 ChurchCRM Language Setup Tool
 
-Usage: node scripts/locale-add.js [options]
+Usage: node locale/locale-add.js [options]
 
 Options:
   --name <name>          Language name (e.g., "Korean", "French")
@@ -102,13 +102,16 @@ Options:
 
 Examples:
   # Interactive mode
-  node scripts/locale-add.js --interactive
+  node locale/locale-add.js --interactive
 
   # Direct mode
-  node scripts/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR" --datatables "Korean"
+  node locale/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR" --datatables "Korean"
 
   # Dry run to see what would be created
-  node scripts/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR" --datatables "Korean" --dry-run
+    node locale/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR" --datatables "Korean"
+
+
+  node locale/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR" --datatables "Korean" --dry-run
         `);
     }
 
@@ -269,9 +272,9 @@ Examples:
      */
     createDirectories(config) {
         const directories = [
-            `src/locale/textdomain/${config.locale}`,
-            `src/locale/textdomain/${config.locale}/LC_MESSAGES`,
-            `locale/JSONKeys`
+            path.resolve(__dirname, `../../src/locale/textdomain/${config.locale}`),
+            path.resolve(__dirname, `../../src/locale/textdomain/${config.locale}/LC_MESSAGES`),
+            path.resolve(__dirname, '../JSONKeys')
         ];
 
         directories.forEach(dir => {
@@ -294,7 +297,7 @@ Examples:
     createTranslationFiles(config) {
         const files = [
             {
-                path: `src/locale/textdomain/${config.locale}/LC_MESSAGES/messages.po`,
+                path: path.resolve(__dirname, `../../src/locale/textdomain/${config.locale}/LC_MESSAGES/messages.po`),
                 content: `# ChurchCRM ${config.name} Translation
 # Language: ${config.name} (${config.code})
 # Locale: ${config.locale}
@@ -337,7 +340,7 @@ msgstr ""
     generateLocaleJS(config) {
         if (this.dryRun) {
             console.log(`🔧 Would run: grunt genLocaleJSFiles`);
-            console.log(`   This would create: src/locale/js/${config.locale}.js`);
+            console.log(`   This would create: ../../src/locale/js/${config.locale}.js`);
         } else {
             try {
                 console.log('🔧 Generating locale JavaScript files...');
@@ -371,9 +374,9 @@ msgstr ""
         
         console.log('📄 **Files created:**');
         console.log(`   - ${this.localesPath} (updated)`);
-        console.log(`   - src/locale/textdomain/${config.locale}/LC_MESSAGES/messages.po`);
-        console.log(`   - locale/JSONKeys/${config.locale}.json`);
-        console.log(`   - src/locale/js/${config.locale}.js (generated)\n`);
+        console.log(`   - ../../src/locale/textdomain/${config.locale}/LC_MESSAGES/messages.po`);
+        console.log(`   - JSONKeys/${config.locale}.json`);
+        console.log(`   - ../../src/locale/js/${config.locale}.js (generated)\n`);
         
         if (this.dryRun) {
             console.log('🔄 **Run without --dry-run to actually create the files**\n');

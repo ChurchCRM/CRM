@@ -1,6 +1,9 @@
 name: POEditor Locale Download and Audit 
 
 on:
+  push:
+    paths:
+      - 'locale/messages.po'
   schedule:
     # Run daily at midnight UTC
     - cron: "0 0 * * *"

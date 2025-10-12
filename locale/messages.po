@@ -1,4 +1,3 @@
-# #-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
@@ -7,10 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-10 11:49-0700\n"
+"POT-Creation-Date: 2025-10-11 17:53-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,148 +17,1656 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"#-#-#-#-#  translation.po (i18next-conv)  #-#-#-#-#\n"
-"Project-Id-Version: i18next-conv\n"
-"mime-version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2025-05-10T18:49:38.519Z\n"
-"PO-Revision-Date: 2025-05-10T18:49:38.520Z\n"
-"Language: en\n"
 
-msgid "Invalid request: Missing calendar id"
+#. Context: userconfig_ucfg
+msgid "User permission to send email via mailto: links"
 msgstr ""
 
-msgid "Not Found: Unknown calendar id"
+#. Context: userconfig_ucfg
+msgid "Delimiter to separate emails in mailto: links"
 msgstr ""
 
-msgid "invalid event type id"
+#. Context: userconfig_ucfg
+msgid "User permission to create directories"
 msgstr ""
 
-msgid "invalid calendar pinning"
+#. Context: userconfig_ucfg
+msgid "User permission to export CSV files"
 msgstr ""
 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+#. Context: userconfig_ucfg
+msgid "Allow user to add new event"
 msgstr ""
 
-msgid "records(s) successfully added to selected Group."
+#. Context: query_qry
+msgid "Family Member Count"
 msgstr ""
 
-msgid "records(s) successfully deleted from the selected Group."
+#. Context: query_qry
+msgid "Person by Age"
 msgstr ""
 
-msgid "Your cart is empty"
+#. Context: query_qry
+msgid "Total By Gender"
 msgstr ""
 
-msgid "Your cart has been successfully emptied"
+#. Context: query_qry
+msgid "Person by Role and Gender"
 msgstr ""
 
-msgid "List not found"
+#. Context: query_qry
+msgid "Person by Property"
 msgstr ""
 
-msgid "List not in the list"
+#. Context: query_qry
+msgid "Advanced Search"
 msgstr ""
 
-msgid "Deactivated the Family"
+#. Context: query_qry
+msgid "Birthdays"
 msgstr ""
 
-msgid "Activated the Family"
+#. Context: query_qry
+msgid "Registered students"
 msgstr ""
 
-msgid "Error sending email(s)"
+#. Context: query_qry
+msgid "Membership anniversaries"
 msgstr ""
 
-msgid "Please check logs for more information"
+#. Context: query_qry
+msgid "Select database users"
 msgstr ""
 
-msgid "Deleted from group"
+#. Context: query_qry
+msgid "Select all members"
 msgstr ""
 
-msgid "Added to group"
+#. Context: query_qry
+msgid "Volunteers"
 msgstr ""
 
-msgid "invalid group request"
+#. Context: query_qry
+msgid "Recent friends"
 msgstr ""
 
-msgid "invalid group id"
+#. Context: query_qry
+msgid "Pledge comparison"
 msgstr ""
 
-msgid "invalid status value"
+#. Context: query_qry
+msgid "Missing pledges"
 msgstr ""
 
-msgid "invalid export value"
+#. Context: query_qry
+msgid "Credit Card People"
 msgstr ""
 
-msgid "Can't delete yourself"
+#. Context: query_qry
+msgid "Family Pledge by Fiscal Year"
 msgstr ""
 
-msgid "The role could not be found."
+#. Context: query_qry
+msgid "CustomSearch"
 msgstr ""
 
-msgid "The role is already assigned."
+#. Context: query_qry
+msgid "Returns each family and the total number of people assigned to them."
 msgstr ""
 
-msgid "The role is successfully assigned."
+#. Context: query_qry
+msgid "Returns any person records with ages between two given ages."
 msgstr ""
 
-msgid "The role could not be assigned."
+#. Context: query_qry
+msgid "Total of records matching a given gender."
 msgstr ""
 
-msgid "The property is already assigned."
+#. Context: query_qry
+msgid "Selects person records with the family role and gender specified."
 msgstr ""
 
-msgid "The property could not be assigned."
+#. Context: query_qry
+msgid "Returns person records which are assigned the given property."
 msgstr ""
 
-msgid "The property is successfully assigned."
+#. Context: query_qry
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr ""
 
-msgid "The record could not be found."
+#. Context: query_qry
+msgid "People with birthdays in a particular month"
 msgstr ""
 
-msgid "The property could not be unassigned."
+#. Context: query_qry
+msgid "Find Registered students"
 msgstr ""
 
-msgid "The property is successfully unassigned."
+#. Context: query_qry
+msgid "Members who joined in a particular month"
 msgstr ""
 
-msgid "Validation Error"
+#. Context: query_qry
+msgid "People who are registered as database users"
 msgstr ""
 
-msgid "Invalid User/Password"
+#. Context: query_qry
+msgid "People who are members"
 msgstr ""
 
-msgid "Link Not found"
+#. Context: query_qry
+msgid "Find volunteers for a particular opportunity"
 msgstr ""
 
-msgid "The database has been cleared."
+#. Context: query_qry
+msgid "Friends who signed up in previous months"
 msgstr ""
 
-msgid "The people and families has been cleared from the database."
+#. Context: query_qry
+msgid "Compare pledges between two fiscal years"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people who pledged one year but not another"
+msgstr ""
+
+#. Context: query_qry
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
+#. Context: query_qry
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people with a custom field value"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Male"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Female"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Name"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Zip Code"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "State"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "City"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Home Phone"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2012/2013"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2013/2014"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2014/2015"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2015/2016"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Email"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "WorkEmail"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Member"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Regular Attender"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Guest"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Non-Attender"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Non-Attender (staff)"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2016/2017"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2017/2018"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2018/2019"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2019/2020"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2020/2021"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2021/2022"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2022/2023"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Minimum Age"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Maximum Age"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Gender"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Family Role"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Property"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Beginning Date"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Ending Date"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Search"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Field"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Month"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Class"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Volunteer opportunities"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Months"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Classification"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Custom field"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Field value"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The minimum age for which you want records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The maximum age for which you want records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The desired gender to search the database for."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select the desired family role."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The gender for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The property for which you would like person records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select field to search for."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The birthday month for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The sunday school class for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Group of registered students"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The membership anniversary month for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Choose a volunteer opportunity"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Number of months since becoming a friend"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First fiscal year for comparison"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second fiscal year for comparison"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Pledged this year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "but not this year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Member, Regular Attender, etc."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First volunteer opportunity choice"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second volunteer opportunity choice"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Choose customer person field"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Match custom field to this value"
+msgstr ""
+
+#. Context: countries
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Åland Islands (Åland)"
+msgstr ""
+
+#. Context: countries
+msgid "Albania (Shqipëri)"
+msgstr ""
+
+#. Context: countries
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "American Samoa"
+msgstr ""
+
+#. Context: countries
+msgid "Andorra"
+msgstr ""
+
+#. Context: countries
+msgid "Angola"
+msgstr ""
+
+#. Context: countries
+msgid "Anguilla"
+msgstr ""
+
+#. Context: countries
+msgid "Antarctica"
+msgstr ""
+
+#. Context: countries
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#. Context: countries
+msgid "Argentina"
+msgstr ""
+
+#. Context: countries
+msgid "Armenia (Հայաստան)"
+msgstr ""
+
+#. Context: countries
+msgid "Aruba"
+msgstr ""
+
+#. Context: countries
+msgid "Ascension Island"
+msgstr ""
+
+#. Context: countries
+msgid "Australia"
+msgstr ""
+
+#. Context: countries
+msgid "Austria (Österreich)"
+msgstr ""
+
+#. Context: countries
+msgid "Azerbaijan (Azərbaycan)"
+msgstr ""
+
+#. Context: countries
+msgid "Bahamas"
+msgstr ""
+
+#. Context: countries
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr ""
+
+#. Context: countries
+msgid "Barbados"
+msgstr ""
+
+#. Context: countries
+msgid "Belarus (Беларусь)"
+msgstr ""
+
+#. Context: countries
+msgid "Belgium (België)"
+msgstr ""
+
+#. Context: countries
+msgid "Belize"
+msgstr ""
+
+#. Context: countries
+msgid "Benin (Bénin)"
+msgstr ""
+
+#. Context: countries
+msgid "Bermuda"
+msgstr ""
+
+#. Context: countries
+msgid "Bhutan (འབྲུག)"
+msgstr ""
+
+#. Context: countries
+msgid "Bolivia"
+msgstr ""
+
+#. Context: countries
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr ""
+
+#. Context: countries
+msgid "Botswana"
+msgstr ""
+
+#. Context: countries
+msgid "Bouvet Island"
+msgstr ""
+
+#. Context: countries
+msgid "Brazil (Brasil)"
+msgstr ""
+
+#. Context: countries
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#. Context: countries
+msgid "British Virgin Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Brunei"
+msgstr ""
+
+#. Context: countries
+msgid "Bulgaria (България)"
+msgstr ""
+
+#. Context: countries
+msgid "Burkina Faso"
+msgstr ""
+
+#. Context: countries
+msgid "Burundi (Uburundi)"
+msgstr ""
+
+#. Context: countries
+msgid "Cambodia (កម្ពុជា)"
+msgstr ""
+
+#. Context: countries
+msgid "Cameroon (Cameroun)"
+msgstr ""
+
+#. Context: countries
+msgid "Canada"
+msgstr ""
+
+#. Context: countries
+msgid "Canary Islands (islas Canarias)"
+msgstr ""
+
+#. Context: countries
+msgid "Cape Verde (Kabu Verdi)"
+msgstr ""
+
+#. Context: countries
+msgid "Caribbean Netherlands"
+msgstr ""
+
+#. Context: countries
+msgid "Cayman Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Central African Republic (République centrafricaine)"
+msgstr ""
+
+#. Context: countries
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr ""
+
+#. Context: countries
+msgid "Chad (Tchad)"
+msgstr ""
+
+#. Context: countries
+msgid "Chile"
+msgstr ""
+
+#. Context: countries
+msgid "China (中国)"
+msgstr ""
+
+#. Context: countries
+msgid "Christmas Island"
+msgstr ""
+
+#. Context: countries
+msgid "Clipperton Island"
+msgstr ""
+
+#. Context: countries
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr ""
+
+#. Context: countries
+msgid "Colombia"
+msgstr ""
+
+#. Context: countries
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr ""
+
+#. Context: countries
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr ""
+
+#. Context: countries
+msgid "Cook Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Costa Rica"
+msgstr ""
+
+#. Context: countries
+msgid "Côte d’Ivoire"
+msgstr ""
+
+#. Context: countries
+msgid "Croatia (Hrvatska)"
+msgstr ""
+
+#. Context: countries
+msgid "Cuba"
+msgstr ""
+
+#. Context: countries
+msgid "Curaçao"
+msgstr ""
+
+#. Context: countries
+msgid "Cyprus (Κύπρος)"
+msgstr ""
+
+#. Context: countries
+msgid "Czech Republic (Česká republika)"
+msgstr ""
+
+#. Context: countries
+msgid "Denmark (Danmark)"
+msgstr ""
+
+#. Context: countries
+msgid "Diego Garcia"
+msgstr ""
+
+#. Context: countries
+msgid "Djibouti"
+msgstr ""
+
+#. Context: countries
+msgid "Dominica"
+msgstr ""
+
+#. Context: countries
+msgid "Dominican Republic (República Dominicana)"
+msgstr ""
+
+#. Context: countries
+msgid "Ecuador"
+msgstr ""
+
+#. Context: countries
+msgid "Egypt (‫مصر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "El Salvador"
+msgstr ""
+
+#. Context: countries
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr ""
+
+#. Context: countries
+msgid "Eritrea"
+msgstr ""
+
+#. Context: countries
+msgid "Estonia (Eesti)"
+msgstr ""
+
+#. Context: countries
+msgid "Ethiopia"
+msgstr ""
+
+#. Context: countries
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr ""
+
+#. Context: countries
+msgid "Faroe Islands (Føroyar)"
+msgstr ""
+
+#. Context: countries
+msgid "Fiji"
+msgstr ""
+
+#. Context: countries
+msgid "Finland (Suomi)"
+msgstr ""
+
+#. Context: countries
+msgid "France"
+msgstr ""
+
+#. Context: countries
+msgid "French Guiana (Guyane française)"
+msgstr ""
+
+#. Context: countries
+msgid "French Polynesia (Polynésie française)"
+msgstr ""
+
+#. Context: countries
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr ""
+
+#. Context: countries
+msgid "Gabon"
+msgstr ""
+
+#. Context: countries
+msgid "Gambia"
+msgstr ""
+
+#. Context: countries
+msgid "Georgia (საქართველო)"
+msgstr ""
+
+#. Context: countries
+msgid "Germany (Deutschland)"
+msgstr ""
+
+#. Context: countries
+msgid "Ghana (Gaana)"
+msgstr ""
+
+#. Context: countries
+msgid "Gibraltar"
+msgstr ""
+
+#. Context: countries
+msgid "Greece (Ελλάδα)"
+msgstr ""
+
+#. Context: countries
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr ""
+
+#. Context: countries
+msgid "Grenada"
+msgstr ""
+
+#. Context: countries
+msgid "Guadeloupe"
+msgstr ""
+
+#. Context: countries
+msgid "Guam"
+msgstr ""
+
+#. Context: countries
+msgid "Guatemala"
+msgstr ""
+
+#. Context: countries
+msgid "Guernsey"
+msgstr ""
+
+#. Context: countries
+msgid "Guinea (Guinée)"
+msgstr ""
+
+#. Context: countries
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr ""
+
+#. Context: countries
+msgid "Guyana"
+msgstr ""
+
+#. Context: countries
+msgid "Haiti"
+msgstr ""
+
+#. Context: countries
+msgid "Heard & McDonald Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Honduras"
+msgstr ""
+
+#. Context: countries
+msgid "Hong Kong (香港)"
+msgstr ""
+
+#. Context: countries
+msgid "Hungary (Magyarország)"
+msgstr ""
+
+#. Context: countries
+msgid "Iceland (Ísland)"
+msgstr ""
+
+#. Context: countries
+msgid "India (भारत)"
+msgstr ""
+
+#. Context: countries
+msgid "Indonesia"
+msgstr ""
+
+#. Context: countries
+msgid "Iran (‫ایران‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Iraq (‫العراق‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Ireland"
+msgstr ""
+
+#. Context: countries
+msgid "Isle of Man"
+msgstr ""
+
+#. Context: countries
+msgid "Israel (‫ישראל‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Italy (Italia)"
+msgstr ""
+
+#. Context: countries
+msgid "Jamaica"
+msgstr ""
+
+#. Context: countries
+msgid "Japan (日本)"
+msgstr ""
+
+#. Context: countries
+msgid "Jersey"
+msgstr ""
+
+#. Context: countries
+msgid "Jordan (‫الأردن‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Kazakhstan (Казахстан)"
+msgstr ""
+
+#. Context: countries
+msgid "Kenya"
+msgstr ""
+
+#. Context: countries
+msgid "Kiribati"
+msgstr ""
+
+#. Context: countries
+msgid "Kosovo (Kosovë)"
+msgstr ""
+
+#. Context: countries
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr ""
+
+#. Context: countries
+msgid "Laos (ລາວ)"
+msgstr ""
+
+#. Context: countries
+msgid "Latvia (Latvija)"
+msgstr ""
+
+#. Context: countries
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Lesotho"
+msgstr ""
+
+#. Context: countries
+msgid "Liberia"
+msgstr ""
+
+#. Context: countries
+msgid "Libya (‫ليبيا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Liechtenstein"
+msgstr ""
+
+#. Context: countries
+msgid "Lithuania (Lietuva)"
+msgstr ""
+
+#. Context: countries
+msgid "Luxembourg"
+msgstr ""
+
+#. Context: countries
+msgid "Macau (澳門)"
+msgstr ""
+
+#. Context: countries
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr ""
+
+#. Context: countries
+msgid "Madagascar (Madagasikara)"
+msgstr ""
+
+#. Context: countries
+msgid "Malawi"
+msgstr ""
+
+#. Context: countries
+msgid "Malaysia"
+msgstr ""
+
+#. Context: countries
+msgid "Maldives"
+msgstr ""
+
+#. Context: countries
+msgid "Mali"
+msgstr ""
+
+#. Context: countries
+msgid "Malta"
+msgstr ""
+
+#. Context: countries
+msgid "Marshall Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Martinique"
+msgstr ""
+
+#. Context: countries
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Mauritius (Moris)"
+msgstr ""
+
+#. Context: countries
+msgid "Mayotte"
+msgstr ""
+
+#. Context: countries
+msgid "Mexico (México)"
+msgstr ""
+
+#. Context: countries
+msgid "Micronesia"
+msgstr ""
+
+#. Context: countries
+msgid "Moldova (Republica Moldova)"
+msgstr ""
+
+#. Context: countries
+msgid "Monaco"
+msgstr ""
+
+#. Context: countries
+msgid "Mongolia (Монгол)"
+msgstr ""
+
+#. Context: countries
+msgid "Montenegro (Crna Gora)"
+msgstr ""
+
+#. Context: countries
+msgid "Montserrat"
+msgstr ""
+
+#. Context: countries
+msgid "Morocco (‫المغرب‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Mozambique (Moçambique)"
+msgstr ""
+
+#. Context: countries
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr ""
+
+#. Context: countries
+msgid "Namibia (Namibië)"
+msgstr ""
+
+#. Context: countries
+msgid "Nauru"
+msgstr ""
+
+#. Context: countries
+msgid "Nepal (नेपाल)"
+msgstr ""
+
+#. Context: countries
+msgid "Netherlands (Nederland)"
+msgstr ""
+
+#. Context: countries
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr ""
+
+#. Context: countries
+msgid "New Zealand"
+msgstr ""
+
+#. Context: countries
+msgid "Nicaragua"
+msgstr ""
+
+#. Context: countries
+msgid "Niger (Nijar)"
+msgstr ""
+
+#. Context: countries
+msgid "Nigeria"
+msgstr ""
+
+#. Context: countries
+msgid "Niue"
+msgstr ""
+
+#. Context: countries
+msgid "Norfolk Island"
+msgstr ""
+
+#. Context: countries
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#. Context: countries
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr ""
+
+#. Context: countries
+msgid "Norway (Norge)"
+msgstr ""
+
+#. Context: countries
+msgid "Oman (‫عُمان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Palau"
+msgstr ""
+
+#. Context: countries
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Panama (Panamá)"
+msgstr ""
+
+#. Context: countries
+msgid "Papua New Guinea"
+msgstr ""
+
+#. Context: countries
+msgid "Paraguay"
+msgstr ""
+
+#. Context: countries
+msgid "Peru (Perú)"
+msgstr ""
+
+#. Context: countries
+msgid "Philippines"
+msgstr ""
+
+#. Context: countries
+msgid "Pitcairn Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Poland (Polska)"
+msgstr ""
+
+#. Context: countries
+msgid "Portugal"
+msgstr ""
+
+#. Context: countries
+msgid "Puerto Rico"
+msgstr ""
+
+#. Context: countries
+msgid "Qatar (‫قطر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Réunion (La Réunion)"
+msgstr ""
+
+#. Context: countries
+msgid "Romania (România)"
+msgstr ""
+
+#. Context: countries
+msgid "Russia (Россия)"
+msgstr ""
+
+#. Context: countries
+msgid "Rwanda"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Helena"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Lucia"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr ""
+
+#. Context: countries
+msgid "Samoa"
+msgstr ""
+
+#. Context: countries
+msgid "San Marino"
+msgstr ""
+
+#. Context: countries
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr ""
+
+#. Context: countries
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Senegal (Sénégal)"
+msgstr ""
+
+#. Context: countries
+msgid "Serbia (Србија)"
+msgstr ""
+
+#. Context: countries
+msgid "Seychelles"
+msgstr ""
+
+#. Context: countries
+msgid "Sierra Leone"
+msgstr ""
+
+#. Context: countries
+msgid "Singapore"
+msgstr ""
+
+#. Context: countries
+msgid "Sint Maarten"
+msgstr ""
+
+#. Context: countries
+msgid "Slovakia (Slovensko)"
+msgstr ""
+
+#. Context: countries
+msgid "Slovenia (Slovenija)"
+msgstr ""
+
+#. Context: countries
+msgid "Solomon Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Somalia (Soomaaliya)"
+msgstr ""
+
+#. Context: countries
+msgid "South Africa"
+msgstr ""
+
+#. Context: countries
+msgid "South Georgia & South Sandwich Islands"
+msgstr ""
+
+#. Context: countries
+msgid "South Korea (대한민국)"
+msgstr ""
+
+#. Context: countries
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Spain (España)"
+msgstr ""
+
+#. Context: countries
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr ""
+
+#. Context: countries
+msgid "St. Vincent & Grenadines"
+msgstr ""
+
+#. Context: countries
+msgid "Sudan (‫السودان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Suriname"
+msgstr ""
+
+#. Context: countries
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr ""
+
+#. Context: countries
+msgid "Swaziland"
+msgstr ""
+
+#. Context: countries
+msgid "Sweden (Sverige)"
+msgstr ""
+
+#. Context: countries
+msgid "Switzerland (Schweiz)"
+msgstr ""
+
+#. Context: countries
+msgid "Syria (‫سوريا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Taiwan (台灣)"
+msgstr ""
+
+#. Context: countries
+msgid "Tajikistan"
+msgstr ""
+
+#. Context: countries
+msgid "Tanzania"
+msgstr ""
+
+#. Context: countries
+msgid "Thailand (ไทย)"
+msgstr ""
+
+#. Context: countries
+msgid "Timor-Leste"
+msgstr ""
+
+#. Context: countries
+msgid "Togo"
+msgstr ""
+
+#. Context: countries
+msgid "Tokelau"
+msgstr ""
+
+#. Context: countries
+msgid "Tonga"
+msgstr ""
+
+#. Context: countries
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#. Context: countries
+msgid "Tristan da Cunha"
+msgstr ""
+
+#. Context: countries
+msgid "Tunisia (‫تونس‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Turkey (Türkiye)"
+msgstr ""
+
+#. Context: countries
+msgid "Turkmenistan"
+msgstr ""
+
+#. Context: countries
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Tuvalu"
+msgstr ""
+
+#. Context: countries
+msgid "U.S. Outlying Islands"
+msgstr ""
+
+#. Context: countries
+msgid "U.S. Virgin Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Uganda"
+msgstr ""
+
+#. Context: countries
+msgid "Ukraine (Україна)"
+msgstr ""
+
+#. Context: countries
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "United Kingdom"
+msgstr ""
+
+#. Context: countries
+msgid "United States"
+msgstr ""
+
+#. Context: countries
+msgid "Uruguay"
+msgstr ""
+
+#. Context: countries
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr ""
+
+#. Context: countries
+msgid "Vanuatu"
+msgstr ""
+
+#. Context: countries
+msgid "Vatican City (Città del Vaticano)"
+msgstr ""
+
+#. Context: countries
+msgid "Venezuela"
+msgstr ""
+
+#. Context: countries
+msgid "Vietnam (Việt Nam)"
+msgstr ""
+
+#. Context: countries
+msgid "Wallis and Futuna"
+msgstr ""
+
+#. Context: countries
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Yemen (‫اليمن‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Zambia"
+msgstr ""
+
+#. Context: countries
+msgid "Zimbabwe"
+msgstr ""
+
+#. Context: locales
+msgid "Afrikaans"
+msgstr ""
+
+#. Context: locales
+msgid "Albanian"
+msgstr ""
+
+#. Context: locales
+msgid "Amharic - Ethiopia"
+msgstr ""
+
+#. Context: locales
+msgid "Arabic - Egypt"
+msgstr ""
+
+#. Context: locales
+msgid "Chinese - China"
+msgstr ""
+
+#. Context: locales
+msgid "Chinese - Taiwan"
+msgstr ""
+
+#. Context: locales
+msgid "Czech"
+msgstr ""
+
+#. Context: locales
+msgid "Dutch - Netherlands"
+msgstr ""
+
+#. Context: locales
+msgid "English - Australia"
+msgstr ""
+
+#. Context: locales
+msgid "English - Canada"
+msgstr ""
+
+#. Context: locales
+msgid "English - Great Britain"
+msgstr ""
+
+#. Context: locales
+msgid "English - Jamaica"
+msgstr ""
+
+#. Context: locales
+msgid "English - South Africa"
+msgstr ""
+
+#. Context: locales
+msgid "English - United States"
+msgstr ""
+
+#. Context: locales
+msgid "Estonian"
+msgstr ""
+
+#. Context: locales
+msgid "Finnish"
+msgstr ""
+
+#. Context: locales
+msgid "French - France"
+msgstr ""
+
+#. Context: locales
+msgid "German - Germany"
+msgstr ""
+
+#. Context: locales
+msgid "Greek"
+msgstr ""
+
+#. Context: locales
+msgid "Hebrew"
+msgstr ""
+
+#. Context: locales
+msgid "Hindi - India"
+msgstr ""
+
+#. Context: locales
+msgid "Hungarian"
+msgstr ""
+
+#. Context: locales
+msgid "Indonesian - Indonesia"
+msgstr ""
+
+#. Context: locales
+msgid "Italian - Italy"
+msgstr ""
+
+#. Context: locales
+msgid "Japanese"
+msgstr ""
+
+#. Context: locales
+msgid "Korean"
+msgstr ""
+
+#. Context: locales
+msgid "Norwegian"
+msgstr ""
+
+#. Context: locales
+msgid "Polish"
+msgstr ""
+
+#. Context: locales
+msgid "Portuguese - Brazil"
+msgstr ""
+
+#. Context: locales
+msgid "Portuguese - Portugal"
+msgstr ""
+
+#. Context: locales
+msgid "Romanian - Romania"
+msgstr ""
+
+#. Context: locales
+msgid "Russian"
+msgstr ""
+
+#. Context: locales
+msgid "Sami (Northern) (Sweden)"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Spain"
+msgstr ""
+
+#. Context: locales
+msgid "Swahili"
+msgstr ""
+
+#. Context: locales
+msgid "Tamil - India"
+msgstr ""
+
+#. Context: locales
+msgid "Telugu - India"
+msgstr ""
+
+#. Context: locales
+msgid "Thai"
+msgstr ""
+
+#. Context: locales
+msgid "Turkish"
+msgstr ""
+
+#. Context: locales
+msgid "Ukrainian"
+msgstr ""
+
+#. Context: locales
+msgid "Vietnamese"
 msgstr ""
 
 msgid "Backup Database"
 msgstr ""
 
-msgid ""
-"This tool will assist you in manually backing up the ChurchCRM database."
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr ""
 
-msgid ""
-"You should make a manual backup at least once a week unless you already have "
-"a regular backup procedure for your systems."
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr ""
 
-msgid ""
-"After you download the backup file, you should make two copies. Put one of "
-"them in a fire-proof safe on-site and the other in a safe location off-site."
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr ""
 
-msgid ""
-"If you are concerned about confidentiality of data stored in the ChurchCRM "
-"database, you should encrypt the backup data if it will be stored somewhere "
-"potentially accessible to others"
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
 msgstr ""
 
 msgid "Select archive type"
@@ -214,6 +1720,192 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+msgid "CSV Export"
+msgstr ""
+
+msgid "Field Selection"
+msgstr ""
+
+msgid "Last Name"
+msgstr ""
+
+msgid "Required"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "First Name"
+msgstr ""
+
+msgid "Middle Name"
+msgstr ""
+
+msgid "Suffix"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Zip"
+msgstr ""
+
+msgid "Envelope"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "Work Phone"
+msgstr ""
+
+msgid "Mobile Phone"
+msgstr ""
+
+msgid "Work/Other Email"
+msgstr ""
+
+msgid "Membership Date"
+msgstr ""
+
+msgid "Birth / Anniversary Date"
+msgstr ""
+
+msgid "Age / Years Married"
+msgstr ""
+
+msgid "Depends whether using person or family output method"
+msgstr ""
+
+msgid "Custom Field Selection"
+msgstr ""
+
+msgid "Custom Person Fields"
+msgstr ""
+
+msgid "Custom Family Fields"
+msgstr ""
+
+msgid "Filters"
+msgstr ""
+
+msgid "Records to export"
+msgstr ""
+
+msgid "Based on filters below.."
+msgstr ""
+
+msgid "People in Cart (filters ignored)"
+msgstr ""
+
+msgid "Use Ctrl Key to select multiple"
+msgstr ""
+
+msgid "Don't Filter"
+msgstr ""
+
+msgid "Group Membership"
+msgstr ""
+
+msgid "From:"
+msgstr ""
+
+msgid "To:"
+msgstr ""
+
+msgid "Birthday Date"
+msgstr ""
+
+msgid "Anniversary Date:"
+msgstr ""
+
+msgid "Date Entered:"
+msgstr ""
+
+msgid "Output Method:"
+msgstr ""
+
+msgid "CSV Individual Records"
+msgstr ""
+
+msgid "CSV Combine Families"
+msgstr ""
+
+msgid "Add Individuals to Cart"
+msgstr ""
+
+msgid "Skip records with incomplete mail address"
+msgstr ""
+
+msgid "Create File"
+msgstr ""
+
+msgid "CSV Import"
+msgstr ""
+
+msgid "Import Data"
+msgstr ""
+
+msgid "No file selected for upload."
+msgstr ""
+
+msgid "Total number of rows in the CSV file:"
+msgstr ""
+
+msgid "Ignore this Field"
+msgstr ""
+
+msgid "Donation Envelope"
+msgstr ""
+
+msgid "Work / Other Email"
+msgstr ""
+
+msgid "Birth Date"
+msgstr ""
+
+msgid "Wedding Date"
+msgstr ""
+
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr ""
+
+msgid "Make Family records based on last name and address"
+msgstr ""
+
+msgid "Patriarch"
+msgstr ""
+
+msgid "Matriarch"
+msgstr ""
+
+msgid "Family Type: used with Make Family records... option above"
+msgstr ""
+
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr ""
+
+msgid "Default country if none specified otherwise"
+msgstr ""
+
+msgid "Perform Import"
+msgstr ""
+
+msgid "Imported"
+msgstr ""
+
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr ""
+
+msgid "Upload CSV File"
+msgstr ""
+
+msgid "Data import successful."
+msgstr ""
+
+msgid "persons were imported"
+msgstr ""
+
 msgid "Add Cart to Event"
 msgstr ""
 
@@ -238,9 +1930,6 @@ msgstr ""
 msgid "Add Cart to Family"
 msgstr ""
 
-msgid "Name"
-msgstr ""
-
 msgid "Assign Role"
 msgstr ""
 
@@ -259,46 +1948,16 @@ msgstr ""
 msgid "Family Name"
 msgstr ""
 
-msgid "Wedding Date"
-msgstr ""
-
 msgid "Use address/contact data from"
 msgstr ""
 
 msgid "Only the new data below"
 msgstr ""
 
-msgid "Address"
-msgstr ""
-
-msgid "City"
-msgstr ""
-
-msgid "State"
-msgstr ""
-
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr ""
 
-msgid "Zip"
-msgstr ""
-
-msgid "Country"
-msgstr ""
-
-msgid "Home Phone"
-msgstr ""
-
 msgid "Do not auto-format"
-msgstr ""
-
-msgid "Work Phone"
-msgstr ""
-
-msgid "Mobile Phone"
-msgstr ""
-
-msgid "Email"
 msgstr ""
 
 msgid "Add Cart to Group"
@@ -388,9 +2047,6 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-msgid "Member"
-msgstr ""
-
 msgid " of the"
 msgstr ""
 
@@ -409,18 +2065,13 @@ msgstr ""
 msgid "Invalid login or password"
 msgstr ""
 
-msgid ""
-"Too many failed logins: your account has been locked.  Please contact an "
-"administrator."
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr ""
 
 msgid "Backup archive does not contain a database"
 msgstr ""
 
-msgid ""
-"As part of the restore, external backups have been disabled.  If you wish to "
-"continue automatic backups, you must manually re-enable the "
-"bEnableExternalBackupTarget setting."
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
 msgstr ""
 
 msgid "Dashboard"
@@ -567,9 +2218,6 @@ msgstr ""
 msgid "Restore Database"
 msgstr ""
 
-msgid "CSV Import"
-msgstr ""
-
 msgid "CSV Export Records"
 msgstr ""
 
@@ -588,705 +2236,10 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-msgid "Invalid country name supplied"
-msgstr ""
-
-msgid "PersonID for Cart must be numeric"
-msgstr ""
-
-msgid "GroupID for Cart must be numeric"
-msgstr ""
-
-msgid "FamilyID for Cart must be numeric"
-msgstr ""
-
-msgid "Notification for"
-msgstr ""
-
-msgid "Unexpected Person Id"
-msgstr ""
-
-msgid "Deleted"
-msgstr ""
-
-msgid "Passed"
-msgstr ""
-
-msgid "Failed"
-msgstr ""
-
-msgid "DEBUG"
-msgstr ""
-
-msgid "INFO"
-msgstr ""
-
-msgid "NOTICE"
-msgstr ""
-
-msgid "WARNING"
-msgstr ""
-
-msgid "ERROR"
-msgstr ""
-
-msgid "CRITICAL"
-msgstr ""
-
-msgid "ALERT"
-msgstr ""
-
-msgid "EMERGENCY"
-msgstr ""
-
-msgid "Title FirstName MiddleName LastName"
-msgstr ""
-
-msgid "Title FirstName MiddleInitial. LastName"
-msgstr ""
-
-msgid "LastName, Title FirstName MiddleName"
-msgstr ""
-
-msgid "LastName, Title FirstName MiddleInitial"
-msgstr ""
-
-msgid "FirstName MiddleName LastName"
-msgstr ""
-
-msgid "Title FirstName LastName"
-msgstr ""
-
-msgid "LastName, Title FirstName"
-msgstr ""
-
-msgid "LastName FirstName"
-msgstr ""
-
-msgid "LastName, FirstName MiddleName"
-msgstr ""
-
-msgid "One character from FirstName and one character from LastName"
-msgstr ""
-
-msgid "Two characters from FirstName"
-msgstr ""
-
-msgid "Event Log severity to write, used by ORM and App Logs"
-msgstr ""
-
-msgid "Include only these classifications in the directory, comma separated"
-msgstr ""
-
-msgid "These are the family role numbers designated as head of house"
-msgstr ""
-
-msgid "These are the family role numbers designated as spouse"
-msgstr ""
-
-msgid "These are the family role numbers designated as child"
-msgstr ""
-
-msgid ""
-"Session timeout length in seconds\n"
-"Set to zero to disable session timeouts."
-msgstr ""
-
-msgid "Queries for which user must have finance permissions to use:"
-msgstr ""
-
-msgid ""
-"Should only administrators have access to the CSV export system and "
-"directory report?"
-msgstr ""
-
-msgid "Minimum length a user may set their password to"
-msgstr ""
-
-msgid ""
-"Minimum amount that a new password must differ from the old one (# of "
-"characters changed)\n"
-"Set to zero to disable this feature"
-msgstr ""
-
-msgid "A comma-separated list of disallowed (too obvious) passwords."
-msgstr ""
-
-msgid ""
-"Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the "
-"account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr ""
-
-msgid ""
-"PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr ""
-
-msgid "Default City"
-msgstr ""
-
-msgid "Default State - Must be 2-letter abbreviation!"
-msgstr ""
-
-msgid "Default account for receiving a copy of all emails"
-msgstr ""
-
-msgid "SMTP Server timeout in sec"
-msgstr ""
-
-msgid "SMTP Server Address (mail.server.com:25)"
-msgstr ""
-
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr ""
-
-msgid "SMTP Username"
-msgstr ""
-
-msgid "SMTP Password"
-msgstr ""
-
-msgid ""
-"Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to "
-"be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr ""
-
-msgid "Internationalization (I18n) support"
-msgstr ""
-
-msgid "First month of the fiscal year"
-msgstr ""
-
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr ""
-
-msgid "Bing map API requires a unique key"
-msgstr ""
-
-msgid "Google Maps Zoom"
-msgstr ""
-
-msgid "Latitude of the church, used to center the Google map"
-msgstr ""
-
-msgid "Longitude of the church, used to center the Google map"
-msgstr ""
-
-msgid ""
-"Set true to disable entering addresses in Person Editor.  Set false to "
-"enable entering addresses in Person Editor."
-msgstr ""
-
-msgid ""
-"Set true to disable entering Friend Date in Person Editor.  Set false to "
-"enable entering Friend Date in Person Editor."
-msgstr ""
-
-msgid ""
-"Set true to disable management of newsletter subscriptions in the Family "
-"Editor."
-msgstr ""
-
-msgid ""
-"Set true to disable entering Wedding Date in Family Editor.  Set false to "
-"enable entering Wedding Date in Family Editor."
-msgstr ""
-
-msgid ""
-"Set true to disable entering Latitude and Longitude in Family Editor.  Set "
-"false to enable entering Latitude and Longitude in Family Editor.  Lookups "
-"are still performed, just not displayed."
-msgstr ""
-
-msgid "Set true to enable use of donation envelopes"
-msgstr ""
-
-msgid ""
-"Enter in HTML code which will be displayed as a header at the top of each "
-"page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A "
-"SECOND TIME to view the new header."
-msgstr ""
-
-msgid "Select GeoCoder Provider"
-msgstr ""
-
-msgid "Number of checks for Deposit Slip Report"
-msgstr ""
-
-msgid "Set true to enable use of scanned checks"
-msgstr ""
-
-msgid "Unit used to measure distance, miles or km."
-msgstr ""
-
-msgid "miles"
-msgstr ""
-
-msgid "kilometers"
-msgstr ""
-
-msgid "Time zone"
-msgstr ""
-
-msgid "Names of markers for Google Maps in order of classification"
-msgstr ""
-
-msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
-msgstr ""
-
-msgid "Enable non-deductible payments"
-msgstr ""
-
-msgid "Set true to enable family self registration."
-msgstr ""
-
-msgid "To export to another For european CharSet use ;"
-msgstr ""
-
-msgid ""
-"Default is UTF-8, For european CharSet use Windows-1252 for example for "
-"French language."
-msgstr ""
-
-msgid ""
-"For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : "
-"dd/mm/yyyy for example."
-msgstr ""
-
-msgid ""
-"For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y "
-"for example."
-msgstr ""
-
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr ""
-
-msgid ""
-"ChurchCRM has been registered.  The ChurchCRM team uses registration "
-"information to track usage.  This information is kept confidential and never "
-"released or sold.  If this field is true the registration option in the "
-"admin menu changes to update registration."
-msgstr ""
-
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr ""
-
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr ""
-
-msgid "Church Name"
-msgstr ""
-
-msgid "Church Address"
-msgstr ""
-
-msgid "Church City"
-msgstr ""
-
-msgid "Church State"
-msgstr ""
-
-msgid "Church Zip"
-msgstr ""
-
-msgid "Church Phone"
-msgstr ""
-
-msgid "Church Email"
-msgstr ""
-
-msgid "Home area code of the church"
-msgstr ""
-
-msgid ""
-"Verbage for top line of tax report. Dates will be appended to the end of "
-"this line."
-msgstr ""
-
-msgid "Verbage for bottom line of tax report."
-msgstr ""
-
-msgid "Tax Report signer"
-msgstr ""
-
-msgid "Verbage for the pledge reminder report"
-msgstr ""
-
-msgid "Pledge Reminder Signer"
-msgstr ""
-
-msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr ""
-
-msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr ""
-
-msgid "Verbage for the database information confirmation and correction report"
-msgstr ""
-
-msgid "Database information confirmation and correction report signer"
-msgstr ""
-
-msgid "Verbage for the pledge summary report"
-msgstr ""
-
-msgid "Verbage for the directory report"
-msgstr ""
-
-msgid "Church Letterhead path and file"
-msgstr ""
-
-msgid "Church Checking Account Number"
-msgstr ""
-
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr ""
-
-msgid "Enable Remote Backups to Cloud Services"
-msgstr ""
-
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr ""
-
-msgid "WebDAV"
-msgstr ""
-
-msgid "Local"
-msgstr ""
-
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr ""
-
-msgid "Remote Backup Username"
-msgstr ""
-
-msgid "Remote Backup Password"
-msgstr ""
-
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr ""
-
-msgid "Last Backup Timestamp"
-msgstr ""
-
-msgid "QuickBooks Deposit Ticket Settings"
-msgstr ""
-
-msgid "Enable Integrity Check"
-msgstr ""
-
-msgid "Interval in Hours for Integrity Check"
-msgstr ""
-
-msgid "Last Integrity Check Timestamp"
-msgstr ""
-
-msgid "Used to end a letter before Signer"
-msgstr ""
-
-msgid "Text before name in emails/reports"
-msgstr ""
-
-msgid "Google Analytics Tracking Code"
-msgstr ""
-
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr ""
-
-msgid ""
-"Set true to allow empty lastname in Person Editor.  Set false to validate "
-"last name and inherit from family when left empty."
-msgstr ""
-
-msgid "Display bill counts on deposit slip"
-msgstr ""
-
-msgid "Nexmo SMS API Key"
-msgstr ""
-
-msgid "Nexmo SMS API Secret"
-msgstr ""
-
-msgid "Nexmo SMS From Number"
-msgstr ""
-
-msgid "OpenLP URL"
-msgstr ""
-
-msgid "OpenLP Username"
-msgstr ""
-
-msgid "OpenLP Password"
-msgstr ""
-
-msgid "KioskVisibilityTimestamp"
-msgstr ""
-
-msgid "Show/Hide Lost Password Link on the login screen"
-msgstr ""
-
-msgid "Your Church's Website"
-msgstr ""
-
-msgid "Your Church's Facebook Page"
-msgstr ""
-
-msgid "Your Church's X Page"
-msgstr ""
-
-msgid "lookup user images on Google when no local image is present"
-msgstr ""
-
-msgid ""
-"Comma Separated list of PersonIDs of people to notify when a new family or "
-"person is added"
-msgstr ""
-
-msgid "Allow unauthenticated reads of events from the external calendar API"
-msgstr ""
-
-msgid "Search People"
-msgstr ""
-
-msgid "Search Family"
-msgstr ""
-
-msgid "Show Family Head of House Names"
-msgstr ""
-
-msgid "Search Groups"
-msgstr ""
-
-msgid "Search Deposits"
-msgstr ""
-
-msgid "Search Payments"
-msgstr ""
-
-msgid "Search Addresses"
-msgstr ""
-
-msgid "Maximum number of People"
-msgstr ""
-
-msgid "Maximum number of Families"
-msgstr ""
-
-msgid "Maximum number of Family H.O.H Names"
-msgstr ""
-
-msgid "Maximum number of Groups"
-msgstr ""
-
-msgid "Maximum number of Deposits"
-msgstr ""
-
-msgid "Maximum number of Payments"
-msgstr ""
-
-msgid "Maximum number of Addresses"
-msgstr ""
-
-msgid "Height to use for images"
-msgstr ""
-
-msgid "Width to use for images"
-msgstr ""
-
-msgid "Width to use for thumbnails"
-msgstr ""
-
-msgid "Point size to use for initials thumbnails"
-msgstr ""
-
-msgid "Client cache seconds for images"
-msgstr ""
-
-msgid "Server cache time for remote images"
-msgstr ""
-
-msgid ""
-"Field where Father Of Confession is listed, must be a people of group type"
-msgstr ""
-
-msgid "Field where last Confession is stored, must be a date type"
-msgstr ""
-
-msgid "Require that this ChurchCRM Database is accessed over HTTPS"
-msgstr ""
-
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr ""
-
-msgid ""
-"Number of seconds after page load until the banner disappears, default 10 "
-"seconds"
-msgstr ""
-
-msgid "Automatically enable SMTP encryption if offered by the relaying server."
-msgstr ""
-
-msgid "Set the encryption system to use - ssl (deprecated) or tls"
-msgstr ""
-
-msgid ""
-"Dashboard Service dynamic asynchronous refresh interval, default 60 second"
-msgstr ""
-
-msgid ""
-"Set the standard profile picture icon size in pixels to be used in people "
-"lists, default 85 pixels."
-msgstr ""
-
-msgid "Show custom links on the left menu."
-msgstr ""
-
-msgid "Enable Sunday School left menu."
-msgstr ""
-
-msgid "Enable Finance menu"
-msgstr ""
-
-msgid "Enable Events menu."
-msgstr ""
-
-msgid "Enable Calendar menu."
-msgstr ""
-
-msgid "Enable Fundraiser menu."
-msgstr ""
-
-msgid "Enable Email menu."
-msgstr ""
-
-msgid "ChurchCRM Central Notifications URL"
-msgstr ""
-
-msgid "Custom message for church greeter email 1, max 255 characters"
-msgstr ""
-
-msgid "Custom message for church greeter email 2, max 255 characters"
-msgstr ""
-
-msgid ""
-"Include contact and demographic data in new member email notification body"
-msgstr ""
-
-msgid "Include family custom properties in global search."
-msgstr ""
-
-msgid ""
-"Include initials image files, remote image files (gravatar), and thumbnails "
-"in backup.  These files are generally able to be reproduced after a restore "
-"and add very little value to the backup archive at a large expense of "
-"execution time and storage"
-msgstr ""
-
-msgid "Interval in Hours for software update check"
-msgstr ""
-
-msgid "Last Software Update Check Timestamp"
-msgstr ""
-
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr ""
-
-msgid "Search Calendar Events"
-msgstr ""
-
-msgid "Maximum number of Calendar Events"
-msgstr ""
-
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr ""
-
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr ""
-
-msgid "ChurchCRM"
-msgstr ""
-
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr ""
-
-msgid "Send an email notifying users when their account has been deleted"
-msgstr ""
-
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr ""
-
-msgid "Comma separated list of classifications that should appear as inactive"
-msgstr ""
-
-msgid "Default Zip"
-msgstr ""
-
-msgid "Person List Columns"
-msgstr ""
-
-msgid "Family List Columns"
-msgstr ""
-
-msgid "Church Information"
-msgstr ""
-
-msgid "User Setup"
-msgstr ""
-
-msgid "Email Setup"
-msgstr ""
-
-msgid "People Setup"
-msgstr ""
-
-msgid "Enabled Features"
-msgstr ""
-
-msgid "Map Settings"
-msgstr ""
-
-msgid "Report Settings"
-msgstr ""
-
-msgid "Financial Settings"
-msgstr ""
-
-msgid "Quick Search"
-msgstr ""
-
-msgid "Localization"
-msgstr ""
-
-msgid "Integration"
-msgstr ""
-
-msgid "Church Services"
-msgstr ""
-
-msgid "Backup"
-msgstr ""
-
-msgid "System Settings"
-msgstr ""
-
-msgid "An invalid configuration name has been requested"
-msgstr ""
-
-msgid "An invalid configuration id has been requested"
-msgstr ""
-
 msgid "If that doesn't work, copy and paste the following link in your browser"
 msgstr ""
 
-msgid ""
-"You received this email because we received a request for activity on your "
-"account. If you didn't request this you can safely delete this email."
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
 msgstr ""
 
 msgid "To stop receiving these emails, you can email"
@@ -1376,99 +2329,6 @@ msgstr ""
 msgid "Verify"
 msgstr ""
 
-msgid "Anonymous"
-msgstr ""
-
-msgid "Deposit Comment"
-msgstr ""
-
-msgid "New Family Notification Email Error"
-msgstr ""
-
-msgid "Created"
-msgstr ""
-
-msgid "Updated"
-msgstr ""
-
-msgid "Family Data Verified"
-msgstr ""
-
-msgid "Verification email sent"
-msgstr ""
-
-msgid "Verification URL created"
-msgstr ""
-
-msgid "Profile Image Deleted"
-msgstr ""
-
-msgid "Profile Image uploaded"
-msgstr ""
-
-msgid "Family has no emails to use"
-msgstr ""
-
-msgid "Male"
-msgstr ""
-
-msgid "Female"
-msgstr ""
-
-msgid "New Person Notification Email Error"
-msgstr ""
-
-#, php-format
-msgid "%d month old"
-msgid_plural "%d months old"
-msgstr[0] ""
-msgstr[1] ""
-
-#, php-format
-msgid "%d year old"
-msgid_plural "%d years old"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "system user created"
-msgstr ""
-
-msgid "system user updated"
-msgstr ""
-
-msgid "system user deleted"
-msgstr ""
-
-msgid "system user password reset"
-msgstr ""
-
-msgid "system user changed password"
-msgstr ""
-
-msgid "system user password changed by admin"
-msgstr ""
-
-msgid "system user login reset"
-msgstr ""
-
-msgid "Incorrect password supplied for current user"
-msgstr ""
-
-msgid "Your password choice is too obvious. Please choose something else."
-msgstr ""
-
-msgid "Your new password must be at least"
-msgstr ""
-
-msgid "characters"
-msgstr ""
-
-msgid "Your new password must not match your old one."
-msgstr ""
-
-msgid "Your new password is too similar to your old one."
-msgstr ""
-
 msgid "Totals"
 msgstr ""
 
@@ -1496,10 +2356,10 @@ msgstr ""
 msgid "and"
 msgstr ""
 
-msgid "Work/Other Email"
+msgid "Group Directory"
 msgstr ""
 
-msgid "Group Directory"
+msgid "Unable to open file"
 msgstr ""
 
 msgid "Error decoding integrity check result file"
@@ -1508,9 +2368,13 @@ msgstr ""
 msgid "integrityCheck.json file missing"
 msgstr ""
 
-msgid ""
-"The previous integrity check passed. All system file hashes match the "
-"expected values."
+msgid "Failed"
+msgstr ""
+
+msgid "Passed"
+msgstr ""
+
+msgid "The previous integrity check passed. All system file hashes match the expected values."
 msgstr ""
 
 msgid "Error decoding signature definition file"
@@ -1609,22 +2473,744 @@ msgstr ""
 msgid "is disabled"
 msgstr ""
 
-msgid "Unable to open file"
-msgstr ""
-
 msgid "Anniversaries"
 msgstr ""
 
 msgid "Anniversary"
 msgstr ""
 
-msgid "Birthdays"
-msgstr ""
-
 msgid "Holidays"
 msgstr ""
 
 msgid "Unpinned Events"
+msgstr ""
+
+msgid "Invalid country name supplied"
+msgstr ""
+
+msgid "PersonID for Cart must be numeric"
+msgstr ""
+
+msgid "GroupID for Cart must be numeric"
+msgstr ""
+
+msgid "FamilyID for Cart must be numeric"
+msgstr ""
+
+msgid "Notification for"
+msgstr ""
+
+msgid "Unexpected Person Id"
+msgstr ""
+
+msgid "Deleted"
+msgstr ""
+
+msgid "DEBUG"
+msgstr ""
+
+msgid "INFO"
+msgstr ""
+
+msgid "NOTICE"
+msgstr ""
+
+msgid "WARNING"
+msgstr ""
+
+msgid "ERROR"
+msgstr ""
+
+msgid "CRITICAL"
+msgstr ""
+
+msgid "ALERT"
+msgstr ""
+
+msgid "EMERGENCY"
+msgstr ""
+
+msgid "Title FirstName MiddleName LastName"
+msgstr ""
+
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr ""
+
+msgid "LastName, Title FirstName MiddleName"
+msgstr ""
+
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr ""
+
+msgid "FirstName MiddleName LastName"
+msgstr ""
+
+msgid "Title FirstName LastName"
+msgstr ""
+
+msgid "LastName, Title FirstName"
+msgstr ""
+
+msgid "LastName FirstName"
+msgstr ""
+
+msgid "LastName, FirstName MiddleName"
+msgstr ""
+
+msgid "One character from FirstName and one character from LastName"
+msgstr ""
+
+msgid "Two characters from FirstName"
+msgstr ""
+
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr ""
+
+msgid "Include only these classifications in the directory, comma separated"
+msgstr ""
+
+msgid "These are the family role numbers designated as head of house"
+msgstr ""
+
+msgid "These are the family role numbers designated as spouse"
+msgstr ""
+
+msgid "These are the family role numbers designated as child"
+msgstr ""
+
+msgid ""
+"Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr ""
+
+msgid "Queries for which user must have finance permissions to use:"
+msgstr ""
+
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr ""
+
+msgid "Minimum length a user may set their password to"
+msgstr ""
+
+msgid ""
+"Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr ""
+
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr ""
+
+msgid ""
+"Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr ""
+
+msgid ""
+"PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr ""
+
+msgid "Default City"
+msgstr ""
+
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr ""
+
+msgid "Default account for receiving a copy of all emails"
+msgstr ""
+
+msgid "SMTP Server timeout in sec"
+msgstr ""
+
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr ""
+
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr ""
+
+msgid "SMTP Username"
+msgstr ""
+
+msgid "SMTP Password"
+msgstr ""
+
+msgid ""
+"Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr ""
+
+msgid "Internationalization (I18n) support"
+msgstr ""
+
+msgid "First month of the fiscal year"
+msgstr ""
+
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr ""
+
+msgid "Bing map API requires a unique key"
+msgstr ""
+
+msgid "Google Maps Zoom"
+msgstr ""
+
+msgid "Latitude of the church, used to center the Google map"
+msgstr ""
+
+msgid "Longitude of the church, used to center the Google map"
+msgstr ""
+
+msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
+msgstr ""
+
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr ""
+
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr ""
+
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr ""
+
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr ""
+
+msgid "Set true to enable use of donation envelopes"
+msgstr ""
+
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr ""
+
+msgid "Select GeoCoder Provider"
+msgstr ""
+
+msgid "Number of checks for Deposit Slip Report"
+msgstr ""
+
+msgid "Set true to enable use of scanned checks"
+msgstr ""
+
+msgid "Unit used to measure distance, miles or km."
+msgstr ""
+
+msgid "miles"
+msgstr ""
+
+msgid "kilometers"
+msgstr ""
+
+msgid "Time zone"
+msgstr ""
+
+msgid "Names of markers for Google Maps in order of classification"
+msgstr ""
+
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr ""
+
+msgid "Enable non-deductible payments"
+msgstr ""
+
+msgid "Set true to enable family self registration."
+msgstr ""
+
+msgid "To export to another For european CharSet use ;"
+msgstr ""
+
+msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
+msgstr ""
+
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr ""
+
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr ""
+
+msgid "Set font to render initials. Upload custom font to fonts directory"
+msgstr ""
+
+msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
+msgstr ""
+
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr ""
+
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr ""
+
+msgid "Church Name"
+msgstr ""
+
+msgid "Church Address"
+msgstr ""
+
+msgid "Church City"
+msgstr ""
+
+msgid "Church State"
+msgstr ""
+
+msgid "Church Zip"
+msgstr ""
+
+msgid "Church Phone"
+msgstr ""
+
+msgid "Church Email"
+msgstr ""
+
+msgid "Home area code of the church"
+msgstr ""
+
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr ""
+
+msgid "Verbage for bottom line of tax report."
+msgstr ""
+
+msgid "Tax Report signer"
+msgstr ""
+
+msgid "Verbage for the pledge reminder report"
+msgstr ""
+
+msgid "Pledge Reminder Signer"
+msgstr ""
+
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr ""
+
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr ""
+
+msgid "Verbage for the database information confirmation and correction report"
+msgstr ""
+
+msgid "Database information confirmation and correction report signer"
+msgstr ""
+
+msgid "Verbage for the pledge summary report"
+msgstr ""
+
+msgid "Verbage for the directory report"
+msgstr ""
+
+msgid "Church Letterhead path and file"
+msgstr ""
+
+msgid "Church Checking Account Number"
+msgstr ""
+
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr ""
+
+msgid "Enable Remote Backups to Cloud Services"
+msgstr ""
+
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr ""
+
+msgid "WebDAV"
+msgstr ""
+
+msgid "Local"
+msgstr ""
+
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr ""
+
+msgid "Remote Backup Username"
+msgstr ""
+
+msgid "Remote Backup Password"
+msgstr ""
+
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr ""
+
+msgid "Last Backup Timestamp"
+msgstr ""
+
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr ""
+
+msgid "Enable Integrity Check"
+msgstr ""
+
+msgid "Interval in Hours for Integrity Check"
+msgstr ""
+
+msgid "Last Integrity Check Timestamp"
+msgstr ""
+
+msgid "Used to end a letter before Signer"
+msgstr ""
+
+msgid "Text before name in emails/reports"
+msgstr ""
+
+msgid "Google Analytics Tracking Code"
+msgstr ""
+
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr ""
+
+msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
+msgstr ""
+
+msgid "Display bill counts on deposit slip"
+msgstr ""
+
+msgid "Nexmo SMS API Key"
+msgstr ""
+
+msgid "Nexmo SMS API Secret"
+msgstr ""
+
+msgid "Nexmo SMS From Number"
+msgstr ""
+
+msgid "OpenLP URL"
+msgstr ""
+
+msgid "OpenLP Username"
+msgstr ""
+
+msgid "OpenLP Password"
+msgstr ""
+
+msgid "KioskVisibilityTimestamp"
+msgstr ""
+
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+msgid "Your Church's Website"
+msgstr ""
+
+msgid "Your Church's Facebook Page"
+msgstr ""
+
+msgid "Your Church's X Page"
+msgstr ""
+
+msgid "lookup user images on Google when no local image is present"
+msgstr ""
+
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr ""
+
+msgid "Allow unauthenticated reads of events from the external calendar API"
+msgstr ""
+
+msgid "Search People"
+msgstr ""
+
+msgid "Search Family"
+msgstr ""
+
+msgid "Show Family Head of House Names"
+msgstr ""
+
+msgid "Search Groups"
+msgstr ""
+
+msgid "Search Deposits"
+msgstr ""
+
+msgid "Search Payments"
+msgstr ""
+
+msgid "Search Addresses"
+msgstr ""
+
+msgid "Maximum number of People"
+msgstr ""
+
+msgid "Maximum number of Families"
+msgstr ""
+
+msgid "Maximum number of Family H.O.H Names"
+msgstr ""
+
+msgid "Maximum number of Groups"
+msgstr ""
+
+msgid "Maximum number of Deposits"
+msgstr ""
+
+msgid "Maximum number of Payments"
+msgstr ""
+
+msgid "Maximum number of Addresses"
+msgstr ""
+
+msgid "Height to use for images"
+msgstr ""
+
+msgid "Width to use for images"
+msgstr ""
+
+msgid "Width to use for thumbnails"
+msgstr ""
+
+msgid "Point size to use for initials thumbnails"
+msgstr ""
+
+msgid "Client cache seconds for images"
+msgstr ""
+
+msgid "Server cache time for remote images"
+msgstr ""
+
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr ""
+
+msgid "Field where last Confession is stored, must be a date type"
+msgstr ""
+
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr ""
+
+msgid "Show Birthdates Anniversaries on start up of the CRM"
+msgstr ""
+
+msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
+msgstr ""
+
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr ""
+
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr ""
+
+msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr ""
+
+msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
+msgstr ""
+
+msgid "Show custom links on the left menu."
+msgstr ""
+
+msgid "Enable Sunday School left menu."
+msgstr ""
+
+msgid "Enable Finance menu"
+msgstr ""
+
+msgid "Enable Events menu."
+msgstr ""
+
+msgid "Enable Calendar menu."
+msgstr ""
+
+msgid "Enable Fundraiser menu."
+msgstr ""
+
+msgid "Enable Email menu."
+msgstr ""
+
+msgid "ChurchCRM Central Notifications URL"
+msgstr ""
+
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr ""
+
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr ""
+
+msgid "Include contact and demographic data in new member email notification body"
+msgstr ""
+
+msgid "Include family custom properties in global search."
+msgstr ""
+
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr ""
+
+msgid "Interval in Hours for software update check"
+msgstr ""
+
+msgid "Last Software Update Check Timestamp"
+msgstr ""
+
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr ""
+
+msgid "Search Calendar Events"
+msgstr ""
+
+msgid "Maximum number of Calendar Events"
+msgstr ""
+
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr ""
+
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr ""
+
+msgid "ChurchCRM"
+msgstr ""
+
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr ""
+
+msgid "Send an email notifying users when their account has been deleted"
+msgstr ""
+
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr ""
+
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr ""
+
+msgid "Default Zip"
+msgstr ""
+
+msgid "Person List Columns"
+msgstr ""
+
+msgid "Family List Columns"
+msgstr ""
+
+msgid "Church Information"
+msgstr ""
+
+msgid "User Setup"
+msgstr ""
+
+msgid "Email Setup"
+msgstr ""
+
+msgid "People Setup"
+msgstr ""
+
+msgid "Enabled Features"
+msgstr ""
+
+msgid "Map Settings"
+msgstr ""
+
+msgid "Report Settings"
+msgstr ""
+
+msgid "Financial Settings"
+msgstr ""
+
+msgid "Quick Search"
+msgstr ""
+
+msgid "Localization"
+msgstr ""
+
+msgid "Integration"
+msgstr ""
+
+msgid "Church Services"
+msgstr ""
+
+msgid "Backup"
+msgstr ""
+
+msgid "System Settings"
+msgstr ""
+
+msgid "An invalid configuration name has been requested"
+msgstr ""
+
+msgid "An invalid configuration id has been requested"
+msgstr ""
+
+msgid "Anonymous"
+msgstr ""
+
+msgid "Deposit Comment"
+msgstr ""
+
+msgid "New Family Notification Email Error"
+msgstr ""
+
+msgid "Created"
+msgstr ""
+
+msgid "Updated"
+msgstr ""
+
+msgid "Family Data Verified"
+msgstr ""
+
+msgid "Verification email sent"
+msgstr ""
+
+msgid "Verification URL created"
+msgstr ""
+
+msgid "Profile Image Deleted"
+msgstr ""
+
+msgid "Profile Image uploaded"
+msgstr ""
+
+msgid "Family has no emails to use"
+msgstr ""
+
+msgid "New Person Notification Email Error"
+msgstr ""
+
+#, php-format
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "system user created"
+msgstr ""
+
+msgid "system user updated"
+msgstr ""
+
+msgid "system user deleted"
+msgstr ""
+
+msgid "system user password reset"
+msgstr ""
+
+msgid "system user changed password"
+msgstr ""
+
+msgid "system user password changed by admin"
+msgstr ""
+
+msgid "system user login reset"
+msgstr ""
+
+msgid "Incorrect password supplied for current user"
+msgstr ""
+
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr ""
+
+msgid "Your new password must be at least"
+msgstr ""
+
+msgid "characters"
+msgstr ""
+
+msgid "Your new password must not match your old one."
+msgstr ""
+
+msgid "Your new password is too similar to your old one."
 msgstr ""
 
 msgid "PHP Max Execution Time is too Short"
@@ -1636,9 +3222,7 @@ msgstr ""
 msgid "PHP Max File size too small"
 msgstr ""
 
-msgid ""
-"Increase the php upload limits to allow for mobile photo upload, and backup "
-"restore."
+msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
 msgstr ""
 
 msgid "Set Church Address"
@@ -1668,6 +3252,18 @@ msgstr ""
 msgid "Application Integrity Check Failed"
 msgstr ""
 
+msgid "Unsupported PHP Version"
+msgstr ""
+
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr ""
+
+msgid "Missing PHP ZipArchive"
+msgstr ""
+
+msgid "PHP ZipArchive required to support upgrade"
+msgstr ""
+
 msgid "Missing Classification Data"
 msgstr ""
 
@@ -1686,19 +3282,6 @@ msgstr ""
 msgid "Missing Role Data for Some People"
 msgstr ""
 
-msgid "Unsupported PHP Version"
-msgstr ""
-
-msgid ""
-"Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr ""
-
-msgid "Missing PHP ZipArchive"
-msgstr ""
-
-msgid "PHP ZipArchive required to support upgrade"
-msgstr ""
-
 msgid "Unmet Application Prerequisites"
 msgstr ""
 
@@ -1708,10 +3291,7 @@ msgstr ""
 msgid "Unsupported Deposit Types Detected"
 msgstr ""
 
-msgid ""
-"Support for eGive, Credit Card, and Bank Draft payments has been "
-"deprecated.  Existing non-bank reports may no longer be accessible in future "
-"versions."
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr ""
 
 msgid "Missing Coordinates"
@@ -1777,177 +3357,6 @@ msgstr ""
 msgid "Convert All"
 msgstr ""
 
-msgid "CSV Export"
-msgstr ""
-
-msgid "Field Selection"
-msgstr ""
-
-msgid "Last Name"
-msgstr ""
-
-msgid "Required"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "First Name"
-msgstr ""
-
-msgid "Middle Name"
-msgstr ""
-
-msgid "Suffix"
-msgstr ""
-
-msgid "Envelope"
-msgstr ""
-
-msgid "Membership Date"
-msgstr ""
-
-msgid "Birth / Anniversary Date"
-msgstr ""
-
-msgid "Age / Years Married"
-msgstr ""
-
-msgid "Classification"
-msgstr ""
-
-msgid "Family Role"
-msgstr ""
-
-msgid "Gender"
-msgstr ""
-
-msgid "Depends whether using person or family output method"
-msgstr ""
-
-msgid "Custom Field Selection"
-msgstr ""
-
-msgid "Custom Person Fields"
-msgstr ""
-
-msgid "Custom Family Fields"
-msgstr ""
-
-msgid "Filters"
-msgstr ""
-
-msgid "Records to export"
-msgstr ""
-
-msgid "Based on filters below.."
-msgstr ""
-
-msgid "People in Cart (filters ignored)"
-msgstr ""
-
-msgid "Use Ctrl Key to select multiple"
-msgstr ""
-
-msgid "Don't Filter"
-msgstr ""
-
-msgid "Group Membership"
-msgstr ""
-
-msgid "From:"
-msgstr ""
-
-msgid "To:"
-msgstr ""
-
-msgid "Birthday Date"
-msgstr ""
-
-msgid "Anniversary Date:"
-msgstr ""
-
-msgid "Date Entered:"
-msgstr ""
-
-msgid "Output Method:"
-msgstr ""
-
-msgid "CSV Individual Records"
-msgstr ""
-
-msgid "CSV Combine Families"
-msgstr ""
-
-msgid "Add Individuals to Cart"
-msgstr ""
-
-msgid "Skip records with incomplete mail address"
-msgstr ""
-
-msgid "Create File"
-msgstr ""
-
-msgid "Import Data"
-msgstr ""
-
-msgid "No file selected for upload."
-msgstr ""
-
-msgid "Total number of rows in the CSV file:"
-msgstr ""
-
-msgid "Ignore this Field"
-msgstr ""
-
-msgid "Donation Envelope"
-msgstr ""
-
-msgid "Work / Other Email"
-msgstr ""
-
-msgid "Birth Date"
-msgstr ""
-
-msgid "Ignore first CSV row (to exclude a header)"
-msgstr ""
-
-msgid "Make Family records based on last name and address"
-msgstr ""
-
-msgid "Patriarch"
-msgstr ""
-
-msgid "Matriarch"
-msgstr ""
-
-msgid "Family Type: used with Make Family records... option above"
-msgstr ""
-
-msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr ""
-
-msgid "Default country if none specified otherwise"
-msgstr ""
-
-msgid "Perform Import"
-msgstr ""
-
-msgid "Imported"
-msgstr ""
-
-msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr ""
-
-msgid "Upload CSV File"
-msgstr ""
-
-msgid "Data import successful."
-msgstr ""
-
-msgid "persons were imported"
-msgstr ""
-
 msgid "Deposit Slip Number: "
 msgstr ""
 
@@ -1972,9 +3381,7 @@ msgstr ""
 msgid "Deposit Slip Report"
 msgstr ""
 
-msgid ""
-"Important note: failed transactions will be deleted permanently when the "
-"deposit slip is closed."
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr ""
 
 msgid "Deposit Summary: "
@@ -2139,14 +3546,10 @@ msgstr ""
 msgid "Are you sure you want to delete this fund?"
 msgstr ""
 
-msgid ""
-"Warning: Field changes will be lost if you do not 'Save Changes' before "
-"using a delete or 'add new' button!"
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
 msgstr ""
 
-msgid ""
-"Invalid fields or selections. Changes not saved! Please correct and try "
-"again!"
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr ""
 
 msgid "No funds have been added yet"
@@ -2219,36 +3622,6 @@ msgid "Add counter"
 msgstr ""
 
 msgid "Return to Event Types"
-msgstr ""
-
-msgid "eGive Import"
-msgstr ""
-
-msgid "Start Date: "
-msgstr ""
-
-msgid "End Date: "
-msgstr ""
-
-msgid "Re-import to selected family"
-msgstr ""
-
-msgid "Data import results: "
-msgstr ""
-
-msgid " gifts were imported, "
-msgstr ""
-
-msgid " gifts unchanged, and "
-msgstr ""
-
-msgid " gifts not imported due to problems"
-msgstr ""
-
-msgid "Back to Deposit Slip"
-msgstr ""
-
-msgid "Fatal error in eGive API datastream: '"
 msgstr ""
 
 msgid "Event Attendees"
@@ -2395,13 +3768,10 @@ msgstr ""
 msgid "Optional"
 msgstr ""
 
-msgid ""
-"Enter a list of the attendance counts you want to include with this event."
+msgid "Enter a list of the attendance counts you want to include with this event."
 msgstr ""
 
-msgid ""
-"Separate each count_name with a comma. e.g. Members, Visitors, Campus, "
-"Children"
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
 msgstr ""
 
 msgid "Every event type includes a Total count, you do not need to include it."
@@ -2428,96 +3798,10 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-msgid ""
-"Deleting this event TYPE will NOT delete any existing Events or Attendance "
-"Counts.  Are you sure you want to DELETE Event Type ID: "
+msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
 msgstr ""
 
 msgid "Add Event Type"
-msgstr ""
-
-msgid "Unable to load verification info"
-msgstr ""
-
-msgid "No Changes"
-msgstr ""
-
-msgid "Page not fond"
-msgstr ""
-
-msgid "Oops! Page not found."
-msgstr ""
-
-msgid "Family Registration"
-msgstr ""
-
-msgid "Register your family"
-msgstr ""
-
-msgid "Family Info"
-msgstr ""
-
-msgid "How many people are in your family"
-msgstr ""
-
-msgid "Members"
-msgstr ""
-
-msgid "Family Member"
-msgstr ""
-
-msgid "Mobile"
-msgstr ""
-
-msgid "Home"
-msgstr ""
-
-msgid "Hide Age"
-msgstr ""
-
-msgid "Review"
-msgstr ""
-
-msgid "Please enter the following to start your family's verification"
-msgstr ""
-
-msgid "Next"
-msgstr ""
-
-msgid "Family Verification"
-msgstr ""
-
-msgid "Confirm"
-msgstr ""
-
-msgid "Home Address"
-msgstr ""
-
-msgid "Send Newsletter"
-msgstr ""
-
-msgid "Family Member(s)"
-msgstr ""
-
-msgid "Work Email"
-msgstr ""
-
-msgid "All information on this page is correct."
-msgstr ""
-
-msgid "Please update the my family information with the following"
-msgstr ""
-
-msgid "Your verification request is complete"
-msgstr ""
-
-msgid "We encountered an error submitting with your verification data"
-msgstr ""
-
-msgid "Send"
-msgstr ""
-
-msgid "Visit our Site"
 msgstr ""
 
 msgid "Custom Family Fields Editor"
@@ -2526,15 +3810,10 @@ msgstr ""
 msgid "Default Option"
 msgstr ""
 
-msgid ""
-"Warning:  By deleting this field, you will irrevokably lose all family data "
-"assigned for this field!"
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
 msgstr ""
 
-msgid ""
-"Warning: Arrow and delete buttons take effect immediately.  Field name "
-"changes will be lost if you do not 'Save Changes' before using an up, down, "
-"delete or 'add new' button!"
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
 msgstr ""
 
 msgid "No custom Family fields have been added yet"
@@ -2594,6 +3873,9 @@ msgstr ""
 msgid "Updated via Family"
 msgstr ""
 
+msgid "Family Info"
+msgstr ""
+
 msgid "Latitude"
 msgstr ""
 
@@ -2601,6 +3883,9 @@ msgid "Longitude"
 msgstr ""
 
 msgid "Contact Info"
+msgstr ""
+
+msgid "Send Newsletter"
 msgstr ""
 
 msgid "Other Info"
@@ -2618,9 +3903,7 @@ msgstr ""
 msgid "Family Members"
 msgstr ""
 
-msgid ""
-"You may create family members now or add them later.  All entries will "
-"become <i>new</i> person records."
+msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
 msgstr ""
 
 msgid "First"
@@ -2720,6 +4003,9 @@ msgid "Individual Deposit Report"
 msgstr ""
 
 msgid "Advanced Deposit Report"
+msgstr ""
+
+msgid "Next"
 msgstr ""
 
 msgid "Add All Classes"
@@ -2848,9 +4134,7 @@ msgstr ""
 msgid "Summary Data"
 msgstr ""
 
-msgid ""
-"Voting members must have made<br> a donation within this many years<br> (0 "
-"to not require a donation):"
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
 msgstr ""
 
 msgid "CSV"
@@ -3024,8 +4308,7 @@ msgstr ""
 msgid "You can create/delete sunday school group. "
 msgstr ""
 
-msgid ""
-"Add new roles, but not modify or rename the Student and the Teacher roles."
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr ""
 
 msgid "Group Member Roles"
@@ -3085,9 +4368,7 @@ msgstr ""
 msgid "Group Member Properties Editor"
 msgstr ""
 
-msgid ""
-"This group currently has no properties!  You can add them in the Group "
-"Editor."
+msgid "This group currently has no properties!  You can add them in the Group Editor."
 msgstr ""
 
 msgid "Return to Person Record"
@@ -3105,9 +4386,7 @@ msgstr ""
 msgid "No properties have been added yet"
 msgstr ""
 
-msgid ""
-"Warning: Field changes will be lost if you do not 'Save Changes' before "
-"using an up, down, delete, or 'add new' button!"
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
 msgstr ""
 
 msgid "Show in"
@@ -3254,14 +4533,10 @@ msgstr ""
 msgid "Please confirm deletion of this group record"
 msgstr ""
 
-msgid ""
-"This will also delete all Roles and Group-Specific Property data associated "
-"with this Group record."
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 msgstr ""
 
-msgid ""
-"All group membership and properties will be destroyed.  The group members "
-"themselves will not be altered."
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
 msgstr ""
 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -3405,14 +4680,10 @@ msgstr ""
 msgid "Issue Report!"
 msgstr ""
 
-msgid ""
-"When you click \"Submit to GitHub\" you will be directed to GitHub issues "
-"page with your system info prefilled."
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
 msgstr ""
 
-msgid ""
-"No personally identifiable information will be submitted unless you "
-"purposefully include it."
+msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr ""
 
 msgid "Submit to GitHub"
@@ -3452,6 +4723,9 @@ msgid "Manage 2 Factor Authentication"
 msgstr ""
 
 msgid "Sign out"
+msgstr ""
+
+msgid "Home"
 msgstr ""
 
 msgid "Font"
@@ -3541,9 +4815,10 @@ msgstr ""
 msgid "Update Envelopes"
 msgstr ""
 
-msgid ""
-"This will overwrite the family envelope numbers in the database with those "
-"selected on this page.  Continue?"
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr ""
+
+msgid "Confirm"
 msgstr ""
 
 msgid "Family Select"
@@ -3567,14 +4842,10 @@ msgstr ""
 msgid "Missing Families? Update Family Latitude or Longitude now."
 msgstr ""
 
-msgid ""
-"Unable to display map due to missing Church Latitude or Longitude. Please "
-"update the church Address in the settings menu."
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
 msgstr ""
 
-msgid ""
-"Google Map API key is not set. The Map will work for smaller set of "
-"locations. Please create a Key in the maps sections of the setting menu."
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
 msgstr ""
 
 msgid "Legend"
@@ -3593,21 +4864,6 @@ msgid "Current Role"
 msgstr ""
 
 msgid "Update"
-msgstr ""
-
-msgid "Self Registrations"
-msgstr ""
-
-msgid "Families"
-msgstr ""
-
-msgid "Persons"
-msgstr ""
-
-msgid "Public Calendar"
-msgstr ""
-
-msgid "Private Calendar"
 msgstr ""
 
 msgid "Note Delete Confirmation"
@@ -3694,9 +4950,7 @@ msgstr ""
 msgid "Family Custom List Options Editor"
 msgstr ""
 
-msgid ""
-"Warning: Removing will reset all assignments for all persons with the "
-"assignment!"
+msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
 msgstr ""
 
 msgid "Error: Duplicate"
@@ -3786,6 +5040,9 @@ msgstr ""
 msgid "Email All (BCC)"
 msgstr ""
 
+msgid "Families"
+msgstr ""
+
 msgid "See all Families"
 msgstr ""
 
@@ -3852,9 +5109,7 @@ msgstr ""
 msgid "Custom Person Fields Editor"
 msgstr ""
 
-msgid ""
-"Warning:  By deleting this field, you will irrevokably lose all person data "
-"assigned for this field!"
+msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
 msgstr ""
 
 msgid "No custom person fields have been added yet"
@@ -3894,6 +5149,9 @@ msgid "Select Month"
 msgstr ""
 
 msgid "Select Day"
+msgstr ""
+
+msgid "Hide Age"
 msgstr ""
 
 msgid "Create a new family (using last name)"
@@ -4007,8 +5265,7 @@ msgstr ""
 msgid "loading"
 msgstr ""
 
-msgid ""
-"You are about to delete the profile photo, this procedure is irreversible."
+msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr ""
 
 msgid "Do you want to proceed?"
@@ -4042,9 +5299,6 @@ msgid "Deposit closed"
 msgstr ""
 
 msgid "Payment Details"
-msgstr ""
-
-msgid "Fiscal Year"
 msgstr ""
 
 msgid "Find family->"
@@ -4128,9 +5382,7 @@ msgstr ""
 msgid "Please confirm deletion of this property"
 msgstr ""
 
-msgid ""
-"Deleting this Property will also delete all assignments of this Property to "
-"any People, Family, or Group records."
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr ""
 
 msgid "No, cancel this deletion"
@@ -4154,17 +5406,13 @@ msgstr ""
 msgid "Prompt"
 msgstr ""
 
-msgid ""
-"Entering a Prompt value will allow the association of a free-form value."
+msgid "Entering a Prompt value will allow the association of a free-form value."
 msgstr ""
 
 msgid "Property List"
 msgstr ""
 
 msgid "Add a New"
-msgstr ""
-
-msgid "Property"
 msgstr ""
 
 msgid "with this Property..."
@@ -4189,9 +5437,6 @@ msgid "Please confirm deletion of this Property Type"
 msgstr ""
 
 msgid "Property Type Editor"
-msgstr ""
-
-msgid "Class"
 msgstr ""
 
 msgid "Property Type List"
@@ -4335,9 +5580,22 @@ msgstr ""
 msgid "Member/Friend"
 msgstr ""
 
-msgid ""
-"This option requires at least version 3.22 of MySQL!  Hit browser back "
-"button to return to ChurchCRM."
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr ""
+
+msgid "Estimated value "
+msgstr ""
+
+msgid "Donated by "
+msgstr ""
+
+msgid "Paddle"
+msgstr ""
+
+msgid "Bid"
+msgstr ""
+
+msgid "Minimum bid "
 msgstr ""
 
 msgid "All Funds"
@@ -4367,21 +5625,6 @@ msgstr ""
 msgid "Owe"
 msgstr ""
 
-msgid "Estimated value "
-msgstr ""
-
-msgid "Donated by "
-msgstr ""
-
-msgid "Paddle"
-msgstr ""
-
-msgid "Bid"
-msgstr ""
-
-msgid "Minimum bid "
-msgstr ""
-
 msgid "Donated Items:"
 msgstr ""
 
@@ -4403,14 +5646,10 @@ msgstr ""
 msgid "Amount paid: ________________"
 msgstr ""
 
-msgid ""
-"Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ "
-"__    __ __ __ __    __ __ __ __  Exp __ / __"
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr ""
 
-msgid ""
-"                                        Signature "
-"________________________________________________________________"
+msgid "                                        Signature ________________________________________________________________"
 msgstr ""
 
 msgid "PhotoBook"
@@ -4443,14 +5682,10 @@ msgstr ""
 msgid "Select a backup file to restore"
 msgstr ""
 
-msgid ""
-"CAUTION: This will completely erase the existing database, and replace it "
-"with the backup"
+msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
 msgstr ""
 
-msgid ""
-"If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, "
-"it will be automatically upgraded to the current database schema"
+msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
 msgstr ""
 
 msgid "Maximum upload size"
@@ -4489,17 +5724,13 @@ msgstr ""
 msgid "Family Delete Confirmation"
 msgstr ""
 
-msgid ""
-"Sorry, there are records of donations from this family. This family may not "
-"be deleted."
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
 msgstr ""
 
 msgid "Return to Family View"
 msgstr ""
 
-msgid ""
-"WARNING: This family has records of donations and may NOT be deleted until "
-"these donations are associated with another family."
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
 msgstr ""
 
 msgid "Please select another family with whom to associate these donations:"
@@ -4523,8 +5754,7 @@ msgstr ""
 msgid "Please confirm deletion of this family record:"
 msgstr ""
 
-msgid ""
-"Note: This will also delete all Notes associated with this Family record."
+msgid "Note: This will also delete all Notes associated with this Family record."
 msgstr ""
 
 msgid "Family Members:"
@@ -4534,60 +5764,6 @@ msgid "Delete Family Record ONLY"
 msgstr ""
 
 msgid "Delete Family Record AND Family Members"
-msgstr ""
-
-msgid "Unable to reset password"
-msgstr ""
-
-msgid "Password reset not available.  Please contact your system administrator"
-msgstr ""
-
-msgid "UserName not set"
-msgstr ""
-
-msgid "User"
-msgstr ""
-
-msgid "no found or user without an email"
-msgstr ""
-
-msgid "Login"
-msgstr ""
-
-msgid "Please Login"
-msgstr ""
-
-msgid "Your previous session timed out.  Please login again."
-msgstr ""
-
-msgid "I forgot my password"
-msgstr ""
-
-msgid "Register a new Family"
-msgstr ""
-
-msgid "Authentication Issue"
-msgstr ""
-
-msgid "Reset your password"
-msgstr ""
-
-msgid "Login Name"
-msgstr ""
-
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr ""
-
-msgid "Login Name is Required"
-msgstr ""
-
-msgid "A new password was sent to you. Please check your email"
-msgstr ""
-
-msgid "Please enter 2FA code"
-msgstr ""
-
-msgid "2FA Code"
 msgstr ""
 
 msgid "My User Settings"
@@ -4614,12 +5790,568 @@ msgstr ""
 msgid "Default User Settings"
 msgstr ""
 
-msgid ""
-"Set Permission True to give new users the ability to change their current "
-"value.<BR>"
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr ""
 
 msgid "Permission"
+msgstr ""
+
+msgid "System Upgrade"
+msgstr ""
+
+msgid "Upgrade Required"
+msgstr ""
+
+msgid "Current DB Version: "
+msgstr ""
+
+msgid "Current Software Version: "
+msgstr ""
+
+msgid "Upgrade database"
+msgstr ""
+
+msgid "Setting saved"
+msgstr ""
+
+msgid "Edit JSON Settings"
+msgstr ""
+
+msgid "Default Value"
+msgstr ""
+
+msgid "Edit Settings"
+msgstr ""
+
+msgid "Unknown Type"
+msgstr ""
+
+msgid "Tax Report"
+msgstr ""
+
+msgid "Calendar Year"
+msgstr ""
+
+msgid "Update Latitude & Longitude"
+msgstr ""
+
+msgid "Families without Geo Info"
+msgstr ""
+
+msgid "No coordinates found"
+msgstr ""
+
+msgid "Upgrade ChurchCRM"
+msgstr ""
+
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr ""
+
+msgid "Some conditions have been identified which may prevent a successful upgrade"
+msgstr ""
+
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr ""
+
+msgid "I Understand"
+msgstr ""
+
+msgid "Warning: Signature mismatch"
+msgstr ""
+
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr ""
+
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr ""
+
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr ""
+
+msgid "Integrity Check Details:"
+msgstr ""
+
+msgid "Files failing integrity check"
+msgstr ""
+
+msgid "File Missing"
+msgstr ""
+
+msgid "Step 1: Backup Database"
+msgstr ""
+
+msgid "Please create a database backup before beginning the upgrade process."
+msgstr ""
+
+msgid "Generate Database Backup"
+msgstr ""
+
+msgid "Step 2: Fetch Update Package on Server"
+msgstr ""
+
+msgid "Fetch the latest files from the ChurchCRM GitHub release page"
+msgstr ""
+
+msgid "Fetch Update Files"
+msgstr ""
+
+msgid "Step 3: Apply Update Package on Server"
+msgstr ""
+
+msgid "Extract the upgrade archive, and apply the new files"
+msgstr ""
+
+msgid "File Name:"
+msgstr ""
+
+msgid "Full Path:"
+msgstr ""
+
+msgid "SHA1:"
+msgstr ""
+
+msgid "Upgrade System"
+msgstr ""
+
+msgid "Step 4: Login"
+msgstr ""
+
+msgid "Login to Upgraded System"
+msgstr ""
+
+msgid "Backup Complete, Ready for Download."
+msgstr ""
+
+msgid "Backup Error."
+msgstr ""
+
+msgid "Backup Downloaded, Copy on server removed"
+msgstr ""
+
+msgid "User Editor"
+msgstr ""
+
+msgid "Note: Changes will not take effect until next logon."
+msgstr ""
+
+msgid "Person to Make User"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Login Name"
+msgstr ""
+
+msgid "(Grants all privileges.)"
+msgstr ""
+
+msgid "Add Records"
+msgstr ""
+
+msgid "Edit Records"
+msgstr ""
+
+msgid "Delete Records"
+msgstr ""
+
+msgid "Manage Properties and Classifications"
+msgstr ""
+
+msgid "Manage Groups and Roles"
+msgstr ""
+
+msgid "Manage Donations and Finance"
+msgstr ""
+
+msgid "View, Add and Edit Notes"
+msgstr ""
+
+msgid "Edit Self"
+msgstr ""
+
+msgid "(Edit own family only.)"
+msgstr ""
+
+msgid "Style"
+msgstr ""
+
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr ""
+
+msgid "New User"
+msgstr ""
+
+msgid "User Settings"
+msgstr ""
+
+msgid "Global User Settings"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Passwords"
+msgstr ""
+
+msgid "2FA"
+msgstr ""
+
+msgid "Session Timeout"
+msgstr ""
+
+msgid "Max Failed Login"
+msgstr ""
+
+msgid "Enable Password Reset"
+msgstr ""
+
+msgid "Send email to Deleted Users"
+msgstr ""
+
+msgid "Min Password Length"
+msgstr ""
+
+msgid "Min Password Characters Delta"
+msgstr ""
+
+msgid "Disallowed Passwords"
+msgstr ""
+
+msgid "Enable 2FA"
+msgstr ""
+
+msgid "Require 2FA"
+msgstr ""
+
+msgid "2FA Application Name"
+msgstr ""
+
+msgid "User Listing"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Last Login"
+msgstr ""
+
+msgid "Total Logins"
+msgstr ""
+
+msgid "Failed Logins"
+msgstr ""
+
+msgid "Two Factor Status"
+msgstr ""
+
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr ""
+
+msgid "Please confirm deletion of"
+msgstr ""
+
+msgid "There are people assigned to this Volunteer Opportunity."
+msgstr ""
+
+msgid "Volunteer Opportunity will be unassigned for the following people."
+msgstr ""
+
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr ""
+
+msgid "Volunteer Opportunity Editor"
+msgstr ""
+
+msgid "No volunteer opportunities have been added yet"
+msgstr ""
+
+msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
+msgstr ""
+
+msgid "Add New Opportunity"
+msgstr ""
+
+msgid "\"Why Came\" notes for "
+msgstr ""
+
+msgid "Why did you come to the church?"
+msgstr ""
+
+msgid "Why do you keep coming?"
+msgstr ""
+
+msgid "Do you have any suggestions for us?"
+msgstr ""
+
+msgid "How did you learn of the church?"
+msgstr ""
+
+msgid "Invalid request: Missing calendar id"
+msgstr ""
+
+msgid "Not Found: Unknown calendar id"
+msgstr ""
+
+msgid "invalid event type id"
+msgstr ""
+
+msgid "invalid calendar pinning"
+msgstr ""
+
+msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+msgstr ""
+
+msgid "records(s) successfully added to selected Group."
+msgstr ""
+
+msgid "records(s) successfully deleted from the selected Group."
+msgstr ""
+
+msgid "Your cart is empty"
+msgstr ""
+
+msgid "Your cart has been successfully emptied"
+msgstr ""
+
+msgid "List not found"
+msgstr ""
+
+msgid "List not in the list"
+msgstr ""
+
+msgid "Deactivated the Family"
+msgstr ""
+
+msgid "Activated the Family"
+msgstr ""
+
+msgid "Error sending email(s)"
+msgstr ""
+
+msgid "Please check logs for more information"
+msgstr ""
+
+msgid "Deleted from group"
+msgstr ""
+
+msgid "Added to group"
+msgstr ""
+
+msgid "invalid group request"
+msgstr ""
+
+msgid "invalid group id"
+msgstr ""
+
+msgid "invalid status value"
+msgstr ""
+
+msgid "invalid export value"
+msgstr ""
+
+msgid "Can't delete yourself"
+msgstr ""
+
+msgid "The role could not be found."
+msgstr ""
+
+msgid "The role is already assigned."
+msgstr ""
+
+msgid "The role is successfully assigned."
+msgstr ""
+
+msgid "The role could not be assigned."
+msgstr ""
+
+msgid "The property is already assigned."
+msgstr ""
+
+msgid "The property could not be assigned."
+msgstr ""
+
+msgid "The property is successfully assigned."
+msgstr ""
+
+msgid "The record could not be found."
+msgstr ""
+
+msgid "The property could not be unassigned."
+msgstr ""
+
+msgid "The property is successfully unassigned."
+msgstr ""
+
+msgid "Validation Error"
+msgstr ""
+
+msgid "Invalid User/Password"
+msgstr ""
+
+msgid "Link Not found"
+msgstr ""
+
+msgid "The database has been cleared."
+msgstr ""
+
+msgid "The people and families has been cleared from the database."
+msgstr ""
+
+msgid "eGive Import"
+msgstr ""
+
+msgid "Start Date: "
+msgstr ""
+
+msgid "End Date: "
+msgstr ""
+
+msgid "Re-import to selected family"
+msgstr ""
+
+msgid "Data import results: "
+msgstr ""
+
+msgid " gifts were imported, "
+msgstr ""
+
+msgid " gifts unchanged, and "
+msgstr ""
+
+msgid " gifts not imported due to problems"
+msgstr ""
+
+msgid "Back to Deposit Slip"
+msgstr ""
+
+msgid "Fatal error in eGive API datastream: '"
+msgstr ""
+
+msgid "Unable to load verification info"
+msgstr ""
+
+msgid "No Changes"
+msgstr ""
+
+msgid "Page not fond"
+msgstr ""
+
+msgid "Oops! Page not found."
+msgstr ""
+
+msgid "Family Registration"
+msgstr ""
+
+msgid "Register your family"
+msgstr ""
+
+msgid "How many people are in your family"
+msgstr ""
+
+msgid "Members"
+msgstr ""
+
+msgid "Family Member"
+msgstr ""
+
+msgid "Mobile"
+msgstr ""
+
+msgid "Review"
+msgstr ""
+
+msgid "Please enter the following to start your family's verification"
+msgstr ""
+
+msgid "Family Verification"
+msgstr ""
+
+msgid "Home Address"
+msgstr ""
+
+msgid "Family Member(s)"
+msgstr ""
+
+msgid "Work Email"
+msgstr ""
+
+msgid "All information on this page is correct."
+msgstr ""
+
+msgid "Please update the my family information with the following"
+msgstr ""
+
+msgid "Your verification request is complete"
+msgstr ""
+
+msgid "We encountered an error submitting with your verification data"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
+msgid "Visit our Site"
+msgstr ""
+
+msgid "Self Registrations"
+msgstr ""
+
+msgid "Persons"
+msgstr ""
+
+msgid "Public Calendar"
+msgstr ""
+
+msgid "Private Calendar"
+msgstr ""
+
+msgid "Unable to reset password"
+msgstr ""
+
+msgid "Password reset not available.  Please contact your system administrator"
+msgstr ""
+
+msgid "UserName not set"
+msgstr ""
+
+msgid "not found or user without an email"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Please Login"
+msgstr ""
+
+msgid "Your previous session timed out.  Please login again."
+msgstr ""
+
+msgid "I forgot my password"
+msgstr ""
+
+msgid "Register a new Family"
+msgstr ""
+
+msgid "Authentication Issue"
+msgstr ""
+
+msgid "Reset your password"
+msgstr ""
+
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr ""
+
+msgid "Login Name is Required"
+msgstr ""
+
+msgid "A new password was sent to you. Please check your email"
+msgstr ""
+
+msgid "Please enter 2FA code"
+msgstr ""
+
+msgid "2FA Code"
 msgstr ""
 
 msgid "Sunday School Class Functions"
@@ -4721,8 +6453,7 @@ msgstr ""
 msgid "Sunday School Reports"
 msgstr ""
 
-msgid ""
-"At least one group must be selected to make class lists or attendance sheets."
+msgid "At least one group must be selected to make class lists or attendance sheets."
 msgstr ""
 
 msgid "Report Details"
@@ -4762,260 +6493,6 @@ msgid "Create Attendance Sheet"
 msgstr ""
 
 msgid "Create PhotoBook"
-msgstr ""
-
-msgid "System Upgrade"
-msgstr ""
-
-msgid "Upgrade Required"
-msgstr ""
-
-msgid "Current DB Version: "
-msgstr ""
-
-msgid "Current Software Version: "
-msgstr ""
-
-msgid "Upgrade database"
-msgstr ""
-
-msgid "Setting saved"
-msgstr ""
-
-msgid "Edit JSON Settings"
-msgstr ""
-
-msgid "Default Value"
-msgstr ""
-
-msgid "Edit Settings"
-msgstr ""
-
-msgid "Unknown Type"
-msgstr ""
-
-msgid "Tax Report"
-msgstr ""
-
-msgid "Calendar Year"
-msgstr ""
-
-msgid "Update Latitude & Longitude"
-msgstr ""
-
-msgid "Families without Geo Info"
-msgstr ""
-
-msgid "No coordinates found"
-msgstr ""
-
-msgid "Upgrade ChurchCRM"
-msgstr ""
-
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr ""
-
-msgid ""
-"Some conditions have been identified which may prevent a successful upgrade"
-msgstr ""
-
-msgid ""
-"Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr ""
-
-msgid "I Understand"
-msgstr ""
-
-msgid "Warning: Signature mismatch"
-msgstr ""
-
-msgid ""
-"Some ChurchCRM system files may have been modified since the last "
-"installation."
-msgstr ""
-
-msgid ""
-"This upgrade will completely destroy any customizations made to the "
-"following files by reverting the files to the official version."
-msgstr ""
-
-msgid ""
-"If you wish to maintain your changes to these files, please take a manual "
-"backup of these files before proceeding with this upgrade, and then manually "
-"restore the files after the upgrade is complete."
-msgstr ""
-
-msgid "Integrity Check Details:"
-msgstr ""
-
-msgid "Files failing integrity check"
-msgstr ""
-
-msgid "File Missing"
-msgstr ""
-
-msgid "Step 1: Backup Database"
-msgstr ""
-
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr ""
-
-msgid "Generate Database Backup"
-msgstr ""
-
-msgid "Step 2: Fetch Update Package on Server"
-msgstr ""
-
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr ""
-
-msgid "Fetch Update Files"
-msgstr ""
-
-msgid "Step 3: Apply Update Package on Server"
-msgstr ""
-
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr ""
-
-msgid "File Name:"
-msgstr ""
-
-msgid "Full Path:"
-msgstr ""
-
-msgid "SHA1:"
-msgstr ""
-
-msgid "Upgrade System"
-msgstr ""
-
-msgid "Step 4: Login"
-msgstr ""
-
-msgid "Login to Upgraded System"
-msgstr ""
-
-msgid "Backup Complete, Ready for Download."
-msgstr ""
-
-msgid "Backup Error."
-msgstr ""
-
-msgid "Backup Downloaded, Copy on server removed"
-msgstr ""
-
-msgid "User Editor"
-msgstr ""
-
-msgid "Note: Changes will not take effect until next logon."
-msgstr ""
-
-msgid "Person to Make User"
-msgstr ""
-
-msgid "(Grants all privileges.)"
-msgstr ""
-
-msgid "Add Records"
-msgstr ""
-
-msgid "Edit Records"
-msgstr ""
-
-msgid "Delete Records"
-msgstr ""
-
-msgid "Manage Properties and Classifications"
-msgstr ""
-
-msgid "Manage Groups and Roles"
-msgstr ""
-
-msgid "Manage Donations and Finance"
-msgstr ""
-
-msgid "View, Add and Edit Notes"
-msgstr ""
-
-msgid "Edit Self"
-msgstr ""
-
-msgid "(Edit own family only.)"
-msgstr ""
-
-msgid "Style"
-msgstr ""
-
-msgid ""
-"Set Permission True to give this user the ability to change their current "
-"value."
-msgstr ""
-
-msgid "New User"
-msgstr ""
-
-msgid "User Settings"
-msgstr ""
-
-msgid "Global User Settings"
-msgstr ""
-
-msgid "General"
-msgstr ""
-
-msgid "Passwords"
-msgstr ""
-
-msgid "2FA"
-msgstr ""
-
-msgid "Session Timeout"
-msgstr ""
-
-msgid "Max Failed Login"
-msgstr ""
-
-msgid "Enable Password Reset"
-msgstr ""
-
-msgid "Send email to Deleted Users"
-msgstr ""
-
-msgid "Min Password Length"
-msgstr ""
-
-msgid "Min Password Characters Delta"
-msgstr ""
-
-msgid "Disallowed Passwords"
-msgstr ""
-
-msgid "Enable 2FA"
-msgstr ""
-
-msgid "Require 2FA"
-msgstr ""
-
-msgid "2FA Application Name"
-msgstr ""
-
-msgid "User Listing"
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
-msgid "Last Login"
-msgstr ""
-
-msgid "Total Logins"
-msgstr ""
-
-msgid "Failed Logins"
-msgstr ""
-
-msgid "Two Factor Status"
 msgstr ""
 
 msgid "Database Reset Functions"
@@ -5060,9 +6537,7 @@ msgstr ""
 msgid "Welcome to"
 msgstr ""
 
-msgid ""
-"Enter new user password. Administratively set passwords are not subject to "
-"length or complexity requirements"
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
 msgstr ""
 
 msgid "Confirm New Password"
@@ -5071,9 +6546,7 @@ msgstr ""
 msgid "Reset Members"
 msgstr ""
 
-msgid ""
-"This will remove all the member data, people, and families and can't be "
-"undone."
+msgid "This will remove all the member data, people, and families and can't be undone."
 msgstr ""
 
 msgid "Reset Families/People"
@@ -5082,8 +6555,7 @@ msgstr ""
 msgid "Reset Database"
 msgstr ""
 
-msgid ""
-"This will reset the system data and will restart the system as a new install."
+msgid "This will reset the system data and will restart the system as a new install."
 msgstr ""
 
 msgid "ChurchCRM Installation Information"
@@ -5323,8 +6795,7 @@ msgstr ""
 msgid "Select how do you want to request the family information to be verified"
 msgstr ""
 
-msgid ""
-"You are about to email copy of the family information to the following emails"
+msgid "You are about to email copy of the family information to the following emails"
 msgstr ""
 
 msgid "Online Verification"
@@ -5390,9 +6861,7 @@ msgstr ""
 msgid "Updated Persons"
 msgstr ""
 
-msgid ""
-"Enter your current password, then your new password twice.  Passwords must "
-"be at least"
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr ""
 
 msgid "characters in length."
@@ -5410,9 +6879,7 @@ msgstr ""
 msgid "Unable To Begin Two Factor Authentication Enrollment"
 msgstr ""
 
-msgid ""
-"Two factor authentication requires ChurchCRM administrators to configure a "
-"few parameters"
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
 msgstr ""
 
 msgid "System configuration "
@@ -5421,9 +6888,7 @@ msgstr ""
 msgid "Must be set to 'true'"
 msgstr ""
 
-msgid ""
-"Include/Config.php must define an encryption key for storing 2FA secret keys "
-"in the database by setting a value for"
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr ""
 
 msgid "Login Info"
@@ -5480,1240 +6945,6 @@ msgstr ""
 msgid "Change the initial page length (number of rows per page)"
 msgstr ""
 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr ""
-
-msgid "Please confirm deletion of"
-msgstr ""
-
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr ""
-
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr ""
-
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr ""
-
-msgid "Volunteer Opportunity Editor"
-msgstr ""
-
-msgid "No volunteer opportunities have been added yet"
-msgstr ""
-
-msgid ""
-"NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or "
-"Desc fields must be saved by pressing 'Save Changes'"
-msgstr ""
-
-msgid "Add New Opportunity"
-msgstr ""
-
-msgid "\"Why Came\" notes for "
-msgstr ""
-
-msgid "Why did you come to the church?"
-msgstr ""
-
-msgid "Why do you keep coming?"
-msgstr ""
-
-msgid "Do you have any suggestions for us?"
-msgstr ""
-
-msgid "How did you learn of the church?"
-msgstr ""
-
-msgid "Family Member Count"
-msgstr ""
-
-msgid "Person by Age"
-msgstr ""
-
-msgid "Total By Gender"
-msgstr ""
-
-msgid "Person by Role and Gender"
-msgstr ""
-
-msgid "Person by Property"
-msgstr ""
-
-msgid "Advanced Search"
-msgstr ""
-
-msgid "Registered students"
-msgstr ""
-
-msgid "Membership anniversaries"
-msgstr ""
-
-msgid "Select database users"
-msgstr ""
-
-msgid "Select all members"
-msgstr ""
-
-msgid "Volunteers"
-msgstr ""
-
-msgid "Recent friends"
-msgstr ""
-
-msgid "Pledge comparison"
-msgstr ""
-
-msgid "Missing pledges"
-msgstr ""
-
-msgid "Credit Card People"
-msgstr ""
-
-msgid "Family Pledge by Fiscal Year"
-msgstr ""
-
-msgid "CustomSearch"
-msgstr ""
-
-msgid "Returns each family and the total number of people assigned to them."
-msgstr ""
-
-msgid "Returns any person records with ages between two given ages."
-msgstr ""
-
-msgid "Total of records matching a given gender."
-msgstr ""
-
-msgid "Selects person records with the family role and gender specified."
-msgstr ""
-
-msgid "Returns person records which are assigned the given property."
-msgstr ""
-
-msgid ""
-"Search by any part of Name, City, State, Zip, Home Phone, Email, or Work "
-"Email."
-msgstr ""
-
-msgid "People with birthdays in a particular month"
-msgstr ""
-
-msgid "Find Registered students"
-msgstr ""
-
-msgid "Members who joined in a particular month"
-msgstr ""
-
-msgid "People who are registered as database users"
-msgstr ""
-
-msgid "People who are members"
-msgstr ""
-
-msgid "Find volunteers for a particular opportunity"
-msgstr ""
-
-msgid "Friends who signed up in previous months"
-msgstr ""
-
-msgid "Compare pledges between two fiscal years"
-msgstr ""
-
-msgid "Find people who pledged one year but not another"
-msgstr ""
-
-msgid "People who are configured to pay by credit card."
-msgstr ""
-
-msgid ""
-"Pledge summary by family name for each fund for the selected fiscal year"
-msgstr ""
-
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr ""
-
-msgid "Find people with a custom field value"
-msgstr ""
-
-msgid "Zip Code"
-msgstr ""
-
-msgid "2012/2013"
-msgstr ""
-
-msgid "2013/2014"
-msgstr ""
-
-msgid "2014/2015"
-msgstr ""
-
-msgid "2015/2016"
-msgstr ""
-
-msgid "WorkEmail"
-msgstr ""
-
-msgid "Regular Attender"
-msgstr ""
-
-msgid "Guest"
-msgstr ""
-
-msgid "Non-Attender"
-msgstr ""
-
-msgid "Non-Attender (staff)"
-msgstr ""
-
-msgid "2016/2017"
-msgstr ""
-
-msgid "2017/2018"
-msgstr ""
-
-msgid "2018/2019"
-msgstr ""
-
-msgid "2019/2020"
-msgstr ""
-
-msgid "2020/2021"
-msgstr ""
-
-msgid "2021/2022"
-msgstr ""
-
-msgid "2022/2023"
-msgstr ""
-
-msgid "Minimum Age"
-msgstr ""
-
-msgid "Maximum Age"
-msgstr ""
-
-msgid "Beginning Date"
-msgstr ""
-
-msgid "Ending Date"
-msgstr ""
-
-msgid "Search"
-msgstr ""
-
-msgid "Field"
-msgstr ""
-
-msgid "Month"
-msgstr ""
-
-msgid "Volunteer opportunities"
-msgstr ""
-
-msgid "Months"
-msgstr ""
-
-msgid "First Fiscal Year"
-msgstr ""
-
-msgid "Second Fiscal Year"
-msgstr ""
-
-msgid "Custom field"
-msgstr ""
-
-msgid "Field value"
-msgstr ""
-
-msgid "The minimum age for which you want records returned."
-msgstr ""
-
-msgid "The maximum age for which you want records returned."
-msgstr ""
-
-msgid "The desired gender to search the database for."
-msgstr ""
-
-msgid "Select the desired family role."
-msgstr ""
-
-msgid "The gender for which you would like records returned."
-msgstr ""
-
-msgid "The property for which you would like person records returned."
-msgstr ""
-
-msgid ""
-"Please select the beginning date to calculate total contributions for each "
-"member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain "
-"donations."
-msgstr ""
-
-msgid ""
-"Please enter the last date to calculate total contributions for each member "
-"(i.e. YYYY-MM-DD)."
-msgstr ""
-
-msgid ""
-"Enter any part of the following: Name, City, State, Zip, Home Phone, Email, "
-"or Work Email."
-msgstr ""
-
-msgid "Select field to search for."
-msgstr ""
-
-msgid "The birthday month for which you would like records returned."
-msgstr ""
-
-msgid "The sunday school class for which you would like records returned."
-msgstr ""
-
-msgid "Group of registered students"
-msgstr ""
-
-msgid ""
-"The membership anniversary month for which you would like records returned."
-msgstr ""
-
-msgid "Choose a volunteer opportunity"
-msgstr ""
-
-msgid "Number of months since becoming a friend"
-msgstr ""
-
-msgid "First fiscal year for comparison"
-msgstr ""
-
-msgid "Second fiscal year for comparison"
-msgstr ""
-
-msgid "Pledged this year"
-msgstr ""
-
-msgid "but not this year"
-msgstr ""
-
-msgid "Fiscal Year."
-msgstr ""
-
-msgid "Member, Regular Attender, etc."
-msgstr ""
-
-msgid "First volunteer opportunity choice"
-msgstr ""
-
-msgid "Second volunteer opportunity choice"
-msgstr ""
-
-msgid "Choose customer person field"
-msgstr ""
-
-msgid "Match custom field to this value"
-msgstr ""
-
-msgid "Afghanistan (‫افغانستان‬‎)"
-msgstr ""
-
-msgid "Åland Islands (Åland)"
-msgstr ""
-
-msgid "Albania (Shqipëri)"
-msgstr ""
-
-msgid "Algeria (‫الجزائر‬‎)"
-msgstr ""
-
-msgid "American Samoa"
-msgstr ""
-
-msgid "Andorra"
-msgstr ""
-
-msgid "Angola"
-msgstr ""
-
-msgid "Anguilla"
-msgstr ""
-
-msgid "Antarctica"
-msgstr ""
-
-msgid "Antigua and Barbuda"
-msgstr ""
-
-msgid "Argentina"
-msgstr ""
-
-msgid "Armenia (Հայաստան)"
-msgstr ""
-
-msgid "Aruba"
-msgstr ""
-
-msgid "Ascension Island"
-msgstr ""
-
-msgid "Australia"
-msgstr ""
-
-msgid "Austria (Österreich)"
-msgstr ""
-
-msgid "Azerbaijan (Azərbaycan)"
-msgstr ""
-
-msgid "Bahamas"
-msgstr ""
-
-msgid "Bahrain (‫البحرين‬‎)"
-msgstr ""
-
-msgid "Bangladesh (বাংলাদেশ)"
-msgstr ""
-
-msgid "Barbados"
-msgstr ""
-
-msgid "Belarus (Беларусь)"
-msgstr ""
-
-msgid "Belgium (België)"
-msgstr ""
-
-msgid "Belize"
-msgstr ""
-
-msgid "Benin (Bénin)"
-msgstr ""
-
-msgid "Bermuda"
-msgstr ""
-
-msgid "Bhutan (འབྲུག)"
-msgstr ""
-
-msgid "Bolivia"
-msgstr ""
-
-msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
-msgstr ""
-
-msgid "Botswana"
-msgstr ""
-
-msgid "Bouvet Island"
-msgstr ""
-
-msgid "Brazil (Brasil)"
-msgstr ""
-
-msgid "British Indian Ocean Territory"
-msgstr ""
-
-msgid "British Virgin Islands"
-msgstr ""
-
-msgid "Brunei"
-msgstr ""
-
-msgid "Bulgaria (България)"
-msgstr ""
-
-msgid "Burkina Faso"
-msgstr ""
-
-msgid "Burundi (Uburundi)"
-msgstr ""
-
-msgid "Cambodia (កម្ពុជា)"
-msgstr ""
-
-msgid "Cameroon (Cameroun)"
-msgstr ""
-
-msgid "Canada"
-msgstr ""
-
-msgid "Canary Islands (islas Canarias)"
-msgstr ""
-
-msgid "Cape Verde (Kabu Verdi)"
-msgstr ""
-
-msgid "Caribbean Netherlands"
-msgstr ""
-
-msgid "Cayman Islands"
-msgstr ""
-
-msgid "Central African Republic (République centrafricaine)"
-msgstr ""
-
-msgid "Ceuta and Melilla (Ceuta y Melilla)"
-msgstr ""
-
-msgid "Chad (Tchad)"
-msgstr ""
-
-msgid "Chile"
-msgstr ""
-
-msgid "China (中国)"
-msgstr ""
-
-msgid "Christmas Island"
-msgstr ""
-
-msgid "Clipperton Island"
-msgstr ""
-
-msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
-msgstr ""
-
-msgid "Colombia"
-msgstr ""
-
-msgid "Comoros (‫جزر القمر‬‎)"
-msgstr ""
-
-msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
-msgstr ""
-
-msgid "Congo (Republic) (Congo-Brazzaville)"
-msgstr ""
-
-msgid "Cook Islands"
-msgstr ""
-
-msgid "Costa Rica"
-msgstr ""
-
-msgid "Côte d’Ivoire"
-msgstr ""
-
-msgid "Croatia (Hrvatska)"
-msgstr ""
-
-msgid "Cuba"
-msgstr ""
-
-msgid "Curaçao"
-msgstr ""
-
-msgid "Cyprus (Κύπρος)"
-msgstr ""
-
-msgid "Czech Republic (Česká republika)"
-msgstr ""
-
-msgid "Denmark (Danmark)"
-msgstr ""
-
-msgid "Diego Garcia"
-msgstr ""
-
-msgid "Djibouti"
-msgstr ""
-
-msgid "Dominica"
-msgstr ""
-
-msgid "Dominican Republic (República Dominicana)"
-msgstr ""
-
-msgid "Ecuador"
-msgstr ""
-
-msgid "Egypt (‫مصر‬‎)"
-msgstr ""
-
-msgid "El Salvador"
-msgstr ""
-
-msgid "Equatorial Guinea (Guinea Ecuatorial)"
-msgstr ""
-
-msgid "Eritrea"
-msgstr ""
-
-msgid "Estonia (Eesti)"
-msgstr ""
-
-msgid "Ethiopia"
-msgstr ""
-
-msgid "Falkland Islands (Islas Malvinas)"
-msgstr ""
-
-msgid "Faroe Islands (Føroyar)"
-msgstr ""
-
-msgid "Fiji"
-msgstr ""
-
-msgid "Finland (Suomi)"
-msgstr ""
-
-msgid "France"
-msgstr ""
-
-msgid "French Guiana (Guyane française)"
-msgstr ""
-
-msgid "French Polynesia (Polynésie française)"
-msgstr ""
-
-msgid "French Southern Territories (Terres australes françaises)"
-msgstr ""
-
-msgid "Gabon"
-msgstr ""
-
-msgid "Gambia"
-msgstr ""
-
-msgid "Georgia (საქართველო)"
-msgstr ""
-
-msgid "Germany (Deutschland)"
-msgstr ""
-
-msgid "Ghana (Gaana)"
-msgstr ""
-
-msgid "Gibraltar"
-msgstr ""
-
-msgid "Greece (Ελλάδα)"
-msgstr ""
-
-msgid "Greenland (Kalaallit Nunaat)"
-msgstr ""
-
-msgid "Grenada"
-msgstr ""
-
-msgid "Guadeloupe"
-msgstr ""
-
-msgid "Guam"
-msgstr ""
-
-msgid "Guatemala"
-msgstr ""
-
-msgid "Guernsey"
-msgstr ""
-
-msgid "Guinea (Guinée)"
-msgstr ""
-
-msgid "Guinea-Bissau (Guiné Bissau)"
-msgstr ""
-
-msgid "Guyana"
-msgstr ""
-
-msgid "Haiti"
-msgstr ""
-
-msgid "Heard & McDonald Islands"
-msgstr ""
-
-msgid "Honduras"
-msgstr ""
-
-msgid "Hong Kong (香港)"
-msgstr ""
-
-msgid "Hungary (Magyarország)"
-msgstr ""
-
-msgid "Iceland (Ísland)"
-msgstr ""
-
-msgid "India (भारत)"
-msgstr ""
-
-msgid "Indonesia"
-msgstr ""
-
-msgid "Iran (‫ایران‬‎)"
-msgstr ""
-
-msgid "Iraq (‫العراق‬‎)"
-msgstr ""
-
-msgid "Ireland"
-msgstr ""
-
-msgid "Isle of Man"
-msgstr ""
-
-msgid "Israel (‫ישראל‬‎)"
-msgstr ""
-
-msgid "Italy (Italia)"
-msgstr ""
-
-msgid "Jamaica"
-msgstr ""
-
-msgid "Japan (日本)"
-msgstr ""
-
-msgid "Jersey"
-msgstr ""
-
-msgid "Jordan (‫الأردن‬‎)"
-msgstr ""
-
-msgid "Kazakhstan (Казахстан)"
-msgstr ""
-
-msgid "Kenya"
-msgstr ""
-
-msgid "Kiribati"
-msgstr ""
-
-msgid "Kosovo (Kosovë)"
-msgstr ""
-
-msgid "Kuwait (‫الكويت‬‎)"
-msgstr ""
-
-msgid "Kyrgyzstan (Кыргызстан)"
-msgstr ""
-
-msgid "Laos (ລາວ)"
-msgstr ""
-
-msgid "Latvia (Latvija)"
-msgstr ""
-
-msgid "Lebanon (‫لبنان‬‎)"
-msgstr ""
-
-msgid "Lesotho"
-msgstr ""
-
-msgid "Liberia"
-msgstr ""
-
-msgid "Libya (‫ليبيا‬‎)"
-msgstr ""
-
-msgid "Liechtenstein"
-msgstr ""
-
-msgid "Lithuania (Lietuva)"
-msgstr ""
-
-msgid "Luxembourg"
-msgstr ""
-
-msgid "Macau (澳門)"
-msgstr ""
-
-msgid "Macedonia (FYROM) (Македонија)"
-msgstr ""
-
-msgid "Madagascar (Madagasikara)"
-msgstr ""
-
-msgid "Malawi"
-msgstr ""
-
-msgid "Malaysia"
-msgstr ""
-
-msgid "Maldives"
-msgstr ""
-
-msgid "Mali"
-msgstr ""
-
-msgid "Malta"
-msgstr ""
-
-msgid "Marshall Islands"
-msgstr ""
-
-msgid "Martinique"
-msgstr ""
-
-msgid "Mauritania (‫موريتانيا‬‎)"
-msgstr ""
-
-msgid "Mauritius (Moris)"
-msgstr ""
-
-msgid "Mayotte"
-msgstr ""
-
-msgid "Mexico (México)"
-msgstr ""
-
-msgid "Micronesia"
-msgstr ""
-
-msgid "Moldova (Republica Moldova)"
-msgstr ""
-
-msgid "Monaco"
-msgstr ""
-
-msgid "Mongolia (Монгол)"
-msgstr ""
-
-msgid "Montenegro (Crna Gora)"
-msgstr ""
-
-msgid "Montserrat"
-msgstr ""
-
-msgid "Morocco (‫المغرب‬‎)"
-msgstr ""
-
-msgid "Mozambique (Moçambique)"
-msgstr ""
-
-msgid "Myanmar (Burma) (မြန်မာ)"
-msgstr ""
-
-msgid "Namibia (Namibië)"
-msgstr ""
-
-msgid "Nauru"
-msgstr ""
-
-msgid "Nepal (नेपाल)"
-msgstr ""
-
-msgid "Netherlands (Nederland)"
-msgstr ""
-
-msgid "New Caledonia (Nouvelle-Calédonie)"
-msgstr ""
-
-msgid "New Zealand"
-msgstr ""
-
-msgid "Nicaragua"
-msgstr ""
-
-msgid "Niger (Nijar)"
-msgstr ""
-
-msgid "Nigeria"
-msgstr ""
-
-msgid "Niue"
-msgstr ""
-
-msgid "Norfolk Island"
-msgstr ""
-
-msgid "Northern Mariana Islands"
-msgstr ""
-
-msgid "North Korea (조선 민주주의 인민 공화국)"
-msgstr ""
-
-msgid "Norway (Norge)"
-msgstr ""
-
-msgid "Oman (‫عُمان‬‎)"
-msgstr ""
-
-msgid "Pakistan (‫پاکستان‬‎)"
-msgstr ""
-
-msgid "Palau"
-msgstr ""
-
-msgid "Palestine (‫فلسطين‬‎)"
-msgstr ""
-
-msgid "Panama (Panamá)"
-msgstr ""
-
-msgid "Papua New Guinea"
-msgstr ""
-
-msgid "Paraguay"
-msgstr ""
-
-msgid "Peru (Perú)"
-msgstr ""
-
-msgid "Philippines"
-msgstr ""
-
-msgid "Pitcairn Islands"
-msgstr ""
-
-msgid "Poland (Polska)"
-msgstr ""
-
-msgid "Portugal"
-msgstr ""
-
-msgid "Puerto Rico"
-msgstr ""
-
-msgid "Qatar (‫قطر‬‎)"
-msgstr ""
-
-msgid "Réunion (La Réunion)"
-msgstr ""
-
-msgid "Romania (România)"
-msgstr ""
-
-msgid "Russia (Россия)"
-msgstr ""
-
-msgid "Rwanda"
-msgstr ""
-
-msgid "Saint Barthélemy (Saint-Barthélemy)"
-msgstr ""
-
-msgid "Saint Helena"
-msgstr ""
-
-msgid "Saint Kitts and Nevis"
-msgstr ""
-
-msgid "Saint Lucia"
-msgstr ""
-
-msgid "Saint Martin (Saint-Martin (partie française))"
-msgstr ""
-
-msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
-msgstr ""
-
-msgid "Samoa"
-msgstr ""
-
-msgid "San Marino"
-msgstr ""
-
-msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
-msgstr ""
-
-msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
-msgstr ""
-
-msgid "Senegal (Sénégal)"
-msgstr ""
-
-msgid "Serbia (Србија)"
-msgstr ""
-
-msgid "Seychelles"
-msgstr ""
-
-msgid "Sierra Leone"
-msgstr ""
-
-msgid "Singapore"
-msgstr ""
-
-msgid "Sint Maarten"
-msgstr ""
-
-msgid "Slovakia (Slovensko)"
-msgstr ""
-
-msgid "Slovenia (Slovenija)"
-msgstr ""
-
-msgid "Solomon Islands"
-msgstr ""
-
-msgid "Somalia (Soomaaliya)"
-msgstr ""
-
-msgid "South Africa"
-msgstr ""
-
-msgid "South Georgia & South Sandwich Islands"
-msgstr ""
-
-msgid "South Korea (대한민국)"
-msgstr ""
-
-msgid "South Sudan (‫جنوب السودان‬‎)"
-msgstr ""
-
-msgid "Spain (España)"
-msgstr ""
-
-msgid "Sri Lanka (ශ්‍රී ලංකාව)"
-msgstr ""
-
-msgid "St. Vincent & Grenadines"
-msgstr ""
-
-msgid "Sudan (‫السودان‬‎)"
-msgstr ""
-
-msgid "Suriname"
-msgstr ""
-
-msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
-msgstr ""
-
-msgid "Swaziland"
-msgstr ""
-
-msgid "Sweden (Sverige)"
-msgstr ""
-
-msgid "Switzerland (Schweiz)"
-msgstr ""
-
-msgid "Syria (‫سوريا‬‎)"
-msgstr ""
-
-msgid "Taiwan (台灣)"
-msgstr ""
-
-msgid "Tajikistan"
-msgstr ""
-
-msgid "Tanzania"
-msgstr ""
-
-msgid "Thailand (ไทย)"
-msgstr ""
-
-msgid "Timor-Leste"
-msgstr ""
-
-msgid "Togo"
-msgstr ""
-
-msgid "Tokelau"
-msgstr ""
-
-msgid "Tonga"
-msgstr ""
-
-msgid "Trinidad and Tobago"
-msgstr ""
-
-msgid "Tristan da Cunha"
-msgstr ""
-
-msgid "Tunisia (‫تونس‬‎)"
-msgstr ""
-
-msgid "Turkey (Türkiye)"
-msgstr ""
-
-msgid "Turkmenistan"
-msgstr ""
-
-msgid "Turks and Caicos Islands"
-msgstr ""
-
-msgid "Tuvalu"
-msgstr ""
-
-msgid "U.S. Outlying Islands"
-msgstr ""
-
-msgid "U.S. Virgin Islands"
-msgstr ""
-
-msgid "Uganda"
-msgstr ""
-
-msgid "Ukraine (Україна)"
-msgstr ""
-
-msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
-msgstr ""
-
-msgid "United Kingdom"
-msgstr ""
-
-msgid "United States"
-msgstr ""
-
-msgid "Uruguay"
-msgstr ""
-
-msgid "Uzbekistan (Oʻzbekiston)"
-msgstr ""
-
-msgid "Vanuatu"
-msgstr ""
-
-msgid "Vatican City (Città del Vaticano)"
-msgstr ""
-
-msgid "Venezuela"
-msgstr ""
-
-msgid "Vietnam (Việt Nam)"
-msgstr ""
-
-msgid "Wallis and Futuna"
-msgstr ""
-
-msgid "Western Sahara (‫الصحراء الغربية‬‎)"
-msgstr ""
-
-msgid "Yemen (‫اليمن‬‎)"
-msgstr ""
-
-msgid "Zambia"
-msgstr ""
-
-msgid "Zimbabwe"
-msgstr ""
-
-msgid "Afrikaans"
-msgstr ""
-
-msgid "Albanian"
-msgstr ""
-
-msgid "Arabic - Egypt"
-msgstr ""
-
-msgid "Amharic - Ethiopia"
-msgstr ""
-
-msgid "Chinese - China"
-msgstr ""
-
-msgid "Chinese - Taiwan"
-msgstr ""
-
-msgid "Czech"
-msgstr ""
-
-msgid "Dutch - Netherlands"
-msgstr ""
-
-msgid "English - Australia"
-msgstr ""
-
-msgid "English - Canada"
-msgstr ""
-
-msgid "English - Great Britain"
-msgstr ""
-
-msgid "English - South Africa"
-msgstr ""
-
-msgid "English - Jamaica"
-msgstr ""
-
-msgid "English - United States"
-msgstr ""
-
-msgid "Estonian"
-msgstr ""
-
-msgid "Finnish"
-msgstr ""
-
-msgid "French - France"
-msgstr ""
-
-msgid "German - Germany"
-msgstr ""
-
-msgid "Greek"
-msgstr ""
-
-msgid "Hebrew"
-msgstr ""
-
-msgid "Hindi - India"
-msgstr ""
-
-msgid "Hungarian"
-msgstr ""
-
-msgid "Indonesian - Indonesia"
-msgstr ""
-
-msgid "Italian - Italy"
-msgstr ""
-
-msgid "Japanese"
-msgstr ""
-
-msgid "Norwegian"
-msgstr ""
-
-msgid "Polish"
-msgstr ""
-
-msgid "Portuguese - Brazil"
-msgstr ""
-
-msgid "Portuguese - Portugal"
-msgstr ""
-
-msgid "Romanian - Romania"
-msgstr ""
-
-msgid "Russian"
-msgstr ""
-
-msgid "Spanish - Spain"
-msgstr ""
-
-msgid "Swahili"
-msgstr ""
-
-msgid "Sami (Northern) (Sweden)"
-msgstr ""
-
-msgid "Telugu - India"
-msgstr ""
-
-msgid "Tamil - India"
-msgstr ""
-
-msgid "Thai"
-msgstr ""
-
-msgid "Turkish"
-msgstr ""
-
-msgid "Ukrainian"
-msgstr ""
-
-msgid "Vietnamese"
-msgstr ""
-
-msgid "User permission to send email via mailto: links"
-msgstr ""
-
-msgid "Delimiter to separate emails in mailto: links"
-msgstr ""
-
-msgid "User permission to create directories"
-msgstr ""
-
-msgid "User permission to export CSV files"
-msgstr ""
-
-msgid "Allow user to add new event"
-msgstr ""
-
 msgid "2 Factor Authentication Enrollment Success"
 msgstr ""
 
@@ -6732,14 +6963,10 @@ msgstr ""
 msgid "Add all"
 msgstr ""
 
-msgid ""
-"After confirming app enrollment, single-use recovery codes will be generated "
-"and displayed."
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
 msgstr ""
 
-msgid ""
-"After successfully entering both your credentials, and the one-time code, "
-"you'll be logged in as normal"
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
 msgstr ""
 
 msgid "All members of this group are in the cart"
@@ -6751,9 +6978,7 @@ msgstr ""
 msgid "Are you sure you want to move"
 msgstr ""
 
-msgid ""
-"Are you sure you want to remove the group-specific person properties?  All "
-"group member properties data will be lost!"
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
 msgstr ""
 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6771,13 +6996,10 @@ msgstr ""
 msgid "Begin Two Factor Authentication Enrollment"
 msgstr ""
 
-msgid ""
-"Beginning enrollment will invalidate any previously enrolled 2 factor "
-"devices and recovery codes."
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
 msgstr ""
 
-msgid ""
-"bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
 msgstr ""
 
 msgid "Calendar Name"
@@ -6792,10 +7014,7 @@ msgstr ""
 msgid "Checking Cart Status"
 msgstr ""
 
-msgid ""
-"ChurchCRM Two factor supports any TOTP authenticator app, so you're free to "
-"choose between Microsoft Authenticator, Google Authenticator, Authy, "
-"LastPass, and others"
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
 msgstr ""
 
 msgid "Closed"
@@ -6849,9 +7068,7 @@ msgstr ""
 msgid "End Date"
 msgstr ""
 
-msgid ""
-"Enrolling your ChurchCRM user account in Two Factor Authention provides an "
-"additional layer of defense against bad actors trying to access your account."
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
 msgstr ""
 
 msgid "Enter TOTP code to confirm enrollment"
@@ -6878,9 +7095,7 @@ msgstr ""
 msgid "Focus"
 msgstr ""
 
-msgid ""
-"For calendars to be shared, the bEnableExternalCalendarAPI setting must be "
-"enabled in addition to the calendar having a specific access token"
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr ""
 
 msgid "Foreground Color"
@@ -6901,9 +7116,7 @@ msgstr ""
 msgid "Holiday"
 msgstr ""
 
-msgid ""
-"However, you'll also need to supply a one-time code from your authenticator "
-"device to complete your login"
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
 msgstr ""
 
 msgid "HTML URL"
@@ -6912,9 +7125,7 @@ msgstr ""
 msgid "ICS URL"
 msgstr ""
 
-msgid ""
-"If you ever lose access to your newly enrolled authenticator app, you'll "
-"need to use a recovery code to gain access to your account"
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
 msgstr ""
 
 msgid "Invalid Entry"
@@ -7001,9 +7212,7 @@ msgstr ""
 msgid "property"
 msgstr ""
 
-msgid ""
-"Recovery codes can be used instead of a code generated from your "
-"authenticator app."
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
 msgstr ""
 
 msgid "Regenerate 2 Factor Authentication Secret"
@@ -7063,23 +7272,16 @@ msgstr ""
 msgid "This will also delete all payments associated with this deposit"
 msgstr ""
 
-msgid ""
-"This will create a group-specific properties table for this group.  You "
-"should then add needed properties with the Group-Specific Properties Form "
-"Editor."
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
 msgstr ""
 
 msgid "to"
 msgstr ""
 
-msgid ""
-"To confirm enrollment, you'll need to enter the code generated by your "
-"authenticator app"
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
 msgstr ""
 
-msgid ""
-"To prevent being locked out of your ChurchCRM account, please ensure you're "
-"ready to complete two factor enrollment before clicking begin"
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
 msgstr ""
 
 msgid "Unfocus"
@@ -7097,14 +7299,10 @@ msgstr ""
 msgid "View Cart"
 msgstr ""
 
-msgid ""
-"When you click next, you'll be prompted to scan a QR code to enroll your "
-"authenticator app."
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
 msgstr ""
 
-msgid ""
-"When you sign in to ChurchCRM, you'll still enter your username and password "
-"like normal"
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
 msgstr ""
 
 msgid "You are about to add a new deposit without a comment"
