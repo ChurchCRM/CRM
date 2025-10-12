@@ -4,8 +4,19 @@ on:
   pull_request:
     branches:    
       - master
-      - develop
-    paths-ignore:
+      - deve        echo "📦 Installing dependencies..."
+        npm ci
+        
+        # Verify grunt dependencies are installed
+        echo "🔍 Verifying grunt dependencies..."
+        echo "Grunt CLI version:"
+        npx grunt --version || echo "⚠️ Grunt CLI not found"
+        
+        echo "Checking for required grunt plugins:"
+        npm list grunt-contrib-copy grunt-contrib-compress grunt-curl 2>/dev/null || echo "⚠️ Some grunt plugins may be missing"
+        
+        # Create reliable wrapper scripts for npm-run-all commands
+        echo "🔧 Creating npm-run-all wrapper scripts..."   paths-ignore:
       - '**/*.md'
       - 'docs/**'
       - 'LICENSE'
