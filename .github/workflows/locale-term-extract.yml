@@ -63,9 +63,12 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Create minimal BuildConfig for term extraction
+    - name: Create BuildConfig with Docker database settings
       run: |
-        echo "🔧 Creating minimal BuildConfig.json for term extraction..."
+        echo "🔧 Creating BuildConfig.json with Docker database configuration..."
+        cp BuildConfig.json.example BuildConfig.json
+        
+        # Update BuildConfig.json to use Docker database settings
         cat > BuildConfig.json << 'EOF'
         {
             "POEditor": {
@@ -78,9 +81,9 @@ jobs:
             "demoKey": "",
             "Env": {
                 "local": {
-                    "server": "localhost",
+                    "server": "127.0.0.1",
                     "database": {
-                        "server": "localhost",
+                        "server": "127.0.0.1",
                         "port": "3306",
                         "database": "churchcrm",
                         "user": "churchcrm",
@@ -91,14 +94,38 @@ jobs:
             }
         }
         EOF
-        echo "✅ BuildConfig.json created (database not needed for source code extraction)"
+        echo "✅ BuildConfig.json created with Docker database configuration"
+
+    - name: Start Docker database for term extraction
+      run: |
+        echo "🐳 Starting Docker database for term extraction..."
+        npm run docker:ci:start
+        
+        # Wait for database to be ready
+        echo "⏳ Waiting for database to be ready..."
+        timeout=60
+        interval=2
+        elapsed=0
+        until docker exec $(docker ps -q --filter "name=database") mysqladmin ping -h"127.0.0.1" --silent; do
+          if [ "$elapsed" -ge "$timeout" ]; then
+            echo "❌ Database did not become ready within $timeout seconds"
+            docker ps -a
+            docker logs $(docker ps -q --filter "name=database") || true
+            exit 1
+          fi
+          sleep $interval
+          elapsed=$((elapsed + interval))
+          echo "  Waiting... ($elapsed/$timeout seconds)"
+        done
+        echo "✅ Database is ready for term extraction"
 
     - name: Backup original messages.po
       run: cp locale/messages.po locale/messages.po.backup
 
     - name: Extract locale terms
       run: |
-        echo "🔍 Extracting locale terms from source code..."
+        echo "🔍 Extracting locale terms from all sources..."
+        echo "📊 This includes: database terms, static data, PHP code, and JavaScript/React code"
         npm run locale:term-extract
         echo "✅ Locale term extraction completed"
 
@@ -219,6 +246,12 @@ jobs:
     - name: Cleanup
       if: always()
       run: |
+        echo "🧹 Cleaning up Docker containers and temporary files..."
+        # Stop Docker containers
+        npm run docker:ci:down || true
+        
         # Clean up backup file
         rm -f locale/messages.po.backup
         rm -f /tmp/messages_*_normalized.po
+        
+        echo "✅ Cleanup completed"
