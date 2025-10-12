@@ -1,484 +1,96 @@
-name: 'Build, Test and Package'name: 'Build, Test and Package'
+name: Build, Test and Package
 
-
-
-on:on:
-
-  pull_request:  pull_request:
-
-    branches:        branches:    
-
-      - master      - master
-
-      - develop      - deve        echo "📦 Installing dependencies..."
-
-    paths-ignore:        npm ci
-
-      - '**/*.md'        
-
-      - 'docs/**'        # Verify grunt dependencies are installed
-
-      - 'LICENSE'        echo "🔍 Verifying grunt dependencies..."
-
-      - '.gitignore'        echo "Grunt CLI version:"
-
-  push:        npx grunt --version || echo "⚠️ Grunt CLI not found"
-
-    branches:        
-
-      - master        echo "Checking for required grunt plugins:"
-
-      - develop        npm list grunt-contrib-copy grunt-contrib-compress grunt-curl || echo "⚠️ Some grunt plugins may be missing"
-
-    paths-ignore:        
-
-      - '**/*.md'        # Create grunt wrapper to ensure npx access
-
-      - 'docs/**'        echo "🔧 Creating grunt wrapper script..."
-
-      - 'LICENSE'        mkdir -p ./node_modules/.bin
-
-      - '.gitignore'        echo '#!/bin/bash' > ./node_modules/.bin/grunt
-
-        echo 'npx grunt "$@"' >> ./node_modules/.bin/grunt
-
-jobs:        chmod +x ./node_modules/.bin/grunt
-
-  test-n-package:        
-
-    runs-on: ubuntu-latest        # Ensure BuildConfig.json exists (required by Gruntfile)
-
-    strategy:        if [ ! -f "BuildConfig.json" ]; then
-
-      matrix:          echo "⚠️ BuildConfig.json not found, copying from example..."
-
-        node-version: ['20.x']          cp BuildConfig.json.example BuildConfig.json
-
-                else
-
-    steps:          echo "✅ BuildConfig.json exists"
-
-    - uses: actions/checkout@v4        fi
-
-      with:        
-
-        # fetch full history so things like auto-changelog work properly        # Create reliable wrapper scripts for npm-run-all commands
-
-        fetch-depth: 0        echo "🔧 Creating npm-run-all wrapper scripts..."   paths-ignore:
-
-              - '**/*.md'
-
-    - name: Use Node.js ${{ matrix.node-version }}      - 'docs/**'
-
-      uses: actions/setup-node@v4      - 'LICENSE'
-
-      with:      - '.gitignore'
-
-        node-version: ${{ matrix.node-version }}  push:
-
-        cache: 'npm'    branches:
-
-        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token      - master
-
-        registry-url: 'https://registry.npmjs.org'      - develop
-
+on:
+  pull_request:
+    branches:    
+      - master
+      - develop
     paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
+  push:
+    branches:
+    - master
+    - develop
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
 
-    - name: Declare some variables      - '**/*.md'
-
-      id: vars      - 'docs/**'
-
-      shell: bash      - 'LICENSE'
-
-      run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT      - '.gitignore'
-
-  workflow_dispatch:
-
-    - name: get-npm-version    # Allow manual triggering for testing and releases
-
-      id: package-version    inputs:
-
-      uses: martinbeentjes/npm-get-version-action@v1.3.1      skip_tests:
-
-        description: 'Skip Cypress tests (faster build for testing)'
-
-    - name: Get Env Ready        required: false
-
-      run: |        type: boolean
-
-        npm ci        default: false
-
-      skip_docker:
-
-    - name: Get Composer Cache Directory        description: 'Skip Docker integration tests'
-
-      id: composer-cache        required: false
-
-      run: |        type: boolean
-
-        cd src        default: false
-
-        echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT      debug_mode:
-
-        description: 'Enable debug logging and verbose output'
-
-    - name: Cache Composer dependencies        required: false
-
-      uses: actions/cache@v4        type: boolean
-
-      with:        default: false
-
-        path: ${{ steps.composer-cache.outputs.dir }}      node_version:
-
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}        description: 'Node.js version to use'
-
-        restore-keys: |        required: false
-
-          ${{ runner.os }}-composer-        type: choice
-
-        options:
-
-    - name: Build App          - '18.x'
-
-      run: |          - '20.x'
-
-        npm run package          - '22.x'
-
-        default: '20.x'
-
-    - name: Run Docker
-
-      run: |jobs:
-
-        npm run docker:ci:start  build-test-package:
-
-        docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a    name: 'Build, Test and Package ChurchCRM'
-
-        docker compose -f docker/docker-compose.test-php8-apache.yaml logs    runs-on: ubuntu-latest
-
-    
-
-    - name: Test Server    env:
-
-      run: |      NODE_ENV: production
-
-        # Test API endpoint      CI: true
-
-        sleep 30      DEBUG_MODE: ${{ inputs.debug_mode || false }}
-
-        curl --max-time 30 -f -s http://127.0.0.1/api/public/echo || {      NODE_VERSION: ${{ inputs.node_version || '20.x' }}
-
-          echo "API test failed. Docker status:"    
-
-          docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a    steps:
-
-          docker compose -f docker/docker-compose.test-php8-apache.yaml logs    - name: Checkout repository
-
-          exit 1      uses: actions/checkout@v4
-
-        }      with:
-
+jobs:
+  test-n-package:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20.x']
+    steps:
+    - uses: actions/checkout@v4
+      with:
         # fetch full history so things like auto-changelog work properly
-
-    - name: Run Cypress Tests        fetch-depth: 0
-
-      run: |        
-
-        npm run test    - name: Setup Node.js ${{ env.NODE_VERSION }}
-
+        fetch-depth: 0
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        registry-url: 'https://registry.npmjs.org'
 
-    - name: Stop Docker      with:
+    - name: Declare some variables
+      id: vars
+      shell: bash
+      run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
 
-      run: |        node-version: ${{ env.NODE_VERSION }}
-
-        npm run docker:ci:down        cache: 'npm'
-
-          # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token
-
-    - name: Upload zip file        registry-url: 'https://registry.npmjs.org'
-
-      uses: actions/upload-artifact@v4
-
-      with:    - name: Get build information
-
-        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}-${{ steps.vars.outputs.branch }}-files      id: build-info
-
-        path: target/ChurchCRM-*.*      shell: bash
-
-        retention-days: 90      run: |
-        echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
-        echo "commit_sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
-        echo "build_date=$(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
-        echo "trigger=${{ github.event_name }}" >> $GITHUB_OUTPUT
-
-    - name: Get package version
+    - name: get-npm-version
       id: package-version
       uses: martinbeentjes/npm-get-version-action@v1.3.1
 
-    - name: Cache NPM dependencies
-      uses: actions/cache@v4
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-
-    - name: Install dependencies with npm-run-all fix
+    - name: Get Env Ready
       run: |
-        echo "📦 Installing dependencies..."
         npm ci
-        
-        # Create reliable wrapper scripts for npm-run-all commands
-        echo "� Creating npm-run-all wrapper scripts..."
-        mkdir -p ./node_modules/.bin
-        
-        # Create run-p wrapper that uses npx npm-run-all
-        echo '#!/bin/bash' > ./node_modules/.bin/run-p
-        echo 'npx npm-run-all --parallel "$@"' >> ./node_modules/.bin/run-p
-        
-        # Create run-s wrapper that uses npx npm-run-all  
-        echo '#!/bin/bash' > ./node_modules/.bin/run-s
-        echo 'npx npm-run-all --sequential "$@"' >> ./node_modules/.bin/run-s
-        
-        # Make scripts executable
-        chmod +x ./node_modules/.bin/run-p ./node_modules/.bin/run-s
-        
-        echo "✅ npm-run-all wrapper scripts created"
 
-    - name: Verify build dependencies
-      run: |
-        echo "🔍 Verifying build dependencies..."
-        
-        # Add node_modules/.bin to PATH
-        export PATH="$PWD/node_modules/.bin:$PATH"
-        
-        echo "Testing grunt setup:"
-        if command -v grunt >/dev/null 2>&1; then
-          echo "✅ grunt command available"
-          grunt --version
-          echo "Testing grunt tasks:"
-          grunt --help | grep -E "curl-dir|copy" | head -2 || echo "⚠️ Some grunt tasks may not be registered"
-        else
-          echo "⚠️ grunt command not found in PATH, trying npx..."
-          npx grunt --version || echo "❌ grunt not accessible"
-        fi
-        
-        echo "Testing npm-run-all wrapper scripts:"
-        if [ -f "node_modules/.bin/run-p" ]; then
-          echo "✅ run-p wrapper exists and is executable"
-          ls -la node_modules/.bin/run-p
-        else
-          echo "❌ run-p wrapper not found"
-        fi
-        
-        if [ -f "node_modules/.bin/run-s" ]; then
-          echo "✅ run-s wrapper exists and is executable"
-          ls -la node_modules/.bin/run-s
-        else
-          echo "❌ run-s wrapper not found"
-        fi
-        
-        echo "Verifying npm scripts:"
-        echo "Scripts using npm-run-all:"
-        grep -n "run-[ps]" package.json | head -5
-
-    - name: Get Composer cache directory
+    - name: Get Composer Cache Directory
       id: composer-cache
       run: |
         cd src
         echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-    - name: Cache Composer dependencies
-      uses: actions/cache@v4
+    - uses: actions/cache@v4
       with:
         path: ${{ steps.composer-cache.outputs.dir }}
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-composer-
 
-    - name: Install Composer dependencies
+    - name: Build App
       run: |
-        echo "🎼 Installing Composer dependencies..."
-        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-          cd src && composer install --no-dev --optimize-autoloader --verbose
-        else
-          cd src && composer install --no-dev --optimize-autoloader
-        fi
-        echo "✅ Composer dependencies installed"
+        npm run package
 
-    - name: Build frontend assets
+    - name: Run Docker
       run: |
-        echo "🔨 Building frontend assets..."
-        # Ensure node_modules/.bin is in PATH for our wrapper scripts
-        export PATH="$PWD/node_modules/.bin:$PATH"
-        
-        echo "Testing grunt and run-p accessibility..."
-        grunt --version && echo "✅ grunt accessible" || echo "❌ grunt not accessible"
-        run-p --help >/dev/null 2>&1 && echo "✅ run-p accessible" || echo "❌ run-p not accessible"
-        
-        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-          npm run build:frontend -- --verbose
-        else
-          npm run build:frontend
-        fi
-        echo "✅ Frontend build completed"
+        npm run docker:ci:start
+        docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
+        docker compose -f docker/docker-compose.test-php8-apache.yaml logs
 
-    - name: Generate signatures and integrity files
+    - name: Test Server
       run: |
-        echo "🔐 Generating security signatures..."
-        # Ensure node_modules/.bin is in PATH
-        export PATH="$PWD/node_modules/.bin:$PATH"
-        npm run deploy:signatures
-        echo "✅ Security signatures generated"
-
-    - name: Create distribution package
-      run: |
-        echo "📦 Creating distribution package..."
-        # Ensure node_modules/.bin is in PATH
-        export PATH="$PWD/node_modules/.bin:$PATH"
-        
-        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-          npm run package -- --verbose
-        else
-          npm run package
-        fi
-        echo "✅ Package created successfully"
-
-    - name: Validate build artifacts
-      run: |
-        echo "🔍 Validating build artifacts..."
-        if [ ! -d "target" ]; then
-          echo "❌ Target directory not found"
-          exit 1
-        fi
-        
-        artifact_count=$(find target -name "ChurchCRM-*.zip" | wc -l)
-        if [ "$artifact_count" -eq 0 ]; then
-          echo "❌ No ChurchCRM package found in target directory"
-          exit 1
-        fi
-        
-        echo "✅ Found $artifact_count package(s) in target directory"
-        ls -la target/ChurchCRM-*
-
-    - name: Start Docker environment
-      if: inputs.skip_docker != true
-      run: |
-        echo "🐳 Starting Docker test environment..."
-        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-          echo "Debug: Using verbose Docker output"
-          npm run docker:ci:start
+          curl -vvv http://127.0.0.1/api/public/echo
           docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
-          echo "Docker logs:"
           docker compose -f docker/docker-compose.test-php8-apache.yaml logs
-        else
-          npm run docker:ci:start
-        fi
-        echo "✅ Docker environment started"
 
-    - name: Wait for services to be ready
-      if: inputs.skip_docker != true
+    - name: Run Cypress Tests
       run: |
-        echo "⏳ Waiting for services to initialize..."
-        sleep 30
-        echo "✅ Service initialization period completed"
+        npm run test
 
-    - name: Test server connectivity
-      if: inputs.skip_docker != true
+    - name: Stop Docker
       run: |
-        echo "🌐 Testing server connectivity..."
-        
-        # Test API endpoint
-        echo "Testing API endpoint..."
-        if curl --max-time 30 -f -s http://127.0.0.1/api/public/echo > /dev/null; then
-          echo "✅ API endpoint is responding"
-        else
-          echo "❌ API endpoint test failed"
-          echo "Docker status:"
-          docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
-          echo "Docker logs:"
-          docker compose -f docker/docker-compose.test-php8-apache.yaml logs
-          exit 1
-        fi
-
-    - name: Run Cypress end-to-end tests
-      if: inputs.skip_tests != true
-      run: |
-        echo "🧪 Running Cypress end-to-end tests..."
-        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-          echo "Debug mode: Running tests with debug output"
-          npm run test -- --config video=true,screenshotOnRunFailure=true
-        else
-          npm run test
-        fi
-        echo "✅ All tests passed"
-
-    - name: Collect test artifacts on failure
-      if: failure() && inputs.skip_tests != true
-      run: |
-        echo "📸 Collecting test artifacts due to failure..."
-        if [ -d "cypress/screenshots" ]; then
-          echo "Screenshots found:"
-          find cypress/screenshots -name "*.png" | head -10
-        fi
-        if [ -d "cypress/videos" ]; then
-          echo "Videos found:"
-          find cypress/videos -name "*.mp4" | head -5
-        fi
-
-    - name: Upload test artifacts on failure
-      if: failure() && inputs.skip_tests != true
-      uses: actions/upload-artifact@v4
-      with:
-        name: cypress-test-artifacts-${{ steps.build-info.outputs.commit_sha }}
-        path: |
-          cypress/screenshots
-          cypress/videos
-        retention-days: 7
-
-    - name: Stop Docker environment
-      if: always() && inputs.skip_docker != true
-      run: |
-        echo "🛑 Stopping Docker environment..."
         npm run docker:ci:down
-        echo "✅ Docker environment stopped"
-
-    - name: Create build summary
-      if: always()
-      run: |
-        echo "## 🏗️ Build Summary" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "**Build Information:**" >> $GITHUB_STEP_SUMMARY
-        echo "- 📦 **Version**: ${{ steps.package-version.outputs.current-version }}" >> $GITHUB_STEP_SUMMARY
-        echo "- 🌿 **Branch**: ${{ steps.build-info.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
-        echo "- 📝 **Commit**: ${{ steps.build-info.outputs.commit_sha }}" >> $GITHUB_STEP_SUMMARY
-        echo "- 🚀 **Trigger**: ${{ steps.build-info.outputs.trigger }}" >> $GITHUB_STEP_SUMMARY
-        echo "- 📅 **Date**: ${{ steps.build-info.outputs.build_date }}" >> $GITHUB_STEP_SUMMARY
-        echo "- 🟢 **Node.js**: ${{ env.NODE_VERSION }}" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        
-        echo "**Configuration:**" >> $GITHUB_STEP_SUMMARY
-        echo "- 🧪 **Tests**: ${{ inputs.skip_tests == true && 'Skipped' || 'Executed' }}" >> $GITHUB_STEP_SUMMARY
-        echo "- 🐳 **Docker**: ${{ inputs.skip_docker == true && 'Skipped' || 'Used' }}" >> $GITHUB_STEP_SUMMARY
-        echo "- 🔍 **Debug**: ${{ env.DEBUG_MODE }}" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        
-        if [ -d "target" ]; then
-          echo "**Build Artifacts:**" >> $GITHUB_STEP_SUMMARY
-          for file in target/ChurchCRM-*; do
-            if [ -f "$file" ]; then
-              size=$(ls -lh "$file" | awk '{print $5}')
-              echo "- 📄 \`$(basename "$file")\` ($size)" >> $GITHUB_STEP_SUMMARY
-            fi
-          done
-        fi
-
-    - name: Upload build artifacts
-      if: always()
+  
+    - name: Upload zip file
       uses: actions/upload-artifact@v4
       with:
-        name: ChurchCRM-${{ steps.package-version.outputs.current-version }}-${{ steps.build-info.outputs.commit_sha }}
+        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}-files
         path: target/ChurchCRM-*.*
-        retention-days: 90
-        if-no-files-found: error
