@@ -19,11 +19,13 @@
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2/promise');
+const os = require('os');
 
 class DatabaseTermExtractor {
     constructor() {
         this.configPath = path.resolve(__dirname, '../../BuildConfig.json');
-        this.stringsDir = path.resolve(__dirname, '../db-strings');
+        // Use a temporary directory that gets cleaned up
+        this.stringsDir = path.join(os.tmpdir(), 'churchcrm-locale-db-strings');
         this.stringFiles = [];
         this.connection = null;
     }
@@ -159,11 +161,51 @@ class DatabaseTermExtractor {
     }
 
     /**
-     * Get countries data (replacement for PHP Countries class)
+     * Get countries data from the authoritative Countries.php source
+     * This ensures we always use the same data as the main application
      */
     async getCountriesData() {
-        // For now, return a basic set of countries
-        // This could be enhanced to read from a JSON file or API
+        const countriesFile = path.resolve(__dirname, 'countries.json');
+        
+        // If countries.json doesn't exist, generate it from the PHP source
+        if (!fs.existsSync(countriesFile)) {
+            console.log('Generating countries.json from PHP Countries class...');
+            try {
+                const { execSync } = require('child_process');
+                const phpCommand = `php -r "
+                    require 'src/ChurchCRM/data/Countries.php';
+                    require 'src/ChurchCRM/data/Country.php';
+                    \\$countries = ChurchCRM\\data\\Countries::getNames();
+                    echo json_encode(array_values(\\$countries), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                "`;
+                
+                const output = execSync(phpCommand, { 
+                    cwd: path.resolve(__dirname, '../..'),
+                    encoding: 'utf8' 
+                });
+                
+                fs.writeFileSync(countriesFile, output);
+                console.log('Generated countries.json from authoritative PHP source');
+            } catch (error) {
+                console.error('Failed to generate countries.json from PHP:', error.message);
+                console.log('Falling back to static list...');
+                return this.getFallbackCountries();
+            }
+        }
+        
+        try {
+            const countriesData = fs.readFileSync(countriesFile, 'utf8');
+            return JSON.parse(countriesData);
+        } catch (error) {
+            console.error('Failed to read countries.json:', error.message);
+            return this.getFallbackCountries();
+        }
+    }
+    
+    /**
+     * Fallback country list in case PHP extraction fails
+     */
+    getFallbackCountries() {
         return [
             'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Australia',
             'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium',
@@ -232,6 +274,13 @@ class DatabaseTermExtractor {
 
 // Run the extractor if this file is executed directly
 if (require.main === module) {
+    // Check for command line arguments
+    if (process.argv.includes('--temp-dir')) {
+        const extractor = new DatabaseTermExtractor();
+        console.log(extractor.stringsDir);
+        process.exit(0);
+    }
+    
     const extractor = new DatabaseTermExtractor();
     extractor.run();
 }
