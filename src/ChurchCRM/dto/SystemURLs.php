@@ -57,6 +57,7 @@ class SystemURLs
         $supportURLs = [
             'HttpsTask'                     => 'https://github.com/ChurchCRM/CRM/wiki/SSL',
             'CheckExecutionTimeTask'        => 'https://github.com/ChurchCRM/CRM/wiki/PHP-Max-Execution-Time',
+            'CheckLogFilesTask'             => 'https://github.com/ChurchCRM/CRM/wiki/Log-Management',
             'SecretsConfigurationCheckTask' => 'https://github.com/ChurchCRM/CRM/wiki/Secret-Keys-in-Config.php',
             'UnsupportedPaymentDataCheck'   => 'https://github.com/ChurchCRM/CRM/wiki/Finances',
             'UnsupportedDepositCheck'       => 'https://github.com/ChurchCRM/CRM/wiki/Finances',
