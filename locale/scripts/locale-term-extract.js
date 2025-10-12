@@ -1,22 +1,24 @@
 #!/usr/bin/env node
 
 /**
- * ChurchCRM Locale Generation Script
+ * ChurchCRM Term Extraction Script
  * 
- * Orchestrates the complete locale extraction pipeline:
+ * Extracts all translatable terms from ChurchCRM for POEditor upload:
  * 1. Database terms extraction
  * 2. Static data (countries/locales) extraction  
  * 3. PHP source code extraction
  * 4. JavaScript/React terms extraction
  * 5. Merging all translation files
  * 6. Cleanup of temporary files
+ * 
+ * Output: locale/messages.po file ready for POEditor upload
  */
 
 const fs = require('fs');
 const path = require('path');
 const { execSync, spawn } = require('child_process');
 
-class LocaleGenerator {
+class TermExtractor {
     constructor() {
         this.projectRoot = path.resolve(__dirname, '../..');
         this.localeDir = path.join(this.projectRoot, 'locale');
@@ -211,7 +213,7 @@ class LocaleGenerator {
      */
     async run() {
         try {
-            this.log('🚀', `Starting locale extraction from ${this.projectRoot}`);
+            this.log('🚀', `Starting term extraction from ${this.projectRoot}`);
 
             // 1. Extract database terms
             const dbTempDir = await this.extractDatabaseTerms();
@@ -257,10 +259,10 @@ class LocaleGenerator {
             this.cleanup(dbTempDir);
             this.cleanup(staticTempDir);
 
-            this.log('✅', 'Locale extraction completed!');
+            this.log('✅', 'Term extraction completed!');
 
         } catch (error) {
-            console.error('❌ Locale generation failed:', error.message);
+            console.error('❌ Term extraction failed:', error.message);
             process.exit(1);
         }
     }
@@ -268,8 +270,8 @@ class LocaleGenerator {
 
 // Run if called directly
 if (require.main === module) {
-    const generator = new LocaleGenerator();
-    generator.run();
+    const extractor = new TermExtractor();
+    extractor.run();
 }
 
-module.exports = LocaleGenerator;
+module.exports = TermExtractor;

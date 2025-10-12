@@ -6,17 +6,17 @@ This directory contains the complete localization infrastructure for ChurchCRM, 
 
 ```
 locale/
-├── README.md                    # This documentation
-├── db-strings/                  # Database string extraction (temporary)
-├── JSONKeys/                    # Generated JSON translation files
-├── locales/                     # i18next translation files
-├── extract-db-locale-terms.js  # Database term extraction script
-├── i18next-parser.config.js    # i18next parser configuration
-├── locale-add.js               # Language setup automation script
-├── locale-audit.js             # Locale completeness audit script
-├── messages.po                  # Master Gettext template file
-├── poeditor-audit.md           # Locale completeness report
-└── update-locale.sh            # Term extraction script
+├── README.md                       # This documentation
+├── JSONKeys/                       # Generated JSON translation files
+├── locales/                        # i18next translation files
+├── scripts/
+│   ├── locale-audit.js             # Locale completeness audit script
+│   ├── locale-extract-db.js        # Database term extraction script
+│   ├── locale-extract-static.js    # Static data (countries/locales) extraction
+│   └── locale-term-extract.js      # Main term extraction orchestrator
+├── i18next-parser.config.js       # i18next parser configuration
+├── messages.po                     # Master Gettext template file
+└── poeditor-audit.md              # Locale completeness report
 ```
 
 ## 🛠️ Available NPM Scripts
@@ -25,7 +25,7 @@ locale/
 - `npm run locale:audit` - Generate locale completeness report
 - `npm run locale:clean` - Clean all translation files
 - `npm run locale:download` - Download latest translations from POEditor
-- `npm run locale:gen` - Extract all translatable terms
+- `npm run locale:term-extract` - Extract all translatable terms for POEditor upload
 
 ### Manual Scripts (require parameters)
 - `node locale/locale-add.js` - Add new language support
@@ -52,10 +52,11 @@ ChurchCRM uses [POEditor](https://poeditor.com) as the primary translation manag
 
 ### POEditor Workflow
 
-1. **Upload Terms**: `locale:gen` → Upload `messages.po` to POEditor
-2. **Translate**: Contributors translate terms in POEditor web interface
-3. **Download**: `locale:download` downloads completed translations
-4. **Deploy**: Translations are converted to runtime formats
+1. **Extract Terms**: `npm run locale:term-extract` → Generates `messages.po` with all translatable terms
+2. **Upload to POEditor**: Upload `locale/messages.po` to POEditor project
+3. **Translate**: Contributors translate terms in POEditor web interface
+4. **Download**: `npm run locale:download` downloads completed translations
+5. **Deploy**: Translations are converted to runtime formats
 
 ## 📝 Gettext System
 
@@ -84,27 +85,35 @@ t('Text to translate')
 
 ### Term Extraction Process
 
-The `locale:gen` script (`update-locale.sh`) performs:
+The `npm run locale:term-extract` script (`scripts/locale-term-extract.js`) performs a comprehensive extraction:
 
-1. **PHP Term Extraction**
-   ```bash
-   find . -iname '*.php' | xargs xgettext --from-code=UTF-8 -o ../locale/messages.po
-   ```
+1. **Database Terms** - Extracts terms from database queries, user configurations, and system data
+   - Uses `locale-extract-db.js` with direct MySQL connectivity  
+   - Implements deduplication to prevent conflicts
+   - Generates 112+ unique database terms with proper context
 
-2. **Database Term Extraction**
-   ```bash
-   node extract-db-locale-terms.js
-   ```
+2. **Static Data** - Extracts countries and locale names for translation
+   - Uses `locale-extract-static.js` to generate static terms
+   - Pulls authoritative country data from PHP Countries class
+   - Includes multilingual country names (e.g., "China (中国)")
+   - Generates 297+ static data terms
 
-3. **JavaScript Term Extraction**
-   ```bash
-   i18next -c locale/i18next-parser.config.js
-   ```
+3. **PHP Source Code** - Extracts gettext calls from PHP files
+   - Uses GNU `xgettext` to scan all PHP source files
+   - Excludes vendor directories automatically
+   - Captures 1,800+ terms from application logic
 
-4. **Term Merging**
-   ```bash
-   msgcat locale/messages.po locale/locales/en/translation.po -o locale/messages.po
-   ```
+4. **JavaScript/React** - Extracts i18next translation calls
+   - Uses `i18next-parser` with proper npx execution
+   - Scans both React (.tsx) and vanilla JS files
+   - Generates 97+ JavaScript terms including critical UI elements
+
+5. **File Merging** - Combines all sources into final output
+   - Uses `msgcat --use-first --no-wrap` for clean merging
+   - Handles duplicate terms with first-occurrence preference
+   - Produces final `locale/messages.po` with 2,292+ total terms
+
+**Result**: Complete term coverage ensuring no translatable content is missed.
 
 ## 🚀 Adding New Languages
 
@@ -125,7 +134,7 @@ node locale/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country
    ```
 
 3. **Generate Translation Files**
-   - Run `npm run locale:gen` to extract terms
+   - Run `npm run locale:term-extract` to extract terms
    - Upload `messages.po` to POEditor
    - Add language in POEditor interface
 
