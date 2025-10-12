@@ -145,7 +145,7 @@ jobs:
     - name: Generate signatures and integrity files
       run: |
         echo "🔐 Generating security signatures..."
-        npm run update-signatures
+        npm run deploy:signatures
         echo "✅ Security signatures generated"
 
 
@@ -182,12 +182,12 @@ jobs:
         echo "🐳 Starting Docker test environment..."
         if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
           echo "Debug: Using verbose Docker output"
-          npm run ci-docker-test-start
+          npm run docker:ci:start
           docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
           echo "Docker logs:"
           docker compose -f docker/docker-compose.test-php8-apache.yaml logs
         else
-          npm run ci-docker-test-start
+          npm run docker:ci:start
         fi
         echo "✅ Docker environment started"
 
@@ -255,7 +255,7 @@ jobs:
       if: always() && inputs.skip_docker != true
       run: |
         echo "🛑 Stopping Docker environment..."
-        npm run ci-docker-test-down
+        npm run docker:ci:down
         echo "✅ Docker environment stopped"
 
     - name: Create build summary
