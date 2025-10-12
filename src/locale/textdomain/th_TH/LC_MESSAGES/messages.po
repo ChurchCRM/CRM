@@ -32,10 +32,12 @@ msgstr "ยังไม่ได้กำหนด"
 msgid "None"
 msgstr "ไม่มี"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "เมือง"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "จังหวัด"
@@ -48,6 +50,7 @@ msgstr "ประเทศ"
 msgid "Phone"
 msgstr "โทรศัพท์"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "อีเมล"
@@ -136,6 +139,7 @@ msgstr "วันเกิด / วันครอบรอบแต่งงา
 msgid "Age / Years Married"
 msgstr "อายุ / แต่งงานกี่ปีแล้ว"
 
+#. Context: queryparameters_qrp
 #: 
 #, fuzzy
 msgid "Family Role"
@@ -161,10 +165,12 @@ msgstr "ใช้ Ctrl คีย์เพื่อเลือกหลาย"
 msgid "Don't Filter"
 msgstr "ไม่ใช้ฟิลเตอร์"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "ชาย"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "หญิง"
@@ -200,6 +206,7 @@ msgstr "วิธีการส่งออก"
 msgid "Create File"
 msgstr "สร้างไฟล์"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "เพศ"
@@ -208,6 +215,7 @@ msgstr "เพศ"
 msgid "Donation Envelope"
 msgstr "ซองถวาย"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "โทรศัพท์บ้าน"
