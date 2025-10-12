@@ -104,6 +104,29 @@ jobs:
           npm ci
         fi
 
+    - name: Verify build dependencies
+      run: |
+        echo "🔍 Verifying build dependencies..."
+        
+        # Add node_modules/.bin to PATH if not already there
+        export PATH="$PWD/node_modules/.bin:$PATH"
+        
+        echo "Checking npm-run-all installation:"
+        if command -v run-p >/dev/null 2>&1; then
+          echo "✅ run-p command is available"
+          run-p --version
+        else
+          echo "❌ run-p command not found in PATH"
+          if [ -f "node_modules/.bin/run-p" ]; then
+            echo "✅ run-p binary exists in node_modules/.bin/"
+            node_modules/.bin/run-p --version
+          else
+            echo "❌ run-p binary not found in node_modules/.bin/"
+            echo "Contents of node_modules/.bin/:"
+            ls -la node_modules/.bin/ | grep -E "(run|npm)" || echo "No run-related binaries found"
+          fi
+        fi
+
     - name: Get Composer cache directory
       id: composer-cache
       run: |
@@ -131,6 +154,9 @@ jobs:
     - name: Build frontend assets
       run: |
         echo "🔨 Building frontend assets..."
+        # Ensure node_modules/.bin is in PATH
+        export PATH="$PWD/node_modules/.bin:$PATH"
+        
         if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
           npm run build:frontend -- --verbose
         else
@@ -141,12 +167,17 @@ jobs:
     - name: Generate signatures and integrity files
       run: |
         echo "🔐 Generating security signatures..."
+        # Ensure node_modules/.bin is in PATH
+        export PATH="$PWD/node_modules/.bin:$PATH"
         npm run deploy:signatures
         echo "✅ Security signatures generated"
 
     - name: Create distribution package
       run: |
         echo "📦 Creating distribution package..."
+        # Ensure node_modules/.bin is in PATH
+        export PATH="$PWD/node_modules/.bin:$PATH"
+        
         if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
           npm run package -- --verbose
         else
