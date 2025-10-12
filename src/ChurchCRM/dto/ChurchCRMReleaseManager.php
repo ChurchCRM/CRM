@@ -183,7 +183,14 @@ class ChurchCRMReleaseManager
     public static function downloadLatestRelease(): array
     {
         // this is a proxy function.  For now, just download the nest step release
-        $releaseToDownload = ChurchCRMReleaseManager::getNextReleaseStep(ChurchCRMReleaseManager::getReleaseFromString($_SESSION['sSoftwareInstalledVersion']));
+        $currentRelease = ChurchCRMReleaseManager::getReleaseFromString($_SESSION['sSoftwareInstalledVersion']);
+        
+        // Check if the current version is already the latest
+        if (ChurchCRMReleaseManager::isReleaseCurrent($currentRelease)) {
+            throw new \Exception('Current software version (' . $currentRelease . ') is already the latest available release. No upgrade needed.');
+        }
+        
+        $releaseToDownload = ChurchCRMReleaseManager::getNextReleaseStep($currentRelease);
 
         return ChurchCRMReleaseManager::downloadRelease($releaseToDownload);
     }
