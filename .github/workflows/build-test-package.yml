@@ -168,10 +168,21 @@ jobs:
         # Ensure node_modules/.bin is in PATH
         export PATH="$PWD/node_modules/.bin:$PATH"
         
-        if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
-          npm run build:frontend -- --verbose
+        # Check if run-p is available before building
+        if ! command -v run-p >/dev/null 2>&1; then
+          echo "⚠️ run-p not found in PATH, using npx..."
+          if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
+            npx npm run build:frontend -- --verbose
+          else
+            npx npm run build:frontend
+          fi
         else
-          npm run build:frontend
+          echo "✅ run-p command available, proceeding normally..."
+          if [ "${{ env.DEBUG_MODE }}" = "true" ]; then
+            npm run build:frontend -- --verbose
+          else
+            npm run build:frontend
+          fi
         fi
         echo "✅ Frontend build completed"
 
