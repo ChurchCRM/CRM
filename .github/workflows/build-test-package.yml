@@ -134,6 +134,15 @@ jobs:
         # Add node_modules/.bin to PATH
         export PATH="$PWD/node_modules/.bin:$PATH"
         
+        echo "Testing grunt setup:"
+        if command -v grunt >/dev/null 2>&1; then
+          echo "✅ grunt command available"
+          grunt --version
+        else
+          echo "⚠️ grunt command not found in PATH, trying npx..."
+          npx grunt --version || echo "❌ grunt not accessible"
+        fi
+        
         echo "Testing npm-run-all wrapper scripts:"
         if [ -f "node_modules/.bin/run-p" ]; then
           echo "✅ run-p wrapper exists and is executable"
@@ -147,13 +156,6 @@ jobs:
           ls -la node_modules/.bin/run-s
         else
           echo "❌ run-s wrapper not found"
-        fi
-        
-        echo "Testing run-p with actual build script pattern:"
-        if run-p build:js:legacy build:js:react --print-name --dry-run 2>/dev/null; then
-          echo "✅ run-p works with build:js scripts"
-        else
-          echo "⚠️ run-p test completed (npm-run-all doesn't support --dry-run)"
         fi
         
         echo "Verifying npm scripts:"
