@@ -4,34 +4,8 @@ on:
   pull_request:
     branches:    
       - master
-      - deve        echo "📦 Installing dependencies..."
-        npm ci
-        
-        # Verify grunt dependencies are installed
-        echo "🔍 Verifying grunt dependencies..."
-        echo "Grunt CLI version:"
-        npx grunt --version || echo "⚠️ Grunt CLI not found"
-        
-        echo "Checking for required grunt plugins:"
-        npm list grunt-contrib-copy grunt-contrib-compress grunt-curl || echo "⚠️ Some grunt plugins may be missing"
-        
-        # Create grunt wrapper to ensure npx access
-        echo "🔧 Creating grunt wrapper script..."
-        mkdir -p ./node_modules/.bin
-        echo '#!/bin/bash' > ./node_modules/.bin/grunt
-        echo 'npx grunt "$@"' >> ./node_modules/.bin/grunt
-        chmod +x ./node_modules/.bin/grunt
-        
-        # Ensure BuildConfig.json exists (required by Gruntfile)
-        if [ ! -f "BuildConfig.json" ]; then
-          echo "⚠️ BuildConfig.json not found, copying from example..."
-          cp BuildConfig.json.example BuildConfig.json
-        else
-          echo "✅ BuildConfig.json exists"
-        fi
-        
-        # Create reliable wrapper scripts for npm-run-all commands
-        echo "🔧 Creating npm-run-all wrapper scripts..."   paths-ignore:
+      - develop
+    paths-ignore:
       - '**/*.md'
       - 'docs/**'
       - 'LICENSE'
