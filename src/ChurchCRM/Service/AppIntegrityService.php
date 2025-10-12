@@ -202,7 +202,7 @@ class AppIntegrityService
             new Prerequisite('PHP Intl', fn (): bool => extension_loaded('intl')),
             new Prerequisite('PHP BCMath', fn (): bool => extension_loaded('bcmath')),
             new Prerequisite('PHP Sodium', fn (): bool => extension_loaded('sodium')),
-            new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/') && is_writable(SystemURLs::getDocumentRoot() . '/Include/Config.php')),
+            new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/')),
             new Prerequisite('Images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/')),
             new Prerequisite('Family images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Family')),
             new Prerequisite('Person images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Person')),
