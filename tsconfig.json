@@ -4,11 +4,13 @@
     "lib": ["es2015", "es2017", "dom"],
     "sourceMap": true,
     "jsx": "react",
-    "types": ["cypress", "node"]
+    "types": ["jquery", "node"]
   },
   "exclude": [
     "node_modules",
     "src/vendor",
-    "tests/vendor"
+    "tests/vendor",
+    "cypress.config.ts",
+    "docker/cypress.config.ts"
   ]
 }
