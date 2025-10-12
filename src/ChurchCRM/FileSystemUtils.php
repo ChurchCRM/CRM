@@ -69,11 +69,11 @@ class FileSystemUtils
         }
 
         $logger->info('Moving files: ' . $src . ' to ' . $dest);
-        
+
         // Get list of files in source and destination
         $sourceFiles = array_diff(scandir($src), ['.', '..']);
         $destFiles = array_diff(scandir($dest), ['.', '..']);
-        
+
         // Remove files/directories in destination that don't exist in source
         foreach ($destFiles as $file) {
             if (!in_array($file, $sourceFiles)) {
@@ -87,7 +87,7 @@ class FileSystemUtils
                 }
             }
         }
-        
+
         // Move files from source to destination
         foreach ($sourceFiles as $file) {
             if (is_dir("$src/$file")) {
