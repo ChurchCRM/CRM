@@ -11,7 +11,7 @@ $sPageTitle = gettext('Church Event Editor');
 require_once 'Include/Header.php';
 
 $sAction = $_POST['Action'];
-$EventID = $_POST['EID']; // from ListEvents button=Attendees
+$EventID = InputUtils::legacyFilterInput($_POST['EID'], 'int'); // from ListEvents button=Attendees
 $EvtName = $_POST['EName'];
 $EvtDesc = $_POST['EDesc'];
 $EvtDate = $_POST['EDate'];
