@@ -158,19 +158,11 @@ class Cart
             ->setRoleId($RoleID)
             ->save();
 
-            /*
-            This part of code should be done
-              */
-            // Check if this group has special properties
-            /*      $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = '.$iGroupID;
-              $rsTemp = RunQuery($sSQL);
-              $rowTemp = mysqli_fetch_row($rsTemp);
-              $bHasProp = $rowTemp[0];
-
-              if ($bHasProp == 'true') {
-                  $sSQL = 'INSERT INTO groupprop_'.$iGroupID." (per_ID) VALUES ('".$iPersonID."')";
-                  RunQuery($sSQL);
-              }   */
+            // Check if this group has special properties and add record if needed
+            if ($group->getHasSpecialProps()) {
+                $sSQL = 'INSERT IGNORE INTO groupprop_' . $GroupID . " (per_ID) VALUES ('" . $element . "')";
+                RunQuery($sSQL);
+            }
 
             $iCount += 1;
         }
