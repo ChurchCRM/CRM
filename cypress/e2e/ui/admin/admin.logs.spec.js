@@ -138,7 +138,7 @@ describe('Admin System Logs', () => {
     cy.contains('button', 'Save').click();
     
     // Verify success message or page reload
-    cy.get('#logLevelStatus').should('contain', 'Log level updated successfully');
+    cy.get('#logLevelStatus').should('contain', 'Saved - Log level updated immediately');
     
     // Verify the dropdown shows the updated value
     cy.get('#logLevel').should('have.value', '400');
