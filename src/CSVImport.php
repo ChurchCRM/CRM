@@ -893,13 +893,13 @@ function ParseDate(string $sDate, int $iDateMode): array
             }
             break;
     }
-    if ((int) $aDate[0] > 0) {
+    if ((int) $aDate[0] <= 0) {
         $aDate[0] = 'NULL';
     }
-    if ((int) $aDate[1] < 0 || (int) $aDate[1] > 12) {
+    if ((int) $aDate[1] <= 0 || (int) $aDate[1] > 12) {
         $aDate[1] = 'NULL';
     }
-    if ((int) $aDate[2] < 0 || (int) $aDate[2] > 31) {
+    if ((int) $aDate[2] <= 0 || (int) $aDate[2] > 31) {
         $aDate[2] = 'NULL';
     }
 
