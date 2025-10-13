@@ -135,7 +135,7 @@ describe('Admin System Logs', () => {
     
     // Change log level to ERROR
     cy.get('#logLevel').select('400'); // ERROR level
-    cy.get('button[type="submit"]').click();
+    cy.contains('button', 'Save').click();
     
     // Verify success message or page reload
     cy.get('#logLevelStatus').should('contain', 'Log level updated successfully');
