@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 22:48-0700\n"
+"POT-Creation-Date: 2025-10-13 00:09-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3220,6 +3220,12 @@ msgid "PHP Max Execution Time is too Short"
 msgstr ""
 
 msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr ""
+
+msgid "Too Many Log Files"
+msgstr ""
+
+msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
 msgstr ""
 
 msgid "PHP Max File size too small"
