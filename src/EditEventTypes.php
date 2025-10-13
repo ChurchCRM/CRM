@@ -25,7 +25,8 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
         case 'ADD':
             $newCTName = InputUtils::legacyFilterInput($_POST['newCountName'], 'string');
             $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
-            $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . intval($theID) . "','$newCTName')";
+            $escapedCTName = mysqli_real_escape_string($cn, $newCTName);
+            $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . intval($theID) . "','$escapedCTName')";
             RunQuery($sSQL);
             break;
 
