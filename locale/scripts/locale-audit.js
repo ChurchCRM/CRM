@@ -202,7 +202,6 @@ class LocaleAuditor {
         const currentTime = new Date().toLocaleTimeString();
         
         let markdown = `# ChurchCRM Locale Audit Report\n\n`;
-        markdown += `**Generated:** ${currentDate} at ${currentTime}\n`;
         markdown += `**Total Supported Locales:** ${localeData.length}\n`;
         markdown += `**Complete Locales (≥95%):** ${localeData.filter(l => l.percentage >= 95).length}\n`;
         markdown += `**Incomplete Locales (<50%):** ${localeData.filter(l => l.percentage < 50).length}\n`;
