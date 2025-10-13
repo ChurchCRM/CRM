@@ -23,7 +23,7 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
 } else {
     switch ($_POST['Action']) {
         case 'ADD':
-            $newCTName = InputUtils::legacyFilterInput($_POST['newCountName']);
+            $newCTName = InputUtils::legacyFilterInput($_POST['newCountName'], 'string');
             $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
             $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . intval($theID) . "','$newCTName')";
             RunQuery($sSQL);
