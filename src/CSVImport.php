@@ -465,7 +465,12 @@ if (isset($_POST['DoImport'])) {
                         case 19:
                             $sDate = $aData[$col];
                             $aDate = ParseDate($sDate, $iDateMode);
-                            $sSQLpersonData .= $aDate[0] . ',' . $aDate[1] . ',' . $aDate[2] . ',';
+                            // Handle each date component according to database schema:
+                            // per_BirthYear can be NULL, but per_BirthMonth and per_BirthDay must be 0 for invalid/unknown
+                            $year = $aDate[0] === 'NULL' ? 'NULL' : $aDate[0];
+                            $month = $aDate[1] === 'NULL' ? '0' : $aDate[1];
+                            $day = $aDate[2] === 'NULL' ? '0' : $aDate[2];
+                            $sSQLpersonData .= $year . ',' . $month . ',' . $day . ',';
                             // Save these for role calculation
                             $iBirthYear = (int)$aDate[0];
                             $iBirthMonth = (int)$aDate[1];
