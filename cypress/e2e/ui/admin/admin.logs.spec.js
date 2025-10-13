@@ -22,7 +22,7 @@ describe('Admin System Logs', () => {
     cy.get('button[type="submit"]').should('contain', 'Save Log Level');
     
     // Verify page title
-    cy.get('.card-header h4').should('contain', 'Log Level Configuration');
+    cy.get('.card-header h4').should('contain', 'Log Settings');
     cy.get('.card-header h4').should('contain', 'System Logs');
   });
 
