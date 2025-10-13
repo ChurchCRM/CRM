@@ -37,23 +37,12 @@ jobs:
         # Use token for write access
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Start database early (parallel with setup)
+    - name: Start Docker environment
       run: |
-        echo "🚀 Starting database early with health checks..."
-        
-        # Create .env file for Docker (required for MariaDB)
-        cp docker/.env .env || echo "Using default environment"
-        cp docker/Config.php src/Include/Config.php
-        
-        # Show what we're starting with
-        echo "📊 Starting database container..."
-        docker compose -f docker/docker-compose.test-php8-apache.yaml up -d database
-        
-        # Show container status
-        echo "📋 Container status after start:"
-        docker ps -a
-        
-        echo "📊 Database container starting with built-in health checks..."
+        echo "🚀 Starting Docker environment..."
+        npm run docker:ci:start
+        docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
+        docker compose -f docker/docker-compose.test-php8-apache.yaml logs
 
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -81,109 +70,12 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Create BuildConfig with Docker database settings
+    - name: Test Docker environment
       run: |
-        echo "🔧 Creating BuildConfig.json with Docker database configuration..."
-        cp BuildConfig.json.example BuildConfig.json
-        
-        # Update BuildConfig.json to use Docker database settings
-        cat > BuildConfig.json << 'EOF'
-        {
-            "POEditor": {
-                "id": "77079",
-                "token": ""
-            },
-            "GitHub": {
-                "token": ""
-            },
-            "demoKey": "",
-            "Env": {
-                "local": {
-                    "server": "127.0.0.1",
-                    "database": {
-                        "server": "127.0.0.1",
-                        "port": "3306",
-                        "database": "churchcrm",
-                        "user": "churchcrm",
-                        "password": "changeme"
-                    },
-                    "admin-api-key": ""
-                }
-            }
-        }
-        EOF
-        echo "✅ BuildConfig.json created with Docker database configuration"
-
-    - name: Wait for database readiness
-      run: |
-        echo "⏳ Waiting for database health check to pass..."
-        
-        # Show all containers first
-        echo "📋 All Docker containers:"
-        docker ps -a
-        
-        # Find the actual database container name
-        db_container=$(docker ps -q --filter "ancestor=mariadb" | head -1)
-        if [ -z "$db_container" ]; then
-          echo "❌ No MariaDB container found!"
-          echo "Looking for containers with 'database' in name:"
-          docker ps -a --filter "name=database"
-          echo "All running containers:"
-          docker ps
-          exit 1
-        fi
-        
-        echo "✅ Found database container: $db_container"
-        
-        # Wait for container to be running and healthy
-        echo "  Waiting for health check to pass..."
-        timeout=120
-        elapsed=0
-        
-        while true; do
-          # Check if container is still running
-          if ! docker ps -q --no-trunc | grep -q "$db_container"; then
-            echo "❌ Database container stopped running!"
-            docker logs "$db_container" --tail=50 || true
-            exit 1
-          fi
-          
-          # Get health status
-          health_status=$(docker inspect --format='{{.State.Health.Status}}' "$db_container" 2>/dev/null || echo "no-health-check")
-          
-          if [ "$health_status" = "healthy" ]; then
-            break
-          fi
-          
-          if [ "$elapsed" -ge "$timeout" ]; then
-            echo "❌ Database health check failed after $timeout seconds"
-            echo "Current health status: $health_status"
-            echo "Database logs (last 50 lines):"
-            docker logs "$db_container" --tail=50 || true
-            exit 1
-          fi
-          
-          # Progressive intervals
-          if [ "$elapsed" -lt 30 ]; then
-            sleep 3
-            elapsed=$((elapsed + 3))
-          else
-            sleep 5
-            elapsed=$((elapsed + 5))
-          fi
-          
-          # Show progress every 15 seconds
-          if [ $((elapsed % 15)) -eq 0 ]; then
-            echo "    Health status: $health_status ($elapsed/$timeout seconds)"
-            echo "    Container status: $(docker inspect --format='{{.State.Status}}' "$db_container")"
-          fi
-        done
-        
-        # Additional verification - test actual connection
-        echo "  ✅ Health check passed! Testing connection..."
-        docker exec "$db_container" mysql -u churchcrm -pchangeme -e "SELECT 1;" > /dev/null
-        
-        echo "✅ Database fully ready for term extraction (health check passed in ${elapsed}s)"
+        echo "🧪 Testing Docker environment..."
+        curl -vvv http://127.0.0.1/api/public/echo
+        docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
+        docker compose -f docker/docker-compose.test-php8-apache.yaml logs
 
     - name: Backup original messages.po
       run: cp locale/messages.po locale/messages.po.backup
@@ -309,15 +201,17 @@ jobs:
           fi
         fi
 
-    - name: Cleanup
+    - name: Stop Docker environment
       if: always()
       run: |
-        echo "🧹 Cleaning up Docker containers and temporary files..."
-        # Stop only the database container (since we didn't start webserver)
-        docker compose -f docker/docker-compose.test-php8-apache.yaml down -v || true
-        
+        echo "🛑 Stopping Docker environment..."
+        npm run docker:ci:down
+
+    - name: Cleanup temporary files
+      if: always()
+      run: |
+        echo "🧹 Cleaning up temporary files..."
         # Clean up backup file
         rm -f locale/messages.po.backup
         rm -f /tmp/messages_*_normalized.po
-        
         echo "✅ Cleanup completed"
