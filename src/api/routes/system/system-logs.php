@@ -1,78 +1,146 @@
 <?php
 
-use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/system/logs', function (RouteCollectorProxy $group): void {
-    $group->get('', 'getLogFilesAPI');
-    $group->post('/delete', 'deleteLogFilesAPI');
+$app->group('/system', function (RouteCollectorProxy $group): void {
+    $group->post('/logs/loglevel', 'setLogsLogLevel');
+    $group->delete('/logs', 'deleteAllLogFiles');
+    $group->get('/logs/{filename}', 'getLogsFileContent');
+    $group->delete('/logs/{filename}', 'deleteLogFile');
 })->add(AdminRoleAuthMiddleware::class);
 
-function getLogFilesAPI(Request $request, Response $response, array $args): Response
+function setLogsLogLevel(Request $request, Response $response, array $args): Response
 {
-    $logsPath = SystemURLs::getDocumentRoot() . '/logs/';
-    $logFiles = [];
+    $input = $request->getParsedBody();
+    $logLevel = $input['value'] ?? null;
 
-    if (is_dir($logsPath)) {
-        $files = scandir($logsPath);
-        foreach ($files as $file) {
-            if ($file !== '.' && $file !== '..' && $file !== '.htaccess' && pathinfo($file, PATHINFO_EXTENSION) === 'log') {
-                $filePath = $logsPath . $file;
-                $logFiles[] = [
-                    'name' => $file,
-                    'size' => filesize($filePath),
-                    'modified' => filemtime($filePath),
-                ];
-            }
-        }
+    if (!$logLevel || !is_numeric($logLevel)) {
+        $response->getBody()->write(json_encode(['error' => 'Invalid log level']));
+        return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
     }
 
-    // Sort by modified time, newest first
-    usort($logFiles, fn ($a, $b): int => $b['modified'] <=> $a['modified']);
+    // Set the configuration
+    SystemConfig::setValue('sLogLevel', $logLevel);
+    
+    // Reset app logger level to apply new level immediately
+    try {
+        LoggerUtils::resetAppLoggerLevel();
+    } catch (\Exception $e) {
+        // Logger might not be initialized yet, which is fine
+    }
 
-    return SlimUtils::renderJSON($response, [
-        'files' => $logFiles,
-        'totalFiles' => count($logFiles),
-        'logsPath' => $logsPath,
-    ]);
+    $response->getBody()->write(json_encode(['success' => true, 'level' => $logLevel]));
+    return $response->withHeader('Content-Type', 'application/json');
 }
 
-function deleteLogFilesAPI(Request $request, Response $response, array $args): Response
+function getLogsFileContent(Request $request, Response $response, array $args): Response
 {
-    $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
-    $logsPath = SystemURLs::getDocumentRoot() . '/logs/';
-    $deletedFiles = [];
-    $errors = [];
+    $filename = $args['filename'] ?? '';
+    
+    // Security: Check for path traversal first
+    if (strpos($filename, '..') !== false) {
+        $response->getBody()->write('Invalid file path');
+        return $response->withStatus(400);
+    }
+    
+    // Security: Validate filename - must end with .log and contain only safe characters
+    if (!preg_match('/^[a-zA-Z0-9\-_\.]+\.log$/', $filename)) {
+        $response->getBody()->write('Invalid filename');
+        return $response->withStatus(400);
+    }
+    
+    $logPath = __DIR__ . '/../../../logs/' . $filename;
+    
+    // Security: Prevent path traversal with realpath check
+    $realLogsDir = realpath(__DIR__ . '/../../../logs/');
+    if (!$realLogsDir) {
+        $response->getBody()->write('Logs directory not found');
+        return $response->withStatus(500);
+    }
+    
+    // Check if file exists first
+    if (!file_exists($logPath)) {
+        $response->getBody()->write('Log file not found');
+        return $response->withStatus(404);
+    }
+    
+    // Now check realpath for existing files only
+    $realLogPath = realpath($logPath);
+    if (!$realLogPath || strpos($realLogPath, $realLogsDir) !== 0) {
+        $response->getBody()->write('Invalid file path');
+        return $response->withStatus(400);
+    }
+    
+    $content = file_get_contents($realLogPath);
+    
+    $response->getBody()->write($content);
+    return $response->withHeader('Content-Type', 'text/plain');
+}
 
-    if (isset($input->files) && is_array($input->files)) {
-        foreach ($input->files as $file) {
-            // Security: Only allow deleting .log files and prevent directory traversal
-            if (pathinfo($file, PATHINFO_EXTENSION) !== 'log' || strpos($file, '..') !== false || strpos($file, '/') !== false) {
-                $errors[] = 'Invalid file name: ' . $file;
-                continue;
-            }
+function deleteLogFile(Request $request, Response $response, array $args): Response
+{
+    $filename = $args['filename'] ?? '';
+    
+    // Security: Check for path traversal first
+    if (strpos($filename, '..') !== false) {
+        $response->getBody()->write('Invalid file path');
+        return $response->withStatus(400);
+    }
+    
+    // Security: Validate filename - must end with .log and contain only safe characters
+    if (!preg_match('/^[a-zA-Z0-9\-_\.]+\.log$/', $filename)) {
+        $response->getBody()->write('Invalid filename');
+        return $response->withStatus(400);
+    }
+    
+    $logPath = __DIR__ . '/../../../logs/' . $filename;
+    
+    // Security: Prevent path traversal with realpath check
+    $realLogsDir = realpath(__DIR__ . '/../../../logs/');
+    if (!$realLogsDir) {
+        $response->getBody()->write('Logs directory not found');
+        return $response->withStatus(500);
+    }
+    
+    // Check if file exists first
+    if (!file_exists($logPath)) {
+        $response->getBody()->write('Log file not found');
+        return $response->withStatus(404);
+    }
+    
+    // Now check realpath for existing files only
+    $realLogPath = realpath($logPath);
+    if (!$realLogPath || strpos($realLogPath, $realLogsDir) !== 0) {
+        $response->getBody()->write('Invalid file path');
+        return $response->withStatus(400);
+    }
+    
+    if (unlink($realLogPath)) {
+        $response->getBody()->write(json_encode(['success' => true]));
+        return $response->withHeader('Content-Type', 'application/json');
+    } else {
+        $response->getBody()->write('Error deleting file');
+        return $response->withStatus(500);
+    }
+}
 
-            $filePath = $logsPath . $file;
-            if (file_exists($filePath) && is_file($filePath)) {
-                if (unlink($filePath)) {
-                    $deletedFiles[] = $file;
-                } else {
-                    $errors[] = 'Failed to delete: ' . $file;
-                }
-            } else {
-                $errors[] = 'File not found: ' . $file;
-            }
+function deleteAllLogFiles(Request $request, Response $response, array $args): Response
+{
+    $logsDir = __DIR__ . '/../../../logs/';
+    $logFiles = glob($logsDir . '*.log');
+    
+    $deletedCount = 0;
+    foreach ($logFiles as $logFile) {
+        if (unlink($logFile)) {
+            $deletedCount++;
         }
     }
-
-    return SlimUtils::renderJSON($response, [
-        'success' => count($errors) === 0,
-        'deletedFiles' => $deletedFiles,
-        'deletedCount' => count($deletedFiles),
-        'errors' => $errors,
-    ]);
+    
+    $response->getBody()->write(json_encode(['success' => true, 'deleted' => $deletedCount]));
+    return $response->withHeader('Content-Type', 'application/json');
 }
