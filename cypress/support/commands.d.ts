@@ -98,6 +98,29 @@ declare namespace Cypress {
      * Modern API request command with enhanced error handling
      * @param options - Request options (same as cy.request)
      */
-    apiRequest(options: Partial<Cypress.RequestOptions>): Chainable<Cypress.Response<any>>;
+    apiRequest(options: any): any;
+
+    /**
+     * Create a person with specific birthday data for testing
+     * @param personData - Object containing name, month, day, year for the person
+     */
+    createPersonWithBirthday(personData: {
+      name: string;
+      month: number;
+      day: number;
+      year?: number | null;
+    }): void;
+
+    /**
+     * Delete a person by searching for their name
+     * @param name - The name of the person to delete
+     */
+    deletePersonByName(name: string): void;
+
+    /**
+     * Create multiple people via CSV import to bypass UI validation
+     * @param peopleData - Object containing person data with birth date info
+     */
+    createPeopleViaCSV(peopleData: Record<string, any>): void;
   }
 }
