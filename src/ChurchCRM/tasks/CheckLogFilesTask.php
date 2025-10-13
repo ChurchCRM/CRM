@@ -8,7 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 class CheckLogFilesTask implements TaskInterface
 {
     private int $logFileCount;
-    private const LOG_FILE_THRESHOLD = 30;
+    private const LOG_FILE_THRESHOLD = 100;
 
     public function __construct()
     {
@@ -37,7 +37,7 @@ class CheckLogFilesTask implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/LogCleanup.php';
+        return SystemURLs::getRootPath() . '/v2/admin/logs';
     }
 
     public function getTitle(): string
