@@ -68,11 +68,13 @@ class AppIntegrityService
 
     public static function getIntegrityCheckMessage(): string
     {
-        if (AppIntegrityService::getIntegrityCheckStatus() === 'Passed') {
-            AppIntegrityService::$IntegrityCheckDetails->message = gettext('The previous integrity check passed. All system file hashes match the expected values.');
+        $integrityData = AppIntegrityService::getIntegrityCheckData();
+
+        if (AppIntegrityService::getIntegrityCheckStatus() === gettext('Passed')) {
+            $integrityData->message = gettext('The previous integrity check passed. All system file hashes match the expected values.');
         }
 
-        return AppIntegrityService::$IntegrityCheckDetails->message ?? '';
+        return $integrityData->message ?? '';
     }
 
     public static function getFilesFailingIntegrityCheck()
@@ -202,7 +204,7 @@ class AppIntegrityService
             new Prerequisite('PHP Intl', fn (): bool => extension_loaded('intl')),
             new Prerequisite('PHP BCMath', fn (): bool => extension_loaded('bcmath')),
             new Prerequisite('PHP Sodium', fn (): bool => extension_loaded('sodium')),
-            new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/') && is_writable(SystemURLs::getDocumentRoot() . '/Include/Config.php')),
+            new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/')),
             new Prerequisite('Images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/')),
             new Prerequisite('Family images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Family')),
             new Prerequisite('Person images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Person')),
