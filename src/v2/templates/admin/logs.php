@@ -196,7 +196,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     });
 
     function loadLogFile(fileName) {
-        $('#logViewerModalLabel').text('<?= gettext('Log File Viewer') ?> - ' + fileName);
+        $('#logViewerModalLabel').text(i18next.t('Log File Viewer') + ' - ' + fileName);
         $('#logContent').hide();
         $('#logLoading').show();
         $('#logViewerModal').modal('show');
@@ -211,7 +211,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 $('#logContent').show();
             },
             error: function() {
-                $('#logContent code').text('<?= gettext('Error loading log file.') ?>');
+                $('#logContent code').text(i18next.t('Error loading log file.'));
                 $('#logLoading').hide();
                 $('#logContent').show();
             }
@@ -237,7 +237,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
 
     function deleteLogFile(fileName) {
-        if (confirm('<?= gettext('Are you sure you want to delete') ?> ' + fileName + '?')) {
+        if (confirm(i18next.t('Are you sure you want to delete') + ' ' + fileName + '?')) {
             $.ajax({
                 url: '<?= SystemURLs::getRootPath() ?>/v2/admin/logs/' + encodeURIComponent(fileName),
                 method: 'DELETE',
@@ -245,14 +245,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     location.reload();
                 },
                 error: function() {
-                    alert('<?= gettext('Error deleting log file.') ?>');
+                    alert(i18next.t('Error deleting log file.'));
                 }
             });
         }
     }
 
     function deleteAllLogs() {
-        if (confirm('<?= gettext('Are you sure you want to delete ALL log files? This action cannot be undone.') ?>')) {
+        if (confirm(i18next.t('Are you sure you want to delete ALL log files? This action cannot be undone.'))) {
             $.ajax({
                 url: '<?= SystemURLs::getRootPath() ?>/v2/admin/logs',
                 method: 'DELETE',
@@ -260,7 +260,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     location.reload();
                 },
                 error: function() {
-                    alert('<?= gettext('Error deleting log files.') ?>');
+                    alert(i18next.t('Error deleting log files.'));
                 }
             });
         }
@@ -306,7 +306,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 }
             },
             error: function(xhr, status, error) {
-                console.error('<?= gettext('Error loading log level.') ?>', error);
+                console.error(i18next.t('Error loading log level.'), error);
                 $('#logLevel').val('200');
             }
         });
@@ -320,14 +320,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             contentType: 'application/json',
             data: JSON.stringify({ value: logLevel }),
             success: function(data) {
-                $('#logLevelStatus').html('<span class="text-success"><i class="fa fa-check"></i> <?= gettext('Saved - Log level updated immediately') ?></span>');
+                $('#logLevelStatus').html('<span class="text-success"><i class="fa fa-check"></i> ' + i18next.t('Saved - Log level updated immediately') + '</span>');
                 setTimeout(function() {
                     $('#logLevelStatus').html('');
                 }, 3000);
             },
             error: function(xhr, status, error) {
                 console.error('Error:', error);
-                $('#logLevelStatus').html('<span class="text-danger"><i class="fa fa-times"></i> <?= gettext('Error') ?></span>');
+                $('#logLevelStatus').html('<span class="text-danger"><i class="fa fa-times"></i> ' + i18next.t('Error') + '</span>');
             }
         });
     }
