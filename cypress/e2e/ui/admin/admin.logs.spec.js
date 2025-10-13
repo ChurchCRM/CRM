@@ -19,7 +19,7 @@ describe('Admin System Logs', () => {
     
     // Verify log level selector exists
     cy.get('#logLevel').should('exist');
-    cy.get('button[type="submit"]').should('contain', 'Update Log Level');
+    cy.get('button[type="submit"]').should('contain', 'Save Log Level');
     
     // Verify page title
     cy.get('.card-header h4').should('contain', 'Log Level Configuration');
