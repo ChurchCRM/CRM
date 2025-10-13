@@ -5,6 +5,7 @@ require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -18,8 +19,10 @@ $tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
 
 if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
     $ctid = InputUtils::legacyFilterInput(mb_substr($_POST['Action'], 7), 'int');
-    $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_countid='" . intval($ctid) . "' LIMIT 1";
-    RunQuery($sSQL);
+    $eventCountName = EventCountNameQuery::create()->findPk($ctid);
+    if ($eventCountName !== null) {
+        $eventCountName->delete();
+    }
 } else {
     switch ($_POST['Action']) {
         case 'ADD':
@@ -35,8 +38,10 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $eName = $_POST['newEvtName'];
             $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
             $eventType = EventTypeQuery::create()->findOneById(InputUtils::legacyFilterInput($theID, 'int'));
-            $eventType->setName(InputUtils::legacyFilterInput($eName));
-            $eventType->save();
+            if ($eventType !== null) {
+                $eventType->setName(InputUtils::legacyFilterInput($eName));
+                $eventType->save();
+            }
             $theID = '';
             $_POST['Action'] = '';
             break;
@@ -54,21 +59,31 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
     }
 }
 
-// Get data for the form as it now exists.
-$sSQL = "SELECT * FROM event_types WHERE type_id=" . intval($tyid);
-$rsOpps = RunQuery($sSQL);
-$aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-extract($aRow);
-$aTypeID = $type_id;
-$aTypeName = $type_name;
-$aDefStartTime = $type_defstarttime;
+// Get data for the form as it now exists using ORM
+$eventType = EventTypeQuery::create()->findOneById($tyid);
+if ($eventType !== null) {
+    $aTypeID = $eventType->getId();
+    $aTypeName = $eventType->getName();
+    $aDefStartTime = $eventType->getDefstarttime()->format('H:i:s');
     $aStartTimeTokens = explode(':', $aDefStartTime);
     $aEventStartHour = $aStartTimeTokens[0];
     $aEventStartMins = $aStartTimeTokens[1];
-$aDefRecurDOW = $type_defrecurDOW;
-$aDefRecurDOM = $type_defrecurDOM;
-$aDefRecurDOY = $type_defrecurDOY;
-$aDefRecurType = $type_defrecurtype;
+    $aDefRecurDOW = $eventType->getDefrecurDOW();
+    $aDefRecurDOM = $eventType->getDefrecurDOM();
+    $aDefRecurDOY = $eventType->getDefrecurDOY();
+    $aDefRecurType = $eventType->getDefrecurtype();
+} else {
+    // Set default values when no valid event type is found
+    $aTypeID = 0;
+    $aTypeName = '';
+    $aDefStartTime = '18:00:00';
+    $aEventStartHour = '18';
+    $aEventStartMins = '00';
+    $aDefRecurDOW = 'Sunday';
+    $aDefRecurDOM = '1';
+    $aDefRecurDOY = date('Y-m-d');
+    $aDefRecurType = 'none';
+}
 switch ($aDefRecurType) {
     case 'none':
         $recur = gettext('None');
@@ -86,19 +101,22 @@ switch ($aDefRecurType) {
         $recur = gettext('None');
 }
 
-// Get a list of the attendance counts currently associated with thisevent type
-$cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID' ORDER BY evctnm_countid";
-$cOpps = RunQuery($cSQL);
-$numCounts = mysqli_num_rows($cOpps);
+// Get a list of the attendance counts currently associated with this event type
+$eventCountNames = EventCountNameQuery::create()
+    ->filterByTypeId($aTypeID) // Use the correct Propel method name
+    ->orderById()
+    ->find();
+
+$numCounts = $eventCountNames->count();
 $nr = $numCounts + 2;
 $cCountName = '';
 if ($numCounts) {
     $cCountName = '';
-    for ($c = 1; $c <= $numCounts; $c++) {
-        $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
-        extract($cRow);
-        $cCountID[$c] = $evctnm_countid;
-        $cCountName[$c] = $evctnm_countname;
+    $cCountID = [];
+    $cCountName = [];
+    foreach ($eventCountNames as $index => $eventCountName) {
+        $cCountID[$index + 1] = $eventCountName->getId();
+        $cCountName[$index + 1] = $eventCountName->getName();
     }
 }
 

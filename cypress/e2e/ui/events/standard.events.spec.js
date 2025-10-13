@@ -36,4 +36,22 @@ describe("Standard User Session", () => {
         cy.get("#EventID").select("Summer Camp");
         cy.contains("Add Attendees for Event:");
     });
+
+    it("View Event 3 in EventEditor via ListEvents", () => {
+        // Step 1: Visit ListEvents.php
+        cy.loginStandard("ListEvents.php");
+        
+        // Step 2: Change the year dropdown to 2017
+        // The form auto-submits when the dropdown changes
+        cy.get('select[name="WhichYear"]').should('exist');
+        cy.get('select[name="WhichYear"]').select('2017');
+        
+        // Wait for the page to reload after auto-submit
+        cy.wait(1500);
+        
+        // Step 3: Should show "Summer Camp Summer Camp"
+        cy.contains("Summer Camp Summer Camp");
+        
+    
+    });
 });

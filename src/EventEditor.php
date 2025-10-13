@@ -6,7 +6,10 @@ require_once 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventCountQuery;
+use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -51,36 +54,48 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     // event fields...but still allow the user to edit everything
     // except event type since event type is tied to the attendance count fields
 
-    $sSQL = "SELECT * FROM event_types WHERE type_id=" . intval($tyid);
-    $rsOpps = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsOpps);
-    $ceRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-    extract($ceRow);
-
-    $iTypeID = $type_id;
-    $sTypeName = $type_name;
-    $sDefStartTime = $type_defstarttime;
-    $iDefRecurDOW = $type_defrecurDOW;
-    $iDefRecurDOM = $type_defrecurDOM;
-    $sDefRecurDOY = $type_defrecurDOY;
-    $sDefRecurType = $type_defrecurtype;
+    // Use ORM to get event type data
+    $eventType = EventTypeQuery::create()->findOneById($tyid);
+    if ($eventType !== null) {
+        $iTypeID = $eventType->getId();
+        $sTypeName = $eventType->getName();
+        $sDefStartTime = $eventType->getDefstarttime();
+        $iDefRecurDOW = $eventType->getDefrecurDOW();
+        $iDefRecurDOM = $eventType->getDefrecurDOM();
+        $sDefRecurDOY = $eventType->getDefrecurDOY();
+        $sDefRecurType = $eventType->getDefrecurtype();
+    } else {
+        // Set default values when no valid event type is found
+        $iTypeID = 0;
+        $sTypeName = '';
+        $sDefStartTime = '18:00:00';
+        $iDefRecurDOW = 0;
+        $iDefRecurDOM = 1;
+        $sDefRecurDOY = date('Y-m-d');
+        $sDefRecurType = 'none';
+    }
 
     $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
-    $sSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$iTypeID' ORDER BY evctnm_countid ASC";
-    $cOpps = RunQuery($sSQL);
-    $iNumCounts = mysqli_num_rows($cOpps);
+    
+    // Use ORM to get event count names for the event type
+    $eventCountNames = EventCountNameQuery::create()
+        ->filterByTypeId($iTypeID)
+        ->orderById()
+        ->find();
+    
+    $iNumCounts = $eventCountNames->count();
 
     $aCountID = [];
     $aCountName = [];
     $aCount = [];
 
     if ($iNumCounts) {
-        for ($c = 0; $c < $iNumCounts; $c++) {
-            $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
-            extract($cRow);
-            $aCountID[$c] = $evctnm_countid;
-            $aCountName[$c] = $evctnm_countname;
-            $aCount[$c] = 0;
+        $index = 0;
+        foreach ($eventCountNames as $eventCountName) {
+            $aCountID[$index] = $eventCountName->getId();
+            $aCountName[$index] = $eventCountName->getName();
+            $aCount[$index] = 0;
+            $index++;
         }
     }
     $nCnts = $iNumCounts;
@@ -223,29 +238,34 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $iTypeID = $type_id;
 } elseif ($sAction = 'Edit' && !empty($sOpp)) {
     $EventExists = 1;
-    $sSQL = "SELECT * FROM events_event as t1, event_types as t2 WHERE t1.event_type = t2.type_id AND t1.event_id ='" . $sOpp . "' LIMIT 1";
-    $rsOpps = RunQuery($sSQL);
 
-    $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-    extract($aRow);
+    // Use ORM to retrieve event details with related event type
+    $event = EventQuery::create()
+        ->joinWithEventType()
+        ->findOneById($sOpp);
 
-    $iEventID = $event_id;
-    $iTypeID = $type_id;
-    $sTypeName = $type_name;
-    $sEventTitle = $event_title;
-    $sEventDesc = $event_desc;
-    $sEventText = $event_text;
-    $aStartTokens = explode(' ', $event_start);
-    $sEventStartDate = $aStartTokens[0];
-    $aStartTimeTokens = explode(':', $aStartTokens[1]);
-    $iEventStartHour = $aStartTimeTokens[0];
-    $iEventStartMins = $aStartTimeTokens[1];
-    $aEndTokens = explode(' ', $event_end);
-    $sEventEndDate = $aEndTokens[0];
-    $aEndTimeTokens = explode(':', $aEndTokens[1]);
-    $iEventEndHour = $aEndTimeTokens[0];
-    $iEventEndMins = $aEndTimeTokens[1];
-    $iEventStatus = $inactive;
+    if ($event !== null) {
+        $eventType = $event->getEventType();
+
+        $iEventID = $event->getId();
+        $iTypeID = $eventType->getId();
+        $sTypeName = $eventType->getName();
+        $sEventTitle = $event->getTitle();
+        $sEventDesc = $event->getDesc();
+        $sEventText = $event->getText();
+
+        $aStartTokens = explode(' ', $event->getStart()->format('Y-m-d H:i:s'));
+        $sEventStartDate = $aStartTokens[0];
+        $aStartTimeTokens = explode(':', $aStartTokens[1]);
+        $iEventStartHour = $aStartTimeTokens[0];
+        $iEventStartMins = $aStartTimeTokens[1];
+
+        $aEndTokens = explode(' ', $event->getEnd()->format('Y-m-d H:i:s'));
+        $sEventEndDate = $aEndTokens[0];
+        $aEndTimeTokens = explode(':', $aEndTokens[1]);
+        $iEventEndHour = $aEndTimeTokens[0];
+        $iEventEndMins = $aEndTimeTokens[1];
+    }
 
     $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
 
@@ -256,11 +276,13 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     if ($iNumCounts) {
         for ($c = 0; $c < $iNumCounts; $c++) {
             $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
-            extract($aRow);
-            $aCountID[$c] = $evtcnt_countid;
-            $aCountName[$c] = $evtcnt_countname;
-            $aCount[$c] = $evtcnt_countcount;
-            $sCountNotes = $evtcnt_notes;
+            if ($aRow !== null && is_array($aRow)) {
+                extract($aRow);
+                $aCountID[$c] = $evtcnt_countid;
+                $aCountName[$c] = $evtcnt_countname;
+                $aCount[$c] = $evtcnt_countcount;
+                $sCountNotes = $evtcnt_notes;
+            }
         }
     }
 } elseif (isset($_POST['SaveChanges'])) {
@@ -276,8 +298,12 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         $sSQL = "SELECT type_name FROM event_types WHERE type_id = '" . $iTypeID . "' LIMIT 1";
         $rsOpps = RunQuery($sSQL);
         $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-        extract($aRow);
-        $sTypeName = $type_name;
+        if ($aRow !== null && is_array($aRow)) {
+            extract($aRow);
+            $sTypeName = $type_name;
+        } else {
+            $sTypeName = '';
+        }
     }
     $sEventText = $_POST['EventText'];
     if ($_POST['EventStatus'] === null) {
