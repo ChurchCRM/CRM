@@ -98,9 +98,9 @@ function setLogLevel(Request $request, Response $response, array $args): Respons
             $response->getBody()->write(json_encode(['success' => false, 'error' => 'Invalid log level value']));
             return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
         }
-        
+
         SystemConfig::setValue('sLogLevel', $logLevel);
-        
+
         // Reset all logger levels to apply changes immediately
         // Note: This only affects the app logger in the current request
         // New requests will pick up the new level automatically
@@ -109,7 +109,7 @@ function setLogLevel(Request $request, Response $response, array $args): Respons
         } catch (\Exception $e) {
             // Logger might not be initialized yet, which is fine
         }
-        
+
         $response->getBody()->write(json_encode(['success' => true, 'value' => $logLevel]));
         return $response->withHeader('Content-Type', 'application/json');
     }
