@@ -202,7 +202,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         $('#logViewerModal').modal('show');
 
         $.ajax({
-            url: '<?= SystemURLs::getRootPath() ?>/v2/admin/logs/' + encodeURIComponent(fileName),
+            url: '<?= SystemURLs::getRootPath() ?>/api/system/logs/' + encodeURIComponent(fileName),
             method: 'GET',
             success: function(data) {
                 currentLogContent = data;
@@ -239,7 +239,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     function deleteLogFile(fileName) {
         if (confirm(i18next.t('Are you sure you want to delete') + ' ' + fileName + '?')) {
             $.ajax({
-                url: '<?= SystemURLs::getRootPath() ?>/v2/admin/logs/' + encodeURIComponent(fileName),
+                url: '<?= SystemURLs::getRootPath() ?>/api/system/logs/' + encodeURIComponent(fileName),
                 method: 'DELETE',
                 success: function() {
                     location.reload();
@@ -254,7 +254,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     function deleteAllLogs() {
         if (confirm(i18next.t('Are you sure you want to delete ALL log files? This action cannot be undone.'))) {
             $.ajax({
-                url: '<?= SystemURLs::getRootPath() ?>/v2/admin/logs',
+                url: '<?= SystemURLs::getRootPath() ?>/api/system/logs',
                 method: 'DELETE',
                 success: function() {
                     location.reload();
@@ -315,7 +315,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     function saveLogLevel() {
         var logLevel = $('#logLevel').val();
         $.ajax({
-            url: '<?= SystemURLs::getRootPath() ?>/v2/admin/logs/loglevel',
+            url: '<?= SystemURLs::getRootPath() ?>/api/system/logs/loglevel',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ value: logLevel }),
