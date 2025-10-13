@@ -70,12 +70,71 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
+    - name: Create BuildConfig for database connection
+      run: |
+        echo "🔧 Creating BuildConfig.json for database connection..."
+        cp BuildConfig.json.example BuildConfig.json
+        
+        # Update BuildConfig.json to use Docker database settings
+        cat > BuildConfig.json << 'EOF'
+        {
+            "POEditor": {
+                "id": "77079",
+                "token": ""
+            },
+            "GitHub": {
+                "token": ""
+            },
+            "demoKey": "",
+            "Env": {
+                "local": {
+                    "server": "127.0.0.1",
+                    "database": {
+                        "server": "127.0.0.1",
+                        "port": "3306",
+                        "database": "churchcrm",
+                        "user": "churchcrm",
+                        "password": "changeme"
+                    },
+                    "admin-api-key": ""
+                }
+            }
+        }
+        EOF
+        echo "✅ BuildConfig.json created for locale extraction"
+
     - name: Test Docker environment
       run: |
         echo "🧪 Testing Docker environment..."
         curl -vvv http://127.0.0.1/api/public/echo
         docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
         docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+
+    - name: Wait for database readiness
+      run: |
+        echo "⏳ Waiting for database to accept connections..."
+        
+        timeout=60
+        elapsed=0
+        
+        while true; do
+          # Test database connection
+          if docker compose -f docker/docker-compose.test-php8-apache.yaml exec -T database mysql -u churchcrm -pchangeme -e "SELECT 1;" > /dev/null 2>&1; then
+            echo "✅ Database connection successful!"
+            break
+          fi
+          
+          if [ "$elapsed" -ge "$timeout" ]; then
+            echo "❌ Database connection failed after $timeout seconds"
+            echo "Database logs:"
+            docker compose -f docker/docker-compose.test-php8-apache.yaml logs database
+            exit 1
+          fi
+          
+          echo "  Database not ready yet... ($elapsed/$timeout seconds)"
+          sleep 2
+          elapsed=$((elapsed + 2))
+        done
 
     - name: Backup original messages.po
       run: cp locale/messages.po locale/messages.po.backup
