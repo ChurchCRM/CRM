@@ -3,7 +3,7 @@
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\model\ChurchCRM\EventQuery;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;

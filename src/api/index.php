@@ -1,53 +1,54 @@
 <?php
-
-require_once '../Include/Config.php';
-
-require_once __DIR__ . '/../vendor/autoload.php';
-
-$rootPath = str_replace('/api/index.php', '', $_SERVER['SCRIPT_NAME']);
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+require_once '../Include/Config.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Use SlimUtils to get base path, default to /api
+$basePath = ChurchCRM\Slim\SlimUtils::getBasePath('/api');
+
+
 $container = new ContainerBuilder();
 require __DIR__ . '/dependencies.php';
 $container->compile();
+// Register custom error handlers
+SlimUtils::registerCustomErrorHandlers($container);
+
 AppFactory::setContainer($container);
 $app = AppFactory::create();
-$app->setBasePath($rootPath . '/api');
+$app->setBasePath($basePath);
 
+// Add CORS middleware for browser API access
+$app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
-$app->addBodyParsingMiddleware();
+$app->add(SlimUtils::corsMiddleware());
 
-// Set up
-require __DIR__ . '/../Include/slim/error-handler.php';
+// Add Slim error middleware for proper error handling
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+// Log errors to file
+SlimUtils::setupErrorLogger($errorMiddleware);
 
-// calendar
+// Group routes for better organization
 require __DIR__ . '/routes/calendar/events.php';
 require __DIR__ . '/routes/calendar/calendar.php';
-
-// finance routes
 require __DIR__ . '/routes/finance/finance-deposits.php';
 require __DIR__ . '/routes/finance/finance-payments.php';
-
-// People (families / persons)
 require __DIR__ . '/routes/people/people-family.php';
 require __DIR__ . '/routes/people/people-families.php';
 require __DIR__ . '/routes/people/people-groups.php';
 require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
 require __DIR__ . '/routes/people/people-properties.php';
-
-// Public
 require __DIR__ . '/routes/public/public.php';
 require __DIR__ . '/routes/public/public-data.php';
 require __DIR__ . '/routes/public/public-calendar.php';
 require __DIR__ . '/routes/public/public-user.php';
 require __DIR__ . '/routes/public/public-register.php';
-
-// system routes
 require __DIR__ . '/routes/system/system.php';
 require __DIR__ . '/routes/system/system-config.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
@@ -59,16 +60,12 @@ require __DIR__ . '/routes/system/system-upgrade.php';
 require __DIR__ . '/routes/system/system-custom-menu.php';
 require __DIR__ . '/routes/system/system-locale.php';
 require __DIR__ . '/routes/system/system-logs.php';
-
-// other
 require __DIR__ . '/routes/cart.php';
 require __DIR__ . '/routes/background.php';
 require __DIR__ . '/routes/geocoder.php';
 require __DIR__ . '/routes/kiosks.php';
 require __DIR__ . '/routes/email/mailchimp.php';
 require __DIR__ . '/routes/search.php';
-
-//user
 require __DIR__ . '/routes/users/user.php';
 require __DIR__ . '/routes/users/user-admin.php';
 require __DIR__ . '/routes/users/user-current.php';

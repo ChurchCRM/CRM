@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,20 +12,22 @@ require_once '../Include/Config.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $rootPath = str_replace('/external/index.php', '', $_SERVER['SCRIPT_NAME']);
+
 $container = new ContainerBuilder();
 $container->compile();
+// Register custom error handlers
+SlimUtils::registerCustomErrorHandlers($container);
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($rootPath . '/external');
 
+// Add Slim error middleware for proper error handling and logging
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::setupErrorLogger($errorMiddleware);
+
+$app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
 $app->addRoutingMiddleware();
-$app->addBodyParsingMiddleware();
-
-$container = $app->getContainer();
-
-// Set up
-require __DIR__ . '/../Include/slim/error-handler.php';
 
 // routes
 require __DIR__ . '/routes/register.php';
