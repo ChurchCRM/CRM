@@ -1,4 +1,4 @@
-FROM  php:8-apache
+FROM  php:8.5.0RC2-apache
 LABEL maintainer="george@dawouds.com"
 
 EXPOSE 80
