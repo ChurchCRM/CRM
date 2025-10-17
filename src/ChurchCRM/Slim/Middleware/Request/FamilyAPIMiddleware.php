@@ -3,7 +3,7 @@
 namespace ChurchCRM\Slim\Middleware\Request;
 
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Laminas\Diactoros\Response;

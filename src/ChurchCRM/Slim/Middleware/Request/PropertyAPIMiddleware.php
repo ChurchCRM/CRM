@@ -3,7 +3,7 @@
 namespace ChurchCRM\Slim\Middleware\Request;
 
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

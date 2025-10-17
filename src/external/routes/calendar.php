@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ResponseInterface as Response;

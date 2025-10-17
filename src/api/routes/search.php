@@ -8,7 +8,7 @@ use ChurchCRM\Search\FinanceDepositSearchResultProvider;
 use ChurchCRM\Search\FinancePaymentSearchResultProvider;
 use ChurchCRM\Search\GroupSearchResultProvider;
 use ChurchCRM\Search\PersonSearchResultProvider;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
