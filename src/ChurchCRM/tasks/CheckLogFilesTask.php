@@ -4,11 +4,11 @@ namespace ChurchCRM\Tasks;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 
 class CheckLogFilesTask implements TaskInterface
 {
     private int $logFileCount;
-    private const LOG_FILE_THRESHOLD = 100;
 
     public function __construct()
     {
@@ -27,7 +27,8 @@ class CheckLogFilesTask implements TaskInterface
 
     public function isActive(): bool
     {
-        return AuthenticationManager::getCurrentUser()->isAdmin() && $this->logFileCount > self::LOG_FILE_THRESHOLD;
+        $threshold = (int) SystemConfig::getValue('iLogFileThreshold');
+        return AuthenticationManager::getCurrentUser()->isAdmin() && $this->logFileCount > $threshold;
     }
 
     public function isAdmin(): bool
