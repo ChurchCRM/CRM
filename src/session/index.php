@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -17,17 +18,22 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $rootPath = str_replace('/session/index.php', '', $_SERVER['SCRIPT_NAME']);
+
 $container = new ContainerBuilder();
 $container->compile();
+// Register custom error handlers
+SlimUtils::registerCustomErrorHandlers($container);
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($rootPath . '/session');
 
-require __DIR__ . '/../Include/slim/error-handler.php';
+// Add Slim error middleware for proper error handling and logging
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::setupErrorLogger($errorMiddleware);
 
-$app->addRoutingMiddleware();
+$app->addBodyParsingMiddleware();
 $app->add(new VersionMiddleware());
-$container = $app->getContainer();
+$app->addRoutingMiddleware();
 
 require __DIR__ . '/routes/password-reset.php';
 

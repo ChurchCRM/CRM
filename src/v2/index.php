@@ -32,7 +32,6 @@ $app->add(SlimUtils::corsMiddleware());
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
 
-// error-handler.php is no longer needed; error handling is now centralized
 require __DIR__ . '/routes/common/mvc-helper.php';
 require __DIR__ . '/routes/admin/admin.php';
 require __DIR__ . '/routes/user.php';

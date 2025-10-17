@@ -1,8 +1,9 @@
 <?php
-use ChurchCRM\Slim\SlimUtils;
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -22,7 +23,7 @@ SystemConfig::init();
 $container = new ContainerBuilder();
 $container->compile();
 // Register custom error handlers
-\ChurchCRM\Slim\SlimUtils::registerCustomErrorHandlers($container);
+SlimUtils::registerCustomErrorHandlers($container);
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
@@ -36,7 +37,5 @@ $app->add(SlimUtils::corsMiddleware());
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
 
-// error-handler.php is no longer needed; error handling is now centralized
-require __DIR__ . '/routes/setup.php';
 
 $app->run();
