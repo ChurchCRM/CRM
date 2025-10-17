@@ -1,4 +1,6 @@
 name: Locale POEditor Download and Audit 
+permissions:
+  contents: write
 
 on:
   push:
