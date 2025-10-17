@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -21,7 +22,7 @@ $app->group('/register', function (RouteCollectorProxy $group): void {
         $registrationData->sCountry = SystemConfig::getValue('sChurchCountry');
         $registrationData->sEmail = SystemConfig::getValue('sChurchEmail');
         $registrationData->ChurchCRMURL = $input['ChurchCRMURL'];
-        $registrationData->Version = SystemService::getInstalledVersion();
+        $registrationData->Version = VersionUtils::getInstalledVersion();
 
         $registrationData->sComments = $input['emailmessage'];
         $curlService = curl_init('https://demo.churchcrm.io/register.php');
