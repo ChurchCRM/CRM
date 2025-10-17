@@ -22,6 +22,8 @@ on:
 
 jobs:
   test-n-package:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     strategy:
       matrix:
