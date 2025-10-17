@@ -3,9 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 
 require_once 'Header-function.php';
-if (SystemConfig::debugEnabled()) {
-    require_once 'Header-Security.php';
-}
+require_once 'Header-Security.php';
 
 // Turn ON output buffering
 ob_start();
