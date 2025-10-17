@@ -23,13 +23,13 @@ class Bootstrapper
 {
     private static ?ConnectionManagerSingle $manager = null;
     private static ?string $dbClassName = null;
-    private static $databaseServerName;
-    private static $databasePort;
-    private static $databaseUser;
-    private static $databasePassword;
-    private static $databaseName;
-    private static $rootPath;
-    private static $lockURL;
+    private static ?string $databaseServerName = null;
+    private static ?int $databasePort = null;
+    private static ?string $databaseUser = null;
+    private static ?string $databasePassword = null;
+    private static ?string $databaseName = null;
+    private static ?string $rootPath = null;
+    private static ?bool $lockURL = null;
     private static ?array $allowableURLs = null;
 
     private static ?Logger $bootStrapLogger = null;
@@ -164,17 +164,15 @@ class Bootstrapper
             if (strlen(mysqli_connect_error()) > 0) {
                 $sMYSQLERROR = mysqli_connect_error();
             }
-            // If connecting via a socket, convert self::$databasePort to something sensible.
-            if (self::$databaseServerName == "localhost") {
-                self::$databasePort = "Unix socket";
-            }
+            // If connecting via a socket, note this for logging (don't change the port value)
+            $portDisplay = (self::$databaseServerName == "localhost") ? "Unix socket" : (string)self::$databasePort;
             // Need to initialise otherwise logging etc will fail!
             if (!SystemConfig::isInitialized()) {
                 SystemConfig::init();
             }
             // Log the error to the application log, and show an error page to user.
-            LoggerUtils::getAppLogger()->error("ERROR connecting to database at '" . self::$databaseServerName . "' on port '" . self::$databasePort . "' as user '" . self::$databaseUser . "' -  MySQL Error: '" . $sMYSQLERROR . "'");
-            Bootstrapper::systemFailure('Could not connect to MySQL on <strong>' . self::$databaseServerName . '</strong> on port <strong>' . self::$databasePort . '</strong> as <strong>' . self::$databaseUser . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . $sMYSQLERROR, 'Database Connection Failure');
+            LoggerUtils::getAppLogger()->error("ERROR connecting to database at '" . self::$databaseServerName . "' on port '" . $portDisplay . "' as user '" . self::$databaseUser . "' -  MySQL Error: '" . $sMYSQLERROR . "'");
+            Bootstrapper::systemFailure('Could not connect to MySQL on <strong>' . self::$databaseServerName . '</strong> on port <strong>' . $portDisplay . '</strong> as <strong>' . self::$databaseUser . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . $sMYSQLERROR, 'Database Connection Failure');
         }
     }
     private static function initPropel(): void
