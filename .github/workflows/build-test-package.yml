@@ -22,6 +22,8 @@ on:
 
 jobs:
   test-n-package:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -94,6 +96,15 @@ jobs:
     - name: Run Cypress Tests
       run: |
         npm run test
+
+    - name: Upload Cypress Reports on Failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: cypress-reports-${{ steps.vars.outputs.safe_branch }}
+        path: cypress/reports/
+        retention-days: 30
+        if-no-files-found: ignore
 
     - name: Stop Docker
       run: |
@@ -229,6 +240,21 @@ jobs:
         echo "**🌿 Branch:** ${{ steps.vars.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
         echo "**📝 Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # Add test failure debug info
+        if [ "${{ job.status }}" = "failure" ]; then
+          echo "## ❌ Test Failure Debug Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The following debug artifacts have been uploaded to help troubleshoot test failures:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "-  **cypress-reports-${{ steps.vars.outputs.safe_branch }}** - Detailed test reports and results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**💡 Quick Debug Tips:**" >> $GITHUB_STEP_SUMMARY
+          echo "1. Download and review the Cypress reports for detailed error messages and stack traces" >> $GITHUB_STEP_SUMMARY
+          echo "2. Check the mochawesome report for a visual breakdown of test results" >> $GITHUB_STEP_SUMMARY
+          echo "3. Look for specific test names and failure reasons in the reports" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
         
         if [ -d "target" ]; then
           echo "**📦 Artifacts Created:**" >> $GITHUB_STEP_SUMMARY
