@@ -68,6 +68,8 @@ class Bootstrapper
         
         global $debugBootstrapper;
         
+        // Set default timezone before any logging to ensure consistent log file naming
+        date_default_timezone_set('UTC');
         // Validate required parameters
         self::validateInitParameters($sSERVERNAME, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath);
         
