@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("People Tools", () => {
+describe("People Tools", () => {
     it("Open the People Dashboard", () => {
         cy.loginStandard("PeopleDashboard.php");
         cy.contains("People Dashboard");

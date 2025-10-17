@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Standard Dashboard", () => {
+describe("Main Dashboard", () => {
     it("Loads all", () => {
         cy.loginStandard();
         cy.contains("Welcome to");

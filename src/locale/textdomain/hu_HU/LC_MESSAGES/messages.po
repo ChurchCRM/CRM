@@ -32,10 +32,12 @@ msgstr "Gazdátlan"
 msgid "None"
 msgstr "Egyik sem"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "City"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "Állami"
@@ -48,6 +50,7 @@ msgstr "Ország"
 msgid "Phone"
 msgstr "Telefon"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "Email"
@@ -146,6 +149,7 @@ msgstr "Születési / Anniversary Dátum"
 msgid "Age / Years Married"
 msgstr "Életkor / Évek Házas"
 
+#. Context: queryparameters_qrp
 #: 
 #, fuzzy
 msgid "Family Role"
@@ -189,10 +193,12 @@ msgstr "Használja a Ctrl gombot több"
 msgid "Don't Filter"
 msgstr "Ne Szűrés"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "Férfi"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "Női"
@@ -264,6 +270,7 @@ msgstr "Cím"
 msgid "Suffix"
 msgstr "Képző"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "Nemek"
@@ -272,6 +279,7 @@ msgstr "Nemek"
 msgid "Donation Envelope"
 msgstr "Adomány boríték"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "Otthoni telefon"
@@ -324,6 +332,7 @@ msgstr "Megjegyzés: Elválasztók (gondolatjelek, stb), vagy annak hiánya nem 
 msgid "Default country if none specified otherwise"
 msgstr "Alapértelmezett ország, ha nincs másként nem"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "Besorolás"
@@ -377,6 +386,7 @@ msgstr "Nincs családja beírt név!"
 msgid "Add Cart to Family"
 msgstr "Add kosárba Family"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Név"
@@ -565,6 +575,7 @@ msgstr "Akció"
 msgid "No Attendees Assigned to Event"
 msgstr "Nem Résztvevők Hozzárendelve Event"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Member"
 msgstr "Tag"
@@ -843,6 +854,7 @@ msgstr "Család"
 msgid "Type"
 msgstr "Type"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Fiscal Year"
 msgstr "Költségvetési év"
@@ -859,6 +871,7 @@ msgstr "Alap"
 msgid "Bank"
 msgstr "Bank"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Month"
 msgstr "Hónap"
@@ -2323,6 +2336,7 @@ msgstr "Property List"
 msgid "Add a New"
 msgstr "Hozzáadása Új"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Ingatlan"
@@ -2368,6 +2382,7 @@ msgstr "Ingatlan típusa List"
 msgid "Add a New Property Type"
 msgstr "Hozzáadása Új Ingatlan típusa"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Class"
 msgstr "Osztály"

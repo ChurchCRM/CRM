@@ -2,7 +2,7 @@
 
 require("cy-verify-downloads").addCustomCommand();
 
-context("Financial Reports", () => {
+describe("Financial Reports", () => {
     it("Giving Report", () => {
         cy.loginAdmin("FinancialReports.php");
         cy.contains("Financial Reports");

@@ -408,25 +408,6 @@ module.exports = function (grunt) {
                 api_token: "<%= buildConfig.POEditor.token %>",
             },
         },
-        exec: {
-            downloadPOEditorStats: {
-                cmd: "curl -X POST https://api.poeditor.com/v2/languages/list -d api_token=<%= buildConfig.POEditor.token %> -d id=<%= buildConfig.POEditor.id %> -o src/locale/poeditor.json -s",
-            },
-        },
-        lineending: {
-            dist: {
-                options: {
-                    eol: "lf",
-                    overwrite: true,
-                },
-                files: {
-                    "": [
-                        "src/vendor/**/*.php",
-                        "src/skin/external/**/*.php"
-                    ],
-                },
-            },
-        },
     });
 
     grunt.registerTask("hash", "gets a file hash", function (arg1) {
@@ -479,66 +460,9 @@ module.exports = function (grunt) {
         "updateFromPOeditor",
         "Description of the task",
         function (target) {
-            grunt.loadNpmTasks("grunt-poeditor-ab");
             grunt.task.run(["poeditor"]);
         },
     );
-
-    grunt.registerTask("genLocaleAudit", "", function () {
-        let locales = grunt.file.readJSON("src/locale/locales.json");
-
-        let supportedPOEditorCodes = [];
-        for (let key in locales) {
-            supportedPOEditorCodes.push(locales[key]["poEditor"].toLowerCase());
-        }
-
-        let localeData = [];
-
-        if (grunt.file.exists("src/locale/poeditor.json")) {
-            let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
-            let poEditorLocales = poLocales.result.languages;
-
-            for (let key in poEditorLocales) {
-                let name = poEditorLocales[key]["name"];
-                let curCode = poEditorLocales[key]["code"].toLowerCase();
-                let percentage = poEditorLocales[key]["percentage"];
-                if (
-                    supportedPOEditorCodes.indexOf(curCode) === -1 &&
-                    percentage > 0
-                ) {
-                    console.log(
-                        "Missing " +
-                            name +
-                            " (" +
-                            curCode +
-                            ") but has " +
-                            percentage +
-                            " percentage",
-                    );
-                } else {
-                    localeData.push({
-                        code: curCode,
-                        percentage: percentage,
-                        translations: poEditorLocales[key]["translations"],
-                    });
-                }
-            }
-        }
-
-        console.log("\n");
-        console.log("Locale | Translations | Percentage\n");
-        console.log("-- | -- | --\n");
-        localeData.forEach(function (locale) {
-            console.log(
-                locale.code +
-                    " | " +
-                    locale.translations +
-                    " | " +
-                    locale.percentage +
-                    "%",
-            );
-        });
-    });
 
     grunt.registerTask("genLocaleJSFiles", "", function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
@@ -612,43 +536,8 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("cleanupLocalGit", "clean local git", function () {
-        grunt.loadNpmTasks("grunt-git");
-        grunt.config("gitreset", {
-            task: {
-                options: {
-                    mode: "hard",
-                },
-            },
-        });
-
-        grunt.config("gitcheckout", {
-            master: {
-                options: {
-                    branch: "master",
-                },
-            },
-        });
-
-        grunt.config("gitpull", {
-            master: {
-                options: {
-                    branch: "master",
-                },
-            },
-        });
-        grunt.task.run("gitreset");
-        //  make sure we're on master
-        grunt.task.run("gitcheckout:master");
-        //  ensure local and remote master are up to date
-        grunt.task.run("gitpull:master");
-        //  display local master's commit hash
-    });
-
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-compress");
     grunt.loadNpmTasks("grunt-curl");
     grunt.loadNpmTasks("grunt-poeditor-gd");
-    grunt.loadNpmTasks("grunt-exec");
-    grunt.loadNpmTasks("grunt-lineending");
 };

@@ -1,0 +1,9592 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "쿼리를 실행하지 못했습니다."
+
+#: 
+msgid "Delete"
+msgstr "삭제"
+
+#: 
+msgid "Cancel"
+msgstr "취소"
+
+#: 
+msgid "Save"
+msgstr "저장"
+
+#: 
+msgid "Unassigned"
+msgstr "미지정"
+
+#: 
+msgid "None"
+msgstr "없음"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "City"
+msgstr "도시"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "State"
+msgstr "주/도"
+
+#: 
+msgid "Country"
+msgstr "국가"
+
+#: 
+msgid "Phone"
+msgstr "전화번호"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Email"
+msgstr "이메일"
+
+#: 
+msgid "Credit Card"
+msgstr "신용카드"
+
+#: 
+msgid "Backup Database"
+msgstr "데이터베이스 백업"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "이 도구는 ChurchCRM 데이터베이스를 수동으로 백업할 때 도움을 줍니다."
+
+#. yep fixed
+#: 
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "시스템에 정기 백업 절차가 없다면 최소한 주 1회는 수동 백업을 수행해야 합니다."
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "백업 파일을 내려받은 뒤에는 사본을 두 개 만들어야 합니다. 하나는 현장의 내화 금고에, 다른 하나는 외부의 안전한 장소에 보관하세요."
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "ChurchCRM 데이터베이스에 저장된 정보의 기밀성이 걱정된다면, 다른 사람이 접근할 수 있는 곳에 보관하기 전에 백업 데이터를 암호화하세요."
+
+#: 
+msgid "Select archive type"
+msgstr "압축 형식 선택"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "백업 파일을 비밀번호로 암호화할까요?"
+
+#: 
+msgid "Re-type Password"
+msgstr "비밀번호 다시 입력"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "백업 생성 후 외부 저장소로 전송"
+
+#: 
+msgid "Batch Winner Entry"
+msgstr "당첨자 일괄 등록"
+
+#: 
+msgid "Winner"
+msgstr "당첨자"
+
+#: 
+msgid "Price"
+msgstr "금액"
+
+#: 
+msgid "Enter Winners"
+msgstr "당첨자 입력"
+
+#: 
+msgid "CSV Export"
+msgstr "CSV 내보내기"
+
+#: 
+msgid "Field Selection"
+msgstr "필드 선택"
+
+#: 
+msgid "Last Name"
+msgstr "성"
+
+#: 
+msgid "Required"
+msgstr "필수"
+
+#: 
+msgid "First Name"
+msgstr "이름"
+
+#: 
+msgid "Middle Name"
+msgstr "중간 이름"
+
+#: 
+msgid "Zip"
+msgstr "우편번호"
+
+#: 
+msgid "Envelope"
+msgstr "봉투 번호"
+
+#: 
+msgid "Work/Other Email"
+msgstr "직장/기타 이메일"
+
+#: 
+msgid "Membership Date"
+msgstr "등록일"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "생일 / 기념일"
+
+#: 
+msgid "Age / Years Married"
+msgstr "나이 / 결혼 기간"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Family Role"
+msgstr "가족 역할"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "개별 또는 가족 출력 방식을 사용하는지에 따라 달라집니다."
+
+#: 
+msgid "Custom Field Selection"
+msgstr "사용자 정의 필드 선택"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "사용자 정의 개인 필드"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "사용자 정의 가족 필드"
+
+#: 
+msgid "Filters"
+msgstr "필터"
+
+#: 
+msgid "Records to export"
+msgstr "내보낼 레코드"
+
+#: 
+msgid "Based on filters below.."
+msgstr "아래 필터 기준"
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "카트에 담긴 사람들(필터 무시)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "Ctrl 키로 여러 항목을 선택하세요."
+
+#: 
+msgid "Don't Filter"
+msgstr "필터 사용 안 함"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Male"
+msgstr "남성"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Female"
+msgstr "여성"
+
+#: 
+msgid "Group Membership"
+msgstr "그룹 소속"
+
+#: 
+msgid "From:"
+msgstr "시작:"
+
+#: 
+msgid "To:"
+msgstr "종료:"
+
+#: 
+msgid "Birthday Date"
+msgstr "생일"
+
+#: 
+msgid "Anniversary Date"
+msgstr "기념일"
+
+#: 
+msgid "Output Method:"
+msgstr "출력 방식:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "CSV 개별 기록"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV 가족 통합"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "개인을 카트에 추가"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "주소가 완성되지 않은 기록 건너뛰기"
+
+#: 
+msgid "Create File"
+msgstr "파일 생성"
+
+#: 
+msgid "No file selected for upload."
+msgstr "업로드할 파일이 선택되지 않았습니다."
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "CSV 파일 총 행 수:"
+
+#: 
+msgid "Ignore this Field"
+msgstr "이 필드 무시"
+
+#: 
+msgid "Title"
+msgstr "직함"
+
+#: 
+msgid "Suffix"
+msgstr "접미사"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Gender"
+msgstr "성별"
+
+#: 
+msgid "Donation Envelope"
+msgstr "헌금봉투 번호"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Home Phone"
+msgstr "자택 전화"
+
+#: 
+msgid "Work Phone"
+msgstr "직장 전화"
+
+#: 
+msgid "Mobile Phone"
+msgstr "휴대전화"
+
+#: 
+msgid "Work / Other Email"
+msgstr "직장/기타 이메일"
+
+#: 
+msgid "Birth Date"
+msgstr "생년월일"
+
+#: 
+msgid "Wedding Date"
+msgstr "결혼기념일"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "CSV 첫 줄(헤더) 무시"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "성(姓)과 주소를 기준으로 가족 레코드 생성"
+
+#: 
+msgid "Patriarch"
+msgstr "가정 대표(남)"
+
+#: 
+msgid "Matriarch"
+msgstr "가정 대표(여)"
+
+#: 
+msgid "Family Type: used with Make Family records... option above"
+msgstr "가족 유형: 위 '가족 레코드 생성' 옵션과 함께 사용"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "참고: 구분자(대시 등)가 있든 없든 상관없습니다."
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "별도로 지정하지 않을 경우 기본 국가"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Classification"
+msgstr "분류"
+
+#: 
+msgid "Perform Import"
+msgstr "가져오기 실행"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "오류: 업로드한 CSV 파일을 더 이상 찾을 수 없습니다!"
+
+#: 
+msgid "Upload CSV File"
+msgstr "CSV 파일 업로드"
+
+#: 
+msgid "Data import successful."
+msgstr "데이터 가져오기에 성공했습니다."
+
+#: 
+msgid "persons were imported"
+msgstr "명이 가져와졌습니다."
+
+#: 
+msgid "Add Cart to Event"
+msgstr "카트를 행사에 추가"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "카트에 담긴 인원을 추가할 행사를 선택하세요."
+
+#: 
+msgid "OR"
+msgstr "또는"
+
+#: 
+msgid "Add New Event"
+msgstr "새 행사 추가"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "카트가 비어 있습니다!"
+
+#: 
+msgid "No family name entered!"
+msgstr "가족 이름이 입력되지 않았습니다!"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "카트를 가족에 추가"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Name"
+msgstr "이름"
+
+#: 
+msgid "Assign Role"
+msgstr "역할 지정"
+
+#: 
+msgid "Already in a family"
+msgstr "이미 가족에 속해 있습니다"
+
+#: 
+msgid "Create new family"
+msgstr "새 가족 생성"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "새 가족을 추가하려면 아래 정보를 입력하세요."
+
+#: 
+msgid "Use address/contact data from"
+msgstr "주소/연락처 정보를 다음에서 사용"
+
+#: 
+msgid "Only the new data below"
+msgstr "아래 새 정보만 사용"
+
+#: 
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(미국·캐나다 외 국가는 텍스트 상자를 사용하세요.)"
+
+#: 
+msgid "Do not auto-format"
+msgstr "자동 서식 적용 안 함"
+
+#: 
+msgid "Add to Family"
+msgstr "가족에 추가"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "카트를 그룹에 추가"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "카트에 담긴 인원을 추가할 그룹을 선택하세요."
+
+#: 
+msgid "Select Group"
+msgstr "그룹 선택"
+
+#: 
+msgid "No Group Selected"
+msgstr "선택된 그룹 없음"
+
+#: 
+msgid "Add to Group"
+msgstr "그룹에 추가"
+
+#: 
+msgid "View Your Cart"
+msgstr "카트 보기"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "카트에 담긴 항목이 없습니다."
+
+#: 
+msgid "Back to Menu"
+msgstr "메뉴로 돌아가기"
+
+#: 
+msgid "Empty Cart"
+msgstr "카트 비우기"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "카트 전체를 그룹에 등록"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "카트 전체를 가족에 등록"
+
+#: 
+msgid "Empty Cart to Event"
+msgstr "카트 전체를 행사에 등록"
+
+#: 
+msgid "Map Cart"
+msgstr "카트 지도 보기"
+
+#: 
+msgid "Name Tags"
+msgstr "명찰"
+
+#: 
+msgid "Email Cart"
+msgstr "카트에 이메일 보내기"
+
+#: 
+msgid "Email (BCC)"
+msgstr "이메일(BCC)"
+
+#: 
+msgid "Create Directory From Cart"
+msgstr "카트에서 명부 생성"
+
+#: 
+msgid "Bulk Mail Presort"
+msgstr "대량 우편 사전 정렬"
+
+#: 
+msgid "Quiet Presort"
+msgstr "사전 정렬(조용 모드)"
+
+#: 
+msgid "Your cart contains"
+msgstr "카트에는 총"
+
+#: 
+msgid "persons from"
+msgstr "명이 있으며"
+
+#: 
+msgid "Remove"
+msgstr "제거"
+
+#: 
+msgid "Yes"
+msgstr "예"
+
+#: 
+msgid "No"
+msgstr "아니요"
+
+#: 
+msgid "Developer Chat"
+msgstr "개발자 채팅"
+
+#: 
+msgid "Event Checkin"
+msgstr "행사 체크인"
+
+#: 
+msgid "Select the event to which you would like to check people in for"
+msgstr "체크인할 행사를 선택하세요."
+
+#: 
+msgid "Select Event"
+msgstr "행사 선택"
+
+#: 
+msgid "Add Visitor"
+msgstr "방문자 추가"
+
+#: 
+msgid "CheckIn"
+msgstr "체크인"
+
+#: 
+msgid "CheckOut"
+msgstr "체크아웃"
+
+#: 
+msgid "Checked In Time"
+msgstr "체크인 시간"
+
+#: 
+msgid "Checked In By"
+msgstr "체크인 담당"
+
+#: 
+msgid "Checked Out Time"
+msgstr "체크아웃 시간"
+
+#: 
+msgid "Checked Out By"
+msgstr "체크아웃 담당"
+
+#: 
+msgid "Action"
+msgstr "작업"
+
+#: 
+msgid "No Attendees Assigned to Event"
+msgstr "행사에 배정된 참석자가 없습니다"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Member"
+msgstr "성도"
+
+#: 
+msgid " of the"
+msgstr " / 소속:"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(배정된 가족 없음)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "개인을 가족으로 변환"
+
+#: 
+msgid "Convert Next"
+msgstr "다음 항목 변환"
+
+#: 
+msgid "Convert All"
+msgstr "모두 변환"
+
+#: 
+msgid "Deposit Slip Number: "
+msgstr "입금 내역서 번호: "
+
+#: 
+msgid "Deposit Details: "
+msgstr "입금 내역: "
+
+#: 
+msgid "Close deposit slip (remember to press Save)"
+msgstr "입금 내역서 닫기(저장을 잊지 마세요)"
+
+#: 
+msgid "Deposit Slip Report"
+msgstr "입금 내역서 보고서"
+
+#: 
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgstr "중요: 입금 내역서를 닫으면 실패한 거래는 영구적으로 삭제됩니다."
+
+#: 
+msgid "Deposit Summary: "
+msgstr "입금 요약: "
+
+#: 
+msgid "Payments on this deposit slip:"
+msgstr "이 전표에 포함된 결제:"
+
+#: 
+msgid "Import eGive"
+msgstr "eGive 가져오기"
+
+#: 
+msgid "Add Payment"
+msgstr "결제 추가"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "승인된 거래 불러오기"
+
+#: 
+msgid "Run Transactions"
+msgstr "거래 실행"
+
+#: 
+msgid "Directory reports"
+msgstr "명부 보고서"
+
+#: 
+msgid "Select classifications to include"
+msgstr "포함할 분류 선택"
+
+#: 
+msgid "Which role is the head of household?"
+msgstr "어떤 역할을 가장으로 지정할까요?"
+
+#: 
+msgid "Which role is the spouse?"
+msgstr "어떤 역할을 배우자로 지정할까요?"
+
+#: 
+msgid "Which role is a child?"
+msgstr "어떤 역할을 자녀로 지정할까요?"
+
+#: 
+msgid "Information to Include"
+msgstr "포함할 정보"
+
+#: 
+msgid "Address"
+msgstr "주소"
+
+#: 
+msgid "Birthday"
+msgstr "생일"
+
+#: 
+msgid "Family Home Phone"
+msgstr "가족 자택 전화"
+
+#: 
+msgid "Family Work Phone"
+msgstr "가족 직장 전화"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "가족 휴대전화"
+
+#: 
+msgid "Family Email"
+msgstr "가족 이메일"
+
+#: 
+msgid "Personal Home Phone"
+msgstr "개인 자택 전화"
+
+#: 
+msgid "Personal Work Phone"
+msgstr "개인 직장 전화"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "개인 휴대전화"
+
+#: 
+msgid "Personal Email"
+msgstr "개인 이메일"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "개인 직장/기타 이메일"
+
+#: 
+msgid "Photos"
+msgstr "사진"
+
+#: 
+msgid "Number of Columns"
+msgstr "열 개수"
+
+#: 
+msgid "Paper Size"
+msgstr "용지 크기"
+
+#: 
+msgid "Font Size"
+msgstr "글꼴 크기"
+
+#: 
+msgid "Title page"
+msgstr "표지"
+
+#: 
+msgid "Use Title Page"
+msgstr "표지 사용"
+
+#: 
+msgid "Church Name"
+msgstr "교회 이름"
+
+#: 
+msgid "Disclaimer"
+msgstr "면책 문구"
+
+#: 
+msgid "Create Directory"
+msgstr "명부 생성"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "헌물 항목 편집"
+
+#: 
+msgid "Save and Add"
+msgstr "저장 후 추가"
+
+#: 
+msgid "Item"
+msgstr "항목"
+
+#: 
+msgid "Multiple items"
+msgstr "여러 항목"
+
+#: 
+msgid "Sell to everyone"
+msgstr "모두에게 판매"
+
+#: 
+msgid "Estimated Price"
+msgstr "예상 금액"
+
+#: 
+msgid "Multiple"
+msgstr "다수"
+
+#: 
+msgid "Final Price"
+msgstr "최종 금액"
+
+#: 
+msgid "Replicate item"
+msgstr "항목 복제"
+
+#: 
+msgid "Go"
+msgstr "실행"
+
+#: 
+msgid "Description"
+msgstr "설명"
+
+#: 
+msgid "Picture URL"
+msgstr "사진 URL"
+
+#: 
+msgid "Donation Fund Editor"
+msgstr "헌금 항목 편집"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "이 헌금 항목을 삭제하시겠습니까?"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
+msgstr "경고: 삭제 또는 '새로 추가' 버튼을 누르기 전에 '변경 사항 저장'을 하지 않으면 수정 내용이 사라집니다!"
+
+#: 
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "잘못된 필드나 선택입니다. 변경 사항이 저장되지 않았습니다! 수정 후 다시 시도하세요!"
+
+#: 
+msgid "No funds have been added yet"
+msgstr "등록된 헌금 항목이 없습니다."
+
+#: 
+msgid "Active"
+msgstr "활성"
+
+#: 
+msgid "Save Changes"
+msgstr "변경 사항 저장"
+
+#: 
+msgid "Add New Fund"
+msgstr "새 헌금 항목 추가"
+
+#: 
+msgid "Church Event Editor"
+msgstr "교회 행사 편집"
+
+#: 
+msgid "Edit Event Types"
+msgstr "행사 유형 편집"
+
+#: 
+msgid "Edit Event Type"
+msgstr "행사 유형 수정"
+
+#: 
+msgid "Event Type"
+msgstr "행사 유형"
+
+#: 
+msgid "Save Name"
+msgstr "이름 저장"
+
+#: 
+msgid "Recurrence Pattern"
+msgstr "반복 패턴"
+
+#: 
+msgid "Attendance Counts"
+msgstr "출석 인원"
+
+#: 
+msgid "Add counter"
+msgstr "집계 항목 추가"
+
+#: 
+msgid "Return to Event Types"
+msgstr "행사 유형 목록으로"
+
+#: 
+msgid "Family"
+msgstr "가족"
+
+#: 
+msgid "Type"
+msgstr "유형"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year"
+msgstr "회계 연도"
+
+#: 
+msgid "Amount"
+msgstr "금액"
+
+#: 
+msgid "Fund"
+msgstr "헌금 항목"
+
+#: 
+msgid "Bank"
+msgstr "은행"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "월"
+
+#: 
+msgid "Year"
+msgstr "연도"
+
+#: 
+msgid "Edit"
+msgstr "편집"
+
+#: 
+msgid "Event Attendees"
+msgstr "행사 참석자"
+
+#: 
+msgid "Event Nonattendees"
+msgstr "행사 미참석자"
+
+#: 
+msgid "Event Guests"
+msgstr "행사 방문자"
+
+#: 
+msgid "There "
+msgstr "총 "
+
+#: 
+msgid "Event Title"
+msgstr "행사 제목"
+
+#: 
+msgid "Event Date"
+msgstr "행사 날짜"
+
+#: 
+msgid "Attending Members"
+msgstr "참석한 성도"
+
+#: 
+msgid "Non-Attending Members"
+msgstr "불참 성도"
+
+#: 
+msgid "Guests"
+msgstr "방문자"
+
+#: 
+msgid "There are no events in this category"
+msgstr "이 분류에는 행사가 없습니다."
+
+#: 
+msgid "Create Event"
+msgstr "행사 생성"
+
+#: 
+msgid "Create a new Event"
+msgstr "새 행사를 생성"
+
+#: 
+msgid "Editing Event ID: "
+msgstr "편집 중인 행사 ID: "
+
+#: 
+msgid " errors. Please see below"
+msgstr "개의 오류가 있습니다. 아래 내용을 확인하세요."
+
+#: 
+msgid "Items with a "
+msgstr "표시된 항목은 "
+
+#: 
+msgid " are required"
+msgstr " 항목은 필수입니다."
+
+#: 
+msgid "Select your event type"
+msgstr "행사 유형을 선택하세요"
+
+#: 
+msgid "You must pick an event type."
+msgstr "행사 유형을 꼭 선택해야 합니다."
+
+#: 
+msgid "Event Desc"
+msgstr "행사 설명"
+
+#: 
+msgid "No Attendance counts recorded"
+msgstr "등록된 출석 집계가 없습니다."
+
+#: 
+msgid "Attendance Notes: "
+msgstr "출석 메모: "
+
+#: 
+msgid "Event Sermon"
+msgstr "행사 설교"
+
+#: 
+msgid "Event Status"
+msgstr "행사 상태"
+
+#: 
+msgid "Return to Events"
+msgstr "행사 목록으로"
+
+#: 
+msgid "EVENT TYPE NAME"
+msgstr "행사 유형 이름"
+
+#: 
+msgid "Sundays"
+msgstr "주일"
+
+#: 
+msgid "Mondays"
+msgstr "월요일"
+
+#: 
+msgid "Tuesdays"
+msgstr "화요일"
+
+#: 
+msgid "Wednesdays"
+msgstr "수요일"
+
+#: 
+msgid "Thursdays"
+msgstr "목요일"
+
+#: 
+msgid "Fridays"
+msgstr "금요일"
+
+#: 
+msgid "Saturdays"
+msgstr "토요일"
+
+#: 
+msgid "DEFAULT START TIME"
+msgstr "기본 시작 시간"
+
+#: 
+msgid "ATTENDANCE COUNTS"
+msgstr "출석 집계"
+
+#: 
+msgid "Optional"
+msgstr "선택 사항"
+
+#: 
+msgid "Enter a list of the attendance counts you want to include with this event."
+msgstr "이 행사에 포함할 출석 집계 항목을 입력하세요."
+
+#: 
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
+msgstr "각 집계 이름은 쉼표로 구분합니다. 예) 성도, 새가족, 캠퍼스, 어린이"
+
+#: 
+msgid "Every event type includes a Total count, you do not need to include it."
+msgstr "모든 행사 유형에는 총합 집계가 기본 포함되므로 따로 입력할 필요가 없습니다."
+
+#: 
+msgid "Add Event Type"
+msgstr "행사 유형 추가"
+
+#: 
+msgid "Custom Family Fields Editor"
+msgstr "가족 사용자 정의 필드 편집"
+
+#: 
+msgid "Default Option"
+msgstr "기본 옵션"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
+msgstr "경고: 이 필드를 삭제하면 여기에 입력된 모든 가족 데이터가 영구히 사라집니다!"
+
+#: 
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "경고: 화살표와 삭제 버튼은 즉시 적용됩니다. 위/아래/삭제 또는 '새로 추가' 버튼을 누르기 전에 '변경 사항 저장'을 하지 않으면 수정 내용이 사라집니다!"
+
+#: 
+msgid "No custom Family fields have been added yet"
+msgstr "추가된 사용자 정의 가족 필드가 없습니다."
+
+#: 
+msgid "Special option"
+msgstr "특별 옵션"
+
+#: 
+msgid "Security Option"
+msgstr "보안 옵션"
+
+#: 
+msgid "You must select a group."
+msgstr "그룹을 선택해야 합니다."
+
+#: 
+msgid "Edit List Options"
+msgstr "목록 옵션 편집"
+
+#: 
+msgid "Help on types.."
+msgstr "유형 도움말..."
+
+#: 
+msgid "You must enter a name"
+msgstr "이름을 입력해야 합니다."
+
+#: 
+msgid "That field name already exists."
+msgstr "이미 존재하는 필드 이름입니다."
+
+#: 
+msgid "Add New Field"
+msgstr "새 필드 추가"
+
+#: 
+msgid "Family Editor"
+msgstr "가족 정보 편집"
+
+#: 
+msgid "First name must be entered"
+msgstr "이름을 입력해야 합니다."
+
+#: 
+msgid "Invalid Birth Date."
+msgstr "생년월일이 올바르지 않습니다."
+
+#: 
+msgid "Not a valid Wedding Date"
+msgstr "결혼기념일이 올바르지 않습니다."
+
+#: 
+msgid "Email is Not Valid"
+msgstr "이메일 형식이 올바르지 않습니다."
+
+#: 
+msgid "Family Info"
+msgstr "가족 정보"
+
+#: 
+msgid "Contact Info"
+msgstr "연락처 정보"
+
+#: 
+msgid "Other Info"
+msgstr "기타 정보"
+
+#: 
+msgid "Envelope Info"
+msgstr "헌금봉투 정보"
+
+#: 
+msgid "Custom Fields"
+msgstr "사용자 정의 필드"
+
+#: 
+msgid "Family Members"
+msgstr "가족 구성원"
+
+#: 
+msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
+msgstr "지금 가족 구성원을 등록하거나 나중에 추가할 수 있습니다. 모든 항목은 새 개인 기록으로 저장됩니다."
+
+#: 
+msgid "First"
+msgstr "이름"
+
+#: 
+msgid "Middle"
+msgstr "가운데 이름"
+
+#: 
+msgid "Last"
+msgstr "성"
+
+#: 
+msgid "Role"
+msgstr "역할"
+
+#: 
+msgid "Select Gender"
+msgstr "성별 선택"
+
+#: 
+msgid "Select Role"
+msgstr "역할 선택"
+
+#: 
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#: 
+msgid "January"
+msgstr "1월"
+
+#: 
+msgid "February"
+msgstr "2월"
+
+#: 
+msgid "March"
+msgstr "3월"
+
+#: 
+msgid "April"
+msgstr "4월"
+
+#: 
+msgid "May"
+msgstr "5월"
+
+#: 
+msgid "June"
+msgstr "6월"
+
+#: 
+msgid "July"
+msgstr "7월"
+
+#: 
+msgid "August"
+msgstr "8월"
+
+#: 
+msgid "September"
+msgstr "9월"
+
+#: 
+msgid "October"
+msgstr "10월"
+
+#: 
+msgid "November"
+msgstr "11월"
+
+#: 
+msgid "December"
+msgstr "12월"
+
+#: 
+msgid "Unk"
+msgstr "미상"
+
+#: 
+msgid "Family List"
+msgstr "가족 목록"
+
+#: 
+msgid "Add Family"
+msgstr "가족 추가"
+
+#: 
+msgid "Created"
+msgstr "등록일"
+
+#: 
+msgid "Envelope Number"
+msgstr "헌금봉투 번호"
+
+#: 
+msgid "Verify Info"
+msgstr "정보 확인"
+
+#: 
+msgid "Add New Member"
+msgstr "새 구성원 추가"
+
+#: 
+msgid "Previous Family"
+msgstr "이전 가족"
+
+#: 
+msgid "Next Family"
+msgstr "다음 가족"
+
+#: 
+msgid "Delete this Family"
+msgstr "이 가족 삭제"
+
+#: 
+msgid "Upload Photo"
+msgstr "사진 업로드"
+
+#: 
+msgid "Delete Photo"
+msgstr "사진 삭제"
+
+#: 
+msgid "Add a Note"
+msgstr "메모 추가"
+
+#: 
+msgid "Add All Family Members to Cart"
+msgstr "가족 전체를 카트에 추가"
+
+#: 
+msgid "Timeline"
+msgstr "타임라인"
+
+#: 
+msgid "Pledges and Payments"
+msgstr "서약 및 헌금"
+
+#: 
+msgid "No property assignments."
+msgstr "등록된 속성이 없습니다."
+
+#: 
+msgid "Value"
+msgstr "값"
+
+#: 
+msgid "Edit Value"
+msgstr "값 편집"
+
+#: 
+msgid "Assign a New Property"
+msgstr "새 속성 배정"
+
+#: 
+msgid "Assign"
+msgstr "배정"
+
+#: 
+msgid "Date Updated"
+msgstr "수정 날짜"
+
+#: 
+msgid "Updated By"
+msgstr "수정자"
+
+#: 
+msgid "Show Pledges"
+msgstr "서약 보기"
+
+#: 
+msgid "Show Payments"
+msgstr "헌금 보기"
+
+#: 
+msgid "Since"
+msgstr "기준"
+
+#: 
+msgid "Update"
+msgstr "업데이트"
+
+#: 
+msgid "Pledge or Payment"
+msgstr "서약/헌금"
+
+#: 
+msgid "Date"
+msgstr "날짜"
+
+#: 
+msgid "NonDeductible"
+msgstr "공제 불가"
+
+#: 
+msgid "Schedule"
+msgstr "일정"
+
+#: 
+msgid "Method"
+msgstr "방식"
+
+#: 
+msgid "Comment"
+msgstr "비고"
+
+#: 
+msgid "Add a new pledge"
+msgstr "새 서약 추가"
+
+#: 
+msgid "Add a new payment"
+msgstr "새 헌금 추가"
+
+#: 
+msgid "Close"
+msgstr "닫기"
+
+#: 
+msgid "Confirm Delete"
+msgstr "삭제 확인"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "프로필 사진을 삭제하려고 합니다. 이 작업은 되돌릴 수 없습니다."
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "계속 진행하시겠습니까?"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "가족 정보를 다음 이메일 주소로 발송하려고 합니다"
+
+#: 
+msgid "Financial Reports"
+msgstr "재정 보고"
+
+#: 
+msgid "No records were returned from the previous report."
+msgstr "이전 보고서에서 반환된 기록이 없습니다."
+
+#: 
+msgid "Report Type:"
+msgstr "보고서 유형:"
+
+#: 
+msgid "Select Report Type"
+msgstr "보고서 유형 선택"
+
+#: 
+msgid "Pledge Summary"
+msgstr "서약 요약"
+
+#: 
+msgid "Pledge Family Summary"
+msgstr "가족 서약 요약"
+
+#: 
+msgid "Pledge Reminders"
+msgstr "서약 독촉장"
+
+#: 
+msgid "Voting Members"
+msgstr "투표 회원"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "헌금 보고서(세금 증명)"
+
+#: 
+msgid "Zero Givers"
+msgstr "헌금 기록 없음"
+
+#: 
+msgid "Individual Deposit Report"
+msgstr "개별 입금 보고서"
+
+#: 
+msgid "Advanced Deposit Report"
+msgstr "상세 입금 보고서"
+
+#: 
+msgid "Next"
+msgstr "다음"
+
+#: 
+msgid "Filter by Family"
+msgstr "가족별 필터"
+
+#: 
+msgid "Report Start Date:"
+msgstr "보고 시작일:"
+
+#: 
+msgid "Report End Date:"
+msgstr "보고 종료일:"
+
+#: 
+msgid "Apply Report Dates To:"
+msgstr "보고 기간 적용 대상:"
+
+#: 
+msgid "Deposit Date (Default)"
+msgstr "입금일(기본)"
+
+#: 
+msgid "Payment Date"
+msgstr "헌금일"
+
+#: 
+msgid "Filter by Deposit:"
+msgstr "입금 내역서 필터:"
+
+#: 
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "입금 내역서를 선택하면 날짜 조건은 무시됩니다."
+
+#: 
+msgid "All deposits within date range"
+msgstr "기간 내 모든 입금 내역서"
+
+#: 
+msgid "Filter by Payment Type:"
+msgstr "헌금 방식 필터:"
+
+#: 
+msgid "All Methods"
+msgstr "모든 방식"
+
+#: 
+msgid "Check"
+msgstr "수표"
+
+#: 
+msgid "Cash"
+msgstr "현금"
+
+#: 
+msgid "Bank Draft"
+msgstr "자동이체"
+
+#: 
+msgid "eGive"
+msgstr "eGive"
+
+#: 
+msgid "Minimum Total Amount:"
+msgstr "최소 총액:"
+
+#: 
+msgid "0 - No Minimum"
+msgstr "0 - 제한 없음"
+
+#: 
+msgid "Other Settings"
+msgstr "기타 설정"
+
+#: 
+msgid "Include:"
+msgstr "포함 대상:"
+
+#: 
+msgid "Only Payments with Pledges"
+msgstr "서약이 있는 헌금만"
+
+#: 
+msgid "All Payments"
+msgstr "모든 헌금"
+
+#: 
+msgid "Generate:"
+msgstr "대상 생성:"
+
+#: 
+msgid "Only Families with unpaid pledges"
+msgstr "미납 서약이 있는 가족만"
+
+#: 
+msgid "All Families"
+msgstr "모든 가족"
+
+#: 
+msgid "Report Heading:"
+msgstr "보고서 머리말:"
+
+#: 
+msgid "Graphic"
+msgstr "이미지"
+
+#: 
+msgid "Church Address"
+msgstr "교회 주소"
+
+#: 
+msgid "Blank"
+msgstr "공란"
+
+#: 
+msgid "Remittance Slip:"
+msgstr "헌금 영수증:"
+
+#: 
+msgid "Sort Data by:"
+msgstr "정렬 기준:"
+
+#: 
+msgid "Deposit"
+msgstr "입금 내역서"
+
+#: 
+msgid "All Data"
+msgstr "모든 데이터"
+
+#: 
+msgid "Moderate Detail"
+msgstr "중간 상세"
+
+#: 
+msgid "Summary Data"
+msgstr "요약 데이터"
+
+#: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+msgstr "투표권을 갖기 위해서는 최근 몇 년 안에 헌금한 기록이 있어야 합니다<br>(0이면 헌금 기록 불필요):"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
+msgid "Back"
+msgstr "뒤로"
+
+#: 
+msgid "Create Report"
+msgstr "보고서 생성"
+
+#: 
+msgid "Deposit Listing"
+msgstr "입금 내역서 목록"
+
+#: 
+msgid "Add New Deposit"
+msgstr "새 입금 내역서 추가"
+
+#: 
+msgid "Deposits: "
+msgstr "입금 내역서: "
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "선택한 행 삭제"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "선택한 행 내보내기(OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "선택한 행 내보내기(CSV)"
+
+#: 
+msgid "Fundraiser Listing"
+msgstr "모금 캠페인 목록"
+
+#: 
+msgid "Date Start"
+msgstr "시작일"
+
+#: 
+msgid "Apply Filters"
+msgstr "필터 적용"
+
+#: 
+msgid "Date End"
+msgstr "종료일"
+
+#: 
+msgid "Clear Filters"
+msgstr "필터 초기화"
+
+#: 
+msgid "Number"
+msgstr "번호"
+
+#: 
+msgid "Create New Fund Raiser"
+msgstr "새 모금 캠페인 생성"
+
+#: 
+msgid "Add Donated Item"
+msgstr "헌물 추가"
+
+#: 
+msgid "Generate Catalog"
+msgstr "카탈로그 생성"
+
+#: 
+msgid "Generate Bid Sheets"
+msgstr "입찰표 생성"
+
+#: 
+msgid "Generate Certificates"
+msgstr "증서 생성"
+
+#: 
+msgid "Donated items for this fundraiser"
+msgstr "이 모금 캠페인에 등록된 헌물"
+
+#: 
+msgid "Donor"
+msgstr "기증자"
+
+#: 
+msgid "Buyer"
+msgstr "구매자"
+
+#: 
+msgid "Sale Price"
+msgstr "판매가"
+
+#: 
+msgid "Material Value"
+msgstr "물품 가치"
+
+#: 
+msgid "Minimum Price"
+msgstr "최소 가격"
+
+#: 
+msgid "Family Geographic Utilities"
+msgstr "가족 위치 도구"
+
+#: 
+msgid "Select Family:"
+msgstr "가족 선택:"
+
+#: 
+msgid "Maximum number of neighbors:"
+msgstr "최대 이웃 수:"
+
+#: 
+msgid "Maximum distance"
+msgstr "최대 거리"
+
+#: 
+msgid "Data file format:"
+msgstr "데이터 파일 형식:"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "GPS Visualizer"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "Street Atlas USA"
+
+#: 
+msgid "Include families in coordinate file:"
+msgstr "좌표 파일에 포함할 가족:"
+
+#: 
+msgid "Neighbor Families"
+msgstr "이웃 가족"
+
+#: 
+msgid "Make Data File"
+msgstr "데이터 파일 생성"
+
+#: 
+msgid "Show Neighbors"
+msgstr "이웃 보기"
+
+#: 
+msgid "Distance"
+msgstr "거리"
+
+#: 
+msgid "Direction"
+msgstr "방향"
+
+#: 
+msgid "Latitude"
+msgstr "위도"
+
+#: 
+msgid "Longitude"
+msgstr "경도"
+
+#: 
+msgid "Add to Cart"
+msgstr "카트에 추가"
+
+#: 
+msgid "Intersect with Cart"
+msgstr "카트와 교집합"
+
+#: 
+msgid "Remove from Cart"
+msgstr "카트에서 제거"
+
+#: 
+msgid "Text for Event ID: "
+msgstr "행사 ID 문자 발송: "
+
+#: 
+msgid "Group Editor"
+msgstr "그룹 편집"
+
+#: 
+msgid "Group Settings"
+msgstr "그룹 설정"
+
+#: 
+msgid "Type of Group"
+msgstr "그룹 유형"
+
+#: 
+msgid "Group Member Roles"
+msgstr "그룹 역할 설정"
+
+#: 
+msgid "Clone roles"
+msgstr "역할 복사"
+
+#: 
+msgid "from group"
+msgstr "원본 그룹"
+
+#: 
+msgid "Select a group"
+msgstr "그룹 선택"
+
+#: 
+msgid "Group Specific Properties: "
+msgstr "그룹 전용 속성: "
+
+#: 
+msgid "Enabled"
+msgstr "사용"
+
+#: 
+msgid "Edit Group-Specific Properties Form"
+msgstr "그룹 전용 속성 양식 편집"
+
+#: 
+msgid "Disabled"
+msgstr "사용 안 함"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "그룹 전용 속성 활성화"
+
+#: 
+msgid "Group Roles"
+msgstr "그룹 역할"
+
+#: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "그룹 역할 이름은 입력 칸을 벗어나는 즉시 저장됩니다."
+
+#: 
+msgid "New Role"
+msgstr "새 역할"
+
+#: 
+msgid "Add New Role"
+msgstr "새 역할 추가"
+
+#: 
+msgid "Group Listing"
+msgstr "그룹 목록"
+
+#: 
+msgid "Add New Group"
+msgstr "새 그룹 추가"
+
+#: 
+msgid "Group Member Properties Editor"
+msgstr "그룹 구성원 속성 편집"
+
+#: 
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr "이 그룹에는 아직 속성이 없습니다. 그룹 편집 화면에서 추가할 수 있습니다."
+
+#: 
+msgid "Return to Person Record"
+msgstr "개인 정보로 돌아가기"
+
+#: 
+msgid "Editing"
+msgstr "편집 중:"
+
+#: 
+msgid "data for member"
+msgstr "구성원 데이터"
+
+#: 
+msgid "Group-Specific Properties Form Editor:"
+msgstr "그룹 전용 속성 양식 편집:"
+
+#: 
+msgid "No properties have been added yet"
+msgstr "추가된 속성이 없습니다."
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+msgstr "경고: 위/아래/삭제 또는 '새로 추가' 버튼을 누르기 전에 '변경 사항 저장'을 하지 않으면 수정 내용이 사라집니다!"
+
+#: 
+msgid "Show in"
+msgstr "표시 위치"
+
+#: 
+msgid "Person View"
+msgstr "개인 화면"
+
+#: 
+msgid "Group reports"
+msgstr "그룹 보고서"
+
+#: 
+msgid "Select the group you would like to report"
+msgstr "보고서에 사용할 그룹을 선택하세요."
+
+#: 
+msgid "No Role Selected"
+msgstr "선택된 역할 없음"
+
+#: 
+msgid "Only cart persons?"
+msgstr "카트에 담긴 사람만?"
+
+#: 
+msgid "Report Model"
+msgstr "보고서 양식"
+
+#: 
+msgid "Report for group and role selected"
+msgstr "선택한 그룹·역할 보고서"
+
+#: 
+msgid "Report for any role in group selected"
+msgstr "선택한 그룹의 모든 역할 보고서"
+
+#: 
+msgid "Select which information you want to include"
+msgstr "포함할 정보를 선택하세요."
+
+#: 
+msgid "Standard Info"
+msgstr "기본 정보"
+
+#: 
+msgid "Other Email"
+msgstr "기타 이메일"
+
+#: 
+msgid "GroupRole"
+msgstr "그룹 역할"
+
+#: 
+msgid "Group-Specific Property Fields"
+msgstr "그룹 전용 속성 필드"
+
+#: 
+msgid "Undefined"
+msgstr "미정"
+
+#: 
+msgid "Group View"
+msgstr "그룹 보기"
+
+#: 
+msgid "Group Functions"
+msgstr "그룹 기능"
+
+#: 
+msgid "Edit this Group"
+msgstr "이 그룹 편집"
+
+#: 
+msgid "Delete this Group"
+msgstr "이 그룹 삭제"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "그룹 삭제 확인"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "이 그룹 기록을 삭제할지 확인하세요."
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "그룹에 연결된 모든 역할과 그룹 전용 속성 데이터도 함께 삭제됩니다."
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "그룹 소속과 속성은 모두 삭제되지만, 개인 정보 자체는 변경되지 않습니다."
+
+#: 
+msgid "Please select target group for members"
+msgstr "구성원을 이동시킬 대상 그룹을 선택하세요."
+
+#: 
+msgid "Add Group Members to Cart"
+msgstr "그룹 구성원을 카트에 추가"
+
+#: 
+msgid "Map this group"
+msgstr "그룹 위치 지도 보기"
+
+#: 
+msgid "Email Group"
+msgstr "그룹에 이메일 보내기"
+
+#: 
+msgid "Total Members"
+msgstr "총 구성원"
+
+#: 
+msgid "Default Role"
+msgstr "기본 역할"
+
+#: 
+msgid "Group-Specific Properties"
+msgstr "그룹 전용 속성"
+
+#: 
+msgid "Disabled for this group."
+msgstr "이 그룹에서는 사용하지 않습니다."
+
+#: 
+msgid "Assigned Properties"
+msgstr "배정된 속성"
+
+#: 
+msgid "Group Members:"
+msgstr "그룹 구성원:"
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "선택한 구성원을 그룹에서 제거"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "선택한 구성원을 카트에 추가"
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "선택한 구성원을 그룹에 추가"
+
+#: 
+msgid "Move Selected Members to Group"
+msgstr "선택한 구성원을 다른 그룹으로 이동"
+
+#: 
+msgid "Add Group Member: "
+msgstr "그룹 구성원 추가: "
+
+#: 
+msgid "Letters and Mailing Labels"
+msgstr "발송용 편지/라벨"
+
+#: 
+msgid "Newsletter labels"
+msgstr "소식지 라벨"
+
+#: 
+msgid "Confirm data labels"
+msgstr "데이터 라벨 확인"
+
+#: 
+msgid "Listing Events of Type = "
+msgstr "해당 유형의 행사 목록 = "
+
+#: 
+msgid "Listing All Church Events"
+msgstr "전체 교회 행사 목록"
+
+#: 
+msgid "Select Event Types To Display"
+msgstr "표시할 행사 유형 선택"
+
+#: 
+msgid "Display Events in Year"
+msgstr "해당 연도의 행사 표시"
+
+#: 
+msgid "Start Date/Time"
+msgstr "시작 일시"
+
+#: 
+msgid "No Attendance Recorded"
+msgstr "출석 기록 없음"
+
+#: 
+msgid "Attendees"
+msgstr "참석자"
+
+#: 
+msgid " Monthly Averages"
+msgstr " 월별 평균"
+
+#: 
+msgid "Invalid login or password"
+msgstr "로그인 또는 비밀번호가 올바르지 않습니다."
+
+#: 
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr "실패한 로그인 시도가 많아 계정이 잠겼습니다. 관리자에게 문의하세요."
+
+#: 
+msgid "Please Login"
+msgstr "로그인하세요"
+
+#: 
+msgid "Email/Username"
+msgstr "이메일/아이디"
+
+#: 
+msgid "Password"
+msgstr "비밀번호"
+
+#: 
+msgid "Login"
+msgstr "로그인"
+
+#: 
+msgid "Envelope Manager"
+msgstr "헌금봉투 관리"
+
+#: 
+msgid "Update Family Records"
+msgstr "가족 정보 업데이트"
+
+#: 
+msgid "Update Envelopes"
+msgstr "헌금봉투 업데이트"
+
+#: 
+msgid "Confirm"
+msgstr "확인"
+
+#: 
+msgid "Sort by"
+msgstr "정렬 기준"
+
+#: 
+msgid "Zero"
+msgstr "미지정"
+
+#: 
+msgid "Assign starting at #"
+msgstr "시작 번호 지정"
+
+#: 
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr "교회의 위도/경도 정보가 없어 지도를 표시할 수 없습니다. 설정 메뉴에서 교회 주소를 업데이트하세요."
+
+#: 
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
+msgstr "Google 지도 API 키가 설정되지 않았습니다. 소수 위치만 표시됩니다. 설정 메뉴의 지도 항목에서 API 키를 등록하세요."
+
+#: 
+msgid "Member Role Change"
+msgstr "회원 역할 변경"
+
+#: 
+msgid "Member's Name"
+msgstr "이름"
+
+#: 
+msgid "Current Role"
+msgstr "현재 역할"
+
+#: 
+msgid "All People"
+msgstr "전체 성도"
+
+#: 
+msgid "Classifications Manager"
+msgstr "분류 관리"
+
+#: 
+msgid "Email All"
+msgstr "전체 메일 발송"
+
+#: 
+msgid "Email All (BCC)"
+msgstr "전체 메일 발송(BCC)"
+
+#: 
+msgid "Family Roles"
+msgstr "가족 역할"
+
+#: 
+msgid "Family Geographic"
+msgstr "가족 위치"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "가족 좌표 일괄 업데이트"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "사역"
+
+#: 
+msgid "Families"
+msgstr "가족"
+
+#: 
+msgid "See all Families"
+msgstr "전체 가족 보기"
+
+#: 
+msgid "People"
+msgstr "성도"
+
+#: 
+msgid "See All People"
+msgstr "전체 성도 보기"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "주일학교 어린이"
+
+#: 
+msgid "More info"
+msgstr "더 보기"
+
+#: 
+msgid "Reports on groups and roles"
+msgstr "그룹·역할 보고서"
+
+#: 
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "선택한 그룹과 역할로 보고서를 생성합니다(여러 페이지 PDF일 수 있음)."
+
+#: 
+msgid "Generate letters and mailing labels."
+msgstr "발송용 편지와 라벨을 생성합니다."
+
+#: 
+msgid "Role / Gender"
+msgstr "역할 / 성별"
+
+#: 
+msgid "Count"
+msgstr "인원"
+
+#: 
+msgid "People Classification"
+msgstr "성도 분류"
+
+#: 
+msgid "Gender Demographics"
+msgstr "성별 통계"
+
+#: 
+msgid "Men"
+msgstr "남성"
+
+#: 
+msgid "Women"
+msgstr "여성"
+
+#: 
+msgid "Boys"
+msgstr "소년"
+
+#: 
+msgid "Girls"
+msgstr "소녀"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "주일학교 반"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "입금 추적"
+
+#: 
+msgid "Latest Families"
+msgstr "최근 등록 가족"
+
+#: 
+msgid "Family Name"
+msgstr "가족명"
+
+#: 
+msgid "Updated Families"
+msgstr "최근 수정 가족"
+
+#: 
+msgid "Updated"
+msgstr "수정일"
+
+#: 
+msgid "Note Delete Confirmation"
+msgstr "메모 삭제 확인"
+
+#: 
+msgid "Please confirm deletion of this note"
+msgstr "이 메모를 삭제할지 확인하세요."
+
+#: 
+msgid "Yes, delete this record"
+msgstr "예, 이 기록을 삭제합니다"
+
+#: 
+msgid "(this action cannot be undone)"
+msgstr "(되돌릴 수 없습니다)"
+
+#: 
+msgid "Note Editor"
+msgstr "메모 편집"
+
+#: 
+msgid "Private"
+msgstr "비공개"
+
+#: 
+msgid "Person"
+msgstr "개인"
+
+#: 
+msgid "Group"
+msgstr "그룹"
+
+#: 
+msgid "Option"
+msgstr "옵션"
+
+#: 
+msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgstr "경고: 삭제하면 해당 배정이 걸린 모든 사람의 설정이 초기화됩니다!"
+
+#: 
+msgid "Error: Duplicate"
+msgstr "오류: 중복"
+
+#: 
+msgid "Default"
+msgstr "기본값"
+
+#: 
+msgid "Duplicate name found."
+msgstr "중복된 이름이 있습니다."
+
+#: 
+msgid "Make Default"
+msgstr "기본값으로 지정"
+
+#: 
+msgid "Exit"
+msgstr "나가기"
+
+#: 
+msgid "Add New"
+msgstr "새로 추가"
+
+#: 
+msgid "Error: A "
+msgstr "오류: "
+
+#: 
+msgid " by that name already exists."
+msgstr " 이름이 이미 존재합니다."
+
+#: 
+msgid "Buyer Number Editor"
+msgstr "구매자 번호 편집"
+
+#: 
+msgid "Generate Statement"
+msgstr "명세서 생성"
+
+#: 
+msgid "Buyers for this fundraiser:"
+msgstr "이 모금 캠페인 구매자:"
+
+#: 
+msgid "Select all"
+msgstr "전체 선택"
+
+#: 
+msgid "Select none"
+msgstr "선택 해제"
+
+#: 
+msgid "Add Buyer"
+msgstr "구매자 추가"
+
+#: 
+msgid "Generate Statements for Selected"
+msgstr "선택 항목 명세서 생성"
+
+#: 
+msgid "Select"
+msgstr "선택"
+
+#: 
+msgid "Custom Person Fields Editor"
+msgstr "개인 사용자 정의 필드 편집"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
+msgstr "경고: 이 필드를 삭제하면 여기에 입력된 모든 개인 데이터가 영구히 사라집니다!"
+
+#: 
+msgid "No custom person fields have been added yet"
+msgstr "추가된 사용자 정의 개인 필드가 없습니다."
+
+#: 
+msgid "Person Editor"
+msgstr "개인 정보 편집"
+
+#: 
+msgid "You must enter a Last Name if no Family is selected."
+msgstr "가족을 선택하지 않았다면 성을 입력해야 합니다."
+
+#: 
+msgid "Not a valid Friend Date"
+msgstr "교제 등록일이 올바르지 않습니다."
+
+#: 
+msgid "Not a valid Membership Date"
+msgstr "등록일이 올바르지 않습니다."
+
+#: 
+msgid "Work Email is Not Valid"
+msgstr "직장 이메일이 올바르지 않습니다."
+
+#: 
+msgid "Red text"
+msgstr "빨간 글씨"
+
+#: 
+msgid "indicates items inherited from the associated family record."
+msgstr "는 가족 기록에서 가져온 항목을 의미합니다."
+
+#: 
+msgid "Personal Info"
+msgstr "개인 정보"
+
+#: 
+msgid "Mr., Mrs., Dr., Rev."
+msgstr "Mr., Mrs., Dr., Rev."
+
+#: 
+msgid "Jr., Sr., III"
+msgstr "Jr., Sr., III"
+
+#: 
+msgid "Birth Month"
+msgstr "생월"
+
+#: 
+msgid "Select Month"
+msgstr "월 선택"
+
+#: 
+msgid "Birth Day"
+msgstr "생일"
+
+#: 
+msgid "Select Day"
+msgstr "일 선택"
+
+#: 
+msgid "Birth Year"
+msgstr "출생 연도"
+
+#: 
+msgid "Hide Age"
+msgstr "나이 숨기기"
+
+#: 
+msgid "Create a new family (using last name)"
+msgstr "새 가족 생성(성을 사용)"
+
+#: 
+msgid "Membership Info"
+msgstr "등록 정보"
+
+#: 
+msgid "Friend Date"
+msgstr "교제 등록일"
+
+#: 
+msgid "Person Profile"
+msgstr "개인 프로필"
+
+#: 
+msgid "Not assigned"
+msgstr "배정되지 않음"
+
+#: 
+msgid "About Me"
+msgstr "소개"
+
+#: 
+msgid "Printable Page"
+msgstr "인쇄용 페이지"
+
+#: 
+msgid "Edit \"Why Came\" Notes"
+msgstr "\"등록 사유\" 메모 편집"
+
+#: 
+msgid "Delete this Record"
+msgstr "이 기록 삭제"
+
+#: 
+msgid "Make User"
+msgstr "사용자 계정 생성"
+
+#: 
+msgid "Edit User"
+msgstr "사용자 수정"
+
+#: 
+msgid "List Members"
+msgstr "구성원 목록"
+
+#: 
+msgid "No group assignments."
+msgstr "배정된 그룹이 없습니다."
+
+#: 
+msgid "Change Role"
+msgstr "역할 변경"
+
+#: 
+msgid "Update Properties"
+msgstr "속성 업데이트"
+
+#: 
+msgid "Assign New Group"
+msgstr "새 그룹 배정"
+
+#: 
+msgid "No volunteer opportunity assignments."
+msgstr "배정된 사역이 없습니다."
+
+#: 
+msgid "Assign a New Volunteer Opportunity"
+msgstr "새 사역 배정"
+
+#: 
+msgid "Electronic Transaction Details"
+msgstr "전자 거래 상세"
+
+#: 
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "공제 불가 금액은 총액보다 클 수 없습니다."
+
+#: 
+msgid "At least one fund must have a non-zero amount."
+msgstr "최소 한 개의 헌금 항목 금액이 0이 아니어야 합니다."
+
+#: 
+msgid "Must specify non-zero check number"
+msgstr "0이 아닌 수표 번호를 입력해야 합니다."
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "'현금' 헌금에는 수표 번호를 입력할 수 없습니다."
+
+#: 
+msgid "Pledge Editor"
+msgstr "서약 편집"
+
+#: 
+msgid "Payment Editor: "
+msgstr "헌금 편집: "
+
+#: 
+msgid " Deposit Slip #"
+msgstr " 입금 내역서 번호"
+
+#: 
+msgid " more entries will fit."
+msgstr "개의 항목을 더 추가할 수 있습니다."
+
+#: 
+msgid "Payment Editor - Modify Existing Payment"
+msgstr "헌금 편집 - 기존 헌금 수정"
+
+#: 
+msgid "Payment Editor - New Deposit Slip Will Be Created"
+msgstr "헌금 편집 - 새 입금 내역서가 생성됩니다"
+
+#: 
+msgid "Deposit closed"
+msgstr "입금 내역서가 마감되었습니다."
+
+#: 
+msgid "Find family->"
+msgstr "가족 찾기 ->"
+
+#: 
+msgid "Payment Schedule"
+msgstr "헌금 주기"
+
+#: 
+msgid "Select Schedule"
+msgstr "주기 선택"
+
+#: 
+msgid "Weekly"
+msgstr "주간"
+
+#: 
+msgid "Monthly"
+msgstr "월간"
+
+#: 
+msgid "Quarterly"
+msgstr "분기"
+
+#: 
+msgid "Once"
+msgstr "1회"
+
+#: 
+msgid "Other"
+msgstr "기타"
+
+#: 
+msgid "Payment by"
+msgstr "헌금 방식"
+
+#: 
+msgid "Scan check"
+msgstr "수표 스캔"
+
+#: 
+msgid "find family from check account #"
+msgstr "수표 계좌 번호로 가족 찾기"
+
+#: 
+msgid "Set default check account number for family"
+msgstr "가족 기본 수표 계좌 번호로 설정"
+
+#: 
+msgid "Fund Name"
+msgstr "헌금 항목명"
+
+#: 
+msgid "Non-deductible amount"
+msgstr "공제 불가 금액"
+
+#: 
+msgid "Printable View"
+msgstr "인쇄용 보기"
+
+#: 
+msgid "Age"
+msgstr "나이"
+
+#: 
+msgid "Assigned Groups"
+msgstr "배정된 그룹"
+
+#: 
+msgid "Group Name"
+msgstr "그룹 이름"
+
+#: 
+msgid "Notes:"
+msgstr "메모:"
+
+#: 
+msgid "Entered:"
+msgstr "등록:"
+
+#: 
+msgid "by"
+msgstr "작성자"
+
+#: 
+msgid "Property successfully assigned."
+msgstr "속성이 성공적으로 배정되었습니다."
+
+#: 
+msgid " Property Assignment"
+msgstr " 속성 배정"
+
+#: 
+msgid "Assigning"
+msgstr "배정 중"
+
+#: 
+msgid "Property Delete Confirmation"
+msgstr "속성 삭제 확인"
+
+#: 
+msgid "Please confirm deletion of this property"
+msgstr "이 속성을 삭제할지 확인하세요."
+
+#: 
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgstr "이 속성을 삭제하면 사람, 가족, 그룹에 배정된 관련 정보도 모두 삭제됩니다."
+
+#: 
+msgid "No, cancel this deletion"
+msgstr "아니요, 삭제를 취소합니다"
+
+#: 
+msgid "Property Editor"
+msgstr "속성 편집"
+
+#: 
+msgid "You must select a type"
+msgstr "유형을 선택해야 합니다."
+
+#: 
+msgid "Select Property Type"
+msgstr "속성 유형 선택"
+
+#: 
+msgid "A"
+msgstr "A"
+
+#: 
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr "프롬프트 값을 입력하면 자유 형식의 값을 연결할 수 있습니다."
+
+#: 
+msgid "Property List"
+msgstr "속성 목록"
+
+#: 
+msgid "Add a New"
+msgstr "새로 추가"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "속성"
+
+#: 
+msgid "Prompt"
+msgstr "프롬프트"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "속성 유형 삭제 확인"
+
+#: 
+msgid "Warning"
+msgstr "경고"
+
+#: 
+msgid "This property type is still being used by at least one property."
+msgstr "이 속성 유형은 아직 사용 중입니다."
+
+#: 
+msgid "If you delete this type, you will also remove all properties using"
+msgstr "이 유형을 삭제하면 해당 유형을 사용하는 모든 속성과"
+
+#: 
+msgid "it and lose any corresponding property assignments."
+msgstr "관련된 배정 정보도 사라집니다."
+
+#: 
+msgid "Please confirm deletion of this Property Type"
+msgstr "이 속성 유형을 삭제할지 확인하세요."
+
+#: 
+msgid "Property Type Editor"
+msgstr "속성 유형 편집"
+
+#: 
+msgid "Property Type List"
+msgstr "속성 유형 목록"
+
+#: 
+msgid "Add a New Property Type"
+msgstr "새 속성 유형 추가"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Class"
+msgstr "분류"
+
+#: 
+msgid "Properties"
+msgstr "속성"
+
+#: 
+msgid " Property Unassignment"
+msgstr " 속성 배정 해제"
+
+#: 
+msgid "Please confirm removal of this property from this"
+msgstr "다음에서 이 속성을 제거할지 확인하세요:"
+
+#: 
+msgid "Unassigning"
+msgstr "배정 해제 중"
+
+#: 
+msgid "Yes, unassign this Property"
+msgstr "예, 이 속성을 해제합니다"
+
+#: 
+msgid "No, retain this assignment"
+msgstr "아니요, 배정을 유지합니다"
+
+#: 
+msgid "Query Listing"
+msgstr "쿼리 목록"
+
+#: 
+msgid "Run a Free-Text Query"
+msgstr "직접 쿼리 실행"
+
+#: 
+msgid "Free-Text Query"
+msgstr "직접 입력 쿼리"
+
+#: 
+msgid "Export Results to CSV file"
+msgstr "결과를 CSV 파일로 내보내기"
+
+#: 
+msgid "Execute SQL"
+msgstr "SQL 실행"
+
+#: 
+msgid "An error occurred: "
+msgstr "오류가 발생했습니다: "
+
+#: 
+msgid " record(s) returned"
+msgstr "건이 검색되었습니다"
+
+#: 
+msgid "Add Results To Cart"
+msgstr "결과를 카트에 추가"
+
+#: 
+msgid "Intersect Results With Cart"
+msgstr "결과와 카트의 교집합"
+
+#: 
+msgid "Remove Results From Cart"
+msgstr "결과를 카트에서 제거"
+
+#: 
+msgid "Return to Query Menu"
+msgstr "쿼리 메뉴로 돌아가기"
+
+#: 
+msgid "Query View"
+msgstr "쿼리 보기"
+
+#: 
+msgid "This value is required."
+msgstr "필수 입력 값입니다."
+
+#: 
+msgid "This value must be numeric."
+msgstr "숫자를 입력해야 합니다."
+
+#: 
+msgid "This value must be at least "
+msgstr "최소 "
+
+#: 
+msgid "This value cannot be more than "
+msgstr "최대 "
+
+#: 
+msgid " characters long"
+msgstr "자까지 입력할 수 있습니다."
+
+#: 
+msgid "This value cannot be less than "
+msgstr "이 값은 최소 "
+
+#: 
+msgid "Run Query Again"
+msgstr "쿼리 다시 실행"
+
+#: 
+msgid "Execute Query"
+msgstr "쿼리 실행"
+
+#: 
+msgid "Send"
+msgstr "전송"
+
+#: 
+msgid "Pledge Reminder Report"
+msgstr "서약 독촉 보고서"
+
+#: 
+msgid "Event Attendance Reports"
+msgstr "행사 출석 보고"
+
+#: 
+msgid "Restore Database"
+msgstr "데이터베이스 복원"
+
+#: 
+msgid "All donations from this family have been moved to another family."
+msgstr "이 가족의 헌금은 모두 다른 가족으로 이전되었습니다."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "가족 삭제 확인"
+
+#: 
+msgid "Please confirm deletion of"
+msgstr "삭제할지 확인하세요:"
+
+#: 
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
+msgstr "이 가족의 헌금 기록이 있어 삭제할 수 없습니다."
+
+#: 
+msgid "Return to Family View"
+msgstr "가족 화면으로 돌아가기"
+
+#: 
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
+msgstr "경고: 이 가족은 헌금 기록이 있어 다른 가족에 이관하기 전까지 삭제할 수 없습니다."
+
+#: 
+msgid "Please select another family with whom to associate these donations:"
+msgstr "헌금 기록을 넘길 가족을 선택하세요:"
+
+#: 
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr "경고: 이 작업은 되돌릴 수 없으며 법적 문제가 발생할 수 있습니다!"
+
+#: 
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr "현재 헌금 기록이 있는 가족"
+
+#: 
+msgid "Please confirm deletion of this family record:"
+msgstr "이 가족 기록을 삭제할지 확인하세요:"
+
+#: 
+msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr "참고: 이 가족에 달린 모든 메모도 함께 삭제됩니다."
+
+#: 
+msgid "Delete Family Record ONLY"
+msgstr "가족 기록만 삭제"
+
+#: 
+msgid "Delete Family Record AND Family Members"
+msgstr "가족 기록과 구성원 모두 삭제"
+
+#: 
+msgid "Filter and Cart"
+msgstr "필터와 카트"
+
+#: 
+msgid "Listing"
+msgstr "목록"
+
+#: 
+msgid "My User Settings"
+msgstr "내 사용자 설정"
+
+#: 
+msgid "Variable name"
+msgstr "설정 변수"
+
+#: 
+msgid "Current Value"
+msgstr "현재 값"
+
+#: 
+msgid "Save Settings"
+msgstr "설정 저장"
+
+#: 
+msgid "Default User Settings"
+msgstr "기본 사용자 설정"
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
+msgstr "허용을 선택하면 새 사용자가 해당 값을 변경할 수 있습니다.<BR>"
+
+#: 
+msgid "Permission"
+msgstr "권한"
+
+#: 
+msgid "System Settings"
+msgstr "시스템 설정"
+
+#: 
+msgid "Tax Report"
+msgstr "세금 보고"
+
+#: 
+msgid "Calendar Year"
+msgstr "연도 선택"
+
+#: 
+msgid "Update Latitude & Longitude"
+msgstr "위도·경도 업데이트"
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "사용자 삭제 확인"
+
+#: 
+msgid "Please confirm removal of user status from"
+msgstr "다음 사용자 권한을 제거할지 확인하세요:"
+
+#: 
+msgid "User Editor"
+msgstr "사용자 편집"
+
+#: 
+msgid "Note: Changes will not take effect until next logon."
+msgstr "참고: 변경 사항은 다음 로그인부터 적용됩니다."
+
+#: 
+msgid "Person to Make User"
+msgstr "계정을 생성할 개인"
+
+#: 
+msgid "User"
+msgstr "사용자"
+
+#: 
+msgid "Login Name"
+msgstr "로그인 이름"
+
+#: 
+msgid "Add Records"
+msgstr "레코드 추가"
+
+#: 
+msgid "Edit Records"
+msgstr "레코드 수정"
+
+#: 
+msgid "Delete Records"
+msgstr "레코드 삭제"
+
+#: 
+msgid "Manage Properties and Classifications"
+msgstr "속성 및 분류 관리"
+
+#: 
+msgid "Manage Groups and Roles"
+msgstr "그룹 및 역할 관리"
+
+#: 
+msgid "Manage Donations and Finance"
+msgstr "헌금 및 재정 관리"
+
+#: 
+msgid "View, Add and Edit Notes"
+msgstr "메모 보기/추가/수정"
+
+#: 
+msgid "Edit Self"
+msgstr "본인 정보 수정"
+
+#: 
+msgid "(Edit own family only.)"
+msgstr "(본인 가족만 수정 가능)"
+
+#: 
+msgid "Admin"
+msgstr "관리자"
+
+#: 
+msgid "(Grants all privileges.)"
+msgstr "(모든 권한 부여)"
+
+#: 
+msgid "Style"
+msgstr "스타일"
+
+#: 
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr "허용을 선택하면 이 사용자가 해당 값을 수정할 수 있습니다."
+
+#: 
+msgid "User Listing"
+msgstr "사용자 목록"
+
+#: 
+msgid "New User"
+msgstr "새 사용자"
+
+#: 
+msgid "User Settings"
+msgstr "사용자 설정"
+
+#: 
+msgid "Last Login"
+msgstr "마지막 로그인"
+
+#: 
+msgid "Total Logins"
+msgstr "로그인 횟수"
+
+#: 
+msgid "Failed Logins"
+msgstr "실패한 로그인"
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "두 칸에 같은 비밀번호를 입력해야 합니다."
+
+#: 
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "비밀번호가 너무 단순합니다. 다른 비밀번호를 선택하세요."
+
+#: 
+msgid "Your new password must be at least"
+msgstr "새 비밀번호는 최소 "
+
+#: 
+msgid "characters"
+msgstr "자 이상이어야 합니다."
+
+#: 
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
+msgstr "현재 비밀번호를 입력한 뒤 새 비밀번호를 두 번 입력하세요. 비밀번호는 최소 "
+
+#: 
+msgid "characters in length."
+msgstr "자 이상이어야 합니다."
+
+#: 
+msgid "Old Password"
+msgstr "현재 비밀번호"
+
+#: 
+msgid "New Password"
+msgstr "새 비밀번호"
+
+#: 
+msgid "Confirm New Password"
+msgstr "새 비밀번호 확인"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "이 사용자의 비밀번호를 초기화할지 확인하세요."
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "사역 삭제 확인"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity."
+msgstr "이 사역에 배정된 인원이 있습니다."
+
+#: 
+msgid "Volunteer Opportunity will be unassigned for the following people."
+msgstr "다음 인원에 대한 사역 배정이 해제됩니다."
+
+#: 
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr "예, 이 사역을 삭제합니다"
+
+#: 
+msgid "Volunteer Opportunity Editor"
+msgstr "사역 편집"
+
+#: 
+msgid "No volunteer opportunities have been added yet"
+msgstr "등록된 사역이 없습니다."
+
+#: 
+msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
+msgstr "참고: 추가·삭제·정렬 변경은 즉시 적용됩니다. 이름이나 설명을 수정한 경우 '변경 사항 저장'을 눌러야 저장됩니다."
+
+#: 
+msgid "Add New Opportunity"
+msgstr "새 사역 추가"
+
+#: 
+msgid "\"Why Came\" notes for "
+msgstr "등록 사유 메모 - "
+
+#: 
+msgid "Why did you come to the church?"
+msgstr "우리 교회에 오게 된 이유는 무엇인가요?"
+
+#: 
+msgid "Why do you keep coming?"
+msgstr "계속 출석하는 이유는 무엇인가요?"
+
+#: 
+msgid "Do you have any suggestions for us?"
+msgstr "교회를 위해 제안하고 싶은 것이 있나요?"
+
+#: 
+msgid "How did you learn of the church?"
+msgstr "우리 교회를 어떻게 알게 되었나요?"
+
+#: 
+msgid "eGive Import"
+msgstr "eGive 가져오기"
+
+#: 
+msgid "Re-import to selected family"
+msgstr "선택한 가족으로 다시 가져오기"
+
+#: 
+msgid "Data import results: "
+msgstr "데이터 가져오기 결과: "
+
+#: 
+msgid " gifts were imported, "
+msgstr "건이 가져와졌고, "
+
+#: 
+msgid " gifts unchanged, and "
+msgstr "건은 변경되지 않았으며, "
+
+#: 
+msgid " gifts not imported due to problems"
+msgstr "건은 문제로 가져오지 못했습니다."
+
+#: 
+msgid "Back to Deposit Slip"
+msgstr "입금 내역서로 돌아가기"
+
+#: 
+msgid "Fatal error in eGive API datastream: '"
+msgstr "eGive API 데이터 전송에서 치명적인 오류 발생: '"
+
+#: 
+msgid "eMail Dashboard"
+msgstr "이메일 대시보드"
+
+#: 
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr "구성원이 있는 모든 가족에 헌금봉투 번호를 배정했습니다."
+
+#: 
+msgid "Assigned envelope numbers to all families."
+msgstr "모든 가족에 헌금봉투 번호를 배정했습니다."
+
+#: 
+msgid "Version"
+msgstr "버전"
+
+#: 
+msgid "Copyright"
+msgstr "저작권"
+
+#: 
+msgid "All rights reserved"
+msgstr "모든 권리를 보유합니다."
+
+#: 
+msgid "True / False"
+msgstr "예 / 아니요"
+
+#: 
+msgid "Text Field (50 char)"
+msgstr "텍스트 필드(50자)"
+
+#: 
+msgid "Text Field (100 char)"
+msgstr "텍스트 필드(100자)"
+
+#: 
+msgid "Text Field (long)"
+msgstr "텍스트 필드(긴 글)"
+
+#: 
+msgid "Season"
+msgstr "계절"
+
+#: 
+msgid "Person from Group"
+msgstr "그룹원 선택"
+
+#: 
+msgid "Money"
+msgstr "금액"
+
+#: 
+msgid "Phone Number"
+msgstr "전화번호"
+
+#: 
+msgid "Custom Drop-Down List"
+msgstr "사용자 정의 드롭다운"
+
+#: 
+msgid "Thank you for registering your ChurchCRM installation."
+msgstr "ChurchCRM을 등록해 주셔서 감사합니다."
+
+#: 
+msgid "PDFs successfully emailed "
+msgstr "PDF가 정상적으로 이메일 발송되었습니다 "
+
+#: 
+msgid "PDF successfully emailed to family members."
+msgstr "가족 구성원에게 PDF가 정상 발송되었습니다."
+
+#: 
+msgid "Failed to email PDF to family members."
+msgstr "가족 구성원에게 PDF를 보내지 못했습니다."
+
+#: 
+msgid "Group successfully added to the Cart."
+msgstr "그룹이 카트에 추가되었습니다."
+
+#: 
+msgid "Group successfully removed from the Cart."
+msgstr "그룹이 카트에서 제거되었습니다."
+
+#: 
+msgid "Profile Image successfully removed."
+msgstr "프로필 사진이 삭제되었습니다."
+
+#: 
+msgid "Profile Image successfully updated."
+msgstr "프로필 사진이 업데이트되었습니다."
+
+#: 
+msgid "Profile Image upload Error."
+msgstr "프로필 사진 업로드 오류."
+
+#: 
+msgid "Selected record successfully removed from the Cart."
+msgstr "선택한 항목이 카트에서 제거되었습니다."
+
+#: 
+msgid "Your cart has been successfully emptied"
+msgstr "카트를 모두 비웠습니다."
+
+#: 
+msgid "item(s) added to the Cart."
+msgstr "개의 항목이 카트에 추가되었습니다."
+
+#: 
+msgid "Select Fiscal Year"
+msgstr "회계 연도 선택"
+
+#: 
+msgid "pm"
+msgstr "오후"
+
+#: 
+msgid "am"
+msgstr "오전"
+
+#: 
+msgid "Invalid Editor ID!"
+msgstr "잘못된 편집기 ID입니다!"
+
+#: 
+msgid "Select Season"
+msgstr "계절 선택"
+
+#: 
+msgid "Winter"
+msgstr "겨울"
+
+#: 
+msgid "Spring"
+msgstr "봄"
+
+#: 
+msgid "Summer"
+msgstr "여름"
+
+#: 
+msgid "Fall"
+msgstr "가을"
+
+#: 
+msgid "Error: Invalid Editor ID!"
+msgstr "오류: 잘못된 편집기 ID!"
+
+#: 
+msgid "Not a valid date"
+msgstr "올바른 날짜가 아닙니다."
+
+#: 
+msgid "Invalid Year"
+msgstr "올바르지 않은 연도입니다."
+
+#: 
+msgid "Invalid Number"
+msgstr "올바르지 않은 숫자입니다."
+
+#: 
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr "숫자가 너무 큽니다. -2147483648에서 2147483647 사이여야 합니다."
+
+#: 
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "금액이 너무 큽니다. 최대 $999999999.99까지 입력할 수 있습니다."
+
+#: 
+msgid " Bold Italic"
+msgstr " 굵게 기울임"
+
+#: 
+msgid " Italic"
+msgstr " 기울임"
+
+#: 
+msgid " Bold"
+msgstr " 굵게"
+
+#: 
+msgid "Error making API Call to"
+msgstr "API 호출 중 오류가 발생했습니다:"
+
+#: 
+msgid "Error text"
+msgstr "오류 메시지"
+
+#: 
+msgid "Issue Report!"
+msgstr "문제 보고!"
+
+#: 
+msgid "No personally identifiable information will be submitted unless you purposefully include it."
+msgstr "직접 입력하지 않는 이상 개인 식별 정보는 전송되지 않습니다."
+
+#: 
+msgid "Dashboard"
+msgstr "대시보드"
+
+#: 
+msgid "Change Password"
+msgstr "비밀번호 변경"
+
+#: 
+msgid "You have"
+msgstr "현재"
+
+#: 
+msgid "task(s)"
+msgstr "개의 할 일이 있습니다."
+
+#: 
+msgid "Home"
+msgstr "홈"
+
+#: 
+msgid "Font"
+msgstr "글꼴"
+
+#: 
+msgid "Label Type"
+msgstr "라벨 종류"
+
+#: 
+msgid "Label Grouping"
+msgstr "라벨 묶음"
+
+#: 
+msgid "All Individuals"
+msgstr "개인별"
+
+#: 
+msgid "Grouped by Family"
+msgstr "가족별"
+
+#: 
+msgid "To the parents of"
+msgstr "보호자:"
+
+#: 
+msgid "Start Row"
+msgstr "시작 행"
+
+#: 
+msgid "Start Column"
+msgstr "시작 열"
+
+#: 
+msgid "Ignore Incomplete<br>Addresses"
+msgstr "불완전한<br>주소 제외"
+
+#: 
+msgid "File Type"
+msgstr "파일 형식"
+
+#: 
+msgid "items"
+msgstr "항목"
+
+#: 
+msgid "M/F"
+msgstr "성별"
+
+#: 
+msgid "Liaison"
+msgstr "담당자"
+
+#: 
+msgid "City, State, Zip"
+msgstr "시/도, 우편번호"
+
+#: 
+msgid "Send Newsletter"
+msgstr "소식지 발송"
+
+#: 
+msgid "Member Name"
+msgstr "이름"
+
+#: 
+msgid "Adult/Child"
+msgstr "성인/어린이"
+
+#: 
+msgid "Cell Phone"
+msgstr "휴대전화"
+
+#: 
+msgid "Member/Friend"
+msgstr "성도/벗"
+
+#: 
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr "이 옵션을 사용하려면 MySQL 3.22 이상이 필요합니다! 브라우저 뒤로가기로 ChurchCRM으로 돌아가세요."
+
+#: 
+msgid "Work"
+msgstr "직장"
+
+#: 
+msgid "Cell"
+msgstr "휴대"
+
+#: 
+msgid "Estimated value "
+msgstr "예상 가치 "
+
+#: 
+msgid "Donated by "
+msgstr "기부자 "
+
+#: 
+msgid "Paddle"
+msgstr "입찰 패들"
+
+#: 
+msgid "Bid"
+msgstr "입찰가"
+
+#: 
+msgid "Minimum bid "
+msgstr "최저 입찰가 "
+
+#: 
+msgid "All Funds"
+msgstr "모든 헌금"
+
+#: 
+msgid " for all funds"
+msgstr " (전체 헌금)"
+
+#: 
+msgid " for fund "
+msgstr " 해당 헌금: "
+
+#: 
+msgid "for funds "
+msgstr "헌금 항목 "
+
+#: 
+msgid "Donated Items:"
+msgstr "기증 물품:"
+
+#: 
+msgid "Purchased Items:"
+msgstr "구매 품목:"
+
+#: 
+msgid "Total of all purchases: $"
+msgstr "총 구매액: $"
+
+#: 
+msgid "Total purchases: $"
+msgstr "구매 총액: $"
+
+#: 
+msgid "Amount paid: ________________"
+msgstr "지불 금액: ________________"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "지불 방법 (  ) 현금    (  ) 수표    (  ) 카드 __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  유효기간 __ / __"
+
+#: 
+msgid "                                        Signature ________________________________________________________________"
+msgstr "                                        서명 ________________________________________________________________"
+
+#: 
+msgid "Totals"
+msgstr "합계"
+
+#: 
+msgid "Certificate of Ownership"
+msgstr "소유 증명서"
+
+#: 
+msgid "Directory"
+msgstr "교인 명부"
+
+#: 
+msgid "Page"
+msgstr "페이지"
+
+#: 
+msgid "Wedding"
+msgstr "결혼"
+
+#: 
+msgid "and"
+msgstr "및"
+
+#: 
+msgid "Group Directory"
+msgstr "그룹 명부"
+
+#: 
+msgid "Please detach this slip and mail with your next gift."
+msgstr "이 영수증을 떼어 다음 헌금과 함께 보내주세요."
+
+#: 
+msgid "Please mail you next gift to "
+msgstr "다음 헌금은 아래 주소로 보내주세요: "
+
+#: 
+msgid "Gift Amount:"
+msgstr "헌금 금액:"
+
+#: 
+msgid "Gift Designation:"
+msgstr "헌금 용도:"
+
+#: 
+msgid "Sunday School"
+msgstr "주일학교"
+
+#: 
+msgid "Sunday School Class Functions"
+msgstr "주일학교 반 기능"
+
+#: 
+msgid "Toggle Dropdown"
+msgstr "드롭다운 열기/닫기"
+
+#: 
+msgid "Teachers"
+msgstr "교사"
+
+#: 
+msgid "Send Message"
+msgstr "메시지 보내기"
+
+#: 
+msgid "View Profile"
+msgstr "프로필 보기"
+
+#: 
+msgid "Quick Status"
+msgstr "빠른 현황"
+
+#: 
+msgid "Birthdays by Month"
+msgstr "월별 생일"
+
+#: 
+msgid "Students"
+msgstr "학생"
+
+#: 
+msgid "Mobile"
+msgstr "휴대전화"
+
+#: 
+msgid "Home Address"
+msgstr "집 주소"
+
+#: 
+msgid "Dad Name"
+msgstr "아버지 이름"
+
+#: 
+msgid "Dad Mobile"
+msgstr "아버지 휴대전화"
+
+#: 
+msgid "Dad Email"
+msgstr "아버지 이메일"
+
+#: 
+msgid "Mom Name"
+msgstr "어머니 이름"
+
+#: 
+msgid "Mom Mobile"
+msgstr "어머니 휴대전화"
+
+#: 
+msgid "Mom Email"
+msgstr "어머니 이메일"
+
+#: 
+msgid "Compose New Message"
+msgstr "새 메시지 작성"
+
+#: 
+msgid "Kids Emails"
+msgstr "학생 이메일"
+
+#: 
+msgid "Parents Emails"
+msgstr "학부모 이메일"
+
+#: 
+msgid "Teachers Emails"
+msgstr "교사 이메일"
+
+#: 
+msgid "Attachment"
+msgstr "첨부 파일"
+
+#: 
+msgid "Max. 32MB"
+msgstr "최대 32MB"
+
+#: 
+msgid "Discard"
+msgstr "삭제"
+
+#: 
+msgid "Sunday School Dashboard"
+msgstr "주일학교 대시보드"
+
+#: 
+msgid "Classes"
+msgstr "반 목록"
+
+#: 
+msgid "Sunday School Reports"
+msgstr "주일학교 보고서"
+
+#: 
+msgid "Generate class lists and attendance sheets"
+msgstr "반 명단과 출석부 생성"
+
+#: 
+msgid "Export All Classes, Kids, and Parent to CSV file"
+msgstr "모든 반/학생/학부모를 CSV로 내보내기"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "주일학교 반에 속하지 않은 학생"
+
+#: 
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr "반 명단이나 출석부를 만들려면 최소 한 개의 그룹을 선택해야 합니다."
+
+#: 
+msgid "Report Details"
+msgstr "보고서 상세"
+
+#: 
+msgid "To select multiple hold CTL"
+msgstr "여러 개를 선택하려면 Ctrl 키를 누르고 선택하세요."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups<br>"
+msgstr "여러 그룹을 선택하면 그룹마다 페이지가 구분됩니다.<br>"
+
+#: 
+msgid "List all Roles (unchecked will list Teacher/Student roles only)"
+msgstr "전체 역할 표시(선택 해제 시 교사/학생만 표시)"
+
+#: 
+msgid "First Sunday"
+msgstr "첫 주일"
+
+#: 
+msgid "Last Sunday"
+msgstr "마지막 주일"
+
+#: 
+msgid "No Sunday School"
+msgstr "주일학교 없음"
+
+#: 
+msgid "Extra Students"
+msgstr "추가 학생"
+
+#: 
+msgid "Extra Teachers"
+msgstr "추가 교사"
+
+#: 
+msgid "Create Class List"
+msgstr "반 명단 만들기"
+
+#: 
+msgid "Create Attendance Sheet"
+msgstr "출석부 만들기"
+
+#: 
+msgid "System Users"
+msgstr "시스템 사용자"
+
+#: 
+msgid "Calendar"
+msgstr "달력"
+
+#: 
+msgid "Members"
+msgstr "교인"
+
+#: 
+msgid "Add New Person"
+msgstr "새 개인 추가"
+
+#: 
+msgid "View All People"
+msgstr "전체 개인 보기"
+
+#: 
+msgid "Add New Family"
+msgstr "새 가족 추가"
+
+#: 
+msgid "Events"
+msgstr "행사"
+
+#: 
+msgid "Fundraiser"
+msgstr "모금 캠페인"
+
+#: 
+msgid "Email Export"
+msgstr "이메일 내보내기"
+
+#: 
+msgid "List"
+msgstr "목록"
+
+#: 
+msgid "Import Data"
+msgstr "데이터 가져오기"
+
+#: 
+msgid "Are you sure you want to DELETE this person from Event ID: "
+msgstr "이 사람을 행사 ID에서 삭제하시겠습니까: "
+
+#: 
+msgid "Date Range"
+msgstr "기간"
+
+#: 
+msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
+msgstr "이 행사 유형을 삭제해도 기존 행사나 출석 기록은 삭제되지 않습니다. 그래도 행사 유형 ID를 삭제하시겠습니까: "
+
+#: 
+msgid "Are you sure you want to delete the selected"
+msgstr "선택한 항목을 삭제하시겠습니까: "
+
+#: 
+msgid "Deposit(s)"
+msgstr "입금 내역서"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "해당 전표에 연결된 모든 헌금도 삭제됩니다."
+
+#: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "이 작업은 되돌릴 수 없으며 법적으로 문제가 될 수 있습니다!"
+
+#: 
+msgid "Please ensure this what you want to do."
+msgstr "정말 진행할지 다시 확인하세요."
+
+#: 
+msgid "Deposit Type"
+msgstr "입금 유형"
+
+#: 
+msgid "Deposit Date"
+msgstr "입금일"
+
+#: 
+msgid "Details:"
+msgstr "상세:"
+
+#: 
+msgid "File Missing"
+msgstr "파일 없음"
+
+#: 
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr "데이터베이스의 헌금봉투 번호가 이 페이지에서 선택한 값으로 덮어쓰여집니다. 계속할까요?"
+
+#: 
+msgid "Family Select"
+msgstr "가족 선택"
+
+#: 
+msgid "with at least one:"
+msgstr "다음 항목이 있는 경우:"
+
+#: 
+msgid "Welcome to"
+msgstr "환영합니다:"
+
+#: 
+msgid "Select Database Files"
+msgstr "데이터베이스 파일 선택"
+
+#: 
+msgid "Select a backup file to restore"
+msgstr "복원할 백업 파일 선택"
+
+#: 
+msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
+msgstr "주의: 기존 데이터베이스가 완전히 삭제되고 백업으로 대체됩니다."
+
+#: 
+msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
+msgstr "ChurchInfo 또는 이전 버전 ChurchCRM 백업을 업로드하면 자동으로 최신 스키마로 변환됩니다."
+
+#: 
+msgid "Upload Files"
+msgstr "파일 업로드"
+
+#: 
+msgid "No Restore Running"
+msgstr "진행 중인 복원이 없습니다"
+
+#: 
+msgid "Restore Complete"
+msgstr "복원 완료"
+
+#: 
+msgid "Login to restored Database"
+msgstr "복원된 DB에 로그인"
+
+#: 
+msgid "Restore Error."
+msgstr "복원 오류."
+
+#: 
+msgid "Church Information"
+msgstr "교회 정보"
+
+#: 
+msgid "User Setup"
+msgstr "사용자 설정"
+
+#: 
+msgid "Email Setup"
+msgstr "이메일 설정"
+
+#: 
+msgid "Map Settings"
+msgstr "지도 설정"
+
+#: 
+msgid "Report Settings"
+msgstr "보고서 설정"
+
+#: 
+msgid "Localization"
+msgstr "지역화"
+
+#: 
+msgid "Setting saved"
+msgstr "설정을 저장했습니다."
+
+#: 
+msgid "Edit JSON Settings"
+msgstr "JSON 설정 편집"
+
+#: 
+msgid "Default Value"
+msgstr "기본값"
+
+#: 
+msgid "False"
+msgstr "아니오"
+
+#: 
+msgid "True"
+msgstr "예"
+
+#: 
+msgid "Edit Settings"
+msgstr "설정 편집"
+
+#: 
+msgid "Upgrade ChurchCRM"
+msgstr "ChurchCRM 업그레이드"
+
+#: 
+msgid "Step 1: Backup Database"
+msgstr "1단계: 데이터베이스 백업"
+
+#: 
+msgid "Please create a database backup before beginning the upgrade process."
+msgstr "업그레이드 전에 반드시 데이터베이스 백업을 생성하세요."
+
+#: 
+msgid "Generate Database Backup"
+msgstr "데이터베이스 백업 생성"
+
+#: 
+msgid "Step 2: Fetch Update Package on Server"
+msgstr "2단계: 서버에 업데이트 패키지 가져오기"
+
+#: 
+msgid "Fetch the latest files from the ChurchCRM GitHub release page"
+msgstr "ChurchCRM GitHub 릴리스 페이지에서 최신 파일 가져오기"
+
+#: 
+msgid "Fetch Update Files"
+msgstr "업데이트 파일 가져오기"
+
+#: 
+msgid "Step 3: Apply Update Package on Server"
+msgstr "3단계: 서버에 업데이트 패키지 적용"
+
+#: 
+msgid "Extract the upgrade archive, and apply the new files"
+msgstr "업그레이드 압축을 풀고 새 파일을 적용합니다"
+
+#: 
+msgid "Full Path:"
+msgstr "전체 경로:"
+
+#: 
+msgid "SHA1:"
+msgstr "SHA1:"
+
+#: 
+msgid "Upgrade System"
+msgstr "시스템 업그레이드"
+
+#: 
+msgid "Step 4: Login"
+msgstr "4단계: 로그인"
+
+#: 
+msgid "Login to Upgraded System"
+msgstr "업그레이드된 시스템에 로그인"
+
+#: 
+msgid "Backup Complete, Ready for Download."
+msgstr "백업 완료, 다운로드 가능합니다."
+
+#: 
+msgid "Backup Error."
+msgstr "백업 오류."
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "백업을 내려받았으며 서버의 사본은 삭제되었습니다."
+
+#: 
+msgid "Campaigns:"
+msgstr "캠페인:"
+
+#: 
+msgid "Unsubscribed count:"
+msgstr "구독 해지 수:"
+
+#: 
+msgid "Unsubscribed count since last send:"
+msgstr "마지막 발송 이후 구독 해지:"
+
+#: 
+msgid "Cleaned count:"
+msgstr "정리된 주소 수:"
+
+#: 
+msgid "Cleaned count since last send:"
+msgstr "마지막 발송 이후 정리된 주소:"
+
+#: 
+msgid "Functions"
+msgstr "기능"
+
+#: 
+msgid "Add New Class"
+msgstr "새 반 추가"
+
+#: 
+msgid "Export to CSV"
+msgstr "CSV로 내보내기"
+
+#: 
+msgid "Add"
+msgstr "추가"
+
+#: 
+msgid "Enter Name"
+msgstr "이름 입력"
+
+#: 
+msgid "Update Church Info"
+msgstr "교회 정보 업데이트"
+
+#: 
+msgid "Set Church Address"
+msgstr "교회 주소 설정"
+
+#: 
+msgid "Set Email Settings"
+msgstr "이메일 설정 구성"
+
+#: 
+msgid "New Release"
+msgstr "새 릴리스"
+
+#: 
+msgid "Application Integrity Check Failed"
+msgstr "애플리케이션 무결성 검사 실패"
+
+#: 
+msgid "Self Registration"
+msgstr "자가 등록"
+
+#: 
+msgid "Restore Status:"
+msgstr "복원 상태:"
+
+#: 
+msgid "No coordinates found"
+msgstr "좌표를 찾을 수 없습니다"
+
+#: 
+msgid "Backup Status:"
+msgstr "백업 상태:"
+
+#: 
+msgid "No Backup Running"
+msgstr "진행 중인 백업 없음"
+
+#: 
+msgid "Anonymous"
+msgstr "익명"
+
+#: 
+msgid "Attendees for Event"
+msgstr "행사 참석자"
+
+#: 
+msgid "Yearly"
+msgstr "연간"
+
+#: 
+msgid "Registration Complete"
+msgstr "등록 완료"
+
+#: 
+msgid "Register"
+msgstr "등록"
+
+#: 
+msgid "Register your family"
+msgstr "우리 가족 등록"
+
+#: 
+msgid "How many people are in your family"
+msgstr "가족 인원수를 입력하세요"
+
+#: 
+msgid "Add All Classes"
+msgstr "모든 반 추가"
+
+#: 
+msgid "Clear All Classes"
+msgstr "전 반 삭제"
+
+#: 
+msgid "Add All Families"
+msgstr "모든 가족 추가"
+
+#: 
+msgid "Clear All Families"
+msgstr "모든 가족 해제"
+
+#: 
+msgid "Add All Funds"
+msgstr "모든 헌금 항목 추가"
+
+#: 
+msgid "Clear All Funds"
+msgstr "헌금 항목 전부 해제"
+
+#: 
+msgid "Deposit Comment"
+msgstr "입금 비고"
+
+#: 
+msgid "Your previous session timed out.  Please login again."
+msgstr "이전에 로그인했던 세션이 만료되었습니다. 다시 로그인하세요."
+
+#: 
+msgid "Register a new Family"
+msgstr "새 가족 등록"
+
+#: 
+msgid "Signature definition file signature failed validation"
+msgstr "서명 정의 파일 검증에 실패했습니다"
+
+#: 
+msgid "Signature definition File Missing"
+msgstr "서명 정의 파일이 없습니다"
+
+#: 
+msgid "One or more files failed signature validation"
+msgstr "한 개 이상의 파일이 서명 검증에 실패했습니다"
+
+#: 
+msgid "Configure HTTPS"
+msgstr "HTTPS 설정"
+
+#: 
+msgid "Files failing integrity check"
+msgstr "무결성 검사를 통과하지 못한 파일"
+
+#: 
+msgid "Family:"
+msgstr "가족:"
+
+#: 
+msgid "item"
+msgstr "항목"
+
+#: 
+msgid "Address 1"
+msgstr "주소 1"
+
+#: 
+msgid "Address 2"
+msgstr "주소 2"
+
+#: 
+msgid "Cell phone"
+msgstr "휴대전화"
+
+#: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
+
+#: 
+msgid "Buyer # "
+msgstr "구매자 번호 "
+
+#: 
+msgid "Envelope:"
+msgstr "헌금봉투:"
+
+#: 
+msgid ", Phone: "
+msgstr ", 전화: "
+
+#: 
+msgid "Voting members "
+msgstr "투표 회원 "
+
+#: 
+msgid "Restore Running, Please wait."
+msgstr "복원 중입니다. 잠시 기다리세요."
+
+#: 
+msgid "Family Members:"
+msgstr "가족 구성원:"
+
+#: 
+msgid "Anniversary"
+msgstr "결혼기념일"
+
+#: 
+msgid "Notes"
+msgstr "메모"
+
+#: 
+msgid "Reports"
+msgstr "보고서"
+
+#: 
+msgid "File Name:"
+msgstr "파일명:"
+
+#: 
+msgid "Fiscal Year:"
+msgstr "회계 연도:"
+
+#: 
+msgid "Add Attendees for Event"
+msgstr "행사 참석자 추가"
+
+#: 
+msgid "family"
+msgstr "가족"
+
+#: 
+msgid "Anniversary Date:"
+msgstr "결혼기념일:"
+
+#: 
+msgid "Date Entered:"
+msgstr "입력일:"
+
+#: 
+msgid "CSV Import"
+msgstr "CSV 가져오기"
+
+#: 
+msgid "Comment:"
+msgstr "비고:"
+
+#: 
+msgid "Closed:"
+msgstr "마감:"
+
+#: 
+msgid "Start Date: "
+msgstr "시작일: "
+
+#: 
+msgid "End Date: "
+msgstr "종료일: "
+
+#: 
+msgid "Members:"
+msgstr "구성원:"
+
+#: 
+msgid "Edit General Settings"
+msgstr "일반 설정 편집"
+
+#: 
+msgid "There were "
+msgstr "총 "
+
+#: 
+msgid "Inactive"
+msgstr "비활성"
+
+#: 
+msgid "Start Time"
+msgstr "시작 시간"
+
+#: 
+msgid "Filter by Fund"
+msgstr "헌금 항목 필터"
+
+#: 
+msgid "Add New Deposit: "
+msgstr "새 입금 내역서 추가: "
+
+#: 
+msgid "Estimated value"
+msgstr "예상 가치"
+
+#: 
+msgid "Disable Group Specific Properties"
+msgstr "그룹 전용 속성 비활성화"
+
+#: 
+msgid "Text Group"
+msgstr "문자 그룹"
+
+#: 
+msgid "Group Properties"
+msgstr "그룹 속성"
+
+#: 
+msgid "Assign a New Property:"
+msgstr "새 속성 배정:"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "요청한 항목을 가져오는 중 문제가 발생했습니다."
+
+#: 
+msgid "All"
+msgstr "전체"
+
+#: 
+msgid "Family Map"
+msgstr "가족 지도"
+
+#: 
+msgid "Groups"
+msgstr "그룹"
+
+#: 
+msgid "Error: You must enter a name"
+msgstr "오류: 이름을 입력해야 합니다."
+
+#: 
+msgid " Since:"
+msgstr " 기준일:"
+
+#: 
+msgid "Total $"
+msgstr "총액 $"
+
+#: 
+msgid "with this property.."
+msgstr "이 속성을 가진..."
+
+#: 
+msgid "with this Property..."
+msgstr "이 속성을 가진..."
+
+#: 
+msgid "Church Email"
+msgstr "교회 이메일"
+
+#: 
+msgid "Include only these classifications in the directory, comma separated"
+msgstr "명부에 포함할 분류를 쉼표로 구분해 입력하세요."
+
+#: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "가구주로 지정된 가족 역할 번호"
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "배우자로 지정된 가족 역할 번호"
+
+#: 
+msgid "These are the family role numbers designated as child"
+msgstr "자녀로 지정된 가족 역할 번호"
+
+#: 
+msgid "Queries for which user must have finance permissions to use:"
+msgstr "재정 권한이 있어야 사용할 수 있는 쿼리:"
+
+#: 
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr "CSV 내보내기와 명부 보고서를 관리자만 접근하도록 할까요?"
+
+#: 
+msgid "Minimum length a user may set their password to"
+msgstr "비밀번호 최소 길이"
+
+#: 
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr "사용할 수 없는(너무 단순한) 비밀번호 목록, 쉼표로 구분"
+
+#: 
+msgid "Default City"
+msgstr "기본 도시"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "기본 주/도(2글자 약어)"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "모든 이메일 사본을 받을 기본 계정"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "SMTP 서버 주소(mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "SMTP 서버에 인증(아이디/비밀번호)이 필요합니까?"
+
+#: 
+msgid "SMTP Username"
+msgstr "SMTP 아이디"
+
+#: 
+msgid "SMTP Password"
+msgstr "SMTP 비밀번호"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "다국어(I18n) 지원"
+
+#: 
+msgid "First month of the fiscal year"
+msgstr "회계 연도 시작 월"
+
+#: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "교회의 위도(지도를 중앙에 맞출 때 사용)"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "교회의 경도(지도를 중앙에 맞출 때 사용)"
+
+#: 
+msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
+msgstr "True로 설정하면 개인 정보 편집에서 주소 입력을 막습니다. False로 설정하면 입력할 수 있습니다."
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "True로 설정하면 개인 정보 편집에서 교제 등록일 입력을 막습니다. False로 설정하면 입력할 수 있습니다."
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "True로 설정하면 가족 정보에서 소식지 구독 관리를 사용할 수 없습니다."
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "True로 설정하면 가족 정보에서 결혼기념일 입력을 막습니다. False로 설정하면 입력할 수 있습니다."
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "True로 설정하면 가족 정보에서 위도와 경도를 입력할 수 없습니다. False로 설정하면 입력과 표시가 활성화됩니다. 조회는 계속 수행됩니다."
+
+#: 
+msgid "Set true to enable use of donation envelopes"
+msgstr "True로 설정하면 헌금봉투 기능을 사용합니다."
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "페이지 상단에 표시할 HTML 코드를 입력하세요. 태그를 반드시 닫아야 합니다! 새 헤더를 보려면 브라우저를 한 번 더 새로고침해야 합니다."
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "입금 내역서 보고서에 표시할 수표 수"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "True로 설정하면 스캔한 수표 기능을 사용합니다."
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "거리 단위(마일 또는 km)"
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "분류 순서에 따른 Google 지도 마커 이름"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "공제 불가 헌금 허용"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "True로 설정하면 가족 자가 등록을 허용합니다."
+
+#: 
+msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
+msgstr "ChurchCRM이 등록되었습니다. 등록 정보는 사용 현황 파악에만 쓰이며 외부에 공개되거나 판매되지 않습니다. True로 설정되면 관리자 메뉴에서 등록 옵션이 ‘등록 정보 수정’으로 바뀝니다."
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "왼쪽 여백(1 = 1/100인치)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "선 두께(1 = 1/100인치)"
+
+#: 
+msgid "Church City"
+msgstr "교회 도시"
+
+#: 
+msgid "Church State"
+msgstr "교회 주/도"
+
+#: 
+msgid "Church Zip"
+msgstr "교회 우편번호"
+
+#: 
+msgid "Church Phone"
+msgstr "교회 전화번호"
+
+#: 
+msgid "Home area code of the church"
+msgstr "교회 지역번호"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "세금 보고서 상단 문구(끝에 날짜가 붙습니다)"
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "세금 보고서 하단 문구"
+
+#: 
+msgid "Tax Report signer"
+msgstr "세금 보고서 서명자"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "서약 독촉 보고서 문구"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "서약 독촉 보고서 서명자"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "서약 독촉 보고서 문구 - 서약 기록 없음"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "서약 독촉 보고서 문구 - 납입 기록 없음"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "데이터 확인·수정 보고서 문구"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "데이터 확인·수정 보고서 서명자"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "서약 요약 보고서 문구"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "명부 보고서 문구"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "교회 레터헤드 경로/파일"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "로컬 사진이 없을 때 Gravatar에서 사용자 이미지를 조회합니다"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "클라우드 원격 백업 사용"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "클라우드 서비스 유형(지원: WebDAV, Local)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "원격 백업 사용자명"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "원격 백업 비밀번호"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "원격 자동 백업 주기(시간)"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "마지막 백업 시각"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "QuickBooks 입금 내역서 설정"
+
+#: 
+msgid "Enable Integrity Check"
+msgstr "무결성 검사 활성화"
+
+#: 
+msgid "Interval in Hours for Integrity Check"
+msgstr "무결성 검사 주기(시간)"
+
+#: 
+msgid "Last Integrity Check Timestamp"
+msgstr "마지막 무결성 검사 시각"
+
+#: 
+msgid "List Groups"
+msgstr "그룹 목록"
+
+#: 
+msgid "List Church Events"
+msgstr "교회 행사 목록"
+
+#: 
+msgid "Add Church Event"
+msgstr "교회 행사 추가"
+
+#: 
+msgid "List Event Types"
+msgstr "행사 유형 목록"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "체크인/체크아웃"
+
+#: 
+msgid "View All Deposits"
+msgstr "전체 입금 내역서 보기"
+
+#: 
+msgid "Deposit Reports"
+msgstr "입금 보고서"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "입금 내역서 편집"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "모금 캠페인 전체 보기"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "새 모금 캠페인 만들기"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "모금 캠페인 편집"
+
+#: 
+msgid "View Buyers"
+msgstr "구매자 보기"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "기부자를 구매자 목록에 추가"
+
+#: 
+msgid "Data/Reports"
+msgstr "데이터/보고서"
+
+#: 
+msgid "Query Menu"
+msgstr "쿼리 메뉴"
+
+#: 
+msgid "CSV Export Records"
+msgstr "CSV 내보내기 기록"
+
+#: 
+msgid "People Properties"
+msgstr "개인 속성"
+
+#: 
+msgid "Family Properties"
+msgstr "가족 속성"
+
+#: 
+msgid "Property Types"
+msgstr "속성 유형"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Zip Code"
+msgstr "우편번호"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2012/2013"
+msgstr "2012/2013"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2013/2014"
+msgstr "2013/2014"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2014/2015"
+msgstr "2014/2015"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2015/2016"
+msgstr "2015/2016"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "직장 이메일"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "정기 출석자"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "방문자"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "미출석자"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "미출석자(교역/직원)"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "최소 나이"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "최대 나이"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "시작일"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "종료일"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "검색"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field"
+msgstr "필드"
+
+#. Context: query_qry
+#. Context: queryparameters_qrp
+#: 
+msgid "Registered students"
+msgstr "등록된 학생"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "사역"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "개월"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "첫 번째 회계 연도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "두 번째 회계 연도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "사용자 정의 필드"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "필드 값"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "조회할 최소 나이입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "조회할 최대 나이입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "검색할 성별을 선택하세요."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "검색할 가족 역할을 선택하세요."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "반환받을 성별입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "조회할 개인 속성을 선택하세요."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "각 성도의 총 헌금액을 계산할 시작일(예: YYYY-MM-DD)을 선택하세요. 헌금 기록이 있는 날짜만 선택할 수 있습니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "각 성도의 총 헌금액을 계산할 종료일(예: YYYY-MM-DD)을 입력하세요."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "이름, 도시, 주/도, 우편번호, 집 전화, 이메일, 직장 이메일 중 일부를 입력하세요."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "검색할 필드를 선택하세요."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "조회할 생일 월입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "조회할 주일학교 반입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "등록된 학생 그룹"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "조회할 등록 기념 월입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "사역을 선택하세요"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "교제 등록 후 경과 개월 수"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "비교할 첫 번째 회계 연도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "비교할 두 번째 회계 연도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "올해 서약"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "하지만 올해는 아님"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "회계 연도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "회원, 정기 출석자 등"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "첫 번째 사역 희망"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "두 번째 사역 희망"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "사용자 정의 개인 필드를 선택하세요"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "사용자 정의 필드의 비교 값"
+
+#. Context: query_qry
+#: 
+msgid "Family Member Count"
+msgstr "가족별 인원수"
+
+#. Context: query_qry
+#: 
+msgid "Person by Age"
+msgstr "연령별 개인"
+
+#. Context: query_qry
+#: 
+msgid "Total By Gender"
+msgstr "성별 총계"
+
+#. Context: query_qry
+#: 
+msgid "Person by Role and Gender"
+msgstr "역할·성별별 개인"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "속성별 개인"
+
+#. Context: query_qry
+#: 
+msgid "Advanced Search"
+msgstr "고급 검색"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays"
+msgstr "생일"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "등록 기념일"
+
+#. Context: query_qry
+#: 
+msgid "Select database users"
+msgstr "DB 사용자 선택"
+
+#. Context: query_qry
+#: 
+msgid "Select all members"
+msgstr "모든 회원 선택"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "봉사자"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "최근 등록된 벗"
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "서약 비교"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "누락된 서약"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "회계 연도별 가족 서약"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "사용자 정의 검색"
+
+#. Context: query_qry
+#: 
+msgid "Returns each family and the total number of people assigned to them."
+msgstr "각 가족과 그 가족에 속한 총 인원을 보여줍니다."
+
+#. Context: query_qry
+#: 
+msgid "Returns any person records with ages between two given ages."
+msgstr "지정한 두 나이 사이에 해당하는 개인을 반환합니다."
+
+#. Context: query_qry
+#: 
+msgid "Total of records matching a given gender."
+msgstr "지정한 성별에 해당하는 기록 수를 집계합니다."
+
+#. Context: query_qry
+#: 
+msgid "Selects person records with the family role and gender specified."
+msgstr "선택한 가족 역할과 성별을 가진 개인을 조회합니다."
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "해당 속성이 배정된 개인을 조회합니다."
+
+#. Context: query_qry
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "이름, 도시, 주/도, 우편번호, 집 전화, 이메일, 직장 이메일의 일부로 검색합니다."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "특정 월에 생일이 있는 사람들"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "등록된 학생 찾기"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "특정 월에 등록한 성도"
+
+#. Context: query_qry
+#: 
+msgid "People who are registered as database users"
+msgstr "DB 사용자로 등록된 사람들"
+
+#. Context: query_qry
+#: 
+msgid "People who are members"
+msgstr "회원으로 등록된 사람들"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "특정 사역에 맞는 봉사자 찾기"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "지난 달에 등록한 새가족"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "두 회계 연도의 서약 비교"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "어느 해에는 서약했지만 다른 해에는 서약하지 않은 사람 찾기"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "선택한 회계 연도의 각 헌금 항목별 가족 서약 요약"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "두 개의 사역 코드가 모두 일치하는 봉사자 찾기"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "사용자 정의 필드 값으로 사람 찾기"
+
+#: 
+msgid "Last Edited"
+msgstr "마지막 수정"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "mailto 링크로 이메일을 보낼 수 있는 권한"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "mailto 링크에서 이메일을 구분할 구분자"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "명부 생성 권한"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "CSV 내보내기 권한"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "사용자에게 새 행사 추가 허용"
+
+#: 
+msgid "Weekly on"
+msgstr "매주"
+
+#: 
+msgid "s"
+msgstr "요일"
+
+#: 
+msgid "Monthly on"
+msgstr "매월"
+
+#: 
+msgid "Yearly on"
+msgstr "매년"
+
+#: 
+msgid "All Events of Type"
+msgstr "해당 유형의 모든 행사"
+
+#: 
+msgid "There is"
+msgstr "총"
+
+#: 
+msgid "There are"
+msgstr "총"
+
+#: 
+msgid "event"
+msgstr "건의 행사"
+
+#: 
+msgid "events"
+msgstr "건의 행사"
+
+#: 
+msgid " in this category."
+msgstr "이 분류에 있습니다."
+
+#: 
+msgid "There currently is"
+msgstr "현재"
+
+#: 
+msgid "There currently are"
+msgstr "현재"
+
+#: 
+msgid "custom event type"
+msgstr "건의 사용자 정의 행사 유형이"
+
+#: 
+msgid "custom event types"
+msgstr "건의 사용자 정의 행사 유형이"
+
+#: 
+msgid "Family Roles Editor"
+msgstr "가족 역할 편집"
+
+#: 
+msgid "Person Classification"
+msgstr "개인 분류"
+
+#: 
+msgid "Person Classifications"
+msgstr "개인 분류 목록"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "개인 분류 편집"
+
+#: 
+msgid "Group Type"
+msgstr "그룹 유형"
+
+#: 
+msgid "Group Types"
+msgstr "그룹 유형 목록"
+
+#: 
+msgid "Group Types Editor"
+msgstr "그룹 유형 편집"
+
+#: 
+msgid "Security Group"
+msgstr "보안 그룹"
+
+#: 
+msgid "Security Groups"
+msgstr "보안 그룹 목록"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "보안 그룹 편집"
+
+#: 
+msgid "Group Member Role"
+msgstr "그룹 구성원 역할"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "그룹 구성원 역할 편집"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "개인 사용자 정의 목록 옵션"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "개인 사용자 정의 목록 옵션"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "개인 사용자 정의 목록 옵션 편집"
+
+#: 
+msgid "Custom List Option"
+msgstr "사용자 정의 목록 옵션"
+
+#: 
+msgid "Custom List Options"
+msgstr "사용자 정의 목록 옵션"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "사용자 정의 목록 옵션 편집"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "가족 사용자 정의 목록 옵션"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "가족 사용자 정의 목록 옵션"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "가족 사용자 정의 목록 옵션 편집"
+
+#: 
+msgid "are not allowed."
+msgstr "는 허용되지 않습니다."
+
+#: 
+msgid "Name for New"
+msgstr "새 항목 이름"
+
+#: 
+msgid "Imported"
+msgstr "가져옴"
+
+#: 
+msgid "Created via Family"
+msgstr "가족을 통해 생성됨"
+
+#: 
+msgid "Updated via Family"
+msgstr "가족을 통해 수정됨"
+
+#: 
+msgid "Family Data Verified"
+msgstr "가족 정보 확인됨"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "프로필 이미지 삭제됨"
+
+#: 
+msgid "miles"
+msgstr "마일"
+
+#: 
+msgid "kilometers"
+msgstr "킬로미터"
+
+#: 
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: 
+msgid "Local"
+msgstr "로컬"
+
+#. Context: countries
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Afghanistan (‫افغانستان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "Åland Islands (Åland)"
+
+#. Context: countries
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Albania (Shqipëri)"
+
+#. Context: countries
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "Algeria (‫الجزائر‬‎)"
+
+#. Context: countries
+#: 
+msgid "American Samoa"
+msgstr "아메리칸사모아"
+
+#. Context: countries
+#: 
+msgid "Andorra"
+msgstr "안도라"
+
+#. Context: countries
+#: 
+msgid "Angola"
+msgstr "앙골라"
+
+#. Context: countries
+#: 
+msgid "Anguilla"
+msgstr "앵귈라"
+
+#. Context: countries
+#: 
+msgid "Antarctica"
+msgstr "남극"
+
+#. Context: countries
+#: 
+msgid "Antigua and Barbuda"
+msgstr "앤티가바부다"
+
+#. Context: countries
+#: 
+msgid "Argentina"
+msgstr "아르헨티나"
+
+#. Context: countries
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "아르메니아 (Հայաստան)"
+
+#. Context: countries
+#: 
+msgid "Aruba"
+msgstr "아루바"
+
+#. Context: countries
+#: 
+msgid "Ascension Island"
+msgstr "어센션섬"
+
+#. Context: countries
+#: 
+msgid "Australia"
+msgstr "오스트레일리아"
+
+#. Context: countries
+#: 
+msgid "Austria (Österreich)"
+msgstr "오스트리아 (Österreich)"
+
+#. Context: countries
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "아제르바이جان (Azərbaycan)"
+
+#. Context: countries
+#: 
+msgid "Bahamas"
+msgstr "바하마"
+
+#. Context: countries
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "바레인 (‫البحرين‬‎)"
+
+#. Context: countries
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "방글라데시 (বাংলাদেশ)"
+
+#. Context: countries
+#: 
+msgid "Barbados"
+msgstr "바베이도스"
+
+#. Context: countries
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "벨라루스 (Беларусь)"
+
+#. Context: countries
+#: 
+msgid "Belgium (België)"
+msgstr "벨기에 (België)"
+
+#. Context: countries
+#: 
+msgid "Belize"
+msgstr "벨리즈"
+
+#. Context: countries
+#: 
+msgid "Benin (Bénin)"
+msgstr "베냉 (Bénin)"
+
+#. Context: countries
+#: 
+msgid "Bermuda"
+msgstr "버뮤다"
+
+#. Context: countries
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "부탄 (འབྲུག)"
+
+#. Context: countries
+#: 
+msgid "Bolivia"
+msgstr "볼리비아"
+
+#. Context: countries
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "보스니아 헤르체고비나 (Босна и Херцеговина)"
+
+#. Context: countries
+#: 
+msgid "Botswana"
+msgstr "보츠와나"
+
+#. Context: countries
+#: 
+msgid "Bouvet Island"
+msgstr "부베섬"
+
+#. Context: countries
+#: 
+msgid "Brazil (Brasil)"
+msgstr "브라질 (Brasil)"
+
+#. Context: countries
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "영국령 인도양 지역"
+
+#. Context: countries
+#: 
+msgid "British Virgin Islands"
+msgstr "영국령 버진아일랜드"
+
+#. Context: countries
+#: 
+msgid "Brunei"
+msgstr "브루나이"
+
+#. Context: countries
+#: 
+msgid "Bulgaria (България)"
+msgstr "불가리아 (България)"
+
+#. Context: countries
+#: 
+msgid "Burkina Faso"
+msgstr "부르키나파소"
+
+#. Context: countries
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "부룬디 (Uburundi)"
+
+#. Context: countries
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "캄보디아 (កម្ពុជា)"
+
+#. Context: countries
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "카메룬 (Cameroun)"
+
+#. Context: countries
+#: 
+msgid "Canada"
+msgstr "캐나다"
+
+#. Context: countries
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "카나리아 제도 (islas Canarias)"
+
+#. Context: countries
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "카보베르데 (Kabu Verdi)"
+
+#. Context: countries
+#: 
+msgid "Caribbean Netherlands"
+msgstr "카리브 네덜란드"
+
+#. Context: countries
+#: 
+msgid "Cayman Islands"
+msgstr "케이맨 제도"
+
+#. Context: countries
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "중앙아프리카공화국 (République centrafricaine)"
+
+#. Context: countries
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "세우타와 멜리야 (Ceuta y Melilla)"
+
+#. Context: countries
+#: 
+msgid "Chad (Tchad)"
+msgstr "차드 (Tchad)"
+
+#. Context: countries
+#: 
+msgid "Chile"
+msgstr "칠레"
+
+#. Context: countries
+#: 
+msgid "China (中国)"
+msgstr "중국 (中国)"
+
+#. Context: countries
+#: 
+msgid "Christmas Island"
+msgstr "크리스마스섬"
+
+#. Context: countries
+#: 
+msgid "Clipperton Island"
+msgstr "클리퍼턴섬"
+
+#. Context: countries
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "코코스(킬링) 제도 (Kepulauan Cocos (Keeling))"
+
+#. Context: countries
+#: 
+msgid "Colombia"
+msgstr "콜롬비아"
+
+#. Context: countries
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "코모로 (‫جزر القمر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "콩고민주공화국 (Jamhuri ya Kidemokrasia ya Kongo)"
+
+#. Context: countries
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "콩고공화국 (Congo-Brazzaville)"
+
+#. Context: countries
+#: 
+msgid "Cook Islands"
+msgstr "쿡 제도"
+
+#. Context: countries
+#: 
+msgid "Costa Rica"
+msgstr "코스타리카"
+
+#. Context: countries
+#: 
+msgid "Côte d’Ivoire"
+msgstr "코트디부아르"
+
+#. Context: countries
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "크로아티아 (Hrvatska)"
+
+#. Context: countries
+#: 
+msgid "Cuba"
+msgstr "쿠바"
+
+#. Context: countries
+#: 
+msgid "Curaçao"
+msgstr "퀴라소"
+
+#. Context: countries
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "키프로스 (Κύπρος)"
+
+#. Context: countries
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "체코공화국 (Česká republika)"
+
+#. Context: countries
+#: 
+msgid "Denmark (Danmark)"
+msgstr "덴마크 (Danmark)"
+
+#. Context: countries
+#: 
+msgid "Diego Garcia"
+msgstr "디에고가르시아"
+
+#. Context: countries
+#: 
+msgid "Djibouti"
+msgstr "지부티"
+
+#. Context: countries
+#: 
+msgid "Dominica"
+msgstr "도미니카 연방"
+
+#. Context: countries
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "도미니카공화국 (República Dominicana)"
+
+#. Context: countries
+#: 
+msgid "Ecuador"
+msgstr "에콰도르"
+
+#. Context: countries
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "이집트 (‫مصر‬‎)"
+
+#. Context: countries
+#: 
+msgid "El Salvador"
+msgstr "엘살바도르"
+
+#. Context: countries
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "적도기니 (Guinea Ecuatorial)"
+
+#. Context: countries
+#: 
+msgid "Eritrea"
+msgstr "에리트레아"
+
+#. Context: countries
+#: 
+msgid "Estonia (Eesti)"
+msgstr "에스토니아 (Eesti)"
+
+#. Context: countries
+#: 
+msgid "Ethiopia"
+msgstr "에티오피아"
+
+#. Context: countries
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "포클랜드 제도 (Islas Malvinas)"
+
+#. Context: countries
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "페로 제도 (Føroyar)"
+
+#. Context: countries
+#: 
+msgid "Fiji"
+msgstr "피지"
+
+#. Context: countries
+#: 
+msgid "Finland (Suomi)"
+msgstr "핀란드 (Suomi)"
+
+#. Context: countries
+#: 
+msgid "France"
+msgstr "프랑스"
+
+#. Context: countries
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "프랑스령 기아나 (Guyane française)"
+
+#. Context: countries
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "프랑스령 폴리네시아 (Polynésie française)"
+
+#. Context: countries
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "프랑스령 남부 지역 (Terres australes françaises)"
+
+#. Context: countries
+#: 
+msgid "Gabon"
+msgstr "가봉"
+
+#. Context: countries
+#: 
+msgid "Gambia"
+msgstr "감비아"
+
+#. Context: countries
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "조지아 (საქართველო)"
+
+#. Context: countries
+#: 
+msgid "Germany (Deutschland)"
+msgstr "독일 (Deutschland)"
+
+#. Context: countries
+#: 
+msgid "Ghana (Gaana)"
+msgstr "가나 (Gaana)"
+
+#. Context: countries
+#: 
+msgid "Gibraltar"
+msgstr "지브롤터"
+
+#. Context: countries
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "그리스 (Ελλάδα)"
+
+#. Context: countries
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "그린란드 (Kalaallit Nunaat)"
+
+#. Context: countries
+#: 
+msgid "Grenada"
+msgstr "그레나다"
+
+#. Context: countries
+#: 
+msgid "Guadeloupe"
+msgstr "과들루프"
+
+#. Context: countries
+#: 
+msgid "Guam"
+msgstr "괌"
+
+#. Context: countries
+#: 
+msgid "Guatemala"
+msgstr "과테말라"
+
+#. Context: countries
+#: 
+msgid "Guernsey"
+msgstr "건지"
+
+#. Context: countries
+#: 
+msgid "Guinea (Guinée)"
+msgstr "기니 (Guinée)"
+
+#. Context: countries
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "기네비사우 (Guiné Bissau)"
+
+#. Context: countries
+#: 
+msgid "Guyana"
+msgstr "가이아나"
+
+#. Context: countries
+#: 
+msgid "Haiti"
+msgstr "아이티"
+
+#. Context: countries
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "허드 맥도널드 제도"
+
+#. Context: countries
+#: 
+msgid "Honduras"
+msgstr "온두라스"
+
+#. Context: countries
+#: 
+msgid "Hong Kong (香港)"
+msgstr "홍콩 (香港)"
+
+#. Context: countries
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "헝가리 (Magyarország)"
+
+#. Context: countries
+#: 
+msgid "Iceland (Ísland)"
+msgstr "아이슬란드 (Ísland)"
+
+#. Context: countries
+#: 
+msgid "India (भारत)"
+msgstr "인도 (भारत)"
+
+#. Context: countries
+#: 
+msgid "Indonesia"
+msgstr "인도네시아"
+
+#. Context: countries
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "이란 (‫ایران‬‎)"
+
+#. Context: countries
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "이라크 (‫العراق‬‎)"
+
+#. Context: countries
+#: 
+msgid "Ireland"
+msgstr "아일랜드"
+
+#. Context: countries
+#: 
+msgid "Isle of Man"
+msgstr "맨섬"
+
+#. Context: countries
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "이스라엘 (‫ישראל‬‎)"
+
+#. Context: countries
+#: 
+msgid "Italy (Italia)"
+msgstr "이탈리아 (Italia)"
+
+#. Context: countries
+#: 
+msgid "Jamaica"
+msgstr "자메이카"
+
+#. Context: countries
+#: 
+msgid "Japan (日本)"
+msgstr "일본 (日本)"
+
+#. Context: countries
+#: 
+msgid "Jersey"
+msgstr "저지"
+
+#. Context: countries
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "요르단 (‫الأردن‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "카자흐스탄 (Казахстан)"
+
+#. Context: countries
+#: 
+msgid "Kenya"
+msgstr "케냐"
+
+#. Context: countries
+#: 
+msgid "Kiribati"
+msgstr "키리바시"
+
+#. Context: countries
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "코소보 (Kosovë)"
+
+#. Context: countries
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "쿠웨이트 (‫الكويت‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "키르기스스탄 (Кыргызстан)"
+
+#. Context: countries
+#: 
+msgid "Laos (ລາວ)"
+msgstr "라오스 (ລາວ)"
+
+#. Context: countries
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "레바논 (‫لبنان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Lesotho"
+msgstr "레소토"
+
+#. Context: countries
+#: 
+msgid "Liberia"
+msgstr "라이베리아"
+
+#. Context: countries
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "리비아 (‫ليبيا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Liechtenstein"
+msgstr "리히텐슈타인"
+
+#. Context: countries
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "리투아니아 (Lietuva)"
+
+#. Context: countries
+#: 
+msgid "Luxembourg"
+msgstr "룩셈부르크"
+
+#. Context: countries
+#: 
+msgid "Macau (澳門)"
+msgstr "마카오 (澳門)"
+
+#. Context: countries
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "북마케도니아 (Македонија)"
+
+#. Context: countries
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "마다가스카르 (Madagasikara)"
+
+#. Context: countries
+#: 
+msgid "Malawi"
+msgstr "말라위"
+
+#. Context: countries
+#: 
+msgid "Malaysia"
+msgstr "말레이시아"
+
+#. Context: countries
+#: 
+msgid "Maldives"
+msgstr "몰디브"
+
+#. Context: countries
+#: 
+msgid "Mali"
+msgstr "말리"
+
+#. Context: countries
+#: 
+msgid "Malta"
+msgstr "몰타"
+
+#. Context: countries
+#: 
+msgid "Marshall Islands"
+msgstr "마셜 제도"
+
+#. Context: countries
+#: 
+msgid "Martinique"
+msgstr "마르티니크"
+
+#. Context: countries
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "모리타니 (‫موريتانيا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mauritius (Moris)"
+msgstr "모리셔스 (Moris)"
+
+#. Context: countries
+#: 
+msgid "Mayotte"
+msgstr "마요트"
+
+#. Context: countries
+#: 
+msgid "Mexico (México)"
+msgstr "멕시코 (México)"
+
+#. Context: countries
+#: 
+msgid "Micronesia"
+msgstr "미크로네시아"
+
+#. Context: countries
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "몰도바 (Republica Moldova)"
+
+#. Context: countries
+#: 
+msgid "Monaco"
+msgstr "모나코"
+
+#. Context: countries
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "몽골 (Монгол)"
+
+#. Context: countries
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "몬테네그로 (Crna Gora)"
+
+#. Context: countries
+#: 
+msgid "Montserrat"
+msgstr "몬트세랫"
+
+#. Context: countries
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "모로코 (‫المغرب‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "모잠비크 (Moçambique)"
+
+#. Context: countries
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "미얀마 (버마) (မြန်မာ)"
+
+#. Context: countries
+#: 
+msgid "Namibia (Namibië)"
+msgstr "나미비아 (Namibië)"
+
+#. Context: countries
+#: 
+msgid "Nauru"
+msgstr "나우루"
+
+#. Context: countries
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "네팔 (नेपाल)"
+
+#. Context: countries
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "네덜란드 (Nederland)"
+
+#. Context: countries
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "뉴칼레도니아 (Nouvelle-Calédonie)"
+
+#. Context: countries
+#: 
+msgid "New Zealand"
+msgstr "뉴질랜드"
+
+#. Context: countries
+#: 
+msgid "Nicaragua"
+msgstr "니카라과"
+
+#. Context: countries
+#: 
+msgid "Niger (Nijar)"
+msgstr "니제르 (Nijar)"
+
+#. Context: countries
+#: 
+msgid "Nigeria"
+msgstr "나이지리아"
+
+#. Context: countries
+#: 
+msgid "Niue"
+msgstr "니우에"
+
+#. Context: countries
+#: 
+msgid "Norfolk Island"
+msgstr "노퍽섬"
+
+#. Context: countries
+#: 
+msgid "Northern Mariana Islands"
+msgstr "북마리아나 제도"
+
+#. Context: countries
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "조선민주주의인민공화국"
+
+#. Context: countries
+#: 
+msgid "Norway (Norge)"
+msgstr "노르웨이 (Norge)"
+
+#. Context: countries
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "오만 (‫عُمان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "파키스탄 (‫پاکستان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Palau"
+msgstr "팔라우"
+
+#. Context: countries
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "팔레스타인 (‫فلسطين‬‎)"
+
+#. Context: countries
+#: 
+msgid "Panama (Panamá)"
+msgstr "파나마 (Panamá)"
+
+#. Context: countries
+#: 
+msgid "Papua New Guinea"
+msgstr "파푸아뉴기니"
+
+#. Context: countries
+#: 
+msgid "Paraguay"
+msgstr "파라과이"
+
+#. Context: countries
+#: 
+msgid "Peru (Perú)"
+msgstr "페루 (Perú)"
+
+#. Context: countries
+#: 
+msgid "Philippines"
+msgstr "필리핀"
+
+#. Context: countries
+#: 
+msgid "Pitcairn Islands"
+msgstr "핏케언 제도"
+
+#. Context: countries
+#: 
+msgid "Poland (Polska)"
+msgstr "폴란드 (Polska)"
+
+#. Context: countries
+#: 
+msgid "Portugal"
+msgstr "포르투갈"
+
+#. Context: countries
+#: 
+msgid "Puerto Rico"
+msgstr "푸에르토리코"
+
+#. Context: countries
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "카타르 (‫قطر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "레위니옹 (La Réunion)"
+
+#. Context: countries
+#: 
+msgid "Romania (România)"
+msgstr "루마니아 (România)"
+
+#. Context: countries
+#: 
+msgid "Russia (Россия)"
+msgstr "러시아 (Россия)"
+
+#. Context: countries
+#: 
+msgid "Rwanda"
+msgstr "르완다"
+
+#. Context: countries
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "세인트바르텔레미 (Saint-Barthélemy)"
+
+#. Context: countries
+#: 
+msgid "Saint Helena"
+msgstr "세인트헬레나"
+
+#. Context: countries
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "세인트키츠 네비스"
+
+#. Context: countries
+#: 
+msgid "Saint Lucia"
+msgstr "세인트루시아"
+
+#. Context: countries
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "세인트마르탱 (Saint-Martin (partie française))"
+
+#. Context: countries
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "생피에르 미클롱 (Saint-Pierre-et-Miquelon)"
+
+#. Context: countries
+#: 
+msgid "Samoa"
+msgstr "사모아"
+
+#. Context: countries
+#: 
+msgid "San Marino"
+msgstr "산마리노"
+
+#. Context: countries
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "상투메 프린시페 (São Tomé e Príncipe)"
+
+#. Context: countries
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "사우디아라비아 (‫المملكة العربية السعودية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "세네갈 (Sénégal)"
+
+#. Context: countries
+#: 
+msgid "Serbia (Србија)"
+msgstr "세르비아 (Србија)"
+
+#. Context: countries
+#: 
+msgid "Seychelles"
+msgstr "세이셸"
+
+#. Context: countries
+#: 
+msgid "Sierra Leone"
+msgstr "시에라리온"
+
+#. Context: countries
+#: 
+msgid "Singapore"
+msgstr "싱가포르"
+
+#. Context: countries
+#: 
+msgid "Sint Maarten"
+msgstr "신트마르턴"
+
+#. Context: countries
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "슬로바키아 (Slovensko)"
+
+#. Context: countries
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "슬로베니아 (Slovenija)"
+
+#. Context: countries
+#: 
+msgid "Solomon Islands"
+msgstr "솔로몬 제도"
+
+#. Context: countries
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "소말리아 (Soomaaliya)"
+
+#. Context: countries
+#: 
+msgid "South Africa"
+msgstr "남아프리카공화국"
+
+#. Context: countries
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "사우스조지아 사우스샌드위치 제도"
+
+#. Context: countries
+#: 
+msgid "South Korea (대한민국)"
+msgstr "대한민국"
+
+#. Context: countries
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "남수단 (‫جنوب السودان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Spain (España)"
+msgstr "스페인 (España)"
+
+#. Context: countries
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "스리랑카 (ශ්‍රී ලංකාව)"
+
+#. Context: countries
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "세인트빈센트 그레나딘"
+
+#. Context: countries
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "수단 (‫السودان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Suriname"
+msgstr "수리남"
+
+#. Context: countries
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "스발바르 얀마옌 (Svalbard og Jan Mayen)"
+
+#. Context: countries
+#: 
+msgid "Swaziland"
+msgstr "에스와티니"
+
+#. Context: countries
+#: 
+msgid "Sweden (Sverige)"
+msgstr "스웨덴 (Sverige)"
+
+#. Context: countries
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "스위스 (Schweiz)"
+
+#. Context: countries
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "시리아 (‫سوريا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Taiwan (台灣)"
+msgstr "대만 (台灣)"
+
+#. Context: countries
+#: 
+msgid "Tajikistan"
+msgstr "타지키스탄"
+
+#. Context: countries
+#: 
+msgid "Tanzania"
+msgstr "탄자니아"
+
+#. Context: countries
+#: 
+msgid "Thailand (ไทย)"
+msgstr "태국 (ไทย)"
+
+#. Context: countries
+#: 
+msgid "Timor-Leste"
+msgstr "동티모르"
+
+#. Context: countries
+#: 
+msgid "Togo"
+msgstr "토고"
+
+#. Context: countries
+#: 
+msgid "Tokelau"
+msgstr "토켈라우"
+
+#. Context: countries
+#: 
+msgid "Tonga"
+msgstr "통가"
+
+#. Context: countries
+#: 
+msgid "Trinidad and Tobago"
+msgstr "트리니다드 토바고"
+
+#. Context: countries
+#: 
+msgid "Tristan da Cunha"
+msgstr "트리스탄다쿠냐"
+
+#. Context: countries
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "튀니지 (‫تونس‬‎)"
+
+#. Context: countries
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "튀르키예 (Türkiye)"
+
+#. Context: countries
+#: 
+msgid "Turkmenistan"
+msgstr "투르크메니스탄"
+
+#. Context: countries
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "터크스 케이커스 제도"
+
+#. Context: countries
+#: 
+msgid "Tuvalu"
+msgstr "투발루"
+
+#. Context: countries
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "미국령 군소 제도"
+
+#. Context: countries
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "미국령 버진아일랜드"
+
+#. Context: countries
+#: 
+msgid "Uganda"
+msgstr "우간다"
+
+#. Context: countries
+#: 
+msgid "Ukraine (Україна)"
+msgstr "우크라이나 (Україна)"
+
+#. Context: countries
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "아랍에미리트 (‫الإمارات العربية المتحدة‬‎)"
+
+#. Context: countries
+#: 
+msgid "United Kingdom"
+msgstr "영국"
+
+#. Context: countries
+#: 
+msgid "United States"
+msgstr "미국"
+
+#. Context: countries
+#: 
+msgid "Uruguay"
+msgstr "우루과이"
+
+#. Context: countries
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "우즈베키스탄 (Oʻzbekiston)"
+
+#. Context: countries
+#: 
+msgid "Vanuatu"
+msgstr "바누아투"
+
+#. Context: countries
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "바티칸 시국 (Città del Vaticano)"
+
+#. Context: countries
+#: 
+msgid "Venezuela"
+msgstr "베네수엘라"
+
+#. Context: countries
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "베트남 (Việt Nam)"
+
+#. Context: countries
+#: 
+msgid "Wallis and Futuna"
+msgstr "월리스 푸투나"
+
+#. Context: countries
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "서사하라 (‫الصحراء الغربية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "예멘 (‫اليمن‬‎)"
+
+#. Context: countries
+#: 
+msgid "Zambia"
+msgstr "잠비아"
+
+#. Context: countries
+#: 
+msgid "Zimbabwe"
+msgstr "짐바브웨"
+
+#: 
+msgid "Please verify your family's information"
+msgstr "가족 정보를 확인해 주세요"
+
+#: 
+msgid "Church Address is not Set."
+msgstr "교회 주소가 설정되지 않았습니다."
+
+#: 
+msgid "Church Name is set to default value"
+msgstr "교회 이름이 기본값으로 설정되어 있습니다"
+
+#: 
+msgid "SMTP Server info are blank"
+msgstr "SMTP 서버 정보가 비어 있습니다"
+
+#: 
+msgid "Your system could be more secure by installing an TLS/SSL Cert."
+msgstr "TLS/SSL 인증서를 설치하면 시스템 보안을 강화할 수 있습니다."
+
+#: 
+msgid "Missing Classification Data"
+msgstr "분류 데이터 누락"
+
+#: 
+msgid "Missing Classification Data for Some People"
+msgstr "일부 성도에 대한 분류 데이터가 없습니다"
+
+#: 
+msgid "Missing Gender Data"
+msgstr "성별 데이터 누락"
+
+#: 
+msgid "Missing Gender Data for Some People"
+msgstr "일부 성도의 성별 정보가 없습니다"
+
+#: 
+msgid "Missing Role Data"
+msgstr "역할 데이터 누락"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "확인 정보를 불러올 수 없습니다"
+
+#: 
+msgid "No Changes"
+msgstr "변경 사항 없음"
+
+#: 
+msgid "Page not fond"
+msgstr "페이지를 찾을 수 없습니다"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "페이지를 찾을 수 없습니다."
+
+#: 
+msgid "Family Registration"
+msgstr "가족 등록"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "가족 정보 확인을 시작하려면 아래 내용을 입력하세요"
+
+#: 
+msgid "Family Verification"
+msgstr "가족 정보 확인"
+
+#: 
+msgid "Family Member(s)"
+msgstr "가족 구성원"
+
+#: 
+msgid "Work Email"
+msgstr "직장 이메일"
+
+#: 
+msgid "Your verification request is complete"
+msgstr "정보 확인 요청이 완료되었습니다"
+
+#: 
+msgid "We encountered an error submitting with your verification data"
+msgstr "확인 정보를 제출하는 중 오류가 발생했습니다"
+
+#: 
+msgid "Visit our Site"
+msgstr "웹사이트 방문"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "가족 정보 확인 요청"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "가족 정보 확인을 요청할 방식을 선택하세요"
+
+#: 
+msgid "Online Verification"
+msgstr "온라인 확인"
+
+#: 
+msgid "Verified In Person"
+msgstr "대면 확인"
+
+#: 
+msgid "None State"
+msgstr "주/도 없음"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "백업 압축 파일에 데이터베이스가 포함되어 있지 않습니다"
+
+#: 
+msgid "Missing Coordinates"
+msgstr "좌표 정보 없음"
+
+#: 
+msgid "Family Coordinates Data for Some Families"
+msgstr "일부 가족의 좌표 정보가 없습니다"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "사용자가 입력한 우편번호를 저장할 때 대문자로 변환합니다."
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "편지에서 서명자 직전에 넣는 마무리 문구"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "Google Analytics 추적 코드"
+
+#. Context: locales
+#: 
+msgid "English - United States"
+msgstr "영어 - 미국"
+
+#. Context: locales
+#: 
+msgid "English - Canada"
+msgstr "영어 - 캐나다"
+
+#. Context: locales
+#: 
+msgid "English - Australia"
+msgstr "영어 - 호주"
+
+#. Context: locales
+#: 
+msgid "English - Great Britain"
+msgstr "영어 - 영국"
+
+#. Context: locales
+#: 
+msgid "German - Germany"
+msgstr "독일어 - 독일"
+
+#. Context: locales
+#: 
+msgid "Spanish - Spain"
+msgstr "스페인어 - 스페인"
+
+#. Context: locales
+#: 
+msgid "French - France"
+msgstr "프랑스어 - 프랑스"
+
+#. Context: locales
+#: 
+msgid "Hungarian"
+msgstr "헝가리어"
+
+#. Context: locales
+#: 
+msgid "Italian - Italy"
+msgstr "이탈리아어 - 이탈리아"
+
+#. Context: locales
+#: 
+msgid "Norwegian"
+msgstr "노르웨이어"
+
+#. Context: locales
+#: 
+msgid "Dutch - Netherlands"
+msgstr "네덜란드어 - 네덜란드"
+
+#. Context: locales
+#: 
+msgid "Polish"
+msgstr "폴란드어"
+
+#. Context: locales
+#: 
+msgid "Portuguese - Brazil"
+msgstr "포르투갈어 - 브라질"
+
+#. Context: locales
+#: 
+msgid "Romanian - Romania"
+msgstr "루마니아어 - 루마니아"
+
+#. Context: locales
+#: 
+msgid "Russian"
+msgstr "러시아어"
+
+#. Context: locales
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "사미어(북부) - 스웨덴"
+
+#. Context: locales
+#: 
+msgid "Albanian"
+msgstr "알바니아어"
+
+#. Context: locales
+#: 
+msgid "Vietnamese"
+msgstr "베트남어"
+
+#. Context: locales
+#: 
+msgid "Chinese - China"
+msgstr "중국어 - 중국"
+
+#. Context: locales
+#: 
+msgid "Chinese - Taiwan"
+msgstr "중국어 - 대만"
+
+#: 
+msgid "Maximum upload size"
+msgstr "최대 업로드 크기"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "선택한 파일이 서버 최대 업로드 크기를 초과했습니다:"
+
+#: 
+msgid "Unmet Application Prerequisites"
+msgstr "필수 애플리케이션 조건 미충족"
+
+#: 
+msgid "Failed"
+msgstr "실패"
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "교회 당좌 계좌 번호"
+
+#: 
+msgid "Missing Role Data for Some People"
+msgstr "일부 성도의 역할 데이터가 없습니다"
+
+#: 
+msgid "PHP Max File size too small"
+msgstr "PHP 최대 파일 크기가 너무 작습니다"
+
+#: 
+msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
+msgstr "모바일 사진 업로드와 백업 복원을 위해 PHP 업로드 제한을 늘려주세요."
+
+#: 
+msgid "Deactivated the Family"
+msgstr "가족을 비활성화했습니다"
+
+#: 
+msgid "Activated the Family"
+msgstr "가족을 활성화했습니다"
+
+#: 
+msgid "families"
+msgstr "가족"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "입금 내역서 유형(QBDT - QuickBooks)"
+
+#: 
+msgid "Financial Settings"
+msgstr "재정 설정"
+
+#: 
+msgid "An invalid configuration name has been requested"
+msgstr "잘못된 설정 이름이 요청되었습니다"
+
+#: 
+msgid "An invalid configuration id has been requested"
+msgstr "잘못된 설정 ID가 요청되었습니다"
+
+#: 
+msgid "Profile Image uploaded"
+msgstr "프로필 이미지가 업로드되었습니다"
+
+#: 
+msgid "payments(s)?"
+msgstr "결제 건을 삭제하시겠습니까?"
+
+#: 
+msgid "Please ensure this what you want to do.</p>"
+msgstr "정말 이 작업을 진행할지 다시 확인하세요.</p>"
+
+#: 
+msgid " this Family"
+msgstr " 이 가족"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "비활성화 확인"
+
+#: 
+msgid "Confirm Activation"
+msgstr "활성화 확인"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "이 가족을 비활성화할지 확인하세요"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "이 가족을 활성화할지 확인하세요"
+
+#: 
+msgid "Show neighbors with these classifications:"
+msgstr "다음 분류의 이웃을 표시:"
+
+#: 
+msgid "Please select a Family."
+msgstr "가족을 선택하세요."
+
+#: 
+msgid "Coordinate data base file name:"
+msgstr "좌표 데이터베이스 파일 이름:"
+
+#: 
+msgid "Intersect With Cart"
+msgstr "카트와 교집합"
+
+#: 
+msgid "Family Member"
+msgstr "가족 구성원"
+
+#: 
+msgid "select an option"
+msgstr "옵션을 선택하세요"
+
+#: 
+msgid "Direct me"
+msgstr "길 찾기"
+
+#: 
+msgid "Your cart is empty"
+msgstr "카트가 비어 있습니다"
+
+#: 
+msgid "The record could not be found."
+msgstr "해당 기록을 찾을 수 없습니다."
+
+#: 
+msgid "The property is already assigned."
+msgstr "이미 배정된 속성입니다."
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "속성이 성공적으로 배정되었습니다."
+
+#: 
+msgid "The property could not be assigned."
+msgstr "속성을 배정하지 못했습니다."
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "속성 배정이 해제되었습니다."
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "속성 배정을 해제하지 못했습니다."
+
+#: 
+msgid "Select event"
+msgstr "행사 선택"
+
+#: 
+msgid "Person's Name"
+msgstr "이름"
+
+#: 
+msgid "Checked in By (Optional)"
+msgstr "체크인 담당자(선택)"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "이미 이 행사에 체크인했습니다"
+
+#: 
+msgid "CheckOut Person"
+msgstr "체크아웃 처리"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "체크인 기록 삭제"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "체크아웃 담당 성인"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "이메일/보고서에서 이름 앞에 붙는 문구"
+
+#: 
+msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
+msgstr "True로 설정하면 개인 정보에서 성을 비워둘 수 있습니다. False로 설정하면 성을 필수로 받고 비워두면 가족 정보에서 가져옵니다."
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "입금 내역서에 지폐 수량 표시"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "계정이 삭제되었습니다"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "ChurchCRM 계정이 삭제되었습니다."
+
+#: 
+msgid "Account Locked"
+msgstr "계정 잠금"
+
+#: 
+msgid "Your New Account"
+msgstr "새 계정 안내"
+
+#: 
+msgid "Password Reset"
+msgstr "비밀번호 재설정"
+
+#: 
+msgid "Account Unlocked"
+msgstr "계정 잠금 해제"
+
+#: 
+msgid "Part"
+msgstr "파트"
+
+#: 
+msgid "View Photo"
+msgstr "사진 보기"
+
+#: 
+msgid "Family Photo"
+msgstr "가족 사진"
+
+#: 
+msgid "Quick Settings"
+msgstr "빠른 설정"
+
+#: 
+msgid "Status"
+msgstr "상태"
+
+#: 
+msgid "Email export"
+msgstr "이메일 내보내기"
+
+#: 
+msgid "Include"
+msgstr "포함"
+
+#: 
+msgid "Exclude"
+msgstr "제외"
+
+#: 
+msgid "No property assignments"
+msgstr "배정된 속성이 없습니다"
+
+#: 
+msgid "View Cart"
+msgstr "카트 보기"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "카트가 비어 있습니다"
+
+#: 
+msgid "View on Map"
+msgstr "지도에서 보기"
+
+#: 
+msgid "Legend"
+msgstr "범례"
+
+#: 
+msgid "assigned"
+msgstr "배정됨"
+
+#: 
+msgid "Photo"
+msgstr "사진"
+
+#: 
+msgid "Payment Details"
+msgstr "결제 상세"
+
+#: 
+msgid "Fund Split"
+msgstr "헌금 배분"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "생일이 있는 학생 표시:"
+
+#: 
+msgid "Actions"
+msgstr "작업"
+
+#: 
+msgid "Action Confirmation"
+msgstr "작업 확인"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "실패한 로그인 횟수를 초기화할지 확인하세요"
+
+#: 
+msgid "View Active Families"
+msgstr "활성 가족 보기"
+
+#: 
+msgid "View Inactive Families"
+msgstr "비활성 가족 보기"
+
+#: 
+msgid "SMTP Server timeout in sec"
+msgstr "SMTP 서버 시간 제한(초)"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "비활성 가족 제외"
+
+#: 
+msgid "The role is already assigned."
+msgstr "이미 배정된 역할입니다."
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "역할이 성공적으로 배정되었습니다."
+
+#: 
+msgid "The role could not be assigned."
+msgstr "역할을 배정하지 못했습니다."
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "Bing 지도 API는 고유 키가 필요합니다"
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "Google 지도 확대 단계"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "지오코더 제공자 선택"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "ChurchCRM 계정이 잠겼습니다."
+
+#: 
+msgid "A ChurchCRM account was created for you"
+msgstr "ChurchCRM 계정이 새로 생성되었습니다"
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "이 링크를 클릭해 ChurchCRM 비밀번호를 재설정할 수 있습니다"
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "ChurchCRM 계정이 잠금 해제되었습니다."
+
+#: 
+msgid "system user created"
+msgstr "시스템 사용자 생성"
+
+#: 
+msgid "system user updated"
+msgstr "시스템 사용자 수정"
+
+#: 
+msgid "system user deleted"
+msgstr "시스템 사용자 삭제"
+
+#: 
+msgid "system user password reset"
+msgstr "시스템 사용자 비밀번호 재설정"
+
+#: 
+msgid "system user changed password"
+msgstr "시스템 사용자가 비밀번호를 변경함"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "관리자가 시스템 사용자 비밀번호를 변경함"
+
+#: 
+msgid "system user login reset"
+msgstr "시스템 사용자 로그인 초기화"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "가족이 보이지 않나요? 지금 위도와 경도를 업데이트하세요."
+
+#: 
+msgid "Families without Geo Info"
+msgstr "좌표 정보가 없는 가족"
+
+#: 
+msgid "Notification for"
+msgstr "알림 대상:"
+
+#: 
+msgid "DEBUG"
+msgstr "디버그"
+
+#: 
+msgid "INFO"
+msgstr "정보"
+
+#: 
+msgid "NOTICE"
+msgstr "공지"
+
+#: 
+msgid "WARNING"
+msgstr "경고"
+
+#: 
+msgid "ERROR"
+msgstr "오류"
+
+#: 
+msgid "CRITICAL"
+msgstr "치명"
+
+#: 
+msgid "ALERT"
+msgstr "긴급"
+
+#: 
+msgid "EMERGENCY"
+msgstr "비상"
+
+#: 
+msgid "Title FirstName MiddleName LastName"
+msgstr "호칭 이름 미들네임 성"
+
+#: 
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr "호칭 이름 중간 이니셜. 성"
+
+#: 
+msgid "LastName, Title FirstName MiddleName"
+msgstr "성, 호칭 이름 미들네임"
+
+#: 
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr "성, 호칭 이름 중간 이니셜"
+
+#: 
+msgid "FirstName MiddleName LastName"
+msgstr "이름 미들네임 성"
+
+#: 
+msgid "Title FirstName LastName"
+msgstr "호칭 이름 성"
+
+#: 
+msgid "LastName, Title FirstName"
+msgstr "성, 호칭 이름"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "ORM과 앱 로그에서 기록할 이벤트 로그 심각도"
+
+#: 
+msgid "Time zone"
+msgstr "시간대"
+
+#: 
+msgid "Nexmo SMS API Key"
+msgstr "Nexmo SMS API 키"
+
+#: 
+msgid "Nexmo SMS API Secret"
+msgstr "Nexmo SMS API 시크릿"
+
+#: 
+msgid "Nexmo SMS From Number"
+msgstr "Nexmo SMS 발신 번호"
+
+#: 
+msgid "OpenLP URL"
+msgstr "OpenLP URL"
+
+#: 
+msgid "OpenLP Username"
+msgstr "OpenLP 사용자명"
+
+#: 
+msgid "OpenLP Password"
+msgstr "OpenLP 비밀번호"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "키오스크 표시 타임스탬프"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "로그인 화면에 '비밀번호 찾기' 링크 표시/숨김"
+
+#: 
+msgid "Backup"
+msgstr "백업"
+
+#: 
+msgid "Integration"
+msgstr "통합"
+
+#: 
+msgid "Notification"
+msgstr "알림"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "보호자:"
+
+#: 
+msgid "A notification was triggered by the classroom teacher at"
+msgstr "다음 시간에 교사가 알림을 보냈습니다:"
+
+#: 
+msgid "Please go to this location"
+msgstr "이곳으로 와 주세요"
+
+#: 
+msgid "Your ChurchCRM password has been changed"
+msgstr "ChurchCRM 비밀번호가 변경되었습니다"
+
+#: 
+msgid "Password Reset Link"
+msgstr "비밀번호 재설정 링크"
+
+#: 
+msgid "Reset Password"
+msgstr "비밀번호 재설정"
+
+#: 
+msgid "Unable to reset password"
+msgstr "비밀번호를 재설정할 수 없습니다"
+
+#: 
+msgid "Reset your password"
+msgstr "비밀번호 재설정"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "죄송합니다. 현재 요청을 처리할 수 없습니다."
+
+#: 
+msgid "Login Name is Required"
+msgstr "로그인 이름을 입력해야 합니다"
+
+#: 
+msgid "A new password was sent to you. Please check your email"
+msgstr "새 비밀번호를 이메일로 보냈습니다. 메일함을 확인하세요"
+
+#: 
+msgid "Kiosk Manager"
+msgstr "키오스크 관리자"
+
+#: 
+msgid "Report an issue"
+msgstr "문제 보고"
+
+#: 
+msgid "Enable New Kiosk Registration"
+msgstr "새 키오스크 등록 허용"
+
+#: 
+msgid "Active Kiosks"
+msgstr "활성 키오스크"
+
+#: 
+msgid "I forgot my password"
+msgstr "비밀번호를 잊어버렸어요"
+
+#: 
+msgid "Attendees Checked In"
+msgstr "체크인한 참석자"
+
+#: 
+msgid "Text Cart"
+msgstr "문자 발송 카트"
+
+#: 
+msgid "Your Church's Website"
+msgstr "교회 웹사이트"
+
+#: 
+msgid "Self Verification"
+msgstr "자가 확인"
+
+#: 
+msgid "Deactivate"
+msgstr "비활성화"
+
+#: 
+msgid "Activate"
+msgstr "활성화"
+
+#: 
+msgid "Stack Trace"
+msgstr "스택 추적"
+
+#: 
+msgid "Check Number"
+msgstr "수표 번호"
+
+#: 
+msgid "Details"
+msgstr "상세"
+
+#: 
+msgid "Verification email sent"
+msgstr "확인 이메일이 전송되었습니다"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "그룹 전용 속성 활성화 확인"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "이 그룹에 전용 속성 테이블을 만듭니다. 이후 그룹 전용 속성 편집기로 필요한 항목을 추가하세요."
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "그룹 전용 속성 비활성화 확인"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "그룹 전용 개인 속성을 삭제하시겠습니까? 그룹 구성원의 속성 데이터가 모두 사라집니다!"
+
+#: 
+msgid "Role Name"
+msgstr "역할 이름"
+
+#: 
+msgid "Sequence"
+msgstr "순서"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "카트 상태 확인 중"
+
+#: 
+msgid "All members of this group are in the cart"
+msgstr "이 그룹의 구성원이 모두 카트에 있습니다"
+
+#: 
+msgid "Remove all"
+msgstr "모두 제거"
+
+#: 
+msgid "Not all members of this group are in the cart"
+msgstr "이 그룹의 일부만 카트에 있습니다"
+
+#: 
+msgid "Add all"
+msgstr "모두 추가"
+
+#: 
+msgid "Are you sure you want to remove the selected group members?"
+msgstr "선택한 그룹 구성원을 제거하시겠습니까?"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "이 사람을 삭제하시겠습니까? 되돌릴 수 없습니다."
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "이 속성을 해제하시겠습니까?"
+
+#: 
+msgid "Select a family"
+msgstr "가족 선택"
+
+#: 
+msgid "Release Notes"
+msgstr "릴리스 노트"
+
+#: 
+msgid "Move"
+msgstr "이동"
+
+#. Context: locales
+#: 
+msgid "Arabic - Egypt"
+msgstr "아랍어 - 이집트"
+
+#. Context: locales
+#: 
+msgid "Thai"
+msgstr "태국어"
+
+#: 
+msgid "Your Church's Facebook Page"
+msgstr "교회의 페이스북 페이지"
+
+#: 
+msgid "Your Church's X Page"
+msgstr "교회의 X(트위터) 페이지"
+
+#: 
+msgid "lookup user images on Google when no local image is present"
+msgstr "로컬 사진이 없을 때 Google에서 사용자 이미지를 조회합니다"
+
+#: 
+msgid "Self Register"
+msgstr "자가 등록"
+
+#: 
+msgid "List families that were created via self registration."
+msgstr "자가 등록으로 생성된 가족 목록"
+
+#: 
+msgid "Pending Self Verify"
+msgstr "자가 확인 대기"
+
+#: 
+msgid "Self Verify"
+msgstr "자가 확인"
+
+#. Context: locales
+#: 
+msgid "Indonesian - Indonesia"
+msgstr "인도네시아어 - 인도네시아"
+
+#: 
+msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+msgstr "카트로 POST하려면 Persons 배열, FamilyID, 또는 GroupID가 필요합니다"
+
+#: 
+msgid "records(s) successfully added to selected Group."
+msgstr "건이 선택한 그룹에 추가되었습니다."
+
+#: 
+msgid "To export to another For european CharSet use ;"
+msgstr "유럽 문자셋으로 내보내려면 구분자로 세미콜론(;)을 사용하세요"
+
+#: 
+msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
+msgstr "기본은 UTF-8입니다. 프랑스어처럼 유럽 문자셋이 필요하면 Windows-1252를 사용하세요."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr "날짜 선택 기본 형식은 yyyy-mm-dd입니다. 예를 들어 프랑스식은 dd/mm/yyyy입니다."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr "날짜 형식 기본값은 Y-m-d이며, 프랑스식 예시는 d/m/Y입니다."
+
+#: 
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr "새 가족이나 개인이 추가될 때 알림을 받을 사람들의 PersonID를 쉼표로 구분해 입력"
+
+#: 
+msgid "Allow unauthenticated reads of events from the external calendar API"
+msgstr "외부 캘린더 API에서 인증 없이 행사 읽기 허용"
+
+#: 
+msgid "New Person Added"
+msgstr "새 개인이 추가됨"
+
+#: 
+msgid "New Family Added"
+msgstr "새 가족이 추가됨"
+
+#: 
+msgid "Church Greeter"
+msgstr "교회 안내 봉사자"
+
+#: 
+msgid "External Calendar API is disabled"
+msgstr "외부 캘린더 API가 비활성화되었습니다"
+
+#: 
+msgid "Special Group Settings : Sunday School Type"
+msgstr "특별 그룹 설정: 주일학교 유형"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases :"
+msgstr "주일학교 그룹은 두 가지 경우에만 수정할 수 있습니다:"
+
+#: 
+msgid "You can create/delete sunday school group. "
+msgstr "주일학교 그룹을 생성하거나 삭제할 수 있습니다. "
+
+#: 
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr "새 역할을 추가할 수 있지만 학생과 교사 역할은 수정·이름 변경할 수 없습니다."
+
+#: 
+msgid "E"
+msgstr "동"
+
+#: 
+msgid "ENE"
+msgstr "동북동"
+
+#: 
+msgid "ESE"
+msgstr "동남동"
+
+#: 
+msgid "N"
+msgstr "북"
+
+#: 
+msgid "NE"
+msgstr "북동"
+
+#: 
+msgid "NNE"
+msgstr "북북동"
+
+#: 
+msgid "NNW"
+msgstr "북북서"
+
+#: 
+msgid "NW"
+msgstr "북서"
+
+#: 
+msgid "S"
+msgstr "남"
+
+#: 
+msgid "SE"
+msgstr "남동"
+
+#: 
+msgid "SSW"
+msgstr "남남서"
+
+#: 
+msgid "SW"
+msgstr "남서"
+
+#: 
+msgid "W"
+msgstr "서"
+
+#: 
+msgid "WNW"
+msgstr "서북서"
+
+#: 
+msgid "WSW"
+msgstr "서남서"
+
+#: 
+msgid "Persons"
+msgstr "개인"
+
+#: 
+msgid "Search Family"
+msgstr "가족 검색"
+
+#: 
+msgid "Show Family Head of House Names"
+msgstr "가족 가구주 이름 표시"
+
+#: 
+msgid "Search Groups"
+msgstr "그룹 검색"
+
+#: 
+msgid "Search Deposits"
+msgstr "입금 검색"
+
+#: 
+msgid "Search Payments"
+msgstr "헌금 검색"
+
+#: 
+msgid "Quick Search"
+msgstr "빠른 검색"
+
+#: 
+msgid "Search Addresses"
+msgstr "주소 검색"
+
+#: 
+msgid "Maximum number of Families"
+msgstr "가족 최대 개수"
+
+#: 
+msgid "Maximum number of Family H.O.H Names"
+msgstr "가족 가구주 이름 최대 개수"
+
+#: 
+msgid "Maximum number of Groups"
+msgstr "그룹 최대 개수"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "입금 내역서 최대 개수"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "헌금 최대 개수"
+
+#: 
+msgid "Maximum number of Addresses"
+msgstr "주소 최대 개수"
+
+#: 
+msgid "Show type of group:"
+msgstr "그룹 유형 표시:"
+
+#: 
+msgid "Add Students"
+msgstr "학생 추가"
+
+#: 
+msgid "Edit this Class"
+msgstr "이 반 편집"
+
+#: 
+msgid "OK"
+msgstr "확인"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "구성원에게 적용할 역할을 선택하세요"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "역할 선택에는 GroupID가 필요합니다"
+
+#: 
+msgid "Select Group and Role"
+msgstr "그룹과 역할 선택"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "이 사람을 다음에서 삭제하시겠습니까:"
+
+#: 
+msgid "All Members"
+msgstr "전체 구성원"
+
+#: 
+msgid "PhotoBook"
+msgstr "포토북"
+
+#: 
+msgid "With Photos"
+msgstr "사진 포함"
+
+#: 
+msgid "Create PhotoBook"
+msgstr "포토북 만들기"
+
+#: 
+msgid "SSE"
+msgstr "SSE"
+
+#: 
+msgid "Height to use for images"
+msgstr "이미지 높이"
+
+#: 
+msgid "Width to use for images"
+msgstr "이미지 폭"
+
+#: 
+msgid "Width to use for thumbnails"
+msgstr "썸네일 폭"
+
+#: 
+msgid "Point size to use for initials thumbnails"
+msgstr "이니셜 썸네일 글자 크기"
+
+#: 
+msgid "Client cache seconds for images"
+msgstr "이미지 클라이언트 캐시(초)"
+
+#: 
+msgid "Server cache time for remote images"
+msgstr "원격 이미지 서버 캐시 시간"
+
+#: 
+msgid "Recipient Naming Method"
+msgstr "수신자 이름 형식"
+
+#: 
+msgid "Salutation Utility"
+msgstr "인사말 생성 도구"
+
+#: 
+msgid "Add A Group Name"
+msgstr "그룹 이름 추가"
+
+#: 
+msgid "Default Name Group"
+msgstr "기본 명칭 그룹"
+
+#: 
+msgid "Group Role"
+msgstr "그룹 역할"
+
+#: 
+msgid "Members from group"
+msgstr "해당 그룹 구성원"
+
+#: 
+msgid "Members to another group"
+msgstr "다른 그룹으로 이동"
+
+#: 
+msgid "Members to cart"
+msgstr "카트로 이동"
+
+#: 
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr "혹은 그룹을 만들고 카트를 한 번에 추가"
+
+#: 
+msgid "Create Group + ADD Cart"
+msgstr "그룹 생성 + 카트 추가"
+
+#: 
+msgid "Move Event"
+msgstr "행사 이동"
+
+#: 
+msgid "Resize Event"
+msgstr "행사 크기 조정"
+
+#: 
+msgid "Text from"
+msgstr "보낸 사람"
+
+#: 
+msgid "Profile"
+msgstr "프로필"
+
+#: 
+msgid "Sign out"
+msgstr "로그아웃"
+
+#: 
+msgid "Sermon Text"
+msgstr "설교 전문"
+
+#: 
+msgid "Change Settings"
+msgstr "설정 변경"
+
+#: 
+msgid "Unknown Type"
+msgstr "알 수 없는 유형"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "카트에 추가하려면 PersonID가 숫자여야 합니다"
+
+#: 
+msgid "GroupID for Cart must be numeric"
+msgstr "카트에 추가하려면 GroupID가 숫자여야 합니다"
+
+#: 
+msgid "FamilyID for Cart must be numeric"
+msgstr "카트에 추가하려면 FamilyID가 숫자여야 합니다"
+
+#: 
+msgid "Search People"
+msgstr "개인 검색"
+
+#: 
+msgid "Maximum number of People"
+msgstr "개인 최대 개수"
+
+#: 
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "고백을 맡는 사제가 기록된 필드입니다. 그룹 유형의 개인이어야 합니다."
+
+#: 
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "마지막 고백 날짜가 저장되는 필드입니다. 날짜 형식이어야 합니다."
+
+#: 
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "이 ChurchCRM 데이터베이스 접속을 HTTPS로만 허용"
+
+#: 
+msgid "People Setup"
+msgstr "개인 설정"
+
+#: 
+msgid "Church Services"
+msgstr "예배 관리"
+
+#: 
+msgid "People Reports"
+msgstr "개인 보고서"
+
+#: 
+msgid "People Dashboard"
+msgstr "개인 대시보드"
+
+#: 
+msgid "People Functions"
+msgstr "개인 기능"
+
+#: 
+msgid "People Directory"
+msgstr "교인 명부"
+
+#: 
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "가족별로 묶인 전체 교인 명부를 인쇄합니다"
+
+#: 
+msgid "of People"
+msgstr "명의 교인"
+
+#: 
+msgid "System Upgrade"
+msgstr "시스템 업그레이드"
+
+#: 
+msgid "Upgrade Required"
+msgstr "업그레이드 필요"
+
+#: 
+msgid "Current DB Version: "
+msgstr "현재 DB 버전: "
+
+#: 
+msgid "Current Software Version: "
+msgstr "현재 소프트웨어 버전: "
+
+#: 
+msgid "Upgrade database"
+msgstr "데이터베이스 업그레이드"
+
+#: 
+msgid "Show Birthdates Anniversaries on start up of the CRM"
+msgstr "CRM 시작 시 생일·기념일 배너 표시"
+
+#: 
+msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
+msgstr "페이지 로드 후 배너가 사라질 때까지의 시간(초). 기본값 10초"
+
+#: 
+msgid "Help & Manual"
+msgstr "도움말 및 매뉴얼"
+
+#: 
+msgid "Contributing"
+msgstr "참여하기"
+
+#: 
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr "중계 서버가 제공하면 SMTP 암호화를 자동으로 활성화합니다."
+
+#: 
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr "사용할 암호화 방식을 설정합니다 - ssl(사용 중단) 또는 tls"
+
+#: 
+msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr "대시보드 서비스 비동기 새로고침 간격(초). 기본값 60"
+
+#: 
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr "선택한 행의 입금 내역서 생성(PDF)"
+
+#: 
+msgid "Add All to Cart"
+msgstr "모두 카트에 추가"
+
+#: 
+msgid "Remove All from Cart"
+msgstr "카트에서 모두 제거"
+
+#: 
+msgid "records(s) successfully deleted from the selected Group."
+msgstr "건이 선택한 그룹에서 삭제되었습니다."
+
+#: 
+msgid "Not Found"
+msgstr "찾을 수 없음"
+
+#: 
+msgid "Oops!"
+msgstr "앗!"
+
+#: 
+msgid "Meanwhile, you may"
+msgstr "그동안 다음 작업을 하실 수 있습니다"
+
+#: 
+msgid "Database Only (.sql)"
+msgstr "데이터베이스만(.sql)"
+
+#: 
+msgid "Database and Photos (.tar.gz)"
+msgstr "데이터베이스+사진(.tar.gz)"
+
+#: 
+msgid "User must be an Admin"
+msgstr "사용자는 관리자여야 합니다"
+
+#: 
+msgid "No logged in user"
+msgstr "로그인된 사용자가 없습니다"
+
+#: 
+msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
+msgstr "교인 목록에 사용할 기본 프로필 아이콘 크기(픽셀)를 설정합니다. 기본값 85픽셀"
+
+#: 
+msgid "not found"
+msgstr "찾을 수 없음"
+
+#: 
+msgid "Deleted from group"
+msgstr "그룹에서 삭제됨"
+
+#: 
+msgid "Added to group"
+msgstr "그룹에 추가됨"
+
+#: 
+msgid "We could not find the person(s) you were looking for."
+msgstr "찾으시는 사람을 발견하지 못했습니다."
+
+#: 
+msgid "return to People Dashboard"
+msgstr "개인 대시보드로 돌아가기"
+
+#: 
+msgid "User must have MenuOptions permission"
+msgstr "MenuOptions 권한이 필요합니다"
+
+#: 
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "SMTP 호스트가 설정되지 않았습니다. 설정 페이지에서 구성하세요"
+
+#: 
+msgid "Debug Email Connection"
+msgstr "이메일 연결 디버그"
+
+#: 
+msgid "This Family is Deactivated"
+msgstr "이 가족은 비활성 상태입니다"
+
+#: 
+msgid "Metadata"
+msgstr "메타데이터"
+
+#: 
+msgid "The database has been cleared."
+msgstr "데이터베이스가 초기화되었습니다."
+
+#: 
+msgid "User must have bAddEvent permissions"
+msgstr "bAddEvent 권한이 필요합니다"
+
+#: 
+msgid "Anniversaries"
+msgstr "기념일"
+
+#: 
+msgid "New Family Notification Email Error"
+msgstr "새 가족 알림 이메일 오류"
+
+#: 
+msgid "New Person Notification Email Error"
+msgstr "새 개인 알림 이메일 오류"
+
+#: 
+msgid "View User"
+msgstr "사용자 보기"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "잘못된 요청: 캘린더 ID가 없습니다"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "찾을 수 없음: 알 수 없는 캘린더 ID"
+
+#: 
+msgid "not found or user without an email"
+msgstr "존재하지 않거나 이메일이 없는 사용자"
+
+#: 
+msgid "UserName not set"
+msgstr "사용자 이름이 설정되지 않았습니다"
+
+#: 
+msgid "The people and families has been cleared from the database."
+msgstr "개인과 가족 데이터가 데이터베이스에서 삭제되었습니다."
+
+#: 
+msgid "Self Registrations"
+msgstr "자가 등록"
+
+#: 
+msgid "Public Calendar"
+msgstr "공개 캘린더"
+
+#: 
+msgid "Private Calendar"
+msgstr "비공개 캘린더"
+
+#: 
+msgid "Username"
+msgstr "사용자 이름"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "다음을 이동하시겠습니까"
+
+#: 
+msgid "from"
+msgstr "에서"
+
+#: 
+msgid "to"
+msgstr "으로"
+
+#: 
+msgid "Are you sure you want to change the end time for "
+msgstr "이 일정의 종료 시간을 변경하시겠습니까: "
+
+#: 
+msgid "Access Token"
+msgstr "액세스 토큰"
+
+#: 
+msgid "New Access Token"
+msgstr "새 액세스 토큰"
+
+#: 
+msgid "Delete Access Token"
+msgstr "액세스 토큰 삭제"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
+
+#: 
+msgid "JSON URL"
+msgstr "JSON URL"
+
+#: 
+msgid "Foreground Color"
+msgstr "전경 색상"
+
+#: 
+msgid "Background Color"
+msgstr "배경 색상"
+
+#: 
+msgid "Delete Calendar"
+msgstr "캘린더 삭제"
+
+#: 
+msgid "Invalid Entry"
+msgstr "잘못된 입력"
+
+#: 
+msgid "Calendar Name"
+msgstr "캘린더 이름"
+
+#: 
+msgid "New Calendar"
+msgstr "새 캘린더"
+
+#: 
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "외부 캘린더 API가 비활성화되어 있지만 일부 캘린더에 액세스 토큰이 있습니다"
+
+#: 
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr "캘린더를 공유하려면 액세스 토큰과 함께 bEnableExternalCalendarAPI 설정을 활성화해야 합니다"
+
+#: 
+msgid "Links"
+msgstr "링크"
+
+#: 
+msgid "Show custom links on the left menu."
+msgstr "왼쪽 메뉴에 사용자 정의 링크 표시"
+
+#: 
+msgid "Enable Sunday School left menu."
+msgstr "왼쪽 메뉴에 주일학교 메뉴 표시"
+
+#: 
+msgid "Enable Finance menu"
+msgstr "재정 메뉴 표시"
+
+#: 
+msgid "Enable Events menu."
+msgstr "행사 메뉴 표시"
+
+#: 
+msgid "Enable Calendar menu."
+msgstr "캘린더 메뉴 표시"
+
+#: 
+msgid "Enable Fundraiser menu."
+msgstr "모금 메뉴 표시"
+
+#: 
+msgid "Enable Email menu."
+msgstr "이메일 메뉴 표시"
+
+#: 
+msgid "Enabled Features"
+msgstr "활성화된 기능"
+
+#: 
+msgid "Validation Error"
+msgstr "검증 오류"
+
+#: 
+msgid "Link Not found"
+msgstr "링크를 찾을 수 없습니다"
+
+#: 
+msgid "Email Functions"
+msgstr "이메일 기능"
+
+#: 
+msgid "Debug"
+msgstr "디버그"
+
+#: 
+msgid "Family Custom Fields"
+msgstr "가족 사용자 정의 필드"
+
+#: 
+msgid "Person Custom Fields"
+msgstr "개인 사용자 정의 필드"
+
+#: 
+msgid "Donation Funds"
+msgstr "헌금 항목"
+
+#: 
+msgid "Unable to open file"
+msgstr "파일을 열 수 없습니다"
+
+#: 
+msgid "Missing calendar access token"
+msgstr "캘린더 액세스 토큰이 없습니다"
+
+#: 
+msgid "Calendar access token not found"
+msgstr "캘린더 액세스 토큰을 찾을 수 없습니다"
+
+#: 
+msgid "User must have Delete Records permission"
+msgstr "레코드 삭제 권한이 필요합니다"
+
+#: 
+msgid "ChurchCRM Central Notifications URL"
+msgstr "ChurchCRM 중앙 알림 URL"
+
+#: 
+msgid "Follow us on"
+msgstr "다음에서 팔로우하세요"
+
+#: 
+msgid "invalid event type id"
+msgstr "잘못된 행사 유형 ID"
+
+#: 
+msgid "invalid calendar pinning"
+msgstr "잘못된 캘린더 고정"
+
+#: 
+msgid "invalid group id"
+msgstr "잘못된 그룹 ID"
+
+#: 
+msgid "invalid status value"
+msgstr "잘못된 상태 값"
+
+#: 
+msgid "invalid export value"
+msgstr "잘못된 내보내기 값"
+
+#: 
+msgid "Invalid User/Password"
+msgstr "아이디 또는 비밀번호가 올바르지 않습니다"
+
+#: 
+msgid "Find Duplicate Emails"
+msgstr "중복 이메일 찾기"
+
+#: 
+msgid "Duplicate Emails"
+msgstr "중복 이메일"
+
+#: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
+msgid "Latest Persons"
+msgstr "최근 등록된 개인"
+
+#: 
+msgid "Updated Persons"
+msgstr "최근 수정된 개인"
+
+#: 
+msgid "Custom Menus"
+msgstr "사용자 정의 메뉴"
+
+#: 
+msgid "User must have Manage Groups permission"
+msgstr "그룹 관리 권한이 필요합니다"
+
+#: 
+msgid "Missing"
+msgstr "누락됨"
+
+#: 
+msgid "User must have Edit Records permission"
+msgstr "레코드 수정 권한이 필요합니다"
+
+#: 
+msgid "User must have Finance permission"
+msgstr "재정 권한이 필요합니다"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "본인 계정은 삭제할 수 없습니다"
+
+#: 
+msgid "The role could not be found."
+msgstr "해당 역할을 찾을 수 없습니다."
+
+#: 
+msgid "Add Menu"
+msgstr "메뉴 추가"
+
+#: 
+msgid "Menu Name"
+msgstr "메뉴 이름"
+
+#: 
+msgid "Max 20 char"
+msgstr "최대 20자"
+
+#: 
+msgid "Link Address"
+msgstr "링크 주소"
+
+#: 
+msgid "Start with http:// or https://"
+msgstr "http:// 또는 https://로 시작해야 합니다"
+
+#: 
+msgid "Menus"
+msgstr "메뉴"
+
+#: 
+msgid "is disabled"
+msgstr "비활성화되어 있습니다"
+
+#: 
+msgid "System Information"
+msgstr "시스템 정보"
+
+#: 
+msgid "Software Version"
+msgstr "소프트웨어 버전"
+
+#: 
+msgid "Valid Mail Server Settings"
+msgstr "유효한 메일 서버 설정"
+
+#: 
+msgid "Database"
+msgstr "데이터베이스"
+
+#: 
+msgid "Database Version"
+msgstr "데이터베이스 버전"
+
+#: 
+msgid "Application Prerequisites"
+msgstr "애플리케이션 필수 조건"
+
+#: 
+msgid "Invalid country name supplied"
+msgstr "잘못된 국가명이 입력되었습니다"
+
+#: 
+msgid "LastName FirstName"
+msgstr "성 이름"
+
+#: 
+msgid "Holidays"
+msgstr "공휴일"
+
+#: 
+msgid "Person Name"
+msgstr "이름"
+
+#: 
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "환영 봉사자 이메일 1용 커스텀 메시지(최대 255자)"
+
+#: 
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "환영 봉사자 이메일 2용 커스텀 메시지(최대 255자)"
+
+#: 
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "신규 등록 알림 이메일 본문에 연락처와 인구 통계를 포함"
+
+#: 
+msgid "Include family custom properties in global search."
+msgstr "전역 검색에 가족 사용자 정의 속성 포함"
+
+#. Context: countries
+#: 
+msgid "Latvia (Latvija)"
+msgstr "라트비아 (Latvija)"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "비고 없이 새 입금 내역서를 추가하려고 합니다"
+
+#: 
+msgid "Families Without Emails"
+msgstr "이메일이 없는 가족"
+
+#: 
+msgid "Record"
+msgstr "기록"
+
+#: 
+msgid "Records"
+msgstr "기록"
+
+#: 
+msgid "Emptied into Event"
+msgstr "행사에 모두 등록됨"
+
+#: 
+msgid "integrityCheck.json file missing"
+msgstr "integrityCheck.json 파일이 없습니다"
+
+#: 
+msgid "Passed"
+msgstr "통과"
+
+#: 
+msgid "PHP Max Execution Time is too Short"
+msgstr "PHP 최대 실행 시간이 너무 짧습니다"
+
+#: 
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "백업과 복원을 위해 PHP 실행 시간 제한을 늘려주세요."
+
+#: 
+msgid "Application Integrity Check"
+msgstr "애플리케이션 무결성 검사"
+
+#: 
+msgid "Focus"
+msgstr "포커스"
+
+#: 
+msgid "Unfocus"
+msgstr "포커스 해제"
+
+#: 
+msgid "Warning: Signature mismatch"
+msgstr "경고: 서명이 일치하지 않습니다"
+
+#: 
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "최근 설치 이후 ChurchCRM 시스템 파일이 수정된 것으로 보입니다."
+
+#: 
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "이 업그레이드는 아래 파일을 공식 버전으로 되돌려 해당 파일의 사용자 수정 사항을 모두 제거합니다."
+
+#: 
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "수정 사항을 유지하려면 업그레이드 전에 해당 파일을 직접 백업하고, 업그레이드 후 수동으로 복원하세요."
+
+#: 
+msgid "Integrity Check Details:"
+msgstr "무결성 검사 상세 정보:"
+
+#: 
+msgid "I Understand"
+msgstr "이해했습니다"
+
+#: 
+msgid "Unsupported Deposit Types Detected"
+msgstr "지원되지 않는 입금 유형이 감지되었습니다"
+
+#: 
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "eGive, 신용카드, 자동이체 입금은 더 이상 지원되지 않습니다. 향후 버전에서는 관련 보고서를 볼 수 없을 수 있습니다."
+
+#. Context: locales
+#: 
+msgid "Estonian"
+msgstr "에스토니아어"
+
+#: 
+msgid "Error decoding integrity check result file"
+msgstr "무결성 검사 결과 파일을 해석하는 중 오류"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "서명 정의 파일을 해석하는 중 오류"
+
+#: 
+msgid "Generate Backup"
+msgstr "백업 생성"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "원격 백업 엔드포인트(WebDAV인 경우 URL 인코딩 필요). "
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "백업에 이니셜 이미지, 원격 이미지(Gravatar), 썸네일을 포함합니다. 이러한 파일은 복원 후 다시 생성할 수 있으며 실행 시간과 저장 공간을 많이 차지합니다."
+
+#: 
+msgid "Password (if any)"
+msgstr "비밀번호(있는 경우)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "이 페이지 정보가 모두 정확합니다."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "아래 내용으로 가족 정보를 업데이트해 주세요"
+
+#: 
+msgid "Age Histogram"
+msgstr "연령 히스토그램"
+
+#: 
+msgid "Missing event id"
+msgstr "행사 ID가 없습니다"
+
+#: 
+msgid "Event not found"
+msgstr "행사를 찾을 수 없습니다"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "세션 시간 제한(초)\n"
+"0으로 설정하면 타임아웃을 비활성화합니다."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "새 비밀번호가 기존 비밀번호와 달라야 하는 최소 문자 수\n"
+"0으로 설정하면 기능을 끕니다."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "계정을 잠그기 전 허용할 로그인 실패 횟수입니다.\n"
+"최대 횟수에 도달하면 관리자가 계정을 다시 활성화해야 합니다.\n"
+"자동 비밀번호 추측 공격을 방지하는 데 도움이 됩니다.\n"
+"0으로 설정하면 기능을 끕니다."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "PDF 처리 방식\n"
+"1 = 파일 저장 대화상자\n"
+"2 = 현재 브라우저에서 열기"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "가족 정보에서 개인 정보를 가져와 표시할까요?\n"
+"개인 정보가 비어 있으면 가족 기록의 해당 정보를 표시합니다."
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Ctrl+C를 눌러 그룹 구성원의 전화번호를 모두 복사하세요"
+
+#: 
+msgid "Verify People"
+msgstr "개인 정보 확인"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "개인 확인 대시보드"
+
+#: 
+msgid "Download family letters"
+msgstr "가족 안내문 다운로드"
+
+#: 
+msgid "Send family email"
+msgstr "가족 이메일 보내기"
+
+#: 
+msgid "Verification recorded"
+msgstr "확인 정보가 기록되었습니다"
+
+#: 
+msgid "Verification URL created"
+msgstr "확인 URL이 생성되었습니다"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "이메일 발송 중 오류가 발생했습니다"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "자세한 내용은 로그를 확인하세요"
+
+#: 
+msgid "Verification URL"
+msgstr "확인 URL"
+
+#: 
+msgid "Reset System"
+msgstr "시스템 초기화"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "예상치 못한 Person ID"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "소프트웨어 업데이트 확인 주기(시간)"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "마지막 소프트웨어 업데이트 확인 시각"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "GitHub에서 '사전 릴리스'로 표시된 버전으로 시스템 업그레이드를 허용"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "캘린더 행사 검색"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "캘린더 행사 최대 개수"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d개월"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d세"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "지원되지 않는 PHP 버전"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "이 PHP 버전 지원이 곧 종료됩니다. 현재 PHP 버전: "
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "PHP ZipArchive 모듈이 없습니다"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "업그레이드를 위해 PHP ZipArchive가 필요합니다"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "결과를 카트에 추가"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "결과를 카트에서 제거"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "경고: 업그레이드 전 작업이 감지되었습니다"
+
+#: 
+msgid "Some conditions have been identified which may prevent a successful upgrade"
+msgstr "업그레이드를 방해할 수 있는 조건이 확인되었습니다"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "업그레이드를 진행하기 전에 아래 작업을 해결하세요:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "데이터베이스 초기화 기능"
+
+#: 
+msgid "Reset Members"
+msgstr "구성원 초기화"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "모든 구성원, 개인, 가족 데이터가 삭제되며 되돌릴 수 없습니다."
+
+#: 
+msgid "Reset Families/People"
+msgstr "가족/개인 초기화"
+
+#: 
+msgid "Reset Database"
+msgstr "데이터베이스 초기화"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "시스템 데이터를 초기화하여 새 설치처럼 다시 시작합니다."
+
+#: 
+msgid "Clear Filter"
+msgstr "필터 지우기"
+
+#: 
+msgid "Add Person"
+msgstr "개인 추가"
+
+#. Context: locales
+#: 
+msgid "Portuguese - Portugal"
+msgstr "포르투갈어 - 포르투갈"
+
+#: 
+msgid "Holiday"
+msgstr "공휴일"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "사용자가 2단계 인증을 직접 등록할 수 있도록 허용"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "사용자에게 2단계 인증 등록을 강제"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "인증 앱에 표시할 애플리케이션 이름 지정"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Config.php에 비밀 키가 없습니다"
+
+#: 
+msgid "Review"
+msgstr "검토"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "가족 등록을 완료해 주셔서 감사합니다"
+
+#: 
+msgid "Register another family!"
+msgstr "다른 가족도 등록하기"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "완료했습니다. 홈페이지로 이동"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "API 키로 인증된 사용자: "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "API 키 인증 실패"
+
+#: 
+msgid "Unpinned Events"
+msgstr "고정되지 않은 행사"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "성, 이름 미들네임"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "2단계 인증 관리"
+
+#: 
+msgid "Two Factor Status"
+msgstr "2단계 인증 상태"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "이 사용자의 2단계 인증을 해제할지 확인하세요"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "2단계 인증 코드를 입력하세요"
+
+#: 
+msgid "2FA Code"
+msgstr "2FA 코드"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "2단계 인증 등록"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "지원되지 않는 2단계 인증 설정"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "2단계 인증 등록을 시작할 수 없습니다"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "2단계 인증을 사용하려면 ChurchCRM 관리자가 몇 가지 매개변수를 설정해야 합니다"
+
+#: 
+msgid "System configuration "
+msgstr "시스템 설정 "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "'true'로 설정해야 합니다"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include/Config.php에서 2FA 비밀 키를 DB에 저장할 암호화 키를 지정해야 합니다:"
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "주소 지오코딩에 사용되는 Google Maps API 키"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "계정이 삭제되면 사용자에게 알림 이메일 보내기"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "브라우저에서 지도를 표시할 때 사용하는 Google Maps API 키"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "현재 사용자의 비밀번호가 올바르지 않습니다"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "새 비밀번호는 기존 비밀번호와 같을 수 없습니다."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "새 비밀번호가 기존 비밀번호와 너무 비슷합니다."
+
+#: 
+msgid "Password reset not available.  Please contact your system administrator"
+msgstr "비밀번호 재설정을 사용할 수 없습니다. 시스템 관리자에게 문의하세요"
+
+#: 
+msgid "Authentication Issue"
+msgstr "인증 문제"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "새 사용자 비밀번호를 입력하세요. 관리자가 설정한 비밀번호는 길이·복잡도 요구를 따르지 않습니다"
+
+#: 
+msgid "No email passed in"
+msgstr "이메일이 전달되지 않았습니다"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp가 활성화되어 있지 않습니다"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "리스트"
+
+#: 
+msgid "loading"
+msgstr "로드 중"
+
+#: 
+msgid "List not found"
+msgstr "리스트를 찾을 수 없습니다"
+
+#. typo
+#: 
+msgid "List not in the list"
+msgstr "리스트에 포함되지 않았습니다"
+
+#: 
+msgid "People not in"
+msgstr "포함되지 않은 사람"
+
+#: 
+msgid "Invalid List id"
+msgstr "잘못된 리스트 ID"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "ChurchCRM에 없는 오디언스입니다"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "ChurchCRM 설치 정보"
+
+#: 
+msgid "Database Server Version"
+msgstr "데이터베이스 서버 버전"
+
+#: 
+msgid "Web Server"
+msgstr "웹 서버"
+
+#: 
+msgid "Email Information"
+msgstr "이메일 정보"
+
+#: 
+msgid "List maintenance"
+msgstr "리스트 관리"
+
+#: 
+msgid "People not in list"
+msgstr "리스트에 없는 사람"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "CRM에 없는 오디언스"
+
+#. Context: locales
+#: 
+msgid "Hebrew"
+msgstr "히브리어"
+
+#: 
+msgid "open rate"
+msgstr "오픈율"
+
+#: 
+msgid "Not Subscribed "
+msgstr "구독 안 함 "
+
+#: 
+msgid "Global User Settings"
+msgstr "전체 사용자 설정"
+
+#: 
+msgid "General"
+msgstr "일반"
+
+#: 
+msgid "Passwords"
+msgstr "비밀번호"
+
+#: 
+msgid "2FA"
+msgstr "2단계 인증"
+
+#: 
+msgid "Session Timeout"
+msgstr "세션 타임아웃"
+
+#: 
+msgid "Max Failed Login"
+msgstr "로그인 실패 허용 횟수"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "비밀번호 재설정 허용"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "삭제된 사용자에게 이메일 발송"
+
+#: 
+msgid "Min Password Length"
+msgstr "최소 비밀번호 길이"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "비밀번호 최소 변화 문자 수"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "사용 금지 비밀번호"
+
+#: 
+msgid "Enable 2FA"
+msgstr "2단계 인증 활성화"
+
+#: 
+msgid "Require 2FA"
+msgstr "2단계 인증 강제"
+
+#: 
+msgid "2FA Application Name"
+msgstr "2FA 앱 이름"
+
+#: 
+msgid "Login Info"
+msgstr "로그인 정보"
+
+#: 
+msgid "Login Count"
+msgstr "로그인 횟수"
+
+#: 
+msgid "Failed Login"
+msgstr "실패한 로그인"
+
+#: 
+msgid "Permissions"
+msgstr "권한"
+
+#: 
+msgid "Manage Notes"
+msgstr "메모 관리"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "새 API 키 생성에 실패했습니다"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "가족별 서약 요약"
+
+#: 
+msgid "Pledge"
+msgstr "서약"
+
+#: 
+msgid "Paid"
+msgstr "납입"
+
+#: 
+msgid "Owe"
+msgstr "미납"
+
+#: 
+msgid "Start Date"
+msgstr "시작일"
+
+#: 
+msgid "End Date"
+msgstr "종료일"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "고정된 캘린더"
+
+#: 
+msgid "This field is required"
+msgstr "필수 입력 항목입니다"
+
+#: 
+msgid "Text"
+msgstr "텍스트"
+
+#: 
+msgid "Event Description"
+msgstr "행사 설명"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "계정에 2단계 인증을 등록하면 무단 접근으로부터 추가 보안 계층이 제공됩니다."
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "ChurchCRM의 2단계 인증은 TOTP 기반 인증 앱을 지원하므로 Microsoft Authenticator, Google Authenticator, Authy, LastPass 등 원하는 앱을 사용할 수 있습니다"
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "ChurchCRM에 로그인할 때는 평소처럼 사용자 이름과 비밀번호를 입력합니다"
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "로그인을 마치려면 인증 앱에서 생성된 일회용 코드를 추가로 입력해야 합니다"
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "자격 증명과 일회용 코드를 모두 입력하면 정상적으로 로그인됩니다"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "계정 잠금을 방지하려면 시작을 누르기 전에 2단계 인증 등록 준비가 되었는지 확인하세요"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "등록을 시작하면 기존에 등록된 모든 2단계 인증 기기와 복구 코드가 무효화됩니다."
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "다음을 클릭하면 인증 앱 등록을 위해 QR 코드를 스캔하라는 메시지가 표시됩니다."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "등록을 완료하려면 인증 앱에서 생성된 코드를 입력해야 합니다"
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "앱 등록을 확인하면 일회용 복구 코드가 생성되어 표시됩니다."
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "복구 코드는 인증 앱 코드 대신 사용할 수 있습니다."
+
+#: 
+msgid "Store these in a secure location"
+msgstr "이 코드들을 안전한 곳에 보관하세요"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "2단계 인증 등록 시작"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "2단계 인증 시크릿"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "2단계 인증 시크릿 재생성"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "2단계 인증 시크릿 삭제"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "등록을 확인하려면 TOTP 코드를 입력하세요"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "2단계 인증 등록 성공"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "이 복구 코드를 안전한 곳에 보관하세요"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "새로 등록한 인증 앱을 사용할 수 없게 되면 복구 코드를 사용해 계정에 접근해야 합니다"
+
+#: 
+msgid "Event Attendance"
+msgstr "행사 출석"
+
+#: 
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "행사 출석과 미출석 보고서를 생성합니다"
+
+#: 
+msgid "Help translate this project"
+msgstr "이 프로젝트 번역에 참여하기"
+
+#. Context: locales
+#: 
+msgid "Afrikaans"
+msgstr "아프리칸스어"
+
+#: 
+msgid " has a type mismatch"
+msgstr "에 타입 불일치가 있습니다"
+
+#: 
+msgid "Loading"
+msgstr "불러오는 중"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "가족 속성 해제"
+
+#: 
+msgid "Do you want to remove"
+msgstr "다음을 제거하시겠습니까"
+
+#: 
+msgid "View Active People"
+msgstr "활성 개인 보기"
+
+#: 
+msgid "View Inactive People"
+msgstr "비활성 개인 보기"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "오늘의 생일"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "오늘의 결혼기념일"
+
+#: 
+msgid "Api Key"
+msgstr "API 키"
+
+#: 
+msgid "Regen API Key"
+msgstr "API 키 재생성"
+
+#: 
+msgid "View Family Page"
+msgstr "가족 페이지 보기"
+
+#: 
+msgid "View Person Page"
+msgstr "개인 페이지 보기"
+
+#: 
+msgid "Verify"
+msgstr "확인"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "해당 가족에 사용할 이메일이 없습니다"
+
+#: 
+msgid "Boxed Layout"
+msgstr "박스 레이아웃"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "박스 레이아웃 활성화"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "사이드바 토글"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "왼쪽 사이드바를 열거나 접습니다"
+
+#: 
+msgid "Tables Settings"
+msgstr "테이블 설정"
+
+#: 
+msgid "Page length"
+msgstr "페이지 길이"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "처음 표시할 페이지 길이(페이지당 행 수)를 변경합니다"
+
+#: 
+msgid "User Interface"
+msgstr "사용자 인터페이스"
+
+#: 
+msgid "Locale"
+msgstr "로캘"
+
+#: 
+msgid "Override system locale"
+msgstr "시스템 로캘 무시"
+
+#: 
+msgid "Deleted"
+msgstr "삭제됨"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "잘못된 생년월일: 생월 또는 생일이 없습니다."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "잘못된 생년월일: 생월과 생일이 없습니다."
+
+#: 
+msgid "System"
+msgstr "시스템"
+
+#. Context: locales
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "암하라어 - 에티오피아"
+
+#. Context: locales
+#: 
+msgid "Czech"
+msgstr "체코어"
+
+#. Context: locales
+#: 
+msgid "Finnish"
+msgstr "핀란드어"
+
+#. Context: locales
+#: 
+msgid "Greek"
+msgstr "그리스어"
+
+#. Context: locales
+#: 
+msgid "Turkish"
+msgstr "터키어"
+
+#. Context: locales
+#: 
+msgid "Ukrainian"
+msgstr "우크라이나어"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "\"GitHub에 제출\"을 클릭하면 시스템 정보가 채워진 상태로 GitHub 이슈 페이지로 이동합니다."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "GitHub에 제출"
+
+#: 
+msgid "Change role"
+msgstr "역할 변경"
+
+#: 
+msgid "Closed"
+msgstr "닫힘"
+
+#: 
+msgid "Delete this person?"
+msgstr "이 사람을 삭제하시겠습니까?"
+
+#: 
+msgid "Deposit ID"
+msgstr "입금 ID"
+
+#: 
+msgid "Deposit Total"
+msgstr "입금 합계"
+
+#: 
+msgid "Group Cart Status"
+msgstr "그룹 카트 상태"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "작동하지 않으면 아래 링크를 복사해 브라우저에 붙여 넣으세요"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "계정 활동 요청이 접수되어 이 이메일을 발송했습니다. 본인이 요청하지 않았다면 이 메일을 삭제해도 됩니다."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "이런 이메일을 받지 않으려면 다음 주소로 메일을 보내주세요:"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2016/2017"
+msgstr "2016/2017"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2017/2018"
+msgstr "2017/2018"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2018/2019"
+msgstr "2018/2019"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2019/2020"
+msgstr "2019/2020"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2020/2021"
+msgstr "2020/2021"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2021/2022"
+msgstr "2021/2022"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2022/2023"
+msgstr "2022/2023"
+
+#: 
+msgid "invalid group request"
+msgstr "잘못된 그룹 요청"
+
+#. Context: locales
+#: 
+msgid "Hindi - India"
+msgstr "힌디어 - 인도"
+
+#. Context: locales
+#: 
+msgid "Japanese"
+msgstr "일본어"
+
+#. Context: locales
+#: 
+msgid "Tamil - India"
+msgstr "타밀어 - 인도"
+
+#: 
+msgid "Not Subscribed"
+msgstr "구독되지 않음"
+
+#: 
+msgid "property"
+msgstr "속성"
+
+#: 
+msgid "Default Zip"
+msgstr "기본 우편번호"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "신용카드 결제자"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "신용카드 결제로 설정된 사람들입니다."
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "성인 이름(선택)"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "복원 과정에서 외부 백업이 비활성화되었습니다. 자동 백업을 계속 사용하려면 bEnableExternalBackupTarget 설정을 다시 활성화해야 합니다."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "이전 무결성 검사를 통과했습니다. 모든 시스템 파일 해시가 예상 값과 일치합니다."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "비활성으로 표시할 분류 목록(쉼표로 구분)"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp가 설정되지 않았습니다"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "MailChimp API 키를 다음 위치에서 업데이트하세요:"
+
+#. Context: locales
+#: 
+msgid "English - South Africa"
+msgstr "영어 - 남아프리카"
+
+#. Context: locales
+#: 
+msgid "English - Jamaica"
+msgstr "영어 - 자메이카"
+
+#. Context: locales
+#: 
+msgid "Swahili"
+msgstr "스와힐리어"
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "이름에서 1글자, 성에서 1글자 사용"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "이름에서 2글자 사용"
+
+#: 
+msgid "Set font to render initials. Upload custom font to fonts directory"
+msgstr "이니셜에 사용할 글꼴을 지정하세요. 사용자 글꼴은 fonts 디렉터리에 업로드합니다"
+
+#: 
+msgid "Person List Columns"
+msgstr "개인 목록 열"
+
+#: 
+msgid "Family List Columns"
+msgstr "가족 목록 열"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "교회 이메일이 설정되지 않았습니다. 설정 페이지에서 구성하세요"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "텔루구어 - 인도"
+

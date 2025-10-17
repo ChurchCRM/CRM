@@ -1,0 +1,291 @@
+name: Locale POEditor Download and Audit 
+permissions:
+  contents: write
+
+on:
+  push:
+    paths:
+      - 'locale/messages.po'
+  schedule:
+    # Run daily at midnight UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    # Allow manual triggering from GitHub UI
+    inputs:
+      operation_mode:
+        description: 'Operation to perform'
+        required: false
+        type: choice
+        options:
+          - 'download-and-audit'
+          - 'audit-only'
+        default: 'download-and-audit'
+      skip_audit:
+        description: 'Skip locale audit step for faster execution (ignored if audit-only mode)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20.x']
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        # fetch full history so things like auto-changelog work properly
+        fetch-depth: 0
+        # Use token for write access
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Display operation mode
+      run: |
+        echo "🔧 **Operation Mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
+        case "${{ inputs.operation_mode || 'download-and-audit' }}" in
+          "audit-only")
+            echo "📋 Running audit-only mode - will check locale completeness without downloading"
+            ;;
+          "download-and-audit")
+            echo "🌍 Running full mode - will download locales and run audit"
+            echo "📋 Audit will be ${{ inputs.skip_audit == true && 'skipped' || 'included' }}"
+            ;;
+        esac
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Get package version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@v1.3.1
+
+    - name: Get current date
+      id: date
+      run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+    - name: Cache node modules
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm install grunt-cli --save-dev
+
+    - name: Validate POEditor configuration
+      run: |
+        if [ -z "${{ secrets.POEDITOR_TOKEN }}" ]; then
+          echo "❌ POEDITOR_TOKEN secret is not set"
+          exit 1
+        fi
+        echo "✅ POEditor token is configured"
+
+    - name: Create BuildConfig file
+      uses: jsdaniell/create-json@v1.2.3
+      with:
+        name: "BuildConfig.json"
+        json: '{"POEditor": { "id": "77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}'
+
+    - name: Clean existing locales
+      if: inputs.operation_mode != 'audit-only'
+      run: npm run locale:clean
+      
+    - name: Download locales from POEditor
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        set -e  # Exit on any command failure
+        echo "🌍 Downloading locales from POEditor..."
+        
+        # Run individual steps with error checking
+        echo "Step 1: Cleaning existing locales..."
+        npm run locale:clean
+        
+        echo "Step 2: Updating from POEditor..."
+        grunt updateFromPOeditor
+        
+        echo "Step 3: Generating locale JS files..."
+        grunt genLocaleJSFiles
+        
+        echo "Step 4: Running locale audit..."
+        npm run locale:audit
+        
+        echo "✅ Locale download completed successfully"
+
+    - name: Validate locale download integrity
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "🔍 Validating locale download integrity..."
+        
+        # Check if any JSON files were created
+        json_count=$(find locale/JSONKeys -name "*.json" -type f | wc -l)
+        echo "Found $json_count JSON locale files"
+        
+        if [ "$json_count" -eq 0 ]; then
+          echo "❌ ERROR: No JSON locale files found after download!"
+          exit 1
+        fi
+        
+        # Check for completely empty JSON files (which shouldn't exist)
+        empty_files=$(find locale/JSONKeys -name "*.json" -type f -empty)
+        if [ -n "$empty_files" ]; then
+          echo "❌ ERROR: Found empty JSON locale files:"
+          echo "$empty_files"
+          echo "This indicates a download failure for these locales."
+          exit 1
+        fi
+        
+        # Check for JSON files that only contain whitespace or are malformed
+        invalid_files=""
+        for json_file in locale/JSONKeys/*.json; do
+          if [ -f "$json_file" ]; then
+            # Check if file contains valid JSON (at minimum empty object {})
+            if ! python3 -m json.tool "$json_file" > /dev/null 2>&1; then
+              # If not valid JSON, check if it's just empty/whitespace
+              if [ ! -s "$json_file" ] || [ "$(cat "$json_file" | tr -d '[:space:]')" = "" ]; then
+                invalid_files="$invalid_files\n$(basename "$json_file")"
+              fi
+            fi
+          fi
+        done
+        
+        if [ -n "$invalid_files" ]; then
+          echo "❌ ERROR: Found invalid/empty JSON locale files:"
+          echo -e "$invalid_files"
+          echo "This indicates POEditor download failures. Failing the job."
+          exit 1
+        fi
+        
+        echo "✅ Locale download integrity validation passed"
+
+    - name: Check for locale regressions
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "🔍 Checking for locale regressions (files that lost content)..."
+        
+        # Get list of files that were deleted or significantly reduced
+        regression_files=""
+        
+        # Check git diff for files that went from having content to being empty
+        deleted_content=$(git diff --name-only --diff-filter=M | grep "locale/JSONKeys/.*\.json$" || true)
+        
+        if [ -n "$deleted_content" ]; then
+          for file in $deleted_content; do
+            # Check if file exists and is now empty/small but was larger before
+            if [ -f "$file" ]; then
+              current_size=$(wc -c < "$file" 2>/dev/null || echo "0")
+              # Get the size of the file in the previous commit
+              previous_size=$(git show HEAD~1:"$file" 2>/dev/null | wc -c || echo "0")
+              
+              # If current file is empty or very small (< 50 bytes) but previous was substantial (> 500 bytes)
+              if [ "$current_size" -lt 50 ] && [ "$previous_size" -gt 500 ]; then
+                regression_files="$regression_files\n  - $file (was ${previous_size} bytes, now ${current_size} bytes)"
+              fi
+            fi
+          done
+        fi
+        
+        if [ -n "$regression_files" ]; then
+          echo "❌ ERROR: Detected locale regression - files lost substantial content:"
+          echo -e "$regression_files"
+          echo ""
+          echo "This suggests POEditor download failed for these locales."
+          echo "The job will fail to prevent loss of existing translations."
+          exit 1
+        fi
+        
+        echo "✅ No locale regressions detected"
+
+    - name: Show download summary
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "📊 Download Summary:"
+        echo "Total JSON files: $(find locale/JSONKeys -name "*.json" -type f | wc -l)"
+        echo "Non-empty JSON files: $(find locale/JSONKeys -name "*.json" -type f ! -empty | wc -l)"
+        echo "Files with substantial content (>100 bytes): $(find locale/JSONKeys -name "*.json" -type f -exec wc -c {} \; | awk '$1 > 100' | wc -l)"
+        echo ""
+        echo "Git status after download:"
+        git status --porcelain locale/
+
+    - name: Check for changes
+      if: inputs.operation_mode != 'audit-only'
+      id: changes
+      run: |
+        if git diff --quiet; then
+          echo "No locale changes detected"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Locale changes detected"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "Changed files:"
+          git diff --name-only
+        fi
+
+    - name: Create Pull Request
+      if: inputs.operation_mode != 'audit-only' && (steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch')
+      uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: 'locale/${{ steps.package-version.outputs.current-version}}'
+        delete-branch: true
+        labels: |
+          localization
+          automated
+        milestone: ${{ steps.package-version.outputs.current-version}}
+        title: "🌍 POEditor Locale Update - ${{ steps.date.outputs.date }}"
+        commit-message: |
+          🌍 Locale update from POEditor on ${{ steps.date.outputs.date }}
+          
+          - Updated translations from POEditor
+          - Version: ${{ steps.package-version.outputs.current-version}}
+          - Triggered: ${{ github.event_name == 'workflow_dispatch' && 'Manual' || 'Scheduled' }}
+        body: |
+          ## 🌍 Automatic Locale Update
+          
+          This PR contains updated translations downloaded from POEditor.
+          
+          **Details:**
+          - 📅 **Date**: ${{ steps.date.outputs.date }}
+          - 🏷️ **Version**: ${{ steps.package-version.outputs.current-version}}
+          - 🚀 **Trigger**: ${{ github.event_name == 'workflow_dispatch' && 'Manual run' || 'Scheduled daily run' }}
+          
+          **What's included:**
+          - Updated translation files from POEditor
+          - Generated locale JSON files
+          - Locale audit results
+          
+          This PR was automatically created by the POEditor workflow.
+          
+          ---
+          
+          **Manual Run Options:**
+          ${{ inputs.operation_mode == 'audit-only' && '- 🔍 Audit-only mode (no downloads)' || inputs.skip_audit == true && '- ⏩ Audit skipped' || '- 🔍 Full download and audit' }}
+
+    - name: Run locale audit
+      if: inputs.operation_mode == 'audit-only' || (inputs.operation_mode != 'audit-only' && inputs.skip_audit != true)
+      run: |
+        echo "🔍 Running locale audit..."
+        npm run locale:audit
+        echo "✅ Locale audit completed"
+
+    - name: Report results
+      run: |
+        echo "## 📊 Workflow Results"
+        echo "- **Operation mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
+        echo "- **Download validation**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
+        echo "- **Regression check**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
+        echo "- **Changes detected**: ${{ inputs.operation_mode == 'audit-only' && 'N/A (audit-only)' || steps.changes.outputs.has_changes }}"
+        echo "- **PR created**: ${{ inputs.operation_mode == 'audit-only' && 'No (audit-only)' || ((steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch') && 'Yes' || 'No') }}"
+        echo "- **Branch**: ${{ inputs.operation_mode == 'audit-only' && 'N/A' || format('locale/{0}', steps.package-version.outputs.current-version) }}"
+        echo "- **Audit run**: ${{ (inputs.operation_mode == 'audit-only' || (inputs.operation_mode != 'audit-only' && inputs.skip_audit != true)) && 'Yes' || 'Skipped' }}"
+        echo "- **Trigger**: ${{ github.event_name }}"

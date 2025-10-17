@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Standard Cart", () => {
+describe("Standard Cart", () => {
     beforeEach(() => {});
 
     it("Cart Add and Remove Person", () => {
