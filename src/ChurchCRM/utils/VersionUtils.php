@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Utils;
 
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemURLs;
 use Composer\InstalledVersions;
 use Propel\Runtime\Propel;
@@ -17,7 +18,6 @@ class VersionUtils
             return $version;
         }
 
-        // TODO: remove deprecated version check in a future release
         LoggerUtils::getAppLogger()->info('could not determine version from composer autoloader, falling back to legacy composer.json parsing');
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
         $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
