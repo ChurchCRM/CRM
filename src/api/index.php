@@ -1,4 +1,5 @@
 <?php
+use ChurchCRM\Service\DepositService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
@@ -22,6 +23,7 @@ $container->set('PersonService', new PersonService());
 $container->set('GroupService', new GroupService());
 $container->set('FinancialService', new FinancialService());
 $container->set('SystemService', new SystemService());
+$container->set('DepositService', new DepositService());
 $container->compile();
 
 AppFactory::setContainer($container);
