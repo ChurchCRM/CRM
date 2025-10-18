@@ -12,12 +12,12 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->post('', function (Request $request, Response $response, array $args): Response {
-        $input = $request->getParsedBody();
-        $deposit = new Deposit();
-        $deposit->setType($input['depositType']);
-        $deposit->setComment($input['depositComment']);
-        $deposit->setDate($input['depositDate']);
-        $deposit->save();
+        /** @var ChurchCRM\Service\DepositService $depositService */
+        $depositService = $this->get('DepositService');
+    $depositType = $input['depositType'] ?? '';
+    $depositComment = $input['depositComment'] ?? '';
+    $depositDate = $input['depositDate'] ?? date('Y-m-d');
+    $deposit = $depositService->createDeposit($depositType, $depositComment, $depositDate);
         return SlimUtils::renderJSON($response, $deposit->toArray());
     });
 
