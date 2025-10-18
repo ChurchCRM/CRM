@@ -17,7 +17,15 @@ $sPageTitle = gettext('Edit Event Types');
 require_once 'Include/Header.php';
 
 $editing = 'FALSE';
-$tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
+
+// Accept EN_tyid from POST or GET
+if (isset($_POST['EN_tyid'])) {
+  $tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
+} elseif (isset($_GET['EN_tyid'])) {
+  $tyid = InputUtils::legacyFilterInput($_GET['EN_tyid'], 'int');
+} else {
+  $tyid = null;
+}
 
 if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
   $ctid = InputUtils::legacyFilterInput(mb_substr($_POST['Action'], 7), 'int');
@@ -59,28 +67,22 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
 
 // Get data for the form as it now exists.
 $eventType = EventTypeQuery::create()->findOneById($tyid);
-$aTypeID = $eventType ? $eventType->getId() : null;
-$aTypeName = $eventType ? $eventType->getName() : null;
-$aDefStartTime = $eventType ? $eventType->getDefStartTime() : null;
-$aDefRecurDOW = $eventType ? $eventType->getDefRecurDow() : null;
-$aDefRecurDOM = $eventType ? $eventType->getDefRecurDom() : null;
-$aDefRecurDOY = $eventType ? $eventType->getDefRecurDoy() : null;
-$aDefRecurType = $eventType ? $eventType->getDefRecurType() : null;
-if ($aDefStartTime) {
-  $aStartTimeTokens = explode(':', $aDefStartTime);
-  $aEventStartHour = $aStartTimeTokens[0];
-  $aEventStartMins = $aStartTimeTokens[1];
-}
-$aTypeID = $type_id;
-$aTypeName = $type_name;
-$aDefStartTime = $type_defstarttime;
+if ($eventType) {
+  $aTypeID = $eventType->getId();
+  $aTypeName = $eventType->getName();
+  $aDefStartTime = $eventType->getDefStartTime();
+  $aDefRecurDOW = $eventType->getDefRecurDow();
+  $aDefRecurDOM = $eventType->getDefRecurDom();
+  $aDefRecurDOY = $eventType->getDefRecurDoy();
+  $aDefRecurType = $eventType->getDefRecurType();
+  if ($aDefStartTime) {
     $aStartTimeTokens = explode(':', $aDefStartTime);
     $aEventStartHour = $aStartTimeTokens[0];
     $aEventStartMins = $aStartTimeTokens[1];
-$aDefRecurDOW = $type_defrecurDOW;
-$aDefRecurDOM = $type_defrecurDOM;
-$aDefRecurDOY = $type_defrecurDOY;
-$aDefRecurType = $type_defrecurtype;
+  }
+} else {
+  $aTypeID = $aTypeName = $aDefStartTime = $aDefRecurDOW = $aDefRecurDOM = $aDefRecurDOY = $aDefRecurType = null;
+}
 switch ($aDefRecurType) {
     case 'none':
         $recur = gettext('None');
