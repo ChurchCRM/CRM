@@ -9,6 +9,9 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Interfaces\RouteInterface;
 use Slim\Routing\RouteContext;
 use Slim\HttpCache\CacheProvider;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Throwable;
 
 class SlimUtils
 {
@@ -50,13 +53,13 @@ class SlimUtils
     public static function setupErrorLogger($errorMiddleware, $logPath = null)
     {
         if ($logPath === null) {
-            $logPath = __DIR__ . '/../../../logs/slim-error.log';
+            $logPath = __DIR__ . '/../../logs/slim-error.log';
         }
-        $logger = new \Monolog\Logger('slim');
-        $logger->pushHandler(new \Monolog\Handler\StreamHandler($logPath, \Monolog\Logger::ERROR));
+        $logger = new Logger('slim');
+        $logger->pushHandler(new StreamHandler($logPath, Logger::ERROR));
         $errorMiddleware->setDefaultErrorHandler(function (
-            \Psr\Http\Message\ServerRequestInterface $request,
-            \Throwable $exception,
+            Request $request,
+            Throwable $exception,
             bool $displayErrorDetails,
             bool $logErrors,
             bool $logErrorDetails
@@ -64,19 +67,6 @@ class SlimUtils
             $logger->error($exception->getMessage(), ['exception' => $exception]);
             throw $exception;
         });
-    }
-    /**
-     * Slim middleware to add CORS headers to every response
-     */
-    public static function corsMiddleware()
-    {
-        return function ($request, $handler) {
-            $response = $handler->handle($request);
-            return $response
-                ->withHeader('Access-Control-Allow-Origin', '*')
-                ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
-                ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        };
     }
 
     /**
