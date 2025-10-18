@@ -18,7 +18,6 @@ use ChurchCRM\Slim\SlimUtils;
 
 $container = new ContainerBuilder();
 // Register custom error handlers
-\ChurchCRM\Slim\SlimUtils::registerCustomErrorHandlers($container);
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($rootPath . '/kiosk');
@@ -26,6 +25,7 @@ $app->setBasePath($rootPath . '/kiosk');
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 \ChurchCRM\Slim\SlimUtils::setupErrorLogger($errorMiddleware);
+\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);

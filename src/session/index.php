@@ -22,7 +22,6 @@ $rootPath = str_replace('/session/index.php', '', $_SERVER['SCRIPT_NAME']);
 $container = new ContainerBuilder();
 $container->compile();
 // Register custom error handlers
-SlimUtils::registerCustomErrorHandlers($container);
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($rootPath . '/session');
@@ -30,6 +29,7 @@ $app->setBasePath($rootPath . '/session');
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
+\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->addBodyParsingMiddleware();
 $app->add(new VersionMiddleware());

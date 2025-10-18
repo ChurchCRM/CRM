@@ -24,7 +24,6 @@ SystemConfig::init();
 $container = new ContainerBuilder();
 $container->compile();
 // Register custom error handlers
-SlimUtils::registerCustomErrorHandlers($container);
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
@@ -37,6 +36,7 @@ $app->add(new CorsMiddleware());
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
+\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 
 $app->run();

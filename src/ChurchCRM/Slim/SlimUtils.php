@@ -1,5 +1,4 @@
 <?php
-
 namespace ChurchCRM\Slim;
 
 use ChurchCRM\dto\Photo;
@@ -14,10 +13,21 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Throwable;
 
+
 class SlimUtils
 {
     /**
+     * Helper to write a JSON string to the response body
+     */
+    public static function renderStringJson(Response $response, string $json, int $status = 200): Response
+    {
+        $response->getBody()->write($json);
+        return $response->withStatus($status)->withHeader('Content-Type', 'application/json');
+    }
+
+    /**
      * Registers custom error, not found, and not allowed handlers on the Slim container
+     * @deprecated Slim 3 only. Use Slim 4 error middleware instead.
      */
     public static function registerCustomErrorHandlers($container)
     {
@@ -48,6 +58,7 @@ class SlimUtils
             ->withHeader('Content-type', 'text/html')
             ->write('Method must be one of: ' . implode(', ', $methods)));
     }
+
     /**
      * Setup Monolog error handler for Slim error middleware
      */
@@ -78,35 +89,39 @@ class SlimUtils
 
     /**
      * Get Slim error middleware config from environment
+     * @return array
      */
-    public static function getErrorMiddlewareConfig()
+    public static function getErrorMiddlewareConfig(): array
     {
-        return [
-            'displayErrorDetails' => getenv('SLIM_DISPLAY_ERROR_DETAILS') === 'true',
-            'logErrors' => true,
-            'logErrorDetails' => true,
-        ];
-    }
-    /**
-     * Render a success JSON response
-     */
-    public static function renderSuccessJson(Response $response): Response
-    {
-        return self::renderJSON($response, ['status' => 'success']);
+        // Placeholder for future config logic
+        return [];
     }
 
     /**
-     * Render a raw JSON string response
+     * Registers a default Slim4 error handler that returns JSON error details
      */
-    public static function renderStringJson(Response $response, string $json, int $status = 200): Response
+    public static function registerDefaultJsonErrorHandler($errorMiddleware)
     {
-        $response->getBody()->write($json);
-        $response = $response->withHeader('Content-Type', 'application/json');
-        if ($status !== 200) {
-            $response = $response->withStatus($status);
-        }
-        return $response;
+        $logger = LoggerUtils::getAppLogger();
+        $errorMiddleware->setDefaultErrorHandler(function (
+            Request $request,
+            Throwable $exception,
+            bool $displayErrorDetails,
+            bool $logErrors,
+            bool $logErrorDetails
+        ) use ($logger) {
+            $logger->error($exception->getMessage(), ['exception' => $exception]);
+            $response = new \Slim\Psr7\Response();
+            $response->getBody()->write(json_encode([
+                'error' => $exception->getMessage(),
+                'code' => $exception->getCode(),
+                'file' => $exception->getFile(),
+                'line' => $exception->getLine()
+            ]));
+            return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
+        });
     }
+
     /**
      * Render an array as JSON response
      */
@@ -115,6 +130,9 @@ class SlimUtils
         return self::renderStringJson($response, json_encode($obj, JSON_THROW_ON_ERROR), $status);
     }
 
+    /**
+     * Render a redirect response
+     */
     public static function renderRedirect(Response $response, string $url): Response
     {
         return $response
@@ -127,8 +145,8 @@ class SlimUtils
      */
     public static function getUriParamInt(Request $request, string $paramName): int
     {
-    $val = SlimUtils::getUriParamString($request, $paramName);
-    return intval($val);
+        $val = self::getUriParamString($request, $paramName);
+        return intval($val);
     }
 
     /**
@@ -136,10 +154,14 @@ class SlimUtils
      */
     public static function getUriParamString(Request $request, string $paramName): string
     {
-    $params = $request->getQueryParams();
-    return $params[$paramName] ?? '';
+        $params = $request->getQueryParams();
+        return $params[$paramName] ?? '';
     }
 
+    /**
+     * Get a route argument from the request
+     * @throws HttpNotFoundException
+     */
     public static function getRouteArgument(Request $request, string $name): string
     {
         $routeContext = RouteContext::fromRequest($request);
@@ -153,14 +175,15 @@ class SlimUtils
         return $route->getArgument($name);
     }
 
+    /**
+     * Render a photo response with cache headers
+     */
     public static function renderPhoto(Response $response, Photo $photo): Response
     {
         $cacheProvider = new CacheProvider();
         $response = $cacheProvider->withEtag($response, $photo->getPhotoURI());
         $response = $response->withHeader('Content-type', $photo->getPhotoContentType());
-
         $response->getBody()->write($photo->getPhotoBytes());
-
         return $response;
     }
 }
