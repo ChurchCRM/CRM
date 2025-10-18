@@ -18,7 +18,7 @@
     },
     "homepage": "https://churchcrm.io",
     "scripts": {
-        "clean": "rm -rf node_modules/ target src/vendor/ src/skin/external",
+    "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external",
         "build": "run-p build:php build:frontend",
         "build:frontend": "npm run build:js && npm run format:web && npm run sass:build",
         "build:js": "run-p build:js:*",
