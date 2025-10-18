@@ -17,6 +17,14 @@ use Throwable;
 class SlimUtils
 {
     /**
+     * Render a standard success JSON response
+     */
+    public static function renderSuccessJSON(Response $response, int $status = 200): Response
+    {
+        return self::renderJson($response, ['success' => true], $status);
+    }
+
+    /**
      * Helper to write a JSON string to the response body
      */
     public static function renderStringJson(Response $response, string $json, int $status = 200): Response
