@@ -3,6 +3,7 @@
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -26,7 +27,7 @@ $app->setBasePath($basePath);
 $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
-$app->add(SlimUtils::corsMiddleware());
+$app->add(new CorsMiddleware());
 
 // Add Slim error middleware for proper error handling
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);

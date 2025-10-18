@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -31,7 +32,7 @@ $app->setBasePath($basePath);
 // Add CORS middleware for browser API access
 $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
-$app->add(SlimUtils::corsMiddleware());
+$app->add(new CorsMiddleware());
 
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
