@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Service\DepositService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
@@ -16,3 +17,5 @@ $container->set('GroupService', new GroupService());
 $container->set('FinancialService', new FinancialService());
 
 $container->set('SystemService', new SystemService());
+
+$container->set('DepositService', new DepositService());
