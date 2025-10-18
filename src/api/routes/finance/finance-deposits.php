@@ -12,12 +12,26 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->post('', function (Request $request, Response $response, array $args): Response {
+        /** @var ChurchCRM\Service\DepositService $depositService */
+        $depositService = $this->get('DepositService');
         $input = $request->getParsedBody();
-        $deposit = new Deposit();
-        $deposit->setType($input['depositType']);
-        $deposit->setComment($input['depositComment']);
-        $deposit->setDate($input['depositDate']);
-        $deposit->save();
+        $depositType = $input['depositType'] ?? '';
+        $depositComment = $input['depositComment'] ?? '';
+        $depositDate = $input['depositDate'] ?? date('Y-m-d');
+
+        // Validate depositType against allowed values
+        $allowedTypes = ['Bank', 'CreditCard', 'BankDraft', 'eGive'];
+        if (!in_array($depositType, $allowedTypes, true)) {
+            $errorMsg = $depositType === ''
+                ? 'Deposit type is required. Please provide one of: ' . implode(', ', $allowedTypes)
+                : "Deposit type '$depositType' is invalid. Allowed types: " . implode(', ', $allowedTypes);
+            return SlimUtils::renderJSON($response->withStatus(400), [
+                'error' => $errorMsg,
+                'allowedTypes' => $allowedTypes
+            ]);
+        }
+
+        $deposit = $depositService->createDeposit($depositType, $depositComment, $depositDate);
         return SlimUtils::renderJSON($response, $deposit->toArray());
     });
 
@@ -56,11 +70,11 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     });
 
     $group->get('/{id:[0-9]+}/ofx', function (Request $request, Response $response, array $args): Response {
-        $id = (int) $args['id'];
-        $deposit = DepositQuery::create()->findOneById($id);
-        $OFX = $deposit->getOFX();
-        header($OFX->header);
-        return SlimUtils::renderJSON($response, $OFX->content);
+    $id = (int) $args['id'];
+    $deposit = DepositQuery::create()->findOneById($id);
+    $OFX = $deposit->getOFX();
+    header($OFX->header);
+    return SlimUtils::renderJSON($response, ['content' => $OFX->content]);
     });
 
     $group->get('/{id:[0-9]+}/pdf', function (Request $request, Response $response, array $args): Response {
