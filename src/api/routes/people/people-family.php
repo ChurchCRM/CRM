@@ -8,8 +8,8 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -149,4 +149,4 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderSuccessJSON($response);
     });
-})->add(FamilyAPIMiddleware::class);
+})->add(FamilyMiddleware::class);

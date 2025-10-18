@@ -7,10 +7,11 @@ use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\VersionUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();
-$_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
+$_SESSION['sSoftwareInstalledVersion'] = VersionUtils::getInstalledVersion();
 
 // Basic security checks:
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
