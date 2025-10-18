@@ -225,7 +225,7 @@ jobs:
           *Built automatically from commit ${{ github.sha }}*
           
           **Note:** This is a draft release. Review the changes above and publish when ready.
-      files: temp/ChurchCRM-*.zip
+        files: temp/ChurchCRM-*.zip
         draft: true
         prerelease: false
       env:
