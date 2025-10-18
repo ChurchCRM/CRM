@@ -133,8 +133,8 @@ jobs:
                format('ChurchCRM-{0}-PR{1}', steps.package-version.outputs.current-version, github.event.number) ||
                format('ChurchCRM-{0}-{1}', steps.package-version.outputs.current-version, steps.vars.outputs.safe_branch)) }}
         path: temp/ChurchCRM-*.zip
-          retention-days: 90
-          if-no-files-found: error
+        retention-days: 90
+        if-no-files-found: error
 
     - name: Check for source code changes
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
