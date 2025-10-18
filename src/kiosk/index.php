@@ -13,6 +13,7 @@ use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 
 $container = new ContainerBuilder();
@@ -29,6 +30,7 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
+$app->add(new CorsMiddleware());
 
 // routes
 require __DIR__ . '/routes/kiosk.php';

@@ -2,6 +2,7 @@
 
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -27,6 +28,7 @@ SlimUtils::setupErrorLogger($errorMiddleware);
 
 $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
+$app->add(new CorsMiddleware());
 $app->addRoutingMiddleware();
 
 // routes
