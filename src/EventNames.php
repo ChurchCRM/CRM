@@ -143,7 +143,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
   <div class='card card-primary'>
     <div class='card-body'>
-      <form name="UpdateEventNames" action="EventNames.php" method="POST" class='form-horizontal'>
+  <form name="UpdateEventNames" action="EventNames.php" method="POST" class='form-horizontal' data-cy="event-type-form">
         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
         <div class='row form-group'>
           <div class='col-sm-4 control-label text-bold'>
@@ -230,7 +230,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             <a href="EventNames.php" class='btn btn-default'>
               <?= gettext('Cancel') ?>
             </a>
-            <button type="submit" Name="Action" value="CREATE" class="btn btn-primary">
+            <button type="submit" Name="Action" value="CREATE" class="btn btn-primary" id="save-event-type">
               <?= gettext('Save Changes') ?>
             </button>
           </div>

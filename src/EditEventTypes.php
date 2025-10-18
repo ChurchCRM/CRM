@@ -17,17 +17,18 @@ $editing = 'FALSE';
 $tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
 
 if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
-    $ctid = InputUtils::legacyFilterInput(mb_substr($_POST['Action'], 7), 'int');
-    $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_countid='$ctid' LIMIT 1";
-    RunQuery($sSQL);
+  $ctid = InputUtils::legacyFilterInput(mb_substr($_POST['Action'], 7), 'int');
+  \ChurchCRM\model\ChurchCRM\EventCountNameQuery::create()->filterByCountid($ctid)->delete();
 } else {
     switch ($_POST['Action']) {
-        case 'ADD':
-            $newCTName = InputUtils::legacyFilterInput($_POST['newCountName']);
-            $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
-            $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$newCTName')";
-            RunQuery($sSQL);
-            break;
+    case 'ADD':
+      $newCTName = InputUtils::legacyFilterInput($_POST['newCountName']);
+      $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
+      $eventCount = new \ChurchCRM\model\ChurchCRM\EventCountName();
+      $eventCount->setEventtypeid($theID);
+      $eventCount->setCountname($newCTName);
+      $eventCount->save();
+      break;
 
         case 'NAME':
             $editing = 'FALSE';
@@ -54,10 +55,19 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
 }
 
 // Get data for the form as it now exists.
-$sSQL = "SELECT * FROM event_types WHERE type_id='$tyid'";
-$rsOpps = RunQuery($sSQL);
-$aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-extract($aRow);
+$eventType = EventTypeQuery::create()->findOneById($tyid);
+$aTypeID = $eventType ? $eventType->getId() : null;
+$aTypeName = $eventType ? $eventType->getName() : null;
+$aDefStartTime = $eventType ? $eventType->getDefStartTime() : null;
+$aDefRecurDOW = $eventType ? $eventType->getDefRecurDow() : null;
+$aDefRecurDOM = $eventType ? $eventType->getDefRecurDom() : null;
+$aDefRecurDOY = $eventType ? $eventType->getDefRecurDoy() : null;
+$aDefRecurType = $eventType ? $eventType->getDefRecurType() : null;
+if ($aDefStartTime) {
+  $aStartTimeTokens = explode(':', $aDefStartTime);
+  $aEventStartHour = $aStartTimeTokens[0];
+  $aEventStartMins = $aStartTimeTokens[1];
+}
 $aTypeID = $type_id;
 $aTypeName = $type_name;
 $aDefStartTime = $type_defstarttime;
@@ -85,20 +95,17 @@ switch ($aDefRecurType) {
         $recur = gettext('None');
 }
 
-// Get a list of the attendance counts currently associated with thisevent type
-$cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . InputUtils::legacyFilterInput($aTypeID, 'int') . "' ORDER BY evctnm_countid";
-$cOpps = RunQuery($cSQL);
-$numCounts = mysqli_num_rows($cOpps);
+// Get a list of the attendance counts currently associated with this event type
+$counts = \ChurchCRM\model\ChurchCRM\EventCountNameQuery::create()->filterByEventtypeid($aTypeID)->orderByCountid()->find();
+$numCounts = $counts->count();
 $nr = $numCounts + 2;
-$cCountName = '';
+$cCountID = [];
+$cCountName = [];
 if ($numCounts) {
-    $cCountName = '';
-    for ($c = 1; $c <= $numCounts; $c++) {
-        $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
-        extract($cRow);
-        $cCountID[$c] = $evctnm_countid;
-        $cCountName[$c] = $evctnm_countname;
-    }
+  foreach ($counts as $i => $count) {
+    $cCountID[$i+1] = $count->getCountid();
+    $cCountName[$i+1] = $count->getCountname();
+  }
 }
 
 // Construct the form
@@ -147,23 +154,23 @@ if ($numCounts) {
     <?php
     for ($c = 1; $c <= $numCounts; $c++) {
         ?>
-      <tr>
+      <tr data-cy="attendance-count-row">
         <td class="TextColumn" width="35%"><?= $cCountName[$c] ?></td>
         <td class="TextColumn" width="50%">
-          <button type="submit" name="Action" value="DELETE_<?=  $cCountID[$c] ?>" class="btn btn-default"><?= gettext('Remove') ?></button>
+          <button type="submit" name="Action" value="DELETE_<?=  $cCountID[$c] ?>" class="btn btn-default" data-cy="remove-attendance-count"><?= gettext('Remove') ?></button>
         </td>
       </tr>
         <?php
     }
     ?>
-      <tr>
-        <td class="TextColumn" width="35%">
-           <input class='form-control' type="text" name="newCountName" length="20" placeholder="New Attendance Count" />
-        </td>
-        <td class="TextColumn" width="50%">
-           <button type="submit" name="Action" value="ADD" class="btn btn-default"><?= gettext('Add counter') ?></button>
-        </td>
-      </tr>
+    <tr>
+      <td class="TextColumn" width="35%">
+        <input class='form-control' type="text" name="newCountName" length="20" placeholder="New Attendance Count" data-cy="attendance-count-input" />
+      </td>
+      <td class="TextColumn" width="50%">
+        <button type="submit" name="Action" value="ADD" class="btn btn-default" data-cy="add-attendance-count"><?= gettext('Add counter') ?></button>
+      </td>
+    </tr>
 </table>
 </form>
 </div>
