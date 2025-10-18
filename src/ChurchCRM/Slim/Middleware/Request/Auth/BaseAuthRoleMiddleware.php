@@ -8,11 +8,15 @@ use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
-abstract class BaseAuthRoleMiddleware
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Http\Message\ResponseInterface;
+
+abstract class BaseAuthRoleMiddleware implements MiddlewareInterface
 {
     protected User $user;
 
-    public function __invoke(Request $request, RequestHandler $handler): Response
+    public function process(Request $request, RequestHandlerInterface $handler): ResponseInterface
     {
         try {
             $this->user = AuthenticationManager::getCurrentUser();
