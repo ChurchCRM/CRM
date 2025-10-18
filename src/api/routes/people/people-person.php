@@ -6,7 +6,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
+use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -67,7 +67,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderJSON($response, ['success' => $person->deletePhoto()]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
-})->add(PersonAPIMiddleware::class);
+})->add(PersonMiddleware::class);
 
 function setPersonRoleAPI(Request $request, Response $response, array $args): Response
 {
