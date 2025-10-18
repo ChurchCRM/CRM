@@ -126,7 +126,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $group = GroupQuery::create()->findOneById($groupID);
         $group->setName($input['groupName']);
         $group->setType($input['groupType']);
-        $group->setDescription($input['description']);
+    $group->setDescription(htmlspecialchars($input['description'] ?? '', ENT_QUOTES, 'UTF-8'));
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });

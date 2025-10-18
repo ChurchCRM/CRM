@@ -15,7 +15,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody();
         $deposit = new Deposit();
         $deposit->setType($input['depositType']);
-        $deposit->setComment($input['depositComment']);
+    $deposit->setComment(htmlspecialchars($input['depositComment'] ?? '', ENT_QUOTES, 'UTF-8'));
         $deposit->setDate($input['depositDate']);
         $deposit->save();
         return SlimUtils::renderJSON($response, $deposit->toArray());
@@ -48,7 +48,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody();
         $appDeposit = DepositQuery::create()->findOneById($id);
         $appDeposit->setType($input['depositType']);
-        $appDeposit->setComment($input['depositComment']);
+    $appDeposit->setComment(htmlspecialchars($input['depositComment'] ?? '', ENT_QUOTES, 'UTF-8'));
         $appDeposit->setDate($input['depositDate']);
         $appDeposit->setClosed($input['depositClosed']);
         $appDeposit->save();
