@@ -107,7 +107,7 @@ class FinancialService
         return SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
     }
 
-    private function validateDate(array $payment): void
+    private function validateDate(object $payment): void
     {
         // Validate Date
         if (isset($payment['Date']) && strlen($payment['Date']) > 0) {
@@ -118,12 +118,12 @@ class FinancialService
         }
     }
 
-    private function validateFund(array $payment): void
+    private function validateFund(object $payment): void
     {
         //Validate that the fund selection is valid:
         //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
         //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
-        $FundSplit = $payment['FundSplit'];
+        $FundSplit = $payment->FundSplit;
         if (count($FundSplit) >= 1 && $FundSplit[0]->FundID !== 'None') { // split
             $nonZeroFundAmountEntered = 0;
             foreach ($FundSplit as $fund) {
@@ -157,7 +157,7 @@ class FinancialService
         return mysqli_fetch_array($rCount)[0];
     }
 
-    public function validateChecks($payment): void
+    public function validateChecks(object $payment): void
     {
         requireUserGroupMembership('bFinance');
         //validate that the payment options are valid
@@ -177,7 +177,7 @@ class FinancialService
         }
     }
 
-    public function processCurrencyDenominations($payment, string $groupKey): void
+    public function processCurrencyDenominations(object $payment, string $groupKey): void
     {
         $currencyDenoms = json_decode($payment->cashDenominations, null, 512, JSON_THROW_ON_ERROR);
         foreach ($currencyDenoms as $cdom) {
@@ -188,7 +188,7 @@ class FinancialService
         }
     }
 
-    public function insertPledgeorPayment($payment)
+    public function insertPledgeorPayment(object $payment)
     {
         requireUserGroupMembership('bFinance');
         // Only set PledgeOrPayment when the record is first created
@@ -249,7 +249,7 @@ class FinancialService
         }
     }
 
-    public function submitPledgeOrPayment(array $payment): string
+    public function submitPledgeOrPayment(object $payment): string
     {
         requireUserGroupMembership('bFinance');
         $this->validateFund($payment);
