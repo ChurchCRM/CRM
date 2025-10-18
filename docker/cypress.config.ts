@@ -4,6 +4,7 @@ import { verifyDownloadTasks } from 'cy-verify-downloads';
 export default defineConfig({
   chromeWebSecurity: false,
   video: false,
+  screenshotOnRunFailure: false,
   pageLoadTimeout: 120000,
   defaultCommandTimeout: 60000,
   requestTimeout: 60000,
@@ -14,7 +15,7 @@ export default defineConfig({
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
   },
-  retries: 4,
+  retries: 2,
   e2e: {
     setupNodeEvents(on, config) {
       // Register download verification tasks

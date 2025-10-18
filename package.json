@@ -18,7 +18,7 @@
     },
     "homepage": "https://churchcrm.io",
     "scripts": {
-        "clean": "rm -rf node_modules/ target src/vendor/ src/skin/external",
+    "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external",
         "build": "run-p build:php build:frontend",
         "build:frontend": "npm run build:js && npm run format:web && npm run sass:build",
         "build:js": "run-p build:js:*",
@@ -33,7 +33,7 @@
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:clean": "rm -rf src/locale/textdomain/**/**/*.po src/locale/textdomain/**/**/*.mo locale/JSONKeys/*.json",
         "locale:download": "npm run locale:clean && grunt updateFromPOeditor && grunt genLocaleJSFiles && npm run locale:audit",
-        "locale:term-extract": "node locale/scripts/locale-term-extract.js",
+        "locale:build": "node locale/scripts/locale-term-extract.js",
         "docker:dev:start": "cp docker/Config.php src/Include/Config.php && docker compose -f docker/docker-compose.dev-php8-apache.yaml up -d --build",
         "docker:dev:stop": "docker compose -f docker/docker-compose.dev-php8-apache.yaml stop",
         "docker:dev:logs": "docker compose -f docker/docker-compose.dev-php8-apache.yaml logs -f --tail=10",

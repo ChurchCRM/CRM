@@ -2,8 +2,8 @@
 
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\iCal;
-use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\Middleware\Api\PublicCalendarMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -12,7 +12,7 @@ $app->group('/public/calendar', function (RouteCollectorProxy $group): void {
     $group->get('/{CalendarAccessToken}/events', 'getJSON');
     $group->get('/{CalendarAccessToken}/ics', 'getICal');
     $group->get('/{CalendarAccessToken}/fullcalendar', 'getPublicCalendarFullCalendarEvents');
-})->add(PublicCalendarAPIMiddleware::class);
+})->add(PublicCalendarMiddleware::class);
 
 function getJSON(Request $request, Response $response): Response
 {

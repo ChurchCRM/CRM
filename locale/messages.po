@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 22:48-0700\n"
+"POT-Creation-Date: 2025-10-18 15:27-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2425,6 +2425,24 @@ msgstr ""
 msgid "by"
 msgstr ""
 
+msgid "Missing"
+msgstr ""
+
+msgid "not found"
+msgstr ""
+
+msgid " has a type mismatch"
+msgstr ""
+
+msgid "External Calendar API is disabled"
+msgstr ""
+
+msgid "Missing calendar access token"
+msgstr ""
+
+msgid "Calendar access token not found"
+msgstr ""
+
 msgid "No logged in user"
 msgstr ""
 
@@ -2453,24 +2471,6 @@ msgid "User must have Manage Groups permission"
 msgstr ""
 
 msgid "User must have MenuOptions permission"
-msgstr ""
-
-msgid "Missing"
-msgstr ""
-
-msgid "not found"
-msgstr ""
-
-msgid " has a type mismatch"
-msgstr ""
-
-msgid "External Calendar API is disabled"
-msgstr ""
-
-msgid "Missing calendar access token"
-msgstr ""
-
-msgid "Calendar access token not found"
 msgstr ""
 
 msgid "is disabled"
@@ -3081,6 +3081,9 @@ msgstr ""
 msgid "Family List Columns"
 msgstr ""
 
+msgid "Maximum number of log files to keep"
+msgstr ""
+
 msgid "Church Information"
 msgstr ""
 
@@ -3220,6 +3223,12 @@ msgid "PHP Max Execution Time is too Short"
 msgstr ""
 
 msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr ""
+
+msgid "Too Many Log Files"
+msgstr ""
+
+msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
 msgstr ""
 
 msgid "PHP Max File size too small"

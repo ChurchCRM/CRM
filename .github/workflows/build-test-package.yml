@@ -113,11 +113,11 @@ jobs:
     - name: List build artifacts
       run: |
         echo "📦 Build artifacts created:"
-        if [ -d "target" ]; then
-          ls -la target/
+        if [ -d "temp" ]; then
+          ls -la temp/
           echo ""
           echo "📊 File sizes:"
-          du -h target/*
+          du -h temp/*
         else
           echo "❌ No target directory found"
           exit 1
@@ -132,7 +132,7 @@ jobs:
               (github.event_name == 'pull_request' && 
                format('ChurchCRM-{0}-PR{1}', steps.package-version.outputs.current-version, github.event.number) ||
                format('ChurchCRM-{0}-{1}', steps.package-version.outputs.current-version, steps.vars.outputs.safe_branch)) }}
-        path: target/ChurchCRM-*.zip
+        path: temp/ChurchCRM-*.zip
         retention-days: 90
         if-no-files-found: error
 
@@ -165,12 +165,12 @@ jobs:
       if: github.ref == 'refs/heads/master' && github.event_name == 'push' && steps.src-changes.outputs.create_release == 'true'
       run: |
         echo "📋 Verifying files for draft release..."
-        if [ -d "target" ]; then
-          echo "✅ Target directory exists"
-          ls -la target/
+        if [ -d "temp" ]; then
+          echo "✅ Temp directory exists"
+          ls -la temp/
           
           # Find the zip file that will be attached
-          zip_files=$(find target -name "ChurchCRM-*.zip" -type f)
+          zip_files=$(find temp -name "ChurchCRM-*.zip" -type f)
           if [ -n "$zip_files" ]; then
             echo "✅ Found zip files to attach:"
             for zip_file in $zip_files; do
@@ -178,11 +178,11 @@ jobs:
               echo "  📦 $(basename "$zip_file") ($file_size)"
             done
           else
-            echo "❌ No ChurchCRM-*.zip files found in target directory!"
+            echo "❌ No ChurchCRM-*.zip files found in temp directory!"
             exit 1
           fi
         else
-          echo "❌ Target directory does not exist!"
+          echo "❌ Temp directory does not exist!"
           exit 1
         fi
 
@@ -225,7 +225,7 @@ jobs:
           *Built automatically from commit ${{ github.sha }}*
           
           **Note:** This is a draft release. Review the changes above and publish when ready.
-        files: target/ChurchCRM-*.zip
+        files: temp/ChurchCRM-*.zip
         draft: true
         prerelease: false
       env:
@@ -256,9 +256,9 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
         fi
         
-        if [ -d "target" ]; then
+        if [ -d "temp" ]; then
           echo "**📦 Artifacts Created:**" >> $GITHUB_STEP_SUMMARY
-          for file in target/ChurchCRM-*.zip; do
+          for file in temp/ChurchCRM-*.zip; do
             if [ -f "$file" ]; then
               size=$(ls -lh "$file" | awk '{print $5}')
               echo "- 📄 \`$(basename "$file")\` ($size)" >> $GITHUB_STEP_SUMMARY
