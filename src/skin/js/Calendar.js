@@ -94,6 +94,10 @@ function deleteCalendar() {
             eventSource.remove();
         }
         initializeFilterSettings();
+        // Wait 1 second before reloading to allow backend to update
+        setTimeout(function () {
+            window.location.reload();
+        }, 1000);
     });
 }
 
@@ -247,19 +251,50 @@ window.calendarPropertiesModal = {
                 window.calendarPropertiesModal.calendar.Id +
                 "/NewAccessToken",
         }).done(function (newcalendar) {
-            $(window.calendarPropertiesModal.modal)
-                .find(".bootbox-body")
-                .html(
-                    window.calendarPropertiesModal.getBootboxContent(
-                        newcalendar,
-                    ),
-                );
+            // Update modal content
+            var closeBtn = $(
+                '<button class="btn btn-primary" style="margin-top:15px;float:right;">' +
+                    i18next.t("Close") +
+                    "</button>",
+            );
+            var $body = $(window.calendarPropertiesModal.modal).find(
+                ".bootbox-body",
+            );
+            $body.html(
+                window.calendarPropertiesModal.getBootboxContent(newcalendar),
+            );
+            $body.append(closeBtn);
             $("#NewAccessToken").click(
                 window.calendarPropertiesModal.newAccessToken,
             );
             $("#DeleteAccessToken").click(
                 window.calendarPropertiesModal.deleteAccessToken,
             );
+            closeBtn.on("click", function () {
+                window.calendarPropertiesModal.modal.modal("hide");
+            });
+
+            // Update the main calendar UI (if present)
+            var calendarRow = $(
+                '[data-calendarid="' + newcalendar.Id + '"]',
+            ).closest("tr");
+            if (calendarRow.length > 0) {
+                var accessTokenCell = calendarRow.find(
+                    ".calendar-access-token-cell",
+                );
+                if (accessTokenCell.length > 0) {
+                    accessTokenCell.text(newcalendar.AccessToken);
+                }
+            }
+
+            // Show a success message
+            bootbox.alert(
+                i18next.t(
+                    "A Calednar access token has been generated and saved.",
+                ),
+            );
+            // Ensure the modal always uses the latest token when reopened
+            window.calendarPropertiesModal.calendar = newcalendar;
         });
     },
     deleteAccessToken: function () {
@@ -270,19 +305,39 @@ window.calendarPropertiesModal = {
                 window.calendarPropertiesModal.calendar.Id +
                 "/AccessToken",
         }).done(function (newcalendar) {
-            $(window.calendarPropertiesModal.modal)
-                .find(".bootbox-body")
-                .html(
-                    window.calendarPropertiesModal.getBootboxContent(
-                        newcalendar,
-                    ),
+            // If calendar is not modifiable or access token is now missing, remove the row from the UI
+            var calendarRow = $(
+                '[data-calendarid="' + newcalendar.Id + '"]',
+            ).closest("tr");
+            if (calendarRow.length > 0) {
+                var accessTokenCell = calendarRow.find(
+                    ".calendar-access-token-cell",
                 );
-            $("#NewAccessToken").click(
-                window.calendarPropertiesModal.newAccessToken,
-            );
-            $("#DeleteAccessToken").click(
-                window.calendarPropertiesModal.deleteAccessToken,
-            );
+                if (accessTokenCell.length > 0) {
+                    accessTokenCell.text("");
+                } else {
+                    // If no cell, remove the row if calendar is not modifiable or access token is missing
+                    if (
+                        !window.CRM.calendarJSArgs.isModifiable ||
+                        !newcalendar.AccessToken
+                    ) {
+                        calendarRow.remove();
+                    }
+                }
+            }
+
+            // Remove modal after delete for better UX and ARIA compliance
+            if (window.calendarPropertiesModal.modal) {
+                window.calendarPropertiesModal.modal.modal("hide");
+            }
+
+            // Focus fix for ARIA warning: move focus to body after modal closes
+            setTimeout(function () {
+                document.body.focus();
+            }, 300);
+
+            // If you want to show a success message, uncomment below:
+            // bootbox.alert(i18next.t('Access token deleted and UI updated.'));
         });
     },
 };
@@ -538,8 +593,17 @@ function registerCalendarSelectionEvents() {
             method: "GET",
             path: "calendars/" + $(this).data("calendarid"),
         }).done(function (data) {
-            var calendar = data.Calendars[0];
-            window.calendarPropertiesModal.show(calendar);
+            var calendar =
+                data.Calendars && data.Calendars[0] ? data.Calendars[0] : null;
+            if (calendar && typeof calendar.AccessToken !== "undefined") {
+                window.calendarPropertiesModal.show(calendar);
+            } else {
+                bootbox.alert(
+                    i18next.t(
+                        "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly.",
+                    ),
+                );
+            }
         });
     });
 
