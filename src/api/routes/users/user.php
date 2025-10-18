@@ -1,8 +1,8 @@
 <?php
 
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\Middleware\Api\UserMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -10,7 +10,7 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->post('/apikey/regen', 'genAPIKey');
     $group->post('/config/{key}', 'updateUserConfig');
-})->add(UserAPIMiddleware::class);
+})->add(UserMiddleware::class);
 
 function genAPIKey(Request $request, Response $response, array $args): Response
 {

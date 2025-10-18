@@ -9,7 +9,7 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\model\ChurchCRM\Event;
-use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\VersionUtils;
 use Propel\Runtime\Collection\ObjectCollection;
 
 // phpcs:disable Squiz.Classes.ValidClassName
@@ -23,7 +23,7 @@ class iCal
         $this->eventsArray = $Events;
         $this->icsHeader = "BEGIN:VCALENDAR\r\n" .
                     "VERSION:2.0\r\n" .
-                    'PRODID:-//ChurchCRM/CRM//NONSGML v' . SystemService::getInstalledVersion() . "//EN\r\n" .
+                    'PRODID:-//ChurchCRM/CRM//NONSGML v' . VersionUtils::getInstalledVersion() . "//EN\r\n" .
                     "CALSCALE:GREGORIAN\r\n" .
                     "METHOD:PUBLISH\r\n" .
                     'X-WR-CALNAME:' . $CalendarName . "\r\n" .

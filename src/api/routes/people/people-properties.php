@@ -5,10 +5,10 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordProperty;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
-use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
-use ChurchCRM\Slim\Middleware\Request\PropertyAPIMiddleware;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
+use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
+use ChurchCRM\Slim\Middleware\Api\PropertyMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -16,10 +16,10 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/people/properties', function (RouteCollectorProxy $group): void {
-    $personPropertyAPIMiddleware = new PropertyAPIMiddleware('p');
-    $personAPIMiddleware = new PersonAPIMiddleware();
-    $familyPropertyAPIMiddleware = new PropertyAPIMiddleware('f');
-    $familyAPIMiddleware = new FamilyAPIMiddleware();
+    $personPropertyAPIMiddleware = new PropertyMiddleware('p');
+    $personAPIMiddleware = new PersonMiddleware();
+    $familyPropertyAPIMiddleware = new PropertyMiddleware('f');
+    $familyAPIMiddleware = new FamilyMiddleware();
 
     $group->get('/person', 'getAllPersonProperties');
     $group->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);

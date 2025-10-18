@@ -3,14 +3,16 @@
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\model\ChurchCRM\EventQuery;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use Laminas\Diactoros\Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Http\Message\ResponseInterface;
 
-class EventsMiddleware
+class EventsMiddleware implements MiddlewareInterface
 {
-    public function __invoke(Request $request, RequestHandler $handler): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $eventId = SlimUtils::getRouteArgument($request, 'id');
         if (empty(trim($eventId))) {

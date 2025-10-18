@@ -1,9 +1,8 @@
 name: Locale POEditor Download and Audit 
+permissions:
+  contents: write
 
 on:
-  push:
-    paths:
-      - 'locale/messages.po'
   schedule:
     # Run daily at midnight UTC
     - cron: "0 0 * * *"
@@ -102,9 +101,118 @@ jobs:
     - name: Download locales from POEditor
       if: inputs.operation_mode != 'audit-only'
       run: |
+        set -e  # Exit on any command failure
         echo "🌍 Downloading locales from POEditor..."
-        npm run locale:download
-        echo "✅ Locale download completed"
+        
+        # Run individual steps with error checking
+        echo "Step 1: Cleaning existing locales..."
+        npm run locale:clean
+        
+        echo "Step 2: Updating from POEditor..."
+        grunt updateFromPOeditor
+        
+        echo "Step 3: Generating locale JS files..."
+        grunt genLocaleJSFiles
+        
+        echo "Step 4: Running locale audit..."
+        npm run locale:audit
+        
+        echo "✅ Locale download completed successfully"
+
+    - name: Validate locale download integrity
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "🔍 Validating locale download integrity..."
+        
+        # Check if any JSON files were created
+        json_count=$(find locale/JSONKeys -name "*.json" -type f | wc -l)
+        echo "Found $json_count JSON locale files"
+        
+        if [ "$json_count" -eq 0 ]; then
+          echo "❌ ERROR: No JSON locale files found after download!"
+          exit 1
+        fi
+        
+        # Check for completely empty JSON files (which shouldn't exist)
+        empty_files=$(find locale/JSONKeys -name "*.json" -type f -empty)
+        if [ -n "$empty_files" ]; then
+          echo "❌ ERROR: Found empty JSON locale files:"
+          echo "$empty_files"
+          echo "This indicates a download failure for these locales."
+          exit 1
+        fi
+        
+        # Check for JSON files that only contain whitespace or are malformed
+        invalid_files=""
+        for json_file in locale/JSONKeys/*.json; do
+          if [ -f "$json_file" ]; then
+            # Check if file contains valid JSON (at minimum empty object {})
+            if ! python3 -m json.tool "$json_file" > /dev/null 2>&1; then
+              # If not valid JSON, check if it's just empty/whitespace
+              if [ ! -s "$json_file" ] || [ "$(cat "$json_file" | tr -d '[:space:]')" = "" ]; then
+                invalid_files="$invalid_files\n$(basename "$json_file")"
+              fi
+            fi
+          fi
+        done
+        
+        if [ -n "$invalid_files" ]; then
+          echo "❌ ERROR: Found invalid/empty JSON locale files:"
+          echo -e "$invalid_files"
+          echo "This indicates POEditor download failures. Failing the job."
+          exit 1
+        fi
+        
+        echo "✅ Locale download integrity validation passed"
+
+    - name: Check for locale regressions
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "🔍 Checking for locale regressions (files that lost content)..."
+        
+        # Get list of files that were deleted or significantly reduced
+        regression_files=""
+        
+        # Check git diff for files that went from having content to being empty
+        deleted_content=$(git diff --name-only --diff-filter=M | grep "locale/JSONKeys/.*\.json$" || true)
+        
+        if [ -n "$deleted_content" ]; then
+          for file in $deleted_content; do
+            # Check if file exists and is now empty/small but was larger before
+            if [ -f "$file" ]; then
+              current_size=$(wc -c < "$file" 2>/dev/null || echo "0")
+              # Get the size of the file in the previous commit
+              previous_size=$(git show HEAD~1:"$file" 2>/dev/null | wc -c || echo "0")
+              
+              # If current file is empty or very small (< 50 bytes) but previous was substantial (> 500 bytes)
+              if [ "$current_size" -lt 50 ] && [ "$previous_size" -gt 500 ]; then
+                regression_files="$regression_files\n  - $file (was ${previous_size} bytes, now ${current_size} bytes)"
+              fi
+            fi
+          done
+        fi
+        
+        if [ -n "$regression_files" ]; then
+          echo "❌ ERROR: Detected locale regression - files lost substantial content:"
+          echo -e "$regression_files"
+          echo ""
+          echo "This suggests POEditor download failed for these locales."
+          echo "The job will fail to prevent loss of existing translations."
+          exit 1
+        fi
+        
+        echo "✅ No locale regressions detected"
+
+    - name: Show download summary
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "📊 Download Summary:"
+        echo "Total JSON files: $(find locale/JSONKeys -name "*.json" -type f | wc -l)"
+        echo "Non-empty JSON files: $(find locale/JSONKeys -name "*.json" -type f ! -empty | wc -l)"
+        echo "Files with substantial content (>100 bytes): $(find locale/JSONKeys -name "*.json" -type f -exec wc -c {} \; | awk '$1 > 100' | wc -l)"
+        echo ""
+        echo "Git status after download:"
+        git status --porcelain locale/
 
     - name: Check for changes
       if: inputs.operation_mode != 'audit-only'
@@ -171,6 +279,8 @@ jobs:
       run: |
         echo "## 📊 Workflow Results"
         echo "- **Operation mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
+        echo "- **Download validation**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
+        echo "- **Regression check**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
         echo "- **Changes detected**: ${{ inputs.operation_mode == 'audit-only' && 'N/A (audit-only)' || steps.changes.outputs.has_changes }}"
         echo "- **PR created**: ${{ inputs.operation_mode == 'audit-only' && 'No (audit-only)' || ((steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch') && 'Yes' || 'No') }}"
         echo "- **Branch**: ${{ inputs.operation_mode == 'audit-only' && 'N/A' || format('locale/{0}', steps.package-version.outputs.current-version) }}"
