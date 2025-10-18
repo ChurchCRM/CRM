@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "5.20.0",
+    "version": "5.21.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -92,11 +92,14 @@
         "@types/jquery": "^3.5.32",
         "@types/react": "^18.3.18",
         "@types/react-dom": "^18.3.5",
+        "cy-verify-downloads": "^0.2.6",
+        "cypress": "^15.4.0",
         "grunt": "^1.6.1",
         "grunt-cli": "^1.5.0",
         "grunt-contrib-compress": "^2.0.0",
         "grunt-contrib-copy": "^1.0.0",
         "grunt-curl": "^2.5.1",
+        "grunt-poeditor-gd": "^0.2.1",
         "i18next-conv": "^15.1.0",
         "i18next-parser": "^9.3.0",
         "mysql2": "^3.15.2",
@@ -108,10 +111,5 @@
         "typescript": "^5.7.2",
         "webpack": "^5.97.1",
         "webpack-cli": "^5.0.0"
-    },
-    "optionalDependencies": {
-        "cy-verify-downloads": "^0.2.6",
-        "cypress": "^15.4.0",
-        "grunt-poeditor-gd": "^0.2.1"
     }
 }
