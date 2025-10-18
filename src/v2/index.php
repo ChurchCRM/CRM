@@ -3,6 +3,7 @@
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -16,7 +17,6 @@ $basePath = ChurchCRM\Slim\SlimUtils::getBasePath('/v2');
 
 $container = new ContainerBuilder();
 // Register custom error handlers
-SlimUtils::registerCustomErrorHandlers($container);
 
 AppFactory::setContainer($container);
 $app = AppFactory::create();
@@ -26,11 +26,12 @@ $app->setBasePath($basePath);
 $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
-$app->add(SlimUtils::corsMiddleware());
+$app->add(new CorsMiddleware());
 
 // Add Slim error middleware for proper error handling
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
+\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 require __DIR__ . '/routes/common/mvc-helper.php';
 require __DIR__ . '/routes/admin/admin.php';

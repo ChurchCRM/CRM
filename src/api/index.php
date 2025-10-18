@@ -1,7 +1,13 @@
 <?php
+use ChurchCRM\Service\DepositService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\SystemService;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -9,14 +15,16 @@ require_once '../Include/Config.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Use SlimUtils to get base path, default to /api
-$basePath = ChurchCRM\Slim\SlimUtils::getBasePath('/api');
+$basePath = SlimUtils::getBasePath('/api');
 
 
 $container = new ContainerBuilder();
-require __DIR__ . '/dependencies.php';
+$container->set('PersonService', new PersonService());
+$container->set('GroupService', new GroupService());
+$container->set('FinancialService', new FinancialService());
+$container->set('SystemService', new SystemService());
+$container->set('DepositService', new DepositService());
 $container->compile();
-// Register custom error handlers
-SlimUtils::registerCustomErrorHandlers($container);
 
 AppFactory::setContainer($container);
 $app = AppFactory::create();
@@ -26,12 +34,12 @@ $app->setBasePath($basePath);
 $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
-$app->add(SlimUtils::corsMiddleware());
+$app->add(new CorsMiddleware());
 
 // Add Slim error middleware for proper error handling
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-// Log errors to file
 SlimUtils::setupErrorLogger($errorMiddleware);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 // Group routes for better organization
 require __DIR__ . '/routes/calendar/events.php';

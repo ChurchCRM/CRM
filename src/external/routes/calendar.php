@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
+use ChurchCRM\Slim\Middleware\Api\PublicCalendarMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
@@ -11,7 +11,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->group('/calendars', function (RouteCollectorProxy $group): void {
     $group->get('/{CalendarAccessToken}', 'serveCalendarPage');
     $group->get('/{CalendarAccessToken}/', 'serveCalendarPage');
-})->add(PublicCalendarAPIMiddleware::class);
+})->add(PublicCalendarMiddleware::class);
 
 function serveCalendarPage(Request $request, Response $response, array $args): Response
 {

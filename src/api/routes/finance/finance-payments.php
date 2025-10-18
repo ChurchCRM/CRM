@@ -55,7 +55,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $newRow['Nondeductible'] = $row->getNondeductible();
             $newRow['Schedule'] = $row->getSchedule();
             $newRow['Method'] = $row->getMethod();
-            $newRow['Comment'] = $row->getComment();
+            $newRow['Comment'] = htmlspecialchars($row->getComment() ?? '', ENT_QUOTES, 'UTF-8');
             $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
             $newRow['Date'] = $row->getDate('Y-m-d');
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');

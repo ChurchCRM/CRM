@@ -95,59 +95,7 @@ class FinancialService
 
         return $deposit_total;
     }
-
-    /**
-     * @return \stdClass[]
-     */
-    public function getPayments($depID = null): array
-    {
-        requireUserGroupMembership('bFinance');
-        $sSQL = 'SELECT * from pledge_plg
-            INNER JOIN
-            donationfund_fun
-            ON
-            pledge_plg.plg_fundID = donationfund_fun.fun_ID';
-
-        if ($depID) {
-            $sSQL .= ' WHERE plg_depID = ' . $depID;
-        }
-        $rsDep = RunQuery($sSQL);
-
-        $payments = [];
-        while ($aRow = mysqli_fetch_array($rsDep)) {
-            extract($aRow);
-            $family = FamilyQuery::create()->findOneById($plg_FamID);
-            $values = new \stdClass();
-            $values->plg_plgID = $plg_plgID;
-            $values->plg_FamID = $plg_FamID;
-            $values->familyString = $family->getFamilyString();
-            $values->plg_FYID = $plg_FYID;
-            $values->FiscalYear = MakeFYString($plg_FYID ? (int) $plg_FYID : null);
-            $values->plg_date = $plg_date;
-            $values->plg_amount = $plg_amount;
-            $values->plg_schedule = $plg_schedule;
-            $values->plg_method = $plg_method;
-            $values->plg_comment = $plg_comment;
-            $values->plg_DateLastEdited = $plg_DateLastEdited;
-            $values->plg_EditedBy = $plg_EditedBy;
-            $values->plg_PledgeOrPayment = $plg_PledgeOrPayment;
-            $values->plg_fundID = $plg_fundID;
-            $values->fun_Name = $fun_Name;
-            $values->plg_depID = $plg_depID;
-            $values->plg_CheckNo = $plg_CheckNo;
-            $values->plg_Problem = $plg_Problem;
-            $values->plg_scanString = $plg_scanString;
-            $values->plg_aut_ID = $plg_aut_ID;
-            $values->plg_aut_Cleared = $plg_aut_Cleared;
-            $values->plg_aut_ResultID = $plg_aut_ResultID;
-            $values->plg_NonDeductible = $plg_NonDeductible;
-            $values->plg_GroupKey = $plg_GroupKey;
-
-            $payments[] = $values;
-        }
-
-        return $payments;
-    }
+        // ...existing code...
 
     public function getPaymentViewURI(string $groupKey): string
     {
@@ -162,8 +110,8 @@ class FinancialService
     private function validateDate(array $payment): void
     {
         // Validate Date
-        if (strlen($payment->Date) > 0) {
-            [$iYear, $iMonth, $iDay] = sscanf($payment->Date, '%04d-%02d-%02d');
+        if (isset($payment['Date']) && strlen($payment['Date']) > 0) {
+            [$iYear, $iMonth, $iDay] = sscanf($payment['Date'], '%04d-%02d-%02d');
             if (!checkdate($iMonth, $iDay, $iYear)) {
                 throw new \Exception('Invalid Date');
             }
