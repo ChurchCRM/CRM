@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware\Request;
+namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Slim\SlimUtils;
@@ -12,8 +12,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
 
-
-class PropertyAPIMiddleware implements MiddlewareInterface
+class PropertyMiddleware implements MiddlewareInterface
 {
     protected string $type;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware\Request;
+namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Calendar;
@@ -18,7 +18,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class PublicCalendarAPIMiddleware implements MiddlewareInterface
+class PublicCalendarMiddleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {

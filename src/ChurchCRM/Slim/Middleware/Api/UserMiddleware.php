@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware\Request;
+namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\UserQuery;
@@ -12,8 +12,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ResponseInterface;
 
-
-class UserAPIMiddleware implements MiddlewareInterface
+class UserMiddleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
