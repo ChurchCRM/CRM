@@ -3,6 +3,7 @@
 namespace ChurchCRM\Slim;
 
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -50,13 +51,11 @@ class SlimUtils
     /**
      * Setup Monolog error handler for Slim error middleware
      */
-    public static function setupErrorLogger($errorMiddleware, $logPath = null)
+    public static function setupErrorLogger($errorMiddleware)
     {
-        if ($logPath === null) {
-            $logPath = __DIR__ . '/../../logs/slim-error.log';
-        }
+        $logPath = LoggerUtils::buildLogFilePath('slim-error');
         $logger = new Logger('slim');
-        $logger->pushHandler(new StreamHandler($logPath, Logger::ERROR));
+        $logger->pushHandler(new StreamHandler($logPath, LoggerUtils::getLogLevel()));
         $errorMiddleware->setDefaultErrorHandler(function (
             Request $request,
             Throwable $exception,
