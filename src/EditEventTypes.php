@@ -1,10 +1,13 @@
 <?php
 
+
 require_once 'Include/Config.php';
 require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
+use ChurchCRM\model\ChurchCRM\EventCountName;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -18,13 +21,13 @@ $tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
 
 if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
   $ctid = InputUtils::legacyFilterInput(mb_substr($_POST['Action'], 7), 'int');
-  \ChurchCRM\model\ChurchCRM\EventCountNameQuery::create()->filterByCountid($ctid)->delete();
+  EventCountNameQuery::create()->filterByCountid($ctid)->delete();
 } else {
     switch ($_POST['Action']) {
     case 'ADD':
       $newCTName = InputUtils::legacyFilterInput($_POST['newCountName']);
       $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
-      $eventCount = new \ChurchCRM\model\ChurchCRM\EventCountName();
+  $eventCount = new EventCountName();
       $eventCount->setEventtypeid($theID);
       $eventCount->setCountname($newCTName);
       $eventCount->save();
@@ -96,7 +99,7 @@ switch ($aDefRecurType) {
 }
 
 // Get a list of the attendance counts currently associated with this event type
-$counts = \ChurchCRM\model\ChurchCRM\EventCountNameQuery::create()->filterByEventtypeid($aTypeID)->orderByCountid()->find();
+$counts = EventCountNameQuery::create()->filterByEventtypeid($aTypeID)->orderByCountid()->find();
 $numCounts = $counts->count();
 $nr = $numCounts + 2;
 $cCountID = [];
