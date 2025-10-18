@@ -83,10 +83,18 @@ window.CRM.refreshAllFullCalendarSources = function () {
 };
 
 function deleteCalendar() {
-    window.CRM.fullcalendar
-        .getEventSourceById(window.calendarPropertiesModal.calendar.Id)
-        .remove();
-    initializeFilterSettings();
+    window.CRM.APIRequest({
+        method: "DELETE",
+        path: "calendars/" + window.calendarPropertiesModal.calendar.Id,
+    }).done(function () {
+        var eventSource = window.CRM.fullcalendar.getEventSourceById(
+            window.calendarPropertiesModal.calendar.Id,
+        );
+        if (eventSource) {
+            eventSource.remove();
+        }
+        initializeFilterSettings();
+    });
 }
 
 window.calendarPropertiesModal = {
@@ -271,6 +279,9 @@ window.calendarPropertiesModal = {
                 );
             $("#NewAccessToken").click(
                 window.calendarPropertiesModal.newAccessToken,
+            );
+            $("#DeleteAccessToken").click(
+                window.calendarPropertiesModal.deleteAccessToken,
             );
         });
     },
