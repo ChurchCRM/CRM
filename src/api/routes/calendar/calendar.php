@@ -100,6 +100,11 @@ function getUserCalendars(Request $request, Response $response, array $args): Re
         throw new HttpNotFoundException($request, 'No calendars returned');
     }
 
+    // Prevent caching of calendar API responses
+    $response = $response
+        ->withHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+        ->withHeader('Pragma', 'no-cache');
+
     return SlimUtils::renderStringJSON($response, $Calendars->toJSON());
 }
 
