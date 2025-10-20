@@ -103,6 +103,7 @@
         "grunt-poeditor-gd": "^0.2.1",
         "i18next-conv": "^15.1.0",
         "i18next-parser": "^9.3.0",
+        "mini-css-extract-plugin": "^2.9.4",
         "mysql2": "^3.15.2",
         "node-sha1": "^1.0.1",
         "npm-run-all": "^4.1.5",
