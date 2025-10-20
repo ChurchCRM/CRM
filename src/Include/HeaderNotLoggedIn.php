@@ -18,11 +18,11 @@ if (SystemConfig::debugEnabled()) {
     <!-- jQuery JS -->
     <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
 
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/skin-loggedout.js"></script>
-    
     <!-- Custom ChurchCRM styles -->
     <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/churchcrm.min.css">
-    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/skin-loggedout.css">
+
+    <!-- Webpack bundled assets for logged-out pages (includes Bootstrap, AdminLTE, and FontAwesome) -->
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/skin-loggedout.js"></script>
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
