@@ -615,6 +615,6 @@ function popUp(URL) {
     window.open(
         URL,
         "popup-window",
-        "toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left=100,top=50",
+        "toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left=100,top=50,noopener,noreferrer",
     );
 }
