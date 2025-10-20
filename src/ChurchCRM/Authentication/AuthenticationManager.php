@@ -142,6 +142,16 @@ class AuthenticationManager
 
     public static function validateUserSessionIsActive(bool $updateLastOperationTimestamp = true): bool
     {
+        // Check if an authentication provider is set before attempting validation
+        // This prevents unnecessary logging for public API calls that don't require authentication
+        if (
+            !isset($_SESSION) ||
+            !array_key_exists('AuthenticationProvider', $_SESSION) ||
+            !$_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider
+        ) {
+            return false;
+        }
+
         try {
             $result = self::getAuthenticationProvider()
                 ->validateUserSessionIsActive($updateLastOperationTimestamp);

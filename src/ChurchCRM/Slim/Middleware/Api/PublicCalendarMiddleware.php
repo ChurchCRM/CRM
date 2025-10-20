@@ -1,23 +1,26 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware\Request;
+namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use DateTime;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Laminas\Diactoros\Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
-class PublicCalendarAPIMiddleware
+use Laminas\Diactoros\Response;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Message\ResponseInterface;
+
+class PublicCalendarMiddleware implements MiddlewareInterface
 {
-    public function __invoke(Request $request, RequestHandler $handler): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = new Response();
         if (!SystemConfig::getBooleanValue('bEnableExternalCalendarAPI')) {
@@ -43,7 +46,7 @@ class PublicCalendarAPIMiddleware
         return $handler->handle($request);
     }
 
-    private function getEvents(Request $request, Calendar $calendar)
+    private function getEvents(ServerRequestInterface $request, Calendar $calendar)
     {
         $params = $request->getQueryParams();
         if (isset($params['start'])) {

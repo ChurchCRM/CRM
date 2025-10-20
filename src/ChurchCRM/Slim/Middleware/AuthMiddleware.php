@@ -5,12 +5,14 @@ namespace ChurchCRM\Slim\Middleware;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use Laminas\Diactoros\Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Http\Message\ResponseInterface;
 
-class AuthMiddleware
+class AuthMiddleware implements MiddlewareInterface
 {
-    public function __invoke(Request $request, RequestHandler $handler): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (!str_starts_with($request->getUri()->getPath(), '/api/public')) {
             $apiKey = $request->getHeader('x-api-key');
@@ -36,7 +38,7 @@ class AuthMiddleware
         return $handler->handle($request);
     }
 
-    private function isPath(Request $request, string $pathPart): bool
+    private function isPath(ServerRequestInterface $request, string $pathPart): bool
     {
         $pathAry = explode('/', $request->getUri()->getPath());
         if ($pathAry[0] === $pathPart) {

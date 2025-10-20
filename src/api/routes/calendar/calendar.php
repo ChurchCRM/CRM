@@ -6,7 +6,7 @@ use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use Propel\Runtime\Collection\ObjectCollection;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -99,6 +99,11 @@ function getUserCalendars(Request $request, Response $response, array $args): Re
     if (!$Calendars) {
         throw new HttpNotFoundException($request, 'No calendars returned');
     }
+
+    // Prevent caching of calendar API responses
+    $response = $response
+        ->withHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+        ->withHeader('Pragma', 'no-cache');
 
     return SlimUtils::renderStringJSON($response, $Calendars->toJSON());
 }

@@ -336,7 +336,7 @@ module.exports = function (grunt) {
         compress: {
             zip: {
                 options: {
-                    archive: "target/ChurchCRM-<%= package.version %>.zip",
+                    archive: "temp/ChurchCRM-<%= package.version %>.zip",
                     mode: "zip",
                     pretty: true,
                 },
