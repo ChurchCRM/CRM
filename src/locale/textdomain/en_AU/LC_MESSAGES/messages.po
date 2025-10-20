@@ -32,10 +32,12 @@ msgstr "Unassigned"
 msgid "None"
 msgstr "None"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "Suburb"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "State"
@@ -48,6 +50,7 @@ msgstr "Country"
 msgid "Phone"
 msgstr "Phone"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "Email"
@@ -154,14 +157,17 @@ msgstr "Internationalisation (I18n) support"
 msgid "Church Zip"
 msgstr "Church Postcode"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"
 msgstr "Postcode"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Enter any part of the following: Name, City, State, Postcode, Home Phone, Email, or Work Email."
 
+#. Context: query_qry
 #: 
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Search by any part of Name, City, State, Postcode, Home Phone, Email, or Work Email."

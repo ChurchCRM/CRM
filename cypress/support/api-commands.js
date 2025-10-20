@@ -8,7 +8,7 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-// -- This is a login command --
+// -- Modern API command patterns --
 Cypress.Commands.add(
     "makePrivateAdminAPICall",
     (method, url, body, expectedStatus = 200) => {
@@ -42,16 +42,42 @@ Cypress.Commands.add(
             method: method,
             failOnStatusCode: false,
             url: url,
-            headers: { "content-type": "application/json", "x-api-key": key },
+            headers: { 
+                "content-type": "application/json", 
+                "x-api-key": key 
+            },
             body: body,
         }).then((resp) => {
-            expect(expectedStatus).to.eq(resp.status);
+            expect(resp.status).to.eq(expectedStatus);
 
             if (!resp.body) {
                 return null;
             }
 
-            return JSON.parse(JSON.stringify(resp.body));
+            // More robust response handling
+            try {
+                return typeof resp.body === 'string' ? JSON.parse(resp.body) : resp.body;
+            } catch (e) {
+                // Non-JSON response (like error messages) - return as is
+                return resp.body;
+            }
+        });
+    },
+);
+
+// Modern API testing command with better error handling
+Cypress.Commands.add(
+    "apiRequest",
+    (options) => {
+        const defaultOptions = {
+            failOnStatusCode: false,
+            timeout: 30000,
+        };
+        
+        return cy.request({...defaultOptions, ...options}).then((response) => {
+            // Log response for debugging
+            cy.log(`API ${options.method} ${options.url} - Status: ${response.status}`);
+            return cy.wrap(response);
         });
     },
 );

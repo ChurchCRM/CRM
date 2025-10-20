@@ -8,6 +8,9 @@ node_modules
 BuildConfig.json
 security-checker.phar
 
+# Project temporary files
+temp/
+
 # Uploaded Images
 src/Images/Family
 src/Images/Person
@@ -28,8 +31,6 @@ src/locale/js
 # Configuration files with passwords
 src/Include/Config.php
 
-target
-temp_attach
 src/ChurchCRM/model/ChurchCRM/Base
 src/ChurchCRM/model/ChurchCRM/Map
 src/signatures.json
@@ -40,7 +41,8 @@ src/logs/*.log
 error.log
 
 nbproject/*
-/src/skin/js-react/
+src/skin/js-react/
+src/skin/v2/
 .DS_Store
 
 src/Upgrade/*

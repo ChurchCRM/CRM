@@ -8,7 +8,7 @@ use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Service\TimelineService;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;

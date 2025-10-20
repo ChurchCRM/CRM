@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Standard People", () => {
+describe("Standard People", () => {
     it("Listing all persons", () => {
         cy.loginStandard("v2/people");
         cy.contains("Admin");

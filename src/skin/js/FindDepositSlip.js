@@ -119,7 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done(function (data) {
-            window.location.href = window.CRM.root + "/DepositSlipEditor.php?DepositSlipID="+ data.Id;
+            window.location.href =
+                window.CRM.root +
+                "/DepositSlipEditor.php?DepositSlipID=" +
+                data.Id;
         });
     }
 

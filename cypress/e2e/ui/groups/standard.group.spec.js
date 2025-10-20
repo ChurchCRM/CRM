@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Standard Groups", () => {
+describe("Standard Groups", () => {
     it("Add Group ", () => {
         const uniqueSeed = Date.now().toString();
         const newGroupName = "New Test Group " + uniqueSeed;
@@ -30,7 +30,7 @@ context("Standard Groups", () => {
         cy.contains("Group reports");
         cy.contains("Select the group you would like to report");
         cy.get(".card-body > form").submit();
-        cy.url().should("contains", "GroupReports.php");
+        cy.url().should("contain", "GroupReports.php");
         cy.contains("Select which information you want to include");
     });
 });

@@ -76,7 +76,7 @@ require_once 'Include/Header.php';
             </div>
             <div class="col-lg-4">
               <label for="Comment"><?php echo gettext('Comment:'); ?></label>
-              <input type="text" class="form-control" name="Comment" id="Comment" value="<?php echo $thisDeposit->getComment(); ?>"/>
+              <input type="text" class="form-control" name="Comment" id="Comment" value="<?php echo htmlspecialchars($thisDeposit->getComment(), ENT_QUOTES, 'UTF-8'); ?>"/>
             </div>
             <div class="col-lg-4">
               <label for="Closed"><?php echo gettext('Closed:'); ?></label>

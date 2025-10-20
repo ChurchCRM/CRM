@@ -1939,7 +1939,7 @@
     "View User": "عرض العضو",
     "Invalid request: Missing calendar id": "طلب غير صالح: مفقود معرف التقويم",
     "Not Found: Unknown calendar id": "لم يتم العثور: معرف تقويم غير معروف",
-    "no found or user without an email": "لم يتم العثور على المستخدم أو البريد الإلكتروني دون",
+    "not found or user without an email": "لم يتم العثور على المستخدم أو البريد الإلكتروني دون",
     "UserName not set": "اسم المستخدم لم يحدد",
     "The people and families has been cleared from the database.": "تم مسح الناس والأسر من قاعدة البيانات.",
     "Self Registrations": "التسجيلات النفس",

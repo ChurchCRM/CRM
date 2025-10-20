@@ -1,7 +1,26 @@
-# This is the test docker-compose.yml override file for Github Actions -
-# it is not intended to be used on it's own but instead layered into the
-# normal test docker compose so it can be ran in CI.
+# GitHub Actions specific optimizations
+# This file should be used as an override with the base test compose file
+
 services:
+
   webserver:
-    user: 1001:121
+    # Use specific user for GitHub Actions
+    user: "1001:121"  # GitHub Actions runner user
+    deploy:
+      resources:
+        limits:
+          # GitHub Actions has generous limits
+          memory: 2G
+          cpus: '4.0'
+        reservations:
+          memory: 1G
+          cpus: '2.0'
+
+  mailserver:
+    # Minimal resources for GitHub Actions
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.25'
 

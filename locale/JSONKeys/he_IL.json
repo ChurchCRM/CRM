@@ -1939,7 +1939,7 @@
     "View User": "הצג משתמש",
     "Invalid request: Missing calendar id": "בקשה לא חוקית: מזהה לוח שנה חסר",
     "Not Found: Unknown calendar id": "לא נמצא: מזהה לוח שנה לא מוכר",
-    "no found or user without an email": "לא נמצא או משתמש ללא אימייל",
+    "not found or user without an email": "לא נמצא או משתמש ללא אימייל",
     "UserName not set": "שם משתמש לא הוגדר",
     "The people and families has been cleared from the database.": "האנשים והמשפחות נמחקו ממסד הנתונים",
     "Self Registrations": "הרשמה עצמית",

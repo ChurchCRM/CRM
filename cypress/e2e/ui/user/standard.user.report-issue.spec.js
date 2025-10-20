@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Report Issue", () => {
+describe("Report Issue", () => {
     it("Click Menus to Report issue", () => {
         cy.loginStandard("v2/dashboard");
         cy.get(".fa-headset").click();

@@ -1939,7 +1939,7 @@
     "View User": "Vizualizare utilizator",
     "Invalid request: Missing calendar id": "Solicitare invalidă: Lipsește id calendar",
     "Not Found: Unknown calendar id": "Negăsit: Id calendar necunoscut",
-    "no found or user without an email": "negăsit sau utilizator fără email",
+    "not found or user without an email": "negăsit sau utilizator fără email",
     "UserName not set": "UserName nesetat",
     "The people and families has been cleared from the database.": "Persoanele și familiile au fost șterse din baza de date",
     "Self Registrations": "Înregistrare personală",

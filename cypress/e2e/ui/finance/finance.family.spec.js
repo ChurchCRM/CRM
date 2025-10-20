@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Finance Family", () => {
+describe("Finance Family", () => {
     it("View a Family", () => {
         cy.loginAdmin("v2/family/1");
         cy.contains("Campbell - Family");
