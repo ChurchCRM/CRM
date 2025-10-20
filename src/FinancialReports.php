@@ -33,7 +33,7 @@ require_once 'Include/Header.php';
 
 // No Records Message if previous report returned no records.
 if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] === 'NoRows') {
-    echo '<h3><span style="color: red;">' . gettext('No records were returned from the previous report.') . '</span></h3>';
+    echo '<h3><span class="text-error">' . gettext('No records were returned from the previous report.') . '</span></h3>';
 }
 
 if ($sReportType == '') {
@@ -104,7 +104,7 @@ if ($sReportType == '') {
         <tr>
                 <td class="LabelColumn"><?= gettext('Classification') ?>:<br></td>
                 <td class=TextColumnWithBottomBorder><div class=SmallText>
-                    </div><select name="classList[]" style="width:100%" multiple id="classList">
+                    </div><select name="classList[]" class="width-100pct" multiple id="classList">
                     <?php
                     while ($aRow = mysqli_fetch_array($rsClassifications)) {
                         extract($aRow);
@@ -127,7 +127,7 @@ if ($sReportType == '') {
         $rsFamilies = RunQuery($sSQL); ?>
         <tr><td class=LabelColumn><?= gettext('Filter by Family') ?>:<br></td>
         <td class=TextColumnWithBottomBorder>
-            <select name="family[]" id="family" multiple style="width:100%">
+            <select name="family[]" id="family" multiple class="width-100pct">
         <?php
         // Build Criteria for Head of Household
         if (!$sDirRoleHead) {
@@ -219,7 +219,7 @@ if ($sReportType == '') {
         $rsFunds = RunQuery($sSQL); ?>
 
         <tr><td class="LabelColumn"><?= gettext('Filter by Fund') ?>:<br></td>
-        <td><select name="funds[]" multiple id="fundsList" style="width:100%">
+        <td><select name="funds[]" multiple id="fundsList" class="width-100pct">
         <?php
         while ($aRow = mysqli_fetch_array($rsFunds)) {
             extract($aRow);

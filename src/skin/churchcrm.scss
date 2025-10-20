@@ -27,6 +27,9 @@
 
 // Import ChurchCRM custom styles
 
+// Utility Classes - Reusable CSS classes for common styling patterns
+@include meta.load-css("scss/utility-classes");
+
 @include meta.load-css("scss/dropdowns");
 @include meta.load-css("scss/forms");
 @include meta.load-css("scss/tables");
