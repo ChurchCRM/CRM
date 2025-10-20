@@ -18,11 +18,8 @@ if (SystemConfig::debugEnabled()) {
     <!-- jQuery JS -->
     <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
 
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/skin-loggedout.js"></script>
-    
     <!-- Custom ChurchCRM styles -->
     <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/churchcrm.min.css">
-    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/skin-loggedout.css">
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 

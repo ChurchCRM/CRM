@@ -1,8 +1,6 @@
-// Main entry for all common JS and CSS includes
+// Entry point for skin-related webpack assets.
+// This file is used by webpack.config.js as an entry point for bundling skin/theme resources.
 
-// Import CSP-safe inline style replacements
-import '../src/skin/css/inline-style-replacements.css';
+// TODO: Implement skin asset imports and initialization here as needed.
 
-import 'bootstrap';
-import 'admin-lte';
-import '@fortawesome/fontawesome-free/js/all';
+export {};
