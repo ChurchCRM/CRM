@@ -1939,7 +1939,7 @@
     "View User": "Bekyk gebruiker",
     "Invalid request: Missing calendar id": "Ongeldige versoek: ontbrekende kalender-ID",
     "Not Found: Unknown calendar id": "Nie gevind nie: Onbekende kalender-ID",
-    "no found or user without an email": "geen gevind of gebruiker sonder 'n e-pos nie",
+    "not found or user without an email": "geen gevind of gebruiker sonder 'n e-pos nie",
     "UserName not set": "Gebruikersnaam nie gestel nie",
     "The people and families has been cleared from the database.": "Die mense en gesinne is uit die databasis verwyder.",
     "Self Registrations": "Selfregistrasies",

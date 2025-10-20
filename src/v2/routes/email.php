@@ -5,13 +5,12 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use ChurchCRM\Utils\LoggerUtils;
-use PHPMailer\PHPMailer\PHPMailer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
+use ChurchCRM\Emails\TestEmail;
 
 $app->group('/email', function (RouteCollectorProxy $group): void {
     $group->get('/debug', 'testEmailConnectionMVC')->add(AdminRoleAuthMiddleware::class);
@@ -42,8 +41,6 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
 function testEmailConnectionMVC(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/email/');
-
-    $mailer = new PHPMailer();
     $message = '';
 
     if (empty(SystemConfig::getValue('sSMTPHost'))) {
@@ -51,29 +48,13 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
     } elseif (empty(ChurchMetaData::getChurchEmail())) {
         $message = gettext('Church Email not set, please visit the settings page');
     } else {
-        $mailer->IsSMTP();
-        $mailer->CharSet = 'UTF-8';
-        $mailer->Timeout = intval(SystemConfig::getValue('iSMTPTimeout'));
-        $mailer->Host = SystemConfig::getValue('sSMTPHost');
-        if (SystemConfig::getBooleanValue('bSMTPAuth')) {
-            $mailer->SMTPAuth = true;
-            LoggerUtils::getAppLogger()->debug('SMTP Auth Used');
-            $mailer->Username = SystemConfig::getValue('sSMTPUser');
-            $mailer->Password = SystemConfig::getValue('sSMTPPass');
-        }
-
-        $mailer->SMTPDebug = 3;
-        $mailer->Subject = 'Test SMTP Email';
-        $mailer->setFrom(ChurchMetaData::getChurchEmail());
-        $mailer->addAddress(ChurchMetaData::getChurchEmail());
-        $mailer->Body = 'test email';
-        $mailer->Debugoutput = 'html';
+        $email = new TestEmail([ChurchMetaData::getChurchEmail()]);
     }
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Debug Email Connection'),
-        'mailer'     => $mailer,
+        'mailer'     => $email,
         'message'    => $message,
     ];
 

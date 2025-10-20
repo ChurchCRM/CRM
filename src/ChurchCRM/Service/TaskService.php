@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Notification\UiNotification;
 use ChurchCRM\Tasks\CheckExecutionTimeTask;
+use ChurchCRM\Tasks\CheckLogFilesTask;
 use ChurchCRM\Tasks\CheckUploadSizeTask;
 use ChurchCRM\Tasks\ChurchAddress;
 use ChurchCRM\Tasks\ChurchNameTask;
@@ -52,6 +53,7 @@ class TaskService
             new SecretsConfigurationCheckTask(),
             new PHPPendingDeprecationVersionCheckTask(),
             new PHPZipArchiveCheckTask(),
+            new CheckLogFilesTask(),
         ];
     }
 

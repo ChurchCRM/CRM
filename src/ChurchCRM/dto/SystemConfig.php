@@ -8,7 +8,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use Exception;
 use Monolog\Logger;
 
-class SystemConfig
+class   SystemConfig
 {
     /**
      * @var Config[]|null
@@ -315,6 +315,7 @@ class SystemConfig
             'sDefaultZip'                          => new ConfigItem(2074, 'sDefaultZip', 'text', '', gettext('Default Zip')),
             'sPersonListColumns'                   => new ConfigItem(2075, 'sPersonListColumns', 'json', json_encode(SystemConfig::getPersonListColumns()), gettext('Person List Columns')),
             'sFamilyListColumns'                   => new ConfigItem(2076, 'sFamilyListColumns', 'json', json_encode(SystemConfig::getFamilyListColumns()), gettext('Family List Columns')),
+            'iLogFileThreshold'                    => new ConfigItem(2077, 'iLogFileThreshold', 'number', '100', gettext('Maximum number of log files to keep')),
         ];
     }
 
@@ -335,7 +336,7 @@ class SystemConfig
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Events')             => ['bEnableExternalCalendarAPI', 'bEventsOnDashboardPresence', 'iEventsOnDashboardPresenceTimeOut'],
             gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword', 'bBackupExtraneousImages'],
-            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnableIntegrityCheck', 'iIntegrityCheckInterval', 'sLastIntegrityCheckTimeStamp', 'iPhotoClientCacheDuration', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'iSoftwareUpdateCheckInterval', 'sLastSoftwareUpdateCheckTimeStamp', 'bAllowPrereleaseUpgrade'],
+            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnableIntegrityCheck', 'iIntegrityCheckInterval', 'sLastIntegrityCheckTimeStamp', 'iPhotoClientCacheDuration', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'iSoftwareUpdateCheckInterval', 'sLastSoftwareUpdateCheckTimeStamp', 'bAllowPrereleaseUpgrade', 'iLogFileThreshold'],
         ];
     }
 

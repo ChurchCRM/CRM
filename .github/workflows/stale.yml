@@ -1,19 +1,112 @@
-name: 'Close stale issues and PRs'
+name: 'Manage Stale Issues and PRs'
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
 on:
   schedule:
+    # Run daily at 1:30 AM UTC
     - cron: '30 1 * * *'
+  workflow_dispatch:
+    # Allow manual triggering for testing and immediate cleanup
+    inputs:
+      dry_run:
+        description: 'Dry run - only log what would be done'
+        required: false
+        type: boolean
+        default: false
+      debug_only:
+        description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/stale@v9
+      - name: Manage stale issues and PRs
+        uses: actions/stale@v9
         with:
-            stale-issue-message: 'This issue is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 5 days.'
-            stale-pr-message: 'This PR is stale because it has been open 45 days with no activity. Remove stale label or comment or this will be closed in 10 days.'
-            close-issue-message: 'This issue was closed because it has been stalled for 15 days with no activity.'
-            close-pr-message: 'This PR was closed because it has been stalled for 15 days with no activity.'
-            days-before-issue-stale: 30
-            days-before-pr-stale: 45
-            days-before-issue-close: 15
-            days-before-pr-close: 15
+          # Repository token
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Debug settings - enable for dry run or debug mode
+          debug-only: ${{ inputs.debug_only == true || inputs.dry_run == true }}
+          
+          # Stale detection timing
+          days-before-issue-stale: 30
+          days-before-pr-stale: 45
+          days-before-issue-close: 15
+          days-before-pr-close: 15
+          
+          # Labels
+          stale-issue-label: 'stale'
+          stale-pr-label: 'stale'
+          
+          # Exempt labels - issues with these labels will NEVER be marked as stale
+          # SECURITY PROTECTION: security, vulnerability, cve, security-fix labels are protected
+          exempt-issue-labels: 'pinned,security,vulnerability,cve,bug,enhancement,good first issue,help wanted,priority:high,priority:critical,security-fix'
+          exempt-pr-labels: 'pinned,security,vulnerability,security-fix,work-in-progress,do-not-merge,priority:high,priority:critical'
+          
+          # Custom messages for issues
+          stale-issue-message: |
+            🕐 **This issue is stale** because it has been open for **30 days** with no activity.
+            
+            **To keep this issue active:**
+            - 💬 Add a comment with updates or questions
+            - 🏷️ Remove the `stale` label
+            - 📋 Provide additional details or context
+            
+            **If no activity occurs within 15 days, this issue will be automatically closed.**
+            
+            Thank you for your contribution to ChurchCRM! 🙏
+            
+          close-issue-message: |
+            🔒 **This issue was automatically closed** because it has been **stale for 15 days** with no activity.
+            
+            **Don't worry!** If this issue is still relevant:
+            - 🔄 Feel free to reopen it
+            - 💬 Add new information or context
+            - 📧 Mention a maintainer for review
+            
+            Thank you for your understanding! 🙏
+            
+          # Custom messages for PRs  
+          stale-pr-message: |
+            🕐 **This Pull Request is stale** because it has been open for **45 days** with no activity.
+            
+            **To keep this PR active:**
+            - 💬 Add a comment with updates
+            - 🔄 Push new commits if changes are needed
+            - 🏷️ Remove the `stale` label
+            - 📋 Address any review feedback
+            
+            **If no activity occurs within 15 days, this PR will be automatically closed.**
+            
+            Thank you for your contribution to ChurchCRM! 🙏
+            
+          close-pr-message: |
+            🔒 **This Pull Request was automatically closed** because it has been **stale for 15 days** with no activity.
+            
+            **Your work is still valuable!** If you'd like to continue:
+            - 🔄 Reopen this PR and address any conflicts
+            - 🆕 Create a new PR with updated changes
+            - 💬 Reach out to maintainers for guidance
+            
+            Thank you for your contribution! 🙏
+            
+          # Operation limits (prevent rate limiting)
+          operations-per-run: 100
+          
+          # Remove stale labels when issues/PRs become active again
+          remove-stale-when-updated: true
+          
+          # Don't mark as stale if there are recent comments
+          exempt-draft-pr: true
+          
+          # Additional settings
+          ascending: true
+          start-date: '2020-01-01T00:00:00Z'  # Don't process very old items

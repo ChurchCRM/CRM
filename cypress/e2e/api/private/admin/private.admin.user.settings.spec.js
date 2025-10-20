@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("API Private Admin User", () => {
+describe("API Private Admin User", () => {
     it("Reset User failed logins", () => {
         cy.makePrivateAdminAPICall(
             "POST",

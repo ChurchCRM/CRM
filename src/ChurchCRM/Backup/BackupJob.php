@@ -107,6 +107,7 @@ class BackupJob extends JobBase
     private function createFullArchive(): void
     {
         $imagesAddedToArchive = [];
+        $directoriesAddedToArchive = [];
         $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName . '.tar');
         $phar = new PharData($this->BackupFile->getPathname());
         LoggerUtils::getAppLogger()->debug('Archive opened at: ' . $this->BackupFile->getPathname());
@@ -116,14 +117,22 @@ class BackupJob extends JobBase
         $this->captureSQLFile($SqlFile);
         $phar->addFile($SqlFile, 'ChurchCRM-Database.sql');
         LoggerUtils::getAppLogger()->debug('Database added to archive');
-        $imageFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(SystemURLs::getImagesRoot()));
+        $imageFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(SystemURLs::getImagesRoot()), RecursiveIteratorIterator::SELF_FIRST);
         foreach ($imageFiles as $imageFile) {
-            if ($this->shouldBackupImageFile($imageFile)) {
+            if ($imageFile->isDir()) {
+                // Add directories to preserve structure, even if empty
+                $localName = substr(str_replace(SystemURLs::getDocumentRoot(), '', $imageFile->getRealPath()), 1);
+                if ($localName != 'Images' && $imageFile->getFilename() != '.' && $imageFile->getFilename() != '..') {
+                    $phar->addEmptyDir($localName);
+                    $directoriesAddedToArchive[] = $localName;
+                }
+            } elseif ($this->shouldBackupImageFile($imageFile)) {
                 $localName = substr(str_replace(SystemURLs::getDocumentRoot(), '', $imageFile->getRealPath()), 1);
                 $phar->addFile($imageFile->getRealPath(), $localName);
                 $imagesAddedToArchive[] = $imageFile->getRealPath();
             }
         }
+        LoggerUtils::getAppLogger()->debug('Directories added to archive: ' . join(';', $directoriesAddedToArchive));
         LoggerUtils::getAppLogger()->debug('Images files added to archive: ' . join(';', $imagesAddedToArchive));
         $phar->stopBuffering();
         LoggerUtils::getAppLogger()->debug('Finished creating archive.  Beginning to compress');

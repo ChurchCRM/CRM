@@ -1,0 +1,95 @@
+# Optimized .dockerignore for faster builds and smaller context
+
+# Version control
+../.git
+../.gitignore
+../.gitattributes
+
+# Documentation
+../README.md
+../CHANGELOG.md
+../CONTRIBUTING.md
+../LICENSE
+../*.md
+
+# IDE and editor files
+../.vscode/
+../.idea/
+../*.swp
+../*.swo
+../*~
+
+# OS generated files
+../.DS_Store
+../.DS_Store?
+../._*
+../.Spotlight-V100
+../.Trashes
+../ehthumbs.db
+../Thumbs.db
+
+# Node.js
+../node_modules/
+../npm-debug.log*
+../yarn-debug.log*
+../yarn-error.log*
+../.npm
+../.yarn-integrity
+
+# Dependencies and build artifacts
+../vendor/
+../temp/
+../dist/
+../build/
+
+# Test artifacts
+../cypress/videos/
+../cypress/screenshots/
+../cypress/downloads/
+../coverage/
+../.nyc_output/
+
+# Application specific
+../src/cache/
+../src/logs/
+../src/vendor/
+../*.log
+
+# Environment files (should be mounted, not copied)
+../.env.local
+../.env.*.local
+
+# Temporary files
+../tmp/
+../temp/
+../*.tmp
+../*.temp
+
+# Cache directories
+../.cache/
+../.composer/
+
+# Backup files
+../*.bak
+../*.backup
+../*.old
+
+# Large files that shouldn't be in Docker context
+../*.sql
+../*.dump
+../*.tar.gz
+../*.zip
+
+# CI/CD files (not needed in container)
+../.github/
+../.travis.yml
+../.circleci/
+../azure-pipelines.yml
+
+# Local development
+../docker-compose.override.yml
+
+# Only include the following Dockerfiles in the build context.
+# If you add a new Dockerfile that needs to be included, add it here.
+# Dockerfile.churchcrm-apache-php8-test-debian
+# Dockerfile.churchcrm-apache-php8-dev-debian

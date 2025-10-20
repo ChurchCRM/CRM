@@ -32,10 +32,12 @@ msgstr "कोई नहीं"
 msgid "None"
 msgstr "कोई नहीं"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "शहर"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "\n"
@@ -49,6 +51,7 @@ msgstr "देश"
 msgid "Phone"
 msgstr "फ़ोन"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "ईमेल"
@@ -158,6 +161,7 @@ msgstr "जन्म/वर्षगांठ तिथि"
 msgid "Age / Years Married"
 msgstr "विवाह की आयु/वर्ष"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Family Role"
 msgstr "पारिवारिक भूमिका"
@@ -202,10 +206,12 @@ msgstr "एकाधिक का चयन करने के लिए Ctrl �
 msgid "Don't Filter"
 msgstr "फ़िल्टर न करें"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "पुरुष"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "महिला"
@@ -274,6 +280,7 @@ msgstr "शीर्षक"
 msgid "Suffix"
 msgstr "प्रत्यय"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "लिंग"
@@ -282,6 +289,7 @@ msgstr "लिंग"
 msgid "Donation Envelope"
 msgstr "दान लिफ़ाफ़ा"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "घर का फोन"
@@ -334,6 +342,7 @@ msgstr "ध्यान दें: विभाजक (डैश, आदि) य
 msgid "Default country if none specified otherwise"
 msgstr "यदि कोई अन्यथा निर्दिष्ट नहीं है तो डिफ़ॉल्ट देश"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "वर्गीकरण"

@@ -1939,7 +1939,7 @@
     "View User": "ተጠቃሚን ይመልከቱ",
     "Invalid request: Missing calendar id": "ልክ ያልሆነ ጥያቄ፡ የቀን መቁጠሪያ መታወቂያ ይጎድላል",
     "Not Found: Unknown calendar id": "አልተገኘም፡ ያልታወቀ የቀን መቁጠሪያ መታወቂያ",
-    "no found or user without an email": "አልተገኘም ወይም ኢሜል የሌለው ተጠቃሚ አለ",
+    "not found or user without an email": "አልተገኘም ወይም ኢሜል የሌለው ተጠቃሚ አለ",
     "UserName not set": "የተጠቃሚ ስም አልተዘጋጀም",
     "The people and families has been cleared from the database.": "ሰዎቹ እና ቤተሰቦቹ ከመረጃ ቋቱ ጸድተዋል",
     "Self Registrations": "የግል ምዝገባዎች",

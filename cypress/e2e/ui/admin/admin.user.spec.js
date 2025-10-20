@@ -1,4 +1,4 @@
-context("Admin User Password", () => {
+describe("Admin User Password", () => {
     it("List System Users", () => {
         cy.loginAdmin("UserList.php");
         cy.contains("Church Admin");
@@ -10,7 +10,7 @@ context("Admin User Password", () => {
         cy.get("#NewPassword1").type("new-user-password");
         cy.get("#NewPassword2").type("new-user-password");
         cy.get("form:nth-child(2)").submit();
-        cy.url().should("contains", "v2/user/95/changePassword");
+        cy.url().should("contain", "v2/user/95/changePassword");
         cy.contains("Password Change Successful");
     });
 

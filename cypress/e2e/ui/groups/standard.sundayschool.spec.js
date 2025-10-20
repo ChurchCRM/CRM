@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Standard Sunday School", () => {
+describe("Standard Sunday School", () => {
     it("View Sunday School dashboard", () => {
         cy.loginStandard("sundayschool/SundaySchoolDashboard.php");
         cy.contains("Sunday School Dashboard");

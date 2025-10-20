@@ -1939,7 +1939,7 @@
     "View User": "Ver Usuário",
     "Invalid request: Missing calendar id": "Solicitação inválida: Sem ID do calendário",
     "Not Found: Unknown calendar id": "Não encontrado: ID do calendário Desconhecido",
-    "no found or user without an email": "Não encontrado ou usuário sem um E-mail",
+    "not found or user without an email": "Não encontrado ou usuário sem um E-mail",
     "UserName not set": "Nome de Usuário não definido",
     "The people and families has been cleared from the database.": "As pessoas e famílias foram removidas do banco de dados.",
     "Self Registrations": "Auto Registros",
@@ -2285,5 +2285,7 @@
     "Please update the MailChimp API key in:": "Por favor, atualize a chave de API do MailChimp.",
     "English - South Africa": "Inglês - África do Sul",
     "English - Jamaica": "Inglês - Jamaica",
-    "Swahili": "Suaíli"
+    "Swahili": "Suaíli",
+    "One character from FirstName and one character from LastName": "Um caractere de FirstName e um caractere de LastName",
+    "Two characters from FirstName": "Dois personagens de FirstName"
 }
