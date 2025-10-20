@@ -30,17 +30,40 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: {
+                filter: (url) => {
+                  // Only process relative URLs, skip absolute paths and data URIs
+                  return !url.startsWith('/') && !url.startsWith('data:');
+                },
+              },
+            },
+          },
+          'sass-loader',
+        ],
       },
       {
         test: /\.(woff2?|ttf|eot|svg|png|jpg|gif)$/,
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name].[hash][ext]',
+        },
       },
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: (pathData) => {
+        // Output skin-main.css as churchcrm.min.css (replacing the SASS-compiled file)
+        if (pathData.chunk.name === 'skin-main') {
+          return 'churchcrm.min.css';
+        }
+        return '[name].css';
+      },
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
