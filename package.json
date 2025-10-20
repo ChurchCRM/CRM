@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "5.21.0",
+    "version": "5.22.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -18,7 +18,7 @@
     },
     "homepage": "https://churchcrm.io",
     "scripts": {
-    "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external",
+        "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external",
         "build": "run-p build:php build:frontend",
         "build:frontend": "npm run build:js && npm run format:web && npm run sass:build",
         "build:js": "run-p build:js:*",
