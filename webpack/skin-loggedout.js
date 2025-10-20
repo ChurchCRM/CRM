@@ -1,9 +1,13 @@
 // Main entry for all common JS and CSS includes
 
-// Import main SCSS (which includes all CSS dependencies)
-// import '../src/skin/churchcrm.scss';
+// Import jQuery first and make it globally available
+const $ = require('jquery');
+window.$ = $;
+window.jQuery = $;
 
+// Now import Bootstrap which will use the global jQuery
+require('bootstrap');
 
-import 'bootstrap';
-import 'admin-lte';
-import '@fortawesome/fontawesome-free/js/all';
+// Import AdminLTE and FontAwesome
+require('admin-lte');
+require('@fortawesome/fontawesome-free/js/all');
