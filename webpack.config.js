@@ -58,8 +58,9 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: (pathData) => {
-        // Output skin-main.css as churchcrm.min.css (replacing the SASS-compiled file)
-        if (pathData.chunk.name === 'skin-main') {
+        // Output both skin-main and skin-loggedout SCSS as churchcrm.min.css
+        // Both entries import the same SCSS, so they generate identical CSS
+        if (pathData.chunk.name === 'skin-main' || pathData.chunk.name === 'skin-loggedout') {
           return 'churchcrm.min.css';
         }
         return '[name].css';
