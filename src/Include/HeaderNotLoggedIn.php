@@ -21,9 +21,6 @@ if (SystemConfig::debugEnabled()) {
     <!-- Custom ChurchCRM styles -->
     <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/churchcrm.min.css">
 
-    <!-- Webpack bundled assets for logged-out pages (includes Bootstrap, AdminLTE, and FontAwesome) -->
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/skin-loggedout.js"></script>
-
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
 </head>
