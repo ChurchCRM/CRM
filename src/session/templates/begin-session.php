@@ -44,7 +44,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" id="PasswordBox" name="Password" class="form-control" data-toggle="password" placeholder="<?= gettext('Password') ?>" required autofocus>
+                        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext('Password') ?>" required autofocus>
 
                     </div>
                     <div class="row">
