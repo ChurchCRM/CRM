@@ -612,13 +612,9 @@ function LimitTextSize(theTextArea, size) {
 }
 
 function popUp(URL) {
-    var day = new Date();
-    var id = day.getTime();
-    eval(
-        "page" +
-            id +
-            " = window.open(URL, '" +
-            id +
-            "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');",
+    window.open(
+        URL,
+        "popup-window",
+        "toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left=100,top=50",
     );
 }

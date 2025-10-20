@@ -1,0 +1,223 @@
+/**
+ * Inline Style Replacements
+ * 
+ * This file contains CSS classes to replace inline style attributes
+ * throughout the application. This is part of CSP hardening to remove
+ * the 'unsafe-inline' directive from the Content Security Policy.
+ * 
+ * Usage: Replace style="..." attributes with class="..." equivalents
+ * Example: <span style="color: red;"> becomes <span class="text-error">
+ */
+
+/* ============================================
+   Color Utilities
+   ============================================ */
+
+.text-error {
+  color: red;
+}
+
+.text-success {
+  color: green;
+}
+
+.text-warning {
+  color: orange;
+}
+
+.text-muted {
+  color: #999;
+}
+
+/* ============================================
+   Width Utilities
+   ============================================ */
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.width-80px {
+  width: 80px;
+}
+
+/* ============================================
+   Display Utilities
+   ============================================ */
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+/* ============================================
+   Text Alignment
+   ============================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+/* ============================================
+   Spacing & Padding
+   ============================================ */
+
+.padding-2px {
+  padding: 2px;
+}
+
+.padding-5px {
+  padding: 5px;
+}
+
+.padding-small {
+  padding: 2px;
+}
+
+.padding-medium {
+  padding: 5px;
+}
+
+.margin-72px-auto {
+  margin: 72px auto 0;
+}
+
+/* ============================================
+   Font & Typography
+   ============================================ */
+
+.font-small {
+  font-size: 13px;
+}
+
+.font-bold {
+  font-weight: 600;
+}
+
+.font-70 {
+  font-size: 70%;
+}
+
+.large-text {
+  font-size: larger;
+}
+
+/* ============================================
+   Cursor & Interactive
+   ============================================ */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.close-icon {
+  cursor: pointer;
+  color: red;
+}
+
+/* ============================================
+   Specific Components
+   ============================================ */
+
+.error-message {
+  color: red;
+}
+
+.birthday-filter {
+  display: none;
+}
+
+.initials-image {
+  max-width: none;
+}
+
+.login-box-margin {
+  margin: 72px auto 0;
+}
+
+.register-box-600 {
+  width: 600px;
+}
+
+.input-group-full {
+  width: 100%;
+}
+
+.canvas-height-250 {
+  height: 250px;
+}
+
+.textarea-height-120 {
+  height: 120px;
+}
+
+.table-width-100 {
+  width: 100%;
+}
+
+.text-center-style {
+  font-size: 13px;
+  text-align: center;
+  padding: 2px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.td-padding-5 {
+  padding: 5px;
+}
+
+.register-logo-spacing {
+  margin: 72px auto 0;
+}
+
+/* ============================================
+   Profile Picture
+   ============================================ */
+
+.profile-picture-list {
+  max-width: none;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.color-red {
+  color: red;
+}
+
+.color-white {
+  color: #fff;
+}
+
+/* ============================================
+   Legacy/Deprecated (kept for compatibility)
+   ============================================ */
+
+.LargeText {
+  font-size: larger;
+}
+
+.form-field-error {
+  color: red;
+}
