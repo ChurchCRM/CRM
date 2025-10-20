@@ -6,7 +6,7 @@
  * styling and help maintain CSP compliance by replacing inline styles.
  * 
  * Usage: Replace style="..." attributes with class="..." equivalents
- * Example: <span style="color: red;"> becomes <span class="text-error">
+ * Example: <span style="color: red;">text</span> becomes <span class="text-error">text</span>
  * 
  * Benefits:
  * - Consistent styling across the application
