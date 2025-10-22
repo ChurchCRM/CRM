@@ -9,9 +9,8 @@
  * Used by both logged-in and logged-out pages to provide core styling and functionality.
  */
 
-// Import FontAwesome CSS and webfonts
+// Import FontAwesome CSS - webfonts are automatically bundled by webpack
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import '@fortawesome/fontawesome-free/js/all.min.js';
 
 import '../src/skin/churchcrm.scss';
 
