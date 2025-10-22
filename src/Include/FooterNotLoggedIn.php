@@ -17,8 +17,6 @@ use ChurchCRM\Service\SystemService;
   <!-- AdminLTE App -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fontawesome/js/all.js"></script>
-
   <!-- InputMask -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.binding.js"></script>
