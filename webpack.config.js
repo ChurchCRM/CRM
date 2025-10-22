@@ -13,11 +13,6 @@ module.exports = {
     path:path.resolve('./src/skin/v2'),
     filename:'[name].min.js'
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].min.css'
-    })
-  ],
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     alias: {
@@ -61,14 +56,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: (pathData) => {
-        // Output both skin-main and skin-loggedout SCSS as churchcrm.min.css
-        // Both entries import the same SCSS, so they generate identical CSS
-        if (pathData.chunk.name === 'skin-main' || pathData.chunk.name === 'skin-loggedout') {
-          return 'churchcrm.min.css';
-        }
-        return '[name].css';
-      },
+      filename: '[name].min.css',
+      ignoreOrder: false,
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
