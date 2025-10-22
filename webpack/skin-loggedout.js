@@ -1,3 +1,6 @@
-// Main entry for logged-out pages
+// Main entry for logged-out pages and CSS compilation
 // Bootstrap, AdminLTE, and FontAwesome are loaded from external sources
-// This file is here for future expansion of logged-out page functionality
+// This entry point also compiles all SCSS styles via webpack's sass-loader
+
+import '../src/skin/churchcrm.scss';
+

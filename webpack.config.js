@@ -30,17 +30,41 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: {
+                filter: (url) => {
+                  // Only process relative URLs, skip absolute paths and data URIs
+                  return !url.startsWith('/') && !url.startsWith('data:');
+                },
+              },
+            },
+          },
+          'sass-loader',
+        ],
       },
       {
         test: /\.(woff2?|ttf|eot|svg|png|jpg|gif)$/,
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name].[hash][ext]',
+        },
       },
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: (pathData) => {
+        // Output both skin-main and skin-loggedout SCSS as churchcrm.min.css
+        // Both entries import the same SCSS, so they generate identical CSS
+        if (pathData.chunk.name === 'skin-main' || pathData.chunk.name === 'skin-loggedout') {
+          return 'churchcrm.min.css';
+        }
+        return '[name].css';
+      },
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',

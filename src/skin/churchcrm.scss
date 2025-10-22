@@ -17,7 +17,8 @@
 @import "external/adminlte/adminlte.min.css";
 @import "external/fontawesome/css/all.min.css";
 
-@import "external/jquery-ui/jquery-ui.css";
+// jQuery UI is loaded from CDN in base template, not from local files (missing image assets)
+// @import "external/jquery-ui/jquery-ui.css";
 @import "external/bootstrap-toggle/bootstrap-toggle.css";
 @import "external/jquery.steps/jquery.steps.css";
 @import "external/jquery-photo-uploader/PhotoUploader.css";
@@ -46,6 +47,7 @@
 @include meta.load-css("scss/react-datepicker");
 @include meta.load-css("scss/_two-factor-enrollment");
 @include meta.load-css("scss/systemSettings");
+@include meta.load-css("scss/kiosk");
 
 html,
 body {

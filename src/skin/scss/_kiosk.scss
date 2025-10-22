@@ -1,3 +1,6 @@
+// Kiosk device display styles
+// Styles for Sunday School class view and other kiosk displays
+
 .widget-user-2 .widget-user-header {
   padding: 5px;
 }
@@ -7,13 +10,13 @@
   width: 100%;
   background-color: rgb(60, 141, 188);
   min-height: 50px;
-}
 
-#eventDetails span {
-  font-size: 15px;
-  text-align: center;
-  color: white;
-  display: block;
+  span {
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    display: block;
+  }
 }
 
 #eventTitle {
