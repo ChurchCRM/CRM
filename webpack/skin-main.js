@@ -9,6 +9,9 @@
  * Used by both logged-in and logged-out pages to provide core styling and functionality.
  */
 
+// Import Bootstrap JS - must load before other components that depend on it
+import 'bootstrap';
+
 // Import FontAwesome CSS - webfonts are automatically bundled by webpack
 import '@fortawesome/fontawesome-free/css/all.min.css';
 

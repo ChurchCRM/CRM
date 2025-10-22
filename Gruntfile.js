@@ -109,12 +109,6 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "node_modules/bootstrap/dist",
-                        src: ["js/**"],
-                        dest: "src/skin/external/bootstrap/",
-                    },
-                    {
-                        expand: true,
                         filter: "isFile",
                         flatten: true,
                         src: [
