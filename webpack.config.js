@@ -7,8 +7,7 @@ module.exports = {
   entry: {
     'calendar-event-editor' : './react/calendar-event-editor.tsx',
     'two-factor-enrollment' : './react/two-factor-enrollment.tsx',
-    'skin-main' : './webpack/skin-main',
-    'skin-loggedout' : './webpack/skin-loggedout'
+    'churchcrm' : './webpack/skin-main'
   },
   output: {
     path:path.resolve('./src/skin/v2'),
@@ -77,13 +76,13 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: (pathData) => {
-        // Output both skin-main and skin-loggedout SCSS as churchcrm.min.css
-        // Both entries import the same SCSS, so they generate identical CSS
-        if (pathData.chunk.name === 'skin-main' || pathData.chunk.name === 'skin-loggedout') {
+        // Output churchcrm bundle CSS as churchcrm.min.css
+        if (pathData.chunk.name === 'churchcrm') {
           return 'churchcrm.min.css';
         }
         return '[name].css';
       },
+      ignoreOrder: true,
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
