@@ -73,7 +73,7 @@ require_once 'Include/Header.php';
             <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
             <?php
             if ($thisGroup->isSundaySchool()) {
-                $hide = "style=\"display:none;\"";
+                $hide = "class=\"d-none\"";
             } else {
                 $hide = "";
             }

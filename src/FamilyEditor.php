@@ -193,7 +193,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     // Validate Wedding Date if one was entered
     $dateString = parseAndValidateDate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
     if ((strlen($dWeddingDate) > 0) && $dateString === false) {
-        $sWeddingDateError = '<span style="color: red; ">'
+        $sWeddingDateError = '<span class="text-danger">'
             . gettext('Not a valid Wedding Date') . '</span>';
         $bErrorFlag = true;
     } else {
@@ -203,7 +203,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     // Validate Email
     if (strlen($sEmail) > 0) {
         if (checkEmail($sEmail) == false) {
-            $sEmailError = '<span style="color: red; ">'
+            $sEmailError = '<span class="text-danger">'
                 . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
             $sEmail = null;
@@ -575,7 +575,7 @@ require_once 'Include/Header.php';
                         <label><?= gettext('Family Name') ?>:</label>
                         <input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="48" class="form-control">
                         <?php if ($sNameError) {
-                            ?><span style="color: red;"><?= $sNameError ?></span><?php
+                            ?><span class="text-danger"><?= $sNameError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -687,7 +687,7 @@ require_once 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa fa-envelope"></i>
                         </div>
-                        <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span style="color: red;"><?php echo '<BR>' . $sEmailError ?></span>
+                        <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span class="text-danger"><?php echo '<BR>' . $sEmailError ?></span>
                     </div>
                 </div>
                 <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
@@ -719,7 +719,7 @@ require_once 'Include/Header.php';
                         <label><?= gettext('Wedding Date') ?>:</label>
                         <input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" id="WeddingDate" size="15" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                         <?php if ($sWeddingDateError) {
-                            ?> <span style="color: red"><br /><?php $sWeddingDateError ?></span> <?php
+                            ?> <span class="text-danger"><br /><?php $sWeddingDateError ?></span> <?php
                         } ?>
                     </div>
                 </div>
@@ -773,7 +773,7 @@ require_once 'Include/Header.php';
                         }
 
                         formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
-                        echo '<span style="color: red; ">' . $aCustomErrors[$fam_custom_Field] . '</span>';
+                        echo '<span class="text-danger">' . $aCustomErrors[$fam_custom_Field] . '</span>';
                         echo '</div></div>';
                     }
                 } ?>
