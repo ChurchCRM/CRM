@@ -67,12 +67,6 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "node_modules/@fortawesome/fontawesome-free",
-                        src: ["{css,js,webfonts}/**"],
-                        dest: "src/skin/external/fontawesome/",
-                    },
-                    {
-                        expand: true,
                         filter: "isFile",
                         flatten: true,
                         src: ["node_modules/fullcalendar/index.global.min.js"],
