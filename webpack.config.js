@@ -7,8 +7,7 @@ module.exports = {
   entry: {
     'calendar-event-editor' : './react/calendar-event-editor.tsx',
     'two-factor-enrollment' : './react/two-factor-enrollment.tsx',
-    'skin-main' : './webpack/skin-main',
-    'skin-loggedout' : './webpack/skin-loggedout'
+    'churchcrm' : './webpack/skin-main'  // Main bundle for all pages
   },
   output: {
     path:path.resolve('./src/skin/v2'),
