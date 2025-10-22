@@ -11,8 +11,13 @@ module.exports = {
   },
   output: {
     path:path.resolve('./src/skin/v2'),
-    filename:'[name].js'
+    filename:'[name].min.js'
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].min.css'
+    })
+  ],
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     alias: {
