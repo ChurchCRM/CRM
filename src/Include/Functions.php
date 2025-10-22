@@ -261,7 +261,7 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
 {
     if (SystemConfig::getValue('bShowFamilyData')) {
         if ($bFormat) {
-            $sFamilyInfoBegin = "<span style='color: red;'>";
+            $sFamilyInfoBegin = "<span class='text-danger'>";
             $sFamilyInfoEnd = '</span>';
         }
 

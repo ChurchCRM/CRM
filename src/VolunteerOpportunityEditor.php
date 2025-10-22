@@ -364,7 +364,7 @@ if (isset($_POST['SaveChanges'])) {
                             <?php
 
                             if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                                echo '<span class="text-danger;"><BR>' . gettext('You must enter a name') . ' </span>';
+                                echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
                             } ?>
                         </td>
 

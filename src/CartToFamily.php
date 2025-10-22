@@ -66,7 +66,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $sEmail = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Email']), $per_Email);
 
         if (strlen($sFamilyName) === 0) {
-            $sError = '<p class="callout callout-warning" align="center" style="color:red;">' . gettext('No family name entered!') . '</p>';
+            $sError = '<p class="callout callout-warning text-danger" align="center">' . gettext('No family name entered!') . '</p>';
             $bError = true;
         } else {
             $familyValues = [

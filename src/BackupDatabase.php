@@ -45,7 +45,7 @@ require_once 'Include/Header.php';
 </div>
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title"><?= gettext('Backup Status:') ?> </h3>&nbsp;<h3 class="card-title" id="backupstatus" style="color:red"> <?= gettext('No Backup Running') ?></h3>
+        <h3 class="card-title"><?= gettext('Backup Status:') ?> </h3>&nbsp;<h3 class="card-title text-danger" id="backupstatus"> <?= gettext('No Backup Running') ?></h3>
     </div>
      <div class="card-body" id="resultFiles">
      </div>

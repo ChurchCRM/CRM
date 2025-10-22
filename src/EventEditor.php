@@ -408,7 +408,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                             } ?>
                         </select>
                         <?php if ($bEventTypeError) {
-                            echo '<div><span class="text-danger;">' . gettext('You must pick an event type.') . '</span></div>';
+                            echo '<div><span class="text-danger">' . gettext('You must pick an event type.') . '</span></div>';
                         } ?>
                         <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
                             $('#event_type_id').on('change', function(e) {
