@@ -833,7 +833,7 @@ require_once 'Include/Header.php';
                                                     <tr>
                                                         <td class="TextColumn">
                                                             <input name="FirstName<?= $iCount ?>" type="text" value="<?= $aFirstNames[$iCount] ?>" size="10">
-                                                            <div><span style="color: red;"><?php if (array_key_exists($iCount, $aFirstNameError)) {
+                                                            <div><span class="text-danger"><?php if (array_key_exists($iCount, $aFirstNameError)) {
                                                                                                 echo $aFirstNameError[$iCount];
                                                                                            } ?></span></div>
                                                         </td>
@@ -939,7 +939,7 @@ require_once 'Include/Header.php';
                                                             <?php if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount]) {
                                                                 $UpdateBirthYear = 1; ?>
                                                                 <input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
-                                                                <div><span style="color: red;"><?php if (array_key_exists($iCount, $aBirthDateError)) {
+                                                                <div><span class="text-danger"><?php if (array_key_exists($iCount, $aBirthDateError)) {
                                                                                                     echo $aBirthDateError[$iCount];
                                                                                                } ?></span></div>
                                                                 <?php

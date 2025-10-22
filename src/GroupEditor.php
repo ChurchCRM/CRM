@@ -38,7 +38,7 @@ require_once 'Include/Header.php';
         <h4 class="modal-title" id="gsproperties-label"></h4>
       </div>
       <div class="modal-body">
-        <span style="color: red"></span>
+        <span class="text-danger"></span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close')?></button>
