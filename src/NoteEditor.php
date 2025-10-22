@@ -106,7 +106,7 @@ require_once 'Include/Header.php';
         <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
         <input type="hidden" name="FamilyID" value="<?= $iFamilyID ?>">
         <input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
-        <textarea id="NoteText" name="NoteText" style="width: 100%;min-height: 300px;" rows="40"><?= $sNoteText ?></textarea>
+        <textarea id="NoteText" name="NoteText" class="w-100" style="min-height: 300px;" rows="40"><?= $sNoteText ?></textarea>
         <?= $sNoteTextError ?>
       </p>
 

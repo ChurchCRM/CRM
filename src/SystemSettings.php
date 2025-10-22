@@ -140,7 +140,7 @@ require_once 'Include/Header.php';
                     <?php
                     if ($setting->getType() == 'choice') {
                         ?>
-                      <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
+                      <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox w-100">
                         <?php
                         foreach (json_decode($setting->getData())->Choices as $choice) {
                             if (strpos($choice, ":") === false) {
@@ -179,7 +179,7 @@ require_once 'Include/Header.php';
                             $sel1 = 'SELECTED';
                             $sel2 = '';
                         } ?>
-                      <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
+                      <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox w-100">
                         <option value='' <?= $sel1 ?>><?= gettext('False') ?>
                         <option value='1' <?= $sel2 ?>><?= gettext('True') ?>
                       </select>
@@ -192,7 +192,7 @@ require_once 'Include/Header.php';
                         <?php
                     } elseif ($setting->getType() == 'ajax') {
                         ?>
-                      <select id='ajax-<?= $setting->getId() ?>' name='new_value[<?= $setting->getId() ?>]' data-url="<?= $setting->getData() ?>" data-value="<?= $setting->getValue() ?>" class="choiceSelectBox" style="width: 100%">
+                      <select id='ajax-<?= $setting->getId() ?>' name='new_value[<?= $setting->getId() ?>]' data-url="<?= $setting->getData() ?>" data-value="<?= $setting->getValue() ?>" class="choiceSelectBox w-100">
                         <option value=''><?= gettext('Unassigned') ?>
                       </select>
                         <?php
