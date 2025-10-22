@@ -66,7 +66,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $sEmail = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Email']), $per_Email);
 
         if (strlen($sFamilyName) === 0) {
-            $sError = '<p class="callout callout-warning" align="center" style="color:red;">' . gettext('No family name entered!') . '</p>';
+            $sError = '<p class="callout callout-warning text-danger" align="center">' . gettext('No family name entered!') . '</p>';
             $bError = true;
         } else {
             $familyValues = [
@@ -228,12 +228,12 @@ SQL;
 
     <tr>
         <td class="LabelColumn"><?= gettext('Family Name') ?>:</td>
-        <td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48"><span style="color: red;"><?= $sNameError ?></span></td>
+        <td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48"><span class="text-danger"><?= $sNameError ?></span></td>
     </tr>
 
     <tr>
         <td class="LabelColumn"><?= gettext('Wedding Date') ?>:</td>
-        <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><span style="color: red;"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
+        <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><span class="text-danger"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
     </tr>
 
     <tr>
