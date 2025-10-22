@@ -29,7 +29,8 @@ module.exports = {
         loader: "ts-loader" 
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        // SCSS files: process with sass-loader
+        test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -44,6 +45,24 @@ module.exports = {
             },
           },
           'sass-loader',
+        ],
+      },
+      {
+        // CSS files: do NOT process with sass-loader, just pass through loaders
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: {
+                filter: (url) => {
+                  // Only process relative URLs, skip absolute paths and data URIs
+                  return !url.startsWith('/') && !url.startsWith('data:');
+                },
+              },
+            },
+          },
         ],
       },
       {
