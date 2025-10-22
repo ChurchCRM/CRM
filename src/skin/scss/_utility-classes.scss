@@ -170,30 +170,3 @@
     display: none;
 }
 
-/* 
- * REMOVED BOOTSTRAP DUPLICATE CLASSES:
- * Use Bootstrap utilities instead (see BOOTSTRAP_CONSOLIDATION_GUIDE.md):
- * 
- * Text Colors:
- * - .text-error → .text-danger
- * - .text-success, .text-warning, .text-muted, .text-white → Bootstrap versions
- * - .color-red → .text-danger
- * 
- * Display:
- * - .display-none → .d-none
- * - .display-block → .d-block  
- * - .display-inline-block → .d-inline-block
- * 
- * Text Alignment:
- * - .text-center, .text-right, .text-left, .text-uppercase → Bootstrap versions
- * 
- * Spacing:
- * - .padding-*, .margin-* → Bootstrap .m-*, .p-* utilities
- * 
- * Sizing:
- * - .width-*, .height-* → Bootstrap .w-*, or use inline styles
- * - .font-13px, .font-70pct, .font-weight-600, .line-height-1-2, .large-text
- * 
- * Border:
- * - .border-0 → Bootstrap .border-0
- */
