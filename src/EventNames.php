@@ -337,5 +337,9 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);
   });
 </script>
+
+<!-- Events.js: Handle event recurrence pattern selection -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js" defer></script>
+
 <?php
 require_once 'Include/Footer.php';

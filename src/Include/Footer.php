@@ -50,7 +50,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <!-- Custom ChurchCRM scripts (load after webpack bundles and locale with defer) -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js" defer></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js" defer></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js" defer></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js" defer></script>
 <?php if (isset($sGlobalMessage)) {
     ?>
