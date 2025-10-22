@@ -338,9 +338,9 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
 
     // Event recurrence pattern form handling
     $(".event-recurrence-patterns input[type=radio]").change(function () {
-        $el = $(this);
-        $container = $el.closest(".row");
-        $input = $container
+        let $el = $(this);
+        let $container = $el.closest(".row");
+        let $input = $container
             .find("select, input[type=text]")
             .prop({ disabled: false });
         $container
