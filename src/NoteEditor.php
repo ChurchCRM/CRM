@@ -53,7 +53,7 @@ if (isset($_POST['Submit'])) {
 
     // Did they enter text for the note?
     if ($sNoteText === '') {
-        $sNoteTextError = '<br><span style="color: red;">You must enter text for this note.</span>';
+        $sNoteTextError = '<br><span class="text-danger">You must enter text for this note.</span>';
         $bErrorFlag = true;
     }
 

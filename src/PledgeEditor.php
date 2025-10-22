@@ -458,7 +458,7 @@ if ($PledgeOrPayment === 'Pledge') {
     //$checkCount = mysqli_num_rows ($rsChecksThisDep);
     $roomForDeposits = $checksFit - $depositCount;
     if ($roomForDeposits <= 0) {
-        $sPageTitle .= '<span style="color: red;">';
+        $sPageTitle .= '<span class="text-danger">';
     }
     $sPageTitle .= ' (' . $roomForDeposits . gettext(' more entries will fit.') . ')';
     if ($roomForDeposits <= 0) {
@@ -473,7 +473,7 @@ if ($PledgeOrPayment === 'Pledge') {
 } // end if $PledgeOrPayment
 
 if ($dep_Closed && $sGroupKey && $PledgeOrPayment === 'Payment') {
-    $sPageTitle .= ' &nbsp; <span style="color: red;">' . gettext('Deposit closed') . '</span>';
+    $sPageTitle .= ' &nbsp; <span class="text-danger">' . gettext('Deposit closed') . '</span>';
 }
 
 //$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
@@ -514,7 +514,7 @@ require_once 'Include/Header.php';
                             $dDate = $dep_Date;
                         } ?>
                         <label for="Date"><?= gettext('Date') ?></label>
-                        <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>"><span style="color: red;"><?= $sDateError ?></span>
+                        <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>"><span class="text-danger"><?= $sDateError ?></span>
                         <label for="FYID"><?= gettext('Fiscal Year') ?></label>
                         <?php PrintFYIDSelect('FYID', $iFYID) ?>
 
@@ -608,7 +608,7 @@ require_once 'Include/Header.php';
                             ?>
                             <div id="checkNumberGroup">
                                 <label for="CheckNo"><?= gettext('Check') ?> #</label>
-                                <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>" /><span style="color: red;"><?= $sCheckNoError ?></span>
+                                <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>" /><span class="text-danger"><?= $sCheckNoError ?></span>
                             </div>
                             <?php
                         } ?>
@@ -688,7 +688,7 @@ require_once 'Include/Header.php';
                                     <td class="TextColumn"><?= $fun_name ?></td>
                                     <td class="TextColumn">
                                         <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] : "") ?>"><br>
-                                        <span style="color: red;"><?= $sAmountError[$fun_id] ?></span>
+                                        <span class="text-danger"><?= $sAmountError[$fun_id] ?></span>
                                     </td>
                                     <?php
                                     if ($bEnableNonDeductible) {
@@ -696,7 +696,7 @@ require_once 'Include/Header.php';
                                         <td class="TextColumn">
                                             <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] : "") ?>" />
                                             <br>
-                                            <span style="color: red;"><?= $sNonDeductibleError[$fun_id] ?></span>
+                                            <span class="text-danger"><?= $sNonDeductibleError[$fun_id] ?></span>
                                         </td>
                                         <?php
                                     } ?>

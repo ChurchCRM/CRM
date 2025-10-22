@@ -364,7 +364,7 @@ if (isset($_POST['SaveChanges'])) {
                             <?php
 
                             if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                                echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                                echo '<span class="text-danger;"><BR>' . gettext('You must enter a name') . ' </span>';
                             } ?>
                         </td>
 
@@ -409,7 +409,7 @@ if (isset($_POST['SaveChanges'])) {
                                     <div><?= gettext('Name') ?>:</div>
                                     <input type="text" name="newFieldName" size="30" maxlength="30" class="form-control">
                                     <?php if ($bNewNameError) {
-                                        echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                                        echo '<div><span class="text-danger"><BR>' . gettext('You must enter a name') . '</span></div>';
                                     } ?>
                                     &nbsp;
                                 </td>
