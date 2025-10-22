@@ -1216,7 +1216,7 @@ require_once 'Include/Header.php';
 
                             formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
                             if (isset($aCustomErrors[$custom_Field])) {
-                                echo '<span style="color: red; ">' . $aCustomErrors[$custom_Field] . '</span>';
+                                echo '<span class="text-danger">' . $aCustomErrors[$custom_Field] . '</span>';
                             }
                             echo '</div></div>';
                         }

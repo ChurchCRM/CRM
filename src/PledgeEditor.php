@@ -279,20 +279,20 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     //$iEnvelope = InputUtils::legacyFilterInput($_POST["Envelope"], 'int');
 
     if ($PledgeOrPayment === 'Payment' && !$iCheckNo && $iMethod === 'CHECK') {
-        $sCheckNoError = '<span style="color: red; ">' . gettext('Must specify non-zero check number') . '</span>';
+        $sCheckNoError = '<span class="text-danger">' . gettext('Must specify non-zero check number') . '</span>';
         $bErrorFlag = true;
     }
 
     // detect check inconsistencies
     if ($PledgeOrPayment === 'Payment' && $iCheckNo) {
         if ($iMethod === 'CASH') {
-            $sCheckNoError = '<span style="color: red; ">' . gettext("Check number not valid for 'CASH' payment") . '</span>';
+            $sCheckNoError = '<span class="text-danger">' . gettext("Check number not valid for 'CASH' payment") . '</span>';
             $bErrorFlag = true;
         } elseif ($iMethod === 'CHECK' && !$sGroupKey) {
             $chkKey = $iFamily . '|' . $iCheckNo;
             if (array_key_exists($chkKey, $checkHash)) {
                 $text = "Check number '" . $iCheckNo . "' for selected family already exists.";
-                $sCheckNoError = '<span style="color: red; ">' . gettext($text) . '</span>';
+                $sCheckNoError = '<span class="text-danger">' . gettext($text) . '</span>';
                 $bErrorFlag = true;
             }
         }
@@ -302,7 +302,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     if (strlen($dDate) > 0) {
         list($iYear, $iMonth, $iDay) = sscanf($dDate, '%04d-%02d-%02d');
         if (!checkdate($iMonth, $iDay, $iYear)) {
-            $sDateError = '<span style="color: red; ">' . gettext('Not a valid date') . '</span>';
+            $sDateError = '<span class="text-danger">' . gettext('Not a valid date') . '</span>';
             $bErrorFlag = true;
         }
     }
