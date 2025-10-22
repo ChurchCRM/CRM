@@ -335,6 +335,20 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function () {
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);
+
+    // Event recurrence pattern form handling
+    $(".event-recurrence-patterns input[type=radio]").change(function () {
+        $el = $(this);
+        $container = $el.closest(".row");
+        $input = $container
+            .find("select, input[type=text]")
+            .prop({ disabled: false });
+        $container
+            .parent()
+            .find("select, input[type=text]")
+            .not($input)
+            .prop({ disabled: true });
+    });
   });
 </script>
 <?php
