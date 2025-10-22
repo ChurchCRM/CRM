@@ -47,6 +47,7 @@
 @include meta.load-css("scss/react-datepicker");
 @include meta.load-css("scss/_two-factor-enrollment");
 @include meta.load-css("scss/systemSettings");
+@include meta.load-css("scss/kiosk");
 
 html,
 body {
