@@ -1,6 +1,7 @@
 import * as React from "react";
 import { createRoot, Root } from "react-dom/client";
 import ExistingEvent from "./components/Events/ExistingEvent";
+import "react-datepicker/dist/react-datepicker.min.css";
 declare global {
   interface Window {
     // Since TypeScript requires a definition for all methods, let's tell it how to handle the javascript objects already in the page

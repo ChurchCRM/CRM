@@ -245,15 +245,6 @@ module.exports = function (grunt) {
                         ],
                         dest: "src/skin/external/select2",
                     },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: [
-                            "node_modules/react-datepicker/dist/react-datepicker.min.css",
-                        ],
-                        dest: "src/skin/external/react-datepicker",
-                    },
                 ],
             },
         },
