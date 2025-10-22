@@ -544,7 +544,6 @@ $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
 
 <?php require_once 'Include/Footer.php'; ?>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     CKEDITOR.replace('EventText',{

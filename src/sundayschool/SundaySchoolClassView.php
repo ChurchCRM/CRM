@@ -339,7 +339,6 @@ function implodeUnique($array, $withQuotes): string
 </div><!-- /.modal -->
 
 <!-- chartjs -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/chart.umd.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(function () {

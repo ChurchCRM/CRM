@@ -44,43 +44,21 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <!-- ./wrapper -->
 </div><!-- ./wrapper -->
 
-<!-- Bootstrap 3.3.5 -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
+<!-- Locale/i18n strings (must load before custom scripts which use i18next) -->
+<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::getCurrentLocale()->getLocale() ?>.js" defer></script>
 
-<!-- InputMask -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.binding.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/pdfmake.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/vfs_fonts.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/chart.umd.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.full.min.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-notify/bootstrap-notify.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/index.global.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootbox/bootbox.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fastclick/fastclick.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-toggle/bootstrap-toggle.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-validator/validator.min.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::getCurrentLocale()->getLocale() ?>.js"></script>
+<!-- Custom ChurchCRM scripts (load after webpack bundles and locale with defer) -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js" defer></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js" defer></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js" defer></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js" defer></script>
 <?php if (isset($sGlobalMessage)) {
     ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-        $("document").ready(function () {
-            showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");
+        document.addEventListener('DOMContentLoaded', function() {
+            $("document").ready(function () {
+                showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");
+            });
         });
     </script>
     <?php

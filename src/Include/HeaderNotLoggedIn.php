@@ -15,11 +15,12 @@ if (SystemConfig::debugEnabled()) {
     <meta http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- jQuery JS -->
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
-
-    <!-- Custom ChurchCRM styles -->
+    <!-- Webpack-bundled CSS (includes Bootstrap, FontAwesome, Select2, etc) -->
     <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
+
+    <!-- Webpack-bundled JavaScript (includes jQuery, Bootstrap, plugins, etc) -->
+    <!-- CRITICAL: No defer - must load immediately so jQuery is available for page-specific scripts -->
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.js"></script>
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 

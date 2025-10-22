@@ -5,13 +5,9 @@ use ChurchCRM\dto\SystemURLs;
 ?>
 <title>ChurchCRM: <?= $sPageTitle ?></title>
 
-<!-- Custom ChurchCRM styles -->
+<!-- Webpack-bundled CSS (includes Bootstrap, AdminLTE, FontAwesome, Select2, DataTables, etc) -->
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
-<!-- jQuery UI -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-ui/jquery-ui.min.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fontawesome/js/all.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment-with-locales.min.js"></script>
+<!-- Webpack-bundled JavaScript (includes jQuery, Bootstrap, plugins, etc) -->
+<!-- CRITICAL: No defer - must load immediately so jQuery is available for page-specific scripts -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.js"></script>

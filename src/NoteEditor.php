@@ -125,7 +125,6 @@ require_once 'Include/Header.php';
   </p>
 </form>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   CKEDITOR.replace('NoteText',{

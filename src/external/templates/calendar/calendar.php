@@ -6,8 +6,6 @@ use ChurchCRM\dto\SystemURLs;
 $sPageTitle = $calendarName;
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment-with-locales.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/index.global.min.js"></script>
 <div class="register-box" style="width: 100%; margin-top:5px;">
     <div class="register-logo">
       <a href="<?= SystemURLs::getRootPath() ?>/"><?=  ChurchMetaData::getChurchName() ?></a>: <?= $calendarName ?></h1>

@@ -254,9 +254,7 @@ function downloadbutton(filename) {
 }
 </script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/pdfmake.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/vfs_fonts.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
+<!-- datatables is bundled in webpack -->
 
 <?php
 require_once 'Include/FooterNotLoggedIn.php';
