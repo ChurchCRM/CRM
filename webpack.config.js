@@ -7,12 +7,11 @@ module.exports = {
   entry: {
     'calendar-event-editor' : './react/calendar-event-editor.tsx',
     'two-factor-enrollment' : './react/two-factor-enrollment.tsx',
-    'skin-main' : './webpack/skin-main',
-    'skin-loggedout' : './webpack/skin-loggedout'
+    'churchcrm' : './webpack/skin-main'  // Main bundle for all pages
   },
   output: {
     path:path.resolve('./src/skin/v2'),
-    filename:'[name].js'
+    filename:'[name].min.js'
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -57,14 +56,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: (pathData) => {
-        // Output both skin-main and skin-loggedout SCSS as churchcrm.min.css
-        // Both entries import the same SCSS, so they generate identical CSS
-        if (pathData.chunk.name === 'skin-main' || pathData.chunk.name === 'skin-loggedout') {
-          return 'churchcrm.min.css';
-        }
-        return '[name].css';
-      },
+      filename: '[name].min.css',
+      ignoreOrder: false,
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
