@@ -15,5 +15,5 @@ import '@fortawesome/fontawesome-free/js/all.min.js';
 
 import '../src/skin/churchcrm.scss';
 
-// No additional exports needed - this bundle is for CSS/assets only
+// No additional exports needed - this bundle is for core CSS and JS assets
 export {};
