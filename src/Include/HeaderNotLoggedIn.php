@@ -19,7 +19,7 @@ if (SystemConfig::debugEnabled()) {
     <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
 
     <!-- Custom ChurchCRM styles -->
-    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/churchcrm.min.css">
+    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 

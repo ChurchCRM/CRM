@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 <title>ChurchCRM: <?= $sPageTitle ?></title>
 
 <!-- Custom ChurchCRM styles -->
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/churchcrm.min.css">
+<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
 <!-- jQuery UI -->
