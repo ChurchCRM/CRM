@@ -44,6 +44,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <!-- ./wrapper -->
 </div><!-- ./wrapper -->
 
+<!-- Bootstrap 3.3.5 -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 
