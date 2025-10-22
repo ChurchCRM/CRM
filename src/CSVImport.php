@@ -819,7 +819,7 @@ if (isset($_POST['DoImport'])) {
 
 if ($iStage === 1) {
     // Display the select file form?>
-    <p style="color: red"> <?= $csvError ?></p>
+    <p class="text-danger"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
             <input id="CSVFileChooser" class="icTinyButton" type="file" name="CSVfile">
             <p></p>

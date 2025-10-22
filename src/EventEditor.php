@@ -378,7 +378,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
         <?php
         if ($iErrors === 0) {
-            echo '<div>' . gettext('Items with a ') . '<span style="color: red">*</span>' . gettext(' are required') . '</div>';
+            echo '<div>' . gettext('Items with a ') . '<span class="text-danger">*</span>' . gettext(' are required') . '</div>';
         } else {
             echo "<div class='alert alert-danger'>" . gettext('There were ') . $iErrors . gettext(' errors. Please see below') . '</div>';
         }
@@ -395,9 +395,9 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 ?>
 
                 <tr>
-                    <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Type') ?>:</td>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?>:</td>
                     <td colspan="3" class="TextColumn">
-                        <select name='EN_tyid' class='form-control' id='event_type_id' width='100%' style='width: 100%'>
+                        <select name='EN_tyid' class='form-control w-100' id='event_type_id'>
                             <option><?= gettext('Select your event type'); ?></option>
                             <?php
                             $sSQL = 'SELECT * FROM event_types';
@@ -408,7 +408,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                             } ?>
                         </select>
                         <?php if ($bEventTypeError) {
-                            echo '<div><span style="color: red;">' . gettext('You must pick an event type.') . '</span></div>';
+                            echo '<div><span class="text-danger">' . gettext('You must pick an event type.') . '</span></div>';
                         } ?>
                         <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
                             $('#event_type_id').on('change', function(e) {
@@ -422,7 +422,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <?php
             } else { ?>
                 <tr>
-                    <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Type') ?>:</td>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?>:</td>
                     <td colspan="3" class="TextColumn">
                         <input type="hidden" name="EventTypeName" value="<?= ($sTypeName) ?>">
                         <input type="hidden" name="EventTypeID" value="<?= ($iTypeID) ?>">
@@ -430,24 +430,24 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Title') ?>:</td>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Title') ?>:</td>
                     <td colspan="1" class="TextColumn">
-                        <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control' width="100%" style="width: 100%" required>
+                        <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control w-100' required>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Desc') ?>:</td>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Desc') ?>:</td>
                     <td colspan="3" class="TextColumn">
-                        <textarea name="EventDesc" rows="4" maxlength="100" class='form-control' required width="100%" style="width: 100%"><?= ($sEventDesc) ?></textarea>
+                        <textarea name="EventDesc" rows="4" maxlength="100" class='form-control w-100' required><?= ($sEventDesc) ?></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span style="color: red">*</span>
+                    <td class="LabelColumn"><span class="text-danger">*</span>
                         <?= gettext('Date Range') ?>:
                     </td>
                     <td class="TextColumn">
                         <input type="text" name="EventDateRange" value=""
-                               maxlength="10" id="EventDateRange" size="50" class='form-control' width="100%" style="width: 100%" required>
+                               maxlength="10" id="EventDateRange" size="50" class='form-control w-100' required>
                     </td>
                 </tr>
                 <tr>
@@ -490,7 +490,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 </tr>
 
                 <tr>
-                    <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Status') ?>:</td>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Status') ?>:</td>
                     <td colspan="3" class="TextColumn">
                         <input type="radio" name="EventStatus" value="0" <?php if ($iEventStatus == 0) {
                             echo 'checked';

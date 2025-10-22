@@ -1,3 +1,11 @@
+/**
+ * ChurchCRM Dropdown Customizations
+ * 
+ * Custom styles for dropdown menus and Select2 selections.
+ * Extends Bootstrap dropdown functionality with ChurchCRM-specific styling.
+ * Component-specific - no Bootstrap duplicates.
+ */
+
 @media (max-width: 767px) {
     .skin-blue .main-header .navbar .dropdown-menu li a {
         color: #000000;
