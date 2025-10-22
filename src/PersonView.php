@@ -119,7 +119,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 $dBirthDate = $person->getFormattedBirthDate();
 
-$sFamilyInfoBegin = '<span style="color: red;">';
+$sFamilyInfoBegin = '<span class="text-danger">';
 $sFamilyInfoEnd = '</span>';
 
 // Assign the values locally, after selecting whether to display the family or person information
