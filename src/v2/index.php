@@ -1,4 +1,3 @@
-
 <?php
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
