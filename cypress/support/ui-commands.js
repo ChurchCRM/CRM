@@ -147,3 +147,103 @@ Cypress.Commands.add('createPeopleViaCSV', (peopleData) => {
     cy.get('#DoImportBtn').click();
     cy.contains('Data import successful.', { timeout: 10000 });
 });
+
+// ============================================================
+// Select2 Testing Commands
+// ============================================================
+
+/**
+ * Select an option in a Select2 dropdown by visible text
+ * @param {string} selector - CSS selector for the original select element
+ * @param {string} text - The text of the option to select
+ * @example cy.select2ByText('#Country', 'United States')
+ */
+Cypress.Commands.add('select2ByText', (selector, text) => {
+    // Click the Select2 container to open the dropdown
+    cy.get(selector).siblings('.select2-container').click();
+    
+    // Wait for dropdown to appear and search for the text
+    cy.get('.select2-search__field').type(text);
+    
+    // Click the matching result
+    cy.get('.select2-results__option')
+        .contains(text)
+        .click({ force: true });
+});
+
+/**
+ * Select an option in a Select2 dropdown by value
+ * @param {string} selector - CSS selector for the original select element
+ * @param {string} value - The value of the option to select
+ * @example cy.select2ByValue('#Country', 'us')
+ */
+Cypress.Commands.add('select2ByValue', (selector, value) => {
+    // Use jQuery to trigger Select2 change programmatically
+    cy.get(selector).then($select => {
+        cy.wrap($select).invoke('val', value).trigger('change');
+    });
+});
+
+/**
+ * Type and search in a Select2 with AJAX
+ * @param {string} selector - CSS selector for the original select element
+ * @param {string} searchText - Text to search for
+ * @param {string} resultText - Text of the result to click (optional, clicks first if not provided)
+ * @example cy.select2Search('.multiSearch', 'John', 'John Doe')
+ */
+Cypress.Commands.add('select2Search', (selector, searchText, resultText = null) => {
+    // Click to open the dropdown
+    cy.get(selector).siblings('.select2-container').click();
+    
+    // Type in the search field
+    cy.get('.select2-search__field').type(searchText);
+    
+    // Wait for AJAX results
+    cy.get('.select2-results__option').should('be.visible');
+    
+    // Click the specific result or the first one
+    if (resultText) {
+        cy.get('.select2-results__option')
+            .contains(resultText)
+            .click({ force: true });
+    } else {
+        cy.get('.select2-results__option')
+            .not('.select2-results__option--loading')
+            .first()
+            .click({ force: true });
+    }
+});
+
+/**
+ * Verify Select2 has the Bootstrap 4 theme applied
+ * @param {string} selector - CSS selector for the original select element
+ * @example cy.select2HasTheme('#Country', 'bootstrap4')
+ */
+Cypress.Commands.add('select2HasTheme', (selector, theme = 'bootstrap4') => {
+    cy.get(selector)
+        .siblings('.select2-container')
+        .should('have.class', `select2-container--${theme}`);
+});
+
+/**
+ * Clear a Select2 selection (if allowClear is enabled)
+ * @param {string} selector - CSS selector for the original select element
+ * @example cy.select2Clear('#Country')
+ */
+Cypress.Commands.add('select2Clear', (selector) => {
+    cy.get(selector)
+        .siblings('.select2-container')
+        .find('.select2-selection__clear')
+        .click({ force: true });
+});
+
+/**
+ * Get the currently selected text from a Select2
+ * @param {string} selector - CSS selector for the original select element
+ * @example cy.select2GetSelected('#Country').should('contain', 'United States')
+ */
+Cypress.Commands.add('select2GetSelected', (selector) => {
+    return cy.get(selector)
+        .siblings('.select2-container')
+        .find('.select2-selection__rendered');
+});

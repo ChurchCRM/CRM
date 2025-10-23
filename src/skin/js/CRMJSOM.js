@@ -402,6 +402,7 @@ window.CRM.groups = {
                         });
                         $("#targetRoleSelection").select2({
                             data: rolesList,
+                            dropdownParent: $('.bootbox'),
                         });
                     });
             };
@@ -435,6 +436,7 @@ window.CRM.groups = {
                 .removeAttr("tabindex");
             $groupSelect2 = $("#targetGroupSelection").select2({
                 data: groupsList,
+                dropdownParent: $('.bootbox'),
             });
 
             $groupSelect2.on("select2:select", function (e) {
@@ -454,6 +456,7 @@ window.CRM.groups = {
                         });
                         $("#targetRoleSelection").select2({
                             data: rolesList,
+                            dropdownParent: $('.bootbox'),
                         });
                     });
             });
