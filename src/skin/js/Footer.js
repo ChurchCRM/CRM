@@ -40,7 +40,7 @@ $("document").ready(function () {
 
     window.onkeyup = function (e) {
         // listen for "?" keypress for quick access to the select2 search box.
-        if (e.shiftKey && e.key === '?') {
+        if (e.shiftKey && e.key === "?") {
             $(".multiSearch").select2("open");
         }
     };
