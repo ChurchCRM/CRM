@@ -159,14 +159,27 @@ Cypress.Commands.add('createPeopleViaCSV', (peopleData) => {
  * @example cy.select2ByText('#Country', 'United States')
  */
 Cypress.Commands.add('select2ByText', (selector, text) => {
-    // Click the Select2 container to open the dropdown
-    cy.get(selector).siblings('.select2-container').click();
+    // Find the Select2 container for this select element
+    cy.get(selector).then($select => {
+        const selectId = $select.attr('id');
+        const containerId = selectId ? `select2-${selectId}-container` : null;
+        
+        // Click the Select2 container to open the dropdown
+        if (containerId) {
+            cy.get(`#${containerId}`).parent('.select2-selection').click();
+        } else {
+            cy.get(selector).siblings('.select2-container').find('.select2-selection').click();
+        }
+    });
     
     // Wait for dropdown to appear and search for the text
-    cy.get('.select2-search__field').type(text);
+    cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
+        .should('be.visible')
+        .type(text, { delay: 50 });
     
-    // Click the matching result
-    cy.get('.select2-results__option')
+    // Wait for results and click the matching option
+    cy.get('.select2-results__option', { timeout: 5000 })
+        .should('be.visible')
         .contains(text)
         .click({ force: true });
 });
@@ -192,14 +205,27 @@ Cypress.Commands.add('select2ByValue', (selector, value) => {
  * @example cy.select2Search('.multiSearch', 'John', 'John Doe')
  */
 Cypress.Commands.add('select2Search', (selector, searchText, resultText = null) => {
-    // Click to open the dropdown
-    cy.get(selector).siblings('.select2-container').click();
+    // Click the Select2 container to open the dropdown
+    cy.get(selector).then($select => {
+        const selectId = $select.attr('id');
+        const containerId = selectId ? `select2-${selectId}-container` : null;
+        
+        if (containerId) {
+            cy.get(`#${containerId}`).parent('.select2-selection').click();
+        } else {
+            cy.get(selector).siblings('.select2-container').find('.select2-selection').click();
+        }
+    });
     
     // Type in the search field
-    cy.get('.select2-search__field').type(searchText);
+    cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
+        .should('be.visible')
+        .type(searchText, { delay: 50 });
     
-    // Wait for AJAX results
-    cy.get('.select2-results__option').should('be.visible');
+    // Wait for AJAX results (look for non-loading options)
+    cy.get('.select2-results__option', { timeout: 10000 })
+        .not('.select2-results__option--loading')
+        .should('be.visible');
     
     // Click the specific result or the first one
     if (resultText) {
@@ -217,12 +243,19 @@ Cypress.Commands.add('select2Search', (selector, searchText, resultText = null) 
 /**
  * Verify Select2 has the Bootstrap 4 theme applied
  * @param {string} selector - CSS selector for the original select element
+ * @param {string} theme - Theme name (default: 'bootstrap4')
  * @example cy.select2HasTheme('#Country', 'bootstrap4')
  */
 Cypress.Commands.add('select2HasTheme', (selector, theme = 'bootstrap4') => {
-    cy.get(selector)
-        .siblings('.select2-container')
-        .should('have.class', `select2-container--${theme}`);
+    cy.get(selector).then($select => {
+        // Check if Select2 is initialized
+        cy.wrap($select).should('have.class', 'select2-hidden-accessible');
+        
+        // Check the theme class on the container
+        cy.get(selector)
+            .siblings('.select2-container')
+            .should('have.class', `select2-container--${theme}`);
+    });
 });
 
 /**
