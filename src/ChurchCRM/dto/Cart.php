@@ -3,9 +3,12 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\GroupService;
 
 class Cart
 {
@@ -142,29 +145,10 @@ class Cart
 
     public static function emptyToGroup($GroupID, $RoleID): void
     {
-        $iCount = 0;
-
-        $group = GroupQuery::create()->findOneById($GroupID);
-
-        if ($RoleID == 0) {
-            $RoleID = $group->getDefaultRole();
-        }
+        $groupService = new GroupService();
 
         foreach ($_SESSION['aPeopleCart'] as $element) {
-            $personGroupRole = Person2group2roleP2g2rQuery::create()
-            ->filterByGroupId($GroupID)
-            ->filterByPersonId($element)
-            ->findOneOrCreate()
-            ->setRoleId($RoleID)
-            ->save();
-
-            // Check if this group has special properties and add record if needed
-            if ($group->getHasSpecialProps()) {
-                $sSQL = 'INSERT IGNORE INTO groupprop_' . $GroupID . " (per_ID) VALUES ('" . $element . "')";
-                RunQuery($sSQL);
-            }
-
-            $iCount += 1;
+            $groupService->addUserToGroup($GroupID, $element, $RoleID);
         }
 
         $_SESSION['aPeopleCart'] = [];

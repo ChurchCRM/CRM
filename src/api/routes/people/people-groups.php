@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\GroupService;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -163,24 +164,11 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $person = PersonQuery::create()->findPk($userID);
         $input = $request->getParsedBody();
         $group = GroupQuery::create()->findPk($groupID);
-        $p2g2r = Person2group2roleP2g2rQuery::create()
-            ->filterByGroupId($groupID)
-            ->filterByPersonId($userID)
-            ->findOneOrCreate();
-        if ($input['RoleID']) {
-            $p2g2r->setRoleId($input['RoleID']);
-        } else {
-            $p2g2r->setRoleId($group->getDefaultRole());
-        }
-
-        $group->addPerson2group2roleP2g2r($p2g2r);
-        $group->save();
-
-        // Check if this group has special properties and add record if needed
-        if ($group->getHasSpecialProps()) {
-            $sSQL = 'INSERT IGNORE INTO groupprop_' . $groupID . " (per_ID) VALUES ('" . $userID . "')";
-            RunQuery($sSQL);
-        }
+        
+        $roleID = $input['RoleID'] ?? $group->getDefaultRole();
+        
+        $groupService = new GroupService();
+        $groupService->addUserToGroup($groupID, $userID, $roleID);
 
         $note = new Note();
         $note->setText(gettext('Added to group') . ': ' . $group->getName());
