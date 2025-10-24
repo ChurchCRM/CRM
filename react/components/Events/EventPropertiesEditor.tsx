@@ -33,11 +33,9 @@ const EventPropertiesEditor: React.FunctionComponent<{
     value: eventType.Id,
     label: eventType.Name,
   }));
-  const initialPinnedCalendarValue = calendars.map((Pcal: Calendar) => {
-    if (event.PinnedCalendars.includes(Pcal.Id)) {
-      return { value: Pcal.Id, label: Pcal.Name };
-    }
-  });
+  const initialPinnedCalendarValue = calendars
+    .filter((Pcal: Calendar) => event.PinnedCalendars.includes(Pcal.Id))
+    .map((Pcal: Calendar) => ({ value: Pcal.Id, label: Pcal.Name }));
   const initialEventTypeValue = eventTypes.map((eventType: EventType) => {
     if (event.Type == eventType.Id) {
       return { value: eventType.Id, label: eventType.Name };
