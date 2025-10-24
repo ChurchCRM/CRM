@@ -41,7 +41,7 @@ src/logs/*.log
 error.log
 
 nbproject/*
-/src/skin/js-react/
+src/skin/v2/
 .DS_Store
 
 src/Upgrade/*

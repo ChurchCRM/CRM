@@ -29,7 +29,7 @@ require_once 'Include/Header.php';
         <div class="container-fluid">
           <div class="col-lg-4">
             <label for="depositComment"><?= gettext('Deposit Comment') ?></label>
-            <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
+            <input class="form-control newDeposit w-100" name="depositComment" id="depositComment">
           </div>
           <div class="col-lg-3">
             <label for="depositType"><?= gettext('Deposit Type') ?></label>
@@ -42,7 +42,7 @@ require_once 'Include/Header.php';
           </div>
           <div class="col-lg-3">
             <label for="depositDate"><?= gettext('Deposit Date') ?></label>
-            <input class="form-control" name="depositDate" id="depositDate" style="width:100%" class="date-picker">
+            <input class="form-control w-100 date-picker" name="depositDate" id="depositDate">
           </div>
         </div>
       </div>

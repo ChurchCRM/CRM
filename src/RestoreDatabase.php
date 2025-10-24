@@ -33,8 +33,7 @@ require_once 'Include/Header.php';
 </div>
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><?= gettext('Restore Status:') ?></h3>&nbsp;<h3 class="card-title" id="restorestatus"
-                                                        style="color:red"><?= gettext('No Restore Running') ?></h3>
+    <h3 class="card-title"><?= gettext('Restore Status:') ?></h3>&nbsp;<h3 class="card-title text-danger" id="restorestatus"><?= gettext('No Restore Running') ?></h3>
     <div id="restoreMessages"></div>
     <span id="restoreNextStep"></span>
   </div>

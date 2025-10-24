@@ -361,7 +361,7 @@ require_once 'Include/Header.php';
                         ?>
                         <tr>
                             <td align="center" colspan="2">
-                                <span style="color:red;" id="PasswordError"><?= $sErrorText ?></span>
+                                <span class="text-danger" id="PasswordError"><?= $sErrorText ?></span>
                             </td>
                         </tr>
                         <?php

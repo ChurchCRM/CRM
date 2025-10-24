@@ -20,7 +20,7 @@ use ChurchCRM\dto\SystemURLs;
 
 $csp = [
     "default-src 'self'",
-    "script-src 'unsafe-eval' 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' browser-update.org",
+    "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' 'unsafe-eval' browser-update.org",
     "object-src 'none'",
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
     "img-src 'self' data:",
@@ -28,6 +28,9 @@ $csp = [
     "frame-src 'self'",
     "font-src 'self' fonts.gstatic.com",
     "connect-src 'self'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'self'",
     'report-uri ' . SystemURLs::getRootPath() . '/api/system/background/csp-report',
 ];
 if (SystemConfig::getBooleanValue('bHSTSEnable')) {

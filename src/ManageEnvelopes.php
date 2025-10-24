@@ -118,7 +118,7 @@ if (isset($_POST['PrintReport'])) {
                     <h4 class="modal-title" id="upload-Image-label"><?= gettext('Update Envelopes') ?></h4>
                 </div>
                 <div class="modal-body">
-                <span style="color:red"><?= gettext('This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?')?></span>
+                <span class="text-danger"><?= gettext('This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?')?></span>
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Confirm') ?>" name="Confirm">
