@@ -1,0 +1,41 @@
+# Claude AI Preferences for ChurchCRM Development
+
+## PR/Commit Message Style
+- Use short, concise summaries
+- No file links, file paths, or detailed file lists
+- Focus on what changed and why
+- Keep it under 10 lines when possible
+
+## Code Review Style
+- Provide actionable feedback only
+- Skip verbose explanations unless requested
+- Focus on deprecated code, best practices, and potential issues
+- When fixing issues, just fix them without extensive commentary
+
+## Communication Style
+- Be direct and to the point
+- No filler acknowledgements ("Sounds good", "Okay, I will...")
+- Start with action, not preamble
+- Skip repetitive summaries
+
+## Branch Naming
+- Format: feature/description or fix/description or refactor/description
+- Use kebab-case
+- Keep it descriptive but short
+
+## Commit Messages
+- First line: Imperative mood, under 72 chars
+- Bullet points for details (if needed)
+- Focus on what and why, not how
+
+## Testing Preferences
+- Run automated checks when available
+- Verify no errors before committing
+- Prefer concise test output summaries
+
+## Documentation
+- Only create docs when explicitly requested
+- Prefer inline code comments for complex logic
+- Keep README updates minimal and relevant
+
+Last updated: October 23, 2025
