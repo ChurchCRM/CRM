@@ -16,7 +16,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
           <td>
             {eventTypes.map((eventType: EventType) => {
               if (event.Type != null && event.Type == eventType.Id) {
-                return <p>{eventType.Name}</p>;
+                return <p key={eventType.Id}>{eventType.Name}</p>;
               }
             })}
           </td>
@@ -42,7 +42,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
                   event.PinnedCalendars != null &&
                   event.PinnedCalendars.includes(calendar.Id)
                 ) {
-                  return <li>{calendar.Name}</li>;
+                  return <li key={calendar.Id}>{calendar.Name}</li>;
                 }
               })}
             </ul>

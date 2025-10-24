@@ -14,7 +14,6 @@ $taskService = new TaskService();
 ob_start();
 
 require_once 'Header-function.php';
-// Always enable CSP for security (both debug and production)
 require_once 'Header-Security.php';
 
 // Top level menu index counter
