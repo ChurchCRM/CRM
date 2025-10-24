@@ -82,16 +82,10 @@ jobs:
         npm run package
 
     - name: Run Docker
-      run: |
-        npm run docker:ci:start
-        docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
-        docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+      run: npm run docker:ci:start
 
     - name: Test Server
-      run: |
-          curl -vvv http://127.0.0.1/api/public/echo
-          docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
-          docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+      run: curl -vvv http://127.0.0.1/api/public/echo
 
     - name: Run Cypress Tests
       run: |
