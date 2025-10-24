@@ -56,7 +56,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       })
         .then((response) => response.json())
         .then((data) => {
-          var event: CRMEvent;
+          let event: CRMEvent;
           event = data;
           event.Start = new Date(event.Start);
           event.End = new Date(event.End);
@@ -100,14 +100,14 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   handleStartDateChange(date: Date) {
-    var newEventState = Object.assign({}, this.state.event, { Start: date });
+    const newEventState = Object.assign({}, this.state.event, { Start: date });
     this.setState({
       event: newEventState,
     });
   }
 
   handleEndDateChange(date: Date) {
-    var newEventState = Object.assign({}, this.state.event, { End: date });
+    const newEventState = Object.assign({}, this.state.event, { End: date });
     this.setState({
       event: newEventState,
     });
@@ -145,9 +145,9 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   save() {
-    var DateReplacer = function (key, value) {
+    const DateReplacer = function (key, value) {
       if (this[key] instanceof Date) {
-        var td = this[key];
+        const td = this[key];
         return window.moment(td).format();
       }
 

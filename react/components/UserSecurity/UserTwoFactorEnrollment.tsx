@@ -196,7 +196,7 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
           </p>
           <ul>
             {TwoFARecoveryCodes.length ? (
-              TwoFARecoveryCodes.map((code) => <li>{code}</li>)
+              TwoFARecoveryCodes.map((code, index) => <li key={index}>{code}</li>)
             ) : (
               <p>waiting</p>
             )}
