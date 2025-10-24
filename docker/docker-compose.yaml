@@ -15,7 +15,7 @@ services:
       retries: 10
 
   mailserver:
-    profiles: [dev, test, ci]
+    profiles: [dev, test]
     image: mailhog/mailhog
     ports:
       - ${MAILSERVER_PORT:-1025}:1025
