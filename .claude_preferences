@@ -38,4 +38,26 @@
 - Prefer inline code comments for complex logic
 - Keep README updates minimal and relevant
 
-Last updated: October 23, 2025
+## Service Classes
+- **ALWAYS** use existing Service classes for business logic and database operations
+- Available services: GroupService, FinancialService, SystemService, TaskService, etc.
+- Before writing inline database logic, check if a Service class exists
+- Add new methods to Service classes rather than duplicating logic in controllers
+- Service classes encapsulate business rules and maintain consistency
+
+## Database Interactions
+- **ALWAYS** use Propel ORM for all database operations
+- Never use raw SQL with RunQuery() or string concatenation
+- For tables with Propel models: Use Query classes and model methods
+- For dynamic tables (groupprop_*, etc.): Use Service methods or prepared statements via Propel::getConnection()
+  ```php
+  $connection = Propel::getConnection();
+  $sql = 'INSERT INTO dynamic_table_' . (int)$id . ' (column) VALUES (:value)';
+  $stmt = $connection->prepare($sql);
+  $stmt->bindValue(':value', $value, \PDO::PARAM_INT);
+  $stmt->execute();
+  ```
+- Always cast dynamic table identifiers to (int) to prevent SQL injection
+- Use PDO::PARAM_* constants for proper type binding
+
+Last updated: January 16, 2025
