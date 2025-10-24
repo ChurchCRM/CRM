@@ -25,20 +25,20 @@ const EventPropertiesEditor: React.FunctionComponent<{
   eventTypeChanged,
 }) => {
   //map the Calendar data type (returned from CRM API) into something that react-select can present as dropdown choices
-  var calendarOptions = calendars.map((Pcal: Calendar) => ({
+  const calendarOptions = calendars.map((Pcal: Calendar) => ({
     value: Pcal.Id,
     label: Pcal.Name,
   }));
-  var EventTypeOptions = eventTypes.map((eventType: EventType) => ({
+  const EventTypeOptions = eventTypes.map((eventType: EventType) => ({
     value: eventType.Id,
     label: eventType.Name,
   }));
-  var initialPinnedCalendarValue = calendars.map((Pcal: Calendar) => {
+  const initialPinnedCalendarValue = calendars.map((Pcal: Calendar) => {
     if (event.PinnedCalendars.includes(Pcal.Id)) {
       return { value: Pcal.Id, label: Pcal.Name };
     }
   });
-  var initialEventTypeValue = eventTypes.map((eventType: EventType) => {
+  const initialEventTypeValue = eventTypes.map((eventType: EventType) => {
     if (event.Type == eventType.Id) {
       return { value: eventType.Id, label: eventType.Name };
     }
