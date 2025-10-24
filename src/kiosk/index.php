@@ -31,6 +31,7 @@ $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
+$app->addRoutingMiddleware();
 
 // routes
 require __DIR__ . '/routes/kiosk.php';
