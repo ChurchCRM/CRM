@@ -418,7 +418,7 @@ require_once 'Include/Header.php';
                 }),
                 bootbox.confirm({
                     title: "<?= gettext("Confirm Delete Group") ?>",
-                    message: '<p style="color: red">' +
+                    message: '<p class="text-danger">' +
                         "<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>" +
                         "<p>" +
                         "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +

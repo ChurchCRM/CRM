@@ -2,7 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Endroid\QrCode\Writer\PngWriter;
 use Psr\Http\Message\ResponseInterface as Response;

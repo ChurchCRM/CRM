@@ -15,12 +15,12 @@ if (SystemConfig::debugEnabled()) {
     <meta http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Custom ChurchCRM styles -->
-    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/churchcrm.min.css">
-    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/external/fontawesome/css/all.css">
-
     <!-- jQuery JS -->
     <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
+
+    <!-- Core ChurchCRM bundle -->
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.js"></script>
+    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 

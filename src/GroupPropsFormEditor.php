@@ -267,7 +267,7 @@ require_once 'Include/Header.php'; ?>
                         <td colspan="7" align="center">
                             <?php
                             if ($bErrorFlag) {
-                                echo '<span class="LargeText" style="color: red;">' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
+                                echo '<span class="LargeText text-danger">' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
                             } ?>
                         </td>
                     </tr>
@@ -308,7 +308,7 @@ require_once 'Include/Header.php'; ?>
                             <td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="25" maxlength="40">
                                 <?php
                                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                                    echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
                                 } ?>
                             </td>
 
@@ -338,7 +338,7 @@ require_once 'Include/Header.php'; ?>
                                     echo '</select>';
 
                                     if ($aSpecialErrors[$row]) {
-                                        echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
+                                        echo '<span class="text-danger"><BR>' . gettext('You must select a group.') . '</span>';
                                     }
                                 } elseif ($aTypeFields[$row] == 12) {
                                     echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=groupcustom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">Edit List Options</a>";
@@ -398,10 +398,10 @@ require_once 'Include/Header.php'; ?>
                                     <input type="text" name="newFieldName" size="25" maxlength="40">
                                     <?php
                                     if ($bNewNameError) {
-                                        echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                                        echo '<div><span class="text-danger"><BR>' . gettext('You must enter a name') . '</span></div>';
                                     }
                                     if ($bDuplicateNameError) {
-                                        echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
+                                        echo '<div><span class="text-danger"><BR>' . gettext('That field name already exists.') . '</span></div>';
                                     }
                                     ?>
                                     &nbsp;

@@ -1,16 +1,18 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware\Request;
+namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use Laminas\Diactoros\Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Message\ResponseInterface;
 
-class PersonAPIMiddleware
+class PersonMiddleware implements MiddlewareInterface
 {
-    public function __invoke(Request $request, RequestHandler $handler): Response
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = new Response();
         $personId = SlimUtils::getRouteArgument($request, 'personId');

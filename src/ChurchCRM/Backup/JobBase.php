@@ -20,7 +20,17 @@ class JobBase
         FileSystemUtils::recursiveRemoveDirectory($TempFolder, false);
 
         LoggerUtils::getAppLogger()->debug('Creating temp folder at ' . $TempFolder);
-        mkdir($TempFolder, 0750, true);
+        if (!mkdir($TempFolder, 0750, true) && !is_dir($TempFolder)) {
+            $error = error_get_last();
+            $message = 'Failed to create backup directory at ' . $TempFolder;
+            if ($error) {
+                $message .= ': ' . $error['message'];
+            }
+            $message .= '. Please ensure the web server has write permissions to the parent directory.';
+            LoggerUtils::getAppLogger()->error($message);
+
+            throw new \Exception($message, 500);
+        }
         LoggerUtils::getAppLogger()->debug('Temp folder created');
 
         return $TempFolder;

@@ -8,7 +8,7 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -126,7 +126,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $group = GroupQuery::create()->findOneById($groupID);
         $group->setName($input['groupName']);
         $group->setType($input['groupType']);
-        $group->setDescription($input['description']);
+    $group->setDescription(htmlspecialchars($input['description'] ?? '', ENT_QUOTES, 'UTF-8'));
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });

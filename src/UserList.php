@@ -174,7 +174,7 @@ require_once 'Include/Header.php';
         </h3>
     </div>
     <div class="card-body">
-        <table class="table table-hover dt-responsive" id="user-listing-table" style="width:100%;">
+        <table class="table table-hover dt-responsive width-100pct" id="user-listing-table">
             <thead>
             <tr>
                 <th><?= gettext('Actions') ?></th>

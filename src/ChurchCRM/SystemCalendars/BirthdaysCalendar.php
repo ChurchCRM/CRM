@@ -42,7 +42,8 @@ class BirthdaysCalendar implements SystemCalendar
     public function getEvents(?string $start = null, ?string $end = null): ObjectCollection
     {
         $people = PersonQuery::create()
-            ->filterByBirthDay('', Criteria::NOT_EQUAL)
+            ->filterByBirthDay(0, Criteria::GREATER_THAN)
+            ->filterByBirthMonth(0, Criteria::GREATER_THAN)
             ->find();
 
         return $this->peopleCollectionToEvents($people, $start, $end);
@@ -51,7 +52,8 @@ class BirthdaysCalendar implements SystemCalendar
     public function getEventById(int $Id): ObjectCollection
     {
         $people = PersonQuery::create()
-            ->filterByBirthDay('', Criteria::NOT_EQUAL)
+            ->filterByBirthDay(0, Criteria::GREATER_THAN)
+            ->filterByBirthMonth(0, Criteria::GREATER_THAN)
             ->filterById($Id)
             ->find();
 

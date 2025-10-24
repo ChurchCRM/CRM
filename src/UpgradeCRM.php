@@ -203,7 +203,7 @@ Header_body_scripts();
       $("#downloadbutton").click(function(){
         $("#fetchPhase").show("slow");
         $("#backupPhase").slideUp();
-        $("#status1").html('<i class="fa fa-check" style="color:green"></i>');
+        $("#status1").html('<i class="fa fa-check text-success"></i>');
       });
     }).fail(function()  {
       $("#backupstatus").css("color","red");
@@ -218,7 +218,7 @@ Header_body_scripts();
       type : 'GET',
       path  : 'systemupgrade/downloadlatestrelease',
     }).done(function(data){
-      $("#status2").html('<i class="fa fa-check" style="color:green"></i>');
+      $("#status2").html('<i class="fa fa-check text-success"></i>');
       window.CRM.updateFile=data;
       $("#updateFileName").text(data.fileName);
       $("#updateFullPath").text(data.fullPath);
@@ -241,7 +241,7 @@ Header_body_scripts();
         sha1: window.CRM.updateFile.sha1
       })
     }).done(function(data){
-      $("#status3").html('<i class="fa fa-check" style="color:green"></i>');
+      $("#status3").html('<i class="fa fa-check text-success"></i>');
       $("#finalPhase").show("slow");
     });
  });

@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\Version;
 use ChurchCRM\SQLUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\VersionUtils;
 use Propel\Runtime\Propel;
 
 class UpgradeService
@@ -21,7 +22,7 @@ class UpgradeService
     public static function upgradeDatabaseVersion(): bool
     {
         $logger = LoggerUtils::getAppLogger();
-        $db_version = SystemService::getDBVersion();
+        $db_version = VersionUtils::getDBVersion();
 
         $logger->info(
             "Current Version: $db_version",
@@ -47,7 +48,7 @@ class UpgradeService
             $upgradeScriptsExecuted = 0;
             foreach ($dbUpdates as $dbUpdate) {
                 try {
-                    if (in_array(SystemService::getDBVersion(), $dbUpdate['versions'])) {
+                    if (in_array(VersionUtils::getDBVersion(), $dbUpdate['versions'])) {
                         $version = new Version();
                         $version->setVersion($dbUpdate['dbVersion']);
                         $version->setUpdateStart(new \DateTimeImmutable());
@@ -90,7 +91,7 @@ class UpgradeService
             }
 
             if ($upgradeScriptsExecuted === 0) {
-                $logger->warning('No upgrade path for ' . SystemService::getDBVersion() . ' to ' . $_SESSION['sSoftwareInstalledVersion']);
+                $logger->warning('No upgrade path for ' . VersionUtils::getDBVersion() . ' to ' . $_SESSION['sSoftwareInstalledVersion']);
             }
             // always rebuild the views
             SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);

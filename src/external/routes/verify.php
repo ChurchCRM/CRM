@@ -42,7 +42,7 @@ $app->group('/verify', function (RouteCollectorProxy $group): void {
                 $note->setEntered(Person::SELF_VERIFY);
                 $note->setText(gettext('No Changes'));
                 if (!empty($body['message'])) {
-                    $note->setText($body['message']);
+                    $note->setText(htmlspecialchars($body['message'], ENT_QUOTES, 'UTF-8'));
                 }
                 $note->save();
             }

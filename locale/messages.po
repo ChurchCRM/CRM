@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-11 17:53-0700\n"
+"POT-Creation-Date: 2025-10-18 15:27-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2227,6 +2227,9 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
+msgid "System Logs"
+msgstr ""
+
 msgid "Custom Menus"
 msgstr ""
 
@@ -2422,6 +2425,24 @@ msgstr ""
 msgid "by"
 msgstr ""
 
+msgid "Missing"
+msgstr ""
+
+msgid "not found"
+msgstr ""
+
+msgid " has a type mismatch"
+msgstr ""
+
+msgid "External Calendar API is disabled"
+msgstr ""
+
+msgid "Missing calendar access token"
+msgstr ""
+
+msgid "Calendar access token not found"
+msgstr ""
+
 msgid "No logged in user"
 msgstr ""
 
@@ -2450,24 +2471,6 @@ msgid "User must have Manage Groups permission"
 msgstr ""
 
 msgid "User must have MenuOptions permission"
-msgstr ""
-
-msgid "Missing"
-msgstr ""
-
-msgid "not found"
-msgstr ""
-
-msgid " has a type mismatch"
-msgstr ""
-
-msgid "External Calendar API is disabled"
-msgstr ""
-
-msgid "Missing calendar access token"
-msgstr ""
-
-msgid "Calendar access token not found"
 msgstr ""
 
 msgid "is disabled"
@@ -3078,6 +3081,9 @@ msgstr ""
 msgid "Family List Columns"
 msgstr ""
 
+msgid "Maximum number of log files to keep"
+msgstr ""
+
 msgid "Church Information"
 msgstr ""
 
@@ -3217,6 +3223,12 @@ msgid "PHP Max Execution Time is too Short"
 msgstr ""
 
 msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr ""
+
+msgid "Too Many Log Files"
+msgstr ""
+
+msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
 msgstr ""
 
 msgid "PHP Max File size too small"
@@ -6592,6 +6604,57 @@ msgid "Application Integrity Check"
 msgstr ""
 
 msgid "Details:"
+msgstr ""
+
+msgid "Log Settings"
+msgstr ""
+
+msgid "Log Level:"
+msgstr ""
+
+msgid "Save Log Level"
+msgstr ""
+
+msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
+msgstr ""
+
+msgid "View application logs. Click on a log file to view its contents."
+msgstr ""
+
+msgid "Delete All Logs"
+msgstr ""
+
+msgid "No log files found."
+msgstr ""
+
+msgid "Log File"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Last Modified"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Log File Viewer"
+msgstr ""
+
+msgid "Filter by log level:"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Info"
+msgstr ""
+
+msgid "Number of lines to display:"
+msgstr ""
+
+msgid "Loading log file..."
 msgstr ""
 
 msgid "Add Menu"

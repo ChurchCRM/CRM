@@ -285,7 +285,7 @@ if ($numRows == 0) {
     <tr><td colspan="7">
     <?php
     if ($bErrorFlag) {
-        echo '<span class="LargeText" style="color: red;"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
+        echo '<span class="LargeText" class="text-danger"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
     } ?>
     </td></tr>
         <tr>
@@ -307,7 +307,7 @@ if ($numRows == 0) {
                 <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35" maxlength="40">
                 <?php
                 if ($aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                    echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
                 } ?>
             </td>
             <td class="TextColumn" align="center">
@@ -332,7 +332,7 @@ if ($numRows == 0) {
 
                 echo '</select>';
                 if ($aSpecialErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
+                    echo '<span class="text-danger"><BR>' . gettext('You must select a group.') . '</span>';
                 }
             } elseif ($aTypeFields[$row] == 12) {
                 // TLH 6-23-07 Added scrollbars to the popup so long lists can be edited.
@@ -402,10 +402,10 @@ if ($numRows == 0) {
                         <input type="text" name="newFieldName" size="30" maxlength="40">
                         <?php
                         if ($bNewNameError) {
-                            echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                            echo '<div><span class="text-danger"><BR>' . gettext('You must enter a name') . '</span></div>';
                         }
                         if ($bDuplicateNameError) {
-                            echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
+                            echo '<div><span class="text-danger"><BR>' . gettext('That field name already exists.') . '</span></div>';
                         }
                         ?>
                         &nbsp;

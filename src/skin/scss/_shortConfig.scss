@@ -1,3 +1,10 @@
+/**
+ * ChurchCRM Short Configuration Styles
+ * 
+ * Custom styles for tabbed configuration panels.
+ * Component-specific - no Bootstrap duplicates.
+ */
+
 .tab-pane {
     max-height: calc(100vh - 91px);
     overflow-y: auto;
