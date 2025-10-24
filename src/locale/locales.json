@@ -8,7 +8,7 @@
         "fullCalendar": true,
         "fullCalendarLocale": "af",
         "datePicker": false,
-        "select2": false
+        "select2": true
     },
     "Albanian": {
         "poEditor": "sq",
@@ -19,7 +19,7 @@
         "fullCalendar": true,
         "fullCalendarLocale": "sq",
         "datePicker": true,
-        "select2": false
+        "select2": true
     },
     "Amharic - Ethiopia": {
         "poEditor": "am",
@@ -298,13 +298,13 @@
     "Portuguese - Portugal": {
         "poEditor": "pt",
         "locale": "pt_PT",
-        "languageCode": "pt-PT",
+        "languageCode": "pt",
         "countryCode": "PT",
         "dataTables": "Portuguese",
         "fullCalendar": true,
         "fullCalendarLocale": "pt",
-        "datePicker": false,
-        "select2": false
+        "datePicker": true,
+        "select2": true
     },
     "Romanian - Romania": {
         "poEditor": "ro",
