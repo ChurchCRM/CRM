@@ -230,6 +230,7 @@ $(document).ready(function () {
             type: "POST", // define the type of HTTP verb we want to use (POST for our form)
             url: "api/payments", // the url where we want to POST
             data: JSON.stringify(formData), // our data object
+            contentType: "application/json", // set content type to JSON
             //dataType    : 'json', // what type of data do we expect back from the server
             encode: true,
         }).done(function (data) {
