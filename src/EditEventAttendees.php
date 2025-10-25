@@ -41,7 +41,7 @@ if ($EventID === null) {
 
 $event = EventQuery::create()->findPk($EventID);
 
-if (empty($event)) {
+if ($event === null) {
     RedirectUtils::redirect('ListEvents.php');
 }
 

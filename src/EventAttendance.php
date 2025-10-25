@@ -182,7 +182,7 @@ $numRows = $events->count();
                                     <input type="hidden" name="Type" value="<?= $sGetType ?>">
                                     <input type="hidden" name="Action" value="Retrieve">
                                     <input type="hidden" name="Choice" value="Nonattendees">
-                                    <button type="submit" class="btn btn-sm btn-warning"><?= ($tNumTotal - $cNumAttend) ?></button>
+                                    <button id="Non-Attending-<?= $eventId ?>" type="submit" class="btn btn-sm btn-warning"><?= ($tNumTotal - $cNumAttend) ?></button>
                                 </form>
                             </td>
                             <td>
