@@ -113,6 +113,10 @@ We use Cypress for end-to-end testing. Follow the previously mentioned steps to 
 
 4. Submit a pull request via GitHub.
 
+## Detailed Workflow Guide
+
+For comprehensive information on issue workflows, branching strategies, PR requirements, and merge processes, see our [Development Workflow Documentation](https://github.com/ChurchCRM/CRM/wiki/Contributing).
+
 ## Code of Conduct
 
 Please adhere to the [Code of Conduct](CODE_OF_CONDUCT.md) in all interactions.
