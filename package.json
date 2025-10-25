@@ -25,7 +25,7 @@
         "build:js:legacy": "grunt curl-dir && grunt copy && grunt patchDataTablesCSS",
         "build:webpack": "webpack",
         "build:php": "run-s composer:install",
-        "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external",
+        "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external ai-notes/ logs/ src/logs/*.log",
         "composer:install": "cd src/ && composer validate --no-check-publish && composer install --no-dev",
         "composer:update": "cd src/ && composer update",
         "deploy": "run-s build deploy:signatures",
