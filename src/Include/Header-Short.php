@@ -19,12 +19,12 @@ ob_start();
 
 <body>
 
-<table height="100%" width="100%" border="0" cellpadding="5" cellspacing="0" class="mx-auto">
+<table height="100%" width="100%" cellpadding="5" cellspacing="0" class="mx-auto">
   <tr>
-    <td valign="top" width="100%" class="text-center">
-      <table width="98%" border="0">
+    <td class="align-top text-center" width="100%">
+      <table width="98%">
         <tr>
-          <td valign="top">
+          <td class="align-top">
             <br>
 
             <p class="PageTitle"><?= gettext($sPageTitle) ?></p>

@@ -194,7 +194,7 @@ if ($donationFunds->count() == 0) {
             <table width="100%">
                 <tr>
                     <td width="15%"></td>
-                    <td valign="top">
+                    <td class="align-top">
                         <div><?= gettext('Name') ?>:</div>
                         <input type="text" name="newFieldName" size="30" maxlength="30">
                         <?php if ($bNewNameError) {
@@ -202,7 +202,7 @@ if ($donationFunds->count() == 0) {
                         } ?>
                         &nbsp;
                     </td>
-                    <td valign="top">
+                    <td class="align-top">
                         <div><?= gettext('Description') ?>:</div>
                         <input type="text" name="newFieldDesc" size="40" maxlength="100">
                         &nbsp;

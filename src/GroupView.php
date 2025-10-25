@@ -278,13 +278,13 @@ require_once 'Include/Header.php';
                         ?>
                             <table width="100%" cellpadding="2" cellspacing="0">
                                 <tr class="TableHeader">
-                                    <td width="15%" valign="top"><b><?= gettext('Type') ?></b>
-                                    <td valign="top"><b><?= gettext('Name') ?></b>
-                                    <td valign="top"><b><?= gettext('Value') ?></td>
+                                    <td width="15%" class="align-top"><b><?= gettext('Type') ?></b>
+                                    <td class="align-top"><b><?= gettext('Name') ?></b>
+                                    <td class="align-top"><b><?= gettext('Value') ?></td>
                                 <?php
                                 if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                    echo '<td valign="top"><b>' . gettext('Edit Value') . '</td>';
-                                    echo '<td valign="top"><b>' . gettext('Remove') . '</td>';
+                                    echo '<td class="align-top"><b>' . gettext('Edit Value') . '</td>';
+                                    echo '<td class="align-top"><b>' . gettext('Remove') . '</td>';
                                 }
                                 echo '</tr>';
 
@@ -312,20 +312,20 @@ require_once 'Include/Header.php';
                                         $sRowClass = 'RowColorB';
                                     } else {
                                         echo '<tr class="' . $sRowClass . '">';
-                                        echo '<td valign="top">&nbsp;</td>';
+                                        echo '<td class="align-top">&nbsp;</td>';
                                     }
 
-                                    echo '<td valign="top">' . $pro_Name . '&nbsp;</td>';
-                                    echo '<td valign="top">' . $r2p_Value . '&nbsp;</td>';
+                                    echo '<td class="align-top">' . $pro_Name . '&nbsp;</td>';
+                                    echo '<td class="align-top">' . $r2p_Value . '&nbsp;</td>';
 
                                     if (strlen($pro_Prompt) > 0 && AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                        echo '<td valign="top"><a href="PropertyAssign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Edit Value') . '</a></td>';
+                                        echo '<td class="align-top"><a href="PropertyAssign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Edit Value') . '</a></td>';
                                     } else {
                                         echo '<td>&nbsp;</td>';
                                     }
 
                                     if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                        echo '<td valign="top"><a href="PropertyUnassign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Remove') . '</a>';
+                                        echo '<td class="align-top"><a href="PropertyUnassign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Remove') . '</a>';
                                     } else {
                                         echo '<td>&nbsp;</td>';
                                     }

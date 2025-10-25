@@ -381,7 +381,7 @@ require_once 'Include/Header.php'; ?>
                         <table width="100%">
                             <tr>
                                 <td width="15%"></td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Type') ?>:</div>
                                     <?php
                                     echo '<select name="newFieldType">';
@@ -393,7 +393,7 @@ require_once 'Include/Header.php'; ?>
                                     ?><BR>
                                     <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
                                 </td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Name') ?>:</div>
                                     <input type="text" name="newFieldName" size="25" maxlength="40">
                                     <?php
@@ -406,7 +406,7 @@ require_once 'Include/Header.php'; ?>
                                     ?>
                                     &nbsp;
                                 </td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Description') ?>:</div>
                                     <input type="text" name="newFieldDesc" size="30" maxlength="60">
                                     &nbsp;

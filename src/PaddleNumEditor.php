@@ -150,9 +150,9 @@ require_once 'Include/Header.php';
 
                 <tr>
                     <td>
-                        <table border="0" width="100%" cellspacing="0" cellpadding="4">
+                        <table width="100%" cellspacing="0" cellpadding="4">
                             <tr>
-                                <td width="50%" valign="top" align="left">
+                                <td width="50%" class="align-top" align="left">
                                     <table cellpadding="3">
                                         <tr>
                                             <td class="LabelColumn"><?= gettext('Number') ?>:</td>

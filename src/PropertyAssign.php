@@ -155,7 +155,7 @@ require_once 'Include/Header.php';
 <?php if (strlen($sPrompt)) {
     ?>
         <tr>
-            <td align="right" valign="top">
+            <td align="right" class="align-top">
                 <b><?= gettext('Value') ?>:</b>
             </td>
             <td>
