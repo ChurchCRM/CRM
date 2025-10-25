@@ -93,6 +93,35 @@ We use Cypress for end-to-end testing. Follow the previously mentioned steps to 
 
 5. **Commit Messages:**
    - Use descriptive commit messages in the present tense.
+   - For complete standards, see `.github/ai-preferences/`
+
+## AI Preferences Standards
+
+ChurchCRM uses **standardized AI agent preferences** to ensure consistent code quality. These apply to all contributors, whether working with AI assistance or manually.
+
+### Quick Reference
+**See `.github/ai-preferences/preferences.yml` for complete standards including:**
+- ✅ **Database:** Propel ORM mandatory (no raw SQL)
+- ✅ **HTML5:** Bootstrap CSS only, no deprecated attributes
+- ✅ **Asset Paths:** Use `SystemURLs::getRootPath()`
+- ✅ **Services:** Business logic in Service classes
+- ✅ **Objects:** Validate with `=== null`, never `empty()`
+- ✅ **CSS:** Webpack bundled, no CDN links
+
+### Using AI Assistance
+If using GitHub Copilot or Claude:
+1. Reference `.github/ai-preferences/preferences.yml` in your conversation or tool settings
+2. Verify all code follows standards before committing
+3. Run pre-commit checks: `php -l src/YourFile.php`
+4. See `.github/ai-preferences/setup.md` for detailed tool integration
+
+### AI Preferences Directory
+**Location:** `.github/ai-preferences/`
+
+**Contains:**
+- `README.md` - Overview & file reference
+- `preferences.yml` - Core standards (used by all agents)
+- `setup.md` - Detailed setup guide for Copilot, Claude, and Husky hooks
 
 ## Pull Request Process
 
