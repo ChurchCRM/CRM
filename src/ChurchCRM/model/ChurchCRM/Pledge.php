@@ -20,7 +20,7 @@ class Pledge extends BasePledge
 {
     public function getFormattedFY(): string
     {
-        return MakeFYString($this->getFyId());
+        return \MakeFYString($this->getFyId());
     }
 
     /**
