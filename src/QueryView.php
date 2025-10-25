@@ -158,7 +158,7 @@ function DisplayRecordCount()
     // Are we supposed to display a count for this query?
     if ($qry_Count == 1) {
         //Display the count of the recordset
-        echo '<p align="center">';
+        echo '<p class="text-center">';
         echo mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned');
         echo '</p>';
     }

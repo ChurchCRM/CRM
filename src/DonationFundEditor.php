@@ -145,7 +145,7 @@ if ($donationFunds->count() == 0) {
         ?>
         <tr>
 
-            <td class="TextColumn" align="center">
+            <td class="TextColumn text-center">
                 <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
                 <?php
                 if ($aNameErrors[$row]) {
@@ -156,7 +156,7 @@ if ($donationFunds->count() == 0) {
             <td class="TextColumn">
                 <input type="text" Name="<?php echo $row . 'desc' ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="40" maxlength="100">
             </td>
-            <td class="TextColumn" align="center" nowrap>
+            <td class="TextColumn text-center" nowrap>
                 <input type="radio" Name="<?= $row ?>active" value="1" <?php if ($aActiveFields[$row]) {
                     echo ' checked';
                                           } ?>><?= gettext('Yes') ?>
@@ -177,7 +177,7 @@ if ($donationFunds->count() == 0) {
             <table width="100%">
                 <tr>
                     <td width="30%"></td>
-                    <td width="40%" align="center" valign="bottom">
+                    <td width="40%" class="text-center align-bottom">
                         <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                     </td>
                     <td width="30%"></td>

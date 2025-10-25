@@ -79,7 +79,7 @@ if ($numAttRows != 0) {
         <td class="TextColumn"><?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) ?></td>
         <td class="TextColumn"><?= $sEmail ? '<a href="mailto:' . $sEmail . '" title="Send Email">' . $sEmail . '</a>' : 'Not Available' ?></td>
         <td class="TextColumn"><?= $sHomePhone ? $sHomePhone : 'Not Available' ?></td>
-    <td  class="TextColumn" colspan="1" align="center">
+    <td class="TextColumn text-center" colspan="1">
       <form method="POST" action="EditEventAttendees.php" name="DeletePersonFromEvent">
           <input type="hidden" name="DelPerID" value="<?= $per_ID ?>">
           <input type="hidden" name="DelPerEventID" value="<?= $EventID ?>">
@@ -95,7 +95,7 @@ if ($numAttRows != 0) {
     }
 } else {
     ?>
-<tr><td colspan="4" align="center"><?= gettext('No Attendees Assigned to Event') ?></td></tr>
+<tr><td colspan="4" class="text-center"><?= gettext('No Attendees Assigned to Event') ?></td></tr>
     <?php
 }
 

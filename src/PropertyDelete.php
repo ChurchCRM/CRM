@@ -45,7 +45,7 @@ require_once 'Include/Header.php';
     <?= gettext('Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records.') ?>
 </p>
 
-<p align="center">
+<p class="text-center">
     <a href="PropertyDelete.php?Confirmed=Yes&PropertyID=<?php echo $iPropertyID ?>&Type=<?= $sType ?>"><?= gettext('Yes, delete this record') ?></a> <?= gettext('(this action cannot be undone)') ?>
      |
     <a href="PropertyList.php?Type=<?= $sType ?>"><?= gettext('No, cancel this deletion') ?></a>

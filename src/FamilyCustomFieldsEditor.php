@@ -303,14 +303,14 @@ if ($numRows == 0) {
             <td class="TextColumn">
                 <?= $aPropTypes[$aTypeFields[$row]] ?>
             </td>
-            <td class="TextColumn" align="center">
+            <td class="TextColumn text-center">
                 <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35" maxlength="40">
                 <?php
                 if ($aNameErrors[$row]) {
                     echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
                 } ?>
             </td>
-            <td class="TextColumn" align="center">
+            <td class="TextColumn text-center">
 
             <?php
             if ($aTypeFields[$row] == 9) {
@@ -342,7 +342,7 @@ if ($numRows == 0) {
             } ?>
 
             </td>
-            <td class="TextColumn" align="center" nowrap>
+            <td class="TextColumn text-center" nowrap>
                 <?= GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]) ?>
             </td>
             <td>
@@ -367,7 +367,7 @@ if ($numRows == 0) {
             <table width="100%">
                 <tr>
                     <td width="30%"></td>
-                    <td width="40%" align="center" valign="bottom">
+                    <td width="40%" class="text-center align-bottom">
                         <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                     </td>
                     <td width="30%"></td>

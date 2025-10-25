@@ -801,7 +801,7 @@ require_once 'Include/Header.php';
                                         <div class="table-responsive">
                                             <table cellpadding="3" cellspacing="0" width="100%">
                                                 <thead>
-                                                    <tr class="TableHeader" align="center">
+                                                    <tr class="TableHeader text-center">
                                                         <th><?= gettext('First') ?></th>
                                                         <th><?= gettext('Middle') ?></th>
                                                         <th><?= gettext('Last') ?></th>
@@ -974,7 +974,7 @@ require_once 'Include/Header.php';
                                                     echo '</div></div>';
                             }
 
-                                                echo '<td colspan="2" align="center">';
+                                                echo '<td colspan="2" class="text-center">';
                                                 echo '<input type="hidden" Name="UpdateBirthYear" value="' . $UpdateBirthYear . '">';
 
                                                 echo '<input type="submit" class="btn btn-primary" value="' . gettext('Save') . '" Name="FamilySubmit" id="FamilySubmitBottom"> ';

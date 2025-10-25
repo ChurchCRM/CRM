@@ -359,7 +359,7 @@ if (isset($_POST['SaveChanges'])) {
 
                         echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . "\"> <i class='fa fa-times'></i></a></td>"; ?>
 
-                        <td class="TextColumn" align="center">
+                        <td class="TextColumn text-center">
                             <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
                             <?php
 
@@ -383,7 +383,7 @@ if (isset($_POST['SaveChanges'])) {
                         <table width="100%">
                             <tr>
                                 <td width="30%"></td>
-                                <td width="40%" align="center" valign="bottom">
+                                <td width="40%" class="text-center align-bottom">
                                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                                     &nbsp;
                                     <input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='v2/dashboard'">

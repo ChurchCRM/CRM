@@ -45,9 +45,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     $sSQL = 'SELECT event_id, event_title FROM events_event';
     $rsEvents = RunQuery($sSQL); ?>
 <div class="card">
-<p align="center"><?= gettext('Select the event to which you would like to add your cart') ?>:</p>
+<p class="text-center"><?= gettext('Select the event to which you would like to add your cart') ?>:</p>
 <form name="CartToEvent" action="CartToEvent.php" method="POST">
-<table align="center">
+<table class="mx-auto">
         <?php if ($sGlobalMessage) {
             ?>
         <tr>
@@ -68,7 +68,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                 </td>
         </tr>
 </table>
-<p align="center">
+<p class="text-center">
 <BR>
 <input type="submit" name="Submit" value=<?= '"' . gettext('Add Cart to Event') . '"' ?> class="btn btn-primary">
 <BR><BR>--<?= gettext('OR') ?>--<BR><BR>
@@ -79,7 +79,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </div>
     <?php
 } else {
-        echo '<p align="center" class="callout callout-warning">' . gettext('Your cart is empty!') . '</p>';
+        echo '<p class="text-center callout callout-warning">' . gettext('Your cart is empty!') . '</p>';
 }
 
 require_once 'Include/Footer.php';

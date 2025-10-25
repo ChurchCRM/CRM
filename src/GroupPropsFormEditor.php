@@ -264,7 +264,7 @@ require_once 'Include/Header.php'; ?>
                     </tr>
 
                     <tr>
-                        <td colspan="7" align="center">
+                        <td colspan="7" class="text-center">
                             <?php
                             if ($bErrorFlag) {
                                 echo '<span class="LargeText text-danger">' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
@@ -360,7 +360,7 @@ require_once 'Include/Header.php'; ?>
                             <table width="100%">
                                 <tr>
                                     <td width="30%"></td>
-                                    <td width="40%" align="center" valign="bottom">
+                                    <td width="40%" class="text-center align-bottom">
                                         <input type="submit" class="btn btn-default" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                                     </td>
                                     <td width="30%"></td>

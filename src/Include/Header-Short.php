@@ -19,9 +19,9 @@ ob_start();
 
 <body>
 
-<table height="100%" width="100%" border="0" cellpadding="5" cellspacing="0" align="center">
+<table height="100%" width="100%" border="0" cellpadding="5" cellspacing="0" class="mx-auto">
   <tr>
-    <td valign="top" width="100%" align="center">
+    <td valign="top" width="100%" class="text-center">
       <table width="98%" border="0">
         <tr>
           <td valign="top">

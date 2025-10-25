@@ -169,7 +169,7 @@ require_once 'Include/Header.php';
 </table>
 </div>
 
-<p align="center"><input type="submit" class="btn btn-primary" <?= 'value="'; if ($sAction === 'add') {
+<p class="text-center"><input type="submit" class="btn btn-primary" <?= 'value="'; if ($sAction === 'add') {
         echo gettext('Assign');
                                                                } else {
                                                                    echo gettext('Update');

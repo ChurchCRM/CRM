@@ -298,14 +298,14 @@ require_once 'Include/Header.php'; ?>
                             <td class="TextColumn">
                                 <?= $aPropTypes[$aTypeFields[$row]] ?>
                             </td>
-                            <td class="TextColumn" align="center">
+                            <td class="TextColumn text-center">
                                 <input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35" maxlength="40">
                                 <?php
                                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
                                     echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
                                 } ?>
                             </td>
-                            <td class="TextColumn" align="center">
+                            <td class="TextColumn text-center">
                                 <?php
                                 if ($aTypeFields[$row] == 9) {
                                     echo '<select name="' . $row . 'special">';
@@ -335,7 +335,7 @@ require_once 'Include/Header.php'; ?>
                                 } ?>
 
                             </td>
-                            <td class="TextColumn" align="center" nowrap>
+                            <td class="TextColumn text-center" nowrap>
                                 <?php
                                 if (isset($aSecurityType[$aFieldSecurity[$row]])) {
                                     echo GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]);
@@ -365,7 +365,7 @@ require_once 'Include/Header.php'; ?>
                             <table width="100%">
                                 <tr>
                                     <td width="30%"></td>
-                                    <td width="40%" align="center" valign="bottom">
+                                    <td width="40%" class="text-center align-bottom">
                                         <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                                     </td>
                                     <td width="30%"></td>
