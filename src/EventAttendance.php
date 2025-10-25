@@ -4,82 +4,123 @@ require_once 'Include/Config.php';
 require_once 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
-use ChurchCRM\model\ChurchCRM\EventAttendQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-$sPageTitle = gettext('Church Event Editor');
-$nameFormat = (int)SystemConfig::getValue('iPersonNameStyle');
+$events = null;
+$aEventID = [];
+$aEventTitle = [];
+$aEventStartDateTime = [];
 
-// Get input parameters
-$sPostChoice = InputUtils::legacyFilterInput($_POST['Choice'] ?? null);
-$sPostAction = InputUtils::legacyFilterInput($_POST['Action'] ?? null);
-$sGetAction = InputUtils::legacyFilterInput($_GET['Action'] ?? null);
-$sPostEvent = InputUtils::legacyFilterInput($_POST['Event'] ?? null);
-$sGetEvent = InputUtils::legacyFilterInput($_GET['Event'] ?? null);
-$sGetType = InputUtils::legacyFilterInput($_GET['Type'] ?? null);
+$sPostChoice = null;
+if (array_key_exists('Choice', $_POST)) {
+    $sPostChoice = InputUtils::legacyFilterInput($_POST['Choice']);
+}
+
+$sPostAction = null;
+if (array_key_exists('Action', $_POST)) {
+    $sPostAction = InputUtils::legacyFilterInput($_POST['Action']);
+}
+
+$sGetAction = null;
+if (array_key_exists('Action', $_GET)) {
+    $sGetAction = InputUtils::legacyFilterInput($_GET['Action']);
+}
+
+$sPostEvent = null;
+if (array_key_exists('Event', $_POST)) {
+    $sPostEvent = InputUtils::legacyFilterInput($_POST['Event']);
+}
+
+$sGetEvent = null;
+if (array_key_exists('Event', $_GET)) {
+    $sGetEvent = InputUtils::legacyFilterInput($_GET['Event']);
+}
+
+$sGetType = null;
+if (array_key_exists('Type', $_GET)) {
+    $sGetType = InputUtils::legacyFilterInput($_GET['Type']);
+}
 
 if ($sPostAction === 'Retrieve' && !empty($sPostEvent)) {
     $iEventId = InputUtils::legacyFilterInput($sPostEvent, 'int');
 
     if ($sPostChoice === 'Attendees') {
-        // Get attendees for the event who are members (class ID 1, 2, 5)
-        $attendees = EventAttendQuery::create()
-            ->filterByEventId($iEventId)
-            ->innerJoinPerson()
-            ->usePersonQuery()
-                ->filterByClsId([1, 2, 5], Criteria::IN)
-            ->endUse()
-            ->find();
-        
-        $people = [];
-        foreach ($attendees as $attendance) {
-            $people[] = $attendance->getPerson();
-        }
-        
+        $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country, t1.per_Gender
+            FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4
+            WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID IN ('1','2','5')
+    ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext('Event Attendees');
     } elseif ($sPostChoice === 'Nonattendees') {
-        // Get all attendee person IDs for this event
-        $attendeeIds = EventAttendQuery::create()
-            ->select('PersonId')
-            ->filterByEventId($iEventId)
-            ->find()
-            ->toArray();
-        
-        // Get all members NOT in the attendee list
-        $query = PersonQuery::create()
-            ->filterByClsId([1, 2, 5], Criteria::IN);
-        
-        if (!empty($attendeeIds)) {
-            $query->filterById($attendeeIds, Criteria::NOT_IN);
+        $aSQL = 'SELECT DISTINCT(person_id) FROM event_attend WHERE event_id = ' . $iEventId;
+        $raOpps = RunQuery($aSQL);
+        $aArr = [];
+        while ($aRow = mysqli_fetch_row($raOpps)) {
+            $aArr[] = $aRow[0];
         }
-        
-        $people = $query->orderByLastName()->orderById()->find();
+        if (count($aArr) > 0) {
+            $aArrJoin = implode(',', $aArr);
+            $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country, t1.per_Gender
+                FROM person_per AS t1, family_fam AS t2
+                WHERE t1.per_fam_ID = t2.fam_ID AND t1.per_ID NOT IN (' . $aArrJoin . ") AND per_cls_ID IN ('1','2','5')
+        ORDER BY t1.per_LastName, t1.per_ID";
+        } else {
+            $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country, t1.per_Gender
+                    FROM person_per AS t1, family_fam AS t2
+                    WHERE t1.per_fam_ID = t2.fam_ID AND per_cls_ID IN ('1','2','5')
+        ORDER BY t1.per_LastName, t1.per_ID";
+        }
         $sPageTitle = gettext('Event Nonattendees');
     } elseif ($sPostChoice === 'Guests') {
-        // Get guest attendees for the event (class ID 0, 3)
-        $attendees = EventAttendQuery::create()
-            ->filterByEventId($iEventId)
-            ->innerJoinPerson()
-            ->usePersonQuery()
-                ->filterByClsId([0, 3], Criteria::IN)
-            ->endUse()
-            ->find();
-        
-        $people = [];
-        foreach ($attendees as $attendance) {
-            $people[] = $attendance->getPerson();
-        }
-        
+        $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_HomePhone, t1.per_Country, t1.per_Gender
+            FROM person_per AS t1, events_event AS t2, event_attend AS t3
+            WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $iEventId . " AND per_cls_ID IN ('0','3')
+    ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext('Event Guests');
     }
-}
+} elseif ($sGetAction === 'List' && !empty($sGetEvent)) {
+    $sSQL = 'SELECT * FROM events_event WHERE event_type = ' . $sGetEvent . ' ORDER BY event_start';
 
+    // Page title text was changed from "All $_GET['Type'] Events" to "All Events of type $_GET['Type']" because it doesn't work for portuguese, spanish, french, and so on
+    $sPageTitle = gettext('All Events of Type') . ': ' . $sGetType;
+} else {
+    $sSQL = 'SELECT * FROM events_event ORDER BY event_start';
+}
 require_once 'Include/Header.php';
+
+// Get data for the form as it now exists..
+$rsOpps = RunQuery($sSQL);
+$numRows = mysqli_num_rows($rsOpps);
+
+// Create arrays of the attendees.
+for ($row = 1; $row <= $numRows; $row++) {
+    $aRow = mysqli_fetch_assoc($rsOpps);
+
+    $aPersonID[$row] = $aRow['per_ID'];
+    $aTitle[$row] = $aRow['per_Title'];
+    $aFirstName[$row] = $aRow['per_FirstName'];
+    $aMiddleName[$row] = $aRow['per_MiddleName'];
+    $aLastName[$row] = $aRow['per_LastName'];
+    $aSuffix[$row] = $aRow['per_Suffix'];
+    $aEmail[$row] = $aRow['per_Email'];
+    $aGender[$row] = $aRow['per_Gender'] == 1 ? gettext("Male") : gettext("Female");
+
+    $aHomePhone[$row] = SelectWhichInfo(
+        ExpandPhoneNumber(
+            $aRow['per_HomePhone'],
+            $aRow['per_Country'],
+            $dummy
+        ),
+        ExpandPhoneNumber(
+            $aRow['fam_HomePhone'],
+            $aRow['fam_Country'],
+            $dummy
+        ),
+        true
+    );
+}
 
 $eventsQuery = EventQuery::create()->orderByStart(Criteria::DESC);
 if (array_key_exists('Action', $_GET) && $_GET['Action'] === 'List' && !empty($_GET['Event'])) {
@@ -92,6 +133,12 @@ if (array_key_exists('Action', $_GET) && $_GET['Action'] === 'List' && !empty($_
 
 $events = $eventsQuery->find();
 $numRows = $events->count();
+for ($row = 1; $row <= $events->count(); $row++) {
+    $event = $events[$row - 1];
+    $aEventID[$row] = $event->getId();
+    $aEventTitle[$row] = htmlentities(stripslashes($event->getTitle()), ENT_NOQUOTES, 'UTF-8');
+    $aEventStartDateTime[$row] = $event->getStart(\DateTimeInterface::ATOM);
+}
 
 // Construct the form
 ?>
@@ -127,99 +174,75 @@ $numRows = $events->count();
             <h3> <?= ($numRows == 1 ? gettext('There is') : gettext('There are')) . ' ' . $numRows . ' ' . ($numRows == 1 ? gettext('event') : gettext('events')) . gettext(' in this category.') ?></h3>
         </div>
         <div class="card-body">
-            <style>
-                #eventsTable { table-layout: fixed; width: 100%; }
-                #eventsTable td { word-wrap: break-word; overflow-wrap: break-word; padding: 6px 4px; }
-                #eventsTable button { width: 100%; padding: 4px 2px; font-size: 12px; }
-                #eventsTable .btn-sm { padding: 2px 4px; }
-            </style>
-            <div class="table-responsive">
             <table class="table table-striped data-table" id="eventsTable">
                 <thead>
                     <tr class="TableHeader">
-                        <td width="40%"><strong><?= gettext('Event Title') ?></strong></td>
-                        <td width="13%"><strong><?= gettext('Date') ?></strong></td>
-                        <td width="15%"><strong><?= gettext('Attendees') ?></strong></td>
-                        <td width="15%"><strong><?= gettext('Non-Att.') ?></strong></td>
-                        <td width="17%"><strong><?= gettext('Guests') ?></strong></td>
+                        <td width="33%"><strong><?= gettext('Event Title') ?></strong></td>
+                        <td width="33%"><strong><?= gettext('Event Date') ?></strong></td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($events as $event) { 
-                        $eventId = $event->getId();
-                        $eventTitle = htmlentities(stripslashes($event->getTitle()), ENT_NOQUOTES, 'UTF-8');
-                        $eventStartDateTime = $event->getStart(\DateTimeInterface::ATOM);
-                    ?>
+                    <?php for ($row = 1; $row <= $numRows; $row++) { ?>
                         <tr>
-                            <td><?= $eventTitle ?></td>
-                            <td><?= FormatDate($eventStartDateTime, 1) ?></td>
-                            <td>
-                                <form action="EventAttendance.php" method="POST" style="margin:0;">
-                                    <input type="hidden" name="Event" value="<?= $eventId ?>">
+                            <td><?= $aEventTitle[$row] ?></td>
+                            <td><?= FormatDate($aEventStartDateTime[$row], 1) ?></td>
+                            <td class="text-center">
+                                <form name="Attend" action="EventAttendance.php" method="POST">
+                                    <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
                                     <input type="hidden" name="Type" value="<?= $sGetType ?>">
                                     <input type="hidden" name="Action" value="Retrieve">
                                     <input type="hidden" name="Choice" value="Attendees">
                                     <?php
-                                    // Count attending members for this event
-                                    $cNumAttend = EventAttendQuery::create()
-                                        ->filterByEventId($eventId)
-                                        ->innerJoinPerson()
-                                        ->usePersonQuery()
-                                            ->filterByClsId([1, 2, 5], Criteria::IN)
-                                        ->endUse()
-                                        ->count();
-                                    
-                                    // Count total members
-                                    $tNumTotal = PersonQuery::create()
-                                        ->filterByClsId([1, 2, 5], Criteria::IN)
-                                        ->count(); ?>
-                                    <button type="submit" class="btn btn-sm btn-info"><?= $cNumAttend ?></button>
+                                    $cSQL = 'SELECT COUNT(per_ID) AS cCount
+         FROM person_per as t1, events_event as t2, event_attend as t3
+         WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $aEventID[$row] . " AND per_cls_ID IN ('1','2','5')";
+                                    $cOpps = RunQuery($cSQL);
+                                    $cNumAttend = mysqli_fetch_row($cOpps)[0];
+                                    $tSQL = "SELECT COUNT(per_ID) AS tCount
+         FROM person_per
+         WHERE per_cls_ID IN ('1','2','5')";
+                                    $tOpps = RunQuery($tSQL);
+                                    $tNumTotal = mysqli_fetch_row($tOpps)[0]; ?>
+                                    <input type="submit" name="Type" value="<?= gettext('Attending Members') . ' [' . $cNumAttend . ']' ?>" class="btn btn-default">
                                 </form>
                             </td>
                             <td>
-                                <form action="EventAttendance.php" method="POST" style="margin:0;">
-                                    <input type="hidden" name="Event" value="<?= $eventId ?>">
+                                <form name="NonAttend" action="EventAttendance.php" method="POST">
+                                    <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
                                     <input type="hidden" name="Type" value="<?= $sGetType ?>">
                                     <input type="hidden" name="Action" value="Retrieve">
                                     <input type="hidden" name="Choice" value="Nonattendees">
-                                    <button id="Non-Attending-<?= $eventId ?>" type="submit" class="btn btn-sm btn-warning"><?= ($tNumTotal - $cNumAttend) ?></button>
+                                    <input id="Non-Attending-<?= $row ?>" type="submit" name="Type" value="<?= gettext('Non-Attending Members') . ' [' . ($tNumTotal - $cNumAttend) . ']' ?>" class="btn btn-default">
                                 </form>
                             </td>
                             <td>
-                                <form action="EventAttendance.php" method="POST" style="margin:0;">
-                                    <input type="hidden" name="Event" value="<?= $eventId ?>">
+                                <form name="GuestAttend" action="EventAttendance.php" method="POST">
+                                    <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
                                     <input type="hidden" name="Type" value="<?= $sGetType ?>">
                                     <input type="hidden" name="Action" value="Retrieve">
                                     <input type="hidden" name="Choice" value="Guests">
-                                    <?php 
-                                    // Count guest attendees for this event
-                                    $gNumGuestAttend = EventAttendQuery::create()
-                                        ->filterByEventId($eventId)
-                                        ->innerJoinPerson()
-                                        ->usePersonQuery()
-                                            ->filterByClsId([0, 3], Criteria::IN)
-                                        ->endUse()
-                                        ->count(); ?>
-                                    <button type="submit" class="btn btn-sm btn-success" <?= ($gNumGuestAttend == 0 ? 'disabled' : '') ?>><?= $gNumGuestAttend ?></button>
+                                    <?php $gSQL = 'SELECT COUNT(per_ID) AS gCount FROM person_per as t1, events_event as t2, event_attend as t3
+                     WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $aEventID[$row] . ' AND per_cls_ID = 3';
+                                    $gOpps = RunQuery($gSQL);
+                                    $gNumGuestAttend = mysqli_fetch_row($gOpps)[0]; ?>
+                                    <input <?= ($gNumGuestAttend == 0 ? 'type="button"' : 'type="submit"') ?> name="Type" value="<?= gettext('Guests') . ' [' . $gNumGuestAttend . ']' ?>" class="btn btn-default">
                                 </form>
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            </div>
         </div>
     </div>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $(document).ready(function() {
-            var dataTableConfig = $.extend({}, window.CRM.plugin.dataTable);
-            dataTableConfig.responsive = false;
-            dataTableConfig.columnDefs = [{ responsivePriority: false, targets: -1 }];
-            $("#eventsTable").DataTable(dataTableConfig);
+            $("#eventsTable").DataTable(window.CRM.plugin.dataTable);
         });
     </script>
-<?php } elseif ($sPostAction === 'Retrieve' && isset($people) && count($people) > 0) { 
-    $numRows = count($people); ?>
+<?php } elseif ($sPostAction === 'Retrieve' && $numRows > 0) { ?>
     <div class="card">
         <div class="card-header">
             <h3><?= gettext('There ' . ($numRows == 1 ? 'was ' . $numRows . ' ' . $sPostChoice : 'were ' . $numRows . ' ' . $sPostChoice)) . ' for this Event' ?></h3>
@@ -235,28 +258,12 @@ $numRows = $events->count();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($people as $person) {
-                        $family = $person->getFamily();
-                        $per_Country = $person->getCountry();
-                        $fam_Country = $family ? $family->getCountry() : '';
-                        
-                        $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-                        
-                        $per_HomePhone = $person->getHomePhone();
-                        $fam_HomePhone = $family ? $family->getHomePhone() : '';
-                        $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
-                        
-                        $per_Email = $person->getEmail();
-                        $fam_Email = $family ? $family->getEmail() : '';
-                        $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
-                        
-                        $genderText = $person->getGender() == 1 ? gettext("Male") : gettext("Female");
-                    ?>
+                    <?php for ($row = 1; $row <= $numRows; $row++) { ?>
                         <tr>
-                            <td><?= $person->getFormattedName($nameFormat) ?></td>
-                            <td><?= $sEmail ? '<a href="mailto:' . $sEmail . '">' . $sEmail . '</a>' : '' ?></td>
-                            <td><?= $sHomePhone ? $sHomePhone : '' ?></td>
-                            <td><?= $genderText ?></td>
+                            <td><?= FormatFullName($aTitle[$row], $aFirstName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>
+                            <td><?= $aEmail[$row] ? '<a href="mailto:' . $aEmail[$row] . '">' . $aEmail[$row] . '</a>' : '' ?></td>
+                            <td><?= $aHomePhone[$row] ? $aHomePhone[$row] : '' ?></td>
+                            <td><?= $aGender[$row] ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>

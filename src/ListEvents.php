@@ -62,9 +62,9 @@ $numRows = mysqli_num_rows($rsOpps);
 
 ?>
 <div class="card">
-<table cellpadding="1" align="center" cellspacing="0" class='table'>
+<table class="mx-auto table-spaced table">
 <tr>
-<td align="center" width="50%"><p><strong><?= gettext('Select Event Types To Display') ?></strong></p>
+<td class="text-center" width="50%"><p><strong><?= gettext('Select Event Types To Display') ?></strong></p>
     <form name="EventTypeSelector" method="POST" action="ListEvents.php">
        <select name="WhichType" onchange="javascript:this.form.submit()" class='form-control'>
         <option value="All"><?= gettext('All') ?></option>
@@ -108,7 +108,7 @@ for ($r = 1; $r <= $numRows; $r++) {
 
 ?>
 
-<td align="center" width="50%"><p><strong><?= gettext('Display Events in Year') ?></strong></p>
+<td class="text-center" width="50%"><p><strong><?= gettext('Display Events in Year') ?></strong></p>
        <select name="WhichYear" onchange="javascript:this.form.submit()" class='form-control'>
         <?php
         for ($r = 1; $r <= $numRows; $r++) {
@@ -312,7 +312,7 @@ foreach ($allMonths as $mKey => $mVal) {
                     extract($avgRow);
                     $avgName = $avgRow['evtcnt_countname'];
                     $avgAvg = $avgRow[2]; ?>
-                  <td align="center">
+                  <td class="text-center">
                     <span class="SmallText">
                     <strong>AVG<br><?= $avgName ?></strong>
                     <br><?= sprintf('%01.2f', $avgAvg) ?></span>

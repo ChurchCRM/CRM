@@ -299,7 +299,7 @@ if ($bErrorFlag) {
 ?>
 
 <br>
-<table cellpadding="3" width="30%" align="center">
+<table cellpadding="3" width="30%" class="mx-auto">
 
 <?php
     $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
@@ -311,7 +311,7 @@ if (count($aInactiveClassificationIds) !== count($aInactiveClasses)) {
 
 for ($row = 1; $row <= $numRows; $row++) {
     ?>
-    <tr align="center">
+    <tr class="text-center">
         <td class="LabelColumn">
             <b>
             <?php
@@ -322,7 +322,7 @@ for ($row = 1; $row <= $numRows; $row++) {
             </b>
         </td>
 
-        <td class="TextColumn" nowrap>
+        <td class="TextColumn text-nowrap">
 
             <?php
             if ($row != 1) {

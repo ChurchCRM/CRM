@@ -179,11 +179,11 @@ require_once 'Include/Header.php';
             <tr>
                 <th><?= gettext('Actions') ?></th>
                 <th><?= gettext('Name') ?></th>
-                <th align="center"><?= gettext('Last Login') ?></th>
-                <th align="center"><?= gettext('Total Logins') ?></th>
-                <th align="center"><?= gettext('Failed Logins') ?></th>
-                <th align="center"><?= gettext('Password') ?></th>
-                <th align="center"><?= gettext('Two Factor Status') ?></th>
+                <th class="text-center"><?= gettext('Last Login') ?></th>
+                <th class="text-center"><?= gettext('Total Logins') ?></th>
+                <th class="text-center"><?= gettext('Failed Logins') ?></th>
+                <th class="text-center"><?= gettext('Password') ?></th>
+                <th class="text-center"><?= gettext('Two Factor Status') ?></th>
 
             </tr>
             </thead>
@@ -206,9 +206,9 @@ require_once 'Include/Header.php';
                     <td>
                         <a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a>
                     </td>
-                    <td align="center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
-                    <td align="center"><?= $user->getLoginCount() ?></td>
-                    <td align="center">
+                    <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
+                    <td class="text-center"><?= $user->getLoginCount() ?></td>
+                    <td class="text-center">
                         <?php if ($user->isLocked()) { ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
                         <?php } else {

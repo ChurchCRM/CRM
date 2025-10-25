@@ -102,7 +102,7 @@ require_once 'Include/Header.php';
                         $sSQL = 'SELECT prop_Field, prop_Name FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
                                 $rsPropFields = RunQuery($sSQL); ?>
 
-                        <table align="center">
+                        <table class="mx-auto">
                             <tr>
                                 <td class="LabelColumn"><?= gettext('Standard Info') ?>:</td>
                                 <td class="TextColumn">
@@ -131,7 +131,7 @@ require_once 'Include/Header.php';
                             </tr>
                         </table>
 
-                        <p align="center">
+                        <p class="text-center">
                             <BR>
                             <input id="CreateReportBtn" type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Create Report') ?>">
                             <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
