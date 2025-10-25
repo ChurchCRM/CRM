@@ -91,7 +91,7 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 "content-type": "application/json",
                 "x-api-key": Cypress.env("admin.api.key"),
             },
-            body: getPaymentPayload({ iMethod: "CHECK" }), // Missing iCheckNo
+            body: getPaymentPayload({ iMethod: "CHECK" }),
         }).then((resp) => {
             // Should not crash with type error, should validate properly
             if (resp.body) {
@@ -121,5 +121,63 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 expect(bodyStr).to.not.include("undefined property");
             }
         });
+    });
+
+    it("GET /api/payments/family/{id}/list - Requires authentication", () => {
+        testUnauthenticatedRequest("GET", "/api/payments/family/1/list");
+    });
+
+    it("GET /api/payments/family/{id}/list - Returns family pledges and payments", () => {
+        // Tests that family payments list API works and returns proper data structure
+        cy.makePrivateAdminAPICall("GET", "/api/payments/family/1/list", null, 200)
+            .then((resp) => {
+                expect(resp).to.have.property("data");
+                expect(resp.data).to.be.an("array");
+                
+                // If there are payments, verify structure
+                if (resp.data.length > 0) {
+                    const payment = resp.data[0];
+                    // Verify key fields exist and are properly formatted
+                    expect(payment).to.have.property("GroupKey");
+                    expect(payment).to.have.property("Fund");
+                    expect(payment).to.have.property("FormattedFY");
+                    expect(payment).to.have.property("Date");
+                    expect(payment).to.have.property("Amount");
+                    expect(payment).to.have.property("PledgeOrPayment");
+                }
+            });
+    });
+
+    it("GET /api/payments/family/{id}/list - Returns list with no errors", () => {
+        // Tests that family payments list API works without errors
+        cy.makePrivateAdminAPICall("GET", "/api/payments/family/20/list", null, 200)
+            .then((resp) => {
+                expect(resp).to.have.property("data");
+                expect(resp.data).to.be.an("array");
+                
+                // Response should be valid JSON without undefined function errors
+                const bodyStr = JSON.stringify(resp).toLowerCase();
+                expect(bodyStr).to.not.include("call to undefined function");
+                expect(bodyStr).to.not.include("makefystring");
+            });
+    });
+
+    it("GET /api/payments/family/{id}/list - Returns payments with properly formatted fiscal year", () => {
+        // Tests that family payments API returns valid fiscal year data
+        cy.makePrivateAdminAPICall("GET", "/api/payments/family/1/list", null, 200)
+            .then((resp) => {
+                expect(resp).to.have.property("data");
+                expect(resp.data).to.be.an("array");
+                
+                // If there are payments, verify data integrity
+                if (resp.data.length > 0) {
+                    const payment = resp.data[0];
+                    expect(payment).to.have.property("FormattedFY");
+                    expect(typeof payment.FormattedFY).to.equal("string");
+                    expect(payment.FormattedFY).to.not.be.empty;
+                    // Fiscal year should be in valid format
+                    expect(payment.FormattedFY).to.match(/^\d{4}(\/\d{2})?$/);
+                }
+            });
     });
 });
