@@ -27,10 +27,10 @@ services:
     hostname: crmEmailServer
 
   webserver:
-    ## Look into: https://hub.docker.com/r/nimmis/apache-php8
     build:
       context: .
-      dockerfile: Dockerfile.churchcrm-apache-php8-test-debian
+      dockerfile: Dockerfile.churchcrm-apache-php8
+      target: test
     image: churchcrm/crm:php8-debian
     ports:
       - "80:80"

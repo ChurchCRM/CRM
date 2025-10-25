@@ -465,7 +465,12 @@ if (isset($_POST['DoImport'])) {
                         case 19:
                             $sDate = $aData[$col];
                             $aDate = ParseDate($sDate, $iDateMode);
-                            $sSQLpersonData .= $aDate[0] . ',' . $aDate[1] . ',' . $aDate[2] . ',';
+                            // Handle each date component according to database schema:
+                            // per_BirthYear can be NULL, but per_BirthMonth and per_BirthDay must be 0 for invalid/unknown
+                            $year = $aDate[0] === 'NULL' ? 'NULL' : $aDate[0];
+                            $month = $aDate[1] === 'NULL' ? '0' : $aDate[1];
+                            $day = $aDate[2] === 'NULL' ? '0' : $aDate[2];
+                            $sSQLpersonData .= $year . ',' . $month . ',' . $day . ',';
                             // Save these for role calculation
                             $iBirthYear = (int)$aDate[0];
                             $iBirthMonth = (int)$aDate[1];
@@ -814,7 +819,7 @@ if (isset($_POST['DoImport'])) {
 
 if ($iStage === 1) {
     // Display the select file form?>
-    <p style="color: red"> <?= $csvError ?></p>
+    <p class="text-danger"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
             <input id="CSVFileChooser" class="icTinyButton" type="file" name="CSVfile">
             <p></p>
@@ -893,13 +898,13 @@ function ParseDate(string $sDate, int $iDateMode): array
             }
             break;
     }
-    if ((int) $aDate[0] > 0) {
+    if ((int) $aDate[0] <= 0) {
         $aDate[0] = 'NULL';
     }
-    if ((int) $aDate[1] < 0 || (int) $aDate[1] > 12) {
+    if ((int) $aDate[1] <= 0 || (int) $aDate[1] > 12) {
         $aDate[1] = 'NULL';
     }
-    if ((int) $aDate[2] < 0 || (int) $aDate[2] > 31) {
+    if ((int) $aDate[2] <= 0 || (int) $aDate[2] > 31) {
         $aDate[2] = 'NULL';
     }
 

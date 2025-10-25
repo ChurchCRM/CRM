@@ -43,7 +43,7 @@ describe("Finance Deposits", () => {
 
         cy.get(".btn-success").click();
         cy.url().should("contain", "PledgeEditor.php");
-        
+
         cy.get("#1_Amount").type("1000");
         cy.get("#CheckNo").type("111");
 
@@ -62,5 +62,22 @@ describe("Finance Deposits", () => {
         cy.loginAdmin("DepositSlipEditor.php?", false);
         cy.url().should("contain", "FindDepositSlip.php");
         cy.contains("Deposit Listing");
+    });
+
+    it("Create a Deposit with XSS attempt - should be sanitized", () => {
+        const uniqueSeed = Date.now().toString();
+        const xssPayload = "<script>alert('XSS')</script>Test" + uniqueSeed;
+        const sanitizedComment = "alert(&#039;XSS&#039;)Test" + uniqueSeed; // The script tags should be stripped, quotes escaped
+
+        cy.loginAdmin("FindDepositSlip.php");
+        cy.contains("Add New Deposit");
+        cy.get("#depositComment").type(xssPayload);
+        cy.get("#addNewDeposit").click();
+
+        cy.url().should("contain", "DepositSlipEditor.php");
+
+        // Verify the comment field contains sanitized text (script tags stripped, quotes escaped)
+        cy.get("#Comment").should("have.value", sanitizedComment);
+
     });
 });

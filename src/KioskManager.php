@@ -29,7 +29,7 @@ require_once 'Include/Header.php';
         <h3 class="card-title"><?= gettext('Active Kiosks') ?></h3>
       </div>
       <div class="card-body">
-        <table id="KioskTable" style="width:100%">
+        <table id="KioskTable" class="width-100pct">
         </table>
       </div>
     </div>

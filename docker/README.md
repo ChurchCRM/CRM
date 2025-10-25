@@ -1,9 +1,11 @@
 Getting Started with Docker for Development
 ===========================
 
-** THIS DOCKER CONFIGURATION IS INTENDED FOR DEVELOPMENT & DEVELOPMENT PURPOSES ONLY**
+** THIS DOCKER CONFIGURATION IS INTENDED FOR DEVELOPMENT & TESTING PURPOSES ONLY**
 
-The main difference between the Dev and Test dockers is that the Dev has NPM, Node, composer, and Cypress installed and running inside the docker.
+The main difference between the Dev and Test builds is that Dev has NPM, Node, Composer, Xdebug, and Cypress support, while Test is a minimal runtime environment.
+
+Both are built from the same multi-stage Dockerfile (`Dockerfile.churchcrm-apache-php8`).
 
 
 Development

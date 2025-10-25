@@ -1,3 +1,10 @@
+/**
+ * ChurchCRM Cart Dropdown Styles
+ * 
+ * Custom styles for shopping cart dropdown menu.
+ * Component-specific - no Bootstrap duplicates.
+ */
+
 #cart-dropdown-menu > li > ul {
     max-height: none;
 }

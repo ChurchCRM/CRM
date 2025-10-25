@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;

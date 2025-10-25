@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\VersionUtils;
 
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -18,7 +19,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <table class="table table-striped">
                     <tr>
                         <td>ChurchCRM <?= gettext('Software Version') ?></td>
-                        <td><?= SystemService::getInstalledVersion() ?></td>
+                        <td><?= VersionUtils::getInstalledVersion() ?></td>
                     </tr>
                     <tr>
                         <td>RootPath</td>
@@ -72,7 +73,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <table class="table table-striped">
                     <tr>
                         <td>ChurchCRM <?= gettext('Database Version') ?></td>
-                        <td><?= SystemService::getDBVersion() ?></td>
+                        <td><?= VersionUtils::getDBVersion() ?></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Database Server Version') ?></td>

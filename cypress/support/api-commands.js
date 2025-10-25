@@ -58,7 +58,7 @@ Cypress.Commands.add(
             try {
                 return typeof resp.body === 'string' ? JSON.parse(resp.body) : resp.body;
             } catch (e) {
-                cy.log('Warning: Could not parse response body as JSON');
+                // Non-JSON response (like error messages) - return as is
                 return resp.body;
             }
         });

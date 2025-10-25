@@ -1,11 +1,11 @@
 <?php
 
 use ChurchCRM\Bootstrapper;
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\VersionUtils;
 
 // Include the function library
 require_once 'Include/Config.php';
@@ -42,8 +42,8 @@ require_once 'Include/HeaderNotLoggedIn.php'; ?>
         <div class="row">
             <h3><i class="fa fa-warning text-yellow"></i> <?= gettext('Upgrade Required') ?></h3>
             <p>
-                <?= gettext("Current DB Version" . ": " . SystemService::getDBVersion()) ?> <br/>
-                <?= gettext("Current Software Version" . ": " . SystemService::getInstalledVersion()) ?> <br/>
+                <?= gettext("Current DB Version" . ": " . VersionUtils::getDBVersion()) ?> <br/>
+                <?= gettext("Current Software Version" . ": " . VersionUtils::getInstalledVersion()) ?> <br/>
             </p>
         </div>
     </div>

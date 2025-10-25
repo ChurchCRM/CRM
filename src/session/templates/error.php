@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 $sPageTitle = gettext("Authentication Issue");
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
-  <div class="register-logo" style=" margin: 72px auto 0;">
+  <div class="register-logo register-logo-margin">
     <a href="<?= SystemURLs::getRootPath() ?>/"><b>Church</b>CRM</a>
   </div>
 
