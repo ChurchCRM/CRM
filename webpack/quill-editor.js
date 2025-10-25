@@ -5,6 +5,9 @@
 
 import Quill from "quill";
 
+// Global registry for Quill editors (for Cypress testing)
+window.quillEditors = window.quillEditors || {};
+
 /**
  * Initialize Quill editor for a given selector
  * @param {string} selector - CSS selector for the editor container
@@ -49,6 +52,11 @@ export function initializeQuillEditor(selector, options = {}) {
   }
 
   const editor = new Quill(selector, mergedOptions);
+
+  // Store reference globally for Cypress testing
+  // Extract ID from selector (e.g., "#NoteText" -> "NoteText")
+  const editorId = selector.replace(/^#/, "").replace(/^\./, "");
+  window.quillEditors[editorId] = editor;
 
   return editor;
 }

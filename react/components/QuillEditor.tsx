@@ -3,6 +3,12 @@ import { useEffect, useRef } from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 
+declare global {
+  interface Window {
+    quillEditors?: { [key: string]: Quill };
+  }
+}
+
 const QuillEditor: React.FunctionComponent<{
   name: string;
   value: string;
@@ -51,9 +57,18 @@ const QuillEditor: React.FunctionComponent<{
       onChange(name, quill.root.innerHTML);
     });
 
+    // Expose to global registry for Cypress testing
+    if (!window.quillEditors) {
+      window.quillEditors = {};
+    }
+    window.quillEditors[name] = quill;
+
     // Cleanup
     return () => {
       quillRef.current = null;
+      if (window.quillEditors) {
+        delete window.quillEditors[name];
+      }
     };
   }, []);
 

@@ -280,3 +280,51 @@ Cypress.Commands.add('select2GetSelected', (selector) => {
         .siblings('.select2-container')
         .find('.select2-selection__rendered');
 });
+
+/**
+ * Type text into a Quill editor (contenteditable div)
+ * Quill editors can't use cy.type() because they're not form inputs
+ * This command uses Quill's setContents API instead
+ * @param {string} editorId - The HTML ID of the Quill editor container (without #)
+ * @param {string} text - The text to insert
+ * @example cy.typeInQuill('NoteText', 'This is a test note')
+ */
+Cypress.Commands.add('typeInQuill', (editorId, text) => {
+    cy.window().then((win) => {
+        const quillEditor = win.quillEditors[editorId];
+        if (!quillEditor) {
+            throw new Error(`Quill editor not found: ${editorId}. Available editors: ${Object.keys(win.quillEditors).join(', ')}`);
+        }
+        quillEditor.setContents([{ insert: text }]);
+    });
+});
+
+/**
+ * Get text content from a Quill editor
+ * @param {string} editorId - The HTML ID of the Quill editor container (without #)
+ * @example cy.getQuillText('NoteText').should('contain', 'test note')
+ */
+Cypress.Commands.add('getQuillText', (editorId) => {
+    return cy.window().then((win) => {
+        const quillEditor = win.quillEditors[editorId];
+        if (!quillEditor) {
+            throw new Error(`Quill editor not found: ${editorId}`);
+        }
+        return quillEditor.getText();
+    });
+});
+
+/**
+ * Clear content from a Quill editor
+ * @param {string} editorId - The HTML ID of the Quill editor container (without #)
+ * @example cy.clearQuill('NoteText')
+ */
+Cypress.Commands.add('clearQuill', (editorId) => {
+    cy.window().then((win) => {
+        const quillEditor = win.quillEditors[editorId];
+        if (!quillEditor) {
+            throw new Error(`Quill editor not found: ${editorId}`);
+        }
+        quillEditor.setContents([]);
+    });
+});
