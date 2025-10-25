@@ -82,16 +82,36 @@ jobs:
         npm run package
 
     - name: Run Docker
+      run: npm run docker:ci:start
+
+    - name: Wait for Docker to be ready
       run: |
-        npm run docker:ci:start
-        docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
-        docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+        echo "Waiting for services to be ready..."
+        sleep 10
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
 
     - name: Test Server
       run: |
-          curl -vvv http://127.0.0.1/api/public/echo
-          docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
-          docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+        echo "Testing API endpoint..."
+        # Retry logic: wait up to 60 seconds for server to respond
+        max_attempts=12
+        attempt=1
+        until curl -f http://127.0.0.1/api/public/echo || [ $attempt -eq $max_attempts ]; do
+          echo "Attempt $attempt/$max_attempts failed. Retrying in 5 seconds..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        
+        if [ $attempt -eq $max_attempts ]; then
+          echo "Server failed to respond after $max_attempts attempts"
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
+          exit 1
+        fi
+        
+        echo "Server is responding! Running verbose test..."
+        curl -vvv http://127.0.0.1/api/public/echo
 
     - name: Run Cypress Tests
       run: |
