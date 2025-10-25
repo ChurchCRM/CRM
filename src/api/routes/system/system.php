@@ -35,9 +35,10 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
         $title = $notification->title ?? '';
         $icon = $notification->icon ?? 'info-circle';
         $type = $notification->type ?? 'info';
-        $timeout = $notification->timeout ?? 5000;
-        $position = $notification->position ?? 'bottom-right';
-        $uiNotification = new UiNotification($title, $icon, $link, $message, $type, $timeout, $position);
+        $timeout = $notification->timeout ?? 4000;
+        $placement = $notification->placement ?? 'bottom';
+        $align = $notification->align ?? 'right';
+        $uiNotification = new UiNotification($title, $icon, $link, $message, $type, $timeout, $placement, $align);
         $notifications[] = $uiNotification;
     }
 
