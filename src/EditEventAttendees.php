@@ -70,7 +70,10 @@ if ($event === null) {
 $attendees = EventAttendQuery::create()
     ->filterByEventId($EventID)
     ->innerJoinWithPerson()
-    ->orderByPersonId()
+    ->usePersonQuery()
+        ->orderByLastName()
+        ->orderByFirstName()
+    ->endUse()
     ->find();
 
 if ($attendees->count() > 0) {
