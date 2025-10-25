@@ -48,7 +48,9 @@ Cypress.Commands.add(
             },
             body: body,
         }).then((resp) => {
-            expect(resp.status).to.eq(expectedStatus);
+            // Handle single status code or array of acceptable status codes
+            const acceptedStatuses = Array.isArray(expectedStatus) ? expectedStatus : [expectedStatus];
+            expect(resp.status).to.be.oneOf(acceptedStatuses);
 
             if (!resp.body) {
                 return null;
