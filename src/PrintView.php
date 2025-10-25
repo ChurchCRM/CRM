@@ -176,7 +176,7 @@ require_once 'Include/Header-Short.php';
 
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
     <tr>
-        <td width="33%" valign="top" align="left">
+        <td width="33%" class="align-top" align="left">
             <table cellspacing="1" cellpadding="4">
                 <tr>
                     <td class="LabelColumn"><?= gettext('Home Phone') ?>:</td>
@@ -215,7 +215,7 @@ require_once 'Include/Header-Short.php';
             </table>
         </td>
 
-        <td width="33%" valign="top" align="left">
+        <td width="33%" class="align-top" align="left">
             <table cellspacing="1" cellpadding="4">
                 <tr>
                     <td class="LabelColumn"><?= gettext('Gender') ?>:</td>
