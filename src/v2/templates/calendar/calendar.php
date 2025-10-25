@@ -47,7 +47,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/calendar-event-editor.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Calendar.js" ></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

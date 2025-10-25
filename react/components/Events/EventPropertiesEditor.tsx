@@ -4,6 +4,7 @@ import Calendar from "../../interfaces/Calendar";
 import EventType from "../../interfaces/EventType";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
+import QuillEditor from "../QuillEditor";
 
 const EventPropertiesEditor: React.FunctionComponent<{
   event: CRMEvent;
@@ -42,7 +43,7 @@ const EventPropertiesEditor: React.FunctionComponent<{
     }
   });
   return (
-    <table className="table modal-table">
+    <table className="table w-100" style={{ tableLayout: 'fixed' }}>
       <tbody>
         <tr>
           <td className="LabelColumn">{window.i18next.t("Event Type")}</td>
@@ -59,25 +60,33 @@ const EventPropertiesEditor: React.FunctionComponent<{
         <tr>
           <td className="LabelColumn">{window.i18next.t("Description")}</td>
           <td className="TextColumn">
-            <textarea name="Desc" value={event.Desc} onChange={changeHandler} />
+            <QuillEditor 
+              name="Desc" 
+              value={event.Desc} 
+              onChange={(name, html) => {
+                const changeEvent = {
+                  target: { name, value: html }
+                } as any;
+                changeHandler(changeEvent);
+              }}
+            />
           </td>
         </tr>
         <tr>
           <td className="LabelColumn">{window.i18next.t("Start Date")}</td>
           <td className="TextColumn">
             <DatePicker
-              name="Start"
-              selectsStart
               selected={event.Start}
-              startDate={event.Start}
-              endDate={event.End}
               onChange={handleStartDateChange}
               showTimeSelect
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
               timeCaption="time"
-              selectsRange
-              icon="fa fa-calendar"
+              className="form-control w-100"
+              placeholderText={window.i18next.t("Start Date")}
+              autoComplete="off"
+              wrapperClassName="datepicker-wrapper w-100"
+              popperClassName="react-datepicker-popper-wide"
             />
           </td>
         </tr>
@@ -85,33 +94,23 @@ const EventPropertiesEditor: React.FunctionComponent<{
           <td className="LabelColumn">{window.i18next.t("End Date")}</td>
           <td className="TextColumn">
             <DatePicker
-              name="End"
               selected={event.End}
-              startDate={event.Start}
-              endDate={event.End}
-              selectsEnd
               onChange={handleEndDateChange}
               showTimeSelect
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
               timeCaption="time"
-              selectsRange
-              icon="fa fa-calendar"
+              className="form-control w-100"
+              placeholderText={window.i18next.t("End Date")}
+              autoComplete="off"
+              wrapperClassName="datepicker-wrapper w-100"
+              popperClassName="react-datepicker-popper-wide"
             />
           </td>
         </tr>
         <tr>
           <td className="LabelColumn">
-            <span>{window.i18next.t("Pinned Calendars")}</span>
-            <span
-              className={
-                event.PinnedCalendars.length == 0
-                  ? "RequiredFormFieldUnsatisfied"
-                  : "RequiredFormFieldSatisfied"
-              }
-            >
-              {window.i18next.t("This field is required")}
-            </span>
+            {window.i18next.t("Pinned Calendars")}
           </td>
           <td className="TextColumn">
             <Select
@@ -122,12 +121,28 @@ const EventPropertiesEditor: React.FunctionComponent<{
               onChange={pinnedCalendarChanged}
               isMulti={true}
             />
+            {event.PinnedCalendars.length == 0 && (
+              <div className="text-danger small mt-2">
+                <i className="fas fa-exclamation-circle me-1"></i>
+                {window.i18next.t("This field is required")}
+              </div>
+            )}
           </td>
         </tr>
         <tr>
           <td className="LabelColumn">{window.i18next.t("Text")}</td>
           <td className="TextColumn">
-            <textarea name="Text" value={event.Text} onChange={changeHandler} />
+            <QuillEditor 
+              name="Text" 
+              value={event.Text} 
+              onChange={(name, html) => {
+                const changeEvent = {
+                  target: { name, value: html }
+                } as any;
+                changeHandler(changeEvent);
+              }}
+              minHeight="300px"
+            />
           </td>
         </tr>
       </tbody>
