@@ -30,9 +30,16 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
     }
     $notifications = [];
     foreach (NotificationService::getNotifications() as $notification) {
+        $title = $notification->title ?? '';
         $link = $notification->link ?? '';
         $message = $notification->message ?? '';
-        $uiNotification = new UiNotification($notification->title, 'bell', $link, $message, 'danger', 8000, 'bottom', 'right');
+        $title = $notification->title ?? '';
+        $icon = $notification->icon ?? 'info-circle';
+        $type = $notification->type ?? 'info';
+        $timeout = $notification->timeout ?? 4000;
+        $placement = $notification->placement ?? 'bottom';
+        $align = $notification->align ?? 'right';
+        $uiNotification = new UiNotification($title, $icon, $link, $message, $type, $timeout, $placement, $align);
         $notifications[] = $uiNotification;
     }
 
