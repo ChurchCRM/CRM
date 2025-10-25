@@ -32,8 +32,9 @@ SlimUtils::setupErrorLogger($errorMiddleware);
 \ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->addBodyParsingMiddleware();
-$app->add(new VersionMiddleware());
 $app->addRoutingMiddleware();
+
+$app->add(new VersionMiddleware());
 
 require __DIR__ . '/routes/password-reset.php';
 

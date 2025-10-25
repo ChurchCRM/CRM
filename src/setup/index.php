@@ -35,9 +35,10 @@ SlimUtils::setupErrorLogger($errorMiddleware);
 
 // Add CORS middleware for browser API access
 $app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
 $app->add(VersionMiddleware::class);
 $app->add(new CorsMiddleware());
-$app->addRoutingMiddleware();
 
 require __DIR__ . '/routes/setup.php';
 
