@@ -53,8 +53,8 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 null,
                 200
             ).then((resp) => {
-                expect(resp).to.have.property("data");
-                expect(resp.data).to.be.an("array");
+                expect(resp.body).to.have.property("data");
+                expect(resp.body.data).to.be.an("array");
             });
         });
 
@@ -65,10 +65,10 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 null,
                 200
             ).then((resp) => {
-                expect(resp.data).to.be.an("array");
+                expect(resp.body.data).to.be.an("array");
                 
-                if (resp.data.length > 0) {
-                    const payment = resp.data[0];
+                if (resp.body.data.length > 0) {
+                    const payment = resp.body.data[0];
                     expect(payment).to.have.property("FormattedFY");
                     expect(payment).to.have.property("GroupKey");
                     expect(payment).to.have.property("Fund");
@@ -86,8 +86,8 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 null,
                 200
             ).then((resp) => {
-                if (resp.data.length > 0) {
-                    const payment = resp.data[0];
+                if (resp.body.data.length > 0) {
+                    const payment = resp.body.data[0];
                     expect(payment.FormattedFY).to.be.a("string");
                     expect(payment.FormattedFY).to.match(/^\d{4}(\/\d{2})?$/);
                 }
@@ -101,8 +101,8 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                 null,
                 200
             ).then((resp) => {
-                expect(resp).to.have.property("data");
-                expect(resp.data).to.be.an("array");
+                expect(resp.body).to.have.property("data");
+                expect(resp.body.data).to.be.an("array");
             });
         });
     });
