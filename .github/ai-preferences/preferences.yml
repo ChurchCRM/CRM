@@ -389,13 +389,13 @@ git:
   avoid: "massive_multi_topic_commits"
   message_detail: "minimal_but_sufficient"
 
-## Case Study: Donation Payment 500 Error Fix (PR #7421)
+## Case Study: Type Mismatch & Architecture Improvements (Lessons Learned)
 ## =====================================================
-## Context: Type mismatch error ($payment['Date'] on object) caused 500 errors
-## Session: October 25, 2025 - Multi-phase debugging and fixes
+## Context: Identified during API endpoint debugging and architectural review
+## Applies To: All similar patterns in codebase
 ## 
-## Key Learnings Applied:
-critical_fixes:
+## Key Learnings for Future Work:
+critical_patterns:
   type_safety:
     description: "Propel ORM returns objects, never arrays"
     example: "Wrong: $payment['Date'] | Correct: $payment->Date"
@@ -407,14 +407,18 @@ critical_fixes:
     position: "addRoutingMiddleware() MUST run BEFORE add() middleware calls"
     why: "Routing determines handler execution; if routing runs after auth, unauthenticated requests hit handlers"
     impact: "Wrong order: 401/403 auth responses become 500 errors"
-    fixed_in: "src/api/index.php, src/v2/index.php, src/kiosk/index.php, src/setup/index.php, src/external/index.php, src/session/index.php"
+    affected_apps: "All Slim-based applications with middleware stack"
+    checklist: "Review middleware order in all index.php files if encountering auth-related 500 errors"
   
   error_handler:
     description: "Error handlers must preserve HTTP status codes"
-    issue: "registerDefaultJsonErrorHandler() was forcing 500 on all exceptions"
-    fix: "Check exception type (HttpNotFoundException, HttpMethodNotAllowedException, etc) and preserve status"
+    issue: "Error handlers forcing 500 status on all exceptions instead of preserving original status"
+    fix_pattern: "Check exception type and preserve original HTTP status code"
     impact: "Auth failures now correctly return 401/403 instead of 500"
-    file: "src/ChurchCRM/Slim/SlimUtils.php"
+    checklist:
+      - "Review error handler implementation"
+      - "Identify if status codes are being overwritten"
+      - "Check exception type before applying status"
   
   slim4_route_handlers:
     description: "Slim 4 requires inline closures, not string callables"
@@ -422,35 +426,66 @@ critical_fixes:
     correct: "$group->post('/path', function (...) {...});"
     why: "String callable references don't resolve in Slim 4 routing system"
     impact: "Routes not found or handlers not executed"
-    fixed_in: "src/api/routes/users/user-admin.php, user-settings.php, system.php"
+    checklist: "Review all route definitions; ensure closures instead of string references"
   
   global_function_namespace:
     description: "Namespaced classes calling global functions need \\ prefix"
     wrong: "namespace ChurchCRM\\...; MakeFYString($id);"
     correct: "namespace ChurchCRM\\...; \\MakeFYString($id);"
     why: "Without \\, PHP searches current namespace first, causing 'undefined function' errors"
-    impact: "500 errors on all family payment list API calls"
-    file: "src/ChurchCRM/model/ChurchCRM/Pledge.php line 23"
+    impact: "500 errors on related functionality"
+    checklist: "When calling global functions from namespaced code, prefix with \\\\"
   
   email_failure_handling:
     description: "Email sending failures should not crash API endpoints"
-    pattern_1: "throw new Exception() on send failure -> 500 error in test environment"
-    pattern_2: "Log warning + continue -> graceful degradation, 200 response"
-    when_to_use: "Pattern 2 for non-critical operations (email), Pattern 1 for critical business logic"
-    file: "src/api/routes/users/user-admin.php (password/reset endpoint)"
+    pattern_1: "throw new Exception() on send failure → 500 error in test environment"
+    pattern_2: "Log warning + continue → graceful degradation, 200 response"
+    decision_criteria:
+      - "Pattern 1 for critical operations (required emails)"
+      - "Pattern 2 for non-critical operations (notifications, confirmations)"
+    testing: "Test API behavior when email service is unavailable"
   
   null_safety:
     description: "Always assume object properties can be null"
     example: "$notification->title ?? 'Notification'"
     impact: "Prevents TypeError when accessing undefined/null properties"
     file: "src/api/routes/system/system.php"
+  
+  property_access_type_mismatch:
+    description: "API parsers cast body to objects; validation methods must use object syntax, not array syntax"
+    pattern: "Mismatch between parser output type and property access syntax"
+    wrong_example: "$data['property'] when parser returns object"
+    correct_example: "$data->property when parser returns object"
+    impact: "Type mismatches cause TypeError exceptions → 500 errors on API calls"
+    prevention_checklist:
+      - "Identify parser output type (array vs object vs typed class)"
+      - "Use consistent property access syntax matching parser output"
+      - "Validate return types from all data sources (ORM, parsers, services)"
+      - "Add type hints to catch mismatches at compile time"
+    testing_approach: "Create type safety tests validating data access patterns work correctly"
+  
+  global_to_service_migration:
+    description: "Migrate global functions to service class static methods for better organization"
+    pattern: "Consolidate related global functions into logical service classes"
+    wrong_pattern: "Global function calls scattered across codebase"
+    correct_pattern: "ServiceClass::staticMethod() with organized, namespaced code"
+    benefits:
+      - "Better code organization and discoverability"
+      - "Type safety with type hints"
+      - "Easier to test and mock"
+      - "Clearer dependency flow"
+    migration_steps:
+      - "Identify related global functions by domain"
+      - "Create or identify appropriate service class"
+      - "Convert to static methods in service class"
+      - "Update all call sites to use new pattern"
+      - "Test after each conversion to catch regressions"
 
 testing_standards_established:
   api_tests_mandatory:
     description: "Create Cypress API tests for all API changes"
     location: "cypress/e2e/api/private/[module]/[service]-[endpoint].spec.js"
     coverage: "Type safety, null safety, validation, error handling, authentication"
-    result: "12/12 passing (100% success rate)"
   
   test_isolation:
     description: "Log directory must be clean before tests"
@@ -464,23 +499,51 @@ testing_standards_established:
     public: "cy.apiRequest(options) for unauthenticated routes"
     why: "Helpers auto-set Content-Type: application/json header"
 
-performance_improvements:
-  before: "Family payment API: 60+ seconds or timeout"
-  after: "Family payment API: <200ms response"
-  cause: "Fixed MakeFYString undefined function error eliminating 500s"
-  ui_test_impact: "UI tests no longer hang waiting for 500 error responses"
+performance_checklist:
+  api_response_times:
+    validate: "API responses complete in reasonable time (<1s typically)"
+    investigate_if: "Tests timeout or take abnormally long"
+    common_causes:
+      - "Undefined function errors causing 500 responses"
+      - "Infinite loops or missing early returns"
+      - "Database queries without proper indexing"
+  
+  debugging_approach:
+    - "Check API logs for error stack traces"
+    - "Verify function calls match current codebase"
+    - "Test with fresh database state"
+    - "Review middleware and error handling
 
-files_modified_summary:
-  critical_fixes: 7
-  middleware_fixes: 6
-  route_conversions: 3
-  test_suite: 1
-  documentation: 1
-  total_files: 18
-  total_changes: "+472 lines, -147 lines"
+## PR Organization Strategy
 
-ai_notes_location: "ai-notes/COMMIT_SUMMARY.md"
-pr_reference: "https://github.com/ChurchCRM/CRM/pull/7421"
+pr_organization:
+  philosophy: "Keep PRs focused on single concerns for easier review and merging"
+  approach:
+    - "Split large changes into logical feature branches"
+    - "Each PR addresses one specific bug or feature"
+    - "Related but separate concerns get separate branches"
+    - "Test each branch independently before PR"
+  branch_types:
+    feature_branch:
+      when: "Adding new functionality or fixing bugs in related domain"
+      characteristics: "Multiple files, cohesive business logic"
+      testing: "Full test suite for feature"
+    
+    fix_branch:
+      when: "Fixing isolated bugs separate from other concerns"
+      characteristics: "Minimal files, single issue focused"
+      testing: "Tests specifically validating the fix"
+  
+  multiple_concerns_pattern:
+    recognize_when:
+      - "PR includes unrelated bug fixes"
+      - "Separate features mixed into single branch"
+      - "Cleanup changes alongside feature work"
+    action:
+      - "Create separate branches for each concern"
+      - "Provide merge order recommendations"
+      - "Reference across branches for context"
+    benefit: "Cleaner git history, easier to revert if needed, simpler code review"
 
 ---
 # Last Updated: 2025-10-25
