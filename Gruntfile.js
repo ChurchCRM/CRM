@@ -88,20 +88,6 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "node_modules/ckeditor4/",
-                        src: [
-                            "*.js",
-                            "*.css",
-                            "*.json",
-                            "lang/**/*",
-                            "adapters/**/*",
-                            "plugins/**/*",
-                            "skins/**/*",
-                        ],
-                        dest: "src/skin/external/ckeditor/",
-                    },
-                    {
-                        expand: true,
                         filter: "isFile",
                         flatten: true,
                         src: ["node_modules/bootbox/dist/bootbox.min.js"],
