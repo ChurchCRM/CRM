@@ -5,7 +5,6 @@ use ChurchCRM\dto\SystemURLs;
 $sPageTitle = "ChurchCRM - Sunday School Device Kiosk";
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/kiosk.css">
 
 <div>
   <h1 id="noEvent"></h1>

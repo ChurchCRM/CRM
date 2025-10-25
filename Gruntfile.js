@@ -67,12 +67,6 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "node_modules/@fortawesome/fontawesome-free",
-                        src: ["{css,js,webfonts}/**"],
-                        dest: "src/skin/external/fontawesome/",
-                    },
-                    {
-                        expand: true,
                         filter: "isFile",
                         flatten: true,
                         src: ["node_modules/fullcalendar/index.global.min.js"],
@@ -94,20 +88,6 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "node_modules/ckeditor4/",
-                        src: [
-                            "*.js",
-                            "*.css",
-                            "*.json",
-                            "lang/**/*",
-                            "adapters/**/*",
-                            "plugins/**/*",
-                            "skins/**/*",
-                        ],
-                        dest: "src/skin/external/ckeditor/",
-                    },
-                    {
-                        expand: true,
                         filter: "isFile",
                         flatten: true,
                         src: ["node_modules/bootbox/dist/bootbox.min.js"],
@@ -116,15 +96,8 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: "node_modules/bootstrap/dist",
-                        src: ["{css,js}/**"],
+                        src: ["js/**"],
                         dest: "src/skin/external/bootstrap/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: ["node_modules/bootstrap/fonts/**"],
-                        dest: "src/skin/external/fonts/",
                     },
                     {
                         expand: true,
@@ -251,23 +224,6 @@ module.exports = function (grunt) {
                         ],
                         dest: "src/skin/external/select2",
                     },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: [
-                            "node_modules/react-datepicker/dist/react-datepicker.min.css",
-                        ],
-                        dest: "src/skin/external/react-datepicker",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: false,
-                        cwd: "node_modules/flag-icons",
-                        src: ["flags/**", "css/flag-icons.min.css"],
-                        dest: "src/skin/external/flag-icons/",
-                    },
                 ],
             },
         },
@@ -336,7 +292,7 @@ module.exports = function (grunt) {
         compress: {
             zip: {
                 options: {
-                    archive: "target/ChurchCRM-<%= package.version %>.zip",
+                    archive: "temp/ChurchCRM-<%= package.version %>.zip",
                     mode: "zip",
                     pretty: true,
                 },

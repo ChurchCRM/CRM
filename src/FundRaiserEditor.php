@@ -39,7 +39,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
     if (strlen($dDate) > 0) {
         list($iYear, $iMonth, $iDay) = sscanf($dDate, '%04d-%02d-%02d');
         if (!checkdate($iMonth, $iDay, $iYear)) {
-            $sDateError = '<span style="color: red; ">' . gettext('Not a valid date') . '</span>';
+            $sDateError = '<span class="text-error">' . gettext('Not a valid date') . '</span>';
             $bErrorFlag = true;
         }
     }
@@ -124,7 +124,7 @@ require_once 'Include/Header.php';
                     <table cellpadding="3">
                         <tr>
                             <td class="LabelColumn"><?= gettext('Date') ?>:</td>
-                            <td class="TextColumn"><input type="text" name="Date" value="<?= $dDate->format("Y-m-d") ?>" maxlength="10" id="Date" size="11" class="date-picker"><span style="color: red;"><?= $sDateError ?></span></td>
+                            <td class="TextColumn"><input type="text" name="Date" value="<?= $dDate->format("Y-m-d") ?>" maxlength="10" id="Date" size="11" class="date-picker"><span class="text-error"><?= $sDateError ?></span></td>
                         </tr>
 
                         <tr>

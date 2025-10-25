@@ -1,41 +1,67 @@
-.modal-table {
-    table-layout: fixed;
-    width: 100%;
+/**
+ * ChurchCRM Calendar Decorative Elements & DatePicker Overrides
+ * 
+ * Minimal custom styles after Bootstrap utility migration:
+ * - Strike-through text divider for "Add New Calendar" button
+ * - DatePicker styling overrides for modal z-index and compatibility
+ * 
+ * Bootstrap utilities handle: table layouts (w-100), form validation (text-danger, invisible), field sizing
+ * Used in: react/components/Events/, src/skin/js/Calendar.js
+ */
+
+/* ================================================
+   Strike-Through Text Divider Styles
+   Used for "Add New Calendar" decorative divider
+   No Bootstrap equivalent - must be custom
+   ================================================ */
+
+.strike {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.modal-table td {
-    word-wrap: break-word;
-}
-
-.modal-table select,
-.modal-table input,
-.modal-table textarea {
-    width: 100%;
-}
-
-.calendar-filter-row .col-xs-1,
-.calendar-filter-row .col-xs-7,
-.calendar-filter-row .col-xs-4 {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.calendar-filter-text {
+.strike > span {
+    position: relative;
     display: inline-block;
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
-.form-field-error {
-    color: red;
+.strike:hover {
+    font-size: 22px;
+    color: lime;
 }
 
-.RequiredFormFieldUnsatisfied {
-    color: red;
-    display: inline-block;
-    margin-left: 10px;
+.strike > span:before,
+.strike > span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+    height: 1px;
+    background: grey;
 }
 
-.RequiredFormFieldSatisfied {
-    visibility: hidden;
+.strike > span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.strike > span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+/**
+ * React DatePicker Styling Overrides
+ * 
+ * Critical overrides for react-datepicker in modal context:
+ * - Z-index: Ensures dropdown appears above Bootstrap modals
+ * 
+ * Note: Core react-datepicker CSS is imported from npm package
+ * (webpack/skin-main.js line 22)
+ */
+
+.react-datepicker-popper {
+    z-index: 1050 !important;
 }

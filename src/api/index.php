@@ -30,16 +30,17 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
+// Add Slim error middleware for proper error handling
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::setupErrorLogger($errorMiddleware);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+
 // Add CORS middleware for browser API access
 $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
-
-// Add Slim error middleware for proper error handling
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
-SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+$app->addRoutingMiddleware();
 
 // Group routes for better organization
 require __DIR__ . '/routes/calendar/events.php';

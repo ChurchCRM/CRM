@@ -38,7 +38,7 @@
 
 # Dependencies and build artifacts
 ../vendor/
-../target/
+../temp/
 ../dist/
 ../build/
 

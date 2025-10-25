@@ -1,4 +1,3 @@
-
 <?php
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
@@ -22,16 +21,17 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
+// Add Slim error middleware for proper error handling
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::setupErrorLogger($errorMiddleware);
+\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+
 // Add CORS middleware for browser API access
 $app->addBodyParsingMiddleware();
 $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
-
-// Add Slim error middleware for proper error handling
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
-\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+$app->addRoutingMiddleware();
 
 require __DIR__ . '/routes/common/mvc-helper.php';
 require __DIR__ . '/routes/admin/admin.php';

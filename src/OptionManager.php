@@ -290,7 +290,7 @@ if ($embedded) {
 <?php
 
 if ($bErrorFlag) {
-    echo '<span class="MediumLargeText" style="color: red;">';
+    echo '<span class="MediumLargeText text-danger">';
     if ($bDuplicateFound) {
         echo '<br>' . gettext('Error: Duplicate') . ' ' . $adjplusnameplural . ' ' . gettext('are not allowed.');
     }
@@ -343,9 +343,9 @@ for ($row = 1; $row <= $numRows; $row++) {
             <?php
 
             if ($aNameErrors[$row] == 1) {
-                echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
             } elseif ($aNameErrors[$row] == 2) {
-                echo '<span style="color: red;"><BR>' . gettext('Duplicate name found.') . ' </span>';
+                echo '<span class="text-danger"><BR>' . gettext('Duplicate name found.') . ' </span>';
             } ?>
         </td>
         <?php
@@ -391,7 +391,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 <input type="submit" class="btn btn-default" value="<?= gettext('Add New') . ' ' . $adjplusname ?>" Name="AddField">
 <?php
 if ($iNewNameError > 0) {
-    echo '<div><span style="color: red;"><BR>';
+    echo '<div><span class="text-danger"><BR>';
     if ($iNewNameError == 1) {
         echo gettext('Error: You must enter a name');
     } else {

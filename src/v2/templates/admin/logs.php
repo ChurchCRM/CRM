@@ -130,7 +130,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </select>
                 </div>
                 <pre id="logContent" style="max-height: 500px; overflow-y: auto; background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;"><code></code></pre>
-                <div id="logLoading" style="display: none; text-align: center; padding: 20px;">
+                <div id="logLoading" class="d-none text-center p-3">
                     <i class="fa fa-spinner fa-spin fa-3x"></i>
                     <p><?= gettext('Loading log file...') ?></p>
                 </div>

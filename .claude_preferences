@@ -1,0 +1,78 @@
+# Claude AI Preferences for ChurchCRM Development
+
+## PR/Commit Message Style
+- Use short, concise summaries
+- No file links, file paths, or detailed file lists
+- Focus on what changed and why
+- Keep it under 10 lines when possible
+
+## Code Review Style
+- Provide actionable feedback only
+- Skip verbose explanations unless requested
+- Focus on deprecated code, best practices, and potential issues
+- When fixing issues, just fix them without extensive commentary
+
+## Communication Style
+- Be direct and to the point
+- No filler acknowledgements ("Sounds good", "Okay, I will...")
+- Start with action, not preamble
+- Skip repetitive summaries
+
+## Branch Naming
+- Format: feature/description or fix/description or refactor/description
+- Use kebab-case
+- Keep it descriptive but short
+
+## Commit Messages
+- First line: Imperative mood, under 72 chars
+- Bullet points for details (if needed)
+- Focus on what and why, not how
+
+## Testing Preferences
+- Run automated checks when available
+- Verify no errors before committing
+- Prefer concise test output summaries
+
+## Documentation
+- Only create docs when explicitly requested
+- Prefer inline code comments for complex logic
+- Keep README updates minimal and relevant
+- Store project notes ONLY in `ai-notes/` folder (local, not committed)
+- Keep notes minimal: active tasks, completed items, quick patterns
+- Do not create extensive documentation for phases or analysis
+- Ask before creating docs: "Should this be stored?"
+
+## CSS & Styling
+- **ALL** CSS should be bundled via webpack, not CDN
+- No external CDN links (Bootstrap, FontAwesome, etc.)
+- Ensure webpack configuration imports all needed CSS/SCSS
+- Styles in standalone popups/windows should reference bundled CSS paths
+- Custom styles can be inline when minimal; otherwise add to webpack-bundled stylesheet
+
+## Asset References
+- Use `<?= SystemURLs::getRootPath() ?>` for all asset paths (CSS, JS, images, etc.)
+- Example: `href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css"`
+- Import `use ChurchCRM\dto\SystemURLs;` at top of file
+- Do NOT use relative paths or dirname($_SERVER['PHP_SELF'])
+
+## Service Classes
+- **ALWAYS** use existing Service classes for business logic and database operations
+- Available services: GroupService, FinancialService, SystemService, TaskService, etc.
+- Before writing inline database logic, check if a Service class exists
+- Add new methods to Service classes rather than duplicating logic in controllers
+- Service classes encapsulate business rules and maintain consistency
+
+## Database Interactions
+- **ALWAYS** use Propel ORM for all database operations
+- Never use raw SQL with RunQuery() or string concatenation
+- For tables with Propel models: Use Query classes and model methods
+- For dynamic tables (groupprop_*, etc.): Use Service methods or prepared statements via Propel::getConnection()
+  ```php
+  $connection = Propel::getConnection();
+  $sql = 'INSERT INTO dynamic_table_' . (int)$id . ' (column) VALUES (:value)';
+  $stmt = $connection->prepare($sql);
+  $stmt->bindValue(':value', $value, \PDO::PARAM_INT);
+  $stmt->execute();
+  ```
+- Always cast dynamic table identifiers to (int) to prevent SQL injection
+- Use PDO::PARAM_* constants for proper type binding

@@ -39,7 +39,7 @@ if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
 <br>
 <form action="#" method="get" class="form">
     <label for="addNewGroup"><?= gettext('Add New Group') ?> :</label>
-    <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
+    <input class="form-control newGroup w-100" name="groupName" id="groupName">
     <br>
     <div class="text-right">
         <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext('Add New Group') ?></button>
