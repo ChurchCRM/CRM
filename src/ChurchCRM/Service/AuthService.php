@@ -30,10 +30,7 @@ class AuthService
 
         // Check single permission or if user is admin
         if (is_string($groupName)) {
-            if (isset($_SESSION[$groupName]) && $_SESSION[$groupName]) {
-                return;
-            }
-            if ($currentUser && $currentUser->isAdmin()) {
+            if (($_SESSION[$groupName] ?? null) || ($currentUser && $currentUser->isAdmin())) {
                 return;
             }
         }
@@ -41,12 +38,9 @@ class AuthService
         // Check array of permissions
         if (is_array($groupName)) {
             foreach ($groupName as $role) {
-                if (isset($_SESSION[$role]) && $_SESSION[$role]) {
+                if (($_SESSION[$role] ?? null) || ($currentUser && $currentUser->isAdmin())) {
                     return;
                 }
-            }
-            if ($currentUser && $currentUser->isAdmin()) {
-                return;
             }
         }
 
