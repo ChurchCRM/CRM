@@ -269,7 +269,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $iTypeID = InputUtils::legacyFilterInput($_POST['EventTypeID'], 'int');
     $EventExists = InputUtils::legacyFilterInput($_POST['EventExists'], 'int');
     $sEventTitle = InputUtils::legacyFilterInput($_POST['EventTitle']);
-    $sEventDesc = InputUtils::legacyFilterInput($_POST['EventDesc']);
+    $sEventDesc = $_POST['EventDescInput'];
     if (empty($_POST['EventTypeID'])) {
         $bEventTypeError = true;
         $iErrors++;
@@ -322,7 +322,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
-                ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
+                ->setDesc(InputUtils::filterHTML($sEventDesc))
                 ->setText(InputUtils::filterHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
@@ -348,7 +348,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
-                ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
+                ->setDesc(InputUtils::filterHTML($sEventDesc))
                 ->setText(InputUtils::filterHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
@@ -439,7 +439,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <tr>
                     <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Desc') ?>:</td>
                     <td colspan="3" class="TextColumn">
-                        <textarea name="EventDesc" rows="4" maxlength="100" class='form-control w-100' required><?= ($sEventDesc) ?></textarea>
+                        <?= getQuillEditorContainer('EventDesc', 'EventDescInput', $sEventDesc, 'form-control', '100px') ?>
                     </td>
                 </tr>
                 <tr>

@@ -23,7 +23,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
         </tr>
         <tr>
           <td>{window.i18next.t("Event Description")}</td>
-          <td dangerouslySetInnerHTML={{ __html: event.Desc }} />
+          <td dangerouslySetInnerHTML={{ __html: event.Desc || "" }} />
         </tr>
         <tr>
           <td>{window.i18next.t("Start Date")}</td>
@@ -50,7 +50,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
         </tr>
         <tr>
           <td>{window.i18next.t("Text")}</td>
-          <td dangerouslySetInnerHTML={{ __html: event.Text }} />
+          <td dangerouslySetInnerHTML={{ __html: event.Text || "" }} />
         </tr>
       </tbody>
     </table>

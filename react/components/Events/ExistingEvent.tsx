@@ -216,17 +216,19 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
                 {window.i18next.t("This field is required")}
               </span>
             </Modal.Header>
-            <Modal.Body>
-              <EventPropertiesEditor
-                event={this.state.event}
-                calendars={this.state.calendars}
-                eventTypes={this.state.eventTypes}
-                changeHandler={this.handleInputChange}
-                handleStartDateChange={this.handleStartDateChange}
-                handleEndDateChange={this.handleEndDateChange}
-                pinnedCalendarChanged={this.updatePinnedCalendar}
-                eventTypeChanged={this.updateEventType}
-              />
+            <Modal.Body style={{ overflow: "visible", maxHeight: "none" }}>
+              <div style={{ overflow: "visible" }}>
+                <EventPropertiesEditor
+                  event={this.state.event}
+                  calendars={this.state.calendars}
+                  eventTypes={this.state.eventTypes}
+                  changeHandler={this.handleInputChange}
+                  handleStartDateChange={this.handleStartDateChange}
+                  handleEndDateChange={this.handleEndDateChange}
+                  pinnedCalendarChanged={this.updatePinnedCalendar}
+                  eventTypeChanged={this.updateEventType}
+                />
+              </div>
             </Modal.Body>
             <Modal.Footer>
               <button

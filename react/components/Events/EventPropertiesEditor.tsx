@@ -4,6 +4,7 @@ import Calendar from "../../interfaces/Calendar";
 import EventType from "../../interfaces/EventType";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
+import QuillEditor from "../QuillEditor";
 
 const EventPropertiesEditor: React.FunctionComponent<{
   event: CRMEvent;
@@ -59,25 +60,30 @@ const EventPropertiesEditor: React.FunctionComponent<{
         <tr>
           <td className="LabelColumn">{window.i18next.t("Description")}</td>
           <td className="TextColumn">
-            <textarea name="Desc" value={event.Desc} onChange={changeHandler} />
+            <QuillEditor 
+              name="Desc" 
+              value={event.Desc} 
+              onChange={(name, html) => {
+                const changeEvent = {
+                  target: { name, value: html }
+                } as any;
+                changeHandler(changeEvent);
+              }}
+            />
           </td>
         </tr>
         <tr>
           <td className="LabelColumn">{window.i18next.t("Start Date")}</td>
           <td className="TextColumn">
             <DatePicker
-              name="Start"
-              selectsStart
               selected={event.Start}
-              startDate={event.Start}
-              endDate={event.End}
               onChange={handleStartDateChange}
               showTimeSelect
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
               timeCaption="time"
-              selectsRange
-              icon="fa fa-calendar"
+              className="form-control"
+              placeholderText={window.i18next.t("Start Date")}
             />
           </td>
         </tr>
@@ -85,18 +91,14 @@ const EventPropertiesEditor: React.FunctionComponent<{
           <td className="LabelColumn">{window.i18next.t("End Date")}</td>
           <td className="TextColumn">
             <DatePicker
-              name="End"
               selected={event.End}
-              startDate={event.Start}
-              endDate={event.End}
-              selectsEnd
               onChange={handleEndDateChange}
               showTimeSelect
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
               timeCaption="time"
-              selectsRange
-              icon="fa fa-calendar"
+              className="form-control"
+              placeholderText={window.i18next.t("End Date")}
             />
           </td>
         </tr>
@@ -127,7 +129,17 @@ const EventPropertiesEditor: React.FunctionComponent<{
         <tr>
           <td className="LabelColumn">{window.i18next.t("Text")}</td>
           <td className="TextColumn">
-            <textarea name="Text" value={event.Text} onChange={changeHandler} />
+            <QuillEditor 
+              name="Text" 
+              value={event.Text} 
+              onChange={(name, html) => {
+                const changeEvent = {
+                  target: { name, value: html }
+                } as any;
+                changeHandler(changeEvent);
+              }}
+              minHeight="300px"
+            />
           </td>
         </tr>
       </tbody>
