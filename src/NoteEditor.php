@@ -2,6 +2,7 @@
 
 require_once 'Include/Config.php';
 require_once 'Include/Functions.php';
+require_once 'Include/QuillEditorHelper.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -42,7 +43,7 @@ if (isset($_POST['Submit'])) {
 
     // Assign all variables locally
     $iNoteID = InputUtils::legacyFilterInput($_POST['NoteID'], 'int');
-    $sNoteText = InputUtils::filterHTML($_POST['NoteText'], 'htmltext');
+    $sNoteText = InputUtils::filterHTML($_POST['NoteTextInput']);
 
     // If they didn't check the private box, set the value to 0
     if (isset($_POST['Private'])) {
@@ -106,7 +107,7 @@ require_once 'Include/Header.php';
         <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
         <input type="hidden" name="FamilyID" value="<?= $iFamilyID ?>">
         <input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
-        <textarea id="NoteText" name="NoteText" class="w-100" style="min-height: 300px;" rows="40"><?= $sNoteText ?></textarea>
+        <?= getQuillEditorContainer('NoteText', 'NoteTextInput', $sNoteText, 'w-100', '300px') ?>
         <?= $sNoteTextError ?>
       </p>
 
@@ -125,13 +126,7 @@ require_once 'Include/Header.php';
   </p>
 </form>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
+<?= getQuillEditorInitScript('NoteText', 'NoteTextInput', gettext("Enter note text here...")) ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  CKEDITOR.replace('NoteText',{
-    customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor/note_editor_config.js',
-    language : window.CRM.lang
-  });
-</script>
 <?php
 require_once 'Include/Footer.php';

@@ -9,7 +9,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
   eventTypes: Array<EventType>;
 }> = ({ event, calendars, eventTypes }) => {
   return (
-    <table className="table modal-table">
+    <table className="table w-100" style={{ tableLayout: 'fixed' }}>
       <tbody>
         <tr>
           <td>{window.i18next.t("Type")}</td>
@@ -23,7 +23,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
         </tr>
         <tr>
           <td>{window.i18next.t("Event Description")}</td>
-          <td>{event.Desc}</td>
+          <td dangerouslySetInnerHTML={{ __html: event.Desc || "" }} />
         </tr>
         <tr>
           <td>{window.i18next.t("Start Date")}</td>
@@ -50,7 +50,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
         </tr>
         <tr>
           <td>{window.i18next.t("Text")}</td>
-          <td>{event.Text}</td>
+          <td dangerouslySetInnerHTML={{ __html: event.Text || "" }} />
         </tr>
       </tbody>
     </table>
