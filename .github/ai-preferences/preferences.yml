@@ -1,0 +1,229 @@
+# AI Agent Preferences - ChurchCRM Development
+# Used by: Claude, GitHub Copilot, and other AI coding agents
+# Last Updated: 2025-10-25
+# Location: .github/ai-preferences/preferences.yml
+
+## HOW TO USE THIS FILE
+## =====================
+## GitHub Copilot: 
+##   - Add this file path to Copilot's workspace settings
+##   - In VS Code: Cmd/Ctrl + Shift + P > "Copilot: Set Custom Instructions"
+##   - Paste content or reference file path
+##
+## Claude (via Cursor/other IDEs):
+##   - Add as a context file or system prompt
+##   - Reference in all new conversations
+##
+## Pre-commit Hooks:
+##   - Use .husky/pre-commit to validate commits follow standards
+##   - Check commit message format: imperative, under 72 chars
+##
+## Repository Documentation:
+##   - Link this file in CONTRIBUTING.md
+##   - Reference in GitHub issue/PR templates
+##   - Include in onboarding docs for new contributors
+
+---
+## ENFORCEMENT CHECKLIST
+enforcement:
+  every_commit:
+    - "validate_commit_message_format"
+    - "check_no_raw_sql"
+    - "verify_propel_orm_used"
+    - "ensure_systemurls_for_assets"
+  every_pr:
+    - "review_communication_style"
+    - "verify_service_classes_used"
+    - "check_bootstrap_css_applied"
+    - "validate_test_impact_documented"
+  setup_required:
+    - "add_pr_template: .github/pull_request_template.md"
+    - "add_issue_template: .github/ISSUE_TEMPLATE/"
+
+## Communication & Output Style
+communication:
+  approach: "direct_action_first"
+  avoid:
+    - "filler_acknowledgements"  # Skip "Sounds good", "Okay, I will..."
+    - "repetitive_summaries"     # No recap unless requested
+    - "verbose_explanations"     # Only when explicitly asked
+  response_format: "action_then_context"
+  max_preamble_lines: 1
+
+
+## Commit & PR Standards
+commits:
+  message_format: "imperative"
+  first_line_max: 72
+  style: "concise"
+  examples:
+    - "Fix SQL injection in EditEventAttendees"
+    - "Replace deprecated HTML attributes with Bootstrap CSS"
+    - "Add missing element ID for test selector"
+  avoid:
+    - "detailed_file_lists"
+    - "file_path_references_in_messages"
+    - "links_to_files"
+
+pull_requests:
+  summary_max_lines: 10
+  focus: "what_changed_and_why"
+  include:
+    - "brief_problem_statement"
+    - "solution_overview"
+    - "test_impact"
+  skip:
+    - "verbose_explanations"
+    - "non_critical_details"
+
+## Code Quality Standards
+code_style:
+  php:
+    framework: "Propel ORM (mandatory)"
+    database: "never_raw_sql"
+    patterns:
+      - "use Service classes for business logic"
+      - "use Query classes for data access"
+      - "avoid inline database logic"
+    validation:
+      - "run_php_lint before_committing"
+      - "check syntax on_modified_files"
+  javascript:
+    bundler: "webpack"
+    css_location: "bundled_via_webpack"
+    avoid:
+      - "cdn_links"
+      - "external_stylesheets"
+
+## Database & ORM Requirements
+database:
+  mandatory_orm: "Propel ORM"
+  rules:
+    - "ALWAYS use ORM Query classes"
+    - "NEVER use RunQuery() with string SQL"
+    - "NEVER concatenate SQL strings"
+    - "Cast dynamic identifiers to (int)"
+    - "Use PDO::PARAM_* for bindings"
+  service_classes:
+    - "GroupService"
+    - "FinancialService"
+    - "SystemService"
+    - "TaskService"
+
+## Asset & Path References
+assets:
+  css_bundling: "webpack_only"
+  javascript_bundling: "webpack_only"
+  path_function: "SystemURLs::getRootPath()"
+  example:
+    wrong: "href='/skin/v2/churchcrm.min.css'"
+    right: "href='<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css'"
+  avoid:
+    - "relative_paths"
+    - "dirname($_SERVER['PHP_SELF'])"
+    - "cdn_links"
+
+## HTML & CSS Modernization
+html_standards:
+  bootstrap_framework: "yes"
+  target_standard: "HTML5"
+
+## Testing Requirements
+testing:
+  automated_checks: "required_when_available"
+  pre_commit:
+    - "verify_no_php_errors"
+    - "verify_no_syntax_errors"
+    - "run_relevant_unit_tests"
+  output_style: "concise_summary"
+  test_failure_response: "fix_or_escalate_clearly"
+
+## Documentation Standards
+documentation:
+  policy: "only_when_requested"
+  preferences:
+    - "inline_code_comments for complex logic"
+    - "minimal_readme_updates"
+    - "store_project_notes in ai-notes/ only"
+  note_guidelines:
+    - "keep_minimal: active tasks, completed items, quick patterns"
+    - "do_not_create: extensive phase docs or analysis docs"
+    - "ask_before_creating: 'Should this be stored?'"
+  exclusions:
+    - "analysis_docs"
+    - "phase_summaries"
+    - "extensive_reference_docs"
+
+## Branch Naming
+branches:
+  format: "type/description"
+  types:
+    - "feature"
+    - "fix"
+    - "refactor"
+    - "hotfix"
+  style: "kebab-case"
+  length: "short_but_descriptive"
+  examples:
+    - "fix/sql-injection-event-id"
+    - "refactor/deprecated-html-attributes"
+    - "feature/new-event-reporting"
+
+## File Organization
+files:
+  ai_notes_directory: "ai-notes/"
+  ai_notes_scope: "local_development_only"
+  ai_notes_gitignore: "true"
+  preferences_file: ".github/ai-preferences/preferences.yml"
+
+## Priority Rules
+rules_priority:
+  - "security_first: always use Propel ORM, never raw SQL"
+  - "html5_compliance: replace deprecated attributes with CSS"
+  - "service_pattern: use Service classes for business logic"
+  - "asset_paths: always use SystemURLs::getRootPath()"
+  - "code_quality: validate before committing"
+  - "clear_communication: direct, concise, actionable"
+
+## Error Handling
+errors:
+  policy: "fix_immediately"
+  validation:
+    - "php_lint_all_modified_php_files"
+    - "check_syntax_errors"
+    - "test_if_available"
+  escalation: "provide_actionable_error_details"
+
+## Review Checklist (Before Commit)
+pre_commit_checklist:
+  - "PHP syntax validation passed"
+  - "Propel ORM used for all database operations"
+  - "Asset paths use SystemURLs::getRootPath()"
+  - "Service classes used for business logic"
+  - "Deprecated HTML attributes replaced with CSS"
+  - "Bootstrap CSS classes applied correctly"
+  - "Tests pass (if available)"
+  - "Commit message follows imperative mood"
+  - "Branch name follows kebab-case format"
+
+## Special Instructions
+special:
+  test_failures:
+    approach: "identify_root_cause_then_fix"
+    document: "briefly_in_commit_message"
+    examples:
+      - "Missing element ID for test selector"
+      - "Incorrect object validation logic"
+      - "Unexpected redirect or page navigation"
+
+## Version Control
+git:
+  commit_frequency: "atomic_logical_units"
+  commit_size: "focused_single_concern"
+  avoid: "massive_multi_topic_commits"
+  message_detail: "minimal_but_sufficient"
+
+---
+# Last Updated: 2025-10-25
+# Applicable To: All AI agents and coding assistants
+# Repository: https://github.com/ChurchCRM/CRM
