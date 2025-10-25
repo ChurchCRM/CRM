@@ -251,15 +251,15 @@ require_once 'Include/Header.php'; ?>
                 <?php
                 if ($numRows == 0) {
                     ?>
-                    <center>
+                    <div class="text-center">
                         <h2><?= gettext('No properties have been added yet') ?></h2>
-                    </center>
+                    </div>
                     <?php
                 } else {
                     ?>
                     <tr>
                         <td colspan="7">
-                            <center><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></center>
+                            <div class="text-center"><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></div>
                         </td>
                     </tr>
 

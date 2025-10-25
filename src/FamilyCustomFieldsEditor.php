@@ -277,8 +277,8 @@ function confirmDeleteField( Field ) {
 <?php
 if ($numRows == 0) {
     ?>
-    <center><h2><?= gettext('No custom Family fields have been added yet') ?></h2>
-    </center>
+    <div class="text-center"><h2><?= gettext('No custom Family fields have been added yet') ?></h2>
+    </div>
     <?php
 } else {
     ?>

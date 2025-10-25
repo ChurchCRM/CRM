@@ -127,8 +127,8 @@ if (strlen($sDeleteError) > 0) {
 <?php
 if ($donationFunds->count() == 0) {
     ?>
-    <center><h2><?= gettext('No funds have been added yet') ?></h2>
-    </center>
+    <div class="text-center"><h2><?= gettext('No funds have been added yet') ?></h2>
+    </div>
     <?php
 } else {
     ?>

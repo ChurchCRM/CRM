@@ -796,7 +796,7 @@ require_once 'Include/Header.php';
                                 <tr>
                                     <td colspan="2">
                                         <div class="MediumText">
-                                            <center><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later.  All entries will become <i>new</i> person records.') : '' ?></center>
+                                            <div class="text-center"><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later.  All entries will become <i>new</i> person records.') : '' ?></div>
                                         </div><br><br>
                                         <div class="table-responsive">
                                             <table cellpadding="3" cellspacing="0" width="100%">
