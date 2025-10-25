@@ -73,54 +73,77 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                 <div class="col-lg-8">
                     <div class="card">
                         <br/>
-                        <div class="text-center">
-                            <a class="btn btn-app" id="lastFamily"><i
-                                        class="fa fa-hand-point-left"></i><?= gettext('Previous Family') ?></a>
+                        <!-- Navigation Group -->
+                        <div class="text-center mb-3">
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-outline-primary" id="lastFamily"><i
+                                            class="fa fa-hand-point-left"></i> <?= gettext('Previous Family') ?></a>
 
-                            <a class="btn btn-app btn-danger" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family"><i
-                                        class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
+                                <a class="btn btn-outline-primary" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family"><i
+                                            class="fa fa-list-ul"></i> <?= gettext('Family List') ?></a>
 
-                            <a class="btn btn-app" role="button" id="nextFamily" ><i
-                                        class="fa fa-hand-point-right"></i><?= gettext('Next Family') ?> </a>
+                                <a class="btn btn-outline-primary" role="button" id="nextFamily" ><i
+                                            class="fa fa-hand-point-right"></i> <?= gettext('Next Family') ?></a>
+                            </div>
                         </div>
+
                         <hr/>
-                        <div class="text-center">
-                        <a class="btn btn-sm btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
-                                class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
-                        <a class="btn btn-app bg-olive"
-                           href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
-                                class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
 
-                        <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                            <button class="btn btn-app bg-orange" id="activateDeactivate">
-                                <i class="fa <?= (empty($family->isActive()) ? 'fa-toggle-on' : 'fa-toggle-off') ?> "></i><?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
-                            </button>
-                        <?php }
-                        if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
-                            ?>
-                            <a id="deleteFamilyBtn" class="btn btn-app bg-maroon"
-                               href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
-                                        class="fa fa-trash-can"></i><?= gettext('Delete this Family') ?></a>
-                            <?php
-                        }
-                        if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
-                            ?>
-                            <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>"><i
-                                    class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
-                            <?php
-                        } ?>
-                        <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
-                                class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
-                        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
-                            <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
-                                <i class="fa fa-hand-holding-dollar"></i><?= gettext("Add a new pledge") ?></a>
-                            <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
-                                <i class="fa-solid fa-money-bill-transfer"></i><?= gettext("Add a new payment") ?></a>
-                        <?php } ?>
+                        <!-- Member Management Group -->
+                        <div class="row g-2 mb-3">
+                            <div class="col-auto mx-auto">
+                                <a class="btn btn-outline-info" href="#" data-toggle="modal" data-target="#confirm-verify"><i
+                                        class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
+                                <a class="btn btn-outline-success"
+                                   href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
+                                        class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
+                            </div>
                         </div>
+
+                        <!-- Family Management Group -->
+                        <div class="row g-2 mb-3">
+                            <div class="col-auto mx-auto">
+                                <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+                                    <button class="btn btn-outline-warning" id="activateDeactivate">
+                                        <i class="fa <?= (empty($family->isActive()) ? 'fa-toggle-on' : 'fa-toggle-off') ?> "></i><?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                                    </button>
+                                <?php }
+                                if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
+                                    ?>
+                                    <a id="deleteFamilyBtn" class="btn btn-outline-danger"
+                                       href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
+                                                class="fa fa-trash-can"></i><?= gettext('Delete this Family') ?></a>
+                                    <?php
+                                } ?>
+                            </div>
+                        </div>
+
+                        <!-- Utility Group -->
+                        <div class="row g-2 mb-3">
+                            <div class="col-auto mx-auto">
+                                <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                                    <a class="btn btn-outline-secondary"
+                                       href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>"><i
+                                            class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+                                <?php } ?>
+                                <a class="btn btn-outline-secondary" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
+                                        class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
+                            </div>
+                        </div>
+
+                        <!-- Finance Group -->
+                        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
+                        <div class="row g-2 mb-3">
+                            <div class="col-auto mx-auto">
+                                <a class="btn btn-outline-primary"
+                                   href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
+                                    <i class="fa fa-hand-holding-dollar"></i> <?= gettext("Add a new pledge") ?></a>
+                                <a class="btn btn-outline-primary"
+                                   href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
+                                    <i class="fa-solid fa-money-bill-transfer"></i> <?= gettext("Add a new payment") ?></a>
+                            </div>
+                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -142,7 +165,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                             <?php
                             if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-newspaper"></i><?= gettext("Send Newsletter") ?>:
-                                    <span style="color:<?= ($family->isSendNewsletter() ? "green" : "red") ?>"><i
+                                    <span class="<?= ($family->isSendNewsletter() ? "text-success" : "text-danger") ?>"><i
                                             class="fa fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                                 </li>
                                 <?php
