@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\AuthService;
 use Propel\Runtime\Propel;
 use ChurchCRM\Service\AuthService;
 

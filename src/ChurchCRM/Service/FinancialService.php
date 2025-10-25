@@ -13,11 +13,13 @@ use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Service\AuthService;
 
 class FinancialService
 {
     public function deletePayment(string $groupKey): void
     {
+        AuthService::requireUserGroupMembership('bFinance');
         PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
@@ -121,6 +123,7 @@ class FinancialService
 
     public function getDepositTotal($id, $type = null)
     {
+        AuthService::requireUserGroupMembership('bFinance');
         $sqlClause = '';
         if ($type) {
             $sqlClause = "AND plg_method = '" . $type . "'";
@@ -185,6 +188,7 @@ class FinancialService
 
     public function locateFamilyCheck(string $checkNumber, string $fam_ID)
     {
+        AuthService::requireUserGroupMembership('bFinance');
         $sSQL = 'SELECT count(plg_FamID) from pledge_plg
                  WHERE plg_CheckNo = ' . $checkNumber . ' AND
                  plg_FamID = ' . $fam_ID;
@@ -195,6 +199,7 @@ class FinancialService
 
     public function validateChecks(object $payment): void
     {
+        AuthService::requireUserGroupMembership('bFinance');
         //validate that the payment options are valid
         //If the payment method is a check, then the check number must be present, and it must not already have been used for this family
         //if the payment method is cash, there must not be a check number
@@ -231,6 +236,7 @@ class FinancialService
 
     public function insertPledgeorPayment(object $payment)
     {
+        AuthService::requireUserGroupMembership('bFinance');
         // Only set PledgeOrPayment when the record is first created
         // loop through all funds and create non-zero amount pledge records
         $FundSplit = json_decode($payment->FundSplit, null, 512, JSON_THROW_ON_ERROR);
@@ -291,6 +297,7 @@ class FinancialService
 
     public function submitPledgeOrPayment(object $payment): string
     {
+        AuthService::requireUserGroupMembership('bFinance');
         $this->validateFund($payment);
         $this->validateChecks($payment);
         $this->validateDate($payment);
@@ -301,6 +308,7 @@ class FinancialService
 
     public function getPledgeorPayment(string $GroupKey): string
     {
+        AuthService::requireUserGroupMembership('bFinance');
         $total = 0;
         $sSQL = 'SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey="' . $GroupKey . '"';
         $rsKeys = RunQuery($sSQL);
@@ -335,6 +343,7 @@ class FinancialService
 
     public function getDepositCSV(string $depID): \stdClass
     {
+        AuthService::requireUserGroupMembership('bFinance');
         $retstring = '';
         $line = [];
         $payments = $this->getPayments($depID);
@@ -400,6 +409,7 @@ class FinancialService
      */
     public function getActiveFunds(): array
     {
+        AuthService::requireUserGroupMembership('bFinance');
         $funds = [];
         $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
         $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
@@ -424,7 +434,7 @@ class FinancialService
      */
     public static function formatFiscalYear(int $fyId): string
     {
-        if (SystemConfig::getValue('iFYMonth') == 1) {
+        if (SystemConfig::getValue('iFYMonth') === 1) {
             return (string) (1996 + $fyId);
         } else {
             return (1995 + $fyId) . '/' . mb_substr(1996 + $fyId, 2, 2);

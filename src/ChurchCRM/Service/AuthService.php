@@ -3,32 +3,48 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use Exception;
 
+/**
+ * AuthService
+ *
+ * Centralized authentication and authorization service for ChurchCRM.
+ * Provides static methods for common authorization checks.
+ */
 class AuthService
 {
     /**
-     * Verify that the current user belongs to a specific group.
-     * Throws an exception if the user doesn't have the required permission.
+     * Require user group membership - checks if current user belongs to specified group/role.
      *
-     * @param string $groupName The name of the group to check membership for
-     * @throws \Exception If user is not authenticated or doesn't belong to the group
+     * @param string|array $groupName Single permission name or array of allowed permissions
+     * @return void
+     * @throws Exception if user is not authorized
      */
-    public static function requireUserGroupMembership(string $groupName): void
+    public static function requireUserGroupMembership($groupName): void
     {
+        if (!$groupName) {
+            throw new Exception('Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.');
+        }
+
         $currentUser = AuthenticationManager::getCurrentUser();
-        
-        if (!$currentUser) {
-            throw new \Exception(gettext('User not authenticated'));
+
+        // Check single permission or if user is admin
+        if (is_string($groupName)) {
+            if (($_SESSION[$groupName] ?? null) || ($currentUser && $currentUser->isAdmin())) {
+                return;
+            }
         }
 
-        $groupProperty = 'get' . $groupName;
-        
-        if (!method_exists($currentUser, $groupProperty)) {
-            throw new \Exception(gettext('Invalid group: ') . $groupName);
+        // Check array of permissions
+        if (is_array($groupName)) {
+            foreach ($groupName as $role) {
+                if (($_SESSION[$role] ?? null) || ($currentUser && $currentUser->isAdmin())) {
+                    return;
+                }
+            }
         }
 
-        if (!$currentUser->$groupProperty()) {
-            throw new \Exception(gettext('Access denied: User does not have permission to perform this action'));
-        }
+        // User is not authorized
+        throw new Exception('User is not authorized to access ' . debug_backtrace()[1]['function'], 401);
     }
 }
