@@ -1,12 +1,6 @@
 /// <reference types="cypress" />
 
 describe("API Private Family Verify", () => {
-    it.skip("Verify API with email - Requires SMTP configuration", () => {
-        // This endpoint sends verification emails and requires SMTP to be configured.
-        // Skipped in test environment. Run manually with SMTP configured to test email flow.
-        cy.makePrivateAdminAPICall("POST", "/api/family/2/verify", null, 200);
-    });
-
     it("Verify family immediately without email", () => {
         // Test the /verify/now endpoint which doesn't send emails
         cy.makePrivateAdminAPICall("POST", "/api/family/2/verify/now", null, 200);
