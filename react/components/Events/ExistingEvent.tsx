@@ -184,7 +184,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     if (this.state.event === null || this.state.event === undefined) {
       return (
         <div>
-          <Modal show={true} onHide={function () {}}>
+          <Modal show={true} onHide={function () {}} size="xl">
             <Modal.Header>
               <h2>Loading...</h2>
             </Modal.Header>
@@ -196,13 +196,15 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     if (this.state.isEditMode) {
       return (
         <div>
-          <Modal show={true} onHide={function () {}}>
+          <Modal show={true} onHide={function () {}} size="xl">
             <Modal.Header>
               <input
                 name="Title"
                 value={this.state.event.Title}
                 onChange={this.handleInputChange}
                 placeholder={window.i18next.t("Event Title")}
+                className="form-control form-control-lg"
+                style={{ fontSize: "1.5rem", fontWeight: "bold" }}
               />
               <span
                 className={
@@ -253,7 +255,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     } else {
       return (
         <div>
-          <Modal show={true} onHide={function () {}}>
+          <Modal show={true} onHide={function () {}} size="xl">
             <Modal.Header>
               <h2>{this.state.event.Title}</h2>
             </Modal.Header>
