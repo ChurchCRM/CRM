@@ -52,6 +52,7 @@
         "locale:download": "npm run locale:clean && grunt updateFromPOeditor && grunt genLocaleJSFiles && npm run locale:audit",
         "package": "npm run deploy && rm -rf src/propel src/composer.lock && grunt compress",
         "postinstall": "grunt genLocaleJSFiles",
+        "changelog": "node scripts/generate-changelog.js",
         "test": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e",
         "test:ui": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress open --e2e --browser chrome"
     },
