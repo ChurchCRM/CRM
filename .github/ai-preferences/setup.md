@@ -8,7 +8,7 @@ This document explains how to integrate ChurchCRM's AI preferences with your dev
 
 **Core File:** `preferences.yml` - YAML configuration used by all agents
 
-**Related:** `.husky/pre-commit` (Git hooks), `CONTRIBUTING.md` (main guide)
+**Related:** `CONTRIBUTING.md` (main guide)
 
 ---
 
@@ -66,72 +66,21 @@ Reference preferences in your code:
 
 ---
 
-## Pre-commit Hooks (Husky)
+## Manual Code Validation
 
-### Already Installed?
-
-Check if Husky is initialized:
+Before committing, run these checks manually:
 
 ```bash
-ls -la .husky/
-```
-
-Expected output:
-```
-.husky/
-  pre-commit  (executable)
-  _/
-```
-
-### Installation (if needed)
-
-```bash
-npm install
-npx husky install
-chmod +x .husky/pre-commit
-```
-
-### What Runs on Commit
-
-```bash
-git commit -m "Your message"
-```
-
-**The `.husky/pre-commit` hook automatically:**
-
-1. ✅ **PHP Syntax Validation**
-   ```bash
-   php -l src/YourFile.php
-   ```
-   - Blocks commit if PHP is invalid
-
-2. ⚠️ **Raw SQL Detection**
-   ```bash
-   grep -E "SELECT|INSERT|UPDATE|DELETE" src/*.php
-   ```
-   - Warning only (doesn't block)
-
-3. ⚠️ **Deprecated HTML Warnings**
-   ```bash
-   grep -E "align=|valign=|nowrap|border=" src/*.php
-   ```
-   - Warning only (doesn't block)
-
-### Manual Validation
-
-Run checks manually before committing:
-
-```bash
-# Validate specific PHP file
+# 1. Validate specific PHP file
 php -l src/EditEventAttendees.php
 
-# Check all modified PHP files
-git diff --cached --name-only --diff-filter=ACM | grep '.php$' | xargs php -l
+# 2. Check all modified PHP files
+git diff --name-only | grep '.php$' | xargs php -l
 
-# Check for raw SQL
+# 3. Check for raw SQL
 grep -r "SELECT\|INSERT\|UPDATE\|DELETE" src/ | grep -v "//"
 
-# Check for deprecated HTML
+# 4. Check for deprecated HTML
 grep -r "align=\|valign=\|nowrap\|<center>\|<font" src/ | grep -v "//"
 ```
 
@@ -339,23 +288,6 @@ npm run test -- --spec "cypress/e2e/path/to/test.cy.js"
 
 ## Troubleshooting
 
-### Hook Not Running
-
-**Problem:** Pre-commit hook doesn't execute
-
-**Solution:**
-```bash
-# Reinstall Husky
-npm install
-npx husky install
-
-# Make hook executable
-chmod +x .husky/pre-commit
-
-# Verify
-ls -la .husky/pre-commit
-```
-
 ### PHP Lint Errors
 
 **Problem:** `php -l` shows syntax errors
@@ -367,22 +299,6 @@ php -l src/YourFile.php
 
 # View error details
 php -d display_errors=1 src/YourFile.php
-```
-
-### Commit Still Blocked
-
-**Problem:** Commit blocked even though fixes are in place
-
-**Solution:**
-```bash
-# Stage changes
-git add .
-
-# Try commit again
-git commit -m "Your message"
-
-# If still blocked, bypass hooks (not recommended)
-git commit -m "Your message" --no-verify
 ```
 
 ---

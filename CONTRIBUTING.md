@@ -121,7 +121,7 @@ If using GitHub Copilot or Claude:
 **Contains:**
 - `README.md` - Overview & file reference
 - `preferences.yml` - Core standards (used by all agents)
-- `setup.md` - Detailed setup guide for Copilot, Claude, and Husky hooks
+- `setup.md` - Detailed setup guide for Copilot and Claude
 
 ## Pull Request Process
 

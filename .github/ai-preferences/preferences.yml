@@ -14,10 +14,6 @@
 ##   - Add as a context file or system prompt
 ##   - Reference in all new conversations
 ##
-## Pre-commit Hooks:
-##   - Use .husky/pre-commit to validate commits follow standards
-##   - Check commit message format: imperative, under 72 chars
-##
 ## Repository Documentation:
 ##   - Link this file in CONTRIBUTING.md
 ##   - Reference in GitHub issue/PR templates

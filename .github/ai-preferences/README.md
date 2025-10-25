@@ -10,7 +10,6 @@ This directory contains all AI agent configuration and documentation for ChurchC
 **Used by:**
 - GitHub Copilot (workspace settings)
 - Claude (context file)
-- Pre-commit hooks (.husky/pre-commit)
 
 **What it covers:**
 - Communication style (direct, action-first)
@@ -21,7 +20,6 @@ This directory contains all AI agent configuration and documentation for ChurchC
 - Asset paths (SystemURLs::getRootPath())
 - Testing & documentation policies
 - Branch naming conventions
-- Pre-commit validation checklist
 
 ### `setup.md`
 **Detailed setup and adoption guide** - How to integrate these preferences with your tools and workflow.
@@ -66,19 +64,14 @@ This directory contains all AI agent configuration and documentation for ChurchC
 
 ## 🔧 Enforcement Mechanisms
 
-1. **Pre-commit Hooks** (`.husky/pre-commit`)
-   - Validates PHP syntax
-   - Detects raw SQL queries
-   - Warns about deprecated HTML
-
-2. **Pull Request Template** (`.github/pull_request_template.md`)
+1. **Pull Request Template** (`.github/pull_request_template.md`)
    - Includes AI preferences validation section
    - Reminds reviewers of standards
 
-3. **Code Quality Template** (`.github/ISSUE_TEMPLATE/code-quality-check.md`)
+2. **Code Quality Template** (`.github/ISSUE_TEMPLATE/code-quality-check.md`)
    - Checklist for code reviews
 
-4. **Contributing Guide** (`CONTRIBUTING.md`)
+3. **Contributing Guide** (`CONTRIBUTING.md`)
    - Links to these preferences
    - Integration guidance
 
@@ -86,11 +79,9 @@ This directory contains all AI agent configuration and documentation for ChurchC
 
 ## 📚 Related Files
 
-- `.husky/` - Git hooks (execute validation on commits)
 - `CONTRIBUTING.md` - Development workflow (links to this folder)
 - `.github/pull_request_template.md` - PR requirements
 - `.github/ISSUE_TEMPLATE/code-quality-check.md` - Review checklist
-- `package.json` - Husky integration (npm scripts)
 
 ---
 
