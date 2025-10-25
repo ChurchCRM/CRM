@@ -18,6 +18,9 @@ import 'flag-icons/css/flag-icons.min.css';
 // Import Select2 Bootstrap 4 theme
 import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css';
 
+// Import React DatePicker CSS - required for calendar styling
+import 'react-datepicker/dist/react-datepicker.min.css';
+
 // Import Quill editor CSS and make it available globally
 import 'quill/dist/quill.snow.css';
 import { initializeQuillEditor } from './quill-editor.js';
