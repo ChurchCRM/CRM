@@ -123,14 +123,14 @@ require_once 'Include/Header-Short.php';
                     $imgName = SystemURLs::getRootPath() . "/api/person/" . $personSheet->getId() . "/photo";
                     echo "<img src=\"" . $imgName . "\"/>";
                     echo "</td><td>";
-                    echo '<b><font size="4">' . $personSheet->getFullName() . '</font></b><br>';
+                    echo '<b><span style="font-size: 1.25rem;">' . $personSheet->getFullName() . '</span></b><br>';
                     echo "</td></tr></table>";
                 } else {
-                    echo '<b><font size="4">' . $personSheet->getFullName() . '</font></b><br>';
+                    echo '<b><span style="font-size: 1.25rem;">' . $personSheet->getFullName() . '</span></b><br>';
                 }
 
                 // Print the name and address header
-                echo '<font size="3">';
+                echo '<span style="font-size: 1rem;">';
                 if ($sAddress1 != '') {
                     echo $sAddress1 . '<br>';
                 }
@@ -151,7 +151,7 @@ require_once 'Include/Header-Short.php';
                 if ($sCountry != '') {
                     echo '<br>' . $sCountry;
                 }
-                echo '</font>';
+                echo '</span>';
 
                 $iFamilyID = $fam_ID;
 
