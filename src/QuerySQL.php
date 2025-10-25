@@ -115,7 +115,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
     } else {
         $sRowClass = 'RowColorA';
 
-        echo '<table class="mx-auto" cellpadding="5" cellspacing="0">';
+        echo '<table class="mx-auto table-spaced">';
 
         echo '<tr class="' . $sRowClass . '">';
 

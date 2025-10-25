@@ -62,7 +62,7 @@ $numRows = mysqli_num_rows($rsOpps);
 
 ?>
 <div class="card">
-<table cellpadding="1" class="mx-auto" cellspacing="0" class='table'>
+<table class="mx-auto table-spaced table">
 <tr>
 <td class="text-center" width="50%"><p><strong><?= gettext('Select Event Types To Display') ?></strong></p>
     <form name="EventTypeSelector" method="POST" action="ListEvents.php">
