@@ -120,13 +120,22 @@ class SlimUtils
         ) use ($logger) {
             $logger->error($exception->getMessage(), ['exception' => $exception]);
             $response = new \Slim\Psr7\Response();
+            
+            // Determine appropriate HTTP status code based on exception type
+            $statusCode = 500;
+            if ($exception instanceof \Slim\Exception\HttpNotFoundException) {
+                $statusCode = 404;
+            } elseif ($exception instanceof \Slim\Exception\HttpMethodNotAllowedException) {
+                $statusCode = 405;
+            }
+            
             $response->getBody()->write(json_encode([
                 'error' => $exception->getMessage(),
                 'code' => $exception->getCode(),
                 'file' => $exception->getFile(),
                 'line' => $exception->getLine()
             ]));
-            return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
+            return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
         });
     }
 
