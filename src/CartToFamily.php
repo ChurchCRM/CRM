@@ -66,7 +66,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $sEmail = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Email']), $per_Email);
 
         if (strlen($sFamilyName) === 0) {
-            $sError = '<p class="callout callout-warning" align="center" style="color:red;">' . gettext('No family name entered!') . '</p>';
+            $sError = '<p class="callout callout-warning text-danger text-center">' . gettext('No family name entered!') . '</p>';
             $bError = true;
         } else {
             $familyValues = [
@@ -180,7 +180,7 @@ SQL;
             echo '<tr>';
             echo '<td>&nbsp;</td>';
             echo '<td><b>' . gettext('Name') . '</b></td>';
-            echo '<td align="center"><b>' . gettext('Assign Role') . '</b></td>';
+            echo '<td class="text-center"><b>' . gettext('Assign Role') . '</b></td>';
 
             $count = 1;
             while ($aRow = mysqli_fetch_array($rsCartItems)) {
@@ -189,10 +189,10 @@ SQL;
                 extract($aRow);
 
                 echo '<tr class="' . $sRowClass . '">';
-                echo '<td align="center">' . $count++ . '</td>';
+                echo '<td class="text-center">' . $count++ . '</td>';
                 echo "<td><img src='" . SystemURLs::getRootPath() . '/api/person/' . $per_ID . "/thumbnail' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=" . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
 
-                echo '<td align="center">';
+                echo '<td class="text-center">';
                 if ($per_fam_ID == 0) {
                     echo '<select name="role' . $per_ID . '">' . $sRoleOptionsHTML . '</select>';
                 } else {
@@ -206,7 +206,7 @@ SQL;
     </div>
     <div class="card">
 <div class="table-responsive">
-<table align="center" class="table table-hover">
+<table class="mx-auto table table-hover">
     <tr>
         <td class="LabelColumn"><?= gettext('Add to Family') ?>:</td>
         <td class="TextColumn">
@@ -228,12 +228,12 @@ SQL;
 
     <tr>
         <td class="LabelColumn"><?= gettext('Family Name') ?>:</td>
-        <td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48"><span style="color: red;"><?= $sNameError ?></span></td>
+        <td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48"><span class="text-danger"><?= $sNameError ?></span></td>
     </tr>
 
     <tr>
         <td class="LabelColumn"><?= gettext('Wedding Date') ?>:</td>
-        <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><span style="color: red;"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
+        <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><span class="text-danger"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
     </tr>
 
     <tr>
@@ -337,7 +337,9 @@ SQL;
 
 </table>
 </div>
-<p align="center">
+
+
+<p class="text-center">
 <BR>
 <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Add to Family') ?>">
 <BR><BR>

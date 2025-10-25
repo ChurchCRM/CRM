@@ -293,7 +293,7 @@ if (isset($_POST['EventID'])) {
                     <th><?= gettext('Checked In By') ?></th>
                     <th><?= gettext('Checked Out Time') ?></th>
                     <th><?= gettext('Checked Out By') ?></th>
-                    <th nowrap><?= gettext('Action') ?></th>
+                    <th class="text-nowrap"><?= gettext('Action') ?></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -335,7 +335,7 @@ if (isset($_POST['EventID'])) {
                         <td><?= $per->getCheckoutDate() ? date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat'))  : '' ?></td>
                         <td><?= $sCheckoutby ?></td>
 
-                        <td align="center">
+                        <td class="text-center">
                             <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
                                 <input type="hidden" name="child-id" value="<?= $per->getPersonId() ?>">
                                 <input type="hidden" name="EventID" value="<?= $EventID ?>">

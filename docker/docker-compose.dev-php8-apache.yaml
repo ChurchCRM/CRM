@@ -21,10 +21,10 @@ services:
 
 
   webserver:
-    ## Look into: https://hub.docker.com/r/nimmis/apache-php7
     build:
       context: .
-      dockerfile: Dockerfile.churchcrm-apache-php8-dev-debian
+      dockerfile: Dockerfile.churchcrm-apache-php8
+      target: dev
     image: churchcrm/crm:php8-debian-dev
     ports:
       - ${DEV_WEBSERVER_PORT:-80}:80
