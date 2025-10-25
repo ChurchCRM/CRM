@@ -9,7 +9,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
   eventTypes: Array<EventType>;
 }> = ({ event, calendars, eventTypes }) => {
   return (
-    <table className="table modal-table">
+    <table className="table w-100" style={{ tableLayout: 'fixed' }}>
       <tbody>
         <tr>
           <td>{window.i18next.t("Type")}</td>

@@ -198,23 +198,22 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         <div>
           <Modal show={true} onHide={function () {}} size="xl">
             <Modal.Header>
-              <input
-                name="Title"
-                value={this.state.event.Title}
-                onChange={this.handleInputChange}
-                placeholder={window.i18next.t("Event Title")}
-                className="form-control form-control-lg"
-                style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-              />
-              <span
-                className={
-                  this.state.event.Title.length == 0
-                    ? "RequiredFormFieldUnsatisfied"
-                    : "RequiredFormFieldSatisfied"
-                }
-              >
-                {window.i18next.t("This field is required")}
-              </span>
+              <div style={{ width: "100%" }}>
+                <input
+                  name="Title"
+                  value={this.state.event.Title}
+                  onChange={this.handleInputChange}
+                  placeholder={window.i18next.t("Event Title")}
+                  className="form-control form-control-lg"
+                  style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+                />
+                {this.state.event.Title.length == 0 && (
+                  <div className="text-danger small mt-2">
+                    <i className="fas fa-exclamation-circle me-1"></i>
+                    {window.i18next.t("This field is required")}
+                  </div>
+                )}
+              </div>
             </Modal.Header>
             <Modal.Body style={{ overflow: "visible", maxHeight: "none" }}>
               <div style={{ overflow: "visible" }}>

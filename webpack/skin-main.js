@@ -32,7 +32,7 @@ if (typeof window !== 'undefined') {
     // Create a queue for editors that are initialized before the function is available
     window._quillInitQueue = window._quillInitQueue || [];
     
-    window.initializeQuillEditor = _quill_editor_js__WEBPACK_IMPORTED_MODULE_4__.initializeQuillEditor;
+    window.initializeQuillEditor = initializeQuillEditor;
     
     // Process any queued editors
     if (window._quillInitQueue && window._quillInitQueue.length > 0) {
