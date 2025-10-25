@@ -18,7 +18,32 @@ import 'flag-icons/css/flag-icons.min.css';
 // Import Select2 Bootstrap 4 theme
 import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css';
 
+// Import Quill editor CSS and make it available globally
+import 'quill/dist/quill.snow.css';
+import { initializeQuillEditor } from './quill-editor.js';
+
 import '../src/skin/churchcrm.scss';
+
+// Make Quill initialization function available globally
+if (typeof window !== 'undefined') {
+    // Create a queue for editors that are initialized before the function is available
+    window._quillInitQueue = window._quillInitQueue || [];
+    
+    window.initializeQuillEditor = _quill_editor_js__WEBPACK_IMPORTED_MODULE_4__.initializeQuillEditor;
+    
+    // Process any queued editors
+    if (window._quillInitQueue && window._quillInitQueue.length > 0) {
+        window._quillInitQueue.forEach(({ selector, options, callback }) => {
+            try {
+                const editor = window.initializeQuillEditor(selector, options);
+                if (callback) callback(editor);
+            } catch (e) {
+                console.error('Error initializing queued Quill editor:', e);
+            }
+        });
+        window._quillInitQueue = [];
+    }
+}
 
 // Set global Select2 defaults for Bootstrap 4 theme and language
 // This needs to run after jQuery and Select2 are loaded

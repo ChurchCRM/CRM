@@ -2,6 +2,7 @@
 
 require_once 'Include/Config.php';
 require_once 'Include/Functions.php';
+require_once 'Include/QuillEditorHelper.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -279,7 +280,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         extract($aRow);
         $sTypeName = $type_name;
     }
-    $sEventText = $_POST['EventText'];
+    $sEventText = $_POST['EventTextInput'];
     if ($_POST['EventStatus'] === null) {
         $bStatusError = true;
         $iErrors++;
@@ -322,7 +323,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
                 ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
-                ->setText(InputUtils::legacyFilterInput($sEventText))
+                ->setText(InputUtils::filterHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
@@ -348,7 +349,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
                 ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
-                ->setText(InputUtils::legacyFilterInput($sEventText))
+                ->setText(InputUtils::filterHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
@@ -485,7 +486,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
                 <tr>
                     <td colspan="4" class="TextColumn"><?= gettext('Event Sermon') ?>:<br>
-                        <textarea id="#EventText" name="EventText" rows="5" cols="70" class='form-control'><?= ($sEventText) ?></textarea>
+                        <?= getQuillEditorContainer('EventText', 'EventTextInput', $sEventText, 'form-control', '200px') ?>
                     </td>
                 </tr>
 
@@ -544,12 +545,5 @@ $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
 
 <?php require_once 'Include/Footer.php'; ?>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
+<?= getQuillEditorInitScript('EventText', 'EventTextInput', gettext("Enter event description...")) ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    CKEDITOR.replace('EventText',{
-        customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor/event_editor_config.js',
-        language : window.CRM.lang,
-        width : '100%'
-    });
-</script>
