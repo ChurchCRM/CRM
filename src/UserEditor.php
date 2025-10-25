@@ -360,7 +360,7 @@ require_once 'Include/Header.php';
                     <?php if (isset($sErrorText) !== '') {
                         ?>
                         <tr>
-                            <td align="center" colspan="2">
+                            <td class="text-center" colspan="2">
                                 <span class="text-danger" id="PasswordError"><?= $sErrorText ?></span>
                             </td>
                         </tr>
@@ -437,7 +437,7 @@ require_once 'Include/Header.php';
                                 name="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td colspan="2" class="text-center">
                             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="save">&nbsp;<input
                                 type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>"
                                 onclick="javascript:document.location='UserList.php';">

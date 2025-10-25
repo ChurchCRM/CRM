@@ -189,7 +189,7 @@ for ($row = 1; $row <= $events->count(); $row++) {
                         <tr>
                             <td><?= $aEventTitle[$row] ?></td>
                             <td><?= FormatDate($aEventStartDateTime[$row], 1) ?></td>
-                            <td align="center">
+                            <td class="text-center">
                                 <form name="Attend" action="EventAttendance.php" method="POST">
                                     <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
                                     <input type="hidden" name="Type" value="<?= $sGetType ?>">

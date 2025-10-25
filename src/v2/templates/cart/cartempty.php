@@ -21,7 +21,7 @@ if (!array_key_exists('Message', $_GET)) {
     }
 }
 ?>
-<p align="center">
+<p class="text-center">
   <a href="<?= SystemURLs::getRootPath()?>/" class="btn btn-primary"><?=gettext('Back to Menu')?></a>
 </p>
 <?php

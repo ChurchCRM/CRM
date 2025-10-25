@@ -251,20 +251,20 @@ require_once 'Include/Header.php'; ?>
                 <?php
                 if ($numRows == 0) {
                     ?>
-                    <center>
+                    <div class="text-center">
                         <h2><?= gettext('No properties have been added yet') ?></h2>
-                    </center>
+                    </div>
                     <?php
                 } else {
                     ?>
                     <tr>
                         <td colspan="7">
-                            <center><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></center>
+                            <div class="text-center"><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></div>
                         </td>
                     </tr>
 
                     <tr>
-                        <td colspan="7" align="center">
+                        <td colspan="7" class="text-center">
                             <?php
                             if ($bErrorFlag) {
                                 echo '<span class="LargeText text-danger">' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
@@ -290,7 +290,7 @@ require_once 'Include/Header.php'; ?>
                             <td class="LabelColumn">
                                 <h2><b><?= $row ?></b></h2>
                             </td>
-                            <td class="TextColumn" width="5%" nowrap>
+                            <td class="TextColumn" width="5%" class="text-nowrap">
                                 <?php
                                 if ($row != 1) {
                                     echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
@@ -360,7 +360,7 @@ require_once 'Include/Header.php'; ?>
                             <table width="100%">
                                 <tr>
                                     <td width="30%"></td>
-                                    <td width="40%" align="center" valign="bottom">
+                                    <td width="40%" class="text-center align-bottom">
                                         <input type="submit" class="btn btn-default" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                                     </td>
                                     <td width="30%"></td>
@@ -381,7 +381,7 @@ require_once 'Include/Header.php'; ?>
                         <table width="100%">
                             <tr>
                                 <td width="15%"></td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Type') ?>:</div>
                                     <?php
                                     echo '<select name="newFieldType">';
@@ -393,7 +393,7 @@ require_once 'Include/Header.php'; ?>
                                     ?><BR>
                                     <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
                                 </td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Name') ?>:</div>
                                     <input type="text" name="newFieldName" size="25" maxlength="40">
                                     <?php
@@ -406,7 +406,7 @@ require_once 'Include/Header.php'; ?>
                                     ?>
                                     &nbsp;
                                 </td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Description') ?>:</div>
                                     <input type="text" name="newFieldDesc" size="30" maxlength="60">
                                     &nbsp;

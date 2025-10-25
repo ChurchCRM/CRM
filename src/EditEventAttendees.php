@@ -54,7 +54,7 @@ if (empty($event)) {
     <td width="35%"><strong><?= gettext('Name') ?></strong></td>
     <td width="25%"><strong><?= gettext('Email') ?></strong></td>
     <td width="25%"><strong><?= gettext('Home Phone') ?></strong></td>
-      <td width="15%" nowrap><strong><?= gettext('Action') ?></strong></td>
+      <td width="15%" class="text-nowrap"><strong><?= gettext('Action') ?></strong></td>
   </tr>
 <?php
 $sSQL = 'SELECT person_id, per_LastName FROM event_attend JOIN person_per ON person_per.per_id = event_attend.person_id WHERE event_id = ' . $EventID . ' ORDER by per_LastName, per_FirstName';
@@ -79,7 +79,7 @@ if ($numAttRows != 0) {
         <td class="TextColumn"><?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) ?></td>
         <td class="TextColumn"><?= $sEmail ? '<a href="mailto:' . $sEmail . '" title="Send Email">' . $sEmail . '</a>' : 'Not Available' ?></td>
         <td class="TextColumn"><?= $sHomePhone ? $sHomePhone : 'Not Available' ?></td>
-    <td  class="TextColumn" colspan="1" align="center">
+    <td class="TextColumn text-center" colspan="1">
       <form method="POST" action="EditEventAttendees.php" name="DeletePersonFromEvent">
           <input type="hidden" name="DelPerID" value="<?= $per_ID ?>">
           <input type="hidden" name="DelPerEventID" value="<?= $EventID ?>">
@@ -95,7 +95,7 @@ if ($numAttRows != 0) {
     }
 } else {
     ?>
-<tr><td colspan="4" align="center"><?= gettext('No Attendees Assigned to Event') ?></td></tr>
+<tr><td colspan="4" class="text-center"><?= gettext('No Attendees Assigned to Event') ?></td></tr>
     <?php
 }
 

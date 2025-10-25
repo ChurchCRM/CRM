@@ -50,7 +50,7 @@ require_once 'Include/Header.php';
                         <td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>" class="date-picker"></td>
                     </tr>
                     <tr>
-                        <td colspan=4 align="center">
+                        <td colspan=4 class="text-center">
                             <input type="submit" class="btn btn-primary" value="<?= gettext('Apply Filters') ?>" name="FindFundRaiserSubmit">
                             <input type="button" class="btn btn-danger" value="<?= gettext('Clear Filters') ?>" onclick="javascript:document.location='FindFundRaiser.php';">
                         </td>

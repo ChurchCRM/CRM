@@ -123,14 +123,14 @@ require_once 'Include/Header-Short.php';
                     $imgName = SystemURLs::getRootPath() . "/api/person/" . $personSheet->getId() . "/photo";
                     echo "<img src=\"" . $imgName . "\"/>";
                     echo "</td><td>";
-                    echo '<b><font size="4">' . $personSheet->getFullName() . '</font></b><br>';
+                    echo '<b><span style="font-size: 1.25rem;">' . $personSheet->getFullName() . '</span></b><br>';
                     echo "</td></tr></table>";
                 } else {
-                    echo '<b><font size="4">' . $personSheet->getFullName() . '</font></b><br>';
+                    echo '<b><span style="font-size: 1.25rem;">' . $personSheet->getFullName() . '</span></b><br>';
                 }
 
                 // Print the name and address header
-                echo '<font size="3">';
+                echo '<span style="font-size: 1rem;">';
                 if ($sAddress1 != '') {
                     echo $sAddress1 . '<br>';
                 }
@@ -151,7 +151,7 @@ require_once 'Include/Header-Short.php';
                 if ($sCountry != '') {
                     echo '<br>' . $sCountry;
                 }
-                echo '</font>';
+                echo '</span>';
 
                 $iFamilyID = $fam_ID;
 
@@ -174,9 +174,9 @@ require_once 'Include/Header-Short.php';
 </table>
 <BR>
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<table width="100%" cellspacing="0" cellpadding="0">
     <tr>
-        <td width="33%" valign="top" align="left">
+        <td width="33%" class="align-top" align="left">
             <table cellspacing="1" cellpadding="4">
                 <tr>
                     <td class="LabelColumn"><?= gettext('Home Phone') ?>:</td>
@@ -215,7 +215,7 @@ require_once 'Include/Header-Short.php';
             </table>
         </td>
 
-        <td width="33%" valign="top" align="left">
+        <td width="33%" class="align-top" align="left">
             <table cellspacing="1" cellpadding="4">
                 <tr>
                     <td class="LabelColumn"><?= gettext('Gender') ?>:</td>
@@ -271,7 +271,7 @@ require_once 'Include/Header-Short.php';
                 ?>
             </table>
         </td>
-        <td width="33%" valign="top" align="left">
+        <td width="33%" class="align-top" align="left">
             <table cellspacing="1" cellpadding="4">
                 <tr>
                     <td class="LabelColumn"><?= gettext('Email') ?>:</td>
@@ -452,8 +452,8 @@ require_once 'Include/Header-Short.php';
     } else {
         echo '<table width="100%" cellpadding="4" cellspacing="0">';
         echo '<tr class="TableHeader">';
-        echo '<td width="25%" valign="top"><b>' . gettext('Name') . '</b>';
-        echo '<td valign="top"><b>' . gettext('Value') . '</td>';
+        echo '<td width="25%" class="align-top"><b>' . gettext('Name') . '</b>';
+        echo '<td class="align-top"><b>' . gettext('Value') . '</td>';
         echo '</tr>';
 
         while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
@@ -466,8 +466,8 @@ require_once 'Include/Header-Short.php';
 
             //Display the row
             echo '<tr class="' . $sRowClass . '">';
-            echo '<td valign="top">' . gettext($pro_Name) . '&nbsp;</td>';
-            echo '<td valign="top">' . $r2p_Value . '&nbsp;</td>';
+            echo '<td class="align-top">' . gettext($pro_Name) . '&nbsp;</td>';
+            echo '<td class="align-top">' . $r2p_Value . '&nbsp;</td>';
 
             echo '</tr>';
 

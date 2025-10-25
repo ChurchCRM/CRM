@@ -185,11 +185,11 @@ require_once 'Include/Header.php';
             <h3 class="card-title"><?= gettext('Custom Field Selection') ?></h3>
           </div>
           <div class="card-body">
-            <table border="0">
+            <table>
               <?php
                 if ($numCustomFields > 0) {
                     ?>
-                <tr><td width="100%" valign="top" align="left">
+                <tr><td width="100%" class="align-top" align="left">
                     <h3><?= gettext('Custom Person Fields') ?></h3>
                     <table cellpadding="4" align="left">
                       <?php
@@ -207,7 +207,7 @@ require_once 'Include/Header.php';
                 }
                 if ($numFamCustomFields > 0) {
                     ?>
-                <tr><td width="100%" valign="top" align="left">
+                <tr><td width="100%" class="align-top" align="left">
                     <h3><?= gettext('Custom Family Fields') ?></h3>
                     <table cellpadding="4" align="left">
                       <?php
