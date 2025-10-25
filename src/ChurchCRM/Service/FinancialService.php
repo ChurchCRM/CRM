@@ -343,6 +343,7 @@ class FinancialService
 
     public function getDepositCSV(string $depID): \stdClass
     {
+        AuthService::requireUserGroupMembership('bFinance');
         $retstring = '';
         $line = [];
         $payments = $this->getPayments($depID);
@@ -408,6 +409,7 @@ class FinancialService
      */
     public function getActiveFunds(): array
     {
+        AuthService::requireUserGroupMembership('bFinance');
         $funds = [];
         $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
         $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
