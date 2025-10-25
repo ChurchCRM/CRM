@@ -9,16 +9,12 @@ describe("API Private Admin Person Initial Setting", () => {
             200,
         );
 
-        cy.request({
-            method: "GET",
-            url: "/api/person/2/photo",
-            headers: {
-                "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
-            },
-        }).then((resp) => {
-            expect(resp.status).to.eq(200);
-        });
+        cy.makePrivateAdminAPICall(
+            "GET",
+            "/api/person/2/photo",
+            null,
+            200,
+        );
     });
 
     it("Change Person Initial Style / Delete Person Image / Generate Initial Image", () => {
@@ -30,17 +26,13 @@ describe("API Private Admin Person Initial Setting", () => {
             200,
         );
 
-        cy.request({
-            method: "GET",
-            url: "/api/system/config/iPersonInitialStyle",
-            headers: {
-                "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
-            },
-        }).then((resp) => {
-            expect(resp.status).to.eq(200);
-            const result = JSON.parse(JSON.stringify(resp.body));
-            expect(result.value).to.eq(json.value);
+        cy.makePrivateAdminAPICall(
+            "GET",
+            "/api/system/config/iPersonInitialStyle",
+            null,
+            200,
+        ).then((resp) => {
+            expect(resp.value).to.eq(json.value);
         });
 
         cy.makePrivateAdminAPICall(
@@ -50,15 +42,11 @@ describe("API Private Admin Person Initial Setting", () => {
             200,
         );
 
-        cy.request({
-            method: "GET",
-            url: "/api/person/2/photo",
-            headers: {
-                "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
-            },
-        }).then((resp) => {
-            expect(resp.status).to.eq(200);
-        });
+        cy.makePrivateAdminAPICall(
+            "GET",
+            "/api/person/2/photo",
+            null,
+            200,
+        );
     });
 });
