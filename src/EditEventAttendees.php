@@ -64,7 +64,7 @@ if (empty($event)) {
     <td width="35%"><strong><?= gettext('Name') ?></strong></td>
     <td width="25%"><strong><?= gettext('Email') ?></strong></td>
     <td width="25%"><strong><?= gettext('Home Phone') ?></strong></td>
-      <td width="15%" nowrap><strong><?= gettext('Action') ?></strong></td>
+      <td width="15%" class="text-nowrap"><strong><?= gettext('Action') ?></strong></td>
   </tr>
 <?php
 $attendees = EventAttendQuery::create()
