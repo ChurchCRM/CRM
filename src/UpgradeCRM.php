@@ -156,7 +156,7 @@ Header_body_scripts();
       </div>
     </div>
     <div>
-      <i class="fa fa-sign-in bg-blue"></i>
+      <i class="fa fa-right-to-bracket bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 4: Login') ?></h3>
         <div class="timeline-body" id="finalPhase" <?= $expertMode ? '' : 'style="display: none"' ?>>

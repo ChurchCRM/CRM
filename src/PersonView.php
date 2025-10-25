@@ -221,9 +221,9 @@ $bOkToEdit = (
                     <li class="list-group-item">
                         <?php $genderClass = "fa-question";
                         if ($person->isMale()) {
-                            $genderClass =  "fa-male";
+                            $genderClass =  "fa-person";
                         } elseif ($person->isFemale()) {
-                            $genderClass =  "fa-female";
+                            $genderClass =  "fa-person-dress";
                         } ?>
                         <b><?= gettext('Gender') ?></b> <a class="float-right"><i class="fa <?= $genderClass ?>"></i></a>
                     </li>

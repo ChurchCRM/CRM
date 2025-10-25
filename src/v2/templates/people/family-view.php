@@ -317,7 +317,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
                 <div id="family-property-loading" class="col-xs-12 text-center">
                     <i class="btn btn-default btn-lrg ajax">
-                        <i class="fa fa-spin fa-refresh"></i>&nbsp; <?= gettext("Loading") ?>
+                        <i class="fa fa-spin fa-spinner"></i>&nbsp; <?= gettext("Loading") ?>
                     </i>
                 </div>
 
@@ -563,7 +563,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                     <?php
                 } ?>
                 <button type="button" id="verifyURL"
-                        class="btn btn-default"><i class="fa fa-chain"></i> <?= gettext("URL") ?></button>
+                        class="btn btn-default"><i class="fa fa-link"></i> <?= gettext("URL") ?></button>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF") ?></button>
                 <button type="button" id="verifyNow"
