@@ -132,13 +132,13 @@ $(function () {
                 data: "GroupKey",
                 render: function (data, type, row) {
                     return (
-                        '<a class="btn btn-default" href="' +
+                        '<a class="btn btn-sm btn-primary" href="' +
                         window.CRM.root +
                         "/PledgeEditor.php?GroupKey=" +
                         row.GroupKey +
                         "&amp;linkBack=v2/family/" +
                         window.CRM.currentFamily +
-                        '"><i class="fas fa-pen bg-info"></i></a>'
+                        '"><i class="fa-solid fa-pen"></i></a>'
                     );
                 },
                 searchable: false,
@@ -150,13 +150,13 @@ $(function () {
                 data: "GroupKey",
                 render: function (data, type, row) {
                     return (
-                        '<a class="btn btn-default" href="' +
+                        '<a class="btn btn-sm btn-danger" href="' +
                         window.CRM.root +
                         "/PledgeDelete.php?GroupKey=" +
                         row.GroupKey +
                         "&amp;linkBack=v2/family/" +
                         window.CRM.currentFamily +
-                        '"><i class="fa fa-trash bg-red"></i></a>'
+                        '"><i class="fa-solid fa-trash-can"></i></a>'
                     );
                 },
                 searchable: false,

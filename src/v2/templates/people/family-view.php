@@ -476,9 +476,11 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                 </div>
             </div>
             <div class="card-body">
-                <table id="pledge-payment-v2-table" class="table table-striped table-bordered table-responsive data-table">
-                    <tbody></tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="pledge-payment-v2-table" class="table table-striped table-bordered data-table" style="width: 100%;">
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
