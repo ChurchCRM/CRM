@@ -2,9 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-$bSuppressSessionTests = true; // DO NOT MOVE
-require_once dirname(__DIR__) . '/../Include/Functions.php';
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -15,19 +12,60 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\InputUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class FinancialService
 {
     public function deletePayment(string $groupKey): void
     {
-        requireUserGroupMembership('bFinance');
         PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
+    }
+
+    public function getPayments(?string $depID = null): array
+    {
+        $query = PledgeQuery::create();
+        
+        // If a specific deposit ID is provided, filter by that deposit
+        if (!empty($depID)) {
+            $query->filterByDepositId($depID);
+        } else {
+            // Filter by user permissions (only when getting all payments)
+            if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
+                $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
+            }
+            if (!AuthenticationManager::getCurrentUser()->isShowPayments()) {
+                $query->filterByPledgeOrPayment('Payment', Criteria::NOT_EQUAL);
+            }
+            if (!AuthenticationManager::getCurrentUser()->isShowPledges()) {
+                $query->filterByPledgeOrPayment('Pledge', Criteria::NOT_EQUAL);
+            }
+        }
+        
+        $query->innerJoinDonationFund()->withColumn('donationfund_fun.fun_Name', 'PledgeName');
+        $data = $query->find();
+
+        $rows = [];
+        foreach ($data as $row) {
+            $newRow['FormattedFY'] = $row->getFormattedFY();
+            $newRow['GroupKey'] = $row->getGroupKey();
+            $newRow['Amount'] = $row->getAmount();
+            $newRow['Nondeductible'] = $row->getNondeductible();
+            $newRow['Schedule'] = $row->getSchedule();
+            $newRow['Method'] = $row->getMethod();
+            $newRow['Comment'] = htmlspecialchars($row->getComment() ?? '', ENT_QUOTES, 'UTF-8');
+            $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
+            $newRow['Date'] = $row->getDate('Y-m-d');
+            $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
+            $newRow['EditedBy'] = $row->getPerson()->getFullName();
+            $newRow['Fund'] = $row->getPledgeName();
+            $rows[] = $newRow;
+        }
+
+        return $rows;
     }
 
     public function getMemberByScanString(string $tScanString): array
     {
-        requireUserGroupMembership('bFinance');
-
         if (!SystemConfig::getValue('bUseScannedChecks')) {
             throw new \Exception('Scanned Checks is disabled');
         }
@@ -83,7 +121,6 @@ class FinancialService
 
     public function getDepositTotal($id, $type = null)
     {
-        requireUserGroupMembership('bFinance');
         $sqlClause = '';
         if ($type) {
             $sqlClause = "AND plg_method = '" . $type . "'";
@@ -107,23 +144,23 @@ class FinancialService
         return SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
     }
 
-    private function validateDate(array $payment): void
+    private function validateDate(object $payment): void
     {
         // Validate Date
-        if (isset($payment['Date']) && strlen($payment['Date']) > 0) {
-            [$iYear, $iMonth, $iDay] = sscanf($payment['Date'], '%04d-%02d-%02d');
+        if (isset($payment->Date) && strlen($payment->Date) > 0) {
+            [$iYear, $iMonth, $iDay] = sscanf($payment->Date, '%04d-%02d-%02d');
             if (!checkdate($iMonth, $iDay, $iYear)) {
                 throw new \Exception('Invalid Date');
             }
         }
     }
 
-    private function validateFund(array $payment): void
+    private function validateFund(object $payment): void
     {
         //Validate that the fund selection is valid:
         //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
         //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
-        $FundSplit = $payment['FundSplit'];
+        $FundSplit = $payment->FundSplit;
         if (count($FundSplit) >= 1 && $FundSplit[0]->FundID !== 'None') { // split
             $nonZeroFundAmountEntered = 0;
             foreach ($FundSplit as $fund) {
@@ -148,7 +185,6 @@ class FinancialService
 
     public function locateFamilyCheck(string $checkNumber, string $fam_ID)
     {
-        requireUserGroupMembership('bFinance');
         $sSQL = 'SELECT count(plg_FamID) from pledge_plg
                  WHERE plg_CheckNo = ' . $checkNumber . ' AND
                  plg_FamID = ' . $fam_ID;
@@ -157,30 +193,35 @@ class FinancialService
         return mysqli_fetch_array($rCount)[0];
     }
 
-    public function validateChecks($payment): void
+    public function validateChecks(object $payment): void
     {
-        requireUserGroupMembership('bFinance');
         //validate that the payment options are valid
         //If the payment method is a check, then the check number must be present, and it must not already have been used for this family
         //if the payment method is cash, there must not be a check number
-        if ($payment->type === 'Payment' && $payment->iMethod === 'CHECK' && !isset($payment->iCheckNo)) {
+        if (!empty($payment->type) && $payment->type === 'Payment' && !empty($payment->iMethod) && $payment->iMethod === 'CHECK' && !isset($payment->iCheckNo)) {
             throw new \Exception(gettext('Must specify non-zero check number'));
         }
         // detect check inconsistencies
-        if ($payment->type === 'Payment' && isset($payment->iCheckNo)) {
-            if ($payment->iMethod === 'CASH') {
+        if (!empty($payment->type) && $payment->type === 'Payment' && isset($payment->iCheckNo)) {
+            if (!empty($payment->iMethod) && $payment->iMethod === 'CASH') {
                 throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
-            } elseif ($payment->iMethod === 'CHECK' && $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
+            } elseif (!empty($payment->iMethod) && $payment->iMethod === 'CHECK' && !empty($payment->FamilyID) && $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
                 //build routine to make sure this check number hasn't been used by this family yet (look at group key)
                 throw new \Exception("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
             }
         }
     }
 
-    public function processCurrencyDenominations($payment, string $groupKey): void
+    public function processCurrencyDenominations(object $payment, string $groupKey): void
     {
+        if (empty($payment->cashDenominations)) {
+            return;
+        }
         $currencyDenoms = json_decode($payment->cashDenominations, null, 512, JSON_THROW_ON_ERROR);
         foreach ($currencyDenoms as $cdom) {
+            if (empty($payment->DepositID) || empty($cdom->currencyID) || empty($cdom->Count)) {
+                continue;
+            }
             $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
       VALUES ('" . $groupKey . "','" . $payment->DepositID . "','" . $cdom->currencyID . "','" . $cdom->Count . "')";
             RunQuery($sSQL);
@@ -188,9 +229,8 @@ class FinancialService
         }
     }
 
-    public function insertPledgeorPayment($payment)
+    public function insertPledgeorPayment(object $payment)
     {
-        requireUserGroupMembership('bFinance');
         // Only set PledgeOrPayment when the record is first created
         // loop through all funds and create non-zero amount pledge records
         $FundSplit = json_decode($payment->FundSplit, null, 512, JSON_THROW_ON_ERROR);
@@ -249,9 +289,8 @@ class FinancialService
         }
     }
 
-    public function submitPledgeOrPayment(array $payment): string
+    public function submitPledgeOrPayment(object $payment): string
     {
-        requireUserGroupMembership('bFinance');
         $this->validateFund($payment);
         $this->validateChecks($payment);
         $this->validateDate($payment);
@@ -262,7 +301,6 @@ class FinancialService
 
     public function getPledgeorPayment(string $GroupKey): string
     {
-        requireUserGroupMembership('bFinance');
         $total = 0;
         $sSQL = 'SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey="' . $GroupKey . '"';
         $rsKeys = RunQuery($sSQL);
@@ -297,7 +335,6 @@ class FinancialService
 
     public function getDepositCSV(string $depID): \stdClass
     {
-        requireUserGroupMembership('bFinance');
         $retstring = '';
         $line = [];
         $payments = $this->getPayments($depID);
@@ -363,7 +400,6 @@ class FinancialService
      */
     public function getActiveFunds(): array
     {
-        requireUserGroupMembership('bFinance');
         $funds = [];
         $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
         $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
@@ -378,5 +414,20 @@ class FinancialService
         } // end while
 
         return $funds;
+    }
+
+    /**
+     * Format a fiscal year ID into a human-readable string.
+     *
+     * @param int $fyId Fiscal year ID
+     * @return string Formatted fiscal year (e.g., "2024" or "2023/24")
+     */
+    public static function formatFiscalYear(int $fyId): string
+    {
+        if (SystemConfig::getValue('iFYMonth') == 1) {
+            return (string) (1996 + $fyId);
+        } else {
+            return (1995 + $fyId) . '/' . mb_substr(1996 + $fyId, 2, 2);
+        }
     }
 }

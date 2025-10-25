@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\Pledge as BasePledge;
+use ChurchCRM\Service\FinancialService;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
@@ -20,7 +21,7 @@ class Pledge extends BasePledge
 {
     public function getFormattedFY(): string
     {
-        return MakeFYString($this->getFyId());
+        return FinancialService::formatFiscalYear($this->getFyId());
     }
 
     /**

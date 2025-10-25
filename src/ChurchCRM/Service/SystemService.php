@@ -23,12 +23,12 @@ class SystemService
 
     public function getConfigurationSetting($settingName, $settingValue): void
     {
-        requireUserGroupMembership('bAdmin');
+        AuthService::requireUserGroupMembership('bAdmin');
     }
 
     public function setConfigurationSetting($settingName, $settingValue): void
     {
-        requireUserGroupMembership('bAdmin');
+        AuthService::requireUserGroupMembership('bAdmin');
     }
 
 

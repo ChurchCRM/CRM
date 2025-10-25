@@ -4,6 +4,7 @@ namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Group as BaseGroup;
+use ChurchCRM\Service\AuthService;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -31,7 +32,7 @@ class Group extends BaseGroup
 
     public function preSave(ConnectionInterface $con = null): bool
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         parent::preSave($con);
 
         return true;
@@ -39,7 +40,7 @@ class Group extends BaseGroup
 
     public function preUpdate(ConnectionInterface $con = null): bool
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         parent::preUpdate($con);
 
         return true;
@@ -47,7 +48,7 @@ class Group extends BaseGroup
 
     public function preDelete(ConnectionInterface $con = null): bool
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         parent::preDelete($con);
 
         return true;
@@ -55,7 +56,7 @@ class Group extends BaseGroup
 
     public function preInsert(ConnectionInterface $con = null): bool
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         $defaultRole = 1;
         if ($this->isSundaySchool()) {
             $defaultRole = 2;

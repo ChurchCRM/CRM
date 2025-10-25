@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\Base\Deposit as BaseDeposit;
 use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery as ChildPledgeQuery;
+use ChurchCRM\Service\AuthService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 
@@ -389,7 +390,7 @@ class Deposit extends BaseDeposit
 
     public function getPDF(): void
     {
-        requireUserGroupMembership('bFinance');
+        AuthService::requireUserGroupMembership('bFinance');
         $Report = new \stdClass();
         if (count($this->getPledges()) === 0) {
             throw new \Exception('No Payments on this Deposit', 404);

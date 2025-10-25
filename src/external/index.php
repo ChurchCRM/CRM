@@ -23,9 +23,10 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
 $app->add(VersionMiddleware::class);
 $app->add(new CorsMiddleware());
-$app->addRoutingMiddleware();
 
 // routes
 require __DIR__ . '/routes/register.php';
