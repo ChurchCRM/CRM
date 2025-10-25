@@ -434,7 +434,7 @@ class FinancialService
      */
     public static function formatFiscalYear(int $fyId): string
     {
-        if (SystemConfig::getValue('iFYMonth') == 1) {
+        if (SystemConfig::getValue('iFYMonth') === 1) {
             return (string) (1996 + $fyId);
         } else {
             return (1995 + $fyId) . '/' . mb_substr(1996 + $fyId, 2, 2);
