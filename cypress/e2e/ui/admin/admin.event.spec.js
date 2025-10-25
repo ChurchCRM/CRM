@@ -1,6 +1,13 @@
-/// <reference types="cypress" />
+    /// <reference types="cypress" />
 
 describe("Admin Event", () => {
+
+    it("Create New Event Type", () => {
+        cy.loginAdmin("EventNames.php");
+        cy.contains("Edit Event Types");
+        cy.contains("Add Event Type");
+    });
+
     it("Event List", () => {
         cy.loginAdmin("ListEvents.php");
         cy.contains("Listing All Church Events");
