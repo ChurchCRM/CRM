@@ -1,6 +1,5 @@
 <?php
 
-
 require_once 'Include/Config.php';
 require_once 'Include/Functions.php';
 
@@ -20,26 +19,28 @@ $editing = 'FALSE';
 
 // Accept EN_tyid from POST or GET
 if (isset($_POST['EN_tyid'])) {
-  $tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
+    $tyid = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
 } elseif (isset($_GET['EN_tyid'])) {
-  $tyid = InputUtils::legacyFilterInput($_GET['EN_tyid'], 'int');
+    $tyid = InputUtils::legacyFilterInput($_GET['EN_tyid'], 'int');
 } else {
-  $tyid = null;
+    $tyid = null;
 }
 
 if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
-  $ctid = InputUtils::legacyFilterInput(mb_substr($_POST['Action'], 7), 'int');
-  EventCountNameQuery::create()->filterByCountid($ctid)->delete();
+    $ctid = InputUtils::legacyFilterInput(mb_substr($_POST['Action'], 7), 'int');
+    EventCountNameQuery::create()
+        ->filterById($ctid)
+        ->delete();
 } else {
     switch ($_POST['Action']) {
-    case 'ADD':
-      $newCTName = InputUtils::legacyFilterInput($_POST['newCountName']);
-      $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
-  $eventCount = new EventCountName();
-      $eventCount->setEventtypeid($theID);
-      $eventCount->setCountname($newCTName);
-      $eventCount->save();
-      break;
+        case 'ADD':
+            $newCTName = InputUtils::legacyFilterInput($_POST['newCountName']);
+            $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
+            $eventCount = new EventCountName();
+            $eventCount->setTypeId($theID);
+            $eventCount->setName($newCTName);
+            $eventCount->save();
+            break;
 
         case 'NAME':
             $editing = 'FALSE';
@@ -76,7 +77,9 @@ if ($eventType) {
   $aDefRecurDOY = $eventType->getDefRecurDoy();
   $aDefRecurType = $eventType->getDefRecurType();
   if ($aDefStartTime) {
-    $aStartTimeTokens = explode(':', $aDefStartTime);
+    // Convert DateTime to string format if necessary
+    $timeString = is_object($aDefStartTime) ? $aDefStartTime->format('H:i:s') : $aDefStartTime;
+    $aStartTimeTokens = explode(':', $timeString);
     $aEventStartHour = $aStartTimeTokens[0];
     $aEventStartMins = $aStartTimeTokens[1];
   }
@@ -101,16 +104,16 @@ switch ($aDefRecurType) {
 }
 
 // Get a list of the attendance counts currently associated with this event type
-$counts = EventCountNameQuery::create()->filterByEventtypeid($aTypeID)->orderByCountid()->find();
+$counts = EventCountNameQuery::create()->filterByTypeId($aTypeID)->orderById()->find();
 $numCounts = $counts->count();
 $nr = $numCounts + 2;
 $cCountID = [];
 $cCountName = [];
 if ($numCounts) {
-  foreach ($counts as $i => $count) {
-    $cCountID[$i+1] = $count->getCountid();
-    $cCountName[$i+1] = $count->getCountname();
-  }
+    foreach ($counts as $i => $count) {
+        $cCountID[$i + 1] = $count->getId();
+        $cCountName[$i + 1] = $count->getName();
+    }
 }
 
 // Construct the form
@@ -162,7 +165,10 @@ if ($numCounts) {
       <tr data-cy="attendance-count-row">
         <td class="TextColumn" width="35%"><?= $cCountName[$c] ?></td>
         <td class="TextColumn" width="50%">
-          <button type="submit" name="Action" value="DELETE_<?=  $cCountID[$c] ?>" class="btn btn-default" data-cy="remove-attendance-count"><?= gettext('Remove') ?></button>
+          <button type="submit" name="Action" value="DELETE_<?= $cCountID[$c] ?>"
+                  class="btn btn-default" data-cy="remove-attendance-count">
+            <?= gettext('Remove') ?>
+          </button>
         </td>
       </tr>
         <?php
@@ -170,10 +176,14 @@ if ($numCounts) {
     ?>
     <tr>
       <td class="TextColumn" width="35%">
-        <input class='form-control' type="text" name="newCountName" length="20" placeholder="New Attendance Count" data-cy="attendance-count-input" />
+        <input class="form-control" type="text" name="newCountName" length="20"
+               placeholder="New Attendance Count" data-cy="attendance-count-input" />
       </td>
       <td class="TextColumn" width="50%">
-        <button type="submit" name="Action" value="ADD" class="btn btn-default" data-cy="add-attendance-count"><?= gettext('Add counter') ?></button>
+        <button type="submit" name="Action" value="ADD" class="btn btn-default"
+                data-cy="add-attendance-count">
+          <?= gettext('Add counter') ?>
+        </button>
       </td>
     </tr>
 </table>

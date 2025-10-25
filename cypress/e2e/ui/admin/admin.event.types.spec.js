@@ -25,10 +25,8 @@ describe("Event Types Management", () => {
   });
 
   it("should view event type by direct URL", () => {
-    cy.loginAdmin();
-    cy.visit("/EditEventTypes.php?EN_tyid=1");
-    cy.get(".card-title").should("contain", "Edit Event Type");
-    cy.contains("Church Service");
+    cy.loginAdmin("EditEventTypes.php?EN_tyid=1");
+    cy.get('input[name="newEvtName"]').should("have.value", "Church Service");
   });
   
 });
