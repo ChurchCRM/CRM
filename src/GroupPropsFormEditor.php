@@ -290,7 +290,7 @@ require_once 'Include/Header.php'; ?>
                             <td class="LabelColumn">
                                 <h2><b><?= $row ?></b></h2>
                             </td>
-                            <td class="TextColumn" width="5%" nowrap>
+                            <td class="TextColumn" width="5%" class="text-nowrap">
                                 <?php
                                 if ($row != 1) {
                                     echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';

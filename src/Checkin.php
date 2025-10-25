@@ -293,7 +293,7 @@ if (isset($_POST['EventID'])) {
                     <th><?= gettext('Checked In By') ?></th>
                     <th><?= gettext('Checked Out Time') ?></th>
                     <th><?= gettext('Checked Out By') ?></th>
-                    <th nowrap><?= gettext('Action') ?></th>
+                    <th class="text-nowrap"><?= gettext('Action') ?></th>
                 </tr>
                 </thead>
                 <tbody>

@@ -335,7 +335,7 @@ require_once 'Include/Header.php'; ?>
                                 } ?>
 
                             </td>
-                            <td class="TextColumn text-center" nowrap>
+                            <td class="TextColumn text-center text-nowrap">
                                 <?php
                                 if (isset($aSecurityType[$aFieldSecurity[$row]])) {
                                     echo GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]);
@@ -346,7 +346,7 @@ require_once 'Include/Header.php'; ?>
                             <td>
                                 <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="delete" onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);" )">
                             </td>
-                            <td class="TextColumn" width="5%" nowrap>
+                            <td class="TextColumn" width="5%" class="text-nowrap">
                                 <?php
                                 if ($row != 1) {
                                     echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
@@ -412,7 +412,7 @@ require_once 'Include/Header.php'; ?>
                                     ?>
                                     &nbsp;
                                 </td>
-                                <td valign="top" nowrap>
+                                <td valign="top" class="text-nowrap">
                                     <div><?= gettext('Security Option') ?></div>
                                     <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
                                 </td>

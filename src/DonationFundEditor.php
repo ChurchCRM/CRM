@@ -156,7 +156,7 @@ if ($donationFunds->count() == 0) {
             <td class="TextColumn">
                 <input type="text" Name="<?php echo $row . 'desc' ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="40" maxlength="100">
             </td>
-            <td class="TextColumn text-center" nowrap>
+            <td class="TextColumn text-center text-nowrap">
                 <input type="radio" Name="<?= $row ?>active" value="1" <?php if ($aActiveFields[$row]) {
                     echo ' checked';
                                           } ?>><?= gettext('Yes') ?>

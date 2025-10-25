@@ -322,7 +322,7 @@ for ($row = 1; $row <= $numRows; $row++) {
             </b>
         </td>
 
-        <td class="TextColumn" nowrap>
+        <td class="TextColumn text-nowrap">
 
             <?php
             if ($row != 1) {

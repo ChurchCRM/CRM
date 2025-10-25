@@ -342,13 +342,13 @@ if ($numRows == 0) {
             } ?>
 
             </td>
-            <td class="TextColumn text-center" nowrap>
+            <td class="TextColumn text-center text-nowrap">
                 <?= GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]) ?>
             </td>
             <td>
                 <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>"   name="delete" onclick="return confirmDeleteField('<?= $aFieldFields[$row] ?>');">
             </td>
-            <td class="TextColumn" width="5%" nowrap>
+            <td class="TextColumn" width="5%" class="text-nowrap">
                 <?php
                 if ($row > 1) {
                     echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
@@ -410,7 +410,7 @@ if ($numRows == 0) {
                         ?>
                         &nbsp;
                     </td>
-                    <td valign="top" nowrap>
+                    <td valign="top" class="text-nowrap">
                         <div><?= gettext('Security Option') ?></div>
                         <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
                     </td>
