@@ -5,19 +5,14 @@ Fixes #
 
 ## Type
 <!-- Check one -->
-- [ ] 🐛 Bug fix
 - [ ] ✨ Feature
+- [ ] 🐛 Bug fix
 - [ ] ♻️ Refactor
 - [ ] 🏗️ Build/Infrastructure
 - [ ] 🔒 Security
 
 ## Testing
 <!-- How to verify this works -->
-
-1. 
-2. 
-
-**Expected:** 
 
 ## Screenshots
 <!-- Only for UI changes - drag & drop images here -->
@@ -28,9 +23,14 @@ Fixes #
 - [ ] Modifies authentication/authorization
 - [ ] Affects data privacy/GDPR
 
+### Code Quality
+- [ ] Database: Propel ORM only, no raw SQL
+- [ ] No deprecated attributes (align, valign, nowrap, border, cellpadding, cellspacing, bgcolor)
+- [ ] Bootstrap CSS classes used
+- [ ] All CSS bundled via webpack
+
 ## Pre-Merge
 - [ ] Tested locally
 - [ ] No new warnings
 - [ ] Build passes
 - [ ] Backward compatible (or migration documented)
-
