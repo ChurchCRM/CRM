@@ -26,7 +26,13 @@ if (empty($person)) {
 
 $sPageTitle = gettext('Person Profile');
 require_once 'Include/Header.php';
+?>
 
+<!-- Load Uppy Photo Uploader CSS & JS -->
+<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.css">
+<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
+
+<?php
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
     $iRemoveVO = InputUtils::legacyFilterInput($_GET['RemoveVO'], 'int');
@@ -203,7 +209,7 @@ $bOkToEdit = (
                                 <a id="view-larger-image-btn" class="hide" title="<?= gettext("View Photo") ?>">
                                     <i class="fa-solid fa-search-plus"></i>
                                 </a>&nbsp;
-                                <a href="<?= SystemURLs::getRootPath() ?>/v2/photo/upload/person/<?= $iPersonID ?>" title="<?= gettext("Upload Photo") ?>">
+                                <a id="uploadImageButton" class="" title="<?= gettext("Upload Photo") ?>">
                                     <i class="fa-solid fa-camera"></i>
                                 </a>&nbsp;
                                 <a data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
@@ -922,6 +928,21 @@ $bOkToEdit = (
                             });
                         });
                     }
+                });
+
+                // Initialize Uppy photo uploader
+                window.CRM.photoUploader = window.CRM.createPhotoUploader({
+                    uploadUrl: window.CRM.root + '/api/person/<?= $iPersonID ?>/photo',
+                    maxFileSize: window.CRM.maxUploadSizeBytes,
+                    photoWidth: <?= SystemConfig::getValue('iPhotoWidth') ?>,
+                    photoHeight: <?= SystemConfig::getValue('iPhotoHeight') ?>,
+                    onComplete: function(result) {
+                        window.location.reload();
+                    }
+                });
+
+                $("#uploadImageButton").click(function() {
+                    window.CRM.photoUploader.show();
                 });
 
             });

@@ -40,7 +40,6 @@ require __DIR__ . '/routes/user.php';
 require __DIR__ . '/routes/people.php';
 require __DIR__ . '/routes/family.php';
 require __DIR__ . '/routes/person.php';
-require __DIR__ . '/routes/photo.php';
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/calendar.php';
 require __DIR__ . '/routes/cart.php';

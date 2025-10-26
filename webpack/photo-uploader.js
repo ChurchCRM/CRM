@@ -1,7 +1,7 @@
 /**
  * Photo Uploader using Uppy
  * Simple, modern photo upload with webcam support
- * Using INLINE mode for better compatibility
+ * Using MODAL mode with proper CSS
  */
 
 import Uppy from '@uppy/core';
@@ -9,22 +9,16 @@ import Dashboard from '@uppy/dashboard';
 import Webcam from '@uppy/webcam';
 import XHRUpload from '@uppy/xhr-upload';
 
-// Import Uppy styles
-import '@uppy/core/dist/style.min.css';
-import '@uppy/dashboard/dist/style.min.css';
-import '@uppy/webcam/dist/style.min.css';
-
 /**
- * Create a photo uploader instance with inline dashboard
+ * Create a photo uploader instance with modal dashboard
  * 
  * @param {Object} config - Configuration options
  * @param {string} config.uploadUrl - Upload endpoint URL
- * @param {string} config.target - CSS selector for container element
  * @param {number} config.maxFileSize - Maximum file size in bytes (default: 5MB)
  * @param {number} config.photoWidth - Target photo width
  * @param {number} config.photoHeight - Target photo height
  * @param {Function} config.onComplete - Callback after successful upload
- * @returns {Object} - Uppy instance
+ * @returns {Object} - Uppy instance with show/hide methods
  */
 export function createPhotoUploader(config) {
     const uppy = new Uppy({
@@ -37,12 +31,11 @@ export function createPhotoUploader(config) {
         }
     })
     .use(Dashboard, {
-        inline: true,
-        target: config.target || '#photo-uploader-container',
+        inline: false, // Use modal mode
+        trigger: null, // Don't auto-bind to a trigger
         proudlyDisplayPoweredByUppy: false,
         note: `Max file size: ${Math.round((config.maxFileSize || 5000000) / 1000000)}MB`,
-        height: 400,
-        width: '100%',
+        closeModalOnClickOutside: true,
         locale: {
             strings: {
                 dashboardWindowTitle: 'Upload Photo',
@@ -87,6 +80,13 @@ export function createPhotoUploader(config) {
         console.error('Upload error:', error);
     });
 
-    // Return the Uppy instance
-    return uppy;
+    // Get the Dashboard plugin instance for modal control
+    const dashboard = uppy.getPlugin('Dashboard');
+
+    // Return wrapper with show/hide methods
+    return {
+        uppy: uppy,
+        show: () => dashboard.openModal(),
+        hide: () => dashboard.closeModal()
+    };
 }
