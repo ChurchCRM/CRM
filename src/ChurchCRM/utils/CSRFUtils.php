@@ -59,9 +59,10 @@ class CSRFUtils
      *
      * @param string $token The token to validate
      * @param string $formId The form identifier
+     * @param bool $consume Whether to consume the token after validation (default: false)
      * @return bool True if the token is valid, false otherwise
      */
-    public static function validateToken(string $token, string $formId = 'default'): bool
+    public static function validateToken(string $token, string $formId = 'default', bool $consume = false): bool
     {
         // Ensure session is started
         if (session_status() !== PHP_SESSION_ACTIVE) {
@@ -85,14 +86,32 @@ class CSRFUtils
         // Validate token using timing-safe comparison
         $isValid = hash_equals($storedData['token'], $token);
 
-        // Remove token after validation (one-time use)
-        // Note: For forms that might be submitted multiple times (e.g., validation errors),
-        // we regenerate a new token after successful validation
-        if ($isValid) {
+        // Optionally consume token after validation
+        // By default, tokens are NOT consumed to allow form resubmission on validation errors
+        // Set $consume = true when you want one-time use (e.g., after successful operation)
+        if ($isValid && $consume) {
             unset($_SESSION[self::SESSION_KEY][$formId]);
         }
 
         return $isValid;
+    }
+
+    /**
+     * Regenerate a CSRF token for a specific form.
+     * Useful after successful form submission to get a fresh token.
+     *
+     * @param string $formId The form identifier
+     * @return string The new generated CSRF token
+     */
+    public static function regenerateToken(string $formId = 'default'): string
+    {
+        // Remove old token
+        if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION[self::SESSION_KEY][$formId])) {
+            unset($_SESSION[self::SESSION_KEY][$formId]);
+        }
+        
+        // Generate and return new token
+        return self::generateToken($formId);
     }
 
     /**
