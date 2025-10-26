@@ -174,7 +174,8 @@ require_once 'Include/Header.php';
         </h3>
     </div>
     <div class="card-body">
-        <table class="table table-hover dt-responsive width-100pct" id="user-listing-table">
+        <div class="table-responsive">
+        <table class="table table-hover w-100" id="user-listing-table">
             <thead>
             <tr>
                 <th><?= gettext('Actions') ?></th>
@@ -245,6 +246,7 @@ require_once 'Include/Header.php';
             } ?>
             </tbody>
         </table>
+        </div>
     </div>
     <!-- /.box-body -->
 </div>

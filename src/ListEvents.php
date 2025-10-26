@@ -186,7 +186,8 @@ foreach ($allMonths as $mKey => $mVal) {
       <h3 class='card-title'><?= ($numRows == 1 ? gettext('There is') : gettext('There are')) . ' ' . $numRows . ' ' . ($numRows == 1 ? gettext('event') : gettext('events')) . ' ' . 'for' . '  ' . gettext(date('F', mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
     </div>
     <div class='card-body'>
-  <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
+      <div class="table-responsive">
+  <table id="listEvents" class='table data-table table-striped table-bordered'>
     <thead>
       <tr>
         <?php if (AuthenticationManager::getCurrentUser()->isAddEvent()) {
@@ -327,6 +328,7 @@ foreach ($allMonths as $mKey => $mVal) {
         } ?>
       </tbody>
     </table>
+      </div>
   </div>
   </div>
         <?php
