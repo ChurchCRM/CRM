@@ -63,15 +63,35 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <h3 class="card-title"><?= gettext('People Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app"><i class="fa-solid fa-user"></i><?= gettext('All People') ?></a>
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app"><i class="fa-solid fa-clipboard-check"></i><?= gettext('Verify People') ?></a>
-        <div class="btn btn-app"><span class="badge <?= $selfRegColor ?>"><?= $selfRegText ?></span><i class="fa-solid fa-user-plus"></i><?= gettext('Self Register') ?></div>
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="btn btn-app"><i class="fa-solid fa-people-roof"></i><?= gettext('All Families') ?></a>
-        <br />
-        <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa-solid fa-map"></i><?= gettext('Family Map') ?></a>
-        <a href="GeoPage.php" class="btn btn-app"><i class="fa-solid fa-globe"></i><?= gettext('Family Geographic') ?></a>
-        <a href="UpdateAllLatLon.php" class="btn btn-app"><i class="fa-solid fa-map-pin"></i><?= gettext('Update All Family Coordinates') ?></a>
-        <br />
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app bg-primary">
+            <i class="fa-solid fa-user fa-3x"></i><br>
+            <?= gettext('All People') ?>
+        </a>
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app bg-info">
+            <i class="fa-solid fa-clipboard-check fa-3x"></i><br>
+            <?= gettext('Verify People') ?>
+        </a>
+        <div class="btn btn-app bg-secondary">
+            <span class="badge <?= $selfRegColor ?>"><?= $selfRegText ?></span>
+            <i class="fa-solid fa-user-plus fa-3x"></i><br>
+            <?= gettext('Self Register') ?>
+        </div>
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="btn btn-app bg-success">
+            <i class="fa-solid fa-people-roof fa-3x"></i><br>
+            <?= gettext('All Families') ?>
+        </a>
+        <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app bg-warning">
+            <i class="fa-solid fa-map fa-3x"></i><br>
+            <?= gettext('Family Map') ?>
+        </a>
+        <a href="GeoPage.php" class="btn btn-app bg-info">
+            <i class="fa-solid fa-globe fa-3x"></i><br>
+            <?= gettext('Family Geographic') ?>
+        </a>
+        <a href="UpdateAllLatLon.php" class="btn btn-app bg-purple">
+            <i class="fa-solid fa-map-pin fa-3x"></i><br>
+            <?= gettext('Update All Family Coordinates') ?>
+        </a>
 
         <?php
         if ($sEmailLink) {
@@ -84,24 +104,28 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                 // Display link
                 ?>
                 <div class="btn-group">
-                    <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa-solid fa-mail-bulk"></i></i><?= gettext('Email All') ?></a>
-                    <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
+                    <a class="btn btn-app bg-primary" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>">
+                        <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
+                        <?= gettext('Email All') ?>
+                    </a>
+                    <button type="button" class="btn btn-app bg-primary dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <ul class="dropdown-menu" role="menu">
+                    <div class="dropdown-menu">
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
-                    </ul>
+                    </div>
                 </div>
                 <div class="btn-group">
-                    <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa-solid fa-mail-bulk"></i><?= gettext('Email All (BCC)') ?></a>
-                    <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
+                    <a class="btn btn-app bg-info" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>">
+                        <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
+                        <?= gettext('Email All (BCC)') ?>
+                    </a>
+                    <button type="button" class="btn btn-app bg-info dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <ul class="dropdown-menu" role="menu">
+                    <div class="dropdown-menu">
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
-                    </ul>
+                    </div>
                 </div>
                 <?php
             }
