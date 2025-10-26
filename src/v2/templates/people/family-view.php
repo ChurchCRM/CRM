@@ -371,7 +371,6 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
         </div>
 
         <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
-            $timelineService = new TimelineService();
             $familyNotes = [];
             foreach ($familyTimeline as $item) {
                 if ($item['type'] === 'note') {

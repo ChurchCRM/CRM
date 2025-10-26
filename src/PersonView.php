@@ -587,9 +587,7 @@ $bOkToEdit = (
                                                     <th><?= gettext('Date') ?></th>
                                                     <th><?= gettext('Note') ?></th>
                                                     <th><?= gettext('Entered By') ?></th>
-                                                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                                                        <th><?= gettext('Actions') ?></th>
-                                                    <?php } ?>
+                                                    <th><?= gettext('Actions') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -604,33 +602,29 @@ $bOkToEdit = (
                                                             </div>
                                                         </td>
                                                         <td><?= $note['header'] ?></td>
-                                                        <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                                                            <td style="white-space: nowrap;">
-                                                                <?php if (isset($note['editLink']) && $note['editLink']) { ?>
-                                                                    <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
-                                                                        <i class="fa-solid fa-pen"></i>
-                                                                    </a>
-                                                                <?php }
-                                                                if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
-                                                                    <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
-                                                                        <i class="fa-solid fa-trash"></i>
-                                                                    </a>
-                                                                <?php } ?>
-                                                            </td>
-                                                        <?php } ?>
+                                                        <td style="white-space: nowrap;">
+                                                            <?php if (isset($note['editLink']) && $note['editLink']) { ?>
+                                                                <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
+                                                                    <i class="fa-solid fa-pen"></i>
+                                                                </a>
+                                                            <?php }
+                                                            if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
+                                                                <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
+                                                            <?php } ?>
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
                                         </table>
                                         <?php
                                     } ?>
-                                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                                        <div class="text-center mt-3">
-                                            <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="btn btn-success">
-                                                <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
-                                            </a>
-                                        </div>
-                                    <?php } ?>
+                                    <div class="text-center mt-3">
+                                        <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="btn btn-success">
+                                            <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
+                                        </a>
+                                    </div>
                                 </div>
                                 <!-- /.main-box-body -->
                             </div>
