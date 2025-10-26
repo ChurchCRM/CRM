@@ -95,19 +95,9 @@ export function createPhotoUploader(config) {
         console.error('Upload error:', error);
     });
 
-    // Handle Dashboard open/close for better focus management
+    // Get dashboard plugin reference
     const dashboard = uppy.getPlugin('Dashboard');
     
-    // Explicitly close the modal on initialization to ensure it starts hidden
-    if (dashboard) {
-        dashboard.closeModal();
-    }
-    
-    uppy.on('dashboard:modal-open', () => {
-        // Clear any existing focus issues by letting Uppy handle it naturally
-        // The dashboard will manage focus automatically
-    });
-
     uppy.on('dashboard:modal-closed', () => {
         // Reset the uppy state to avoid focus retention
         uppy.cancelAll();
