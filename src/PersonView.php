@@ -424,6 +424,9 @@ $bOkToEdit = (
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a class="nav-link active" id="nav-item-family" href="#family" data-toggle="tab"><?= gettext('Family') ?></a></li>
                     <li class="nav-item"><a class="nav-link" id="nav-item-timeline" href="#timeline" data-toggle="tab"><?= gettext('Timeline') ?></a></li>
+                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                        <li class="nav-item"><a class="nav-link" id="nav-item-notes" href="#notes" data-toggle="tab"><?= gettext('Notes') ?></a></li>
+                    <?php } ?>
                     <li class="nav-item"><a class="nav-link" id="nav-item-groups" href="#groups" data-toggle="tab"><?= gettext('Assigned Groups') ?></a></li>
                     <li class="nav-item"><a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
                     <li class="nav-item"><a class="nav-link" id="nav-item-properties" href="#properties" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
@@ -562,6 +565,78 @@ $bOkToEdit = (
                             <!-- END timeline item -->
                         </ul>
                     </div>
+
+                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                        <div class="tab-pane" id="notes">
+                            <div class="main-box clearfix">
+                                <div class="main-box-body clearfix">
+                                    <?php
+                                    $personNotes = $timelineService->getNotesForPerson($iPersonID);
+                                    if (empty($personNotes)) {
+                                        ?>
+                                        <div class="alert alert-info">
+                                            <i class="fa-solid fa-info-circle fa-fw fa-lg"></i>
+                                            <span><?= gettext('No notes have been added for this person.') ?></span>
+                                        </div>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <table class="table table-hover table-striped" id="notes-table">
+                                            <thead>
+                                                <tr>
+                                                    <th><?= gettext('Date') ?></th>
+                                                    <th><?= gettext('Note') ?></th>
+                                                    <th><?= gettext('Entered By') ?></th>
+                                                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                                                        <th><?= gettext('Actions') ?></th>
+                                                    <?php } ?>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($personNotes as $note) { ?>
+                                                    <tr>
+                                                        <td style="white-space: nowrap;">
+                                                            <i class="fa-solid fa-clock"></i> <?= $note['datetime'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <div style="max-width: 500px; overflow: auto;">
+                                                                <pre style="white-space: pre-wrap; word-wrap: break-word; line-height: 1.4; background: none; border: none; padding: 0; margin: 0;"><?= htmlspecialchars($note['text']) ?></pre>
+                                                            </div>
+                                                        </td>
+                                                        <td><?= $note['header'] ?></td>
+                                                        <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                                                            <td style="white-space: nowrap;">
+                                                                <?php if (isset($note['editLink']) && $note['editLink']) { ?>
+                                                                    <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
+                                                                        <i class="fa-solid fa-pen"></i>
+                                                                    </a>
+                                                                <?php }
+                                                                if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
+                                                                    <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
+                                                                        <i class="fa-solid fa-trash"></i>
+                                                                    </a>
+                                                                <?php } ?>
+                                                            </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                        <?php
+                                    } ?>
+                                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                                        <div class="text-center mt-3">
+                                            <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="btn btn-success">
+                                                <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
+                                            </a>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                                <!-- /.main-box-body -->
+                            </div>
+                            <!-- /.main-box -->
+                        </div>
+                    <?php } ?>
 
                     <div class="tab-pane" id="groups">
                         <div class="main-box clearfix">
