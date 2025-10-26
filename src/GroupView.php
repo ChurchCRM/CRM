@@ -62,17 +62,17 @@ require_once 'Include/Header.php';
 
         <?php
         if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-            echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fas fa-pen"></i>' . gettext('Edit this Group') . '</a>';
-            echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
+            echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa-solid fa-pen"></i>' . gettext('Edit this Group') . '</a>';
+            echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa-solid fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
 
             <?php
             if ($thisGroup->getHasSpecialProps()) {
-                echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-list-alt"></i>' . gettext('Edit Group-Specific Properties Form') . '</a>';
+                echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa-solid fa-list-alt"></i>' . gettext('Edit Group-Specific Properties Form') . '</a>';
             }
         } ?>
 
-        <a class="btn btn-app" id="AddGroupMembersToCart" data-groupid="<?= $thisGroup->getId() ?>"><i class="fa fa-users"></i><?= gettext('Add Group Members to Cart') ?></a>
-        <a class="btn btn-app" href="MapUsingGoogle.php?GroupID=<?= $thisGroup->getId() ?>"><i class="fa fa-map-marker"></i><?= gettext('Map this group') ?></a>
+        <a class="btn btn-app" id="AddGroupMembersToCart" data-groupid="<?= $thisGroup->getId() ?>"><i class="fa-solid fa-users"></i><?= gettext('Add Group Members to Cart') ?></a>
+        <a class="btn btn-app" href="MapUsingGoogle.php?GroupID=<?= $thisGroup->getId() ?>"><i class="fa-solid fa-map-marker"></i><?= gettext('Map this group') ?></a>
 
         <?php
 
@@ -117,7 +117,7 @@ require_once 'Include/Header.php';
                 // Display link
                 ?>
                 <div class="btn-group">
-                    <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-paper-plane"></i><?= gettext('Email Group') ?></a>
+                    <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa-solid fa-paper-plane"></i><?= gettext('Email Group') ?></a>
                     <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
@@ -171,7 +171,7 @@ require_once 'Include/Header.php';
         if ($sPhoneLink) {
             if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
                 // Display link
-                echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>' . gettext('Text Group') . '</a>';
+                echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa-solid fa-mobile-phone"></i>' . gettext('Text Group') . '</a>';
                 echo '<script nonce="' . SystemURLs::getCSPNonce() . '">function allPhonesCommaD() {prompt("' . gettext("Press CTRL + C to copy all group members\' phone numbers") . '", "' . mb_substr($sPhoneLink, 0, -2) . '")};</script>';
             }
         }

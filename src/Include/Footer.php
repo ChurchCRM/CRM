@@ -31,7 +31,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <!-- Task item -->
                     <div class="mb-1">
                         <a target="blank" href="<?= $task['link'] ?>">
-                            <i class="menu-icon fa fa-fw <?= $task['admin'] ? 'fa-lock' : 'fa-info' ?>"></i> <?= $task['title'] ?>
+                            <i class="menu-icon fa-solid fa-fw <?= $task['admin'] ? 'fa-lock' : 'fa-info' ?>"></i> <?= $task['title'] ?>
                         </a>
                     </div>
                     <!-- end task item -->

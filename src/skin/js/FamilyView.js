@@ -56,10 +56,10 @@ $(function () {
                     selectedFamilyProperties.push(propId);
 
                     let editIcon = allowEdit
-                        ? `<a href="${window.CRM.root}/PropertyAssign.php?FamilyID=${window.CRM.currentFamily}&PropertyID=${propId}"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pen"></i></button></a>`
+                        ? `<a href="${window.CRM.root}/PropertyAssign.php?FamilyID=${window.CRM.currentFamily}&PropertyID=${propId}"><button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button></a>`
                         : "";
                     let deleteIcon = allowDelete
-                        ? `<div class="btn btn-xs btn-danger delete-property" data-property-id="${propId}" data-property-name="${propName}"><i class="fa fa-trash"></i></div>`
+                        ? `<div class="btn btn-xs btn-danger delete-property" data-property-id="${propId}" data-property-name="${propName}"><i class="fa-solid fa-trash"></i></div>`
                         : "";
 
                     $("#family-property-table").append(

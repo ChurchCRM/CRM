@@ -293,10 +293,10 @@ require_once 'Include/Header.php'; ?>
                             <td class="TextColumn" width="5%" class="text-nowrap">
                                 <?php
                                 if ($row != 1) {
-                                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa-solid fa-arrow-up"></i></a>';
                                 }
                                 if ($row < $numRows) {
-                                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa-solid fa-arrow-down"></i></a>';
                                 } ?>
 
                                 <?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><i class='fa fa-times' ></i></a>"; ?>

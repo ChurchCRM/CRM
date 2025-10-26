@@ -165,7 +165,7 @@ require_once 'Include/Header.php';
   </div>
   <div class="card-body">
     <div class="alert alert-info alert-dismissable">
-      <i class="fa fa-info"></i>
+      <i class="fa-solid fa-info"></i>
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
       <strong></strong><?= gettext('Group role name changes are saved as soon as the box loses focus')?>
     </div>

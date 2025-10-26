@@ -40,7 +40,7 @@ require_once 'Include/HeaderNotLoggedIn.php'; ?>
 
     <div class="error-content">
         <div class="row">
-            <h3><i class="fa fa-warning text-yellow"></i> <?= gettext('Upgrade Required') ?></h3>
+            <h3><i class="fa-solid fa-triangle-exclamation text-yellow"></i> <?= gettext('Upgrade Required') ?></h3>
             <p>
                 <?= gettext("Current DB Version" . ": " . VersionUtils::getDBVersion()) ?> <br/>
                 <?= gettext("Current Software Version" . ": " . VersionUtils::getInstalledVersion()) ?> <br/>
@@ -54,7 +54,7 @@ require_once 'Include/HeaderNotLoggedIn.php'; ?>
                 <form id="dbUpgradeForm">
                     <input type="hidden" name="upgrade" value="true"/>
                     <button type="submit" class="btn btn-primary btn-block btn-flat" id="upgradeDatabase"><i
-                            class="fa fa-database"></i> <?= gettext('Upgrade database') ?></button>
+                            class="fa-solid fa-database"></i> <?= gettext('Upgrade database') ?></button>
                 </form>
         </div>
         <?php
@@ -62,7 +62,7 @@ require_once 'Include/HeaderNotLoggedIn.php'; ?>
         ?>
         <div class="main-box-body clearfix" id="globalMessage">
             <div class="callout callout-danger fade in" id="globalMessageCallOut">
-                <i class="fa fa-warning fa-fw fa-lg"></i> <?= $errorMessage ?>
+                <i class="fa-solid fa-triangle-exclamation fa-fw fa-lg"></i> <?= $errorMessage ?>
             </div>
         </div>
         <?php

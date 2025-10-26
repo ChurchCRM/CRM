@@ -49,15 +49,15 @@ require_once '../Include/Header.php';
     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
         ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
-          class="fa fa-plus-square"></i><?= gettext('Add New Class') ?></button>
+          class="fa-solid fa-plus-square"></i><?= gettext('Add New Class') ?></button>
         <?php
     } ?>
     <a href="SundaySchoolReports.php" class="btn btn-app"
        title="<?= gettext('Generate class lists and attendance sheets'); ?>"><i
-        class="fa fa-file-pdf"></i><?= gettext('Reports'); ?></a>
+        class="fa-solid fa-file-pdf"></i><?= gettext('Reports'); ?></a>
     <a href="SundaySchoolClassListExport.php" class="btn btn-app"
        title="<?= gettext('Export All Classes, Kids, and Parent to CSV file'); ?>"><i
-        class="fa fa-file-csv"></i><?= gettext('Export to CSV') ?></a><br/>
+        class="fa-solid fa-file-csv"></i><?= gettext('Export to CSV') ?></a><br/>
   </div>
 </div>
 <!-- Small boxes (Stat box) -->
@@ -88,7 +88,7 @@ require_once '../Include/Header.php';
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-orange"><i class="fa fa-children"></i></span>
+      <span class="info-box-icon bg-orange"><i class="fa-solid fa-children"></i></span>
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Students') ?></span>
         <span class="info-box-number"> <?= $kids ?></span>
@@ -99,7 +99,7 @@ require_once '../Include/Header.php';
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-gray"><i class="fa fa-people-roof"></i></span>
+      <span class="info-box-icon bg-gray"><i class="fa-solid fa-people-roof"></i></span>
 
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Families') ?></span>
@@ -111,7 +111,7 @@ require_once '../Include/Header.php';
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-blue"><i class="fa fa-child"></i></span>
+      <span class="info-box-icon bg-blue"><i class="fa-solid fa-child"></i></span>
 
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Boys') ?></span>
@@ -123,7 +123,7 @@ require_once '../Include/Header.php';
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
-      <span class="info-box-icon bg-fuchsia"><i class="fa fa-child-dress"></i></span>
+      <span class="info-box-icon bg-fuchsia"><i class="fa-solid fa-child-dress"></i></span>
 
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Girls') ?></span>
@@ -139,9 +139,9 @@ require_once '../Include/Header.php';
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Sunday School Classes') ?></h3>
       <div class="card-tools pull-right">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
           </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa fa-times"></i>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i>
           </button>
       </div>
   </div>
@@ -161,10 +161,10 @@ require_once '../Include/Header.php';
         <tr>
           <td style="width:80px">
             <a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
-              <i class="fa fa-search-plus"></i>
+              <i class="fa-solid fa-search-plus"></i>
             </a>
             <a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
-              <i class="fa fas fa-pen"></i>
+              <i class="fa-solid fa-pen"></i>
             </a>
           </td>
           <td><?= $class['name'] ?></td>
@@ -182,9 +182,9 @@ require_once '../Include/Header.php';
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Students not in a Sunday School Class') ?></h3>
       <div class="card-tools pull-right">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
           </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa fa-times"></i>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i>
           </button>
       </div>
   </div>
@@ -223,7 +223,7 @@ require_once '../Include/Header.php';
 <tr>
 <td>
   <a href="../PersonView.php?PersonID={$kidId}">
-    <i class="fa fa-search-plus"></i>
+    <i class="fa-solid fa-search-plus"></i>
   </a>
 </td>
 <td>$firstName</td>

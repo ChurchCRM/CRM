@@ -213,12 +213,12 @@ require_once 'Include/Header.php';
                   <td>
                     <?php if (!empty($setting->getTooltip())) {
                         ?>
-                      <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                      <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                         <?php
                     }
                     if (!empty($setting->getUrl())) {
                         ?>
-                      <a href="<?= $setting->getUrl() ?>" target="_blank"><i class="fa fa-fw fa-link"></i></a>
+                      <a href="<?= $setting->getUrl() ?>" target="_blank"><i class="fa-solid fa-fw fa-link"></i></a>
                         <?php
                     } ?>
                     <?= $display_default ?>
