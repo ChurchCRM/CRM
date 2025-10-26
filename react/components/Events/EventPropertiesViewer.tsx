@@ -27,11 +27,11 @@ const EventPropertiesViewer: React.FunctionComponent<{
         </tr>
         <tr>
           <td>{window.i18next.t("Start Date")}</td>
-          <td>{event.Start.toString()}</td>
+          <td>{event.Start ? event.Start.toString() : "N/A"}</td>
         </tr>
         <tr>
           <td>{window.i18next.t("End Date")}</td>
-          <td>{event.End.toString()}</td>
+          <td>{event.End ? event.End.toString() : "N/A"}</td>
         </tr>
         <tr>
           <td>{window.i18next.t("Pinned Calendars")}</td>

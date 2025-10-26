@@ -103,7 +103,7 @@ require_once 'Include/Header.php';
   <div class="card card-primary">
     <div class="card-body">
 
-      <p align="center">
+      <p class="text-center">
         <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
         <input type="hidden" name="FamilyID" value="<?= $iFamilyID ?>">
         <input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
@@ -111,14 +111,14 @@ require_once 'Include/Header.php';
         <?= $sNoteTextError ?>
       </p>
 
-      <p align="center">
+      <p class="text-center">
         <input type="checkbox" value="1" name="Private" <?php if ($bPrivate != 0) {
             echo 'checked';
                                                         } ?>>&nbsp;<?= gettext('Private') ?>
       </p>
     </div>
   </div>
-  <p align="center">
+  <p class="text-center">
     <input type="submit" class="btn btn-success" name="Submit" value="<?= gettext('Save') ?>">
     &nbsp;
     <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='<?= $sBackPage ?>';">

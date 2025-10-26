@@ -11,13 +11,13 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="pull-right">
     <a class="btn btn-success" role="button" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php">
-        <span class="fa fa-plus" aria-hidden="true"></span><?= gettext('Add Family') ?>
+        <span class="fa-solid fa-plus" aria-hidden="true"></span><?= gettext('Add Family') ?>
     </a>
 </div>
 <p><br /><br /></p>
 <div class="card">
     <div class="card-body">
-        <table id="families" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+        <table id="families" class="table table-striped table-bordered data-table w-100">
             <thead>
                 <tr>
                     <th><?= gettext('Actions') ?></th>
@@ -38,10 +38,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     ?>
                     <tr>
                         <td><a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
-                                <i class="fa fa-search-plus"></i>
+                                <i class="fa-solid fa-search-plus"></i>
                             </a>
                             <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
-                                <i class="fas fa-pen"></i>
+                                <i class="fa-solid fa-pen"></i>
                             </a>
                         </td>
 

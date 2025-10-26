@@ -83,13 +83,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["node_modules/jquery-photo-uploader/dist/*"],
-                        dest: "src/skin/external/jquery-photo-uploader/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         src: ["node_modules/bootbox/dist/bootbox.min.js"],
                         dest: "src/skin/external/bootbox/",
                     },

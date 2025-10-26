@@ -1,6 +1,7 @@
-/// <reference types="cypress" />
+    /// <reference types="cypress" />
 
 describe("Admin Event", () => {
+
     it("Create New Event Type", () => {
         cy.loginAdmin("EventNames.php");
         cy.contains("Edit Event Types");

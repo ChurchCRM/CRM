@@ -47,9 +47,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
   <!-- Default box -->
   <div class="card">
     <div class="card-body">
-      <p align="center"><?= gettext('Select the group to which you would like to add your cart') ?>:</p>
+      <p class="text-center"><?= gettext('Select the group to which you would like to add your cart') ?>:</p>
       <form method="post">
-        <table align="center">
+        <table class="mx-auto">
           <tr>
             <td class="LabelColumn"><?= gettext('Select Group') ?>:</td>
             <td class="TextColumn">
@@ -71,7 +71,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
             </td>
           </tr>
         </table>
-        <p align="center">
+        <p class="text-center">
           <BR>
           <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Add to Group') ?>">
           <BR><BR>--<?= gettext('OR Create a Group and add the CART in ONE ACTION') ?>--<BR><BR>
@@ -82,7 +82,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     </div></div>
     <?php
 } else {
-        echo '<p align="center" class="LargeText">' . gettext('Your cart is empty!') . '</p>';
+        echo '<p class="text-center LargeText">' . gettext('Your cart is empty!') . '</p>';
 }
 
 require_once 'Include/Footer.php';

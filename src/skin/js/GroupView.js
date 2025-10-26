@@ -266,7 +266,7 @@ function initDataTable() {
                         i18next.t(thisRole?.OptionName) +
                         '<button class="changeMembership" data-personid=' +
                         full.PersonId +
-                        '><i class="fas fa-pen"></i></button>'
+                        '><i class="fa-solid fa-pen"></i></button>'
                     );
                 },
             },

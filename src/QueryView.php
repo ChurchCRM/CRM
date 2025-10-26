@@ -158,7 +158,7 @@ function DisplayRecordCount()
     // Are we supposed to display a count for this query?
     if ($qry_Count == 1) {
         //Display the count of the recordset
-        echo '<p align="center">';
+        echo '<p class="text-center">';
         echo mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned');
         echo '</p>';
     }
@@ -219,8 +219,8 @@ function DoQuery()
                 <td>
                     <a class="AddToPeopleCart"  data-cartpersonid="<?= $aRow[$iCount] ?>">
                         <span class="fa-stack">
-                        <i class="fa fa-square fa-stack-2x"></i>
-                        <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
+                        <i class="fa-solid fa-square fa-stack-2x"></i>
+                        <i class="fa-solid fa-cart-plus fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
                 </td>

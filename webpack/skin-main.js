@@ -23,6 +23,7 @@ import 'react-datepicker/dist/react-datepicker.min.css';
 
 // Import Quill editor CSS and make it available globally
 import 'quill/dist/quill.snow.css';
+
 import { initializeQuillEditor } from './quill-editor.js';
 
 import '../src/skin/churchcrm.scss';
@@ -63,6 +64,3 @@ if (typeof window !== 'undefined') {
         }
     });
 }
-
-// No additional exports needed - this bundle is for core CSS and JS assets
-export {};
