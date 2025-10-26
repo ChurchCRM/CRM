@@ -127,7 +127,7 @@ foreach ($ListItem as $element) {
 <p><br/><br/></p>
 <div class="card card-warning">
     <div class="card-body">
-        <table id="members" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+        <table id="members" class="table table-striped table-bordered data-table w-100">
             <tbody>
             <!--Populate the table with person details -->
             <?php foreach ($members as $person) {
