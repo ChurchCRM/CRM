@@ -370,6 +370,79 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             </div>
         </div>
 
+        <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
+            $familyNotes = [];
+            foreach ($familyTimeline as $item) {
+                if ($item['type'] === 'note') {
+                    $familyNotes[] = $item;
+                }
+            }
+            ?>
+            <!-- Notes Card -->
+            <div class="card collapsed-card">
+                <div class="card-header">
+                    <h3 class="card-title m-0"><i class="fa-solid fa-sticky-note"></i> <?= gettext("Notes") ?></h3>
+                    <div class="card-tools pull-right">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <?php if (empty($familyNotes)) { ?>
+                        <div class="alert alert-info">
+                            <i class="fa-solid fa-info-circle fa-fw fa-lg"></i>
+                            <span><?= gettext('No notes have been added for this family.') ?></span>
+                        </div>
+                    <?php } else { ?>
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="width: 1%; white-space: nowrap;"><?= gettext('Date') ?></th>
+                                    <th><?= gettext('Note') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($familyNotes as $note) { ?>
+                                    <tr>
+                                        <td style="width: 1%; white-space: nowrap; vertical-align: top;">
+                                            <div style="text-align: center;">
+                                                <i class="fa-solid fa-calendar"></i><br>
+                                                <?= date('Y-m-d', strtotime($note['datetime'])) ?><br>
+                                                <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
+                                                <div style="margin-top: 10px;">
+                                                    <?php if (isset($note['editLink']) && $note['editLink']) { ?>
+                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
+                                                            <i class="fa-solid fa-pen"></i>
+                                                        </a>
+                                                    <?php }
+                                                    if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
+                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </a>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="width: 99%; vertical-align: top;">
+                                            <div style="margin-bottom: 8px;">
+                                                <?= $note['text'] ?>
+                                            </div>
+                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $note['header'] ?></small>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    <?php } ?>
+                    <div class="text-center mt-3">
+                        <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" class="btn btn-success">
+                            <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
         <!-- Family Members Card - 2nd row in right column -->
         <div class="card">
             <div class="card-header">

@@ -430,6 +430,9 @@ $bOkToEdit = (
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a class="nav-link active" id="nav-item-family" href="#family" data-toggle="tab"><?= gettext('Family') ?></a></li>
                     <li class="nav-item"><a class="nav-link" id="nav-item-timeline" href="#timeline" data-toggle="tab"><?= gettext('Timeline') ?></a></li>
+                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                        <li class="nav-item"><a class="nav-link" id="nav-item-notes" href="#notes" data-toggle="tab"><?= gettext('Notes') ?></a></li>
+                    <?php } ?>
                     <li class="nav-item"><a class="nav-link" id="nav-item-groups" href="#groups" data-toggle="tab"><?= gettext('Assigned Groups') ?></a></li>
                     <li class="nav-item"><a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
                     <li class="nav-item"><a class="nav-link" id="nav-item-properties" href="#properties" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
@@ -568,6 +571,74 @@ $bOkToEdit = (
                             <!-- END timeline item -->
                         </ul>
                     </div>
+
+                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                        <div class="tab-pane" id="notes">
+                            <div class="main-box clearfix">
+                                <div class="main-box-body clearfix">
+                                    <?php
+                                    $personNotes = $timelineService->getNotesForPerson($iPersonID);
+                                    if (empty($personNotes)) {
+                                        ?>
+                                        <div class="alert alert-info">
+                                            <i class="fa-solid fa-info-circle fa-fw fa-lg"></i>
+                                            <span><?= gettext('No notes have been added for this person.') ?></span>
+                                        </div>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <table class="table table-hover table-striped" id="notes-table">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 1%; white-space: nowrap;"><?= gettext('Date') ?></th>
+                                                    <th><?= gettext('Note') ?></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($personNotes as $note) { ?>
+                                                    <tr>
+                                                        <td style="width: 1%; white-space: nowrap; vertical-align: top;">
+                                                            <div style="text-align: center;">
+                                                                <i class="fa-solid fa-calendar"></i><br>
+                                                                <?= date('Y-m-d', strtotime($note['datetime'])) ?><br>
+                                                                <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
+                                                                <div style="margin-top: 10px;">
+                                                                    <?php if (isset($note['editLink']) && $note['editLink']) { ?>
+                                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
+                                                                            <i class="fa-solid fa-pen"></i>
+                                                                        </a>
+                                                                    <?php }
+                                                                    if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
+                                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
+                                                                            <i class="fa-solid fa-trash"></i>
+                                                                        </a>
+                                                                    <?php } ?>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width: 99%; vertical-align: top;">
+                                                            <div style="margin-bottom: 8px;">
+                                                                <?= $note['text'] ?>
+                                                            </div>
+                                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $note['header'] ?></small>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                        <?php
+                                    } ?>
+                                    <div class="text-center mt-3">
+                                        <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="btn btn-success">
+                                            <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- /.main-box-body -->
+                            </div>
+                            <!-- /.main-box -->
+                        </div>
+                    <?php } ?>
 
                     <div class="tab-pane" id="groups">
                         <div class="main-box clearfix">
