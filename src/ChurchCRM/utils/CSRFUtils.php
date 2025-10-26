@@ -40,6 +40,7 @@ class CSRFUtils
         }
 
         // Generate a cryptographically secure random token
+        // 32 bytes = 256 bits of entropy, which becomes 64 hex characters after bin2hex()
         $token = bin2hex(random_bytes(32));
         
         // Store token with timestamp for expiration checking
@@ -88,6 +89,8 @@ class CSRFUtils
 
         // Optionally consume token after validation
         // By default, tokens are NOT consumed to allow form resubmission on validation errors
+        // The form templates regenerate a new token when re-rendered, so if validation fails
+        // and the form is shown again with errors, a fresh token will be automatically generated.
         // Set $consume = true when you want one-time use (e.g., after successful operation)
         if ($isValid && $consume) {
             unset($_SESSION[self::SESSION_KEY][$formId]);
