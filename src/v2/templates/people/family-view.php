@@ -52,7 +52,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                             <i class="fa-solid fa-search-plus"></i>
                         </a>
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
-                            <a href="#" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#upload-image"
+                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-info mr-1"
                                title="<?= gettext("Upload Photo") ?>">
                                 <i class="fa-solid fa-camera"></i>
                             </a>
@@ -528,6 +528,11 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             done: function (e) {
                 location.reload();
             }
+        });
+
+        $("#uploadImageButton").click(function (e) {
+            e.preventDefault();
+            window.CRM.photoUploader.show();
         });
 
         $(".edit-family").click(function () {

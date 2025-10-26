@@ -203,7 +203,7 @@ $bOkToEdit = (
                                 <a id="view-larger-image-btn" class="hide" title="<?= gettext("View Photo") ?>">
                                     <i class="fa-solid fa-search-plus"></i>
                                 </a>&nbsp;
-                                <a class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
+                                <a id="uploadImageButton" class="" href="#" title="<?= gettext("Upload Photo") ?>">
                                     <i class="fa-solid fa-camera"></i>
                                 </a>&nbsp;
                                 <a data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
@@ -917,7 +917,8 @@ $bOkToEdit = (
                 }
             });
 
-            $("#uploadImageButton").click(function() {
+            $("#uploadImageButton").click(function(e) {
+                e.preventDefault();
                 window.CRM.photoUploader.show();
             });
 
