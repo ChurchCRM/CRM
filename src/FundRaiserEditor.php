@@ -171,20 +171,21 @@ require_once 'Include/Header.php';
     <br>
     <div class="table-responsive">
         <table class="table" cellpadding="5" cellspacing="0" width="100%">
-
-            <tr class="TableHeader">
-                <td><?= gettext('Item') ?></td>
-                <td><?= gettext('Multiple') ?></td>
-                <td><?= gettext('Donor') ?></td>
-                <td><?= gettext('Buyer') ?></td>
-                <td><?= gettext('Title') ?></td>
-                <td><?= gettext('Sale Price') ?></td>
-                <td><?= gettext('Estimated value') ?></td>
-                <td><?= gettext('Material Value') ?></td>
-                <td><?= gettext('Minimum Price') ?></td>
-                <td><?= gettext('Delete') ?></td>
+            <thead>
+            <tr>
+                <th><?= gettext('Item') ?></th>
+                <th><?= gettext('Multiple') ?></th>
+                <th><?= gettext('Donor') ?></th>
+                <th><?= gettext('Buyer') ?></th>
+                <th><?= gettext('Title') ?></th>
+                <th><?= gettext('Sale Price') ?></th>
+                <th><?= gettext('Estimated value') ?></th>
+                <th><?= gettext('Material Value') ?></th>
+                <th><?= gettext('Minimum Price') ?></th>
+                <th><?= gettext('Delete') ?></th>
             </tr>
-
+            </thead>
+            <tbody>
             <?php
             $tog = 0;
 
@@ -240,7 +241,7 @@ require_once 'Include/Header.php';
                 } // while
             } // if
             ?>
-
+            </tbody>
         </table>
     </div>
 </div>

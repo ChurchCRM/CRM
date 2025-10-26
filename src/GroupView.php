@@ -243,11 +243,14 @@ require_once 'Include/Header.php';
                         } else {
                             ?>
                             <table width="100%" cellpadding="2" cellspacing="0">
-                                <tr class="TableHeader">
-                                    <td><?= gettext('Type') ?></td>
-                                    <td><?= gettext('Name') ?></td>
-                                    <td><?= gettext('Description') ?></td>
+                                <thead>
+                                <tr>
+                                    <th><?= gettext('Type') ?></th>
+                                    <th><?= gettext('Name') ?></th>
+                                    <th><?= gettext('Description') ?></th>
                                 </tr>
+                                </thead>
+                                <tbody>
                             <?php
                             $sRowClass = 'RowColorA';
                             for ($row = 1; $row <= $numRows; $row++) {
@@ -258,6 +261,7 @@ require_once 'Include/Header.php';
                                 echo '<td>' . $aDescFields[$row] . '&nbsp;</td>';
                                 echo '</tr>';
                             }
+                            echo '</tbody>';
                             echo '</table>';
                         }
                     } else {
@@ -277,16 +281,19 @@ require_once 'Include/Header.php';
                         // Display table of properties
                         ?>
                             <table width="100%" cellpadding="2" cellspacing="0">
-                                <tr class="TableHeader">
-                                    <td width="15%" class="align-top"><b><?= gettext('Type') ?></b>
-                                    <td class="align-top"><b><?= gettext('Name') ?></b>
-                                    <td class="align-top"><b><?= gettext('Value') ?></td>
+                                <thead>
+                                <tr>
+                                    <th width="15%" class="align-top"><b><?= gettext('Type') ?></b></th>
+                                    <th class="align-top"><b><?= gettext('Name') ?></b></th>
+                                    <th class="align-top"><b><?= gettext('Value') ?></b></th>
                                 <?php
                                 if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                    echo '<td class="align-top"><b>' . gettext('Edit Value') . '</td>';
-                                    echo '<td class="align-top"><b>' . gettext('Remove') . '</td>';
+                                    echo '<th class="align-top"><b>' . gettext('Edit Value') . '</th>';
+                                    echo '<th class="align-top"><b>' . gettext('Remove') . '</th>';
                                 }
                                 echo '</tr>';
+                                echo '</thead>';
+                                echo '<tbody>';
 
                                 $last_pro_prt_ID = '';
                                 $bIsFirst = true;
@@ -338,6 +345,7 @@ require_once 'Include/Header.php';
                                     $sAssignedProperties .= $pro_ID . ',';
                                 }
 
+                                echo '</tbody>';
                                 echo '</table>';
                     }
 

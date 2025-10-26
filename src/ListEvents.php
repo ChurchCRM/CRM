@@ -188,7 +188,7 @@ foreach ($allMonths as $mKey => $mVal) {
     <div class='card-body'>
   <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
     <thead>
-      <tr class="TableHeader">
+      <tr>
         <?php if (AuthenticationManager::getCurrentUser()->isAddEvent()) {
             ?>
         <th><?= gettext('Action') ?></th>

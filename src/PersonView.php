@@ -672,7 +672,7 @@ $bOkToEdit = (
                                 <?php else : ?>
                                     <table class="table table-condensed dt-responsive" id="assigned-properties-table" width="100%">
                                         <thead>
-                                            <tr class="TableHeader">
+                                            <tr>
                                                 <th><?= gettext('Type') ?></th>
                                                 <th><?= gettext('Name') ?></th>
                                                 <th><?= gettext('Value') ?></th>
@@ -778,7 +778,7 @@ $bOkToEdit = (
                                 } else {
                                     echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
                                     echo '<thead>';
-                                    echo '<tr class="TableHeader">';
+                                    echo '<tr>';
                                     echo '<th>' . gettext('Name') . '</th>';
                                     echo '<th>' . gettext('Description') . '</th>';
                                     if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
