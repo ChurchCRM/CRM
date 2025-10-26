@@ -26,7 +26,13 @@ if (empty($person)) {
 
 $sPageTitle = gettext('Person Profile');
 require_once 'Include/Header.php';
+?>
 
+<!-- Load Uppy Photo Uploader CSS & JS -->
+<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.css">
+<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
+
+<?php
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
     $iRemoveVO = InputUtils::legacyFilterInput($_GET['RemoveVO'], 'int');
@@ -203,7 +209,7 @@ $bOkToEdit = (
                                 <a id="view-larger-image-btn" class="hide" title="<?= gettext("View Photo") ?>">
                                     <i class="fa-solid fa-search-plus"></i>
                                 </a>&nbsp;
-                                <a class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
+                                <a id="uploadImageButton" class="" title="<?= gettext("Upload Photo") ?>">
                                     <i class="fa-solid fa-camera"></i>
                                 </a>&nbsp;
                                 <a data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
@@ -871,10 +877,6 @@ $bOkToEdit = (
             </div>
         </div>
         <!-- Modal -->
-        <div id="photoUploader">
-
-        </div>
-
         <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -896,7 +898,6 @@ $bOkToEdit = (
                 </div>
             </div>
         </div>
-        <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -910,20 +911,6 @@ $bOkToEdit = (
                 }).done(function(data) {
                     location.reload();
                 });
-            });
-
-            window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-                url: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
-                maxPhotoSize: window.CRM.maxUploadSize,
-                photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
-                photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
-                done: function(e) {
-                    window.location.reload();
-                }
-            });
-
-            $("#uploadImageButton").click(function() {
-                window.CRM.photoUploader.show();
             });
 
             $(document).ready(function() {
@@ -946,6 +933,37 @@ $bOkToEdit = (
                         });
                     }
                 });
+
+                // Copy photo uploader function from temporary storage to window.CRM
+                if (window._CRM_createPhotoUploader) {
+                    window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+                } else {
+                    console.error('Photo uploader function not found in window._CRM_createPhotoUploader');
+                }
+
+                // Initialize Uppy photo uploader
+                if (typeof window.CRM.createPhotoUploader === 'function') {
+                    window.CRM.photoUploader = window.CRM.createPhotoUploader({
+                        uploadUrl: window.CRM.root + '/api/person/<?= $iPersonID ?>/photo',
+                        maxFileSize: window.CRM.maxUploadSizeBytes,
+                        photoWidth: <?= SystemConfig::getValue('iPhotoWidth') ?>,
+                        photoHeight: <?= SystemConfig::getValue('iPhotoHeight') ?>,
+                        onComplete: function(result) {
+                            window.location.reload();
+                        }
+                    });
+
+                    $("#uploadImageButton").click(function(e) {
+                        e.preventDefault();
+                        if (window.CRM && window.CRM.photoUploader) {
+                            window.CRM.photoUploader.show();
+                        } else {
+                            console.error('Photo uploader not initialized!');
+                        }
+                    });
+                } else {
+                    console.error('window.CRM.createPhotoUploader is not a function');
+                }
 
             });
         </script>

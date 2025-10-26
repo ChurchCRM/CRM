@@ -18,7 +18,7 @@ class Photo
     private $thumbnailContentType = null;
     private bool $remotesEnabled;
 
-    public static $validExtensions = ['png', 'jpeg', 'jpg'];
+    public static $validExtensions = ['png', 'jpeg', 'jpg', 'gif', 'webp'];
 
     public function __construct(string $photoType, int $id)
     {
@@ -337,14 +337,79 @@ class Photo
     public function setImageFromBase64($base64): void
     {
         $this->delete();
-        $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
-        $img = str_replace('data:image/png;base64,', '', $base64);
-        $img = str_replace(' ', '+', $img);
-        $fileData = base64_decode($img);
-        $finfo = new \finfo(FILEINFO_MIME);
-        if ($finfo->buffer($fileData) == 'image/png; charset=binary') {
-            file_put_contents($fileName, $fileData);
+        
+        // Extract mime type and base64 data
+        if (preg_match('/^data:image\/(\w+);base64,(.+)$/', $base64, $matches)) {
+            $imageType = $matches[1];
+            $base64Data = $matches[2];
+        } else {
+            // Fallback for legacy format without data URI prefix
+            $imageType = 'png';
+            $base64Data = str_replace(' ', '+', $base64);
+            $base64Data = str_replace('data:image/png;base64,', '', $base64Data);
         }
+        
+        // Decode base64 data
+        $fileData = base64_decode($base64Data);
+        if ($fileData === false) {
+            throw new \Exception('Invalid base64 data');
+        }
+        
+        // Validate file is actually an image using finfo
+        $finfo = new \finfo(FILEINFO_MIME_TYPE);
+        $mimeType = $finfo->buffer($fileData);
+        
+        // Allowed image types
+        $allowedMimeTypes = [
+            'image/jpeg' => 'jpg',
+            'image/jpg' => 'jpg',
+            'image/png' => 'png',
+            'image/gif' => 'gif',
+            'image/webp' => 'webp'
+        ];
+        
+        if (!isset($allowedMimeTypes[$mimeType])) {
+            throw new \Exception('Invalid image type. Only JPEG, PNG, GIF, and WebP images are allowed.');
+        }
+        
+        $extension = $allowedMimeTypes[$mimeType];
+        $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.' . $extension;
+        
+        // Validate file size (check against max upload size)
+        $maxSize = $this->parseSize(ini_get('upload_max_filesize'));
+        if (strlen($fileData) > $maxSize) {
+            throw new \Exception('Image file size exceeds maximum allowed size');
+        }
+        
+        // Write file
+        if (file_put_contents($fileName, $fileData) === false) {
+            throw new \Exception('Failed to save image file');
+        }
+        
+        // Update URIs
+        $this->setURIs($fileName);
+    }
+    
+    /**
+     * Parse size string (e.g., "8M", "2G") to bytes
+     */
+    private function parseSize($size): int
+    {
+        $unit = strtolower(substr($size, -1));
+        $value = (int)$size;
+        
+        switch ($unit) {
+            case 'g':
+                $value *= 1024;
+                // fallthrough
+            case 'm':
+                $value *= 1024;
+                // fallthrough
+            case 'k':
+                $value *= 1024;
+        }
+        
+        return $value;
     }
 
     public function delete(): bool

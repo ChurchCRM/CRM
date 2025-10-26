@@ -2,10 +2,12 @@ window.moveEventModal = {
     getButtons: function () {
         return {
             cancel: {
-                label: '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel"),
+                label:
+                    '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel"),
             },
             confirm: {
-                label: '<i class="fa-solid fa-check"></i> ' + i18next.t("Confirm"),
+                label:
+                    '<i class="fa-solid fa-check"></i> ' + i18next.t("Confirm"),
             },
         };
     },

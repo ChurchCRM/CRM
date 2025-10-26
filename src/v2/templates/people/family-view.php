@@ -52,7 +52,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                             <i class="fa-solid fa-search-plus"></i>
                         </a>
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
-                            <a href="#" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#upload-image"
+                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-info mr-1"
                                title="<?= gettext("Upload Photo") ?>">
                                 <i class="fa-solid fa-camera"></i>
                             </a>
@@ -489,11 +489,11 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
+<!-- Photo uploader bundle - loaded only on this page -->
+<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.css">
+<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
 
 <!-- Photos start -->
-<div id="photoUploader"></div>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
-
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog"
      aria-labelledby="delete-Image-label"
      aria-hidden="true">
@@ -520,20 +520,44 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
     </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
-        window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-            url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
-            maxPhotoSize: window.CRM.maxUploadSize,
+    // Copy photo uploader function from temporary storage to window.CRM
+    // This must happen after Header-function.php initializes window.CRM
+    if (window._CRM_createPhotoUploader) {
+        window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+    } else {
+        console.error('Photo uploader function not found in window._CRM_createPhotoUploader');
+    }
+
+    // Initialize photo uploader when window loads
+    window.addEventListener('load', function() {
+        if (typeof window.CRM.createPhotoUploader !== 'function') {
+            console.error('window.CRM.createPhotoUploader is not a function');
+            return;
+        }
+        
+        window.CRM.photoUploader = window.CRM.createPhotoUploader({
+            uploadUrl: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
+            maxFileSize: window.CRM.maxUploadSizeBytes,
             photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
             photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
-            done: function (e) {
+            onComplete: function() {
                 location.reload();
             }
         });
+    });
 
-        $(".edit-family").click(function () {
-            window.location.href = window.CRM.root + '/FamilyEditor.php?FamilyID=' + window.CRM.currentFamily;
-        });
+    // Set up click handlers (use event delegation)
+    $(document).on('click', '#uploadImageButton', function(e) {
+        e.preventDefault();
+        if (window.CRM && window.CRM.photoUploader) {
+            window.CRM.photoUploader.show();
+        } else {
+            console.error('Photo uploader not initialized!');
+        }
+    });
+
+    $(document).on('click', '.edit-family', function() {
+        window.location.href = window.CRM.root + '/FamilyEditor.php?FamilyID=' + window.CRM.currentFamily;
     });
 </script>
 <!-- Photos end -->
