@@ -37,7 +37,7 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
         <form method="post" action="LettersAndLabels.php">
             <div class="table-responsive">
 
-          <table class="table" cellpadding="3" align="left">
+          <table class="table">
 <?php
 LabelSelect('labeltype');
 FontSelect('labelfont');

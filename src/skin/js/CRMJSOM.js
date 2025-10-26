@@ -188,38 +188,38 @@ window.CRM.cart = {
                           <a  class="dropdown-item" href="' +
                     window.CRM.root +
                     '/v2/cart">\
-                              <i class="fa fa-shopping-cart text-green"></i> ' +
+                              <i class="fa-solid fa-shopping-cart text-green"></i> ' +
                     i18next.t("View Cart") +
                     '\
                           </a>\
                           <a  class="dropdown-item emptyCart" >\
-                              <i class="fa fa-trash text-danger"></i> ' +
+                              <i class="fa-solid fa-trash text-danger"></i> ' +
                     i18next.t("Empty Cart") +
                     ' \
                           </a>\
                            <a id="emptyCartToGroup" class="dropdown-item" >\
-                              <i class="fa fa-object-ungroup text-info"></i> ' +
+                              <i class="fa-solid fa-object-ungroup text-info"></i> ' +
                     i18next.t("Empty Cart to Group") +
                     '\
                           </a>\
                           <a href="' +
                     window.CRM.root +
                     '/CartToFamily.php"  class="dropdown-item">\
-                              <i class="fa fa fa-users text-info"></i> ' +
+                              <i class="fa-solid fa-users text-info"></i> ' +
                     i18next.t("Empty Cart to Family") +
                     '\
                           </a>\
                           <a href="' +
                     window.CRM.root +
                     '/CartToEvent.php" class="dropdown-item">\
-                              <i class="fas fa-clipboard-list text-info"></i> ' +
+                              <i class="fa-solid fa-clipboard-list text-info"></i> ' +
                     i18next.t("Empty Cart to Event") +
                     '\
                           </a>\
                           <a href="' +
                     window.CRM.root +
                     '/MapUsingGoogle.php?GroupID=0" class="dropdown-item">\
-                              <i class="fa fa-map-marker text-info"></i> ' +
+                              <i class="fa-solid fa-map-marker text-info"></i> ' +
                     i18next.t("Map Cart") +
                     "\
                           </a>\

@@ -723,7 +723,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             // code rajouté par Philippe Logel
             echo '<div class="input-group">' .
             '<div class="input-group-addon">' .
-            '<i class="fa fa-calendar"></i>' .
+            '<i class="fa-solid fa-calendar"></i>' .
             '</div>' .
             '<input class="form-control date-picker" type="text" id="' . $fieldname . '" Name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
             '</div>';
@@ -834,7 +834,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
 
             echo '<div class="input-group">';
             echo '<div class="input-group-addon">';
-            echo '<i class="fa fa-phone"></i>';
+            echo '<i class="fa-solid fa-phone"></i>';
             echo '</div>';
             echo '<input class="form-control"  type="text" Name="' . $fieldname . '" maxlength="30" size="30" value="' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
             echo '<br><input type="checkbox" name="' . $fieldname . 'noformat" value="1"';

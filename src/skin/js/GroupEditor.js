@@ -225,7 +225,7 @@ $("document").ready(function () {
                 render: function (data, type, full, meta) {
                     if (full.lst_OptionID == defaultRoleID) {
                         return (
-                            '<strong><i class="fa fa-check"></i>' +
+                            '<strong><i class="fa-solid fa-check"></i>' +
                             i18next.t("Default") +
                             "</strong>"
                         );
@@ -252,14 +252,14 @@ $("document").ready(function () {
                             sequenceCell +=
                                 '<button type="button" id="roleUp-' +
                                 full.lst_OptionID +
-                                '" class="btn rollOrder"> <i class="fa fa-arrow-up"></i></button>&nbsp;';
+                                '" class="btn rollOrder"> <i class="fa-solid fa-arrow-up"></i></button>&nbsp;';
                         }
                         sequenceCell += data;
                         if (data != roleCount) {
                             sequenceCell +=
                                 '&nbsp;<button type="button" id="roleDown-' +
                                 full.lst_OptionID +
-                                '" class="btn rollOrder"> <i class="fa fa-arrow-down"></i></button>';
+                                '" class="btn rollOrder"> <i class="fa-solid fa-arrow-down"></i></button>';
                         }
                         return sequenceCell;
                     } else {

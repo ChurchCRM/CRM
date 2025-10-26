@@ -35,11 +35,11 @@ if (!empty($sHeader)) {
             <h2><?= gettext("Family Info") ?></h2>
             <section>
                 <div class="form-group has-feedback">
-                    <span class="fa fa-user form-control-feedback"></span>
+                    <span class="fa-solid fa-user form-control-feedback"></span>
                     <input id="familyName" name="familyName" type="text" class="form-control" placeholder="<?= gettext('Family Name') ?>" required>
                 </div>
                 <div class="form-group has-feedback">
-                    <span class="fa fa-envelope form-control-feedback"></span>
+                    <span class="fa-solid fa-envelope form-control-feedback"></span>
                     <input id="familyAddress1" name="familyAddress1" class="form-control" placeholder="<?= gettext('Address') ?>" required>
                 </div>
                 <div class="form-group has-feedback">
@@ -68,7 +68,7 @@ if (!empty($sHeader)) {
                 </div>
                 <div class="form-group has-feedback">
                     <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home Phone') ?>"  data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
-                    <span class="fa fa-phone form-control-feedback"></span>
+                    <span class="fa-solid fa-phone form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
                     <label><?= gettext('How many people are in your family') ?></label>
@@ -138,7 +138,7 @@ if (!empty($sHeader)) {
                             <div class="form-group has-feedback">
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="fa fa-envelope"></i>
+                                        <i class="fa-solid fa-envelope"></i>
                                     </div>
                                     <input id="memberEmail-<?= $x ?>" class="form-control" maxlength="50" placeholder="<?= gettext('Email') ?>" type="email">
                                 </div>
@@ -148,7 +148,7 @@ if (!empty($sHeader)) {
                                     <div class="col-lg-4">
                                         <div class="input-group">
                                             <div class="input-group-addon">
-                                                <i class="fa fa-phone"></i>
+                                                <i class="fa-solid fa-phone"></i>
                                             </div>
                                             <select id="memberPhoneType-<?= $x ?>" class="form-control">
                                                 <option value="mobile"><?= gettext('Mobile') ?></option>
@@ -170,7 +170,7 @@ if (!empty($sHeader)) {
                                     <div class="col-lg-6">
                                         <div class="input-group">
                                             <div class="input-group-addon">
-                                                <i class="fa fa-birthday-cake"></i>
+                                                <i class="fa-solid fa-birthday-cake"></i>
                                             </div>
                                             <input type="text" class="form-control inputDatePicker" id="memberBirthday-<?= $x ?>">
                                         </div>

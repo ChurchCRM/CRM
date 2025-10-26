@@ -267,7 +267,7 @@ function confirmDeleteField( Field ) {
 }
 </script>
 <div class="alert alert-warning">
-        <i class="fa fa-ban"></i>
+        <i class="fa-solid fa-ban"></i>
         <?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
 </div>
 <form method="post" action="FamilyCustomFieldsEditor.php" name="FamilyCustomFieldsEditor">
@@ -351,10 +351,10 @@ if ($numRows == 0) {
             <td class="TextColumn" width="5%" class="text-nowrap">
                 <?php
                 if ($row > 1) {
-                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa-solid fa-arrow-up"></i></a>';
                 }
                 if ($row < $numRows) {
-                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa-solid fa-arrow-down"></i></a>';
                 } ?>
             </td>
 

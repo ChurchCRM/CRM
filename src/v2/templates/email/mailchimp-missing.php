@@ -10,9 +10,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <table id="noEmails" class="table table-striped table-bordered table-responsive data-table">
+                <div class="table-responsive">
+                <table id="noEmails" class="table table-striped table-bordered data-table">
                     <tbody></tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
@@ -25,10 +27,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/mailchimp/list/<?= $listId ?>/missing",
                 dataSrc: 'members'
             },
+            responsive: false,
+            autoWidth: false,
             columns: [
                 {
                     title: i18next.t('Name'),
                     data: 'last',
+                    width: '30%',
                     render: function ( data, type, row ){
                         return row.first + " " + row.last;
                     },
@@ -37,10 +42,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 {
                     title: i18next.t('email'),
                     data: 'email',
+                    width: '40%'
                 },
                 {
                     title: i18next.t('Status'),
                     data: 'status',
+                    width: '30%'
                 },
             ]
         }

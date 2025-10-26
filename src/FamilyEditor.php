@@ -651,7 +651,7 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Home Phone') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" Name="HomePhone" value="<?= htmlentities(stripslashes($sHomePhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
                         <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
@@ -663,7 +663,7 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Work Phone') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="WorkPhone" value="<?= htmlentities(stripslashes($sWorkPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"' data-mask />
                         <input type="checkbox" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? ' checked' : '' ?>><?= gettext('Do not auto-format') ?>
@@ -673,7 +673,7 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Mobile Phone') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="CellPhone" value="<?= htmlentities(stripslashes($sCellPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
                         <input type="checkbox" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? ' checked' : '' ?>><?= gettext('Do not auto-format') ?>
@@ -685,7 +685,7 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Email') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-envelope"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
                         <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span class="text-danger"><?php echo '<BR>' . $sEmailError ?></span>
                     </div>

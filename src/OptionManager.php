@@ -326,13 +326,13 @@ for ($row = 1; $row <= $numRows; $row++) {
 
             <?php
             if ($row != 1) {
-                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=up"><i class="fa-solid fa-arrow-up"></i></a>';
             }
             if ($row < $numRows) {
-                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=down"><i class="fa-solid fa-arrow-down"></i></a>';
             }
             if ($numRows > 0) {
-                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=delete"><i class="fa fa-times"></i></a>';
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=delete"><i class="fa-solid fa-times"></i></a>';
             } ?>
 
         </td>
