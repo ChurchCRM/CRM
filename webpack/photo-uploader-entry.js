@@ -8,6 +8,11 @@
  * <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
  */
 
+// Import Uppy CSS
+import '@uppy/core/dist/style.min.css';
+import '@uppy/dashboard/dist/style.min.css';
+import '@uppy/webcam/dist/style.min.css';
+
 import { createPhotoUploader } from './photo-uploader.js';
 
 // Expose to global scope - this runs before Header-function.php

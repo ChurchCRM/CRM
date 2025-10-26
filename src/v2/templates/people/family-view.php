@@ -52,7 +52,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                             <i class="fa-solid fa-search-plus"></i>
                         </a>
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
-                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-info mr-1"
+                            <a href="<?= SystemURLs::getRootPath() ?>/v2/photo/upload/family/<?= $family->getId() ?>" class="btn btn-sm btn-info mr-1"
                                title="<?= gettext("Upload Photo") ?>">
                                 <i class="fa-solid fa-camera"></i>
                             </a>

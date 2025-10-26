@@ -1,6 +1,7 @@
 /**
  * Photo Uploader using Uppy
  * Simple, modern photo upload with webcam support
+ * Using INLINE mode for better compatibility
  */
 
 import Uppy from '@uppy/core';
@@ -13,25 +14,17 @@ import '@uppy/core/dist/style.min.css';
 import '@uppy/dashboard/dist/style.min.css';
 import '@uppy/webcam/dist/style.min.css';
 
-// Add minimal CSS fix to ensure modal starts hidden
-const style = document.createElement('style');
-style.textContent = `
-    .uppy-Dashboard--modal[aria-hidden="true"] {
-        display: none !important;
-    }
-`;
-document.head.appendChild(style);
-
 /**
- * Create a photo uploader instance
+ * Create a photo uploader instance with inline dashboard
  * 
  * @param {Object} config - Configuration options
  * @param {string} config.uploadUrl - Upload endpoint URL
+ * @param {string} config.target - CSS selector for container element
  * @param {number} config.maxFileSize - Maximum file size in bytes (default: 5MB)
  * @param {number} config.photoWidth - Target photo width
  * @param {number} config.photoHeight - Target photo height
  * @param {Function} config.onComplete - Callback after successful upload
- * @returns {Object} - Uppy instance with show() and hide() methods
+ * @returns {Object} - Uppy instance
  */
 export function createPhotoUploader(config) {
     const uppy = new Uppy({
@@ -44,13 +37,12 @@ export function createPhotoUploader(config) {
         }
     })
     .use(Dashboard, {
-        inline: false,
+        inline: true,
+        target: config.target || '#photo-uploader-container',
         proudlyDisplayPoweredByUppy: false,
         note: `Max file size: ${Math.round((config.maxFileSize || 5000000) / 1000000)}MB`,
-        closeModalOnClickOutside: true,
-        closeAfterFinish: false,
-        animateOpenClose: true,
-        showProgressDetails: false,
+        height: 400,
+        width: '100%',
         locale: {
             strings: {
                 dashboardWindowTitle: 'Upload Photo',
@@ -95,31 +87,6 @@ export function createPhotoUploader(config) {
         console.error('Upload error:', error);
     });
 
-    // Get dashboard plugin reference
-    const dashboard = uppy.getPlugin('Dashboard');
-    
-    uppy.on('dashboard:modal-closed', () => {
-        // Reset the uppy state to avoid focus retention
-        uppy.cancelAll();
-    });
-
-    // Add convenience methods
-    return {
-        show() {
-            if (!dashboard) {
-                console.error('[photo-uploader] Dashboard plugin not found!');
-                return;
-            }
-            dashboard.openModal();
-        },
-        hide() {
-            if (dashboard) {
-                dashboard.closeModal();
-            }
-        },
-        destroy() {
-            uppy.close();
-        },
-        instance: uppy
-    };
+    // Return the Uppy instance
+    return uppy;
 }

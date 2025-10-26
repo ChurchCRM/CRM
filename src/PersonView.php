@@ -203,7 +203,7 @@ $bOkToEdit = (
                                 <a id="view-larger-image-btn" class="hide" title="<?= gettext("View Photo") ?>">
                                     <i class="fa-solid fa-search-plus"></i>
                                 </a>&nbsp;
-                                <a id="uploadImageButton" class="" href="#" title="<?= gettext("Upload Photo") ?>">
+                                <a href="<?= SystemURLs::getRootPath() ?>/v2/photo/upload/person/<?= $iPersonID ?>" title="<?= gettext("Upload Photo") ?>">
                                     <i class="fa-solid fa-camera"></i>
                                 </a>&nbsp;
                                 <a data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
@@ -890,19 +890,9 @@ $bOkToEdit = (
         </div>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
-        <!-- Photo uploader bundle - loaded only on this page -->
-        <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM.currentPersonID = <?= $iPersonID ?>;
             window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
-            
-            // Copy photo uploader function from temporary storage to window.CRM
-            // This must happen after Header-function.php initializes window.CRM
-            if (window._CRM_createPhotoUploader) {
-                window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
-            } else {
-                console.error('Photo uploader function not found in window._CRM_createPhotoUploader');
-            }
 
             $("#deletePhoto").click(function() {
                 window.CRM.APIRequest({
@@ -910,30 +900,6 @@ $bOkToEdit = (
                     path: "person/<?= $iPersonID ?>/photo"
                 }).done(function(data) {
                     location.reload();
-                });
-            });
-
-            // Initialize photo uploader when document is ready
-            $(document).ready(function() {
-                if (typeof window.CRM.createPhotoUploader !== 'function') {
-                    console.error('window.CRM.createPhotoUploader is not a function');
-                    return;
-                }
-                
-                window.CRM.photoUploader = window.CRM.createPhotoUploader({
-                    uploadUrl: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
-                    maxFileSize: window.CRM.maxUploadSize,
-                    photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
-                    photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
-                    onComplete: function() {
-                        window.location.reload();
-                    }
-                });
-
-                // Set up click handler for upload button
-                $("#uploadImageButton").click(function(e) {
-                    e.preventDefault();
-                    window.CRM.photoUploader.show();
                 });
             });
 
