@@ -930,20 +930,36 @@ $bOkToEdit = (
                     }
                 });
 
-                // Initialize Uppy photo uploader
-                window.CRM.photoUploader = window.CRM.createPhotoUploader({
-                    uploadUrl: window.CRM.root + '/api/person/<?= $iPersonID ?>/photo',
-                    maxFileSize: window.CRM.maxUploadSizeBytes,
-                    photoWidth: <?= SystemConfig::getValue('iPhotoWidth') ?>,
-                    photoHeight: <?= SystemConfig::getValue('iPhotoHeight') ?>,
-                    onComplete: function(result) {
-                        window.location.reload();
-                    }
-                });
+                // Copy photo uploader function from temporary storage to window.CRM
+                if (window._CRM_createPhotoUploader) {
+                    window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+                } else {
+                    console.error('Photo uploader function not found in window._CRM_createPhotoUploader');
+                }
 
-                $("#uploadImageButton").click(function() {
-                    window.CRM.photoUploader.show();
-                });
+                // Initialize Uppy photo uploader
+                if (typeof window.CRM.createPhotoUploader === 'function') {
+                    window.CRM.photoUploader = window.CRM.createPhotoUploader({
+                        uploadUrl: window.CRM.root + '/api/person/<?= $iPersonID ?>/photo',
+                        maxFileSize: window.CRM.maxUploadSizeBytes,
+                        photoWidth: <?= SystemConfig::getValue('iPhotoWidth') ?>,
+                        photoHeight: <?= SystemConfig::getValue('iPhotoHeight') ?>,
+                        onComplete: function(result) {
+                            window.location.reload();
+                        }
+                    });
+
+                    $("#uploadImageButton").click(function(e) {
+                        e.preventDefault();
+                        if (window.CRM && window.CRM.photoUploader) {
+                            window.CRM.photoUploader.show();
+                        } else {
+                            console.error('Photo uploader not initialized!');
+                        }
+                    });
+                } else {
+                    console.error('window.CRM.createPhotoUploader is not a function');
+                }
 
             });
         </script>

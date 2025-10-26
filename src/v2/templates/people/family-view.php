@@ -537,7 +537,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
         
         window.CRM.photoUploader = window.CRM.createPhotoUploader({
             uploadUrl: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
-            maxFileSize: window.CRM.maxUploadSize,
+            maxFileSize: window.CRM.maxUploadSizeBytes,
             photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
             photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
             onComplete: function() {
