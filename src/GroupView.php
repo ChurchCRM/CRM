@@ -242,7 +242,7 @@ require_once 'Include/Header.php';
                             echo '<p><?= gettext("No member properties have been created")?></p>';
                         } else {
                             ?>
-                            <table width="100%" cellpadding="2" cellspacing="0">
+                            <table class="table w-100">
                                 <thead>
                                 <tr>
                                     <th><?= gettext('Type') ?></th>
@@ -280,7 +280,7 @@ require_once 'Include/Header.php';
                     } else {
                         // Display table of properties
                         ?>
-                            <table width="100%" cellpadding="2" cellspacing="0">
+                            <table class="table w-100">
                                 <thead>
                                 <tr>
                                     <th width="15%" class="align-top"><b><?= gettext('Type') ?></b></th>

@@ -170,7 +170,7 @@ require_once 'Include/Header.php';
     <b><?= gettext('Donated items for this fundraiser') ?>:</b>
     <br>
     <div class="table-responsive">
-        <table class="table" cellpadding="5" cellspacing="0" width="100%">
+        <table class="table w-100">
             <thead>
             <tr>
                 <th><?= gettext('Item') ?></th>
