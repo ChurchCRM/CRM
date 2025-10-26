@@ -492,7 +492,6 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
 <!-- Photos start -->
 <div id="photoUploader"></div>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
 
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog"
      aria-labelledby="delete-Image-label"

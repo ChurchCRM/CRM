@@ -25,6 +25,9 @@ import 'react-datepicker/dist/react-datepicker.min.css';
 import 'quill/dist/quill.snow.css';
 import { initializeQuillEditor } from './quill-editor.js';
 
+// Import Photo Uploader (Uppy)
+import { initializePhotoUploader } from './photo-uploader.js';
+
 import '../src/skin/churchcrm.scss';
 
 // Make Quill initialization function available globally
@@ -46,6 +49,9 @@ if (typeof window !== 'undefined') {
         });
         window._quillInitQueue = [];
     }
+    
+    // Make Photo Uploader initialization function available globally
+    window.initializePhotoUploader = initializePhotoUploader;
 }
 
 // Set global Select2 defaults for Bootstrap 4 theme and language

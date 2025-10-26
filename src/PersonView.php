@@ -892,7 +892,6 @@ $bOkToEdit = (
                 </div>
             </div>
         </div>
-        <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
