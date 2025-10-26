@@ -60,7 +60,7 @@ require_once 'Include/Header.php';
 <div class="card card-body">
 <form method="post" action="BatchWinnerEntry.php?<?= 'CurrentFundraiser=' . '&linkBack=' . $linkBack ?>" name="BatchWinnerEntry">
 <div class="table-responsive">
-<table class="table" cellpadding="2" class="mx-auto">
+<table class="table mx-auto">
     <tr>
         <td class="LabelColumn"><?= gettext('Item') ?></td>
         <td class="LabelColumn"><?= gettext('Winner') ?></td>

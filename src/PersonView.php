@@ -741,9 +741,10 @@ $bOkToEdit = (
                                         <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
                                     </div>
                                 <?php else : ?>
-                                    <table class="table table-condensed dt-responsive" id="assigned-properties-table" width="100%">
+                                    <div class="table-responsive">
+                                    <table class="table table-condensed w-100" id="assigned-properties-table">
                                         <thead>
-                                            <tr class="TableHeader">
+                                            <tr>
                                                 <th><?= gettext('Type') ?></th>
                                                 <th><?= gettext('Name') ?></th>
                                                 <th><?= gettext('Value') ?></th>
@@ -776,6 +777,7 @@ $bOkToEdit = (
                                             } ?>
                                         </tbody>
                                     </table>
+                                    </div>
                                 <?php endif; ?>
 
                                 <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
@@ -847,9 +849,10 @@ $bOkToEdit = (
                                     </div>
                                     <?php
                                 } else {
-                                    echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
+                                    echo '<div class="table-responsive">';
+                                    echo '<table class="table table-condensed w-100" id="assigned-volunteer-opps-table">';
                                     echo '<thead>';
-                                    echo '<tr class="TableHeader">';
+                                    echo '<tr>';
                                     echo '<th>' . gettext('Name') . '</th>';
                                     echo '<th>' . gettext('Description') . '</th>';
                                     if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
@@ -881,6 +884,7 @@ $bOkToEdit = (
                                     }
                                     echo '</tbody>';
                                     echo '</table>';
+                                    echo '</div>';
                                 } ?>
 
                                 <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() && $rsVolunteerOpps->num_rows) : ?>
