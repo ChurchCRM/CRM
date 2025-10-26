@@ -25,6 +25,27 @@ import '@uppy/webcam/dist/style.min.css';
  * @returns {Object} - Uppy instance with show() and hide() methods
  */
 export function createPhotoUploader(config) {
+    // Add custom styles to ensure modal appears above all other elements (only once)
+    if (!document.getElementById('uppy-modal-fix-styles')) {
+        const style = document.createElement('style');
+        style.id = 'uppy-modal-fix-styles';
+        style.textContent = `
+            /* Only apply positioning when modal is NOT hidden */
+            .uppy-Dashboard--modal:not([aria-hidden="true"]) {
+                z-index: 9999 !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+            .uppy-Dashboard--modal .uppy-Dashboard-overlay {
+                z-index: 9998 !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
     const uppy = new Uppy({
         id: 'photo-uploader',
         autoProceed: false,
@@ -42,6 +63,13 @@ export function createPhotoUploader(config) {
         height: 470,
         closeModalOnClickOutside: true,
         closeAfterFinish: false,
+        animateOpenClose: true,
+        showProgressDetails: true,
+        hideUploadButton: false,
+        hideCancelButton: false,
+        hideRetryButton: false,
+        hidePauseResumeButton: false,
+        disableStatusBar: false,
         locale: {
             strings: {
                 dashboardWindowTitle: 'Upload Photo',
@@ -86,13 +114,32 @@ export function createPhotoUploader(config) {
         console.error('Upload error:', error);
     });
 
+    // Handle Dashboard open/close for better focus management
+    const dashboard = uppy.getPlugin('Dashboard');
+    
+    uppy.on('dashboard:modal-open', () => {
+        // Clear any existing focus issues by letting Uppy handle it naturally
+        // The dashboard will manage focus automatically
+    });
+
+    uppy.on('dashboard:modal-closed', () => {
+        // Reset the uppy state to avoid focus retention
+        uppy.cancelAll();
+    });
+
     // Add convenience methods
     return {
         show() {
-            uppy.getPlugin('Dashboard').openModal();
+            if (!dashboard) {
+                console.error('[photo-uploader] Dashboard plugin not found!');
+                return;
+            }
+            dashboard.openModal();
         },
         hide() {
-            uppy.getPlugin('Dashboard').closeModal();
+            if (dashboard) {
+                dashboard.closeModal();
+            }
         },
         destroy() {
             uppy.close();

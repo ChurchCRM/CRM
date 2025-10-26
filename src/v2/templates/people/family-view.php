@@ -489,6 +489,8 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
+<!-- Photo uploader bundle - loaded only on this page -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
 
 <!-- Photos start -->
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog"
@@ -517,36 +519,36 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
     </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    // Initialize photo uploader when webpack bundle is fully loaded
+    // Copy photo uploader function from temporary storage to window.CRM
+    // This must happen after Header-function.php initializes window.CRM
+    if (window._CRM_createPhotoUploader) {
+        window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+    } else {
+        console.error('Photo uploader function not found in window._CRM_createPhotoUploader');
+    }
+
+    // Initialize photo uploader when window loads
     window.addEventListener('load', function() {
-        console.log('Window loaded, checking for createPhotoUploader...');
-        console.log('window.CRM:', window.CRM);
-        console.log('window.CRM.createPhotoUploader:', window.CRM ? window.CRM.createPhotoUploader : 'CRM not defined');
-        
-        if (window.CRM && window.CRM.createPhotoUploader) {
-            console.log('Initializing photo uploader...');
-            window.CRM.photoUploader = window.CRM.createPhotoUploader({
-                uploadUrl: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
-                maxFileSize: window.CRM.maxUploadSize,
-                photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
-                photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
-                onComplete: function() {
-                    location.reload();
-                }
-            });
-            console.log('Photo uploader initialized:', window.CRM.photoUploader);
-        } else {
-            console.error('createPhotoUploader not available!');
+        if (typeof window.CRM.createPhotoUploader !== 'function') {
+            console.error('window.CRM.createPhotoUploader is not a function');
+            return;
         }
+        
+        window.CRM.photoUploader = window.CRM.createPhotoUploader({
+            uploadUrl: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
+            maxFileSize: window.CRM.maxUploadSize,
+            photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+            photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
+            onComplete: function() {
+                location.reload();
+            }
+        });
     });
 
     // Set up click handlers (use event delegation)
     $(document).on('click', '#uploadImageButton', function(e) {
-        console.log('Upload button clicked!');
-        console.log('window.CRM.photoUploader:', window.CRM ? window.CRM.photoUploader : 'CRM not defined');
         e.preventDefault();
         if (window.CRM && window.CRM.photoUploader) {
-            console.log('Showing photo uploader...');
             window.CRM.photoUploader.show();
         } else {
             console.error('Photo uploader not initialized!');

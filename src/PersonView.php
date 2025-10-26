@@ -890,9 +890,19 @@ $bOkToEdit = (
         </div>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
+        <!-- Photo uploader bundle - loaded only on this page -->
+        <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM.currentPersonID = <?= $iPersonID ?>;
             window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
+            
+            // Copy photo uploader function from temporary storage to window.CRM
+            // This must happen after Header-function.php initializes window.CRM
+            if (window._CRM_createPhotoUploader) {
+                window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+            } else {
+                console.error('Photo uploader function not found in window._CRM_createPhotoUploader');
+            }
 
             $("#deletePhoto").click(function() {
                 window.CRM.APIRequest({
@@ -903,40 +913,28 @@ $bOkToEdit = (
                 });
             });
 
-            // Initialize photo uploader when available
-            window.addEventListener('load', function() {
-                console.log('Window loaded, checking for createPhotoUploader...');
-                console.log('window.CRM:', window.CRM);
-                console.log('window.CRM.createPhotoUploader:', window.CRM ? window.CRM.createPhotoUploader : 'CRM not defined');
+            // Initialize photo uploader when document is ready
+            $(document).ready(function() {
+                if (typeof window.CRM.createPhotoUploader !== 'function') {
+                    console.error('window.CRM.createPhotoUploader is not a function');
+                    return;
+                }
                 
-                if (window.CRM && window.CRM.createPhotoUploader) {
-                    console.log('Initializing photo uploader...');
-                    window.CRM.photoUploader = window.CRM.createPhotoUploader({
-                        uploadUrl: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
-                        maxFileSize: window.CRM.maxUploadSize,
-                        photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
-                        photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
-                        onComplete: function() {
-                            window.location.reload();
-                        }
-                    });
-                    console.log('Photo uploader initialized:', window.CRM.photoUploader);
-                } else {
-                    console.error('createPhotoUploader not available!');
-                }
-            });
+                window.CRM.photoUploader = window.CRM.createPhotoUploader({
+                    uploadUrl: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
+                    maxFileSize: window.CRM.maxUploadSize,
+                    photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+                    photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
+                    onComplete: function() {
+                        window.location.reload();
+                    }
+                });
 
-            // Set up click handler for upload button (use event delegation)
-            $(document).on('click', '#uploadImageButton', function(e) {
-                console.log('Upload button clicked!');
-                console.log('window.CRM.photoUploader:', window.CRM ? window.CRM.photoUploader : 'CRM not defined');
-                e.preventDefault();
-                if (window.CRM && window.CRM.photoUploader) {
-                    console.log('Showing photo uploader...');
+                // Set up click handler for upload button
+                $("#uploadImageButton").click(function(e) {
+                    e.preventDefault();
                     window.CRM.photoUploader.show();
-                } else {
-                    console.error('Photo uploader not initialized!');
-                }
+                });
             });
 
             $(document).ready(function() {
