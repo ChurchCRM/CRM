@@ -4,9 +4,11 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpForbiddenException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
@@ -47,6 +49,11 @@ function changepassword(Request $request, Response $response, array $args): Resp
 
         if ($request->getMethod() === 'POST') {
             $loginRequestBody = $request->getParsedBody();
+
+            // Validate CSRF token
+            if (!CSRFUtils::verifyRequest($loginRequestBody, 'user_change_password')) {
+                throw new HttpForbiddenException($request, 'Invalid CSRF token');
+            }
 
             try {
                 $curUser->userChangePassword($loginRequestBody['OldPassword'], $loginRequestBody['NewPassword1']);

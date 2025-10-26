@@ -5,6 +5,7 @@ use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\CSRFUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpForbiddenException;
@@ -87,6 +88,11 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
 
     if ($request->getMethod() === 'POST') {
         $loginRequestBody = $request->getParsedBody();
+
+        // Validate CSRF token
+        if (!CSRFUtils::verifyRequest($loginRequestBody, 'admin_change_password')) {
+            throw new HttpForbiddenException($request, 'Invalid CSRF token');
+        }
 
         try {
             $user->adminSetUserPassword($loginRequestBody['NewPassword1']);
