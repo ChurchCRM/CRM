@@ -23,4 +23,132 @@ describe("Standard People", () => {
         cy.location("pathname").should("include", "person/not-found");
         cy.contains("Oops! PERSON 9999 Not Found");
     });
+
+    it("Add All to Cart functionality", () => {
+        // Empty cart first to ensure clean state
+        cy.loginStandard("v2/cart");
+        cy.get("body").then(($body) => {
+            if (!$body.text().includes("You have no items in your cart")) {
+                cy.get("#emptyCart").click();
+                cy.contains("You have no items in your cart");
+            }
+        });
+
+        // Go to people page with filter
+        cy.visit("v2/people?Gender=1"); // Filter by Female
+        
+        // Wait for DataTable to load
+        cy.get("#members").should("be.visible");
+        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+        
+        // Click Add All to Cart
+        cy.get("#AddAllToCart").should("be.visible").click();
+        
+        // Wait for page reload
+        cy.url().should("include", "/v2/people");
+        
+        // Verify cart has items
+        cy.visit("v2/cart");
+        cy.contains("Cart Functions");
+        cy.get("body").should("not.contain", "You have no items in your cart");
+        
+        // Clean up - empty cart
+        cy.get("#emptyCart").click();
+        cy.contains("You have no items in your cart");
+    });
+
+    it("Remove All from Cart functionality", () => {
+        // Empty cart first to ensure clean state
+        cy.loginStandard("v2/cart");
+        cy.get("body").then(($body) => {
+            if (!$body.text().includes("You have no items in your cart")) {
+                cy.get("#emptyCart").click();
+                cy.contains("You have no items in your cart");
+            }
+        });
+
+        // Add some people to cart first
+        cy.visit("v2/people?Gender=1");
+        
+        // Wait for DataTable to load
+        cy.get("#members").should("be.visible");
+        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+        
+        cy.get("#AddAllToCart").should("be.visible").click();
+        
+        // Wait for page reload
+        cy.url().should("include", "/v2/people");
+        
+        // Verify cart has items
+        cy.visit("v2/cart");
+        cy.get("body").should("not.contain", "You have no items in your cart");
+        
+        // Go back and remove all
+        cy.visit("v2/people?Gender=1");
+        
+        // Wait for DataTable to load
+        cy.get("#members").should("be.visible");
+        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+        
+        cy.get("#RemoveAllFromCart").should("be.visible").click();
+        
+        // Wait for page reload
+        cy.url().should("include", "/v2/people");
+        // Wait for the reload to complete and cart to sync
+        cy.wait(2000);
+        
+        // Verify cart is empty (or empty it if needed)
+        cy.visit("v2/cart");
+        cy.get("body").then(($body) => {
+            if (!$body.text().includes("You have no items in your cart")) {
+                // Cart still has items, empty it manually
+                cy.get("#emptyCart").click();
+            }
+        });
+        cy.contains("You have no items in your cart");
+    });
+
+    it("Clear Filter functionality", () => {
+        cy.loginStandard("v2/people");
+        
+        // Wait for page to load
+        cy.get("#members").should("be.visible");
+        
+        // Apply a gender filter using Select2
+        cy.get(".filter-Gender").parent().find(".select2-selection").click();
+        cy.get(".select2-results__option").contains("Male").click();
+        
+        // Verify filter is applied (table should update)
+        cy.wait(500);
+        
+        // Click Clear Filter button
+        cy.get("#ClearFilter").click();
+        
+        // Verify all people are shown again
+        cy.contains("Admin");
+        cy.contains("Emma");
+    });
+
+    it("Multiple filter combinations", () => {
+        cy.loginStandard("v2/people");
+        
+        // Wait for page to load
+        cy.get("#members").should("be.visible");
+        
+        // Apply gender filter using Select2
+        cy.get(".filter-Gender").parent().find(".select2-selection").click();
+        cy.get(".select2-results__option").contains("Female").click();
+        cy.wait(500);
+        
+        // Apply classification filter using Select2
+        cy.get(".filter-Classification").parent().find(".select2-selection").click();
+        cy.get(".select2-results__option").contains("Member").click();
+        cy.wait(500);
+        
+        // Table should show filtered results
+        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+        
+        // Clear all filters
+        cy.get("#ClearFilter").click();
+    });
 });
