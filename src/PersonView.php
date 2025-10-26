@@ -867,10 +867,6 @@ $bOkToEdit = (
             </div>
         </div>
         <!-- Modal -->
-        <div id="photoUploader">
-
-        </div>
-
         <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -907,19 +903,40 @@ $bOkToEdit = (
                 });
             });
 
-            window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-                url: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
-                maxPhotoSize: window.CRM.maxUploadSize,
-                photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
-                photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
-                done: function(e) {
-                    window.location.reload();
+            // Initialize photo uploader when available
+            window.addEventListener('load', function() {
+                console.log('Window loaded, checking for createPhotoUploader...');
+                console.log('window.CRM:', window.CRM);
+                console.log('window.CRM.createPhotoUploader:', window.CRM ? window.CRM.createPhotoUploader : 'CRM not defined');
+                
+                if (window.CRM && window.CRM.createPhotoUploader) {
+                    console.log('Initializing photo uploader...');
+                    window.CRM.photoUploader = window.CRM.createPhotoUploader({
+                        uploadUrl: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
+                        maxFileSize: window.CRM.maxUploadSize,
+                        photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+                        photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
+                        onComplete: function() {
+                            window.location.reload();
+                        }
+                    });
+                    console.log('Photo uploader initialized:', window.CRM.photoUploader);
+                } else {
+                    console.error('createPhotoUploader not available!');
                 }
             });
 
-            $("#uploadImageButton").click(function(e) {
+            // Set up click handler for upload button (use event delegation)
+            $(document).on('click', '#uploadImageButton', function(e) {
+                console.log('Upload button clicked!');
+                console.log('window.CRM.photoUploader:', window.CRM ? window.CRM.photoUploader : 'CRM not defined');
                 e.preventDefault();
-                window.CRM.photoUploader.show();
+                if (window.CRM && window.CRM.photoUploader) {
+                    console.log('Showing photo uploader...');
+                    window.CRM.photoUploader.show();
+                } else {
+                    console.error('Photo uploader not initialized!');
+                }
             });
 
             $(document).ready(function() {
