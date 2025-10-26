@@ -211,7 +211,7 @@ require_once '../Include/Header.php';
   <!-- /.box-header -->
   <div class="card-body table-responsive">
     <h4 class="birthday-filter d-none"><?= gettext('Showing students with birthdays in') ?><span class="month"></span> <i style="cursor:pointer;" class="icon fa-solid fa-close text-danger"></i></h4>
-    <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+    <table id="sundayschool" class="table table-striped table-bordered data-table w-100">
       <thead>
       <tr>
         <th></th>

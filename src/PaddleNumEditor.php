@@ -132,7 +132,7 @@ require_once 'Include/Header.php';
 <div class="card card-body">
     <form method="post" action="PaddleNumEditor.php?<?= 'CurrentFundraiser=' . $iCurrentFundraiser . '&PaddleNumID=' . $iPaddleNumID . '&linkBack=' . $linkBack ?>" name="PaddleNumEditor">
         <div class="table-responsive">
-            <table class="table" cellpadding="3" class="mx-auto">
+            <table class="table mx-auto">
                 <tr>
                     <td class="text-center">
                         <input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">

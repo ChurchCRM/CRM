@@ -10,7 +10,8 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     <h3 class="card-title"><?= $ListTitleText ?></h3>
   </div>
   <div class="card-body">
-    <table class="table table-hover dt-responsive w-100" id="cart-listing-table">
+    <div class="table-responsive">
+    <table class="table table-hover w-100" id="cart-listing-table">
       <thead>
         <tr>
           <th><?= gettext('Name') ?></th>
@@ -42,6 +43,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
         ?>
       </tbody>
     </table>
+    </div>
   </div>
 </div>
 

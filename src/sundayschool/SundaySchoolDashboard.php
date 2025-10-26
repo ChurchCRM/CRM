@@ -146,7 +146,7 @@ require_once '../Include/Header.php';
       </div>
   </div>
   <div class="card-body">
-    <table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+    <table id="sundayschoolMissing" class="table table-striped table-bordered data-table w-100">
       <thead>
       <tr>
         <th></th>
@@ -190,7 +190,7 @@ require_once '../Include/Header.php';
   </div>
   <!-- /.box-header -->
   <div class="card-body table-responsive">
-    <table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+    <table id="sundayschoolMissing" class="table table-striped table-bordered data-table w-100">
       <thead>
       <tr>
         <th></th>

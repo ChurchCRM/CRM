@@ -13,9 +13,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><?= _("Families Without Emails") ?></h3>
             </div>
             <div class="card-body">
-                <table id="noEmails" class="table table-striped table-bordered table-responsive data-table">
+                <div class="table-responsive">
+                <table id="noEmails" class="table table-striped table-bordered data-table">
                     <tbody></tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
@@ -28,10 +30,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/families/email/without",
                 dataSrc: 'families'
             },
+            responsive: false,
+            autoWidth: false,
             columns: [
                 {
                     title: i18next.t('Family'),
                     data: 'Name',
+                    width: '40%',
                     render: function ( data, type, row ){
                         return "<a href='"+ window.CRM.root + "/v2/family/" + row.Id + "' target='family' />"+ data + "</a></li>";
                     },
@@ -40,6 +45,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 {
                     title: i18next.t('Address'),
                     data: 'Address',
+                    width: '60%'
                 },
             ]
         }
