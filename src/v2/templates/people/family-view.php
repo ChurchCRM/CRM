@@ -39,7 +39,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                     <div class="card-header">
                         <h3 class="card-title"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
                         <div class="card-tools pull-right">
-                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-pen"></i>
+                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa-solid fa-pen"></i>
                             </button>
                         </div>
                     </div>
@@ -50,17 +50,17 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                             <div class="after">
                                 <div class="buttons">
                                     <a id="view-larger-image-btn" href="#" title="<?= gettext("View Photo") ?>">
-                                        <i class="fa fa-search-plus"></i>
+                                        <i class="fa-solid fa-search-plus"></i>
                                     </a>
                                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
                                         &nbsp;
                                         <a href="#" data-toggle="modal" data-target="#upload-image"
                                            title="<?= gettext("Upload Photo") ?>">
-                                            <i class="fa fa-camera"></i>
+                                            <i class="fa-solid fa-camera"></i>
                                         </a>&nbsp;
                                         <a href="#" data-toggle="modal" data-target="#confirm-delete-image"
                                            title="<?= gettext("Delete Photo") ?>">
-                                            <i class="fa fa-trash-can"></i>
+                                            <i class="fa-solid fa-trash-can"></i>
                                         </a>
                                     <?php endif; ?>
                                 </div>
@@ -75,21 +75,21 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                         <br/>
                         <div class="text-center">
                             <a class="btn btn-app" id="lastFamily"><i
-                                        class="fa fa-hand-point-left"></i><?= gettext('Previous Family') ?></a>
+                                        class="fa-solid fa-hand-point-left"></i><?= gettext('Previous Family') ?></a>
 
                             <a class="btn btn-app btn-danger" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family"><i
-                                        class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
+                                        class="fa-solid fa-list-ul"></i><?= gettext('Family List') ?></a>
 
                             <a class="btn btn-app" role="button" id="nextFamily" ><i
-                                        class="fa fa-hand-point-right"></i><?= gettext('Next Family') ?> </a>
+                                        class="fa-solid fa-hand-point-right"></i><?= gettext('Next Family') ?> </a>
                         </div>
                         <hr/>
                         <div class="text-center">
                         <a class="btn btn-sm btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
-                                class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
+                                class="fa-solid fa-check-square"></i> <?= gettext("Verify Info") ?></a>
                         <a class="btn btn-app bg-olive"
                            href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
-                                class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
+                                class="fa-solid fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
 
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                             <button class="btn btn-app bg-orange" id="activateDeactivate">
@@ -100,22 +100,22 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                             ?>
                             <a id="deleteFamilyBtn" class="btn btn-app bg-maroon"
                                href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
-                                        class="fa fa-trash-can"></i><?= gettext('Delete this Family') ?></a>
+                                        class="fa-solid fa-trash-can"></i><?= gettext('Delete this Family') ?></a>
                             <?php
                         }
                         if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
                             ?>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>"><i
-                                    class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
+                                    class="fa-solid fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                             <?php
                         } ?>
                         <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
-                                class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
+                                class="fa-solid fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
                         <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
-                                <i class="fa fa-hand-holding-dollar"></i><?= gettext("Add a new pledge") ?></a>
+                                <i class="fa-solid fa-hand-holding-dollar"></i><?= gettext("Add a new pledge") ?></a>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
                                 <i class="fa-solid fa-money-bill-transfer"></i><?= gettext("Add a new payment") ?></a>
@@ -129,10 +129,10 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             <div class="col-lg-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title"> <i class="fa fa-thumbtack"></i> <?= gettext("Metadata") ?></h3>
+                        <h3 class="card-title"> <i class="fa-solid fa-thumbtack"></i> <?= gettext("Metadata") ?></h3>
                         <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
-                                    class="fa fa-pen"></i>
+                                    class="fa-solid fa-pen"></i>
                             </button>
                         </div>
                     </div>
@@ -141,48 +141,48 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
                             <?php
                             if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
-                                <li><i class="fa-li fa fa-newspaper"></i><?= gettext("Send Newsletter") ?>:
+                                <li><i class="fa-li fa-solid fa-newspaper"></i><?= gettext("Send Newsletter") ?>:
                                     <span style="color:<?= ($family->isSendNewsletter() ? "green" : "red") ?>"><i
-                                            class="fa fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
+                                            class="fa-solid fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                                 </li>
                                 <?php
                             }
                             if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { /* Wedding Date can be hidden - General Settings */ ?>
-                                <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
+                                <li><i class="fa-li fa-solid fa-magic"></i><?= gettext("Wedding Date") ?>:
                                     <span><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></span></li>
                                 <?php
                             }
                             if (SystemConfig::getValue("bUseDonationEnvelopes")) {
                                 ?>
-                                <li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?>
+                                <li><i class="fa-li fa-solid fa-phone"></i><?= gettext("Envelope Number") ?>
                                     <span><?= $family->getEnvelope() ?></span>
                                 </li>
                                 <?php
                             }
                             if (!empty($family->getHomePhone())) {
                                 ?>
-                                <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone") ?>: <span><a
+                                <li><i class="fa-li fa-solid fa-phone"></i><?= gettext("Home Phone") ?>: <span><a
                                             href="tel:<?= $family->getHomePhone() ?>"><?= $family->getHomePhone() ?></a></span>
                                 </li>
                                 <?php
                             }
                             if ($family->getWorkPhone() !== "") {
                                 ?>
-                                <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone") ?>: <span><a
+                                <li><i class="fa-li fa-solid fa-building"></i><?= gettext("Work Phone") ?>: <span><a
                                             href="tel:<?= $family->getWorkPhone() ?>"><?= $family->getWorkPhone() ?></a></span>
                                 </li>
                                 <?php
                             }
                             if ($family->getCellPhone() !== "") {
                                 ?>
-                                <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone") ?>: <span><a
+                                <li><i class="fa-li fa-solid fa-mobile"></i><?= gettext("Mobile Phone") ?>: <span><a
                                             href="tel:<?= $family->getCellPhone() ?>"><?= $family->getCellPhone() ?></a></span>
                                 </li>
                                 <?php
                             }
                             if ($family->getEmail() !== "") {
                                 ?>
-                                <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email") ?>:<a
+                                <li><i class="fa-li fa-solid fa-envelope"></i><?= gettext("Email") ?>:<a
                                         href="mailto:<?= $family->getEmail() ?>">
                                         <span><?= $family->getEmail() ?></span></a></li>
                                 <?php if ($mailchimp->isActive()) { ?>
@@ -209,10 +209,10 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"> <i class="fa fa-people-roof"></i> <?= gettext("Family Members") ?></h3>
+                        <h3 class="card-title"> <i class="fa-solid fa-people-roof"></i> <?= gettext("Family Members") ?></h3>
                         <div class="card-tools pull-right">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fa fa-minus"></i>
+                                    class="fa-solid fa-minus"></i>
                             </button>
 
                         </div>
@@ -228,16 +228,16 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                             <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
                                         </a>
                                         <p class="text-muted text-center"><i
-                                                class="fa fa-fw fa-<?= ($person->isMale() ? "male" : "female") ?>"></i> <?= $person->getFamilyRoleName() ?>
+                                                class="fa-solid fa-fw fa-<?= ($person->isMale() ? "male" : "female") ?>"></i> <?= $person->getFamilyRoleName() ?>
                                         </p>
 
                                         <p class="text-center">
                                             <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                                <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-cart-plus"></i></button>
+                                                <button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-cart-plus"></i></button>
                                             </a>
 
                                             <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="table-link">
-                                                <button type="button" class="btn btn-xs btn-primary"><i class="fas fa-pen"></i></button>
+                                                <button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button>
                                             </a>
                                             <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                                data-person_id="<?= $person->getId() ?>" data-view="family">
@@ -252,33 +252,33 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
                                                 <?php if (!empty($person->getHomePhone())) { ?>
-                                                    <i class="fa fa-fw fa-phone"
+                                                    <i class="fa-solid fa-fw fa-phone"
                                                        title="<?= gettext("Home Phone") ?>"></i>(H) <?= $person->getHomePhone() ?>
                                                     <br/>
                                                 <?php }
                                                 if (!empty($person->getWorkPhone())) { ?>
-                                                    <i class="fa fa-fw fa-briefcase"
+                                                    <i class="fa-solid fa-fw fa-briefcase"
                                                        title="<?= gettext("Work Phone") ?>"></i>(W) <?= $person->getWorkPhone() ?>
                                                     <br/>
                                                 <?php }
                                                 if (!empty($person->getCellPhone())) { ?>
-                                                    <i class="fa fa-fw fa-mobile"
+                                                    <i class="fa-solid fa-fw fa-mobile"
                                                        title="<?= gettext("Mobile Phone") ?>"></i>(M) <?= $person->getCellPhone() ?>
                                                     <br/>
                                                 <?php }
                                                 if (!empty($person->getEmail())) { ?>
-                                                    <i class="fa fa-fw fa-envelope"
+                                                    <i class="fa-solid fa-fw fa-envelope"
                                                        title="<?= gettext("Email") ?>"></i>(H) <?= $person->getEmail() ?>
                                                     <br/>
                                                 <?php }
                                                 if (!empty($person->getWorkEmail())) { ?>
-                                                    <i class="fa fa-fw fa-inbox"
+                                                    <i class="fa-solid fa-fw fa-inbox"
                                                        title="<?= gettext("Work Email") ?>"></i>(W) <?= $person->getWorkEmail() ?>
                                                     <br/>
                                                 <?php }
                                                 $formattedBirthday = $person->getFormattedBirthDate();
                                                 if ($formattedBirthday) {?>
-                                                <i class="fa fa-fw fa-birthday-cake"
+                                                <i class="fa-solid fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
                                                     <?= $formattedBirthday ?>  <?= $person->getAge() ?? sprintf('(%s)', gettext('not found')) ?>
                                                 </i>
@@ -300,16 +300,16 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"><i class="fa fa-hashtag"></i> <?= gettext("Properties") ?></h3>
+                <h3 class="card-title"><i class="fa-solid fa-hashtag"></i> <?= gettext("Properties") ?></h3>
                 <div class="card-tools pull-right">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool" style="display: block;">
-                        <i class="fa fa-plus-circle text-blue"></i>
+                        <i class="fa-solid fa-plus-circle text-blue"></i>
                     </button>
                     <?php } ?>
 
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fa fa-minus"></i>
+                        <i class="fa-solid fa-minus"></i>
                     </button>
                 </div>
             </div>
@@ -317,12 +317,12 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
                 <div id="family-property-loading" class="col-xs-12 text-center">
                     <i class="btn btn-default btn-lrg ajax">
-                        <i class="fa fa-spin fa-spinner"></i>&nbsp; <?= gettext("Loading") ?>
+                        <i class="fa-solid fa-spin fa-spinner"></i>&nbsp; <?= gettext("Loading") ?>
                     </i>
                 </div>
 
                 <div id="family-property-no-data" class="alert alert-warning" style="display: block;">
-                    <i class="fa fa-question-circle fa-fw fa-lg"></i>
+                    <i class="fa-solid fa-question-circle fa-fw fa-lg"></i>
                     <span><?= gettext("No property assignments.") ?></span>
                 </div>
 
@@ -343,11 +343,11 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="fa fa-map"></i> <?= gettext("Address") ?></h3>
+                        <h3 class="card-title"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?></h3>
                         <div class="card-tools pull-right">
-                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-pen"></i>
+                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa-solid fa-pen"></i>
                             </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
                             </button>
                         </div>
                     </div>
@@ -382,9 +382,9 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
         <!-- Maps End -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"><i class="fa fa-history"></i> <?= gettext("Timeline") ?></h3>
+                <h3 class="card-title"><i class="fa-solid fa-history"></i> <?= gettext("Timeline") ?></h3>
                 <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
                     </button>
                 </div>
             </div>
@@ -408,15 +408,15 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                                         ?>
                                         <?php if (isset($item["editLink"])) { ?>
-                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pen"></i></button></a>
+                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button></a>
                                         <?php }
                                         if (isset($item["deleteLink"])) { ?>
-                                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
+                                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa-solid fa-trash"></i></button></a>
                                         <?php } ?>
                                         &nbsp;
                                         <?php
                                     } ?>
-                                <i class="fa fa-clock"></i> <?= $item['datetime'] ?></span>
+                                <i class="fa-solid fa-clock"></i> <?= $item['datetime'] ?></span>
                                 <?php if ($item['slim']) { ?>
                                     <h4 class="timeline-header">
                                         <?= $item['text'] ?> <?= gettext($item['header']) ?>
@@ -458,7 +458,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fa fa-circle-dollar-to-slot"></i> <?= gettext("Pledges and Payments") ?></h3>
+                    <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext("Pledges and Payments") ?></h3>
                     <div class="card-tools pull-right">
                         <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::getCurrentUser()->isShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
                         <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::getCurrentUser()->isShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
@@ -558,16 +558,16 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                     ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i
-                            class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
+                            class="fa-solid fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
                     <?php
                 } ?>
                 <button type="button" id="verifyURL"
-                        class="btn btn-default"><i class="fa fa-link"></i> <?= gettext("URL") ?></button>
+                        class="btn btn-default"><i class="fa-solid fa-link"></i> <?= gettext("URL") ?></button>
                 <button type="button" id="verifyDownloadPDF"
-                        class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF") ?></button>
+                        class="btn btn-info"><i class="fa-solid fa-download"></i> <?= gettext("PDF") ?></button>
                 <button type="button" id="verifyNow"
-                        class="btn btn-success"><i class="fa fa-check"></i> <?= gettext("Verified In Person") ?>
+                        class="btn btn-success"><i class="fa-solid fa-check"></i> <?= gettext("Verified In Person") ?>
                 </button>
             </div>
         </div>

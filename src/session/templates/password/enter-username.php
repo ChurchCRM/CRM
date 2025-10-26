@@ -29,7 +29,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                 <input id="username" type="text" class="form-control" placeholder="<?= gettext('Login Name') ?>" required autofocus>
                 <div class="input-group-append">
                     <div class="input-group-text">
-                        <span class="fas fa-user form-control-feedback"></span>
+                        <span class="fa-solid fa-user form-control-feedback"></span>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
         $("#resetPassword").click(function (e) {
             var userName = $("#username").val();
             if (userName) {
-                $("#resetStatusText").html(i18next.t('Requesting Password Reset')+'<i class="fa fa-circle-notch fa-spin"></i>');
+                $("#resetStatusText").html(i18next.t('Requesting Password Reset')+'<i class="fa-solid fa-circle-notch fa-spin"></i>');
                 $.ajax({
                     method: "POST",
                     url: "<?= $PasswordResetXHREndpoint ?>",

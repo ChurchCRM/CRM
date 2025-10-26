@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                         <input type="text" id="UserBox" name="User"  class="form-control" placeholder="<?= gettext('Email/Username') ?>" value="<?= $prefilledUserName ?>" required autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fa-solid fa-envelope"></span>
                             </div>
                         </div>
                     </div>

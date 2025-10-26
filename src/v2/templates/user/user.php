@@ -12,7 +12,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header">
                 <div class="card-title"><?= _("Login Info") ?></div>
                 <div class="card-tools">
-                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary float-end"><i class="fas fa-user-pen"></i> <?= _("Edit") ?> </a>
+                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary float-end"><i class="fa-solid fa-user-pen"></i> <?= _("Edit") ?> </a>
                 </div>
             </div>
             <div class="card-body">
@@ -29,7 +29,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </form>
                 <br/>
                 <p/>
-                <a id="regenApiKey" class="btn btn-warning"><i class="fa fa-repeat"></i> <?= _("Regen API Key")?> </a>
+                <a id="regenApiKey" class="btn btn-warning"><i class="fa-solid fa-repeat"></i> <?= _("Regen API Key")?> </a>
             </div>
         </div>
     </div>

@@ -601,7 +601,7 @@ require_once 'Include/Header.php';
 ?>
 <form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?>" name="PersonEditor">
     <div class="alert alert-info alert-dismissable">
-        <i class="fa fa-info"></i>
+        <i class="fa-solid fa-info"></i>
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong><span
                 class="text-danger"><?= gettext('Red text') ?></span></strong> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
@@ -609,7 +609,7 @@ require_once 'Include/Header.php';
     <?php if ($bErrorFlag) {
         ?>
         <div class="alert alert-danger alert-dismissable">
-            <i class="fa fa-ban"></i>
+            <i class="fa-solid fa-ban"></i>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <?= gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') ?>
         </div>
@@ -967,7 +967,7 @@ require_once 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="HomePhone"
                                value="<?= htmlentities(stripslashes($sHomePhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -991,7 +991,7 @@ require_once 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="WorkPhone"
                                value="<?= htmlentities(stripslashes($sWorkPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1017,7 +1017,7 @@ require_once 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="CellPhone"
                                value="<?= htmlentities(stripslashes($sCellPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1044,7 +1044,7 @@ require_once 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-envelope"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
                         <input type="text" name="Email" id="Email"
                                value="<?= htmlentities(stripslashes($sEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1058,7 +1058,7 @@ require_once 'Include/Header.php';
                     <label for="WorkEmail"><?= gettext('Work / Other Email') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-envelope"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
                         <input type="text" name="WorkEmail"
                                value="<?= htmlentities(stripslashes($sWorkEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1152,7 +1152,7 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Membership Date') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
+                            <i class="fa-solid fa-calendar"></i>
                         </div>
                         <!-- Philippe Logel -->
                         <input type="text" name="MembershipDate" class="form-control date-picker"
@@ -1169,7 +1169,7 @@ require_once 'Include/Header.php';
                         <label><?= gettext('Friend Date') ?>:</label>
                         <div class="input-group">
                             <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
+                                <i class="fa-solid fa-calendar"></i>
                             </div>
                             <input type="text" name="FriendDate" class="form-control date-picker"
                                    value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10" id="sel2"

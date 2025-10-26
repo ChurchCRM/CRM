@@ -12,7 +12,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
   <div class="error-page">
     <h2 class="headline text-yellow">404</h2>
     <div class="error-content">
-      <h3><i class="fa fa-triangle-exclamation text-yellow"></i><?= gettext("Authentication Issue") ?></h3>
+      <h3><i class="fa-solid fa-triangle-exclamation text-yellow"></i><?= gettext("Authentication Issue") ?></h3>
       <p/>
       <h4><?= $message ?></h4>
     </div>

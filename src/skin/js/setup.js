@@ -60,7 +60,7 @@ window.CRM.renderPrerequisite = function (prerequisite) {
     } else if (prerequisite.Satisfied === "pending") {
         td = {
             class: "text-orange",
-            html: '<i class="fa fa-spinner fa-spin"></i>',
+            html: '<i class="fa-solid fa-spinner fa-spin"></i>',
         };
     } else if (prerequisite.Satisfied === false) {
         td = {

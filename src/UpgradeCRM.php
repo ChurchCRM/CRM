@@ -38,7 +38,7 @@ Header_body_scripts();
     if (count($preUpgradeTasks) > 0) {
         ?>
     <div>
-      <i class="fa fa-bomb bg-red"></i>
+      <i class="fa-solid fa-bomb bg-red"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Warning: Pre-Upgrade Tasks Detected') ?> <span id="status1"></span></h3>
         <div class="timeline-body" id="preUpgradeCheckWarning">
@@ -68,7 +68,7 @@ Header_body_scripts();
     if (AppIntegrityService::getIntegrityCheckStatus() === gettext("Failed")) {
         ?>
     <div>
-      <i class="fa fa-bomb bg-red"></i>
+      <i class="fa-solid fa-bomb bg-red"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Warning: Signature mismatch') ?> <span id="status1"></span></h3>
         <div class="timeline-body" id="integrityCheckWarning" <?= count($preUpgradeTasks) > 0 ? 'style="display:none"' : '' ?>>
@@ -115,7 +115,7 @@ Header_body_scripts();
     }
     ?>
     <div>
-      <i class="fa fa-database bg-blue"></i>
+      <i class="fa-solid fa-database bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 1: Backup Database') ?> <span id="status1"></span></h3>
         <div class="timeline-body" id="backupPhase" <?= (AppIntegrityService::getIntegrityCheckStatus() === gettext("Failed") || count($preUpgradeTasks) > 0) ? 'style="display:none"' : '' ?>>
@@ -128,7 +128,7 @@ Header_body_scripts();
       </div>
     </div>
     <div>
-      <i class="fa fa-cloud-download bg-blue"></i>
+      <i class="fa-solid fa-cloud-download bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 2: Fetch Update Package on Server') ?> <span id="status2"></span></h3>
         <div class="timeline-body" id="fetchPhase" <?= $expertMode ? '' : 'style="display: none"' ?>>
@@ -138,7 +138,7 @@ Header_body_scripts();
       </div>
     </div>
     <div>
-      <i class="fa fa-cogs bg-blue"></i>
+      <i class="fa-solid fa-cogs bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 3: Apply Update Package on Server') ?> <span id="status3"></span></h3>
         <div class="timeline-body" id="updatePhase" <?= $expertMode ? '' : 'style="display: none"' ?>>
@@ -156,7 +156,7 @@ Header_body_scripts();
       </div>
     </div>
     <div>
-      <i class="fa fa-right-to-bracket bg-blue"></i>
+      <i class="fa-solid fa-right-to-bracket bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 4: Login') ?></h3>
         <div class="timeline-body" id="finalPhase" <?= $expertMode ? '' : 'style="display: none"' ?>>
@@ -186,7 +186,7 @@ Header_body_scripts();
   });
 
  $("#doBackup").click(function(){
-   $("#status1").html('<i class="fa fa-circle-notch fa-spin"></i>');
+   $("#status1").html('<i class="fa-solid fa-circle-notch fa-spin"></i>');
    window.CRM.APIRequest({
       method : 'POST',
       path : 'database/backup',
@@ -199,11 +199,11 @@ Header_body_scripts();
       $("#backupstatus").css("color","green");
       $("#backupstatus").html("<?= gettext('Backup Complete, Ready for Download.') ?>");
       $("#resultFiles").html(downloadButton);
-      $("#status1").html('<i class="fa fa-check" style="color:orange"></i>');
+      $("#status1").html('<i class="fa-solid fa-check" style="color:orange"></i>');
       $("#downloadbutton").click(function(){
         $("#fetchPhase").show("slow");
         $("#backupPhase").slideUp();
-        $("#status1").html('<i class="fa fa-check text-success"></i>');
+        $("#status1").html('<i class="fa-solid fa-check text-success"></i>');
       });
     }).fail(function()  {
       $("#backupstatus").css("color","red");
@@ -213,12 +213,12 @@ Header_body_scripts();
  });
 
  $("#fetchUpdate").click(function(){
-    $("#status2").html('<i class="fa fa-circle-notch fa-spin"></i>');
+    $("#status2").html('<i class="fa-solid fa-circle-notch fa-spin"></i>');
     window.CRM.APIRequest({
       type : 'GET',
       path  : 'systemupgrade/downloadlatestrelease',
     }).done(function(data){
-      $("#status2").html('<i class="fa fa-check text-success"></i>');
+      $("#status2").html('<i class="fa-solid fa-check text-success"></i>');
       window.CRM.updateFile=data;
       $("#updateFileName").text(data.fileName);
       $("#updateFullPath").text(data.fullPath);
@@ -231,7 +231,7 @@ Header_body_scripts();
  });
 
  $("#applyUpdate").click(function(){
-   $("#status3").html('<i class="fa fa-circle-notch fa-spin"></i>');
+   $("#status3").html('<i class="fa-solid fa-circle-notch fa-spin"></i>');
    $("#updatePhase").slideUp();
    window.CRM.APIRequest({
       method : 'POST',
@@ -241,7 +241,7 @@ Header_body_scripts();
         sha1: window.CRM.updateFile.sha1
       })
     }).done(function(data){
-      $("#status3").html('<i class="fa fa-check text-success"></i>');
+      $("#status3").html('<i class="fa-solid fa-check text-success"></i>');
       $("#finalPhase").show("slow");
     });
  });

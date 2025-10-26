@@ -139,12 +139,12 @@ function initDepositSlipEditor() {
             // This row is already open - close it
             row.child.hide();
             tr.removeClass("shown");
-            $(this).html('<i class="fa fa-plus-circle"></i>');
+            $(this).html('<i class="fa-solid fa-plus-circle"></i>');
         } else {
             // Open this row
             row.child(format(row.data())).show();
             tr.addClass("shown");
-            $(this).html('<i class="fa fa-minus-circle"></i>');
+            $(this).html('<i class="fa-solid fa-minus-circle"></i>');
         }
     });
 

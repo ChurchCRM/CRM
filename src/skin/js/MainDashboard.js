@@ -18,7 +18,7 @@ $(document).ready(function () {
                     window.CRM.root +
                     "/FamilyEditor.php?FamilyID=" +
                     row.FamilyId +
-                    '"><button class="btn btn-default"><i class="fas fa-pen"></i></button></a>'
+                    '"><button class="btn btn-default"><i class="fa-solid fa-pen"></i></button></a>'
                 );
             },
             searchable: false,
@@ -153,12 +153,12 @@ $(document).ready(function () {
                     window.CRM.root +
                     "/PersonView.php?PersonID=" +
                     row.PersonId +
-                    '"><button class="btn btn-default"><i class="fa fa-search-plus"></i></button></a> ' +
+                    '"><button class="btn btn-default"><i class="fa-solid fa-search-plus"></i></button></a> ' +
                     '<a href="' +
                     window.CRM.root +
                     "/PersonView.php?PersonID=" +
                     row.PersonId +
-                    '"><button class="btn btn-default"><i class="fas fa-pen"></i></button></a>'
+                    '"><button class="btn btn-default"><i class="fa-solid fa-pen"></i></button></a>'
                 );
             },
             searchable: false,

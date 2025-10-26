@@ -219,8 +219,8 @@ function DoQuery()
                 <td>
                     <a class="AddToPeopleCart"  data-cartpersonid="<?= $aRow[$iCount] ?>">
                         <span class="fa-stack">
-                        <i class="fa fa-square fa-stack-2x"></i>
-                        <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
+                        <i class="fa-solid fa-square fa-stack-2x"></i>
+                        <i class="fa-solid fa-cart-plus fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
                 </td>
