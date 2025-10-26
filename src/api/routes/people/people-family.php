@@ -33,9 +33,16 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         /** @var Family $family */
         $family = $request->getAttribute('family');
-        $family->setImageFromBase64($input['imgBase64']);
-
-        return SlimUtils::renderSuccessJSON($response);
+        
+        try {
+            $family->setImageFromBase64($input['imgBase64']);
+            return SlimUtils::renderSuccessJSON($response);
+        } catch (\Exception $e) {
+            return SlimUtils::renderJSON($response, [
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 400);
+        }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
