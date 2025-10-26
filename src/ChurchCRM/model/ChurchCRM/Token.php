@@ -60,4 +60,19 @@ class Token extends BaseToken
 
         return $stillValidDate && $hasUses;
     }
+
+    /**
+     * Consumes one use of the token by decrementing the remaining uses count.
+     * If the token has no remaining uses limit (null), this method does nothing.
+     * Returns true if the token was consumed, false if no uses remain.
+     */
+    public function consume(): bool
+    {
+        if ($this->getRemainingUses() !== null && $this->getRemainingUses() > 0) {
+            $this->setRemainingUses($this->getRemainingUses() - 1);
+            $this->save();
+            return true;
+        }
+        return false;
+    }
 }
