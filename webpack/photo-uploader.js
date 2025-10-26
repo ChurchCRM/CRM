@@ -13,28 +13,14 @@ import '@uppy/core/dist/style.min.css';
 import '@uppy/dashboard/dist/style.min.css';
 import '@uppy/webcam/dist/style.min.css';
 
-// Add a single CSS fix to ensure modal is hidden when closed
-if (typeof document !== 'undefined' && !document.getElementById('uppy-modal-hidden-fix')) {
-    const style = document.createElement('style');
-    style.id = 'uppy-modal-hidden-fix';
-    style.textContent = `
-        /* Hide modal when aria-hidden is true */
-        .uppy-Dashboard--modal[aria-hidden="true"] {
-            display: none !important;
-        }
-        
-        /* Ensure modal is positioned as fixed overlay when open */
-        .uppy-Dashboard--modal[aria-hidden="false"] {
-            position: fixed !important;
-            top: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            z-index: 1001 !important;
-        }
-    `;
-    document.head.appendChild(style);
-}
+// Add minimal CSS fix to ensure modal starts hidden
+const style = document.createElement('style');
+style.textContent = `
+    .uppy-Dashboard--modal[aria-hidden="true"] {
+        display: none !important;
+    }
+`;
+document.head.appendChild(style);
 
 /**
  * Create a photo uploader instance
