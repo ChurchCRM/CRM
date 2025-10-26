@@ -58,8 +58,16 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/photo', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $input = $request->getParsedBody();
-        $person->setImageFromBase64($input['imgBase64']);
-        return SlimUtils::renderSuccessJSON($response);
+        
+        try {
+            $person->setImageFromBase64($input['imgBase64']);
+            return SlimUtils::renderSuccessJSON($response);
+        } catch (\Exception $e) {
+            return SlimUtils::renderJSON($response, [
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 400);
+        }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {

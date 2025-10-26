@@ -2,12 +2,12 @@
  * Photo Uploader using Uppy
  * Simple, modern photo upload with webcam support
  * Using MODAL mode with proper CSS
+ * Converts images to base64 for ChurchCRM API
  */
 
 import Uppy from '@uppy/core';
 import Dashboard from '@uppy/dashboard';
 import Webcam from '@uppy/webcam';
-import XHRUpload from '@uppy/xhr-upload';
 
 /**
  * Create a photo uploader instance with modal dashboard
@@ -53,17 +53,72 @@ export function createPhotoUploader(config) {
             height: { ideal: config.photoHeight || 800 }
         },
         preferredImageMimeType: 'image/jpeg'
-    })
-    .use(XHRUpload, {
-        endpoint: config.uploadUrl,
-        method: 'POST',
-        formData: true,
-        fieldName: 'photo',
-        headers: { 'Accept': 'application/json' },
-        limit: 1,
-        timeout: 30000,
-        withCredentials: true,
-        responseType: 'json'
+    });
+
+    // Custom upload handler that converts image to base64
+    uppy.on('upload', (data) => {
+        // Get all files
+        const files = Object.values(uppy.getState().files);
+        if (!files || files.length === 0) {
+            console.error('No files to upload');
+            return;
+        }
+        
+        const file = files[0];
+        
+        uppy.setFileState(file.id, {
+            progress: { uploadStarted: Date.now(), uploadComplete: false, percentage: 0 }
+        });
+
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            const base64 = e.target.result;
+            
+            // Send base64 image to API (backend now handles format detection)
+            fetch(config.uploadUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({ imgBase64: base64 })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.message || `Upload failed: ${response.statusText}`);
+                    }).catch(() => {
+                        throw new Error(`Upload failed: ${response.statusText}`);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                uppy.setFileState(file.id, {
+                    progress: { uploadComplete: true, percentage: 100 },
+                    uploadURL: config.uploadUrl,
+                    response: { body: data }
+                });
+                
+                uppy.emit('upload-success', file, { body: data });
+                uppy.emit('complete', { successful: [file], failed: [] });
+            })
+            .catch(error => {
+                console.error('Upload error:', error);
+                uppy.emit('upload-error', file, error);
+                uppy.emit('complete', { successful: [], failed: [file] });
+            });
+        };
+        
+        reader.onerror = function(error) {
+            console.error('FileReader error:', error);
+            uppy.emit('upload-error', file, new Error('Failed to read file'));
+            uppy.emit('complete', { successful: [], failed: [file] });
+        };
+        
+        reader.readAsDataURL(file.data);
     });
 
     // Handle upload completion
@@ -73,11 +128,6 @@ export function createPhotoUploader(config) {
                 setTimeout(() => config.onComplete(result), 500);
             }
         }
-    });
-
-    // Handle errors
-    uppy.on('upload-error', (file, error) => {
-        console.error('Upload error:', error);
     });
 
     // Get the Dashboard plugin instance for modal control
