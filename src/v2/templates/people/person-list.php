@@ -115,7 +115,7 @@ foreach ($ListItem as $element) {
             </div>
 
             <div class= "col-lg-6">
-                <a class="btn btn-success" role="button" href="<?= SystemURLs::getRootPath()?>/PersonEditor.php"><span class="fa fa-plus" aria-hidden="true"></span><?= gettext('Add Person') ?></a>
+                <a class="btn btn-success" role="button" href="<?= SystemURLs::getRootPath()?>/PersonEditor.php"><span class="fa-solid fa-plus" aria-hidden="true"></span><?= gettext('Add Person') ?></a>
                 <a id="AddAllToCart" class="btn btn-primary" ><?= gettext('Add All to Cart') ?></a>
                 <!-- <input name="IntersectCart" type="submit" class="btn btn-warning" value="< ?= gettext('Intersect with Cart') ?>">&nbsp; -->
                 <a id="RemoveAllFromCart" class="btn btn-danger" ><?= gettext('Remove All from Cart') ?></a>
@@ -137,23 +137,23 @@ foreach ($ListItem as $element) {
             <tr>
               <td>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getId() ?>'>
-                        <i class="fa fa-search-plus"></i>
+                        <i class="fa-solid fa-search-plus"></i>
                     </a>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                            <i class="fas fa-pen"></i>
+                            <i class="fa-solid fa-pen"></i>
                     </a>
 
                     <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
                         ?>
                             <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                <i class="fa fa-cart-plus"></i>
+                                <i class="fa-solid fa-cart-plus"></i>
                             </a>
                         </td>
                         <?php
                     } else {
                         ?>
                         <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                    <i class="fa fa-remove"></i>
+                                    <i class="fa-solid fa-remove"></i>
                             </a>
                             <?php
                     }

@@ -23,15 +23,15 @@ require_once 'Include/Header.php';
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <a href="UserEditor.php" class="btn btn-app"><i class="fa fa-user-plus"></i><?= gettext('New User') ?></a>
-        <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i><?= gettext('User Settings') ?></a>
+        <a href="UserEditor.php" class="btn btn-app"><i class="fa-solid fa-user-plus"></i><?= gettext('New User') ?></a>
+        <a href="SettingsUser.php" class="btn btn-app"><i class="fa-solid fa-wrench"></i><?= gettext('User Settings') ?></a>
     </div>
 </div>
 <div class="card collapsed-card">
     <div class="card-header">
         <b class="card-title"><?= _("Global User Settings")?></b>
             <div class="card-tools pull-right">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
             </div>
         </b>
     </div>
@@ -49,7 +49,7 @@ require_once 'Include/Header.php';
                         <tr>
                             <?php $config = SystemConfig::getConfigItem("iSessionTimeout"); ?>
                             <td width="350px"><b><?= _("Session Timeout")?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
                                 <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
@@ -59,7 +59,7 @@ require_once 'Include/Header.php';
                             <?php $config = SystemConfig::getConfigItem("iMaxFailedLogins"); ?>
                             <td width="350px">
                                 <b><?= _("Max Failed Login")?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
                                 <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
@@ -68,7 +68,7 @@ require_once 'Include/Header.php';
                         <tr>
                             <?php $config = SystemConfig::getConfigItem("bEnableLostPassword"); ?>
                             <td width="350px"><b><?= _("Enable Password Reset")?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
                                 <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
@@ -77,7 +77,7 @@ require_once 'Include/Header.php';
                         <tr>
                             <?php $config = SystemConfig::getConfigItem("bSendUserDeletedEmail"); ?>
                             <td width="350px"><b><?= _("Send email to Deleted Users")?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
                                 <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
@@ -91,7 +91,7 @@ require_once 'Include/Header.php';
                         <tr>
                         <?php $config = SystemConfig::getConfigItem("iMinPasswordLength"); ?>
                             <td width="350px"><b><?= _("Min Password Length")?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
                                 <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
@@ -101,7 +101,7 @@ require_once 'Include/Header.php';
                         <?php $config = SystemConfig::getConfigItem("iMinPasswordChange"); ?>
                         <td>
                             <b><?= _("Min Password Characters Delta")?></b>:
-                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
                             <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
@@ -111,7 +111,7 @@ require_once 'Include/Header.php';
                         <?php $config = SystemConfig::getConfigItem("aDisallowedPasswords"); ?>
                         <td>
                             <b><?= _("Disallowed Passwords")?></b>:
-                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
                             <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>" width="300px">
@@ -127,7 +127,7 @@ require_once 'Include/Header.php';
                         <?php $config = SystemConfig::getConfigItem("bEnable2FA"); ?>
                         <td width="350px">
                             <b><?= _("Enable 2FA")?></b>:
-                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
                             <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
@@ -137,7 +137,7 @@ require_once 'Include/Header.php';
                         <?php $config = SystemConfig::getConfigItem("bRequire2FA"); ?>
                         <td>
                             <b><?= _("Require 2FA")?></b>:
-                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
                             <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
@@ -147,7 +147,7 @@ require_once 'Include/Header.php';
                         <?php $config = SystemConfig::getConfigItem("s2FAApplicationName"); ?>
                         <td>
                             <b><?= _("2FA Application Name")?></b>:
-                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
                             <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
@@ -169,7 +169,7 @@ require_once 'Include/Header.php';
     <div class="card-header">
         <b class="card-title"><?= _("User Listing")?></b>
         <div class="card-tools pull-right">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
         </div>
         </h3>
     </div>
@@ -192,14 +192,14 @@ require_once 'Include/Header.php';
                 <tr>
                     <td>
                         <a href="UserEditor.php?PersonID=<?= $user->getId() ?>">
-                            <i class="fas fa-pen" aria-hidden="true"></i>
+                            <i class="fa-solid fa-pen" aria-hidden="true"></i>
                         </a>&nbsp;&nbsp;
                         <a href="v2/user/<?= $user->getId() ?>">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            <i class="fa-solid fa-eye" aria-hidden="true"></i>
                         </a>&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>
                             <a href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
-                                <i class="fa fa-trash-can" aria-hidden="true"></i>
+                                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
                     </td>
@@ -216,17 +216,17 @@ require_once 'Include/Header.php';
                         }
                         if ($user->getFailedLogins() > 0) { ?>
                                 <a onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
-                                    <i class="fa fa-eraser" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-eraser" aria-hidden="true"></i>
                                 </a>
                         <?php } ?>
                     </td>
                     <td>
-                        <a href="v2/user/<?= $user->getId() ?>/changePassword"><i class="fa fa-wrench"></i></a
+                        <a href="v2/user/<?= $user->getId() ?>/changePassword"><i class="fa-solid fa-wrench"></i></a
                         >&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) {
                             ?>
                             <a href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
-                                <i class="fa fa-paper-plane"></i></a>
+                                <i class="fa-solid fa-paper-plane"></i></a>
                             <?php
                         } ?>
                     </td>

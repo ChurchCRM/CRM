@@ -2,10 +2,10 @@ window.moveEventModal = {
     getButtons: function () {
         return {
             cancel: {
-                label: '<i class="fa fa-times"></i> ' + i18next.t("Cancel"),
+                label: '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel"),
             },
             confirm: {
-                label: '<i class="fa fa-check"></i> ' + i18next.t("Confirm"),
+                label: '<i class="fa-solid fa-check"></i> ' + i18next.t("Confirm"),
             },
         };
     },
@@ -133,13 +133,13 @@ window.calendarPropertiesModal = {
             calendar.AccessToken +
             '"/>' +
             (window.CRM.calendarJSArgs.isModifiable
-                ? '<a id="NewAccessToken" class="btn btn-warning"><i class="fa fa-repeat"></i>' +
+                ? '<a id="NewAccessToken" class="btn btn-warning"><i class="fa-solid fa-repeat"></i>' +
                   i18next.t("New Access Token") +
                   "</a>"
                 : "") +
             (window.CRM.calendarJSArgs.isModifiable &&
             calendar.AccessToken != null
-                ? '<a id="DeleteAccessToken" class="btn btn-danger"><i class="fa fa-trash-can"></i>' +
+                ? '<a id="DeleteAccessToken" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i>' +
                   i18next.t("Delete Access Token") +
                   "</a>"
                 : "") +
@@ -693,7 +693,7 @@ function initializeNewCalendarButton() {
     if (window.CRM.calendarJSArgs.isModifiable) {
         var newCalendarButton =
             '<div class="strike">' +
-            '<span id="newCalendarButton"><i class="fa fa-plus-circle"></i></span>' +
+            '<span id="newCalendarButton"><i class="fa-solid fa-plus-circle"></i></span>' +
             "</div>";
 
         $("#userCalendars").after(newCalendarButton);

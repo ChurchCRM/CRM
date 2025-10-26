@@ -16,7 +16,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
   <div class="error-page">
     <h2 class="headline text-yellow">500</h2>
     <div class="error-content">
-      <h3><i class="fa fa-warning text-yellow"></i> PHP <?= substr(phpversion(), 0, 3)   ?> not a supported </h3>
+      <h3><i class="fa-solid fa-triangle-exclamation text-yellow"></i> PHP <?= substr(phpversion(), 0, 3)   ?> not a supported </h3>
       <p/>
       <h4>See <a target="php" href="https://php.net/supported-versions.php" > supported versions</a></h4>
     </div>

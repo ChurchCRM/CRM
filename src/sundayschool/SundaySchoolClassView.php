@@ -98,7 +98,7 @@ require_once '../Include/Header.php';
         ?>
       <div class="btn-group">
         <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i
-            class="fa fa-paper-plane"></i><?= gettext('Email') ?></a>
+            class="fa-solid fa-paper-plane"></i><?= gettext('Email') ?></a>
         <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>
           <span class="sr-only"><?= gettext('Toggle Dropdown') ?></span>
@@ -122,11 +122,11 @@ require_once '../Include/Header.php';
         <?php
     }
     ?>
-    <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fas fa-pen"></i> Compose Message</a>  This doesn't really work right now...-->
+    <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa-solid fa-pen"></i> Compose Message</a>  This doesn't really work right now...-->
     <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i
-        class="fa fa-user-plus"></i><?= gettext('Add Students') ?> </a>
+        class="fa-solid fa-user-plus"></i><?= gettext('Add Students') ?> </a>
 
-    <a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fas fa-pen"></i><?= gettext("Edit this Class") ?></a>
+    <a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fa-solid fa-pen"></i><?= gettext("Edit this Class") ?></a>
   </div>
 </div>
 
@@ -146,9 +146,9 @@ require_once '../Include/Header.php';
             <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $teacher['per_ID'] ?>/thumbnail"
                   alt="User Image" class="user-image initials-image" width="85" height="85" />
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
-                class="fa fa-envelope"></i> <?= gettext('Send Message') ?></a>
+                class="fa-solid fa-envelope"></i> <?= gettext('Send Message') ?></a>
             <a href="../PersonView.php?PersonID=<?= $teacher['per_ID'] ?>" type="button"
-               class="btn btn-primary btn-info btn-block"><i class="fa fa-q"></i><?= gettext('View Profile') ?></a>
+               class="btn btn-primary btn-info btn-block"><i class="fa-solid fa-q"></i><?= gettext('View Profile') ?></a>
           </div>
         </div>
       </div>
@@ -162,7 +162,7 @@ require_once '../Include/Header.php';
     <h3 class="card-title"><?= gettext('Quick Status') ?></h3>
 
     <div class="card-tools pull-right">
-      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i></button>
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
     </div>
   </div>
   <!-- /.box-header -->
@@ -173,7 +173,7 @@ require_once '../Include/Header.php';
         <div class="card-header">
           <h3 class="card-title"><?= gettext('Birthdays by Month') ?></h3>
             <div class="card-tools">
-                <i class="fa fa-chart-bar"></i>
+                <i class="fa-solid fa-chart-bar"></i>
             </div>
         </div>
         <div class="card-body">
@@ -191,7 +191,7 @@ require_once '../Include/Header.php';
         <div class="card-header">
           <h3 class="card-title"><?= gettext('Gender') ?></h3>
             <div class="card-tools">
-                <i class="fa fa-chart-bar"></i>
+                <i class="fa-solid fa-chart-bar"></i>
             </div>
         </div>
         <div class="card-body">
@@ -210,7 +210,7 @@ require_once '../Include/Header.php';
   </div>
   <!-- /.box-header -->
   <div class="card-body table-responsive">
-    <h4 class="birthday-filter d-none"><?= gettext('Showing students with birthdays in') ?><span class="month"></span> <i style="cursor:pointer;" class="icon fa fa-close text-danger"></i></h4>
+    <h4 class="birthday-filter d-none"><?= gettext('Showing students with birthdays in') ?><span class="month"></span> <i style="cursor:pointer;" class="icon fa-solid fa-close text-danger"></i></h4>
     <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>
@@ -291,7 +291,7 @@ function implodeUnique($array, $withQuotes): string
     <div class="modal-content large">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-envelope"></i><?= gettext('Compose New Message') ?></h4>
+        <h4 class="modal-title"><i class="fa-solid fa-envelope"></i><?= gettext('Compose New Message') ?></h4>
       </div>
       <form action="SendEmail.php" method="post">
         <div class="modal-body">
@@ -316,7 +316,7 @@ function implodeUnique($array, $withQuotes): string
           </div>
           <div class="form-group">
             <div class="btn btn-success btn-file">
-              <i class="fa fa-paperclip"></i><?= gettext('Attachment') ?>
+              <i class="fa-solid fa-paperclip"></i><?= gettext('Attachment') ?>
               <input type="file" name="attachment"/>
             </div>
             <p class="help-block"><?= gettext('Max. 32MB') ?></p>
@@ -326,10 +326,10 @@ function implodeUnique($array, $withQuotes): string
         <div class="modal-footer clearfix">
 
           <button type="button" class="btn btn-danger" data-dismiss="modal"><i
-              class="fa fa-times"></i><?= gettext('Discard') ?></button>
+              class="fa-solid fa-times"></i><?= gettext('Discard') ?></button>
 
           <button type="submit" class="btn btn-primary pull-left"><i
-              class="fa fa-envelope"></i><?= gettext('Send Message') ?></button>
+              class="fa-solid fa-envelope"></i><?= gettext('Send Message') ?></button>
         </div>
       </form>
     </div>
