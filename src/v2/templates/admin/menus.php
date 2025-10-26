@@ -39,9 +39,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h4><?= _("Menus") ?></h4>
             </div>
             <div class="card-body">
-                <table id="menus" class="table table-striped table-bordered table-responsive data-table">
+                <div class="table-responsive">
+                <table id="menus" class="table table-striped table-bordered data-table">
                     <tbody></tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
@@ -54,9 +56,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/system/menu",
                 dataSrc: "menus"
             },
+            responsive: false,
+            autoWidth: false,
             columns: [
                 {
-                    width: '15px',
+                    width: '15%',
                     sortable: false,
                     title: i18next.t('Delete'),
                     data: 'Id',
@@ -66,10 +70,12 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     searchable: false
                 },
                 {
+                    width: '40%',
                     title: i18next.t('Name'),
                     data: 'Name'
                 },
                 {
+                    width: '45%',
                     title: i18next.t('Address'),
                     data: 'Uri'
                 }

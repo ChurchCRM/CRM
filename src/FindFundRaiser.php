@@ -63,7 +63,7 @@ require_once 'Include/Header.php';
 <div class="card card-body">
   <!-- /.box-header -->
   <div class="card-body table-responsive">
-    <table id="fundraisers" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+    <table id="fundraisers" class="table table-striped table-bordered data-table w-100">
         <thead>
             <tr>
                 <th><?= gettext('Title') ?></th>

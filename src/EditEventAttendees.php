@@ -50,12 +50,15 @@ if (empty($event)) {
     <form method="post" action="EditEventAttendees.php" name="AttendeeEditor">
       <input type="hidden" name="EID" value="<?= $EventID  ?>">
   <table class="table">
-  <tr class="TableHeader">
-    <td width="35%"><strong><?= gettext('Name') ?></strong></td>
-    <td width="25%"><strong><?= gettext('Email') ?></strong></td>
-    <td width="25%"><strong><?= gettext('Home Phone') ?></strong></td>
-      <td width="15%" class="text-nowrap"><strong><?= gettext('Action') ?></strong></td>
+  <thead>
+  <tr>
+    <th width="35%"><?= gettext('Name') ?></th>
+    <th width="25%"><?= gettext('Email') ?></th>
+    <th width="25%"><?= gettext('Home Phone') ?></th>
+      <th width="15%" class="text-nowrap"><?= gettext('Action') ?></th>
   </tr>
+  </thead>
+  <tbody>
 <?php
 $sSQL = 'SELECT person_id, per_LastName FROM event_attend JOIN person_per ON person_per.per_id = event_attend.person_id WHERE event_id = ' . $EventID . ' ORDER by per_LastName, per_FirstName';
 $rsOpps = RunQuery($sSQL);
@@ -100,6 +103,7 @@ if ($numAttRows != 0) {
 }
 
 ?>
+</tbody>
 </table>
 </div>
 <?php
