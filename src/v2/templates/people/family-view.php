@@ -397,35 +397,37 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th><?= gettext('Date') ?></th>
+                                    <th style="width: 1%; white-space: nowrap;"><?= gettext('Date') ?></th>
                                     <th><?= gettext('Note') ?></th>
-                                    <th><?= gettext('Entered By') ?></th>
-                                    <th><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($familyNotes as $note) { ?>
                                     <tr>
-                                        <td style="white-space: nowrap;">
-                                            <i class="fa-solid fa-clock"></i> <?= $note['datetime'] ?>
-                                        </td>
-                                        <td>
-                                            <div style="max-width: 500px; overflow: auto;">
-                                                <pre style="white-space: pre-wrap; word-wrap: break-word; line-height: 1.4; background: none; border: none; padding: 0; margin: 0;"><?= htmlspecialchars($note['text']) ?></pre>
+                                        <td style="width: 1%; white-space: nowrap; vertical-align: top;">
+                                            <div style="text-align: center;">
+                                                <i class="fa-solid fa-calendar"></i><br>
+                                                <?= date('Y-m-d', strtotime($note['datetime'])) ?><br>
+                                                <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
+                                                <div style="margin-top: 10px;">
+                                                    <?php if (isset($note['editLink']) && $note['editLink']) { ?>
+                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
+                                                            <i class="fa-solid fa-pen"></i>
+                                                        </a>
+                                                    <?php }
+                                                    if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
+                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </a>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </td>
-                                        <td><?= $note['header'] ?></td>
-                                        <td style="white-space: nowrap;">
-                                            <?php if (isset($note['editLink']) && $note['editLink']) { ?>
-                                                <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                </a>
-                                            <?php }
-                                            if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
-                                                <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </a>
-                                            <?php } ?>
+                                        <td style="width: 99%; vertical-align: top;">
+                                            <div style="margin-bottom: 8px;">
+                                                <?= $note['text'] ?>
+                                            </div>
+                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $note['header'] ?></small>
                                         </td>
                                     </tr>
                                 <?php } ?>
