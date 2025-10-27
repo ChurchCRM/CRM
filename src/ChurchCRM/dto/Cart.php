@@ -19,7 +19,7 @@ class Cart
         }
     }
 
-    public static function addPerson($PersonID): void
+    public static function addPerson($PersonID): bool
     {
         self::checkCart();
         if (!is_numeric($PersonID)) {
@@ -27,14 +27,27 @@ class Cart
         }
         if (!in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
             $_SESSION['aPeopleCart'][] = (int)$PersonID;
+            return true; // Person was added
         }
+        return false; // Person already existed
     }
 
-    public static function addPersonArray($PersonArray): void
+    public static function addPersonArray($PersonArray): array
     {
+        $result = [
+            'added' => [],
+            'duplicate' => []
+        ];
+        
         foreach ($PersonArray as $PersonID) {
-            Cart::addPerson($PersonID);
+            if (Cart::addPerson($PersonID)) {
+                $result['added'][] = (int)$PersonID;
+            } else {
+                $result['duplicate'][] = (int)$PersonID;
+            }
         }
+        
+        return $result;
     }
 
     public static function addGroup($GroupID): void

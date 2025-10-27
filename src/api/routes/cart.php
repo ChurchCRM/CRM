@@ -15,8 +15,10 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
 
     $group->post('/', function (Request $request, Response $response, array $args): Response {
         $cartPayload = $request->getParsedBody();
+        $result = null;
+        
         if (isset($cartPayload['Persons']) && count($cartPayload['Persons']) > 0) {
-            Cart::addPersonArray($cartPayload['Persons']);
+            $result = Cart::addPersonArray($cartPayload['Persons']);
         } elseif (isset($cartPayload['Family'])) {
             Cart::addFamily($cartPayload['Family']);
         } elseif (isset($cartPayload['Group'])) {
@@ -24,6 +26,12 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
         } else {
             throw new HttpBadRequestException($request, gettext('POST to cart requires a Persons array, FamilyID, or GroupID'));
         }
+        
+        // Return result with added/duplicate information if available
+        if ($result !== null) {
+            return SlimUtils::renderJSON($response, $result);
+        }
+        
         return SlimUtils::renderSuccessJSON($response);
     });
 

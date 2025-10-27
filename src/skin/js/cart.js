@@ -33,15 +33,40 @@ export class CartManager {
             data: JSON.stringify({ Persons: ids }),
         })
             .done((data) => {
-                // Show success notification
+                // Show appropriate notification based on results
                 if (showNotification) {
-                    const message =
-                        ids.length === 1
-                            ? i18next.t("Added to cart successfully")
-                            : i18next.t("{count} people added to cart", {
-                                  count: ids.length,
-                              });
-                    this.showNotification("success", message);
+                    const addedCount = data.added ? data.added.length : 0;
+                    const duplicateCount = data.duplicate ? data.duplicate.length : 0;
+                    
+                    if (addedCount > 0 && duplicateCount === 0) {
+                        // All were added successfully
+                        const message =
+                            addedCount === 1
+                                ? i18next.t("Added to cart successfully")
+                                : i18next.t("{count} people added to cart", {
+                                      count: addedCount,
+                                  });
+                        this.showNotification("success", message);
+                    } else if (addedCount === 0 && duplicateCount > 0) {
+                        // All were duplicates
+                        const message =
+                            duplicateCount === 1
+                                ? i18next.t("Person already in cart")
+                                : i18next.t("{count} people already in cart", {
+                                      count: duplicateCount,
+                                  });
+                        this.showNotification("warning", message);
+                    } else if (addedCount > 0 && duplicateCount > 0) {
+                        // Mixed results
+                        const message = i18next.t(
+                            "{added} added, {duplicate} already in cart",
+                            {
+                                added: addedCount,
+                                duplicate: duplicateCount,
+                            }
+                        );
+                        this.showNotification("warning", message);
+                    }
                 }
 
                 // Update cart count
