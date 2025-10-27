@@ -255,10 +255,6 @@ $(function () {
         $("#confirm-verify").modal("hide");
     });
 
-    $("#AddFamilyToCart").on("click", function () {
-        window.CRM.cart.addFamily($(this).data("familyid"));
-    });
-
     // Photos
     $("#deletePhoto").on("click", function () {
         $.ajax({

@@ -36,7 +36,9 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
 
     &.hidden {
         opacity: 0;

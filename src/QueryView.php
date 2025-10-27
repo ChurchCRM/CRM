@@ -217,12 +217,12 @@ function DoQuery()
             if ($fieldInfo->name === 'AddToCart') {
                 ?>
                 <td>
-                    <a class="AddToPeopleCart"  data-cartpersonid="<?= $aRow[$iCount] ?>">
+                    <button class="AddToCart" data-cart-id="<?= $aRow[$iCount] ?>" data-cart-type="person">
                         <span class="fa-stack">
                         <i class="fa-solid fa-square fa-stack-2x"></i>
                         <i class="fa-solid fa-cart-plus fa-stack-1x fa-inverse"></i>
                         </span>
-                    </a>
+                    </button>
                 </td>
                 <?php
 
@@ -253,12 +253,17 @@ function DoQuery()
             <script>
                 $("#addResultsToCart").click(function () {
                     var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                    window.CRM.cart.addPerson(selectedPersons);
+                    window.CRM.cartManager.addPerson(selectedPersons, {
+                        showNotification: true
+                    });
                 });
 
                 $("#removeResultsFromCart").click(function(){
                     var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                    window.CRM.cart.removePerson(selectedPersons);
+                    window.CRM.cartManager.removePerson(selectedPersons, {
+                        confirm: true,
+                        showNotification: true
+                    });
                 });
 
             </script>

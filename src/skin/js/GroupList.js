@@ -139,11 +139,11 @@ $(document).ready(function () {
                             i18next.t(
                                 "All members of this group are in the cart",
                             ) +
-                            '</span><a class="btn btn-danger " id="removeGroupFromCart" data-groupid="' +
+                            '</span><button class="RemoveFromCart btn btn-danger" data-cart-id="' +
                             objectID +
-                            '">' +
+                            '" data-cart-type="group">' +
                             i18next.t("Remove all") +
-                            "</a>",
+                            "</button>",
                     );
                 } else {
                     $(element).html(
@@ -151,11 +151,11 @@ $(document).ready(function () {
                             i18next.t(
                                 "Not all members of this group are in the cart",
                             ) +
-                            '</span> <a id="AddGroupToCart" class="btn' +
+                            '</span> <button class="AddToCart btn' +
                             activLink +
-                            '" data-groupid="' +
+                            '" data-cart-id="' +
                             objectID +
-                            '"><i class="fa-solid fa-cart-plus"></i></a>',
+                            '" data-cart-type="group"><i class="fa-solid fa-cart-plus"></i></button>',
                     );
                 }
             });
@@ -164,29 +164,5 @@ $(document).ready(function () {
     $("#table-filter").on("change", function () {
         dataT.search(this.value).draw();
         localStorage.setItem("groupSelect", this.selectedIndex);
-    });
-
-    $(document).on("click", "#AddGroupToCart", function (link) {
-        var groupid = link.currentTarget.dataset.groupid;
-        var parent = $(this).parent().find("span");
-        window.CRM.cart.addGroup(groupid, function (data) {
-            link.target.id = "removeGroupFromCart";
-            link.target.className = "btn";
-            link.target.innerText = i18next.t("Remove all");
-            parent.text(i18next.t("All members of this group are in the cart"));
-        });
-    });
-
-    $(document).on("click", "#removeGroupFromCart", function (link) {
-        var groupid = link.currentTarget.dataset.groupid;
-        var parent = $(this).parent().find("span");
-        window.CRM.cart.removeGroup(groupid, function (data) {
-            link.target.id = "AddGroupToCart";
-            link.target.className = "btn";
-            link.target.innerText = i18next.t("Add all");
-            parent.text(
-                i18next.t("Not all members of this group are in the cart"),
-            );
-        });
     });
 });

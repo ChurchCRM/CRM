@@ -160,27 +160,22 @@ foreach ($ListItem as $element) {
             <tr>
               <td>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getId() ?>'>
-                        <i class="fa-solid fa-search-plus"></i>
+                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
                     </a>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                            <i class="fa-solid fa-pen"></i>
+                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
                     </a>
 
-                    <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
+                    <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($person->getId(), $_SESSION['aPeopleCart'], false)) {
                         ?>
-                            <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                <i class="fa-solid fa-cart-plus"></i>
-                            </a>
-                        </td>
+                            <button type="button" class="AddToCart btn btn-xs btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
                         <?php
                     } else {
                         ?>
-                        <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                    <i class="fa-solid fa-remove"></i>
-                            </a>
-                            <?php
-                    }
-                    ?>
+                        <button type="button" class="RemoveFromCart btn btn-xs btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
+                        <?php
+                    } ?>
+                    </td>
 
                 <?php
                 $columns = json_decode(SystemConfig::getValue('sPersonListColumns'), null, 512, JSON_THROW_ON_ERROR);
@@ -421,22 +416,22 @@ foreach ($ListItem as $element) {
         $('#members').DataTable().rows({ filter: 'applied' }).every(function () {
             // Get the row node (DOM element)
             var node = this.node();
-            // Find the AddToPeopleCart button in this row and get its person ID
-            var personId = $(node).find('.AddToPeopleCart').data('cartpersonid');
+            // Find the AddToCart button in this row and get its person ID
+            var personId = $(node).find('.AddToCart').data('cart-id');
             if (personId) {
                 listPeople.push(personId);
             }
         });
         
         if (listPeople.length > 0) {
-            // Call cart API with callback to ensure proper refresh
-            window.CRM.cart.addPerson(listPeople, function(data) {
-                console.log('Added ' + listPeople.length + ' people to cart');
-                // Force a visual refresh of the page to update cart buttons
-                location.reload();
+            // Use CartManager with notifications and automatic page reload
+            window.CRM.cartManager.addPerson(listPeople, {
+                showNotification: true,
+                reloadPage: true
             });
         } else {
-            console.log('No people to add - all filtered people are already in cart');
+            // Show notification that no people to add
+            window.CRM.cartManager.showNotification('warning', i18next.t('No people to add - all are already in cart'));
         }
     });
 
@@ -446,22 +441,24 @@ foreach ($ListItem as $element) {
         $('#members').DataTable().rows({ filter: 'applied' }).every(function () {
             // Get the row node (DOM element)
             var node = this.node();
-            // Find the RemoveFromPeopleCart button in this row and get its person ID
-            var personId = $(node).find('.RemoveFromPeopleCart').data('cartpersonid');
+            // Find the RemoveFromCart button in this row and get its person ID
+            var personId = $(node).find('.RemoveFromCart').data('cart-id');
             if (personId) {
                 listPeople.push(personId);
             }
         });
         
+        
         if (listPeople.length > 0) {
-            // Call cart API with callback to ensure proper refresh
-            window.CRM.cart.removePerson(listPeople, function(data) {
-                console.log('Removed ' + listPeople.length + ' people from cart');
-                // Force a visual refresh of the page to update cart buttons
-                location.reload();
+            // Use CartManager with confirmation, notifications, and automatic page reload
+            window.CRM.cartManager.removePerson(listPeople, {
+                confirm: true,
+                showNotification: true,
+                reloadPage: true
             });
         } else {
-            console.log('No people to remove - none of the filtered people are in cart');
+            // Show notification that no people to remove
+            window.CRM.cartManager.showNotification('warning', i18next.t('No people in cart to remove'));
         }
     });
 

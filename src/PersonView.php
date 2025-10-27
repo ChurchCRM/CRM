@@ -383,7 +383,7 @@ $bOkToEdit = (
     <div class="col-lg-9 col-md-9 col-sm-9">
         <div class="row">
             <a class="btn btn-app bg-info" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-print fa-3x"></i><br><?= gettext("Printable Page") ?></a>
-            <a class="btn btn-app bg-success AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa-solid fa-cart-plus fa-3x"></i><br><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
+            <button class="btn btn-app bg-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus fa-3x"></i><br><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></button>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
                 ?>
                 <a class="btn btn-app bg-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle fa-3x"></i><br><?= gettext("Edit \"Why Came\" Notes") ?></a>
@@ -478,9 +478,9 @@ $bOkToEdit = (
                                                 <?php } ?>
                                             </td>
                                             <td style="width: 20%;">
-                                                <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
+                                                <button class="AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person">
                                                     <i class="fa-solid fa-cart-plus "></i>
-                                                </a>
+                                                </button>
                                                 <?php if ($bOkToEdit) {
                                                     ?>
                                                     <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">

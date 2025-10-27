@@ -31,12 +31,35 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     /* @var Family $family */
                     ?>
                     <tr>
-                        <td><a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
-                                <i class="fa-solid fa-search-plus"></i>
+                        <td>
+                            <a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
+                                <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
                             </a>
                             <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
-                                <i class="fa-solid fa-pen"></i>
+                                <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
                             </a>
+                            <?php 
+                                // Check if all family members are in cart
+                                $isInCart = false;
+                                if (isset($_SESSION['aPeopleCart'])) {
+                                    $familyMembers = $family->getPeople();
+                                    if (count($familyMembers) > 0) {
+                                        $allInCart = true;
+                                        foreach ($familyMembers as $member) {
+                                            if (!in_array($member->getId(), $_SESSION['aPeopleCart'], false)) {
+                                                $allInCart = false;
+                                                break;
+                                            }
+                                        }
+                                        $isInCart = $allInCart;
+                                    }
+                                }
+                            ?>
+                            <?php if (!$isInCart) { ?>
+                                <button type="button" class="AddToCart btn btn-xs btn-primary" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
+                            <?php } else { ?>
+                                <button type="button" class="RemoveFromCart btn btn-xs btn-danger" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
+                            <?php } ?>
                         </td>
 
                         <?php
