@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Map\TokenTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FinancialService;
@@ -23,13 +24,22 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/updated', 'getUpdatedFamilies');
     $group->get('/anniversaries', 'getFamiliesWithAnniversaries');
     $group->get('/familiesInCart', function (Request $request, Response $response, array $args): Response {
+        // Get the list of person IDs in the cart
+        $cartPersonIDs = $_SESSION['aPeopleCart'] ?? [];
         $familiesInCart = [];
-        $families = FamilyQuery::create()->find();
-        foreach ($families as $family) {
-            if ($family->checkAgainstCart()) {
-                $familiesInCart[] = $family->getId();
-            }
+        
+        if (!empty($cartPersonIDs)) {
+            // Query families that have members in the cart
+            $families = FamilyQuery::create()
+                ->usePersonQuery()
+                    ->filterById($cartPersonIDs)
+                ->endUse()
+                ->select(['Id'])
+                ->distinct()
+                ->find();
+            $familiesInCart = $families->getColumnValues('Id');
         }
+        
         return SlimUtils::renderJSON($response, ['familiesInCart' => $familiesInCart]);
     });
 

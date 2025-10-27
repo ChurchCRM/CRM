@@ -570,27 +570,12 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 </div>
 <?php } ?>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
 <!-- Photo uploader bundle - loaded only on this page -->
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.css">
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    // Handle cart button updates in family view
-    // Don't reload on click - let cart.js handle the removal and confirmation
-    // We'll reload after the cart operation completes
-    let originalRemovePerson = null;
-    if (window.CRM && window.CRM.cartManager) {
-        originalRemovePerson = window.CRM.cartManager.removePerson.bind(window.CRM.cartManager);
-        window.CRM.cartManager.removePerson = function(personIds, options = {}) {
-            // Add reload option so page refreshes after successful removal
-            options.reloadPage = true;
-            options.reloadDelay = 1500;
-            return originalRemovePerson(personIds, options);
-        };
-    }
-</script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
 
 <!-- Photos start -->
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog"
