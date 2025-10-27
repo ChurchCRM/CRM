@@ -292,7 +292,7 @@ window.calendarPropertiesModal = {
             // Show a success message
             bootbox.alert(
                 i18next.t(
-                    "A Calednar access token has been generated and saved.",
+                    "A Calendar access token has been generated and saved.",
                 ),
             );
             // Ensure the modal always uses the latest token when reopened
