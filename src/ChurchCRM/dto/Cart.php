@@ -150,7 +150,8 @@ class Cart
 
     public static function countPeople(): int
     {
-        return isset($_SESSION['aPeopleCart']) ? count($_SESSION['aPeopleCart']) : 0;
+        self::checkCart();
+        return count($_SESSION['aPeopleCart']);
     }
 
     public static function convertCartToString($aCartArray): string

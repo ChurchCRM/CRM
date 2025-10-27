@@ -101,7 +101,7 @@ export class CartManager {
      */
     removePerson(personIds, options = {}) {
         const ids = Array.isArray(personIds) ? personIds : [personIds];
-        const showConfirm = options.confirm !== false; // Fixed: reverted to original logic
+        const showConfirm = options.confirm !== false;
         const showNotification = options.showNotification !== false;
 
         // Show confirmation dialog using bootbox
