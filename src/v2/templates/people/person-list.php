@@ -449,7 +449,6 @@ foreach ($ListItem as $element) {
             }
         });
         
-        console.log('Found ' + listPeople.length + ' people to remove:', listPeople);
         
         if (listPeople.length > 0) {
             // Use CartManager with confirmation, notifications, and automatic page reload
