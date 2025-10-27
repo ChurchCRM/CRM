@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Map\TokenTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FinancialService;
@@ -27,12 +28,25 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         
         // Check if cart has items
         if (!empty($_SESSION['aPeopleCart'])) {
-            // Get all families and check which ones have members in the cart
-            $families = FamilyQuery::create()->find();
-            foreach ($families as $family) {
-                // Use the checkAgainstCart method to verify ALL family members are in cart
-                if ($family->checkAgainstCart()) {
-                    $familiesInCart[] = $family->getId();
+            $cartPersonIDs = $_SESSION['aPeopleCart'];
+            
+            // Optimized query: Query people by IDs in cart, get their families
+            // This only loads people in cart (efficient) instead of all families
+            $people = PersonQuery::create()
+                ->filterById($cartPersonIDs)
+                ->find();
+            
+            // Collect unique family IDs from the people in cart
+            $uniqueFamilyIds = [];
+            foreach ($people as $person) {
+                $familyId = $person->getFamId();
+                if (!in_array($familyId, $uniqueFamilyIds, false)) {
+                    $uniqueFamilyIds[] = $familyId;
+                    // Verify ALL members of this family are in cart
+                    $family = FamilyQuery::create()->findPk($familyId);
+                    if ($family && $family->checkAgainstCart()) {
+                        $familiesInCart[] = $familyId;
+                    }
                 }
             }
         }
