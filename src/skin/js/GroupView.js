@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }),
             };
             window.CRM.cartManager.addPerson(selectedPersons.Persons, {
-                showNotification: true
+                showNotification: true,
             });
         }
     });
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#AddGroupMembersToCart").on("click", function () {
         window.CRM.cartManager.addGroup($(this).data("groupid"), {
-            showNotification: true
+            showNotification: true,
         });
     });
 

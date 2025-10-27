@@ -169,7 +169,7 @@ $(document).ready(function () {
     $(document).on("click", "#AddGroupToCart", function (link) {
         var groupid = link.currentTarget.dataset.groupid;
         var parent = $(this).parent().find("span");
-        
+
         // Use CartManager with notifications
         window.CRM.cartManager.addGroup(groupid, {
             showNotification: true,
@@ -177,15 +177,17 @@ $(document).ready(function () {
                 link.target.id = "removeGroupFromCart";
                 link.target.className = "btn";
                 link.target.innerText = i18next.t("Remove all");
-                parent.text(i18next.t("All members of this group are in the cart"));
-            }
+                parent.text(
+                    i18next.t("All members of this group are in the cart"),
+                );
+            },
         });
     });
 
     $(document).on("click", "#removeGroupFromCart", function (link) {
         var groupid = link.currentTarget.dataset.groupid;
         var parent = $(this).parent().find("span");
-        
+
         // Use CartManager with confirmation and notifications
         window.CRM.cartManager.removeGroup(groupid, {
             confirm: true,
@@ -197,7 +199,7 @@ $(document).ready(function () {
                 parent.text(
                     i18next.t("Not all members of this group are in the cart"),
                 );
-            }
+            },
         });
     });
 });

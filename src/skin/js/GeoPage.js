@@ -9,7 +9,7 @@ $(document).ready(function () {
     $("#AddAllToCart").click(function () {
         // Use CartManager with notifications
         window.CRM.cartManager.addPerson(listPeople, {
-            showNotification: true
+            showNotification: true,
         });
     });
 
@@ -17,7 +17,7 @@ $(document).ready(function () {
         // Use CartManager with confirmation and notifications
         window.CRM.cartManager.removePerson(listPeople, {
             confirm: true,
-            showNotification: true
+            showNotification: true,
         });
     });
 });

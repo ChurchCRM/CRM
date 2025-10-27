@@ -3,7 +3,8 @@
  * Centralized cart operations with user feedback
  */
 
-import $ from 'jquery';
+import $ from "jquery";
+import "bootstrap-notify";
 
 /**
  * Cart Manager Class
@@ -25,40 +26,48 @@ export class CartManager {
     addPerson(personIds, options = {}) {
         const ids = Array.isArray(personIds) ? personIds : [personIds];
         const showNotification = options.showNotification !== false;
-        
+
         return window.CRM.APIRequest({
-            method: 'POST',
-            path: 'cart/',
-            data: JSON.stringify({ Persons: ids })
-        }).done((data) => {
-            // Show success notification
-            if (showNotification) {
-                const message = ids.length === 1 
-                    ? i18next.t('Added to cart successfully')
-                    : i18next.t('{count} people added to cart', { count: ids.length });
-                this.showNotification('success', message);
-            }
-            
-            // Update cart count
-            this.refreshCartCount();
-            
-            // Hide or toggle buttons
-            if (options.hideButton) {
-                ids.forEach(id => this.hideCartButton(id));
-            } else {
-                ids.forEach(id => this.updateButtonState(id, true));
-            }
-            
-            // Call custom callback if provided
-            if (options.callback) {
-                options.callback(data);
-            }
-        }).fail((error) => {
-            if (showNotification) {
-                this.showNotification('danger', i18next.t('Failed to add to cart'));
-            }
-            console.error('Cart add failed:', error);
-        });
+            method: "POST",
+            path: "cart/",
+            data: JSON.stringify({ Persons: ids }),
+        })
+            .done((data) => {
+                // Show success notification
+                if (showNotification) {
+                    const message =
+                        ids.length === 1
+                            ? i18next.t("Added to cart successfully")
+                            : i18next.t("{count} people added to cart", {
+                                  count: ids.length,
+                              });
+                    this.showNotification("success", message);
+                }
+
+                // Update cart count
+                this.refreshCartCount();
+
+                // Hide or toggle buttons
+                if (options.hideButton) {
+                    ids.forEach((id) => this.hideCartButton(id));
+                } else {
+                    ids.forEach((id) => this.updateButtonState(id, true));
+                }
+
+                // Call custom callback if provided
+                if (options.callback) {
+                    options.callback(data);
+                }
+            })
+            .fail((error) => {
+                if (showNotification) {
+                    this.showNotification(
+                        "danger",
+                        i18next.t("Failed to add to cart"),
+                    );
+                }
+                console.error("Cart add failed:", error);
+            });
     }
 
     /**
@@ -73,30 +82,37 @@ export class CartManager {
         const ids = Array.isArray(personIds) ? personIds : [personIds];
         const showConfirm = options.confirm !== false;
         const showNotification = options.showNotification !== false;
-        
+
         // Show confirmation dialog using bootbox
         if (showConfirm) {
-            const confirmMsg = ids.length === 1 
-                ? i18next.t('Remove this person from cart?')
-                : i18next.t('Remove {count} people from cart?', { count: ids.length });
-                
+            const confirmMsg =
+                ids.length === 1
+                    ? i18next.t("Remove this person from cart?")
+                    : i18next.t("Remove {count} people from cart?", {
+                          count: ids.length,
+                      });
+
             bootbox.confirm({
                 message: confirmMsg,
                 buttons: {
                     confirm: {
-                        label: i18next.t('Yes, Remove'),
-                        className: 'btn-danger'
+                        label: i18next.t("Yes, Remove"),
+                        className: "btn-danger",
                     },
                     cancel: {
-                        label: i18next.t('Cancel'),
-                        className: 'btn-secondary'
-                    }
+                        label: i18next.t("Cancel"),
+                        className: "btn-secondary",
+                    },
                 },
                 callback: (result) => {
                     if (result) {
-                        this.performRemovePerson(ids, showNotification, options.callback);
+                        this.performRemovePerson(
+                            ids,
+                            showNotification,
+                            options.callback,
+                        );
                     }
-                }
+                },
             });
         } else {
             this.performRemovePerson(ids, showNotification, options.callback);
@@ -109,34 +125,42 @@ export class CartManager {
      */
     performRemovePerson(ids, showNotification, callback) {
         return window.CRM.APIRequest({
-            method: 'DELETE',
-            path: 'cart/',
-            data: JSON.stringify({ Persons: ids })
-        }).done((data) => {
-            // Show success notification
-            if (showNotification) {
-                const message = ids.length === 1
-                    ? i18next.t('Removed from cart successfully')
-                    : i18next.t('{count} people removed from cart', { count: ids.length });
-                this.showNotification('success', message);
-            }
-            
-            // Update cart count
-            this.refreshCartCount();
-            
-            // Update button states
-            ids.forEach(id => this.updateButtonState(id, false));
-            
-            // Call custom callback
-            if (callback) {
-                callback(data);
-            }
-        }).fail((error) => {
-            if (showNotification) {
-                this.showNotification('danger', i18next.t('Failed to remove from cart'));
-            }
-            console.error('Cart remove failed:', error);
-        });
+            method: "DELETE",
+            path: "cart/",
+            data: JSON.stringify({ Persons: ids }),
+        })
+            .done((data) => {
+                // Show success notification
+                if (showNotification) {
+                    const message =
+                        ids.length === 1
+                            ? i18next.t("Removed from cart successfully")
+                            : i18next.t("{count} people removed from cart", {
+                                  count: ids.length,
+                              });
+                    this.showNotification("success", message);
+                }
+
+                // Update cart count
+                this.refreshCartCount();
+
+                // Update button states
+                ids.forEach((id) => this.updateButtonState(id, false));
+
+                // Call custom callback
+                if (callback) {
+                    callback(data);
+                }
+            })
+            .fail((error) => {
+                if (showNotification) {
+                    this.showNotification(
+                        "danger",
+                        i18next.t("Failed to remove from cart"),
+                    );
+                }
+                console.error("Cart remove failed:", error);
+            });
     }
 
     /**
@@ -146,19 +170,27 @@ export class CartManager {
      */
     addFamily(familyId, options = {}) {
         return window.CRM.APIRequest({
-            method: 'POST',
-            path: 'cart/',
-            data: JSON.stringify({ Family: familyId })
-        }).done((data) => {
-            this.showNotification('success', i18next.t('Family added to cart'));
-            this.refreshCartCount();
-            
-            if (options.callback) {
-                options.callback(data);
-            }
-        }).fail((error) => {
-            this.showNotification('danger', i18next.t('Failed to add family to cart'));
-        });
+            method: "POST",
+            path: "cart/",
+            data: JSON.stringify({ Family: familyId }),
+        })
+            .done((data) => {
+                this.showNotification(
+                    "success",
+                    i18next.t("Family added to cart"),
+                );
+                this.refreshCartCount();
+
+                if (options.callback) {
+                    options.callback(data);
+                }
+            })
+            .fail((error) => {
+                this.showNotification(
+                    "danger",
+                    i18next.t("Failed to add family to cart"),
+                );
+            });
     }
 
     /**
@@ -168,19 +200,27 @@ export class CartManager {
      */
     addGroup(groupId, options = {}) {
         return window.CRM.APIRequest({
-            method: 'POST',
-            path: 'cart/',
-            data: JSON.stringify({ Group: groupId })
-        }).done((data) => {
-            this.showNotification('success', i18next.t('Group added to cart'));
-            this.refreshCartCount();
-            
-            if (options.callback) {
-                options.callback(data);
-            }
-        }).fail((error) => {
-            this.showNotification('danger', i18next.t('Failed to add group to cart'));
-        });
+            method: "POST",
+            path: "cart/",
+            data: JSON.stringify({ Group: groupId }),
+        })
+            .done((data) => {
+                this.showNotification(
+                    "success",
+                    i18next.t("Group added to cart"),
+                );
+                this.refreshCartCount();
+
+                if (options.callback) {
+                    options.callback(data);
+                }
+            })
+            .fail((error) => {
+                this.showNotification(
+                    "danger",
+                    i18next.t("Failed to add group to cart"),
+                );
+            });
     }
 
     /**
@@ -190,35 +230,43 @@ export class CartManager {
      */
     removeGroup(groupId, options = {}) {
         bootbox.confirm({
-            message: i18next.t('Remove this group from cart?'),
+            message: i18next.t("Remove this group from cart?"),
             buttons: {
                 confirm: {
-                    label: i18next.t('Yes, Remove'),
-                    className: 'btn-danger'
+                    label: i18next.t("Yes, Remove"),
+                    className: "btn-danger",
                 },
                 cancel: {
-                    label: i18next.t('Cancel'),
-                    className: 'btn-secondary'
-                }
+                    label: i18next.t("Cancel"),
+                    className: "btn-secondary",
+                },
             },
             callback: (result) => {
                 if (result) {
                     window.CRM.APIRequest({
-                        method: 'POST',
-                        path: 'cart/removeGroup',
-                        data: JSON.stringify({ Group: groupId })
-                    }).done((data) => {
-                        this.showNotification('success', i18next.t('Group removed from cart'));
-                        this.refreshCartCount();
-                        
-                        if (options.callback) {
-                            options.callback(data);
-                        }
-                    }).fail((error) => {
-                        this.showNotification('danger', i18next.t('Failed to remove group'));
-                    });
+                        method: "POST",
+                        path: "cart/removeGroup",
+                        data: JSON.stringify({ Group: groupId }),
+                    })
+                        .done((data) => {
+                            this.showNotification(
+                                "success",
+                                i18next.t("Group removed from cart"),
+                            );
+                            this.refreshCartCount();
+
+                            if (options.callback) {
+                                options.callback(data);
+                            }
+                        })
+                        .fail((error) => {
+                            this.showNotification(
+                                "danger",
+                                i18next.t("Failed to remove group"),
+                            );
+                        });
                 }
-            }
+            },
         });
     }
 
@@ -230,25 +278,25 @@ export class CartManager {
      */
     emptyCart(options = {}) {
         const showConfirm = options.confirm !== false;
-        
+
         if (showConfirm) {
             bootbox.confirm({
-                message: i18next.t('Empty your entire cart?'),
+                message: i18next.t("Empty your entire cart?"),
                 buttons: {
                     confirm: {
-                        label: i18next.t('Yes, Empty Cart'),
-                        className: 'btn-danger'
+                        label: i18next.t("Yes, Empty Cart"),
+                        className: "btn-danger",
                     },
                     cancel: {
-                        label: i18next.t('Cancel'),
-                        className: 'btn-secondary'
-                    }
+                        label: i18next.t("Cancel"),
+                        className: "btn-secondary",
+                    },
                 },
                 callback: (result) => {
                     if (result) {
                         this.performEmptyCart(options.callback);
                     }
-                }
+                },
             });
         } else {
             this.performEmptyCart(options.callback);
@@ -261,45 +309,66 @@ export class CartManager {
      */
     performEmptyCart(callback) {
         return window.CRM.APIRequest({
-            method: 'DELETE',
-            path: 'cart/'
-        }).done((data) => {
-            this.showNotification('success', i18next.t('Cart emptied successfully'));
-            this.refreshCartCount();
-            
-            // Reset all buttons on page
-            this.resetAllButtons();
-            
-            if (callback) {
-                callback(data);
-            }
-        }).fail((error) => {
-            this.showNotification('danger', i18next.t('Failed to empty cart'));
-        });
+            method: "DELETE",
+            path: "cart/",
+        })
+            .done((data) => {
+                this.showNotification(
+                    "success",
+                    i18next.t("Cart emptied successfully"),
+                );
+                this.refreshCartCount();
+
+                // Reset all buttons on page
+                this.resetAllButtons();
+
+                if (callback) {
+                    callback(data);
+                }
+            })
+            .fail((error) => {
+                this.showNotification(
+                    "danger",
+                    i18next.t("Failed to empty cart"),
+                );
+            });
     }
 
     /**
      * Empty cart to group with group selection
      */
     emptyToGroup() {
-        window.CRM.groups.promptSelection({
-            Type: window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role
-        }, (selectedRole) => {
-            window.CRM.APIRequest({
-                method: 'POST',
-                path: 'cart/emptyToGroup',
-                data: JSON.stringify({
-                    groupID: selectedRole.GroupID,
-                    groupRoleID: selectedRole.RoleID
+        window.CRM.groups.promptSelection(
+            {
+                Type:
+                    window.CRM.groups.selectTypes.Group |
+                    window.CRM.groups.selectTypes.Role,
+            },
+            (selectedRole) => {
+                window.CRM.APIRequest({
+                    method: "POST",
+                    path: "cart/emptyToGroup",
+                    data: JSON.stringify({
+                        groupID: selectedRole.GroupID,
+                        groupRoleID: selectedRole.RoleID,
+                    }),
                 })
-            }).done((data) => {
-                this.showNotification('success', i18next.t('Cart emptied to group successfully'));
-                this.refreshCartCount();
-                this.resetAllButtons();
-            }).fail((error) => {
-                this.showNotification('danger', i18next.t('Failed to empty cart to group'));
-            });
-        });
+                    .done((data) => {
+                        this.showNotification(
+                            "success",
+                            i18next.t("Cart emptied to group successfully"),
+                        );
+                        this.refreshCartCount();
+                        this.resetAllButtons();
+                    })
+                    .fail((error) => {
+                        this.showNotification(
+                            "danger",
+                            i18next.t("Failed to empty cart to group"),
+                        );
+                    });
+            },
+        );
     }
 
     /**
@@ -308,25 +377,31 @@ export class CartManager {
      * @param {string} message - Message to display
      */
     showNotification(type, message) {
-        $.notify({
-            icon: type === 'success' ? 'fa fa-check' : 'fa fa-exclamation-triangle',
-            message: message
-        }, {
-            type: type,
-            delay: 3000,
-            placement: {
-                from: 'top',
-                align: 'right'
+        $.notify(
+            {
+                icon:
+                    type === "success"
+                        ? "fa fa-check"
+                        : "fa fa-exclamation-triangle",
+                message: message,
             },
-            offset: {
-                x: 15,
-                y: 60
+            {
+                type: type,
+                delay: 3000,
+                placement: {
+                    from: "top",
+                    align: "right",
+                },
+                offset: {
+                    x: 15,
+                    y: 60,
+                },
+                animate: {
+                    enter: "animated fadeInDown",
+                    exit: "animated fadeOutUp",
+                },
             },
-            animate: {
-                enter: 'animated fadeInDown',
-                exit: 'animated fadeOutUp'
-            }
-        });
+        );
     }
 
     /**
@@ -336,33 +411,39 @@ export class CartManager {
      */
     updateButtonState(personId, inCart) {
         const $button = $(`[data-cartpersonid="${personId}"]`);
-        
+
         if (!$button.length) return;
-        
+
         if (inCart) {
             $button
-                .removeClass('AddToPeopleCart')
-                .addClass('RemoveFromPeopleCart');
-                
+                .removeClass("AddToPeopleCart")
+                .addClass("RemoveFromPeopleCart");
+
             // Update icon
-            $button.find('i.fa-cart-plus, i.fa.fa-cart-plus')
-                .removeClass('fa-cart-plus')
-                .addClass('fa-remove');
-                
+            $button
+                .find("i.fa-cart-plus, i.fa.fa-cart-plus")
+                .removeClass("fa-cart-plus")
+                .addClass("fa-remove");
+
             // Update text if present
-            $button.find('.cartActionDescription').text(i18next.t('Remove from Cart'));
+            $button
+                .find(".cartActionDescription")
+                .text(i18next.t("Remove from Cart"));
         } else {
             $button
-                .removeClass('RemoveFromPeopleCart')
-                .addClass('AddToPeopleCart');
-                
+                .removeClass("RemoveFromPeopleCart")
+                .addClass("AddToPeopleCart");
+
             // Update icon
-            $button.find('i.fa-remove, i.fa.fa-remove')
-                .removeClass('fa-remove')
-                .addClass('fa-cart-plus');
-                
+            $button
+                .find("i.fa-remove, i.fa.fa-remove")
+                .removeClass("fa-remove")
+                .addClass("fa-cart-plus");
+
             // Update text if present
-            $button.find('.cartActionDescription').text(i18next.t('Add to Cart'));
+            $button
+                .find(".cartActionDescription")
+                .text(i18next.t("Add to Cart"));
         }
     }
 
@@ -372,7 +453,7 @@ export class CartManager {
      */
     hideCartButton(personId) {
         const $button = $(`[data-cartpersonid="${personId}"]`);
-        $button.fadeOut(300, function() {
+        $button.fadeOut(300, function () {
             $(this).remove();
         });
     }
@@ -381,8 +462,8 @@ export class CartManager {
      * Reset all cart buttons on page to "Add" state
      */
     resetAllButtons() {
-        $('.RemoveFromPeopleCart').each((index, button) => {
-            const personId = $(button).data('cartpersonid');
+        $(".RemoveFromPeopleCart").each((index, button) => {
+            const personId = $(button).data("cartpersonid");
             if (personId) {
                 this.updateButtonState(personId, false);
             }
@@ -394,16 +475,16 @@ export class CartManager {
      */
     refreshCartCount() {
         return window.CRM.APIRequest({
-            method: 'GET',
-            path: 'cart/',
-            suppressErrorDialog: true
+            method: "GET",
+            path: "cart/",
+            suppressErrorDialog: true,
         }).done((data) => {
             const count = data.PeopleCart.length;
-            $('#iconCount').text(count);
-            
+            $("#iconCount").text(count);
+
             // Update dropdown menu
             this.updateCartDropdown(data.PeopleCart);
-            
+
             // Animate cart icon (but don't scroll!)
             this.animateCartIcon();
         });
@@ -413,9 +494,9 @@ export class CartManager {
      * Animate cart icon to show change
      */
     animateCartIcon() {
-        const $cartIcon = $('.fa-shopping-cart').parent();
-        $cartIcon.addClass('cart-pulse');
-        setTimeout(() => $cartIcon.removeClass('cart-pulse'), 600);
+        const $cartIcon = $(".fa-shopping-cart").parent();
+        $cartIcon.addClass("cart-pulse");
+        setTimeout(() => $cartIcon.removeClass("cart-pulse"), 600);
     }
 
     /**
@@ -424,34 +505,34 @@ export class CartManager {
      */
     updateCartDropdown(cartPeople) {
         let menuHtml;
-        
+
         if (cartPeople.length > 0) {
             menuHtml = `
                 <li>
                     <a class="dropdown-item" href="${window.CRM.root}/v2/cart">
-                        <i class="fa-solid fa-shopping-cart text-green"></i> ${i18next.t('View Cart')}
+                        <i class="fa-solid fa-shopping-cart text-green"></i> ${i18next.t("View Cart")}
                     </a>
                     <a class="dropdown-item emptyCart">
-                        <i class="fa-solid fa-trash text-danger"></i> ${i18next.t('Empty Cart')}
+                        <i class="fa-solid fa-trash text-danger"></i> ${i18next.t("Empty Cart")}
                     </a>
                     <a id="emptyCartToGroup" class="dropdown-item">
-                        <i class="fa-solid fa-object-ungroup text-info"></i> ${i18next.t('Empty Cart to Group')}
+                        <i class="fa-solid fa-object-ungroup text-info"></i> ${i18next.t("Empty Cart to Group")}
                     </a>
                     <a href="${window.CRM.root}/CartToFamily.php" class="dropdown-item">
-                        <i class="fa-solid fa-users text-info"></i> ${i18next.t('Empty Cart to Family')}
+                        <i class="fa-solid fa-users text-info"></i> ${i18next.t("Empty Cart to Family")}
                     </a>
                     <a href="${window.CRM.root}/CartToEvent.php" class="dropdown-item">
-                        <i class="fa-solid fa-clipboard-list text-info"></i> ${i18next.t('Empty Cart to Event')}
+                        <i class="fa-solid fa-clipboard-list text-info"></i> ${i18next.t("Empty Cart to Event")}
                     </a>
                     <a href="${window.CRM.root}/MapUsingGoogle.php?GroupID=0" class="dropdown-item">
-                        <i class="fa-solid fa-map-marker text-info"></i> ${i18next.t('Map Cart')}
+                        <i class="fa-solid fa-map-marker text-info"></i> ${i18next.t("Map Cart")}
                     </a>
                 </li>`;
         } else {
-            menuHtml = `<a class="dropdown-item">${i18next.t('Your Cart is Empty')}</a>`;
+            menuHtml = `<a class="dropdown-item">${i18next.t("Your Cart is Empty")}</a>`;
         }
-        
-        $('#cart-dropdown-menu').html(menuHtml);
+
+        $("#cart-dropdown-menu").html(menuHtml);
     }
 
     /**
@@ -459,31 +540,31 @@ export class CartManager {
      */
     initializeEventHandlers() {
         // Add to cart button click
-        $(document).on('click', '.AddToPeopleCart', (e) => {
+        $(document).on("click", ".AddToPeopleCart", (e) => {
             e.preventDefault();
-            const personId = $(e.currentTarget).data('cartpersonid');
+            const personId = $(e.currentTarget).data("cartpersonid");
             if (personId) {
                 this.addPerson(personId);
             }
         });
 
         // Remove from cart button click
-        $(document).on('click', '.RemoveFromPeopleCart', (e) => {
+        $(document).on("click", ".RemoveFromPeopleCart", (e) => {
             e.preventDefault();
-            const personId = $(e.currentTarget).data('cartpersonid');
+            const personId = $(e.currentTarget).data("cartpersonid");
             if (personId) {
                 this.removePerson(personId);
             }
         });
 
         // Empty cart button click
-        $(document).on('click', '.emptyCart', (e) => {
+        $(document).on("click", ".emptyCart", (e) => {
             e.preventDefault();
             this.emptyCart();
         });
 
         // Empty cart to group
-        $(document).on('click', '#emptyCartToGroup', (e) => {
+        $(document).on("click", "#emptyCartToGroup", (e) => {
             e.preventDefault();
             this.emptyToGroup();
         });
@@ -496,7 +577,7 @@ $(document).ready(() => {
         window.CRM = {};
     }
     window.CRM.cartManager = new CartManager();
-    
+
     // Initialize cart count on page load
     window.CRM.cartManager.refreshCartCount();
 });
