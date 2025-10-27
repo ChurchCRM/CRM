@@ -147,17 +147,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
 
 <div class="card">
     <div class="card-header with-border">
-        <dev class="card-title"><h4><?= gettext('People') ?></h4></dev>
-        <div class="card-tools">
-            <div class="btn-group">
-                <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php">
-                    <button type="button" class="btn btn-success"><?= gettext('Add New Person') ?></button>
-                </a>
-                <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php">
-                <button type="button" class="btn btn-success"><?= gettext('Add New Family') ?></button>
-                </a>
-            </div>
-        </div>
+        <div class="card-title"><h4><?= gettext('People') ?></h4></div>
     </div>
         <div class="card-body">
             <div class="row">

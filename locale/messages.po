@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-18 15:27-0700\n"
+"POT-Creation-Date: 2025-10-26 18:44-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2979,6 +2979,9 @@ msgstr ""
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr ""
 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr ""
+
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr ""
 
@@ -3738,6 +3741,9 @@ msgstr ""
 msgid "Return to Events"
 msgstr ""
 
+msgid "Enter event description..."
+msgstr ""
+
 msgid "EVENT TYPE NAME"
 msgstr ""
 
@@ -4296,10 +4302,7 @@ msgstr ""
 msgid "Remove All from Cart"
 msgstr ""
 
-msgid "Text from"
-msgstr ""
-
-msgid "Text for Event ID: "
+msgid "Event ID"
 msgstr ""
 
 msgid "Group Editor"
@@ -4896,6 +4899,9 @@ msgstr ""
 msgid "Private"
 msgstr ""
 
+msgid "Enter note text here..."
+msgstr ""
+
 msgid "Family Roles Editor"
 msgstr ""
 
@@ -5238,10 +5244,19 @@ msgstr ""
 msgid "Timeline"
 msgstr ""
 
+msgid "Notes"
+msgstr ""
+
 msgid "Assigned Groups"
 msgstr ""
 
 msgid "Mailchimp"
+msgstr ""
+
+msgid "No notes have been added for this person."
+msgstr ""
+
+msgid "Note"
 msgstr ""
 
 msgid "No group assignments."
@@ -5785,9 +5800,6 @@ msgid "Variable name"
 msgstr ""
 
 msgid "Current Value"
-msgstr ""
-
-msgid "Notes"
 msgstr ""
 
 msgid "Save Settings"
@@ -6795,10 +6807,13 @@ msgstr ""
 msgid "Family List"
 msgstr ""
 
-msgid "Add Family"
+msgid "This Family is Deactivated"
 msgstr ""
 
-msgid "This Family is Deactivated"
+msgid "Metadata"
+msgstr ""
+
+msgid "Loading"
 msgstr ""
 
 msgid "Previous Family"
@@ -6834,10 +6849,7 @@ msgstr ""
 msgid "Add a new payment"
 msgstr ""
 
-msgid "Metadata"
-msgstr ""
-
-msgid "Loading"
+msgid "No notes have been added for this family."
 msgstr ""
 
 msgid "Pledges and Payments"
@@ -6889,15 +6901,6 @@ msgid "Pending Self Verify"
 msgstr ""
 
 msgid "Listing"
-msgstr ""
-
-msgid "Filter and Cart"
-msgstr ""
-
-msgid "Clear Filter"
-msgstr ""
-
-msgid "Add Person"
 msgstr ""
 
 msgid "Attendees Checked In"
@@ -7014,6 +7017,9 @@ msgstr ""
 msgid "2 Factor Authentication Secret"
 msgstr ""
 
+msgid "A Calednar access token has been generated and saved."
+msgstr ""
+
 msgid "Access Token"
 msgstr ""
 
@@ -7066,6 +7072,9 @@ msgid "bEnableExternalCalendarAPI disabled, but some calendars have access token
 msgstr ""
 
 msgid "Calendar Name"
+msgstr ""
+
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
 msgstr ""
 
 msgid "Change role"
