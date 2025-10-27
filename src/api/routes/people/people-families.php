@@ -9,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\Map\TokenTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FinancialService;
@@ -24,20 +23,18 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/updated', 'getUpdatedFamilies');
     $group->get('/anniversaries', 'getFamiliesWithAnniversaries');
     $group->get('/familiesInCart', function (Request $request, Response $response, array $args): Response {
-        // Get the list of person IDs in the cart
-        $cartPersonIDs = $_SESSION['aPeopleCart'] ?? [];
         $familiesInCart = [];
         
-        if (!empty($cartPersonIDs)) {
-            // Query families that have members in the cart
-            $families = FamilyQuery::create()
-                ->usePersonQuery()
-                    ->filterById($cartPersonIDs)
-                ->endUse()
-                ->select(['Id'])
-                ->distinct()
-                ->find();
-            $familiesInCart = $families->getColumnValues('Id');
+        // Check if cart has items
+        if (!empty($_SESSION['aPeopleCart'])) {
+            // Get all families and check which ones have members in the cart
+            $families = FamilyQuery::create()->find();
+            foreach ($families as $family) {
+                // Use the checkAgainstCart method to verify ALL family members are in cart
+                if ($family->checkAgainstCart()) {
+                    $familiesInCart[] = $family->getId();
+                }
+            }
         }
         
         return SlimUtils::renderJSON($response, ['familiesInCart' => $familiesInCart]);
