@@ -54,55 +54,9 @@ $("document").ready(function () {
 
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
 
-    $(document).on("click", ".emptyCart", function (e) {
-        window.CRM.cart.empty(function (data) {
-            $(data.cartPeople).each(function (index, data) {
-                personButton = $("a[data-cartpersonid='" + data + "']");
-                $(personButton).addClass("AddToPeopleCart");
-                $(personButton).removeClass("RemoveFromPeopleCart");
-                $("span i:nth-child(2)", personButton).removeClass("fa-remove");
-                $("span i:nth-child(2)", personButton).addClass("fa-cart-plus");
-            });
-        });
-    });
+    // Note: Cart event handlers are now in cart.js module
+    // The CartManager class handles all cart button clicks and notifications
 
-    $(document).on("click", "#emptyCartToGroup", function (e) {
-        window.CRM.cart.emptyToGroup();
-    });
-
-    $(document).on("click", ".RemoveFromPeopleCart", function () {
-        clickedButton = $(this);
-        window.CRM.cart.removePerson(
-            [clickedButton.data("cartpersonid")],
-            function () {
-                $(clickedButton).addClass("AddToPeopleCart");
-                $(clickedButton).removeClass("RemoveFromPeopleCart");
-                $("span i:nth-child(2)", clickedButton).removeClass(
-                    "fa-remove",
-                );
-                $("span i:nth-child(2)", clickedButton).addClass(
-                    "fa-cart-plus",
-                );
-            },
-        );
-    });
-
-    $(document).on("click", ".AddToPeopleCart", function () {
-        clickedButton = $(this);
-        window.CRM.cart.addPerson(
-            [clickedButton.data("cartpersonid")],
-            function () {
-                $(clickedButton).addClass("RemoveFromPeopleCart");
-                $(clickedButton).removeClass("AddToPeopleCart");
-                $("span i:nth-child(2)", clickedButton).addClass("fa-remove");
-                $("span i:nth-child(2)", clickedButton).removeClass(
-                    "fa-cart-plus",
-                );
-            },
-        );
-    });
-
-    window.CRM.cart.refresh();
     window.CRM.dashboard.refresh();
     DashboardRefreshTimer = setInterval(
         window.CRM.dashboard.refresh,

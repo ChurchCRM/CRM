@@ -256,7 +256,11 @@ $(function () {
     });
 
     $("#AddFamilyToCart").on("click", function () {
-        window.CRM.cart.addFamily($(this).data("familyid"));
+        const familyId = $(this).data("familyid");
+        // Use CartManager with notifications
+        window.CRM.cartManager.addFamily(familyId, {
+            showNotification: true
+        });
     });
 
     // Photos

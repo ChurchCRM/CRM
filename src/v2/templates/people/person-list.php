@@ -435,14 +435,13 @@ foreach ($ListItem as $element) {
         });
         
         if (listPeople.length > 0) {
-            // Call cart API with callback to ensure proper refresh
-            window.CRM.cart.addPerson(listPeople, function(data) {
-                console.log('Added ' + listPeople.length + ' people to cart');
-                // Force a visual refresh of the page to update cart buttons
-                location.reload();
+            // Use CartManager with notifications
+            window.CRM.cartManager.addPerson(listPeople, {
+                showNotification: true
             });
         } else {
-            console.log('No people to add - all filtered people are already in cart');
+            // Show notification that no people to add
+            window.CRM.cartManager.showNotification('warning', i18next.t('No people to add - all are already in cart'));
         }
     });
 
@@ -460,13 +459,16 @@ foreach ($ListItem as $element) {
         });
         
         if (listPeople.length > 0) {
-            // Call cart API with callback to ensure proper refresh
-            window.CRM.cart.removePerson(listPeople, function(data) {
-                console.log('Removed ' + listPeople.length + ' people from cart');
-                // Force a visual refresh of the page to update cart buttons
-                location.reload();
+            // Use CartManager with confirmation and notifications
+            window.CRM.cartManager.removePerson(listPeople, {
+                confirm: true,
+                showNotification: true
             });
         } else {
+            // Show notification that no people to remove
+            window.CRM.cartManager.showNotification('warning', i18next.t('No people in cart to remove'));
+        }
+    });
             console.log('No people to remove - none of the filtered people are in cart');
         }
     });

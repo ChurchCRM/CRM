@@ -169,24 +169,35 @@ $(document).ready(function () {
     $(document).on("click", "#AddGroupToCart", function (link) {
         var groupid = link.currentTarget.dataset.groupid;
         var parent = $(this).parent().find("span");
-        window.CRM.cart.addGroup(groupid, function (data) {
-            link.target.id = "removeGroupFromCart";
-            link.target.className = "btn";
-            link.target.innerText = i18next.t("Remove all");
-            parent.text(i18next.t("All members of this group are in the cart"));
+        
+        // Use CartManager with notifications
+        window.CRM.cartManager.addGroup(groupid, {
+            showNotification: true,
+            callback: function (data) {
+                link.target.id = "removeGroupFromCart";
+                link.target.className = "btn";
+                link.target.innerText = i18next.t("Remove all");
+                parent.text(i18next.t("All members of this group are in the cart"));
+            }
         });
     });
 
     $(document).on("click", "#removeGroupFromCart", function (link) {
         var groupid = link.currentTarget.dataset.groupid;
         var parent = $(this).parent().find("span");
-        window.CRM.cart.removeGroup(groupid, function (data) {
-            link.target.id = "AddGroupToCart";
-            link.target.className = "btn";
-            link.target.innerText = i18next.t("Add all");
-            parent.text(
-                i18next.t("Not all members of this group are in the cart"),
-            );
+        
+        // Use CartManager with confirmation and notifications
+        window.CRM.cartManager.removeGroup(groupid, {
+            confirm: true,
+            showNotification: true,
+            callback: function (data) {
+                link.target.id = "AddGroupToCart";
+                link.target.className = "btn";
+                link.target.innerText = i18next.t("Add all");
+                parent.text(
+                    i18next.t("Not all members of this group are in the cart"),
+                );
+            }
         });
     });
 });

@@ -121,7 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         return val.PersonId;
                     }),
             };
-            window.CRM.cart.addPerson(selectedPersons.Persons);
+            window.CRM.cartManager.addPerson(selectedPersons.Persons, {
+                showNotification: true
+            });
         }
     });
 
@@ -185,7 +187,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#AddGroupMembersToCart").on("click", function () {
-        window.CRM.cart.addGroup($(this).data("groupid"));
+        window.CRM.cartManager.addGroup($(this).data("groupid"), {
+            showNotification: true
+        });
     });
 
     $(document).on("click", ".changeMembership", function (e) {

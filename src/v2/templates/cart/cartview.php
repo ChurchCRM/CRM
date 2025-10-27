@@ -11,18 +11,24 @@ echo $this->fetch('cartlisting.php', $data);
   $(document).ready(function () {
     $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
 
-    $(document).on("click", ".emptyCart", function (e) {
-      window.CRM.cart.empty(function () {
-        document.location.reload();
-      });
-    });
-
-    $(document).on("click", ".RemoveFromPeopleCart", function (e) {
-      clickedButton = $(this);
-      e.stopPropagation();
-      window.CRM.cart.removePerson([clickedButton.data("personid")], function () {
-        document.location.reload();
-      });
+    // Cart event handlers now use CartManager with notifications
+    // Empty cart handler is in cart.js
+    
+    // Remove single person from cart on this page
+        $(document).on("click",".RemoveFromPeopleCart", function(e) {
+        e.preventDefault();
+        var clickedButton = $(this);
+        var iPersonId = clickedButton.data("cartpersonid");
+        
+        // Use CartManager with confirmation
+        window.CRM.cartManager.removePerson([iPersonId], {
+            confirm: true,
+            showNotification: true,
+            callback: function() {
+                // Reload page to update the cart view
+                location.reload();
+            }
+        });
     });
 
   });

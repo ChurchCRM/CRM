@@ -253,12 +253,17 @@ function DoQuery()
             <script>
                 $("#addResultsToCart").click(function () {
                     var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                    window.CRM.cart.addPerson(selectedPersons);
+                    window.CRM.cartManager.addPerson(selectedPersons, {
+                        showNotification: true
+                    });
                 });
 
                 $("#removeResultsFromCart").click(function(){
                     var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                    window.CRM.cart.removePerson(selectedPersons);
+                    window.CRM.cartManager.removePerson(selectedPersons, {
+                        confirm: true,
+                        showNotification: true
+                    });
                 });
 
             </script>
