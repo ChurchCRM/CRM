@@ -21,11 +21,15 @@ export class CartManager {
      * @param {Object} options - Configuration options
      * @param {boolean} options.hideButton - Hide button after adding (default: false)
      * @param {boolean} options.showNotification - Show notification (default: true)
+     * @param {boolean} options.reloadPage - Reload page after operation (default: false)
+     * @param {number} options.reloadDelay - Delay before reload in ms (default: 1500)
      * @param {Function} options.callback - Callback function after success
      */
     addPerson(personIds, options = {}) {
         const ids = Array.isArray(personIds) ? personIds : [personIds];
         const showNotification = options.showNotification !== false;
+        const reloadPage = options.reloadPage === true;
+        const reloadDelay = options.reloadDelay || 1500;
 
         return window.CRM.APIRequest({
             method: "POST",
@@ -43,28 +47,18 @@ export class CartManager {
                         const message =
                             addedCount === 1
                                 ? i18next.t("Added to cart successfully")
-                                : i18next.t("{count} people added to cart", {
-                                      count: addedCount,
-                                  });
+                                : `${addedCount} ${i18next.t("people added to cart")}`;
                         this.showNotification("success", message);
                     } else if (addedCount === 0 && duplicateCount > 0) {
                         // All were duplicates
                         const message =
                             duplicateCount === 1
                                 ? i18next.t("Person already in cart")
-                                : i18next.t("{count} people already in cart", {
-                                      count: duplicateCount,
-                                  });
+                                : `${duplicateCount} ${i18next.t("people already in cart")}`;
                         this.showNotification("warning", message);
                     } else if (addedCount > 0 && duplicateCount > 0) {
                         // Mixed results
-                        const message = i18next.t(
-                            "{added} added, {duplicate} already in cart",
-                            {
-                                added: addedCount,
-                                duplicate: duplicateCount,
-                            }
-                        );
+                        const message = `${addedCount} ${i18next.t("added")}, ${duplicateCount} ${i18next.t("already in cart")}`;
                         this.showNotification("warning", message);
                     }
                 }
@@ -79,6 +73,13 @@ export class CartManager {
                     ids.forEach((id) => this.updateButtonState(id, true));
                 }
 
+                // Reload page if requested (useful for bulk operations)
+                if (reloadPage) {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, reloadDelay);
+                }
+
                 // Call custom callback if provided
                 if (options.callback) {
                     options.callback(data);
@@ -91,7 +92,6 @@ export class CartManager {
                         i18next.t("Failed to add to cart"),
                     );
                 }
-                console.error("Cart add failed:", error);
             });
     }
 
@@ -101,11 +101,13 @@ export class CartManager {
      * @param {Object} options - Configuration options
      * @param {boolean} options.confirm - Show confirmation dialog (default: true)
      * @param {boolean} options.showNotification - Show notification (default: true)
+     * @param {boolean} options.reloadPage - Reload page after operation (default: false)
+     * @param {number} options.reloadDelay - Delay before reload in ms (default: 1500)
      * @param {Function} options.callback - Callback function after success
      */
     removePerson(personIds, options = {}) {
         const ids = Array.isArray(personIds) ? personIds : [personIds];
-        const showConfirm = options.confirm !== false;
+        const showConfirm = options.confirm !== false; // Fixed: reverted to original logic
         const showNotification = options.showNotification !== false;
 
         // Show confirmation dialog using bootbox
@@ -113,9 +115,7 @@ export class CartManager {
             const confirmMsg =
                 ids.length === 1
                     ? i18next.t("Remove this person from cart?")
-                    : i18next.t("Remove {count} people from cart?", {
-                          count: ids.length,
-                      });
+                    : `${i18next.t("Remove")} ${ids.length} ${i18next.t("people from cart")}?`;
 
             bootbox.confirm({
                 message: confirmMsg,
@@ -131,16 +131,12 @@ export class CartManager {
                 },
                 callback: (result) => {
                     if (result) {
-                        this.performRemovePerson(
-                            ids,
-                            showNotification,
-                            options.callback,
-                        );
+                        this.performRemovePerson(ids, options);
                     }
                 },
             });
         } else {
-            this.performRemovePerson(ids, showNotification, options.callback);
+            this.performRemovePerson(ids, options);
         }
     }
 
@@ -148,7 +144,11 @@ export class CartManager {
      * Internal method to perform person removal
      * @private
      */
-    performRemovePerson(ids, showNotification, callback) {
+    performRemovePerson(ids, options = {}) {
+        const showNotification = options.showNotification !== false;
+        const reloadPage = options.reloadPage === true;
+        const reloadDelay = options.reloadDelay || 1500;
+
         return window.CRM.APIRequest({
             method: "DELETE",
             path: "cart/",
@@ -160,9 +160,7 @@ export class CartManager {
                     const message =
                         ids.length === 1
                             ? i18next.t("Removed from cart successfully")
-                            : i18next.t("{count} people removed from cart", {
-                                  count: ids.length,
-                              });
+                            : `${ids.length} ${i18next.t("people removed from cart")}`;
                     this.showNotification("success", message);
                 }
 
@@ -172,9 +170,16 @@ export class CartManager {
                 // Update button states
                 ids.forEach((id) => this.updateButtonState(id, false));
 
+                // Reload page if requested (useful for bulk operations)
+                if (reloadPage) {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, reloadDelay);
+                }
+
                 // Call custom callback
-                if (callback) {
-                    callback(data);
+                if (options && options.callback) {
+                    options.callback(data);
                 }
             })
             .fail((error) => {
@@ -184,7 +189,6 @@ export class CartManager {
                         i18next.t("Failed to remove from cart"),
                     );
                 }
-                console.error("Cart remove failed:", error);
             });
     }
 
@@ -299,6 +303,8 @@ export class CartManager {
      * Empty entire cart with confirmation
      * @param {Object} options - Configuration options
      * @param {boolean} options.confirm - Show confirmation dialog (default: true)
+     * @param {boolean} options.reloadPage - Reload page after operation (default: true if on cart page)
+     * @param {number} options.reloadDelay - Delay before reload in ms (default: 1500)
      * @param {Function} options.callback - Callback function after success
      */
     emptyCart(options = {}) {
@@ -319,12 +325,12 @@ export class CartManager {
                 },
                 callback: (result) => {
                     if (result) {
-                        this.performEmptyCart(options.callback);
+                        this.performEmptyCart(options);
                     }
                 },
             });
         } else {
-            this.performEmptyCart(options.callback);
+            this.performEmptyCart(options);
         }
     }
 
@@ -332,7 +338,10 @@ export class CartManager {
      * Internal method to perform cart emptying
      * @private
      */
-    performEmptyCart(callback) {
+    performEmptyCart(options) {
+        const reloadPage = options.reloadPage !== false && window.location.pathname.includes('/v2/cart');
+        const reloadDelay = options.reloadDelay || 1500;
+
         return window.CRM.APIRequest({
             method: "DELETE",
             path: "cart/",
@@ -347,8 +356,15 @@ export class CartManager {
                 // Reset all buttons on page
                 this.resetAllButtons();
 
-                if (callback) {
-                    callback(data);
+                // Reload page if on cart page
+                if (reloadPage) {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, reloadDelay);
+                }
+
+                if (options.callback) {
+                    options.callback(data);
                 }
             })
             .fail((error) => {
@@ -446,9 +462,9 @@ export class CartManager {
 
             // Update icon
             $button
-                .find("i.fa-cart-plus, i.fa.fa-cart-plus")
+                .find("i.fa-cart-plus, i.fa.fa-cart-plus, i.fa-shopping-cart")
                 .removeClass("fa-cart-plus")
-                .addClass("fa-remove");
+                .addClass("fa-shopping-cart text-danger");
 
             // Update text if present
             $button
@@ -461,8 +477,8 @@ export class CartManager {
 
             // Update icon
             $button
-                .find("i.fa-remove, i.fa.fa-remove")
-                .removeClass("fa-remove")
+                .find("i.fa-shopping-cart, i.fa.fa-shopping-cart")
+                .removeClass("fa-shopping-cart text-danger")
                 .addClass("fa-cart-plus");
 
             // Update text if present
@@ -535,7 +551,7 @@ export class CartManager {
             menuHtml = `
                 <li>
                     <a class="dropdown-item" href="${window.CRM.root}/v2/cart">
-                        <i class="fa-solid fa-shopping-cart text-green"></i> ${i18next.t("View Cart")}
+                        <i class="fa-solid fa-eye text-primary"></i> ${i18next.t("View Cart")}
                     </a>
                     <a class="dropdown-item emptyCart">
                         <i class="fa-solid fa-trash text-danger"></i> ${i18next.t("Empty Cart")}

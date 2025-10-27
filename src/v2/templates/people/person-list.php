@@ -181,11 +181,11 @@ foreach ($ListItem as $element) {
                     } else {
                         ?>
                         <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                    <i class="fa-solid fa-remove"></i>
+                                    <i class="fa-solid fa-shopping-cart text-danger"></i>
                             </a>
-                            <?php
-                    }
-                    ?>
+                        </td>
+                        <?php
+                    } ?>
 
                 <?php
                 $columns = json_decode(SystemConfig::getValue('sPersonListColumns'), null, 512, JSON_THROW_ON_ERROR);
@@ -435,9 +435,10 @@ foreach ($ListItem as $element) {
         });
         
         if (listPeople.length > 0) {
-            // Use CartManager with notifications
+            // Use CartManager with notifications and automatic page reload
             window.CRM.cartManager.addPerson(listPeople, {
-                showNotification: true
+                showNotification: true,
+                reloadPage: true
             });
         } else {
             // Show notification that no people to add
@@ -458,18 +459,18 @@ foreach ($ListItem as $element) {
             }
         });
         
+        console.log('Found ' + listPeople.length + ' people to remove:', listPeople);
+        
         if (listPeople.length > 0) {
-            // Use CartManager with confirmation and notifications
+            // Use CartManager with confirmation, notifications, and automatic page reload
             window.CRM.cartManager.removePerson(listPeople, {
                 confirm: true,
-                showNotification: true
+                showNotification: true,
+                reloadPage: true
             });
         } else {
             // Show notification that no people to remove
             window.CRM.cartManager.showNotification('warning', i18next.t('No people in cart to remove'));
-        }
-    });
-            console.log('No people to remove - none of the filtered people are in cart');
         }
     });
 
