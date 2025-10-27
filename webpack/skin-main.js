@@ -26,6 +26,9 @@ import 'quill/dist/quill.snow.css';
 
 import { initializeQuillEditor } from './quill-editor.js';
 
+// Import cart management module
+import '../src/skin/js/cart.js';
+
 import '../src/skin/churchcrm.scss';
 
 // Make Quill initialization function available globally
