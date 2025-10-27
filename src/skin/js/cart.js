@@ -586,6 +586,43 @@ export class CartManager {
         });
     }
 
+    /**
+     * Synchronize all cart buttons on the page with current cart state
+     * Scans the DOM for all buttons with data-cart-id and data-cart-type attributes
+     * and updates their visual state based on what's in the session cart
+     * @param {Array} peopleCart - Array of person IDs currently in cart
+     * @param {Array} familiesInCart - Array of family IDs with members in cart
+     * @param {Array} groupsInCart - Array of group IDs in cart
+     */
+    syncButtonStates(peopleCart = [], familiesInCart = [], groupsInCart = []) {
+        // Update all person buttons
+        $('[data-cart-type="person"]').each((index, element) => {
+            const personId = $(element).data("cart-id");
+            if (personId) {
+                const inCart = peopleCart.includes(personId);
+                this.updateButtonState(personId, inCart, "person");
+            }
+        });
+
+        // Update all family buttons
+        $('[data-cart-type="family"]').each((index, element) => {
+            const familyId = $(element).data("cart-id");
+            if (familyId) {
+                const inCart = familiesInCart.includes(familyId);
+                this.updateButtonState(familyId, inCart, "family");
+            }
+        });
+
+        // Update all group buttons
+        $('[data-cart-type="group"]').each((index, element) => {
+            const groupId = $(element).data("cart-id");
+            if (groupId) {
+                const inCart = groupsInCart.includes(groupId);
+                this.updateButtonState(groupId, inCart, "group");
+            }
+        });
+    }
+
     refreshCartCount() {
         if (!window.CRM || typeof window.CRM.APIRequest !== "function") {
             return Promise.reject("APIRequest not available");

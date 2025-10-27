@@ -80,7 +80,7 @@ $(document).ready(function () {
         dataTableConfig,
     );
     latestFamiliesTable.on("draw", function () {
-        updateFamilyCartButtons();
+        syncCartButtons();
     });
 
     dataTableConfig = {
@@ -99,7 +99,7 @@ $(document).ready(function () {
         dataTableConfig,
     );
     updatedFamiliesTable.on("draw", function () {
-        updateFamilyCartButtons();
+        syncCartButtons();
     });
 
     dataTableConfig = {
@@ -141,7 +141,12 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#PersonBirthdayDashboardItem").DataTable(dataTableConfig);
+    let birthdayPersonTable = $("#PersonBirthdayDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    birthdayPersonTable.on("draw", function () {
+        syncCartButtons();
+    });
 
     dataTableConfig = {
         ajax: {
@@ -243,7 +248,12 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#updatedPersonDashboardItem").DataTable(dataTableConfig);
+    let updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    updatedPersonTable.on("draw", function () {
+        syncCartButtons();
+    });
 
     dataTableConfig = {
         ajax: {
@@ -257,28 +267,38 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#latestPersonDashboardItem").DataTable(dataTableConfig);
-
-    function updateFamilyCartButtons() {
+    let latestPersonTable = $("#latestPersonDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    latestPersonTable.on("draw", function () {
+        syncCartButtons();
+    });
+    function syncCartButtons() {
         if (window.CRM && window.CRM.cartManager) {
-            window.CRM.APIRequest({
-                method: "GET",
-                path: "families/familiesInCart",
-                suppressErrorDialog: true,
-            }).done(function (data) {
-                if (
-                    data &&
-                    data.familiesInCart &&
-                    Array.isArray(data.familiesInCart)
-                ) {
-                    data.familiesInCart.forEach(function (familyId) {
-                        window.CRM.cartManager.updateButtonState(
-                            familyId,
-                            true,
-                            "family",
-                        );
-                    });
-                }
+            Promise.all([
+                window.CRM.APIRequest({
+                    method: "GET",
+                    path: "cart/",
+                    suppressErrorDialog: true,
+                }),
+                window.CRM.APIRequest({
+                    method: "GET",
+                    path: "families/familiesInCart",
+                    suppressErrorDialog: true,
+                }),
+            ]).then(function (responses) {
+                let cartData = responses[0];
+                let familiesData = responses[1];
+
+                let peopleInCart = cartData.PeopleCart || [];
+                let familiesInCart = familiesData.familiesInCart || [];
+                let groupsInCart = cartData.GroupCart || [];
+
+                window.CRM.cartManager.syncButtonStates(
+                    peopleInCart,
+                    familiesInCart,
+                    groupsInCart,
+                );
             });
         }
     }
