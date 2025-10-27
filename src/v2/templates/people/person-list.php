@@ -171,7 +171,7 @@ foreach ($ListItem as $element) {
                             <i class="fa-solid fa-pen"></i>
                     </a>
 
-                    <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
+                    <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($person->getId(), $_SESSION['aPeopleCart'], false)) {
                         ?>
                             <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
                                 <i class="fa-solid fa-cart-plus"></i>
