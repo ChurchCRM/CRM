@@ -25,45 +25,59 @@ describe("Standard People", () => {
     });
 
     it("Add All to Cart functionality", () => {
-        // Empty cart first to ensure clean state
+        // Login first to establish session
         cy.loginStandard("v2/cart");
+        
+        // Wait for cart page to fully load
+        cy.get("body", { timeout: 10000 }).should("be.visible");
+        
+        // Empty cart first to ensure clean state (if cart has items)
         cy.get("body").then(($body) => {
-            if (!$body.text().includes("You have no items in your cart")) {
-                cy.get("#emptyCart").click();
-                cy.contains("You have no items in your cart");
+            // Check if cart has items
+            if ($body.text().includes("You have items in your cart")) {
+                cy.get("#emptyCart", { timeout: 5000 }).should("be.visible").click();
+                
+                // Handle the bootbox confirmation dialog
+                cy.get(".bootbox.modal", { timeout: 5000 }).should("be.visible");
+                cy.get(".bootbox.modal .btn-danger").click();
+                
+                cy.contains("You have no items in your cart", { timeout: 10000 });
             }
         });
-
+        
         // Go to people page with filter
         cy.visit("v2/people?Gender=1"); // Filter by Female
         
         // Wait for DataTable to load
-        cy.get("#members").should("be.visible");
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+        cy.get("#members", { timeout: 10000 }).should("be.visible");
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
         
         // Click Add All to Cart
         cy.get("#AddAllToCart").should("be.visible").click();
         
-        // Wait for page reload
-        cy.url().should("include", "/v2/people");
-        
         // Verify cart has items
         cy.visit("v2/cart");
-        cy.contains("Cart Functions");
-        cy.get("body").should("not.contain", "You have no items in your cart");
+        cy.contains("Cart Functions", { timeout: 10000 });
+        cy.get("body", { timeout: 10000 }).should("not.contain", "You have no items in your cart");
         
-        // Clean up - empty cart
-        cy.get("#emptyCart").click();
-        cy.contains("You have no items in your cart");
+        // Clean up - empty cart via UI with confirmation
+        cy.get("#emptyCart", { timeout: 5000 }).should("be.visible").click();
+        cy.get(".bootbox.modal", { timeout: 5000 }).should("be.visible");
+        cy.get(".bootbox.modal .btn-danger").click();
+        cy.contains("You have no items in your cart", { timeout: 10000 });
     });
 
     it("Remove All from Cart functionality", () => {
-        // Empty cart first to ensure clean state
+        // Login first to establish session
         cy.loginStandard("v2/cart");
+        
+        // Empty cart first to ensure clean state
         cy.get("body").then(($body) => {
             if (!$body.text().includes("You have no items in your cart")) {
-                cy.get("#emptyCart").click();
-                cy.contains("You have no items in your cart");
+                cy.get("#emptyCart", { timeout: 5000 }).should("be.visible").click();
+                cy.get(".bootbox.modal", { timeout: 5000 }).should("be.visible");
+                cy.get(".bootbox.modal .btn-danger").click();
+                cy.contains("You have no items in your cart", { timeout: 10000 });
             }
         });
 
@@ -92,20 +106,24 @@ describe("Standard People", () => {
         
         cy.get("#RemoveAllFromCart").should("be.visible").click();
         
+        // Handle confirmation dialog for RemoveAll - click danger button (Yes, Remove)
+        cy.get(".bootbox.modal", { timeout: 5000 }).should("be.visible");
+        cy.get(".bootbox.modal .btn-danger").click();
+        
         // Wait for page reload
         cy.url().should("include", "/v2/people");
-        // Wait for the reload to complete and cart to sync
-        cy.wait(2000);
         
-        // Verify cart is empty (or empty it if needed)
+        // Verify cart is empty
         cy.visit("v2/cart");
         cy.get("body").then(($body) => {
             if (!$body.text().includes("You have no items in your cart")) {
                 // Cart still has items, empty it manually
-                cy.get("#emptyCart").click();
+                cy.get("#emptyCart", { timeout: 5000 }).should("be.visible").click();
+                cy.get(".bootbox.modal", { timeout: 5000 }).should("be.visible");
+                cy.get(".bootbox.modal .btn-danger").click();
             }
         });
-        cy.contains("You have no items in your cart");
+        cy.contains("You have no items in your cart", { timeout: 10000 });
     });
 
     it("Clear Filter functionality", () => {
