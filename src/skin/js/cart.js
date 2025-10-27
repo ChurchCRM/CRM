@@ -37,7 +37,6 @@ export class CartManager {
             data: JSON.stringify({ Persons: ids }),
         })
             .done((data) => {
-                // Show appropriate notification based on results
                 if (showNotification) {
                     const addedCount = data.added ? data.added.length : 0;
                     const duplicateCount = data.duplicate
@@ -45,44 +44,37 @@ export class CartManager {
                         : 0;
 
                     if (addedCount > 0 && duplicateCount === 0) {
-                        // All were added successfully
                         const message =
                             addedCount === 1
                                 ? i18next.t("Added to cart successfully")
                                 : `${addedCount} ${i18next.t("people added to cart")}`;
                         this.showNotification("success", message);
                     } else if (addedCount === 0 && duplicateCount > 0) {
-                        // All were duplicates
                         const message =
                             duplicateCount === 1
                                 ? i18next.t("Person already in cart")
                                 : `${duplicateCount} ${i18next.t("people already in cart")}`;
                         this.showNotification("warning", message);
                     } else if (addedCount > 0 && duplicateCount > 0) {
-                        // Mixed results
                         const message = `${addedCount} ${i18next.t("added")}, ${duplicateCount} ${i18next.t("already in cart")}`;
                         this.showNotification("warning", message);
                     }
                 }
 
-                // Update cart count
                 this.refreshCartCount();
 
-                // Hide or toggle buttons
                 if (options.hideButton) {
                     ids.forEach((id) => this.hideCartButton(id));
                 } else {
                     ids.forEach((id) => this.updateButtonState(id, true));
                 }
 
-                // Reload page if requested (useful for bulk operations)
                 if (reloadPage) {
                     setTimeout(() => {
                         window.location.reload();
                     }, reloadDelay);
                 }
 
-                // Call custom callback if provided
                 if (options.callback) {
                     options.callback(data);
                 }
@@ -157,7 +149,6 @@ export class CartManager {
             data: JSON.stringify({ Persons: ids }),
         })
             .done((data) => {
-                // Show success notification
                 if (showNotification) {
                     const message =
                         ids.length === 1
@@ -166,20 +157,16 @@ export class CartManager {
                     this.showNotification("success", message);
                 }
 
-                // Update cart count
                 this.refreshCartCount();
 
-                // Update button states
                 ids.forEach((id) => this.updateButtonState(id, false));
 
-                // Reload page if requested (useful for bulk operations)
                 if (reloadPage) {
                     setTimeout(() => {
                         window.location.reload();
                     }, reloadDelay);
                 }
 
-                // Call custom callback
                 if (options && options.callback) {
                     options.callback(data);
                 }
@@ -206,14 +193,12 @@ export class CartManager {
             data: JSON.stringify({ Family: familyId }),
         })
             .done((data) => {
-                // Handle duplicate detection
                 const duplicateCount = data.duplicate
                     ? data.duplicate.length
                     : 0;
                 const addedCount = data.added ? data.added.length : 0;
 
                 if (duplicateCount > 0 && addedCount > 0) {
-                    // Mix of added and duplicates
                     this.showNotification(
                         "warning",
                         i18next.t("Added") +
@@ -223,13 +208,11 @@ export class CartManager {
                             i18next.t("in cart"),
                     );
                 } else if (duplicateCount > 0) {
-                    // All duplicates
                     this.showNotification(
                         "warning",
                         i18next.t("All members already in cart"),
                     );
                 } else {
-                    // All new additions
                     this.showNotification(
                         "success",
                         i18next.t("Family added to cart"),
@@ -237,6 +220,8 @@ export class CartManager {
                 }
 
                 this.refreshCartCount();
+
+                this.updateButtonState(familyId, true, "family");
 
                 if (options.callback) {
                     options.callback(data);
@@ -262,7 +247,6 @@ export class CartManager {
         const showConfirm = options.confirm !== false;
         const showNotification = options.showNotification !== false;
 
-        // Show confirmation dialog using bootbox
         if (showConfirm) {
             const confirmMsg = i18next.t("Remove this family from cart?");
 
@@ -302,7 +286,6 @@ export class CartManager {
             data: JSON.stringify({ Family: familyId }),
         })
             .done((data) => {
-                // Show success notification
                 if (showNotification) {
                     this.showNotification(
                         "success",
@@ -310,10 +293,10 @@ export class CartManager {
                     );
                 }
 
-                // Update cart count
                 this.refreshCartCount();
 
-                // Call custom callback
+                this.updateButtonState(familyId, false, "family");
+
                 if (options && options.callback) {
                     options.callback(data);
                 }
@@ -345,6 +328,8 @@ export class CartManager {
                     i18next.t("Group added to cart"),
                 );
                 this.refreshCartCount();
+
+                this.updateButtonState(groupId, true, "group");
 
                 if (options.callback) {
                     options.callback(data);
@@ -389,6 +374,8 @@ export class CartManager {
                                 i18next.t("Group removed from cart"),
                             );
                             this.refreshCartCount();
+
+                            this.updateButtonState(groupId, false, "group");
 
                             if (options.callback) {
                                 options.callback(data);
@@ -461,10 +448,8 @@ export class CartManager {
                 );
                 this.refreshCartCount();
 
-                // Reset all buttons on page
                 this.resetAllButtons();
 
-                // Reload page if on cart page
                 if (reloadPage) {
                     setTimeout(() => {
                         window.location.reload();
@@ -483,9 +468,6 @@ export class CartManager {
             });
     }
 
-    /**
-     * Empty cart to group with group selection
-     */
     emptyToGroup() {
         window.CRM.groups.promptSelection(
             {
@@ -558,68 +540,53 @@ export class CartManager {
      * @param {number} personId - Person ID
      * @param {boolean} inCart - Whether person is in cart
      */
-    updateButtonState(personId, inCart) {
-        const $button = $(`[data-cartpersonid="${personId}"]`);
+    updateButtonState(cartId, inCart, cartType = "person") {
+        // First try to find the container with the data attributes
+        let $element = $(
+            `[data-cart-id="${cartId}"][data-cart-type="${cartType}"]`,
+        );
+
+        if (!$element.length) return;
+
+        // If the element is a div wrapper, find the button inside; otherwise it's the button itself
+        const $button = $element.is("button")
+            ? $element
+            : $element.find("button");
 
         if (!$button.length) return;
 
         if (inCart) {
-            // Change to Remove state
-            $button
-                .removeClass("AddToPeopleCart")
-                .addClass("RemoveFromPeopleCart");
+            $element.removeClass("AddToCart").addClass("RemoveFromCart");
+            $button.removeClass("btn-primary").addClass("btn-danger");
 
-            // Update the inner button
-            const $innerBtn = $button.find("button");
-            $innerBtn.removeClass("btn-primary").addClass("btn-danger");
-
-            // Update icon
-            const $icon = $innerBtn.find("i");
+            const $icon = $button.find("i");
             $icon.removeClass("fa-cart-plus").addClass("fa-shopping-cart");
         } else {
-            // Change to Add state
-            $button
-                .removeClass("RemoveFromPeopleCart")
-                .addClass("AddToPeopleCart");
+            $element.removeClass("RemoveFromCart").addClass("AddToCart");
+            $button.removeClass("btn-danger").addClass("btn-primary");
 
-            // Update the inner button
-            const $innerBtn = $button.find("button");
-            $innerBtn.removeClass("btn-danger").addClass("btn-primary");
-
-            // Update icon
-            const $icon = $innerBtn.find("i");
+            const $icon = $button.find("i");
             $icon.removeClass("fa-shopping-cart").addClass("fa-cart-plus");
         }
     }
 
-    /**
-     * Completely hide cart button (option for when person added)
-     * @param {number} personId - Person ID
-     */
     hideCartButton(personId) {
-        const $button = $(`[data-cartpersonid="${personId}"]`);
+        const $button = $(`[data-cart-id="${personId}"]`);
         $button.fadeOut(300, function () {
             $(this).remove();
         });
     }
 
-    /**
-     * Reset all cart buttons on page to "Add" state
-     */
     resetAllButtons() {
-        $(".RemoveFromPeopleCart").each((index, button) => {
-            const personId = $(button).data("cartpersonid");
-            if (personId) {
-                this.updateButtonState(personId, false);
+        $(".RemoveFromCart").each((index, button) => {
+            const cartId = $(button).data("cart-id");
+            if (cartId) {
+                this.updateButtonState(cartId, false);
             }
         });
     }
 
-    /**
-     * Refresh cart count in header WITHOUT scrolling
-     */
     refreshCartCount() {
-        // Safety check for APIRequest availability
         if (!window.CRM || typeof window.CRM.APIRequest !== "function") {
             return Promise.reject("APIRequest not available");
         }
@@ -632,17 +599,12 @@ export class CartManager {
             const count = data.PeopleCart.length;
             $("#iconCount").text(count);
 
-            // Update dropdown menu
             this.updateCartDropdown(data.PeopleCart);
 
-            // Animate cart icon (but don't scroll!)
             this.animateCartIcon();
         });
     }
 
-    /**
-     * Animate cart icon to show change
-     */
     animateCartIcon() {
         const $cartIcon = $(".fa-shopping-cart").parent();
         $cartIcon.addClass("cart-pulse");
@@ -685,58 +647,58 @@ export class CartManager {
         $("#cart-dropdown-menu").html(menuHtml);
     }
 
-    /**
-     * Initialize event handlers for cart buttons
-     */
     initializeEventHandlers() {
-        // Add to cart button click
-        $(document).on("click", ".AddToPeopleCart", (e) => {
+        $(document).on("click", ".AddToCart", (e) => {
             e.preventDefault();
-            const $button = $(e.currentTarget);
-            const familyId = $button.data("familyid");
-            const personId = $button.data("cartpersonid");
+            let $element = $(e.currentTarget);
 
-            if (familyId) {
-                // Add family to cart
-                this.addFamily(familyId);
-            } else if (personId) {
-                // Add person to cart
-                this.addPerson(personId);
+            // If clicked element is a button inside wrapper, find the wrapper
+            if ($element.is("button")) {
+                $element = $element.closest("[data-cart-id][data-cart-type]");
             }
-        });
 
-        // Remove from cart button click
-        $(document).on("click", ".RemoveFromPeopleCart", (e) => {
-            e.preventDefault();
-            const $button = $(e.currentTarget);
-            const familyId = $button.data("familyid");
-            const personId = $button.data("cartpersonid");
+            const cartId = $element.data("cart-id");
+            const cartType = $element.data("cart-type");
 
-            if (familyId) {
-                // For families, we need to get the family members and remove them
-                // We can't remove by family ID alone, so we just reload the page
-                // or we need to get all members first. For now, just don't do anything
-                // and let the family-list.php handler take care of it.
-                // Actually, we should just call removePerson with personId which has "-fam"
-                // No wait, that won't work because it's not numeric.
-                // The best approach is to NOT handle family removes here.
-                // Just handle person removes.
-                if (personId && !personId.includes("-fam")) {
-                    this.removePerson(personId);
+            if (cartId && cartType) {
+                if (cartType === "family") {
+                    this.addFamily(cartId);
+                } else if (cartType === "group") {
+                    this.addGroup(cartId);
+                } else {
+                    this.addPerson(cartId);
                 }
-            } else if (personId) {
-                // Remove person from cart
-                this.removePerson(personId);
             }
         });
 
-        // Empty cart button click
+        $(document).on("click", ".RemoveFromCart", (e) => {
+            e.preventDefault();
+            let $element = $(e.currentTarget);
+
+            // If clicked element is a button inside wrapper, find the wrapper
+            if ($element.is("button")) {
+                $element = $element.closest("[data-cart-id][data-cart-type]");
+            }
+
+            const cartId = $element.data("cart-id");
+            const cartType = $element.data("cart-type");
+
+            if (cartId && cartType) {
+                if (cartType === "family") {
+                    this.removeFamily(cartId);
+                } else if (cartType === "group") {
+                    this.removeGroup(cartId);
+                } else {
+                    this.removePerson(cartId);
+                }
+            }
+        });
+
         $(document).on("click", ".emptyCart", (e) => {
             e.preventDefault();
             this.emptyCart();
         });
 
-        // Empty cart to group
         $(document).on("click", "#emptyCartToGroup", (e) => {
             e.preventDefault();
             this.emptyToGroup();
@@ -751,9 +713,7 @@ $(document).ready(() => {
     }
     window.CRM.cartManager = new CartManager();
 
-    // Initialize cart count on page load - handle promise rejection gracefully
     window.CRM.cartManager.refreshCartCount().catch(() => {
         // APIRequest not available yet, skip initialization
-        // This can happen during testing before the API is ready
     });
 });

@@ -18,8 +18,8 @@
     animation: cart-pulse 0.6s ease-in-out;
 }
 
-// Cart button states
-.AddToPeopleCart {
+// Cart button states - modern classes
+.AddToCart {
     cursor: pointer;
     transition: all 0.3s ease;
 
@@ -33,7 +33,7 @@
     }
 }
 
-.RemoveFromPeopleCart {
+.RemoveFromCart {
     cursor: pointer;
     transition: all 0.3s ease;
 

@@ -279,9 +279,9 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                 <i class="fa-solid fa-sticky-note"></i> <?= gettext("Add a Note") ?>
                             </a>
                         <?php } ?>
-                        <a class="btn btn-sm btn-outline-secondary" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>">
+                        <button class="AddToCart btn btn-sm btn-outline-secondary" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
                             <i class="fa-solid fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?>
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -482,13 +482,9 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                     </a>
                                     
                                     <?php if ($isInCart) { ?>
-                                        <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                            <button type="button" class="btn btn-xs btn-danger" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
-                                        </a>
+                                        <button type="button" class="RemoveFromCart btn btn-xs btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
                                     <?php } else { ?>
-                                        <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                            <button type="button" class="btn btn-xs btn-primary" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
-                                        </a>
+                                        <button type="button" class="AddToCart btn btn-xs btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
                                     <?php } ?>
                                     
                                     <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"

@@ -255,14 +255,6 @@ $(function () {
         $("#confirm-verify").modal("hide");
     });
 
-    $("#AddFamilyToCart").on("click", function () {
-        const familyId = $(this).data("familyid");
-        // Use CartManager with notifications
-        window.CRM.cartManager.addFamily(familyId, {
-            showNotification: true,
-        });
-    });
-
     // Photos
     $("#deletePhoto").on("click", function () {
         $.ajax({

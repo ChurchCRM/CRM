@@ -168,16 +168,12 @@ foreach ($ListItem as $element) {
 
                     <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($person->getId(), $_SESSION['aPeopleCart'], false)) {
                         ?>
-                            <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                <button type="button" class="btn btn-xs btn-primary" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
-                            </a>
+                            <button type="button" class="AddToCart btn btn-xs btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
                         </td>
                         <?php
                     } else {
                         ?>
-                        <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                            <button type="button" class="btn btn-xs btn-danger" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
-                        </a>
+                        <button type="button" class="RemoveFromCart btn btn-xs btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
                         </td>
                         <?php
                     } ?>
@@ -421,8 +417,8 @@ foreach ($ListItem as $element) {
         $('#members').DataTable().rows({ filter: 'applied' }).every(function () {
             // Get the row node (DOM element)
             var node = this.node();
-            // Find the AddToPeopleCart button in this row and get its person ID
-            var personId = $(node).find('.AddToPeopleCart').data('cartpersonid');
+            // Find the AddToCart button in this row and get its person ID
+            var personId = $(node).find('.AddToCart').data('cart-id');
             if (personId) {
                 listPeople.push(personId);
             }
@@ -446,8 +442,8 @@ foreach ($ListItem as $element) {
         $('#members').DataTable().rows({ filter: 'applied' }).every(function () {
             // Get the row node (DOM element)
             var node = this.node();
-            // Find the RemoveFromPeopleCart button in this row and get its person ID
-            var personId = $(node).find('.RemoveFromPeopleCart').data('cartpersonid');
+            // Find the RemoveFromCart button in this row and get its person ID
+            var personId = $(node).find('.RemoveFromCart').data('cart-id');
             if (personId) {
                 listPeople.push(personId);
             }

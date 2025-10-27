@@ -29,7 +29,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
             ?>
           <tr>
             <td>
-              <button class="RemoveFromPeopleCart btn btn-sm btn-danger" data-cartpersonid="<?= $Person->getId() ?>" title="<?= gettext('Remove from Cart') ?>">
+              <button class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $Person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>">
                 <i class="fa-solid fa-shopping-cart"></i>
               </button>
             </td>
@@ -55,21 +55,32 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
         // Handle remove from cart button clicks in cart listing
-        $(document).on('click', '.RemoveFromPeopleCart', function(e) {
+        $(document).on('click', '.RemoveFromCart', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
             const $button = $(this);
-            const personId = $button.data('cartpersonid');
+            const cartId = $button.data('cart-id');
+            const cartType = $button.data('cart-type');
             
-            if (window.CRM && window.CRM.cartManager && personId) {
-                window.CRM.cartManager.removePerson(personId, {
-                    confirm: false,
-                    reloadPage: true,
-                    reloadDelay: 1000,
-                    callback: function() {
-                        // Page will reload after a brief delay
-                    }
-                });
+            if (window.CRM && window.CRM.cartManager && cartId && cartType) {
+                if (cartType === 'person') {
+                    window.CRM.cartManager.removePerson(cartId, {
+                        confirm: false,
+                        reloadPage: true,
+                        reloadDelay: 1000,
+                        callback: function() {
+                            // Page will reload after a brief delay
+                        }
+                    });
+                } else if (cartType === 'family') {
+                    window.CRM.cartManager.removeFamily(cartId, {
+                        reloadPage: true,
+                        reloadDelay: 1000,
+                        callback: function() {
+                            // Page will reload after a brief delay
+                        }
+                    });
+                }
             }
         });
     });

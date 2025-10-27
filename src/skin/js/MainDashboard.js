@@ -13,31 +13,30 @@ $(document).ready(function () {
             title: i18next.t("Action"),
             data: "FamilyId",
             render: function (data, type, row) {
-                // Note: Dashboard doesn't show Remove buttons for families because
-                // we don't have family member info here. Family member IDs are stored in cart,
-                // not family IDs. To properly remove a family, use family-list.php instead.
                 return (
+                    '<div class="btn-group btn-group-sm" role="group">' +
                     '<a href="' +
                     window.CRM.root +
                     "/v2/family/" +
                     row.FamilyId +
                     '" class="btn-link"><button class="btn btn-sm btn-default" title="' +
                     i18next.t("View") +
-                    '"><i class="fa-solid fa-search-plus"></i></button></a> ' +
+                    '"><i class="fa-solid fa-search-plus"></i></button></a>' +
                     '<a href="' +
                     window.CRM.root +
                     "/FamilyEditor.php?FamilyID=" +
                     row.FamilyId +
                     '" class="btn-link"><button class="btn btn-sm btn-default" title="' +
                     i18next.t("Edit") +
-                    '"><i class="fa-solid fa-pen"></i></button></a> ' +
-                    '<a class="AddToPeopleCart" data-cartpersonid="' +
+                    '"><i class="fa-solid fa-pen"></i></button></a>' +
+                    '<div class="AddToCart" data-cart-id="' +
                     row.FamilyId +
-                    '-fam" data-familyid="' +
-                    row.FamilyId +
-                    '" href="#"><button class="btn btn-sm btn-primary" title="' +
+                    '" data-cart-type="family">' +
+                    '<button class="btn btn-sm btn-primary" title="' +
                     i18next.t("Add to Cart") +
-                    '"><i class="fa-solid fa-cart-plus"></i></button></a>'
+                    '"><i class="fa-solid fa-cart-plus"></i></button>' +
+                    "</div>" +
+                    "</div>"
                 );
             },
             searchable: false,
@@ -77,7 +76,12 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#latestFamiliesDashboardItem").DataTable(dataTableConfig);
+    let latestFamiliesTable = $("#latestFamiliesDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    latestFamiliesTable.on("draw", function () {
+        updateFamilyCartButtons();
+    });
 
     dataTableConfig = {
         ajax: {
@@ -91,7 +95,12 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#updatedFamiliesDashboardItem").DataTable(dataTableConfig);
+    let updatedFamiliesTable = $("#updatedFamiliesDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    updatedFamiliesTable.on("draw", function () {
+        updateFamilyCartButtons();
+    });
 
     dataTableConfig = {
         ajax: {
@@ -175,25 +184,29 @@ $(document).ready(function () {
             data: "PersonId",
             render: function (data, type, row) {
                 return (
+                    '<div class="btn-group btn-group-sm" role="group">' +
                     '<a href="' +
                     window.CRM.root +
                     "/PersonView.php?PersonID=" +
                     row.PersonId +
                     '" class="btn-link"><button class="btn btn-sm btn-default" title="' +
                     i18next.t("View") +
-                    '"><i class="fa-solid fa-search-plus"></i></button></a> ' +
+                    '"><i class="fa-solid fa-search-plus"></i></button></a>' +
                     '<a href="' +
                     window.CRM.root +
                     "/PersonEditor.php?PersonID=" +
                     row.PersonId +
                     '" class="btn-link"><button class="btn btn-sm btn-default" title="' +
                     i18next.t("Edit") +
-                    '"><i class="fa-solid fa-pen"></i></button></a> ' +
-                    '<a class="AddToPeopleCart" data-cartpersonid="' +
+                    '"><i class="fa-solid fa-pen"></i></button></a>' +
+                    '<div class="AddToCart" data-cart-id="' +
                     row.PersonId +
-                    '" href="#"><button class="btn btn-sm btn-primary" title="' +
+                    '" data-cart-type="person">' +
+                    '<button class="btn btn-sm btn-primary" title="' +
                     i18next.t("Add to Cart") +
-                    '"><i class="fa-solid fa-cart-plus"></i></button></a>'
+                    '"><i class="fa-solid fa-cart-plus"></i></button>' +
+                    "</div>" +
+                    "</div>"
                 );
             },
             searchable: false,
@@ -246,6 +259,30 @@ $(document).ready(function () {
     $.extend(dataTableConfig, dataTableDashboardDefaults);
     $("#latestPersonDashboardItem").DataTable(dataTableConfig);
 
+    function updateFamilyCartButtons() {
+        if (window.CRM && window.CRM.cartManager) {
+            window.CRM.APIRequest({
+                method: "GET",
+                path: "families/familiesInCart",
+                suppressErrorDialog: true,
+            }).done(function (data) {
+                if (
+                    data &&
+                    data.familiesInCart &&
+                    Array.isArray(data.familiesInCart)
+                ) {
+                    data.familiesInCart.forEach(function (familyId) {
+                        window.CRM.cartManager.updateButtonState(
+                            familyId,
+                            true,
+                            "family",
+                        );
+                    });
+                }
+            });
+        }
+    }
+
     function buildRenderEmail(email) {
         if (email) {
             return "<a href='mailto:" + email + "''>" + email + "</a>";
@@ -284,120 +321,5 @@ $(document).ready(function () {
         });
     }
 
-    // Handle cart button clicks in dashboard tables
-    $(document).on("click", ".AddToPeopleCart", function (e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        const $button = $(this);
-        const personId = $button.data("cartpersonid");
-        const familyId = $button.data("familyid");
-
-        // Check if it's a family cart button (marked with '-fam' suffix)
-        if (familyId) {
-            // Add family to cart
-            if (window.CRM && window.CRM.cartManager) {
-                window.CRM.cartManager.addFamily(familyId, {
-                    callback: function () {
-                        // Update button to show remove state after successful add
-                        $button
-                            .removeClass("AddToPeopleCart")
-                            .addClass("RemoveFromPeopleCart");
-                        $button
-                            .find("button")
-                            .removeClass("btn-primary")
-                            .addClass("btn-danger");
-                        $button
-                            .find("i")
-                            .removeClass("fa-cart-plus")
-                            .addClass("fa-shopping-cart");
-                        $button
-                            .find("button")
-                            .attr("title", i18next.t("Remove from Cart"));
-                    },
-                });
-            }
-        } else {
-            // Add person to cart
-            if (window.CRM && window.CRM.cartManager) {
-                window.CRM.cartManager.addPerson(personId, {
-                    callback: function () {
-                        // Update button to show remove state after successful add
-                        $button
-                            .removeClass("AddToPeopleCart")
-                            .addClass("RemoveFromPeopleCart");
-                        $button
-                            .find("button")
-                            .removeClass("btn-primary")
-                            .addClass("btn-danger");
-                        $button
-                            .find("i")
-                            .removeClass("fa-cart-plus")
-                            .addClass("fa-shopping-cart");
-                        $button
-                            .find("button")
-                            .attr("title", i18next.t("Remove from Cart"));
-                    },
-                });
-            }
-        }
-    });
-
-    // Handle remove from cart button clicks in dashboard tables
-    $(document).on("click", ".RemoveFromPeopleCart", function (e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        const $button = $(this);
-        const personId = $button.data("cartpersonid");
-        const familyId = $button.data("familyid");
-
-        // Check if it's a family cart button (marked with '-fam' suffix)
-        if (familyId) {
-            // Remove family from cart
-            if (window.CRM && window.CRM.cartManager) {
-                window.CRM.cartManager.removeFamily(familyId, {
-                    callback: function () {
-                        // Update button to show add state after successful remove
-                        $button
-                            .removeClass("RemoveFromPeopleCart")
-                            .addClass("AddToPeopleCart");
-                        $button
-                            .find("button")
-                            .removeClass("btn-danger")
-                            .addClass("btn-primary");
-                        $button
-                            .find("i")
-                            .removeClass("fa-shopping-cart")
-                            .addClass("fa-cart-plus");
-                        $button
-                            .find("button")
-                            .attr("title", i18next.t("Add to Cart"));
-                    },
-                });
-            }
-        } else {
-            // Remove person from cart
-            if (window.CRM && window.CRM.cartManager) {
-                window.CRM.cartManager.removePerson(personId, {
-                    confirm: false,
-                    callback: function () {
-                        // Update button to show add state after successful remove
-                        $button
-                            .removeClass("RemoveFromPeopleCart")
-                            .addClass("AddToPeopleCart");
-                        $button
-                            .find("button")
-                            .removeClass("btn-danger")
-                            .addClass("btn-primary");
-                        $button
-                            .find("i")
-                            .removeClass("fa-shopping-cart")
-                            .addClass("fa-cart-plus");
-                        $button
-                            .find("button")
-                            .attr("title", i18next.t("Add to Cart"));
-                    },
-                });
-            }
-        }
-    });
+    // CartManager handles all cart button clicks generically via data-cart-id and data-cart-type attributes
 });

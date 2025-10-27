@@ -22,6 +22,16 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/latest', 'getLatestFamilies');
     $group->get('/updated', 'getUpdatedFamilies');
     $group->get('/anniversaries', 'getFamiliesWithAnniversaries');
+    $group->get('/familiesInCart', function (Request $request, Response $response, array $args): Response {
+        $familiesInCart = [];
+        $families = FamilyQuery::create()->find();
+        foreach ($families as $family) {
+            if ($family->checkAgainstCart()) {
+                $familiesInCart[] = $family->getId();
+            }
+        }
+        return SlimUtils::renderJSON($response, ['familiesInCart' => $familiesInCart]);
+    });
 
     $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()->joinWithPerson()->find();
