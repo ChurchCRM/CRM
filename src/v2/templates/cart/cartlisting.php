@@ -14,10 +14,10 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     <table class="table table-hover w-100" id="cart-listing-table">
       <thead>
         <tr>
+          <th><?= gettext('Actions') ?></th>
           <th><?= gettext('Name') ?></th>
           <th><?= gettext('Address') ?></th>
           <th><?= gettext('Email') ?></th>
-          <th><?= gettext('Remove') ?></th>
           <th><?= gettext('Classification') ?></th>
           <th><?= gettext('Family Role') ?></th>
         </tr>
@@ -29,15 +29,16 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
             ?>
           <tr>
             <td>
+              <button class="RemoveFromPeopleCart btn btn-sm btn-danger" data-cartpersonid="<?= $Person->getId() ?>" title="<?= gettext('Remove from Cart') ?>">
+                <i class="fa-solid fa-shopping-cart"></i>
+              </button>
+            </td>
+            <td>
               <img src="<?= $Person->getThumbnailURL(); ?>?>" class="direct-chat-img initials-image">&nbsp
               <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $Person->getId() ?>"><?= $Person->getFullName() ?></a>
             </td>
             <td><?= $Person->getAddress() ?></td>
             <td><?= $Person->getEmail() ?></td>
-            <td><button class="RemoveFromPeopleCart btn btn-sm btn-danger" data-personid="<?= $Person->getId() ?>">
-                <i class="fa-solid fa-shopping-cart"></i> <?= gettext('Remove') ?>
-            </button>
-            </td>
             <td><?= $Person->getClassificationName() ?></td>
             <td><?= $Person->getFamilyRoleName() ?></td>
           </tr>
@@ -50,3 +51,26 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
 </div>
 
 <!-- END CART LISTING -->
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    $(document).ready(function() {
+        // Handle remove from cart button clicks in cart listing
+        $(document).on('click', '.RemoveFromPeopleCart', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            const $button = $(this);
+            const personId = $button.data('cartpersonid');
+            
+            if (window.CRM && window.CRM.cartManager && personId) {
+                window.CRM.cartManager.removePerson(personId, {
+                    confirm: false,
+                    reloadPage: true,
+                    reloadDelay: 1000,
+                    callback: function() {
+                        // Page will reload after a brief delay
+                    }
+                });
+            }
+        });
+    });
+</script>

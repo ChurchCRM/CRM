@@ -470,16 +470,30 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                 </div>
 
                                 <p class="text-center">
-                                    <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                        <button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-cart-plus"></i></button>
+                                    <?php 
+                                        $isInCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false);
+                                    ?>
+                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>" class="btn-link">
+                                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
                                     </a>
-
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="table-link">
-                                        <button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button>
+                                    
+                                    <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="btn-link">
+                                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
                                     </a>
+                                    
+                                    <?php if ($isInCart) { ?>
+                                        <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
+                                            <button type="button" class="btn btn-xs btn-danger" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
+                                        </a>
+                                    <?php } else { ?>
+                                        <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
+                                            <button type="button" class="btn btn-xs btn-primary" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
+                                        </a>
+                                    <?php } ?>
+                                    
                                     <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                        data-person_id="<?= $person->getId() ?>" data-view="family">
-                                        <button type="button" class="btn btn-xs btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                                        <button type="button" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash-can"></i></button>
                                     </a>
                                 </p>
                                 <?php if ($person->getClsId()) { ?>
@@ -565,6 +579,22 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 <!-- Photo uploader bundle - loaded only on this page -->
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.css">
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    // Handle cart button updates in family view
+    // Don't reload on click - let cart.js handle the removal and confirmation
+    // We'll reload after the cart operation completes
+    let originalRemovePerson = null;
+    if (window.CRM && window.CRM.cartManager) {
+        originalRemovePerson = window.CRM.cartManager.removePerson.bind(window.CRM.cartManager);
+        window.CRM.cartManager.removePerson = function(personIds, options = {}) {
+            // Add reload option so page refreshes after successful removal
+            options.reloadPage = true;
+            options.reloadDelay = 1500;
+            return originalRemovePerson(personIds, options);
+        };
+    }
+</script>
 
 <!-- Photos start -->
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog"

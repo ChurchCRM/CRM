@@ -130,6 +130,19 @@ class Cart
         }
     }
 
+    public static function removeFamily($FamilyID): void
+    {
+        if (!is_numeric($FamilyID)) {
+            throw new \Exception(gettext('FamilyID for Cart must be numeric'), 400);
+        }
+        $FamilyMembers = PersonQuery::create()
+            ->filterByFamId($FamilyID)
+            ->find();
+        foreach ($FamilyMembers as $FamilyMember) {
+            Cart::removePerson($FamilyMember->getId());
+        }
+    }
+
     public static function hasPeople(): bool
     {
         return array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) !== 0;
@@ -137,7 +150,7 @@ class Cart
 
     public static function countPeople(): int
     {
-        return count($_SESSION['aPeopleCart']);
+        return isset($_SESSION['aPeopleCart']) ? count($_SESSION['aPeopleCart']) : 0;
     }
 
     public static function convertCartToString($aCartArray): string

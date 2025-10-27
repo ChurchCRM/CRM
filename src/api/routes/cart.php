@@ -62,6 +62,8 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
         $sMessage = gettext('Your cart is empty');
         if (isset($cartPayload['Persons']) && count($cartPayload['Persons']) > 0) {
             Cart::removePersonArray($cartPayload['Persons']);
+        } elseif (isset($cartPayload['Family'])) {
+            Cart::removeFamily($cartPayload['Family']);
         } else {
             if (count($_SESSION['aPeopleCart']) > 0) {
                 $_SESSION['aPeopleCart'] = [];

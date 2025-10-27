@@ -94,7 +94,7 @@ $MenuFirst = 1;
             <li class="nav-item dropdown show">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
                     <i class="fa-solid fa-shopping-cart"></i>
-                    <span class="badge badge-info navbar-badge"><?= Cart::countPeople() ?></span>
+                    <span class="badge badge-info navbar-badge" id="iconCount"><?= Cart::countPeople() ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <span id="cart-dropdown-menu"></span>

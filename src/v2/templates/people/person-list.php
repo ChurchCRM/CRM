@@ -160,24 +160,24 @@ foreach ($ListItem as $element) {
             <tr>
               <td>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getId() ?>'>
-                        <i class="fa-solid fa-search-plus"></i>
+                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
                     </a>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                            <i class="fa-solid fa-pen"></i>
+                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
                     </a>
 
                     <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($person->getId(), $_SESSION['aPeopleCart'], false)) {
                         ?>
                             <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                <i class="fa-solid fa-cart-plus"></i>
+                                <button type="button" class="btn btn-xs btn-primary" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
                             </a>
                         </td>
                         <?php
                     } else {
                         ?>
                         <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                    <i class="fa-solid fa-shopping-cart text-danger"></i>
-                            </a>
+                            <button type="button" class="btn btn-xs btn-danger" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
+                        </a>
                         </td>
                         <?php
                     } ?>

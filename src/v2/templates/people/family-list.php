@@ -31,12 +31,39 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     /* @var Family $family */
                     ?>
                     <tr>
-                        <td><a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
-                                <i class="fa-solid fa-search-plus"></i>
+                        <td>
+                            <a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
+                                <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
                             </a>
                             <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
-                                <i class="fa-solid fa-pen"></i>
+                                <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
                             </a>
+                            <?php 
+                                // Check if all family members are in cart
+                                $isInCart = false;
+                                if (isset($_SESSION['aPeopleCart'])) {
+                                    $familyMembers = $family->getPeople();
+                                    if (count($familyMembers) > 0) {
+                                        $allInCart = true;
+                                        foreach ($familyMembers as $member) {
+                                            if (!in_array($member->getId(), $_SESSION['aPeopleCart'], false)) {
+                                                $allInCart = false;
+                                                break;
+                                            }
+                                        }
+                                        $isInCart = $allInCart;
+                                    }
+                                }
+                            ?>
+                            <?php if (!$isInCart) { ?>
+                                <a class="AddToPeopleCart" data-cartpersonid="<?= $family->getId() ?>-fam" data-familyid="<?= $family->getId() ?>">
+                                    <button type="button" class="btn btn-xs btn-primary" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
+                                </a>
+                            <?php } else { ?>
+                                <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $family->getId() ?>-fam" data-familyid="<?= $family->getId() ?>">
+                                    <button type="button" class="btn btn-xs btn-danger" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
+                                </a>
+                            <?php } ?>
                         </td>
 
                         <?php
@@ -61,6 +88,45 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
         $('#families').DataTable(window.CRM.plugin.dataTable);
+        
+        // Handle cart button clicks in family list
+        $(document).on('click', '.AddToPeopleCart', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            const $button = $(this);
+            const familyId = $button.data('familyid');
+            
+            if (window.CRM && window.CRM.cartManager && familyId) {
+                window.CRM.cartManager.addFamily(familyId, {
+                    callback: function() {
+                        // Update button to show remove state after successful add
+                        $button.removeClass('AddToPeopleCart').addClass('RemoveFromPeopleCart');
+                        $button.find('button').removeClass('btn-primary').addClass('btn-danger');
+                        $button.find('i').removeClass('fa-cart-plus').addClass('fa-shopping-cart');
+                        $button.find('button').attr('title', '<?= gettext('Remove from Cart') ?>');
+                    }
+                });
+            }
+        });
+        
+        $(document).on('click', '.RemoveFromPeopleCart', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            const $button = $(this);
+            const familyId = $button.data('familyid');
+            
+            if (window.CRM && window.CRM.cartManager && familyId) {
+                window.CRM.cartManager.removeFamily(familyId, { 
+                    callback: function() {
+                        // Update button to show add state after successful remove
+                        $button.removeClass('RemoveFromPeopleCart').addClass('AddToPeopleCart');
+                        $button.find('button').removeClass('btn-danger').addClass('btn-primary');
+                        $button.find('i').removeClass('fa-shopping-cart').addClass('fa-cart-plus');
+                        $button.find('button').attr('title', '<?= gettext('Add to Cart') ?>');
+                    }
+                });
+            }
+        });
     });
 </script>
 <?php
