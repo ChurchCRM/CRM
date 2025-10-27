@@ -134,7 +134,8 @@ jobs:
         fi
         
         # Check for completely empty JSON files (which shouldn't exist)
-        empty_files=$(find locale/JSONKeys -name "*.json" -type f -empty)
+        # Exclude en_US.json as it's the base locale and will always be empty
+        empty_files=$(find locale/JSONKeys -name "*.json" -type f -empty ! -name "en_US.json")
         if [ -n "$empty_files" ]; then
           echo "❌ ERROR: Found empty JSON locale files:"
           echo "$empty_files"
@@ -143,8 +144,14 @@ jobs:
         fi
         
         # Check for JSON files that only contain whitespace or are malformed
+        # Exclude en_US.json as it's the base locale
         invalid_files=""
         for json_file in locale/JSONKeys/*.json; do
+          # Skip en_US.json (base locale, expected to be empty)
+          if [ "$(basename "$json_file")" = "en_US.json" ]; then
+            continue
+          fi
+          
           if [ -f "$json_file" ]; then
             # Check if file contains valid JSON (at minimum empty object {})
             if ! python3 -m json.tool "$json_file" > /dev/null 2>&1; then
