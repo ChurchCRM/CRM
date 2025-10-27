@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-26 18:44-0700\n"
+"POT-Creation-Date: 2025-10-26 22:04-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6738,6 +6738,9 @@ msgstr ""
 msgid "persons from"
 msgstr ""
 
+msgid "Remove from Cart"
+msgstr ""
+
 msgid "Bulk Mail Presort"
 msgstr ""
 
@@ -7017,7 +7020,7 @@ msgstr ""
 msgid "2 Factor Authentication Secret"
 msgstr ""
 
-msgid "A Calednar access token has been generated and saved."
+msgid "A Calendar access token has been generated and saved."
 msgstr ""
 
 msgid "Access Token"
@@ -7029,7 +7032,13 @@ msgstr ""
 msgid "Add A Group Name"
 msgstr ""
 
-msgid "Add all"
+msgid "added"
+msgstr ""
+
+msgid "Added"
+msgstr ""
+
+msgid "Added to cart successfully"
 msgstr ""
 
 msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
@@ -7038,7 +7047,13 @@ msgstr ""
 msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
 msgstr ""
 
+msgid "All members already in cart"
+msgstr ""
+
 msgid "All members of this group are in the cart"
+msgstr ""
+
+msgid "already in cart"
 msgstr ""
 
 msgid "Are you sure you want to change the end time for "
@@ -7075,6 +7090,12 @@ msgid "Calendar Name"
 msgstr ""
 
 msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr ""
+
+msgid "Cart emptied successfully"
+msgstr ""
+
+msgid "Cart emptied to group successfully"
 msgstr ""
 
 msgid "Change role"
@@ -7137,6 +7158,9 @@ msgstr ""
 msgid "Done, show me the homepage!"
 msgstr ""
 
+msgid "Empty your entire cart?"
+msgstr ""
+
 msgid "End Date"
 msgstr ""
 
@@ -7158,10 +7182,40 @@ msgstr ""
 msgid "Failed generate a new API Key"
 msgstr ""
 
+msgid "Failed to add family to cart"
+msgstr ""
+
+msgid "Failed to add group to cart"
+msgstr ""
+
+msgid "Failed to add to cart"
+msgstr ""
+
+msgid "Failed to empty cart"
+msgstr ""
+
+msgid "Failed to empty cart to group"
+msgstr ""
+
+msgid "Failed to remove family from cart"
+msgstr ""
+
+msgid "Failed to remove from cart"
+msgstr ""
+
+msgid "Failed to remove group"
+msgstr ""
+
+msgid "Family added to cart"
+msgstr ""
+
 msgid "Family Photo"
 msgstr ""
 
 msgid "Family Property Unassignment"
+msgstr ""
+
+msgid "Family removed from cart"
 msgstr ""
 
 msgid "Focus"
@@ -7176,7 +7230,13 @@ msgstr ""
 msgid "from"
 msgstr ""
 
+msgid "Group added to cart"
+msgstr ""
+
 msgid "Group Cart Status"
+msgstr ""
+
+msgid "Group removed from cart"
 msgstr ""
 
 msgid "Group Role"
@@ -7200,6 +7260,9 @@ msgstr ""
 msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
 msgstr ""
 
+msgid "in cart"
+msgstr ""
+
 msgid "Invalid Entry"
 msgstr ""
 
@@ -7213,6 +7276,9 @@ msgid "Members to another group"
 msgstr ""
 
 msgid "Members to cart"
+msgstr ""
+
+msgid "members. Already had"
 msgstr ""
 
 msgid "Move"
@@ -7243,6 +7309,21 @@ msgid "OK"
 msgstr ""
 
 msgid "open rate"
+msgstr ""
+
+msgid "people added to cart"
+msgstr ""
+
+msgid "people already in cart"
+msgstr ""
+
+msgid "people from cart"
+msgstr ""
+
+msgid "people removed from cart"
+msgstr ""
+
+msgid "Person already in cart"
 msgstr ""
 
 msgid "Pinned Calendars"
@@ -7305,7 +7386,16 @@ msgstr ""
 msgid "Remove all"
 msgstr ""
 
-msgid "Remove from Cart"
+msgid "Remove this family from cart?"
+msgstr ""
+
+msgid "Remove this group from cart?"
+msgstr ""
+
+msgid "Remove this person from cart?"
+msgstr ""
+
+msgid "Removed from cart successfully"
 msgstr ""
 
 msgid "Resize Event"
@@ -7375,6 +7465,12 @@ msgid "When you click next, you'll be prompted to scan a QR code to enroll your 
 msgstr ""
 
 msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr ""
+
+msgid "Yes, Empty Cart"
+msgstr ""
+
+msgid "Yes, Remove"
 msgstr ""
 
 msgid "You are about to add a new deposit without a comment"
