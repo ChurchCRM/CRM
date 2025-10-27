@@ -130,6 +130,9 @@ $("document").ready(function () {
             );
         });
     });
+
+    // Initialize FAB buttons with localized labels
+    initializeFAB();
 });
 
 function showGlobalMessage(message, callOutClass) {
@@ -155,4 +158,46 @@ function showGlobalMessage(message, callOutClass) {
             },
         },
     );
+}
+
+/**
+ * Initialize Floating Action Buttons (FAB)
+ * - Sets localized labels
+ * - Handles scroll behavior to hide/show buttons
+ */
+function initializeFAB() {
+    const fabContainer = $("#fab-container");
+    const fabPersonLabel = $("#fab-person-label");
+    const fabFamilyLabel = $("#fab-family-label");
+
+    // Set localized labels
+    fabPersonLabel.text(i18next.t("Add Person"));
+    fabFamilyLabel.text(i18next.t("Add New Family"));
+
+    // Hide FAB on scroll down, show on scroll up
+    let lastScrollTop = 0;
+    let scrollTimeout;
+
+    $(window).on("scroll", function () {
+        const currentScroll = $(this).scrollTop();
+
+        // Clear existing timeout
+        clearTimeout(scrollTimeout);
+
+        // Hide FAB when scrolling down, show when scrolling up or at top
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+            // Scrolling down & past 100px
+            fabContainer.addClass("hidden");
+        } else {
+            // Scrolling up or at top
+            fabContainer.removeClass("hidden");
+        }
+
+        lastScrollTop = currentScroll;
+
+        // Also show FAB if user stops scrolling for 2 seconds
+        scrollTimeout = setTimeout(function () {
+            fabContainer.removeClass("hidden");
+        }, 2000);
+    });
 }
