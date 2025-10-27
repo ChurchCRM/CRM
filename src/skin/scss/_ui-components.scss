@@ -1,0 +1,60 @@
+/**
+ * UI Components
+ * 
+ * Custom styling for ChurchCRM UI components that extend AdminLTE and Bootstrap.
+ * Only includes styles that are not available in the base frameworks.
+ */
+
+// Enhanced btn-app buttons for dashboard actions
+.btn-app {
+    // AdminLTE provides base .btn-app styling, we only override what's needed
+    min-width: 100px;
+    min-height: 110px;
+    height: auto;
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 15px 5px;
+
+    // Large icon styling with proper spacing
+    > .fa-3x {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+// Fix dropdown icon spacing for split buttons
+.dropdown-toggle.dropdown-icon::after {
+    margin-left: 0;
+}
+
+// Floating Action Button (FAB) - Gmail-style add button
+.fab-add-person {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #28a745; // Bootstrap success color
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #218838; // Bootstrap success hover
+        color: white;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        transform: scale(1.05);
+        text-decoration: none;
+    }
+
+    i {
+        margin: 0;
+    }
+}

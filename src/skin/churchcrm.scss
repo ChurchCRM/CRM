@@ -26,6 +26,9 @@
 // Utility Classes - Reusable CSS classes for common styling patterns
 @include meta.load-css("scss/utility-classes");
 
+// UI Components - Custom ChurchCRM UI elements
+@include meta.load-css("scss/ui-components");
+
 @include meta.load-css("scss/dropdowns");
 @include meta.load-css("scss/forms");
 @include meta.load-css("scss/tables");

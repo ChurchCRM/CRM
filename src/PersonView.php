@@ -382,24 +382,24 @@ $bOkToEdit = (
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
         <div class="row">
-            <a class="btn btn-app" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-print"></i> <?= gettext("Printable Page") ?></a>
-            <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa-solid fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
+            <a class="btn btn-app bg-info" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-print fa-3x"></i><br><?= gettext("Printable Page") ?></a>
+            <a class="btn btn-app bg-success AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa-solid fa-cart-plus fa-3x"></i><br><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
                 ?>
-                <a class="btn btn-app" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-                <a class="btn btn-app" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+                <a class="btn btn-app bg-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle fa-3x"></i><br><?= gettext("Edit \"Why Came\" Notes") ?></a>
+                <a class="btn btn-app bg-primary" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sticky-note fa-3x"></i><br><?= gettext("Add a Note") ?></a>
                 <?php
             }
             if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                 ?>
-                <a class="btn btn-app" id="addGroup"><i class="fa-solid fa-users"></i> <?= gettext("Assign New Group") ?></a>
+                <a class="btn btn-app bg-info" id="addGroup"><i class="fa-solid fa-users fa-3x"></i><br><?= gettext("Assign New Group") ?></a>
                 <?php
             } ?>
-            <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa-solid fa-list"></i> <?= gettext("List Members") ?></span></a>
+            <a class="btn btn-app bg-secondary" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa-solid fa-list fa-3x"></i><br><?= gettext("List Members") ?></a>
             <?php
             if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
                 ?>
-                <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
+                <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can fa-3x"></i><br><?= gettext("Delete this Record") ?></a>
                 <?php
             }
             ?>
@@ -408,19 +408,19 @@ $bOkToEdit = (
             if (AuthenticationManager::getCurrentUser()->isAdmin()) {
                 if (!$person->isUser()) {
                     ?>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa-solid fa-person-chalkboard"></i> <?= gettext('Make User') ?></a>
+                    <a class="btn btn-app bg-purple" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa-solid fa-person-chalkboard fa-3x"></i><br><?= gettext('Make User') ?></a>
                     <?php
                 } else {
                     ?>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-user-secret"></i> <?= gettext('Edit User') ?></a>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye"></i> <?= gettext('View User') ?></a>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa-solid fa-key"></i> <?= gettext("Change Password") ?></a>
+                    <a class="btn btn-app bg-purple" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-user-secret fa-3x"></i><br><?= gettext('Edit User') ?></a>
+                    <a class="btn btn-app bg-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye fa-3x"></i><br><?= gettext('View User') ?></a>
+                    <a class="btn btn-app bg-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa-solid fa-key fa-3x"></i><br><?= gettext("Change Password") ?></a>
                     <?php
                 }
             } elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) {
                 ?>
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye"></i> <?= gettext('View User') ?></a>
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa-solid fa-key"></i> <?= gettext("Change Password") ?></a>
+                <a class="btn btn-app bg-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye fa-3x"></i><br><?= gettext('View User') ?></a>
+                <a class="btn btn-app bg-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa-solid fa-key fa-3x"></i><br><?= gettext("Change Password") ?></a>
                 <?php
             } ?>
         </div>

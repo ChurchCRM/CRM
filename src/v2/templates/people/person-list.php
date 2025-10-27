@@ -90,42 +90,70 @@ foreach ($ListItem as $element) {
 
 <div class="card card-primary">
     <div class="card-header">
-        <?= gettext('Filter and Cart') ?>
+        <h3 class="card-title"><i class="fa-solid fa-filter"></i> <span id="filters-title"></span></h3>
     </div>
 
-    <div class="container-fluid">
+    <div class="card-body">
         <div class="row">
             <div class="col-lg-6">
-                <div class='external-filter'>
-                <!-- <label>Gender:</label> -->
-                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Gender" multiple="multiple"></select>
-                <!-- <label>Classification:</label> -->
-                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Classification" multiple="multiple"></select>
-                <!-- <label>Family Role:</label> -->
-                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Role"multiple="multiple"></select>
-                <!-- <label>Properties:</label> -->
-                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Properties" multiple="multiple"></select>
-                <!-- <label>Custom Fields:</label> -->
-                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Custom" multiple="multiple"></select>
-                <!-- <label>Group Types:</label> -->
-                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Group" multiple="multiple"></select>
-                <input style="margin: 20px" id="ClearFilter" type="button" class="btn btn-default" value="<?= gettext('Clear Filter') ?>"><BR><BR>
-
+                <div class="form-group">
+                    <label id="label-gender"></label>
+                    <select style="width: 100%;" class="form-control filter-Gender" multiple="multiple"></select>
+                </div>
+                <div class="form-group">
+                    <label id="label-classification"></label>
+                    <select style="width: 100%;" class="form-control filter-Classification" multiple="multiple"></select>
+                </div>
+                <div class="form-group">
+                    <label id="label-role"></label>
+                    <select style="width: 100%;" class="form-control filter-Role" multiple="multiple"></select>
                 </div>
             </div>
 
-            <div class= "col-lg-6">
-                <a class="btn btn-success" role="button" href="<?= SystemURLs::getRootPath()?>/PersonEditor.php"><span class="fa-solid fa-plus" aria-hidden="true"></span><?= gettext('Add Person') ?></a>
-                <a id="AddAllToCart" class="btn btn-primary" ><?= gettext('Add All to Cart') ?></a>
-                <!-- <input name="IntersectCart" type="submit" class="btn btn-warning" value="< ?= gettext('Intersect with Cart') ?>">&nbsp; -->
-                <a id="RemoveAllFromCart" class="btn btn-danger" ><?= gettext('Remove All from Cart') ?></a>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label id="label-properties"></label>
+                    <select style="width: 100%;" class="form-control filter-Properties" multiple="multiple"></select>
+                </div>
+                <div class="form-group">
+                    <label id="label-custom"></label>
+                    <select style="width: 100%;" class="form-control filter-Custom" multiple="multiple"></select>
+                </div>
+                <div class="form-group">
+                    <label id="label-group"></label>
+                    <select style="width: 100%;" class="form-control filter-Group" multiple="multiple"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button id="ClearFilter" type="button" class="btn btn-secondary btn-block">
+                    <i class="fa-solid fa-times"></i> <span id="clear-filter-text"></span>
+                </button>
             </div>
         </div>
     </div>
-
 </div>
-<p><br/><br/></p>
-<div class="card card-warning">
+
+<!-- Floating Action Button -->
+<a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php" class="fab-add-person" id="fab-add-person-btn">
+    <i class="fa-solid fa-plus"></i>
+</a>
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-users"></i> <span id="people-title"></span></h3>
+        <div class="card-tools">
+            <div class="btn-group btn-group-sm" role="group">
+                <a id="AddAllToCart" class="btn btn-success">
+                    <i class="fa-solid fa-cart-plus"></i> <span id="add-all-cart-text"></span>
+                </a>
+                <a id="RemoveAllFromCart" class="btn btn-danger">
+                    <i class="fa-solid fa-cart-arrow-down"></i> <span id="remove-all-cart-text"></span>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="card-body">
         <table id="members" class="table table-striped table-bordered data-table w-100">
             <tbody>
@@ -200,6 +228,20 @@ foreach ($ListItem as $element) {
     var oTable;
 
     $(document).ready(function() {
+
+        // Set all i18next translations
+        $('#filters-title').text(i18next.t('Filters'));
+        $('#label-gender').text(i18next.t('Select Gender'));
+        $('#label-classification').text(i18next.t('Select Classification'));
+        $('#label-role').text(i18next.t('Select Role'));
+        $('#label-properties').text(i18next.t('Select Properties'));
+        $('#label-custom').text(i18next.t('Select Custom'));
+        $('#label-group').text(i18next.t('Select Group'));
+        $('#clear-filter-text').text(i18next.t('Clear Filter'));
+        $('#people-title').text(i18next.t('People'));
+        $('#add-all-cart-text').text(i18next.t('Add All to Cart'));
+        $('#remove-all-cart-text').text(i18next.t('Remove All from Cart'));
+        $('#fab-add-person-btn').attr('title', i18next.t('Add Person'));
 
         // setup filters
         var filterByClsId = '<?= $filterByClsId ?>';
@@ -381,24 +423,52 @@ foreach ($ListItem as $element) {
 
     $("#AddAllToCart").click(function(){
         var listPeople = [];
-        var table = $('#members').DataTable().rows( { filter: 'applied' } ).every( function () {
-        // fill array
-        var row = this.data();
-        listPeople.push(row[1]);
-    });
-        // bypass SelectList.js
-        window.CRM.cart.addPerson(listPeople);
+        // Get all visible rows from the filtered table
+        $('#members').DataTable().rows({ filter: 'applied' }).every(function () {
+            // Get the row node (DOM element)
+            var node = this.node();
+            // Find the AddToPeopleCart button in this row and get its person ID
+            var personId = $(node).find('.AddToPeopleCart').data('cartpersonid');
+            if (personId) {
+                listPeople.push(personId);
+            }
+        });
+        
+        if (listPeople.length > 0) {
+            // Call cart API with callback to ensure proper refresh
+            window.CRM.cart.addPerson(listPeople, function(data) {
+                console.log('Added ' + listPeople.length + ' people to cart');
+                // Force a visual refresh of the page to update cart buttons
+                location.reload();
+            });
+        } else {
+            console.log('No people to add - all filtered people are already in cart');
+        }
     });
 
     $("#RemoveAllFromCart").click(function(){
         var listPeople = [];
-        var table = $('#members').DataTable().rows( { filter: 'applied' } ).every( function () {
-        // fill array
-        var row = this.data();
-        listPeople.push(row[1]);
-    });
-        // bypass SelectList.js
-        window.CRM.cart.removePerson(listPeople);
+        // Get all visible rows from the filtered table
+        $('#members').DataTable().rows({ filter: 'applied' }).every(function () {
+            // Get the row node (DOM element)
+            var node = this.node();
+            // Find the RemoveFromPeopleCart button in this row and get its person ID
+            var personId = $(node).find('.RemoveFromPeopleCart').data('cartpersonid');
+            if (personId) {
+                listPeople.push(personId);
+            }
+        });
+        
+        if (listPeople.length > 0) {
+            // Call cart API with callback to ensure proper refresh
+            window.CRM.cart.removePerson(listPeople, function(data) {
+                console.log('Removed ' + listPeople.length + ' people from cart');
+                // Force a visual refresh of the page to update cart buttons
+                location.reload();
+            });
+        } else {
+            console.log('No people to remove - none of the filtered people are in cart');
+        }
     });
 
 </script>
