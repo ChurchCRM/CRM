@@ -32,4 +32,17 @@ describe("Admin Settings", () => {
         cy.location('pathname').should('include', "/SystemSettings.php");
         cy.get("input[name='new_value[1003]']").should('have.value', newValue);
     });*/
+
+    it("Password fields should not contain plaintext values (security fix GHSA-p98h-5xcj-5c6x)", () => {
+        // Get all password input fields
+        cy.get("input[type='password']").each(($passwordField) => {
+            // Verify password fields do not have plaintext values in HTML
+            cy.wrap($passwordField)
+                .should("not.have.attr", "value")
+                .or("have.attr", "value", ""); // If value attr exists, it should be empty
+            
+            // Verify placeholder text is present
+            cy.wrap($passwordField).should("have.attr", "placeholder");
+        });
+    });
 });
