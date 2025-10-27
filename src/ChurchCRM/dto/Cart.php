@@ -63,17 +63,29 @@ class Cart
         }
     }
 
-    public static function addFamily($FamilyID): void
+    public static function addFamily($FamilyID): array
     {
         if (!is_numeric($FamilyID)) {
             throw new \Exception(gettext('FamilyID for Cart must be numeric'), 400);
         }
+        
+        $result = [
+            'added' => [],
+            'duplicate' => []
+        ];
+        
         $FamilyMembers = PersonQuery::create()
             ->filterByFamId($FamilyID)
             ->find();
         foreach ($FamilyMembers as $FamilyMember) {
-            Cart::addPerson($FamilyMember->getId());
+            if (Cart::addPerson($FamilyMember->getId())) {
+                $result['added'][] = (int)$FamilyMember->getId();
+            } else {
+                $result['duplicate'][] = (int)$FamilyMember->getId();
+            }
         }
+        
+        return $result;
     }
 
     public static function intersectArrayWithPeopleCart($aIDs): void

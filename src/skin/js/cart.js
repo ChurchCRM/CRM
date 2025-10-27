@@ -206,10 +206,34 @@ export class CartManager {
             data: JSON.stringify({ Family: familyId }),
         })
             .done((data) => {
-                this.showNotification(
-                    "success",
-                    i18next.t("Family added to cart"),
-                );
+                // Handle duplicate detection
+                const duplicateCount = data.duplicate ? data.duplicate.length : 0;
+                const addedCount = data.added ? data.added.length : 0;
+
+                if (duplicateCount > 0 && addedCount > 0) {
+                    // Mix of added and duplicates
+                    this.showNotification(
+                        "warning",
+                        i18next.t("Added") +
+                            ` ${addedCount} ` +
+                            i18next.t("members. Already had") +
+                            ` ${duplicateCount} ` +
+                            i18next.t("in cart"),
+                    );
+                } else if (duplicateCount > 0) {
+                    // All duplicates
+                    this.showNotification(
+                        "warning",
+                        i18next.t("All members already in cart"),
+                    );
+                } else {
+                    // All new additions
+                    this.showNotification(
+                        "success",
+                        i18next.t("Family added to cart"),
+                    );
+                }
+
                 this.refreshCartCount();
 
                 if (options.callback) {
@@ -460,35 +484,27 @@ export class CartManager {
         if (!$button.length) return;
 
         if (inCart) {
-            $button
-                .removeClass("AddToPeopleCart")
-                .addClass("RemoveFromPeopleCart");
-
+            // Change to Remove state
+            $button.removeClass("AddToPeopleCart").addClass("RemoveFromPeopleCart");
+            
+            // Update the inner button
+            const $innerBtn = $button.find("button");
+            $innerBtn.removeClass("btn-primary").addClass("btn-danger");
+            
             // Update icon
-            $button
-                .find("i.fa-cart-plus, i.fa.fa-cart-plus, i.fa-shopping-cart")
-                .removeClass("fa-cart-plus")
-                .addClass("fa-shopping-cart text-danger");
-
-            // Update text if present
-            $button
-                .find(".cartActionDescription")
-                .text(i18next.t("Remove from Cart"));
+            const $icon = $innerBtn.find("i");
+            $icon.removeClass("fa-cart-plus").addClass("fa-shopping-cart");
         } else {
-            $button
-                .removeClass("RemoveFromPeopleCart")
-                .addClass("AddToPeopleCart");
-
+            // Change to Add state
+            $button.removeClass("RemoveFromPeopleCart").addClass("AddToPeopleCart");
+            
+            // Update the inner button
+            const $innerBtn = $button.find("button");
+            $innerBtn.removeClass("btn-danger").addClass("btn-primary");
+            
             // Update icon
-            $button
-                .find("i.fa-shopping-cart, i.fa.fa-shopping-cart")
-                .removeClass("fa-shopping-cart text-danger")
-                .addClass("fa-cart-plus");
-
-            // Update text if present
-            $button
-                .find(".cartActionDescription")
-                .text(i18next.t("Add to Cart"));
+            const $icon = $innerBtn.find("i");
+            $icon.removeClass("fa-shopping-cart").addClass("fa-cart-plus");
         }
     }
 

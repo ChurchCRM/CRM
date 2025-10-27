@@ -20,7 +20,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
         if (isset($cartPayload['Persons']) && count($cartPayload['Persons']) > 0) {
             $result = Cart::addPersonArray($cartPayload['Persons']);
         } elseif (isset($cartPayload['Family'])) {
-            Cart::addFamily($cartPayload['Family']);
+            $result = Cart::addFamily($cartPayload['Family']);
         } elseif (isset($cartPayload['Group'])) {
             Cart::addGroup($cartPayload['Group']);
         } else {
