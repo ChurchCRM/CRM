@@ -147,7 +147,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
 
 <div class="card">
     <div class="card-header with-border">
-        <dev class="card-title"><h4><?= gettext('People') ?></h4></dev>
+        <div class="card-title"><h4><?= gettext('People') ?></h4></div>
     </div>
         <div class="card-body">
             <div class="row">
