@@ -7,8 +7,9 @@ describe("Standard Cart", () => {
         cy.get("body").then(($body) => {
             if (!$body.text().includes("You have no items in your cart")) {
                 cy.get("#emptyCart").click();
-                // Wait for cart to actually be emptied
-                cy.wait(1000);
+                // Wait for and click the confirm button in the bootbox dialog
+                cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
+                cy.wait(1500);
             }
         });
         // Verify cart is empty
@@ -25,6 +26,9 @@ describe("Standard Cart", () => {
         cy.contains("Cart Functions");
         cy.contains("Church Admin");
         cy.get("#emptyCart").click();
+        // Wait for and click the confirm button in the bootbox dialog
+        cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
+        cy.wait(1500);
         cy.contains("You have no items in your cart");
     });
 
@@ -37,6 +41,9 @@ describe("Standard Cart", () => {
         cy.contains("Kenzi Dixon");
         cy.contains("Cart Functions");
         cy.get("#emptyCart").click();
+        // Wait for and click the confirm button in the bootbox dialog
+        cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
+        cy.wait(1500);
         cy.contains("You have no items in your cart");
     });
 
@@ -80,8 +87,121 @@ describe("Standard Cart", () => {
             if (!$body.text().includes("You have no items in your cart")) {
                 // Cart still has items, empty it manually
                 cy.get("#emptyCart").click();
+                // Wait for and click the confirm button in the bootbox dialog
+                cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
+                cy.wait(1500);
             }
         });
         cy.contains("You have no items in your cart");
+    });
+
+    it("Cart prevents duplicate person additions", () => {
+        cy.visit("v2/cart");
+        cy.contains("You have no items in your cart");
+        
+        // Add person first time
+        cy.visit("PersonView.php?PersonID=1");
+        cy.get("#AddPersonToCart").click();
+        
+        // Wait for notification and cart update
+        cy.wait(500);
+        
+        // Try to add same person again
+        cy.get("#AddPersonToCart").click();
+        
+        // Wait for notification
+        cy.wait(500);
+        
+        // Verify cart still only has one person
+        cy.visit("v2/cart");
+        cy.contains("Church Admin");
+        
+        // Should only appear once in the cart
+        cy.get("body").then(($body) => {
+            const text = $body.text();
+            const matches = (text.match(/Church Admin/g) || []).length;
+            // Account for the name appearing in different places (header, cart item)
+            expect(matches).to.be.lessThan(5);
+        });
+        
+        // Clean up
+        cy.get("#emptyCart").click();
+        // Wait for and click the confirm button in the bootbox dialog
+        cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
+        cy.wait(1500);
+    });
+
+    it("Cart API returns correct duplicate information", () => {
+        // Empty cart first
+        cy.request({
+            method: "DELETE",
+            url: "/api/cart/",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({})
+        });
+
+        // Add person via API - should succeed
+        cy.request({
+            method: "POST",
+            url: "/api/cart/",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                Persons: [1]
+            })
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body).to.have.property("added");
+            expect(response.body).to.have.property("duplicate");
+            expect(response.body.added).to.include(1);
+            expect(response.body.duplicate).to.be.empty;
+        });
+
+        // Try to add same person again - should be duplicate
+        cy.request({
+            method: "POST",
+            url: "/api/cart/",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                Persons: [1]
+            })
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body).to.have.property("added");
+            expect(response.body).to.have.property("duplicate");
+            expect(response.body.added).to.be.empty;
+            expect(response.body.duplicate).to.include(1);
+        });
+
+        // Add multiple people including one duplicate
+        cy.request({
+            method: "POST",
+            url: "/api/cart/",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                Persons: [1, 2, 3]
+            })
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body.added).to.include.members([2, 3]);
+            expect(response.body.duplicate).to.include(1);
+        });
+
+        // Clean up
+        cy.request({
+            method: "DELETE",
+            url: "/api/cart/",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({})
+        });
     });
 });

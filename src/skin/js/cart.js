@@ -40,8 +40,10 @@ export class CartManager {
                 // Show appropriate notification based on results
                 if (showNotification) {
                     const addedCount = data.added ? data.added.length : 0;
-                    const duplicateCount = data.duplicate ? data.duplicate.length : 0;
-                    
+                    const duplicateCount = data.duplicate
+                        ? data.duplicate.length
+                        : 0;
+
                     if (addedCount > 0 && duplicateCount === 0) {
                         // All were added successfully
                         const message =
@@ -339,7 +341,9 @@ export class CartManager {
      * @private
      */
     performEmptyCart(options) {
-        const reloadPage = options.reloadPage !== false && window.location.pathname.includes('/v2/cart');
+        const reloadPage =
+            options.reloadPage !== false &&
+            window.location.pathname.includes("/v2/cart");
         const reloadDelay = options.reloadDelay || 1500;
 
         return window.CRM.APIRequest({
@@ -515,6 +519,11 @@ export class CartManager {
      * Refresh cart count in header WITHOUT scrolling
      */
     refreshCartCount() {
+        // Safety check for APIRequest availability
+        if (!window.CRM || typeof window.CRM.APIRequest !== "function") {
+            return Promise.reject("APIRequest not available");
+        }
+        
         return window.CRM.APIRequest({
             method: "GET",
             path: "cart/",
@@ -619,6 +628,9 @@ $(document).ready(() => {
     }
     window.CRM.cartManager = new CartManager();
 
-    // Initialize cart count on page load
-    window.CRM.cartManager.refreshCartCount();
+    // Initialize cart count on page load - handle promise rejection gracefully
+    window.CRM.cartManager.refreshCartCount().catch(() => {
+        // APIRequest not available yet, skip initialization
+        // This can happen during testing before the API is ready
+    });
 });
