@@ -84,6 +84,9 @@ $("document").ready(function () {
             );
         });
     });
+
+    // Initialize FAB buttons with localized labels
+    initializeFAB();
 });
 
 function showGlobalMessage(message, callOutClass) {
@@ -109,4 +112,29 @@ function showGlobalMessage(message, callOutClass) {
             },
         },
     );
+}
+
+/**
+ * Initialize Floating Action Buttons (FAB)
+ * - Sets localized labels
+ * - Handles scroll behavior to hide buttons on scroll
+ */
+function initializeFAB() {
+    const fabContainer = $("#fab-container");
+    const fabPersonLabel = $("#fab-person-label");
+    const fabFamilyLabel = $("#fab-family-label");
+
+    // Set localized labels
+    fabPersonLabel.text(i18next.t("Add New Person"));
+    fabFamilyLabel.text(i18next.t("Add New Family"));
+
+    // Hide FAB on any scroll to prevent blocking content
+    $(window).on("scroll", function () {
+        const currentScroll = $(this).scrollTop();
+
+        // Hide FAB once user scrolls past 50px
+        if (currentScroll > 50) {
+            fabContainer.addClass("hidden");
+        }
+    });
 }

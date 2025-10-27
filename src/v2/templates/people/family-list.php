@@ -9,12 +9,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 /* @var $families ObjectCollection */
 ?>
 
-<div class="pull-right">
-    <a class="btn btn-success" role="button" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php">
-        <span class="fa-solid fa-plus" aria-hidden="true"></span><?= gettext('Add Family') ?>
-    </a>
-</div>
-<p><br /><br /></p>
 <div class="card">
     <div class="card-body">
         <table id="families" class="table table-striped table-bordered data-table w-100">

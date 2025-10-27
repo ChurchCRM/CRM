@@ -27,34 +27,87 @@
     margin-left: 0;
 }
 
-// Floating Action Button (FAB) - Gmail-style add button
-.fab-add-person {
+// Floating Action Buttons (FAB) - Gmail-style add buttons
+.fab-container {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: #28a745; // Bootstrap success color
-    color: white;
-    border-radius: 50%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &.hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+    }
+}
+
+.fab-button {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    z-index: 1000;
+    justify-content: flex-end;
     text-decoration: none;
+    transition: all 0.3s ease;
 
-    &:hover {
-        background-color: #218838; // Bootstrap success hover
+    .fab-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
         color: white;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-        transform: scale(1.05);
-        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
     }
 
-    i {
-        margin: 0;
+    .fab-label {
+        position: absolute;
+        right: 70px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(10px);
+        transition: all 0.3s ease;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        .fab-icon {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .fab-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    &.fab-person .fab-icon {
+        background-color: #007bff; // Bootstrap primary
+    }
+
+    &.fab-person:hover .fab-icon {
+        background-color: #0056b3;
+    }
+
+    &.fab-family .fab-icon {
+        background-color: #28a745; // Bootstrap success
+    }
+
+    &.fab-family:hover .fab-icon {
+        background-color: #218838;
     }
 }

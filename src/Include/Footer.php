@@ -41,6 +41,23 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
         <!-- /.tab-pane -->
     </div>
 </aside>
+
+<!-- Floating Action Buttons -->
+<div class="fab-container" id="fab-container">
+    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php" class="fab-button fab-person">
+        <span class="fab-label" id="fab-person-label"></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-user"></i>
+        </div>
+    </a>
+    <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php" class="fab-button fab-family">
+        <span class="fab-label" id="fab-family-label"></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-users"></i>
+        </div>
+    </a>
+</div>
+
 <!-- ./wrapper -->
 </div><!-- ./wrapper -->
 

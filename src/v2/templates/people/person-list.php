@@ -135,11 +135,6 @@ foreach ($ListItem as $element) {
     </div>
 </div>
 
-<!-- Floating Action Button -->
-<a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php" class="fab-add-person" id="fab-add-person-btn">
-    <i class="fa-solid fa-plus"></i>
-</a>
-
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title"><i class="fa-solid fa-users"></i> <span id="people-title"></span></h3>
@@ -241,7 +236,6 @@ foreach ($ListItem as $element) {
         $('#people-title').text(i18next.t('People'));
         $('#add-all-cart-text').text(i18next.t('Add All to Cart'));
         $('#remove-all-cart-text').text(i18next.t('Remove All from Cart'));
-        $('#fab-add-person-btn').attr('title', i18next.t('Add Person'));
 
         // setup filters
         var filterByClsId = '<?= $filterByClsId ?>';
