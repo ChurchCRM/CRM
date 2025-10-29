@@ -440,4 +440,132 @@ class FinancialService
             return (1995 + $fyId) . '/' . mb_substr(1996 + $fyId, 2, 2);
         }
     }
+
+    /**
+     * Get Advanced Deposit Report data using ORM
+     * 
+     * Security: Checks finance permissions before returning data
+     *
+     * @param string $sort Sort order: 'deposit', 'fund', or 'family'
+     * @param string $dateStart Start date (Y-m-d format)
+     * @param string $dateEnd End date (Y-m-d format)
+     * @param int|null $depositId Optional deposit ID filter
+     * @param array $fundIds Optional fund IDs filter
+     * @param array $familyIds Optional family IDs filter
+     * @param array $methods Optional payment methods filter
+     * @param array $classificationIds Optional classification IDs filter
+     * @return array
+     */
+    public function getAdvancedDepositReportData(
+        string $sort = 'deposit',
+        string $dateStart = '',
+        string $dateEnd = '',
+        ?int $depositId = null,
+        array $fundIds = [],
+        array $familyIds = [],
+        array $methods = [],
+        array $classificationIds = []
+    ): array {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        $query = PledgeQuery::create()->filterForAdvancedDeposit(
+            $dateStart,
+            $dateEnd,
+            $fundIds,
+            $familyIds,
+            $methods,
+            $classificationIds,
+            $sort
+        );
+
+        // Add deposit ID filter if specified
+        if ($depositId > 0) {
+            $query->filterByDepId($depositId);
+        }
+
+        return $query->find()->toArray();
+    }
+
+    /**
+     * Get Tax Report (Giving Report) data using ORM
+     * 
+     * Security: Checks finance permissions before returning data
+     *
+     * @param string $dateStart Start date (Y-m-d format)
+     * @param string $dateEnd End date (Y-m-d format)
+     * @param int|null $depositId Optional deposit ID filter
+     * @param int|null $minimumAmount Optional minimum amount filter
+     * @param array $fundIds Optional fund IDs filter
+     * @param array $familyIds Optional family IDs filter
+     * @param array $classificationIds Optional classification IDs filter
+     * @return array
+     */
+    public function getTaxReportData(
+        string $dateStart = '',
+        string $dateEnd = '',
+        ?int $depositId = null,
+        ?int $minimumAmount = null,
+        array $fundIds = [],
+        array $familyIds = [],
+        array $classificationIds = []
+    ): array {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        $query = PledgeQuery::create()->filterForTaxReport(
+            $dateStart,
+            $dateEnd,
+            $fundIds,
+            $familyIds,
+            $classificationIds
+        );
+
+        // Add optional filters
+        if ($depositId > 0) {
+            $query->filterByDepId($depositId);
+        }
+        if ($minimumAmount > 0) {
+            $query->filterByAmount($minimumAmount, \Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL);
+        }
+
+        return $query->find()->toArray();
+    }
+
+    /**
+     * Get Zero Givers Report data using ORM
+     * 
+     * Security: Checks finance permissions before returning data
+     * Returns families with members (classification 1) who didn't give in the date range
+     *
+     * @param string $dateStart Start date (Y-m-d format)
+     * @param string $dateEnd End date (Y-m-d format)
+     * @return array
+     */
+    public function getZeroGiversReportData(string $dateStart = '', string $dateEnd = ''): array
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        // Get all families with at least one member (classification ID 1)
+        $familyQuery = FamilyQuery::create()
+            ->usePersonQuery()
+                ->filterByClassificationId(1)
+            ->endUse();
+
+        // Get family IDs that made payments in the date range
+        $paidFamilyIds = PledgeQuery::create()
+            ->filterForZeroGivers($dateStart, $dateEnd)
+            ->select('FamId')
+            ->distinct()
+            ->find()
+            ->toArray();
+
+        // Exclude families that made payments
+        if (!empty($paidFamilyIds)) {
+            $familyQuery->filterByFamId($paidFamilyIds, \Propel\Runtime\ActiveQuery\Criteria::NOT_IN);
+        }
+
+        return $familyQuery
+            ->orderByFamId()
+            ->find()
+            ->toArray();
+    }
 }
