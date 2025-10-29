@@ -25,6 +25,7 @@ class CsvExporter
 {
     private Writer $writer;
     private string $charset;
+    private array $csvData = [];
 
     /**
      * Constructor
@@ -35,8 +36,12 @@ class CsvExporter
     public function __construct(string $charset = 'UTF-8')
     {
         $this->charset = $charset;
-        // Create a writer using php://output for streaming directly to client
-        $this->writer = Writer::createFromStream(fopen('php://output', 'w+'));
+        // Create a writer using a temporary file with seek support
+        $tempFile = tmpfile();
+        if ($tempFile === false) {
+            throw new \RuntimeException('Failed to create temporary file for CSV export');
+        }
+        $this->writer = Writer::createFromStream($tempFile);
         // Set delimiter to comma (RFC 4180 standard)
         $this->writer->setDelimiter(',');
     }
@@ -176,9 +181,10 @@ class CsvExporter
         header('Expires: 0');
         header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
         header('Pragma: public');
+        header('Content-Length: ' . strlen($this->writer->toString()));
 
-        // Output is already written to php://output via insertOne/insertAll
-        $this->writer->output();
+        // Output CSV content without seeking
+        echo $this->writer->toString();
         exit;
     }
 
@@ -192,8 +198,8 @@ class CsvExporter
      */
     public function outputOnly(): void
     {
-        // Output is already written to php://output via insertOne/insertAll
-        $this->writer->output();
+        // Output CSV content without seeking
+        echo $this->writer->toString();
         exit;
     }
 

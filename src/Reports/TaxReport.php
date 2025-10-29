@@ -7,6 +7,7 @@ require_once '../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -465,32 +466,31 @@ if ($output === 'pdf') {
 
     // Output a text file
 } elseif ($output === 'csv') {
-    // Settings
-    $delimiter = ',';
-    $eol = "\r\n";
-
-    // Build headings row
-    preg_match('/SELECT (.*) FROM /i', $sSQL, $result);
-    $headings = explode(',', $result[1]);
-    $buffer = '';
-    foreach ($headings as $heading) {
-        $buffer .= trim($heading) . $delimiter;
-    }
-    // Remove trailing delimiter and add eol
-    $buffer = mb_substr($buffer, 0, -1) . $eol;
-
-    while ($row = mysqli_fetch_row($rsReport)) {
-        foreach ($row as $field) {
-            // Remove any delimiters from data
-            $field = str_replace($delimiter, ' ', $field);
-            $buffer .= $field . $delimiter;
+    // Re-run the query to get fresh data (previous query was consumed by PDF export)
+    $rsReport = RunQuery($sSQL);
+    
+    // Extract headers from query
+    $headers = [];
+    $numFields = mysqli_num_fields($rsReport);
+    for ($i = 0; $i < $numFields; $i++) {
+        $field = mysqli_fetch_field_direct($rsReport, $i);
+        if ($field && isset($field->name)) {
+            $headers[] = $field->name;
         }
-        // Remove trailing delimiter and add eol
-        $buffer = mb_substr($buffer, 0, -1) . $eol;
     }
 
-    // Export file
-    header('Content-type: text/x-csv');
-    header('Content-Disposition: attachment; filename=ChurchCRM-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
-    echo $buffer;
+    // Convert result to 2D array
+    $rows = [];
+    while ($row = mysqli_fetch_row($rsReport)) {
+        $rows[] = $row;
+    }
+
+    // Only export if we have headers and rows
+    if (!empty($headers) && !empty($rows)) {
+        // Export using CsvExporter
+        // basename: 'TaxReport', includeDateInFilename: true adds today's date, .csv is added automatically
+        CsvExporter::create($headers, $rows, 'TaxReport', 'UTF-8', true);
+    } else {
+        header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+    }
 }
