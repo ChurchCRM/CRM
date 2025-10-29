@@ -247,4 +247,31 @@ class AuthenticationManager
             RedirectUtils::securityRedirect('Admin');
         }
     }
+
+    /**
+     * Safely determine if a user is currently authenticated
+     * 
+     * This method provides a safe way to check authentication status without
+     * throwing exceptions. It's useful for rendering conditional UI based on
+     * authentication state.
+     * 
+     * @return bool True if user is authenticated and has an active session, false otherwise
+     * 
+     * @example
+     * if (AuthenticationManager::isUserLoggedIn()) {
+     *     // Show logged-in UI
+     * } else {
+     *     // Show login page
+     * }
+     */
+    public static function isUserLoggedIn(): bool
+    {
+        try {
+            $currentUser = self::getCurrentUser();
+            return $currentUser !== null;
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->debug('Authentication check failed', ['exception' => $e]);
+            return false;
+        }
+    }
 }
