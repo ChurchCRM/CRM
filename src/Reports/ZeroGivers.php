@@ -10,6 +10,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Service\FinancialService;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
@@ -27,6 +28,7 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValu
     RedirectUtils::redirect('v2/dashboard');
 }
 
+// Normalize date range
 $today = date('Y-m-d');
 if (!$sDateEnd && $sDateStart) {
     $sDateEnd = $sDateStart;
@@ -44,12 +46,28 @@ if ($sDateStart > $sDateEnd) {
     $sDateEnd = $temp;
 }
 
-$sSQL = "SELECT DISTINCT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country FROM family_fam LEFT OUTER JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID=1 AND fam_ID NOT IN (SELECT DISTINCT plg_FamID FROM pledge_plg WHERE plg_date BETWEEN '$sDateStart' AND '$sDateEnd' AND plg_PledgeOrPayment = 'Payment') ORDER BY fam_ID";
+// Use FinancialService to get data using ORM instead of raw SQL
+$financialService = new FinancialService();
+$familyObjects = $financialService->getZeroGiversReportData($sDateStart, $sDateEnd);
 
-$rsReport = RunQuery($sSQL);
+// Convert Propel objects to array format for backward compatibility with existing PDF/CSV code
+$rsReport = [];
+foreach ($familyObjects as $family) {
+    $row = [
+        'fam_ID' => $family['Id'],
+        'fam_Name' => $family['Name'] ?? '',
+        'fam_Address1' => $family['Address1'] ?? '',
+        'fam_Address2' => $family['Address2'] ?? '',
+        'fam_City' => $family['City'] ?? '',
+        'fam_State' => $family['State'] ?? '',
+        'fam_Zip' => $family['Zip'] ?? '',
+        'fam_Country' => $family['Country'] ?? '',
+    ];
+    $rsReport[] = $row;
+}
 
 // Exit if no rows returned
-$iCountRows = mysqli_num_rows($rsReport);
+$iCountRows = count($rsReport);
 if ($iCountRows < 1) {
     header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Zero%20Givers');
 }
@@ -114,7 +132,7 @@ if ($output === 'pdf') {
     $pdf = new PdfZeroGivers();
 
     // Loop through result array
-    while ($row = mysqli_fetch_array($rsReport)) {
+    foreach ($rsReport as $row) {
         extract($row);
         $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 
@@ -129,23 +147,18 @@ if ($output === 'pdf') {
 
     // Output a text file
 } elseif ($output === 'csv') {
-    // Re-run the query to get fresh data (previous query was consumed by PDF export)
-    $rsReport = RunQuery($sSQL);
+    // Use already fetched data from ORM (rsReport is already an array)
     
-    // Extract headers from query
+    // Build headers array from first row keys
     $headers = [];
-    $numFields = mysqli_num_fields($rsReport);
-    for ($i = 0; $i < $numFields; $i++) {
-        $field = mysqli_fetch_field_direct($rsReport, $i);
-        if ($field && isset($field->name)) {
-            $headers[] = $field->name;
-        }
+    if (!empty($rsReport)) {
+        $headers = array_keys($rsReport[0]);
     }
 
-    // Convert result to 2D array
+    // Convert associative array to 2D indexed array for CsvExporter
     $rows = [];
-    while ($row = mysqli_fetch_row($rsReport)) {
-        $rows[] = $row;
+    foreach ($rsReport as $row) {
+        $rows[] = array_values($row);
     }
 
     // Only export if we have headers and rows
