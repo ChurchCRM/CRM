@@ -347,9 +347,18 @@ function FormatDateOutput(): string
 // bWithtime 1 to be displayed
 function FormatDate($dDate, bool $bWithTime = false): string
 {
-    // Parse the date string into a DateTime object
-    $dateObj = new DateTime($dDate);
-    $fmt = FormatDateOutput();
+    // Handle empty or invalid dates
+    if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00' || $dDate === null) {
+        return '';
+    }
+
+    try {
+        // Parse the date string into a DateTime object
+        $dateObj = new DateTime($dDate);
+    } catch (Exception $e) {
+        // Return empty string for invalid dates
+        return '';
+    }
 
     $localValue = SystemConfig::getValue("sLanguage");
     setlocale(LC_ALL, $localValue, $localValue . '.UTF-8', $localValue . '.utf8');
@@ -360,11 +369,7 @@ function FormatDate($dDate, bool $bWithTime = false): string
     $timeType = $bWithTime ? \IntlDateFormatter::SHORT : \IntlDateFormatter::NONE;
     $formatter = new \IntlDateFormatter($locale, $dateType, $timeType);
 
-    if ($bWithTime) {
-        return $formatter->format($dateObj);
-    } else {
-        return $formatter->format($dateObj);
-    }
+    return $formatter->format($dateObj);
 }
 
 function AlternateRowStyle(string $sCurrentStyle): string
