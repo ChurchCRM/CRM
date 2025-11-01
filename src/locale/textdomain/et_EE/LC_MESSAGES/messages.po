@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "Perekonna nimekiri"
 
 #: 
-msgid "Add Family"
-msgstr "Lisa perekond"
-
-#: 
 msgid "Created"
 msgstr "Loodud"
 
@@ -1771,10 +1767,6 @@ msgstr "Ristlõige korvist"
 #: 
 msgid "Remove from Cart"
 msgstr "Eemalda korvist"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Sündmuse ID tekst: "
 
 #: 
 msgid "Group Editor"
@@ -2934,10 +2926,6 @@ msgstr "Kustuta AINULT perekonna kirje"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Kustutage perekonnakiri ja pereliikmed"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filter ja korv"
 
 #: 
 msgid "Listing"
@@ -7532,10 +7520,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Kõik selle grupi liikmed ei ole valikukorvis"
 
 #: 
-msgid "Add all"
-msgstr "Lisa kõik"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Kas olete kindel, et soovite valitud grupi liikmed eemaldada?"
 
@@ -7906,10 +7890,6 @@ msgstr "Teisalda sündmus"
 #: 
 msgid "Resize Event"
 msgstr "Muutke sündmuse suurust"
-
-#: 
-msgid "Text from"
-msgstr "Tekst on pärit"
 
 #: 
 msgid "Profile"
@@ -8827,14 +8807,6 @@ msgstr "Lähtesta andmebaas"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "See lähtestab süsteemi andmed ja taaskäivitab süsteemi uue installina."
-
-#: 
-msgid "Clear Filter"
-msgstr "Kustuta filter"
-
-#: 
-msgid "Add Person"
-msgstr "Lisage inimene"
 
 #. Context: locales
 #: 
