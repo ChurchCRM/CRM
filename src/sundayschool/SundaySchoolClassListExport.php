@@ -10,40 +10,42 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\CsvExporter;
 use Propel\Runtime\ActiveQuery\Criteria;
+
+// Set headers BEFORE any output is sent (required for file download)
+$charset = SystemConfig::getValue('sCSVExportCharset');
+$filename = 'SundaySchool-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
 
 header('Pragma: no-cache');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Content-Description: File Transfer');
-header('Content-Type: text/csv;charset=' . SystemConfig::getValue('sCSVExportCharset'));
-header('Content-Disposition: attachment; filename=SundaySchool-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
+header('Content-Type: text/csv;charset=' . $charset);
+header('Content-Disposition: attachment; filename=' . $filename);
 header('Content-Transfer-Encoding: binary');
 
-$delimiter = SystemConfig::getValue('sCSVExportDelimiter');
+// Build headers for CSV export
+$headers = [
+    'Class',
+    'Role',
+    'First Name',
+    'Last Name',
+    'Birth Date',
+    'Mobile',
+    'Home Phone',
+    'Home Address',
+    'Dad Name',
+    'Dad Mobile',
+    'Dad Email',
+    'Mom Name',
+    'Mom Mobile',
+    'Mom Email',
+    'Properties'
+];
 
-$out = fopen('php://output', 'w');
-
-// Add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-if (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') {
-    fputs($out, $bom = (chr(0xEF) . chr(0xBB) . chr(0xBF)));
-}
-
-fputcsv($out, [InputUtils::translateSpecialCharset('Class'),
-    InputUtils::translateSpecialCharset('Role'),
-    InputUtils::translateSpecialCharset('First Name'),
-    InputUtils::translateSpecialCharset('Last Name'),
-    InputUtils::translateSpecialCharset('Birth Date'),
-    InputUtils::translateSpecialCharset('Mobile'),
-    InputUtils::translateSpecialCharset('Home Phone'),
-    InputUtils::translateSpecialCharset('Home Address'),
-    InputUtils::translateSpecialCharset('Dad Name'),
-    InputUtils::translateSpecialCharset('Dad Mobile'),
-    InputUtils::translateSpecialCharset('Dad Email'),
-    InputUtils::translateSpecialCharset('Mom Name'),
-    InputUtils::translateSpecialCharset('Mom Mobile'),
-    InputUtils::translateSpecialCharset('Mom Email'),
-    InputUtils::translateSpecialCharset('Properties')], $delimiter);
+// Build rows for CSV export
+$rows = [];
 
 // Only the Sunday groups
 $groups = GroupQuery::create()
@@ -118,7 +120,7 @@ foreach ($groups as $group) {
         $props = ' ';
         if ($lst_OptionName === 'Student' && !empty($assignedProperties)) {
             foreach ($assignedProperties as $property) {
-                $props .= $property->getProName() . ', ';
+                $props .= $property->getProperty()->getProName() . ', ';
             }
 
             $props = chop($props, ', ');
@@ -130,16 +132,30 @@ foreach ($groups as $group) {
             $birthDate = $publishDate->format(SystemConfig::getValue('sDateFormatLong'));
         }
 
-        fputcsv($out, [
-            InputUtils::translateSpecialCharset($sundayschoolClass),
-            InputUtils::translateSpecialCharset($lst_OptionName),
-            InputUtils::translateSpecialCharset($firstName),
-            InputUtils::translateSpecialCharset($lastname),
-            $birthDate, $mobilePhone, $homePhone,
-            InputUtils::translateSpecialCharset($Address1) . ' ' . InputUtils::translateSpecialCharset($Address2) . ' ' . InputUtils::translateSpecialCharset($city) . ' ' . InputUtils::translateSpecialCharset($state) . ' ' . $zip,
-            InputUtils::translateSpecialCharset($dadFirstName) . ' ' . InputUtils::translateSpecialCharset($dadLastName), $dadCellPhone, $dadEmail,
-            InputUtils::translateSpecialCharset($momFirstName) . ' ' . InputUtils::translateSpecialCharset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
+        // Add row to array collection - CsvExporter will handle charset translation and formula injection escaping
+        $rows[] = [
+            $sundayschoolClass,
+            $lst_OptionName,
+            $firstName,
+            $lastname,
+            $birthDate,
+            $mobilePhone,
+            $homePhone,
+            $Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip,
+            $dadFirstName . ' ' . $dadLastName,
+            $dadCellPhone,
+            $dadEmail,
+            $momFirstName . ' ' . $momLastName,
+            $momCellPhone,
+            $momEmail,
+            $props
+        ];
     }
 }
 
-fclose($out);
+// Use CsvExporter to generate CSV output with RFC 4180 compliance and formula injection prevention
+// Headers were already sent above, so use outputOnly() to avoid duplicate headers
+$exporter = new CsvExporter($charset);
+$exporter->insertHeaders($headers);
+$exporter->insertRows($rows);
+$exporter->outputOnly();
