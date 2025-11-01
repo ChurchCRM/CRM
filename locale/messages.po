@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-01 10:11-0700\n"
+"POT-Creation-Date: 2025-11-01 11:54-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -297,6 +297,9 @@ msgid "Add Donors to Buyer List"
 msgstr ""
 
 msgid "Add Event Type"
+msgstr ""
+
+msgid "Add Group"
 msgstr ""
 
 msgid "Add Group Member: "
@@ -769,6 +772,9 @@ msgid "Back"
 msgstr ""
 
 msgid "Back to Deposit Slip"
+msgstr ""
+
+msgid "Back to Group List"
 msgstr ""
 
 msgid "Back to Menu"
@@ -1655,6 +1661,9 @@ msgstr ""
 msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
 msgstr ""
 
+msgid "Default role updated."
+msgstr ""
+
 msgid "Delete"
 msgstr ""
 
@@ -1948,6 +1957,9 @@ msgstr ""
 msgid "Edit General Settings"
 msgstr ""
 
+msgid "Edit Group"
+msgstr ""
+
 msgid "Edit Group-Specific Properties Form"
 msgstr ""
 
@@ -2160,6 +2172,9 @@ msgstr ""
 msgid "Enter event description..."
 msgstr ""
 
+msgid "Enter group name"
+msgstr ""
+
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr ""
 
@@ -2366,7 +2381,16 @@ msgstr ""
 msgid "Failed to add group to cart"
 msgstr ""
 
+msgid "Failed to add role. Please try again."
+msgstr ""
+
 msgid "Failed to add to cart"
+msgstr ""
+
+msgid "Failed to create group. Please try again."
+msgstr ""
+
+msgid "Failed to delete role. Please try again."
 msgstr ""
 
 msgid "Failed to email PDF to family members."
@@ -2378,6 +2402,12 @@ msgstr ""
 msgid "Failed to empty cart to group"
 msgstr ""
 
+msgid "Failed to load cart status."
+msgstr ""
+
+msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
 msgid "Failed to remove family from cart"
 msgstr ""
 
@@ -2385,6 +2415,18 @@ msgid "Failed to remove from cart"
 msgstr ""
 
 msgid "Failed to remove group"
+msgstr ""
+
+msgid "Failed to set default role. Please try again."
+msgstr ""
+
+msgid "Failed to update group. Please try again."
+msgstr ""
+
+msgid "Failed to update properties. Please try again."
+msgstr ""
+
+msgid "Failed to update role name. Please try again."
 msgstr ""
 
 #. Context: countries
@@ -2912,9 +2954,6 @@ msgstr ""
 msgid "Group Editor"
 msgstr ""
 
-msgid "Group Functions"
-msgstr ""
-
 msgid "Group Listing"
 msgstr ""
 
@@ -2930,7 +2969,7 @@ msgstr ""
 msgid "Group Member Roles Editor"
 msgstr ""
 
-msgid "Group Members:"
+msgid "Group Members"
 msgstr ""
 
 msgid "Group Membership"
@@ -4886,6 +4925,9 @@ msgstr ""
 msgid "Please enter 2FA code"
 msgstr ""
 
+msgid "Please enter a group name."
+msgstr ""
+
 msgid "Please enter the following to start your family's verification"
 msgstr ""
 
@@ -4995,7 +5037,7 @@ msgstr ""
 msgid "Portuguese - Portugal"
 msgstr ""
 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr ""
 
 msgid "Previous Family"
@@ -5101,9 +5143,6 @@ msgid "Query View"
 msgstr ""
 
 msgid "Quick Search"
-msgstr ""
-
-msgid "Quick Settings"
 msgstr ""
 
 msgid "Quick Status"
@@ -5356,6 +5395,15 @@ msgid "Role / Gender"
 msgstr ""
 
 msgid "Role Name"
+msgstr ""
+
+msgid "Role added successfully."
+msgstr ""
+
+msgid "Role deleted successfully."
+msgstr ""
+
+msgid "Role name updated."
 msgstr ""
 
 #. Context: countries
@@ -5834,9 +5882,6 @@ msgid "Show in"
 msgstr ""
 
 msgid "Show neighbors with these classifications:"
-msgstr ""
-
-msgid "Show type of group:"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
@@ -6881,6 +6926,9 @@ msgid "View Cart"
 msgstr ""
 
 msgid "View Family Page"
+msgstr ""
+
+msgid "View Group"
 msgstr ""
 
 msgid "View Inactive Families"

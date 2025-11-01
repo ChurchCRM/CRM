@@ -222,6 +222,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function initDataTable() {
+    // Use a fixed, reasonable thumbnail size instead of the potentially large config value
+    var thumbnailSize = Math.min(window.CRM.iProfilePictureListSize, 40);
+    
     var DataTableOpts = {
         ajax: {
             url:
@@ -243,9 +246,9 @@ function initDataTable() {
                         "/api/person/" +
                         full.PersonId +
                         '/thumbnail" class="direct-chat-img initials-image" style="width:' +
-                        window.CRM.iProfilePictureListSize +
+                        thumbnailSize +
                         "px; height:" +
-                        window.CRM.iProfilePictureListSize +
+                        thumbnailSize +
                         'px"> &nbsp <a href="PersonView.php?PersonID="' +
                         full.PersonId +
                         '"><a target="_top" href="PersonView.php?PersonID=' +
@@ -257,7 +260,7 @@ function initDataTable() {
                 },
             },
             {
-                width: "auto",
+                width: "15%",
                 title: i18next.t("Group Role"),
                 data: "RoleId",
                 render: function (data, type, full, meta) {
@@ -267,50 +270,60 @@ function initDataTable() {
                         },
                     )[0];
                     return (
+                        '<span class="d-inline-block text-truncate" style="max-width: 150px;" title="' + i18next.t(thisRole?.OptionName) + '">' +
                         i18next.t(thisRole?.OptionName) +
-                        '<button class="changeMembership" data-personid=' +
+                        '</span> ' +
+                        '<button class="btn btn-xs changeMembership" data-personid=' +
                         full.PersonId +
                         '><i class="fa-solid fa-pen"></i></button>'
                     );
                 },
             },
             {
-                width: "auto",
+                width: "20%",
                 title: i18next.t("Address"),
                 render: function (data, type, full, meta) {
                     var address = full.Person.Address1;
                     if (full.Person.Address2) {
                         address += " " + full.Person.Address2;
                     }
-                    return address;
+                    return '<span class="d-inline-block text-truncate" style="max-width: 200px;" title="' + address + '">' + address + '</span>';
                 },
             },
             {
-                width: "auto",
+                width: "10%",
                 title: i18next.t("City"),
                 data: "Person.City",
             },
             {
-                width: "auto",
+                width: "8%",
                 title: i18next.t("State"),
                 data: "Person.State",
             },
             {
-                width: "auto",
+                width: "8%",
                 title: i18next.t("Zip Code"),
                 data: "Person.Zip",
             },
             {
-                width: "auto",
+                width: "12%",
                 title: i18next.t("Cell Phone"),
                 data: "Person.CellPhone",
             },
             {
-                width: "auto",
+                width: "15%",
                 title: i18next.t("Email"),
                 data: "Person.Email",
+                render: function (data, type, full, meta) {
+                    if (data) {
+                        return '<span class="d-inline-block text-truncate" style="max-width: 180px;" title="' + data + '">' + data + '</span>';
+                    }
+                    return '';
+                },
             },
         ],
+        responsive: true,
+        autoWidth: false,
         fnDrawCallback: function (oSettings) {
             $("#iTotalMembers").text(oSettings.aoData.length);
         },

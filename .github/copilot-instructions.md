@@ -217,6 +217,101 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 - **CSS:** Extract via MiniCssExtractPlugin → `src/skin/v2/*.min.css`
 - **jQuery:** Provided globally via webpack ProvidePlugin
 
+### Internationalization (i18n)
+
+**CRITICAL: Always wrap user-facing text for translation support**
+
+**JavaScript - Use i18next.t():**
+```javascript
+// ✅ CORRECT - Wrap all UI strings
+$.notify(i18next.t('Group name cannot be empty'), {
+    type: 'danger',
+    delay: 3000
+});
+
+const confirmMsg = i18next.t('Are you sure you want to delete this item?');
+if (confirm(confirmMsg)) { /* ... */ }
+
+// ❌ WRONG - Raw English strings
+$.notify('Group name cannot be empty', { type: 'danger' });
+```
+
+**PHP - Use gettext():**
+```php
+// ✅ CORRECT - Wrap all UI strings
+echo gettext('Welcome to ChurchCRM');
+$message = gettext('Record saved successfully');
+
+// ❌ WRONG - Raw English strings
+echo 'Welcome to ChurchCRM';
+```
+
+**When to use:**
+- All error messages shown to users
+- All success notifications
+- Button labels, form labels, headings
+- Confirmation dialogs
+- Any text visible in the UI
+
+**When NOT to use:**
+- Console.log debug messages
+- Error logs (error_log)
+- Database queries
+- API endpoint paths
+- Variable names, function names
+
+---
+
+### User Notifications
+
+**MANDATORY: Use bootstrap-notify for all UI notifications (NEVER alert())**
+
+**Bootstrap-Notify Pattern:**
+```javascript
+// ✅ CORRECT - bootstrap-notify with i18next
+$.notify(i18next.t('Operation completed successfully'), {
+    type: 'success',
+    delay: 3000,
+    placement: { from: 'top', align: 'right' }
+});
+
+$.notify(i18next.t('An error occurred'), {
+    type: 'danger',
+    delay: 5000,
+    placement: { from: 'top', align: 'right' }
+});
+
+// ❌ WRONG - alert() is forbidden
+alert('Operation completed');
+alert(i18next.t('Error occurred'));
+
+// ❌ WRONG - Missing i18next.t()
+$.notify('Operation completed', { type: 'success' });
+```
+
+**Notification Types:**
+- `type: 'success'` - Green, for successful operations
+- `type: 'danger'` - Red, for errors
+- `type: 'warning'` - Yellow, for warnings
+- `type: 'info'` - Blue, for informational messages
+
+**Cypress Testing:**
+```javascript
+// Use [data-notify='container'] selector for bootstrap-notify
+cy.get('[data-notify="container"]').should('be.visible');
+cy.get('[data-notify="container"]').should('contain', 'Expected message');
+
+// Allow time for animated notifications
+cy.get('[data-notify="container"]', { timeout: 10000 }).should('be.visible');
+```
+
+**Why bootstrap-notify:**
+- Native browser alert() blocks execution and cannot be styled
+- Bootstrap-notify integrates with Bootstrap 4 theming
+- Supports internationalization (works with i18next.t())
+- Non-blocking and auto-dismissing
+- Consistent UX across entire application
+
 ---
 
 ## ⚠️ Critical Patterns (Lessons from Bug Fixes)
@@ -441,6 +536,8 @@ describe("POST /api/payments", () => {
 - ✅ Type casting applied to dynamic values
 - ✅ Deprecated HTML attributes replaced with CSS
 - ✅ Bootstrap CSS classes applied correctly
+- ✅ **All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)**
+- ✅ **No alert() calls - use bootstrap-notify instead**
 - ✅ Tests pass (if available)
 - ✅ Commit message follows imperative mood (< 72 chars)
 - ✅ Branch name follows kebab-case format
@@ -498,12 +595,24 @@ describe("POST /api/payments", () => {
 - Clear logs: `rm -f src/logs/*.log`
 - Test locally: `npm run test` (or specific suite)
 - Use imperative commit messages < 72 chars
+- Use `git mv` for renaming/moving tracked files
+- Use `git rm` for deleting tracked files
 
 ❌ **Don't:**
 - Commit with PHP syntax errors (prevents others from running)
 - Use raw SQL anywhere (ORM only)
 - Skip type casting on dynamic values
 - Commit with stale test logs
+- Use `mv` or `rm` directly on tracked files (breaks git history)
+
+### Styling & Frontend
+
+**SCSS Organization:**
+- **Never use inline `<style>` tags** in PHP files
+- **Always use SCSS files** in `src/skin/scss/` directory
+- **Group by feature, not by page**: Name files by feature set (e.g., `_groups.scss` for all group-related pages)
+- **Import in main file**: Add to `src/skin/churchcrm.scss` using `@include meta.load-css("scss/filename");`
+- **Build after changes**: Run `npm run build` to compile SCSS to CSS
 
 ---
 
