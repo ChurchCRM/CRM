@@ -17,7 +17,41 @@ use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 
 $container = new ContainerBuilder();
-// Register custom error handlers
+
+// Initialize kiosk device
+$windowOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable();
+$Kiosk = null;
+
+if (isset($_COOKIE['kioskCookie'])) {
+    $g = hash('sha256', $_COOKIE['kioskCookie']);
+    $Kiosk = KioskDeviceQuery::create()
+          ->findOneByGUIDHash($g);
+
+    if ($Kiosk === null) {
+        setcookie('kioskCookie', '', ['expires' => time() - 3600]);
+        header('Location: ' . $_SERVER['REQUEST_URI']);
+    }
+} else {
+    if ($windowOpen) {
+        $guid = uniqid();
+        setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
+        $Kiosk = new KioskDevice();
+        $Kiosk->setGUIDHash(hash('sha256', $guid));
+        $Kiosk->setAccepted(false);
+        $Kiosk->save();
+    } else {
+        header('HTTP/1.1 401 Unauthorized');
+        exit;
+    }
+}
+
+// Store kiosk in container before compiling
+if ($Kiosk !== null) {
+    $container->set('kiosk', $Kiosk);
+}
+
+// Compile container and create app
+$container->compile();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($rootPath . '/kiosk');
@@ -36,34 +70,6 @@ $app->add(new CorsMiddleware());
 
 // routes
 require __DIR__ . '/routes/kiosk.php';
-
-$windowOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable();
-
-if (isset($_COOKIE['kioskCookie'])) {
-    $g = hash('sha256', $_COOKIE['kioskCookie']);
-    $Kiosk = KioskDeviceQuery::create()
-          ->findOneByGUIDHash($g);
-
-    $app->kiosk = $Kiosk;
-    if ($Kiosk === null) {
-        setcookie('kioskCookie', '', ['expires' => time() - 3600]);
-        header('Location: ' . $_SERVER['REQUEST_URI']);
-    }
-} else {
-    if ($windowOpen) {
-        $guid = uniqid();
-        setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
-        $Kiosk = new KioskDevice();
-        $Kiosk->setGUIDHash(hash('sha256', $guid));
-        $Kiosk->setAccepted(false);
-        $Kiosk->save();
-
-        $app->kiosk = $Kiosk;
-    } else {
-        header('HTTP/1.1 401 Unauthorized');
-        exit;
-    }
-}
 
 // Run app
 $app->run();

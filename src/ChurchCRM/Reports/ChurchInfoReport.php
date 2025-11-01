@@ -11,6 +11,7 @@ use FPDF;
 
 // Load the FPDF library
 
+#[\AllowDynamicProperties]
 class ChurchInfoReport extends FPDF
 {
     // Paper size for all PDF report documents

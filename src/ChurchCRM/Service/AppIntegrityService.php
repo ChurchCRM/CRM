@@ -187,7 +187,7 @@ class AppIntegrityService
     public static function getApplicationPrerequisites(): array
     {
         return [
-            new Prerequisite('PHP 8.1+', fn (): bool => version_compare(PHP_VERSION, '8.1.0', '>=')),
+            new Prerequisite('PHP 8.2+', fn (): bool => version_compare(PHP_VERSION, '8.2.0', '>=')),
             new Prerequisite('PCRE and UTF-8 Support', fn (): bool => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
             new Prerequisite('Multibyte Encoding', fn (): bool => extension_loaded('mbstring')),
             new Prerequisite('PHP Phar', fn (): bool => extension_loaded('phar')),
@@ -201,7 +201,6 @@ class AppIntegrityService
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => extension_loaded('fileinfo')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_version')),
             new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
-            new Prerequisite('PHP Intl', fn (): bool => extension_loaded('intl')),
             new Prerequisite('PHP BCMath', fn (): bool => extension_loaded('bcmath')),
             new Prerequisite('PHP Sodium', fn (): bool => extension_loaded('sodium')),
             new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/')),

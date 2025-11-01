@@ -2,9 +2,11 @@
 
 ## 🎯 Quick Overview
 
-**Stack:** PHP 8.1+ (Propel ORM) | MySQL/MariaDB | Slim Framework | React/TypeScript | Cypress | AdminLTE UI
+**Stack:** PHP 8.2+ (Propel ORM) | MySQL/MariaDB | Slim Framework | React/TypeScript | Cypress | AdminLTE UI
 
 **Key Architecture:** Legacy PHP pages + modern Slim REST APIs + React SPA components + Webpack bundling
+
+**CRITICAL:** ChurchCRM requires PHP 8.2 as the minimum version (as of version 6.0.0). All code must use PHP 8.2+ features and avoid deprecated PHP 8.1 patterns.
 
 ---
 
@@ -184,6 +186,73 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 ---
 
 ## 📋 Code Patterns & Conventions
+
+### PHP 8.2+ Requirements
+
+**MANDATORY:** All code must be compatible with PHP 8.2+ and avoid deprecated patterns from PHP 8.1 and earlier.
+
+**Key PHP 8.2+ Standards:**
+
+```php
+// ✅ CORRECT - Explicit nullable parameters (PHP 8.2 requirement)
+function myFunction(?int $param = null): void { }
+function otherFunction(?string $text = null, ?array $data = null): string { }
+
+// ❌ WRONG - Implicit nullable (deprecated in PHP 8.1, removed in PHP 8.2)
+function myFunction(int $param = null): void { }
+function otherFunction(string $text = null, array $data = null): string { }
+
+// ✅ CORRECT - Dynamic properties with attribute
+#[\AllowDynamicProperties]
+class MyReport extends FPDF {
+    // Class can now use dynamic properties
+}
+
+// ❌ WRONG - Dynamic properties without attribute (deprecated in PHP 8.2)
+class MyReport extends FPDF {
+    // Will trigger deprecation warning
+}
+
+// ✅ CORRECT - Use IntlDateFormatter instead of strftime
+$formatter = new \IntlDateFormatter(
+    $locale, 
+    \IntlDateFormatter::MEDIUM, 
+    \IntlDateFormatter::SHORT
+);
+$formatted = $formatter->format($dateObj);
+
+// ❌ WRONG - strftime is deprecated in PHP 8.1, removed in PHP 8.3
+$formatted = strftime("%B %d, %Y", $timestamp);
+
+// ✅ CORRECT - Explicit namespace for global functions in namespaced code
+namespace ChurchCRM\Service;
+class MyService {
+    public function test() {
+        \MakeFYString($id);  // Backslash prefix for global function
+    }
+}
+
+// ❌ WRONG - Missing namespace prefix causes "undefined function" error
+namespace ChurchCRM\Service;
+class MyService {
+    public function test() {
+        MakeFYString($id);  // Searches ChurchCRM\Service namespace first
+    }
+}
+```
+
+**PHP 8.2 Version Checks:**
+```php
+// ✅ CORRECT - Require PHP 8.2.0 or higher
+if (version_compare(phpversion(), '8.2.0', '<')) {
+    // PHP version too old
+}
+
+// ❌ WRONG - Rejects PHP 8.2.0 itself
+if (version_compare(phpversion(), '8.2.0', '<=')) {
+    // This would reject 8.2.0, only allow 8.2.1+
+}
+```
 
 ### Commit Messages
 

@@ -1,6 +1,6 @@
 # AI Agent Preferences - ChurchCRM Development
 # Used by: Claude, GitHub Copilot, and other AI coding agents
-# Last Updated: 2025-10-25
+# Last Updated: 2025-11-01
 # Location: .github/ai-preferences/preferences.yml
 
 ## HOW TO USE THIS FILE
@@ -27,11 +27,14 @@ enforcement:
     - "check_no_raw_sql"
     - "verify_propel_orm_used"
     - "ensure_systemurls_for_assets"
+    - "validate_php82_compatibility"  # Check for deprecated PHP 8.1 patterns
+    - "explicit_nullable_syntax"      # Ensure ?type notation for nullable params
   every_pr:
     - "review_communication_style"
     - "verify_service_classes_used"
     - "check_bootstrap_css_applied"
     - "validate_test_impact_documented"
+    - "confirm_php82_standards"       # Review for PHP 8.2+ compliance
   setup_required:
     - "add_pr_template: .github/pull_request_template.md"
     - "add_issue_template: .github/ISSUE_TEMPLATE/"
@@ -87,6 +90,7 @@ pull_requests:
 ## Code Quality Standards
 code_style:
   php:
+    minimum_version: "8.2.0"  # MANDATORY as of ChurchCRM 6.0.0
     framework: "Propel ORM (mandatory)"
     database: "never_raw_sql"
     patterns:
@@ -96,6 +100,12 @@ code_style:
     validation:
       - "run_php_lint before_committing"
       - "check syntax on_modified_files"
+    php82_requirements:
+      - "explicit_nullable_parameters"  # ?int $param = null, not int $param = null
+      - "allow_dynamic_properties_attribute"  # #[\AllowDynamicProperties] for classes needing it
+      - "intl_date_formatter"  # Use IntlDateFormatter instead of strftime
+      - "explicit_global_namespace"  # Use \globalFunction() in namespaced code
+      - "correct_version_checks"  # Use version_compare($v, '8.2.0', '<') not '<='
   javascript:
     bundler: "webpack"
     css_location: "bundled_via_webpack"
