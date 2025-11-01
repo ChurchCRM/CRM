@@ -17,22 +17,6 @@ use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 
 $container = new ContainerBuilder();
-// Register custom error handlers
-AppFactory::setContainer($container);
-$app = AppFactory::create();
-$app->setBasePath($rootPath . '/kiosk');
-
-// Add Slim error middleware for proper error handling and logging
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-\ChurchCRM\Slim\SlimUtils::setupErrorLogger($errorMiddleware);
-\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
-
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-
-$app->add(VersionMiddleware::class);
-$app->add(AuthMiddleware::class);
-$app->add(new CorsMiddleware());
 
 // Initialize kiosk device
 $windowOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable();
@@ -61,11 +45,28 @@ if (isset($_COOKIE['kioskCookie'])) {
     }
 }
 
-// Store kiosk in container
+// Store kiosk in container before compiling
 if ($Kiosk !== null) {
     $container->set('kiosk', $Kiosk);
-    $container->compile();
 }
+
+// Compile container and create app
+$container->compile();
+AppFactory::setContainer($container);
+$app = AppFactory::create();
+$app->setBasePath($rootPath . '/kiosk');
+
+// Add Slim error middleware for proper error handling and logging
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+\ChurchCRM\Slim\SlimUtils::setupErrorLogger($errorMiddleware);
+\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
+$app->add(VersionMiddleware::class);
+$app->add(AuthMiddleware::class);
+$app->add(new CorsMiddleware());
 
 // routes
 require __DIR__ . '/routes/kiosk.php';
