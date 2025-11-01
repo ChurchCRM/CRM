@@ -40,7 +40,7 @@ $("document").ready(function () {
 
     window.onkeyup = function (e) {
         // listen for "?" keypress for quick access to the select2 search box.
-        if (e.shiftKey && e.keyCode == 191) {
+        if (e.shiftKey && e.key === "?") {
             $(".multiSearch").select2("open");
         }
     };
@@ -54,55 +54,9 @@ $("document").ready(function () {
 
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
 
-    $(document).on("click", ".emptyCart", function (e) {
-        window.CRM.cart.empty(function (data) {
-            $(data.cartPeople).each(function (index, data) {
-                personButton = $("a[data-cartpersonid='" + data + "']");
-                $(personButton).addClass("AddToPeopleCart");
-                $(personButton).removeClass("RemoveFromPeopleCart");
-                $("span i:nth-child(2)", personButton).removeClass("fa-remove");
-                $("span i:nth-child(2)", personButton).addClass("fa-cart-plus");
-            });
-        });
-    });
+    // Note: Cart event handlers are now in cart.js module
+    // The CartManager class handles all cart button clicks and notifications
 
-    $(document).on("click", "#emptyCartToGroup", function (e) {
-        window.CRM.cart.emptyToGroup();
-    });
-
-    $(document).on("click", ".RemoveFromPeopleCart", function () {
-        clickedButton = $(this);
-        window.CRM.cart.removePerson(
-            [clickedButton.data("cartpersonid")],
-            function () {
-                $(clickedButton).addClass("AddToPeopleCart");
-                $(clickedButton).removeClass("RemoveFromPeopleCart");
-                $("span i:nth-child(2)", clickedButton).removeClass(
-                    "fa-remove",
-                );
-                $("span i:nth-child(2)", clickedButton).addClass(
-                    "fa-cart-plus",
-                );
-            },
-        );
-    });
-
-    $(document).on("click", ".AddToPeopleCart", function () {
-        clickedButton = $(this);
-        window.CRM.cart.addPerson(
-            [clickedButton.data("cartpersonid")],
-            function () {
-                $(clickedButton).addClass("RemoveFromPeopleCart");
-                $(clickedButton).removeClass("AddToPeopleCart");
-                $("span i:nth-child(2)", clickedButton).addClass("fa-remove");
-                $("span i:nth-child(2)", clickedButton).removeClass(
-                    "fa-cart-plus",
-                );
-            },
-        );
-    });
-
-    window.CRM.cart.refresh();
     window.CRM.dashboard.refresh();
     DashboardRefreshTimer = setInterval(
         window.CRM.dashboard.refresh,
@@ -130,6 +84,9 @@ $("document").ready(function () {
             );
         });
     });
+
+    // Initialize FAB buttons with localized labels
+    initializeFAB();
 });
 
 function showGlobalMessage(message, callOutClass) {
@@ -155,4 +112,29 @@ function showGlobalMessage(message, callOutClass) {
             },
         },
     );
+}
+
+/**
+ * Initialize Floating Action Buttons (FAB)
+ * - Sets localized labels
+ * - Handles scroll behavior to hide buttons on scroll
+ */
+function initializeFAB() {
+    const fabContainer = $("#fab-container");
+    const fabPersonLabel = $("#fab-person-label");
+    const fabFamilyLabel = $("#fab-family-label");
+
+    // Set localized labels
+    fabPersonLabel.text(i18next.t("Add New Person"));
+    fabFamilyLabel.text(i18next.t("Add New Family"));
+
+    // Hide FAB on any scroll to prevent blocking content
+    $(window).on("scroll", function () {
+        const currentScroll = $(this).scrollTop();
+
+        // Hide FAB once user scrolls past 50px
+        if (currentScroll > 50) {
+            fabContainer.addClass("hidden");
+        }
+    });
 }

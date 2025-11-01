@@ -151,8 +151,11 @@ require_once 'Include/Header.php';
         </div>
         <br>
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-6">
             <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="' . gettext('Save') . '"' ?> Name="GroupSubmit">
+            <a href="GroupList.php" class="btn btn-secondary">
+              <i class="fa fa-arrow-left"></i> <?= gettext('Back to Group List') ?>
+            </a>
           </div>
         </div>
       </div>
@@ -165,7 +168,7 @@ require_once 'Include/Header.php';
   </div>
   <div class="card-body">
     <div class="alert alert-info alert-dismissable">
-      <i class="fa fa-info"></i>
+      <i class="fa-solid fa-info"></i>
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
       <strong></strong><?= gettext('Group role name changes are saved as soon as the box loses focus')?>
     </div>

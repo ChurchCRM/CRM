@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                         <input type="text" id="UserBox" name="User"  class="form-control" placeholder="<?= gettext('Email/Username') ?>" value="<?= $prefilledUserName ?>" required autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fa-solid fa-envelope"></span>
                             </div>
                         </div>
                     </div>
@@ -48,9 +48,9 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                     </div>
                     <div class="row">
                         <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="remember">
+                                <label class="custom-control-label" for="remember">
                                     Remember Me
                                 </label>
                             </div>

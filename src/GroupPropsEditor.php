@@ -148,7 +148,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
                         <?php
                     } ?>
                     <tr>
-                        <td align="center" colspan="3">
+                        <td class="text-center" colspan="3">
                             <br><br>
                             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupPropSubmit">
                             &nbsp;

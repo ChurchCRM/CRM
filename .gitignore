@@ -12,8 +12,15 @@ security-checker.phar
 temp/
 
 # Uploaded Images
-src/Images/Family
-src/Images/Person
+src/Images/Family/*
+!src/Images/Family/thumbnails/
+src/Images/Family/thumbnails/*
+!src/Images/Family/thumbnails/.gitkeep
+
+src/Images/Person/*
+!src/Images/Person/thumbnails/
+src/Images/Person/thumbnails/*
+!src/Images/Person/thumbnails/.gitkeep
 
 # SASS
 .sass-cache
@@ -28,6 +35,8 @@ src/skin/churchcrm.min.css
 src/locale/datatables
 src/locale/js
 
+# AI notes (local only, not committed)
+ai-notes/
 # Configuration files with passwords
 src/Include/Config.php
 

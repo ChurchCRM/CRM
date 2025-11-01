@@ -28,15 +28,18 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add CORS middleware for browser API access
-$app->addBodyParsingMiddleware();
-$app->add(VersionMiddleware::class);
-$app->add(new CorsMiddleware());
-
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
 \ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
+// Add CORS middleware for browser API access
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
+$app->add(VersionMiddleware::class);
+$app->add(new CorsMiddleware());
+
+require __DIR__ . '/routes/setup.php';
 
 $app->run();

@@ -48,7 +48,7 @@ class MenuRenderer
                     <span><?= htmlspecialchars($menuItem->getName()) ?></span>
                     <span class="right">
                         <?php self::renderMenuCounters($menuItem) ?>
-                        <i class="fas fa-angle-left"></i>
+                        <i class="fa-solid fa-angle-left"></i>
                     </span>
                 </p>
             </a>
@@ -74,7 +74,8 @@ class MenuRenderer
 
                 <?php foreach ($menuItem->getCounters() as $counter) { ?>
                     <small class='badge <?= $counter->getCss() ?>'
-                           id='<?= $counter->getName() ?>'><?= $counter->getInitValue() ?></small>
+                           id='<?= $counter->getName() ?>'
+                           <?php if ($counter->getTitle()): ?>title="<?= $counter->getTitle() ?>"<?php endif; ?>><?= $counter->getInitValue() ?></small>
                 <?php } ?>
 
             <?php

@@ -97,7 +97,7 @@ require_once 'Include/Header.php'
         </td>
     </tr>
     <tr>
-        <td colspan="2" align="center">
+        <td colspan="2" class="text-center">
             <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Update') ?>">
             <?php
             if ($iReturn) {

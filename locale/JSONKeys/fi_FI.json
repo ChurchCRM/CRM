@@ -158,5 +158,11 @@
     "Load Authorized Transactions": "lataa Valtuutetut tapahtumat",
     "Run Transactions": "Suorita siirtotapahtumat",
     "Directory reports": "Hakemistoraportit",
-    "Select classifications to include": "Valitse sisällytettävät luokitukset"
+    "Select classifications to include": "Valitse sisällytettävät luokitukset",
+    "Which role is the head of household?": "Mikä rooli on perheen päällä?",
+    "Which role is the spouse?": "Mikä rooli on puolisolla?",
+    "Which role is a child?": "Mikä rooli on lapsella?",
+    "Information to Include": "Sisällytettävät tiedot",
+    "Address": "Osoite",
+    "Birthday": "Syntymäpäivä"
 }

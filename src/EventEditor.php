@@ -2,6 +2,7 @@
 
 require_once 'Include/Config.php';
 require_once 'Include/Functions.php';
+require_once 'Include/QuillEditorHelper.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -268,7 +269,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $iTypeID = InputUtils::legacyFilterInput($_POST['EventTypeID'], 'int');
     $EventExists = InputUtils::legacyFilterInput($_POST['EventExists'], 'int');
     $sEventTitle = InputUtils::legacyFilterInput($_POST['EventTitle']);
-    $sEventDesc = InputUtils::legacyFilterInput($_POST['EventDesc']);
+    $sEventDesc = $_POST['EventDescInput'];
     if (empty($_POST['EventTypeID'])) {
         $bEventTypeError = true;
         $iErrors++;
@@ -279,7 +280,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         extract($aRow);
         $sTypeName = $type_name;
     }
-    $sEventText = $_POST['EventText'];
+    $sEventText = $_POST['EventTextInput'];
     if ($_POST['EventStatus'] === null) {
         $bStatusError = true;
         $iErrors++;
@@ -321,8 +322,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
-                ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
-                ->setText(InputUtils::legacyFilterInput($sEventText))
+                ->setDesc(InputUtils::filterHTML($sEventDesc))
+                ->setText(InputUtils::filterHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
@@ -347,8 +348,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
-                ->setDesc(InputUtils::legacyFilterInput($sEventDesc))
-                ->setText(InputUtils::legacyFilterInput($sEventText))
+                ->setDesc(InputUtils::filterHTML($sEventDesc))
+                ->setText(InputUtils::filterHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
@@ -438,7 +439,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <tr>
                     <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Desc') ?>:</td>
                     <td colspan="3" class="TextColumn">
-                        <textarea name="EventDesc" rows="4" maxlength="100" class='form-control w-100' required><?= ($sEventDesc) ?></textarea>
+                        <?= getQuillEditorContainer('EventDesc', 'EventDescInput', $sEventDesc, 'form-control', '100px') ?>
                     </td>
                 </tr>
                 <tr>
@@ -485,7 +486,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
                 <tr>
                     <td colspan="4" class="TextColumn"><?= gettext('Event Sermon') ?>:<br>
-                        <textarea id="#EventText" name="EventText" rows="5" cols="70" class='form-control'><?= ($sEventText) ?></textarea>
+                        <?= getQuillEditorContainer('EventText', 'EventTextInput', $sEventText, 'form-control', '200px') ?>
                     </td>
                 </tr>
 
@@ -544,12 +545,5 @@ $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
 
 <?php require_once 'Include/Footer.php'; ?>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
+<?= getQuillEditorInitScript('EventText', 'EventTextInput', gettext("Enter event description...")) ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    CKEDITOR.replace('EventText',{
-        customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor/event_editor_config.js',
-        language : window.CRM.lang,
-        width : '100%'
-    });
-</script>

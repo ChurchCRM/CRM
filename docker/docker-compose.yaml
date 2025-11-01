@@ -1,0 +1,72 @@
+services:
+  database:
+    profiles: [dev, test, ci]
+    image: mariadb
+    ports:
+      - ${DATABASE_PORT:-3306}:3306
+    env_file:
+      - .env
+    volumes:
+      - ../demo:/docker-entrypoint-initdb.d
+    hostname: crm-database
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 20s
+      retries: 10
+
+  mailserver:
+    profiles: [dev, test]
+    image: mailhog/mailhog
+    ports:
+      - ${MAILSERVER_PORT:-1025}:1025
+      - ${MAILSERVER_GUI_PORT:-8025}:8025
+    hostname: crm-mailserver
+
+  webserver-dev:
+    profiles: [dev]
+    build:
+      context: .
+      dockerfile: Dockerfile.churchcrm-apache-php8
+      target: dev
+    image: churchcrm/crm:php8-debian-dev
+    ports:
+      - ${WEBSERVER_PORT:-80}:80
+    volumes:
+      - ../src:/var/www/html
+      - ..:/home/ChurchCRM
+    hostname: crm-webserver
+    env_file:
+      - .env
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    depends_on:
+      database:
+        condition: service_healthy
+
+  webserver-test:
+    profiles: [test, ci]
+    build:
+      context: .
+      dockerfile: Dockerfile.churchcrm-apache-php8
+      target: test
+    image: churchcrm/crm:php8-debian
+    ports:
+      - ${WEBSERVER_PORT:-80}:80
+    volumes:
+      - ../src:/var/www/html
+      - ..:/home/ChurchCRM
+    hostname: crm-webserver
+    env_file:
+      - .env
+    depends_on:
+      database:
+        condition: service_healthy
+
+  adminer:
+    profiles: [dev]
+    image: adminer
+    environment:
+      - ADMINER_DEFAULT_SERVER=database
+    ports:
+      - ${ADMINER_PORT:-8088}:8080
+    hostname: crm-adminer

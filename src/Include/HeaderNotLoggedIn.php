@@ -3,9 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-if (SystemConfig::debugEnabled()) {
-    require_once 'Header-Security.php';
-}
+require_once 'Header-Security.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

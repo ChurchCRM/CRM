@@ -1,9 +1,14 @@
 $(document).ready(function () {
     $("#AddAllToCart").click(function () {
-        window.CRM.cart.addPerson(listPeople);
+        window.CRM.cartManager.addPerson(listPeople, {
+            showNotification: true,
+        });
     });
 
     $("#RemoveAllFromCart").click(function () {
-        window.CRM.cart.removePerson(listPeople);
+        window.CRM.cartManager.removePerson(listPeople, {
+            confirm: true,
+            showNotification: true,
+        });
     });
 });

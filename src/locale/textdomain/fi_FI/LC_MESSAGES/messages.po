@@ -662,3 +662,27 @@ msgstr "Hakemistoraportit"
 msgid "Select classifications to include"
 msgstr "Valitse sisällytettävät luokitukset"
 
+#: 
+msgid "Which role is the head of household?"
+msgstr "Mikä rooli on perheen päällä?"
+
+#: 
+msgid "Which role is the spouse?"
+msgstr "Mikä rooli on puolisolla?"
+
+#: 
+msgid "Which role is a child?"
+msgstr "Mikä rooli on lapsella?"
+
+#: 
+msgid "Information to Include"
+msgstr "Sisällytettävät tiedot"
+
+#: 
+msgid "Address"
+msgstr "Osoite"
+
+#: 
+msgid "Birthday"
+msgstr "Syntymäpäivä"
+

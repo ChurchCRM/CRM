@@ -176,12 +176,12 @@ for ($row = 1; $row <= $events->count(); $row++) {
         <div class="card-body">
             <table class="table table-striped data-table" id="eventsTable">
                 <thead>
-                    <tr class="TableHeader">
-                        <td width="33%"><strong><?= gettext('Event Title') ?></strong></td>
-                        <td width="33%"><strong><?= gettext('Event Date') ?></strong></td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
+                    <tr>
+                        <th width="33%"><?= gettext('Event Title') ?></th>
+                        <th width="33%"><?= gettext('Event Date') ?></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -189,7 +189,7 @@ for ($row = 1; $row <= $events->count(); $row++) {
                         <tr>
                             <td><?= $aEventTitle[$row] ?></td>
                             <td><?= FormatDate($aEventStartDateTime[$row], 1) ?></td>
-                            <td align="center">
+                            <td class="text-center">
                                 <form name="Attend" action="EventAttendance.php" method="POST">
                                     <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
                                     <input type="hidden" name="Type" value="<?= $sGetType ?>">
@@ -251,10 +251,10 @@ for ($row = 1; $row <= $events->count(); $row++) {
             <table class="table table-striped data-table" id="peopleTable">
                 <thead>
                     <tr>
-                        <td width="35%"><strong><?= gettext('Name') ?></strong></td>
-                        <td><strong><?= gettext('Email') ?></strong></td>
-                        <td><strong><?= gettext('Home Phone') ?></strong></td>
-                        <td><strong><?= gettext('Gender') ?></strong></td>
+                        <th width="35%"><?= gettext('Name') ?></th>
+                        <th><?= gettext('Email') ?></th>
+                        <th><?= gettext('Home Phone') ?></th>
+                        <th><?= gettext('Gender') ?></th>
                     </tr>
                 </thead>
                 <tbody>

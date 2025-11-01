@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Map\TokenTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FinancialService;
@@ -22,6 +23,36 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/latest', 'getLatestFamilies');
     $group->get('/updated', 'getUpdatedFamilies');
     $group->get('/anniversaries', 'getFamiliesWithAnniversaries');
+    $group->get('/familiesInCart', function (Request $request, Response $response, array $args): Response {
+        $familiesInCart = [];
+        
+        // Check if cart has items
+        if (!empty($_SESSION['aPeopleCart'])) {
+            $cartPersonIDs = $_SESSION['aPeopleCart'];
+            
+            // Optimized query: Query people by IDs in cart, get their families
+            // This only loads people in cart (efficient) instead of all families
+            $people = PersonQuery::create()
+                ->filterById($cartPersonIDs)
+                ->find();
+            
+            // Collect unique family IDs from the people in cart
+            $uniqueFamilyIds = [];
+            foreach ($people as $person) {
+                $familyId = $person->getFamId();
+                if (!in_array($familyId, $uniqueFamilyIds, false)) {
+                    $uniqueFamilyIds[] = $familyId;
+                    // Verify ALL members of this family are in cart
+                    $family = FamilyQuery::create()->findPk($familyId);
+                    if ($family && $family->checkAgainstCart()) {
+                        $familiesInCart[] = $familyId;
+                    }
+                }
+            }
+        }
+        
+        return SlimUtils::renderJSON($response, ['familiesInCart' => $familiesInCart]);
+    });
 
     $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()->joinWithPerson()->find();

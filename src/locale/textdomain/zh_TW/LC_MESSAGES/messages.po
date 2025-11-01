@@ -1294,10 +1294,6 @@ msgid "Family List"
 msgstr "家庭列表"
 
 #: 
-msgid "Add Family"
-msgstr "添加家庭"
-
-#: 
 msgid "Created"
 msgstr "已建立"
 
@@ -1821,10 +1817,6 @@ msgstr "相交的購物車"
 #: 
 msgid "Remove from Cart"
 msgstr "從購物車中刪除"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "事件ID的文字："
 
 #: 
 msgid "Group Editor"
@@ -3019,10 +3011,6 @@ msgstr "刪除家庭只記錄"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "刪除家庭記錄及家庭成員的"
-
-#: 
-msgid "Filter and Cart"
-msgstr "刪選及購物車；"
 
 #: 
 msgid "Listing"
@@ -7688,10 +7676,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "並非該群組的所有成員都在購物車中"
 
 #: 
-msgid "Add all"
-msgstr "全部添加"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "您確定要刪除所選的群組成員嗎？"
 
@@ -8065,10 +8049,6 @@ msgstr "移動事件"
 #: 
 msgid "Resize Event"
 msgstr "調整事件大小"
-
-#: 
-msgid "Text from"
-msgstr "文字來自"
 
 #: 
 #, fuzzy
@@ -9061,16 +9041,6 @@ msgstr "重置資料庫"
 #, fuzzy
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "這將重置系統資料，並以新安裝的方式重新啟動系統。"
-
-#: 
-#, fuzzy
-msgid "Clear Filter"
-msgstr "清除篩選"
-
-#: 
-#, fuzzy
-msgid "Add Person"
-msgstr "新增人員"
 
 #. Context: locales
 #: 

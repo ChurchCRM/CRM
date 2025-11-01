@@ -174,7 +174,7 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
 
 const TwoFAEnrollmentSuccess: React.FunctionComponent<{
   TwoFARecoveryCodes?: string[];
-}> = ({ TwoFARecoveryCodes }) => {
+}> = ({ TwoFARecoveryCodes = [] }) => {
   return (
     <div className="col-lg-12">
       <div className="box">
@@ -196,7 +196,7 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
           </p>
           <ul>
             {TwoFARecoveryCodes.length ? (
-              TwoFARecoveryCodes.map((code) => <li>{code}</li>)
+              TwoFARecoveryCodes.map((code: string, index: number) => <li key={index}>{code}</li>)
             ) : (
               <p>waiting</p>
             )}
@@ -334,12 +334,12 @@ class UserTwoFactorEnrollment extends React.Component<
       return (
           <div className="row">
             <TwoFAEnrollmentGetQR
-              TwoFAQRCodeDataUri={this.state.TwoFAQRCodeDataUri}
+              TwoFAQRCodeDataUri={this.state.TwoFAQRCodeDataUri || ""}
               newQRCode={this.requestNew2FABarcode}
               remove2FA={this.remove2FAForuser}
               validationCodeChangeHandler={this.validationCodeChangeHandler}
               currentTwoFAPin={this.state.currentTwoFAPin}
-              currentTwoFAPinStatus={this.state.currentTwoFAPinStatus}
+              currentTwoFAPinStatus={this.state.currentTwoFAPinStatus || ""}
             />
           </div>
       );

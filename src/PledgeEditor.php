@@ -621,7 +621,7 @@ require_once 'Include/Header.php';
                     <div class="col-lg-6">
                         <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type === 'Bank' || $PledgeOrPayment === 'Pledge')) {
                             ?>
-                            <td align="center" class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
+                            <td class="text-center <?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
                                 <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea>
                             </td>
                             <?php
