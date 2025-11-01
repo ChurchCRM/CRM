@@ -117,10 +117,14 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 ?>
 
 
-<div class="card">
+<div class="card card-info card-outline">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= $thisGroup->getName() ?></h3>
+    </div>
     <div class="card-body">
-        <?= $thisGroup->getDescription() ?>
-        <p />
+        <div class="mb-3">
+            <?= $thisGroup->getDescription() ?>
+        </div>
         <div class="row mt-3">
             <div class="col-md-4">
                 <div class="info-box bg-success">
@@ -225,9 +229,9 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header with-border">
-        <h3 class="card-title"><?= gettext('Group Properties') ?></h3>
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-list-check"></i> <?= gettext('Group Properties') ?></h3>
     </div>
     <div class="card-body">
         <div class="row mb-3">
@@ -411,24 +415,24 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header with-border">
-        <h3 class="card-title"><?= gettext('Group Members:') ?></h3>
+<div class="card card-success card-outline">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-users"></i> <?= gettext('Group Members') ?></h3>
     </div>
     <div class="card-body">
-        <form action="#" method="get" class="sidebar-form">
+        <form action="#" method="get" class="mb-3">
             <label for="addGroupMember"><?= gettext('Add Group Member: ') ?></label>
             <select id="addGroupMember" class="form-control personSearch" name="addGroupMember" style="width: 300px;">
             </select>
         </form>
+        <!-- START GROUP MEMBERS LISTING  -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-sm" id="membersTable">
+            </table>
+        </div>
     </div>
-    <!-- START GROUP MEMBERS LISTING  -->
-    <table class="table" id="membersTable">
-    </table>
-    <div class="card">
-        <div class="card-body">
-            <table class="table" id="depositsTable"></table>
-            <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext('Remove Selected Members from group') ?> </button>
+    <div class="card-footer">
+        <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext('Remove Selected Members from group') ?> </button>
             <div class="btn-group">
                 <button type="button" id="addSelectedToCart" class="btn btn-success" disabled> <?= gettext('Add Selected Members to Cart') ?></button>
                 <button type="button" id="buttonDropdown" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false" disabled>
@@ -442,7 +446,6 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
             </div>
         </div>
     </div>
-    </form>
     <!-- END GROUP MEMBERS LISTING -->
 
 </div>
