@@ -1251,10 +1251,6 @@ msgid "Family List"
 msgstr "Orodha ya Familia"
 
 #: 
-msgid "Add Family"
-msgstr "Ongeza familia"
-
-#: 
 msgid "Created"
 msgstr "Imetengenezwa"
 
@@ -1769,10 +1765,6 @@ msgstr "Pitana na Cart"
 #: 
 msgid "Remove from Cart"
 msgstr "Ondoa kwenye Cart"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Maandishi ya Kitambulisho cha Tukio: "
 
 #: 
 msgid "Group Editor"
@@ -2931,10 +2923,6 @@ msgstr "Futa Rekodi ya Familia PEKEE"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Futa Rekodi ya Familia NA Wanafamilia"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Kichujio na Cart"
 
 #: 
 msgid "Listing"
@@ -7522,10 +7510,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Sio washiriki wote wa kikundi hiki walio kwenye rukwama"
 
 #: 
-msgid "Add all"
-msgstr "Ongeza yote"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Je, una uhakika unataka kuwaondoa washiriki wa kikundi uliochaguliwa?"
 
@@ -7895,10 +7879,6 @@ msgstr "Sogeza Tukio"
 #: 
 msgid "Resize Event"
 msgstr "Badilisha ukubwa wa Tukio"
-
-#: 
-msgid "Text from"
-msgstr "Maandishi kutoka"
 
 #: 
 msgid "Profile"
@@ -8800,14 +8780,6 @@ msgstr "Weka upya Hifadhidata"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Hii itaweka upya data ya mfumo na itaanzisha upya mfumo kama usakinishaji mpya."
-
-#: 
-msgid "Clear Filter"
-msgstr "Futa Kichujio"
-
-#: 
-msgid "Add Person"
-msgstr "Ongeza Mtu"
 
 #. Context: locales
 #: 

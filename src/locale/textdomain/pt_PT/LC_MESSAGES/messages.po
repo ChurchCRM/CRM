@@ -1293,10 +1293,6 @@ msgid "Family List"
 msgstr "Lista de Famílias"
 
 #: 
-msgid "Add Family"
-msgstr "Adicionar Família"
-
-#: 
 msgid "Created"
 msgstr "Criada"
 
@@ -1827,10 +1823,6 @@ msgstr "Cruzam com carrinho"
 #: 
 msgid "Remove from Cart"
 msgstr "Remover do Carrinho"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Texto para o evento ID: "
 
 #: 
 msgid "Group Editor"
@@ -3041,10 +3033,6 @@ msgstr "Deletar apenas o dados da Família"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Remover a Família e TODOS os Membros"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filtrar e Colocar no Carrinho"
 
 #: 
 msgid "Listing"
@@ -7724,10 +7712,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Nem todos os membros deste grupo estão no carrinho"
 
 #: 
-msgid "Add all"
-msgstr "Adicionar todos"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Você está certo de que deseja remover os membros do grupo selecionados?"
 
@@ -8100,10 +8084,6 @@ msgstr "Mais eventos"
 #: 
 msgid "Resize Event"
 msgstr "Redimensionar o Evento"
-
-#: 
-msgid "Text from"
-msgstr "Texto \"de\""
 
 #: 
 msgid "Profile"
@@ -9021,14 +9001,6 @@ msgstr "Redefinir Base de Dados"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Redefinirá os dados do sistema e reiniciará o sistema como uma nova instalação"
-
-#: 
-msgid "Clear Filter"
-msgstr "Filtro limpo"
-
-#: 
-msgid "Add Person"
-msgstr "Adicionar pessoa"
 
 #. Context: locales
 #: 
