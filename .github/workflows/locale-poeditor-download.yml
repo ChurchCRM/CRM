@@ -1,4 +1,4 @@
-name: Locale POEditor Download and Audit 
+name: Locale Download POEditor 
 permissions:
   contents: write
   pull-requests: write

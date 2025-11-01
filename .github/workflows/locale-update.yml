@@ -1,4 +1,4 @@
-name: Update Locale Strings
+name: Locale Update App Strings
 
 on:
   push:
