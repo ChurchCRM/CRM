@@ -45,6 +45,10 @@ communication:
     - "verbose_explanations"     # Only when explicitly asked
   response_format: "action_then_context"
   max_preamble_lines: 1
+  output_display:
+    - "display_directly_in_chat"  # Show output in chat window, not via echo/cat commands
+    - "no_terminal_for_summaries" # Don't use terminal commands to display summaries
+    - "use_markdown_formatting"   # Format output with markdown in chat responses
 
 
 ## Commit & PR Standards
@@ -52,6 +56,7 @@ commits:
   message_format: "imperative"
   first_line_max: 72
   style: "concise"
+  output_format: "markdown"  # Always format commit messages in markdown for easy copy/paste to GitHub
   examples:
     - "Fix SQL injection in EditEventAttendees"
     - "Replace deprecated HTML attributes with Bootstrap CSS"
@@ -64,6 +69,7 @@ commits:
 pull_requests:
   summary_max_lines: 10
   focus: "what_changed_and_why"
+  output_format: "markdown"  # Always format PR descriptions in markdown for easy copy/paste to GitHub
   include:
     - "brief_problem_statement"
     - "solution_overview"
@@ -71,6 +77,12 @@ pull_requests:
   skip:
     - "verbose_explanations"
     - "non_critical_details"
+  format_requirements:
+    - "use_markdown_headers"     # Use ## for sections
+    - "use_code_blocks"          # Wrap code in ```language blocks
+    - "use_bullet_lists"         # Use - for lists
+    - "use_checkboxes"           # Use - [ ] / - [x] for task lists
+    - "ready_to_copy_paste"      # Format should be ready for GitHub without modification
 
 ## Code Quality Standards
 code_style:
