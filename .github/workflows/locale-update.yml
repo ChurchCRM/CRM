@@ -1,4 +1,4 @@
-name: Locale Update App Strings
+name: Locale Generate App Terms
 
 on:
   push:
