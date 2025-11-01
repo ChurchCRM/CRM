@@ -274,10 +274,10 @@ See **`../.github/copilot-instructions.md`** which includes:3. **Development wor
 
 ## 🏗️ Architecture Overview
 
-Last Updated: 2025-10-25
+Last Updated: 2025-11-01
 
 **ChurchCRM Tech Stack:**
-- PHP 8.1+ with Propel ORM (mandatory for database)
+- PHP 8.2+ with Propel ORM (mandatory for database) - **MINIMUM VERSION as of 6.0.0**
 - MySQL/MariaDB
 - Slim Framework for REST APIs
 - React/TypeScript for interactive components
