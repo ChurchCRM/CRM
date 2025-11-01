@@ -1288,10 +1288,6 @@ msgid "Family List"
 msgstr "家家列表"
 
 #: 
-msgid "Add Family"
-msgstr "添加家庭"
-
-#: 
 msgid "Created"
 msgstr "已建立"
 
@@ -1814,10 +1810,6 @@ msgstr "相交的购物车"
 #: 
 msgid "Remove from Cart"
 msgstr "从购物车中删除"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "事件ID的文字："
 
 #: 
 msgid "Group Editor"
@@ -3007,10 +2999,6 @@ msgstr "删除家庭只记录"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "删除家庭记录及家庭成员的"
-
-#: 
-msgid "Filter and Cart"
-msgstr "删选及购物车；"
 
 #: 
 msgid "Listing"
@@ -7639,10 +7627,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "并非该群组的所有成员都在购物车中"
 
 #: 
-msgid "Add all"
-msgstr "全部添加"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "您确定要删除所选的群组成员吗？"
 
@@ -8010,10 +7994,6 @@ msgstr "移动事件"
 #: 
 msgid "Resize Event"
 msgstr "调整事件大小"
-
-#: 
-msgid "Text from"
-msgstr "文字来自"
 
 #: 
 msgid "Profile"
@@ -8930,14 +8910,6 @@ msgstr "重置数据库"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "这将重置系统数据，并以新安装的方式重新启动系统。"
-
-#: 
-msgid "Clear Filter"
-msgstr "清除筛选"
-
-#: 
-msgid "Add Person"
-msgstr "加人"
 
 #. Context: locales
 #: 

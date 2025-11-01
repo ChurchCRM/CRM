@@ -1294,10 +1294,6 @@ msgid "Family List"
 msgstr "Familjelista"
 
 #: 
-msgid "Add Family"
-msgstr "Lägg till familj"
-
-#: 
 msgid "Created"
 msgstr "Skapad"
 
@@ -1825,10 +1821,6 @@ msgstr "Bearbeta med korgen"
 #: 
 msgid "Remove from Cart"
 msgstr "Radera från korgen"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Texter för evenemang ID:"
 
 #: 
 msgid "Group Editor"
@@ -3036,10 +3028,6 @@ msgstr "Radera familj post ONLY"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Radera familj post och familj medlemmar"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filter och vagn"
 
 #: 
 msgid "Listing"
@@ -7677,10 +7665,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Inte alla medlemmar i denna grupp är i vagnen"
 
 #: 
-msgid "Add all"
-msgstr "Lägg till alla"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Är du säker på att du vill ta bort de valda gruppmedlemmarna?"
 
@@ -8051,10 +8035,6 @@ msgstr "Flytta händelse"
 #: 
 msgid "Resize Event"
 msgstr "Ändra storlek på händelse"
-
-#: 
-msgid "Text from"
-msgstr "Text från"
 
 #: 
 msgid "Profile"
@@ -8972,14 +8952,6 @@ msgstr "Återställ databasen"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Detta återställer systemdata och startar om systemet som en ny installation."
-
-#: 
-msgid "Clear Filter"
-msgstr "Rensa filtret"
-
-#: 
-msgid "Add Person"
-msgstr "Lägg till person"
 
 #. Context: locales
 #: 

@@ -1518,11 +1518,6 @@ msgstr "Lista de Famílias"
 
 #: 
 #, fuzzy
-msgid "Add Family"
-msgstr "Adicionar Família"
-
-#: 
-#, fuzzy
 msgid "Created"
 msgstr "Criada"
 
@@ -2150,11 +2145,6 @@ msgstr "Cruzam com carrinho"
 #, fuzzy
 msgid "Remove from Cart"
 msgstr "Remover do Carrinho"
-
-#: 
-#, fuzzy
-msgid "Text for Event ID: "
-msgstr "Texto para o evento ID: "
 
 #: 
 #, fuzzy
@@ -3551,11 +3541,6 @@ msgstr "Deletar os dados da Família SOMENTE"
 #, fuzzy
 msgid "Delete Family Record AND Family Members"
 msgstr "Remover a Família e TODOS os Membros"
-
-#: 
-#, fuzzy
-msgid "Filter and Cart"
-msgstr "Filtrar e Colocar no Carrinho"
 
 #: 
 #, fuzzy
@@ -9113,11 +9098,6 @@ msgstr "Nem todos os membros deste grupo estão no carrinho"
 
 #: 
 #, fuzzy
-msgid "Add all"
-msgstr "Adicionar todos"
-
-#: 
-#, fuzzy
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Você tem certeza de que deseja remover os membros do grupo selecionados?"
 
@@ -9576,11 +9556,6 @@ msgstr "Mais eventos"
 #, fuzzy
 msgid "Resize Event"
 msgstr "Redimensionar o Evento"
-
-#: 
-#, fuzzy
-msgid "Text from"
-msgstr "Texto \"de\""
 
 #: 
 #, fuzzy
@@ -10713,16 +10688,6 @@ msgstr "Redefinir banco de dados"
 #, fuzzy
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Isto vai limpar os dados do sistema e reiniciá-lo como uma nova instalação"
-
-#: 
-#, fuzzy
-msgid "Clear Filter"
-msgstr "Limpar filtro"
-
-#: 
-#, fuzzy
-msgid "Add Person"
-msgstr "Adicionar pessoa"
 
 #. Context: locales
 #: 

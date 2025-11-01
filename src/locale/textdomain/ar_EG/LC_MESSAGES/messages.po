@@ -1253,10 +1253,6 @@ msgid "Family List"
 msgstr "قائمة العائلة"
 
 #: 
-msgid "Add Family"
-msgstr "اضافة عائلة"
-
-#: 
 msgid "Created"
 msgstr "انشاء"
 
@@ -1772,10 +1768,6 @@ msgstr "تتقاطع مع العربة"
 #: 
 msgid "Remove from Cart"
 msgstr "مسح من العربة"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "النص لمعرف الحدث:"
 
 #: 
 msgid "Group Editor"
@@ -2935,10 +2927,6 @@ msgstr "حذف سجل الأسرة فقط"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "حذف سجل الأسرة وعدد أفراد الأسرة"
-
-#: 
-msgid "Filter and Cart"
-msgstr "تصفية والعربة"
 
 #: 
 msgid "Listing"
@@ -7534,10 +7522,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "ليس كل أعضاء هذه المجموعة في العربة"
 
 #: 
-msgid "Add all"
-msgstr "اضافة الكل"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "هل أنت متأكد أنك تريد إزالة أعضاء المجموعة المختارة؟"
 
@@ -7908,10 +7892,6 @@ msgstr "حدث تحرك"
 #: 
 msgid "Resize Event"
 msgstr "تغيير حجم الحدث"
-
-#: 
-msgid "Text from"
-msgstr "النص من"
 
 #: 
 msgid "Profile"
@@ -8828,14 +8808,6 @@ msgstr "قاعدة بيانات إعادة تعيين"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "هذا وسوف إعادة تعيين بيانات النظام وسيتم إعادة تشغيل النظام وتثبيت جديد."
-
-#: 
-msgid "Clear Filter"
-msgstr "مرشح واضح"
-
-#: 
-msgid "Add Person"
-msgstr "اضافة فرد"
 
 #. Context: locales
 #: 

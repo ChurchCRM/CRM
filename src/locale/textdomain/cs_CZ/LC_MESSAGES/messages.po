@@ -1251,10 +1251,6 @@ msgid "Family List"
 msgstr "Seznam rodin"
 
 #: 
-msgid "Add Family"
-msgstr "Přidat rodinu"
-
-#: 
 msgid "Created"
 msgstr "Vytvořeno"
 
@@ -1769,10 +1765,6 @@ msgstr "Protnout s košíkem"
 #: 
 msgid "Remove from Cart"
 msgstr "Odstranit z košíku"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Text pro ID události: "
 
 #: 
 msgid "Group Editor"
@@ -2931,10 +2923,6 @@ msgstr "Smazat POUZE záznam rodiny"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Smazat záznam rodiny A členů rodiny"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filtr a košík"
 
 #: 
 msgid "Listing"
@@ -7521,10 +7509,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Ne všichni členové této skupiny jsou v košíku"
 
 #: 
-msgid "Add all"
-msgstr "Přidat vše"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Opravdu chcete odebrat vybrané členy skupiny?"
 
@@ -7894,10 +7878,6 @@ msgstr "Přesunout událost"
 #: 
 msgid "Resize Event"
 msgstr "Změnit velikost události"
-
-#: 
-msgid "Text from"
-msgstr "Text z"
 
 #: 
 msgid "Profile"
@@ -8813,14 +8793,6 @@ msgstr "Vymazat databázi"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Tímto se obnoví systémová data a systém se restartuje jako nová instalace."
-
-#: 
-msgid "Clear Filter"
-msgstr "Smazat filtr"
-
-#: 
-msgid "Add Person"
-msgstr "Přidat osobu"
 
 #. Context: locales
 #: 

@@ -1551,10 +1551,6 @@ msgid "Remove from Cart"
 msgstr "Hiq nga Shportë"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Tekst per ID Event: "
-
-#: 
 msgid "Group Editor"
 msgstr "Grupi Editor"
 

@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "רשימת משפחות"
 
 #: 
-msgid "Add Family"
-msgstr "הוסף משפחה"
-
-#: 
 msgid "Created"
 msgstr "נוצר"
 
@@ -1770,10 +1766,6 @@ msgstr "הצטלב עם העגלה"
 #: 
 msgid "Remove from Cart"
 msgstr "הסר מהעגלה"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "טקסט עבור מזהה אירוע: "
 
 #: 
 msgid "Group Editor"
@@ -2932,10 +2924,6 @@ msgstr "מחק רשומת משפחה בלבד"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "מחק רשומת משפחה ובני משפחה"
-
-#: 
-msgid "Filter and Cart"
-msgstr "סינון וסל"
 
 #: 
 msgid "Listing"
@@ -7525,10 +7513,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "לא כל חברי הקבוצה הזו נמצאים בעגלה"
 
 #: 
-msgid "Add all"
-msgstr "הוסף הכל"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "האם אתה בטוח שברצונך להסיר את חברי הקבוצה שנבחרו?"
 
@@ -7898,10 +7882,6 @@ msgstr "הזז אירוע"
 #: 
 msgid "Resize Event"
 msgstr "שנה גודל אירוע"
-
-#: 
-msgid "Text from"
-msgstr "טקסט מאת"
 
 #: 
 msgid "Profile"
@@ -8815,14 +8795,6 @@ msgstr "אתחל בסיס נתונים"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "פעולה זו תאפס את נתוני המערכת ותפעיל מחדש את המערכת כהתקנה חדשה."
-
-#: 
-msgid "Clear Filter"
-msgstr "הסר מסנן"
-
-#: 
-msgid "Add Person"
-msgstr "הוסף אדם"
 
 #. Context: locales
 #: 

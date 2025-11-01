@@ -1253,10 +1253,6 @@ msgid "Family List"
 msgstr "Сімейний список"
 
 #: 
-msgid "Add Family"
-msgstr "Додати сім’ю"
-
-#: 
 msgid "Created"
 msgstr "Створено"
 
@@ -1772,10 +1768,6 @@ msgstr "Перетин з кошиком"
 #: 
 msgid "Remove from Cart"
 msgstr "Видалити з кошика"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Текст для ідентифікатора події: "
 
 #: 
 msgid "Group Editor"
@@ -2935,10 +2927,6 @@ msgstr "Видалити ТІЛЬКИ сімейний запис"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Видалити сімейний запис та членів сім’ї"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Фільтр і кошик"
 
 #: 
 msgid "Listing"
@@ -7532,10 +7520,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Не всі учасники цієї групи знаходяться в кошику"
 
 #: 
-msgid "Add all"
-msgstr "Додати все"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Ви впевнені, що хочете видалити вибраних членів групи?"
 
@@ -7906,10 +7890,6 @@ msgstr "Перемістити подію"
 #: 
 msgid "Resize Event"
 msgstr "Змінити розмір події"
-
-#: 
-msgid "Text from"
-msgstr "Текст від"
 
 #: 
 msgid "Profile"
@@ -8815,14 +8795,6 @@ msgstr "Скинути базу даних"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Це скине дані системи та перезапустить систему як нову установку."
-
-#: 
-msgid "Clear Filter"
-msgstr "Очистити фільтр"
-
-#: 
-msgid "Add Person"
-msgstr "Додати особу"
 
 #. Context: locales
 #: 
