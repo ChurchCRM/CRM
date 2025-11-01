@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
 
     $("#addNewGroup").click(function (e) {
-        var groupName = $("#groupName").val(); // get the name of the group from the textbox
+        var groupName = $("#groupName").val().trim(); // get the name of the group from the textbox and trim whitespace
         if (groupName) {
             // ensure that the user entered a group name
             var newGroup = { groupName: groupName }; //create a newgroup JSON object, and prepare it for transport
@@ -21,10 +21,8 @@ $(document).ready(function () {
                 dataType: "json",
             }).done(function (data) {
                 //yippie, we got something good back from the server
-                dataT.row.add(data); //add the group data to the existing DataTable
-                dataT.rows().invalidate().draw(true); //redraw the dataTable
-                $("#groupName").val(null);
-                dataT.ajax.reload(); // PL : We should reload the table after we add a group so the button add to group is disabled
+                // Redirect to the GroupEditor page for the newly created group
+                window.location.href = window.CRM.root + "/GroupEditor.php?GroupID=" + data.Id;
             });
         }
     });
