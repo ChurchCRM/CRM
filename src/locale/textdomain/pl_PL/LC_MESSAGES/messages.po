@@ -1706,10 +1706,6 @@ msgid "Remove from Cart"
 msgstr "Usuń z Koszyka"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Tekst dla Wydarzenia (ID):"
-
-#: 
 msgid "Group Editor"
 msgstr "Edytor Grup"
 
@@ -2893,10 +2889,6 @@ msgstr "Usuń TYLKO Wpis Rodziny"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Usuń Wpis Rodziny ORAZ Członków Rodziny"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Dodaj Filtr i przenieś do Koszyka"
 
 #: 
 msgid "Listing"
@@ -4512,14 +4504,6 @@ msgstr "Zresetuj Bazę Danych"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Zresetujesz dane systemu i uruchomisz system jako nową instalację."
-
-#: 
-msgid "Clear Filter"
-msgstr "Wyczyść Filtr"
-
-#: 
-msgid "Add Person"
-msgstr "Dodaj Osobę"
 
 #. Context: locales
 #: 

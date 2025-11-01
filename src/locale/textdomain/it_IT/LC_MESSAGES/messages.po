@@ -1255,10 +1255,6 @@ msgid "Family List"
 msgstr "Lista Famiglie"
 
 #: 
-msgid "Add Family"
-msgstr "Aggiungi Famiglia"
-
-#: 
 msgid "Created"
 msgstr "Creata"
 
@@ -1775,10 +1771,6 @@ msgstr "Interseca con il contenitore"
 #: 
 msgid "Remove from Cart"
 msgstr "Rimuovi dal contenitore"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Testo per ID evento:"
 
 #: 
 msgid "Group Editor"
@@ -2945,10 +2937,6 @@ msgstr "Elimina SOLO la scheda della famiglia"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Elimina la scheda della famiglia E ANCHE i suoi membri"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filtra e aggiungi al carrello"
 
 #: 
 msgid "Listing"
@@ -7556,10 +7544,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Non tutti i membri di questo gruppo sono nel carrello"
 
 #: 
-msgid "Add all"
-msgstr "Aggiungi tutto"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Sei sicuro di voler rimuovere i membri del gruppo selezionati?"
 
@@ -7930,10 +7914,6 @@ msgstr "Sposta Evento"
 #: 
 msgid "Resize Event"
 msgstr "Resize Event"
-
-#: 
-msgid "Text from"
-msgstr "Testo da"
 
 #: 
 msgid "Profile"
@@ -8851,14 +8831,6 @@ msgstr "Ripristina database"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Ciò ripristinerà i dati di sistema e riavvierà il sistema come una nuova installazione."
-
-#: 
-msgid "Clear Filter"
-msgstr "Filtro pulito"
-
-#: 
-msgid "Add Person"
-msgstr "Aggiungi persona"
 
 #. Context: locales
 #: 

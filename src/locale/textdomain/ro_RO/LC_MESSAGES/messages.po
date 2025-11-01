@@ -1288,10 +1288,6 @@ msgid "Family List"
 msgstr "Listă familie"
 
 #: 
-msgid "Add Family"
-msgstr "Adaugă familie"
-
-#: 
 msgid "Created"
 msgstr "Creată"
 
@@ -1813,10 +1809,6 @@ msgstr "Intersectati cu Cosul"
 #: 
 msgid "Remove from Cart"
 msgstr "Elimină din coș"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Text pentru ID-ul Evenimentului"
 
 #: 
 msgid "Group Editor"
@@ -3005,10 +2997,6 @@ msgstr "Șterge Înregistrare singura familie"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Șterge livret de familie și membrii familiilor"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filtru și coș"
 
 #: 
 msgid "Listing"
@@ -7634,10 +7622,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Nu toți membrii din acest grup sunt în coș"
 
 #: 
-msgid "Add all"
-msgstr "Adaugă-i pe toți"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Sigur doriți să eliminați membri selectați din grup?"
 
@@ -8008,10 +7992,6 @@ msgstr "Mută evenimentul"
 #: 
 msgid "Resize Event"
 msgstr "Redimensionează evenimentul"
-
-#: 
-msgid "Text from"
-msgstr "Text din"
 
 #: 
 msgid "Profile"
@@ -8926,14 +8906,6 @@ msgstr "Resetare bază de date"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Aceasta va reseta datele sistemului și va reporni sistemul ca o instalare nouă"
-
-#: 
-msgid "Clear Filter"
-msgstr "Șterge filtru"
-
-#: 
-msgid "Add Person"
-msgstr "Adaugă persoană"
 
 #. Context: locales
 #: 

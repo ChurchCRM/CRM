@@ -1618,10 +1618,6 @@ msgid "Remove from Cart"
 msgstr "Eltávolítás a kosárba"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Szöveg Eseményazonosító:"
-
-#: 
 msgid "Group Editor"
 msgstr "Csoport szerkesztő"
 

@@ -1254,10 +1254,6 @@ msgid "Family List"
 msgstr "Daftar Keluarga"
 
 #: 
-msgid "Add Family"
-msgstr "Tambah keluarga"
-
-#: 
 msgid "Created"
 msgstr "Diciptakan"
 
@@ -1774,10 +1770,6 @@ msgstr "Intersect with Cart"
 #: 
 msgid "Remove from Cart"
 msgstr "Hapus dari Keranjang"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Teks untuk ID Peristiwa: "
 
 #: 
 msgid "Group Editor"
@@ -2937,10 +2929,6 @@ msgstr "Hapus Catatan Keluarga SAJA"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Hapus Catatan Keluarga DAN Anggota Keluarga"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Saring dan Troli"
 
 #: 
 msgid "Listing"
@@ -7536,10 +7524,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Tidak semua anggota grup ini ada di troli"
 
 #: 
-msgid "Add all"
-msgstr "Tambahkan semua"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Anda yakin ingin menghapus anggota grup yang dipilih?"
 
@@ -7910,10 +7894,6 @@ msgstr "Pindahkan Acara"
 #: 
 msgid "Resize Event"
 msgstr "Ubah Ukuran Acara"
-
-#: 
-msgid "Text from"
-msgstr "Teks dari"
 
 #: 
 msgid "Profile"
@@ -8821,14 +8801,6 @@ msgstr "Reset Database"
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Ini akan mengatur ulang data sistem dan akan memulai ulang sistem sebagai pemasangan baru."
 
-#: 
-msgid "Clear Filter"
-msgstr "Bersihkan Filter"
-
-#: 
-msgid "Add Person"
-msgstr "Tambahkan Orang"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -9595,4 +9567,154 @@ msgstr "Kolom Senarai Orang"
 #: 
 msgid "Family List Columns"
 msgstr "Kolom Senarai Keluarga"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "Email Gereja belum diatur, buka halaman pengaturan"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "Telugu - India"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Korean"
+
+#: 
+msgid "System Logs"
+msgstr "Log Sistem"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Gunakan Content Security Policy (CSP) untuk membantu melindungi dari XSS Scripting. Jika non-aktif, masalah CSP hanya dicatat."
+
+#: 
+msgid "Maximum number of log files to keep"
+msgstr "Jumlah maksimum log file"
+
+#: 
+msgid "Too Many Log Files"
+msgstr "Log terlalu banyak"
+
+#: 
+msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
+msgstr "Terdapat banyak log file di folder Log. Hapus untuk mengosongkan penyimpanan."
+
+#: 
+msgid "Enter event description..."
+msgstr "Masukkan deskripsi event..."
+
+#: 
+msgid "Event ID"
+msgstr "ID Event"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Masukkan catatan..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "tidak ada catatan untuk orang ini."
+
+#: 
+msgid "Note"
+msgstr "Catatan"
+
+#: 
+msgid "Log Settings"
+msgstr "Pengaturan Log"
+
+#: 
+msgid "Log Level:"
+msgstr "Level Log:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Simpan Level Log"
+
+#: 
+msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
+msgstr "Angka rendah memuat log lebih detail, angka lebih tinggi hanya mencatat beberapa log. Berlaku di log selanjutnya.."
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Lihat log aplikasi"
+
+#: 
+msgid "Delete All Logs"
+msgstr "Hapus semua log"
+
+#: 
+msgid "No log files found."
+msgstr "Log kosong."
+
+#: 
+msgid "Log File"
+msgstr "File Log"
+
+#: 
+msgid "Size"
+msgstr "Ukuran"
+
+#: 
+msgid "Last Modified"
+msgstr "Terakhir diubah"
+
+#: 
+msgid "View"
+msgstr "Lihat"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Pembaca Log File"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Saring berdasarkan log level"
+
+#: 
+msgid "Error"
+msgstr "Kesalahan"
+
+#: 
+msgid "Info"
+msgstr "Info"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Jumlah baris ditampilkan"
+
+#: 
+msgid "Loading log file..."
+msgstr "Memuat file log..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Tidak ada catatan untuk keluarga ini."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Akses token Kalender telah dibuat dan disimpan."
+
+#: 
+msgid "added"
+msgstr "ditambahkan"
+
+#: 
+msgid "Added"
+msgstr "Ditambahkan"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Berhasil ditambahkan ke cart"
+
+#: 
+msgid "All members already in cart"
+msgstr "Semua anggota sudah di keranjang"
+
+#: 
+msgid "already in cart"
+msgstr "sudah di keranjang"
 

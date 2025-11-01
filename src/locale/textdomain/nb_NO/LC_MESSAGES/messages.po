@@ -1268,10 +1268,6 @@ msgid "Family List"
 msgstr "Familie Liste"
 
 #: 
-msgid "Add Family"
-msgstr "Legg til Familie"
-
-#: 
 msgid "Created"
 msgstr "Opprettet"
 
@@ -1795,10 +1791,6 @@ msgstr "Snitt med Cart"
 #: 
 msgid "Remove from Cart"
 msgstr "Fjern fra handlekurven"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Tekst for hendelses-ID:"
 
 #: 
 msgid "Group Editor"

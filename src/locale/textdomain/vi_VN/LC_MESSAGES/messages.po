@@ -1270,10 +1270,6 @@ msgid "Family List"
 msgstr "Danh sách gia đình"
 
 #: 
-msgid "Add Family"
-msgstr "Thêm gia đình"
-
-#: 
 msgid "Created"
 msgstr "Đã tạo"
 
@@ -1789,10 +1785,6 @@ msgstr "Giao với giỏ"
 #: 
 msgid "Remove from Cart"
 msgstr "Xóa khỏi giỏ"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Văn bản cho ID sự kiện:"
 
 #: 
 msgid "Group Editor"
@@ -2952,10 +2944,6 @@ msgstr "CHỈ xóa bỏ bản ghi gia đình"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Xóa bỏ bản ghi gia đình VÀ thành viên gia đình"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Bộ lọc và giỏ"
 
 #: 
 msgid "Listing"
@@ -7551,10 +7539,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Không phải tất cả thành viên của nhóm này đều có trong giỏ hàng"
 
 #: 
-msgid "Add all"
-msgstr "Thêm tất cả"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Bạn có chắc chắn muốn xóa các thành viên nhóm đã chọn không?"
 
@@ -7925,10 +7909,6 @@ msgstr "Di chuyển sự kiện"
 #: 
 msgid "Resize Event"
 msgstr "Thay đổi kích thước sự kiện"
-
-#: 
-msgid "Text from"
-msgstr "Văn bản từ"
 
 #: 
 msgid "Profile"
@@ -8835,14 +8815,6 @@ msgstr "Đặt lại cơ sở dữ liệu"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Thao tác này sẽ đặt lại dữ liệu hệ thống và sẽ khởi động lại hệ thống khi cài đặt mới."
-
-#: 
-msgid "Clear Filter"
-msgstr "LÀm sạch bộ lọc"
-
-#: 
-msgid "Add Person"
-msgstr "Thêm người"
 
 #. Context: locales
 #: 
