@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-      - 'build/**'
-      - 'release/**'
     paths:
       - 'src/**'
   workflow_dispatch:

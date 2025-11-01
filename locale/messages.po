@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-01 13:14-0700\n"
+"POT-Creation-Date: 2025-11-01 14:56-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6096,6 +6096,9 @@ msgstr ""
 msgid "Sunday School Kids"
 msgstr ""
 
+msgid "Sunday School Overview"
+msgstr ""
+
 msgid "Sunday School Reports"
 msgstr ""
 
@@ -6944,9 +6947,6 @@ msgid "View Person Page"
 msgstr ""
 
 msgid "View Photo"
-msgstr ""
-
-msgid "View Profile"
 msgstr ""
 
 msgid "View User"
