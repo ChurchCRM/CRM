@@ -30,11 +30,6 @@ $(document).ready(function () {
     });
 
     var dataTableConfig = {
-        initComplete: function (settings, json) {
-            if (window.groupSelect != null) {
-                dataT.search(window.groupSelect).draw();
-            }
-        },
         ajax: {
             url: window.CRM.root + "/api/groups/",
             type: "GET",
@@ -160,9 +155,4 @@ $(document).ready(function () {
                 }
             });
         });
-
-    $("#table-filter").on("change", function () {
-        dataT.search(this.value).draw();
-        localStorage.setItem("groupSelect", this.selectedIndex);
-    });
 });
