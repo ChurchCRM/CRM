@@ -8,20 +8,13 @@ $(document).ready(function () {
 
     let dataTableFamilyColumns = [
         {
-            width: "130px",
+            width: "100px",
             sortable: false,
             title: i18next.t("Action"),
             data: "FamilyId",
             render: function (data, type, row) {
                 return (
                     '<div class="btn-group btn-group-sm" role="group">' +
-                    '<a href="' +
-                    window.CRM.root +
-                    "/v2/family/" +
-                    row.FamilyId +
-                    '" class="btn-link"><button class="btn btn-sm btn-default" title="' +
-                    i18next.t("View") +
-                    '"><i class="fa-solid fa-search-plus"></i></button></a>' +
                     '<a href="' +
                     window.CRM.root +
                     "/FamilyEditor.php?FamilyID=" +
@@ -183,43 +176,20 @@ $(document).ready(function () {
 
     let dataTablePersonColumns = [
         {
-            width: "130px",
-            sortable: false,
-            title: i18next.t("Action"),
-            data: "PersonId",
+            width: "22%",
+            title: i18next.t("First Name"),
+            data: "FirstName",
             render: function (data, type, row) {
                 return (
-                    '<div class="btn-group btn-group-sm" role="group">' +
                     '<a href="' +
                     window.CRM.root +
                     "/PersonView.php?PersonID=" +
                     row.PersonId +
-                    '" class="btn-link"><button class="btn btn-sm btn-default" title="' +
-                    i18next.t("View") +
-                    '"><i class="fa-solid fa-search-plus"></i></button></a>' +
-                    '<a href="' +
-                    window.CRM.root +
-                    "/PersonEditor.php?PersonID=" +
-                    row.PersonId +
-                    '" class="btn-link"><button class="btn btn-sm btn-default" title="' +
-                    i18next.t("Edit") +
-                    '"><i class="fa-solid fa-pen"></i></button></a>' +
-                    '<div class="AddToCart" data-cart-id="' +
-                    row.PersonId +
-                    '" data-cart-type="person">' +
-                    '<button class="btn btn-sm btn-primary" title="' +
-                    i18next.t("Add to Cart") +
-                    '"><i class="fa-solid fa-cart-plus"></i></button>' +
-                    "</div>" +
-                    "</div>"
+                    '">' +
+                    row.FirstName +
+                    "</a>"
                 );
             },
-            searchable: false,
-        },
-        {
-            width: "22%",
-            title: i18next.t("First Name"),
-            data: "FirstName",
         },
         {
             width: "22%",
