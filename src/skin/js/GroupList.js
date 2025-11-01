@@ -22,12 +22,14 @@ $(document).ready(function () {
             }).done(function (data) {
                 //yippie, we got something good back from the server
                 // Redirect to the GroupEditor page for the newly created group
-                window.location.href = window.CRM.root + "/GroupEditor.php?GroupID=" + data.Id;
+                window.location.href =
+                    window.CRM.root + "/GroupEditor.php?GroupID=" + data.Id;
             });
         }
     });
 
     var dataTableConfig = {
+        autoWidth: false,
         ajax: {
             url: window.CRM.root + "/api/groups/",
             type: "GET",
@@ -73,6 +75,20 @@ $(document).ready(function () {
             },
             {
                 width: "auto",
+                title: i18next.t("Group Type"),
+                data: "groupType",
+                defaultContent: "",
+                searchable: true,
+                render: function (data, type, full, meta) {
+                    if (data) {
+                        return data;
+                    } else {
+                        return i18next.t("Unassigned");
+                    }
+                },
+            },
+            {
+                width: "auto",
                 title: i18next.t("Members"),
                 data: "memberCount",
                 searchable: false,
@@ -93,20 +109,6 @@ $(document).ready(function () {
                         i18next.t("Checking Cart Status") +
                         "</span>"
                     );
-                },
-            },
-            {
-                width: "auto",
-                title: i18next.t("Group Type"),
-                data: "groupType",
-                defaultContent: "",
-                searchable: true,
-                render: function (data, type, full, meta) {
-                    if (data) {
-                        return data;
-                    } else {
-                        return i18next.t("Unassigned");
-                    }
                 },
             },
         ],
