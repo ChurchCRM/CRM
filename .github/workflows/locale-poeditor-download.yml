@@ -1,6 +1,7 @@
 name: Locale POEditor Download and Audit 
 permissions:
   contents: write
+  pull-requests: write
 
 on:
   schedule:
@@ -80,15 +81,18 @@ jobs:
         npm ci
         npm install grunt-cli --save-dev
 
-    - name: Validate POEditor configuration
+    - name: Check POEditor Token
+      if: inputs.operation_mode != 'audit-only'
       run: |
         if [ -z "${{ secrets.POEDITOR_TOKEN }}" ]; then
           echo "❌ POEDITOR_TOKEN secret is not set"
+          echo "Set this secret in Settings → Secrets and variables → Actions with a valid POEditor API token."
           exit 1
         fi
         echo "✅ POEditor token is configured"
 
     - name: Create BuildConfig file
+      if: inputs.operation_mode != 'audit-only'
       uses: jsdaniell/create-json@v1.2.3
       with:
         name: "BuildConfig.json"
