@@ -201,7 +201,6 @@ class AppIntegrityService
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => extension_loaded('fileinfo')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_version')),
             new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
-            new Prerequisite('PHP Intl', fn (): bool => extension_loaded('intl')),
             new Prerequisite('PHP BCMath', fn (): bool => extension_loaded('bcmath')),
             new Prerequisite('PHP Sodium', fn (): bool => extension_loaded('sodium')),
             new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/')),

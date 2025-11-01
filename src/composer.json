@@ -34,7 +34,6 @@
         "ext-gd": "*",
         "ext-gettext": "*",
         "ext-iconv": "*",
-        "ext-intl": "*",
         "ext-mbstring": "*",
         "ext-mysqli": "*",
         "ext-session": "*",

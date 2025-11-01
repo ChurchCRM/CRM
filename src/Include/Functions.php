@@ -360,16 +360,25 @@ function FormatDate($dDate, bool $bWithTime = false): string
         return '';
     }
 
-    $localValue = SystemConfig::getValue("sLanguage");
-    setlocale(LC_ALL, $localValue, $localValue . '.UTF-8', $localValue . '.utf8');
+    // Get the date format from system config
+    $dateFormat = SystemConfig::getValue("sDateFormatLong");
+    
+    // Convert format to DateTime format (from strftime-style)
+    // d = day, m = month name, Y = year
+    $dateFormat = str_replace("d", "d", $dateFormat);
+    $dateFormat = str_replace("m", "F", $dateFormat);  // F = full month name
+    $dateFormat = str_replace("Y", "Y", $dateFormat);
+    $dateFormat = str_replace("/", " ", $dateFormat);
+    $dateFormat = str_replace("-", " ", $dateFormat);
 
-    // Use IntlDateFormatter for locale-aware formatting
-    $locale = $localValue;
-    $dateType = \IntlDateFormatter::MEDIUM;
-    $timeType = $bWithTime ? \IntlDateFormatter::SHORT : \IntlDateFormatter::NONE;
-    $formatter = new \IntlDateFormatter($locale, $dateType, $timeType);
+    if ($bWithTime) {
+        // Add time format (g:i A = 12-hour format with am/pm)
+        $formattedDate = $dateObj->format($dateFormat . ' g:i A');
+    } else {
+        $formattedDate = $dateObj->format($dateFormat);
+    }
 
-    return $formatter->format($dateObj);
+    return $formattedDate;
 }
 
 function AlternateRowStyle(string $sCurrentStyle): string
