@@ -12,40 +12,30 @@ $(document).ready(() => {
         })
         .fail((xhr, status, error) => {
             console.error("Failed to fetch groups in cart:", error);
-            $.notify(
-                {
-                    icon: "fa fa-exclamation-triangle",
-                    message: i18next.t("Failed to load cart status."),
+            $.notify(i18next.t("Failed to load cart status."), {
+                type: "danger",
+                icon: "fa fa-exclamation-triangle",
+                delay: 5000,
+                placement: {
+                    from: "top",
+                    align: "right",
                 },
-                {
-                    type: "danger",
-                    delay: 5000,
-                    placement: {
-                        from: "top",
-                        align: "right",
-                    },
-                },
-            );
+            });
         });
 
     $("#addNewGroup").click((e) => {
         const groupName = $("#groupName").val().trim();
 
         if (!groupName) {
-            $.notify(
-                {
-                    icon: "fa fa-exclamation-triangle",
-                    message: i18next.t("Please enter a group name."),
+            $.notify(i18next.t("Please enter a group name."), {
+                type: "danger",
+                icon: "fa fa-exclamation-triangle",
+                delay: 5000,
+                placement: {
+                    from: "top",
+                    align: "right",
                 },
-                {
-                    type: "danger",
-                    delay: 5000,
-                    placement: {
-                        from: "top",
-                        align: "right",
-                    },
-                },
-            );
+            });
             $("#groupName").focus();
             return;
         }
@@ -65,22 +55,15 @@ $(document).ready(() => {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to create group:", error);
-                $.notify(
-                    {
-                        icon: "fa fa-exclamation-triangle",
-                        message: i18next.t(
-                            "Failed to create group. Please try again.",
-                        ),
+                $.notify(i18next.t("Failed to create group. Please try again."), {
+                    type: "danger",
+                    icon: "fa fa-exclamation-triangle",
+                    delay: 5000,
+                    placement: {
+                        from: "top",
+                        align: "right",
                     },
-                    {
-                        type: "danger",
-                        delay: 5000,
-                        placement: {
-                            from: "top",
-                            align: "right",
-                        },
-                    },
-                );
+                });
             });
     });
 
@@ -92,22 +75,15 @@ $(document).ready(() => {
             dataSrc: "",
             error: (xhr, error, thrown) => {
                 console.error("Failed to load groups:", thrown);
-                $.notify(
-                    {
-                        icon: "fa fa-exclamation-triangle",
-                        message: i18next.t(
-                            "Failed to load groups. Please refresh the page.",
-                        ),
+                $.notify(i18next.t("Failed to load groups. Please refresh the page."), {
+                    type: "danger",
+                    icon: "fa fa-exclamation-triangle",
+                    delay: 5000,
+                    placement: {
+                        from: "top",
+                        align: "right",
                     },
-                    {
-                        type: "danger",
-                        delay: 5000,
-                        placement: {
-                            from: "top",
-                            align: "right",
-                        },
-                    },
-                );
+                });
             },
         },
         columns: [
@@ -172,7 +148,7 @@ $(document).ready(() => {
 
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
-    const dataTable = $("#groupsTable")
+    $("#groupsTable")
         .DataTable(dataTableConfig)
         .on("draw.dt", () => {
             $(".cartStatusButton").each((index, element) => {
