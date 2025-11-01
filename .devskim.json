@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "DS137138": "off",
+    "DS112755": "off"
+  },
+  "severityLevels": {
+    "manual-review": "suggestion",
+    "review": "warning", 
+    "important": "error",
+    "critical": "error"
+  },
+  "ignoreRulesList": [],
+  "customRulesPath": "",
+  "customCommentsPath": "",
+  "customFixesPath": "",
+  "ignoreDefaultRules": false,
+  "treatWarningsAsErrors": false,
+  "logFileLevel": "Error",
+  "logFilePath": "",
+  "outputFileFormat": "sarif",
+  "outputTextFormat": "text",
+  "suppressedIssues": []
+}

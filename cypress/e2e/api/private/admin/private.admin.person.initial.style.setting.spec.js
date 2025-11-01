@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("API Private Admin Person Initial Setting", () => {
+describe("API Private Admin Person Initial Setting", () => {
     it("Delete Person Image / Generate Initial Image", () => {
         cy.makePrivateAdminAPICall(
             "DELETE",
@@ -22,7 +22,7 @@ context("API Private Admin Person Initial Setting", () => {
     });
 
     it("Change Person Initial Style / Delete Person Image / Generate Initial Image", () => {
-        let json = { value: "1" };
+        const json = { value: "1" };
         cy.makePrivateAdminAPICall(
             "POST",
             "/api/system/config/iPersonInitialStyle",

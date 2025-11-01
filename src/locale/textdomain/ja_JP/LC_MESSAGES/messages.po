@@ -32,10 +32,12 @@ msgstr "未割り当て"
 msgid "None"
 msgstr "なし"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "市町村"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "都道府県"
@@ -48,6 +50,7 @@ msgstr "国"
 msgid "Phone"
 msgstr "電話番号"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "メールアドレス"
@@ -141,6 +144,7 @@ msgstr "生年月日 / 記念日"
 msgid "Age / Years Married"
 msgstr "年齢 / 結婚年数"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Family Role"
 msgstr "家族のロール"
@@ -177,10 +181,12 @@ msgstr "以下のフィルターに基づいて"
 msgid "Don't Filter"
 msgstr "フィルタリングしない"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "男性"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "女性"
@@ -213,10 +219,12 @@ msgstr "このフィールドを無視します"
 msgid "Title"
 msgstr "タイトル"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "性別"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "固定電話"
@@ -277,6 +285,7 @@ msgstr "あなたのカートは空です！"
 msgid "No family name entered!"
 msgstr "家族名が入力されていません!"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "名前"
@@ -409,6 +418,7 @@ msgstr "量"
 msgid "Bank"
 msgstr "銀行"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Month"
 msgstr "月"
@@ -544,10 +554,6 @@ msgstr "11月"
 #: 
 msgid "December"
 msgstr "12月"
-
-#: 
-msgid "Add Family"
-msgstr "家族を追加"
 
 #: 
 msgid "Add New Member"
@@ -873,22 +879,27 @@ msgstr "ユーザーインターフェース"
 msgid "System"
 msgstr "システム"
 
+#. Context: locales
 #: 
 msgid "Czech"
 msgstr "チェコ語"
 
+#. Context: locales
 #: 
 msgid "Finnish"
 msgstr "フィンランド語"
 
+#. Context: locales
 #: 
 msgid "Greek"
 msgstr "ギリシャ語"
 
+#. Context: locales
 #: 
 msgid "Turkish"
 msgstr "トルコ語"
 
+#. Context: locales
 #: 
 msgid "Ukrainian"
 msgstr "ウクライナ語"

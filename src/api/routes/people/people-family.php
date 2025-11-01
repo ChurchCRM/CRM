@@ -8,8 +8,8 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
-use ChurchCRM\Slim\Request\SlimUtils;
+use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -33,9 +33,16 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         /** @var Family $family */
         $family = $request->getAttribute('family');
-        $family->setImageFromBase64($input['imgBase64']);
-
-        return SlimUtils::renderSuccessJSON($response);
+        
+        try {
+            $family->setImageFromBase64($input['imgBase64']);
+            return SlimUtils::renderSuccessJSON($response);
+        } catch (\Exception $e) {
+            return SlimUtils::renderJSON($response, [
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 400);
+        }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
@@ -149,4 +156,4 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderSuccessJSON($response);
     });
-})->add(FamilyAPIMiddleware::class);
+})->add(FamilyMiddleware::class);

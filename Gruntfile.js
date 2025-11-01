@@ -49,10 +49,6 @@ module.exports = function (grunt) {
             "!logs/*.log",
             "!vendor/endroid/qr-code/assets/fonts/noto_sans.otf", // This closes #5099, but TODO: when https://github.com/endroid/qr-code/issues/224 is fixed, we can remove this exclusion.
         ],
-        clean: {
-            skin: ["src/skin/external"],
-            release: ["target"],
-        },
         copy: {
             skin: {
                 files: [
@@ -68,12 +64,6 @@ module.exports = function (grunt) {
                             "dist/js/adminlte.min.js",
                         ],
                         dest: "src/skin/external/adminlte/",
-                    },
-                    {
-                        expand: true,
-                        cwd: "node_modules/@fortawesome/fontawesome-free",
-                        src: ["{css,js,webfonts}/**"],
-                        dest: "src/skin/external/fontawesome/",
                     },
                     {
                         expand: true,
@@ -93,42 +83,14 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["node_modules/jquery-photo-uploader/dist/*"],
-                        dest: "src/skin/external/jquery-photo-uploader/",
-                    },
-                    {
-                        expand: true,
-                        cwd: "node_modules/ckeditor4/",
-                        src: [
-                            "*.js",
-                            "*.css",
-                            "*.json",
-                            "lang/**/*",
-                            "adapters/**/*",
-                            "plugins/**/*",
-                            "skins/**/*",
-                        ],
-                        dest: "src/skin/external/ckeditor/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         src: ["node_modules/bootbox/dist/bootbox.min.js"],
                         dest: "src/skin/external/bootbox/",
                     },
                     {
                         expand: true,
                         cwd: "node_modules/bootstrap/dist",
-                        src: ["{css,js}/**"],
+                        src: ["js/**"],
                         dest: "src/skin/external/bootstrap/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: ["node_modules/bootstrap/fonts/**"],
-                        dest: "src/skin/external/fonts/",
                     },
                     {
                         expand: true,
@@ -255,23 +217,6 @@ module.exports = function (grunt) {
                         ],
                         dest: "src/skin/external/select2",
                     },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: [
-                            "node_modules/react-datepicker/dist/react-datepicker.min.css",
-                        ],
-                        dest: "src/skin/external/react-datepicker",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: false,
-                        cwd: "node_modules/flag-icons",
-                        src: ["flags/**", "css/flag-icons.min.css"],
-                        dest: "src/skin/external/flag-icons/",
-                    },
                 ],
             },
         },
@@ -337,17 +282,10 @@ module.exports = function (grunt) {
                 dest: "src/skin/external/jquery-ui/",
             },
         },
-        sass: {
-            dist: {
-                files: {
-                    "src/skin/churchcrm.min.css": "src/skin/churchcrm.scss",
-                },
-            },
-        },
         compress: {
             zip: {
                 options: {
-                    archive: "target/ChurchCRM-<%= package.version %>.zip",
+                    archive: "temp/ChurchCRM-<%= package.version %>.zip",
                     mode: "zip",
                     pretty: true,
                 },
@@ -359,37 +297,7 @@ module.exports = function (grunt) {
                         dest: "churchcrm/",
                     },
                 ],
-            },
-            tar: {
-                options: {
-                    archive: "target/ChurchCRM-<%= package.version %>.tar.gz",
-                    mode: "tgz",
-                    pretty: true,
-                },
-                files: [
-                    {
-                        expand: true,
-                        cwd: "src/",
-                        src: "<%= projectFiles %>",
-                        dest: "churchcrm/",
-                    },
-                ],
-            },
-            demo: {
-                options: {
-                    archive:
-                        "target/Demo-ChurchCRM-<%= package.version %>.tar.gz",
-                    mode: "tar",
-                    pretty: true,
-                },
-                files: [
-                    {
-                        expand: true,
-                        cwd: "demo/",
-                        src: ["**/*"],
-                    },
-                ],
-            },
+            }
         },
         generateSignatures: {
             sign: {
@@ -449,27 +357,6 @@ module.exports = function (grunt) {
                 api_token: "<%= buildConfig.POEditor.token %>",
             },
         },
-        exec: {
-            downloadPOEditorStats: {
-                cmd: "curl -X POST https://api.poeditor.com/v2/languages/list -d api_token=<%= buildConfig.POEditor.token %> -d id=<%= buildConfig.POEditor.id %> -o src/locale/poeditor.json -s",
-            },
-        },
-        lineending: {
-            dist: {
-                options: {
-                    eol: "lf",
-                    overwrite: true,
-                },
-                files: {
-                    "": [
-                        "src/vendor/**/*.php",
-                        "src/vendor/**/*.js",
-                        "src/skin/external/**/*.php",
-                        "src/skin/external/**/*.js",
-                    ],
-                },
-            },
-        },
     });
 
     grunt.registerTask("hash", "gets a file hash", function (arg1) {
@@ -522,74 +409,9 @@ module.exports = function (grunt) {
         "updateFromPOeditor",
         "Description of the task",
         function (target) {
-            grunt.config("clean", {
-                pofiles: [
-                    "src/locale/*/**/*.po",
-                    "src/locale/*/**/*.mo",
-                    "locale/JSONKeys/*.json",
-                ],
-            });
-            grunt.task.run(["clean:pofiles"]);
-            grunt.loadNpmTasks("grunt-poeditor-ab");
             grunt.task.run(["poeditor"]);
         },
     );
-
-    grunt.registerTask("genLocaleAudit", "", function () {
-        let locales = grunt.file.readJSON("src/locale/locales.json");
-
-        let supportedPOEditorCodes = [];
-        for (let key in locales) {
-            supportedPOEditorCodes.push(locales[key]["poEditor"].toLowerCase());
-        }
-
-        let localeData = [];
-
-        if (grunt.file.exists("src/locale/poeditor.json")) {
-            let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
-            let poEditorLocales = poLocales.result.languages;
-
-            for (let key in poEditorLocales) {
-                let name = poEditorLocales[key]["name"];
-                let curCode = poEditorLocales[key]["code"].toLowerCase();
-                let percentage = poEditorLocales[key]["percentage"];
-                if (
-                    supportedPOEditorCodes.indexOf(curCode) === -1 &&
-                    percentage > 0
-                ) {
-                    console.log(
-                        "Missing " +
-                            name +
-                            " (" +
-                            curCode +
-                            ") but has " +
-                            percentage +
-                            " percentage",
-                    );
-                } else {
-                    localeData.push({
-                        code: curCode,
-                        percentage: percentage,
-                        translations: poEditorLocales[key]["translations"],
-                    });
-                }
-            }
-        }
-
-        console.log("\n");
-        console.log("Locale | Translations | Percentage\n");
-        console.log("-- | -- | --\n");
-        localeData.forEach(function (locale) {
-            console.log(
-                locale.code +
-                    " | " +
-                    locale.translations +
-                    " | " +
-                    locale.percentage +
-                    "%",
-            );
-        });
-    });
 
     grunt.registerTask("genLocaleJSFiles", "", function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
@@ -663,47 +485,8 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("cleanupLocalGit", "clean local git", function () {
-        grunt.loadNpmTasks("grunt-git");
-        grunt.config("gitreset", {
-            task: {
-                options: {
-                    mode: "hard",
-                },
-            },
-        });
-
-        grunt.config("gitcheckout", {
-            master: {
-                options: {
-                    branch: "master",
-                },
-            },
-        });
-
-        grunt.config("gitpull", {
-            master: {
-                options: {
-                    branch: "master",
-                },
-            },
-        });
-        grunt.task.run("gitreset");
-        //  make sure we're on master
-        grunt.task.run("gitcheckout:master");
-        //  ensure local and remote master are up to date
-        grunt.task.run("gitpull:master");
-        //  display local master's commit hash
-    });
-
-    grunt.registerTask('default', ['sass']);
-
-    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-compress");
     grunt.loadNpmTasks("grunt-curl");
     grunt.loadNpmTasks("grunt-poeditor-gd");
-    grunt.loadNpmTasks("grunt-exec");
-    grunt.loadNpmTasks("grunt-lineending");
 };

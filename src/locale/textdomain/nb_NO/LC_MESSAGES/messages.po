@@ -32,10 +32,12 @@ msgstr "Unassigned"
 msgid "None"
 msgstr "Ingen"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "By"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "Stat"
@@ -48,6 +50,7 @@ msgstr "Land"
 msgid "Phone"
 msgstr "Telefon"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "E-post"
@@ -169,6 +172,7 @@ msgstr "Fødsel / Anniversary Dato"
 msgid "Age / Years Married"
 msgstr "Alder / år Gift"
 
+#. Context: queryparameters_qrp
 #: 
 #, fuzzy
 msgid "Family Role"
@@ -212,10 +216,12 @@ msgstr "Bruk Ctrl-tasten for å velge flere"
 msgid "Don't Filter"
 msgstr "Ikke filtrer"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "Mann"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "Kvinne"
@@ -287,6 +293,7 @@ msgstr "Tittel"
 msgid "Suffix"
 msgstr "Suffiks"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "Kjønn"
@@ -295,6 +302,7 @@ msgstr "Kjønn"
 msgid "Donation Envelope"
 msgstr "Donasjon konvolutt"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "Home Phone"
@@ -347,6 +355,7 @@ msgstr "MERK: Separatorer (streker, etc.) eller mangel derav ikke saken"
 msgid "Default country if none specified otherwise"
 msgstr "Standardland hvis ingen spesifisert"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "Klassifisering"
@@ -400,6 +409,7 @@ msgstr "Ingen etternavn angitt!"
 msgid "Add Cart to Family"
 msgstr "Legg Cart til Family"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Navn"
@@ -593,6 +603,7 @@ msgstr "Handling"
 msgid "No Attendees Assigned to Event"
 msgstr "Ingen deltakere Assigned til Event"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Member"
 msgstr "Medlem"
@@ -893,6 +904,7 @@ msgstr "Familie"
 msgid "Type"
 msgstr "Type"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Fiscal Year"
 msgstr "Regnskapsåret"
@@ -909,6 +921,7 @@ msgstr "Fond"
 msgid "Bank"
 msgstr "Bank"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Month"
 msgstr "Måned"
@@ -1253,10 +1266,6 @@ msgstr "Unk"
 #: 
 msgid "Family List"
 msgstr "Familie Liste"
-
-#: 
-msgid "Add Family"
-msgstr "Legg til Familie"
 
 #: 
 msgid "Created"
@@ -1782,10 +1791,6 @@ msgstr "Snitt med Cart"
 #: 
 msgid "Remove from Cart"
 msgstr "Fjern fra handlekurven"
-
-#: 
-msgid "Text for Event ID: "
-msgstr "Tekst for hendelses-ID:"
 
 #: 
 msgid "Group Editor"
@@ -2728,6 +2733,7 @@ msgstr "Eiendom Liste"
 msgid "Add a New"
 msgstr "Legg til en ny"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Eiendom"
@@ -2773,6 +2779,7 @@ msgstr "Eiendomstype List"
 msgid "Add a New Property Type"
 msgstr "Legg til en ny Eiendomstype"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Class"
 msgstr "Klasse"

@@ -76,7 +76,7 @@ require_once 'Include/Header.php';
             </div>
             <div class="col-lg-4">
               <label for="Comment"><?php echo gettext('Comment:'); ?></label>
-              <input type="text" class="form-control" name="Comment" id="Comment" value="<?php echo $thisDeposit->getComment(); ?>"/>
+              <input type="text" class="form-control" name="Comment" id="Comment" value="<?php echo htmlspecialchars($thisDeposit->getComment(), ENT_QUOTES, 'UTF-8'); ?>"/>
             </div>
             <div class="col-lg-4">
               <label for="Closed"><?php echo gettext('Closed:'); ?></label>
@@ -86,10 +86,10 @@ require_once 'Include/Header.php';
             </div>
           </div>
           <div class="row p-2">
-            <div class="col-lg-5 m-2" style="text-align:center">
+            <div class="col-lg-5 m-2 text-center">
               <input type="submit" class="btn btn-primary" value="<?php echo gettext('Save'); ?>" name="DepositSlipSubmit">
             </div>
-            <div class="col-lg-5 m-2" style="text-align:center">
+            <div class="col-lg-5 m-2 text-center">
               <input type="button" class="btn btn-default" value="<?php echo gettext('Deposit Slip Report'); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo $thisDeposit->getId() ?>/pdf');">
             </div>
           </div>
@@ -109,7 +109,7 @@ require_once 'Include/Header.php';
       <div class="card-body">
         <div class="col-lg-6">
           <canvas id="type-donut" style="height: 250px;"></canvas>
-          <ul style="margin:0px; border:0px; padding:0px;">
+          <ul class="list-unstyled m-0">
           <?php
           // Get deposit totals
             echo '<li><b>TOTAL (' . $thisDeposit->getPledges()->count() . '):</b> $' . $thisDeposit->getVirtualColumn('totalAmount') . '</li>';
@@ -124,7 +124,7 @@ require_once 'Include/Header.php';
         </div>
          <div class="col-lg-6">
           <canvas id="fund-donut" style="height:250px"></canvas>
-          <ul style="margin:0px; border:0px; padding:0px;">
+          <ul class="list-unstyled m-0">
           <?php
             foreach ($thisDeposit->getFundTotals() as $fund) {
                 echo '<li><b>' . $fund['Name'] . '</b>: $' . $fund['Total'] . '</li>';

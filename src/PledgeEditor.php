@@ -279,20 +279,20 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     //$iEnvelope = InputUtils::legacyFilterInput($_POST["Envelope"], 'int');
 
     if ($PledgeOrPayment === 'Payment' && !$iCheckNo && $iMethod === 'CHECK') {
-        $sCheckNoError = '<span style="color: red; ">' . gettext('Must specify non-zero check number') . '</span>';
+        $sCheckNoError = '<span class="text-danger">' . gettext('Must specify non-zero check number') . '</span>';
         $bErrorFlag = true;
     }
 
     // detect check inconsistencies
     if ($PledgeOrPayment === 'Payment' && $iCheckNo) {
         if ($iMethod === 'CASH') {
-            $sCheckNoError = '<span style="color: red; ">' . gettext("Check number not valid for 'CASH' payment") . '</span>';
+            $sCheckNoError = '<span class="text-danger">' . gettext("Check number not valid for 'CASH' payment") . '</span>';
             $bErrorFlag = true;
         } elseif ($iMethod === 'CHECK' && !$sGroupKey) {
             $chkKey = $iFamily . '|' . $iCheckNo;
             if (array_key_exists($chkKey, $checkHash)) {
                 $text = "Check number '" . $iCheckNo . "' for selected family already exists.";
-                $sCheckNoError = '<span style="color: red; ">' . gettext($text) . '</span>';
+                $sCheckNoError = '<span class="text-danger">' . gettext($text) . '</span>';
                 $bErrorFlag = true;
             }
         }
@@ -302,7 +302,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     if (strlen($dDate) > 0) {
         list($iYear, $iMonth, $iDay) = sscanf($dDate, '%04d-%02d-%02d');
         if (!checkdate($iMonth, $iDay, $iYear)) {
-            $sDateError = '<span style="color: red; ">' . gettext('Not a valid date') . '</span>';
+            $sDateError = '<span class="text-danger">' . gettext('Not a valid date') . '</span>';
             $bErrorFlag = true;
         }
     }
@@ -458,7 +458,7 @@ if ($PledgeOrPayment === 'Pledge') {
     //$checkCount = mysqli_num_rows ($rsChecksThisDep);
     $roomForDeposits = $checksFit - $depositCount;
     if ($roomForDeposits <= 0) {
-        $sPageTitle .= '<span style="color: red;">';
+        $sPageTitle .= '<span class="text-danger">';
     }
     $sPageTitle .= ' (' . $roomForDeposits . gettext(' more entries will fit.') . ')';
     if ($roomForDeposits <= 0) {
@@ -473,7 +473,7 @@ if ($PledgeOrPayment === 'Pledge') {
 } // end if $PledgeOrPayment
 
 if ($dep_Closed && $sGroupKey && $PledgeOrPayment === 'Payment') {
-    $sPageTitle .= ' &nbsp; <span style="color: red;">' . gettext('Deposit closed') . '</span>';
+    $sPageTitle .= ' &nbsp; <span class="text-danger">' . gettext('Deposit closed') . '</span>';
 }
 
 //$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
@@ -514,7 +514,7 @@ require_once 'Include/Header.php';
                             $dDate = $dep_Date;
                         } ?>
                         <label for="Date"><?= gettext('Date') ?></label>
-                        <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>"><span style="color: red;"><?= $sDateError ?></span>
+                        <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>"><span class="text-danger"><?= $sDateError ?></span>
                         <label for="FYID"><?= gettext('Fiscal Year') ?></label>
                         <?php PrintFYIDSelect('FYID', $iFYID) ?>
 
@@ -608,7 +608,7 @@ require_once 'Include/Header.php';
                             ?>
                             <div id="checkNumberGroup">
                                 <label for="CheckNo"><?= gettext('Check') ?> #</label>
-                                <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>" /><span style="color: red;"><?= $sCheckNoError ?></span>
+                                <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>" /><span class="text-danger"><?= $sCheckNoError ?></span>
                             </div>
                             <?php
                         } ?>
@@ -621,7 +621,7 @@ require_once 'Include/Header.php';
                     <div class="col-lg-6">
                         <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type === 'Bank' || $PledgeOrPayment === 'Pledge')) {
                             ?>
-                            <td align="center" class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
+                            <td class="text-center <?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
                                 <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea>
                             </td>
                             <?php
@@ -688,7 +688,7 @@ require_once 'Include/Header.php';
                                     <td class="TextColumn"><?= $fun_name ?></td>
                                     <td class="TextColumn">
                                         <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] : "") ?>"><br>
-                                        <span style="color: red;"><?= $sAmountError[$fun_id] ?></span>
+                                        <span class="text-danger"><?= $sAmountError[$fun_id] ?></span>
                                     </td>
                                     <?php
                                     if ($bEnableNonDeductible) {
@@ -696,7 +696,7 @@ require_once 'Include/Header.php';
                                         <td class="TextColumn">
                                             <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] : "") ?>" />
                                             <br>
-                                            <span style="color: red;"><?= $sNonDeductibleError[$fun_id] ?></span>
+                                            <span class="text-danger"><?= $sNonDeductibleError[$fun_id] ?></span>
                                         </td>
                                         <?php
                                     } ?>

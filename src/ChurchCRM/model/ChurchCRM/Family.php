@@ -407,4 +407,25 @@ class Family extends BaseFamily implements PhotoInterface
 
         return implode(', ', $names);
     }
+
+    public function checkAgainstCart(): bool
+    {
+        if (!isset($_SESSION['aPeopleCart']) || empty($_SESSION['aPeopleCart'])) {
+            return false;
+        }
+
+        $familyMembers = $this->getPeople();
+        if (empty($familyMembers)) {
+            return false;
+        }
+
+        // Check if ALL family members are in the cart
+        foreach ($familyMembers as $person) {
+            if (!in_array($person->getId(), $_SESSION['aPeopleCart'], false)) {
+                return false; // At least one member is not in cart
+            }
+        }
+
+        return true; // All members are in cart
+    }
 }

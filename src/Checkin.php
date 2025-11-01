@@ -66,7 +66,7 @@ if ($EventID > 0) {
                         <label class="col-md-2 control-label"><?= gettext('Select Event'); ?></label>
                         <div class="col-md-10 inputGroupContainer">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-calendar-check fa-2xl"> </i> </span> &nbsp;
+                                <span class="input-group-addon"><i class="fa-solid fa-calendar-check fa-2xl"> </i> </span> &nbsp;
                                 <select id="EventID" name="EventID" class="form-control" onchange="this.form.submit()">
                                     <option value="<?= $EventID; ?>"
                                             disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?> ><?= gettext('Select event') ?></option>
@@ -118,7 +118,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                             <label for="child" class="col-sm-2 control-label"><?= gettext("Person's Name") ?></label>
                             <div class="col-sm-5 inputGroupContainer">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-child fa-2xl"></i></span> &nbsp;
+                                    <span class="input-group-addon"><i class="fa-solid fa-child fa-2xl"></i></span> &nbsp;
                                     <input type="text" class="form-control" id="child"
                                            placeholder="<?= gettext("Person's Name"); ?>" required tabindex=1>
                                 </div>
@@ -133,7 +133,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                                    class="col-sm-2 control-label"><?= gettext('Adult Name (Optional)') ?></label>
                             <div class="col-sm-5 inputGroupContainer">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa-2xl"></i></span> &nbsp;
+                                    <span class="input-group-addon"><i class="fa-solid fa-user fa-2xl"></i></span> &nbsp;
                                     <input type="text" class="form-control" id="adult"
                                            placeholder="<?= gettext('Checked in By (Optional)'); ?>" tabindex=2>
                                 </div>
@@ -244,7 +244,7 @@ if (
                                     <div class="form-group">
                                         <label><?= gettext('Adult Checking Out Person') ?>:</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <span class="input-group-addon"><i class="fa-solid fa-user"></i></span>
                                             <input type="text" id="adultout" name="adult" class="form-control"
                                                placeholder="<?= gettext('Adult Name (Optional)') ?>">
                                             </div>
@@ -293,7 +293,7 @@ if (isset($_POST['EventID'])) {
                     <th><?= gettext('Checked In By') ?></th>
                     <th><?= gettext('Checked Out Time') ?></th>
                     <th><?= gettext('Checked Out By') ?></th>
-                    <th nowrap><?= gettext('Action') ?></th>
+                    <th class="text-nowrap"><?= gettext('Action') ?></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -335,7 +335,7 @@ if (isset($_POST['EventID'])) {
                         <td><?= $per->getCheckoutDate() ? date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat'))  : '' ?></td>
                         <td><?= $sCheckoutby ?></td>
 
-                        <td align="center">
+                        <td class="text-center">
                             <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
                                 <input type="hidden" name="child-id" value="<?= $per->getPersonId() ?>">
                                 <input type="hidden" name="EventID" value="<?= $EventID ?>">
@@ -350,7 +350,7 @@ if (isset($_POST['EventID'])) {
                                     <?php
                                 } else {
                                     ?>
-                                    <i class="fa fa-check-circle"></i>
+                                    <i class="fa-solid fa-check-circle"></i>
                                     <?php
                                 } ?>
                             </form>

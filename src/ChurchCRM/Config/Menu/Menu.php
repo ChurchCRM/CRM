@@ -50,9 +50,12 @@ class Menu
     private static function getCalendarMenu(): MenuItem
     {
         $calendarMenu = new MenuItem(gettext('Calendar'), 'v2/calendar', SystemConfig::getBooleanValue('bEnabledCalendar'), 'fa-calendar');
-        $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-blue'));
-        $calendarMenu->addCounter(new MenuCounter('BirthdateNumber', 'bg-red'));
-        $calendarMenu->addCounter(new MenuCounter('EventsNumber', 'bg-yellow'));
+        // Anniversaries calendar (ID 1) - black background
+        $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark', 0, gettext("Today's Wedding Anniversaries")));
+        // Birthdays calendar (ID 0) - blue background  
+        $calendarMenu->addCounter(new MenuCounter('BirthdateNumber', 'bg-primary', 0, gettext("Today's Birthdays")));
+        // Events happening today - yellow/warning background
+        $calendarMenu->addCounter(new MenuCounter('EventsNumber', 'bg-warning', 0, gettext('Events Today')));
 
         return $calendarMenu;
     }
@@ -214,6 +217,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', AuthenticationManager::getCurrentUser()->isCSVExport()));
         $menu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'KioskManager.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Debug'), 'v2/admin/debug', AuthenticationManager::getCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext('System Logs'), 'v2/admin/logs', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Custom Menus'), 'v2/admin/menus', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Reset System'), 'v2/admin/database/reset', AuthenticationManager::getCurrentUser()->isAdmin()));
 

@@ -1,7 +1,0 @@
-# This is the test docker-compose.yml override file for Github Actions -
-# it is not intended to be used on it's own but instead layered into the
-# normal test docker compose so it can be ran in CI.
-services:
-  webserver:
-    user: 1001:121
-

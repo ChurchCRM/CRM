@@ -8,7 +8,7 @@
         "fullCalendar": true,
         "fullCalendarLocale": "af",
         "datePicker": false,
-        "select2": false
+        "select2": true
     },
     "Albanian": {
         "poEditor": "sq",
@@ -18,16 +18,6 @@
         "dataTables": "Albanian",
         "fullCalendar": true,
         "fullCalendarLocale": "sq",
-        "datePicker": true,
-        "select2": false
-    },
-    "Arabic - Egypt": {
-        "poEditor": "ar",
-        "locale": "ar_EG",
-        "languageCode": "ar",
-        "countryCode": "EG",
-        "dataTables": "Arabic",
-        "fullCalendar": true,
         "datePicker": true,
         "select2": true
     },
@@ -40,6 +30,16 @@
         "fullCalendar": false,
         "datePicker": false,
         "select2": false
+    },
+    "Arabic - Egypt": {
+        "poEditor": "ar",
+        "locale": "ar_EG",
+        "languageCode": "ar",
+        "countryCode": "EG",
+        "dataTables": "Arabic",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
     },
     "Chinese - China": {
         "poEditor": "zh-CN",
@@ -113,21 +113,21 @@
         "datePicker": false,
         "select2": false
     },
-    "English - South Africa": {
-        "poEditor": "en-za",
-        "locale": "en_ZA",
-        "languageCode": "en",
-        "countryCode": "ZA",
-        "dataTables": "English",
-        "fullCalendar": false,
-        "datePicker": false,
-        "select2": false
-    },
     "English - Jamaica": {
         "poEditor": "en-jm",
         "locale": "en_JM",
         "languageCode": "en",
         "countryCode": "JM",
+        "dataTables": "English",
+        "fullCalendar": false,
+        "datePicker": false,
+        "select2": false
+    },
+    "English - South Africa": {
+        "poEditor": "en-za",
+        "locale": "en_ZA",
+        "languageCode": "en",
+        "countryCode": "ZA",
         "dataTables": "English",
         "fullCalendar": false,
         "datePicker": false,
@@ -254,6 +254,17 @@
         "datePicker": true,
         "select2": true
     },
+    "Korean": {
+        "poEditor": "ko",
+        "locale": "ko_KR",
+        "languageCode": "ko",
+        "countryCode": "KR",
+        "dataTables": "Korean",
+        "fullCalendar": true,
+        "fullCalendarLocale": "ko",
+        "datePicker": true,
+        "select2": true
+    },
     "Norwegian": {
         "poEditor": "nb",
         "locale": "nb_NO",
@@ -287,13 +298,13 @@
     "Portuguese - Portugal": {
         "poEditor": "pt",
         "locale": "pt_PT",
-        "languageCode": "pt-PT",
+        "languageCode": "pt",
         "countryCode": "PT",
         "dataTables": "Portuguese",
         "fullCalendar": true,
         "fullCalendarLocale": "pt",
-        "datePicker": false,
-        "select2": false
+        "datePicker": true,
+        "select2": true
     },
     "Romanian - Romania": {
         "poEditor": "ro",
@@ -311,6 +322,16 @@
         "languageCode": "ru",
         "countryCode": "RU",
         "dataTables": "Russian",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true
+    },
+    "Sami (Northern) (Sweden)": {
+        "poEditor": "sv",
+        "locale": "sv_SE",
+        "languageCode": "sv",
+        "countryCode": "SE",
+        "dataTables": "Swedish",
         "fullCalendar": true,
         "datePicker": true,
         "select2": true
@@ -335,26 +356,6 @@
         "datePicker": true,
         "select2": false
     },
-    "Sami (Northern) (Sweden)": {
-        "poEditor": "sv",
-        "locale": "sv_SE",
-        "languageCode": "sv",
-        "countryCode": "SE",
-        "dataTables": "Swedish",
-        "fullCalendar": true,
-        "datePicker": true,
-        "select2": true
-    },
-    "Telugu - India": {
-        "poEditor": "te",
-        "locale": "te_IN",
-        "languageCode": "te",
-        "countryCode": "IN",
-        "dataTables": "Tamil",
-        "fullCalendar": false,
-        "datePicker": false,
-        "select2": false
-    },
     "Tamil - India": {
         "poEditor": "ta",
         "locale": "ta_IN",
@@ -364,6 +365,16 @@
         "fullCalendar": true,
         "fullCalendarLocale": "ta-in",
         "datePicker": true,
+        "select2": false
+    },
+    "Telugu - India": {
+        "poEditor": "te",
+        "locale": "te_IN",
+        "languageCode": "te",
+        "countryCode": "IN",
+        "dataTables": "Tamil",
+        "fullCalendar": false,
+        "datePicker": false,
         "select2": false
     },
     "Thai": {

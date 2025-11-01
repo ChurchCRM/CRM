@@ -71,7 +71,7 @@
     "User must have MenuOptions permission": "User must have Menu Options permission",
     "Invalid request: Missing calendar id": "Invalid request: Missing calendar ID",
     "Not Found: Unknown calendar id": "Not Found: Unknown calendar ID",
-    "no found or user without an email": "not found or user without an email",
+    "not found or user without an email": "not found or user without an email",
     "Foreground Color": "Foreground Colour",
     "Background Color": "Background Colour",
     "invalid event type id": "invalid event type ID",

@@ -1,9 +1,16 @@
+/**
+ * ChurchCRM Two-Factor Authentication Enrollment Styles
+ * 
+ * Custom styles for 2FA enrollment process UI.
+ * Component-specific - no Bootstrap duplicates.
+ */
+
 #TwoFAEnrollmentSteps div.col-lg-4 {
     text-align: center;
 }
 
-#TwoFAEnrollmentSteps div.col-lg-4 i{
-    font-size: 100px
+#TwoFAEnrollmentSteps div.col-lg-4 i {
+    font-size: 100px;
 }
 
 #TwoFAEnrollmentSteps button.btn-success {
@@ -13,4 +20,3 @@
     width: 40%;
     min-height: 60px;
 }
-

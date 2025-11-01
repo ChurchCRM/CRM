@@ -32,10 +32,12 @@ msgstr "E pacaktuar"
 msgid "None"
 msgstr "Asnjë"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "Qyteti"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "Shteti"
@@ -48,6 +50,7 @@ msgstr "Shteti"
 msgid "Phone"
 msgstr "Telefon"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "E-posta"
@@ -130,6 +133,7 @@ msgstr "Puna / tjera Email"
 msgid "Membership Date"
 msgstr "Anëtarësia Data"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Family Role"
 msgstr "Roli i familjes"
@@ -166,10 +170,12 @@ msgstr "Përdorni Ctrl Key për të zgjedhur të shumta"
 msgid "Don't Filter"
 msgstr "Mos Filter"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "Mashkull"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "Femër"
@@ -239,6 +245,7 @@ msgstr "Titull"
 msgid "Suffix"
 msgstr "Prapashtesë"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "Gjini"
@@ -247,6 +254,7 @@ msgstr "Gjini"
 msgid "Donation Envelope"
 msgstr "Dhurim Zarf"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "Faqja Telefon"
@@ -299,6 +307,7 @@ msgstr "SHËNIM: ndarësit (dashes, etj) ose mungesa e tij nuk kanë rëndësi"
 msgid "Default country if none specified otherwise"
 msgstr "Vendi Default qoftë se asnjë specifikuara ndryshe"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "Klasifikimi"
@@ -351,6 +360,7 @@ msgstr "Asnjë emër i familjes hyri!"
 msgid "Add Cart to Family"
 msgstr "Shto te Shporta Family"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "Emëri"
@@ -535,6 +545,7 @@ msgstr "Veprim"
 msgid "No Attendees Assigned to Event"
 msgstr "Nuk Pjesëmarrësit caktuar për Event"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Member"
 msgstr "Anëtar"
@@ -792,6 +803,7 @@ msgstr "Familje"
 msgid "Type"
 msgstr "Lloj"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Fiscal Year"
 msgstr "Viti fiskal"
@@ -808,6 +820,7 @@ msgstr "Fond"
 msgid "Bank"
 msgstr "Banka"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Month"
 msgstr "Muaj"
@@ -1538,10 +1551,6 @@ msgid "Remove from Cart"
 msgstr "Hiq nga Shportë"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Tekst per ID Event: "
-
-#: 
 msgid "Group Editor"
 msgstr "Grupi Editor"
 
@@ -2217,6 +2226,7 @@ msgstr "Lista e Pronës"
 msgid "Add a New"
 msgstr "Shto Një i ri"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Tipari (property)"
@@ -2261,6 +2271,7 @@ msgstr "Lista Tipi i Pronës"
 msgid "Add a New Property Type"
 msgstr "Shto një re Tipi i Pronës"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Class"
 msgstr "Klasë"

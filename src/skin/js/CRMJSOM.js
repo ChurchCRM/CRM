@@ -71,202 +71,6 @@ window.CRM.VerifyThenLoadAPIContent = function (url) {
     });
 };
 
-window.CRM.cart = {
-    empty: function (callback) {
-        window.CRM.APIRequest({
-            method: "DELETE",
-            path: "cart/",
-        }).done(function (data) {
-            if (callback) {
-                callback(data);
-                window.CRM.cart.refresh();
-            } else {
-                window.CRM.cart.refresh();
-            }
-        });
-    },
-    emptyToGroup: function (callback) {
-        window.CRM.groups.promptSelection(
-            {
-                Type:
-                    window.CRM.groups.selectTypes.Group |
-                    window.CRM.groups.selectTypes.Role,
-            },
-            function (selectedRole) {
-                window.CRM.APIRequest({
-                    method: "POST",
-                    path: "cart/emptyToGroup",
-                    data: JSON.stringify({
-                        groupID: selectedRole.GroupID,
-                        groupRoleID: selectedRole.RoleID,
-                    }),
-                }).done(function (data) {
-                    window.CRM.cart.refresh();
-                    if (callback) {
-                        callback(data);
-                    }
-                });
-            },
-        );
-    },
-    emptytoFamily: function () {},
-    emptytoEvent: function () {},
-    addPerson: function (Persons, callback) {
-        window.CRM.APIRequest({
-            method: "POST",
-            path: "cart/",
-            data: JSON.stringify({ Persons: Persons }),
-        }).done(function (data) {
-            window.CRM.cart.refresh();
-            if (callback) {
-                callback(data);
-            }
-        });
-    },
-    removePerson: function (Persons, callback) {
-        window.CRM.APIRequest({
-            method: "DELETE",
-            path: "cart/",
-            data: JSON.stringify({ Persons: Persons }),
-        }).done(function (data) {
-            window.CRM.cart.refresh();
-            if (callback) {
-                callback(data);
-            }
-        });
-    },
-    addFamily: function (FamilyID, callback) {
-        window.CRM.APIRequest({
-            method: "POST",
-            path: "cart/",
-            data: JSON.stringify({ Family: FamilyID }),
-        }).done(function (data) {
-            window.CRM.cart.refresh();
-            if (callback) {
-                callback(data);
-            }
-        });
-    },
-    addGroup: function (GroupID, callback) {
-        window.CRM.APIRequest({
-            method: "POST",
-            path: "cart/",
-            data: JSON.stringify({ Group: GroupID }),
-        }).done(function (data) {
-            window.CRM.cart.refresh();
-            if (callback) {
-                callback(data);
-            }
-        });
-    },
-    removeGroup: function (GroupID, callback) {
-        window.CRM.APIRequest({
-            method: "POST",
-            path: "cart/removeGroup",
-            data: JSON.stringify({ Group: GroupID }),
-        }).done(function (data) {
-            window.CRM.cart.refresh();
-            if (callback) {
-                callback(data);
-            }
-        });
-    },
-    refresh: function () {
-        window.CRM.APIRequest({
-            method: "GET",
-            path: "cart/",
-            suppressErrorDialog: true,
-        }).done(function (data) {
-            window.CRM.cart.updatePage(data.PeopleCart);
-            window.scrollTo(0, 0);
-            $("#iconCount").text(data.PeopleCart.length);
-            var cartDropdownMenu;
-            if (data.PeopleCart.length > 0) {
-                cartDropdownMenu =
-                    '\
-              <li id="showWhenCartNotEmpty">\
-                          <a  class="dropdown-item" href="' +
-                    window.CRM.root +
-                    '/v2/cart">\
-                              <i class="fa fa-shopping-cart text-green"></i> ' +
-                    i18next.t("View Cart") +
-                    '\
-                          </a>\
-                          <a  class="dropdown-item emptyCart" >\
-                              <i class="fa fa-trash text-danger"></i> ' +
-                    i18next.t("Empty Cart") +
-                    ' \
-                          </a>\
-                           <a id="emptyCartToGroup" class="dropdown-item" >\
-                              <i class="fa fa-object-ungroup text-info"></i> ' +
-                    i18next.t("Empty Cart to Group") +
-                    '\
-                          </a>\
-                          <a href="' +
-                    window.CRM.root +
-                    '/CartToFamily.php"  class="dropdown-item">\
-                              <i class="fa fa fa-users text-info"></i> ' +
-                    i18next.t("Empty Cart to Family") +
-                    '\
-                          </a>\
-                          <a href="' +
-                    window.CRM.root +
-                    '/CartToEvent.php" class="dropdown-item">\
-                              <i class="fas fa-clipboard-list text-info"></i> ' +
-                    i18next.t("Empty Cart to Event") +
-                    '\
-                          </a>\
-                          <a href="' +
-                    window.CRM.root +
-                    '/MapUsingGoogle.php?GroupID=0" class="dropdown-item">\
-                              <i class="fa fa-map-marker text-info"></i> ' +
-                    i18next.t("Map Cart") +
-                    "\
-                          </a>\
-              </li>";
-            } else {
-                cartDropdownMenu =
-                    '\
-               <a class="dropdown-item">' +
-                    i18next.t("Your Cart is Empty") +
-                    "</a>";
-            }
-            $("#cart-dropdown-menu").html(cartDropdownMenu);
-            $("#CartBlock")
-                .animate({ left: -10 + "px" }, 30)
-                .animate({ left: +10 + "px" }, 30)
-                .animate({ left: 0 + "px" }, 30);
-        });
-    },
-    updatePage: function (cartPeople) {
-        personButtons = $("a[data-cartpersonid]");
-        $(personButtons).each(function (index, personButton) {
-            personID = $(personButton).data("cartpersonid");
-            if (cartPeople.includes(personID)) {
-                $(personButton).addClass("RemoveFromPeopleCart");
-                $(personButton).removeClass("AddToPeopleCart");
-                fa = $(personButton).find("i.fa.fa-inverse");
-                $(fa).addClass("fa-remove");
-                $(fa).removeClass("fa-cart-plus");
-                text = $(personButton).find("span.cartActionDescription");
-                if (text) {
-                    $(text).text(i18next.t("Remove from Cart"));
-                }
-            } else {
-                $(personButton).addClass("AddToPeopleCart");
-                $(personButton).removeClass("RemoveFromPeopleCart");
-                fa = $(personButton).find("i.fa.fa-inverse");
-                $(fa).removeClass("fa-remove");
-                $(fa).addClass("fa-cart-plus");
-                text = $(personButton).find("span.cartActionDescription");
-                if (text) {
-                    $(text).text(i18next.t("Add to Cart"));
-                }
-            }
-        });
-    },
-};
-
 window.CRM.kiosks = {
     assignmentTypes: {
         1: "Event Attendance",
@@ -402,6 +206,7 @@ window.CRM.groups = {
                         });
                         $("#targetRoleSelection").select2({
                             data: rolesList,
+                            dropdownParent: $(".bootbox"),
                         });
                     });
             };
@@ -435,6 +240,7 @@ window.CRM.groups = {
                 .removeAttr("tabindex");
             $groupSelect2 = $("#targetGroupSelection").select2({
                 data: groupsList,
+                dropdownParent: $(".bootbox"),
             });
 
             $groupSelect2.on("select2:select", function (e) {
@@ -454,6 +260,7 @@ window.CRM.groups = {
                         });
                         $("#targetRoleSelection").select2({
                             data: rolesList,
+                            dropdownParent: $(".bootbox"),
                         });
                     });
             });
@@ -505,7 +312,7 @@ window.CRM.groups = {
                         dataType: "json",
                     }).done(function (data) {
                         //yippie, we got something good back from the server
-                        window.CRM.cart.refresh();
+                        window.CRM.cartManager.refreshCartCount();
                         if (callbackM) {
                             callbackM(data);
                         }
@@ -612,13 +419,9 @@ function LimitTextSize(theTextArea, size) {
 }
 
 function popUp(URL) {
-    var day = new Date();
-    var id = day.getTime();
-    eval(
-        "page" +
-            id +
-            " = window.open(URL, '" +
-            id +
-            "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');",
+    window.open(
+        URL,
+        "popup-window",
+        "toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left=100,top=50,noopener,noreferrer",
     );
 }

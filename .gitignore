@@ -8,9 +8,19 @@ node_modules
 BuildConfig.json
 security-checker.phar
 
+# Project temporary files
+temp/
+
 # Uploaded Images
-src/Images/Family
-src/Images/Person
+src/Images/Family/*
+!src/Images/Family/thumbnails/
+src/Images/Family/thumbnails/*
+!src/Images/Family/thumbnails/.gitkeep
+
+src/Images/Person/*
+!src/Images/Person/thumbnails/
+src/Images/Person/thumbnails/*
+!src/Images/Person/thumbnails/.gitkeep
 
 # SASS
 .sass-cache
@@ -25,11 +35,11 @@ src/skin/churchcrm.min.css
 src/locale/datatables
 src/locale/js
 
+# AI notes (local only, not committed)
+ai-notes/
 # Configuration files with passwords
 src/Include/Config.php
 
-target
-temp_attach
 src/ChurchCRM/model/ChurchCRM/Base
 src/ChurchCRM/model/ChurchCRM/Map
 src/signatures.json
@@ -40,7 +50,7 @@ src/logs/*.log
 error.log
 
 nbproject/*
-/src/skin/js-react/
+src/skin/v2/
 .DS_Store
 
 src/Upgrade/*

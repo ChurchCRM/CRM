@@ -14,9 +14,7 @@ $taskService = new TaskService();
 ob_start();
 
 require_once 'Header-function.php';
-if (SystemConfig::debugEnabled()) {
-    require_once 'Header-Security.php';
-}
+require_once 'Header-Security.php';
 
 // Top level menu index counter
 $MenuFirst = 1;
@@ -45,7 +43,7 @@ $MenuFirst = 1;
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa-solid fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="<?= SystemURLs::getRootPath()?>/" class="nav-link">Home</a>
@@ -59,7 +57,7 @@ $MenuFirst = 1;
             <!-- Support Dropdown Menu -->
             <li class="nav-item dropdown d-none" id="systemUpdateMenuItem">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true" id="upgradeMenu" title="<?= gettext('New Release') ?>">
-                    <i class="fas fa-download"></i>
+                    <i class="fa-solid fa-download"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
@@ -81,12 +79,12 @@ $MenuFirst = 1;
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" class="dropdown-item">
-                        <i class="fas fa-people-carry"></i> <?= gettext("Help translate this project")?>
+                        <i class="fa-solid fa-people-carry"></i> <?= gettext("Help translate this project")?>
                     </a>
                     <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
                     <div class="dropdown-divider"></div>
                     <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
-                        <i class="fas fa-user-edit"></i> <span id="translationInfo"></span>
+                        <i class="fa-solid fa-user-edit"></i> <span id="translationInfo"></span>
                     </a>
                     <?php } ?>
                 </div>
@@ -95,8 +93,8 @@ $MenuFirst = 1;
             <!-- Cart Functions: style can be found in dropdown.less -->
             <li class="nav-item dropdown show">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="badge badge-info navbar-badge"><?= Cart::countPeople() ?></span>
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span class="badge badge-info navbar-badge" id="iconCount"><?= Cart::countPeople() ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <span id="cart-dropdown-menu"></span>
@@ -106,18 +104,18 @@ $MenuFirst = 1;
             <!-- Support Dropdown Menu -->
             <li class="nav-item dropdown show">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true" id="supportMenu">
-                    <i class="fas fa-headset"></i>
+                    <i class="fa-solid fa-headset"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item" title="<?= gettext('Help & Manual') ?>">
-                        <i class="fas fa-book-reader"></i> <?= gettext('Help & Manual') ?>
+                        <i class="fa-solid fa-book-reader"></i> <?= gettext('Help & Manual') ?>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="#" id="reportIssue" class="dropdown-item" data-toggle="modal" data-target="#IssueReportModal"  title="<?= gettext('Report an issue') ?>">
-                        <i class="fas fa-bug"></i> <?= gettext('Report an issue') ?>
+                        <i class="fa-solid fa-bug"></i> <?= gettext('Report an issue') ?>
                     </a>
                     <a href="https://gitter.im/ChurchCRM/CRM" target="_blank" class="dropdown-item" title="<?= gettext('Developer Chat') ?>">
-                        <i class="far fa-comment-dots"></i> <?= gettext('Developer Chat') ?>
+                        <i class="fa-regular fa-comment-dots"></i> <?= gettext('Developer Chat') ?>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="https://github.com/ChurchCRM/CRM/wiki/Contributing" target="_blank" class="dropdown-item" title="<?= gettext('Contributing') ?>">
@@ -133,7 +131,7 @@ $MenuFirst = 1;
             ?>
             <li class="nav-item">
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="far fa-bell"></i>
+                    <i class="fa-regular fa-bell"></i>
                     <span class="badge badge-warning navbar-badge"><?= $taskSize ?></span>
                 </a>
             </li>
@@ -141,30 +139,30 @@ $MenuFirst = 1;
             <!-- Support Dropdown Menu -->
             <li class="nav-item dropdown show">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
-                    <i class="fas fa-user"></i> <?= AuthenticationManager::getCurrentUser()->getName() ?>
+                    <i class="fa-solid fa-user"></i> <?= AuthenticationManager::getCurrentUser()->getName() ?>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
-                      <i class="fa fa-home"></i> <?= gettext("Profile") ?></a>
+                      <i class="fa-solid fa-home"></i> <?= gettext("Profile") ?></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="dropdown-item">
-                      <i class="fa fa-key"></i> <?= gettext('Change Password') ?></a>
+                      <i class="fa-solid fa-key"></i> <?= gettext('Change Password') ?></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
-                      <i class="fas fa-cogs"></i> <?= gettext('Change Settings') ?></a>
+                      <i class="fa-solid fa-cogs"></i> <?= gettext('Change Settings') ?></a>
                   <?php if (LocalAuthentication::getIsTwoFactorAuthSupported()) { ?>
                       <div class="dropdown-divider"></div>
                       <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/enroll2fa" class="dropdown-item">
-                          <i class="fa fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></a>
+                          <i class="fa-solid fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></a>
                   <?php } ?>
                      <div class="dropdown-divider"></div>
                     <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">
-                      <i class="fas fa-sign-out-alt"></i> <?= gettext('Sign out') ?></a>
+                      <i class="fa-solid fa-sign-out-alt"></i> <?= gettext('Sign out') ?></a>
 
                 </div>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
+                    <i class="fa-solid fa-expand-arrows-alt"></i>
                 </a>
             </li>
         </span>
@@ -213,14 +211,8 @@ $MenuFirst = 1;
       <section class="content-header">
           <div class="container-fluid">
               <div class="row mb-2">
-                  <div class="col-sm-6">
+                  <div class="col-sm-12">
                       <h1><?= $sPageTitle; ?></h1>
-                  </div>
-                  <div class="col-sm-6">
-                      <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath()?>"><?= _("Home")?></a></li>
-                          <li class="breadcrumb-item active"><?= $sPageTitle; ?></li>
-                      </ol>
                   </div>
               </div>
           </div><!-- /.container-fluid -->

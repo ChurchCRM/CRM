@@ -140,7 +140,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
                                 formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
                                 if (array_key_exists($prop_Field, $aPropErrors)) {
-                                    echo '<span style="color: red; ">' . $aPropErrors[$prop_Field] . '</span>';
+                                    echo '<span class="text-error">' . $aPropErrors[$prop_Field] . '</span>';
                                 } ?>
                             </td>
                             <td><?= $prop_Description ?></td>
@@ -148,7 +148,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
                         <?php
                     } ?>
                     <tr>
-                        <td align="center" colspan="3">
+                        <td class="text-center" colspan="3">
                             <br><br>
                             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupPropSubmit">
                             &nbsp;

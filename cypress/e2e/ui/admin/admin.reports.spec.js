@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context("Admin Reports", () => {
+describe("Admin Reports", () => {
     it("Gen DirectoryReports", () => {
         cy.loginAdmin("DirectoryReports.php");
         cy.contains("Directory reports");

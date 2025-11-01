@@ -8,11 +8,11 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-// -- This is a login command --
+// -- Modern API command patterns --
 Cypress.Commands.add(
     "makePrivateAdminAPICall",
     (method, url, body, expectedStatus = 200) => {
-        cy.makePrivateAPICall(
+        return cy.makePrivateAPICall(
             Cypress.env("admin.api.key"),
             method,
             url,
@@ -25,7 +25,7 @@ Cypress.Commands.add(
 Cypress.Commands.add(
     "makePrivateUserAPICall",
     (method, url, body, expectedStatus = 200) => {
-        cy.makePrivateAPICall(
+        return cy.makePrivateAPICall(
             Cypress.env("user.api.key"),
             method,
             url,
@@ -38,20 +38,39 @@ Cypress.Commands.add(
 Cypress.Commands.add(
     "makePrivateAPICall",
     (key, method, url, body, expectedStatus = 200) => {
-        cy.request({
+        return cy.request({
             method: method,
             failOnStatusCode: false,
             url: url,
-            headers: { "content-type": "application/json", "x-api-key": key },
+            headers: { 
+                "content-type": "application/json", 
+                "x-api-key": key 
+            },
             body: body,
         }).then((resp) => {
-            expect(expectedStatus).to.eq(resp.status);
+            // Handle single status code or array of acceptable status codes
+            const acceptedStatuses = Array.isArray(expectedStatus) ? expectedStatus : [expectedStatus];
+            expect(resp.status).to.be.oneOf(acceptedStatuses);
 
-            if (!resp.body) {
-                return null;
-            }
+            // Return the full response object so tests can access resp.body
+            return resp;
+        });
+    },
+);
 
-            return JSON.parse(JSON.stringify(resp.body));
+// Modern API testing command with better error handling
+Cypress.Commands.add(
+    "apiRequest",
+    (options) => {
+        const defaultOptions = {
+            failOnStatusCode: false,
+            timeout: 30000,
+        };
+        
+        return cy.request({...defaultOptions, ...options}).then((response) => {
+            // Log response for debugging
+            cy.log(`API ${options.method} ${options.url} - Status: ${response.status}`);
+            return cy.wrap(response);
         });
     },
 );

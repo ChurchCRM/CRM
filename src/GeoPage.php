@@ -191,8 +191,7 @@ $families = FamilyQuery::create()
                 <label for="Family"
                        class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Select Family:') ?></label>
                 <div class="col-xs-12 col-sm-9">
-                    <select name='Family' data-placeholder="<?= gettext('Select a family') ?>" class="form-control choiceSelectBox"
-                            style="width: 100%">
+                    <select name='Family' data-placeholder="<?= gettext('Select a family') ?>" class="form-control choiceSelectBox w-100">
                         <option></option>
                         <?php
                         foreach ($families as $family) {
@@ -263,7 +262,7 @@ $families = FamilyQuery::create()
             <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Make Data File') ?></h3>
                 <div class="card-tools pull-right">
-                    <button class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
                 </div><!-- /.card-tools -->
             </div><!-- /.box-header -->
             <div class="card-body">

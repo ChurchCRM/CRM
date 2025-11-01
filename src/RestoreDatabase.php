@@ -33,8 +33,7 @@ require_once 'Include/Header.php';
 </div>
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><?= gettext('Restore Status:') ?></h3>&nbsp;<h3 class="card-title" id="restorestatus"
-                                                        style="color:red"><?= gettext('No Restore Running') ?></h3>
+    <h3 class="card-title"><?= gettext('Restore Status:') ?></h3>&nbsp;<h3 class="card-title text-danger" id="restorestatus"><?= gettext('No Restore Running') ?></h3>
     <div id="restoreMessages"></div>
     <span id="restoreNextStep"></span>
   </div>
@@ -66,7 +65,7 @@ require_once 'Include/Header.php';
       .done(function (data) {
         if (data.Messages.length > 0) {
           $.each(data.Messages, function (index, value) {
-            var inhtml = '<h4><i class="icon fa fa-ban"></i> Alert!</h4>' + value;
+            var inhtml = '<h4><i class="icon fa-solid fa-ban"></i> Alert!</h4>' + value;
             $("<div>").addClass("alert alert-danger").html(inhtml).appendTo("#restoreMessages");
           });
         }

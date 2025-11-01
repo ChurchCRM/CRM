@@ -2,13 +2,32 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\AuthService;
+use Propel\Runtime\Propel;
 
 class GroupService
 {
+    /**
+     * Add person to group-specific properties table.
+     *
+     * @param int $groupID  Group ID
+     * @param int $personID Person ID to add to group properties
+     * @return void
+     */
+    private function addPersonToGroupProperties(int $groupID, int $personID): void
+    {
+        $connection = Propel::getConnection();
+        $sql = 'INSERT IGNORE INTO groupprop_' . (int)$groupID . ' (per_ID) VALUES (:personId)';
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(':personId', $personID, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
     /**
      *  removeUserFromGroup.
      *
@@ -17,7 +36,7 @@ class GroupService
      */
     public function removeUserFromGroup(int $groupID, int $personID): void
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         $sSQL = 'DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ' . $personID . ' AND p2g2r_grp_ID = ' . $groupID;
         RunQuery($sSQL);
 
@@ -58,20 +77,17 @@ class GroupService
      */
     public function addUserToGroup(int $iGroupID, int $iPersonID, int $iRoleID): array
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         //
         // Adds a person to a group with specified role.
         // Returns false if the operation fails. (such as person already in group)
         //
-        global $cnInfoCentral;
 
         // Was a RoleID passed in?
         if ($iRoleID === 0) {
             // No, get the Default Role for this Group
-            $sSQL = 'SELECT grp_DefaultRole FROM group_grp WHERE grp_ID = ' . $iGroupID;
-            $rsRoleID = RunQuery($sSQL);
-            $Row = mysqli_fetch_row($rsRoleID);
-            $iRoleID = $Row[0];
+            $group = GroupQuery::create()->findOneById($iGroupID);
+            $iRoleID = $group->getDefaultRole();
         }
 
         $result = false;
@@ -89,15 +105,9 @@ class GroupService
 
         if ($result) {
             // Check if this group has special properties
-
-            $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = ' . $iGroupID;
-            $rsTemp = RunQuery($sSQL);
-            $rowTemp = mysqli_fetch_row($rsTemp);
-            $bHasProp = $rowTemp[0];
-
-            if ($bHasProp == 'true') {
-                $sSQL = 'INSERT INTO groupprop_' . $iGroupID . " (per_ID) VALUES ('" . $iPersonID . "')";
-                RunQuery($sSQL);
+            $group = GroupQuery::create()->findOneById($iGroupID);
+            if ($group->getHasSpecialProps()) {
+                $this->addPersonToGroupProperties($iGroupID, $iPersonID);
             }
         }
 
@@ -135,7 +145,7 @@ class GroupService
 
     public function setGroupRoleOrder(string $groupID, string $groupRoleID, string $groupRoleOrder): void
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         $sSQL = 'UPDATE list_lst
                  INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
@@ -161,7 +171,7 @@ class GroupService
 
     public function deleteGroupRole(string $groupID, string $groupRoleID): array
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         $sSQL = 'SELECT * FROM list_lst
                 INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
@@ -224,9 +234,9 @@ class GroupService
         }
     }
 
-    public function addGroupRole(string $groupID, string $groupRoleName): string
+    public function addGroupRole(string $groupID, string $groupRoleName): array
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         if (strlen($groupRoleName) === 0) {
             throw new \Exception('New field name cannot be blank');
         } else {
@@ -269,18 +279,18 @@ class GroupService
             }
         }
 
-        return json_encode([
+        return [
             'newRole' => [
                 'roleID'   => $newOptionID,
                 'roleName' => $groupRoleName,
                 'sequence' => $newOptionSequence,
             ],
-        ], JSON_THROW_ON_ERROR);
+        ];
     }
 
     public function enableGroupSpecificProperties(string $groupID): void
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         $sSQL = 'UPDATE group_grp SET grp_hasSpecialProps = true
             WHERE grp_ID = ' . $groupID;
         RunQuery($sSQL);
@@ -301,7 +311,7 @@ class GroupService
 
     public function disableGroupSpecificProperties(string $groupID): void
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         $sSQLp = 'DROP TABLE groupprop_' . $groupID;
         RunQuery($sSQLp);
 

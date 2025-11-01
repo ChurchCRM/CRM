@@ -32,10 +32,12 @@ msgstr "కేటాయించబడలేదు"
 msgid "None"
 msgstr "ఏదీ లేదు"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "City"
 msgstr "నగరం"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "State"
 msgstr "రాష్ట్రం"
@@ -48,6 +50,7 @@ msgstr "దేశం"
 msgid "Phone"
 msgstr "ఫోన్"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Email"
 msgstr "ఈమెయిల్"
@@ -157,6 +160,7 @@ msgstr "పుట్టిన / వార్షికోత్సవ తేద�
 msgid "Age / Years Married"
 msgstr "వయస్సు / వివాహిత సంవత్సరాలు"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Family Role"
 msgstr "కుటుంబ పాత్ర"
@@ -201,10 +205,12 @@ msgstr "బహుళ ఎంచుకోవడానికి Ctrl కీని �
 msgid "Don't Filter"
 msgstr "ఫిల్టర్ చేయవద్దు"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Male"
 msgstr "పురుషుడు"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Female"
 msgstr "స్త్రీ"
@@ -273,6 +279,7 @@ msgstr "శీర్షిక"
 msgid "Suffix"
 msgstr "ప్రత్యయం"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "లింగం"
@@ -281,6 +288,7 @@ msgstr "లింగం"
 msgid "Donation Envelope"
 msgstr "విరాళం ఎన్వలప్"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Home Phone"
 msgstr "ఇంటి ఫోన్"
@@ -333,6 +341,7 @@ msgstr "గమనిక: సెపరేటర్లు (డాష్‌లు �
 msgid "Default country if none specified otherwise"
 msgstr "ఏదీ పేర్కొనకపోతే డిఫాల్ట్ దేశం"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "వర్గీకరణ"
@@ -385,6 +394,7 @@ msgstr "ఇంటి పేరు నమోదు చేయలేదు!"
 msgid "Add Cart to Family"
 msgstr "కుటుంబానికి కార్ట్‌ని జోడించండి"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "పేరు"
@@ -573,6 +583,7 @@ msgstr "చర్య"
 msgid "No Attendees Assigned to Event"
 msgstr "ఈవెంట్‌కు హాజరైనవారు ఎవరూ కేటాయించబడలేదు"
 
+#. Context: queryparameteroptions_qpo
 #: 
 msgid "Member"
 msgstr "సభ్యుడు"
@@ -869,6 +880,7 @@ msgstr "కుటుంబం"
 msgid "Type"
 msgstr "టైప్ చేయండి"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Fiscal Year"
 msgstr "ఆర్థిక సంవత్సరం"
@@ -885,6 +897,7 @@ msgstr "నిధి"
 msgid "Bank"
 msgstr "బ్యాంక్"
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Month"
 msgstr "నెల"
@@ -1236,10 +1249,6 @@ msgstr "Unk"
 #: 
 msgid "Family List"
 msgstr "కుటుంబ జాబితా"
-
-#: 
-msgid "Add Family"
-msgstr "కుటుంబాన్ని జోడించండి"
 
 #: 
 msgid "Created"

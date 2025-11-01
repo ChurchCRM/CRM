@@ -7,10 +7,11 @@ use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\VersionUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();
-$_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
+$_SESSION['sSoftwareInstalledVersion'] = VersionUtils::getInstalledVersion();
 
 // Basic security checks:
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
@@ -260,7 +261,7 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
 {
     if (SystemConfig::getValue('bShowFamilyData')) {
         if ($bFormat) {
-            $sFamilyInfoBegin = "<span style='color: red;'>";
+            $sFamilyInfoBegin = "<span class='text-danger'>";
             $sFamilyInfoEnd = '</span>';
         }
 
@@ -687,7 +688,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             // code rajouté par Philippe Logel
             echo '<div class="input-group">' .
             '<div class="input-group-addon">' .
-            '<i class="fa fa-calendar"></i>' .
+            '<i class="fa-solid fa-calendar"></i>' .
             '</div>' .
             '<input class="form-control date-picker" type="text" id="' . $fieldname . '" Name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
             '</div>';
@@ -798,7 +799,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
 
             echo '<div class="input-group">';
             echo '<div class="input-group-addon">';
-            echo '<i class="fa fa-phone"></i>';
+            echo '<i class="fa-solid fa-phone"></i>';
             echo '</div>';
             echo '<input class="form-control"  type="text" Name="' . $fieldname . '" maxlength="30" size="30" value="' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
             echo '<br><input type="checkbox" name="' . $fieldname . 'noformat" value="1"';
@@ -1537,26 +1538,6 @@ function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, s
             return $GroupKey;
         }
     }
-}
-
-function requireUserGroupMembership($allowedRoles = null): bool
-{
-    if (!$allowedRoles) {
-        throw new Exception('Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.');
-    }
-    if ($_SESSION[$allowedRoles] || AuthenticationManager::getCurrentUser()->isAdmin()) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
-        return true;
-    } elseif (is_array($allowedRoles)) {  //sometimes we might have an array of allowed roles.
-        foreach ($allowedRoles as $role) {
-            if ($_SESSION[$role]) {
-                // The current allowed role is in the user's session variable
-                return true;
-            }
-        }
-    }
-
-    //if we get to this point in the code, then the user is not authorized.
-    throw new Exception('User is not authorized to access ' . debug_backtrace()[1]['function'], 401);
 }
 
 function random_color_part(): string

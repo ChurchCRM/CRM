@@ -27,9 +27,7 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group): void {
             if ($token != null && $token->isPasswordResetToken() && $token->isValid()) {
                 $user = UserQuery::create()->findPk($token->getReferenceId());
                 $haveUser = empty($user);
-                if ($token->getRemainingUses() > 0) {
-                    $token->setRemainingUses($token->getRemainingUses() - 1);
-                    $token->save();
+                if ($token->consume()) {
                     $password = $user->resetPasswordToRandom();
                     $user->save();
                     LoggerUtils::getAuthLogger()->info('Password reset for user ' . $user->getUserName());
@@ -37,7 +35,7 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group): void {
                     if ($email->send()) {
                         return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
                     } else {
-                        $app->Logger->error($email->getError());
+                        LoggerUtils::getAppLogger()->error($email->getError());
 
                         throw new \Exception($email->getError());
                     }
@@ -72,12 +70,12 @@ function userPasswordReset(Request $request, Response $response, array $args)
     $body = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     $userName = strtolower(trim($body->userName));
     if (empty($userName)) {
-        throw new HttpBadRequestException(gettext('UserName not set'));
+        throw new HttpBadRequestException($request, gettext('UserName not set'));
     }
 
     $user = UserQuery::create()->findOneByUserName($userName);
     if (empty($user) || empty($user->getEmail())) {
-        throw new HttpNotFoundException(gettext('User') . ' [' . $userName . '] ' . gettext('no found or user without an email'));
+        throw new HttpNotFoundException($request, gettext('User') . ' [' . $userName . '] ' . gettext('not found or user without an email'));
     }
 
     $token = new Token();

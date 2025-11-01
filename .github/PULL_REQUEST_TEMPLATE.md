@@ -1,30 +1,36 @@
-# Description & Issue number it closes 
-<!-- Please include a summary of the changes and the related issue. Please also include relevant motivation and context. -->
+## What Changed
+<!-- Short summary - what and why (not how) -->
 
-## Screenshots (if appropriate)
-<!-- Before and after --> 
+Fixes #
 
-## How to test the changes?
+## Type
+<!-- Check one -->
+- [ ] ✨ Feature
+- [ ] 🐛 Bug fix
+- [ ] ♻️ Refactor
+- [ ] 🏗️ Build/Infrastructure
+- [ ] 🔒 Security
 
-## Type of change
+## Testing
+<!-- How to verify this works -->
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
+## Screenshots
+<!-- Only for UI changes - drag & drop images here -->
 
-# How Has This Been Tested?
+## Security Check
+<!-- Only check if applicable -->
+- [ ] Introduces new input validation
+- [ ] Modifies authentication/authorization
+- [ ] Affects data privacy/GDPR
 
-<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration -->
+### Code Quality
+- [ ] Database: Propel ORM only, no raw SQL
+- [ ] No deprecated attributes (align, valign, nowrap, border, cellpadding, cellspacing, bgcolor)
+- [ ] Bootstrap CSS classes used
+- [ ] All CSS bundled via webpack
 
-# Checklist:
-
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
-
+## Pre-Merge
+- [ ] Tested locally
+- [ ] No new warnings
+- [ ] Build passes
+- [ ] Backward compatible (or migration documented)
