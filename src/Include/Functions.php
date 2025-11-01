@@ -131,7 +131,7 @@ function CurrentFY(): int
 }
 
 // PrintFYIDSelect: make a fiscal year selection menu.
-function PrintFYIDSelect(string $selectName, int $iFYID = null): void
+function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 {
     echo sprintf('<select class="form-control" name="%s">', $selectName);
 
@@ -226,7 +226,7 @@ function convertCartToString(array $aCartArray): string
  * If neither family nor person info is available, return an empty string.
  */
 
-function SelectWhichInfo(string $sPersonInfo = null, string $sFamilyInfo = null, bool $bFormat = false): string
+function SelectWhichInfo(?string $sPersonInfo = null, ?string $sFamilyInfo = null, bool $bFormat = false): string
 {
     $sPersonInfo ??= '';
     $sFamilyInfo ??= '';
@@ -316,7 +316,7 @@ function ChopLastCharacter(string $sText): string
     return mb_substr($sText, 0, strlen($sText) - 1);
 }
 
-function change_date_for_place_holder(string $string = null): string
+function change_date_for_place_holder(?string $string = null): string
 {
     $string ??= '';
     $timestamp = strtotime($string);
@@ -457,7 +457,7 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
 //
 // Need to add other countries besides the US...
 //
-function ExpandPhoneNumber(string $sPhoneNumber = null, string $sPhoneCountry = null, &$bWeird): string
+function ExpandPhoneNumber(?string $sPhoneNumber = null, ?string $sPhoneCountry = null, &$bWeird): string
 {
     $sPhoneNumber ??= '';
     $sPhoneCountry ??= '';

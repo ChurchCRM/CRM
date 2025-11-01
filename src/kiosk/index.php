@@ -34,17 +34,15 @@ $app->add(VersionMiddleware::class);
 $app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
 
-// routes
-require __DIR__ . '/routes/kiosk.php';
-
+// Initialize kiosk device
 $windowOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable();
+$Kiosk = null;
 
 if (isset($_COOKIE['kioskCookie'])) {
     $g = hash('sha256', $_COOKIE['kioskCookie']);
     $Kiosk = KioskDeviceQuery::create()
           ->findOneByGUIDHash($g);
 
-    $app->kiosk = $Kiosk;
     if ($Kiosk === null) {
         setcookie('kioskCookie', '', ['expires' => time() - 3600]);
         header('Location: ' . $_SERVER['REQUEST_URI']);
@@ -57,13 +55,20 @@ if (isset($_COOKIE['kioskCookie'])) {
         $Kiosk->setGUIDHash(hash('sha256', $guid));
         $Kiosk->setAccepted(false);
         $Kiosk->save();
-
-        $app->kiosk = $Kiosk;
     } else {
         header('HTTP/1.1 401 Unauthorized');
         exit;
     }
 }
+
+// Store kiosk in container
+if ($Kiosk !== null) {
+    $container->set('kiosk', $Kiosk);
+    $container->compile();
+}
+
+// routes
+require __DIR__ . '/routes/kiosk.php';
 
 // Run app
 $app->run();
