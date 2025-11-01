@@ -118,6 +118,7 @@ function showGlobalMessage(message, callOutClass) {
  * Initialize Floating Action Buttons (FAB)
  * - Sets localized labels
  * - Handles scroll behavior to hide buttons on scroll
+ * - Auto-hides after 5 seconds
  */
 function initializeFAB() {
     const fabContainer = $("#fab-container");
@@ -127,6 +128,11 @@ function initializeFAB() {
     // Set localized labels
     fabPersonLabel.text(i18next.t("Add New Person"));
     fabFamilyLabel.text(i18next.t("Add New Family"));
+
+    // Auto-hide FAB after 5 seconds
+    setTimeout(function () {
+        fabContainer.addClass("hidden");
+    }, 5000);
 
     // Hide FAB on any scroll to prevent blocking content
     $(window).on("scroll", function () {
