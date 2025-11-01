@@ -148,6 +148,133 @@ assets:
   css_bundling: "webpack_only"
   javascript_bundling: "webpack_only"
   path_function: "SystemURLs::getRootPath()"
+  rule: "ALWAYS use SystemURLs::getRootPath() for asset references"
+  examples:
+    correct: '<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">'
+    wrong: '<link rel="stylesheet" href="/skin/v2/churchcrm.min.css">'
+
+## UI/UX Patterns (AdminLTE 3.2.0 + Bootstrap 4.6.2)
+ui_patterns:
+  card_headers:
+    pattern: "Colored outlines with descriptive icons for visual hierarchy"
+    classes: "card-{color}-outline"
+    colors:
+      - "card-info-outline: Information/details sections"
+      - "card-primary-outline: Primary content/settings"
+      - "card-success-outline: Success states/active content"
+      - "card-warning-outline: Warnings/attention needed"
+      - "card-danger-outline: Danger/delete actions"
+    example: |
+      <div class="card card-primary card-outline">
+          <div class="card-header">
+              <h3 class="card-title"><i class="fa-solid fa-list-check"></i> <?= gettext('Section Title') ?></h3>
+          </div>
+          <div class="card-body">
+              <!-- Content -->
+          </div>
+      </div>
+    avoid: "Generic cards without color or context"
+
+  action_buttons:
+    pattern: "btn-app buttons matching PeopleDashboard style"
+    required_classes: "btn btn-app bg-{color}"
+    icon_size: "fa-3x"
+    layout: "Icon on top, text below with <br> separator"
+    example: |
+      <a class="btn btn-app bg-info" href="Editor.php?ID=<?= $id ?>">
+          <i class="fa-solid fa-pen fa-3x"></i><br>
+          <?= gettext('Edit') ?>
+      </a>
+    colors:
+      - "bg-info: Edit/modify actions"
+      - "bg-danger: Delete/remove actions"
+      - "bg-success: Add/create actions"
+      - "bg-primary: View/navigate actions"
+      - "bg-teal: Email actions"
+      - "bg-navy: BCC email actions"
+      - "bg-orange: Text/SMS actions"
+      - "bg-purple: Special properties/forms"
+    avoid: "Small icons without bg- color classes"
+
+  responsive_tables:
+    wrapper: "Always wrap tables in div.table-responsive"
+    classes: "table table-striped table-hover table-sm"
+    example: |
+      <div class="table-responsive">
+          <table class="table table-striped table-hover table-sm" id="myTable">
+          </table>
+      </div>
+    dataTables_config:
+      responsive: true
+      autoWidth: false
+      column_widths: "Define specific percentages for better control"
+      thumbnail_max_size: "Math.min(window.CRM.iProfilePictureListSize, 40)"
+    text_truncation: |
+      // For long content (addresses, emails)
+      return '<span class="d-inline-block text-truncate" 
+              style="max-width: 200px;" 
+              title="' + fullText + '">' + fullText + '</span>';
+    avoid: "Tables without responsive wrapper or defined column widths"
+
+  responsive_layout:
+    toggle_controls:
+      grid: "col-lg-6 col-md-12 mb-3"
+      size: "data-size='normal' (not 'small')"
+      reason: "Prevents text cutoff and accommodates localization"
+      example: |
+        <div class="row mb-3">
+            <div class="col-lg-6 col-md-12 mb-3">
+                <b><?= gettext('Status') ?>:</b><br>
+                <input data-size="normal" id="toggle1" type="checkbox" data-toggle="toggle">
+            </div>
+        </div>
+    info_boxes:
+      usage: "Display key stats/metrics"
+      classes: "info-box bg-{color}"
+      example: |
+        <div class="info-box bg-success">
+            <span class="info-box-icon"><i class="fa-solid fa-layer-group"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text"><?= gettext('Label') ?></span>
+                <span class="info-box-number"><?= $value ?></span>
+            </div>
+        </div>
+    avoid: "Fixed col-sm-* classes that break on mobile"
+
+  conditional_rendering:
+    pattern: "Build data list first, then conditionally render UI"
+    reason: "Prevents empty dropdowns and reduces UI clutter"
+    example: |
+      // Build list first
+      $availableItems = [];
+      while ($row = mysqli_fetch_array($result)) {
+          extract($row);
+          $availableItems[] = ['id' => $id, 'name' => $name];
+      }
+      
+      // Only show if data exists
+      if (!empty($availableItems)) {
+          echo '<form>...</form>';
+      }
+    avoid: "Always showing UI elements that may be empty"
+
+  layout_organization:
+    principle: "Logical grouping with clear visual hierarchy"
+    pattern: "Info boxes first, then action buttons, then detailed content"
+    example: |
+      <div class="row mt-3">
+          <div class="col-md-4"><!-- Info box 1 --></div>
+          <div class="col-md-4"><!-- Info box 2 --></div>
+          <div class="col-md-4"><!-- Info box 3 --></div>
+      </div>
+      <div class="row mt-3">
+          <div class="col-12">
+              <!-- All action buttons together -->
+          </div>
+      </div>
+    avoid: "Mixing buttons with content without clear structure"
+
+## Asset & Path References
   example:
     wrong: "href='/skin/v2/churchcrm.min.css'"
     right: "href='<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css'"
