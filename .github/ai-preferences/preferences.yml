@@ -341,6 +341,16 @@ files:
   ai_notes_scope: "local_development_only"
   ai_notes_gitignore: "true"
   preferences_file: ".github/ai-preferences/preferences.yml"
+  temporary_files:
+    description: "All temporary .txt and .md files created for user reading"
+    location: "ai-notes/"
+    examples:
+      - "commit-message.txt"
+      - "summary.md"
+      - "analysis.txt"
+      - "notes.md"
+    rule: "ALWAYS create temporary documentation files in ai-notes/ directory"
+    why: "Keeps workspace clean and separates AI-generated notes from project code"
 
 ## Priority Rules
 rules_priority:
