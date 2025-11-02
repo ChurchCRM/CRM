@@ -55,15 +55,18 @@ $(document).ready(() => {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to create group:", error);
-                $.notify(i18next.t("Failed to create group. Please try again."), {
-                    type: "danger",
-                    icon: "fa fa-exclamation-triangle",
-                    delay: 5000,
-                    placement: {
-                        from: "top",
-                        align: "right",
+                $.notify(
+                    i18next.t("Failed to create group. Please try again."),
+                    {
+                        type: "danger",
+                        icon: "fa fa-exclamation-triangle",
+                        delay: 5000,
+                        placement: {
+                            from: "top",
+                            align: "right",
+                        },
                     },
-                });
+                );
             });
     });
 
@@ -75,15 +78,20 @@ $(document).ready(() => {
             dataSrc: "",
             error: (xhr, error, thrown) => {
                 console.error("Failed to load groups:", thrown);
-                $.notify(i18next.t("Failed to load groups. Please refresh the page."), {
-                    type: "danger",
-                    icon: "fa fa-exclamation-triangle",
-                    delay: 5000,
-                    placement: {
-                        from: "top",
-                        align: "right",
+                $.notify(
+                    i18next.t(
+                        "Failed to load groups. Please refresh the page.",
+                    ),
+                    {
+                        type: "danger",
+                        icon: "fa fa-exclamation-triangle",
+                        delay: 5000,
+                        placement: {
+                            from: "top",
+                            align: "right",
+                        },
                     },
-                });
+                );
             },
         },
         columns: [
