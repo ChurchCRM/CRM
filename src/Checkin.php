@@ -327,8 +327,9 @@ if (isset($_POST['EventID'])) {
                         $sCheckoutby = $checkedOutBy->getFullName();
                     } ?>
                     <tr>
-                        <td><img src="<?= SystemURLs::getRootPath() . '/api/person/' . $per->getPersonId() . '/thumbnail' ?>"
-                                 class="direct-chat-img initials-image">&nbsp
+                        <td><img data-image-entity-type="person" 
+                                 data-image-entity-id="<?= $per->getPersonId() ?>"
+                                 class="photo-tiny">&nbsp
                             <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a></td>
                         <td><?= date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
                         <td><?= $sCheckinby ?></td>
@@ -404,11 +405,11 @@ if (isset($_POST['EventID'])) {
 
     function SetPersonHtml(element, perArr) {
         if(perArr) {
+            var photoUrl = window.CRM.root + '/api/person/' + perArr.objid + '/photo';
             element.html(
                 '<div class="text-center">' +
                 '<a target="_top" href="PersonView.php?PersonID=' + perArr.objid + '"><h4>' + perArr.text + '</h4></a>' +
-                '<img src="' + window.CRM.root + '/api/person/' + perArr.objid + '/thumbnail"' +
-                'class="initials-image profile-user-img img-responsive img-circle"> </div>'
+                '<img src="' + photoUrl + '" class="photo-medium"> </div>'
             );
             element.removeClass('hidden');
         } else {
@@ -442,7 +443,7 @@ function loadPerson($iPersonID)
         '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle() . ' ' . $person->getFullName() . '</h4></a>' .
         '<div class="">' . $familyRole . '</div>' .
         '<div class="text-center">' . $person->getAddress() . '</div>' .
-        '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/thumbnail" class="initials-image profile-user-img img-responsive img-circle"> </div>';
+        '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/photo" class="photo-medium"> </div>';
     echo $html;
 }
 ?>
