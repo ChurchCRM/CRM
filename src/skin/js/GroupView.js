@@ -330,33 +330,6 @@ function initDataTable() {
         autoWidth: false,
         fnDrawCallback: function (oSettings) {
             $("#iTotalMembers").text(oSettings.aoData.length);
-            // Refresh image loader for dynamically loaded images
-            // Wait for peopleImageLoader to be available (with retry limit)
-            let retryCount = 0;
-            const maxRetries = 20; // Max 2 seconds (20 * 100ms)
-            const checkAndRefresh = function () {
-                if (window.CRM && window.CRM.peopleImageLoader) {
-                    const imagesToLoad = document.querySelectorAll(
-                        "[data-image-entity-type]",
-                    );
-                    console.log(
-                        "GroupView: Found " +
-                            imagesToLoad.length +
-                            " images to lazy load",
-                    );
-                    window.CRM.peopleImageLoader.refresh();
-                } else if (retryCount < maxRetries) {
-                    retryCount++;
-                    setTimeout(checkAndRefresh, 100);
-                } else {
-                    console.error(
-                        "GroupView: peopleImageLoader not available after " +
-                            maxRetries +
-                            " retries",
-                    );
-                }
-            };
-            checkAndRefresh();
         },
         createdRow: function (row, data, index) {
             $(row).addClass("groupRow");
