@@ -1,0 +1,8 @@
+-- Remove obsolete photo size configuration items
+-- These were replaced with hardcoded 200x200 image size for optimal bandwidth/storage efficiency
+-- The application never displays photos larger than 200px, so 400x400 storage was wasteful
+
+-- iPhotoHeight (cfg_id 2034)
+-- iPhotoWidth (cfg_id 2035)  
+-- iThumbnailWidth (cfg_id 2036)
+DELETE FROM config_cfg WHERE cfg_id IN (2034, 2035, 2036);
