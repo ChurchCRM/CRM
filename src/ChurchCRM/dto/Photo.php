@@ -13,6 +13,9 @@ class Photo
     public const PHOTO_WIDTH = 200;
     public const PHOTO_HEIGHT = 200;
     public const INITIALS_FONT_SIZE = 75;
+    
+    // HTTP cache duration for photo responses (in seconds)
+    public const CACHE_DURATION_SECONDS = 7200; // 2 hours
 
     private string $photoType;
     private int $id;
@@ -92,6 +95,9 @@ class Photo
 
     private function photoHunt(): void
     {
+        // Ensure directories exist
+        $this->ensurePhotoDirsExist();
+        
         $baseName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id;
         $extensions = Photo::$validExtensions;
 
@@ -145,6 +151,23 @@ class Photo
         $this->renderInitials();
     }
 
+    /**
+     * Ensure required photo directories exist
+     */
+    private function ensurePhotoDirsExist(): void
+    {
+        $imagesRoot = SystemURLs::getImagesRoot();
+        $photoTypeDir = $imagesRoot . '/' . $this->photoType;
+        
+        if (!is_dir($imagesRoot)) {
+            @mkdir($imagesRoot, 0755, true);
+        }
+        
+        if (!is_dir($photoTypeDir)) {
+            @mkdir($photoTypeDir, 0755, true);
+        }
+    }
+
     private function convertToPNG(): void
     {
         $image = $this->getGDImage($this->getPhotoURI());
@@ -177,15 +200,22 @@ class Photo
 
     public function getPhotoBytes(): string
     {
+        if (!file_exists($this->photoURI)) {
+            // Return a placeholder image or throw a more helpful error
+            throw new \Exception("Photo file not found: " . $this->photoURI);
+        }
+        
         $content = file_get_contents($this->photoURI);
-        MiscUtils::throwIfFailed($content);
+        if ($content === false) {
+            throw new \Exception("Failed to read photo file: " . $this->photoURI);
+        }
 
         return (string) $content;
     }
 
     public function getPhotoContentType()
     {
-        $finfo = new \finfo(FILEINFO_MIME);
+        $finfo = new \finfo(FILEINFO_MIME_TYPE);
         $this->photoContentType = $finfo->file($this->photoURI);
 
         return $this->photoContentType;

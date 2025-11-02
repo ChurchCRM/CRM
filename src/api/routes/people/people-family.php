@@ -12,21 +12,17 @@ use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
-use Slim\HttpCache\CacheProvider;
-
-$app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
 
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
         $photo = new Photo('Family', $args['familyId']);
         return SlimUtils::renderPhoto($response, $photo);
-    });
+    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
 
     $group->post('/photo', function (Request $request, Response $response): Response {
         /** @var Family $family */
