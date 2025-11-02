@@ -1938,10 +1938,6 @@ msgid "Group View"
 msgstr "Перегляд групи"
 
 #: 
-msgid "Group Functions"
-msgstr "Функції групи"
-
-#: 
 msgid "Edit this Group"
 msgstr "Редагувати цю групу"
 
@@ -2002,8 +1998,9 @@ msgid "Assigned Properties"
 msgstr "Присвоєні властивості"
 
 #: 
-msgid "Group Members:"
-msgstr "Учасники групи:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Учасники групи"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7095,10 +7092,6 @@ msgid "Family Photo"
 msgstr "Сімейне фото"
 
 #: 
-msgid "Quick Settings"
-msgstr "Швидкі налаштування"
-
-#: 
 msgid "Status"
 msgstr "Статус"
 
@@ -7766,10 +7759,6 @@ msgstr "Максимальна кількість платежів"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Максимальна кількість адрес"
-
-#: 
-msgid "Show type of group:"
-msgstr "Показати тип групи:"
 
 #: 
 msgid "Add Students"
@@ -8660,7 +8649,8 @@ msgstr "Недоступна інформація про особу, успад�
 "відображається, ЯКЩО відповідна інформація НЕ була введена для цієї особи. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Натисніть CTRL + C, щоб скопіювати всі телефонні номери членів групи"
 
 #: 

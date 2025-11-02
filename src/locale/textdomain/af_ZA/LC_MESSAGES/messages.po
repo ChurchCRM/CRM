@@ -1937,10 +1937,6 @@ msgid "Group View"
 msgstr "Groepaansig"
 
 #: 
-msgid "Group Functions"
-msgstr "Groepfunksies"
-
-#: 
 msgid "Edit this Group"
 msgstr "Wysig hierdie groep"
 
@@ -2001,8 +1997,9 @@ msgid "Assigned Properties"
 msgstr "Toegewysde eiendomme"
 
 #: 
-msgid "Group Members:"
-msgstr "Groeplede:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Groeplede"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7097,10 +7094,6 @@ msgid "Family Photo"
 msgstr "Gesinsfoto"
 
 #: 
-msgid "Quick Settings"
-msgstr "Vinnige instellings"
-
-#: 
 msgid "Status"
 msgstr "Status"
 
@@ -7768,10 +7761,6 @@ msgstr "Maksimum aantal betalings"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Maksimum aantal adresse"
-
-#: 
-msgid "Show type of group:"
-msgstr "Wys tipe groep:"
 
 #: 
 msgid "Add Students"
@@ -8662,7 +8651,8 @@ msgstr "Onbeskikbare persooninligting geërf van die toegewese gesin om te verto
 "vertoon AS die ooreenstemmende inligting NIE vir daardie persoon ingevoer is nie. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Druk CTRL + C om al die groeplede se telefoonnommers te kopieer"
 
 #: 

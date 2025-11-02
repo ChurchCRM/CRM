@@ -1991,10 +1991,6 @@ msgid "Group View"
 msgstr "组视图"
 
 #: 
-msgid "Group Functions"
-msgstr "群组功能"
-
-#: 
 msgid "Edit this Group"
 msgstr "编辑本集团"
 
@@ -2060,8 +2056,9 @@ msgid "Assigned Properties"
 msgstr "指定的属性"
 
 #: 
-msgid "Group Members:"
-msgstr "小组成员："
+#, fuzzy
+msgid "Group Members"
+msgstr "小组成员"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7202,10 +7199,6 @@ msgid "Family Photo"
 msgstr "家庭照片"
 
 #: 
-msgid "Quick Settings"
-msgstr "快速设置"
-
-#: 
 msgid "Status"
 msgstr "状态"
 
@@ -7869,10 +7862,6 @@ msgstr "最大付款数量"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "最大地址数量"
-
-#: 
-msgid "Show type of group:"
-msgstr "显示组的类型："
 
 #: 
 msgid "Add Students"
@@ -8765,7 +8754,8 @@ msgstr "从分配的家庭继承来的人信息无法显示？\n"
 "如果尚未为该人输入相应信息，则显示。 "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "按CTRL + C复制所有组成员的电话号码"
 
 #: 

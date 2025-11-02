@@ -1938,10 +1938,6 @@ msgid "Group View"
 msgstr "Vista de grupo"
 
 #: 
-msgid "Group Functions"
-msgstr "Funciones de grupo"
-
-#: 
 msgid "Edit this Group"
 msgstr "Editar este grupo"
 
@@ -2002,8 +1998,9 @@ msgid "Assigned Properties"
 msgstr "Propiedades asignadas"
 
 #: 
-msgid "Group Members:"
-msgstr "Miembros del grupo:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Miembros del grupo"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7119,10 +7116,6 @@ msgid "Family Photo"
 msgstr "Foto de familia"
 
 #: 
-msgid "Quick Settings"
-msgstr "Ajustes Rápidos"
-
-#: 
 msgid "Status"
 msgstr "Estado"
 
@@ -7792,10 +7785,6 @@ msgstr "Numero máximo de pagos"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Numero máximo de DIrecciones"
-
-#: 
-msgid "Show type of group:"
-msgstr "Mostrar tipo de grupo:"
 
 #: 
 msgid "Add Students"
@@ -8687,7 +8676,8 @@ msgstr "¿Desplegar Información no disponible heredando desde la familia asigna
 "Esta opción causa que cierta información de la familia asignada a la persona pueda ser desplegada SI la información correspondiente NO ha sido ingresada para esa persona."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Presionar CTRL + C para copiar todos los números de teléfono de los miembros del grupo"
 
 #: 

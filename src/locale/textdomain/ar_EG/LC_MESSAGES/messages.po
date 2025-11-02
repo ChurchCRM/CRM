@@ -1938,10 +1938,6 @@ msgid "Group View"
 msgstr "عرض لمجموعة"
 
 #: 
-msgid "Group Functions"
-msgstr "مهام المجموعة"
-
-#: 
 msgid "Edit this Group"
 msgstr "تعديل المجموعة"
 
@@ -2002,7 +1998,8 @@ msgid "Assigned Properties"
 msgstr "الخصائص المعينة"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "اعضاء المجموعه"
 
 #: 
@@ -7097,10 +7094,6 @@ msgid "Family Photo"
 msgstr "صورة عائلية"
 
 #: 
-msgid "Quick Settings"
-msgstr "إعدادات سريعة"
-
-#: 
 msgid "Status"
 msgstr "الحالة"
 
@@ -7768,10 +7761,6 @@ msgstr "الحد الأقصى لعدد المدفوعات"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "الحد الأقصى لعدد عناوين"
-
-#: 
-msgid "Show type of group:"
-msgstr "اظهار نوع من مجموعة:"
 
 #: 
 msgid "Add Students"
@@ -8653,7 +8642,8 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "غير متوفرة شخص معلومات الموروثة من الأسرة المخصصة للعرض؟ يؤدي هذا الخيار معلومات معينة من سجل الأسرة تعيين الشخص للظهور إذا لم يتم إدخال المعلومات المقابلة لهذا الشخص."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "اضغط CTRL + C لنسخ جميع أعضاء المجموعة \\ \"أرقام الهواتف"
 
 #: 

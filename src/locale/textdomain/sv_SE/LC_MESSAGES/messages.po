@@ -2002,10 +2002,6 @@ msgid "Group View"
 msgstr "Grupp vy"
 
 #: 
-msgid "Group Functions"
-msgstr "Gruppfunktioner"
-
-#: 
 msgid "Edit this Group"
 msgstr "Redigera denna grupp"
 
@@ -2071,7 +2067,8 @@ msgid "Assigned Properties"
 msgstr "Angiven egenskaper"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "Grupp medlemmar"
 
 #: 
@@ -7240,10 +7237,6 @@ msgid "Family Photo"
 msgstr "Familjefoto"
 
 #: 
-msgid "Quick Settings"
-msgstr "Snabbinställningar"
-
-#: 
 msgid "Status"
 msgstr "Status"
 
@@ -7911,10 +7904,6 @@ msgstr "Maximalt antal betalningar"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Maximalt antal adresser"
-
-#: 
-msgid "Show type of group:"
-msgstr "Visa typ av grupp:"
 
 #: 
 msgid "Add Students"
@@ -8805,7 +8794,8 @@ msgstr "Otillgänglig personinformation som ärvs från tilldelad familj för vi
 "visas OM motsvarande info INTE har angetts för den personen."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Tryck CTRL + C för att kopiera alla gruppmedlemmars telefonnummer"
 
 #: 

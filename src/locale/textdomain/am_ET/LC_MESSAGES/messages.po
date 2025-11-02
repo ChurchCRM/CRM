@@ -1939,10 +1939,6 @@ msgid "Group View"
 msgstr "የቡድን እይታ"
 
 #: 
-msgid "Group Functions"
-msgstr "የቡድን ተግባራት"
-
-#: 
 msgid "Edit this Group"
 msgstr "ይህን ቡድን አርትዕ ያድርጉ"
 
@@ -2003,8 +1999,9 @@ msgid "Assigned Properties"
 msgstr "የተመደቡ ንብረቶች"
 
 #: 
-msgid "Group Members:"
-msgstr "የቡድን አባላት፡-"
+#, fuzzy
+msgid "Group Members"
+msgstr "የቡድን አባላት"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7098,10 +7095,6 @@ msgid "Family Photo"
 msgstr "የቤተሰብ ፎቶ"
 
 #: 
-msgid "Quick Settings"
-msgstr "ፈጣን ቅንብሮች"
-
-#: 
 msgid "Status"
 msgstr "ሁኔታ"
 
@@ -7769,10 +7762,6 @@ msgstr "ከፍተኛው የክፍያዎች ብዛት "
 #: 
 msgid "Maximum number of Addresses"
 msgstr "ከፍተኛው የአድራሻዎች ብዛት "
-
-#: 
-msgid "Show type of group:"
-msgstr "የቡድን አይነት አሳይ"
 
 #: 
 msgid "Add Students"
@@ -8668,7 +8657,8 @@ msgstr "\n"
 "ተጓዳኝ መረጃው ለዚያ ሰው ካልገባ።"
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "ሁሉንም የቡድን አባላት ስልክ ቁጥር ለመቅዳት Ctrl +C ን ይጫኑ "
 
 #: 

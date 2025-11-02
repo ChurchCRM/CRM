@@ -1940,10 +1940,6 @@ msgid "Group View"
 msgstr "Tampilan Grup"
 
 #: 
-msgid "Group Functions"
-msgstr "Fungsi Grup"
-
-#: 
 msgid "Edit this Group"
 msgstr "Edit Grup ini"
 
@@ -2004,8 +2000,9 @@ msgid "Assigned Properties"
 msgstr "Properti yang Ditugaskan"
 
 #: 
-msgid "Group Members:"
-msgstr "Anggota kelompok:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Anggota kelompok"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7099,10 +7096,6 @@ msgid "Family Photo"
 msgstr "Foto keluarga"
 
 #: 
-msgid "Quick Settings"
-msgstr "Pengaturan cepat"
-
-#: 
 msgid "Status"
 msgstr "Status"
 
@@ -7770,10 +7763,6 @@ msgstr "Jumlah Pembayaran maksimum"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Jumlah maksimum Alamat"
-
-#: 
-msgid "Show type of group:"
-msgstr "Tampilkan jenis grup:"
 
 #: 
 msgid "Add Students"
@@ -8655,7 +8644,8 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "Info orang yang tidak tersedia diwarisi dari keluarga yang ditugaskan untuk ditampilkan?  Opsi ini menyebabkan info tertentu dari catatan keluarga yang ditugaskan seseorang untuk  ditampilkan JIKA info yang sesuai TIDAK dimasukkan untuk orang itu."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Tekan CTRL + C untuk menyalin semua nomor telepon anggota grup"
 
 #: 

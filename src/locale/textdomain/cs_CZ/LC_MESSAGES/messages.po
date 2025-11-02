@@ -1935,10 +1935,6 @@ msgid "Group View"
 msgstr "Zobrazení skupiny"
 
 #: 
-msgid "Group Functions"
-msgstr "Funkce skupiny"
-
-#: 
 msgid "Edit this Group"
 msgstr "Upravit tuto skupinu"
 
@@ -1999,8 +1995,9 @@ msgid "Assigned Properties"
 msgstr "Přiřazené vlastnosti"
 
 #: 
-msgid "Group Members:"
-msgstr "Členové skupiny:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Členové skupiny"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7085,10 +7082,6 @@ msgid "Family Photo"
 msgstr "Rodinné foto"
 
 #: 
-msgid "Quick Settings"
-msgstr "Rychlé nastavení"
-
-#: 
 msgid "Status"
 msgstr "Stav"
 
@@ -7754,10 +7747,6 @@ msgstr "Maximální počet plateb"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Maximální počet adres"
-
-#: 
-msgid "Show type of group:"
-msgstr "Zobrazit typ skupiny:"
 
 #: 
 msgid "Add Students"
@@ -8645,7 +8634,8 @@ msgstr "Zobrazit nedostupné informace o osobě zděděné z přiřazené rodiny
 "POKUD pro danou osobu NEbyly zadány odpovídající informace. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Stisknutím kláves CTRL + C zkopírujete telefonní čísla všech členů skupiny"
 
 #: 

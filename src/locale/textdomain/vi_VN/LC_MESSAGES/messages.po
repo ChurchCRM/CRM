@@ -1955,10 +1955,6 @@ msgid "Group View"
 msgstr "Xem Ban/Mục vụ"
 
 #: 
-msgid "Group Functions"
-msgstr "Tính năng Ban/Mục vụ"
-
-#: 
 msgid "Edit this Group"
 msgstr "Chỉnh sửa"
 
@@ -2019,8 +2015,9 @@ msgid "Assigned Properties"
 msgstr "Nhóm Tế Bào"
 
 #: 
-msgid "Group Members:"
-msgstr "Thành viên Ban/Mục vụ:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Thành viên Ban/Mục vụ"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7114,10 +7111,6 @@ msgid "Family Photo"
 msgstr "Hình ảnh gia đình"
 
 #: 
-msgid "Quick Settings"
-msgstr "Cài đặt nhanh"
-
-#: 
 msgid "Status"
 msgstr "Trạng thái"
 
@@ -7785,10 +7778,6 @@ msgstr "Số lần thanh toán tối đa"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Số lượng địa chỉ tối đa"
-
-#: 
-msgid "Show type of group:"
-msgstr "Hiển thị loại Ban/Mục vụ"
 
 #: 
 msgid "Add Students"
@@ -8670,7 +8659,8 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "Tùy chọn này sẽ hiển thị một số thông tin nhất định từ hồ sơ gia đình được chỉ định của một người NẾU KHÔNG nhập thông tin tương ứng cho người đó."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Nhấn CTRL + C để sao chép tất cả số điện thoại của các thành viên trong nhóm"
 
 #: 
