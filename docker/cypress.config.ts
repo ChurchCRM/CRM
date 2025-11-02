@@ -15,7 +15,7 @@ export default defineConfig({
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
   },
-  retries: 2,
+  retries: 1,
   e2e: {
     setupNodeEvents(on, config) {
       // Register download verification tasks
