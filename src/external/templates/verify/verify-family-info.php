@@ -19,7 +19,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
   </div>
   <div class="card card-info" id="verifyBox">
     <div class="panel-body">
-      <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200" src="data:image/png;base64,<?= base64_encode($family->getPhoto()->getThumbnailBytes()) ?>" >
+      <img class="photo-large pull-right" data-image-entity-type="family" data-image-entity-id="<?= $family->getId() ?>">
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa-solid fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
@@ -56,7 +56,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
           <div class="col-md-4 col-sm-4">
             <div class="card card-primary">
               <div class="card-body box-profile">
-                 <img class="profile-user-img img-responsive img-circle initials-image" src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
+                 <img class="photo-medium" data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>">
 
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
 
