@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function initDataTable() {
     // Use a fixed, reasonable thumbnail size instead of the potentially large config value
     var thumbnailSize = Math.min(window.CRM.iProfilePictureListSize, 40);
-    
+
     var DataTableOpts = {
         ajax: {
             url:
@@ -241,17 +241,7 @@ function initDataTable() {
                 data: "PersonId",
                 render: function (data, type, full, meta) {
                     return (
-                        '<img src="' +
-                        window.CRM.root +
-                        "/api/person/" +
-                        full.PersonId +
-                        '/thumbnail" class="direct-chat-img initials-image" style="width:' +
-                        thumbnailSize +
-                        "px; height:" +
-                        thumbnailSize +
-                        'px"> &nbsp <a href="PersonView.php?PersonID="' +
-                        full.PersonId +
-                        '"><a target="_top" href="PersonView.php?PersonID=' +
+                        '<a target="_top" href="PersonView.php?PersonID=' +
                         full.PersonId +
                         '">' +
                         full.Person.FullName +
@@ -270,9 +260,11 @@ function initDataTable() {
                         },
                     )[0];
                     return (
-                        '<span class="d-inline-block text-truncate" style="max-width: 150px;" title="' + i18next.t(thisRole?.OptionName) + '">' +
+                        '<span class="d-inline-block text-truncate" style="max-width: 150px;" title="' +
                         i18next.t(thisRole?.OptionName) +
-                        '</span> ' +
+                        '">' +
+                        i18next.t(thisRole?.OptionName) +
+                        "</span> " +
                         '<button class="btn btn-xs changeMembership" data-personid=' +
                         full.PersonId +
                         '><i class="fa-solid fa-pen"></i></button>'
@@ -287,7 +279,13 @@ function initDataTable() {
                     if (full.Person.Address2) {
                         address += " " + full.Person.Address2;
                     }
-                    return '<span class="d-inline-block text-truncate" style="max-width: 200px;" title="' + address + '">' + address + '</span>';
+                    return (
+                        '<span class="d-inline-block text-truncate" style="max-width: 200px;" title="' +
+                        address +
+                        '">' +
+                        address +
+                        "</span>"
+                    );
                 },
             },
             {
@@ -316,9 +314,15 @@ function initDataTable() {
                 data: "Person.Email",
                 render: function (data, type, full, meta) {
                     if (data) {
-                        return '<span class="d-inline-block text-truncate" style="max-width: 180px;" title="' + data + '">' + data + '</span>';
+                        return (
+                            '<span class="d-inline-block text-truncate" style="max-width: 180px;" title="' +
+                            data +
+                            '">' +
+                            data +
+                            "</span>"
+                        );
                     }
-                    return '';
+                    return "";
                 },
             },
         ],
@@ -326,6 +330,33 @@ function initDataTable() {
         autoWidth: false,
         fnDrawCallback: function (oSettings) {
             $("#iTotalMembers").text(oSettings.aoData.length);
+            // Refresh image loader for dynamically loaded images
+            // Wait for peopleImageLoader to be available (with retry limit)
+            let retryCount = 0;
+            const maxRetries = 20; // Max 2 seconds (20 * 100ms)
+            const checkAndRefresh = function () {
+                if (window.CRM && window.CRM.peopleImageLoader) {
+                    const imagesToLoad = document.querySelectorAll(
+                        "[data-image-entity-type]",
+                    );
+                    console.log(
+                        "GroupView: Found " +
+                            imagesToLoad.length +
+                            " images to lazy load",
+                    );
+                    window.CRM.peopleImageLoader.refresh();
+                } else if (retryCount < maxRetries) {
+                    retryCount++;
+                    setTimeout(checkAndRefresh, 100);
+                } else {
+                    console.error(
+                        "GroupView: peopleImageLoader not available after " +
+                            maxRetries +
+                            " retries",
+                    );
+                }
+            };
+            checkAndRefresh();
         },
         createdRow: function (row, data, index) {
             $(row).addClass("groupRow");
