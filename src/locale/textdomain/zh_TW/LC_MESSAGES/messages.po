@@ -1998,10 +1998,6 @@ msgid "Group View"
 msgstr "群組視圖"
 
 #: 
-msgid "Group Functions"
-msgstr "群組功能"
-
-#: 
 msgid "Edit this Group"
 msgstr "編輯本集團"
 
@@ -2067,8 +2063,9 @@ msgid "Assigned Properties"
 msgstr "指定的屬性"
 
 #: 
-msgid "Group Members:"
-msgstr "小組成員："
+#, fuzzy
+msgid "Group Members"
+msgstr "小組成員"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7248,10 +7245,6 @@ msgid "Family Photo"
 msgstr "家庭照片"
 
 #: 
-msgid "Quick Settings"
-msgstr "快速設置"
-
-#: 
 msgid "Status"
 msgstr "狀態"
 
@@ -7924,10 +7917,6 @@ msgstr "最大付款數量"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "最大地址數量"
-
-#: 
-msgid "Show type of group:"
-msgstr "顯示組的類型："
 
 #: 
 msgid "Add Students"
@@ -8862,7 +8851,7 @@ msgstr "從指定的家庭繼承的不可用人員信息是否顯示？如果尚
 
 #: 
 #, fuzzy
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "按CTRL + C複製所有組成員的電話號碼"
 
 #: 

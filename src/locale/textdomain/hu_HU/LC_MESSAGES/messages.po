@@ -1814,7 +1814,8 @@ msgid "Assigned Properties"
 msgstr "Célhoz Tulajdonságok"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "Csoport tagjai:"
 
 #: 

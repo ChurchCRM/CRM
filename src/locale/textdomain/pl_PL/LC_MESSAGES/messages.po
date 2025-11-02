@@ -1885,10 +1885,6 @@ msgid "Group View"
 msgstr "Widok Grupy"
 
 #: 
-msgid "Group Functions"
-msgstr "Funkcje Grup"
-
-#: 
 msgid "Edit this Group"
 msgstr "Edytuj tę Grupę"
 
@@ -1954,8 +1950,9 @@ msgid "Assigned Properties"
 msgstr "Przypisane właściwości"
 
 #: 
-msgid "Group Members:"
-msgstr "Członkowie Grupy:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Członkowie Grupy"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -4369,7 +4366,8 @@ msgstr "Uzupełnij brakujące dane osób informacjami z powiązanej rodziny?\n"
 "Ta opcja używa niektórych informacji zapisanych dla rodziny gdy osoba nie ma wpisanych wszystkich danych. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "CTRL + C kopuje numery numery telefonów wszystkich członków grupy"
 
 #: 

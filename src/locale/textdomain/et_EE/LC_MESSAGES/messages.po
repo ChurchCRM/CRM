@@ -1937,10 +1937,6 @@ msgid "Group View"
 msgstr "Grupi vaade"
 
 #: 
-msgid "Group Functions"
-msgstr "Grupi funktsioonid"
-
-#: 
 msgid "Edit this Group"
 msgstr "Muuda seda rühma"
 
@@ -2001,8 +1997,9 @@ msgid "Assigned Properties"
 msgstr "Määratud omadused"
 
 #: 
-msgid "Group Members:"
-msgstr "Grupi liikmed:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Grupi liikmed"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7095,10 +7092,6 @@ msgid "Family Photo"
 msgstr "Perefoto"
 
 #: 
-msgid "Quick Settings"
-msgstr "Kiirseaded"
-
-#: 
 msgid "Status"
 msgstr "Olek"
 
@@ -7766,10 +7759,6 @@ msgstr "Maksimaalne arv makseid"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Aadresside maksimaalne arv"
-
-#: 
-msgid "Show type of group:"
-msgstr "Kuva rühma tüüp:"
 
 #: 
 msgid "Add Students"
@@ -8660,7 +8649,8 @@ msgstr "Määratud perekonna kuvamise kohta pole saadaval teavet?\n"
 "kuvatakse, kui vastavat teavet EI ole selle inimese kohta sisestatud. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Kõigi grupiliikmete telefoninumbrite kopeerimiseks vajutage CTRL + C"
 
 #: 

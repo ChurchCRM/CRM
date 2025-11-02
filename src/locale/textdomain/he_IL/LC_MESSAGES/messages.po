@@ -1936,10 +1936,6 @@ msgid "Group View"
 msgstr "תצוגת קבוצה"
 
 #: 
-msgid "Group Functions"
-msgstr "פונקציות קבוצה"
-
-#: 
 msgid "Edit this Group"
 msgstr "ערוך קבוצה זו"
 
@@ -2000,7 +1996,8 @@ msgid "Assigned Properties"
 msgstr "מאפיינים שהוקצו"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "חברי קבוצה:"
 
 #: 
@@ -7089,10 +7086,6 @@ msgid "Family Photo"
 msgstr "תמונת משפחה"
 
 #: 
-msgid "Quick Settings"
-msgstr "הגדרות מהירות"
-
-#: 
 msgid "Status"
 msgstr "סטטוס"
 
@@ -7758,10 +7751,6 @@ msgstr "מספר מקסימלי של תשלומים"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "מספר מקסימלי של כתובות"
-
-#: 
-msgid "Show type of group:"
-msgstr "הצג סוג קבוצה:"
 
 #: 
 msgid "Add Students"
@@ -8649,7 +8638,8 @@ msgstr "האם להציג מידע לא זמין על אדם שהורש מהמש
 "להיות מוצג אם המידע המתאים לא הוזן עבור אותו אדם."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "לחץ CTRL + C כדי להעתיק את כל שמות\\מספרי הטלפון שבקבוצה"
 
 #: 

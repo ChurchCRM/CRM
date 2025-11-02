@@ -2347,11 +2347,6 @@ msgstr "Ver Grupo"
 
 #: 
 #, fuzzy
-msgid "Group Functions"
-msgstr "Grupo de Funções"
-
-#: 
-#, fuzzy
 msgid "Edit this Group"
 msgstr "Editar este grupo"
 
@@ -2421,8 +2416,8 @@ msgstr "Propriedades"
 
 #: 
 #, fuzzy
-msgid "Group Members:"
-msgstr "Membros do grupo:"
+msgid "Group Members"
+msgstr "Membros do grupo"
 
 #: 
 #, fuzzy
@@ -8568,11 +8563,6 @@ msgstr "Foto da Família"
 
 #: 
 #, fuzzy
-msgid "Quick Settings"
-msgstr "Configurações Rápidas"
-
-#: 
-#, fuzzy
 msgid "Status"
 msgstr "Estado"
 
@@ -9401,11 +9391,6 @@ msgstr "Número máximo de Pagamentos"
 #, fuzzy
 msgid "Maximum number of Addresses"
 msgstr "Número máximo de Endereços"
-
-#: 
-#, fuzzy
-msgid "Show type of group:"
-msgstr "Mostrar tipo de grupo:"
 
 #: 
 #, fuzzy
@@ -10507,7 +10492,7 @@ msgstr "Informações indisponíveis de uma pessoa de uma família atribuída?\n
 
 #: 
 #, fuzzy
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Pressione CTRL + C para copiar os números de telefone de todos os membros do grupo"
 
 #: 

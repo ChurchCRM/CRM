@@ -1937,10 +1937,6 @@ msgid "Group View"
 msgstr "Προβολή ομάδας"
 
 #: 
-msgid "Group Functions"
-msgstr "Λειτουργίες ομάδας"
-
-#: 
 msgid "Edit this Group"
 msgstr "Επεξεργαστείτε αυτήν την ομάδα"
 
@@ -2001,8 +1997,9 @@ msgid "Assigned Properties"
 msgstr "Εκχωρημένες ιδιότητες"
 
 #: 
-msgid "Group Members:"
-msgstr "Μέλη ομάδας:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Μέλη ομάδας"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7090,10 +7087,6 @@ msgid "Family Photo"
 msgstr "Οικογενειακή φωτογραφία"
 
 #: 
-msgid "Quick Settings"
-msgstr "Γρήγορες ρυθμίσεις"
-
-#: 
 msgid "Status"
 msgstr "Κατάσταση"
 
@@ -7761,10 +7754,6 @@ msgstr "Μέγιστος αριθμός πληρωμών"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Μέγιστος αριθμός Διευθύνσεων"
-
-#: 
-msgid "Show type of group:"
-msgstr "Εμφάνιση τύπου ομάδας:"
 
 #: 
 msgid "Add Students"
@@ -8655,7 +8644,8 @@ msgstr "Μη διαθέσιμες πληροφορίες Μέλους που κ�
 "εμφανίζεται ΑΝ ΔΕΝ έχουν εισαχθεί οι αντίστοιχες πληροφορίες για αυτό το άτομο. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Πατήστε CTRL + C για να αντιγράψετε τους αριθμούς τηλεφώνου όλων των μελών της ομάδας"
 
 #: 

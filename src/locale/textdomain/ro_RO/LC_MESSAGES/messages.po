@@ -1990,10 +1990,6 @@ msgid "Group View"
 msgstr "Vezi Grup"
 
 #: 
-msgid "Group Functions"
-msgstr "Funcțiile grupului"
-
-#: 
 msgid "Edit this Group"
 msgstr "Editează acest grup"
 
@@ -2059,8 +2055,9 @@ msgid "Assigned Properties"
 msgstr "Proprietăți atribuite"
 
 #: 
-msgid "Group Members:"
-msgstr "Membrii grupului:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Membrii grupului"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7197,10 +7194,6 @@ msgid "Family Photo"
 msgstr "Foto familie"
 
 #: 
-msgid "Quick Settings"
-msgstr "Setări rapide"
-
-#: 
 msgid "Status"
 msgstr "Stadiu"
 
@@ -7868,10 +7861,6 @@ msgstr "Numărul maxim de plăți"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Număr maxim de adrese"
-
-#: 
-msgid "Show type of group:"
-msgstr "Arată tipul grupului:"
 
 #: 
 msgid "Add Students"
@@ -8758,7 +8747,8 @@ msgstr "Informațiile indisponibile ale unei persoane moștenite de la familia a
 "Această opțiune determină afișarea anumitor informații din înregistrarea familiei asignate a unei persoane DACĂ informațiile corespunzătoare NU au fost introduse pentru acea persoană"
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Apăsați CTRL + C pentru a copia toate numerele de telefon ale membrilor grupului"
 
 #: 

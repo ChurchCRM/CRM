@@ -1937,10 +1937,6 @@ msgid "Group View"
 msgstr "Grup Görünümü"
 
 #: 
-msgid "Group Functions"
-msgstr "Grup işlevleri"
-
-#: 
 msgid "Edit this Group"
 msgstr "Bu grubu düzenle"
 
@@ -2001,8 +1997,9 @@ msgid "Assigned Properties"
 msgstr "Atanan mülkler"
 
 #: 
-msgid "Group Members:"
-msgstr "Grup üyeleri:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Grup üyeleri"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7094,10 +7091,6 @@ msgid "Family Photo"
 msgstr "Aile fotoğrafı"
 
 #: 
-msgid "Quick Settings"
-msgstr "Hızlı Ayarlar"
-
-#: 
 msgid "Status"
 msgstr "Durum"
 
@@ -7765,10 +7758,6 @@ msgstr "Maksimum ödeme sayısı"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Maksimum adres sayısı"
-
-#: 
-msgid "Show type of group:"
-msgstr "Grup türünü göster:"
 
 #: 
 msgid "Add Students"
@@ -8659,7 +8648,8 @@ msgstr "Ekran için atanan aileden miras alınan kişi bilgisi?\n"
 "O kişi için ilgili bilgi girilmediyse görüntülenir."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Tüm Grup Üyelerini Kopyalamak İçin Ctrl + C tuşlarına basın \\ 'Telefon Numaraları"
 
 #: 

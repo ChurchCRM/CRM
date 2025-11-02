@@ -2004,10 +2004,6 @@ msgid "Group View"
 msgstr "Ver Grupo"
 
 #: 
-msgid "Group Functions"
-msgstr "Grupo de Funções"
-
-#: 
 msgid "Edit this Group"
 msgstr "Editar este grupo"
 
@@ -2074,8 +2070,9 @@ msgid "Assigned Properties"
 msgstr "Propriedades"
 
 #: 
-msgid "Group Members:"
-msgstr "Membros do grupo:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Membros do grupo"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7287,10 +7284,6 @@ msgid "Family Photo"
 msgstr "Foto da Família"
 
 #: 
-msgid "Quick Settings"
-msgstr "Configurações Rápidas"
-
-#: 
 msgid "Status"
 msgstr "Estado"
 
@@ -7960,10 +7953,6 @@ msgstr "Número máximo de Pagamentos"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Número máximo de Endereços"
-
-#: 
-msgid "Show type of group:"
-msgstr "Mostrar tipo de grupo:"
 
 #: 
 msgid "Add Students"
@@ -8854,7 +8843,8 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "Informações sobre pessoas não disponíveis herdadas da família designada para exibição? Essa opção faz com que determinadas informações do registo familiar atribuído por uma pessoa sejam exibidas SE a informação correspondente NÃO tiver sido inserida para essa pessoa. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Pressione CTRL + C para copiar os números de telefone de todos os membros do grupo"
 
 #: 

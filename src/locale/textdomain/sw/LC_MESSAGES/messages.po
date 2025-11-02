@@ -1935,10 +1935,6 @@ msgid "Group View"
 msgstr "Mtazamo wa Kikundi"
 
 #: 
-msgid "Group Functions"
-msgstr "Kazi za Kikundi"
-
-#: 
 msgid "Edit this Group"
 msgstr "Hariri Kikundi hiki"
 
@@ -1999,8 +1995,9 @@ msgid "Assigned Properties"
 msgstr "Mali Zilizogawiwa"
 
 #: 
-msgid "Group Members:"
-msgstr "Wanakikundi:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Wanakikundi"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -7085,10 +7082,6 @@ msgid "Family Photo"
 msgstr "Picha ya Familia"
 
 #: 
-msgid "Quick Settings"
-msgstr "Mipangilio ya Haraka"
-
-#: 
 msgid "Status"
 msgstr "Hali"
 
@@ -7755,10 +7748,6 @@ msgstr "Idadi ya juu zaidi ya Malipo"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "Idadi ya juu zaidi ya Anwani"
-
-#: 
-msgid "Show type of group:"
-msgstr "Onyesha aina ya kikundi:"
 
 #: 
 msgid "Add Students"
@@ -8646,7 +8635,8 @@ msgstr "Maelezo ya mtu ambayo hayapatikani yaliyorithiwa kutoka kwa familia iliy
 "imeonyeshwa IKIWA habari inayolingana HAIJAINGIWA kwa mtu huyo. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Bonyeza CTRL + C ili kunakili nambari za simu za washiriki wote wa kikundi"
 
 #: 

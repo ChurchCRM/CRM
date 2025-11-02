@@ -1972,10 +1972,6 @@ msgid "Group View"
 msgstr "Group Vis"
 
 #: 
-msgid "Group Functions"
-msgstr "Gruppe Funksjoner"
-
-#: 
 msgid "Edit this Group"
 msgstr "Rediger denne gruppen"
 
@@ -2037,8 +2033,9 @@ msgid "Assigned Properties"
 msgstr "Tilordnede Egenskaper"
 
 #: 
-msgid "Group Members:"
-msgstr "Gruppemedlemmer:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Gruppemedlemmer"
 
 #: 
 msgid "Remove Selected Members from group"

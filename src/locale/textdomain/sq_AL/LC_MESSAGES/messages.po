@@ -1721,8 +1721,9 @@ msgid "Assigned Properties"
 msgstr "Prona të caktuar"
 
 #: 
-msgid "Group Members:"
-msgstr "Anëtarët e grupit:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Anëtarët e grupit"
 
 #: 
 msgid "Letters and Mailing Labels"

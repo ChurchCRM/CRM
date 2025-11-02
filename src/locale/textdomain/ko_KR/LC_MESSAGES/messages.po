@@ -1935,10 +1935,6 @@ msgid "Group View"
 msgstr "그룹 보기"
 
 #: 
-msgid "Group Functions"
-msgstr "그룹 기능"
-
-#: 
 msgid "Edit this Group"
 msgstr "이 그룹 편집"
 
@@ -1999,7 +1995,8 @@ msgid "Assigned Properties"
 msgstr "배정된 속성"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "그룹 구성원:"
 
 #: 
@@ -7085,10 +7082,6 @@ msgid "Family Photo"
 msgstr "가족 사진"
 
 #: 
-msgid "Quick Settings"
-msgstr "빠른 설정"
-
-#: 
 msgid "Status"
 msgstr "상태"
 
@@ -7754,10 +7747,6 @@ msgstr "헌금 최대 개수"
 #: 
 msgid "Maximum number of Addresses"
 msgstr "주소 최대 개수"
-
-#: 
-msgid "Show type of group:"
-msgstr "그룹 유형 표시:"
 
 #: 
 msgid "Add Students"
@@ -8643,7 +8632,8 @@ msgstr "가족 정보에서 개인 정보를 가져와 표시할까요?\n"
 "개인 정보가 비어 있으면 가족 기록의 해당 정보를 표시합니다."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Ctrl+C를 눌러 그룹 구성원의 전화번호를 모두 복사하세요"
 
 #: 
