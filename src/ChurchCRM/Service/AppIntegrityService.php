@@ -200,7 +200,7 @@ class AppIntegrityService
             new Prerequisite('FreeType Library', fn (): bool => function_exists('imagefttext')),
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => function_exists('finfo_open') || function_exists('mime_content_type')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_init')),
-            new Prerequisite('locale gettext', fn (): bool => function_exists('gettext')),
+            new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
             new Prerequisite('PHP BCMath', fn (): bool => function_exists('bcadd')),
             new Prerequisite('PHP Sodium', fn (): bool => function_exists('sodium_crypto_secretbox')),
             new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/')),
