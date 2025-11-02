@@ -273,7 +273,6 @@ class   SystemConfig
             'bSearchIncludeDepositsMax'            => new ConfigItem(2031, 'bSearchIncludeDepositsMax', 'text', '5', gettext('Maximum number of Deposits')),
             'bSearchIncludePaymentsMax'            => new ConfigItem(2032, 'bSearchIncludePaymentsMax', 'text', '5', gettext('Maximum number of Payments')),
             'bSearchIncludeAddressesMax'           => new ConfigItem(20233, 'bSearchIncludeAddressesMax', 'text', '15', gettext('Maximum number of Addresses')),
-            'iPhotoClientCacheDuration'            => new ConfigItem(2038, 'iPhotoClientCacheDuration', 'number', '3600', gettext('Client cache seconds for images')),
             'iRemotePhotoCacheDuration'            => new ConfigItem(2039, 'iRemotePhotoCacheDuration', 'text', '72 hours', gettext('Server cache time for remote images')),
             'iPersonConfessionFatherCustomField'   => new ConfigItem(2040, 'iPersonConfessionFatherCustomField', 'ajax', '', gettext('Field where Father Of Confession is listed, must be a people of group type'), '', '/api/system/custom-fields/person/?typeId=9'),
             'iPersonConfessionDateCustomField'     => new ConfigItem(2041, 'iPersonConfessionDateCustomField', 'ajax', '', gettext('Field where last Confession is stored, must be a date type'), '', '/api/system/custom-fields/person/?typeId=2'),
@@ -332,7 +331,7 @@ class   SystemConfig
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Events')             => ['bEnableExternalCalendarAPI', 'bEventsOnDashboardPresence', 'iEventsOnDashboardPresenceTimeOut'],
             gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword'],
-            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnableIntegrityCheck', 'iIntegrityCheckInterval', 'sLastIntegrityCheckTimeStamp', 'iPhotoClientCacheDuration', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'iSoftwareUpdateCheckInterval', 'sLastSoftwareUpdateCheckTimeStamp', 'bAllowPrereleaseUpgrade', 'iLogFileThreshold'],
+            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnableIntegrityCheck', 'iIntegrityCheckInterval', 'sLastIntegrityCheckTimeStamp', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'iSoftwareUpdateCheckInterval', 'sLastSoftwareUpdateCheckTimeStamp', 'bAllowPrereleaseUpgrade', 'iLogFileThreshold'],
         ];
     }
 
