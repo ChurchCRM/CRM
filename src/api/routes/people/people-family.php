@@ -29,10 +29,9 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     });
 
     $group->post('/photo', function (Request $request, Response $response): Response {
-        $input = $request->getParsedBody();
-
         /** @var Family $family */
         $family = $request->getAttribute('family');
+        $input = $request->getParsedBody();
         
         try {
             $family->setImageFromBase64($input['imgBase64']);
@@ -49,23 +48,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         /** @var Family $family */
         $family = $request->getAttribute('family');
 
-        return SlimUtils::renderJSON($response, ['status' => $family->deletePhoto()]);
+        return SlimUtils::renderJSON($response, ['success' => $family->deletePhoto()]);
     })->add(EditRecordsRoleAuthMiddleware::class);
-
-    $group->get('/thumbnail', function (Request $request, Response $response, array $args): Response {
-        $this->cache->withExpires(
-            $response,
-            MiscUtils::getPhotoCacheExpirationTimestamp()
-        );
-        $photo = new Photo('Family', $args['familyId']);
-
-        $response
-            ->withHeader('Content-type', $photo->getThumbnailContentType())
-            ->getBody()
-                ->write($photo->getThumbnailBytes());
-
-        return $response;
-    });
 
     $group->get('', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
