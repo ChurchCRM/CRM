@@ -6,4 +6,5 @@
 -- iPhotoWidth (cfg_id 2035)  
 -- iThumbnailWidth (cfg_id 2036)
 -- iInitialsPointSize (cfg_id 2037)
-DELETE FROM config_cfg WHERE cfg_id IN (2034, 2035, 2036, 2037);
+-- bBackupExtraneousImages (cfg_id 2062) - Initials and remote images are never backed up (can be regenerated)
+DELETE FROM config_cfg WHERE cfg_id IN (2034, 2035, 2036, 2037, 2062);

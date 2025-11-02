@@ -38,7 +38,6 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
         $Backup = new BackupJob(
             $BaseName,
             $BackupType,
-            SystemConfig::getValue('bBackupExtraneousImages'),
             $input['EncryptBackup'] ?? '',
             $input['BackupPassword'] ?? ''
         );
@@ -70,7 +69,6 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
             $Backup = new BackupJob(
                 $BaseName,
                 $BackupType,
-                SystemConfig::getValue('bBackupExtraneousImages'),
                 $input['EncryptBackup'] ?? '',
                 $input['BackupPassword'] ?? ''
             );
