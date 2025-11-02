@@ -319,19 +319,60 @@ class Photo
             throw new \Exception('Invalid image type. Only JPEG, PNG, GIF, and WebP images are allowed.');
         }
         
-        $extension = $allowedMimeTypes[$mimeType];
-        $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.' . $extension;
-        
         // Validate file size (check against max upload size)
         $maxSize = $this->parseSize(ini_get('upload_max_filesize'));
         if (strlen($fileData) > $maxSize) {
             throw new \Exception('Image file size exceeds maximum allowed size');
         }
         
-        // Write file
-        if (file_put_contents($fileName, $fileData) === false) {
-            throw new \Exception('Failed to save image file');
+        // Create GD image from uploaded data
+        $sourceImage = imagecreatefromstring($fileData);
+        if ($sourceImage === false) {
+            throw new \Exception('Failed to create image from uploaded data');
         }
+        
+        // Get original dimensions
+        $sourceWidth = imagesx($sourceImage);
+        $sourceHeight = imagesy($sourceImage);
+        
+        // Create resized image at standard dimensions
+        $resizedImage = imagecreatetruecolor(self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
+        if ($resizedImage === false) {
+            imagedestroy($sourceImage);
+            throw new \Exception('Failed to create resized image');
+        }
+        
+        // Preserve transparency for PNG/GIF
+        imagealphablending($resizedImage, false);
+        imagesavealpha($resizedImage, true);
+        
+        // Resize image to standard dimensions
+        if (!imagecopyresampled(
+            $resizedImage,
+            $sourceImage,
+            0, 0, 0, 0,
+            self::PHOTO_WIDTH,
+            self::PHOTO_HEIGHT,
+            $sourceWidth,
+            $sourceHeight
+        )) {
+            imagedestroy($sourceImage);
+            imagedestroy($resizedImage);
+            throw new \Exception('Failed to resize image');
+        }
+        
+        // Save as PNG at standard dimensions
+        $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
+        
+        if (!imagepng($resizedImage, $fileName)) {
+            imagedestroy($sourceImage);
+            imagedestroy($resizedImage);
+            throw new \Exception('Failed to save resized image');
+        }
+        
+        // Clean up
+        imagedestroy($sourceImage);
+        imagedestroy($resizedImage);
         
         // Update URIs
         $this->setURIs($fileName);
