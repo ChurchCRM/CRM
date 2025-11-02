@@ -97,9 +97,9 @@ class BackupJob extends JobBase
 
     private function shouldBackupImageFile(SplFileInfo $ImageFile): bool
     {
+        // Check if file is extraneous (can be regenerated): initials or remote images
         $isExtraneousFile = strpos($ImageFile->getFileName(), '-initials') != false ||
-        strpos($ImageFile->getFileName(), '-remote') != false ||
-        strpos($ImageFile->getPathName(), 'thumbnails') != false;
+        strpos($ImageFile->getFileName(), '-remote') != false;
 
         return $ImageFile->isFile() && !(!$this->IncludeExtraneousFiles && $isExtraneousFile); //todo: figure out this logic
     }

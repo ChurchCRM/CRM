@@ -222,9 +222,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function initDataTable() {
-    // Use a fixed, reasonable thumbnail size instead of the potentially large config value
-    var thumbnailSize = Math.min(window.CRM.iProfilePictureListSize, 40);
-
     var DataTableOpts = {
         ajax: {
             url:

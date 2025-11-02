@@ -421,9 +421,4 @@ class Photo
     {
         return strpos($this->photoURI, 'initials') !== false;
     }
-
-    public function isRemote(): bool
-    {
-        return strpos($this->photoURI, 'remote') !== false;
-    }
 }
