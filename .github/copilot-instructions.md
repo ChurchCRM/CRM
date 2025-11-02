@@ -254,6 +254,35 @@ if (version_compare(phpversion(), '8.2.0', '<=')) {
 }
 ```
 
+**Class Constants & Imports:**
+```php
+// ✅ CORRECT - Public constants for shared values, use imports
+namespace ChurchCRM\dto;
+
+class Photo {
+    public const PHOTO_WIDTH = 200;
+    public const PHOTO_HEIGHT = 200;
+    public const INITIALS_FONT_SIZE = 75;
+}
+
+// In another file - use import and short class name
+use ChurchCRM\dto\Photo;
+
+$width = Photo::PHOTO_WIDTH;
+$height = <?= Photo::PHOTO_HEIGHT ?>;
+
+// ❌ WRONG - Private constants can't be accessed externally
+class Photo {
+    private const PHOTO_WIDTH = 200;  // Can't be used outside class
+}
+
+// ❌ WRONG - Inline namespace instead of import
+$width = \ChurchCRM\dto\Photo::PHOTO_WIDTH;  // Use import instead
+
+// ❌ WRONG - Hardcoded magic numbers
+$width = 200;  // Use class constant instead
+```
+
 ### Commit Messages
 
 **Format:** Imperative mood, < 72 chars, no file paths
