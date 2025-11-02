@@ -273,7 +273,6 @@ class   SystemConfig
             'bSearchIncludeDepositsMax'            => new ConfigItem(2031, 'bSearchIncludeDepositsMax', 'text', '5', gettext('Maximum number of Deposits')),
             'bSearchIncludePaymentsMax'            => new ConfigItem(2032, 'bSearchIncludePaymentsMax', 'text', '5', gettext('Maximum number of Payments')),
             'bSearchIncludeAddressesMax'           => new ConfigItem(20233, 'bSearchIncludeAddressesMax', 'text', '15', gettext('Maximum number of Addresses')),
-            'iInitialsPointSize'                   => new ConfigItem(2037, 'iInitialsPointSize', 'number', '150', gettext('Point size to use for initials thumbnails')),
             'iPhotoClientCacheDuration'            => new ConfigItem(2038, 'iPhotoClientCacheDuration', 'number', '3600', gettext('Client cache seconds for images')),
             'iRemotePhotoCacheDuration'            => new ConfigItem(2039, 'iRemotePhotoCacheDuration', 'text', '72 hours', gettext('Server cache time for remote images')),
             'iPersonConfessionFatherCustomField'   => new ConfigItem(2040, 'iPersonConfessionFatherCustomField', 'ajax', '', gettext('Field where Father Of Confession is listed, must be a people of group type'), '', '/api/system/custom-fields/person/?typeId=9'),
