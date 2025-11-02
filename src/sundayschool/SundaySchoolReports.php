@@ -113,7 +113,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
         echo "<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\"> " . gettext('At least one group must be selected to make class lists or attendance sheets.') . "</span></p>";
     }
 } else {
-    $iFYID = $_SESSION['idefaultFY'];
+    $iFYID = isset($_SESSION['idefaultFY']) ? (int)$_SESSION['idefaultFY'] : CurrentFY();
     $iGroupID = 0;
     $currentUser = UserQuery::create()->findPk(AuthenticationManager::getCurrentUser()->getId());
 
