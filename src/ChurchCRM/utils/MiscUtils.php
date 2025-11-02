@@ -63,6 +63,11 @@ class MiscUtils
 
     public static function getPhotoCacheExpirationTimestamp(): int
     {
+        return self::getPhotoCacheDuration();
+    }
+
+    public static function getPhotoCacheDuration(): int
+    {
         $cacheLength = SystemConfig::getValue('iPhotoClientCacheDuration');
         
         // Ensure valid cache duration with fallback to 1 hour
@@ -72,9 +77,8 @@ class MiscUtils
             $cacheLength = (int)$cacheLength;
         }
         
-        $cacheLength = MiscUtils::getRandomCache($cacheLength, (int)(0.5 * $cacheLength));
-
-        return time() + $cacheLength;
+        // Return duration in seconds (not timestamp) for Cache-Control max-age header
+        return MiscUtils::getRandomCache($cacheLength, (int)(0.5 * $cacheLength));
     }
 
     public static function formatAge(int $Month, int $Day, ?int $Year = null): string
