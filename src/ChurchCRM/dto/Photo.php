@@ -9,6 +9,11 @@ use ChurchCRM\Utils\MiscUtils;
 
 class Photo
 {
+    // Hardcoded photo dimensions - all photos stored at this size for optimal bandwidth/storage
+    private const PHOTO_WIDTH = 200;
+    private const PHOTO_HEIGHT = 200;
+    private const INITIALS_FONT_SIZE = 75;
+
     private string $photoType;
     private int $id;
     private $photoURI;
@@ -33,23 +38,10 @@ class Photo
         return Photo::$validExtensions;
     }
 
-    public function createThumbnail(): void
-    {
-        $this->ensureThumbnailsPath();
-        $thumbWidth = SystemConfig::getValue('iThumbnailWidth');
-        $img = $this->getGDImage($this->photoURI); //just in case we have legacy JPG/GIF that don't have a thumbnail.
-        $width = imagesx($img);
-        $height = imagesy($img);
-        $new_width = $thumbWidth;
-        $new_height = floor($height * ($thumbWidth / $width));
-        $tmp_img = imagecreatetruecolor($new_width, $new_height);
-        imagecopyresized($tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-        imagejpeg($tmp_img, $this->photoThumbURI, 50);
-    }
-
     private function setURIs(string $photoPath): void
     {
         $this->photoURI = $photoPath;
+        // Thumbnail path no longer used - kept for backwards compatibility with old files
         $this->thumbnailPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/';
         $this->photoThumbURI = $this->thumbnailPath . $this->id . '.jpg';
     }
@@ -189,25 +181,6 @@ class Photo
         return $sourceGDImage;
     }
 
-    private function ensureThumbnailsPath(): void
-    {
-        if (!file_exists($this->thumbnailPath)) {
-            mkdir($this->thumbnailPath);
-        }
-    }
-
-    public function getThumbnailBytes(): string
-    {
-        if (!file_exists($this->photoThumbURI)) {
-            $this->createThumbnail();
-        }
-
-        $content = file_get_contents($this->photoThumbURI);
-        MiscUtils::throwIfFailed($content);
-
-        return $content;
-    }
-
     public function getPhotoBytes(): string
     {
         $content = file_get_contents($this->photoURI);
@@ -222,23 +195,6 @@ class Photo
         $this->photoContentType = $finfo->file($this->photoURI);
 
         return $this->photoContentType;
-    }
-
-    public function getThumbnailContentType()
-    {
-        $finfo = new \finfo(FILEINFO_MIME);
-        $this->thumbnailContentType = $finfo->file($this->photoThumbURI);
-
-        return $this->thumbnailContentType;
-    }
-
-    public function getThumbnailURI(): ?string
-    {
-        if (!is_file($this->photoThumbURI)) {
-            $this->createThumbnail();
-        }
-
-        return $this->photoThumbURI;
     }
 
     public function getPhotoURI()
@@ -317,19 +273,16 @@ class Photo
     {
         $initials = $this->getInitialsString();
         $targetPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '-initials.png';
-        $height = SystemConfig::getValue('iPhotoHeight');
-        $width = SystemConfig::getValue('iPhotoWidth');
-        $pointSize = SystemConfig::getValue('iInitialsPointSize');
         $font = SystemURLs::getDocumentRoot() . '/fonts/' . SystemConfig::getValue('sFont');
-        $image = imagecreatetruecolor($width, $height);
+        $image = imagecreatetruecolor(self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
         MiscUtils::throwIfFailed($image);
         $bgcolor = $this->getRandomColor($image);
         $white = imagecolorallocate($image, 255, 255, 255);
-        imagefilledrectangle($image, 0, 0, $height, $width, $bgcolor);
-        $tb = imageftbbox($pointSize, 0, $font, $initials);
-        $x = ceil(($width - $tb[2]) / 2);
-        $y = ceil(($height - $tb[5]) / 2);
-        imagefttext($image, $pointSize, 0, $x, $y, $white, $font, $initials);
+        imagefilledrectangle($image, 0, 0, self::PHOTO_HEIGHT, self::PHOTO_WIDTH, $bgcolor);
+        $tb = imageftbbox(self::INITIALS_FONT_SIZE, 0, $font, $initials);
+        $x = ceil((self::PHOTO_WIDTH - $tb[2]) / 2);
+        $y = ceil((self::PHOTO_HEIGHT - $tb[5]) / 2);
+        imagefttext($image, self::INITIALS_FONT_SIZE, 0, $x, $y, $white, $font, $initials);
         imagepng($image, $targetPath);
         $this->setURIs($targetPath);
     }
