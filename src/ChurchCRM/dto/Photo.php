@@ -10,17 +10,14 @@ use ChurchCRM\Utils\MiscUtils;
 class Photo
 {
     // Hardcoded photo dimensions - all photos stored at this size for optimal bandwidth/storage
-    private const PHOTO_WIDTH = 200;
-    private const PHOTO_HEIGHT = 200;
-    private const INITIALS_FONT_SIZE = 75;
+    public const PHOTO_WIDTH = 200;
+    public const PHOTO_HEIGHT = 200;
+    public const INITIALS_FONT_SIZE = 75;
 
     private string $photoType;
     private int $id;
     private $photoURI;
-    private ?string $photoThumbURI = null;
-    private ?string $thumbnailPath = null;
     private $photoContentType = null;
-    private $thumbnailContentType = null;
     private bool $remotesEnabled;
 
     public static $validExtensions = ['png', 'jpeg', 'jpg', 'gif', 'webp'];
@@ -41,9 +38,6 @@ class Photo
     private function setURIs(string $photoPath): void
     {
         $this->photoURI = $photoPath;
-        // Thumbnail path no longer used - kept for backwards compatibility with old files
-        $this->thumbnailPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/';
-        $this->photoThumbURI = $this->thumbnailPath . $this->id . '.jpg';
     }
 
     private function shouldRefreshPhotoFile(string $photoFile): bool
@@ -367,15 +361,11 @@ class Photo
 
     public function delete(): bool
     {
-        $deleted = [];
         if ($this->photoURI && is_file($this->photoURI)) {
-            $deleted[$this->photoURI] = unlink($this->photoURI);
-        }
-        if ($this->photoThumbURI && is_file($this->photoThumbURI)) {
-            $deleted[$this->photoThumbURI] = unlink($this->photoThumbURI);
+            return unlink($this->photoURI);
         }
 
-        return !in_array(false, $deleted);
+        return false;
     }
 
     public function refresh(): void
@@ -383,18 +373,11 @@ class Photo
         if (strpos($this->photoURI, 'initials') || strpos($this->photoURI, 'remote')) {
             $this->delete();
         }
-        $this->photoURI = $this->photoHunt();
-        $this->photoThumbURI = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/' . $this->id . '.jpg';
+        $this->photoHunt();
     }
 
     public function isInitials(): bool
     {
-        if ($this->photoType == 'Person' && $this->id == 2) {
-            echo $this->photoURI;
-            echo strpos($this->photoURI, 'initials') !== false;
-            exit;
-        }
-
         return strpos($this->photoURI, 'initials') !== false;
     }
 
