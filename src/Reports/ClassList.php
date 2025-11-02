@@ -178,7 +178,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         if ($studentName != $prevStudentName) {
             $pdf->writeAt($nameX, $y, $studentName);
 
-            // Use main photo (200x200 PNG) - no thumbnail needed
+            // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
             $imgName = $person->getPhoto()->getPhotoURI();
 
             $birthdayStr = change_date_for_place_holder($person->getBirthYear() . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());

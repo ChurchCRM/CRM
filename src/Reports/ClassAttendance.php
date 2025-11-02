@@ -137,12 +137,12 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $teacherString .= $person->getFullName();
                 $bFirstTeacher = false;
 
-                // Use main photo (200x200 PNG) - no thumbnail needed
+                // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
                 $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(), '', $person->getPhoto()->getPhotoURI());
             } elseif ($lst_OptionName === 'Student') {
                 $aStudents[$iStudentCnt] = $person;
 
-                // Use main photo (200x200 PNG) - no thumbnail needed
+                // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
                 $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getPhotoURI();
             } elseif ($lst_OptionName == gettext('Liaison')) {
                 $liaisonString .= gettext('Liaison') . ':' . $person->getFullName() . ' ' . $pdf->stripPhone($homePhone) . ' ';
@@ -221,7 +221,7 @@ for ($i = 0; $i < $nGrps; $i++) {
             $person = $groupRoleMembership->getPerson();
 
             $aStudents[$iStudentCnt] = $groupRoleMembership->getPerson();
-            // Use main photo (200x200 PNG) - no thumbnail needed
+            // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
             $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getPhotoURI();
         }
 

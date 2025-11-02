@@ -30,7 +30,7 @@ import { initializeQuillEditor } from './quill-editor.js';
 import '../src/skin/js/cart.js';
 
 // Import people image lazy loader (for person and family photos)
-import peopleImageLoader from './people-image-loader';
+import './people-image-loader';
 
 import '../src/skin/churchcrm.scss';
 
