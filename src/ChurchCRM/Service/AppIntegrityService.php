@@ -196,7 +196,17 @@ class AppIntegrityService
             new Prerequisite('PHP EXIF', fn (): bool => function_exists('exif_imagetype')),
             new Prerequisite('PHP iconv', fn (): bool => function_exists('iconv')),
             new Prerequisite('Mod Rewrite or Equivalent', fn (): bool => AppIntegrityService::hasModRewrite()),
-            new Prerequisite('GD Library for image manipulation', fn (): bool => function_exists('imagecreatetruecolor') && function_exists('gd_info')),
+            new Prerequisite(
+                'GD Library for image manipulation',
+                fn (): bool =>
+                    function_exists('imagecreatetruecolor') &&
+                    function_exists('gd_info') &&
+                    function_exists('imagecolorallocate') &&
+                    function_exists('imagefilledrectangle') &&
+                    function_exists('imageftbbox') &&
+                    function_exists('imagefttext') &&
+                    function_exists('imagepng')
+            ),
             new Prerequisite('FreeType Library', fn (): bool => function_exists('imagefttext')),
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => function_exists('finfo_open') || function_exists('mime_content_type')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_init')),
