@@ -4,6 +4,7 @@ require_once 'Include/Config.php';
 require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -201,7 +202,7 @@ $bOkToEdit = (
             <div class="card-body box-profile">
                 <div class="image-container">
                     <div class="text-center">
-                        <img src="<?= SystemURLs::getRootPath() . '/api/person/' . $person->getId() . '/photo' ?>" class="initials-image profile-user-img img-fluid img-circle">
+                        <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile">
                         <p />
 
                         <?php if ($bOkToEdit) : ?>
@@ -461,7 +462,7 @@ $bOkToEdit = (
                                         <tr>
                                             <td>
 
-                                                <img style="width:40px; height:40px;display:inline-block" src="<?= $sRootPath . '/api/person/' . $familyMember->getId() . '/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
+                                                <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="photo-tiny">
                                                 <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
                                             </td>
@@ -1017,8 +1018,8 @@ $bOkToEdit = (
                     window.CRM.photoUploader = window.CRM.createPhotoUploader({
                         uploadUrl: window.CRM.root + '/api/person/<?= $iPersonID ?>/photo',
                         maxFileSize: window.CRM.maxUploadSizeBytes,
-                        photoWidth: <?= SystemConfig::getValue('iPhotoWidth') ?>,
-                        photoHeight: <?= SystemConfig::getValue('iPhotoHeight') ?>,
+                        photoWidth: <?= Photo::PHOTO_WIDTH ?>,
+                        photoHeight: <?= Photo::PHOTO_HEIGHT ?>,
                         onComplete: function(result) {
                             window.location.reload();
                         }
