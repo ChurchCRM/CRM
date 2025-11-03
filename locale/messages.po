@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-01 14:56-0700\n"
+"POT-Creation-Date: 2025-11-02 19:54-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1265,9 +1265,6 @@ msgid "Clear All Funds"
 msgstr ""
 
 msgid "Clear Filters"
-msgstr ""
-
-msgid "Client cache seconds for images"
 msgstr ""
 
 #. Context: countries
@@ -3107,9 +3104,6 @@ msgstr ""
 msgid "Hebrew"
 msgstr ""
 
-msgid "Height to use for images"
-msgstr ""
-
 msgid "Help & Manual"
 msgstr ""
 
@@ -3244,9 +3238,6 @@ msgid "Include families in coordinate file:"
 msgstr ""
 
 msgid "Include family custom properties in global search."
-msgstr ""
-
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
 msgstr ""
 
 msgid "Include only these classifications in the directory, comma separated"
@@ -5015,9 +5006,6 @@ msgid "Pledged this year"
 msgstr ""
 
 msgid "Pledges and Payments"
-msgstr ""
-
-msgid "Point size to use for initials thumbnails"
 msgstr ""
 
 #. Context: countries
@@ -7103,12 +7091,6 @@ msgstr ""
 msgid "Why do you keep coming?"
 msgstr ""
 
-msgid "Width to use for images"
-msgstr ""
-
-msgid "Width to use for thumbnails"
-msgstr ""
-
 msgid "Winner"
 msgstr ""
 
@@ -7312,9 +7294,6 @@ msgstr ""
 msgid "already in cart"
 msgstr ""
 
-msgid "am"
-msgstr ""
-
 msgid "and"
 msgstr ""
 
@@ -7473,9 +7452,6 @@ msgid "persons from"
 msgstr ""
 
 msgid "persons were imported"
-msgstr ""
-
-msgid "pm"
 msgstr ""
 
 msgid "property"
