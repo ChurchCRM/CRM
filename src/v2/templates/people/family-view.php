@@ -409,7 +409,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                                             <i class="fa-solid fa-pen fa-sm"></i>
                                                         </a>
                                                     <?php }
-                                                    if (isset($item["deleteLink"])) { ?>
+                                                    if (isset($note['deleteLink'])) { ?>
                                                         <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
                                                             <i class="fa-solid fa-trash fa-sm"></i>
                                                         </a>
@@ -468,6 +468,10 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                     <?php 
                                         $isInCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false);
                                     ?>
+                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>" class="btn-link">
+                                        <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
+                                    </a>
+                                    
                                     <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="btn-link">
                                         <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
                                     </a>
