@@ -41,7 +41,7 @@ require_once 'Include/Header.php';
         <span class="text-danger"></span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close')?></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Close')?></button>
         <button name="setgroupSpecificProperties" id="setgroupSpecificProperties" type="button" class="btn btn-danger"></button>
       </div>
     </div>

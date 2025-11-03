@@ -236,7 +236,7 @@ $bOkToEdit = (
                     </li>
                     <li class="list-group-item">
                         <b><?= gettext('Family Role') ?></b> <a class="float-right"><?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?></a>
-                        <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-xs">
+                        <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-sm btn-primary">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                     </li>
@@ -479,16 +479,16 @@ $bOkToEdit = (
                                                 <?php } ?>
                                             </td>
                                             <td style="width: 20%;">
-                                                <button class="AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person">
-                                                    <i class="fa-solid fa-cart-plus "></i>
+                                                <button class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>">
+                                                    <i class="fa-solid fa-cart-plus"></i>
                                                 </button>
                                                 <?php if ($bOkToEdit) {
                                                     ?>
-                                                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
-                                                        <i class="fa-solid fa-pen "></i>
+                                                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>" class="btn btn-sm btn-info" title="<?= gettext('Edit') ?>">
+                                                        <i class="fa-solid fa-pen"></i>
                                                     </a>
-                                                    <a class="delete-person" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family">
-                                                        <i class="fa-solid fa-trash-can btn-danger"></i>
+                                                    <a class="delete-person btn btn-sm btn-danger" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family" title="<?= gettext('Delete') ?>">
+                                                        <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                     <?php
                                                 } ?>
@@ -526,12 +526,12 @@ $bOkToEdit = (
                                                 ?>
                                                 <?php if (isset($item["editLink"])) {
                                                     ?>
-                                                    <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button></a>
+                                                    <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></button></a>
                                                     <?php
                                                 }
                                                 if (isset($item["deleteLink"])) {
                                                     ?>
-                                                    <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa-solid fa-trash"></i></button></a>
+                                                    <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></a>
                                                     <?php
                                                 } ?>
                                                 &nbsp;
@@ -605,12 +605,12 @@ $bOkToEdit = (
                                                                 <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
                                                                 <div style="margin-top: 10px;">
                                                                     <?php if (isset($note['editLink']) && $note['editLink']) { ?>
-                                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
+                                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
                                                                             <i class="fa-solid fa-pen"></i>
                                                                         </a>
                                                                     <?php }
                                                                     if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
-                                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
+                                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
                                                                             <i class="fa-solid fa-trash"></i>
                                                                         </a>
                                                                     <?php } ?>
@@ -700,10 +700,10 @@ $bOkToEdit = (
                                                     <code>
                                                         <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                                                             ?>
-                                                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa-solid fa-list"></i></a>
+                                                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-secondary" role="button"><i class="fa-solid fa-list"></i></a>
                                                             <div class="btn-group">
-                                                                <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
-                                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                                <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
+                                                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
                                                                     <span class="caret"></span>
                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                 </button>
@@ -964,7 +964,7 @@ $bOkToEdit = (
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext("Cancel") ?></button>
                         <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
                     </div>
                 </div>

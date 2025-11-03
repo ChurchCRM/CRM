@@ -187,15 +187,15 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag"></i> <?= gettext("Properties") ?></h3>
                 <div class="card-tools pull-right">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <button id="add-family-property" type="button" class="btn btn-box-tool" style="display: block;">
+                    <button id="add-family-property" type="button" class="btn btn-box-tool d-block">
                         <i class="fa-solid fa-plus-circle text-blue"></i>
                     </button>
                     <?php } ?>
                 </div>
             </div>
             <div class="card-body">
-                <div id="family-property-loading" class="col-xs-12 text-center">
-                    <i class="btn btn-default btn-lrg ajax">
+                <div id="family-property-loading" class="w-100 text-center">
+                    <i class="btn btn-secondary btn-lg ajax">
                         <i class="fa-solid fa-spinner fa-spin"></i>&nbsp; <?= gettext("Loading") ?>
                     </i>
                 </div>
@@ -242,32 +242,24 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                     </div>
                 </div>
 
-                <hr/>
-
-                <!-- Member Management Group -->
+                <!-- Actions Group -->
                 <div class="row mb-3">
-                    <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
+                    <div class="col-12">
                         <a class="btn btn-sm btn-outline-info" href="#" data-toggle="modal" data-target="#confirm-verify">
                             <i class="fa-solid fa-check-square"></i> <?= gettext("Verify Info") ?>
                         </a>
                         <a class="btn btn-sm btn-outline-success" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>">
                             <i class="fa-solid fa-plus-square"></i> <?= gettext('Add New Member') ?>
                         </a>
-                    </div>
-                </div>
-
-                <!-- Family Management Group -->
-                <div class="row mb-3">
-                    <div class="col-12 text-center">
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                             <button class="btn btn-sm btn-outline-warning" id="activateDeactivate">
-                                <i class="fa-solid <?= (empty($family->isActive()) ? 'fa-toggle-on' : 'fa-toggle-off') ?>"></i>
-                                <?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                                <i class="fa-solid fa-toggle-<?= (empty($family->isActive()) ? 'on' : 'off') ?>"></i>
+                                <?php echo(($family->isActive() ? _('Deactivate') : _('Activate'))); ?>
                             </button>
                         <?php }
                         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                             <a id="deleteFamilyBtn" class="btn btn-sm btn-outline-danger" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>">
-                                <i class="fa-solid fa-trash-can"></i> <?= gettext('Delete this Family') ?>
+                                <i class="fa-solid fa-trash-can"></i> <?= gettext('Delete') ?>
                             </a>
                         <?php } ?>
                     </div>
@@ -275,22 +267,22 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
                 <!-- Utility Group -->
                 <div class="row mb-3">
-                    <div class="col-12 text-center">
+                    <div class="col-12">
                         <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
                             <a class="btn btn-sm btn-outline-secondary" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>">
-                                <i class="fa-solid fa-sticky-note"></i> <?= gettext("Add a Note") ?>
+                                <i class="fa-solid fa-sticky-note"></i> <?= gettext("Add Note") ?>
                             </a>
                         <?php } ?>
                         <button class="AddToCart btn btn-sm btn-outline-secondary" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
-                            <i class="fa-solid fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?>
+                            <i class="fa-solid fa-cart-plus"></i> <?= gettext("Add to Cart") ?>
                         </button>
                     </div>
                 </div>
 
-                <!-- Finance Group -->
+                <!-- Financial Group -->
                 <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                 <div class="row mb-3">
-                    <div class="col-12 text-center">
+                    <div class="col-12">
                         <a class="btn btn-sm btn-outline-primary" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
                             <i class="fa-solid fa-hand-holding-dollar"></i> <?= gettext("Add a new pledge") ?>
                         </a>
@@ -417,7 +409,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                                             <i class="fa-solid fa-pen fa-sm"></i>
                                                         </a>
                                                     <?php }
-                                                    if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
+                                                    if (isset($note['deleteLink'])) { ?>
                                                         <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
                                                             <i class="fa-solid fa-trash fa-sm"></i>
                                                         </a>
@@ -598,8 +590,8 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal"><?= gettext("Cancel") ?></button>
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal"><?= gettext('Cancel') ?></button>
                 <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
 
             </div>
@@ -682,7 +674,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                     <?php
                 } ?>
                 <button type="button" id="verifyURL"
-                        class="btn btn-default"><i class="fa-solid fa-link"></i> <?= gettext("URL") ?></button>
+                        class="btn btn-secondary"><i class="fa-solid fa-link"></i> <?= gettext("URL") ?></button>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa-solid fa-download"></i> <?= gettext("PDF") ?></button>
                 <button type="button" id="verifyNow"

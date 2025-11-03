@@ -342,7 +342,7 @@ SQL;
 
 <p class="text-center">
 <BR>
-<input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Add to Family') ?>">
+<input type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Add to Family') ?>">
 <BR><BR>
 </p>
 </form>

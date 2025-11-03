@@ -98,7 +98,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
     }
     echo "\n<br><a class='btn btn-danger' href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . '"> ';
     echo gettext('Yes, delete this Volunteer Opportunity') . ' </a>';
-    echo "\n<a href=\"VolunteerOpportunityEditor.php\" class='btn btn-default'> ";
+    echo "\n<a href=\"VolunteerOpportunityEditor.php\" class='btn btn-secondary'> ";
     echo gettext('No, cancel this deletion') . ' </a>';
     echo '</div>';
     require_once 'Include/Footer.php';
@@ -386,7 +386,7 @@ if (isset($_POST['SaveChanges'])) {
                                 <td width="40%" class="text-center align-bottom">
                                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                                     &nbsp;
-                                    <input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='v2/dashboard'">
+                                    <input type="button" class="btn btn-secondary" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='v2/dashboard'">
                                 </td>
                                 <td width="30%"></td>
                             </tr>

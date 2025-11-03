@@ -981,7 +981,7 @@ require_once 'Include/Header.php';
                             if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
                                 echo ' <input type="submit" class="btn btn-info" value="' . gettext('Save and Add') . '" name="FamilySubmitAndAdd"> ';
                             }
-                                                echo ' <input type="button" class="btn btn-default" value="' . gettext('Cancel') . '" Name="FamilyCancel"';
+                                                echo ' <input type="button" class="btn btn-secondary" value="' . gettext('Cancel') . '" Name="FamilyCancel"';
                             if ($iFamilyID > 0) {
                                 echo " onclick=\"javascript:document.location='v2/family/$iFamilyID';\">";
                             } else {
