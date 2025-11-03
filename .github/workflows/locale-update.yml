@@ -31,29 +31,45 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      - name: Start CI Docker containers
+      - name: Run Docker
         run: npm run docker:ci:start
-      
-      - name: Wait for database to be ready
+
+      - name: Wait for Docker to be ready
         run: |
-          echo "Waiting for database to be ready..."
-          for i in {1..30}; do
-            if docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci exec -T database mysql -h database -u churchcrm -pchurchcrm churchcrm -e "SELECT 1" > /dev/null 2>&1; then
-              echo "Database is ready!"
-              exit 0
-            fi
-            echo "Waiting for database... ($i/30)"
-            sleep 2
+          echo "Waiting for services to be ready..."
+          sleep 10
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
+
+      - name: Test Server
+        run: |
+          echo "Testing API endpoint..."
+          # Retry logic: wait up to 60 seconds for server to respond
+          max_attempts=12
+          attempt=1
+          until curl -f http://127.0.0.1/api/public/echo || [ $attempt -eq $max_attempts ]; do
+            echo "Attempt $attempt/$max_attempts failed. Retrying in 5 seconds..."
+            sleep 5
+            attempt=$((attempt + 1))
           done
-          echo "Database failed to become ready"
-          exit 1
+          
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
+            exit 1
+          fi
+          
+          echo "Server is responding! Running verbose test..."
+          curl -vvv http://127.0.0.1/api/public/echo
       
       - name: Run locale build
         run: npm run locale:build
       
       - name: Stop CI Docker containers
         if: always()
-        run: npm run docker:ci:down
+        run: |
+          npm run docker:ci:down
       
       - name: Check for meaningful changes
         id: check_changes
