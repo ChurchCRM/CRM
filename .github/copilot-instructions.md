@@ -185,9 +185,6 @@ if ($contentType && is_string($contentType)) {
 }
 ```
 
-<<<<<<< Updated upstream
-### Commit Messages
-=======
 ---
 
 ## Photo Caching & HttpCache Middleware
@@ -211,7 +208,6 @@ $app->add(new Cache('public', 3600));
 ```
 
 ---
->>>>>>> Stashed changes
 
 ## HTML & CSS
 

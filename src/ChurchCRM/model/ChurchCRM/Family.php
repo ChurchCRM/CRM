@@ -253,21 +253,15 @@ class Family extends BaseFamily implements PhotoInterface
         return false;
     }
 
-    public function setImageFromBase64($base64): bool
+    public function setImageFromBase64($base64): void
     {
-        if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-            $note = new Note();
-            $note->setText(gettext('Profile Image uploaded'));
-            $note->setType('photo');
-            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-            $this->getPhoto()->setImageFromBase64($base64);
-            $note->setFamId($this->getId());
-            $note->save();
-
-            return true;
-        }
-
-        return false;
+        $note = new Note();
+        $note->setText(gettext('Profile Image uploaded'));
+        $note->setType('photo');
+        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
+        $this->getPhoto()->setImageFromBase64($base64);
+        $note->setFamId($this->getId());
+        $note->save();
     }
 
     public function verify(): void

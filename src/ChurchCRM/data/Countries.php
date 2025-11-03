@@ -294,7 +294,7 @@ class Countries
         return self::$countries[$CountryCode];
     }
 
-    public static function getCountryByName(string $CountryName): ?Country
+    public static function getCountryByName(?string $CountryName): ?Country
     {
         if (empty($CountryName)) {
             return null;

@@ -93,11 +93,7 @@ if (isset($_GET['Confirmed'])) {
     RunQuery($sSQL);
 
     // Delete the photo files, if they exist
-    $photoThumbnail = 'Images/Family/thumbnails/' . $iFamilyID . '.jpg';
-    if (file_exists($photoThumbnail)) {
-        unlink($photoThumbnail);
-    }
-    $photoFile = 'Images/Family/' . $iFamilyID . '.jpg';
+    $photoFile = 'Images/Family/' . $iFamilyID . '.png';
     if (file_exists($photoFile)) {
         unlink($photoFile);
     }

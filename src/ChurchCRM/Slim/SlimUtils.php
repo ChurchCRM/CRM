@@ -8,7 +8,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Interfaces\RouteInterface;
 use Slim\Routing\RouteContext;
-use Slim\HttpCache\CacheProvider;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Throwable;
@@ -193,14 +192,21 @@ class SlimUtils
     }
 
     /**
-     * Render a photo response with cache headers
+     * Render a photo response
      */
     public static function renderPhoto(Response $response, Photo $photo): Response
     {
-        $cacheProvider = new CacheProvider();
-        $response = $cacheProvider->withEtag($response, $photo->getPhotoURI());
-        $response = $response->withHeader('Content-type', $photo->getPhotoContentType());
+        // Set content type - ensure it's a valid string
+        $contentType = $photo->getPhotoContentType();
+        if ($contentType && is_string($contentType)) {
+            $response = $response->withHeader('Content-Type', trim($contentType));
+        } else {
+            $response = $response->withHeader('Content-Type', 'application/octet-stream');
+        }
+        
+        // Write photo bytes to response body
         $response->getBody()->write($photo->getPhotoBytes());
+        
         return $response;
     }
 }

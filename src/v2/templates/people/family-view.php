@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Classification;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
@@ -45,8 +46,9 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             </div>
             <div class="card-body text-center">
                 <div class="image-container position-relative d-inline-block">
-                    <img src="<?= SystemURLs::getRootPath() ?>/api/family/<?= $family->getId() ?>/photo"
-                         class="profile-user-img img-circle" style="width: 200px; height: 200px;"/>
+                    <img data-image-entity-type="family" 
+                         data-image-entity-id="<?= $family->getId() ?>" 
+                         class="photo-large"/>
                     <div class="position-absolute w-100 text-center" style="bottom: 10px;">
                         <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary mr-1" title="<?= gettext("View Photo") ?>">
                             <i class="fa-solid fa-search-plus"></i>
@@ -460,8 +462,9 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <a href="<?= $person->getViewURI()?>" ?>
-                                        <img class="profile-user-img img-responsive img-circle initials-image mx-auto d-block"
-                                             src="<?= $person->getThumbnailURL() ?>" style="width: 100px; height: 100px;">
+                                        <img class="photo-medium"
+                                             data-image-entity-type="person" 
+                                             data-image-entity-id="<?= $person->getId() ?>">
                                         <h3 class="profile-username"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
                                     </a>
                                     <p class="text-muted"><i
@@ -622,8 +625,8 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
         window.CRM.photoUploader = window.CRM.createPhotoUploader({
             uploadUrl: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
             maxFileSize: window.CRM.maxUploadSizeBytes,
-            photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
-            photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
+            photoHeight: <?= Photo::PHOTO_HEIGHT ?>,
+            photoWidth: <?= Photo::PHOTO_WIDTH ?>,
             onComplete: function() {
                 location.reload();
             }

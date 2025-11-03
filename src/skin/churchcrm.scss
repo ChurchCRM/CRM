@@ -46,6 +46,7 @@
 @include meta.load-css("scss/systemSettings");
 @include meta.load-css("scss/kiosk");
 @include meta.load-css("scss/groups");
+@include meta.load-css("scss/people-lazy-image-loading");
 
 html,
 body {

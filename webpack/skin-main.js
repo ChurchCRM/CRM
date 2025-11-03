@@ -29,6 +29,9 @@ import { initializeQuillEditor } from './quill-editor.js';
 // Import cart management module
 import '../src/skin/js/cart.js';
 
+// Import people image lazy loader (for person and family photos)
+import './people-image-loader';
+
 import '../src/skin/churchcrm.scss';
 
 // Make Quill initialization function available globally

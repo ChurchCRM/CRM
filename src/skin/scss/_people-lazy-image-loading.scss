@@ -1,0 +1,122 @@
+/**
+ * Lazy Image Loading Styles
+ * 
+ * Styles for images that use lazy loading via data attributes.
+ * All images are loaded at full resolution and resized client-side via CSS.
+ */
+
+/* Base style for lazy-loading images */
+img[data-image-entity-type] {
+    background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+    background-size: 200% 100%;
+    min-height: 50px;
+    min-width: 50px;
+    object-fit: cover; /* Ensure images maintain aspect ratio when resized */
+}
+
+/* Loading animation */
+img[data-image-entity-type].loading {
+    opacity: 0.7;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Loaded state - smooth fade in */
+img[data-image-entity-type].loaded {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    background: transparent;
+}
+
+/* Error state */
+img[data-image-entity-type].error {
+    background: #ffebee;
+    border: 2px dashed #ef5350;
+    opacity: 0.8;
+}
+
+/* Specific styling for profile images */
+.profile-user-img[data-image-entity-type] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: 200% 200%;
+}
+
+.profile-user-img[data-image-entity-type].loading {
+    animation: shimmer-gradient 2s ease infinite;
+}
+
+@keyframes shimmer-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Circle images (avatars) */
+.img-circle[data-image-entity-type],
+.rounded-circle[data-image-entity-type] {
+    background: radial-gradient(circle, #e3f2fd 0%, #bbdefb 100%);
+}
+
+/* Standard photo size classes - client-side resizing */
+/* All images are loaded at full resolution and resized via CSS */
+
+/* Base photo class - common styles for all photos */
+.photo-base {
+    object-fit: cover;
+    border-radius: 50%; /* Circle/avatar style */
+    display: inline-block;
+}
+
+/* Unified photo classes combining size + common styles */
+.photo-profile {
+    @extend .photo-base;
+    width: 200px;
+    height: 200px;
+}
+
+.photo-tiny {
+    @extend .photo-base;
+    width: 40px;
+    height: 40px;
+}
+
+.photo-small {
+    @extend .photo-base;
+    width: 85px;
+    height: 85px;
+}
+
+.photo-medium {
+    @extend .photo-base;
+    width: 100px;
+    height: 100px;
+}
+
+.photo-large {
+    @extend .photo-base;
+    width: 200px;
+    height: 200px;
+}
+
+/* Responsive adjustments for larger photos on mobile */
+@media (max-width: 768px) {
+    .photo-large,
+    .photo-profile {
+        width: 150px;
+        height: 150px;
+    }
+}

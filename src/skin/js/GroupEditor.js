@@ -49,15 +49,18 @@ $(document).ready(() => {
                     "Failed to set group specific property status:",
                     error,
                 );
-                $.notify(i18next.t("Failed to update properties. Please try again."), {
-                    type: "danger",
-                    icon: "fa fa-exclamation-triangle",
-                    delay: 5000,
-                    placement: {
-                        from: "top",
-                        align: "right",
+                $.notify(
+                    i18next.t("Failed to update properties. Please try again."),
+                    {
+                        type: "danger",
+                        icon: "fa fa-exclamation-triangle",
+                        delay: 5000,
+                        placement: {
+                            from: "top",
+                            align: "right",
+                        },
                     },
-                });
+                );
             });
     });
 
@@ -96,15 +99,18 @@ $(document).ready(() => {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to update group:", error);
-                $.notify(i18next.t("Failed to update group. Please try again."), {
-                    type: "danger",
-                    icon: "fa fa-exclamation-triangle",
-                    delay: 5000,
-                    placement: {
-                        from: "top",
-                        align: "right",
+                $.notify(
+                    i18next.t("Failed to update group. Please try again."),
+                    {
+                        type: "danger",
+                        icon: "fa fa-exclamation-triangle",
+                        delay: 5000,
+                        placement: {
+                            from: "top",
+                            align: "right",
+                        },
                     },
-                });
+                );
             });
     });
 
@@ -172,12 +178,15 @@ $(document).ready(() => {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to delete role:", error);
-                $.notify(i18next.t("Failed to delete role. Please try again."), {
-                    type: "danger",
-                    icon: "fa fa-exclamation-triangle",
-                    delay: 5000,
-                    placement: { from: "top", align: "right" },
-                });
+                $.notify(
+                    i18next.t("Failed to delete role. Please try again."),
+                    {
+                        type: "danger",
+                        icon: "fa fa-exclamation-triangle",
+                        delay: 5000,
+                        placement: { from: "top", align: "right" },
+                    },
+                );
             });
     });
 
@@ -239,12 +248,15 @@ $(document).ready(() => {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to update role name:", error);
-                $.notify(i18next.t("Failed to update role name. Please try again."), {
-                    type: "danger",
-                    icon: "fa fa-exclamation-triangle",
-                    delay: 5000,
-                    placement: { from: "top", align: "right" },
-                });
+                $.notify(
+                    i18next.t("Failed to update role name. Please try again."),
+                    {
+                        type: "danger",
+                        icon: "fa fa-exclamation-triangle",
+                        delay: 5000,
+                        placement: { from: "top", align: "right" },
+                    },
+                );
             });
     });
 
@@ -269,12 +281,15 @@ $(document).ready(() => {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to set default role:", error);
-                $.notify(i18next.t("Failed to set default role. Please try again."), {
-                    type: "danger",
-                    icon: "fa fa-exclamation-triangle",
-                    delay: 5000,
-                    placement: { from: "top", align: "right" },
-                });
+                $.notify(
+                    i18next.t("Failed to set default role. Please try again."),
+                    {
+                        type: "danger",
+                        icon: "fa fa-exclamation-triangle",
+                        delay: 5000,
+                        placement: { from: "top", align: "right" },
+                    },
+                );
             });
     });
 

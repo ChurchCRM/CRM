@@ -189,8 +189,9 @@ require_once '../Include/Header.php';
         <div class="card card-primary text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white mb-3"><?= $teacher['per_FirstName'] . ' ' . $teacher['per_LastName'] ?></h4>
-            <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $teacher['per_ID'] ?>/thumbnail"
-                  alt="User Image" class="user-image initials-image mb-3" width="85" height="85" />
+            <img data-image-entity-type="person" 
+                 data-image-entity-id="<?= $teacher['per_ID'] ?>"
+                 class="photo-small" />
             <div class="btn-group btn-group-sm d-flex" role="group">
                 <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-success">
                     <i class="fa-solid fa-envelope"></i>
@@ -240,8 +241,9 @@ require_once '../Include/Header.php';
           <tr>
           <td>
             <a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
-              <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $child['kidId'] ?>/thumbnail"
-                  alt="User Image" class="user-image initials-image me-2" width="35" height="35" />
+              <img data-image-entity-type="person" 
+                   data-image-entity-id="<?= $child['kidId'] ?>"
+                   class="photo-tiny" />
               <?= $child['LastName'] . ', ' . $child['firstName'] ?>
             </a>
           </td>

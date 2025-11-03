@@ -36,8 +36,8 @@ $tNoSchool6 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool6');
 $tNoSchool7 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool7');
 $tNoSchool8 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool8');
 
-$iExtraStudents = InputUtils::legacyFilterInputArr($_GET, 'ExtraStudents', 'int');
-$iExtraTeachers = InputUtils::legacyFilterInputArr($_GET, 'ExtraTeachers', 'int');
+$iExtraStudents = (int)InputUtils::legacyFilterInputArr($_GET, 'ExtraStudents', 'int');
+$iExtraTeachers = (int)InputUtils::legacyFilterInputArr($_GET, 'ExtraTeachers', 'int');
 
 $dFirstSunday = strtotime($tFirstSunday);
 $dLastSunday = strtotime($tLastSunday);
@@ -80,6 +80,12 @@ for ($i = 0; $i < $nGrps; $i++) {
     }
     //Get the data on this group
     $group = GroupQuery::create()->findOneById($iGroupID);
+    
+    // Skip if group not found
+    if ($group === null) {
+        LoggerUtils::getAppLogger()->warning("ClassAttendance: Group with ID $iGroupID not found");
+        continue;
+    }
 
     $FYString = MakeFYString($iFYID);
 
@@ -131,13 +137,13 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $teacherString .= $person->getFullName();
                 $bFirstTeacher = false;
 
-                $person->getPhoto()->createThumbnail();
-                $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(), '', $person->getPhoto()->getThumbnailURI());
+                // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
+                $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(), '', $person->getPhoto()->getPhotoURI());
             } elseif ($lst_OptionName === 'Student') {
                 $aStudents[$iStudentCnt] = $person;
 
-                $person->getPhoto()->createThumbnail();
-                $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getThumbnailURI();
+                // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
+                $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getPhotoURI();
             } elseif ($lst_OptionName == gettext('Liaison')) {
                 $liaisonString .= gettext('Liaison') . ':' . $person->getFullName() . ' ' . $pdf->stripPhone($homePhone) . ' ';
             }
@@ -215,7 +221,8 @@ for ($i = 0; $i < $nGrps; $i++) {
             $person = $groupRoleMembership->getPerson();
 
             $aStudents[$iStudentCnt] = $groupRoleMembership->getPerson();
-            $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getThumbnailURI();
+            // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
+            $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getPhotoURI();
         }
 
         $pdf->SetFont('Times', 'B', 12);

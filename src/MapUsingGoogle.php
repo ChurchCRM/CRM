@@ -220,12 +220,10 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
                         //this helps to add head people persons details: otherwise doesn't seems to populate
                         $class = $family->getHeadPeople()[0];
                         $family->getHeadPeople()[0];
-                        $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/photo';
                         $arr['ID'] = $family->getId();
                         $arr['Name'] = $family->getName();
                         $arr['Salutation'] = $family->getSalutation();
                         $arr['Address'] = $family->getAddress();
-                        $arr['Thumbnail'] = $photoFileThumb;
                         $arr['Latitude'] = $family->getLatitude();
                         $arr['Longitude'] = $family->getLongitude();
                         $arr['Name'] = $family->getName();
@@ -237,12 +235,10 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
                 //plot Person
                 foreach ($persons as $member) {
                     $latLng = $member->getLatLng();
-                    $photoFileThumb = SystemURLs::getRootPath() . '/api/person/' . $member->getId() . '/thumbnail';
                     $arr['ID'] = $member->getId();
                     $arr['Salutation'] = $member->getFullName();
                     $arr['Name'] = $member->getFullName();
                     $arr['Address'] = $member->getAddress();
-                    $arr['Thumbnail'] = $photoFileThumb;
                     $arr['Latitude'] = $latLng['Latitude'];
                     $arr['Longitude'] = $latLng['Longitude'];
                     $arr['Name'] = $member->getFullName();
@@ -290,11 +286,6 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
                 contentString = "<b><a href='" + imghref + "'>" + window.CRM.map.plotArray[i].Salutation + "</a></b>";
                 contentString += "<p>" + window.CRM.map.plotArray[i].Address + "</p>";
-                if (window.CRM.map.plotArray[i].Thumbnail.length > 0) {
-                    //contentString += "<div class='image-container'><p class='text-center'><a href='" + imghref + "'>";
-                    contentString += "<div class='image-container'><a href='" + imghref + "'>";
-                    contentString += "<img class='profile-user-img img-responsive img-circle' border='1' src='" + window.CRM.map.plotArray[i].Thumbnail + "' style='width:" + <?= SystemConfig::getValue('iProfilePictureListSize') ?> + "px; height:" + <?= SystemConfig::getValue('iProfilePictureListSize') ?> + "px'></a></div>" ;
-                }
 
                 //Add marker and infowindow
                 addMarkerWithInfowindow(map, latlng, image, window.CRM.map.plotArray[i].Name, contentString);

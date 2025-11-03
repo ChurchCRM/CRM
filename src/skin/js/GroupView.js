@@ -222,9 +222,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function initDataTable() {
-    // Use a fixed, reasonable thumbnail size instead of the potentially large config value
-    var thumbnailSize = Math.min(window.CRM.iProfilePictureListSize, 40);
-    
     var DataTableOpts = {
         ajax: {
             url:
@@ -241,17 +238,7 @@ function initDataTable() {
                 data: "PersonId",
                 render: function (data, type, full, meta) {
                     return (
-                        '<img src="' +
-                        window.CRM.root +
-                        "/api/person/" +
-                        full.PersonId +
-                        '/thumbnail" class="direct-chat-img initials-image" style="width:' +
-                        thumbnailSize +
-                        "px; height:" +
-                        thumbnailSize +
-                        'px"> &nbsp <a href="PersonView.php?PersonID="' +
-                        full.PersonId +
-                        '"><a target="_top" href="PersonView.php?PersonID=' +
+                        '<a target="_top" href="PersonView.php?PersonID=' +
                         full.PersonId +
                         '">' +
                         full.Person.FullName +
@@ -270,9 +257,11 @@ function initDataTable() {
                         },
                     )[0];
                     return (
-                        '<span class="d-inline-block text-truncate" style="max-width: 150px;" title="' + i18next.t(thisRole?.OptionName) + '">' +
+                        '<span class="d-inline-block text-truncate" style="max-width: 150px;" title="' +
                         i18next.t(thisRole?.OptionName) +
-                        '</span> ' +
+                        '">' +
+                        i18next.t(thisRole?.OptionName) +
+                        "</span> " +
                         '<button class="btn btn-xs changeMembership" data-personid=' +
                         full.PersonId +
                         '><i class="fa-solid fa-pen"></i></button>'
@@ -287,7 +276,13 @@ function initDataTable() {
                     if (full.Person.Address2) {
                         address += " " + full.Person.Address2;
                     }
-                    return '<span class="d-inline-block text-truncate" style="max-width: 200px;" title="' + address + '">' + address + '</span>';
+                    return (
+                        '<span class="d-inline-block text-truncate" style="max-width: 200px;" title="' +
+                        address +
+                        '">' +
+                        address +
+                        "</span>"
+                    );
                 },
             },
             {
@@ -316,9 +311,15 @@ function initDataTable() {
                 data: "Person.Email",
                 render: function (data, type, full, meta) {
                     if (data) {
-                        return '<span class="d-inline-block text-truncate" style="max-width: 180px;" title="' + data + '">' + data + '</span>';
+                        return (
+                            '<span class="d-inline-block text-truncate" style="max-width: 180px;" title="' +
+                            data +
+                            '">' +
+                            data +
+                            "</span>"
+                        );
                     }
-                    return '';
+                    return "";
                 },
             },
         ],

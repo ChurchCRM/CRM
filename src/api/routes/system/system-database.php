@@ -38,7 +38,6 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
         $Backup = new BackupJob(
             $BaseName,
             $BackupType,
-            SystemConfig::getValue('bBackupExtraneousImages'),
             $input['EncryptBackup'] ?? '',
             $input['BackupPassword'] ?? ''
         );
@@ -70,7 +69,6 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
             $Backup = new BackupJob(
                 $BaseName,
                 $BackupType,
-                SystemConfig::getValue('bBackupExtraneousImages'),
                 $input['EncryptBackup'] ?? '',
                 $input['BackupPassword'] ?? ''
             );
@@ -265,7 +263,6 @@ function clearPeopleTables(Request $request, Response $response, array $args): R
 
     // Delete Family Photos
     FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . '/Family/', Photo::getValidExtensions());
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . '/Family/thumbnails/', Photo::getValidExtensions());
     $logger->info('family photos deleted');
 
     Person2group2roleP2g2rQuery::create()->deleteAll($connection);
@@ -285,7 +282,6 @@ function clearPeopleTables(Request $request, Response $response, array $args): R
 
     // Delete Person Photos
     FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . '/Person/', Photo::getValidExtensions());
-    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . '/Person/thumbnails/', Photo::getValidExtensions());
 
     $logger->info('people photos deleted');
 

@@ -35,7 +35,6 @@ $MenuFirst = 1;
     Header_modals();
     Header_body_scripts();
 
-    $loggedInUserPhoto = SystemURLs::getRootPath() . '/api/person/' . AuthenticationManager::getCurrentUser()->getId() . '/thumbnail';
     $MenuFirst = 1;
     ?>
 

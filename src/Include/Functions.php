@@ -158,8 +158,12 @@ function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 }
 
 // Formats a fiscal year string
-function MakeFYString(int $iFYID): string
+function MakeFYString(?int $iFYID): string
 {
+    if ($iFYID === null) {
+        return '';
+    }
+    
     if (SystemConfig::getValue('iFYMonth') == 1) {
         return (string) (1996 + $iFYID);
     } else {
