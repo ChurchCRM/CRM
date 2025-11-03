@@ -33,10 +33,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <tr>
                         <td>
                             <a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
-                                <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
+                                <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
                             </a>
                             <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
-                                <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
+                                <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
                             </a>
                             <?php 
                                 // Check if all family members are in cart
@@ -56,9 +56,9 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 }
                             ?>
                             <?php if (!$isInCart) { ?>
-                                <button type="button" class="AddToCart btn btn-xs btn-primary" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
+                                <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus fa-sm"></i></button>
                             <?php } else { ?>
-                                <button type="button" class="RemoveFromCart btn btn-xs btn-danger" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
+                                <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-times fa-sm"></i></button>
                             <?php } ?>
                         </td>
 
