@@ -258,7 +258,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
                 <!-- Family Management Group -->
                 <div class="row mb-3">
-                    <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
+                    <div class="col-12 text-center">
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                             <button class="btn btn-sm btn-outline-warning" id="activateDeactivate">
                                 <i class="fa-solid <?= (empty($family->isActive()) ? 'fa-toggle-on' : 'fa-toggle-off') ?>"></i>
@@ -275,7 +275,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 
                 <!-- Utility Group -->
                 <div class="row mb-3">
-                    <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
+                    <div class="col-12 text-center">
                         <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
                             <a class="btn btn-sm btn-outline-secondary" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>">
                                 <i class="fa-solid fa-sticky-note"></i> <?= gettext("Add a Note") ?>
@@ -290,7 +290,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                 <!-- Finance Group -->
                 <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                 <div class="row mb-3">
-                    <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
+                    <div class="col-12 text-center">
                         <a class="btn btn-sm btn-outline-primary" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
                             <i class="fa-solid fa-hand-holding-dollar"></i> <?= gettext("Add a new pledge") ?>
                         </a>
@@ -332,10 +332,10 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                                         ?>
                                         <?php if (isset($item["editLink"])) { ?>
-                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button></a>
+                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen fa-sm"></i></button></a>
                                         <?php }
                                         if (isset($item["deleteLink"])) { ?>
-                                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa-solid fa-trash"></i></button></a>
+                                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash fa-sm"></i></button></a>
                                         <?php } ?>
                                         &nbsp;
                                         <?php
@@ -413,13 +413,13 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                                 <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
                                                 <div style="margin-top: 10px;">
                                                     <?php if (isset($note['editLink']) && $note['editLink']) { ?>
-                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
-                                                            <i class="fa-solid fa-pen"></i>
+                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>">
+                                                            <i class="fa-solid fa-pen fa-sm"></i>
                                                         </a>
                                                     <?php }
                                                     if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
-                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
-                                                            <i class="fa-solid fa-trash"></i>
+                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
+                                                            <i class="fa-solid fa-trash fa-sm"></i>
                                                         </a>
                                                     <?php } ?>
                                                 </div>
@@ -477,22 +477,22 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                         $isInCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false);
                                     ?>
                                     <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>" class="btn-link">
-                                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
+                                        <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
                                     </a>
                                     
                                     <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="btn-link">
-                                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
+                                        <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
                                     </a>
                                     
                                     <?php if ($isInCart) { ?>
-                                        <button type="button" class="RemoveFromCart btn btn-xs btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
+                                        <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-times fa-sm"></i></button>
                                     <?php } else { ?>
-                                        <button type="button" class="AddToCart btn btn-xs btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
+                                        <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus fa-sm"></i></button>
                                     <?php } ?>
                                     
                                     <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                        data-person_id="<?= $person->getId() ?>" data-view="family">
-                                        <button type="button" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash-can"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash-can fa-sm"></i></button>
                                     </a>
                                 </p>
                                 <?php if ($person->getClsId()) { ?>
