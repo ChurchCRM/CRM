@@ -187,15 +187,15 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag"></i> <?= gettext("Properties") ?></h3>
                 <div class="card-tools pull-right">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <button id="add-family-property" type="button" class="btn btn-box-tool" style="display: block;">
+                    <button id="add-family-property" type="button" class="btn btn-box-tool d-block">
                         <i class="fa-solid fa-plus-circle text-blue"></i>
                     </button>
                     <?php } ?>
                 </div>
             </div>
             <div class="card-body">
-                <div id="family-property-loading" class="col-xs-12 text-center">
-                    <i class="btn btn-default btn-lrg ajax">
+                <div id="family-property-loading" class="w-100 text-center">
+                    <i class="btn btn-secondary btn-lg ajax">
                         <i class="fa-solid fa-spinner fa-spin"></i>&nbsp; <?= gettext("Loading") ?>
                     </i>
                 </div>
@@ -227,79 +227,57 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             <div class="card-body">
                 <!-- Navigation Group -->
                 <div class="row mb-3">
-                    <div class="col-12">
-                        <div class="btn-group btn-group-sm d-flex" role="group">
-                            <a class="btn btn-outline-primary flex-fill" id="lastFamily">
-                                <i class="fa-solid fa-hand-point-left"></i> <?= gettext('Previous Family') ?>
-                            </a>
-                            <a class="btn btn-outline-primary flex-fill" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family">
-                                <i class="fa-solid fa-list-ul"></i> <?= gettext('Family List') ?>
-                            </a>
-                            <a class="btn btn-outline-primary flex-fill" role="button" id="nextFamily">
-                                <i class="fa-solid fa-hand-point-right"></i> <?= gettext('Next Family') ?>
-                            </a>
-                        </div>
+                    <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
+                        <a class="btn btn-sm bg-primary text-white" id="lastFamily" title="<?= gettext('Previous Family') ?>">
+                            <i class="fa-solid fa-hand-point-left"></i> <?= gettext('Previous Family') ?>
+                        </a>
+                        <a class="btn btn-sm bg-info text-white" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family" title="<?= gettext('Family List') ?>">
+                            <i class="fa-solid fa-list-ul"></i> <?= gettext('Family List') ?>
+                        </a>
+                        <a class="btn btn-sm bg-primary text-white" id="nextFamily" title="<?= gettext('Next Family') ?>">
+                            <i class="fa-solid fa-hand-point-right"></i> <?= gettext('Next Family') ?>
+                        </a>
                     </div>
                 </div>
 
-                <hr/>
-
-                <!-- Member Management Group -->
-                <div class="row mb-3">
+                <!-- Actions Group -->
+                <div class="row">
                     <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
-                        <a class="btn btn-sm btn-outline-info" href="#" data-toggle="modal" data-target="#confirm-verify">
+                        <a class="btn btn-sm bg-info text-white" href="#" data-toggle="modal" data-target="#confirm-verify" title="<?= gettext('Verify Info') ?>">
                             <i class="fa-solid fa-check-square"></i> <?= gettext("Verify Info") ?>
                         </a>
-                        <a class="btn btn-sm btn-outline-success" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>">
+                        <a class="btn btn-sm bg-success text-white" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>" title="<?= gettext('Add New Member') ?>">
                             <i class="fa-solid fa-plus-square"></i> <?= gettext('Add New Member') ?>
                         </a>
-                    </div>
-                </div>
-
-                <!-- Family Management Group -->
-                <div class="row mb-3">
-                    <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                            <button class="btn btn-sm btn-outline-warning" id="activateDeactivate">
-                                <i class="fa-solid <?= (empty($family->isActive()) ? 'fa-toggle-on' : 'fa-toggle-off') ?>"></i>
-                                <?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                            <button class="btn btn-sm bg-warning text-dark" id="activateDeactivate" title="<?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>">
+                                <i class="fa-solid fa-toggle-<?= (empty($family->isActive()) ? 'on' : 'off') ?>"></i>
+                                <?php echo(($family->isActive() ? _('Deactivate') : _('Activate'))); ?>
                             </button>
                         <?php }
                         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
-                            <a id="deleteFamilyBtn" class="btn btn-sm btn-outline-danger" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>">
-                                <i class="fa-solid fa-trash-can"></i> <?= gettext('Delete this Family') ?>
+                            <a id="deleteFamilyBtn" class="btn btn-sm bg-danger text-white" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>" title="<?= gettext('Delete this Family') ?>">
+                                <i class="fa-solid fa-trash-can"></i> <?= gettext('Delete') ?>
                             </a>
                         <?php } ?>
-                    </div>
-                </div>
-
-                <!-- Utility Group -->
-                <div class="row mb-3">
-                    <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
                         <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                            <a class="btn btn-sm btn-outline-secondary" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>">
-                                <i class="fa-solid fa-sticky-note"></i> <?= gettext("Add a Note") ?>
+                            <a class="btn btn-sm bg-secondary text-white" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>" title="<?= gettext('Add a Note') ?>">
+                                <i class="fa-solid fa-sticky-note"></i> <?= gettext("Add Note") ?>
                             </a>
                         <?php } ?>
-                        <button class="AddToCart btn btn-sm btn-outline-secondary" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
-                            <i class="fa-solid fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?>
+                        <button class="AddToCart btn btn-sm bg-secondary text-white" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Add All Family Members to Cart') ?>">
+                            <i class="fa-solid fa-cart-plus"></i> <?= gettext("Add to Cart") ?>
                         </button>
+                        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
+                            <a class="btn btn-sm bg-primary text-white" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge" title="<?= gettext('Add a new pledge') ?>">
+                                <i class="fa-solid fa-hand-holding-dollar"></i> <?= gettext("Pledge") ?>
+                            </a>
+                            <a class="btn btn-sm bg-primary text-white" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment" title="<?= gettext('Add a new payment') ?>">
+                                <i class="fa-solid fa-money-bill-transfer"></i> <?= gettext("Payment") ?>
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
-
-                <!-- Finance Group -->
-                <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
-                <div class="row mb-3">
-                    <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
-                        <a class="btn btn-sm btn-outline-primary" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
-                            <i class="fa-solid fa-hand-holding-dollar"></i> <?= gettext("Add a new pledge") ?>
-                        </a>
-                        <a class="btn btn-sm btn-outline-primary" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
-                            <i class="fa-solid fa-money-bill-transfer"></i> <?= gettext("Add a new payment") ?>
-                        </a>
-                    </div>
-                </div>
-                <?php } ?>
             </div>
         </div>
 
@@ -332,10 +310,10 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                                         ?>
                                         <?php if (isset($item["editLink"])) { ?>
-                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button></a>
+                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></button></a>
                                         <?php }
                                         if (isset($item["deleteLink"])) { ?>
-                                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa-solid fa-trash"></i></button></a>
+                                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></a>
                                         <?php } ?>
                                         &nbsp;
                                         <?php
@@ -476,10 +454,6 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                     <?php 
                                         $isInCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false);
                                     ?>
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>" class="btn-link">
-                                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
-                                    </a>
-                                    
                                     <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="btn-link">
                                         <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
                                     </a>
