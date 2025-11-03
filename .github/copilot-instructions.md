@@ -364,4 +364,26 @@ PR organization:
 
 ---
 
+## Agent Behavior Guidelines
+
+### Documentation Files
+- **DO NOT create** unnecessary `.md` review/planning documents unless explicitly requested
+- **DO NOT create** analysis or audit documents for the user to review
+- Make code changes directly without documentation overhead
+- Only create documentation when the user specifically asks for it
+
+### Git Commits
+- **DO NOT auto-commit** changes without explicit user request
+- **DO NOT run git commit** commands unless the user asks
+- **DO ask permission** before creating commits: "Ready to commit? [describe changes]"
+- Leave commits for the user to handle via their own workflow
+
+### Code Changes
+- Make all requested changes directly to files
+- Use exact tool calls (replace_string_in_file, create_file, etc.)
+- Keep explanations brief and focused on what was changed
+- Verify changes were applied correctly but don't over-communicate
+
+---
+
 Last updated: November 2, 2025
