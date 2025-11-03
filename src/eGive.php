@@ -341,7 +341,7 @@ function importDoneFixOrContinue()
     } ?>
 
     <p class="MediumLargeText"> <?= gettext('Data import results: ') . $importCreated . gettext(' gifts were imported, ') . $importNoChange . gettext(' gifts unchanged, and ') . $importError . gettext(' gifts not imported due to problems') ?></p>
-    <input type="button" class="btn btn-secondary" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
+    <input type="button" class="btn btn-secondary" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>';"
     <?php
 }
 
@@ -370,7 +370,7 @@ function get_api_data($json)
     } else {
         ?>
         <span class="text-danger"><?= gettext("Fatal error in eGive API datastream: '") . $error ?>"'</span><br><br>
-        <input type="button" class="btn btn-secondary" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
+        <input type="button" class="btn btn-secondary" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>';"
         <?php
         return 0;
     }

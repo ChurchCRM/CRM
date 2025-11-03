@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 19:54-0800\n"
+"POT-Creation-Date: 2025-11-02 18:35-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,9 +85,6 @@ msgid " of the"
 msgstr ""
 
 msgid " record(s) returned"
-msgstr ""
-
-msgid " this Family"
 msgstr ""
 
 msgid "\"Why Came\" notes for "
@@ -263,9 +260,6 @@ msgstr ""
 msgid "Add All Families"
 msgstr ""
 
-msgid "Add All Family Members to Cart"
-msgstr ""
-
 msgid "Add All Funds"
 msgstr ""
 
@@ -351,6 +345,9 @@ msgid "Add New Person"
 msgstr ""
 
 msgid "Add New Role"
+msgstr ""
+
+msgid "Add Note"
 msgstr ""
 
 msgid "Add Payment"
@@ -1689,9 +1686,6 @@ msgid "Delete Records"
 msgstr ""
 
 msgid "Delete Selected Rows"
-msgstr ""
-
-msgid "Delete this Family"
 msgstr ""
 
 msgid "Delete this Group"

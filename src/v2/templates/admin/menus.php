@@ -65,7 +65,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Delete'),
                     data: 'Id',
                     render: function (data, type, row) {
-                        return '<a class="btn btn-default" onclick="deleteMenu(' + row.Id + ')"><i class="fa-solid fa-trash bg-red"></i></a>';
+                        return '<a class="btn btn-secondary" onclick="deleteMenu(' + row.Id + ')"><i class="fa-solid fa-trash bg-red"></i></a>';
                     },
                     searchable: false
                 },

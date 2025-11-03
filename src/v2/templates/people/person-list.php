@@ -144,7 +144,7 @@ foreach ($ListItem as $element) {
                     <i class="fa-solid fa-cart-plus"></i> <span id="add-all-cart-text"></span>
                 </a>
                 <a id="RemoveAllFromCart" class="btn btn-danger">
-                    <i class="fa-solid fa-cart-arrow-down"></i> <span id="remove-all-cart-text"></span>
+                    <i class="fa-solid fa-minus-circle"></i> <span id="remove-all-cart-text"></span>
                 </a>
             </div>
         </div>
