@@ -56,8 +56,8 @@ FontSizeSelect('labelfontsize');
           </table>
             </div>
             <div>
-              <input type="submit" class="btn btn-default" name="SubmitNewsLetter" value="<?= gettext('Newsletter labels') ?>">
-              <input type="submit" class="btn btn-default" name="SubmitConfirmLabels" value="<?= gettext('Confirm data labels') ?>">
+              <input type="submit" class="btn btn-secondary" name="SubmitNewsLetter" value="<?= gettext('Newsletter labels') ?>">
+              <input type="submit" class="btn btn-secondary" name="SubmitConfirmLabels" value="<?= gettext('Confirm data labels') ?>">
               <input type="button" class="btn btn-warning" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
             </div>
 

@@ -135,12 +135,12 @@ require_once 'Include/Header.php';
             <table class="table mx-auto">
                 <tr>
                     <td class="text-center">
-                        <input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
-                        <input type="submit" class="btn btn-default" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
+                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
+                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
                         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-                            echo '<input type="submit" class="btn btn-default" value="' . gettext('Save and Add') . "\" name=\"PaddleNumSubmitAndAdd\">\n";
+                            echo '<input type="submit" class="btn btn-secondary" value="' . gettext('Save and Add') . "\" name=\"PaddleNumSubmitAndAdd\">\n";
                         } ?>
-                        <input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+                        <input type="button" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                                                                                                                                                                         echo $linkBack;
                                                                             } else {
                                                                                 echo 'v2/dashboard';

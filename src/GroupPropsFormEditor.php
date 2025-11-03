@@ -361,7 +361,7 @@ require_once 'Include/Header.php'; ?>
                                 <tr>
                                     <td width="30%"></td>
                                     <td width="40%" class="text-center align-bottom">
-                                        <input type="submit" class="btn btn-default" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
+                                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                                     </td>
                                     <td width="30%"></td>
                                 </tr>
@@ -412,7 +412,7 @@ require_once 'Include/Header.php'; ?>
                                     &nbsp;
                                 </td>
                                 <td>
-                                    <input type="submit" class="btn btn-default" value="<?= gettext('Add New Field') ?>" Name="AddField">
+                                    <input type="submit" class="btn btn-secondary" value="<?= gettext('Add New Field') ?>" Name="AddField">
                                 </td>
                                 <td width="15%"></td>
                             </tr>
