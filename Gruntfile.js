@@ -20,7 +20,7 @@ module.exports = function (grunt) {
         return DTLangs.toString();
     };
 
-    var datatTablesVer = "1.10.18";
+    var dataTablesVer = "1.13.8";
 
     // Project configuration.
     grunt.initConfig({
@@ -227,10 +227,10 @@ module.exports = function (grunt) {
                     "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js.map",
                     "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js",
                     "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-" +
-                        datatTablesVer +
+                        dataTablesVer +
                         "/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.css",
                     "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-" +
-                        datatTablesVer +
+                        dataTablesVer +
                         "/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.js",
                 ],
                 dest: "src/skin/external/datatables/",
@@ -238,30 +238,30 @@ module.exports = function (grunt) {
             datatables_images: {
                 src: [
                     "https://cdn.datatables.net/" +
-                        datatTablesVer +
+                        dataTablesVer +
                         "/images/sort_asc.png",
                     "https://cdn.datatables.net/" +
-                        datatTablesVer +
+                        dataTablesVer +
                         "/images/sort_asc_disabled.png",
                     "https://cdn.datatables.net/" +
-                        datatTablesVer +
+                        dataTablesVer +
                         "/images/sort_both.png",
                     "https://cdn.datatables.net/" +
-                        datatTablesVer +
+                        dataTablesVer +
                         "/images/sort_desc.png",
                     "https://cdn.datatables.net/" +
-                        datatTablesVer +
+                        dataTablesVer +
                         "/images/sort_desc_disabled.png",
                 ],
                 dest:
                     "src/skin/external/datatables/DataTables-" +
-                    datatTablesVer +
+                    dataTablesVer +
                     "/images/",
             },
             datatables_locale: {
                 src: [
                     "https://cdn.datatables.net/plug-ins/" +
-                        datatTablesVer +
+                        dataTablesVer +
                         "/i18n/{" +
                         dataTablesLang() +
                         "}.json",
