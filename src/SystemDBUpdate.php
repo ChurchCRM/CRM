@@ -53,7 +53,7 @@ require_once 'Include/HeaderNotLoggedIn.php'; ?>
                 <p></br></p>
                 <form id="dbUpgradeForm">
                     <input type="hidden" name="upgrade" value="true"/>
-                    <button type="submit" class="btn btn-primary btn-block btn-flat" id="upgradeDatabase"><i
+                    <button type="submit" class="btn btn-primary w-100 btn-flat" id="upgradeDatabase"><i
                             class="fa-solid fa-database"></i> <?= gettext('Upgrade database') ?></button>
                 </form>
         </div>

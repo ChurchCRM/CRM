@@ -215,7 +215,7 @@ foreach ($allMonths as $mKey => $mVal) {
                   <td>
                     <form name="EditEvent" action="EventEditor.php" method="POST">
                       <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-                      <button type="submit" name="Action" title="<?= gettext('Edit') ?>" value="Edit" class="btn btn-default btn-sm">
+                      <button type="submit" name="Action" title="<?= gettext('Edit') ?>" value="Edit" class="btn btn-secondary btn-sm">
                         <i class='fas fa-pen'></i>
                       </button>
                     </form>
@@ -226,7 +226,7 @@ foreach ($allMonths as $mKey => $mVal) {
                       <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
                       <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
                       <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row], 1) ?>">
-                      <input type="submit" name="Action" value="<?= gettext('Attendees') . '(' . $attNumRows[$row] . ')' ?>" class="btn btn-info btn-sm btn-block" >
+                      <input type="submit" name="Action" value="<?= gettext('Attendees') . '(' . $attNumRows[$row] . ')' ?>" class="btn btn-info btn-sm w-100" >
                     </form>
                   </td>
                   <td>

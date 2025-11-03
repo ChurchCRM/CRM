@@ -66,7 +66,7 @@ require_once 'Include/Header.php';
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <input type="submit" id="genReportModelBtn" class="btn btn-default" name="Submit" value="<?= gettext('Next') ?>">
+                            <input type="submit" id="genReportModelBtn" class="btn btn-secondary" name="Submit" value="<?= gettext('Next') ?>">
                         </div>
                     </div>
                 </form>
@@ -133,8 +133,8 @@ require_once 'Include/Header.php';
 
                         <p class="text-center">
                             <BR>
-                            <input id="CreateReportBtn" type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Create Report') ?>">
-                            <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
+                            <input id="CreateReportBtn" type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Create Report') ?>">
+                            <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
                         </p>
                     </form>
                 </div>

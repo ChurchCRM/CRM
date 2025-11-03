@@ -524,7 +524,7 @@ require_once 'Include/Header.php';
                             <input class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
                             <?php if (!$dep_Closed) {
                                 ?>
-                                <input class="form-control" type="submit" class="btn btn-default" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
+                                <input class="form-control" type="submit" class="btn btn-secondary" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
                                 <?php
                             } ?>
 
@@ -631,8 +631,8 @@ require_once 'Include/Header.php';
                     <div class="col-lg-6">
                         <?php if (SystemConfig::getValue('bUseScannedChecks') && $dep_Type === 'Bank') {
                             ?>
-                            <input type="submit" class="btn btn-default" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
-                            <input type="submit" class="btn btn-default" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
+                            <input type="submit" class="btn btn-secondary" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
+                            <input type="submit" class="btn btn-secondary" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
                             <?php
                         } ?>
                     </div>
@@ -641,7 +641,7 @@ require_once 'Include/Header.php';
                         <?php if (!$dep_Closed) {
                             ?>
                             <br />
-                            <input type="submit" id="saveBtn" class="btn btn-default" value="<?= gettext('Save') ?>" name="PledgeSubmit">
+                            <input type="submit" id="saveBtn" class="btn btn-secondary" value="<?= gettext('Save') ?>" name="PledgeSubmit">
                             <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
                                 echo '<input id="save-n-add" type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
                             } ?>

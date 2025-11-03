@@ -136,7 +136,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Close') ?></button>
             </div>
         </div>
     </div>

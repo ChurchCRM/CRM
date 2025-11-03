@@ -38,8 +38,8 @@ require_once 'Include/Header.php';
 
     <tr>
         <td class="text-center">
-            <input type="submit" class="btn btn-default" value="<?= gettext('Delete') ?>" name="Delete">
-            <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel">
+            <input type="submit" class="btn btn-secondary" value="<?= gettext('Delete') ?>" name="Delete">
+            <input type="submit" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="Cancel">
         </td>
     </tr>
 </table>

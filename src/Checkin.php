@@ -146,7 +146,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                             <div class="card-footer text-center col-md-4  col-xs-8">
                                 <input type="submit" class="btn btn-primary" value="<?= gettext('CheckIn'); ?>"
                                        name="CheckIn" tabindex=3>
-                                <input type="reset" class="btn btn-default" value="<?= gettext('Cancel'); ?>"
+                                <input type="reset" class="btn btn-secondary" value="<?= gettext('Cancel'); ?>"
                                        name="Cancel" tabindex=4 onClick="SetPersonHtml($('#childDetails'),null);SetPersonHtml($('#adultDetails'),null);">
                             </div>
 
@@ -253,7 +253,7 @@ if (
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-primary"
                                                value="<?= gettext('CheckOut') ?>" name="CheckOut">
-                                        <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>"
+                                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Cancel') ?>"
                                                name="CheckoutCancel">
                                     </div>
                                 </div>
@@ -266,7 +266,7 @@ if (
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-danger"
                                            value="<?= gettext('Delete') ?>" name="Delete">
-                                    <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>"
+                                    <input type="submit" class="btn btn-secondary" value="<?= gettext('Cancel') ?>"
                                            name="DeleteCancel">
                                 </div>
                                 <?php

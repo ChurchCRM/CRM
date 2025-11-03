@@ -127,7 +127,7 @@ foreach ($ListItem as $element) {
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="ClearFilter" type="button" class="btn btn-secondary btn-block">
+                <button id="ClearFilter" type="button" class="btn btn-secondary w-100">
                     <i class="fa-solid fa-times"></i> <span id="clear-filter-text"></span>
                 </button>
             </div>
@@ -160,10 +160,10 @@ foreach ($ListItem as $element) {
             <tr>
               <td>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getId() ?>'>
-                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
+                        <button type="button" class="btn btn-sm btn-secondary" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
                     </a>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" class="btn btn-sm btn-secondary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
                     </a>
 
                     <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($person->getId(), $_SESSION['aPeopleCart'], false)) {

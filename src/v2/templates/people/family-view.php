@@ -391,12 +391,12 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                                 <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
                                                 <div style="margin-top: 10px;">
                                                     <?php if (isset($note['editLink']) && $note['editLink']) { ?>
-                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
+                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
                                                             <i class="fa-solid fa-pen"></i>
                                                         </a>
                                                     <?php }
-                                                    if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
-                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
+                                                    if (isset($item["deleteLink"])) { ?>
+                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </a>
                                                     <?php } ?>
@@ -455,18 +455,18 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                         $isInCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false);
                                     ?>
                                     <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="btn-link">
-                                        <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
+                                        <button type="button" class="btn btn-sm btn-secondary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
                                     </a>
                                     
                                     <?php if ($isInCart) { ?>
-                                        <button type="button" class="RemoveFromCart btn btn-xs btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
+                                        <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
                                     <?php } else { ?>
-                                        <button type="button" class="AddToCart btn btn-xs btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
+                                        <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
                                     <?php } ?>
                                     
                                     <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                        data-person_id="<?= $person->getId() ?>" data-view="family">
-                                        <button type="button" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash-can"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash-can"></i></button>
                                     </a>
                                 </p>
                                 <?php if ($person->getClsId()) { ?>
@@ -572,8 +572,8 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal"><?= gettext("Cancel") ?></button>
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal"><?= gettext('Cancel') ?></button>
                 <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
 
             </div>
@@ -656,7 +656,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                     <?php
                 } ?>
                 <button type="button" id="verifyURL"
-                        class="btn btn-default"><i class="fa-solid fa-link"></i> <?= gettext("URL") ?></button>
+                        class="btn btn-secondary"><i class="fa-solid fa-link"></i> <?= gettext("URL") ?></button>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa-solid fa-download"></i> <?= gettext("PDF") ?></button>
                 <button type="button" id="verifyNow"

@@ -33,10 +33,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <tr>
                         <td>
                             <a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
-                                <button type="button" class="btn btn-xs btn-default" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
+                                <button type="button" class="btn btn-sm btn-secondary" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
                             </a>
                             <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
-                                <button type="button" class="btn btn-xs btn-default" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
+                                <button type="button" class="btn btn-sm btn-secondary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
                             </a>
                             <?php 
                                 // Check if all family members are in cart
