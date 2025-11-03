@@ -439,7 +439,7 @@ require_once 'Include/Header.php';
 
           <label><?= gettext('Skip records with incomplete mail address') ?></label><input type="checkbox" name="SkipIncompleteAddr" value="1">
 
-          <input type="submit" class="btn btn-default" value=<?= '"' . gettext('Create File') . '"' ?> name="Submit"></td>
+          <input type="submit" class="btn btn-secondary" value=<?= '"' . gettext('Create File') . '"' ?> name="Submit"></td>
 
         </div>
       </div>

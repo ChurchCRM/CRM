@@ -42,7 +42,7 @@ require_once 'Include/Header.php';
         <textarea style="font-family:courier,fixed; font-size:9pt; padding:1rem;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
     </p>
     <p class="text-center">
-        <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Execute SQL') ?>">
+        <input type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Execute SQL') ?>">
     </p>
 
 </form>
@@ -160,9 +160,9 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
             <form method="post" action="CartView.php">
                 <p class="text-center">
                     <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
-                    <input type="submit" class="btn btn-default" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
-                    <input type="submit" class="btn btn-default" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
-                    <input type="submit" class="btn btn-default" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
+                    <input type="submit" class="btn btn-secondary" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
+                    <input type="submit" class="btn btn-secondary" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
+                    <input type="submit" class="btn btn-secondary" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
                 </p>
             </form>
             <?php

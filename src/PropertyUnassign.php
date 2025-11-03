@@ -94,7 +94,7 @@ require_once 'Include/Header.php';
 </table>
 
 <div class="text-center">
-    <a class="btn btn-default" href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
+    <a class="btn btn-secondary" href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
 
     <a class="btn btn-danger" href="PropertyUnassign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID . '&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
 </div>
