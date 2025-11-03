@@ -211,17 +211,63 @@ $app->add(new Cache('public', 3600));
 
 ## HTML & CSS
 
-Always use Bootstrap CSS, never deprecated HTML attributes:
+**Bootstrap Version: 4.6.2** - NEVER use Bootstrap 5 classes!
+
+Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes or Bootstrap 5 classes:
 
 ```php
-// CORRECT - Bootstrap classes
-<div class="text-center align-top">Content</div>
-<button class="btn btn-primary mt-3">Click</button>
+## HTML & CSS
 
-// WRONG - Deprecated attributes
+**Bootstrap Version: 4.6.2** - NEVER use Bootstrap 5 classes!
+
+Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes or Bootstrap 5 classes:
+
+```php
+// CORRECT - Bootstrap 4.6.2 classes
+<div class="text-center align-top">Content</div>
+<button class="btn btn-primary btn-block">Full Width Button</button>
+<div class="btn-group btn-group-sm d-flex" role="group">
+    <a class="btn btn-outline-primary flex-fill">Button 1</a>
+    <a class="btn btn-outline-primary flex-fill">Button 2</a>
+</div>
+
+// WRONG - Bootstrap 5 classes (DO NOT USE!)
+<button class="btn btn-primary w-100">Button</button>  // Use btn-block instead
+<div class="d-flex flex-wrap gap-2">Content</div>      // gap- is Bootstrap 5 only
+<div class="d-grid gap-3">Content</div>               // d-grid is Bootstrap 5 only
+
+// WRONG - Deprecated HTML attributes  
 <div align="center" valign="top">Content</div>
 <button style="margin-top: 12px;">Click</button>
 ```
+
+**Bootstrap 5 Classes to AVOID:**
+- `w-100` on buttons (use `btn-block`)
+- `gap-*` utilities (use margins/padding instead)
+- `d-grid` (use `d-flex` or Bootstrap 4 grid)
+- `text-decoration-*` (use existing classes)
+- `fw-*` and `fs-*` font utilities
+- `rounded-*` beyond Bootstrap 4 values
+- `justify-content-*` with `gap-*` (gap is Bootstrap 5 only)
+- `flex-wrap` with `gap-*` (use proper spacing classes instead)
+
+// WRONG - Bootstrap 5 classes (DO NOT USE!)
+<button class="btn btn-primary w-100">Button</button>  // Use btn-block instead
+<div class="d-flex flex-wrap gap-2">Content</div>      // gap- is Bootstrap 5 only
+<div class="d-grid gap-3">Content</div>               // d-grid is Bootstrap 5 only
+
+// WRONG - Deprecated HTML attributes  
+<div align="center" valign="top">Content</div>
+<button style="margin-top: 12px;">Click</button>
+```
+
+**Bootstrap 5 Classes to AVOID:**
+- `w-100` on buttons (use `btn-block`)
+- `gap-*` utilities (use margins/padding instead)
+- `d-grid` (use `d-flex` or Bootstrap 4 grid)
+- `text-decoration-*` (use existing classes)
+- `fw-*` and `fs-*` font utilities
+- `rounded-*` beyond Bootstrap 4 values
 
 ---
 
@@ -361,6 +407,28 @@ PR organization:
 | `cypress/e2e/api/` | API test suites |
 | `cypress/e2e/ui/` | UI test suites |
 | `docker/` | Docker Compose configs |
+
+---
+
+## Agent Behavior Guidelines
+
+### Documentation Files
+- **DO NOT create** unnecessary `.md` review/planning documents unless explicitly requested
+- **DO NOT create** analysis or audit documents for the user to review
+- Make code changes directly without documentation overhead
+- Only create documentation when the user specifically asks for it
+
+### Git Commits
+- **DO NOT auto-commit** changes without explicit user request
+- **DO NOT run git commit** commands unless the user asks
+- **DO ask permission** before creating commits: "Ready to commit? [describe changes]"
+- Leave commits for the user to handle via their own workflow
+
+### Code Changes
+- Make all requested changes directly to files
+- Use exact tool calls (replace_string_in_file, create_file, etc.)
+- Keep explanations brief and focused on what was changed
+- Verify changes were applied correctly but don't over-communicate
 
 ---
 
