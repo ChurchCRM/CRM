@@ -292,8 +292,6 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                     </div>
                 </div>
                 <?php } ?>
-                    </div>
-                </div>
             </div>
         </div>
 
