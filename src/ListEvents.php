@@ -226,7 +226,7 @@ foreach ($allMonths as $mKey => $mVal) {
                       <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
                       <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
                       <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row], 1) ?>">
-                      <input type="submit" name="Action" value="<?= gettext('Attendees') . '(' . $attNumRows[$row] . ')' ?>" class="btn btn-info btn-sm w-100" >
+                      <input type="submit" name="Action" value="<?= gettext('Attendees') . '(' . $attNumRows[$row] . ')' ?>" class="btn btn-info btn-sm btn-block" >
                     </form>
                   </td>
                   <td>

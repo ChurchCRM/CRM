@@ -250,7 +250,7 @@ $bOkToEdit = (
                     </li>
 
                     <?php if ($bOkToEdit) { ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary w-100" id="EditPerson"><b><?php echo gettext('Edit'); ?></b></a>
+                        <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block" id="EditPerson"><b><?php echo gettext('Edit'); ?></b></a>
                     <?php } ?>
 
                 </ul>

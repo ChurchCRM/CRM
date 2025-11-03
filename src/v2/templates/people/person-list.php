@@ -127,7 +127,7 @@ foreach ($ListItem as $element) {
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="ClearFilter" type="button" class="btn btn-secondary w-100">
+                <button id="ClearFilter" type="button" class="btn btn-secondary btn-block">
                     <i class="fa-solid fa-times"></i> <span id="clear-filter-text"></span>
                 </button>
             </div>
@@ -144,7 +144,7 @@ foreach ($ListItem as $element) {
                     <i class="fa-solid fa-cart-plus"></i> <span id="add-all-cart-text"></span>
                 </a>
                 <a id="RemoveAllFromCart" class="btn btn-danger">
-                    <i class="fa-solid fa-cart-arrow-down"></i> <span id="remove-all-cart-text"></span>
+                    <i class="fa-solid fa-minus-circle"></i> <span id="remove-all-cart-text"></span>
                 </a>
             </div>
         </div>
@@ -160,19 +160,19 @@ foreach ($ListItem as $element) {
             <tr>
               <td>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getId() ?>'>
-                        <button type="button" class="btn btn-sm btn-secondary" title="<?= gettext('View') ?>"><i class="fa-solid fa-search-plus"></i></button>
+                        <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
                     </a>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                        <button type="button" class="btn btn-sm btn-secondary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
                     </a>
 
                     <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($person->getId(), $_SESSION['aPeopleCart'], false)) {
                         ?>
-                            <button type="button" class="AddToCart btn btn-xs btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
+                            <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus fa-sm"></i></button>
                         <?php
                     } else {
                         ?>
-                        <button type="button" class="RemoveFromCart btn btn-xs btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-shopping-cart"></i></button>
+                        <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-times fa-sm"></i></button>
                         <?php
                     } ?>
                     </td>
