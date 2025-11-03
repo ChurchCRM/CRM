@@ -273,7 +273,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
           </td>
           <td width="35%">
             <div class="col-rd-12">
-                <input type="button" style="align=right" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
+                <input type="button" style="float: right;" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
             </div>
           </td>
         </tr>
