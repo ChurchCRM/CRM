@@ -108,18 +108,8 @@ jobs:
         set -e  # Exit on any command failure
         echo "🌍 Downloading locales from POEditor..."
         
-        # Run individual steps with error checking
-        echo "Step 1: Cleaning existing locales..."
-        npm run locale:clean
-        
-        echo "Step 2: Updating from POEditor..."
-        grunt updateFromPOeditor
-        
-        echo "Step 3: Generating locale JS files..."
-        grunt genLocaleJSFiles
-        
-        echo "Step 4: Running locale audit..."
-        npm run locale:audit
+        # Run the complete locale download workflow
+        npm run locale:download
         
         echo "✅ Locale download completed successfully"
 
