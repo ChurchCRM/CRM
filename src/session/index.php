@@ -67,7 +67,9 @@ function endSession(Request $request, Response $response, array $args): Response
 {
     AuthenticationManager::endSession(true);
     $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
-    return $response->withHeader('Location', $redirectUrl)->withStatus(302);
+    $response = $response->withHeader('Location', $redirectUrl)->withStatus(302);
+    $response->getBody()->write('');
+    return $response;
 }
 
 function beginSession(Request $request, Response $response, array $args): Response
