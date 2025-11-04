@@ -374,33 +374,59 @@ if (isset($_POST['EventID'])) {
     });
 
     $(document).ready(function() {
-        var $input = $("#child, #adult, #adultout");
-        $input.autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    url: window.CRM.root + '/api/persons/search/'+request.term,
+        // Initialize Select2 for person search inputs
+        $("#child, #adult, #adultout").each(function() {
+            var $input = $(this);
+            var inputId = $input.attr('id');
+            
+            $input.select2({
+                ajax: {
+                    url: function(params) {
+                        return window.CRM.root + '/api/persons/search/' + encodeURIComponent(params.term);
+                    },
                     dataType: 'json',
-                    type: 'GET',
-                    success: function (data) {
-                        response($.map(data, function (item) {
-                            return {
-                                label: item.text,
-                                value: item.objid,
-                                obj:item
-                            };
-                        }));
-                    }
-                })
-            },
-            minLength: 2,
-            select: function(event,ui) {
-                $('[id=' + event.target.id + ']' ).val(ui.item.obj.text);
-                $('[id=' + event.target.id + '-id]').val(ui.item.obj.objid);
-                SetPersonHtml($('#' + event.target.id + 'Details'),ui.item.obj);
-                return false;
-            }
+                    delay: 250,
+                    processResults: function(data) {
+                        // Transform API response to Select2 format
+                        // API returns: {id, objid, text, uri}
+                        // Select2 expects: {id, text}
+                        return {
+                            results: $.map(data, function(item) {
+                                return {
+                                    id: item.objid,
+                                    text: item.text,
+                                    objid: item.objid,
+                                    uri: item.uri
+                                };
+                            })
+                        };
+                    },
+                    cache: true
+                },
+                minimumInputLength: 2,
+                placeholder: $input.attr('placeholder'),
+                allowClear: true
+            });
+            
+            // Handle selection event
+            $input.on('select2:select', function(e) {
+                var data = e.params.data;
+                // Populate hidden ID field
+                $('#' + inputId + '-id').val(data.objid);
+                // Update details display
+                SetPersonHtml($('#' + inputId + 'Details'), {
+                    objid: data.objid,
+                    text: data.text,
+                    uri: data.uri
+                });
+            });
+            
+            // Handle clear event
+            $input.on('select2:clear', function(e) {
+                $('#' + inputId + '-id').val('');
+                SetPersonHtml($('#' + inputId + 'Details'), null);
+            });
         });
-
     });
 
     function SetPersonHtml(element, perArr) {
