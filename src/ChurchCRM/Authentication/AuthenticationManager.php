@@ -73,7 +73,6 @@ class AuthenticationManager
             $_COOKIE = [];
             $_SESSION = [];
             session_destroy();
-            Bootstrapper::initSession();
             $logger->info(
                 'Ended Local session for user',
                 $logCtx
