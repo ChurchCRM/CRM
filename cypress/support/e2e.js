@@ -20,6 +20,9 @@ import "./api-commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
+// Install cypress-terminal-report browser-side log printer
+require('cypress-terminal-report/src/installLogsPrinter')();
+
 // Capture unhandled rejections and errors for terminal reporter
 window.addEventListener('unhandledrejection', (event) => {
   console.error('Unhandled promise rejection:', event.reason);
