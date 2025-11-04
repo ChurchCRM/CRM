@@ -58,8 +58,10 @@ class LocalAuthentication implements IAuthenticationProvider
     {
         if ($this->currentUser instanceof User) {
             //$this->currentUser->setDefaultFY($_SESSION['idefaultFY']);
-            $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
-            $this->currentUser->save();
+            if (isset($_SESSION['iCurrentDeposit'])) {
+                $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
+                $this->currentUser->save();
+            }
             $this->currentUser = null;
         }
     }

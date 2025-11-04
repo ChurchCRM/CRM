@@ -70,8 +70,7 @@ class AuthenticationManager
         try {
             self::getAuthenticationProvider()->endSession();
 
-            $_COOKIE = [];
-            $_SESSION = [];
+            session_unset();
             session_destroy();
             $logger->info(
                 'Ended Local session for user',
