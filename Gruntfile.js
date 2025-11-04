@@ -327,13 +327,6 @@ module.exports = function (grunt) {
             },
         },
         "curl-dir": {
-            // Keeping only external CDN assets that don't have npm packages
-            fastclick: {
-                src: [
-                    "https://raw.githubusercontent.com/ftlabs/fastclick/569732a7aa5861d428731b8db022b2d55abe1a5a/lib/fastclick.js",
-                ],
-                dest: "src/skin/external/fastclick",
-            },
             jqueryuicss: {
                 src: [
                     "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css",
