@@ -20,6 +20,15 @@ import "./api-commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
+// Capture unhandled rejections and errors for terminal reporter
+window.addEventListener('unhandledrejection', (event) => {
+  console.error('Unhandled promise rejection:', event.reason);
+});
+
+window.addEventListener('error', (event) => {
+  console.error('Unhandled error:', event.error || event.message);
+});
+
 // Hide fetch/XHR requests in Cypress logs for cleaner output
 const app = window.top;
 if (!app.document.head.querySelector('[data-hide-command-log-request]')) {

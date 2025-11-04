@@ -18,6 +18,12 @@ export default defineConfig({
   retries: 1,
   e2e: {
     setupNodeEvents(on, config) {
+      // Install cypress-terminal-report logs collector
+      const installLogsCollector = require('cypress-terminal-report/src/installLogsCollector');
+      installLogsCollector(on, {
+        outputRoot: 'cypress/logs'
+      });
+      
       // Register download verification tasks
       on('task', verifyDownloadTasks);
       

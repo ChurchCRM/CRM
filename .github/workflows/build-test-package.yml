@@ -117,6 +117,19 @@ jobs:
       run: |
         npm run test
 
+    - name: Upload Cypress Artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: cypress-artifacts-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/results
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
     - name: Upload Cypress Reports on Failure
       if: failure()
       uses: actions/upload-artifact@v4
