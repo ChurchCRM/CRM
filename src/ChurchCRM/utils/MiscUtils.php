@@ -26,7 +26,7 @@ class MiscUtils
             $apiKey[] = $alphabet[$n];
         }
 
-        return implode($apiKey); //turn the array into a string
+        return implode('', $apiKey); //turn the array into a string
     }
 
     public static function randomWord(int $length = 6): string
