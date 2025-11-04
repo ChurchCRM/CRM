@@ -1278,10 +1278,6 @@ msgid "Next Family"
 msgstr "ቀጣይ ቤተሰብ"
 
 #: 
-msgid "Delete this Family"
-msgstr "ይህን ቤተሰብ ሰርዝ"
-
-#: 
 msgid "Upload Photo"
 msgstr "ፎቶ ጫን"
 
@@ -1292,10 +1288,6 @@ msgstr "ፎቶ ሰርዝ"
 #: 
 msgid "Add a Note"
 msgstr "ማስታወሻ ጨምር"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "ሁሉንም የቤተሰብ አባላት ወደ ጋሪው ይጨምሩ"
 
 #: 
 msgid "Timeline"
@@ -3316,14 +3308,6 @@ msgid "Select Fiscal Year"
 msgstr "የበጀት ዓመት ይምረጡ"
 
 #: 
-msgid "pm"
-msgstr "ከሰዓት"
-
-#: 
-msgid "am"
-msgstr "ጠዋት"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ልክ ያልሆነ የአስተካካይ መታወቂያ"
 
@@ -3634,10 +3618,6 @@ msgstr "አስተማሪዎች"
 #: 
 msgid "Send Message"
 msgstr "መልዕክት ላክ"
-
-#: 
-msgid "View Profile"
-msgstr "መገለጫ ይመልከቱ"
 
 #: 
 msgid "Quick Status"
@@ -6942,10 +6922,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "እባክዎ ይህን ማድረግ እንደሚፈልጉ ያረጋግጡ።"
 
 #: 
-msgid " this Family"
-msgstr "ይህ ቤተሰብ"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "ማቋረጥ መፈለጎትን ያረጋግጡ"
 
@@ -7812,26 +7788,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "ለምስሎች ጥቅም ላይ የሚውል ቁመት "
-
-#: 
-msgid "Width to use for images"
-msgstr "ለምስሎች ለመጠቀም ስፋት "
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "ለጥፍር አከሎች የሚጠቀሙበት ስፋት "
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "ለመጀመሪያዎቹ ድንክዬዎች የሚጠቀሙበት የነጥብ መጠን "
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "ለምስሎች የደንበኛ መሸጎጫ ሰከንዶች "
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "ለርቀት ምስሎች የአገልጋይ መሸጎጫ ጊዜ "
 
@@ -8586,10 +8542,6 @@ msgstr "ምትክ ማመንጨት "
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "የርቀት የምትኩ  መጨረሻ ነጥብ። WebDAV ከሆነ፣ ይህ ዩአርኤል መደበቅ አለበት።"
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "የመጀመሪያ ፊደሎችን የምስል ፋይሎችን፣ የርቀት ምስል ፋይሎችን (ግራቫታር) እና በመጠባበቂያ ውስጥ ያሉ ጥፍር አከሎችን ያካትቱ። እነዚህ ፋይሎች በአጠቃላይ ከተመለሱ በኋላ እንደገና ሊባዙ ይችላሉ እና በመጠባበቂያ መዝገብ ውስጥ በጣም ትንሽ እሴት የሚጨምሩት ለትግበራ ጊዜ እና ማከማቻ ትልቅ ወጪ ነው"
 
 #: 
 msgid "Password (if any)"

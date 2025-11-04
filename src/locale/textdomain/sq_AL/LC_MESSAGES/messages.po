@@ -2741,14 +2741,6 @@ msgid "Select Fiscal Year"
 msgstr "Zgjidhni Viti fiskal"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID e pavlefshme Editor!"
 

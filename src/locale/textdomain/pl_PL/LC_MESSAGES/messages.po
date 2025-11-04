@@ -3296,14 +3296,6 @@ msgid "Select Fiscal Year"
 msgstr "Wybierz Rok Podatkowy"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Nieprawidłowe ID!"
 
@@ -4298,10 +4290,6 @@ msgstr "Wykonaj Kopię Bezpieczeństwa"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Zdalny Punkt Kopii Bezpieczeństwa. Jeżeli jest to WebDAV, URL musi zaeiwrać wszystkie informacje. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Załącz oryginalne oraz zewnętrzne obrazki i miniaturki do archiwum. Pliki te można łatwo odtworzyć, mają niewielką wartość dla kopii bezpieczeństwa lecz angażują sporo środków podczas tworzenia archiwum."
 
 #: 
 msgid "Password (if any)"

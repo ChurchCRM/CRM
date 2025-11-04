@@ -2878,14 +2878,6 @@ msgid "Select Fiscal Year"
 msgstr "Válassza a pénzügyi év"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Érvénytelen azonosító szerkesztő!"
 

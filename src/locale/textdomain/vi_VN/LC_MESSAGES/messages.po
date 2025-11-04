@@ -1294,10 +1294,6 @@ msgid "Next Family"
 msgstr "Gia đình kế tiếp"
 
 #: 
-msgid "Delete this Family"
-msgstr "Xóa gia đình này"
-
-#: 
 msgid "Upload Photo"
 msgstr "Tải lên hình ảnh"
 
@@ -1308,10 +1304,6 @@ msgstr "Xóa hình ảnh"
 #: 
 msgid "Add a Note"
 msgstr "Thêm ghi chú"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Thêm tất cả thành viên trong gia đình vào giỏ"
 
 #: 
 msgid "Timeline"
@@ -3332,14 +3324,6 @@ msgid "Select Fiscal Year"
 msgstr "Chọn năm tài chính"
 
 #: 
-msgid "pm"
-msgstr "buổi chiều"
-
-#: 
-msgid "am"
-msgstr "là"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID người chỉnh sửa không hợp lệ!"
 
@@ -3650,10 +3634,6 @@ msgstr "Giáo viên"
 #: 
 msgid "Send Message"
 msgstr "Gửi đi"
-
-#: 
-msgid "View Profile"
-msgstr "Xem hồ sơ"
 
 #: 
 msgid "Quick Status"
@@ -6958,10 +6938,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Hãy đảm bảo điều này những gì bạn muốn làm. </p>"
 
 #: 
-msgid " this Family"
-msgstr " gia đình này"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Xác nhận việc hủy kích hoạt"
 
@@ -7828,26 +7804,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Chiều cao để sử dụng cho hình ảnh"
-
-#: 
-msgid "Width to use for images"
-msgstr "Chiều rộng để sử dụng cho hình ảnh"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Chiều rộng để sử dụng cho hình thu nhỏ"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Kích thước điểm để sử dụng cho hình thu nhỏ viết tắt"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Bộ nhớ đệm ứng dụng khách giây cho hình ảnh"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Thời gian bộ nhớ cache của máy chủ cho hình ảnh từ xa"
 
@@ -8600,10 +8556,6 @@ msgstr "Tạo bản sao lưu"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Điểm cuối sao lưu từ xa. Nếu WebDAV, điều này phải được mã hóa url."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Bao gồm các tệp hình ảnh viết tắt, tệp hình ảnh từ xa (gravatar) và hình thu nhỏ trong bản sao lưu. Các tệp này thường có thể được sao chép sau khi khôi phục và thêm rất ít giá trị vào kho lưu trữ sao lưu với chi phí lớn về thời gian thực hiện và lưu trữ"
 
 #: 
 msgid "Password (if any)"

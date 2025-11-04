@@ -1276,10 +1276,6 @@ msgid "Next Family"
 msgstr "Επόμενη Οικογένεια"
 
 #: 
-msgid "Delete this Family"
-msgstr "Διαγραφή αυτής της οικογένειας"
-
-#: 
 msgid "Upload Photo"
 msgstr "Ανέβασμα φωτογραφίας"
 
@@ -1290,10 +1286,6 @@ msgstr "Διαγραφή φωτογραφίας"
 #: 
 msgid "Add a Note"
 msgstr "Προσθέστε μια Σημείωση"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Προσθήκη όλων των μελών της οικογένειας στο καλάθι"
 
 #: 
 msgid "Timeline"
@@ -3310,14 +3302,6 @@ msgid "Select Fiscal Year"
 msgstr "Επιλέξτε Οικονομικό Έτος"
 
 #: 
-msgid "pm"
-msgstr "μετα μεσημβριας"
-
-#: 
-msgid "am"
-msgstr "είμαι"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Μη έγκυρο αναγνωριστικό επεξεργασίας!"
 
@@ -3628,10 +3612,6 @@ msgstr "Δάσκαλοι"
 #: 
 msgid "Send Message"
 msgstr "Να στείλετε μήνυμα"
-
-#: 
-msgid "View Profile"
-msgstr "Εμφάνιση προφίλ"
 
 #: 
 msgid "Quick Status"
@@ -6934,10 +6914,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Βεβαιωθείτε ότι αυτό θέλετε να κάνετε.</p>"
 
 #: 
-msgid " this Family"
-msgstr " αυτή η Οικογένεια"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Επιβεβαίωση Απενεργοποίησης"
 
@@ -7804,26 +7780,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Ύψος για χρήση για εικόνες"
-
-#: 
-msgid "Width to use for images"
-msgstr "Πλάτος για χρήση για εικόνες"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Πλάτος για χρήση για μικρογραφίες"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Μέγεθος σημείου για χρήση για μικρογραφίες αρχικών"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Δευτερόλεπτα κρυφής μνήμης πελάτη για εικόνες"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Χρόνος προσωρινής αποθήκευσης διακομιστή για απομακρυσμένες εικόνες"
 
@@ -8576,10 +8532,6 @@ msgstr "Δημιουργία αντιγράφων ασφαλείας"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Τελικό σημείο απομακρυσμένου αντιγράφου ασφαλείας. Εάν το WebDAV, αυτό πρέπει να είναι κωδικοποιημένο με url. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Συμπεριλάβετε αρχεία εικόνας αρχικών, απομακρυσμένα αρχεία εικόνας (γκραβατάρ) και μικρογραφίες στο αντίγραφο ασφαλείας. Αυτά τα αρχεία είναι γενικά σε θέση να αναπαραχθούν μετά από μια επαναφορά και προσθέτουν πολύ μικρή τιμή στο αρχείο αντιγράφων ασφαλείας με μεγάλο κόστος χρόνου εκτέλεσης και αποθήκευσης"
 
 #: 
 msgid "Password (if any)"
