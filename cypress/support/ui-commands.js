@@ -39,6 +39,18 @@ Cypress.Commands.add(
         if (location && checkMatchingLocation) {
             cy.location("pathname").should("include", location.split("?")[0]);
         }
+        
+        // Wait for the page to fully load before returning from login
+        cy.document().should("have.property", "readyState", "complete");
+        cy.window().then((win) => {
+            return new Cypress.Promise((resolve) => {
+                if (win.document.readyState === "complete") {
+                    resolve();
+                } else {
+                    win.addEventListener("load", () => resolve());
+                }
+            });
+        });
     },
 );
 
