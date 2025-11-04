@@ -1277,10 +1277,6 @@ msgid "Next Family"
 msgstr "الأسرة التالية"
 
 #: 
-msgid "Delete this Family"
-msgstr "مسح العائلة"
-
-#: 
 msgid "Upload Photo"
 msgstr "تحميل الصورة"
 
@@ -1291,10 +1287,6 @@ msgstr "مسح الصورة"
 #: 
 msgid "Add a Note"
 msgstr "اضافة ملحوظة"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "اضف أفراد الأسرة الي السلة"
 
 #: 
 msgid "Timeline"
@@ -3315,14 +3307,6 @@ msgid "Select Fiscal Year"
 msgstr "اختر السنة المالية"
 
 #: 
-msgid "pm"
-msgstr "مساءا"
-
-#: 
-msgid "am"
-msgstr "صباحا"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID محرر غير صالح!"
 
@@ -3633,10 +3617,6 @@ msgstr "الخدام"
 #: 
 msgid "Send Message"
 msgstr "ارسال رساله"
-
-#: 
-msgid "View Profile"
-msgstr "عرض الصفحة الشخصية"
 
 #: 
 msgid "Quick Status"
@@ -6941,10 +6921,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "الرجاء التأكد من هذا ما تريد القيام به. </p>"
 
 #: 
-msgid " this Family"
-msgstr "هذه العائلة"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "تأكيد التعطيل"
 
@@ -7811,26 +7787,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "ارتفاع الاستخدام للصور"
-
-#: 
-msgid "Width to use for images"
-msgstr "عرض الاستخدام للصور"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "عرض الصور المصغرة الاستخدام ل"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "حجم نقطة الاستخدام لبالاحرف الاولى المصغرة"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "ثواني ذاكرة التخزين المؤقت العميل للصور"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "الوقت مخبأ خادم للصور بعد"
 
@@ -8583,10 +8539,6 @@ msgstr "توليد النسخ الاحتياطي"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "نقطة النهاية النسخ الاحتياطي عن بعد. إذا WEBDAV، وهذا يجب أن يكون رابط المشفرة."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "تشمل بالاحرف الاولى ملفات الصور، وملفات الصور البعيدة (غرفتر)، والصور المصغرة في النسخ الاحتياطي. هذه الملفات عادة ما تكون قادرة على أن تكون مستنسخة بعد استعادة وإضافة قيمة قليلة جدا إلى أرشيف النسخ الاحتياطي في حساب كبير من وقت التنفيذ والتخزين"
 
 #: 
 msgid "Password (if any)"

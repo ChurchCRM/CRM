@@ -1548,11 +1548,6 @@ msgstr "Próxima Família"
 
 #: 
 #, fuzzy
-msgid "Delete this Family"
-msgstr "Apagar esta Família"
-
-#: 
-#, fuzzy
 msgid "Upload Photo"
 msgstr "Upload de foto"
 
@@ -1565,11 +1560,6 @@ msgstr "Excluir foto"
 #, fuzzy
 msgid "Add a Note"
 msgstr "Adicionar Anotação"
-
-#: 
-#, fuzzy
-msgid "Add All Family Members to Cart"
-msgstr "Adicionar Todos os Membros da Família ao Carrinho"
 
 #: 
 #, fuzzy
@@ -3997,16 +3987,6 @@ msgstr "Selecione o ano fiscal"
 
 #: 
 #, fuzzy
-msgid "pm"
-msgstr "pm"
-
-#: 
-#, fuzzy
-msgid "am"
-msgstr "am"
-
-#: 
-#, fuzzy
 msgid "Invalid Editor ID!"
 msgstr "Editor de ID inválido!"
 
@@ -4378,11 +4358,6 @@ msgstr "Professores"
 #, fuzzy
 msgid "Send Message"
 msgstr "Enviar Mensagem"
-
-#: 
-#, fuzzy
-msgid "View Profile"
-msgstr "Ver Perfil"
 
 #: 
 #, fuzzy
@@ -8373,11 +8348,6 @@ msgstr "Por favor, assegure-se que é isso que você pretende fazer.</p>"
 
 #: 
 #, fuzzy
-msgid " this Family"
-msgstr " esta Família"
-
-#: 
-#, fuzzy
 msgid "Confirm Deactivation"
 msgstr "Confirmar Desativação"
 
@@ -9454,31 +9424,6 @@ msgstr "SSE"
 
 #: 
 #, fuzzy
-msgid "Height to use for images"
-msgstr "Altura para usar em imagens"
-
-#: 
-#, fuzzy
-msgid "Width to use for images"
-msgstr "Largura para usar em imagens"
-
-#: 
-#, fuzzy
-msgid "Width to use for thumbnails"
-msgstr "Largura para usar em miniaturas"
-
-#: 
-#, fuzzy
-msgid "Point size to use for initials thumbnails"
-msgstr "Tamanho do ponto a ser usado para miniaturas iniciais"
-
-#: 
-#, fuzzy
-msgid "Client cache seconds for images"
-msgstr "Cache no cliente (em segundos) para imagens"
-
-#: 
-#, fuzzy
 msgid "Server cache time for remote images"
 msgstr "Tempo de cache do servidor para imagens remotas"
 
@@ -10412,11 +10357,6 @@ msgstr "Gerar Backup"
 #, fuzzy
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Ponto de acesso do backup remoto. Se for WebDAV, isso deve ser codificado por url. "
-
-#: 
-#, fuzzy
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Inclua arquivos de imagem iniciais, arquivos de imagem remotos (gravatar) e miniaturas no backup. Em geral, esses arquivos podem ser reproduzidos após uma restauração e aumentam muito pouco valor arquivo de backup, gerando apenas um grande gasto de tempo de execução e armazenamento."
 
 #: 
 #, fuzzy

@@ -1278,10 +1278,6 @@ msgid "Next Family"
 msgstr "Keluarga sesudahnya"
 
 #: 
-msgid "Delete this Family"
-msgstr "Hapus keluarga ini"
-
-#: 
 msgid "Upload Photo"
 msgstr "Unggah foto"
 
@@ -1292,10 +1288,6 @@ msgstr "Hapus foto"
 #: 
 msgid "Add a Note"
 msgstr "Tambahkan Catatan"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Tambahkan seluruh anggota keluarga"
 
 #: 
 msgid "Timeline"
@@ -3317,14 +3309,6 @@ msgid "Select Fiscal Year"
 msgstr "Pilih Tahun Anggaran"
 
 #: 
-msgid "pm"
-msgstr "sore"
-
-#: 
-msgid "am"
-msgstr "saya"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID Editor Tidak Valid!"
 
@@ -3635,10 +3619,6 @@ msgstr "Guru"
 #: 
 msgid "Send Message"
 msgstr "Mengirim pesan"
-
-#: 
-msgid "View Profile"
-msgstr "Tampilkan profil"
 
 #: 
 msgid "Quick Status"
@@ -6943,10 +6923,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Harap pastikan ini yang ingin Anda lakukan. </p>"
 
 #: 
-msgid " this Family"
-msgstr "Keluarga ini"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Konfirmasikan Penonaktifan"
 
@@ -7813,26 +7789,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Tinggi untuk digunakan untuk gambar"
-
-#: 
-msgid "Width to use for images"
-msgstr "Lebar untuk digunakan untuk gambar"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Lebar untuk digunakan untuk thumbnail"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Ukuran poin yang digunakan untuk inisial thumbnail"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Cache klien detik untuk gambar"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Waktu cache server untuk gambar jarak jauh"
 
@@ -8585,10 +8541,6 @@ msgstr "Hasilkan Cadangan"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote Endpoint Cadangan. Jika WebDAV, ini harus url disandikan."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Sertakan inisial file gambar, file gambar jarak jauh (gravatar), dan thumbnail dalam cadangan. File-file ini umumnya dapat direproduksi setelah pemulihan dan menambahkan sangat sedikit nilai ke arsip cadangan dengan biaya besar waktu dan penyimpanan eksekusi"
 
 #: 
 msgid "Password (if any)"

@@ -1279,10 +1279,6 @@ msgid "Next Family"
 msgstr "Famiglia successiva"
 
 #: 
-msgid "Delete this Family"
-msgstr "Elimina questa Famiglia"
-
-#: 
 msgid "Upload Photo"
 msgstr "Inserisci foto"
 
@@ -1293,10 +1289,6 @@ msgstr "Elimina foto"
 #: 
 msgid "Add a Note"
 msgstr "Aggiungi Nota"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Aggiungi tutti i Membri della Famiglia nel carrello"
 
 #: 
 msgid "Timeline"
@@ -3326,14 +3318,6 @@ msgid "Select Fiscal Year"
 msgstr "Seleziona Anno fiscale"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "sono"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Modifica ID non valida!"
 
@@ -3644,10 +3628,6 @@ msgstr "Monitori"
 #: 
 msgid "Send Message"
 msgstr "Invia Messaggio"
-
-#: 
-msgid "View Profile"
-msgstr "Visualizza Profilo"
 
 #: 
 msgid "Quick Status"
@@ -6963,10 +6943,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Per favore assicurati di ciò che vuoi fare. </ P>"
 
 #: 
-msgid " this Family"
-msgstr " questa famiglia"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Conferma disattivazione"
 
@@ -7833,26 +7809,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Altezza da usare per le immagini"
-
-#: 
-msgid "Width to use for images"
-msgstr "Larghezza da usare per le immagini"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Larghezza da utilizzare per le miniature"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Dimensione del punto da utilizzare per le miniature delle iniziali"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Cache del client secondi per le immagini"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Tempo di cache del server per le immagini remote"
 
@@ -8605,10 +8561,6 @@ msgstr "Genera backup"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint del backup remoto. Se WebDAV, questo deve essere codificato in url."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Includi file immagine iniziali, file immagine remoti (gravatar) e miniature nel backup. Questi file sono generalmente riproducibili dopo un ripristino e aggiungono pochissimo valore all'archivio di backup a spese considerevoli del tempo di esecuzione e dell'archiviazione"
 
 #: 
 msgid "Password (if any)"

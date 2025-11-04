@@ -1275,10 +1275,6 @@ msgid "Next Family"
 msgstr "Další rodina"
 
 #: 
-msgid "Delete this Family"
-msgstr "Smazat rodinu"
-
-#: 
 msgid "Upload Photo"
 msgstr "Nahrát foto"
 
@@ -1289,10 +1285,6 @@ msgstr "Smazat foto"
 #: 
 msgid "Add a Note"
 msgstr "Přidat poznámku"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Přidat všechny členy rodiny do košíku"
 
 #: 
 msgid "Timeline"
@@ -3310,14 +3302,6 @@ msgid "Select Fiscal Year"
 msgstr "Vyberte fiskální rok"
 
 #: 
-msgid "pm"
-msgstr "dop."
-
-#: 
-msgid "am"
-msgstr "odp."
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Neplatné ID editoru!"
 
@@ -3628,10 +3612,6 @@ msgstr "Učitelé"
 #: 
 msgid "Send Message"
 msgstr "Poslat zprávu"
-
-#: 
-msgid "View Profile"
-msgstr "Zobrazit profil"
 
 #: 
 msgid "Quick Status"
@@ -6930,10 +6910,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Ujistěte se, že to chcete udělat.</p>"
 
 #: 
-msgid " this Family"
-msgstr " rodinu"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Potvrďte deaktivaci"
 
@@ -7797,26 +7773,6 @@ msgid "SSE"
 msgstr "JJV"
 
 #: 
-msgid "Height to use for images"
-msgstr "Výška, která se použije pro obrázky"
-
-#: 
-msgid "Width to use for images"
-msgstr "Šířka, která se použije pro obrázky"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Šířka, která se použije pro náhledy"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Výchozí velikost miniatur v bodech"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Klientská cache pro obrázky v sekundách"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Doba mezipaměti serveru pro vzdálené obrázky"
 
@@ -8566,10 +8522,6 @@ msgstr "Generovat zálohu"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Koncový bod vzdáleného zálohování.  Pokud jde o WebDAV, musí být  zakódováno pomocí url. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Zahrnout soubory s původními obrázky, vzdálené soubory obrázků (gravatar) a miniatury do zálohy.  Tyto soubory lze obecně po obnově reprodukovat a přidávají do záložního archivu jen velmi malou hodnotu za cenu velkých nákladů na čas provedení a úložiště"
 
 #: 
 msgid "Password (if any)"

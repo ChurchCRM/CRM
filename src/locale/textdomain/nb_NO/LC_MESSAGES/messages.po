@@ -1292,10 +1292,6 @@ msgid "Next Family"
 msgstr "Neste Family"
 
 #: 
-msgid "Delete this Family"
-msgstr "Slett denne Familien"
-
-#: 
 msgid "Upload Photo"
 msgstr "Last bilde"
 
@@ -1306,10 +1302,6 @@ msgstr "Slett bilde"
 #: 
 msgid "Add a Note"
 msgstr "Legg til Notat"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Legg Alle Familiemedlemmer i Kurven"
 
 #: 
 msgid "Timeline"
@@ -3351,14 +3343,6 @@ msgid "Select Fiscal Year"
 msgstr "Velg Regnskapsår"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ugyldig Editor ID!"
 
@@ -3651,10 +3635,6 @@ msgstr "Lærere"
 #: 
 msgid "Send Message"
 msgstr "Send melding"
-
-#: 
-msgid "View Profile"
-msgstr "Vis profil"
 
 #: 
 msgid "Quick Status"

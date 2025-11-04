@@ -1276,10 +1276,6 @@ msgid "Next Family"
 msgstr "Järgmine perekond"
 
 #: 
-msgid "Delete this Family"
-msgstr "Kustuta see perekond"
-
-#: 
 msgid "Upload Photo"
 msgstr "Lae pilt üles"
 
@@ -1290,10 +1286,6 @@ msgstr "Kustuta foto"
 #: 
 msgid "Add a Note"
 msgstr "Lisage märkus"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Lisage korvi kõik pereliikmed"
 
 #: 
 msgid "Timeline"
@@ -3314,14 +3306,6 @@ msgid "Select Fiscal Year"
 msgstr "Valige Majandusaasta"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Kehtetu toimetaja ID!"
 
@@ -3632,10 +3616,6 @@ msgstr "Õpetajad"
 #: 
 msgid "Send Message"
 msgstr "Saada sõnum"
-
-#: 
-msgid "View Profile"
-msgstr "Näita profiili"
 
 #: 
 msgid "Quick Status"
@@ -6939,10 +6919,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Palun veenduge selles, mida soovite teha.</p>"
 
 #: 
-msgid " this Family"
-msgstr "see perekond"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Kinnitage desaktiveerimine"
 
@@ -7809,26 +7785,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Piltide jaoks kasutatav kõrgus"
-
-#: 
-msgid "Width to use for images"
-msgstr "Piltide jaoks kasutatav laius"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Pisipiltide jaoks kasutatav laius"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Initsiaalide pisipiltide jaoks kasutatav punkti suurus"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Kliendi vahemälu sekundid piltide jaoks"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Serveri vahemälu aeg kaugpiltide jaoks"
 
@@ -8581,10 +8537,6 @@ msgstr "Genereerige varundus"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Kaugvarunduse lõpp-punkt. Kui WebDAV, tuleb see URL kodeerida. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Lisage varukoopiasse initsiaalide pildifailid, kaugpildifailid (gravatar) ja pisipildid. Neid faile on pärast taastamist üldjuhul võimalik reprodutseerida ja need annavad varunduse arhiivile väga vähe lisaväärtust, kulutades märkimisväärselt täitmisaega ja salvestusruumi"
 
 #: 
 msgid "Password (if any)"

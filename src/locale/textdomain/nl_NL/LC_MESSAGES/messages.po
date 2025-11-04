@@ -1275,10 +1275,6 @@ msgid "Next Family"
 msgstr "Volgend gezin"
 
 #: 
-msgid "Delete this Family"
-msgstr "Verwijder dit gezin"
-
-#: 
 msgid "Upload Photo"
 msgstr "Upload Foto"
 
@@ -1289,10 +1285,6 @@ msgstr "Verwijder Foto"
 #: 
 msgid "Add a Note"
 msgstr "Notitie toevoegen"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Gezinsleden in het werkbestand toevoegen"
 
 #: 
 msgid "Timeline"
@@ -3310,14 +3302,6 @@ msgid "Select Fiscal Year"
 msgstr "Selecteer Fiscaal Jaar"
 
 #: 
-msgid "pm"
-msgstr "s'avonds"
-
-#: 
-msgid "am"
-msgstr "Overdag"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ongeldig beheer ID!"
 
@@ -3628,10 +3612,6 @@ msgstr "Docenten"
 #: 
 msgid "Send Message"
 msgstr "Stuur bericht"
-
-#: 
-msgid "View Profile"
-msgstr "Toon profiel"
 
 #: 
 msgid "Quick Status"
@@ -6939,10 +6919,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Zorg ervoor dat dit is wat u wilt doen.</p>"
 
 #: 
-msgid " this Family"
-msgstr " deze familie"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bevestig deactivering"
 
@@ -7806,26 +7782,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Hoogte van de foto's"
-
-#: 
-msgid "Width to use for images"
-msgstr "Breedte van de foto's"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Breedte voor miniaturen"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Puntgrootte om te gebruiken voor initialenminiaturen"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Clientcache seconden voor afbeeldingen"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Servercachetijd voor externe afbeeldingen"
 
@@ -8575,10 +8531,6 @@ msgstr "Back-up genereren"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote back-up eindpunt. Met WebDAV, moet dit url-gecodeerd zijn."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Neem afbeeldingsbestanden, externe afbeeldingsbestanden (gravatar) en miniaturen niet op in back-up. Deze bestanden kunnen over het algemeen worden gereproduceerd na een herstel en voegen zeer weinig waarde toe aan het back-uparchief, wat veel uitvoeringstijd en opslag kost"
 
 #: 
 msgid "Password (if any)"

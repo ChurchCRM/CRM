@@ -1318,10 +1318,6 @@ msgid "Next Family"
 msgstr "下一個家庭"
 
 #: 
-msgid "Delete this Family"
-msgstr "刪除這家庭"
-
-#: 
 msgid "Upload Photo"
 msgstr "上傳照片"
 
@@ -1332,10 +1328,6 @@ msgstr "刪除照片"
 #: 
 msgid "Add a Note"
 msgstr "添加備註"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "添加家庭成員至購物車"
 
 #: 
 msgid "Timeline"
@@ -3418,14 +3410,6 @@ msgid "Select Fiscal Year"
 msgstr "選擇會計年度"
 
 #: 
-msgid "pm"
-msgstr "下午"
-
-#: 
-msgid "am"
-msgstr "我"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "無效的編輯器ID！"
 
@@ -3745,10 +3729,6 @@ msgstr "教師"
 #: 
 msgid "Send Message"
 msgstr "發送信息"
-
-#: 
-msgid "View Profile"
-msgstr "查看主檔"
 
 #: 
 msgid "Quick Status"
@@ -7090,10 +7070,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "請確認這是你想要做的。"
 
 #: 
-msgid " this Family"
-msgstr "這個家庭"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "確認停用"
 
@@ -7967,26 +7943,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "圖像的高度"
-
-#: 
-msgid "Width to use for images"
-msgstr "圖像的寬度"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "縮略圖的寬度"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "縮略圖的磅值"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "客戶端緩存圖像的秒數"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "遠程圖片的服務器緩存時間"
 
@@ -8777,11 +8733,6 @@ msgstr "生成備份"
 #, fuzzy
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "遠程備份端點。如果是WebDAV，必須是url編碼的。"
-
-#: 
-#, fuzzy
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "在備份中包括縮寫圖像文件，遠端圖像文件（gravatar）和縮圖。這些文件通常能夠在還原後再現，卻花費很大的執行時間和存儲成本為備份存檔添加非常少的益處."
 
 #: 
 #, fuzzy
