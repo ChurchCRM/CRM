@@ -98,27 +98,24 @@ describe("Financial Reports", () => {
         cy.get("#FinancialReportTypes").select("Voting Members");
         cy.get("#FinancialReports").submit();
         cy.contains("Financial Reports: Voting Members");
-        cy.window()
-            .document()
-            .then(function (doc) {
-                doc.getElementById("createReport").addEventListener(
-                    "click",
-                    () => {
-                        setTimeout(function () {
-                            doc.location.reload();
-                        }, 10_000);
-                    },
-                );
-
-                /* Make sure the file exists */
-                cy.intercept("/", (req) => {
-                    req.reply((res) => {
-                        expect(res.statusCode).to.equal(200);
-                    });
+        cy.window().then(function (win) {
+            win.document
+                .getElementById("createReport")
+                .addEventListener("click", () => {
+                    setTimeout(function () {
+                        win.location.reload();
+                    }, 10_000);
                 });
 
-                cy.get("#createReport").click();
+            /* Make sure the file exists */
+            cy.intercept("/", (req) => {
+                req.reply((res) => {
+                    expect(res.statusCode).to.equal(200);
+                });
             });
+
+            cy.get("#createReport").click();
+        });
     });
 
     it("Zero Givers", () => {
@@ -127,27 +124,24 @@ describe("Financial Reports", () => {
         cy.get("#FinancialReportTypes").select("Zero Givers");
         cy.get("#FinancialReports").submit();
         cy.contains("Financial Reports: Zero Givers");
-        cy.window()
-            .document()
-            .then(function (doc) {
-                doc.getElementById("createReport").addEventListener(
-                    "click",
-                    () => {
-                        setTimeout(function () {
-                            doc.location.reload();
-                        }, 10_000);
-                    },
-                );
-
-                /* Make sure the file exists */
-                cy.intercept("/", (req) => {
-                    req.reply((res) => {
-                        expect(res.statusCode).to.equal(200);
-                    });
+        cy.window().then(function (win) {
+            win.document
+                .getElementById("createReport")
+                .addEventListener("click", () => {
+                    setTimeout(function () {
+                        win.location.reload();
+                    }, 10_000);
                 });
 
-                cy.get("#createReport").click();
+            /* Make sure the file exists */
+            cy.intercept("/", (req) => {
+                req.reply((res) => {
+                    expect(res.statusCode).to.equal(200);
+                });
             });
+
+            cy.get("#createReport").click();
+        });
     });
 
     it("Individual Deposit Report", () => {
