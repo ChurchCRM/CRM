@@ -545,8 +545,9 @@ msgid "Select the event to which you would like to check people in for"
 msgstr "Виберіть подію, на яку ви хочете зареєструвати людей"
 
 #: 
+#, fuzzy
 msgid "Select Event"
-msgstr "Виберіть Подія"
+msgstr "Виберіть Подію"
 
 #: 
 msgid "Add Visitor"
@@ -1277,10 +1278,6 @@ msgid "Next Family"
 msgstr "Наступна сім'я"
 
 #: 
-msgid "Delete this Family"
-msgstr "Видалити цю сім’ю"
-
-#: 
 msgid "Upload Photo"
 msgstr "Завантажити фото"
 
@@ -1291,10 +1288,6 @@ msgstr "Видалити фото"
 #: 
 msgid "Add a Note"
 msgstr "Додайте примітку"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Додати всіх членів сім'ї в кошик"
 
 #: 
 msgid "Timeline"
@@ -3315,14 +3308,6 @@ msgid "Select Fiscal Year"
 msgstr "Виберіть фінансовий рік"
 
 #: 
-msgid "pm"
-msgstr "вечора"
-
-#: 
-msgid "am"
-msgstr "ранку"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Недійсний ідентифікатор редактора!"
 
@@ -3633,10 +3618,6 @@ msgstr "Вчителі"
 #: 
 msgid "Send Message"
 msgstr "Відправити повідомлення"
-
-#: 
-msgid "View Profile"
-msgstr "Перегляд профілю"
 
 #: 
 msgid "Quick Status"
@@ -6939,10 +6920,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Будь ласка, переконайтеся, що ви хочете зробити. </p>"
 
 #: 
-msgid " this Family"
-msgstr " ця Родина"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Підтвердьте деактивацію"
 
@@ -7809,26 +7786,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Висота для зображення"
-
-#: 
-msgid "Width to use for images"
-msgstr "Ширина для зображення"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Ширина для ескізів"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Розмір точки для ескізів ініціалів"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Клієнтські кеш-секунди для зображень"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Час кешування сервера для віддалених зображень"
 
@@ -8581,10 +8538,6 @@ msgstr "Створити резервну копію"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Кінцева точка віддаленого резервного копіювання. Якщо WebDAV, це має бути закодовано за адресою url. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Включіть у резервну копію файли зображень ініціалів, віддалені файли зображень (gravatar) та ескізи. Ці файли, як правило, можуть бути відтворені після відновлення та додають дуже мало значення архіву резервних копій за великих витрат часу виконання та зберігання"
 
 #: 
 msgid "Password (if any)"
@@ -9343,4 +9296,12 @@ msgstr "Недійсна дата народження: відсутні міс�
 #: 
 msgid "Adult Name (Optional)"
 msgstr "Ім'я дорослого (необов’язково)"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Введіть назву групи"
+
+#: 
+msgid "Role added successfully."
+msgstr "Роль успішно додано"
 

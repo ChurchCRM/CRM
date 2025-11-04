@@ -568,10 +568,6 @@ msgid "Next Family"
 msgstr "次の家族"
 
 #: 
-msgid "Delete this Family"
-msgstr "この家族を削除"
-
-#: 
 msgid "Upload Photo"
 msgstr "写真をアップロード"
 

@@ -1318,10 +1318,6 @@ msgid "Next Family"
 msgstr "Nästa familj"
 
 #: 
-msgid "Delete this Family"
-msgstr "Radera den här familjen"
-
-#: 
 msgid "Upload Photo"
 msgstr "Ladda in foto"
 
@@ -1332,10 +1328,6 @@ msgstr "Radera foto"
 #: 
 msgid "Add a Note"
 msgstr "Lägg till en anteckning"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Lägg till alla familjemedlemmar i kundvagnen"
 
 #: 
 msgid "Timeline"
@@ -3441,14 +3433,6 @@ msgid "Select Fiscal Year"
 msgstr "Välj bokföringsår"
 
 #: 
-msgid "pm"
-msgstr "eftermiddag"
-
-#: 
-msgid "am"
-msgstr "förmiddag"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ogiltig redigerings ID"
 
@@ -3769,10 +3753,6 @@ msgstr "lärare"
 #: 
 msgid "Send Message"
 msgstr "Skicka meddelande"
-
-#: 
-msgid "View Profile"
-msgstr "Visa profil"
 
 #: 
 msgid "Quick Status"
@@ -7084,10 +7064,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Se till att du gör det du vill göra. </p>"
 
 #: 
-msgid " this Family"
-msgstr "den här familjen"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bekräfta avaktivering"
 
@@ -7954,26 +7930,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Höjd att använda för bilder"
-
-#: 
-msgid "Width to use for images"
-msgstr "Bredd att använda för bilder"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Bredd att använda för miniatyrbilder"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Punktstorlek som ska användas för initialerna miniatyrer"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Klientcache-sekunder för bilder"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Servercache-tid för fjärrbilder"
 
@@ -8726,10 +8682,6 @@ msgstr "Generera säkerhetskopiering"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint Backpoint Endpoint. Om WebDAV måste detta vara url-kodat."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Inkludera initiala bildfiler, fjärrbildsfiler (gravatar) och miniatyrbilder i säkerhetskopian. Dessa filer kan generellt reproduceras efter en återställning och lägger till mycket lite värde till säkerhetsarkivet på en stor kostnad för körningstid och lagring"
 
 #: 
 msgid "Password (if any)"

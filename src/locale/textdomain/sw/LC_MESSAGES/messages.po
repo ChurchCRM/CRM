@@ -1275,10 +1275,6 @@ msgid "Next Family"
 msgstr "Familia Inayofuata"
 
 #: 
-msgid "Delete this Family"
-msgstr "Futa familia"
-
-#: 
 msgid "Upload Photo"
 msgstr "Pakia picha"
 
@@ -1289,10 +1285,6 @@ msgstr "Futa picha"
 #: 
 msgid "Add a Note"
 msgstr "Ongeza Dokezo"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Ongeza Wanafamilia Wote kwenye Cart"
 
 #: 
 msgid "Timeline"
@@ -3310,14 +3302,6 @@ msgid "Select Fiscal Year"
 msgstr "Chagua Mwaka wa Fedha"
 
 #: 
-msgid "pm"
-msgstr "jioni"
-
-#: 
-msgid "am"
-msgstr "asubuhi"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Kitambulisho batili cha Mhariri!"
 
@@ -3628,10 +3612,6 @@ msgstr "Walimu"
 #: 
 msgid "Send Message"
 msgstr "Tuma Ujumbe"
-
-#: 
-msgid "View Profile"
-msgstr "Tazama Wasifu"
 
 #: 
 msgid "Quick Status"
@@ -6930,10 +6910,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Tafadhali hakikisha hiki unachotaka kufanya.</p>"
 
 #: 
-msgid " this Family"
-msgstr " hii Familia"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Thibitisha Kuzima"
 
@@ -7798,26 +7774,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Urefu wa kutumia kwa picha"
-
-#: 
-msgid "Width to use for images"
-msgstr "Upana wa kutumia kwa picha"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Upana wa kutumia kwa vijipicha"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Ukubwa wa sehemu ya kutumia kwa vijipicha vya herufi"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Sekunde za akiba ya mteja kwa picha"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Muda wa akiba ya seva kwa picha za mbali"
 
@@ -8567,10 +8523,6 @@ msgstr "Tengeneza Hifadhi Nakala"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Sehemu ya Mwisho ya Hifadhi Nakala ya Mbali. Ikiwa WebDAV, hii lazima iwe url iliyosimbwa. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Jumuisha faili za picha za herufi, faili za picha za mbali (gravatar), na vijipicha kwenye chelezo. Faili hizi kwa ujumla zinaweza kutolewa tena baada ya kurejeshwa na kuongeza thamani ndogo sana kwenye hifadhi ya chelezo kwa gharama kubwa ya muda wa utekelezaji na uhifadhi."
 
 #: 
 msgid "Password (if any)"

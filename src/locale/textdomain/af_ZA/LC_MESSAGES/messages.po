@@ -1276,10 +1276,6 @@ msgid "Next Family"
 msgstr "Volgende gesin"
 
 #: 
-msgid "Delete this Family"
-msgstr "Vee hierdie gesin uit"
-
-#: 
 msgid "Upload Photo"
 msgstr "Laai foto op"
 
@@ -1290,10 +1286,6 @@ msgstr "Vee foto uit"
 #: 
 msgid "Add a Note"
 msgstr "Voeg 'n nota by"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Voeg alle gesinslede by die mandjie"
 
 #: 
 msgid "Timeline"
@@ -3314,14 +3306,6 @@ msgid "Select Fiscal Year"
 msgstr "Kies boekjaar"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "is"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ongeldige redakteur-ID!"
 
@@ -3632,10 +3616,6 @@ msgstr "Onderwysers"
 #: 
 msgid "Send Message"
 msgstr "Stuur boodskap"
-
-#: 
-msgid "View Profile"
-msgstr "Besigtig profiel"
 
 #: 
 msgid "Quick Status"
@@ -6941,10 +6921,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Verseker dit wat u wil doen. </p>"
 
 #: 
-msgid " this Family"
-msgstr " hierdie Gesin"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bevestig Deaktivering"
 
@@ -7811,26 +7787,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Hoogte om te gebruik vir beelde"
-
-#: 
-msgid "Width to use for images"
-msgstr "Wydte om te gebruik vir beelde"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Wydte om te gebruik vir kleinkiekies"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Puntgrootte om te gebruik vir voorletters"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Kliëntkas sekondes vir beelde"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Bedienerskyfie tyd vir afgeleë beelde"
 
@@ -8583,10 +8539,6 @@ msgstr "Genereer rugsteun"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote Backup eindpunt. As WebDAV, moet dit gekodeer word vir url. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Sluit voorletters-beeldlêers, afgeleë prentlêers (gravatar) en kleinkiekies in die rugsteun in. Hierdie lêers kan oor die algemeen na 'n herstel gereproduseer word en voeg baie min waarde toe aan die rugsteunargief ten koste van die uitvoeringstyd en -berging."
 
 #: 
 msgid "Password (if any)"

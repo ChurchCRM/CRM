@@ -1275,10 +1275,6 @@ msgid "Next Family"
 msgstr "다음 가족"
 
 #: 
-msgid "Delete this Family"
-msgstr "이 가족 삭제"
-
-#: 
 msgid "Upload Photo"
 msgstr "사진 업로드"
 
@@ -1289,10 +1285,6 @@ msgstr "사진 삭제"
 #: 
 msgid "Add a Note"
 msgstr "메모 추가"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "가족 전체를 카트에 추가"
 
 #: 
 msgid "Timeline"
@@ -3310,14 +3302,6 @@ msgid "Select Fiscal Year"
 msgstr "회계 연도 선택"
 
 #: 
-msgid "pm"
-msgstr "오후"
-
-#: 
-msgid "am"
-msgstr "오전"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "잘못된 편집기 ID입니다!"
 
@@ -3628,10 +3612,6 @@ msgstr "교사"
 #: 
 msgid "Send Message"
 msgstr "메시지 보내기"
-
-#: 
-msgid "View Profile"
-msgstr "프로필 보기"
 
 #: 
 msgid "Quick Status"
@@ -6930,10 +6910,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "정말 이 작업을 진행할지 다시 확인하세요.</p>"
 
 #: 
-msgid " this Family"
-msgstr " 이 가족"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "비활성화 확인"
 
@@ -7797,26 +7773,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "이미지 높이"
-
-#: 
-msgid "Width to use for images"
-msgstr "이미지 폭"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "썸네일 폭"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "이니셜 썸네일 글자 크기"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "이미지 클라이언트 캐시(초)"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "원격 이미지 서버 캐시 시간"
 
@@ -8565,10 +8521,6 @@ msgstr "백업 생성"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "원격 백업 엔드포인트(WebDAV인 경우 URL 인코딩 필요). "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "백업에 이니셜 이미지, 원격 이미지(Gravatar), 썸네일을 포함합니다. 이러한 파일은 복원 후 다시 생성할 수 있으며 실행 시간과 저장 공간을 많이 차지합니다."
 
 #: 
 msgid "Password (if any)"
