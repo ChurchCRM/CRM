@@ -373,38 +373,6 @@ module.exports = function (grunt) {
                 ],
             },
         },
-        poeditor: {
-            getPOTranslations: {
-                download: {
-                    project_id: "<%= poeditor.options.project_id %>",
-                    filters: ["translated"],
-                    type: "po", // export type (check out the doc)
-                    dest: "src/locale/textdomain/?/LC_MESSAGES/messages.po",
-                    // grunt style dest files
-                },
-            },
-            getMOTranslations: {
-                download: {
-                    project_id: "<%= poeditor.options.project_id %>",
-                    filters: ["translated"],
-                    type: "mo",
-                    dest: "src/locale/textdomain/?/LC_MESSAGES/messages.mo",
-                },
-            },
-            getJSTranslations: {
-                download: {
-                    project_id: "<%= poeditor.options.project_id %>",
-                    filters: ["translated"],
-                    type: "key_value_json",
-                    dest: "locale/JSONKeys/?.json",
-                },
-            },
-            options: {
-                project_id: "<%= buildConfig.POEditor.id %>",
-                languages: poLocales(),
-                api_token: "<%= buildConfig.POEditor.token %>",
-            },
-        },
     });
 
     grunt.registerTask("hash", "gets a file hash", function (arg1) {
@@ -455,14 +423,6 @@ module.exports = function (grunt) {
             });
             signatures.sha1 = sha1(JSON.stringify(signatures.files));
             grunt.file.write("src/signatures.json", JSON.stringify(signatures));
-        },
-    );
-
-    grunt.registerTask(
-        "updateFromPOeditor",
-        "Description of the task",
-        function (target) {
-            grunt.task.run(["poeditor"]);
         },
     );
 
@@ -541,5 +501,4 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-compress");
     grunt.loadNpmTasks("grunt-curl");
-    grunt.loadNpmTasks("grunt-poeditor-gd");
 };
