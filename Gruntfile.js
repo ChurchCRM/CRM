@@ -217,47 +217,115 @@ module.exports = function (grunt) {
                         ],
                         dest: "src/skin/external/select2",
                     },
+                    // DataTables: Core library
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: [
+                            "node_modules/datatables.net/js/jquery.dataTables.min.js",
+                        ],
+                        dest: "src/skin/external/datatables/",
+                    },
+                    // DataTables: Bootstrap 4 integration
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: [
+                            "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
+                            "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
+                        ],
+                        dest: "src/skin/external/datatables/",
+                    },
+                    // DataTables: Buttons extension
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: [
+                            "node_modules/datatables.net-buttons/js/dataTables.buttons.min.js",
+                            "node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js",
+                            "node_modules/datatables.net-buttons/js/buttons.html5.min.js",
+                            "node_modules/datatables.net-buttons/js/buttons.print.min.js",
+                            "node_modules/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css",
+                        ],
+                        dest: "src/skin/external/datatables/",
+                    },
+                    // DataTables: Responsive extension
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: [
+                            "node_modules/datatables.net-responsive/js/dataTables.responsive.min.js",
+                            "node_modules/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js",
+                            "node_modules/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css",
+                        ],
+                        dest: "src/skin/external/datatables/",
+                    },
+                    // DataTables: Select extension
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: [
+                            "node_modules/datatables.net-select/js/dataTables.select.min.js",
+                            "node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js",
+                            "node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css",
+                        ],
+                        dest: "src/skin/external/datatables/",
+                    },
+                    // DataTables: Sort images
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: false,
+                        cwd: "node_modules/datatables.net-bs4",
+                        src: ["images/**"],
+                        dest: "src/skin/external/datatables/DataTables-" + dataTablesVer + "/",
+                    },
+                    // PDF/Excel export dependencies
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: [
+                            "node_modules/pdfmake/build/pdfmake.min.js",
+                            "node_modules/pdfmake/build/pdfmake.min.js.map",
+                            "node_modules/pdfmake/build/vfs_fonts.js",
+                        ],
+                        dest: "src/skin/external/datatables/",
+                    },
+                    // JSZip for Excel export
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: [
+                            "node_modules/jszip/dist/jszip.min.js",
+                        ],
+                        dest: "src/skin/external/datatables/",
+                    },
                 ],
             },
         },
         "curl-dir": {
-            datatables: {
+            // Keeping only external CDN assets that don't have npm packages
+            fastclick: {
                 src: [
-                    "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js",
-                    "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js.map",
-                    "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js",
-                    "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-" +
-                        dataTablesVer +
-                        "/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.css",
-                    "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-" +
-                        dataTablesVer +
-                        "/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.js",
+                    "https://raw.githubusercontent.com/ftlabs/fastclick/569732a7aa5861d428731b8db022b2d55abe1a5a/lib/fastclick.js",
                 ],
-                dest: "src/skin/external/datatables/",
+                dest: "src/skin/external/fastclick",
             },
-            datatables_images: {
+            jqueryuicss: {
                 src: [
-                    "https://cdn.datatables.net/" +
-                        dataTablesVer +
-                        "/images/sort_asc.png",
-                    "https://cdn.datatables.net/" +
-                        dataTablesVer +
-                        "/images/sort_asc_disabled.png",
-                    "https://cdn.datatables.net/" +
-                        dataTablesVer +
-                        "/images/sort_both.png",
-                    "https://cdn.datatables.net/" +
-                        dataTablesVer +
-                        "/images/sort_desc.png",
-                    "https://cdn.datatables.net/" +
-                        dataTablesVer +
-                        "/images/sort_desc_disabled.png",
+                    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css",
+                    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js",
                 ],
-                dest:
-                    "src/skin/external/datatables/DataTables-" +
-                    dataTablesVer +
-                    "/images/",
+                dest: "src/skin/external/jquery-ui/",
             },
+            // DataTables locale files still come from CDN (no npm package available)
             datatables_locale: {
                 src: [
                     "https://cdn.datatables.net/plug-ins/" +
@@ -362,12 +430,17 @@ module.exports = function (grunt) {
         "patchDataTablesCSS",
         "Patches Absolute paths in DataTables CSS to relative Paths",
         function () {
-            var filePath = "src/skin/external/datatables/datatables.min.css";
-            var fileContents = grunt.file.read(filePath);
-            const pattern = /url\(\"\//gi;
-            fileContents = fileContents.replace(pattern, 'url("');
-            console.log("patched files");
-            grunt.file.write(filePath, fileContents);
+            // Patch Bootstrap 4 DataTables CSS (from npm package)
+            var filePath = "src/skin/external/datatables/dataTables.bootstrap4.min.css";
+            if (grunt.file.exists(filePath)) {
+                var fileContents = grunt.file.read(filePath);
+                const pattern = /url\(\"\//gi;
+                fileContents = fileContents.replace(pattern, 'url("');
+                console.log("patched DataTables CSS files");
+                grunt.file.write(filePath, fileContents);
+            } else {
+                console.log("DataTables CSS file not found: " + filePath);
+            }
         },
     );
 
