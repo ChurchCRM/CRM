@@ -78,7 +78,7 @@ describe("Event Checkin with Select2", () => {
         cy.get(".select2-results__option").first().click();
         
         // Verify hidden ID field is populated
-        cy.get("#child-id").should("not.have.value", "");
+        cy.get("#child-id").should("not.be.empty");
         
         // Verify person details are displayed
         cy.get("#childDetails").should("be.visible");
@@ -99,7 +99,7 @@ describe("Event Checkin with Select2", () => {
         cy.get(".select2-results__option").first().click();
         
         // Verify hidden ID field is populated
-        cy.get("#adult-id").should("not.have.value", "");
+        cy.get("#adult-id").should("not.be.empty");
         
         // Verify adult details are displayed
         cy.get("#adultDetails").should("be.visible");
