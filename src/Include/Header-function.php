@@ -50,7 +50,8 @@ function Header_modals(): void
 function Header_body_scripts(): void
 {
     $localeInfo = Bootstrapper::getCurrentLocale();
-    $tableSizeSetting =  AuthenticationManager::getCurrentUser()->getSetting("ui.table.size");
+    $currentUser = AuthenticationManager::getCurrentUser();
+    $tableSizeSetting = $currentUser->getSetting("ui.table.size");
     if (empty($tableSizeSetting)) {
         $tableSize = 10;
     } else {
@@ -81,9 +82,10 @@ function Header_body_scripts(): void
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
-                    dom: "<'row'<'col-sm-4'<?= AuthenticationManager::getCurrentUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
+                    dom: "<'row'<'col-sm-4'<?= $currentUser->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
                             "<'row'<'col-sm-12't>>" +
-                            "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>"
+                            "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>"<?php if ($currentUser->isCSVExport()) { ?>,
+                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']<?php } ?>
                 }
             },
             PageName:"<?= $_SERVER['REQUEST_URI']; ?>"
