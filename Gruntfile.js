@@ -311,13 +311,6 @@ module.exports = function (grunt) {
             },
         },
         "curl-dir": {
-            jqueryuicss: {
-                src: [
-                    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css",
-                    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js",
-                ],
-                dest: "src/skin/external/jquery-ui/",
-            },
             // DataTables locale files still come from CDN (no npm package available)
             datatables_locale: {
                 src: [
