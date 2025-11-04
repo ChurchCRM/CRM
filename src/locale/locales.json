@@ -31,8 +31,7 @@
         "dataTables": "am",
         "fullCalendar": false,
         "datePicker": false,
-        "select2": false,
-        "momentLocale": "am"
+        "select2": false
     },
     "Arabic - Egypt": {
         "poEditor": "ar",
@@ -388,8 +387,7 @@
         "dataTables": "sw",
         "fullCalendar": false,
         "datePicker": true,
-        "select2": false,
-        "momentLocale": "sw"
+        "select2": false
     },
     "Tamil - India": {
         "poEditor": "ta",
@@ -411,8 +409,7 @@
         "dataTables": "te",
         "fullCalendar": false,
         "datePicker": false,
-        "select2": false,
-        "momentLocale": "te"
+        "select2": false
     },
     "Thai": {
         "poEditor": "th",

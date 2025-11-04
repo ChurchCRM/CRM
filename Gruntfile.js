@@ -25,9 +25,12 @@ module.exports = function (grunt) {
         var momentFiles = ["node_modules/moment/min/moment.min.js"];
         for (var key in locales) {
             var locale = locales[key];
-            // Only include locale if momentLocale is defined
+            // Only include locale if momentLocale is defined AND the file exists
             if (locale["momentLocale"]) {
-                momentFiles.push("node_modules/moment/locale/" + locale["momentLocale"] + ".js");
+                var filePath = "node_modules/moment/locale/" + locale["momentLocale"] + ".js";
+                if (grunt.file.exists(filePath)) {
+                    momentFiles.push(filePath);
+                }
             }
         }
         return momentFiles;
