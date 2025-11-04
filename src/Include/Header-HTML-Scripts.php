@@ -16,4 +16,4 @@ use ChurchCRM\dto\SystemURLs;
 <!-- Core ChurchCRM bundle -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment-with-locales.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment.min.js"></script>

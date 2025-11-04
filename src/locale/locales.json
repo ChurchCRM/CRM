@@ -8,7 +8,8 @@
         "fullCalendar": true,
         "fullCalendarLocale": "af",
         "datePicker": false,
-        "select2": true
+        "select2": true,
+        "momentLocale": "af"
     },
     "Albanian": {
         "poEditor": "sq",
@@ -19,7 +20,8 @@
         "fullCalendar": true,
         "fullCalendarLocale": "sq",
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "sq"
     },
     "Amharic - Ethiopia": {
         "poEditor": "am",
@@ -29,7 +31,8 @@
         "dataTables": "am",
         "fullCalendar": false,
         "datePicker": false,
-        "select2": false
+        "select2": false,
+        "momentLocale": "am"
     },
     "Arabic - Egypt": {
         "poEditor": "ar",
@@ -39,7 +42,8 @@
         "dataTables": "ar",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "ar"
     },
     "Chinese - China": {
         "poEditor": "zh-CN",
@@ -49,7 +53,8 @@
         "dataTables": "zh",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "zh-cn"
     },
     "Chinese - Taiwan": {
         "poEditor": "zh-TW",
@@ -59,7 +64,8 @@
         "dataTables": "zh-HANT",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "zh-tw"
     },
     "Czech": {
         "poEditor": "cs",
@@ -69,7 +75,8 @@
         "dataTables": "cs",
         "fullCalendar": true,
         "datePicker": false,
-        "select2": true
+        "select2": true,
+        "momentLocale": "cs"
     },
     "Dutch - Netherlands": {
         "poEditor": "nl",
@@ -79,7 +86,8 @@
         "dataTables": "nl-NL",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "nl"
     },
     "English - Australia": {
         "poEditor": "en-au",
@@ -90,7 +98,8 @@
         "fullCalendar": true,
         "fullCalendarLocale": "en-au",
         "datePicker": false,
-        "select2": false
+        "select2": false,
+        "momentLocale": "en-au"
     },
     "English - Canada": {
         "poEditor": "en-ca",
@@ -100,7 +109,8 @@
         "dataTables": "en-GB",
         "fullCalendar": false,
         "datePicker": false,
-        "select2": false
+        "select2": false,
+        "momentLocale": "en-ca"
     },
     "English - Great Britain": {
         "poEditor": "en",
@@ -111,7 +121,8 @@
         "fullCalendar": true,
         "fullCalendarLocale": "en-gb",
         "datePicker": false,
-        "select2": false
+        "select2": false,
+        "momentLocale": "en-gb"
     },
     "English - Jamaica": {
         "poEditor": "en-jm",
@@ -121,7 +132,8 @@
         "dataTables": "en-GB",
         "fullCalendar": false,
         "datePicker": false,
-        "select2": false
+        "select2": false,
+        "momentLocale": "en"
     },
     "English - South Africa": {
         "poEditor": "en-za",
@@ -131,7 +143,8 @@
         "dataTables": "en-GB",
         "fullCalendar": false,
         "datePicker": false,
-        "select2": false
+        "select2": false,
+        "momentLocale": "en"
     },
     "English - United States": {
         "poEditor": "en-US",
@@ -141,7 +154,8 @@
         "dataTables": "en-GB",
         "fullCalendar": false,
         "datePicker": false,
-        "select2": false
+        "select2": false,
+        "momentLocale": "en"
     },
     "Estonian": {
         "poEditor": "et",
@@ -152,7 +166,8 @@
         "fullCalendar": true,
         "fullCalendarLocale": "et",
         "datePicker": true,
-        "select2": false
+        "select2": false,
+        "momentLocale": "et"
     },
     "Finnish": {
         "poEditor": "fi",
@@ -162,7 +177,8 @@
         "dataTables": "fi",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "fi"
     },
     "French - France": {
         "poEditor": "fr",
@@ -172,7 +188,8 @@
         "dataTables": "fr-FR",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "fr"
     },
     "German - Germany": {
         "poEditor": "de",
@@ -182,7 +199,8 @@
         "dataTables": "de-DE",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "de"
     },
     "Greek": {
         "poEditor": "el",
@@ -192,7 +210,8 @@
         "dataTables": "el",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "el"
     },
     "Hebrew": {
         "poEditor": "he",
@@ -202,7 +221,8 @@
         "dataTables": "he",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "he"
     },
     "Hindi - India": {
         "poEditor": "hi",
@@ -212,7 +232,8 @@
         "dataTables": "hi",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "hi"
     },
     "Hungarian": {
         "poEditor": "hu",
@@ -222,7 +243,8 @@
         "dataTables": "hu",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "hu"
     },
     "Indonesian - Indonesia": {
         "poEditor": "id",
@@ -232,7 +254,8 @@
         "dataTables": "id",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "id"
     },
     "Italian - Italy": {
         "poEditor": "it",
@@ -242,7 +265,8 @@
         "dataTables": "it-IT",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "it"
     },
     "Japanese": {
         "poEditor": "ja",
@@ -252,7 +276,8 @@
         "dataTables": "ja",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "ja"
     },
     "Korean": {
         "poEditor": "ko",
@@ -263,7 +288,8 @@
         "fullCalendar": true,
         "fullCalendarLocale": "ko",
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "ko"
     },
     "Norwegian": {
         "poEditor": "nb",
@@ -273,7 +299,8 @@
         "dataTables": "no-NB",
         "fullCalendar": true,
         "datePicker": false,
-        "select2": true
+        "select2": true,
+        "momentLocale": "nb"
     },
     "Polish": {
         "poEditor": "pl",
@@ -283,7 +310,8 @@
         "dataTables": "pl",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "pl"
     },
     "Portuguese - Brazil": {
         "poEditor": "pt-br",
@@ -293,7 +321,8 @@
         "dataTables": "pt-PT",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "pt-br"
     },
     "Portuguese - Portugal": {
         "poEditor": "pt",
@@ -304,7 +333,8 @@
         "fullCalendar": true,
         "fullCalendarLocale": "pt",
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "pt"
     },
     "Romanian - Romania": {
         "poEditor": "ro",
@@ -314,7 +344,8 @@
         "dataTables": "ro",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "ro"
     },
     "Russian": {
         "poEditor": "ru",
@@ -324,7 +355,8 @@
         "dataTables": "ru",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "ru"
     },
     "Sami (Northern) (Sweden)": {
         "poEditor": "sv",
@@ -334,7 +366,8 @@
         "dataTables": "sv-SE",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "sv"
     },
     "Spanish - Spain": {
         "poEditor": "es",
@@ -344,7 +377,8 @@
         "dataTables": "es-ES",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "es"
     },
     "Swahili": {
         "poEditor": "sw",
@@ -354,7 +388,8 @@
         "dataTables": "sw",
         "fullCalendar": false,
         "datePicker": true,
-        "select2": false
+        "select2": false,
+        "momentLocale": "sw"
     },
     "Tamil - India": {
         "poEditor": "ta",
@@ -365,7 +400,8 @@
         "fullCalendar": true,
         "fullCalendarLocale": "ta-in",
         "datePicker": true,
-        "select2": false
+        "select2": false,
+        "momentLocale": "ta"
     },
     "Telugu - India": {
         "poEditor": "te",
@@ -375,7 +411,8 @@
         "dataTables": "te",
         "fullCalendar": false,
         "datePicker": false,
-        "select2": false
+        "select2": false,
+        "momentLocale": "te"
     },
     "Thai": {
         "poEditor": "th",
@@ -385,7 +422,8 @@
         "dataTables": "th",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "th"
     },
     "Turkish": {
         "poEditor": "tr",
@@ -395,7 +433,8 @@
         "dataTables": "tr",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "tr"
     },
     "Ukrainian": {
         "poEditor": "uk",
@@ -405,7 +444,8 @@
         "dataTables": "uk",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "uk"
     },
     "Vietnamese": {
         "poEditor": "vi",
@@ -415,6 +455,7 @@
         "dataTables": "vi",
         "fullCalendar": true,
         "datePicker": true,
-        "select2": true
+        "select2": true,
+        "momentLocale": "vi"
     }
 }

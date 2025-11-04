@@ -90,6 +90,10 @@ function Header_body_scripts(): void
             },
             PageName:"<?= $_SERVER['REQUEST_URI']; ?>"
         };
+        // Initialize moment locale if available
+        if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
+            moment.locale(window.CRM.shortLocale);
+        }
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
     <?php
