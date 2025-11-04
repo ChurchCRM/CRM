@@ -514,9 +514,11 @@ module.exports = function (grunt) {
 
             if (momentLocale) {
                 tempFile = "node_modules/moment/locale/" + momentLocale + ".js";
-                let momentLocaleFile = grunt.file.read(tempFile);
-                jsFileContent = jsFileContent + "\n// Source moment: " + tempFile;
-                jsFileContent = jsFileContent + "\n" + "try {" + momentLocaleFile + "} catch(e) {}\n";
+                if (grunt.file.exists(tempFile)) {
+                    let momentLocaleFile = grunt.file.read(tempFile);
+                    jsFileContent = jsFileContent + "\n// Source moment: " + tempFile;
+                    jsFileContent = jsFileContent + "\n" + "try {" + momentLocaleFile + "} catch(e) {}\n";
+                }
             }
 
             if (enableFullCalendar) {
