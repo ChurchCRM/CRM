@@ -20,6 +20,22 @@ module.exports = function (grunt) {
         return DTLangs.toString();
     };
 
+    var momentLangs = function () {
+        var locales = grunt.file.readJSON("src/locale/locales.json");
+        var momentFiles = ["node_modules/moment/min/moment.min.js"];
+        for (var key in locales) {
+            var locale = locales[key];
+            // Only include locale if momentLocale is defined AND the file exists
+            if (locale["momentLocale"]) {
+                var filePath = "node_modules/moment/locale/" + locale["momentLocale"] + ".js";
+                if (grunt.file.exists(filePath)) {
+                    momentFiles.push(filePath);
+                }
+            }
+        }
+        return momentFiles;
+    };
+
     var dataTablesVer = "1.13.8";
 
     // Project configuration.
@@ -76,7 +92,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["node_modules/moment/min/*"],
+                        src: momentLangs(),
                         dest: "src/skin/external/moment/",
                     },
                     {
@@ -366,38 +382,6 @@ module.exports = function (grunt) {
                 ],
             },
         },
-        poeditor: {
-            getPOTranslations: {
-                download: {
-                    project_id: "<%= poeditor.options.project_id %>",
-                    filters: ["translated"],
-                    type: "po", // export type (check out the doc)
-                    dest: "src/locale/textdomain/?/LC_MESSAGES/messages.po",
-                    // grunt style dest files
-                },
-            },
-            getMOTranslations: {
-                download: {
-                    project_id: "<%= poeditor.options.project_id %>",
-                    filters: ["translated"],
-                    type: "mo",
-                    dest: "src/locale/textdomain/?/LC_MESSAGES/messages.mo",
-                },
-            },
-            getJSTranslations: {
-                download: {
-                    project_id: "<%= poeditor.options.project_id %>",
-                    filters: ["translated"],
-                    type: "key_value_json",
-                    dest: "locale/JSONKeys/?.json",
-                },
-            },
-            options: {
-                project_id: "<%= buildConfig.POEditor.id %>",
-                languages: poLocales(),
-                api_token: "<%= buildConfig.POEditor.token %>",
-            },
-        },
     });
 
     grunt.registerTask("hash", "gets a file hash", function (arg1) {
@@ -451,14 +435,6 @@ module.exports = function (grunt) {
         },
     );
 
-    grunt.registerTask(
-        "updateFromPOeditor",
-        "Description of the task",
-        function (target) {
-            grunt.task.run(["poeditor"]);
-        },
-    );
-
     grunt.registerTask("genLocaleJSFiles", "", function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
         for (var key in locales) {
@@ -468,6 +444,7 @@ module.exports = function (grunt) {
             let enableFullCalendar = localeConfig["fullCalendar"];
             let enableDatePicker = localeConfig["datePicker"];
             let enableSelect2 = localeConfig["select2"];
+            let momentLocale = localeConfig["momentLocale"];
 
             let tempFile = "locale/JSONKeys/" + locale + ".json";
             let poTerms = "{}";
@@ -483,6 +460,15 @@ module.exports = function (grunt) {
                 "\ntry {window.CRM.i18keys = " +
                 poTerms +
                 ";} catch(e) {}\n";
+
+            if (momentLocale) {
+                tempFile = "node_modules/moment/locale/" + momentLocale + ".js";
+                if (grunt.file.exists(tempFile)) {
+                    let momentLocaleFile = grunt.file.read(tempFile);
+                    jsFileContent = jsFileContent + "\n// Source moment: " + tempFile;
+                    jsFileContent = jsFileContent + "\n" + "try {" + momentLocaleFile + "} catch(e) {}\n";
+                }
+            }
 
             if (enableFullCalendar) {
                 let tempLangCode = languageCode.toLowerCase();
@@ -534,5 +520,4 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-compress");
     grunt.loadNpmTasks("grunt-curl");
-    grunt.loadNpmTasks("grunt-poeditor-gd");
 };
