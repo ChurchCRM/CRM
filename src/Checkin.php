@@ -374,31 +374,45 @@ if (isset($_POST['EventID'])) {
     });
 
     $(document).ready(function() {
-        var $input = $("#child, #adult, #adultout");
-        $input.autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    url: window.CRM.root + '/api/persons/search/'+request.term,
-                    dataType: 'json',
-                    type: 'GET',
-                    success: function (data) {
-                        response($.map(data, function (item) {
+        $("#child, #adult, #adultout").select2({
+            minimumInputLength: 2,
+            language: window.CRM.shortLocale,
+            ajax: {
+                url: function (params) {
+                    return window.CRM.root + '/api/persons/search/' + params.term;
+                },
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term,
+                        page: params.page
+                    };
+                },
+                processResults: function (data, page) {
+                    return {
+                        results: data.map(function(item) {
                             return {
-                                label: item.text,
-                                value: item.objid,
-                                obj:item
+                                id: item.objid,
+                                text: item.text,
+                                raw: item
                             };
-                        }));
-                    }
-                })
-            },
-            minLength: 2,
-            select: function(event,ui) {
-                $('[id=' + event.target.id + ']' ).val(ui.item.obj.text);
-                $('[id=' + event.target.id + '-id]').val(ui.item.obj.objid);
-                SetPersonHtml($('#' + event.target.id + 'Details'),ui.item.obj);
-                return false;
+                        })
+                    };
+                },
+                cache: true
             }
+        });
+
+        $("#child, #adult, #adultout").on("select2:select", function(e) {
+            var elementId = e.target.id;
+            var selectedData = e.params.data;
+            
+            // Set the hidden ID field
+            $('#' + elementId + '-id').val(selectedData.id);
+            
+            // Update the person details display
+            SetPersonHtml($('#' + elementId + 'Details'), selectedData.raw);
         });
 
     });
