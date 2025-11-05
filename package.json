@@ -90,7 +90,7 @@
         "jquery-steps": "^1.1.0",
         "jquery-validation": "^1.21.0",
         "jszip": "^3.10.1",
-        "pdfmake": "^0.2.0",
+        "pdfmake": "^0.2.20",
         "quill": "^2.0.3",
         "react": "^19.2.0",
         "react-bootstrap": "^2.10.10",
