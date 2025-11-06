@@ -56,13 +56,13 @@ sleep 10
 echo "🧪 Testing API connectivity..."
 max_attempts=12
 attempt=1
-until curl -f http://127.0.0.1/api/public/echo &>/dev/null || [ $attempt -eq $max_attempts ]; do
+until curl -f http://127.0.0.1/api/public/echo &>/dev/null || [ $attempt -ge $max_attempts ]; do
   echo "   Attempt $attempt/$max_attempts - waiting for server..."
   sleep 5
   attempt=$((attempt + 1))
 done
 
-if [ $attempt -eq $max_attempts ]; then
+if [ $attempt -ge $max_attempts ]; then
   echo "⚠️  Server may still be starting up. Check logs with: npm run docker:dev:logs"
 else
   echo "✅ API is responding"
