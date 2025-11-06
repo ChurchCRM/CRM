@@ -15,7 +15,8 @@
       "username": "automatic",
       "userUid": "automatic",
       "userGid": "automatic"
-    }
+    },
+    "ghcr.io/devcontainers/features/git-lfs:1": {}
   },
 
   "customizations": {
@@ -65,7 +66,7 @@
 
   "onCreateCommand": [
     "bash", "-c", 
-    "echo '🚀 Setting up ChurchCRM development environment...' && npm ci && npm run deploy && chmod a+rwx src/logs && echo '✅ ChurchCRM is ready! Open http://localhost and login with admin/changeme'"
+    "echo '🚀 Setting up ChurchCRM development environment...' && git lfs install && npm ci && npm run deploy && chmod a+rwx src/logs && echo '✅ ChurchCRM is ready! Open http://localhost and login with admin/changeme'"
   ],
 
   "postCreateCommand": [

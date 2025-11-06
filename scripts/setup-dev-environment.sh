@@ -23,6 +23,14 @@ echo "✅ Prerequisites met"
 echo "📦 Installing Node.js dependencies..."
 npm ci
 
+# Initialize Git LFS if available
+if command -v git-lfs &> /dev/null; then
+    echo "🔧 Initializing Git LFS..."
+    git lfs install --local
+else
+    echo "⚠️  Git LFS not found - install with: sudo apk add git-lfs (Alpine) or sudo apt-get install git-lfs (Ubuntu)"
+fi
+
 # Set up Docker containers
 echo "🐳 Starting Docker containers..."
 npm run docker:dev:start
