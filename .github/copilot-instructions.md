@@ -305,7 +305,14 @@ $.notify(i18next.t('Operation completed'), {
 
 ## Testing
 
-API tests location: `cypress/e2e/api/private/[feature]/[endpoint].spec.js`
+### Cypress Configuration & Logging
+- Two config files: `cypress.config.ts` (dev) and `docker/cypress.config.ts` (CI)
+- Enhanced logging: `cypress-terminal-report` plugin captures browser console output
+- CI artifacts: Logs uploaded to `cypress/logs/`, accessible via GitHub Actions artifacts
+- Log retention: 30 days for debugging failed CI runs
+
+### API Tests
+Location: `cypress/e2e/api/private/[feature]/[endpoint].spec.js`
 
 Helper commands (NEVER use cy.request directly):
 ```javascript
@@ -321,30 +328,37 @@ Test categories required:
 4. Error handling - 401/403 auth, 404 not found, 500 errors
 5. Edge cases - Null values, empty arrays, boundary conditions
 
-UI tests: `cypress/e2e/ui/[feature]/`
+### UI Tests
+Location: `cypress/e2e/ui/[feature]/`
 - Maintain element IDs for test selectors
 - Use cy.get() for queries, avoid text-based selectors
 - Test complete user workflows end-to-end
+- Custom commands: `cy.loginAdmin()`, `cy.loginStandard()`, `cy.typeInQuill()`
 
 ---
 
 ## Development Workflows
 
-Setup & Build:
+### Quick Start (GitHub Codespaces/Dev Containers)
+- **GitHub Codespaces**: Click "Code" → "Codespaces" → "Create codespace" - fully automated setup
+- **VS Code Dev Containers**: Install Dev Containers extension, open repo, click "Reopen in Container"
+- **Manual setup**: Run `./scripts/setup-dev-environment.sh` for automated local setup
+
+### Setup & Build
 ```bash
-npm ci                    # Install exact dependencies
+npm ci                    # Install exact dependencies  
 npm run deploy            # Build everything (PHP + frontend)
 npm run docker:dev:start  # Start Docker containers
 ```
 
-Development Cycle:
+### Development Cycle
 ```bash
 npm run build:frontend    # Rebuild JS/CSS (watches via Webpack)
 npm run build:php         # Update Composer dependencies
 npm run docker:dev:logs   # View container logs
 ```
 
-Testing:
+### Testing (Local)
 ```bash
 npm run test              # Run all tests (headless)
 npm run test:ui           # Interactive browser testing
@@ -356,6 +370,13 @@ rm -f src/logs/$(date +%Y-%m-%d)-*.log
 cat src/logs/$(date +%Y-%m-%d)-php.log      # PHP errors, ORM errors
 cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 ```
+
+### CI/CD Testing (GitHub Actions)
+- Docker profiles: `dev`, `test`, `ci` in `docker-compose.yaml`
+- CI uses `npm run docker:ci:start` with optimized containers
+- Artifacts uploaded: `cypress-artifacts-{run_id}` contains logs, screenshots, videos
+- Access via Actions → Workflow run → Artifacts section
+- Debugging: Download `cypress-reports-{branch}` for detailed failure analysis
 
 ---
 
@@ -432,4 +453,4 @@ PR organization:
 
 ---
 
-Last updated: November 2, 2025
+Last updated: November 6, 2025
