@@ -29,28 +29,18 @@ Cypress.Commands.add(
     "login",
     (username, password, location, checkMatchingLocation = true) => {
         cy.visit("/?location=/" + location);
-        cy.wait(150);
         
         // Use data-cy attributes when available, fallback to ID
-        cy.get("[data-cy=username], #UserBox").type(username);
-        cy.get("[data-cy=password], #PasswordBox").type(password);
+        cy.get("[data-cy=username], #UserBox").should('be.visible').type(username);
+        cy.get("[data-cy=password], #PasswordBox").should('be.visible').type(password);
         cy.get("form").submit();
 
         if (location && checkMatchingLocation) {
             cy.location("pathname").should("include", location.split("?")[0]);
         }
         
-        // Wait for the page to fully load before returning from login
-        cy.document().should("have.property", "readyState", "complete");
-        cy.window().then((win) => {
-            return new Cypress.Promise((resolve) => {
-                if (win.document.readyState === "complete") {
-                    resolve();
-                } else {
-                    win.addEventListener("load", () => resolve());
-                }
-            });
-        });
+        // Wait for navigation to complete
+        cy.url().should('not.contain', 'location=');
     },
 );
 
@@ -187,7 +177,7 @@ Cypress.Commands.add('select2ByText', (selector, text) => {
     // Wait for dropdown to appear and search for the text
     cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
         .should('be.visible')
-        .type(text, { delay: 50 });
+        .type(text);
     
     // Wait for results and click the matching option
     cy.get('.select2-results__option', { timeout: 5000 })
@@ -232,7 +222,7 @@ Cypress.Commands.add('select2Search', (selector, searchText, resultText = null) 
     // Type in the search field
     cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
         .should('be.visible')
-        .type(searchText, { delay: 50 });
+        .type(searchText);
     
     // Wait for AJAX results (look for non-loading options)
     cy.get('.select2-results__option', { timeout: 10000 })

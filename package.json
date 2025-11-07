@@ -54,7 +54,10 @@
         "postinstall": "grunt genLocaleJSFiles",
         "changelog": "node scripts/generate-changelog.js",
         "test": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e",
-        "test:ui": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress open --e2e --browser chrome"
+        "test:ui": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress open --e2e --browser chrome",
+        "test:fast": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e --browser chrome --headed --no-exit",
+        "test:api": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e --spec 'cypress/e2e/api/**/*.spec.js'",
+        "test:ui-only": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e --spec 'cypress/e2e/ui/**/*.spec.js'"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.7.2",
