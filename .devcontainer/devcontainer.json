@@ -72,7 +72,10 @@
     }
   },
 
-  "postCreateCommand": "bash -c 'sudo apt-get update && sudo apt-get install -y libzip-dev libpng-dev && sudo docker-php-ext-install bcmath exif gd gettext mysqli zip pdo_mysql && bash .devcontainer/init.sh'",
+  "postCreateCommand": {
+    "install-php-extensions": "apt-get update && apt-get install -y libzip-dev libpng-dev && docker-php-ext-install bcmath exif gd gettext mysqli zip pdo_mysql",
+    "setup": "bash .devcontainer/init.sh"
+  },
 
   "postStartCommand": "bash -c 'sleep 2 && code --reuse-window .devcontainer/README.md' &",
 
