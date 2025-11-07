@@ -23,8 +23,11 @@ export default defineConfig({
       installLogsPrinter(on, {
         outputRoot: 'cypress/logs',
         outputTarget: {
-          'out.txt': 'txt'
-        }
+          'out.txt': 'txt',
+          'out.json': 'json'
+        },
+        printLogsToConsole: 'onFail',
+        printLogsToFile: 'always'
       });
       
       // Register download verification tasks

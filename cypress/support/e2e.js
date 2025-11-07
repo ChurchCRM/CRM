@@ -20,16 +20,29 @@ import "./api-commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-// Install cypress-terminal-report browser-side log collector
-require('cypress-terminal-report/src/installLogsCollector')();
+// Install cypress-terminal-report browser-side log collector with extended options
+require('cypress-terminal-report/src/installLogsCollector')({
+  enableExtendedCollector: true,
+  collectTypes: ['cons:log', 'cons:info', 'cons:warn', 'cons:error', 'cy:log', 'cy:xhr', 'cy:fetch', 'cy:request', 'cy:intercept', 'cy:command'],
+  xhr: {
+    printHeaderData: true,
+    printRequestData: true
+  }
+});
 
 // Capture unhandled rejections and errors for terminal reporter
 window.addEventListener('unhandledrejection', (event) => {
   console.error('Unhandled promise rejection:', event.reason);
+  if (event.reason && event.reason.stack) {
+    console.error('Stack:', event.reason.stack);
+  }
 });
 
 window.addEventListener('error', (event) => {
   console.error('Unhandled error:', event.error || event.message);
+  if (event.error && event.error.stack) {
+    console.error('Stack:', event.error.stack);
+  }
 });
 
 // Hide fetch/XHR requests in Cypress logs for cleaner output
