@@ -18,10 +18,13 @@ export default defineConfig({
   retries: 1,
   e2e: {
     setupNodeEvents(on, config) {
-      // Install cypress-terminal-report logs collector
-      const installLogsCollector = require('cypress-terminal-report/src/installLogsCollector');
-      installLogsCollector(on, {
-        outputRoot: 'cypress/logs'
+      // Install cypress-terminal-report logs printer
+      const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
+      installLogsPrinter(on, {
+        outputRoot: 'cypress/logs',
+        outputTarget: {
+          'out.txt': 'txt'
+        }
       });
       
       // Register download verification tasks
