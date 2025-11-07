@@ -7,9 +7,9 @@ export default defineConfig({
   videosFolder: 'cypress/videos',
   screenshotOnRunFailure: true,
   screenshotsFolder: 'cypress/screenshots',
-  pageLoadTimeout: 120000,
-  defaultCommandTimeout: 60000,
-  requestTimeout: 60000,
+  pageLoadTimeout: 30000,
+  defaultCommandTimeout: 30000,
+  requestTimeout: 15000,
   viewportHeight: 1080,
   viewportWidth: 1920,
   projectId: 'n4qnyb',
@@ -18,6 +18,7 @@ export default defineConfig({
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
   },
   retries: 1,
+  numTestsKeptInMemory: 0,
   e2e: {
     setupNodeEvents(on, config) {
       // cypress-terminal-report logs printer for CI debugging
