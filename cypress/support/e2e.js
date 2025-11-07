@@ -20,15 +20,8 @@ import "./api-commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-// Install cypress-terminal-report browser-side log collector with extended options
-require('cypress-terminal-report/src/installLogsCollector')({
-  enableExtendedCollector: true,
-  collectTypes: ['cons:log', 'cons:info', 'cons:warn', 'cons:error', 'cy:log', 'cy:xhr', 'cy:fetch', 'cy:request', 'cy:intercept', 'cy:command'],
-  xhr: {
-    printHeaderData: true,
-    printRequestData: true
-  }
-});
+// Note: cypress-terminal-report installLogsCollector disabled due to Cypress 15.x compatibility
+// Logging handled by installLogsPrinter in cypress.config.ts
 
 // Capture unhandled rejections and errors for terminal reporter
 window.addEventListener('unhandledrejection', (event) => {
