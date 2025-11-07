@@ -1296,10 +1296,6 @@ msgid "Next Family"
 msgstr "Следующая Семья"
 
 #: 
-msgid "Delete this Family"
-msgstr "Удалить эту семью"
-
-#: 
 msgid "Upload Photo"
 msgstr "Идет загрузка фото"
 
@@ -1310,10 +1306,6 @@ msgstr "Удалить фотографию"
 #: 
 msgid "Add a Note"
 msgstr "Добавить примечание "
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Добавить свех членов семьи в  Cart"
 
 #: 
 msgid "Timeline"
@@ -3372,14 +3364,6 @@ msgid "Select Fiscal Year"
 msgstr "Выберите финансовый год"
 
 #: 
-msgid "pm"
-msgstr "вечера"
-
-#: 
-msgid "am"
-msgstr "утра"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Неверный редактор ID!"
 
@@ -3698,10 +3682,6 @@ msgstr "Учителя"
 #: 
 msgid "Send Message"
 msgstr "Отправить сообщение"
-
-#: 
-msgid "View Profile"
-msgstr "Просмотреть профайл"
 
 #: 
 msgid "Quick Status"

@@ -63,9 +63,13 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
     AuthenticationManager::authenticate($request);
 }
 
-function endSession(Request $request, Response $response, array $args): void
+function endSession(Request $request, Response $response, array $args): Response
 {
-    AuthenticationManager::endSession();
+    AuthenticationManager::endSession(true);
+    $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
+    $response = $response->withHeader('Location', $redirectUrl)->withStatus(302);
+    $response->getBody()->write('');
+    return $response;
 }
 
 function beginSession(Request $request, Response $response, array $args): Response

@@ -1276,10 +1276,6 @@ msgid "Next Family"
 msgstr "משפחה הבאה"
 
 #: 
-msgid "Delete this Family"
-msgstr "מחק משפחה זו"
-
-#: 
 msgid "Upload Photo"
 msgstr "העלה תמונה"
 
@@ -1290,10 +1286,6 @@ msgstr "מחק תמונה"
 #: 
 msgid "Add a Note"
 msgstr "הוסף הערה"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "הוסף את כל בני המשפחה לעגלה"
 
 #: 
 msgid "Timeline"
@@ -3311,14 +3303,6 @@ msgid "Select Fiscal Year"
 msgstr "בחר שנת כספים"
 
 #: 
-msgid "pm"
-msgstr "אחה״צ"
-
-#: 
-msgid "am"
-msgstr "לפנה״צ"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "מזהה עורך לא חוקי!"
 
@@ -3629,10 +3613,6 @@ msgstr "מורים"
 #: 
 msgid "Send Message"
 msgstr "שלח הודעה"
-
-#: 
-msgid "View Profile"
-msgstr "צפה בפרופיל"
 
 #: 
 msgid "Quick Status"
@@ -6934,10 +6914,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "אנא ודא שזה מה שאתה רוצה לעשות.</p>"
 
 #: 
-msgid " this Family"
-msgstr "משפחה זו"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "אישור ביטול הפעלה"
 
@@ -7801,26 +7777,6 @@ msgid "SSE"
 msgstr "דרום-דרום-מזרח"
 
 #: 
-msgid "Height to use for images"
-msgstr "גובה לשימוש עבור תמונות"
-
-#: 
-msgid "Width to use for images"
-msgstr "רוחב לשימוש עבור תמונות"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "רוחב לשימוש עבור תמונות ממוזערות"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "גודל נקודה לשימוש עבור תמונות ממוזערות של ראשי תיבות"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "שניות מטמון לקוח עבור תמונות"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "זמן מטמון שרת עבור תמונות מרוחקות"
 
@@ -8570,10 +8526,6 @@ msgstr "צור גיבוי"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "נקודת קצה לגיבוי מרוחק. אם זה WebDAV, חייב להיות מקודד URL."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "כלול קבצי תמונות ראשי תיבות, קבצי תמונות מרוחקים (gravatar) ותמונות ממוזערות בגיבוי. קבצים אלה בדרך כלל ניתנים לשחזור לאחר שחזור ומוסיפים ערך מועט מאוד לארכיון הגיבוי תוך עלות גבוהה של זמן ביצוע ואחסון"
 
 #: 
 msgid "Password (if any)"

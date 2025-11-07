@@ -73,9 +73,22 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-daterangepicker/daterangepicker.js"></script>
 
+<!-- DataTables: Core library and Bootstrap 4 integration -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- DataTables: Extensions -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/dataTables.buttons.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/buttons.bootstrap4.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/buttons.html5.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/buttons.print.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/dataTables.responsive.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/responsive.bootstrap4.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/dataTables.select.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/select.bootstrap4.min.js"></script>
+<!-- PDF and Excel export dependencies -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/jszip.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/pdfmake.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/vfs_fonts.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/chart.umd.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.full.min.js"></script>
@@ -83,7 +96,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/index.global.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootbox/bootbox.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fastclick/fastclick.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-toggle/bootstrap-toggle.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-validator/validator.min.js"></script>

@@ -1312,10 +1312,6 @@ msgid "Next Family"
 msgstr "Familia următoare"
 
 #: 
-msgid "Delete this Family"
-msgstr "Șterge aceasă familie"
-
-#: 
 msgid "Upload Photo"
 msgstr "Încarcă foto"
 
@@ -1326,10 +1322,6 @@ msgstr "Ștergeți Foto"
 #: 
 msgid "Add a Note"
 msgstr "Adaugă o notă"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Adaugă toți membri familiei în coș"
 
 #: 
 msgid "Timeline"
@@ -3401,14 +3393,6 @@ msgid "Select Fiscal Year"
 msgstr "Selectați anul fiscal"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID-ul Editor invalid!"
 
@@ -3726,10 +3710,6 @@ msgstr "Învățători"
 #: 
 msgid "Send Message"
 msgstr "Trimite mesaj"
-
-#: 
-msgid "View Profile"
-msgstr "Vezi profil"
 
 #: 
 msgid "Quick Status"
@@ -7041,10 +7021,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Verificați dacă asta vreți să faceți </p>"
 
 #: 
-msgid " this Family"
-msgstr "this Family"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Confirmați dezactivarea"
 
@@ -7911,26 +7887,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Înălțimea de utilizat pentru imagini"
-
-#: 
-msgid "Width to use for images"
-msgstr "Lățime de utilizat pentru imagini"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Lățime de utilizat pentru miniaturi"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Dimensiunea punctului de utilizat pentru miniaturile inițiale"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Secunde de cache ale clientului pentru imagini"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Timp cache de server pentru imagini la distanță"
 
@@ -8683,10 +8639,6 @@ msgstr "Generează backup"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint de backup la distanță. Dacă este WebDAV, acesta trebuie să fie codificat în URL"
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Includerea fișierelor de imagini cu inițiale, fișierelor de imagini la distanță (de exemplu, Gravatar) și a miniaturilor în backup. Aceste fișiere pot fi, în general, reproduse după o restaurare și adaugă foarte puțină valoare la arhiva de backup, cu un cost mare în timp de execuție și spațiu de stocare"
 
 #: 
 msgid "Password (if any)"

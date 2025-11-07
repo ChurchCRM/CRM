@@ -1,0 +1,78 @@
+{
+  "name": "ChurchCRM Development",
+  "dockerComposeFile": "../docker/docker-compose.yaml",
+  "service": "webserver-dev",
+  "workspaceFolder": "/home/ChurchCRM",
+  "runServices": ["database", "webserver-dev", "mailserver"],
+  
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "upgradePackages": true,
+      "username": "automatic",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/git-lfs:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "formulahendry.auto-rename-tag",
+        "ms-vscode.vscode-json",
+        "ms-vscode-remote.remote-containers",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "bmewburn.vscode-intelephense-client",
+        "xdebug.php-debug",
+        "ms-playwright.playwright"
+      ],
+      "settings": {
+        "php.suggest.basic": false,
+        "php.validate.enable": true,
+        "php.validate.executablePath": "/usr/local/bin/php",
+        "intelephense.files.maxSize": 1000000,
+        "typescript.preferences.quoteStyle": "single",
+        "editor.formatOnSave": true,
+        "files.associations": {
+          "*.php": "php"
+        }
+      }
+    }
+  },
+
+  "forwardPorts": [80, 3306, 8025, 8088],
+  "portsAttributes": {
+    "80": {
+      "label": "ChurchCRM Web Server",
+      "onAutoForward": "notify"
+    },
+    "3306": {
+      "label": "MariaDB Database"
+    },
+    "8025": {
+      "label": "MailHog UI"
+    },
+    "8088": {
+      "label": "Adminer Database UI"
+    }
+  },
+
+  "onCreateCommand": [
+    "bash", "-c", 
+    "echo '🚀 Setting up ChurchCRM development environment...' && git lfs install && npm ci && npm run deploy && chmod a+rwx src/logs && echo '✅ ChurchCRM is ready! Open http://localhost and login with admin/changeme'"
+  ],
+
+  "postCreateCommand": [
+    "bash", "-c",
+    "echo '📋 Development Environment Ready!' && echo '🌐 Web: http://localhost (admin/changeme)' && echo '📧 MailHog: http://localhost:8025' && echo '🗄️ Adminer: http://localhost:8088 (churchcrm/changeme)' && echo '🧪 Tests: npm run test' && echo '📖 Docs: see CONTRIBUTING.md'"
+  ],
+
+  "remoteUser": "root"
+}

@@ -1276,10 +1276,6 @@ msgid "Next Family"
 msgstr "Sonraki Aile"
 
 #: 
-msgid "Delete this Family"
-msgstr "Bu aileyi sil"
-
-#: 
 msgid "Upload Photo"
 msgstr "Fotoğraf yükle"
 
@@ -1290,10 +1286,6 @@ msgstr "Fotoğrafı sil"
 #: 
 msgid "Add a Note"
 msgstr "Bir not ekle"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Tüm aile üyelerini sepete ekleyin"
 
 #: 
 msgid "Timeline"
@@ -3314,14 +3306,6 @@ msgid "Select Fiscal Year"
 msgstr "Seçim mali yılı"
 
 #: 
-msgid "pm"
-msgstr "öğleden sonra"
-
-#: 
-msgid "am"
-msgstr "Ben"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Geçersiz Editör Kimliği!"
 
@@ -3632,10 +3616,6 @@ msgstr "Öğretmen"
 #: 
 msgid "Send Message"
 msgstr "Mesaj gönder"
-
-#: 
-msgid "View Profile"
-msgstr "Profili Görüntüle"
 
 #: 
 msgid "Quick Status"
@@ -6938,10 +6918,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Lütfen bunu yapmak istediğiniz şeyden emin olun. </p>"
 
 #: 
-msgid " this Family"
-msgstr " bu aile"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Devre dışı bırakmayı onaylayın"
 
@@ -7808,26 +7784,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Height to use for images"
-msgstr "Görüntüler için Kullanılacak Yükseklik"
-
-#: 
-msgid "Width to use for images"
-msgstr "Görüntüler için kullanılacak genişlik"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Küçük resimler için kullanılmak üzere genişlik"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Baş harfleri için kullanılması gereken nokta boyutu"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Görüntüler için istemci önbellek saniye"
-
-#: 
 msgid "Server cache time for remote images"
 msgstr "Uzaktan resimler için sunucu önbellek süresi"
 
@@ -8580,10 +8536,6 @@ msgstr "Yedekleme Oluşturun"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Uzak yedekleme uç noktası. WebDav ise, bu URL kodlanmalıdır."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Yedeklemeye baş harfleri görüntü dosyalarını, uzak resim dosyalarını (gravatar) ve küçük resimleri ekleyin. Bu dosyalar genellikle bir geri yüklemeden sonra çoğaltılabilir ve Yedek Arşivine büyük bir yürütme süresi ve depolama masrafıyla çok az değer katabilir."
 
 #: 
 msgid "Password (if any)"
