@@ -136,8 +136,8 @@ describe("Standard People", () => {
         cy.get(".filter-Gender").parent().find(".select2-selection").click();
         cy.get(".select2-results__option").contains("Male").click();
         
-        // Verify filter is applied (table should update)
-        cy.wait(500);
+        // Verify filter is applied (wait for table to update)
+        cy.get("#members tbody tr").should("exist");
         
         // Click Clear Filter button
         cy.get("#ClearFilter").click();
@@ -156,12 +156,10 @@ describe("Standard People", () => {
         // Apply gender filter using Select2
         cy.get(".filter-Gender").parent().find(".select2-selection").click();
         cy.get(".select2-results__option").contains("Female").click();
-        cy.wait(500);
         
         // Apply classification filter using Select2
         cy.get(".filter-Classification").parent().find(".select2-selection").click();
         cy.get(".select2-results__option").contains("Member").click();
-        cy.wait(500);
         
         // Table should show filtered results
         cy.get("#members tbody tr").should("have.length.greaterThan", 0);

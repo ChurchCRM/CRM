@@ -9,7 +9,6 @@ describe("Standard Cart", () => {
                 cy.get("#emptyCart").click();
                 // Wait for and click the confirm button in the bootbox dialog
                 cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-                cy.wait(1500);
             }
         });
         // Verify cart is empty
@@ -22,13 +21,14 @@ describe("Standard Cart", () => {
         cy.contains("You have no items in your cart");
         cy.visit("PersonView.php?PersonID=1");
         cy.get("#AddPersonToCart").click();
+        // Wait a moment for the AJAX call to complete
+        cy.wait(500);
         cy.visit("v2/cart");
         cy.contains("Cart Functions");
         cy.contains("Church Admin");
         cy.get("#emptyCart").click();
         // Wait for and click the confirm button in the bootbox dialog
         cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-        cy.wait(1500);
         cy.contains("You have no items in your cart");
     });
 
@@ -37,13 +37,14 @@ describe("Standard Cart", () => {
         cy.contains("You have no items in your cart");
         cy.visit("v2/family/6");
         cy.get("#AddFamilyToCart").click();
+        // Wait a moment for the AJAX call to complete
+        cy.wait(500);
         cy.visit("v2/cart");
         cy.contains("Kenzi Dixon");
         cy.contains("Cart Functions");
         cy.get("#emptyCart").click();
         // Wait for and click the confirm button in the bootbox dialog
         cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-        cy.wait(1500);
         cy.contains("You have no items in your cart");
     });
 
@@ -79,7 +80,6 @@ describe("Standard Cart", () => {
         
         // Wait for page reload after Remove All
         cy.url().should("include", "/v2/people");
-        cy.wait(2000);
         
         // Verify cart is empty by using empty cart button
         cy.visit("v2/cart");
@@ -89,7 +89,6 @@ describe("Standard Cart", () => {
                 cy.get("#emptyCart").click();
                 // Wait for and click the confirm button in the bootbox dialog
                 cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-                cy.wait(1500);
             }
         });
         cy.contains("You have no items in your cart");
@@ -103,14 +102,8 @@ describe("Standard Cart", () => {
         cy.visit("PersonView.php?PersonID=1");
         cy.get("#AddPersonToCart").click();
         
-        // Wait for notification and cart update
-        cy.wait(500);
-        
         // Try to add same person again
         cy.get("#AddPersonToCart").click();
-        
-        // Wait for notification
-        cy.wait(500);
         
         // Verify cart still only has one person
         cy.visit("v2/cart");
@@ -128,7 +121,6 @@ describe("Standard Cart", () => {
         cy.get("#emptyCart").click();
         // Wait for and click the confirm button in the bootbox dialog
         cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-        cy.wait(1500);
     });
 
     it("Cart API returns correct duplicate information", () => {
