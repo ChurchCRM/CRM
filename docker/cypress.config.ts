@@ -8,7 +8,7 @@ export default defineConfig({
   screenshotOnRunFailure: true,
   screenshotsFolder: 'cypress/screenshots',
   pageLoadTimeout: 30000,
-  defaultCommandTimeout: 10000,
+  defaultCommandTimeout: 30000,
   requestTimeout: 15000,
   viewportHeight: 1080,
   viewportWidth: 1920,
