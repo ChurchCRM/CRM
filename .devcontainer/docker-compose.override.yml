@@ -1,0 +1,25 @@
+services:
+  database:
+    profiles: []  # Remove profile requirement for devcontainer
+    environment:
+      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_DATABASE: churchcrm
+      MYSQL_USER: churchcrm
+      MYSQL_PASSWORD: changeme
+    
+  webserver-dev:
+    profiles: []  # Remove profile requirement for devcontainer
+    environment:
+      MYSQL_DB_HOST: database
+      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_DATABASE: churchcrm
+      MYSQL_USER: churchcrm
+      MYSQL_PASSWORD: changeme
+      XDEBUG_MODE: "debug"
+      XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003"
+    
+  mailserver:
+    profiles: []  # Remove profile requirement for devcontainer
+    
+  adminer:
+    profiles: []  # Remove profile requirement for devcontainer
