@@ -3,8 +3,10 @@ import { verifyDownloadTasks } from 'cy-verify-downloads';
 
 export default defineConfig({
   chromeWebSecurity: false,
-  video: false,
-  screenshotOnRunFailure: false,
+  video: true,
+  videosFolder: 'cypress/videos',
+  screenshotOnRunFailure: true,
+  screenshotsFolder: 'cypress/screenshots',
   pageLoadTimeout: 30000,
   defaultCommandTimeout: 10000,
   requestTimeout: 15000,
@@ -19,6 +21,18 @@ export default defineConfig({
   numTestsKeptInMemory: 0,
   e2e: {
     setupNodeEvents(on, config) {
+      // cypress-terminal-report logs printer for CI debugging
+      const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
+      installLogsPrinter(on, {
+        outputRoot: 'cypress/logs',
+        outputTarget: {
+          'cypress-terminal-report.txt': 'txt',
+          'cypress-terminal-report.json': 'json'
+        },
+        printLogsToConsole: 'onFail',
+        printLogsToFile: 'always'
+      });
+      
       // Register download verification tasks
       on('task', verifyDownloadTasks);
       

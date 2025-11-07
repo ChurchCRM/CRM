@@ -117,6 +117,35 @@ jobs:
       run: |
         npm run test
 
+    - name: Collect Docker Logs on Failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker
+        echo "=== Docker Container Logs ===" > cypress/logs/docker/docker-compose.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs >> cypress/logs/docker/docker-compose.log 2>&1 || true
+        
+        echo "=== Docker Container Status ===" >> cypress/logs/docker/docker-compose.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a >> cypress/logs/docker/docker-compose.log 2>&1 || true
+        
+        echo "=== Collecting PHP Application Logs ===" 
+        mkdir -p cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci exec -T churchcrm sh -c 'if [ -d "src/logs" ]; then tar -czf - src/logs 2>/dev/null | base64; fi' > cypress/logs/php/app-logs.tar.gz.b64 2>&1 || true
+        
+        echo "✅ Logs collected to cypress/logs/docker/ and cypress/logs/php/"
+
+    - name: Upload Cypress Artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: cypress-artifacts-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/results
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
     - name: Upload Cypress Reports on Failure
       if: failure()
       uses: actions/upload-artifact@v4
