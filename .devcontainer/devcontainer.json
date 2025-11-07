@@ -1,23 +1,29 @@
 {
   "name": "ChurchCRM Development",
-  "dockerComposeFile": ["../docker/docker-compose.yaml", "docker-compose.override.yml"],
-  "service": "webserver-dev",
-  "workspaceFolder": "/home/ChurchCRM",
-  "runServices": ["database", "webserver-dev", "mailserver"],
-  "overrideCommand": false,
+  "image": "mcr.microsoft.com/devcontainers/php:8.2-bullseye",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "shutdownAction": "none",
   
   "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "ppa": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/git-lfs:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    },
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
       "configureZshAsDefaultShell": true,
       "installOhMyZsh": true,
-      "installOhMyZshConfig": true,
-      "upgradePackages": true,
-      "username": "automatic",
-      "userUid": "automatic",
-      "userGid": "automatic"
-    },
-    "ghcr.io/devcontainers/features/git-lfs:1": {}
+      "upgradePackages": true
+    }
   },
 
   "customizations": {
@@ -50,7 +56,6 @@
   },
 
   "forwardPorts": [80, 3306, 8025, 8088],
-  "waitFor": "onCreateCommand",
   "portsAttributes": {
     "80": {
       "label": "ChurchCRM Web Server",
@@ -67,22 +72,18 @@
     }
   },
 
-  "onCreateCommand": [
-    "bash", "-c", 
-    ".devcontainer/init.sh && echo '🚀 Setting up ChurchCRM development environment...' && git lfs install && echo '📦 Installing dependencies...' && npm ci && echo '🏗️ Building application...' && timeout 300 npm run deploy || (echo '❌ Build timeout - continuing with basic setup' && npm run build:php) && echo '✅ ChurchCRM setup complete!'"
-  ],
-
-  "postStartCommand": ".devcontainer/post-start.sh",
-  
-  "postCreateCommand": [
-    "bash", "-c",
-    "echo '📋 Development Environment Ready!' && echo '🌐 Web: http://localhost (admin/changeme)' && echo '📧 MailHog: http://localhost:8025' && echo '🗄️ Adminer: http://localhost:8088 (churchcrm/changeme)' && echo '🧪 Tests: npm run test' && echo '📖 Docs: see CONTRIBUTING.md'"
-  ],
+  "postCreateCommand": {
+    "setup": "bash .devcontainer/init.sh"
+  },
 
   "containerEnv": {
     "COMPOSER_ALLOW_SUPERUSER": "1",
     "NODE_ENV": "development"
   },
 
-  "remoteUser": "root"
+  "remoteUser": "vscode",
+  
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ]
 }
