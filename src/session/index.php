@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Include/Config.php';
+require_once '../Include/LoadConfig.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
@@ -32,7 +32,7 @@ $app->setBasePath($basePath);
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
-\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
