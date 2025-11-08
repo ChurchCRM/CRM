@@ -458,8 +458,10 @@ function implodeUnique($array, $withQuotes): string
           }]
       },
       options: {
-          legend: {
-              position: 'bottom'
+          plugins: {
+              legend: {
+                  position: 'bottom'
+              }
           }
       }
   };

@@ -374,26 +374,18 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         };
 
         var pieOptions = {
-            //Display a title
-            title: {
-                display: false
-            },
-            //Boolean - Whether we should show a stroke on each segment
-            segmentShowStroke: true,
-            //String - The colour of each segment stroke
-            segmentStrokeColor: "#fff",
-            //Number - The width of each segment stroke
-            segmentStrokeWidth: 2,
-            //Number - The percentage of the chart that we cut out of the middle
-            percentageInnerCutout: 50, // This is 0 for Pie charts
-            //Boolean - Whether we animate the rotation of the Doughnut
-            animateRotate: false,
-            //Boolean - whether to make the chart responsive to window resizing
             responsive: true,
-            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
             maintainAspectRatio: false,
-            // Hide legend of zero value
-            plugins: { legend: { labels: { filter: (legendItem, data) => data.datasets[0].data[legendItem.index] > 0 } } },
+            animation: {
+                animateRotate: false
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        filter: (legendItem, data) => data.datasets[0].data[legendItem.index] > 0
+                    }
+                }
+            }
         };
 
         var ctx = document.getElementById("gender-donut").getContext('2d');
@@ -421,22 +413,24 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
-                legend: {
-                    display: true
-                },
-                title: {
-                    display: false
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    title: {
+                        display: false
+                    }
                 },
                 scales: {
-                    xAxes: [{
+                    x: {
                         display: true,
-                    }],
-                    yAxes: [{
+                    },
+                    y: {
+                        beginAtZero: true,
                         ticks: {
-                            beginAtZero: true,
                             stepSize: 1
                         }
-                    }]
+                    }
                 }
             }
         });
