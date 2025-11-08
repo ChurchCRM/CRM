@@ -271,6 +271,7 @@ function initDataTable() {
             {
                 width: "20%",
                 title: i18next.t("Address"),
+                data: null,
                 render: function (data, type, full, meta) {
                     var address = full.Person.Address1;
                     if (full.Person.Address2) {

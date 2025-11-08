@@ -4,7 +4,6 @@
  */
 
 import $ from "jquery";
-import "bootstrap-notify";
 
 /**
  * Cart Manager Class
