@@ -23,8 +23,14 @@ require_once 'Header-Security.php';
 <body class="hold-transition login-page">
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
-    window.CRM = {
+    // Initialize window.CRM if not already created by webpack bundles
+    if (!window.CRM) {
+        window.CRM = {};
+    }
+    
+    // Extend window.CRM with server-side configuration (preserving existing properties like notify)
+    Object.assign(window.CRM, {
       root: "<?= SystemURLs::getRootPath() ?>",
       churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>"
-    };
+    });
   </script>

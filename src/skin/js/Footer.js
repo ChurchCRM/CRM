@@ -70,21 +70,10 @@ $("document").ready(function () {
         path: "system/notification",
     }).done(function (data) {
         data.notifications.forEach(function (item) {
-            $.notify(
-                {
-                    icon: "fa fa-" + item.icon,
-                    message: item.title,
-                    url: item.url,
-                },
-                {
-                    delay: item.delay,
-                    type: item.type,
-                    placement: {
-                        from: item.placement,
-                        align: item.align,
-                    },
-                },
-            );
+            window.CRM.notify(item.title, {
+                delay: item.delay,
+                type: item.type,
+            });
         });
     });
 
@@ -93,28 +82,10 @@ $("document").ready(function () {
 });
 
 function showGlobalMessage(message, callOutClass) {
-    var icon = "exclamation-triangle";
-    if (callOutClass === "success") {
-        icon = "check";
-    }
-    $.notify(
-        {
-            icon: "fa fa-" + icon,
-            message: message,
-        },
-        {
-            delay: 5000,
-            type: callOutClass,
-            placement: {
-                from: "top",
-                align: "right",
-            },
-            offset: {
-                x: 15,
-                y: 60,
-            },
-        },
-    );
+    window.CRM.notify(message, {
+        delay: 5000,
+        type: callOutClass,
+    });
 }
 
 /**

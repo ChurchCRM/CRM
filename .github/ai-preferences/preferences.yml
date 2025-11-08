@@ -138,7 +138,7 @@ i18n:
     - variable and function names
 
 notifications:
-  mandatory: bootstrap-notify
+  mandatory: Notyf (via window.CRM.notify)
   forbidden: alert()
   types:
     success: "Green, for successful operations"

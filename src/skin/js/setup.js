@@ -554,7 +554,7 @@
             // Check prerequisites when leaving step 0
             if (currentStep === 0 && !state.prerequisitesStatus) {
                 event.preventDefault();
-                $.notify(
+                window.CRM.notify(
                     "Please ensure all prerequisites are met before continuing.",
                     {
                         type: "warning",
@@ -590,7 +590,7 @@
                             if (isValid) {
                                 submitSetupData();
                             } else {
-                                $.notify(
+                                window.CRM.notify(
                                     "Please fill in all required fields correctly.",
                                     {
                                         type: "danger",
@@ -634,7 +634,7 @@
                             if (isValid && setupStepper) {
                                 setupStepper.next();
                             } else if (!isValid) {
-                                $.notify(
+                                window.CRM.notify(
                                     i18next.t(
                                         "Please correct the validation errors before continuing.",
                                     ),
