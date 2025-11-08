@@ -8,6 +8,7 @@
  * - Content-Security-Policy (CSP): Helps protect against XSS attacks
  *   By default, CSP is in report-only mode. Enable enforcement via
  *   System Settings > bEnforceCSP configuration option.
+ *   CSP violations are reported to /api/public/csp-report (public endpoint).
  *
  * - Strict-Transport-Security (HSTS): Enforces HTTPS connections
  *   Enable via System Settings > bHSTSEnable configuration option.
@@ -17,9 +18,6 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-
-// Don't include CSP report-uri during setup (pre-authentication)
-$isSetupMode = !file_exists(__DIR__ . '/Config.php');
 
 $csp = [
     "default-src 'self'",
@@ -34,12 +32,9 @@ $csp = [
     "base-uri 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
+    'report-uri ' . SystemURLs::getRootPath() . '/api/public/csp-report',
 ];
 
-// Only add report-uri if not in setup mode (requires authentication)
-if (!$isSetupMode) {
-    $csp[] = 'report-uri ' . SystemURLs::getRootPath() . '/api/system/background/csp-report';
-}
 if (SystemConfig::getBooleanValue('bHSTSEnable')) {
     header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
 }
