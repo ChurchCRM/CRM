@@ -80,4 +80,13 @@ describe("Finance Deposits", () => {
         cy.get("#Comment").should("have.value", sanitizedComment);
 
     });
+
+    it("Load DepositSlipEditor and verify DataTables loads without errors", () => {
+        cy.loginAdmin("DepositSlipEditor.php?DepositSlipID=5");
+        
+        // Verify page loaded
+        cy.contains("Bank Deposit Slip Number: 5");
+        cy.contains("Payments on this deposit slip");
+        
+    });
 });
