@@ -7,7 +7,7 @@
  * Usage: node locale/scripts/poeditor-downloader.js
  * 
  * Requires:
- * - BuildConfig.json with POEditor.id and POEditor.token
+ * - BuildConfig.json (or BuildConfig.json.example) with POEditor.id and POEditor.token
  * - No additional npm packages (uses native https module)
  */
 
@@ -18,6 +18,7 @@ const { URLSearchParams } = require('url');
 
 // Configuration
 const CONFIG_FILE = path.join(__dirname, '../../BuildConfig.json');
+const CONFIG_EXAMPLE_FILE = path.join(__dirname, '../../BuildConfig.json.example');
 const LOCALES_FILE = path.join(__dirname, '../../src/locale/locales.json');
 const JSON_OUTPUT_DIR = path.join(__dirname, '../../locale/JSONKeys');
 // PO/MO files historically live under src/locale/textdomain so other scripts
@@ -34,10 +35,19 @@ const FILE_FORMATS = [
 
 // Load configuration
 let buildConfig;
+let configFile = CONFIG_FILE;
 try {
-    buildConfig = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
+    if (!fs.existsSync(CONFIG_FILE)) {
+        if (fs.existsSync(CONFIG_EXAMPLE_FILE)) {
+            console.log('⚠️  BuildConfig.json not found, using BuildConfig.json.example');
+            configFile = CONFIG_EXAMPLE_FILE;
+        } else {
+            throw new Error('Neither BuildConfig.json nor BuildConfig.json.example exist');
+        }
+    }
+    buildConfig = JSON.parse(fs.readFileSync(configFile, 'utf8'));
 } catch (e) {
-    console.error(`❌ Error reading BuildConfig.json: ${e.message}`);
+    console.error(`❌ Error reading configuration: ${e.message}`);
     process.exit(1);
 }
 
