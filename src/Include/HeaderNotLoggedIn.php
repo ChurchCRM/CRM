@@ -13,10 +13,7 @@ require_once 'Header-Security.php';
     <meta http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- jQuery JS -->
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
-
-    <!-- Core ChurchCRM bundle -->
+    <!-- Core ChurchCRM bundle (includes jQuery) -->
     <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.js"></script>
     <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
 
