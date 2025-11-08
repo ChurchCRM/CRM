@@ -156,7 +156,7 @@ $(document).ready(() => {
                 } else {
                     $element.html(
                         `<span>${i18next.t("Not all members of this group are in the cart")}</span>` +
-                            `<button class="AddToCart btn${isDisabled}" data-cart-id="${objectID}" data-cart-type="group">` +
+                            `<button class="AddToCart btn btn-primary${isDisabled}" data-cart-id="${objectID}" data-cart-type="group">` +
                             `<i class="fa-solid fa-cart-plus"></i></button>`,
                     );
                 }
