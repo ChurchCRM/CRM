@@ -19,109 +19,208 @@ if (!empty($sHeader)) {
 ?>
 <style nonce="<?= SystemURLs::getCSPNonce() ?>">
     .bs-stepper .content {
-        padding: 15px;
+        padding: 30px;
+    }
+    .register-box {
+        margin: 30px auto;
+    }
+    .registration-card {
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .step-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        margin: -30px -30px 30px -30px;
+    }
+    .step-header h4 {
+        color: white;
+        margin: 0;
+        font-weight: 600;
+    }
+    .member-card {
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease;
+    }
+    .member-card:hover {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .member-card .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        padding: 12px 20px;
+    }
+    .member-card .card-body {
+        padding: 20px;
+    }
+    .family-count-badge {
+        display: inline-block;
+        background-color: #667eea;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin-left: 10px;
     }
 </style>
-<div class="register-box" style="width: 75%;">
-    <div class="register-logo">
-        <a href="<?= SystemURLs::getRootPath() ?>/"><?= $headerHTML ?></a>
-        <h3><?= gettext("Register your family") ?></h3>
+<div class="register-box" style="width: 90%; max-width: 900px;">
+    <div class="register-logo text-center mb-4">
+        <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= $headerHTML ?></a>
+        <p class="text-muted mt-2"><?= gettext("Join our community by registering your family") ?></p>
     </div>
-    <div id="registration-stepper" class="bs-stepper">
-        <div class="bs-stepper-header" role="tablist">
-            <div class="step" data-target="#step-family-info">
-                <button type="button" class="step-trigger" role="tab" aria-controls="step-family-info" id="step-family-info-trigger">
-                    <span class="bs-stepper-circle">1</span>
-                    <span class="bs-stepper-label"><?= gettext("Family Info") ?></span>
-                </button>
+    <div class="card registration-card">
+        <div id="registration-stepper" class="bs-stepper">
+            <div class="bs-stepper-header" role="tablist">
+                <div class="step" data-target="#step-family-info">
+                    <button type="button" class="step-trigger" role="tab" aria-controls="step-family-info" id="step-family-info-trigger">
+                        <span class="bs-stepper-circle">1</span>
+                        <span class="bs-stepper-label"><?= gettext("Family Info") ?></span>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#step-members">
+                    <button type="button" class="step-trigger" role="tab" aria-controls="step-members" id="step-members-trigger">
+                        <span class="bs-stepper-circle">2</span>
+                        <span class="bs-stepper-label"><?= gettext("Members") ?></span>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#step-review">
+                    <button type="button" class="step-trigger" role="tab" aria-controls="step-review" id="step-review-trigger">
+                        <span class="bs-stepper-circle">3</span>
+                        <span class="bs-stepper-label"><?= gettext("Review") ?></span>
+                    </button>
+                </div>
             </div>
-            <div class="line"></div>
-            <div class="step" data-target="#step-members">
-                <button type="button" class="step-trigger" role="tab" aria-controls="step-members" id="step-members-trigger">
-                    <span class="bs-stepper-circle">2</span>
-                    <span class="bs-stepper-label"><?= gettext("Members") ?></span>
-                </button>
-            </div>
-            <div class="line"></div>
-            <div class="step" data-target="#step-review">
-                <button type="button" class="step-trigger" role="tab" aria-controls="step-review" id="step-review-trigger">
-                    <span class="bs-stepper-circle">3</span>
-                    <span class="bs-stepper-label"><?= gettext("Review") ?></span>
-                </button>
-            </div>
-        </div>
-        <div class="bs-stepper-content">
-            <form id="registration-form" novalidate>
-                <div id="step-family-info" class="content" role="tabpanel" aria-labelledby="step-family-info-trigger">
-                <div id="step-family-info" class="content" role="tabpanel" aria-labelledby="step-family-info-trigger">
-                    <div class="form-group has-feedback">
-                        <span class="fa-solid fa-user form-control-feedback"></span>
-                        <input id="familyName" name="familyName" type="text" class="form-control" placeholder="<?= gettext('Family Name') ?>" required>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <span class="fa-solid fa-envelope form-control-feedback"></span>
-                        <input id="familyAddress1" name="familyAddress1" class="form-control" placeholder="<?= gettext('Address') ?>" required>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input id="familyCity" name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>"  required value="<?= SystemConfig::getValue('sDefaultCity') ?>">
-                                <div class="help-block with-errors"></div>
+            <div class="bs-stepper-content">
+                <form id="registration-form" novalidate>
+                    <div id="step-family-info" class="content" role="tabpanel" aria-labelledby="step-family-info-trigger">
+                        <div class="step-header">
+                            <h4 class="text-center"><?= gettext('Family Information') ?></h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="familyCount">
+                                <i class="fa-solid fa-users mr-2"></i><?= gettext('How many people are in your family?') ?> 
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select id="familyCount" name="familyCount" class="form-control" style="max-width: 200px;">
+                                <option>1</option>
+                                <option>2</option>
+                                <option selected>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                            <small class="form-text text-muted"><?= gettext('Select the total number of family members to register') ?></small>
+                        </div>
+
+                        <hr class="my-4">
+                        
+                        <div class="form-group">
+                            <label for="familyName"><?= gettext('Family Name') ?> <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                                </div>
+                                <input id="familyName" name="familyName" type="text" class="form-control" placeholder="<?= gettext('Enter family name') ?>" required>
                             </div>
-                            <div class="col-lg-6">
-                                <input id="familyStateInput" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" value="<?= SystemConfig::getValue('sDefaultState') ?>">
-                                <select id="familyStateSelect" name="familyState" class="form-control select2 hidden" data-system-default="<?= SystemConfig::getValue('sDefaultState')?>">
-                                </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="familyAddress1"><?= gettext('Address') ?> <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-home"></i></span>
+                                </div>
+                                <input id="familyAddress1" name="familyAddress1" class="form-control" placeholder="<?= gettext('Street address') ?>" required>
+                            </div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="familyCity"><?= gettext('City') ?> <span class="text-danger">*</span></label>
+                                <input id="familyCity" name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>" required value="<?= SystemConfig::getValue('sDefaultCity') ?>">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="familyState"><?= gettext('State') ?></label>
+                                <div id="familyStateContainer">
+                                    <input id="familyState" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" value="<?= SystemConfig::getValue('sDefaultState') ?>" data-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <div class="row">
-                            <div class="col-lg-3">
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="familyZip"><?= gettext('Zip Code') ?></label>
                                 <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" value="<?= SystemConfig::getValue('sDefaultZip') ?>">
+                                <div class="invalid-feedback"></div>
                             </div>
-                            <div class="col-lg-9">
+                            <div class="form-group col-md-6">
+                                <label for="familyCountry"><?= gettext('Country') ?></label>
                                 <select id="familyCountry" name="familyCountry" class="form-control select2" data-system-default="<?= SystemConfig::getValue('sDefaultCountry')?>">
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home Phone') ?>"  data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
-                        <span class="fa-solid fa-phone form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label><?= gettext('How many people are in your family') ?></label>
-                        <select id="familyCount" name="familyCount" class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option selected>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                        </select>
-                    </div>
-                    <div class="mt-3">
-                        <button type="button" class="btn btn-primary" onclick="registrationStepper.next()"><?= gettext('Next') ?></button>
-                    </div>
-                </div>
-                <div id="step-members" class="content" role="tabpanel" aria-labelledby="step-members-trigger">
-                <div id="step-members" class="content" role="tabpanel" aria-labelledby="step-members-trigger">
-                    <?php for ($x = 1; $x <= 8; $x++) { ?>
-                        <div id="memberBox<?= $x ?>" class="box">
-                            <div class="card-header with-border">
-                                <h4 class="card-title">
-                                    <?= gettext("Family Member") . " #" . $x ?>
-                                </h4>
+
+                        <div class="form-group">
+                            <label for="familyHomePhone"><?= gettext('Home Phone') ?></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                                </div>
+                                <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
                             </div>
-                            <div class="card-body">
-                                <div class="form-group has-feedback">
-                                    <div class="row">
-                                        <div class="col-lg-8">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="form-group mt-4 mb-0">
+                            <button type="button" class="btn btn-primary btn-lg" id="family-info-next">
+                                <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="step-members" class="content" role="tabpanel" aria-labelledby="step-members-trigger">
+                        <div class="step-header">
+                            <h4 class="text-center">
+                                <?= gettext('Family Members') ?>
+                                <span id="member-count-display" class="family-count-badge"></span>
+                            </h4>
+                        </div>
+
+                        <?php for ($x = 1; $x <= 8; $x++) { ?>
+                            <div id="memberBox<?= $x ?>" class="member-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <i class="fa-solid fa-user mr-2"></i><?= gettext("Member") . " #" . $x ?>
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="memberFirstName-<?= $x ?>"><?= gettext('First Name') ?> <span class="text-danger">*</span></label>
+                                            <input id="memberFirstName-<?= $x ?>" class="form-control required" maxlength="50" placeholder="<?= gettext('First name') ?>" required>
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="memberLastName-<?= $x ?>"><?= gettext('Last Name') ?> <span class="text-danger">*</span></label>
+                                            <input id="memberLastName-<?= $x ?>" class="form-control required" maxlength="50" placeholder="<?= gettext('Last name') ?>" required>
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="memberRole-<?= $x ?>"><?= gettext('Role in Family') ?></label>
                                             <select id="memberRole-<?= $x ?>" class="form-control">
                                                 <?php
                                                 switch ($x) {
@@ -142,107 +241,155 @@ if (!empty($sHeader)) {
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="form-group col-md-6">
+                                            <label for="memberGender-<?= $x ?>"><?= gettext('Gender') ?></label>
                                             <select id="memberGender-<?= $x ?>" class="form-control">
                                                 <option value="1"><?= gettext('Male') ?></option>
                                                 <option value="2"><?= gettext('Female') ?></option>
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <input id="memberFirstName-<?= $x ?>" class="form-control required" maxlength="50" placeholder="<?= gettext('First Name') ?>" required>
-                                            <div class="help-block with-errors"></div>
+
+                                    <div class="form-group">
+                                        <label for="memberEmail-<?= $x ?>"><?= gettext('Email Address') ?></label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                            </div>
+                                            <input id="memberEmail-<?= $x ?>" class="form-control" maxlength="50" placeholder="<?= gettext('Email address') ?>" type="email">
                                         </div>
-                                        <div class="col-lg-6">
-                                            <input id="memberLastName-<?= $x ?>" class="form-control required" maxlength="50" placeholder="<?= gettext('Last Name') ?>" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                                        <div class="invalid-feedback"></div>
                                     </div>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa-solid fa-envelope"></i>
-                                        </div>
-                                        <input id="memberEmail-<?= $x ?>" class="form-control" maxlength="50" placeholder="<?= gettext('Email') ?>" type="email">
-                                    </div>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <div class="row">
-                                        <div class="col-lg-4">
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="memberPhone-<?= $x ?>"><?= gettext('Phone Number') ?></label>
                                             <div class="input-group">
-                                                <div class="input-group-addon">
-                                                    <i class="fa-solid fa-phone"></i>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                                 </div>
-                                                <select id="memberPhoneType-<?= $x ?>" class="form-control">
-                                                    <option value="mobile"><?= gettext('Mobile') ?></option>
-                                                    <option value="home"><?= gettext('Home') ?></option>
-                                                    <option value="work"><?= gettext('Work') ?></option>
-                                                </select>
+                                                <input id="memberPhone-<?= $x ?>" class="form-control" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask placeholder="<?= gettext('Phone number') ?>">
                                             </div>
+                                            <div class="invalid-feedback"></div>
                                         </div>
-                                        <div class="col-lg-8">
-                                            <div class="input-group">
-                                                <input id="memberPhone-<?= $x ?>" class="form-control" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask
-                                                       placeholder="<?= gettext('Phone') ?>">
-                                            </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="memberPhoneType-<?= $x ?>"><?= gettext('Phone Type') ?></label>
+                                            <select id="memberPhoneType-<?= $x ?>" class="form-control">
+                                                <option value="mobile"><?= gettext('Mobile') ?></option>
+                                                <option value="home"><?= gettext('Home') ?></option>
+                                                <option value="work"><?= gettext('Work') ?></option>
+                                            </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <div class="row">
-                                        <div class="col-lg-6">
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-7">
+                                            <label for="memberBirthday-<?= $x ?>"><?= gettext('Birthday') ?></label>
                                             <div class="input-group">
-                                                <div class="input-group-addon">
-                                                    <i class="fa-solid fa-birthday-cake"></i>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa-solid fa-birthday-cake"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control inputDatePicker" id="memberBirthday-<?= $x ?>">
+                                                <input type="text" class="form-control inputDatePicker" id="memberBirthday-<?= $x ?>" placeholder="<?= gettext('Select date') ?>">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <label>
-                                                <input type="checkbox" id="memberHideAge-<?= $x ?>">&nbsp; <?= gettext('Hide Age') ?>
-                                            </label>
+                                        <div class="form-group col-md-5">
+                                            <label class="d-block">&nbsp;</label>
+                                            <div class="custom-control custom-checkbox mt-2">
+                                                <input type="checkbox" class="custom-control-input" id="memberHideAge-<?= $x ?>">
+                                                <label class="custom-control-label" for="memberHideAge-<?= $x ?>">
+                                                    <?= gettext('Hide Age') ?>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php } ?>
-                    <div class="mt-3">
-                        <button type="button" class="btn btn-secondary" onclick="registrationStepper.previous()"><?= gettext('Previous') ?></button>
-                        <button type="button" class="btn btn-primary" onclick="registrationStepper.next()"><?= gettext('Next') ?></button>
-                    </div>
-                </div>
-                <div id="step-review" class="content" role="tabpanel" aria-labelledby="step-review-trigger">
-                <div id="step-review" class="content" role="tabpanel" aria-labelledby="step-review-trigger">
-                    <h3 class="text-center"><span id="displayFamilyName"></span> <?= gettext("Family")?> </h3>
-                    <p>
-                        <strong><?= gettext("Address")?>:</strong> <span id="displayFamilyAddress"></span> <br/>
-                        <strong><?= gettext("Phone")?>:</strong> <span id="displayFamilyPhone"></span> <br/>
-                    </p>
-                    <br/>
-
-                    <table class="table table-striped table-bordered table-responsive">
-                        <?php for ($x = 1; $x <= 8; $x++) { ?>
-                            <tr id="displayFamilyPerson<?= $x ?>">
-                                <td><span id="displayFamilyPersonFName<?= $x ?>"></span></td>
-                                <td><span id="displayFamilyPersonLName<?= $x ?>"></span></td>
-                                <td><span id="displayFamilyPersonEmail<?= $x ?>"></span></td>
-                                <td><span id="displayFamilyPersonPhone<?= $x ?>"></span></td>
-                                <td><span id="displayFamilyPersonBDay<?= $x ?>"></span></td>
-                            </tr>
                         <?php } ?>
-                    </table>
-                    <div class="mt-3">
-                        <button type="button" class="btn btn-secondary" onclick="registrationStepper.previous()"><?= gettext('Previous') ?></button>
-                        <button type="button" class="btn btn-success" id="submit-registration"><?= gettext('Submit Registration') ?></button>
+
+                        <div class="form-group mt-4 mb-0">
+                            <button type="button" class="btn btn-secondary btn-lg mr-2" id="members-previous">
+                                <i class="fa-solid fa-arrow-left mr-2"></i><?= gettext('Previous') ?>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-lg" id="members-next">
+                                <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                    <div id="step-review" class="content" role="tabpanel" aria-labelledby="step-review-trigger">
+                        <div class="step-header">
+                            <h4 class="text-center"><?= gettext('Review & Submit') ?></h4>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fa-solid fa-home mr-2"></i><span id="displayFamilyName"></span> <?= gettext("Family")?></h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="mb-2">
+                                            <strong><i class="fa-solid fa-map-marker-alt mr-2 text-primary"></i><?= gettext("Address")?>:</strong><br/>
+                                            <span id="displayFamilyAddress" class="ml-4"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="mb-2">
+                                            <strong><i class="fa-solid fa-phone mr-2 text-primary"></i><?= gettext("Phone")?>:</strong><br/>
+                                            <span id="displayFamilyPhone" class="ml-4"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0"><i class="fa-solid fa-users mr-2"></i><?= gettext("Family Members")?></h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover mb-0">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th><?= gettext("First Name")?></th>
+                                                <th><?= gettext("Last Name")?></th>
+                                                <th><?= gettext("Email")?></th>
+                                                <th><?= gettext("Phone")?></th>
+                                                <th><?= gettext("Birthday")?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php for ($x = 1; $x <= 8; $x++) { ?>
+                                                <tr id="displayFamilyPerson<?= $x ?>">
+                                                    <td><span id="displayFamilyPersonFName<?= $x ?>"></span></td>
+                                                    <td><span id="displayFamilyPersonLName<?= $x ?>"></span></td>
+                                                    <td><span id="displayFamilyPersonEmail<?= $x ?>"></span></td>
+                                                    <td><span id="displayFamilyPersonPhone<?= $x ?>"></span></td>
+                                                    <td><span id="displayFamilyPersonBDay<?= $x ?>"></span></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-4" role="alert">
+                            <i class="fa-solid fa-info-circle mr-2"></i>
+                            <?= gettext('Please review all information carefully before submitting. You can go back to make changes if needed.') ?>
+                        </div>
+
+                        <div class="form-group mt-4 mb-0">
+                            <button type="button" class="btn btn-secondary btn-lg mr-2" id="review-previous">
+                                <i class="fa-solid fa-arrow-left mr-2"></i><?= gettext('Previous') ?>
+                            </button>
+                            <button type="button" class="btn btn-success btn-lg" id="submit-registration">
+                                <i class="fa-solid fa-check-circle mr-2"></i><?= gettext('Submit Registration') ?>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
