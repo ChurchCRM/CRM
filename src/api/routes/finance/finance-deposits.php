@@ -124,19 +124,10 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->joinDonationFund()
             ->withColumn('DonationFund.Name')
-            ->leftJoinFamily()
-            ->withColumn('Family.Name', 'FamilyName')
-            ->find();
+            ->joinWithFamily()
+            ->find()
+            ->toArray();
 
-        $result = [];
-        foreach ($pledges as $pledge) {
-            $row = $pledge->toArray();
-            // Manually add FamilyString since groupByGroupKey prevents normal relation loading
-            $family = $pledge->getFamily();
-            $row['FamilyString'] = $family ? $family->getFamilyString() : null;
-            $result[] = $row;
-        }
-
-        return SlimUtils::renderJSON($response, $result);
+        return SlimUtils::renderJSON($response, $pledges);
     });
 })->add(FinanceRoleAuthMiddleware::class);
