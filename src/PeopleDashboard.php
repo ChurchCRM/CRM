@@ -103,27 +103,23 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
                 // Display link
                 ?>
-                <div class="btn-group">
-                    <a class="btn btn-app bg-primary" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>">
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-app bg-primary dropdown-toggle" type="button" id="emailAllDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
                         <?= gettext('Email All') ?>
-                    </a>
-                    <button type="button" class="btn btn-app bg-primary dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" aria-labelledby="emailAllDropdown">
+                        <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
                     </div>
                 </div>
-                <div class="btn-group">
-                    <a class="btn btn-app bg-info" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>">
-                        <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-app bg-info dropdown-toggle" type="button" id="emailAllBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-user-secret fa-3x"></i><br>
                         <?= gettext('Email All (BCC)') ?>
-                    </a>
-                    <button type="button" class="btn btn-app bg-info dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" aria-labelledby="emailAllBccDropdown">
+                        <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
                     </div>
                 </div>
