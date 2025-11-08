@@ -1,12 +1,6 @@
 $(document).ready(function () {
     let registerWizard = $("#registration-form");
 
-    registerWizard.validate({
-        errorPlacement: function errorPlacement(error, element) {
-            element.after(error);
-        },
-    });
-
     registerWizard.children("div").steps({
         headerTag: "h2",
         bodyTag: "section",
@@ -49,8 +43,9 @@ $(document).ready(function () {
                     }
                 }
             }
-            registerWizard.validate().settings.ignore = ":disabled,:hidden";
-            return registerWizard.valid();
+            // Trigger bootstrap-validator check
+            registerWizard.validator('validate');
+            return !registerWizard.find('.has-error').length;
         },
         onStepChanged: function (event, currentIndex, priorIndex) {
             if (currentIndex === 2) {
@@ -89,8 +84,9 @@ $(document).ready(function () {
             }
         },
         onFinishing: function (event, currentIndex) {
-            registerWizard.validate().settings.ignore = ":disabled";
-            return registerWizard.valid();
+            // Trigger bootstrap-validator check
+            registerWizard.validator('validate');
+            return !registerWizard.find('.has-error').length;
         },
         onFinished: function (event, currentIndex) {
             $.ajax({

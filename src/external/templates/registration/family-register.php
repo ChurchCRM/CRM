@@ -30,7 +30,7 @@ if (!empty($sHeader)) {
         <a href="<?= SystemURLs::getRootPath() ?>/"><?= $headerHTML ?></a>
         <h3><?= gettext("Register your family") ?></h3>
     </div>
-    <form id="registration-form">
+    <form id="registration-form" data-toggle="validator">
         <div id="wizard">
             <h2><?= gettext("Family Info") ?></h2>
             <section>
@@ -213,7 +213,6 @@ if (!empty($sHeader)) {
 </div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery.steps/jquery.steps.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyRegister.js"></script>
 
 <?php

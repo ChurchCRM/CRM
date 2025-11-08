@@ -169,15 +169,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: [
-                            "node_modules/jquery-validation/dist/jquery.validate.min.js",
-                        ],
-                        dest: "src/skin/external/jquery-validation/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         src: ["node_modules/chart.js/dist/chart.umd.js"],
                         dest: "src/skin/external/chartjs/",
                     },

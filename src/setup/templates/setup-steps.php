@@ -25,7 +25,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
 </style>
 <h1 class="text-center">Welcome to ChurchCRM setup wizard</h1>
 <p/><br/>
-<form id="setup-form">
+<form id="setup-form" data-toggle="validator">
     <div id="wizard">
         <h2>System Prerequisite</h2>
         <section>
@@ -133,10 +133,12 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="DB_PASSWORD2">Confirm Database Password</label>
                 <input type="password" name="DB_PASSWORD2" id="DB_PASSWORD2" class="form-control"
-                       aria-describedby="DB_PASSWORD2_HELP" required>
+                       aria-describedby="DB_PASSWORD2_HELP" required data-match="#DB_PASSWORD"
+                       data-match-error="Passwords don't match">
                 <small id="DB_PASSWORD2_HELP" class="form-text text-muted">
                     Must match the password above.
                 </small>
+                <div class="help-block with-errors"></div>
             </div>
         </section>
         <!--
@@ -240,7 +242,6 @@ require_once '../Include/HeaderNotLoggedIn.php';
     </div>
 </form>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery.steps/jquery.steps.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/setup.js"></script>
 <?php
 require_once '../Include/FooterNotLoggedIn.php';

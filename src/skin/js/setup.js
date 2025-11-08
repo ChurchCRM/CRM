@@ -87,14 +87,6 @@ window.CRM.renderPrerequisite = function (prerequisite) {
 $("document").ready(function () {
     var setupWizard = $("#setup-form");
 
-    setupWizard.validate({
-        rules: {
-            DB_PASSWORD2: {
-                equalTo: "#DB_PASSWORD",
-            },
-        },
-    });
-
     setupWizard.children("div").steps({
         headerTag: "h2",
         bodyTag: "section",
@@ -109,12 +101,14 @@ $("document").ready(function () {
                 return window.CRM.prerequisitesStatus;
             }
 
-            setupWizard.validate().settings.ignore = ":disabled,:hidden";
-            return setupWizard.valid();
+            // Trigger bootstrap-validator check
+            setupWizard.validator('validate');
+            return !setupWizard.find('.has-error').length;
         },
         onFinishing: function (event, currentIndex) {
-            setupWizard.validate().settings.ignore = ":disabled";
-            return setupWizard.valid();
+            // Trigger bootstrap-validator check
+            setupWizard.validator('validate');
+            return !setupWizard.find('.has-error').length;
         },
         onFinished: function (event, currentIndex) {
             submitSetupData(setupWizard);
