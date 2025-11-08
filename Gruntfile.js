@@ -143,15 +143,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: [
-                            "node_modules/bootstrap-validator/dist/validator.min.js",
-                        ],
-                        dest: "src/skin/external/bootstrap-validator/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         src: ["node_modules/jquery/dist/jquery.min.js"],
                         dest: "src/skin/external/jquery/",
                     },
@@ -160,19 +151,19 @@ module.exports = function (grunt) {
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/jquery-steps/build/jquery.steps.min.js",
-                            "node_modules/jquery-steps/demo/css/jquery.steps.css",
+                            "node_modules/just-validate/dist/just-validate.production.min.js",
                         ],
-                        dest: "src/skin/external/jquery.steps/",
+                        dest: "src/skin/external/just-validate/",
                     },
                     {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/jquery-validation/dist/jquery.validate.min.js",
+                            "node_modules/bs-stepper/dist/js/bs-stepper.min.js",
+                            "node_modules/bs-stepper/dist/css/bs-stepper.min.css",
                         ],
-                        dest: "src/skin/external/jquery-validation/",
+                        dest: "src/skin/external/bs-stepper/",
                     },
                     {
                         expand: true,

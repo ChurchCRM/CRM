@@ -15,9 +15,11 @@ if (file_exists('../Include/Config.php')) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Use SlimUtils to get base path, default to /setup
+// Use SlimUtils to get base path for routing, but assets are in parent directory
 $basePath = ChurchCRM\Slim\SlimUtils::getBasePath('/setup');
-SystemURLs::init($basePath, '', __DIR__ . '/../');
+// Initialize SystemURLs with parent directory root (where assets actually are)
+$parentRootPath = str_replace('/setup', '', $basePath);
+SystemURLs::init($parentRootPath, '', __DIR__ . '/../');
 SystemConfig::init();
 
 
