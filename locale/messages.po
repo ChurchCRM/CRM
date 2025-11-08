@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-08 10:36-0800\n"
+"POT-Creation-Date: 2025-11-08 15:21-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -293,6 +293,9 @@ msgstr ""
 msgid "Add Event Type"
 msgstr ""
 
+msgid "Add Family Member"
+msgstr ""
+
 msgid "Add Group"
 msgstr ""
 
@@ -420,6 +423,9 @@ msgid "Address 1"
 msgstr ""
 
 msgid "Address 2"
+msgstr ""
+
+msgid "Address is required"
 msgstr ""
 
 msgid "Admin"
@@ -1232,6 +1238,9 @@ msgstr ""
 msgid "City"
 msgstr ""
 
+msgid "City is required"
+msgstr ""
+
 msgid "City, State, Zip"
 msgstr ""
 
@@ -2020,6 +2029,9 @@ msgstr ""
 msgid "Email (BCC)"
 msgstr ""
 
+msgid "Email Address"
+msgstr ""
+
 msgid "Email All"
 msgstr ""
 
@@ -2042,6 +2054,9 @@ msgid "Email Information"
 msgstr ""
 
 msgid "Email Setup"
+msgstr ""
+
+msgid "Email address"
 msgstr ""
 
 msgid "Email export"
@@ -2176,6 +2191,9 @@ msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Emai
 msgstr ""
 
 msgid "Enter event description..."
+msgstr ""
+
+msgid "Enter family name"
 msgstr ""
 
 msgid "Enter group name"
@@ -2502,6 +2520,9 @@ msgstr ""
 msgid "Family Info"
 msgstr ""
 
+msgid "Family Information"
+msgstr ""
+
 msgid "Family List"
 msgstr ""
 
@@ -2509,9 +2530,6 @@ msgid "Family List Columns"
 msgstr ""
 
 msgid "Family Map"
-msgstr ""
-
-msgid "Family Member"
 msgstr ""
 
 #. Context: query_qry
@@ -2572,6 +2590,12 @@ msgid "Family added to cart"
 msgstr ""
 
 msgid "Family has no emails to use"
+msgstr ""
+
+msgid "Family name is required"
+msgstr ""
+
+msgid "Family name must be at least 2 characters"
 msgstr ""
 
 msgid "Family removed from cart"
@@ -2715,6 +2739,15 @@ msgid "First fiscal year for comparison"
 msgstr ""
 
 msgid "First month of the fiscal year"
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "First name is required"
+msgstr ""
+
+msgid "First name must be at least 2 characters"
 msgstr ""
 
 msgid "First name must be entered"
@@ -3148,6 +3181,12 @@ msgstr ""
 msgid "Home area code of the church"
 msgstr ""
 
+msgid "Home phone is required"
+msgstr ""
+
+msgid "Home phone number"
+msgstr ""
+
 #. Context: countries
 msgid "Honduras"
 msgstr ""
@@ -3157,9 +3196,6 @@ msgid "Hong Kong (香港)"
 msgstr ""
 
 msgid "How did you learn of the church?"
-msgstr ""
-
-msgid "How many people are in your family"
 msgstr ""
 
 msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
@@ -3416,6 +3452,9 @@ msgstr ""
 msgid "Jersey"
 msgstr ""
 
+msgid "Join our community by registering your family"
+msgstr ""
+
 #. Context: countries
 msgid "Jordan (‫الأردن‬‎)"
 msgstr ""
@@ -3501,6 +3540,15 @@ msgid "Last Software Update Check Timestamp"
 msgstr ""
 
 msgid "Last Sunday"
+msgstr ""
+
+msgid "Last name"
+msgstr ""
+
+msgid "Last name is required"
+msgstr ""
+
+msgid "Last name must be at least 2 characters"
 msgstr ""
 
 msgid "LastName FirstName"
@@ -3823,6 +3871,9 @@ msgstr ""
 msgid "Maximum distance"
 msgstr ""
 
+msgid "Maximum length is"
+msgstr ""
+
 msgid "Maximum number of Addresses"
 msgstr ""
 
@@ -3976,6 +4027,9 @@ msgid "Minimum bid "
 msgstr ""
 
 msgid "Minimum length a user may set their password to"
+msgstr ""
+
+msgid "Minimum length is"
 msgstr ""
 
 msgid "Missing"
@@ -4247,6 +4301,9 @@ msgid "Next"
 msgstr ""
 
 msgid "Next Family"
+msgstr ""
+
+msgid "Next Member"
 msgstr ""
 
 #. Context: countries
@@ -4868,6 +4925,12 @@ msgstr ""
 msgid "Phone Number"
 msgstr ""
 
+msgid "Phone Type"
+msgstr ""
+
+msgid "Phone number"
+msgstr ""
+
 msgid "Photo"
 msgstr ""
 
@@ -4888,6 +4951,9 @@ msgid "Pitcairn Islands"
 msgstr ""
 
 msgid "Please Login"
+msgstr ""
+
+msgid "Please add at least one family member."
 msgstr ""
 
 msgid "Please check logs for more information"
@@ -4953,7 +5019,19 @@ msgstr ""
 msgid "Please enter a group name."
 msgstr ""
 
+msgid "Please enter a valid URL"
+msgstr ""
+
+msgid "Please enter a valid email address"
+msgstr ""
+
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr ""
+
 msgid "Please enter a valid number"
+msgstr ""
+
+msgid "Please enter a valid phone number"
 msgstr ""
 
 msgid "Please enter the following to start your family's verification"
@@ -4963,10 +5041,16 @@ msgstr ""
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
 msgstr ""
 
+msgid "Please fill in all required fields correctly."
+msgstr ""
+
 msgid "Please go to this location"
 msgstr ""
 
 msgid "Please mail you next gift to "
+msgstr ""
+
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
 msgstr ""
 
 msgid "Please review and mitigate these tasks before continuing with the upgrade:"
@@ -5063,6 +5147,9 @@ msgid "Portuguese - Portugal"
 msgstr ""
 
 msgid "Press CTRL + C to copy all group members' phone numbers"
+msgstr ""
+
+msgid "Previous"
 msgstr ""
 
 msgid "Previous Family"
@@ -5216,16 +5303,10 @@ msgstr ""
 msgid "Regenerate 2 Factor Authentication Secret"
 msgstr ""
 
-msgid "Register"
-msgstr ""
-
 msgid "Register a new Family"
 msgstr ""
 
 msgid "Register another family!"
-msgstr ""
-
-msgid "Register your family"
 msgstr ""
 
 #. Context: query_qry
@@ -5233,6 +5314,9 @@ msgid "Registered students"
 msgstr ""
 
 msgid "Registration Complete"
+msgstr ""
+
+msgid "Registration Error"
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -5413,6 +5497,9 @@ msgstr ""
 msgid "Review"
 msgstr ""
 
+msgid "Review & Submit"
+msgstr ""
+
 msgid "Role"
 msgstr ""
 
@@ -5426,6 +5513,9 @@ msgid "Role added successfully."
 msgstr ""
 
 msgid "Role deleted successfully."
+msgstr ""
+
+msgid "Role in Family"
 msgstr ""
 
 msgid "Role name updated."
@@ -5713,6 +5803,9 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Select database users"
+msgstr ""
+
+msgid "Select date"
 msgstr ""
 
 msgid "Select event"
@@ -6078,6 +6171,9 @@ msgstr ""
 msgid "Street Atlas USA"
 msgstr ""
 
+msgid "Street address"
+msgstr ""
+
 msgid "Students"
 msgstr ""
 
@@ -6085,6 +6181,9 @@ msgid "Students not in a Sunday School Class"
 msgstr ""
 
 msgid "Style"
+msgstr ""
+
+msgid "Submit Registration"
 msgstr ""
 
 msgid "Submit to GitHub"
@@ -6485,9 +6584,6 @@ msgid "Today's Birthdays"
 msgstr ""
 
 msgid "Today's Wedding Anniversaries"
-msgstr ""
-
-msgid "Toggle Dropdown"
 msgstr ""
 
 msgid "Toggle Sidebar"
@@ -7322,6 +7418,9 @@ msgstr ""
 msgid "Zip Code"
 msgstr ""
 
+msgid "Zip code is required"
+msgstr ""
+
 msgid "added"
 msgstr ""
 
@@ -7360,6 +7459,9 @@ msgid "custom event types"
 msgstr ""
 
 msgid "data for member"
+msgstr ""
+
+msgid "denotes required fields"
 msgstr ""
 
 msgid "eGive"
