@@ -32,9 +32,11 @@
         if (state.checksComplete) {
             let allPassed = true;
             for (const key in state.prerequisites) {
-                if (state.prerequisites[key] !== true) {
-                    allPassed = false;
-                    break;
+                if (Object.prototype.hasOwnProperty.call(state.prerequisites, key)) {
+                    if (state.prerequisites[key] !== true) {
+                        allPassed = false;
+                        break;
+                    }
                 }
             }
             state.prerequisitesStatus = allPassed;
