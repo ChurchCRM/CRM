@@ -71,11 +71,11 @@ $response = $response->withHeader('Content-Type', $contentType);
 ### Internationalization
 ```javascript
 // CORRECT
-$.notify(i18next.t('Operation completed'), { type: 'success' });
+window.CRM.notify(i18next.t('Operation completed'), { type: 'success' });
 
 // WRONG
 alert('Operation completed');
-$.notify('Operation completed', { type: 'success' });
+window.CRM.notify('Operation completed', { type: 'success' });
 ```
 
 ### Slim Middleware Order
@@ -115,7 +115,7 @@ function test(int $param = null): void { }
 - ✅ Type casting for dynamic values
 - ✅ Bootstrap CSS (no deprecated attributes)
 - ✅ i18next.t() for all UI text
-- ✅ bootstrap-notify (no alert())
+- ✅ window.CRM.notify() (no alert())
 - ✅ Tests pass
 - ✅ Commit message: imperative, < 72 chars
 - ✅ Branch name: kebab-case

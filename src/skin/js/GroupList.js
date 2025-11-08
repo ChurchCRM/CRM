@@ -12,14 +12,9 @@ $(document).ready(() => {
         })
         .fail((xhr, status, error) => {
             console.error("Failed to fetch groups in cart:", error);
-            $.notify(i18next.t("Failed to load cart status."), {
+            window.CRM.notify(i18next.t("Failed to load cart status."), {
                 type: "danger",
-                icon: "fa fa-exclamation-triangle",
                 delay: 5000,
-                placement: {
-                    from: "top",
-                    align: "right",
-                },
             });
         });
 
@@ -27,14 +22,9 @@ $(document).ready(() => {
         const groupName = $("#groupName").val().trim();
 
         if (!groupName) {
-            $.notify(i18next.t("Please enter a group name."), {
+            window.CRM.notify(i18next.t("Please enter a group name."), {
                 type: "danger",
-                icon: "fa fa-exclamation-triangle",
                 delay: 5000,
-                placement: {
-                    from: "top",
-                    align: "right",
-                },
             });
             $("#groupName").focus();
             return;
@@ -55,16 +45,11 @@ $(document).ready(() => {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to create group:", error);
-                $.notify(
+                window.CRM.notify(
                     i18next.t("Failed to create group. Please try again."),
                     {
                         type: "danger",
-                        icon: "fa fa-exclamation-triangle",
                         delay: 5000,
-                        placement: {
-                            from: "top",
-                            align: "right",
-                        },
                     },
                 );
             });
@@ -78,18 +63,13 @@ $(document).ready(() => {
             dataSrc: "",
             error: (xhr, error, thrown) => {
                 console.error("Failed to load groups:", thrown);
-                $.notify(
+                window.CRM.notify(
                     i18next.t(
                         "Failed to load groups. Please refresh the page.",
                     ),
                     {
                         type: "danger",
-                        icon: "fa fa-exclamation-triangle",
                         delay: 5000,
-                        placement: {
-                            from: "top",
-                            align: "right",
-                        },
                     },
                 );
             },
@@ -176,7 +156,7 @@ $(document).ready(() => {
                 } else {
                     $element.html(
                         `<span>${i18next.t("Not all members of this group are in the cart")}</span>` +
-                            `<button class="AddToCart btn${isDisabled}" data-cart-id="${objectID}" data-cart-type="group">` +
+                            `<button class="AddToCart btn btn-primary${isDisabled}" data-cart-id="${objectID}" data-cart-type="group">` +
                             `<i class="fa-solid fa-cart-plus"></i></button>`,
                     );
                 }
