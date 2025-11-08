@@ -2,14 +2,18 @@
 namespace ChurchCRM\Slim;
 
 use ChurchCRM\dto\Photo;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
+use Exception;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpMethodNotAllowedException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Interfaces\RouteInterface;
+use Slim\Psr7\Response as Psr7Response;
 use Slim\Routing\RouteContext;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
 use Throwable;
 
 
@@ -87,11 +91,33 @@ class SlimUtils
     }
 
     /**
-     * Get Slim base path from environment or default
+     * Get Slim base path from environment or calculate from SystemURLs root path
+     * This ensures Slim routes work correctly whether installed at root (/) or in a subdirectory (/churchcrm)
+     * 
+     * @param string $endpoint The Slim application endpoint (/api or /v2) - REQUIRED
+     * @return string The complete base path including subdirectory if applicable
      */
-    public static function getBasePath($default = '/api')
+    public static function getBasePath(string $endpoint)
     {
-        return getenv('SLIM_BASE_PATH') ?: $default;
+        // Allow environment override for testing/special deployments
+        if ($envPath = getenv('SLIM_BASE_PATH')) {
+            return $envPath;
+        }
+        
+        // Get the root path from SystemURLs (configured in Config.php as $sRootPath)
+        // Examples: '' (root install), '/churchcrm', '/crm', etc.
+        try {
+            $rootPath = SystemURLs::getRootPath();
+            
+            // Combine root path with endpoint
+            // If root is empty string (installed at /), just return endpoint
+            // If root is /churchcrm, return /churchcrm/api or /churchcrm/v2
+            return $rootPath . $endpoint;
+        } catch (Exception $e) {
+            // If SystemURLs not initialized yet, fall back to endpoint only
+            // This shouldn't happen in normal operation but provides safety
+            return $endpoint;
+        }
     }
 
     /**
@@ -118,13 +144,13 @@ class SlimUtils
             bool $logErrorDetails
         ) use ($logger) {
             $logger->error($exception->getMessage(), ['exception' => $exception]);
-            $response = new \Slim\Psr7\Response();
+            $response = new Psr7Response();
             
             // Determine appropriate HTTP status code based on exception type
             $statusCode = 500;
-            if ($exception instanceof \Slim\Exception\HttpNotFoundException) {
+            if ($exception instanceof HttpNotFoundException) {
                 $statusCode = 404;
-            } elseif ($exception instanceof \Slim\Exception\HttpMethodNotAllowedException) {
+            } elseif ($exception instanceof HttpMethodNotAllowedException) {
                 $statusCode = 405;
             }
             

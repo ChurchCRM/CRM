@@ -92,9 +92,48 @@ Key Standards:
 - Explicit nullable parameters: `?int $param = null` not `int $param = null`
 - Dynamic properties need attribute: `#[\AllowDynamicProperties]`
 - Use IntlDateFormatter instead of strftime
+- **Use imports, never inline fully-qualified class names**: Add `use` statements at top of file
 - Explicit global namespace: `\MakeFYString($id)` in namespaced code
 - Version checks: `version_compare(phpversion(), '8.2.0', '<')`
 - Public constants for shared values: `public const PHOTO_WIDTH = 200;`
+
+### Import Statement Rules
+
+ALWAYS use `use` statements at the top of files instead of inline fully-qualified class names:
+
+```php
+// CORRECT
+<?php
+namespace ChurchCRM\Slim;
+
+use ChurchCRM\dto\SystemURLs;
+use Slim\Exception\HttpNotFoundException;
+
+class MyClass {
+    public function test() {
+        $path = SystemURLs::getRootPath();
+        throw new HttpNotFoundException($request);
+    }
+}
+
+// WRONG - Inline fully-qualified names
+<?php
+namespace ChurchCRM\Slim;
+
+class MyClass {
+    public function test() {
+        $path = \ChurchCRM\dto\SystemURLs::getRootPath();
+        throw new \Slim\Exception\HttpNotFoundException($request);
+    }
+}
+```
+
+**File Structure Order:**
+1. `<?php` tag and namespace declaration
+2. All `use` statements (alphabetically organized)
+3. Class declaration and code
+
+**Exception:** Only use `\` prefix for global functions in namespaced code (e.g., `\MakeFYString()`)
 
 ---
 
