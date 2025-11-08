@@ -17,56 +17,13 @@ if (!empty($sHeader)) {
 }
 
 ?>
-<style nonce="<?= SystemURLs::getCSPNonce() ?>">
-    .bs-stepper .content {
-        padding: 30px;
-    }
-    .register-box {
-        margin: 30px auto;
-    }
-    .registration-card {
-        box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    .step-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 20px;
-        margin: -30px -30px 30px -30px;
-    }
-    .step-header h4 {
-        color: white;
-        margin: 0;
-        font-weight: 600;
-    }
-    .member-card {
-        border: 1px solid #dee2e6;
-        border-radius: 6px;
-        margin-bottom: 20px;
-        transition: box-shadow 0.3s ease;
-    }
-    .member-card:hover {
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .member-card .card-header {
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #dee2e6;
-        padding: 12px 20px;
-    }
-    .member-card .card-body {
-        padding: 20px;
-    }
-    .family-count-badge {
-        display: inline-block;
-        background-color: #667eea;
-        color: white;
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 14px;
-        margin-left: 10px;
-    }
-</style>
+<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/family-register.min.css">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    window.CRM = {
+        root: "<?= SystemURLs::getRootPath() ?>",
+        churchWebSite: "<?= SystemURLs::getRootPath() ?>/"
+    };
+</script>
 <div class="register-box" style="width: 90%; max-width: 900px;">
     <div class="register-logo text-center mb-4">
         <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= $headerHTML ?></a>
@@ -102,26 +59,6 @@ if (!empty($sHeader)) {
                         <div class="step-header">
                             <h4 class="text-center"><?= gettext('Family Information') ?></h4>
                         </div>
-
-                        <div class="form-group">
-                            <label for="familyCount">
-                                <i class="fa-solid fa-users mr-2"></i><?= gettext('How many people are in your family?') ?> 
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select id="familyCount" name="familyCount" class="form-control" style="max-width: 200px;">
-                                <option>1</option>
-                                <option>2</option>
-                                <option selected>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                            </select>
-                            <small class="form-text text-muted"><?= gettext('Select the total number of family members to register') ?></small>
-                        </div>
-
-                        <hr class="my-4">
                         
                         <div class="form-group">
                             <label for="familyName"><?= gettext('Family Name') ?> <span class="text-danger">*</span></label>
@@ -197,53 +134,54 @@ if (!empty($sHeader)) {
                             </h4>
                         </div>
 
-                        <?php for ($x = 1; $x <= 8; $x++) { ?>
-                            <div id="memberBox<?= $x ?>" class="member-card">
-                                <div class="card-header">
-                                    <h5 class="mb-0">
-                                        <i class="fa-solid fa-user mr-2"></i><?= gettext("Member") . " #" . $x ?>
-                                    </h5>
+                        <!-- Members container where dynamic cards are added -->
+                        <div id="members-container"></div>
+
+                        <!-- Member card template (hidden, cloned for each member) -->
+                        <template id="member-card-template">
+                            <div class="member-card" data-member-index="">
+                                <div class="card-header member-card-header-clickable">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <button type="button" class="btn btn-link member-toggle-btn p-0 mr-2" style="cursor: pointer;">
+                                                <i class="fa-solid fa-chevron-down"></i>
+                                            </button>
+                                            <h5 class="mb-0">
+                                                <i class="fa-solid fa-user mr-2"></i>
+                                                <span class="member-display-name"><?= gettext('Next Member') ?></span>
+                                            </h5>
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-outline-danger remove-member-btn" style="display: none;">
+                                            <i class="fa-solid fa-trash mr-1"></i><?= gettext('Remove') ?>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body member-card-body" style="display: none;">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="memberFirstName-<?= $x ?>"><?= gettext('First Name') ?> <span class="text-danger">*</span></label>
-                                            <input id="memberFirstName-<?= $x ?>" class="form-control required" maxlength="50" placeholder="<?= gettext('First name') ?>" required>
+                                            <label><?= gettext('First Name') ?> <span class="text-danger">*</span></label>
+                                            <input class="form-control member-first-name" maxlength="50" placeholder="<?= gettext('First name') ?>" required>
                                             <div class="invalid-feedback"></div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="memberLastName-<?= $x ?>"><?= gettext('Last Name') ?> <span class="text-danger">*</span></label>
-                                            <input id="memberLastName-<?= $x ?>" class="form-control required" maxlength="50" placeholder="<?= gettext('Last name') ?>" required>
+                                            <label><?= gettext('Last Name') ?> <span class="text-danger">*</span></label>
+                                            <input class="form-control member-last-name" maxlength="50" placeholder="<?= gettext('Last name') ?>" required>
                                             <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="memberRole-<?= $x ?>"><?= gettext('Role in Family') ?></label>
-                                            <select id="memberRole-<?= $x ?>" class="form-control">
-                                                <?php
-                                                switch ($x) {
-                                                    case 1:
-                                                        $defaultRole = SystemConfig::getValue('sDirRoleHead');
-                                                        break;
-                                                    case 2:
-                                                        $defaultRole = SystemConfig::getValue('sDirRoleSpouse');
-                                                        break;
-                                                    default:
-                                                        $defaultRole = SystemConfig::getValue('sDirRoleChild');
-                                                        break;
-                                                }
-                                                foreach ($familyRoles as $role) { ?>
-                                                    <option value="<?= $role->getOptionId() ?>" <?php if ($role->getOptionId() == $defaultRole) {
-                                                        echo "selected";
-                                                                   } ?>><?= $role->getOptionName() ?></option>
+                                            <label><?= gettext('Role in Family') ?></label>
+                                            <select class="form-control member-role">
+                                                <?php foreach ($familyRoles as $role) { ?>
+                                                    <option value="<?= $role->getOptionId() ?>"><?= $role->getOptionName() ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="memberGender-<?= $x ?>"><?= gettext('Gender') ?></label>
-                                            <select id="memberGender-<?= $x ?>" class="form-control">
+                                            <label><?= gettext('Gender') ?></label>
+                                            <select class="form-control member-gender">
                                                 <option value="1"><?= gettext('Male') ?></option>
                                                 <option value="2"><?= gettext('Female') ?></option>
                                             </select>
@@ -251,30 +189,30 @@ if (!empty($sHeader)) {
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="memberEmail-<?= $x ?>"><?= gettext('Email Address') ?></label>
+                                        <label><?= gettext('Email Address') ?></label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
                                             </div>
-                                            <input id="memberEmail-<?= $x ?>" class="form-control" maxlength="50" placeholder="<?= gettext('Email address') ?>" type="email">
+                                            <input class="form-control member-email" maxlength="50" placeholder="<?= gettext('Email address') ?>" type="email">
                                         </div>
                                         <div class="invalid-feedback"></div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="memberPhone-<?= $x ?>"><?= gettext('Phone Number') ?></label>
+                                            <label><?= gettext('Phone Number') ?></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                                 </div>
-                                                <input id="memberPhone-<?= $x ?>" class="form-control" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask placeholder="<?= gettext('Phone number') ?>">
+                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask placeholder="<?= gettext('Phone number') ?>">
                                             </div>
                                             <div class="invalid-feedback"></div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="memberPhoneType-<?= $x ?>"><?= gettext('Phone Type') ?></label>
-                                            <select id="memberPhoneType-<?= $x ?>" class="form-control">
+                                            <label><?= gettext('Phone Type') ?></label>
+                                            <select class="form-control member-phone-type">
                                                 <option value="mobile"><?= gettext('Mobile') ?></option>
                                                 <option value="home"><?= gettext('Home') ?></option>
                                                 <option value="work"><?= gettext('Work') ?></option>
@@ -284,19 +222,19 @@ if (!empty($sHeader)) {
 
                                     <div class="form-row">
                                         <div class="form-group col-md-7">
-                                            <label for="memberBirthday-<?= $x ?>"><?= gettext('Birthday') ?></label>
+                                            <label><?= gettext('Birthday') ?></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa-solid fa-birthday-cake"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control inputDatePicker" id="memberBirthday-<?= $x ?>" placeholder="<?= gettext('Select date') ?>">
+                                                <input type="text" class="form-control inputDatePicker member-birthday" placeholder="<?= gettext('Select date') ?>">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-5">
                                             <label class="d-block">&nbsp;</label>
                                             <div class="custom-control custom-checkbox mt-2">
-                                                <input type="checkbox" class="custom-control-input" id="memberHideAge-<?= $x ?>">
-                                                <label class="custom-control-label" for="memberHideAge-<?= $x ?>">
+                                                <input type="checkbox" class="custom-control-input member-hide-age">
+                                                <label class="custom-control-label">
                                                     <?= gettext('Hide Age') ?>
                                                 </label>
                                             </div>
@@ -304,7 +242,14 @@ if (!empty($sHeader)) {
                                     </div>
                                 </div>
                             </div>
-                        <?php } ?>
+                        </template>
+
+                        <!-- Add member button -->
+                        <div class="mb-4">
+                            <button type="button" class="btn btn-success btn-lg" id="add-member-btn">
+                                <i class="fa-solid fa-plus mr-2"></i><?= gettext('Add Family Member') ?>
+                            </button>
+                        </div>
 
                         <div class="form-group mt-4 mb-0">
                             <button type="button" class="btn btn-secondary btn-lg mr-2" id="members-previous">
@@ -395,6 +340,7 @@ if (!empty($sHeader)) {
 </div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bs-stepper/bs-stepper.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/family-register.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyRegister.js"></script>
 
 <?php
