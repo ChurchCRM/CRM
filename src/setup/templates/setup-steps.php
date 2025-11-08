@@ -35,6 +35,13 @@ require_once '../Include/HeaderNotLoggedIn.php';
         padding: 2rem 1rem;
         margin-bottom: 1.5rem;
     }
+    /* Remove text decoration from collapsible card header buttons */
+    .card-header .btn-link {
+        text-decoration: none;
+    }
+    .card-header .btn-link:hover {
+        text-decoration: none;
+    }
 </style>
 <div class="jumbotron text-center">
     <h1 class="display-4">Welcome to ChurchCRM Setup Wizard</h1>
@@ -74,7 +81,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
                 <!-- PHP Extensions Group -->
                 <div class="card mb-2">
                     <div class="card-header p-0" id="php-extensions-header">
-                        <button class="btn btn-link btn-block text-left d-flex justify-content-between align-items-center p-2 text-decoration-none" 
+                        <button class="btn btn-link btn-block text-left d-flex justify-content-between align-items-center p-2" 
                                 type="button" data-toggle="collapse" data-target="#php-extensions-body" 
                                 aria-expanded="true" aria-controls="php-extensions-body">
                             <span class="font-weight-bold">
@@ -95,7 +102,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
                 <!-- File Integrity Group -->
                 <div class="card mb-3">
                     <div class="card-header p-0" id="integrity-header">
-                        <button class="btn btn-link btn-block text-left d-flex justify-content-between align-items-center p-2 text-decoration-none" 
+                        <button class="btn btn-link btn-block text-left d-flex justify-content-between align-items-center p-2" 
                                 type="button" data-toggle="collapse" data-target="#integrity-body" 
                                 aria-expanded="true" aria-controls="integrity-body">
                             <span class="font-weight-bold">
@@ -116,7 +123,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
                 <!-- Server Information Group (Collapsed by default) -->
                 <div class="card mb-3">
                     <div class="card-header p-0" id="serverinfo-header">
-                        <button class="btn btn-link btn-block text-left d-flex justify-content-between align-items-center p-2 text-decoration-none collapsed" 
+                        <button class="btn btn-link btn-block text-left d-flex justify-content-between align-items-center p-2 collapsed" 
                                 type="button" data-toggle="collapse" data-target="#serverinfo-body" 
                                 aria-expanded="false" aria-controls="serverinfo-body">
                             <span class="font-weight-bold">
