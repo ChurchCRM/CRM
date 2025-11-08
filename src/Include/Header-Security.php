@@ -18,7 +18,6 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 $csp = [
     "default-src 'self'",
