@@ -330,3 +330,21 @@ Cypress.Commands.add('clearQuill', (editorId) => {
         quillEditor.setContents([]);
     });
 });
+
+/**
+ * Set a Bootstrap Datepicker value by typing and blurring to trigger change event
+ * This mimics user interaction to trigger all proper datepicker events
+ * @param {string} selector - The CSS selector for the datepicker input
+ * @param {string} dateString - The date string in MM/DD/YYYY format
+ * @example cy.setDatePickerValue("#member-birthday-2", "08/07/1980");
+ */
+Cypress.Commands.add('setDatePickerValue', (selector, dateString) => {
+    // Type the date and blur to trigger datepicker's change event
+    cy.get(selector).clear().type(dateString);
+    
+    // Click elsewhere to blur the field and trigger change event
+    cy.get('body').click();
+    
+    // Wait for event handlers to process
+    cy.wait(100);
+});

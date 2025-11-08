@@ -183,8 +183,10 @@
             }
         };
 
-        // Update state on date change
+        // Update state on date change - Bootstrap Datepicker uses both 'change' and 'changeDate'
         birthdayInput.on("change", updateHideAgeState);
+        birthdayInput.on("changeDate", updateHideAgeState);
+        birthdayInput.on("input", updateHideAgeState);
 
         // Initialize state on page load
         updateHideAgeState();

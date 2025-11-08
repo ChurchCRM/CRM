@@ -98,8 +98,8 @@ if (!empty($sHeader)) {
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="familyZip"><?= gettext('Zip Code') ?></label>
-                                <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" value="<?= SystemConfig::getValue('sDefaultZip') ?>">
+                                <label for="familyZip"><?= gettext('Zip Code') ?> <span class="text-danger">*</span></label>
+                                <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" value="<?= SystemConfig::getValue('sDefaultZip') ?>" required>
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="form-group col-md-6">
@@ -110,14 +110,18 @@ if (!empty($sHeader)) {
                         </div>
 
                         <div class="form-group">
-                            <label for="familyHomePhone"><?= gettext('Home Phone') ?></label>
+                            <label for="familyHomePhone"><?= gettext('Home Phone') ?> <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                 </div>
-                                <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+                                <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask required>
                             </div>
                             <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="alert alert-info mt-3" role="alert">
+                            <small><span class="text-danger">*</span> <?= gettext('denotes required fields') ?></small>
                         </div>
 
                         <div class="form-group mt-4 mb-0">
@@ -249,6 +253,10 @@ if (!empty($sHeader)) {
                             <button type="button" class="btn btn-success btn-lg" id="add-member-btn">
                                 <i class="fa-solid fa-plus mr-2"></i><?= gettext('Add Family Member') ?>
                             </button>
+                        </div>
+
+                        <div class="alert alert-info" role="alert">
+                            <small><span class="text-danger">*</span> <?= gettext('denotes required fields') ?></small>
                         </div>
 
                         <div class="form-group mt-4 mb-0">
