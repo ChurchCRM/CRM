@@ -26,7 +26,7 @@ if (!empty($sHeader)) {
 </script>
 <div class="register-box" style="width: 90%; max-width: 900px;">
     <div class="register-logo text-center mb-4">
-        <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= $headerHTML ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= htmlspecialchars($headerHTML, ENT_QUOTES, 'UTF-8') ?></a>
         <p class="text-muted mt-2"><?= gettext("Join our community by registering your family") ?></p>
     </div>
     <div class="card registration-card">

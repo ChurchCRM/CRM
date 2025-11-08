@@ -195,7 +195,9 @@ function initializeFormValidation() {
                 if (rules.length > 0 && field.name) {
                     rules.forEach(function (rule) {
                         validator.addField(
-                            "#" + field.id || '[name="' + field.name + '"]',
+                            field.id
+                                ? "#" + field.id
+                                : '[name="' + field.name + '"]',
                             [rule],
                         );
                     });

@@ -82,6 +82,11 @@
         const cardBody = clone.querySelector(".member-card-body");
         const cardHeader = clone.querySelector(".member-card-header-clickable");
 
+        if (!toggleBtn || !cardBody || !cardHeader) {
+            console.error("Member card template is missing required elements");
+            return;
+        }
+
         // All new cards start expanded for immediate editing
         cardBody.style.display = "block";
         toggleBtn.querySelector("i").classList.remove("fa-chevron-down");
@@ -281,13 +286,13 @@
             people: [],
         };
 
-        // Collect data from all member cards
-        for (let i = 1; i <= state.currentMemberCount; i++) {
-            const card = $(`.member-card[data-member-index="${i}"]`);
-            if (card.length > 0) {
-                family.people.push(getMemberDataFromCard(i));
-            }
-        }
+        // Collect data from all member cards using actual DOM elements to avoid gaps in indices
+        document.querySelectorAll(".member-card").forEach((card) => {
+            const memberIndex = parseInt(
+                card.getAttribute("data-member-index"),
+            );
+            family.people.push(getMemberDataFromCard(memberIndex));
+        });
 
         return family;
     }
@@ -420,10 +425,9 @@
 
         const validator = createValidator("#registration-form");
 
-        // Add validation for each currently active member card
-        for (let i = 1; i <= state.currentMemberCount; i++) {
-            const card = $(`.member-card[data-member-index="${i}"]`);
-            if (card.length === 0) continue;
+        // Add validation for each currently active member card using actual DOM elements
+        document.querySelectorAll(".member-card").forEach((card) => {
+            const i = parseInt(card.getAttribute("data-member-index"));
 
             // First Name
             const firstNameContainer = getErrorContainer(
@@ -472,23 +476,20 @@
             );
 
             // Email (optional but must be valid if provided)
-            const emailField = document.getElementById(`member-email-${i}`);
-            if (emailField && emailField.value.trim() !== "") {
-                const emailContainer = getErrorContainer(`member-email-${i}`);
-                validator.addField(
-                    `#member-email-${i}`,
-                    [
-                        {
-                            rule: "email",
-                            errorMessage: i18next.t(
-                                "Please enter a valid email address (e.g., name@example.com)",
-                            ),
-                        },
-                    ],
-                    emailContainer ? { errorsContainer: emailContainer } : {},
-                );
-            }
-        }
+            const emailContainer = getErrorContainer(`member-email-${i}`);
+            validator.addField(
+                `#member-email-${i}`,
+                [
+                    {
+                        rule: "email",
+                        errorMessage: i18next.t(
+                            "Please enter a valid email address (e.g., name@example.com)",
+                        ),
+                    },
+                ],
+                emailContainer ? { errorsContainer: emailContainer } : {},
+            );
+        });
 
         validators["step-members"] = validator;
     }
@@ -508,9 +509,20 @@
         $("#displayFamilyAddress").text(familyAddress);
         $("#displayFamilyPhone").text(family.HomePhone);
 
+        // Clear all member rows first (template shows rows 1-8)
+        for (let i = 1; i <= 8; i++) {
+            $(`#displayFamilyPerson${i}`).hide();
+            $(`#displayFamilyPersonFName${i}`).text("");
+            $(`#displayFamilyPersonLName${i}`).text("");
+            $(`#displayFamilyPersonEmail${i}`).text("");
+            $(`#displayFamilyPersonPhone${i}`).text("");
+            $(`#displayFamilyPersonBDay${i}`).text("");
+        }
+
         // Display member details
         family.people.forEach((person, index) => {
             const memberNum = index + 1;
+            $(`#displayFamilyPerson${memberNum}`).show();
             $(`#displayFamilyPersonFName${memberNum}`).text(person.firstName);
             $(`#displayFamilyPersonLName${memberNum}`).text(person.lastName);
             $(`#displayFamilyPersonEmail${memberNum}`).text(person.email);
@@ -819,36 +831,32 @@
             }).done(function (data) {
                 if (Object.keys(data).length > 0) {
                     // Country has states - replace with dropdown
-                    let selectHtml =
-                        '<select id="familyState" name="familyState" class="form-control">';
+                    const $select = $(
+                        '<select id="familyState" name="familyState" class="form-control"></select>',
+                    );
                     $.each(data, function (code, name) {
-                        const selected =
-                            defaultState == code ? " selected" : "";
-                        selectHtml +=
-                            '<option value="' +
-                            code +
-                            '"' +
-                            selected +
-                            ">" +
-                            name +
-                            "</option>";
+                        const $option = $("<option></option>")
+                            .val(code)
+                            .text(name);
+                        if (defaultState == code) {
+                            $option.prop("selected", true);
+                        }
+                        $select.append($option);
                     });
-                    selectHtml += "</select>";
 
-                    $container.html(selectHtml);
+                    $container.html($select);
                     $("#familyState").select2();
                 } else {
                     // Country has no states - replace with text input
                     const stateValue = defaultState || "";
-                    const inputHtml =
-                        '<input id="familyState" name="familyState" class="form-control" placeholder="' +
-                        i18next.t("State") +
-                        '" value="' +
-                        stateValue +
-                        '" data-default="' +
-                        stateValue +
-                        '">';
-                    $container.html(inputHtml);
+                    const input = $("<input>")
+                        .attr("id", "familyState")
+                        .attr("name", "familyState")
+                        .addClass("form-control")
+                        .attr("placeholder", i18next.t("State"))
+                        .val(stateValue)
+                        .attr("data-default", stateValue);
+                    $container.html(input);
                 }
             });
         });
