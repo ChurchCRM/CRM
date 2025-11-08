@@ -9,7 +9,8 @@ module.exports = {
     'two-factor-enrollment' : './react/two-factor-enrollment.tsx',
     'churchcrm' : './webpack/skin-main',  // Main bundle for all pages
     'photo-uploader' : './webpack/photo-uploader-entry',  // Photo uploader for specific pages
-    'setup' : './webpack/setup'  // Setup wizard styles
+    'setup' : './webpack/setup',  // Setup wizard styles
+    'family-register' : './webpack/family-register'  // Family registration styles and scripts
   },
   output: {
     path:path.resolve('./src/skin/v2'),
