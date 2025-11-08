@@ -169,13 +169,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["node_modules/pace/pace.js"],
-                        dest: "src/skin/external/pace/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         src: ["node_modules/i18next/dist/umd/i18next.min.js"],
                         dest: "src/skin/external/i18next/",
                     },
