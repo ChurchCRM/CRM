@@ -19,6 +19,9 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
+// Don't include CSP report-uri during setup (pre-authentication)
+$isSetupMode = !file_exists(__DIR__ . '/Config.php');
+
 $csp = [
     "default-src 'self'",
     "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' 'unsafe-eval' browser-update.org",
@@ -34,6 +37,7 @@ $csp = [
     "frame-ancestors 'self'",
     'report-uri ' . SystemURLs::getRootPath() . '/api/public/csp-report',
 ];
+
 if (SystemConfig::getBooleanValue('bHSTSEnable')) {
     header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
 }
