@@ -32,7 +32,12 @@
         if (state.checksComplete) {
             let allPassed = true;
             for (const key in state.prerequisites) {
-                if (Object.prototype.hasOwnProperty.call(state.prerequisites, key)) {
+                if (
+                    Object.prototype.hasOwnProperty.call(
+                        state.prerequisites,
+                        key,
+                    )
+                ) {
                     if (state.prerequisites[key] !== true) {
                         allPassed = false;
                         break;
@@ -376,22 +381,13 @@
                         validator.addField(`#${field.id}`, rules);
                     }
                     hasFields = true;
-                    console.log(
-                        `Added validation for ${field.id}:`,
-                        rules.map((r) => r.rule).join(", "),
-                    );
                 }
             });
 
-        console.log(
-            `Validator for ${stepId}:`,
-            hasFields ? "created" : "no fields",
-        );
         return hasFields ? validator : null;
     }
 
     function submitSetupData() {
-        console.log("submitSetupData called");
         const form = document.getElementById("setup-form");
         const formData = {};
 
@@ -400,9 +396,6 @@
         for (const [key, value] of data.entries()) {
             formData[key] = value || "";
         }
-
-        console.log("Form data prepared:", formData);
-        console.log("Sending to:", rootPath + "/setup/");
 
         // Show the setup modal
         $("#setupModal").modal("show");
@@ -414,14 +407,8 @@
             contentType: "application/json",
         })
             .done(function (response) {
-                console.log("Setup success:", response);
-
                 // Check if response contains errors (backend bug workaround)
                 if (response && response.errors) {
-                    console.error(
-                        "Setup returned 200 but has errors:",
-                        response.errors,
-                    );
                     // Treat as failure
                     $("#setup-progress").hide();
                     $("#setup-error").show();
@@ -464,7 +451,6 @@
                     });
             })
             .fail(function (xhr) {
-                console.error("Setup failed:", xhr);
                 // Hide progress, show error
                 $("#setup-progress").hide();
                 $("#setup-error").show();
@@ -505,8 +491,8 @@
             });
     }
 
-    // Expose functions globally
-    window.skipCheck = skipCheck;
+    // Note: skipCheck is intentionally NOT exposed globally to prevent accidental calls
+    // It should only be called via the Force Install confirmation flow
 
     document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById("setup-form");
@@ -515,7 +501,6 @@
         // Prevent form submission (we handle it via AJAX)
         form.addEventListener("submit", function (event) {
             event.preventDefault();
-            console.log("Form submit prevented - use Finish button instead");
             return false;
         });
 
@@ -536,20 +521,10 @@
         validators["step-location"] = initializeStepValidation("step-location");
         validators["step-database"] = initializeStepValidation("step-database");
 
-        console.log("Validators initialized:", {
-            "step-location": validators["step-location"] !== null,
-            "step-database": validators["step-database"] !== null,
-        });
-
-        // BS-stepper navigation with validation
+        // Custom navigation logic with validation
         stepperElement.addEventListener("show.bs-stepper", function (event) {
             const currentStep = event.detail.from;
             const nextStep = event.detail.to;
-
-            console.log("Navigation attempt:", {
-                from: currentStep,
-                to: nextStep,
-            });
 
             // Check if this navigation was already validated
             if (
@@ -557,21 +532,18 @@
                 state.validatedNavigation.from === currentStep &&
                 state.validatedNavigation.to === nextStep
             ) {
-                console.log("Already validated, allowing navigation");
                 state.validatedNavigation = null; // Clear the flag
                 return;
             }
 
             // Only validate when moving forward
             if (nextStep <= currentStep) {
-                console.log("Allowing backward navigation");
                 return; // Allow backward navigation
             }
 
             // Check prerequisites when leaving step 0
             if (currentStep === 0 && !state.prerequisitesStatus) {
                 event.preventDefault();
-                console.log("Blocking: Prerequisites not met");
                 $.notify(
                     "Please ensure all prerequisites are met before continuing.",
                     {
@@ -600,20 +572,19 @@
             // Only validate if we have a validator for this step
             if (validators[currentStepId]) {
                 event.preventDefault();
-                console.log("Running validation for:", currentStepId);
                 validators[currentStepId]
                     .revalidate()
                     .then(function (isValid) {
-                        console.log("Validation result:", isValid);
                         if (isValid) {
-                            console.log("Navigating to step:", nextStep);
-                            // Mark this navigation as validated
+                            // Mark this navigation as validated BEFORE navigating
                             state.validatedNavigation = {
                                 from: currentStep,
                                 to: nextStep,
                             };
-                            // Navigate
-                            setupStepper.to(nextStep);
+                            // Use setTimeout to ensure the flag is set before the next event fires
+                            setTimeout(function () {
+                                setupStepper.to(nextStep);
+                            }, 0);
                         } else {
                             $.notify(
                                 i18next.t(
@@ -627,10 +598,14 @@
                         }
                     })
                     .catch(function (error) {
-                        console.error("Validation error:", error);
+                        $.notify(
+                            i18next.t("An error occurred during validation."),
+                            {
+                                type: "danger",
+                                delay: 3000,
+                            },
+                        );
                     });
-            } else {
-                console.log("No validator, allowing navigation");
             }
         });
 
@@ -649,16 +624,13 @@
         document
             .getElementById("submit-setup")
             .addEventListener("click", function (event) {
-                console.log("Finish button clicked");
                 event.preventDefault(); // Prevent any default behavior
 
                 // Validate database step before submission
                 if (validators["step-database"]) {
-                    console.log("Validating database step...");
                     validators["step-database"]
                         .revalidate()
                         .then(function (isValid) {
-                            console.log("Database validation result:", isValid);
                             if (isValid) {
                                 submitSetupData();
                             } else {
@@ -675,13 +647,6 @@
                     console.log("No database validator, submitting directly");
                     submitSetupData();
                 }
-            });
-
-        // Handle Force Install button
-        document
-            .getElementById("prerequisites-force-btn")
-            .addEventListener("click", function () {
-                skipCheck();
             });
 
         // Handle prerequisites Next button
@@ -704,8 +669,28 @@
 
         document
             .getElementById("location-next-btn")
-            .addEventListener("click", function () {
-                if (setupStepper) {
+            .addEventListener("click", function (event) {
+                event.preventDefault();
+                // Validate the location step before proceeding
+                if (validators["step-location"]) {
+                    validators["step-location"]
+                        .revalidate()
+                        .then(function (isValid) {
+                            if (isValid && setupStepper) {
+                                setupStepper.next();
+                            } else if (!isValid) {
+                                $.notify(
+                                    i18next.t(
+                                        "Please correct the validation errors before continuing.",
+                                    ),
+                                    {
+                                        type: "warning",
+                                        delay: 3000,
+                                    },
+                                );
+                            }
+                        });
+                } else if (setupStepper) {
                     setupStepper.next();
                 }
             });
@@ -718,6 +703,29 @@
                     setupStepper.previous();
                 }
             });
+
+        // Handle Force Install button click - show confirmation modal
+        const forceBtn = document.getElementById("prerequisites-force-btn");
+        if (forceBtn) {
+            forceBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $("#forceInstallModal").modal("show");
+            });
+        }
+
+        // Handle Force Install confirmation
+        const confirmBtn = document.getElementById("confirm-force-install");
+        if (confirmBtn) {
+            confirmBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                $("#forceInstallModal").modal("hide");
+                // Wait for modal to hide before proceeding
+                setTimeout(function () {
+                    skipCheck();
+                }, 300);
+            });
+        }
 
         // Initialize prerequisite checks - integrity check will run after prerequisites load
         checkPrerequisites();
