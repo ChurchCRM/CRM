@@ -14,61 +14,92 @@ require_once '../Include/HeaderNotLoggedIn.php';
         prerequisitesStatus : false //TODO this is not correct we need 2 flags
     };
 </script>
-<style>
+<style nonce="<?= SystemURLs::getCSPNonce() ?>">
     .wizard .content > .body {
         width: 100%;
         height: auto;
         padding: 15px;
         position: relative;
     }
-
 </style>
 <h1 class="text-center">Welcome to ChurchCRM setup wizard</h1>
 <p/><br/>
-<form id="setup-form" data-toggle="validator">
-    <div id="wizard">
-        <h2>System Prerequisite</h2>
-        <section>
-            <table class="table table-condensed" id="prerequisites"></table>
-            <p/>
-            <div class="callout callout-warning" id="prerequisites-war">
-                This server isn't quite ready for ChurchCRM. If you know what you are doing.
-                <a href="#" onclick="skipCheck()"><b>Click here</b></a>.
+<div id="setup-stepper" class="bs-stepper vertical">
+    <div class="bs-stepper-header" role="tablist">
+        <div class="step" data-target="#step-prerequisites">
+            <button type="button" class="step-trigger" role="tab" aria-controls="step-prerequisites" id="step-prerequisites-trigger">
+                <span class="bs-stepper-circle">1</span>
+                <span class="bs-stepper-label">System Prerequisites</span>
+            </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#step-serverinfo">
+            <button type="button" class="step-trigger" role="tab" aria-controls="step-serverinfo" id="step-serverinfo-trigger">
+                <span class="bs-stepper-circle">2</span>
+                <span class="bs-stepper-label">Useful Server Info</span>
+            </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#step-location">
+            <button type="button" class="step-trigger" role="tab" aria-controls="step-location" id="step-location-trigger">
+                <span class="bs-stepper-circle">3</span>
+                <span class="bs-stepper-label">Install Location</span>
+            </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#step-database">
+            <button type="button" class="step-trigger" role="tab" aria-controls="step-database" id="step-database-trigger">
+                <span class="bs-stepper-circle">4</span>
+                <span class="bs-stepper-label">MySQL Database Setup</span>
+            </button>
+        </div>
+    </div>
+    <div class="bs-stepper-content">
+        <form id="setup-form" novalidate>
+            <div id="step-prerequisites" class="content" role="tabpanel" aria-labelledby="step-prerequisites-trigger">
+                <table class="table table-condensed" id="prerequisites"></table>
+                <p/>
+                <div class="callout callout-warning" id="prerequisites-war">
+                    This server isn't quite ready for ChurchCRM. If you know what you are doing.
+                    <a href="#" onclick="skipCheck()"><b>Click here</b></a>.
+                </div>
+                <div class="mt-3">
+                    <button type="button" class="btn btn-primary" onclick="setupStepper.next()">Next</button>
+                </div>
             </div>
-        </section>
-
-        <h2>Useful Server Info</h2>
-        <section>
-            <table class="table">
-                <tr>
-                    <td>Max file upload size</td>
-                    <td><?php echo ini_get('upload_max_filesize') ?></td>
-                </tr>
-                <tr>
-                    <td>Max POST size</td>
-                    <td><?php echo ini_get('post_max_size') ?></td>
-                </tr>
-                <tr>
-                    <td>PHP Memory Limit</td>
-                    <td><?php echo ini_get('memory_limit') ?></td>
-                </tr>
-            </table>
-        </section>
-
-        <h2>Install Location</h2>
-        <section>
+            <div id="step-serverinfo" class="content" role="tabpanel" aria-labelledby="step-serverinfo-trigger">
+                <table class="table">
+                    <tr>
+                        <td>Max file upload size</td>
+                        <td><?php echo ini_get('upload_max_filesize') ?></td>
+                    </tr>
+                    <tr>
+                        <td>Max POST size</td>
+                        <td><?php echo ini_get('post_max_size') ?></td>
+                    </tr>
+                    <tr>
+                        <td>PHP Memory Limit</td>
+                        <td><?php echo ini_get('memory_limit') ?></td>
+                    </tr>
+                </table>
+                <div class="mt-3">
+                    <button type="button" class="btn btn-secondary" onclick="setupStepper.previous()">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="setupStepper.next()">Next</button>
+                </div>
+            </div>
+            <div id="step-location" class="content" role="tabpanel" aria-labelledby="step-location-trigger">
             <div class="form-group">
                 <label for="ROOT_PATH">Root Path</label>
                 <input type="text" name="ROOT_PATH" id="ROOT_PATH"
                        value="<?= SystemURLs::getRootPath() ?>" class="form-control"
                        aria-describedby="ROOT_PATH_HELP"
-                       pattern="^\/[a-zA-Z0-9_\-\.\/]*$"
-                       maxlength="64"
-                       required>
+                       pattern="^(|\/[a-zA-Z0-9_\-\.\/]*)$"
+                       maxlength="64">
+                <div class="help-block with-errors"></div>
                 <small id="ROOT_PATH_HELP" class="form-text text-muted">
                     <strong>Examples:</strong><br>
                     <code>/churchcrm</code> (for <code>http://www.yourdomain.com/churchcrm</code>)<br>
-                    <code>/</code> or <code></code> (for <code>http://www.yourdomain.com</code>)<br>
+                    <code>/</code> or leave empty (for <code>http://www.yourdomain.com</code>)<br>
                     <strong>Rules:</strong> Must start with a slash (<code>/</code>) if not empty. Do <b>not</b> end with a slash. Case sensitive. Only letters, numbers, <code>_</code>, <code>-</code>, <code>.</code>, <code>/</code> allowed.
                 </small>
             </div>
@@ -77,171 +108,67 @@ require_once '../Include/HeaderNotLoggedIn.php';
                 <input type="text" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
                        aria-describedby="URL_HELP"
                        required>
+                <div class="help-block with-errors"></div>
                 <small id="URL_HELP" class="form-text text-muted">
                     <strong>Example:</strong> <code>https://www.yourdomain.com/churchcrm/</code><br>
                     <strong>Rules:</strong> Must be a valid URL, including <code>http://</code> or <code>https://</code>. If using a non-standard port, include it (e.g., <code>https://www.yourdomain.com:8080/churchcrm/</code>). Case sensitive.
                 </small>
             </div>
-        </section>
-        <h2>MySQL Database Setup</h2>
-        <section>
-            <div class="form-group">
-                <label for="DB_SERVER_NAME">MySQL Database Server Name</label>
-                <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" class="form-control"
-                       aria-describedby="DB_SERVER_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
-                <small id="DB_SERVER_NAME_HELP" class="form-text text-muted">
-                    <strong>Examples:</strong> <code>localhost</code>, <code>127.0.0.1</code>, <code>db.example.com</code><br>
-                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.
-                </small>
+            <div class="mt-3">
+                <button type="button" class="btn btn-secondary" onclick="setupStepper.previous()">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="setupStepper.next()">Next</button>
+            </div>
+        </div>
+        <div id="step-database" class="content" role="tabpanel" aria-labelledby="step-database-trigger">
+                        <div class="form-group">
+                <label for="DB_SERVER_NAME">Server Name</label>
+                <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" value="<?= $DB_SERVER_NAME ?>"
+                       class="form-control" maxlength="64" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="DB_SERVER_PORT">MySQL Database Server Port</label>
-                <input type="number" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
-                       aria-describedby="DB_SERVER_PORT_HELP" required min="1" max="65535" value="3306">
-                <small id="DB_SERVER_PORT_HELP" class="form-text text-muted">
-                    <strong>Default:</strong> <code>3306</code><br>
-                    <strong>Rules:</strong> Must be a number between 1 and 65535.
-                </small>
+                <label for="DB_SERVER_PORT">Server Port</label>
+                <input type="text" name="DB_SERVER_PORT" id="DB_SERVER_PORT" value="<?= $DB_SERVER_PORT ?>"
+                       class="form-control" maxlength="16"
+                       pattern="[0-9]+"
+                       required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="DB_NAME">Database Name</label>
-                <input type="text" name="DB_NAME" id="DB_NAME" placeholder="churchcrm" class="form-control"
-                       aria-describedby="DB_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
-                <small id="DB_NAME_HELP" class="form-text text-muted">
-                    <strong>Example:</strong> <code>churchcrm</code><br>
-                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.
-                </small>
+                <input type="text" name="DB_NAME" id="DB_NAME" value="<?= $DB_NAME ?>"
+                       class="form-control" maxlength="64" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="DB_USER">Database User</label>
-                <input type="text" name="DB_USER" id="DB_USER" placeholder="churchcrm" class="form-control"
-                       aria-describedby="DB_USER_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
-                <small id="DB_USER_HELP" class="form-text text-muted">
-                    <strong>Example:</strong> <code>churchcrm</code><br>
-                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.<br>
-                    Must have permissions to create tables and views.
-                </small>
+                <input type="text" name="DB_USER" id="DB_USER" value="<?= $DB_USER ?>"
+                       class="form-control" maxlength="64" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="DB_PASSWORD">Database Password</label>
-                <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" class="form-control"
-                       aria-describedby="DB_PASSWORD_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@\!\#\$\%\^\&\*\(\)]*$">
-                <small id="DB_PASSWORD_HELP" class="form-text text-muted">
-                    <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), at (<code>@</code>), and common special characters (<code>! # $ % ^ &amp; * ( )</code>) are allowed.
-                </small>
-            </div>
-            <div class="form-group">
-                <label for="DB_PASSWORD2">Confirm Database Password</label>
-                <input type="password" name="DB_PASSWORD2" id="DB_PASSWORD2" class="form-control"
-                       aria-describedby="DB_PASSWORD2_HELP" required data-match="#DB_PASSWORD"
-                       data-match-error="Passwords don't match">
-                <small id="DB_PASSWORD2_HELP" class="form-text text-muted">
-                    Must match the password above.
-                </small>
+                <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" value="" class="form-control"
+                       maxlength="255">
                 <div class="help-block with-errors"></div>
             </div>
-        </section>
-        <!--
-        <h2>Church Info</h2>
-        <section>
             <div class="form-group">
-                <label for="sChurchName">Church Name</label>
-                <input type="text" name="sChurchName" id="sChurchName" class="form-control"
-                       aria-describedby="sChurchNameHelp" required>
-                <small id="sChurchNameHelp" class="form-text text-muted"></small>
+                <label for="DB_PASSWORD_CONFIRM">Confirm Database Password</label>
+                <input type="password" name="DB_PASSWORD_CONFIRM" id="DB_PASSWORD_CONFIRM" value=""
+                       class="form-control"
+                       data-match="#DB_PASSWORD"
+                       maxlength="255">
+                <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
-                <label for="sChurchAddress">Church Address</label>
-                <input type="text" name="sChurchAddress" id="sChurchAddress" class="form-control"
-                       aria-describedby="sChurchAddressHelp" required>
-                <small id="sChurchAddressHelp" class="form-text text-muted"></small>
+            <div class="mt-3">
+                <button type="button" class="btn btn-secondary" onclick="setupStepper.previous()">Previous</button>
+                <button type="button" class="btn btn-success" id="submit-setup">Finish</button>
             </div>
-
-            <div class="form-group">
-                <label for="sChurchCity">Church City</label>
-                <input type="text" name="sChurchCity" id="sChurchCity" class="form-control"
-                       aria-describedby="sChurchCityHelp" required>
-                <small id="sChurchCityHelp" class="form-text text-muted"></small>
-            </div>
-
-            <div class="form-group">
-                <label for="sChurchState">Church State</label>
-                <input type="text" name="sChurchState" id="sChurchState" class="form-control"
-                       aria-describedby="sChurchStateHelp" required>
-                <small id="sChurchStateHelp" class="form-text text-muted"></small>
-            </div>
-
-            <div class="form-group">
-                <label for="sChurchZip">Church Zip</label>
-                <input type="text" name="sChurchZip" id="sChurchZip" class="form-control"
-                       aria-describedby="sChurchZipHelp" required>
-                <small id="sChurchZipHelp" class="form-text text-muted"></small>
-            </div>
-
-            <div class="form-group">
-                <label for="sChurchCountry">Church Country</label>
-                <input type="text" name="sChurchCountry" id="sChurchCountry" class="form-control"
-                       aria-describedby="sChurchCountryHelp" required>
-                <small id="sChurchCountryHelp" class="form-text text-muted"></small>
-            </div>
-
-            <div class="form-group">
-                <label for="sChurchPhone">Church Phone</label>
-                <input type="text" name="sChurchPhone" id="sChurchPhone" class="form-control"
-                       aria-describedby="sChurchPhoneHelp">
-                <small id="sChurchPhoneHelp" class="form-text text-muted"></small>
-            </div>
-
-            <div class="form-group">
-                <label for="sChurchEmail">Church email</label>
-                <input type="email" name="sChurchEmail" id="sChurchEmail" class="form-control"
-                       aria-describedby="sChurchEmailHelp" required>
-                <small id="sChurchEmailHelp" class="form-text text-muted"></small>
-            </div>
-
-            <div class="callout callout-info" id="prerequisites-war">
-                This information can be updated late on via <b><i>System Settings</i></b>.
-            </div>
-        </section>
-
-        <h2>Mail Server</h2>
-        <section>
-            <div class="form-group">
-                <label for="sSMTPHost">SMTP Host</label>
-                <input type="text" name="sSMTPHost" id="sSMTPHost" class="form-control"
-                       aria-describedby="sSMTPHostHelp" required>
-                <small id="sSMTPHostHelp" class="form-text text-muted">
-                    Either a single hostname, you can also specify a different port by using this format: [hostname:port]
-                </small>
-            </div>
-            <div class="form-group">
-                <label for="iSMTPTimeout">SMTP Host Timeout</label>
-                <input type="number" name="iSMTPTimeout" id="iSMTPTimeout" class="form-control"
-                       aria-describedby="iSMTPTimeoutHelp" value="30" required>
-                <small id="iSMTPTimeoutHelp" class="form-text text-muted">
-                    The SMTP server timeout in seconds.
-                </small>
-            </div>
-            <div class="form-group">
-                <label for="sSMTPUser">SMTP Host User</label>
-                <input type="text" name="sSMTPUser" id="sSMTPUser" class="form-control"
-                       aria-describedby="sSMTPUserHelp" required>
-                <small id="sSMTPUserHelp" class="form-text text-muted">
-                    SMTP username.
-                </small>
-            </div>
-            <div class="form-group">
-                <label for="sSMTPPass">SMTP Host Password</label>
-                <input type="password" name="sSMTPPass" id="sSMTPPass" class="form-control"
-                       aria-describedby="sSMTPPassHelp" required>
-                <small id="sSMTPPassHelp" class="form-text text-muted">
-                    SMTP password.
-                </small>
-            </div>
-        </section>-->
+        </div>
+    </form>
     </div>
-</form>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery.steps/jquery.steps.min.js"></script>
+</div>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bs-stepper/bs-stepper.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/setup.js"></script>
 <?php
 require_once '../Include/FooterNotLoggedIn.php';

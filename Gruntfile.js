@@ -160,10 +160,10 @@ module.exports = function (grunt) {
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/jquery-steps/build/jquery.steps.min.js",
-                            "node_modules/jquery-steps/demo/css/jquery.steps.css",
+                            "node_modules/bs-stepper/dist/js/bs-stepper.min.js",
+                            "node_modules/bs-stepper/dist/css/bs-stepper.min.css",
                         ],
-                        dest: "src/skin/external/jquery.steps/",
+                        dest: "src/skin/external/bs-stepper/",
                     },
                     {
                         expand: true,
