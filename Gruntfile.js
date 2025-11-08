@@ -177,15 +177,6 @@ module.exports = function (grunt) {
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/bootstrap-show-password/dist/bootstrap-show-password.min.js",
-                        ],
-                        dest: "src/skin/external/bootstrap-show-password",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: [
                             "node_modules/bootstrap-notify/bootstrap-notify.min.js",
                         ],
                         dest: "src/skin/external/bootstrap-notify",
