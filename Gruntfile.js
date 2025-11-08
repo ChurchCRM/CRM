@@ -143,17 +143,17 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: [
-                            "node_modules/bootstrap-validator/dist/validator.min.js",
-                        ],
-                        dest: "src/skin/external/bootstrap-validator/",
+                        src: ["node_modules/jquery/dist/jquery.min.js"],
+                        dest: "src/skin/external/jquery/",
                     },
                     {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["node_modules/jquery/dist/jquery.min.js"],
-                        dest: "src/skin/external/jquery/",
+                        src: [
+                            "node_modules/just-validate/dist/just-validate.production.min.js",
+                        ],
+                        dest: "src/skin/external/just-validate/",
                     },
                     {
                         expand: true,
