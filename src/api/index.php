@@ -1,20 +1,23 @@
 <?php
-use ChurchCRM\Service\DepositService;
-use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Slim\Middleware\AuthMiddleware;
-use ChurchCRM\Slim\Middleware\VersionMiddleware;
-use ChurchCRM\Slim\Middleware\CorsMiddleware;
-use ChurchCRM\Service\FinancialService;
-use ChurchCRM\Service\GroupService;
-use ChurchCRM\Service\PersonService;
-use ChurchCRM\Service\SystemService;
-use Slim\Factory\AppFactory;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 require_once '../Include/Config.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Use SlimUtils to get base path, default to /api
+use ChurchCRM\Service\DepositService;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\SystemService;
+use ChurchCRM\Slim\Middleware\AuthMiddleware;
+use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\SlimUtils;
+use Slim\Factory\AppFactory;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+// Get base path by combining $sRootPath from Config.php with /api endpoint
+// Examples: '' + '/api' = '/api' (root install)
+//           '/churchcrm' + '/api' = '/churchcrm/api' (subdirectory install)
 $basePath = SlimUtils::getBasePath('/api');
 
 
