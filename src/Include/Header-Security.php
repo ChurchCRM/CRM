@@ -17,9 +17,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-
-// Don't include CSP report-uri during setup (pre-authentication)
-$isSetupMode = !file_exists(__DIR__ . '/Config.php');
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $csp = [
     "default-src 'self'",
@@ -36,8 +34,8 @@ $csp = [
     "frame-ancestors 'self'",
 ];
 
-// Only add report-uri if not in setup mode (requires authentication)
-if (!$isSetupMode) {
+// Only add report-uri if user is authenticated (requires authentication to send reports)
+if (AuthenticationManager::isUserAuthenticated()) {
     $csp[] = 'report-uri ' . SystemURLs::getRootPath() . '/api/system/background/csp-report';
 }
 if (SystemConfig::getBooleanValue('bHSTSEnable')) {
