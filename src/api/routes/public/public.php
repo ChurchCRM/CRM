@@ -18,9 +18,13 @@ function getEcho(Request $request, Response $response): Response
 
 function logCSPReportAPI(Request $request, Response $response, array $args): Response
 {
-    $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
-    $log = json_encode($input, JSON_PRETTY_PRINT);
-    LoggerUtils::getCSPLogger()->warning($log);
+    try {
+        $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
+        $log = json_encode($input, JSON_PRETTY_PRINT);
+        LoggerUtils::getCSPLogger()->warning($log);
+    } catch (\JsonException $e) {
+        LoggerUtils::getCSPLogger()->warning('Invalid CSP report JSON: ' . $e->getMessage());
+    }
 
     return $response->withStatus(204);
 }
