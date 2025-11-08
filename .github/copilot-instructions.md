@@ -316,7 +316,7 @@ CRITICAL: Always wrap user-facing text for translation.
 
 JavaScript:
 ```javascript
-$.notify(i18next.t('Operation completed'), {
+window.CRM.notify(i18next.t('Operation completed'), {
     type: 'success',
     delay: 3000
 });
@@ -327,16 +327,15 @@ PHP:
 echo gettext('Welcome to ChurchCRM');
 ```
 
-NEVER use alert() - only use bootstrap-notify:
+NEVER use alert() - only use window.CRM.notify() with Notyf:
 ```javascript
 // WRONG
 alert('Operation completed');
 
 // CORRECT
-$.notify(i18next.t('Operation completed'), {
+window.CRM.notify(i18next.t('Operation completed'), {
     type: 'success',
-    delay: 3000,
-    placement: { from: 'top', align: 'right' }
+    delay: 3000
 });
 ```
 
@@ -444,7 +443,7 @@ PR organization:
 - Deprecated HTML attributes replaced with CSS
 - Bootstrap CSS classes applied correctly
 - All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
-- No alert() calls - use bootstrap-notify instead
+- No alert() calls - use window.CRM.notify() instead
 - Tests pass (if available)
 - Commit message follows imperative mood (< 72 chars)
 - Branch name follows kebab-case format

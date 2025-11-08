@@ -228,15 +228,6 @@ module.exports = function (grunt) {
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/bootstrap-notify/bootstrap-notify.min.js",
-                        ],
-                        dest: "src/skin/external/bootstrap-notify",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: [
                             "node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
                             "node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.min.css",
                         ],

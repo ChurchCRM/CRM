@@ -26,6 +26,9 @@ import 'quill/dist/quill.snow.css';
 
 import { initializeQuillEditor } from './quill-editor.js';
 
+// Import notifier module (Notyf wrapper for notifications)
+import '../src/skin/js/notifier.js';
+
 // Import cart management module
 import '../src/skin/js/cart.js';
 

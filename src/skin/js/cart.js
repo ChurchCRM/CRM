@@ -4,7 +4,7 @@
  */
 
 import $ from "jquery";
-import "bootstrap-notify";
+import { notify } from "./notifier";
 
 /**
  * Cart Manager Class
@@ -503,36 +503,15 @@ export class CartManager {
     }
 
     /**
-     * Show bootstrap-notify notification
+     * Show notification using Notyf
      * @param {string} type - Notification type (success, danger, warning, info)
      * @param {string} message - Message to display
      */
     showNotification(type, message) {
-        $.notify(
-            {
-                icon:
-                    type === "success"
-                        ? "fa fa-check"
-                        : "fa fa-exclamation-triangle",
-                message: message,
-            },
-            {
-                type: type,
-                delay: 3000,
-                placement: {
-                    from: "top",
-                    align: "right",
-                },
-                offset: {
-                    x: 15,
-                    y: 60,
-                },
-                animate: {
-                    enter: "animated fadeInDown",
-                    exit: "animated fadeOutUp",
-                },
-            },
-        );
+        notify(message, {
+            type: type,
+            delay: 3000,
+        });
     }
 
     /**

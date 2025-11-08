@@ -44,7 +44,7 @@ grep -r "align=\|valign=\|nowrap\|<center>\|<font" src/ | grep -v "//" || true
 - Deprecated HTML attributes replaced with CSS
 - Bootstrap CSS classes applied correctly
 - All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
-- No alert() calls - use bootstrap-notify instead
+- No alert() calls - use window.CRM.notify() instead
 - Tests pass
 - Commit message follows imperative mood (< 72 chars)
 - Branch name follows kebab-case format

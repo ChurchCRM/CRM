@@ -25,8 +25,8 @@ describe("Standard Groups", () => {
         cy.get("#addNewGroup").click();
         
         // Should show error notification and remain on GroupList page
-        // Bootstrap-notify creates an alert with specific structure
-        cy.get("[data-notify='container']", { timeout: 3000 })
+        // Notyf creates notification containers with class 'notyf'
+        cy.get(".notyf__toast", { timeout: 3000 })
             .should("be.visible")
             .and("contain", "Please enter a group name");
         cy.url().should("contain", "GroupList.php");
