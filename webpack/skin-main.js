@@ -9,6 +9,10 @@
  * Used by both logged-in and logged-out pages to provide core styling and functionality.
  */
 
+// Import jQuery and expose it globally for legacy code compatibility
+import $ from 'jquery';
+window.jQuery = window.$ = $;
+
 // Import FontAwesome CSS - webfonts are automatically bundled by webpack
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
