@@ -178,6 +178,25 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
+                        src: [
+                            "node_modules/just-validate/dist/just-validate.production.min.js",
+                        ],
+                        dest: "src/skin/external/just-validate/",
+                    },
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: [
+                            "node_modules/bs-stepper/dist/js/bs-stepper.min.js",
+                            "node_modules/bs-stepper/dist/css/bs-stepper.min.css",
+                        ],
+                        dest: "src/skin/external/bs-stepper/",
+                    },
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
                         src: ["node_modules/chart.js/dist/chart.umd.js"],
                         dest: "src/skin/external/chartjs/",
                     },
