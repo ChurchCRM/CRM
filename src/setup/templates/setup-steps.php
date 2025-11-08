@@ -147,13 +147,15 @@ require_once '../Include/HeaderNotLoggedIn.php';
                         </div>
                         <div class="form-group">
                             <label for="URL">Base URL</label>
-                            <input type="text" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
+                            <input type="url" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
                                    aria-describedby="URL_HELP"
+                                   pattern="https?://[a-zA-Z0-9\-\.]+(?::[0-9]+)?(?:/[a-zA-Z0-9\-\./_~:?#\[\]@!$&'()*+,;=%]*)?/?"
+                                   title="Must be a valid URL with only allowed characters (letters, numbers, hyphens, dots, slashes, and standard URL symbols)"
                                    required>
                             <div class="invalid-feedback"></div>
                             <small id="URL_HELP" class="form-text text-muted">
                                 <strong>Example:</strong> <code>https://www.yourdomain.com/churchcrm/</code><br>
-                                <strong>Rules:</strong> Must be a valid URL, including <code>http://</code> or <code>https://</code>. If using a non-standard port, include it (e.g., <code>https://www.yourdomain.com:8080/churchcrm/</code>). Case sensitive.
+                                <strong>Rules:</strong> Must be a valid URL, including <code>http://</code> or <code>https://</code>. If using a non-standard port, include it (e.g., <code>https://www.yourdomain.com:8080/churchcrm/</code>). Case sensitive. Only standard URL characters allowed.
                             </small>
                         </div>
                     </div>

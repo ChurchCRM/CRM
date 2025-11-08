@@ -363,6 +363,26 @@
                     }
                 }
 
+                // Add URL validation for Base URL field
+                if (field.name === "URL") {
+                    rules.push({
+                        validator: (value) => {
+                            try {
+                                const url = new URL(value);
+                                return (
+                                    url.protocol === "http:" ||
+                                    url.protocol === "https:"
+                                );
+                            } catch (e) {
+                                return false;
+                            }
+                        },
+                        errorMessage: i18next.t(
+                            "Must be a valid URL starting with http:// or https://",
+                        ),
+                    });
+                }
+
                 // Add number pattern validation for numeric fields
                 if (field.getAttribute("pattern") === "[0-9]+") {
                     rules.push({
@@ -526,16 +546,6 @@
             const currentStep = event.detail.from;
             const nextStep = event.detail.to;
 
-            // Check if this navigation was already validated
-            if (
-                state.validatedNavigation &&
-                state.validatedNavigation.from === currentStep &&
-                state.validatedNavigation.to === nextStep
-            ) {
-                state.validatedNavigation = null; // Clear the flag
-                return;
-            }
-
             // Only validate when moving forward
             if (nextStep <= currentStep) {
                 return; // Allow backward navigation
@@ -552,60 +562,6 @@
                     },
                 );
                 return;
-            }
-
-            // Validate current step before moving forward
-            const stepIds = [
-                "step-prerequisites",
-                "step-location",
-                "step-database",
-            ];
-            const currentStepId = stepIds[currentStep];
-
-            console.log(
-                "Current step ID:",
-                currentStepId,
-                "Has validator:",
-                !!validators[currentStepId],
-            );
-
-            // Only validate if we have a validator for this step
-            if (validators[currentStepId]) {
-                event.preventDefault();
-                validators[currentStepId]
-                    .revalidate()
-                    .then(function (isValid) {
-                        if (isValid) {
-                            // Mark this navigation as validated BEFORE navigating
-                            state.validatedNavigation = {
-                                from: currentStep,
-                                to: nextStep,
-                            };
-                            // Use setTimeout to ensure the flag is set before the next event fires
-                            setTimeout(function () {
-                                setupStepper.to(nextStep);
-                            }, 0);
-                        } else {
-                            $.notify(
-                                i18next.t(
-                                    "Please correct the validation errors before continuing.",
-                                ),
-                                {
-                                    type: "warning",
-                                    delay: 3000,
-                                },
-                            );
-                        }
-                    })
-                    .catch(function (error) {
-                        $.notify(
-                            i18next.t("An error occurred during validation."),
-                            {
-                                type: "danger",
-                                delay: 3000,
-                            },
-                        );
-                    });
             }
         });
 
@@ -644,7 +600,6 @@
                             }
                         });
                 } else {
-                    console.log("No database validator, submitting directly");
                     submitSetupData();
                 }
             });
