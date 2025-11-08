@@ -13,7 +13,8 @@ module.exports = {
   },
   output: {
     path:path.resolve('./src/skin/v2'),
-    filename:'[name].min.js'
+    filename:'[name].min.js',
+    publicPath: '/skin/v2/'
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -60,12 +61,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].min.css',
       ignoreOrder: false,
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      'window.$': 'jquery',
     }),
   ],
 }
