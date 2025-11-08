@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 18:35-0800\n"
+"POT-Creation-Date: 2025-11-08 10:36-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -823,6 +823,9 @@ msgstr ""
 msgid "Barbados"
 msgstr ""
 
+msgid "Base URL is required"
+msgstr ""
+
 msgid "Based on filters below.."
 msgstr ""
 
@@ -1584,6 +1587,18 @@ msgid "Database and Photos (.tar.gz)"
 msgstr ""
 
 msgid "Database information confirmation and correction report signer"
+msgstr ""
+
+msgid "Database name is required"
+msgstr ""
+
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr ""
+
+msgid "Database server port is required (e.g., 3306)"
+msgstr ""
+
+msgid "Database username is required"
 msgstr ""
 
 msgid "Date"
@@ -3333,6 +3348,9 @@ msgstr ""
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr ""
 
+msgid "Invalid format"
+msgstr ""
+
 msgid "Invalid login or password"
 msgstr ""
 
@@ -4093,10 +4111,23 @@ msgstr ""
 msgid "Multiple items"
 msgstr ""
 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr ""
+
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr ""
+
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr ""
+
 msgid "Must be set to 'true'"
 msgstr ""
 
 msgid "Must specify non-zero check number"
+msgstr ""
+
+msgctxt ", -, ., / allowed."
+msgid "Must start with / if not empty, no trailing slash. Only letters, numbers, "
 msgstr ""
 
 msgid "My User Settings"
@@ -4639,6 +4670,9 @@ msgstr ""
 msgid "Passwords"
 msgstr ""
 
+msgid "Passwords do not match"
+msgstr ""
+
 msgid "Patriarch"
 msgstr ""
 
@@ -4898,6 +4932,9 @@ msgstr ""
 msgid "Please confirm the password reset of this user"
 msgstr ""
 
+msgid "Please correct the validation errors before continuing."
+msgstr ""
+
 msgid "Please create a database backup before beginning the upgrade process."
 msgstr ""
 
@@ -4914,6 +4951,9 @@ msgid "Please enter 2FA code"
 msgstr ""
 
 msgid "Please enter a group name."
+msgstr ""
+
+msgid "Please enter a valid number"
 msgstr ""
 
 msgid "Please enter the following to start your family's verification"
