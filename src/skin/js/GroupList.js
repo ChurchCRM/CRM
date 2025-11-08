@@ -146,6 +146,7 @@ $(document).ready(() => {
             {
                 width: "auto",
                 title: i18next.t("Group Cart Status"),
+                data: null,
                 searchable: false,
                 render: (data, type, full, meta) => {
                     return `<span class="cartStatusButton" data-groupid="${full.Id}" data-membercount="${full.memberCount}">${i18next.t("Checking Cart Status")}</span>`;
