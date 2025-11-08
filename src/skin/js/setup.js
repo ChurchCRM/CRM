@@ -32,9 +32,11 @@
         if (state.checksComplete) {
             let allPassed = true;
             for (const key in state.prerequisites) {
-                if (state.prerequisites[key] !== true) {
-                    allPassed = false;
-                    break;
+                if (Object.prototype.hasOwnProperty.call(state.prerequisites, key)) {
+                    if (state.prerequisites[key] !== true) {
+                        allPassed = false;
+                        break;
+                    }
                 }
             }
             state.prerequisitesStatus = allPassed;
@@ -374,13 +376,22 @@
                         validator.addField(`#${field.id}`, rules);
                     }
                     hasFields = true;
+                    console.log(
+                        `Added validation for ${field.id}:`,
+                        rules.map((r) => r.rule).join(", "),
+                    );
                 }
             });
 
+        console.log(
+            `Validator for ${stepId}:`,
+            hasFields ? "created" : "no fields",
+        );
         return hasFields ? validator : null;
     }
 
     function submitSetupData() {
+        console.log("submitSetupData called");
         const form = document.getElementById("setup-form");
         const formData = {};
 
@@ -389,6 +400,9 @@
         for (const [key, value] of data.entries()) {
             formData[key] = value || "";
         }
+
+        console.log("Form data prepared:", formData);
+        console.log("Sending to:", rootPath + "/setup/");
 
         // Show the setup modal
         $("#setupModal").modal("show");
@@ -400,6 +414,8 @@
             contentType: "application/json",
         })
             .done(function (response) {
+                console.log("Setup success:", response);
+
                 // Check if response contains errors (backend bug workaround)
                 if (response && response.errors) {
                     console.error(
@@ -499,6 +515,7 @@
         // Prevent form submission (we handle it via AJAX)
         form.addEventListener("submit", function (event) {
             event.preventDefault();
+            console.log("Form submit prevented - use Finish button instead");
             return false;
         });
 
@@ -519,10 +536,20 @@
         validators["step-location"] = initializeStepValidation("step-location");
         validators["step-database"] = initializeStepValidation("step-database");
 
+        console.log("Validators initialized:", {
+            "step-location": validators["step-location"] !== null,
+            "step-database": validators["step-database"] !== null,
+        });
+
         // BS-stepper navigation with validation
         stepperElement.addEventListener("show.bs-stepper", function (event) {
             const currentStep = event.detail.from;
             const nextStep = event.detail.to;
+
+            console.log("Navigation attempt:", {
+                from: currentStep,
+                to: nextStep,
+            });
 
             // Check if this navigation was already validated
             if (
@@ -544,6 +571,7 @@
             // Check prerequisites when leaving step 0
             if (currentStep === 0 && !state.prerequisitesStatus) {
                 event.preventDefault();
+                console.log("Blocking: Prerequisites not met");
                 $.notify(
                     "Please ensure all prerequisites are met before continuing.",
                     {
@@ -562,13 +590,23 @@
             ];
             const currentStepId = stepIds[currentStep];
 
+            console.log(
+                "Current step ID:",
+                currentStepId,
+                "Has validator:",
+                !!validators[currentStepId],
+            );
+
             // Only validate if we have a validator for this step
             if (validators[currentStepId]) {
                 event.preventDefault();
+                console.log("Running validation for:", currentStepId);
                 validators[currentStepId]
                     .revalidate()
                     .then(function (isValid) {
+                        console.log("Validation result:", isValid);
                         if (isValid) {
+                            console.log("Navigating to step:", nextStep);
                             // Mark this navigation as validated
                             state.validatedNavigation = {
                                 from: currentStep,
@@ -591,6 +629,8 @@
                     .catch(function (error) {
                         console.error("Validation error:", error);
                     });
+            } else {
+                console.log("No validator, allowing navigation");
             }
         });
 
@@ -609,13 +649,16 @@
         document
             .getElementById("submit-setup")
             .addEventListener("click", function (event) {
+                console.log("Finish button clicked");
                 event.preventDefault(); // Prevent any default behavior
 
                 // Validate database step before submission
                 if (validators["step-database"]) {
+                    console.log("Validating database step...");
                     validators["step-database"]
                         .revalidate()
                         .then(function (isValid) {
+                            console.log("Database validation result:", isValid);
                             if (isValid) {
                                 submitSetupData();
                             } else {
@@ -629,6 +672,7 @@
                             }
                         });
                 } else {
+                    console.log("No database validator, submitting directly");
                     submitSetupData();
                 }
             });
