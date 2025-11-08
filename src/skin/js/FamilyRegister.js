@@ -4,17 +4,16 @@
     const rootPath = window.CRM && window.CRM.root ? window.CRM.root : "";
     let registrationStepper;
     let validators = {};
+    let state = {
+        validatedNavigation: null,
+    };
 
     function buildFamilyObject() {
         const family = {};
         family["Name"] = $("#familyName").val();
         family["Address1"] = $("#familyAddress1").val();
         family["City"] = $("#familyCity").val();
-        if ($("#familyStateSelect").hasClass("hidden")) {
-            family["State"] = $("#familyStateInput").val();
-        } else {
-            family["State"] = $("#familyStateSelect").val();
-        }
+        family["State"] = $("#familyState").val();
         family["Country"] = $("#familyCountry").val();
         family["Zip"] = $("#familyZip").val();
         family["HomePhone"] = $("#familyHomePhone").val();
@@ -49,6 +48,13 @@
     function updateMemberBoxes() {
         const familyCount = $("#familyCount").val();
         const familyName = $("#familyName").val();
+
+        // Update the badge display in step 2 header
+        $("#member-count-display").text(
+            familyCount +
+                " " +
+                i18next.t(familyCount === "1" ? "member" : "members"),
+        );
 
         for (let i = 1; i <= 8; i++) {
             const boxName = "#memberBox" + i;
@@ -85,6 +91,13 @@
                 rule: "required",
                 errorMessage: i18next.t("Family name is required"),
             },
+            {
+                rule: "minLength",
+                value: 2,
+                errorMessage: i18next.t(
+                    "Family name must be at least 2 characters",
+                ),
+            },
         ]);
 
         validator.addField("#familyAddress1", [
@@ -95,7 +108,10 @@
         ]);
 
         validator.addField("#familyCity", [
-            { rule: "required", errorMessage: i18next.t("City is required") },
+            {
+                rule: "required",
+                errorMessage: i18next.t("City is required"),
+            },
         ]);
 
         validator.addField("#familyZip", [
@@ -109,6 +125,11 @@
             {
                 rule: "required",
                 errorMessage: i18next.t("Home phone is required"),
+            },
+            {
+                rule: "minLength",
+                value: 7,
+                errorMessage: i18next.t("Please enter a valid phone number"),
             },
         ]);
 
@@ -136,6 +157,13 @@
                     rule: "required",
                     errorMessage: i18next.t("First name is required"),
                 },
+                {
+                    rule: "minLength",
+                    value: 2,
+                    errorMessage: i18next.t(
+                        "First name must be at least 2 characters",
+                    ),
+                },
             ]);
 
             validator.addField("#memberLastName-" + i, [
@@ -143,7 +171,27 @@
                     rule: "required",
                     errorMessage: i18next.t("Last name is required"),
                 },
+                {
+                    rule: "minLength",
+                    value: 2,
+                    errorMessage: i18next.t(
+                        "Last name must be at least 2 characters",
+                    ),
+                },
             ]);
+
+            // Email validation (optional but must be valid if provided)
+            const emailField = document.getElementById("memberEmail-" + i);
+            if (emailField && emailField.value.trim() !== "") {
+                validator.addField("#memberEmail-" + i, [
+                    {
+                        rule: "email",
+                        errorMessage: i18next.t(
+                            "Please enter a valid email address (e.g., name@example.com)",
+                        ),
+                    },
+                ]);
+            }
         }
 
         validators["step-members"] = validator;
@@ -215,12 +263,33 @@
                     },
                 });
             })
-            .fail(function (data) {
+            .fail(function (xhr) {
+                console.error("Registration failed:", xhr);
+
+                // Parse error message
+                let errorMessage = i18next.t(
+                    "Sorry, we are unable to process your request at this point in time.",
+                );
+
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                } else if (xhr.responseJSON && xhr.responseJSON.errors) {
+                    errorMessage = "<ul class='mb-0'>";
+                    for (const [field, error] of Object.entries(
+                        xhr.responseJSON.errors,
+                    )) {
+                        errorMessage += `<li><strong>${field}:</strong> ${error}</li>`;
+                    }
+                    errorMessage += "</ul>";
+                } else if (xhr.responseText) {
+                    errorMessage = xhr.responseText;
+                } else if (xhr.statusText) {
+                    errorMessage = xhr.statusText;
+                }
+
                 bootbox.alert({
-                    title: i18next.t(
-                        "Sorry, we are unable to process your request at this point in time.",
-                    ),
-                    message: data.responseText,
+                    title: i18next.t("Registration Error"),
+                    message: errorMessage,
                 });
             });
     }
@@ -231,6 +300,14 @@
     document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById("registration-form");
         const stepperElement = document.getElementById("registration-stepper");
+
+        // Prevent form submission (we handle it via AJAX)
+        if (form) {
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                return false;
+            });
+        }
 
         registrationStepper = new Stepper(stepperElement, {
             linear: true,
@@ -251,14 +328,21 @@
 
         // Validation on step change
         stepperElement.addEventListener("show.bs-stepper", function (event) {
-            event.preventDefault();
-
             const currentStep = event.detail.from;
             const nextStep = event.detail.to;
 
-            // Allow backward navigation
-            if (nextStep < currentStep) {
-                registrationStepper.to(nextStep);
+            // Check if this navigation was already validated
+            if (
+                state.validatedNavigation &&
+                state.validatedNavigation.from === currentStep &&
+                state.validatedNavigation.to === nextStep
+            ) {
+                state.validatedNavigation = null;
+                // Continue with navigation setup
+            } else if (nextStep > currentStep) {
+                // Forward navigation without validation - prevent it
+                // (validation should happen in button handlers)
+                event.preventDefault();
                 return;
             }
 
@@ -271,21 +355,6 @@
             if (nextStep === 2) {
                 displayReviewSummary();
             }
-
-            // Validate before moving forward
-            const stepIds = ["step-family-info", "step-members", "step-review"];
-            const currentStepId = stepIds[currentStep];
-
-            if (validators[currentStepId]) {
-                validators[currentStepId].revalidate().then(function (isValid) {
-                    if (isValid) {
-                        registrationStepper.to(nextStep);
-                    }
-                });
-            } else {
-                // No validation for review step
-                registrationStepper.to(nextStep);
-            }
         });
 
         // Handle form submission
@@ -293,6 +362,75 @@
             .getElementById("submit-registration")
             .addEventListener("click", function () {
                 submitRegistration();
+            });
+
+        // Navigation button event listeners (CSP compliant - no inline onclick)
+        document
+            .getElementById("family-info-next")
+            .addEventListener("click", function (e) {
+                e.preventDefault();
+                if (validators["step-family-info"]) {
+                    validators["step-family-info"]
+                        .revalidate()
+                        .then(function (isValid) {
+                            if (isValid) {
+                                state.validatedNavigation = { from: 0, to: 1 };
+                                registrationStepper.next();
+                            } else {
+                                $.notify(
+                                    i18next.t(
+                                        "Please fill in all required fields correctly.",
+                                    ),
+                                    {
+                                        type: "warning",
+                                        delay: 3000,
+                                    },
+                                );
+                            }
+                        });
+                } else {
+                    registrationStepper.next();
+                }
+            });
+
+        document
+            .getElementById("members-previous")
+            .addEventListener("click", function () {
+                registrationStepper.previous();
+            });
+
+        document
+            .getElementById("members-next")
+            .addEventListener("click", function (e) {
+                e.preventDefault();
+                if (validators["step-members"]) {
+                    validators["step-members"]
+                        .revalidate()
+                        .then(function (isValid) {
+                            if (isValid) {
+                                state.validatedNavigation = { from: 1, to: 2 };
+                                registrationStepper.next();
+                            } else {
+                                $.notify(
+                                    i18next.t(
+                                        "Please fill in all required fields correctly.",
+                                    ),
+                                    {
+                                        type: "warning",
+                                        delay: 3000,
+                                    },
+                                );
+                            }
+                        });
+                } else {
+                    registrationStepper.next();
+                }
+            });
+
+        document
+            .getElementById("review-previous")
+            .addEventListener("click", function () {
+                registrationStepper.previous();
             });
 
         // Update member last names when family name changes
@@ -327,7 +465,12 @@
 
         // Initialize select2 and country/state handling
         $("#familyCountry").select2();
+
         $("#familyCountry").change(function () {
+            const $container = $("#familyStateContainer");
+            const defaultState =
+                $container.find("#familyState").data("default") || "";
+
             $.ajax({
                 type: "GET",
                 url:
@@ -337,21 +480,37 @@
                     "/states",
             }).done(function (data) {
                 if (Object.keys(data).length > 0) {
-                    $("#familyStateSelect").empty();
+                    // Country has states - replace with dropdown
+                    let selectHtml =
+                        '<select id="familyState" name="familyState" class="form-control">';
                     $.each(data, function (code, name) {
                         const selected =
-                            $("#familyStateSelect").data("system-default") ==
-                            code;
-                        $("#familyStateSelect").append(
-                            new Option(name, code, selected, selected),
-                        );
+                            defaultState == code ? " selected" : "";
+                        selectHtml +=
+                            '<option value="' +
+                            code +
+                            '"' +
+                            selected +
+                            ">" +
+                            name +
+                            "</option>";
                     });
-                    $("#familyStateSelect").change();
-                    $("#familyStateInput").addClass("hidden");
-                    $("#familyStateSelect").removeClass("hidden");
+                    selectHtml += "</select>";
+
+                    $container.html(selectHtml);
+                    $("#familyState").select2();
                 } else {
-                    $("#familyStateInput").removeClass("hidden");
-                    $("#familyStateSelect").addClass("hidden");
+                    // Country has no states - replace with text input
+                    const stateValue = defaultState || "";
+                    const inputHtml =
+                        '<input id="familyState" name="familyState" class="form-control" placeholder="' +
+                        i18next.t("State") +
+                        '" value="' +
+                        stateValue +
+                        '" data-default="' +
+                        stateValue +
+                        '">';
+                    $container.html(inputHtml);
                 }
             });
         });
@@ -361,6 +520,13 @@
             autoclose: true,
         });
 
-        $("[data-mask]").inputmask();
+        // Initialize input masks with error handling
+        $("[data-mask]").each(function () {
+            try {
+                $(this).inputmask();
+            } catch (e) {
+                console.error("Failed to initialize inputmask:", e);
+            }
+        });
     });
 })();
