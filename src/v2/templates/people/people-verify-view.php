@@ -11,8 +11,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><?= gettext('Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app"><i class="fa-solid fa-file-pdf"></i><?= gettext('Download family letters') ?></a>
-        <div class="btn btn-app" id="verifyEmail"><i class="fa  fa-envelope"></i><?= gettext('Send family email') ?></div>
+        <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app bg-danger">
+            <i class="fa-solid fa-file-pdf fa-3x"></i><br>
+            <?= gettext('Download family letters') ?>
+        </a>
+        <button type="button" class="btn btn-app bg-primary" id="verifyEmail">
+            <i class="fa-solid fa-envelope fa-3x"></i><br>
+            <?= gettext('Send family email') ?>
+        </button>
     </div>
 </div>
 
