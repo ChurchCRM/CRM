@@ -316,6 +316,7 @@ $(document).ready(() => {
             {
                 width: "auto",
                 title: i18next.t("Make Default"),
+                data: null,
                 render: (data, type, full, meta) => {
                     if (full.lst_OptionID == defaultRoleID) {
                         return `<strong><i class="fa-solid fa-check"></i>${i18next.t("Default")}</strong>`;
@@ -347,6 +348,7 @@ $(document).ready(() => {
             {
                 width: "auto",
                 title: i18next.t("Delete"),
+                data: null,
                 render: (data, type, full, meta) => {
                     const isProtected =
                         full.lst_OptionName === "Student" ||
