@@ -55,6 +55,16 @@ class AuthenticationManager
         }
     }
 
+    public static function isUserAuthenticated(): bool
+    {
+        try {
+            $user = self::getCurrentUser();
+            return $user !== null;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
     public static function endSession(bool $preventRedirect = false): void
     {
         $logger = LoggerUtils::getAuthLogger();

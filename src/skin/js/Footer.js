@@ -57,6 +57,9 @@ $("document").ready(function () {
     // Note: Cart event handlers are now in cart.js module
     // The CartManager class handles all cart button clicks and notifications
 
+    // Initialize just-validate for all forms with data-validate attribute
+    initializeFormValidation();
+
     window.CRM.dashboard.refresh();
     DashboardRefreshTimer = setInterval(
         window.CRM.dashboard.refresh,
@@ -112,6 +115,96 @@ function showGlobalMessage(message, callOutClass) {
             },
         },
     );
+}
+
+/**
+ * Initialize form validation for all forms with data-validate attribute
+ * Uses just-validate library with Bootstrap 4 styling
+ */
+function initializeFormValidation() {
+    document.querySelectorAll("form[data-validate]").forEach(function (form) {
+        const validator = new window.JustValidate(form, {
+            errorFieldCssClass: "is-invalid",
+            successFieldCssClass: "is-valid",
+            errorLabelCssClass: "invalid-feedback",
+            focusInvalidField: true,
+            lockForm: true,
+        });
+
+        // Auto-add validation rules based on HTML5 attributes
+        form.querySelectorAll("input, select, textarea").forEach(
+            function (field) {
+                const rules = [];
+
+                if (field.hasAttribute("required")) {
+                    rules.push({
+                        rule: "required",
+                        errorMessage: i18next.t("This field is required"),
+                    });
+                }
+
+                if (field.type === "email") {
+                    rules.push({
+                        rule: "email",
+                        errorMessage: i18next.t(
+                            "Please enter a valid email address",
+                        ),
+                    });
+                }
+
+                if (field.type === "url") {
+                    rules.push({
+                        rule: "customRegexp",
+                        value: /^https?:\/\/.+/,
+                        errorMessage: i18next.t("Please enter a valid URL"),
+                    });
+                }
+
+                if (field.hasAttribute("pattern")) {
+                    rules.push({
+                        rule: "customRegexp",
+                        value: new RegExp(field.getAttribute("pattern")),
+                        errorMessage:
+                            field.getAttribute("title") ||
+                            i18next.t("Invalid format"),
+                    });
+                }
+
+                if (field.hasAttribute("minlength")) {
+                    rules.push({
+                        rule: "minLength",
+                        value: parseInt(field.getAttribute("minlength")),
+                        errorMessage:
+                            i18next.t("Minimum length is") +
+                            " " +
+                            field.getAttribute("minlength"),
+                    });
+                }
+
+                if (field.hasAttribute("maxlength")) {
+                    rules.push({
+                        rule: "maxLength",
+                        value: parseInt(field.getAttribute("maxlength")),
+                        errorMessage:
+                            i18next.t("Maximum length is") +
+                            " " +
+                            field.getAttribute("maxlength"),
+                    });
+                }
+
+                if (rules.length > 0 && field.name) {
+                    rules.forEach(function (rule) {
+                        validator.addField(
+                            field.id
+                                ? "#" + field.id
+                                : '[name="' + field.name + '"]',
+                            [rule],
+                        );
+                    });
+                }
+            },
+        );
+    });
 }
 
 /**
