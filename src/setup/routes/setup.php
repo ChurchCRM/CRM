@@ -142,5 +142,6 @@ function is_valid_port($value)
 
 function is_valid_root_path($value)
 {
-    return preg_match('#^\/[a-zA-Z0-9_\-\.\/]*$#', $value);
+    // Allow empty string OR a path starting with / (no trailing slash)
+    return preg_match('#^(|\/[a-zA-Z0-9_\-\.\/]*)$#', $value);
 }
