@@ -456,6 +456,7 @@ function initializeCalendar() {
     window.CRM.fullcalendar = new FullCalendar.Calendar(
         document.getElementById("calendar"),
         {
+            locale: window.CRM.lang || "en",
             headerToolbar: {
                 start: "prev,next today",
                 center: "title",
@@ -726,11 +727,13 @@ function displayAccessTokenAPITest() {
 
 document.addEventListener("DOMContentLoaded", function () {
     //window.CRM.calendarJSArgs.isModifiable = false;
-    initializeCalendar();
-    initializeFilterSettings();
-    initializeNewCalendarButton();
-    registerCalendarSelectionEvents();
-    displayAccessTokenAPITest();
+    window.CRM.onLocalesReady(function () {
+        initializeCalendar();
+        initializeFilterSettings();
+        initializeNewCalendarButton();
+        registerCalendarSelectionEvents();
+        displayAccessTokenAPITest();
 
-    window.CRM.fullcalendar.render();
+        window.CRM.fullcalendar.render();
+    });
 });

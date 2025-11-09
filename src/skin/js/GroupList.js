@@ -1,4 +1,4 @@
-$(document).ready(() => {
+function initializeGroupList() {
     window.CRM.groupsInCart = 0;
 
     // Fetch groups currently in cart
@@ -162,4 +162,9 @@ $(document).ready(() => {
                 }
             });
         });
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeGroupList);
 });

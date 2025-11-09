@@ -272,6 +272,19 @@ module.exports = function (grunt) {
                         src: ["js/i18n/*.js"],
                         dest: "src/locale/vendor/select2/",
                     },
+                    // FullCalendar locale files
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/@fullcalendar/core",
+                        src: ["locales/*.global.min.js"],
+                        dest: "src/locale/vendor/fullcalendar/",
+                        rename: function (dest, src) {
+                            // Remove .global.min suffix: el.global.min.js -> el.js
+                            return dest + src.replace(/\.global\.min\.js$/, ".js");
+                        },
+                    },
                 ],
             },
         },

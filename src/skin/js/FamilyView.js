@@ -1,4 +1,4 @@
-$(function () {
+function initializeFamilyView() {
     if (!window.CRM.currentActive) {
         $("#family-deactivated").removeClass("d-none");
     }
@@ -360,4 +360,9 @@ $(function () {
             }
         });
     }
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeFamilyView);
 });

@@ -217,7 +217,7 @@ foreach ($ListItem as $element) {
 
     var oTable;
 
-    $(document).ready(function() {
+    function initializePeopleList() {
 
         // Set all i18next translations
         $('#filters-title').text(i18next.t('Filters'));
@@ -408,7 +408,12 @@ foreach ($ListItem as $element) {
             $('.filter-Custom').val([]).trigger('change')
             $('.filter-Group').val([]).trigger('change')
         });
-    }); // end document ready
+    } // end initializePeopleList
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializePeopleList);
+    });
 
     $("#AddAllToCart").click(function(){
         var listPeople = [];

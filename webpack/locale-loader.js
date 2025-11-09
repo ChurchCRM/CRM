@@ -83,6 +83,20 @@ async function loadLocaleFiles(localeConfig) {
             );
         }
 
+        // Load FullCalendar locale if configured
+        if (localeConfig.fullCalendar) {
+            let fcLocale = localeConfig.languageCode.toLowerCase();
+            if (localeConfig.fullCalendarLocale) {
+                fcLocale = localeConfig.fullCalendarLocale;
+            }
+            const fcPath = `${rootPath}/locale/vendor/fullcalendar/${fcLocale}.js`;
+            promises.push(
+                loadScript(fcPath)
+                    .then(() => console.log(`Loaded FullCalendar locale: ${fcLocale}`))
+                    .catch(e => console.warn(`Failed to load FullCalendar locale ${fcLocale}:`, e))
+            );
+        }
+
         // Wait for all locale files to load
         await Promise.all(promises);
         console.log(`All locale files loaded for: ${localeConfig.locale}`);

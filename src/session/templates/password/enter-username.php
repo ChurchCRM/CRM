@@ -48,28 +48,32 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
         <!-- /.form-box -->
     </div>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-        $("#resetPassword").click(function (e) {
-            var userName = $("#username").val();
-            if (userName) {
-                $("#resetStatusText").html(i18next.t('Requesting Password Reset')+'<i class="fa-solid fa-circle-notch fa-spin"></i>');
-                $.ajax({
-                    method: "POST",
-                    url: "<?= $PasswordResetXHREndpoint ?>",
-                    data: JSON.stringify({ 'userName': userName })
-                }).done(function (data) {
-                    $("#resetStatusText").html("");
-                    bootbox.alert(i18next.t('Check your email for a password reset link'),
-                        function () {
-                            window.location.href = window.CRM.root + "/";
-                        }
-                    );
-                }).fail(function () {
-                    $("#resetStatusText").html("");
-                    bootbox.alert("<?= gettext("Sorry, we are unable to process your request at this point in time.")?>");
+        $(document).ready(function() {
+            window.CRM.onLocalesReady(function() {
+                $("#resetPassword").click(function (e) {
+                    var userName = $("#username").val();
+                    if (userName) {
+                        $("#resetStatusText").html(i18next.t('Requesting Password Reset')+'<i class="fa-solid fa-circle-notch fa-spin"></i>');
+                        $.ajax({
+                            method: "POST",
+                            url: "<?= $PasswordResetXHREndpoint ?>",
+                            data: JSON.stringify({ 'userName': userName })
+                        }).done(function (data) {
+                            $("#resetStatusText").html("");
+                            bootbox.alert(i18next.t('Check your email for a password reset link'),
+                                function () {
+                                    window.location.href = window.CRM.root + "/";
+                                }
+                            );
+                        }).fail(function () {
+                            $("#resetStatusText").html("");
+                            bootbox.alert("<?= gettext("Sorry, we are unable to process your request at this point in time.")?>");
+                        });
+                    } else {
+                        bootbox.alert("<?= gettext("Login Name is Required")?>");
+                    }
                 });
-            } else {
-                bootbox.alert("<?= gettext("Login Name is Required")?>");
-            }
+            });
         });
     </script>
 <?php

@@ -69,17 +69,19 @@ function initializeApp() {
     initializeFAB();
 }
 
+// Helper function to run initialization code after locales are loaded
+// Usage: window.CRM.onLocalesReady(function() { /* your init code */ });
+window.CRM.onLocalesReady = function (callback) {
+    if (window.CRM.localesLoaded) {
+        callback();
+    } else {
+        window.addEventListener("CRM.localesReady", callback, { once: true });
+    }
+};
+
 // Wait for both DOM and locales to be ready
 $(document).ready(function () {
-    // Check if locales are already loaded
-    if (window.CRM && window.CRM.localesLoaded) {
-        initializeApp();
-    } else {
-        // Wait for locales to load
-        window.addEventListener("CRM.localesReady", initializeApp, {
-            once: true,
-        });
-    }
+    window.CRM.onLocalesReady(initializeApp);
 });
 
 function showGlobalMessage(message, callOutClass) {

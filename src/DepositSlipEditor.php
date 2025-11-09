@@ -209,15 +209,17 @@ foreach ($thisDeposit->getFundTotals() as $tmpfund) {
   var pledgeData = <?= json_encode($pledgeData) ?>;
   var pledgeBackgroundColor = ['#197A05','#003399'];
   $(document).ready(function() {
-    initPaymentTable();
-    var pledgeLabels = <?= json_encode(array_values($fundData)); ?>;
-    initCharts(pledgeLabels,
-               pledgeData,
-               pledgeBackgroundColor,
-               fundLabels,
-               fundData,
-               fundBackgroundColor);
-    initDepositSlipEditor();
+    window.CRM.onLocalesReady(function() {
+      initPaymentTable();
+      var pledgeLabels = <?= json_encode(array_values($fundData)); ?>;
+      initCharts(pledgeLabels,
+                 pledgeData,
+                 pledgeBackgroundColor,
+                 fundLabels,
+                 fundData,
+                 fundBackgroundColor);
+      initDepositSlipEditor();
+    });
 
     $('#deleteSelectedRows').click(function() {
       var deletedRows = dataT.rows('.selected').data();

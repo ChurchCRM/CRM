@@ -45,7 +45,7 @@ use ChurchCRM\dto\SystemURLs;
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
+    function initializeSelfRegister() {
 
         var dataTableConfig = {
             ajax: {
@@ -130,6 +130,11 @@ use ChurchCRM\dto\SystemURLs;
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#people").DataTable(dataTableConfig);
+    }
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializeSelfRegister);
     });
 </script>
 <?php
