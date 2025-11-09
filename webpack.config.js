@@ -10,7 +10,8 @@ module.exports = {
     'churchcrm' : './webpack/skin-main',  // Main bundle for all pages
     'photo-uploader' : './webpack/photo-uploader-entry',  // Photo uploader for specific pages
     'setup' : './webpack/setup',  // Setup wizard styles
-    'family-register' : './webpack/family-register'  // Family registration styles and scripts
+    'family-register' : './webpack/family-register',  // Family registration styles and scripts
+    'locale-loader' : './webpack/locale-loader'  // Dynamic locale loader
   },
   output: {
     path:path.resolve('./src/skin/v2'),
