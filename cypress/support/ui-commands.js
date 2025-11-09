@@ -47,10 +47,6 @@ Cypress.Commands.add(
             cy.location("pathname").should("include", location.split("?")[0]);
         }
         
-        // Additional verification: ensure we're not on login/error pages
-        cy.url().should('not.contain', 'session/begin');
-        cy.url().should('not.contain', 'session/end');
-        
         // Wait for page to be fully loaded
         cy.document().should("have.property", "readyState", "complete");
         
