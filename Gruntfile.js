@@ -10,16 +10,6 @@ module.exports = function (grunt) {
         return poEditorLocales;
     };
 
-    var dataTablesLang = function () {
-        var locales = grunt.file.readJSON("src/locale/locales.json");
-        var DTLangs = [];
-        for (var key in locales) {
-            var locale = locales[key];
-            DTLangs.push(locale["dataTables"]);
-        }
-        return DTLangs.toString();
-    };
-
     var momentLangs = function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
         var momentFiles = ["node_modules/moment/min/moment.min.js"];
@@ -268,21 +258,17 @@ module.exports = function (grunt) {
                         ],
                         dest: "src/skin/external/datatables/",
                     },
+                    // DataTables: Locale/i18n files
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/datatables.net-plugins",
+                        src: ["i18n/*.json"],
+                        dest: "src/locale/datatables/",
+                    },
                 ],
             },
-        },
-        "curl-dir": {
-            // DataTables locale files still come from CDN (no npm package available)
-            datatables_locale: {
-                src: [
-                    "https://cdn.datatables.net/plug-ins/" +
-                        dataTablesVer +
-                        "/i18n/{" +
-                        dataTablesLang() +
-                        "}.json",
-                ],
-                dest: "src/locale/datatables",
-            }
         },
         generateSignatures: {
             sign: {
@@ -446,5 +432,4 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-curl");
 };
