@@ -186,7 +186,7 @@ The system generates several runtime files:
 - Generated during build process
 
 #### JSON Files
-- `locale/JSONKeys/*.json` - Translation key mappings
+- `src/locale/i18n/*.json` - Translation key mappings
 - Used for JavaScript internationalization
 - Generated during locale generation
 

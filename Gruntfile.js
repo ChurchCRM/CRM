@@ -349,7 +349,7 @@ module.exports = function (grunt) {
             let enableSelect2 = localeConfig["select2"];
             let momentLocale = localeConfig["momentLocale"];
 
-            let tempFile = "locale/JSONKeys/" + locale + ".json";
+            let tempFile = "src/locale/i18n/" + locale + ".json";
             let poTerms = "{}";
             if (grunt.file.exists(tempFile)) {
                 poTerms = grunt.file.read(tempFile);
