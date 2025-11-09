@@ -218,6 +218,10 @@ foreach ($ListItem as $element) {
     var oTable;
 
     function initializePeopleList() {
+        // Prevent double initialization
+        if (oTable) {
+            return;
+        }
 
         // setup filters
         var filterByClsId = '<?= $filterByClsId ?>';
@@ -411,6 +415,11 @@ foreach ($ListItem as $element) {
 
         // Helper function to collect all filtered people IDs from the table
         function collectFilteredPeople() {
+            // Guard: ensure oTable is initialized
+            if (!oTable || typeof oTable.rows !== 'function') {
+                return [];
+            }
+            
             var listPeople = [];
             var currentPage = oTable.page();
             var currentPageLength = oTable.page.len();
@@ -501,7 +510,8 @@ foreach ($ListItem as $element) {
         
         // Function to update button states for all visible rows based on cart status
         function updateCartButtonStates() {
-            if (!window.CRM.APIRequest) {
+            // Guard: only run if oTable is initialized
+            if (!oTable || !window.CRM.APIRequest) {
                 return;
             }
             
