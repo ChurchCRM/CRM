@@ -50,6 +50,19 @@ Cypress.Commands.add(
         // Additional verification: ensure we're not on login/error pages
         cy.url().should('not.contain', 'session/begin');
         cy.url().should('not.contain', 'session/end');
+        
+        // Wait for page to be fully loaded
+        cy.document().should("have.property", "readyState", "complete");
+        
+        // Wait for all AJAX/fetch requests to complete
+        // Use window.jQuery.active if available (for jQuery AJAX)
+        cy.window().then((win) => {
+            if (win.jQuery) {
+                cy.wrap(null).should(() => {
+                    expect(win.jQuery.active).to.equal(0);
+                });
+            }
+        });
     },
 );
 
