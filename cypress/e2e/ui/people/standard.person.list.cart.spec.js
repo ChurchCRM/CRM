@@ -18,7 +18,7 @@ describe("People List & Carts", () => {
 
         // Wait for operations to complete
         cy.wait(4000);
-        // Verify table does NOT contain any "Female" entries
+        // Verify table contains "Female" entries
         cy.get("#members tbody").should("contain", "Female");
         
         // Click Add All to Cart
