@@ -1,4 +1,7 @@
-import moment from "moment";
+/**
+ * Deposit Slip Editor
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
 
 function initPaymentTable() {
     var colDef = [

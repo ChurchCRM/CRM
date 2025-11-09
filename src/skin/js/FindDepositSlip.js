@@ -1,4 +1,7 @@
-import moment from "moment";
+/**
+ * Find Deposit Slip
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
 
 var dataT = 0;
 

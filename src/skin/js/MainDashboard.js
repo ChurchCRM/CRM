@@ -1,4 +1,7 @@
-import moment from "moment";
+/**
+ * Main Dashboard initialization script
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
 
 function initializeMainDashboard() {
     let dataTableDashboardDefaults = {
