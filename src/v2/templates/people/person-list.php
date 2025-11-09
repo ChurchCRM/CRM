@@ -354,33 +354,36 @@ foreach ($ListItem as $element) {
 
         // setup external DataTable filters
         var Gender = ['Unassigned', 'Male', 'Female'];  // order: 0=Unassigned, 1=Male, 2=Female
+        var shouldTriggerGenderFilter = false;
         for (var i = 0; i < Gender.length; i++) {
             if (filterByGender == Gender[i]) {
                 $('.filter-Gender').val(i18next.t(Gender[i]));
                 $('.filter-Gender').append('<option selected value='+i+'>'+i18next.t(Gender[i])+'</option>');
-                $('.filter-Gender').trigger('change')
+                shouldTriggerGenderFilter = true;
             } else {
             $('.filter-Gender').append('<option value='+i+'>'+i18next.t(Gender[i])+'</option>');
             }
         }
         var ClassificationList = <?= json_encode($ClassificationList, JSON_THROW_ON_ERROR) ?>;
+        var shouldTriggerClassificationFilter = false;
         for (var i = 0; i < ClassificationList.length; i++) {
             // apply initinal filters if applicable
             if (filterByClsId == ClassificationList[i]) {
                 $('.filter-Classification').val(ClassificationList[i]);
                 $('.filter-Classification').append('<option selected value='+i+'>'+ClassificationList[i]+'</option>');
-                $('.filter-Classification').trigger('change')
+                shouldTriggerClassificationFilter = true;
             } else {
                $('.filter-Classification').append('<option value='+i+'>'+ClassificationList[i]+'</option>');
             }
         }
 
         var RoleList = <?= json_encode($RoleList, JSON_THROW_ON_ERROR) ?>;
+        var shouldTriggerRoleFilter = false;
         for (var i = 0; i < RoleList.length; i++) {
             if (filterByFmrId == RoleList[i]) {
                 $('.filter-Role').val(RoleList[i]);
                 $('.filter-Role').append('<option selected value='+i+'>'+RoleList[i]+'</option>');
-                $('.filter-Role').trigger('change')
+                shouldTriggerRoleFilter = true;
             } else {
                 $('.filter-Role').append('<option value='+i+'>'+RoleList[i]+'</option>');
             }
@@ -549,6 +552,19 @@ foreach ($ListItem as $element) {
         if (filterByFmrId) {
             // Already set via inline trigger above
         }
+        
+        // Trigger URL filters after a delay to ensure DataTable is fully initialized
+        setTimeout(function() {
+            if (shouldTriggerGenderFilter) {
+                $('.filter-Gender').trigger('change');
+            }
+            if (shouldTriggerClassificationFilter) {
+                $('.filter-Classification').trigger('change');
+            }
+            if (shouldTriggerRoleFilter) {
+                $('.filter-Role').trigger('change');
+            }
+        }, 100);
     } // end initializePeopleList
 
     // Wait for locales to load before initializing
