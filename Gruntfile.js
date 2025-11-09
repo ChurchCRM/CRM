@@ -1,15 +1,4 @@
 module.exports = function (grunt) {
-    var poLocales = function () {
-        var locales = grunt.file.readJSON("src/locale/locales.json");
-        var poEditorLocales = {};
-        for (var key in locales) {
-            var locale = locales[key];
-            var poLocaleName = locale["poEditor"];
-            poEditorLocales[poLocaleName] = locale["locale"];
-        }
-        return poEditorLocales;
-    };
-
     var momentLangs = function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
         var momentFiles = ["node_modules/moment/min/moment.min.js"];
