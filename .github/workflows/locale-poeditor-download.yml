@@ -213,7 +213,7 @@ jobs:
         echo "Files with substantial content (>100 bytes): $(find src/locale/i18n -name "*.json" -type f -exec wc -c {} \; | awk '$1 > 100' | wc -l)"
         echo ""
         echo "Git status after download:"
-        git status --porcelain locale/
+        git status --porcelain src/locale/i18n/
 
     - name: Check for changes
       if: inputs.operation_mode != 'audit-only'

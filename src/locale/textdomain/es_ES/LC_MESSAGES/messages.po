@@ -2168,7 +2168,7 @@ msgstr "Familias"
 
 #: 
 msgid "See all Families"
-msgstr "Ver todas las familias"
+msgstr "Ver Todas las Familias"
 
 #: 
 msgid "People"
@@ -2176,15 +2176,15 @@ msgstr "Personas"
 
 #: 
 msgid "See All People"
-msgstr "Ver todas las personas"
+msgstr "Ver Todas las Personas"
 
 #: 
 msgid "Sunday School Kids"
-msgstr "Niños de la escuela dominical"
+msgstr "Niños de la Escuela Dominical"
 
 #: 
 msgid "More info"
-msgstr "Más información"
+msgstr "Más Información"
 
 #: 
 msgid "Reports on groups and roles"
@@ -2232,7 +2232,7 @@ msgstr "Niñas"
 
 #: 
 msgid "Sunday School Classes"
-msgstr "Clases de escuela dominical"
+msgstr "Clases de Escuela Dominical"
 
 #: 
 msgid "Deposit Tracking"
@@ -3600,7 +3600,7 @@ msgstr "Designación de Donación:"
 
 #: 
 msgid "Sunday School"
-msgstr "Escuela dominical"
+msgstr "Escuela Dominical"
 
 #: 
 msgid "Sunday School Class Functions"
@@ -3776,7 +3776,7 @@ msgstr "Añadir nueva persona"
 
 #: 
 msgid "View All People"
-msgstr "Ver todas las personas"
+msgstr "Ver Todas las Personas"
 
 #: 
 msgid "Add New Family"
@@ -3788,7 +3788,7 @@ msgstr "Eventos"
 
 #: 
 msgid "Fundraiser"
-msgstr "Recaudación de fondos"
+msgstr "Ofrendas y Diezmos"
 
 #: 
 msgid "Email Export"
@@ -9231,11 +9231,11 @@ msgstr "Ver personas inactivas"
 
 #: 
 msgid "Today's Birthdays"
-msgstr "Cumpleaños de hoy"
+msgstr "Cumpleaños de Hoy"
 
 #: 
 msgid "Today's Wedding Anniversaries"
-msgstr "Aniversarios de bodas de hoy"
+msgstr "Aniversarios de Bodas de Hoy"
 
 #: 
 msgid "Api Key"

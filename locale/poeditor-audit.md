@@ -1,7 +1,7 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 41
-**Complete Locales (≥95%):** 2
+**Complete Locales (≥95%):** 3
 **Incomplete Locales (<50%):** 15
 **Missing Locales with Translations:** 9
 
@@ -10,11 +10,11 @@
 | Locale | Language | Translations | Percentage | Status |
 |--------|----------|--------------|------------|--------|
 | `es` | Spanish | 2337 | 97.38% | 🟢 Complete |
+| `ta` | Tamil | 2301 | 95.88% | 🟢 Complete |
 | `id` | Indonesian | 2296 | 95.67% | 🟢 Complete |
 | `cs` | Czech | 2261 | 94.21% | 🟡 Good |
 | `he` | Hebrew | 2261 | 94.21% | 🟡 Good |
 | `ko` | Korean | 2261 | 94.21% | 🟡 Good |
-| `ta` | Tamil | 2261 | 94.21% | 🟡 Good |
 | `nl` | Dutch | 2259 | 94.13% | 🟡 Good |
 | `pt-br` | Portuguese (BR) | 2256 | 94% | 🟡 Good |
 | `de` | German | 2254 | 93.92% | 🟡 Good |
@@ -53,15 +53,15 @@
 
 ## Summary by Status
 
-### 🟢 Complete Locales (≥95%) - 2 total
+### 🟢 Complete Locales (≥95%) - 3 total
 - **Spanish** (`es`): 97.38%
+- **Tamil** (`ta`): 95.88%
 - **Indonesian** (`id`): 95.67%
 
-### 🟡 Good Locales (80-94%) - 23 total
+### 🟡 Good Locales (80-94%) - 22 total
 - **Czech** (`cs`): 94.21%
 - **Hebrew** (`he`): 94.21%
 - **Korean** (`ko`): 94.21%
-- **Tamil** (`ta`): 94.21%
 - **Dutch** (`nl`): 94.13%
 - **Portuguese (BR)** (`pt-br`): 94%
 - **German** (`de`): 93.92%
