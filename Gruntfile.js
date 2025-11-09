@@ -15,21 +15,10 @@ module.exports = function (grunt) {
         return momentFiles;
     };
 
-    var dataTablesVer = "1.13.8";
-
     // Project configuration.
     grunt.initConfig({
         package: grunt.file.readJSON("package.json"),
         pkg: grunt.file.readJSON("package.json"),
-        buildConfig: (function () {
-            try {
-                grunt.log.writeln("Using BuildConfig.json");
-                return grunt.file.readJSON("BuildConfig.json");
-            } catch (e) {
-                grunt.log.writeln("BuildConfig.json not found, using defaults");
-                return grunt.file.readJSON("BuildConfig.json.example");
-            }
-        })(),
         copy: {
             skin: {
                 files: [
@@ -223,7 +212,7 @@ module.exports = function (grunt) {
                         flatten: false,
                         cwd: "node_modules/datatables.net-bs4",
                         src: ["images/**"],
-                        dest: "src/skin/external/datatables/DataTables-" + dataTablesVer + "/",
+                        dest: "src/skin/external/datatables/",
                     },
                     // PDF/Excel export dependencies
                     {
@@ -254,7 +243,34 @@ module.exports = function (grunt) {
                         flatten: true,
                         cwd: "node_modules/datatables.net-plugins",
                         src: ["i18n/*.json"],
-                        dest: "src/locale/datatables/",
+                        dest: "src/locale/vendor/datatables/",
+                    },
+                    // Moment.js locale files
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/moment",
+                        src: ["locale/*.js"],
+                        dest: "src/locale/vendor/moment/",
+                    },
+                    // Bootstrap DatePicker locale files
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/bootstrap-datepicker/dist",
+                        src: ["locales/*.js", "locales/*.min.js"],
+                        dest: "src/locale/vendor/bootstrap-datepicker/",
+                    },
+                    // Select2 i18n files
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/select2/dist",
+                        src: ["js/i18n/*.js"],
+                        dest: "src/locale/vendor/select2/",
                     },
                 ],
             },
@@ -337,88 +353,6 @@ module.exports = function (grunt) {
             grunt.file.write("src/signatures.json", JSON.stringify(signatures));
         },
     );
-
-    grunt.registerTask("genLocaleJSFiles", "", function () {
-        var locales = grunt.file.readJSON("src/locale/locales.json");
-        for (var key in locales) {
-            let localeConfig = locales[key];
-            let locale = localeConfig["locale"];
-            let languageCode = localeConfig["languageCode"];
-            let enableFullCalendar = localeConfig["fullCalendar"];
-            let enableDatePicker = localeConfig["datePicker"];
-            let enableSelect2 = localeConfig["select2"];
-            let momentLocale = localeConfig["momentLocale"];
-
-            let tempFile = "locale/JSONKeys/" + locale + ".json";
-            let poTerms = "{}";
-            if (grunt.file.exists(tempFile)) {
-                poTerms = grunt.file.read(tempFile);
-                if (poTerms === "") { 
-                    poTerms = "{}";
-                }
-            }
-            let jsFileContent = "// Source POEditor: " + tempFile;
-            jsFileContent =
-                jsFileContent +
-                "\ntry {window.CRM.i18keys = " +
-                poTerms +
-                ";} catch(e) {}\n";
-
-            if (momentLocale) {
-                tempFile = "node_modules/moment/locale/" + momentLocale + ".js";
-                if (grunt.file.exists(tempFile)) {
-                    let momentLocaleFile = grunt.file.read(tempFile);
-                    jsFileContent = jsFileContent + "\n// Source moment: " + tempFile;
-                    jsFileContent = jsFileContent + "\n" + "try {" + momentLocaleFile + "} catch(e) {}\n";
-                }
-            }
-
-            if (enableFullCalendar) {
-                let tempLangCode = languageCode.toLowerCase();
-                if (localeConfig.hasOwnProperty("fullCalendarLocale")) {
-                    tempLangCode = localeConfig["fullCalendarLocale"];
-                }
-                tempFile =
-                    "node_modules/@fullcalendar/core/locales/" +
-                    tempLangCode +
-                    ".js";
-                let fullCalendar = grunt.file.read(tempFile);
-                jsFileContent =
-                    jsFileContent + "\n// Source fullcalendar: " + tempFile;
-                jsFileContent =
-                    jsFileContent +
-                    "\n" +
-                    "try {" +
-                    fullCalendar +
-                    "} catch(e) {}\n";
-            }
-            if (enableDatePicker) {
-                tempFile =
-                    "node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker." +
-                    languageCode +
-                    ".min.js";
-                let datePicker = grunt.file.read(tempFile);
-                jsFileContent =
-                    jsFileContent + "\n// Source datepicker: " + tempFile;
-                jsFileContent =
-                    jsFileContent +
-                    "\n" +
-                    "try {" +
-                    datePicker +
-                    "} catch(e) {}\n";
-            }
-            if (enableSelect2) {
-                tempFile =
-                    "node_modules/select2/dist/js/i18n/" + languageCode + ".js";
-                jsFileContent =
-                    jsFileContent + "\n// Source select2: " + tempFile;
-                let select2 = grunt.file.read(tempFile);
-                jsFileContent =
-                    jsFileContent + "\n" + "try {" + select2 + "} catch(e) {}";
-            }
-            grunt.file.write("src/locale/js/" + locale + ".js", jsFileContent);
-        }
-    });
 
     grunt.loadNpmTasks("grunt-contrib-copy");
 };
