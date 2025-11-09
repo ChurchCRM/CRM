@@ -1,20 +1,4 @@
 module.exports = function (grunt) {
-    var momentLangs = function () {
-        var locales = grunt.file.readJSON("src/locale/locales.json");
-        var momentFiles = ["node_modules/moment/min/moment.min.js"];
-        for (var key in locales) {
-            var locale = locales[key];
-            // Only include locale if momentLocale is defined AND the file exists
-            if (locale["momentLocale"]) {
-                var filePath = "node_modules/moment/locale/" + locale["momentLocale"] + ".js";
-                if (grunt.file.exists(filePath)) {
-                    momentFiles.push(filePath);
-                }
-            }
-        }
-        return momentFiles;
-    };
-
     // Project configuration.
     grunt.initConfig({
         package: grunt.file.readJSON("package.json"),
@@ -41,13 +25,6 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ["node_modules/fullcalendar/index.global.min.js"],
                         dest: "src/skin/external/fullcalendar/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: momentLangs(),
-                        dest: "src/skin/external/moment/",
                     },
                     {
                         expand: true,
