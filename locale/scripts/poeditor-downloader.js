@@ -168,7 +168,7 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                         // Add trailing newline for JSON files (POSIX standard)
                         if (format.ext === 'json' && fileData[fileData.length - 1] !== 0x0A) {
                             fileData = Buffer.concat([fileData, Buffer.from('\n')]);
-                        }
+                        }                        
                         fs.writeFileSync(outputPath, fileData);
                         const fileSize = fileData.length;
                         console.log(`    ✅ ${format.ext.toUpperCase()}: ${fileSize} bytes`);
@@ -187,8 +187,8 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
 /**
  * Download translation file from POEditor for all formats
  */
-async function downloadLanguage(locale, poEditorLocale) {
-    console.log(`  ⏳ Downloading ${locale}...`);
+async function downloadLanguage(locale, poEditorLocale, current, total) {
+    console.log(`  ⏳ Downloading ${locale} (${current} of ${total})...`);
     
     for (const format of FILE_FORMATS) {
         try {
@@ -218,6 +218,14 @@ async function main() {
     
     // Base English languages that have no translations (POEditor doesn't translate to English)
     const baseEnglishLocales = ['en_US'];
+    
+    // Calculate total locales to download (excluding base English)
+    const totalLocales = Object.keys(localesConfig).length;
+    const downloadableLocales = Object.values(localesConfig)
+        .filter(config => !baseEnglishLocales.includes(config.locale));
+    const totalToDownload = downloadableLocales.length;
+    
+    console.log(`📋 Total locales: ${totalLocales} (${totalToDownload} to download, ${totalLocales - totalToDownload} base English)\n`);
 
     for (const [key, localeConfig] of Object.entries(localesConfig)) {
         const locale = localeConfig.locale;
@@ -232,12 +240,12 @@ async function main() {
 
         totalAttempts++;
         try {
-            await downloadLanguage(locale, poEditorLocale);
+            await downloadLanguage(locale, poEditorLocale, totalAttempts, totalToDownload);
             successCount++;
             
             // Throttle requests to avoid rate limiting (1 second between languages)
             // We make 3 API calls per language (JSON, PO, MO) + download time
-            if (totalAttempts < Object.keys(localesConfig).length - baseEnglishLocales.length) {
+            if (totalAttempts < totalToDownload) {
                 await sleep(1000); // 1 second between languages
             }
         } catch (error) {
@@ -246,10 +254,9 @@ async function main() {
         }
     }
 
-    const totalLocales = Object.keys(localesConfig).length;
-    console.log(`\n📊 Summary: ${successCount}/${totalLocales - skippedCount} languages downloaded (${skippedCount} English variants skipped)`);
+    console.log(`\n📊 Summary: ${successCount}/${totalToDownload} languages downloaded (${skippedCount} English variants skipped)`);
 
-    if (failedLanguages.length > 0 && failedLanguages.length < Object.keys(localesConfig).length) {
+    if (failedLanguages.length > 0 && failedLanguages.length < totalToDownload) {
         console.warn(`\n⚠️  Partial failures: ${failedLanguages.slice(0, 5).join(', ')}${failedLanguages.length > 5 ? '...' : ''}`);
     }
 
