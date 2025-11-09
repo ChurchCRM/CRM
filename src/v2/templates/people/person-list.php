@@ -367,7 +367,7 @@ foreach ($ListItem as $element) {
         var ClassificationList = <?= json_encode($ClassificationList, JSON_THROW_ON_ERROR) ?>;
         var shouldTriggerClassificationFilter = false;
         for (var i = 0; i < ClassificationList.length; i++) {
-            // apply initinal filters if applicable
+            // apply initial filters if applicable
             if (filterByClsId == ClassificationList[i]) {
                 $('.filter-Classification').val(ClassificationList[i]);
                 $('.filter-Classification').append('<option selected value='+i+'>'+ClassificationList[i]+'</option>');
