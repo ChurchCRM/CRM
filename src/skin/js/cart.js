@@ -12,7 +12,14 @@ import { notify } from "./notifier";
  */
 export class CartManager {
     constructor() {
-        this.initializeEventHandlers();
+        // Wait for locales to be ready before initializing event handlers
+        if (window.CRM && window.CRM.localesLoaded) {
+            this.initializeEventHandlers();
+        } else {
+            window.addEventListener('CRM.localesReady', () => {
+                this.initializeEventHandlers();
+            });
+        }
     }
 
     /**
