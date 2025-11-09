@@ -26,7 +26,6 @@ use ChurchCRM\Service\SystemService;
 
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/just-validate/just-validate.production.min.js"></script>
-  <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::getCurrentLocale()->getLocale() ?>.js"></script>
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     i18nextOpt = {
