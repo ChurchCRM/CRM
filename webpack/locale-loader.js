@@ -39,7 +39,8 @@ async function loadLocaleFiles(localeConfig) {
 
     try {
         // Load i18n translation keys from JSON
-        if (localeConfig.locale) {
+        // Skip loading for en_US as it's the base language (no translation file needed)
+        if (localeConfig.locale && localeConfig.locale !== 'en_US') {
             const i18nPath = `${rootPath}/locale/i18n/${localeConfig.locale}.json`;
             try {
                 const response = await fetch(i18nPath);
@@ -54,11 +55,13 @@ async function loadLocaleFiles(localeConfig) {
                 window.CRM.i18keys = {};
             }
         } else {
+            // en_US uses empty object (base language, no translations needed)
             window.CRM.i18keys = {};
         }
 
         // Load Moment.js locale if configured
-        if (localeConfig.momentLocale && typeof moment !== 'undefined') {
+        // Skip for 'en' as it's the default locale built into moment.js
+        if (localeConfig.momentLocale && localeConfig.momentLocale !== 'en' && typeof moment !== 'undefined') {
             const momentPath = `${rootPath}/locale/vendor/moment/${localeConfig.momentLocale}.js`;
             promises.push(
                 loadScript(momentPath)
@@ -70,6 +73,10 @@ async function loadLocaleFiles(localeConfig) {
                     })
                     .catch(e => console.warn(`Failed to load moment locale ${localeConfig.momentLocale}:`, e))
             );
+        } else if (localeConfig.momentLocale === 'en' && typeof moment !== 'undefined') {
+            // Set to 'en' without loading (built-in default)
+            moment.locale('en');
+            console.log(`Using built-in moment locale: en`);
         }
 
         // Load Bootstrap DatePicker locale if configured
