@@ -51,20 +51,6 @@ module.exports = function (grunt) {
                 return grunt.file.readJSON("BuildConfig.json.example");
             }
         })(),
-        projectFiles: [
-            "**",
-            "**/.*",
-            "!**/.gitignore",
-            "!vendor/**/example/**",
-            "!vendor/**/tests/**",
-            "!vendor/**/docs/**",
-            "!Images/{Family,Person}/**/*.{jpg,jpeg,png}",
-            "!composer.lock",
-            "!Include/Config.php",
-            "!integrityCheck.json",
-            "!logs/*.log",
-            "!vendor/endroid/qr-code/assets/fonts/noto_sans.otf", // This closes #5099, but TODO: when https://github.com/endroid/qr-code/issues/224 is fixed, we can remove this exclusion.
-        ],
         copy: {
             skin: {
                 files: [
@@ -296,23 +282,6 @@ module.exports = function (grunt) {
                         "}.json",
                 ],
                 dest: "src/locale/datatables",
-            },
-        },
-        compress: {
-            zip: {
-                options: {
-                    archive: "temp/ChurchCRM-<%= package.version %>.zip",
-                    mode: "zip",
-                    pretty: true,
-                },
-                files: [
-                    {
-                        expand: true,
-                        cwd: "src/",
-                        src: "<%= projectFiles %>",
-                        dest: "churchcrm/",
-                    },
-                ],
             }
         },
         generateSignatures: {
@@ -477,6 +446,5 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-compress");
     grunt.loadNpmTasks("grunt-curl");
 };
