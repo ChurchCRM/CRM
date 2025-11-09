@@ -25,6 +25,15 @@ function loadScript(url) {
  * @param {object} localeConfig - Locale configuration from locales.json
  */
 async function loadLocaleFiles(localeConfig) {
+    // Validate localeConfig exists
+    if (!localeConfig) {
+        console.warn('localeConfig is null or undefined, skipping locale loading');
+        window.CRM.i18keys = {};
+        window.CRM.localesLoaded = true;
+        window.dispatchEvent(new Event('CRM.localesReady'));
+        return;
+    }
+
     const rootPath = window.CRM.root || '';
     const promises = [];
 
