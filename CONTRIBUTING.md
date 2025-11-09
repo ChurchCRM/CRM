@@ -56,15 +56,21 @@ If you prefer manual setup or the automatic options don't work:
 - **Port 80 conflicts:** Stop other web servers or change Docker port mapping
 - **Docker build fails:** Ensure Docker has 4GB+ memory allocated
 - **Services not starting:** Run `npm run docker:dev:logs` to check logs
-- **Tests failing locally:** Use `npm run docker:test:start` for clean test environment
+- **Tests failing locally:** Use `npm run docker:test:rebuild` for clean test environment
 - **Missing PHP extensions:** Use Docker containers - don't build locally
+- **Database schema outdated:** Run `npm run docker:test:restart:db` to refresh
 
 **Quick Commands:**
 ```bash
-npm run docker:dev:logs    # View service logs
-npm run docker:dev:stop    # Stop containers
-npm run build:frontend     # Rebuild JS/CSS after changes
-npm run test               # Run Cypress tests
+# Development
+npm run docker:dev:logs       # View service logs
+npm run docker:dev:stop       # Stop containers
+npm run build:frontend        # Rebuild JS/CSS after changes
+
+# Testing
+npm run test                  # Run Cypress tests
+npm run docker:test:restart   # Restart test containers
+npm run docker:test:rebuild   # Full rebuild (remove volumes, rebuild images)
 ```
 
 ### User Interface using AdminLTE

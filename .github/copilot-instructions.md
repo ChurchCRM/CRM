@@ -391,9 +391,25 @@ npm run docker:dev:start  # Start Docker containers
 
 ### Development Cycle
 ```bash
-npm run build:frontend    # Rebuild JS/CSS (watches via Webpack)
-npm run build:php         # Update Composer dependencies
-npm run docker:dev:logs   # View container logs
+npm run build:frontend       # Rebuild JS/CSS (watches via Webpack)
+npm run build:php            # Update Composer dependencies
+npm run docker:dev:logs      # View container logs
+npm run docker:dev:login:web # Shell into web container
+```
+
+### Docker Management
+```bash
+# Development
+npm run docker:dev:start     # Start dev containers
+npm run docker:dev:stop      # Stop containers
+npm run docker:dev:logs      # View logs
+
+# Testing
+npm run docker:test:start       # Start test containers
+npm run docker:test:restart     # Restart all containers
+npm run docker:test:restart:db  # Restart database only (refresh schema)
+npm run docker:test:rebuild     # Full rebuild with new images
+npm run docker:test:down        # Remove containers and volumes
 ```
 
 ### Testing (Local)
