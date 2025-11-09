@@ -35,12 +35,34 @@ Cypress.Commands.add(
         cy.get("[data-cy=password], #PasswordBox").should('be.visible').type(password);
         cy.get("form").submit();
 
+        // Wait for navigation to complete
+        cy.url().should('not.contain', 'location=');
+        
+        // Verify session is established by checking for any cookie starting with CRM-
+        cy.getCookies().should('satisfy', (cookies) => {
+            return cookies.some(cookie => cookie.name.startsWith('CRM-'));
+        });
+        
         if (location && checkMatchingLocation) {
             cy.location("pathname").should("include", location.split("?")[0]);
         }
         
-        // Wait for navigation to complete
-        cy.url().should('not.contain', 'location=');
+        // Additional verification: ensure we're not on login/error pages
+        cy.url().should('not.contain', 'session/begin');
+        cy.url().should('not.contain', 'session/end');
+        
+        // Wait for page to be fully loaded
+        cy.document().should("have.property", "readyState", "complete");
+        
+        // Wait for all AJAX/fetch requests to complete
+        // Use window.jQuery.active if available (for jQuery AJAX)
+        cy.window().then((win) => {
+            if (win.jQuery) {
+                cy.wrap(null).should(() => {
+                    expect(win.jQuery.active).to.equal(0);
+                });
+            }
+        });
     },
 );
 
