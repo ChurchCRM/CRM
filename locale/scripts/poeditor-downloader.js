@@ -141,6 +141,11 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                 fs.mkdirSync(outputFileDir, { recursive: true });
             }
             
+            // Delete old file if it exists (just before download to minimize downtime)
+            if (fs.existsSync(outputPath)) {
+                fs.unlinkSync(outputPath);
+            }
+            
             return new Promise((resolve, reject) => {
                 https.get(downloadUrl, (res) => {
                     // Check for non-2xx HTTP status
@@ -159,6 +164,10 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                         if (fileData.length === 0) {
                             reject(new Error(`Downloaded file is empty (0 bytes) for ${format.type}`));
                             return;
+                        }
+                        // Add trailing newline for JSON files (POSIX standard)
+                        if (format.ext === 'json' && fileData[fileData.length - 1] !== 0x0A) {
+                            fileData = Buffer.concat([fileData, Buffer.from('\n')]);
                         }
                         fs.writeFileSync(outputPath, fileData);
                         const fileSize = fileData.length;
