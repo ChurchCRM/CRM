@@ -12,7 +12,14 @@ import { notify } from "./notifier";
  */
 export class CartManager {
     constructor() {
-        this.initializeEventHandlers();
+        // Wait for locales to be ready before initializing event handlers
+        if (window.CRM && window.CRM.localesLoaded) {
+            this.initializeEventHandlers();
+        } else {
+            window.addEventListener("CRM.localesReady", () => {
+                this.initializeEventHandlers();
+            });
+        }
     }
 
     /**
@@ -729,7 +736,17 @@ $(document).ready(() => {
     }
     window.CRM.cartManager = new CartManager();
 
-    window.CRM.cartManager.refreshCartCount().catch(() => {
-        // APIRequest not available yet, skip initialization
-    });
+    // Wait for locales to be ready before refreshing cart count
+    // (because refreshCartCount calls updateCartDropdown which uses i18next.t)
+    const initializeCart = () => {
+        window.CRM.cartManager.refreshCartCount().catch(() => {
+            // APIRequest not available yet, skip initialization
+        });
+    };
+
+    if (window.CRM && window.CRM.localesLoaded) {
+        initializeCart();
+    } else {
+        window.addEventListener("CRM.localesReady", initializeCart);
+    }
 });

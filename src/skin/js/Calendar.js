@@ -456,6 +456,7 @@ function initializeCalendar() {
     window.CRM.fullcalendar = new FullCalendar.Calendar(
         document.getElementById("calendar"),
         {
+            locale: window.CRM.lang || "en",
             headerToolbar: {
                 start: "prev,next today",
                 center: "title",
@@ -493,7 +494,6 @@ function initializeCalendar() {
                     alert(i18next.t("Holiday") + ": " + eventData.title);
                 }
             },
-            locale: window.CRM.lang,
             loading: function (isLoading, view) {
                 window.CRM.isCalendarLoading = isLoading;
             },
@@ -726,11 +726,13 @@ function displayAccessTokenAPITest() {
 
 document.addEventListener("DOMContentLoaded", function () {
     //window.CRM.calendarJSArgs.isModifiable = false;
-    initializeCalendar();
-    initializeFilterSettings();
-    initializeNewCalendarButton();
-    registerCalendarSelectionEvents();
-    displayAccessTokenAPITest();
+    window.CRM.onLocalesReady(function () {
+        initializeCalendar();
+        initializeFilterSettings();
+        initializeNewCalendarButton();
+        registerCalendarSelectionEvents();
+        displayAccessTokenAPITest();
 
-    window.CRM.fullcalendar.render();
+        window.CRM.fullcalendar.render();
+    });
 });

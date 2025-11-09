@@ -148,50 +148,52 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     var currentFilter = 'all';
 
     $(document).ready(function() {
-        // Load current log level first
-        loadLogLevel();
+        window.CRM.onLocalesReady(function() {
+            // Load current log level first
+            loadLogLevel();
 
-        // Initialize DataTable
-        var table = $('#logFilesTable').DataTable({
-            responsive: true,
-            order: [[3, 'desc']], // Sort by Last Modified (now column 3)
-            paging: false,
-            info: false,
-            searching: false,
-            columnDefs: [
-                { orderable: false, targets: 0 } // Disable sorting on Actions column
-            ]
-        });
+            // Initialize DataTable
+            var table = $('#logFilesTable').DataTable({
+                responsive: true,
+                order: [[3, 'desc']], // Sort by Last Modified (now column 3)
+                paging: false,
+                info: false,
+                searching: false,
+                columnDefs: [
+                    { orderable: false, targets: 0 } // Disable sorting on Actions column
+                ]
+            });
 
-        // Use event delegation for dynamically loaded content
-        $(document).on('click', '.view-log', function() {
-            var fileName = $(this).data('file');
-            currentLogFile = fileName;
-            loadLogFile(fileName);
-        });
+            // Use event delegation for dynamically loaded content
+            $(document).on('click', '.view-log', function() {
+                var fileName = $(this).data('file');
+                currentLogFile = fileName;
+                loadLogFile(fileName);
+            });
 
-        $(document).on('click', '.delete-log', function(e) {
-            var fileName = $(this).data('file');
-            deleteLogFile(fileName);
-        });
+            $(document).on('click', '.delete-log', function(e) {
+                var fileName = $(this).data('file');
+                deleteLogFile(fileName);
+            });
 
-        $('#deleteAllLogs').on('click', function() {
-            deleteAllLogs();
-        });
+            $('#deleteAllLogs').on('click', function() {
+                deleteAllLogs();
+            });
 
-        $('#saveLogLevel').on('click', function() {
-            saveLogLevel();
-        });
+            $('#saveLogLevel').on('click', function() {
+                saveLogLevel();
+            });
 
-        $('.log-filter').on('click', function() {
-            $('.log-filter').removeClass('active');
-            $(this).addClass('active');
-            currentFilter = $(this).data('level');
-            applyFilter();
-        });
+            $('.log-filter').on('click', function() {
+                $('.log-filter').removeClass('active');
+                $(this).addClass('active');
+                currentFilter = $(this).data('level');
+                applyFilter();
+            });
 
-        $('#logLinesLimit').on('change', function() {
-            applyFilter();
+            $('#logLinesLimit').on('change', function() {
+                applyFilter();
+            });
         });
     });
 

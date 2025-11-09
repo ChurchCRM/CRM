@@ -1,4 +1,9 @@
-$(document).ready(function () {
+/**
+ * Main Dashboard initialization script
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
+
+function initializeMainDashboard() {
     let dataTableDashboardDefaults = {
         paging: false,
         ordering: false,
@@ -312,4 +317,9 @@ $(document).ready(function () {
     }
 
     // CartManager handles all cart button clicks generically via data-cart-id and data-cart-type attributes
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeMainDashboard);
 });

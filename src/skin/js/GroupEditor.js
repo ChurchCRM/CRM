@@ -1,4 +1,4 @@
-$(document).ready(() => {
+function initializeGroupEditor() {
     $(".groupSpecificProperties").click((e) => {
         const groupPropertyAction = e.currentTarget.id;
         if (groupPropertyAction === "enableGroupProps") {
@@ -339,6 +339,11 @@ $(document).ready(() => {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     dataT = $("#groupRoleTable").DataTable(dataTableConfig);
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeGroupEditor);
 });
 
 function setGroupRoleOrder(groupID, roleID, groupRoleOrder) {
