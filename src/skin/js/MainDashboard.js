@@ -1,3 +1,5 @@
+import moment from "moment";
+
 function initializeMainDashboard() {
     let dataTableDashboardDefaults = {
         paging: false,

@@ -1,3 +1,5 @@
+import moment from "moment";
+
 function initPaymentTable() {
     var colDef = [
         {

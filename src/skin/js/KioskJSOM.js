@@ -1,3 +1,5 @@
+import moment from "moment";
+
 window.CRM.kiosk = {
     APIRequest: function (options) {
         if (!options.method) {

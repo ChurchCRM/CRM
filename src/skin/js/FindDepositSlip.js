@@ -1,3 +1,5 @@
+import moment from "moment";
+
 var dataT = 0;
 
 function initializeDepositSlip() {
