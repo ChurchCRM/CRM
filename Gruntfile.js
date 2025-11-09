@@ -26,6 +26,14 @@ module.exports = function (grunt) {
                         src: ["node_modules/fullcalendar/index.global.min.js"],
                         dest: "src/skin/external/fullcalendar/",
                     },
+                    // Moment.js core library
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: ["node_modules/moment/min/moment.min.js"],
+                        dest: "src/skin/external/moment/",
+                    },
                     {
                         expand: true,
                         filter: "isFile",
