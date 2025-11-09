@@ -448,32 +448,35 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     window.CRM.iProfilePictureListSize = <?= SystemConfig::getValue('iProfilePictureListSize') ?>;
     var dataT = 0;
     $(document).ready(function() {
-        $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ? 'true' : 'false' ?>).change();
-        $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>).change();
-        $("#deleteGroupButton").click(function() {
-            bootbox.setDefaults({
-                    locale: window.CRM.shortLocale
-                }),
-                bootbox.confirm({
-                    title: "<?= gettext("Confirm Delete Group") ?>",
-                    message: '<p class="text-danger">' +
-                        "<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>" +
-                        "<p>" +
-                        "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
-                        "</p><p>" +
-                        "<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
-                    callback: function(result) {
-                        if (result) {
-                            window.CRM.APIRequest({
-                                method: "DELETE",
-                                path: "groups/" + window.CRM.currentGroup,
-                            }).done(function(data) {
-                                if (data.status == "success")
-                                    window.location.href = window.CRM.root + "/GroupList.php";
-                            });
+        // Wait for locales to load before setting up handlers that use bootbox
+        window.CRM.onLocalesReady(function() {
+            $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ? 'true' : 'false' ?>).change();
+            $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>).change();
+            $("#deleteGroupButton").click(function() {
+                bootbox.setDefaults({
+                        locale: window.CRM.shortLocale
+                    }),
+                    bootbox.confirm({
+                        title: "<?= gettext("Confirm Delete Group") ?>",
+                        message: '<p class="text-danger">' +
+                            "<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>" +
+                            "<p>" +
+                            "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
+                            "</p><p>" +
+                            "<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
+                        callback: function(result) {
+                            if (result) {
+                                window.CRM.APIRequest({
+                                    method: "DELETE",
+                                    path: "groups/" + window.CRM.currentGroup,
+                                }).done(function(data) {
+                                    if (data.status == "success")
+                                        window.location.href = window.CRM.root + "/GroupList.php";
+                                });
+                            }
                         }
-                    }
-                });
+                    });
+            });
         });
     });
 </script>
