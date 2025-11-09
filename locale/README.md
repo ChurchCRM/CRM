@@ -175,16 +175,12 @@ The report is saved to `locale/poeditor-audit.md` and includes:
 
 The system generates several runtime files:
 
-#### JavaScript Locales
-- `src/locale/vendor/js/*.js` - Browser-ready translation files
-- Generated from POEditor downloads
-- Automatically included in builds
-
 #### Vendor Locales
 - `src/locale/vendor/datatables/*.json` - DataTables locale files
 - `src/locale/vendor/moment/*.js` - Moment.js locale files
 - `src/locale/vendor/bootstrap-datepicker/*.js` - DatePicker locale files
 - `src/locale/vendor/select2/*.js` - Select2 locale files
+- All copied from node_modules during build
 
 #### PHP Gettext
 - `src/locale/textdomain/*/LC_MESSAGES/*.mo` - Compiled Gettext files
