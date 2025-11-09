@@ -20,7 +20,7 @@ const { URLSearchParams } = require('url');
 const CONFIG_FILE = path.join(__dirname, '../../BuildConfig.json');
 const CONFIG_EXAMPLE_FILE = path.join(__dirname, '../../BuildConfig.json.example');
 const LOCALES_FILE = path.join(__dirname, '../../src/locale/locales.json');
-const JSON_OUTPUT_DIR = path.join(__dirname, '../../locale/JSONKeys');
+const JSON_OUTPUT_DIR = path.join(__dirname, '../../src/locale/i18n');
 // PO/MO files historically live under src/locale/textdomain so other scripts
 // (and gettext lookups) find them there. Match the previous layout.
 const TEXTDOMAIN_OUTPUT_DIR = path.join(__dirname, '../../src/locale/textdomain');
@@ -139,6 +139,11 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
             const outputFileDir = path.dirname(outputPath);
             if (!fs.existsSync(outputFileDir)) {
                 fs.mkdirSync(outputFileDir, { recursive: true });
+            }
+            
+            // Delete old file if it exists (just before download to minimize downtime)
+            if (fs.existsSync(outputPath)) {
+                fs.unlinkSync(outputPath);
             }
             
             return new Promise((resolve, reject) => {

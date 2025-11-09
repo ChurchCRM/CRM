@@ -315,7 +315,7 @@ msgstr ""
 `
             },
             {
-                path: `locale/JSONKeys/${config.locale}.json`,
+                path: `src/locale/i18n/${config.locale}.json`,
                 content: '{\n    "": "Empty translation file - translations will be populated from POEditor"\n}'
             }
         ];
