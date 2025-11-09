@@ -27,7 +27,7 @@ $csp = [
     "img-src 'self' data:",
     "media-src 'self'",
     "frame-src 'self'",
-    "font-src 'self' fonts.gstatic.com",
+    "font-src 'self' data: fonts.gstatic.com",
     "connect-src 'self'",
     "base-uri 'self'",
     "form-action 'self'",
