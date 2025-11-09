@@ -31,7 +31,7 @@ async function loadLocaleFiles(localeConfig) {
     try {
         // Load i18n translation keys from JSON
         if (localeConfig.locale) {
-            const i18nPath = `${rootPath}/src/locale/i18n/${localeConfig.locale}.json`;
+            const i18nPath = `${rootPath}/locale/i18n/${localeConfig.locale}.json`;
             try {
                 const response = await fetch(i18nPath);
                 if (response.ok) {
@@ -50,7 +50,7 @@ async function loadLocaleFiles(localeConfig) {
 
         // Load Moment.js locale if configured
         if (localeConfig.momentLocale && typeof moment !== 'undefined') {
-            const momentPath = `${rootPath}/src/locale/vendor/moment/${localeConfig.momentLocale}.js`;
+            const momentPath = `${rootPath}/locale/vendor/moment/${localeConfig.momentLocale}.js`;
             promises.push(
                 loadScript(momentPath)
                     .then(() => {
@@ -65,7 +65,7 @@ async function loadLocaleFiles(localeConfig) {
 
         // Load Bootstrap DatePicker locale if configured
         if (localeConfig.datePicker) {
-            const dpPath = `${rootPath}/src/locale/vendor/bootstrap-datepicker/bootstrap-datepicker.${localeConfig.languageCode}.min.js`;
+            const dpPath = `${rootPath}/locale/vendor/bootstrap-datepicker/bootstrap-datepicker.${localeConfig.languageCode}.min.js`;
             promises.push(
                 loadScript(dpPath)
                     .then(() => console.log(`Loaded DatePicker locale: ${localeConfig.languageCode}`))
@@ -75,7 +75,7 @@ async function loadLocaleFiles(localeConfig) {
 
         // Load Select2 i18n if configured
         if (localeConfig.select2) {
-            const s2Path = `${rootPath}/src/locale/vendor/select2/${localeConfig.languageCode}.js`;
+            const s2Path = `${rootPath}/locale/vendor/select2/${localeConfig.languageCode}.js`;
             promises.push(
                 loadScript(s2Path)
                     .then(() => console.log(`Loaded Select2 locale: ${localeConfig.languageCode}`))

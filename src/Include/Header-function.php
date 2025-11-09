@@ -85,7 +85,7 @@ function Header_body_scripts(): void
                     "pageLength": <?= $tableSize ?>,
                     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     "language": {
-                        "url": "<?= SystemURLs::getRootPath() ?>/src/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
+                        "url": "<?= SystemURLs::getRootPath() ?>/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
                     dom: "<'row'<'col-sm-4'<?= $currentUser->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
