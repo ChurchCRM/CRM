@@ -32,8 +32,7 @@ src/skin/churchcrm.min.css.map
 src/skin/churchcrm.min.css
 
 #locale files
-src/locale/datatables
-src/locale/js
+src/locale/vendor
 
 # AI notes (local only, not committed)
 ai-notes/
