@@ -3602,10 +3602,6 @@ msgid "Sunday School Class Functions"
 msgstr "Kazi za Darasa la Shule ya Jumapili"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Geuza Kunjuzi"
-
-#: 
 msgid "Teachers"
 msgstr "Walimu"
 
@@ -4112,18 +4108,6 @@ msgstr "Kila mwaka"
 #: 
 msgid "Registration Complete"
 msgstr "Usajili Umekamilika"
-
-#: 
-msgid "Register"
-msgstr "Sajili"
-
-#: 
-msgid "Register your family"
-msgstr "Sajili familia yako"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Ni watu wangapi katika familia yako"
 
 #: 
 msgid "Add All Classes"
@@ -6940,10 +6924,6 @@ msgstr "Kuratibu jina la faili la msingi wa data:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Pitana na Mkokoteni"
-
-#: 
-msgid "Family Member"
-msgstr "Mwanafamilia"
 
 #: 
 msgid "select an option"

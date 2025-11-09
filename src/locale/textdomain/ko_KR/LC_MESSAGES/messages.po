@@ -3602,10 +3602,6 @@ msgid "Sunday School Class Functions"
 msgstr "주일학교 반 기능"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "드롭다운 열기/닫기"
-
-#: 
 msgid "Teachers"
 msgstr "교사"
 
@@ -4112,18 +4108,6 @@ msgstr "연간"
 #: 
 msgid "Registration Complete"
 msgstr "등록 완료"
-
-#: 
-msgid "Register"
-msgstr "등록"
-
-#: 
-msgid "Register your family"
-msgstr "우리 가족 등록"
-
-#: 
-msgid "How many people are in your family"
-msgstr "가족 인원수를 입력하세요"
 
 #: 
 msgid "Add All Classes"
@@ -6940,10 +6924,6 @@ msgstr "좌표 데이터베이스 파일 이름:"
 #: 
 msgid "Intersect With Cart"
 msgstr "카트와 교집합"
-
-#: 
-msgid "Family Member"
-msgstr "가족 구성원"
 
 #: 
 msgid "select an option"

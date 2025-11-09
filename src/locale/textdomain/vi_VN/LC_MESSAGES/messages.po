@@ -3624,10 +3624,6 @@ msgid "Sunday School Class Functions"
 msgstr "Tính năng lớp học Trường Chúa Nhật"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Chuyển đổi menu thả xuống"
-
-#: 
 msgid "Teachers"
 msgstr "Giáo viên"
 
@@ -4137,18 +4133,6 @@ msgstr "Hàng năm"
 #: 
 msgid "Registration Complete"
 msgstr "Đăng ký hoàn tất"
-
-#: 
-msgid "Register"
-msgstr "Đăng ký"
-
-#: 
-msgid "Register your family"
-msgstr "Đăng ký gia đình của bạn"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Có bao nhiêu người trong gia đình bạn"
 
 #: 
 msgid "Add All Classes"
@@ -6968,10 +6952,6 @@ msgstr "Tên tệp cơ sở dữ liệu tọa độ:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Giao với giỏ"
-
-#: 
-msgid "Family Member"
-msgstr "Thành viên Gia đình"
 
 #: 
 msgid "select an option"

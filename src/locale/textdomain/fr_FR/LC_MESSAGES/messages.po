@@ -3606,10 +3606,6 @@ msgid "Sunday School Class Functions"
 msgstr "Fonctions de l&#39;école du dimanche"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Menu déroulant"
-
-#: 
 msgid "Teachers"
 msgstr "Moniteurs"
 
@@ -4118,18 +4114,6 @@ msgstr "Annuel"
 #: 
 msgid "Registration Complete"
 msgstr "Inscription terminée."
-
-#: 
-msgid "Register"
-msgstr "S'inscrire"
-
-#: 
-msgid "Register your family"
-msgstr "Inscrire votre famille"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Combien de personnes êtes vous dans votre famille"
 
 #: 
 msgid "Add All Classes"
@@ -6949,10 +6933,6 @@ msgstr "Nom du fichier de la base de données de coordonnées :"
 #: 
 msgid "Intersect With Cart"
 msgstr "Croisement avec le Panier"
-
-#: 
-msgid "Family Member"
-msgstr "Membre de la Famille"
 
 #: 
 msgid "select an option"

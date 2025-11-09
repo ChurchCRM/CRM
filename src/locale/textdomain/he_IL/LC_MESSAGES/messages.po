@@ -3603,10 +3603,6 @@ msgid "Sunday School Class Functions"
 msgstr "פונקציות כיתת בית ספר לימודי דת"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "הפעל/כבה תפריט נפתח"
-
-#: 
 msgid "Teachers"
 msgstr "מורים"
 
@@ -4113,18 +4109,6 @@ msgstr "שנתי"
 #: 
 msgid "Registration Complete"
 msgstr "ההרשמה הושלמה"
-
-#: 
-msgid "Register"
-msgstr "הרשמה"
-
-#: 
-msgid "Register your family"
-msgstr "רשום את משפחתך"
-
-#: 
-msgid "How many people are in your family"
-msgstr "כמה אנשים במשפחתך"
 
 #: 
 msgid "Add All Classes"
@@ -6944,10 +6928,6 @@ msgstr "שם קובץ מסד נתוני קואורדינטות:"
 #: 
 msgid "Intersect With Cart"
 msgstr "הצטלבות עם עגלה"
-
-#: 
-msgid "Family Member"
-msgstr "בן משפחה"
 
 #: 
 msgid "select an option"

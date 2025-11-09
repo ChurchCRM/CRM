@@ -3602,10 +3602,6 @@ msgid "Sunday School Class Functions"
 msgstr "Funkce třídy nedělní školy"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Přepnout rozbalovací nabídku"
-
-#: 
 msgid "Teachers"
 msgstr "Učitelé"
 
@@ -4112,18 +4108,6 @@ msgstr "Ročně"
 #: 
 msgid "Registration Complete"
 msgstr "Registrace kompletní"
-
-#: 
-msgid "Register"
-msgstr "Registrovat"
-
-#: 
-msgid "Register your family"
-msgstr "Zaregistrujte svou rodinu"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Kolik členů má vaše rodina"
 
 #: 
 msgid "Add All Classes"
@@ -6940,10 +6924,6 @@ msgstr "Název souboru databáze souřadnic:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Protnout s košíkem"
-
-#: 
-msgid "Family Member"
-msgstr "Člen rodiny"
 
 #: 
 msgid "select an option"

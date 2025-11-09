@@ -3602,10 +3602,6 @@ msgid "Sunday School Class Functions"
 msgstr "Μαθήματα Καθηχητικού"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Εναλλαγή αναπτυσσόμενου μενού"
-
-#: 
 msgid "Teachers"
 msgstr "Δάσκαλοι"
 
@@ -4113,18 +4109,6 @@ msgstr "Ετήσια"
 #: 
 msgid "Registration Complete"
 msgstr "Η εγγραφή ολοκληρώθηκε"
-
-#: 
-msgid "Register"
-msgstr "Κανω ΕΓΓΡΑΦΗ"
-
-#: 
-msgid "Register your family"
-msgstr "Δηλώστε την οικογένειά σας"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Πόσα άτομα είναι στην οικογένειά σου"
 
 #: 
 msgid "Add All Classes"
@@ -6944,10 +6928,6 @@ msgstr "Όνομα αρχείου βάσης δεδομένων συντεταγ
 #: 
 msgid "Intersect With Cart"
 msgstr "Διασταύρωση με το καλάθι"
-
-#: 
-msgid "Family Member"
-msgstr "Μέλος της οικογένειας"
 
 #: 
 msgid "select an option"

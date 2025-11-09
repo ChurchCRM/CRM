@@ -3384,7 +3384,7 @@ msgstr "Ninguna información que pueda identificarlo será enviada a menos que l
 
 #: 
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr "Escritorio"
 
 #: 
 msgid "Change Password"
@@ -3605,10 +3605,6 @@ msgstr "Escuela dominical"
 #: 
 msgid "Sunday School Class Functions"
 msgstr "Funciones de clase de escuela dominical"
-
-#: 
-msgid "Toggle Dropdown"
-msgstr "Cambiar Desplegable"
 
 #: 
 msgid "Teachers"
@@ -4118,18 +4114,6 @@ msgstr "Anual"
 #: 
 msgid "Registration Complete"
 msgstr "Registro completado"
-
-#: 
-msgid "Register"
-msgstr "Registrar"
-
-#: 
-msgid "Register your family"
-msgstr "Registrar a su familia"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Cuántas personas hay en su familia"
 
 #: 
 msgid "Add All Classes"
@@ -6975,10 +6959,6 @@ msgid "Intersect With Cart"
 msgstr "Cruzar con carrito"
 
 #: 
-msgid "Family Member"
-msgstr "Miembro de familia"
-
-#: 
 msgid "select an option"
 msgstr "seleccione una opción"
 
@@ -9811,4 +9791,52 @@ msgstr "Sí, vaciar carrito"
 #: 
 msgid "Yes, Remove"
 msgstr "Sí, remover"
+
+#: 
+msgid "Add Group"
+msgstr "Agregar Grupo"
+
+#: 
+msgid "Back to Group List"
+msgstr "Regresar al Listado de Grupos"
+
+#: 
+msgid "Default role updated."
+msgstr "Rol predeterminado actualizado."
+
+#: 
+msgid "Edit Group"
+msgstr "Editar Grupo"
+
+#: 
+msgid "Enter group name"
+msgstr "Ingrese el nombre del grupo"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "No se pudo agregar el rol. Inténtelo de nuevo."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "No se pudo agregar el grupo. Inténtelo de nuevo."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "No se pudo eliminar el rol. Inténtelo de nuevo."
+
+#: 
+msgid "Role added successfully."
+msgstr "Rol añadido correctamente."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Rol eliminado correctamente."
+
+#: 
+msgid "Role name updated."
+msgstr "Nombre del rol actualizado."
+
+#: 
+msgid "View Group"
+msgstr "Ver Grupo"
 

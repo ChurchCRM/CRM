@@ -3674,10 +3674,6 @@ msgid "Registration Complete"
 msgstr "Rejestracja Zakończona"
 
 #: 
-msgid "How many people are in your family"
-msgstr "Ile osób jest w twojej rodzinie?"
-
-#: 
 msgid "Add All Classes"
 msgstr "Dodaj wszystkie klasy"
 

@@ -3602,10 +3602,6 @@ msgid "Sunday School Class Functions"
 msgstr "Catechisatie functies"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Schakel dropdown in"
-
-#: 
 msgid "Teachers"
 msgstr "Docenten"
 
@@ -4115,18 +4111,6 @@ msgstr "Jaarlijks"
 #: 
 msgid "Registration Complete"
 msgstr "Registratie voltooid"
-
-#: 
-msgid "Register"
-msgstr "Registreer"
-
-#: 
-msgid "Register your family"
-msgstr "Registreer je gezin"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Hoeveel personen telt je gezin?"
 
 #: 
 msgid "Add All Classes"
@@ -6949,10 +6933,6 @@ msgstr "Bestandsnaam coördinaatdatabase:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Combineren met werkbestand"
-
-#: 
-msgid "Family Member"
-msgstr "Gezinslid"
 
 #: 
 msgid "select an option"

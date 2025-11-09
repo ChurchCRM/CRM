@@ -3607,10 +3607,6 @@ msgid "Sunday School Class Functions"
 msgstr "وظائف مدرسة الأحد فئة"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "تبديل منسدلة"
-
-#: 
 msgid "Teachers"
 msgstr "الخدام"
 
@@ -4120,18 +4116,6 @@ msgstr "سنوي"
 #: 
 msgid "Registration Complete"
 msgstr "اكتمل التسجيل"
-
-#: 
-msgid "Register"
-msgstr "تسجيل"
-
-#: 
-msgid "Register your family"
-msgstr "تسجيل عائلتك"
-
-#: 
-msgid "How many people are in your family"
-msgstr "كم عدد افراد اسرتك"
 
 #: 
 msgid "Add All Classes"
@@ -6951,10 +6935,6 @@ msgstr "تنسيق البيانات اسم ملف قاعدة:"
 #: 
 msgid "Intersect With Cart"
 msgstr "تتقاطع مع العربة"
-
-#: 
-msgid "Family Member"
-msgstr "عضو الأسرة"
 
 #: 
 msgid "select an option"

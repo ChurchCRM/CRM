@@ -3606,10 +3606,6 @@ msgid "Sunday School Class Functions"
 msgstr "Pühapäevakooli klassi funktsioonid"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Lülitab rippmenüü sisse"
-
-#: 
 msgid "Teachers"
 msgstr "Õpetajad"
 
@@ -4119,18 +4115,6 @@ msgstr "Aastas"
 #: 
 msgid "Registration Complete"
 msgstr "Registreerimine on lõpule viidud"
-
-#: 
-msgid "Register"
-msgstr "Registreeri"
-
-#: 
-msgid "Register your family"
-msgstr "Registreeri oma pere"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Kui palju inimesi teie peres on"
 
 #: 
 msgid "Add All Classes"
@@ -6949,10 +6933,6 @@ msgstr "Koordinaatide andmebaasi faili nimi:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Lõikuge valikukorviga"
-
-#: 
-msgid "Family Member"
-msgstr "Pereliige"
 
 #: 
 msgid "select an option"
