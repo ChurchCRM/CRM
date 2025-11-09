@@ -3,6 +3,7 @@
 describe("Standard People", () => {
     it("Listing all persons", () => {
         cy.loginStandard("v2/people");
+        cy.waitForDataTable('#members');
         cy.contains("Admin");
         cy.contains("Church");
         cy.contains("Joel");
@@ -11,6 +12,7 @@ describe("Standard People", () => {
 
     it("Listing all persons with gender filter", () => {
         cy.loginStandard("v2/people?Gender=0");
+        cy.waitForDataTable('#members');
         cy.contains("Admin");
         cy.contains("Church");
         cy.contains("Kennedy");
@@ -49,8 +51,7 @@ describe("Standard People", () => {
         cy.visit("v2/people?Gender=1"); // Filter by Female
         
         // Wait for DataTable to load
-        cy.get("#members", { timeout: 10000 }).should("be.visible");
-        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
+        cy.waitForDataTable('#members');
         
         // Click Add All to Cart
         cy.get("#AddAllToCart").should("be.visible").click();
@@ -85,8 +86,7 @@ describe("Standard People", () => {
         cy.visit("v2/people?Gender=1");
         
         // Wait for DataTable to load
-        cy.get("#members").should("be.visible");
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+        cy.waitForDataTable('#members');
         
         cy.get("#AddAllToCart").should("be.visible").click();
         
@@ -101,8 +101,7 @@ describe("Standard People", () => {
         cy.visit("v2/people?Gender=1");
         
         // Wait for DataTable to load
-        cy.get("#members").should("be.visible");
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+        cy.waitForDataTable('#members');
         
         cy.get("#RemoveAllFromCart").should("be.visible").click();
         
@@ -129,8 +128,8 @@ describe("Standard People", () => {
     it("Clear Filter functionality", () => {
         cy.loginStandard("v2/people");
         
-        // Wait for page to load
-        cy.get("#members").should("be.visible");
+        // Wait for DataTable to be ready
+        cy.waitForDataTable('#members');
         
         // Apply a gender filter using Select2
         cy.get(".filter-Gender").parent().find(".select2-selection").click();
@@ -142,6 +141,9 @@ describe("Standard People", () => {
         // Click Clear Filter button
         cy.get("#ClearFilter").click();
         
+        // Wait for table to refresh after clearing filter
+        cy.wait(500);
+        
         // Verify all people are shown again
         cy.contains("Admin");
         cy.contains("Emma");
@@ -150,8 +152,8 @@ describe("Standard People", () => {
     it("Multiple filter combinations", () => {
         cy.loginStandard("v2/people");
         
-        // Wait for page to load
-        cy.get("#members").should("be.visible");
+        // Wait for DataTable to be ready
+        cy.waitForDataTable('#members');
         
         // Apply gender filter using Select2
         cy.get(".filter-Gender").parent().find(".select2-selection").click();
