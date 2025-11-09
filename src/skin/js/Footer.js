@@ -1,19 +1,7 @@
-i18nextOpt = {
-    lng: window.CRM.shortLocale,
-    nsSeparator: false,
-    keySeparator: false,
-    pluralSeparator: false,
-    contextSeparator: false,
-    fallbackLng: false,
-    resources: {},
-};
+// i18next initialization is now handled by locale-loader.js
 
-i18nextOpt.resources[window.CRM.shortLocale] = {
-    translation: window.CRM.i18keys,
-};
-i18next.init(i18nextOpt);
-
-$("document").ready(function () {
+// Wait for both DOM ready AND locales loaded before initializing
+function initializeApp() {
     $(".multiSearch").select2({
         language: window.CRM.shortLocale,
         minimumInputLength: 2,
@@ -79,6 +67,19 @@ $("document").ready(function () {
 
     // Initialize FAB buttons with localized labels
     initializeFAB();
+}
+
+// Wait for both DOM and locales to be ready
+$(document).ready(function () {
+    // Check if locales are already loaded
+    if (window.CRM && window.CRM.localesLoaded) {
+        initializeApp();
+    } else {
+        // Wait for locales to load
+        window.addEventListener("CRM.localesReady", initializeApp, {
+            once: true,
+        });
+    }
 });
 
 function showGlobalMessage(message, callOutClass) {
