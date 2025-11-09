@@ -49,7 +49,7 @@
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-term-extract.js",
         "locale:clean": "rm -rf src/locale/textdomain/**/**/*.po src/locale/textdomain/**/**/*.mo src/locale/i18n/*.json src/locale/js/*.js",
-        "locale:download": "npm run locale:clean && node locale/scripts/poeditor-downloader.js && grunt genLocaleJSFiles && npm run locale:audit",
+        "locale:download": "node locale/scripts/poeditor-downloader.js && grunt genLocaleJSFiles && npm run locale:audit",
         "package": "npm run deploy && rm -rf src/propel src/composer.lock && node scripts/package-release.js",
         "postinstall": "grunt genLocaleJSFiles",
         "changelog": "node scripts/generate-changelog.js",

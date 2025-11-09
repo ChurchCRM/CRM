@@ -416,7 +416,14 @@ module.exports = function (grunt) {
                 jsFileContent =
                     jsFileContent + "\n" + "try {" + select2 + "} catch(e) {}";
             }
-            grunt.file.write("src/locale/js/" + locale + ".js", jsFileContent);
+            
+            // Delete old file if it exists (just before writing new one)
+            let outputFile = "src/locale/js/" + locale + ".js";
+            if (grunt.file.exists(outputFile)) {
+                grunt.file.delete(outputFile);
+            }
+            
+            grunt.file.write(outputFile, jsFileContent);
         }
     });
 
