@@ -17,6 +17,8 @@ require_once 'Header-Security.php';
     <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.js"></script>
     <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
 
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment.min.js"></script>
+
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
 </head>
