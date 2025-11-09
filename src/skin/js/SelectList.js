@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // Wait for locales to load before setting up cart handlers
     // CartManager uses i18next for notifications
-    window.CRM.onLocalesReady(function() {
+    window.CRM.onLocalesReady(function () {
         $("#AddAllToCart").click(function () {
             window.CRM.cartManager.addPerson(listPeople, {
                 showNotification: true,
