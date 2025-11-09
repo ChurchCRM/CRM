@@ -3608,10 +3608,6 @@ msgid "Sunday School Class Functions"
 msgstr "የሰንበት ትምህርት ክፍል ተግባራት"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "መውረድን ቀያይር"
-
-#: 
 msgid "Teachers"
 msgstr "አስተማሪዎች"
 
@@ -4119,18 +4115,6 @@ msgstr "በየአመቱ"
 #: 
 msgid "Registration Complete"
 msgstr "ምዝገባ ተጠናቋል"
-
-#: 
-msgid "Register"
-msgstr "ይመዝገቡ"
-
-#: 
-msgid "Register your family"
-msgstr "ቤተሰብዎን ያስመዝግቡ"
-
-#: 
-msgid "How many people are in your family"
-msgstr "በቤተሰብዎ ውስጥ ስንት ሰዎች አሉ"
 
 #: 
 msgid "Add All Classes"
@@ -6952,10 +6936,6 @@ msgstr "የዳታ መሠረት ፋይል ስም አስተባባሪ"
 #: 
 msgid "Intersect With Cart"
 msgstr "ወደጋሪ ያስገቡ"
-
-#: 
-msgid "Family Member"
-msgstr "የቤተሰብ አባል"
 
 #: 
 msgid "select an option"

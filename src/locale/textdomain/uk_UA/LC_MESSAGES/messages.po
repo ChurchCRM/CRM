@@ -3608,10 +3608,6 @@ msgid "Sunday School Class Functions"
 msgstr "Функції класу недільної школи"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Перемкнути спадне меню"
-
-#: 
 msgid "Teachers"
 msgstr "Вчителі"
 
@@ -4119,18 +4115,6 @@ msgstr "Щорічно"
 #: 
 msgid "Registration Complete"
 msgstr "Реєстрація завершена"
-
-#: 
-msgid "Register"
-msgstr "Зареєструйтесь"
-
-#: 
-msgid "Register your family"
-msgstr "Зареєструйте свою сім'ю"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Скільки людей у вашій родині"
 
 #: 
 msgid "Add All Classes"
@@ -6950,10 +6934,6 @@ msgstr "Назва файлу бази даних координат:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Перетин з кошиком"
-
-#: 
-msgid "Family Member"
-msgstr "Член сім'ї"
 
 #: 
 msgid "select an option"
