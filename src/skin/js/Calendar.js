@@ -494,7 +494,6 @@ function initializeCalendar() {
                     alert(i18next.t("Holiday") + ": " + eventData.title);
                 }
             },
-            locale: window.CRM.lang,
             loading: function (isLoading, view) {
                 window.CRM.isCalendarLoading = isLoading;
             },
