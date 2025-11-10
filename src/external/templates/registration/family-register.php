@@ -87,7 +87,7 @@ if (!empty($sHeader)) {
             <h2><?= gettext("Members") ?></h2>
             <section>
                 <?php for ($x = 1; $x <= 8; $x++) { ?>
-                    <div id="memberBox<?= $x ?>" class="box">
+                    <div id="memberBox<?= $x ?>" class="card">
                         <div class="card-header with-border">
                             <h4 class="card-title">
                                 <?= gettext("Family Member") . " #" . $x ?>

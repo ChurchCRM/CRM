@@ -110,7 +110,7 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
         </div>
 
         <!-- map Mobile legend-->
-        <div id="maplegend-mobile" class="box visible-xs-block">
+        <div id="maplegend-mobile" class="card visible-xs-block">
             <div class="row legendbox">
                 <div class="btn bg-primary col-xs-12"><?= gettext('Legend') ?></div>
             </div>

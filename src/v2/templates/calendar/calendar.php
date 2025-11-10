@@ -8,7 +8,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="row">
   <div class="col-lg-9">
-    <div class="card box-info">
+    <div class="card card-info">
         <div class="card-body no-padding">
             <!-- THE CALENDAR -->
             <div id="calendar"></div>

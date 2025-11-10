@@ -185,7 +185,7 @@ $families = FamilyQuery::create()
     ->orderByName()
     ->find(); ?>
 <form class="form-horizontal" method="POST" action="GeoPage.php" name="GeoPage">
-    <div class="box container">
+    <div class="card container">
         <div class="card-body">
             <div class="form-group">
                 <label for="Family"

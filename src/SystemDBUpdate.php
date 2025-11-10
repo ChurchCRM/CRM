@@ -60,7 +60,7 @@ require_once 'Include/HeaderNotLoggedIn.php'; ?>
     <?php
     } else {
     ?>
-        <div class="main-box-body clearfix" id="globalMessage">
+        <div class="card-body clearfix" id="globalMessage">
             <div class="alert alert-danger fade in" id="globalMessageCallOut">
                 <i class="fa-solid fa-triangle-exclamation fa-fw fa-lg"></i> <?= $errorMessage ?>
             </div>
