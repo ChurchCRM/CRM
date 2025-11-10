@@ -110,7 +110,7 @@ require_once 'Include/Header-Short.php';
 <table width="200">
     <tr>
         <td>
-            <p class="ShadedBox">
+            <p class="card card-body">
 
                 <?php
 
@@ -253,9 +253,9 @@ require_once 'Include/Header-Short.php';
                     <td width="<?= $iTableSpacerWidth ?>"></td>
                     <td class="TextColumnWithBottomBorder"><?php if ($sFamRole != '') {
                                                                 echo $sFamRole;
-                                                           } else {
-                                                               echo gettext('Unassigned');
-                                                           } ?>&nbsp;</td>
+                                                            } else {
+                                                                echo gettext('Unassigned');
+                                                            } ?>&nbsp;</td>
                 </tr>
                 <?php
                 for ($i = 1; $i <= $numColumn2Fields; $i++) {
@@ -312,7 +312,7 @@ require_once 'Include/Header-Short.php';
 <br>
 
 <?php if ($fam_ID) {
-    ?>
+?>
 
     <b><?= gettext('Family Members') ?>:</b>
     <table cellpadding=5 cellspacing=0 width="100%">
@@ -336,7 +336,7 @@ require_once 'Include/Header-Short.php';
             $sRowClass = AlternateRowStyle($sRowClass)
 
             // Display the family member
-            ?>
+        ?>
             <tr class="<?= $sRowClass ?>">
                 <td>
                     <?= $per_FirstName . ' ' . $per_LastName ?>
@@ -359,11 +359,11 @@ require_once 'Include/Header-Short.php';
                 </td>
                 <td><?= MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear) ?></td>
             </tr>
-            <?php
+    <?php
         }
         echo '</table>';
-}
-?>
+    }
+    ?>
     <BR>
     <b><?= gettext('Assigned Groups') ?>:</b>
 
@@ -482,7 +482,7 @@ require_once 'Include/Header-Short.php';
         // Loop through all the notes
         while ($aRow = mysqli_fetch_array($rsNotes)) {
             extract($aRow);
-            echo '<p class="ShadedBox")>' . $nte_Text . '</p>';
+            echo '<p class="card card-body")>' . $nte_Text . '</p>';
             echo '<span class="SmallText">' . gettext('Entered:') . FormatDate($nte_DateEntered, true) . '</span><br>';
 
             if (strlen($nte_DateLastEdited)) {
