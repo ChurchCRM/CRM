@@ -92,9 +92,48 @@ Key Standards:
 - Explicit nullable parameters: `?int $param = null` not `int $param = null`
 - Dynamic properties need attribute: `#[\AllowDynamicProperties]`
 - Use IntlDateFormatter instead of strftime
+- **Use imports, never inline fully-qualified class names**: Add `use` statements at top of file
 - Explicit global namespace: `\MakeFYString($id)` in namespaced code
 - Version checks: `version_compare(phpversion(), '8.2.0', '<')`
 - Public constants for shared values: `public const PHOTO_WIDTH = 200;`
+
+### Import Statement Rules
+
+ALWAYS use `use` statements at the top of files instead of inline fully-qualified class names:
+
+```php
+// CORRECT
+<?php
+namespace ChurchCRM\Slim;
+
+use ChurchCRM\dto\SystemURLs;
+use Slim\Exception\HttpNotFoundException;
+
+class MyClass {
+    public function test() {
+        $path = SystemURLs::getRootPath();
+        throw new HttpNotFoundException($request);
+    }
+}
+
+// WRONG - Inline fully-qualified names
+<?php
+namespace ChurchCRM\Slim;
+
+class MyClass {
+    public function test() {
+        $path = \ChurchCRM\dto\SystemURLs::getRootPath();
+        throw new \Slim\Exception\HttpNotFoundException($request);
+    }
+}
+```
+
+**File Structure Order:**
+1. `<?php` tag and namespace declaration
+2. All `use` statements (alphabetically organized)
+3. Class declaration and code
+
+**Exception:** Only use `\` prefix for global functions in namespaced code (e.g., `\MakeFYString()`)
 
 ---
 
@@ -277,7 +316,7 @@ CRITICAL: Always wrap user-facing text for translation.
 
 JavaScript:
 ```javascript
-$.notify(i18next.t('Operation completed'), {
+window.CRM.notify(i18next.t('Operation completed'), {
     type: 'success',
     delay: 3000
 });
@@ -288,16 +327,15 @@ PHP:
 echo gettext('Welcome to ChurchCRM');
 ```
 
-NEVER use alert() - only use bootstrap-notify:
+NEVER use alert() - only use window.CRM.notify() with Notyf:
 ```javascript
 // WRONG
 alert('Operation completed');
 
 // CORRECT
-$.notify(i18next.t('Operation completed'), {
+window.CRM.notify(i18next.t('Operation completed'), {
     type: 'success',
-    delay: 3000,
-    placement: { from: 'top', align: 'right' }
+    delay: 3000
 });
 ```
 
@@ -353,9 +391,25 @@ npm run docker:dev:start  # Start Docker containers
 
 ### Development Cycle
 ```bash
-npm run build:frontend    # Rebuild JS/CSS (watches via Webpack)
-npm run build:php         # Update Composer dependencies
-npm run docker:dev:logs   # View container logs
+npm run build:frontend       # Rebuild JS/CSS (watches via Webpack)
+npm run build:php            # Update Composer dependencies
+npm run docker:dev:logs      # View container logs
+npm run docker:dev:login:web # Shell into web container
+```
+
+### Docker Management
+```bash
+# Development
+npm run docker:dev:start     # Start dev containers
+npm run docker:dev:stop      # Stop containers
+npm run docker:dev:logs      # View logs
+
+# Testing
+npm run docker:test:start       # Start test containers
+npm run docker:test:restart     # Restart all containers
+npm run docker:test:restart:db  # Restart database only (refresh schema)
+npm run docker:test:rebuild     # Full rebuild with new images
+npm run docker:test:down        # Remove containers and volumes
 ```
 
 ### Testing (Local)
@@ -405,7 +459,7 @@ PR organization:
 - Deprecated HTML attributes replaced with CSS
 - Bootstrap CSS classes applied correctly
 - All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
-- No alert() calls - use bootstrap-notify instead
+- No alert() calls - use window.CRM.notify() instead
 - Tests pass (if available)
 - Commit message follows imperative mood (< 72 chars)
 - Branch name follows kebab-case format
@@ -440,9 +494,11 @@ PR organization:
 - Only create documentation when the user specifically asks for it
 
 ### Git Commits
+- **DO NOT commit** until tests pass (if tests exist for the changes)
+- **ALWAYS run tests first** when changes include test files
 - **DO NOT auto-commit** changes without explicit user request
 - **DO NOT run git commit** commands unless the user asks
-- **DO ask permission** before creating commits: "Ready to commit? [describe changes]"
+- **DO ask permission** before creating commits with test results: "Tests passed. Ready to commit? [describe changes]"
 - Leave commits for the user to handle via their own workflow
 
 ### Code Changes
@@ -453,4 +509,56 @@ PR organization:
 
 ---
 
-Last updated: November 6, 2025
+## Agent Preferences & Standards
+
+### Service Layer First
+- When implementing business logic, **create/update Service classes** in `src/ChurchCRM/Service/`
+- Service methods encapsulate domain logic, database operations, and validation
+- Call services from legacy pages (`src/*.php`), not raw SQL
+- Services use Propel ORM exclusively - no RunQuery() or direct SQL
+
+### Logging Standards
+- **Always use LoggerUtils** for business logic operations:
+  ```php
+  use ChurchCRM\Utils\LoggerUtils;
+  $logger = LoggerUtils::getAppLogger();
+  $logger->debug('Operation starting', ['context' => $value]);
+  $logger->info('Operation succeeded', ['result' => $value]);
+  $logger->error('Operation failed', ['error' => $e->getMessage()]);
+  ```
+- Log levels: `debug` (development info), `info` (business events), `warning` (issues), `error` (failures)
+- Include relevant context in log messages as second parameter array
+
+### Import Organization
+- Always add `use` statements at the top of files (alphabetically organized)
+- Import all external classes/namespaces explicitly
+- Do NOT use inline fully-qualified class names (e.g., `\ChurchCRM\model\ChurchCRM\GroupQuery`)
+- Exception: Global functions in namespaced code use backslash prefix (e.g., `\MakeFYString()`)
+
+### Testing Approach
+- Create Cypress UI tests in `cypress/e2e/ui/` for user workflows
+- Do NOT create API tests for simple service calls (test via UI)
+- UI tests verify complete workflows end-to-end
+- Test files: descriptive names, organized by feature area
+- **Run tests with**: `npx cypress run --e2e --spec "cypress/e2e/ui/path/to/test.spec.js"`
+- Run full suite with: `npm run test` (runs all tests - use sparingly)
+- **ALWAYS run relevant tests before committing**
+- Only proceed to commit after tests pass successfully
+
+### API Endpoints
+- Create API endpoints in `src/api/routes/` ONLY when needed by external clients
+- If a service method is only called from a legacy page, **do NOT create an API endpoint**
+- Call services directly from legacy pages instead
+- Avoid redundant endpoints that just wrap service calls with no additional value
+
+### Branching & Commits
+- Create feature branches: `fix/issue-NUMBER-description` or `feature/description`
+- Commit format: Imperative mood, descriptive (not just file names)
+- Example: "Fix issue #6672: Renumber group property fields after deletion"
+- Include what changed and why in commit message
+
+---
+
+Last updated: November 9, 2025
+
+```

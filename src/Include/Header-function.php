@@ -58,7 +58,13 @@ function Header_body_scripts(): void
         $tableSize = $tableSizeSetting->getValue();
     } ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-        window.CRM = {
+        // Initialize window.CRM if not already created by webpack bundles
+        if (!window.CRM) {
+            window.CRM = {};
+        }
+        
+        // Extend window.CRM with server-side configuration (preserving existing properties like notify)
+        Object.assign(window.CRM, {
             root: "<?= SystemURLs::getRootPath() ?>",
             fullURL:"<?= SystemURLs::getURL() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
@@ -79,7 +85,7 @@ function Header_body_scripts(): void
                     "pageLength": <?= $tableSize ?>,
                     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     "language": {
-                        "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
+                        "url": "<?= SystemURLs::getRootPath() ?>/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
                     dom: "<'row'<'col-sm-4'<?= $currentUser->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
@@ -89,7 +95,7 @@ function Header_body_scripts(): void
                 }
             },
             PageName:"<?= $_SERVER['REQUEST_URI']; ?>"
-        };
+        });
         // Initialize moment locale if available
         if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
             moment.locale(window.CRM.shortLocale);

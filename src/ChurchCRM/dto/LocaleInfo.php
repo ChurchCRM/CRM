@@ -11,6 +11,7 @@ class LocaleInfo
     public $dataTables;
     private $name;
     private $poLocaleId;
+    private $localeConfig;
 
     public function __construct($locale, $userLocale)
     {
@@ -28,6 +29,7 @@ class LocaleInfo
                 $this->country = $value['countryCode'];
                 $this->dataTables = $value['dataTables'];
                 $this->poLocaleId = $value['poEditor'];
+                $this->localeConfig = $value;  // Store full config for later use
             }
         }
     }
@@ -116,5 +118,14 @@ class LocaleInfo
         }
 
         return $localeInfo;
+    }
+
+    /**
+     * Get the full locale configuration array for JavaScript
+     * @return array<string, mixed>
+     */
+    public function getLocaleConfigArray(): array
+    {
+        return $this->localeConfig ?? [];
     }
 }

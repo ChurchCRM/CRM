@@ -217,7 +217,16 @@ foreach ($ListItem as $element) {
 
     var oTable;
 
-    $(document).ready(function() {
+    function initializePeopleList() {
+        // Prevent double initialization
+        if (oTable) {
+            return;
+        }
+
+        // setup filters
+        var filterByClsId = '<?= $filterByClsId ?>';
+        var filterByFmrId = '<?= $filterByFmrId ?>';
+        var filterByGender = '<?= $filterByGender ?>';
 
         // Set all i18next translations
         $('#filters-title').text(i18next.t('Filters'));
@@ -231,11 +240,6 @@ foreach ($ListItem as $element) {
         $('#people-title').text(i18next.t('People'));
         $('#add-all-cart-text').text(i18next.t('Add All to Cart'));
         $('#remove-all-cart-text').text(i18next.t('Remove All from Cart'));
-
-        // setup filters
-        var filterByClsId = '<?= $filterByClsId ?>';
-        var filterByFmrId = '<?= $filterByFmrId ?>';
-        var filterByGender = '<?= $filterByGender ?>';
 
         // setup datatables
         'use strict';
@@ -349,34 +353,37 @@ foreach ($ListItem as $element) {
         // });
 
         // setup external DataTable filters
-        var Gender = ['Male', 'Female', 'Unassigned'];
+        var Gender = ['Unassigned', 'Male', 'Female'];  // order: 0=Unassigned, 1=Male, 2=Female
+        var shouldTriggerGenderFilter = false;
         for (var i = 0; i < Gender.length; i++) {
             if (filterByGender == Gender[i]) {
                 $('.filter-Gender').val(i18next.t(Gender[i]));
                 $('.filter-Gender').append('<option selected value='+i+'>'+i18next.t(Gender[i])+'</option>');
-                $('.filter-Gender').trigger('change')
+                shouldTriggerGenderFilter = true;
             } else {
             $('.filter-Gender').append('<option value='+i+'>'+i18next.t(Gender[i])+'</option>');
             }
         }
         var ClassificationList = <?= json_encode($ClassificationList, JSON_THROW_ON_ERROR) ?>;
+        var shouldTriggerClassificationFilter = false;
         for (var i = 0; i < ClassificationList.length; i++) {
-            // apply initinal filters if applicable
+            // apply initial filters if applicable
             if (filterByClsId == ClassificationList[i]) {
                 $('.filter-Classification').val(ClassificationList[i]);
                 $('.filter-Classification').append('<option selected value='+i+'>'+ClassificationList[i]+'</option>');
-                $('.filter-Classification').trigger('change')
+                shouldTriggerClassificationFilter = true;
             } else {
                $('.filter-Classification').append('<option value='+i+'>'+ClassificationList[i]+'</option>');
             }
         }
 
         var RoleList = <?= json_encode($RoleList, JSON_THROW_ON_ERROR) ?>;
+        var shouldTriggerRoleFilter = false;
         for (var i = 0; i < RoleList.length; i++) {
             if (filterByFmrId == RoleList[i]) {
                 $('.filter-Role').val(RoleList[i]);
                 $('.filter-Role').append('<option selected value='+i+'>'+RoleList[i]+'</option>');
-                $('.filter-Role').trigger('change')
+                shouldTriggerRoleFilter = true;
             } else {
                 $('.filter-Role').append('<option value='+i+'>'+RoleList[i]+'</option>');
             }
@@ -408,58 +415,161 @@ foreach ($ListItem as $element) {
             $('.filter-Custom').val([]).trigger('change')
             $('.filter-Group').val([]).trigger('change')
         });
-    }); // end document ready
 
-    $("#AddAllToCart").click(function(){
-        var listPeople = [];
-        // Get all visible rows from the filtered table
-        $('#members').DataTable().rows({ filter: 'applied' }).every(function () {
-            // Get the row node (DOM element)
-            var node = this.node();
-            // Find the AddToCart button in this row and get its person ID
-            var personId = $(node).find('.AddToCart').data('cart-id');
-            if (personId) {
-                listPeople.push(personId);
+        // Helper function to collect all filtered people IDs from the table
+        function collectFilteredPeople() {
+            // Guard: ensure oTable is initialized
+            if (!oTable || typeof oTable.rows !== 'function') {
+                return [];
+            }
+            
+            var listPeople = [];
+            var currentPage = oTable.page();
+            var currentPageLength = oTable.page.len();
+            
+            // Temporarily show all rows to ensure all are in DOM
+            oTable.page.len(-1).draw(false);
+            
+            // Get all matching rows and collect their person IDs
+            oTable.rows({ search: 'applied' }).every(function () {
+                var node = this.node();
+                // Find any button with data-cart-id (works for both AddToCart and RemoveFromCart)
+                var personId = $(node).find('[data-cart-id]').first().data('cart-id');
+                
+                if (personId) {
+                    listPeople.push(personId);
+                }
+            });
+            
+            // Restore pagination to original state
+            oTable.page.len(currentPageLength).draw(false);
+            oTable.page(currentPage).draw(false);
+            
+            return listPeople;
+        }
+
+        $("#AddAllToCart").click(function(){
+            var filteredCount = oTable.rows({ search: 'applied' }).count();
+            
+            if (filteredCount === 0) {
+                window.CRM.cartManager.showNotification('warning', i18next.t('No people to add - filter returned no results'));
+                return;
+            }
+            
+            var listPeople = collectFilteredPeople();
+            
+            if (listPeople.length > 0) {
+                window.CRM.cartManager.addPerson(listPeople, {
+                    showNotification: true,
+                    reloadPage: false,
+                    callback: function() {
+                        updateCartButtonStates();
+                    }
+                });
+            } else {
+                window.CRM.cartManager.showNotification('warning', i18next.t('No people to add - all are already in cart'));
             }
         });
-        
-        if (listPeople.length > 0) {
-            // Use CartManager with notifications and automatic page reload
-            window.CRM.cartManager.addPerson(listPeople, {
-                showNotification: true,
-                reloadPage: true
-            });
-        } else {
-            // Show notification that no people to add
-            window.CRM.cartManager.showNotification('warning', i18next.t('No people to add - all are already in cart'));
-        }
-    });
 
-    $("#RemoveAllFromCart").click(function(){
-        var listPeople = [];
-        // Get all visible rows from the filtered table
-        $('#members').DataTable().rows({ filter: 'applied' }).every(function () {
-            // Get the row node (DOM element)
-            var node = this.node();
-            // Find the RemoveFromCart button in this row and get its person ID
-            var personId = $(node).find('.RemoveFromCart').data('cart-id');
-            if (personId) {
-                listPeople.push(personId);
-            }
+        $("#RemoveAllFromCart").click(function(){
+            // Get the count and list of filtered rows that will be removed
+            var listPeople = collectFilteredPeople();
+            var filteredCount = listPeople.length;
+            
+            bootbox.confirm({
+                title: "Remove from Cart",
+                message: i18next.t("Remove") + " " + filteredCount + " " + i18next.t("people from cart?"),
+                buttons: {
+                    cancel: {
+                        label: i18next.t("Cancel")
+                    },
+                    confirm: {
+                        label: i18next.t("Yes, Remove"),
+                        className: "btn-danger"
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        if (listPeople.length > 0) {
+                            // Don't pass confirm: true since we already showed bootbox confirmation above
+                            window.CRM.cartManager.removePerson(listPeople, {
+                                showNotification: true,
+                                reloadPage: false,
+                                confirm: false,
+                                callback: function() {
+                                    updateCartButtonStates();
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        });
+
+        // Update button cart states after DataTable draws (page change, filter change, etc)
+        oTable.on('draw.dt', function() {
+            updateCartButtonStates();
         });
         
-        
-        if (listPeople.length > 0) {
-            // Use CartManager with confirmation, notifications, and automatic page reload
-            window.CRM.cartManager.removePerson(listPeople, {
-                confirm: true,
-                showNotification: true,
-                reloadPage: true
+        // Function to update button states for all visible rows based on cart status
+        function updateCartButtonStates() {
+            // Guard: only run if oTable is initialized
+            if (!oTable || !window.CRM.APIRequest) {
+                return;
+            }
+            
+            // Fetch current cart state from server
+            window.CRM.APIRequest({
+                method: "GET",
+                path: "cart/",
+                suppressErrorDialog: true,
+            }).done(function(data) {
+                // Use CartManager's syncButtonStates to update all buttons
+                if (window.CRM.cartManager && window.CRM.cartManager.syncButtonStates) {
+                    window.CRM.cartManager.syncButtonStates(
+                        data.PeopleCart || [],
+                        data.FamiliesInCart || [],
+                        data.GroupsInCart || []
+                    );
+                }
             });
-        } else {
-            // Show notification that no people to remove
-            window.CRM.cartManager.showNotification('warning', i18next.t('No people in cart to remove'));
         }
+        
+        // Apply initial filters from URL parameters now that Select2 and DataTable are ready
+        if (filterByGender) {
+            var genderIndex = -1;
+            // Gender is already set via inline trigger above, just validate
+            for (var i = 0; i < Gender.length; i++) {
+                if (filterByGender === Gender[i]) {
+                    genderIndex = i;
+                    break;
+                }
+            }
+        }
+        if (filterByClsId) {
+            // Already set via inline trigger above
+        }
+        if (filterByFmrId) {
+            // Already set via inline trigger above
+        }
+        
+        // Trigger URL filters after a delay to ensure DataTable is fully initialized
+        setTimeout(function() {
+            if (shouldTriggerGenderFilter) {
+                $('.filter-Gender').trigger('change');
+            }
+            if (shouldTriggerClassificationFilter) {
+                $('.filter-Classification').trigger('change');
+            }
+            if (shouldTriggerRoleFilter) {
+                $('.filter-Role').trigger('change');
+            }
+        }, 100);
+    } // end initializePeopleList
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializePeopleList);
     });
 
 </script>

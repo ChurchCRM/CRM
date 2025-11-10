@@ -3606,10 +3606,6 @@ msgid "Sunday School Class Functions"
 msgstr "Sondagskoolklasfunksies"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Skakel aftreklys af"
-
-#: 
 msgid "Teachers"
 msgstr "Onderwysers"
 
@@ -4120,18 +4116,6 @@ msgstr "Jaarliks"
 #: 
 msgid "Registration Complete"
 msgstr "Registrasie voltooi"
-
-#: 
-msgid "Register"
-msgstr "Registreer"
-
-#: 
-msgid "Register your family"
-msgstr "Registreer u gesin"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Hoeveel mense is in jou familie"
 
 #: 
 msgid "Add All Classes"
@@ -6951,10 +6935,6 @@ msgstr "Koördineer databasis lêernaam:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Sny Met Kar"
-
-#: 
-msgid "Family Member"
-msgstr "Familielid"
 
 #: 
 msgid "select an option"

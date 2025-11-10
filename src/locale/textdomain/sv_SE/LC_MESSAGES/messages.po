@@ -3743,10 +3743,6 @@ msgid "Sunday School Class Functions"
 msgstr "Söndagsskolas klassfunktioner"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Växla rullgardinsmenyn"
-
-#: 
 msgid "Teachers"
 msgstr "lärare"
 
@@ -4263,18 +4259,6 @@ msgstr "Årlig"
 #: 
 msgid "Registration Complete"
 msgstr "Registrering klar"
-
-#: 
-msgid "Register"
-msgstr "Registrera"
-
-#: 
-msgid "Register your family"
-msgstr "Registrera din familj"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Hur många personer är i din familj"
 
 #: 
 msgid "Add All Classes"
@@ -7094,10 +7078,6 @@ msgstr "Koordinera databasfilnamn:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Korsar med vagn"
-
-#: 
-msgid "Family Member"
-msgstr "Familjemedlem"
 
 #: 
 msgid "select an option"

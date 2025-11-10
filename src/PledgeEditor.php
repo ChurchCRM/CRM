@@ -7,7 +7,12 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\MICRFunctions;
+use ChurchCRM\model\ChurchCRM\Deposit;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -202,10 +207,9 @@ if (
         }
     }
     if (!$iEnvelope && $iFamily) {
-        $sSQL = 'SELECT fam_Envelope FROM family_fam WHERE fam_ID="' . $iFamily . '";';
-        $rsEnv = RunQuery($sSQL);
-        if ($fam_Envelope) {
-            $iEnvelope = $rsEnv['fam_Envelope'];
+        $family = FamilyQuery::create()->findPk((int)$iFamily);
+        if ($family !== null && $family->getEnvelope()) {
+            $iEnvelope = $family->getEnvelope();
         }
     }
 }
@@ -221,9 +225,12 @@ if ($PledgeOrPayment === 'Pledge') { // Don't assign the deposit slip if this is
 
     // Get the current deposit slip data
     if ($iCurrentDeposit) {
-        $sSQL = 'SELECT dep_Closed, dep_Date, dep_Type from deposit_dep WHERE dep_ID = ' . $iCurrentDeposit;
-        $rsDeposit = RunQuery($sSQL);
-        extract(mysqli_fetch_array($rsDeposit));
+        $deposit = DepositQuery::create()->findPk((int)$iCurrentDeposit);
+        if ($deposit !== null) {
+            $dep_Closed = $deposit->getClosed();
+            $dep_Date = $deposit->getDate();
+            $dep_Type = $deposit->getType();
+        }
     }
 }
 
@@ -376,11 +383,11 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                 RedirectUtils::redirect($linkBack);
             } else {
                 //Send to the view of this pledge
-                RedirectUtils::redirect('PledgeEditor.php?PledgeOrPayment=' . $PledgeOrPayment . '&GroupKey=' . $sGroupKey . '&linkBack=', $linkBack);
+                RedirectUtils::redirect('PledgeEditor.php?PledgeOrPayment=' . $PledgeOrPayment . '&GroupKey=' . $sGroupKey . '&linkBack=' . $linkBack);
             }
         } elseif (isset($_POST['PledgeSubmitAndAdd'])) {
             //Reload to editor to add another record
-            RedirectUtils::redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=" . $PledgeOrPayment . '&linkBack=', $linkBack);
+            RedirectUtils::redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=" . $PledgeOrPayment . '&linkBack=' . $linkBack);
         }
     } // end if !$bErrorFlag
 } elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck'])) {
@@ -392,9 +399,10 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
 
         if ($routeAndAccount) {
-            $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
-            $rsFam = RunQuery($sSQL);
-            $iFamily = $rsFam['fam_ID'];
+            $family = FamilyQuery::create()->filterByScanCheck($routeAndAccount)->findOne();
+            if ($family !== null) {
+                $iFamily = $family->getId();
+            }
 
             $iCheckNo = $micrObj->findCheckNo($tScanString);
         } else {
@@ -406,12 +414,9 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 
         $iEnvelope = InputUtils::legacyFilterInput($_POST['Envelope'], 'int');
         if ($iEnvelope && strlen($iEnvelope) > 0) {
-            $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_Envelope=' . $iEnvelope;
-            $rsFam = RunQuery($sSQL);
-            $numRows = mysqli_num_rows($rsFam);
-            if ($numRows) {
-                $aRow = mysqli_fetch_array($rsDeposit);
-                $iFamily = $aRow['fam_ID'];
+            $family = FamilyQuery::create()->filterByEnvelope((int)$iEnvelope)->findOne();
+            if ($family !== null) {
+                $iFamily = $family->getId();
             }
         }
     } else {
@@ -440,7 +445,8 @@ if ($iCurrentDeposit) {
 if ($PledgeOrPayment === 'Pledge') {
     $sPageTitle = gettext('Pledge Editor');
 } elseif ($iCurrentDeposit) {
-    $sPageTitle = gettext('Payment Editor: ') . $dep_Type . gettext(' Deposit Slip #') . $iCurrentDeposit . " ($dep_Date)";
+    $dep_DateFormatted = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
+    $sPageTitle = gettext('Payment Editor: ') . $dep_Type . gettext(' Deposit Slip #') . $iCurrentDeposit . " ($dep_DateFormatted)";
 
     $checksFit = SystemConfig::getValue('iChecksPerDepositForm');
 
@@ -479,10 +485,9 @@ if ($dep_Closed && $sGroupKey && $PledgeOrPayment === 'Payment') {
 //$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
 $sFamilyName = '';
 if ($iFamily) {
-    $sSQL = 'SELECT fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID =' . $iFamily;
-    $rsFindFam = RunQuery($sSQL);
-    while ($aRow = mysqli_fetch_array($rsFindFam)) {
-        $sFamilyName = $fam_Name . ' ' . FormatAddressLine($aRow['fam_Address1'], $aRow['fam_City'], $aRow['fam_State']);
+    $family = FamilyQuery::create()->findPk((int)$iFamily);
+    if ($family !== null) {
+        $sFamilyName = $family->getName() . ' ' . FormatAddressLine($family->getAddress1(), $family->getCity(), $family->getState());
     }
 }
 
@@ -511,7 +516,7 @@ require_once 'Include/Header.php';
 
                     <div class="col-lg-6">
                         <?php if (!$dDate) {
-                            $dDate = $dep_Date;
+                            $dDate = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
                         } ?>
                         <label for="Date"><?= gettext('Date') ?></label>
                         <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>"><span class="text-danger"><?= $sDateError ?></span>

@@ -3700,10 +3700,6 @@ msgid "Sunday School Class Functions"
 msgstr "Funcții școală duminicală"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Comută meniu"
-
-#: 
 msgid "Teachers"
 msgstr "Învățători"
 
@@ -4219,18 +4215,6 @@ msgstr "Anual"
 #: 
 msgid "Registration Complete"
 msgstr "Înregistrare completă"
-
-#: 
-msgid "Register"
-msgstr "Înregistrează"
-
-#: 
-msgid "Register your family"
-msgstr "Înregistrează-ți familia"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Câte persoane sunt în familia ta"
 
 #: 
 msgid "Add All Classes"
@@ -7051,10 +7035,6 @@ msgstr "Nume fișiere coordonate în baza de date"
 #: 
 msgid "Intersect With Cart"
 msgstr "Intersecție cu grafic"
-
-#: 
-msgid "Family Member"
-msgstr "Membru familie"
 
 #: 
 msgid "select an option"

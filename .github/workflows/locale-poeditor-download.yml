@@ -119,7 +119,7 @@ jobs:
         echo "🔍 Validating locale download integrity..."
         
         # Check if any JSON files were created
-        json_count=$(find locale/JSONKeys -name "*.json" -type f | wc -l)
+        json_count=$(find src/locale/i18n -name "*.json" -type f | wc -l)
         echo "Found $json_count JSON locale files"
         
         if [ "$json_count" -eq 0 ]; then
@@ -129,7 +129,7 @@ jobs:
         
         # Check for completely empty JSON files (which shouldn't exist)
         # Exclude en_US.json as it's the base locale and will always be empty
-        empty_files=$(find locale/JSONKeys -name "*.json" -type f -empty ! -name "en_US.json")
+        empty_files=$(find src/locale/i18n -name "*.json" -type f -empty ! -name "en_US.json")
         if [ -n "$empty_files" ]; then
           echo "❌ ERROR: Found empty JSON locale files:"
           echo "$empty_files"
@@ -140,7 +140,7 @@ jobs:
         # Check for JSON files that only contain whitespace or are malformed
         # Exclude en_US.json as it's the base locale
         invalid_files=""
-        for json_file in locale/JSONKeys/*.json; do
+        for json_file in src/locale/i18n/*.json; do
           # Skip en_US.json (base locale, expected to be empty)
           if [ "$(basename "$json_file")" = "en_US.json" ]; then
             continue
@@ -175,7 +175,7 @@ jobs:
         regression_files=""
         
         # Check git diff for files that went from having content to being empty
-        deleted_content=$(git diff --name-only --diff-filter=M | grep "locale/JSONKeys/.*\.json$" || true)
+        deleted_content=$(git diff --name-only --diff-filter=M | grep "src/locale/i18n/.*\.json$" || true)
         
         if [ -n "$deleted_content" ]; then
           for file in $deleted_content; do
@@ -208,12 +208,12 @@ jobs:
       if: inputs.operation_mode != 'audit-only'
       run: |
         echo "📊 Download Summary:"
-        echo "Total JSON files: $(find locale/JSONKeys -name "*.json" -type f | wc -l)"
-        echo "Non-empty JSON files: $(find locale/JSONKeys -name "*.json" -type f ! -empty | wc -l)"
-        echo "Files with substantial content (>100 bytes): $(find locale/JSONKeys -name "*.json" -type f -exec wc -c {} \; | awk '$1 > 100' | wc -l)"
+        echo "Total JSON files: $(find src/locale/i18n -name "*.json" -type f | wc -l)"
+        echo "Non-empty JSON files: $(find src/locale/i18n -name "*.json" -type f ! -empty | wc -l)"
+        echo "Files with substantial content (>100 bytes): $(find src/locale/i18n -name "*.json" -type f -exec wc -c {} \; | awk '$1 > 100' | wc -l)"
         echo ""
         echo "Git status after download:"
-        git status --porcelain locale/
+        git status --porcelain src/locale/i18n/
 
     - name: Check for changes
       if: inputs.operation_mode != 'audit-only'

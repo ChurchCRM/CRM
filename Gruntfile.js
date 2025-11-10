@@ -1,70 +1,8 @@
 module.exports = function (grunt) {
-    var poLocales = function () {
-        var locales = grunt.file.readJSON("src/locale/locales.json");
-        var poEditorLocales = {};
-        for (var key in locales) {
-            var locale = locales[key];
-            var poLocaleName = locale["poEditor"];
-            poEditorLocales[poLocaleName] = locale["locale"];
-        }
-        return poEditorLocales;
-    };
-
-    var dataTablesLang = function () {
-        var locales = grunt.file.readJSON("src/locale/locales.json");
-        var DTLangs = [];
-        for (var key in locales) {
-            var locale = locales[key];
-            DTLangs.push(locale["dataTables"]);
-        }
-        return DTLangs.toString();
-    };
-
-    var momentLangs = function () {
-        var locales = grunt.file.readJSON("src/locale/locales.json");
-        var momentFiles = ["node_modules/moment/min/moment.min.js"];
-        for (var key in locales) {
-            var locale = locales[key];
-            // Only include locale if momentLocale is defined AND the file exists
-            if (locale["momentLocale"]) {
-                var filePath = "node_modules/moment/locale/" + locale["momentLocale"] + ".js";
-                if (grunt.file.exists(filePath)) {
-                    momentFiles.push(filePath);
-                }
-            }
-        }
-        return momentFiles;
-    };
-
-    var dataTablesVer = "1.13.8";
-
     // Project configuration.
     grunt.initConfig({
         package: grunt.file.readJSON("package.json"),
         pkg: grunt.file.readJSON("package.json"),
-        buildConfig: (function () {
-            try {
-                grunt.log.writeln("Using BuildConfig.json");
-                return grunt.file.readJSON("BuildConfig.json");
-            } catch (e) {
-                grunt.log.writeln("BuildConfig.json not found, using defaults");
-                return grunt.file.readJSON("BuildConfig.json.example");
-            }
-        })(),
-        projectFiles: [
-            "**",
-            "**/.*",
-            "!**/.gitignore",
-            "!vendor/**/example/**",
-            "!vendor/**/tests/**",
-            "!vendor/**/docs/**",
-            "!Images/{Family,Person}/**/*.{jpg,jpeg,png}",
-            "!composer.lock",
-            "!Include/Config.php",
-            "!integrityCheck.json",
-            "!logs/*.log",
-            "!vendor/endroid/qr-code/assets/fonts/noto_sans.otf", // This closes #5099, but TODO: when https://github.com/endroid/qr-code/issues/224 is fixed, we can remove this exclusion.
-        ],
         copy: {
             skin: {
                 files: [
@@ -88,11 +26,12 @@ module.exports = function (grunt) {
                         src: ["node_modules/fullcalendar/index.global.min.js"],
                         dest: "src/skin/external/fullcalendar/",
                     },
+                    // Moment.js core library
                     {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: momentLangs(),
+                        src: ["node_modules/moment/min/moment.min.js"],
                         dest: "src/skin/external/moment/",
                     },
                     {
@@ -144,35 +83,19 @@ module.exports = function (grunt) {
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/bootstrap-validator/dist/validator.min.js",
+                            "node_modules/just-validate/dist/just-validate.production.min.js",
                         ],
-                        dest: "src/skin/external/bootstrap-validator/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: ["node_modules/jquery/dist/jquery.min.js"],
-                        dest: "src/skin/external/jquery/",
+                        dest: "src/skin/external/just-validate/",
                     },
                     {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/jquery-steps/build/jquery.steps.min.js",
-                            "node_modules/jquery-steps/demo/css/jquery.steps.css",
+                            "node_modules/bs-stepper/dist/js/bs-stepper.min.js",
+                            "node_modules/bs-stepper/dist/css/bs-stepper.min.css",
                         ],
-                        dest: "src/skin/external/jquery.steps/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: [
-                            "node_modules/jquery-validation/dist/jquery.validate.min.js",
-                        ],
-                        dest: "src/skin/external/jquery-validation/",
+                        dest: "src/skin/external/bs-stepper/",
                     },
                     {
                         expand: true,
@@ -185,33 +108,8 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["node_modules/pace/pace.js"],
-                        dest: "src/skin/external/pace/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         src: ["node_modules/i18next/dist/umd/i18next.min.js"],
                         dest: "src/skin/external/i18next/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: [
-                            "node_modules/bootstrap-show-password/dist/bootstrap-show-password.min.js",
-                        ],
-                        dest: "src/skin/external/bootstrap-show-password",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: [
-                            "node_modules/bootstrap-notify/bootstrap-notify.min.js",
-                        ],
-                        dest: "src/skin/external/bootstrap-notify",
                     },
                     {
                         expand: true,
@@ -299,7 +197,7 @@ module.exports = function (grunt) {
                         flatten: false,
                         cwd: "node_modules/datatables.net-bs4",
                         src: ["images/**"],
-                        dest: "src/skin/external/datatables/DataTables-" + dataTablesVer + "/",
+                        dest: "src/skin/external/datatables/",
                     },
                     // PDF/Excel export dependencies
                     {
@@ -323,38 +221,57 @@ module.exports = function (grunt) {
                         ],
                         dest: "src/skin/external/datatables/",
                     },
-                ],
-            },
-        },
-        "curl-dir": {
-            // DataTables locale files still come from CDN (no npm package available)
-            datatables_locale: {
-                src: [
-                    "https://cdn.datatables.net/plug-ins/" +
-                        dataTablesVer +
-                        "/i18n/{" +
-                        dataTablesLang() +
-                        "}.json",
-                ],
-                dest: "src/locale/datatables",
-            },
-        },
-        compress: {
-            zip: {
-                options: {
-                    archive: "temp/ChurchCRM-<%= package.version %>.zip",
-                    mode: "zip",
-                    pretty: true,
-                },
-                files: [
+                    // DataTables: Locale/i18n files
                     {
                         expand: true,
-                        cwd: "src/",
-                        src: "<%= projectFiles %>",
-                        dest: "churchcrm/",
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/datatables.net-plugins",
+                        src: ["i18n/*.json"],
+                        dest: "src/locale/vendor/datatables/",
+                    },
+                    // Moment.js locale files
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/moment",
+                        src: ["locale/*.js"],
+                        dest: "src/locale/vendor/moment/",
+                    },
+                    // Bootstrap DatePicker locale files
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/bootstrap-datepicker/dist",
+                        src: ["locales/*.js", "locales/*.min.js"],
+                        dest: "src/locale/vendor/bootstrap-datepicker/",
+                    },
+                    // Select2 i18n files
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/select2/dist",
+                        src: ["js/i18n/*.js"],
+                        dest: "src/locale/vendor/select2/",
+                    },
+                    // FullCalendar locale files
+                    {
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        cwd: "node_modules/@fullcalendar/core",
+                        src: ["locales/*.global.min.js"],
+                        dest: "src/locale/vendor/fullcalendar/",
+                        rename: function (dest, src) {
+                            // Remove .global.min suffix: el.global.min.js -> el.js
+                            return dest + src.replace(/\.global\.min\.js$/, ".js");
+                        },
                     },
                 ],
-            }
+            },
         },
         generateSignatures: {
             sign: {
@@ -435,89 +352,5 @@ module.exports = function (grunt) {
         },
     );
 
-    grunt.registerTask("genLocaleJSFiles", "", function () {
-        var locales = grunt.file.readJSON("src/locale/locales.json");
-        for (var key in locales) {
-            let localeConfig = locales[key];
-            let locale = localeConfig["locale"];
-            let languageCode = localeConfig["languageCode"];
-            let enableFullCalendar = localeConfig["fullCalendar"];
-            let enableDatePicker = localeConfig["datePicker"];
-            let enableSelect2 = localeConfig["select2"];
-            let momentLocale = localeConfig["momentLocale"];
-
-            let tempFile = "locale/JSONKeys/" + locale + ".json";
-            let poTerms = "{}";
-            if (grunt.file.exists(tempFile)) {
-                poTerms = grunt.file.read(tempFile);
-                if (poTerms === "") { 
-                    poTerms = "{}";
-                }
-            }
-            let jsFileContent = "// Source POEditor: " + tempFile;
-            jsFileContent =
-                jsFileContent +
-                "\ntry {window.CRM.i18keys = " +
-                poTerms +
-                ";} catch(e) {}\n";
-
-            if (momentLocale) {
-                tempFile = "node_modules/moment/locale/" + momentLocale + ".js";
-                if (grunt.file.exists(tempFile)) {
-                    let momentLocaleFile = grunt.file.read(tempFile);
-                    jsFileContent = jsFileContent + "\n// Source moment: " + tempFile;
-                    jsFileContent = jsFileContent + "\n" + "try {" + momentLocaleFile + "} catch(e) {}\n";
-                }
-            }
-
-            if (enableFullCalendar) {
-                let tempLangCode = languageCode.toLowerCase();
-                if (localeConfig.hasOwnProperty("fullCalendarLocale")) {
-                    tempLangCode = localeConfig["fullCalendarLocale"];
-                }
-                tempFile =
-                    "node_modules/@fullcalendar/core/locales/" +
-                    tempLangCode +
-                    ".js";
-                let fullCalendar = grunt.file.read(tempFile);
-                jsFileContent =
-                    jsFileContent + "\n// Source fullcalendar: " + tempFile;
-                jsFileContent =
-                    jsFileContent +
-                    "\n" +
-                    "try {" +
-                    fullCalendar +
-                    "} catch(e) {}\n";
-            }
-            if (enableDatePicker) {
-                tempFile =
-                    "node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker." +
-                    languageCode +
-                    ".min.js";
-                let datePicker = grunt.file.read(tempFile);
-                jsFileContent =
-                    jsFileContent + "\n// Source datepicker: " + tempFile;
-                jsFileContent =
-                    jsFileContent +
-                    "\n" +
-                    "try {" +
-                    datePicker +
-                    "} catch(e) {}\n";
-            }
-            if (enableSelect2) {
-                tempFile =
-                    "node_modules/select2/dist/js/i18n/" + languageCode + ".js";
-                jsFileContent =
-                    jsFileContent + "\n// Source select2: " + tempFile;
-                let select2 = grunt.file.read(tempFile);
-                jsFileContent =
-                    jsFileContent + "\n" + "try {" + select2 + "} catch(e) {}";
-            }
-            grunt.file.write("src/locale/js/" + locale + ".js", jsFileContent);
-        }
-    });
-
     grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-compress");
-    grunt.loadNpmTasks("grunt-curl");
 };

@@ -3757,10 +3757,6 @@ msgid "Sunday School Class Functions"
 msgstr "Funções na Classe de Escola Bíblica Dominical"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Alternar Caixa Suspensa"
-
-#: 
 msgid "Teachers"
 msgstr "Professores"
 
@@ -4279,18 +4275,6 @@ msgstr "Anualmente"
 #: 
 msgid "Registration Complete"
 msgstr "Registo Completo"
-
-#: 
-msgid "Register"
-msgstr "Registo"
-
-#: 
-msgid "Register your family"
-msgstr "Registar sua família"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Quantas pessoas existem na sua Família"
 
 #: 
 msgid "Add All Classes"
@@ -7141,10 +7125,6 @@ msgstr "Nome do arquivo da base de dados de coordenadas:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Interseção com o carrinho"
-
-#: 
-msgid "Family Member"
-msgstr "Membro da Família"
 
 #: 
 msgid "select an option"

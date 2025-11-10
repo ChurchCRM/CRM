@@ -7,7 +7,7 @@
  * Usage: node locale/scripts/poeditor-downloader.js
  * 
  * Requires:
- * - BuildConfig.json with POEditor.id and POEditor.token
+ * - BuildConfig.json (or BuildConfig.json.example) with POEditor.id and POEditor.token
  * - No additional npm packages (uses native https module)
  */
 
@@ -18,8 +18,9 @@ const { URLSearchParams } = require('url');
 
 // Configuration
 const CONFIG_FILE = path.join(__dirname, '../../BuildConfig.json');
+const CONFIG_EXAMPLE_FILE = path.join(__dirname, '../../BuildConfig.json.example');
 const LOCALES_FILE = path.join(__dirname, '../../src/locale/locales.json');
-const JSON_OUTPUT_DIR = path.join(__dirname, '../../locale/JSONKeys');
+const JSON_OUTPUT_DIR = path.join(__dirname, '../../src/locale/i18n');
 // PO/MO files historically live under src/locale/textdomain so other scripts
 // (and gettext lookups) find them there. Match the previous layout.
 const TEXTDOMAIN_OUTPUT_DIR = path.join(__dirname, '../../src/locale/textdomain');
@@ -34,10 +35,19 @@ const FILE_FORMATS = [
 
 // Load configuration
 let buildConfig;
+let configFile = CONFIG_FILE;
 try {
-    buildConfig = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
+    if (!fs.existsSync(CONFIG_FILE)) {
+        if (fs.existsSync(CONFIG_EXAMPLE_FILE)) {
+            console.log('⚠️  BuildConfig.json not found, using BuildConfig.json.example');
+            configFile = CONFIG_EXAMPLE_FILE;
+        } else {
+            throw new Error('Neither BuildConfig.json nor BuildConfig.json.example exist');
+        }
+    }
+    buildConfig = JSON.parse(fs.readFileSync(configFile, 'utf8'));
 } catch (e) {
-    console.error(`❌ Error reading BuildConfig.json: ${e.message}`);
+    console.error(`❌ Error reading configuration: ${e.message}`);
     process.exit(1);
 }
 
@@ -131,6 +141,11 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                 fs.mkdirSync(outputFileDir, { recursive: true });
             }
             
+            // Delete old file if it exists (just before download to minimize downtime)
+            if (fs.existsSync(outputPath)) {
+                fs.unlinkSync(outputPath);
+            }
+            
             return new Promise((resolve, reject) => {
                 https.get(downloadUrl, (res) => {
                     // Check for non-2xx HTTP status
@@ -150,6 +165,10 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                             reject(new Error(`Downloaded file is empty (0 bytes) for ${format.type}`));
                             return;
                         }
+                        // Add trailing newline for JSON files (POSIX standard)
+                        if (format.ext === 'json' && fileData[fileData.length - 1] !== 0x0A) {
+                            fileData = Buffer.concat([fileData, Buffer.from('\n')]);
+                        }                        
                         fs.writeFileSync(outputPath, fileData);
                         const fileSize = fileData.length;
                         console.log(`    ✅ ${format.ext.toUpperCase()}: ${fileSize} bytes`);
@@ -168,8 +187,8 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
 /**
  * Download translation file from POEditor for all formats
  */
-async function downloadLanguage(locale, poEditorLocale) {
-    console.log(`  ⏳ Downloading ${locale}...`);
+async function downloadLanguage(locale, poEditorLocale, current, total) {
+    console.log(`  ⏳ Downloading ${locale} (${current} of ${total})...`);
     
     for (const format of FILE_FORMATS) {
         try {
@@ -199,6 +218,14 @@ async function main() {
     
     // Base English languages that have no translations (POEditor doesn't translate to English)
     const baseEnglishLocales = ['en_US'];
+    
+    // Calculate total locales to download (excluding base English)
+    const totalLocales = Object.keys(localesConfig).length;
+    const downloadableLocales = Object.values(localesConfig)
+        .filter(config => !baseEnglishLocales.includes(config.locale));
+    const totalToDownload = downloadableLocales.length;
+    
+    console.log(`📋 Total locales: ${totalLocales} (${totalToDownload} to download, ${totalLocales - totalToDownload} base English)\n`);
 
     for (const [key, localeConfig] of Object.entries(localesConfig)) {
         const locale = localeConfig.locale;
@@ -213,12 +240,12 @@ async function main() {
 
         totalAttempts++;
         try {
-            await downloadLanguage(locale, poEditorLocale);
+            await downloadLanguage(locale, poEditorLocale, totalAttempts, totalToDownload);
             successCount++;
             
             // Throttle requests to avoid rate limiting (1 second between languages)
             // We make 3 API calls per language (JSON, PO, MO) + download time
-            if (totalAttempts < Object.keys(localesConfig).length - baseEnglishLocales.length) {
+            if (totalAttempts < totalToDownload) {
                 await sleep(1000); // 1 second between languages
             }
         } catch (error) {
@@ -227,10 +254,9 @@ async function main() {
         }
     }
 
-    const totalLocales = Object.keys(localesConfig).length;
-    console.log(`\n📊 Summary: ${successCount}/${totalLocales - skippedCount} languages downloaded (${skippedCount} English variants skipped)`);
+    console.log(`\n📊 Summary: ${successCount}/${totalToDownload} languages downloaded (${skippedCount} English variants skipped)`);
 
-    if (failedLanguages.length > 0 && failedLanguages.length < Object.keys(localesConfig).length) {
+    if (failedLanguages.length > 0 && failedLanguages.length < totalToDownload) {
         console.warn(`\n⚠️  Partial failures: ${failedLanguages.slice(0, 5).join(', ')}${failedLanguages.length > 5 ? '...' : ''}`);
     }
 

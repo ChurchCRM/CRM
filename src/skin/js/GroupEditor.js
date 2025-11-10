@@ -1,4 +1,4 @@
-$(document).ready(() => {
+function initializeGroupEditor() {
     $(".groupSpecificProperties").click((e) => {
         const groupPropertyAction = e.currentTarget.id;
         if (groupPropertyAction === "enableGroupProps") {
@@ -49,16 +49,11 @@ $(document).ready(() => {
                     "Failed to set group specific property status:",
                     error,
                 );
-                $.notify(
+                window.CRM.notify(
                     i18next.t("Failed to update properties. Please try again."),
                     {
                         type: "danger",
-                        icon: "fa fa-exclamation-triangle",
                         delay: 5000,
-                        placement: {
-                            from: "top",
-                            align: "right",
-                        },
                     },
                 );
             });
@@ -99,16 +94,11 @@ $(document).ready(() => {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to update group:", error);
-                $.notify(
+                window.CRM.notify(
                     i18next.t("Failed to update group. Please try again."),
                     {
                         type: "danger",
-                        icon: "fa fa-exclamation-triangle",
                         delay: 5000,
-                        placement: {
-                            from: "top",
-                            align: "right",
-                        },
                     },
                 );
             });
@@ -135,21 +125,20 @@ $(document).ready(() => {
                 dataT.row.add(newRow);
                 dataT.rows().invalidate().draw(true);
                 $("#newRole").val("");
-                $.notify(i18next.t("Role added successfully."), {
+                window.CRM.notify(i18next.t("Role added successfully."), {
                     type: "success",
-                    icon: "fa fa-check",
                     delay: 3000,
-                    placement: { from: "top", align: "right" },
                 });
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to add new role:", error);
-                $.notify(i18next.t("Failed to add role. Please try again."), {
-                    type: "danger",
-                    icon: "fa fa-exclamation-triangle",
-                    delay: 5000,
-                    placement: { from: "top", align: "right" },
-                });
+                window.CRM.notify(
+                    i18next.t("Failed to add role. Please try again."),
+                    {
+                        type: "danger",
+                        delay: 5000,
+                    },
+                );
             });
     });
 
@@ -169,22 +158,18 @@ $(document).ready(() => {
                     defaultRoleID = 1;
                 }
                 dataT.rows().invalidate().draw(true);
-                $.notify(i18next.t("Role deleted successfully."), {
+                window.CRM.notify(i18next.t("Role deleted successfully."), {
                     type: "success",
-                    icon: "fa fa-check",
                     delay: 3000,
-                    placement: { from: "top", align: "right" },
                 });
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to delete role:", error);
-                $.notify(
+                window.CRM.notify(
                     i18next.t("Failed to delete role. Please try again."),
                     {
                         type: "danger",
-                        icon: "fa fa-exclamation-triangle",
                         delay: 5000,
-                        placement: { from: "top", align: "right" },
                     },
                 );
             });
@@ -239,22 +224,18 @@ $(document).ready(() => {
         })
             .done((data) => {
                 // Role name updated successfully
-                $.notify(i18next.t("Role name updated."), {
+                window.CRM.notify(i18next.t("Role name updated."), {
                     type: "success",
-                    icon: "fa fa-check",
                     delay: 3000,
-                    placement: { from: "top", align: "right" },
                 });
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to update role name:", error);
-                $.notify(
+                window.CRM.notify(
                     i18next.t("Failed to update role name. Please try again."),
                     {
                         type: "danger",
-                        icon: "fa fa-exclamation-triangle",
                         delay: 5000,
-                        placement: { from: "top", align: "right" },
                     },
                 );
             });
@@ -272,22 +253,18 @@ $(document).ready(() => {
             .done((data) => {
                 defaultRoleID = roleID;
                 dataT.rows().invalidate().draw(true);
-                $.notify(i18next.t("Default role updated."), {
+                window.CRM.notify(i18next.t("Default role updated."), {
                     type: "success",
-                    icon: "fa fa-check",
                     delay: 3000,
-                    placement: { from: "top", align: "right" },
                 });
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to set default role:", error);
-                $.notify(
+                window.CRM.notify(
                     i18next.t("Failed to set default role. Please try again."),
                     {
                         type: "danger",
-                        icon: "fa fa-exclamation-triangle",
                         delay: 5000,
-                        placement: { from: "top", align: "right" },
                     },
                 );
             });
@@ -316,6 +293,7 @@ $(document).ready(() => {
             {
                 width: "auto",
                 title: i18next.t("Make Default"),
+                data: null,
                 render: (data, type, full, meta) => {
                     if (full.lst_OptionID == defaultRoleID) {
                         return `<strong><i class="fa-solid fa-check"></i>${i18next.t("Default")}</strong>`;
@@ -347,6 +325,7 @@ $(document).ready(() => {
             {
                 width: "auto",
                 title: i18next.t("Delete"),
+                data: null,
                 render: (data, type, full, meta) => {
                     const isProtected =
                         full.lst_OptionName === "Student" ||
@@ -360,6 +339,11 @@ $(document).ready(() => {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     dataT = $("#groupRoleTable").DataTable(dataTableConfig);
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeGroupEditor);
 });
 
 function setGroupRoleOrder(groupID, roleID, groupRoleOrder) {

@@ -123,7 +123,7 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     </div>
     <div class="card-body">
         <div class="mb-3">
-            <?= $thisGroup->getDescription() ?>
+            <?= htmlspecialchars($thisGroup->getDescription() ?? '', ENT_QUOTES, 'UTF-8') ?>
         </div>
         <div class="row mt-3">
             <div class="col-md-4">
@@ -185,31 +185,25 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                 <?php
                 // Email buttons
                 if ($sEmailLink && AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
-                    <div class="btn-group">
-                        <a class="btn btn-app bg-teal" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>">
+                    <div class="dropdown d-inline-block">
+                        <button class="btn btn-app bg-teal dropdown-toggle" type="button" id="emailGroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa-solid fa-paper-plane fa-3x"></i><br>
                             <?= gettext('Email Group') ?>
-                        </a>
-                        <button type="button" class="btn btn-app bg-teal dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <ul class="dropdown-menu" role="menu">
+                        <div class="dropdown-menu" aria-labelledby="emailGroupDropdown">
+                            <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
                             <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
-                        </ul>
+                        </div>
                     </div>
-                    <div class="btn-group">
-                        <a class="btn btn-app bg-navy" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>">
-                            <i class="fa-regular fa-paper-plane fa-3x"></i><br>
+                    <div class="dropdown d-inline-block">
+                        <button class="btn btn-app bg-navy dropdown-toggle" type="button" id="emailGroupBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa-solid fa-user-secret fa-3x"></i><br>
                             <?= gettext('Email (BCC)') ?>
-                        </a>
-                        <button type="button" class="btn btn-app bg-navy dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <ul class="dropdown-menu" role="menu">
+                        <div class="dropdown-menu" aria-labelledby="emailGroupBccDropdown">
+                            <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
                             <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
-                        </ul>
+                        </div>
                     </div>
                 <?php }
                 // Text button
@@ -454,32 +448,35 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     window.CRM.iProfilePictureListSize = <?= SystemConfig::getValue('iProfilePictureListSize') ?>;
     var dataT = 0;
     $(document).ready(function() {
-        $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ? 'true' : 'false' ?>).change();
-        $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>).change();
-        $("#deleteGroupButton").click(function() {
-            bootbox.setDefaults({
-                    locale: window.CRM.shortLocale
-                }),
-                bootbox.confirm({
-                    title: "<?= gettext("Confirm Delete Group") ?>",
-                    message: '<p class="text-danger">' +
-                        "<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>" +
-                        "<p>" +
-                        "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
-                        "</p><p>" +
-                        "<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
-                    callback: function(result) {
-                        if (result) {
-                            window.CRM.APIRequest({
-                                method: "DELETE",
-                                path: "groups/" + window.CRM.currentGroup,
-                            }).done(function(data) {
-                                if (data.status == "success")
-                                    window.location.href = window.CRM.root + "/GroupList.php";
-                            });
+        // Wait for locales to load before setting up handlers that use bootbox
+        window.CRM.onLocalesReady(function() {
+            $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ? 'true' : 'false' ?>).change();
+            $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>).change();
+            $("#deleteGroupButton").click(function() {
+                bootbox.setDefaults({
+                        locale: window.CRM.shortLocale
+                    }),
+                    bootbox.confirm({
+                        title: "<?= gettext("Confirm Delete Group") ?>",
+                        message: '<p class="text-danger">' +
+                            "<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>" +
+                            "<p>" +
+                            "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
+                            "</p><p>" +
+                            "<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
+                        callback: function(result) {
+                            if (result) {
+                                window.CRM.APIRequest({
+                                    method: "DELETE",
+                                    path: "groups/" + window.CRM.currentGroup,
+                                }).done(function(data) {
+                                    if (data.status == "success")
+                                        window.location.href = window.CRM.root + "/GroupList.php";
+                                });
+                            }
                         }
-                    }
-                });
+                    });
+            });
         });
     });
 </script>

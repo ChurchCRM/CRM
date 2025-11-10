@@ -3672,10 +3672,6 @@ msgid "Sunday School Class Functions"
 msgstr "Функции класса Воскресной школы"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Переключить раскрывающийся список"
-
-#: 
 msgid "Teachers"
 msgstr "Учителя"
 
@@ -4182,18 +4178,6 @@ msgstr "Ежегодно"
 #: 
 msgid "Registration Complete"
 msgstr "Регистрация завершена"
-
-#: 
-msgid "Register"
-msgstr "Регистр"
-
-#: 
-msgid "Register your family"
-msgstr "Зарегистрируйте свою семью"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Сколько человек в вашей семье"
 
 #: 
 msgid "Add All Classes"

@@ -4346,11 +4346,6 @@ msgstr "Funções na Classe de Escola Bíblica Dominical"
 
 #: 
 #, fuzzy
-msgid "Toggle Dropdown"
-msgstr "Alternar Caixa Suspensa"
-
-#: 
-#, fuzzy
 msgid "Teachers"
 msgstr "Professores"
 
@@ -4972,21 +4967,6 @@ msgstr "Anualmente"
 #, fuzzy
 msgid "Registration Complete"
 msgstr "Registro Completo"
-
-#: 
-#, fuzzy
-msgid "Register"
-msgstr "Registro"
-
-#: 
-#, fuzzy
-msgid "Register your family"
-msgstr "Registrar sua família"
-
-#: 
-#, fuzzy
-msgid "How many people are in your family"
-msgstr "Quantas pessoas existem na sua Família"
 
 #: 
 #, fuzzy
@@ -8385,11 +8365,6 @@ msgstr "Nome do arquivo da base de dados de coordenadas:"
 #, fuzzy
 msgid "Intersect With Cart"
 msgstr "Interseção com o carrinho"
-
-#: 
-#, fuzzy
-msgid "Family Member"
-msgstr "Membro da Família"
 
 #: 
 #, fuzzy

@@ -3723,10 +3723,6 @@ msgid "Sunday School Class Functions"
 msgstr "Funktionen der Sonntagsschulklasse"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Dropdown ein-/ausklappen"
-
-#: 
 msgid "Teachers"
 msgstr "Lehrer"
 
@@ -4243,18 +4239,6 @@ msgstr "jährlich"
 #: 
 msgid "Registration Complete"
 msgstr "Registrierung vollständig."
-
-#: 
-msgid "Register"
-msgstr "Registrieren"
-
-#: 
-msgid "Register your family"
-msgstr "Registriere Deine Familie"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Wie viele Personen sind in Deiner Familie"
 
 #: 
 msgid "Add All Classes"
@@ -7074,10 +7058,6 @@ msgstr "Dateiname der Koordinatendatenbank:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Schnittmenge mit Wagen"
-
-#: 
-msgid "Family Member"
-msgstr "Familienmitglieder"
 
 #: 
 msgid "select an option"

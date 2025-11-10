@@ -3706,10 +3706,6 @@ msgid "Sunday School Class Functions"
 msgstr "主日学校课程功能"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "切换下拉列表"
-
-#: 
 msgid "Teachers"
 msgstr "教士"
 
@@ -4225,18 +4221,6 @@ msgstr "每年"
 #: 
 msgid "Registration Complete"
 msgstr "注册完成"
-
-#: 
-msgid "Register"
-msgstr "注册"
-
-#: 
-msgid "Register your family"
-msgstr "注册家人"
-
-#: 
-msgid "How many people are in your family"
-msgstr "你有几个家庭成员"
 
 #: 
 msgid "Add All Classes"
@@ -7056,10 +7040,6 @@ msgstr "协调数据库文件名："
 #: 
 msgid "Intersect With Cart"
 msgstr "与购物车相交"
-
-#: 
-msgid "Family Member"
-msgstr "家庭成员"
 
 #: 
 msgid "select an option"

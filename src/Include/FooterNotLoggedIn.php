@@ -25,24 +25,17 @@ use ChurchCRM\Service\SystemService;
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootbox/bootbox.min.js"></script>
 
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
-  <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::getCurrentLocale()->getLocale() ?>.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/just-validate/just-validate.production.min.js"></script>
 
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/locale-loader.min.js"></script>
   <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    i18nextOpt = {
-      lng:window.CRM.shortLocale,
-      nsSeparator: false,
-      keySeparator: false,
-      pluralSeparator:false,
-      contextSeparator:false,
-      fallbackLng: false,
-      resources: { }
-    };
-
-    i18nextOpt.resources[window.CRM.shortLocale] = {
-      translation: window.CRM.i18keys
-    };
-    i18next.init(i18nextOpt);
+    // Load locale files dynamically
+    (function() {
+        const localeConfig = <?= json_encode(Bootstrapper::getCurrentLocale()->getLocaleConfigArray()) ?>;
+        if (window.CRM && window.CRM.loadLocaleFiles) {
+            window.CRM.loadLocaleFiles(localeConfig);
+        }
+    })();
   </script>
   <?php
 

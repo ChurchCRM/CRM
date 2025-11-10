@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+function initializeGroupView() {
     $.ajax({
         method: "GET",
         url:
@@ -219,6 +219,11 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         e.stopPropagation();
     });
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeGroupView);
 });
 
 function initDataTable() {
@@ -271,6 +276,7 @@ function initDataTable() {
             {
                 width: "20%",
                 title: i18next.t("Address"),
+                data: null,
                 render: function (data, type, full, meta) {
                     var address = full.Person.Address1;
                     if (full.Person.Address2) {

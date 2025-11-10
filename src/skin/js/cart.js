@@ -4,7 +4,7 @@
  */
 
 import $ from "jquery";
-import "bootstrap-notify";
+import { notify } from "./notifier";
 
 /**
  * Cart Manager Class
@@ -12,7 +12,14 @@ import "bootstrap-notify";
  */
 export class CartManager {
     constructor() {
-        this.initializeEventHandlers();
+        // Wait for locales to be ready before initializing event handlers
+        if (window.CRM && window.CRM.localesLoaded) {
+            this.initializeEventHandlers();
+        } else {
+            window.addEventListener("CRM.localesReady", () => {
+                this.initializeEventHandlers();
+            });
+        }
     }
 
     /**
@@ -503,36 +510,15 @@ export class CartManager {
     }
 
     /**
-     * Show bootstrap-notify notification
+     * Show notification using Notyf
      * @param {string} type - Notification type (success, danger, warning, info)
      * @param {string} message - Message to display
      */
     showNotification(type, message) {
-        $.notify(
-            {
-                icon:
-                    type === "success"
-                        ? "fa fa-check"
-                        : "fa fa-exclamation-triangle",
-                message: message,
-            },
-            {
-                type: type,
-                delay: 3000,
-                placement: {
-                    from: "top",
-                    align: "right",
-                },
-                offset: {
-                    x: 15,
-                    y: 60,
-                },
-                animate: {
-                    enter: "animated fadeInDown",
-                    exit: "animated fadeOutUp",
-                },
-            },
-        );
+        notify(message, {
+            type: type,
+            delay: 3000,
+        });
     }
 
     /**
@@ -750,7 +736,17 @@ $(document).ready(() => {
     }
     window.CRM.cartManager = new CartManager();
 
-    window.CRM.cartManager.refreshCartCount().catch(() => {
-        // APIRequest not available yet, skip initialization
-    });
+    // Wait for locales to be ready before refreshing cart count
+    // (because refreshCartCount calls updateCartDropdown which uses i18next.t)
+    const initializeCart = () => {
+        window.CRM.cartManager.refreshCartCount().catch(() => {
+            // APIRequest not available yet, skip initialization
+        });
+    };
+
+    if (window.CRM && window.CRM.localesLoaded) {
+        initializeCart();
+    } else {
+        window.addEventListener("CRM.localesReady", initializeCart);
+    }
 });

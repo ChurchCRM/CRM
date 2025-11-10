@@ -1,6 +1,11 @@
+/**
+ * Find Deposit Slip
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
+
 var dataT = 0;
 
-document.addEventListener("DOMContentLoaded", function () {
+function initializeDepositSlip() {
     function updateSelectedCount() {
         var selectedRows = dataT.rows(".selected").data().length;
         $("#deleteSelectedRows").prop("disabled", !selectedRows);
@@ -205,4 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         });
     });
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeDepositSlip);
 });

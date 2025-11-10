@@ -3609,10 +3609,6 @@ msgid "Sunday School Class Functions"
 msgstr "Fungsi Kelas Sekolah Minggu"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Toggle Dropdown"
-
-#: 
 msgid "Teachers"
 msgstr "Guru"
 
@@ -4122,18 +4118,6 @@ msgstr "Tahunan"
 #: 
 msgid "Registration Complete"
 msgstr "Pendaftaran Lengkap"
-
-#: 
-msgid "Register"
-msgstr "Daftar"
-
-#: 
-msgid "Register your family"
-msgstr "Daftarkan keluarga Anda"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Berapa banyak orang di keluarga Anda"
 
 #: 
 msgid "Add All Classes"
@@ -6953,10 +6937,6 @@ msgstr "Mengkoordinasikan nama file basis data:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Perpotongan dengan keranjang"
-
-#: 
-msgid "Family Member"
-msgstr "Anggota keluarga"
 
 #: 
 msgid "select an option"

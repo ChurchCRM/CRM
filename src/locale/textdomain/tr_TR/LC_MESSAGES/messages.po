@@ -3606,10 +3606,6 @@ msgid "Sunday School Class Functions"
 msgstr "Pazar Okulu Sınıfı İşlevleri"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Açma"
-
-#: 
 msgid "Teachers"
 msgstr "Öğretmen"
 
@@ -4117,18 +4113,6 @@ msgstr "Yıllık"
 #: 
 msgid "Registration Complete"
 msgstr "Kayıt tamamlandı"
-
-#: 
-msgid "Register"
-msgstr "Kayıt ol"
-
-#: 
-msgid "Register your family"
-msgstr "Ailenizi Kaydet"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Ailende kaç kişi var"
 
 #: 
 msgid "Add All Classes"
@@ -6948,10 +6932,6 @@ msgstr "Veri tabanı dosya adını koordine edin:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Sepetle kesişmek"
-
-#: 
-msgid "Family Member"
-msgstr "Aile üyesi"
 
 #: 
 msgid "select an option"
