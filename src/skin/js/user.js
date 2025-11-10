@@ -54,7 +54,17 @@ $(".user-setting-select").on("focusout", function () {
     }).done(function () {
         let reload = thisCheckbox.data("reload");
         if (reload) {
-            window.location.reload();
+            let languageName = optionSelected.text();
+            window.CRM.notify(
+                i18next.t("Language updated to") + " " + languageName,
+                {
+                    type: "success",
+                    delay: 5000,
+                }
+            );
+            setTimeout(function () {
+                window.location.reload();
+            }, 5000);
         }
     });
 });
