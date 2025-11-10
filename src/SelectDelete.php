@@ -251,9 +251,9 @@ require_once 'Include/Header.php';
             } else {
                 // No Donations from family.  Normal delete confirmation
                 echo $DonationMessage;
-                echo "<p class='callout callout-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
+                echo "<div class='alert alert-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
                 echo gettext('Note: This will also delete all Notes associated with this Family record.');
-                echo gettext('(this action cannot be undone)') . '</p>';
+                echo gettext('(this action cannot be undone)') . '</div>';
                 echo '<div>';
                 echo '<strong>' . gettext('Family Name') . ':</strong>';
                 echo '&nbsp;' . $fam_Name;
