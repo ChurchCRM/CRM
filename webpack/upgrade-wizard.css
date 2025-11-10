@@ -1,0 +1,45 @@
+/* Upgrade Wizard Styles */
+
+.upgrade-wizard-container {
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.bs-stepper .step-trigger {
+    padding: 1.5rem;
+}
+
+.bs-stepper .bs-stepper-circle {
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.2rem;
+}
+
+.bs-stepper .bs-stepper-label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.warning-step .bs-stepper-circle {
+    background-color: #dc3545;
+}
+
+.step-content-area {
+    min-height: 300px;
+    padding: 2rem;
+}
+
+/* Integrity check table styles - replacing DataTable with simpler native table */
+#fileIntegrityCheckResultsTable {
+    font-size: 0.875rem;
+}
+
+#fileIntegrityCheckResultsTable code,
+#fileIntegrityCheckResultsTable small {
+    word-break: break-all;
+}
+
+#fileIntegrityCheckResultsTable tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
