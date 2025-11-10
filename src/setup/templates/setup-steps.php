@@ -10,28 +10,27 @@ require_once '../Include/HeaderNotLoggedIn.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = {
         root: "<?= SystemURLs::getRootPath() ?>",
-        prerequisites : [],
-        prerequisitesStatus : false //TODO this is not correct we need 2 flags
+        prerequisites: [],
+        prerequisitesStatus: false //TODO this is not correct we need 2 flags
     };
 </script>
 <style>
-    .wizard .content > .body {
+    .wizard .content>.body {
         width: 100%;
         height: auto;
         padding: 15px;
         position: relative;
     }
-
 </style>
 <h1 class="text-center">Welcome to ChurchCRM setup wizard</h1>
-<p/><br/>
+<p /><br />
 <form id="setup-form">
     <div id="wizard">
         <h2>System Prerequisite</h2>
         <section>
             <table class="table table-condensed" id="prerequisites"></table>
-            <p/>
-            <div class="callout callout-warning" id="prerequisites-war">
+            <p />
+            <div class="alert alert-warning" id="prerequisites-war">
                 This server isn't quite ready for ChurchCRM. If you know what you are doing.
                 <a href="#" onclick="skipCheck()"><b>Click here</b></a>.
             </div>
@@ -60,11 +59,11 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="ROOT_PATH">Root Path</label>
                 <input type="text" name="ROOT_PATH" id="ROOT_PATH"
-                       value="<?= SystemURLs::getRootPath() ?>" class="form-control"
-                       aria-describedby="ROOT_PATH_HELP"
-                       pattern="^\/[a-zA-Z0-9_\-\.\/]*$"
-                       maxlength="64"
-                       required>
+                    value="<?= SystemURLs::getRootPath() ?>" class="form-control"
+                    aria-describedby="ROOT_PATH_HELP"
+                    pattern="^\/[a-zA-Z0-9_\-\.\/]*$"
+                    maxlength="64"
+                    required>
                 <small id="ROOT_PATH_HELP" class="form-text text-muted">
                     <strong>Examples:</strong><br>
                     <code>/churchcrm</code> (for <code>http://www.yourdomain.com/churchcrm</code>)<br>
@@ -75,8 +74,8 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="URL">Base URL</label>
                 <input type="text" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
-                       aria-describedby="URL_HELP"
-                       required>
+                    aria-describedby="URL_HELP"
+                    required>
                 <small id="URL_HELP" class="form-text text-muted">
                     <strong>Example:</strong> <code>https://www.yourdomain.com/churchcrm/</code><br>
                     <strong>Rules:</strong> Must be a valid URL, including <code>http://</code> or <code>https://</code>. If using a non-standard port, include it (e.g., <code>https://www.yourdomain.com:8080/churchcrm/</code>). Case sensitive.
@@ -88,7 +87,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="DB_SERVER_NAME">MySQL Database Server Name</label>
                 <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" class="form-control"
-                       aria-describedby="DB_SERVER_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
+                    aria-describedby="DB_SERVER_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
                 <small id="DB_SERVER_NAME_HELP" class="form-text text-muted">
                     <strong>Examples:</strong> <code>localhost</code>, <code>127.0.0.1</code>, <code>db.example.com</code><br>
                     <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.
@@ -97,7 +96,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="DB_SERVER_PORT">MySQL Database Server Port</label>
                 <input type="number" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
-                       aria-describedby="DB_SERVER_PORT_HELP" required min="1" max="65535" value="3306">
+                    aria-describedby="DB_SERVER_PORT_HELP" required min="1" max="65535" value="3306">
                 <small id="DB_SERVER_PORT_HELP" class="form-text text-muted">
                     <strong>Default:</strong> <code>3306</code><br>
                     <strong>Rules:</strong> Must be a number between 1 and 65535.
@@ -106,7 +105,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="DB_NAME">Database Name</label>
                 <input type="text" name="DB_NAME" id="DB_NAME" placeholder="churchcrm" class="form-control"
-                       aria-describedby="DB_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
+                    aria-describedby="DB_NAME_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
                 <small id="DB_NAME_HELP" class="form-text text-muted">
                     <strong>Example:</strong> <code>churchcrm</code><br>
                     <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.
@@ -115,7 +114,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="DB_USER">Database User</label>
                 <input type="text" name="DB_USER" id="DB_USER" placeholder="churchcrm" class="form-control"
-                       aria-describedby="DB_USER_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
+                    aria-describedby="DB_USER_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@]+$">
                 <small id="DB_USER_HELP" class="form-text text-muted">
                     <strong>Example:</strong> <code>churchcrm</code><br>
                     <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), and at (<code>@</code>) are allowed.<br>
@@ -125,7 +124,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="DB_PASSWORD">Database Password</label>
                 <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" class="form-control"
-                       aria-describedby="DB_PASSWORD_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@\!\#\$\%\^\&\*\(\)]*$">
+                    aria-describedby="DB_PASSWORD_HELP" required pattern="^[a-zA-Z0-9_\-\.:\@\!\#\$\%\^\&\*\(\)]*$">
                 <small id="DB_PASSWORD_HELP" class="form-text text-muted">
                     <strong>Rules:</strong> Only letters, numbers, underscore (<code>_</code>), dash (<code>-</code>), dot (<code>.</code>), colon (<code>:</code>), at (<code>@</code>), and common special characters (<code>! # $ % ^ &amp; * ( )</code>) are allowed.
                 </small>
@@ -133,7 +132,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
             <div class="form-group">
                 <label for="DB_PASSWORD2">Confirm Database Password</label>
                 <input type="password" name="DB_PASSWORD2" id="DB_PASSWORD2" class="form-control"
-                       aria-describedby="DB_PASSWORD2_HELP" required>
+                    aria-describedby="DB_PASSWORD2_HELP" required>
                 <small id="DB_PASSWORD2_HELP" class="form-text text-muted">
                     Must match the password above.
                 </small>
@@ -197,7 +196,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
                 <small id="sChurchEmailHelp" class="form-text text-muted"></small>
             </div>
 
-            <div class="callout callout-info" id="prerequisites-war">
+            <div class="alert alert-info" id="prerequisites-war">
                 This information can be updated late on via <b><i>System Settings</i></b>.
             </div>
         </section>

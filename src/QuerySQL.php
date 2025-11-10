@@ -156,7 +156,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
         echo '<p class="text-center">';
 
         if ($aHiddenFormField && count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php
-            ?>
+?>
             <form method="post" action="CartView.php">
                 <p class="text-center">
                     <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
@@ -165,11 +165,11 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
                     <input type="submit" class="btn btn-secondary" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
                 </p>
             </form>
-            <?php
+<?php
         }
 
         echo '<p class="text-center"><a href="QueryList.php">' . gettext('Return to Query Menu') . '</a></p>';
-        echo '<br><p class="ShadedBox" style="border-style: solid; margin-left: 50px; margin-right: 50px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', htmlspecialchars($sSQL)) . '</span></p>';
+        echo '<br><p class="card card-body" style="border-style: solid; margin-left: 50px; margin-right: 50px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', htmlspecialchars($sSQL)) . '</span></p>';
     }
 }
 
