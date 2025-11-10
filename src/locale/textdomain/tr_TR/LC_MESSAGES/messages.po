@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "Aile listesi"
 
 #: 
-msgid "Add Family"
-msgstr "Aile ekle"
-
-#: 
 msgid "Created"
 msgstr "Yaratılmış"
 
@@ -1280,10 +1276,6 @@ msgid "Next Family"
 msgstr "Sonraki Aile"
 
 #: 
-msgid "Delete this Family"
-msgstr "Bu aileyi sil"
-
-#: 
 msgid "Upload Photo"
 msgstr "Fotoğraf yükle"
 
@@ -1294,10 +1286,6 @@ msgstr "Fotoğrafı sil"
 #: 
 msgid "Add a Note"
 msgstr "Bir not ekle"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Tüm aile üyelerini sepete ekleyin"
 
 #: 
 msgid "Timeline"
@@ -1773,10 +1761,6 @@ msgid "Remove from Cart"
 msgstr "Sepetten kaldır"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Olay Kimliği için Metin:"
-
-#: 
 msgid "Group Editor"
 msgstr "Grup editörü"
 
@@ -1945,10 +1929,6 @@ msgid "Group View"
 msgstr "Grup Görünümü"
 
 #: 
-msgid "Group Functions"
-msgstr "Grup işlevleri"
-
-#: 
 msgid "Edit this Group"
 msgstr "Bu grubu düzenle"
 
@@ -2009,8 +1989,9 @@ msgid "Assigned Properties"
 msgstr "Atanan mülkler"
 
 #: 
-msgid "Group Members:"
-msgstr "Grup üyeleri:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Grup üyeleri"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2936,10 +2917,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Aile kaydını ve aile üyelerini sil"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Filtre ve araba"
-
-#: 
 msgid "Listing"
 msgstr "Liste"
 
@@ -3329,14 +3306,6 @@ msgid "Select Fiscal Year"
 msgstr "Seçim mali yılı"
 
 #: 
-msgid "pm"
-msgstr "öğleden sonra"
-
-#: 
-msgid "am"
-msgstr "Ben"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Geçersiz Editör Kimliği!"
 
@@ -3637,20 +3606,12 @@ msgid "Sunday School Class Functions"
 msgstr "Pazar Okulu Sınıfı İşlevleri"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Açma"
-
-#: 
 msgid "Teachers"
 msgstr "Öğretmen"
 
 #: 
 msgid "Send Message"
 msgstr "Mesaj gönder"
-
-#: 
-msgid "View Profile"
-msgstr "Profili Görüntüle"
 
 #: 
 msgid "Quick Status"
@@ -4152,18 +4113,6 @@ msgstr "Yıllık"
 #: 
 msgid "Registration Complete"
 msgstr "Kayıt tamamlandı"
-
-#: 
-msgid "Register"
-msgstr "Kayıt ol"
-
-#: 
-msgid "Register your family"
-msgstr "Ailenizi Kaydet"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Ailende kaç kişi var"
 
 #: 
 msgid "Add All Classes"
@@ -6953,10 +6902,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Lütfen bunu yapmak istediğiniz şeyden emin olun. </p>"
 
 #: 
-msgid " this Family"
-msgstr " bu aile"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Devre dışı bırakmayı onaylayın"
 
@@ -6987,10 +6932,6 @@ msgstr "Veri tabanı dosya adını koordine edin:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Sepetle kesişmek"
-
-#: 
-msgid "Family Member"
-msgstr "Aile üyesi"
 
 #: 
 msgid "select an option"
@@ -7104,10 +7045,6 @@ msgstr "Fotoğrafı göster"
 #: 
 msgid "Family Photo"
 msgstr "Aile fotoğrafı"
-
-#: 
-msgid "Quick Settings"
-msgstr "Hızlı Ayarlar"
 
 #: 
 msgid "Status"
@@ -7531,10 +7468,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Bu grubun tüm üyeleri arabada değil"
 
 #: 
-msgid "Add all"
-msgstr "Hepsini ekle"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Seçilen grup üyelerini kaldırmak istediğinizden emin misiniz?"
 
@@ -7783,10 +7716,6 @@ msgid "Maximum number of Addresses"
 msgstr "Maksimum adres sayısı"
 
 #: 
-msgid "Show type of group:"
-msgstr "Grup türünü göster:"
-
-#: 
 msgid "Add Students"
 msgstr "Öğrencileri ekle"
 
@@ -7833,26 +7762,6 @@ msgstr "Fotoğraf kitabı oluştur"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Görüntüler için Kullanılacak Yükseklik"
-
-#: 
-msgid "Width to use for images"
-msgstr "Görüntüler için kullanılacak genişlik"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Küçük resimler için kullanılmak üzere genişlik"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Baş harfleri için kullanılması gereken nokta boyutu"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Görüntüler için istemci önbellek saniye"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7905,10 +7814,6 @@ msgstr "Hareket Etkinliği"
 #: 
 msgid "Resize Event"
 msgstr "Yeniden boyutlandırma etkinliği"
-
-#: 
-msgid "Text from"
-msgstr "Metin"
 
 #: 
 msgid "Profile"
@@ -8613,10 +8518,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Uzak yedekleme uç noktası. WebDav ise, bu URL kodlanmalıdır."
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Yedeklemeye baş harfleri görüntü dosyalarını, uzak resim dosyalarını (gravatar) ve küçük resimleri ekleyin. Bu dosyalar genellikle bir geri yüklemeden sonra çoğaltılabilir ve Yedek Arşivine büyük bir yürütme süresi ve depolama masrafıyla çok az değer katabilir."
-
-#: 
 msgid "Password (if any)"
 msgstr "Şifre (varsa)"
 
@@ -8679,7 +8580,8 @@ msgstr "Ekran için atanan aileden miras alınan kişi bilgisi?\n"
 "O kişi için ilgili bilgi girilmediyse görüntülenir."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Tüm Grup Üyelerini Kopyalamak İçin Ctrl + C tuşlarına basın \\ 'Telefon Numaraları"
 
 #: 
@@ -8826,14 +8728,6 @@ msgstr "Veritabanını sıfırla"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Bu, sistem verilerini sıfırlar ve sistemi yeni bir yükleme olarak yeniden başlatır."
-
-#: 
-msgid "Clear Filter"
-msgstr "Temiz filtre"
-
-#: 
-msgid "Add Person"
-msgstr "Kişi ekle"
 
 #. Context: locales
 #: 

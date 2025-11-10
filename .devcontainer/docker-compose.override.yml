@@ -1,0 +1,40 @@
+services:
+  database:
+    profiles: []  # Remove profile requirement for devcontainer
+    environment:
+      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_DATABASE: churchcrm
+      MYSQL_USER: churchcrm
+      MYSQL_PASSWORD: changeme
+    volumes:
+      # Always ensure demo database is available
+      - ../demo:/docker-entrypoint-initdb.d:ro
+    
+  webserver-dev:
+    profiles: []  # Remove profile requirement for devcontainer
+    command: >
+      bash -c "
+        echo '🌐 Starting ChurchCRM web server...' &&
+        apache2-foreground
+      "
+    environment:
+      MYSQL_DB_HOST: database
+      MYSQL_ROOT_PASSWORD: changeme
+      MYSQL_DATABASE: churchcrm
+      MYSQL_USER: churchcrm
+      MYSQL_PASSWORD: changeme
+      XDEBUG_MODE: "debug"
+      XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003"
+    volumes:
+      # Ensure src and workspace are always mounted
+      - ../src:/var/www/html:cached
+      - ..:/home/ChurchCRM:cached
+    depends_on:
+      database:
+        condition: service_healthy
+    
+  mailserver:
+    profiles: []  # Remove profile requirement for devcontainer
+    
+  adminer:
+    profiles: []  # Remove profile requirement for devcontainer

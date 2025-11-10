@@ -12,7 +12,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
-        if (version_compare(phpversion(), '8.1.0', '<')) {
+        if (version_compare(phpversion(), '8.2.0', '<')) {
             $renderPage = 'setup-error.php';
         }
 
@@ -142,5 +142,6 @@ function is_valid_port($value)
 
 function is_valid_root_path($value)
 {
-    return preg_match('#^\/[a-zA-Z0-9_\-\.\/]*$#', $value);
+    // Allow empty string OR a path starting with / (no trailing slash)
+    return preg_match('#^(|\/[a-zA-Z0-9_\-\.\/]*)$#', $value);
 }

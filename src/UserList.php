@@ -23,8 +23,8 @@ require_once 'Include/Header.php';
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <a href="UserEditor.php" class="btn btn-app"><i class="fa-solid fa-user-plus"></i><?= gettext('New User') ?></a>
-        <a href="SettingsUser.php" class="btn btn-app"><i class="fa-solid fa-wrench"></i><?= gettext('User Settings') ?></a>
+        <a href="UserEditor.php" class="btn btn-app bg-success"><i class="fa-solid fa-user-plus fa-3x"></i><br><?= gettext('New User') ?></a>
+        <a href="SettingsUser.php" class="btn btn-app bg-primary"><i class="fa-solid fa-wrench fa-3x"></i><br><?= gettext('User Settings') ?></a>
     </div>
 </div>
 <div class="card collapsed-card">

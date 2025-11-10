@@ -8,11 +8,15 @@ module.exports = {
     'calendar-event-editor' : './react/calendar-event-editor.tsx',
     'two-factor-enrollment' : './react/two-factor-enrollment.tsx',
     'churchcrm' : './webpack/skin-main',  // Main bundle for all pages
-    'photo-uploader' : './webpack/photo-uploader-entry'  // Photo uploader for specific pages
+    'photo-uploader' : './webpack/photo-uploader-entry',  // Photo uploader for specific pages
+    'setup' : './webpack/setup',  // Setup wizard styles
+    'family-register' : './webpack/family-register',  // Family registration styles and scripts
+    'locale-loader' : './webpack/locale-loader'  // Dynamic locale loader
   },
   output: {
     path:path.resolve('./src/skin/v2'),
-    filename:'[name].min.js'
+    filename:'[name].min.js',
+    publicPath: '/skin/v2/'
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -59,12 +63,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].min.css',
       ignoreOrder: false,
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      'window.$': 'jquery',
     }),
   ],
 }

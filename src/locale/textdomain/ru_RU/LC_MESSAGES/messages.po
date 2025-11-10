@@ -1272,10 +1272,6 @@ msgid "Family List"
 msgstr "Семейный список"
 
 #: 
-msgid "Add Family"
-msgstr "Добавить семью"
-
-#: 
 msgid "Created"
 msgstr "Создано "
 
@@ -1300,10 +1296,6 @@ msgid "Next Family"
 msgstr "Следующая Семья"
 
 #: 
-msgid "Delete this Family"
-msgstr "Удалить эту семью"
-
-#: 
 msgid "Upload Photo"
 msgstr "Идет загрузка фото"
 
@@ -1314,10 +1306,6 @@ msgstr "Удалить фотографию"
 #: 
 msgid "Add a Note"
 msgstr "Добавить примечание "
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Добавить свех членов семьи в  Cart"
 
 #: 
 msgid "Timeline"
@@ -1797,10 +1785,6 @@ msgid "Remove from Cart"
 msgstr "Удалить из корзины"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Текст для события с кодом: "
-
-#: 
 msgid "Group Editor"
 msgstr "Редактор группы"
 
@@ -1980,10 +1964,6 @@ msgid "Group View"
 msgstr "Вид группы"
 
 #: 
-msgid "Group Functions"
-msgstr "Функции группы"
-
-#: 
 msgid "Edit this Group"
 msgstr "Редактировать этот группу"
 
@@ -2049,8 +2029,9 @@ msgid "Assigned Properties"
 msgstr "Заданными свойствами"
 
 #: 
-msgid "Group Members:"
-msgstr "Участники группы:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Участники группы"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2979,10 +2960,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Удалить семейные записи и членов их семей"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Фильтр и корзина"
-
-#: 
 msgid "Listing"
 msgstr "Составление списка"
 
@@ -3387,14 +3364,6 @@ msgid "Select Fiscal Year"
 msgstr "Выберите финансовый год"
 
 #: 
-msgid "pm"
-msgstr "вечера"
-
-#: 
-msgid "am"
-msgstr "утра"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Неверный редактор ID!"
 
@@ -3703,20 +3672,12 @@ msgid "Sunday School Class Functions"
 msgstr "Функции класса Воскресной школы"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Переключить раскрывающийся список"
-
-#: 
 msgid "Teachers"
 msgstr "Учителя"
 
 #: 
 msgid "Send Message"
 msgstr "Отправить сообщение"
-
-#: 
-msgid "View Profile"
-msgstr "Просмотреть профайл"
 
 #: 
 msgid "Quick Status"
@@ -4217,18 +4178,6 @@ msgstr "Ежегодно"
 #: 
 msgid "Registration Complete"
 msgstr "Регистрация завершена"
-
-#: 
-msgid "Register"
-msgstr "Регистр"
-
-#: 
-msgid "Register your family"
-msgstr "Зарегистрируйте свою семью"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Сколько человек в вашей семье"
 
 #: 
 msgid "Add All Classes"
@@ -5603,7 +5552,8 @@ msgstr "Недоступная информация о человеке, уна�
 "Этот параметр приводит к отображению определенной информации из назначенной семейной записи человека, если соответствующая информация для этого человека НЕ была введена.␣"
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Нажмите CTRL + C, чтобы скопировать телефонные номера членов всех групп"
 
 #: 
@@ -5726,14 +5676,6 @@ msgstr "Сбросить базу данных"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Это приведет к сбросу системных данных и перезапуску системы как новую установку."
-
-#: 
-msgid "Clear Filter"
-msgstr "Очистить фильтр"
-
-#: 
-msgid "Add Person"
-msgstr "Добавить человека"
 
 #. Context: locales
 #: 

@@ -206,7 +206,7 @@ for ($row = 1; $row <= $events->count(); $row++) {
          WHERE per_cls_ID IN ('1','2','5')";
                                     $tOpps = RunQuery($tSQL);
                                     $tNumTotal = mysqli_fetch_row($tOpps)[0]; ?>
-                                    <input type="submit" name="Type" value="<?= gettext('Attending Members') . ' [' . $cNumAttend . ']' ?>" class="btn btn-default">
+                                    <input type="submit" name="Type" value="<?= gettext('Attending Members') . ' [' . $cNumAttend . ']' ?>" class="btn btn-secondary">
                                 </form>
                             </td>
                             <td>
@@ -215,7 +215,7 @@ for ($row = 1; $row <= $events->count(); $row++) {
                                     <input type="hidden" name="Type" value="<?= $sGetType ?>">
                                     <input type="hidden" name="Action" value="Retrieve">
                                     <input type="hidden" name="Choice" value="Nonattendees">
-                                    <input id="Non-Attending-<?= $row ?>" type="submit" name="Type" value="<?= gettext('Non-Attending Members') . ' [' . ($tNumTotal - $cNumAttend) . ']' ?>" class="btn btn-default">
+                                    <input id="Non-Attending-<?= $row ?>" type="submit" name="Type" value="<?= gettext('Non-Attending Members') . ' [' . ($tNumTotal - $cNumAttend) . ']' ?>" class="btn btn-secondary">
                                 </form>
                             </td>
                             <td>
@@ -228,7 +228,7 @@ for ($row = 1; $row <= $events->count(); $row++) {
                      WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $aEventID[$row] . ' AND per_cls_ID = 3';
                                     $gOpps = RunQuery($gSQL);
                                     $gNumGuestAttend = mysqli_fetch_row($gOpps)[0]; ?>
-                                    <input <?= ($gNumGuestAttend == 0 ? 'type="button"' : 'type="submit"') ?> name="Type" value="<?= gettext('Guests') . ' [' . $gNumGuestAttend . ']' ?>" class="btn btn-default">
+                                    <input <?= ($gNumGuestAttend == 0 ? 'type="button"' : 'type="submit"') ?> name="Type" value="<?= gettext('Guests') . ' [' . $gNumGuestAttend . ']' ?>" class="btn btn-secondary">
                                 </form>
                             </td>
                         </tr>

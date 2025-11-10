@@ -4,6 +4,7 @@ require_once 'Include/Config.php';
 require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -201,7 +202,7 @@ $bOkToEdit = (
             <div class="card-body box-profile">
                 <div class="image-container">
                     <div class="text-center">
-                        <img src="<?= SystemURLs::getRootPath() . '/api/person/' . $person->getId() . '/photo' ?>" class="initials-image profile-user-img img-fluid img-circle">
+                        <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile">
                         <p />
 
                         <?php if ($bOkToEdit) : ?>
@@ -235,7 +236,7 @@ $bOkToEdit = (
                     </li>
                     <li class="list-group-item">
                         <b><?= gettext('Family Role') ?></b> <a class="float-right"><?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?></a>
-                        <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-xs">
+                        <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-sm btn-primary">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                     </li>
@@ -382,24 +383,24 @@ $bOkToEdit = (
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
         <div class="row">
-            <a class="btn btn-app" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-print"></i> <?= gettext("Printable Page") ?></a>
-            <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa-solid fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
+            <a class="btn btn-app bg-info" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-print fa-3x"></i><br><?= gettext("Printable Page") ?></a>
+            <button class="btn btn-app bg-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus fa-3x"></i><br><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></button>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
                 ?>
-                <a class="btn btn-app" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-                <a class="btn btn-app" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+                <a class="btn btn-app bg-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle fa-3x"></i><br><?= gettext("Edit \"Why Came\" Notes") ?></a>
+                <a class="btn btn-app bg-primary" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sticky-note fa-3x"></i><br><?= gettext("Add a Note") ?></a>
                 <?php
             }
             if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                 ?>
-                <a class="btn btn-app" id="addGroup"><i class="fa-solid fa-users"></i> <?= gettext("Assign New Group") ?></a>
+                <a class="btn btn-app bg-info" id="addGroup"><i class="fa-solid fa-users fa-3x"></i><br><?= gettext("Assign New Group") ?></a>
                 <?php
             } ?>
-            <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa-solid fa-list"></i> <?= gettext("List Members") ?></span></a>
+            <a class="btn btn-app bg-secondary" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa-solid fa-list fa-3x"></i><br><?= gettext("List Members") ?></a>
             <?php
             if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
                 ?>
-                <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
+                <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can fa-3x"></i><br><?= gettext("Delete this Record") ?></a>
                 <?php
             }
             ?>
@@ -408,19 +409,19 @@ $bOkToEdit = (
             if (AuthenticationManager::getCurrentUser()->isAdmin()) {
                 if (!$person->isUser()) {
                     ?>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa-solid fa-person-chalkboard"></i> <?= gettext('Make User') ?></a>
+                    <a class="btn btn-app bg-purple" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa-solid fa-person-chalkboard fa-3x"></i><br><?= gettext('Make User') ?></a>
                     <?php
                 } else {
                     ?>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-user-secret"></i> <?= gettext('Edit User') ?></a>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye"></i> <?= gettext('View User') ?></a>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa-solid fa-key"></i> <?= gettext("Change Password") ?></a>
+                    <a class="btn btn-app bg-purple" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-user-secret fa-3x"></i><br><?= gettext('Edit User') ?></a>
+                    <a class="btn btn-app bg-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye fa-3x"></i><br><?= gettext('View User') ?></a>
+                    <a class="btn btn-app bg-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa-solid fa-key fa-3x"></i><br><?= gettext("Change Password") ?></a>
                     <?php
                 }
             } elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) {
                 ?>
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye"></i> <?= gettext('View User') ?></a>
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa-solid fa-key"></i> <?= gettext("Change Password") ?></a>
+                <a class="btn btn-app bg-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye fa-3x"></i><br><?= gettext('View User') ?></a>
+                <a class="btn btn-app bg-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa-solid fa-key fa-3x"></i><br><?= gettext("Change Password") ?></a>
                 <?php
             } ?>
         </div>
@@ -461,7 +462,7 @@ $bOkToEdit = (
                                         <tr>
                                             <td>
 
-                                                <img style="width:40px; height:40px;display:inline-block" src="<?= $sRootPath . '/api/person/' . $familyMember->getId() . '/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
+                                                <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="photo-tiny">
                                                 <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
                                             </td>
@@ -478,16 +479,16 @@ $bOkToEdit = (
                                                 <?php } ?>
                                             </td>
                                             <td style="width: 20%;">
-                                                <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
-                                                    <i class="fa-solid fa-cart-plus "></i>
-                                                </a>
+                                                <button class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>">
+                                                    <i class="fa-solid fa-cart-plus"></i>
+                                                </button>
                                                 <?php if ($bOkToEdit) {
                                                     ?>
-                                                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
-                                                        <i class="fa-solid fa-pen "></i>
+                                                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>" class="btn btn-sm btn-info" title="<?= gettext('Edit') ?>">
+                                                        <i class="fa-solid fa-pen"></i>
                                                     </a>
-                                                    <a class="delete-person" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family">
-                                                        <i class="fa-solid fa-trash-can btn-danger"></i>
+                                                    <a class="delete-person btn btn-sm btn-danger" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family" title="<?= gettext('Delete') ?>">
+                                                        <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                     <?php
                                                 } ?>
@@ -525,12 +526,12 @@ $bOkToEdit = (
                                                 ?>
                                                 <?php if (isset($item["editLink"])) {
                                                     ?>
-                                                    <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button></a>
+                                                    <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></button></a>
                                                     <?php
                                                 }
                                                 if (isset($item["deleteLink"])) {
                                                     ?>
-                                                    <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa-solid fa-trash"></i></button></a>
+                                                    <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></a>
                                                     <?php
                                                 } ?>
                                                 &nbsp;
@@ -604,12 +605,12 @@ $bOkToEdit = (
                                                                 <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
                                                                 <div style="margin-top: 10px;">
                                                                     <?php if (isset($note['editLink']) && $note['editLink']) { ?>
-                                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit') ?>">
+                                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
                                                                             <i class="fa-solid fa-pen"></i>
                                                                         </a>
                                                                     <?php }
                                                                     if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
-                                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-xs btn-danger" title="<?= gettext('Delete') ?>">
+                                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
                                                                             <i class="fa-solid fa-trash"></i>
                                                                         </a>
                                                                     <?php } ?>
@@ -699,10 +700,10 @@ $bOkToEdit = (
                                                     <code>
                                                         <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                                                             ?>
-                                                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa-solid fa-list"></i></a>
+                                                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-secondary" role="button"><i class="fa-solid fa-list"></i></a>
                                                             <div class="btn-group">
-                                                                <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
-                                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                                <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
+                                                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
                                                                     <span class="caret"></span>
                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                 </button>
@@ -963,7 +964,7 @@ $bOkToEdit = (
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext("Cancel") ?></button>
                         <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
                     </div>
                 </div>
@@ -1017,8 +1018,8 @@ $bOkToEdit = (
                     window.CRM.photoUploader = window.CRM.createPhotoUploader({
                         uploadUrl: window.CRM.root + '/api/person/<?= $iPersonID ?>/photo',
                         maxFileSize: window.CRM.maxUploadSizeBytes,
-                        photoWidth: <?= SystemConfig::getValue('iPhotoWidth') ?>,
-                        photoHeight: <?= SystemConfig::getValue('iPhotoHeight') ?>,
+                        photoWidth: <?= Photo::PHOTO_WIDTH ?>,
+                        photoHeight: <?= Photo::PHOTO_HEIGHT ?>,
                         onComplete: function(result) {
                             window.location.reload();
                         }

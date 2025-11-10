@@ -1551,10 +1551,6 @@ msgid "Remove from Cart"
 msgstr "Hiq nga Shportë"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Tekst per ID Event: "
-
-#: 
 msgid "Group Editor"
 msgstr "Grupi Editor"
 
@@ -1725,8 +1721,9 @@ msgid "Assigned Properties"
 msgstr "Prona të caktuar"
 
 #: 
-msgid "Group Members:"
-msgstr "Anëtarët e grupit:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Anëtarët e grupit"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2742,14 +2739,6 @@ msgstr "pika (s) shtuar në karrocë."
 #: 
 msgid "Select Fiscal Year"
 msgstr "Zgjidhni Viti fiskal"
-
-#: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
 
 #: 
 msgid "Invalid Editor ID!"

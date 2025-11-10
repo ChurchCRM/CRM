@@ -1253,10 +1253,6 @@ msgid "Family List"
 msgstr "Lista de familia"
 
 #: 
-msgid "Add Family"
-msgstr "Agregar familia"
-
-#: 
 msgid "Created"
 msgstr "Creada"
 
@@ -1281,10 +1277,6 @@ msgid "Next Family"
 msgstr "Familia siguiente"
 
 #: 
-msgid "Delete this Family"
-msgstr "Borrar esta familia"
-
-#: 
 msgid "Upload Photo"
 msgstr "Subir foto"
 
@@ -1295,10 +1287,6 @@ msgstr "Borrar foto"
 #: 
 msgid "Add a Note"
 msgstr "Agregar una Nota"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Agregar todos los miembros de la familia al carrito"
 
 #: 
 msgid "Timeline"
@@ -1774,10 +1762,6 @@ msgid "Remove from Cart"
 msgstr "Eliminar del carrito"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Texto para Id. de evento: "
-
-#: 
 msgid "Group Editor"
 msgstr "Editor de grupo"
 
@@ -1946,10 +1930,6 @@ msgid "Group View"
 msgstr "Vista de grupo"
 
 #: 
-msgid "Group Functions"
-msgstr "Funciones de grupo"
-
-#: 
 msgid "Edit this Group"
 msgstr "Editar este grupo"
 
@@ -2010,8 +1990,9 @@ msgid "Assigned Properties"
 msgstr "Propiedades asignadas"
 
 #: 
-msgid "Group Members:"
-msgstr "Miembros del grupo:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Miembros del grupo"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2187,7 +2168,7 @@ msgstr "Familias"
 
 #: 
 msgid "See all Families"
-msgstr "Ver todas las familias"
+msgstr "Ver Todas las Familias"
 
 #: 
 msgid "People"
@@ -2195,15 +2176,15 @@ msgstr "Personas"
 
 #: 
 msgid "See All People"
-msgstr "Ver todas las personas"
+msgstr "Ver Todas las Personas"
 
 #: 
 msgid "Sunday School Kids"
-msgstr "Niños de la escuela dominical"
+msgstr "Niños de la Escuela Dominical"
 
 #: 
 msgid "More info"
-msgstr "Más información"
+msgstr "Más Información"
 
 #: 
 msgid "Reports on groups and roles"
@@ -2251,7 +2232,7 @@ msgstr "Niñas"
 
 #: 
 msgid "Sunday School Classes"
-msgstr "Clases de escuela dominical"
+msgstr "Clases de Escuela Dominical"
 
 #: 
 msgid "Deposit Tracking"
@@ -2937,10 +2918,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Borrar registros de familia y sus miembros"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Filtrar y Separar"
-
-#: 
 msgid "Listing"
 msgstr "Listado"
 
@@ -3330,14 +3307,6 @@ msgid "Select Fiscal Year"
 msgstr "Seleccionar Año Fiscal"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Id. de Editor Inválido"
 
@@ -3415,7 +3384,7 @@ msgstr "Ninguna información que pueda identificarlo será enviada a menos que l
 
 #: 
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr "Escritorio"
 
 #: 
 msgid "Change Password"
@@ -3631,15 +3600,11 @@ msgstr "Designación de Donación:"
 
 #: 
 msgid "Sunday School"
-msgstr "Escuela dominical"
+msgstr "Escuela Dominical"
 
 #: 
 msgid "Sunday School Class Functions"
 msgstr "Funciones de clase de escuela dominical"
-
-#: 
-msgid "Toggle Dropdown"
-msgstr "Cambiar Desplegable"
 
 #: 
 msgid "Teachers"
@@ -3648,10 +3613,6 @@ msgstr "Profesores"
 #: 
 msgid "Send Message"
 msgstr "Enviar Mensaje"
-
-#: 
-msgid "View Profile"
-msgstr "Ver perfil"
 
 #: 
 msgid "Quick Status"
@@ -3815,7 +3776,7 @@ msgstr "Añadir nueva persona"
 
 #: 
 msgid "View All People"
-msgstr "Ver todas las personas"
+msgstr "Ver Todas las Personas"
 
 #: 
 msgid "Add New Family"
@@ -3827,7 +3788,7 @@ msgstr "Eventos"
 
 #: 
 msgid "Fundraiser"
-msgstr "Recaudación de fondos"
+msgstr "Ofrendas y Diezmos"
 
 #: 
 msgid "Email Export"
@@ -4153,18 +4114,6 @@ msgstr "Anual"
 #: 
 msgid "Registration Complete"
 msgstr "Registro completado"
-
-#: 
-msgid "Register"
-msgstr "Registrar"
-
-#: 
-msgid "Register your family"
-msgstr "Registrar a su familia"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Cuántas personas hay en su familia"
 
 #: 
 msgid "Add All Classes"
@@ -6978,10 +6927,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Por favor asegúrese de que esto es lo que quiere hacer. </p>"
 
 #: 
-msgid " this Family"
-msgstr " esta familia"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Confirme Desactivación"
 
@@ -7012,10 +6957,6 @@ msgstr "Coordinar nombre de archivo base de datos:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Cruzar con carrito"
-
-#: 
-msgid "Family Member"
-msgstr "Miembro de familia"
 
 #: 
 msgid "select an option"
@@ -7129,10 +7070,6 @@ msgstr "Ver Foto"
 #: 
 msgid "Family Photo"
 msgstr "Foto de familia"
-
-#: 
-msgid "Quick Settings"
-msgstr "Ajustes Rápidos"
 
 #: 
 msgid "Status"
@@ -7556,10 +7493,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "No todos los miembros de este grupo están en el separador"
 
 #: 
-msgid "Add all"
-msgstr "Agregar todo"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "¿Está seguro de que desea remover los miembros seleccionados del grupo?"
 
@@ -7810,10 +7743,6 @@ msgid "Maximum number of Addresses"
 msgstr "Numero máximo de DIrecciones"
 
 #: 
-msgid "Show type of group:"
-msgstr "Mostrar tipo de grupo:"
-
-#: 
 msgid "Add Students"
 msgstr "Agregar Estudiantes"
 
@@ -7860,26 +7789,6 @@ msgstr "Crear Álbum de Fotos"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Altura a usar para imágenes"
-
-#: 
-msgid "Width to use for images"
-msgstr "Anchura a usar para imágenes"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Anchura a usar para miniaturas"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Tamaño de punto a usar para iniciales de miniaturas"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Segundos de caché de cliente para imágenes"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7932,10 +7841,6 @@ msgstr "Mover evento"
 #: 
 msgid "Resize Event"
 msgstr "Redimensionar evento"
-
-#: 
-msgid "Text from"
-msgstr "Texto de"
 
 #: 
 msgid "Profile"
@@ -8641,10 +8546,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Punto de Respaldo Remoto. En caso de WebDAV, este debe tener codificación por url."
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Incluir archivos de imágenes iniciales, archivos de imágenes remotas (gravatar), y miniaturas en respaldo. Estos archivos por lo general pueden ser reproducidos después de haber restaurado. Agregan muy poco valor al archivo de respaldo, con altos costos en tiempo de ejecución y almacenamiento."
-
-#: 
 msgid "Password (if any)"
 msgstr "Contraseña (si hubiera)"
 
@@ -8707,7 +8608,8 @@ msgstr "¿Desplegar Información no disponible heredando desde la familia asigna
 "Esta opción causa que cierta información de la familia asignada a la persona pueda ser desplegada SI la información correspondiente NO ha sido ingresada para esa persona."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Presionar CTRL + C para copiar todos los números de teléfono de los miembros del grupo"
 
 #: 
@@ -8854,14 +8756,6 @@ msgstr "Restablecer base de datos"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Esto restablecerá los datos del sistema y lo reiniciará como una nueva instalación."
-
-#: 
-msgid "Clear Filter"
-msgstr "Borrar Filtro"
-
-#: 
-msgid "Add Person"
-msgstr "Agregar persona"
 
 #. Context: locales
 #: 
@@ -9337,11 +9231,11 @@ msgstr "Ver personas inactivas"
 
 #: 
 msgid "Today's Birthdays"
-msgstr "Cumpleaños de hoy"
+msgstr "Cumpleaños de Hoy"
 
 #: 
 msgid "Today's Wedding Anniversaries"
-msgstr "Aniversarios de bodas de hoy"
+msgstr "Aniversarios de Bodas de Hoy"
 
 #: 
 msgid "Api Key"
@@ -9631,4 +9525,318 @@ msgstr "Columnas de la lista de personas"
 #: 
 msgid "Family List Columns"
 msgstr "Columnas de la lista familiar"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "Email de iglesia no establecido, por favor, visite la página de configuración"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "Telegu - India"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Coreano"
+
+#: 
+msgid "System Logs"
+msgstr "Registros de Sistema"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Implemente la Política de Seguridad de Contenido (CSP) para protegerse contra ataques de scripts entre sitios. Al deshabilitarla, solo se reportan las infracciones de la CSP."
+
+#: 
+msgid "Maximum number of log files to keep"
+msgstr "Número máximo de archivos de registro a mantener"
+
+#: 
+msgid "Too Many Log Files"
+msgstr "Demasiados archivos de registro"
+
+#: 
+msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
+msgstr "El directorio de registros contiene demasiados archivos de registro. Limpie los archivos antiguos para liberar espacio."
+
+#: 
+msgid "Enter event description..."
+msgstr "Ingrese la descripción del evento..."
+
+#: 
+msgid "Event ID"
+msgstr "ID de evento"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Ingrese nota de texto aquí..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "No se han agregado notas para esta persona."
+
+#: 
+msgid "Note"
+msgstr "Nota"
+
+#: 
+msgid "Log Settings"
+msgstr "Configuración de registro"
+
+#: 
+msgid "Log Level:"
+msgstr "Nivel de registro:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Guardar nivel de registro"
+
+#: 
+msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
+msgstr "Números más bajos registran más detalles. Números más altos solo registran eventos severos. Los cambios se aplican a los nuevos registros de inmediato"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Ver registros de aplicación. Clic en un archivo de registro para ver su contenido."
+
+#: 
+msgid "Delete All Logs"
+msgstr "Eliminar todos los registros"
+
+#: 
+msgid "No log files found."
+msgstr "No se encontraron archivos de registro."
+
+#: 
+msgid "Log File"
+msgstr "Archivo de registro"
+
+#: 
+msgid "Size"
+msgstr "Tamaño"
+
+#: 
+msgid "Last Modified"
+msgstr "Última modificación"
+
+#: 
+msgid "View"
+msgstr "Ver"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Visor de archivo de registro"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Filtrar por nivel de registro:"
+
+#: 
+msgid "Error"
+msgstr "Error"
+
+#: 
+msgid "Info"
+msgstr "Info"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Número de lineas a mostrar:"
+
+#: 
+msgid "Loading log file..."
+msgstr "Cargando archivo de registro..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "No se han agregado notas a esta familia"
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Un token de acceso de calendario se ha generado y guardado."
+
+#: 
+msgid "added"
+msgstr "agregado"
+
+#: 
+msgid "Added"
+msgstr "Agregado"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Agregado al carrito exitosamente"
+
+#: 
+msgid "All members already in cart"
+msgstr "Todos los miembros ya en el carrito"
+
+#: 
+msgid "already in cart"
+msgstr "ya en el carrito"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Las propiedades del calendario no se pueden cargar. Es posible que a este calendario le falte un token de acceso o no esté configurado correctamente."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Carrito vaciado exitosamente"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Carrito vaciado al grupo exitosamente"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "¿Vaciar tu carrito completo?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "No se pudo agregar la familia al carrito"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "No se pudo agregar el grupo al carrito"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "No se pudo agregar al carrito"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "No se pudo vaciar el carrito"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "No se pudo vaciar el carrito al grupo"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "No se pudo eliminar la familia del carrito"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "No se pudo eliminar del carrito"
+
+#: 
+msgid "Failed to remove group"
+msgstr "No se pudo eliminar el grupo"
+
+#: 
+msgid "Family added to cart"
+msgstr "Familia agregada al carrito"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Familia removida del carrito"
+
+#: 
+msgid "Group added to cart"
+msgstr "Grupo agregado al carrito"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Grupo removido del carrito"
+
+#: 
+msgid "in cart"
+msgstr "en el carrito"
+
+#: 
+msgid "members. Already had"
+msgstr "miembros. Ya tiene"
+
+#: 
+msgid "people added to cart"
+msgstr "personas agregadas al carrito"
+
+#: 
+msgid "people already in cart"
+msgstr "personas ya están en el carrito"
+
+#: 
+msgid "people from cart"
+msgstr "personas del carrito"
+
+#: 
+msgid "people removed from cart"
+msgstr "personas removidas del carrito"
+
+#: 
+msgid "Person already in cart"
+msgstr "Persona ya está en el carrito"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "¿Remover esta familia del carrito?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "¿Remover este grupo del carrito?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "¿Remover esta persona del carrito?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Eliminado del carrito exitosamente"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Sí, vaciar carrito"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Sí, remover"
+
+#: 
+msgid "Add Group"
+msgstr "Agregar Grupo"
+
+#: 
+msgid "Back to Group List"
+msgstr "Regresar al Listado de Grupos"
+
+#: 
+msgid "Default role updated."
+msgstr "Rol predeterminado actualizado."
+
+#: 
+msgid "Edit Group"
+msgstr "Editar Grupo"
+
+#: 
+msgid "Enter group name"
+msgstr "Ingrese el nombre del grupo"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "No se pudo agregar el rol. Inténtelo de nuevo."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "No se pudo agregar el grupo. Inténtelo de nuevo."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "No se pudo eliminar el rol. Inténtelo de nuevo."
+
+#: 
+msgid "Role added successfully."
+msgstr "Rol añadido correctamente."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Rol eliminado correctamente."
+
+#: 
+msgid "Role name updated."
+msgstr "Nombre del rol actualizado."
+
+#: 
+msgid "View Group"
+msgstr "Ver Grupo"
 

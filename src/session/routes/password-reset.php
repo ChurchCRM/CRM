@@ -27,9 +27,7 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group): void {
             if ($token != null && $token->isPasswordResetToken() && $token->isValid()) {
                 $user = UserQuery::create()->findPk($token->getReferenceId());
                 $haveUser = empty($user);
-                if ($token->getRemainingUses() > 0) {
-                    $token->setRemainingUses($token->getRemainingUses() - 1);
-                    $token->save();
+                if ($token->consume()) {
                     $password = $user->resetPasswordToRandom();
                     $user->save();
                     LoggerUtils::getAuthLogger()->info('Password reset for user ' . $user->getUserName());
@@ -37,7 +35,7 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group): void {
                     if ($email->send()) {
                         return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
                     } else {
-                        $app->Logger->error($email->getError());
+                        LoggerUtils::getAppLogger()->error($email->getError());
 
                         throw new \Exception($email->getError());
                     }

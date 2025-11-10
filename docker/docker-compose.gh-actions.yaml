@@ -1,0 +1,22 @@
+# GitHub Actions specific optimizations
+# Use with: docker compose -f docker-compose.yaml -f docker-compose.gh-actions.yaml --profile ci
+
+services:
+  webserver-test:
+    # Use specific user for GitHub Actions
+    user: "1001:121"  # GitHub Actions runner user
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '4.0'
+        reservations:
+          memory: 1G
+          cpus: '2.0'
+
+  mailserver:
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.25'

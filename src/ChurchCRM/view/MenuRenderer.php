@@ -74,7 +74,8 @@ class MenuRenderer
 
                 <?php foreach ($menuItem->getCounters() as $counter) { ?>
                     <small class='badge <?= $counter->getCss() ?>'
-                           id='<?= $counter->getName() ?>'><?= $counter->getInitValue() ?></small>
+                           id='<?= $counter->getName() ?>'
+                           <?php if ($counter->getTitle()): ?>title="<?= $counter->getTitle() ?>"<?php endif; ?>><?= $counter->getInitValue() ?></small>
                 <?php } ?>
 
             <?php

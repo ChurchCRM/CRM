@@ -50,7 +50,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
+    function initializeMenusAdmin() {
         var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/system/menu",
@@ -65,7 +65,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Delete'),
                     data: 'Id',
                     render: function (data, type, row) {
-                        return '<a class="btn btn-default" onclick="deleteMenu(' + row.Id + ')"><i class="fa-solid fa-trash bg-red"></i></a>';
+                        return '<a class="btn btn-secondary" onclick="deleteMenu(' + row.Id + ')"><i class="fa-solid fa-trash bg-red"></i></a>';
                     },
                     searchable: false
                 },
@@ -84,6 +84,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#menus").DataTable(dataTableConfig);
+    }
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializeMenusAdmin);
     });
 
     $("#add-Menu").click(function(){

@@ -1288,10 +1288,6 @@ msgid "Family List"
 msgstr "Listă familie"
 
 #: 
-msgid "Add Family"
-msgstr "Adaugă familie"
-
-#: 
 msgid "Created"
 msgstr "Creată"
 
@@ -1316,10 +1312,6 @@ msgid "Next Family"
 msgstr "Familia următoare"
 
 #: 
-msgid "Delete this Family"
-msgstr "Șterge aceasă familie"
-
-#: 
 msgid "Upload Photo"
 msgstr "Încarcă foto"
 
@@ -1330,10 +1322,6 @@ msgstr "Ștergeți Foto"
 #: 
 msgid "Add a Note"
 msgstr "Adaugă o notă"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Adaugă toți membri familiei în coș"
 
 #: 
 msgid "Timeline"
@@ -1815,10 +1803,6 @@ msgid "Remove from Cart"
 msgstr "Elimină din coș"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Text pentru ID-ul Evenimentului"
-
-#: 
 msgid "Group Editor"
 msgstr "Editor Grup"
 
@@ -1998,10 +1982,6 @@ msgid "Group View"
 msgstr "Vezi Grup"
 
 #: 
-msgid "Group Functions"
-msgstr "Funcțiile grupului"
-
-#: 
 msgid "Edit this Group"
 msgstr "Editează acest grup"
 
@@ -2067,8 +2047,9 @@ msgid "Assigned Properties"
 msgstr "Proprietăți atribuite"
 
 #: 
-msgid "Group Members:"
-msgstr "Membrii grupului:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Membrii grupului"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -3007,10 +2988,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Șterge livret de familie și membrii familiilor"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Filtru și coș"
-
-#: 
 msgid "Listing"
 msgstr "Listare"
 
@@ -3416,14 +3393,6 @@ msgid "Select Fiscal Year"
 msgstr "Selectați anul fiscal"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID-ul Editor invalid!"
 
@@ -3731,20 +3700,12 @@ msgid "Sunday School Class Functions"
 msgstr "Funcții școală duminicală"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Comută meniu"
-
-#: 
 msgid "Teachers"
 msgstr "Învățători"
 
 #: 
 msgid "Send Message"
 msgstr "Trimite mesaj"
-
-#: 
-msgid "View Profile"
-msgstr "Vezi profil"
 
 #: 
 msgid "Quick Status"
@@ -4254,18 +4215,6 @@ msgstr "Anual"
 #: 
 msgid "Registration Complete"
 msgstr "Înregistrare completă"
-
-#: 
-msgid "Register"
-msgstr "Înregistrează"
-
-#: 
-msgid "Register your family"
-msgstr "Înregistrează-ți familia"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Câte persoane sunt în familia ta"
 
 #: 
 msgid "Add All Classes"
@@ -7056,10 +7005,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Verificați dacă asta vreți să faceți </p>"
 
 #: 
-msgid " this Family"
-msgstr "this Family"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Confirmați dezactivarea"
 
@@ -7090,10 +7035,6 @@ msgstr "Nume fișiere coordonate în baza de date"
 #: 
 msgid "Intersect With Cart"
 msgstr "Intersecție cu grafic"
-
-#: 
-msgid "Family Member"
-msgstr "Membru familie"
 
 #: 
 msgid "select an option"
@@ -7207,10 +7148,6 @@ msgstr "Vezi foto"
 #: 
 msgid "Family Photo"
 msgstr "Foto familie"
-
-#: 
-msgid "Quick Settings"
-msgstr "Setări rapide"
 
 #: 
 msgid "Status"
@@ -7634,10 +7571,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Nu toți membrii din acest grup sunt în coș"
 
 #: 
-msgid "Add all"
-msgstr "Adaugă-i pe toți"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Sigur doriți să eliminați membri selectați din grup?"
 
@@ -7886,10 +7819,6 @@ msgid "Maximum number of Addresses"
 msgstr "Număr maxim de adrese"
 
 #: 
-msgid "Show type of group:"
-msgstr "Arată tipul grupului:"
-
-#: 
 msgid "Add Students"
 msgstr "Adaugă studenți"
 
@@ -7936,26 +7865,6 @@ msgstr "Crează album foto"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Înălțimea de utilizat pentru imagini"
-
-#: 
-msgid "Width to use for images"
-msgstr "Lățime de utilizat pentru imagini"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Lățime de utilizat pentru miniaturi"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Dimensiunea punctului de utilizat pentru miniaturile inițiale"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Secunde de cache ale clientului pentru imagini"
 
 #: 
 msgid "Server cache time for remote images"
@@ -8008,10 +7917,6 @@ msgstr "Mută evenimentul"
 #: 
 msgid "Resize Event"
 msgstr "Redimensionează evenimentul"
-
-#: 
-msgid "Text from"
-msgstr "Text din"
 
 #: 
 msgid "Profile"
@@ -8716,10 +8621,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint de backup la distanță. Dacă este WebDAV, acesta trebuie să fie codificat în URL"
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Includerea fișierelor de imagini cu inițiale, fișierelor de imagini la distanță (de exemplu, Gravatar) și a miniaturilor în backup. Aceste fișiere pot fi, în general, reproduse după o restaurare și adaugă foarte puțină valoare la arhiva de backup, cu un cost mare în timp de execuție și spațiu de stocare"
-
-#: 
 msgid "Password (if any)"
 msgstr "Parola (dacă)"
 
@@ -8778,7 +8679,8 @@ msgstr "Informațiile indisponibile ale unei persoane moștenite de la familia a
 "Această opțiune determină afișarea anumitor informații din înregistrarea familiei asignate a unei persoane DACĂ informațiile corespunzătoare NU au fost introduse pentru acea persoană"
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Apăsați CTRL + C pentru a copia toate numerele de telefon ale membrilor grupului"
 
 #: 
@@ -8926,14 +8828,6 @@ msgstr "Resetare bază de date"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Aceasta va reseta datele sistemului și va reporni sistemul ca o instalare nouă"
-
-#: 
-msgid "Clear Filter"
-msgstr "Șterge filtru"
-
-#: 
-msgid "Add Person"
-msgstr "Adaugă persoană"
 
 #. Context: locales
 #: 

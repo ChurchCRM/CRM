@@ -61,6 +61,13 @@ if (isset($_POST['save'])) {
             $value = date_default_timezone_get();
         }
 
+        // For password fields, only update if a new value is provided (non-empty)
+        if ($current_type == 'password' && empty($value)) {
+            // Skip update - preserve existing password
+            next($type);
+            continue;
+        }
+
         SystemConfig::setValueById($id, $value);
         next($type);
     }
@@ -161,7 +168,7 @@ require_once 'Include/Header.php';
                         <?php
                     } elseif ($setting->getType() == 'password') {
                         ?>
-                      <input type=password size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]' value='<?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?>' class="form-control">
+                      <input type=password size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]' class="form-control" placeholder="<?= gettext('Leave blank to keep existing password') ?>">
                         <?php
                     } elseif ($setting->getType() == 'textarea') {
                         ?>

@@ -1251,10 +1251,6 @@ msgid "Family List"
 msgstr "가족 목록"
 
 #: 
-msgid "Add Family"
-msgstr "가족 추가"
-
-#: 
 msgid "Created"
 msgstr "등록일"
 
@@ -1279,10 +1275,6 @@ msgid "Next Family"
 msgstr "다음 가족"
 
 #: 
-msgid "Delete this Family"
-msgstr "이 가족 삭제"
-
-#: 
 msgid "Upload Photo"
 msgstr "사진 업로드"
 
@@ -1293,10 +1285,6 @@ msgstr "사진 삭제"
 #: 
 msgid "Add a Note"
 msgstr "메모 추가"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "가족 전체를 카트에 추가"
 
 #: 
 msgid "Timeline"
@@ -1771,10 +1759,6 @@ msgid "Remove from Cart"
 msgstr "카트에서 제거"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "행사 ID 문자 발송: "
-
-#: 
 msgid "Group Editor"
 msgstr "그룹 편집"
 
@@ -1943,10 +1927,6 @@ msgid "Group View"
 msgstr "그룹 보기"
 
 #: 
-msgid "Group Functions"
-msgstr "그룹 기능"
-
-#: 
 msgid "Edit this Group"
 msgstr "이 그룹 편집"
 
@@ -2007,7 +1987,8 @@ msgid "Assigned Properties"
 msgstr "배정된 속성"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "그룹 구성원:"
 
 #: 
@@ -2933,10 +2914,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "가족 기록과 구성원 모두 삭제"
 
 #: 
-msgid "Filter and Cart"
-msgstr "필터와 카트"
-
-#: 
 msgid "Listing"
 msgstr "목록"
 
@@ -3325,14 +3302,6 @@ msgid "Select Fiscal Year"
 msgstr "회계 연도 선택"
 
 #: 
-msgid "pm"
-msgstr "오후"
-
-#: 
-msgid "am"
-msgstr "오전"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "잘못된 편집기 ID입니다!"
 
@@ -3633,20 +3602,12 @@ msgid "Sunday School Class Functions"
 msgstr "주일학교 반 기능"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "드롭다운 열기/닫기"
-
-#: 
 msgid "Teachers"
 msgstr "교사"
 
 #: 
 msgid "Send Message"
 msgstr "메시지 보내기"
-
-#: 
-msgid "View Profile"
-msgstr "프로필 보기"
 
 #: 
 msgid "Quick Status"
@@ -4147,18 +4108,6 @@ msgstr "연간"
 #: 
 msgid "Registration Complete"
 msgstr "등록 완료"
-
-#: 
-msgid "Register"
-msgstr "등록"
-
-#: 
-msgid "Register your family"
-msgstr "우리 가족 등록"
-
-#: 
-msgid "How many people are in your family"
-msgstr "가족 인원수를 입력하세요"
 
 #: 
 msgid "Add All Classes"
@@ -6945,10 +6894,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "정말 이 작업을 진행할지 다시 확인하세요.</p>"
 
 #: 
-msgid " this Family"
-msgstr " 이 가족"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "비활성화 확인"
 
@@ -6979,10 +6924,6 @@ msgstr "좌표 데이터베이스 파일 이름:"
 #: 
 msgid "Intersect With Cart"
 msgstr "카트와 교집합"
-
-#: 
-msgid "Family Member"
-msgstr "가족 구성원"
 
 #: 
 msgid "select an option"
@@ -7095,10 +7036,6 @@ msgstr "사진 보기"
 #: 
 msgid "Family Photo"
 msgstr "가족 사진"
-
-#: 
-msgid "Quick Settings"
-msgstr "빠른 설정"
 
 #: 
 msgid "Status"
@@ -7521,10 +7458,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "이 그룹의 일부만 카트에 있습니다"
 
 #: 
-msgid "Add all"
-msgstr "모두 추가"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "선택한 그룹 구성원을 제거하시겠습니까?"
 
@@ -7772,10 +7705,6 @@ msgid "Maximum number of Addresses"
 msgstr "주소 최대 개수"
 
 #: 
-msgid "Show type of group:"
-msgstr "그룹 유형 표시:"
-
-#: 
 msgid "Add Students"
 msgstr "학생 추가"
 
@@ -7822,26 +7751,6 @@ msgstr "포토북 만들기"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "이미지 높이"
-
-#: 
-msgid "Width to use for images"
-msgstr "이미지 폭"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "썸네일 폭"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "이니셜 썸네일 글자 크기"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "이미지 클라이언트 캐시(초)"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7894,10 +7803,6 @@ msgstr "행사 이동"
 #: 
 msgid "Resize Event"
 msgstr "행사 크기 조정"
-
-#: 
-msgid "Text from"
-msgstr "보낸 사람"
 
 #: 
 msgid "Profile"
@@ -8598,10 +8503,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "원격 백업 엔드포인트(WebDAV인 경우 URL 인코딩 필요). "
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "백업에 이니셜 이미지, 원격 이미지(Gravatar), 썸네일을 포함합니다. 이러한 파일은 복원 후 다시 생성할 수 있으며 실행 시간과 저장 공간을 많이 차지합니다."
-
-#: 
 msgid "Password (if any)"
 msgstr "비밀번호(있는 경우)"
 
@@ -8663,7 +8564,8 @@ msgstr "가족 정보에서 개인 정보를 가져와 표시할까요?\n"
 "개인 정보가 비어 있으면 가족 기록의 해당 정보를 표시합니다."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Ctrl+C를 눌러 그룹 구성원의 전화번호를 모두 복사하세요"
 
 #: 
@@ -8807,14 +8709,6 @@ msgstr "데이터베이스 초기화"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "시스템 데이터를 초기화하여 새 설치처럼 다시 시작합니다."
-
-#: 
-msgid "Clear Filter"
-msgstr "필터 지우기"
-
-#: 
-msgid "Add Person"
-msgstr "개인 추가"
 
 #. Context: locales
 #: 

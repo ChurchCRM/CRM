@@ -1618,10 +1618,6 @@ msgid "Remove from Cart"
 msgstr "Eltávolítás a kosárba"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Szöveg Eseményazonosító:"
-
-#: 
 msgid "Group Editor"
 msgstr "Csoport szerkesztő"
 
@@ -1818,7 +1814,8 @@ msgid "Assigned Properties"
 msgstr "Célhoz Tulajdonságok"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "Csoport tagjai:"
 
 #: 
@@ -2879,14 +2876,6 @@ msgstr "tétel (ek) adunk a kosárba."
 #: 
 msgid "Select Fiscal Year"
 msgstr "Válassza a pénzügyi év"
-
-#: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
 
 #: 
 msgid "Invalid Editor ID!"

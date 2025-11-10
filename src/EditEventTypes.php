@@ -136,7 +136,7 @@ if ($numCounts) {
       <input type="text" class="form-control" name="newEvtName" value="<?= $aTypeName ?>" size="30" maxlength="35" autofocus />
     </td>
     <td class="TextColumn" width="50%">
-      <button type="submit" Name="Action" value="NAME" class="btn btn-default"><?= gettext('Save Name') ?></button>
+      <button type="submit" Name="Action" value="NAME" class="btn btn-secondary"><?= gettext('Save Name') ?></button>
     </td>
   </tr>
   <tr>
@@ -166,7 +166,7 @@ if ($numCounts) {
         <td class="TextColumn" width="35%"><?= $cCountName[$c] ?></td>
         <td class="TextColumn" width="50%">
           <button type="submit" name="Action" value="DELETE_<?= $cCountID[$c] ?>"
-                  class="btn btn-default" data-cy="remove-attendance-count">
+                  class="btn btn-secondary" data-cy="remove-attendance-count">
             <?= gettext('Remove') ?>
           </button>
         </td>
@@ -180,7 +180,7 @@ if ($numCounts) {
                placeholder="New Attendance Count" data-cy="attendance-count-input" />
       </td>
       <td class="TextColumn" width="50%">
-        <button type="submit" name="Action" value="ADD" class="btn btn-default"
+        <button type="submit" name="Action" value="ADD" class="btn btn-secondary"
                 data-cy="add-attendance-count">
           <?= gettext('Add counter') ?>
         </button>
@@ -191,7 +191,7 @@ if ($numCounts) {
 </div>
 
 <div>
-  <a href="EventNames.php" class='btn btn-default'>
+  <a href="EventNames.php" class='btn btn-secondary'>
     <i class='fa fa-chevron-left'></i>
     <?= gettext('Return to Event Types') ?>
   </a>

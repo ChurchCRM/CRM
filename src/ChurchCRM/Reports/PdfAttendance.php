@@ -145,7 +145,13 @@ class PdfAttendance extends ChurchInfoReport
                         $nw = $width * $factor;
                         $nh = $yIncrement;
 
-                        $this->Image($imgList[$row], $nameX - $nw, $y, $nw, $nh, 'JPG');
+                        // Detect image type from file extension (now supports PNG)
+                        $imageType = strtoupper(pathinfo($imgList[$row], PATHINFO_EXTENSION));
+                        if (!in_array($imageType, ['JPG', 'JPEG', 'PNG'])) {
+                            $imageType = 'PNG'; // Default to PNG
+                        }
+                        
+                        $this->Image($imgList[$row], $nameX - $nw, $y, $nw, $nh, $imageType);
                     }
                 }
 

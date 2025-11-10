@@ -1,4 +1,4 @@
-$(function () {
+function initializeFamilyView() {
     if (!window.CRM.currentActive) {
         $("#family-deactivated").removeClass("d-none");
     }
@@ -255,10 +255,6 @@ $(function () {
         $("#confirm-verify").modal("hide");
     });
 
-    $("#AddFamilyToCart").on("click", function () {
-        window.CRM.cart.addFamily($(this).data("familyid"));
-    });
-
     // Photos
     $("#deletePhoto").on("click", function () {
         $.ajax({
@@ -364,4 +360,9 @@ $(function () {
             }
         });
     }
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeFamilyView);
 });

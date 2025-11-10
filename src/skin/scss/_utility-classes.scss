@@ -33,6 +33,11 @@
     cursor: pointer;
 }
 
+/* Text decoration utilities (Bootstrap 4 doesn't have these) */
+.text-decoration-none {
+    text-decoration: none;
+}
+
 /* Float-right deprecated in Bootstrap 5, but kept for legacy support */
 .float-right {
     float: right;

@@ -29,16 +29,36 @@ Cypress.Commands.add(
     "login",
     (username, password, location, checkMatchingLocation = true) => {
         cy.visit("/?location=/" + location);
-        cy.wait(150);
         
         // Use data-cy attributes when available, fallback to ID
-        cy.get("[data-cy=username], #UserBox").type(username);
-        cy.get("[data-cy=password], #PasswordBox").type(password);
+        cy.get("[data-cy=username], #UserBox").should('be.visible').type(username);
+        cy.get("[data-cy=password], #PasswordBox").should('be.visible').type(password);
         cy.get("form").submit();
 
+        // Wait for navigation to complete
+        cy.url().should('not.contain', 'location=');
+        
+        // Verify session is established by checking for any cookie starting with CRM-
+        cy.getCookies().should('satisfy', (cookies) => {
+            return cookies.some(cookie => cookie.name.startsWith('CRM-'));
+        });
+        
         if (location && checkMatchingLocation) {
             cy.location("pathname").should("include", location.split("?")[0]);
         }
+        
+        // Wait for page to be fully loaded
+        cy.document().should("have.property", "readyState", "complete");
+        
+        // Wait for all AJAX/fetch requests to complete
+        // Use window.jQuery.active if available (for jQuery AJAX)
+        cy.window().then((win) => {
+            if (win.jQuery) {
+                cy.wrap(null).should(() => {
+                    expect(win.jQuery.active).to.equal(0);
+                });
+            }
+        });
     },
 );
 
@@ -175,7 +195,7 @@ Cypress.Commands.add('select2ByText', (selector, text) => {
     // Wait for dropdown to appear and search for the text
     cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
         .should('be.visible')
-        .type(text, { delay: 50 });
+        .type(text);
     
     // Wait for results and click the matching option
     cy.get('.select2-results__option', { timeout: 5000 })
@@ -220,7 +240,7 @@ Cypress.Commands.add('select2Search', (selector, searchText, resultText = null) 
     // Type in the search field
     cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
         .should('be.visible')
-        .type(searchText, { delay: 50 });
+        .type(searchText);
     
     // Wait for AJAX results (look for non-loading options)
     cy.get('.select2-results__option', { timeout: 10000 })
@@ -327,4 +347,60 @@ Cypress.Commands.add('clearQuill', (editorId) => {
         }
         quillEditor.setContents([]);
     });
+});
+
+/**
+ * Set a Bootstrap Datepicker value by typing and blurring to trigger change event
+ * This mimics user interaction to trigger all proper datepicker events
+ * @param {string} selector - The CSS selector for the datepicker input
+ * @param {string} dateString - The date string in MM/DD/YYYY format
+ * @example cy.setDatePickerValue("#member-birthday-2", "08/07/1980");
+ */
+Cypress.Commands.add('setDatePickerValue', (selector, dateString) => {
+    // Type the date and blur to trigger datepicker's change event
+    cy.get(selector).clear().type(dateString);
+    
+    // Click elsewhere to blur the field and trigger change event
+    cy.get('body').click();
+    
+    // Wait for event handlers to process
+    cy.wait(100);
+});
+
+/**
+ * Wait for ChurchCRM locales to be fully loaded
+ * This ensures i18next and all locale files are ready before proceeding
+ * @param {number} timeout - Maximum time to wait in milliseconds (default: 10000)
+ * @example cy.waitForLocales()
+ */
+Cypress.Commands.add('waitForLocales', (timeout = 10000) => {
+    cy.window({ timeout }).should((win) => {
+        expect(win.CRM).to.exist;
+        expect(win.CRM.localesLoaded).to.be.true;
+    });
+});
+
+/**
+ * Wait for a DataTable to be fully initialized on the page
+ * @param {string} selector - The CSS selector for the table element (default: '#members')
+ * @param {number} timeout - Maximum time to wait in milliseconds (default: 10000)
+ * @example cy.waitForDataTable('#members')
+ */
+Cypress.Commands.add('waitForDataTable', (selector = '#members', timeout = 10000) => {
+    // First wait for locales since DataTable initialization depends on it
+    cy.waitForLocales(timeout);
+    
+    // Then wait for the DataTable to be initialized and have data
+    cy.get(selector, { timeout }).should('be.visible');
+    cy.window({ timeout }).should((win) => {
+        const table = win.jQuery(selector);
+        expect(table.length).to.be.greaterThan(0);
+        
+        // Check if DataTable is initialized
+        const dataTable = table.DataTable();
+        expect(dataTable).to.exist;
+    });
+    
+    // Wait for rows to be present in the table body
+    cy.get(`${selector} tbody tr`, { timeout }).should('have.length.greaterThan', 0);
 });

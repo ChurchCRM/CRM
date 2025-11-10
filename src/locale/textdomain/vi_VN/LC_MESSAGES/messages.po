@@ -1270,10 +1270,6 @@ msgid "Family List"
 msgstr "Danh sách gia đình"
 
 #: 
-msgid "Add Family"
-msgstr "Thêm gia đình"
-
-#: 
 msgid "Created"
 msgstr "Đã tạo"
 
@@ -1298,10 +1294,6 @@ msgid "Next Family"
 msgstr "Gia đình kế tiếp"
 
 #: 
-msgid "Delete this Family"
-msgstr "Xóa gia đình này"
-
-#: 
 msgid "Upload Photo"
 msgstr "Tải lên hình ảnh"
 
@@ -1312,10 +1304,6 @@ msgstr "Xóa hình ảnh"
 #: 
 msgid "Add a Note"
 msgstr "Thêm ghi chú"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Thêm tất cả thành viên trong gia đình vào giỏ"
 
 #: 
 msgid "Timeline"
@@ -1791,10 +1779,6 @@ msgid "Remove from Cart"
 msgstr "Xóa khỏi giỏ"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Văn bản cho ID sự kiện:"
-
-#: 
 msgid "Group Editor"
 msgstr "Chỉnh sửa Ban/Mục vụ"
 
@@ -1963,10 +1947,6 @@ msgid "Group View"
 msgstr "Xem Ban/Mục vụ"
 
 #: 
-msgid "Group Functions"
-msgstr "Tính năng Ban/Mục vụ"
-
-#: 
 msgid "Edit this Group"
 msgstr "Chỉnh sửa"
 
@@ -2027,8 +2007,9 @@ msgid "Assigned Properties"
 msgstr "Nhóm Tế Bào"
 
 #: 
-msgid "Group Members:"
-msgstr "Thành viên Ban/Mục vụ:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Thành viên Ban/Mục vụ"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2954,10 +2935,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Xóa bỏ bản ghi gia đình VÀ thành viên gia đình"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Bộ lọc và giỏ"
-
-#: 
 msgid "Listing"
 msgstr "Danh sách"
 
@@ -3347,14 +3324,6 @@ msgid "Select Fiscal Year"
 msgstr "Chọn năm tài chính"
 
 #: 
-msgid "pm"
-msgstr "buổi chiều"
-
-#: 
-msgid "am"
-msgstr "là"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID người chỉnh sửa không hợp lệ!"
 
@@ -3655,20 +3624,12 @@ msgid "Sunday School Class Functions"
 msgstr "Tính năng lớp học Trường Chúa Nhật"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Chuyển đổi menu thả xuống"
-
-#: 
 msgid "Teachers"
 msgstr "Giáo viên"
 
 #: 
 msgid "Send Message"
 msgstr "Gửi đi"
-
-#: 
-msgid "View Profile"
-msgstr "Xem hồ sơ"
 
 #: 
 msgid "Quick Status"
@@ -4172,18 +4133,6 @@ msgstr "Hàng năm"
 #: 
 msgid "Registration Complete"
 msgstr "Đăng ký hoàn tất"
-
-#: 
-msgid "Register"
-msgstr "Đăng ký"
-
-#: 
-msgid "Register your family"
-msgstr "Đăng ký gia đình của bạn"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Có bao nhiêu người trong gia đình bạn"
 
 #: 
 msgid "Add All Classes"
@@ -6973,10 +6922,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Hãy đảm bảo điều này những gì bạn muốn làm. </p>"
 
 #: 
-msgid " this Family"
-msgstr " gia đình này"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Xác nhận việc hủy kích hoạt"
 
@@ -7007,10 +6952,6 @@ msgstr "Tên tệp cơ sở dữ liệu tọa độ:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Giao với giỏ"
-
-#: 
-msgid "Family Member"
-msgstr "Thành viên Gia đình"
 
 #: 
 msgid "select an option"
@@ -7124,10 +7065,6 @@ msgstr "Xem ảnh"
 #: 
 msgid "Family Photo"
 msgstr "Hình ảnh gia đình"
-
-#: 
-msgid "Quick Settings"
-msgstr "Cài đặt nhanh"
 
 #: 
 msgid "Status"
@@ -7551,10 +7488,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Không phải tất cả thành viên của nhóm này đều có trong giỏ hàng"
 
 #: 
-msgid "Add all"
-msgstr "Thêm tất cả"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Bạn có chắc chắn muốn xóa các thành viên nhóm đã chọn không?"
 
@@ -7803,10 +7736,6 @@ msgid "Maximum number of Addresses"
 msgstr "Số lượng địa chỉ tối đa"
 
 #: 
-msgid "Show type of group:"
-msgstr "Hiển thị loại Ban/Mục vụ"
-
-#: 
 msgid "Add Students"
 msgstr "Thêm học viên"
 
@@ -7853,26 +7782,6 @@ msgstr "Tạo sách ảnh"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Chiều cao để sử dụng cho hình ảnh"
-
-#: 
-msgid "Width to use for images"
-msgstr "Chiều rộng để sử dụng cho hình ảnh"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Chiều rộng để sử dụng cho hình thu nhỏ"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Kích thước điểm để sử dụng cho hình thu nhỏ viết tắt"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Bộ nhớ đệm ứng dụng khách giây cho hình ảnh"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7925,10 +7834,6 @@ msgstr "Di chuyển sự kiện"
 #: 
 msgid "Resize Event"
 msgstr "Thay đổi kích thước sự kiện"
-
-#: 
-msgid "Text from"
-msgstr "Văn bản từ"
 
 #: 
 msgid "Profile"
@@ -8633,10 +8538,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Điểm cuối sao lưu từ xa. Nếu WebDAV, điều này phải được mã hóa url."
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Bao gồm các tệp hình ảnh viết tắt, tệp hình ảnh từ xa (gravatar) và hình thu nhỏ trong bản sao lưu. Các tệp này thường có thể được sao chép sau khi khôi phục và thêm rất ít giá trị vào kho lưu trữ sao lưu với chi phí lớn về thời gian thực hiện và lưu trữ"
-
-#: 
 msgid "Password (if any)"
 msgstr "Mật khẩu (nếu có)"
 
@@ -8690,7 +8591,8 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "Tùy chọn này sẽ hiển thị một số thông tin nhất định từ hồ sơ gia đình được chỉ định của một người NẾU KHÔNG nhập thông tin tương ứng cho người đó."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Nhấn CTRL + C để sao chép tất cả số điện thoại của các thành viên trong nhóm"
 
 #: 
@@ -8835,14 +8737,6 @@ msgstr "Đặt lại cơ sở dữ liệu"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Thao tác này sẽ đặt lại dữ liệu hệ thống và sẽ khởi động lại hệ thống khi cài đặt mới."
-
-#: 
-msgid "Clear Filter"
-msgstr "LÀm sạch bộ lọc"
-
-#: 
-msgid "Add Person"
-msgstr "Thêm người"
 
 #. Context: locales
 #: 

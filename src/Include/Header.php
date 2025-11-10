@@ -35,7 +35,6 @@ $MenuFirst = 1;
     Header_modals();
     Header_body_scripts();
 
-    $loggedInUserPhoto = SystemURLs::getRootPath() . '/api/person/' . AuthenticationManager::getCurrentUser()->getId() . '/thumbnail';
     $MenuFirst = 1;
     ?>
 
@@ -94,7 +93,7 @@ $MenuFirst = 1;
             <li class="nav-item dropdown show">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
                     <i class="fa-solid fa-shopping-cart"></i>
-                    <span class="badge badge-info navbar-badge"><?= Cart::countPeople() ?></span>
+                    <span class="badge badge-info navbar-badge" id="iconCount"><?= Cart::countPeople() ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <span id="cart-dropdown-menu"></span>
@@ -211,14 +210,8 @@ $MenuFirst = 1;
       <section class="content-header">
           <div class="container-fluid">
               <div class="row mb-2">
-                  <div class="col-sm-6">
+                  <div class="col-sm-12">
                       <h1><?= $sPageTitle; ?></h1>
-                  </div>
-                  <div class="col-sm-6">
-                      <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath()?>"><?= _("Home")?></a></li>
-                          <li class="breadcrumb-item active"><?= $sPageTitle; ?></li>
-                      </ol>
                   </div>
               </div>
           </div><!-- /.container-fluid -->

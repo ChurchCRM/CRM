@@ -1255,10 +1255,6 @@ msgid "Family List"
 msgstr "Lista Famiglie"
 
 #: 
-msgid "Add Family"
-msgstr "Aggiungi Famiglia"
-
-#: 
 msgid "Created"
 msgstr "Creata"
 
@@ -1283,10 +1279,6 @@ msgid "Next Family"
 msgstr "Famiglia successiva"
 
 #: 
-msgid "Delete this Family"
-msgstr "Elimina questa Famiglia"
-
-#: 
 msgid "Upload Photo"
 msgstr "Inserisci foto"
 
@@ -1297,10 +1289,6 @@ msgstr "Elimina foto"
 #: 
 msgid "Add a Note"
 msgstr "Aggiungi Nota"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Aggiungi tutti i Membri della Famiglia nel carrello"
 
 #: 
 msgid "Timeline"
@@ -1777,10 +1765,6 @@ msgid "Remove from Cart"
 msgstr "Rimuovi dal contenitore"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Testo per ID evento:"
-
-#: 
 msgid "Group Editor"
 msgstr "Gestione gruppi"
 
@@ -1949,10 +1933,6 @@ msgid "Group View"
 msgstr "Visualizzazione gruppo"
 
 #: 
-msgid "Group Functions"
-msgstr "Funzioni Gruppo"
-
-#: 
 msgid "Edit this Group"
 msgstr "Modifca questo gruppo"
 
@@ -2013,8 +1993,9 @@ msgid "Assigned Properties"
 msgstr "Proprietà assegnate"
 
 #: 
-msgid "Group Members:"
-msgstr "Componenti del gruppo:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Componenti del gruppo"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2947,10 +2928,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Elimina la scheda della famiglia E ANCHE i suoi membri"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Filtra e aggiungi al carrello"
-
-#: 
 msgid "Listing"
 msgstr "Elenco"
 
@@ -3341,14 +3318,6 @@ msgid "Select Fiscal Year"
 msgstr "Seleziona Anno fiscale"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "sono"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Modifica ID non valida!"
 
@@ -3649,20 +3618,12 @@ msgid "Sunday School Class Functions"
 msgstr "Funzioni Classe Scuola Domenicale"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Attiva / disattiva elenco a discesa"
-
-#: 
 msgid "Teachers"
 msgstr "Monitori"
 
 #: 
 msgid "Send Message"
 msgstr "Invia Messaggio"
-
-#: 
-msgid "View Profile"
-msgstr "Visualizza Profilo"
 
 #: 
 msgid "Quick Status"
@@ -4167,18 +4128,6 @@ msgstr "Annuale"
 #: 
 msgid "Registration Complete"
 msgstr "Registrazione completa"
-
-#: 
-msgid "Register"
-msgstr "Registrare"
-
-#: 
-msgid "Register your family"
-msgstr "Registra la tua famiglia"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Quante persone sono nella vostra famiglia"
 
 #: 
 msgid "Add All Classes"
@@ -6978,10 +6927,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Per favore assicurati di ciò che vuoi fare. </ P>"
 
 #: 
-msgid " this Family"
-msgstr " questa famiglia"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Conferma disattivazione"
 
@@ -7012,10 +6957,6 @@ msgstr "Nome file di base dati di coordinate:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Interseca con il carrello"
-
-#: 
-msgid "Family Member"
-msgstr "Membro della famiglia"
 
 #: 
 msgid "select an option"
@@ -7129,10 +7070,6 @@ msgstr "Guarda la foto"
 #: 
 msgid "Family Photo"
 msgstr "Foto di famiglia"
-
-#: 
-msgid "Quick Settings"
-msgstr "Impostazioni rapide"
 
 #: 
 msgid "Status"
@@ -7556,10 +7493,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Non tutti i membri di questo gruppo sono nel carrello"
 
 #: 
-msgid "Add all"
-msgstr "Aggiungi tutto"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Sei sicuro di voler rimuovere i membri del gruppo selezionati?"
 
@@ -7808,10 +7741,6 @@ msgid "Maximum number of Addresses"
 msgstr "Numero massimo di indirizzi"
 
 #: 
-msgid "Show type of group:"
-msgstr "Mostra il tipo di gruppo:"
-
-#: 
 msgid "Add Students"
 msgstr "Aggiungi studenti"
 
@@ -7858,26 +7787,6 @@ msgstr "Crea un PhotoBook"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Altezza da usare per le immagini"
-
-#: 
-msgid "Width to use for images"
-msgstr "Larghezza da usare per le immagini"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Larghezza da utilizzare per le miniature"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Dimensione del punto da utilizzare per le miniature delle iniziali"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Cache del client secondi per le immagini"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7930,10 +7839,6 @@ msgstr "Sposta Evento"
 #: 
 msgid "Resize Event"
 msgstr "Resize Event"
-
-#: 
-msgid "Text from"
-msgstr "Testo da"
 
 #: 
 msgid "Profile"
@@ -8638,10 +8543,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint del backup remoto. Se WebDAV, questo deve essere codificato in url."
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Includi file immagine iniziali, file immagine remoti (gravatar) e miniature nel backup. Questi file sono generalmente riproducibili dopo un ripristino e aggiungono pochissimo valore all'archivio di backup a spese considerevoli del tempo di esecuzione e dell'archiviazione"
-
-#: 
 msgid "Password (if any)"
 msgstr "Password (se presente)"
 
@@ -8704,7 +8605,8 @@ msgstr "Informazioni sulla persona non disponibili ereditate dalla famiglia asse
 "visualizzato SE NON sono state inserite le informazioni corrispondenti per quella persona."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Premi CTRL + C per copiare i numeri di telefono di tutti i membri del gruppo"
 
 #: 
@@ -8851,14 +8753,6 @@ msgstr "Ripristina database"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Ciò ripristinerà i dati di sistema e riavvierà il sistema come una nuova installazione."
-
-#: 
-msgid "Clear Filter"
-msgstr "Filtro pulito"
-
-#: 
-msgid "Add Person"
-msgstr "Aggiungi persona"
 
 #. Context: locales
 #: 

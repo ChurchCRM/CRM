@@ -1,3 +1,8 @@
+/**
+ * Deposit Slip Editor
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
+
 function initPaymentTable() {
     var colDef = [
         {
@@ -174,20 +179,11 @@ function initCharts(
     fundBackgroundColor,
 ) {
     var pieOptions = {
-        //Boolean - Whether we should show a stroke on each segment
-        segmentShowStroke: true,
-        //String - The colour of each segment stroke
-        segmentStrokeColor: "#fff",
-        //Number - The width of each segment stroke
-        segmentStrokeWidth: 2,
-        //Number - The percentage of the chart that we cut out of the middle
-        percentageInnerCutout: 50, // This is 0 for Pie charts
-        //Boolean - Whether we animate the rotation of the Doughnut
-        animateRotate: false,
-        //Boolean - whether to make the chart responsive to window resizing
         responsive: true,
-        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: true,
+        animation: {
+            animateRotate: false,
+        },
     };
 
     var ctx = document.getElementById("type-donut").getContext("2d");

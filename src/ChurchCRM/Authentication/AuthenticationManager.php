@@ -55,6 +55,16 @@ class AuthenticationManager
         }
     }
 
+    public static function isUserAuthenticated(): bool
+    {
+        try {
+            $user = self::getCurrentUser();
+            return $user !== null;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
     public static function endSession(bool $preventRedirect = false): void
     {
         $logger = LoggerUtils::getAuthLogger();
@@ -70,10 +80,8 @@ class AuthenticationManager
         try {
             self::getAuthenticationProvider()->endSession();
 
-            $_COOKIE = [];
-            $_SESSION = [];
+            session_unset();
             session_destroy();
-            Bootstrapper::initSession();
             $logger->info(
                 'Ended Local session for user',
                 $logCtx

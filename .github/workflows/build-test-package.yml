@@ -5,6 +5,7 @@ on:
     branches:    
       - master
       - develop
+      - 'hotfix/**'
     paths-ignore:
       - '**/*.md'
       - 'docs/**'
@@ -14,6 +15,7 @@ on:
     branches:
     - master
     - develop
+    - 'hotfix/**'
     paths-ignore:
       - '**/*.md'
       - 'docs/**'
@@ -23,15 +25,15 @@ on:
 jobs:
   test-n-package:
     permissions:
-      contents: write
+      contents: read
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['20.x']
+        node-version: ['22.x']
     steps:
     - uses: actions/checkout@v4
       with:
-        # fetch full history so things like auto-changelog work properly
+        # Fetch full history for changelog generation and version comparison
         fetch-depth: 0
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -82,20 +84,69 @@ jobs:
         npm run package
 
     - name: Run Docker
+      run: npm run docker:ci:start
+
+    - name: Wait for Docker to be ready
       run: |
-        npm run docker:ci:start
-        docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
-        docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+        echo "Waiting for services to be ready..."
+        sleep 10
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
 
     - name: Test Server
       run: |
-          curl -vvv http://127.0.0.1/api/public/echo
-          docker compose -f docker/docker-compose.test-php8-apache.yaml ps -a
-          docker compose -f docker/docker-compose.test-php8-apache.yaml logs
+        echo "Testing API endpoint..."
+        # Retry logic: wait up to 60 seconds for server to respond
+        max_attempts=12
+        attempt=1
+        until curl -f http://127.0.0.1/api/public/echo || [ $attempt -eq $max_attempts ]; do
+          echo "Attempt $attempt/$max_attempts failed. Retrying in 5 seconds..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        
+        if [ $attempt -eq $max_attempts ]; then
+          echo "Server failed to respond after $max_attempts attempts"
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
+          exit 1
+        fi
+        
+        echo "Server is responding! Running verbose test..."
+        curl -vvv http://127.0.0.1/api/public/echo
 
     - name: Run Cypress Tests
       run: |
         npm run test
+
+    - name: Collect Docker Logs on Failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker
+        echo "=== Docker Container Logs ===" > cypress/logs/docker/docker-compose.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs >> cypress/logs/docker/docker-compose.log 2>&1 || true
+        
+        echo "=== Docker Container Status ===" >> cypress/logs/docker/docker-compose.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a >> cypress/logs/docker/docker-compose.log 2>&1 || true
+        
+        echo "=== Collecting PHP Application Logs ===" 
+        mkdir -p cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci exec -T churchcrm sh -c 'if [ -d "src/logs" ]; then tar -czf - src/logs 2>/dev/null | base64; fi' > cypress/logs/php/app-logs.tar.gz.b64 2>&1 || true
+        
+        echo "✅ Logs collected to cypress/logs/docker/ and cypress/logs/php/"
+
+    - name: Upload Cypress Artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: cypress-artifacts-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/results
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
 
     - name: Upload Cypress Reports on Failure
       if: failure()
@@ -161,18 +212,18 @@ jobs:
           echo "create_release=false" >> $GITHUB_OUTPUT
         fi
 
-    - name: Verify release files before creating draft
+    - name: Verify package files
       if: github.ref == 'refs/heads/master' && github.event_name == 'push' && steps.src-changes.outputs.create_release == 'true'
       run: |
-        echo "📋 Verifying files for draft release..."
+        echo "📋 Verifying package files..."
         if [ -d "temp" ]; then
           echo "✅ Temp directory exists"
           ls -la temp/
           
-          # Find the zip file that will be attached
+          # Find the zip file
           zip_files=$(find temp -name "ChurchCRM-*.zip" -type f)
           if [ -n "$zip_files" ]; then
-            echo "✅ Found zip files to attach:"
+            echo "✅ Found package files:"
             for zip_file in $zip_files; do
               file_size=$(ls -lh "$zip_file" | awk '{print $5}')
               echo "  📦 $(basename "$zip_file") ($file_size)"
@@ -185,51 +236,6 @@ jobs:
           echo "❌ Temp directory does not exist!"
           exit 1
         fi
-
-    - name: Create Draft Release (on master with src changes)
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push' && steps.src-changes.outputs.create_release == 'true'
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: v${{ steps.package-version.outputs.current-version }}
-        name: ChurchCRM v${{ steps.package-version.outputs.current-version }}
-        body: |
-          ## ChurchCRM Release v${{ steps.package-version.outputs.current-version }}
-          
-          ### 📦 Downloads
-          - **ChurchCRM-${{ steps.package-version.outputs.current-version }}.zip** - Complete installation package (attached below)
-          
-          ### 🚀 Installation
-          1. Download the zip file from the "Assets" section below
-          2. Extract to your web server directory
-          3. Follow the [installation guide](https://github.com/ChurchCRM/CRM/wiki/Installation)
-          
-          ### 📝 Changes in /src Directory
-          <!-- TODO: Add detailed release notes here before publishing -->
-          
-          **Files changed in this release:**
-          ```
-          ${{ steps.src-changes.outputs.changed_files }}
-          ```
-          
-          **Commit:** ${{ github.sha }}
-          
-          For detailed changes, see the [CHANGELOG.md](https://github.com/ChurchCRM/CRM/blob/master/CHANGELOG.md) or [compare with previous release](https://github.com/ChurchCRM/CRM/compare/v${{ steps.package-version.outputs.current-version }}).
-          
-          ### ✅ Testing
-          - ✅ All automated tests passed
-          - ✅ Build completed successfully
-          - ✅ Docker integration tests passed
-          - ✅ Cypress end-to-end tests passed
-          
-          ---
-          *Built automatically from commit ${{ github.sha }}*
-          
-          **Note:** This is a draft release. Review the changes above and publish when ready.
-        files: temp/ChurchCRM-*.zip
-        draft: true
-        prerelease: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build Summary
       if: always()
@@ -268,13 +274,15 @@ jobs:
         fi
         
         if [ "${{ github.ref }}" = "refs/heads/master" ] && [ "${{ github.event_name }}" = "push" ]; then
-          echo "**� Draft Release Created:** [v${{ steps.package-version.outputs.current-version }}](https://github.com/ChurchCRM/CRM/releases/tag/v${{ steps.package-version.outputs.current-version }})" >> $GITHUB_STEP_SUMMARY
+          echo "**✅ Build Completed for Version:** ${{ steps.package-version.outputs.current-version }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**📋 Next Steps:**" >> $GITHUB_STEP_SUMMARY
-          echo "1. Go to [Releases](https://github.com/ChurchCRM/CRM/releases)" >> $GITHUB_STEP_SUMMARY
-          echo "2. Edit the draft release notes" >> $GITHUB_STEP_SUMMARY
-          echo "3. Add changelog entries" >> $GITHUB_STEP_SUMMARY
-          echo "4. Publish the release when ready" >> $GITHUB_STEP_SUMMARY
+          echo "**📋 Next Steps to Create Release:**" >> $GITHUB_STEP_SUMMARY
+          echo "1. Download the \`ChurchCRM-${{ steps.package-version.outputs.current-version }}\` artifact from this workflow run" >> $GITHUB_STEP_SUMMARY
+          echo "2. Go to [Releases](https://github.com/ChurchCRM/CRM/releases) and create a new release" >> $GITHUB_STEP_SUMMARY
+          echo "3. Use tag: \`${{ steps.package-version.outputs.current-version }}\` (no 'v' prefix)" >> $GITHUB_STEP_SUMMARY
+          echo "4. Upload the ChurchCRM-${{ steps.package-version.outputs.current-version }}.zip file" >> $GITHUB_STEP_SUMMARY
+          echo "5. Add release notes from CHANGELOG.md" >> $GITHUB_STEP_SUMMARY
+          echo "6. Publish the release (this will trigger changelog PR creation)" >> $GITHUB_STEP_SUMMARY
         else
           artifact_name="${{ github.ref == 'refs/heads/master' && 
                              format('ChurchCRM-{0}', steps.package-version.outputs.current-version) ||

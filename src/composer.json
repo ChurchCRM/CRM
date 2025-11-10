@@ -3,7 +3,7 @@
     "description": "Free Church CRM Software",
     "license": "MIT",
     "type": "project",
-    "version": "5.22.0",
+    "version": "6.0.0",
     "keywords": [
         "church",
         "crm"
@@ -24,7 +24,7 @@
         "docs": "https://github.com/ChurchCRM/CRM/wiki"
     },
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-PDO": "*",
         "ext-bcmath": "*",
         "ext-curl": "*",
@@ -34,7 +34,6 @@
         "ext-gd": "*",
         "ext-gettext": "*",
         "ext-iconv": "*",
-        "ext-intl": "*",
         "ext-mbstring": "*",
         "ext-mysqli": "*",
         "ext-session": "*",
@@ -97,7 +96,7 @@
             "php-http/discovery": true
         },
         "platform": {
-            "php": "8.1"
+            "php": "8.2"
         },
         "sort-packages": true
     },

@@ -4,6 +4,39 @@ All notable changes to this project will be documented in this file.
 
 _For archived versions prior to v5.0.0, see the [legacy changelog](https://github.com/ChurchCRM/CRM/releases)._
 
+## [5.22.0] - 2025-11-01
+### :sparkles: New Features
+- [`0eb12c1`](https://github.com/ChurchCRM/CRM/commit/0eb12c1814ccaa4ee8716358f2552e029a3e46f6) - **auth**: Create AuthService and migrate requireUserGroupMembership *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`dd2b4b7`](https://github.com/ChurchCRM/CRM/commit/dd2b4b776bee27ba13485e01ac9fbbc3d83f71b2) - Improve GroupList UI and navigation *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+
+### :bug: Bug Fixes
+- [`2db0d74`](https://github.com/ChurchCRM/CRM/commit/2db0d74529dc367f225ed9c9572400112770f9c9) - upgrade bootstrap-datepicker from 1.10.0 to 1.10.1 *(commit by [@snyk-bot](https://github.com/snyk-bot))*
+- [`c8e2f11`](https://github.com/ChurchCRM/CRM/commit/c8e2f116df3fc1126096f373251c53c0ccee2ed5) - upgrade i18n from 0.15.1 to 0.15.2 *(commit by [@snyk-bot](https://github.com/snyk-bot))*
+- [`0050014`](https://github.com/ChurchCRM/CRM/commit/00500148d5602bb70bd83392e626d1ffc4595e1a) - Add missing RoutingMiddleware to Slim 4 applications causing post-login 404 errors *(PR [#7480](https://github.com/ChurchCRM/CRM/pull/7480) by [@DawoudIO](https://github.com/DawoudIO))*
+  - :arrow_lower_right: *fixes issue [#7478](https://github.com/ChurchCRM/CRM/issues/7478) opened by [@prbt2016](https://github.com/prbt2016)*
+- [`8a1fa0f`](https://github.com/ChurchCRM/CRM/commit/8a1fa0f679f6bd1ad58e6f5d611bd6a42926d22c) - Group-specific properties not creating records when adding members to groups *(PR [#7439](https://github.com/ChurchCRM/CRM/pull/7439) by [@DawoudIO](https://github.com/DawoudIO))*
+  - :arrow_lower_right: *fixes issue [#7388](https://github.com/ChurchCRM/CRM/issues/7388) opened by [@kojakrm](https://github.com/kojakrm)*
+- [`7daf445`](https://github.com/ChurchCRM/CRM/commit/7daf445d5630d0da9476be667b0f78add0581c77) - **finance**: Fix payment type mismatch and add fiscal year formatting *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`7b95c16`](https://github.com/ChurchCRM/CRM/commit/7b95c161f99c623c0d9b2e6c43bafcb42d6ab8e2) - **test**: Use common Cypress utility for all API calls in finance tests *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`dd88ce3`](https://github.com/ChurchCRM/CRM/commit/dd88ce3bac6a0208be4314f3fa2701e562336060) - **api**: Add null safety check for notification title in system API *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`03161dd`](https://github.com/ChurchCRM/CRM/commit/03161dde577793127cfbfc188de4dad9842e3cd5) - **api**: Add null safety and make notification endpoint configurable *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`f7cb701`](https://github.com/ChurchCRM/CRM/commit/f7cb70113d2093fdd995b5c4bfb2d01e50cb6bea) - **api**: Correct UiNotification constructor call - use separate placement/align parameters *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`54e5903`](https://github.com/ChurchCRM/CRM/commit/54e59030c889386a79000e20d63daea9fb7cd617) - **test**: Fix Cypress API command to return full response object *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`ad77d5a`](https://github.com/ChurchCRM/CRM/commit/ad77d5a932bccff43e04650c7bbd4041b6bfe7d0) - **test**: Update finance payments tests to use resp.body for API response body *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`1bb919c`](https://github.com/ChurchCRM/CRM/commit/1bb919c845a42fcc282d4d1a65ab1cd7193db340) - **ui**: Reorganize family view buttons into logical groups with improved layout *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`c2f49e7`](https://github.com/ChurchCRM/CRM/commit/c2f49e799fd768dff1af611658d28c7c9fa24fe4) - Consume tokens after validation to prevent reuse *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`485c362`](https://github.com/ChurchCRM/CRM/commit/485c362aecaadb741a1158c3cc7415fce364158d) - Consume tokens after validation to prevent reuse *(PR [#7503](https://github.com/ChurchCRM/CRM/pull/7503) by [@DawoudIO](https://github.com/DawoudIO))*
+
+### :recycle: Refactors
+- [`2ecb22d`](https://github.com/ChurchCRM/CRM/commit/2ecb22dff2a820b1845444d128ff9ac9ec1652a1) - Move SCSS compilation to both skin-main and skin-loggedout entries *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`46ad011`](https://github.com/ChurchCRM/CRM/commit/46ad011801d39b4c4f8bbfd1cf3882d373afc80a) - Remove old window.CRM.cart API, use CartManager directly *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`6e19673`](https://github.com/ChurchCRM/CRM/commit/6e19673ebd0e67f206621960445106808f15d2d2) - Remove group type dropdown filter from GroupList *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+- [`d849ab5`](https://github.com/ChurchCRM/CRM/commit/d849ab50f2c5a12a249ebce1ddeba9d7fd00d034) - Reorganize styles and add development guidelines *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+
+### :white_check_mark: Tests
+- [`0d8ee97`](https://github.com/ChurchCRM/CRM/commit/0d8ee97dcaa7a7deb692192d2697795d6bc7fdd8) - **finance**: Add real-world test cases for payment API type fix *(commit by [@DawoudIO](https://github.com/DawoudIO))*
+
+
 ## [5.21.0](https://github.com/ChurchCRM/CRM/releases/tag/5.21.0) - 2025-10-20
 
 <!-- Release notes generated using configuration in .github/release.yml at cf70b742f3c8a5177ba96f098ac9c96f04567c5b -->
@@ -1982,3 +2015,4 @@ Github Changes: https://github.com/ChurchCRM/CRM/milestone/112?closed=1
 
 SHA1: 0b127a5b051e500ca46239caaf0eeef0e671d136
 
+[5.22.0]: https://github.com/ChurchCRM/CRM/compare/5.21.0...5.22.0

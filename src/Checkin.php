@@ -146,7 +146,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                             <div class="card-footer text-center col-md-4  col-xs-8">
                                 <input type="submit" class="btn btn-primary" value="<?= gettext('CheckIn'); ?>"
                                        name="CheckIn" tabindex=3>
-                                <input type="reset" class="btn btn-default" value="<?= gettext('Cancel'); ?>"
+                                <input type="reset" class="btn btn-secondary" value="<?= gettext('Cancel'); ?>"
                                        name="Cancel" tabindex=4 onClick="SetPersonHtml($('#childDetails'),null);SetPersonHtml($('#adultDetails'),null);">
                             </div>
 
@@ -253,7 +253,7 @@ if (
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-primary"
                                                value="<?= gettext('CheckOut') ?>" name="CheckOut">
-                                        <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>"
+                                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Cancel') ?>"
                                                name="CheckoutCancel">
                                     </div>
                                 </div>
@@ -266,7 +266,7 @@ if (
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-danger"
                                            value="<?= gettext('Delete') ?>" name="Delete">
-                                    <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>"
+                                    <input type="submit" class="btn btn-secondary" value="<?= gettext('Cancel') ?>"
                                            name="DeleteCancel">
                                 </div>
                                 <?php
@@ -327,8 +327,9 @@ if (isset($_POST['EventID'])) {
                         $sCheckoutby = $checkedOutBy->getFullName();
                     } ?>
                     <tr>
-                        <td><img src="<?= SystemURLs::getRootPath() . '/api/person/' . $per->getPersonId() . '/thumbnail' ?>"
-                                 class="direct-chat-img initials-image">&nbsp
+                        <td><img data-image-entity-type="person" 
+                                 data-image-entity-id="<?= $per->getPersonId() ?>"
+                                 class="photo-tiny">&nbsp
                             <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a></td>
                         <td><?= date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
                         <td><?= $sCheckinby ?></td>
@@ -373,42 +374,56 @@ if (isset($_POST['EventID'])) {
     });
 
     $(document).ready(function() {
-        var $input = $("#child, #adult, #adultout");
-        $input.autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    url: window.CRM.root + '/api/persons/search/'+request.term,
-                    dataType: 'json',
-                    type: 'GET',
-                    success: function (data) {
-                        response($.map(data, function (item) {
+        $("#child, #adult, #adultout").select2({
+            minimumInputLength: 2,
+            language: window.CRM.shortLocale,
+            ajax: {
+                url: function (params) {
+                    return window.CRM.root + '/api/persons/search/' + params.term;
+                },
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term,
+                        page: params.page
+                    };
+                },
+                processResults: function (data, page) {
+                    return {
+                        results: data.map(function(item) {
                             return {
-                                label: item.text,
-                                value: item.objid,
-                                obj:item
+                                id: item.objid,
+                                text: item.text,
+                                raw: item
                             };
-                        }));
-                    }
-                })
-            },
-            minLength: 2,
-            select: function(event,ui) {
-                $('[id=' + event.target.id + ']' ).val(ui.item.obj.text);
-                $('[id=' + event.target.id + '-id]').val(ui.item.obj.objid);
-                SetPersonHtml($('#' + event.target.id + 'Details'),ui.item.obj);
-                return false;
+                        })
+                    };
+                },
+                cache: true
             }
+        });
+
+        $("#child, #adult, #adultout").on("select2:select", function(e) {
+            var elementId = e.target.id;
+            var selectedData = e.params.data;
+            
+            // Set the hidden ID field
+            $('#' + elementId + '-id').val(selectedData.id);
+            
+            // Update the person details display
+            SetPersonHtml($('#' + elementId + 'Details'), selectedData.raw);
         });
 
     });
 
     function SetPersonHtml(element, perArr) {
         if(perArr) {
+            var photoUrl = window.CRM.root + '/api/person/' + perArr.objid + '/photo';
             element.html(
                 '<div class="text-center">' +
                 '<a target="_top" href="PersonView.php?PersonID=' + perArr.objid + '"><h4>' + perArr.text + '</h4></a>' +
-                '<img src="' + window.CRM.root + '/api/person/' + perArr.objid + '/thumbnail"' +
-                'class="initials-image profile-user-img img-responsive img-circle"> </div>'
+                '<img src="' + photoUrl + '" class="photo-medium"> </div>'
             );
             element.removeClass('hidden');
         } else {
@@ -442,7 +457,7 @@ function loadPerson($iPersonID)
         '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle() . ' ' . $person->getFullName() . '</h4></a>' .
         '<div class="">' . $familyRole . '</div>' .
         '<div class="text-center">' . $person->getAddress() . '</div>' .
-        '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/thumbnail" class="initials-image profile-user-img img-responsive img-circle"> </div>';
+        '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/photo" class="photo-medium"> </div>';
     echo $html;
 }
 ?>

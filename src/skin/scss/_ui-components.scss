@@ -1,0 +1,115 @@
+/**
+ * UI Components
+ * 
+ * Custom styling for ChurchCRM UI components that extend AdminLTE and Bootstrap.
+ * Only includes styles that are not available in the base frameworks.
+ */
+
+// Enhanced btn-app buttons for dashboard actions
+.btn-app {
+    // AdminLTE provides base .btn-app styling, we only override what's needed
+    min-width: 100px;
+    min-height: 110px;
+    height: auto;
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 15px 10px;
+
+    // Large icon styling with proper spacing
+    > .fa-3x {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+// Fix dropdown icon spacing for split buttons
+.dropdown-toggle.dropdown-icon::after {
+    margin-left: 0;
+}
+
+// Floating Action Buttons (FAB) - Gmail-style add buttons
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+    &.hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+    }
+}
+
+.fab-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    .fab-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .fab-label {
+        position: absolute;
+        right: 70px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(10px);
+        transition: all 0.3s ease;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        .fab-icon {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .fab-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    &.fab-person .fab-icon {
+        background-color: #007bff; // Bootstrap primary
+    }
+
+    &.fab-person:hover .fab-icon {
+        background-color: #0056b3;
+    }
+
+    &.fab-family .fab-icon {
+        background-color: #28a745; // Bootstrap success
+    }
+
+    &.fab-family:hover .fab-icon {
+        background-color: #218838;
+    }
+}

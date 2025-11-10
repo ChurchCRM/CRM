@@ -63,15 +63,35 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <h3 class="card-title"><?= gettext('People Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app"><i class="fa-solid fa-user"></i><?= gettext('All People') ?></a>
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app"><i class="fa-solid fa-clipboard-check"></i><?= gettext('Verify People') ?></a>
-        <div class="btn btn-app"><span class="badge <?= $selfRegColor ?>"><?= $selfRegText ?></span><i class="fa-solid fa-user-plus"></i><?= gettext('Self Register') ?></div>
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="btn btn-app"><i class="fa-solid fa-people-roof"></i><?= gettext('All Families') ?></a>
-        <br />
-        <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa-solid fa-map"></i><?= gettext('Family Map') ?></a>
-        <a href="GeoPage.php" class="btn btn-app"><i class="fa-solid fa-globe"></i><?= gettext('Family Geographic') ?></a>
-        <a href="UpdateAllLatLon.php" class="btn btn-app"><i class="fa-solid fa-map-pin"></i><?= gettext('Update All Family Coordinates') ?></a>
-        <br />
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app bg-primary">
+            <i class="fa-solid fa-user fa-3x"></i><br>
+            <?= gettext('All People') ?>
+        </a>
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app bg-info">
+            <i class="fa-solid fa-clipboard-check fa-3x"></i><br>
+            <?= gettext('Verify People') ?>
+        </a>
+        <div class="btn btn-app bg-secondary">
+            <span class="badge <?= $selfRegColor ?>"><?= $selfRegText ?></span>
+            <i class="fa-solid fa-user-plus fa-3x"></i><br>
+            <?= gettext('Self Register') ?>
+        </div>
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="btn btn-app bg-success">
+            <i class="fa-solid fa-people-roof fa-3x"></i><br>
+            <?= gettext('All Families') ?>
+        </a>
+        <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app bg-warning">
+            <i class="fa-solid fa-map fa-3x"></i><br>
+            <?= gettext('Family Map') ?>
+        </a>
+        <a href="GeoPage.php" class="btn btn-app bg-info">
+            <i class="fa-solid fa-globe fa-3x"></i><br>
+            <?= gettext('Family Geographic') ?>
+        </a>
+        <a href="UpdateAllLatLon.php" class="btn btn-app bg-purple">
+            <i class="fa-solid fa-map-pin fa-3x"></i><br>
+            <?= gettext('Update All Family Coordinates') ?>
+        </a>
 
         <?php
         if ($sEmailLink) {
@@ -83,25 +103,25 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
                 // Display link
                 ?>
-                <div class="btn-group">
-                    <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa-solid fa-mail-bulk"></i></i><?= gettext('Email All') ?></a>
-                    <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-app bg-primary dropdown-toggle" type="button" id="emailAllDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
+                        <?= gettext('Email All') ?>
                     </button>
-                    <ul class="dropdown-menu" role="menu">
+                    <div class="dropdown-menu" aria-labelledby="emailAllDropdown">
+                        <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
-                    </ul>
+                    </div>
                 </div>
-                <div class="btn-group">
-                    <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa-solid fa-mail-bulk"></i><?= gettext('Email All (BCC)') ?></a>
-                    <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-app bg-info dropdown-toggle" type="button" id="emailAllBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-user-secret fa-3x"></i><br>
+                        <?= gettext('Email All (BCC)') ?>
                     </button>
-                    <ul class="dropdown-menu" role="menu">
+                    <div class="dropdown-menu" aria-labelledby="emailAllBccDropdown">
+                        <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
-                    </ul>
+                    </div>
                 </div>
                 <?php
             }
@@ -354,26 +374,18 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         };
 
         var pieOptions = {
-            //Display a title
-            title: {
-                display: false
-            },
-            //Boolean - Whether we should show a stroke on each segment
-            segmentShowStroke: true,
-            //String - The colour of each segment stroke
-            segmentStrokeColor: "#fff",
-            //Number - The width of each segment stroke
-            segmentStrokeWidth: 2,
-            //Number - The percentage of the chart that we cut out of the middle
-            percentageInnerCutout: 50, // This is 0 for Pie charts
-            //Boolean - Whether we animate the rotation of the Doughnut
-            animateRotate: false,
-            //Boolean - whether to make the chart responsive to window resizing
             responsive: true,
-            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
             maintainAspectRatio: false,
-            // Hide legend of zero value
-            plugins: { legend: { labels: { filter: (legendItem, data) => data.datasets[0].data[legendItem.index] > 0 } } },
+            animation: {
+                animateRotate: false
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        filter: (legendItem, data) => data.datasets[0].data[legendItem.index] > 0
+                    }
+                }
+            }
         };
 
         var ctx = document.getElementById("gender-donut").getContext('2d');
@@ -401,22 +413,24 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
-                legend: {
-                    display: true
-                },
-                title: {
-                    display: false
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    title: {
+                        display: false
+                    }
                 },
                 scales: {
-                    xAxes: [{
+                    x: {
                         display: true,
-                    }],
-                    yAxes: [{
+                    },
+                    y: {
+                        beginAtZero: true,
                         ticks: {
-                            beginAtZero: true,
                             stepSize: 1
                         }
-                    }]
+                    }
                 }
             }
         });

@@ -97,7 +97,7 @@ require_once 'Include/Header.php';
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-8">
             <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Save') ?></button>
-            <button type="button" class="btn btn-default" name="Cancel"
+            <button type="button" class="btn btn-secondary" name="Cancel"
                     onclick="document.location='PropertyTypeList.php';"><?= gettext('Cancel') ?></button>
         </div>
 

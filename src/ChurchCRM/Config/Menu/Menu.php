@@ -50,9 +50,12 @@ class Menu
     private static function getCalendarMenu(): MenuItem
     {
         $calendarMenu = new MenuItem(gettext('Calendar'), 'v2/calendar', SystemConfig::getBooleanValue('bEnabledCalendar'), 'fa-calendar');
-        $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-blue'));
-        $calendarMenu->addCounter(new MenuCounter('BirthdateNumber', 'bg-red'));
-        $calendarMenu->addCounter(new MenuCounter('EventsNumber', 'bg-yellow'));
+        // Anniversaries calendar (ID 1) - black background
+        $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark', 0, gettext("Today's Wedding Anniversaries")));
+        // Birthdays calendar (ID 0) - blue background  
+        $calendarMenu->addCounter(new MenuCounter('BirthdateNumber', 'bg-primary', 0, gettext("Today's Birthdays")));
+        // Events happening today - yellow/warning background
+        $calendarMenu->addCounter(new MenuCounter('EventsNumber', 'bg-warning', 0, gettext('Events Today')));
 
         return $calendarMenu;
     }

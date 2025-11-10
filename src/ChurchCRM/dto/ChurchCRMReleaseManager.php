@@ -155,7 +155,7 @@ class ChurchCRMReleaseManager
         return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
     }
 
-    public static function getNextReleaseStep(ChurchCRMRelease $currentRelease): ChurchCRMRelease
+    public static function getNextReleaseStep(ChurchCRMRelease $currentRelease): ?ChurchCRMRelease
     {
         LoggerUtils::getAppLogger()->debug('Determining the next-step release step for ' . $currentRelease);
         if (empty($_SESSION['ChurchCRMReleases'])) {
@@ -172,7 +172,13 @@ class ChurchCRMReleaseManager
             self::getReleaseNextMajor($rs, $currentRelease);
 
         if (null === $nextStepRelease) {
-            throw new \Exception('Could not identify a suitable upgrade target release.  Current software version: ' . $currentRelease . '.  Highest available release: ' . $rs[0]);
+            // Check if current version is at or ahead of all available releases (e.g., development version)
+            if (!empty($rs) && $currentRelease->compareTo($rs[0]) >= 0) {
+                LoggerUtils::getAppLogger()->debug('Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
+                return null;
+            }
+            LoggerUtils::getAppLogger()->warning('Could not identify a suitable upgrade target release.  Current software version: ' . $currentRelease . '.  Highest available release: ' . (!empty($rs) ? $rs[0] : 'None'));
+            return null;
         }
 
         LoggerUtils::getAppLogger()->info('Next upgrade step for ' . $currentRelease . ' is : ' . $nextStepRelease);
@@ -196,6 +202,9 @@ class ChurchCRMReleaseManager
         }
 
         $releaseToDownload = ChurchCRMReleaseManager::getNextReleaseStep($currentRelease);
+        if (null === $releaseToDownload) {
+            throw new \Exception('No suitable upgrade available. Current version: ' . $currentRelease);
+        }
 
         return ChurchCRMReleaseManager::downloadRelease($releaseToDownload);
     }

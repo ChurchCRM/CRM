@@ -183,6 +183,7 @@ SQL;
             echo '<td class="text-center"><b>' . gettext('Assign Role') . '</b></td>';
 
             $count = 1;
+            $sRowClass = 'RowColorA';
             while ($aRow = mysqli_fetch_array($rsCartItems)) {
                 $sRowClass = AlternateRowStyle($sRowClass);
 
@@ -190,7 +191,7 @@ SQL;
 
                 echo '<tr class="' . $sRowClass . '">';
                 echo '<td class="text-center">' . $count++ . '</td>';
-                echo "<td><img src='" . SystemURLs::getRootPath() . '/api/person/' . $per_ID . "/thumbnail' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=" . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
+                echo "<td><img data-image-entity-type='person' data-image-entity-id='" . $per_ID . "' class='photo-tiny'> &nbsp <a href=\"PersonView.php?PersonID=" . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
 
                 echo '<td class="text-center">';
                 if ($per_fam_ID == 0) {
@@ -341,7 +342,7 @@ SQL;
 
 <p class="text-center">
 <BR>
-<input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Add to Family') ?>">
+<input type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Add to Family') ?>">
 <BR><BR>
 </p>
 </form>

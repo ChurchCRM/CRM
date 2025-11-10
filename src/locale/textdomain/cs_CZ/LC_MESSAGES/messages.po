@@ -1251,10 +1251,6 @@ msgid "Family List"
 msgstr "Seznam rodin"
 
 #: 
-msgid "Add Family"
-msgstr "Přidat rodinu"
-
-#: 
 msgid "Created"
 msgstr "Vytvořeno"
 
@@ -1279,10 +1275,6 @@ msgid "Next Family"
 msgstr "Další rodina"
 
 #: 
-msgid "Delete this Family"
-msgstr "Smazat rodinu"
-
-#: 
 msgid "Upload Photo"
 msgstr "Nahrát foto"
 
@@ -1293,10 +1285,6 @@ msgstr "Smazat foto"
 #: 
 msgid "Add a Note"
 msgstr "Přidat poznámku"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Přidat všechny členy rodiny do košíku"
 
 #: 
 msgid "Timeline"
@@ -1771,10 +1759,6 @@ msgid "Remove from Cart"
 msgstr "Odstranit z košíku"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Text pro ID události: "
-
-#: 
 msgid "Group Editor"
 msgstr "Editor skupin"
 
@@ -1943,10 +1927,6 @@ msgid "Group View"
 msgstr "Zobrazení skupiny"
 
 #: 
-msgid "Group Functions"
-msgstr "Funkce skupiny"
-
-#: 
 msgid "Edit this Group"
 msgstr "Upravit tuto skupinu"
 
@@ -2007,8 +1987,9 @@ msgid "Assigned Properties"
 msgstr "Přiřazené vlastnosti"
 
 #: 
-msgid "Group Members:"
-msgstr "Členové skupiny:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Členové skupiny"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2933,10 +2914,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Smazat záznam rodiny A členů rodiny"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Filtr a košík"
-
-#: 
 msgid "Listing"
 msgstr "Seznam"
 
@@ -3325,14 +3302,6 @@ msgid "Select Fiscal Year"
 msgstr "Vyberte fiskální rok"
 
 #: 
-msgid "pm"
-msgstr "dop."
-
-#: 
-msgid "am"
-msgstr "odp."
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Neplatné ID editoru!"
 
@@ -3633,20 +3602,12 @@ msgid "Sunday School Class Functions"
 msgstr "Funkce třídy nedělní školy"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Přepnout rozbalovací nabídku"
-
-#: 
 msgid "Teachers"
 msgstr "Učitelé"
 
 #: 
 msgid "Send Message"
 msgstr "Poslat zprávu"
-
-#: 
-msgid "View Profile"
-msgstr "Zobrazit profil"
 
 #: 
 msgid "Quick Status"
@@ -4147,18 +4108,6 @@ msgstr "Ročně"
 #: 
 msgid "Registration Complete"
 msgstr "Registrace kompletní"
-
-#: 
-msgid "Register"
-msgstr "Registrovat"
-
-#: 
-msgid "Register your family"
-msgstr "Zaregistrujte svou rodinu"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Kolik členů má vaše rodina"
 
 #: 
 msgid "Add All Classes"
@@ -6945,10 +6894,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Ujistěte se, že to chcete udělat.</p>"
 
 #: 
-msgid " this Family"
-msgstr " rodinu"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Potvrďte deaktivaci"
 
@@ -6979,10 +6924,6 @@ msgstr "Název souboru databáze souřadnic:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Protnout s košíkem"
-
-#: 
-msgid "Family Member"
-msgstr "Člen rodiny"
 
 #: 
 msgid "select an option"
@@ -7095,10 +7036,6 @@ msgstr "Zobrazit foto"
 #: 
 msgid "Family Photo"
 msgstr "Rodinné foto"
-
-#: 
-msgid "Quick Settings"
-msgstr "Rychlé nastavení"
 
 #: 
 msgid "Status"
@@ -7521,10 +7458,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Ne všichni členové této skupiny jsou v košíku"
 
 #: 
-msgid "Add all"
-msgstr "Přidat vše"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Opravdu chcete odebrat vybrané členy skupiny?"
 
@@ -7772,10 +7705,6 @@ msgid "Maximum number of Addresses"
 msgstr "Maximální počet adres"
 
 #: 
-msgid "Show type of group:"
-msgstr "Zobrazit typ skupiny:"
-
-#: 
 msgid "Add Students"
 msgstr "Přidat žáky"
 
@@ -7822,26 +7751,6 @@ msgstr "Vytvořit fotoknihu"
 #: 
 msgid "SSE"
 msgstr "JJV"
-
-#: 
-msgid "Height to use for images"
-msgstr "Výška, která se použije pro obrázky"
-
-#: 
-msgid "Width to use for images"
-msgstr "Šířka, která se použije pro obrázky"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Šířka, která se použije pro náhledy"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Výchozí velikost miniatur v bodech"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Klientská cache pro obrázky v sekundách"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7894,10 +7803,6 @@ msgstr "Přesunout událost"
 #: 
 msgid "Resize Event"
 msgstr "Změnit velikost události"
-
-#: 
-msgid "Text from"
-msgstr "Text z"
 
 #: 
 msgid "Profile"
@@ -8599,10 +8504,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Koncový bod vzdáleného zálohování.  Pokud jde o WebDAV, musí být  zakódováno pomocí url. "
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Zahrnout soubory s původními obrázky, vzdálené soubory obrázků (gravatar) a miniatury do zálohy.  Tyto soubory lze obecně po obnově reprodukovat a přidávají do záložního archivu jen velmi malou hodnotu za cenu velkých nákladů na čas provedení a úložiště"
-
-#: 
 msgid "Password (if any)"
 msgstr "Heslo (pokud nějaké)"
 
@@ -8665,7 +8566,8 @@ msgstr "Zobrazit nedostupné informace o osobě zděděné z přiřazené rodiny
 "POKUD pro danou osobu NEbyly zadány odpovídající informace. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Stisknutím kláves CTRL + C zkopírujete telefonní čísla všech členů skupiny"
 
 #: 
@@ -8813,14 +8715,6 @@ msgstr "Vymazat databázi"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Tímto se obnoví systémová data a systém se restartuje jako nová instalace."
-
-#: 
-msgid "Clear Filter"
-msgstr "Smazat filtr"
-
-#: 
-msgid "Add Person"
-msgstr "Přidat osobu"
 
 #. Context: locales
 #: 
