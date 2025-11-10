@@ -259,7 +259,7 @@ if (
                                 </div>
 
                                 <div class="col-sm-4 text-center">
-                                    <div id="adultoutDetails" class="card card-solid box-default hidden"></div>
+                                    <div id="adultoutDetails" class="card card-solid hidden"></div>
                                 </div>
                             <?php
                             } else { // DeleteBtn
