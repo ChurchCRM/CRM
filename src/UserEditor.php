@@ -368,78 +368,78 @@ require_once 'Include/Header.php';
                     } ?>
                     <tr>
                         <td><?= gettext('Login Name') ?>:</td>
-                        <td><input type="text" name="UserName" value="<?= $sUserName ?>" class="form-control" width="32"></td>
+                        <td><input type="text" name="UserName" id="UserName" value="<?= $sUserName ?>" class="form-control" width="32"></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Admin') ?>:</td>
-                        <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) {
+                        <td><input type="checkbox" name="Admin" id="Admin" value="1"<?php if ($usr_Admin) {
                             echo ' checked';
                                                                          } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Add Records') ?>:</td>
-                        <td><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) {
+                        <td><input type="checkbox" name="AddRecords" id="AddRecords" value="1"<?php if ($usr_AddRecords) {
                             echo ' checked';
                                                                               } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Records') ?>:</td>
-                        <td><input type="checkbox" name="EditRecords" value="1"<?php if ($usr_EditRecords) {
+                        <td><input type="checkbox" name="EditRecords" id="EditRecords" value="1"<?php if ($usr_EditRecords) {
                             echo ' checked';
                                                                                } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Delete Records') ?>:</td>
-                        <td><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) {
+                        <td><input type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) {
                             echo ' checked';
                                                                                  } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Properties and Classifications') ?>:</td>
-                        <td><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) {
+                        <td><input type="checkbox" name="MenuOptions" id="MenuOptions" value="1"<?php if ($usr_MenuOptions) {
                             echo ' checked';
                                                                                } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Groups and Roles') ?>:</td>
-                        <td><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) {
+                        <td><input type="checkbox" name="ManageGroups" id="ManageGroups" value="1"<?php if ($usr_ManageGroups) {
                             echo ' checked';
                                                                                 } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Donations and Finance') ?>:</td>
-                        <td><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) {
+                        <td><input type="checkbox" name="Finance" id="Finance" value="1"<?php if ($usr_Finance) {
                             echo ' checked';
                                                                            } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('View, Add and Edit Notes') ?>:</td>
-                        <td><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) {
+                        <td><input type="checkbox" name="Notes" id="Notes" value="1"<?php if ($usr_Notes) {
                             echo ' checked';
                                                                          } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Self') ?>:</td>
-                        <td><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) {
+                        <td><input type="checkbox" name="EditSelf" id="EditSelf" value="1"<?php if ($usr_EditSelf) {
                             echo ' checked';
                                                                             } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Style') ?>:</td>
                         <td class="TextColumnWithBottomBorder"><select
-                                name="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
+                                name="Style" id="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
                     </tr>
                     <tr>
                         <td colspan="2" class="text-center">
-                            <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="save">&nbsp;<input
-                                type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>"
+                            <input type="submit" class="btn btn-primary" id="SaveButton" value="<?= gettext('Save') ?>" name="save">&nbsp;<input
+                                type="button" class="btn btn-secondary" id="CancelButton" name="Cancel" value="<?= gettext('Cancel') ?>"
                                 onclick="javascript:document.location='UserList.php';">
                         </td>
                     </tr>
