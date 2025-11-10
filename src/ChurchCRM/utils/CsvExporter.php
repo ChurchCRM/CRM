@@ -25,8 +25,6 @@ class CsvExporter
 {
     private Writer $writer;
     private string $charset;
-    private array $csvData = [];
-
     /**
      * Constructor
      *
