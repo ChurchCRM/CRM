@@ -37,6 +37,10 @@ $(".user-setting-checkbox").on("click", function () {
         } else {
             $(targetCSS).removeClass(cssClass);
         }
+        window.CRM.notify(i18next.t("Setting updated successfully"), {
+            type: "success",
+            delay: 3000,
+        });
     });
 });
 
@@ -65,6 +69,12 @@ $(".user-setting-select").on("focusout", function () {
             setTimeout(function () {
                 window.location.reload();
             }, 5000);
+        } else {
+            // Show notification for other settings (like page size)
+            window.CRM.notify(i18next.t("Setting updated successfully"), {
+                type: "success",
+                delay: 3000,
+            });
         }
     });
 });
