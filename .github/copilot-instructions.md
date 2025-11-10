@@ -494,9 +494,11 @@ PR organization:
 - Only create documentation when the user specifically asks for it
 
 ### Git Commits
+- **DO NOT commit** until tests pass (if tests exist for the changes)
+- **ALWAYS run tests first** when changes include test files
 - **DO NOT auto-commit** changes without explicit user request
 - **DO NOT run git commit** commands unless the user asks
-- **DO ask permission** before creating commits: "Ready to commit? [describe changes]"
+- **DO ask permission** before creating commits with test results: "Tests passed. Ready to commit? [describe changes]"
 - Leave commits for the user to handle via their own workflow
 
 ### Code Changes
@@ -507,4 +509,56 @@ PR organization:
 
 ---
 
-Last updated: November 6, 2025
+## Agent Preferences & Standards
+
+### Service Layer First
+- When implementing business logic, **create/update Service classes** in `src/ChurchCRM/Service/`
+- Service methods encapsulate domain logic, database operations, and validation
+- Call services from legacy pages (`src/*.php`), not raw SQL
+- Services use Propel ORM exclusively - no RunQuery() or direct SQL
+
+### Logging Standards
+- **Always use LoggerUtils** for business logic operations:
+  ```php
+  use ChurchCRM\Utils\LoggerUtils;
+  $logger = LoggerUtils::getAppLogger();
+  $logger->debug('Operation starting', ['context' => $value]);
+  $logger->info('Operation succeeded', ['result' => $value]);
+  $logger->error('Operation failed', ['error' => $e->getMessage()]);
+  ```
+- Log levels: `debug` (development info), `info` (business events), `warning` (issues), `error` (failures)
+- Include relevant context in log messages as second parameter array
+
+### Import Organization
+- Always add `use` statements at the top of files (alphabetically organized)
+- Import all external classes/namespaces explicitly
+- Do NOT use inline fully-qualified class names (e.g., `\ChurchCRM\model\ChurchCRM\GroupQuery`)
+- Exception: Global functions in namespaced code use backslash prefix (e.g., `\MakeFYString()`)
+
+### Testing Approach
+- Create Cypress UI tests in `cypress/e2e/ui/` for user workflows
+- Do NOT create API tests for simple service calls (test via UI)
+- UI tests verify complete workflows end-to-end
+- Test files: descriptive names, organized by feature area
+- **Run tests with**: `npx cypress run --e2e --spec "cypress/e2e/ui/path/to/test.spec.js"`
+- Run full suite with: `npm run test` (runs all tests - use sparingly)
+- **ALWAYS run relevant tests before committing**
+- Only proceed to commit after tests pass successfully
+
+### API Endpoints
+- Create API endpoints in `src/api/routes/` ONLY when needed by external clients
+- If a service method is only called from a legacy page, **do NOT create an API endpoint**
+- Call services directly from legacy pages instead
+- Avoid redundant endpoints that just wrap service calls with no additional value
+
+### Branching & Commits
+- Create feature branches: `fix/issue-NUMBER-description` or `feature/description`
+- Commit format: Imperative mood, descriptive (not just file names)
+- Example: "Fix issue #6672: Renumber group property fields after deletion"
+- Include what changed and why in commit message
+
+---
+
+Last updated: November 9, 2025
+
+```
