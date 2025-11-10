@@ -34,7 +34,9 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
               </button>
             </td>
             <td>
-              <img src="<?= $Person->getThumbnailURL(); ?>?>" class="direct-chat-img initials-image">&nbsp
+              <img data-image-entity-type="person" 
+                   data-image-entity-id="<?= $Person->getId() ?>" 
+                   class="photo-tiny">&nbsp
               <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $Person->getId() ?>"><?= $Person->getFullName() ?></a>
             </td>
             <td><?= $Person->getAddress() ?></td>

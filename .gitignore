@@ -12,8 +12,15 @@ security-checker.phar
 temp/
 
 # Uploaded Images
-src/Images/Family
-src/Images/Person
+src/Images/Family/*
+!src/Images/Family/thumbnails/
+src/Images/Family/thumbnails/*
+!src/Images/Family/thumbnails/.gitkeep
+
+src/Images/Person/*
+!src/Images/Person/thumbnails/
+src/Images/Person/thumbnails/*
+!src/Images/Person/thumbnails/.gitkeep
 
 # SASS
 .sass-cache
@@ -25,8 +32,7 @@ src/skin/churchcrm.min.css.map
 src/skin/churchcrm.min.css
 
 #locale files
-src/locale/datatables
-src/locale/js
+src/locale/vendor
 
 # AI notes (local only, not committed)
 ai-notes/
@@ -51,4 +57,6 @@ src/Upgrade/*
 cypress/screenshots
 cypress/videos
 cypress/downloads
+cypress/logs
+cypress/reports
 cypress.config.ts

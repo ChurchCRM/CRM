@@ -545,8 +545,9 @@ msgid "Select the event to which you would like to check people in for"
 msgstr "Виберіть подію, на яку ви хочете зареєструвати людей"
 
 #: 
+#, fuzzy
 msgid "Select Event"
-msgstr "Виберіть Подія"
+msgstr "Виберіть Подію"
 
 #: 
 msgid "Add Visitor"
@@ -1253,10 +1254,6 @@ msgid "Family List"
 msgstr "Сімейний список"
 
 #: 
-msgid "Add Family"
-msgstr "Додати сім’ю"
-
-#: 
 msgid "Created"
 msgstr "Створено"
 
@@ -1281,10 +1278,6 @@ msgid "Next Family"
 msgstr "Наступна сім'я"
 
 #: 
-msgid "Delete this Family"
-msgstr "Видалити цю сім’ю"
-
-#: 
 msgid "Upload Photo"
 msgstr "Завантажити фото"
 
@@ -1295,10 +1288,6 @@ msgstr "Видалити фото"
 #: 
 msgid "Add a Note"
 msgstr "Додайте примітку"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Додати всіх членів сім'ї в кошик"
 
 #: 
 msgid "Timeline"
@@ -1774,10 +1763,6 @@ msgid "Remove from Cart"
 msgstr "Видалити з кошика"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Текст для ідентифікатора події: "
-
-#: 
 msgid "Group Editor"
 msgstr "Редактор групи"
 
@@ -1946,10 +1931,6 @@ msgid "Group View"
 msgstr "Перегляд групи"
 
 #: 
-msgid "Group Functions"
-msgstr "Функції групи"
-
-#: 
 msgid "Edit this Group"
 msgstr "Редагувати цю групу"
 
@@ -2010,8 +1991,9 @@ msgid "Assigned Properties"
 msgstr "Присвоєні властивості"
 
 #: 
-msgid "Group Members:"
-msgstr "Учасники групи:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Учасники групи"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2937,10 +2919,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Видалити сімейний запис та членів сім’ї"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Фільтр і кошик"
-
-#: 
 msgid "Listing"
 msgstr "Перелік"
 
@@ -3330,14 +3308,6 @@ msgid "Select Fiscal Year"
 msgstr "Виберіть фінансовий рік"
 
 #: 
-msgid "pm"
-msgstr "вечора"
-
-#: 
-msgid "am"
-msgstr "ранку"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Недійсний ідентифікатор редактора!"
 
@@ -3638,20 +3608,12 @@ msgid "Sunday School Class Functions"
 msgstr "Функції класу недільної школи"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Перемкнути спадне меню"
-
-#: 
 msgid "Teachers"
 msgstr "Вчителі"
 
 #: 
 msgid "Send Message"
 msgstr "Відправити повідомлення"
-
-#: 
-msgid "View Profile"
-msgstr "Перегляд профілю"
 
 #: 
 msgid "Quick Status"
@@ -4153,18 +4115,6 @@ msgstr "Щорічно"
 #: 
 msgid "Registration Complete"
 msgstr "Реєстрація завершена"
-
-#: 
-msgid "Register"
-msgstr "Зареєструйтесь"
-
-#: 
-msgid "Register your family"
-msgstr "Зареєструйте свою сім'ю"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Скільки людей у вашій родині"
 
 #: 
 msgid "Add All Classes"
@@ -6954,10 +6904,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Будь ласка, переконайтеся, що ви хочете зробити. </p>"
 
 #: 
-msgid " this Family"
-msgstr " ця Родина"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Підтвердьте деактивацію"
 
@@ -6988,10 +6934,6 @@ msgstr "Назва файлу бази даних координат:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Перетин з кошиком"
-
-#: 
-msgid "Family Member"
-msgstr "Член сім'ї"
 
 #: 
 msgid "select an option"
@@ -7105,10 +7047,6 @@ msgstr "Переглянути фото"
 #: 
 msgid "Family Photo"
 msgstr "Сімейне фото"
-
-#: 
-msgid "Quick Settings"
-msgstr "Швидкі налаштування"
 
 #: 
 msgid "Status"
@@ -7532,10 +7470,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Не всі учасники цієї групи знаходяться в кошику"
 
 #: 
-msgid "Add all"
-msgstr "Додати все"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Ви впевнені, що хочете видалити вибраних членів групи?"
 
@@ -7784,10 +7718,6 @@ msgid "Maximum number of Addresses"
 msgstr "Максимальна кількість адрес"
 
 #: 
-msgid "Show type of group:"
-msgstr "Показати тип групи:"
-
-#: 
 msgid "Add Students"
 msgstr "Додати студентів"
 
@@ -7834,26 +7764,6 @@ msgstr "Створіть PhotoBook"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Висота для зображення"
-
-#: 
-msgid "Width to use for images"
-msgstr "Ширина для зображення"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Ширина для ескізів"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Розмір точки для ескізів ініціалів"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Клієнтські кеш-секунди для зображень"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7906,10 +7816,6 @@ msgstr "Перемістити подію"
 #: 
 msgid "Resize Event"
 msgstr "Змінити розмір події"
-
-#: 
-msgid "Text from"
-msgstr "Текст від"
 
 #: 
 msgid "Profile"
@@ -8614,10 +8520,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Кінцева точка віддаленого резервного копіювання. Якщо WebDAV, це має бути закодовано за адресою url. "
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Включіть у резервну копію файли зображень ініціалів, віддалені файли зображень (gravatar) та ескізи. Ці файли, як правило, можуть бути відтворені після відновлення та додають дуже мало значення архіву резервних копій за великих витрат часу виконання та зберігання"
-
-#: 
 msgid "Password (if any)"
 msgstr "Пароль (якщо є)"
 
@@ -8680,7 +8582,8 @@ msgstr "Недоступна інформація про особу, успад�
 "відображається, ЯКЩО відповідна інформація НЕ була введена для цієї особи. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Натисніть CTRL + C, щоб скопіювати всі телефонні номери членів групи"
 
 #: 
@@ -8815,14 +8718,6 @@ msgstr "Скинути базу даних"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Це скине дані системи та перезапустить систему як нову установку."
-
-#: 
-msgid "Clear Filter"
-msgstr "Очистити фільтр"
-
-#: 
-msgid "Add Person"
-msgstr "Додати особу"
 
 #. Context: locales
 #: 
@@ -9381,4 +9276,12 @@ msgstr "Недійсна дата народження: відсутні міс�
 #: 
 msgid "Adult Name (Optional)"
 msgstr "Ім'я дорослого (необов’язково)"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Введіть назву групи"
+
+#: 
+msgid "Role added successfully."
+msgstr "Роль успішно додано"
 

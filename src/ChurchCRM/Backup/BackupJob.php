@@ -18,17 +18,15 @@ class BackupJob extends JobBase
 {
     private string $BackupFileBaseName;
     private ?\SplFileInfo $BackupFile = null;
-    private bool $IncludeExtraneousFiles;
     public string $BackupDownloadFileName;
     public bool $shouldEncrypt;
     public string $BackupPassword;
 
-    public function __construct(string $BaseName, string $BackupType, bool $IncludeExtraneousFiles, bool $EncryptBackup, string $BackupPassword)
+    public function __construct(string $BaseName, string $BackupType, bool $EncryptBackup, string $BackupPassword)
     {
         $this->BackupType = $BackupType;
         $this->TempFolder = $this->createEmptyTempFolder();
         $this->BackupFileBaseName = $this->TempFolder . '/' . $BaseName;
-        $this->IncludeExtraneousFiles = $IncludeExtraneousFiles;
         $this->shouldEncrypt = $EncryptBackup;
         $this->BackupPassword = $BackupPassword;
         LoggerUtils::getAppLogger()->debug(
@@ -36,8 +34,7 @@ class BackupJob extends JobBase
                 $this->BackupType .
                 "' Temp Folder: '" .
                 $this->TempFolder .
-                "' BaseName: '" . $this->BackupFileBaseName .
-                "' Include extra files: '" . ($this->IncludeExtraneousFiles ? 'true' : 'false') . "'"
+                "' BaseName: '" . $this->BackupFileBaseName . "'"
         );
     }
 
@@ -97,11 +94,11 @@ class BackupJob extends JobBase
 
     private function shouldBackupImageFile(SplFileInfo $ImageFile): bool
     {
-        $isExtraneousFile = strpos($ImageFile->getFileName(), '-initials') != false ||
-        strpos($ImageFile->getFileName(), '-remote') != false ||
-        strpos($ImageFile->getPathName(), 'thumbnails') != false;
+        // Always exclude extraneous files (can be regenerated): initials or remote images
+        $isExtraneousFile = strpos($ImageFile->getFileName(), '-initials') !== false ||
+            strpos($ImageFile->getFileName(), '-remote') !== false;
 
-        return $ImageFile->isFile() && !(!$this->IncludeExtraneousFiles && $isExtraneousFile); //todo: figure out this logic
+        return $ImageFile->isFile() && !$isExtraneousFile;
     }
 
     private function createFullArchive(): void

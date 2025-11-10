@@ -13,12 +13,11 @@ require_once 'Header-Security.php';
     <meta http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- jQuery JS -->
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
-
-    <!-- Core ChurchCRM bundle -->
+    <!-- Core ChurchCRM bundle (includes jQuery) -->
     <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.js"></script>
     <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
+
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment.min.js"></script>
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
@@ -26,8 +25,14 @@ require_once 'Header-Security.php';
 <body class="hold-transition login-page">
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
-    window.CRM = {
+    // Initialize window.CRM if not already created by webpack bundles
+    if (!window.CRM) {
+        window.CRM = {};
+    }
+    
+    // Extend window.CRM with server-side configuration (preserving existing properties like notify)
+    Object.assign(window.CRM, {
       root: "<?= SystemURLs::getRootPath() ?>",
       churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>"
-    };
+    });
   </script>

@@ -1706,10 +1706,6 @@ msgid "Remove from Cart"
 msgstr "Usuń z Koszyka"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Tekst dla Wydarzenia (ID):"
-
-#: 
 msgid "Group Editor"
 msgstr "Edytor Grup"
 
@@ -1889,10 +1885,6 @@ msgid "Group View"
 msgstr "Widok Grupy"
 
 #: 
-msgid "Group Functions"
-msgstr "Funkcje Grup"
-
-#: 
 msgid "Edit this Group"
 msgstr "Edytuj tę Grupę"
 
@@ -1958,8 +1950,9 @@ msgid "Assigned Properties"
 msgstr "Przypisane właściwości"
 
 #: 
-msgid "Group Members:"
-msgstr "Członkowie Grupy:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Członkowie Grupy"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2895,10 +2888,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Usuń Wpis Rodziny ORAZ Członków Rodziny"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Dodaj Filtr i przenieś do Koszyka"
-
-#: 
 msgid "Listing"
 msgstr "Lista"
 
@@ -3307,14 +3296,6 @@ msgid "Select Fiscal Year"
 msgstr "Wybierz Rok Podatkowy"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Nieprawidłowe ID!"
 
@@ -3691,10 +3672,6 @@ msgstr "Samodzielna Rejestracja"
 #: 
 msgid "Registration Complete"
 msgstr "Rejestracja Zakończona"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Ile osób jest w twojej rodzinie?"
 
 #: 
 msgid "Add All Classes"
@@ -4311,10 +4288,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Zdalny Punkt Kopii Bezpieczeństwa. Jeżeli jest to WebDAV, URL musi zaeiwrać wszystkie informacje. "
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Załącz oryginalne oraz zewnętrzne obrazki i miniaturki do archiwum. Pliki te można łatwo odtworzyć, mają niewielką wartość dla kopii bezpieczeństwa lecz angażują sporo środków podczas tworzenia archiwum."
-
-#: 
 msgid "Password (if any)"
 msgstr "Hasło"
 
@@ -4377,7 +4350,8 @@ msgstr "Uzupełnij brakujące dane osób informacjami z powiązanej rodziny?\n"
 "Ta opcja używa niektórych informacji zapisanych dla rodziny gdy osoba nie ma wpisanych wszystkich danych. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "CTRL + C kopuje numery numery telefonów wszystkich członków grupy"
 
 #: 
@@ -4512,14 +4486,6 @@ msgstr "Zresetuj Bazę Danych"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Zresetujesz dane systemu i uruchomisz system jako nową instalację."
-
-#: 
-msgid "Clear Filter"
-msgstr "Wyczyść Filtr"
-
-#: 
-msgid "Add Person"
-msgstr "Dodaj Osobę"
 
 #. Context: locales
 #: 

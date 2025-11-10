@@ -1,139 +1,139 @@
-# AI Preferences & Setup Guide
+# AI Preferences & Setup
 
-This directory contains all AI agent configuration and documentation for ChurchCRM development.
+## Files
 
-## 📁 Files
-
-### `preferences.yml`
-**Core AI agent configuration** - Standards and rules for all coding agents.
-
-**Used by:**
-- GitHub Copilot (workspace settings)
-- Claude (context file)
-
-**What it covers:**
-- Communication style (direct, action-first)
-- Commit & PR standards (imperative, < 72 chars)
-- Code quality (Propel ORM, Service classes)
-- HTML5 & CSS standards (Bootstrap only)
-- Database rules (ORM mandatory, no raw SQL)
-- Asset paths (SystemURLs::getRootPath())
-- Testing & documentation policies
-- Branch naming conventions
-
-### `setup.md`
-**Detailed setup and adoption guide** - How to integrate these preferences with your tools and workflow.
-
-**Covers:**
-- GitHub Copilot configuration
-- Claude/Cursor setup
-- Pre-commit hook installation
-- PR template usage
-- Validation examples
+| File | Purpose |
+|------|---------|
+| `preferences.yml` | Core AI agent configuration in YAML format |
+| `setup.md` | Tool integration and validation guide |
+| `README.md` | This file - Overview |
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-### For Claude/Copilot Users
-1. Reference `preferences.yml` in your conversation
-2. Use as context: "Follow the ChurchCRM AI preferences in `.github/ai-preferences/preferences.yml`"
-3. Verify output against the pre-commit checklist
+### GitHub Copilot
+1. VS Code Settings: `Cmd/Ctrl + ,`
+2. Search: "GitHub › Copilot: Custom Instructions"
+3. Set: `.github/ai-preferences/preferences.yml`
+4. Reload: `Cmd/Ctrl + Shift + P` > "Reload Window"
 
-### For Developers
-1. Hooks run automatically on `git commit`
-2. See `setup.md` for manual validation commands
-3. Check PR template for required validations
-
----
-
-## 📋 Pre-commit Checklist
-
-**Before every commit, verify:**
-- ✅ PHP syntax validation passed
-- ✅ Propel ORM used for all database operations
-- ✅ Asset paths use `SystemURLs::getRootPath()`
-- ✅ Service classes used for business logic
-- ✅ Deprecated HTML attributes replaced with CSS
-- ✅ Bootstrap CSS classes applied correctly
-- ✅ Tests pass (if available)
-- ✅ Commit message follows imperative mood
-- ✅ Branch name follows kebab-case format
+### Claude/Cursor
+1. Add `.github/ai-preferences/preferences.yml` as context file
+2. Reference: "Follow the ChurchCRM AI preferences"
 
 ---
 
-## 🔧 Enforcement Mechanisms
+## Core Standards at a Glance
 
-1. **Pull Request Template** (`.github/pull_request_template.md`)
-   - Includes AI preferences validation section
-   - Reminds reviewers of standards
-
-2. **Code Quality Template** (`.github/ISSUE_TEMPLATE/code-quality-check.md`)
-   - Checklist for code reviews
-
-3. **Contributing Guide** (`CONTRIBUTING.md`)
-   - Links to these preferences
-   - Integration guidance
-
----
-
-## 📚 Related Files
-
-- `CONTRIBUTING.md` - Development workflow (links to this folder)
-- `.github/pull_request_template.md` - PR requirements
-- `.github/ISSUE_TEMPLATE/code-quality-check.md` - Review checklist
-
----
-
-## 🔑 Key Standards
-
-### Database (Mandatory)
+### Database (MANDATORY)
 ```php
-// ✅ CORRECT - Propel ORM
-$events = EventQuery::create()->findById($eventId);
+// CORRECT - Always Propel ORM
+$event = EventQuery::create()->findById((int)$eventId);
+if ($event === null) { /* not found */ }
 
-// ❌ WRONG - Raw SQL
-$events = query("SELECT * FROM events WHERE eventid = ?", $eventId);
+// WRONG - Never raw SQL
+$result = RunQuery("SELECT * FROM events WHERE eventid = ?", $eventId);
 ```
 
-### Object Validation
+### API Response Format
 ```php
-// ✅ CORRECT
-if ($event === null) {
-  RedirectUtils::redirect('ListEvents.php');
-}
+// CORRECT
+return $response->withJson(['data' => $result, 'message' => 'Success']);
 
-// ❌ WRONG
-if (empty($event)) {  // Unreliable with Propel objects
-  RedirectUtils::redirect('ListEvents.php');
-}
+// WRONG
+return $response->withJson($result);
 ```
 
-### HTML Attributes
+### HTTP Headers (RFC 7230)
 ```php
-// ✅ CORRECT - Bootstrap CSS
+// CORRECT
+$finfo = new \finfo(FILEINFO_MIME_TYPE);
+$contentType = $finfo->file($photoPath);
+$response = $response->withHeader('Content-Type', trim($contentType));
+
+// WRONG
+$finfo = new \finfo(FILEINFO_MIME);  // Includes charset metadata
+$response = $response->withHeader('Content-Type', $contentType);
+```
+
+### HTML/CSS
+```php
+// CORRECT - Bootstrap classes
 <div class="text-center align-top">Content</div>
+<button class="btn btn-primary mt-3">Click</button>
 
-// ❌ WRONG - Deprecated attributes
+// WRONG - Deprecated attributes
 <div align="center" valign="top">Content</div>
+<button style="margin-top: 12px;">Click</button>
+```
+
+### Internationalization
+```javascript
+// CORRECT
+window.CRM.notify(i18next.t('Operation completed'), { type: 'success' });
+
+// WRONG
+alert('Operation completed');
+window.CRM.notify('Operation completed', { type: 'success' });
+```
+
+### Slim Middleware Order
+```
+addBodyParsingMiddleware()
+addRoutingMiddleware()    // MUST be before add() calls
+add(VersionMiddleware)
+add(AuthMiddleware)       // After routing or 401 becomes 500
+add(CorsMiddleware)
+```
+
+### PHP 8.2+ Requirements
+```php
+// CORRECT - Explicit nullable
+function test(?int $param = null): void { }
+
+// CORRECT - Dynamic properties
+#[\AllowDynamicProperties]
+class MyClass { }
+
+// CORRECT - Global functions in namespaced code
+namespace ChurchCRM\Service;
+\MakeFYString($id);  // Backslash prefix
+
+// WRONG - Implicit nullable (deprecated)
+function test(int $param = null): void { }
 ```
 
 ---
 
-## ❓ Questions?
+## Pre-commit Checklist
 
-1. **Standards reference?** → See `preferences.yml`
-2. **Tool setup?** → See `setup.md`
-3. **Development workflow?** → See `CONTRIBUTING.md`
-4. **Specific code patterns?** → Check `preferences.yml` special instructions
+- ✅ PHP syntax validation (php -l)
+- ✅ Propel ORM only (no raw SQL)
+- ✅ SystemURLs::getRootPath() for assets
+- ✅ Service classes for business logic
+- ✅ Type casting for dynamic values
+- ✅ Bootstrap CSS (no deprecated attributes)
+- ✅ i18next.t() for all UI text
+- ✅ window.CRM.notify() (no alert())
+- ✅ Tests pass
+- ✅ Commit message: imperative, < 72 chars
+- ✅ Branch name: kebab-case
 
 ---
 
-## 📈 Continuous Improvement
+## Testing
 
-This framework evolves with the project:
-- Report issues or suggest improvements in PRs
-- Update `preferences.yml` as standards change
-- Keep `setup.md` synchronized with new tools/processes
+API tests: `cypress/e2e/api/private/[feature]/[endpoint].spec.js`
 
-Last Updated: 2025-10-25
+Use helpers (never cy.request directly):
+```javascript
+cy.makePrivateAdminAPICall("POST", "/api/payments", payload, 200)
+cy.makePrivateUserAPICall("GET", "/api/events", null, 200)
+```
+
+Test categories: successful operations, validation, type safety, error handling, edge cases
+
+---
+
+Last updated: November 2, 2025

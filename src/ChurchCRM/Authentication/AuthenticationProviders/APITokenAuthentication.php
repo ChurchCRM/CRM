@@ -14,6 +14,20 @@ class APITokenAuthentication implements IAuthenticationProvider
 {
     private ?User $currentUser = null;
 
+    public function __serialize(): array
+    {
+        // Explicitly serialize only the essential properties that need to persist across requests
+        return [
+            'currentUser' => $this->currentUser,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        // Restore the properties from serialized data
+        $this->currentUser = $data['currentUser'] ?? null;
+    }
+
     public function getCurrentUser(): ?User
     {
         return $this->currentUser;

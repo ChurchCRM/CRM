@@ -5,6 +5,10 @@
  * Component-specific - no Bootstrap duplicates.
  */
 
+[data-notify="container"] {
+    z-index: 9999 !important;
+}
+
 [data-notify="progressbar"] {
     margin-bottom: 0px;
     position: absolute;

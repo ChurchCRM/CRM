@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "Gesinslys"
 
 #: 
-msgid "Add Family"
-msgstr "Voeg familie by"
-
-#: 
 msgid "Created"
 msgstr "Geskep"
 
@@ -1280,10 +1276,6 @@ msgid "Next Family"
 msgstr "Volgende gesin"
 
 #: 
-msgid "Delete this Family"
-msgstr "Vee hierdie gesin uit"
-
-#: 
 msgid "Upload Photo"
 msgstr "Laai foto op"
 
@@ -1294,10 +1286,6 @@ msgstr "Vee foto uit"
 #: 
 msgid "Add a Note"
 msgstr "Voeg 'n nota by"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Voeg alle gesinslede by die mandjie"
 
 #: 
 msgid "Timeline"
@@ -1773,10 +1761,6 @@ msgid "Remove from Cart"
 msgstr "Haal dit uit die mandjie"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Teks vir geleentheid-ID: "
-
-#: 
 msgid "Group Editor"
 msgstr "Groepredakteur"
 
@@ -1945,10 +1929,6 @@ msgid "Group View"
 msgstr "Groepaansig"
 
 #: 
-msgid "Group Functions"
-msgstr "Groepfunksies"
-
-#: 
 msgid "Edit this Group"
 msgstr "Wysig hierdie groep"
 
@@ -2009,8 +1989,9 @@ msgid "Assigned Properties"
 msgstr "Toegewysde eiendomme"
 
 #: 
-msgid "Group Members:"
-msgstr "Groeplede:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Groeplede"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2936,10 +2917,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Verwyder gesinsrekord EN familielede"
 
 #: 
-msgid "Filter and Cart"
-msgstr "Filter en wa"
-
-#: 
 msgid "Listing"
 msgstr "Lys"
 
@@ -3329,14 +3306,6 @@ msgid "Select Fiscal Year"
 msgstr "Kies boekjaar"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "is"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ongeldige redakteur-ID!"
 
@@ -3637,20 +3606,12 @@ msgid "Sunday School Class Functions"
 msgstr "Sondagskoolklasfunksies"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Skakel aftreklys af"
-
-#: 
 msgid "Teachers"
 msgstr "Onderwysers"
 
 #: 
 msgid "Send Message"
 msgstr "Stuur boodskap"
-
-#: 
-msgid "View Profile"
-msgstr "Besigtig profiel"
 
 #: 
 msgid "Quick Status"
@@ -4155,18 +4116,6 @@ msgstr "Jaarliks"
 #: 
 msgid "Registration Complete"
 msgstr "Registrasie voltooi"
-
-#: 
-msgid "Register"
-msgstr "Registreer"
-
-#: 
-msgid "Register your family"
-msgstr "Registreer u gesin"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Hoeveel mense is in jou familie"
 
 #: 
 msgid "Add All Classes"
@@ -6956,10 +6905,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Verseker dit wat u wil doen. </p>"
 
 #: 
-msgid " this Family"
-msgstr " hierdie Gesin"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bevestig Deaktivering"
 
@@ -6990,10 +6935,6 @@ msgstr "Koördineer databasis lêernaam:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Sny Met Kar"
-
-#: 
-msgid "Family Member"
-msgstr "Familielid"
 
 #: 
 msgid "select an option"
@@ -7107,10 +7048,6 @@ msgstr "Bekyk foto"
 #: 
 msgid "Family Photo"
 msgstr "Gesinsfoto"
-
-#: 
-msgid "Quick Settings"
-msgstr "Vinnige instellings"
 
 #: 
 msgid "Status"
@@ -7534,10 +7471,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Nie alle lede van hierdie groep is in die wa nie"
 
 #: 
-msgid "Add all"
-msgstr "Voeg alles by"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Is u seker dat u die geselekteerde groeplede wil verwyder?"
 
@@ -7786,10 +7719,6 @@ msgid "Maximum number of Addresses"
 msgstr "Maksimum aantal adresse"
 
 #: 
-msgid "Show type of group:"
-msgstr "Wys tipe groep:"
-
-#: 
 msgid "Add Students"
 msgstr "Voeg studente by"
 
@@ -7836,26 +7765,6 @@ msgstr "Skep Fotoboek"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Hoogte om te gebruik vir beelde"
-
-#: 
-msgid "Width to use for images"
-msgstr "Wydte om te gebruik vir beelde"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Wydte om te gebruik vir kleinkiekies"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Puntgrootte om te gebruik vir voorletters"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Kliëntkas sekondes vir beelde"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7908,10 +7817,6 @@ msgstr "Skuif gebeurtenis"
 #: 
 msgid "Resize Event"
 msgstr "Verander die grootte van die gebeurtenis"
-
-#: 
-msgid "Text from"
-msgstr "Teks uit"
 
 #: 
 msgid "Profile"
@@ -8616,10 +8521,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote Backup eindpunt. As WebDAV, moet dit gekodeer word vir url. "
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Sluit voorletters-beeldlêers, afgeleë prentlêers (gravatar) en kleinkiekies in die rugsteun in. Hierdie lêers kan oor die algemeen na 'n herstel gereproduseer word en voeg baie min waarde toe aan die rugsteunargief ten koste van die uitvoeringstyd en -berging."
-
-#: 
 msgid "Password (if any)"
 msgstr "Wagwoord (indien enige)"
 
@@ -8682,7 +8583,8 @@ msgstr "Onbeskikbare persooninligting geërf van die toegewese gesin om te verto
 "vertoon AS die ooreenstemmende inligting NIE vir daardie persoon ingevoer is nie. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Druk CTRL + C om al die groeplede se telefoonnommers te kopieer"
 
 #: 
@@ -8829,14 +8731,6 @@ msgstr "Stel die databasis terug"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Dit sal die stelseldata herstel en die stelsel weer begin as 'n nuwe installasie."
-
-#: 
-msgid "Clear Filter"
-msgstr "Herstel filter"
-
-#: 
-msgid "Add Person"
-msgstr "Voeg persoon by"
 
 #. Context: locales
 #: 

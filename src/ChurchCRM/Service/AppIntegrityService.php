@@ -187,28 +187,37 @@ class AppIntegrityService
     public static function getApplicationPrerequisites(): array
     {
         return [
-            new Prerequisite('PHP 8.1+', fn (): bool => version_compare(PHP_VERSION, '8.1.0', '>=')),
+            new Prerequisite('PHP 8.2+', fn (): bool => PHP_VERSION_ID >= 80200),
             new Prerequisite('PCRE and UTF-8 Support', fn (): bool => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
-            new Prerequisite('Multibyte Encoding', fn (): bool => extension_loaded('mbstring')),
-            new Prerequisite('PHP Phar', fn (): bool => extension_loaded('phar')),
-            new Prerequisite('PHP Session', fn (): bool => extension_loaded('session')),
-            new Prerequisite('PHP XML', fn (): bool => extension_loaded('xml')),
-            new Prerequisite('PHP EXIF', fn (): bool => extension_loaded('exif')),
-            new Prerequisite('PHP iconv', fn (): bool => extension_loaded('iconv')),
+            new Prerequisite('Multibyte Encoding', fn (): bool => function_exists('mb_strlen')),
+            new Prerequisite('PHP Phar', fn (): bool => class_exists('PharData')),
+            new Prerequisite('PHP Session', fn (): bool => function_exists('session_start')),
+            new Prerequisite('PHP XML', fn (): bool => class_exists('SimpleXMLElement')),
+            new Prerequisite('PHP EXIF', fn (): bool => function_exists('exif_imagetype')),
+            new Prerequisite('PHP iconv', fn (): bool => function_exists('iconv')),
             new Prerequisite('Mod Rewrite or Equivalent', fn (): bool => AppIntegrityService::hasModRewrite()),
-            new Prerequisite('GD Library for image manipulation', fn (): bool => extension_loaded('gd') && function_exists('gd_info')),
-            new Prerequisite('FreeType Library', fn (): bool => function_exists('imagettftext')),
-            new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => extension_loaded('fileinfo')),
-            new Prerequisite('cURL', fn (): bool => function_exists('curl_version')),
+            new Prerequisite(
+                'GD Library for image manipulation',
+                fn (): bool =>
+                    function_exists('imagecreatetruecolor') &&
+                    function_exists('gd_info') &&
+                    function_exists('imagecolorallocate') &&
+                    function_exists('imagefilledrectangle') &&
+                    function_exists('imageftbbox') &&
+                    function_exists('imagefttext') &&
+                    function_exists('imagepng')
+            ),
+            new Prerequisite('FreeType Library', fn (): bool => function_exists('imagefttext')),
+            new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => function_exists('finfo_open') || function_exists('mime_content_type')),
+            new Prerequisite('cURL', fn (): bool => function_exists('curl_init')),
             new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
-            new Prerequisite('PHP Intl', fn (): bool => extension_loaded('intl')),
-            new Prerequisite('PHP BCMath', fn (): bool => extension_loaded('bcmath')),
-            new Prerequisite('PHP Sodium', fn (): bool => extension_loaded('sodium')),
+            new Prerequisite('PHP BCMath', fn (): bool => function_exists('bcadd')),
+            new Prerequisite('PHP Sodium', fn (): bool => function_exists('sodium_crypto_secretbox')),
             new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/')),
             new Prerequisite('Images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/')),
             new Prerequisite('Family images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Family')),
             new Prerequisite('Person images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Person')),
-            new Prerequisite('PHP ZipArchive', fn (): bool => extension_loaded('zip')),
+            new Prerequisite('PHP ZipArchive', fn (): bool => class_exists('ZipArchive')),
             new Prerequisite('Mysqli Functions', fn (): bool => function_exists('mysqli_connect')),
         ];
     }

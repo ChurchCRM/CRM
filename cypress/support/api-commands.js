@@ -64,7 +64,7 @@ Cypress.Commands.add(
     (options) => {
         const defaultOptions = {
             failOnStatusCode: false,
-            timeout: 30000,
+            timeout: 10000,
         };
         
         return cy.request({...defaultOptions, ...options}).then((response) => {

@@ -103,27 +103,23 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
                 // Display link
                 ?>
-                <div class="btn-group">
-                    <a class="btn btn-app bg-primary" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>">
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-app bg-primary dropdown-toggle" type="button" id="emailAllDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
                         <?= gettext('Email All') ?>
-                    </a>
-                    <button type="button" class="btn btn-app bg-primary dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" aria-labelledby="emailAllDropdown">
+                        <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
                     </div>
                 </div>
-                <div class="btn-group">
-                    <a class="btn btn-app bg-info" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>">
-                        <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-app bg-info dropdown-toggle" type="button" id="emailAllBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-user-secret fa-3x"></i><br>
                         <?= gettext('Email All (BCC)') ?>
-                    </a>
-                    <button type="button" class="btn btn-app bg-info dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" aria-labelledby="emailAllBccDropdown">
+                        <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
                     </div>
                 </div>
@@ -378,26 +374,18 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         };
 
         var pieOptions = {
-            //Display a title
-            title: {
-                display: false
-            },
-            //Boolean - Whether we should show a stroke on each segment
-            segmentShowStroke: true,
-            //String - The colour of each segment stroke
-            segmentStrokeColor: "#fff",
-            //Number - The width of each segment stroke
-            segmentStrokeWidth: 2,
-            //Number - The percentage of the chart that we cut out of the middle
-            percentageInnerCutout: 50, // This is 0 for Pie charts
-            //Boolean - Whether we animate the rotation of the Doughnut
-            animateRotate: false,
-            //Boolean - whether to make the chart responsive to window resizing
             responsive: true,
-            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
             maintainAspectRatio: false,
-            // Hide legend of zero value
-            plugins: { legend: { labels: { filter: (legendItem, data) => data.datasets[0].data[legendItem.index] > 0 } } },
+            animation: {
+                animateRotate: false
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        filter: (legendItem, data) => data.datasets[0].data[legendItem.index] > 0
+                    }
+                }
+            }
         };
 
         var ctx = document.getElementById("gender-donut").getContext('2d');
@@ -425,22 +413,24 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
-                legend: {
-                    display: true
-                },
-                title: {
-                    display: false
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    title: {
+                        display: false
+                    }
                 },
                 scales: {
-                    xAxes: [{
+                    x: {
                         display: true,
-                    }],
-                    yAxes: [{
+                    },
+                    y: {
+                        beginAtZero: true,
                         ticks: {
-                            beginAtZero: true,
                             stepSize: 1
                         }
-                    }]
+                    }
                 }
             }
         });

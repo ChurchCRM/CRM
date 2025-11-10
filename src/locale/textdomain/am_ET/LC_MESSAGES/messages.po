@@ -1254,10 +1254,6 @@ msgid "Family List"
 msgstr "የቤተሰብ ዝርዝር"
 
 #: 
-msgid "Add Family"
-msgstr "ቤተሰብ ጨምር"
-
-#: 
 msgid "Created"
 msgstr "ተፈጥሯል"
 
@@ -1282,10 +1278,6 @@ msgid "Next Family"
 msgstr "ቀጣይ ቤተሰብ"
 
 #: 
-msgid "Delete this Family"
-msgstr "ይህን ቤተሰብ ሰርዝ"
-
-#: 
 msgid "Upload Photo"
 msgstr "ፎቶ ጫን"
 
@@ -1296,10 +1288,6 @@ msgstr "ፎቶ ሰርዝ"
 #: 
 msgid "Add a Note"
 msgstr "ማስታወሻ ጨምር"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "ሁሉንም የቤተሰብ አባላት ወደ ጋሪው ይጨምሩ"
 
 #: 
 msgid "Timeline"
@@ -1775,10 +1763,6 @@ msgid "Remove from Cart"
 msgstr "ከጋሪ አስወግድ"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "የክስተት መታወቂያ ጽሑፍ፡- "
-
-#: 
 msgid "Group Editor"
 msgstr "የቡድን አርታዒ"
 
@@ -1947,10 +1931,6 @@ msgid "Group View"
 msgstr "የቡድን እይታ"
 
 #: 
-msgid "Group Functions"
-msgstr "የቡድን ተግባራት"
-
-#: 
 msgid "Edit this Group"
 msgstr "ይህን ቡድን አርትዕ ያድርጉ"
 
@@ -2011,8 +1991,9 @@ msgid "Assigned Properties"
 msgstr "የተመደቡ ንብረቶች"
 
 #: 
-msgid "Group Members:"
-msgstr "የቡድን አባላት፡-"
+#, fuzzy
+msgid "Group Members"
+msgstr "የቡድን አባላት"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2938,10 +2919,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "የቤተሰብ መዝገብ እና የቤተሰብ አባላት ሰርዝ "
 
 #: 
-msgid "Filter and Cart"
-msgstr "ወንፊት እና ጋሪ"
-
-#: 
 msgid "Listing"
 msgstr "መዘርዘር"
 
@@ -3331,14 +3308,6 @@ msgid "Select Fiscal Year"
 msgstr "የበጀት ዓመት ይምረጡ"
 
 #: 
-msgid "pm"
-msgstr "ከሰዓት"
-
-#: 
-msgid "am"
-msgstr "ጠዋት"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ልክ ያልሆነ የአስተካካይ መታወቂያ"
 
@@ -3639,20 +3608,12 @@ msgid "Sunday School Class Functions"
 msgstr "የሰንበት ትምህርት ክፍል ተግባራት"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "መውረድን ቀያይር"
-
-#: 
 msgid "Teachers"
 msgstr "አስተማሪዎች"
 
 #: 
 msgid "Send Message"
 msgstr "መልዕክት ላክ"
-
-#: 
-msgid "View Profile"
-msgstr "መገለጫ ይመልከቱ"
 
 #: 
 msgid "Quick Status"
@@ -4154,18 +4115,6 @@ msgstr "በየአመቱ"
 #: 
 msgid "Registration Complete"
 msgstr "ምዝገባ ተጠናቋል"
-
-#: 
-msgid "Register"
-msgstr "ይመዝገቡ"
-
-#: 
-msgid "Register your family"
-msgstr "ቤተሰብዎን ያስመዝግቡ"
-
-#: 
-msgid "How many people are in your family"
-msgstr "በቤተሰብዎ ውስጥ ስንት ሰዎች አሉ"
 
 #: 
 msgid "Add All Classes"
@@ -6957,10 +6906,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "እባክዎ ይህን ማድረግ እንደሚፈልጉ ያረጋግጡ።"
 
 #: 
-msgid " this Family"
-msgstr "ይህ ቤተሰብ"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "ማቋረጥ መፈለጎትን ያረጋግጡ"
 
@@ -6991,10 +6936,6 @@ msgstr "የዳታ መሠረት ፋይል ስም አስተባባሪ"
 #: 
 msgid "Intersect With Cart"
 msgstr "ወደጋሪ ያስገቡ"
-
-#: 
-msgid "Family Member"
-msgstr "የቤተሰብ አባል"
 
 #: 
 msgid "select an option"
@@ -7108,10 +7049,6 @@ msgstr "ፎቶ ይመልከቱ"
 #: 
 msgid "Family Photo"
 msgstr "የቤተሰብ ፎቶ"
-
-#: 
-msgid "Quick Settings"
-msgstr "ፈጣን ቅንብሮች"
 
 #: 
 msgid "Status"
@@ -7535,10 +7472,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "ሁሉም የዚህ ቡድን አባላት በመዝገቡ ውስጥ አይደሉም"
 
 #: 
-msgid "Add all"
-msgstr "ሁሉንም ጨምር"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "እርግጠኛ ነዎት የተመረጡትን የቡድን አባላት ማስወገድ ይፈልጋሉ?"
 
@@ -7787,10 +7720,6 @@ msgid "Maximum number of Addresses"
 msgstr "ከፍተኛው የአድራሻዎች ብዛት "
 
 #: 
-msgid "Show type of group:"
-msgstr "የቡድን አይነት አሳይ"
-
-#: 
 msgid "Add Students"
 msgstr "ተማሪዎችን ያክሉ "
 
@@ -7837,26 +7766,6 @@ msgstr "የፎቶ መጽሐፍ ፍጠር"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "ለምስሎች ጥቅም ላይ የሚውል ቁመት "
-
-#: 
-msgid "Width to use for images"
-msgstr "ለምስሎች ለመጠቀም ስፋት "
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "ለጥፍር አከሎች የሚጠቀሙበት ስፋት "
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "ለመጀመሪያዎቹ ድንክዬዎች የሚጠቀሙበት የነጥብ መጠን "
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "ለምስሎች የደንበኛ መሸጎጫ ሰከንዶች "
 
 #: 
 msgid "Server cache time for remote images"
@@ -7909,10 +7818,6 @@ msgstr "ክስተት አንቀሳቅስ"
 #: 
 msgid "Resize Event"
 msgstr "የክስተቱን መጠን ቀይር"
-
-#: 
-msgid "Text from"
-msgstr "ጽሑፍ ከ"
 
 #: 
 msgid "Profile"
@@ -8619,10 +8524,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "የርቀት የምትኩ  መጨረሻ ነጥብ። WebDAV ከሆነ፣ ይህ ዩአርኤል መደበቅ አለበት።"
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "የመጀመሪያ ፊደሎችን የምስል ፋይሎችን፣ የርቀት ምስል ፋይሎችን (ግራቫታር) እና በመጠባበቂያ ውስጥ ያሉ ጥፍር አከሎችን ያካትቱ። እነዚህ ፋይሎች በአጠቃላይ ከተመለሱ በኋላ እንደገና ሊባዙ ይችላሉ እና በመጠባበቂያ መዝገብ ውስጥ በጣም ትንሽ እሴት የሚጨምሩት ለትግበራ ጊዜ እና ማከማቻ ትልቅ ወጪ ነው"
-
-#: 
 msgid "Password (if any)"
 msgstr "የይለፍ ቃል (ካሎት)"
 
@@ -8688,7 +8589,8 @@ msgstr "\n"
 "ተጓዳኝ መረጃው ለዚያ ሰው ካልገባ።"
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "ሁሉንም የቡድን አባላት ስልክ ቁጥር ለመቅዳት Ctrl +C ን ይጫኑ "
 
 #: 
@@ -8838,14 +8740,6 @@ msgstr "የውሂብ ጎታ ዳግም አስጀምር"
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "\n"
 "ይህ ስርዓት ውሂብን እንደገና ያስጀምረዋል እና ስርዓቱን እንደ አዲስ ጭነት እንደገና ያስጀምረዋል።"
-
-#: 
-msgid "Clear Filter"
-msgstr "ግልጽ ማጣሪያ"
-
-#: 
-msgid "Add Person"
-msgstr "ሰው ጨምር"
 
 #. Context: locales
 #: 

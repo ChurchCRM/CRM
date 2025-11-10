@@ -35,7 +35,6 @@ $MenuFirst = 1;
     Header_modals();
     Header_body_scripts();
 
-    $loggedInUserPhoto = SystemURLs::getRootPath() . '/api/person/' . AuthenticationManager::getCurrentUser()->getId() . '/thumbnail';
     $MenuFirst = 1;
     ?>
 
@@ -211,14 +210,8 @@ $MenuFirst = 1;
       <section class="content-header">
           <div class="container-fluid">
               <div class="row mb-2">
-                  <div class="col-sm-6">
+                  <div class="col-sm-12">
                       <h1><?= $sPageTitle; ?></h1>
-                  </div>
-                  <div class="col-sm-6">
-                      <ol class="breadcrumb float-sm-right">
-                          <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath()?>"><?= _("Home")?></a></li>
-                          <li class="breadcrumb-item active"><?= $sPageTitle; ?></li>
-                      </ol>
                   </div>
               </div>
           </div><!-- /.container-fluid -->

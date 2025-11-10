@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
@@ -48,6 +49,12 @@ for ($i = 0; $i < $nGrps; $i++) {
     }
 
     $group = GroupQuery::create()->findOneById($iGroupID);
+    
+    // Skip if group not found
+    if ($group === null) {
+        LoggerUtils::getAppLogger()->warning("ClassList: Group with ID $iGroupID not found");
+        continue;
+    }
 
     $nameX = 20;
     $birthdayX = 70;
@@ -103,6 +110,13 @@ for ($i = 0; $i < $nGrps; $i++) {
         }
 
         $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
+        
+        // Skip if role not found
+        if ($groupRole === null) {
+            LoggerUtils::getAppLogger()->warning("ClassList: Role not found for group " . $group->getName() . " and role ID " . $groupRoleMembership->getRoleId());
+            continue;
+        }
+        
         $lst_OptionName = $groupRole->getOptionName();
 
         if ($lst_OptionName === 'Teacher') {
@@ -164,7 +178,8 @@ for ($i = 0; $i < $nGrps; $i++) {
         if ($studentName != $prevStudentName) {
             $pdf->writeAt($nameX, $y, $studentName);
 
-            $imgName = $person->getPhoto()->getThumbnailURI();
+            // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
+            $imgName = $person->getPhoto()->getPhotoURI();
 
             $birthdayStr = change_date_for_place_holder($person->getBirthYear() . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
             $pdf->writeAt($birthdayX, $y, $birthdayStr);
@@ -192,7 +207,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                     $nw = $imageHeight;
                     $nh = $imageHeight;
 
-                    $pdf->Image($imgName, $nameX - $nw, $y, $nw, $nh, 'JPG');
+                    $pdf->Image($imgName, $nameX - $nw, $y, $nw, $nh, 'PNG');
                 }
 
                 $nameX += 2;

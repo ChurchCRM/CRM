@@ -9,6 +9,10 @@
  * Used by both logged-in and logged-out pages to provide core styling and functionality.
  */
 
+// Import jQuery and expose it globally for legacy code compatibility
+import $ from 'jquery';
+window.jQuery = window.$ = $;
+
 // Import FontAwesome CSS - webfonts are automatically bundled by webpack
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -26,8 +30,14 @@ import 'quill/dist/quill.snow.css';
 
 import { initializeQuillEditor } from './quill-editor.js';
 
+// Import notifier module (Notyf wrapper for notifications)
+import '../src/skin/js/notifier.js';
+
 // Import cart management module
 import '../src/skin/js/cart.js';
+
+// Import people image lazy loader (for person and family photos)
+import './people-image-loader';
 
 import '../src/skin/churchcrm.scss';
 

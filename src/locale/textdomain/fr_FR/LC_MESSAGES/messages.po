@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "Liste des familles"
 
 #: 
-msgid "Add Family"
-msgstr "Ajouter une famille"
-
-#: 
 msgid "Created"
 msgstr "Créé"
 
@@ -1280,10 +1276,6 @@ msgid "Next Family"
 msgstr "Famille suivante"
 
 #: 
-msgid "Delete this Family"
-msgstr "Supprimer cette famille"
-
-#: 
 msgid "Upload Photo"
 msgstr "Télécharger une photo"
 
@@ -1294,10 +1286,6 @@ msgstr "Supprimer une photo"
 #: 
 msgid "Add a Note"
 msgstr "Ajouter une note"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Ajouter tous les membres de la famille au panier"
 
 #: 
 msgid "Timeline"
@@ -1773,10 +1761,6 @@ msgid "Remove from Cart"
 msgstr "Retirer du panier"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Texte pour l'ID de l&#39;événement: "
-
-#: 
 msgid "Group Editor"
 msgstr "Gestionnaire de groupe"
 
@@ -1945,10 +1929,6 @@ msgid "Group View"
 msgstr "Visualiser un Groupe"
 
 #: 
-msgid "Group Functions"
-msgstr "Fonctions du groupe"
-
-#: 
 msgid "Edit this Group"
 msgstr "Modifier ce Groupe"
 
@@ -2009,8 +1989,9 @@ msgid "Assigned Properties"
 msgstr "Propriétés assignées"
 
 #: 
-msgid "Group Members:"
-msgstr "Membres du Groupe:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Membres du Groupe"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2936,10 +2917,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Supprimer les données de la famille ET ses membres."
 
 #: 
-msgid "Filter and Cart"
-msgstr "Filtre et Panier"
-
-#: 
 msgid "Listing"
 msgstr "Liste"
 
@@ -3329,14 +3306,6 @@ msgid "Select Fiscal Year"
 msgstr "Sélectionner l'année fiscale"
 
 #: 
-msgid "pm"
-msgstr "PM "
-
-#: 
-msgid "am"
-msgstr "du matin"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Identifiant de Gestionnaire invalide!"
 
@@ -3637,20 +3606,12 @@ msgid "Sunday School Class Functions"
 msgstr "Fonctions de l&#39;école du dimanche"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Menu déroulant"
-
-#: 
 msgid "Teachers"
 msgstr "Moniteurs"
 
 #: 
 msgid "Send Message"
 msgstr "Envoyer un message"
-
-#: 
-msgid "View Profile"
-msgstr "Voir le profil"
 
 #: 
 msgid "Quick Status"
@@ -4153,18 +4114,6 @@ msgstr "Annuel"
 #: 
 msgid "Registration Complete"
 msgstr "Inscription terminée."
-
-#: 
-msgid "Register"
-msgstr "S'inscrire"
-
-#: 
-msgid "Register your family"
-msgstr "Inscrire votre famille"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Combien de personnes êtes vous dans votre famille"
 
 #: 
 msgid "Add All Classes"
@@ -6954,10 +6903,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Vérifier que c'est ce que vous voulez faire.</p>"
 
 #: 
-msgid " this Family"
-msgstr " cette famille"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Confirmer la désactivation"
 
@@ -6988,10 +6933,6 @@ msgstr "Nom du fichier de la base de données de coordonnées :"
 #: 
 msgid "Intersect With Cart"
 msgstr "Croisement avec le Panier"
-
-#: 
-msgid "Family Member"
-msgstr "Membre de la Famille"
 
 #: 
 msgid "select an option"
@@ -7105,10 +7046,6 @@ msgstr "Voir la Photo"
 #: 
 msgid "Family Photo"
 msgstr "Photo de Famille"
-
-#: 
-msgid "Quick Settings"
-msgstr "Réglages rapides"
 
 #: 
 msgid "Status"
@@ -7532,10 +7469,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "Le panier ne contient pas tous les membres du groupe"
 
 #: 
-msgid "Add all"
-msgstr "Tout ajouter"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "Êtes vous sûr de vouloir effacer tous les membres du groupe sélectionné ?"
 
@@ -7784,10 +7717,6 @@ msgid "Maximum number of Addresses"
 msgstr "Nombre maximum d'adresses"
 
 #: 
-msgid "Show type of group:"
-msgstr "Visualiser le type de groupes :"
-
-#: 
 msgid "Add Students"
 msgstr "Ajouter des étudiants"
 
@@ -7834,26 +7763,6 @@ msgstr "Créer un trombinoscope"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "La hauteur à utilisé pour les images"
-
-#: 
-msgid "Width to use for images"
-msgstr "La largeur à utilisé pour les images"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "La largeur à utilisé pour les miniatures"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "La taille en points à utilisé pour les miniatures des initiales"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Nombre de seconds de cache client pour les images"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7906,10 +7815,6 @@ msgstr "Déplacement événement"
 #: 
 msgid "Resize Event"
 msgstr "Redimensionner événement"
-
-#: 
-msgid "Text from"
-msgstr "Texte de"
 
 #: 
 msgid "Profile"
@@ -8614,10 +8519,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Point de restauration à distance. S'il s'agit de WebDAV, l'URL doit être encodée."
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Inclus les fichiers image des initiales, les fichiers image distants (gravatar) et les vignettes dans la sauvegarde. Ces fichiers sont généralement capables d'être reproduits après une restauration et ajoutent très peu de valeur à l'archive de sauvegarde au détriment du temps d'exécution et du stockage."
-
-#: 
 msgid "Password (if any)"
 msgstr "Mot de passe (éventuel)"
 
@@ -8679,7 +8580,8 @@ msgstr "Informations sur la personne non disponibles héritées de la famille at
 "affiché SI les informations correspondantes n'ont PAS été saisies pour cette personne."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Pressez CTRL+C pour copier le téléphone de tous les membres du groupe"
 
 #: 
@@ -8826,14 +8728,6 @@ msgstr "Réinitialiser la base"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Ceci réinitialisera le système et redémarrera comme une nouvelle installation"
-
-#: 
-msgid "Clear Filter"
-msgstr "Supprimer filtres"
-
-#: 
-msgid "Add Person"
-msgstr "Ajouter un individu"
 
 #. Context: locales
 #: 

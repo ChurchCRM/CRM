@@ -108,7 +108,7 @@ class TermExtractor {
      */
     mergePOFiles(file1, file2, output) {
         try {
-            this.exec(`msgcat --use-first --no-wrap "${file1}" "${file2}" -o "${output}.tmp"`);
+            this.exec(`msgcat --use-first --no-wrap --sort-output "${file1}" "${file2}" -o "${output}.tmp"`);
             this.exec(`mv "${output}.tmp" "${output}"`);
             return true;
         } catch (error) {
@@ -252,8 +252,10 @@ class TermExtractor {
             // 6. Extract and merge JavaScript terms
             this.extractJavaScriptTerms();
 
-            // 7. Final merge message
-            this.log('🔗', 'Merging all translation files...');
+            // 7. Final sort to ensure consistent ordering
+            this.log('�', 'Sorting messages.po for consistent ordering...');
+            this.exec(`msgcat --no-wrap --sort-output "${this.messagesFile}" -o "${this.messagesFile}.tmp"`);
+            this.exec(`mv "${this.messagesFile}.tmp" "${this.messagesFile}"`);
 
             // 8. Cleanup temporary directories
             this.cleanup(dbTempDir);

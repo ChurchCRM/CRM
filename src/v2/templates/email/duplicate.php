@@ -24,7 +24,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
+    function initializeDuplicateEmails() {
         var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/persons/duplicate/emails",
@@ -70,6 +70,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#dupEmails").DataTable(dataTableConfig);
+    }
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializeDuplicateEmails);
     });
 
     function peopleToString(people) {

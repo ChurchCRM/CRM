@@ -1253,10 +1253,6 @@ msgid "Family List"
 msgstr "قائمة العائلة"
 
 #: 
-msgid "Add Family"
-msgstr "اضافة عائلة"
-
-#: 
 msgid "Created"
 msgstr "انشاء"
 
@@ -1281,10 +1277,6 @@ msgid "Next Family"
 msgstr "الأسرة التالية"
 
 #: 
-msgid "Delete this Family"
-msgstr "مسح العائلة"
-
-#: 
 msgid "Upload Photo"
 msgstr "تحميل الصورة"
 
@@ -1295,10 +1287,6 @@ msgstr "مسح الصورة"
 #: 
 msgid "Add a Note"
 msgstr "اضافة ملحوظة"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "اضف أفراد الأسرة الي السلة"
 
 #: 
 msgid "Timeline"
@@ -1774,10 +1762,6 @@ msgid "Remove from Cart"
 msgstr "مسح من العربة"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "النص لمعرف الحدث:"
-
-#: 
 msgid "Group Editor"
 msgstr "محرر المجموعة"
 
@@ -1946,10 +1930,6 @@ msgid "Group View"
 msgstr "عرض لمجموعة"
 
 #: 
-msgid "Group Functions"
-msgstr "مهام المجموعة"
-
-#: 
 msgid "Edit this Group"
 msgstr "تعديل المجموعة"
 
@@ -2010,7 +1990,8 @@ msgid "Assigned Properties"
 msgstr "الخصائص المعينة"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "اعضاء المجموعه"
 
 #: 
@@ -2937,10 +2918,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "حذف سجل الأسرة وعدد أفراد الأسرة"
 
 #: 
-msgid "Filter and Cart"
-msgstr "تصفية والعربة"
-
-#: 
 msgid "Listing"
 msgstr "قائمة"
 
@@ -3330,14 +3307,6 @@ msgid "Select Fiscal Year"
 msgstr "اختر السنة المالية"
 
 #: 
-msgid "pm"
-msgstr "مساءا"
-
-#: 
-msgid "am"
-msgstr "صباحا"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID محرر غير صالح!"
 
@@ -3638,20 +3607,12 @@ msgid "Sunday School Class Functions"
 msgstr "وظائف مدرسة الأحد فئة"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "تبديل منسدلة"
-
-#: 
 msgid "Teachers"
 msgstr "الخدام"
 
 #: 
 msgid "Send Message"
 msgstr "ارسال رساله"
-
-#: 
-msgid "View Profile"
-msgstr "عرض الصفحة الشخصية"
 
 #: 
 msgid "Quick Status"
@@ -4155,18 +4116,6 @@ msgstr "سنوي"
 #: 
 msgid "Registration Complete"
 msgstr "اكتمل التسجيل"
-
-#: 
-msgid "Register"
-msgstr "تسجيل"
-
-#: 
-msgid "Register your family"
-msgstr "تسجيل عائلتك"
-
-#: 
-msgid "How many people are in your family"
-msgstr "كم عدد افراد اسرتك"
 
 #: 
 msgid "Add All Classes"
@@ -6956,10 +6905,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "الرجاء التأكد من هذا ما تريد القيام به. </p>"
 
 #: 
-msgid " this Family"
-msgstr "هذه العائلة"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "تأكيد التعطيل"
 
@@ -6990,10 +6935,6 @@ msgstr "تنسيق البيانات اسم ملف قاعدة:"
 #: 
 msgid "Intersect With Cart"
 msgstr "تتقاطع مع العربة"
-
-#: 
-msgid "Family Member"
-msgstr "عضو الأسرة"
 
 #: 
 msgid "select an option"
@@ -7107,10 +7048,6 @@ msgstr "عرض صور"
 #: 
 msgid "Family Photo"
 msgstr "صورة عائلية"
-
-#: 
-msgid "Quick Settings"
-msgstr "إعدادات سريعة"
 
 #: 
 msgid "Status"
@@ -7534,10 +7471,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "ليس كل أعضاء هذه المجموعة في العربة"
 
 #: 
-msgid "Add all"
-msgstr "اضافة الكل"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "هل أنت متأكد أنك تريد إزالة أعضاء المجموعة المختارة؟"
 
@@ -7786,10 +7719,6 @@ msgid "Maximum number of Addresses"
 msgstr "الحد الأقصى لعدد عناوين"
 
 #: 
-msgid "Show type of group:"
-msgstr "اظهار نوع من مجموعة:"
-
-#: 
 msgid "Add Students"
 msgstr "إضافة الطلاب"
 
@@ -7836,26 +7765,6 @@ msgstr "إنشاء الصور PhotoBook"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "ارتفاع الاستخدام للصور"
-
-#: 
-msgid "Width to use for images"
-msgstr "عرض الاستخدام للصور"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "عرض الصور المصغرة الاستخدام ل"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "حجم نقطة الاستخدام لبالاحرف الاولى المصغرة"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "ثواني ذاكرة التخزين المؤقت العميل للصور"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7908,10 +7817,6 @@ msgstr "حدث تحرك"
 #: 
 msgid "Resize Event"
 msgstr "تغيير حجم الحدث"
-
-#: 
-msgid "Text from"
-msgstr "النص من"
 
 #: 
 msgid "Profile"
@@ -8616,10 +8521,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "نقطة النهاية النسخ الاحتياطي عن بعد. إذا WEBDAV، وهذا يجب أن يكون رابط المشفرة."
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "تشمل بالاحرف الاولى ملفات الصور، وملفات الصور البعيدة (غرفتر)، والصور المصغرة في النسخ الاحتياطي. هذه الملفات عادة ما تكون قادرة على أن تكون مستنسخة بعد استعادة وإضافة قيمة قليلة جدا إلى أرشيف النسخ الاحتياطي في حساب كبير من وقت التنفيذ والتخزين"
-
-#: 
 msgid "Password (if any)"
 msgstr "كلمة السر (إن وجدت)"
 
@@ -8673,7 +8574,8 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "غير متوفرة شخص معلومات الموروثة من الأسرة المخصصة للعرض؟ يؤدي هذا الخيار معلومات معينة من سجل الأسرة تعيين الشخص للظهور إذا لم يتم إدخال المعلومات المقابلة لهذا الشخص."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "اضغط CTRL + C لنسخ جميع أعضاء المجموعة \\ \"أرقام الهواتف"
 
 #: 
@@ -8828,14 +8730,6 @@ msgstr "قاعدة بيانات إعادة تعيين"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "هذا وسوف إعادة تعيين بيانات النظام وسيتم إعادة تشغيل النظام وتثبيت جديد."
-
-#: 
-msgid "Clear Filter"
-msgstr "مرشح واضح"
-
-#: 
-msgid "Add Person"
-msgstr "اضافة فرد"
 
 #. Context: locales
 #: 

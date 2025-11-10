@@ -1,3 +1,8 @@
+/**
+ * Kiosk JSOM (JavaScript Object Model)
+ * Requires: moment.js (loaded globally), jQuery
+ */
+
 window.CRM.kiosk = {
     APIRequest: function (options) {
         if (!options.method) {

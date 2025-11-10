@@ -1251,10 +1251,6 @@ msgid "Family List"
 msgstr "కుటుంబ జాబితా"
 
 #: 
-msgid "Add Family"
-msgstr "కుటుంబాన్ని జోడించండి"
-
-#: 
 msgid "Created"
 msgstr "సృష్టించబడింది"
 
@@ -1279,10 +1275,6 @@ msgid "Next Family"
 msgstr "తదుపరి కుటుంబం"
 
 #: 
-msgid "Delete this Family"
-msgstr "ఈ కుటుంబాన్ని తొలగించండి"
-
-#: 
 msgid "Upload Photo"
 msgstr "ఫోటోను అప్‌లోడ్ చేయండి"
 
@@ -1293,10 +1285,6 @@ msgstr "ఫోటోను తొలగించండి"
 #: 
 msgid "Add a Note"
 msgstr "గమనికను జోడించండి"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "కార్ట్‌కి కుటుంబ సభ్యులందరినీ జోడించండి"
 
 #: 
 msgid "Timeline"

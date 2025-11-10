@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "רשימת משפחות"
 
 #: 
-msgid "Add Family"
-msgstr "הוסף משפחה"
-
-#: 
 msgid "Created"
 msgstr "נוצר"
 
@@ -1280,10 +1276,6 @@ msgid "Next Family"
 msgstr "משפחה הבאה"
 
 #: 
-msgid "Delete this Family"
-msgstr "מחק משפחה זו"
-
-#: 
 msgid "Upload Photo"
 msgstr "העלה תמונה"
 
@@ -1294,10 +1286,6 @@ msgstr "מחק תמונה"
 #: 
 msgid "Add a Note"
 msgstr "הוסף הערה"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "הוסף את כל בני המשפחה לעגלה"
 
 #: 
 msgid "Timeline"
@@ -1772,10 +1760,6 @@ msgid "Remove from Cart"
 msgstr "הסר מהעגלה"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "טקסט עבור מזהה אירוע: "
-
-#: 
 msgid "Group Editor"
 msgstr "עורך קבוצות"
 
@@ -1944,10 +1928,6 @@ msgid "Group View"
 msgstr "תצוגת קבוצה"
 
 #: 
-msgid "Group Functions"
-msgstr "פונקציות קבוצה"
-
-#: 
 msgid "Edit this Group"
 msgstr "ערוך קבוצה זו"
 
@@ -2008,7 +1988,8 @@ msgid "Assigned Properties"
 msgstr "מאפיינים שהוקצו"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "חברי קבוצה:"
 
 #: 
@@ -2934,10 +2915,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "מחק רשומת משפחה ובני משפחה"
 
 #: 
-msgid "Filter and Cart"
-msgstr "סינון וסל"
-
-#: 
 msgid "Listing"
 msgstr "רשימה"
 
@@ -3326,14 +3303,6 @@ msgid "Select Fiscal Year"
 msgstr "בחר שנת כספים"
 
 #: 
-msgid "pm"
-msgstr "אחה״צ"
-
-#: 
-msgid "am"
-msgstr "לפנה״צ"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "מזהה עורך לא חוקי!"
 
@@ -3634,20 +3603,12 @@ msgid "Sunday School Class Functions"
 msgstr "פונקציות כיתת בית ספר לימודי דת"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "הפעל/כבה תפריט נפתח"
-
-#: 
 msgid "Teachers"
 msgstr "מורים"
 
 #: 
 msgid "Send Message"
 msgstr "שלח הודעה"
-
-#: 
-msgid "View Profile"
-msgstr "צפה בפרופיל"
 
 #: 
 msgid "Quick Status"
@@ -4148,18 +4109,6 @@ msgstr "שנתי"
 #: 
 msgid "Registration Complete"
 msgstr "ההרשמה הושלמה"
-
-#: 
-msgid "Register"
-msgstr "הרשמה"
-
-#: 
-msgid "Register your family"
-msgstr "רשום את משפחתך"
-
-#: 
-msgid "How many people are in your family"
-msgstr "כמה אנשים במשפחתך"
 
 #: 
 msgid "Add All Classes"
@@ -6949,10 +6898,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "אנא ודא שזה מה שאתה רוצה לעשות.</p>"
 
 #: 
-msgid " this Family"
-msgstr "משפחה זו"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "אישור ביטול הפעלה"
 
@@ -6983,10 +6928,6 @@ msgstr "שם קובץ מסד נתוני קואורדינטות:"
 #: 
 msgid "Intersect With Cart"
 msgstr "הצטלבות עם עגלה"
-
-#: 
-msgid "Family Member"
-msgstr "בן משפחה"
 
 #: 
 msgid "select an option"
@@ -7099,10 +7040,6 @@ msgstr "הצג תמונה"
 #: 
 msgid "Family Photo"
 msgstr "תמונת משפחה"
-
-#: 
-msgid "Quick Settings"
-msgstr "הגדרות מהירות"
 
 #: 
 msgid "Status"
@@ -7525,10 +7462,6 @@ msgid "Not all members of this group are in the cart"
 msgstr "לא כל חברי הקבוצה הזו נמצאים בעגלה"
 
 #: 
-msgid "Add all"
-msgstr "הוסף הכל"
-
-#: 
 msgid "Are you sure you want to remove the selected group members?"
 msgstr "האם אתה בטוח שברצונך להסיר את חברי הקבוצה שנבחרו?"
 
@@ -7776,10 +7709,6 @@ msgid "Maximum number of Addresses"
 msgstr "מספר מקסימלי של כתובות"
 
 #: 
-msgid "Show type of group:"
-msgstr "הצג סוג קבוצה:"
-
-#: 
 msgid "Add Students"
 msgstr "הוסף תלמידים"
 
@@ -7826,26 +7755,6 @@ msgstr "צור אלבום תמונות"
 #: 
 msgid "SSE"
 msgstr "דרום-דרום-מזרח"
-
-#: 
-msgid "Height to use for images"
-msgstr "גובה לשימוש עבור תמונות"
-
-#: 
-msgid "Width to use for images"
-msgstr "רוחב לשימוש עבור תמונות"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "רוחב לשימוש עבור תמונות ממוזערות"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "גודל נקודה לשימוש עבור תמונות ממוזערות של ראשי תיבות"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "שניות מטמון לקוח עבור תמונות"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7898,10 +7807,6 @@ msgstr "הזז אירוע"
 #: 
 msgid "Resize Event"
 msgstr "שנה גודל אירוע"
-
-#: 
-msgid "Text from"
-msgstr "טקסט מאת"
 
 #: 
 msgid "Profile"
@@ -8603,10 +8508,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "נקודת קצה לגיבוי מרוחק. אם זה WebDAV, חייב להיות מקודד URL."
 
 #: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "כלול קבצי תמונות ראשי תיבות, קבצי תמונות מרוחקים (gravatar) ותמונות ממוזערות בגיבוי. קבצים אלה בדרך כלל ניתנים לשחזור לאחר שחזור ומוסיפים ערך מועט מאוד לארכיון הגיבוי תוך עלות גבוהה של זמן ביצוע ואחסון"
-
-#: 
 msgid "Password (if any)"
 msgstr "סיסמא (אם יש)"
 
@@ -8669,7 +8570,8 @@ msgstr "האם להציג מידע לא זמין על אדם שהורש מהמש
 "להיות מוצג אם המידע המתאים לא הוזן עבור אותו אדם."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "לחץ CTRL + C כדי להעתיק את כל שמות\\מספרי הטלפון שבקבוצה"
 
 #: 
@@ -8815,14 +8717,6 @@ msgstr "אתחל בסיס נתונים"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "פעולה זו תאפס את נתוני המערכת ותפעיל מחדש את המערכת כהתקנה חדשה."
-
-#: 
-msgid "Clear Filter"
-msgstr "הסר מסנן"
-
-#: 
-msgid "Add Person"
-msgstr "הוסף אדם"
 
 #. Context: locales
 #: 
