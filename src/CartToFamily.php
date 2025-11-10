@@ -350,7 +350,7 @@ SQL;
     </form>
 <?php
         } else {
-            echo "<p align=\"center\" class='callout callout-warning'>" . gettext('Your cart is empty!') . '</p>';
+            echo '<p class="alert alert-warning text-center">' . gettext('Your cart is empty!') . '</p>';
         }
 ?>
 </div>
