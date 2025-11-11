@@ -334,6 +334,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<!-- Full Page Spinner Overlay for Upgrade Process -->
+<div id="upgradeSpinner" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; justify-content: center; align-items: center;">
+    <div class="text-center" style="color: white;">
+        <i class="fa fa-cog fa-spin" style="font-size: 5rem; margin-bottom: 20px;"></i>
+        <h3><?= gettext('Applying System Update...') ?></h3>
+        <p><?= gettext('Please do not close this window or refresh the page.') ?></p>
+        <p class="text-muted"><?= gettext('This may take several minutes.') ?></p>
+    </div>
+</div>
+
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/upgrade-wizard.min.css">
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/upgrade-wizard.min.js"></script>
 

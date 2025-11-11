@@ -234,6 +234,10 @@ function setupApplyStep() {
         const $button = $(this);
         const $statusIcon = $("#status-apply");
         const $applyStatus = $("#applyStatus");
+        const $spinner = $("#upgradeSpinner");
+
+        // Show full-page spinner
+        $spinner.css('display', 'flex');
 
         // Show loading state
         $statusIcon.html('<i class="fa-solid fa-circle-notch fa-spin text-primary"></i>');
@@ -248,6 +252,9 @@ function setupApplyStep() {
             })
         })
             .done(function (data) {
+                // Hide spinner
+                $spinner.hide();
+                
                 $statusIcon.html('<i class="fa-solid fa-check text-success"></i>');
                 $applyStatus.html(`<div class="alert alert-success" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
                 <i class="fa-solid fa-check-circle mr-2"></i><strong>${i18next.t('System upgrade completed successfully!')}</strong>
@@ -259,6 +266,9 @@ function setupApplyStep() {
                 }, 1000);
             })
             .fail(function (xhr, status, error) {
+                // Hide spinner
+                $spinner.hide();
+                
                 let errorMessage = i18next.t('Upgrade failed. Please check the logs.');
                 
                 if (xhr.responseJSON && xhr.responseJSON.message) {
