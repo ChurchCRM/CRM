@@ -51,7 +51,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
 
         <!-- Upgrade Wizard Stepper -->
-        <div class="card">
+        <div class="card" id="upgrade-wizard-card">
             <div class="card-header">
                 <h3 class="card-title mb-0"><?= gettext('System Upgrade Wizard') ?></h3>
             </div>
@@ -335,9 +335,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <!-- Full Page Spinner Overlay for Upgrade Process -->
-<div id="upgradeSpinner" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; justify-content: center; align-items: center;">
-    <div class="text-center" style="color: white;">
-        <i class="fa fa-cog fa-spin" style="font-size: 5rem; margin-bottom: 20px;"></i>
+<div id="upgradeSpinner">
+    <div class="spinner-content">
+        <i class="fa fa-cog fa-spin spinner-icon"></i>
         <h3><?= gettext('Applying System Update...') ?></h3>
         <p><?= gettext('Please do not close this window or refresh the page.') ?></p>
         <p class="text-muted"><?= gettext('This may take several minutes.') ?></p>
@@ -346,6 +346,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/upgrade-wizard.min.css">
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/upgrade-wizard.min.js"></script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    // Show upgrade wizard only if update is available
+    var isUpdateAvailable = <?= $isUpdateAvailable ? 'true' : 'false' ?>;
+    if (isUpdateAvailable) {
+        document.getElementById('upgrade-wizard-card').classList.add('show');
+    }
+</script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
