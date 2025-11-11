@@ -21,6 +21,8 @@ $(document).ready(function () {
     // Set up event handlers
     setupNavigationHandlers();
     setupStepHandlers();
+    setupPrereleaseToggle();
+    setupRefreshButton();
     
     // Listen for step changes to auto-download when reaching apply step
     document.querySelector('#upgrade-stepper').addEventListener('show.bs-stepper', function (event) {
@@ -171,7 +173,7 @@ function performDownload() {
 
     window.CRM.APIRequest({
         type: 'GET',
-        path: 'systemupgrade/downloadlatestrelease',
+        path: 'systemupgrade/download-latest-release',
     })
         .done(function (data) {
             $statusIcon.html('<i class="fa-solid fa-check text-success"></i>');
@@ -245,7 +247,7 @@ function setupApplyStep() {
 
         window.CRM.APIRequest({
             method: 'POST',
-            path: 'systemupgrade/doupgrade',
+            path: 'systemupgrade/do-upgrade',
             data: JSON.stringify({
                 fullPath: window.CRM.updateFile.fullPath,
                 sha1: window.CRM.updateFile.sha1
@@ -310,3 +312,120 @@ function downloadBackup(filename) {
 window.UpgradeWizard = {
     downloadBackup
 };
+
+/**
+ * Setup pre-release upgrade toggle
+ */
+function setupPrereleaseToggle() {
+    const $toggle = $('#bAllowPrereleaseUpgrade');
+    let isTogglingProgrammatically = false;
+
+    // Initialize bootstrap-toggle (checkbox is already set to correct value from PHP)
+    $toggle.bootstrapToggle();
+
+    // Handle toggle change
+    $toggle.change(function () {
+        if (isTogglingProgrammatically) {
+            return;
+        }
+
+        const newValue = $(this).prop('checked');
+        const $spinner = $("#upgradeSpinner");
+
+        // Show spinner
+        $spinner.addClass('active');
+
+        // Save the new value (convert boolean to string '1' or '0')
+        window.CRM.APIRequest({
+            method: 'POST',
+            path: 'system/config/bAllowPrereleaseUpgrade',
+            data: JSON.stringify({ value: newValue ? '1' : '0' })
+        }).done(function () {
+            // Refresh upgrade info from GitHub
+            window.CRM.APIRequest({
+                method: 'POST',
+                path: 'systemupgrade/refresh-upgrade-info'
+            }).done(function (data) {
+                $spinner.removeClass('active');
+                window.CRM.notify(i18next.t('Setting saved. Reloading page...'), {
+                    type: 'success',
+                    delay: 1500
+                });
+                
+                // Reload the page after a short delay
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1500);
+            }).fail(function () {
+                $spinner.removeClass('active');
+                window.CRM.notify(i18next.t('Failed to refresh upgrade information. Please try again.'), {
+                    type: 'error',
+                    delay: 5000
+                });
+                
+                // Revert the toggle on failure
+                isTogglingProgrammatically = true;
+                $toggle.prop('checked', !newValue).change();
+                isTogglingProgrammatically = false;
+            });
+        }).fail(function () {
+            $spinner.removeClass('active');
+            window.CRM.notify(i18next.t('Failed to save setting. Please try again.'), {
+                type: 'error',
+                delay: 5000
+            });
+            
+            // Revert the toggle
+            isTogglingProgrammatically = true;
+            $toggle.prop('checked', !newValue).change();
+            isTogglingProgrammatically = false;
+        });
+    });
+}
+
+/**
+ * Setup refresh from GitHub button
+ */
+function setupRefreshButton() {
+    $('#refreshFromGitHub').click(function () {
+        const $button = $(this);
+        const $spinner = $("#upgradeSpinner");
+        const $icon = $button.find('i');
+        
+        // Disable button and show spinner
+        $button.prop('disabled', true);
+        $icon.removeClass('fa-sync').addClass('fa-circle-notch fa-spin');
+        $spinner.addClass('active');
+
+        // Call refresh API
+        window.CRM.APIRequest({
+            method: 'POST',
+            path: 'systemupgrade/refresh-upgrade-info'
+        }).done(function (data) {
+            $spinner.removeClass('active');
+            window.CRM.notify(i18next.t('Upgrade information refreshed. Reloading page...'), {
+                type: 'success',
+                delay: 1500
+            });
+            
+            // Reload the page after a short delay
+            setTimeout(function () {
+                window.location.reload();
+            }, 1500);
+        }).fail(function (xhr, status, error) {
+            $spinner.removeClass('active');
+            $button.prop('disabled', false);
+            $icon.removeClass('fa-circle-notch fa-spin').addClass('fa-sync');
+            
+            let errorMessage = i18next.t('Failed to refresh upgrade information from GitHub.');
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMessage = xhr.responseJSON.message;
+            }
+            
+            window.CRM.notify(errorMessage, {
+                type: 'error',
+                delay: 5000
+            });
+        });
+    });
+}

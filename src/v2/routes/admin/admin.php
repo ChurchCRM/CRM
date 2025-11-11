@@ -125,6 +125,7 @@ function upgradePage(Request $request, Response $response, array $args): Respons
     
     // Get pre-release upgrade setting info
     $prereleaseConfig = SystemConfig::getConfigItem('bAllowPrereleaseUpgrade');
+    $allowPrereleaseUpgrade = SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade');
     
     $pageArgs = [
         'sRootPath'             => SystemURLs::getRootPath(),
@@ -138,6 +139,7 @@ function upgradePage(Request $request, Response $response, array $args): Respons
         'availableVersion'      => $availableVersion,
         'isUpdateAvailable'     => $isUpdateAvailable,
         'prereleaseConfig'      => $prereleaseConfig,
+        'allowPrereleaseUpgrade' => $allowPrereleaseUpgrade,
     ];
 
     return $renderer->render($response, 'upgrade.php', $pageArgs);

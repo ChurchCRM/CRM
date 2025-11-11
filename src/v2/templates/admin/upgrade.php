@@ -33,6 +33,29 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <strong><?= gettext('Allow Pre-release Upgrades') ?>:</strong>
+                            <input type="checkbox" id="bAllowPrereleaseUpgrade" data-toggle="toggle" data-size="sm" data-onstyle="success" data-offstyle="secondary"<?= $allowPrereleaseUpgrade ? ' checked' : '' ?>>
+                            <small class="form-text text-muted d-inline-block ml-2">
+                                <?= htmlspecialchars($prereleaseConfig->getTooltip()) ?>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-info btn-sm" id="refreshFromGitHub">
+                            <i class="fa fa-sync mr-2"></i><?= gettext('Refresh from GitHub') ?>
+                        </button>
+                        <small class="form-text text-muted d-inline-block ml-2">
+                            <?= gettext('Check GitHub for the latest release information') ?>
+                        </small>
+                    </div>
+                </div>
                 
                 <?php if ($isUpdateAvailable): ?>
                     <div class="alert alert-info mb-0" style="background-color: #d1ecf1; border-color: #bee5eb; color: #0c5460;">
@@ -51,7 +74,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
 
         <!-- Upgrade Wizard Stepper -->
-        <div class="card" id="upgrade-wizard-card">
+        <div class="card<?= $isUpdateAvailable ? ' show' : '' ?>" id="upgrade-wizard-card">
             <div class="card-header">
                 <h3 class="card-title mb-0"><?= gettext('System Upgrade Wizard') ?></h3>
             </div>
@@ -346,14 +369,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/upgrade-wizard.min.css">
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/upgrade-wizard.min.js"></script>
-
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    // Show upgrade wizard only if update is available
-    var isUpdateAvailable = <?= $isUpdateAvailable ? 'true' : 'false' ?>;
-    if (isUpdateAvailable) {
-        document.getElementById('upgrade-wizard-card').classList.add('show');
-    }
-</script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
