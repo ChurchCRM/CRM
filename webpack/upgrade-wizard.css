@@ -1,15 +1,15 @@
 /* Upgrade Wizard Styles */
 
-.upgrade-wizard-container {
-    max-width: 1200px;
-    margin: 20px auto;
+/* Stepper container */
+.bs-stepper {
+    background: transparent;
 }
 
 /* Stepper header styling */
 .bs-stepper .bs-stepper-header {
     padding: 2rem 1rem;
-    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
-    border-bottom: 1px solid #e0e0e0;
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,13 +25,12 @@
     background: transparent;
     border: none;
     outline: none;
-    cursor: pointer;
+    cursor: default;
     width: 100%;
     transition: all 0.3s ease;
-}
-
-.bs-stepper .step-trigger:hover {
-    transform: translateY(-2px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .bs-stepper .step-trigger:focus {
@@ -40,33 +39,31 @@
 }
 
 .bs-stepper .bs-stepper-circle {
-    width: 4rem;
-    height: 4rem;
-    line-height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
     font-size: 1.5rem;
-    font-weight: 700;
-    background: #e9ecef;
-    border: 4px solid #dee2e6;
+    font-weight: 400;
+    background: #fff;
+    border: 3px solid #dee2e6;
     color: #6c757d;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 0.75rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 0 auto 0.5rem;
+    transition: all 0.3s ease;
 }
 
 .bs-stepper .step.active .bs-stepper-circle {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    border-color: #0056b3;
+    background: #007bff;
+    border-color: #007bff;
     color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
-    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
 }
 
 .bs-stepper .step .bs-stepper-label {
-    font-size: 0.95rem;
+    font-size: 0.875rem;
     font-weight: 500;
     color: #6c757d;
     display: block;
@@ -76,7 +73,6 @@
 .bs-stepper .step.active .bs-stepper-label {
     color: #007bff;
     font-weight: 600;
-    font-size: 1rem;
 }
 
 /* Line between steps */
@@ -85,166 +81,108 @@
     background-color: #dee2e6;
     height: 2px;
     min-height: 2px;
-    margin: 0 0.5rem;
+    margin: 0 1rem;
     align-self: flex-start;
-    margin-top: 2rem;
+    margin-top: 1.75rem;
     position: relative;
 }
 
-.bs-stepper .line::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
-    transition: width 0.5s ease;
-}
-
-.bs-stepper .step.active ~ .line::after {
-    width: 0%;
-}
-
-.bs-stepper .step.active .line::after {
-    width: 100%;
-}
-
 /* Warning step special styling */
-.warning-step .bs-stepper-circle {
-    background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
-    border-color: #ff9800;
+.bs-stepper .warning-step .bs-stepper-circle {
+    background: #ffc107;
+    border-color: #ffc107;
     color: #fff;
 }
 
-.warning-step.active .bs-stepper-circle {
-    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
-    border-color: #f57c00;
-    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+.bs-stepper .warning-step.active .bs-stepper-circle {
+    background: #ff9800;
+    border-color: #ff9800;
+    box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.2);
 }
 
-.warning-step .bs-stepper-label {
+.bs-stepper .warning-step .bs-stepper-label {
     color: #856404;
 }
 
-.warning-step.active .bs-stepper-label {
+.bs-stepper .warning-step.active .bs-stepper-label {
     color: #ff9800;
     font-weight: 600;
 }
 
 /* Content area styling */
-.step-content-area {
-    min-height: 400px;
-    padding: 2.5rem;
-    background-color: #fff;
-}
-
-.step-content-area h4 {
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-}
-
-/* Card styling */
-.upgrade-wizard-container .card {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.upgrade-wizard-container .card-header {
-    border-radius: 8px 8px 0 0 !important;
-    padding: 1.25rem 1.5rem;
-}
-
-/* Button enhancements */
-.step-content-area .btn-lg {
-    padding: 0.75rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-.step-content-area .btn-lg:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.step-content-area .btn-primary {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    border: none;
-}
-
-.step-content-area .btn-success {
-    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
-    border: none;
-}
-
-.step-content-area .btn-warning {
-    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
-    border: none;
-    color: #fff;
-}
-
-/* Alert styling */
-.step-content-area .alert {
-    border-radius: 6px;
-    border-left: 4px solid;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.step-content-area .alert-info {
-    border-left-color: #17a2b8;
-    background-color: #e7f6f8;
-}
-
-.step-content-area .alert-success {
-    border-left-color: #28a745;
-    background-color: #e8f5e9;
-}
-
-.step-content-area .alert-danger {
-    border-left-color: #dc3545;
-    background-color: #fdeaea;
-}
-
-.step-content-area .alert-warning {
-    border-left-color: #ff9800;
-    background-color: #fff8e1;
-}
-
-/* Integrity check collapsible section */
-#headingIntegrityFiles .btn-link {
-    color: #333;
-    text-decoration: none;
-    position: relative;
+.bs-stepper-content {
     padding: 0;
 }
 
-#headingIntegrityFiles .btn-link:hover {
-    text-decoration: none;
-    color: #007bff;
+.bs-stepper-content .content {
+    display: none;
 }
 
-#headingIntegrityFiles .btn-link i {
+.bs-stepper-content .content.active {
+    display: block;
+}
+
+/* Button styling improvements */
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* Alert improvements for steps */
+.content .alert {
+    border-radius: 4px;
+}
+
+/* Update details card */
+#updateDetails {
+    background: #f8f9fa;
+}
+
+#updateDetails .card-header {
+    background: #fff;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#releaseNotes {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* List group improvements */
+.list-group-item {
+    border-left: 3px solid transparent;
+}
+
+.list-group-item:hover {
+    border-left-color: #007bff;
+}
+
+/* Status icons in step headers */
+.content h4 .fa-circle {
+    font-size: 0.75rem;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+/* Collapsible file integrity sections */
+.card-header .btn-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+}
+
+.card-header .btn-link:hover {
+    text-decoration: none;
+}
+
+.card-header .btn-link .fa-chevron-down {
     transition: transform 0.3s ease;
 }
 
-#headingIntegrityFiles .btn-link[aria-expanded="true"] i {
-    transform: rotate(90deg);
-}
-
-/* Integrity check table styles - replacing DataTable with simpler native table */
-#fileIntegrityCheckResultsTable {
-    font-size: 0.875rem;
-}
-
-#fileIntegrityCheckResultsTable code,
-#fileIntegrityCheckResultsTable small {
-    word-break: break-all;
-}
-
-#fileIntegrityCheckResultsTable tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.075);
+.card-header .btn-link:not(.collapsed) .fa-chevron-down {
+    transform: rotate(180deg);
 }

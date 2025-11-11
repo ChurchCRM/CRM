@@ -21,6 +21,16 @@ $(document).ready(function () {
     // Set up event handlers
     setupNavigationHandlers();
     setupStepHandlers();
+    
+    // Listen for step changes to auto-download when reaching apply step
+    document.querySelector('#upgrade-stepper').addEventListener('show.bs-stepper', function (event) {
+        // Auto-download when entering the apply step
+        if (event.detail.to === 2) { // Index 2 is now the apply step (0: warnings, 1: backup, 2: apply)
+            setTimeout(function() {
+                autoDownloadUpdate();
+            }, 300);
+        }
+    });
 });
 
 /**
@@ -36,24 +46,6 @@ function setupNavigationHandlers() {
     $("#backup-next").click(function () {
         upgradeStepper.next();
     });
-
-    // Fetch step navigation
-    $("#fetch-previous").click(function () {
-        upgradeStepper.previous();
-    });
-
-    $("#fetch-next").click(function () {
-        upgradeStepper.next();
-    });
-
-    // Apply step navigation
-    $("#apply-previous").click(function () {
-        upgradeStepper.previous();
-    });
-
-    $("#apply-next").click(function () {
-        upgradeStepper.next();
-    });
 }
 
 /**
@@ -61,7 +53,6 @@ function setupNavigationHandlers() {
  */
 function setupStepHandlers() {
     setupBackupStep();
-    setupFetchStep();
     setupApplyStep();
 }
 
@@ -129,72 +120,110 @@ function setupBackupStep() {
                 $button.prop('disabled', false);
             });
     });
+
+    // Skip Backup button handler
+    $('#skipBackup').click(function () {
+        const $statusIcon = $("#status-backup");
+        const $backupStatus = $("#backupStatus");
+        const $navButtons = $("#backupNavButtons");
+        const $button = $(this);
+
+        $backupStatus.html(`<div class="alert alert-warning" style="background-color: #fff3cd; border-color: #ffeaa7; color: #856404;">
+            <i class="fa-solid fa-exclamation-triangle mr-2"></i><strong>${i18next.t('Backup Skipped')}</strong><br>
+            ${i18next.t('You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade.')}
+        </div>`);
+        $statusIcon.html('<i class="fa-solid fa-exclamation-triangle text-warning"></i>');
+        $button.hide();
+        $navButtons.show();
+    });
 }
 
 /**
- * Set up fetch update step
+ * Auto-download update when step is shown
  */
-function setupFetchStep() {
-    $("#fetchUpdate").click(function () {
-        const $button = $(this);
-        const $statusIcon = $("#status-fetch");
-        const $fetchStatus = $("#fetchStatus");
-        const $nextButton = $("#fetch-next");
+function autoDownloadUpdate() {
+    const $statusIcon = $("#status-apply");
+    const $downloadStatus = $("#downloadStatus");
+    
+    // Check if already downloaded
+    if (window.CRM.updateFile) {
+        // Already downloaded, show details and apply button
+        $("#updateDetails").show();
+        $("#applyButtonContainer").show();
+        return;
+    }
+    
+    // Show that auto-download is happening
+    $statusIcon.html('<i class="fa-solid fa-circle-notch fa-spin text-primary"></i>');
+    $downloadStatus.html(`<div class="alert alert-info">
+        <i class="fa-solid fa-cloud-download mr-2"></i>${i18next.t('Downloading latest release from GitHub...')}
+    </div>`);
+    
+    performDownload();
+}
 
-        // Show loading state
-        $statusIcon.html('<i class="fa-solid fa-circle-notch fa-spin text-primary"></i>');
-        $button.prop('disabled', true);
+/**
+ * Perform the actual download operation
+ */
+function performDownload() {
+    const $statusIcon = $("#status-apply");
+    const $downloadStatus = $("#downloadStatus");
 
-        window.CRM.APIRequest({
-            type: 'GET',
-            path: 'systemupgrade/downloadlatestrelease',
+    window.CRM.APIRequest({
+        type: 'GET',
+        path: 'systemupgrade/downloadlatestrelease',
+    })
+        .done(function (data) {
+            $statusIcon.html('<i class="fa-solid fa-check text-success"></i>');
+            window.CRM.updateFile = data;
+
+            $downloadStatus.html(`<div class="alert alert-success">
+            <i class="fa-solid fa-check-circle mr-2"></i>${i18next.t('Update package downloaded successfully.')}
+        </div>`);
+
+            // Show update details
+            $("#updateFileName").text(data.fileName);
+            $("#updateFullPath").text(data.fullPath);
+            $("#releaseNotes").text(data.releaseNotes);
+            $("#updateSHA1").text(data.sha1);
+            $("#updateDetails").show();
+            
+            // Show apply button after download completes
+            $("#applyButtonContainer").show();
         })
-            .done(function (data) {
-                $statusIcon.html('<i class="fa-solid fa-check text-success"></i>');
-                window.CRM.updateFile = data;
-
-                $fetchStatus.html(`<div class="alert alert-success">
-                <i class="fa-solid fa-check-circle mr-2"></i>${i18next.t('Update package downloaded successfully.')}
-            </div>`);
-                $nextButton.show();
-
-                // Auto-advance to next step after fetch
-                setTimeout(function () {
-                    upgradeStepper.next();
-
-                    // Show update details
-                    $("#updateFileName").text(data.fileName);
-                    $("#updateFullPath").text(data.fullPath);
-                    $("#releaseNotes").text(data.releaseNotes);
-                    $("#updateSHA1").text(data.sha1);
-                    $("#updateDetails").show();
-                }, 500);
-            })
-            .fail(function (xhr, status, error) {
-                let errorMessage = i18next.t('Failed to fetch update package.');
-                
-                if (xhr.responseJSON && xhr.responseJSON.message) {
-                    errorMessage = '<strong>' + i18next.t('Failed to fetch update package.') + '</strong><br>' + xhr.responseJSON.message;
-                } else if (xhr.responseText) {
-                    try {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.message) {
-                            errorMessage = '<strong>' + i18next.t('Failed to fetch update package.') + '</strong><br>' + response.message;
-                        }
-                    } catch (e) {
-                        errorMessage = '<strong>' + i18next.t('Failed to fetch update package.') + '</strong><br>' + xhr.status + ': ' + xhr.statusText;
+        .fail(function (xhr, status, error) {
+            let errorMessage = i18next.t('Failed to download update package.');
+            
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMessage = '<strong>' + i18next.t('Failed to download update package.') + '</strong><br>' + xhr.responseJSON.message;
+            } else if (xhr.responseText) {
+                try {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.message) {
+                        errorMessage = '<strong>' + i18next.t('Failed to download update package.') + '</strong><br>' + response.message;
                     }
-                } else if (error) {
-                    errorMessage = '<strong>' + i18next.t('Failed to fetch update package.') + '</strong><br>' + error;
+                } catch (e) {
+                    errorMessage = '<strong>' + i18next.t('Failed to download update package.') + '</strong><br>' + xhr.status + ': ' + xhr.statusText;
                 }
+            } else if (error) {
+                errorMessage = '<strong>' + i18next.t('Failed to download update package.') + '</strong><br>' + error;
+            }
 
-                $fetchStatus.html(`<div class="alert alert-danger" style="background-color: #f8d7da; border-color: #f5c6cb; color: #721c24;">
-                <i class="fa-solid fa-times-circle mr-2"></i>${errorMessage}
-            </div>`);
-                $statusIcon.html('<i class="fa-solid fa-times text-danger"></i>');
-                $button.prop('disabled', false);
+            $downloadStatus.html(`<div class="alert alert-danger" style="background-color: #f8d7da; border-color: #f5c6cb; color: #721c24;">
+            <i class="fa-solid fa-times-circle mr-2"></i>${errorMessage}
+        </div>`);
+            $statusIcon.html('<i class="fa-solid fa-times text-danger"></i>');
+            
+            // Show manual retry button
+            $downloadStatus.append(`<button class="btn btn-warning mt-2" id="retryDownload">
+                <i class="fa-solid fa-redo mr-2"></i>${i18next.t('Retry Download')}
+            </button>`);
+            
+            $("#retryDownload").click(function() {
+                $(this).remove();
+                performDownload();
             });
-    });
+        });
 }
 
 /**
@@ -205,7 +234,6 @@ function setupApplyStep() {
         const $button = $(this);
         const $statusIcon = $("#status-apply");
         const $applyStatus = $("#applyStatus");
-        const $nextButton = $("#apply-next");
 
         // Show loading state
         $statusIcon.html('<i class="fa-solid fa-circle-notch fa-spin text-primary"></i>');
@@ -224,7 +252,6 @@ function setupApplyStep() {
                 $applyStatus.html(`<div class="alert alert-success" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
                 <i class="fa-solid fa-check-circle mr-2"></i><strong>${i18next.t('System upgrade completed successfully!')}</strong>
             </div>`);
-                $nextButton.show();
 
                 // Auto-advance to final step
                 setTimeout(function () {

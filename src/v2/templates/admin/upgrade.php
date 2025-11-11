@@ -80,29 +80,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="line"></div>
                         
-                        <!-- Step 3: Fetch Update -->
-                        <div class="step" data-target="#step-fetch">
-                            <button type="button" class="step-trigger" role="tab" aria-controls="step-fetch" id="step-fetch-trigger">
-                                <span class="bs-stepper-circle">
-                                    <i class="fa fa-cloud-download"></i>
-                                </span>
-                                <span class="bs-stepper-label"><?= gettext('Fetch Update') ?></span>
-                            </button>
-                        </div>
-                        <div class="line"></div>
-                        
-                        <!-- Step 4: Apply Update -->
+                        <!-- Step 3: Download and Apply Update -->
                         <div class="step" data-target="#step-apply">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-apply" id="step-apply-trigger">
                                 <span class="bs-stepper-circle">
-                                    <i class="fa fa-cog"></i>
+                                    <i class="fa fa-cloud-download"></i>
                                 </span>
-                                <span class="bs-stepper-label"><?= gettext('Apply Update') ?></span>
+                                <span class="bs-stepper-label"><?= gettext('Download & Apply') ?></span>
                             </button>
                         </div>
                         <div class="line"></div>
                         
-                        <!-- Step 5: Complete -->
+                        <!-- Step 4: Complete -->
                         <div class="step" data-target="#step-complete">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-complete" id="step-complete-trigger">
                                 <span class="bs-stepper-circle">
@@ -276,44 +265,30 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <button class="btn btn-success" id="doBackup">
                                     <i class="fa fa-database mr-2"></i><?= gettext('Create Backup') ?>
                                 </button>
+                                <button class="btn btn-outline-secondary ml-2" id="skipBackup">
+                                    <i class="fa fa-forward mr-2"></i><?= gettext('Skip Backup') ?>
+                                </button>
                             </div>
                             
                             <div id="backupNavButtons" class="mt-3" style="display: none;">
                                 <button class="btn btn-primary" id="backup-next">
-                                    <?= gettext('Continue to Fetch Update') ?> <i class="fa fa-arrow-right ml-2"></i>
+                                    <?= gettext('Continue to Download & Apply') ?> <i class="fa fa-arrow-right ml-2"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <!-- Step 3: Fetch Update -->
-                        <div id="step-fetch" class="content p-4" role="tabpanel" aria-labelledby="step-fetch-trigger">
-                            <h4 class="mb-3">
-                                <span id="status-fetch"><i class="fa fa-circle text-muted"></i></span>
-                                <?= gettext('Fetch Update Package') ?>
-                            </h4>
-                            <p class="text-muted"><?= gettext('Download the latest ChurchCRM release from GitHub.') ?></p>
-                            
-                            <div id="fetchStatus"></div>
-                            
-                            <div class="mt-3">
-                                <button class="btn btn-success" id="fetchUpdate">
-                                    <i class="fa fa-cloud-download mr-2"></i><?= gettext('Download Update') ?>
-                                </button>
-                            </div>
-                            
-                            <div id="fetch-next" class="mt-3" style="display: none;">
-                                <!-- Auto-advances to next step -->
-                            </div>
-                        </div>
-
-                        <!-- Step 4: Apply Update -->
+                        <!-- Step 3: Download and Apply Update -->
                         <div id="step-apply" class="content p-4" role="tabpanel" aria-labelledby="step-apply-trigger">
                             <h4 class="mb-3">
                                 <span id="status-apply"><i class="fa fa-circle text-muted"></i></span>
-                                <?= gettext('Apply System Update') ?>
+                                <?= gettext('Download and Apply System Update') ?>
                             </h4>
-                            <p class="text-muted"><?= gettext('Apply the downloaded update to your ChurchCRM installation.') ?></p>
+                            <p class="text-muted"><?= gettext('Download the latest release and apply it to your ChurchCRM installation.') ?></p>
                             
+                            <!-- Download Status -->
+                            <div id="downloadStatus"></div>
+                            
+                            <!-- Update Package Details (shown after download) -->
                             <div id="updateDetails" style="display: none;" class="card mb-3">
                                 <div class="card-header">
                                     <h5><?= gettext('Update Package Details') ?></h5>
@@ -324,25 +299,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <p><strong><?= gettext('SHA1 Hash:') ?></strong> <code id="updateSHA1"></code></p>
                                     <div class="mt-3">
                                         <strong><?= gettext('Release Notes:') ?></strong>
-                                        <div id="releaseNotes" class="mt-2 p-3" style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; max-height: 300px; overflow-y: auto;"></div>
+                                        <pre id="releaseNotes" class="mt-2 p-3" style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; max-height: 300px; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word;"></pre>
                                     </div>
                                 </div>
                             </div>
                             
+                            <!-- Apply Status -->
                             <div id="applyStatus"></div>
                             
-                            <div class="mt-3">
-                                <button class="btn btn-danger" id="applyUpdate">
+                            <div class="mt-3" id="applyButtonContainer" style="display: none;">
+                                <button class="btn btn-danger btn-lg" id="applyUpdate">
                                     <i class="fa fa-cog mr-2"></i><?= gettext('Apply Update Now') ?>
                                 </button>
                             </div>
-                            
-                            <div id="apply-next" class="mt-3" style="display: none;">
-                                <!-- Auto-advances to next step -->
-                            </div>
                         </div>
 
-                        <!-- Step 5: Complete -->
+                        <!-- Step 4: Complete -->
                         <div id="step-complete" class="content p-4" role="tabpanel" aria-labelledby="step-complete-trigger">
                             <div class="text-center py-5">
                                 <i class="fa fa-check-circle text-success" style="font-size: 5rem;"></i>
