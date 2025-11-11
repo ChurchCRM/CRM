@@ -88,12 +88,12 @@ function setupBackupStep() {
             })
         })
             .done(function (data) {
-                const downloadButton = `<button class="btn btn-success" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')">
+                const downloadButton = `<button class="btn btn-success btn-lg btn-block" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')" style="max-width: 500px;">
                 <i class="fa-solid fa-download mr-2"></i>${data.BackupDownloadFileName}
             </button>`;
 
-                $backupStatus.html(`<div class="alert alert-success">
-                <i class="fa-solid fa-check-circle mr-2"></i>${i18next.t('Backup Complete, Ready for Download.')}
+                $backupStatus.html(`<div class="alert alert-success" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
+                <i class="fa-solid fa-check-circle mr-2"></i><strong>${i18next.t('Backup Complete, Ready for Download.')}</strong>
             </div>`);
                 $resultFiles.html(downloadButton);
                 $statusIcon.html('<i class="fa-solid fa-check text-success"></i>');
@@ -105,15 +105,24 @@ function setupBackupStep() {
                 });
             })
             .fail(function (xhr, status, error) {
-                let errorMessage = i18next.t('Backup Error.');
+                let errorMessage = i18next.t('Failed to create backup.');
                 
                 if (xhr.responseJSON && xhr.responseJSON.message) {
-                    errorMessage += '<br><small>' + xhr.responseJSON.message + '</small>';
+                    errorMessage = '<strong>' + i18next.t('Failed to create backup.') + '</strong><br>' + xhr.responseJSON.message;
+                } else if (xhr.responseText) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.message) {
+                            errorMessage = '<strong>' + i18next.t('Failed to create backup.') + '</strong><br>' + response.message;
+                        }
+                    } catch (e) {
+                        errorMessage = '<strong>' + i18next.t('Failed to create backup.') + '</strong><br>' + xhr.status + ': ' + xhr.statusText;
+                    }
                 } else if (error) {
-                    errorMessage += '<br><small>' + error + '</small>';
+                    errorMessage = '<strong>' + i18next.t('Failed to create backup.') + '</strong><br>' + error;
                 }
 
-                $backupStatus.html(`<div class="alert alert-danger">
+                $backupStatus.html(`<div class="alert alert-danger" style="background-color: #f8d7da; border-color: #f5c6cb; color: #721c24;">
                 <i class="fa-solid fa-times-circle mr-2"></i>${errorMessage}
             </div>`);
                 $statusIcon.html('<i class="fa-solid fa-times text-danger"></i>');
@@ -165,21 +174,21 @@ function setupFetchStep() {
                 let errorMessage = i18next.t('Failed to fetch update package.');
                 
                 if (xhr.responseJSON && xhr.responseJSON.message) {
-                    errorMessage += '<br><small>' + xhr.responseJSON.message + '</small>';
+                    errorMessage = '<strong>' + i18next.t('Failed to fetch update package.') + '</strong><br>' + xhr.responseJSON.message;
                 } else if (xhr.responseText) {
                     try {
                         const response = JSON.parse(xhr.responseText);
                         if (response.message) {
-                            errorMessage += '<br><small>' + response.message + '</small>';
+                            errorMessage = '<strong>' + i18next.t('Failed to fetch update package.') + '</strong><br>' + response.message;
                         }
                     } catch (e) {
-                        errorMessage += '<br><small>' + xhr.status + ': ' + xhr.statusText + '</small>';
+                        errorMessage = '<strong>' + i18next.t('Failed to fetch update package.') + '</strong><br>' + xhr.status + ': ' + xhr.statusText;
                     }
                 } else if (error) {
-                    errorMessage += '<br><small>' + error + '</small>';
+                    errorMessage = '<strong>' + i18next.t('Failed to fetch update package.') + '</strong><br>' + error;
                 }
 
-                $fetchStatus.html(`<div class="alert alert-danger">
+                $fetchStatus.html(`<div class="alert alert-danger" style="background-color: #f8d7da; border-color: #f5c6cb; color: #721c24;">
                 <i class="fa-solid fa-times-circle mr-2"></i>${errorMessage}
             </div>`);
                 $statusIcon.html('<i class="fa-solid fa-times text-danger"></i>');
@@ -212,8 +221,8 @@ function setupApplyStep() {
         })
             .done(function (data) {
                 $statusIcon.html('<i class="fa-solid fa-check text-success"></i>');
-                $applyStatus.html(`<div class="alert alert-success">
-                <i class="fa-solid fa-check-circle mr-2"></i>${i18next.t('System upgrade completed successfully!')}
+                $applyStatus.html(`<div class="alert alert-success" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
+                <i class="fa-solid fa-check-circle mr-2"></i><strong>${i18next.t('System upgrade completed successfully!')}</strong>
             </div>`);
                 $nextButton.show();
 
@@ -226,21 +235,21 @@ function setupApplyStep() {
                 let errorMessage = i18next.t('Upgrade failed. Please check the logs.');
                 
                 if (xhr.responseJSON && xhr.responseJSON.message) {
-                    errorMessage += '<br><small>' + xhr.responseJSON.message + '</small>';
+                    errorMessage = '<strong>' + i18next.t('Upgrade failed.') + '</strong><br>' + xhr.responseJSON.message;
                 } else if (xhr.responseText) {
                     try {
                         const response = JSON.parse(xhr.responseText);
                         if (response.message) {
-                            errorMessage += '<br><small>' + response.message + '</small>';
+                            errorMessage = '<strong>' + i18next.t('Upgrade failed.') + '</strong><br>' + response.message;
                         }
                     } catch (e) {
-                        errorMessage += '<br><small>' + xhr.status + ': ' + xhr.statusText + '</small>';
+                        errorMessage = '<strong>' + i18next.t('Upgrade failed.') + '</strong><br>' + xhr.status + ': ' + xhr.statusText;
                     }
                 } else if (error) {
-                    errorMessage += '<br><small>' + error + '</small>';
+                    errorMessage = '<strong>' + i18next.t('Upgrade failed.') + '</strong><br>' + error;
                 }
 
-                $applyStatus.html(`<div class="alert alert-danger">
+                $applyStatus.html(`<div class="alert alert-danger" style="background-color: #f8d7da; border-color: #f5c6cb; color: #721c24;">
                 <i class="fa-solid fa-times-circle mr-2"></i>${errorMessage}
             </div>`);
                 $statusIcon.html('<i class="fa-solid fa-times text-danger"></i>');
