@@ -317,4 +317,44 @@ class ChurchCRMReleaseManager
         ini_set('display_errors', $displayErrors);
         self::$isUpgradeInProgress = false;
     }
+
+    /**
+     * Check if a system update is available for the current installation
+     * Returns an array with 'available' (bool) and 'version' (ChurchCRMRelease|null) keys
+     *
+     * @return array{available: bool, version: ChurchCRMRelease|null}
+     */
+    public static function checkSystemUpdateAvailable(): array
+    {
+        try {
+            $installedVersionString = VersionUtils::getInstalledVersion();
+            $installedVersion = self::getReleaseFromString($installedVersionString);
+            $isCurrent = self::isReleaseCurrent($installedVersion);
+            
+            if (!$isCurrent) {
+                $nextRelease = self::getNextReleaseStep($installedVersion);
+                if (null !== $nextRelease) {
+                    LoggerUtils::getAppLogger()->info('System update available', [
+                        'currentVersion' => $installedVersionString,
+                        'availableVersion' => $nextRelease->__toString()
+                    ]);
+                    return [
+                        'available' => true,
+                        'version' => $nextRelease
+                    ];
+                }
+            }
+
+            return [
+                'available' => false,
+                'version' => null
+            ];
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->warning('Failed to check for system updates', ['exception' => $e]);
+            return [
+                'available' => false,
+                'version' => null
+            ];
+        }
+    }
 }
