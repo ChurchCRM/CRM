@@ -212,6 +212,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Property Types'), 'PropertyTypeList.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Restore Database'), 'RestoreDatabase.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Backup Database'), 'BackupDatabase.php', AuthenticationManager::getCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext('System Upgrade'), 'v2/admin/upgrade', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', AuthenticationManager::getCurrentUser()->isCSVExport()));
         $menu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'KioskManager.php', AuthenticationManager::getCurrentUser()->isAdmin()));
