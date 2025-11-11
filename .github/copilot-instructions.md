@@ -1,44 +1,61 @@
-# ChurchCRM AI Coding Agent Instructions
+# ChurchCRM — AI Coding Agent (concise)
 
-## Stack & Requirements
-- PHP 8.2+ minimum (version 6.0.0+)
-- Propel ORM (mandatory, never raw SQL)
-- MySQL/MariaDB
-- Slim Framework 4
-- React/TypeScript
-- Cypress testing
-- AdminLTE UI with Bootstrap 4.6.2
-- Webpack bundling
+Purpose: Keep guidance compact. Follow these core rules when editing the repo.
 
-## Architecture Layers
+Stack (short)
+- PHP 8.2+
+- Propel ORM (use Query classes, never raw SQL)
+- Slim 4 (API routes)
+- Bootstrap 4.6.2 (AdminLTE v2 pattern for legacy pages)
+- React + TypeScript (frontend)
+- Webpack, Cypress for tests
 
-### Legacy Pages
-- Location: `src/*.php`
-- Pattern: Traditional PHP form handlers
-- Database: Propel ORM Query classes
-- UI: AdminLTE + Bootstrap
-- Don't modify: Use APIs for new features
+Key conventions (must follow)
+- Service layer first: add or update services in `src/ChurchCRM/Service/` for business logic.
+- Use Propel Query classes for DB access (no RunQuery or inline SQL).
+- Use `use` imports at the top of PHP files; avoid inline fully-qualified class names.
+- PHP templates: render initial UI state server-side (avoid JS-only initialization flashes).
+- Boolean config: use `SystemConfig::getBooleanValue('key')` for truthy/falsey checks.
+- Asset paths: use `SystemURLs::getRootPath()` for css/img/src references.
+- For notifications, use `window.CRM.notify()` (i18n via i18next.t) — do not use alert().
 
-### REST APIs (Slim Framework)
-- Location: `src/api/routes/`
-- Pattern: Service → Query classes → DTO response
-- Services: PersonService, GroupService, FinancialService, SystemService, DepositService
-- Response: JSON with `data` + `message` keys
-- DI Container: Symfony at startup
+Routing & middleware
+- Put API routes in `src/api/routes/` and legacy pages in `src/*.php`.
+- Middleware order (important):
+    1. addBodyParsingMiddleware()
+    2. addRoutingMiddleware()
+    3. add(VersionMiddleware)
+    4. add(AuthMiddleware)
+    5. add(CorsMiddleware)
 
-### React Components
-- Location: `react/`
-- Output: Bundled via Webpack to `src/skin/v2/`
-- Usage: Interactive UI (calendar, auth)
+API & naming
+- Prefer kebab-case endpoints for upgrade/system routes (e.g. `/download-latest-release`).
+- GET for reads, POST for actions that change state.
 
-## Slim Middleware Order (CRITICAL)
-```
-addBodyParsingMiddleware()
-addRoutingMiddleware()    // MUST be before add() calls
-add(VersionMiddleware)
-add(AuthMiddleware)       // After routing or 401 becomes 500
-add(CorsMiddleware)
-```
+JS/CSS/Frontend
+- Bootstrap 4.6.2 utilities only. Follow v2 templates (no Bootstrap 5 utilities).
+- Frontend state that matters on first paint should be rendered by PHP (examples: upgrade wizard toggle).
+
+Testing & quality gates
+- Add Cypress UI tests under `cypress/e2e/ui/` for critical user flows.
+- Run relevant tests before committing changes that affect behavior.
+- Ensure build/lint/tests pass locally when practical.
+
+Logging
+- Use `LoggerUtils::getAppLogger()` and include contextual data in logs.
+
+Commits & PRs
+- Do not run git commit on user's behalf. Ask before creating commits.
+- Tests should pass before merging. Keep commits small and focused.
+
+When editing files
+- Use the repository tools (apply_patch) to make safe, minimal diffs.
+- Prefer small, targeted changes; avoid broad reformatting unless requested.
+
+If unsure
+- Read nearby files to match style. If blocked, ask a specific question.
+
+---
 
 ## Database Rules
 - ALWAYS use Propel ORM Query classes
@@ -506,6 +523,80 @@ PR organization:
 - Use exact tool calls (replace_string_in_file, create_file, etc.)
 - Keep explanations brief and focused on what was changed
 - Verify changes were applied correctly but don't over-communicate
+
+---
+
+## V2 Upgrade Wizard Architecture
+
+ChurchCRM implements a modern upgrade system at `/v2/admin/upgrade` with bs-stepper wizard.
+
+### Route Structure (src/v2/routes/admin/admin.php)
+```php
+$group->get('/upgrade', function ($request, $response, $args) {
+    // Prepare data for template
+    $allowPrereleaseUpgrade = SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade');
+    $isUpdateAvailable = isset($_SESSION['systemUpdateAvailable']) && $_SESSION['systemUpdateAvailable'];
+    
+    // Check integrity and tasks
+    $integrityStatus = $container->get('AppIntegrityService')->getIntegrityCheckStatus();
+    $tasks = $container->get('TaskService')->getActivePreUpgradeTasks();
+    
+    // Render with PhpRenderer
+    return $this->get('renderer')->render($response, 'admin/upgrade.php', [
+        'allowPrereleaseUpgrade' => $allowPrereleaseUpgrade,
+        'isUpdateAvailable' => $isUpdateAvailable,
+        'integrityCheckData' => $integrityCheckData,
+        // ... other data
+    ]);
+})->add(AdminRoleAuthMiddleware::class);
+```
+
+### Template Pattern (src/v2/templates/admin/upgrade.php)
+- **Server-side rendering**: Set initial state via PHP to avoid flash of content
+- **Minimal layout**: Simple row/col grid, NO AdminLTE constructs (content-wrapper, breadcrumbs)
+- **PHP classes for visibility**: `class="<?= $isUpdateAvailable ? ' show' : '' ?>"`
+- **Bootstrap 4.6.2**: Use v2 template pattern with clean card-based layout
+
+Example Initial State:
+```php
+<!-- Checkbox state from PHP -->
+<input type="checkbox" id="allowPrereleaseUpgrade" 
+       <?= $allowPrereleaseUpgrade ? ' checked' : '' ?>>
+
+<!-- Wizard visibility from PHP -->
+<div id="upgrade-wizard-card" class="<?= $isUpdateAvailable ? ' show' : '' ?>">
+```
+
+### JavaScript Integration (webpack/upgrade-wizard-app.js)
+- **No AJAX for initial state**: PHP renders everything, JS only handles interactions
+- **bs-stepper event-driven**: Use `show.bs-stepper` event for step transitions
+- **Auto-download pattern**: Trigger download when entering Step 2
+- **Session refresh flow**: Toggle → Save → GitHub refresh → Page reload
+
+Example bs-stepper Setup:
+```javascript
+stepper.addEventListener('show.bs-stepper', function(event) {
+    if (event.detail.to === 1) {  // Step 2 (zero-indexed)
+        autoDownloadUpdate();  // Auto-trigger download
+    }
+});
+```
+
+### System Settings Integration
+- **Use SystemConfig::getBooleanValue()**: For boolean settings (not getValue())
+- **Bootstrap Toggle**: For checkbox UI with data-size="sm"
+- **Programmatic flag**: Prevent auto-refresh loops with `isTogglingProgrammatically`
+- **Session refresh endpoint**: POST `/systemupgrade/refresh-upgrade-info` calls ChurchCRMReleaseManager::checkForUpdates()
+
+### API Endpoint Naming
+- **Use kebab-case**: `/download-latest-release`, `/do-upgrade`, `/refresh-upgrade-info`
+- **RESTful conventions**: GET for reads, POST for state changes
+- **Descriptive names**: Readable without camelCase compression
+
+### ChurchCRMReleaseManager Integration
+- `downloadLatestRelease()`: Uses `sys_get_temp_dir()`, no version blocking
+- `checkForUpdates()`: Calls `populateReleases()` which respects `bAllowPrereleaseUpgrade`
+- Session storage: `$_SESSION['systemUpdateAvailable']`, `$_SESSION['systemUpdateVersion']`
 
 ---
 

@@ -382,18 +382,6 @@ window.CRM.dashboard = {
                 $("#localePer").removeClass("hidden");
             }
         },
-        SystemUpgrade: function (data) {
-            if (data.newVersion) {
-                $("#upgradeToVersion").html(
-                    data.newVersion.MAJOR +
-                        "." +
-                        data.newVersion.MINOR +
-                        "." +
-                        data.newVersion.PATCH,
-                );
-                $("#systemUpdateMenuItem").removeClass("d-none");
-            }
-        },
     },
     refresh: function () {
         window.CRM.APIRequest({

@@ -5,17 +5,18 @@ const webpack = require('webpack');
 module.exports = {
   mode: "development",
   entry: {
-    'calendar-event-editor' : './react/calendar-event-editor.tsx',
-    'two-factor-enrollment' : './react/two-factor-enrollment.tsx',
-    'churchcrm' : './webpack/skin-main',  // Main bundle for all pages
-    'photo-uploader' : './webpack/photo-uploader-entry',  // Photo uploader for specific pages
-    'setup' : './webpack/setup',  // Setup wizard styles
-    'family-register' : './webpack/family-register',  // Family registration styles and scripts
-    'locale-loader' : './webpack/locale-loader'  // Dynamic locale loader
+    'calendar-event-editor': './react/calendar-event-editor.tsx',
+    'two-factor-enrollment': './react/two-factor-enrollment.tsx',
+    'churchcrm': './webpack/skin-main',  // Main bundle for all pages
+    'photo-uploader': './webpack/photo-uploader-entry',  // Photo uploader for specific pages
+    'setup': './webpack/setup',  // Setup wizard styles
+    'family-register': './webpack/family-register',  // Family registration styles and scripts
+    'upgrade-wizard': './webpack/upgrade-wizard',  // Upgrade wizard styles and scripts
+    'locale-loader': './webpack/locale-loader'  // Dynamic locale loader
   },
   output: {
-    path:path.resolve('./src/skin/v2'),
-    filename:'[name].min.js',
+    path: path.resolve('./src/skin/v2'),
+    filename: '[name].min.js',
     publicPath: '/skin/v2/'
   },
   resolve: {
@@ -28,9 +29,9 @@ module.exports = {
   module: {
     rules: [
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { 
-        test: /\.tsx?$/, 
-        loader: "ts-loader" 
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader"
       },
       {
         test: /\.(sa|sc|c)ss$/,

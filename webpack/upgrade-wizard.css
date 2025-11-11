@@ -1,0 +1,224 @@
+/* Upgrade Wizard Styles */
+
+/* Stepper container */
+.bs-stepper {
+    background: transparent;
+}
+
+/* Stepper header styling */
+.bs-stepper .bs-stepper-header {
+    padding: 2rem 1rem;
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bs-stepper .step {
+    flex: 1;
+    text-align: center;
+}
+
+.bs-stepper .step-trigger {
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: default;
+    width: 100%;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bs-stepper .step-trigger:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.bs-stepper .bs-stepper-circle {
+    width: 3.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    background: #fff;
+    border: 3px solid #dee2e6;
+    color: #6c757d;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.bs-stepper .step.active .bs-stepper-circle {
+    background: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+.bs-stepper .step .bs-stepper-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6c757d;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.bs-stepper .step.active .bs-stepper-label {
+    color: #007bff;
+    font-weight: 600;
+}
+
+/* Line between steps */
+.bs-stepper .line {
+    flex: 1;
+    background-color: #dee2e6;
+    height: 2px;
+    min-height: 2px;
+    margin: 0 1rem;
+    align-self: flex-start;
+    margin-top: 1.75rem;
+    position: relative;
+}
+
+/* Warning step special styling */
+.bs-stepper .warning-step .bs-stepper-circle {
+    background: #ffc107;
+    border-color: #ffc107;
+    color: #fff;
+}
+
+.bs-stepper .warning-step.active .bs-stepper-circle {
+    background: #ff9800;
+    border-color: #ff9800;
+    box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.2);
+}
+
+.bs-stepper .warning-step .bs-stepper-label {
+    color: #856404;
+}
+
+.bs-stepper .warning-step.active .bs-stepper-label {
+    color: #ff9800;
+    font-weight: 600;
+}
+
+/* Content area styling */
+.bs-stepper-content {
+    padding: 0;
+}
+
+.bs-stepper-content .content {
+    display: none;
+}
+
+.bs-stepper-content .content.active {
+    display: block;
+}
+
+/* Button styling improvements */
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* Alert improvements for steps */
+.content .alert {
+    border-radius: 4px;
+}
+
+/* Update details card */
+#updateDetails {
+    background: #f8f9fa;
+}
+
+#updateDetails .card-header {
+    background: #fff;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#releaseNotes {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* List group improvements */
+.list-group-item {
+    border-left: 3px solid transparent;
+}
+
+.list-group-item:hover {
+    border-left-color: #007bff;
+}
+
+/* Status icons in step headers */
+.content h4 .fa-circle {
+    font-size: 0.75rem;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+/* Collapsible file integrity sections */
+.card-header .btn-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+}
+
+.card-header .btn-link:hover {
+    text-decoration: none;
+}
+
+.card-header .btn-link .fa-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.card-header .btn-link:not(.collapsed) .fa-chevron-down {
+    transform: rotate(180deg);
+}
+/* Upgrade wizard card visibility */
+#upgrade-wizard-card {
+    display: none;
+}
+
+#upgrade-wizard-card.show {
+    display: block;
+}
+
+/* Full-page spinner overlay */
+#upgradeSpinner {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+#upgradeSpinner.active {
+    display: flex;
+}
+
+#upgradeSpinner .spinner-content {
+    color: white;
+    text-align: center;
+}
+
+#upgradeSpinner .spinner-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
