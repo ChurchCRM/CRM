@@ -104,9 +104,17 @@ function setupBackupStep() {
                     $(this).prop('disabled', true).html(`<i class="fa-solid fa-check mr-2"></i>${i18next.t('Downloaded')}`);
                 });
             })
-            .fail(function () {
+            .fail(function (xhr, status, error) {
+                let errorMessage = i18next.t('Backup Error.');
+                
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage += '<br><small>' + xhr.responseJSON.message + '</small>';
+                } else if (error) {
+                    errorMessage += '<br><small>' + error + '</small>';
+                }
+
                 $backupStatus.html(`<div class="alert alert-danger">
-                <i class="fa-solid fa-times-circle mr-2"></i>${i18next.t('Backup Error.')}
+                <i class="fa-solid fa-times-circle mr-2"></i>${errorMessage}
             </div>`);
                 $statusIcon.html('<i class="fa-solid fa-times text-danger"></i>');
                 $button.prop('disabled', false);
@@ -153,9 +161,26 @@ function setupFetchStep() {
                     $("#updateDetails").show();
                 }, 500);
             })
-            .fail(function () {
+            .fail(function (xhr, status, error) {
+                let errorMessage = i18next.t('Failed to fetch update package.');
+                
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage += '<br><small>' + xhr.responseJSON.message + '</small>';
+                } else if (xhr.responseText) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.message) {
+                            errorMessage += '<br><small>' + response.message + '</small>';
+                        }
+                    } catch (e) {
+                        errorMessage += '<br><small>' + xhr.status + ': ' + xhr.statusText + '</small>';
+                    }
+                } else if (error) {
+                    errorMessage += '<br><small>' + error + '</small>';
+                }
+
                 $fetchStatus.html(`<div class="alert alert-danger">
-                <i class="fa-solid fa-times-circle mr-2"></i>${i18next.t('Failed to fetch update package.')}
+                <i class="fa-solid fa-times-circle mr-2"></i>${errorMessage}
             </div>`);
                 $statusIcon.html('<i class="fa-solid fa-times text-danger"></i>');
                 $button.prop('disabled', false);
@@ -197,9 +222,26 @@ function setupApplyStep() {
                     upgradeStepper.next();
                 }, 1000);
             })
-            .fail(function () {
+            .fail(function (xhr, status, error) {
+                let errorMessage = i18next.t('Upgrade failed. Please check the logs.');
+                
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage += '<br><small>' + xhr.responseJSON.message + '</small>';
+                } else if (xhr.responseText) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.message) {
+                            errorMessage += '<br><small>' + response.message + '</small>';
+                        }
+                    } catch (e) {
+                        errorMessage += '<br><small>' + xhr.status + ': ' + xhr.statusText + '</small>';
+                    }
+                } else if (error) {
+                    errorMessage += '<br><small>' + error + '</small>';
+                }
+
                 $applyStatus.html(`<div class="alert alert-danger">
-                <i class="fa-solid fa-times-circle mr-2"></i>${i18next.t('Upgrade failed. Please check the logs.')}
+                <i class="fa-solid fa-times-circle mr-2"></i>${errorMessage}
             </div>`);
                 $statusIcon.html('<i class="fa-solid fa-times text-danger"></i>');
                 $button.prop('disabled', false);
