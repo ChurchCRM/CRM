@@ -42,8 +42,8 @@ function passwordResetRequest(Request $request, Response $response, array $args)
 {
     $logger = LoggerUtils::getAppLogger();
     
-    $body = $request->getParsedBody();
-    $userName = strtolower(trim($body['userName'] ?? ''));
+    $body = json_decode($request->getBody(), true, 512, JSON_THROW_ON_ERROR);
+    $userName = trim($body['userName'] ?? '');
     
     if (empty($userName)) {
         throw new HttpBadRequestException($request, gettext('Login Name is required'));
@@ -67,6 +67,6 @@ function passwordResetRequest(Request $request, Response $response, array $args)
         return SlimUtils::renderJSON($response, ['success' => true]);
     }
 
-    $logger->info('Password reset token sent to: ' . $user->getEmail() . ' for user: ' . $user->getUserName());
+    $logger->info('Password reset token sent for user: ' . $user->getUserName());
     return SlimUtils::renderJSON($response, ['success' => true]);
 }

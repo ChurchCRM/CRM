@@ -74,13 +74,8 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         dataType: 'json'
                     })
                         .done(function(data) {
-                            if (data.success) {
-                                window.CRM.notify(i18next.t('Check your email for a password reset link'), { type: 'success', delay: 3000 });
-                                setTimeout(function() { window.location.href = window.CRM.root + '/'; }, 1400);
-                            } else {
-                                window.CRM.notify(i18next.t('Sorry, we are unable to process your request at this point in time.'), { type: 'danger', delay: 5000 });
-                                $btn.prop('disabled', false).text(i18next.t('Send Reset Email'));
-                            }
+                            window.CRM.notify(i18next.t('Check your email for a password reset link'), { type: 'success', delay: 3000 });
+                            setTimeout(function() { window.location.href = window.CRM.root + '/'; }, 3100);
                         })
                         .fail(function(jqXHR) {
                             var msg = i18next.t('Sorry, we are unable to process your request at this point in time.');
@@ -93,8 +88,8 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                 }
 
                 $btn.on('click', reset);
-                $user.on('keypress', function(e) {
-                    if (e.which === 13) {
+                $user.on('keydown', function(e) {
+                    if (e.which === 13 || e.key === 'Enter') {
                         e.preventDefault();
                         reset();
                     }
