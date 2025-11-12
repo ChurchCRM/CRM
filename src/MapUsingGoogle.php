@@ -18,62 +18,63 @@ require_once 'Include/Header.php';
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 ?>
 
-<div class="callout callout-info">
+<div class="alert alert-info">
     <a href="<?= SystemURLs::getRootPath() ?>/UpdateAllLatLon.php" class="btn btn-secondary"><i class="fa-solid fa-map-marker"></i> </a>
     <?= gettext('Missing Families? Update Family Latitude or Longitude now.') ?>
 </div>
 
 <?php if (ChurchMetaData::getChurchLatitude() === '') {
-    ?>
-    <div class="callout callout-danger">
+?>
+    <div class="alert alert-danger">
         <?= gettext('Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.') ?>
     </div>
     <?php
 } else {
     if (SystemConfig::getValue('sGoogleMapsRenderKey') === '') {
-        ?>
-        <div class="callout callout-warning">
-          <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?></a>
+    ?>
+        <div class="alert alert-warning">
+            <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?></a>
         </div>
-        <?php
+    <?php
     }
 
-        $plotFamily = false;
-        //Get the details from DB
-        $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
+    $plotFamily = false;
+    //Get the details from DB
+    $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
 
     if ($iGroupID > 0) {
         //Get all the members of this group
         $persons = PersonQuery::create()
-        ->usePerson2group2roleP2g2rQuery()
-        ->filterByGroupId($iGroupID)
-        ->endUse()
-        ->find();
+            ->usePerson2group2roleP2g2rQuery()
+            ->filterByGroupId($iGroupID)
+            ->endUse()
+            ->find();
     } elseif ($iGroupID == 0) {
         // group zero means map the cart
         if (!empty($_SESSION['aPeopleCart'])) {
             $persons = PersonQuery::create()
-            ->filterById($_SESSION['aPeopleCart'])
-            ->find();
+                ->filterById($_SESSION['aPeopleCart'])
+                ->find();
         }
     } else {
         //Map all the families
         $families = FamilyQuery::create()
-        ->filterByDateDeactivated(null)
-        ->filterByLatitude(0, Criteria::NOT_EQUAL)
-        ->filterByLongitude(0, Criteria::NOT_EQUAL)
-        ->usePersonQuery('per')
-        ->filterByFmrId($dirRoleHead)
-        ->endUse()
-        ->find();
+            ->filterByDateDeactivated(null)
+            ->filterByLatitude(0, Criteria::NOT_EQUAL)
+            ->filterByLongitude(0, Criteria::NOT_EQUAL)
+            ->usePersonQuery('per')
+            ->filterByFmrId($dirRoleHead)
+            ->endUse()
+            ->find();
         $plotFamily = true;
     }
 
-        //Markericons list
-        $icons = Classification::getAll();
+    //Markericons list
+    $icons = Classification::getAll();
 
-        $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
-        array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification?>
+    $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
+    array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification
+    ?>
 
     <!--Google Map Scripts -->
     <script
@@ -85,67 +86,67 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
         <div id="map" class="map-div"></div>
 
         <!-- map Desktop legend-->
-        <div id="maplegend"><h4><?= gettext('Legend') ?></h4>
+        <div id="maplegend">
+            <h4><?= gettext('Legend') ?></h4>
             <div class="row legendbox">
                 <div class="legenditem" data-classification="0">
                     <img
-                        src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
-                    <input type="checkbox" class="legenditem-checkbox" id="legenditem-0" checked/>
+                        src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png' />
+                    <input type="checkbox" class="legenditem-checkbox" id="legenditem-0" checked />
                     <?= gettext('Unassigned') ?>
                 </div>
                 <?php
                 foreach ($icons as $icon) {
-                    ?>
+                ?>
                     <div class="legenditem" data-classification="<?= $icon->getOptionId() ?>">
                         <img
-                            src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
-                        <input type="checkbox" class="legenditem-checkbox" id="legenditem-<?= $icon->getOptionId() ?>" checked/>
+                            src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png' />
+                        <input type="checkbox" class="legenditem-checkbox" id="legenditem-<?= $icon->getOptionId() ?>" checked />
                         <?= $icon->getOptionName() ?>
                     </div>
-                    <?php
+                <?php
                 } ?>
             </div>
         </div>
 
         <!-- map Mobile legend-->
-        <div id="maplegend-mobile" class="box visible-xs-block">
+        <div id="maplegend-mobile" class="card visible-xs-block">
             <div class="row legendbox">
                 <div class="btn bg-primary col-xs-12"><?= gettext('Legend') ?></div>
             </div>
             <div class="row legendbox">
                 <div class="col-xs-6 legenditem" data-classification="0">
                     <img
-                        class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                        class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png' />
                     <div class="legenditemtext"><?= gettext('Unassigned') ?></div>
                 </div>
                 <?php
                 foreach ($icons as $icon) {
-                    ?>
+                ?>
                     <div class="col-xs-6 legenditem" data-classification="<?= $icon->getOptionId() ?>">
                         <img
-                            class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                            class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png' />
                         <div class="legenditemtext"><?= $icon->getOptionName() ?></div>
                     </div>
-                    <?php
+                <?php
                 } ?>
             </div>
         </div>
     </div> <!--Box-->
 
-    <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $(document).ready(function() {
-            $(".legenditem-checkbox").change(function(e){
+            $(".legenditem-checkbox").change(function(e) {
                 var category = $(this).parent().data("classification");
                 var checked = $(this).prop("checked");
-                window.CRM.map.setClassificationVisible(category,checked);
+                window.CRM.map.setClassificationVisible(category, checked);
                 //e.preventDefault();
                 //return false;
             });
             $(".legenditem").click(function(e) {
                 if (e.target.tagName != 'INPUT') {
                     var inp = $(this).find("input");
-                    inp.prop("checked",!inp.prop("checked"));
+                    inp.prop("checked", !inp.prop("checked"));
                     inp.trigger("change");
                     return false;
                 }
@@ -153,9 +154,9 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
         });
 
         window.CRM.map = {
-            markers:  new Array(),
+            markers: new Array(),
             setClassificationVisible: function(clsID, visible) {
-                for (var i=0; i<window.CRM.map.plotArray.length; i++) {
+                for (var i = 0; i < window.CRM.map.plotArray.length; i++) {
                     if (window.CRM.map.plotArray[i].Classification == clsID) {
                         window.CRM.map.markers[i].setVisible(visible);
                     }
@@ -164,7 +165,8 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
         };
         var churchloc = {
             lat: <?= ChurchMetaData::getChurchLatitude() ?>,
-            lng: <?= ChurchMetaData::getChurchLongitude() ?>};
+            lng: <?= ChurchMetaData::getChurchLongitude() ?>
+        };
 
         var markerIcons = <?= json_encode($markerIcons) ?>;
         var iconsJSON = <?= $icons->toJSON() ?>;
@@ -186,7 +188,7 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
             });
             window.CRM.map.markers.push(marker);
 
-            google.maps.event.addListener(marker, 'click', function () {
+            google.maps.event.addListener(marker, 'click', function() {
                 infowindow.setContent(infowindow_content);
                 infowindow.open(map, marker);
             });
@@ -195,7 +197,7 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
         function initialize() {
             // init map
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: <?= SystemConfig::getValue("iMapZoom")?>,
+                zoom: <?= SystemConfig::getValue("iMapZoom") ?>,
                 center: churchloc
 
             });
@@ -207,7 +209,7 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
                 map: map
             });
 
-            google.maps.event.addListener(map, 'click', function () {
+            google.maps.event.addListener(map, 'click', function() {
                 infowindow.close();
             });
 
@@ -297,8 +299,7 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
         }
         initialize();
-
     </script>
-    <?php
+<?php
 }
 require_once 'Include/Footer.php';

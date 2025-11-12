@@ -113,10 +113,12 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/', function (Request $request, Response $response, array $args): Response {
         $groupSettings = $request->getParsedBody();
         $group = new Group();
-        if ($groupSettings['isSundaySchool']) {
+        if ($groupSettings['isSundaySchool'] ?? false) {
             $group->makeSundaySchool();
         }
         $group->setName($groupSettings['groupName']);
+        $group->setDescription($groupSettings['description'] ?? '');
+        $group->setType($groupSettings['groupType'] ?? 0);
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });
@@ -127,7 +129,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $group = GroupQuery::create()->findOneById($groupID);
         $group->setName($input['groupName']);
         $group->setType($input['groupType']);
-    $group->setDescription(htmlspecialchars($input['description'] ?? '', ENT_QUOTES, 'UTF-8'));
+        $group->setDescription($input['description'] ?? '');
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });

@@ -123,7 +123,7 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     </div>
     <div class="card-body">
         <div class="mb-3">
-            <?= $thisGroup->getDescription() ?>
+            <?= htmlspecialchars($thisGroup->getDescription() ?? '', ENT_QUOTES, 'UTF-8') ?>
         </div>
         <div class="row mt-3">
             <div class="col-md-4">

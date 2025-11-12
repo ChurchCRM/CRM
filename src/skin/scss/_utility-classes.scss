@@ -22,6 +22,12 @@
  * - .text-center, .text-right, .text-left (instead of .text-center/right/left)
  * - .m-0, .mx-auto, .mt-5, etc. (instead of .margin-*, .padding-*)
  * - .w-100, .w-75, .w-50 (instead of .width-*)
+ * 
+ * DEPRECATED CLASSES (Migrated to Bootstrap):
+ * - .callout, .callout-info, .callout-warning, .callout-danger → Use Bootstrap .alert .alert-info .alert-warning .alert-danger
+ * - .ShadedBox, .LightShadedBox → Use Bootstrap .card .card-body or .alert
+ * - .box-info, .box-danger, .box-warning → Use Bootstrap .card with .bg-info .bg-danger .bg-warning
+ * - .main-box, .main-box-body → Use Bootstrap .card .card-body
  */
 
 /* ============================================

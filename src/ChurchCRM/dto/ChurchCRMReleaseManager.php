@@ -188,37 +188,29 @@ class ChurchCRMReleaseManager
 
     public static function downloadLatestRelease(): array
     {
-        // this is a proxy function.  For now, just download the nest step release
-        // Ensure releases are loaded before checking
+        // Ensure releases are loaded
         if (empty($_SESSION['ChurchCRMReleases'])) {
             $_SESSION['ChurchCRMReleases'] = self::populateReleases();
         }
 
-        $currentRelease = ChurchCRMReleaseManager::getReleaseFromString($_SESSION['sSoftwareInstalledVersion']);
-
-        // Check if the current version is already the latest
-        if (ChurchCRMReleaseManager::isReleaseCurrent($currentRelease)) {
-            throw new \Exception('Current software version (' . $currentRelease . ') is already the latest available release. No upgrade needed.');
+        // Get the latest release (first in the array since it's sorted)
+        if (empty($_SESSION['ChurchCRMReleases'])) {
+            throw new \Exception('No releases available from GitHub.');
         }
 
-        $releaseToDownload = ChurchCRMReleaseManager::getNextReleaseStep($currentRelease);
-        if (null === $releaseToDownload) {
-            throw new \Exception('No suitable upgrade available. Current version: ' . $currentRelease);
-        }
+        $latestRelease = $_SESSION['ChurchCRMReleases'][0];
+        LoggerUtils::getAppLogger()->info('Downloading latest release: ' . $latestRelease);
 
-        return ChurchCRMReleaseManager::downloadRelease($releaseToDownload);
+        return ChurchCRMReleaseManager::downloadRelease($latestRelease);
     }
 
     public static function downloadRelease(ChurchCRMRelease $release): array
     {
         LoggerUtils::getAppLogger()->info('Downloading release: ' . $release);
         $logger = LoggerUtils::getAppLogger();
-        $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
+        $UpgradeDir = sys_get_temp_dir();
         $url = $release->getDownloadURL();
-        $logger->debug('Creating upgrade directory: ' . $UpgradeDir);
-        if (!is_dir($UpgradeDir)) {
-            mkdir($UpgradeDir);
-        }
+        $logger->debug('Using temp directory: ' . $UpgradeDir);
         $logger->info('Downloading release from: ' . $url . ' to: ' . $UpgradeDir . '/' . basename($url));
         $executionTime = new ExecutionTime();
         file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
@@ -316,5 +308,45 @@ class ChurchCRMReleaseManager
         $logger->info('Upgrade process complete');
         ini_set('display_errors', $displayErrors);
         self::$isUpgradeInProgress = false;
+    }
+
+    /**
+     * Check if a system update is available for the current installation
+     * Returns an array with 'available' (bool) and 'version' (ChurchCRMRelease|null) keys
+     *
+     * @return array{available: bool, version: ChurchCRMRelease|null}
+     */
+    public static function checkSystemUpdateAvailable(): array
+    {
+        try {
+            $installedVersionString = VersionUtils::getInstalledVersion();
+            $installedVersion = self::getReleaseFromString($installedVersionString);
+            $isCurrent = self::isReleaseCurrent($installedVersion);
+            
+            if (!$isCurrent) {
+                $nextRelease = self::getNextReleaseStep($installedVersion);
+                if (null !== $nextRelease) {
+                    LoggerUtils::getAppLogger()->info('System update available', [
+                        'currentVersion' => $installedVersionString,
+                        'availableVersion' => $nextRelease->__toString()
+                    ]);
+                    return [
+                        'available' => true,
+                        'version' => $nextRelease
+                    ];
+                }
+            }
+
+            return [
+                'available' => false,
+                'version' => null
+            ];
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->warning('Failed to check for system updates', ['exception' => $e]);
+            return [
+                'available' => false,
+                'version' => null
+            ];
+        }
     }
 }
