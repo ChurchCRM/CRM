@@ -28,23 +28,52 @@ function getMenus(Request $request, Response $response, array $args): Response
 
 function addMenu(Request $request, Response $response, array $args): Response
 {
+    $data = json_decode($request->getBody(), true);
+    
+    // Custom validation before ORM validation
+    $errors = [];
+    
+    // Validate Name
+    if (empty($data['Name']) || trim($data['Name']) === '') {
+        $errors[] = 'Menu name is required';
+    } elseif (strlen(trim($data['Name'])) < 2) {
+        $errors[] = 'Menu name must be at least 2 characters';
+    } elseif (strlen(trim($data['Name'])) > 50) {
+        $errors[] = 'Menu name must be 50 characters or less';
+    } elseif (preg_match('/<[^>]*>/', $data['Name'])) {
+        $errors[] = 'Menu name cannot contain HTML tags';
+    }
+    
+    // Validate Uri with permissive URL check
+    if (empty($data['Uri']) || trim($data['Uri']) === '') {
+        $errors[] = 'Link address is required';
+    } elseif (!preg_match('/^https?:\/\//i', $data['Uri'])) {
+        $errors[] = 'Link must start with http:// or https://';
+    } elseif (!preg_match('/^https?:\/\/[^\s\/$.?#].[^\s]*$/i', $data['Uri'])) {
+        $errors[] = 'Link must be a valid URL';
+    } elseif (preg_match('/<[^>]*>/', $data['Uri'])) {
+        $errors[] = 'Link address cannot contain HTML tags';
+    }
+    
+    if (!empty($errors)) {
+        return SlimUtils::renderJSON(
+            $response,
+            [
+                'error' => gettext('Validation Error'),
+                'failures' => $errors
+            ],
+            400
+        );
+    }
+    
     $link = new MenuLink();
     $link->fromJSON($request->getBody());
 
-    if ($link->validate()) {
-        $link->save();
+    // Skip ORM validation since we already validated above
+    // The ORM's strict URL validator would reject valid URLs with special chars
+    $link->save();
 
-        return SlimUtils::renderJSON($response, $link->toArray());
-    }
-
-    return SlimUtils::renderJSON(
-        $response,
-        [
-            'error' => gettext('Validation Error'),
-            'failures' => ORMUtils::getValidationErrors($link->getValidationFailures())
-        ],
-        400
-    );
+    return SlimUtils::renderJSON($response, $link->toArray());
 }
 
 function delMenu(Request $request, Response $response, array $args): Response
