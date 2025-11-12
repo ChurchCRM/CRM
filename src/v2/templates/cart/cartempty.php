@@ -8,7 +8,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // Normalize and sanitize incoming query parameters used by this template
 $sMessage = $_GET['Message'] ?? null;
 
-if (!array_key_exists('Message', $_GET)) {
+if ($sMessage === null) {
 ?>
   <p class="text-center alert alert-warning"><?= gettext('You have no items in your cart.') ?> </p>
   <?php
