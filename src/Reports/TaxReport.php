@@ -120,6 +120,7 @@ $aSQLCriteria[1] = $criteriaStr;
 $iCountRows = count($rsReport);
 if ($iCountRows < 1) {
     header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+    exit();
 }
 
 // Create Giving Report -- PDF
@@ -244,14 +245,14 @@ if ($output === 'pdf') {
     $pdf = new PdfTaxReport();
 
     // Loop through result array
-    $currentFamilyID = 0;
+    $currentFamilyID = -1;  // Initialize to -1 so first record (even with fam_ID=0) creates a new page
     foreach ($rsReport as $row) {
         extract($row);
 
         // Minimum amount filtering is now handled in FinancialService
         // No need to re-query for minimum amount check
         // Check for new family
-        if ($fam_ID != $currentFamilyID && $currentFamilyID != 0) {
+        if ($fam_ID != $currentFamilyID && $currentFamilyID != -1) {
             //New Family. Finish Previous Family
             $pdf->SetFont('Times', 'B', 10);
             $pdf->Cell(20, $summaryIntervalY / 2, ' ', 0, 1);
@@ -448,5 +449,6 @@ if ($output === 'pdf') {
         CsvExporter::create($headers, $rows, 'TaxReport', 'UTF-8', true);
     } else {
         header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+        exit();
     }
 }
