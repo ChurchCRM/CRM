@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\AuthService;
+use Propel\Runtime\Map\TableMap;
 
 class FinancialService
 {
@@ -483,7 +484,13 @@ class FinancialService
             $query->filterByDepId($depositId);
         }
 
-        return $query->find()->toArray();
+        // Get results and convert to array with foreign objects included
+        $collection = $query->find();
+        $results = [];
+        foreach ($collection as $pledge) {
+            $results[] = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], true);
+        }
+        return $results;
     }
 
     /**
@@ -527,7 +534,13 @@ class FinancialService
             $query->filterByAmount($minimumAmount, Criteria::GREATER_EQUAL);
         }
 
-        return $query->find()->toArray();
+        // Get results and convert to array with foreign objects included
+        $collection = $query->find();
+        $results = [];
+        foreach ($collection as $pledge) {
+            $results[] = $pledge->toArray(\Propel\Runtime\Map\TableMap::TYPE_PHPNAME, true, [], true);
+        }
+        return $results;
     }
 
     /**
@@ -547,24 +560,29 @@ class FinancialService
         // Get all families with at least one member (classification ID 1)
         $familyQuery = FamilyQuery::create()
             ->usePersonQuery()
-                ->filterByClassificationId(1)
+                ->filterByClsId(1)
             ->endUse();
 
         // Get family IDs that made payments in the date range
         $paidFamilyIds = PledgeQuery::create()
             ->filterForZeroGivers($dateStart, $dateEnd)
-            ->select('FamId')
+            ->select(['FamId'])
             ->distinct()
             ->find()
             ->toArray();
 
+        // Flatten the array of arrays to just IDs
+        $paidFamilyIds = array_map(function($row) {
+            return is_array($row) ? $row[0] : $row;
+        }, $paidFamilyIds);
+
         // Exclude families that made payments
         if (!empty($paidFamilyIds)) {
-            $familyQuery->filterByFamId($paidFamilyIds, Criteria::NOT_IN);
+            $familyQuery->filterById($paidFamilyIds, Criteria::NOT_IN);
         }
 
         return $familyQuery
-            ->orderByFamId()
+            ->orderById()
             ->find()
             ->toArray();
     }

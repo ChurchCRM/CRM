@@ -50,9 +50,9 @@ class PledgeQuery extends BasePledgeQuery
         // Note: Classification filtering is complex and requires post-processing
         // as it involves a relationship through ListOption. Can be added to service layer if needed.
 
-        return $this->joinWithFamily()
-            ->joinWithDonationFund()
-            ->joinWithPerson()
+        return $this->leftJoinWithFamily()
+            ->leftJoinWithDonationFund()
+            ->leftJoinWithPerson()
             ->orderByFamId()
             ->orderByDate();
     }
@@ -100,10 +100,11 @@ class PledgeQuery extends BasePledgeQuery
         // Note: Classification filtering is complex and requires post-processing
         // as it involves a relationship through ListOption. Can be added to service layer if needed.
 
-        $this->joinWithFamily()
-            ->joinWithDeposit()
-            ->joinWithDonationFund()
-            ->joinWithPerson();
+        // Use left joins to avoid filtering out records with missing relationships
+        $this->leftJoinWithFamily()
+            ->leftJoinWithDeposit()
+            ->leftJoinWithDonationFund()
+            ->leftJoinWithPerson();
 
         // Apply sorting
         if ($sort === 'fund') {
