@@ -93,7 +93,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             ->joinDonationFund()->useDonationFundQuery()
             ->withColumn('DonationFund.Name', 'DonationFundName')
             ->endUse()
-            ->joinFamily()->useFamilyQuery()
+            ->leftJoinFamily()->useFamilyQuery()
             ->withColumn('Family.Name', 'FamilyName')
             ->endUse()
             ->find()
@@ -124,7 +124,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->joinDonationFund()
             ->withColumn('DonationFund.Name')
-            ->joinWithFamily()
+            ->leftJoinWithFamily()
             ->find()
             ->toArray();
 
