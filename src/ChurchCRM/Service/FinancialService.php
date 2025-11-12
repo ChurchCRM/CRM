@@ -524,7 +524,7 @@ class FinancialService
             $query->filterByDepId($depositId);
         }
         if ($minimumAmount > 0) {
-            $query->filterByAmount($minimumAmount, \Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL);
+            $query->filterByAmount($minimumAmount, Criteria::GREATER_EQUAL);
         }
 
         return $query->find()->toArray();
@@ -560,7 +560,7 @@ class FinancialService
 
         // Exclude families that made payments
         if (!empty($paidFamilyIds)) {
-            $familyQuery->filterByFamId($paidFamilyIds, \Propel\Runtime\ActiveQuery\Criteria::NOT_IN);
+            $familyQuery->filterByFamId($paidFamilyIds, Criteria::NOT_IN);
         }
 
         return $familyQuery
