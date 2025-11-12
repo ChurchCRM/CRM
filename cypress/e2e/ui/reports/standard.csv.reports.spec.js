@@ -163,11 +163,7 @@ function getTodayDate() {
     return formatDate(new Date());
 }
 
-function getPastDate(daysAgo) {
-    const date = new Date();
-    date.setDate(date.getDate() - daysAgo);
-    return formatDate(date);
-}
+
 
 function formatDate(date) {
     const month = String(date.getMonth() + 1).padStart(2, "0");
