@@ -64,7 +64,7 @@ $(".user-setting-select").on("focusout", function () {
                 {
                     type: "success",
                     delay: 5000,
-                }
+                },
             );
             setTimeout(function () {
                 window.location.reload();

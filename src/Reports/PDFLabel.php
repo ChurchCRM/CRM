@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\CsvExporter;
 
 function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
 {
@@ -777,55 +778,45 @@ if ($sFileType === 'PDF') {
         $pdf->Output();
     }
 } else {
-    // File Type must be CSV
-    $delimiter = SystemConfig::getValue('sCSVExportDelimiter');
-
-    $sCSVOutput = '';
+    // File Type must be CSV - Use CsvExporter for RFC 4180 compliance and formula injection prevention
+    // Build headers
+    $headers = [];
     if ($iBulkCode) {
-        $sCSVOutput .= '"ZipBundle"' . $delimiter;
+        $headers[] = 'ZipBundle';
     }
+    $headers[] = 'Greeting';
+    $headers[] = 'Name';
+    $headers[] = 'Address';
+    $headers[] = 'City';
+    $headers[] = 'State';
+    $headers[] = 'Zip';
 
-    $sCSVOutput .= '"' . InputUtils::translateSpecialCharset('Greeting') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('Name') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('Address') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('City') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('State') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('Zip') . '"' . "\n";
-
+    // Build rows - handle newline-separated names and addresses by creating multiple rows
+    $rows = [];
     foreach ($aLabelList as $sLT) {
-        if ($iBulkCode) {
-            $sCSVOutput .= '"' . $sLT['Note'] . '"' . $delimiter;
-        }
+        // Handle multiline names (split by newline into separate rows)
+        $nameLines = explode("\n", $sLT['Name']);
+        $addressLines = explode("\n", $sLT['Address']);
 
-        $iNewline = strpos($sLT['Name'], "\n");
-        if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '""' . $delimiter . '"' . InputUtils::translateSpecialCharset($sLT['Name']) . '"' . $delimiter;
-        } else {
-            $sCSVOutput .= '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], 0, $iNewline)) . '"' . $delimiter .
-                            '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], $iNewline + 1)) . '"' . $delimiter;
+        // Create a row for each combination of name and address lines
+        $maxLines = max(count($nameLines), count($addressLines));
+        for ($i = 0; $i < $maxLines; $i++) {
+            $row = [];
+            if ($iBulkCode) {
+                $row[] = ($i === 0) ? $sLT['Note'] : ''; // Only add Note on first line
+            }
+            $row[] = ($i === 0) ? $sLT['Greeting'] : '';  // Only add Greeting on first line
+            $row[] = $nameLines[$i] ?? '';
+            $row[] = $addressLines[$i] ?? '';
+            $row[] = ($i === 0) ? $sLT['City'] : '';      // Only add City on first line
+            $row[] = ($i === 0) ? $sLT['State'] : '';     // Only add State on first line
+            $row[] = ($i === 0) ? $sLT['Zip'] : '';       // Only add Zip on first line
+            $rows[] = $row;
         }
-
-        $iNewline = strpos($sLT['Address'], "\n");
-        if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"' . InputUtils::translateSpecialCharset($sLT['Address']) . '"' . $delimiter;
-        } else {
-            $sCSVOutput .= '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], 0, $iNewline)) . '"' . $delimiter .
-                            '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], $iNewline + 1)) . '"' . $delimiter;
-        }
-
-        $sCSVOutput .= '"' . InputUtils::translateSpecialCharset($sLT['City']) . '"' . $delimiter .
-                        '"' . InputUtils::translateSpecialCharset($sLT['State']) . '"' . $delimiter .
-                        '"' . $sLT['Zip'] . '"' . "\n";
     }
 
-    header('Content-type: application/csv;charset=' . SystemConfig::getValue('sCSVExportCharset'));
-    header('Content-Disposition: attachment; filename=Labels-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
-    header('Content-Transfer-Encoding: binary');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public');
-
-    // Add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-    if (SystemConfig::getValue('sCSVExportCharset') == 'UTF-8') {
-        echo "\xEF\xBB\xBF";
-    }
-
-    echo $sCSVOutput;
+    // Use CsvExporter for output with proper charset handling
+    CsvExporter::create($headers, $rows, 'Labels', SystemConfig::getValue('sCSVExportCharset'), true);
 }
 
 exit;

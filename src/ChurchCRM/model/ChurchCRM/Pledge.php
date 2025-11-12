@@ -43,7 +43,12 @@ class Pledge extends BasePledge
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
     {
         $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
-        $family = $this->getFamily();
+        
+        // Only add FamilyString if foreign objects are NOT included
+        // When $includeForeignObjects is true, the Family object is already serialized in the array
+        // and attempting to access it again can cause circular reference issues
+        if (!$includeForeignObjects) {
+            $family = $this->getFamily();
 
         if ($family) {
             // This must be done in the Pledge object model instead of during a query with Propel's ->WithColumn() syntax
