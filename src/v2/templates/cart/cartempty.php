@@ -5,17 +5,24 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-if (!array_key_exists('Message', $_GET)) {
+// Normalize and sanitize incoming query parameters used by this template
+$sMessage = $_GET['Message'] ?? null;
+
+if ($sMessage === null) {
 ?>
   <p class="text-center alert alert-warning"><?= gettext('You have no items in your cart.') ?> </p>
   <?php
 } else {
-  switch ($_GET['Message']) {
+  switch ($sMessage) {
     case 'aMessage':
-      $event = EventQuery::create()->findPk($_GET['iEID']);
+      // Cast numeric values to int and escape any string output
+      $iCount = (int)($_GET['iCount'] ?? 0);
+      $iEID = (int)($_GET['iEID'] ?? 0);
+      $event = EventQuery::create()->findPk($iEID);
+      $eventTitle = $event ? htmlspecialchars($event->getTitle(), ENT_QUOTES, 'UTF-8') : '';
   ?>
-      <p class="text-center alert alert-info"><?= $_GET['iCount'] . ' ' . ((int) $_GET['iCount'] === 1 ? gettext('Record') : gettext('Records')) . ' ' . gettext("Emptied into Event") . ':' ?>
-        <a href="<?= SystemURLs::getRootPath() ?>/EditEventAttendees.php?eventId=<?= $_GET['iEID'] ?>"><?= $event->getTitle() ?></a>
+      <p class="text-center alert alert-info"><?= $iCount . ' ' . ($iCount === 1 ? gettext('Record') : gettext('Records')) . ' ' . gettext("Emptied into Event") . ':' ?>
+        <a href="<?= SystemURLs::getRootPath() ?>/EditEventAttendees.php?eventId=<?= $iEID ?>"><?= $eventTitle ?></a>
       </p>
 <?php
       break;
