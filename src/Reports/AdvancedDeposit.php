@@ -452,6 +452,10 @@ $page = 1;
         }
 
         foreach ($rsReport as $aRow) {
+            $fun_ID = isset($aRow['fun_ID']) ? $aRow['fun_ID'] : null;
+            $fun_Name = isset($aRow['fun_Name']) ? $aRow['fun_Name'] : null;
+            $fam_ID = isset($aRow['fam_ID']) ? $aRow['fam_ID'] : null;
+            $fam_Name = isset($aRow['fam_Name']) ? $aRow['fam_Name'] : null;
             if (!$fun_ID) {
                 $fun_ID = -1;
                 $fun_Name = 'Undesignated';
