@@ -93,11 +93,9 @@ class PledgeQuery extends BasePledgeQuery
         if (!empty($familyIds)) {
             $this->filterByFamId($familyIds, \Propel\Runtime\ActiveQuery\Criteria::IN);
         }
-        // Handle payment methods - filter each one individually
+        // Handle payment methods - filter by all methods using IN
         if (!empty($methods)) {
-            foreach ($methods as $method) {
-                $this->addOr(PledgeQuery::create()->filterByMethod($method));
-            }
+            $this->filterByMethod($methods, \Propel\Runtime\ActiveQuery\Criteria::IN);
         }
         // Note: Classification filtering is complex and requires post-processing
         // as it involves a relationship through ListOption. Can be added to service layer if needed.
