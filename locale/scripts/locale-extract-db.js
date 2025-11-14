@@ -243,5 +243,3 @@ if (require.main === module) {
 }
 
 module.exports = DatabaseTermExtractor;
-
-module.exports = DatabaseTermExtractor;
