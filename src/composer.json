@@ -11,7 +11,6 @@
     "authors": [
         {
             "name": "George Dawoud",
-            "homepage": "http://blog.dawouds.com",
             "role": "Lead Developer"
         }
     ],
@@ -84,8 +83,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ChurchCRM\\": "ChurchCRM/",
-            "\\": "bin/"
+            "ChurchCRM\\": "ChurchCRM/"
         },
         "classmap": [
             "ChurchCRM/"
@@ -100,6 +98,8 @@
         },
         "sort-packages": true
     },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "scripts": {
         "orm-gen": "php vendor/bin/propel --config-dir=propel model:build",
         "sql-gen": "php vendor/bin/propel --config-dir=propel sql:build",
