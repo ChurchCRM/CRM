@@ -31,4 +31,4 @@ jobs:
       - name: Typecheck (tsc)
         run: npx tsc --noEmit --pretty
       - name: Lint (eslint)
-        run: npx eslint "react/**/*.{js,jsx,ts,tsx}" --ext .js,.jsx,.ts,.tsx
+        run: npx eslint "react/**/*.{js,jsx,ts,tsx}"
