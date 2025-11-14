@@ -63,8 +63,7 @@
     {
       "files": ["**/*.ts", "**/*.tsx"],
       "parserOptions": {
-        "project": "./tsconfig.json",
-        "tsconfigRootDir": "/Users/gdawoud/Development/ChurchCRM/CRM"
+        "project": "./tsconfig.json"
       }
     },
     {
