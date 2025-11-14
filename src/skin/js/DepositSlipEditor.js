@@ -172,10 +172,10 @@ function initDepositSlipEditor() {
 
 function initCharts(
     pledgeLabels,
-    pledgeChartData,
+    pledgeData,
     pledgeBackgroundColor,
     fundLabels,
-    fundChartData,
+    fundData,
     fundBackgroundColor,
 ) {
     var pieOptions = {
