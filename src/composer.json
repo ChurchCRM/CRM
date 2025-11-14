@@ -62,7 +62,6 @@
         "symfony/dependency-injection": "^6.0.20",
         "symfony/translation": "^5.4.35",
         "twig/twig": "^3.20.0",
-        "verot/class.upload.php": "^2.1.6",
         "vonage/client": "^2.4.0"
     },
     "require-dev": {
