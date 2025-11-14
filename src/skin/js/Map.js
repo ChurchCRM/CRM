@@ -87,6 +87,6 @@ $(document).ready(function () {
         // Create the Google Map using elements
         var map1 = new google.maps.Map(mapElement1, mapOptions1);
 
-        marker = new google.maps.Marker({ position: LatLng, map: map1 });
+        new google.maps.Marker({ position: LatLng, map: map1 });
     }
 });
