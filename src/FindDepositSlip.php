@@ -29,7 +29,7 @@ require_once 'Include/Header.php';
         <div class="container-fluid">
           <div class="col-lg-4">
             <label for="depositComment"><?= gettext('Deposit Comment') ?></label>
-            <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
+            <input class="form-control newDeposit w-100" name="depositComment" id="depositComment">
           </div>
           <div class="col-lg-3">
             <label for="depositType"><?= gettext('Deposit Type') ?></label>
@@ -42,7 +42,7 @@ require_once 'Include/Header.php';
           </div>
           <div class="col-lg-3">
             <label for="depositDate"><?= gettext('Deposit Date') ?></label>
-            <input class="form-control" name="depositDate" id="depositDate" style="width:100%" class="date-picker">
+            <input class="form-control w-100 date-picker" name="depositDate" id="depositDate">
           </div>
         </div>
       </div>
@@ -62,14 +62,14 @@ require_once 'Include/Header.php';
   </div>
   <div class="card-body">
     <div class="container-fluid">
-      <table class="display responsive nowrap data-table table table-striped table-hover" id="depositsTable" width="100%"></table>
+      <table class="display responsive text-nowrap data-table table table-striped table-hover" id="depositsTable" width="100%"></table>
 
       <button type="button" id="deleteSelectedRows" class="btn btn-danger"
               disabled> <?= gettext('Delete Selected Rows') ?> </button>
       <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
-              disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (OFX)') ?></button>
+              disabled><i class="fa-solid fa-download"></i> <?= gettext('Export Selected Rows (OFX)') ?></button>
       <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
-              disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
+              disabled><i class="fa-solid fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
       <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
               disabled> <?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button>
     </div>

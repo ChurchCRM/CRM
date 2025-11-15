@@ -12,53 +12,40 @@ use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
-use Slim\HttpCache\CacheProvider;
-
-$app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
 
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
         $photo = new Photo('Family', $args['familyId']);
         return SlimUtils::renderPhoto($response, $photo);
-    });
+    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
 
     $group->post('/photo', function (Request $request, Response $response): Response {
-        $input = $request->getParsedBody();
-
         /** @var Family $family */
         $family = $request->getAttribute('family');
-        $family->setImageFromBase64($input['imgBase64']);
-
-        return SlimUtils::renderSuccessJSON($response);
+        $input = $request->getParsedBody();
+        
+        try {
+            $family->setImageFromBase64($input['imgBase64']);
+            return SlimUtils::renderSuccessJSON($response);
+        } catch (\Exception $e) {
+            return SlimUtils::renderJSON($response, [
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 400);
+        }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
 
-        return SlimUtils::renderJSON($response, ['status' => $family->deletePhoto()]);
+        return SlimUtils::renderJSON($response, ['success' => $family->deletePhoto()]);
     })->add(EditRecordsRoleAuthMiddleware::class);
-
-    $group->get('/thumbnail', function (Request $request, Response $response, array $args): Response {
-        $this->cache->withExpires(
-            $response,
-            MiscUtils::getPhotoCacheExpirationTimestamp()
-        );
-        $photo = new Photo('Family', $args['familyId']);
-
-        $response
-            ->withHeader('Content-type', $photo->getThumbnailContentType())
-            ->getBody()
-                ->write($photo->getThumbnailBytes());
-
-        return $response;
-    });
 
     $group->get('', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */

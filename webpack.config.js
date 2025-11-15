@@ -5,14 +5,19 @@ const webpack = require('webpack');
 module.exports = {
   mode: "development",
   entry: {
-    'calendar-event-editor' : './react/calendar-event-editor.tsx',
-    'two-factor-enrollment' : './react/two-factor-enrollment.tsx',
-    'skin-main' : './webpack/skin-main',
-    'skin-loggedout' : './webpack/skin-loggedout'
+    'calendar-event-editor': './react/calendar-event-editor.tsx',
+    'two-factor-enrollment': './react/two-factor-enrollment.tsx',
+    'churchcrm': './webpack/skin-main',  // Main bundle for all pages
+    'photo-uploader': './webpack/photo-uploader-entry',  // Photo uploader for specific pages
+    'setup': './webpack/setup',  // Setup wizard styles
+    'family-register': './webpack/family-register',  // Family registration styles and scripts
+    'upgrade-wizard': './webpack/upgrade-wizard',  // Upgrade wizard styles and scripts
+    'locale-loader': './webpack/locale-loader'  // Dynamic locale loader
   },
   output: {
-    path:path.resolve('./src/skin/v2'),
-    filename:'[name].js'
+    path: path.resolve('./src/skin/v2'),
+    filename: '[name].min.js',
+    publicPath: '/skin/v2/'
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -24,29 +29,41 @@ module.exports = {
   module: {
     rules: [
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { 
-        test: /\.tsx?$/, 
-        loader: "ts-loader" 
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader"
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: {
+                filter: (url) => {
+                  // Only process relative URLs, skip absolute paths and data URIs
+                  return !url.startsWith('/') && !url.startsWith('data:');
+                },
+              },
+            },
+          },
+          'sass-loader',
+        ],
       },
       {
         test: /\.(woff2?|ttf|eot|svg|png|jpg|gif)$/,
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name].[hash][ext]',
+        },
       },
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      'window.$': 'jquery',
+      filename: '[name].min.css',
+      ignoreOrder: false,
     }),
   ],
 }

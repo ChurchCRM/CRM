@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 
 $sPageTitle = gettext("Change Password") . ": " . $user->getFullName();
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -18,6 +19,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- /.box-header -->
             <!-- form start -->
             <form method="post" action="<?= SystemURLs::getRootPath()?>/v2/user/current/changepassword" id="passwordChangeForm">
+                <?= CSRFUtils::getTokenInputField('user_change_password') ?>
                 <div class="card-body">
                     <div class="form-group">
                         <label for="OldPassword"><?= gettext('Old Password') ?>:</label>

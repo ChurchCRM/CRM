@@ -1251,10 +1251,6 @@ msgid "Family List"
 msgstr "Orodha ya Familia"
 
 #: 
-msgid "Add Family"
-msgstr "Ongeza familia"
-
-#: 
 msgid "Created"
 msgstr "Imetengenezwa"
 
@@ -1279,10 +1275,6 @@ msgid "Next Family"
 msgstr "Familia Inayofuata"
 
 #: 
-msgid "Delete this Family"
-msgstr "Futa familia"
-
-#: 
 msgid "Upload Photo"
 msgstr "Pakia picha"
 
@@ -1293,10 +1285,6 @@ msgstr "Futa picha"
 #: 
 msgid "Add a Note"
 msgstr "Ongeza Dokezo"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Ongeza Wanafamilia Wote kwenye Cart"
 
 #: 
 msgid "Timeline"
@@ -1405,10 +1393,6 @@ msgstr "Unakaribia kutuma nakala ya maelezo ya familia kwa barua pepe kwa barua 
 #: 
 msgid "Financial Reports"
 msgstr "Ripoti za Fedha"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Hakuna rekodi zilizorejeshwa kutoka kwa ripoti ya awali."
 
 #: 
 msgid "Report Type:"
@@ -1771,10 +1755,6 @@ msgid "Remove from Cart"
 msgstr "Ondoa kwenye Cart"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Maandishi ya Kitambulisho cha Tukio: "
-
-#: 
 msgid "Group Editor"
 msgstr "Mhariri wa Kikundi"
 
@@ -1943,10 +1923,6 @@ msgid "Group View"
 msgstr "Mtazamo wa Kikundi"
 
 #: 
-msgid "Group Functions"
-msgstr "Kazi za Kikundi"
-
-#: 
 msgid "Edit this Group"
 msgstr "Hariri Kikundi hiki"
 
@@ -2007,8 +1983,9 @@ msgid "Assigned Properties"
 msgstr "Mali Zilizogawiwa"
 
 #: 
-msgid "Group Members:"
-msgstr "Wanakikundi:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Wanakikundi"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2789,10 +2766,6 @@ msgid "Query Listing"
 msgstr "Uorodheshaji wa Maswali"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Endesha Hoja ya Maandishi Bila Malipo"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Hoja ya Maandishi Bila Malipo"
 
@@ -2931,10 +2904,6 @@ msgstr "Futa Rekodi ya Familia PEKEE"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Futa Rekodi ya Familia NA Wanafamilia"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Kichujio na Cart"
 
 #: 
 msgid "Listing"
@@ -3325,14 +3294,6 @@ msgid "Select Fiscal Year"
 msgstr "Chagua Mwaka wa Fedha"
 
 #: 
-msgid "pm"
-msgstr "jioni"
-
-#: 
-msgid "am"
-msgstr "asubuhi"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Kitambulisho batili cha Mhariri!"
 
@@ -3633,20 +3594,12 @@ msgid "Sunday School Class Functions"
 msgstr "Kazi za Darasa la Shule ya Jumapili"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Geuza Kunjuzi"
-
-#: 
 msgid "Teachers"
 msgstr "Walimu"
 
 #: 
 msgid "Send Message"
 msgstr "Tuma Ujumbe"
-
-#: 
-msgid "View Profile"
-msgstr "Tazama Wasifu"
 
 #: 
 msgid "Quick Status"
@@ -3985,68 +3938,12 @@ msgid "Edit Settings"
 msgstr "Badilisha Mipangilio"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Boresha ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Hatua ya 1: Hifadhidata ya Hifadhi"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Tafadhali unda hifadhi rudufu kabla ya kuanza mchakato wa kuboresha."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Tengeneza Hifadhidata ya Hifadhidata"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Hatua ya 2: Leta Kifurushi cha Usasishaji kwenye Seva"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Pakua faili za hivi punde kutoka kwa ukurasa wa kutolewa wa ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Leta Faili za Usasishaji"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Hatua ya 3: Tumia Kifurushi cha Usasishaji kwenye Seva"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Toa kumbukumbu ya sasisho, na utumie faili mpya"
-
-#: 
 msgid "Full Path:"
 msgstr "Njia Kamili:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Kuboresha Mfumo"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Hatua ya 4: Ingia"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Ingia kwa Mfumo Ulioboreshwa"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Hifadhi rudufu Imekamilika, Tayari kwa Kupakuliwa."
-
-#: 
-msgid "Backup Error."
-msgstr "Hitilafu ya Hifadhi Nakala."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4147,18 +4044,6 @@ msgstr "Kila mwaka"
 #: 
 msgid "Registration Complete"
 msgstr "Usajili Umekamilika"
-
-#: 
-msgid "Register"
-msgstr "Sajili"
-
-#: 
-msgid "Register your family"
-msgstr "Sajili familia yako"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Ni watu wangapi katika familia yako"
 
 #: 
 msgid "Add All Classes"
@@ -6945,10 +6830,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Tafadhali hakikisha hiki unachotaka kufanya.</p>"
 
 #: 
-msgid " this Family"
-msgstr " hii Familia"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Thibitisha Kuzima"
 
@@ -6979,10 +6860,6 @@ msgstr "Kuratibu jina la faili la msingi wa data:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Pitana na Mkokoteni"
-
-#: 
-msgid "Family Member"
-msgstr "Mwanafamilia"
 
 #: 
 msgid "select an option"
@@ -7095,10 +6972,6 @@ msgstr "Tazama Picha"
 #: 
 msgid "Family Photo"
 msgstr "Picha ya Familia"
-
-#: 
-msgid "Quick Settings"
-msgstr "Mipangilio ya Haraka"
 
 #: 
 msgid "Status"
@@ -7402,24 +7275,12 @@ msgid "Reset Password"
 msgstr "Weka upya Nenosiri"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Imeshindwa kuweka upya nenosiri"
-
-#: 
 msgid "Reset your password"
 msgstr "Weka upya nenosiri lako"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Samahani, hatuwezi kushughulikia ombi lako kwa wakati huu."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Jina la Kuingia Linahitajika"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Nenosiri jipya limetumwa kwako. Tafadhali angalia barua pepe yako"
 
 #: 
 msgid "Kiosk Manager"
@@ -7520,10 +7381,6 @@ msgstr "Ondoa zote"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Sio washiriki wote wa kikundi hiki walio kwenye rukwama"
-
-#: 
-msgid "Add all"
-msgstr "Ongeza yote"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7773,10 +7630,6 @@ msgid "Maximum number of Addresses"
 msgstr "Idadi ya juu zaidi ya Anwani"
 
 #: 
-msgid "Show type of group:"
-msgstr "Onyesha aina ya kikundi:"
-
-#: 
 msgid "Add Students"
 msgstr "Ongeza Wanafunzi"
 
@@ -7823,26 +7676,6 @@ msgstr "Unda Kitabu cha Picha"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Urefu wa kutumia kwa picha"
-
-#: 
-msgid "Width to use for images"
-msgstr "Upana wa kutumia kwa picha"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Upana wa kutumia kwa vijipicha"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Ukubwa wa sehemu ya kutumia kwa vijipicha vya herufi"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Sekunde za akiba ya mteja kwa picha"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7895,10 +7728,6 @@ msgstr "Sogeza Tukio"
 #: 
 msgid "Resize Event"
 msgstr "Badilisha ukubwa wa Tukio"
-
-#: 
-msgid "Text from"
-msgstr "Maandishi kutoka"
 
 #: 
 msgid "Profile"
@@ -8418,10 +8247,6 @@ msgid "Menu Name"
 msgstr "Jina la Menyu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Upeo wa herufi 20"
-
-#: 
 msgid "Link Address"
 msgstr "Anwani ya Kiungo"
 
@@ -8567,10 +8392,6 @@ msgid "Integrity Check Details:"
 msgstr "Maelezo ya Kukagua Uadilifu:"
 
 #: 
-msgid "I Understand"
-msgstr "Naelewa"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Aina za Amana zisizotumika zimegunduliwa"
 
@@ -8598,10 +8419,6 @@ msgstr "Tengeneza Hifadhi Nakala"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Sehemu ya Mwisho ya Hifadhi Nakala ya Mbali. Ikiwa WebDAV, hii lazima iwe url iliyosimbwa. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Jumuisha faili za picha za herufi, faili za picha za mbali (gravatar), na vijipicha kwenye chelezo. Faili hizi kwa ujumla zinaweza kutolewa tena baada ya kurejeshwa na kuongeza thamani ndogo sana kwenye hifadhi ya chelezo kwa gharama kubwa ya muda wa utekelezaji na uhifadhi."
 
 #: 
 msgid "Password (if any)"
@@ -8666,7 +8483,8 @@ msgstr "Maelezo ya mtu ambayo hayapatikani yaliyorithiwa kutoka kwa familia iliy
 "imeonyeshwa IKIWA habari inayolingana HAIJAINGIWA kwa mtu huyo. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Bonyeza CTRL + C ili kunakili nambari za simu za washiriki wote wa kikundi"
 
 #: 
@@ -8766,10 +8584,6 @@ msgid "Remove Results from Cart"
 msgstr "Ondoa Matokeo kutoka kwa Cart"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Onyo: Majukumu ya Kuboresha Mapema Yamegunduliwa"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Baadhi ya masharti yametambuliwa ambayo yanaweza kuzuia uboreshaji uliofanikiwa"
 
@@ -8800,14 +8614,6 @@ msgstr "Weka upya Hifadhidata"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Hii itaweka upya data ya mfumo na itaanzisha upya mfumo kama usakinishaji mpya."
-
-#: 
-msgid "Clear Filter"
-msgstr "Futa Kichujio"
-
-#: 
-msgid "Add Person"
-msgstr "Ongeza Mtu"
 
 #. Context: locales
 #: 
@@ -8945,10 +8751,6 @@ msgstr "Nenosiri lako jipya linafanana sana na la zamani."
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Kuweka upya nenosiri hakupatikani. Tafadhali wasiliana na msimamizi wa mfumo wako"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Suala la Uthibitishaji"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

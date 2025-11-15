@@ -11,12 +11,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><?= gettext('Email Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath()?>/email/MemberEmailExport.php" class="btn btn-app"><i class="fa fa-table"></i><?= gettext('Email Export') ?></a>
-        <a href="<?= SystemURLs::getRootPath()?>/v2/email/duplicate" class="btn btn-app"><i class="fa fa-exclamation-triangle"></i><?= gettext('Find Duplicate Emails') ?></a>
-        <a href="<?= SystemURLs::getRootPath()?>/v2/email/missing" class="btn btn-app"><i class="fa fa-bell-slash"></i><?= gettext('Families Without Emails') ?></a>
-        <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
-        <a href="<?= SystemURLs::getRootPath()?>/v2/email/debug" class="btn btn-app"><i class="fa fa-stethoscope"></i><?= gettext('Debug') ?></a>
-        <?php } ?>
+        <div class="text-center">
+            <a href="<?= SystemURLs::getRootPath()?>/email/MemberEmailExport.php" class="btn btn-app bg-info"><i class="fa-solid fa-table fa-3x"></i><br><?= gettext('Email Export') ?></a>
+            <a href="<?= SystemURLs::getRootPath()?>/v2/email/duplicate" class="btn btn-app bg-warning"><i class="fa-solid fa-exclamation-triangle fa-3x"></i><br><?= gettext('Find Duplicate Emails') ?></a>
+            <a href="<?= SystemURLs::getRootPath()?>/v2/email/missing" class="btn btn-app bg-danger"><i class="fa-solid fa-bell-slash fa-3x"></i><br><?= gettext('Families Without Emails') ?></a>
+            <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
+            <a href="<?= SystemURLs::getRootPath()?>/v2/email/debug" class="btn btn-app bg-secondary"><i class="fa-solid fa-stethoscope fa-3x"></i><br><?= gettext('Debug') ?></a>
+            <?php } ?>
+        </div>
     </div>
 </div>
 
@@ -77,7 +79,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-lg-12 col-md-7 col-sm-3">
             <div class="card card-body">
                 <div class="alert alert-warning">
-                    <h4><i class="fa fa-ban"></i> <?= gettext('MailChimp is not configured') ?></h4>
+                    <h4><i class="fa-solid fa-ban"></i> <?= gettext('MailChimp is not configured') ?></h4>
                     <?= gettext('Please update the MailChimp API key in:') ?> <a
                         href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php#Integration"><?= gettext('Integration') ?></a>
                 </div>

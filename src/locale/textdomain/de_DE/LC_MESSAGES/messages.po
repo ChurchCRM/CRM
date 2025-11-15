@@ -1292,10 +1292,6 @@ msgid "Family List"
 msgstr "Familienliste"
 
 #: 
-msgid "Add Family"
-msgstr "Familie hinzufügen"
-
-#: 
 msgid "Created"
 msgstr "Erstellt"
 
@@ -1320,10 +1316,6 @@ msgid "Next Family"
 msgstr "Nächste Familie"
 
 #: 
-msgid "Delete this Family"
-msgstr "Diese Familie löschen"
-
-#: 
 msgid "Upload Photo"
 msgstr "Foto hochladen"
 
@@ -1334,10 +1326,6 @@ msgstr "Foto löschen"
 #: 
 msgid "Add a Note"
 msgstr "Notiz hinzufügen"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Alle Familienmitglieder zum Wagen hinzufügen"
 
 #: 
 msgid "Timeline"
@@ -1448,10 +1436,6 @@ msgstr "Sie sind dabei, Familieninformationen als-Kopie zu den folgenden Adresse
 #: 
 msgid "Financial Reports"
 msgstr "Finanzenberichte"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Es wurden keine Daten vom vorherigen Report zurückgegeben."
 
 #: 
 msgid "Report Type:"
@@ -1825,10 +1809,6 @@ msgid "Remove from Cart"
 msgstr "Vom Korb entfernen"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Text für Veranstaltungs ID:"
-
-#: 
 msgid "Group Editor"
 msgstr "Gruppen Editor"
 
@@ -2008,10 +1988,6 @@ msgid "Group View"
 msgstr "Gruppenansicht"
 
 #: 
-msgid "Group Functions"
-msgstr "Gruppenfunktionen"
-
-#: 
 msgid "Edit this Group"
 msgstr "Diese Gruppe bearbeiten"
 
@@ -2077,8 +2053,9 @@ msgid "Assigned Properties"
 msgstr "Eigenschaften festlegen"
 
 #: 
-msgid "Group Members:"
-msgstr "Gruppen Mitglieder:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Gruppen Mitglieder"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2874,10 +2851,6 @@ msgid "Query Listing"
 msgstr "Abfrageliste"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Starte eine freie Textsuche"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Freie Textsuche"
 
@@ -3018,10 +2991,6 @@ msgstr "Nur den Familieneintrag löschen"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Lösche Familieneinträge und Familienmitglieder"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filtern und dem Wagen hinzufügen"
 
 #: 
 msgid "Listing"
@@ -3434,14 +3403,6 @@ msgid "Select Fiscal Year"
 msgstr "Steuerjahr auswählen"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "abends"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ungültige Editor ID!"
 
@@ -3754,20 +3715,12 @@ msgid "Sunday School Class Functions"
 msgstr "Funktionen der Sonntagsschulklasse"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Dropdown ein-/ausklappen"
-
-#: 
 msgid "Teachers"
 msgstr "Lehrer"
 
 #: 
 msgid "Send Message"
 msgstr "Nachricht senden"
-
-#: 
-msgid "View Profile"
-msgstr "Profil anzeigen"
 
 #: 
 msgid "Quick Status"
@@ -4115,68 +4068,12 @@ msgid "Edit Settings"
 msgstr "Einstellungen bearbeiten"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "ChurchCRM upgraden"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Schritt 1: Datenbank Backup"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Bitte erstellen Sie ein Datenbank Backup bevor Sie den Upgrade Prozess beginnen."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Datenbank Backup erstellen"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Schritt 2: Update-Paket vom Server holen"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Hole die neusten Dateien von der ChurchCRM-GitHub-Seite"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Update-Dateien herunterladen"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Schritt 3: Update-Paket auf dem Server entpacken"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Das Update-Paket entpacken und die neuen Dateien anwenden"
-
-#: 
 msgid "Full Path:"
 msgstr "Voller Pfad:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Aktualisiere System"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Schritt 4: Login"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Login zum aktualisierten System"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup vollständig. Fertig zum Download."
-
-#: 
-msgid "Backup Error."
-msgstr "Backup Fehler."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4278,18 +4175,6 @@ msgstr "jährlich"
 #: 
 msgid "Registration Complete"
 msgstr "Registrierung vollständig."
-
-#: 
-msgid "Register"
-msgstr "Registrieren"
-
-#: 
-msgid "Register your family"
-msgstr "Registriere Deine Familie"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Wie viele Personen sind in Deiner Familie"
 
 #: 
 msgid "Add All Classes"
@@ -7079,10 +6964,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Bitte stelle sicher, dass Du dies tun möchtest.<p>"
 
 #: 
-msgid " this Family"
-msgstr " diese Familie"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bestätige die Deaktivierung"
 
@@ -7113,10 +6994,6 @@ msgstr "Dateiname der Koordinatendatenbank:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Schnittmenge mit Wagen"
-
-#: 
-msgid "Family Member"
-msgstr "Familienmitglieder"
 
 #: 
 msgid "select an option"
@@ -7230,10 +7107,6 @@ msgstr "Zeige Foto"
 #: 
 msgid "Family Photo"
 msgstr "Familienfoto"
-
-#: 
-msgid "Quick Settings"
-msgstr "Schnelle Einstellungen"
 
 #: 
 msgid "Status"
@@ -7537,24 +7410,12 @@ msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Das Passwort konnte nicht zurückgesetzt werden"
-
-#: 
 msgid "Reset your password"
 msgstr "Passwort zurücksetzen"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Es tut uns leid, dass wir Ihre Anfrage zum jetzigen Zeitpunkt nicht bearbeiten können."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Login-Name erforderlich"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Ein neues Passwort wurde Ihnen zugesandt. Bitte überprüfen Sie Ihre E-Mail"
 
 #: 
 msgid "Kiosk Manager"
@@ -7655,10 +7516,6 @@ msgstr "Alle entfernen"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Nicht alle Mitglieder dieser Gruppe befinden sich im Warenkorb."
-
-#: 
-msgid "Add all"
-msgstr "Alle hinzufügen"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7909,10 +7766,6 @@ msgid "Maximum number of Addresses"
 msgstr "Maximale Anzahl der Adressen"
 
 #: 
-msgid "Show type of group:"
-msgstr "Gruppentyp anzeigen:"
-
-#: 
 msgid "Add Students"
 msgstr "Schüler hinzufügen"
 
@@ -7959,26 +7812,6 @@ msgstr "Fotoalbum erstellen"
 #: 
 msgid "SSE"
 msgstr "SSO"
-
-#: 
-msgid "Height to use for images"
-msgstr "Zu verwendende Höhe für Bilder"
-
-#: 
-msgid "Width to use for images"
-msgstr "Zu verwendende Breite für Bilder"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Breite, die für Miniaturansichten zu verwenden ist"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Zu verwendende Punktgröße für Initialen-Miniaturansichten"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Client-Cache-Sekunden für Bilder"
 
 #: 
 msgid "Server cache time for remote images"
@@ -8031,10 +7864,6 @@ msgstr "Veranstaltung verschieben"
 #: 
 msgid "Resize Event"
 msgstr "Ereignis Größenänderung "
-
-#: 
-msgid "Text from"
-msgstr "Text von"
 
 #: 
 msgid "Profile"
@@ -8556,10 +8385,6 @@ msgid "Menu Name"
 msgstr "Menü-Name"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max. 20 Zeichen"
-
-#: 
 msgid "Link Address"
 msgstr "Link-Adresse"
 
@@ -8706,10 +8531,6 @@ msgid "Integrity Check Details:"
 msgstr "Integritäts-Check-Details:"
 
 #: 
-msgid "I Understand"
-msgstr "Ich akzeptiere"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Nicht unterstützte Einzahlungstypen entdeckt"
 
@@ -8737,10 +8558,6 @@ msgstr "Backup generieren"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote-Backup-Endpunkt.  Wenn WebDAV, muss dies url-codiert sein"
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Einschließlich der Initialen von Bilddateien, Remote-Bilddateien (Gravatar) und Miniaturbildern in der Sicherung.  Diese Dateien können im Allgemeinen nach einer Wiederherstellung wiederhergestellt werden und fügen dem Backup-Archiv nur einen sehr geringen Wert bei hohem Aufwand an Ausführungszeit und Speicherplatz hinzu."
 
 #: 
 msgid "Password (if any)"
@@ -8805,7 +8622,8 @@ msgstr "Nicht verfügbare Personeninformationen, die von der zugeordneten Famili
 "angezeigt WENN die entsprechende Information für diese Person NICHT eingegeben wurde. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Drücken Sie CTRL + C, um die Telefonnummern aller Gruppenmitglieder zu kopieren."
 
 #: 
@@ -8917,10 +8735,6 @@ msgid "Remove Results from Cart"
 msgstr "Ergebnisse aus dem Warenkorb entfernen"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Warnung: Pre-Upgrade-Aufgaben entdeckt"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Es wurden einige Bedingungen festgestellt, die ein erfolgreiches Upgrade verhindern können"
@@ -8952,14 +8766,6 @@ msgstr "Datenbank zurücksetzen"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Dadurch werden die Systemdaten zurückgesetzt und das System als Neuinstallation neu gestartet."
-
-#: 
-msgid "Clear Filter"
-msgstr "Filter löschen"
-
-#: 
-msgid "Add Person"
-msgstr "Person hinzufügen"
 
 #. Context: locales
 #: 
@@ -9098,10 +8904,6 @@ msgstr "Ihr neues Passwort ist Ihrem alten zu ähnlich."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Passwortrücksetzung nicht verfügbar.  Bitte kontaktieren Sie Ihren Systemadministrator"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Authentifizierungsproblem"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

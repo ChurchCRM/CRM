@@ -13,31 +13,37 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><?= _("Duplicate Emails") ?></h3>
             </div>
             <div class="card-body">
-                <table id="dupEmails" class="table table-striped table-bordered table-responsive data-table">
+                <div class="table-responsive">
+                <table id="dupEmails" class="table table-striped table-bordered data-table">
                     <tbody></tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
+    function initializeDuplicateEmails() {
         var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/persons/duplicate/emails",
                 dataSrc: 'emails'
             },
+            responsive: false,
+            autoWidth: false,
             columns: [
                 {
                     title: i18next.t('Email'),
                     data: 'email',
+                    width: '20%'
                 },
                 {
                     title: i18next.t('People'),
                     data: 'people',
+                    width: '40%',
                     render: function ( data, type, row ){
-                        var render ="<ul>";
+                        var render ="<ul class='mb-0'>";
                         $.each( data, function( key, value ) {
                             render += "<li><a href='"+ window.CRM.root + "/PersonView.php?PersonID=" +value.id + "' target='user' />"+ value.name + "</a></li>";
                         });
@@ -49,8 +55,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 {
                     title: i18next.t('Families'),
                     data: 'families',
+                    width: '40%',
                     render: function ( data, type, row ){
-                        var render ="<ul>";
+                        var render ="<ul class='mb-0'>";
                         $.each( data, function( key, value ) {
                             render += "<li><a href='"+ window.CRM.root + "/v2/family/" +value.id + "' target='family' />"+ value.name + "</a></li>";
                         });
@@ -63,6 +70,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#dupEmails").DataTable(dataTableConfig);
+    }
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializeDuplicateEmails);
     });
 
     function peopleToString(people) {

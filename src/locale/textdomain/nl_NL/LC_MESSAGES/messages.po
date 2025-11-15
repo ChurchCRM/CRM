@@ -1251,10 +1251,6 @@ msgid "Family List"
 msgstr "Gezinnen"
 
 #: 
-msgid "Add Family"
-msgstr " nieuw gezin"
-
-#: 
 msgid "Created"
 msgstr "Aangemaakt"
 
@@ -1279,10 +1275,6 @@ msgid "Next Family"
 msgstr "Volgend gezin"
 
 #: 
-msgid "Delete this Family"
-msgstr "Verwijder dit gezin"
-
-#: 
 msgid "Upload Photo"
 msgstr "Upload Foto"
 
@@ -1293,10 +1285,6 @@ msgstr "Verwijder Foto"
 #: 
 msgid "Add a Note"
 msgstr "Notitie toevoegen"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Gezinsleden in het werkbestand toevoegen"
 
 #: 
 msgid "Timeline"
@@ -1405,10 +1393,6 @@ msgstr "Je staat op het punt gezinsgegevens te versturen naar de volgende e-mail
 #: 
 msgid "Financial Reports"
 msgstr "Financiele Rapportage"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Geen records zijn uit de vorige rapportage gekomen."
 
 #: 
 msgid "Report Type:"
@@ -1771,10 +1755,6 @@ msgid "Remove from Cart"
 msgstr "Verwijder uit werkbestand"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Tekst van activiteitscode: "
-
-#: 
 msgid "Group Editor"
 msgstr "Groepsbeheer"
 
@@ -1943,10 +1923,6 @@ msgid "Group View"
 msgstr "Groepsbeheer"
 
 #: 
-msgid "Group Functions"
-msgstr "Groep functies"
-
-#: 
 msgid "Edit this Group"
 msgstr "Bewerk deze Groep"
 
@@ -2007,8 +1983,9 @@ msgid "Assigned Properties"
 msgstr "Toegevoegde kenmerken"
 
 #: 
-msgid "Group Members:"
-msgstr "Groep Leden:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Groep Leden"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2789,10 +2766,6 @@ msgid "Query Listing"
 msgstr "Overzicht van queries"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Run een Vrije-Text Query"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Vrije-Text Query"
 
@@ -2931,10 +2904,6 @@ msgstr "Verwijder ALLEEN Familie"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Verwijdeer Familie EN Familie Leden"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filter en werkbestand"
 
 #: 
 msgid "Listing"
@@ -3325,14 +3294,6 @@ msgid "Select Fiscal Year"
 msgstr "Selecteer Fiscaal Jaar"
 
 #: 
-msgid "pm"
-msgstr "s'avonds"
-
-#: 
-msgid "am"
-msgstr "Overdag"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ongeldig beheer ID!"
 
@@ -3633,20 +3594,12 @@ msgid "Sunday School Class Functions"
 msgstr "Catechisatie functies"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Schakel dropdown in"
-
-#: 
 msgid "Teachers"
 msgstr "Docenten"
 
 #: 
 msgid "Send Message"
 msgstr "Stuur bericht"
-
-#: 
-msgid "View Profile"
-msgstr "Toon profiel"
 
 #: 
 msgid "Quick Status"
@@ -3988,68 +3941,12 @@ msgid "Edit Settings"
 msgstr "Wijzig parameters"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Upgrade"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Stap 1: backup database"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Maak een back-up van de database voordat u begint met het upgradeproces."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "database back-up genereren"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Stap 2: Update-pakket ophalen van server"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Haal de nieuwste bestanden op van de GitHub-releasepagina"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Haal updatebestanden op."
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Stap 3: Update-pakket op server toepassen"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Pak het upgrade-archief, en de nieuwe bestanden toe te passen"
-
-#: 
 msgid "Full Path:"
 msgstr "Volledig pad:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Upgrade van de applicatie"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Stap 4: login"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Inloggen op geüpgrade applicatie"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup kompleet, gereed voor download."
-
-#: 
-msgid "Backup Error."
-msgstr "Back-up fout"
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4150,18 +4047,6 @@ msgstr "Jaarlijks"
 #: 
 msgid "Registration Complete"
 msgstr "Registratie voltooid"
-
-#: 
-msgid "Register"
-msgstr "Registreer"
-
-#: 
-msgid "Register your family"
-msgstr "Registreer je gezin"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Hoeveel personen telt je gezin?"
 
 #: 
 msgid "Add All Classes"
@@ -6954,10 +6839,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Zorg ervoor dat dit is wat u wilt doen.</p>"
 
 #: 
-msgid " this Family"
-msgstr " deze familie"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bevestig deactivering"
 
@@ -6988,10 +6869,6 @@ msgstr "Bestandsnaam coördinaatdatabase:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Combineren met werkbestand"
-
-#: 
-msgid "Family Member"
-msgstr "Gezinslid"
 
 #: 
 msgid "select an option"
@@ -7104,10 +6981,6 @@ msgstr "Bekijk foto"
 #: 
 msgid "Family Photo"
 msgstr "Gezinsfoto"
-
-#: 
-msgid "Quick Settings"
-msgstr "Parameters"
 
 #: 
 msgid "Status"
@@ -7410,24 +7283,12 @@ msgid "Reset Password"
 msgstr "Reset Password"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Kan wachtwoord niet resetten"
-
-#: 
 msgid "Reset your password"
 msgstr "Stel je wachtwoord opnieuw in"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Sorry, we kunnen uw verzoek op dit moment niet verwerken."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Inlognaam is vereist"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Er is een nieuw wachtwoord naar u verzonden. Controleer uw e-mail"
 
 #: 
 msgid "Kiosk Manager"
@@ -7528,10 +7389,6 @@ msgstr "Verwijder alles"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Niet alle leden van deze groep zitten in uw werkbestand"
-
-#: 
-msgid "Add all"
-msgstr "Voeg alles toe"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7781,10 +7638,6 @@ msgid "Maximum number of Addresses"
 msgstr "Maximaal aantal adressen"
 
 #: 
-msgid "Show type of group:"
-msgstr "Groepscategorie"
-
-#: 
 msgid "Add Students"
 msgstr "Leerlingen toevoegen"
 
@@ -7831,26 +7684,6 @@ msgstr "Maak een fotoboek"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Hoogte van de foto's"
-
-#: 
-msgid "Width to use for images"
-msgstr "Breedte van de foto's"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Breedte voor miniaturen"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Puntgrootte om te gebruiken voor initialenminiaturen"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Clientcache seconden voor afbeeldingen"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7903,10 +7736,6 @@ msgstr "Verplaats activiteit"
 #: 
 msgid "Resize Event"
 msgstr "Activiteit resize"
-
-#: 
-msgid "Text from"
-msgstr "Tekst van"
 
 #: 
 msgid "Profile"
@@ -8426,10 +8255,6 @@ msgid "Menu Name"
 msgstr "Menu naam"
 
 #: 
-msgid "Max 20 char"
-msgstr "Maximaal 20 karakters"
-
-#: 
 msgid "Link Address"
 msgstr "Link adres"
 
@@ -8575,10 +8400,6 @@ msgid "Integrity Check Details:"
 msgstr "Details van de integriteit controle"
 
 #: 
-msgid "I Understand"
-msgstr "Ik begrijp"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Niet-ondersteunde Deposit Types gedetecteerd."
 
@@ -8606,10 +8427,6 @@ msgstr "Back-up genereren"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote back-up eindpunt. Met WebDAV, moet dit url-gecodeerd zijn."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Neem afbeeldingsbestanden, externe afbeeldingsbestanden (gravatar) en miniaturen niet op in back-up. Deze bestanden kunnen over het algemeen worden gereproduceerd na een herstel en voegen zeer weinig waarde toe aan het back-uparchief, wat veel uitvoeringstijd en opslag kost"
 
 #: 
 msgid "Password (if any)"
@@ -8674,7 +8491,8 @@ msgstr "Niet-beschikbare persoonsgegevens overgenomen van toegewezen familie voo
 "weergegeven ALS de corresponderende info NIET is ingevoerd voor die persoon. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Druk op CTRL + C om de telefoonnummers van alle groepsleden te kopiëren"
 
 #: 
@@ -8786,10 +8604,6 @@ msgid "Remove Results from Cart"
 msgstr "Resultaten uit werkbestand verwijderen"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Waarschuwing: pre-upgradetaken gedetecteerd"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Er zijn enkele omstandigheden geïdentificeerd die een succesvolle upgrade kunnen verhinderen"
 
@@ -8820,14 +8634,6 @@ msgstr "Database resetten"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Hierdoor worden de systeemgegevens gereset en wordt het systeem opnieuw opgestart als een nieuwe installatie."
-
-#: 
-msgid "Clear Filter"
-msgstr "Wis filter"
-
-#: 
-msgid "Add Person"
-msgstr "Persoon toevoegen"
 
 #. Context: locales
 #: 
@@ -8965,10 +8771,6 @@ msgstr "Uw nieuwe wachtwoord lijkt te veel op het oude."
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Wachtwoord opnieuw instellen niet beschikbaar. Neem contact op met uw systeembeheerder"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Verificatieprobleem"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
@@ -9593,4 +9395,363 @@ msgstr "Kolommen voor de lijst met personen"
 #: 
 msgid "Family List Columns"
 msgstr "Kolommen voor de lijst met families"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "Kerk e-mail is niet ingesteld. Ga naar \"Instellingen\"."
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "Telugu - India"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Koreaans"
+
+#: 
+msgid "System Logs"
+msgstr "Systeem logbestanden"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Dwing Content Security Policy (CSP) af, als bescherming tegen cross-site scripting. Als dit uitgeschakeld is, worden CSP-overtredingen nog wel gerapporteerd."
+
+#: 
+msgid "Maximum number of log files to keep"
+msgstr "Maximum aantal logbestanden dat bewaard mag worden"
+
+#: 
+msgid "Too Many Log Files"
+msgstr "Teveel logbestanden"
+
+#: 
+msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
+msgstr "De map met logbestanden bevat teveel bestanden. Schoon de map op om schijfruimte vrij te maken."
+
+#: 
+msgid "Enter event description..."
+msgstr "Vul een "
+
+#: 
+msgid "Event ID"
+msgstr "Event ID"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Vul hier de notitie in"
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "Voor deze persoon zijn geen notities ingevoerd."
+
+#: 
+msgid "Note"
+msgstr "Notitie"
+
+#: 
+msgid "Log Settings"
+msgstr "Log instellingen"
+
+#: 
+msgid "Log Level:"
+msgstr "Log niveau:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Bewaar Log niveau"
+
+#: 
+msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
+msgstr "Een lager getal, betekent dat er meer details worden gelogged. Een hoger getal geeft aan dat alleen ernstige issues worden gelogged. Veranderingen worden per direct gebruikt voor nieuwe log-gebeurtenissen."
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Bekijk applicatie logbestanden. Klik op een bestand om de inhoud te zien."
+
+#: 
+msgid "Delete All Logs"
+msgstr "Verwijder alle logbestanden"
+
+#: 
+msgid "No log files found."
+msgstr "Geen logbestanden gevonden."
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Wilt u de gehele verzamelmap legen?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Het toevoegen van het gezin aan de verzamelmap is mislukt"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Het toevoegen van de groep aan de verzamelmap is mislukt"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Toevoegen aan de verzamelmap is mislukt"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Het legen van de verzamelmap is mislukt"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Het legen van de verzamelmap naar de groep is mislukt"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Het verwijderen van het gezin uit de verzamelmap is mislukt"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Verwijderen uit verzamelmap is mislukt"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Verwijderen van groep is mislukt"
+
+#: 
+msgid "Family added to cart"
+msgstr "Gezin toegevoegd aan verzamelmap"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Gezin verwijderd uit verzamelmap"
+
+#: 
+msgid "Group added to cart"
+msgstr "Groep toegevoegd aan verzamelmap"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Groep verwijderd van verzamelmap"
+
+#: 
+msgid "in cart"
+msgstr "in verzamelmap"
+
+#: 
+msgid "members. Already had"
+msgstr "leden. Zijn al"
+
+#: 
+msgid "people added to cart"
+msgstr "mensen toegevoegd aan verzamelmap"
+
+#: 
+msgid "people already in cart"
+msgstr "al aanwezige personen in de verzamelmap"
+
+#: 
+msgid "people from cart"
+msgstr "personen van verzamelmap"
+
+#: 
+msgid "people removed from cart"
+msgstr "personen verwijderd van verzamelmap"
+
+#: 
+msgid "Person already in cart"
+msgstr "Persoon reeds in verzamelmap"
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "Laat leeg om bestaande wachtwoord te houden"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Vul een groepsnaam in."
+
+#: 
+msgid "Role added successfully."
+msgstr "Rol succesvol toegevoegd."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Rol succesvol verwijderd."
+
+#: 
+msgid "Role name updated."
+msgstr "Naam rol geüpdatet."
+
+#: 
+msgid "View Group"
+msgstr "Bekijk groep"
+
+#: 
+msgid "Add Note"
+msgstr "Voeg notitie toe"
+
+#: 
+msgid "Events Today"
+msgstr "Evenementen vandaag"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Overzicht zondagschool"
+
+#: 
+msgid "Add Family Member"
+msgstr "Voeg gezinslid toe"
+
+#: 
+msgid "Address is required"
+msgstr "Adres is verplicht"
+
+#: 
+msgid "Base URL is required"
+msgstr "Website is verplicht"
+
+#: 
+msgid "City is required"
+msgstr "Plaats is verplicht"
+
+#: 
+msgid "Database name is required"
+msgstr "Database naam is verplicht"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "Database server hostname of IP-adres is verplicht (bijv localhost, of 127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "Database server port is verplicht (bijv 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "Database gebruikersnaam is verplicht"
+
+#: 
+msgid "Email Address"
+msgstr "E-mailadres"
+
+#: 
+msgid "Email address"
+msgstr "E-mailadres"
+
+#: 
+msgid "Enter family name"
+msgstr "Vul achternaam in"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Wachtwoord komt niet overeen"
+
+#: 
+msgid "Phone Type"
+msgstr "Soort telefoon"
+
+#: 
+msgid "Phone number"
+msgstr "Telefoonnummer"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Voeg minimaal één gezinslid toe"
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Verbeter de fouten voordat je verder gaat."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Vul een geldige website in"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Vul een geldig e-mailadres in"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Vul een geldig e-mailadres in (bij naam@voorbeeld.nl)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Vul een geldig nummer in"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Vul een geldig telefoonnummer in"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Vul alle verplichte velden correct in."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "Beoordeel alle informatie zorgvuldig voordat je het opslaat. U kunt achteraf altijd wijzigingen doorvoeren."
+
+#: 
+msgid "Previous"
+msgstr "Voorgaande"
+
+#: 
+msgid "Registration Error"
+msgstr "Registratiefout"
+
+#: 
+msgid "Review & Submit"
+msgstr "Beoordeel en sla op"
+
+#: 
+msgid "Role in Family"
+msgstr "Rol binnen gezin"
+
+#: 
+msgid "Select date"
+msgstr "\n"
+"Selecteer datum"
+
+#: 
+msgid "Street address"
+msgstr "Adres"
+
+#: 
+msgid "Submit Registration"
+msgstr "Sla registratie op"
+
+#: 
+msgid "Zip code is required"
+msgstr "Postcode is verplicht"
+
+#: 
+msgid "Download & Apply"
+msgstr "Download en pas toe"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "Download systeemupdate en pas toe"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "Download de laatste release en pas toe op uw ChurchCRM installatie."
+
+#: 
+msgid "Downloaded"
+msgstr "Gedownload"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "De meeste recente release wordt nu van Github gedownload ..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "Vul uw gebruikersnaam in, u krijgt dan een e-mail met een link om uw wachtwoord opnieuw in te stellen."
+
+#: 
+msgid "Expected Hash"
+msgstr "Verwachte hash"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Maken van de backup is mislukt."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Downloaden van het updatebestand is mislukt."
 

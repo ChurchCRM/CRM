@@ -1,10 +1,16 @@
+# Disable directory listings
+Options -Indexes
+
 RewriteEngine On
 
-# Some hosts may require you to use the `RewriteBase` directive.
-# If you need to use the `RewriteBase` directive, it should be the
-# absolute physical path to the directory that contains this htaccess file.
-#
-# RewriteBase /
+# Automatically handle subdirectory installations
+# The RewriteRule will pass the matched path to index.php
+# ChurchCRM uses the $sRootPath from Config.php to handle subdirectories
+# 
+# NOTE: If you have issues with routing, you may need to set RewriteBase manually:
+# For root installation (/): RewriteBase /
+# For subdirectory (/churchcrm): RewriteBase /churchcrm
+# For subdirectory (/xyz): RewriteBase /xyz
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [QSA,L]

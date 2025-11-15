@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Include/Config.php';
+require_once '../Include/LoadConfig.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
@@ -17,23 +17,27 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$rootPath = str_replace('/session/index.php', '', $_SERVER['SCRIPT_NAME']);
+// Get base path by combining $sRootPath from Config.php with /session endpoint
+// Examples: '' + '/session' = '/session' (root install)
+//           '/churchcrm' + '/session' = '/churchcrm/session' (subdirectory install)
+$basePath = SlimUtils::getBasePath('/session');
 
 $container = new ContainerBuilder();
 $container->compile();
 // Register custom error handlers
 AppFactory::setContainer($container);
 $app = AppFactory::create();
-$app->setBasePath($rootPath . '/session');
+$app->setBasePath($basePath);
 
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
-\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->addBodyParsingMiddleware();
-$app->add(new VersionMiddleware());
 $app->addRoutingMiddleware();
+
+$app->add(new VersionMiddleware());
 
 require __DIR__ . '/routes/password-reset.php';
 
@@ -62,9 +66,13 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
     AuthenticationManager::authenticate($request);
 }
 
-function endSession(Request $request, Response $response, array $args): void
+function endSession(Request $request, Response $response, array $args): Response
 {
-    AuthenticationManager::endSession();
+    AuthenticationManager::endSession(true);
+    $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
+    $response = $response->withHeader('Location', $redirectUrl)->withStatus(302);
+    $response->getBody()->write('');
+    return $response;
 }
 
 function beginSession(Request $request, Response $response, array $args): Response

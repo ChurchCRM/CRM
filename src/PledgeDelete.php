@@ -34,12 +34,12 @@ require_once 'Include/Header.php';
 
 <form method="post" action="PledgeDelete.php?<?= 'GroupKey=' . $sGroupKey . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
 
-<table cellpadding="3" align="center">
+<table cellpadding="3" class="mx-auto">
 
     <tr>
-        <td align="center">
-            <input type="submit" class="btn btn-default" value="<?= gettext('Delete') ?>" name="Delete">
-            <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel">
+        <td class="text-center">
+            <input type="submit" class="btn btn-secondary" value="<?= gettext('Delete') ?>" name="Delete">
+            <input type="submit" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="Cancel">
         </td>
     </tr>
 </table>

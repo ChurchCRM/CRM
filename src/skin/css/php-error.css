@@ -1,3 +1,18 @@
+/**
+ * PHP Error Page Styles
+ * 
+ * Standalone stylesheet for error page displayed when PHP version < 8.0
+ * NOT compiled via webpack - served as static CSS for error fallback
+ * 
+ * Location: src/php-error.html
+ * Link: /src/skin/css/php-error.css
+ * 
+ * This file must remain independent from webpack pipeline to work during PHP errors.
+ * It serves as a fallback error page that displays before the main application loads.
+ * If PHP version is incompatible, the application never initializes, so webpack
+ * bundles would not be available. This static CSS ensures the error page always loads.
+ */
+
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
 /*Variables */
 .left-section .inner-content {

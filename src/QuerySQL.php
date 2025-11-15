@@ -29,20 +29,20 @@ require_once 'Include/Header.php';
 ?>
 
 <form method="post">
-    <center>
+    <div class="text-center">
         <table>
             <tr>
                 <td class="LabelColumn"> <?= gettext('Export Results to CSV file') ?> </td>
                 <td class="TextColumn"><input name="CSV" type="checkbox" id="CSV" value="1"></td>
             </tr>
         </table>
-    </center>
+    </div>
 
-    <p align="center">
+    <p class="text-center">
         <textarea style="font-family:courier,fixed; font-size:9pt; padding:1rem;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
     </p>
-    <p align="center">
-        <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Execute SQL') ?>">
+    <p class="text-center">
+        <input type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Execute SQL') ?>">
     </p>
 
 </form>
@@ -98,7 +98,7 @@ function ExportQueryResults(string $sSQL, &$rsQueryResults)
 
 //Display the count of the recordset
 if (isset($_POST['SQL'])) {
-    echo '<p align="center">';
+    echo '<p class="text-center">';
     echo mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned');
     echo '</p>';
 }
@@ -115,7 +115,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
     } else {
         $sRowClass = 'RowColorA';
 
-        echo '<table align="center" cellpadding="5" cellspacing="0">';
+        echo '<table class="mx-auto table-spaced">';
 
         echo '<tr class="' . $sRowClass . '">';
 
@@ -124,7 +124,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
             //If this field is called "AddToCart", don't display this field...
             $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
             if ($fieldInfo->name != 'AddToCart') {
-                echo '  <td align="center">
+                echo '  <td class="text-center">
                             <b>' . $fieldInfo->name . '</b>
                             </td>';
             }
@@ -146,30 +146,30 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
                     $aHiddenFormField[] = $aRow[$iCount];
                 } else {  //...otherwise just render the field
                     //Write the actual value of this row
-                    echo '<td align="center">' . htmlspecialchars($aRow[$iCount]) . '</td>';
+                    echo '<td class="text-center">' . htmlspecialchars($aRow[$iCount]) . '</td>';
                 }
             }
             echo '</tr>';
         }
 
         echo '</table>';
-        echo '<p align="center">';
+        echo '<p class="text-center">';
 
         if ($aHiddenFormField && count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php
-            ?>
+?>
             <form method="post" action="CartView.php">
-                <p align="center">
+                <p class="text-center">
                     <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
-                    <input type="submit" class="btn btn-default" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
-                    <input type="submit" class="btn btn-default" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
-                    <input type="submit" class="btn btn-default" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
+                    <input type="submit" class="btn btn-secondary" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
+                    <input type="submit" class="btn btn-secondary" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
+                    <input type="submit" class="btn btn-secondary" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
                 </p>
             </form>
-            <?php
+<?php
         }
 
-        echo '<p align="center"><a href="QueryList.php">' . gettext('Return to Query Menu') . '</a></p>';
-        echo '<br><p class="ShadedBox" style="border-style: solid; margin-left: 50px; margin-right: 50px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', htmlspecialchars($sSQL)) . '</span></p>';
+        echo '<p class="text-center"><a href="QueryList.php">' . gettext('Return to Query Menu') . '</a></p>';
+        echo '<br><p class="card card-body" style="border-style: solid; margin-left: 50px; margin-right: 50px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', htmlspecialchars($sSQL)) . '</span></p>';
     }
 }
 

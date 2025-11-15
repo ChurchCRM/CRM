@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "Gesinslys"
 
 #: 
-msgid "Add Family"
-msgstr "Voeg familie by"
-
-#: 
 msgid "Created"
 msgstr "Geskep"
 
@@ -1280,10 +1276,6 @@ msgid "Next Family"
 msgstr "Volgende gesin"
 
 #: 
-msgid "Delete this Family"
-msgstr "Vee hierdie gesin uit"
-
-#: 
 msgid "Upload Photo"
 msgstr "Laai foto op"
 
@@ -1294,10 +1286,6 @@ msgstr "Vee foto uit"
 #: 
 msgid "Add a Note"
 msgstr "Voeg 'n nota by"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Voeg alle gesinslede by die mandjie"
 
 #: 
 msgid "Timeline"
@@ -1406,10 +1394,6 @@ msgstr "U is op die punt om 'n afskrif van die familie-inligting na die volgende
 #: 
 msgid "Financial Reports"
 msgstr "Finansiële verslae"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Geen rekords is teruggestuur uit die vorige verslag nie."
 
 #: 
 msgid "Report Type:"
@@ -1773,10 +1757,6 @@ msgid "Remove from Cart"
 msgstr "Haal dit uit die mandjie"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Teks vir geleentheid-ID: "
-
-#: 
 msgid "Group Editor"
 msgstr "Groepredakteur"
 
@@ -1945,10 +1925,6 @@ msgid "Group View"
 msgstr "Groepaansig"
 
 #: 
-msgid "Group Functions"
-msgstr "Groepfunksies"
-
-#: 
 msgid "Edit this Group"
 msgstr "Wysig hierdie groep"
 
@@ -2009,8 +1985,9 @@ msgid "Assigned Properties"
 msgstr "Toegewysde eiendomme"
 
 #: 
-msgid "Group Members:"
-msgstr "Groeplede:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Groeplede"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2791,10 +2768,6 @@ msgid "Query Listing"
 msgstr "Navraelys"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Voer 'n vrye-teks-navraag uit"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Vrae met vrye teks"
 
@@ -2934,10 +2907,6 @@ msgstr "Vee SLEGS Gesinsrekord uit"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Verwyder gesinsrekord EN familielede"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filter en wa"
 
 #: 
 msgid "Listing"
@@ -3329,14 +3298,6 @@ msgid "Select Fiscal Year"
 msgstr "Kies boekjaar"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "is"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ongeldige redakteur-ID!"
 
@@ -3637,20 +3598,12 @@ msgid "Sunday School Class Functions"
 msgstr "Sondagskoolklasfunksies"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Skakel aftreklys af"
-
-#: 
 msgid "Teachers"
 msgstr "Onderwysers"
 
 #: 
 msgid "Send Message"
 msgstr "Stuur boodskap"
-
-#: 
-msgid "View Profile"
-msgstr "Besigtig profiel"
 
 #: 
 msgid "Quick Status"
@@ -3991,68 +3944,12 @@ msgid "Edit Settings"
 msgstr "Wysig instellings"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Upgrade ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Stap 1: Rugsteundatabasis"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Maak asseblief 'n databasis-rugsteun voordat u met die opgraderingsproses begin."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Genereer databasis-rugsteun"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Stap 2: haal die opdateringspakket op die bediener"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Haal die nuutste lêers op die ChurchCRM GitHub-vrystellingsbladsy"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Haal opdateringslêers op"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Stap 3: Pas die opdateringspakket op die bediener toe"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Pak die opgraderingsargief uit en pas die nuwe lêers toe"
-
-#: 
 msgid "Full Path:"
 msgstr "Volle pad:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Opgraderingstelsel"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Stap 4: Teken in"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Teken in op opgegradeerde stelsel"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Rugsteun voltooi, gereed vir aflaai."
-
-#: 
-msgid "Backup Error."
-msgstr "Rugsteunfout."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4155,18 +4052,6 @@ msgstr "Jaarliks"
 #: 
 msgid "Registration Complete"
 msgstr "Registrasie voltooi"
-
-#: 
-msgid "Register"
-msgstr "Registreer"
-
-#: 
-msgid "Register your family"
-msgstr "Registreer u gesin"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Hoeveel mense is in jou familie"
 
 #: 
 msgid "Add All Classes"
@@ -6956,10 +6841,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Verseker dit wat u wil doen. </p>"
 
 #: 
-msgid " this Family"
-msgstr " hierdie Gesin"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bevestig Deaktivering"
 
@@ -6990,10 +6871,6 @@ msgstr "Koördineer databasis lêernaam:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Sny Met Kar"
-
-#: 
-msgid "Family Member"
-msgstr "Familielid"
 
 #: 
 msgid "select an option"
@@ -7107,10 +6984,6 @@ msgstr "Bekyk foto"
 #: 
 msgid "Family Photo"
 msgstr "Gesinsfoto"
-
-#: 
-msgid "Quick Settings"
-msgstr "Vinnige instellings"
 
 #: 
 msgid "Status"
@@ -7414,24 +7287,12 @@ msgid "Reset Password"
 msgstr "Herstel wagwoord"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Kan nie wagwoord terugstel nie"
-
-#: 
 msgid "Reset your password"
 msgstr "Herstel jou wagwoord"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Jammer, ons kan u versoek nie op hierdie tydstip verwerk nie."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Aanmeldingsnaam is verpligtend"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "'N Nuwe wagwoord is aan u gestuur. Gaan kyk asseblief na jou e-pos"
 
 #: 
 msgid "Kiosk Manager"
@@ -7532,10 +7393,6 @@ msgstr "Verwyder alle"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Nie alle lede van hierdie groep is in die wa nie"
-
-#: 
-msgid "Add all"
-msgstr "Voeg alles by"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7786,10 +7643,6 @@ msgid "Maximum number of Addresses"
 msgstr "Maksimum aantal adresse"
 
 #: 
-msgid "Show type of group:"
-msgstr "Wys tipe groep:"
-
-#: 
 msgid "Add Students"
 msgstr "Voeg studente by"
 
@@ -7836,26 +7689,6 @@ msgstr "Skep Fotoboek"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Hoogte om te gebruik vir beelde"
-
-#: 
-msgid "Width to use for images"
-msgstr "Wydte om te gebruik vir beelde"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Wydte om te gebruik vir kleinkiekies"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Puntgrootte om te gebruik vir voorletters"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Kliëntkas sekondes vir beelde"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7908,10 +7741,6 @@ msgstr "Skuif gebeurtenis"
 #: 
 msgid "Resize Event"
 msgstr "Verander die grootte van die gebeurtenis"
-
-#: 
-msgid "Text from"
-msgstr "Teks uit"
 
 #: 
 msgid "Profile"
@@ -8433,10 +8262,6 @@ msgid "Menu Name"
 msgstr "Kieslysnaam"
 
 #: 
-msgid "Max 20 char"
-msgstr "Maks 20 char"
-
-#: 
 msgid "Link Address"
 msgstr "Skakeladres"
 
@@ -8583,10 +8408,6 @@ msgid "Integrity Check Details:"
 msgstr "Inligting oor integriteitstoets:"
 
 #: 
-msgid "I Understand"
-msgstr "Ek verstaan"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Nie-ondersteunde deposito-tipes opgespoor"
 
@@ -8614,10 +8435,6 @@ msgstr "Genereer rugsteun"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote Backup eindpunt. As WebDAV, moet dit gekodeer word vir url. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Sluit voorletters-beeldlêers, afgeleë prentlêers (gravatar) en kleinkiekies in die rugsteun in. Hierdie lêers kan oor die algemeen na 'n herstel gereproduseer word en voeg baie min waarde toe aan die rugsteunargief ten koste van die uitvoeringstyd en -berging."
 
 #: 
 msgid "Password (if any)"
@@ -8682,7 +8499,8 @@ msgstr "Onbeskikbare persooninligting geërf van die toegewese gesin om te verto
 "vertoon AS die ooreenstemmende inligting NIE vir daardie persoon ingevoer is nie. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Druk CTRL + C om al die groeplede se telefoonnommers te kopieer"
 
 #: 
@@ -8794,10 +8612,6 @@ msgid "Remove Results from Cart"
 msgstr "Verwyder die resultate uit die mandjie"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Waarskuwing: take voor opgradering opgespoor"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Sommige toestande is geïdentifiseer wat 'n suksesvolle opgradering kan voorkom"
@@ -8829,14 +8643,6 @@ msgstr "Stel die databasis terug"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Dit sal die stelseldata herstel en die stelsel weer begin as 'n nuwe installasie."
-
-#: 
-msgid "Clear Filter"
-msgstr "Herstel filter"
-
-#: 
-msgid "Add Person"
-msgstr "Voeg persoon by"
 
 #. Context: locales
 #: 
@@ -8975,10 +8781,6 @@ msgstr "U nuwe wagwoord lyk te veel soos u ou wagwoord."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Wagwoordterugstelling is nie beskikbaar nie. Kontak u stelseladministrateur"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Verifikasieprobleem"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

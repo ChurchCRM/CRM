@@ -1,3 +1,8 @@
+/**
+ * Deposit Slip Editor
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
+
 function initPaymentTable() {
     var colDef = [
         {
@@ -73,7 +78,7 @@ function initDepositSlipEditor() {
     function format(d) {
         // `d` is the original data object for the row
         return (
-            '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+            '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">' +
             "<tr>" +
             "<td>Date:</td>" +
             "<td>" +
@@ -139,12 +144,12 @@ function initDepositSlipEditor() {
             // This row is already open - close it
             row.child.hide();
             tr.removeClass("shown");
-            $(this).html('<i class="fa fa-plus-circle"></i>');
+            $(this).html('<i class="fa-solid fa-plus-circle"></i>');
         } else {
             // Open this row
             row.child(format(row.data())).show();
             tr.addClass("shown");
-            $(this).html('<i class="fa fa-minus-circle"></i>');
+            $(this).html('<i class="fa-solid fa-minus-circle"></i>');
         }
     });
 
@@ -174,20 +179,11 @@ function initCharts(
     fundBackgroundColor,
 ) {
     var pieOptions = {
-        //Boolean - Whether we should show a stroke on each segment
-        segmentShowStroke: true,
-        //String - The colour of each segment stroke
-        segmentStrokeColor: "#fff",
-        //Number - The width of each segment stroke
-        segmentStrokeWidth: 2,
-        //Number - The percentage of the chart that we cut out of the middle
-        percentageInnerCutout: 50, // This is 0 for Pie charts
-        //Boolean - Whether we animate the rotation of the Doughnut
-        animateRotate: false,
-        //Boolean - whether to make the chart responsive to window resizing
         responsive: true,
-        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: true,
+        animation: {
+            animateRotate: false,
+        },
     };
 
     var ctx = document.getElementById("type-donut").getContext("2d");

@@ -6,6 +6,26 @@ import { Modal } from "react-bootstrap";
 import CRMRoot from "../../window-context-service.jsx";
 import EventPropertiesViewer from "./EventPropertiesViewer";
 import EventPropertiesEditor from "./EventPropertiesEditor";
+import { SingleValue, MultiValue } from "react-select";
+
+interface Option {
+  value: number;
+  label: string;
+}
+
+interface EventFormProps {
+  eventId: number;
+  onClose: () => void;
+  start?: Date;
+  end?: Date;
+}
+
+interface EventFormState {
+  event?: CRMEvent;
+  isEditMode: boolean;
+  calendars: Array<Calendar>;
+  eventTypes: Array<EventType>;
+}
 
 class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   constructor(props: EventFormProps) {
@@ -16,7 +36,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       calendars: [],
       eventTypes: [],
     };
-    if (this.props.eventId == 0) {
+    if (this.props.eventId === 0) {
       this.state = {
         isEditMode: true,
         calendars: [],
@@ -28,10 +48,10 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
           PinnedCalendars: [],
         },
       };
-      if (this.props.start) {
+      if (this.props.start && this.state.event) {
         this.state.event.Start = this.props.start;
       }
-      if (this.props.end) {
+      if (this.props.end && this.state.event) {
         this.state.event.End = this.props.end;
       }
     }
@@ -49,17 +69,20 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   componentDidMount() {
-    if (this.props.eventId != 0) {
+    if (this.props.eventId !== 0) {
       // when the component mounts to the DOM, then we should execute an XHR query to find the details for the supplied event id.
       fetch(CRMRoot + "/api/events/" + this.props.eventId, {
         credentials: "include",
       })
         .then((response) => response.json())
         .then((data) => {
-          var event: CRMEvent;
-          event = data;
-          event.Start = new Date(event.Start);
-          event.End = new Date(event.End);
+          const event = data as CRMEvent;
+          if (event.Start) {
+            event.Start = new Date(event.Start);
+          }
+          if (event.End) {
+            event.End = new Date(event.End);
+          }
           this.setState({ event: event });
         });
     }
@@ -99,24 +122,26 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     });
   }
 
-  handleStartDateChange(date: Date) {
-    var newEventState = Object.assign({}, this.state.event, { Start: date });
-    this.setState({
-      event: newEventState,
-    });
+  handleStartDateChange(date: Date | null) {
+    if (date) {
+      const newEventState = Object.assign({}, this.state.event, { Start: date });
+      this.setState({
+        event: newEventState,
+      });
+    }
   }
 
-  handleEndDateChange(date: Date) {
-    var newEventState = Object.assign({}, this.state.event, { End: date });
-    this.setState({
-      event: newEventState,
-    });
+  handleEndDateChange(date: Date | null) {
+    if (date) {
+      const newEventState = Object.assign({}, this.state.event, { End: date });
+      this.setState({
+        event: newEventState,
+      });
+    }
   }
 
-  updatePinnedCalendar(event) {
-    const pinnedCalendars = event.map(
-      (selected: { value: number; label: string }) => selected.value,
-    );
+  updatePinnedCalendar(selectedOptions: MultiValue<Option>) {
+    const pinnedCalendars = selectedOptions.map((selected) => selected.value);
     this.setState({
       event: Object.assign({}, this.state.event, {
         PinnedCalendars: pinnedCalendars,
@@ -124,20 +149,22 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     });
   }
 
-  updateEventType(event) {
-    const eventType = event.value;
-    this.setState({
-      event: Object.assign({}, this.state.event, { Type: eventType }),
-    });
+  updateEventType(selectedOption: SingleValue<Option>) {
+    if (selectedOption) {
+      const eventType = selectedOption.value;
+      this.setState({
+        event: Object.assign({}, this.state.event, { Type: eventType }),
+      });
+    }
   }
 
   isFormComplete(): boolean {
-    return (
-      this.state.event.PinnedCalendars.length > 0 &&
-      this.state.event.Title.length > 0 &&
-      this.state.event.Start != null &&
-      this.state.event.End != null
-    );
+    if (!this.state.event) return false;
+    if (!this.state.event.PinnedCalendars || this.state.event.PinnedCalendars.length === 0) return false;
+    if (!this.state.event.Title || this.state.event.Title.length === 0) return false;
+    if (this.state.event.Start === undefined || this.state.event.Start === null) return false;
+    if (this.state.event.End === undefined || this.state.event.End === null) return false;
+    return true;
   }
 
   exit() {
@@ -145,18 +172,20 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   save() {
-    var DateReplacer = function (key, value) {
-      if (this[key] instanceof Date) {
-        var td = this[key];
-        return window.moment(td).format();
+    const DateReplacer = (key: string, value: unknown): unknown => {
+      const obj = this.state.event as Record<string, unknown> | undefined;
+      if (obj && obj[key] instanceof Date) {
+        const td = obj[key] as Date;
+        const w = window as unknown as { moment?: (d: Date) => { format(): string } };
+        return w.moment ? w.moment(td).format() : td.toISOString();
       }
-
       return value;
     };
+    if (!this.state.event) return;
     fetch(
       CRMRoot +
         "/api/events" +
-        (this.state.event.Id != 0 ? "/" + this.state.event.Id : ""),
+        (this.state.event.Id !== 0 ? "/" + this.state.event.Id : ""),
       {
         credentials: "include",
         method: "POST",
@@ -184,47 +213,49 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     if (this.state.event === null || this.state.event === undefined) {
       return (
         <div>
-          <Modal show={true} onHide={function () {}}>
+          <Modal show={true} onHide={function () {}} size="xl">
             <Modal.Header>
               <h2>Loading...</h2>
             </Modal.Header>
           </Modal>
         </div>
       );
-    } else {
-    }
+  }
     if (this.state.isEditMode) {
       return (
         <div>
-          <Modal show={true} onHide={function () {}}>
+          <Modal show={true} onHide={function () {}} size="xl">
             <Modal.Header>
-              <input
-                name="Title"
-                value={this.state.event.Title}
-                onChange={this.handleInputChange}
-                placeholder={window.i18next.t("Event Title")}
-              />
-              <span
-                className={
-                  this.state.event.Title.length == 0
-                    ? "RequiredFormFieldUnsatisfied"
-                    : "RequiredFormFieldSatisfied"
-                }
-              >
-                {window.i18next.t("This field is required")}
-              </span>
+              <div style={{ width: "100%" }}>
+                <input
+                  name="Title"
+                  value={this.state.event?.Title || ""}
+                  onChange={this.handleInputChange}
+                  placeholder={window.i18next.t("Event Title")}
+                  className="form-control form-control-lg"
+                  style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+                />
+                {this.state.event && this.state.event.Title && this.state.event.Title.length === 0 && (
+                  <div className="text-danger small mt-2">
+                    <i className="fas fa-exclamation-circle me-1"></i>
+                    {window.i18next.t("This field is required")}
+                  </div>
+                )}
+              </div>
             </Modal.Header>
-            <Modal.Body>
-              <EventPropertiesEditor
-                event={this.state.event}
-                calendars={this.state.calendars}
-                eventTypes={this.state.eventTypes}
-                changeHandler={this.handleInputChange}
-                handleStartDateChange={this.handleStartDateChange}
-                handleEndDateChange={this.handleEndDateChange}
-                pinnedCalendarChanged={this.updatePinnedCalendar}
-                eventTypeChanged={this.updateEventType}
-              />
+            <Modal.Body style={{ overflow: "visible", maxHeight: "none" }}>
+              <div style={{ overflow: "visible" }}>
+                <EventPropertiesEditor
+                  event={this.state.event}
+                  calendars={this.state.calendars}
+                  eventTypes={this.state.eventTypes}
+                  changeHandler={this.handleInputChange}
+                  handleStartDateChange={this.handleStartDateChange}
+                  handleEndDateChange={this.handleEndDateChange}
+                  pinnedCalendarChanged={this.updatePinnedCalendar}
+                  eventTypeChanged={this.updateEventType}
+                />
+              </div>
             </Modal.Body>
             <Modal.Footer>
               <button
@@ -253,7 +284,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     } else {
       return (
         <div>
-          <Modal show={true} onHide={function () {}}>
+          <Modal show={true} onHide={function () {}} size="xl">
             <Modal.Header>
               <h2>{this.state.event.Title}</h2>
             </Modal.Header>
@@ -286,20 +317,6 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       );
     }
   }
-}
-
-interface EventFormProps {
-  eventId: Number;
-  onClose: Function;
-  start?: Date;
-  end?: Date;
-}
-
-interface EventFormState {
-  event?: CRMEvent;
-  isEditMode: boolean;
-  calendars: Array<Calendar>;
-  eventTypes: Array<EventType>;
 }
 
 export default ExistingEvent;

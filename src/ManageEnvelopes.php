@@ -105,7 +105,7 @@ if (isset($_POST['PrintReport'])) {
 ?>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEnvelopesModal"><?= gettext('Update Family Records') ?></button>
-<button type="submit" class="btn btn-default" name="PrintReport"><i class="fa fa-print"></i></button>
+<button type="submit" class="btn btn-secondary" name="PrintReport"><i class="fa-solid fa-print"></i></button>
 
 <br><br>
 
@@ -118,11 +118,11 @@ if (isset($_POST['PrintReport'])) {
                     <h4 class="modal-title" id="upload-Image-label"><?= gettext('Update Envelopes') ?></h4>
                 </div>
                 <div class="modal-body">
-                <span style="color:red"><?= gettext('This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?')?></span>
+                <span class="text-danger"><?= gettext('This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?')?></span>
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Confirm') ?>" name="Confirm">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Cancel') ?></button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Cancel') ?></button>
                 </div>
             </div>
     </div>
@@ -145,7 +145,7 @@ if (isset($_POST['PrintReport'])) {
         }
         ?>
         </select>
-        <input type="submit" class="btn btn-default" value="<?= gettext('Sort by') ?>" name="Sort">
+        <input type="submit" class="btn btn-secondary" value="<?= gettext('Sort by') ?>" name="Sort">
         <input type="radio" Name="SortBy" value="name"
         <?php if ($sSortBy === 'name') {
             echo ' checked';
@@ -157,9 +157,9 @@ if (isset($_POST['PrintReport'])) {
     </th>
     <th>
         <b>Envelope</b>
-        <input type="submit" class="btn btn-default" value="<?= gettext('Zero') ?>"
+        <input type="submit" class="btn btn-secondary" value="<?= gettext('Zero') ?>"
                  name="ZeroAll">
-        <input type="submit" class="btn btn-default" value="<?= gettext('Assign starting at #') ?>"
+        <input type="submit" class="btn btn-secondary" value="<?= gettext('Assign starting at #') ?>"
                  name="AssignAllFamilies">
         <input type="text" name="AssignStartNum" value="<?= $iAssignStartNum ?>" maxlength="5">
     </th>

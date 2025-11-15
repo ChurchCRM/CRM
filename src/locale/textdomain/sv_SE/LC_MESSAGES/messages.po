@@ -1294,10 +1294,6 @@ msgid "Family List"
 msgstr "Familjelista"
 
 #: 
-msgid "Add Family"
-msgstr "Lägg till familj"
-
-#: 
 msgid "Created"
 msgstr "Skapad"
 
@@ -1322,10 +1318,6 @@ msgid "Next Family"
 msgstr "Nästa familj"
 
 #: 
-msgid "Delete this Family"
-msgstr "Radera den här familjen"
-
-#: 
 msgid "Upload Photo"
 msgstr "Ladda in foto"
 
@@ -1336,10 +1328,6 @@ msgstr "Radera foto"
 #: 
 msgid "Add a Note"
 msgstr "Lägg till en anteckning"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Lägg till alla familjemedlemmar i kundvagnen"
 
 #: 
 msgid "Timeline"
@@ -1449,10 +1437,6 @@ msgstr "Du håller på att skicka kopia av familjeinformation till följande e-p
 #: 
 msgid "Financial Reports"
 msgstr "Financiellarapporter"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Inga poster finns från den föregående rapport."
 
 #: 
 msgid "Report Type:"
@@ -1827,10 +1811,6 @@ msgid "Remove from Cart"
 msgstr "Radera från korgen"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Texter för evenemang ID:"
-
-#: 
 msgid "Group Editor"
 msgstr "Grupp redigeringsverktyg"
 
@@ -2010,10 +1990,6 @@ msgid "Group View"
 msgstr "Grupp vy"
 
 #: 
-msgid "Group Functions"
-msgstr "Gruppfunktioner"
-
-#: 
 msgid "Edit this Group"
 msgstr "Redigera denna grupp"
 
@@ -2079,7 +2055,8 @@ msgid "Assigned Properties"
 msgstr "Angiven egenskaper"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "Grupp medlemmar"
 
 #: 
@@ -2892,10 +2869,6 @@ msgid "Query Listing"
 msgstr "Förfrågan lista"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Gör en fritext förfrågan"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Fritext förfrågan"
 
@@ -3036,10 +3009,6 @@ msgstr "Radera familj post ONLY"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Radera familj post och familj medlemmar"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filter och vagn"
 
 #: 
 msgid "Listing"
@@ -3456,14 +3425,6 @@ msgid "Select Fiscal Year"
 msgstr "Välj bokföringsår"
 
 #: 
-msgid "pm"
-msgstr "eftermiddag"
-
-#: 
-msgid "am"
-msgstr "förmiddag"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ogiltig redigerings ID"
 
@@ -3774,20 +3735,12 @@ msgid "Sunday School Class Functions"
 msgstr "Söndagsskolas klassfunktioner"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Växla rullgardinsmenyn"
-
-#: 
 msgid "Teachers"
 msgstr "lärare"
 
 #: 
 msgid "Send Message"
 msgstr "Skicka meddelande"
-
-#: 
-msgid "View Profile"
-msgstr "Visa profil"
 
 #: 
 msgid "Quick Status"
@@ -4135,68 +4088,12 @@ msgid "Edit Settings"
 msgstr "Ändra inställningar"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Uppgradera ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Steg 1: Säkerhetskopieringsdatabas"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Skapa en databasbackup innan du börjar uppgraderingsprocessen."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Generera databasbackup"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Steg 2: Hämta uppdateringspaket på servern"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Hämta de senaste filerna från ChurchCRM GitHub-släppsidan"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Hämta uppdateringsfiler"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Steg 3: Använd uppdateringspaketet på servern"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Extrahera uppgraderingsarkivet och tillämpa de nya filerna"
-
-#: 
 msgid "Full Path:"
 msgstr "Fullständig sökväg:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Uppgradera systemet"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Steg 4: Logga in"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Logga in på uppgraderat system"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Säkerhetskopiering är klar, redo för nedladdning."
-
-#: 
-msgid "Backup Error."
-msgstr "Säkerhetskopieringsfel."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4298,18 +4195,6 @@ msgstr "Årlig"
 #: 
 msgid "Registration Complete"
 msgstr "Registrering klar"
-
-#: 
-msgid "Register"
-msgstr "Registrera"
-
-#: 
-msgid "Register your family"
-msgstr "Registrera din familj"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Hur många personer är i din familj"
 
 #: 
 msgid "Add All Classes"
@@ -7099,10 +6984,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Se till att du gör det du vill göra. </p>"
 
 #: 
-msgid " this Family"
-msgstr "den här familjen"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bekräfta avaktivering"
 
@@ -7133,10 +7014,6 @@ msgstr "Koordinera databasfilnamn:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Korsar med vagn"
-
-#: 
-msgid "Family Member"
-msgstr "Familjemedlem"
 
 #: 
 msgid "select an option"
@@ -7250,10 +7127,6 @@ msgstr "Visa Foto"
 #: 
 msgid "Family Photo"
 msgstr "Familjefoto"
-
-#: 
-msgid "Quick Settings"
-msgstr "Snabbinställningar"
 
 #: 
 msgid "Status"
@@ -7557,24 +7430,12 @@ msgid "Reset Password"
 msgstr "Återställ lösenord"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Det går inte att återställa lösenordet"
-
-#: 
 msgid "Reset your password"
 msgstr "Återställ ditt lösenord"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Vi kan tyvärr inte behandla din begäran just nu."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Inloggningsnamn krävs"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Ett nytt lösenord skickades till dig. Kontrollera din e-post"
 
 #: 
 msgid "Kiosk Manager"
@@ -7675,10 +7536,6 @@ msgstr "Ta bort alla"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Inte alla medlemmar i denna grupp är i vagnen"
-
-#: 
-msgid "Add all"
-msgstr "Lägg till alla"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7929,10 +7786,6 @@ msgid "Maximum number of Addresses"
 msgstr "Maximalt antal adresser"
 
 #: 
-msgid "Show type of group:"
-msgstr "Visa typ av grupp:"
-
-#: 
 msgid "Add Students"
 msgstr "Lägg till studenter"
 
@@ -7979,26 +7832,6 @@ msgstr "Skapa PhotoBook"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Höjd att använda för bilder"
-
-#: 
-msgid "Width to use for images"
-msgstr "Bredd att använda för bilder"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Bredd att använda för miniatyrbilder"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Punktstorlek som ska användas för initialerna miniatyrer"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Klientcache-sekunder för bilder"
 
 #: 
 msgid "Server cache time for remote images"
@@ -8051,10 +7884,6 @@ msgstr "Flytta händelse"
 #: 
 msgid "Resize Event"
 msgstr "Ändra storlek på händelse"
-
-#: 
-msgid "Text from"
-msgstr "Text från"
 
 #: 
 msgid "Profile"
@@ -8576,10 +8405,6 @@ msgid "Menu Name"
 msgstr "Menynamn"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max 20 char"
-
-#: 
 msgid "Link Address"
 msgstr "Länkadress"
 
@@ -8726,10 +8551,6 @@ msgid "Integrity Check Details:"
 msgstr "Detaljer för integritetskontroll:"
 
 #: 
-msgid "I Understand"
-msgstr "Jag förstår"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Ostödda insättningstyper har upptäckts"
 
@@ -8757,10 +8578,6 @@ msgstr "Generera säkerhetskopiering"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint Backpoint Endpoint. Om WebDAV måste detta vara url-kodat."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Inkludera initiala bildfiler, fjärrbildsfiler (gravatar) och miniatyrbilder i säkerhetskopian. Dessa filer kan generellt reproduceras efter en återställning och lägger till mycket lite värde till säkerhetsarkivet på en stor kostnad för körningstid och lagring"
 
 #: 
 msgid "Password (if any)"
@@ -8825,7 +8642,8 @@ msgstr "Otillgänglig personinformation som ärvs från tilldelad familj för vi
 "visas OM motsvarande info INTE har angetts för den personen."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Tryck CTRL + C för att kopiera alla gruppmedlemmars telefonnummer"
 
 #: 
@@ -8937,10 +8755,6 @@ msgid "Remove Results from Cart"
 msgstr "Ta bort resultat från kundvagnen"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Varning: Uppgraderingsuppgifter har upptäckts"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Vissa förhållanden har identifierats som kan förhindra en framgångsrik uppgradering"
@@ -8972,14 +8786,6 @@ msgstr "Återställ databasen"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Detta återställer systemdata och startar om systemet som en ny installation."
-
-#: 
-msgid "Clear Filter"
-msgstr "Rensa filtret"
-
-#: 
-msgid "Add Person"
-msgstr "Lägg till person"
 
 #. Context: locales
 #: 
@@ -9118,10 +8924,6 @@ msgstr "Ditt nya lösenord liknar det gamla."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Återställning av lösenord är inte tillgängligt. Kontakta din systemadministratör"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Autentiseringsproblem"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

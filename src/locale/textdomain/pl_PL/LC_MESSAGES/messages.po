@@ -1336,10 +1336,6 @@ msgid "Financial Reports"
 msgstr "Raporty Finansowe"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Pojawiły się nowe wpisy od czasu ostatniego Raportu."
-
-#: 
 msgid "Report Type:"
 msgstr "Typ Raportu:"
 
@@ -1706,10 +1702,6 @@ msgid "Remove from Cart"
 msgstr "Usuń z Koszyka"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Tekst dla Wydarzenia (ID):"
-
-#: 
 msgid "Group Editor"
 msgstr "Edytor Grup"
 
@@ -1889,10 +1881,6 @@ msgid "Group View"
 msgstr "Widok Grupy"
 
 #: 
-msgid "Group Functions"
-msgstr "Funkcje Grup"
-
-#: 
 msgid "Edit this Group"
 msgstr "Edytuj tę Grupę"
 
@@ -1958,8 +1946,9 @@ msgid "Assigned Properties"
 msgstr "Przypisane właściwości"
 
 #: 
-msgid "Group Members:"
-msgstr "Członkowie Grupy:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Członkowie Grupy"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2749,10 +2738,6 @@ msgid "Query Listing"
 msgstr "Lista Wyszukiwania"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Uruchom Wyszukiwaine Dowolnym Tekstem"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Wyszukiwanie Dowolnym Tekstem"
 
@@ -2893,10 +2878,6 @@ msgstr "Usuń TYLKO Wpis Rodziny"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Usuń Wpis Rodziny ORAZ Członków Rodziny"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Dodaj Filtr i przenieś do Koszyka"
 
 #: 
 msgid "Listing"
@@ -3307,14 +3288,6 @@ msgid "Select Fiscal Year"
 msgstr "Wybierz Rok Podatkowy"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Nieprawidłowe ID!"
 
@@ -3691,10 +3664,6 @@ msgstr "Samodzielna Rejestracja"
 #: 
 msgid "Registration Complete"
 msgstr "Rejestracja Zakończona"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Ile osób jest w twojej rodzinie?"
 
 #: 
 msgid "Add All Classes"
@@ -4128,10 +4097,6 @@ msgid "Menu Name"
 msgstr "Nazwa menu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Maks 20 znaków"
-
-#: 
 msgid "Link Address"
 msgstr "Adres skórtu"
 
@@ -4278,10 +4243,6 @@ msgid "Integrity Check Details:"
 msgstr "Informacje Spójności Systemu:"
 
 #: 
-msgid "I Understand"
-msgstr "Zgadzam się"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Wykryto Nieobsługiwany Typ Wpłaty"
 
@@ -4309,10 +4270,6 @@ msgstr "Wykonaj Kopię Bezpieczeństwa"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Zdalny Punkt Kopii Bezpieczeństwa. Jeżeli jest to WebDAV, URL musi zaeiwrać wszystkie informacje. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Załącz oryginalne oraz zewnętrzne obrazki i miniaturki do archiwum. Pliki te można łatwo odtworzyć, mają niewielką wartość dla kopii bezpieczeństwa lecz angażują sporo środków podczas tworzenia archiwum."
 
 #: 
 msgid "Password (if any)"
@@ -4377,7 +4334,8 @@ msgstr "Uzupełnij brakujące dane osób informacjami z powiązanej rodziny?\n"
 "Ta opcja używa niektórych informacji zapisanych dla rodziny gdy osoba nie ma wpisanych wszystkich danych. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "CTRL + C kopuje numery numery telefonów wszystkich członków grupy"
 
 #: 
@@ -4477,10 +4435,6 @@ msgid "Remove Results from Cart"
 msgstr "Usuń Wyniki z Koszyka"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Uwaga: Wykryto Problemy Przed Aktualizacą"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Znaleziono problemy mogące przeszkodzić w aktualizacji"
@@ -4512,14 +4466,6 @@ msgstr "Zresetuj Bazę Danych"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Zresetujesz dane systemu i uruchomisz system jako nową instalację."
-
-#: 
-msgid "Clear Filter"
-msgstr "Wyczyść Filtr"
-
-#: 
-msgid "Add Person"
-msgstr "Dodaj Osobę"
 
 #. Context: locales
 #: 
@@ -4658,10 +4604,6 @@ msgstr "Nowe hasło jest zbyt podobne do starego."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Odzyskiwanie hasło nie dostepne. Skontaktuj się z administratorem"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Błąd Uwierzytelniania"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

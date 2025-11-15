@@ -1,10 +1,13 @@
 RewriteEngine On
 
-# Some hosts may require you to use the `RewriteBase` directive.
-# If you need to use the `RewriteBase` directive, it should be the
-# absolute physical path to the directory that contains this htaccess file.
-#
-# RewriteBase /
+# Automatically handle subdirectory installations
+# The RewriteRule will pass the matched path to index.php
+# Slim will use the base path from Config.php ($sRootPath) to match routes correctly
+# 
+# NOTE: If you have issues with routing, you may need to set RewriteBase manually:
+# For root installation (/): RewriteBase /api
+# For subdirectory (/churchcrm): RewriteBase /churchcrm/api
+# For subdirectory (/xyz): RewriteBase /xyz/api
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [QSA,L]

@@ -18,7 +18,7 @@ msgstr "Supprimer"
 
 #: 
 msgid "Cancel"
-msgstr "Abandonner"
+msgstr "Annuler"
 
 #: 
 msgid "Save"
@@ -339,20 +339,20 @@ msgstr "NOTE : avec séparateurs (tirets, etc) ou sans est sans importance"
 
 #: 
 msgid "Default country if none specified otherwise"
-msgstr "Pays par défaut si aucune indication contraire"
+msgstr "Pays par défaut si aucun autre pays n'est spécifié."
 
 #. Context: queryparameters_qrp
 #: 
 msgid "Classification"
-msgstr "Catégories"
+msgstr "Classification"
 
 #: 
 msgid "Perform Import"
-msgstr "Lancer Importation"
+msgstr "Effectuer l'importation"
 
 #: 
 msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr "ERREUR: fichier CSV téléchargé a disparu !"
+msgstr "ERREUR : le fichier CSV chargé n'existe plus !"
 
 #: 
 msgid "Upload CSV File"
@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "Liste des familles"
 
 #: 
-msgid "Add Family"
-msgstr "Ajouter une famille"
-
-#: 
 msgid "Created"
 msgstr "Créé"
 
@@ -1280,10 +1276,6 @@ msgid "Next Family"
 msgstr "Famille suivante"
 
 #: 
-msgid "Delete this Family"
-msgstr "Supprimer cette famille"
-
-#: 
 msgid "Upload Photo"
 msgstr "Télécharger une photo"
 
@@ -1294,10 +1286,6 @@ msgstr "Supprimer une photo"
 #: 
 msgid "Add a Note"
 msgstr "Ajouter une note"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Ajouter tous les membres de la famille au panier"
 
 #: 
 msgid "Timeline"
@@ -1406,10 +1394,6 @@ msgstr "Vous êtes sur le point d'envoyer une copie des informations de la famil
 #: 
 msgid "Financial Reports"
 msgstr "Rapports financier"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Aucun enregistrement du rapport précédent n&#39;a été retourné."
 
 #: 
 msgid "Report Type:"
@@ -1773,10 +1757,6 @@ msgid "Remove from Cart"
 msgstr "Retirer du panier"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Texte pour l'ID de l&#39;événement: "
-
-#: 
 msgid "Group Editor"
 msgstr "Gestionnaire de groupe"
 
@@ -1945,10 +1925,6 @@ msgid "Group View"
 msgstr "Visualiser un Groupe"
 
 #: 
-msgid "Group Functions"
-msgstr "Fonctions du groupe"
-
-#: 
 msgid "Edit this Group"
 msgstr "Modifier ce Groupe"
 
@@ -2009,8 +1985,9 @@ msgid "Assigned Properties"
 msgstr "Propriétés assignées"
 
 #: 
-msgid "Group Members:"
-msgstr "Membres du Groupe:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Membres du Groupe"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2791,10 +2768,6 @@ msgid "Query Listing"
 msgstr "Liste des requêtes"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Exécuter une Requête de Texte Libre"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Requête de Texte Libre"
 
@@ -2934,10 +2907,6 @@ msgstr "Supprimer uniquement les données de la Famille"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Supprimer les données de la famille ET ses membres."
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filtre et Panier"
 
 #: 
 msgid "Listing"
@@ -3329,14 +3298,6 @@ msgid "Select Fiscal Year"
 msgstr "Sélectionner l'année fiscale"
 
 #: 
-msgid "pm"
-msgstr "PM "
-
-#: 
-msgid "am"
-msgstr "du matin"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Identifiant de Gestionnaire invalide!"
 
@@ -3637,20 +3598,12 @@ msgid "Sunday School Class Functions"
 msgstr "Fonctions de l&#39;école du dimanche"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Menu déroulant"
-
-#: 
 msgid "Teachers"
 msgstr "Moniteurs"
 
 #: 
 msgid "Send Message"
 msgstr "Envoyer un message"
-
-#: 
-msgid "View Profile"
-msgstr "Voir le profil"
 
 #: 
 msgid "Quick Status"
@@ -3990,68 +3943,12 @@ msgid "Edit Settings"
 msgstr "Modifier les Réglages"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Mettre à jour ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Étape 1 : Sauvegarder la Base de Données"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Veuillez créer une sauvegarde de la Base de Données avant de commencer le processus de mise à jour."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Générer une sauvegarde de la Base de Données"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Étape 2 : télécharger le package de mise à jour sur le serveur"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Télécharger les dernier fichiers de mise à jour de GitHub ChurchCRM"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Télécharger les fichiers de mise à jour"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Étape 3 : Appliquer le package de mise à jour sur le serveur"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Extraire les mises à jour du package et appliquer les nouveaux fichiers"
-
-#: 
 msgid "Full Path:"
 msgstr "Chemin d'accès complet :"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1 :"
-
-#: 
-msgid "Upgrade System"
-msgstr "Mettre à jour le système"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Étape 4 : Connexion"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Connexion sur le système mis à jour"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Sauvegarde complète, prêt à télécharger."
-
-#: 
-msgid "Backup Error."
-msgstr "Erreur de sauvegarde."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4144,7 +4041,7 @@ msgstr "Anonyme"
 #: 
 #, fuzzy
 msgid "Attendees for Event"
-msgstr "Participants à l&#39;événement"
+msgstr "Participants à l'événement"
 
 #: 
 msgid "Yearly"
@@ -4153,18 +4050,6 @@ msgstr "Annuel"
 #: 
 msgid "Registration Complete"
 msgstr "Inscription terminée."
-
-#: 
-msgid "Register"
-msgstr "S'inscrire"
-
-#: 
-msgid "Register your family"
-msgstr "Inscrire votre famille"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Combien de personnes êtes vous dans votre famille"
 
 #: 
 msgid "Add All Classes"
@@ -6954,10 +6839,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Vérifier que c'est ce que vous voulez faire.</p>"
 
 #: 
-msgid " this Family"
-msgstr " cette famille"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Confirmer la désactivation"
 
@@ -6988,10 +6869,6 @@ msgstr "Nom du fichier de la base de données de coordonnées :"
 #: 
 msgid "Intersect With Cart"
 msgstr "Croisement avec le Panier"
-
-#: 
-msgid "Family Member"
-msgstr "Membre de la Famille"
 
 #: 
 msgid "select an option"
@@ -7105,10 +6982,6 @@ msgstr "Voir la Photo"
 #: 
 msgid "Family Photo"
 msgstr "Photo de Famille"
-
-#: 
-msgid "Quick Settings"
-msgstr "Réglages rapides"
 
 #: 
 msgid "Status"
@@ -7412,24 +7285,12 @@ msgid "Reset Password"
 msgstr "Réinitialisation du Mot de Passe"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Impossible de réinitialiser le Mot de Passe"
-
-#: 
 msgid "Reset your password"
 msgstr "Réinitialiser votre Mot de Passe"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Désolé, nous ne pouvons répondre à votre requête pour le moment."
-
-#: 
-msgid "Login Name is Required"
-msgstr "L'identifiant est requit"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Un nouveau mot de passe vous a été envoyé. Veuillez vérifier votre boîte mail."
 
 #: 
 msgid "Kiosk Manager"
@@ -7530,10 +7391,6 @@ msgstr "Tout supprimer"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Le panier ne contient pas tous les membres du groupe"
-
-#: 
-msgid "Add all"
-msgstr "Tout ajouter"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7784,10 +7641,6 @@ msgid "Maximum number of Addresses"
 msgstr "Nombre maximum d'adresses"
 
 #: 
-msgid "Show type of group:"
-msgstr "Visualiser le type de groupes :"
-
-#: 
 msgid "Add Students"
 msgstr "Ajouter des étudiants"
 
@@ -7834,26 +7687,6 @@ msgstr "Créer un trombinoscope"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "La hauteur à utilisé pour les images"
-
-#: 
-msgid "Width to use for images"
-msgstr "La largeur à utilisé pour les images"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "La largeur à utilisé pour les miniatures"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "La taille en points à utilisé pour les miniatures des initiales"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Nombre de seconds de cache client pour les images"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7906,10 +7739,6 @@ msgstr "Déplacement événement"
 #: 
 msgid "Resize Event"
 msgstr "Redimensionner événement"
-
-#: 
-msgid "Text from"
-msgstr "Texte de"
 
 #: 
 msgid "Profile"
@@ -8431,10 +8260,6 @@ msgid "Menu Name"
 msgstr "Nom du menu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max. 20 car."
-
-#: 
 msgid "Link Address"
 msgstr "Adresse du lien"
 
@@ -8581,10 +8406,6 @@ msgid "Integrity Check Details:"
 msgstr "Détails de la vérification de l'intégrité"
 
 #: 
-msgid "I Understand"
-msgstr "Je comprends"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Types de dépôts incorrects"
 
@@ -8612,10 +8433,6 @@ msgstr "Effectuer une sauvegarde"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Point de restauration à distance. S'il s'agit de WebDAV, l'URL doit être encodée."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Inclus les fichiers image des initiales, les fichiers image distants (gravatar) et les vignettes dans la sauvegarde. Ces fichiers sont généralement capables d'être reproduits après une restauration et ajoutent très peu de valeur à l'archive de sauvegarde au détriment du temps d'exécution et du stockage."
 
 #: 
 msgid "Password (if any)"
@@ -8679,7 +8496,8 @@ msgstr "Informations sur la personne non disponibles héritées de la famille at
 "affiché SI les informations correspondantes n'ont PAS été saisies pour cette personne."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Pressez CTRL+C pour copier le téléphone de tous les membres du groupe"
 
 #: 
@@ -8791,10 +8609,6 @@ msgid "Remove Results from Cart"
 msgstr "Enlever les résultats du panier"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Avertissement : Des opérations pré-migrations sont requises"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Certaines conditions qui ont été identifiées peuvent empêcher la réussite de la mise à niveau"
@@ -8826,14 +8640,6 @@ msgstr "Réinitialiser la base"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Ceci réinitialisera le système et redémarrera comme une nouvelle installation"
-
-#: 
-msgid "Clear Filter"
-msgstr "Supprimer filtres"
-
-#: 
-msgid "Add Person"
-msgstr "Ajouter un individu"
 
 #. Context: locales
 #: 
@@ -8972,10 +8778,6 @@ msgstr "Le nouveau mot de passe est trop similaire à l'ancien"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Réinitialisation du mot de passe non disponible. Veuillez contacter votre administrateur système"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Erreur d'authentification"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
@@ -9396,13 +9198,37 @@ msgstr "Système"
 
 #. Context: locales
 #: 
+msgid "Amharic - Ethiopia"
+msgstr "Amharique - Éthiopie"
+
+#. Context: locales
+#: 
+msgid "Czech"
+msgstr "Tchèque"
+
+#. Context: locales
+#: 
+msgid "Finnish"
+msgstr "Finlandais"
+
+#. Context: locales
+#: 
 msgid "Greek"
 msgstr "Grec"
 
 #. Context: locales
 #: 
+msgid "Turkish"
+msgstr "Turc"
+
+#. Context: locales
+#: 
 msgid "Ukrainian"
 msgstr "Ukrainien"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Lorsque vous cliquez sur « Soumettre à GitHub », vous serez redirigé vers la page des problèmes GitHub avec les informations de votre système préremplies."
 
 #: 
 msgid "Submit to GitHub"
@@ -9429,12 +9255,120 @@ msgid "Deposit Total"
 msgstr "Total dépôt"
 
 #: 
+msgid "Group Cart Status"
+msgstr "Statut du panier de groupe"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "Si cela ne fonctionne pas, copiez et collez le lien suivant dans votre navigateur."
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "Vous avez reçu ce courriel car nous avons reçu une demande d'activité concernant votre compte. Si vous n'êtes pas à l'origine de cette demande, vous pouvez supprimer ce courriel sans risque."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Pour ne plus recevoir ces courriels, vous pouvez envoyer un courriel"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2016/2017"
+msgstr "2016/2017"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2017/2018"
+msgstr "2017/2018"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2018/2019"
+msgstr "2018/2019"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2019/2020"
+msgstr "2019/2020"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2020/2021"
+msgstr "2020/2021"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2021/2022"
+msgstr "2021/2022"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "2022/2023"
+msgstr "2022/2023"
+
+#: 
+msgid "invalid group request"
+msgstr "demande de groupe invalide"
+
+#. Context: locales
+#: 
+msgid "Hindi - India"
+msgstr "Hindi - Inde"
+
+#. Context: locales
+#: 
+msgid "Japanese"
+msgstr "Japonais"
+
+#. Context: locales
+#: 
+msgid "Tamil - India"
+msgstr "Tamoul - Inde"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Non abonné"
+
+#: 
+msgid "property"
+msgstr "propriété"
+
+#: 
+msgid "Default Zip"
+msgstr "Zip par défaut"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Personnes de carte de crédit"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Les personnes configurées pour payer par carte de crédit."
+
+#: 
 msgid "Adult Name (Optional)"
 msgstr "Nom de l'adulte (Optionnel)"
 
 #: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "Dans le cadre de la restauration, les sauvegardes externes ont été désactivées. Si vous souhaitez poursuivre les sauvegardes automatiques, vous devez réactiver manuellement la cible de sauvegarde externe bEnableExternalBackupTarget."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "Le contrôle d'intégrité précédent a réussi. Tous les hachages des fichiers système correspondent aux valeurs attendues."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "Liste, séparée par des virgules, des classifications qui doivent apparaître comme inactives"
+
+#: 
 msgid "MailChimp is not configured"
 msgstr "MailChimp n'est pas configuré"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "Veuillez mettre à jour la clé API MailChimp dans :"
 
 #. Context: locales
 #: 
@@ -9452,6 +9386,18 @@ msgid "Swahili"
 msgstr "Swahili"
 
 #: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "Un caractère du prénom et un caractère du nom"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "Deux caractères du prénom"
+
+#: 
+msgid "Set font to render initials. Upload custom font to fonts directory"
+msgstr "Définir la police d'écriture pour les initiales. Téléverser la police personnalisée dans le répertoire des polices"
+
+#: 
 msgid "Person List Columns"
 msgstr "Colonne Personne"
 
@@ -9459,8 +9405,670 @@ msgstr "Colonne Personne"
 msgid "Family List Columns"
 msgstr "Colonne Famille"
 
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "Adresse e-mail de l'église non configurée, veuillez consulter la page des paramètres"
+
 #. Context: locales
 #: 
 msgid "Telugu - India"
 msgstr "Telugu - Inde"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Coréen"
+
+#: 
+msgid "System Logs"
+msgstr "Journaux système"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Appliquez la politique de sécurité du contenu (CSP) pour vous protéger contre les attaques XSS. Lorsqu'elle est désactivée, seules les violations de la CSP sont signalées."
+
+#: 
+msgid "Maximum number of log files to keep"
+msgstr "Nombre maximal de fichiers journaux à conserver"
+
+#: 
+msgid "Too Many Log Files"
+msgstr "Trop de fichiers journaux"
+
+#: 
+msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
+msgstr "Le répertoire des journaux contient de nombreux fichiers journaux. Supprimez les anciens fichiers journaux pour libérer de l'espace disque."
+
+#: 
+msgid "Enter event description..."
+msgstr "Entrez la description de l'événement..."
+
+#: 
+msgid "Event ID"
+msgstr "ID d'événement"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Saisissez votre texte ici..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "Aucune note n'a été ajoutée pour cette personne."
+
+#: 
+msgid "Note"
+msgstr "Note"
+
+#: 
+msgid "Log Settings"
+msgstr "Paramètres du journal"
+
+#: 
+msgid "Log Level:"
+msgstr "Niveau de journalisation :"
+
+#: 
+msgid "Save Log Level"
+msgstr "Enregistrer le niveau de journalisation"
+
+#: 
+msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
+msgstr "Les chiffres les plus bas indiquent plus de détails. Les chiffres les plus élevés ne signalent que les problèmes graves. Les modifications s'appliquent immédiatement aux nouvelles entrées du journal."
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Consultez les journaux d'application. Cliquez sur un fichier journal pour afficher son contenu."
+
+#: 
+msgid "Delete All Logs"
+msgstr "Supprimer tous les journaux"
+
+#: 
+msgid "No log files found."
+msgstr "Aucun fichier journal trouvé."
+
+#: 
+msgid "Log File"
+msgstr "Fichier journal"
+
+#: 
+msgid "Size"
+msgstr "Taille"
+
+#: 
+msgid "Last Modified"
+msgstr "Dernière modification"
+
+#: 
+msgid "View"
+msgstr "Voir"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Visionneuse de fichiers journaux"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Filtrer par niveau de journalisation :"
+
+#: 
+msgid "Error"
+msgstr "Erreur"
+
+#: 
+msgid "Info"
+msgstr "Information"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Nombre de lignes à afficher :"
+
+#: 
+msgid "Loading log file..."
+msgstr "Chargement du fichier journal..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Aucune note n'a été ajoutée pour cette famille."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Un jeton d'accès au calendrier a été généré et enregistré."
+
+#: 
+msgid "added"
+msgstr "ajouté"
+
+#: 
+msgid "Added"
+msgstr "Ajouté"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Ajouté au panier avec succès"
+
+#: 
+msgid "All members already in cart"
+msgstr "Tous les membres sont déjà dans le panier"
+
+#: 
+msgid "already in cart"
+msgstr "déjà dans le panier"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Impossible de charger les propriétés du calendrier. Ce calendrier ne possède peut-être pas de jeton d'accès ou n'est pas correctement configuré."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Panier vidé avec succès"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Le panier du groupe a été vidé avec succès"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Vider entièrement votre panier ?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Impossible d'ajouter la famille au panier"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Impossible d'ajouter le groupe au panier"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Impossible d'ajouter au panier"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Impossible de vider le chariot"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Impossible de vider le panier dans le groupe"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Impossible de retirer la famille du panier"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Impossible de retirer du panier"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Échec de la suppression du groupe"
+
+#: 
+msgid "Family added to cart"
+msgstr "Famille ajoutée au panier"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Famille retirée du panier"
+
+#: 
+msgid "Group added to cart"
+msgstr "Groupe ajouté au panier"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Groupe supprimé du panier"
+
+#: 
+msgid "in cart"
+msgstr "dans le panier"
+
+#: 
+msgid "members. Already had"
+msgstr "membres. J'avais déjà"
+
+#: 
+msgid "people added to cart"
+msgstr "personnes ajoutées au panier"
+
+#: 
+msgid "people already in cart"
+msgstr "personnes déjà dans le panier"
+
+#: 
+msgid "people from cart"
+msgstr "personnes du panier"
+
+#: 
+msgid "people removed from cart"
+msgstr "personnes retirées du panier"
+
+#: 
+msgid "Person already in cart"
+msgstr "Personne déjà dans le panier"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Retirer cette famille du panier ?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Supprimer ce groupe du panier ?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Retirer cette personne du panier ?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Article retiré du panier avec succès"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Oui, panier vide"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Oui, Retirer"
+
+#: 
+msgid "Add Group"
+msgstr "Ajouter un groupe"
+
+#: 
+msgid "Back to Group List"
+msgstr "Retour à la liste des groupes"
+
+#: 
+msgid "Default role updated."
+msgstr "Rôle par défaut mis à jour."
+
+#: 
+msgid "Edit Group"
+msgstr "Modifier le groupe"
+
+#: 
+msgid "Enter group name"
+msgstr "Entrez le nom du groupe"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "Impossible d'ajouter le rôle. Veuillez réessayer."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Impossible de créer le groupe. Veuillez réessayer."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "Impossible de supprimer le rôle. Veuillez réessayer."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Impossible de charger l'état du panier."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Impossible de charger les groupes. Veuillez actualiser la page."
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "Impossible de définir le rôle par défaut. Veuillez réessayer."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "Impossible de mettre à jour le groupe. Veuillez réessayer."
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "Impossible de mettre à jour les propriétés. Veuillez réessayer."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "Impossible de mettre à jour le nom du rôle. Veuillez réessayer."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "Laissez vide pour conserver le mot de passe existant"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Veuillez saisir un nom de groupe."
+
+#: 
+msgid "Role added successfully."
+msgstr "Rôle ajouté avec succès."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Rôle supprimé avec succès."
+
+#: 
+msgid "Role name updated."
+msgstr "Nom du rôle mis à jour."
+
+#: 
+msgid "View Group"
+msgstr "Voir le groupe"
+
+#: 
+msgid "Add Note"
+msgstr "Ajouter une note"
+
+#: 
+msgid "Events Today"
+msgstr "Événements aujourd'hui"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Aperçu de l’école du dimanche"
+
+#: 
+msgid "Add Family Member"
+msgstr "Ajouter un membre de la famille"
+
+#: 
+msgid "Address is required"
+msgstr "L'adresse est obligatoire"
+
+#: 
+msgid "Base URL is required"
+msgstr "L'URL de base est obligatoire"
+
+#: 
+msgid "City is required"
+msgstr "La ville est obligatoire"
+
+#: 
+msgid "Database name is required"
+msgstr "Le nom de la base de donnée est obligatoire"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "Le nom d'hôte ou l'adresse IP du serveur de base de données est obligatoire (par exemple : localhost ou 127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "Le port du serveur de base de données est obligatoire (par exemple, 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "Le nom d'utilisateur de la base de données est obligatoire"
+
+#: 
+msgid "Email Address"
+msgstr "Adresse email"
+
+#: 
+msgid "Email address"
+msgstr "adresse email"
+
+#: 
+msgid "Enter family name"
+msgstr "Entrez le nom de famille"
+
+#: 
+msgid "Family Information"
+msgstr "Informations sur la famille"
+
+#: 
+msgid "Family name is required"
+msgstr "Le nom de famille est requis"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "Le nom de famille doit comporter au moins 2 caractères"
+
+#: 
+msgid "First name"
+msgstr "Prénom"
+
+#: 
+msgid "First name is required"
+msgstr "Le prénom est obligatoire"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "Le prénom doit comporter au moins 2 caractères"
+
+#: 
+msgid "Home phone is required"
+msgstr "Le téléphone de la maison est obligatoire"
+
+#: 
+msgid "Home phone number"
+msgstr "Numéro de téléphone de la maison"
+
+#: 
+msgid "Invalid format"
+msgstr "Format invalide"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "Rejoignez notre communauté en inscrivant votre famille"
+
+#: 
+msgid "Last name"
+msgstr "Nom de famille"
+
+#: 
+msgid "Last name is required"
+msgstr "Le nom de famille est obligatoire"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "Le nom de famille doit comporter au moins 2 caractères"
+
+#: 
+msgid "Maximum length is"
+msgstr "La longueur maximale est"
+
+#: 
+msgid "Minimum length is"
+msgstr "La longueur minimale est"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "Doit être une URL valide commençant par http:// ou https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "Doit être une URL valide commençant par http:// ou https:// (par exemple, http://localhost ou https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "Doit être un numéro de port valide (par exemple, 3306)"
+
+#: 
+msgctxt ", -, ., / allowed."
+msgid "Must start with / if not empty, no trailing slash. Only letters, numbers, "
+msgstr "Doit commencer par / si non vide, sans barre oblique finale. Seules les lettres, les chiffres, -, ., /sont autorisés."
+
+#: 
+msgid "Next Member"
+msgstr "Membre suivant"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Les mots de passe ne correspondent pas"
+
+#: 
+msgid "Phone Type"
+msgstr "Type de téléphone"
+
+#: 
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Veuillez ajouter au moins un membre de la famille."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Veuillez corriger les erreurs de validation avant de continuer."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Veuillez saisir une URL valide"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "S'il vous plaît, mettez une adresse email valide"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Veuillez saisir une adresse électronique valide (par exemple, nom@exemple.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Veuillez saisir un numéro valide"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Veuillez saisir un numéro valide"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Veuillez remplir correctement tous les champs obligatoires."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "Veuillez vérifier attentivement toutes les informations avant de les soumettre. Vous pouvez revenir en arrière pour apporter des modifications si nécessaire."
+
+#: 
+msgid "Previous"
+msgstr "Précédent"
+
+#: 
+msgid "Registration Error"
+msgstr "Erreur d'enregistrement"
+
+#: 
+msgid "Review & Submit"
+msgstr "Vérifier et soumettre"
+
+#: 
+msgid "Role in Family"
+msgstr "Rôle dans la famille"
+
+#: 
+msgid "Select date"
+msgstr "Sélectionnez une date"
+
+#: 
+msgid "Street address"
+msgstr "Adresse de la rue"
+
+#: 
+msgid "Submit Registration"
+msgstr "Soumettre l'inscription"
+
+#: 
+msgid "Zip code is required"
+msgstr "Le code postal est obligatoire"
+
+#: 
+msgid "denotes required fields"
+msgstr "désigne les champs obligatoires"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "Un nouveau mot de passe a été généré et envoyé à votre adresse électronique."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "Une nouvelle version de ChurchCRM est disponible pour installation."
+
+#: 
+msgid "Actual Hash"
+msgstr "Hachage Actuel"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "Toutes les vérifications préalables à la mise à niveau ont été effectuées avec succès. Vous pouvez procéder à la mise à niveau."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Autoriser les mises à jour avant la version finale"
+
+#: 
+msgid "Apply Update Now"
+msgstr "Appliquer la mise à jour maintenant"
+
+#: 
+msgid "Applying System Update..."
+msgstr "Application de la mise à jour système..."
+
+#: 
+msgid "Available Version:"
+msgstr "Version disponible :"
+
+#: 
+msgid "Back to Login"
+msgstr "Retour à la connexion"
+
+#: 
+msgid "Back to login"
+msgstr "Retour à la connexion"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Sauvegarde ignorée"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "Consultez GitHub pour obtenir les dernières informations sur la version."
+
+#: 
+msgid "Complete"
+msgstr "Complet"
+
+#: 
+msgid "Continue to Backup"
+msgstr "Continuer la sauvegarde"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "Continuez à télécharger et à appliquer"
+
+#: 
+msgid "Create Backup"
+msgstr "Créer une sauvegarde"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "Créez une sauvegarde de votre base de données avant d'appliquer la mise à jour."
+
+#: 
+msgid "Current Version:"
+msgstr "Version Actuelle:"
+
+#: 
+msgid "Database Backup"
+msgstr "Sauvegarde de base de données"
+
+#: 
+msgid "Download & Apply"
+msgstr "Téléchargez et Appliquer"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "Télécharger et appliquer la mise à jour système"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "Téléchargez la dernière version et appliquez-la à votre installation ChurchCRM."
+
+#: 
+msgid "Downloaded"
+msgstr "Téléchargé"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "Téléchargement de la dernière version depuis GitHub..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "Saisissez votre identifiant et nous vous enverrons par e-mail un lien pour réinitialiser votre mot de passe."
 

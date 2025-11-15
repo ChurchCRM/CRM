@@ -259,7 +259,7 @@ require_once 'Include/Header.php'; ?>
     </script>
 
     <div class="alert alert-warning">
-        <i class="fa fa-ban"></i>
+        <i class="fa-solid fa-ban"></i>
         <?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
     </div>
     <form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor">
@@ -277,7 +277,7 @@ require_once 'Include/Header.php'; ?>
                         <td colspan="6">
                             <?php
                             if ($bErrorFlag) {
-                                echo '<span class="LargeText" style="color: red;"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
+                                echo '<span class="LargeText" class="text-danger"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
                             } ?>
                         </td>
                     </tr>
@@ -298,14 +298,14 @@ require_once 'Include/Header.php'; ?>
                             <td class="TextColumn">
                                 <?= $aPropTypes[$aTypeFields[$row]] ?>
                             </td>
-                            <td class="TextColumn" align="center">
+                            <td class="TextColumn text-center">
                                 <input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35" maxlength="40">
                                 <?php
                                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                                    echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
                                 } ?>
                             </td>
-                            <td class="TextColumn" align="center">
+                            <td class="TextColumn text-center">
                                 <?php
                                 if ($aTypeFields[$row] == 9) {
                                     echo '<select name="' . $row . 'special">';
@@ -326,7 +326,7 @@ require_once 'Include/Header.php'; ?>
 
                                     echo '</select>';
                                     if ($aSpecialErrors[$row]) {
-                                        echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
+                                        echo '<span class="text-danger"><BR>' . gettext('You must select a group.') . '</span>';
                                     }
                                 } elseif ($aTypeFields[$row] == 12) {
                                     echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=custom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">" . gettext('Edit List Options') . '</a>';
@@ -335,7 +335,7 @@ require_once 'Include/Header.php'; ?>
                                 } ?>
 
                             </td>
-                            <td class="TextColumn" align="center" nowrap>
+                            <td class="TextColumn text-center text-nowrap">
                                 <?php
                                 if (isset($aSecurityType[$aFieldSecurity[$row]])) {
                                     echo GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]);
@@ -346,13 +346,13 @@ require_once 'Include/Header.php'; ?>
                             <td>
                                 <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="delete" onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);" )">
                             </td>
-                            <td class="TextColumn" width="5%" nowrap>
+                            <td class="TextColumn" width="5%" class="text-nowrap">
                                 <?php
                                 if ($row != 1) {
-                                    echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                                    echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa-solid fa-arrow-up"></i></a>';
                                 }
                                 if ($row < $numRows) {
-                                    echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                                    echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa-solid fa-arrow-down"></i></a>';
                                 } ?>
 
                             </td>
@@ -365,7 +365,7 @@ require_once 'Include/Header.php'; ?>
                             <table width="100%">
                                 <tr>
                                     <td width="30%"></td>
-                                    <td width="40%" align="center" valign="bottom">
+                                    <td width="40%" class="text-center align-bottom">
                                         <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                                     </td>
                                     <td width="30%"></td>
@@ -386,7 +386,7 @@ require_once 'Include/Header.php'; ?>
                         <table width="100%">
                             <tr>
                                 <td width="15%"></td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Type') ?>:</div>
                                     <?php
                                     echo '<select name="newFieldType">';
@@ -399,20 +399,20 @@ require_once 'Include/Header.php'; ?>
                                     ?><BR>
                                     <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
                                 </td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Name') ?>:</div>
                                     <input type="text" name="newFieldName" size="30" maxlength="40">
                                     <?php
                                     if ($bNewNameError) {
-                                        echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                                        echo '<div><span class="text-danger"><BR>' . gettext('You must enter a name') . '</span></div>';
                                     }
                                     if ($bDuplicateNameError) {
-                                        echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
+                                        echo '<div><span class="text-danger"><BR>' . gettext('That field name already exists.') . '</span></div>';
                                     }
                                     ?>
                                     &nbsp;
                                 </td>
-                                <td valign="top" nowrap>
+                                <td class="align-top text-nowrap">
                                     <div><?= gettext('Security Option') ?></div>
                                     <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
                                 </td>

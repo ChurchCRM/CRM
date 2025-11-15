@@ -17,10 +17,7 @@ $app->group('/verify', function (RouteCollectorProxy $group): void {
         if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());
             $haveFamily = ($family != null);
-            if ($token->getRemainingUses() > 0) {
-                $token->setRemainingUses($token->getRemainingUses() - 1);
-                $token->save();
-            }
+            $token->consume();
         }
 
         if ($haveFamily) {
@@ -45,6 +42,9 @@ $app->group('/verify', function (RouteCollectorProxy $group): void {
                     $note->setText(htmlspecialchars($body['message'], ENT_QUOTES, 'UTF-8'));
                 }
                 $note->save();
+                
+                // Consume the token after successful verification
+                $token->consume();
             }
         }
 

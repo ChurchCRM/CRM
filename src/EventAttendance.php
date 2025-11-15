@@ -176,12 +176,12 @@ for ($row = 1; $row <= $events->count(); $row++) {
         <div class="card-body">
             <table class="table table-striped data-table" id="eventsTable">
                 <thead>
-                    <tr class="TableHeader">
-                        <td width="33%"><strong><?= gettext('Event Title') ?></strong></td>
-                        <td width="33%"><strong><?= gettext('Event Date') ?></strong></td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
+                    <tr>
+                        <th width="33%"><?= gettext('Event Title') ?></th>
+                        <th width="33%"><?= gettext('Event Date') ?></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -189,7 +189,7 @@ for ($row = 1; $row <= $events->count(); $row++) {
                         <tr>
                             <td><?= $aEventTitle[$row] ?></td>
                             <td><?= FormatDate($aEventStartDateTime[$row], 1) ?></td>
-                            <td align="center">
+                            <td class="text-center">
                                 <form name="Attend" action="EventAttendance.php" method="POST">
                                     <input type="hidden" name="Event" value="<?= $aEventID[$row] ?>">
                                     <input type="hidden" name="Type" value="<?= $sGetType ?>">
@@ -206,7 +206,7 @@ for ($row = 1; $row <= $events->count(); $row++) {
          WHERE per_cls_ID IN ('1','2','5')";
                                     $tOpps = RunQuery($tSQL);
                                     $tNumTotal = mysqli_fetch_row($tOpps)[0]; ?>
-                                    <input type="submit" name="Type" value="<?= gettext('Attending Members') . ' [' . $cNumAttend . ']' ?>" class="btn btn-default">
+                                    <input type="submit" name="Type" value="<?= gettext('Attending Members') . ' [' . $cNumAttend . ']' ?>" class="btn btn-secondary">
                                 </form>
                             </td>
                             <td>
@@ -215,7 +215,7 @@ for ($row = 1; $row <= $events->count(); $row++) {
                                     <input type="hidden" name="Type" value="<?= $sGetType ?>">
                                     <input type="hidden" name="Action" value="Retrieve">
                                     <input type="hidden" name="Choice" value="Nonattendees">
-                                    <input id="Non-Attending-<?= $row ?>" type="submit" name="Type" value="<?= gettext('Non-Attending Members') . ' [' . ($tNumTotal - $cNumAttend) . ']' ?>" class="btn btn-default">
+                                    <input id="Non-Attending-<?= $row ?>" type="submit" name="Type" value="<?= gettext('Non-Attending Members') . ' [' . ($tNumTotal - $cNumAttend) . ']' ?>" class="btn btn-secondary">
                                 </form>
                             </td>
                             <td>
@@ -228,7 +228,7 @@ for ($row = 1; $row <= $events->count(); $row++) {
                      WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ' . $aEventID[$row] . ' AND per_cls_ID = 3';
                                     $gOpps = RunQuery($gSQL);
                                     $gNumGuestAttend = mysqli_fetch_row($gOpps)[0]; ?>
-                                    <input <?= ($gNumGuestAttend == 0 ? 'type="button"' : 'type="submit"') ?> name="Type" value="<?= gettext('Guests') . ' [' . $gNumGuestAttend . ']' ?>" class="btn btn-default">
+                                    <input <?= ($gNumGuestAttend == 0 ? 'type="button"' : 'type="submit"') ?> name="Type" value="<?= gettext('Guests') . ' [' . $gNumGuestAttend . ']' ?>" class="btn btn-secondary">
                                 </form>
                             </td>
                         </tr>
@@ -251,10 +251,10 @@ for ($row = 1; $row <= $events->count(); $row++) {
             <table class="table table-striped data-table" id="peopleTable">
                 <thead>
                     <tr>
-                        <td width="35%"><strong><?= gettext('Name') ?></strong></td>
-                        <td><strong><?= gettext('Email') ?></strong></td>
-                        <td><strong><?= gettext('Home Phone') ?></strong></td>
-                        <td><strong><?= gettext('Gender') ?></strong></td>
+                        <th width="35%"><?= gettext('Name') ?></th>
+                        <th><?= gettext('Email') ?></th>
+                        <th><?= gettext('Home Phone') ?></th>
+                        <th><?= gettext('Gender') ?></th>
                     </tr>
                 </thead>
                 <tbody>

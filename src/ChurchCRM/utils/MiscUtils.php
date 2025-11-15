@@ -26,7 +26,7 @@ class MiscUtils
             $apiKey[] = $alphabet[$n];
         }
 
-        return implode($apiKey); //turn the array into a string
+        return implode('', $apiKey); //turn the array into a string
     }
 
     public static function randomWord(int $length = 6): string
@@ -48,25 +48,6 @@ class MiscUtils
         }
 
         return $word;
-    }
-
-    public static function getRandomCache(int $baseCacheTime, int $variability): int
-    {
-        $var = random_int(0, $variability);
-        $dir = random_int(0, 1);
-        if ($dir) {
-            return $baseCacheTime - $var;
-        } else {
-            return $baseCacheTime + $var;
-        }
-    }
-
-    public static function getPhotoCacheExpirationTimestamp(): int
-    {
-        $cacheLength = SystemConfig::getValue('iPhotoClientCacheDuration');
-        $cacheLength = MiscUtils::getRandomCache($cacheLength, 0.5 * $cacheLength);
-
-        return time() + $cacheLength;
     }
 
     public static function formatAge(int $Month, int $Day, ?int $Year = null): string

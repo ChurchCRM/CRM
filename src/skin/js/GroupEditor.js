@@ -1,6 +1,6 @@
-$("document").ready(function () {
-    $(".groupSpecificProperties").click(function (e) {
-        var groupPropertyAction = e.currentTarget.id;
+function initializeGroupEditor() {
+    $(".groupSpecificProperties").click((e) => {
+        const groupPropertyAction = e.currentTarget.id;
         if (groupPropertyAction === "enableGroupProps") {
             $("#groupSpecificPropertiesModal").modal("show");
             $("#gsproperties-label").text(
@@ -32,211 +32,273 @@ $("document").ready(function () {
         }
     });
 
-    $("#setgroupSpecificProperties").click(function (e) {
-        var action = $("#setgroupSpecificProperties").data("action");
+    $("#setgroupSpecificProperties").click((e) => {
+        const action = $("#setgroupSpecificProperties").data("action");
         $.ajax({
             method: "POST",
-            url:
-                window.CRM.root +
-                "/api/groups/" +
-                groupID +
-                "/setGroupSpecificPropertyStatus",
+            url: `${window.CRM.root}/api/groups/${groupID}/setGroupSpecificPropertyStatus`,
             data: JSON.stringify({ GroupSpecificPropertyStatus: action }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-        }).done(function (data) {
-            location.reload(); // this shouldn't be necessary
-        });
+        })
+            .done((data) => {
+                location.reload();
+            })
+            .fail((xhr, status, error) => {
+                console.error(
+                    "Failed to set group specific property status:",
+                    error,
+                );
+                window.CRM.notify(
+                    i18next.t("Failed to update properties. Please try again."),
+                    {
+                        type: "danger",
+                        delay: 5000,
+                    },
+                );
+            });
     });
 
     $("#selectGroupIDDiv").hide();
-    $("#cloneGroupRole").click(function (e) {
-        if (e.target.checked) $("#selectGroupIDDiv").show();
-        else {
+    $("#cloneGroupRole").click((e) => {
+        if (e.target.checked) {
+            $("#selectGroupIDDiv").show();
+        } else {
             $("#selectGroupIDDiv").hide();
             $("#seedGroupID").prop("selectedIndex", 0);
         }
     });
 
-    $("#groupEditForm").submit(function (e) {
+    $("#groupEditForm").submit((e) => {
         e.preventDefault();
 
-        var formData = {
+        const formData = {
             groupName: $("input[name='Name']").val(),
             description: $("textarea[name='Description']").val(),
             groupType: $("select[name='GroupType'] option:selected").val(),
         };
+
         $.ajax({
             method: "POST",
-            url: window.CRM.root + "/api/groups/" + groupID,
+            url: `${window.CRM.root}/api/groups/${groupID}`,
             data: JSON.stringify(formData),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-        }).done(function (data) {
-            if (data.groupType === i18next.t("Sunday School")) {
-                window.location.href =
-                    CRM.root + "/sundayschool/SundaySchoolDashboard.php";
-            } else {
-                window.location.href = CRM.root + "/GroupList.php";
-            }
-        });
+        })
+            .done((data) => {
+                if (data.groupType === i18next.t("Sunday School")) {
+                    window.location.href = `${window.CRM.root}/sundayschool/SundaySchoolDashboard.php`;
+                } else {
+                    window.location.href = `${window.CRM.root}/GroupList.php`;
+                }
+            })
+            .fail((xhr, status, error) => {
+                console.error("Failed to update group:", error);
+                window.CRM.notify(
+                    i18next.t("Failed to update group. Please try again."),
+                    {
+                        type: "danger",
+                        delay: 5000,
+                    },
+                );
+            });
     });
 
-    $("#addNewRole").click(function (e) {
-        var newRoleName = $("#newRole").val();
+    $("#addNewRole").click((e) => {
+        const newRoleName = $("#newRole").val();
 
         $.ajax({
             method: "POST",
-            url: window.CRM.root + "/api/groups/" + groupID + "/roles",
+            url: `${window.CRM.root}/api/groups/${groupID}/roles`,
             data: JSON.stringify({ roleName: newRoleName }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-        }).done(function (data) {
-            var newRole = data.newRole;
-            var newRow = {
-                lst_OptionName: newRole.roleName,
-                lst_OptionID: newRole.roleID,
-                lst_OptionSequence: newRole.sequence,
-            };
-            roleCount += 1;
-            var node = dataT.row.add(newRow).node();
-            dataT.rows().invalidate().draw(true);
-            $("#newRole").val("");
-            //location.reload(); // this shouldn't be necessary
-        });
+        })
+            .done((data) => {
+                const newRole = data.newRole;
+                const newRow = {
+                    lst_OptionName: newRole.roleName,
+                    lst_OptionID: newRole.roleID,
+                    lst_OptionSequence: newRole.sequence,
+                };
+                roleCount += 1;
+                dataT.row.add(newRow);
+                dataT.rows().invalidate().draw(true);
+                $("#newRole").val("");
+                window.CRM.notify(i18next.t("Role added successfully."), {
+                    type: "success",
+                    delay: 3000,
+                });
+            })
+            .fail((xhr, status, error) => {
+                console.error("Failed to add new role:", error);
+                window.CRM.notify(
+                    i18next.t("Failed to add role. Please try again."),
+                    {
+                        type: "danger",
+                        delay: 5000,
+                    },
+                );
+            });
     });
 
-    $(document).on("click", ".deleteRole", function (e) {
-        var roleID = e.currentTarget.id.split("-")[1];
+    $(document).on("click", ".deleteRole", (e) => {
+        const roleID = e.currentTarget.id.split("-")[1];
         $.ajax({
             method: "DELETE",
-            url:
-                window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
+            url: `${window.CRM.root}/api/groups/${groupID}/roles/${roleID}`,
             encode: true,
             dataType: "json",
-        }).done(function (data) {
-            dataT.clear();
-            dataT.rows.add(data);
-            if (roleID == defaultRoleID)
-                // if we delete the default group role, set the default group role to 1 before we tell the table to re-render so that the buttons work correctly
-                defaultRoleID = 1;
-            dataT.rows().invalidate().draw(true);
-        });
+        })
+            .done((data) => {
+                dataT.clear();
+                dataT.rows.add(data);
+                // If we delete the default group role, set the default group role to 1 before re-rendering
+                if (roleID == defaultRoleID) {
+                    defaultRoleID = 1;
+                }
+                dataT.rows().invalidate().draw(true);
+                window.CRM.notify(i18next.t("Role deleted successfully."), {
+                    type: "success",
+                    delay: 3000,
+                });
+            })
+            .fail((xhr, status, error) => {
+                console.error("Failed to delete role:", error);
+                window.CRM.notify(
+                    i18next.t("Failed to delete role. Please try again."),
+                    {
+                        type: "danger",
+                        delay: 5000,
+                    },
+                );
+            });
     });
 
-    $(document).on("click", ".rollOrder", function (e) {
-        var roleID = e.currentTarget.id.split("-")[1]; // get the ID of the role that we're manipulating
-        var roleSequenceAction = e.currentTarget.id.split("-")[0]; //determine whether we're increasing or decreasing this role's sequence number
-        var newRoleSequence = 0; //create a variable at the function scope to store the new role's sequence
-        var currentRoleSequence = dataT
-            .cell(function (idx, data, node) {
-                if (data.lst_OptionID == roleID) {
-                    return true;
-                }
+    $(document).on("click", ".rollOrder", (e) => {
+        const roleID = e.currentTarget.id.split("-")[1];
+        const roleSequenceAction = e.currentTarget.id.split("-")[0];
+        let newRoleSequence = 0;
+
+        const currentRoleSequence = dataT
+            .cell((idx, data, node) => {
+                return data.lst_OptionID == roleID;
             }, 2)
-            .data(); //get the sequence number of the selected role
+            .data();
+
         if (roleSequenceAction === "roleUp") {
-            newRoleSequence = Number(currentRoleSequence) - 1; //decrease the role's sequence number
+            newRoleSequence = Number(currentRoleSequence) - 1;
         } else if (roleSequenceAction === "roleDown") {
-            newRoleSequence = Number(currentRoleSequence) + 1; // increase the role's sequence number
+            newRoleSequence = Number(currentRoleSequence) + 1;
         }
 
-        replaceRow = dataT.row(function (idx, data, node) {
-            if (data.lst_OptionSequence == newRoleSequence) {
-                return true;
-            }
+        const replaceRow = dataT.row((idx, data, node) => {
+            return data.lst_OptionSequence == newRoleSequence;
         });
-        var d = replaceRow.data();
+
+        const d = replaceRow.data();
         d.lst_OptionSequence = currentRoleSequence;
         setGroupRoleOrder(groupID, d.lst_OptionID, d.lst_OptionSequence);
         replaceRow.data(d);
 
         dataT
-            .cell(function (idx, data, node) {
-                if (data.lst_OptionID == roleID) {
-                    return true;
-                }
+            .cell((idx, data, node) => {
+                return data.lst_OptionID == roleID;
             }, 2)
-            .data(newRoleSequence); // set our role to the new sequence number
+            .data(newRoleSequence);
+
         setGroupRoleOrder(groupID, roleID, newRoleSequence);
         dataT.rows().invalidate().draw(true);
         dataT.order([[2, "asc"]]).draw();
     });
 
-    $(document).on("change", ".roleName", function (e) {
-        var groupRoleName = e.target.value;
-        var roleID = e.target.id.split("-")[1];
+    $(document).on("change", ".roleName", (e) => {
+        const groupRoleName = e.target.value;
+        const roleID = e.target.id.split("-")[1];
         $.ajax({
             method: "POST",
-            url:
-                window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
-            data: JSON.stringify({ groupRoleName: groupRoleName }),
+            url: `${window.CRM.root}/api/groups/${groupID}/roles/${roleID}`,
+            data: JSON.stringify({ groupRoleName }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-        }).done(function (data) {});
+        })
+            .done((data) => {
+                // Role name updated successfully
+                window.CRM.notify(i18next.t("Role name updated."), {
+                    type: "success",
+                    delay: 3000,
+                });
+            })
+            .fail((xhr, status, error) => {
+                console.error("Failed to update role name:", error);
+                window.CRM.notify(
+                    i18next.t("Failed to update role name. Please try again."),
+                    {
+                        type: "danger",
+                        delay: 5000,
+                    },
+                );
+            });
     });
 
-    $(document).on("click", ".defaultRole", function (e) {
-        var roleID = e.target.id.split("-")[1];
+    $(document).on("click", ".defaultRole", (e) => {
+        const roleID = e.target.id.split("-")[1];
         $.ajax({
             method: "POST",
-            url: window.CRM.root + "/api/groups/" + groupID + "/defaultRole",
-            data: JSON.stringify({ roleID: roleID }),
+            url: `${window.CRM.root}/api/groups/${groupID}/defaultRole`,
+            data: JSON.stringify({ roleID }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-        }).done(function (data) {
-            defaultRoleID = roleID; //update the local variable representing the default role id
-            dataT.rows().invalidate().draw(true);
-            // re-register the JQuery handlers since we changed the DOM, and new buttons will not have an action bound.
-        });
+        })
+            .done((data) => {
+                defaultRoleID = roleID;
+                dataT.rows().invalidate().draw(true);
+                window.CRM.notify(i18next.t("Default role updated."), {
+                    type: "success",
+                    delay: 3000,
+                });
+            })
+            .fail((xhr, status, error) => {
+                console.error("Failed to set default role:", error);
+                window.CRM.notify(
+                    i18next.t("Failed to set default role. Please try again."),
+                    {
+                        type: "danger",
+                        delay: 5000,
+                    },
+                );
+            });
     });
 
-    var dataTableConfig = {
+    const dataTableConfig = {
         data: groupRoleData,
         columns: [
             {
                 width: "auto",
                 title: i18next.t("Role Name"),
                 data: "lst_OptionName",
-                render: function (data, type, full, meta) {
+                render: (data, type, full, meta) => {
                     if (type === "display") {
-                        if (data === "Student" || data === "Teacher")
-                            return (
-                                '<input type="text" class="roleName" id="roleName-' +
-                                full.lst_OptionID +
-                                '" value="' +
-                                i18next.t(data) +
-                                '" readonly>'
-                            );
-                        else
-                            return (
-                                '<input type="text" class="roleName" id="roleName-' +
-                                full.lst_OptionID +
-                                '" value="' +
-                                data +
-                                '">'
-                            );
-                    } else return data;
+                        const isReadOnly =
+                            data === "Student" || data === "Teacher";
+                        const displayValue = isReadOnly
+                            ? i18next.t(data)
+                            : data;
+                        const readOnlyAttr = isReadOnly ? " readonly" : "";
+                        return `<input type="text" class="roleName" id="roleName-${full.lst_OptionID}" value="${displayValue}"${readOnlyAttr}>`;
+                    }
+                    return data;
                 },
             },
             {
                 width: "auto",
                 title: i18next.t("Make Default"),
-                render: function (data, type, full, meta) {
+                data: null,
+                render: (data, type, full, meta) => {
                     if (full.lst_OptionID == defaultRoleID) {
-                        return (
-                            '<strong><i class="fa fa-check"></i>' +
-                            i18next.t("Default") +
-                            "</strong>"
-                        );
+                        return `<strong><i class="fa-solid fa-check"></i>${i18next.t("Default")}</strong>`;
                     } else {
-                        return (
-                            '<button type="button" id="defaultRole-' +
-                            full.lst_OptionID +
-                            '" class="btn btn-success defaultRole">' +
-                            i18next.t("Default") +
-                            "</button>"
-                        );
+                        return `<button type="button" id="defaultRole-${full.lst_OptionID}" class="btn btn-success defaultRole">${i18next.t("Default")}</button>`;
                     }
                 },
             },
@@ -245,51 +307,31 @@ $("document").ready(function () {
                 title: i18next.t("Sequence"),
                 data: "lst_OptionSequence",
                 className: "dt-body-center",
-                render: function (data, type, full, meta) {
+                render: (data, type, full, meta) => {
                     if (type === "display") {
-                        var sequenceCell = "";
+                        let sequenceCell = "";
                         if (data > 1) {
-                            sequenceCell +=
-                                '<button type="button" id="roleUp-' +
-                                full.lst_OptionID +
-                                '" class="btn rollOrder"> <i class="fa fa-arrow-up"></i></button>&nbsp;';
+                            sequenceCell += `<button type="button" id="roleUp-${full.lst_OptionID}" class="btn rollOrder"> <i class="fa-solid fa-arrow-up"></i></button>&nbsp;`;
                         }
                         sequenceCell += data;
                         if (data != roleCount) {
-                            sequenceCell +=
-                                '&nbsp;<button type="button" id="roleDown-' +
-                                full.lst_OptionID +
-                                '" class="btn rollOrder"> <i class="fa fa-arrow-down"></i></button>';
+                            sequenceCell += `&nbsp;<button type="button" id="roleDown-${full.lst_OptionID}" class="btn rollOrder"> <i class="fa-solid fa-arrow-down"></i></button>`;
                         }
                         return sequenceCell;
-                    } else {
-                        return data;
                     }
+                    return data;
                 },
             },
             {
                 width: "auto",
                 title: i18next.t("Delete"),
-                render: function (data, type, full, meta) {
-                    if (
+                data: null,
+                render: (data, type, full, meta) => {
+                    const isProtected =
                         full.lst_OptionName === "Student" ||
-                        full.lst_OptionName === "Teacher"
-                    )
-                        return (
-                            '<button type="button" id="roleDelete-' +
-                            full.lst_OptionID +
-                            '" class="btn btn-danger deleteRole" disabled>' +
-                            i18next.t("Delete") +
-                            "</button>"
-                        );
-                    else
-                        return (
-                            '<button type="button" id="roleDelete-' +
-                            full.lst_OptionID +
-                            '" class="btn btn-danger deleteRole">' +
-                            i18next.t("Delete") +
-                            "</button>"
-                        );
+                        full.lst_OptionName === "Teacher";
+                    const disabledAttr = isProtected ? " disabled" : "";
+                    return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole"${disabledAttr}>${i18next.t("Delete")}</button>`;
                 },
             },
         ],
@@ -297,16 +339,25 @@ $("document").ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     dataT = $("#groupRoleTable").DataTable(dataTableConfig);
+}
 
-    // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeGroupEditor);
 });
 
 function setGroupRoleOrder(groupID, roleID, groupRoleOrder) {
     $.ajax({
         method: "POST",
-        url: window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
-        data: JSON.stringify({ groupRoleOrder: groupRoleOrder }),
+        url: `${window.CRM.root}/api/groups/${groupID}/roles/${roleID}`,
+        data: JSON.stringify({ groupRoleOrder }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-    }).done(function (data) {});
+    })
+        .done((data) => {
+            // Role order updated successfully
+        })
+        .fail((xhr, status, error) => {
+            console.error("Failed to update role order:", error);
+        });
 }

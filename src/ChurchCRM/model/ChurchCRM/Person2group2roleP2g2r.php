@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2r as BasePerson2group2roleP2g2r;
+use ChurchCRM\Service\AuthService;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -18,7 +19,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
 {
     public function preSave(ConnectionInterface $con = null): bool
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         parent::preSave($con);
 
         return true;
@@ -26,7 +27,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
 
     public function preUpdate(ConnectionInterface $con = null): bool
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         parent::preUpdate($con);
 
         return true;
@@ -34,7 +35,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
 
     public function preDelete(ConnectionInterface $con = null): bool
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         parent::preDelete($con);
 
         return true;
@@ -42,7 +43,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
 
     public function preInsert(ConnectionInterface $con = null): bool
     {
-        requireUserGroupMembership('bManageGroups');
+        AuthService::requireUserGroupMembership('bManageGroups');
         parent::preInsert($con);
 
         return true;

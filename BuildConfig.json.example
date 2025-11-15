@@ -1,10 +1,12 @@
 {
     "POEditor": {
         "id": "77079",
-        "token": ""
+        "token": "",
+        "_comment": "Get your POEditor API token from: https://poeditor.com/account/api (Account Settings > API Access > Generate API Token)"
     },
     "GitHub": {
-        "token": ""
+        "token": "",
+        "_comment": "Create a GitHub Personal Access Token at: https://github.com/settings/tokens (Settings > Developer settings > Personal access tokens > Generate new token)"
     },
     "demoKey": "",
     "Env": {

@@ -9,16 +9,21 @@ use ChurchCRM\Utils\MiscUtils;
 
 class Photo
 {
+    // Hardcoded photo dimensions - all photos stored at this size for optimal bandwidth/storage
+    public const PHOTO_WIDTH = 200;
+    public const PHOTO_HEIGHT = 200;
+    public const INITIALS_FONT_SIZE = 75;
+    
+    // HTTP cache duration for photo responses (in seconds)
+    public const CACHE_DURATION_SECONDS = 7200; // 2 hours
+
     private string $photoType;
     private int $id;
     private $photoURI;
-    private ?string $photoThumbURI = null;
-    private ?string $thumbnailPath = null;
     private $photoContentType = null;
-    private $thumbnailContentType = null;
     private bool $remotesEnabled;
 
-    public static $validExtensions = ['png', 'jpeg', 'jpg'];
+    public static $validExtensions = ['png', 'jpeg', 'jpg', 'gif', 'webp'];
 
     public function __construct(string $photoType, int $id)
     {
@@ -33,25 +38,9 @@ class Photo
         return Photo::$validExtensions;
     }
 
-    public function createThumbnail(): void
-    {
-        $this->ensureThumbnailsPath();
-        $thumbWidth = SystemConfig::getValue('iThumbnailWidth');
-        $img = $this->getGDImage($this->photoURI); //just in case we have legacy JPG/GIF that don't have a thumbnail.
-        $width = imagesx($img);
-        $height = imagesy($img);
-        $new_width = $thumbWidth;
-        $new_height = floor($height * ($thumbWidth / $width));
-        $tmp_img = imagecreatetruecolor($new_width, $new_height);
-        imagecopyresized($tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-        imagejpeg($tmp_img, $this->photoThumbURI, 50);
-    }
-
     private function setURIs(string $photoPath): void
     {
         $this->photoURI = $photoPath;
-        $this->thumbnailPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/';
-        $this->photoThumbURI = $this->thumbnailPath . $this->id . '.jpg';
     }
 
     private function shouldRefreshPhotoFile(string $photoFile): bool
@@ -106,6 +95,9 @@ class Photo
 
     private function photoHunt(): void
     {
+        // Ensure directories exist
+        $this->ensurePhotoDirsExist();
+        
         $baseName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id;
         $extensions = Photo::$validExtensions;
 
@@ -159,6 +151,23 @@ class Photo
         $this->renderInitials();
     }
 
+    /**
+     * Ensure required photo directories exist
+     */
+    private function ensurePhotoDirsExist(): void
+    {
+        $imagesRoot = SystemURLs::getImagesRoot();
+        $photoTypeDir = $imagesRoot . '/' . $this->photoType;
+        
+        if (!is_dir($imagesRoot)) {
+            @mkdir($imagesRoot, 0755, true);
+        }
+        
+        if (!is_dir($photoTypeDir)) {
+            @mkdir($photoTypeDir, 0755, true);
+        }
+    }
+
     private function convertToPNG(): void
     {
         $image = $this->getGDImage($this->getPhotoURI());
@@ -189,56 +198,27 @@ class Photo
         return $sourceGDImage;
     }
 
-    private function ensureThumbnailsPath(): void
-    {
-        if (!file_exists($this->thumbnailPath)) {
-            mkdir($this->thumbnailPath);
-        }
-    }
-
-    public function getThumbnailBytes(): string
-    {
-        if (!file_exists($this->photoThumbURI)) {
-            $this->createThumbnail();
-        }
-
-        $content = file_get_contents($this->photoThumbURI);
-        MiscUtils::throwIfFailed($content);
-
-        return $content;
-    }
-
     public function getPhotoBytes(): string
     {
+        if (!file_exists($this->photoURI)) {
+            // Return a placeholder image or throw a more helpful error
+            throw new \Exception("Photo file not found: " . $this->photoURI);
+        }
+        
         $content = file_get_contents($this->photoURI);
-        MiscUtils::throwIfFailed($content);
+        if ($content === false) {
+            throw new \Exception("Failed to read photo file: " . $this->photoURI);
+        }
 
         return (string) $content;
     }
 
     public function getPhotoContentType()
     {
-        $finfo = new \finfo(FILEINFO_MIME);
+        $finfo = new \finfo(FILEINFO_MIME_TYPE);
         $this->photoContentType = $finfo->file($this->photoURI);
 
         return $this->photoContentType;
-    }
-
-    public function getThumbnailContentType()
-    {
-        $finfo = new \finfo(FILEINFO_MIME);
-        $this->thumbnailContentType = $finfo->file($this->photoThumbURI);
-
-        return $this->thumbnailContentType;
-    }
-
-    public function getThumbnailURI(): ?string
-    {
-        if (!is_file($this->photoThumbURI)) {
-            $this->createThumbnail();
-        }
-
-        return $this->photoThumbURI;
     }
 
     public function getPhotoURI()
@@ -317,19 +297,16 @@ class Photo
     {
         $initials = $this->getInitialsString();
         $targetPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '-initials.png';
-        $height = SystemConfig::getValue('iPhotoHeight');
-        $width = SystemConfig::getValue('iPhotoWidth');
-        $pointSize = SystemConfig::getValue('iInitialsPointSize');
         $font = SystemURLs::getDocumentRoot() . '/fonts/' . SystemConfig::getValue('sFont');
-        $image = imagecreatetruecolor($width, $height);
+        $image = imagecreatetruecolor(self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
         MiscUtils::throwIfFailed($image);
         $bgcolor = $this->getRandomColor($image);
         $white = imagecolorallocate($image, 255, 255, 255);
-        imagefilledrectangle($image, 0, 0, $height, $width, $bgcolor);
-        $tb = imageftbbox($pointSize, 0, $font, $initials);
-        $x = ceil(($width - $tb[2]) / 2);
-        $y = ceil(($height - $tb[5]) / 2);
-        imagefttext($image, $pointSize, 0, $x, $y, $white, $font, $initials);
+        imagefilledrectangle($image, 0, 0, self::PHOTO_HEIGHT, self::PHOTO_WIDTH, $bgcolor);
+        $tb = imageftbbox(self::INITIALS_FONT_SIZE, 0, $font, $initials);
+        $x = ceil((self::PHOTO_WIDTH - $tb[2]) / 2);
+        $y = ceil((self::PHOTO_HEIGHT - $tb[5]) / 2);
+        imagefttext($image, self::INITIALS_FONT_SIZE, 0, $x, $y, $white, $font, $initials);
         imagepng($image, $targetPath);
         $this->setURIs($targetPath);
     }
@@ -337,27 +314,129 @@ class Photo
     public function setImageFromBase64($base64): void
     {
         $this->delete();
-        $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
-        $img = str_replace('data:image/png;base64,', '', $base64);
-        $img = str_replace(' ', '+', $img);
-        $fileData = base64_decode($img);
-        $finfo = new \finfo(FILEINFO_MIME);
-        if ($finfo->buffer($fileData) == 'image/png; charset=binary') {
-            file_put_contents($fileName, $fileData);
+        
+        // Extract mime type and base64 data
+        if (preg_match('/^data:image\/(\w+);base64,(.+)$/', $base64, $matches)) {
+            $imageType = $matches[1];
+            $base64Data = $matches[2];
+        } else {
+            // Fallback for legacy format without data URI prefix
+            $imageType = 'png';
+            $base64Data = str_replace(' ', '+', $base64);
+            $base64Data = str_replace('data:image/png;base64,', '', $base64Data);
         }
+        
+        // Decode base64 data
+        $fileData = base64_decode($base64Data);
+        if ($fileData === false) {
+            throw new \Exception('Invalid base64 data');
+        }
+        
+        // Validate file is actually an image using finfo
+        $finfo = new \finfo(FILEINFO_MIME_TYPE);
+        $mimeType = $finfo->buffer($fileData);
+        
+        // Allowed image types
+        $allowedMimeTypes = [
+            'image/jpeg' => 'jpg',
+            'image/jpg' => 'jpg',
+            'image/png' => 'png',
+            'image/gif' => 'gif',
+            'image/webp' => 'webp'
+        ];
+        
+        if (!isset($allowedMimeTypes[$mimeType])) {
+            throw new \Exception('Invalid image type. Only JPEG, PNG, GIF, and WebP images are allowed.');
+        }
+        
+        // Validate file size (check against max upload size)
+        $maxSize = $this->parseSize(ini_get('upload_max_filesize'));
+        if (strlen($fileData) > $maxSize) {
+            throw new \Exception('Image file size exceeds maximum allowed size');
+        }
+        
+        // Create GD image from uploaded data
+        $sourceImage = imagecreatefromstring($fileData);
+        if ($sourceImage === false) {
+            throw new \Exception('Failed to create image from uploaded data');
+        }
+        
+        // Get original dimensions
+        $sourceWidth = imagesx($sourceImage);
+        $sourceHeight = imagesy($sourceImage);
+        
+        // Create resized image at standard dimensions
+        $resizedImage = imagecreatetruecolor(self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
+        if ($resizedImage === false) {
+            imagedestroy($sourceImage);
+            throw new \Exception('Failed to create resized image');
+        }
+        
+        // Preserve transparency for PNG/GIF
+        imagealphablending($resizedImage, false);
+        imagesavealpha($resizedImage, true);
+        
+        // Resize image to standard dimensions
+        if (!imagecopyresampled(
+            $resizedImage,
+            $sourceImage,
+            0, 0, 0, 0,
+            self::PHOTO_WIDTH,
+            self::PHOTO_HEIGHT,
+            $sourceWidth,
+            $sourceHeight
+        )) {
+            imagedestroy($sourceImage);
+            imagedestroy($resizedImage);
+            throw new \Exception('Failed to resize image');
+        }
+        
+        // Save as PNG at standard dimensions
+        $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
+        
+        if (!imagepng($resizedImage, $fileName)) {
+            imagedestroy($sourceImage);
+            imagedestroy($resizedImage);
+            throw new \Exception('Failed to save resized image');
+        }
+        
+        // Clean up
+        imagedestroy($sourceImage);
+        imagedestroy($resizedImage);
+        
+        // Update URIs
+        $this->setURIs($fileName);
+    }
+    
+    /**
+     * Parse size string (e.g., "8M", "2G") to bytes
+     */
+    private function parseSize($size): int
+    {
+        $unit = strtolower(substr($size, -1));
+        $value = (int)$size;
+        
+        switch ($unit) {
+            case 'g':
+                $value *= 1024;
+                // fallthrough
+            case 'm':
+                $value *= 1024;
+                // fallthrough
+            case 'k':
+                $value *= 1024;
+        }
+        
+        return $value;
     }
 
     public function delete(): bool
     {
-        $deleted = [];
         if ($this->photoURI && is_file($this->photoURI)) {
-            $deleted[$this->photoURI] = unlink($this->photoURI);
-        }
-        if ($this->photoThumbURI && is_file($this->photoThumbURI)) {
-            $deleted[$this->photoThumbURI] = unlink($this->photoThumbURI);
+            return unlink($this->photoURI);
         }
 
-        return !in_array(false, $deleted);
+        return false;
     }
 
     public function refresh(): void
@@ -365,23 +444,11 @@ class Photo
         if (strpos($this->photoURI, 'initials') || strpos($this->photoURI, 'remote')) {
             $this->delete();
         }
-        $this->photoURI = $this->photoHunt();
-        $this->photoThumbURI = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/' . $this->id . '.jpg';
+        $this->photoHunt();
     }
 
     public function isInitials(): bool
     {
-        if ($this->photoType == 'Person' && $this->id == 2) {
-            echo $this->photoURI;
-            echo strpos($this->photoURI, 'initials') !== false;
-            exit;
-        }
-
         return strpos($this->photoURI, 'initials') !== false;
-    }
-
-    public function isRemote(): bool
-    {
-        return strpos($this->photoURI, 'remote') !== false;
     }
 }

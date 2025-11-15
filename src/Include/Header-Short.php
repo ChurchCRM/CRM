@@ -3,9 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 
 require_once 'Header-function.php';
-if (SystemConfig::debugEnabled()) {
-    require_once 'Header-Security.php';
-}
+require_once 'Header-Security.php';
 
 // Turn ON output buffering
 ob_start();
@@ -21,12 +19,12 @@ ob_start();
 
 <body>
 
-<table height="100%" width="100%" border="0" cellpadding="5" cellspacing="0" align="center">
+<table height="100%" width="100%" cellpadding="5" cellspacing="0" class="mx-auto">
   <tr>
-    <td valign="top" width="100%" align="center">
-      <table width="98%" border="0">
+    <td class="align-top text-center" width="100%">
+      <table width="98%">
         <tr>
-          <td valign="top">
+          <td class="align-top">
             <br>
 
             <p class="PageTitle"><?= gettext($sPageTitle) ?></p>

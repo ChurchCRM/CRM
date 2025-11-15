@@ -7,12 +7,14 @@ class MenuCounter
     private $name;
     private $css;
     private $initValue;
+    private $title;
 
-    public function __construct($name, $css, $initValue = 0)
+    public function __construct($name, $css, $initValue = 0, $title = '')
     {
         $this->name = $name;
         $this->css = $css;
         $this->initValue = $initValue;
+        $this->title = $title;
     }
 
     /**
@@ -37,5 +39,13 @@ class MenuCounter
     public function getInitValue()
     {
         return $this->initValue;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

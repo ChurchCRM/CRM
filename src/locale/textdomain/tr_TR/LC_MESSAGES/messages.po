@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "Aile listesi"
 
 #: 
-msgid "Add Family"
-msgstr "Aile ekle"
-
-#: 
 msgid "Created"
 msgstr "Yaratılmış"
 
@@ -1280,10 +1276,6 @@ msgid "Next Family"
 msgstr "Sonraki Aile"
 
 #: 
-msgid "Delete this Family"
-msgstr "Bu aileyi sil"
-
-#: 
 msgid "Upload Photo"
 msgstr "Fotoğraf yükle"
 
@@ -1294,10 +1286,6 @@ msgstr "Fotoğrafı sil"
 #: 
 msgid "Add a Note"
 msgstr "Bir not ekle"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Tüm aile üyelerini sepete ekleyin"
 
 #: 
 msgid "Timeline"
@@ -1406,10 +1394,6 @@ msgstr "Aile bilgilerinin kopyasını aşağıdaki e -postalara e -posta ile gö
 #: 
 msgid "Financial Reports"
 msgstr "Finansal raporlar"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Önceki rapordan kayıt iade edilmedi."
 
 #: 
 msgid "Report Type:"
@@ -1773,10 +1757,6 @@ msgid "Remove from Cart"
 msgstr "Sepetten kaldır"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Olay Kimliği için Metin:"
-
-#: 
 msgid "Group Editor"
 msgstr "Grup editörü"
 
@@ -1945,10 +1925,6 @@ msgid "Group View"
 msgstr "Grup Görünümü"
 
 #: 
-msgid "Group Functions"
-msgstr "Grup işlevleri"
-
-#: 
 msgid "Edit this Group"
 msgstr "Bu grubu düzenle"
 
@@ -2009,8 +1985,9 @@ msgid "Assigned Properties"
 msgstr "Atanan mülkler"
 
 #: 
-msgid "Group Members:"
-msgstr "Grup üyeleri:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Grup üyeleri"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2791,10 +2768,6 @@ msgid "Query Listing"
 msgstr "Sorgu Listesi"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Ücretsiz metin sorgusu çalıştırın"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Serbest metin sorgusu"
 
@@ -2934,10 +2907,6 @@ msgstr "Yalnızca aile kaydını sil"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Aile kaydını ve aile üyelerini sil"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filtre ve araba"
 
 #: 
 msgid "Listing"
@@ -3329,14 +3298,6 @@ msgid "Select Fiscal Year"
 msgstr "Seçim mali yılı"
 
 #: 
-msgid "pm"
-msgstr "öğleden sonra"
-
-#: 
-msgid "am"
-msgstr "Ben"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Geçersiz Editör Kimliği!"
 
@@ -3637,20 +3598,12 @@ msgid "Sunday School Class Functions"
 msgstr "Pazar Okulu Sınıfı İşlevleri"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Açma"
-
-#: 
 msgid "Teachers"
 msgstr "Öğretmen"
 
 #: 
 msgid "Send Message"
 msgstr "Mesaj gönder"
-
-#: 
-msgid "View Profile"
-msgstr "Profili Görüntüle"
 
 #: 
 msgid "Quick Status"
@@ -3989,68 +3942,12 @@ msgid "Edit Settings"
 msgstr "Ayarları Düzenle"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Churchcrm'i yükselt"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "1. Adım: Yedek Veritabanı"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Yükseltme işlemine başlamadan önce lütfen bir veritabanı yedekleme oluşturun."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Veritabanı yedekleme oluştur"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "2. Adım: Sunucuda Güncelleme Paketi Alın"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Churchcrm GitHub sürüm sayfasından en son dosyaları getirin"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Güncelleme dosyalarını getirin"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Adım 3: Sunucuya güncelleme paketi uygulayın"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Yükseltme arşivini çıkarın ve yeni dosyaları uygulayın"
-
-#: 
 msgid "Full Path:"
 msgstr "Tam yol:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Yükseltme sistemi"
-
-#: 
-msgid "Step 4: Login"
-msgstr "4. Adım: Giriş"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Yükseltilmiş sisteme giriş yapın"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Yedekleme tamamlandı, indirmeye hazır."
-
-#: 
-msgid "Backup Error."
-msgstr "Yedekleme hatası."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4152,18 +4049,6 @@ msgstr "Yıllık"
 #: 
 msgid "Registration Complete"
 msgstr "Kayıt tamamlandı"
-
-#: 
-msgid "Register"
-msgstr "Kayıt ol"
-
-#: 
-msgid "Register your family"
-msgstr "Ailenizi Kaydet"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Ailende kaç kişi var"
 
 #: 
 msgid "Add All Classes"
@@ -6953,10 +6838,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Lütfen bunu yapmak istediğiniz şeyden emin olun. </p>"
 
 #: 
-msgid " this Family"
-msgstr " bu aile"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Devre dışı bırakmayı onaylayın"
 
@@ -6987,10 +6868,6 @@ msgstr "Veri tabanı dosya adını koordine edin:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Sepetle kesişmek"
-
-#: 
-msgid "Family Member"
-msgstr "Aile üyesi"
 
 #: 
 msgid "select an option"
@@ -7104,10 +6981,6 @@ msgstr "Fotoğrafı göster"
 #: 
 msgid "Family Photo"
 msgstr "Aile fotoğrafı"
-
-#: 
-msgid "Quick Settings"
-msgstr "Hızlı Ayarlar"
 
 #: 
 msgid "Status"
@@ -7411,24 +7284,12 @@ msgid "Reset Password"
 msgstr "Şifreyi yenile"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Parolayı sıfırlanamıyor"
-
-#: 
 msgid "Reset your password"
 msgstr "Şifrenizi sıfırlayın"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Üzgünüm, bu noktada isteğinizi işleyemiyoruz."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Giriş adı gerekli"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Size yeni bir şifre gönderildi. Lütfen emailinizi kontrol edin"
 
 #: 
 msgid "Kiosk Manager"
@@ -7529,10 +7390,6 @@ msgstr "Hepsini kaldır"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Bu grubun tüm üyeleri arabada değil"
-
-#: 
-msgid "Add all"
-msgstr "Hepsini ekle"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7783,10 +7640,6 @@ msgid "Maximum number of Addresses"
 msgstr "Maksimum adres sayısı"
 
 #: 
-msgid "Show type of group:"
-msgstr "Grup türünü göster:"
-
-#: 
 msgid "Add Students"
 msgstr "Öğrencileri ekle"
 
@@ -7833,26 +7686,6 @@ msgstr "Fotoğraf kitabı oluştur"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Görüntüler için Kullanılacak Yükseklik"
-
-#: 
-msgid "Width to use for images"
-msgstr "Görüntüler için kullanılacak genişlik"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Küçük resimler için kullanılmak üzere genişlik"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Baş harfleri için kullanılması gereken nokta boyutu"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Görüntüler için istemci önbellek saniye"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7905,10 +7738,6 @@ msgstr "Hareket Etkinliği"
 #: 
 msgid "Resize Event"
 msgstr "Yeniden boyutlandırma etkinliği"
-
-#: 
-msgid "Text from"
-msgstr "Metin"
 
 #: 
 msgid "Profile"
@@ -8430,10 +8259,6 @@ msgid "Menu Name"
 msgstr "Menü adı"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max 20 Char"
-
-#: 
 msgid "Link Address"
 msgstr "Bağlantı adresi"
 
@@ -8580,10 +8405,6 @@ msgid "Integrity Check Details:"
 msgstr "Dürüstlük Kontrol Detayları:"
 
 #: 
-msgid "I Understand"
-msgstr "Anlıyorum"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Desteklenmemiş depozito türleri tespit edildi"
 
@@ -8611,10 +8432,6 @@ msgstr "Yedekleme Oluşturun"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Uzak yedekleme uç noktası. WebDav ise, bu URL kodlanmalıdır."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Yedeklemeye baş harfleri görüntü dosyalarını, uzak resim dosyalarını (gravatar) ve küçük resimleri ekleyin. Bu dosyalar genellikle bir geri yüklemeden sonra çoğaltılabilir ve Yedek Arşivine büyük bir yürütme süresi ve depolama masrafıyla çok az değer katabilir."
 
 #: 
 msgid "Password (if any)"
@@ -8679,7 +8496,8 @@ msgstr "Ekran için atanan aileden miras alınan kişi bilgisi?\n"
 "O kişi için ilgili bilgi girilmediyse görüntülenir."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Tüm Grup Üyelerini Kopyalamak İçin Ctrl + C tuşlarına basın \\ 'Telefon Numaraları"
 
 #: 
@@ -8791,10 +8609,6 @@ msgid "Remove Results from Cart"
 msgstr "Sepetin sonuçlarını kaldırın"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Uyarı: Tespit edilen ön yükseltme görevleri"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Başarılı bir yükseltmeyi önleyebilecek bazı koşullar tespit edildi"
@@ -8826,14 +8640,6 @@ msgstr "Veritabanını sıfırla"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Bu, sistem verilerini sıfırlar ve sistemi yeni bir yükleme olarak yeniden başlatır."
-
-#: 
-msgid "Clear Filter"
-msgstr "Temiz filtre"
-
-#: 
-msgid "Add Person"
-msgstr "Kişi ekle"
 
 #. Context: locales
 #: 
@@ -8972,10 +8778,6 @@ msgstr "Yeni şifreniz eskinize çok benziyor."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Parola sıfırlama kullanılabilir değil. Lütfen sistem yöneticinizle iletişime geçin"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Kimlik doğrulama sorunu"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

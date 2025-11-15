@@ -33,7 +33,11 @@ require_once 'Include/Header.php';
 
 // No Records Message if previous report returned no records.
 if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] === 'NoRows') {
-    echo '<h3><span class="text-error">' . gettext('No records were returned from the previous report.') . '</span></h3>';
+    echo '<div class="alert alert-warning" role="alert">';
+    echo '<i class="fas fa-exclamation-triangle"></i> ';
+    echo '<strong>' . gettext('No Data Found') . '</strong><br>';
+    echo gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.');
+    echo '</div>';
 }
 
 if ($sReportType == '') {
@@ -55,7 +59,7 @@ if ($sReportType == '') {
     echo '</td></tr>';
     // First Pass Cancel, Next Buttons
     echo "<tr><td>&nbsp;</td>
-        <td><input type=button class='btn btn-default' name=Cancel value='" . gettext('Cancel') . "'
+        <td><input type=button class='btn btn-secondary' name=Cancel value='" . gettext('Cancel') . "'
         onclick=\"javascript:document.location='v2/dashboard';\">
         <input type=submit class='btn btn-primary' name=Submit1 value='" . gettext('Next') . "'>
         </td></tr>
@@ -118,8 +122,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllClasses" class="btn btn-default"><?= gettext('Add All Classes') ?></button>
-        <button type="button" id="clearAllClasses" class="btn btn-default"><?= gettext('Clear All Classes') ?></button><br/><br/>
+        <button type="button" id="addAllClasses" class="btn btn-secondary"><?= gettext('Add All Classes') ?></button>
+        <button type="button" id="clearAllClasses" class="btn btn-secondary"><?= gettext('Clear All Classes') ?></button><br/><br/>
         </td></tr>
         <?php
 
@@ -165,8 +169,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFamilies" class="btn btn-default"><?= gettext('Add All Families') ?></button>
-        <button type="button" id="clearAllFamilies" class="btn btn-default"><?= gettext('Clear All Families') ?></button><br/><br/>
+        <button type="button" id="addAllFamilies" class="btn btn-secondary"><?= gettext('Add All Families') ?></button>
+        <button type="button" id="clearAllFamilies" class="btn btn-secondary"><?= gettext('Clear All Families') ?></button><br/><br/>
         </td></tr>
         <?php
     }
@@ -233,8 +237,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFunds" class="btn btn-default"><?= gettext('Add All Funds') ?></button>
-        <button type="button" id="clearAllFunds" class="btn btn-default"><?= gettext('Clear All Funds') ?></button><br/><br/>
+        <button type="button" id="addAllFunds" class="btn btn-secondary"><?= gettext('Add All Funds') ?></button>
+        <button type="button" id="clearAllFunds" class="btn btn-secondary"><?= gettext('Clear All Funds') ?></button><br/><br/>
         </td></tr>
 
         <?php
@@ -318,7 +322,7 @@ if ($sReportType == '') {
 <tr>
     <td>&nbsp;</td>
     <td>
-        <input type="button" class="btn btn-default" name="Cancel" value="$backText" onclick="javascript:document.location='FinancialReports.php';" />
+        <input type="button" class="btn btn-secondary" name="Cancel" value="$backText" onclick="javascript:document.location='FinancialReports.php';" />
         <input download type="submit" class="btn btn-primary" id="createReport" name="Submit2" value="$createReportText" />
     </td>
 </tr>

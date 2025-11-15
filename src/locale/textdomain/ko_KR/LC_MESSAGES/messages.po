@@ -1251,10 +1251,6 @@ msgid "Family List"
 msgstr "가족 목록"
 
 #: 
-msgid "Add Family"
-msgstr "가족 추가"
-
-#: 
 msgid "Created"
 msgstr "등록일"
 
@@ -1279,10 +1275,6 @@ msgid "Next Family"
 msgstr "다음 가족"
 
 #: 
-msgid "Delete this Family"
-msgstr "이 가족 삭제"
-
-#: 
 msgid "Upload Photo"
 msgstr "사진 업로드"
 
@@ -1293,10 +1285,6 @@ msgstr "사진 삭제"
 #: 
 msgid "Add a Note"
 msgstr "메모 추가"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "가족 전체를 카트에 추가"
 
 #: 
 msgid "Timeline"
@@ -1405,10 +1393,6 @@ msgstr "가족 정보를 다음 이메일 주소로 발송하려고 합니다"
 #: 
 msgid "Financial Reports"
 msgstr "재정 보고"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "이전 보고서에서 반환된 기록이 없습니다."
 
 #: 
 msgid "Report Type:"
@@ -1771,10 +1755,6 @@ msgid "Remove from Cart"
 msgstr "카트에서 제거"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "행사 ID 문자 발송: "
-
-#: 
 msgid "Group Editor"
 msgstr "그룹 편집"
 
@@ -1943,10 +1923,6 @@ msgid "Group View"
 msgstr "그룹 보기"
 
 #: 
-msgid "Group Functions"
-msgstr "그룹 기능"
-
-#: 
 msgid "Edit this Group"
 msgstr "이 그룹 편집"
 
@@ -2007,7 +1983,8 @@ msgid "Assigned Properties"
 msgstr "배정된 속성"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "그룹 구성원:"
 
 #: 
@@ -2789,10 +2766,6 @@ msgid "Query Listing"
 msgstr "쿼리 목록"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "직접 쿼리 실행"
-
-#: 
 msgid "Free-Text Query"
 msgstr "직접 입력 쿼리"
 
@@ -2931,10 +2904,6 @@ msgstr "가족 기록만 삭제"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "가족 기록과 구성원 모두 삭제"
-
-#: 
-msgid "Filter and Cart"
-msgstr "필터와 카트"
 
 #: 
 msgid "Listing"
@@ -3325,14 +3294,6 @@ msgid "Select Fiscal Year"
 msgstr "회계 연도 선택"
 
 #: 
-msgid "pm"
-msgstr "오후"
-
-#: 
-msgid "am"
-msgstr "오전"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "잘못된 편집기 ID입니다!"
 
@@ -3633,20 +3594,12 @@ msgid "Sunday School Class Functions"
 msgstr "주일학교 반 기능"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "드롭다운 열기/닫기"
-
-#: 
 msgid "Teachers"
 msgstr "교사"
 
 #: 
 msgid "Send Message"
 msgstr "메시지 보내기"
-
-#: 
-msgid "View Profile"
-msgstr "프로필 보기"
 
 #: 
 msgid "Quick Status"
@@ -3985,68 +3938,12 @@ msgid "Edit Settings"
 msgstr "설정 편집"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "ChurchCRM 업그레이드"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "1단계: 데이터베이스 백업"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "업그레이드 전에 반드시 데이터베이스 백업을 생성하세요."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "데이터베이스 백업 생성"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "2단계: 서버에 업데이트 패키지 가져오기"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "ChurchCRM GitHub 릴리스 페이지에서 최신 파일 가져오기"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "업데이트 파일 가져오기"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "3단계: 서버에 업데이트 패키지 적용"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "업그레이드 압축을 풀고 새 파일을 적용합니다"
-
-#: 
 msgid "Full Path:"
 msgstr "전체 경로:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "시스템 업그레이드"
-
-#: 
-msgid "Step 4: Login"
-msgstr "4단계: 로그인"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "업그레이드된 시스템에 로그인"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "백업 완료, 다운로드 가능합니다."
-
-#: 
-msgid "Backup Error."
-msgstr "백업 오류."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4147,18 +4044,6 @@ msgstr "연간"
 #: 
 msgid "Registration Complete"
 msgstr "등록 완료"
-
-#: 
-msgid "Register"
-msgstr "등록"
-
-#: 
-msgid "Register your family"
-msgstr "우리 가족 등록"
-
-#: 
-msgid "How many people are in your family"
-msgstr "가족 인원수를 입력하세요"
 
 #: 
 msgid "Add All Classes"
@@ -6945,10 +6830,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "정말 이 작업을 진행할지 다시 확인하세요.</p>"
 
 #: 
-msgid " this Family"
-msgstr " 이 가족"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "비활성화 확인"
 
@@ -6979,10 +6860,6 @@ msgstr "좌표 데이터베이스 파일 이름:"
 #: 
 msgid "Intersect With Cart"
 msgstr "카트와 교집합"
-
-#: 
-msgid "Family Member"
-msgstr "가족 구성원"
 
 #: 
 msgid "select an option"
@@ -7095,10 +6972,6 @@ msgstr "사진 보기"
 #: 
 msgid "Family Photo"
 msgstr "가족 사진"
-
-#: 
-msgid "Quick Settings"
-msgstr "빠른 설정"
 
 #: 
 msgid "Status"
@@ -7401,24 +7274,12 @@ msgid "Reset Password"
 msgstr "비밀번호 재설정"
 
 #: 
-msgid "Unable to reset password"
-msgstr "비밀번호를 재설정할 수 없습니다"
-
-#: 
 msgid "Reset your password"
 msgstr "비밀번호 재설정"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "죄송합니다. 현재 요청을 처리할 수 없습니다."
-
-#: 
-msgid "Login Name is Required"
-msgstr "로그인 이름을 입력해야 합니다"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "새 비밀번호를 이메일로 보냈습니다. 메일함을 확인하세요"
 
 #: 
 msgid "Kiosk Manager"
@@ -7519,10 +7380,6 @@ msgstr "모두 제거"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "이 그룹의 일부만 카트에 있습니다"
-
-#: 
-msgid "Add all"
-msgstr "모두 추가"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7772,10 +7629,6 @@ msgid "Maximum number of Addresses"
 msgstr "주소 최대 개수"
 
 #: 
-msgid "Show type of group:"
-msgstr "그룹 유형 표시:"
-
-#: 
 msgid "Add Students"
 msgstr "학생 추가"
 
@@ -7822,26 +7675,6 @@ msgstr "포토북 만들기"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "이미지 높이"
-
-#: 
-msgid "Width to use for images"
-msgstr "이미지 폭"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "썸네일 폭"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "이니셜 썸네일 글자 크기"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "이미지 클라이언트 캐시(초)"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7894,10 +7727,6 @@ msgstr "행사 이동"
 #: 
 msgid "Resize Event"
 msgstr "행사 크기 조정"
-
-#: 
-msgid "Text from"
-msgstr "보낸 사람"
 
 #: 
 msgid "Profile"
@@ -8416,10 +8245,6 @@ msgid "Menu Name"
 msgstr "메뉴 이름"
 
 #: 
-msgid "Max 20 char"
-msgstr "최대 20자"
-
-#: 
 msgid "Link Address"
 msgstr "링크 주소"
 
@@ -8565,10 +8390,6 @@ msgid "Integrity Check Details:"
 msgstr "무결성 검사 상세 정보:"
 
 #: 
-msgid "I Understand"
-msgstr "이해했습니다"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "지원되지 않는 입금 유형이 감지되었습니다"
 
@@ -8596,10 +8417,6 @@ msgstr "백업 생성"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "원격 백업 엔드포인트(WebDAV인 경우 URL 인코딩 필요). "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "백업에 이니셜 이미지, 원격 이미지(Gravatar), 썸네일을 포함합니다. 이러한 파일은 복원 후 다시 생성할 수 있으며 실행 시간과 저장 공간을 많이 차지합니다."
 
 #: 
 msgid "Password (if any)"
@@ -8663,7 +8480,8 @@ msgstr "가족 정보에서 개인 정보를 가져와 표시할까요?\n"
 "개인 정보가 비어 있으면 가족 기록의 해당 정보를 표시합니다."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Ctrl+C를 눌러 그룹 구성원의 전화번호를 모두 복사하세요"
 
 #: 
@@ -8773,10 +8591,6 @@ msgid "Remove Results from Cart"
 msgstr "결과를 카트에서 제거"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "경고: 업그레이드 전 작업이 감지되었습니다"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "업그레이드를 방해할 수 있는 조건이 확인되었습니다"
 
@@ -8807,14 +8621,6 @@ msgstr "데이터베이스 초기화"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "시스템 데이터를 초기화하여 새 설치처럼 다시 시작합니다."
-
-#: 
-msgid "Clear Filter"
-msgstr "필터 지우기"
-
-#: 
-msgid "Add Person"
-msgstr "개인 추가"
 
 #. Context: locales
 #: 
@@ -8952,10 +8758,6 @@ msgstr "새 비밀번호가 기존 비밀번호와 너무 비슷합니다."
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "비밀번호 재설정을 사용할 수 없습니다. 시스템 관리자에게 문의하세요"
-
-#: 
-msgid "Authentication Issue"
-msgstr "인증 문제"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

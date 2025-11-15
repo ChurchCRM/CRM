@@ -1,19 +1,7 @@
-i18nextOpt = {
-    lng: window.CRM.shortLocale,
-    nsSeparator: false,
-    keySeparator: false,
-    pluralSeparator: false,
-    contextSeparator: false,
-    fallbackLng: false,
-    resources: {},
-};
+// i18next initialization is now handled by locale-loader.js
 
-i18nextOpt.resources[window.CRM.shortLocale] = {
-    translation: window.CRM.i18keys,
-};
-i18next.init(i18nextOpt);
-
-$("document").ready(function () {
+// Wait for both DOM ready AND locales loaded before initializing
+function initializeApp() {
     $(".multiSearch").select2({
         language: window.CRM.shortLocale,
         minimumInputLength: 2,
@@ -40,7 +28,7 @@ $("document").ready(function () {
 
     window.onkeyup = function (e) {
         // listen for "?" keypress for quick access to the select2 search box.
-        if (e.shiftKey && e.keyCode == 191) {
+        if (e.shiftKey && e.key === "?") {
             $(".multiSearch").select2("open");
         }
     };
@@ -54,55 +42,12 @@ $("document").ready(function () {
 
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
 
-    $(document).on("click", ".emptyCart", function (e) {
-        window.CRM.cart.empty(function (data) {
-            $(data.cartPeople).each(function (index, data) {
-                personButton = $("a[data-cartpersonid='" + data + "']");
-                $(personButton).addClass("AddToPeopleCart");
-                $(personButton).removeClass("RemoveFromPeopleCart");
-                $("span i:nth-child(2)", personButton).removeClass("fa-remove");
-                $("span i:nth-child(2)", personButton).addClass("fa-cart-plus");
-            });
-        });
-    });
+    // Note: Cart event handlers are now in cart.js module
+    // The CartManager class handles all cart button clicks and notifications
 
-    $(document).on("click", "#emptyCartToGroup", function (e) {
-        window.CRM.cart.emptyToGroup();
-    });
+    // Initialize just-validate for all forms with data-validate attribute
+    initializeFormValidation();
 
-    $(document).on("click", ".RemoveFromPeopleCart", function () {
-        clickedButton = $(this);
-        window.CRM.cart.removePerson(
-            [clickedButton.data("cartpersonid")],
-            function () {
-                $(clickedButton).addClass("AddToPeopleCart");
-                $(clickedButton).removeClass("RemoveFromPeopleCart");
-                $("span i:nth-child(2)", clickedButton).removeClass(
-                    "fa-remove",
-                );
-                $("span i:nth-child(2)", clickedButton).addClass(
-                    "fa-cart-plus",
-                );
-            },
-        );
-    });
-
-    $(document).on("click", ".AddToPeopleCart", function () {
-        clickedButton = $(this);
-        window.CRM.cart.addPerson(
-            [clickedButton.data("cartpersonid")],
-            function () {
-                $(clickedButton).addClass("RemoveFromPeopleCart");
-                $(clickedButton).removeClass("AddToPeopleCart");
-                $("span i:nth-child(2)", clickedButton).addClass("fa-remove");
-                $("span i:nth-child(2)", clickedButton).removeClass(
-                    "fa-cart-plus",
-                );
-            },
-        );
-    });
-
-    window.CRM.cart.refresh();
     window.CRM.dashboard.refresh();
     DashboardRefreshTimer = setInterval(
         window.CRM.dashboard.refresh,
@@ -113,46 +58,156 @@ $("document").ready(function () {
         path: "system/notification",
     }).done(function (data) {
         data.notifications.forEach(function (item) {
-            $.notify(
-                {
-                    icon: "fa fa-" + item.icon,
-                    message: item.title,
-                    url: item.url,
-                },
-                {
-                    delay: item.delay,
-                    type: item.type,
-                    placement: {
-                        from: item.placement,
-                        align: item.align,
-                    },
-                },
-            );
+            window.CRM.notify(item.title, {
+                delay: item.delay,
+                type: item.type,
+            });
         });
     });
+
+    // Initialize FAB buttons with localized labels
+    initializeFAB();
+}
+
+// Helper function to run initialization code after locales are loaded
+// Usage: window.CRM.onLocalesReady(function() { /* your init code */ });
+window.CRM.onLocalesReady = function (callback) {
+    if (window.CRM.localesLoaded) {
+        callback();
+    } else {
+        window.addEventListener("CRM.localesReady", callback, { once: true });
+    }
+};
+
+// Wait for both DOM and locales to be ready
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeApp);
 });
 
 function showGlobalMessage(message, callOutClass) {
-    var icon = "exclamation-triangle";
-    if (callOutClass === "success") {
-        icon = "check";
-    }
-    $.notify(
-        {
-            icon: "fa fa-" + icon,
-            message: message,
-        },
-        {
-            delay: 5000,
-            type: callOutClass,
-            placement: {
-                from: "top",
-                align: "right",
+    window.CRM.notify(message, {
+        delay: 5000,
+        type: callOutClass,
+    });
+}
+
+/**
+ * Initialize form validation for all forms with data-validate attribute
+ * Uses just-validate library with Bootstrap 4 styling
+ */
+function initializeFormValidation() {
+    document.querySelectorAll("form[data-validate]").forEach(function (form) {
+        const validator = new window.JustValidate(form, {
+            errorFieldCssClass: "is-invalid",
+            successFieldCssClass: "is-valid",
+            errorLabelCssClass: "invalid-feedback",
+            focusInvalidField: true,
+            lockForm: true,
+        });
+
+        // Auto-add validation rules based on HTML5 attributes
+        form.querySelectorAll("input, select, textarea").forEach(
+            function (field) {
+                const rules = [];
+
+                if (field.hasAttribute("required")) {
+                    rules.push({
+                        rule: "required",
+                        errorMessage: i18next.t("This field is required"),
+                    });
+                }
+
+                if (field.type === "email") {
+                    rules.push({
+                        rule: "email",
+                        errorMessage: i18next.t(
+                            "Please enter a valid email address",
+                        ),
+                    });
+                }
+
+                if (field.type === "url") {
+                    rules.push({
+                        rule: "customRegexp",
+                        value: /^https?:\/\/.+/,
+                        errorMessage: i18next.t("Please enter a valid URL"),
+                    });
+                }
+
+                if (field.hasAttribute("pattern")) {
+                    rules.push({
+                        rule: "customRegexp",
+                        value: new RegExp(field.getAttribute("pattern")),
+                        errorMessage:
+                            field.getAttribute("title") ||
+                            i18next.t("Invalid format"),
+                    });
+                }
+
+                if (field.hasAttribute("minlength")) {
+                    rules.push({
+                        rule: "minLength",
+                        value: parseInt(field.getAttribute("minlength")),
+                        errorMessage:
+                            i18next.t("Minimum length is") +
+                            " " +
+                            field.getAttribute("minlength"),
+                    });
+                }
+
+                if (field.hasAttribute("maxlength")) {
+                    rules.push({
+                        rule: "maxLength",
+                        value: parseInt(field.getAttribute("maxlength")),
+                        errorMessage:
+                            i18next.t("Maximum length is") +
+                            " " +
+                            field.getAttribute("maxlength"),
+                    });
+                }
+
+                if (rules.length > 0 && field.name) {
+                    rules.forEach(function (rule) {
+                        validator.addField(
+                            field.id
+                                ? "#" + field.id
+                                : '[name="' + field.name + '"]',
+                            [rule],
+                        );
+                    });
+                }
             },
-            offset: {
-                x: 15,
-                y: 60,
-            },
-        },
-    );
+        );
+    });
+}
+
+/**
+ * Initialize Floating Action Buttons (FAB)
+ * - Sets localized labels
+ * - Handles scroll behavior to hide buttons on scroll
+ * - Auto-hides after 5 seconds
+ */
+function initializeFAB() {
+    const fabContainer = $("#fab-container");
+    const fabPersonLabel = $("#fab-person-label");
+    const fabFamilyLabel = $("#fab-family-label");
+
+    // Set localized labels
+    fabPersonLabel.text(i18next.t("Add New Person"));
+    fabFamilyLabel.text(i18next.t("Add New Family"));
+
+    // Auto-hide FAB after 5 seconds
+    setTimeout(function () {
+        fabContainer.addClass("hidden");
+    }, 5000);
+
+    // Hide FAB on any scroll to prevent blocking content
+    $(window).on("scroll", function () {
+        const currentScroll = $(this).scrollTop();
+
+        // Hide FAB once user scrolls past 50px
+        if (currentScroll > 50) {
+            fabContainer.addClass("hidden");
+        }
+    });
 }

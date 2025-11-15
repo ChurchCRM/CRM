@@ -1,81 +1,119 @@
-$(document).ready(function () {
+function initializeGroupList() {
     window.CRM.groupsInCart = 0;
+
+    // Fetch groups currently in cart
     $.ajax({
         method: "GET",
-        url: window.CRM.root + "/api/groups/groupsInCart",
+        url: `${window.CRM.root}/api/groups/groupsInCart`,
         dataType: "json",
-    }).done(function (data) {
-        window.CRM.groupsInCart = data.groupsInCart;
-    });
-
-    $("#addNewGroup").click(function (e) {
-        var groupName = $("#groupName").val(); // get the name of the group from the textbox
-        if (groupName) {
-            // ensure that the user entered a group name
-            var newGroup = { groupName: groupName }; //create a newgroup JSON object, and prepare it for transport
-            $.ajax({
-                method: "POST",
-                url: window.CRM.root + "/api/groups/", //call the groups api handler located at window.CRM.root
-                data: JSON.stringify(newGroup), // stringify the object we created earlier, and add it to the data payload
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-            }).done(function (data) {
-                //yippie, we got something good back from the server
-                dataT.row.add(data); //add the group data to the existing DataTable
-                dataT.rows().invalidate().draw(true); //redraw the dataTable
-                $("#groupName").val(null);
-                dataT.ajax.reload(); // PL : We should reload the table after we add a group so the button add to group is disabled
+    })
+        .done((data) => {
+            window.CRM.groupsInCart = data.groupsInCart;
+        })
+        .fail((xhr, status, error) => {
+            console.error("Failed to fetch groups in cart:", error);
+            window.CRM.notify(i18next.t("Failed to load cart status."), {
+                type: "danger",
+                delay: 5000,
             });
+        });
+
+    $("#addNewGroup").click((e) => {
+        const groupName = $("#groupName").val().trim();
+
+        if (!groupName) {
+            window.CRM.notify(i18next.t("Please enter a group name."), {
+                type: "danger",
+                delay: 5000,
+            });
+            $("#groupName").focus();
+            return;
         }
+
+        const newGroup = { groupName };
+
+        $.ajax({
+            method: "POST",
+            url: `${window.CRM.root}/api/groups/`,
+            data: JSON.stringify(newGroup),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+        })
+            .done((data) => {
+                // Redirect to the GroupEditor page for the newly created group
+                window.location.href = `${window.CRM.root}/GroupEditor.php?GroupID=${data.Id}`;
+            })
+            .fail((xhr, status, error) => {
+                console.error("Failed to create group:", error);
+                window.CRM.notify(
+                    i18next.t("Failed to create group. Please try again."),
+                    {
+                        type: "danger",
+                        delay: 5000,
+                    },
+                );
+            });
     });
 
-    var dataTableConfig = {
-        initComplete: function (settings, json) {
-            if (window.groupSelect != null) {
-                dataT.search(window.groupSelect).draw();
-            }
-        },
+    const dataTableConfig = {
+        autoWidth: false,
         ajax: {
-            url: window.CRM.root + "/api/groups/",
+            url: `${window.CRM.root}/api/groups/`,
             type: "GET",
             dataSrc: "",
+            error: (xhr, error, thrown) => {
+                console.error("Failed to load groups:", thrown);
+                window.CRM.notify(
+                    i18next.t(
+                        "Failed to load groups. Please refresh the page.",
+                    ),
+                    {
+                        type: "danger",
+                        delay: 5000,
+                    },
+                );
+            },
         },
         columns: [
             {
                 width: "auto",
                 title: i18next.t("Group Name"),
                 data: "Name",
-                render: function (data, type, full, meta) {
+                render: (data, type, full, meta) => {
                     const container = document.createElement("div");
 
-                    // clickable icon for viewing
-                    const link1 = document.createElement("a");
-                    link1.href = "GroupView.php?GroupID=" + full.Id;
+                    // Clickable icon for editing
+                    const editLink = document.createElement("a");
+                    editLink.href = `${window.CRM.root}/GroupEditor.php?GroupID=${full.Id}`;
+                    editLink.title = i18next.t("Edit Group");
 
-                    const icon1 = document.createElement("i");
-                    icon1.className = "fa fa-eye";
+                    const editIcon = document.createElement("i");
+                    editIcon.className = "fa fa-pen";
 
-                    link1.appendChild(icon1);
+                    editLink.appendChild(editIcon);
 
-                    // clickable icon for editing
-                    const link2 = document.createElement("a");
-                    link2.href = "GroupEditor.php?GroupID=" + full.Id;
+                    // Clickable group name for viewing
+                    const nameLink = document.createElement("a");
+                    nameLink.href = `${window.CRM.root}/GroupView.php?GroupID=${full.Id}`;
+                    nameLink.title = i18next.t("View Group");
+                    nameLink.textContent = data;
 
-                    const icon2 = document.createElement("i");
-                    icon2.className = "fa fa-pen";
-
-                    link2.appendChild(icon2);
-
-                    // add it all to the encapsulating element
-                    container.appendChild(link1);
+                    // Add elements to container
+                    container.appendChild(editLink);
                     container.appendChild(document.createTextNode(" "));
-                    container.appendChild(link2);
-                    container.appendChild(document.createTextNode(" "));
-
-                    const dataText = document.createTextNode(data);
-                    container.appendChild(dataText);
+                    container.appendChild(nameLink);
 
                     return container.outerHTML;
+                },
+            },
+            {
+                width: "auto",
+                title: i18next.t("Group Type"),
+                data: "groupType",
+                defaultContent: "",
+                searchable: true,
+                render: (data, type, full, meta) => {
+                    return data || i18next.t("Unassigned");
                 },
             },
             {
@@ -88,32 +126,10 @@ $(document).ready(function () {
             {
                 width: "auto",
                 title: i18next.t("Group Cart Status"),
+                data: null,
                 searchable: false,
-                render: function (data, type, full, meta) {
-                    // we add the memberCount, so we could disable the button Add All
-                    return (
-                        '<span class="cartStatusButton" data-groupid="' +
-                        full.Id +
-                        '" data-memberCount="' +
-                        full.memberCount +
-                        '">' +
-                        i18next.t("Checking Cart Status") +
-                        "</span>"
-                    );
-                },
-            },
-            {
-                width: "auto",
-                title: i18next.t("Group Type"),
-                data: "groupType",
-                defaultContent: "",
-                searchable: true,
-                render: function (data, type, full, meta) {
-                    if (data) {
-                        return data;
-                    } else {
-                        return i18next.t("Unassigned");
-                    }
+                render: (data, type, full, meta) => {
+                    return `<span class="cartStatusButton" data-groupid="${full.Id}" data-membercount="${full.memberCount}">${i18next.t("Checking Cart Status")}</span>`;
                 },
             },
         ],
@@ -121,72 +137,34 @@ $(document).ready(function () {
 
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
-    dataT = $("#groupsTable")
+    $("#groupsTable")
         .DataTable(dataTableConfig)
-        .on("draw.dt", function () {
-            $(".cartStatusButton").each(function (index, element) {
-                var objectID = $(element).data("groupid");
-                var numberOfMembers = $(element).data("membercount"); // PL : we know the number of members
+        .on("draw.dt", () => {
+            $(".cartStatusButton").each((index, element) => {
+                const $element = $(element);
+                const objectID = $element.data("groupid");
+                const numberOfMembers = $element.data("membercount");
 
-                var activLink = "";
-                if (numberOfMembers === 0) {
-                    activLink = " disabled"; // PL : We disable the button Add All when there isn't any member in the group
-                }
+                const isDisabled = numberOfMembers === 0 ? " disabled" : "";
 
                 if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
-                    $(element).html(
-                        "<span>" +
-                            i18next.t(
-                                "All members of this group are in the cart",
-                            ) +
-                            '</span><a class="btn btn-danger " id="removeGroupFromCart" data-groupid="' +
-                            objectID +
-                            '">' +
-                            i18next.t("Remove all") +
-                            "</a>",
+                    $element.html(
+                        `<span>${i18next.t("All members of this group are in the cart")}</span>` +
+                            `<button class="RemoveFromCart btn btn-danger" data-cart-id="${objectID}" data-cart-type="group">` +
+                            `${i18next.t("Remove all")}</button>`,
                     );
                 } else {
-                    $(element).html(
-                        "<span>" +
-                            i18next.t(
-                                "Not all members of this group are in the cart",
-                            ) +
-                            '</span> <a id="AddGroupToCart" class="btn' +
-                            activLink +
-                            '" data-groupid="' +
-                            objectID +
-                            '"><i class="fa-solid fa-cart-plus"></i></a>',
+                    $element.html(
+                        `<span>${i18next.t("Not all members of this group are in the cart")}</span>` +
+                            `<button class="AddToCart btn btn-primary${isDisabled}" data-cart-id="${objectID}" data-cart-type="group">` +
+                            `<i class="fa-solid fa-cart-plus"></i></button>`,
                     );
                 }
             });
         });
+}
 
-    $("#table-filter").on("change", function () {
-        dataT.search(this.value).draw();
-        localStorage.setItem("groupSelect", this.selectedIndex);
-    });
-
-    $(document).on("click", "#AddGroupToCart", function (link) {
-        var groupid = link.currentTarget.dataset.groupid;
-        var parent = $(this).parent().find("span");
-        window.CRM.cart.addGroup(groupid, function (data) {
-            link.target.id = "removeGroupFromCart";
-            link.target.className = "btn";
-            link.target.innerText = i18next.t("Remove all");
-            parent.text(i18next.t("All members of this group are in the cart"));
-        });
-    });
-
-    $(document).on("click", "#removeGroupFromCart", function (link) {
-        var groupid = link.currentTarget.dataset.groupid;
-        var parent = $(this).parent().find("span");
-        window.CRM.cart.removeGroup(groupid, function (data) {
-            link.target.id = "AddGroupToCart";
-            link.target.className = "btn";
-            link.target.innerText = i18next.t("Add all");
-            parent.text(
-                i18next.t("Not all members of this group are in the cart"),
-            );
-        });
-    });
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeGroupList);
 });

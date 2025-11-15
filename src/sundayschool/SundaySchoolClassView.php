@@ -74,9 +74,9 @@ require_once '../Include/Header.php';
 
 ?>
 
-<div class="card">
-  <div class="card-header with-border">
-    <h3 class="card-title"><?= gettext('Sunday School Class Functions') ?></h3>
+<div class="card card-info card-outline">
+  <div class="card-header">
+    <h3 class="card-title"><i class="fa-solid fa-bars"></i> <?= gettext('Sunday School Class Functions') ?></h3>
   </div>
   <div class="card-body">
     <?php
@@ -92,63 +92,108 @@ require_once '../Include/Header.php';
         $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
+    ?>
+    
+    <a class="btn btn-app bg-success" href="../GroupView.php?GroupID=<?= $iGroupId ?>">
+        <i class="fa-solid fa-user-plus fa-3x"></i><br>
+        <?= gettext('Add Students') ?>
+    </a>
 
+    <a class="btn btn-app bg-primary" href="../GroupEditor.php?GroupID=<?= $iGroupId?>">
+        <i class="fa-solid fa-pen fa-3x"></i><br>
+        <?= gettext("Edit this Class") ?>
+    </a>
+
+    <?php
     if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
         ?>
-      <div class="btn-group">
-        <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i
-            class="fa fa-paper-plane"></i><?= gettext('Email') ?></a>
-        <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
-          <span class="caret"></span>
-          <span class="sr-only"><?= gettext('Toggle Dropdown') ?></span>
+      <div class="dropdown d-inline-block">
+        <button class="btn btn-app bg-teal dropdown-toggle" type="button" id="emailClassDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-paper-plane fa-3x"></i><br>
+            <?= gettext('Email') ?>
         </button>
-        <ul class="dropdown-menu" role="menu">
+        <div class="dropdown-menu" aria-labelledby="emailClassDropdown">
+          <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
           <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
-        </ul>
+        </div>
       </div>
 
-      <div class="btn-group">
-        <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i
-            class="fa-regular fa-paper-plane"></i><?= gettext('Email (BCC)') ?></a>
-        <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
-          <span class="caret"></span>
-          <span class="sr-only"><?= gettext('Toggle Dropdown') ?></span>
+      <div class="dropdown d-inline-block">
+        <button class="btn btn-app bg-navy dropdown-toggle" type="button" id="emailClassBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-user-secret fa-3x"></i><br>
+            <?= gettext('Email (BCC)') ?>
         </button>
-        <ul class="dropdown-menu" role="menu">
+        <div class="dropdown-menu" aria-labelledby="emailClassBccDropdown">
+          <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
           <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
-        </ul>
+        </div>
       </div>
         <?php
     }
     ?>
-    <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fas fa-pen"></i> Compose Message</a>  This doesn't really work right now...-->
-    <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i
-        class="fa fa-user-plus"></i><?= gettext('Add Students') ?> </a>
-
-    <a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fas fa-pen"></i><?= gettext("Edit this Class") ?></a>
   </div>
 </div>
 
-<div class="card card-success">
+<div class="card card-info card-outline">
   <div class="card-header">
-    <h3 class="card-title"><?= gettext('Teachers') ?></h3>
+    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> <?= gettext('Quick Status') ?></h3>
+
+    <div class="card-tools pull-right">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
+    </div>
   </div>
-  <!-- /.box-header -->
+  <div class="card-body row">
+    <div class="col-lg-6 col-md-6">
+      <!-- Bar chart -->
+      <div class="card card-primary card-outline">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fa-solid fa-chart-bar"></i> <?= gettext('Birthdays by Month') ?></h3>
+        </div>
+        <div class="card-body">
+          <div class="disableSelection">
+              <canvas id="bar-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <!-- Donut chart -->
+      <div class="card card-primary card-outline">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fa-solid fa-chart-pie"></i> <?= gettext('Gender') ?></h3>
+        </div>
+        <div class="card-body">
+          <canvas id="donut-chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card card-success card-outline">
+  <div class="card-header">
+    <h3 class="card-title"><i class="fa-solid fa-person-chalkboard"></i> <?= gettext('Teachers') ?></h3>
+  </div>
   <div class="card-body row">
     <?php foreach ($rsTeachers as $teacher) {
         ?>
       <div class="col-sm-2">
         <!-- Begin user profile -->
-        <div class="card card-info text-center user-profile-2">
+        <div class="card card-primary text-center user-profile-2">
           <div class="user-profile-inner">
-            <h4 class="white"><?= $teacher['per_FirstName'] . ' ' . $teacher['per_LastName'] ?></h4>
-            <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $teacher['per_ID'] ?>/thumbnail"
-                  alt="User Image" class="user-image initials-image" width="85" height="85" />
-            <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
-                class="fa fa-envelope"></i> <?= gettext('Send Message') ?></a>
-            <a href="../PersonView.php?PersonID=<?= $teacher['per_ID'] ?>" type="button"
-               class="btn btn-primary btn-info btn-block"><i class="fa fa-q"></i><?= gettext('View Profile') ?></a>
+            <h4 class="white mb-3"><?= $teacher['per_FirstName'] . ' ' . $teacher['per_LastName'] ?></h4>
+            <img data-image-entity-type="person" 
+                 data-image-entity-id="<?= $teacher['per_ID'] ?>"
+                 class="photo-small" />
+            <div class="btn-group btn-group-sm d-flex" role="group">
+                <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-success">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="../PersonView.php?PersonID=<?= $teacher['per_ID'] ?>" type="button" class="btn btn-primary">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
           </div>
         </div>
       </div>
@@ -157,64 +202,15 @@ require_once '../Include/Header.php';
   </div>
 </div>
 
-<div class="card card-info">
+<div class="card card-primary card-outline">
   <div class="card-header">
-    <h3 class="card-title"><?= gettext('Quick Status') ?></h3>
-
-    <div class="card-tools pull-right">
-      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i></button>
-    </div>
+    <h3 class="card-title"><i class="fa-solid fa-users"></i> <?= gettext('Students') ?></h3>
   </div>
-  <!-- /.box-header -->
-  <div class="card-body row">
-    <div class="col-lg-8">
-      <!-- Bar chart -->
-      <div class="card card-primary">
-        <div class="card-header">
-          <h3 class="card-title"><?= gettext('Birthdays by Month') ?></h3>
-            <div class="card-tools">
-                <i class="fa fa-chart-bar"></i>
-            </div>
-        </div>
-        <div class="card-body">
-          <div class="disableSelection">
-              <canvas id="bar-chart"></canvas>
-          </div>
-        </div>
-        <!-- /.box-body-->
-      </div>
-      <!-- /.box -->
-    </div>
-    <div class="col-lg-4">
-      <!-- Donut chart -->
-      <div class="card card-primary">
-        <div class="card-header">
-          <h3 class="card-title"><?= gettext('Gender') ?></h3>
-            <div class="card-tools">
-                <i class="fa fa-chart-bar"></i>
-            </div>
-        </div>
-        <div class="card-body">
-          <canvas id="donut-chart"></canvas>
-        </div>
-        <!-- /.box-body-->
-      </div>
-      <!-- /.box -->
-    </div>
-  </div>
-</div>
-
-<div class="card card-primary">
-  <div class="card-header">
-    <h3 class="card-title"><?= gettext('Students') ?></h3>
-  </div>
-  <!-- /.box-header -->
   <div class="card-body table-responsive">
-    <h4 class="birthday-filter" style="display:none;"><?= gettext('Showing students with birthdays in') ?><span class="month"></span> <i style="cursor:pointer; color:red;" class="icon fa fa-close"></i></h4>
-    <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+    <h4 class="birthday-filter d-none"><?= gettext('Showing students with birthdays in') ?><span class="month"></span> <i style="cursor:pointer;" class="icon fa-solid fa-close text-danger"></i></h4>
+    <table id="sundayschool" class="table table-striped table-bordered data-table w-100">
       <thead>
       <tr>
-        <th></th>
         <th><?= gettext('Name') ?></th>
         <th><?= gettext('Birth Date') ?></th>
         <th><?= gettext('Age') ?></th>
@@ -238,10 +234,13 @@ require_once '../Include/Header.php';
             $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $child['flags']); ?>
           <tr>
           <td>
-            <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $child['kidId'] ?>/thumbnail"
-                alt="User Image" class="user-image initials-image" style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px !; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; max-width:none" />
+            <a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+              <img data-image-entity-type="person" 
+                   data-image-entity-id="<?= $child['kidId'] ?>"
+                   class="photo-tiny" />
+              <?= $child['LastName'] . ', ' . $child['firstName'] ?>
+            </a>
           </td>
-          <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'] . ', ' . $child['firstName'] ?></a></td>
           <td><?= $birthDate ?> </td>
           <td><?= MiscUtils::formatAge($child['birthMonth'], $child['birthDay'], $child['birthYear']) ?></td>
           <td><?= $child['kidEmail'] ?></td>
@@ -291,7 +290,7 @@ function implodeUnique($array, $withQuotes): string
     <div class="modal-content large">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-envelope"></i><?= gettext('Compose New Message') ?></h4>
+        <h4 class="modal-title"><i class="fa-solid fa-envelope"></i><?= gettext('Compose New Message') ?></h4>
       </div>
       <form action="SendEmail.php" method="post">
         <div class="modal-body">
@@ -316,7 +315,7 @@ function implodeUnique($array, $withQuotes): string
           </div>
           <div class="form-group">
             <div class="btn btn-success btn-file">
-              <i class="fa fa-paperclip"></i><?= gettext('Attachment') ?>
+              <i class="fa-solid fa-paperclip"></i><?= gettext('Attachment') ?>
               <input type="file" name="attachment"/>
             </div>
             <p class="help-block"><?= gettext('Max. 32MB') ?></p>
@@ -326,10 +325,10 @@ function implodeUnique($array, $withQuotes): string
         <div class="modal-footer clearfix">
 
           <button type="button" class="btn btn-danger" data-dismiss="modal"><i
-              class="fa fa-times"></i><?= gettext('Discard') ?></button>
+              class="fa-solid fa-times"></i><?= gettext('Discard') ?></button>
 
           <button type="submit" class="btn btn-primary pull-left"><i
-              class="fa fa-envelope"></i><?= gettext('Send Message') ?></button>
+              class="fa-solid fa-envelope"></i><?= gettext('Send Message') ?></button>
         </div>
       </form>
     </div>
@@ -459,8 +458,10 @@ function implodeUnique($array, $withQuotes): string
           }]
       },
       options: {
-          legend: {
-              position: 'bottom'
+          plugins: {
+              legend: {
+                  position: 'bottom'
+              }
           }
       }
   };

@@ -26,12 +26,12 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </select>
                     </div>
                     <button type="button" class="btn btn-primary" id="saveLogLevel">
-                        <i class="fa fa-save"></i> <?= gettext('Save Log Level') ?>
+                        <i class="fa-solid fa-save"></i> <?= gettext('Save Log Level') ?>
                     </button>
                     <span id="logLevelStatus" class="ml-3"></span>
                 </form>
                 <p class="text-muted mt-2 mb-0">
-                    <small><i class="fa fa-info-circle"></i> <?= gettext('Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately.') ?></small>
+                    <small><i class="fa-solid fa-info-circle"></i> <?= gettext('Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately.') ?></small>
                 </p>
             </div>
         </div>
@@ -46,14 +46,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <p class="text-muted"><?= gettext('View application logs. Click on a log file to view its contents.') ?></p>
                 <?php if (!empty($logFiles)): ?>
                 <button class="btn btn-danger float-right" id="deleteAllLogs">
-                    <i class="fa fa-trash"></i> <?= gettext('Delete All Logs') ?>
+                    <i class="fa-solid fa-trash"></i> <?= gettext('Delete All Logs') ?>
                 </button>
                 <?php endif; ?>
             </div>
             <div class="card-body">
                 <?php if (empty($logFiles)): ?>
                     <div class="alert alert-info">
-                        <i class="fa fa-info-circle"></i> <?= gettext('No log files found.') ?>
+                        <i class="fa-solid fa-info-circle"></i> <?= gettext('No log files found.') ?>
                     </div>
                 <?php else: ?>
                     <div class="table-responsive">
@@ -73,16 +73,16 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <button class="btn btn-sm btn-primary view-log" 
                                                     data-file="<?= htmlspecialchars($logFile['name']) ?>"
                                                     title="<?= gettext('View') ?>">
-                                                <i class="fa fa-eye"></i>
+                                                <i class="fa-solid fa-eye"></i>
                                             </button>
                                             <button class="btn btn-sm btn-danger delete-log" 
                                                     data-file="<?= htmlspecialchars($logFile['name']) ?>"
                                                     title="<?= gettext('Delete') ?>">
-                                                <i class="fa fa-trash"></i>
+                                                <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </td>
                                         <td>
-                                            <i class="fa fa-file-alt"></i> 
+                                            <i class="fa-solid fa-file-alt"></i> 
                                             <strong><?= htmlspecialchars($logFile['name']) ?></strong>
                                         </td>
                                         <td><?= number_format($logFile['size'] / 1024, 2) ?> KB</td>
@@ -130,13 +130,13 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </select>
                 </div>
                 <pre id="logContent" style="max-height: 500px; overflow-y: auto; background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;"><code></code></pre>
-                <div id="logLoading" style="display: none; text-align: center; padding: 20px;">
-                    <i class="fa fa-spinner fa-spin fa-3x"></i>
+                <div id="logLoading" class="d-none text-center p-3">
+                    <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
                     <p><?= gettext('Loading log file...') ?></p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Close') ?></button>
             </div>
         </div>
     </div>
@@ -148,50 +148,52 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     var currentFilter = 'all';
 
     $(document).ready(function() {
-        // Load current log level first
-        loadLogLevel();
+        window.CRM.onLocalesReady(function() {
+            // Load current log level first
+            loadLogLevel();
 
-        // Initialize DataTable
-        var table = $('#logFilesTable').DataTable({
-            responsive: true,
-            order: [[3, 'desc']], // Sort by Last Modified (now column 3)
-            paging: false,
-            info: false,
-            searching: false,
-            columnDefs: [
-                { orderable: false, targets: 0 } // Disable sorting on Actions column
-            ]
-        });
+            // Initialize DataTable
+            var table = $('#logFilesTable').DataTable({
+                responsive: true,
+                order: [[3, 'desc']], // Sort by Last Modified (now column 3)
+                paging: false,
+                info: false,
+                searching: false,
+                columnDefs: [
+                    { orderable: false, targets: 0 } // Disable sorting on Actions column
+                ]
+            });
 
-        // Use event delegation for dynamically loaded content
-        $(document).on('click', '.view-log', function() {
-            var fileName = $(this).data('file');
-            currentLogFile = fileName;
-            loadLogFile(fileName);
-        });
+            // Use event delegation for dynamically loaded content
+            $(document).on('click', '.view-log', function() {
+                var fileName = $(this).data('file');
+                currentLogFile = fileName;
+                loadLogFile(fileName);
+            });
 
-        $(document).on('click', '.delete-log', function(e) {
-            var fileName = $(this).data('file');
-            deleteLogFile(fileName);
-        });
+            $(document).on('click', '.delete-log', function(e) {
+                var fileName = $(this).data('file');
+                deleteLogFile(fileName);
+            });
 
-        $('#deleteAllLogs').on('click', function() {
-            deleteAllLogs();
-        });
+            $('#deleteAllLogs').on('click', function() {
+                deleteAllLogs();
+            });
 
-        $('#saveLogLevel').on('click', function() {
-            saveLogLevel();
-        });
+            $('#saveLogLevel').on('click', function() {
+                saveLogLevel();
+            });
 
-        $('.log-filter').on('click', function() {
-            $('.log-filter').removeClass('active');
-            $(this).addClass('active');
-            currentFilter = $(this).data('level');
-            applyFilter();
-        });
+            $('.log-filter').on('click', function() {
+                $('.log-filter').removeClass('active');
+                $(this).addClass('active');
+                currentFilter = $(this).data('level');
+                applyFilter();
+            });
 
-        $('#logLinesLimit').on('change', function() {
-            applyFilter();
+            $('#logLinesLimit').on('change', function() {
+                applyFilter();
+            });
         });
     });
 
@@ -320,14 +322,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             contentType: 'application/json',
             data: JSON.stringify({ value: logLevel }),
             success: function(data) {
-                $('#logLevelStatus').html('<span class="text-success"><i class="fa fa-check"></i> ' + i18next.t('Saved - Log level updated immediately') + '</span>');
+                $('#logLevelStatus').html('<span class="text-success"><i class="fa-solid fa-check"></i> ' + i18next.t('Saved - Log level updated immediately') + '</span>');
                 setTimeout(function() {
                     $('#logLevelStatus').html('');
                 }, 3000);
             },
             error: function(xhr, status, error) {
                 console.error('Error:', error);
-                $('#logLevelStatus').html('<span class="text-danger"><i class="fa fa-times"></i> ' + i18next.t('Error') + '</span>');
+                $('#logLevelStatus').html('<span class="text-danger"><i class="fa-solid fa-times"></i> ' + i18next.t('Error') + '</span>');
             }
         });
     }

@@ -22,29 +22,42 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group): void {
         $group->post('/reset-request', 'userPasswordReset');
         $group->get('/set/{token}', function (Request $request, Response $response, array $args): Response {
             $renderer = new PhpRenderer('templates');
+            $logger = LoggerUtils::getAppLogger();
             $token = TokenQuery::create()->findPk($args['token']);
-            $haveUser = false;
-            if ($token != null && $token->isPasswordResetToken() && $token->isValid()) {
-                $user = UserQuery::create()->findPk($token->getReferenceId());
-                $haveUser = empty($user);
-                if ($token->getRemainingUses() > 0) {
-                    $token->setRemainingUses($token->getRemainingUses() - 1);
-                    $token->save();
-                    $password = $user->resetPasswordToRandom();
-                    $user->save();
-                    LoggerUtils::getAuthLogger()->info('Password reset for user ' . $user->getUserName());
-                    $email = new ResetPasswordEmail($user, $password);
-                    if ($email->send()) {
-                        return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
-                    } else {
-                        $app->Logger->error($email->getError());
-
-                        throw new \Exception($email->getError());
-                    }
-                }
+            
+            // Validate token and reset password
+            if ($token === null) {
+                $logger->warning('Password reset attempted with non-existent token: ' . $args['token']);
+                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
             }
-
-            return $renderer->render($response, 'error.php', ['message' => gettext('Unable to reset password')]);
+            
+            if (!$token->isPasswordResetToken() || !$token->isValid()) {
+                $logger->warning('Password reset attempted with invalid token: ' . $args['token']);
+                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
+            }
+            
+            $user = UserQuery::create()->findPk($token->getReferenceId());
+            if ($user === null) {
+                $logger->warning('Password reset token found but associated user does not exist: ' . $token->getReferenceId());
+                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
+            }
+            
+            if (!$token->consume()) {
+                $logger->warning('Password reset token could not be consumed for user: ' . $user->getUserName());
+                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
+            }
+            
+            $password = $user->resetPasswordToRandom();
+            $user->save();
+            $logger->info('Password reset for user ' . $user->getUserName());
+            
+            $email = new ResetPasswordEmail($user, $password);
+            if ($email->send()) {
+                return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
+            } else {
+                $logger->error('Failed to send password reset email for user ' . $user->getUserName() . ': ' . $email->getError());
+                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
+            }
         });
     } else {
         $group->get('/{foo:.*}', function (Request $request, Response $response, array $args): Response {

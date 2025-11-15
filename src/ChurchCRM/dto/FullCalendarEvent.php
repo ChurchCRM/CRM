@@ -25,9 +25,18 @@ class FullCalendarEvent
         $fce = new self();
 
         $fce->title = $CRMEvent->getTitle();
-        $fce->start = $CRMEvent->getStart('c');
-        $fce->end = $CRMEvent->getEnd('c');
         $fce->allDay = ($CRMEvent->getEnd() == null ? true : false);
+        
+        // For all-day events, use date-only format (Y-m-d) to avoid timezone issues
+        // For timed events, use ISO 8601 format (c) which includes time and timezone
+        if ($fce->allDay) {
+            $fce->start = $CRMEvent->getStart('Y-m-d');
+            $fce->end = null; // All-day events don't need an end date in FullCalendar
+        } else {
+            $fce->start = $CRMEvent->getStart('c');
+            $fce->end = $CRMEvent->getEnd('c');
+        }
+        
         $fce->id = $CRMEvent->getId();
         $fce->backgroundColor = '#' . $CRMCalendar->getBackgroundColor();
         $fce->textColor = '#' . $CRMCalendar->getForegroundColor();

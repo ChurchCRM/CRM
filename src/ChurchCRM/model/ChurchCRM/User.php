@@ -159,7 +159,7 @@ class User extends BaseUser
             $pass[] = $alphabet[$n];
         }
 
-        return implode($pass); //turn the array into a string
+        return implode('', $pass); //turn the array into a string
     }
 
     public static function randomApiKey(): string

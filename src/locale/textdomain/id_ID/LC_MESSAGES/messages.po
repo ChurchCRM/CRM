@@ -1254,10 +1254,6 @@ msgid "Family List"
 msgstr "Daftar Keluarga"
 
 #: 
-msgid "Add Family"
-msgstr "Tambah keluarga"
-
-#: 
 msgid "Created"
 msgstr "Diciptakan"
 
@@ -1282,10 +1278,6 @@ msgid "Next Family"
 msgstr "Keluarga sesudahnya"
 
 #: 
-msgid "Delete this Family"
-msgstr "Hapus keluarga ini"
-
-#: 
 msgid "Upload Photo"
 msgstr "Unggah foto"
 
@@ -1296,10 +1288,6 @@ msgstr "Hapus foto"
 #: 
 msgid "Add a Note"
 msgstr "Tambahkan Catatan"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Tambahkan seluruh anggota keluarga"
 
 #: 
 msgid "Timeline"
@@ -1409,10 +1397,6 @@ msgstr "Anda akan mengirimkan informasi keluarga ini melalui email berikut"
 #: 
 msgid "Financial Reports"
 msgstr "Laporan keuangan"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "tidak ada catatan dari laporan sebelumnya"
 
 #: 
 msgid "Report Type:"
@@ -1776,10 +1760,6 @@ msgid "Remove from Cart"
 msgstr "Hapus dari Keranjang"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Teks untuk ID Peristiwa: "
-
-#: 
 msgid "Group Editor"
 msgstr "Editor Grup"
 
@@ -1948,10 +1928,6 @@ msgid "Group View"
 msgstr "Tampilan Grup"
 
 #: 
-msgid "Group Functions"
-msgstr "Fungsi Grup"
-
-#: 
 msgid "Edit this Group"
 msgstr "Edit Grup ini"
 
@@ -2012,8 +1988,9 @@ msgid "Assigned Properties"
 msgstr "Properti yang Ditugaskan"
 
 #: 
-msgid "Group Members:"
-msgstr "Anggota kelompok:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Anggota kelompok"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2794,10 +2771,6 @@ msgid "Query Listing"
 msgstr "Daftar Permintaan"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Jalankan Permintaan Teks Bebas"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Permintaan Teks Gratis"
 
@@ -2937,10 +2910,6 @@ msgstr "Hapus Catatan Keluarga SAJA"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Hapus Catatan Keluarga DAN Anggota Keluarga"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Saring dan Troli"
 
 #: 
 msgid "Listing"
@@ -3332,14 +3301,6 @@ msgid "Select Fiscal Year"
 msgstr "Pilih Tahun Anggaran"
 
 #: 
-msgid "pm"
-msgstr "sore"
-
-#: 
-msgid "am"
-msgstr "saya"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID Editor Tidak Valid!"
 
@@ -3640,20 +3601,12 @@ msgid "Sunday School Class Functions"
 msgstr "Fungsi Kelas Sekolah Minggu"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Toggle Dropdown"
-
-#: 
 msgid "Teachers"
 msgstr "Guru"
 
 #: 
 msgid "Send Message"
 msgstr "Mengirim pesan"
-
-#: 
-msgid "View Profile"
-msgstr "Tampilkan profil"
 
 #: 
 msgid "Quick Status"
@@ -3994,68 +3947,12 @@ msgid "Edit Settings"
 msgstr "Edit Pengaturan"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Tingkatkan ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Langkah 1: Cadangkan Database"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Harap buat cadangan basis data sebelum memulai proses peningkatan."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Hasilkan Cadangan Database"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Langkah 2: Ambil Paket Pembaruan di Server"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Ambil file terbaru dari halaman rilis ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Ambil Perbarui File"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Langkah 3: Terapkan Paket Pembaruan di Server"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Ekstrak arsip pemutakhiran, dan terapkan file-file baru"
-
-#: 
 msgid "Full Path:"
 msgstr "Jalur penuh:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Sistem Upgrade"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Langkah 4: Masuk"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Masuk ke Sistem yang Ditingkatkan"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Cadangan Selesai, Siap untuk Diunduh."
-
-#: 
-msgid "Backup Error."
-msgstr "Kesalahan Cadangan."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4157,18 +4054,6 @@ msgstr "Tahunan"
 #: 
 msgid "Registration Complete"
 msgstr "Pendaftaran Lengkap"
-
-#: 
-msgid "Register"
-msgstr "Daftar"
-
-#: 
-msgid "Register your family"
-msgstr "Daftarkan keluarga Anda"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Berapa banyak orang di keluarga Anda"
 
 #: 
 msgid "Add All Classes"
@@ -6958,10 +6843,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Harap pastikan ini yang ingin Anda lakukan. </p>"
 
 #: 
-msgid " this Family"
-msgstr "Keluarga ini"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Konfirmasikan Penonaktifan"
 
@@ -6992,10 +6873,6 @@ msgstr "Mengkoordinasikan nama file basis data:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Perpotongan dengan keranjang"
-
-#: 
-msgid "Family Member"
-msgstr "Anggota keluarga"
 
 #: 
 msgid "select an option"
@@ -7109,10 +6986,6 @@ msgstr "Lihat Foto"
 #: 
 msgid "Family Photo"
 msgstr "Foto keluarga"
-
-#: 
-msgid "Quick Settings"
-msgstr "Pengaturan cepat"
 
 #: 
 msgid "Status"
@@ -7416,24 +7289,12 @@ msgid "Reset Password"
 msgstr "Setel Ulang Kata Sandi"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Tidak dapat mengatur ulang kata sandi"
-
-#: 
 msgid "Reset your password"
 msgstr "Mereset password Anda"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Maaf, kami tidak dapat memproses permintaan Anda pada saat ini."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Diperlukan Nama Login"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Kata sandi baru dikirimkan kepada Anda. Silakan periksa email Anda"
 
 #: 
 msgid "Kiosk Manager"
@@ -7534,10 +7395,6 @@ msgstr "Menghapus semua"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Tidak semua anggota grup ini ada di troli"
-
-#: 
-msgid "Add all"
-msgstr "Tambahkan semua"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7788,10 +7645,6 @@ msgid "Maximum number of Addresses"
 msgstr "Jumlah maksimum Alamat"
 
 #: 
-msgid "Show type of group:"
-msgstr "Tampilkan jenis grup:"
-
-#: 
 msgid "Add Students"
 msgstr "Tambahkan Siswa"
 
@@ -7838,26 +7691,6 @@ msgstr "Buat Buku Foto"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Tinggi untuk digunakan untuk gambar"
-
-#: 
-msgid "Width to use for images"
-msgstr "Lebar untuk digunakan untuk gambar"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Lebar untuk digunakan untuk thumbnail"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Ukuran poin yang digunakan untuk inisial thumbnail"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Cache klien detik untuk gambar"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7910,10 +7743,6 @@ msgstr "Pindahkan Acara"
 #: 
 msgid "Resize Event"
 msgstr "Ubah Ukuran Acara"
-
-#: 
-msgid "Text from"
-msgstr "Teks dari"
 
 #: 
 msgid "Profile"
@@ -8435,10 +8264,6 @@ msgid "Menu Name"
 msgstr "Nama Daftar"
 
 #: 
-msgid "Max 20 char"
-msgstr "Maks. 20 karakter"
-
-#: 
 msgid "Link Address"
 msgstr "Alamat tautan"
 
@@ -8585,10 +8410,6 @@ msgid "Integrity Check Details:"
 msgstr "Detail Pemeriksaan Integritas:"
 
 #: 
-msgid "I Understand"
-msgstr "Saya mengerti"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Jenis Deposit Tidak Didukung Terdeteksi"
 
@@ -8616,10 +8437,6 @@ msgstr "Hasilkan Cadangan"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote Endpoint Cadangan. Jika WebDAV, ini harus url disandikan."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Sertakan inisial file gambar, file gambar jarak jauh (gravatar), dan thumbnail dalam cadangan. File-file ini umumnya dapat direproduksi setelah pemulihan dan menambahkan sangat sedikit nilai ke arsip cadangan dengan biaya besar waktu dan penyimpanan eksekusi"
 
 #: 
 msgid "Password (if any)"
@@ -8675,7 +8492,8 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "Info orang yang tidak tersedia diwarisi dari keluarga yang ditugaskan untuk ditampilkan?  Opsi ini menyebabkan info tertentu dari catatan keluarga yang ditugaskan seseorang untuk  ditampilkan JIKA info yang sesuai TIDAK dimasukkan untuk orang itu."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Tekan CTRL + C untuk menyalin semua nomor telepon anggota grup"
 
 #: 
@@ -8785,10 +8603,6 @@ msgid "Remove Results from Cart"
 msgstr "Hapus Hasil dari Keranjang"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Peringatan: Tugas Pra-Upgrade Terdeteksi"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Beberapa kondisi telah diidentifikasi yang dapat mencegah pembaruan yang berhasil"
@@ -8820,14 +8634,6 @@ msgstr "Reset Database"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Ini akan mengatur ulang data sistem dan akan memulai ulang sistem sebagai pemasangan baru."
-
-#: 
-msgid "Clear Filter"
-msgstr "Bersihkan Filter"
-
-#: 
-msgid "Add Person"
-msgstr "Tambahkan Orang"
 
 #. Context: locales
 #: 
@@ -8966,10 +8772,6 @@ msgstr "Kata sandi baru anda mirip dengan kata sandi yang lama"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Penyetelan ulang kata sandi tidak tersedia. Silahkan menghubungi administrator sistem anda"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Masalah Otentikasi"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
@@ -9595,4 +9397,154 @@ msgstr "Kolom Senarai Orang"
 #: 
 msgid "Family List Columns"
 msgstr "Kolom Senarai Keluarga"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "Email Gereja belum diatur, buka halaman pengaturan"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "Telugu - India"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Korean"
+
+#: 
+msgid "System Logs"
+msgstr "Log Sistem"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Gunakan Content Security Policy (CSP) untuk membantu melindungi dari XSS Scripting. Jika non-aktif, masalah CSP hanya dicatat."
+
+#: 
+msgid "Maximum number of log files to keep"
+msgstr "Jumlah maksimum log file"
+
+#: 
+msgid "Too Many Log Files"
+msgstr "Log terlalu banyak"
+
+#: 
+msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
+msgstr "Terdapat banyak log file di folder Log. Hapus untuk mengosongkan penyimpanan."
+
+#: 
+msgid "Enter event description..."
+msgstr "Masukkan deskripsi event..."
+
+#: 
+msgid "Event ID"
+msgstr "ID Event"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Masukkan catatan..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "tidak ada catatan untuk orang ini."
+
+#: 
+msgid "Note"
+msgstr "Catatan"
+
+#: 
+msgid "Log Settings"
+msgstr "Pengaturan Log"
+
+#: 
+msgid "Log Level:"
+msgstr "Level Log:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Simpan Level Log"
+
+#: 
+msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
+msgstr "Angka rendah memuat log lebih detail, angka lebih tinggi hanya mencatat beberapa log. Berlaku di log selanjutnya.."
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Lihat log aplikasi"
+
+#: 
+msgid "Delete All Logs"
+msgstr "Hapus semua log"
+
+#: 
+msgid "No log files found."
+msgstr "Log kosong."
+
+#: 
+msgid "Log File"
+msgstr "File Log"
+
+#: 
+msgid "Size"
+msgstr "Ukuran"
+
+#: 
+msgid "Last Modified"
+msgstr "Terakhir diubah"
+
+#: 
+msgid "View"
+msgstr "Lihat"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Pembaca Log File"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Saring berdasarkan log level"
+
+#: 
+msgid "Error"
+msgstr "Kesalahan"
+
+#: 
+msgid "Info"
+msgstr "Info"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Jumlah baris ditampilkan"
+
+#: 
+msgid "Loading log file..."
+msgstr "Memuat file log..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Tidak ada catatan untuk keluarga ini."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Akses token Kalender telah dibuat dan disimpan."
+
+#: 
+msgid "added"
+msgstr "ditambahkan"
+
+#: 
+msgid "Added"
+msgstr "Ditambahkan"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Berhasil ditambahkan ke cart"
+
+#: 
+msgid "All members already in cart"
+msgstr "Semua anggota sudah di keranjang"
+
+#: 
+msgid "already in cart"
+msgstr "sudah di keranjang"
 

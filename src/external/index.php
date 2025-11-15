@@ -1,31 +1,35 @@
 <?php
 
-use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Slim\Middleware\VersionMiddleware;
+require_once '../Include/LoadConfig.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-require_once '../Include/Config.php';
-require_once __DIR__ . '/../vendor/autoload.php';
-
-$rootPath = str_replace('/external/index.php', '', $_SERVER['SCRIPT_NAME']);
+// Get base path by combining $sRootPath from Config.php with /external endpoint
+// Examples: '' + '/external' = '/external' (root install)
+//           '/churchcrm' + '/external' = '/churchcrm/external' (subdirectory install)
+$basePath = SlimUtils::getBasePath('/external');
 
 
 $container = new ContainerBuilder();
 $container->compile();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
-$app->setBasePath($rootPath . '/external');
+$app->setBasePath($basePath);
 
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
 $app->add(VersionMiddleware::class);
 $app->add(new CorsMiddleware());
-$app->addRoutingMiddleware();
 
 // routes
 require __DIR__ . '/routes/register.php';

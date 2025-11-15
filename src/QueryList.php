@@ -18,11 +18,6 @@ require_once 'Include/Header.php';
 <div class="card card-primary">
     <div class="card-body">
         <p class="text-right">
-            <?php
-            if (AuthenticationManager::getCurrentUser()->isAdmin()) {
-                echo '<a href="QuerySQL.php" class="text-red">' . gettext('Run a Free-Text Query') . '</a>';
-            }
-            ?>
         </p>
 
         <ul>

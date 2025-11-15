@@ -20,7 +20,7 @@ describe("Person Profile", () => {
 
         const currentDateString = new Date().toISOString();
         const noteText = `This is a test note: ${currentDateString}`;
-        cy.get("#NoteText").type(noteText);
+        cy.typeInQuill("NoteText", noteText);
         cy.get(".btn-success").click();
         cy.url().should("contain", `PersonView.php?PersonID=${personId}`);
 

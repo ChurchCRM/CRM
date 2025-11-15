@@ -9,29 +9,29 @@ const EventPropertiesViewer: React.FunctionComponent<{
   eventTypes: Array<EventType>;
 }> = ({ event, calendars, eventTypes }) => {
   return (
-    <table className="table modal-table">
+    <table className="table w-100" style={{ tableLayout: 'fixed' }}>
       <tbody>
         <tr>
           <td>{window.i18next.t("Type")}</td>
           <td>
             {eventTypes.map((eventType: EventType) => {
               if (event.Type != null && event.Type == eventType.Id) {
-                return <p>{eventType.Name}</p>;
+                return <p key={eventType.Id}>{eventType.Name}</p>;
               }
             })}
           </td>
         </tr>
         <tr>
           <td>{window.i18next.t("Event Description")}</td>
-          <td>{event.Desc}</td>
+          <td dangerouslySetInnerHTML={{ __html: event.Desc || "" }} />
         </tr>
         <tr>
           <td>{window.i18next.t("Start Date")}</td>
-          <td>{event.Start.toString()}</td>
+          <td>{event.Start ? event.Start.toString() : "N/A"}</td>
         </tr>
         <tr>
           <td>{window.i18next.t("End Date")}</td>
-          <td>{event.End.toString()}</td>
+          <td>{event.End ? event.End.toString() : "N/A"}</td>
         </tr>
         <tr>
           <td>{window.i18next.t("Pinned Calendars")}</td>
@@ -42,7 +42,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
                   event.PinnedCalendars != null &&
                   event.PinnedCalendars.includes(calendar.Id)
                 ) {
-                  return <li>{calendar.Name}</li>;
+                  return <li key={calendar.Id}>{calendar.Name}</li>;
                 }
               })}
             </ul>
@@ -50,7 +50,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
         </tr>
         <tr>
           <td>{window.i18next.t("Text")}</td>
-          <td>{event.Text}</td>
+          <td dangerouslySetInnerHTML={{ __html: event.Text || "" }} />
         </tr>
       </tbody>
     </table>

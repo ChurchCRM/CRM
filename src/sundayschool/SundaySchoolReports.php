@@ -113,7 +113,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
         echo "<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\"> " . gettext('At least one group must be selected to make class lists or attendance sheets.') . "</span></p>";
     }
 } else {
-    $iFYID = $_SESSION['idefaultFY'];
+    $iFYID = isset($_SESSION['idefaultFY']) ? (int)$_SESSION['idefaultFY'] : \CurrentFY();
     $iGroupID = 0;
     $currentUser = UserQuery::create()->findPk(AuthenticationManager::getCurrentUser()->getId());
 
@@ -272,8 +272,8 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
               </div>
           </td>
           <td width="35%">
-            <div class="col-rd-12">
-                <input type="button" style="align=right" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
+            <div class="col-rd-12 float-right">
+                <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
             </div>
           </td>
         </tr>

@@ -47,12 +47,12 @@ require_once 'Include/Header.php'; ?>
 // Start the table
 echo "<table class='table'>";
 echo '<tr>';
-echo '<th valign="top">' . gettext('Name') . '</th>';
-echo '<th valign="top">' . gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this Property...') . '</b></th>';
-echo '<th valign="top">' . gettext('Prompt') . '</th>';
+echo '<th class="align-top">' . gettext('Name') . '</th>';
+echo '<th class="align-top">' . gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this Property...') . '</b></th>';
+echo '<th class="align-top">' . gettext('Prompt') . '</th>';
 if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    echo '<td valign="top"><b>' . gettext('Edit') . '</b></td>';
-    echo '<td valign="top"><b>' . gettext('Delete') . '</b></td>';
+    echo '<td class="align-top"><b>' . gettext('Edit') . '</b></td>';
+    echo '<td class="align-top"><b>' . gettext('Delete') . '</b></td>';
 }
 echo '</tr>';
 
@@ -83,16 +83,16 @@ while ($aRow = mysqli_fetch_array($rsProperties)) {
     $sRowClass = AlternateRowStyle($sRowClass);
 
     echo '<tr class="' . $sRowClass . '">';
-    echo '<td valign="top">' . $pro_Name . '&nbsp;</td>';
-    echo '<td valign="top">';
+    echo '<td class="align-top">' . $pro_Name . '&nbsp;</td>';
+    echo '<td class="align-top">';
     if (strlen($pro_Description) > 0) {
         echo '...' . $pro_Description;
     }
     echo '&nbsp;</td>';
-    echo '<td valign="top">' . $pro_Prompt . '&nbsp;</td>';
+    echo '<td class="align-top">' . $pro_Prompt . '&nbsp;</td>';
     if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-        echo "<td valign=\"top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=" . $pro_ID . '&Type=' . $sType . '">' . gettext('Edit') . '</a></td>';
-        echo "<td valign=\"top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=" . $pro_ID . '&Type=' . $sType . '">' . gettext('Delete') . '</a></td>';
+        echo "<td class=\"align-top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=" . $pro_ID . '&Type=' . $sType . '">' . gettext('Edit') . '</a></td>';
+        echo "<td class=\"align-top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=" . $pro_ID . '&Type=' . $sType . '">' . gettext('Delete') . '</a></td>';
     }
     echo '</tr>';
 

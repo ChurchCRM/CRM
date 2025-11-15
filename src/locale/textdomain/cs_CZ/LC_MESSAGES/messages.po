@@ -1251,10 +1251,6 @@ msgid "Family List"
 msgstr "Seznam rodin"
 
 #: 
-msgid "Add Family"
-msgstr "Přidat rodinu"
-
-#: 
 msgid "Created"
 msgstr "Vytvořeno"
 
@@ -1279,10 +1275,6 @@ msgid "Next Family"
 msgstr "Další rodina"
 
 #: 
-msgid "Delete this Family"
-msgstr "Smazat rodinu"
-
-#: 
 msgid "Upload Photo"
 msgstr "Nahrát foto"
 
@@ -1293,10 +1285,6 @@ msgstr "Smazat foto"
 #: 
 msgid "Add a Note"
 msgstr "Přidat poznámku"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Přidat všechny členy rodiny do košíku"
 
 #: 
 msgid "Timeline"
@@ -1405,10 +1393,6 @@ msgstr "Chystáte se poslat informace o rodině na následující e-mailové adr
 #: 
 msgid "Financial Reports"
 msgstr "Finanční sestavy"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Z předchozí sestavy nebyly vráceny žádné záznamy."
 
 #: 
 msgid "Report Type:"
@@ -1771,10 +1755,6 @@ msgid "Remove from Cart"
 msgstr "Odstranit z košíku"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Text pro ID události: "
-
-#: 
 msgid "Group Editor"
 msgstr "Editor skupin"
 
@@ -1943,10 +1923,6 @@ msgid "Group View"
 msgstr "Zobrazení skupiny"
 
 #: 
-msgid "Group Functions"
-msgstr "Funkce skupiny"
-
-#: 
 msgid "Edit this Group"
 msgstr "Upravit tuto skupinu"
 
@@ -2007,8 +1983,9 @@ msgid "Assigned Properties"
 msgstr "Přiřazené vlastnosti"
 
 #: 
-msgid "Group Members:"
-msgstr "Členové skupiny:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Členové skupiny"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2789,10 +2766,6 @@ msgid "Query Listing"
 msgstr "Seznam dotazů"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Zadejte vlastní dotaz"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Vlastní dotaz"
 
@@ -2931,10 +2904,6 @@ msgstr "Smazat POUZE záznam rodiny"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Smazat záznam rodiny A členů rodiny"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filtr a košík"
 
 #: 
 msgid "Listing"
@@ -3325,14 +3294,6 @@ msgid "Select Fiscal Year"
 msgstr "Vyberte fiskální rok"
 
 #: 
-msgid "pm"
-msgstr "dop."
-
-#: 
-msgid "am"
-msgstr "odp."
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Neplatné ID editoru!"
 
@@ -3633,20 +3594,12 @@ msgid "Sunday School Class Functions"
 msgstr "Funkce třídy nedělní školy"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Přepnout rozbalovací nabídku"
-
-#: 
 msgid "Teachers"
 msgstr "Učitelé"
 
 #: 
 msgid "Send Message"
 msgstr "Poslat zprávu"
-
-#: 
-msgid "View Profile"
-msgstr "Zobrazit profil"
 
 #: 
 msgid "Quick Status"
@@ -3985,68 +3938,12 @@ msgid "Edit Settings"
 msgstr "Upravit nastavení"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Upgradovat ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Krok 1: Zálohovat databázi"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Před zahájením procesu upgradu vytvořte zálohu databáze."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Generovat zálohu databáze"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Krok 2: Stáhnout aktualizační balíček na server"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Stáhněte nejnovější soubory ze stránky releasů na GitHubu"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Stáhnout aktualizační soubory"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Krok 3: Aplikovat aktualizační balíček na server"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Rozbalte aktualizační archiv a aplikujte nové soubory"
-
-#: 
 msgid "Full Path:"
 msgstr "Celá cesta:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Upgradovat systém"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Krok 4: Přihlásit se"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Přihlašte se do upgradovaného systému"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Záloha kompletní, připraveno ke stažení."
-
-#: 
-msgid "Backup Error."
-msgstr "Chyba zálohy."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4147,18 +4044,6 @@ msgstr "Ročně"
 #: 
 msgid "Registration Complete"
 msgstr "Registrace kompletní"
-
-#: 
-msgid "Register"
-msgstr "Registrovat"
-
-#: 
-msgid "Register your family"
-msgstr "Zaregistrujte svou rodinu"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Kolik členů má vaše rodina"
 
 #: 
 msgid "Add All Classes"
@@ -6945,10 +6830,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Ujistěte se, že to chcete udělat.</p>"
 
 #: 
-msgid " this Family"
-msgstr " rodinu"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Potvrďte deaktivaci"
 
@@ -6979,10 +6860,6 @@ msgstr "Název souboru databáze souřadnic:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Protnout s košíkem"
-
-#: 
-msgid "Family Member"
-msgstr "Člen rodiny"
 
 #: 
 msgid "select an option"
@@ -7095,10 +6972,6 @@ msgstr "Zobrazit foto"
 #: 
 msgid "Family Photo"
 msgstr "Rodinné foto"
-
-#: 
-msgid "Quick Settings"
-msgstr "Rychlé nastavení"
 
 #: 
 msgid "Status"
@@ -7401,24 +7274,12 @@ msgid "Reset Password"
 msgstr "Obnovení hesla"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Heslo není možné obnovit"
-
-#: 
 msgid "Reset your password"
 msgstr "Obnovte své heslo"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Je nám líto, ale v tuto chvíli nemůžeme vaši žádost zpracovat."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Přihlašovací jméno je vyžadováno"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Bylo vám zasláno nové heslo. Zkontrolujte prosím svůj e-mail"
 
 #: 
 msgid "Kiosk Manager"
@@ -7519,10 +7380,6 @@ msgstr "Odebrat vše"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Ne všichni členové této skupiny jsou v košíku"
-
-#: 
-msgid "Add all"
-msgstr "Přidat vše"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7772,10 +7629,6 @@ msgid "Maximum number of Addresses"
 msgstr "Maximální počet adres"
 
 #: 
-msgid "Show type of group:"
-msgstr "Zobrazit typ skupiny:"
-
-#: 
 msgid "Add Students"
 msgstr "Přidat žáky"
 
@@ -7822,26 +7675,6 @@ msgstr "Vytvořit fotoknihu"
 #: 
 msgid "SSE"
 msgstr "JJV"
-
-#: 
-msgid "Height to use for images"
-msgstr "Výška, která se použije pro obrázky"
-
-#: 
-msgid "Width to use for images"
-msgstr "Šířka, která se použije pro obrázky"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Šířka, která se použije pro náhledy"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Výchozí velikost miniatur v bodech"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Klientská cache pro obrázky v sekundách"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7894,10 +7727,6 @@ msgstr "Přesunout událost"
 #: 
 msgid "Resize Event"
 msgstr "Změnit velikost události"
-
-#: 
-msgid "Text from"
-msgstr "Text z"
 
 #: 
 msgid "Profile"
@@ -8417,10 +8246,6 @@ msgid "Menu Name"
 msgstr "Název menu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Maximálně 20 znaků"
-
-#: 
 msgid "Link Address"
 msgstr "Adresa odkazu"
 
@@ -8566,10 +8391,6 @@ msgid "Integrity Check Details:"
 msgstr "Podrobnosti o kontrole integrity:"
 
 #: 
-msgid "I Understand"
-msgstr "Rozumím"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Byly zjištěny nepodporované typy vkladů"
 
@@ -8597,10 +8418,6 @@ msgstr "Generovat zálohu"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Koncový bod vzdáleného zálohování.  Pokud jde o WebDAV, musí být  zakódováno pomocí url. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Zahrnout soubory s původními obrázky, vzdálené soubory obrázků (gravatar) a miniatury do zálohy.  Tyto soubory lze obecně po obnově reprodukovat a přidávají do záložního archivu jen velmi malou hodnotu za cenu velkých nákladů na čas provedení a úložiště"
 
 #: 
 msgid "Password (if any)"
@@ -8665,7 +8482,8 @@ msgstr "Zobrazit nedostupné informace o osobě zděděné z přiřazené rodiny
 "POKUD pro danou osobu NEbyly zadány odpovídající informace. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Stisknutím kláves CTRL + C zkopírujete telefonní čísla všech členů skupiny"
 
 #: 
@@ -8779,10 +8597,6 @@ msgid "Remove Results from Cart"
 msgstr "Odstranit výsledky z košíku"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Varování: Zjištěny úlohy před aktualizací"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Byly zjištěny některé podmínky, které mohou zabránit úspěšné aktualizaci"
 
@@ -8813,14 +8627,6 @@ msgstr "Vymazat databázi"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Tímto se obnoví systémová data a systém se restartuje jako nová instalace."
-
-#: 
-msgid "Clear Filter"
-msgstr "Smazat filtr"
-
-#: 
-msgid "Add Person"
-msgstr "Přidat osobu"
 
 #. Context: locales
 #: 
@@ -8958,10 +8764,6 @@ msgstr "Vaše nové heslo je příliš podobné starému."
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Obnovení hesla není k dispozici.  Obraťte se na správce systému"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Problém s ověřením"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

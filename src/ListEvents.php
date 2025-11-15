@@ -62,9 +62,9 @@ $numRows = mysqli_num_rows($rsOpps);
 
 ?>
 <div class="card">
-<table cellpadding="1" align="center" cellspacing="0" class='table'>
+<table class="mx-auto table-spaced table">
 <tr>
-<td align="center" width="50%"><p><strong><?= gettext('Select Event Types To Display') ?></strong></p>
+<td class="text-center" width="50%"><p><strong><?= gettext('Select Event Types To Display') ?></strong></p>
     <form name="EventTypeSelector" method="POST" action="ListEvents.php">
        <select name="WhichType" onchange="javascript:this.form.submit()" class='form-control'>
         <option value="All"><?= gettext('All') ?></option>
@@ -108,7 +108,7 @@ for ($r = 1; $r <= $numRows; $r++) {
 
 ?>
 
-<td align="center" width="50%"><p><strong><?= gettext('Display Events in Year') ?></strong></p>
+<td class="text-center" width="50%"><p><strong><?= gettext('Display Events in Year') ?></strong></p>
        <select name="WhichYear" onchange="javascript:this.form.submit()" class='form-control'>
         <?php
         for ($r = 1; $r <= $numRows; $r++) {
@@ -186,9 +186,10 @@ foreach ($allMonths as $mKey => $mVal) {
       <h3 class='card-title'><?= ($numRows == 1 ? gettext('There is') : gettext('There are')) . ' ' . $numRows . ' ' . ($numRows == 1 ? gettext('event') : gettext('events')) . ' ' . 'for' . '  ' . gettext(date('F', mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
     </div>
     <div class='card-body'>
-  <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
+      <div class="table-responsive">
+  <table id="listEvents" class='table data-table table-striped table-bordered'>
     <thead>
-      <tr class="TableHeader">
+      <tr>
         <?php if (AuthenticationManager::getCurrentUser()->isAddEvent()) {
             ?>
         <th><?= gettext('Action') ?></th>
@@ -214,7 +215,7 @@ foreach ($allMonths as $mKey => $mVal) {
                   <td>
                     <form name="EditEvent" action="EventEditor.php" method="POST">
                       <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-                      <button type="submit" name="Action" title="<?= gettext('Edit') ?>" value="Edit" class="btn btn-default btn-sm">
+                      <button type="submit" name="Action" title="<?= gettext('Edit') ?>" value="Edit" class="btn btn-secondary btn-sm">
                         <i class='fas fa-pen'></i>
                       </button>
                     </form>
@@ -312,7 +313,7 @@ foreach ($allMonths as $mKey => $mVal) {
                     extract($avgRow);
                     $avgName = $avgRow['evtcnt_countname'];
                     $avgAvg = $avgRow[2]; ?>
-                  <td align="center">
+                  <td class="text-center">
                     <span class="SmallText">
                     <strong>AVG<br><?= $avgName ?></strong>
                     <br><?= sprintf('%01.2f', $avgAvg) ?></span>
@@ -327,6 +328,7 @@ foreach ($allMonths as $mKey => $mVal) {
         } ?>
       </tbody>
     </table>
+      </div>
   </div>
   </div>
         <?php

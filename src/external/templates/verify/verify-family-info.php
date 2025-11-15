@@ -14,29 +14,29 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
   <div class="row">
     <div id="right-buttons" class="btn-group" role="group">
-      <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify"><div class="btn-txt"><?=gettext("Confirm")?></div><i class="fa fa-check fa-5x"></i>  </button>
+      <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify"><div class="btn-txt"><?=gettext("Confirm")?></div><i class="fa-solid fa-check fa-5x"></i>  </button>
     </div>
   </div>
   <div class="card card-info" id="verifyBox">
     <div class="panel-body">
-      <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200" src="data:image/png;base64,<?= base64_encode($family->getPhoto()->getThumbnailBytes()) ?>" >
+      <img class="photo-large pull-right" data-image-entity-type="family" data-image-entity-id="<?= $family->getId() ?>">
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
-        <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
+        <i class="fa-solid fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
           <?php if (!empty($family->getHomePhone())) { ?>
-          <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i>(H) <?= $family->getHomePhone() ?><br/>
+          <i class="fa-solid fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i>(H) <?= $family->getHomePhone() ?><br/>
           <?php }  if (!empty($family->getEmail())) { ?>
-          <i class="fa fa-fw fa-envelope" title="<?= gettext("Family Email") ?>"></i><?= $family->getEmail() ?><br/>
+          <i class="fa-solid fa-fw fa-envelope" title="<?= gettext("Family Email") ?>"></i><?= $family->getEmail() ?><br/>
               <?php
           }
           if ($family->getWeddingDate() !== null) {
                 ?>
-            <i class="fa fa-fw fa-heart" title="<?= gettext("Wedding Date")?>"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?><br/>
+            <i class="fa-solid fa-fw fa-heart" title="<?= gettext("Wedding Date")?>"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?><br/>
               <?php
           }
             ?>
 
-        <i class="fa fa-fw fa-newspaper" title="<?= gettext("Send Newsletter")?>"></i><?= $family->getSendNewsletter() ?><br/>
+        <i class="fa-solid fa-fw fa-newspaper" title="<?= gettext("Send Newsletter")?>"></i><?= $family->getSendNewsletter() ?><br/>
       </div>
     </div>
     <div class="border-right border-left">
@@ -48,7 +48,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
     </div>
     <div class="card card-solid">
       <div class="card-header">
-        <i class="fa fa-users"></i>
+        <i class="fa-solid fa-users"></i>
         <h3 class="card-title"><?= gettext("Family Member(s)")?></h3>
       </div>
       <div class="row row-flex row-flex-wrap">
@@ -56,28 +56,28 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
           <div class="col-md-4 col-sm-4">
             <div class="card card-primary">
               <div class="card-body box-profile">
-                 <img class="profile-user-img img-responsive img-circle initials-image" src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
+                 <img class="photo-medium" data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>">
 
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
 
                 <p class="text-muted text-center"><i
-                    class="fa fa-fw fa-<?= ($person->isMale() ? "male" : "female") ?>"></i> <?= $person->getFamilyRoleName() ?>
+                    class="fa-solid fa-fw fa-<?= ($person->isMale() ? "male" : "female") ?>"></i> <?= $person->getFamilyRoleName() ?>
                 </p>
 
                 <ul class="list-group list-group-unbordered">
                   <li class="list-group-item">
                       <?php if (!empty($person->getHomePhone())) { ?>
-                    <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"></i>(H) <?= $person->getHomePhone() ?><br/>
+                    <i class="fa-solid fa-fw fa-phone" title="<?= gettext("Home Phone")?>"></i>(H) <?= $person->getHomePhone() ?><br/>
                       <?php }  if (!empty($person->getWorkPhone())) { ?>
-                    <i class="fa fa-fw fa-briefcase" title="<?= gettext("Work Phone")?>"></i>(W) <?= $person->getWorkPhone() ?><br/>
+                    <i class="fa-solid fa-fw fa-briefcase" title="<?= gettext("Work Phone")?>"></i>(W) <?= $person->getWorkPhone() ?><br/>
                       <?php }  if (!empty($person->getCellPhone())) { ?>
-                    <i class="fa fa-fw fa-mobile" title="<?= gettext("Mobile Phone")?>"></i>(M) <?= $person->getCellPhone() ?><br/>
+                    <i class="fa-solid fa-fw fa-mobile" title="<?= gettext("Mobile Phone")?>"></i>(M) <?= $person->getCellPhone() ?><br/>
                       <?php }  if (!empty($person->getEmail())) { ?>
-                    <i class="fa fa-fw fa-envelope" title="<?= gettext("Email")?>"></i>(H) <?= $person->getEmail() ?><br/>
+                    <i class="fa-solid fa-fw fa-envelope" title="<?= gettext("Email")?>"></i>(H) <?= $person->getEmail() ?><br/>
                       <?php }  if (!empty($person->getWorkEmail())) { ?>
-                    <i class="fa fa-fw fa-envelope" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
+                    <i class="fa-solid fa-fw fa-envelope" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
                       <?php }  ?>
-                    <i class="fa fa-fw fa-cake-candles" title="<?= gettext("Birthday")?>"></i> <?= $person->getFormattedBirthDate() ?><br/>
+                    <i class="fa-solid fa-fw fa-cake-candles" title="<?= gettext("Birthday")?>"></i> <?= $person->getFormattedBirthDate() ?><br/>
                   </li>
                   <li class="list-group-item">
                     <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
@@ -155,7 +155,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
         </div>
 
         <div class="modal-footer">
-          <button id="onlineVerifyCancelBtn" type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+          <button id="onlineVerifyCancelBtn" type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext("Cancel") ?></button>
           <button id="onlineVerifyBtn" class="btn btn-success"><?= gettext("Send") ?></button>
           <a href="<?= ChurchMetaData::getChurchWebSite() ?>" id="onlineVerifySiteBtn" class="btn btn-success"><?= gettext("Visit our Site") ?></a>
         </div>

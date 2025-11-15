@@ -1253,10 +1253,6 @@ msgid "Family List"
 msgstr "قائمة العائلة"
 
 #: 
-msgid "Add Family"
-msgstr "اضافة عائلة"
-
-#: 
 msgid "Created"
 msgstr "انشاء"
 
@@ -1281,10 +1277,6 @@ msgid "Next Family"
 msgstr "الأسرة التالية"
 
 #: 
-msgid "Delete this Family"
-msgstr "مسح العائلة"
-
-#: 
 msgid "Upload Photo"
 msgstr "تحميل الصورة"
 
@@ -1295,10 +1287,6 @@ msgstr "مسح الصورة"
 #: 
 msgid "Add a Note"
 msgstr "اضافة ملحوظة"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "اضف أفراد الأسرة الي السلة"
 
 #: 
 msgid "Timeline"
@@ -1407,10 +1395,6 @@ msgstr "أنت على وشك إرسال نسخة من معلومات الأسر�
 #: 
 msgid "Financial Reports"
 msgstr "تقارير مالية"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "لم يتم إرجاع أي سجلات من التقرير السابق."
 
 #: 
 msgid "Report Type:"
@@ -1774,10 +1758,6 @@ msgid "Remove from Cart"
 msgstr "مسح من العربة"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "النص لمعرف الحدث:"
-
-#: 
 msgid "Group Editor"
 msgstr "محرر المجموعة"
 
@@ -1946,10 +1926,6 @@ msgid "Group View"
 msgstr "عرض لمجموعة"
 
 #: 
-msgid "Group Functions"
-msgstr "مهام المجموعة"
-
-#: 
 msgid "Edit this Group"
 msgstr "تعديل المجموعة"
 
@@ -2010,7 +1986,8 @@ msgid "Assigned Properties"
 msgstr "الخصائص المعينة"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "اعضاء المجموعه"
 
 #: 
@@ -2792,10 +2769,6 @@ msgid "Query Listing"
 msgstr "قائمة الاستعلام"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "تشغيل استعلام الحرة النص"
-
-#: 
 msgid "Free-Text Query"
 msgstr "سؤال نص حر"
 
@@ -2935,10 +2908,6 @@ msgstr "حذف سجل الأسرة فقط"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "حذف سجل الأسرة وعدد أفراد الأسرة"
-
-#: 
-msgid "Filter and Cart"
-msgstr "تصفية والعربة"
 
 #: 
 msgid "Listing"
@@ -3330,14 +3299,6 @@ msgid "Select Fiscal Year"
 msgstr "اختر السنة المالية"
 
 #: 
-msgid "pm"
-msgstr "مساءا"
-
-#: 
-msgid "am"
-msgstr "صباحا"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ID محرر غير صالح!"
 
@@ -3638,20 +3599,12 @@ msgid "Sunday School Class Functions"
 msgstr "وظائف مدرسة الأحد فئة"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "تبديل منسدلة"
-
-#: 
 msgid "Teachers"
 msgstr "الخدام"
 
 #: 
 msgid "Send Message"
 msgstr "ارسال رساله"
-
-#: 
-msgid "View Profile"
-msgstr "عرض الصفحة الشخصية"
 
 #: 
 msgid "Quick Status"
@@ -3992,68 +3945,12 @@ msgid "Edit Settings"
 msgstr "تعديل الإعدادات"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "ترقية ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "الخطوة 1: قاعدة بيانات النسخ الاحتياطي"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "يرجى إنشاء نسخة احتياطية قاعدة البيانات قبل بدء عملية الترقية."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "انشاء نسخة احتياطية من قاعدة البيانات"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "الخطوة 2: إحضار حزمة التحديث على ملقم"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "جلب أحدث الملفات من الصفحة الإفراج ChurchCRM جيثب"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "جلب تحديث ملفات"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "الخطوة 3: تطبيق حزمة التحديث على ملقم"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "استخراج أرشيف الترقية، وتطبيق الملفات الجديدة"
-
-#: 
 msgid "Full Path:"
 msgstr "مسار كامل:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "ترقية نظام"
-
-#: 
-msgid "Step 4: Login"
-msgstr "الخطوة 4: دخول"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "تسجيل الدخول إلى نظام ترقية"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "كامل النسخ الاحتياطي، جاهزة للتحميل."
-
-#: 
-msgid "Backup Error."
-msgstr "خطأ النسخ الاحتياطي."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4155,18 +4052,6 @@ msgstr "سنوي"
 #: 
 msgid "Registration Complete"
 msgstr "اكتمل التسجيل"
-
-#: 
-msgid "Register"
-msgstr "تسجيل"
-
-#: 
-msgid "Register your family"
-msgstr "تسجيل عائلتك"
-
-#: 
-msgid "How many people are in your family"
-msgstr "كم عدد افراد اسرتك"
 
 #: 
 msgid "Add All Classes"
@@ -6956,10 +6841,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "الرجاء التأكد من هذا ما تريد القيام به. </p>"
 
 #: 
-msgid " this Family"
-msgstr "هذه العائلة"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "تأكيد التعطيل"
 
@@ -6990,10 +6871,6 @@ msgstr "تنسيق البيانات اسم ملف قاعدة:"
 #: 
 msgid "Intersect With Cart"
 msgstr "تتقاطع مع العربة"
-
-#: 
-msgid "Family Member"
-msgstr "عضو الأسرة"
 
 #: 
 msgid "select an option"
@@ -7107,10 +6984,6 @@ msgstr "عرض صور"
 #: 
 msgid "Family Photo"
 msgstr "صورة عائلية"
-
-#: 
-msgid "Quick Settings"
-msgstr "إعدادات سريعة"
 
 #: 
 msgid "Status"
@@ -7414,24 +7287,12 @@ msgid "Reset Password"
 msgstr "إعادة تعيين كلمة المرور"
 
 #: 
-msgid "Unable to reset password"
-msgstr "غير قادر على إعادة تعيين كلمة المرور"
-
-#: 
 msgid "Reset your password"
 msgstr "اعد ضبط كلمه السر"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "عذرا، لم نتمكن من معالجة طلبك في هذا الوقت."
-
-#: 
-msgid "Login Name is Required"
-msgstr "الدخول اسم هو مطلوب"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "تم إرسال كلمة مرور جديدة لك. من فضلك تفقد بريدك الالكتروني"
 
 #: 
 msgid "Kiosk Manager"
@@ -7532,10 +7393,6 @@ msgstr "ازالة الكل"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "ليس كل أعضاء هذه المجموعة في العربة"
-
-#: 
-msgid "Add all"
-msgstr "اضافة الكل"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7786,10 +7643,6 @@ msgid "Maximum number of Addresses"
 msgstr "الحد الأقصى لعدد عناوين"
 
 #: 
-msgid "Show type of group:"
-msgstr "اظهار نوع من مجموعة:"
-
-#: 
 msgid "Add Students"
 msgstr "إضافة الطلاب"
 
@@ -7836,26 +7689,6 @@ msgstr "إنشاء الصور PhotoBook"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "ارتفاع الاستخدام للصور"
-
-#: 
-msgid "Width to use for images"
-msgstr "عرض الاستخدام للصور"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "عرض الصور المصغرة الاستخدام ل"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "حجم نقطة الاستخدام لبالاحرف الاولى المصغرة"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "ثواني ذاكرة التخزين المؤقت العميل للصور"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7908,10 +7741,6 @@ msgstr "حدث تحرك"
 #: 
 msgid "Resize Event"
 msgstr "تغيير حجم الحدث"
-
-#: 
-msgid "Text from"
-msgstr "النص من"
 
 #: 
 msgid "Profile"
@@ -8433,10 +8262,6 @@ msgid "Menu Name"
 msgstr "اسم القائمة"
 
 #: 
-msgid "Max 20 char"
-msgstr "ماكس 20 شار"
-
-#: 
 msgid "Link Address"
 msgstr "اربط العنوان"
 
@@ -8583,10 +8408,6 @@ msgid "Integrity Check Details:"
 msgstr "النزاهة تحقق الصفات:"
 
 #: 
-msgid "I Understand"
-msgstr "أفهم"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "أنواع غير معتمد الإيداع التي تم اكتشافها"
 
@@ -8614,10 +8435,6 @@ msgstr "توليد النسخ الاحتياطي"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "نقطة النهاية النسخ الاحتياطي عن بعد. إذا WEBDAV، وهذا يجب أن يكون رابط المشفرة."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "تشمل بالاحرف الاولى ملفات الصور، وملفات الصور البعيدة (غرفتر)، والصور المصغرة في النسخ الاحتياطي. هذه الملفات عادة ما تكون قادرة على أن تكون مستنسخة بعد استعادة وإضافة قيمة قليلة جدا إلى أرشيف النسخ الاحتياطي في حساب كبير من وقت التنفيذ والتخزين"
 
 #: 
 msgid "Password (if any)"
@@ -8673,7 +8490,8 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 msgstr "غير متوفرة شخص معلومات الموروثة من الأسرة المخصصة للعرض؟ يؤدي هذا الخيار معلومات معينة من سجل الأسرة تعيين الشخص للظهور إذا لم يتم إدخال المعلومات المقابلة لهذا الشخص."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "اضغط CTRL + C لنسخ جميع أعضاء المجموعة \\ \"أرقام الهواتف"
 
 #: 
@@ -8793,10 +8611,6 @@ msgid "Remove Results from Cart"
 msgstr "إزالة نتائج من العربة"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "تحذير: مهام ما قبل الترقية التي تم اكتشافها"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "وقد تم تحديد بعض الشروط اللي تبونه قد تحول دون ترقية ناجحة"
@@ -8828,14 +8642,6 @@ msgstr "قاعدة بيانات إعادة تعيين"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "هذا وسوف إعادة تعيين بيانات النظام وسيتم إعادة تشغيل النظام وتثبيت جديد."
-
-#: 
-msgid "Clear Filter"
-msgstr "مرشح واضح"
-
-#: 
-msgid "Add Person"
-msgstr "اضافة فرد"
 
 #. Context: locales
 #: 
@@ -8974,10 +8780,6 @@ msgstr "كلمه المرور متشابهه مع كلمه مرور سابقه"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "لأعاده كلمه المرور برجاء التواصل مع مسئول النظام"
-
-#: 
-msgid "Authentication Issue"
-msgstr "مشكلة المصادقة"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

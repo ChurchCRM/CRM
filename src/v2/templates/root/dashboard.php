@@ -19,10 +19,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="fa fa-user-friends"></i>
+                <i class="fa-solid fa-user-friends"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
-                <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext('See all Families') ?> <i class="fa-solid fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -38,10 +38,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="fa fa-user"></i>
+                <i class="fa-solid fa-user"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="small-box-footer">
-                <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext('See All People') ?> <i class="fa-solid fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -57,10 +57,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="fa fa-users"></i>
+                <i class="fa-solid fa-users"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
-                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext('More info') ?>  <i class="fa-solid fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -78,10 +78,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-child"></i>
+                    <i class="fa-solid fa-child"></i>
                 </div>
                 <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
-                    <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
+                    <?= gettext('More info') ?> <i class="fa-solid fa-arrow-circle-right"></i>
                 </a>
             </div>
         </div><!-- ./col -->
@@ -101,10 +101,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="far fa-calendar-check"></i>
+                <i class="fa-regular fa-calendar-check"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/ListEvents.php" class="small-box-footer">
-                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext('More info') ?>  <i class="fa-solid fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -132,7 +132,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
     ?>
     <div class="card card-info"  id="depositChartRow">
         <div class="card-header">
-            <h3 class="card-title"><i class="fa fa-circle-dollar-to-slot"></i> <?= gettext('Deposit Tracking') ?></h3>
+            <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext('Deposit Tracking') ?></h3>
             <div class="card-tools pull-right">
                 <div id="deposit-graph" class="chart-legend"></div>
             </div>
@@ -147,17 +147,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
 
 <div class="card">
     <div class="card-header with-border">
-        <dev class="card-title"><h4><?= gettext('People') ?></h4></dev>
-        <div class="card-tools">
-            <div class="btn-group">
-                <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php">
-                    <button type="button" class="btn btn-success"><?= gettext('Add New Person') ?></button>
-                </a>
-                <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php">
-                <button type="button" class="btn btn-success"><?= gettext('Add New Family') ?></button>
-                </a>
-            </div>
-        </div>
+        <div class="card-title"><h4><?= gettext('People') ?></h4></div>
     </div>
         <div class="card-body">
             <div class="row">

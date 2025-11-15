@@ -44,20 +44,20 @@ require_once 'Include/Header.php';
 if (count($_SESSION['aPeopleCart']) > 0) {
     $sSQL = 'SELECT event_id, event_title FROM events_event';
     $rsEvents = RunQuery($sSQL); ?>
-<div class="card">
-<p align="center"><?= gettext('Select the event to which you would like to add your cart') ?>:</p>
-<form name="CartToEvent" action="CartToEvent.php" method="POST">
-<table align="center">
-        <?php if ($sGlobalMessage) {
-            ?>
-        <tr>
-          <td colspan="2"><?= $sGlobalMessage ?></td>
-        </tr>
-            <?php
-        } ?>
-        <tr>
-                <td class="LabelColumn"><?= gettext('Select Event') ?>:</td>
-                <td class="TextColumn">
+    <div class="card">
+        <p class="text-center"><?= gettext('Select the event to which you would like to add your cart') ?>:</p>
+        <form name="CartToEvent" action="CartToEvent.php" method="POST">
+            <table class="mx-auto">
+                <?php if ($sGlobalMessage) {
+                ?>
+                    <tr>
+                        <td colspan="2"><?= $sGlobalMessage ?></td>
+                    </tr>
+                <?php
+                } ?>
+                <tr>
+                    <td class="LabelColumn"><?= gettext('Select Event') ?>:</td>
+                    <td class="TextColumn">
                         <?php
                         // Create the group select drop-down
                         echo '<select name="EventID">';
@@ -65,21 +65,21 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                             echo '<option value="' . $aRow['event_id'] . '">' . $aRow['event_title'] . '</option>';
                         }
                         echo '</select>'; ?>
-                </td>
-        </tr>
-</table>
-<p align="center">
-<BR>
-<input type="submit" name="Submit" value=<?= '"' . gettext('Add Cart to Event') . '"' ?> class="btn btn-primary">
-<BR><BR>--<?= gettext('OR') ?>--<BR><BR>
-<a href="EventEditor.php" class="btn btn-info"><?= gettext('Add New Event') ?></a>
-<BR><BR>
-</p>
-</form>
-</div>
-    <?php
+                    </td>
+                </tr>
+            </table>
+            <p class="text-center">
+                <BR>
+                <input type="submit" name="Submit" value=<?= '"' . gettext('Add Cart to Event') . '"' ?> class="btn btn-primary">
+                <BR><BR>--<?= gettext('OR') ?>--<BR><BR>
+                <a href="EventEditor.php" class="btn btn-info"><?= gettext('Add New Event') ?></a>
+                <BR><BR>
+            </p>
+        </form>
+    </div>
+<?php
 } else {
-        echo '<p align="center" class="callout callout-warning">' . gettext('Your cart is empty!') . '</p>';
+    echo '<p class="text-center alert alert-warning">' . gettext('Your cart is empty!') . '</p>';
 }
 
 require_once 'Include/Footer.php';

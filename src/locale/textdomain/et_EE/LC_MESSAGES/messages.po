@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "Perekonna nimekiri"
 
 #: 
-msgid "Add Family"
-msgstr "Lisa perekond"
-
-#: 
 msgid "Created"
 msgstr "Loodud"
 
@@ -1280,10 +1276,6 @@ msgid "Next Family"
 msgstr "Järgmine perekond"
 
 #: 
-msgid "Delete this Family"
-msgstr "Kustuta see perekond"
-
-#: 
 msgid "Upload Photo"
 msgstr "Lae pilt üles"
 
@@ -1294,10 +1286,6 @@ msgstr "Kustuta foto"
 #: 
 msgid "Add a Note"
 msgstr "Lisage märkus"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Lisage korvi kõik pereliikmed"
 
 #: 
 msgid "Timeline"
@@ -1406,10 +1394,6 @@ msgstr "Olete saatmas infot perekonnast järgmiste meilidele"
 #: 
 msgid "Financial Reports"
 msgstr "Finantsaruanded"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Eelmisest aruandest ühtegi kirjet ei tagastatud."
 
 #: 
 msgid "Report Type:"
@@ -1773,10 +1757,6 @@ msgid "Remove from Cart"
 msgstr "Eemalda korvist"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Sündmuse ID tekst: "
-
-#: 
 msgid "Group Editor"
 msgstr "Grupiredaktor"
 
@@ -1945,10 +1925,6 @@ msgid "Group View"
 msgstr "Grupi vaade"
 
 #: 
-msgid "Group Functions"
-msgstr "Grupi funktsioonid"
-
-#: 
 msgid "Edit this Group"
 msgstr "Muuda seda rühma"
 
@@ -2009,8 +1985,9 @@ msgid "Assigned Properties"
 msgstr "Määratud omadused"
 
 #: 
-msgid "Group Members:"
-msgstr "Grupi liikmed:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Grupi liikmed"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2791,10 +2768,6 @@ msgid "Query Listing"
 msgstr "Päringute loetelu"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Käivitage vaba teksti päring"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Vaba teksti päring"
 
@@ -2934,10 +2907,6 @@ msgstr "Kustuta AINULT perekonna kirje"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Kustutage perekonnakiri ja pereliikmed"
-
-#: 
-msgid "Filter and Cart"
-msgstr "Filter ja korv"
 
 #: 
 msgid "Listing"
@@ -3329,14 +3298,6 @@ msgid "Select Fiscal Year"
 msgstr "Valige Majandusaasta"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Kehtetu toimetaja ID!"
 
@@ -3637,20 +3598,12 @@ msgid "Sunday School Class Functions"
 msgstr "Pühapäevakooli klassi funktsioonid"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Lülitab rippmenüü sisse"
-
-#: 
 msgid "Teachers"
 msgstr "Õpetajad"
 
 #: 
 msgid "Send Message"
 msgstr "Saada sõnum"
-
-#: 
-msgid "View Profile"
-msgstr "Näita profiili"
 
 #: 
 msgid "Quick Status"
@@ -3991,68 +3944,12 @@ msgid "Edit Settings"
 msgstr "Redigeeri seadeid"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Uuendage ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "1. samm: varunda andmebaas"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Enne täiendusprotsessi alustamist looge varukoopia andmebaasist."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Genereerige andmebaasi varukoopia"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "2. samm: hankige värskenduste pakett serverisse"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Tooge uusimad failid ChurchCRM GitHubi väljalaske lehelt"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Too värskendusfailid"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "3. samm: rakendage serverile värskenduste pakett"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Pakkige lahti täiendusarhiiv ja rakendage uued failid"
-
-#: 
 msgid "Full Path:"
 msgstr "Täielik tee:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Täiendage süsteemi"
-
-#: 
-msgid "Step 4: Login"
-msgstr "4. samm: sisselogimine"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Logi sisse täiendatud süsteemi"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Varundatud, allalaadimiseks valmis."
-
-#: 
-msgid "Backup Error."
-msgstr "Varundusviga."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4154,18 +4051,6 @@ msgstr "Aastas"
 #: 
 msgid "Registration Complete"
 msgstr "Registreerimine on lõpule viidud"
-
-#: 
-msgid "Register"
-msgstr "Registreeri"
-
-#: 
-msgid "Register your family"
-msgstr "Registreeri oma pere"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Kui palju inimesi teie peres on"
 
 #: 
 msgid "Add All Classes"
@@ -6954,10 +6839,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Palun veenduge selles, mida soovite teha.</p>"
 
 #: 
-msgid " this Family"
-msgstr "see perekond"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Kinnitage desaktiveerimine"
 
@@ -6988,10 +6869,6 @@ msgstr "Koordinaatide andmebaasi faili nimi:"
 #: 
 msgid "Intersect With Cart"
 msgstr "Lõikuge valikukorviga"
-
-#: 
-msgid "Family Member"
-msgstr "Pereliige"
 
 #: 
 msgid "select an option"
@@ -7105,10 +6982,6 @@ msgstr "Vaata fotot"
 #: 
 msgid "Family Photo"
 msgstr "Perefoto"
-
-#: 
-msgid "Quick Settings"
-msgstr "Kiirseaded"
 
 #: 
 msgid "Status"
@@ -7412,24 +7285,12 @@ msgid "Reset Password"
 msgstr "Lähtestage parool"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Parooli ei saa lähtestada"
-
-#: 
 msgid "Reset your password"
 msgstr "Taasta oma salasõna"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Kahjuks ei saa me teie taotlust praegu töödelda."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Sisselogimisnimi on nõutav"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Sulle saadeti uus parool. Palun kontrolli oma e-posti"
 
 #: 
 msgid "Kiosk Manager"
@@ -7530,10 +7391,6 @@ msgstr "Eemalda kõik"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "Kõik selle grupi liikmed ei ole valikukorvis"
-
-#: 
-msgid "Add all"
-msgstr "Lisa kõik"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7784,10 +7641,6 @@ msgid "Maximum number of Addresses"
 msgstr "Aadresside maksimaalne arv"
 
 #: 
-msgid "Show type of group:"
-msgstr "Kuva rühma tüüp:"
-
-#: 
 msgid "Add Students"
 msgstr "Lisage õpilased"
 
@@ -7834,26 +7687,6 @@ msgstr "Looge fotoraamat"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Piltide jaoks kasutatav kõrgus"
-
-#: 
-msgid "Width to use for images"
-msgstr "Piltide jaoks kasutatav laius"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Pisipiltide jaoks kasutatav laius"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Initsiaalide pisipiltide jaoks kasutatav punkti suurus"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Kliendi vahemälu sekundid piltide jaoks"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7906,10 +7739,6 @@ msgstr "Teisalda sündmus"
 #: 
 msgid "Resize Event"
 msgstr "Muutke sündmuse suurust"
-
-#: 
-msgid "Text from"
-msgstr "Tekst on pärit"
 
 #: 
 msgid "Profile"
@@ -8431,10 +8260,6 @@ msgid "Menu Name"
 msgstr "Menüü nimi"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max 20 char"
-
-#: 
 msgid "Link Address"
 msgstr "Lingi aadress"
 
@@ -8581,10 +8406,6 @@ msgid "Integrity Check Details:"
 msgstr "Terviklikkuse kontrollimise üksikasjad:"
 
 #: 
-msgid "I Understand"
-msgstr "Ma saan aru"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Tuvastatud toetamata sissemakse tüübid"
 
@@ -8612,10 +8433,6 @@ msgstr "Genereerige varundus"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Kaugvarunduse lõpp-punkt. Kui WebDAV, tuleb see URL kodeerida. "
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Lisage varukoopiasse initsiaalide pildifailid, kaugpildifailid (gravatar) ja pisipildid. Neid faile on pärast taastamist üldjuhul võimalik reprodutseerida ja need annavad varunduse arhiivile väga vähe lisaväärtust, kulutades märkimisväärselt täitmisaega ja salvestusruumi"
 
 #: 
 msgid "Password (if any)"
@@ -8680,7 +8497,8 @@ msgstr "Määratud perekonna kuvamise kohta pole saadaval teavet?\n"
 "kuvatakse, kui vastavat teavet EI ole selle inimese kohta sisestatud. "
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Kõigi grupiliikmete telefoninumbrite kopeerimiseks vajutage CTRL + C"
 
 #: 
@@ -8792,10 +8610,6 @@ msgid "Remove Results from Cart"
 msgstr "Eemalda tulemused korvist"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Hoiatus: tuvastatud on täiendamiseelsed ülesanded"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "On kindlaks tehtud mõned tingimused, mis võivad takistada edukat täiendamist"
@@ -8827,14 +8641,6 @@ msgstr "Lähtesta andmebaas"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "See lähtestab süsteemi andmed ja taaskäivitab süsteemi uue installina."
-
-#: 
-msgid "Clear Filter"
-msgstr "Kustuta filter"
-
-#: 
-msgid "Add Person"
-msgstr "Lisage inimene"
 
 #. Context: locales
 #: 
@@ -8973,10 +8779,6 @@ msgstr "Teie uus parool on liiga sarnane vanaga."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Parooli lähtestamine pole saadaval. Palun pöörduge oma süsteemi administraatori poole"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Autentimise probleem"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

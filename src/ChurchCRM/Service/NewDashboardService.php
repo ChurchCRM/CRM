@@ -6,7 +6,6 @@ use ChurchCRM\Dashboard\ClassificationDashboardItem;
 use ChurchCRM\Dashboard\CurrentLocaleMetadata;
 use ChurchCRM\Dashboard\DashboardItemInterface;
 use ChurchCRM\Dashboard\EventsMenuItems;
-use ChurchCRM\Dashboard\SystemUpdateMenuItem;
 
 class NewDashboardService
 {
@@ -19,7 +18,6 @@ class NewDashboardService
             EventsMenuItems::class,
             ClassificationDashboardItem::class,
             CurrentLocaleMetadata::class,
-            SystemUpdateMenuItem::class,
         ];
         $ReturnValues = [];
         foreach ($DashboardItems as $DashboardItem) {

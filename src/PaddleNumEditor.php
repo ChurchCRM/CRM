@@ -132,15 +132,15 @@ require_once 'Include/Header.php';
 <div class="card card-body">
     <form method="post" action="PaddleNumEditor.php?<?= 'CurrentFundraiser=' . $iCurrentFundraiser . '&PaddleNumID=' . $iPaddleNumID . '&linkBack=' . $linkBack ?>" name="PaddleNumEditor">
         <div class="table-responsive">
-            <table class="table" cellpadding="3" align="center">
+            <table class="table mx-auto">
                 <tr>
-                    <td align="center">
-                        <input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
-                        <input type="submit" class="btn btn-default" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
+                    <td class="text-center">
+                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
+                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
                         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-                            echo '<input type="submit" class="btn btn-default" value="' . gettext('Save and Add') . "\" name=\"PaddleNumSubmitAndAdd\">\n";
+                            echo '<input type="submit" class="btn btn-secondary" value="' . gettext('Save and Add') . "\" name=\"PaddleNumSubmitAndAdd\">\n";
                         } ?>
-                        <input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+                        <input type="button" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                                                                                                                                                                         echo $linkBack;
                                                                             } else {
                                                                                 echo 'v2/dashboard';
@@ -150,9 +150,9 @@ require_once 'Include/Header.php';
 
                 <tr>
                     <td>
-                        <table border="0" width="100%" cellspacing="0" cellpadding="4">
+                        <table width="100%" cellspacing="0" cellpadding="4">
                             <tr>
-                                <td width="50%" valign="top" align="left">
+                                <td width="50%" class="align-top" align="left">
                                     <table cellpadding="3">
                                         <tr>
                                             <td class="LabelColumn"><?= gettext('Number') ?>:</td>
@@ -184,7 +184,7 @@ require_once 'Include/Header.php';
                                     </table>
                                 </td>
 
-                                <td width="50%" valign="top" align="center">
+                                <td width="50%" class="align-top text-center">
                                     <table cellpadding="3">
                                         <?php
                                         $rsMBItems = RunQuery($sMultibuyItemsSQL);

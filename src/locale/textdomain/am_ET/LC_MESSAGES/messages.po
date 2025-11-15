@@ -1254,10 +1254,6 @@ msgid "Family List"
 msgstr "የቤተሰብ ዝርዝር"
 
 #: 
-msgid "Add Family"
-msgstr "ቤተሰብ ጨምር"
-
-#: 
 msgid "Created"
 msgstr "ተፈጥሯል"
 
@@ -1282,10 +1278,6 @@ msgid "Next Family"
 msgstr "ቀጣይ ቤተሰብ"
 
 #: 
-msgid "Delete this Family"
-msgstr "ይህን ቤተሰብ ሰርዝ"
-
-#: 
 msgid "Upload Photo"
 msgstr "ፎቶ ጫን"
 
@@ -1296,10 +1288,6 @@ msgstr "ፎቶ ሰርዝ"
 #: 
 msgid "Add a Note"
 msgstr "ማስታወሻ ጨምር"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "ሁሉንም የቤተሰብ አባላት ወደ ጋሪው ይጨምሩ"
 
 #: 
 msgid "Timeline"
@@ -1408,10 +1396,6 @@ msgstr "የቤተሰቡን መረጃ ቅጂ ወደሚከተለው ኢሜይሎ�
 #: 
 msgid "Financial Reports"
 msgstr "የፋይናንስ ሪፖርቶች"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "ካለፈው ሪፖርት ምንም መዝገቦች አልተመለሱም።"
 
 #: 
 msgid "Report Type:"
@@ -1775,10 +1759,6 @@ msgid "Remove from Cart"
 msgstr "ከጋሪ አስወግድ"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "የክስተት መታወቂያ ጽሑፍ፡- "
-
-#: 
 msgid "Group Editor"
 msgstr "የቡድን አርታዒ"
 
@@ -1947,10 +1927,6 @@ msgid "Group View"
 msgstr "የቡድን እይታ"
 
 #: 
-msgid "Group Functions"
-msgstr "የቡድን ተግባራት"
-
-#: 
 msgid "Edit this Group"
 msgstr "ይህን ቡድን አርትዕ ያድርጉ"
 
@@ -2011,8 +1987,9 @@ msgid "Assigned Properties"
 msgstr "የተመደቡ ንብረቶች"
 
 #: 
-msgid "Group Members:"
-msgstr "የቡድን አባላት፡-"
+#, fuzzy
+msgid "Group Members"
+msgstr "የቡድን አባላት"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2793,10 +2770,6 @@ msgid "Query Listing"
 msgstr "የጥያቄ ዝርዝር"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "የነጻ ጽሑፍ መጠይቅ አስኪድ"
-
-#: 
 msgid "Free-Text Query"
 msgstr "የነጻ ጽሑፍ መጠይቅ"
 
@@ -2936,10 +2909,6 @@ msgstr "የቤተሰብ መዝገብ ብቻ ሰርዝ"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "የቤተሰብ መዝገብ እና የቤተሰብ አባላት ሰርዝ "
-
-#: 
-msgid "Filter and Cart"
-msgstr "ወንፊት እና ጋሪ"
 
 #: 
 msgid "Listing"
@@ -3331,14 +3300,6 @@ msgid "Select Fiscal Year"
 msgstr "የበጀት ዓመት ይምረጡ"
 
 #: 
-msgid "pm"
-msgstr "ከሰዓት"
-
-#: 
-msgid "am"
-msgstr "ጠዋት"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "ልክ ያልሆነ የአስተካካይ መታወቂያ"
 
@@ -3639,20 +3600,12 @@ msgid "Sunday School Class Functions"
 msgstr "የሰንበት ትምህርት ክፍል ተግባራት"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "መውረድን ቀያይር"
-
-#: 
 msgid "Teachers"
 msgstr "አስተማሪዎች"
 
 #: 
 msgid "Send Message"
 msgstr "መልዕክት ላክ"
-
-#: 
-msgid "View Profile"
-msgstr "መገለጫ ይመልከቱ"
 
 #: 
 msgid "Quick Status"
@@ -3991,68 +3944,12 @@ msgid "Edit Settings"
 msgstr "ቅንብሮችን ያርትዑ"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "ChurchCRMን አሻሽል"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "ደረጃ 1: የዳታቤዝ ምትኬ"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "የማሻሻያ ሂደቱን ከመጀመርዎ በፊት እባክዎ የዳታቤዝ መጠባበቂያ ይፍጠሩ"
-
-#: 
-msgid "Generate Database Backup"
-msgstr "የዳታቤዝ ምትኬን ይፍጠሩ"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "ደረጃ 2: ማሻሻያ ጥቅል በአገልጋይ ላይ"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "የቅርብ ጊዜዎቹን ፋይሎች ከChurchCRM GitHub መልቀቂያ ገጽ ያውጡ"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "የዝማኔ ፋይሎችን አምጣ"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "ደረጃ 3: የዝማኔ ጥቅልን በአገልጋይ ላይ ተግብር"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "የማሻሻያ ማህደሩን ያውጡ እና አዲሶቹን ፋይሎች ይተግብሩ"
-
-#: 
 msgid "Full Path:"
 msgstr "ሙሉ መንገድ:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "የማሻሻያ ስርዓት"
-
-#: 
-msgid "Step 4: Login"
-msgstr "ደረጃ 4: ይግቡ"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "ወደ የተሻሻለ ስርዓት ይግቡ"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "ምትኬ ተጠናቅቋል፣ ለመውረድ ዝግጁ."
-
-#: 
-msgid "Backup Error."
-msgstr "የመጠባበቂያ ስህተት."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4154,18 +4051,6 @@ msgstr "በየአመቱ"
 #: 
 msgid "Registration Complete"
 msgstr "ምዝገባ ተጠናቋል"
-
-#: 
-msgid "Register"
-msgstr "ይመዝገቡ"
-
-#: 
-msgid "Register your family"
-msgstr "ቤተሰብዎን ያስመዝግቡ"
-
-#: 
-msgid "How many people are in your family"
-msgstr "በቤተሰብዎ ውስጥ ስንት ሰዎች አሉ"
 
 #: 
 msgid "Add All Classes"
@@ -6957,10 +6842,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "እባክዎ ይህን ማድረግ እንደሚፈልጉ ያረጋግጡ።"
 
 #: 
-msgid " this Family"
-msgstr "ይህ ቤተሰብ"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "ማቋረጥ መፈለጎትን ያረጋግጡ"
 
@@ -6991,10 +6872,6 @@ msgstr "የዳታ መሠረት ፋይል ስም አስተባባሪ"
 #: 
 msgid "Intersect With Cart"
 msgstr "ወደጋሪ ያስገቡ"
-
-#: 
-msgid "Family Member"
-msgstr "የቤተሰብ አባል"
 
 #: 
 msgid "select an option"
@@ -7108,10 +6985,6 @@ msgstr "ፎቶ ይመልከቱ"
 #: 
 msgid "Family Photo"
 msgstr "የቤተሰብ ፎቶ"
-
-#: 
-msgid "Quick Settings"
-msgstr "ፈጣን ቅንብሮች"
 
 #: 
 msgid "Status"
@@ -7415,24 +7288,12 @@ msgid "Reset Password"
 msgstr "የይለፍ ቃል ይቀይሩ"
 
 #: 
-msgid "Unable to reset password"
-msgstr "የይለፍ ቃል መቀየር አልተቻለም"
-
-#: 
 msgid "Reset your password"
 msgstr "የራስዎን የይለፍ ቃል ይቀይሩ"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "ይቅርታ፣ በዚህ ጊዜ ጥያቄህን ማስተናገድ አልቻልንም"
-
-#: 
-msgid "Login Name is Required"
-msgstr "የመግቢያ ስም ያስፈልጋል"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "አዲስ የይለፍ ቃል ተልኳል። እባክዎ ኢሜልዎን ይመልከቱ"
 
 #: 
 msgid "Kiosk Manager"
@@ -7533,10 +7394,6 @@ msgstr "ሁሉንም አስወግድ"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "ሁሉም የዚህ ቡድን አባላት በመዝገቡ ውስጥ አይደሉም"
-
-#: 
-msgid "Add all"
-msgstr "ሁሉንም ጨምር"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7787,10 +7644,6 @@ msgid "Maximum number of Addresses"
 msgstr "ከፍተኛው የአድራሻዎች ብዛት "
 
 #: 
-msgid "Show type of group:"
-msgstr "የቡድን አይነት አሳይ"
-
-#: 
 msgid "Add Students"
 msgstr "ተማሪዎችን ያክሉ "
 
@@ -7837,26 +7690,6 @@ msgstr "የፎቶ መጽሐፍ ፍጠር"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "ለምስሎች ጥቅም ላይ የሚውል ቁመት "
-
-#: 
-msgid "Width to use for images"
-msgstr "ለምስሎች ለመጠቀም ስፋት "
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "ለጥፍር አከሎች የሚጠቀሙበት ስፋት "
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "ለመጀመሪያዎቹ ድንክዬዎች የሚጠቀሙበት የነጥብ መጠን "
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "ለምስሎች የደንበኛ መሸጎጫ ሰከንዶች "
 
 #: 
 msgid "Server cache time for remote images"
@@ -7909,10 +7742,6 @@ msgstr "ክስተት አንቀሳቅስ"
 #: 
 msgid "Resize Event"
 msgstr "የክስተቱን መጠን ቀይር"
-
-#: 
-msgid "Text from"
-msgstr "ጽሑፍ ከ"
 
 #: 
 msgid "Profile"
@@ -8435,10 +8264,6 @@ msgid "Menu Name"
 msgstr "የምርጫ ዝርዝር ስም "
 
 #: 
-msgid "Max 20 char"
-msgstr "ከ 20 በላይ ፊደል  አይቻልም "
-
-#: 
 msgid "Link Address"
 msgstr "አገናኝ አድራሻ "
 
@@ -8586,10 +8411,6 @@ msgid "Integrity Check Details:"
 msgstr "የታማኝነት ማረጋገጫ ዝርዝሮች "
 
 #: 
-msgid "I Understand"
-msgstr "ተረድቻለሁ "
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "የማይደግፉ የተቀማጭ ገንዘብ ዓይነቶች ተገኝተዋል "
 
@@ -8617,10 +8438,6 @@ msgstr "ምትክ ማመንጨት "
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "የርቀት የምትኩ  መጨረሻ ነጥብ። WebDAV ከሆነ፣ ይህ ዩአርኤል መደበቅ አለበት።"
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "የመጀመሪያ ፊደሎችን የምስል ፋይሎችን፣ የርቀት ምስል ፋይሎችን (ግራቫታር) እና በመጠባበቂያ ውስጥ ያሉ ጥፍር አከሎችን ያካትቱ። እነዚህ ፋይሎች በአጠቃላይ ከተመለሱ በኋላ እንደገና ሊባዙ ይችላሉ እና በመጠባበቂያ መዝገብ ውስጥ በጣም ትንሽ እሴት የሚጨምሩት ለትግበራ ጊዜ እና ማከማቻ ትልቅ ወጪ ነው"
 
 #: 
 msgid "Password (if any)"
@@ -8688,7 +8505,8 @@ msgstr "\n"
 "ተጓዳኝ መረጃው ለዚያ ሰው ካልገባ።"
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "ሁሉንም የቡድን አባላት ስልክ ቁጥር ለመቅዳት Ctrl +C ን ይጫኑ "
 
 #: 
@@ -8800,10 +8618,6 @@ msgid "Remove Results from Cart"
 msgstr "ውጤቶችን ከጋሪ አስወግድ "
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "ማስጠንቀቂያ፡ የቅድመ-ማሻሻል ተግባራት ተገኝተዋል "
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "ስኬታማ የሆነ ማሻሻልን የሚከለክሉ አንዳንድ ሁኔታዎች ተለይተዋል። "
@@ -8838,14 +8652,6 @@ msgstr "የውሂብ ጎታ ዳግም አስጀምር"
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "\n"
 "ይህ ስርዓት ውሂብን እንደገና ያስጀምረዋል እና ስርዓቱን እንደ አዲስ ጭነት እንደገና ያስጀምረዋል።"
-
-#: 
-msgid "Clear Filter"
-msgstr "ግልጽ ማጣሪያ"
-
-#: 
-msgid "Add Person"
-msgstr "ሰው ጨምር"
 
 #. Context: locales
 #: 
@@ -8990,10 +8796,6 @@ msgstr "\n"
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "\n"
 "የይለፍ ቃል ዳግም ማስጀመር አይገኝም። እባክዎ የስርዓት አስተዳዳሪዎን ያግኙ"
-
-#: 
-msgid "Authentication Issue"
-msgstr "የማረጋገጫ ጉዳይ"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

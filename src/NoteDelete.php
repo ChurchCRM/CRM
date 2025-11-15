@@ -47,7 +47,7 @@ require_once 'Include/Header.php';
     <?= $note->getText() ?>
   </div>
   <div class="card-footer">
-    <a class="btn btn-default" href="<?php echo $sReroute ?>"><?= gettext('Cancel') ?></a>
+    <a class="btn btn-secondary" href="<?php echo $sReroute ?>"><?= gettext('Cancel') ?></a>
     <a class="btn btn-danger" href="NoteDelete.php?Confirmed=Yes&NoteID=<?php echo $iNoteID ?>"><?= gettext('Yes, delete this record') ?></a> <?= gettext('(this action cannot be undone)') ?>
   </div>
 <?php

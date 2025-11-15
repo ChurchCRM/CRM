@@ -8,15 +8,31 @@ describe("Standard Groups", () => {
         cy.loginStandard("GroupList.php");
         cy.get("#groupName").type(newGroupName);
         cy.get("#addNewGroup").click();
-        cy.get("label > input").type(newGroupName);
-        cy.contains(newGroupName);
+        
+        // Should redirect to GroupEditor page
+        cy.url().should("contain", "GroupEditor.php");
+        cy.url().should("contain", "GroupID=");
+        
+        // Verify we're on the editor page with the new group name
+        // Using a more flexible selector that works with both Name and name attributes
+        cy.get("input[type='text'].form-control").first().should("have.value", newGroupName);
     });
 
-    it("Filter Group ", () => {
+    it("Add Group - Empty Name Validation", () => {
         cy.loginStandard("GroupList.php");
-        cy.contains("Clergy");
-        cy.get("#table-filter").type("Scouts");
-        cy.contains("Clergy").should("not.be.visible");
+        
+        // Try to submit with empty group name
+        cy.get("#addNewGroup").click();
+        
+        // Should show error notification and remain on GroupList page
+        // Notyf creates notification containers with class 'notyf'
+        cy.get(".notyf__toast", { timeout: 3000 })
+            .should("be.visible")
+            .and("contain", "Please enter a group name");
+        cy.url().should("contain", "GroupList.php");
+        
+        // Input field should have focus
+        cy.get("#groupName").should("have.focus");
     });
 
     it("View Group ", () => {

@@ -1,0 +1,96 @@
+/**
+ * Cart Module Styles
+ * Animations and styles for cart interactions
+ */
+
+// Cart icon pulse animation
+@keyframes cart-pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.cart-pulse {
+    animation: cart-pulse 0.6s ease-in-out;
+}
+
+// Cart button states - modern classes
+.AddToCart {
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+
+    i {
+        transition: all 0.3s ease;
+    }
+}
+
+.RemoveFromCart {
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+
+    i {
+        transition: all 0.3s ease;
+    }
+}
+
+// Cart dropdown specific styles
+.navbar .dropdown-menu {
+    z-index: 1050; // Ensure cart dropdown appears above page content
+}
+
+#cart-dropdown-menu {
+    .dropdown-item {
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: #f8f9fa;
+        }
+
+        i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+    }
+
+    > li > ul {
+        max-height: none;
+    }
+}
+
+// Cart badge animation
+.navbar-badge {
+    transition: all 0.3s ease;
+}
+
+// Fix cart badge positioning to not overlap icon
+.navbar-nav .nav-link {
+    position: relative; // Ensure badge positions relative to link
+
+    .fa-shopping-cart + .navbar-badge {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        font-size: 0.6rem;
+        padding: 2px 4px;
+        min-width: 16px;
+        height: 16px;
+        line-height: 12px;
+        border-radius: 8px;
+    }
+}

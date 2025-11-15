@@ -41,11 +41,11 @@ if ($resArr) {
 
 <form method="post" action="PledgeDetails.php?<?= 'PledgeID=' . $iPledgeID . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
 
-<table cellpadding="3" align="center">
+<table cellpadding="3" class="mx-auto">
 
     <tr>
-        <td align="center">
-            <input type="submit" class="btn btn-default" value="<?= gettext('Back') ?>" name="Back">
+        <td class="text-center">
+            <input type="submit" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="Back">
         </td>
     </tr>
 </table>

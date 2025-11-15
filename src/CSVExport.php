@@ -185,11 +185,11 @@ require_once 'Include/Header.php';
             <h3 class="card-title"><?= gettext('Custom Field Selection') ?></h3>
           </div>
           <div class="card-body">
-            <table border="0">
+            <table>
               <?php
                 if ($numCustomFields > 0) {
                     ?>
-                <tr><td width="100%" valign="top" align="left">
+                <tr><td width="100%" class="align-top" align="left">
                     <h3><?= gettext('Custom Person Fields') ?></h3>
                     <table cellpadding="4" align="left">
                       <?php
@@ -207,7 +207,7 @@ require_once 'Include/Header.php';
                 }
                 if ($numFamCustomFields > 0) {
                     ?>
-                <tr><td width="100%" valign="top" align="left">
+                <tr><td width="100%" class="align-top" align="left">
                     <h3><?= gettext('Custom Family Fields') ?></h3>
                     <table cellpadding="4" align="left">
                       <?php
@@ -243,7 +243,7 @@ require_once 'Include/Header.php';
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Records to export') ?>:</h3>
                 <div class="card-tools pull-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
@@ -264,7 +264,7 @@ require_once 'Include/Header.php';
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Classification') ?>:</h3>
                 <div class="card-tools pull-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
@@ -289,7 +289,7 @@ require_once 'Include/Header.php';
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Family Role') ?>:</h3>
                 <div class="card-tools pull-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
@@ -314,7 +314,7 @@ require_once 'Include/Header.php';
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Gender') ?>:</h3>
                 <div class="card-tools pull-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
@@ -334,7 +334,7 @@ require_once 'Include/Header.php';
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Group Membership') ?>:</h3>
                 <div class="card-tools pull-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
@@ -358,7 +358,7 @@ require_once 'Include/Header.php';
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Membership Date') ?>:</h3>
                 <div class="card-tools pull-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
@@ -375,7 +375,7 @@ require_once 'Include/Header.php';
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Birthday Date') ?>:</h3>
                 <div class="card-tools pull-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
@@ -392,7 +392,7 @@ require_once 'Include/Header.php';
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Anniversary Date:') ?></h3>
                 <div class="card-tools pull-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
@@ -409,7 +409,7 @@ require_once 'Include/Header.php';
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Date Entered:') ?></h3>
                 <div class="card-tools pull-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
@@ -439,7 +439,7 @@ require_once 'Include/Header.php';
 
           <label><?= gettext('Skip records with incomplete mail address') ?></label><input type="checkbox" name="SkipIncompleteAddr" value="1">
 
-          <input type="submit" class="btn btn-default" value=<?= '"' . gettext('Create File') . '"' ?> name="Submit"></td>
+          <input type="submit" class="btn btn-secondary" value=<?= '"' . gettext('Create File') . '"' ?> name="Submit"></td>
 
         </div>
       </div>

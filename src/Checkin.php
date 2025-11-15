@@ -18,7 +18,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 $EventID = 0;
 $CheckoutOrDelete = false;
 $event = null;
-$iChildID = 0 ;
+$iChildID = 0;
 $iAdultID = 0;
 
 if (array_key_exists('EventID', $_POST)) {
@@ -46,7 +46,7 @@ if ($EventID > 0) {
         ->findOneById($EventID);
 }
 ?>
-<div id="errorcallout" class="callout callout-danger" hidden></div>
+<div id="errorcallout" class="alert alert-danger" hidden></div>
 
 <!--Select Event Form -->
 <form class="well form-horizontal" name="selectEvent" action="Checkin.php" method="POST">
@@ -66,16 +66,16 @@ if ($EventID > 0) {
                         <label class="col-md-2 control-label"><?= gettext('Select Event'); ?></label>
                         <div class="col-md-10 inputGroupContainer">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-calendar-check fa-2xl"> </i> </span> &nbsp;
+                                <span class="input-group-addon"><i class="fa-solid fa-calendar-check fa-2xl"> </i> </span> &nbsp;
                                 <select id="EventID" name="EventID" class="form-control" onchange="this.form.submit()">
                                     <option value="<?= $EventID; ?>"
-                                            disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?> ><?= gettext('Select event') ?></option>
+                                        disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?>><?= gettext('Select event') ?></option>
                                     <?php foreach ($activeEvents as $event) {
-                                        ?>
+                                    ?>
                                         <option
-                                            value="<?= $event->getId(); ?>" <?= ($EventID == $event->getId()) ? " Selected='selected'" : "" ?> >
+                                            value="<?= $event->getId(); ?>" <?= ($EventID == $event->getId()) ? " Selected='selected'" : "" ?>>
                                             <?= $event->getTitle(); ?></option>
-                                        <?php
+                                    <?php
                                     }
                                     ?>
                                 </select>
@@ -98,10 +98,10 @@ if ($EventID > 0) {
 // If event is known, then show 2 text boxes, person being checked in and the person checking them in.
 // Show a verify button and a button to add new visitor in dbase.
 if (!$CheckoutOrDelete &&  $EventID > 0) {
-    ?>
+?>
 
     <form class="well form-horizontal" method="post" action="Checkin.php" id="AddAttendees" data-toggle="validator"
-          role="form">
+        role="form">
         <input type="hidden" id="EventID" name="EventID" value="<?= $EventID; ?>">
         <input type="hidden" id="child-id" name="child-id">
         <input type="hidden" id="adult-id" name="adult-id">
@@ -118,9 +118,9 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                             <label for="child" class="col-sm-2 control-label"><?= gettext("Person's Name") ?></label>
                             <div class="col-sm-5 inputGroupContainer">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-child fa-2xl"></i></span> &nbsp;
+                                    <span class="input-group-addon"><i class="fa-solid fa-child fa-2xl"></i></span> &nbsp;
                                     <input type="text" class="form-control" id="child"
-                                           placeholder="<?= gettext("Person's Name"); ?>" required tabindex=1>
+                                        placeholder="<?= gettext("Person's Name"); ?>" required tabindex=1>
                                 </div>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
@@ -130,12 +130,12 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                         <hr>
                         <div class="form-group">
                             <label for="adult"
-                                   class="col-sm-2 control-label"><?= gettext('Adult Name (Optional)') ?></label>
+                                class="col-sm-2 control-label"><?= gettext('Adult Name (Optional)') ?></label>
                             <div class="col-sm-5 inputGroupContainer">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa-2xl"></i></span> &nbsp;
+                                    <span class="input-group-addon"><i class="fa-solid fa-user fa-2xl"></i></span> &nbsp;
                                     <input type="text" class="form-control" id="adult"
-                                           placeholder="<?= gettext('Checked in By (Optional)'); ?>" tabindex=2>
+                                        placeholder="<?= gettext('Checked in By (Optional)'); ?>" tabindex=2>
                                 </div>
                             </div>
                             <div id="adultDetails" class="col-sm-5 text-center"></div>
@@ -145,9 +145,9 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
 
                             <div class="card-footer text-center col-md-4  col-xs-8">
                                 <input type="submit" class="btn btn-primary" value="<?= gettext('CheckIn'); ?>"
-                                       name="CheckIn" tabindex=3>
-                                <input type="reset" class="btn btn-default" value="<?= gettext('Cancel'); ?>"
-                                       name="Cancel" tabindex=4 onClick="SetPersonHtml($('#childDetails'),null);SetPersonHtml($('#adultDetails'),null);">
+                                    name="CheckIn" tabindex=3>
+                                <input type="reset" class="btn btn-secondary" value="<?= gettext('Cancel'); ?>"
+                                    name="Cancel" tabindex=4 onClick="SetPersonHtml($('#childDetails'),null);SetPersonHtml($('#adultDetails'),null);">
                             </div>
 
                             <div class="text-right col-md-8 col-xs-4">
@@ -169,11 +169,11 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
     if (isset($_POST['CheckIn']) && !empty($iChildID)) {
         $attendee = EventAttendQuery::create()->filterByEventId($EventID)->findOneByPersonId($iChildID);
         if ($attendee) {
-            ?>
+    ?>
             <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                 $('#errorcallout').text('<?= gettext("Person has been already checked in for this event") ?>').fadeIn();
             </script>
-            <?php
+    <?php
         } else {
             $attendee = new EventAttend();
             $attendee->setEventId($EventID);
@@ -220,7 +220,7 @@ if (
     $formTitle = (isset($_POST['CheckOutBtn']) ? gettext("CheckOut Person") : gettext("Delete Checkin in Entry")); ?>
 
     <form class="well form-horizontal" method="post" action="Checkin.php" id="CheckOut" data-toggle="validator"
-          role="form">
+        role="form">
         <input type="hidden" name="EventID" value="<?= $EventID ?>">
         <input type="hidden" name="child-id" value="<?= $iChildID ?>">
 
@@ -239,37 +239,38 @@ if (
                             </div>
                             <?php
                             if (isset($_POST['CheckOutBtn'])) {
-                                ?>
+                            ?>
                                 <div class="col-sm-4 col-xs-6">
                                     <div class="form-group">
                                         <label><?= gettext('Adult Checking Out Person') ?>:</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <span class="input-group-addon"><i class="fa-solid fa-user"></i></span>
                                             <input type="text" id="adultout" name="adult" class="form-control"
-                                               placeholder="<?= gettext('Adult Name (Optional)') ?>">
-                                            </div>
+                                                placeholder="<?= gettext('Adult Name (Optional)') ?>">
+                                        </div>
                                         <input type="hidden" id="adultout-id" name="adult-id">
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-primary"
-                                               value="<?= gettext('CheckOut') ?>" name="CheckOut">
-                                        <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>"
-                                               name="CheckoutCancel">
+                                            value="<?= gettext('CheckOut') ?>" name="CheckOut">
+                                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Cancel') ?>"
+                                            name="CheckoutCancel">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-4 text-center">
-                                    <div id="adultoutDetails" class="card card-solid box-default hidden"></div>
+                                    <div id="adultoutDetails" class="card card-solid hidden"></div>
                                 </div>
-                                <?php
-                            } else { // DeleteBtn?>
+                            <?php
+                            } else { // DeleteBtn
+                            ?>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-danger"
-                                           value="<?= gettext('Delete') ?>" name="Delete">
-                                    <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>"
-                                           name="DeleteCancel">
+                                        value="<?= gettext('Delete') ?>" name="Delete">
+                                    <input type="submit" class="btn btn-secondary" value="<?= gettext('Cancel') ?>"
+                                        name="DeleteCancel">
                                 </div>
-                                <?php
+                            <?php
                             } ?>
                         </div>
                     </div>
@@ -277,138 +278,154 @@ if (
             </div>
         </div>
     </form>
-    <?php
+<?php
 }
 
 // Populate data table
 if (isset($_POST['EventID'])) {
-    ?>
+?>
     <div class="card card-primary">
         <div class="card-body table-responsive">
             <table id="checkedinTable" class="table data-table table-striped ">
                 <thead>
-                <tr>
-                    <th><?= gettext('Name') ?></th>
-                    <th><?= gettext('Checked In Time') ?></th>
-                    <th><?= gettext('Checked In By') ?></th>
-                    <th><?= gettext('Checked Out Time') ?></th>
-                    <th><?= gettext('Checked Out By') ?></th>
-                    <th nowrap><?= gettext('Action') ?></th>
-                </tr>
+                    <tr>
+                        <th><?= gettext('Name') ?></th>
+                        <th><?= gettext('Checked In Time') ?></th>
+                        <th><?= gettext('Checked In By') ?></th>
+                        <th><?= gettext('Checked Out Time') ?></th>
+                        <th><?= gettext('Checked Out By') ?></th>
+                        <th class="text-nowrap"><?= gettext('Action') ?></th>
+                    </tr>
                 </thead>
                 <tbody>
 
-                <?php
-                // Get Event Attendees details
-                $eventAttendees = EventAttendQuery::create()
-                    ->filterByEventId($EventID)
-                    ->find();
+                    <?php
+                    // Get Event Attendees details
+                    $eventAttendees = EventAttendQuery::create()
+                        ->filterByEventId($EventID)
+                        ->find();
 
-                foreach ($eventAttendees as $per) {
-                    //Get Person who is checked in
-                    $checkedInPerson = PersonQuery::create()
-                        ->findOneById($per->getPersonId());
+                    foreach ($eventAttendees as $per) {
+                        //Get Person who is checked in
+                        $checkedInPerson = PersonQuery::create()
+                            ->findOneById($per->getPersonId());
 
-                    $sPerson = $checkedInPerson->getFullName();
+                        $sPerson = $checkedInPerson->getFullName();
 
-                    //Get Person who checked person in
-                    $sCheckinby = "";
-                    if ($per->getCheckinId()) {
-                        $checkedInBy = PersonQuery::create()
-                            ->findOneById($per->getCheckinId());
-                        $sCheckinby = $checkedInBy->getFullName();
-                    }
+                        //Get Person who checked person in
+                        $sCheckinby = "";
+                        if ($per->getCheckinId()) {
+                            $checkedInBy = PersonQuery::create()
+                                ->findOneById($per->getCheckinId());
+                            $sCheckinby = $checkedInBy->getFullName();
+                        }
 
-                    //Get Person who checked person out
-                    $sCheckoutby = "";
-                    if ($per->getCheckoutId()) {
-                        $checkedOutBy = PersonQuery::create()
-                            ->findOneById($per->getCheckoutId());
-                        $sCheckoutby = $checkedOutBy->getFullName();
+                        //Get Person who checked person out
+                        $sCheckoutby = "";
+                        if ($per->getCheckoutId()) {
+                            $checkedOutBy = PersonQuery::create()
+                                ->findOneById($per->getCheckoutId());
+                            $sCheckoutby = $checkedOutBy->getFullName();
+                        } ?>
+                        <tr>
+                            <td><img data-image-entity-type="person"
+                                    data-image-entity-id="<?= $per->getPersonId() ?>"
+                                    class="photo-tiny">&nbsp
+                                <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a>
+                            </td>
+                            <td><?= date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
+                            <td><?= $sCheckinby ?></td>
+                            <td><?= $per->getCheckoutDate() ? date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat'))  : '' ?></td>
+                            <td><?= $sCheckoutby ?></td>
+
+                            <td class="text-center">
+                                <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
+                                    <input type="hidden" name="child-id" value="<?= $per->getPersonId() ?>">
+                                    <input type="hidden" name="EventID" value="<?= $EventID ?>">
+                                    <?php
+                                    if (!$per->getCheckoutDate()) {
+                                    ?>
+                                        <input class="btn btn-primary btn-sm" type="submit" name="CheckOutBtn"
+                                            value="<?= gettext('CheckOut') ?>">
+                                        <input class="btn btn-danger btn-sm" type="submit" name="DeleteBtn"
+                                            value="<?= gettext('Delete') ?>">
+
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <i class="fa-solid fa-check-circle"></i>
+                                    <?php
+                                    } ?>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php
                     } ?>
-                    <tr>
-                        <td><img src="<?= SystemURLs::getRootPath() . '/api/person/' . $per->getPersonId() . '/thumbnail' ?>"
-                                 class="direct-chat-img initials-image">&nbsp
-                            <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a></td>
-                        <td><?= date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) ?></td>
-                        <td><?= $sCheckinby ?></td>
-                        <td><?= $per->getCheckoutDate() ? date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat'))  : '' ?></td>
-                        <td><?= $sCheckoutby ?></td>
-
-                        <td align="center">
-                            <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
-                                <input type="hidden" name="child-id" value="<?= $per->getPersonId() ?>">
-                                <input type="hidden" name="EventID" value="<?= $EventID ?>">
-                                <?php
-                                if (!$per->getCheckoutDate()) {
-                                    ?>
-                                    <input class="btn btn-primary btn-sm" type="submit" name="CheckOutBtn"
-                                           value="<?= gettext('CheckOut') ?>">
-                                    <input class="btn btn-danger btn-sm" type="submit" name="DeleteBtn"
-                                           value="<?= gettext('Delete') ?>">
-
-                                    <?php
-                                } else {
-                                    ?>
-                                    <i class="fa fa-check-circle"></i>
-                                    <?php
-                                } ?>
-                            </form>
-                        </td>
-                    </tr>
-                                <?php
-                } ?>
                 </tbody>
             </table>
         </div>
     </div>
-    <?php
+<?php
 }
 ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var perArr;
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#checkedinTable').DataTable(window.CRM.plugin.dataTable);
     });
 
     $(document).ready(function() {
-        var $input = $("#child, #adult, #adultout");
-        $input.autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    url: window.CRM.root + '/api/persons/search/'+request.term,
-                    dataType: 'json',
-                    type: 'GET',
-                    success: function (data) {
-                        response($.map(data, function (item) {
+        $("#child, #adult, #adultout").select2({
+            minimumInputLength: 2,
+            language: window.CRM.shortLocale,
+            ajax: {
+                url: function(params) {
+                    return window.CRM.root + '/api/persons/search/' + params.term;
+                },
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        q: params.term,
+                        page: params.page
+                    };
+                },
+                processResults: function(data, page) {
+                    return {
+                        results: data.map(function(item) {
                             return {
-                                label: item.text,
-                                value: item.objid,
-                                obj:item
+                                id: item.objid,
+                                text: item.text,
+                                raw: item
                             };
-                        }));
-                    }
-                })
-            },
-            minLength: 2,
-            select: function(event,ui) {
-                $('[id=' + event.target.id + ']' ).val(ui.item.obj.text);
-                $('[id=' + event.target.id + '-id]').val(ui.item.obj.objid);
-                SetPersonHtml($('#' + event.target.id + 'Details'),ui.item.obj);
-                return false;
+                        })
+                    };
+                },
+                cache: true
             }
+        });
+
+        $("#child, #adult, #adultout").on("select2:select", function(e) {
+            var elementId = e.target.id;
+            var selectedData = e.params.data;
+
+            // Set the hidden ID field
+            $('#' + elementId + '-id').val(selectedData.id);
+
+            // Update the person details display
+            SetPersonHtml($('#' + elementId + 'Details'), selectedData.raw);
         });
 
     });
 
     function SetPersonHtml(element, perArr) {
-        if(perArr) {
+        if (perArr) {
+            var photoUrl = window.CRM.root + '/api/person/' + perArr.objid + '/photo';
             element.html(
                 '<div class="text-center">' +
                 '<a target="_top" href="PersonView.php?PersonID=' + perArr.objid + '"><h4>' + perArr.text + '</h4></a>' +
-                '<img src="' + window.CRM.root + '/api/person/' + perArr.objid + '/thumbnail"' +
-                'class="initials-image profile-user-img img-responsive img-circle"> </div>'
+                '<img src="' + photoUrl + '" class="photo-medium"> </div>'
             );
             element.removeClass('hidden');
         } else {
@@ -442,7 +459,7 @@ function loadPerson($iPersonID)
         '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle() . ' ' . $person->getFullName() . '</h4></a>' .
         '<div class="">' . $familyRole . '</div>' .
         '<div class="text-center">' . $person->getAddress() . '</div>' .
-        '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/thumbnail" class="initials-image profile-user-img img-responsive img-circle"> </div>';
+        '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/photo" class="photo-medium"> </div>';
     echo $html;
 }
 ?>

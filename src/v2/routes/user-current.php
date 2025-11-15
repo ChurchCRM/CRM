@@ -4,16 +4,19 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpForbiddenException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 $app->group('/user/current', function (RouteCollectorProxy $group): void {
     $group->get('/enroll2fa', 'enroll2fa');
     $group->get('/changepassword', 'changepassword');
-    $group->post('/changepassword', 'changepassword');
+    $group->post('/changepassword', 'changepassword')->add(new CSRFMiddleware('user_change_password'));
 });
 
 function enroll2fa(Request $request, Response $response, array $args): Response

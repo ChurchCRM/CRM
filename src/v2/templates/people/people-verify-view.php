@@ -11,8 +11,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><?= gettext('Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app"><i class="fa fa-file-pdf"></i><?= gettext('Download family letters') ?></a>
-        <div class="btn btn-app" id="verifyEmail"><i class="fa  fa-envelope"></i><?= gettext('Send family email') ?></div>
+        <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app bg-danger">
+            <i class="fa-solid fa-file-pdf fa-3x"></i><br>
+            <?= gettext('Download family letters') ?>
+        </a>
+        <button type="button" class="btn btn-app bg-primary" id="verifyEmail">
+            <i class="fa-solid fa-envelope fa-3x"></i><br>
+            <?= gettext('Send family email') ?>
+        </button>
     </div>
 </div>
 
@@ -23,9 +29,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><?= _("Self Verify") ?></h3>
             </div>
             <div class="card-body">
-                <table id="families-complete" class="table table-striped table-bordered table-responsive data-table">
+                <div class="table-responsive">
+                <table id="families-complete" class="table table-striped table-bordered data-table">
                     <tbody></tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
@@ -38,16 +46,18 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><?= _("Pending Self Verify") ?></h3>
             </div>
             <div class="card-body">
-                <table id="families-pending" class="table table-striped table-bordered table-responsive data-table">
+                <div class="table-responsive">
+                <table id="families-pending" class="table table-striped table-bordered data-table">
                     <tbody></tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
+    function initializePeopleVerify() {
 
         $("#verifyEmail").click(function() {
             bootbox.confirm({
@@ -74,8 +84,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/families/self-verify",
                 dataSrc: 'families'
             },
+            responsive: false,
+            autoWidth: false,
             columns: [
                 {
+                    width: '15%',
                     title: i18next.t('Family Id'),
                     data: 'Family.Id',
                     searchable: false,
@@ -84,16 +97,19 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     }
                 },
                 {
+                    width: '30%',
                     title: i18next.t('Family'),
                     data: 'Family.FamilyString',
                     searchable: true
                 },
                 {
+                    width: '35%',
                     title: i18next.t('Comments'),
                     data: 'Text',
                     searchable: true
                 },
                 {
+                    width: '20%',
                     title: i18next.t('Date'),
                     data: 'DateEntered',
                     searchable: false,
@@ -112,8 +128,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/families/pending-self-verify",
                 dataSrc: 'families'
             },
+            responsive: false,
+            autoWidth: false,
             columns: [
                 {
+                    width: '20%',
                     title: i18next.t('Family Id'),
                     data: 'FamilyId',
                     searchable: false,
@@ -122,11 +141,13 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     }
                 },
                 {
+                    width: '50%',
                     title: i18next.t('Family'),
                     data: 'FamilyName',
                     searchable: true
                 },
                 {
+                    width: '30%',
                     title: i18next.t('Valid Until'),
                     data: 'ValidUntilDate',
                     searchable: false,
@@ -135,12 +156,17 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     }
                 }
             ],
-            order: [[2, "desc"]]
+            order: [[0, "asc"]]
         }
 
           $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
         $("#families-pending").DataTable(dataTableConfig);
+    }
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializePeopleVerify);
     });
 </script>
 <?php

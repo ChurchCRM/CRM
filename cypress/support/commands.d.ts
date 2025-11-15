@@ -122,5 +122,13 @@ declare namespace Cypress {
      * @param peopleData - Object containing person data with birth date info
      */
     createPeopleViaCSV(peopleData: Record<string, any>): void;
+
+    /**
+     * Wait for a Notyf notification with specific text
+     * Ensures locales are loaded first (for i18next translations) and verifies notification content
+     * @param expectedText - The text to find in the notification
+     * @param options - Optional config { timeout: 5000 }
+     */
+    waitForNotification(expectedText: string, options?: { timeout?: number }): Chainable<void>;
   }
 }

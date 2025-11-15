@@ -1,4 +1,9 @@
-$(document).ready(function () {
+/**
+ * Main Dashboard initialization script
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
+
+function initializeMainDashboard() {
     let dataTableDashboardDefaults = {
         paging: false,
         ordering: false,
@@ -8,22 +13,34 @@ $(document).ready(function () {
 
     let dataTableFamilyColumns = [
         {
-            width: "15px",
+            width: "100px",
             sortable: false,
-            title: i18next.t("Edit"),
-            data: "Id",
+            title: i18next.t("Action"),
+            data: "FamilyId",
             render: function (data, type, row) {
                 return (
+                    '<div class="btn-group btn-group-sm" role="group">' +
                     '<a href="' +
                     window.CRM.root +
                     "/FamilyEditor.php?FamilyID=" +
                     row.FamilyId +
-                    '"><button class="btn btn-default"><i class="fas fa-pen"></i></button></a>'
+                    '" class="btn-link"><button class="btn btn-sm btn-default" title="' +
+                    i18next.t("Edit") +
+                    '"><i class="fa-solid fa-pen"></i></button></a>' +
+                    '<div class="AddToCart" data-cart-id="' +
+                    row.FamilyId +
+                    '" data-cart-type="family">' +
+                    '<button class="btn btn-sm btn-primary" title="' +
+                    i18next.t("Add to Cart") +
+                    '"><i class="fa-solid fa-cart-plus"></i></button>' +
+                    "</div>" +
+                    "</div>"
                 );
             },
             searchable: false,
         },
         {
+            width: "30%",
             title: i18next.t("Name"),
             data: "Name",
             render: function (data, type, row) {
@@ -39,6 +56,7 @@ $(document).ready(function () {
             },
         },
         {
+            width: "35%",
             title: i18next.t("Address"),
             data: "Address",
         },
@@ -56,7 +74,12 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#latestFamiliesDashboardItem").DataTable(dataTableConfig);
+    let latestFamiliesTable = $("#latestFamiliesDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    latestFamiliesTable.on("draw", function () {
+        syncCartButtons();
+    });
 
     dataTableConfig = {
         ajax: {
@@ -70,7 +93,12 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#updatedFamiliesDashboardItem").DataTable(dataTableConfig);
+    let updatedFamiliesTable = $("#updatedFamiliesDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    updatedFamiliesTable.on("draw", function () {
+        syncCartButtons();
+    });
 
     dataTableConfig = {
         ajax: {
@@ -79,6 +107,7 @@ $(document).ready(function () {
         },
         columns: [
             {
+                width: "40%",
                 title: i18next.t("Name"),
                 data: "FirstName",
                 render: function (data, type, row) {
@@ -94,6 +123,7 @@ $(document).ready(function () {
                 },
             },
             {
+                width: "40%",
                 title: i18next.t("Email"),
                 data: "Email",
                 render: function (data, type, row) {
@@ -101,6 +131,7 @@ $(document).ready(function () {
                 },
             },
             {
+                width: "20%",
                 title: i18next.t("Birthday"),
                 data: "Birthday",
             },
@@ -108,7 +139,12 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#PersonBirthdayDashboardItem").DataTable(dataTableConfig);
+    let birthdayPersonTable = $("#PersonBirthdayDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    birthdayPersonTable.on("draw", function () {
+        syncCartButtons();
+    });
 
     dataTableConfig = {
         ajax: {
@@ -117,6 +153,7 @@ $(document).ready(function () {
         },
         columns: [
             {
+                width: "60%",
                 title: i18next.t("Name"),
                 data: "Name",
                 render: function (data, type, row) {
@@ -132,6 +169,7 @@ $(document).ready(function () {
                 },
             },
             {
+                width: "40%",
                 title: i18next.t("Anniversary"),
                 data: "WeddingDate",
             },
@@ -143,35 +181,28 @@ $(document).ready(function () {
 
     let dataTablePersonColumns = [
         {
-            width: "15px",
-            sortable: false,
-            title: i18next.t("Action"),
-            data: "Id",
+            width: "22%",
+            title: i18next.t("First Name"),
+            data: "FirstName",
             render: function (data, type, row) {
                 return (
                     '<a href="' +
                     window.CRM.root +
                     "/PersonView.php?PersonID=" +
                     row.PersonId +
-                    '"><button class="btn btn-default"><i class="fa fa-search-plus"></i></button></a> ' +
-                    '<a href="' +
-                    window.CRM.root +
-                    "/PersonView.php?PersonID=" +
-                    row.PersonId +
-                    '"><button class="btn btn-default"><i class="fas fa-pen"></i></button></a>'
+                    '">' +
+                    row.FirstName +
+                    "</a>"
                 );
             },
-            searchable: false,
         },
         {
-            title: i18next.t("First Name"),
-            data: "FirstName",
-        },
-        {
+            width: "22%",
             title: i18next.t("Last Name"),
             data: "LastName",
         },
         {
+            width: "20%",
             title: i18next.t("Email"),
             data: "Email",
             render: function (data, type, row) {
@@ -192,7 +223,12 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#updatedPersonDashboardItem").DataTable(dataTableConfig);
+    let updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    updatedPersonTable.on("draw", function () {
+        syncCartButtons();
+    });
 
     dataTableConfig = {
         ajax: {
@@ -206,7 +242,41 @@ $(document).ready(function () {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#latestPersonDashboardItem").DataTable(dataTableConfig);
+    let latestPersonTable = $("#latestPersonDashboardItem").DataTable(
+        dataTableConfig,
+    );
+    latestPersonTable.on("draw", function () {
+        syncCartButtons();
+    });
+    function syncCartButtons() {
+        if (window.CRM && window.CRM.cartManager) {
+            Promise.all([
+                window.CRM.APIRequest({
+                    method: "GET",
+                    path: "cart/",
+                    suppressErrorDialog: true,
+                }),
+                window.CRM.APIRequest({
+                    method: "GET",
+                    path: "families/familiesInCart",
+                    suppressErrorDialog: true,
+                }),
+            ]).then(function (responses) {
+                let cartData = responses[0];
+                let familiesData = responses[1];
+
+                let peopleInCart = cartData.PeopleCart || [];
+                let familiesInCart = familiesData.familiesInCart || [];
+                let groupsInCart = cartData.GroupCart || [];
+
+                window.CRM.cartManager.syncButtonStates(
+                    peopleInCart,
+                    familiesInCart,
+                    groupsInCart,
+                );
+            });
+        }
+    }
 
     function buildRenderEmail(email) {
         if (email) {
@@ -245,4 +315,11 @@ $(document).ready(function () {
             });
         });
     }
+
+    // CartManager handles all cart button clicks generically via data-cart-id and data-cart-type attributes
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeMainDashboard);
 });

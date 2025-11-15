@@ -1,139 +1,25 @@
-@use "sass:map";
-// from: https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
-// Margin and Padding
-$grid-breakpoints: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px,
-) !default;
+/**
+ * ChurchCRM Custom Spacing & Flex Utilities
+ * 
+ * BOOTSTRAP SPACING UTILITIES REMOVED:
+ * Bootstrap (via AdminLTE) provides all standard spacing utilities:
+ * - .m-*, .mt-*, .mr-*, .mb-*, .ml-*, .mx-*, .my-* (margin)
+ * - .p-*, .pt-*, .pr-*, .pb-*, .pl-*, .px-*, .py-* (padding)
+ * - .m-auto, .mt-auto, .mr-auto, .mb-auto, .ml-auto, .mx-auto, .my-auto
+ * - All with responsive breakpoints: -sm, -md, -lg, -xl suffixes
+ * 
+ * Use Bootstrap spacing classes directly instead of duplicating here.
+ * See: https://getbootstrap.com/docs/4.6/utilities/spacing/
+ */
 
-$spacer: 1rem !default;
-$spacers: (
-    0: 0,
-    1: (
-        $spacer * 0.25,
-    ),
-    2: (
-        $spacer * 0.5,
-    ),
-    3: $spacer,
-    4: (
-        $spacer * 1.5,
-    ),
-    5: (
-        $spacer * 3,
-    ),
-) !default;
+/* ============================================
+   CUSTOM FLEX UTILITIES (NOT in Bootstrap)
+   ============================================ */
 
-// from: https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_breakpoints.scss
-// Minimum breakpoint width. Null for the smallest (first) breakpoint.
-//
-//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    576px
-@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
-    $min: map.get($breakpoints, $name);
-    @return if($min !=0, $min, null);
-}
-
-// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
-// Useful for making responsive utilities.
-//
-//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    ""  (Returns a blank string)
-//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    "-sm"
-@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
-    @return if(breakpoint-min($name, $breakpoints) ==null, "", "-#{$name}");
-}
-
-// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
-// Makes the @content apply to the given breakpoint and wider.
-@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
-    $min: breakpoint-min($name, $breakpoints);
-
-    @if $min {
-        @media (min-width: $min) {
-            @content;
-        }
-    } @else {
-        @content;
-    }
-}
-
-// from: https://github.com/twbs/bootstrap/blob/v4-dev/scss/utilities/_spacing.scss
-@each $breakpoint in map.keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-        @each $prop, $abbrev in (margin: m, padding: p) {
-            @each $size, $length in $spacers {
-                .#{$abbrev}#{$infix}-#{$size} {
-                    #{$prop}: $length !important;
-                }
-
-                .#{$abbrev}t#{$infix}-#{$size} {
-                    #{$prop}-top: $length !important;
-                }
-
-                .#{$abbrev}r#{$infix}-#{$size} {
-                    #{$prop}-right: $length !important;
-                }
-
-                .#{$abbrev}b#{$infix}-#{$size} {
-                    #{$prop}-bottom: $length !important;
-                }
-
-                .#{$abbrev}l#{$infix}-#{$size} {
-                    #{$prop}-left: $length !important;
-                }
-
-                .#{$abbrev}x#{$infix}-#{$size} {
-                    #{$prop}-right: $length !important;
-                    #{$prop}-left: $length !important;
-                }
-
-                .#{$abbrev}y#{$infix}-#{$size} {
-                    #{$prop}-top: $length !important;
-                    #{$prop}-bottom: $length !important;
-                }
-            }
-        }
-
-        // Some special margin utils
-        .m#{$infix}-auto {
-            margin: auto !important;
-        }
-
-        .mt#{$infix}-auto {
-            margin-top: auto !important;
-        }
-
-        .mr#{$infix}-auto {
-            margin-right: auto !important;
-        }
-
-        .mb#{$infix}-auto {
-            margin-bottom: auto !important;
-        }
-
-        .ml#{$infix}-auto {
-            margin-left: auto !important;
-        }
-
-        .mx#{$infix}-auto {
-            margin-right: auto !important;
-            margin-left: auto !important;
-        }
-
-        .my#{$infix}-auto {
-            margin-top: auto !important;
-            margin-bottom: auto !important;
-        }
-    }
-}
-
+/**
+ * Flex row utilities for equal-height columns
+ * Creates flex container with auto-sizing child columns
+ */
 .row-flex,
 .row-flex > div[class*="col-"] {
     display: -webkit-box;
@@ -144,8 +30,13 @@ $spacers: (
     flex: 1 1 auto;
 }
 
+/**
+ * Flex row wrapper for wrapping content
+ * Allows flex items to wrap and align content to start
+ */
 .row-flex-wrap {
     -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
     align-content: flex-start;
     flex: 0;
 }

@@ -1,0 +1,13 @@
+// Groups feature styles
+// Includes: GroupList, GroupEditor, GroupView, etc.
+
+#groupsTable {
+    td {
+        white-space: nowrap;
+
+        // Allow first column (Group Name) to wrap if needed for long names
+        &:first-child {
+            white-space: normal;
+        }
+    }
+}

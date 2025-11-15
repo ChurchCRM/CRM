@@ -1,6 +1,11 @@
+/**
+ * Find Deposit Slip
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
+
 var dataT = 0;
 
-document.addEventListener("DOMContentLoaded", function () {
+function initializeDepositSlip() {
     function updateSelectedCount() {
         var selectedRows = dataT.rows(".selected").data().length;
         $("#deleteSelectedRows").prop("disabled", !selectedRows);
@@ -9,19 +14,19 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         $("#exportSelectedRows").prop("disabled", !selectedRows);
         $("#exportSelectedRows").html(
-            '<i class="fa fa-download"></i> Export (' +
+            '<i class="fa-solid fa-download"></i> Export (' +
                 selectedRows +
                 ") Selected Rows (OFX)",
         );
         $("#exportSelectedRowsCSV").prop("disabled", !selectedRows);
         $("#exportSelectedRowsCSV").html(
-            '<i class="fa fa-download"></i> Export (' +
+            '<i class="fa-solid fa-download"></i> Export (' +
                 selectedRows +
                 ") Selected Rows (CSV)",
         );
         $("#generateDepositSlip").prop("disabled", !selectedRows);
         $("#generateDepositSlip").html(
-            '<i class="fa fa-download"></i> Generate Deposit Split for Selected (' +
+            '<i class="fa-solid fa-download"></i> Generate Deposit Split for Selected (' +
                 selectedRows +
                 ") Rows (PDF)",
         );
@@ -141,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         return (
                             "<a href='DepositSlipEditor.php?DepositSlipID=" +
                             full.Id +
-                            '\'><i class="fa fa-search-plus"></i></a>' +
+                            '\'><i class="fa-solid fa-search-plus"></i></a>' +
                             full.Id
                         );
                     } else {
@@ -205,4 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         });
     });
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeDepositSlip);
 });

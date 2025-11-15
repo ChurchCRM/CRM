@@ -8,7 +8,6 @@ use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\MiscUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpForbiddenException;
@@ -16,19 +15,13 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
 
-$app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
-
 // This group does not load the person via middleware (to speed up the page loads)
+// Single photo endpoint - returns Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG image, client handles display sizing via CSS
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
-    $group->get('/thumbnail', function (Request $request, Response $response, array $args): Response {
-        $photo = new Photo('Person', $args['personId']);
-        return SlimUtils::renderPhoto($response, $photo);
-    });
-
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
         $photo = new Photo('Person', $args['personId']);
         return SlimUtils::renderPhoto($response, $photo);
-    });
+    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
 });
 
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
@@ -58,8 +51,16 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/photo', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $input = $request->getParsedBody();
-        $person->setImageFromBase64($input['imgBase64']);
-        return SlimUtils::renderSuccessJSON($response);
+        
+        try {
+            $person->setImageFromBase64($input['imgBase64']);
+            return SlimUtils::renderSuccessJSON($response);
+        } catch (\Exception $e) {
+            return SlimUtils::renderJSON($response, [
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 400);
+        }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {

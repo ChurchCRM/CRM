@@ -556,10 +556,6 @@ msgid "December"
 msgstr "12月"
 
 #: 
-msgid "Add Family"
-msgstr "家族を追加"
-
-#: 
 msgid "Add New Member"
 msgstr "新しいメンバーを追加"
 
@@ -570,10 +566,6 @@ msgstr "前の家族"
 #: 
 msgid "Next Family"
 msgstr "次の家族"
-
-#: 
-msgid "Delete this Family"
-msgstr "この家族を削除"
 
 #: 
 msgid "Upload Photo"

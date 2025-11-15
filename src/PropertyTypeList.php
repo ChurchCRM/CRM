@@ -30,7 +30,7 @@ echo "<table class='table table-hover'>";
 echo '<tr>';
 echo '<th>' . gettext('Name') . '</th>';
 echo '<th>' . gettext('Class') . '</th>';
-echo '<th align="center">' . gettext('Properties') . '</th>';
+echo '<th class="text-center">' . gettext('Properties') . '</th>';
 if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
     echo '<th>' . gettext('Edit') . '</th>';
     echo '<th>' . gettext('Delete') . '</th>';
@@ -60,7 +60,7 @@ while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
             echo gettext('Group');
             break;
     }
-    echo '<td align="center">' . $Properties . '</td>';
+    echo '<td class="text-center">' . $Properties . '</td>';
     if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
         echo "<td><a class='btn btn-info' href=\"PropertyTypeEditor.php?PropertyTypeID=" . $prt_ID . '">' . gettext('Edit') . '</a></td>';
         if ($Properties == 0) {

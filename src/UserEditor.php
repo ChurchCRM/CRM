@@ -122,16 +122,35 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                 if ($undupCount == 0) {
                     $rawPassword = User::randomPassword();
                     $sPasswordHashSha256 = hash('sha256', $rawPassword . $iPersonID);
-                    $sSQL = 'INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf) VALUES (' . $iPersonID . ",'" . $sPasswordHashSha256 . "',1,'" . date('Y-m-d H:i:s') . "', " . $AddRecords . ', ' . $EditRecords . ', ' . $DeleteRecords . ', ' . $MenuOptions . ', ' . $ManageGroups . ', ' . $Finance . ', ' . $Notes . ', ' . $Admin . ", '" . $Style . "', 10," . $defaultFY . ',"' . $sUserName . '",' . $EditSelf . ')';
-                    // Execute the SQL
-                    RunQuery($sSQL);
-                    $newUser = UserQuery::create()->findPk($iPersonID);
+
+                    // Use ORM to create new user
+                    $newUser = new User();
+                    $newUser->setPersonId((int)$iPersonID)
+                        ->setPassword($sPasswordHashSha256)
+                        ->setNeedPasswordChange(true)
+                        ->setLastLogin(date('Y-m-d H:i:s'))
+                        ->setAddRecords($AddRecords)
+                        ->setEditRecords($EditRecords)
+                        ->setDeleteRecords($DeleteRecords)
+                        ->setMenuOptions($MenuOptions)
+                        ->setManageGroups($ManageGroups)
+                        ->setFinance($Finance)
+                        ->setNotes($Notes)
+                        ->setAdmin($Admin)
+                        ->setUserStyle($Style)
+                        ->setDefaultFY($defaultFY)
+                        ->setUserName($sUserName)
+                        ->setEditSelf($EditSelf);
+                    $newUser->save();
+
                     $newUser->createTimeLineNote("created");
                     $email = new NewAccountEmail($newUser, $rawPassword);
                     $email->send();
+
+                    RedirectUtils::redirect('UserList.php');
                 } else {
                     // Set the error text for duplicate when new user
-                    RedirectUtils::redirect('UserEditor.php?NewPersonID=' . $PersonID . '&ErrorText=Login already in use, please select a different login!');
+                    RedirectUtils::redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             } else {
                 if ($undupCount == 0) {
@@ -165,14 +184,24 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_per_ID = $iPersonID;
 
         if (!$bNewUser) {
-            // Get the data on this user
-            $sSQL = 'SELECT * FROM user_usr INNER JOIN person_per ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID = ' . $iPersonID;
-            $rsUser = RunQuery($sSQL);
-            $aUser = mysqli_fetch_array($rsUser);
-            extract($aUser);
-            $sUser = $per_LastName . ', ' . $per_FirstName;
-            $sUserName = $usr_UserName;
-            $sAction = 'edit';
+            // Get the data on this user using ORM
+            $user = UserQuery::create()->findPk($iPersonID);
+            if ($user !== null) {
+                $person = $user->getPerson();
+                $sUser = $person->getLastName() . ', ' . $person->getFirstName();
+                $sUserName = $user->getUserName();
+                $usr_AddRecords = $user->getAddRecords();
+                $usr_EditRecords = $user->getEditRecords();
+                $usr_DeleteRecords = $user->getDeleteRecords();
+                $usr_MenuOptions = $user->getMenuOptions();
+                $usr_ManageGroups = $user->getManageGroups();
+                $usr_Finance = $user->getFinance();
+                $usr_Notes = $user->getNotes();
+                $usr_Admin = $user->getAdmin();
+                $usr_EditSelf = $user->getEditSelf();
+                $usr_Style = $user->getUserStyle();
+                $sAction = 'edit';
+            }
         } else {
             $dbPerson = PersonQuery::create()->findPk($iPersonID);
             $sUser = $dbPerson->getFullName();
@@ -278,8 +307,16 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
             $rsDefault = RunQuery($sSQL);
             $aDefaultRow = mysqli_fetch_row($rsDefault);
             if ($aDefaultRow) {
-                list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type,
-                    $ucfg_tooltip, $ucfg_permission, $ucfg_cat) = $aDefaultRow;
+                list(
+                    $ucfg_per_id,
+                    $ucfg_id,
+                    $ucfg_name,
+                    $ucfg_value,
+                    $ucfg_type,
+                    $ucfg_tooltip,
+                    $ucfg_permission,
+                    $ucfg_cat
+                ) = $aDefaultRow;
 
                 $userConfig = new UserConfig();
                 $userConfig
@@ -316,7 +353,7 @@ require_once 'Include/Header.php';
 <!-- Default box -->
 <div class="card">
     <div class="card-body">
-        <div class="callout callout-info">
+        <div class="alert alert-info">
             <?= gettext('Note: Changes will not take effect until next logon.') ?>
         </div>
         <form method="post" action="UserEditor.php">
@@ -329,7 +366,7 @@ require_once 'Include/Header.php';
                     // Are we adding?
                     if ($bShowPersonSelect) {
                         //Yes, so display the people drop-down
-                        ?>
+                    ?>
                         <tr>
                             <td><?= gettext('Person to Make User') ?>:</td>
                             <td>
@@ -338,108 +375,109 @@ require_once 'Include/Header.php';
                                     // Loop through all the people
                                     while ($aRow = mysqli_fetch_array($rsPeople)) {
                                         extract($aRow); ?>
-                                        <option value="<?= $per_ID ?>"<?php if ($per_ID == $iPersonID) {
-                                            echo ' selected';
-                                                       } ?>><?= $per_LastName . ', ' . $per_FirstName ?></option>
-                                        <?php
+                                        <option value="<?= $per_ID ?>" <?php if ($per_ID == $iPersonID) {
+                                                                            echo ' selected';
+                                                                        } ?>><?= $per_LastName . ', ' . $per_FirstName ?></option>
+                                    <?php
                                     } ?>
                                 </select>
                             </td>
                         </tr>
 
-                        <?php
-                    } else { // No, just display the user name?>
+                    <?php
+                    } else { // No, just display the user name
+                    ?>
                         <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
                         <tr>
                             <td><?= gettext('User') ?>:</td>
                             <td><?= $sUser ?></td>
                         </tr>
-                        <?php
+                    <?php
                     } ?>
 
                     <?php if (isset($sErrorText) !== '') {
-                        ?>
+                    ?>
                         <tr>
-                            <td align="center" colspan="2">
-                                <span style="color:red;" id="PasswordError"><?= $sErrorText ?></span>
+                            <td class="text-center" colspan="2">
+                                <span class="text-danger" id="PasswordError"><?= $sErrorText ?></span>
                             </td>
                         </tr>
-                        <?php
+                    <?php
                     } ?>
                     <tr>
                         <td><?= gettext('Login Name') ?>:</td>
-                        <td><input type="text" name="UserName" value="<?= $sUserName ?>" class="form-control" width="32"></td>
+                        <td><input type="text" name="UserName" id="UserName" value="<?= $sUserName ?>" class="form-control" width="32"></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Admin') ?>:</td>
-                        <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) {
-                            echo ' checked';
-                                                                         } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
+                        <td><input type="checkbox" name="Admin" id="Admin" value="1" <?php if ($usr_Admin) {
+                                                                                            echo ' checked';
+                                                                                        } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Add Records') ?>:</td>
-                        <td><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) {
-                            echo ' checked';
-                                                                              } ?>></td>
+                        <td><input type="checkbox" name="AddRecords" id="AddRecords" value="1" <?php if ($usr_AddRecords) {
+                                                                                                    echo ' checked';
+                                                                                                } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Records') ?>:</td>
-                        <td><input type="checkbox" name="EditRecords" value="1"<?php if ($usr_EditRecords) {
-                            echo ' checked';
-                                                                               } ?>></td>
+                        <td><input type="checkbox" name="EditRecords" id="EditRecords" value="1" <?php if ($usr_EditRecords) {
+                                                                                                        echo ' checked';
+                                                                                                    } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Delete Records') ?>:</td>
-                        <td><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) {
-                            echo ' checked';
-                                                                                 } ?>></td>
+                        <td><input type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1" <?php if ($usr_DeleteRecords) {
+                                                                                                            echo ' checked';
+                                                                                                        } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Properties and Classifications') ?>:</td>
-                        <td><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) {
-                            echo ' checked';
-                                                                               } ?>></td>
+                        <td><input type="checkbox" name="MenuOptions" id="MenuOptions" value="1" <?php if ($usr_MenuOptions) {
+                                                                                                        echo ' checked';
+                                                                                                    } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Groups and Roles') ?>:</td>
-                        <td><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) {
-                            echo ' checked';
-                                                                                } ?>></td>
+                        <td><input type="checkbox" name="ManageGroups" id="ManageGroups" value="1" <?php if ($usr_ManageGroups) {
+                                                                                                        echo ' checked';
+                                                                                                    } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Donations and Finance') ?>:</td>
-                        <td><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) {
-                            echo ' checked';
-                                                                           } ?>></td>
+                        <td><input type="checkbox" name="Finance" id="Finance" value="1" <?php if ($usr_Finance) {
+                                                                                                echo ' checked';
+                                                                                            } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('View, Add and Edit Notes') ?>:</td>
-                        <td><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) {
-                            echo ' checked';
-                                                                         } ?>></td>
+                        <td><input type="checkbox" name="Notes" id="Notes" value="1" <?php if ($usr_Notes) {
+                                                                                            echo ' checked';
+                                                                                        } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Self') ?>:</td>
-                        <td><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) {
-                            echo ' checked';
-                                                                            } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
+                        <td><input type="checkbox" name="EditSelf" id="EditSelf" value="1" <?php if ($usr_EditSelf) {
+                                                                                                echo ' checked';
+                                                                                            } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Style') ?>:</td>
                         <td class="TextColumnWithBottomBorder"><select
-                                name="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
+                                name="Style" id="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
-                            <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="save">&nbsp;<input
-                                type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>"
+                        <td colspan="2" class="text-center">
+                            <input type="submit" class="btn btn-primary" id="SaveButton" value="<?= gettext('Save') ?>" name="save">&nbsp;<input
+                                type="button" class="btn btn-secondary" id="CancelButton" name="Cancel" value="<?= gettext('Cancel') ?>"
                                 onclick="javascript:document.location='UserList.php';">
                         </td>
                     </tr>
@@ -453,13 +491,15 @@ require_once 'Include/Header.php';
 <div class="card">
     <div class="card-body box-danger">
         <div
-            class="callout callout-info"><?= gettext('Set Permission True to give this user the ability to change their current value.') ?></div>
+            class="alert alert-info"><?= gettext('Set Permission True to give this user the ability to change their current value.') ?></div>
         <div class="table-responsive">
             <table class="table">
                 <tr>
-                    <th><?= gettext('Permission') ?></h3></th>
+                    <th><?= gettext('Permission') ?></h3>
+                    </th>
                     <th><?= gettext('Variable name') ?></th>
-                    <th><?= gettext('Current Value') ?></h3></th>
+                    <th><?= gettext('Current Value') ?></h3>
+                    </th>
                     <th><?= gettext('Notes') ?></th>
                 </tr>
                 <?php
@@ -472,16 +512,30 @@ require_once 'Include/Header.php';
                 $r = 1;
                 // List Default Settings
                 while ($aDefaultRow = mysqli_fetch_row($rsDefault)) {
-                    list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type,
-                        $ucfg_tooltip, $ucfg_permission) = $aDefaultRow;
+                    list(
+                        $ucfg_per_id,
+                        $ucfg_id,
+                        $ucfg_name,
+                        $ucfg_value,
+                        $ucfg_type,
+                        $ucfg_tooltip,
+                        $ucfg_permission
+                    ) = $aDefaultRow;
 
                     // Overwrite with user settings if they already exist
                     $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='$usr_per_ID' "
                         . "AND ucfg_id='$ucfg_id' ";
                     $rsUser = RunQuery($sSQL);
                     while ($aUserRow = mysqli_fetch_row($rsUser)) {
-                        list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type,
-                            $ucfg_tooltip, $ucfg_permission) = $aUserRow;
+                        list(
+                            $ucfg_per_id,
+                            $ucfg_id,
+                            $ucfg_name,
+                            $ucfg_value,
+                            $ucfg_type,
+                            $ucfg_tooltip,
+                            $ucfg_permission
+                        ) = $aUserRow;
                     }
 
                     // Default Permissions
@@ -540,8 +594,8 @@ require_once 'Include/Header.php';
                 <tr>
                     <td colspan="3" class="text-center">
                         <input type="submit" class="btn btn-primary" name="save"
-                               value="<?= gettext('Save Settings') ?>">
-                        <input type="submit" class="btn btn-default" name="cancel" value="<?= gettext('Cancel') ?>">
+                            value="<?= gettext('Save Settings') ?>">
+                        <input type="submit" class="btn btn-secondary" name="cancel" value="<?= gettext('Cancel') ?>">
                     </td>
                 </tr>
             </table>
@@ -552,8 +606,8 @@ require_once 'Include/Header.php';
 </div>
 <!-- /.box -->
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-    $(document).ready(function () {
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    $(document).ready(function() {
         $("#personSelect").select2();
     });
 </script>

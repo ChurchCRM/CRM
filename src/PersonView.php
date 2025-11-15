@@ -4,6 +4,7 @@ require_once 'Include/Config.php';
 require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -26,7 +27,13 @@ if (empty($person)) {
 
 $sPageTitle = gettext('Person Profile');
 require_once 'Include/Header.php';
+?>
 
+<!-- Load Uppy Photo Uploader CSS & JS -->
+<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.css">
+<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
+
+<?php
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
     $iRemoveVO = InputUtils::legacyFilterInput($_GET['RemoveVO'], 'int');
@@ -119,7 +126,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 $dBirthDate = $person->getFormattedBirthDate();
 
-$sFamilyInfoBegin = '<span style="color: red;">';
+$sFamilyInfoBegin = '<span class="text-danger">';
 $sFamilyInfoEnd = '</span>';
 
 // Assign the values locally, after selecting whether to display the family or person information
@@ -195,19 +202,19 @@ $bOkToEdit = (
             <div class="card-body box-profile">
                 <div class="image-container">
                     <div class="text-center">
-                        <img src="<?= SystemURLs::getRootPath() . '/api/person/' . $person->getId() . '/photo' ?>" class="initials-image profile-user-img img-fluid img-circle">
+                        <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile">
                         <p />
 
                         <?php if ($bOkToEdit) : ?>
                             <div class="buttons">
                                 <a id="view-larger-image-btn" class="hide" title="<?= gettext("View Photo") ?>">
-                                    <i class="fa fa-search-plus"></i>
+                                    <i class="fa-solid fa-search-plus"></i>
                                 </a>&nbsp;
-                                <a class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
-                                    <i class="fa fa-camera"></i>
+                                <a id="uploadImageButton" class="" title="<?= gettext("Upload Photo") ?>">
+                                    <i class="fa-solid fa-camera"></i>
                                 </a>&nbsp;
                                 <a data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                                    <i class="fa fa-trash-can"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </a>
                             </div>
 
@@ -221,16 +228,16 @@ $bOkToEdit = (
                     <li class="list-group-item">
                         <?php $genderClass = "fa-question";
                         if ($person->isMale()) {
-                            $genderClass =  "fa-male";
+                            $genderClass =  "fa-person";
                         } elseif ($person->isFemale()) {
-                            $genderClass =  "fa-female";
+                            $genderClass =  "fa-person-dress";
                         } ?>
                         <b><?= gettext('Gender') ?></b> <a class="float-right"><i class="fa <?= $genderClass ?>"></i></a>
                     </li>
                     <li class="list-group-item">
                         <b><?= gettext('Family Role') ?></b> <a class="float-right"><?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?></a>
-                        <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-xs">
-                            <i class="fas fa-pen"></i>
+                        <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-sm btn-primary">
+                            <i class="fa-solid fa-pen"></i>
                         </a>
                     </li>
                     <li class="list-group-item">
@@ -260,86 +267,86 @@ $bOkToEdit = (
             <!-- /.box-header -->
             <div class="card-body">
                 <ul class="fa-ul">
-                    <li><i class="fa-li fa fa-people-roof"></i><?php echo gettext('Family:'); ?> <span>
+                    <li><i class="fa-li fa-solid fa-people-roof"></i><?php echo gettext('Family:'); ?> <span>
                             <?php
                             if ($fam_ID != '') {
-                                ?>
+                            ?>
                                 <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $fam_ID ?>"><?= $fam_Name ?> </a>
                                 <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
-                                    <i class="fas fa-pen"></i>
+                                    <i class="fa-solid fa-pen"></i>
                                 </a>
-                                <?php
+                            <?php
                             } else {
                                 echo gettext('(No assigned family)');
                             } ?>
                         </span></li>
                     <?php if (!empty($formattedMailingAddress)) {
-                        ?>
-                        <li><i class="fa-li fa fa-home"></i><?php echo gettext('Address'); ?>: <span>
+                    ?>
+                        <li><i class="fa-li fa-solid fa-home"></i><?php echo gettext('Address'); ?>: <span>
                                 <a href="https://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
                                     <?= $formattedMailingAddress ?>
                                 </a>
                             </span></li>
-                        <?php
+                    <?php
                     }
                     if ($dBirthDate) {
-                        ?>
+                    ?>
                         <li>
-                            <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>: <?= $dBirthDate ?>
+                            <i class="fa-li fa-solid fa-calendar"></i><?= gettext('Birth Date') ?>: <?= $dBirthDate ?>
                             <?php if (!$person->hideAge()) {
-                                ?>
+                            ?>
                                 (<span></span><?= $person->getAge() ?>)
-                                <?php
+                            <?php
                             } ?>
                         </li>
-                        <?php
+                    <?php
                     }
                     if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') { /* Friend Date can be hidden - General Settings */ ?>
-                        <li><i class="fa-li fa fa-tasks"></i><?= gettext('Friend Date') ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
-                        <?php
+                        <li><i class="fa-li fa-solid fa-tasks"></i><?= gettext('Friend Date') ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
+                    <?php
                     }
                     if ($sCellPhone) {
-                        ?>
-                        <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext('Mobile Phone') ?>: <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
-                        <?php
+                    ?>
+                        <li><i class="fa-li fa-solid fa-mobile-phone"></i><?= gettext('Mobile Phone') ?>: <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
+                    <?php
                     }
                     if ($sHomePhone) {
-                        ?>
-                        <li><i class="fa-li fa fa-phone"></i><?= gettext('Home Phone') ?>: <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
-                        <?php
+                    ?>
+                        <li><i class="fa-li fa-solid fa-phone"></i><?= gettext('Home Phone') ?>: <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
+                    <?php
                     }
                     if ($sEmail != '') {
-                        ?>
-                        <li><i class="fa-li fa fa-envelope"></i><?= gettext('Email') ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
-                        <?php
+                    ?>
+                        <li><i class="fa-li fa-solid fa-envelope"></i><?= gettext('Email') ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
+                    <?php
                     }
                     if ($sWorkPhone) {
-                        ?>
-                        <li><i class="fa-li fa fa-phone"></i><?= gettext('Work Phone') ?>: <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
-                        <?php
+                    ?>
+                        <li><i class="fa-li fa-solid fa-phone"></i><?= gettext('Work Phone') ?>: <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
+                    <?php
                     } ?>
                     <?php if ($per_WorkEmail != '') {
-                        ?>
-                        <li><i class="fa-li fa fa-envelope"></i><?= gettext('Work/Other Email') ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
-                        <?php
+                    ?>
+                        <li><i class="fa-li fa-solid fa-envelope"></i><?= gettext('Work/Other Email') ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
+                    <?php
                     }
 
                     if (strlen($per_Facebook) > 0) {
-                        ?>
+                    ?>
                         <li><i class="fa-li fa-brands fa-facebook-official"></i>Facebook: <span><a href="https://www.facebook.com/<?= InputUtils::filterString($per_Facebook) ?> " target="_blank"><?= $per_Facebook ?></a></span></li>
-                        <?php
+                    <?php
                     }
 
                     if (strlen($per_Twitter) > 0) {
-                        ?>
+                    ?>
                         <li><i class="fa-li fa-brands fa-x-twitter"></i>X: <span><a href="https://www.twitter.com/<?= InputUtils::filterString($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
-                        <?php
+                    <?php
                     }
 
                     if (strlen($per_LinkedIn) > 0) {
-                        ?>
+                    ?>
                         <li><i class="fa-li fa-brands fa-linkedin"></i>LinkedIn: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a></span></li>
-                        <?php
+                    <?php
                     }
 
                     // Display the side custom fields
@@ -371,51 +378,51 @@ $bOkToEdit = (
             </div>
         </div>
         <div class="alert alert-info alert-dismissable">
-            <i class="fa fa-fw fa-tree"></i> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
+            <i class="fa-solid fa-fw fa-tree"></i> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
         <div class="row">
-            <a class="btn btn-app" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
-            <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
+            <a class="btn btn-app bg-info" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-print fa-3x"></i><br><?= gettext("Printable Page") ?></a>
+            <button class="btn btn-app bg-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus fa-3x"></i><br><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></button>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
-                ?>
-                <a class="btn btn-app" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-                <a class="btn btn-app" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
-                <?php
+            ?>
+                <a class="btn btn-app bg-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle fa-3x"></i><br><?= gettext("Edit \"Why Came\" Notes") ?></a>
+                <a class="btn btn-app bg-primary" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sticky-note fa-3x"></i><br><?= gettext("Add a Note") ?></a>
+            <?php
             }
             if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                ?>
-                <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
-                <?php
+            ?>
+                <a class="btn btn-app bg-info" id="addGroup"><i class="fa-solid fa-users fa-3x"></i><br><?= gettext("Assign New Group") ?></a>
+            <?php
             } ?>
-            <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
+            <a class="btn btn-app bg-secondary" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa-solid fa-list fa-3x"></i><br><?= gettext("List Members") ?></a>
             <?php
             if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
-                ?>
-                <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
-                <?php
+            ?>
+                <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can fa-3x"></i><br><?= gettext("Delete this Record") ?></a>
+            <?php
             }
             ?>
             <br />
             <?php
             if (AuthenticationManager::getCurrentUser()->isAdmin()) {
                 if (!$person->isUser()) {
-                    ?>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-person-chalkboard"></i> <?= gettext('Make User') ?></a>
-                    <?php
+            ?>
+                    <a class="btn btn-app bg-purple" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa-solid fa-person-chalkboard fa-3x"></i><br><?= gettext('Make User') ?></a>
+                <?php
                 } else {
-                    ?>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
-                    <?php
+                ?>
+                    <a class="btn btn-app bg-purple" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-user-secret fa-3x"></i><br><?= gettext('Edit User') ?></a>
+                    <a class="btn btn-app bg-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye fa-3x"></i><br><?= gettext('View User') ?></a>
+                    <a class="btn btn-app bg-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa-solid fa-key fa-3x"></i><br><?= gettext("Change Password") ?></a>
+                <?php
                 }
             } elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) {
                 ?>
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
-                <?php
+                <a class="btn btn-app bg-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye fa-3x"></i><br><?= gettext('View User') ?></a>
+                <a class="btn btn-app bg-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa-solid fa-key fa-3x"></i><br><?= gettext("Change Password") ?></a>
+            <?php
             } ?>
         </div>
 
@@ -424,6 +431,9 @@ $bOkToEdit = (
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a class="nav-link active" id="nav-item-family" href="#family" data-toggle="tab"><?= gettext('Family') ?></a></li>
                     <li class="nav-item"><a class="nav-link" id="nav-item-timeline" href="#timeline" data-toggle="tab"><?= gettext('Timeline') ?></a></li>
+                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                        <li class="nav-item"><a class="nav-link" id="nav-item-notes" href="#notes" data-toggle="tab"><?= gettext('Notes') ?></a></li>
+                    <?php } ?>
                     <li class="nav-item"><a class="nav-link" id="nav-item-groups" href="#groups" data-toggle="tab"><?= gettext('Assigned Groups') ?></a></li>
                     <li class="nav-item"><a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
                     <li class="nav-item"><a class="nav-link" id="nav-item-properties" href="#properties" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
@@ -452,7 +462,7 @@ $bOkToEdit = (
                                         <tr>
                                             <td>
 
-                                                <img style="width:40px; height:40px;display:inline-block" src="<?= $sRootPath . '/api/person/' . $familyMember->getId() . '/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
+                                                <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="photo-tiny">
                                                 <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
                                             </td>
@@ -469,26 +479,26 @@ $bOkToEdit = (
                                                 <?php } ?>
                                             </td>
                                             <td style="width: 20%;">
-                                                <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
-                                                    <i class="fa fa-cart-plus "></i>
-                                                </a>
+                                                <button class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>">
+                                                    <i class="fa-solid fa-cart-plus"></i>
+                                                </button>
                                                 <?php if ($bOkToEdit) {
-                                                    ?>
-                                                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
-                                                        <i class="fas fa-pen "></i>
+                                                ?>
+                                                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>" class="btn btn-sm btn-info" title="<?= gettext('Edit') ?>">
+                                                        <i class="fa-solid fa-pen"></i>
                                                     </a>
-                                                    <a class="delete-person" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family">
-                                                        <i class="fa fa-trash-can btn-danger"></i>
+                                                    <a class="delete-person btn btn-sm btn-danger" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family" title="<?= gettext('Delete') ?>">
+                                                        <i class="fa-solid fa-trash-can"></i>
                                                     </a>
-                                                    <?php
+                                                <?php
                                                 } ?>
                                             </td>
                                         </tr>
-                                        <?php
+                                    <?php
                                     } ?>
                                 </tbody>
                             </table>
-                            <?php
+                        <?php
                         } ?>
                     </div>
 
@@ -505,7 +515,7 @@ $bOkToEdit = (
 
                             <!-- timeline item -->
                             <?php foreach ($timelineService->getForPerson($iPersonID) as $item) {
-                                ?>
+                            ?>
                                 <div>
                                     <!-- timeline icon -->
                                     <i class="fa <?= $item['style'] ?>"></i>
@@ -513,39 +523,39 @@ $bOkToEdit = (
                                     <div class="timeline-item">
                                         <span class="time">
                                             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
-                                                ?>
+                                            ?>
                                                 <?php if (isset($item["editLink"])) {
-                                                    ?>
-                                                    <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pen"></i></button></a>
-                                                    <?php
+                                                ?>
+                                                    <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></button></a>
+                                                <?php
                                                 }
                                                 if (isset($item["deleteLink"])) {
-                                                    ?>
-                                                    <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
-                                                    <?php
+                                                ?>
+                                                    <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></a>
+                                                <?php
                                                 } ?>
                                                 &nbsp;
-                                                <?php
+                                            <?php
                                             } ?>
-                                            <i class="fa fa-clock"></i> <?= $item['datetime'] ?></span>
+                                            <i class="fa-solid fa-clock"></i> <?= $item['datetime'] ?></span>
 
                                         <?php if ($item['slim']) {
-                                            ?>
+                                        ?>
                                             <h4 class="timeline-header">
                                                 <?= $item['text'] ?> <?= gettext($item['header']) ?>
                                             </h4>
-                                            <?php
+                                        <?php
                                         } else {
-                                            ?>
+                                        ?>
                                             <h3 class="timeline-header">
                                                 <?php if (in_array('headerlink', $item)) {
-                                                    ?>
+                                                ?>
                                                     <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
-                                                    <?php
+                                                <?php
                                                 } else {
-                                                    ?>
+                                                ?>
                                                     <?= $item['header'] ?>
-                                                    <?php
+                                                <?php
                                                 } ?>
                                             </h3>
 
@@ -553,26 +563,94 @@ $bOkToEdit = (
                                                 <pre style="line-height: 1.2;"><?= $item['text'] ?></pre>
                                             </div>
 
-                                            <?php
+                                        <?php
                                         } ?>
                                     </div>
                                 </div>
-                                <?php
+                            <?php
                             } ?>
                             <!-- END timeline item -->
                         </ul>
                     </div>
 
+                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                        <div class="tab-pane" id="notes">
+                            <div class="card">
+                                <div class="card-body">
+                                    <?php
+                                    $personNotes = $timelineService->getNotesForPerson($iPersonID);
+                                    if (empty($personNotes)) {
+                                    ?>
+                                        <div class="alert alert-info">
+                                            <i class="fa-solid fa-info-circle fa-fw fa-lg"></i>
+                                            <span><?= gettext('No notes have been added for this person.') ?></span>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <table class="table table-hover table-striped" id="notes-table">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 1%; white-space: nowrap;"><?= gettext('Date') ?></th>
+                                                    <th><?= gettext('Note') ?></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($personNotes as $note) { ?>
+                                                    <tr>
+                                                        <td style="width: 1%; white-space: nowrap; vertical-align: top;">
+                                                            <div style="text-align: center;">
+                                                                <i class="fa-solid fa-calendar"></i><br>
+                                                                <?= date('Y-m-d', strtotime($note['datetime'])) ?><br>
+                                                                <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
+                                                                <div style="margin-top: 10px;">
+                                                                    <?php if (isset($note['editLink']) && $note['editLink']) { ?>
+                                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
+                                                                            <i class="fa-solid fa-pen"></i>
+                                                                        </a>
+                                                                    <?php }
+                                                                    if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
+                                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
+                                                                            <i class="fa-solid fa-trash"></i>
+                                                                        </a>
+                                                                    <?php } ?>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width: 99%; vertical-align: top;">
+                                                            <div style="margin-bottom: 8px;">
+                                                                <?= $note['text'] ?>
+                                                            </div>
+                                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $note['header'] ?></small>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    <?php
+                                    } ?>
+                                    <div class="text-center mt-3">
+                                        <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="btn btn-success">
+                                            <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- /.main-box-body -->
+                            </div>
+                            <!-- /.main-box -->
+                        </div>
+                    <?php } ?>
+
                     <div class="tab-pane" id="groups">
-                        <div class="main-box clearfix">
-                            <div class="main-box-body clearfix">
+                        <div class="card">
+                            <div class="card-body">
                                 <?php
                                 //Was anything returned?
                                 if (mysqli_num_rows($rsAssignedGroups) === 0) {
-                                    ?>
+                                ?>
                                     <br>
                                     <div class="alert alert-warning">
-                                        <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No group assignments.') ?></span>
+                                        <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No group assignments.') ?></span>
                                     </div>
                                     <?php
                                 } else {
@@ -621,27 +699,27 @@ $bOkToEdit = (
                                                 <div class="card-footer">
                                                     <code>
                                                         <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                                            ?>
-                                                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa fa-list"></i></a>
+                                                        ?>
+                                                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-secondary" role="button"><i class="fa-solid fa-list"></i></a>
                                                             <div class="btn-group">
-                                                                <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
-                                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                                <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
+                                                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
                                                                     <span class="caret"></span>
                                                                     <span class="sr-only">Toggle Dropdown</span>
                                                                 </button>
                                                                 <ul class="dropdown-menu" role="menu">
                                                                     <li><a class="changeRole" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
                                                                     <?php if ($grp_hasSpecialProps) {
-                                                                        ?>
+                                                                    ?>
                                                                         <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
-                                                                        <?php
+                                                                    <?php
                                                                     } ?>
                                                                 </ul>
                                                             </div>
                                                             <div class="btn-group">
-                                                                <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-can"></i></button>
+                                                                <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa-solid fa-trash-can"></i></button>
                                                             </div>
-                                                            <?php
+                                                        <?php
                                                         } ?>
                                                     </code>
                                                 </div>
@@ -649,7 +727,7 @@ $bOkToEdit = (
                                             </div>
                                             <!-- /.box -->
                                         </div>
-                                        <?php
+                                <?php
                                         // NOTE: this method is crude.  Need to replace this with use of an array.
                                         $sAssignedGroups .= $grp_ID . ',';
                                     }
@@ -660,51 +738,53 @@ $bOkToEdit = (
                         </div>
                     </div>
                     <div class="tab-pane" id="properties">
-                        <div class="main-box clearfix">
-                            <div class="main-box-body clearfix">
+                        <div class="card">
+                            <div class="card-body">
                                 <?php
                                 $sAssignedProperties = ','; ?>
                                 <?php if (mysqli_num_rows($rsAssignedProperties) === 0) : ?>
                                     <br>
                                     <div class="alert alert-warning">
-                                        <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
+                                        <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
                                     </div>
                                 <?php else : ?>
-                                    <table class="table table-condensed dt-responsive" id="assigned-properties-table" width="100%">
-                                        <thead>
-                                            <tr class="TableHeader">
-                                                <th><?= gettext('Type') ?></th>
-                                                <th><?= gettext('Name') ?></th>
-                                                <th><?= gettext('Value') ?></th>
-                                                <?php if ($bOkToEdit) : ?>
-                                                    <th><?= gettext('Remove') ?></th>
-                                                <?php endif; ?>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            //Loop through the rows
-                                            while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                                                $pro_Prompt = '';
-                                                $r2p_Value = '';
-                                                extract($aRow); ?>
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed w-100" id="assigned-properties-table">
+                                            <thead>
                                                 <tr>
-                                                    <td><?= $prt_Name ?></td>
-                                                    <td><?= $pro_Name ?></td>
-                                                    <td><?= $r2p_Value ?></td>
-                                                    <?php if ($bOkToEdit) { ?>
-                                                        <td>
-                                                            <a class="btn remove-property-btn" data-property_id="<?= $pro_ID ?>">
-                                                                <i class="fa fa-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    <?php } ?>
+                                                    <th><?= gettext('Type') ?></th>
+                                                    <th><?= gettext('Name') ?></th>
+                                                    <th><?= gettext('Value') ?></th>
+                                                    <?php if ($bOkToEdit) : ?>
+                                                        <th><?= gettext('Remove') ?></th>
+                                                    <?php endif; ?>
                                                 </tr>
+                                            </thead>
+                                            <tbody>
                                                 <?php
-                                                $sAssignedProperties .= $pro_ID . ',';
-                                            } ?>
-                                        </tbody>
-                                    </table>
+                                                //Loop through the rows
+                                                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                                                    $pro_Prompt = '';
+                                                    $r2p_Value = '';
+                                                    extract($aRow); ?>
+                                                    <tr>
+                                                        <td><?= $prt_Name ?></td>
+                                                        <td><?= $pro_Name ?></td>
+                                                        <td><?= $r2p_Value ?></td>
+                                                        <?php if ($bOkToEdit) { ?>
+                                                            <td>
+                                                                <a class="btn remove-property-btn" data-property_id="<?= $pro_ID ?>">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
+                                                            </td>
+                                                        <?php } ?>
+                                                    </tr>
+                                                <?php
+                                                    $sAssignedProperties .= $pro_ID . ',';
+                                                } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 <?php endif; ?>
 
                                 <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
@@ -715,7 +795,7 @@ $bOkToEdit = (
                                             <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
                                                 <div class="row">
                                                     <div class="form-group col-xs-12 col-md-7">
-                                                        <select name="PropertyId" id="input-person-properties" class="form-control select2" style="width:100%" data-placeholder="Select ...">
+                                                        <select name="PropertyId" id="input-person-properties" class="form-control select2 w-100" data-placeholder="Select ...">
                                                             <option disabled selected> -- <?= gettext('select an option') ?> -- </option>
                                                             <?php
                                                             $assignedPropertiesArray = [];
@@ -758,8 +838,8 @@ $bOkToEdit = (
                         </div>
                     </div>
                     <div class="tab-pane" id="volunteer">
-                        <div class="main-box clearfix">
-                            <div class="main-box-body clearfix">
+                        <div class="card">
+                            <div class="card-body">
                                 <?php
 
                                 //Initialize row shading
@@ -769,16 +849,17 @@ $bOkToEdit = (
 
                                 //Was anything returned?
                                 if (mysqli_num_rows($rsAssignedVolunteerOpps) === 0) {
-                                    ?>
+                                ?>
                                     <br>
                                     <div class="alert alert-warning">
-                                        <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
+                                        <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
                                     </div>
-                                    <?php
+                                <?php
                                 } else {
-                                    echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
+                                    echo '<div class="table-responsive">';
+                                    echo '<table class="table table-condensed w-100" id="assigned-volunteer-opps-table">';
                                     echo '<thead>';
-                                    echo '<tr class="TableHeader">';
+                                    echo '<tr>';
                                     echo '<th>' . gettext('Name') . '</th>';
                                     echo '<th>' . gettext('Description') . '</th>';
                                     if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
@@ -810,6 +891,7 @@ $bOkToEdit = (
                                     }
                                     echo '</tbody>';
                                     echo '</table>';
+                                    echo '</div>';
                                 } ?>
 
                                 <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() && $rsVolunteerOpps->num_rows) : ?>
@@ -820,7 +902,7 @@ $bOkToEdit = (
                                             <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
                                                 <div class="row">
                                                     <div class="form-group col-xs-12 col-md-7">
-                                                        <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-control select2" style="width:100%" data-placeholder="Select ...">
+                                                        <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-control select2 w-100" data-placeholder="Select ...">
                                                             <?php
                                                             while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
                                                                 extract($aRow);
@@ -867,10 +949,6 @@ $bOkToEdit = (
             </div>
         </div>
         <!-- Modal -->
-        <div id="photoUploader">
-
-        </div>
-
         <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -886,13 +964,12 @@ $bOkToEdit = (
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext("Cancel") ?></button>
                         <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
         <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -906,20 +983,6 @@ $bOkToEdit = (
                 }).done(function(data) {
                     location.reload();
                 });
-            });
-
-            window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-                url: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
-                maxPhotoSize: window.CRM.maxUploadSize,
-                photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
-                photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
-                done: function(e) {
-                    window.location.reload();
-                }
-            });
-
-            $("#uploadImageButton").click(function() {
-                window.CRM.photoUploader.show();
             });
 
             $(document).ready(function() {
@@ -943,7 +1006,38 @@ $bOkToEdit = (
                     }
                 });
 
+                // Copy photo uploader function from temporary storage to window.CRM
+                if (window._CRM_createPhotoUploader) {
+                    window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+                } else {
+                    console.error('Photo uploader function not found in window._CRM_createPhotoUploader');
+                }
+
+                // Initialize Uppy photo uploader
+                if (typeof window.CRM.createPhotoUploader === 'function') {
+                    window.CRM.photoUploader = window.CRM.createPhotoUploader({
+                        uploadUrl: window.CRM.root + '/api/person/<?= $iPersonID ?>/photo',
+                        maxFileSize: window.CRM.maxUploadSizeBytes,
+                        photoWidth: <?= Photo::PHOTO_WIDTH ?>,
+                        photoHeight: <?= Photo::PHOTO_HEIGHT ?>,
+                        onComplete: function(result) {
+                            window.location.reload();
+                        }
+                    });
+
+                    $("#uploadImageButton").click(function(e) {
+                        e.preventDefault();
+                        if (window.CRM && window.CRM.photoUploader) {
+                            window.CRM.photoUploader.show();
+                        } else {
+                            console.error('Photo uploader not initialized!');
+                        }
+                    });
+                } else {
+                    console.error('window.CRM.createPhotoUploader is not a function');
+                }
+
             });
         </script>
-<?php
-require_once 'Include/Footer.php';
+        <?php
+        require_once 'Include/Footer.php';

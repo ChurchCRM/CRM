@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                 <!-- /.col -->
                 <div class="col-xs-5">
                     <button type="submit" class="btn btn-primary btn-block btn-flat"><i
-                                class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
+                        class="fa-solid fa-right-to-bracket"></i> <?= gettext('Login') ?></button>
                 </div>
             </div>
         </form>

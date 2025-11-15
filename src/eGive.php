@@ -248,10 +248,10 @@ if (isset($_POST['ApiGet'])) {
     <tr><td>
         <form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
         <class="LabelColumn"><b><?= gettext('Start Date: ') ?></b>
-            <class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span><br>
+            <class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11" class="date-picker"><span class="text-danger"><?php echo $sDateError ?></span><br>
             <class="LabelColumn"><b><?= gettext('End Date: ') ?></b>
-            <class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span><br><br>
-        <input type="submit" class="btn btn-default" value="<?= gettext('Import eGive') ?>" name="ApiGet">
+            <class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11" class="date-picker"><span class="text-danger"><?php echo $sDateError ?></span><br><br>
+        <input type="submit" class="btn btn-secondary" value="<?= gettext('Import eGive') ?>" name="ApiGet">
         <br><br><br>
         </form>
         </td>
@@ -336,12 +336,12 @@ function importDoneFixOrContinue()
         } ?>
         </table><br>
 
-        <input type="submit" class="btn btn-default" value="<?= gettext('Re-import to selected family') ?>" name="ReImport">
+        <input type="submit" class="btn btn-secondary" value="<?= gettext('Re-import to selected family') ?>" name="ReImport">
         <?php
     } ?>
 
     <p class="MediumLargeText"> <?= gettext('Data import results: ') . $importCreated . gettext(' gifts were imported, ') . $importNoChange . gettext(' gifts unchanged, and ') . $importError . gettext(' gifts not imported due to problems') ?></p>
-    <input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
+    <input type="button" class="btn btn-secondary" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>';"
     <?php
 }
 
@@ -369,8 +369,8 @@ function get_api_data($json)
         return $result;
     } else {
         ?>
-        <span style="color: red;"><?= gettext("Fatal error in eGive API datastream: '") . $error ?>"'</span><br><br>
-        <input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
+        <span class="text-danger"><?= gettext("Fatal error in eGive API datastream: '") . $error ?>"'</span><br><br>
+        <input type="button" class="btn btn-secondary" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>';"
         <?php
         return 0;
     }

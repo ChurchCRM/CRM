@@ -100,7 +100,6 @@ for ($row = 1; $row <= $numRows; $row++) {
     $aDefRecurDOM[$row] = $type_defrecurDOM;
     $aDefRecurDOY[$row] = $type_defrecurDOY;
     $aDefRecurType[$row] = $type_defrecurtype;
-    //                echo "$row:::DOW = $aDefRecurDOW[$row], DOM=$aDefRecurDOM[$row], DOY=$adefRecurDOY[$row] type=$aDefRecurType[$row]\n\r\n<br>";
 
     switch ($aDefRecurType[$row]) {
         case 'none':
@@ -143,7 +142,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
   <div class='card card-primary'>
     <div class='card-body'>
-      <form name="UpdateEventNames" action="EventNames.php" method="POST" class='form-horizontal'>
+  <form name="UpdateEventNames" action="EventNames.php" method="POST" class='form-horizontal'>
         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
         <div class='row form-group'>
           <div class='col-sm-4 control-label text-bold'>
@@ -227,10 +226,10 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
         </div>
         <div class='row form-group'>
           <div class='col-sm-8 col-sm-offset-4'>
-            <a href="EventNames.php" class='btn btn-default'>
+            <a href="EventNames.php" class='btn btn-secondary'>
               <?= gettext('Cancel') ?>
             </a>
-            <button type="submit" Name="Action" value="CREATE" class="btn btn-primary">
+            <button type="submit" Name="Action" value="CREATE" class="btn btn-primary" id="save-event-type">
               <?= gettext('Save Changes') ?>
             </button>
           </div>
@@ -283,7 +282,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                     <td>
                       <form name="ProcessEventType" action="EventEditor.php" method="POST" class="pull-left">
                         <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
-                        <button type="submit" name="Action" value="<?= gettext('Create Event') ?>" class="btn btn-default btn-sm">
+                        <button type="submit" name="Action" value="<?= gettext('Create Event') ?>" class="btn btn-secondary btn-sm">
                           <?= gettext('Create Event') ?>
                         </button>
                       </form>
@@ -291,7 +290,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                     <td>
                       <form name="ProcessEventType" action="EditEventTypes.php" method="POST" class="pull-left">
                         <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
-                        <button type="submit" class="btn btn-default btn-sm" name="Action" title="<?= gettext('Edit') ?>" value="<?= gettext('Edit') ?>">
+                        <button type="submit" class="btn btn-secondary btn-sm" name="Action" title="<?= gettext('Edit') ?>" value="<?= gettext('Edit') ?>">
                           <i class='fas fa-pen'></i>
                         </button>
                       </form>
@@ -299,7 +298,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                     <td>
                       <form name="ProcessEventType" action="EventNames.php" method="POST" class="pull-left">
                         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
-                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext('Delete') ?>" name="Action" value="DELETE" onClick="return confirm("<?= gettext('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: ') . $aTypeID[$row] ?>")">
+                        <button type="submit" class="btn btn-secondary btn-sm" title="<?= gettext('Delete') ?>" name="Action" value="DELETE" onClick="return confirm("<?= gettext('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: ') . $aTypeID[$row] ?>")">
                           <i class='fa fa-trash'></i>
                         </button>
                       </form>
@@ -335,6 +334,20 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function () {
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);
+
+    // Event recurrence pattern form handling
+    $(".event-recurrence-patterns input[type=radio]").change(function () {
+        let $el = $(this);
+        let $container = $el.closest(".row");
+        let $input = $container
+            .find("select, input[type=text]")
+            .prop({ disabled: false });
+        $container
+            .parent()
+            .find("select, input[type=text]")
+            .not($input)
+            .prop({ disabled: true });
+    });
   });
 </script>
 <?php

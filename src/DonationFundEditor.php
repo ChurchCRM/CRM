@@ -108,7 +108,7 @@ if ( answer )
 <form method="post" action="DonationFundEditor.php" name="FundsEditor">
 
 <div class="alert alert-warning">
-        <i class="fa fa-ban"></i>
+        <i class="fa-solid fa-ban"></i>
         <?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!") ?>
 
 </div>
@@ -127,8 +127,8 @@ if (strlen($sDeleteError) > 0) {
 <?php
 if ($donationFunds->count() == 0) {
     ?>
-    <center><h2><?= gettext('No funds have been added yet') ?></h2>
-    </center>
+    <div class="text-center"><h2><?= gettext('No funds have been added yet') ?></h2>
+    </div>
     <?php
 } else {
     ?>
@@ -145,18 +145,18 @@ if ($donationFunds->count() == 0) {
         ?>
         <tr>
 
-            <td class="TextColumn" align="center">
+            <td class="TextColumn text-center">
                 <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
                 <?php
                 if ($aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' .</span>';
+                    echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' .</span>';
                 } ?>
             </td>
 
             <td class="TextColumn">
                 <input type="text" Name="<?php echo $row . 'desc' ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="40" maxlength="100">
             </td>
-            <td class="TextColumn" align="center" nowrap>
+            <td class="TextColumn text-center text-nowrap">
                 <input type="radio" Name="<?= $row ?>active" value="1" <?php if ($aActiveFields[$row]) {
                     echo ' checked';
                                           } ?>><?= gettext('Yes') ?>
@@ -177,7 +177,7 @@ if ($donationFunds->count() == 0) {
             <table width="100%">
                 <tr>
                     <td width="30%"></td>
-                    <td width="40%" align="center" valign="bottom">
+                    <td width="40%" class="text-center align-bottom">
                         <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                     </td>
                     <td width="30%"></td>
@@ -194,15 +194,15 @@ if ($donationFunds->count() == 0) {
             <table width="100%">
                 <tr>
                     <td width="15%"></td>
-                    <td valign="top">
+                    <td class="align-top">
                         <div><?= gettext('Name') ?>:</div>
                         <input type="text" name="newFieldName" size="30" maxlength="30">
                         <?php if ($bNewNameError) {
-                            echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                            echo '<div><span class="text-danger"><BR>' . gettext('You must enter a name') . '</span></div>';
                         } ?>
                         &nbsp;
                     </td>
-                    <td valign="top">
+                    <td class="align-top">
                         <div><?= gettext('Description') ?>:</div>
                         <input type="text" name="newFieldDesc" size="40" maxlength="100">
                         &nbsp;

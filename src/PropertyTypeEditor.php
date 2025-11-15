@@ -29,7 +29,7 @@ if (isset($_POST['Submit'])) {
 
     // Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<span style="color: red;">' . gettext('You must enter a name') . '</span>';
+        $sNameError = '<span class="text-danger">' . gettext('You must enter a name') . '</span>';
         $bError = true;
     }
 
@@ -97,7 +97,7 @@ require_once 'Include/Header.php';
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-8">
             <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Save') ?></button>
-            <button type="button" class="btn btn-default" name="Cancel"
+            <button type="button" class="btn btn-secondary" name="Cancel"
                     onclick="document.location='PropertyTypeList.php';"><?= gettext('Cancel') ?></button>
         </div>
 

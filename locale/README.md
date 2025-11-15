@@ -23,7 +23,6 @@ locale/
 
 ### Locale Management
 - `npm run locale:audit` - Generate locale completeness report
-- `npm run locale:clean` - Clean all translation files
 - `npm run locale:download` - Download latest translations from POEditor
 - `npm run locale:term-extract` - Extract all translatable terms for POEditor upload
 
@@ -175,10 +174,12 @@ The report is saved to `locale/poeditor-audit.md` and includes:
 
 The system generates several runtime files:
 
-#### JavaScript Locales
-- `src/locale/js/*.js` - Browser-ready translation files
-- Generated from POEditor downloads
-- Automatically included in builds
+#### Vendor Locales
+- `src/locale/vendor/datatables/*.json` - DataTables locale files
+- `src/locale/vendor/moment/*.js` - Moment.js locale files
+- `src/locale/vendor/bootstrap-datepicker/*.js` - DatePicker locale files
+- `src/locale/vendor/select2/*.js` - Select2 locale files
+- All copied from node_modules during build
 
 #### PHP Gettext
 - `src/locale/textdomain/*/LC_MESSAGES/*.mo` - Compiled Gettext files
@@ -186,9 +187,9 @@ The system generates several runtime files:
 - Generated during build process
 
 #### JSON Files
-- `locale/JSONKeys/*.json` - Translation key mappings
+- `src/locale/i18n/*.json` - Translation key mappings
 - Used for JavaScript internationalization
-- Generated during locale generation
+- Downloaded from POEditor
 
 ## 🐛 Troubleshooting
 
@@ -219,7 +220,7 @@ cat src/locale/locales.json
 head -20 locale/messages.po
 
 # Check generated JavaScript files
-ls -la src/locale/js/
+ls -la src/locale/vendor/js/
 
 # Validate Gettext compilation
 find src/locale/textdomain -name "*.mo"

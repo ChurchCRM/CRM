@@ -50,9 +50,12 @@ class Menu
     private static function getCalendarMenu(): MenuItem
     {
         $calendarMenu = new MenuItem(gettext('Calendar'), 'v2/calendar', SystemConfig::getBooleanValue('bEnabledCalendar'), 'fa-calendar');
-        $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-blue'));
-        $calendarMenu->addCounter(new MenuCounter('BirthdateNumber', 'bg-red'));
-        $calendarMenu->addCounter(new MenuCounter('EventsNumber', 'bg-yellow'));
+        // Anniversaries calendar (ID 1) - black background
+        $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark', 0, gettext("Today's Wedding Anniversaries")));
+        // Birthdays calendar (ID 0) - blue background  
+        $calendarMenu->addCounter(new MenuCounter('BirthdateNumber', 'bg-primary', 0, gettext("Today's Birthdays")));
+        // Events happening today - yellow/warning background
+        $calendarMenu->addCounter(new MenuCounter('EventsNumber', 'bg-warning', 0, gettext('Events Today')));
 
         return $calendarMenu;
     }
@@ -144,7 +147,6 @@ class Menu
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'FindDepositSlip.php', AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'FinancialReports.php', AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
-        $depositsMenu->addCounter(new MenuCounter('iCurrentDeposit', 'bg-green', $_SESSION['iCurrentDeposit']));
 
         $adminMenu = new MenuItem(gettext('Admin'), '', AuthenticationManager::getCurrentUser()->isAdmin());
         $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', AuthenticationManager::getCurrentUser()->isAdmin()));
@@ -210,6 +212,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Property Types'), 'PropertyTypeList.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Restore Database'), 'RestoreDatabase.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Backup Database'), 'BackupDatabase.php', AuthenticationManager::getCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext('System Upgrade'), 'v2/admin/upgrade', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', AuthenticationManager::getCurrentUser()->isCSVExport()));
         $menu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'KioskManager.php', AuthenticationManager::getCurrentUser()->isAdmin()));

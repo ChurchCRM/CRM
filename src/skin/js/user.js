@@ -37,6 +37,10 @@ $(".user-setting-checkbox").on("click", function () {
         } else {
             $(targetCSS).removeClass(cssClass);
         }
+        window.CRM.notify(i18next.t("Setting updated successfully"), {
+            type: "success",
+            delay: 3000,
+        });
     });
 });
 
@@ -54,7 +58,23 @@ $(".user-setting-select").on("focusout", function () {
     }).done(function () {
         let reload = thisCheckbox.data("reload");
         if (reload) {
-            window.location.reload();
+            let languageName = optionSelected.text();
+            window.CRM.notify(
+                i18next.t("Language updated to") + " " + languageName,
+                {
+                    type: "success",
+                    delay: 5000,
+                },
+            );
+            setTimeout(function () {
+                window.location.reload();
+            }, 5000);
+        } else {
+            // Show notification for other settings (like page size)
+            window.CRM.notify(i18next.t("Setting updated successfully"), {
+                type: "success",
+                delay: 3000,
+            });
         }
     });
 });

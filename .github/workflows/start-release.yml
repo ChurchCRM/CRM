@@ -1,0 +1,75 @@
+name: Start New Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 6.1.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  start-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Run release script
+        run: ./scripts/startNewRelease.js ${{ inputs.version }}
+      
+      - name: Create release branch
+        run: |
+          BRANCH_NAME="build/${{ inputs.version }}"
+          git checkout -b "$BRANCH_NAME"
+      
+      - name: Commit version changes
+        run: |
+          git add package.json package-lock.json src/composer.json src/composer.lock src/mysql/upgrade.json demo/ChurchCRM-Database.sql
+          git commit -m "Start ${{ inputs.version }} release"
+      
+      - name: Push branch
+        run: |
+          BRANCH_NAME="build/${{ inputs.version }}"
+          git push origin "$BRANCH_NAME"
+      
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr create \
+            --title "Start ${{ inputs.version }} release" \
+            --body "This PR starts the ${{ inputs.version }} release build.
+
+          ## Changes
+          - Updated version to ${{ inputs.version }} in package.json, composer.json, and related files
+          - Updated database version in upgrade.json
+          - Updated demo database with new version entry
+
+          ## Next Steps
+          - Review and merge this PR to begin the ${{ inputs.version }} release cycle
+          - Add new features and bug fixes to this branch
+          - Create changelog entries as needed" \
+            --base master \
+            --head "build/${{ inputs.version }}"

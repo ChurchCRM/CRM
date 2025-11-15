@@ -2,6 +2,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\Deposit;
+use ChurchCRM\Service\AuthService;
 
 class DepositService {
     /**
@@ -9,7 +10,7 @@ class DepositService {
      */
     public function getPayments($depID = null): array
     {
-        requireUserGroupMembership('bFinance');
+        AuthService::requireUserGroupMembership('bFinance');
         $query = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
             ->joinWithDonationFund()
             ->joinWithFamily();
@@ -82,7 +83,7 @@ class DepositService {
 
     public function getDepositTotal($id, $type = null)
     {
-        requireUserGroupMembership('bFinance');
+        AuthService::requireUserGroupMembership('bFinance');
         $query = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
             ->filterByDepId($id)
             ->filterByPledgeOrPayment('Payment');
@@ -102,7 +103,7 @@ class DepositService {
 
     public function getDepositCSV(string $depID): \stdClass
     {
-        requireUserGroupMembership('bFinance');
+        AuthService::requireUserGroupMembership('bFinance');
         $retstring = '';
         $line = [];
         $payments = $this->getPayments($depID);

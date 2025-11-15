@@ -193,7 +193,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     // Validate Wedding Date if one was entered
     $dateString = parseAndValidateDate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
     if ((strlen($dWeddingDate) > 0) && $dateString === false) {
-        $sWeddingDateError = '<span style="color: red; ">'
+        $sWeddingDateError = '<span class="text-danger">'
             . gettext('Not a valid Wedding Date') . '</span>';
         $bErrorFlag = true;
     } else {
@@ -203,7 +203,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     // Validate Email
     if (strlen($sEmail) > 0) {
         if (checkEmail($sEmail) == false) {
-            $sEmailError = '<span style="color: red; ">'
+            $sEmailError = '<span class="text-danger">'
                 . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
             $sEmail = null;
@@ -575,7 +575,7 @@ require_once 'Include/Header.php';
                         <label><?= gettext('Family Name') ?>:</label>
                         <input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="48" class="form-control">
                         <?php if ($sNameError) {
-                            ?><span style="color: red;"><?= $sNameError ?></span><?php
+                            ?><span class="text-danger"><?= $sNameError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -651,7 +651,7 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Home Phone') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" Name="HomePhone" value="<?= htmlentities(stripslashes($sHomePhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
                         <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
@@ -663,7 +663,7 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Work Phone') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="WorkPhone" value="<?= htmlentities(stripslashes($sWorkPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"' data-mask />
                         <input type="checkbox" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? ' checked' : '' ?>><?= gettext('Do not auto-format') ?>
@@ -673,7 +673,7 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Mobile Phone') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="CellPhone" value="<?= htmlentities(stripslashes($sCellPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
                         <input type="checkbox" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? ' checked' : '' ?>><?= gettext('Do not auto-format') ?>
@@ -685,9 +685,9 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Email') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-envelope"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
-                        <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span style="color: red;"><?php echo '<BR>' . $sEmailError ?></span>
+                        <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span class="text-danger"><?php echo '<BR>' . $sEmailError ?></span>
                     </div>
                 </div>
                 <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
@@ -719,7 +719,7 @@ require_once 'Include/Header.php';
                         <label><?= gettext('Wedding Date') ?>:</label>
                         <input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" id="WeddingDate" size="15" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                         <?php if ($sWeddingDateError) {
-                            ?> <span style="color: red"><br /><?php $sWeddingDateError ?></span> <?php
+                            ?> <span class="text-danger"><br /><?php $sWeddingDateError ?></span> <?php
                         } ?>
                     </div>
                 </div>
@@ -773,7 +773,7 @@ require_once 'Include/Header.php';
                         }
 
                         formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
-                        echo '<span style="color: red; ">' . $aCustomErrors[$fam_custom_Field] . '</span>';
+                        echo '<span class="text-danger">' . $aCustomErrors[$fam_custom_Field] . '</span>';
                         echo '</div></div>';
                     }
                 } ?>
@@ -796,12 +796,12 @@ require_once 'Include/Header.php';
                                 <tr>
                                     <td colspan="2">
                                         <div class="MediumText">
-                                            <center><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later.  All entries will become <i>new</i> person records.') : '' ?></center>
+                                            <div class="text-center"><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later.  All entries will become <i>new</i> person records.') : '' ?></div>
                                         </div><br><br>
                                         <div class="table-responsive">
                                             <table cellpadding="3" cellspacing="0" width="100%">
                                                 <thead>
-                                                    <tr class="TableHeader" align="center">
+                                                    <tr class="TableHeader text-center">
                                                         <th><?= gettext('First') ?></th>
                                                         <th><?= gettext('Middle') ?></th>
                                                         <th><?= gettext('Last') ?></th>
@@ -833,7 +833,7 @@ require_once 'Include/Header.php';
                                                     <tr>
                                                         <td class="TextColumn">
                                                             <input name="FirstName<?= $iCount ?>" type="text" value="<?= $aFirstNames[$iCount] ?>" size="10">
-                                                            <div><span style="color: red;"><?php if (array_key_exists($iCount, $aFirstNameError)) {
+                                                            <div><span class="text-danger"><?php if (array_key_exists($iCount, $aFirstNameError)) {
                                                                                                 echo $aFirstNameError[$iCount];
                                                                                            } ?></span></div>
                                                         </td>
@@ -939,7 +939,7 @@ require_once 'Include/Header.php';
                                                             <?php if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount]) {
                                                                 $UpdateBirthYear = 1; ?>
                                                                 <input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
-                                                                <div><span style="color: red;"><?php if (array_key_exists($iCount, $aBirthDateError)) {
+                                                                <div><span class="text-danger"><?php if (array_key_exists($iCount, $aBirthDateError)) {
                                                                                                     echo $aBirthDateError[$iCount];
                                                                                                } ?></span></div>
                                                                 <?php
@@ -974,14 +974,14 @@ require_once 'Include/Header.php';
                                                     echo '</div></div>';
                             }
 
-                                                echo '<td colspan="2" align="center">';
+                                                echo '<td colspan="2" class="text-center">';
                                                 echo '<input type="hidden" Name="UpdateBirthYear" value="' . $UpdateBirthYear . '">';
 
                                                 echo '<input type="submit" class="btn btn-primary" value="' . gettext('Save') . '" Name="FamilySubmit" id="FamilySubmitBottom"> ';
                             if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
                                 echo ' <input type="submit" class="btn btn-info" value="' . gettext('Save and Add') . '" name="FamilySubmitAndAdd"> ';
                             }
-                                                echo ' <input type="button" class="btn btn-default" value="' . gettext('Cancel') . '" Name="FamilyCancel"';
+                                                echo ' <input type="button" class="btn btn-secondary" value="' . gettext('Cancel') . '" Name="FamilyCancel"';
                             if ($iFamilyID > 0) {
                                 echo " onclick=\"javascript:document.location='v2/family/$iFamilyID';\">";
                             } else {

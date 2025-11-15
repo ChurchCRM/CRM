@@ -1294,10 +1294,6 @@ msgid "Family List"
 msgstr "家庭列表"
 
 #: 
-msgid "Add Family"
-msgstr "添加家庭"
-
-#: 
 msgid "Created"
 msgstr "已建立"
 
@@ -1322,10 +1318,6 @@ msgid "Next Family"
 msgstr "下一個家庭"
 
 #: 
-msgid "Delete this Family"
-msgstr "刪除這家庭"
-
-#: 
 msgid "Upload Photo"
 msgstr "上傳照片"
 
@@ -1336,10 +1328,6 @@ msgstr "刪除照片"
 #: 
 msgid "Add a Note"
 msgstr "添加備註"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "添加家庭成員至購物車"
 
 #: 
 msgid "Timeline"
@@ -1451,10 +1439,6 @@ msgstr "您將以格式將家庭信息的副本通過電子郵件發送至以下
 #: 
 msgid "Financial Reports"
 msgstr "財務報告"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "從以前的報告中沒有記錄返回。"
 
 #: 
 msgid "Report Type:"
@@ -1823,10 +1807,6 @@ msgid "Remove from Cart"
 msgstr "從購物車中刪除"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "事件ID的文字："
-
-#: 
 msgid "Group Editor"
 msgstr "組編輯器"
 
@@ -2006,10 +1986,6 @@ msgid "Group View"
 msgstr "群組視圖"
 
 #: 
-msgid "Group Functions"
-msgstr "群組功能"
-
-#: 
 msgid "Edit this Group"
 msgstr "編輯本集團"
 
@@ -2075,8 +2051,9 @@ msgid "Assigned Properties"
 msgstr "指定的屬性"
 
 #: 
-msgid "Group Members:"
-msgstr "小組成員："
+#, fuzzy
+msgid "Group Members"
+msgstr "小組成員"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2874,10 +2851,6 @@ msgid "Query Listing"
 msgstr "查詢上市"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "運行自由文本查詢"
-
-#: 
 msgid "Free-Text Query"
 msgstr "自由文本查詢"
 
@@ -3019,10 +2992,6 @@ msgstr "刪除家庭只記錄"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "刪除家庭記錄及家庭成員的"
-
-#: 
-msgid "Filter and Cart"
-msgstr "刪選及購物車；"
 
 #: 
 msgid "Listing"
@@ -3433,14 +3402,6 @@ msgid "Select Fiscal Year"
 msgstr "選擇會計年度"
 
 #: 
-msgid "pm"
-msgstr "下午"
-
-#: 
-msgid "am"
-msgstr "我"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "無效的編輯器ID！"
 
@@ -3749,10 +3710,6 @@ msgid "Sunday School Class Functions"
 msgstr "主日學校課程功能"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "切換下拉列表"
-
-#: 
 #, fuzzy
 msgid "Teachers"
 msgstr "教師"
@@ -3760,10 +3717,6 @@ msgstr "教師"
 #: 
 msgid "Send Message"
 msgstr "發送信息"
-
-#: 
-msgid "View Profile"
-msgstr "查看主檔"
 
 #: 
 msgid "Quick Status"
@@ -4116,71 +4069,12 @@ msgid "Edit Settings"
 msgstr "編輯設置"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "升級ChurchCRM"
-
-#: 
-#, fuzzy
-msgid "Step 1: Backup Database"
-msgstr "第1步：備份資料庫"
-
-#: 
-#, fuzzy
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "請在開始升級過程之前創建資料庫備份。"
-
-#: 
-#, fuzzy
-msgid "Generate Database Backup"
-msgstr "生成資料庫備份"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "第2步：在服務器上獲取更新包"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "從ChurchCRM GitHub發布頁面獲取最新文件"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "獲取更新文件"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "第3步：在服務器上應用更新包"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "提取升級存檔，並應用新文件"
-
-#: 
 msgid "Full Path:"
 msgstr "完整路徑："
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "升級系統"
-
-#: 
-msgid "Step 4: Login"
-msgstr "第4步：登入"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "請登入以升級系統"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "備份完成，準備下載。"
-
-#: 
-msgid "Backup Error."
-msgstr "備份錯誤。"
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4282,18 +4176,6 @@ msgstr "每年"
 #: 
 msgid "Registration Complete"
 msgstr "註冊完成"
-
-#: 
-msgid "Register"
-msgstr "註冊"
-
-#: 
-msgid "Register your family"
-msgstr "註冊家人"
-
-#: 
-msgid "How many people are in your family"
-msgstr "你有幾個家庭成員"
 
 #: 
 msgid "Add All Classes"
@@ -7105,10 +6987,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "請確認這是你想要做的。"
 
 #: 
-msgid " this Family"
-msgstr "這個家庭"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "確認停用"
 
@@ -7140,10 +7018,6 @@ msgstr "協調數據庫文件名："
 #, fuzzy
 msgid "Intersect With Cart"
 msgstr "與購物車交集"
-
-#: 
-msgid "Family Member"
-msgstr "家庭成員"
 
 #: 
 msgid "select an option"
@@ -7258,10 +7132,6 @@ msgstr "查看照片"
 #: 
 msgid "Family Photo"
 msgstr "家庭照片"
-
-#: 
-msgid "Quick Settings"
-msgstr "快速設置"
 
 #: 
 msgid "Status"
@@ -7566,24 +7436,12 @@ msgid "Reset Password"
 msgstr "重置密碼"
 
 #: 
-msgid "Unable to reset password"
-msgstr "無法重置密碼"
-
-#: 
 msgid "Reset your password"
 msgstr "重置你的密碼"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "抱歉，我們目前無法處理您的請求。"
-
-#: 
-msgid "Login Name is Required"
-msgstr "登錄名是必需的"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "我們發送了一個新密碼。請查看你的郵箱"
 
 #: 
 #, fuzzy
@@ -7686,10 +7544,6 @@ msgstr "移除所有"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "並非該群組的所有成員都在購物車中"
-
-#: 
-msgid "Add all"
-msgstr "全部添加"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7942,10 +7796,6 @@ msgid "Maximum number of Addresses"
 msgstr "最大地址數量"
 
 #: 
-msgid "Show type of group:"
-msgstr "顯示組的類型："
-
-#: 
 msgid "Add Students"
 msgstr "添加學生"
 
@@ -7992,26 +7842,6 @@ msgstr "創建相簿"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "圖像的高度"
-
-#: 
-msgid "Width to use for images"
-msgstr "圖像的寬度"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "縮略圖的寬度"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "縮略圖的磅值"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "客戶端緩存圖像的秒數"
 
 #: 
 msgid "Server cache time for remote images"
@@ -8065,10 +7895,6 @@ msgstr "移動事件"
 #: 
 msgid "Resize Event"
 msgstr "調整事件大小"
-
-#: 
-msgid "Text from"
-msgstr "文字來自"
 
 #: 
 #, fuzzy
@@ -8599,10 +8425,6 @@ msgid "Menu Name"
 msgstr "菜單名稱"
 
 #: 
-msgid "Max 20 char"
-msgstr "最多20個字符"
-
-#: 
 msgid "Link Address"
 msgstr "鏈接地址"
 
@@ -8770,11 +8592,6 @@ msgstr "完整性檢查詳細信息："
 
 #: 
 #, fuzzy
-msgid "I Understand"
-msgstr "我明白"
-
-#: 
-#, fuzzy
 msgid "Unsupported Deposit Types Detected"
 msgstr "檢測到不支持的存款類型"
 
@@ -8808,11 +8625,6 @@ msgstr "生成備份"
 #, fuzzy
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "遠程備份端點。如果是WebDAV，必須是url編碼的。"
-
-#: 
-#, fuzzy
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "在備份中包括縮寫圖像文件，遠端圖像文件（gravatar）和縮圖。這些文件通常能夠在還原後再現，卻花費很大的執行時間和存儲成本為備份存檔添加非常少的益處."
 
 #: 
 #, fuzzy
@@ -8882,7 +8694,7 @@ msgstr "從指定的家庭繼承的不可用人員信息是否顯示？如果尚
 
 #: 
 #, fuzzy
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "按CTRL + C複製所有組成員的電話號碼"
 
 #: 
@@ -9019,11 +8831,6 @@ msgstr "從購物車中刪除結果"
 
 #: 
 #, fuzzy
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "警告：檢測到預升級任務"
-
-#: 
-#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "已確定某些情況，可能會阻止成功升級"
 
@@ -9061,16 +8868,6 @@ msgstr "重置資料庫"
 #, fuzzy
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "這將重置系統資料，並以新安裝的方式重新啟動系統。"
-
-#: 
-#, fuzzy
-msgid "Clear Filter"
-msgstr "清除篩選"
-
-#: 
-#, fuzzy
-msgid "Add Person"
-msgstr "新增人員"
 
 #. Context: locales
 #: 
@@ -9226,11 +9023,6 @@ msgstr "您的新密碼與舊密碼過於相似。"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "密碼重置不可用。請聯繫您的系統管理員"
-
-#: 
-#, fuzzy
-msgid "Authentication Issue"
-msgstr "認證問題"
 
 #: 
 #, fuzzy

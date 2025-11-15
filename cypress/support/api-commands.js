@@ -12,7 +12,7 @@
 Cypress.Commands.add(
     "makePrivateAdminAPICall",
     (method, url, body, expectedStatus = 200) => {
-        cy.makePrivateAPICall(
+        return cy.makePrivateAPICall(
             Cypress.env("admin.api.key"),
             method,
             url,
@@ -25,7 +25,7 @@ Cypress.Commands.add(
 Cypress.Commands.add(
     "makePrivateUserAPICall",
     (method, url, body, expectedStatus = 200) => {
-        cy.makePrivateAPICall(
+        return cy.makePrivateAPICall(
             Cypress.env("user.api.key"),
             method,
             url,
@@ -38,7 +38,7 @@ Cypress.Commands.add(
 Cypress.Commands.add(
     "makePrivateAPICall",
     (key, method, url, body, expectedStatus = 200) => {
-        cy.request({
+        return cy.request({
             method: method,
             failOnStatusCode: false,
             url: url,
@@ -48,19 +48,12 @@ Cypress.Commands.add(
             },
             body: body,
         }).then((resp) => {
-            expect(resp.status).to.eq(expectedStatus);
+            // Handle single status code or array of acceptable status codes
+            const acceptedStatuses = Array.isArray(expectedStatus) ? expectedStatus : [expectedStatus];
+            expect(resp.status).to.be.oneOf(acceptedStatuses);
 
-            if (!resp.body) {
-                return null;
-            }
-
-            // More robust response handling
-            try {
-                return typeof resp.body === 'string' ? JSON.parse(resp.body) : resp.body;
-            } catch (e) {
-                // Non-JSON response (like error messages) - return as is
-                return resp.body;
-            }
+            // Return the full response object so tests can access resp.body
+            return resp;
         });
     },
 );
@@ -71,7 +64,7 @@ Cypress.Commands.add(
     (options) => {
         const defaultOptions = {
             failOnStatusCode: false,
-            timeout: 30000,
+            timeout: 10000,
         };
         
         return cy.request({...defaultOptions, ...options}).then((response) => {

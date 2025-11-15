@@ -11,6 +11,7 @@ use FPDF;
 
 // Load the FPDF library
 
+#[\AllowDynamicProperties]
 class ChurchInfoReport extends FPDF
 {
     // Paper size for all PDF report documents
@@ -125,6 +126,10 @@ class ChurchInfoReport extends FPDF
     public function makeSalutation($famID): string
     {
         $family = FamilyQuery::create()->findPk($famID);
+
+        if ($family === null) {
+            return gettext('Dear Friend');  // Default salutation for unassigned/orphaned payments
+        }
 
         return $family->getSalutation();
     }

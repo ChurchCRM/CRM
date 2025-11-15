@@ -8,7 +8,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 class PersonService
 {
     /**
-     * @return array<mixed, array<'address'|'displayName'|'familyID'|'familyRole'|'firstName'|'id'|'lastName'|'role'|'thumbnailURI'|'title'|'uri', mixed>>
+     * @return array<mixed, array<'address'|'displayName'|'familyID'|'familyRole'|'firstName'|'id'|'lastName'|'role'|'photoURI'|'title'|'uri', mixed>>
      */
     public function search(string $searchTerm, bool $includeFamilyRole = true): array
     {
@@ -27,7 +27,7 @@ class PersonService
             $values['lastName'] = $person->getLastName();
             $values['displayName'] = $person->getFullName();
             $values['uri'] = $person->getViewURI();
-            $values['thumbnailURI'] = $person->getPhoto()->getThumbnailURI();
+            $values['photoURI'] = $person->getPhoto()->getPhotoURI();
             $values['title'] = $person->getTitle();
             $values['address'] = $person->getAddress();
             $values['role'] = $person->getFamilyRoleName();

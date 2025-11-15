@@ -42,17 +42,17 @@ require_once 'Include/Header.php';
 
 if (isset($_GET['Warn'])) {
     ?>
-    <p align="center" class="LargeError">
+    <p class="text-center LargeError">
         <?= '<b>' . gettext('Warning') . ': </b>' . gettext('This property type is still being used by at least one property.') . '<BR>' . gettext('If you delete this type, you will also remove all properties using') . '<BR>' . gettext('it and lose any corresponding property assignments.'); ?>
     </p>
     <?php
 } ?>
 
-<p align="center" class="MediumLargeText">
+<p class="text-center MediumLargeText">
     <?= gettext('Please confirm deletion of this Property Type') ?>: <b><?= $prt_Name ?></b>
 </p>
 
-<p align="center">
+<p class="text-center">
     <a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?php echo $iPropertyTypeID ?>"><?= gettext('Yes, delete this record') ?></a>
     &nbsp;&nbsp;
     <a href="PropertyTypeList.php?Type=<?= $sType ?>"><?= gettext('No, cancel this deletion') ?></a>

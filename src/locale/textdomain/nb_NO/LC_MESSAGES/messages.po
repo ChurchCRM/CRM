@@ -1268,10 +1268,6 @@ msgid "Family List"
 msgstr "Familie Liste"
 
 #: 
-msgid "Add Family"
-msgstr "Legg til Familie"
-
-#: 
 msgid "Created"
 msgstr "Opprettet"
 
@@ -1296,10 +1292,6 @@ msgid "Next Family"
 msgstr "Neste Family"
 
 #: 
-msgid "Delete this Family"
-msgstr "Slett denne Familien"
-
-#: 
 msgid "Upload Photo"
 msgstr "Last bilde"
 
@@ -1310,10 +1302,6 @@ msgstr "Slett bilde"
 #: 
 msgid "Add a Note"
 msgstr "Legg til Notat"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Legg Alle Familiemedlemmer i Kurven"
 
 #: 
 msgid "Timeline"
@@ -1423,10 +1411,6 @@ msgstr "Du er i ferd med å sende en kopi av familieinformasjonen til følgende 
 #: 
 msgid "Financial Reports"
 msgstr "Finansielle rapporter"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "Ingen poster ble returnert fra forrige rapport."
 
 #: 
 msgid "Report Type:"
@@ -1797,10 +1781,6 @@ msgid "Remove from Cart"
 msgstr "Fjern fra handlekurven"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Tekst for hendelses-ID:"
-
-#: 
 msgid "Group Editor"
 msgstr "Gruppe Editor"
 
@@ -1980,10 +1960,6 @@ msgid "Group View"
 msgstr "Group Vis"
 
 #: 
-msgid "Group Functions"
-msgstr "Gruppe Funksjoner"
-
-#: 
 msgid "Edit this Group"
 msgstr "Rediger denne gruppen"
 
@@ -2045,8 +2021,9 @@ msgid "Assigned Properties"
 msgstr "Tilordnede Egenskaper"
 
 #: 
-msgid "Group Members:"
-msgstr "Gruppemedlemmer:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Gruppemedlemmer"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2822,10 +2799,6 @@ msgid "Query Listing"
 msgstr "Query Oppføring"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Kjør en fritekst-Query"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Fritekst-Query"
 
@@ -3362,14 +3335,6 @@ msgid "Select Fiscal Year"
 msgstr "Velg Regnskapsår"
 
 #: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ugyldig Editor ID!"
 
@@ -3662,10 +3627,6 @@ msgstr "Lærere"
 #: 
 msgid "Send Message"
 msgstr "Send melding"
-
-#: 
-msgid "View Profile"
-msgstr "Vis profil"
 
 #: 
 msgid "Quick Status"

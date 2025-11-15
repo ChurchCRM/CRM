@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 
 class PHPPendingDeprecationVersionCheckTask implements TaskInterface, PreUpgradeTaskInterface
 {
-    private const REQUIRED_PHP_VERSION = '8.1.0';
+    private const REQUIRED_PHP_VERSION = '8.2.0';
 
     public function isActive(): bool
     {

@@ -1518,11 +1518,6 @@ msgstr "Lista de Famílias"
 
 #: 
 #, fuzzy
-msgid "Add Family"
-msgstr "Adicionar Família"
-
-#: 
-#, fuzzy
 msgid "Created"
 msgstr "Criada"
 
@@ -1553,11 +1548,6 @@ msgstr "Próxima Família"
 
 #: 
 #, fuzzy
-msgid "Delete this Family"
-msgstr "Apagar esta Família"
-
-#: 
-#, fuzzy
 msgid "Upload Photo"
 msgstr "Upload de foto"
 
@@ -1570,11 +1560,6 @@ msgstr "Excluir foto"
 #, fuzzy
 msgid "Add a Note"
 msgstr "Adicionar Anotação"
-
-#: 
-#, fuzzy
-msgid "Add All Family Members to Cart"
-msgstr "Adicionar Todos os Membros da Família ao Carrinho"
 
 #: 
 #, fuzzy
@@ -1707,11 +1692,6 @@ msgstr "Você está prestes a enviar um e-mail com cópia das informações da f
 #, fuzzy
 msgid "Financial Reports"
 msgstr "Relatórios financeiros"
-
-#: 
-#, fuzzy
-msgid "No records were returned from the previous report."
-msgstr "O relatório anterior não retornou registros."
 
 #: 
 #, fuzzy
@@ -2153,11 +2133,6 @@ msgstr "Remover do Carrinho"
 
 #: 
 #, fuzzy
-msgid "Text for Event ID: "
-msgstr "Texto para o evento ID: "
-
-#: 
-#, fuzzy
 msgid "Group Editor"
 msgstr "Editor de Grupos"
 
@@ -2357,11 +2332,6 @@ msgstr "Ver Grupo"
 
 #: 
 #, fuzzy
-msgid "Group Functions"
-msgstr "Grupo de Funções"
-
-#: 
-#, fuzzy
 msgid "Edit this Group"
 msgstr "Editar este grupo"
 
@@ -2431,8 +2401,8 @@ msgstr "Propriedades"
 
 #: 
 #, fuzzy
-msgid "Group Members:"
-msgstr "Membros do grupo:"
+msgid "Group Members"
+msgstr "Membros do grupo"
 
 #: 
 #, fuzzy
@@ -3377,11 +3347,6 @@ msgstr "Listagem de consultas"
 
 #: 
 #, fuzzy
-msgid "Run a Free-Text Query"
-msgstr "Executar uma consulta de texto livre"
-
-#: 
-#, fuzzy
 msgid "Free-Text Query"
 msgstr "Consulta de Texto Livre"
 
@@ -3551,11 +3516,6 @@ msgstr "Deletar os dados da Família SOMENTE"
 #, fuzzy
 msgid "Delete Family Record AND Family Members"
 msgstr "Remover a Família e TODOS os Membros"
-
-#: 
-#, fuzzy
-msgid "Filter and Cart"
-msgstr "Filtrar e Colocar no Carrinho"
 
 #: 
 #, fuzzy
@@ -4017,16 +3977,6 @@ msgstr "Selecione o ano fiscal"
 
 #: 
 #, fuzzy
-msgid "pm"
-msgstr "pm"
-
-#: 
-#, fuzzy
-msgid "am"
-msgstr "am"
-
-#: 
-#, fuzzy
 msgid "Invalid Editor ID!"
 msgstr "Editor de ID inválido!"
 
@@ -4386,11 +4336,6 @@ msgstr "Funções na Classe de Escola Bíblica Dominical"
 
 #: 
 #, fuzzy
-msgid "Toggle Dropdown"
-msgstr "Alternar Caixa Suspensa"
-
-#: 
-#, fuzzy
 msgid "Teachers"
 msgstr "Professores"
 
@@ -4398,11 +4343,6 @@ msgstr "Professores"
 #, fuzzy
 msgid "Send Message"
 msgstr "Enviar Mensagem"
-
-#: 
-#, fuzzy
-msgid "View Profile"
-msgstr "Ver Perfil"
 
 #: 
 #, fuzzy
@@ -4815,83 +4755,13 @@ msgstr "Editar Configurações"
 
 #: 
 #, fuzzy
-msgid "Upgrade ChurchCRM"
-msgstr "Atualizar o churchCRM"
-
-#: 
-#, fuzzy
-msgid "Step 1: Backup Database"
-msgstr "Passo 1: Fazer Backup do Banco de Dados"
-
-#: 
-#, fuzzy
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Por favor, crie um backup do banco de dados antes de iniciar o processo de atualização"
-
-#: 
-#, fuzzy
-msgid "Generate Database Backup"
-msgstr "Gerar Backup do Banco de Dados"
-
-#: 
-#, fuzzy
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Passo 2: Obter o Pacote de atualização no servidor"
-
-#: 
-#, fuzzy
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Obter os últimos arquivos do ChurchCRM na página de lançamentos do GitHub"
-
-#: 
-#, fuzzy
-msgid "Fetch Update Files"
-msgstr "Obter Arquivos de Atualização"
-
-#: 
-#, fuzzy
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Passo 3: Aplicar Pacote de Atualização no Servidor"
-
-#: 
-#, fuzzy
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Extrair o arquivo de atualização e aplicar os novos arquivos"
-
-#: 
-#, fuzzy
 msgid "Full Path:"
 msgstr "Caminho Completo:"
 
 #: 
 #, fuzzy
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-#, fuzzy
-msgid "Upgrade System"
-msgstr "Atualizar o Sistema"
-
-#: 
-#, fuzzy
-msgid "Step 4: Login"
-msgstr "Passo 4: Login"
-
-#: 
-#, fuzzy
-msgid "Login to Upgraded System"
-msgstr "Faça o Login para atualizar o Sistema"
-
-#: 
-#, fuzzy
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup completo, Pronto para Download."
-
-#: 
-#, fuzzy
-msgid "Backup Error."
-msgstr "Erro de Backup."
 
 #: 
 #, fuzzy
@@ -5017,21 +4887,6 @@ msgstr "Anualmente"
 #, fuzzy
 msgid "Registration Complete"
 msgstr "Registro Completo"
-
-#: 
-#, fuzzy
-msgid "Register"
-msgstr "Registro"
-
-#: 
-#, fuzzy
-msgid "Register your family"
-msgstr "Registrar sua família"
-
-#: 
-#, fuzzy
-msgid "How many people are in your family"
-msgstr "Quantas pessoas existem na sua Família"
 
 #: 
 #, fuzzy
@@ -8393,11 +8248,6 @@ msgstr "Por favor, assegure-se que é isso que você pretende fazer.</p>"
 
 #: 
 #, fuzzy
-msgid " this Family"
-msgstr " esta Família"
-
-#: 
-#, fuzzy
 msgid "Confirm Deactivation"
 msgstr "Confirmar Desativação"
 
@@ -8435,11 +8285,6 @@ msgstr "Nome do arquivo da base de dados de coordenadas:"
 #, fuzzy
 msgid "Intersect With Cart"
 msgstr "Interseção com o carrinho"
-
-#: 
-#, fuzzy
-msgid "Family Member"
-msgstr "Membro da Família"
 
 #: 
 #, fuzzy
@@ -8580,11 +8425,6 @@ msgstr "Ver foto"
 #, fuzzy
 msgid "Family Photo"
 msgstr "Foto da Família"
-
-#: 
-#, fuzzy
-msgid "Quick Settings"
-msgstr "Configurações Rápidas"
 
 #: 
 #, fuzzy
@@ -8963,11 +8803,6 @@ msgstr "Redefinir a senha"
 
 #: 
 #, fuzzy
-msgid "Unable to reset password"
-msgstr "Não foi possível redefinir a sua senha"
-
-#: 
-#, fuzzy
 msgid "Reset your password"
 msgstr "Redefinir a sua senha"
 
@@ -8975,16 +8810,6 @@ msgstr "Redefinir a sua senha"
 #, fuzzy
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Desculpe, não podemos processar seu pedido neste momento."
-
-#: 
-#, fuzzy
-msgid "Login Name is Required"
-msgstr "Nome de usuário é obrigatório"
-
-#: 
-#, fuzzy
-msgid "A new password was sent to you. Please check your email"
-msgstr "Uma nova senha foi enviada para você. Por favor, verifique seu e-mail"
 
 #: 
 #, fuzzy
@@ -9110,11 +8935,6 @@ msgstr "Remover Todos"
 #, fuzzy
 msgid "Not all members of this group are in the cart"
 msgstr "Nem todos os membros deste grupo estão no carrinho"
-
-#: 
-#, fuzzy
-msgid "Add all"
-msgstr "Adicionar todos"
 
 #: 
 #, fuzzy
@@ -9424,11 +9244,6 @@ msgstr "Número máximo de Endereços"
 
 #: 
 #, fuzzy
-msgid "Show type of group:"
-msgstr "Mostrar tipo de grupo:"
-
-#: 
-#, fuzzy
 msgid "Add Students"
 msgstr "Adicionar alunos"
 
@@ -9486,31 +9301,6 @@ msgstr "Criar Fotolivro"
 #, fuzzy
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-#, fuzzy
-msgid "Height to use for images"
-msgstr "Altura para usar em imagens"
-
-#: 
-#, fuzzy
-msgid "Width to use for images"
-msgstr "Largura para usar em imagens"
-
-#: 
-#, fuzzy
-msgid "Width to use for thumbnails"
-msgstr "Largura para usar em miniaturas"
-
-#: 
-#, fuzzy
-msgid "Point size to use for initials thumbnails"
-msgstr "Tamanho do ponto a ser usado para miniaturas iniciais"
-
-#: 
-#, fuzzy
-msgid "Client cache seconds for images"
-msgstr "Cache no cliente (em segundos) para imagens"
 
 #: 
 #, fuzzy
@@ -9576,11 +9366,6 @@ msgstr "Mais eventos"
 #, fuzzy
 msgid "Resize Event"
 msgstr "Redimensionar o Evento"
-
-#: 
-#, fuzzy
-msgid "Text from"
-msgstr "Texto \"de\""
 
 #: 
 #, fuzzy
@@ -10229,11 +10014,6 @@ msgstr "Nome do menu"
 
 #: 
 #, fuzzy
-msgid "Max 20 char"
-msgstr "Max 20 caracteres"
-
-#: 
-#, fuzzy
 msgid "Link Address"
 msgstr "Endereço de Link"
 
@@ -10414,11 +10194,6 @@ msgstr "Detalhes da verificação de integridade:"
 
 #: 
 #, fuzzy
-msgid "I Understand"
-msgstr "Compreendo"
-
-#: 
-#, fuzzy
 msgid "Unsupported Deposit Types Detected"
 msgstr "Tipos de depósito não suportados detectado"
 
@@ -10452,11 +10227,6 @@ msgstr "Gerar Backup"
 #, fuzzy
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Ponto de acesso do backup remoto. Se for WebDAV, isso deve ser codificado por url. "
-
-#: 
-#, fuzzy
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Inclua arquivos de imagem iniciais, arquivos de imagem remotos (gravatar) e miniaturas no backup. Em geral, esses arquivos podem ser reproduzidos após uma restauração e aumentam muito pouco valor arquivo de backup, gerando apenas um grande gasto de tempo de execução e armazenamento."
 
 #: 
 #, fuzzy
@@ -10532,7 +10302,7 @@ msgstr "Informações indisponíveis de uma pessoa de uma família atribuída?\n
 
 #: 
 #, fuzzy
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Pressione CTRL + C para copiar os números de telefone de todos os membros do grupo"
 
 #: 
@@ -10671,11 +10441,6 @@ msgstr "Remover resultados do carrinho"
 
 #: 
 #, fuzzy
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Atenção: Tarefas de pré-atualização detectadas"
-
-#: 
-#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Foram identificadas algumas condições que podem impedir uma atualização bem-sucedida"
 
@@ -10713,16 +10478,6 @@ msgstr "Redefinir banco de dados"
 #, fuzzy
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "Isto vai limpar os dados do sistema e reiniciá-lo como uma nova instalação"
-
-#: 
-#, fuzzy
-msgid "Clear Filter"
-msgstr "Limpar filtro"
-
-#: 
-#, fuzzy
-msgid "Add Person"
-msgstr "Adicionar pessoa"
 
 #. Context: locales
 #: 
@@ -10894,11 +10649,6 @@ msgstr "Sua nova senha é parecida demais com a antiga"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Redefinição de senha não disponível. Entre em contato com o administrador do sistema"
-
-#: 
-#, fuzzy
-msgid "Authentication Issue"
-msgstr "Problemas com a autenticação"
 
 #: 
 #, fuzzy

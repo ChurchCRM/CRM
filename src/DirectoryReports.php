@@ -51,7 +51,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 ?>
 <div class="table-responsive">
-<table class="table" align="center" class="table">
+<table class="table mx-auto">
 <?php if (!array_key_exists('cartdir', $_GET)) {
     ?>
     <tr>
@@ -262,10 +262,10 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
              echo '<input type="hidden" name="cartdir" value="M">';
 } ?>
 
-<p align="center">
+<p class="text-center">
 <BR>
 <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
-<input type="button" class="btn btn-default" name="Cancel" <?= 'value="' . gettext('Cancel') . '"' ?> onclick="javascript:document.location='v2/dashboard';">
+<input type="button" class="btn btn-secondary" name="Cancel" <?= 'value="' . gettext('Cancel') . '"' ?> onclick="javascript:document.location='v2/dashboard';">
 </p>
 </form>
 </div>

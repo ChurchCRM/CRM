@@ -28,7 +28,7 @@ function Header_modals(): void
                     <div class="modal-body">
                         <div class="alert alert-info alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h5><i class="icon fas fa-info"></i>Alert!</h5>
+                            <h5><i class="icon fa-solid fa-info"></i>Alert!</h5>
                             <?= gettext('When you click "Submit to GitHub" you will be directed to GitHub issues page with your system info prefilled.') ?> <?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?>
                         </div>
                     </div>
@@ -50,14 +50,21 @@ function Header_modals(): void
 function Header_body_scripts(): void
 {
     $localeInfo = Bootstrapper::getCurrentLocale();
-    $tableSizeSetting =  AuthenticationManager::getCurrentUser()->getSetting("ui.table.size");
+    $currentUser = AuthenticationManager::getCurrentUser();
+    $tableSizeSetting = $currentUser->getSetting("ui.table.size");
     if (empty($tableSizeSetting)) {
         $tableSize = 10;
     } else {
         $tableSize = $tableSizeSetting->getValue();
     } ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-        window.CRM = {
+        // Initialize window.CRM if not already created by webpack bundles
+        if (!window.CRM) {
+            window.CRM = {};
+        }
+        
+        // Extend window.CRM with server-side configuration (preserving existing properties like notify)
+        Object.assign(window.CRM, {
             root: "<?= SystemURLs::getRootPath() ?>",
             fullURL:"<?= SystemURLs::getURL() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
@@ -78,16 +85,21 @@ function Header_body_scripts(): void
                     "pageLength": <?= $tableSize ?>,
                     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     "language": {
-                        "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
+                        "url": "<?= SystemURLs::getRootPath() ?>/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
-                    dom: "<'row'<'col-sm-4'<?= AuthenticationManager::getCurrentUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
+                    dom: "<'row'<'col-sm-4'<?= $currentUser->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
                             "<'row'<'col-sm-12't>>" +
-                            "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>"
+                            "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>"<?php if ($currentUser->isCSVExport()) { ?>,
+                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']<?php } ?>
                 }
             },
             PageName:"<?= $_SERVER['REQUEST_URI']; ?>"
-        };
+        });
+        // Initialize moment locale if available
+        if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
+            moment.locale(window.CRM.shortLocale);
+        }
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
     <?php

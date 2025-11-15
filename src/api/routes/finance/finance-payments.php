@@ -22,7 +22,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
     });
 
     $group->post('/', function (Request $request, Response $response, array $args): Response {
-        $payment = $request->getParsedBody();
+        $payment = (object) $request->getParsedBody();
         /** @var FinancialService  $financialService */
         $financialService = $this->get('FinancialService');
 
@@ -44,7 +44,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         if (!AuthenticationManager::getCurrentUser()->isShowPledges()) {
             $query->filterByPledgeOrPayment('Pledge', Criteria::NOT_EQUAL);
         }
-        $query->innerJoinDonationFund()->withColumn('donationfund_fun.fun_Name', 'PledgeName');
+        $query->joinWithDonationFund();
         $data = $query->find();
 
         $rows = [];
@@ -60,7 +60,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $newRow['Date'] = $row->getDate('Y-m-d');
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
             $newRow['EditedBy'] = $row->getPerson()->getFullName();
-            $newRow['Fund'] = $row->getPledgeName();
+            $newRow['Fund'] = $row->getDonationFund()->getName();
             $rows[] = $newRow;
         }
 

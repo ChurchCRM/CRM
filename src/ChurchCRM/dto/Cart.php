@@ -3,9 +3,12 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\GroupService;
 
 class Cart
 {
@@ -16,7 +19,7 @@ class Cart
         }
     }
 
-    public static function addPerson($PersonID): void
+    public static function addPerson($PersonID): bool
     {
         self::checkCart();
         if (!is_numeric($PersonID)) {
@@ -24,14 +27,27 @@ class Cart
         }
         if (!in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
             $_SESSION['aPeopleCart'][] = (int)$PersonID;
+            return true; // Person was added
         }
+        return false; // Person already existed
     }
 
-    public static function addPersonArray($PersonArray): void
+    public static function addPersonArray($PersonArray): array
     {
+        $result = [
+            'added' => [],
+            'duplicate' => []
+        ];
+        
         foreach ($PersonArray as $PersonID) {
-            Cart::addPerson($PersonID);
+            if (Cart::addPerson($PersonID)) {
+                $result['added'][] = (int)$PersonID;
+            } else {
+                $result['duplicate'][] = (int)$PersonID;
+            }
         }
+        
+        return $result;
     }
 
     public static function addGroup($GroupID): void
@@ -47,17 +63,29 @@ class Cart
         }
     }
 
-    public static function addFamily($FamilyID): void
+    public static function addFamily($FamilyID): array
     {
         if (!is_numeric($FamilyID)) {
             throw new \Exception(gettext('FamilyID for Cart must be numeric'), 400);
         }
+        
+        $result = [
+            'added' => [],
+            'duplicate' => []
+        ];
+        
         $FamilyMembers = PersonQuery::create()
             ->filterByFamId($FamilyID)
             ->find();
         foreach ($FamilyMembers as $FamilyMember) {
-            Cart::addPerson($FamilyMember->getId());
+            if (Cart::addPerson($FamilyMember->getId())) {
+                $result['added'][] = (int)$FamilyMember->getId();
+            } else {
+                $result['duplicate'][] = (int)$FamilyMember->getId();
+            }
         }
+        
+        return $result;
     }
 
     public static function intersectArrayWithPeopleCart($aIDs): void
@@ -102,6 +130,19 @@ class Cart
         }
     }
 
+    public static function removeFamily($FamilyID): void
+    {
+        if (!is_numeric($FamilyID)) {
+            throw new \Exception(gettext('FamilyID for Cart must be numeric'), 400);
+        }
+        $FamilyMembers = PersonQuery::create()
+            ->filterByFamId($FamilyID)
+            ->find();
+        foreach ($FamilyMembers as $FamilyMember) {
+            Cart::removePerson($FamilyMember->getId());
+        }
+    }
+
     public static function hasPeople(): bool
     {
         return array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) !== 0;
@@ -109,6 +150,7 @@ class Cart
 
     public static function countPeople(): int
     {
+        self::checkCart();
         return count($_SESSION['aPeopleCart']);
     }
 
@@ -142,37 +184,10 @@ class Cart
 
     public static function emptyToGroup($GroupID, $RoleID): void
     {
-        $iCount = 0;
-
-        $group = GroupQuery::create()->findOneById($GroupID);
-
-        if ($RoleID == 0) {
-            $RoleID = $group->getDefaultRole();
-        }
+        $groupService = new GroupService();
 
         foreach ($_SESSION['aPeopleCart'] as $element) {
-            $personGroupRole = Person2group2roleP2g2rQuery::create()
-            ->filterByGroupId($GroupID)
-            ->filterByPersonId($element)
-            ->findOneOrCreate()
-            ->setRoleId($RoleID)
-            ->save();
-
-            /*
-            This part of code should be done
-              */
-            // Check if this group has special properties
-            /*      $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = '.$iGroupID;
-              $rsTemp = RunQuery($sSQL);
-              $rowTemp = mysqli_fetch_row($rsTemp);
-              $bHasProp = $rowTemp[0];
-
-              if ($bHasProp == 'true') {
-                  $sSQL = 'INSERT INTO groupprop_'.$iGroupID." (per_ID) VALUES ('".$iPersonID."')";
-                  RunQuery($sSQL);
-              }   */
-
-            $iCount += 1;
+            $groupService->addUserToGroup($GroupID, $element, $RoleID);
         }
 
         $_SESSION['aPeopleCart'] = [];

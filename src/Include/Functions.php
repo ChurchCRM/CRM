@@ -131,7 +131,7 @@ function CurrentFY(): int
 }
 
 // PrintFYIDSelect: make a fiscal year selection menu.
-function PrintFYIDSelect(string $selectName, int $iFYID = null): void
+function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 {
     echo sprintf('<select class="form-control" name="%s">', $selectName);
 
@@ -158,8 +158,12 @@ function PrintFYIDSelect(string $selectName, int $iFYID = null): void
 }
 
 // Formats a fiscal year string
-function MakeFYString(int $iFYID): string
+function MakeFYString(?int $iFYID): string
 {
+    if ($iFYID === null) {
+        return '';
+    }
+    
     if (SystemConfig::getValue('iFYMonth') == 1) {
         return (string) (1996 + $iFYID);
     } else {
@@ -226,7 +230,7 @@ function convertCartToString(array $aCartArray): string
  * If neither family nor person info is available, return an empty string.
  */
 
-function SelectWhichInfo(string $sPersonInfo = null, string $sFamilyInfo = null, bool $bFormat = false): string
+function SelectWhichInfo(?string $sPersonInfo = null, ?string $sFamilyInfo = null, bool $bFormat = false): string
 {
     $sPersonInfo ??= '';
     $sFamilyInfo ??= '';
@@ -261,7 +265,7 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
 {
     if (SystemConfig::getValue('bShowFamilyData')) {
         if ($bFormat) {
-            $sFamilyInfoBegin = "<span style='color: red;'>";
+            $sFamilyInfoBegin = "<span class='text-danger'>";
             $sFamilyInfoEnd = '</span>';
         }
 
@@ -316,7 +320,7 @@ function ChopLastCharacter(string $sText): string
     return mb_substr($sText, 0, strlen($sText) - 1);
 }
 
-function change_date_for_place_holder(string $string = null): string
+function change_date_for_place_holder(?string $string = null): string
 {
     $string ??= '';
     $timestamp = strtotime($string);
@@ -347,59 +351,38 @@ function FormatDateOutput(): string
 // bWithtime 1 to be displayed
 function FormatDate($dDate, bool $bWithTime = false): string
 {
-    if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00') {
+    // Handle empty or invalid dates
+    if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00' || $dDate === null) {
         return '';
     }
 
-    if (strlen($dDate) === 10) { // If only a date was passed append time
-        $dDate = $dDate . ' 12:00:00';
-    }  // Use noon to avoid a shift in daylight time causing
-    // a date change.
-
-    if (strlen($dDate) !== 19) {
+    try {
+        // Parse the date string into a DateTime object
+        $dateObj = new DateTime($dDate);
+    } catch (Exception $e) {
+        // Return empty string for invalid dates
         return '';
     }
 
-    // Verify it is a valid date
-    $sScanString = mb_substr($dDate, 0, 10);
-    [$iYear, $iMonth, $iDay] = sscanf($sScanString, '%04d-%02d-%02d');
-
-    if (!checkdate($iMonth, $iDay, $iYear)) {
-        return 'Unknown';
-    }
-
-    // PHP date() function is not used because it is only robust for dates between
-    // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.
-    // To handle a much wider range of dates use MySQL date functions.
-
-    $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
-    . "DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
-    . "DATE_FORMAT('$dDate', '%k') as h, "
-    . "DATE_FORMAT('$dDate', ':%i') as m";
-    extract(mysqli_fetch_array(RunQuery($sSQL)));
-
-    if ($h > 11) {
-        $sAMPM = gettext('pm');
-        if ($h > 12) {
-            $h = $h - 12;
-        }
-    } else {
-        $sAMPM = gettext('am');
-        if ($h == 0) {
-            $h = 12;
-        }
-    }
-
-    $fmt = FormatDateOutput();
-
-    $localValue = SystemConfig::getValue("sLanguage");
-    setlocale(LC_ALL, $localValue, $localValue . '.UTF-8', $localValue . '.utf8');
+    // Get the date format from system config
+    $dateFormat = SystemConfig::getValue("sDateFormatLong");
+    
+    // Convert format to DateTime format (from strftime-style)
+    // d = day, m = month name, Y = year
+    $dateFormat = str_replace("d", "d", $dateFormat);
+    $dateFormat = str_replace("m", "F", $dateFormat);  // F = full month name
+    $dateFormat = str_replace("Y", "Y", $dateFormat);
+    $dateFormat = str_replace("/", " ", $dateFormat);
+    $dateFormat = str_replace("-", " ", $dateFormat);
 
     if ($bWithTime) {
-        return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
+        // Add time format (g:i A = 12-hour format with am/pm)
+        $formattedDate = $dateObj->format($dateFormat . ' g:i A');
     } else {
-        return utf8_encode(strftime("$fmt", strtotime($dDate)));
+        $formattedDate = $dateObj->format($dateFormat);
     }
+
+    return $formattedDate;
 }
 
 function AlternateRowStyle(string $sCurrentStyle): string
@@ -492,7 +475,7 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
 //
 // Need to add other countries besides the US...
 //
-function ExpandPhoneNumber(string $sPhoneNumber = null, string $sPhoneCountry = null, &$bWeird): string
+function ExpandPhoneNumber(?string $sPhoneNumber = null, ?string $sPhoneCountry = null, &$bWeird): string
 {
     $sPhoneNumber ??= '';
     $sPhoneCountry ??= '';
@@ -723,7 +706,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             // code rajouté par Philippe Logel
             echo '<div class="input-group">' .
             '<div class="input-group-addon">' .
-            '<i class="fa fa-calendar"></i>' .
+            '<i class="fa-solid fa-calendar"></i>' .
             '</div>' .
             '<input class="form-control date-picker" type="text" id="' . $fieldname . '" Name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
             '</div>';
@@ -834,7 +817,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
 
             echo '<div class="input-group">';
             echo '<div class="input-group-addon">';
-            echo '<i class="fa fa-phone"></i>';
+            echo '<i class="fa-solid fa-phone"></i>';
             echo '</div>';
             echo '<input class="form-control"  type="text" Name="' . $fieldname . '" maxlength="30" size="30" value="' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
             echo '<br><input type="checkbox" name="' . $fieldname . 'noformat" value="1"';
@@ -1573,26 +1556,6 @@ function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, s
             return $GroupKey;
         }
     }
-}
-
-function requireUserGroupMembership($allowedRoles = null): bool
-{
-    if (!$allowedRoles) {
-        throw new Exception('Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.');
-    }
-    if ($_SESSION[$allowedRoles] || AuthenticationManager::getCurrentUser()->isAdmin()) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
-        return true;
-    } elseif (is_array($allowedRoles)) {  //sometimes we might have an array of allowed roles.
-        foreach ($allowedRoles as $role) {
-            if ($_SESSION[$role]) {
-                // The current allowed role is in the user's session variable
-                return true;
-            }
-        }
-    }
-
-    //if we get to this point in the code, then the user is not authorized.
-    throw new Exception('User is not authorized to access ' . debug_backtrace()[1]['function'], 401);
 }
 
 function random_color_part(): string

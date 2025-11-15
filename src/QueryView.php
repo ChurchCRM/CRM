@@ -158,7 +158,7 @@ function DisplayRecordCount()
     // Are we supposed to display a count for this query?
     if ($qry_Count == 1) {
         //Display the count of the recordset
-        echo '<p align="center">';
+        echo '<p class="text-center">';
         echo mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned');
         echo '</p>';
     }
@@ -217,12 +217,12 @@ function DoQuery()
             if ($fieldInfo->name === 'AddToCart') {
                 ?>
                 <td>
-                    <a class="AddToPeopleCart"  data-cartpersonid="<?= $aRow[$iCount] ?>">
+                    <button class="AddToCart" data-cart-id="<?= $aRow[$iCount] ?>" data-cart-type="person">
                         <span class="fa-stack">
-                        <i class="fa fa-square fa-stack-2x"></i>
-                        <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
+                        <i class="fa-solid fa-square fa-stack-2x"></i>
+                        <i class="fa-solid fa-cart-plus fa-stack-1x fa-inverse"></i>
                         </span>
-                    </a>
+                    </button>
                 </td>
                 <?php
 
@@ -250,17 +250,25 @@ function DoQuery()
                 <!-- TODO: #5049 create cart intersect API <input type="submit" class="btn btn-warning btn-sm" name="AndToCartSubmit" value="<?= gettext('Intersect With Cart') ?>"> -->
                 <button type="button" id="removeResultsFromCart" class="btn btn-danger" > <?= gettext('Remove Results from Cart') ?></button>
             </div>
-            <script>
-                $("#addResultsToCart").click(function () {
-                    var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                    window.CRM.cart.addPerson(selectedPersons);
-                });
+            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                // Wait for locales to load before setting up cart handlers
+                // CartManager uses i18next for notifications
+                window.CRM.onLocalesReady(function() {
+                    $("#addResultsToCart").click(function () {
+                        var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                        window.CRM.cartManager.addPerson(selectedPersons, {
+                            showNotification: true
+                        });
+                    });
 
-                $("#removeResultsFromCart").click(function(){
-                    var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                    window.CRM.cart.removePerson(selectedPersons);
+                    $("#removeResultsFromCart").click(function(){
+                        var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                        window.CRM.cartManager.removePerson(selectedPersons, {
+                            confirm: true,
+                            showNotification: true
+                        });
+                    });
                 });
-
             </script>
 
         <?php } ?>

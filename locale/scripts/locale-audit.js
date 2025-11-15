@@ -29,6 +29,7 @@ const path = require('path');
 class LocaleAuditor {
     constructor() {
         this.configPath = path.resolve(__dirname, '../../BuildConfig.json');
+        this.configExamplePath = path.resolve(__dirname, '../../BuildConfig.json.example');
         this.localesPath = path.resolve(__dirname, '../../src/locale/locales.json');
         this.outputPath = path.resolve(__dirname, '../../src/locale/poeditor.json');
         this.reportPath = path.resolve(__dirname, '../poeditor-audit.md');
@@ -37,15 +38,21 @@ class LocaleAuditor {
     }
 
     /**
-     * Load configuration from BuildConfig.json
+     * Load configuration from BuildConfig.json or BuildConfig.json.example
      */
     loadConfig() {
         try {
+            let configFile = this.configPath;
             if (!fs.existsSync(this.configPath)) {
-                throw new Error(`Configuration file not found: ${this.configPath}`);
+                if (fs.existsSync(this.configExamplePath)) {
+                    console.log('⚠️  BuildConfig.json not found, using BuildConfig.json.example');
+                    configFile = this.configExamplePath;
+                } else {
+                    throw new Error(`Configuration file not found: neither ${this.configPath} nor ${this.configExamplePath} exist`);
+                }
             }
             
-            this.config = JSON.parse(fs.readFileSync(this.configPath, 'utf8'));
+            this.config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
             
             if (!this.config.POEditor || !this.config.POEditor.token || !this.config.POEditor.id) {
                 throw new Error('POEditor configuration missing in BuildConfig.json');

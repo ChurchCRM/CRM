@@ -1252,10 +1252,6 @@ msgid "Family List"
 msgstr "רשימת משפחות"
 
 #: 
-msgid "Add Family"
-msgstr "הוסף משפחה"
-
-#: 
 msgid "Created"
 msgstr "נוצר"
 
@@ -1280,10 +1276,6 @@ msgid "Next Family"
 msgstr "משפחה הבאה"
 
 #: 
-msgid "Delete this Family"
-msgstr "מחק משפחה זו"
-
-#: 
 msgid "Upload Photo"
 msgstr "העלה תמונה"
 
@@ -1294,10 +1286,6 @@ msgstr "מחק תמונה"
 #: 
 msgid "Add a Note"
 msgstr "הוסף הערה"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "הוסף את כל בני המשפחה לעגלה"
 
 #: 
 msgid "Timeline"
@@ -1406,10 +1394,6 @@ msgstr "אתה עומד לשלוח בדוא\"ל עותק של פרטי המשפ�
 #: 
 msgid "Financial Reports"
 msgstr "דוחות כספיים"
-
-#: 
-msgid "No records were returned from the previous report."
-msgstr "לא הוחזרו רשומות מהדוח הקודם."
 
 #: 
 msgid "Report Type:"
@@ -1772,10 +1756,6 @@ msgid "Remove from Cart"
 msgstr "הסר מהעגלה"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "טקסט עבור מזהה אירוע: "
-
-#: 
 msgid "Group Editor"
 msgstr "עורך קבוצות"
 
@@ -1944,10 +1924,6 @@ msgid "Group View"
 msgstr "תצוגת קבוצה"
 
 #: 
-msgid "Group Functions"
-msgstr "פונקציות קבוצה"
-
-#: 
 msgid "Edit this Group"
 msgstr "ערוך קבוצה זו"
 
@@ -2008,7 +1984,8 @@ msgid "Assigned Properties"
 msgstr "מאפיינים שהוקצו"
 
 #: 
-msgid "Group Members:"
+#, fuzzy
+msgid "Group Members"
 msgstr "חברי קבוצה:"
 
 #: 
@@ -2790,10 +2767,6 @@ msgid "Query Listing"
 msgstr "רשימת שאילתות"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "הרץ שאילתת טקסט חופשי"
-
-#: 
 msgid "Free-Text Query"
 msgstr "שאילתת טקסט חופשי"
 
@@ -2932,10 +2905,6 @@ msgstr "מחק רשומת משפחה בלבד"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "מחק רשומת משפחה ובני משפחה"
-
-#: 
-msgid "Filter and Cart"
-msgstr "סינון וסל"
 
 #: 
 msgid "Listing"
@@ -3326,14 +3295,6 @@ msgid "Select Fiscal Year"
 msgstr "בחר שנת כספים"
 
 #: 
-msgid "pm"
-msgstr "אחה״צ"
-
-#: 
-msgid "am"
-msgstr "לפנה״צ"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "מזהה עורך לא חוקי!"
 
@@ -3634,20 +3595,12 @@ msgid "Sunday School Class Functions"
 msgstr "פונקציות כיתת בית ספר לימודי דת"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "הפעל/כבה תפריט נפתח"
-
-#: 
 msgid "Teachers"
 msgstr "מורים"
 
 #: 
 msgid "Send Message"
 msgstr "שלח הודעה"
-
-#: 
-msgid "View Profile"
-msgstr "צפה בפרופיל"
 
 #: 
 msgid "Quick Status"
@@ -3986,68 +3939,12 @@ msgid "Edit Settings"
 msgstr "ערוך הגדרות"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "שדרג את התוכנה"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "שלב 1: גיבוי מסד נתונים"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "אנא צור גיבוי מסד הנתונים לפני תחילת השדרוג."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "צור גיבוי למסד הנתונים"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "שלב 2: הורד חבילת עדכון מהשרת"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "הורד את הקבצים העדכניים ביותר מדף השחרור של התוכנה ב-GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "הורד קבצי עדכון"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "שלב 3: החלת חבילת העדכון על השרת"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "חלץ את הארכיון החדש והפעל את הקבצים החדשים"
-
-#: 
 msgid "Full Path:"
 msgstr "נתיב מלא:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "שדרוג מערכת"
-
-#: 
-msgid "Step 4: Login"
-msgstr "שלב 4: התחברות"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "התחברות למערכת המשודרגת"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "הגיבוי הושלם, ומוכן להורדה."
-
-#: 
-msgid "Backup Error."
-msgstr "שגיאה בגיבוי."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4148,18 +4045,6 @@ msgstr "שנתי"
 #: 
 msgid "Registration Complete"
 msgstr "ההרשמה הושלמה"
-
-#: 
-msgid "Register"
-msgstr "הרשמה"
-
-#: 
-msgid "Register your family"
-msgstr "רשום את משפחתך"
-
-#: 
-msgid "How many people are in your family"
-msgstr "כמה אנשים במשפחתך"
 
 #: 
 msgid "Add All Classes"
@@ -6949,10 +6834,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "אנא ודא שזה מה שאתה רוצה לעשות.</p>"
 
 #: 
-msgid " this Family"
-msgstr "משפחה זו"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "אישור ביטול הפעלה"
 
@@ -6983,10 +6864,6 @@ msgstr "שם קובץ מסד נתוני קואורדינטות:"
 #: 
 msgid "Intersect With Cart"
 msgstr "הצטלבות עם עגלה"
-
-#: 
-msgid "Family Member"
-msgstr "בן משפחה"
 
 #: 
 msgid "select an option"
@@ -7099,10 +6976,6 @@ msgstr "הצג תמונה"
 #: 
 msgid "Family Photo"
 msgstr "תמונת משפחה"
-
-#: 
-msgid "Quick Settings"
-msgstr "הגדרות מהירות"
 
 #: 
 msgid "Status"
@@ -7405,24 +7278,12 @@ msgid "Reset Password"
 msgstr "איפוס סיסמה"
 
 #: 
-msgid "Unable to reset password"
-msgstr "לא ניתן לאפס סיסמה"
-
-#: 
 msgid "Reset your password"
 msgstr "אפס את הסיסמה שלך"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "מצטערים, איננו יכולים לעבד את בקשתך בזמן זה"
-
-#: 
-msgid "Login Name is Required"
-msgstr "נדרש שם משתמש"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "סיסמה חדשה נשלחה אליך. אנא בדוק את הדואר האלקטרוני שלך"
 
 #: 
 msgid "Kiosk Manager"
@@ -7523,10 +7384,6 @@ msgstr "הסר הכל"
 #: 
 msgid "Not all members of this group are in the cart"
 msgstr "לא כל חברי הקבוצה הזו נמצאים בעגלה"
-
-#: 
-msgid "Add all"
-msgstr "הוסף הכל"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7776,10 +7633,6 @@ msgid "Maximum number of Addresses"
 msgstr "מספר מקסימלי של כתובות"
 
 #: 
-msgid "Show type of group:"
-msgstr "הצג סוג קבוצה:"
-
-#: 
 msgid "Add Students"
 msgstr "הוסף תלמידים"
 
@@ -7826,26 +7679,6 @@ msgstr "צור אלבום תמונות"
 #: 
 msgid "SSE"
 msgstr "דרום-דרום-מזרח"
-
-#: 
-msgid "Height to use for images"
-msgstr "גובה לשימוש עבור תמונות"
-
-#: 
-msgid "Width to use for images"
-msgstr "רוחב לשימוש עבור תמונות"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "רוחב לשימוש עבור תמונות ממוזערות"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "גודל נקודה לשימוש עבור תמונות ממוזערות של ראשי תיבות"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "שניות מטמון לקוח עבור תמונות"
 
 #: 
 msgid "Server cache time for remote images"
@@ -7898,10 +7731,6 @@ msgstr "הזז אירוע"
 #: 
 msgid "Resize Event"
 msgstr "שנה גודל אירוע"
-
-#: 
-msgid "Text from"
-msgstr "טקסט מאת"
 
 #: 
 msgid "Profile"
@@ -8421,10 +8250,6 @@ msgid "Menu Name"
 msgstr "שם התפריט"
 
 #: 
-msgid "Max 20 char"
-msgstr "מקסימום 20 תווים"
-
-#: 
 msgid "Link Address"
 msgstr "כתובת קישור"
 
@@ -8570,10 +8395,6 @@ msgid "Integrity Check Details:"
 msgstr "פרטי בדיקת תקינות:"
 
 #: 
-msgid "I Understand"
-msgstr "אני מבין"
-
-#: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "זוהו סוגי הפקדה שאינם נתמכים"
 
@@ -8601,10 +8422,6 @@ msgstr "צור גיבוי"
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "נקודת קצה לגיבוי מרוחק. אם זה WebDAV, חייב להיות מקודד URL."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "כלול קבצי תמונות ראשי תיבות, קבצי תמונות מרוחקים (gravatar) ותמונות ממוזערות בגיבוי. קבצים אלה בדרך כלל ניתנים לשחזור לאחר שחזור ומוסיפים ערך מועט מאוד לארכיון הגיבוי תוך עלות גבוהה של זמן ביצוע ואחסון"
 
 #: 
 msgid "Password (if any)"
@@ -8669,7 +8486,8 @@ msgstr "האם להציג מידע לא זמין על אדם שהורש מהמש
 "להיות מוצג אם המידע המתאים לא הוזן עבור אותו אדם."
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "לחץ CTRL + C כדי להעתיק את כל שמות\\מספרי הטלפון שבקבוצה"
 
 #: 
@@ -8781,10 +8599,6 @@ msgid "Remove Results from Cart"
 msgstr "הסר תוצאות מהסל"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "אזהרה: נמצאו משימות מלפני העדכון"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "זוהו מספר תנאים שעלולים למנוע שדרוג מוצלח"
 
@@ -8815,14 +8629,6 @@ msgstr "אתחל בסיס נתונים"
 #: 
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr "פעולה זו תאפס את נתוני המערכת ותפעיל מחדש את המערכת כהתקנה חדשה."
-
-#: 
-msgid "Clear Filter"
-msgstr "הסר מסנן"
-
-#: 
-msgid "Add Person"
-msgstr "הוסף אדם"
 
 #. Context: locales
 #: 
@@ -8960,10 +8766,6 @@ msgstr "הסיסמה החדשה שלך דומה מדי לישנה"
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "איפוס סיסמה אינו זמין. אנא צור קשר עם מנהל המערכת שלך"
-
-#: 
-msgid "Authentication Issue"
-msgstr "בעיית אימות"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

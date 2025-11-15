@@ -9,15 +9,9 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 /* @var $families ObjectCollection */
 ?>
 
-<div class="pull-right">
-    <a class="btn btn-success" role="button" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php">
-        <span class="fa fa-plus" aria-hidden="true"></span><?= gettext('Add Family') ?>
-    </a>
-</div>
-<p><br /><br /></p>
 <div class="card">
     <div class="card-body">
-        <table id="families" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+        <table id="families" class="table table-striped table-bordered data-table w-100">
             <thead>
                 <tr>
                     <th><?= gettext('Actions') ?></th>
@@ -37,12 +31,35 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     /* @var Family $family */
                     ?>
                     <tr>
-                        <td><a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
-                                <i class="fa fa-search-plus"></i>
+                        <td>
+                            <a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
+                                <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
                             </a>
                             <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
-                                <i class="fas fa-pen"></i>
+                                <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
                             </a>
+                            <?php 
+                                // Check if all family members are in cart
+                                $isInCart = false;
+                                if (isset($_SESSION['aPeopleCart'])) {
+                                    $familyMembers = $family->getPeople();
+                                    if (count($familyMembers) > 0) {
+                                        $allInCart = true;
+                                        foreach ($familyMembers as $member) {
+                                            if (!in_array($member->getId(), $_SESSION['aPeopleCart'], false)) {
+                                                $allInCart = false;
+                                                break;
+                                            }
+                                        }
+                                        $isInCart = $allInCart;
+                                    }
+                                }
+                            ?>
+                            <?php if (!$isInCart) { ?>
+                                <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus fa-sm"></i></button>
+                            <?php } else { ?>
+                                <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-times fa-sm"></i></button>
+                            <?php } ?>
                         </td>
 
                         <?php

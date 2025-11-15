@@ -86,11 +86,11 @@ require_once 'Include/Header.php';
             </div>
           </div>
           <div class="row p-2">
-            <div class="col-lg-5 m-2" style="text-align:center">
+            <div class="col-lg-5 m-2 text-center">
               <input type="submit" class="btn btn-primary" value="<?php echo gettext('Save'); ?>" name="DepositSlipSubmit">
             </div>
-            <div class="col-lg-5 m-2" style="text-align:center">
-              <input type="button" class="btn btn-default" value="<?php echo gettext('Deposit Slip Report'); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo $thisDeposit->getId() ?>/pdf');">
+            <div class="col-lg-5 m-2 text-center">
+              <input type="button" class="btn btn-secondary" value="<?php echo gettext('Deposit Slip Report'); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo $thisDeposit->getId() ?>/pdf');">
             </div>
           </div>
           <?php
@@ -109,7 +109,7 @@ require_once 'Include/Header.php';
       <div class="card-body">
         <div class="col-lg-6">
           <canvas id="type-donut" style="height: 250px;"></canvas>
-          <ul style="margin:0px; border:0px; padding:0px;">
+          <ul class="list-unstyled m-0">
           <?php
           // Get deposit totals
             echo '<li><b>TOTAL (' . $thisDeposit->getPledges()->count() . '):</b> $' . $thisDeposit->getVirtualColumn('totalAmount') . '</li>';
@@ -124,7 +124,7 @@ require_once 'Include/Header.php';
         </div>
          <div class="col-lg-6">
           <canvas id="fund-donut" style="height:250px"></canvas>
-          <ul style="margin:0px; border:0px; padding:0px;">
+          <ul class="list-unstyled m-0">
           <?php
             foreach ($thisDeposit->getFundTotals() as $fund) {
                 echo '<li><b>' . $fund['Name'] . '</b>: $' . $fund['Total'] . '</li>';
@@ -209,52 +209,54 @@ foreach ($thisDeposit->getFundTotals() as $tmpfund) {
   var pledgeData = <?= json_encode($pledgeData) ?>;
   var pledgeBackgroundColor = ['#197A05','#003399'];
   $(document).ready(function() {
-    initPaymentTable();
-    var pledgeLabels = <?= json_encode(array_values($fundData)); ?>;
-    initCharts(pledgeLabels,
-               pledgeData,
-               pledgeBackgroundColor,
-               fundLabels,
-               fundData,
-               fundBackgroundColor);
-    initDepositSlipEditor();
+    window.CRM.onLocalesReady(function() {
+      initPaymentTable();
+      var pledgeLabels = <?= json_encode(array_values($fundData)); ?>;
+      initCharts(pledgeLabels,
+                 pledgeData,
+                 pledgeBackgroundColor,
+                 fundLabels,
+                 fundData,
+                 fundBackgroundColor);
+      initDepositSlipEditor();
 
-    $('#deleteSelectedRows').click(function() {
-      var deletedRows = dataT.rows('.selected').data();
-      bootbox.confirm({
-        title:'<?= gettext("Confirm Delete")?>',
-        message: '<p><?= gettext("Are you sure you want to delete the selected")?> ' + deletedRows.length + ' <?= gettext("payments(s)?") ?></p>' +
-        '<p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>'+
-        '<p><?= gettext("Please ensure this what you want to do.</p>") ?>',
-        buttons: {
-          cancel : {
-            label: '<?= gettext("Close"); ?>'
+      $('#deleteSelectedRows').click(function() {
+        var deletedRows = dataT.rows('.selected').data();
+        bootbox.confirm({
+          title:'<?= gettext("Confirm Delete")?>',
+          message: '<p><?= gettext("Are you sure you want to delete the selected")?> ' + deletedRows.length + ' <?= gettext("payments(s)?") ?></p>' +
+          '<p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>'+
+          '<p><?= gettext("Please ensure this what you want to do.</p>") ?>',
+          buttons: {
+            cancel : {
+              label: '<?= gettext("Close"); ?>'
+            },
+            confirm: {
+              label: '<?php echo gettext("Delete"); ?>'
+            }
           },
-          confirm: {
-            label: '<?php echo gettext("Delete"); ?>'
+          callback: function ( result ) {
+            if ( result )
+            {
+              window.CRM.deletesRemaining = deletedRows.length;
+              $.each(deletedRows, function(index, value) {
+                window.CRM.APIRequest({
+                  method: 'DELETE',
+                  path: 'payments/' + value.GroupKey,
+                })
+                .done(function(data) {
+                  dataT.rows('.selected').remove().draw(false);
+                  window.CRM.deletesRemaining --;
+                  if ( window.CRM.deletesRemaining == 0 )
+                  {
+                    location.reload();
+                  }
+                });
+                });
+            }
           }
-        },
-        callback: function ( result ) {
-          if ( result )
-          {
-            window.CRM.deletesRemaining = deletedRows.length;
-            $.each(deletedRows, function(index, value) {
-              window.CRM.APIRequest({
-                method: 'DELETE',
-                path: 'payments/' + value.GroupKey,
-              })
-              .done(function(data) {
-                dataT.rows('.selected').remove().draw(false);
-                window.CRM.deletesRemaining --;
-                if ( window.CRM.deletesRemaining == 0 )
-                {
-                  location.reload();
-                }
-              });
-              });
-          }
-        }
-      })
+        })
+      });
     });
   });
 </script>

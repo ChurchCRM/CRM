@@ -279,7 +279,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (strlen($dFriendDate) > 0) {
         $dateString = parseAndValidateDate($dFriendDate, 'US', 'past');
         if ($dateString === false) {
-            $sFriendDateError = '<span style="color: red; ">'
+            $sFriendDateError = '<span class="text-danger">'
                 . gettext('Not a valid Friend Date') . '</span>';
             $bErrorFlag = true;
         } else {
@@ -291,7 +291,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (strlen($dMembershipDate) > 0) {
         $dMembershipDate = parseAndValidateDate($dMembershipDate, 'US', 'past');
         if ($dMembershipDate === false) {
-            $sMembershipDateError = '<span style="color: red; ">'
+            $sMembershipDateError = '<span class="text-danger">'
                 . gettext('Not a valid Membership Date') . '</span>';
             $bErrorFlag = true;
         }
@@ -300,7 +300,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     // Validate Email
     if (strlen($sEmail) > 0) {
         if (!checkEmail($sEmail)) {
-            $sEmailError = '<span style="color: red; ">'
+            $sEmailError = '<span class="text-danger">'
                 . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
         }
@@ -309,7 +309,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     // Validate Work Email
     if (strlen($sWorkEmail) > 0) {
         if (!checkEmail($sWorkEmail)) {
-            $sWorkEmailError = '<span style="color: red; ">'
+            $sWorkEmailError = '<span class="text-danger">'
                 . gettext('Work Email is Not Valid') . '</span>';
             $bErrorFlag = true;
         }
@@ -601,15 +601,15 @@ require_once 'Include/Header.php';
 ?>
 <form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?>" name="PersonEditor">
     <div class="alert alert-info alert-dismissable">
-        <i class="fa fa-info"></i>
+        <i class="fa-solid fa-info"></i>
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong><span
-                style="color: red;"><?= gettext('Red text') ?></span></strong> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
+                class="text-danger"><?= gettext('Red text') ?></span></strong> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
     </div>
     <?php if ($bErrorFlag) {
         ?>
         <div class="alert alert-danger alert-dismissable">
-            <i class="fa fa-ban"></i>
+            <i class="fa-solid fa-ban"></i>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <?= gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') ?>
         </div>
@@ -653,7 +653,7 @@ require_once 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sFirstNameError) {
-                            ?><br><span style="color: red;"><?php echo $sFirstNameError ?></span><?php
+                            ?><br><span class="text-danger"><?php echo $sFirstNameError ?></span><?php
                         } ?>
                     </div>
 
@@ -663,7 +663,7 @@ require_once 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sMiddleNameError) {
-                            ?><br><span style="color: red;"><?php echo $sMiddleNameError ?></span><?php
+                            ?><br><span class="text-danger"><?php echo $sMiddleNameError ?></span><?php
                         } ?>
                     </div>
 
@@ -673,7 +673,7 @@ require_once 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sLastNameError) {
-                            ?><br><span style="color: red;"><?php echo $sLastNameError ?></span><?php
+                            ?><br><span class="text-danger"><?php echo $sLastNameError ?></span><?php
                         } ?>
                     </div>
 
@@ -752,11 +752,11 @@ require_once 'Include/Header.php';
                                maxlength="4" size="5"
                                placeholder="yyyy" class="form-control">
                         <?php if ($sBirthYearError) {
-                            ?><span style="color: red;"><br><?php echo $sBirthYearError ?>
+                            ?><span class="text-danger"><br><?php echo $sBirthYearError ?>
                             </span><?php
                         } ?>
                         <?php if ($sBirthDateError) {
-                            ?><span style="color: red;"><?php echo $sBirthDateError ?></span><?php
+                            ?><span class="text-danger"><?php echo $sBirthDateError ?></span><?php
                         } ?>
                     </div>
                     <div class="col-md-2">
@@ -827,7 +827,7 @@ require_once 'Include/Header.php';
                         <div class="col-md-6">
                             <label>
                                 <?php if ($bFamilyAddress1) {
-                                    echo '<span style="color: red;">';
+                                    echo '<span class="text-danger">';
                                 }
 
                                 echo gettext('Address') . ' 1:';
@@ -843,7 +843,7 @@ require_once 'Include/Header.php';
                         <div class="col-md-3">
                             <label>
                                 <?php if ($bFamilyAddress2) {
-                                    echo '<span style="color: red;">';
+                                    echo '<span class="text-danger">';
                                 }
 
                                 echo gettext('Address') . ' 2:';
@@ -859,7 +859,7 @@ require_once 'Include/Header.php';
                         <div class="col-md-3">
                             <label>
                                 <?php if ($bFamilyCity) {
-                                    echo '<span style="color: red;">';
+                                    echo '<span class="text-danger">';
                                 }
 
                                 echo gettext('City') . ':';
@@ -879,7 +879,7 @@ require_once 'Include/Header.php';
                     <div class="form-group col-md-2">
                         <label for="StatleTextBox">
                             <?php if ($bFamilyState) {
-                                echo '<span style="color: red;">';
+                                echo '<span class="text-danger">';
                             }
 
                             echo gettext('State') . ':';
@@ -902,7 +902,7 @@ require_once 'Include/Header.php';
                     <div class="form-group col-md-1">
                         <label for="Zip">
                             <?php if ($bFamilyZip) {
-                                echo '<span style="color: red;">';
+                                echo '<span class="text-danger">';
                             }
 
                             echo gettext('Zip') . ':';
@@ -923,7 +923,7 @@ require_once 'Include/Header.php';
                     <div class="form-group col-md-2">
                         <label for="Zip">
                             <?php if ($bFamilyCountry) {
-                                echo '<span style="color: red;">';
+                                echo '<span class="text-danger">';
                             }
 
                             echo gettext('Country') . ':';
@@ -959,7 +959,7 @@ require_once 'Include/Header.php';
                     <label for="HomePhone">
                         <?php
                         if ($bFamilyHomePhone) {
-                            echo '<span style="color: red;">' . gettext('Home Phone') . ':</span>';
+                            echo '<span class="text-danger">' . gettext('Home Phone') . ':</span>';
                         } else {
                             echo gettext('Home Phone') . ':';
                         }
@@ -967,7 +967,7 @@ require_once 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="HomePhone"
                                value="<?= htmlentities(stripslashes($sHomePhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -983,7 +983,7 @@ require_once 'Include/Header.php';
                     <label for="WorkPhone">
                         <?php
                         if ($bFamilyWorkPhone) {
-                            echo '<span style="color: red;">' . gettext('Work Phone') . ':</span>';
+                            echo '<span class="text-danger">' . gettext('Work Phone') . ':</span>';
                         } else {
                             echo gettext('Work Phone') . ':';
                         }
@@ -991,7 +991,7 @@ require_once 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="WorkPhone"
                                value="<?= htmlentities(stripslashes($sWorkPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1009,7 +1009,7 @@ require_once 'Include/Header.php';
                     <label for="CellPhone">
                         <?php
                         if ($bFamilyCellPhone) {
-                            echo '<span style="color: red;">' . gettext('Mobile Phone') . ':</span>';
+                            echo '<span class="text-danger">' . gettext('Mobile Phone') . ':</span>';
                         } else {
                             echo gettext('Mobile Phone') . ':';
                         }
@@ -1017,7 +1017,7 @@ require_once 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="CellPhone"
                                value="<?= htmlentities(stripslashes($sCellPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1036,7 +1036,7 @@ require_once 'Include/Header.php';
                     <label for="Email">
                         <?php
                         if ($bFamilyEmail) {
-                            echo '<span style="color: red;">' . gettext('Email') . ':</span></td>';
+                            echo '<span class="text-danger">' . gettext('Email') . ':</span></td>';
                         } else {
                             echo gettext('Email') . ':</td>';
                         }
@@ -1044,13 +1044,13 @@ require_once 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-envelope"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
                         <input type="text" name="Email" id="Email"
                                value="<?= htmlentities(stripslashes($sEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sEmailError) {
-                            ?><span style="color: red;"><?php echo $sEmailError ?></span><?php
+                            ?><span class="text-danger"><?php echo $sEmailError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -1058,13 +1058,13 @@ require_once 'Include/Header.php';
                     <label for="WorkEmail"><?= gettext('Work / Other Email') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-envelope"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
                         <input type="text" name="WorkEmail"
                                value="<?= htmlentities(stripslashes($sWorkEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sWorkEmailError) {
-                            ?><span style="color: red;"><?php echo $sWorkEmailError ?></span></td><?php
+                            ?><span class="text-danger"><?php echo $sWorkEmailError ?></span></td><?php
                         } ?>
                     </div>
                 </div>
@@ -1074,7 +1074,7 @@ require_once 'Include/Header.php';
                     <label for="Facebook">
                         <?php
                         if ($bFacebook) {
-                            echo '<span style="color: red;">Facebook:</span></td>';
+                            echo '<span class="text-danger">Facebook:</span></td>';
                         } else {
                             echo 'Facebook:</td>';
                         }
@@ -1088,7 +1088,7 @@ require_once 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sFacebook), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="50" class="form-control">
                         <?php if ($sFacebookError) {
-                            ?><span style="color: red;"><?php echo $sFacebookError ?></span><?php
+                            ?><span class="text-danger"><?php echo $sFacebookError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -1102,7 +1102,7 @@ require_once 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="50" class="form-control">
                         <?php if ($sTwitterError) {
-                            ?><span style="color: red;"><?php echo $sTwitterError ?></span></td><?php
+                            ?><span class="text-danger"><?php echo $sTwitterError ?></span></td><?php
                         } ?>
                     </div>
                 </div>
@@ -1116,7 +1116,7 @@ require_once 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="50" class="form-control">
                         <?php if ($sLinkedInError) {
-                            ?><span style="color: red;"><?php echo $sLinkedInError ?></span></td><?php
+                            ?><span class="text-danger"><?php echo $sLinkedInError ?></span></td><?php
                         } ?>
                     </div>
                 </div>
@@ -1152,7 +1152,7 @@ require_once 'Include/Header.php';
                     <label><?= gettext('Membership Date') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
+                            <i class="fa-solid fa-calendar"></i>
                         </div>
                         <!-- Philippe Logel -->
                         <input type="text" name="MembershipDate" class="form-control date-picker"
@@ -1160,7 +1160,7 @@ require_once 'Include/Header.php';
                                size="11"
                                placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                         <?php if ($sMembershipDateError) {
-                            ?><span style="color: red;"><?= $sMembershipDateError ?></span><?php
+                            ?><span class="text-danger"><?= $sMembershipDateError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -1169,14 +1169,14 @@ require_once 'Include/Header.php';
                         <label><?= gettext('Friend Date') ?>:</label>
                         <div class="input-group">
                             <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
+                                <i class="fa-solid fa-calendar"></i>
                             </div>
                             <input type="text" name="FriendDate" class="form-control date-picker"
                                    value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10" id="sel2"
                                    size="10"
                                    placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                             <?php if ($sFriendDateError) {
-                                ?><span style="color: red;"><?php echo $sFriendDateError ?></span><?php
+                                ?><span class="text-danger"><?php echo $sFriendDateError ?></span><?php
                             } ?>
                         </div>
                     </div>
@@ -1216,7 +1216,7 @@ require_once 'Include/Header.php';
 
                             formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
                             if (isset($aCustomErrors[$custom_Field])) {
-                                echo '<span style="color: red; ">' . $aCustomErrors[$custom_Field] . '</span>';
+                                echo '<span class="text-danger">' . $aCustomErrors[$custom_Field] . '</span>';
                             }
                             echo '</div></div>';
                         }

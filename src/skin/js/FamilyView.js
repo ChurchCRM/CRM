@@ -1,4 +1,4 @@
-$(function () {
+function initializeFamilyView() {
     if (!window.CRM.currentActive) {
         $("#family-deactivated").removeClass("d-none");
     }
@@ -56,10 +56,10 @@ $(function () {
                     selectedFamilyProperties.push(propId);
 
                     let editIcon = allowEdit
-                        ? `<a href="${window.CRM.root}/PropertyAssign.php?FamilyID=${window.CRM.currentFamily}&PropertyID=${propId}"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pen"></i></button></a>`
+                        ? `<a href="${window.CRM.root}/PropertyAssign.php?FamilyID=${window.CRM.currentFamily}&PropertyID=${propId}"><button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button></a>`
                         : "";
                     let deleteIcon = allowDelete
-                        ? `<div class="btn btn-xs btn-danger delete-property" data-property-id="${propId}" data-property-name="${propName}"><i class="fa fa-trash"></i></div>`
+                        ? `<div class="btn btn-xs btn-danger delete-property" data-property-id="${propId}" data-property-name="${propName}"><i class="fa-solid fa-trash"></i></div>`
                         : "";
 
                     $("#family-property-table").append(
@@ -132,13 +132,13 @@ $(function () {
                 data: "GroupKey",
                 render: function (data, type, row) {
                     return (
-                        '<a class="btn btn-default" href="' +
+                        '<a class="btn btn-sm btn-primary" href="' +
                         window.CRM.root +
                         "/PledgeEditor.php?GroupKey=" +
                         row.GroupKey +
                         "&amp;linkBack=v2/family/" +
                         window.CRM.currentFamily +
-                        '"><i class="fas fa-pen bg-info"></i></a>'
+                        '"><i class="fa-solid fa-pen"></i></a>'
                     );
                 },
                 searchable: false,
@@ -150,13 +150,13 @@ $(function () {
                 data: "GroupKey",
                 render: function (data, type, row) {
                     return (
-                        '<a class="btn btn-default" href="' +
+                        '<a class="btn btn-sm btn-danger" href="' +
                         window.CRM.root +
                         "/PledgeDelete.php?GroupKey=" +
                         row.GroupKey +
                         "&amp;linkBack=v2/family/" +
                         window.CRM.currentFamily +
-                        '"><i class="fa fa-trash bg-red"></i></a>'
+                        '"><i class="fa-solid fa-trash-can"></i></a>'
                     );
                 },
                 searchable: false,
@@ -253,10 +253,6 @@ $(function () {
             "_blank",
         );
         $("#confirm-verify").modal("hide");
-    });
-
-    $("#AddFamilyToCart").on("click", function () {
-        window.CRM.cart.addFamily($(this).data("familyid"));
     });
 
     // Photos
@@ -364,4 +360,9 @@ $(function () {
             }
         });
     }
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeFamilyView);
 });

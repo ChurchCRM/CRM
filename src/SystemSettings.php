@@ -61,6 +61,13 @@ if (isset($_POST['save'])) {
             $value = date_default_timezone_get();
         }
 
+        // For password fields, only update if a new value is provided (non-empty)
+        if ($current_type == 'password' && empty($value)) {
+            // Skip update - preserve existing password
+            next($type);
+            continue;
+        }
+
         SystemConfig::setValueById($id, $value);
         next($type);
     }
@@ -140,7 +147,7 @@ require_once 'Include/Header.php';
                     <?php
                     if ($setting->getType() == 'choice') {
                         ?>
-                      <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
+                      <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox w-100">
                         <?php
                         foreach (json_decode($setting->getData())->Choices as $choice) {
                             if (strpos($choice, ":") === false) {
@@ -161,7 +168,7 @@ require_once 'Include/Header.php';
                         <?php
                     } elseif ($setting->getType() == 'password') {
                         ?>
-                      <input type=password size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]' value='<?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?>' class="form-control">
+                      <input type=password size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]' class="form-control" placeholder="<?= gettext('Leave blank to keep existing password') ?>">
                         <?php
                     } elseif ($setting->getType() == 'textarea') {
                         ?>
@@ -179,7 +186,7 @@ require_once 'Include/Header.php';
                             $sel1 = 'SELECTED';
                             $sel2 = '';
                         } ?>
-                      <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
+                      <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox w-100">
                         <option value='' <?= $sel1 ?>><?= gettext('False') ?>
                         <option value='1' <?= $sel2 ?>><?= gettext('True') ?>
                       </select>
@@ -192,7 +199,7 @@ require_once 'Include/Header.php';
                         <?php
                     } elseif ($setting->getType() == 'ajax') {
                         ?>
-                      <select id='ajax-<?= $setting->getId() ?>' name='new_value[<?= $setting->getId() ?>]' data-url="<?= $setting->getData() ?>" data-value="<?= $setting->getValue() ?>" class="choiceSelectBox" style="width: 100%">
+                      <select id='ajax-<?= $setting->getId() ?>' name='new_value[<?= $setting->getId() ?>]' data-url="<?= $setting->getData() ?>" data-value="<?= $setting->getValue() ?>" class="choiceSelectBox w-100">
                         <option value=''><?= gettext('Unassigned') ?>
                       </select>
                         <?php
@@ -213,12 +220,12 @@ require_once 'Include/Header.php';
                   <td>
                     <?php if (!empty($setting->getTooltip())) {
                         ?>
-                      <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                      <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
                         <?php
                     }
                     if (!empty($setting->getUrl())) {
                         ?>
-                      <a href="<?= $setting->getUrl() ?>" target="_blank"><i class="fa fa-fw fa-link"></i></a>
+                      <a href="<?= $setting->getUrl() ?>" target="_blank"><i class="fa-solid fa-fw fa-link"></i></a>
                         <?php
                     } ?>
                     <?= $display_default ?>

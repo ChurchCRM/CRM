@@ -57,9 +57,9 @@ if ($sAction === 'delete' && $iOpp > 0) {
 
     $sPageTitle = gettext('Volunteer Opportunity Delete Confirmation');
     require_once 'Include/Header.php';
-    ?>
+?>
     <div class="card card-body">
-        <div class="callout callout-danger"><?= gettext('Please confirm deletion of') ?>:</div>
+        <div class="alert alert-danger"><?= gettext('Please confirm deletion of') ?>:</div>
         <table class="table">
             <tr>
                 <th>&nbsp;</th>
@@ -98,7 +98,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
     }
     echo "\n<br><a class='btn btn-danger' href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . '"> ';
     echo gettext('Yes, delete this Volunteer Opportunity') . ' </a>';
-    echo "\n<a href=\"VolunteerOpportunityEditor.php\" class='btn btn-default'> ";
+    echo "\n<a href=\"VolunteerOpportunityEditor.php\" class='btn btn-secondary'> ";
     echo gettext('No, cancel this deletion') . ' </a>';
     echo '</div>';
     require_once 'Include/Footer.php';
@@ -259,7 +259,7 @@ if (isset($_POST['SaveChanges'])) {
 }
 
 // Construct the form
-?>
+    ?>
     <div class="card card-body">
         <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
@@ -267,9 +267,9 @@ if (isset($_POST['SaveChanges'])) {
 
                 <?php
                 if ($numRows == 0) {
-                    ?>
-                    <div class="callout callout-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
-                    <?php
+                ?>
+                    <div class="alert alert-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
+                <?php
                 } else { // if an 'action' (up/down arrow clicked, or order was input)
                     if ($iRowNum && $sAction != '') {
                         // cast as int and couple with switch for sql injection prevention for $row_num
@@ -314,19 +314,19 @@ if (isset($_POST['SaveChanges'])) {
                 ?>
                 <tr>
                     <td colspan="5">
-                        <div class="callout callout-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
+                        <div class="alert alert-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5">
                         <?php
                         if ($bErrorFlag) {
-                            echo '<div class="callout callout-danger">';
+                            echo '<div class="alert alert-danger">';
                             echo gettext('Invalid fields or selections. Changes not saved! Please correct and try again!');
                             echo '</div>';
                         }
                         if (strlen($sDeleteError) > 0) {
-                            echo ' <div class="callout callout-danger">';
+                            echo ' <div class="alert alert-danger">';
                             echo $sDeleteError;
                             echo '</div>';
                         }
@@ -359,12 +359,12 @@ if (isset($_POST['SaveChanges'])) {
 
                         echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . "\"> <i class='fa fa-times'></i></a></td>"; ?>
 
-                        <td class="TextColumn" align="center">
+                        <td class="TextColumn text-center">
                             <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
                             <?php
 
                             if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                                echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                                echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
                             } ?>
                         </td>
 
@@ -373,7 +373,7 @@ if (isset($_POST['SaveChanges'])) {
                         </td>
 
                         </tr>
-                        <?php
+                <?php
                     }
                 }
                 ?>
@@ -383,10 +383,10 @@ if (isset($_POST['SaveChanges'])) {
                         <table width="100%">
                             <tr>
                                 <td width="30%"></td>
-                                <td width="40%" align="center" valign="bottom">
+                                <td width="40%" class="text-center align-bottom">
                                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
                                     &nbsp;
-                                    <input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='v2/dashboard'">
+                                    <input type="button" class="btn btn-secondary" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='v2/dashboard'">
                                 </td>
                                 <td width="30%"></td>
                             </tr>
@@ -405,15 +405,15 @@ if (isset($_POST['SaveChanges'])) {
                         <table width="100%">
                             <tr>
                                 <td width="15%"></td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Name') ?>:</div>
                                     <input type="text" name="newFieldName" size="30" maxlength="30" class="form-control">
                                     <?php if ($bNewNameError) {
-                                        echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
+                                        echo '<div><span class="text-danger"><BR>' . gettext('You must enter a name') . '</span></div>';
                                     } ?>
                                     &nbsp;
                                 </td>
-                                <td valign="top">
+                                <td class="align-top">
                                     <div><?= gettext('Description') ?>:</div>
                                     <input type="text" name="newFieldDesc" size="40" maxlength="100" class="form-control">
                                     &nbsp;
@@ -429,5 +429,5 @@ if (isset($_POST['SaveChanges'])) {
             </table>
         </form>
     </div>
-<?php
-require_once 'Include/Footer.php';
+    <?php
+    require_once 'Include/Footer.php';

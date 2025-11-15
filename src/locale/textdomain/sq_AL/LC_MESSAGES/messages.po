@@ -1218,10 +1218,6 @@ msgid "Financial Reports"
 msgstr "Raportet financiare"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Asnjë procesverbal u kthye nga raporti i kaluar."
-
-#: 
 msgid "Report Type:"
 msgstr "Raporti Type:"
 
@@ -1551,10 +1547,6 @@ msgid "Remove from Cart"
 msgstr "Hiq nga Shportë"
 
 #: 
-msgid "Text for Event ID: "
-msgstr "Tekst per ID Event: "
-
-#: 
 msgid "Group Editor"
 msgstr "Grupi Editor"
 
@@ -1725,8 +1717,9 @@ msgid "Assigned Properties"
 msgstr "Prona të caktuar"
 
 #: 
-msgid "Group Members:"
-msgstr "Anëtarët e grupit:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Anëtarët e grupit"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2305,10 +2298,6 @@ msgid "Query Listing"
 msgstr "Query Listing"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Run një Query Free-Text"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Free-Tekst Query"
 
@@ -2742,14 +2731,6 @@ msgstr "pika (s) shtuar në karrocë."
 #: 
 msgid "Select Fiscal Year"
 msgstr "Zgjidhni Viti fiskal"
-
-#: 
-msgid "pm"
-msgstr "pm"
-
-#: 
-msgid "am"
-msgstr "am"
 
 #: 
 msgid "Invalid Editor ID!"

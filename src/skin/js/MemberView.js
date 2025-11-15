@@ -26,10 +26,12 @@ $(".delete-person").click(function (event) {
             thisLink.data("person_name"),
         buttons: {
             cancel: {
-                label: '<i class="fa fa-times"></i> ' + i18next.t("Cancel"),
+                label:
+                    '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel"),
             },
             confirm: {
-                label: '<i class="fa fa-trash"></i> ' + i18next.t("Delete"),
+                label:
+                    '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"),
                 className: "btn-danger",
             },
         },

@@ -24,6 +24,24 @@ class LocalAuthentication implements IAuthenticationProvider
     private ?bool $bPendingTwoFactorAuth = null;
     private ?int $tLastOperationTimestamp = null;
 
+    public function __serialize(): array
+    {
+        // Explicitly serialize only the essential properties that need to persist across requests
+        return [
+            'currentUser' => $this->currentUser,
+            'bPendingTwoFactorAuth' => $this->bPendingTwoFactorAuth,
+            'tLastOperationTimestamp' => $this->tLastOperationTimestamp,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        // Restore the properties from serialized data
+        $this->currentUser = $data['currentUser'] ?? null;
+        $this->bPendingTwoFactorAuth = $data['bPendingTwoFactorAuth'] ?? null;
+        $this->tLastOperationTimestamp = $data['tLastOperationTimestamp'] ?? null;
+    }
+
     public function getPasswordChangeURL(): string
     {
         // this shouldn't really be called, but it's necessary to implement the IAuthenticationProvider interface
@@ -58,8 +76,10 @@ class LocalAuthentication implements IAuthenticationProvider
     {
         if ($this->currentUser instanceof User) {
             //$this->currentUser->setDefaultFY($_SESSION['idefaultFY']);
-            $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
-            $this->currentUser->save();
+            if (isset($_SESSION['iCurrentDeposit'])) {
+                $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
+                $this->currentUser->save();
+            }
             $this->currentUser = null;
         }
     }

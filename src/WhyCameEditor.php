@@ -94,9 +94,9 @@ require_once 'Include/Header.php';
           <td><textarea name="HearOfUs" rows="3" cols="90"><?= $tHearOfUs ?></textarea></td>
         </tr>
         <tr>
-          <td colspan="2" align="center">
+          <td colspan="2" class="text-center">
             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
-            <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+            <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                 echo $linkBack;
                                                                 } else {
                                                                     echo 'PersonView.php?PersonID=' . $iPerson;

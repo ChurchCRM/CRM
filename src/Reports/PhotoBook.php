@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
@@ -42,6 +43,13 @@ class PdfPhotoBook extends ChurchInfoReport
     public function drawGroup($iGroupID): void
     {
         $this->group = GroupQuery::create()->findOneById($iGroupID);
+        
+        // Skip if group not found
+        if ($this->group === null) {
+            LoggerUtils::getAppLogger()->warning("PhotoBook: Group with ID $iGroupID not found");
+            return;
+        }
+        
         // Use our own margin logic.
         $this->SetMargins(0, 0);
         $this->SetFont('Times', '', 14);
@@ -65,7 +73,7 @@ class PdfPhotoBook extends ChurchInfoReport
         $this->Line($this->pageMarginL, 25.25, $this->GetPageWidth() - $this->pageMarginR, 25.25);
     }
 
-    private function drawPersonBlock($name, $thumbnailURI): void
+    private function drawPersonBlock($name, $photoURI): void
     {
         // Draw a bounding box around the image placeholder centered around the name text.
         $this->currentX += $this->personMarginL;
@@ -77,8 +85,8 @@ class PdfPhotoBook extends ChurchInfoReport
         $this->Rect($this->currentX, $this->currentY, $this->personImageWidth, $this->personImageHeight);
 
         // Draw the image or an x
-        if (file_exists($thumbnailURI)) {
-            $this->Image($thumbnailURI, $this->currentX + .25, $this->currentY + .25, $this->personImageWidth - .5, $this->personImageHeight - .5, 'PNG');
+        if (file_exists($photoURI)) {
+            $this->Image($photoURI, $this->currentX + .25, $this->currentY + .25, $this->personImageWidth - .5, $this->personImageHeight - .5, 'PNG');
         } else {
             $this->Line($this->currentX, $this->currentY, $this->currentX + $this->personImageWidth, $this->currentY + $this->personImageHeight);
             $this->Line($this->currentX + $this->personImageWidth, $this->currentY, $this->currentX, $this->currentY + $this->personImageHeight);
@@ -98,8 +106,21 @@ class PdfPhotoBook extends ChurchInfoReport
 
     private function drawGroupMebersByRole(string $roleName, string $roleDisplayName): void
     {
+        // Safety check - should not happen after drawGroup check, but be defensive
+        if ($this->group === null) {
+            LoggerUtils::getAppLogger()->error("PhotoBook: Cannot draw group members - group is null");
+            return;
+        }
+        
         $RoleListID = $this->group->getRoleListId();
         $groupRole = ListOptionQuery::create()->filterById($RoleListID)->filterByOptionName($roleName)->findOne();
+        
+        // Skip if role not found for this group
+        if ($groupRole === null) {
+            LoggerUtils::getAppLogger()->warning("PhotoBook: Role '$roleName' not found for group " . $this->group->getName());
+            return;
+        }
+        
         $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
                             ->filterByGroup($this->group)
                             ->filterByRoleId($groupRole->getOptionId())

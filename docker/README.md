@@ -1,20 +1,20 @@
 Getting Started with Docker for Development
 ===========================
 
-** THIS DOCKER CONFIGURATION IS INTENDED FOR DEVELOPMENT & DEVELOPMENT PURPOSES ONLY**
+** THIS DOCKER CONFIGURATION IS INTENDED FOR DEVELOPMENT & TESTING PURPOSES ONLY**
 
-The main difference between the Dev and Test dockers is that the Dev has NPM, Node, composer, and Cypress installed and running inside the docker.
+ChurchCRM uses a single `docker-compose.yaml` with profiles to support different environments:
+- **dev**: Full development environment (Node, NPM, Composer, Xdebug, Adminer)
+- **test**: Minimal runtime for testing
+- **ci**: CI/CD optimized (used by GitHub Actions)
 
 
 Development
 -------------
 
-These are the steps needed to develop ChurchCRM with Docker
-
 ## Requirements
 
-* Docker
-* Docker Compose
+* Docker (with Compose v2+)
 * GIT
 * Node and NPM
 
@@ -22,55 +22,75 @@ These are the steps needed to develop ChurchCRM with Docker
 
 1. Clone ChurchCRM Repo: `git clone git@github.com:ChurchCRM/CRM.git`
 2. `cd` into the project directory: `cd CRM`
-3. start the containers: `npm run docker-dev-start` .
-    * **Note:** Containers are started in the background
-4. launch a terminal into the web container: `npm run docker-dev-login-web`
-5. `cd` into project directory within the container: `cd /home/ChurchCRM`
-6. build ChurchCRM web and php code: `npm run deploy`
-7. make the application log folder writable: `chmod a+rwx src/logs`
-8. stop docker: `npm run docker-dev-stop`.
-    * **Note:** Run this command from your host system
-9. To view the live logs: `npm run docker-dev-logs`.
-    * **Note:** Run this command from your host system
+3. Start dev containers: `npm run docker:dev:start`
+    * **Note:** Containers run in background with `--profile dev`
+4. Launch terminal in web container: `npm run docker:dev:login:web`
+5. `cd` into project directory: `cd /home/ChurchCRM`
+6. Build ChurchCRM: `npm run deploy`
+7. Make logs writable: `chmod a+rwx src/logs`
+8. Stop docker: `npm run docker:dev:stop`
+9. View live logs: `npm run docker:dev:logs`
 
-### Dev containers
-   - database : Mariadb server
-      - exposes port **3306** by default. You can change this port by updating *DEV_DATABASE_PORT* in the file `docker/.env`.
+### Dev Profile Services
+   - **database**: MariaDB server (port ${DATABASE_PORT:-3306})
+   - **webserver-dev**: Apache + PHP 8 + dev tools (port ${WEBSERVER_PORT:-80})
+   - **adminer**: Database GUI (port ${ADMINER_PORT:-8088})
+      - Default credentials: `churchcrm` / `changeme`
+   - **mailserver**: Fake SMTP (ports 1025, 8025 for UI)
 
-      Internally, the port is always **3306**
-   - webserver : The web server and container that contains all of the application's code
-      - exposes port **80** by default. You can change this port by updating *DEV_WEBSERVER_PORT* in the file `docker/.env`.
+### Docker Dev Commands
 
-         Internally, the port is always **80**
-   - adminer : Simple web application to access the database server graphically
-      - exposes port **8088** by default. You can change this port by updating *DEV_ADMINER_PORT* in the file `docker/.env`
-
-         Internally, the port is always **8080**
-      - default credentials
-         - username: `churchcrm`
-         - password: `changeme`
-         - default database: `churchcrm`
-         - root user password: `changeme`
-
-   - mailserver : SMTP testing server. A *fake* email inbox
-      - exposes port **1025** and **8025**. These ports can be changed
-        by updating *DEV_MAILSERVER_PORT* and *DEV_MAILSERVER_GUI_PORT* respectively.
-        Port **8025** is the application's UI port.
+| Command | Purpose |
+|---------|---------|
+| `npm run docker:dev:start` | Start dev containers (uses existing images) |
+| `npm run docker:dev:stop` | Stop running containers |
+| `npm run docker:dev:logs` | View container logs (live tail) |
+| `npm run docker:dev:login:web` | Open shell in webserver container |
+| `npm run docker:dev:login:db` | Open shell in database container |
 
 Testing
 -----------------
 
-if you are developing on your local dev system and testing via docker, use the following:
-
 ## Requirements
 
-* Docker
-   * **Note:** requires Docker Compose, which has been built into Docker since 2020
+* Docker (with Compose v2+)
 * GIT
-* node / npm
+* Node/NPM
 
-1. Clone ChurchCRM Repo: `git clone git@github.com:ChurchCRM/CRM.git`
-2. build code: `npm run deploy`
-3. run docker: `npm run docker-test-start`
-4. test code: `npm run test`
-5. stop docker: `npm run docker-test-stop`
+## Steps
+
+1. Clone repo: `git clone git@github.com:ChurchCRM/CRM.git`
+2. Build code locally: `npm run deploy`
+3. Start test containers: `npm run docker:test:start`
+4. Run tests: `npm run test`
+5. Stop docker: `npm run docker:test:stop`
+
+### Test Profile Services
+   - **database**: MariaDB server (port 3306)
+   - **webserver-test**: Minimal Apache + PHP 8 runtime (port 80)
+   - **mailserver**: Fake SMTP (ports 1025, 8025)
+
+### Docker Test Commands
+
+| Command | Purpose |
+|---------|---------|
+| `npm run docker:test:start` | Start test containers (uses existing images) |
+| `npm run docker:test:stop` | Stop running containers |
+| `npm run docker:test:restart` | Restart all test containers |
+| `npm run docker:test:restart:db` | Restart only database (refreshes schema) |
+| `npm run docker:test:rebuild` | Full rebuild: remove volumes, rebuild images, restart |
+| `npm run docker:test:down` | Stop and remove containers with volumes |
+| `npm run docker:test:logs` | View container logs (live tail) |
+| `npm run docker:test:login:web` | Open shell in webserver container |
+| `npm run docker:test:login:db` | Open shell in database container |
+
+### Environment Variables
+
+Configure ports in `docker/.env`:
+```
+DATABASE_PORT=3306
+WEBSERVER_PORT=80
+ADMINER_PORT=8088
+MAILSERVER_PORT=1025
+MAILSERVER_GUI_PORT=8025
+```

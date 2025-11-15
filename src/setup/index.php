@@ -15,9 +15,11 @@ if (file_exists('../Include/Config.php')) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Use SlimUtils to get base path, default to /setup
+// Use SlimUtils to get base path for routing, but assets are in parent directory
 $basePath = ChurchCRM\Slim\SlimUtils::getBasePath('/setup');
-SystemURLs::init($basePath, '', __DIR__ . '/../');
+// Initialize SystemURLs with parent directory root (where assets actually are)
+$parentRootPath = str_replace('/setup', '', $basePath);
+SystemURLs::init($parentRootPath, '', __DIR__ . '/../');
 SystemConfig::init();
 
 
@@ -28,15 +30,18 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add CORS middleware for browser API access
-$app->addBodyParsingMiddleware();
-$app->add(VersionMiddleware::class);
-$app->add(new CorsMiddleware());
-
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
-\ChurchCRM\Slim\SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
+// Add CORS middleware for browser API access
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
+$app->add(VersionMiddleware::class);
+$app->add(new CorsMiddleware());
+
+require __DIR__ . '/routes/setup.php';
 
 $app->run();
