@@ -1,6 +1,6 @@
 describe("User Editor - ORM Migration Tests", () => {
     beforeEach(() => {
-        cy.loginAdmin();
+        cy.setupAdminSession();
     });
 
     it("Should edit user permissions and persist via ORM", () => {

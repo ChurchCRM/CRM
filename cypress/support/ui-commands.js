@@ -8,6 +8,37 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+/**
+ * Sets up a cached admin login session for Cypress UI tests.
+ * Usage in test files:
+ *   beforeEach(() => cy.setupAdminSession());
+ * 
+ * Note: Uses cy.session() with explicit validation to cache login across test runs.
+ * If validation fails, the session is cleared and login is re-attempted.
+ */
+Cypress.Commands.add('setupAdminSession', () => {
+    cy.session(
+        'admin-session',
+        () => {
+            // Perform the login
+            cy.visit('/login');
+            cy.get('input[name=User]').type('admin');
+            cy.get('input[name=Password]').type('changeme{enter}');
+            // Wait for redirect away from login
+            cy.url().should('not.include', '/login');
+        },
+        {
+            // Validate session by checking for a CRM cookie
+            validate: () => {
+                cy.getCookies().should('satisfy', (cookies) => {
+                    return cookies.some(cookie => cookie.name.startsWith('CRM-'));
+                });
+            }
+        }
+    );
+});
+
+
 // -- This is a login command --
 Cypress.Commands.add("loginAdmin", (location, checkMatchingLocation = true) => {
     cy.login("admin", "changeme", location, checkMatchingLocation);

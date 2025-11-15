@@ -3,8 +3,12 @@
 describe("Event Types Management", () => {
   const eventTypeName = "Test Event Type " + Date.now();
 
+  beforeEach(() => {
+    cy.setupAdminSession();
+  });
+
   it("should view all event types", () => {
-  cy.loginAdmin("EventNames.php");
+  cy.visit("EventNames.php");
   cy.contains("Event Types");
   cy.get(".table tbody tr").should("exist");
   cy.get(".table thead").should("contain", "Event Type");
@@ -13,7 +17,7 @@ describe("Event Types Management", () => {
   });
 
   it("should add an event type", () => {
-    cy.loginAdmin("EventNames.php");
+    cy.visit("EventNames.php");
     cy.contains("Event Types");
     cy.contains("Add Event Type").click();
 
@@ -25,7 +29,7 @@ describe("Event Types Management", () => {
   });
 
   it("should view event type by direct URL", () => {
-    cy.loginAdmin("EditEventTypes.php?EN_tyid=1");
+    cy.visit("EditEventTypes.php?EN_tyid=1");
     cy.get('input[name="newEvtName"]').should("have.value", "Church Service");
   });
   

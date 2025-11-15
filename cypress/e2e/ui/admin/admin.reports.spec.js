@@ -1,8 +1,12 @@
 /// <reference types="cypress" />
 
 describe("Admin Reports", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
     it("Gen DirectoryReports", () => {
-        cy.loginAdmin("DirectoryReports.php");
+        cy.visit("DirectoryReports.php");
         cy.contains("Directory reports");
         cy.contains("Select classifications to include");
         //  TODO       cy.get('.btn-default:nth-child(2)').click();
