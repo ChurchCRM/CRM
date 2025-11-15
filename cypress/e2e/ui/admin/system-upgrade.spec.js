@@ -1,10 +1,10 @@
 describe('System Upgrade Page', () => {
-    before(() => {
-        cy.loginAdmin('v2/admin/upgrade');
+    beforeEach(() => {
+        cy.setupAdminSession();
     });
 
     it('should load and display version information', () => {
-        cy.url().should('include', '/v2/admin/upgrade');
+        cy.visit('/v2/admin/upgrade');
         
         // Check version information card exists
         cy.contains('Version Information').should('be.visible');

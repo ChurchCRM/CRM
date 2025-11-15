@@ -1,11 +1,15 @@
 describe("Admin User Password", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
     it("List System Users", () => {
-        cy.loginAdmin("UserList.php");
+        cy.visit("UserList.php");
         cy.contains("Church Admin");
     });
 
     it("Admin Change password", () => {
-        cy.loginAdmin("v2/user/95/changePassword");
+        cy.visit("v2/user/95/changePassword");
         cy.contains("Change Password: Judith Kennedy");
         cy.get("#NewPassword1").type("new-user-password");
         cy.get("#NewPassword2").type("new-user-password");
@@ -16,7 +20,7 @@ describe("Admin User Password", () => {
 
 
     it("Create System Users", () => {
-        cy.loginAdmin("UserList.php");
+        cy.visit("UserList.php");
         cy.contains("Peyton Ray").should('not.exist');
         cy.visit("PersonView.php?PersonID=25");
         cy.contains("Peyton Ray");
