@@ -15,11 +15,31 @@ if (file_exists('../Include/Config.php')) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Use SlimUtils to get base path for routing, but assets are in parent directory
-$basePath = ChurchCRM\Slim\SlimUtils::getBasePath('/setup');
-// Initialize SystemURLs with parent directory root (where assets actually are)
-$parentRootPath = str_replace('/setup', '', $basePath);
-// Use dirname to get proper parent directory path without double slashes
+// Detect the base path from the request URI
+// For /churchcrm/setup/ -> base path is /churchcrm/setup
+// For /setup/ -> base path is /setup
+$requestUri = $_SERVER['REQUEST_URI'] ?? '/setup';
+$scriptName = $_SERVER['SCRIPT_NAME'] ?? '/setup/index.php';
+
+// Extract base path by removing everything after /setup in the script path
+// /home/.../churchcrm/setup/index.php -> /churchcrm/setup
+$basePath = dirname($scriptName); // Gets /churchcrm/setup or /setup
+
+// Calculate parent root path for SystemURLs (where assets are)
+// /churchcrm/setup -> /churchcrm
+// /setup -> ''
+$parentRootPath = dirname($basePath);
+if ($parentRootPath === '/' || $parentRootPath === '.') {
+    $parentRootPath = '';
+}
+
+// Debug logging - remove after testing
+error_log("Setup Debug - SCRIPT_NAME: " . $scriptName);
+error_log("Setup Debug - basePath: " . $basePath);
+error_log("Setup Debug - parentRootPath: " . $parentRootPath);
+error_log("Setup Debug - documentRoot: " . dirname(__DIR__));
+
+// Initialize SystemURLs with parent directory root path and physical directory
 SystemURLs::init($parentRootPath, '', dirname(__DIR__));
 SystemConfig::init();
 
