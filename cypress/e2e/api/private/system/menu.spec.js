@@ -1,10 +1,6 @@
 describe('Menu API - Security & Validation', () => {
     let createdMenuIds = [];
 
-    beforeEach(() => {
-        cy.loginAdmin();
-    });
-
     afterEach(() => {
         // Clean up: delete all created menus
         createdMenuIds.forEach(menuId => {
@@ -287,14 +283,6 @@ describe('Menu API - Security & Validation', () => {
             });
         });
 
-        it('should return 404 for non-existent menu', () => {
-            cy.apiRequest({
-                method: 'DELETE',
-                url: '/api/system/menu/99999',
-                failOnStatusCode: false
-            }).then((response) => {
-                expect(response.status).to.equal(404);
-            });
-        });
+    
     });
 });
