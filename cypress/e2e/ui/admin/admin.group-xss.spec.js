@@ -2,14 +2,8 @@
 
 describe('Group XSS Security Tests', () => {
 
-  before(() => {
-    cy.session('admin-session', () => {
-      // Inline login logic for session caching (no navigation)
-      cy.visit('/login');
-      cy.get('input[name=User]').type('admin');
-      cy.get('input[name=Password]').type('changeme{enter}');
-      cy.url().should('not.include', '/login');
-    });
+  beforeEach(() => {
+    cy.setupAdminSession();
   });
 
   it('Should prevent stored XSS in group description via GroupEditor', () => {

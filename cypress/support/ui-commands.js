@@ -73,6 +73,28 @@ Cypress.Commands.add('setupStandardSession', () => {
     cy.setupLoginSession('standard-session', username, password);
 });
 
+/**
+ * cy.loginWithCredentials(username, password, sessionName, expectSuccess = true)
+ * Login with custom credentials (for testing password changes, etc.)
+ * Creates a new session with the provided credentials
+ * If expectSuccess is false, skips CRM cookie validation (for testing bad credentials)
+ */
+Cypress.Commands.add('loginWithCredentials', (username, password, sessionName = 'custom-session', expectSuccess = true) => {
+    cy.session(sessionName, () => {
+        cy.visit('/login');
+        cy.get('input[name=User]').type(username);
+        cy.get('input[name=Password]').type(password + '{enter}');
+    }, {
+        validate: () => {
+            if (expectSuccess) {
+                cy.getCookies().should('satisfy', (cookies) => {
+                    return cookies.some(cookie => cookie.name.startsWith('CRM-'));
+                });
+            }
+        }
+    });
+});
+
 Cypress.Commands.add("buildRandom", (prefixString) => {
     const rand = Math.random().toString(36).substring(7);
     return prefixString.concat(" - ", rand);

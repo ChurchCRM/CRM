@@ -2,12 +2,12 @@
 
 describe("Login", () => {
     it("Bad password", () => {
-        cy.login("admin", "badpassword");
+        cy.loginWithCredentials("admin", "badpassword", "bad-password-session", false);
         cy.location("pathname").should("include", "session/begin");
     });
 
     it("Bad username", () => {
-        cy.login("idonknowyou", "badpassword");
+        cy.loginWithCredentials("idonknowyou", "badpassword", "bad-username-session", false);
         cy.location("pathname").should("include", "session/begin");
     });
 });

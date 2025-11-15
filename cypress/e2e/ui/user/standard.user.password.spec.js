@@ -76,11 +76,8 @@ describe("Standard User Password", () => {
         cy.contains("Password Change Successful");
 
         cy.visit("/session/end");
-        cy.login(
-            "tony.wade@example.com",
-            "SomeThingsAreBetterLeftUnChangedJustKidding",
-            "v2/user/current/changepassword",
-        );
+        cy.loginWithCredentials("tony.wade@example.com", "SomeThingsAreBetterLeftUnChangedJustKidding", "temp-session");
+        cy.visit("v2/user/current/changepassword");
         cy.get("#OldPassword").type(
             "SomeThingsAreBetterLeftUnChangedJustKidding",
         );
