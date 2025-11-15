@@ -23,7 +23,6 @@ Cypress.Commands.add(
             checkMatchingLocation,
         );
     },
-);
 
 Cypress.Commands.add(
     "login",
@@ -38,13 +37,18 @@ Cypress.Commands.add(
         // Wait for navigation to complete
         cy.url().should('not.contain', 'location=');
 
+        // Wait for session cookie to be set (CRM- session cookie)
+        cy.getCookies().should((cookies) => {
+            // At least one cookie should start with CRM-
+            expect(cookies.some(cookie => cookie.name.startsWith('CRM-'))).to.be.true;
+        });
+
         // Wait for page to be fully loaded
         cy.document().should("have.property", "readyState", "complete");
-        
+
         if (location && checkMatchingLocation) {
             cy.location("pathname").should("include", location.split("?")[0]);
         }
-        
     },
 );
 
