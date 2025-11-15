@@ -1,6 +1,10 @@
 describe("template spec", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
     it("filter-by-dropdown-choice", () => {
-        cy.loginAdmin("v2/people?familyActiveStatus=all");
+        cy.visit("v2/people?familyActiveStatus=all");
         cy.get('*[placeholder="Select Custom"]')
             .click()
             .type("My Custom Drop Down List:My Custom Item 1\n");
