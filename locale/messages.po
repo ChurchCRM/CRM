@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-10 22:05-0800\n"
+"POT-Creation-Date: 2025-11-15 09:14-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1680,6 +1680,9 @@ msgid "Deactivate"
 msgstr ""
 
 msgid "Deactivated the Family"
+msgstr ""
+
+msgid "Dear Friend"
 msgstr ""
 
 msgid "Debug"
@@ -4424,6 +4427,9 @@ msgstr ""
 msgid "No Changes"
 msgstr ""
 
+msgid "No Data Found"
+msgstr ""
+
 msgid "No Group Selected"
 msgstr ""
 
@@ -4484,7 +4490,7 @@ msgstr ""
 msgid "No property assignments."
 msgstr ""
 
-msgid "No records were returned from the previous report."
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
 msgstr ""
 
 msgid "No volunteer opportunities have been added yet"
@@ -5653,9 +5659,6 @@ msgid "Run Query Again"
 msgstr ""
 
 msgid "Run Transactions"
-msgstr ""
-
-msgid "Run a Free-Text Query"
 msgstr ""
 
 #. Context: countries
