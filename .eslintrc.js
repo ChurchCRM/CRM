@@ -35,4 +35,14 @@ module.exports = {
     'no-unused-vars': 'off',
     'react/react-in-jsx-scope': 'off',
   },
+  // Add override to disable parserOptions.project for JS/JSX files
+  overrides: [
+    {
+      files: ['**/*.js', '**/*.jsx'],
+      parserOptions: {
+        project: null, // disables project for JS/JSX
+        ecmaVersion: 2020,
+      },
+    },
+  ],
 };
