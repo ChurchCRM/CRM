@@ -51,7 +51,7 @@
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-term-extract.js",
         "locale:download": "node locale/scripts/poeditor-downloader.js && npm run locale:audit",
-        "package": "npm run deploy && rm -rf src/propel src/composer.lock && node scripts/package-release.js",
+        "package": "npm run deploy && node scripts/package-release.js",
         "changelog": "node scripts/generate-changelog.js",
         "test": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e",
         "test:ui": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress open --e2e --browser chrome",

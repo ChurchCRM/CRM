@@ -29,24 +29,40 @@ class LoggerUtils
 
     public static function getLogLevel(): int
     {
-        return intval(SystemConfig::getValue('sLogLevel'));
+        try {
+            $level = SystemConfig::getValue('sLogLevel');
+            return intval($level);
+        } catch (\Exception $e) {
+            // Config not initialized (e.g., during setup) - use INFO level
+            return Logger::INFO;
+        }
     }
 
     public static function isDebugLogLevel(): bool
     {
-        return SystemConfig::getValue('sLogLevel') == Logger::DEBUG;
+        return self::getLogLevel() == Logger::DEBUG;
     }
 
     public static function buildLogFilePath(string $type): string
     {
-        return SystemURLs::getDocumentRoot() . '/logs/' . date('Y-m-d') . '-' . $type . '.log';
+        try {
+            $docRoot = SystemURLs::getDocumentRoot();
+            if ($docRoot && is_dir($docRoot . '/logs') && is_writable($docRoot . '/logs')) {
+                return $docRoot . '/logs/' . date('Y-m-d') . '-' . $type . '.log';
+            }
+        } catch (\Exception $e) {
+            // Config not initialized or logs directory not accessible
+        }
+        
+        // Fallback to temp directory
+        return sys_get_temp_dir() . '/churchcrm-' . date('Y-m-d') . '-' . $type . '.log';
     }
 
     public static function getSlimMVCLogger(): Logger
     {
         if (!self::$slimLogger instanceof Logger) {
             $slimLogger = new Logger('slim-app');
-            $streamHandler = new StreamHandler(self::buildLogFilePath('slim'), SystemConfig::getValue('sLogLevel'));
+            $streamHandler = new StreamHandler(self::buildLogFilePath('slim'), self::getLogLevel());
             $slimLogger->pushHandler($streamHandler);
             self::$slimLogger = $slimLogger;
         }
@@ -101,7 +117,7 @@ class LoggerUtils
     {
         if (!self::$authLogger instanceof Logger) {
             self::$authLogger = new Logger('authLogger');
-            self::$authLogHandler = new StreamHandler(self::buildLogFilePath('auth'), SystemConfig::getValue('sLogLevel'));
+            self::$authLogHandler = new StreamHandler(self::buildLogFilePath('auth'), self::getLogLevel());
             self::$authLogger->pushHandler(self::$authLogHandler);
             self::$authLogger->pushProcessor(function (array $entry): array {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];

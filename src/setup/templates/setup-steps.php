@@ -1,18 +1,15 @@
 <?php
-
-use ChurchCRM\dto\SystemURLs;
-
-$URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . '/';
-
+// Setup wizard - standalone, no Config.php dependency
+$rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
+$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['SERVER_PORT'] ?? '80') === '443');
+$scheme = $isHttps ? 'https' : 'http';
+$normalizedRootPath = rtrim($rootPath, '/');
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$URL = $scheme . '://' . $host . ($normalizedRootPath === '' ? '' : $normalizedRootPath) . '/';
 $sPageTitle = 'ChurchCRM – Setup';
-require_once '../Include/HeaderNotLoggedIn.php';
+
+require_once __DIR__ . '/header.php';
 ?>
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/setup.min.css">
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM = {
-        root: "<?= SystemURLs::getRootPath() ?>"
-    };
-</script>
 <div class="container-fluid">
 <div class="jumbotron text-center">
     <h1 class="display-4">Welcome to ChurchCRM Setup Wizard</h1>
@@ -133,7 +130,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
                         <div class="form-group">
                             <label for="ROOT_PATH">Root Path</label>
                             <input type="text" name="ROOT_PATH" id="ROOT_PATH"
-                                   value="<?= SystemURLs::getRootPath() ?>" class="form-control"
+                                   value="<?= $rootPath ?>" class="form-control"
                                    aria-describedby="ROOT_PATH_HELP"
                                    pattern="^(|\/[a-zA-Z0-9_\-\.\/]*)$"
                                    maxlength="64">
@@ -330,7 +327,5 @@ require_once '../Include/HeaderNotLoggedIn.php';
 </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bs-stepper/bs-stepper.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/setup.js"></script>
-<?php
-require_once '../Include/FooterNotLoggedIn.php';
+</body>
+</html>
