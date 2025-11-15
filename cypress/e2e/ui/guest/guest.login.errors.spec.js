@@ -2,12 +2,16 @@
 
 describe("Login", () => {
     it("Bad password", () => {
-        cy.loginWithCredentials("admin", "badpassword", "bad-password-session", false);
+        cy.visit('/login');
+        cy.get('input[name=User]').type("admin");
+        cy.get('input[name=Password]').type("badpassword" + '{enter}');
         cy.location("pathname").should("include", "session/begin");
     });
 
     it("Bad username", () => {
-        cy.loginWithCredentials("idonknowyou", "badpassword", "bad-username-session", false);
+        cy.visit('/login');
+        cy.get('input[name=User]').type("idonknowyou");
+        cy.get('input[name=Password]').type("badpassword" + '{enter}');
         cy.location("pathname").should("include", "session/begin");
     });
 });
