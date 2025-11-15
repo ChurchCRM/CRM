@@ -1,8 +1,6 @@
 <?php
 // Setup wizard - standalone, no Config.php dependency
 $rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
-$nonce = base64_encode(random_bytes(16));
-
 $URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . '/';
 $sPageTitle = 'ChurchCRM – Setup';
 
