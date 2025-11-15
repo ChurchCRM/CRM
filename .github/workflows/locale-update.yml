@@ -31,15 +31,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-    - name: Start CI Docker containers
-      run: npm run docker:ci:start
+      - name: Start CI Docker containers
+        run: npm run docker:ci:start
 
-    - name: Wait for Docker to be ready
-      run: |
-        echo "Waiting for services to be ready..."
-        sleep 10
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs      - name: Run locale build
+      - name: Wait for Docker to be ready
+        run: |
+          echo "Waiting for services to be ready..."
+          sleep 10
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
+      
+      - name: Run locale build
         run: npm run locale:build
       
       - name: Stop CI Docker containers
