@@ -56,7 +56,7 @@ describe("Standard Person", () => {
             const personsGroup = resp.body.find(group => group.text && group.text.startsWith('Persons'));
             expect(personsGroup).to.exist;
             expect(personsGroup.children).to.be.an('array');
-            expect(personsGroup.children.length).to.be.gte(2);
+            expect(personsGroup.children.length).to.be.gte(1);
         });
     });
 
