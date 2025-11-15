@@ -9,7 +9,7 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 $app->group('/', function (RouteCollectorProxy $group): void {
-    $group->get('', function (Request $request, Response $response, array $args): Response {
+    $getHandler = function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
         if (version_compare(phpversion(), '8.2.0', '<')) {
@@ -17,7 +17,10 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         }
 
         return $renderer->render($response, $renderPage, ['sRootPath' => SystemURLs::getRootPath()]);
-    });
+    };
+
+    $group->get('', $getHandler);
+    $group->get('/', $getHandler);
 
     $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args): Response {
         $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
@@ -31,7 +34,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, $required);
     });
 
-    $group->post('', function (Request $request, Response $response, array $args): Response {
+    $postHandler = function (Request $request, Response $response, array $args): Response {
         $configFile = SystemURLs::getDocumentRoot() . '/Include/Config.php';
         if (file_exists($configFile)) {
             return $response->withStatus(403, 'Setup is already complete.');
@@ -101,8 +104,12 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         file_put_contents($configFile, $template);
 
         return $response->withStatus(200);
-    });
+    };
+
+    $group->post('', $postHandler);
+    $group->post('/', $postHandler);
 });
+
 
 
 function sanitize_db_field($value)
@@ -145,3 +152,4 @@ function is_valid_root_path($value)
     // Allow empty string OR a path starting with / (no trailing slash)
     return preg_match('#^(|\/[a-zA-Z0-9_\-\.\/]*)$#', $value);
 }
+
