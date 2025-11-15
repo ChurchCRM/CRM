@@ -52,6 +52,24 @@ window.Stepper = Stepper;
 		validatedNavigation: null, // Track validated navigation to prevent loops
 	};
 
+	const GROUP_CONFIG = {
+		php: {
+			table: "#php-extensions",
+			status: "#php-extensions-status",
+			collapse: "#php-extensions-collapse",
+		},
+		filesystem: {
+			table: "#filesystem-checks",
+			status: "#filesystem-status",
+			collapse: "#filesystem-collapse",
+		},
+		integrity: {
+			table: "#integrity-checks",
+			status: "#integrity-status",
+			collapse: "#integrity-collapse",
+		},
+	};
+
 	let setupStepper;
 	let validators = {};
 
@@ -104,7 +122,12 @@ window.Stepper = Stepper;
 		}
 	}
 
-	function renderPrerequisite(prerequisite) {
+	function renderPrerequisite(prerequisite, group = "php") {
+		const config = GROUP_CONFIG[group];
+		if (!config) {
+			return;
+		}
+
 		const statusConfig = {
 			true: { class: "text-success", html: "&check;" },
 			pending: {
@@ -114,93 +137,162 @@ window.Stepper = Stepper;
 			false: { class: "text-danger", html: "&#x2717;" },
 		};
 
-		const td = statusConfig[prerequisite.Satisfied] || statusConfig[false];
-		const id = prerequisite.Name.replace(/[^A-Za-z0-9]/g, "");
+		let normalizedStatus = "pending";
+		let storedValue = prerequisite.Satisfied;
+		if (
+			prerequisite.Satisfied === true ||
+			prerequisite.Satisfied === 1 ||
+			prerequisite.Satisfied === "1"
+		) {
+			normalizedStatus = true;
+			storedValue = true;
+		} else if (
+			prerequisite.Satisfied === false ||
+			prerequisite.Satisfied === 0 ||
+			prerequisite.Satisfied === "0"
+		) {
+			normalizedStatus = false;
+			storedValue = false;
+		}
 
-		state.prerequisites[id] = prerequisite.Satisfied;
+		const td =
+			normalizedStatus === true
+				? statusConfig.true
+				: normalizedStatus === false
+				? statusConfig.false
+				: statusConfig.pending;
 
-		const $prerequisiteRow = $("<tr>", { id: id })
+		const sanitizedName = prerequisite.Name
+			? prerequisite.Name.replace(/[^A-Za-z0-9]/g, "")
+			: "Prerequisite";
+		const rowId = `${group}-${sanitizedName}`;
+
+		state.prerequisites[rowId] = storedValue;
+
+		const $prerequisiteRow = $("<tr>", { id: rowId })
 			.append($("<td>", { text: prerequisite.Name }))
 			.append($("<td>", td));
 
-		const $existing = $("#" + id);
+		const $existing = $("#" + rowId);
 		if ($existing.length) {
 			$existing.replaceWith($prerequisiteRow);
 		} else {
-			$("#php-extensions").append($prerequisiteRow);
+			$(config.table).append($prerequisiteRow);
 		}
 
 		// Update group status after rendering
-		updateGroupStatus();
+		updateGroupStatus(group);
 	}
 
-	function updateGroupStatus() {
-		// Update PHP Extensions group status
-		const phpExtensionRows = $("#php-extensions tr");
-		if (phpExtensionRows.length > 0) {
-			let allPassed = true;
-			let anyPending = false;
+	function toggleCollapse(group, action) {
+		const groupConfig = GROUP_CONFIG[group];
+		if (!groupConfig || !groupConfig.collapse) {
+			return;
+		}
+		const $target = $(groupConfig.collapse);
+		if ($target.length && typeof $target.collapse === "function") {
+			$target.collapse(action);
+		}
+	}
 
-			phpExtensionRows.each(function () {
-				const statusCell = $(this).find("td:last");
-				if (statusCell.hasClass("text-danger")) {
-					allPassed = false;
-				} else if (statusCell.find(".fa-spinner").length > 0) {
-					anyPending = true;
-				}
-			});
-
-			const phpStatus = $("#php-extensions-status");
-			if (anyPending) {
-				phpStatus.html(
-					'<i class="fa-solid fa-spinner fa-spin text-muted"></i>',
-				);
-				$("#php-extensions-body").collapse("show");
-			} else if (allPassed) {
-				phpStatus.html(
-					'<i class="fa-solid fa-check-circle text-success"></i>',
-				);
-				$("#php-extensions-body").collapse("hide");
-			} else {
-				phpStatus.html(
-					'<i class="fa-solid fa-exclamation-circle text-danger"></i>',
-				);
-				$("#php-extensions-body").collapse("show");
-			}
+	function buildStatusCell(statusInfo, message) {
+		const cell = $("<td>").addClass(statusInfo.class);
+		cell.html(statusInfo.html);
+		if (message) {
+			cell.append(
+				$("<div>")
+					.addClass("mt-2 text-muted small")
+					.text(message),
+			);
 		}
 
-		// Update File Integrity group status
-		const integrityRows = $("#integrity-checks tr");
-		if (integrityRows.length > 0) {
-			let allPassed = true;
-			let anyPending = false;
+		return cell;
+	}
 
-			integrityRows.each(function () {
-				const statusCell = $(this).find("td:last");
-				if (statusCell.hasClass("text-danger")) {
-					allPassed = false;
-				} else if (statusCell.find(".fa-spinner").length > 0) {
-					anyPending = true;
-				}
-			});
+	function appendIntegrityDetails(tableSelector, baseRowId, payload) {
+		const detailRowId = `${baseRowId}-details`;
+		$(`#${detailRowId}`).remove();
 
-			const integrityStatus = $("#integrity-status");
-			if (anyPending) {
-				integrityStatus.html(
-					'<i class="fa-solid fa-spinner fa-spin text-muted"></i>',
+		if (!payload || !Array.isArray(payload.files) || payload.files.length === 0) {
+			return;
+		}
+
+		const detailRow = $("<tr>", { id: detailRowId });
+		const detailCell = $("<td>", { colspan: 2 });
+		const heading = $("<div>")
+			.addClass("font-weight-bold mb-2")
+			.text(i18next.t("Files with issues"));
+		const list = $("<ul>").addClass("mb-0 pl-3");
+
+		payload.files.forEach(function (file) {
+			const listItem = $("<li>");
+			const filename = file.filename || i18next.t("Unknown file");
+			const status = file.status || i18next.t("Unknown status");
+			listItem.append(
+				$("<span>").text(`${filename}: ${status}`),
+			);
+
+			const details = [];
+			if (file.expectedhash) {
+				details.push(
+					i18next.t("Expected hash") + ": " + file.expectedhash,
 				);
-				$("#integrity-body").collapse("show");
-			} else if (allPassed) {
-				integrityStatus.html(
-					'<i class="fa-solid fa-check-circle text-success"></i>',
-				);
-				$("#integrity-body").collapse("hide");
-			} else {
-				integrityStatus.html(
-					'<i class="fa-solid fa-exclamation-circle text-danger"></i>',
-				);
-				$("#integrity-body").collapse("show");
 			}
+			if (file.actualhash) {
+				details.push(
+					i18next.t("Actual hash") + ": " + file.actualhash,
+				);
+			}
+			if (details.length > 0) {
+				listItem.append(
+					$("<div>")
+						.addClass("small text-muted")
+						.text(details.join(" | ")),
+				);
+			}
+
+			list.append(listItem);
+		});
+
+		detailCell.append(heading).append(list);
+		detailRow.append(detailCell);
+		$(tableSelector).append(detailRow);
+	}
+
+	function updateGroupStatus(group) {
+		const config = GROUP_CONFIG[group];
+		if (!config) {
+			return;
+		}
+
+		const $rows = $(`${config.table} tr`);
+		const $status = $(config.status);
+		if ($rows.length === 0) {
+			$status.html('<i class="fa-solid fa-spinner fa-spin text-muted"></i>');
+			return;
+		}
+
+		let allPassed = true;
+		let anyPending = false;
+
+		$rows.each(function () {
+			const statusCell = $(this).find("td:last");
+			if (statusCell.hasClass("text-danger")) {
+				allPassed = false;
+			} else if (statusCell.find(".fa-spinner").length > 0) {
+				anyPending = true;
+			}
+		});
+
+		if (anyPending) {
+			$status.html('<i class="fa-solid fa-spinner fa-spin text-muted"></i>');
+			toggleCollapse(group, "show");
+		} else if (allPassed) {
+			$status.html('<i class="fa-solid fa-check-circle text-success"></i>');
+			toggleCollapse(group, "hide");
+		} else {
+			$status.html('<i class="fa-solid fa-exclamation-circle text-danger"></i>');
+			toggleCollapse(group, "show");
 		}
 	}
 
@@ -214,78 +306,142 @@ window.Stepper = Stepper;
 			false: { class: "text-danger", html: "&#x2717;" },
 		};
 
+		const groupKey = "integrity";
+		const config = GROUP_CONFIG[groupKey];
+		const rowId = `${groupKey}-ChurchCRMFileIntegrityCheck`;
+
 		// Show pending state
-		const pendingRow = $("<tr>", { id: "ChurchCRMFileIntegrityCheck" })
+		const pendingRow = $("<tr>", { id: rowId })
 			.append($("<td>", { text: "ChurchCRM File Integrity Check" }))
 			.append($("<td>", statusConfig.pending));
-		$("#integrity-checks").append(pendingRow);
-		updateGroupStatus();
+		$(`#${rowId}`).remove();
+		$(config.table).append(pendingRow);
+		state.prerequisites[rowId] = "pending";
+		updateGroupStatus(groupKey);
 
 		$.ajax({
 			url: "./SystemIntegrityCheck",
 			method: "GET",
 		})
 			.done(function (data) {
-				const satisfied = data === "success";
-				const td = satisfied ? statusConfig.true : statusConfig.false;
+				const status =
+					data && typeof data === "object" && data.status
+						? String(data.status).toLowerCase()
+						: "";
+				const satisfied = status === "success";
+				const statusInfo = satisfied
+					? statusConfig.true
+					: statusConfig.false;
+				const message =
+					data && typeof data === "object" && data.message
+						? data.message
+						: satisfied
+						? i18next.t("Integrity check passed")
+						: i18next.t("Integrity check failed");
 
 				const resultRow = $("<tr>", {
-					id: "ChurchCRMFileIntegrityCheck",
+					id: rowId,
 				})
 					.append(
 						$("<td>", { text: "ChurchCRM File Integrity Check" }),
 					)
-					.append($("<td>", td));
+					.append(buildStatusCell(statusInfo, message));
 
-				$("#ChurchCRMFileIntegrityCheck").replaceWith(resultRow);
-				state.prerequisites["ChurchCRMFileIntegrityCheck"] = satisfied;
+				$("#" + rowId).replaceWith(resultRow);
+				state.prerequisites[rowId] = satisfied;
+
+				appendIntegrityDetails(config.table, rowId, data);
 
 				// Mark checks as complete
 				state.checksComplete = true;
-
-				if (data === "success") {
-					$("#prerequisites-war").hide();
-					state.prerequisitesStatus = true;
-					updatePrerequisitesUI();
-				} else {
-					state.prerequisitesStatus = false;
-					updatePrerequisitesUI();
-				}
-
-				updateGroupStatus();
+				updatePrerequisitesUI();
+				updateGroupStatus(groupKey);
 			})
 			.fail(function () {
 				const resultRow = $("<tr>", {
-					id: "ChurchCRMFileIntegrityCheck",
+					id: rowId,
 				})
 					.append(
 						$("<td>", { text: "ChurchCRM File Integrity Check" }),
 					)
-					.append($("<td>", statusConfig.false));
+					.append(
+						buildStatusCell(
+							statusConfig.false,
+							i18next.t(
+								"Unable to contact integrity endpoint. Check web server error logs.",
+							),
+						),
+					);
 
-				$("#ChurchCRMFileIntegrityCheck").replaceWith(resultRow);
-				state.prerequisites["ChurchCRMFileIntegrityCheck"] = false;
+				$("#" + rowId).replaceWith(resultRow);
+				state.prerequisites[rowId] = false;
+				appendIntegrityDetails(config.table, rowId, null);
 
 				// Mark checks as complete even on failure
 				state.checksComplete = true;
-				state.prerequisitesStatus = false;
 				updatePrerequisitesUI();
-				updateGroupStatus();
+				updateGroupStatus(groupKey);
 			});
 	}
 
 	function checkPrerequisites() {
+		state.prerequisites = {};
+		state.prerequisitesStatus = false;
+		state.checksComplete = false;
+
+		Object.keys(GROUP_CONFIG).forEach(function (key) {
+			const config = GROUP_CONFIG[key];
+			$(config.table).empty();
+			$(config.status).html(
+				'<i class="fa-solid fa-spinner fa-spin text-muted"></i>',
+			);
+		});
+
 		$.ajax({
 			url: "./SystemPrerequisiteCheck",
 			method: "GET",
 			contentType: "application/json",
-		}).done(function (data) {
-			$.each(data, function (index, prerequisite) {
-				renderPrerequisite(prerequisite);
+		})
+			.done(function (data) {
+				$.each(data, function (index, prerequisite) {
+					renderPrerequisite(prerequisite, "php");
+				});
+				checkFilesystem();
+			})
+			.fail(function () {
+				renderPrerequisite(
+					{
+						Name: "Unable to load PHP prerequisite checks",
+						Satisfied: false,
+					},
+					"php",
+				);
+				checkFilesystem();
 			});
-			// Run integrity check after prerequisites are rendered
-			checkIntegrity();
-		});
+	}
+
+	function checkFilesystem() {
+		$.ajax({
+			url: "./SystemFilesystemCheck",
+			method: "GET",
+			contentType: "application/json",
+		})
+			.done(function (data) {
+				$.each(data, function (index, prerequisite) {
+					renderPrerequisite(prerequisite, "filesystem");
+				});
+				checkIntegrity();
+			})
+			.fail(function () {
+				renderPrerequisite(
+					{
+						Name: "Unable to verify filesystem permissions",
+						Satisfied: false,
+					},
+					"filesystem",
+				);
+				checkIntegrity();
+			});
 	}
 
 	function initializeStepValidation(stepId) {
