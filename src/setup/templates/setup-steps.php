@@ -1,12 +1,15 @@
 <?php
 // Setup wizard - standalone, no Config.php dependency
 $rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
-$URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . '/';
+$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['SERVER_PORT'] ?? '80') === '443');
+$scheme = $isHttps ? 'https' : 'http';
+$normalizedRootPath = rtrim($rootPath, '/');
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$URL = $scheme . '://' . $host . ($normalizedRootPath === '' ? '' : $normalizedRootPath) . '/';
 $sPageTitle = 'ChurchCRM – Setup';
 
 require_once __DIR__ . '/header.php';
 ?>
-<link rel="stylesheet" href="<?= $rootPath ?>/skin/v2/setup.min.css">
 <div class="container-fluid">
 <div class="jumbotron text-center">
     <h1 class="display-4">Welcome to ChurchCRM Setup Wizard</h1>
@@ -324,7 +327,5 @@ require_once __DIR__ . '/header.php';
 </div>
 </div>
 
-<script src="<?= $rootPath ?>/skin/external/bs-stepper/bs-stepper.min.js"></script>
-<script src="<?= $rootPath ?>/skin/js/setup.js"></script>
 </body>
 </html>

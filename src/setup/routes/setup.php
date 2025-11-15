@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -16,7 +15,8 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             $renderPage = 'setup-error.php';
         }
 
-        return $renderer->render($response, $renderPage, ['sRootPath' => SystemURLs::getRootPath()]);
+        // Use GLOBALS instead of SystemURLs (Config.php doesn't exist during setup)
+        return $renderer->render($response, $renderPage, ['sRootPath' => $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '']);
     };
 
     $group->get('', $getHandler);
@@ -35,7 +35,9 @@ $app->group('/', function (RouteCollectorProxy $group): void {
     });
 
     $postHandler = function (Request $request, Response $response, array $args): Response {
-        $configFile = SystemURLs::getDocumentRoot() . '/Include/Config.php';
+        // Use GLOBALS instead of SystemURLs (Config.php doesn't exist during setup)
+        $docRoot = $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] ?? dirname(__DIR__, 2);
+        $configFile = $docRoot . '/Include/Config.php';
         if (file_exists($configFile)) {
             return $response->withStatus(403, 'Setup is already complete.');
         }
@@ -92,7 +94,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         $rootPath    = $setupData['ROOT_PATH'];
         $url         = $setupData['URL'];
 
-        $template = file_get_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php.example');
+        $template = file_get_contents($docRoot . '/Include/Config.php.example');
         $template = str_replace('||DB_SERVER_NAME||', $dbServerName, $template);
         $template = str_replace('||DB_SERVER_PORT||', $dbServerPort, $template);
         $template = str_replace('||DB_NAME||', $dbName, $template);

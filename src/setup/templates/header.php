@@ -1,39 +1,32 @@
-<?php
-// Standalone header for setup - no Config.php dependencies
-$rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
-$nonce = base64_encode(random_bytes(16));
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php
+    // Standalone header for setup - no Config.php dependencies
+    $rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
+    $nonce = base64_encode(random_bytes(16));
+    ?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Type" content="text/html">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="<?= $rootPath ?>/Images/favicon.ico">
+        <link rel="shortcut icon" href="<?= $rootPath ?>/favicon.ico">
+        
+        <!-- Setup CSS bundle (includes Bootstrap and Font Awesome) -->
+        <link rel="stylesheet" href="<?= $rootPath ?>/skin/v2/setup.min.css">
+        
+        <!-- Setup JS bundle (includes jQuery, Bootstrap, bs-stepper, and setup.js logic) -->
+        <script src="<?= $rootPath ?>/skin/v2/setup.min.js" defer></script>
 
-    <!-- Core ChurchCRM bundle (includes jQuery) -->
-    <script src="<?= $rootPath ?>/skin/v2/churchcrm.min.js"></script>
-    <link rel="stylesheet" href="<?= $rootPath ?>/skin/v2/churchcrm.min.css">
+        <title>ChurchCRM: <?= $sPageTitle ?? 'Setup' ?></title>
 
-    <script src="<?= $rootPath ?>/skin/external/moment/moment.min.js"></script>
-    <script src="<?= $rootPath ?>/skin/external/i18next/i18next.min.js"></script>
-    <script src="<?= $rootPath ?>/skin/external/just-validate/just-validate.production.min.js"></script>
+    </head>
+    <body class="hold-transition login-page">
 
-    <title>ChurchCRM: <?= $sPageTitle ?? 'Setup' ?></title>
-
-</head>
-<body class="hold-transition login-page">
-
-  <script nonce="<?= $nonce ?>">
-    // Initialize window.CRM if not already created by webpack bundles
-    if (!window.CRM) {
-        window.CRM = {};
-    }
-    
-    // Extend window.CRM with server-side configuration
-    Object.assign(window.CRM, {
-      root: "<?= $rootPath ?>"
-    });
-  </script>
+    <script nonce="<?= $nonce ?>">
+        // Initialize window.CRM for setup script
+        window.CRM = {
+            root: "<?= $rootPath ?>"
+        };
+    </script>
