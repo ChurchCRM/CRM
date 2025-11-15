@@ -19,18 +19,4 @@ describe("Admin Settings", () => {
         cy.contains("Integration");
         cy.contains("Backup");
     });
-
-    /*  TODO For some reason this resets the user session
-
-        it('Update Church Name', () => {
-        const newValue = "New Church -  " + Cypress._.random(0, 1e6)
-        cy.get("input[name='new_value[1003]']").clear().type(newValue);
-        cy.get("form[name='SystemSettingsForm']").submit();
-        cy.location('pathname').should('include', "/SystemSettings.php");
-        cy.visit("v2/admin/debug");
-        cy.location('pathname').should('include', "/admin/debug");
-        cy.visit("SystemSettings.php");
-        cy.location('pathname').should('include', "/SystemSettings.php");
-        cy.get("input[name='new_value[1003]']").should('have.value', newValue);
-    });*/
 });

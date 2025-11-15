@@ -1,10 +1,11 @@
 /// <reference types="cypress" />
 
 describe("People List & Carts", () => {
+    beforeEach(() => cy.setupStandardSession());
     
     it("Add All to Cart then Remove", () => {
         // Empty cart first to ensure clean state
-        cy.loginStandard("v2/cart");
+        cy.visit("v2/cart");
         cy.get("body").then(($body) => {
             if ($body.text().includes("You have items in your cart")) {
                 cy.get("#emptyCart", { timeout: 5000 }).click();

@@ -384,11 +384,66 @@ Test categories required:
 5. Edge cases - Null values, empty arrays, boundary conditions
 
 ### UI Tests
+
 Location: `cypress/e2e/ui/[feature]/`
-- Maintain element IDs for test selectors
-- Use cy.get() for queries, avoid text-based selectors
+
+#### Session-Based Login Pattern (REQUIRED)
+All UI tests MUST use modern session-based login. This pattern uses `cy.session()` for efficient login caching across tests and configuration-driven credentials.
+
+**✅ CORRECT - Modern Pattern (REQUIRED for all new tests):**
+```javascript
+describe('Feature X', () => {
+    beforeEach(() => {
+        cy.setupAdminSession();  // OR cy.setupStandardSession() for standard users
+        cy.visit('/path/to/page');
+    });
+
+    it('should complete workflow', () => {
+        cy.get('#element-id').click();
+        cy.contains('Expected text').should('exist');
+    });
+});
+```
+
+**❌ WRONG - Old Pattern (DO NOT USE):**
+```javascript
+describe('Feature X', () => {
+    it('should complete workflow', () => {
+        cy.loginAdmin('/path/to/page');  // ❌ DEPRECATED - removed
+        cy.get('#element-id').click();
+    });
+});
+```
+
+#### Commands & Configuration
+**Available Commands:**
+- `cy.setupAdminSession()` - Authenticates as admin (reads `admin.username`, `admin.password` from config)
+- `cy.setupStandardSession()` - Authenticates as standard user (reads `standard.username`, `standard.password` from config)
+- `cy.typeInQuill()` - Rich text editor input
+
+**Credentials Configuration:**
+Credentials are stored in `cypress.config.ts` and `docker/cypress.config.ts`:
+```typescript
+env: {
+    'admin.username': 'admin',
+    'admin.password': 'changeme',
+    'standard.username': 'tony.wade@example.com',
+    'standard.password': 'basicjoe',
+}
+```
+- DO NOT hardcode credentials in test files
+- DO NOT add commented-out tests or TODO comments - remove them
+- Configuration-driven approach prevents secrets leaking into git
+
+#### Test Structure Requirements
+- Maintain element IDs for test selectors (use `cy.get('#element-id')`)
+- Avoid text-based selectors (fragile across language changes)
 - Test complete user workflows end-to-end
-- Custom commands: `cy.loginAdmin()`, `cy.loginStandard()`, `cy.typeInQuill()`
+- Clear test descriptions (avoid generic names)
+- Clean test files (no commented code blocks)
+
+#### Migration Guide
+See `PR_SUMMARY.md` for comprehensive migration details from old to new pattern, including all 21 files refactored and lessons learned.
 
 ---
 
