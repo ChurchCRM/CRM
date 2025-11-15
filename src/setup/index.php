@@ -19,7 +19,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $basePath = ChurchCRM\Slim\SlimUtils::getBasePath('/setup');
 // Initialize SystemURLs with parent directory root (where assets actually are)
 $parentRootPath = str_replace('/setup', '', $basePath);
-SystemURLs::init($parentRootPath, '', __DIR__ . '/../');
+// Use dirname to get proper parent directory path without double slashes
+SystemURLs::init($parentRootPath, '', dirname(__DIR__));
 SystemConfig::init();
 
 
