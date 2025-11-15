@@ -51,9 +51,9 @@ Cypress.Commands.add(
             "tony.wade@example.com",
             "basicjoe",
             location,
-            checkMatchingLocation,
+            checkMatchingLocation
         );
-    },
+    }
 );
 
 Cypress.Commands.add(
@@ -68,40 +68,25 @@ Cypress.Commands.add(
 
         // Wait for navigation to complete
         cy.url().should('not.contain', 'location=');
-        
-        // Verify session is established by checking for any cookie starting with CRM-
-        cy.getCookies().should('satisfy', (cookies) => {
-            return cookies.some(cookie => cookie.name.startsWith('CRM-'));
+
+        // Wait for session cookie to be set (CRM- session cookie)
+        cy.getCookies().should((cookies) => {
+            // At least one cookie should start with CRM-
+            expect(cookies.some(cookie => cookie.name.startsWith('CRM-'))).to.be.true;
         });
-        
+
+        // Wait for page to be fully loaded
+        cy.document().should("have.property", "readyState", "complete");
+
         if (location && checkMatchingLocation) {
             cy.location("pathname").should("include", location.split("?")[0]);
         }
-        
-        // Wait for page to be fully loaded
-        cy.document().should("have.property", "readyState", "complete");
-        
-        // Wait for all AJAX/fetch requests to complete
-        // Use window.jQuery.active if available (for jQuery AJAX)
-        cy.window().then((win) => {
-            if (win.jQuery) {
-                cy.wrap(null).should(() => {
-                    expect(win.jQuery.active).to.equal(0);
-                });
-            }
-        });
-    },
+    }
 );
 
 Cypress.Commands.add("buildRandom", (prefixString) => {
     const rand = Math.random().toString(36).substring(7);
     return prefixString.concat(" - ", rand);
-});
-
-// Modern command to wait for page to be ready
-Cypress.Commands.add("waitForPageLoad", () => {
-    cy.window().should("have.property", "document");
-    cy.document().should("have.property", "readyState", "complete");
 });
 
 // Modern command for better element interaction
@@ -409,6 +394,25 @@ Cypress.Commands.add('waitForLocales', (timeout = 10000) => {
         expect(win.CRM).to.exist;
         expect(win.CRM.localesLoaded).to.be.true;
     });
+});
+
+/**
+ * Wait for a Notyf notification with specific text
+ * Ensures locales are loaded first (for i18next translations) and verifies notification content
+ * @param {string} expectedText - The text to find in the notification
+ * @param {object} options - Optional config { timeout: 5000 }
+ * @example cy.waitForNotification('Menu added successfully')
+ */
+Cypress.Commands.add('waitForNotification', (expectedText, options = {}) => {
+    const { timeout = 5000 } = options;
+    
+    // Wait for locales first so translations are available
+    cy.waitForLocales(timeout);
+    
+    // Wait for notification toast to appear and contain the expected text
+    cy.get('.notyf__toast', { timeout })
+        .should('be.visible')
+        .should('contain', expectedText);
 });
 
 /**
