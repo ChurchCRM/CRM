@@ -1,6 +1,6 @@
 describe('Custom Menus UI - Security & Functionality', () => {
     beforeEach(() => {
-        cy.loginAdmin();
+        cy.setupAdminSession();
         cy.visit('/v2/admin/menus');
     });
 

@@ -3,8 +3,12 @@
 require("cy-verify-downloads").addCustomCommand();
 
 describe("Financial Reports", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
     it("Giving Report", () => {
-        cy.loginAdmin("FinancialReports.php");
+        cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Giving Report");
         cy.get("#FinancialReports").submit();
@@ -22,7 +26,7 @@ describe("Financial Reports", () => {
     });
 
     it("Pledge Summary", () => {
-        cy.loginAdmin("FinancialReports.php");
+        cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Pledge Summary");
         cy.get("#FinancialReports").submit();
@@ -49,7 +53,7 @@ describe("Financial Reports", () => {
     });
 
     it("Pledge Family Summary", () => {
-        cy.loginAdmin("FinancialReports.php");
+        cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Pledge Family Summary");
         cy.get("#FinancialReports").submit();
@@ -75,7 +79,7 @@ describe("Financial Reports", () => {
     });
 
     it("Pledge Reminders", () => {
-        cy.loginAdmin("FinancialReports.php");
+        cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Pledge Reminders");
         cy.get("#FinancialReports").submit();
@@ -101,7 +105,7 @@ describe("Financial Reports", () => {
     });
 
     it("Voting Members", () => {
-        cy.loginAdmin("FinancialReports.php");
+        cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Voting Members");
         cy.get("#FinancialReports").submit();
@@ -127,7 +131,7 @@ describe("Financial Reports", () => {
     });
 
     it("Zero Givers", () => {
-        cy.loginAdmin("FinancialReports.php");
+        cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Zero Givers");
         cy.get("#FinancialReports").submit();
@@ -153,7 +157,7 @@ describe("Financial Reports", () => {
     });
 
     it("Individual Deposit Report", () => {
-        cy.loginAdmin("FinancialReports.php");
+        cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Individual Deposit Report");
         cy.get("#FinancialReports").submit();
@@ -179,7 +183,7 @@ describe("Financial Reports", () => {
     });
 
     it("Advanced Deposit Report", () => {
-        cy.loginAdmin("FinancialReports.php");
+        cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();

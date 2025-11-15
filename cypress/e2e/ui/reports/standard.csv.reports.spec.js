@@ -2,7 +2,8 @@
 
 describe("csv export", () => {
     beforeEach(() => {
-        cy.loginAdmin("FinancialReports.php");
+        cy.setupAdminSession();
+        cy.visit("FinancialReports.php");
     });
 
     describe("personal/family export", () => {
