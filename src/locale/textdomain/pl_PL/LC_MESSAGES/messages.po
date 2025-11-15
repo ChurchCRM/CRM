@@ -1336,10 +1336,6 @@ msgid "Financial Reports"
 msgstr "Raporty Finansowe"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Pojawiły się nowe wpisy od czasu ostatniego Raportu."
-
-#: 
 msgid "Report Type:"
 msgstr "Typ Raportu:"
 
@@ -2742,10 +2738,6 @@ msgid "Query Listing"
 msgstr "Lista Wyszukiwania"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Uruchom Wyszukiwaine Dowolnym Tekstem"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Wyszukiwanie Dowolnym Tekstem"
 
@@ -4105,10 +4097,6 @@ msgid "Menu Name"
 msgstr "Nazwa menu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Maks 20 znaków"
-
-#: 
 msgid "Link Address"
 msgstr "Adres skórtu"
 
@@ -4253,10 +4241,6 @@ msgstr "Jeżeli chcesz zachować wprowadzone zmiany, zrób ręczną kopię bezpi
 #: 
 msgid "Integrity Check Details:"
 msgstr "Informacje Spójności Systemu:"
-
-#: 
-msgid "I Understand"
-msgstr "Zgadzam się"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -4451,10 +4435,6 @@ msgid "Remove Results from Cart"
 msgstr "Usuń Wyniki z Koszyka"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Uwaga: Wykryto Problemy Przed Aktualizacą"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Znaleziono problemy mogące przeszkodzić w aktualizacji"
@@ -4624,10 +4604,6 @@ msgstr "Nowe hasło jest zbyt podobne do starego."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Odzyskiwanie hasło nie dostepne. Skontaktuj się z administratorem"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Błąd Uwierzytelniania"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

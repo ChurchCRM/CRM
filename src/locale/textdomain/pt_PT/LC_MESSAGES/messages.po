@@ -1440,10 +1440,6 @@ msgid "Financial Reports"
 msgstr "Relatórios financeiros"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "O relatório anterior não retornou registos."
-
-#: 
 msgid "Report Type:"
 msgstr "Tipo de relatório:"
 
@@ -2876,10 +2872,6 @@ msgid "Query Listing"
 msgstr "Listagem consulta"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Executar uma consulta de Texto livre"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Consulta de Texto Livre"
 
@@ -4112,68 +4104,12 @@ msgid "Edit Settings"
 msgstr "Configurações"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Atualizar o churchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Passo 1: Fazer Backup da Base de Dados"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Por favor, crie um backup da base de dados antes de iniciar o processo de atualização"
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Gerar Backup da Base de Dados"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Passo 2: Obter o Pacote de atualização no servidor"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Obter os últimos ficheiros do ChurchCRM na página de versões no GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Obter Atualização"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Passo 3: Aplicar Pacote de Atualização no Servidor"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Extrair o arquivo de atualização e aplicar os novos ficheiros"
-
-#: 
 msgid "Full Path:"
 msgstr "Caminho Completo:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Atualizar o Sistema"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Passo 4: Login"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Faça o Login para atualizar o Sistema"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup completo, Pronto para Download."
-
-#: 
-msgid "Backup Error."
-msgstr "Erro de Backup."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7541,24 +7477,12 @@ msgid "Reset Password"
 msgstr "resetar a senha"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Impossível resetar a sua senha"
-
-#: 
 msgid "Reset your password"
 msgstr "Resetar a sua senha"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Desculpe, não podemos processar seu pedido neste momento."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Nome de utilizador obrigatório"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Uma nova senha foi enviada para você. Por favor cheque seu e-mail."
 
 #: 
 msgid "Kiosk Manager"
@@ -8530,10 +8454,6 @@ msgid "Menu Name"
 msgstr "Nome do menu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max 20 caracteres"
-
-#: 
 msgid "Link Address"
 msgstr "Endereço de Link"
 
@@ -8679,10 +8599,6 @@ msgstr "Se você deseja manter suas alterações nesses ficheiros, faça um back
 #: 
 msgid "Integrity Check Details:"
 msgstr "Detalhes da verificação de integridade:"
-
-#: 
-msgid "I Understand"
-msgstr "Compreendo"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8888,10 +8804,6 @@ msgid "Remove Results from Cart"
 msgstr "Remover resultados do carrinho"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Aviso: tarefas de pré-atualização detectadas"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Foram identificadas algumas condições que podem impedir uma atualização bem-sucedida"
@@ -9061,10 +8973,6 @@ msgstr "Sua nova senha é muito semelhante à antiga."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "A redefinição de senha não está disponível. Entre em contacto com o administrador do sistema"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Problema de autenticação"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

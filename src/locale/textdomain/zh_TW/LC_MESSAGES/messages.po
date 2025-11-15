@@ -1441,10 +1441,6 @@ msgid "Financial Reports"
 msgstr "財務報告"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "從以前的報告中沒有記錄返回。"
-
-#: 
 msgid "Report Type:"
 msgstr "報告類型："
 
@@ -2855,10 +2851,6 @@ msgid "Query Listing"
 msgstr "查詢上市"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "運行自由文本查詢"
-
-#: 
 msgid "Free-Text Query"
 msgstr "自由文本查詢"
 
@@ -4077,71 +4069,12 @@ msgid "Edit Settings"
 msgstr "編輯設置"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "升級ChurchCRM"
-
-#: 
-#, fuzzy
-msgid "Step 1: Backup Database"
-msgstr "第1步：備份資料庫"
-
-#: 
-#, fuzzy
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "請在開始升級過程之前創建資料庫備份。"
-
-#: 
-#, fuzzy
-msgid "Generate Database Backup"
-msgstr "生成資料庫備份"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "第2步：在服務器上獲取更新包"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "從ChurchCRM GitHub發布頁面獲取最新文件"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "獲取更新文件"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "第3步：在服務器上應用更新包"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "提取升級存檔，並應用新文件"
-
-#: 
 msgid "Full Path:"
 msgstr "完整路徑："
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "升級系統"
-
-#: 
-msgid "Step 4: Login"
-msgstr "第4步：登入"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "請登入以升級系統"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "備份完成，準備下載。"
-
-#: 
-msgid "Backup Error."
-msgstr "備份錯誤。"
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7503,24 +7436,12 @@ msgid "Reset Password"
 msgstr "重置密碼"
 
 #: 
-msgid "Unable to reset password"
-msgstr "無法重置密碼"
-
-#: 
 msgid "Reset your password"
 msgstr "重置你的密碼"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "抱歉，我們目前無法處理您的請求。"
-
-#: 
-msgid "Login Name is Required"
-msgstr "登錄名是必需的"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "我們發送了一個新密碼。請查看你的郵箱"
 
 #: 
 #, fuzzy
@@ -8504,10 +8425,6 @@ msgid "Menu Name"
 msgstr "菜單名稱"
 
 #: 
-msgid "Max 20 char"
-msgstr "最多20個字符"
-
-#: 
 msgid "Link Address"
 msgstr "鏈接地址"
 
@@ -8672,11 +8589,6 @@ msgstr "如果您希望保留對這些文件的更改，請在繼續此升級之
 #, fuzzy
 msgid "Integrity Check Details:"
 msgstr "完整性檢查詳細信息："
-
-#: 
-#, fuzzy
-msgid "I Understand"
-msgstr "我明白"
 
 #: 
 #, fuzzy
@@ -8919,11 +8831,6 @@ msgstr "從購物車中刪除結果"
 
 #: 
 #, fuzzy
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "警告：檢測到預升級任務"
-
-#: 
-#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "已確定某些情況，可能會阻止成功升級"
 
@@ -9116,11 +9023,6 @@ msgstr "您的新密碼與舊密碼過於相似。"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "密碼重置不可用。請聯繫您的系統管理員"
-
-#: 
-#, fuzzy
-msgid "Authentication Issue"
-msgstr "認證問題"
 
 #: 
 #, fuzzy

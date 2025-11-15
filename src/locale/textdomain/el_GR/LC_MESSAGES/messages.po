@@ -1396,10 +1396,6 @@ msgid "Financial Reports"
 msgstr "Οικονομικές Εκθέσεις"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Δεν επιστράφηκαν αρχεία από την προηγούμενη αναφορά."
-
-#: 
 msgid "Report Type:"
 msgstr "Τύπος αναφοράς:"
 
@@ -2768,10 +2764,6 @@ msgid "Query Listing"
 msgstr "Καταχώριση ερωτήματος"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Εκτελέστε ένα ερώτημα ελεύθερου κειμένου"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Ερώτημα ελεύθερου κειμένου"
 
@@ -3946,68 +3938,12 @@ msgid "Edit Settings"
 msgstr "Επεξεργασία ρυθμίσεων"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Αναβάθμιση ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Βήμα 1: Δημιουργία αντιγράφων ασφαλείας βάσης δεδομένων"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Δημιουργήστε ένα αντίγραφο ασφαλείας βάσης δεδομένων πριν ξεκινήσετε τη διαδικασία αναβάθμισης."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Δημιουργία αντιγράφων ασφαλείας βάσης δεδομένων"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Βήμα 2: Λήψη πακέτου ενημέρωσης στον διακομιστή"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Λάβετε τα πιο πρόσφατα αρχεία από τη σελίδα έκδοσης του ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Λήψη αρχείων ενημέρωσης"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Βήμα 3: Εφαρμόστε το πακέτο ενημέρωσης στον διακομιστή"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Εξαγάγετε το αρχείο αναβάθμισης και εφαρμόστε τα νέα αρχεία"
-
-#: 
 msgid "Full Path:"
 msgstr "Πλήρης διαδρομή:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Αναβάθμιση συστήματος"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Βήμα 4: Είσοδος"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Συνδεθείτε στο αναβαθμισμένο σύστημα"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Η δημιουργία αντιγράφων ασφαλείας ολοκληρώθηκε, έτοιμη για λήψη."
-
-#: 
-msgid "Backup Error."
-msgstr "Σφάλμα δημιουργίας αντιγράφων ασφαλείας."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7344,24 +7280,12 @@ msgid "Reset Password"
 msgstr "Επαναφέρετε τον κωδικό πρόσβασης"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Δεν είναι δυνατή η επαναφορά του κωδικού πρόσβασης"
-
-#: 
 msgid "Reset your password"
 msgstr "Επαναφορά του κωδικού πρόσβασής σας"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Λυπούμαστε, δεν μπορούμε να επεξεργαστούμε το αίτημά σας αυτήν τη στιγμή."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Απαιτείται όνομα σύνδεσης"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Σας εστάλη νέος κωδικός πρόσβασης. Παρακαλούμε ελέγξτε το email σας"
 
 #: 
 msgid "Kiosk Manager"
@@ -8331,10 +8255,6 @@ msgid "Menu Name"
 msgstr "Όνομα μενού"
 
 #: 
-msgid "Max 20 char"
-msgstr "Μέγιστο 20 χαρακτήρες"
-
-#: 
 msgid "Link Address"
 msgstr "Διεύθυνση συνδέσμου"
 
@@ -8479,10 +8399,6 @@ msgstr "Εάν θέλετε να διατηρήσετε τις αλλαγές σ
 #: 
 msgid "Integrity Check Details:"
 msgstr "Λεπτομέρειες ελέγχου ακεραιότητας:"
-
-#: 
-msgid "I Understand"
-msgstr "Καταλαβαίνω"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8677,10 +8593,6 @@ msgid "Remove Results from Cart"
 msgstr "Αφαίρεση αποτελεσμάτων από το καλάθι"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Προειδοποίηση: Εντοπίστηκαν εργασίες προ-αναβάθμισης"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Έχουν εντοπιστεί ορισμένες συνθήκες που ενδέχεται να εμποδίσουν την επιτυχή αναβάθμιση"
@@ -8850,10 +8762,6 @@ msgstr "Ο νέος κωδικός πρόσβασης είναι πολύ παρ
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Η επαναφορά κωδικού πρόσβασης δεν είναι διαθέσιμη. Επικοινωνήστε με τον διαχειριστή του συστήματός σας"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Ζήτημα ελέγχου ταυτότητας"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

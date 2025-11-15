@@ -1395,10 +1395,6 @@ msgid "Financial Reports"
 msgstr "Ripoti za Fedha"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Hakuna rekodi zilizorejeshwa kutoka kwa ripoti ya awali."
-
-#: 
 msgid "Report Type:"
 msgstr "Aina ya Ripoti:"
 
@@ -2770,10 +2766,6 @@ msgid "Query Listing"
 msgstr "Uorodheshaji wa Maswali"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Endesha Hoja ya Maandishi Bila Malipo"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Hoja ya Maandishi Bila Malipo"
 
@@ -3946,68 +3938,12 @@ msgid "Edit Settings"
 msgstr "Badilisha Mipangilio"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Boresha ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Hatua ya 1: Hifadhidata ya Hifadhi"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Tafadhali unda hifadhi rudufu kabla ya kuanza mchakato wa kuboresha."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Tengeneza Hifadhidata ya Hifadhidata"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Hatua ya 2: Leta Kifurushi cha Usasishaji kwenye Seva"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Pakua faili za hivi punde kutoka kwa ukurasa wa kutolewa wa ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Leta Faili za Usasishaji"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Hatua ya 3: Tumia Kifurushi cha Usasishaji kwenye Seva"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Toa kumbukumbu ya sasisho, na utumie faili mpya"
-
-#: 
 msgid "Full Path:"
 msgstr "Njia Kamili:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Kuboresha Mfumo"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Hatua ya 4: Ingia"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Ingia kwa Mfumo Ulioboreshwa"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Hifadhi rudufu Imekamilika, Tayari kwa Kupakuliwa."
-
-#: 
-msgid "Backup Error."
-msgstr "Hitilafu ya Hifadhi Nakala."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7339,24 +7275,12 @@ msgid "Reset Password"
 msgstr "Weka upya Nenosiri"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Imeshindwa kuweka upya nenosiri"
-
-#: 
 msgid "Reset your password"
 msgstr "Weka upya nenosiri lako"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Samahani, hatuwezi kushughulikia ombi lako kwa wakati huu."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Jina la Kuingia Linahitajika"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Nenosiri jipya limetumwa kwako. Tafadhali angalia barua pepe yako"
 
 #: 
 msgid "Kiosk Manager"
@@ -8323,10 +8247,6 @@ msgid "Menu Name"
 msgstr "Jina la Menyu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Upeo wa herufi 20"
-
-#: 
 msgid "Link Address"
 msgstr "Anwani ya Kiungo"
 
@@ -8470,10 +8390,6 @@ msgstr "Iwapo ungependa kudumisha mabadiliko yako kwenye faili hizi, tafadhali c
 #: 
 msgid "Integrity Check Details:"
 msgstr "Maelezo ya Kukagua Uadilifu:"
-
-#: 
-msgid "I Understand"
-msgstr "Naelewa"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8668,10 +8584,6 @@ msgid "Remove Results from Cart"
 msgstr "Ondoa Matokeo kutoka kwa Cart"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Onyo: Majukumu ya Kuboresha Mapema Yamegunduliwa"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Baadhi ya masharti yametambuliwa ambayo yanaweza kuzuia uboreshaji uliofanikiwa"
 
@@ -8839,10 +8751,6 @@ msgstr "Nenosiri lako jipya linafanana sana na la zamani."
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Kuweka upya nenosiri hakupatikani. Tafadhali wasiliana na msimamizi wa mfumo wako"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Suala la Uthibitishaji"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

@@ -1395,10 +1395,6 @@ msgid "Financial Reports"
 msgstr "재정 보고"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "이전 보고서에서 반환된 기록이 없습니다."
-
-#: 
 msgid "Report Type:"
 msgstr "보고서 유형:"
 
@@ -2770,10 +2766,6 @@ msgid "Query Listing"
 msgstr "쿼리 목록"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "직접 쿼리 실행"
-
-#: 
 msgid "Free-Text Query"
 msgstr "직접 입력 쿼리"
 
@@ -3946,68 +3938,12 @@ msgid "Edit Settings"
 msgstr "설정 편집"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "ChurchCRM 업그레이드"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "1단계: 데이터베이스 백업"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "업그레이드 전에 반드시 데이터베이스 백업을 생성하세요."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "데이터베이스 백업 생성"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "2단계: 서버에 업데이트 패키지 가져오기"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "ChurchCRM GitHub 릴리스 페이지에서 최신 파일 가져오기"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "업데이트 파일 가져오기"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "3단계: 서버에 업데이트 패키지 적용"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "업그레이드 압축을 풀고 새 파일을 적용합니다"
-
-#: 
 msgid "Full Path:"
 msgstr "전체 경로:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "시스템 업그레이드"
-
-#: 
-msgid "Step 4: Login"
-msgstr "4단계: 로그인"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "업그레이드된 시스템에 로그인"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "백업 완료, 다운로드 가능합니다."
-
-#: 
-msgid "Backup Error."
-msgstr "백업 오류."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7338,24 +7274,12 @@ msgid "Reset Password"
 msgstr "비밀번호 재설정"
 
 #: 
-msgid "Unable to reset password"
-msgstr "비밀번호를 재설정할 수 없습니다"
-
-#: 
 msgid "Reset your password"
 msgstr "비밀번호 재설정"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "죄송합니다. 현재 요청을 처리할 수 없습니다."
-
-#: 
-msgid "Login Name is Required"
-msgstr "로그인 이름을 입력해야 합니다"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "새 비밀번호를 이메일로 보냈습니다. 메일함을 확인하세요"
 
 #: 
 msgid "Kiosk Manager"
@@ -8321,10 +8245,6 @@ msgid "Menu Name"
 msgstr "메뉴 이름"
 
 #: 
-msgid "Max 20 char"
-msgstr "최대 20자"
-
-#: 
 msgid "Link Address"
 msgstr "링크 주소"
 
@@ -8468,10 +8388,6 @@ msgstr "수정 사항을 유지하려면 업그레이드 전에 해당 파일을
 #: 
 msgid "Integrity Check Details:"
 msgstr "무결성 검사 상세 정보:"
-
-#: 
-msgid "I Understand"
-msgstr "이해했습니다"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8675,10 +8591,6 @@ msgid "Remove Results from Cart"
 msgstr "결과를 카트에서 제거"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "경고: 업그레이드 전 작업이 감지되었습니다"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "업그레이드를 방해할 수 있는 조건이 확인되었습니다"
 
@@ -8846,10 +8758,6 @@ msgstr "새 비밀번호가 기존 비밀번호와 너무 비슷합니다."
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "비밀번호 재설정을 사용할 수 없습니다. 시스템 관리자에게 문의하세요"
-
-#: 
-msgid "Authentication Issue"
-msgstr "인증 문제"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

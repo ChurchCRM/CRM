@@ -1695,11 +1695,6 @@ msgstr "Relatórios financeiros"
 
 #: 
 #, fuzzy
-msgid "No records were returned from the previous report."
-msgstr "O relatório anterior não retornou registros."
-
-#: 
-#, fuzzy
 msgid "Report Type:"
 msgstr "Tipo de relatório:"
 
@@ -3352,11 +3347,6 @@ msgstr "Listagem de consultas"
 
 #: 
 #, fuzzy
-msgid "Run a Free-Text Query"
-msgstr "Executar uma consulta de texto livre"
-
-#: 
-#, fuzzy
 msgid "Free-Text Query"
 msgstr "Consulta de Texto Livre"
 
@@ -4765,83 +4755,13 @@ msgstr "Editar Configurações"
 
 #: 
 #, fuzzy
-msgid "Upgrade ChurchCRM"
-msgstr "Atualizar o churchCRM"
-
-#: 
-#, fuzzy
-msgid "Step 1: Backup Database"
-msgstr "Passo 1: Fazer Backup do Banco de Dados"
-
-#: 
-#, fuzzy
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Por favor, crie um backup do banco de dados antes de iniciar o processo de atualização"
-
-#: 
-#, fuzzy
-msgid "Generate Database Backup"
-msgstr "Gerar Backup do Banco de Dados"
-
-#: 
-#, fuzzy
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Passo 2: Obter o Pacote de atualização no servidor"
-
-#: 
-#, fuzzy
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Obter os últimos arquivos do ChurchCRM na página de lançamentos do GitHub"
-
-#: 
-#, fuzzy
-msgid "Fetch Update Files"
-msgstr "Obter Arquivos de Atualização"
-
-#: 
-#, fuzzy
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Passo 3: Aplicar Pacote de Atualização no Servidor"
-
-#: 
-#, fuzzy
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Extrair o arquivo de atualização e aplicar os novos arquivos"
-
-#: 
-#, fuzzy
 msgid "Full Path:"
 msgstr "Caminho Completo:"
 
 #: 
 #, fuzzy
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-#, fuzzy
-msgid "Upgrade System"
-msgstr "Atualizar o Sistema"
-
-#: 
-#, fuzzy
-msgid "Step 4: Login"
-msgstr "Passo 4: Login"
-
-#: 
-#, fuzzy
-msgid "Login to Upgraded System"
-msgstr "Faça o Login para atualizar o Sistema"
-
-#: 
-#, fuzzy
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup completo, Pronto para Download."
-
-#: 
-#, fuzzy
-msgid "Backup Error."
-msgstr "Erro de Backup."
 
 #: 
 #, fuzzy
@@ -8883,11 +8803,6 @@ msgstr "Redefinir a senha"
 
 #: 
 #, fuzzy
-msgid "Unable to reset password"
-msgstr "Não foi possível redefinir a sua senha"
-
-#: 
-#, fuzzy
 msgid "Reset your password"
 msgstr "Redefinir a sua senha"
 
@@ -8895,16 +8810,6 @@ msgstr "Redefinir a sua senha"
 #, fuzzy
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Desculpe, não podemos processar seu pedido neste momento."
-
-#: 
-#, fuzzy
-msgid "Login Name is Required"
-msgstr "Nome de usuário é obrigatório"
-
-#: 
-#, fuzzy
-msgid "A new password was sent to you. Please check your email"
-msgstr "Uma nova senha foi enviada para você. Por favor, verifique seu e-mail"
 
 #: 
 #, fuzzy
@@ -10109,11 +10014,6 @@ msgstr "Nome do menu"
 
 #: 
 #, fuzzy
-msgid "Max 20 char"
-msgstr "Max 20 caracteres"
-
-#: 
-#, fuzzy
 msgid "Link Address"
 msgstr "Endereço de Link"
 
@@ -10291,11 +10191,6 @@ msgstr "Se você deseja manter suas alterações nesses arquivos, faça um backu
 #, fuzzy
 msgid "Integrity Check Details:"
 msgstr "Detalhes da verificação de integridade:"
-
-#: 
-#, fuzzy
-msgid "I Understand"
-msgstr "Compreendo"
 
 #: 
 #, fuzzy
@@ -10546,11 +10441,6 @@ msgstr "Remover resultados do carrinho"
 
 #: 
 #, fuzzy
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Atenção: Tarefas de pré-atualização detectadas"
-
-#: 
-#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Foram identificadas algumas condições que podem impedir uma atualização bem-sucedida"
 
@@ -10759,11 +10649,6 @@ msgstr "Sua nova senha é parecida demais com a antiga"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Redefinição de senha não disponível. Entre em contato com o administrador do sistema"
-
-#: 
-#, fuzzy
-msgid "Authentication Issue"
-msgstr "Problemas com a autenticação"
 
 #: 
 #, fuzzy

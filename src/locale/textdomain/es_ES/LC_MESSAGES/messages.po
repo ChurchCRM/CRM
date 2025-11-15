@@ -1397,10 +1397,6 @@ msgid "Financial Reports"
 msgstr "Reportes financieros"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "No se encontraron registros para el reporte anterior"
-
-#: 
 msgid "Report Type:"
 msgstr "Tipo de reporte:"
 
@@ -2236,11 +2232,11 @@ msgstr "Clases de Escuela Dominical"
 
 #: 
 msgid "Deposit Tracking"
-msgstr "Rastreo de depósitos"
+msgstr "Rastreo de Depósitos"
 
 #: 
 msgid "Latest Families"
-msgstr "Últimas familias"
+msgstr "Últimas Familias"
 
 #: 
 msgid "Family Name"
@@ -2248,7 +2244,7 @@ msgstr "Nombre de familia"
 
 #: 
 msgid "Updated Families"
-msgstr "Familias actualizadas"
+msgstr "Familias Actualizadas"
 
 #: 
 msgid "Updated"
@@ -2771,10 +2767,6 @@ msgstr "No, retener esta asignación"
 #: 
 msgid "Query Listing"
 msgstr "Listado de búsqueda"
-
-#: 
-msgid "Run a Free-Text Query"
-msgstr "Correr una búsqueda de texto libre"
 
 #: 
 msgid "Free-Text Query"
@@ -3951,68 +3943,12 @@ msgid "Edit Settings"
 msgstr "Editar ajustes"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Actualizar ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Paso 1: Respaldar base de datos"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Por favor cree un respaldo de la base de datos antes de comenzar el proceso de actualización."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Generar respaldo de base de datos"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Paso 2: Obtener Paquete de actualización del Servidor"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Obtener los últimos archivos desde el sitio de lanzamientos de ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Obtener archivos actualizados"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Paso 3: Aplicar Paquete de actualización al Servidor"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Extraer el archivo de actualización y aplicar los nuevos archivos"
-
-#: 
 msgid "Full Path:"
 msgstr "Ruta Completa:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Actualizar sistema"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Paso 4: Ingresar"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Ingresar a sistema actualizado"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Respaldo Completo, Listo para Descargar."
-
-#: 
-msgid "Backup Error."
-msgstr "Error de Respaldo."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7373,24 +7309,12 @@ msgid "Reset Password"
 msgstr "Restablecer contraseña"
 
 #: 
-msgid "Unable to reset password"
-msgstr "No fue posible restablecer la contraseña"
-
-#: 
 msgid "Reset your password"
 msgstr "Restablecer su contraseña"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Lo sentimos, no hemos podido procesar su solicitud en este momento."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Nombre de usuario es Necesario"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Una nueva contraseña fue enviada a usted. Por favor, revise su mail"
 
 #: 
 msgid "Kiosk Manager"
@@ -8319,11 +8243,11 @@ msgstr "URL de HTML"
 
 #: 
 msgid "Latest Persons"
-msgstr "Últimas personas"
+msgstr "Últimas Personas"
 
 #: 
 msgid "Updated Persons"
-msgstr "Personas actualizadas"
+msgstr "Personas Actualizadas"
 
 #: 
 msgid "Custom Menus"
@@ -8360,10 +8284,6 @@ msgstr "Agregar Menu"
 #: 
 msgid "Menu Name"
 msgstr "Nombre de Menu"
-
-#: 
-msgid "Max 20 char"
-msgstr "Max 20 caracteres"
 
 #: 
 msgid "Link Address"
@@ -8511,10 +8431,6 @@ msgstr "Si desea mantener sus cambios a estos archivos, por favor haga un respal
 #: 
 msgid "Integrity Check Details:"
 msgstr "Detalles de Comprobación de Integridad:"
-
-#: 
-msgid "I Understand"
-msgstr "Entiendo"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8721,10 +8637,6 @@ msgid "Remove Results from Cart"
 msgstr "Eliminar resultados del carrito"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Advertencia: Tareas de Pre-Actualización Detectadas"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Algunas condiciones han sido identificadas, las que pueden evitar una actualización satisfactoria."
@@ -8894,10 +8806,6 @@ msgstr "Su nueva contraseña es demasiado similar a la anterior."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Restablecimiento de contraseña no disponible. Por favor, contacte al administrador de su sistema."
-
-#: 
-msgid "Authentication Issue"
-msgstr "Problema de Autenticación"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

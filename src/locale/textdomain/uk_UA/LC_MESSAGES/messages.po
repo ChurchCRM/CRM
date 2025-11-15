@@ -1398,10 +1398,6 @@ msgid "Financial Reports"
 msgstr "Фінансові звіти"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "З попереднього звіту не повернуто жодних записів."
-
-#: 
 msgid "Report Type:"
 msgstr "Тип звіту:"
 
@@ -2774,10 +2770,6 @@ msgid "Query Listing"
 msgstr "Список запитів"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Запустіть текстовий запит"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Запит у вільному тексті"
 
@@ -3952,68 +3944,12 @@ msgid "Edit Settings"
 msgstr "Редагувати налаштування"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Оновіть ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Крок 1: Резервне копіювання бази даних"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Будь ласка, створіть резервну копію бази даних перед початком процесу оновлення."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Створити резервну копію бази даних"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Крок 2: Отримати пакет оновлення на сервері"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Завантажте найновіші файли зі сторінки випуску ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Отримати файли оновлення"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Крок 3: Застосуйте пакет оновлень на сервері"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Витягніть архів оновлення та застосуйте нові файли"
-
-#: 
 msgid "Full Path:"
 msgstr "Повний шлях:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Система оновлення"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Крок 4: Вхід"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Увійдіть в оновлену систему"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Резервне копіювання завершено, готове до завантаження."
-
-#: 
-msgid "Backup Error."
-msgstr "Помилка резервного копіювання."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7350,24 +7286,12 @@ msgid "Reset Password"
 msgstr "Скинути пароль"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Не вдається скинути пароль"
-
-#: 
 msgid "Reset your password"
 msgstr "Скинути пароль"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "На жаль, наразі ми не можемо обробити ваш запит."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Ім'я для входу обов’язкове"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Вам надіслано новий пароль. Будь ласка, перевірте свою електронну пошту"
 
 #: 
 msgid "Kiosk Manager"
@@ -8337,10 +8261,6 @@ msgid "Menu Name"
 msgstr "Назва меню"
 
 #: 
-msgid "Max 20 char"
-msgstr "Макс. 20 символів"
-
-#: 
 msgid "Link Address"
 msgstr "Адреса посилання"
 
@@ -8485,10 +8405,6 @@ msgstr "Якщо ви хочете зберегти зміни до цих фа�
 #: 
 msgid "Integrity Check Details:"
 msgstr "Подробиці перевірки цілісності:"
-
-#: 
-msgid "I Understand"
-msgstr "Я розумію"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8683,10 +8599,6 @@ msgid "Remove Results from Cart"
 msgstr "Видаліть результати з кошика"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Попередження: Виявлено завдання перед оновленням"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Виявлено деякі умови, які можуть перешкодити успішному оновленню"
@@ -8856,10 +8768,6 @@ msgstr "Ваш новий пароль занадто схожий на ваш �
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Скидання пароля недоступне. Зверніться до свого системного адміністратора"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Випуск автентифікації"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

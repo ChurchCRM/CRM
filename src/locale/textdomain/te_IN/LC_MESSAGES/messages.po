@@ -1395,10 +1395,6 @@ msgid "Financial Reports"
 msgstr "ఆర్థిక నివేదికలు"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "మునుపటి నివేదిక నుండి ఎటువంటి రికార్డులు తిరిగి ఇవ్వబడలేదు."
-
-#: 
 msgid "Report Type:"
 msgstr "నివేదిక రకం:"
 

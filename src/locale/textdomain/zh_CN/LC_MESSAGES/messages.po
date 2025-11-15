@@ -1434,10 +1434,6 @@ msgid "Financial Reports"
 msgstr "财务报告"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "从以前的报告中没有记录返回。"
-
-#: 
 msgid "Report Type:"
 msgstr "报告类型："
 
@@ -2844,10 +2840,6 @@ msgid "Query Listing"
 msgstr "查询上市"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "运行自由文本查询"
-
-#: 
 msgid "Free-Text Query"
 msgstr "自由文本查询"
 
@@ -4058,68 +4050,12 @@ msgid "Edit Settings"
 msgstr "编辑设置"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "升级ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "第1步：备份数据库"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "请在开始升级过程之前创建数据库备份。"
-
-#: 
-msgid "Generate Database Backup"
-msgstr "生成数据库备份"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "第2步：在服务器上获取更新包"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "从ChurchCRM GitHub发布页面获取最新文件"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "获取更新文件"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "第3步：在服务器上应用更新包"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "提取升级存档，并应用新文件"
-
-#: 
 msgid "Full Path:"
 msgstr "完整路径："
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "升级系统"
-
-#: 
-msgid "Step 4: Login"
-msgstr "第4步：登录"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "登录升级系统"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "备份完成，准备下载。"
-
-#: 
-msgid "Backup Error."
-msgstr "备份错误。"
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7456,24 +7392,12 @@ msgid "Reset Password"
 msgstr "重置密码"
 
 #: 
-msgid "Unable to reset password"
-msgstr "无法重置密码"
-
-#: 
 msgid "Reset your password"
 msgstr "重置你的密码"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "抱歉，我们目前无法处理您的请求。"
-
-#: 
-msgid "Login Name is Required"
-msgstr "登录名是必需的"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "我们发送了一个新密码。请查看你的邮箱"
 
 #: 
 msgid "Kiosk Manager"
@@ -8441,10 +8365,6 @@ msgid "Menu Name"
 msgstr "菜单名称"
 
 #: 
-msgid "Max 20 char"
-msgstr "最多20个字符"
-
-#: 
 msgid "Link Address"
 msgstr "链接地址"
 
@@ -8589,10 +8509,6 @@ msgstr "如果您希望保留对这些文件的更改，请在进行此升级之
 #: 
 msgid "Integrity Check Details:"
 msgstr "完整性检查详细信息："
-
-#: 
-msgid "I Understand"
-msgstr "我明白"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8797,10 +8713,6 @@ msgid "Remove Results from Cart"
 msgstr "从购物车中删除结果"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "警告：检测到升级前任务"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "已确定某些情况，可能会阻止成功升级"
@@ -8970,10 +8882,6 @@ msgstr "您的新密码与旧密码太相似。"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "密码重置不可用。请联系您的系统管理员"
-
-#: 
-msgid "Authentication Issue"
-msgstr "认证问题"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

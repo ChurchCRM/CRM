@@ -1395,10 +1395,6 @@ msgid "Financial Reports"
 msgstr "Finanční sestavy"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Z předchozí sestavy nebyly vráceny žádné záznamy."
-
-#: 
 msgid "Report Type:"
 msgstr "Typ sestavy:"
 
@@ -2770,10 +2766,6 @@ msgid "Query Listing"
 msgstr "Seznam dotazů"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Zadejte vlastní dotaz"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Vlastní dotaz"
 
@@ -3946,68 +3938,12 @@ msgid "Edit Settings"
 msgstr "Upravit nastavení"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Upgradovat ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Krok 1: Zálohovat databázi"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Před zahájením procesu upgradu vytvořte zálohu databáze."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Generovat zálohu databáze"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Krok 2: Stáhnout aktualizační balíček na server"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Stáhněte nejnovější soubory ze stránky releasů na GitHubu"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Stáhnout aktualizační soubory"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Krok 3: Aplikovat aktualizační balíček na server"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Rozbalte aktualizační archiv a aplikujte nové soubory"
-
-#: 
 msgid "Full Path:"
 msgstr "Celá cesta:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Upgradovat systém"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Krok 4: Přihlásit se"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Přihlašte se do upgradovaného systému"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Záloha kompletní, připraveno ke stažení."
-
-#: 
-msgid "Backup Error."
-msgstr "Chyba zálohy."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7338,24 +7274,12 @@ msgid "Reset Password"
 msgstr "Obnovení hesla"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Heslo není možné obnovit"
-
-#: 
 msgid "Reset your password"
 msgstr "Obnovte své heslo"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Je nám líto, ale v tuto chvíli nemůžeme vaši žádost zpracovat."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Přihlašovací jméno je vyžadováno"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Bylo vám zasláno nové heslo. Zkontrolujte prosím svůj e-mail"
 
 #: 
 msgid "Kiosk Manager"
@@ -8322,10 +8246,6 @@ msgid "Menu Name"
 msgstr "Název menu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Maximálně 20 znaků"
-
-#: 
 msgid "Link Address"
 msgstr "Adresa odkazu"
 
@@ -8469,10 +8389,6 @@ msgstr "Pokud si přejete zachovat změny v těchto souborech, proveďte před p
 #: 
 msgid "Integrity Check Details:"
 msgstr "Podrobnosti o kontrole integrity:"
-
-#: 
-msgid "I Understand"
-msgstr "Rozumím"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8681,10 +8597,6 @@ msgid "Remove Results from Cart"
 msgstr "Odstranit výsledky z košíku"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Varování: Zjištěny úlohy před aktualizací"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Byly zjištěny některé podmínky, které mohou zabránit úspěšné aktualizaci"
 
@@ -8852,10 +8764,6 @@ msgstr "Vaše nové heslo je příliš podobné starému."
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Obnovení hesla není k dispozici.  Obraťte se na správce systému"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Problém s ověřením"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
