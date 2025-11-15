@@ -1,16 +1,20 @@
 /// <reference types="cypress" />
 
 describe('Group XSS Security Tests', () => {
+
   before(() => {
-    cy.loginAdmin();
+    cy.session('admin-session', () => {
+      // Inline login logic for session caching (no navigation)
+      cy.visit('/login');
+      cy.get('input[name=User]').type('admin');
+      cy.get('input[name=Password]').type('changeme{enter}');
+      cy.url().should('not.include', '/login');
+    });
   });
 
   it('Should prevent stored XSS in group description via GroupEditor', () => {
-    const uniqueSeed = Date.now().toString();
-    const groupName = 'XSS Test Group ' + uniqueSeed;
     const xssPayload = '<script>alert("XSS")</script>';
 
-    // Navigate to an existing group
     cy.visit('/GroupEditor.php?GroupID=9');
     
     // Get the group name and verify we're on the editor
@@ -31,30 +35,28 @@ describe('Group XSS Security Tests', () => {
     const xssPayload = '<img src=x onerror="window.testXSSExecuted=true">';
 
     // Update the group via API with XSS payload
-    cy.loginAdmin().then(() => {
+    cy.makePrivateAdminAPICall('POST', `/api/groups/${testGroupId}`, {
+      groupName: 'Church Board',
+      description: xssPayload,
+      groupType: '0'
+    }, 200).then(() => {
+      // Navigate to GroupView page
+      cy.visit(`/GroupView.php?GroupID=${testGroupId}`);
+
+      // Verify that the XSS script did NOT execute (most important test)
+      cy.window().then((win) => {
+        expect(win.testXSSExecuted).to.be.undefined;
+      });
+
+      // Verify the description area is rendered (payload should be escaped but present)
+      cy.get('.card-body').should('exist');
+
+      // Cleanup: restore original description
       cy.makePrivateAdminAPICall('POST', `/api/groups/${testGroupId}`, {
         groupName: 'Church Board',
-        description: xssPayload,
+        description: '',
         groupType: '0'
-      }, 200).then(() => {
-        // Navigate to GroupView page
-        cy.visit(`/GroupView.php?GroupID=${testGroupId}`);
-
-        // Verify that the XSS script did NOT execute (most important test)
-        cy.window().then((win) => {
-          expect(win.testXSSExecuted).to.be.undefined;
-        });
-
-        // Verify the description area is rendered (payload should be escaped but present)
-        cy.get('.card-body').should('exist');
-
-        // Cleanup: restore original description
-        cy.makePrivateAdminAPICall('POST', `/api/groups/${testGroupId}`, {
-          groupName: 'Church Board',
-          description: '',
-          groupType: '0'
-        }, 200);
-      });
+      }, 200);
     });
   });
 
@@ -62,27 +64,25 @@ describe('Group XSS Security Tests', () => {
     const testGroupId = 9;
     const xssPayload = '<script>window.xssDetected = true;</script>';
 
-    cy.loginAdmin().then(() => {
+    cy.makePrivateAdminAPICall('POST', `/api/groups/${testGroupId}`, {
+      groupName: 'Church Board',
+      description: xssPayload,
+      groupType: '0'
+    }, 200).then(() => {
+      // Navigate to GroupView
+      cy.visit(`/GroupView.php?GroupID=${testGroupId}`);
+
+      // Verify XSS did not execute
+      cy.window().then((win) => {
+        expect(win.xssDetected).to.be.undefined;
+      });
+
+      // Cleanup
       cy.makePrivateAdminAPICall('POST', `/api/groups/${testGroupId}`, {
         groupName: 'Church Board',
-        description: xssPayload,
+        description: '',
         groupType: '0'
-      }, 200).then(() => {
-        // Navigate to GroupView
-        cy.visit(`/GroupView.php?GroupID=${testGroupId}`);
-
-        // Verify XSS did not execute
-        cy.window().then((win) => {
-          expect(win.xssDetected).to.be.undefined;
-        });
-
-        // Cleanup
-        cy.makePrivateAdminAPICall('POST', `/api/groups/${testGroupId}`, {
-          groupName: 'Church Board',
-          description: '',
-          groupType: '0'
-        }, 200);
-      });
+      }, 200);
     });
   });
 
@@ -90,25 +90,23 @@ describe('Group XSS Security Tests', () => {
     const testGroupId = 9;
     const specialChars = 'Test with <>&"\'characters';
 
-    cy.loginAdmin().then(() => {
+    cy.makePrivateAdminAPICall('POST', `/api/groups/${testGroupId}`, {
+      groupName: 'Church Board',
+      description: specialChars,
+      groupType: '0'
+    }, 200).then(() => {
+      // Navigate to GroupView
+      cy.visit(`/GroupView.php?GroupID=${testGroupId}`);
+
+      // Verify page loads without errors (escaping prevents breakage)
+      cy.get('.card-body').should('exist');
+
+      // Cleanup
       cy.makePrivateAdminAPICall('POST', `/api/groups/${testGroupId}`, {
         groupName: 'Church Board',
-        description: specialChars,
+        description: '',
         groupType: '0'
-      }, 200).then(() => {
-        // Navigate to GroupView
-        cy.visit(`/GroupView.php?GroupID=${testGroupId}`);
-
-        // Verify page loads without errors (escaping prevents breakage)
-        cy.get('.card-body').should('exist');
-
-        // Cleanup
-        cy.makePrivateAdminAPICall('POST', `/api/groups/${testGroupId}`, {
-          groupName: 'Church Board',
-          description: '',
-          groupType: '0'
-        }, 200);
-      });
+      }, 200);
     });
   });
 });
