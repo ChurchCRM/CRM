@@ -11,11 +11,15 @@ $nonce = base64_encode(random_bytes(16));
     <meta http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" href="<?= $rootPath ?>/Images/favicon.ico">
+
     <!-- Core ChurchCRM bundle (includes jQuery) -->
     <script src="<?= $rootPath ?>/skin/v2/churchcrm.min.js"></script>
     <link rel="stylesheet" href="<?= $rootPath ?>/skin/v2/churchcrm.min.css">
 
     <script src="<?= $rootPath ?>/skin/external/moment/moment.min.js"></script>
+    <script src="<?= $rootPath ?>/skin/external/i18next/i18next.min.js"></script>
+    <script src="<?= $rootPath ?>/skin/external/just-validate/just-validate.production.min.js"></script>
 
     <title>ChurchCRM: <?= $sPageTitle ?? 'Setup' ?></title>
 
