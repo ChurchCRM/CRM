@@ -209,55 +209,37 @@ window.Stepper = Stepper;
 		return cell;
 	}
 
-	function appendIntegrityDetails(tableSelector, baseRowId, payload) {
-		const detailRowId = `${baseRowId}-details`;
-		$(`#${detailRowId}`).remove();
+       function appendIntegrityDetails(tableSelector, baseRowId, payload) {
+	       const detailRowId = `${baseRowId}-details`;
+	       $(`#${detailRowId}`).remove();
 
-		if (!payload || !Array.isArray(payload.files) || payload.files.length === 0) {
-			return;
-		}
+	       if (!payload || !Array.isArray(payload.files) || payload.files.length === 0) {
+		       return;
+	       }
 
-		const detailRow = $("<tr>", { id: detailRowId });
-		const detailCell = $("<td>", { colspan: 2 });
-		const heading = $("<div>")
-			.addClass("font-weight-bold mb-2")
-			.text(i18next.t("Files with issues"));
-		const list = $("<ul>").addClass("mb-0 pl-3");
+	       const items = payload.files
+		       .filter((file) => typeof file === "string" && file.trim().length > 0)
+		       .map((file) => file.trim());
 
-		payload.files.forEach(function (file) {
-			const listItem = $("<li>");
-			const filename = file.filename || i18next.t("Unknown file");
-			const status = file.status || i18next.t("Unknown status");
-			listItem.append(
-				$("<span>").text(`${filename}: ${status}`),
-			);
+	       if (items.length === 0) {
+		       return;
+	       }
 
-			const details = [];
-			if (file.expectedhash) {
-				details.push(
-					i18next.t("Expected hash") + ": " + file.expectedhash,
-				);
-			}
-			if (file.actualhash) {
-				details.push(
-					i18next.t("Actual hash") + ": " + file.actualhash,
-				);
-			}
-			if (details.length > 0) {
-				listItem.append(
-					$("<div>")
-						.addClass("small text-muted")
-						.text(details.join(" | ")),
-				);
-			}
+	       const detailRow = $("<tr>", { id: detailRowId });
+	       const detailCell = $("<td>", { colspan: 2 });
+	       const heading = $("<div>")
+		       .addClass("font-weight-bold mb-2")
+		       .text(i18next.t("Files with issues"));
+	       const list = $("<ul>").addClass("mb-0 pl-3");
 
-			list.append(listItem);
-		});
+	       items.forEach(function (fileName) {
+		       list.append($("<li>").text(fileName));
+	       });
 
-		detailCell.append(heading).append(list);
-		detailRow.append(detailCell);
-		$(tableSelector).append(detailRow);
-	}
+	       detailCell.append(heading).append(list);
+	       detailRow.append(detailCell);
+	       $(tableSelector).append(detailRow);
+       }
 
 	function updateGroupStatus(group) {
 		const config = GROUP_CONFIG[group];

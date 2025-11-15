@@ -146,21 +146,13 @@ class AppIntegrityService
                                 'expectedHash' => $file->sha1,
                                 'actualHash' => $actualHash,
                             ]);
-                            $signatureFailures[] = [
-                                'filename' => $file->filename,
-                                'status' => 'Hash Mismatch',
-                                'expectedhash' => $file->sha1,
-                                'actualhash' => $actualHash,
-                            ];
+                                $signatureFailures[] = (string) $file->filename;
                         }
                     } else {
                         $logger->warning("File Missing: {filename}", [
                             'filename' => $file->filename,
                         ]);
-                        $signatureFailures[] = [
-                            'filename' => $file->filename,
-                            'status' => 'File Missing',
-                        ];
+                            $signatureFailures[] = (string) $file->filename;
                     }
                 }
             } else {
