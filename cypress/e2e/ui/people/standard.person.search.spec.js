@@ -3,9 +3,11 @@
 describe("Standard Person", () => {
     const uniqueSeed = Date.now().toString();
     
+    beforeEach(() => cy.setupStandardSession());
+    
     it("Add Person only first and last name", () => {
         const name = "Robby " + uniqueSeed;
-        cy.loginStandard("PersonEditor.php");
+        cy.visit("PersonEditor.php");
         cy.get("#FirstName").type(name);
         cy.get("#LastName").type("Campbell");
         cy.get("#PersonSaveButton").click();
@@ -16,7 +18,7 @@ describe("Standard Person", () => {
 
     it("Add Person with middle name", () => {
         const firstName = "Mathew " + uniqueSeed;
-        cy.loginStandard("PersonEditor.php");
+        cy.visit("PersonEditor.php");
         cy.get("#FirstName").type(firstName);
         cy.get("#MiddleName").type("Henry");
         cy.get("#LastName").type("Campbell");
@@ -26,7 +28,7 @@ describe("Standard Person", () => {
     });
 
     it("Name Search", () => {
-        cy.loginStandard("v2/dashboard");
+        cy.visit("v2/dashboard");
         cy.apiRequest({
             method: "GET",
             url: "/api/search/cam",
@@ -38,7 +40,7 @@ describe("Standard Person", () => {
     });
 
     it("Middle Name Search", () => {
-        cy.loginStandard("v2/dashboard");
+        cy.visit("v2/dashboard");
         cy.apiRequest({
             method: "GET",
             url: "/api/search/henry",
@@ -51,7 +53,7 @@ describe("Standard Person", () => {
 
     it("Unknown Name Search", () => {
         const unknownName = "nobody " + uniqueSeed;
-        cy.loginStandard("v2/dashboard");
+        cy.visit("v2/dashboard");
         cy.apiRequest({
             method: "GET",
             url: "/api/search/" + unknownName,

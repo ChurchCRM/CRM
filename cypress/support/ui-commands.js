@@ -9,21 +9,20 @@
 // ***********************************************
 
 /**
- * Sets up a cached admin login session for Cypress UI tests.
- * Usage in test files:
- *   beforeEach(() => cy.setupAdminSession());
- * 
- * Note: Uses cy.session() with explicit validation to cache login across test runs.
- * If validation fails, the session is cleared and login is re-attempted.
+ * Internal helper: Sets up a cached login session using cy.session()
+ * Performs login and validates with CRM cookie presence
+ * @param {string} sessionName - Unique identifier for this session (e.g., 'admin-session')
+ * @param {string} username - The username to authenticate with
+ * @param {string} password - The password to authenticate with
  */
-Cypress.Commands.add('setupAdminSession', () => {
+Cypress.Commands.add('setupLoginSession', (sessionName, username, password) => {
     cy.session(
-        'admin-session',
+        sessionName,
         () => {
             // Perform the login
             cy.visit('/login');
-            cy.get('input[name=User]').type('admin');
-            cy.get('input[name=Password]').type('changeme{enter}');
+            cy.get('input[name=User]').type(username);
+            cy.get('input[name=Password]').type(password + '{enter}');
             // Wait for redirect away from login
             cy.url().should('not.include', '/login');
         },
@@ -38,51 +37,41 @@ Cypress.Commands.add('setupAdminSession', () => {
     );
 });
 
-
-// -- This is a login command --
-Cypress.Commands.add("loginAdmin", (location, checkMatchingLocation = true) => {
-    cy.login("admin", "changeme", location, checkMatchingLocation);
+/**
+ * Sets up a cached admin login session for Cypress UI tests.
+ * Reads credentials from cypress.config.ts env configuration.
+ * Usage in test files:
+ *   beforeEach(() => cy.setupAdminSession());
+ * 
+ * Note: Uses cy.session() with explicit validation to cache login across test runs.
+ * If validation fails, the session is cleared and login is re-attempted.
+ */
+Cypress.Commands.add('setupAdminSession', () => {
+    const username = Cypress.env('admin.username');
+    const password = Cypress.env('admin.password');
+    if (!username || !password) {
+        throw new Error('Admin credentials not configured in cypress.config.ts env: admin.username and admin.password required');
+    }
+    cy.setupLoginSession('admin-session', username, password);
 });
 
-Cypress.Commands.add(
-    "loginStandard",
-    (location, checkMatchingLocation = true) => {
-        cy.login(
-            "tony.wade@example.com",
-            "basicjoe",
-            location,
-            checkMatchingLocation
-        );
+/**
+ * Sets up a cached standard user login session for Cypress UI tests.
+ * Reads credentials from cypress.config.ts env configuration.
+ * Usage in test files:
+ *   beforeEach(() => cy.setupStandardSession());
+ * 
+ * Note: Uses cy.session() with explicit validation to cache login across test runs.
+ * If validation fails, the session is cleared and login is re-attempted.
+ */
+Cypress.Commands.add('setupStandardSession', () => {
+    const username = Cypress.env('standard.username');
+    const password = Cypress.env('standard.password');
+    if (!username || !password) {
+        throw new Error('Standard user credentials not configured in cypress.config.ts env: standard.username and standard.password required');
     }
-);
-
-Cypress.Commands.add(
-    "login",
-    (username, password, location, checkMatchingLocation = true) => {
-        cy.visit("/?location=/" + location);
-        
-        // Use data-cy attributes when available, fallback to ID
-        cy.get("[data-cy=username], #UserBox").should('be.visible').type(username);
-        cy.get("[data-cy=password], #PasswordBox").should('be.visible').type(password);
-        cy.get("form").submit();
-
-        // Wait for navigation to complete
-        cy.url().should('not.contain', 'location=');
-
-        // Wait for session cookie to be set (CRM- session cookie)
-        cy.getCookies().should((cookies) => {
-            // At least one cookie should start with CRM-
-            expect(cookies.some(cookie => cookie.name.startsWith('CRM-'))).to.be.true;
-        });
-
-        // Wait for page to be fully loaded
-        cy.document().should("have.property", "readyState", "complete");
-
-        if (location && checkMatchingLocation) {
-            cy.location("pathname").should("include", location.split("?")[0]);
-        }
-    }
-);
+    cy.setupLoginSession('standard-session', username, password);
+});
 
 Cypress.Commands.add("buildRandom", (prefixString) => {
     const rand = Math.random().toString(36).substring(7);

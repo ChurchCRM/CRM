@@ -3,11 +3,13 @@ const personViewPath = "PersonView.php";
 
 describe("Standard Person", () => {
     const uniqueSeed = Date.now().toString();
+    
+    beforeEach(() => cy.setupStandardSession());
 
     it("Add Full Person", () => {
         const name = "Bobby " + uniqueSeed;
 
-        cy.loginStandard(personEditorPath);
+        cy.visit(personEditorPath);
         cy.get("#Gender").select("1");
         cy.get("#FirstName").type(name);
         cy.get("#LastName").type("Hall");
@@ -38,7 +40,7 @@ describe("Standard Person", () => {
     it("Add Person only first and last name", () => {
         const name = "Robby " + uniqueSeed;
 
-        cy.loginStandard(personEditorPath);
+        cy.visit(personEditorPath);
         cy.get("#FirstName").type(name);
         cy.get("#LastName").type("Hall");
         cy.get("#PersonSaveButton").click();

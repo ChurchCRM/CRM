@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
 describe("Standard Family", () => {
+    beforeEach(() => cy.setupStandardSession());
+    
     it("View Family Lists", () => {
         cy.makePrivateUserAPICall(
             "POST",
@@ -16,7 +18,7 @@ describe("Standard Family", () => {
             "updateToInActive",
         );
 
-        cy.loginStandard("v2/family");
+        cy.visit("v2/family");
         cy.contains("Active Family List");
 
         cy.visit("v2/family?mode=inactive");
@@ -43,13 +45,13 @@ describe("Standard Family", () => {
     });
 
     it("View invalid Family", () => {
-        cy.loginStandard("v2/family/9999", false);
+        cy.visit("v2/family/9999");
         cy.location("pathname").should("include", "family/not-found");
         cy.contains("Oops! FAMILY 9999 Not Found");
     });
 
     it("Entering a new Family", () => {
-        cy.loginStandard("FamilyEditor.php");
+        cy.visit("FamilyEditor.php");
 
         cy.contains("Family Info");
         // Fill in Family Info section

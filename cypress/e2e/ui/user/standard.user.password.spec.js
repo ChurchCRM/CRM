@@ -1,8 +1,10 @@
 /// <reference types="cypress" />
 
 describe("User 2FA", () => {
+    beforeEach(() => cy.setupStandardSession());
+    
     it("Ensure QR code displays", () => {
-        cy.loginStandard("v2/user/current/enroll2fa");
+        cy.visit("v2/user/current/enroll2fa");
         cy.get("#begin2faEnrollment")
             .should("exist")
             .should("be.visible")
@@ -16,8 +18,10 @@ describe("User 2FA", () => {
 });
 
 describe("Standard User Password", () => {
+    beforeEach(() => cy.setupStandardSession());
+    
     it("Change with invalid password", () => {
-        cy.loginStandard("v2/user/current/changepassword");
+        cy.visit("v2/user/current/changepassword");
         cy.get("#OldPassword").type("ILikePancakes");
         cy.get("#NewPassword1").type("changeyou");
         cy.get("#NewPassword2").type("changeyou");
@@ -27,7 +31,7 @@ describe("Standard User Password", () => {
     });
 
     it("Change with simple password", () => {
-        cy.loginStandard("v2/user/current/changepassword");
+        cy.visit("v2/user/current/changepassword");
         cy.get("#OldPassword").type("basicjoe");
         cy.get("#NewPassword1").type("password");
         cy.get("#NewPassword2").type("password");
@@ -39,7 +43,7 @@ describe("Standard User Password", () => {
     });
 
     it("Change with old password", () => {
-        cy.loginStandard("v2/user/current/changepassword");
+        cy.visit("v2/user/current/changepassword");
         cy.get("#OldPassword").type("basicjoe");
         cy.get("#NewPassword1").type("basicjoe");
         cy.get("#NewPassword2").type("basicjoe");
@@ -49,7 +53,7 @@ describe("Standard User Password", () => {
     });
 
     it("Change with like old password", () => {
-        cy.loginStandard("v2/user/current/changepassword");
+        cy.visit("v2/user/current/changepassword");
         cy.get("#OldPassword").type("basicjoe");
         cy.get("#NewPassword1").type("basicjoe2");
         cy.get("#NewPassword2").type("basicjoe2");
@@ -59,7 +63,7 @@ describe("Standard User Password", () => {
     });
 
     it("Change then back", () => {
-        cy.loginStandard("v2/user/current/changepassword");
+        cy.visit("v2/user/current/changepassword");
         cy.get("#OldPassword").type("basicjoe");
         cy.get("#NewPassword1").type(
             "SomeThingsAreBetterLeftUnChangedJustKidding",
