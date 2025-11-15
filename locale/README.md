@@ -23,7 +23,6 @@ locale/
 
 ### Locale Management
 - `npm run locale:audit` - Generate locale completeness report
-- `npm run locale:clean` - Clean all translation files
 - `npm run locale:download` - Download latest translations from POEditor
 - `npm run locale:term-extract` - Extract all translatable terms for POEditor upload
 
