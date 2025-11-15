@@ -26,7 +26,7 @@ window.CRM.APIRequest = function (options) {
 
 window.CRM.DisplayErrorMessage = function (endpoint, error) {
     console.trace(error);
-    message =
+    let message =
         "<p>" +
         i18next.t("Error making API Call to") +
         ": " +
@@ -109,7 +109,8 @@ window.CRM.kiosks = {
         });
     },
     setAssignment: function (id, assignmentId) {
-        assignmentSplit = assignmentId.split("-");
+        let assignmentSplit = assignmentId.split("-");
+        let assignmentType, eventId;
         if (assignmentSplit.length > 0) {
             assignmentType = assignmentSplit[0];
             eventId = assignmentSplit[1];
@@ -161,7 +162,7 @@ window.CRM.groups = {
                 },
             },
         };
-        initFunction = function () {};
+        let initFunction = function () {};
 
         if (selectOptions.Type & window.CRM.groups.selectTypes.Group) {
             options.title = i18next.t("Select Group");
@@ -198,7 +199,7 @@ window.CRM.groups = {
                 window.CRM.groups
                     .getRoles(selectOptions.GroupID)
                     .done(function (rdata) {
-                        rolesList = rdata.map(function (item) {
+                        let rolesList = rdata.map(function (item) {
                             return {
                                 text: i18next.t(item.OptionName), // to translate the Teacher and Student in localize text
                                 id: item.OptionId,

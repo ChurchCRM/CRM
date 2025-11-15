@@ -1,4 +1,3 @@
-import * as React from "react";
 import { createRoot, Root } from "react-dom/client";
 import ExistingEvent from "./components/Events/ExistingEvent";
 declare global {
@@ -15,7 +14,7 @@ declare global {
       t(string: string): string;
     };
     // instead of loading the whole react-moment class, we can just use the one that's already on window.
-    moment: any;
+    moment: unknown;
   }
 }
 

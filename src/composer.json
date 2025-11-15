@@ -11,7 +11,6 @@
     "authors": [
         {
             "name": "George Dawoud",
-            "homepage": "http://blog.dawouds.com",
             "role": "Lead Developer"
         }
     ],
@@ -63,7 +62,6 @@
         "symfony/dependency-injection": "^6.0.20",
         "symfony/translation": "^5.4.35",
         "twig/twig": "^3.20.0",
-        "verot/class.upload.php": "^2.1.6",
         "vonage/client": "^2.4.0"
     },
     "require-dev": {
@@ -85,8 +83,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ChurchCRM\\": "ChurchCRM/",
-            "\\": "bin/"
+            "ChurchCRM\\": "ChurchCRM/"
         },
         "classmap": [
             "ChurchCRM/"
@@ -101,6 +98,8 @@
         },
         "sort-packages": true
     },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "scripts": {
         "orm-gen": "php vendor/bin/propel --config-dir=propel model:build",
         "sql-gen": "php vendor/bin/propel --config-dir=propel sql:build",

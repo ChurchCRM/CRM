@@ -74,7 +74,7 @@ const EventPropertiesEditor: React.FunctionComponent<{
               onChange={(name: string, html: string) => {
                 const changeEvent = {
                   target: { name, value: html }
-                } as any;
+                } as unknown as React.ChangeEvent<HTMLInputElement>;
                 changeHandler(changeEvent);
               }}
             />
@@ -146,7 +146,7 @@ const EventPropertiesEditor: React.FunctionComponent<{
               onChange={(name: string, html: string) => {
                 const changeEvent = {
                   target: { name, value: html }
-                } as any;
+                } as unknown as React.ChangeEvent<HTMLInputElement>;
                 changeHandler(changeEvent);
               }}
               minHeight="300px"
