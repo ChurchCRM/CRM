@@ -20,9 +20,10 @@ Cypress.Commands.add(
             "tony.wade@example.com",
             "basicjoe",
             location,
-            checkMatchingLocation,
+            checkMatchingLocation
         );
-    },
+    }
+);
 
 Cypress.Commands.add(
     "login",
@@ -49,7 +50,7 @@ Cypress.Commands.add(
         if (location && checkMatchingLocation) {
             cy.location("pathname").should("include", location.split("?")[0]);
         }
-    },
+    }
 );
 
 Cypress.Commands.add("buildRandom", (prefixString) => {
