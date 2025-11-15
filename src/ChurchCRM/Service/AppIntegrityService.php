@@ -11,10 +11,25 @@ class AppIntegrityService
 {
     private static $IntegrityCheckDetails;
 
+    private static function resolveDocumentRoot(): string
+    {
+        $documentRoot = SystemURLs::getDocumentRoot();
+        if (is_string($documentRoot) && $documentRoot !== '') {
+            return $documentRoot;
+        }
+
+        $setupDocRoot = $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] ?? null;
+        if (is_string($setupDocRoot) && $setupDocRoot !== '') {
+            return $setupDocRoot;
+        }
+
+        return dirname(__DIR__, 2);
+    }
+
     private static function getIntegrityCheckData()
     {
         $logger = LoggerUtils::getAppLogger();
-        $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
+        $integrityCheckFile = AppIntegrityService::resolveDocumentRoot() . '/integrityCheck.json';
         if (AppIntegrityService::$IntegrityCheckDetails !== null) {
             $logger->debug('Integrity check results already cached; not reloading from file');
 
@@ -85,9 +100,22 @@ class AppIntegrityService
     public static function verifyApplicationIntegrity(): array
     {
         $logger = LoggerUtils::getAppLogger();
-        $signatureFile = SystemURLs::getDocumentRoot() . '/signatures.json';
+        $documentRoot = AppIntegrityService::resolveDocumentRoot();
+        $signatureFile = $documentRoot . '/signatures.json';
         $signatureFailures = [];
         if (is_file($signatureFile)) {
+            if (!is_readable($signatureFile)) {
+                $logger->warning("Signature definition file is not readable: {signatureFile}", [
+                    'signatureFile' => $signatureFile,
+                ]);
+
+                return [
+                    'status'  => 'failure',
+                    'message' => gettext('Signature definition file exists but is not readable. Check file permissions.'),
+                    'files'   => [],
+                ];
+            }
+
             $logger->debug("Signature file found at: {signatureFile}", [
                 'signatureFile' => $signatureFile,
             ]);
@@ -109,7 +137,7 @@ class AppIntegrityService
             }
             if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) === $signatureData->sha1) {
                 foreach ($signatureData->files as $file) {
-                    $currentFile = SystemURLs::getDocumentRoot() . '/' . $file->filename;
+                    $currentFile = $documentRoot . '/' . $file->filename;
                     if (is_file($currentFile)) {
                         $actualHash = sha1_file($currentFile);
                         if ($actualHash !== $file->sha1) {
@@ -150,7 +178,11 @@ class AppIntegrityService
 
             return [
                 'status'  => 'failure',
-                'message' => gettext('Signature definition File Missing'),
+                'message' => sprintf(
+                    gettext('Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures.'),
+                    $signatureFile
+                ),
+                'files'   => [],
             ];
         }
 
@@ -163,7 +195,9 @@ class AppIntegrityService
         }
 
         return [
-            'status' => 'success',
+            'status'  => 'success',
+            'message' => gettext('All system file signatures match the expected values.'),
+            'files'   => [],
         ];
     }
 
@@ -211,12 +245,7 @@ class AppIntegrityService
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => function_exists('finfo_open') || function_exists('mime_content_type')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_init')),
             new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
-            new Prerequisite('PHP BCMath', fn (): bool => function_exists('bcadd')),
             new Prerequisite('PHP Sodium', fn (): bool => function_exists('sodium_crypto_secretbox')),
-            new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Include/')),
-            new Prerequisite('Images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/')),
-            new Prerequisite('Family images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Family')),
-            new Prerequisite('Person images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable(SystemURLs::getDocumentRoot() . '/Images/Person')),
             new Prerequisite('PHP ZipArchive', fn (): bool => class_exists('ZipArchive')),
             new Prerequisite('Mysqli Functions', fn (): bool => function_exists('mysqli_connect')),
         ];
@@ -225,11 +254,31 @@ class AppIntegrityService
     /**
      * @return Prerequisite[]
      */
+    public static function getFilesystemPrerequisites(): array
+    {
+        $documentRoot = AppIntegrityService::resolveDocumentRoot();
+
+        return [
+            new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Include/')),
+            new Prerequisite('Images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Images/')),
+            new Prerequisite('Family images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Images/Family')),
+            new Prerequisite('Person images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Images/Person')),
+        ];
+    }
+
+    /**
+     * @return Prerequisite[]
+     */
     public static function getUnmetPrerequisites(): array
     {
-        return array_filter(
+        $allPrerequisites = array_merge(
             AppIntegrityService::getApplicationPrerequisites(),
-            fn ($prereq): bool => !$prereq->isPrerequisiteMet()
+            AppIntegrityService::getFilesystemPrerequisites()
+        );
+
+        return array_filter(
+            $allPrerequisites,
+            fn (Prerequisite $prereq): bool => !$prereq->isPrerequisiteMet()
         );
     }
 

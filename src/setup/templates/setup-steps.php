@@ -58,7 +58,7 @@ require_once __DIR__ . '/header.php';
                                 <h6 class="mb-3">
                                     <a href="#php-extensions-collapse" data-toggle="collapse" class="text-dark text-decoration-none collapsed" aria-expanded="false" aria-controls="php-extensions-collapse">
                                         <span>
-                                            <i class="fa-solid fa-php mr-2"></i>PHP Extensions
+                                            <i class="fa-brands fa-php mr-2"></i>PHP Extensions
                                             <span id="php-extensions-status" class="ml-2">
                                                 <i class="fa-solid fa-spinner fa-spin text-muted"></i>
                                             </span>
@@ -68,6 +68,22 @@ require_once __DIR__ . '/header.php';
                                 </h6>
                                 <div id="php-extensions-collapse" class="collapse">
                                     <table class="table table-sm table-condensed mb-4" id="php-extensions"></table>
+                                </div>
+
+                                <!-- File Permissions - Collapsible (Collapsed by default) -->
+                                <h6 class="mb-3">
+                                    <a href="#filesystem-collapse" data-toggle="collapse" class="text-dark text-decoration-none collapsed" aria-expanded="false" aria-controls="filesystem-collapse">
+                                        <span>
+                                            <i class="fa-solid fa-folder-open mr-2"></i>File Permissions
+                                            <span id="filesystem-status" class="ml-2">
+                                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                            </span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </a>
+                                </h6>
+                                <div id="filesystem-collapse" class="collapse">
+                                    <table class="table table-sm table-condensed mb-4" id="filesystem-checks"></table>
                                 </div>
 
                                 <!-- File Integrity - Collapsible (Collapsed by default) -->

@@ -23,15 +23,21 @@ $app->group('/', function (RouteCollectorProxy $group): void {
     $group->get('/', $getHandler);
 
     $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args): Response {
-        $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
+        $integrityStatus = AppIntegrityService::verifyApplicationIntegrity();
 
-        return SlimUtils::renderStringJSON($response, $AppIntegrity['status']);
+        return SlimUtils::renderJSON($response, $integrityStatus);
     });
 
     $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response {
         $required = AppIntegrityService::getApplicationPrerequisites();
 
         return SlimUtils::renderJSON($response, $required);
+    });
+
+    $group->get('SystemFilesystemCheck', function (Request $request, Response $response, array $args): Response {
+        $filesystem = AppIntegrityService::getFilesystemPrerequisites();
+
+        return SlimUtils::renderJSON($response, $filesystem);
     });
 
     $postHandler = function (Request $request, Response $response, array $args): Response {
