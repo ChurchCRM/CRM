@@ -261,8 +261,8 @@ class AppIntegrityService
         return [
             new Prerequisite('Include/Config file is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Include/')),
             new Prerequisite('Images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Images/')),
-            new Prerequisite('Family images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Images/Family')),
-            new Prerequisite('Person images directory is writeable', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Images/Person')),
+            new Prerequisite('Images directory is writeable - Family', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Images/Family')),
+            new Prerequisite('Images directory is writeable - Person', fn (): bool => AppIntegrityService::verifyDirectoryWriteable($documentRoot . '/Images/Person')),
         ];
     }
 
