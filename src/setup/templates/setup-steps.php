@@ -7,10 +7,6 @@ $sPageTitle = 'ChurchCRM – Setup';
 require_once __DIR__ . '/header.php';
 ?>
 <link rel="stylesheet" href="<?= $rootPath ?>/skin/v2/setup.min.css">
-<script nonce="<?= $nonce ?>">
-    window.CRM = window.CRM || {};
-    window.CRM.root = "<?= $rootPath ?>";
-</script>
 <div class="container-fluid">
 <div class="jumbotron text-center">
     <h1 class="display-4">Welcome to ChurchCRM Setup Wizard</h1>
