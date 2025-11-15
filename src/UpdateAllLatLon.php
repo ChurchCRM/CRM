@@ -9,12 +9,12 @@ require_once 'Include/Functions.php';
 $sPageTitle = gettext('Update Latitude & Longitude');
 require_once 'Include/Header.php';
 
-echo '<div class="card card-body box-info">';
+echo '<div class="card card-body">';
 
 $families = FamilyQuery::create()
-    ->filterByLongitude([null,0], Criteria::IN)
+    ->filterByLongitude([null, 0], Criteria::IN)
     ->_or()
-    ->filterByLatitude([null,0], Criteria::IN)
+    ->filterByLatitude([null, 0], Criteria::IN)
     ->limit(250)
     ->find();
 
@@ -33,7 +33,7 @@ foreach ($families as $family) {
 </div>
 <?php $families = FamilyQuery::create()->filterByLongitude(0)->limit(250)->find();
 if ($families->count() > 0) {
-    ?>
+?>
     <div class="card card-warning">
         <div class="card-header">
             <b><?= gettext('No coordinates found') ?></b>
@@ -46,7 +46,7 @@ if ($families->count() > 0) {
             } ?>
         </div>
     </div>
-    <?php
+<?php
 }
 
 require_once 'Include/Footer.php';

@@ -1396,10 +1396,6 @@ msgid "Financial Reports"
 msgstr "Finansal raporlar"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Önceki rapordan kayıt iade edilmedi."
-
-#: 
 msgid "Report Type:"
 msgstr "Rapor türü:"
 
@@ -2772,10 +2768,6 @@ msgid "Query Listing"
 msgstr "Sorgu Listesi"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Ücretsiz metin sorgusu çalıştırın"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Serbest metin sorgusu"
 
@@ -3950,68 +3942,12 @@ msgid "Edit Settings"
 msgstr "Ayarları Düzenle"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Churchcrm'i yükselt"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "1. Adım: Yedek Veritabanı"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Yükseltme işlemine başlamadan önce lütfen bir veritabanı yedekleme oluşturun."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Veritabanı yedekleme oluştur"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "2. Adım: Sunucuda Güncelleme Paketi Alın"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Churchcrm GitHub sürüm sayfasından en son dosyaları getirin"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Güncelleme dosyalarını getirin"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Adım 3: Sunucuya güncelleme paketi uygulayın"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Yükseltme arşivini çıkarın ve yeni dosyaları uygulayın"
-
-#: 
 msgid "Full Path:"
 msgstr "Tam yol:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Yükseltme sistemi"
-
-#: 
-msgid "Step 4: Login"
-msgstr "4. Adım: Giriş"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Yükseltilmiş sisteme giriş yapın"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Yedekleme tamamlandı, indirmeye hazır."
-
-#: 
-msgid "Backup Error."
-msgstr "Yedekleme hatası."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7348,24 +7284,12 @@ msgid "Reset Password"
 msgstr "Şifreyi yenile"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Parolayı sıfırlanamıyor"
-
-#: 
 msgid "Reset your password"
 msgstr "Şifrenizi sıfırlayın"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Üzgünüm, bu noktada isteğinizi işleyemiyoruz."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Giriş adı gerekli"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Size yeni bir şifre gönderildi. Lütfen emailinizi kontrol edin"
 
 #: 
 msgid "Kiosk Manager"
@@ -8335,10 +8259,6 @@ msgid "Menu Name"
 msgstr "Menü adı"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max 20 Char"
-
-#: 
 msgid "Link Address"
 msgstr "Bağlantı adresi"
 
@@ -8483,10 +8403,6 @@ msgstr "Bu dosyalardaki değişikliklerinizi korumak istiyorsanız, lütfen bu y
 #: 
 msgid "Integrity Check Details:"
 msgstr "Dürüstlük Kontrol Detayları:"
-
-#: 
-msgid "I Understand"
-msgstr "Anlıyorum"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8693,10 +8609,6 @@ msgid "Remove Results from Cart"
 msgstr "Sepetin sonuçlarını kaldırın"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Uyarı: Tespit edilen ön yükseltme görevleri"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Başarılı bir yükseltmeyi önleyebilecek bazı koşullar tespit edildi"
@@ -8866,10 +8778,6 @@ msgstr "Yeni şifreniz eskinize çok benziyor."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Parola sıfırlama kullanılabilir değil. Lütfen sistem yöneticinizle iletişime geçin"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Kimlik doğrulama sorunu"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

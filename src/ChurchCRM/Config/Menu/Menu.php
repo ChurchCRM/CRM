@@ -147,7 +147,6 @@ class Menu
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'FindDepositSlip.php', AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'FinancialReports.php', AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
-        $depositsMenu->addCounter(new MenuCounter('iCurrentDeposit', 'bg-green', $_SESSION['iCurrentDeposit']));
 
         $adminMenu = new MenuItem(gettext('Admin'), '', AuthenticationManager::getCurrentUser()->isAdmin());
         $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', AuthenticationManager::getCurrentUser()->isAdmin()));
@@ -213,6 +212,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Property Types'), 'PropertyTypeList.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Restore Database'), 'RestoreDatabase.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Backup Database'), 'BackupDatabase.php', AuthenticationManager::getCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext('System Upgrade'), 'v2/admin/upgrade', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', AuthenticationManager::getCurrentUser()->isCSVExport()));
         $menu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'KioskManager.php', AuthenticationManager::getCurrentUser()->isAdmin()));

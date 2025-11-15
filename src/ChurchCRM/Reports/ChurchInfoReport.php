@@ -127,6 +127,10 @@ class ChurchInfoReport extends FPDF
     {
         $family = FamilyQuery::create()->findPk($famID);
 
+        if ($family === null) {
+            return gettext('Dear Friend');  // Default salutation for unassigned/orphaned payments
+        }
+
         return $family->getSalutation();
     }
 }

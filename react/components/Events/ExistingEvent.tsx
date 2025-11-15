@@ -6,7 +6,7 @@ import { Modal } from "react-bootstrap";
 import CRMRoot from "../../window-context-service.jsx";
 import EventPropertiesViewer from "./EventPropertiesViewer";
 import EventPropertiesEditor from "./EventPropertiesEditor";
-import { SingleValue, MultiValue, ActionMeta } from "react-select";
+import { SingleValue, MultiValue } from "react-select";
 
 interface Option {
   value: number;
@@ -76,8 +76,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       })
         .then((response) => response.json())
         .then((data) => {
-          let event: CRMEvent;
-          event = data;
+          const event = data as CRMEvent;
           if (event.Start) {
             event.Start = new Date(event.Start);
           }
@@ -173,11 +172,12 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   save() {
-    const DateReplacer = (key: string, value: any): any => {
-      const obj: any = this.state.event;
+    const DateReplacer = (key: string, value: unknown): unknown => {
+      const obj = this.state.event as Record<string, unknown> | undefined;
       if (obj && obj[key] instanceof Date) {
-        const td: Date = obj[key];
-        return window.moment(td).format();
+        const td = obj[key] as Date;
+        const w = window as unknown as { moment?: (d: Date) => { format(): string } };
+        return w.moment ? w.moment(td).format() : td.toISOString();
       }
       return value;
     };
@@ -220,8 +220,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
           </Modal>
         </div>
       );
-    } else {
-    }
+  }
     if (this.state.isEditMode) {
       return (
         <div>

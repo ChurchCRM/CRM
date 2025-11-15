@@ -61,7 +61,7 @@ $rsConfigs = RunQuery($sSQL);
     <div class="card-header with-border">
 
         <form method=post action=SettingsUser.php'>
-            <div class="callout callout-info"> <?= gettext('Set Permission True to give new users the ability to change their current value.<BR>'); ?></div>
+            <div class="alert alert-info"> <?= gettext('Set Permission True to give new users the ability to change their current value.<BR>'); ?></div>
             <div class="table-responsive">
                 <table class='table table-responsive'>
                     <tr>

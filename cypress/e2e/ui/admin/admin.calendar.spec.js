@@ -1,11 +1,13 @@
 /// <reference types="cypress" />
 
 describe("Admin Calendar", () => {
-    beforeEach(() => {});
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
 
     it("Create New Calendar", () => {
         const title = "Calendar: " + new Date().getTime();
-        cy.loginAdmin("v2/calendar");
+        cy.visit("v2/calendar");
         cy.contains("Calendar");
         cy.get("#newCalendarButton").click();
         cy.get("#calendarName").click().type(title);

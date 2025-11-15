@@ -1,7 +1,11 @@
 describe("template spec", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
     it("filter-by-classification", () => {
         // Setup: Ensure all inactive filters are off
-        cy.loginAdmin("OptionManager.php?mode=classes");
+        cy.visit("OptionManager.php?mode=classes");
         cy.get("#inactive4").uncheck();
         cy.get("#inactive5").uncheck();
         

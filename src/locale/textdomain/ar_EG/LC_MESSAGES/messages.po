@@ -1397,10 +1397,6 @@ msgid "Financial Reports"
 msgstr "تقارير مالية"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "لم يتم إرجاع أي سجلات من التقرير السابق."
-
-#: 
 msgid "Report Type:"
 msgstr "نوع التقرير"
 
@@ -2773,10 +2769,6 @@ msgid "Query Listing"
 msgstr "قائمة الاستعلام"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "تشغيل استعلام الحرة النص"
-
-#: 
 msgid "Free-Text Query"
 msgstr "سؤال نص حر"
 
@@ -3953,68 +3945,12 @@ msgid "Edit Settings"
 msgstr "تعديل الإعدادات"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "ترقية ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "الخطوة 1: قاعدة بيانات النسخ الاحتياطي"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "يرجى إنشاء نسخة احتياطية قاعدة البيانات قبل بدء عملية الترقية."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "انشاء نسخة احتياطية من قاعدة البيانات"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "الخطوة 2: إحضار حزمة التحديث على ملقم"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "جلب أحدث الملفات من الصفحة الإفراج ChurchCRM جيثب"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "جلب تحديث ملفات"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "الخطوة 3: تطبيق حزمة التحديث على ملقم"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "استخراج أرشيف الترقية، وتطبيق الملفات الجديدة"
-
-#: 
 msgid "Full Path:"
 msgstr "مسار كامل:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "ترقية نظام"
-
-#: 
-msgid "Step 4: Login"
-msgstr "الخطوة 4: دخول"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "تسجيل الدخول إلى نظام ترقية"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "كامل النسخ الاحتياطي، جاهزة للتحميل."
-
-#: 
-msgid "Backup Error."
-msgstr "خطأ النسخ الاحتياطي."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7351,24 +7287,12 @@ msgid "Reset Password"
 msgstr "إعادة تعيين كلمة المرور"
 
 #: 
-msgid "Unable to reset password"
-msgstr "غير قادر على إعادة تعيين كلمة المرور"
-
-#: 
 msgid "Reset your password"
 msgstr "اعد ضبط كلمه السر"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "عذرا، لم نتمكن من معالجة طلبك في هذا الوقت."
-
-#: 
-msgid "Login Name is Required"
-msgstr "الدخول اسم هو مطلوب"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "تم إرسال كلمة مرور جديدة لك. من فضلك تفقد بريدك الالكتروني"
 
 #: 
 msgid "Kiosk Manager"
@@ -8338,10 +8262,6 @@ msgid "Menu Name"
 msgstr "اسم القائمة"
 
 #: 
-msgid "Max 20 char"
-msgstr "ماكس 20 شار"
-
-#: 
 msgid "Link Address"
 msgstr "اربط العنوان"
 
@@ -8486,10 +8406,6 @@ msgstr "إذا كنت ترغب في الحفاظ على التغييرات عل�
 #: 
 msgid "Integrity Check Details:"
 msgstr "النزاهة تحقق الصفات:"
-
-#: 
-msgid "I Understand"
-msgstr "أفهم"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8695,10 +8611,6 @@ msgid "Remove Results from Cart"
 msgstr "إزالة نتائج من العربة"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "تحذير: مهام ما قبل الترقية التي تم اكتشافها"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "وقد تم تحديد بعض الشروط اللي تبونه قد تحول دون ترقية ناجحة"
@@ -8868,10 +8780,6 @@ msgstr "كلمه المرور متشابهه مع كلمه مرور سابقه"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "لأعاده كلمه المرور برجاء التواصل مع مسئول النظام"
-
-#: 
-msgid "Authentication Issue"
-msgstr "مشكلة المصادقة"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

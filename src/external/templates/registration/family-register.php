@@ -59,7 +59,7 @@ if (!empty($sHeader)) {
                         <div class="step-header">
                             <h4 class="text-center"><?= gettext('Family Information') ?></h4>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="familyName"><?= gettext('Family Name') ?> <span class="text-danger">*</span></label>
                             <div class="input-group">
@@ -104,7 +104,7 @@ if (!empty($sHeader)) {
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="familyCountry"><?= gettext('Country') ?></label>
-                                <select id="familyCountry" name="familyCountry" class="form-control select2" data-system-default="<?= SystemConfig::getValue('sDefaultCountry')?>">
+                                <select id="familyCountry" name="familyCountry" class="form-control select2" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
                                 </select>
                             </div>
                         </div>
@@ -210,7 +210,7 @@ if (!empty($sHeader)) {
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                                 </div>
-                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask placeholder="<?= gettext('Phone number') ?>">
+                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>">
                                             </div>
                                             <div class="invalid-feedback"></div>
                                         </div>
@@ -275,19 +275,19 @@ if (!empty($sHeader)) {
 
                         <div class="card mb-4">
                             <div class="card-header bg-primary text-white">
-                                <h5 class="mb-0"><i class="fa-solid fa-home mr-2"></i><span id="displayFamilyName"></span> <?= gettext("Family")?></h5>
+                                <h5 class="mb-0"><i class="fa-solid fa-home mr-2"></i><span id="displayFamilyName"></span> <?= gettext("Family") ?></h5>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <p class="mb-2">
-                                            <strong><i class="fa-solid fa-map-marker-alt mr-2 text-primary"></i><?= gettext("Address")?>:</strong><br/>
+                                            <strong><i class="fa-solid fa-map-marker-alt mr-2 text-primary"></i><?= gettext("Address") ?>:</strong><br />
                                             <span id="displayFamilyAddress" class="ml-4"></span>
                                         </p>
                                     </div>
                                     <div class="col-md-6">
                                         <p class="mb-2">
-                                            <strong><i class="fa-solid fa-phone mr-2 text-primary"></i><?= gettext("Phone")?>:</strong><br/>
+                                            <strong><i class="fa-solid fa-phone mr-2 text-primary"></i><?= gettext("Phone") ?>:</strong><br />
                                             <span id="displayFamilyPhone" class="ml-4"></span>
                                         </p>
                                     </div>
@@ -297,18 +297,18 @@ if (!empty($sHeader)) {
 
                         <div class="card">
                             <div class="card-header bg-secondary text-white">
-                                <h5 class="mb-0"><i class="fa-solid fa-users mr-2"></i><?= gettext("Family Members")?></h5>
+                                <h5 class="mb-0"><i class="fa-solid fa-users mr-2"></i><?= gettext("Family Members") ?></h5>
                             </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-hover mb-0">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th><?= gettext("First Name")?></th>
-                                                <th><?= gettext("Last Name")?></th>
-                                                <th><?= gettext("Email")?></th>
-                                                <th><?= gettext("Phone")?></th>
-                                                <th><?= gettext("Birthday")?></th>
+                                                <th><?= gettext("First Name") ?></th>
+                                                <th><?= gettext("Last Name") ?></th>
+                                                <th><?= gettext("Email") ?></th>
+                                                <th><?= gettext("Phone") ?></th>
+                                                <th><?= gettext("Birthday") ?></th>
                                             </tr>
                                         </thead>
                                         <tbody>

@@ -13,6 +13,9 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+// Initialize cy-verify-downloads plugin - must be done before test specs
+require("cy-verify-downloads").addCustomCommand();
+
 // Import commands.js using ES2015 syntax:
 import "./ui-commands";
 import "./api-commands";

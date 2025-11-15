@@ -13,6 +13,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Service\NotificationService;
+use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -139,6 +140,10 @@ class AuthenticationManager
             }
             $redirectLocation ??= $_SESSION['location'] ?? 'v2/dashboard';
             NotificationService::updateNotifications();
+            
+            // Check for system updates once on login for admin users
+            self::checkSystemUpdates();
+            
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
             );
@@ -254,5 +259,23 @@ class AuthenticationManager
         if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
             RedirectUtils::securityRedirect('Admin');
         }
+    }
+
+    /**
+     * Check for system updates and store result in session
+     * Only runs for admin users on login
+     */
+    private static function checkSystemUpdates(): void
+    {
+        $currentUser = self::getCurrentUser();
+        if (!$currentUser->isAdmin()) {
+            $_SESSION['systemUpdateAvailable'] = false;
+            $_SESSION['systemUpdateVersion'] = null;
+            return;
+        }
+
+        $updateInfo = ChurchCRMReleaseManager::checkSystemUpdateAvailable();
+        $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
+        $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
     }
 }

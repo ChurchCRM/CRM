@@ -53,15 +53,22 @@ $MenuFirst = 1;
         <!-- Right navbar links -->
         <span class="navbar-nav ml-auto">
 
-            <!-- Support Dropdown Menu -->
-            <li class="nav-item dropdown d-none" id="systemUpdateMenuItem">
+            <!-- System Update Notification Menu -->
+            <?php
+            $showUpdateMenu = isset($_SESSION['systemUpdateAvailable']) && $_SESSION['systemUpdateAvailable'] === true;
+            $updateVersion = $_SESSION['systemUpdateVersion'] ?? null;
+            ?>
+            <li class="nav-item dropdown <?= $showUpdateMenu ? '' : 'd-none' ?>" id="systemUpdateMenuItem">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true" id="upgradeMenu" title="<?= gettext('New Release') ?>">
                     <i class="fa-solid fa-download"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/UpgradeCRM.php" class="dropdown-item" title="<?= gettext('New Release') ?>">
-                        <i class="fa-solid fa-champagne-glasses"></i> <?= gettext('New Release') ?> <span id="upgradeToVersion"></span>
+                    <a href="<?= SystemURLs::getRootPath() ?>/v2/admin/upgrade" class="dropdown-item" title="<?= gettext('New Release') ?>">
+                        <i class="fa-solid fa-champagne-glasses"></i> <?= gettext('New Release') ?>
+                        <?php if ($updateVersion) { ?>
+                            <span id="upgradeToVersion"><?= $updateVersion->MAJOR ?>.<?= $updateVersion->MINOR ?>.<?= $updateVersion->PATCH ?></span>
+                        <?php } ?>
                     </a>
                     <?php } ?>
                     <a href="https://github.com/ChurchCRM/CRM/releases/latest" target="_blank" class="dropdown-item" title="<?= gettext('Release Notes') ?>">

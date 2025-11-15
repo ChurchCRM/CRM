@@ -2,7 +2,7 @@ import * as React from "react";
 import CRMRoot from "../../window-context-service.jsx";
 
 const TwoFAEnrollmentWelcome: React.FunctionComponent<{
-  nextButtonEventHandler: Function;
+  nextButtonEventHandler: () => void;
 }> = ({ nextButtonEventHandler }) => {
   return (
     <div className="col-lg-12">
@@ -102,8 +102,8 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
 
 const TwoFAEnrollmentGetQR: React.FunctionComponent<{
   TwoFAQRCodeDataUri: string;
-  newQRCode: Function;
-  remove2FA: Function;
+  newQRCode: () => void;
+  remove2FA: () => void;
   validationCodeChangeHandler: (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => void;
@@ -207,11 +207,8 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
   );
 };
 
-class UserTwoFactorEnrollment extends React.Component<
-  TwoFactorEnrollmentProps,
-  TwoFactorEnrollmentState
-> {
-  constructor(props: TwoFactorEnrollmentProps) {
+class UserTwoFactorEnrollment extends React.Component<Record<string, unknown>, TwoFactorEnrollmentState> {
+  constructor(props: Record<string, unknown>) {
     super(props);
 
     this.state = {
@@ -275,12 +272,12 @@ class UserTwoFactorEnrollment extends React.Component<
       },
     })
       .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          TwoFAQRCodeDataUri: "",
-          currentView: "intro",
+        .then(() => {
+          this.setState({
+            TwoFAQRCodeDataUri: "",
+            currentView: "intro",
+          });
         });
-      });
   }
 
   validationCodeChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
@@ -354,8 +351,6 @@ class UserTwoFactorEnrollment extends React.Component<
     }
   }
 }
-
-interface TwoFactorEnrollmentProps {}
 
 interface TwoFactorEnrollmentState {
   currentView: string;

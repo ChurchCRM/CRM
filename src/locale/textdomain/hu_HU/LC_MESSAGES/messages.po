@@ -1277,10 +1277,6 @@ msgid "Financial Reports"
 msgstr "Pénzügyi jelentések"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Nem feljegyzések kerültek vissza az előző jelentést."
-
-#: 
 msgid "Report Type:"
 msgstr "Jelentés típusa:"
 
@@ -2412,10 +2408,6 @@ msgstr "Nem, megtartja ezt a feladatot"
 #: 
 msgid "Query Listing"
 msgstr "Lekérdezés Listing"
-
-#: 
-msgid "Run a Free-Text Query"
-msgstr "Fuss egy Free-Text lekérdezés"
 
 #: 
 msgid "Free-Text Query"

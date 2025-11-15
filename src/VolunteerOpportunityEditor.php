@@ -57,9 +57,9 @@ if ($sAction === 'delete' && $iOpp > 0) {
 
     $sPageTitle = gettext('Volunteer Opportunity Delete Confirmation');
     require_once 'Include/Header.php';
-    ?>
+?>
     <div class="card card-body">
-        <div class="callout callout-danger"><?= gettext('Please confirm deletion of') ?>:</div>
+        <div class="alert alert-danger"><?= gettext('Please confirm deletion of') ?>:</div>
         <table class="table">
             <tr>
                 <th>&nbsp;</th>
@@ -259,7 +259,7 @@ if (isset($_POST['SaveChanges'])) {
 }
 
 // Construct the form
-?>
+    ?>
     <div class="card card-body">
         <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
@@ -267,9 +267,9 @@ if (isset($_POST['SaveChanges'])) {
 
                 <?php
                 if ($numRows == 0) {
-                    ?>
-                    <div class="callout callout-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
-                    <?php
+                ?>
+                    <div class="alert alert-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
+                <?php
                 } else { // if an 'action' (up/down arrow clicked, or order was input)
                     if ($iRowNum && $sAction != '') {
                         // cast as int and couple with switch for sql injection prevention for $row_num
@@ -314,19 +314,19 @@ if (isset($_POST['SaveChanges'])) {
                 ?>
                 <tr>
                     <td colspan="5">
-                        <div class="callout callout-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
+                        <div class="alert alert-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5">
                         <?php
                         if ($bErrorFlag) {
-                            echo '<div class="callout callout-danger">';
+                            echo '<div class="alert alert-danger">';
                             echo gettext('Invalid fields or selections. Changes not saved! Please correct and try again!');
                             echo '</div>';
                         }
                         if (strlen($sDeleteError) > 0) {
-                            echo ' <div class="callout callout-danger">';
+                            echo ' <div class="alert alert-danger">';
                             echo $sDeleteError;
                             echo '</div>';
                         }
@@ -373,7 +373,7 @@ if (isset($_POST['SaveChanges'])) {
                         </td>
 
                         </tr>
-                        <?php
+                <?php
                     }
                 }
                 ?>
@@ -429,5 +429,5 @@ if (isset($_POST['SaveChanges'])) {
             </table>
         </form>
     </div>
-<?php
-require_once 'Include/Footer.php';
+    <?php
+    require_once 'Include/Footer.php';

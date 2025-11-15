@@ -1,11 +1,12 @@
 /// <reference types="cypress" />
 
 describe("Admin Settings", () => {
-    before(() => {
-        cy.loginAdmin("SystemSettings.php");
+    beforeEach(() => {
+        cy.setupAdminSession();
     });
 
     it("View system settings", () => {
+        cy.visit("SystemSettings.php");
         cy.contains("Church Information");
         cy.contains("User Setup");
         cy.contains("Email Setup");

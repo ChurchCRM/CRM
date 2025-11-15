@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-08 15:21-0800\n"
+"POT-Creation-Date: 2025-11-14 19:38-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,6 +135,9 @@ msgstr ""
 msgid "2 Factor Authentication enrollment"
 msgstr ""
 
+msgid "2-50 characters"
+msgstr ""
+
 #. Context: queryparameteroptions_qpo
 msgid "2012/2013"
 msgstr ""
@@ -200,7 +203,10 @@ msgstr ""
 msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr ""
 
-msgid "A new password was sent to you. Please check your email"
+msgid "A new password has been generated and sent to your email address."
+msgstr ""
+
+msgid "A new version of ChurchCRM is available for installation."
 msgstr ""
 
 msgid "A notification was triggered by the classroom teacher at"
@@ -246,6 +252,9 @@ msgid "Active"
 msgstr ""
 
 msgid "Active Kiosks"
+msgstr ""
+
+msgid "Actual Hash"
 msgstr ""
 
 msgid "Add"
@@ -533,7 +542,13 @@ msgstr ""
 msgid "All members of this group are in the cart"
 msgstr ""
 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr ""
+
 msgid "All rights reserved"
+msgstr ""
+
+msgid "Allow Pre-release Upgrades"
 msgstr ""
 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
@@ -626,6 +641,12 @@ msgid "Apply Filters"
 msgstr ""
 
 msgid "Apply Report Dates To:"
+msgstr ""
+
+msgid "Apply Update Now"
+msgstr ""
+
+msgid "Applying System Update..."
 msgstr ""
 
 msgid "April"
@@ -761,10 +782,10 @@ msgstr ""
 msgid "Austria (Österreich)"
 msgstr ""
 
-msgid "Authentication Issue"
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr ""
 
-msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgid "Available Version:"
 msgstr ""
 
 #. Context: countries
@@ -780,7 +801,13 @@ msgstr ""
 msgid "Back to Group List"
 msgstr ""
 
+msgid "Back to Login"
+msgstr ""
+
 msgid "Back to Menu"
+msgstr ""
+
+msgid "Back to login"
 msgstr ""
 
 msgid "Background Color"
@@ -798,7 +825,7 @@ msgstr ""
 msgid "Backup Downloaded, Copy on server removed"
 msgstr ""
 
-msgid "Backup Error."
+msgid "Backup Skipped"
 msgstr ""
 
 msgid "Backup Status:"
@@ -1107,6 +1134,9 @@ msgstr ""
 msgid "Check"
 msgstr ""
 
+msgid "Check GitHub for the latest release information"
+msgstr ""
+
 msgid "Check Number"
 msgstr ""
 
@@ -1326,6 +1356,9 @@ msgstr ""
 msgid "Compare pledges between two fiscal years"
 msgstr ""
 
+msgid "Complete"
+msgstr ""
+
 msgid "Compose New Message"
 msgstr ""
 
@@ -1370,6 +1403,12 @@ msgstr ""
 msgid "Contact Info"
 msgstr ""
 
+msgid "Continue to Backup"
+msgstr ""
+
+msgid "Continue to Download & Apply"
+msgstr ""
+
 msgid "Contributing"
 msgstr ""
 
@@ -1405,6 +1444,9 @@ msgstr ""
 msgid "Create Attendance Sheet"
 msgstr ""
 
+msgid "Create Backup"
+msgstr ""
+
 msgid "Create Class List"
 msgstr ""
 
@@ -1433,6 +1475,9 @@ msgid "Create PhotoBook"
 msgstr ""
 
 msgid "Create Report"
+msgstr ""
+
+msgid "Create a backup of your database before applying the update."
 msgstr ""
 
 msgid "Create a new Event"
@@ -1479,6 +1524,9 @@ msgid "Current Software Version: "
 msgstr ""
 
 msgid "Current Value"
+msgstr ""
+
+msgid "Current Version:"
 msgstr ""
 
 msgid "Custom Drop-Down List"
@@ -1580,6 +1628,9 @@ msgstr ""
 msgid "Database"
 msgstr ""
 
+msgid "Database Backup"
+msgstr ""
+
 msgid "Database Only (.sql)"
 msgstr ""
 
@@ -1632,6 +1683,9 @@ msgid "Deactivate"
 msgstr ""
 
 msgid "Deactivated the Family"
+msgstr ""
+
+msgid "Dear Friend"
 msgstr ""
 
 msgid "Debug"
@@ -1913,7 +1967,22 @@ msgstr ""
 msgid "Donor"
 msgstr ""
 
+msgid "Download & Apply"
+msgstr ""
+
+msgid "Download and Apply System Update"
+msgstr ""
+
 msgid "Download family letters"
+msgstr ""
+
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr ""
+
+msgid "Downloaded"
+msgstr ""
+
+msgid "Downloading latest release from GitHub..."
 msgstr ""
 
 msgid "Duplicate Emails"
@@ -2211,6 +2280,9 @@ msgstr ""
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr ""
 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr ""
+
 msgid "Entered:"
 msgstr ""
 
@@ -2363,6 +2435,9 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
+msgid "Expected Hash"
+msgstr ""
+
 msgid "Export All Classes, Kids, and Parent to CSV file"
 msgstr ""
 
@@ -2385,9 +2460,6 @@ msgid "Extra Students"
 msgstr ""
 
 msgid "Extra Teachers"
-msgstr ""
-
-msgid "Extract the upgrade archive, and apply the new files"
 msgstr ""
 
 msgid "Failed"
@@ -2414,10 +2486,16 @@ msgstr ""
 msgid "Failed to add to cart"
 msgstr ""
 
+msgid "Failed to create backup."
+msgstr ""
+
 msgid "Failed to create group. Please try again."
 msgstr ""
 
 msgid "Failed to delete role. Please try again."
+msgstr ""
+
+msgid "Failed to download update package."
 msgstr ""
 
 msgid "Failed to email PDF to family members."
@@ -2435,6 +2513,12 @@ msgstr ""
 msgid "Failed to load groups. Please refresh the page."
 msgstr ""
 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr ""
+
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr ""
+
 msgid "Failed to remove family from cart"
 msgstr ""
 
@@ -2442,6 +2526,9 @@ msgid "Failed to remove from cart"
 msgstr ""
 
 msgid "Failed to remove group"
+msgstr ""
+
+msgid "Failed to save setting. Please try again."
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -2621,12 +2708,6 @@ msgstr ""
 msgid "Female"
 msgstr ""
 
-msgid "Fetch Update Files"
-msgstr ""
-
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr ""
-
 #. Context: queryparameters_qrp
 msgid "Field"
 msgstr ""
@@ -2651,10 +2732,19 @@ msgstr ""
 msgid "File Missing"
 msgstr ""
 
+msgid "File Name"
+msgstr ""
+
 msgid "File Name:"
 msgstr ""
 
 msgid "File Type"
+msgstr ""
+
+msgid "Files Missing"
+msgstr ""
+
+msgid "Files Modified"
 msgstr ""
 
 msgid "Files failing integrity check"
@@ -2885,9 +2975,6 @@ msgstr ""
 msgid "Generate Certificates"
 msgstr ""
 
-msgid "Generate Database Backup"
-msgstr ""
-
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
 msgstr ""
 
@@ -2948,6 +3035,9 @@ msgid "Global User Settings"
 msgstr ""
 
 msgid "Go"
+msgstr ""
+
+msgid "Go to Login"
 msgstr ""
 
 msgid "Google Analytics Tracking Code"
@@ -3209,7 +3299,7 @@ msgstr ""
 msgid "Hungary (Magyarország)"
 msgstr ""
 
-msgid "I Understand"
+msgid "I Understand - Continue"
 msgstr ""
 
 msgid "I forgot my password"
@@ -3511,6 +3601,9 @@ msgstr ""
 msgid "Label Type"
 msgstr ""
 
+msgid "Language updated to"
+msgstr ""
+
 #. Context: countries
 msgid "Laos (ລາວ)"
 msgstr ""
@@ -3717,10 +3810,7 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
-msgid "Login Name is Required"
-msgstr ""
-
-msgid "Login to Upgraded System"
+msgid "Login Name is required"
 msgstr ""
 
 msgid "Login to restored Database"
@@ -3853,9 +3943,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Mauritius (Moris)"
-msgstr ""
-
-msgid "Max 20 char"
 msgstr ""
 
 msgid "Max Failed Login"
@@ -4340,6 +4427,9 @@ msgstr ""
 msgid "No Changes"
 msgstr ""
 
+msgid "No Data Found"
+msgstr ""
+
 msgid "No Group Selected"
 msgstr ""
 
@@ -4400,7 +4490,7 @@ msgstr ""
 msgid "No property assignments."
 msgstr ""
 
-msgid "No records were returned from the previous report."
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
 msgstr ""
 
 msgid "No volunteer opportunities have been added yet"
@@ -4565,6 +4655,9 @@ msgstr ""
 msgid "Once"
 msgstr ""
 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr ""
+
 msgid "One character from FirstName and one character from LastName"
 msgstr ""
 
@@ -4718,7 +4811,13 @@ msgstr ""
 msgid "Password Reset"
 msgstr ""
 
+msgid "Password Reset Error"
+msgstr ""
+
 msgid "Password Reset Link"
+msgstr ""
+
+msgid "Password Reset Successful"
 msgstr ""
 
 msgid "Password reset not available.  Please contact your system administrator"
@@ -4959,6 +5058,9 @@ msgstr ""
 msgid "Please check logs for more information"
 msgstr ""
 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr ""
+
 msgid "Please confirm activation of family"
 msgstr ""
 
@@ -5001,10 +5103,10 @@ msgstr ""
 msgid "Please correct the validation errors before continuing."
 msgstr ""
 
-msgid "Please create a database backup before beginning the upgrade process."
+msgid "Please detach this slip and mail with your next gift."
 msgstr ""
 
-msgid "Please detach this slip and mail with your next gift."
+msgid "Please do not close this window or refresh the page."
 msgstr ""
 
 msgid "Please ensure this what you want to do."
@@ -5019,7 +5121,13 @@ msgstr ""
 msgid "Please enter a group name."
 msgstr ""
 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr ""
+
 msgid "Please enter a valid URL"
+msgstr ""
+
+msgid "Please enter a valid URL starting with http:// or https://"
 msgstr ""
 
 msgid "Please enter a valid email address"
@@ -5144,6 +5252,15 @@ msgstr ""
 
 #. Context: locales
 msgid "Portuguese - Portugal"
+msgstr ""
+
+msgid "Pre-Upgrade Tasks Complete"
+msgstr ""
+
+msgid "Pre-Upgrade Tasks Detected"
+msgstr ""
+
+msgid "Pre-Upgrade Warnings"
 msgstr ""
 
 msgid "Press CTRL + C to copy all group members' phone numbers"
@@ -5297,6 +5414,9 @@ msgstr ""
 msgid "Red text"
 msgstr ""
 
+msgid "Refresh from GitHub"
+msgstr ""
+
 msgid "Regen API Key"
 msgstr ""
 
@@ -5324,6 +5444,9 @@ msgid "Regular Attender"
 msgstr ""
 
 msgid "Release Notes"
+msgstr ""
+
+msgid "Release Notes:"
 msgstr ""
 
 msgid "Remittance Slip:"
@@ -5419,6 +5542,9 @@ msgstr ""
 msgid "Request Family Info Verification"
 msgstr ""
 
+msgid "Request Password Reset"
+msgstr ""
+
 msgid "Require 2FA"
 msgstr ""
 
@@ -5465,6 +5591,12 @@ msgid "Restore Running, Please wait."
 msgstr ""
 
 msgid "Restore Status:"
+msgstr ""
+
+msgid "Retry Download"
+msgstr ""
+
+msgid "Return to Dashboard"
 msgstr ""
 
 msgid "Return to Event Types"
@@ -5535,9 +5667,6 @@ msgstr ""
 msgid "Run Transactions"
 msgstr ""
 
-msgid "Run a Free-Text Query"
-msgstr ""
-
 #. Context: countries
 msgid "Russia (Россия)"
 msgstr ""
@@ -5560,7 +5689,7 @@ msgstr ""
 msgid "SE"
 msgstr ""
 
-msgid "SHA1:"
+msgid "SHA1 Hash:"
 msgstr ""
 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -5877,6 +6006,9 @@ msgstr ""
 msgid "Send Newsletter"
 msgstr ""
 
+msgid "Send Reset Email"
+msgstr ""
+
 msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
@@ -5971,6 +6103,12 @@ msgstr ""
 msgid "Setting saved"
 msgstr ""
 
+msgid "Setting saved. Reloading page..."
+msgstr ""
+
+msgid "Setting updated successfully"
+msgstr ""
+
 #. Context: countries
 msgid "Seychelles"
 msgstr ""
@@ -6033,6 +6171,9 @@ msgid "Sint Maarten"
 msgstr ""
 
 msgid "Size"
+msgstr ""
+
+msgid "Skip Backup"
 msgstr ""
 
 msgid "Skip records with incomplete mail address"
@@ -6153,18 +6294,6 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-msgid "Step 1: Backup Database"
-msgstr ""
-
-msgid "Step 2: Fetch Update Package on Server"
-msgstr ""
-
-msgid "Step 3: Apply Update Package on Server"
-msgstr ""
-
-msgid "Step 4: Login"
-msgstr ""
-
 msgid "Store these in a secure location"
 msgstr ""
 
@@ -6275,13 +6404,22 @@ msgstr ""
 msgid "System Settings"
 msgstr ""
 
+msgid "System Up to Date"
+msgstr ""
+
 msgid "System Upgrade"
+msgstr ""
+
+msgid "System Upgrade Wizard"
 msgstr ""
 
 msgid "System Users"
 msgstr ""
 
 msgid "System configuration "
+msgstr ""
+
+msgid "System upgrade completed successfully!"
 msgstr ""
 
 #. Context: countries
@@ -6484,6 +6622,9 @@ msgid "This field is required"
 msgstr ""
 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr ""
+
+msgid "This may take several minutes."
 msgstr ""
 
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
@@ -6730,9 +6871,6 @@ msgstr ""
 msgid "Unable to open file"
 msgstr ""
 
-msgid "Unable to reset password"
-msgstr ""
-
 msgid "Unassigned"
 msgstr ""
 
@@ -6802,10 +6940,16 @@ msgstr ""
 msgid "Unsupported Two Factor Authentication Configuration"
 msgstr ""
 
+msgid "Up to date"
+msgstr ""
+
 msgid "Update"
 msgstr ""
 
 msgid "Update All Family Coordinates"
+msgstr ""
+
+msgid "Update Available!"
 msgstr ""
 
 msgid "Update Church Info"
@@ -6820,7 +6964,13 @@ msgstr ""
 msgid "Update Latitude & Longitude"
 msgstr ""
 
+msgid "Update Package Details"
+msgstr ""
+
 msgid "Update Properties"
+msgstr ""
+
+msgid "Update package downloaded successfully."
 msgstr ""
 
 msgid "Updated"
@@ -6838,16 +6988,25 @@ msgstr ""
 msgid "Updated via Family"
 msgstr ""
 
-msgid "Upgrade ChurchCRM"
+msgid "Upgrade Complete!"
 msgstr ""
 
 msgid "Upgrade Required"
 msgstr ""
 
-msgid "Upgrade System"
+msgid "Upgrade database"
 msgstr ""
 
-msgid "Upgrade database"
+msgid "Upgrade failed."
+msgstr ""
+
+msgid "Upgrade failed. Please check the logs."
+msgstr ""
+
+msgid "Upgrade information refreshed successfully"
+msgstr ""
+
+msgid "Upgrade information refreshed. Reloading page..."
 msgstr ""
 
 msgid "Upload CSV File"
@@ -7017,6 +7176,9 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
+msgid "Version Information"
+msgstr ""
+
 #. Context: countries
 msgid "Vietnam (Việt Nam)"
 msgstr ""
@@ -7154,19 +7316,22 @@ msgstr ""
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
 msgstr ""
 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr ""
-
 msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
 msgstr ""
 
 msgid "Warning: Signature mismatch"
 msgstr ""
 
+msgid "Warnings"
+msgstr ""
+
 msgid "We could not find the person(s) you were looking for."
 msgstr ""
 
 msgid "We encountered an error submitting with your verification data"
+msgstr ""
+
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
 msgstr ""
 
 msgid "Web Server"
@@ -7304,6 +7469,9 @@ msgstr ""
 msgid "You have"
 msgstr ""
 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr ""
+
 msgid "You have no items in your cart."
 msgstr ""
 
@@ -7356,6 +7524,12 @@ msgid "Your ChurchCRM account was locked."
 msgstr ""
 
 msgid "Your ChurchCRM account was unlocked."
+msgstr ""
+
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr ""
+
+msgid "Your ChurchCRM installation is running the latest version."
 msgstr ""
 
 msgid "Your ChurchCRM password has been changed"

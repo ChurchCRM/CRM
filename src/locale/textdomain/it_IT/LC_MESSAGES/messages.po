@@ -1400,10 +1400,6 @@ msgstr "Rapporti Finanziari\n"
 ""
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Nessun record sono stati restituiti dalla relazione precedente."
-
-#: 
 msgid "Report Type:"
 msgstr "Tipo di rapporto:"
 
@@ -2783,10 +2779,6 @@ msgid "Query Listing"
 msgstr "Lista delle query"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Esegui una query libera"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Query libera"
 
@@ -3963,68 +3955,12 @@ msgid "Edit Settings"
 msgstr "Modificare le impostazioni"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Aggiorna ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Passaggio 1: database di backup"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Si prega di creare un backup del database prima di iniziare il processo di aggiornamento."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Genera backup del database"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Passaggio 2: recuperare il pacchetto di aggiornamento sul server"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Scarica gli ultimi file dalla pagina di rilascio di ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Recupera file di aggiornamento"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Passaggio 3: applicare il pacchetto di aggiornamento sul server"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Estrarre l'archivio di aggiornamento e applicare i nuovi file"
-
-#: 
 msgid "Full Path:"
 msgstr "Percorso completo:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Sistema di aggiornamento"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Passaggio 4: accesso"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Accedi al sistema aggiornato"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup completo, pronto per il download."
-
-#: 
-msgid "Backup Error."
-msgstr "Errore di backup."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7373,24 +7309,12 @@ msgid "Reset Password"
 msgstr "Reimposta Password"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Impossibile reimpostare la password"
-
-#: 
 msgid "Reset your password"
 msgstr "Reimposta la Tua Password"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Siamo spiacenti, non siamo in grado di elaborare la tua richiesta in questo momento."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Nome Utente Richiesto"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Ti è stata inviata una nuova password. Si prega di controllare la tua email"
 
 #: 
 msgid "Kiosk Manager"
@@ -8360,10 +8284,6 @@ msgid "Menu Name"
 msgstr "Nome Menu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max 20 Caratteri"
-
-#: 
 msgid "Link Address"
 msgstr "Indirizzo Link"
 
@@ -8508,10 +8428,6 @@ msgstr "Se si desidera mantenere le modifiche a questi file, esegui un backup ma
 #: 
 msgid "Integrity Check Details:"
 msgstr "Dettagli del controllo di integrità:"
-
-#: 
-msgid "I Understand"
-msgstr "Co capito"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8718,10 +8634,6 @@ msgid "Remove Results from Cart"
 msgstr "Rimuovi risultati dal carrello"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Avvertenza: rilevate attività pre-aggiornamento"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Sono state identificate alcune condizioni che potrebbero impedire un aggiornamento riuscito"
@@ -8891,10 +8803,6 @@ msgstr "La tua nuova password è troppo simile a quella vecchia."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Reimpostazione password non disponibile. Si prega di contattare l'amministratore di sistema"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Problema di Autenticazione"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

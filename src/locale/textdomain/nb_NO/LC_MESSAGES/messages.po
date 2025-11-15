@@ -1413,10 +1413,6 @@ msgid "Financial Reports"
 msgstr "Finansielle rapporter"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Ingen poster ble returnert fra forrige rapport."
-
-#: 
 msgid "Report Type:"
 msgstr "Rapport Type:"
 
@@ -2801,10 +2797,6 @@ msgstr "Nei, beholde dette oppdraget"
 #: 
 msgid "Query Listing"
 msgstr "Query Oppføring"
-
-#: 
-msgid "Run a Free-Text Query"
-msgstr "Kjør en fritekst-Query"
 
 #: 
 msgid "Free-Text Query"
