@@ -1398,10 +1398,6 @@ msgid "Financial Reports"
 msgstr "የፋይናንስ ሪፖርቶች"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "ካለፈው ሪፖርት ምንም መዝገቦች አልተመለሱም።"
-
-#: 
 msgid "Report Type:"
 msgstr "የሪፖርት አይነት"
 
@@ -2774,10 +2770,6 @@ msgid "Query Listing"
 msgstr "የጥያቄ ዝርዝር"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "የነጻ ጽሑፍ መጠይቅ አስኪድ"
-
-#: 
 msgid "Free-Text Query"
 msgstr "የነጻ ጽሑፍ መጠይቅ"
 
@@ -3952,68 +3944,12 @@ msgid "Edit Settings"
 msgstr "ቅንብሮችን ያርትዑ"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "ChurchCRMን አሻሽል"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "ደረጃ 1: የዳታቤዝ ምትኬ"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "የማሻሻያ ሂደቱን ከመጀመርዎ በፊት እባክዎ የዳታቤዝ መጠባበቂያ ይፍጠሩ"
-
-#: 
-msgid "Generate Database Backup"
-msgstr "የዳታቤዝ ምትኬን ይፍጠሩ"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "ደረጃ 2: ማሻሻያ ጥቅል በአገልጋይ ላይ"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "የቅርብ ጊዜዎቹን ፋይሎች ከChurchCRM GitHub መልቀቂያ ገጽ ያውጡ"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "የዝማኔ ፋይሎችን አምጣ"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "ደረጃ 3: የዝማኔ ጥቅልን በአገልጋይ ላይ ተግብር"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "የማሻሻያ ማህደሩን ያውጡ እና አዲሶቹን ፋይሎች ይተግብሩ"
-
-#: 
 msgid "Full Path:"
 msgstr "ሙሉ መንገድ:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "የማሻሻያ ስርዓት"
-
-#: 
-msgid "Step 4: Login"
-msgstr "ደረጃ 4: ይግቡ"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "ወደ የተሻሻለ ስርዓት ይግቡ"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "ምትኬ ተጠናቅቋል፣ ለመውረድ ዝግጁ."
-
-#: 
-msgid "Backup Error."
-msgstr "የመጠባበቂያ ስህተት."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7352,24 +7288,12 @@ msgid "Reset Password"
 msgstr "የይለፍ ቃል ይቀይሩ"
 
 #: 
-msgid "Unable to reset password"
-msgstr "የይለፍ ቃል መቀየር አልተቻለም"
-
-#: 
 msgid "Reset your password"
 msgstr "የራስዎን የይለፍ ቃል ይቀይሩ"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "ይቅርታ፣ በዚህ ጊዜ ጥያቄህን ማስተናገድ አልቻልንም"
-
-#: 
-msgid "Login Name is Required"
-msgstr "የመግቢያ ስም ያስፈልጋል"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "አዲስ የይለፍ ቃል ተልኳል። እባክዎ ኢሜልዎን ይመልከቱ"
 
 #: 
 msgid "Kiosk Manager"
@@ -8340,10 +8264,6 @@ msgid "Menu Name"
 msgstr "የምርጫ ዝርዝር ስም "
 
 #: 
-msgid "Max 20 char"
-msgstr "ከ 20 በላይ ፊደል  አይቻልም "
-
-#: 
 msgid "Link Address"
 msgstr "አገናኝ አድራሻ "
 
@@ -8489,10 +8409,6 @@ msgstr "በእነዚህ ፋይሎች ላይ ያደረጓቸውን ለውጦች �
 #: 
 msgid "Integrity Check Details:"
 msgstr "የታማኝነት ማረጋገጫ ዝርዝሮች "
-
-#: 
-msgid "I Understand"
-msgstr "ተረድቻለሁ "
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8702,10 +8618,6 @@ msgid "Remove Results from Cart"
 msgstr "ውጤቶችን ከጋሪ አስወግድ "
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "ማስጠንቀቂያ፡ የቅድመ-ማሻሻል ተግባራት ተገኝተዋል "
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "ስኬታማ የሆነ ማሻሻልን የሚከለክሉ አንዳንድ ሁኔታዎች ተለይተዋል። "
@@ -8884,10 +8796,6 @@ msgstr "\n"
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "\n"
 "የይለፍ ቃል ዳግም ማስጀመር አይገኝም። እባክዎ የስርዓት አስተዳዳሪዎን ያግኙ"
-
-#: 
-msgid "Authentication Issue"
-msgstr "የማረጋገጫ ጉዳይ"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

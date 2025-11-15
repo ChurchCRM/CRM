@@ -1396,10 +1396,6 @@ msgid "Financial Reports"
 msgstr "דוחות כספיים"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "לא הוחזרו רשומות מהדוח הקודם."
-
-#: 
 msgid "Report Type:"
 msgstr "סוג דוח:"
 
@@ -2771,10 +2767,6 @@ msgid "Query Listing"
 msgstr "רשימת שאילתות"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "הרץ שאילתת טקסט חופשי"
-
-#: 
 msgid "Free-Text Query"
 msgstr "שאילתת טקסט חופשי"
 
@@ -3947,68 +3939,12 @@ msgid "Edit Settings"
 msgstr "ערוך הגדרות"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "שדרג את התוכנה"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "שלב 1: גיבוי מסד נתונים"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "אנא צור גיבוי מסד הנתונים לפני תחילת השדרוג."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "צור גיבוי למסד הנתונים"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "שלב 2: הורד חבילת עדכון מהשרת"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "הורד את הקבצים העדכניים ביותר מדף השחרור של התוכנה ב-GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "הורד קבצי עדכון"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "שלב 3: החלת חבילת העדכון על השרת"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "חלץ את הארכיון החדש והפעל את הקבצים החדשים"
-
-#: 
 msgid "Full Path:"
 msgstr "נתיב מלא:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "שדרוג מערכת"
-
-#: 
-msgid "Step 4: Login"
-msgstr "שלב 4: התחברות"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "התחברות למערכת המשודרגת"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "הגיבוי הושלם, ומוכן להורדה."
-
-#: 
-msgid "Backup Error."
-msgstr "שגיאה בגיבוי."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7342,24 +7278,12 @@ msgid "Reset Password"
 msgstr "איפוס סיסמה"
 
 #: 
-msgid "Unable to reset password"
-msgstr "לא ניתן לאפס סיסמה"
-
-#: 
 msgid "Reset your password"
 msgstr "אפס את הסיסמה שלך"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "מצטערים, איננו יכולים לעבד את בקשתך בזמן זה"
-
-#: 
-msgid "Login Name is Required"
-msgstr "נדרש שם משתמש"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "סיסמה חדשה נשלחה אליך. אנא בדוק את הדואר האלקטרוני שלך"
 
 #: 
 msgid "Kiosk Manager"
@@ -8326,10 +8250,6 @@ msgid "Menu Name"
 msgstr "שם התפריט"
 
 #: 
-msgid "Max 20 char"
-msgstr "מקסימום 20 תווים"
-
-#: 
 msgid "Link Address"
 msgstr "כתובת קישור"
 
@@ -8473,10 +8393,6 @@ msgstr "אם ברצונך לשמור על השינויים שביצעת בקבצ
 #: 
 msgid "Integrity Check Details:"
 msgstr "פרטי בדיקת תקינות:"
-
-#: 
-msgid "I Understand"
-msgstr "אני מבין"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8683,10 +8599,6 @@ msgid "Remove Results from Cart"
 msgstr "הסר תוצאות מהסל"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "אזהרה: נמצאו משימות מלפני העדכון"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "זוהו מספר תנאים שעלולים למנוע שדרוג מוצלח"
 
@@ -8854,10 +8766,6 @@ msgstr "הסיסמה החדשה שלך דומה מדי לישנה"
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "איפוס סיסמה אינו זמין. אנא צור קשר עם מנהל המערכת שלך"
-
-#: 
-msgid "Authentication Issue"
-msgstr "בעיית אימות"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

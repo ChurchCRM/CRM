@@ -1396,10 +1396,6 @@ msgid "Financial Reports"
 msgstr "Finansiële verslae"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Geen rekords is teruggestuur uit die vorige verslag nie."
-
-#: 
 msgid "Report Type:"
 msgstr "Verslagtipe:"
 
@@ -2772,10 +2768,6 @@ msgid "Query Listing"
 msgstr "Navraelys"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Voer 'n vrye-teks-navraag uit"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Vrae met vrye teks"
 
@@ -3952,68 +3944,12 @@ msgid "Edit Settings"
 msgstr "Wysig instellings"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Upgrade ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Stap 1: Rugsteundatabasis"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Maak asseblief 'n databasis-rugsteun voordat u met die opgraderingsproses begin."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Genereer databasis-rugsteun"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Stap 2: haal die opdateringspakket op die bediener"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Haal die nuutste lêers op die ChurchCRM GitHub-vrystellingsbladsy"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Haal opdateringslêers op"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Stap 3: Pas die opdateringspakket op die bediener toe"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Pak die opgraderingsargief uit en pas die nuwe lêers toe"
-
-#: 
 msgid "Full Path:"
 msgstr "Volle pad:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Opgraderingstelsel"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Stap 4: Teken in"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Teken in op opgegradeerde stelsel"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Rugsteun voltooi, gereed vir aflaai."
-
-#: 
-msgid "Backup Error."
-msgstr "Rugsteunfout."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7351,24 +7287,12 @@ msgid "Reset Password"
 msgstr "Herstel wagwoord"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Kan nie wagwoord terugstel nie"
-
-#: 
 msgid "Reset your password"
 msgstr "Herstel jou wagwoord"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Jammer, ons kan u versoek nie op hierdie tydstip verwerk nie."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Aanmeldingsnaam is verpligtend"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "'N Nuwe wagwoord is aan u gestuur. Gaan kyk asseblief na jou e-pos"
 
 #: 
 msgid "Kiosk Manager"
@@ -8338,10 +8262,6 @@ msgid "Menu Name"
 msgstr "Kieslysnaam"
 
 #: 
-msgid "Max 20 char"
-msgstr "Maks 20 char"
-
-#: 
 msgid "Link Address"
 msgstr "Skakeladres"
 
@@ -8486,10 +8406,6 @@ msgstr "As u u wysigings aan hierdie lêers wil handhaaf, moet u hierdie lêers 
 #: 
 msgid "Integrity Check Details:"
 msgstr "Inligting oor integriteitstoets:"
-
-#: 
-msgid "I Understand"
-msgstr "Ek verstaan"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8696,10 +8612,6 @@ msgid "Remove Results from Cart"
 msgstr "Verwyder die resultate uit die mandjie"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Waarskuwing: take voor opgradering opgespoor"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Sommige toestande is geïdentifiseer wat 'n suksesvolle opgradering kan voorkom"
@@ -8869,10 +8781,6 @@ msgstr "U nuwe wagwoord lyk te veel soos u ou wagwoord."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Wagwoordterugstelling is nie beskikbaar nie. Kontak u stelseladministrateur"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Verifikasieprobleem"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
