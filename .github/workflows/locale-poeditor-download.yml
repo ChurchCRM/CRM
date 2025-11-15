@@ -97,10 +97,6 @@ jobs:
       with:
         name: "BuildConfig.json"
         json: '{"POEditor": { "id": "77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}'
-
-    - name: Clean existing locales
-      if: inputs.operation_mode != 'audit-only'
-      run: npm run locale:clean
       
     - name: Download locales from POEditor
       if: inputs.operation_mode != 'audit-only'

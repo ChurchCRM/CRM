@@ -5,10 +5,36 @@
     "es2021": true,
     "node": true
   },
+  "ignorePatterns": [
+    "node_modules/",
+    "temp/",
+    "dist/",
+    "downloads/",
+    "demo/Images/",
+    "webpack/**",
+    "src/skin/external/**",
+    "src/skin/vendor/**",
+    "src/skin/**/*.min.js",
+    "src/vendor/**",
+    "src/propel/**"
+  ],
+  "globals": {
+    "window": "readonly",
+    "jQuery": "readonly",
+    "$": "readonly",
+    "i18next": "readonly",
+    "bootbox": "readonly",
+    "Stepper": "readonly",
+    "showGlobalMessage": "readonly",
+    "google": "readonly",
+    "moment": "readonly",
+    "Chart": "readonly",
+    "FullCalendar": "readonly"
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
   "project": "./tsconfig.json",
-  "tsconfigRootDir": "./",
+  "tsconfigRootDir": "__dirname",
     "ecmaVersion": 12,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -34,5 +60,19 @@
     ],
     "no-unused-vars": "off",
     "react/react-in-jsx-scope": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      }
+    },
+    {
+      "files": ["**/*.js", "**/*.jsx"],
+      "parserOptions": {
+        "ecmaVersion": 2020
+      }
+    }
+  ]
 }

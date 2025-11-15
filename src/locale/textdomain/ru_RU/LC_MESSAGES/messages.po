@@ -1419,10 +1419,6 @@ msgid "Financial Reports"
 msgstr "Финансовые отчеты"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Нет записей были возвращены из предыдущего доклада."
-
-#: 
 msgid "Report Type:"
 msgstr "Тип отчета:"
 
@@ -2814,10 +2810,6 @@ msgid "Query Listing"
 msgstr "Запрос Листинг"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Запустите Free-текст запроса"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Free-текст запроса"
 
@@ -4019,64 +4011,12 @@ msgid "Edit Settings"
 msgstr "Изменить настройки"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Обновить ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Шаг 1. Резервное копирование базы данных"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Пожалуйста, создайте резервную копию базы данных перед началом процесса обновления."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Создать резервную копию базы данных"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Создать копию базы данных"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Получите последние файлы со страницы выпуска ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Получить файлы обновления"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Шаг 3. Примените пакет обновления на сервере"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Распакуйте архив обновления и примените новые файлы."
-
-#: 
 msgid "Full Path:"
 msgstr "Полный путь:"
 
 #: 
-msgid "Upgrade System"
-msgstr "Система обновлений"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Шаг 4: Войти"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Войти в обновленную систему"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Резервное копирование завершено, готово к загрузке."
-
-#: 
-msgid "Backup Error."
-msgstr "Ошибка резервного копирования."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -5495,10 +5435,6 @@ msgid "Integrity Check Details:"
 msgstr "Детальная информация проверки целостности данных:"
 
 #: 
-msgid "I Understand"
-msgstr "Я понимаю"
-
-#: 
 msgid "Generate Backup"
 msgstr "Создать резервную копию."
 
@@ -5639,10 +5575,6 @@ msgstr "Добавить результаты в корзину"
 #: 
 msgid "Remove Results from Cart"
 msgstr "Удалить результаты из корзины"
-
-#: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Предупреждение: Обнаружены задачи предварительного обновления"
 
 #: 
 #, fuzzy

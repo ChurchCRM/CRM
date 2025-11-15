@@ -1439,10 +1439,6 @@ msgid "Financial Reports"
 msgstr "Financiellarapporter"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Inga poster finns från den föregående rapport."
-
-#: 
 msgid "Report Type:"
 msgstr "Rapporttyp:"
 
@@ -2873,10 +2869,6 @@ msgid "Query Listing"
 msgstr "Förfrågan lista"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Gör en fritext förfrågan"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Fritext förfrågan"
 
@@ -4096,68 +4088,12 @@ msgid "Edit Settings"
 msgstr "Ändra inställningar"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Uppgradera ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Steg 1: Säkerhetskopieringsdatabas"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Skapa en databasbackup innan du börjar uppgraderingsprocessen."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Generera databasbackup"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Steg 2: Hämta uppdateringspaket på servern"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Hämta de senaste filerna från ChurchCRM GitHub-släppsidan"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Hämta uppdateringsfiler"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Steg 3: Använd uppdateringspaketet på servern"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Extrahera uppgraderingsarkivet och tillämpa de nya filerna"
-
-#: 
 msgid "Full Path:"
 msgstr "Fullständig sökväg:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Uppgradera systemet"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Steg 4: Logga in"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Logga in på uppgraderat system"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Säkerhetskopiering är klar, redo för nedladdning."
-
-#: 
-msgid "Backup Error."
-msgstr "Säkerhetskopieringsfel."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7494,24 +7430,12 @@ msgid "Reset Password"
 msgstr "Återställ lösenord"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Det går inte att återställa lösenordet"
-
-#: 
 msgid "Reset your password"
 msgstr "Återställ ditt lösenord"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Vi kan tyvärr inte behandla din begäran just nu."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Inloggningsnamn krävs"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Ett nytt lösenord skickades till dig. Kontrollera din e-post"
 
 #: 
 msgid "Kiosk Manager"
@@ -8481,10 +8405,6 @@ msgid "Menu Name"
 msgstr "Menynamn"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max 20 char"
-
-#: 
 msgid "Link Address"
 msgstr "Länkadress"
 
@@ -8629,10 +8549,6 @@ msgstr "Om du vill behålla dina ändringar av dessa filer, ta en manuell säker
 #: 
 msgid "Integrity Check Details:"
 msgstr "Detaljer för integritetskontroll:"
-
-#: 
-msgid "I Understand"
-msgstr "Jag förstår"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8839,10 +8755,6 @@ msgid "Remove Results from Cart"
 msgstr "Ta bort resultat från kundvagnen"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Varning: Uppgraderingsuppgifter har upptäckts"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Vissa förhållanden har identifierats som kan förhindra en framgångsrik uppgradering"
@@ -9012,10 +8924,6 @@ msgstr "Ditt nya lösenord liknar det gamla."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Återställning av lösenord är inte tillgängligt. Kontakta din systemadministratör"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Autentiseringsproblem"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
