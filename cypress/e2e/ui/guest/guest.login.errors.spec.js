@@ -5,13 +5,15 @@ describe("Login", () => {
         cy.visit('/login');
         cy.get('input[name=User]').type("admin");
         cy.get('input[name=Password]').type("badpassword" + '{enter}');
-        cy.location("pathname").should("include", "session/begin");
+        // Wait for redirect to happen after failed login
+        cy.url().should("include", "session/begin");
     });
 
     it("Bad username", () => {
         cy.visit('/login');
         cy.get('input[name=User]').type("idonknowyou");
         cy.get('input[name=Password]').type("badpassword" + '{enter}');
-        cy.location("pathname").should("include", "session/begin");
+        // Wait for redirect to happen after failed login
+        cy.url().should("include", "session/begin");
     });
 });
