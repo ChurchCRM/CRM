@@ -33,7 +33,12 @@ describe("Standard Person", () => {
         }).then((resp) => {
             expect(resp.status).to.eq(200);
             expect(resp.body).to.have.property('length');
-            expect(resp.body.length).to.be.gte(2);
+
+            // Verify Persons group exists with at least one person
+            const personsGroup = resp.body.find(group => group.text && group.text.startsWith('Persons'));
+            expect(personsGroup).to.exist;
+            expect(personsGroup.children).to.be.an('array');
+            expect(personsGroup.children.length).to.be.gte(2);
         });
     });
 
@@ -46,6 +51,12 @@ describe("Standard Person", () => {
             expect(resp.status).to.eq(200);
             expect(resp.body).to.have.property('length');
             expect(resp.body.length).to.be.gte(1);
+            
+            // Verify Persons group exists with at least one person
+            const personsGroup = resp.body.find(group => group.text && group.text.startsWith('Persons'));
+            expect(personsGroup).to.exist;
+            expect(personsGroup.children).to.be.an('array');
+            expect(personsGroup.children.length).to.be.gte(1);
         });
     });
 
@@ -58,7 +69,12 @@ describe("Standard Person", () => {
         }).then((resp) => {
             expect(resp.status).to.eq(200);
             expect(resp.body).to.have.property('length');
-            expect(resp.body.length).to.eq(0);
+            
+            // Ensure no Persons or Families groups are returned
+            const personsGroup = resp.body.find(group => group.text && group.text.startsWith('Persons'));
+            const familiesGroup = resp.body.find(group => group.text && group.text.startsWith('Families'));
+            expect(personsGroup).to.be.undefined;
+            expect(familiesGroup).to.be.undefined;
         });
     });
 });
