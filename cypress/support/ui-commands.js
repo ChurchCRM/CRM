@@ -37,6 +37,9 @@ Cypress.Commands.add(
 
         // Wait for navigation to complete
         cy.url().should('not.contain', 'location=');
+
+        // Wait for page to be fully loaded
+        cy.document().should("have.property", "readyState", "complete");
         
         if (location && checkMatchingLocation) {
             cy.location("pathname").should("include", location.split("?")[0]);
