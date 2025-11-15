@@ -48,7 +48,7 @@
         "docker:test:restart:db": "docker compose -f docker/docker-compose.yaml --profile test restart database",
         "docker:test:subdir": "cp docker/Config.subdir.php src/Include/Config.php && docker compose -f docker/docker-compose.yaml -f docker/docker-compose.subdir.yaml --profile test up -d",
         "docker:test:stop": "docker compose -f docker/docker-compose.yaml --profile test stop",
-        "format:web": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,html,json}\"",
+        "format:web": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,html,json}\" --ignore-path .prettierignore",
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-term-extract.js",
         "locale:download": "node locale/scripts/poeditor-downloader.js && npm run locale:audit",
