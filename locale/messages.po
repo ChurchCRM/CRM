@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-10 22:05-0800\n"
+"POT-Creation-Date: 2025-11-14 19:38-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,6 +133,9 @@ msgid "2 Factor Authentication Secret"
 msgstr ""
 
 msgid "2 Factor Authentication enrollment"
+msgstr ""
+
+msgid "2-50 characters"
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -1680,6 +1683,9 @@ msgid "Deactivate"
 msgstr ""
 
 msgid "Deactivated the Family"
+msgstr ""
+
+msgid "Dear Friend"
 msgstr ""
 
 msgid "Debug"
@@ -3939,9 +3945,6 @@ msgstr ""
 msgid "Mauritius (Moris)"
 msgstr ""
 
-msgid "Max 20 char"
-msgstr ""
-
 msgid "Max Failed Login"
 msgstr ""
 
@@ -4424,6 +4427,9 @@ msgstr ""
 msgid "No Changes"
 msgstr ""
 
+msgid "No Data Found"
+msgstr ""
+
 msgid "No Group Selected"
 msgstr ""
 
@@ -4484,7 +4490,7 @@ msgstr ""
 msgid "No property assignments."
 msgstr ""
 
-msgid "No records were returned from the previous report."
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
 msgstr ""
 
 msgid "No volunteer opportunities have been added yet"
@@ -5115,7 +5121,13 @@ msgstr ""
 msgid "Please enter a group name."
 msgstr ""
 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr ""
+
 msgid "Please enter a valid URL"
+msgstr ""
+
+msgid "Please enter a valid URL starting with http:// or https://"
 msgstr ""
 
 msgid "Please enter a valid email address"
@@ -5653,9 +5665,6 @@ msgid "Run Query Again"
 msgstr ""
 
 msgid "Run Transactions"
-msgstr ""
-
-msgid "Run a Free-Text Query"
 msgstr ""
 
 #. Context: countries

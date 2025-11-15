@@ -1414,10 +1414,6 @@ msgid "Financial Reports"
 msgstr "Báo cáo tài chính"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Không có hồ sơ nào được trả lại từ báo cáo trước."
-
-#: 
 msgid "Report Type:"
 msgstr "Loại báo cáo:"
 
@@ -2790,10 +2786,6 @@ msgid "Query Listing"
 msgstr "Danh sách truy vấn"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Chạy truy vấn văn bản tự do"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Truy vấn văn bản tự do"
 
@@ -3970,68 +3962,12 @@ msgid "Edit Settings"
 msgstr "Chỉnh sửa cài đặt"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Nâng cấp ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Bước 1: Sao lưu dữ liệu"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Vui lòng tạo bản sao lưu dữ liệu trước khi tiến hành quá trình cập nhật"
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Tạo bản sao lưu"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Bước 2: Tìm nạp gói cập nhật trên máy chủ"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Tìm nạp các tệp mới nhất từ ​​trang phát hành ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Tìm nạp tệp cập nhật"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Bước 3: Áp dụng gói cập nhật trên máy chủ"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Giải nén kho lưu trữ nâng cấp và áp dụng các tệp mới"
-
-#: 
 msgid "Full Path:"
 msgstr "Đường dẫn đầy đủ:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Nâng cấp hệ thống"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Bước 4: Đăng nhập"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Đăng nhập để nâng cấp hệ thống"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Tập tin sao lưu đã thành công, nhấn vào để tải ngay."
-
-#: 
-msgid "Backup Error."
-msgstr "Lỗi sao lưu."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7368,24 +7304,12 @@ msgid "Reset Password"
 msgstr "Đặt lại mật khẩu"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Không thể đặt lại mật khẩu"
-
-#: 
 msgid "Reset your password"
 msgstr "Khôi phục mật khẩu của bạn"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Xin lỗi, chúng tôi không thể xử lý yêu cầu của bạn tại thời điểm này."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Tên đăng nhập là bắt buộc"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Một mật khẩu mới đã được gửi cho bạn. Xin vui lòng kiểm tra email của bạn"
 
 #: 
 msgid "Kiosk Manager"
@@ -8355,10 +8279,6 @@ msgid "Menu Name"
 msgstr "Tên menu"
 
 #: 
-msgid "Max 20 char"
-msgstr "Tối đa 20 ký tự"
-
-#: 
 msgid "Link Address"
 msgstr "Đường dẫn địa chỉ"
 
@@ -8503,10 +8423,6 @@ msgstr "Nếu bạn muốn duy trì các thay đổi của mình đối với c�
 #: 
 msgid "Integrity Check Details:"
 msgstr "Chi tiết Kiểm tra Tính toàn vẹn:"
-
-#: 
-msgid "I Understand"
-msgstr "Tôi hiểu"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8702,10 +8618,6 @@ msgid "Remove Results from Cart"
 msgstr "Xóa kết quả khỏi giỏ hàng"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Cảnh báo: Đã phát hiện tác vụ nâng cấp trước"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Một số điều kiện đã được xác định có thể ngăn cản việc nâng cấp thành công"
@@ -8875,10 +8787,6 @@ msgstr "Mật khẩu mới của bạn quá giống với mật khẩu cũ của
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Đặt lại mật khẩu không khả dụng. Xin vui lòng liên hệ với quản trị hệ thống của bạn"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Vấn đề xác thực"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

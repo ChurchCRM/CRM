@@ -1433,10 +1433,6 @@ msgid "Financial Reports"
 msgstr "Rapoarte financiare"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Nicio înregistrare nu a fost returnată din raportul anterior."
-
-#: 
 msgid "Report Type:"
 msgstr "Tip de raport:"
 
@@ -2842,10 +2838,6 @@ msgid "Query Listing"
 msgstr "Listarea interogare"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Executați o interogare de text liber"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Query liber-text"
 
@@ -4052,68 +4044,12 @@ msgid "Edit Settings"
 msgstr "Editeaza setarile"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Actualizeaza ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Pasul 1: Baza de date de rezervă"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Creați o copie de rezervă pentru baza de date înainte de actualizare"
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Generați copie de rezervă bază de date"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Pasul 2: Pachetul de actualizare pe Server"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Preia ultimile fișiere de pe ChurchCRM GitHub "
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Prea fișierele de actualizare"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Pasul 3: Aplică pachetul de actualizare pe Server"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Extrage arhiva de actualizare și aplică noile fișiere"
-
-#: 
 msgid "Full Path:"
 msgstr "Calea completă:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Actualizeaza Sistem"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Pasul 4: Autentificare"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Autentifică-te pentru a actualiza systemul"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Back-up finalizat, gata de descărcare."
-
-#: 
-msgid "Backup Error."
-msgstr "Eroare back-up."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7451,24 +7387,12 @@ msgid "Reset Password"
 msgstr "Resetează parola"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Parola nu a putut fi resetată"
-
-#: 
 msgid "Reset your password"
 msgstr "Resetează-ți parola"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Ne pare rău, nu am putut procesa solicitarea"
-
-#: 
-msgid "Login Name is Required"
-msgstr "Este necesar numele de logare (login name)"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "O nouă parolă a fost trimisă. Verifică email-ul"
 
 #: 
 msgid "Kiosk Manager"
@@ -8438,10 +8362,6 @@ msgid "Menu Name"
 msgstr "Adaugă nume"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max 20 caractere"
-
-#: 
 msgid "Link Address"
 msgstr "Link adresă"
 
@@ -8586,10 +8506,6 @@ msgstr "Dacă doriți să păstrați modificările aduse acestor fișiere, face�
 #: 
 msgid "Integrity Check Details:"
 msgstr "Detalii de verificare a integrității"
-
-#: 
-msgid "I Understand"
-msgstr "Înțeleg"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8794,10 +8710,6 @@ msgid "Remove Results from Cart"
 msgstr "Șterge rezultatele din coș"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Avertisment: Sarcini prealabile de actualizare detectate"
-
-#: 
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "S-au identificat unele condiții care ar putea împiedica o actualizare de succes"
 
@@ -8965,10 +8877,6 @@ msgstr "Noua parolă este prea similară cu cea veche"
 #: 
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Resetarea parolei nu este disponibilă. Vă rugăm să contactați administratorul sistemului"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Problemă de Autentificare"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

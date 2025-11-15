@@ -19,6 +19,9 @@ const QuillEditor: React.FunctionComponent<{
   const editorRef = useRef<HTMLDivElement>(null);
   const quillRef = useRef<Quill | null>(null);
 
+  // We intentionally only initialize Quill once on mount. The effect references
+  // props that are intentionally stable for our usage pattern; disable the
+  // exhaustive-deps rule for this effect.
   useEffect(() => {
     if (!editorRef.current || quillRef.current) {
       return;
@@ -70,7 +73,7 @@ const QuillEditor: React.FunctionComponent<{
         delete window.quillEditors[name];
       }
     };
-  }, []);
+  }, [name, onChange, placeholder, value]);
 
   return (
     <div

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09aa375e500a5507422a20f49ba14678",
+    "content-hash": "4f6b169de4f676e419e34c041dfc03e6",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -4785,52 +4785,6 @@
             "time": "2025-10-29T15:56:47+00:00"
         },
         {
-            "name": "verot/class.upload.php",
-            "version": "2.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/verot/class.upload.php.git",
-                "reference": "724a3ee4ea6579f97fa556caf91a27c3c4100289"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/724a3ee4ea6579f97fa556caf91a27c3c4100289",
-                "reference": "724a3ee4ea6579f97fa556caf91a27c3c4100289",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/class.upload.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "Colin Verot",
-                    "email": "colin@verot.net"
-                }
-            ],
-            "description": "This PHP class uploads files and manipulates images very easily.",
-            "homepage": "http://www.verot.net/php_class_upload.htm",
-            "keywords": [
-                "gd",
-                "upload"
-            ],
-            "support": {
-                "email": "colin@verot.net",
-                "issues": "https://github.com/verot/class.upload.php/issues",
-                "source": "https://github.com/verot/class.upload.php/tree/2.1.6"
-            },
-            "time": "2023-12-06T23:03:55+00:00"
-        },
-        {
             "name": "vonage/client",
             "version": "2.4.0",
             "source": {
@@ -5064,11 +5018,11 @@
     "packages-dev": [
         {
             "name": "phpstan/phpstan",
-            "version": "2.1.31",
+            "version": "2.1.32",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ead89849d879fe203ce9292c6ef5e7e76f867b96",
-                "reference": "ead89849d879fe203ce9292c6ef5e7e76f867b96",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e126cad1e30a99b137b8ed75a85a676450ebb227",
+                "reference": "e126cad1e30a99b137b8ed75a85a676450ebb227",
                 "shasum": ""
             },
             "require": {
@@ -5113,25 +5067,25 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-10T14:14:11+00:00"
+            "time": "2025-11-11T15:18:17+00:00"
         },
         {
             "name": "rector/rector",
-            "version": "2.2.7",
+            "version": "2.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "022038537838bc8a4e526af86c2d6e38eaeff7ef"
+                "reference": "303aa811649ccd1d32e51e62d5c85949d01b5f1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/022038537838bc8a4e526af86c2d6e38eaeff7ef",
-                "reference": "022038537838bc8a4e526af86c2d6e38eaeff7ef",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/303aa811649ccd1d32e51e62d5c85949d01b5f1b",
+                "reference": "303aa811649ccd1d32e51e62d5c85949d01b5f1b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4|^8.0",
-                "phpstan/phpstan": "^2.1.26"
+                "phpstan/phpstan": "^2.1.32"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
@@ -5165,7 +5119,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.2.7"
+                "source": "https://github.com/rectorphp/rector/tree/2.2.8"
             },
             "funding": [
                 {
@@ -5173,7 +5127,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-29T15:46:12+00:00"
+            "time": "2025-11-12T18:38:00+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -5260,7 +5214,7 @@
     "stability-flags": {
         "propel/propel": 15
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.2",
@@ -5280,7 +5234,7 @@
         "ext-zip": "*",
         "ext-zlib": "*"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "8.2"
     },

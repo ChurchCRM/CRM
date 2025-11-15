@@ -1,0 +1,14 @@
+node_modules/
+temp/
+dist/
+downloads/
+demo/Images/
+webpack/
+src/skin/external/
+src/skin/vendor/
+src/skin/**/*.min.js
+src/vendor/
+src/propel/
+/*.log
+/*.zip
+/.cache

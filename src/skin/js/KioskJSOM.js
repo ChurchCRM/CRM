@@ -15,7 +15,7 @@ window.CRM.kiosk = {
     },
 
     renderClassMember: function (classMember) {
-        existingDiv = $("#personId-" + classMember.personId);
+        let existingDiv = $("#personId-" + classMember.personId);
         if (existingDiv.length > 0) {
         } else {
             var outerDiv = $("<div>", {
@@ -118,7 +118,7 @@ window.CRM.kiosk = {
                 path: "heartbeat",
             })
             .done(function (data) {
-                thisAssignment = JSON.parse(data.Assignment);
+                let thisAssignment = JSON.parse(data.Assignment);
                 if (window.CRM.kioskAssignmentId === undefined) {
                     window.CRM.kioskAssignmentId = thisAssignment;
                 } else if (
@@ -147,7 +147,7 @@ window.CRM.kiosk = {
                 }
 
                 if (data.Accepted) {
-                    Assignment = JSON.parse(data.Assignment);
+                    let Assignment = JSON.parse(data.Assignment);
                     if (Assignment && Assignment.AssignmentType == 1) {
                         window.CRM.kiosk.updateActiveClassMembers();
                         $("#noEvent").hide();
@@ -206,8 +206,8 @@ window.CRM.kiosk = {
     },
 
     setCheckedOut: function (personId) {
-        $personDiv = $("#personId-" + personId);
-        $personDivButton = $("#personId-" + personId + " .checkoutButton");
+        let $personDiv = $("#personId-" + personId);
+        let $personDivButton = $("#personId-" + personId + " .checkoutButton");
         $personDivButton.addClass("checkinButton");
         $personDivButton.removeClass("checkoutButton");
         $personDivButton.text("Checkin");
@@ -216,9 +216,9 @@ window.CRM.kiosk = {
     },
 
     setCheckedIn: function (personId) {
-        $personDiv = $("#personId-" + personId);
+        let $personDiv = $("#personId-" + personId);
 
-        $personDivButton = $("#personId-" + personId + " .checkinButton");
+        let $personDivButton = $("#personId-" + personId + " .checkinButton");
         $personDivButton.removeClass("checkinButton");
         $personDivButton.addClass("checkoutButton");
         $personDivButton.text("Checkout");

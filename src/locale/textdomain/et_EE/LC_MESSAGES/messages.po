@@ -1396,10 +1396,6 @@ msgid "Financial Reports"
 msgstr "Finantsaruanded"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Eelmisest aruandest ühtegi kirjet ei tagastatud."
-
-#: 
 msgid "Report Type:"
 msgstr "Aruande tüüp:"
 
@@ -2772,10 +2768,6 @@ msgid "Query Listing"
 msgstr "Päringute loetelu"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Käivitage vaba teksti päring"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Vaba teksti päring"
 
@@ -3952,68 +3944,12 @@ msgid "Edit Settings"
 msgstr "Redigeeri seadeid"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Uuendage ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "1. samm: varunda andmebaas"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Enne täiendusprotsessi alustamist looge varukoopia andmebaasist."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Genereerige andmebaasi varukoopia"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "2. samm: hankige värskenduste pakett serverisse"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Tooge uusimad failid ChurchCRM GitHubi väljalaske lehelt"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Too värskendusfailid"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "3. samm: rakendage serverile värskenduste pakett"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Pakkige lahti täiendusarhiiv ja rakendage uued failid"
-
-#: 
 msgid "Full Path:"
 msgstr "Täielik tee:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Täiendage süsteemi"
-
-#: 
-msgid "Step 4: Login"
-msgstr "4. samm: sisselogimine"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Logi sisse täiendatud süsteemi"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Varundatud, allalaadimiseks valmis."
-
-#: 
-msgid "Backup Error."
-msgstr "Varundusviga."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7349,24 +7285,12 @@ msgid "Reset Password"
 msgstr "Lähtestage parool"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Parooli ei saa lähtestada"
-
-#: 
 msgid "Reset your password"
 msgstr "Taasta oma salasõna"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Kahjuks ei saa me teie taotlust praegu töödelda."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Sisselogimisnimi on nõutav"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Sulle saadeti uus parool. Palun kontrolli oma e-posti"
 
 #: 
 msgid "Kiosk Manager"
@@ -8336,10 +8260,6 @@ msgid "Menu Name"
 msgstr "Menüü nimi"
 
 #: 
-msgid "Max 20 char"
-msgstr "Max 20 char"
-
-#: 
 msgid "Link Address"
 msgstr "Lingi aadress"
 
@@ -8484,10 +8404,6 @@ msgstr "Kui soovite säilitada nende failide muudatused, võtke enne nende versi
 #: 
 msgid "Integrity Check Details:"
 msgstr "Terviklikkuse kontrollimise üksikasjad:"
-
-#: 
-msgid "I Understand"
-msgstr "Ma saan aru"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8694,10 +8610,6 @@ msgid "Remove Results from Cart"
 msgstr "Eemalda tulemused korvist"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Hoiatus: tuvastatud on täiendamiseelsed ülesanded"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "On kindlaks tehtud mõned tingimused, mis võivad takistada edukat täiendamist"
@@ -8867,10 +8779,6 @@ msgstr "Teie uus parool on liiga sarnane vanaga."
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Parooli lähtestamine pole saadaval. Palun pöörduge oma süsteemi administraatori poole"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Autentimise probleem"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"

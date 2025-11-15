@@ -1399,10 +1399,6 @@ msgid "Financial Reports"
 msgstr "Laporan keuangan"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "tidak ada catatan dari laporan sebelumnya"
-
-#: 
 msgid "Report Type:"
 msgstr "Tipe laporan"
 
@@ -2775,10 +2771,6 @@ msgid "Query Listing"
 msgstr "Daftar Permintaan"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Jalankan Permintaan Teks Bebas"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Permintaan Teks Gratis"
 
@@ -3955,68 +3947,12 @@ msgid "Edit Settings"
 msgstr "Edit Pengaturan"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Tingkatkan ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Langkah 1: Cadangkan Database"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Harap buat cadangan basis data sebelum memulai proses peningkatan."
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Hasilkan Cadangan Database"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Langkah 2: Ambil Paket Pembaruan di Server"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Ambil file terbaru dari halaman rilis ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Ambil Perbarui File"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Langkah 3: Terapkan Paket Pembaruan di Server"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Ekstrak arsip pemutakhiran, dan terapkan file-file baru"
-
-#: 
 msgid "Full Path:"
 msgstr "Jalur penuh:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Sistem Upgrade"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Langkah 4: Masuk"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Masuk ke Sistem yang Ditingkatkan"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Cadangan Selesai, Siap untuk Diunduh."
-
-#: 
-msgid "Backup Error."
-msgstr "Kesalahan Cadangan."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -7353,24 +7289,12 @@ msgid "Reset Password"
 msgstr "Setel Ulang Kata Sandi"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Tidak dapat mengatur ulang kata sandi"
-
-#: 
 msgid "Reset your password"
 msgstr "Mereset password Anda"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Maaf, kami tidak dapat memproses permintaan Anda pada saat ini."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Diperlukan Nama Login"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Kata sandi baru dikirimkan kepada Anda. Silakan periksa email Anda"
 
 #: 
 msgid "Kiosk Manager"
@@ -8340,10 +8264,6 @@ msgid "Menu Name"
 msgstr "Nama Daftar"
 
 #: 
-msgid "Max 20 char"
-msgstr "Maks. 20 karakter"
-
-#: 
 msgid "Link Address"
 msgstr "Alamat tautan"
 
@@ -8488,10 +8408,6 @@ msgstr "Jika Anda ingin mempertahankan perubahan pada file-file ini, silakan amb
 #: 
 msgid "Integrity Check Details:"
 msgstr "Detail Pemeriksaan Integritas:"
-
-#: 
-msgid "I Understand"
-msgstr "Saya mengerti"
 
 #: 
 msgid "Unsupported Deposit Types Detected"
@@ -8687,10 +8603,6 @@ msgid "Remove Results from Cart"
 msgstr "Hapus Hasil dari Keranjang"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Peringatan: Tugas Pra-Upgrade Terdeteksi"
-
-#: 
 #, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Beberapa kondisi telah diidentifikasi yang dapat mencegah pembaruan yang berhasil"
@@ -8860,10 +8772,6 @@ msgstr "Kata sandi baru anda mirip dengan kata sandi yang lama"
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Penyetelan ulang kata sandi tidak tersedia. Silahkan menghubungi administrator sistem anda"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Masalah Otentikasi"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
