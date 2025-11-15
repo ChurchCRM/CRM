@@ -1,9 +1,6 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
-use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,38 +12,26 @@ if (file_exists('../Include/Config.php')) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Detect the base path from the request URI
-// For /churchcrm/setup/ -> base path is /churchcrm/setup
-// For /setup/ -> base path is /setup
-$requestUri = $_SERVER['REQUEST_URI'] ?? '/setup';
+// Detect base path from server variables - no Config.php dependency
+// For /churchcrm/setup/index.php -> SCRIPT_NAME = /churchcrm/setup/index.php
+// For /setup/index.php -> SCRIPT_NAME = /setup/index.php
 $scriptName = $_SERVER['SCRIPT_NAME'] ?? '/setup/index.php';
-
-// Extract base path by removing everything after /setup in the script path
-// /home/.../churchcrm/setup/index.php -> /churchcrm/setup
 $basePath = dirname($scriptName); // Gets /churchcrm/setup or /setup
 
-// Calculate parent root path for SystemURLs (where assets are)
+// Calculate root path (parent of setup directory)
 // /churchcrm/setup -> /churchcrm
 // /setup -> ''
-$parentRootPath = dirname($basePath);
-if ($parentRootPath === '/' || $parentRootPath === '.') {
-    $parentRootPath = '';
+$rootPath = dirname($basePath);
+if ($rootPath === '/' || $rootPath === '.') {
+    $rootPath = '';
 }
 
-// Debug logging - remove after testing
-error_log("Setup Debug - SCRIPT_NAME: " . $scriptName);
-error_log("Setup Debug - basePath: " . $basePath);
-error_log("Setup Debug - parentRootPath: " . $parentRootPath);
-error_log("Setup Debug - documentRoot: " . dirname(__DIR__));
-
-// Initialize SystemURLs with parent directory root path and physical directory
-SystemURLs::init($parentRootPath, '', dirname(__DIR__));
-SystemConfig::init();
-
+// Store paths in global for template access (no SystemURLs available)
+$GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] = $rootPath;
+$GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] = dirname(__DIR__);
 
 $container = new ContainerBuilder();
 $container->compile();
-// Register custom error handlers
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);

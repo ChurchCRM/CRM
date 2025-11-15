@@ -1,17 +1,17 @@
 <?php
-
-use ChurchCRM\dto\SystemURLs;
+// Setup wizard - standalone, no Config.php dependency
+$rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
+$nonce = base64_encode(random_bytes(16));
 
 $URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . '/';
-
 $sPageTitle = 'ChurchCRM – Setup';
-require_once '../Include/HeaderNotLoggedIn.php';
+
+require_once __DIR__ . '/header.php';
 ?>
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/setup.min.css">
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM = {
-        root: "<?= SystemURLs::getRootPath() ?>"
-    };
+<link rel="stylesheet" href="<?= $rootPath ?>/skin/v2/setup.min.css">
+<script nonce="<?= $nonce ?>">
+    window.CRM = window.CRM || {};
+    window.CRM.root = "<?= $rootPath ?>";
 </script>
 <div class="container-fluid">
 <div class="jumbotron text-center">
@@ -133,7 +133,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
                         <div class="form-group">
                             <label for="ROOT_PATH">Root Path</label>
                             <input type="text" name="ROOT_PATH" id="ROOT_PATH"
-                                   value="<?= SystemURLs::getRootPath() ?>" class="form-control"
+                                   value="<?= $rootPath ?>" class="form-control"
                                    aria-describedby="ROOT_PATH_HELP"
                                    pattern="^(|\/[a-zA-Z0-9_\-\.\/]*)$"
                                    maxlength="64">
@@ -330,7 +330,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
 </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bs-stepper/bs-stepper.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/setup.js"></script>
-<?php
-require_once '../Include/FooterNotLoggedIn.php';
+<script src="<?= $rootPath ?>/skin/external/bs-stepper/bs-stepper.min.js"></script>
+<script src="<?= $rootPath ?>/skin/js/setup.js"></script>
+</body>
+</html>
