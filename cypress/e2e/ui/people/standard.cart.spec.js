@@ -116,8 +116,6 @@ describe("Standard Cart", () => {
         waitForCartReady();
         
         // Wait for DataTable to be fully initialized
-        cy.get("#members").should("be.visible");
-        cy.wait(500); // Brief wait for DataTable initialization
         cy.get("#members tbody tr").should("have.length.greaterThan", 0);
         
         cy.get("#AddAllToCart").should("be.visible").click();
@@ -140,8 +138,6 @@ describe("Standard Cart", () => {
         waitForCartReady();
         
         // Wait for DataTable to be fully initialized again
-        cy.get("#members").should("be.visible");
-        cy.wait(500); // Brief wait for DataTable initialization
         cy.get("#members tbody tr").should("have.length.greaterThan", 0);
         
         cy.get("#RemoveAllFromCart").should("be.visible").click();
