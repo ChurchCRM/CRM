@@ -426,27 +426,3 @@ Cypress.Commands.add('waitForNotification', (expectedText, options = {}) => {
         .should('contain', expectedText);
 });
 
-/**
- * Wait for a DataTable to be fully initialized on the page
- * @param {string} selector - The CSS selector for the table element (default: '#members')
- * @param {number} timeout - Maximum time to wait in milliseconds (default: 10000)
- * @example cy.waitForDataTable('#members')
- */
-Cypress.Commands.add('waitForDataTable', (selector = '#members', timeout = 10000) => {
-    // First wait for locales since DataTable initialization depends on it
-    cy.waitForLocales(timeout);
-    
-    // Then wait for the DataTable to be initialized and have data
-    cy.get(selector, { timeout }).should('be.visible');
-    cy.window({ timeout }).should((win) => {
-        const table = win.jQuery(selector);
-        expect(table.length).to.be.greaterThan(0);
-        
-        // Check if DataTable is initialized
-        const dataTable = table.DataTable();
-        expect(dataTable).to.exist;
-    });
-    
-    // Wait for rows to be present in the table body
-    cy.get(`${selector} tbody tr`, { timeout }).should('have.length.greaterThan', 0);
-});
