@@ -1013,7 +1013,6 @@
     "Your previous session timed out.  Please login again.": "Η προηγούμενη συνεδρία σας έληξε. Παρακαλώ συνδεθείτε ξανά.",
     "Register a new Family": "Εγγραφή νέας οικογένειας",
     "Signature definition file signature failed validation": "Η επικύρωση της υπογραφής του αρχείου ορισμού υπογραφής απέτυχε",
-    "Signature definition File Missing": "Λείπει το αρχείο ορισμού υπογραφής",
     "One or more files failed signature validation": "Ένα ή περισσότερα αρχεία απέτυχε στην επικύρωση υπογραφής",
     "Configure HTTPS": "Διαμόρφωση HTTPS",
     "Files failing integrity check": "Αποτυχία ελέγχου ακεραιότητας αρχείων",

@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Phiên truy cập trước đã hết thời gian, vui lòng đăng nhập lại.",
     "Register a new Family": "Đăng ký một gia đình mới",
     "Signature definition file signature failed validation": "Xác thực tệp định nghĩa chữ ký chữ ký không hợp lệ",
-    "Signature definition File Missing": "Thiếu tệp định nghĩa chữ ký",
     "One or more files failed signature validation": "Một hoặc nhiều tệp không xác thực được chữ ký",
     "Configure HTTPS": "Cấu hình HTTPS",
     "Files failing integrity check": "Các tệp không kiểm tra được tính toàn vẹn",

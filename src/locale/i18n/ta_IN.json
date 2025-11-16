@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "உங்கள் முந்தைய அமர்வு நேரம் முடிந்தது. மீண்டும் உள்நுழையவும்.",
     "Register a new Family": "புதிய குடும்பத்தை பதிவு செய்யுங்கள்",
     "Signature definition file signature failed validation": "கையொப்ப வரையறை கோப்பு கையொப்பம் சரிபார்ப்பு தோல்வியடைந்தது",
-    "Signature definition File Missing": "கையொப்ப வரையறை கோப்பு காணவில்லை",
     "One or more files failed signature validation": "ஒன்று அல்லது அதற்கு மேற்பட்ட கோப்புகள் கையொப்ப சரிபார்ப்பில் தோல்வியடைந்தன",
     "Configure HTTPS": "HTTPS ஐ உள்ளமைக்கவும்",
     "Files failing integrity check": "கோப்புகளின் நேர்மை சரிபார்ப்பில் தோல்வி",

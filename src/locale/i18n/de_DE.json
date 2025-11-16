@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Ihre vorherige Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
     "Register a new Family": "Eine neue Familie registrieren",
     "Signature definition file signature failed validation": "Unterschriftendatei Verifizierung fehlgeschlagen",
-    "Signature definition File Missing": "Unterschriftendatei fehlt",
     "One or more files failed signature validation": "Eine oder mehrere Dateien haben die Signaturprüfung nicht bestanden",
     "Configure HTTPS": "HTTPS konfigurieren",
     "Files failing integrity check": "Dateien, deren Integritätsprüfung fehlgeschlagen ist",

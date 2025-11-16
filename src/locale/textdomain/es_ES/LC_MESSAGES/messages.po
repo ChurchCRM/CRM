@@ -4092,10 +4092,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "El archivo de definición de firma falló la validación de firma"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Falta archivo de definición de firma"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Uno o más archivos fallaron la validación de firma"
 

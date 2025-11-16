@@ -4940,11 +4940,6 @@ msgstr "Falha na validação da assinatura do arquivo de definição de assinatu
 
 #: 
 #, fuzzy
-msgid "Signature definition File Missing"
-msgstr "Arquivo de definição de assinatura não encontrado"
-
-#: 
-#, fuzzy
 msgid "One or more files failed signature validation"
 msgstr "Um ou mais arquivos falharam na validação da assinatura"
 

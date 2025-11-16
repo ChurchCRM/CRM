@@ -4093,10 +4093,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Allkirja määratlusfaili allkirja valideerimine nurjus"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Allkirja määratluse fail puudub"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Ühe või mitme faili allkirja valideerimine nurjus"
 

@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "이전에 로그인했던 세션이 만료되었습니다. 다시 로그인하세요.",
     "Register a new Family": "새 가족 등록",
     "Signature definition file signature failed validation": "서명 정의 파일 검증에 실패했습니다",
-    "Signature definition File Missing": "서명 정의 파일이 없습니다",
     "One or more files failed signature validation": "한 개 이상의 파일이 서명 검증에 실패했습니다",
     "Configure HTTPS": "HTTPS 설정",
     "Files failing integrity check": "무결성 검사를 통과하지 못한 파일",

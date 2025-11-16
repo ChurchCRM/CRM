@@ -4093,10 +4093,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "የፊርማ ፍቺ ፋይል ፊርማ ማረጋገጥ አልተሳካም"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "የፊርማ ትርጉም ፋይል ጠፍቷል"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "አንድ ወይም ከዚያ በላይ ፋይሎች የፊርማ ማረጋገጫ አልተሳካም"
 

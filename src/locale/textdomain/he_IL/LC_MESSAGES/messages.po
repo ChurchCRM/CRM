@@ -4087,10 +4087,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "אימות חתימת קובץ הגדרות החתימה נכשל"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "קובץ הגדרות החתימה חסר"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "אימות החתימה נכשל עבור קובץ אחד או יותר"
 

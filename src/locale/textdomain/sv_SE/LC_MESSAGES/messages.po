@@ -4237,10 +4237,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Validering av signatur för filsignaturdefinition"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Signaturdefinition Fil saknas"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "En eller flera filer misslyckades signaturvalidering"
 

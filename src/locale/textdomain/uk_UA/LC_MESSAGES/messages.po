@@ -4093,10 +4093,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Підпис файлу визначення підпису не вдалося перевірити"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Файл визначення підпису відсутній"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Один або кілька файлів не вдалося перевірити підпис"
 

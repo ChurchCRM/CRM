@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Votre session a expiré. Veuillez vous reconnecter.",
     "Register a new Family": "Inscrire une nouvelle famille",
     "Signature definition file signature failed validation": "La signature du fichier de définition de la signature n&#39;a pas été validé",
-    "Signature definition File Missing": "Le fichier de définition de la signature est introuvable.",
     "One or more files failed signature validation": "Un ou plusieurs fichiers n&#39;ont pas été signé",
     "Configure HTTPS": "Configurer HTTPS",
     "Files failing integrity check": "Les fichiers ont échoué au test d'intégrité",

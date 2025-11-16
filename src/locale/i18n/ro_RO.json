@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Sesiunea anterioare a expirat. Refă autentificarea",
     "Register a new Family": "Înregistrează o familie nouă",
     "Signature definition file signature failed validation": "Semnarea fișierului cu definiția semnăturii a eșuat",
-    "Signature definition File Missing": "Fișier definire semnătură lipsește",
     "One or more files failed signature validation": "Unul sau mai multe fișiere au semnătura invalidă",
     "Configure HTTPS": "Configurare HTTPS",
     "Files failing integrity check": "Fișiere fără verificarea integrității",

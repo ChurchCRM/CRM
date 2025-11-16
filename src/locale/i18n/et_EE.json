@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Teie eelmine seanss aegus. Palun logi uuesti sisse.",
     "Register a new Family": "Registreeri uus pere",
     "Signature definition file signature failed validation": "Allkirja määratlusfaili allkirja valideerimine nurjus",
-    "Signature definition File Missing": "Allkirja määratluse fail puudub",
     "One or more files failed signature validation": "Ühe või mitme faili allkirja valideerimine nurjus",
     "Configure HTTPS": "Seadistage HTTPS",
     "Files failing integrity check": "Failide terviklikkuse kontrolli nurjumine",

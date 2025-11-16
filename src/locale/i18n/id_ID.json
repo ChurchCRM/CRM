@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Sesi Anda sebelumnya habis. Silakan masuk lagi.",
     "Register a new Family": "Daftarkan Keluarga baru",
     "Signature definition file signature failed validation": "File definisi tanda tangan tanda tangan gagal validasi",
-    "Signature definition File Missing": "File definisi tanda tangan tidak ada",
     "One or more files failed signature validation": "Satu atau lebih file gagal validasi tanda tangan",
     "Configure HTTPS": "Konfigurasikan HTTPS",
     "Files failing integrity check": "File gagal diperiksa integritasnya",

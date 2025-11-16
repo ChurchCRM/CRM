@@ -4253,10 +4253,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Falha na validação da assinatura do arquivo de definição de assinaturas"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Arquivo de definição de assinatura não encontrado"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Um ou mais ficheiros falharam na validação da assinatura"
 
