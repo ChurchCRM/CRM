@@ -1,9 +1,6 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
-use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use Slim\Factory\AppFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,18 +12,49 @@ if (file_exists('../Include/Config.php')) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Use SlimUtils to get base path for routing, but assets are in parent directory
-$basePath = ChurchCRM\Slim\SlimUtils::getBasePath('/setup');
-// Initialize SystemURLs with parent directory root (where assets actually are)
-$parentRootPath = str_replace('/setup', '', $basePath);
-// Use dirname to get proper parent directory path without double slashes
-SystemURLs::init($parentRootPath, '', dirname(__DIR__));
-SystemConfig::init();
+// Detect base path from server variables - no Config.php dependency
+// For /churchcrm/setup/index.php -> SCRIPT_NAME = /churchcrm/setup/index.php
+// For /setup/index.php -> SCRIPT_NAME = /setup/index.php
+$scriptName = $_SERVER['SCRIPT_NAME'] ?? '/setup/index.php';
+$scriptName = str_replace('\\', '/', $scriptName);
+$basePath = dirname($scriptName); // Gets /churchcrm/setup or /setup
 
+// Calculate root path (parent of setup directory)
+// /churchcrm/setup -> /churchcrm
+// /setup -> ''
+$rootPath = dirname($basePath);
+if ($rootPath === '/' || $rootPath === '.') {
+    $rootPath = '';
+}
+
+// Fallback detection when SCRIPT_NAME lacks the installation prefix (common with subdir installs)
+if ($rootPath === '') {
+    $requestUri = $_SERVER['REQUEST_URI'] ?? '';
+    $requestPath = parse_url($requestUri, PHP_URL_PATH) ?? '';
+    if ($requestPath !== '') {
+        $requestPath = rtrim($requestPath, '/');
+        if ($requestPath !== '') {
+            $candidate = preg_replace('#/setup(?:/.*)?$#', '', $requestPath);
+            if ($candidate !== null && $candidate !== $requestPath) {
+                $candidate = rtrim($candidate, '/');
+                if ($candidate !== '') {
+                    $rootPath = $candidate;
+                }
+            }
+        }
+    }
+}
+
+if ($rootPath !== '' && $rootPath[0] !== '/') {
+    $rootPath = '/' . $rootPath;
+}
+
+// Store paths in global for template access (no SystemURLs available)
+$GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] = $rootPath;
+$GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] = dirname(__DIR__);
 
 $container = new ContainerBuilder();
 $container->compile();
-// Register custom error handlers
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);

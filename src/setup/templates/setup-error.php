@@ -1,7 +1,9 @@
 <?php
-
+// Setup error page - standalone, no Config.php dependency
+$rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
 $sPageTitle = 'ChurchCRM – Setup Error';
-require_once '../Include/HeaderNotLoggedIn.php';
+
+require_once __DIR__ . '/header.php';
 ?>
 <style>
     .wizard .content > .body {
@@ -23,5 +25,5 @@ require_once '../Include/HeaderNotLoggedIn.php';
     <!-- /.error-content -->
   </div>
   <!-- /.error-page -->
-<?php
-require_once '../Include/FooterNotLoggedIn.php';
+</body>
+</html>

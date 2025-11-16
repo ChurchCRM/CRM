@@ -17,7 +17,7 @@ module.exports = {
   output: {
     path: path.resolve('./src/skin/v2'),
     filename: '[name].min.js',
-    publicPath: '/skin/v2/'
+    publicPath: 'auto'  // Auto-detect public path based on script location
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
