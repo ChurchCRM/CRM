@@ -14,10 +14,15 @@
  * @param {string} sessionName - Unique identifier for this session (e.g., 'admin-session')
  * @param {string} username - The username to authenticate with
  * @param {string} password - The password to authenticate with
+ * @param {{ forceLogin?: boolean }} options - Additional behaviour flags
  */
-Cypress.Commands.add('setupLoginSession', (sessionName, username, password) => {
+Cypress.Commands.add('setupLoginSession', (sessionName, username, password, options = {}) => {
+    const { forceLogin = false } = options;
+    const uniqueSuffix = forceLogin ? `-${Date.now()}-${Math.random().toString(36).slice(2, 8)}` : '';
+    const effectiveSessionName = `${sessionName}${uniqueSuffix}`;
+
     cy.session(
-        sessionName,
+        effectiveSessionName,
         () => {
             // Perform the login
             cy.visit('/login');
@@ -46,13 +51,13 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password) => {
  * Note: Uses cy.session() with explicit validation to cache login across test runs.
  * If validation fails, the session is cleared and login is re-attempted.
  */
-Cypress.Commands.add('setupAdminSession', () => {
+Cypress.Commands.add('setupAdminSession', (options = {}) => {
     const username = Cypress.env('admin.username');
     const password = Cypress.env('admin.password');
     if (!username || !password) {
         throw new Error('Admin credentials not configured in cypress.config.ts env: admin.username and admin.password required');
     }
-    cy.setupLoginSession('admin-session', username, password);
+    cy.setupLoginSession('admin-session', username, password, options);
 });
 
 /**
@@ -64,13 +69,13 @@ Cypress.Commands.add('setupAdminSession', () => {
  * Note: Uses cy.session() with explicit validation to cache login across test runs.
  * If validation fails, the session is cleared and login is re-attempted.
  */
-Cypress.Commands.add('setupStandardSession', () => {
+Cypress.Commands.add('setupStandardSession', (options = {}) => {
     const username = Cypress.env('standard.username');
     const password = Cypress.env('standard.password');
     if (!username || !password) {
         throw new Error('Standard user credentials not configured in cypress.config.ts env: standard.username and standard.password required');
     }
-    cy.setupLoginSession('standard-session', username, password);
+    cy.setupLoginSession('standard-session', username, password, options);
 });
 
 /**
