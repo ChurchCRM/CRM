@@ -4193,10 +4193,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Semnarea fișierului cu definiția semnăturii a eșuat"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Fișier definire semnătură lipsește"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Unul sau mai multe fișiere au semnătura invalidă"
 

@@ -4218,10 +4218,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "簽名定義文件簽字驗證失敗"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "簽名定義文件丟失"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "一個或多個文件簽名驗證失敗"
 

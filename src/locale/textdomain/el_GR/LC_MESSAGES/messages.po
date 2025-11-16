@@ -4087,10 +4087,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Η επικύρωση της υπογραφής του αρχείου ορισμού υπογραφής απέτυχε"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Λείπει το αρχείο ορισμού υπογραφής"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Ένα ή περισσότερα αρχεία απέτυχε στην επικύρωση υπογραφής"
 

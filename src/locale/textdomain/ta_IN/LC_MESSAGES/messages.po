@@ -4087,10 +4087,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "கையொப்ப வரையறை கோப்பு கையொப்பம் சரிபார்ப்பு தோல்வியடைந்தது"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "கையொப்ப வரையறை கோப்பு காணவில்லை"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட கோப்புகள் கையொப்ப சரிபார்ப்பில் தோல்வியடைந்தன"
 

@@ -4086,10 +4086,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "서명 정의 파일 검증에 실패했습니다"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "서명 정의 파일이 없습니다"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "한 개 이상의 파일이 서명 검증에 실패했습니다"
 

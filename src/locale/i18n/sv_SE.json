@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Din tidigare session avslutades. Logga in igen.",
     "Register a new Family": "Registrera en ny familj",
     "Signature definition file signature failed validation": "Validering av signatur för filsignaturdefinition",
-    "Signature definition File Missing": "Signaturdefinition Fil saknas",
     "One or more files failed signature validation": "En eller flera filer misslyckades signaturvalidering",
     "Configure HTTPS": "Konfigurera HTTPS",
     "Files failing integrity check": "Filer som inte har integritetskontroll",

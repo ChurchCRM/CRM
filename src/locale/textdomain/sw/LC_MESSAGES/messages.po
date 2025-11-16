@@ -4086,10 +4086,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Saini ya faili ya ufafanuzi wa saini imeshindwa kuthibitishwa"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Faili ya ufafanuzi wa saini Haipo"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Faili moja au zaidi imeshindwa kuthibitishwa kwa saini"
 

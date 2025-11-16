@@ -4094,10 +4094,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "التحقق من صحة التوقيع ملف تعريف توقيع فشل"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "التوقيع تعريف ملف المفقودين"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "فشل واحد أو أكثر من الملفات التحقق من صحة التوقيع"
 

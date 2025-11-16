@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "У вашого попереднього сеансу минув час. Будь ласка, увійдіть ще раз.",
     "Register a new Family": "Зареєструйте нову сім'ю",
     "Signature definition file signature failed validation": "Підпис файлу визначення підпису не вдалося перевірити",
-    "Signature definition File Missing": "Файл визначення підпису відсутній",
     "One or more files failed signature validation": "Один або кілька файлів не вдалося перевірити підпис",
     "Configure HTTPS": "Налаштуйте HTTPS",
     "Files failing integrity check": "Файли не вдалося перевірити цілісність",

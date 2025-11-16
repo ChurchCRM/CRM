@@ -4091,10 +4091,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "İmza Tanım Dosyası İmza Başarısız Doğrulama"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "İmza Tanım Dosyası Eksik"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Bir veya daha fazla dosya başarısız oldu imza doğrulaması"
 

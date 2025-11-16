@@ -4086,10 +4086,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Podpis souboru s definicí podpisu se nepodařilo ověřit"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Chybí soubor s definicí podpisu"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Jeden nebo více souborů neprošlo ověřením podpisu"
 

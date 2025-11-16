@@ -4217,10 +4217,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Unterschriftendatei Verifizierung fehlgeschlagen"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Unterschriftendatei fehlt"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Eine oder mehrere Dateien haben die Signaturprüfung nicht bestanden"
 
