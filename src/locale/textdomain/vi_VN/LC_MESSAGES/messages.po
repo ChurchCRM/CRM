@@ -4111,10 +4111,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Xác thực tệp định nghĩa chữ ký chữ ký không hợp lệ"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Thiếu tệp định nghĩa chữ ký"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Một hoặc nhiều tệp không xác thực được chữ ký"
 

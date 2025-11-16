@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "ያለፈው ክፍለ ጊዜዎ አልቋል. እባክዎ እንደገና ይግቡ.",
     "Register a new Family": "አዲስ ቤተሰብ ይመዝገቡ",
     "Signature definition file signature failed validation": "የፊርማ ፍቺ ፋይል ፊርማ ማረጋገጥ አልተሳካም",
-    "Signature definition File Missing": "የፊርማ ትርጉም ፋይል ጠፍቷል",
     "One or more files failed signature validation": "አንድ ወይም ከዚያ በላይ ፋይሎች የፊርማ ማረጋገጫ አልተሳካም",
     "Configure HTTPS": "HTTPS አዋቅር",
     "Files failing integrity check": "ያልተሳኩ ፋይሎች የንጹህነት ማረጋገጫ",

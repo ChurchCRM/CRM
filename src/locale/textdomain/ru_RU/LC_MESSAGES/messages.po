@@ -4160,10 +4160,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Ошибка проверки подписи файла определения подписи"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Ошибка проверки подписи файла определений подписи"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Один или несколько файлов не прошли проверку подписи"
 

@@ -4094,10 +4094,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "Validasie van handtekeningdefinisie-lêerhandtekening het misluk"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Handtekening definisie Lêer ontbreek"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Een of meer lêers kon nie handtekening bekragtig word nie"
 

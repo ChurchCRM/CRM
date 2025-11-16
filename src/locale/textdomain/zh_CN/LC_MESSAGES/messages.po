@@ -4199,10 +4199,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "签名定义文件签字验证失败"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "签名定义文件丢失"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "一个或多个文件签名验证失败"
 

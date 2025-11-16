@@ -4092,10 +4092,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "La signature du fichier de définition de la signature n&#39;a pas été validé"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Le fichier de définition de la signature est introuvable."
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Un ou plusieurs fichiers n&#39;ont pas été signé"
 

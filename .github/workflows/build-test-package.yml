@@ -136,7 +136,7 @@ jobs:
         echo "✅ Logs collected to cypress/logs/docker/ and cypress/logs/php/"
 
     - name: Upload Cypress Artifacts
-      if: always()
+      if: failure()
       uses: actions/upload-artifact@v4
       with:
         name: cypress-artifacts-${{ github.run_id }}

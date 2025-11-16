@@ -143,7 +143,15 @@ class SlimUtils
             bool $logErrors,
             bool $logErrorDetails
         ) use ($logger) {
-            $logger->error($exception->getMessage(), ['exception' => $exception]);
+            // Include HTTP method and path in log context
+            $requestContext = [
+                'exception' => $exception,
+                'method' => $request->getMethod(),
+                'path' => $request->getUri()->getPath(),
+                'query' => $request->getUri()->getQuery()
+            ];
+            $logger->error($exception->getMessage(), $requestContext);
+            
             $response = new Psr7Response();
             
             // Determine appropriate HTTP status code based on exception type
@@ -154,12 +162,23 @@ class SlimUtils
                 $statusCode = 405;
             }
             
-            $response->getBody()->write(json_encode([
+            // Include HTTP method and path in error response for debugging
+            $errorResponse = [
                 'error' => $exception->getMessage(),
                 'code' => $exception->getCode(),
-                'file' => $exception->getFile(),
-                'line' => $exception->getLine()
-            ]));
+                'request' => [
+                    'method' => $request->getMethod(),
+                    'path' => $request->getUri()->getPath()
+                ]
+            ];
+            
+            // Include file/line details if error details should be displayed
+            if ($displayErrorDetails) {
+                $errorResponse['file'] = $exception->getFile();
+                $errorResponse['line'] = $exception->getLine();
+            }
+            
+            $response->getBody()->write(json_encode($errorResponse));
             return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
         });
     }

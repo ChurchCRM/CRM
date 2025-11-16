@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Önceki oturumunuz zaman aşımına uğradı. Lütfen tekrar giriş yapın.",
     "Register a new Family": "Yeni Bir Aile Kaydolun",
     "Signature definition file signature failed validation": "İmza Tanım Dosyası İmza Başarısız Doğrulama",
-    "Signature definition File Missing": "İmza Tanım Dosyası Eksik",
     "One or more files failed signature validation": "Bir veya daha fazla dosya başarısız oldu imza doğrulaması",
     "Configure HTTPS": "HTTPS'yi yapılandırın",
     "Files failing integrity check": "Dosyalar Dürüstlük Kontrolü Başarısız",

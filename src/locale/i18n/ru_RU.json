@@ -1006,7 +1006,6 @@
     "Your previous session timed out.  Please login again.": "Истекло время вашего предыдущего сеанса. Пожалуйста, войдите снова.",
     "Register a new Family": "Зарегистрировать новую семью",
     "Signature definition file signature failed validation": "Ошибка проверки подписи файла определения подписи",
-    "Signature definition File Missing": "Ошибка проверки подписи файла определений подписи",
     "One or more files failed signature validation": "Один или несколько файлов не прошли проверку подписи",
     "Configure HTTPS": "Настроить HTTPS",
     "Files failing integrity check": "Файлы, не прошедшие проверку целостности",

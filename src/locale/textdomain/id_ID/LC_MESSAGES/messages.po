@@ -4096,10 +4096,6 @@ msgid "Signature definition file signature failed validation"
 msgstr "File definisi tanda tangan tanda tangan gagal validasi"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "File definisi tanda tangan tidak ada"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Satu atau lebih file gagal validasi tanda tangan"
 

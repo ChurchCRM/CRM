@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "انتهت مهلة الجلسة السابقة الخاص بها. الرجاد الدخول على الحساب من جديد.",
     "Register a new Family": "تسجيل جديد للأسرة",
     "Signature definition file signature failed validation": "التحقق من صحة التوقيع ملف تعريف توقيع فشل",
-    "Signature definition File Missing": "التوقيع تعريف ملف المفقودين",
     "One or more files failed signature validation": "فشل واحد أو أكثر من الملفات التحقق من صحة التوقيع",
     "Configure HTTPS": "تكوين HTTPS",
     "Files failing integrity check": "ملفات عدم التحقق من سلامة",

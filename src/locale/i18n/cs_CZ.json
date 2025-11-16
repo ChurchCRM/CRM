@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Vaše předchozí relace skončila.  Přihlaste se prosím znovu.",
     "Register a new Family": "Registrovat novou rodinu",
     "Signature definition file signature failed validation": "Podpis souboru s definicí podpisu se nepodařilo ověřit",
-    "Signature definition File Missing": "Chybí soubor s definicí podpisu",
     "One or more files failed signature validation": "Jeden nebo více souborů neprošlo ověřením podpisu",
     "Configure HTTPS": "Konfigurovat HTTPS",
     "Files failing integrity check": "Soubory, u kterých selhala kontrola integrity",

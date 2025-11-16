@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-14 19:38-0800\n"
+"POT-Creation-Date: 2025-11-15 15:57-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -546,6 +546,9 @@ msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
 msgstr ""
 
 msgid "All rights reserved"
+msgstr ""
+
+msgid "All system file signatures match the expected values."
 msgstr ""
 
 msgid "Allow Pre-release Upgrades"
@@ -2750,6 +2753,9 @@ msgstr ""
 msgid "Files failing integrity check"
 msgstr ""
 
+msgid "Files with issues"
+msgstr ""
+
 msgid "Filter by Deposit:"
 msgstr ""
 
@@ -3418,6 +3424,12 @@ msgid "Integration"
 msgstr ""
 
 msgid "Integrity Check Details:"
+msgstr ""
+
+msgid "Integrity check failed"
+msgstr ""
+
+msgid "Integrity check passed"
 msgstr ""
 
 msgid "Internationalization (I18n) support"
@@ -6153,7 +6165,11 @@ msgstr ""
 msgid "Sign out"
 msgstr ""
 
-msgid "Signature definition File Missing"
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr ""
+
+#, php-format
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr ""
 
 msgid "Signature definition file signature failed validation"
@@ -6860,6 +6876,9 @@ msgid "Ukrainian"
 msgstr ""
 
 msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr ""
+
+msgid "Unable to contact integrity endpoint. Check web server error logs."
 msgstr ""
 
 msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."

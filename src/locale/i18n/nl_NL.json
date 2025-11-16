@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "Uw vorige sessie is verlopen. Log alsjeblieft nogmaals in.",
     "Register a new Family": "Registreer een nieuw gezin",
     "Signature definition file signature failed validation": "Mislukte validatie van de \"handtekening definition file\"",
-    "Signature definition File Missing": "Ontbrekende \"Handtekening definition File\"",
     "One or more files failed signature validation": "Handtekeningsvalidatie van één of meer bestanden is mislukt ",
     "Configure HTTPS": "configureren HTTPS",
     "Files failing integrity check": "Bestanden met foutmeldingen integriteitscontrole",

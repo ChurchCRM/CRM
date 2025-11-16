@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "הפעילות הקודמת שלך פגה. אנא התחבר שוב.",
     "Register a new Family": "רישום משפחה חדשה",
     "Signature definition file signature failed validation": "אימות חתימת קובץ הגדרות החתימה נכשל",
-    "Signature definition File Missing": "קובץ הגדרות החתימה חסר",
     "One or more files failed signature validation": "אימות החתימה נכשל עבור קובץ אחד או יותר",
     "Configure HTTPS": "הגדרת HTTPS",
     "Files failing integrity check": "קבצים שנכשלו בבדיקת השלמות",

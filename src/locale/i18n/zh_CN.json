@@ -1014,7 +1014,6 @@
     "Your previous session timed out.  Please login again.": "您上次会话已超时。请再次登录。",
     "Register a new Family": "注册新家庭",
     "Signature definition file signature failed validation": "签名定义文件签字验证失败",
-    "Signature definition File Missing": "签名定义文件丢失",
     "One or more files failed signature validation": "一个或多个文件签名验证失败",
     "Configure HTTPS": "配置HTTPS",
     "Files failing integrity check": "文件未通过完整性检查",
