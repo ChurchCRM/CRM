@@ -1,18 +1,27 @@
 /// <reference types="cypress" />
 
 describe("Standard People", () => {
+    beforeEach(() => cy.setupStandardSession());
+ 
+    it("Person Not Found", () => {
+        cy.visit("PersonView.php?PersonID=9999");
+        cy.location("pathname").should("include", "person/not-found");
+        cy.contains("Oops! PERSON 9999 Not Found");
+    });
+
     it("Listing all persons", () => {
-        cy.loginStandard("v2/people");
-        cy.waitForDataTable('#members');
+        cy.visit("v2/people");
+        cy.wait(500);
         cy.contains("Admin");
         cy.contains("Church");
         cy.contains("Joel");
         cy.contains("Emma");
     });
 
-    it("Listing all persons with gender filter", () => {
-        cy.loginStandard("v2/people?Gender=0");
-        cy.waitForDataTable('#members');
+
+   it("Listing all persons with gender url filter", () => {
+        cy.visit("v2/people?Gender=0");
+        cy.wait(500);
         cy.contains("Admin");
         cy.contains("Church");
         cy.contains("Kennedy");
@@ -20,18 +29,12 @@ describe("Standard People", () => {
         cy.contains("Emma").should("not.exist");
     });
 
-    it("Person Not Found", () => {
-        cy.loginStandard("PersonView.php?PersonID=9999", false);
-        cy.location("pathname").should("include", "person/not-found");
-        cy.contains("Oops! PERSON 9999 Not Found");
-    });
 
     it("Multiple filter combinations", () => {
-        cy.loginStandard("v2/people");
+        cy.visit("v2/people");
         
-        // Wait for DataTable to be ready
-        cy.waitForDataTable('#members');
-        
+       cy.wait(500);
+
         // Apply gender filter using Select2
         cy.get(".filter-Gender").parent().find(".select2-selection").click();
         cy.get(".select2-results__option").contains("Female").click();
