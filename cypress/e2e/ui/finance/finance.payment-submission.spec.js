@@ -19,6 +19,9 @@
  */
 
 describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
 
     it("Add CASH payment", () => {
         const uniqueSeed = Date.now().toString();
@@ -26,7 +29,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         const paymentAmount = (Math.floor(Math.random() * 900) + 100).toString(); // Random amount 100-999
 
         // Create a new deposit
-        cy.loginAdmin("FindDepositSlip.php");
+        cy.visit("FindDepositSlip.php");
         cy.contains("Add New Deposit");
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
@@ -61,7 +64,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         const checkNumber = uniqueSeed.substring(0, 8);
 
         // Create a new deposit
-        cy.loginAdmin("FindDepositSlip.php");
+        cy.visit("FindDepositSlip.php");
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
         cy.url().should("contain", "DepositSlipEditor.php");
@@ -97,7 +100,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         const totalAmount = (parseInt(fund1Amount) + parseInt(fund2Amount)).toString();
         
         // Create a new deposit
-        cy.loginAdmin("FindDepositSlip.php");
+        cy.visit("FindDepositSlip.php");
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
         cy.url().should("contain", "DepositSlipEditor.php");

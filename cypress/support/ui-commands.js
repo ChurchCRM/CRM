@@ -9,21 +9,25 @@
 // ***********************************************
 
 /**
- * Sets up a cached admin login session for Cypress UI tests.
- * Usage in test files:
- *   beforeEach(() => cy.setupAdminSession());
- * 
- * Note: Uses cy.session() with explicit validation to cache login across test runs.
- * If validation fails, the session is cleared and login is re-attempted.
+ * Internal helper: Sets up a cached login session using cy.session()
+ * Performs login and validates with CRM cookie presence
+ * @param {string} sessionName - Unique identifier for this session (e.g., 'admin-session')
+ * @param {string} username - The username to authenticate with
+ * @param {string} password - The password to authenticate with
+ * @param {{ forceLogin?: boolean }} options - Additional behaviour flags
  */
-Cypress.Commands.add('setupAdminSession', () => {
+Cypress.Commands.add('setupLoginSession', (sessionName, username, password, options = {}) => {
+    const { forceLogin = false } = options;
+    const uniqueSuffix = forceLogin ? `-${Date.now()}-${Math.random().toString(36).slice(2, 8)}` : '';
+    const effectiveSessionName = `${sessionName}${uniqueSuffix}`;
+
     cy.session(
-        'admin-session',
+        effectiveSessionName,
         () => {
             // Perform the login
             cy.visit('/login');
-            cy.get('input[name=User]').type('admin');
-            cy.get('input[name=Password]').type('changeme{enter}');
+            cy.get('input[name=User]').type(username);
+            cy.get('input[name=Password]').type(password + '{enter}');
             // Wait for redirect away from login
             cy.url().should('not.include', '/login');
         },
@@ -38,51 +42,63 @@ Cypress.Commands.add('setupAdminSession', () => {
     );
 });
 
-
-// -- This is a login command --
-Cypress.Commands.add("loginAdmin", (location, checkMatchingLocation = true) => {
-    cy.login("admin", "changeme", location, checkMatchingLocation);
+/**
+ * Sets up a cached admin login session for Cypress UI tests.
+ * Reads credentials from cypress.config.ts env configuration.
+ * Usage in test files:
+ *   beforeEach(() => cy.setupAdminSession());
+ * 
+ * Note: Uses cy.session() with explicit validation to cache login across test runs.
+ * If validation fails, the session is cleared and login is re-attempted.
+ */
+Cypress.Commands.add('setupAdminSession', (options = {}) => {
+    const username = Cypress.env('admin.username');
+    const password = Cypress.env('admin.password');
+    if (!username || !password) {
+        throw new Error('Admin credentials not configured in cypress.config.ts env: admin.username and admin.password required');
+    }
+    cy.setupLoginSession('admin-session', username, password, options);
 });
 
-Cypress.Commands.add(
-    "loginStandard",
-    (location, checkMatchingLocation = true) => {
-        cy.login(
-            "tony.wade@example.com",
-            "basicjoe",
-            location,
-            checkMatchingLocation
-        );
+/**
+ * Sets up a cached standard user login session for Cypress UI tests.
+ * Reads credentials from cypress.config.ts env configuration.
+ * Usage in test files:
+ *   beforeEach(() => cy.setupStandardSession());
+ * 
+ * Note: Uses cy.session() with explicit validation to cache login across test runs.
+ * If validation fails, the session is cleared and login is re-attempted.
+ */
+Cypress.Commands.add('setupStandardSession', (options = {}) => {
+    const username = Cypress.env('standard.username');
+    const password = Cypress.env('standard.password');
+    if (!username || !password) {
+        throw new Error('Standard user credentials not configured in cypress.config.ts env: standard.username and standard.password required');
     }
-);
+    cy.setupLoginSession('standard-session', username, password, options);
+});
 
-Cypress.Commands.add(
-    "login",
-    (username, password, location, checkMatchingLocation = true) => {
-        cy.visit("/?location=/" + location);
-        
-        // Use data-cy attributes when available, fallback to ID
-        cy.get("[data-cy=username], #UserBox").should('be.visible').type(username);
-        cy.get("[data-cy=password], #PasswordBox").should('be.visible').type(password);
-        cy.get("form").submit();
-
-        // Wait for navigation to complete
-        cy.url().should('not.contain', 'location=');
-
-        // Wait for session cookie to be set (CRM- session cookie)
-        cy.getCookies().should((cookies) => {
-            // At least one cookie should start with CRM-
-            expect(cookies.some(cookie => cookie.name.startsWith('CRM-'))).to.be.true;
-        });
-
-        // Wait for page to be fully loaded
-        cy.document().should("have.property", "readyState", "complete");
-
-        if (location && checkMatchingLocation) {
-            cy.location("pathname").should("include", location.split("?")[0]);
+/**
+ * cy.loginWithCredentials(username, password, sessionName, expectSuccess = true)
+ * Login with custom credentials (for testing password changes, etc.)
+ * Creates a new session with the provided credentials
+ * If expectSuccess is false, skips CRM cookie validation (for testing bad credentials)
+ */
+Cypress.Commands.add('loginWithCredentials', (username, password, sessionName = 'custom-session', expectSuccess = true) => {
+    cy.session(sessionName, () => {
+        cy.visit('/login');
+        cy.get('input[name=User]').type(username);
+        cy.get('input[name=Password]').type(password + '{enter}');
+    }, {
+        validate: () => {
+            if (expectSuccess) {
+                cy.getCookies().should('satisfy', (cookies) => {
+                    return cookies.some(cookie => cookie.name.startsWith('CRM-'));
+                });
+            }
         }
-    }
-);
+    });
+});
 
 Cypress.Commands.add("buildRandom", (prefixString) => {
     const rand = Math.random().toString(36).substring(7);
@@ -415,27 +431,3 @@ Cypress.Commands.add('waitForNotification', (expectedText, options = {}) => {
         .should('contain', expectedText);
 });
 
-/**
- * Wait for a DataTable to be fully initialized on the page
- * @param {string} selector - The CSS selector for the table element (default: '#members')
- * @param {number} timeout - Maximum time to wait in milliseconds (default: 10000)
- * @example cy.waitForDataTable('#members')
- */
-Cypress.Commands.add('waitForDataTable', (selector = '#members', timeout = 10000) => {
-    // First wait for locales since DataTable initialization depends on it
-    cy.waitForLocales(timeout);
-    
-    // Then wait for the DataTable to be initialized and have data
-    cy.get(selector, { timeout }).should('be.visible');
-    cy.window({ timeout }).should((win) => {
-        const table = win.jQuery(selector);
-        expect(table.length).to.be.greaterThan(0);
-        
-        // Check if DataTable is initialized
-        const dataTable = table.DataTable();
-        expect(dataTable).to.exist;
-    });
-    
-    // Wait for rows to be present in the table body
-    cy.get(`${selector} tbody tr`, { timeout }).should('have.length.greaterThan', 0);
-});

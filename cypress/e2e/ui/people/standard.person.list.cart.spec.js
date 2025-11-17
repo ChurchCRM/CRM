@@ -1,9 +1,7 @@
 /// <reference types="cypress" />
 
 describe("People List & Carts", () => {
-    beforeEach(() => {
-        cy.setupStandardSession();
-    });
+    beforeEach(() => cy.setupStandardSession());
     
     it("Add All to Cart then Remove", () => {
         // Empty cart first to ensure clean state
