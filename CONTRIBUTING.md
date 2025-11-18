@@ -141,7 +141,7 @@ ChurchCRM uses **standardized AI agent instructions** to ensure consistent code 
 - ✅ **HTML5:** Bootstrap 4.6.2 CSS only, no deprecated attributes
 - ✅ **Asset Paths:** Use `SystemURLs::getRootPath()`
 - ✅ **Services:** Business logic in Service classes
-- ✅ **PHP 8.2+:** Explicit nullable types, modern patterns
+- ✅ **PHP 8.2+:** (See [System Requirements](https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites)) Explicit nullable types, modern patterns
 - ✅ **i18n:** Wrap UI text with `gettext()` or `i18next.t()`
 
 ### Using AI Assistance
