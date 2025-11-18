@@ -15,8 +15,10 @@ Whether you’re a developer, designer, tester, or simply passionate about impro
 
 ## 🚀 Get Started
 
-If you're new to ChurchCRM, the [official website](https://churchcrm.io/) is the best place to begin.
-You’ll find documentation, FAQs, and resources to help you maximize the system.
+If you're new to ChurchCRM, the **[official installation guide](https://churchcrm.io/install.html)** is the best place to begin.
+You'll find step-by-step instructions for all installation methods (Softaculous, cPanel, Direct Download).
+
+For detailed technical documentation, see our [GitHub Wiki](https://github.com/ChurchCRM/CRM/wiki).
 
 To test the demo, visit our [Demo System via Softaculous](https://softaculous.com/demos/churchcrm).
 
