@@ -138,12 +138,15 @@ class DepositService {
     /**
      * Get pledges or payments from a deposit, grouped by GroupKey
      * @param int $depositId The deposit ID
-     * @param string $type 'Pledge' or 'Payment'
-     * @return array Array of pledge/payment records with FamilyString populated
+     * @param string $type Must be exactly 'Pledge' or 'Payment' (case-sensitive)
+     * @return array Array of pledge/payment records with FamilyString and FundName populated
      */
     public function getDepositItemsByType(int $depositId, string $type): array
     {
         AuthService::requireUserGroupMembership('bFinance');
+        if (!in_array($type, ['Pledge', 'Payment'], true)) {
+            throw new \InvalidArgumentException("Type must be 'Pledge' or 'Payment'");
+        }
         
         $items = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
             ->filterByDepId($depositId)
@@ -153,16 +156,12 @@ class DepositService {
             ->withColumn('GROUP_CONCAT(DonationFund.Name SEPARATOR \', \')', 'FundName')
             ->joinDonationFund()
             ->leftJoinWithFamily()
+            ->orderBy('GroupKey', 'ASC')
             ->find();
 
-        // Convert to array, ensuring FamilyString is always populated
-        $result = [];
-        foreach ($items as $item) {
-            $itemArray = $item->toArray();
-            $result[] = $itemArray;
-        }
-        
-        return $result;
+        // Propel's ObjectCollection::toArray() doesn't call individual model's toArray(),
+        // so we iterate to ensure each Pledge's custom toArray() executes (which populates FamilyString)
+        return array_map(fn($pledge) => $pledge->toArray(), iterator_to_array($items));
     }
 
     public function createDeposit(string $depositType, string $depositComment, string $depositDate): Deposit
