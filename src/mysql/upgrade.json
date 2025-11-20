@@ -416,5 +416,14 @@
             "/mysql/upgrade/6.0.0.sql"
         ],
         "dbVersion": "6.0.2"
+    },
+    "pre-6.1.0": {
+        "versions": [
+            "6.0.2"
+        ],
+        "scripts": [
+            "/mysql/upgrade/6.1.0.sql"
+        ],
+        "dbVersion": "6.1.0"
     }
 }

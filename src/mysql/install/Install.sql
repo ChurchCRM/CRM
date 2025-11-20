@@ -35,7 +35,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Comment` text,
   `dep_EnteredBy` mediumint(9) unsigned default NULL,
   `dep_Closed` tinyint(1) NOT NULL default '0',
-  `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') NOT NULL default 'Bank',
+  `dep_Type` VARCHAR(50) NOT NULL default 'Bank',
   PRIMARY KEY  (`dep_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 

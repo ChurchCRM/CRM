@@ -182,7 +182,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Comment` text DEFAULT NULL,
   `dep_EnteredBy` mediumint(9) unsigned DEFAULT NULL,
   `dep_Closed` tinyint(1) NOT NULL DEFAULT 0,
-  `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') NOT NULL DEFAULT 'Bank',
+  `dep_Type` VARCHAR(50) NOT NULL DEFAULT 'Bank',
   PRIMARY KEY (`dep_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci PACK_KEYS=0;
 /*!40101 SET character_set_client = @saved_cs_client */;
