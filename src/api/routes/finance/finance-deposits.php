@@ -118,16 +118,17 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
 
     $group->get('/{id:[0-9]+}/pledges', function (Request $request, Response $response, array $args): Response {
         $id = (int) $args['id'];
-        $pledges = PledgeQuery::create()
-            ->filterByDepId($id)
-            ->groupByGroupKey()
-            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
-            ->joinDonationFund()
-            ->withColumn('DonationFund.Name')
-            ->leftJoinWithFamily()
-            ->find()
-            ->toArray();
+        /** @var ChurchCRM\Service\DepositService $depositService */
+        $depositService = $this->get('DepositService');
+        $result = $depositService->getDepositItemsByType($id, 'Pledge');
+        return SlimUtils::renderJSON($response, $result);
+    });
 
-        return SlimUtils::renderJSON($response, $pledges);
+    $group->get('/{id:[0-9]+}/payments', function (Request $request, Response $response, array $args): Response {
+        $id = (int) $args['id'];
+        /** @var ChurchCRM\Service\DepositService $depositService */
+        $depositService = $this->get('DepositService');
+        $result = $depositService->getDepositItemsByType($id, 'Payment');
+        return SlimUtils::renderJSON($response, $result);
     });
 })->add(FinanceRoleAuthMiddleware::class);

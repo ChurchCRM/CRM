@@ -134,6 +134,37 @@ class DepositService {
     {
         return \ChurchCRM\dto\SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
     }
+
+    /**
+     * Get pledges or payments from a deposit, grouped by GroupKey
+     * @param int $depositId The deposit ID
+     * @param string $type 'Pledge' or 'Payment'
+     * @return array Array of pledge/payment records with FamilyString populated
+     */
+    public function getDepositItemsByType(int $depositId, string $type): array
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+        
+        $items = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+            ->filterByDepId($depositId)
+            ->filterByPledgeOrPayment($type)
+            ->groupByGroupKey()
+            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->withColumn('GROUP_CONCAT(DonationFund.Name SEPARATOR \', \')', 'FundName')
+            ->joinDonationFund()
+            ->leftJoinWithFamily()
+            ->find();
+
+        // Convert to array, ensuring FamilyString is always populated
+        $result = [];
+        foreach ($items as $item) {
+            $itemArray = $item->toArray();
+            $result[] = $itemArray;
+        }
+        
+        return $result;
+    }
+
     public function createDeposit(string $depositType, string $depositComment, string $depositDate): Deposit
     {
         $deposit = new Deposit();

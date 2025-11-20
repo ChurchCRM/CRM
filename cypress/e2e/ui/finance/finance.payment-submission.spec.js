@@ -129,7 +129,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
 
         // Close the deposit slip
         cy.get("#Closed").check();
-        cy.get("input[name='DepositSlipSubmit']").click();
+        cy.get("button[name='DepositSlipSubmit']").click();
         
         // Verify we're still on the deposit slip editor page
         cy.url().should("contain", "DepositSlipEditor.php");
