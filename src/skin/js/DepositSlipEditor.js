@@ -17,7 +17,7 @@ function initPaymentTable() {
                     depositSlipID +
                     '&GroupKey=' +
                     full.GroupKey +
-                    '" title="' + (isDepositClosed ? 'View' : 'Edit') + '">' +
+                    '" title="' + (isDepositClosed ? i18next.t('View') : i18next.t('Edit')) + '">' +
                     icon +
                     '</a>&nbsp;<span>' +
                     familyName +
@@ -50,7 +50,7 @@ function initPaymentTable() {
                 // For display, split multiple funds and show as individual badges
                 var funds = data.split(', ');
                 var badges = funds.map(function(fund) {
-                    return '<span class="badge bg-info text-white me-1 mb-1">' + fund.trim() + '</span>';
+                    return '<span class="badge badge-info text-white mr-1 mb-1">' + fund.trim() + '</span>';
                 });
                 return '<div class="d-flex flex-wrap">' + badges.join('') + '</div>';
             },
@@ -71,18 +71,18 @@ function initPaymentTable() {
             title: i18next.t("Method"),
             data: "Method",
             render: function (data, type, full, meta) {
-                var badgeClass = 'bg-secondary';
+                var badgeClass = 'badge-secondary';
                 var icon = '';
                 if (data === 'CHECK') {
-                    badgeClass = 'bg-primary';
+                    badgeClass = 'badge-primary';
                     icon = '<i class="fa-solid fa-check-double"></i> ';
                 }
                 else if (data === 'CASH') {
-                    badgeClass = 'bg-success';
+                    badgeClass = 'badge-success';
                     icon = '<i class="fa-solid fa-money-bill"></i> ';
                 }
                 else if (data === 'CREDITCARD') {
-                    badgeClass = 'bg-warning';
+                    badgeClass = 'badge-warning';
                     icon = '<i class="fa-solid fa-credit-card"></i> ';
                 }
                 return '<span class="badge ' + badgeClass + '">' + icon + data + '</span>';
@@ -278,7 +278,7 @@ function initDepositSlipEditor() {
             return;
         }
         
-        $(this).toggleClass("selected table-active");
+        $(this).toggleClass("selected");
         var selectedRows = dataT.rows(".selected").data().length;
         var deleteBtn = $("#deleteSelectedRows");
         deleteBtn.prop("disabled", !selectedRows);

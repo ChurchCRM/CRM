@@ -86,7 +86,7 @@ require_once 'Include/Header.php';
                         echo ' checked';
                                                                               } ?>>
                   <label class="form-check-label" for="Closed">
-                    <?php echo $thisDeposit->getClosed() ? '<span class="badge bg-danger">Closed</span>' : '<span class="badge bg-success">Open</span>'; ?>
+                    <?php echo $thisDeposit->getClosed() ? '<span class="badge badge-danger">Closed</span>' : '<span class="badge badge-success">Open</span>'; ?>
                   </label>
                 </div>
               </div>
@@ -99,31 +99,31 @@ require_once 'Include/Header.php';
             if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
                 echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">';
                 echo '<i class="fa-solid fa-triangle-exclamation"></i> ' . gettext('Important: Failed transactions will be deleted permanently when the deposit slip is closed.');
-                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
                 echo '</div>';
             }
             ?>
             <div class="row mt-4">
               <div class="col-12">
-                <div class="d-flex flex-wrap gap-2 align-items-center">
+                <div class="d-flex flex-wrap align-items-center">
                   <!-- Primary Actions -->
-                  <button type="submit" class="btn btn-primary" name="DepositSlipSubmit">
+                  <button type="submit" class="btn btn-primary mr-2" name="DepositSlipSubmit">
                     <i class="fa-solid fa-save"></i> <?= gettext('Save'); ?>
                   </button>
                   <?php if (!$thisDeposit->getClosed()): ?>
                   <?php if ($thisDeposit->getType() == 'eGive'): ?>
-                  <a href="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success">
+                  <a href="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success mr-2">
                     <i class="fa-solid fa-download"></i> <?= gettext('Import eGive'); ?>
                   </a>
                   <?php else: ?>
-                  <a href="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success">
+                  <a href="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success mr-2">
                     <i class="fa-solid fa-plus-circle"></i> <?= gettext('Add Payment'); ?>
                   </a>
                   <?php endif; ?>
                   <?php endif; ?>
                   
                   <!-- Secondary Action -->
-                  <button type="button" class="btn btn-outline-secondary ms-auto" name="DepositSlipGeneratePDF" data-deposit-id="<?= $thisDeposit->getId() ?>">
+                  <button type="button" class="btn btn-outline-secondary ml-auto" name="DepositSlipGeneratePDF" data-deposit-id="<?= $thisDeposit->getId() ?>">
                     <i class="fa-solid fa-file-pdf"></i> <?= gettext('Generate Report'); ?>
                   </button>
                 </div>
@@ -137,24 +137,24 @@ require_once 'Include/Header.php';
     <!-- Summary Stats Column -->
     <div class="col-lg-5 col-md-12 mb-3">
       <!-- Summary Stats Section -->
-      <div class="row g-3">
+      <div class="row">
         <!-- Total Deposit - Hero Stat -->
-        <div class="col-12">
+        <div class="col-12 mb-3">
           <div class="stat-card text-center py-4 border-0 shadow-sm" style="background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);">
             <div style="font-size: 3rem; font-weight: 700; color: white; letter-spacing: -1px;">
               $<?= number_format($thisDeposit->getVirtualColumn('totalAmount'), 2); ?>
             </div>
-            <div class="text-white-50 text-uppercase small fw-bold mt-2" style="letter-spacing: 1px;"><?= gettext('Total Deposit'); ?></div>
+            <div class="text-white-50 text-uppercase small font-weight-bold mt-2" style="letter-spacing: 1px;"><?= gettext('Total Deposit'); ?></div>
           </div>
         </div>
         
         <!-- Bottom Row: 3 columns for breakdown -->
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
           <div class="stat-card text-center h-100">
             <?php if ($thisDeposit->getCountCash()): ?>
             <div class="mb-3">
               <i class="fa-solid fa-money-bill fa-2x text-success mb-2"></i>
-              <div class="fw-bold fs-5 text-success">$<?= number_format($thisDeposit->getTotalCash(), 2); ?></div>
+              <div class="font-weight-bold h5 text-success">$<?= number_format($thisDeposit->getTotalCash(), 2); ?></div>
               <div class="small text-muted"><?= gettext('Cash'); ?> (<?= $thisDeposit->getCountCash(); ?>)</div>
             </div>
             <?php endif; ?>
@@ -167,12 +167,12 @@ require_once 'Include/Header.php';
           </div>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
           <div class="stat-card text-center h-100">
             <?php if ($thisDeposit->getCountChecks()): ?>
             <div class="mb-3">
               <i class="fa-solid fa-money-check fa-2x text-info mb-2"></i>
-              <div class="fw-bold fs-5 text-info">$<?= number_format($thisDeposit->getTotalChecks(), 2); ?></div>
+              <div class="font-weight-bold h5 text-info">$<?= number_format($thisDeposit->getTotalChecks(), 2); ?></div>
               <div class="small text-muted"><?= gettext('Checks'); ?> (<?= $thisDeposit->getCountChecks(); ?>)</div>
             </div>
             <?php endif; ?>
@@ -185,7 +185,7 @@ require_once 'Include/Header.php';
           </div>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
           <div class="stat-card text-center h-100 d-flex flex-column justify-content-center">
             <div class="mb-2">
               <i class="fa-solid fa-receipt fa-2x text-primary mb-2"></i>
@@ -208,7 +208,7 @@ require_once 'Include/Header.php';
           <i class="fa-solid fa-chart-bar"></i> <?= gettext('Funds'); ?>
           <small class="text-muted ms-2"><?= gettext('Click a bar to filter payments'); ?></small>
         </h5>
-        <button type="button" class="btn btn-sm btn-outline-secondary" id="clearFundFilter" style="display: none;">
+        <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="clearFundFilter">
           <i class="fa-solid fa-times"></i> <?= gettext('Clear Filter'); ?>
         </button>
       </div>
@@ -223,7 +223,7 @@ require_once 'Include/Header.php';
   <div class="card-header with-border bg-secondary text-white d-flex justify-content-between align-items-center">
     <h3 class="card-title mb-0">
       <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?> 
-      <span class="badge bg-light text-dark" id="payment-count">0</span>
+      <span class="badge badge-light text-dark" id="payment-count">0</span>
     </h3>
     <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
     <div class="btn-group" role="group">
