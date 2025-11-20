@@ -125,9 +125,15 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             ->joinDonationFund()
             ->withColumn('DonationFund.Name')
             ->leftJoinWithFamily()
-            ->find()
-            ->toArray();
+            ->find();
 
-        return SlimUtils::renderJSON($response, $pledges);
+        // Convert pledges to array, ensuring FamilyString is always populated
+        $result = [];
+        foreach ($pledges as $pledge) { 
+            $pledgeArray = $pledge->toArray();
+            $result[] = $pledgeArray;
+        }
+
+        return SlimUtils::renderJSON($response, $result);
     });
 })->add(FinanceRoleAuthMiddleware::class);
