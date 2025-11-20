@@ -127,7 +127,8 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             ->leftJoinWithFamily()
             ->find();
 
-        // Convert pledges to array, ensuring FamilyString is always populated
+        // Propel's ObjectCollection::toArray() doesn't call individual model's toArray(),
+        // so we iterate to ensure each Pledge's custom toArray() executes (which populates FamilyString)
         $result = [];
         foreach ($pledges as $pledge) { 
             $pledgeArray = $pledge->toArray();
