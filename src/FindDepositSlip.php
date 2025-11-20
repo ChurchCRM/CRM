@@ -34,10 +34,7 @@ require_once 'Include/Header.php';
           <div class="col-lg-3">
             <label for="depositType"><?= gettext('Deposit Type') ?></label>
             <select class="form-control" id="depositType" name="depositType">
-              <option value="Bank" selected><?= gettext('Bank') ?></option>
-              <option value="CreditCard">Credit Card</option>
-              <option value="BankDraft">Bank Draft</option>
-              <option value="eGive">eGive</option>
+              <!-- Options loaded from API -->
             </select>
           </div>
           <div class="col-lg-3">

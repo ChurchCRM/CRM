@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -20,8 +21,20 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $depositComment = InputUtils::filterString($input['depositComment']) ?? '';
         $depositDate = $input['depositDate'] ?? date('Y-m-d');
 
-        // Validate depositType against allowed values
-        $allowedTypes = ['Bank', 'CreditCard', 'BankDraft', 'eGive'];
+        // Hardcoded allowed deposit types (database list IDs are unreliable across installations)
+        $allowedTypes = [
+            'Bank',
+            'Cash',
+            'Credit Card',
+            'Bank Draft',
+            'eGive',
+            'Check',
+            'Stock',
+            'Property',
+            'Cryptocurrency',
+            'Other'
+        ];
+        
         if (!in_array($depositType, $allowedTypes, true)) {
             $errorMsg = $depositType === ''
                 ? 'Deposit type is required. Please provide one of: ' . implode(', ', $allowedTypes)

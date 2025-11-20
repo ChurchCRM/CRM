@@ -5,6 +5,36 @@
 
 var dataT = 0;
 
+function loadDepositTypes() {
+    return window.CRM.APIRequest({
+        method: "GET",
+        path: "system/list-options/deposit-types",
+    }).then(function (data) {
+        var select = $("#depositType");
+        select.empty();
+        
+        if (data.depositTypes && data.depositTypes.length > 0) {
+            $.each(data.depositTypes, function (index, type) {
+                var option = $("<option></option>")
+                    .attr("value", type.OptionName)
+                    .text(type.OptionName);
+                
+                // Default to 'Bank' if it exists
+                if (type.OptionName === "Bank") {
+                    option.attr("selected", "selected");
+                }
+                
+                select.append(option);
+            });
+        }
+    }).catch(function (error) {
+        console.error("Failed to load deposit types:", error);
+        window.CRM.notify(i18next.t("Failed to load deposit types"), {
+            type: "error",
+        });
+    });
+}
+
 function initializeDepositSlip() {
     function updateSelectedCount() {
         var selectedRows = dataT.rows(".selected").data().length;
@@ -214,5 +244,9 @@ function initializeDepositSlip() {
 
 // Wait for locales to load before initializing
 $(document).ready(function () {
-    window.CRM.onLocalesReady(initializeDepositSlip);
+    window.CRM.onLocalesReady(function () {
+        loadDepositTypes().then(function () {
+            initializeDepositSlip();
+        });
+    });
 });
