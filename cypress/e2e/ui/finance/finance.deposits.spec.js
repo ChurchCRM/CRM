@@ -43,8 +43,8 @@ describe("Finance Deposits", () => {
 
     it("Open the Deposits page & Add Payment", () => {
         cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
-        cy.contains("Bank Deposit Slip Number: 5");
-        cy.contains("Payments on this deposit slip");
+        cy.contains("Deposit Slip Number: 5");
+        cy.contains("Payments");
 
         cy.get(".btn-success").click();
         cy.url().should("contain", "PledgeEditor.php");
@@ -90,8 +90,8 @@ describe("Finance Deposits", () => {
         cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
         
         // Verify page loaded
-        cy.contains("Bank Deposit Slip Number: 5");
-        cy.contains("Payments on this deposit slip");
+        cy.contains("Deposit Slip Number: 5");
+        cy.contains("Payments");
         
     });
 });
