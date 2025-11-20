@@ -25,6 +25,7 @@ $sCheckNoError = '';
 $iCheckNo = '';
 $sDateError = '';
 $sAmountError = '';
+$sNonDeductibleError = [];
 $nNonDeductible = [];
 $sComment = '';
 $tScanString = '';
@@ -50,6 +51,7 @@ while ($aRow = mysqli_fetch_array($rsFunds)) {
     $nAmount[$fun_ID] = 0.0;
     $nNonDeductible[$fun_ID] = 0.0;
     $sAmountError[$fun_ID] = '';
+    $sNonDeductibleError[$fun_ID] = '';
     $sComment[$fun_ID] = '';
     if (!isset($defaultFundID)) {
         $defaultFundID = $fun_ID;
@@ -253,14 +255,32 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     $nonZeroFundAmountEntered = 0;
     foreach ($fundId2Name as $fun_id => $fun_name) {
         //$fun_active = $fundActive[$fun_id];
-        $nAmount[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_Amount']);
+        $rawAmount = InputUtils::legacyFilterInput($_POST[$fun_id . '_Amount']);
+        $nAmount[$fun_id] = (float)$rawAmount;
+        
+        // Validate amount is within DECIMAL(8,2) range: -999999.99 to 999999.99
+        if (abs($nAmount[$fun_id]) > 999999.99) {
+            $sAmountError[$fun_id] = gettext("Amount exceeds maximum allowed value (999999.99).");
+            $bErrorFlag = true;
+            $nAmount[$fun_id] = 0.0; // Reset to 0 to prevent database error
+        }
+        
         $sComment[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_Comment']);
         if ($nAmount[$fun_id] > 0) {
             ++$nonZeroFundAmountEntered;
         }
 
         if ($bEnableNonDeductible) {
-            $nNonDeductible[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_NonDeductible']);
+            $rawNonDeductible = InputUtils::legacyFilterInput($_POST[$fun_id . '_NonDeductible']);
+            $nNonDeductible[$fun_id] = (float)$rawNonDeductible;
+            
+            // Validate non-deductible is within DECIMAL(8,2) range
+            if (abs($nNonDeductible[$fun_id]) > 999999.99) {
+                $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount exceeds maximum allowed value (999999.99).");
+                $bErrorFlag = true;
+                $nNonDeductible[$fun_id] = 0.0;
+            }
+            
             //Validate the NonDeductible Amount
             if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
                 $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
