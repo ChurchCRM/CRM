@@ -1749,7 +1749,7 @@ CREATE TABLE `pledge_plg` (
   `plg_date` date DEFAULT NULL,
   `plg_amount` decimal(8,2) DEFAULT NULL,
   `plg_schedule` enum('Weekly','Monthly','Quarterly','Once','Other') DEFAULT NULL,
-  `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') DEFAULT NULL,
+  `plg_method` VARCHAR(50) DEFAULT NULL,
   `plg_comment` text DEFAULT NULL,
   `plg_DateLastEdited` date NOT NULL DEFAULT '2016-01-01',
   `plg_EditedBy` mediumint(9) NOT NULL DEFAULT 0,
