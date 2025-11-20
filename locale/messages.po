@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-15 15:57-0800\n"
+"POT-Creation-Date: 2025-11-19 23:43-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -401,6 +401,9 @@ msgstr ""
 msgid "Add a new pledge"
 msgstr ""
 
+msgid "Add any additional notes about this deposit"
+msgstr ""
+
 msgid "Add counter"
 msgstr ""
 
@@ -579,6 +582,9 @@ msgid "Amharic - Ethiopia"
 msgstr ""
 
 msgid "Amount"
+msgstr ""
+
+msgid "Amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "Amount paid: ________________"
@@ -1176,6 +1182,9 @@ msgstr ""
 msgid "Checking Cart Status"
 msgstr ""
 
+msgid "Checks"
+msgstr ""
+
 #. Context: countries
 msgid "Chile"
 msgstr ""
@@ -1306,7 +1315,13 @@ msgstr ""
 msgid "Clear All Funds"
 msgstr ""
 
+msgid "Clear Filter"
+msgstr ""
+
 msgid "Clear Filters"
+msgstr ""
+
+msgid "Click a bar to filter payments"
 msgstr ""
 
 #. Context: countries
@@ -1319,13 +1334,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-msgid "Close deposit slip (remember to press Save)"
-msgstr ""
-
 msgid "Closed"
-msgstr ""
-
-msgid "Closed:"
 msgstr ""
 
 msgid "Cloud Service Type (Supported values: WebDAV, Local)"
@@ -1346,9 +1355,6 @@ msgid "Comma separated list of classifications that should appear as inactive"
 msgstr ""
 
 msgid "Comment"
-msgstr ""
-
-msgid "Comment:"
 msgstr ""
 
 #. Context: countries
@@ -1766,6 +1772,9 @@ msgstr ""
 msgid "Delete Records"
 msgstr ""
 
+msgid "Delete Selected"
+msgstr ""
+
 msgid "Delete Selected Rows"
 msgstr ""
 
@@ -1813,7 +1822,7 @@ msgstr ""
 msgid "Deposit Date (Default)"
 msgstr ""
 
-msgid "Deposit Details: "
+msgid "Deposit Details"
 msgstr ""
 
 msgid "Deposit ID"
@@ -1828,12 +1837,6 @@ msgstr ""
 msgid "Deposit Slip Number: "
 msgstr ""
 
-msgid "Deposit Slip Report"
-msgstr ""
-
-msgid "Deposit Summary: "
-msgstr ""
-
 msgid "Deposit Total"
 msgstr ""
 
@@ -1844,6 +1847,9 @@ msgid "Deposit Type"
 msgstr ""
 
 msgid "Deposit closed"
+msgstr ""
+
+msgid "Deposit saved successfully"
 msgstr ""
 
 msgid "Deposit ticket type.  QBDT - Quickbooks"
@@ -2324,7 +2330,16 @@ msgstr ""
 msgid "Error decoding signature definition file"
 msgstr ""
 
+msgid "Error deleting payments"
+msgstr ""
+
+msgid "Error loading payments"
+msgstr ""
+
 msgid "Error making API Call to"
+msgstr ""
+
+msgid "Error saving deposit"
 msgstr ""
 
 msgid "Error sending email(s)"
@@ -2948,6 +2963,9 @@ msgstr ""
 msgid "Fundraiser Listing"
 msgstr ""
 
+msgid "Funds"
+msgstr ""
+
 msgid "GPS Visualizer"
 msgstr ""
 
@@ -2982,6 +3000,9 @@ msgid "Generate Certificates"
 msgstr ""
 
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr ""
+
+msgid "Generate Report"
 msgstr ""
 
 msgid "Generate Statement"
@@ -3360,7 +3381,7 @@ msgstr ""
 msgid "Import eGive"
 msgstr ""
 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr ""
 
 msgid "Imported"
@@ -3780,7 +3801,7 @@ msgstr ""
 msgid "Lithuania (Lietuva)"
 msgstr ""
 
-msgid "Load Authorized Transactions"
+msgid "Load Authorized"
 msgstr ""
 
 msgid "Loading"
@@ -4436,7 +4457,13 @@ msgstr ""
 msgid "No Backup Running"
 msgstr ""
 
+msgid "No Cash"
+msgstr ""
+
 msgid "No Changes"
+msgstr ""
+
+msgid "No Checks"
 msgstr ""
 
 msgid "No Data Found"
@@ -4490,6 +4517,9 @@ msgstr ""
 msgid "No notes have been added for this person."
 msgstr ""
 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr ""
+
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr ""
 
@@ -4535,6 +4565,9 @@ msgid "NonDeductible"
 msgstr ""
 
 msgid "NonDeductible amount can't be greater than total amount."
+msgstr ""
+
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "None"
@@ -4865,7 +4898,10 @@ msgstr ""
 msgid "Payment by"
 msgstr ""
 
-msgid "Payments on this deposit slip:"
+msgid "Payments"
+msgstr ""
+
+msgid "Payments deleted successfully"
 msgstr ""
 
 msgid "Pending Self Verify"
@@ -5179,7 +5215,13 @@ msgstr ""
 msgid "Please select a Family."
 msgstr ""
 
+msgid "Please select a date"
+msgstr ""
+
 msgid "Please select another family with whom to associate these donations:"
+msgstr ""
+
+msgid "Please select rows to delete"
 msgstr ""
 
 msgid "Please select target Role for members"
@@ -5796,6 +5838,9 @@ msgid "Save Settings"
 msgstr ""
 
 msgid "Save and Add"
+msgstr ""
+
+msgid "Saving..."
 msgstr ""
 
 msgid "Scan check"
@@ -6634,6 +6679,9 @@ msgstr ""
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr ""
 
+msgid "This action cannot be undone."
+msgstr ""
+
 msgid "This field is required"
 msgstr ""
 
@@ -6774,10 +6822,16 @@ msgstr ""
 msgid "Total By Gender"
 msgstr ""
 
+msgid "Total Deposit"
+msgstr ""
+
 msgid "Total Logins"
 msgstr ""
 
 msgid "Total Members"
+msgstr ""
+
+msgid "Total Payments"
 msgstr ""
 
 msgid "Total number of rows in the CSV file:"
@@ -7760,6 +7814,9 @@ msgid "of People"
 msgstr ""
 
 msgid "open rate"
+msgstr ""
+
+msgid "payment(s)?"
 msgstr ""
 
 msgid "payments(s)?"
