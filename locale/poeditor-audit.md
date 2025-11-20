@@ -113,7 +113,7 @@ These locales have translations available in POEditor but are not currently supp
 | Burmese | `my` | 92 | 3.73% | ⏸️ Wait for more progress |
 | Croatian | `hr` | 39 | 1.58% | ⏸️ Wait for more progress |
 | Latvian | `lv` | 52 | 2.11% | ⏸️ Wait for more progress |
-| Malayalam | `ml` | 17 | 0.69% | ⏸️ Wait for more progress |
+| Malayalam | `ml` | 25 | 1.01% | ⏸️ Wait for more progress |
 | Serbian (Cyrillic) | `sr-cyrl` | 81 | 3.29% | ⏸️ Wait for more progress |
 | Slovenian | `sl` | 92 | 3.73% | ⏸️ Wait for more progress |
 | Spanish (AR) | `es-ar` | 60 | 2.44% | ⏸️ Wait for more progress |
