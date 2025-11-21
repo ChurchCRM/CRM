@@ -48,33 +48,42 @@ class ChurchCRMReleaseManager
         $allowPrerelease = SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade');
 
         try {
-            // Optimize API call: fetch only what we need
             if ($allowPrerelease) {
                 $gitHubReleases = $client->api('repo')->releases()->all(
                     ChurchCRMReleaseManager::GITHUB_USER_NAME,
                     ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME,
                     ['per_page' => 5, 'page' => 1]
                 );
-            } else {
-                $gitHubReleases = $client->api('repo')->releases()->all(
-                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
-                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME,
-                    ['per_page' => 3, 'page' => 1]
-                );
-            }
-            
-            foreach ($gitHubReleases as $r) {
-                $release = new ChurchCRMRelease($r);
-                if ($release->isPreRelease()) {
-                    if ($allowPrerelease) {
+
+                foreach ($gitHubReleases as $r) {
+                    $release = new ChurchCRMRelease($r);
+                    if ($release->isPreRelease()) {
+                        if ($allowPrerelease) {
+                            $eligibleReleases[] = $release;
+                        }
+                    } else {
                         $eligibleReleases[] = $release;
                     }
-                } else {
-                    $eligibleReleases[] = $release;
+                }
+            } else {
+                $latestRelease = $client->api('repo')->releases()->latest(
+                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
+                );
+
+                if (is_array($latestRelease) && !empty($latestRelease)) {
+                    $release = new ChurchCRMRelease($latestRelease);
+                    // Only cache stable releases; skip if latest is a prerelease
+                    if (!$release->isPreRelease()) {
+                        $eligibleReleases[] = $release;
+                    }
                 }
             }
 
-            usort($eligibleReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($b->__toString(), $a->__toString()));
+            // Sort releases if multiple were fetched (prerelease mode)
+            if ($allowPrerelease && count($eligibleReleases) > 1) {
+                usort($eligibleReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($b->__toString(), $a->__toString()));
+            }
         } catch (\Exception $ex) {
             $errorMessage = $ex->getMessage();
             LoggerUtils::getAppLogger()->error('Error updating release metadata: ' . $errorMessage, ['exception' => $ex]);
