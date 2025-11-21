@@ -6,13 +6,17 @@ use ChurchCRM\dto\ChurchCRMRelease;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
+use ChurchCRM\Utils\ExecutionTime;
+use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\VersionUtils;
 use Github\Client;
 
 class ChurchCRMReleaseManager
 {
     // todo: make these const variables private after deprecating PHP7.0 #4948
-    public const GITHUB_USER_NAME = 'churchcrm';
-    public const GITHUB_REPOSITORY_NAME = 'crm';
+    public const GITHUB_USER_NAME = 'ChurchCRM';
+    public const GITHUB_REPOSITORY_NAME = 'CRM';
 
     /** @var bool true when an upgrade is in progress */
     private static ?bool $isUpgradeInProgress = null;
@@ -20,26 +24,12 @@ class ChurchCRMReleaseManager
     public static function getReleaseFromString(string $releaseString): ChurchCRMRelease
     {
         if (empty($_SESSION['ChurchCRMReleases'])) {
-            // The ChurchCRM releases have not yet been populated.
-            // Since populating the release list can be an expensive operation
-            // don't do it here, but rather wait for SystemServer TimerJobs to take care of it
-            // just give the requester a skeleton object
-            LoggerUtils::getAppLogger()->debug('Query for release string ' . $releaseString . ' occurred before GitHub releases were populated.  Providing skeleton release object');
-
             return new ChurchCRMRelease(@['name' => $releaseString]);
         } else {
-            LoggerUtils::getAppLogger()->debug('Attempting to service query for release string ' . $releaseString . ' from GitHub release cache');
             $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'], fn ($r): bool => $r->__toString() === $releaseString));
             if (count($requestedRelease) === 1 && $requestedRelease[0] instanceof ChurchCRMRelease) {
-                // this should be the case 99% of the time - the current version of the software has exactly one release on the GitHub account
-                LoggerUtils::getAppLogger()->debug('Query for release string ' . $releaseString . ' serviced from GitHub release cache');
-
                 return $requestedRelease[0];
             } elseif (count($requestedRelease) === 0) {
-                // this will generally happen on dev or demo site instances
-                // where the currently running software has not yet been released / tagged on GitHun
-                LoggerUtils::getAppLogger()->debug('Query for release string ' . $releaseString . ' did not match any GitHub releases.  Providing skeleton release object');
-
                 return new ChurchCRMRelease(@['name' => $releaseString]);
             } else {
                 // This should _never_ happen.
@@ -55,33 +45,48 @@ class ChurchCRMReleaseManager
     {
         $client = new Client();
         $eligibleReleases = [];
-        $logger = LoggerUtils::getAppLogger();
+        $allowPrerelease = SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade');
 
         try {
-            $logger->debug("Querying GitHub '" . ChurchCRMReleaseManager::GITHUB_USER_NAME . '/' . ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME . "' for ChurchCRM Releases");
-            $gitHubReleases = $client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME);
-            $logger->debug('Received ' . count($gitHubReleases) . ' ChurchCRM releases from GitHub');
-            foreach ($gitHubReleases as $r) {
-                $release = new ChurchCRMRelease($r);
-                if ($release->isPreRelease()) {
-                    if (SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade')) {
-                        $logger->debug('bAllowPrereleaseUpgrade allows upgrade to a pre-release version.  Including ' . $release . ' for consideration');
-                        $eligibleReleases[] = $release;
+            if ($allowPrerelease) {
+                $gitHubReleases = $client->api('repo')->releases()->all(
+                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME,
+                    ['per_page' => 5, 'page' => 1]
+                );
+
+                foreach ($gitHubReleases as $r) {
+                    $release = new ChurchCRMRelease($r);
+                    if ($release->isPreRelease()) {
+                        if ($allowPrerelease) {
+                            $eligibleReleases[] = $release;
+                        }
                     } else {
-                        $logger->debug('bAllowPrereleaseUpgrade disallows upgrade to a pre-release version.  Not including ' . $release . ' for consideration');
+                        $eligibleReleases[] = $release;
                     }
-                } else {
-                    $logger->debug($release . ' is not a pre-release version. Including for consideration');
-                    $eligibleReleases[] = $release;
+                }
+            } else {
+                $latestRelease = $client->api('repo')->releases()->latest(
+                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
+                );
+
+                if (is_array($latestRelease) && !empty($latestRelease)) {
+                    $release = new ChurchCRMRelease($latestRelease);
+                    // Only cache stable releases; skip if latest is a prerelease
+                    if (!$release->isPreRelease()) {
+                        $eligibleReleases[] = $release;
+                    }
                 }
             }
 
-            usort($eligibleReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): bool => $a->compareTo($b) < 0);
-
-            $logger->debug('Found ' . count($eligibleReleases) . ' eligible ChurchCRM releases on GitHub');
+            // Sort releases if multiple were fetched (prerelease mode)
+            if ($allowPrerelease && count($eligibleReleases) > 1) {
+                usort($eligibleReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($b->__toString(), $a->__toString()));
+            }
         } catch (\Exception $ex) {
             $errorMessage = $ex->getMessage();
-            $logger->error('Error updating database: ' . $errorMessage, ['exception' => $ex]);
+            LoggerUtils::getAppLogger()->error('Error updating release metadata: ' . $errorMessage, ['exception' => $ex]);
         }
 
         return $eligibleReleases;
@@ -89,30 +94,28 @@ class ChurchCRMReleaseManager
 
     public static function checkForUpdates(): void
     {
+        $logger = LoggerUtils::getAppLogger();
+        $logger->info('=== checkForUpdates() CALLED ===');
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
+        $logger->info('=== checkForUpdates() COMPLETE - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached ===');
     }
 
     public static function isReleaseCurrent(ChurchCRMRelease $Release): bool
     {
         if (empty($_SESSION['ChurchCRMReleases'])) {
-            // The ChurchCRM releases have not yet been populated.
-            // Since populating the release list can be an expensive operation
-            // don't do it here, but rather wait for SystemServer TimerJobs to take care of it
-            // just tell the requester that the provided release _is_ current
             return true;
         } else {
             $CurrentRelease = $_SESSION['ChurchCRMReleases'][0];
-            LoggerUtils::getAppLogger()->debug('Determining if ' . $Release . ' is current by checking if equals: ' . $CurrentRelease);
+            $isEqual = $CurrentRelease->equals($Release);
 
-            return $CurrentRelease->equals($Release);
+            return $isEqual;
         }
     }
 
     private static function getHighestReleaseInArray(array $eligibleUpgradeTargetReleases)
     {
         if (count($eligibleUpgradeTargetReleases) > 0) {
-            usort($eligibleUpgradeTargetReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): bool => $a->compareTo($b) < 0);
-
+            usort($eligibleUpgradeTargetReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($b->__toString(), $a->__toString()));
             return $eligibleUpgradeTargetReleases[0];
         }
 
@@ -122,10 +125,7 @@ class ChurchCRMReleaseManager
     private static function getReleaseNextPatch(array $rs, ChurchCRMRelease $currentRelease)
     {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease): bool {
-            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR === $currentRelease->MINOR) && ($r->PATCH > $currentRelease->PATCH);
-            LoggerUtils::getAppLogger()->debug('Release ' . $r . ' is' . ($isSameMajorAndMinorWithGreaterPatch ? ' ' : ' not ') . 'a possible patch upgrade target');
-
-            return $isSameMajorAndMinorWithGreaterPatch;
+            return ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR === $currentRelease->MINOR) && ($r->PATCH > $currentRelease->PATCH);
         }));
 
         return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
@@ -134,10 +134,7 @@ class ChurchCRMReleaseManager
     private static function getReleaseNextMinor(array $rs, ChurchCRMRelease $currentRelease)
     {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease): bool {
-            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR > $currentRelease->MINOR);
-            LoggerUtils::getAppLogger()->debug('Release ' . $r . ' is' . ($isSameMajorAndMinorWithGreaterPatch ? ' ' : ' not ') . 'a possible minor upgrade target');
-
-            return $isSameMajorAndMinorWithGreaterPatch;
+            return ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR > $currentRelease->MINOR);
         }));
 
         return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
@@ -146,10 +143,7 @@ class ChurchCRMReleaseManager
     private static function getReleaseNextMajor(array $rs, ChurchCRMRelease $currentRelease)
     {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease): bool {
-            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR > $currentRelease->MAJOR);
-            LoggerUtils::getAppLogger()->debug('Release ' . $r . ' is' . ($isSameMajorAndMinorWithGreaterPatch ? ' ' : ' not ') . 'a possible major upgrade target');
-
-            return $isSameMajorAndMinorWithGreaterPatch;
+            return $r->MAJOR > $currentRelease->MAJOR;
         }));
 
         return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
@@ -157,31 +151,37 @@ class ChurchCRMReleaseManager
 
     public static function getNextReleaseStep(ChurchCRMRelease $currentRelease): ?ChurchCRMRelease
     {
-        LoggerUtils::getAppLogger()->debug('Determining the next-step release step for ' . $currentRelease);
+        $logger = LoggerUtils::getAppLogger();
+        
         if (empty($_SESSION['ChurchCRMReleases'])) {
             $_SESSION['ChurchCRMReleases'] = self::populateReleases();
         }
         $rs = array_values($_SESSION['ChurchCRMReleases']);
-        // look for releases having the same MAJOR and MINOR versions.
-        // Of these releases, if there is one with a newer PATCH version,
-        // We should use the newest patch.
-        LoggerUtils::getAppLogger()->debug('Evaluating next-step release eligibility based on ' . count($_SESSION['ChurchCRMReleases']) . ' available releases ');
-
-        $nextStepRelease = self::getReleaseNextPatch($rs, $currentRelease) ??
-            self::getReleaseNextMinor($rs, $currentRelease) ??
-            self::getReleaseNextMajor($rs, $currentRelease);
+        $nextStepRelease = self::getReleaseNextPatch($rs, $currentRelease);
+        if ($nextStepRelease !== null) {
+            $logger->info('=== UPDATE FOUND (PATCH) === Next: ' . $nextStepRelease);
+            return $nextStepRelease;
+        }
+        $nextStepRelease = self::getReleaseNextMinor($rs, $currentRelease);
+        if ($nextStepRelease !== null) {
+            $logger->info('=== UPDATE FOUND (MINOR) === Next: ' . $nextStepRelease);
+            return $nextStepRelease;
+        }
+        $nextStepRelease = self::getReleaseNextMajor($rs, $currentRelease);
+        if ($nextStepRelease !== null) {
+            $logger->info('=== UPDATE FOUND (MAJOR) === Next: ' . $nextStepRelease);
+            return $nextStepRelease;
+        }
 
         if (null === $nextStepRelease) {
             // Check if current version is at or ahead of all available releases (e.g., development version)
             if (!empty($rs) && $currentRelease->compareTo($rs[0]) >= 0) {
-                LoggerUtils::getAppLogger()->debug('Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
+                $logger->info('*** Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
                 return null;
             }
-            LoggerUtils::getAppLogger()->warning('Could not identify a suitable upgrade target release.  Current software version: ' . $currentRelease . '.  Highest available release: ' . (!empty($rs) ? $rs[0] : 'None'));
+            $logger->warning('Could not identify a suitable upgrade target release.  Current software version: ' . $currentRelease . '.  Highest available release: ' . (!empty($rs) ? $rs[0] : 'None'));
             return null;
         }
-
-        LoggerUtils::getAppLogger()->info('Next upgrade step for ' . $currentRelease . ' is : ' . $nextStepRelease);
 
         return $nextStepRelease;
     }
@@ -319,14 +319,21 @@ class ChurchCRMReleaseManager
     public static function checkSystemUpdateAvailable(): array
     {
         try {
+            $logger = LoggerUtils::getAppLogger();
             $installedVersionString = VersionUtils::getInstalledVersion();
+            
             $installedVersion = self::getReleaseFromString($installedVersionString);
+
+            if (empty($_SESSION['ChurchCRMReleases'])) {
+                $_SESSION['ChurchCRMReleases'] = self::populateReleases();
+            }
+            
             $isCurrent = self::isReleaseCurrent($installedVersion);
             
             if (!$isCurrent) {
                 $nextRelease = self::getNextReleaseStep($installedVersion);
                 if (null !== $nextRelease) {
-                    LoggerUtils::getAppLogger()->info('System update available', [
+                    $logger->info('System update available', [
                         'currentVersion' => $installedVersionString,
                         'availableVersion' => $nextRelease->__toString()
                     ]);
