@@ -1,0 +1,26 @@
+[
+  {
+    "fun_ID": 1,
+    "fun_Active": true,
+    "fun_Name": "General Fund",
+    "fun_Description": "General church operating fund"
+  },
+  {
+    "fun_ID": 2,
+    "fun_Active": true,
+    "fun_Name": "Building Fund",
+    "fun_Description": "Building renovation and maintenance"
+  },
+  {
+    "fun_ID": 3,
+    "fun_Active": true,
+    "fun_Name": "Missions",
+    "fun_Description": "Missions and outreach programs"
+  },
+  {
+    "fun_ID": 4,
+    "fun_Active": true,
+    "fun_Name": "Benevolence",
+    "fun_Description": "Helping those in need"
+  }
+]

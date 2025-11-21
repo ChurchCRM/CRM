@@ -1,0 +1,30 @@
+[
+  {
+    "calendar_id": 1,
+    "name": "Public Calendar",
+    "accesstoken": null,
+    "foregroundColor": "FFFFFF",
+    "backgroundColor": "00AA00"
+  },
+  {
+    "calendar_id": 2,
+    "name": "Private Calendar",
+    "accesstoken": null,
+    "foregroundColor": "FFFFFF",
+    "backgroundColor": "0000AA"
+  },
+  {
+    "calendar_id": 3,
+    "name": "Youth Events",
+    "accesstoken": null,
+    "foregroundColor": "FFFFFF",
+    "backgroundColor": "FF6B00"
+  },
+  {
+    "calendar_id": 4,
+    "name": "Missions",
+    "accesstoken": null,
+    "foregroundColor": "FFFFFF",
+    "backgroundColor": "9B59B6"
+  }
+]
