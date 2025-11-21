@@ -9,16 +9,26 @@ class ChurchCRMRelease
     public int $PATCH = 0;
 
     private array $rawRelease;
+    private string $versionString = '0.0.0';
 
     public function __construct(array $releaseArray)
     {
         $this->rawRelease = $releaseArray;
-        $versions = explode('.', $releaseArray['name']);
-        
-        // Convert to integers for proper numeric comparison
-        $this->MAJOR = (int) ($versions[0] ?? 0);
-        $this->MINOR = (int) ($versions[1] ?? 0);
-        $this->PATCH = (int) ($versions[2] ?? 0);
+
+        $rawVersion = $releaseArray['tag_name'] ?? $releaseArray['name'] ?? '0.0.0';
+        $normalizedVersion = ltrim(trim((string) $rawVersion), 'vV');
+
+        if ($normalizedVersion === '') {
+            $normalizedVersion = '0.0.0';
+        }
+
+        $this->versionString = $normalizedVersion;
+
+        if (preg_match('/^(\d+)(?:\.(\d+))?(?:\.(\d+))?/', $normalizedVersion, $matches) === 1) {
+            $this->MAJOR = (int) ($matches[1] ?? 0);
+            $this->MINOR = (int) ($matches[2] ?? 0);
+            $this->PATCH = (int) ($matches[3] ?? 0);
+        }
     }
 
     public function equals(ChurchCRMRelease $b): bool
@@ -35,24 +45,39 @@ class ChurchCRMRelease
 
     public function __toString(): string
     {
-        return $this->MAJOR . '.' . $this->MINOR . '.' . $this->PATCH;
+        return $this->versionString;
     }
 
     public function getDownloadURL(): string
     {
-        $expectedFileName = 'ChurchCRM-' . $this->rawRelease['name'] . '.zip';
-        
+        $expectedFileNames = [];
+
+        if (isset($this->rawRelease['name'])) {
+            $expectedFileNames[] = 'ChurchCRM-' . $this->rawRelease['name'] . '.zip';
+        }
+
+        if (isset($this->rawRelease['tag_name'])) {
+            $expectedFileNames[] = 'ChurchCRM-' . ltrim((string) $this->rawRelease['tag_name'], 'vV') . '.zip';
+            $expectedFileNames[] = 'ChurchCRM-' . $this->rawRelease['tag_name'] . '.zip';
+        }
+
+        $expectedFileNames[] = 'ChurchCRM-' . $this->__toString() . '.zip';
+
         if (!isset($this->rawRelease['assets']) || !is_array($this->rawRelease['assets'])) {
             throw new \Exception('No assets found in release: ' . $this->rawRelease['name']);
         }
-        
+
         foreach ($this->rawRelease['assets'] as $asset) {
-            if (($asset['name'] ?? '') === $expectedFileName) {
-                return $asset['browser_download_url'] ?? '';
+            $assetName = $asset['name'] ?? '';
+
+            foreach ($expectedFileNames as $expectedFileName) {
+                if ($assetName === $expectedFileName) {
+                    return $asset['browser_download_url'] ?? '';
+                }
             }
         }
 
-        throw new \Exception('Download URL not found for ' . $expectedFileName);
+        throw new \Exception('Download URL not found for ChurchCRM release ' . $this->__toString());
     }
 
     public function getReleaseNotes(): string
