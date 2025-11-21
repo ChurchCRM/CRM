@@ -628,29 +628,14 @@ msgid "Deposit Slip Number: "
 msgstr "Депозит номер накладной: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Детали депозита: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Закрыть квитанции (не забудьте нажать Сохранить)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Квитанции Сообщить"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Важное замечание: не удалось сделки будут удалены них постоянно, когда квитанции закрыт."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Резюме депозита: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Выплаты по этой квитанции:"
 
 #: 
 msgid "Import eGive"
@@ -661,7 +646,8 @@ msgid "Add Payment"
 msgstr "Оплатить"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Груза, разрешенной Сделки"
 
 #: 
@@ -1656,7 +1642,8 @@ msgid "Date End"
 msgstr "Дата окончания"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Очистить фильтры"
 
 #: 
@@ -4254,14 +4241,6 @@ msgstr "Дата вступления:"
 #: 
 msgid "CSV Import"
 msgstr "CSV Импорт"
-
-#: 
-msgid "Comment:"
-msgstr "Комментарий"
-
-#: 
-msgid "Closed:"
-msgstr "Закрыто"
 
 #: 
 msgid "Start Date: "

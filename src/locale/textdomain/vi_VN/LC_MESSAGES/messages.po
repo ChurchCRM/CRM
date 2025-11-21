@@ -631,29 +631,14 @@ msgid "Deposit Slip Number: "
 msgstr "Số phiếu gửi tiền:"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Chi tiết tiền gửi:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Đóng phiếu gửi (nhớ bấm Lưu)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Báo cáo tiền gửi"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Lưu ý quan trọng: các giao dịch không thành công sẽ bị xóa vĩnh viễn khi đóng phiếu gửi tiền."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Tóm tắt tiền gửi:"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Các khoản thanh toán trên phiếu gửi tiền này:"
 
 #: 
 msgid "Import eGive"
@@ -664,7 +649,8 @@ msgid "Add Payment"
 msgstr "Thêm thanh toán"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Tải các giao dịch được ủy quyền"
 
 #: 
@@ -1651,7 +1637,8 @@ msgid "Date End"
 msgstr "Ngày kết thúc"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Xóa bỏ lọc"
 
 #: 
@@ -4209,14 +4196,6 @@ msgstr "Ngày nhập vào:"
 #: 
 msgid "CSV Import"
 msgstr "Nhập vào CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Bình luận:"
-
-#: 
-msgid "Closed:"
-msgstr "Đã đóng cửa:"
 
 #: 
 msgid "Start Date: "
@@ -6846,7 +6825,8 @@ msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "(các) khoản thanh toán?"
 
 #: 

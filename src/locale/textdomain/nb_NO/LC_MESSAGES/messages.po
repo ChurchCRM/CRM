@@ -633,21 +633,9 @@ msgid "Deposit Slip Number: "
 msgstr "Innskudd Slip Antall:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Lukk innskudd slip (husk å trykke Save)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Innskudd Slip Rapporter"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Viktig merknad: mislykkede transaksjoner vil bli slettet permanent når innskuddet slip er lukket."
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Betalinger på dette innskuddet slip:"
 
 #: 
 msgid "Import eGive"
@@ -658,7 +646,8 @@ msgid "Add Payment"
 msgstr "Legg Betaling"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Last Autoriserte Transaksjoner"
 
 #: 
@@ -1651,7 +1640,8 @@ msgid "Date End"
 msgstr "Dato Slutt"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Tøm filter"
 
 #: 

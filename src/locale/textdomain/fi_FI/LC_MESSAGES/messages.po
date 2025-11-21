@@ -614,29 +614,14 @@ msgid "Deposit Slip Number: "
 msgstr "Talletuksen kuittinumero:"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Talletustiedot:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Sulje talletuksen kuittinumero(muista painaa Tallenna-painiketta)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Talletuksen kuitti raportti"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Tärkeä huomautus: epäonnistuneet tapahtumat poistetaan pysyvästi, kun talletuskuitti suljetaan."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Talletusyhteenveto:"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Tämän talletuskuitin maksut:"
 
 #: 
 msgid "Import eGive"
@@ -647,7 +632,8 @@ msgid "Add Payment"
 msgstr "Lisää maksu"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "lataa Valtuutetut tapahtumat"
 
 #: 

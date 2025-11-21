@@ -613,28 +613,14 @@ msgid "Deposit Slip Number: "
 msgstr "입금 내역서 번호: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "입금 내역: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "입금 내역서 닫기(저장을 잊지 마세요)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "입금 내역서 보고서"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "중요: 입금 내역서를 닫으면 실패한 거래는 영구적으로 삭제됩니다."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "입금 요약: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "이 전표에 포함된 결제:"
 
 #: 
 msgid "Import eGive"
@@ -645,7 +631,8 @@ msgid "Add Payment"
 msgstr "결제 추가"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "승인된 거래 불러오기"
 
 #: 
@@ -1631,7 +1618,8 @@ msgid "Date End"
 msgstr "종료일"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "필터 초기화"
 
 #: 
@@ -4184,14 +4172,6 @@ msgstr "입력일:"
 #: 
 msgid "CSV Import"
 msgstr "CSV 가져오기"
-
-#: 
-msgid "Comment:"
-msgstr "비고:"
-
-#: 
-msgid "Closed:"
-msgstr "마감:"
 
 #: 
 msgid "Start Date: "
@@ -6818,7 +6798,8 @@ msgid "Profile Image uploaded"
 msgstr "프로필 이미지가 업로드되었습니다"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "결제 건을 삭제하시겠습니까?"
 
 #: 

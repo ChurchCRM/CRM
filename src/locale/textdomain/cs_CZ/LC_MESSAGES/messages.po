@@ -613,28 +613,14 @@ msgid "Deposit Slip Number: "
 msgstr "Číslo vkladového listu: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Podrobnosti o vkladu: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Zavřít doklad o vkladu (nezapomeňte stisknout tlačítko Uložit)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Zpráva o vkladu"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Důležité upozornění: neúspěšné transakce budou po uzavření vkladového listu trvale smazány."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Souhrn vkladů: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Platby na tomto vkladovém listu:"
 
 #: 
 msgid "Import eGive"
@@ -645,7 +631,8 @@ msgid "Add Payment"
 msgstr "Vlož platbu"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Načíst autorizované transakce"
 
 #: 
@@ -1631,7 +1618,8 @@ msgid "Date End"
 msgstr "Datum konce"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Vymazat filtry"
 
 #: 
@@ -4184,14 +4172,6 @@ msgstr "Zadané datum:"
 #: 
 msgid "CSV Import"
 msgstr "CSV Import"
-
-#: 
-msgid "Comment:"
-msgstr "Poznámka:"
-
-#: 
-msgid "Closed:"
-msgstr "Zavřeno:"
 
 #: 
 msgid "Start Date: "
@@ -6818,7 +6798,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilový obrázek nahrán"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "platba(-y)?"
 
 #: 

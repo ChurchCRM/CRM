@@ -615,29 +615,14 @@ msgid "Deposit Slip Number: "
 msgstr "የተቀማጭ ወረቀት ቁጥር፡- "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "የተቀማጭ ዝርዝሮች፡- "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "የተቀማጭ ወረቀት ዝጋ (አስቀምጥን መጫንዎን ያስታውሱ)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "የተቀማጭ መንሸራተት ሪፖርት"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "ጠቃሚ ማስታወሻ፡ የተቀማጭ ወረቀቱ ሲዘጋ ያልተሳኩ ግብይቶች እስከመጨረሻው ይሰረዛሉ።"
-
-#: 
-msgid "Deposit Summary: "
-msgstr "የተቀማጭ ገንዘብ ማጠቃለያ፡- "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "በዚህ የተቀማጭ ወረቀት ላይ ክፍያዎች፡-"
 
 #: 
 msgid "Import eGive"
@@ -648,7 +633,8 @@ msgid "Add Payment"
 msgstr "ክፍያ ጨምር"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "የተፈቀዱ ግብይቶችን ጫን"
 
 #: 
@@ -1635,7 +1621,8 @@ msgid "Date End"
 msgstr "የመጨረሻ ቀን"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "ማጣሪያዎችን አጽዳ"
 
 #: 
@@ -4191,14 +4178,6 @@ msgstr "የገባበት ቀን:"
 #: 
 msgid "CSV Import"
 msgstr "CSV ማስመጣት"
-
-#: 
-msgid "Comment:"
-msgstr "አስተያየት:"
-
-#: 
-msgid "Closed:"
-msgstr "ዝግ:"
 
 #: 
 msgid "Start Date: "
@@ -6830,7 +6809,8 @@ msgid "Profile Image uploaded"
 msgstr "የመገለጫ ምስል ተለጥፏል"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "ክፍያ(ዎች)?"
 
 #: 

@@ -636,29 +636,14 @@ msgid "Deposit Slip Number: "
 msgstr "存款单号码："
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "存款详细资料:␣"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "关闭存款凭条（记得按下保存）"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "存款单报告"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "重要提示：在存款凭条被关闭时，失败的交易将被删除permanantly。"
-
-#: 
-msgid "Deposit Summary: "
-msgstr "存款摘要:␣"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "所支付的存款单："
 
 #: 
 msgid "Import eGive"
@@ -669,7 +654,8 @@ msgid "Add Payment"
 msgstr "添加付款"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "加载授权交易"
 
 #: 
@@ -1675,7 +1661,8 @@ msgid "Date End"
 msgstr "日期结束"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "清除过滤器"
 
 #: 
@@ -4297,14 +4284,6 @@ msgstr "输入日期："
 #: 
 msgid "CSV Import"
 msgstr "CSV导入"
-
-#: 
-msgid "Comment:"
-msgstr "评价："
-
-#: 
-msgid "Closed:"
-msgstr "关闭："
 
 #: 
 msgid "Start Date: "
@@ -6934,7 +6913,8 @@ msgid "Profile Image uploaded"
 msgstr "个人资料图片已上传"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "付款？"
 
 #: 

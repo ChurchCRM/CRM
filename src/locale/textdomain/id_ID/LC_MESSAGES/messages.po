@@ -615,29 +615,14 @@ msgid "Deposit Slip Number: "
 msgstr "Nomor Slip Setoran"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Rincian Setoran"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Tutup slip setoran (jangan lupa klik \"Save\")"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Laporan Slip Setoran"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Catatan penting : transaksi yang gagal akan terhapus permanen jika slip setoran di tutup"
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Ringkasan Setoran : "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Pembayaran pada slip setoran ini :"
 
 #: 
 msgid "Import eGive"
@@ -648,7 +633,8 @@ msgid "Add Payment"
 msgstr "Tambah Pembayaran"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Load transaksi yang sudah terotorisasi"
 
 #: 
@@ -1636,7 +1622,8 @@ msgid "Date End"
 msgstr "Tanggal berakhir"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Hapus Filter"
 
 #: 
@@ -4194,14 +4181,6 @@ msgstr "Tanggal masuk:"
 #: 
 msgid "CSV Import"
 msgstr "Impor CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Komentar:"
-
-#: 
-msgid "Closed:"
-msgstr "Tutup:"
 
 #: 
 msgid "Start Date: "
@@ -6831,7 +6810,8 @@ msgid "Profile Image uploaded"
 msgstr "Gambar Profil diunggah"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "pembayaran?"
 
 #: 

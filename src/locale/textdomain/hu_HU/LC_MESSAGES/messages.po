@@ -605,21 +605,9 @@ msgid "Deposit Slip Number: "
 msgstr "Fizess Slip száma:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Bezárás betét slip (ne feledjük, hogy nyomja meg az Mentés)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Befizetési Slip Jelentés"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Fontos megjegyzés: A sikertelen tranzakciók törlésre kerül permanantly, ha a betét slip zárva van."
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Kifizetések ezen befizetés:"
 
 #: 
 msgid "Import eGive"
@@ -630,7 +618,8 @@ msgid "Add Payment"
 msgstr "Add Fizetés"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Betöltése Jogosult tranzakciók"
 
 #: 
@@ -1489,7 +1478,8 @@ msgid "Apply Filters"
 msgstr "Szűrők alkalmazása"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Szűrők törlése"
 
 #: 

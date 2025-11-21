@@ -38,7 +38,8 @@ msgid "Select the event to which you would like to check people in for"
 msgstr "Select the event which you would like to check people in for"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Load Authorised Transactions"
 
 #: 
