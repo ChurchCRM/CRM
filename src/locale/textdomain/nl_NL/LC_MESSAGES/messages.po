@@ -613,28 +613,14 @@ msgid "Deposit Slip Number: "
 msgstr "Stortings Strookje Nummer"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Storting details"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Maak Stortings strookje dicht (Vergeet het niet op te slaan)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Stortings Strook Rapport"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Belangrijk gegeven: Mislukte transacties zijn permananent verwijderd na het afsluiten van het stortings strookje."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Stortings samenvatting"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Betalingen op dit stortings strookje:"
 
 #: 
 msgid "Import eGive"
@@ -645,7 +631,8 @@ msgid "Add Payment"
 msgstr "Voer Betaling in"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Laad ge-autorizeerde Transacties"
 
 #: 
@@ -1631,7 +1618,8 @@ msgid "Date End"
 msgstr "Eind Datum"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Verwijder Filters"
 
 #: 
@@ -4187,14 +4175,6 @@ msgstr "Toegevoegde datum"
 #: 
 msgid "CSV Import"
 msgstr "CSV Import"
-
-#: 
-msgid "Comment:"
-msgstr "Opmerking"
-
-#: 
-msgid "Closed:"
-msgstr "Gesloten: "
 
 #: 
 msgid "Start Date: "
@@ -6827,7 +6807,8 @@ msgid "Profile Image uploaded"
 msgstr "Profielafbeelding geüpload"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "betalingen(en)?"
 
 #: 

@@ -613,28 +613,14 @@ msgid "Deposit Slip Number: "
 msgstr "Nambari ya Malipo ya Amana: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Maelezo ya Amana: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Funga hati ya amana (kumbuka kubonyeza Hifadhi)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Ripoti ya Kuteleza kwa Amana"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Kumbuka muhimu: miamala iliyofeli itafutwa kabisa wakati hati ya amana imefungwa."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Muhtasari wa Amana: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Malipo kwenye hati hii ya amana:"
 
 #: 
 msgid "Import eGive"
@@ -645,7 +631,8 @@ msgid "Add Payment"
 msgstr "Ongeza Malipo"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Pakia Shughuli Zilizoidhinishwa"
 
 #: 
@@ -1631,7 +1618,8 @@ msgid "Date End"
 msgstr "Tarehe ya Mwisho"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Futa Vichujio"
 
 #: 
@@ -4184,14 +4172,6 @@ msgstr "Tarehe Iliyoingizwa:"
 #: 
 msgid "CSV Import"
 msgstr "Ingiza CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Maoni:"
-
-#: 
-msgid "Closed:"
-msgstr "Imefungwa:"
 
 #: 
 msgid "Start Date: "
@@ -6818,7 +6798,8 @@ msgid "Profile Image uploaded"
 msgstr "Picha ya Wasifu imepakiwa"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "malipo?"
 
 #: 

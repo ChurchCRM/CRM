@@ -614,28 +614,14 @@ msgid "Deposit Slip Number: "
 msgstr "מספר אישור הפקדה"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "פרטי הפקדה"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "סגור אישור הפקדה (זכור ללחוץ על 'שמור')"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "דו\"ח הפקדה"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "הערה חשובה: עסקאות שנכשלו יימחקו לצמיתות כאשר שובר ההפקדה ייסגר"
-
-#: 
-msgid "Deposit Summary: "
-msgstr "סיכום הפקדה"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "תשלומים על שובר הפקדה זה"
 
 #: 
 msgid "Import eGive"
@@ -646,7 +632,8 @@ msgid "Add Payment"
 msgstr "הוסף תשלום"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "טען פעולות מאושרות"
 
 #: 
@@ -1632,7 +1619,8 @@ msgid "Date End"
 msgstr "תאריך סיום"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "נקה מסננים"
 
 #: 
@@ -4185,14 +4173,6 @@ msgstr "תאריך הכניסה:"
 #: 
 msgid "CSV Import"
 msgstr "ייבוא קובץ CSV"
-
-#: 
-msgid "Comment:"
-msgstr "הערה:"
-
-#: 
-msgid "Closed:"
-msgstr "סגור:"
 
 #: 
 msgid "Start Date: "
@@ -6822,7 +6802,8 @@ msgid "Profile Image uploaded"
 msgstr "תמונת פרופיל הועלתה"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "תשלומים?"
 
 #: 

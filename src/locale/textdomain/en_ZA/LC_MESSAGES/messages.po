@@ -42,7 +42,8 @@ msgid "Select the group to which you would like to add your cart"
 msgstr "Select the group which you would like to add to your cart"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Load Authorised Transactions"
 
 #: 

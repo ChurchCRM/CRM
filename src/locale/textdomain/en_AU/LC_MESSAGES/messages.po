@@ -110,7 +110,8 @@ msgid "CheckOut"
 msgstr "Check Out"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Load Authorised Transactions"
 
 #: 

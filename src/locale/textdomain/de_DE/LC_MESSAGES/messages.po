@@ -638,29 +638,14 @@ msgid "Deposit Slip Number: "
 msgstr "Einzahlungsbelegnummer:"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Einzahlungsdetails:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Einzahlungsbeleg abschließen (Bitte Speichern drücken!)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Einzahlungsbericht"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Wichtige Mitteilung: fehlgeschlagene Transaktionen werden dauerhaft gelöscht wenn der Einzahlungsbeleg geschlossen wird."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Einzahlungszusammenfassung:"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Zahlungen auf diesem Einzahlungsbeleg:"
 
 #: 
 msgid "Import eGive"
@@ -671,7 +656,8 @@ msgid "Add Payment"
 msgstr "Zahlung hinzufügen"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Lade autorisierte Transaktionen"
 
 #: 
@@ -1680,7 +1666,8 @@ msgid "Date End"
 msgstr "Endtermin"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Filter löschen"
 
 #: 
@@ -4317,14 +4304,6 @@ msgid "CSV Import"
 msgstr "CSV Import"
 
 #: 
-msgid "Comment:"
-msgstr "Kommentar:"
-
-#: 
-msgid "Closed:"
-msgstr "Geschlossen:"
-
-#: 
 msgid "Start Date: "
 msgstr "Beginn:"
 
@@ -6952,7 +6931,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilbild hochgeladen"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "Zahlung(en)?"
 
 #: 

@@ -613,29 +613,14 @@ msgid "Deposit Slip Number: "
 msgstr "Sissetuleku number:"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Sissetuleku üksikasjad:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Sulge sissemakseleht (ärge unustage vajutada nuppu Salvesta)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Sisssetuleku teatis"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Oluline märkus: ebaõnnestunud tehingud kustutatakse jäädavalt, kui sissetuleku kviitungid suletakse."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Sissetuleku kokkuvõte:"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Selle sissemakse kviitung:"
 
 #: 
 msgid "Import eGive"
@@ -646,7 +631,8 @@ msgid "Add Payment"
 msgstr "Lisage makse"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Laadige volitatud tehinguid"
 
 #: 
@@ -1633,7 +1619,8 @@ msgid "Date End"
 msgstr "Lõppkuupäev"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Kustuta filtrid"
 
 #: 
@@ -4191,14 +4178,6 @@ msgstr "Sisestamise kuupäev:"
 #: 
 msgid "CSV Import"
 msgstr "CSV Import"
-
-#: 
-msgid "Comment:"
-msgstr "Kommentaar:"
-
-#: 
-msgid "Closed:"
-msgstr "Suletud:"
 
 #: 
 msgid "Start Date: "
@@ -6827,7 +6806,8 @@ msgid "Profile Image uploaded"
 msgstr "Profiilipilt on üles laaditud"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "makse(d)?"
 
 #: 

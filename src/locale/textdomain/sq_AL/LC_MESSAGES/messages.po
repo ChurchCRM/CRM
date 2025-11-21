@@ -575,21 +575,9 @@ msgid "Deposit Slip Number: "
 msgstr "Depozita Numri Shqip: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Mbylle depozitave shqip (mos harroni të shtypni Save)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Shqip Depozita Raport"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Shënim i rëndësishëm: Transaksionet e dështuara do të fshihen permanantly kur faturën e depozitës është e mbyllur."
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Pagesat për këtë gabim të depozitave:"
 
 #: 
 msgid "Import eGive"
@@ -600,7 +588,8 @@ msgid "Add Payment"
 msgstr "Shto Pagesa"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Load transaksionet e autorizuara"
 
 #: 
@@ -1423,7 +1412,8 @@ msgid "Date End"
 msgstr "Data e përfundimit"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Filtrat e qarta"
 
 #: 

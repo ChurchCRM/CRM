@@ -613,28 +613,14 @@ msgid "Deposit Slip Number: "
 msgstr "வைப்பு சீட்டு எண்:"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "வைப்பு விவரங்கள்:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "வைப்பு சீட்டை மூடு (சேமி என்பதை அழுத்த மறக்க வேண்டாம்)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "வைப்பு சீட்டு அறிக்கை"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "முக்கிய குறிப்பு: வைப்பு சீட்டை மூடும்போது தோல்வியடைந்த பரிவர்த்தனைகள் நிரந்தரமாக நீக்கப்படும்."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "வைப்புச் சுருக்கம்:"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "இந்த வைப்புச் சீட்டில் பணம் செலுத்துதல்:"
 
 #: 
 msgid "Import eGive"
@@ -645,7 +631,8 @@ msgid "Add Payment"
 msgstr "கட்டணத்தைச் சேர்க்கவும்"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "அங்கீகரிக்கப்பட்ட பரிவர்த்தனைகளை ஏற்றவும்"
 
 #: 
@@ -1632,7 +1619,8 @@ msgid "Date End"
 msgstr "தேதி முடிவு"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "வடிகட்டிகளை அழி"
 
 #: 
@@ -4185,14 +4173,6 @@ msgstr "உள்ளிட்ட தேதி:"
 #: 
 msgid "CSV Import"
 msgstr "CSV இறக்குமதி"
-
-#: 
-msgid "Comment:"
-msgstr "கருத்து:"
-
-#: 
-msgid "Closed:"
-msgstr "மூடப்பட்டது:"
 
 #: 
 msgid "Start Date: "
@@ -6820,7 +6800,8 @@ msgid "Profile Image uploaded"
 msgstr "சுயவிவரப் படம் பதிவேற்றப்பட்டது"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "கொடுப்பனவுகள்(கள்)?"
 
 #: 

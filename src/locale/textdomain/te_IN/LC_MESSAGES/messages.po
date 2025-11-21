@@ -613,28 +613,14 @@ msgid "Deposit Slip Number: "
 msgstr "డిపాజిట్ స్లిప్ నంబర్: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "డిపాజిట్ వివరాలు: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "డిపాజిట్ స్లిప్‌ను మూసివేయండి (సేవ్ చేయి నొక్కడం గుర్తుంచుకోండి)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "డిపాజిట్ స్లిప్ నివేదిక"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "ముఖ్యమైన గమనిక: డిపాజిట్ స్లిప్ మూసివేయబడినప్పుడు విఫలమైన లావాదేవీలు శాశ్వతంగా తొలగించబడతాయి."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "డిపాజిట్ సారాంశం: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "ఈ డిపాజిట్ స్లిప్‌పై చెల్లింపులు:"
 
 #: 
 msgid "Import eGive"
@@ -645,7 +631,8 @@ msgid "Add Payment"
 msgstr "చెల్లింపును జోడించండి"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "అధీకృత లావాదేవీలను లోడ్ చేయండి"
 
 #: 

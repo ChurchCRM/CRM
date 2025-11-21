@@ -615,29 +615,14 @@ msgid "Deposit Slip Number: "
 msgstr "Номер депозитного квитанції: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Деталі депозиту: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Закрийте депозит (не забудьте натиснути Зберегти)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Звіт про депозит"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Важливе зауваження: невдалі транзакції будуть постійно видалятися, коли депозитний депозит буде закритий."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Підсумок депозиту: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Платежі за цим депозитним листом:"
 
 #: 
 msgid "Import eGive"
@@ -648,7 +633,8 @@ msgid "Add Payment"
 msgstr "Додати платіж"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Завантажте авторизовані транзакції"
 
 #: 
@@ -1635,7 +1621,8 @@ msgid "Date End"
 msgstr "Дата закінчення"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Очистити фільтри"
 
 #: 
@@ -4191,14 +4178,6 @@ msgstr "Дата вступу:"
 #: 
 msgid "CSV Import"
 msgstr "Імпорт CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Коментар:"
-
-#: 
-msgid "Closed:"
-msgstr "Зачинено:"
 
 #: 
 msgid "Start Date: "
@@ -6828,7 +6807,8 @@ msgid "Profile Image uploaded"
 msgstr "Зображення профілю завантажено"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "платежі?"
 
 #: 

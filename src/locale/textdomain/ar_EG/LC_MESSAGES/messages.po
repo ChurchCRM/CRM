@@ -614,29 +614,14 @@ msgid "Deposit Slip Number: "
 msgstr "رقم قسيمة الإيداع: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "تفاصيل الإيداع: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "إغلاق قسيمة إيداع (تذكر أن تضغط على حفظ)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "تقرير قسيمة إيداع"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "سيتم حذف فشل المعاملات بيرمانانتلي عند إغلاق قسيمة الإيداع: ملاحظة هامة."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "إيداع ملخص:"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "المدفوعات على قسيمة إيداع هذا:"
 
 #: 
 msgid "Import eGive"
@@ -647,7 +632,8 @@ msgid "Add Payment"
 msgstr "إضافة الدفع"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "تحميل المعاملات المأذون"
 
 #: 
@@ -1634,7 +1620,8 @@ msgid "Date End"
 msgstr "الي تاريخ"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "مسح الفلتر"
 
 #: 
@@ -4192,14 +4179,6 @@ msgstr "تاريخ دخول:"
 #: 
 msgid "CSV Import"
 msgstr "CSV استيراد"
-
-#: 
-msgid "Comment:"
-msgstr "تعليق:"
-
-#: 
-msgid "Closed:"
-msgstr "مغلق:"
 
 #: 
 msgid "Start Date: "
@@ -6829,7 +6808,8 @@ msgid "Profile Image uploaded"
 msgstr "الصورة الشخصية مرفوع"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "المدفوعات (ق)؟"
 
 #: 

@@ -740,33 +740,13 @@ msgstr "Número do depósito: "
 
 #: 
 #, fuzzy
-msgid "Deposit Details: "
+msgid "Deposit Details"
 msgstr "Detalhes do Depósito: "
 
 #: 
 #, fuzzy
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Fechar depósito (lembre-se de clicar em Salvar)"
-
-#: 
-#, fuzzy
-msgid "Deposit Slip Report"
-msgstr "Relatório do depósito"
-
-#: 
-#, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Nota importante: transações com falha serão excluídos de forma permanente quando o depósito for fechado."
-
-#: 
-#, fuzzy
-msgid "Deposit Summary: "
-msgstr "Resumo dos Depósitos: "
-
-#: 
-#, fuzzy
-msgid "Payments on this deposit slip:"
-msgstr "Pagamentos neste depósito:"
 
 #: 
 #, fuzzy
@@ -780,7 +760,7 @@ msgstr "Adicionar pagamento"
 
 #: 
 #, fuzzy
-msgid "Load Authorized Transactions"
+msgid "Load Authorized"
 msgstr "Carregar transações autorizadas"
 
 #: 
@@ -1984,7 +1964,7 @@ msgstr "Data Final"
 
 #: 
 #, fuzzy
-msgid "Clear Filters"
+msgid "Clear Filter"
 msgstr "Limpar filtros"
 
 #: 
@@ -5061,16 +5041,6 @@ msgstr "Data de entrada:"
 #, fuzzy
 msgid "CSV Import"
 msgstr "Importar CSV"
-
-#: 
-#, fuzzy
-msgid "Comment:"
-msgstr "Comentário:"
-
-#: 
-#, fuzzy
-msgid "Closed:"
-msgstr "Fechado:"
 
 #: 
 msgid "Start Date: "
@@ -8233,7 +8203,7 @@ msgstr "Imagem do Perfil Enviada"
 
 #: 
 #, fuzzy
-msgid "payments(s)?"
+msgid "payment(s)?"
 msgstr "pagamento(s)?"
 
 #: 

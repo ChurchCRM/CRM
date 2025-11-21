@@ -636,29 +636,14 @@ msgid "Deposit Slip Number: "
 msgstr "Numărul bonului de depozit:␣"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Detalii depozit"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Închideți bonul de depozit (nu uitați să apăsați Salvare)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Raportul de depozit"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Notă Important: tranzacțiile eșuate vor fi șterse permanent atunci când ordinul de plată este închis."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Sumarizare depozit"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Plăți pe acest bon de depozit"
 
 #: 
 msgid "Import eGive"
@@ -669,7 +654,8 @@ msgid "Add Payment"
 msgstr "Adaugare plată"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Încărcați Tranzacții autorizate"
 
 #: 
@@ -1674,7 +1660,8 @@ msgid "Date End"
 msgstr "Data de încheiere"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Anuleaza filtre"
 
 #: 
@@ -4291,14 +4278,6 @@ msgstr "Dată activare:"
 #: 
 msgid "CSV Import"
 msgstr "Import CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Comentariu:"
-
-#: 
-msgid "Closed:"
-msgstr "Închis:"
 
 #: 
 msgid "Start Date: "
@@ -6929,7 +6908,8 @@ msgid "Profile Image uploaded"
 msgstr "Fotografie profil încărcată"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "plată(ți)?"
 
 #: 
