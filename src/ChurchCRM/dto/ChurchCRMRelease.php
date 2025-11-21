@@ -4,9 +4,9 @@ namespace ChurchCRM\dto;
 
 class ChurchCRMRelease
 {
-    public string $MAJOR;
-    public string $MINOR;
-    public string $PATCH;
+    public int $MAJOR = 0;
+    public int $MINOR = 0;
+    public int $PATCH = 0;
 
     private array $rawRelease;
 
@@ -14,9 +14,11 @@ class ChurchCRMRelease
     {
         $this->rawRelease = $releaseArray;
         $versions = explode('.', $releaseArray['name']);
-        $this->MAJOR = $versions[0];
-        $this->MINOR = $versions[1];
-        $this->PATCH = $versions[2];
+        
+        // Convert to integers for proper numeric comparison
+        $this->MAJOR = (int) ($versions[0] ?? 0);
+        $this->MINOR = (int) ($versions[1] ?? 0);
+        $this->PATCH = (int) ($versions[2] ?? 0);
     }
 
     public function equals(ChurchCRMRelease $b): bool
@@ -26,56 +28,40 @@ class ChurchCRMRelease
 
     public function compareTo(ChurchCRMRelease $b): int
     {
-        if ($this->MAJOR < $b->MAJOR) {
-            return -1;
-        } elseif ($this->MAJOR > $b->MAJOR) {
-            return 1;
-        } elseif ($this->MAJOR == $b->MAJOR) {
-            if ($this->MINOR < $b->MINOR) {
-                return -1;
-            } elseif ($this->MINOR > $b->MINOR) {
-                return 1;
-            } elseif ($this->MINOR == $b->MINOR) {
-                if ($this->PATCH < $b->PATCH) {
-                    return -1;
-                } elseif ($this->PATCH > $b->PATCH) {
-                    return 1;
-                } elseif ($this->PATCH == $b->PATCH) {
-                    return 0;
-                }
-            }
-        }
+        // Use version_compare() for proper semantic versioning support
+        // Handles formats like X.Y.Z, X.Y.Z-alpha, X.Y.Z-rc1, etc.
+        return version_compare($this->__toString(), $b->__toString());
     }
 
     public function __toString(): string
     {
-        try {
-            return $this->MAJOR . '.' . $this->MINOR . '.' . $this->PATCH;
-        } catch (\Exception $exception) {
-            return '';
-        }
+        return $this->MAJOR . '.' . $this->MINOR . '.' . $this->PATCH;
     }
 
     public function getDownloadURL(): string
     {
+        $expectedFileName = 'ChurchCRM-' . $this->rawRelease['name'] . '.zip';
+        
+        if (!isset($this->rawRelease['assets']) || !is_array($this->rawRelease['assets'])) {
+            throw new \Exception('No assets found in release: ' . $this->rawRelease['name']);
+        }
+        
         foreach ($this->rawRelease['assets'] as $asset) {
-            if ($asset['name'] == 'ChurchCRM-' . $this->rawRelease['name'] . '.zip') {
-                return $asset['browser_download_url'];
+            if (($asset['name'] ?? '') === $expectedFileName) {
+                return $asset['browser_download_url'] ?? '';
             }
         }
 
-        throw new \Exception('download url not found!');
+        throw new \Exception('Download URL not found for ' . $expectedFileName);
     }
 
     public function getReleaseNotes(): string
     {
-        return $this->rawRelease['body'];
+        return $this->rawRelease['body'] ?? '';
     }
 
     public function isPreRelease(): bool
     {
-        // yeah, it's a boolean in the JSON, but
-        // let's check it to be sure this function returns a boolean.
-        return (bool) $this->rawRelease['prerelease'] === true;
+        return (bool) ($this->rawRelease['prerelease'] ?? false);
     }
 }
