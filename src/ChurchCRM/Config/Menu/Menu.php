@@ -210,8 +210,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Edit General Settings'), 'SystemSettings.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'UserList.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Property Types'), 'PropertyTypeList.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext('Restore Database'), 'RestoreDatabase.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext('Backup Database'), 'BackupDatabase.php', AuthenticationManager::getCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext('System Maintenance'), 'admin/maintenance', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('System Upgrade'), 'v2/admin/upgrade', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', AuthenticationManager::getCurrentUser()->isCSVExport()));
@@ -219,7 +218,6 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Debug'), 'v2/admin/debug', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('System Logs'), 'v2/admin/logs', AuthenticationManager::getCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext('Custom Menus'), 'v2/admin/menus', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext('Reset System'), 'v2/admin/database/reset', AuthenticationManager::getCurrentUser()->isAdmin()));
 
         return $menu;
     }

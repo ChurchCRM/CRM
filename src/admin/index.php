@@ -35,5 +35,6 @@ $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 
 require __DIR__ . '/routes/api/demo.php';
+require __DIR__ . '/routes/maintenance.php';
 
 $app->run();
