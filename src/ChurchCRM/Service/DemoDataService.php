@@ -17,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Exception;
+use JsonException;
 use Propel\Runtime\Propel;
 
 class DemoDataService
@@ -56,13 +57,13 @@ class DemoDataService
         $logger = LoggerUtils::getAppLogger();
 
         try {
-            $connection = Propel::getConnection();
-            $connection->beginTransaction();
             // If a simplified demo JSON exists under admin demo, import from it
             $simplifiedFile = self::DATA_PATH . '/people.json';
             if (file_exists($simplifiedFile)) {
+                $logger->info('Using simplified demo import', ['file' => $simplifiedFile]);
                 $this->importFromSimplified($simplifiedFile);
             } else {
+                $logger->info('Using standard demo import');
                 // Load core demo data (groups, families, people, notes, memberships)
                 $this->importGroups();
                 $this->importFamilies();
@@ -85,8 +86,6 @@ class DemoDataService
                 $this->importPledges();
             }
 
-            $connection->commit();
-
             $this->importResult['success'] = true;
             $this->importResult['endTime'] = microtime(true);
             $duration = $this->importResult['endTime'] - $this->importResult['startTime'];
@@ -94,15 +93,13 @@ class DemoDataService
             $logger->info('Demo data import completed successfully', [
                 'duration' => $duration,
                 'imported' => $this->importResult['imported'],
-                'warnings' => count($this->importResult['warnings'])
+                'warnings' => count($this->importResult['warnings']),
+                'errors' => count($this->importResult['errors'])
             ]);
 
             return $this->importResult;
 
         } catch (Exception $e) {
-            $connection = Propel::getConnection();
-            $connection->rollBack();
-
             $this->importResult['success'] = false;
             $this->importResult['errors'][] = $e->getMessage();
             $this->importResult['endTime'] = microtime(true);
@@ -126,14 +123,9 @@ class DemoDataService
         $logger = LoggerUtils::getAppLogger();
 
         try {
-            $connection = Propel::getConnection();
-            $connection->beginTransaction();
-
             // Financial imports (funds & pledges) - events/calendars are handled separately
             $this->importDonationFunds();
             $this->importPledges();
-
-            $connection->commit();
 
             $this->importResult['success'] = true;
             $this->importResult['endTime'] = microtime(true);
@@ -147,9 +139,6 @@ class DemoDataService
 
             return $this->importResult;
         } catch (Exception $e) {
-            $connection = Propel::getConnection();
-            $connection->rollBack();
-
             $this->importResult['success'] = false;
             $this->importResult['errors'][] = $e->getMessage();
             $this->importResult['endTime'] = microtime(true);
@@ -173,15 +162,10 @@ class DemoDataService
         $logger = LoggerUtils::getAppLogger();
 
         try {
-            $connection = Propel::getConnection();
-            $connection->beginTransaction();
-
             $this->importCalendars();
             $this->importEvents();
             $this->importEventAttendance();
             $this->importCalendarEvents();
-
-            $connection->commit();
 
             $this->importResult['success'] = true;
             $this->importResult['endTime'] = microtime(true);
@@ -195,9 +179,6 @@ class DemoDataService
 
             return $this->importResult;
         } catch (Exception $e) {
-            $connection = Propel::getConnection();
-            $connection->rollBack();
-
             $this->importResult['success'] = false;
             $this->importResult['errors'][] = $e->getMessage();
             $this->importResult['endTime'] = microtime(true);
@@ -219,7 +200,6 @@ class DemoDataService
         foreach ($data as $calendarData) {
             try {
                 $calendar = new Calendar();
-                $calendar->setId((int) $calendarData['calendar_id']);
                 $calendar->setName($calendarData['name']);
                 $calendar->setForegroundColor($calendarData['foregroundColor']);
                 $calendar->setBackgroundColor($calendarData['backgroundColor']);
@@ -240,13 +220,12 @@ class DemoDataService
         foreach ($data as $fundData) {
             try {
                 $fund = new DonationFund();
-                $fund->setId((int) $fundData['fun_ID']);
                 $fund->setName($fundData['fun_Name']);
                 $fund->setDescription($fundData['fun_Description']);
                 $fund->setActive((bool) $fundData['fun_Active']);
                 $fund->save();
 
-                $this->fundMap[(int) $fundData['fun_ID']] = $fund;
+                $this->fundMap[(int) $fund->getId()] = $fund;
                 $this->importResult['imported']['donation_funds']++;
             } catch (Exception $e) {
                 $this->importResult['warnings'][] = "Donation Fund {$fundData['fun_ID']}: {$e->getMessage()}";
@@ -259,13 +238,25 @@ class DemoDataService
      */
     private function importFromSimplified(string $filePath): void
     {
-        $json = json_decode(file_get_contents($filePath), true);
+        $logger = LoggerUtils::getAppLogger();
+        try {
+            $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
+        } catch (JsonException $e) {
+            $msg = 'Invalid simplified demo JSON: ' . $e->getMessage();
+            $this->importResult['warnings'][] = $msg;
+            $logger->error('Simplified import JSON parse failed', ['error' => $msg]);
+            return;
+        }
+
         if (!$json) {
-            $this->importResult['warnings'][] = 'Invalid simplified demo JSON';
+            $msg = 'Invalid simplified demo JSON';
+            $this->importResult['warnings'][] = $msg;
+            $logger->error('Simplified import JSON empty', ['error' => $msg]);
             return;
         }
 
         $families = $json['families'] ?? $json['data'] ?? [];
+        $logger->info('Starting simplified demo import', ['total_families' => count($families)]);
 
         foreach ($families as $famData) {
             try {
@@ -303,10 +294,10 @@ class DemoDataService
                     }
                 }
 
-                $family->setSendNewsletter(isset($famData['sendNewsletter']) && $famData['sendNewsletter']);
+                $family->setSendNewsletter((isset($famData['sendNewsletter']) && $famData['sendNewsletter']) ? 'TRUE' : 'FALSE');
                 $family->save();
 
-                $this->familyMap[] = $family;
+                $this->familyMap[$family->getId()] = $family;
                 $this->importResult['imported']['families']++;
 
                 // members
@@ -332,7 +323,7 @@ class DemoDataService
                             try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
                         }
                         $person->save();
-                        $this->personMap[] = $person;
+                        $this->personMap[$person->getId()] = $person;
                         $this->importResult['imported']['people']++;
 
                         // person notes
@@ -377,8 +368,25 @@ class DemoDataService
                     }
                 }
 
+                $logger->info('Simplified family imported', [
+                    'family_name' => $family->getName(),
+                    'family_id' => $family->getId()
+                ]);
+
             } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Family import failed: {$e->getMessage()}";
+                $familyName = $famData['name'] ?? 'unknown';
+                $errorMsg = $e->getMessage();
+                // Capture underlying database error if available
+                if ($e->getPrevious() !== null) {
+                    $errorMsg .= " | DB Error: {$e->getPrevious()->getMessage()}";
+                }
+                $this->importResult['warnings'][] = "Family '{$familyName}' import failed: {$errorMsg}";
+                $logger->warning('Simplified family import failed', [
+                    'family_name' => $familyName,
+                    'error' => $errorMsg,
+                    'exception_class' => get_class($e),
+                    'trace' => $e->getTraceAsString()
+                ]);
             }
         }
     }
@@ -391,7 +399,6 @@ class DemoDataService
         foreach ($data as $groupData) {
             try {
                 $group = new Group();
-                $group->setId((int) $groupData['grp_ID']);
                 $group->setType((int) $groupData['grp_Type']);
                 $group->setRoleListId((int) $groupData['grp_RoleListID']);
                 $group->setDefaultRole((int) $groupData['grp_DefaultRole']);
@@ -402,7 +409,7 @@ class DemoDataService
                 $group->setIncludeEmailExport((bool) $groupData['grp_include_email_export']);
                 $group->save();
 
-                $this->groupMap[(int) $groupData['grp_ID']] = $group;
+                $this->groupMap[(int) $group->getId()] = $group;
                 $this->importResult['imported']['groups']++;
             } catch (Exception $e) {
                 $this->importResult['warnings'][] = "Group {$groupData['grp_ID']}: {$e->getMessage()}";
@@ -416,9 +423,11 @@ class DemoDataService
         if (!$data) return;
 
         foreach ($data as $familyData) {
+            $connection = Propel::getConnection();
             try {
+                $connection->beginTransaction();
+
                 $family = new Family();
-                $family->setId((int) $familyData['fam_ID']);
                 $family->setName($familyData['fam_Name']);
                 $family->setAddress1($familyData['fam_Address1']);
                 $family->setAddress2($familyData['fam_Address2']);
@@ -446,10 +455,18 @@ class DemoDataService
                 $family->setEnvelope((int) $familyData['fam_Envelope']);
                 $family->save();
 
-                $this->familyMap[(int) $familyData['fam_ID']] = $family;
+                $this->familyMap[(int) $family->getId()] = $family;
                 $this->importResult['imported']['families']++;
+
+                $connection->commit();
             } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Family {$familyData['fam_ID']}: {$e->getMessage()}";
+                $connection->rollBack();
+                $familyName = $familyData['fam_Name'] ?? 'unknown';
+                $this->importResult['warnings'][] = "Family '{$familyName}': {$e->getMessage()}";
+                LoggerUtils::getAppLogger()->warning("Family import failed", [
+                    'family_name' => $familyName,
+                    'error' => $e->getMessage()
+                ]);
             }
         }
     }
@@ -469,7 +486,6 @@ class DemoDataService
                 }
 
                 $person = new Person();
-                $person->setId((int) $personData['per_ID']);
 
                 if ($personData['per_fam_ID']) {
                     $person->setFamilyId($familyId);
@@ -508,7 +524,7 @@ class DemoDataService
                 $person->setClsId((int) $personData['per_cls_ID']);
                 $person->save();
 
-                $this->personMap[(int) $personData['per_ID']] = $person;
+                $this->personMap[(int) $person->getId()] = $person;
                 $this->importResult['imported']['people']++;
             } catch (Exception $e) {
                 $this->importResult['warnings'][] = "Person {$personData['per_ID']}: {$e->getMessage()}";
@@ -636,7 +652,6 @@ class DemoDataService
         foreach ($data as $eventData) {
             try {
                 $event = new Event();
-                $event->setId((int) $eventData['event_id']);
                 $event->setType((int) $eventData['event_type']);
                 $event->setTitle($eventData['event_title']);
                 $event->setDesc($eventData['event_desc'] ?? '');
@@ -652,7 +667,7 @@ class DemoDataService
                 $event->setURL($eventData['event_url']);
                 $event->save();
 
-                $this->eventMap[(int) $eventData['event_id']] = $event;
+                $this->eventMap[(int) $event->getId()] = $event;
                 $this->importResult['imported']['events']++;
             } catch (Exception $e) {
                 $this->importResult['warnings'][] = "Event {$eventData['event_id']}: {$e->getMessage()}";
@@ -802,14 +817,19 @@ class DemoDataService
             return null;
         }
 
-        $json = file_get_contents($filepath);
-        $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        try {
+            $json = file_get_contents($filepath);
+            $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
 
-        if (!is_array($data)) {
-            $this->importResult['errors'][] = "Invalid JSON in file: {$filename}";
+            if (!is_array($data)) {
+                $this->importResult['errors'][] = "Invalid JSON in file: {$filename}";
+                return null;
+            }
+
+            return $data;
+        } catch (JsonException $e) {
+            $this->importResult['errors'][] = "JSON parse error in file {$filename}: {$e->getMessage()}";
             return null;
         }
-
-        return $data;
     }
 }
