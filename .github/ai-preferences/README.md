@@ -79,13 +79,22 @@ window.CRM.notify('Operation completed', { type: 'success' });
 ```
 
 ### Slim Middleware Order
+**CRITICAL: Slim 4 uses LIFO (Last In, First Out) - last added middleware runs FIRST**
+
+```php
+// Correct order for authenticated APIs:
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+$app->add(new CorsMiddleware());      // Added LAST, executes FIRST
+$app->add(AuthMiddleware::class);     // Added 2nd, executes 2nd
+$app->add(VersionMiddleware::class);  // Added FIRST, executes LAST
 ```
-addBodyParsingMiddleware()
-addRoutingMiddleware()    // MUST be before add() calls
-add(VersionMiddleware)
-add(AuthMiddleware)       // After routing or 401 becomes 500
-add(CorsMiddleware)
-```
+
+**Why this order matters:**
+- CorsMiddleware runs first to handle preflight requests
+- AuthMiddleware runs second to authenticate requests
+- VersionMiddleware runs last to set version headers
+- If order is reversed, auth runs before it's set up → "No active authentication provider" error
 
 ### PHP 8.2+ Requirements
 ```php
