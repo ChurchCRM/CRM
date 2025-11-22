@@ -7,13 +7,13 @@ use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarEvent;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\EventAttend;
-use ChurchCRM\model\ChurchCRM\EventsEvent;
+use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
-use ChurchCRM\model\ChurchCRM\PledgePlg;
+use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Exception;
@@ -21,7 +21,7 @@ use Propel\Runtime\Propel;
 
 class DemoDataService
 {
-    private const DATA_PATH = __DIR__ . '/../../api/demo/data';
+    private const DATA_PATH = __DIR__ . '/../../admin/demo';
 
     private array $importResult = [
         'success' => false,
@@ -58,12 +58,18 @@ class DemoDataService
         try {
             $connection = Propel::getConnection();
             $connection->beginTransaction();
-            // Load core demo data (groups, families, people, notes, memberships)
-            $this->importGroups();
-            $this->importFamilies();
-            $this->importPeople();
-            $this->importNotes();
-            $this->importPerson2GroupRole();
+            // If a simplified demo JSON exists under admin demo, import from it
+            $simplifiedFile = self::DATA_PATH . '/people.json';
+            if (file_exists($simplifiedFile)) {
+                $this->importFromSimplified($simplifiedFile);
+            } else {
+                // Load core demo data (groups, families, people, notes, memberships)
+                $this->importGroups();
+                $this->importFamilies();
+                $this->importPeople();
+                $this->importNotes();
+                $this->importPerson2GroupRole();
+            }
 
             // Optionally load events-related data (calendars, events, attendance)
             if ($includeEvents) {
@@ -244,6 +250,135 @@ class DemoDataService
                 $this->importResult['imported']['donation_funds']++;
             } catch (Exception $e) {
                 $this->importResult['warnings'][] = "Donation Fund {$fundData['fun_ID']}: {$e->getMessage()}";
+            }
+        }
+    }
+
+    /**
+     * Import simplified demo format (people.json) created under src/admin/demo
+     */
+    private function importFromSimplified(string $filePath): void
+    {
+        $json = json_decode(file_get_contents($filePath), true);
+        if (!$json) {
+            $this->importResult['warnings'][] = 'Invalid simplified demo JSON';
+            return;
+        }
+
+        $families = $json['families'] ?? $json['data'] ?? [];
+
+        foreach ($families as $famData) {
+            try {
+                $family = new Family();
+                if (!empty($famData['name'])) {
+                    $family->setName($famData['name']);
+                }
+                $addr = $famData['address'] ?? [];
+                $family->setAddress1($addr['line1'] ?? null);
+                $family->setAddress2($addr['line2'] ?? null);
+                $family->setCity($addr['city'] ?? null);
+                $family->setState($addr['state'] ?? null);
+                $family->setZip($addr['zip'] ?? null);
+                $family->setCountry($addr['country'] ?? null);
+
+                $contact = $famData['contact'] ?? [];
+                $phone = $contact['phone'] ?? [];
+                $family->setHomePhone($phone['home'] ?? null);
+                $family->setWorkPhone($phone['work'] ?? null);
+                $family->setCellPhone($phone['cell'] ?? null);
+                $family->setEmail($contact['email'] ?? null);
+
+                if (!empty($famData['weddingDate'])) {
+                    try {
+                        $family->setWeddingDate(new DateTime($famData['weddingDate']));
+                    } catch (Exception $e) {
+                        // ignore invalid wedding date
+                    }
+                }
+
+                if (!empty($famData['createdAt'])) {
+                    try {
+                        $family->setDateEntered(new DateTime($famData['createdAt']));
+                    } catch (Exception $e) {
+                    }
+                }
+
+                $family->setSendNewsletter(isset($famData['sendNewsletter']) && $famData['sendNewsletter']);
+                $family->save();
+
+                $this->familyMap[] = $family;
+                $this->importResult['imported']['families']++;
+
+                // members
+                $members = $famData['members'] ?? [];
+                foreach ($members as $m) {
+                    try {
+                        $person = new Person();
+                        $person->setFamilyId($family->getId());
+                        $person->setFirstName($m['firstName'] ?? null);
+                        $person->setLastName($m['lastName'] ?? null);
+                        $person->setMiddleName($m['middleName'] ?? null);
+                        if (!empty($m['birthYear']) && !empty($m['birthMonth']) && !empty($m['birthDay'])) {
+                            try {
+                                $person->setBirthDate((int)$m['birthYear'], (int)$m['birthMonth'], (int)$m['birthDay']);
+                            } catch (Exception $e) {}
+                        }
+                        if (!empty($m['gender'])) {
+                            $person->setGender(strtolower($m['gender']) === 'male' ? 1 : (strtolower($m['gender']) === 'female' ? 2 : 0));
+                        }
+                        $person->setEmail($m['email'] ?? null);
+                        $person->setHomePhone($m['phone'] ?? null);
+                        if (!empty($m['createdAt'])) {
+                            try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
+                        }
+                        $person->save();
+                        $this->personMap[] = $person;
+                        $this->importResult['imported']['people']++;
+
+                        // person notes
+                        $pnotes = $m['notes'] ?? [];
+                        foreach ($pnotes as $pn) {
+                            try {
+                                $note = new Note();
+                                $note->setPerId($person->getId());
+                                $note->setType($pn['type'] ?? null);
+                                $note->setText($pn['text'] ?? null);
+                                if (!empty($pn['date'])) {
+                                    try { $note->setDateEntered(new DateTime($pn['date'])); } catch (Exception $e) {}
+                                }
+                                $note->setPrivate(!empty($pn['private']) ? 1 : 0);
+                                $note->save();
+                                $this->importResult['imported']['notes']++;
+                            } catch (Exception $e) {
+                                $this->importResult['warnings'][] = "Person note import failed: {$e->getMessage()}";
+                            }
+                        }
+                    } catch (Exception $e) {
+                        $this->importResult['warnings'][] = "Member import failed: {$e->getMessage()}";
+                    }
+                }
+
+                // family notes
+                $fnotes = $famData['notes'] ?? [];
+                foreach ($fnotes as $fn) {
+                    try {
+                        $note = new Note();
+                        $note->setFamId($family->getId());
+                        $note->setType($fn['type'] ?? null);
+                        $note->setText($fn['text'] ?? null);
+                        if (!empty($fn['date'])) {
+                            try { $note->setDateEntered(new DateTime($fn['date'])); } catch (Exception $e) {}
+                        }
+                        $note->setPrivate(!empty($fn['private']) ? 1 : 0);
+                        $note->save();
+                        $this->importResult['imported']['notes']++;
+                    } catch (Exception $e) {
+                        $this->importResult['warnings'][] = "Family note import failed: {$e->getMessage()}";
+                    }
+                }
+
+            } catch (Exception $e) {
+                $this->importResult['warnings'][] = "Family import failed: {$e->getMessage()}";
             }
         }
     }
@@ -500,7 +635,7 @@ class DemoDataService
 
         foreach ($data as $eventData) {
             try {
-                $event = new EventsEvent();
+                $event = new Event();
                 $event->setId((int) $eventData['event_id']);
                 $event->setType((int) $eventData['event_type']);
                 $event->setTitle($eventData['event_title']);
@@ -593,7 +728,7 @@ class DemoDataService
                     continue;
                 }
 
-                $pledge = new PledgePlg();
+                $pledge = new Pledge();
                 $pledge->setId((int) $pledgeData['plg_plgID']);
                 $pledge->setFamilyId($familyId);
                 $pledge->setFyId((int) $pledgeData['plg_FYID']);
