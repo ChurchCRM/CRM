@@ -24,7 +24,7 @@
           "firstName": "Rebecca",
           "middleName": null,
           "lastName": "Garcia",
-          "birthYear": 1973,
+          "birthYear": 1980,
           "gender": "female",
           "email": "rebecca.garcia@demo.churchcrm.io",
           "phone": "(781) 239-6910",
@@ -32,15 +32,16 @@
           "createdAt": "2024-01-02T08:00:00.000Z",
           "classification": "Guest",
           "birthMonth": 1,
-          "birthDay": 1,
-          "maidenName": null
+          "birthDay": 15,
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
           "firstName": "John",
           "middleName": null,
           "lastName": "Garcia",
-          "birthYear": 1973,
+          "birthYear": 1980,
           "gender": "male",
           "email": "john.garcia@demo.churchcrm.io",
           "phone": "(802) 691-6711",
@@ -48,13 +49,14 @@
           "createdAt": "2024-01-03T08:00:00.000Z",
           "classification": "Guest",
           "birthMonth": 2,
-          "birthDay": 2,
-          "maidenName": null
+          "birthDay": 15,
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
       "createdAt": "2024-01-01",
-      "weddingDate": "2019-01-10",
+      "weddingDate": "2000-01-15T00:00:00.000Z",
       "active": false,
       "verified": true
     },
@@ -82,69 +84,73 @@
           "firstName": "Nancy",
           "middleName": null,
           "lastName": "Hernandez",
-          "birthYear": 1973,
+          "birthYear": 1980,
           "gender": "female",
           "email": "nancy.hernandez@demo.churchcrm.io",
           "phone": "(951) 875-1398",
           "notes": [],
           "createdAt": "2024-01-03T08:00:00.000Z",
           "birthMonth": 3,
-          "birthDay": 3,
+          "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
           "firstName": "Thomas",
           "middleName": null,
           "lastName": "Hernandez",
-          "birthYear": 2015,
+          "birthYear": 1980,
           "gender": "male",
           "email": null,
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-04T08:00:00.000Z",
           "birthMonth": 4,
-          "birthDay": 4,
+          "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
           "firstName": "John",
           "middleName": null,
           "lastName": "Hernandez",
-          "birthYear": 2018,
+          "birthYear": 1980,
           "gender": "male",
           "email": null,
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-05T08:00:00.000Z",
           "birthMonth": 5,
-          "birthDay": 5,
+          "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
           "firstName": "Mary",
           "middleName": null,
           "lastName": "Hernandez",
-          "birthYear": 2011,
+          "birthYear": 1980,
           "gender": "female",
           "email": "mary.hernandez@demo.churchcrm.io",
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-03T08:00:00.000Z",
           "birthMonth": 6,
-          "birthDay": 6,
+          "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-01-02",
-      "weddingDate": "2019-02-11",
+      "weddingDate": "2000-02-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -172,80 +178,85 @@
           "firstName": "Jason",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 1985,
+          "birthYear": 1980,
           "gender": "male",
           "email": "jason.johnson85@demo.churchcrm.io",
           "phone": "(996) 604-9017",
           "notes": [],
           "createdAt": "2024-01-04T08:00:00.000Z",
           "birthMonth": 7,
-          "birthDay": 7,
+          "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
           "firstName": "Matthew",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2009,
+          "birthYear": 1980,
           "gender": "male",
           "email": "matthew.johnson@demo.churchcrm.io",
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-05T08:00:00.000Z",
           "birthMonth": 8,
-          "birthDay": 8,
+          "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
           "firstName": "Joseph",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2012,
+          "birthYear": 1980,
           "gender": "male",
           "email": "joseph.johnson@demo.churchcrm.io",
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-06T08:00:00.000Z",
           "birthMonth": 9,
-          "birthDay": 9,
+          "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
           "firstName": "Richard",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2020,
+          "birthYear": 1980,
           "gender": "male",
           "email": null,
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-04T08:00:00.000Z",
           "birthMonth": 10,
-          "birthDay": 10,
+          "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
           "firstName": "Jason",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2008,
+          "birthYear": 1980,
           "gender": "male",
           "email": "jason.johnson32@demo.churchcrm.io",
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-05T08:00:00.000Z",
           "birthMonth": 11,
-          "birthDay": 11,
+          "birthDay": 15,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -257,7 +268,7 @@
         }
       ],
       "createdAt": "2024-01-03",
-      "weddingDate": "2019-03-12",
+      "weddingDate": "2000-03-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -285,7 +296,7 @@
           "firstName": "Carol",
           "middleName": null,
           "lastName": "Williams",
-          "birthYear": 1994,
+          "birthYear": 1980,
           "gender": "female",
           "email": "carol.williams@demo.churchcrm.io",
           "phone": "(445) 603-1749",
@@ -299,9 +310,10 @@
           ],
           "createdAt": "2024-01-05T08:00:00.000Z",
           "birthMonth": 12,
-          "birthDay": 12,
+          "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -317,7 +329,8 @@
           "birthMonth": 1,
           "birthDay": 13,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -333,7 +346,8 @@
           "birthMonth": 2,
           "birthDay": 14,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -349,7 +363,8 @@
           "birthMonth": 3,
           "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -365,7 +380,8 @@
           "birthMonth": 4,
           "birthDay": 16,
           "classification": "Visitor",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -377,7 +393,7 @@
         }
       ],
       "createdAt": "2024-01-04",
-      "weddingDate": "2019-04-13",
+      "weddingDate": "2000-04-15T00:00:00.000Z",
       "active": true,
       "verified": true
     },
@@ -421,7 +437,8 @@
           "birthMonth": 5,
           "birthDay": 17,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -444,7 +461,8 @@
           "birthMonth": 6,
           "birthDay": 18,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -460,7 +478,8 @@
           "birthMonth": 7,
           "birthDay": 19,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -476,7 +495,8 @@
           "birthMonth": 8,
           "birthDay": 20,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -492,7 +512,8 @@
           "birthMonth": 9,
           "birthDay": 21,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -508,12 +529,13 @@
           "birthMonth": 10,
           "birthDay": 22,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-01-05",
-      "weddingDate": "2019-05-14",
+      "weddingDate": "2000-05-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -557,7 +579,8 @@
           "birthMonth": 11,
           "birthDay": 23,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -573,7 +596,8 @@
           "birthMonth": 12,
           "birthDay": 24,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -589,12 +613,13 @@
           "birthMonth": 1,
           "birthDay": 25,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-01-06",
-      "weddingDate": "2019-06-15",
+      "weddingDate": "2000-06-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -638,7 +663,8 @@
           "birthMonth": 2,
           "birthDay": 26,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -661,7 +687,8 @@
           "birthMonth": 3,
           "birthDay": 27,
           "classification": "Member",
-          "maidenName": "Baker"
+          "maidenName": "Baker",
+          "familyRole": 2
         },
         {
           "title": null,
@@ -677,12 +704,13 @@
           "birthMonth": 4,
           "birthDay": 1,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-01-07",
-      "weddingDate": "2019-07-16",
+      "weddingDate": "2000-07-15T00:00:00.000Z",
       "active": true,
       "verified": true
     },
@@ -726,7 +754,8 @@
           "birthMonth": 5,
           "birthDay": 2,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -749,7 +778,8 @@
           "birthMonth": 6,
           "birthDay": 3,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -765,7 +795,8 @@
           "birthMonth": 7,
           "birthDay": 4,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -781,7 +812,8 @@
           "birthMonth": 8,
           "birthDay": 5,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -797,7 +829,8 @@
           "birthMonth": 9,
           "birthDay": 6,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -813,12 +846,13 @@
           "birthMonth": 10,
           "birthDay": 7,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-01-08",
-      "weddingDate": "2019-08-17",
+      "weddingDate": "2000-08-15T00:00:00.000Z",
       "active": false,
       "verified": false
     },
@@ -862,7 +896,8 @@
           "birthMonth": 11,
           "birthDay": 8,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -885,7 +920,8 @@
           "birthMonth": 12,
           "birthDay": 9,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -901,7 +937,8 @@
           "birthMonth": 1,
           "birthDay": 10,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -917,7 +954,8 @@
           "birthMonth": 2,
           "birthDay": 11,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -933,7 +971,8 @@
           "birthMonth": 3,
           "birthDay": 12,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -949,12 +988,13 @@
           "birthMonth": 4,
           "birthDay": 13,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-01-09",
-      "weddingDate": "2019-09-18",
+      "weddingDate": "2000-09-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -998,7 +1038,8 @@
           "classification": "Guest",
           "birthMonth": 5,
           "birthDay": 14,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -1021,7 +1062,8 @@
           "classification": "Guest",
           "birthMonth": 6,
           "birthDay": 15,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -1037,7 +1079,8 @@
           "classification": "Guest",
           "birthMonth": 7,
           "birthDay": 16,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1053,7 +1096,8 @@
           "classification": "Guest",
           "birthMonth": 8,
           "birthDay": 17,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1069,7 +1113,8 @@
           "classification": "Guest",
           "birthMonth": 9,
           "birthDay": 18,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -1081,7 +1126,7 @@
         }
       ],
       "createdAt": "2024-01-10",
-      "weddingDate": "2019-10-19",
+      "weddingDate": "2000-10-15T00:00:00.000Z",
       "active": true,
       "verified": true
     },
@@ -1125,7 +1170,8 @@
           "birthMonth": 10,
           "birthDay": 19,
           "classification": "Visitor",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -1148,12 +1194,13 @@
           "birthMonth": 11,
           "birthDay": 20,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
       "createdAt": "2024-01-11",
-      "weddingDate": "2019-11-10",
+      "weddingDate": "2000-11-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -1197,7 +1244,8 @@
           "birthMonth": 12,
           "birthDay": 21,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -1220,7 +1268,8 @@
           "birthMonth": 1,
           "birthDay": 22,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -1236,7 +1285,8 @@
           "birthMonth": 2,
           "birthDay": 23,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1252,7 +1302,8 @@
           "birthMonth": 3,
           "birthDay": 24,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1268,7 +1319,8 @@
           "birthMonth": 4,
           "birthDay": 25,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1284,7 +1336,8 @@
           "birthMonth": 5,
           "birthDay": 26,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -1296,7 +1349,7 @@
         }
       ],
       "createdAt": "2024-01-12",
-      "weddingDate": "2019-12-11",
+      "weddingDate": "2000-12-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -1340,7 +1393,8 @@
           "birthMonth": 6,
           "birthDay": 27,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -1363,7 +1417,8 @@
           "birthMonth": 7,
           "birthDay": 1,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -1412,7 +1467,8 @@
           "birthMonth": 8,
           "birthDay": 2,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -1435,7 +1491,8 @@
           "birthMonth": 9,
           "birthDay": 3,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -1451,7 +1508,8 @@
           "birthMonth": 10,
           "birthDay": 4,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1467,7 +1525,8 @@
           "birthMonth": 11,
           "birthDay": 5,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1483,7 +1542,8 @@
           "birthMonth": 12,
           "birthDay": 6,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1499,7 +1559,8 @@
           "birthMonth": 1,
           "birthDay": 7,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -1541,7 +1602,8 @@
           "birthMonth": 2,
           "birthDay": 8,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -1557,7 +1619,8 @@
           "birthMonth": 3,
           "birthDay": 9,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -1573,7 +1636,8 @@
           "birthMonth": 4,
           "birthDay": 10,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -1622,7 +1686,8 @@
           "birthMonth": 5,
           "birthDay": 11,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -1638,7 +1703,8 @@
           "birthMonth": 6,
           "birthDay": 12,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -1680,7 +1746,8 @@
           "birthMonth": 7,
           "birthDay": 13,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -1696,7 +1763,8 @@
           "birthMonth": 8,
           "birthDay": 14,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -1712,7 +1780,8 @@
           "birthMonth": 9,
           "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1728,7 +1797,8 @@
           "birthMonth": 10,
           "birthDay": 16,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1744,7 +1814,8 @@
           "birthMonth": 11,
           "birthDay": 17,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -1786,7 +1857,8 @@
           "birthMonth": 12,
           "birthDay": 18,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -1802,7 +1874,8 @@
           "birthMonth": 1,
           "birthDay": 19,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -1818,7 +1891,8 @@
           "birthMonth": 2,
           "birthDay": 20,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1834,7 +1908,8 @@
           "birthMonth": 3,
           "birthDay": 21,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -1876,7 +1951,8 @@
           "classification": "Guest",
           "birthMonth": 4,
           "birthDay": 22,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -1892,7 +1968,8 @@
           "classification": "Guest",
           "birthMonth": 5,
           "birthDay": 23,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -1934,7 +2011,8 @@
           "birthMonth": 6,
           "birthDay": 24,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -1950,7 +2028,8 @@
           "birthMonth": 7,
           "birthDay": 25,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -1992,7 +2071,8 @@
           "birthMonth": 8,
           "birthDay": 26,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -2008,7 +2088,8 @@
           "birthMonth": 9,
           "birthDay": 27,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -2050,7 +2131,8 @@
           "birthMonth": 10,
           "birthDay": 1,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -2066,7 +2148,8 @@
           "birthMonth": 11,
           "birthDay": 2,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -2108,7 +2191,8 @@
           "birthMonth": 12,
           "birthDay": 3,
           "classification": "Member",
-          "maidenName": "Robinson"
+          "maidenName": "Robinson",
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -2124,7 +2208,8 @@
           "birthMonth": 1,
           "birthDay": 4,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -2166,7 +2251,8 @@
           "birthMonth": 2,
           "birthDay": 5,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -2182,7 +2268,8 @@
           "birthMonth": 3,
           "birthDay": 6,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -2198,7 +2285,8 @@
           "birthMonth": 4,
           "birthDay": 7,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2214,7 +2302,8 @@
           "birthMonth": 5,
           "birthDay": 8,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -2263,7 +2352,8 @@
           "birthMonth": 6,
           "birthDay": 9,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -2279,7 +2369,8 @@
           "birthMonth": 7,
           "birthDay": 10,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -2295,7 +2386,8 @@
           "birthMonth": 8,
           "birthDay": 11,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -2337,7 +2429,8 @@
           "birthMonth": 9,
           "birthDay": 12,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -2353,7 +2446,8 @@
           "birthMonth": 10,
           "birthDay": 13,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -2369,7 +2463,8 @@
           "birthMonth": 11,
           "birthDay": 14,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2385,7 +2480,8 @@
           "birthMonth": 12,
           "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2401,7 +2497,8 @@
           "birthMonth": 1,
           "birthDay": 16,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2417,7 +2514,8 @@
           "birthMonth": 2,
           "birthDay": 17,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -2459,7 +2557,8 @@
           "birthMonth": 3,
           "birthDay": 18,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -2475,7 +2574,8 @@
           "birthMonth": 4,
           "birthDay": 19,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -2491,7 +2591,8 @@
           "birthMonth": 5,
           "birthDay": 20,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2507,7 +2608,8 @@
           "birthMonth": 6,
           "birthDay": 21,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2523,7 +2625,8 @@
           "birthMonth": 7,
           "birthDay": 22,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -2565,7 +2668,8 @@
           "classification": "Guest",
           "birthMonth": 8,
           "birthDay": 23,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -2581,7 +2685,8 @@
           "classification": "Guest",
           "birthMonth": 9,
           "birthDay": 24,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -2597,7 +2702,8 @@
           "classification": "Guest",
           "birthMonth": 10,
           "birthDay": 25,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2613,7 +2719,8 @@
           "classification": "Guest",
           "birthMonth": 11,
           "birthDay": 26,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -2655,7 +2762,8 @@
           "birthMonth": 12,
           "birthDay": 27,
           "classification": "Member",
-          "maidenName": "Torres"
+          "maidenName": "Torres",
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -2671,7 +2779,8 @@
           "birthMonth": 1,
           "birthDay": 1,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [
@@ -2720,7 +2829,8 @@
           "birthMonth": 2,
           "birthDay": 2,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -2736,7 +2846,8 @@
           "birthMonth": 3,
           "birthDay": 3,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -2778,7 +2889,8 @@
           "birthMonth": 4,
           "birthDay": 4,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -2794,7 +2906,8 @@
           "birthMonth": 5,
           "birthDay": 5,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [
@@ -2843,7 +2956,8 @@
           "birthMonth": 6,
           "birthDay": 6,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -2859,7 +2973,8 @@
           "birthMonth": 7,
           "birthDay": 7,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -2875,7 +2990,8 @@
           "birthMonth": 8,
           "birthDay": 8,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2891,7 +3007,8 @@
           "birthMonth": 9,
           "birthDay": 9,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2907,7 +3024,8 @@
           "birthMonth": 10,
           "birthDay": 10,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -2956,7 +3074,8 @@
           "birthMonth": 11,
           "birthDay": 11,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -2972,7 +3091,8 @@
           "birthMonth": 12,
           "birthDay": 12,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -2988,7 +3108,8 @@
           "birthMonth": 1,
           "birthDay": 13,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3004,7 +3125,8 @@
           "birthMonth": 2,
           "birthDay": 14,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -3046,7 +3168,8 @@
           "birthMonth": 3,
           "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -3062,7 +3185,8 @@
           "birthMonth": 4,
           "birthDay": 16,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -3078,7 +3202,8 @@
           "birthMonth": 5,
           "birthDay": 17,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3094,7 +3219,8 @@
           "birthMonth": 6,
           "birthDay": 18,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3110,7 +3236,8 @@
           "birthMonth": 7,
           "birthDay": 19,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -3152,7 +3279,8 @@
           "birthMonth": 8,
           "birthDay": 20,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3168,7 +3296,8 @@
           "birthMonth": 9,
           "birthDay": 21,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -3210,7 +3339,8 @@
           "birthMonth": 10,
           "birthDay": 22,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3226,7 +3356,8 @@
           "birthMonth": 11,
           "birthDay": 23,
           "classification": "Guest",
-          "maidenName": "Campbell"
+          "maidenName": "Campbell",
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -3268,7 +3399,8 @@
           "classification": "Guest",
           "birthMonth": 12,
           "birthDay": 24,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -3284,7 +3416,8 @@
           "classification": "Guest",
           "birthMonth": 1,
           "birthDay": 25,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -3300,7 +3433,8 @@
           "classification": "Guest",
           "birthMonth": 2,
           "birthDay": 26,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3316,7 +3450,8 @@
           "classification": "Guest",
           "birthMonth": 3,
           "birthDay": 27,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3332,7 +3467,8 @@
           "classification": "Guest",
           "birthMonth": 4,
           "birthDay": 1,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -3374,7 +3510,8 @@
           "birthMonth": 5,
           "birthDay": 2,
           "classification": "Member",
-          "maidenName": "Davis"
+          "maidenName": "Davis",
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -3390,7 +3527,8 @@
           "birthMonth": 6,
           "birthDay": 3,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -3406,7 +3544,8 @@
           "birthMonth": 7,
           "birthDay": 4,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3422,7 +3561,8 @@
           "birthMonth": 8,
           "birthDay": 5,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3438,7 +3578,8 @@
           "birthMonth": 9,
           "birthDay": 6,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3454,7 +3595,8 @@
           "birthMonth": 10,
           "birthDay": 7,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -3496,7 +3638,8 @@
           "birthMonth": 11,
           "birthDay": 8,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3512,7 +3655,8 @@
           "birthMonth": 12,
           "birthDay": 9,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [
@@ -3561,7 +3705,8 @@
           "birthMonth": 1,
           "birthDay": 10,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -3577,7 +3722,8 @@
           "birthMonth": 2,
           "birthDay": 11,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -3593,7 +3739,8 @@
           "birthMonth": 3,
           "birthDay": 12,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3609,7 +3756,8 @@
           "birthMonth": 4,
           "birthDay": 13,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -3651,7 +3799,8 @@
           "birthMonth": 5,
           "birthDay": 14,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3667,7 +3816,8 @@
           "birthMonth": 6,
           "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -3709,7 +3859,8 @@
           "birthMonth": 7,
           "birthDay": 16,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3725,7 +3876,8 @@
           "birthMonth": 8,
           "birthDay": 17,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [
@@ -3774,7 +3926,8 @@
           "birthMonth": 9,
           "birthDay": 18,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -3790,7 +3943,8 @@
           "birthMonth": 10,
           "birthDay": 19,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -3806,7 +3960,8 @@
           "birthMonth": 11,
           "birthDay": 20,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3822,7 +3977,8 @@
           "birthMonth": 12,
           "birthDay": 21,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3838,7 +3994,8 @@
           "birthMonth": 1,
           "birthDay": 22,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3854,7 +4011,8 @@
           "birthMonth": 2,
           "birthDay": 23,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -3896,7 +4054,8 @@
           "birthMonth": 3,
           "birthDay": 24,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -3912,7 +4071,8 @@
           "birthMonth": 4,
           "birthDay": 25,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -3928,7 +4088,8 @@
           "birthMonth": 5,
           "birthDay": 26,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3944,7 +4105,8 @@
           "birthMonth": 6,
           "birthDay": 27,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3960,7 +4122,8 @@
           "birthMonth": 7,
           "birthDay": 1,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3976,7 +4139,8 @@
           "birthMonth": 8,
           "birthDay": 2,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -4018,7 +4182,8 @@
           "birthMonth": 9,
           "birthDay": 3,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -4034,7 +4199,8 @@
           "birthMonth": 10,
           "birthDay": 4,
           "classification": "Visitor",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -4050,7 +4216,8 @@
           "birthMonth": 11,
           "birthDay": 5,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4066,7 +4233,8 @@
           "birthMonth": 12,
           "birthDay": 6,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4082,7 +4250,8 @@
           "birthMonth": 1,
           "birthDay": 7,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -4124,7 +4293,8 @@
           "classification": "Guest",
           "birthMonth": 2,
           "birthDay": 8,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -4140,7 +4310,8 @@
           "classification": "Guest",
           "birthMonth": 3,
           "birthDay": 9,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -4156,7 +4327,8 @@
           "classification": "Guest",
           "birthMonth": 4,
           "birthDay": 10,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4172,7 +4344,8 @@
           "classification": "Guest",
           "birthMonth": 5,
           "birthDay": 11,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4188,7 +4361,8 @@
           "classification": "Guest",
           "birthMonth": 6,
           "birthDay": 12,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -4230,7 +4404,8 @@
           "birthMonth": 7,
           "birthDay": 13,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -4246,7 +4421,8 @@
           "birthMonth": 8,
           "birthDay": 14,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -4262,7 +4438,8 @@
           "birthMonth": 9,
           "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4278,7 +4455,8 @@
           "birthMonth": 10,
           "birthDay": 16,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4294,7 +4472,8 @@
           "birthMonth": 11,
           "birthDay": 17,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -4336,7 +4515,8 @@
           "birthMonth": 12,
           "birthDay": 18,
           "classification": "Member",
-          "maidenName": "Thompson"
+          "maidenName": "Thompson",
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -4352,7 +4532,8 @@
           "birthMonth": 1,
           "birthDay": 19,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -4368,7 +4549,8 @@
           "birthMonth": 2,
           "birthDay": 20,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4384,7 +4566,8 @@
           "birthMonth": 3,
           "birthDay": 21,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4400,7 +4583,8 @@
           "birthMonth": 4,
           "birthDay": 22,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -4442,7 +4626,8 @@
           "birthMonth": 5,
           "birthDay": 23,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -4458,7 +4643,8 @@
           "birthMonth": 6,
           "birthDay": 24,
           "classification": "Member",
-          "maidenName": "Brown"
+          "maidenName": "Brown",
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -4500,7 +4686,8 @@
           "birthMonth": 7,
           "birthDay": 25,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -4516,7 +4703,8 @@
           "birthMonth": 8,
           "birthDay": 26,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -4532,7 +4720,8 @@
           "birthMonth": 9,
           "birthDay": 27,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4548,7 +4737,8 @@
           "birthMonth": 10,
           "birthDay": 1,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4564,7 +4754,8 @@
           "birthMonth": 11,
           "birthDay": 2,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4580,7 +4771,8 @@
           "birthMonth": 12,
           "birthDay": 3,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -4629,7 +4821,8 @@
           "birthMonth": 1,
           "birthDay": 4,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -4645,7 +4838,8 @@
           "birthMonth": 2,
           "birthDay": 5,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -4661,7 +4855,8 @@
           "birthMonth": 3,
           "birthDay": 6,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4677,7 +4872,8 @@
           "birthMonth": 4,
           "birthDay": 7,
           "classification": "Visitor",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4693,7 +4889,8 @@
           "birthMonth": 5,
           "birthDay": 8,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -4735,7 +4932,8 @@
           "birthMonth": 6,
           "birthDay": 9,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -4751,7 +4949,8 @@
           "birthMonth": 7,
           "birthDay": 10,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -4793,7 +4992,8 @@
           "birthMonth": 8,
           "birthDay": 11,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -4809,7 +5009,8 @@
           "birthMonth": 9,
           "birthDay": 12,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -4825,7 +5026,8 @@
           "birthMonth": 10,
           "birthDay": 13,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -4874,7 +5076,8 @@
           "birthMonth": 11,
           "birthDay": 14,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -4890,7 +5093,8 @@
           "birthMonth": 12,
           "birthDay": 15,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -4906,7 +5110,8 @@
           "birthMonth": 1,
           "birthDay": 16,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -4922,7 +5127,8 @@
           "birthMonth": 2,
           "birthDay": 17,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -4964,7 +5170,8 @@
           "classification": "Guest",
           "birthMonth": 3,
           "birthDay": 18,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -4980,7 +5187,8 @@
           "classification": "Guest",
           "birthMonth": 4,
           "birthDay": 19,
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         }
       ],
       "notes": [
@@ -5029,7 +5237,8 @@
           "birthMonth": 5,
           "birthDay": 20,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -5045,7 +5254,8 @@
           "birthMonth": 6,
           "birthDay": 21,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -5061,7 +5271,8 @@
           "birthMonth": 7,
           "birthDay": 22,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -5103,7 +5314,8 @@
           "birthMonth": 8,
           "birthDay": 23,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -5119,7 +5331,8 @@
           "birthMonth": 9,
           "birthDay": 24,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -5135,7 +5348,8 @@
           "birthMonth": 10,
           "birthDay": 25,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -5177,7 +5391,8 @@
           "birthMonth": 11,
           "birthDay": 26,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -5193,7 +5408,8 @@
           "birthMonth": 12,
           "birthDay": 27,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -5209,7 +5425,8 @@
           "birthMonth": 1,
           "birthDay": 1,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5225,7 +5442,8 @@
           "birthMonth": 2,
           "birthDay": 2,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5241,7 +5459,8 @@
           "birthMonth": 3,
           "birthDay": 3,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5257,7 +5476,8 @@
           "birthMonth": 4,
           "birthDay": 4,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -5299,7 +5519,8 @@
           "birthMonth": 5,
           "birthDay": 5,
           "classification": "Guest",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": "Mr",
@@ -5315,7 +5536,8 @@
           "birthMonth": 6,
           "birthDay": 6,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -5331,7 +5553,8 @@
           "birthMonth": 7,
           "birthDay": 7,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5347,7 +5570,8 @@
           "birthMonth": 8,
           "birthDay": 8,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5363,7 +5587,8 @@
           "birthMonth": 9,
           "birthDay": 9,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5379,7 +5604,8 @@
           "birthMonth": 10,
           "birthDay": 10,
           "classification": "Visitor",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [
@@ -5428,7 +5654,8 @@
           "birthMonth": 11,
           "birthDay": 11,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 1
         },
         {
           "title": null,
@@ -5444,7 +5671,8 @@
           "birthMonth": 12,
           "birthDay": 12,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 2
         },
         {
           "title": null,
@@ -5460,7 +5688,8 @@
           "birthMonth": 1,
           "birthDay": 13,
           "classification": "Member",
-          "maidenName": null
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
