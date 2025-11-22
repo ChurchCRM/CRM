@@ -15,7 +15,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/database', function (RouteCollectorProxy $group): void {
-    $group->delete('/reset', 'resetDatabase');
 
     $group->get('/people/export/chmeetings', 'exportChMeetings');
 
@@ -193,45 +192,4 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
     $response->getBody()->write($csvData);
 
     return $response;
-}
-
-/**
- * A method that drops all db tables.
- *
- * @param Request  $request  The request.
- * @param Response $response The response.
- *
- * @return Response The augmented response.
- */
-function resetDatabase(Request $request, Response $response): Response
-{
-    $connection = Propel::getConnection();
-    $logger = LoggerUtils::getAppLogger();
-
-    $logger->info('DB Drop started ');
-
-    $statement = $connection->prepare('SHOW FULL TABLES;');
-    $statement->execute();
-    $dbTablesSQLs = $statement->fetchAll();
-
-    foreach ($dbTablesSQLs as $dbTable) {
-        if ($dbTable[1] === 'VIEW') {
-            $alterSQL = 'DROP VIEW ' . $dbTable[0] . ' ;';
-        } else {
-            $alterSQL = 'DROP TABLE ' . $dbTable[0] . ' ;';
-        }
-
-        $dbAlterStatement = $connection->exec($alterSQL);
-        $logger->debug('DB Update: ' . $alterSQL . ' done.');
-    }
-
-    AuthenticationManager::endSession();
-
-    return SlimUtils::renderJSON(
-        $response,
-        [
-            'success' => true,
-            'msg' => gettext('The database has been cleared.')
-        ]
-    );
 }
