@@ -266,6 +266,10 @@ class DemoDataService
             $classificationMap[$cls->getOptionName()] = $cls->getOptionId();
         }
 
+        $familyIndex = 0;
+        $personIndex = 0;
+        $today = new DateTime();
+        
         foreach ($families as $famData) {
             try {
                 $family = new Family();
@@ -287,7 +291,10 @@ class DemoDataService
                 $family->setCellPhone($phone['cell'] ?? null);
                 $family->setEmail($contact['email'] ?? null);
 
-                if (!empty($famData['weddingDate'])) {
+                // Override first family's wedding date to today, otherwise use JSON data
+                if ($familyIndex === 0) {
+                    $family->setWeddingDate($today);
+                } elseif (!empty($famData['weddingDate'])) {
                     try {
                         $family->setWeddingDate(new DateTime($famData['weddingDate']));
                     } catch (Exception $e) {
@@ -317,16 +324,24 @@ class DemoDataService
                         $person->setFirstName($m['firstName'] ?? null);
                         $person->setLastName($m['lastName'] ?? null);
                         $person->setMiddleName($m['middleName'] ?? null);
-                        if (!empty($m['birthYear']) && !empty($m['birthMonth']) && !empty($m['birthDay'])) {
+                        
+                        // Override first person's birthday to today, otherwise use JSON data
+                        if ($personIndex === 0) {
+                            $person->setBirthDate((int)$today->format('Y'), (int)$today->format('m'), (int)$today->format('d'));
+                        } elseif (!empty($m['birthYear']) && !empty($m['birthMonth']) && !empty($m['birthDay'])) {
                             try {
                                 $person->setBirthDate((int)$m['birthYear'], (int)$m['birthMonth'], (int)$m['birthDay']);
                             } catch (Exception $e) {}
                         }
+                        
                         if (!empty($m['gender'])) {
                             $person->setGender(strtolower($m['gender']) === 'male' ? 1 : (strtolower($m['gender']) === 'female' ? 2 : 0));
                         }
                         if (!empty($m['classification']) && isset($classificationMap[$m['classification']])) {
                             $person->setClsId($classificationMap[$m['classification']]);
+                        }
+                        if (!empty($m['familyRole'])) {
+                            $person->setFmrId((int)$m['familyRole']);
                         }
                         $person->setEmail($m['email'] ?? null);
                         $person->setHomePhone($m['phone'] ?? null);
@@ -362,6 +377,7 @@ class DemoDataService
                         $this->importResult['warnings'][] = $msg;
                         LoggerUtils::getAppLogger()->warning($msg, ['exception' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
                     }
+                    $personIndex++;
                 }
 
                 // family notes
@@ -389,6 +405,8 @@ class DemoDataService
                     'family_name' => $family->getName(),
                     'family_id' => $family->getId()
                 ]);
+                
+                $familyIndex++;
 
             } catch (Exception $e) {
                 $familyName = $famData['name'] ?? 'unknown';
