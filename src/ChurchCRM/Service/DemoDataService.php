@@ -327,11 +327,13 @@ class DemoDataService
                         
                         // Override first person's birthday to today, otherwise use JSON data
                         if ($personIndex === 0) {
-                            $person->setBirthDate((int)$today->format('Y'), (int)$today->format('m'), (int)$today->format('d'));
+                            $person->setBirthYear((int)$today->format('Y'));
+                            $person->setBirthMonth((int)$today->format('m'));
+                            $person->setBirthDay((int)$today->format('d'));
                         } elseif (!empty($m['birthYear']) && !empty($m['birthMonth']) && !empty($m['birthDay'])) {
-                            try {
-                                $person->setBirthDate((int)$m['birthYear'], (int)$m['birthMonth'], (int)$m['birthDay']);
-                            } catch (Exception $e) {}
+                            $person->setBirthYear((int)$m['birthYear']);
+                            $person->setBirthMonth((int)$m['birthMonth']);
+                            $person->setBirthDay((int)$m['birthDay']);
                         }
                         
                         if (!empty($m['gender'])) {
