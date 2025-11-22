@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\EventAttend;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Group;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
@@ -258,6 +259,13 @@ class DemoDataService
         $families = $json['families'] ?? $json['data'] ?? [];
         $logger->info('Starting simplified demo import', ['total_families' => count($families)]);
 
+        // Build classification name to ID map
+        $classificationMap = [];
+        $classifications = ListOptionQuery::create()->filterById(1)->orderByOptionSequence()->find();
+        foreach ($classifications as $cls) {
+            $classificationMap[$cls->getOptionName()] = $cls->getOptionId();
+        }
+
         foreach ($families as $famData) {
             try {
                 $family = new Family();
@@ -305,7 +313,7 @@ class DemoDataService
                 foreach ($members as $m) {
                     try {
                         $person = new Person();
-                        $person->setFamilyId($family->getId());
+                        $person->setFamId($family->getId());
                         $person->setFirstName($m['firstName'] ?? null);
                         $person->setLastName($m['lastName'] ?? null);
                         $person->setMiddleName($m['middleName'] ?? null);
@@ -316,6 +324,9 @@ class DemoDataService
                         }
                         if (!empty($m['gender'])) {
                             $person->setGender(strtolower($m['gender']) === 'male' ? 1 : (strtolower($m['gender']) === 'female' ? 2 : 0));
+                        }
+                        if (!empty($m['classification']) && isset($classificationMap[$m['classification']])) {
+                            $person->setClsId($classificationMap[$m['classification']]);
                         }
                         $person->setEmail($m['email'] ?? null);
                         $person->setHomePhone($m['phone'] ?? null);
@@ -341,11 +352,15 @@ class DemoDataService
                                 $note->save();
                                 $this->importResult['imported']['notes']++;
                             } catch (Exception $e) {
-                                $this->importResult['warnings'][] = "Person note import failed: {$e->getMessage()}";
+                                $msg = "Person note import failed: {$e->getMessage()}";
+                                $this->importResult['warnings'][] = $msg;
+                                LoggerUtils::getAppLogger()->warning($msg, ['exception' => $e->getMessage()]);
                             }
                         }
                     } catch (Exception $e) {
-                        $this->importResult['warnings'][] = "Member import failed: {$e->getMessage()}";
+                        $msg = "Member import failed: {$e->getMessage()}";
+                        $this->importResult['warnings'][] = $msg;
+                        LoggerUtils::getAppLogger()->warning($msg, ['exception' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
                     }
                 }
 
@@ -364,7 +379,9 @@ class DemoDataService
                         $note->save();
                         $this->importResult['imported']['notes']++;
                     } catch (Exception $e) {
-                        $this->importResult['warnings'][] = "Family note import failed: {$e->getMessage()}";
+                        $msg = "Family note import failed: {$e->getMessage()}";
+                        $this->importResult['warnings'][] = $msg;
+                        LoggerUtils::getAppLogger()->warning($msg, ['exception' => $e->getMessage()]);
                     }
                 }
 
