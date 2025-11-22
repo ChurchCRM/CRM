@@ -8,23 +8,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
-                <h4><?= gettext("Reset Members") ?></h4>
-            </div>
-            <div class="card-body">
-                <div class="">
-                    <?= gettext("This will remove all the member data, people, and families and can't be undone.") ?>
-                </div>
-                <p><br/></p>
-                <div class="text-center">
-                    <button type="button" class="btn btn-danger"
-                            id="confirm-people"><?= gettext("Reset Families/People") ?></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
                 <h4><?= gettext("Reset Database") ?></h4>
             </div>
             <div class="card-body">
@@ -64,22 +47,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         window.location.href = window.CRM.root + "/";
                     }
                 }
-            });
-
-            $("#confirm-people").click(function () {
-                bootbox.confirm({
-                    title: i18next.t("Warning") + "!!!",
-                    message: i18next.t("This will remove all the member data, people, and families and can't be undone."),
-                    size: 'small',
-                    callback: function (result) {
-                        window.CRM.APIRequest({
-                            method: "DELETE",
-                            path: "database/people/clear",
-                        }).done(function (data) {
-                            window.location.href = window.CRM.root + "/";
-                        });
-                    }
-                });
             });
 
             $("#confirm-db").click(function () {
