@@ -21,12 +21,12 @@ Key conventions (must follow)
 
 Routing & middleware
 - Put API routes in `src/api/routes/` and legacy pages in `src/*.php`.
-- Middleware order (important):
+- Middleware order (CRITICAL - Slim 4 uses LIFO):
     1. addBodyParsingMiddleware()
     2. addRoutingMiddleware()
-    3. add(VersionMiddleware)
-    4. add(AuthMiddleware)
-    5. add(CorsMiddleware)
+    3. add(CorsMiddleware)          // Last added, runs FIRST
+    4. add(AuthMiddleware)          // Runs SECOND
+    5. add(VersionMiddleware)       // First added, runs LAST
 
 API & naming
 - Prefer kebab-case endpoints for upgrade/system routes (e.g. `/download-latest-release`).

@@ -10048,3 +10048,355 @@ msgstr "Téléchargement de la dernière version depuis GitHub..."
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr "Saisissez votre identifiant et nous vous enverrons par e-mail un lien pour réinitialiser votre mot de passe."
 
+#: 
+msgid "Expected Hash"
+msgstr "Hachage attendu"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Échec de la création de la sauvegarde."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Échec du téléchargement du package de mise à jour."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Impossible d'actualiser les informations de mise à niveau depuis GitHub."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "Impossible d'actualiser les informations de mise à niveau. Veuillez réessayer."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "Impossible d'enregistrer les paramètres. Veuillez réessayer."
+
+#: 
+msgid "File Name"
+msgstr "Nom de fichier"
+
+#: 
+msgid "Files Missing"
+msgstr "Fichiers manquants"
+
+#: 
+msgid "Files Modified"
+msgstr "Fichiers modifiés"
+
+#: 
+msgid "Go to Login"
+msgstr "Allez à la page de Connexion"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "Je comprends - Continuer"
+
+#: 
+msgid "Language updated to"
+msgstr "Langue mise à jour à"
+
+#: 
+msgid "Login Name is required"
+msgstr "Un nom d'utilisateur est obligatoire"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "Une fois que vous aurez reçu l'e-mail, vous pourrez vous connecter avec votre mot de passe temporaire et le modifier pour en choisir un autre."
+
+#: 
+msgid "Password Reset Error"
+msgstr "Erreur de réinitialisation du mot de passe"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "Réinitialisation du mot de passe réussie"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "Veuillez vérifier votre boîte mail (y compris le dossier spam/courrier indésirable) pour retrouver votre mot de passe temporaire."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "Veuillez ne pas fermer cette fenêtre ni actualiser la page."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "Tâches préalables à la mise à niveau terminées"
+
+#: 
+msgid "Pre-Upgrade Tasks Detected"
+msgstr "Tâches préalables à la mise à niveau détectées"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "Avertissements préalables à la mise à niveau"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "Actualiser depuis GitHub"
+
+#: 
+msgid "Release Notes:"
+msgstr "Notes de version :"
+
+#: 
+msgid "Request Password Reset"
+msgstr "Demander la réinitialisation du mot de passe"
+
+#: 
+msgid "Retry Download"
+msgstr "Réessayer de télécharger"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Retour au tableau de bord"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "Hachage SHA1 :"
+
+#: 
+msgid "Send Reset Email"
+msgstr "Envoyer un e-mail de réinitialisation"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "Paramètres enregistrés. Rechargement de la page…"
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Paramètre mis à jour avec succès"
+
+#: 
+msgid "Skip Backup"
+msgstr "Ignorer la sauvegarde"
+
+#: 
+msgid "System Up to Date"
+msgstr "Système à jour"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "Assistant de mise à niveau du système"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "Mise à niveau du système effectuée avec succès !"
+
+#: 
+msgid "This may take several minutes."
+msgstr "Cela peut prendre plusieurs minutes."
+
+#: 
+msgid "Up to date"
+msgstr "À jour"
+
+#: 
+msgid "Update Available!"
+msgstr "Mise à jour disponible !"
+
+#: 
+msgid "Update Package Details"
+msgstr "Mettre à jour les détails du package"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Le package de mise à jour a été téléchargé avec succès."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "Mise à jour terminée !"
+
+#: 
+msgid "Upgrade failed."
+msgstr "La mise à jour a échoué."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "La mise à jour a échoué. Veuillez consulter les journaux."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "Informations de mise à jour actualisées avec succès"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Informations de mise à jour actualisées. Rechargement de la page…"
+
+#: 
+msgid "Version Information"
+msgstr "Informations sur la version"
+
+#: 
+msgid "Warnings"
+msgstr "Avertissements"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "Nous n'avons pas pu traiter votre demande de réinitialisation de mot de passe. Veuillez réessayer en demandant un nouveau lien de réinitialisation."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "Vous avez choisi de ne pas effectuer de sauvegarde. Il est fortement recommandé d'en effectuer une avant de procéder à la mise à jour."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "Votre installation ChurchCRM a été mise à jour avec succès."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "Votre installation de ChurchCRM utilise la dernière version."
+
+#: 
+msgid "2-50 characters"
+msgstr "2 à 50 caractères"
+
+#: 
+msgid "Dear Friend"
+msgstr "Cher ami"
+
+#: 
+msgid "No Data Found"
+msgstr "Aucune donnée trouvée"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "Aucun enregistrement n'a été trouvé dans le rapport précédent. Veuillez modifier vos filtres ou votre plage de dates et réessayer."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "Veuillez saisir un nom de menu (2 à 50 caractères)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "Veuillez saisir une URL valide commençant par http:// ou https://"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "Toutes les signatures des fichiers système correspondent aux valeurs attendues"
+
+#: 
+msgid "Files with issues"
+msgstr "Fichiers avec des problèmes"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Le contrôle d'intégrité a échoué"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Contrôle d'intégrité réussi"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "Le fichier de définition de signature existe, mais il est illisible. Vérifiez les permissions du fichier."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "Le fichier de définition de signature est manquant à l'emplacement %s. Exécutez la tâche de packaging ou déployez une version officielle pour régénérer les signatures."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "Impossible de contacter le point de terminaison d'intégrité. Consultez les journaux d'erreurs du serveur web."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "Ajoutez toute note supplémentaire concernant ce dépôt."
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "Le montant dépasse la valeur maximale autorisée (999999,99)."
+
+#: 
+msgid "Checks"
+msgstr "Chèques"
+
+#: 
+msgid "Clear Filters"
+msgstr "Effacer les filtres"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "Cliquez sur une barre pour filtrer les paiements"
+
+#: 
+msgid "Delete Selected"
+msgstr "Supprimer la sélection"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Dépôt enregistré avec succès"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Erreur lors de la suppression des paiements"
+
+#: 
+msgid "Error loading payments"
+msgstr "Erreur lors du chargement des paiements"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Erreur lors de l'enregistrement du dépôt"
+
+#: 
+msgid "Funds"
+msgstr "Fonds"
+
+#: 
+msgid "Generate Report"
+msgstr "Générer un rapport"
+
+#: 
+msgid "No Cash"
+msgstr "Pas d'argent liquide"
+
+#: 
+msgid "No Checks"
+msgstr "Aucun chèque"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Aucun paiement pour l'instant. Cliquez sur « Ajouter un paiement » pour commencer."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "Le montant non déductible dépasse la valeur maximale autorisée (999999,99)."
+
+#: 
+msgid "Payments"
+msgstr "Paiements"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Paiements supprimés avec succès"
+
+#: 
+msgid "Please select a date"
+msgstr "Veuillez sélectionner une date"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Veuillez sélectionner les lignes à supprimer"
+
+#: 
+msgid "Saving..."
+msgstr "Enregistrement..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "Cette action est irréversible."
+
+#: 
+msgid "Total Deposit"
+msgstr "Dépôt total"
+
+#: 
+msgid "Total Payments"
+msgstr "Paiements totaux"
+
+#: 
+msgid "payments(s)?"
+msgstr "paiement(s) ?"
+

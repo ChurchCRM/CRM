@@ -9,71 +9,50 @@ jobs:
   comment-on-issue:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
       - name: Comment on bug reports
         uses: actions/github-script@v7
         with:
           script: |
-            // Determine the issue type based on labels
-            const labels = context.payload.issue.labels.map(label => label.name);
-            const isBug = labels.includes('bug');
-            
-            let comment = '';
-            
-            if (isBug) {
-              comment = `## 🔍 Help Us Debug This Issue
+            const fs = require('fs');
+            const path = require('path');
+            const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
 
-Thank you for reporting this bug! To help us resolve it faster, please:
-
-### 1️⃣ **Collect Diagnostic Information**
-See our comprehensive guide: **[Bug Reporting & Diagnostics](https://wiki.churchcrm.io/Bug-Reporting-and-Diagnostics)**
-
-**Quick checklist:**
-- [ ] Include your **ChurchCRM version** (Admin → Dashboard or About)
-- [ ] Include your **environment** (PHP, Database, hosting type)
-- [ ] Attach **logs** from Admin → System Logs (filter by ERROR/CRITICAL)
-- [ ] Describe **steps to reproduce** the issue
-
-### 2️⃣ **Best Way to Report**
-If you have access to your ChurchCRM installation:
-1. Go to **Support** → **Report an Issue** in your app
-2. This automatically captures your system information and logs
-3. Much faster for us to diagnose!
-
-### 3️⃣ **Format Your Report**
-If reporting via GitHub:
-- Wrap logs in \`\`\`code\`\`\` blocks
-- [Redact sensitive info](https://wiki.churchcrm.io/Bug-Reporting-and-Diagnostics#privacy--security) (passwords, IPs, domains)
-- Include screenshots if visual
-
-### 📚 Full Guide
-See the complete guide for:
-- How to access logs in cPanel
-- SSH commands for self-hosted
-- What information to collect
-- Privacy guidelines
-
-👉 **[Bug Reporting & Diagnostics Guide](https://wiki.churchcrm.io/Bug-Reporting-and-Diagnostics)**
-
----
-Thank you for helping make ChurchCRM better! 🙏`;
-            } else if (labels.includes('question')) {
-              comment = `## ❓ Questions or Support?
-
-Thanks for reaching out! For general questions and support:
-
-- 📖 **[Wiki Troubleshooting Guide](https://wiki.churchcrm.io/Troubleshooting)** - Most common issues
-- 💬 **[Gitter Chat](https://gitter.im/ChurchCRM/CRM)** - Community support
-- 📚 **[Documentation](https://wiki.churchcrm.io)** - Full user guide
-- 🐛 **[Bug Reports](https://github.com/ChurchCRM/CRM/issues?q=label:bug)** - Check if it's a known issue
-
-For the fastest response, consider asking in our Gitter community chat!`;
+            // Read template files from the repository
+            let bugComment = '';
+            let questionComment = '';
+            try {
+              bugComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/bug.md'), 'utf8');
+            } catch (e) {
+              console.log('Could not read bug.md:', e.message);
             }
-            
+            try {
+              questionComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/question.md'), 'utf8');
+            } catch (e) {
+              console.log('Could not read question.md:', e.message);
+            }
+
+            const labels = context.payload.issue.labels.map(l => l.name);
+            const isBug = labels.includes('bug');
+
+            let comment = '';
+            if (isBug && bugComment) {
+              comment = bugComment;
+            } else if (labels.includes('question') && questionComment) {
+              comment = questionComment;
+            }
+
             if (comment) {
-              github.rest.issues.createComment({
+              await github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 body: comment
               });
+            } else {
+              console.log('No comment template matched or templates missing.');
             }
