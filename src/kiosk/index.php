@@ -68,9 +68,9 @@ SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
-$app->add(VersionMiddleware::class);
-$app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
+$app->add(VersionMiddleware::class);
 
 // routes
 require __DIR__ . '/routes/kiosk.php';
