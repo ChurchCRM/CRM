@@ -2,7 +2,7 @@
 
 describe('API Private Admin Demo', () => {
   it('Load demo data (force=true) as admin', () => {
-    const body = { includeFinancial: false, includeEvents: false, force: false };
+    const body = { includeFinancial: false, includeEvents: false, force: true };
 
     cy.makePrivateAdminAPICall('POST', '/admin/api/demo/load', body, 200).then((resp) => {
       // Expect success flag and import metadata in body
