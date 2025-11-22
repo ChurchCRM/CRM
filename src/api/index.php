@@ -42,9 +42,9 @@ SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
-$app->add(VersionMiddleware::class);
-$app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
+$app->add(VersionMiddleware::class);
 
 // Group routes for better organization
 require __DIR__ . '/routes/calendar/events.php';

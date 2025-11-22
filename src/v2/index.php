@@ -33,9 +33,9 @@ SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
-$app->add(VersionMiddleware::class);
-$app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
+$app->add(VersionMiddleware::class);
 
 require __DIR__ . '/routes/common/mvc-helper.php';
 require __DIR__ . '/routes/admin/admin.php';
