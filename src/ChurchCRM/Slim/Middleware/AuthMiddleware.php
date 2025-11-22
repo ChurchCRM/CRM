@@ -32,7 +32,7 @@ class AuthMiddleware implements MiddlewareInterface
                     ]);
                     $response = new Response();
                     $errorBody = json_encode(['error' => gettext('Invalid API key'), 'code' => 401]);
-                    $response->getBody()->write(string: $errorBody);
+                    $response->getBody()->write($errorBody);
                     return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
                 }
                 $logger->debug('API key authentication successful', [
