@@ -17,6 +17,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-app bg-secondary">
                         <i class="fa fa-bug fa-3x"></i><br><?= gettext('Debug Info') ?>
                     </a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-app bg-primary">
+                        <i class="fa fa-cloud-upload-alt fa-3x"></i><br><?= gettext('System Upgrade') ?>
+                    </a>
                 </div>
             </div>
         </div>

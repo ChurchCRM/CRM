@@ -4,7 +4,7 @@ describe('System Upgrade Page', () => {
     });
 
     it('should load and display version information', () => {
-        cy.visit('/v2/admin/upgrade');
+        cy.visit('/admin/system/upgrade');
         
         // Check version information card exists
         cy.contains('Version Information').should('be.visible');
