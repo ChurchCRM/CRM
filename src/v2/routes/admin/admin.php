@@ -16,7 +16,6 @@ use Slim\Views\PhpRenderer;
 $app->group('/admin', function (RouteCollectorProxy $group): void {
     $group->get('/debug', 'debugPage');
     $group->get('/menus', 'menuPage');
-    $group->get('/upgrade', 'upgradePage');
 })->add(AdminRoleAuthMiddleware::class);
 
 function debugPage(Request $request, Response $response, array $args): Response
@@ -41,64 +40,4 @@ function menuPage(Request $request, Response $response, array $args): Response
     ];
 
     return $renderer->render($response, 'menus.php', $pageArgs);
-}
-
-
-
-function upgradePage(Request $request, Response $response, array $args): Response
-{
-    $renderer = new PhpRenderer('templates/admin/');
-    
-    // Get pre-upgrade tasks
-    $taskService = new TaskService();
-    $preUpgradeTasks = $taskService->getActivePreUpgradeTasks();
-    
-    // Check for warnings: either pre-upgrade tasks OR integrity check failures
-    $hasPreUpgradeTasks = count($preUpgradeTasks) > 0;
-    $integrityCheckFailed = AppIntegrityService::getIntegrityCheckStatus() === gettext("Failed");
-    $hasWarnings = $hasPreUpgradeTasks || $integrityCheckFailed;
-    
-    // Get integrity check data if failed
-    $integrityCheckData = [];
-    if ($integrityCheckFailed) {
-        $integrityCheckData = [
-            'status' => AppIntegrityService::getIntegrityCheckStatus(),
-            'message' => AppIntegrityService::getIntegrityCheckMessage(),
-            'files' => AppIntegrityService::getFilesFailingIntegrityCheck(),
-        ];
-    }
-    
-    // Get version information
-    $currentVersion = VersionUtils::getInstalledVersion();
-    $availableVersion = null;
-    $isUpdateAvailable = false;
-    
-    // Check if update information is available in session
-    if (isset($_SESSION['systemUpdateAvailable']) && $_SESSION['systemUpdateAvailable'] === true) {
-        $isUpdateAvailable = true;
-        if (isset($_SESSION['systemUpdateVersion']) && $_SESSION['systemUpdateVersion'] !== null) {
-            $availableVersion = $_SESSION['systemUpdateVersion']->__toString();
-        }
-    }
-    
-    // Get pre-release upgrade setting info
-    $prereleaseConfig = SystemConfig::getConfigItem('bAllowPrereleaseUpgrade');
-    $allowPrereleaseUpgrade = SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade');
-    
-    $pageArgs = [
-        'sRootPath'             => SystemURLs::getRootPath(),
-        'sPageTitle'            => gettext('System Upgrade'),
-        'preUpgradeTasks'       => $preUpgradeTasks,
-        'hasWarnings'           => $hasWarnings,
-        'hasPreUpgradeTasks'    => $hasPreUpgradeTasks,
-        'integrityCheckFailed'  => $integrityCheckFailed,
-        'integrityCheckData'    => $integrityCheckData,
-        'currentVersion'        => $currentVersion,
-        'availableVersion'      => $availableVersion,
-        'isUpdateAvailable'     => $isUpdateAvailable,
-        'prereleaseConfig'      => $prereleaseConfig,
-        'allowPrereleaseUpgrade' => $allowPrereleaseUpgrade,
-    ];
-
-    return $renderer->render($response, 'upgrade.php', $pageArgs);
 }
