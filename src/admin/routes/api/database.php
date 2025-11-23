@@ -54,14 +54,18 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
 
             $logger->info("Database reset completed - dropped $droppedCount objects (tables and views)");
 
-            AuthenticationManager::endSession();
+            // Destroy the session directly
+            session_destroy();
 
             return SlimUtils::renderJSON(
                 $response,
                 [
                     'success' => true,
                     'msg' => gettext('The database has been cleared.'),
-                    'dropped' => $droppedCount
+                    'dropped' => $droppedCount,
+                    // Provide default credentials for post-reset login (matches other UI flows)
+                    'defaultUsername' => 'admin',
+                    'defaultPassword' => 'changeme'
                 ]
             );
         } catch (\Exception $e) {
