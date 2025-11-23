@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 13:36-0800\n"
+"POT-Creation-Date: 2025-11-23 23:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1510,6 +1510,10 @@ msgstr ""
 msgid "Credit Card"
 msgstr ""
 
+#. Context: query_qry
+msgid "Credit Card People"
+msgstr ""
+
 #. Context: countries
 msgid "Croatia (Hrvatska)"
 msgstr ""
@@ -2214,9 +2218,6 @@ msgstr ""
 msgid "Encrypt backup file with a password?"
 msgstr ""
 
-msgid "Encrypt backups if storing in accessible locations"
-msgstr ""
-
 msgid "End Date"
 msgstr ""
 
@@ -2384,10 +2385,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Ethiopia"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Event"
 msgstr ""
 
 msgid "Event Attendance"
@@ -2815,10 +2812,6 @@ msgid "Find Registered students"
 msgstr ""
 
 msgid "Find family->"
-msgstr ""
-
-#. Context: query_qry
-msgid "Find people who didn't attend an event"
 msgstr ""
 
 #. Context: query_qry
@@ -3835,7 +3828,7 @@ msgstr ""
 msgid "Load Authorized"
 msgstr ""
 
-msgid "Load sample families, people, groups, and events for testing and demonstration."
+msgid "Load sample families, people, groups for evaluation and demonstration."
 msgstr ""
 
 msgid "Loading"
@@ -4223,10 +4216,6 @@ msgid "Missing calendar access token"
 msgstr ""
 
 msgid "Missing event id"
-msgstr ""
-
-#. Context: query_qry
-msgid "Missing people"
 msgstr ""
 
 #. Context: query_qry
@@ -4985,6 +4974,10 @@ msgid "People not in list"
 msgstr ""
 
 #. Context: query_qry
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
+#. Context: query_qry
 msgid "People who are members"
 msgstr ""
 
@@ -5657,10 +5650,7 @@ msgstr ""
 msgid "Reset System"
 msgstr ""
 
-msgid "Reset database to factory defaults or clear specific data."
-msgstr ""
-
-msgid "Reset entire database (new install state)"
+msgid "Reset the software to factory defaults or clear all data."
 msgstr ""
 
 msgid "Reset your password"
@@ -6048,10 +6038,6 @@ msgid "Select none"
 msgstr ""
 
 #. Context: queryparameters_qrp
-msgid "Select the desired event"
-msgstr ""
-
-#. Context: queryparameters_qrp
 msgid "Select the desired family role."
 msgstr ""
 
@@ -6397,9 +6383,6 @@ msgid "State"
 msgstr ""
 
 msgid "Status"
-msgstr ""
-
-msgid "Store copies both on-site (fire-proof safe) and off-site"
 msgstr ""
 
 msgid "Store these in a secure location"
@@ -7349,10 +7332,16 @@ msgstr ""
 msgid "View Photo"
 msgstr ""
 
+msgid "View System Logs"
+msgstr ""
+
 msgid "View User"
 msgstr ""
 
 msgid "View Your Cart"
+msgstr ""
+
+msgid "View and manage application log files."
 msgstr ""
 
 msgid "View application logs. Click on a log file to view its contents."
@@ -7400,9 +7389,6 @@ msgid "W"
 msgstr ""
 
 msgid "WARNING"
-msgstr ""
-
-msgid "WARNING: These operations are irreversible"
 msgstr ""
 
 msgid "WARNING: This action can not be undone and may have legal implications!"
