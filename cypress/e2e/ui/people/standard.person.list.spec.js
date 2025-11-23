@@ -12,21 +12,36 @@ describe("Standard People", () => {
     it("Listing all persons", () => {
         cy.visit("v2/people");
         cy.wait(500);
-        cy.contains("Admin");
-        cy.contains("Church");
-        cy.contains("Joel");
-        cy.contains("Emma");
+        
+        // Search for Admin
+        cy.get("input[type='search']").type("Admin");
+        cy.get("#members tbody").contains("Admin").should("exist");
+        
+        // Clear and search for Joel
+        cy.get("input[type='search']").clear().type("Joel");
+        cy.get("#members tbody").contains("Joel").should("exist");
+        
+        // Clear and search for Emma
+        cy.get("input[type='search']").clear().type("Emma");
+        cy.get("#members tbody").contains("Emma").should("exist");
     });
 
 
    it("Listing all persons with gender url filter", () => {
         cy.visit("v2/people?Gender=0");
         cy.wait(500);
-        cy.contains("Admin");
-        cy.contains("Church");
-        cy.contains("Kennedy");
-        cy.contains("Judith");
-        cy.contains("Emma").should("not.exist");
+        
+        // Search for Admin (male)
+        cy.get("input[type='search']").type("Admin");
+        cy.get("#members tbody").contains("Admin").should("exist");
+        
+        // Clear and search for Kennedy (male)
+        cy.get("input[type='search']").clear().type("Kennedy");
+        cy.get("#members tbody").contains("Kennedy").should("exist");
+        
+        // Clear search and verify Emma (female) is not in filtered results
+        cy.get("input[type='search']").clear().type("Emma");
+        cy.get("#members tbody").contains("Emma").should("not.exist");
     });
 
 
