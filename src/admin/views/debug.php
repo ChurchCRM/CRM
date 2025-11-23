@@ -247,12 +247,12 @@ $emailValid = SystemConfig::hasValidMailServerSettings();
                         <td>
                             <?php if (SystemConfig::hasValidMailServerSettings()): ?>
                                 <i class="fa fa-check text-success mr-2"></i><span class="text-success"><?= gettext('Yes') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/v2/email/debug" class="btn btn-sm btn-outline-primary ml-2" title="<?= gettext('Email Debug Info') ?>">
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-primary ml-2" title="<?= gettext('Email Debug Info') ?>">
                                     <i class="fa fa-envelope mr-1"></i><?= gettext('Debug') ?>
                                 </a>
                             <?php else: ?>
                                 <i class="fa fa-times text-danger mr-2"></i><span class="text-danger"><?= gettext('No') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/v2/email/debug" class="btn btn-sm btn-outline-danger ml-2" title="<?= gettext('Email Debug Info') ?>">
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-danger ml-2" title="<?= gettext('Email Debug Info') ?>">
                                     <i class="fa fa-envelope mr-1"></i><?= gettext('Debug') ?>
                                 </a>
                             <?php endif; ?>
