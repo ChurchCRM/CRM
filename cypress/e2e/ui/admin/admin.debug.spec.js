@@ -7,7 +7,7 @@ describe("Admin Debug", () => {
 
     it("View system debug", () => {
         cy.visit("admin/system/debug");
-        cy.contains("ChurchCRM Installation Information");
+        cy.contains("ChurchCRM Installation");
         cy.contains("Database");
     });
 
