@@ -9,122 +9,271 @@ use ChurchCRM\Utils\VersionUtils;
 
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
+<?php
+$integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
+$hasIntegrityIssues = count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0;
+$emailValid = SystemConfig::hasValidMailServerSettings();
+?>
+<?php if ($hasIntegrityIssues || !$emailValid): ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong><i class="fa fa-exclamation-triangle"></i> <?= gettext('System Health Issues Detected') ?>:</strong>
+    <ul class="mb-0 mt-2">
+        <?php if ($hasIntegrityIssues): ?>
+        <li><?= gettext('Warning: Signature mismatch. Some ChurchCRM system files may have been modified since the last installation.') ?></li>
+        <?php endif; ?>
+        <?php if (!$emailValid): ?>
+        <li><?= gettext('Email server settings are invalid. Outgoing emails may not work.') ?></li>
+        <?php endif; ?>
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php endif; ?>
 <div class="row">
-    <div class="col-lg-4">
+    <!-- Installation Configuration - First Card -->
+    <div class="col-md-4">
         <div class="card">
-            <div class="card-header">
-                <h4><?= gettext('ChurchCRM Installation Information') ?></h4>
+            <div class="card-header" id="headingInstallation">
+                <h4 data-toggle="collapse" data-target="#collapseInstallation" aria-expanded="false" aria-controls="collapseInstallation" style="cursor: pointer;">
+                    <i class="fa fa-cubes mr-2"></i><?= gettext('ChurchCRM Installation') ?>
+                    <i class="fa fa-chevron-down float-right"></i>
+                </h4>
             </div>
-            <div class="card-body overflow-auto">
-                <table class="table table-striped">
+            <div id="collapseInstallation" class="collapse" aria-labelledby="headingInstallation">
+                <div class="card-body">
+                <table class="table table-striped table-sm">
                     <tr>
-                        <td>ChurchCRM <?= gettext('Software Version') ?></td>
+                        <td><?= gettext('Software Version') ?></td>
                         <td><?= VersionUtils::getInstalledVersion() ?></td>
                     </tr>
                     <tr>
-                        <td>RootPath</td>
-                        <td><?= SystemURLs::getRootPath() ?></td>
-                    </tr>
-                    <tr>
-                        <td>DocumentRoot</td>
-                        <td><?= SystemURLs::getDocumentRoot() ?></td>
-                    </tr>
-                    <tr>
-                        <td>ImagesRoot</td>
-                        <td><?= SystemURLs::getImagesRoot() ?></td>
-                    </tr>
-                    <tr>
-                        <td>URL</td>
-                        <td><?= SystemURLs::getURL() ?></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                <h4><?= gettext('System Information') ?></h4>
-            </div>
-            <div class="card-body overflow-auto">
-                <table class="table table-striped">
-                    <tr>
-                        <td>Server Hostname</td>
-                        <td><?= gethostname() ?></td>
-                    </tr>
-                    <tr>
-                        <td>Server IP</td>
-                        <td><?= $_SERVER['SERVER_ADDR'] ?></td>
-                    </tr>
-                    <tr>
-                        <td>Server Platform</td>
-                        <td><?= php_uname() ?></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                <h4><?= gettext('Database') ?></h4>
-            </div>
-            <div class="card-body overflow-auto">
-                <table class="table table-striped">
-                    <tr>
-                        <td>ChurchCRM <?= gettext('Database Version') ?></td>
+                        <td><?= gettext('Database Version') ?></td>
                         <td><?= VersionUtils::getDBVersion() ?></td>
                     </tr>
                     <tr>
-                        <td><?= gettext('Database Server Version') ?></td>
-                        <td><?= SystemService::getDBServerVersion() ?></td>
+                        <td><?= gettext('Root Path') ?></td>
+                        <td>
+                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getRootPath() ?: '(empty - top level)' ?></code>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(SystemURLs::getRootPath() ?: '', ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>DSN</td>
-                        <td><?= Bootstrapper::getDSN() ?></td>
+                        <td><?= gettext('Document Root') ?></td>
+                        <td>
+                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getDocumentRoot() ?></code>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(SystemURLs::getDocumentRoot(), ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('Base URL') ?></td>
+                        <td>
+                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getURL() ?></code>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(SystemURLs::getURL(), ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('Images Root') ?></td>
+                        <td>
+                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getImagesRoot() ?></code>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(SystemURLs::getImagesRoot(), ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('DSN') ?></td>
+                        <td>
+                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= Bootstrapper::getDSN() ?></code>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(Bootstrapper::getDSN(), ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                        </td>
                     </tr>
                 </table>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <!-- Health Checks -->
+    <div class="col-md-4">
         <div class="card">
-            <div class="card-header">
-                <h4><?= gettext('Web Server') ?></h4>
+            <div class="card-header" id="headingIntegrity">
+                <h4 data-toggle="collapse" data-target="#collapseIntegrity" aria-expanded="false" aria-controls="collapseIntegrity" style="cursor: pointer;">
+                    <i class="fa fa-shield-alt mr-2"></i><?= gettext('Application Integrity Check') ?> 
+                    <span class="badge <?= $integrityStatus === 'Passed' ? 'badge-success' : 'badge-danger' ?> ml-2"><?= $integrityStatus ?></span>
+                    <i class="fa fa-chevron-down float-right"></i>
+                </h4>
             </div>
-            <div class="card-body overflow-auto">
-                <table class="table table-striped">
+            <div id="collapseIntegrity" class="collapse" aria-labelledby="headingIntegrity">
+                <div class="card-body">
+                <?php $message = AppIntegrityService::getIntegrityCheckMessage(); ?>
+                <p><strong><?= gettext('Details:') ?></strong> <?= !empty($message) ? $message : gettext('No integrity check has been performed yet.') ?></p>
+                <?php
+                $failing = AppIntegrityService::getFilesFailingIntegrityCheck();
+                if (count($failing) > 0) {
+                    ?>
+                    <div class="alert alert-info mt-3">
+                        <strong><i class="fa fa-info-circle mr-2"></i><?= gettext('Files Failing Integrity Check') ?>:</strong>
+                        <p class="mb-0 mt-2 text-muted"><?= gettext('The following files have hash mismatches or are missing:') ?></p>
+                    </div>
+                    <div class="table-responsive">
+                    <table class="table table-sm table-striped" width="100%" id="fileIntegrityCheckResultsTable">
+                        <thead>
+                        <tr>
+                            <th><?= gettext('File Name') ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($failing as $filename) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <code class="text-monospace" style="word-break: break-all; font-size: 0.85rem;">
+                                        <?= htmlspecialchars($filename) ?>
+                                    </code>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                    </div>
+                    <div class="alert alert-warning mt-3">
+                        <small class="text-muted">
+                            <strong><?= gettext('Tip:') ?></strong>
+                            <?= gettext('Hash mismatches can occur if you have customized files or installed extensions. If you did not intentionally modify these files, consider re-deploying from an official release.') ?>
+                        </small>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <div class="alert alert-success">
+                        <i class="fa fa-check-circle mr-2"></i><?= gettext('All system files have passed integrity validation.') ?>
+                    </div>
+                    <?php
+                }
+                ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header" id="headingPrerequisites">
+                <h4 data-toggle="collapse" data-target="#collapsePrerequisites" aria-expanded="false" aria-controls="collapsePrerequisites" style="cursor: pointer;">
+                    <i class="fa fa-check-circle mr-2"></i><?= gettext('Application Prerequisites') ?>
+                    <i class="fa fa-chevron-down float-right"></i>
+                </h4>
+            </div>
+            <div id="collapsePrerequisites" class="collapse" aria-labelledby="collapsePrerequisites">
+                <div class="card-body">
+                <h6 class="text-muted"><?= gettext('PHP & Server Requirements') ?></h6>
+                <?php $appPrereqs = AppIntegrityService::getApplicationPrerequisites(); ?>
+                <table class="table table-striped table-sm">
+                    <?php foreach ($appPrereqs as $prerequisite) { 
+                        $status = $prerequisite->getStatusText();
+                        $isOk = $status === gettext('Passed');
+                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
+                    ?>
+                        <tr>
+                            <td><i class="fa <?= $iconClass ?> mr-2"></i><a href='<?= $prerequisite->getWikiLink() ?>' target="_blank" rel="noopener noreferrer"><?= $prerequisite->getName() ?></a></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+                <hr>
+                <h6 class="text-muted"><?= gettext('Filesystem Permissions') ?></h6>
+                <?php $fsPrereqs = AppIntegrityService::getFilesystemPrerequisites(); ?>
+                <table class="table table-striped table-sm">
+                    <?php foreach ($fsPrereqs as $prerequisite) { 
+                        $status = $prerequisite->getStatusText();
+                        $isOk = $status === gettext('Passed');
+                        $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
+                    ?>
+                        <tr>
+                            <td><i class="fa <?= $iconClass ?> mr-2"></i><?= $prerequisite->getName() ?></td>
+                        </tr>
+                    <?php } ?>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Configuration -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header" id="headingSystemConfig">
+                <h4 data-toggle="collapse" data-target="#collapseSystemConfig" aria-expanded="false" aria-controls="collapseSystemConfig" style="cursor: pointer;">
+                    <i class="fa fa-cogs mr-2"></i><?= gettext('System & Configuration') ?>
+                    <i class="fa fa-chevron-down float-right"></i>
+                </h4>
+            </div>
+            <div id="collapseSystemConfig" class="collapse" aria-labelledby="headingSystemConfig">
+                <div class="card-body">
+                <h6 class="text-muted mb-2"><?= gettext('Server Information') ?></h6>
+                <table class="table table-striped table-sm mb-3">
                     <tr>
+                        <td><?= gettext('Hostname') ?></td>
+                        <td><?= gethostname() ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('IP Address') ?></td>
+                        <td><?= $_SERVER['SERVER_ADDR'] ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('Platform') ?></td>
+                        <td><?= php_uname() ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('Software') ?></td>
                         <td><?= $_SERVER["SERVER_SOFTWARE"] ?></td>
                     </tr>
-<?php
-if (function_exists('apache_get_modules')) {
-    foreach (apache_get_modules() as $module) {
-        echo <<<EOD
-<tr>
-    <td>$module</td>
-</tr>
-EOD;
-    }
-} else {
-    echo <<<EOD
-<tr>
-    <td>Unable to list Web Server modules!</td>
-</tr>
-EOD;
-}
-?>
                 </table>
+                <hr>
+                <h6 class="text-muted mb-2"><?= gettext('Database Server') ?></h6>
+                <table class="table table-striped table-sm mb-3">
+                    <tr>
+                        <td><?= gettext('Version') ?></td>
+                        <td><?= SystemService::getDBServerVersion() ?></td>
+                    </tr>
+                </table>
+                <hr>
+                <h6 class="text-muted mb-2"><?= gettext('Email Configuration') ?></h6>
+                <table class="table table-striped table-sm">
+                    <tr>
+                        <td><?= gettext('SMTP Host') ?></td>
+                        <td><?= SystemConfig::getValue("sSMTPHost") ?: gettext('Not configured') ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('Valid Settings') ?></td>
+                        <td>
+                            <?php if (SystemConfig::hasValidMailServerSettings()): ?>
+                                <i class="fa fa-check text-success mr-2"></i><span class="text-success"><?= gettext('Yes') ?></span>
+                                <a href="<?= SystemURLs::getRootPath() ?>/v2/email/debug" class="btn btn-sm btn-outline-primary ml-2" title="<?= gettext('Email Debug Info') ?>">
+                                    <i class="fa fa-envelope mr-1"></i><?= gettext('Debug') ?>
+                                </a>
+                            <?php else: ?>
+                                <i class="fa fa-times text-danger mr-2"></i><span class="text-danger"><?= gettext('No') ?></span>
+                                <a href="<?= SystemURLs::getRootPath() ?>/v2/email/debug" class="btn btn-sm btn-outline-danger ml-2" title="<?= gettext('Email Debug Info') ?>">
+                                    <i class="fa fa-envelope mr-1"></i><?= gettext('Debug') ?>
+                                </a>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                </table>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-md-4">
         <div class="card">
-            <div class="card-header">
-                <h4>PHP</h4>
+            <div class="card-header" id="headingPHP">
+                <h4 data-toggle="collapse" data-target="#collapsePHP" aria-expanded="false" aria-controls="collapsePHP" style="cursor: pointer;">
+                    <i class="fa fa-code mr-2"></i><?= gettext('PHP Configuration') ?>
+                    <i class="fa fa-chevron-down float-right"></i>
+                </h4>
             </div>
-            <div class="card-body overflow-auto">
-                <table class="table table-striped">
+            <div id="collapsePHP" class="collapse" aria-labelledby="headingPHP">
+                <div class="card-body">
+                <table class="table table-striped table-sm">
                     <tr>
                         <td>PHP Version</td>
                         <td><?= PHP_VERSION ?></td>
@@ -143,95 +292,53 @@ EOD;
                     </tr>
                     <tr>
                         <td>PHP Max Execution Time</td>
-                        <td><?= ini_get('max_execution_time') ?></td>
+                        <td><?= ini_get('max_execution_time') ?>s</td>
                     </tr>
                     <tr>
                         <td>SAPI Name</td>
                         <td><?= php_sapi_name()  ?></td>
                     </tr>
                 </table>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-md-4">
         <div class="card">
-            <div class="card-header">
-                <h4><?= gettext('Email Information') ?></h4>
+            <div class="card-header" id="headingWebServer">
+                <h4 data-toggle="collapse" data-target="#collapseWebServer" aria-expanded="false" aria-controls="collapseWebServer" style="cursor: pointer;">
+                    <i class="fa fa-globe mr-2"></i><?= gettext('Web Server') ?>
+                    <i class="fa fa-chevron-down float-right"></i>
+                </h4>
             </div>
-            <div class="card-body overflow-auto">
-                <table class="table table-striped">
+            <div id="collapseWebServer" class="collapse" aria-labelledby="headingWebServer">
+                <div class="card-body">
+                <table class="table table-striped table-sm">
                     <tr>
-                        <td>SMTP Host</td>
-                        <td><?= SystemConfig::getValue("sSMTPHost") ?></td>
+                        <td colspan="2"><strong><?= $_SERVER["SERVER_SOFTWARE"] ?></strong></td>
                     </tr>
-                    <tr>
-                        <td><?= gettext('Valid Mail Server Settings') ?></td>
-                        <td><?= SystemConfig::hasValidMailServerSettings() ? "true" : "false" ?></td>
-                    </tr>
+<?php
+if (function_exists('apache_get_modules')) {
+    foreach (apache_get_modules() as $module) {
+        echo <<<EOD
+<tr>
+    <td>$module</td>
+</tr>
+EOD;
+    }
+} else {
+    echo <<<EOD
+<tr>
+    <td class="text-muted">Unable to list Web Server modules!</td>
+</tr>
+EOD;
+}
+?>
                 </table>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                <h4><?= gettext('Application Prerequisites') ?></h4>
-            </div>
-            <div class="card-body overflow-auto">
-                <table class="table table-striped">
-                    <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite) { ?>
-                        <tr>
-                            <td><a href='<?= $prerequisite->getWikiLink() ?>'><?= $prerequisite->getName() ?></a></td>
-                            <td><?= $prerequisite->getStatusText() ?></td>
-                        </tr>
-                    <?php } ?>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                <h4><?= gettext('Application Integrity Check') . ": " . AppIntegrityService::getIntegrityCheckStatus() ?></h4>
-            </div>
-            <div class="card-body">
-                <p><?= gettext('Details:') ?> <?= AppIntegrityService::getIntegrityCheckMessage() ?></p>
-                <?php
-                if (count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0) {
-                    ?>
-                    <p><?= gettext('Files failing integrity check') ?>:
-                    <table class="display responsive no-wrap" width="100%" id="fileIntegrityCheckResultsTable">
-                        <thead>
-                            <td>FileName</td>
-                            <td>Expected Hash</td>
-                            <td>Actual Hash</td>
-                        </thead>
-                        <?php
-                        foreach (AppIntegrityService::getFilesFailingIntegrityCheck() as $file) {
-                            ?>
-                            <tr>
-                                <td><?= $file->filename ?></td>
-                                <td><?= $file->expectedhash ?></td>
-                                <td>
-                                    <?php
-                                    if ($file->status === 'File Missing') {
-                                        echo gettext('File Missing');
-                                    } else {
-                                        echo $file->actualhash;
-                                    } ?>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
-                    </table>
-                    <?php
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -251,6 +358,56 @@ EOD;
     } else {
         document.addEventListener("DOMContentLoaded", callback);
     }
+
+    window.CRM.onLocalesReady(function () {
+        $(document).on('click', '.copy-btn', function() {
+            var txt = $(this).data('copy');
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(txt).then(function() {
+                    window.CRM.notify(i18next.t('Copied to clipboard'), { type: 'success', delay: 2000 });
+                }).catch(function() {
+                    window.CRM.notify(i18next.t('Copy failed'), { type: 'error', delay: 3000 });
+                });
+            } else {
+                var ta = document.createElement('textarea');
+                ta.value = txt;
+                document.body.appendChild(ta);
+                ta.select();
+                try {
+                    document.execCommand('copy');
+                    window.CRM.notify(i18next.t('Copied to clipboard'), { type: 'success', delay: 2000 });
+                } catch (e) {
+                    window.CRM.notify(i18next.t('Copy failed'), { type: 'error', delay: 3000 });
+                }
+                document.body.removeChild(ta);
+            }
+        });
+
+        // Handle collapse icon toggles
+        $('.card-header h4[data-toggle="collapse"]').on('click', function() {
+            var icon = $(this).find('i.fa');
+            // Small delay to let Bootstrap update aria-expanded
+            setTimeout(function() {
+                var isExpanded = $(this).attr('aria-expanded') === 'true';
+                if (isExpanded) {
+                    icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+                } else {
+                    icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+                }
+            }.bind(this), 10);
+        });
+
+        // Initialize icons for expanded cards
+        $('.card-header h4[data-toggle="collapse"]').each(function() {
+            var icon = $(this).find('i.fa');
+            var isExpanded = $(this).attr('aria-expanded') === 'true';
+            if (isExpanded) {
+                icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+            } else {
+                icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+            }
+        });
+    });
 </script>
 <?php
 include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
