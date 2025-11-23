@@ -18,8 +18,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <p><?= gettext("Create a backup of your ChurchCRM database and optionally include photos.") ?></p>
                 <ul class="mb-3">
                     <li><?= gettext("Make backups regularly (at least weekly)") ?></li>
-                    <li><?= gettext("Store copies both on-site (fire-proof safe) and off-site") ?></li>
-                    <li><?= gettext("Encrypt backups if storing in accessible locations") ?></li>
                 </ul>
                 <div class="text-center">
                     <a href="<?= SystemURLs::getRootPath() ?>/BackupDatabase.php" class="btn btn-primary btn-block">
@@ -64,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </h4>
             </div>
             <div class="card-body">
-                <p><?= gettext("Load sample families, people, groups, and events for testing and demonstration.") ?></p>
+                <p><?= gettext("Load sample families, people, groups for evaluation and demonstration.") ?></p>
                 
                 <!-- div class="mb-3">
                     <div class="form-check">
@@ -110,11 +108,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </h4>
             </div>
             <div class="card-body">
-                <p><?= gettext("Reset database to factory defaults or clear specific data.") ?></p>
+                <p><?= gettext("Reset the software to factory defaults or clear all data.") ?></p>
                 <ul class="mb-3">
-                    <li class="text-danger"><strong><?= gettext("WARNING: These operations are irreversible") ?></strong></li>
-                    <li><?= gettext("Reset entire database (new install state)") ?></li>
-                </ul>
+                    <li class="text-danger"><strong><?= gettext("WARNING: This completely erases the existing database") ?></strong></li>                </ul>
                 <div class="text-center">
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/reset" class="btn btn-danger btn-block">
                         <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext("Reset System") ?>
