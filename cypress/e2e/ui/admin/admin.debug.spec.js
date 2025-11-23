@@ -12,7 +12,7 @@ describe("Admin Debug", () => {
     });
 
     it("View email debug", () => {
-        cy.visit("v2/email/debug");
+        cy.visit("admin/system/debug/email");
         cy.contains("Debug Email Connection");
     });
 
