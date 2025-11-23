@@ -5,6 +5,25 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
+<!-- Quick Actions -->
+<div class="row mb-3">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" class="btn btn-app bg-info">
+                        <i class="fa fa-file-alt fa-3x"></i><br><?= gettext('System Logs') ?>
+                    </a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-app bg-secondary">
+                        <i class="fa fa-bug fa-3x"></i><br><?= gettext('Debug Info') ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="row">
     <!-- Backup Database -->
     <div class="col-lg-6">
@@ -121,25 +140,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div class="row mt-3">
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header bg-secondary">
-                <h4 class="card-title mb-0 text-white">
-                    <i class="fa fa-file-alt mr-2"></i><?= gettext("System Logs") ?>
-                </h4>
-            </div>
-            <div class="card-body">
-                <p><?= gettext("View and manage application log files.") ?></p>
-                <div class="text-center">
-                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" class="btn btn-secondary btn-block">
-                        <i class="fa fa-file-alt mr-2"></i><?= gettext("View System Logs") ?>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function () {

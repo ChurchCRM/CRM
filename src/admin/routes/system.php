@@ -60,4 +60,16 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'logs.php', $pageArgs);
     });
 
+    // Debug page (moved from v2/admin/debug)
+    $group->get('/debug', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        $pageArgs = [
+            'sRootPath'  => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Debug'),
+        ];
+
+        return $renderer->render($response, 'debug.php', $pageArgs);
+    });
+
 });
