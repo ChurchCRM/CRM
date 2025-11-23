@@ -21,6 +21,15 @@ Key conventions (must follow)
 
 Routing & middleware
 - Put API routes in `src/api/routes/` and legacy pages in `src/*.php`.
+- **Admin pages**: Create standalone PHP files in `src/` (e.g., `SystemMaintenance.php`, `SystemSettings.php`) following the legacy pattern:
+  - Use `require_once 'Include/Config.php'` and `'Include/Functions.php'`
+  - Use `AuthenticationManager::redirectHomeIfNotAdmin()` for security
+  - Set `$sPageTitle` then `require_once 'Include/Header.php'`
+  - Add menu entries in `src/ChurchCRM/Config/Menu/Menu.php`
+  - Do NOT create new pages under `/v2/admin/` - use legacy `src/*.php` pattern
+- **Admin APIs**: Place in `src/api/routes/system/` with AdminRoleAuthMiddleware
+  - Example: `system-database.php` contains `/database/import-demo-data` endpoint
+  - Use kebab-case for endpoint names (e.g., `/import-demo-data`)
 - Middleware order (CRITICAL - Slim 4 uses LIFO):
     1. addBodyParsingMiddleware()
     2. addRoutingMiddleware()
