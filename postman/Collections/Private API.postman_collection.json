@@ -222,14 +222,15 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/email/debug",
+							"raw": "{{host}}/admin/system/debug/email",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"api",
-								"email",
-								"debug"
+								"admin",
+								"system",
+								"debug",
+								"email"
 							]
 						}
 					},

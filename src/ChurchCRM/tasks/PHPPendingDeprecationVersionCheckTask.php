@@ -20,7 +20,7 @@ class PHPPendingDeprecationVersionCheckTask implements TaskInterface, PreUpgrade
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/v2/admin/debug';
+        return SystemURLs::getRootPath() . '/admin/system/debug';
     }
 
     public function getTitle(): string
