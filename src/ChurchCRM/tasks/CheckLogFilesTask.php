@@ -38,7 +38,7 @@ class CheckLogFilesTask implements TaskInterface
 
     public function getLink(): string
     {
-        return SystemURLs::getRootPath() . '/v2/admin/logs';
+        return SystemURLs::getRootPath() . '/admin/system/logs';
     }
 
     public function getTitle(): string

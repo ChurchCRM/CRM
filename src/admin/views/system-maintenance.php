@@ -121,6 +121,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<div class="row mt-3">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header bg-secondary">
+                <h4 class="card-title mb-0 text-white">
+                    <i class="fa fa-file-alt mr-2"></i><?= gettext("System Logs") ?>
+                </h4>
+            </div>
+            <div class="card-body">
+                <p><?= gettext("View and manage application log files.") ?></p>
+                <div class="text-center">
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" class="btn btn-secondary btn-block">
+                        <i class="fa fa-file-alt mr-2"></i><?= gettext("View System Logs") ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function () {
     window.CRM.onLocalesReady(function () {
@@ -217,3 +237,4 @@ $(document).ready(function () {
 </script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+

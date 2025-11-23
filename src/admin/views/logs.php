@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
     <div class="col-lg-12">
@@ -149,22 +149,19 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     $(document).ready(function() {
         window.CRM.onLocalesReady(function() {
-            // Load current log level first
             loadLogLevel();
 
-            // Initialize DataTable
             var table = $('#logFilesTable').DataTable({
                 responsive: true,
-                order: [[3, 'desc']], // Sort by Last Modified (now column 3)
+                order: [[3, 'desc']],
                 paging: false,
                 info: false,
                 searching: false,
                 columnDefs: [
-                    { orderable: false, targets: 0 } // Disable sorting on Actions column
+                    { orderable: false, targets: 0 }
                 ]
             });
 
-            // Use event delegation for dynamically loaded content
             $(document).on('click', '.view-log', function() {
                 var fileName = $(this).data('file');
                 currentLogFile = fileName;
@@ -269,7 +266,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
 
     function loadLogLevel() {
-        // Map string level names to numeric values
         var logLevelMap = {
             'DEBUG': '100',
             'INFO': '200',
@@ -294,11 +290,9 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 if (data.value) {
                     var logLevelValue = data.value;
                     
-                    // Check if it's a string name and convert to numeric
                     if (logLevelMap[logLevelValue]) {
                         logLevelValue = logLevelMap[logLevelValue];
                     } else {
-                        // Already numeric, convert to string for consistency
                         logLevelValue = String(logLevelValue);
                     }
                     
@@ -335,5 +329,4 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
 </script>
 
-<?php
-include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
