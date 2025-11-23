@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-19 23:43-0800\n"
+"POT-Creation-Date: 2025-11-23 13:36-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1486,6 +1486,9 @@ msgstr ""
 msgid "Create Report"
 msgstr ""
 
+msgid "Create a backup of your ChurchCRM database and optionally include photos."
+msgstr ""
+
 msgid "Create a backup of your database before applying the update."
 msgstr ""
 
@@ -1505,10 +1508,6 @@ msgid "Created via Family"
 msgstr ""
 
 msgid "Credit Card"
-msgstr ""
-
-#. Context: query_qry
-msgid "Credit Card People"
 msgstr ""
 
 #. Context: countries
@@ -1659,6 +1658,9 @@ msgid "Database information confirmation and correction report signer"
 msgstr ""
 
 msgid "Database name is required"
+msgstr ""
+
+msgid "Database reset failed: "
 msgstr ""
 
 msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
@@ -2212,6 +2214,9 @@ msgstr ""
 msgid "Encrypt backup file with a password?"
 msgstr ""
 
+msgid "Encrypt backups if storing in accessible locations"
+msgstr ""
+
 msgid "End Date"
 msgstr ""
 
@@ -2379,6 +2384,10 @@ msgstr ""
 
 #. Context: countries
 msgid "Ethiopia"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Event"
 msgstr ""
 
 msgid "Event Attendance"
@@ -2806,6 +2815,10 @@ msgid "Find Registered students"
 msgstr ""
 
 msgid "Find family->"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people who didn't attend an event"
 msgstr ""
 
 #. Context: query_qry
@@ -3378,6 +3391,12 @@ msgstr ""
 msgid "Import Data"
 msgstr ""
 
+msgid "Import Demo Data"
+msgstr ""
+
+msgid "Import Results"
+msgstr ""
+
 msgid "Import eGive"
 msgstr ""
 
@@ -3385,6 +3404,9 @@ msgid "Important: Failed transactions will be deleted permanently when the depos
 msgstr ""
 
 msgid "Imported"
+msgstr ""
+
+msgid "Importing demo data..."
 msgstr ""
 
 msgid "Inactive"
@@ -3396,10 +3418,16 @@ msgstr ""
 msgid "Include contact and demographic data in new member email notification body"
 msgstr ""
 
+msgid "Include events and calendars"
+msgstr ""
+
 msgid "Include families in coordinate file:"
 msgstr ""
 
 msgid "Include family custom properties in global search."
+msgstr ""
+
+msgid "Include financial data (donation funds, pledges)"
 msgstr ""
 
 msgid "Include only these classifications in the directory, comma separated"
@@ -3472,6 +3500,9 @@ msgid "Interval in Hours for Integrity Check"
 msgstr ""
 
 msgid "Interval in Hours for software update check"
+msgstr ""
+
+msgid "Invalid API key"
 msgstr ""
 
 msgid "Invalid Birth Date."
@@ -3804,6 +3835,9 @@ msgstr ""
 msgid "Load Authorized"
 msgstr ""
 
+msgid "Load sample families, people, groups, and events for testing and demonstration."
+msgstr ""
+
 msgid "Loading"
 msgstr ""
 
@@ -3896,6 +3930,9 @@ msgid "Make Family records based on last name and address"
 msgstr ""
 
 msgid "Make User"
+msgstr ""
+
+msgid "Make backups regularly (at least weekly)"
 msgstr ""
 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -4186,6 +4223,10 @@ msgid "Missing calendar access token"
 msgstr ""
 
 msgid "Missing event id"
+msgstr ""
+
+#. Context: query_qry
+msgid "Missing people"
 msgstr ""
 
 #. Context: query_qry
@@ -4944,10 +4985,6 @@ msgid "People not in list"
 msgstr ""
 
 #. Context: query_qry
-msgid "People who are configured to pay by credit card."
-msgstr ""
-
-#. Context: query_qry
 msgid "People who are members"
 msgstr ""
 
@@ -5614,22 +5651,25 @@ msgstr ""
 msgid "Reset Database"
 msgstr ""
 
-msgid "Reset Families/People"
-msgstr ""
-
-msgid "Reset Members"
-msgstr ""
-
 msgid "Reset Password"
 msgstr ""
 
 msgid "Reset System"
 msgstr ""
 
+msgid "Reset database to factory defaults or clear specific data."
+msgstr ""
+
+msgid "Reset entire database (new install state)"
+msgstr ""
+
 msgid "Reset your password"
 msgstr ""
 
 msgid "Resize Event"
+msgstr ""
+
+msgid "Restore ChurchCRM database from a backup file."
 msgstr ""
 
 msgid "Restore Complete"
@@ -6008,6 +6048,10 @@ msgid "Select none"
 msgstr ""
 
 #. Context: queryparameters_qrp
+msgid "Select the desired event"
+msgstr ""
+
+#. Context: queryparameters_qrp
 msgid "Select the desired family role."
 msgstr ""
 
@@ -6355,6 +6399,9 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+msgid "Store copies both on-site (fire-proof safe) and off-site"
+msgstr ""
+
 msgid "Store these in a secure location"
 msgstr ""
 
@@ -6425,6 +6472,9 @@ msgstr ""
 msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
 msgstr ""
 
+msgid "Supports ChurchInfo and older ChurchCRM backups"
+msgstr ""
+
 #. Context: countries
 msgid "Suriname"
 msgstr ""
@@ -6460,6 +6510,9 @@ msgid "System Information"
 msgstr ""
 
 msgid "System Logs"
+msgstr ""
+
+msgid "System Maintenance"
 msgstr ""
 
 msgid "System Settings"
@@ -6588,9 +6641,6 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "The minimum age for which you want records returned."
-msgstr ""
-
-msgid "The people and families has been cleared from the database."
 msgstr ""
 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -6728,9 +6778,6 @@ msgid "This will create a group-specific properties table for this group.  You s
 msgstr ""
 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
-msgstr ""
-
-msgid "This will remove all the member data, people, and families and can't be undone."
 msgstr ""
 
 msgid "This will reset the system data and will restart the system as a new install."
@@ -7355,7 +7402,13 @@ msgstr ""
 msgid "WARNING"
 msgstr ""
 
+msgid "WARNING: These operations are irreversible"
+msgstr ""
+
 msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr ""
+
+msgid "WARNING: This completely erases the existing database"
 msgstr ""
 
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."

@@ -451,6 +451,12 @@ window.newCalendarModal = {
 
 function initializeCalendar() {
     window.CRM.isCalendarLoading = false;
+
+    // Destroy any existing calendar instance to clear cached events
+    if (window.CRM.fullcalendar) {
+        window.CRM.fullcalendar.destroy();
+    }
+
     // initialize the calendar
     // -----------------------------------------------------------------
     window.CRM.fullcalendar = new FullCalendar.Calendar(
@@ -560,7 +566,11 @@ function GetCalendarURL(calendarType, calendarID) {
     } else if (calendarType === "system") {
         endpoint = "/api/systemcalendars/";
     }
-    return window.CRM.root + endpoint + calendarID + "/fullcalendar";
+    // Add cache-busting timestamp to prevent browser from serving stale cached events
+    var cacheBuster = "?_=" + new Date().getTime();
+    var url =
+        window.CRM.root + endpoint + calendarID + "/fullcalendar" + cacheBuster;
+    return url;
 }
 
 function registerCalendarSelectionEvents() {

@@ -712,6 +712,15 @@ stepper.addEventListener('show.bs-stepper', function(event) {
 - Example: "Fix issue #6672: Renumber group property fields after deletion"
 - Include what changed and why in commit message
 
+### File Operations
+- **Moving/renaming files**: Always use `git mv` to preserve history
+  ```bash
+  git mv old/path/file.php new/path/file.php
+  ```
+- **Creating files**: Use `create_file` tool for new files
+- **Deleting files**: Use `rm` command via `run_in_terminal` for simple deletions
+- Git will track file moves properly when using `git mv`
+
 ---
 
 Last updated: November 9, 2025

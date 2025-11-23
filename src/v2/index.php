@@ -29,10 +29,10 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
-// Add CORS middleware for browser API access
+// CRITICAL: Middleware order matters in Slim 4 (LIFO - Last In, First Out)
+// CorsMiddleware runs FIRST, AuthMiddleware runs SECOND, VersionMiddleware runs LAST
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
-
 $app->add(new CorsMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
