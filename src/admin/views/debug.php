@@ -359,7 +359,7 @@ EOD;
         document.addEventListener("DOMContentLoaded", callback);
     }
 
-    window.CRM.onLocalesReady(function () {
+    var initializeDebugPage = function() {
         $(document).on('click', '.copy-btn', function() {
             var txt = $(this).data('copy');
             if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -407,7 +407,11 @@ EOD;
                 icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
             }
         });
-    });
+    };
+
+    if (window.CRM && typeof window.CRM.onLocalesReady === 'function') {
+        window.CRM.onLocalesReady(initializeDebugPage);
+    }
 </script>
 <?php
 include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
