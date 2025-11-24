@@ -4,6 +4,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\TestEmail;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\VersionUtils;
@@ -31,6 +32,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('System Maintenance'),
+            'isFreshInstall' => PersonQuery::create()->count() === 1,
         ];
         
         return $renderer->render($response, 'system-maintenance.php', $pageArgs);

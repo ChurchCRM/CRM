@@ -17,6 +17,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-app bg-secondary">
                         <i class="fa fa-bug fa-3x"></i><br><?= gettext('Debug Info') ?>
                     </a>
+                    <button type="button" class="btn btn-app bg-success" id="importDemoDataQuickBtn">
+                        <i class="fa fa-users fa-3x"></i><br><?= gettext('Import Demo Data') ?>
+                    </button>
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-app bg-primary">
                         <i class="fa fa-cloud-upload-alt fa-3x"></i><br><?= gettext('System Upgrade') ?>
                     </a>
@@ -75,67 +78,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <div class="row">
-    <!-- Import Demo Data -->
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header bg-success">
-                <h4 class="card-title mb-0 text-white">
-                    <i class="fa fa-users mr-2"></i><?= gettext("Import Demo Data") ?>
-                </h4>
-            </div>
-            <div class="card-body">
-                <p><?= gettext("Load sample families, people, groups for evaluation and demonstration.") ?></p>
-                
-                <!-- div class="mb-3">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="includeDemoFinancial">
-                        <label class="form-check-label" for="includeDemoFinancial">
-                            <?= gettext("Include financial data (donation funds, pledges)") ?>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="includeDemoEvents">
-                        <label class="form-check-label" for="includeDemoEvents">
-                            <?= gettext("Include events and calendars") ?>
-                        </label>
-                    </div>
-                </div -->
-
-                <div class="text-center">
-                    <button type="button" class="btn btn-success btn-block" id="importDemoData">
-                        <i class="fa fa-users mr-2"></i><?= gettext("Import Demo Data") ?>
-                    </button>
-                </div>
-
-                <div id="demoImportStatus" class="mt-3" style="display: none;">
-                    <div class="alert alert-info mb-0">
-                        <i class="fa fa-spinner fa-spin mr-2"></i><span id="demoImportMessage"><?= gettext("Importing demo data...") ?></span>
-                    </div>
-                </div>
-
-                <div id="demoImportResults" class="mt-3" style="display: none;">
-                    <h5><?= gettext("Import Results") ?>:</h5>
-                    <ul id="demoImportResultsList"></ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Reset System -->
+    <!-- Reset Database -->
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header bg-danger">
                 <h4 class="card-title mb-0 text-white">
-                    <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext("Reset System") ?>
+                    <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext("Reset Database") ?>
                 </h4>
             </div>
             <div class="card-body">
-                <p><?= gettext("Reset the software to factory defaults or clear all data.") ?></p>
+                <p><?= gettext("Clear all data and reset the database to factory defaults. Application configuration (database credentials, install location, etc.) is preserved.") ?></p>
                 <ul class="mb-3">
-                    <li class="text-danger"><strong><?= gettext("WARNING: This completely erases the existing database") ?></strong></li>                </ul>
+                    <li class="text-danger"><strong><?= gettext("WARNING: This completely erases all database records including families, groups, events, and financial data") ?></strong></li>                </ul>
                 <div class="text-center">
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/reset" class="btn btn-danger btn-block">
-                        <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext("Reset System") ?>
+                        <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext("Reset Database") ?>
                     </a>
                 </div>
             </div>
@@ -145,100 +102,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function () {
-    window.CRM.onLocalesReady(function () {
-        
-        $('#importDemoData').click(function() {
-            var includeFinancial = $('#includeDemoFinancial').is(':checked');
-            var includeEvents = $('#includeDemoEvents').is(':checked');
-            
-            bootbox.confirm({
-                title: i18next.t("Import Demo Data"),
-                message: i18next.t("This will add sample data to your database. Are you sure you want to continue?"),
-                buttons: {
-                    confirm: {
-                        label: i18next.t('Yes'),
-                        className: 'btn-success'
-                    },
-                    cancel: {
-                        label: i18next.t('Cancel'),
-                        className: 'btn-default'
-                    }
-                },
-                callback: function (result) {
-                    if (result) {
-                        $('#demoImportStatus').show();
-                        $('#demoImportResults').hide();
-                        $('#importDemoData').prop('disabled', true);
-                        
-                        $.ajax({
-                            url: window.CRM.root + '/admin/api/demo/load',
-                            method: 'POST',
-                            contentType: 'application/json',
-                            data: JSON.stringify({
-                                includeFinancial: includeFinancial,
-                                includeEvents: includeEvents
-                            }),
-                            success: function (data) {
-                                $('#demoImportStatus').hide();
-                                $('#importDemoData').prop('disabled', false);
-                                
-                                if (data.success) {
-                                    $('#demoImportResultsList').empty();
-                                    
-                                    var imported = data.imported;
-                                    for (var key in imported) {
-                                        if (imported[key] > 0) {
-                                            var label = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                                            $('#demoImportResultsList').append(
-                                                '<li>' + label + ': <strong>' + imported[key] + '</strong></li>'
-                                            );
-                                        }
-                                    }
-                                    
-                                    if (data.warnings && data.warnings.length > 0) {
-                                        $('#demoImportResultsList').append(
-                                            '<li class="text-warning">' + i18next.t('Warnings') + ': ' + data.warnings.length + '</li>'
-                                        );
-                                    }
-                                    
-                                    $('#demoImportResults').show();
-                                    
-                                    window.CRM.notify(i18next.t('Demo data imported successfully'), {
-                                        type: 'success',
-                                        delay: 3000
-                                    });
-                                } else {
-                                    window.CRM.notify(i18next.t('Demo data import failed: ') + (data.error || i18next.t('Unknown error')), {
-                                        type: 'error',
-                                        delay: 5000
-                                    });
-                                }
-                            },
-                            error: function (xhr, status, error) {
-                                $('#demoImportStatus').hide();
-                                $('#importDemoData').prop('disabled', false);
-                                
-                                var errorMessage = i18next.t('An error occurred during demo data import');
-                                if (xhr.responseJSON && xhr.responseJSON.error) {
-                                    errorMessage = xhr.responseJSON.error;
-                                }
-                                
-                                window.CRM.notify(errorMessage, {
-                                    type: 'error',
-                                    delay: 5000
-                                });
-                            }
-                        });
-                    }
-                }
-            });
-        });
-
-    });
-});
-</script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/importDemoData.js"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
 

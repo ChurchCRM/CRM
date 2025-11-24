@@ -34,9 +34,22 @@ class CSRFMiddleware implements MiddlewareInterface
         // Only validate CSRF tokens for state-changing methods
         if (in_array($method, ['POST', 'PUT', 'DELETE', 'PATCH'])) {
             $body = $request->getParsedBody();
-            
-            // Verify CSRF token
-            if (!is_array($body) || !CSRFUtils::verifyRequest($body, $this->formId)) {
+
+            // First try: token in parsed body (standard form posts)
+            $valid = false;
+            if (is_array($body) && CSRFUtils::verifyRequest($body, $this->formId)) {
+                $valid = true;
+            }
+
+            // Second try: token in common headers (for AJAX/fetch submissions)
+            if (!$valid) {
+                $headerToken = $request->getHeaderLine('X-CSRF-Token') ?: $request->getHeaderLine('X-XSRF-TOKEN');
+                if (!empty($headerToken) && CSRFUtils::validateToken($headerToken, $this->formId)) {
+                    $valid = true;
+                }
+            }
+
+            if (!$valid) {
                 throw new HttpForbiddenException($request, 'Invalid or missing CSRF token');
             }
         }
