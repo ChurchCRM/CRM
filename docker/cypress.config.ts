@@ -3,7 +3,7 @@ import { verifyDownloadTasks } from 'cy-verify-downloads';
 
 export default defineConfig({
   chromeWebSecurity: false,
-  video: true,
+  video: false,
   videosFolder: 'cypress/videos',
   screenshotOnRunFailure: true,
   screenshotsFolder: 'cypress/screenshots',
