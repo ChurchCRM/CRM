@@ -3950,10 +3950,6 @@ msgid "Details:"
 msgstr "Details:"
 
 #: 
-msgid "File Missing"
-msgstr "Dateien fehlen"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Das wird die Familienbriefumschlagnummer in der Datenbank mit den ausgewählten Werten überschreiben. Fortfahren?"
 
@@ -4210,10 +4206,6 @@ msgstr "Eine oder mehrere Dateien haben die Signaturprüfung nicht bestanden"
 #: 
 msgid "Configure HTTPS"
 msgstr "HTTPS konfigurieren"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Dateien, deren Integritätsprüfung fehlgeschlagen ist"
 
 #: 
 msgid "Family:"
@@ -8103,10 +8095,6 @@ msgid "UserName not set"
 msgstr "Benutzername nicht festgelegt"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Die Personen und Familien sind aus der Datenbank gelöscht worden."
-
-#: 
 msgid "Self Registrations"
 msgstr "Selbst-Registrierungen"
 
@@ -8377,20 +8365,8 @@ msgid "is disabled"
 msgstr "ist deaktiviert"
 
 #: 
-msgid "System Information"
-msgstr "System-Informationen"
-
-#: 
 msgid "Software Version"
 msgstr "Software-Version"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Zulässige Mail-Server-Einstellungen"
-
-#: 
-msgid "Database"
-msgstr "Datenbank"
 
 #: 
 msgid "Database Version"
@@ -8724,18 +8700,6 @@ msgid "Database Reset Functions"
 msgstr "Datenbank-Rücksetzfunktionen"
 
 #: 
-msgid "Reset Members"
-msgstr "Mitglieder zurücksetzen"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Dadurch werden alle Mitgliederdaten, Personen und Familien entfernt und können nicht rückgängig gemacht werden."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Familien/Personen zurücksetzen"
-
-#: 
 msgid "Reset Database"
 msgstr "Datenbank zurücksetzen"
 
@@ -8928,20 +8892,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Zielgruppe nicht im ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informationen zur ChurchCRM-Installation"
-
-#: 
-msgid "Database Server Version"
-msgstr "Datenbank-Server-Version"
-
-#: 
 msgid "Web Server"
 msgstr "Web Server"
-
-#: 
-msgid "Email Information"
-msgstr "E-Mail-Informationen"
 
 #: 
 msgid "List maintenance"

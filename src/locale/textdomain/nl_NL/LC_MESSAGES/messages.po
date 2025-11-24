@@ -3825,10 +3825,6 @@ msgid "Details:"
 msgstr "Details"
 
 #: 
-msgid "File Missing"
-msgstr "Bestand ontbreekt"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Dit zal de familie envelop nummers overschrijven in de database met die gekozen op deze pagina. Doorgaan met?"
 
@@ -4083,10 +4079,6 @@ msgstr "Handtekeningsvalidatie van één of meer bestanden is mislukt "
 #: 
 msgid "Configure HTTPS"
 msgstr "configureren HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Bestanden met foutmeldingen integriteitscontrole"
 
 #: 
 msgid "Family:"
@@ -7976,10 +7968,6 @@ msgid "UserName not set"
 msgstr "De gebruikersnaam is niet ingevuld"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Personen en gezinnen zijn verwijderd uit de database."
-
-#: 
 msgid "Self Registrations"
 msgstr "Zelf registraties"
 
@@ -8248,20 +8236,8 @@ msgid "is disabled"
 msgstr "Is inactief gemaakt"
 
 #: 
-msgid "System Information"
-msgstr "Systeem info"
-
-#: 
 msgid "Software Version"
 msgstr "Software versie"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Toegestane mail server instellingen"
-
-#: 
-msgid "Database"
-msgstr "Database"
 
 #: 
 msgid "Database Version"
@@ -8593,18 +8569,6 @@ msgid "Database Reset Functions"
 msgstr "Functies voor het resetten van de database"
 
 #: 
-msgid "Reset Members"
-msgstr "Leden resetten"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Hiermee worden alle ledengegevens, personen en families verwijderd en dit kan niet ongedaan worden gemaakt."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Gezinnen/Mensen resetten"
-
-#: 
 msgid "Reset Database"
 msgstr "Database resetten"
 
@@ -8795,20 +8759,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Publiek niet in kerkCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM-installatie-informatie"
-
-#: 
-msgid "Database Server Version"
-msgstr "Databaseserver versie"
-
-#: 
 msgid "Web Server"
 msgstr "Web Server"
-
-#: 
-msgid "Email Information"
-msgstr "E-mailinformatie"
 
 #: 
 msgid "List maintenance"

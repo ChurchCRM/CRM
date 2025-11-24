@@ -3823,10 +3823,6 @@ msgid "Details:"
 msgstr "פרטים:"
 
 #: 
-msgid "File Missing"
-msgstr "קובץ חסר"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "זה יחליף את מספרי המעטפות של המשפחה במסד הנתונים עם אלה שנבחרו בדף זה. להמשיך?"
 
@@ -4081,10 +4077,6 @@ msgstr "אימות החתימה נכשל עבור קובץ אחד או יותר"
 #: 
 msgid "Configure HTTPS"
 msgstr "הגדרת HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "קבצים שנכשלו בבדיקת השלמות"
 
 #: 
 msgid "Family:"
@@ -7971,10 +7963,6 @@ msgid "UserName not set"
 msgstr "שם משתמש לא הוגדר"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "האנשים והמשפחות נמחקו ממסד הנתונים"
-
-#: 
 msgid "Self Registrations"
 msgstr "הרשמה עצמית"
 
@@ -8243,20 +8231,8 @@ msgid "is disabled"
 msgstr "מושבת"
 
 #: 
-msgid "System Information"
-msgstr "מידע מערכת"
-
-#: 
 msgid "Software Version"
 msgstr "גרסת תוכנה"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "הגדרות שרת דואר חוקיות"
-
-#: 
-msgid "Database"
-msgstr "מסד נתונים"
 
 #: 
 msgid "Database Version"
@@ -8588,18 +8564,6 @@ msgid "Database Reset Functions"
 msgstr "פונקציות לאיתחול מסד נתונים"
 
 #: 
-msgid "Reset Members"
-msgstr "איתחול חברים"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "פעולה זו תמחק את כל נתוני החברים, האנשים והמשפחות ולא ניתן לבטל אותה."
-
-#: 
-msgid "Reset Families/People"
-msgstr "אתחל משפחות \\ אנשים"
-
-#: 
 msgid "Reset Database"
 msgstr "אתחל בסיס נתונים"
 
@@ -8790,20 +8754,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "קהל לא נמצא ב-ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "מידע התקנת ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Database Server Version (גרסת שרת מסד הנתונים)"
-
-#: 
 msgid "Web Server"
 msgstr "Web Server (שרת אינטרנט)"
-
-#: 
-msgid "Email Information"
-msgstr "מידע דוא\"ל"
 
 #: 
 msgid "List maintenance"

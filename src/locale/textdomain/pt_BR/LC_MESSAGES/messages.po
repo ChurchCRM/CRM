@@ -4606,11 +4606,6 @@ msgstr "Detalhes:"
 
 #: 
 #, fuzzy
-msgid "File Missing"
-msgstr "Arquivos Faltando"
-
-#: 
-#, fuzzy
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Esta ação substituirá os números dos envelopes das famílias no banco de dados por aqueles que foram selecionados nesta página. Continuar?"
 
@@ -4927,11 +4922,6 @@ msgstr "Um ou mais arquivos falharam na validação da assinatura"
 #, fuzzy
 msgid "Configure HTTPS"
 msgstr "Configurar HTTPS"
-
-#: 
-#, fuzzy
-msgid "Files failing integrity check"
-msgstr "Aruqivos que falharam na verificação de integridade"
 
 #: 
 #, fuzzy
@@ -9659,11 +9649,6 @@ msgstr "Nome de Usuário não definido"
 
 #: 
 #, fuzzy
-msgid "The people and families has been cleared from the database."
-msgstr "As pessoas e famílias foram removidas do banco de dados."
-
-#: 
-#, fuzzy
 msgid "Self Registrations"
 msgstr "Auto Registros"
 
@@ -9999,23 +9984,8 @@ msgstr "está desabilitado"
 
 #: 
 #, fuzzy
-msgid "System Information"
-msgstr "Informações do Sistema"
-
-#: 
-#, fuzzy
 msgid "Software Version"
 msgstr "Versão do Software"
-
-#: 
-#, fuzzy
-msgid "Valid Mail Server Settings"
-msgstr "Configurações do servidor de E-mail válidas"
-
-#: 
-#, fuzzy
-msgid "Database"
-msgstr "Base de Dados"
 
 #: 
 #, fuzzy
@@ -10421,21 +10391,6 @@ msgstr "Funções de redefinição da base de dados"
 
 #: 
 #, fuzzy
-msgid "Reset Members"
-msgstr "Redefinir membros"
-
-#: 
-#, fuzzy
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Isto vai remover todos os dados de membros, pessoas e famílias. Não pode ser desfeito."
-
-#: 
-#, fuzzy
-msgid "Reset Families/People"
-msgstr "Redefinir Famílias/Pessoas"
-
-#: 
-#, fuzzy
 msgid "Reset Database"
 msgstr "Redefinir banco de dados"
 
@@ -10673,23 +10628,8 @@ msgstr "Público fora do ChurchCRM"
 
 #: 
 #, fuzzy
-msgid "ChurchCRM Installation Information"
-msgstr "Detalhes da instalação do ChurchCRM"
-
-#: 
-#, fuzzy
-msgid "Database Server Version"
-msgstr "Versão do Banco de Dados"
-
-#: 
-#, fuzzy
 msgid "Web Server"
 msgstr "Servidor Web"
-
-#: 
-#, fuzzy
-msgid "Email Information"
-msgstr "Informação do e-mail"
 
 #: 
 #, fuzzy

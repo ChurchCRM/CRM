@@ -3947,10 +3947,6 @@ msgid "Details:"
 msgstr "細節："
 
 #: 
-msgid "File Missing"
-msgstr "文件丟失"
-
-#: 
 #, fuzzy
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "這將用此頁面上選擇的系列信封覆蓋資料庫中的系列信封號碼。繼續嗎？"
@@ -4211,10 +4207,6 @@ msgstr "一個或多個文件簽名驗證失敗"
 #: 
 msgid "Configure HTTPS"
 msgstr "配置HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "文件未通過完整性檢查"
 
 #: 
 msgid "Family:"
@@ -8141,11 +8133,6 @@ msgid "UserName not set"
 msgstr "用戶名未設置"
 
 #: 
-#, fuzzy
-msgid "The people and families has been cleared from the database."
-msgstr "人員和家庭已從資料庫中清除。"
-
-#: 
 msgid "Self Registrations"
 msgstr "自助註冊"
 
@@ -8417,21 +8404,8 @@ msgid "is disabled"
 msgstr "被禁用"
 
 #: 
-msgid "System Information"
-msgstr "系統信息"
-
-#: 
 msgid "Software Version"
 msgstr "軟件版本"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "有效的郵件服務器設置"
-
-#: 
-#, fuzzy
-msgid "Database"
-msgstr "資料庫"
 
 #: 
 #, fuzzy
@@ -8822,21 +8796,6 @@ msgstr "資料庫重置功能"
 
 #: 
 #, fuzzy
-msgid "Reset Members"
-msgstr "重置會員"
-
-#: 
-#, fuzzy
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "這將刪除所有會員數據，人員和家庭，並且無法撤消。"
-
-#: 
-#, fuzzy
-msgid "Reset Families/People"
-msgstr "重置家庭/人"
-
-#: 
-#, fuzzy
 msgid "Reset Database"
 msgstr "重置資料庫"
 
@@ -9048,20 +9007,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "ChurchCRM沒有Audience"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM安裝資訊"
-
-#: 
-msgid "Database Server Version"
-msgstr "資料庫伺服器版本"
-
-#: 
 msgid "Web Server"
 msgstr "網頁伺服器"
-
-#: 
-msgid "Email Information"
-msgstr "電子郵件資訊"
 
 #: 
 msgid "List maintenance"

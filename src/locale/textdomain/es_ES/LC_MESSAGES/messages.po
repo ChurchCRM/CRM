@@ -3826,10 +3826,6 @@ msgid "Details:"
 msgstr "Detalles:"
 
 #: 
-msgid "File Missing"
-msgstr "Archivo Falta"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Esto sobrescribirá los números de sobre de la familia en la base de datos con los seleccionados en esta página. ¿Desea continuar?"
 
@@ -4085,10 +4081,6 @@ msgstr "Uno o más archivos fallaron la validación de firma"
 #: 
 msgid "Configure HTTPS"
 msgstr "Configurar HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Archivos fallando comprobación de identidad"
 
 #: 
 msgid "Family:"
@@ -8004,10 +7996,6 @@ msgid "UserName not set"
 msgstr "Nombre de usuario no establecido"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Las personas y familias han sido limpiadas de la base de datos"
-
-#: 
 msgid "Self Registrations"
 msgstr "Auto registros"
 
@@ -8278,20 +8266,8 @@ msgid "is disabled"
 msgstr "deshabilitado"
 
 #: 
-msgid "System Information"
-msgstr "Información de sistema"
-
-#: 
 msgid "Software Version"
 msgstr "Versión de Software"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Ajustes de Servidor de Correos Válidos"
-
-#: 
-msgid "Database"
-msgstr "Base de Datos"
 
 #: 
 msgid "Database Version"
@@ -8626,18 +8602,6 @@ msgid "Database Reset Functions"
 msgstr "Funciones de restablecimiento de base de datos"
 
 #: 
-msgid "Reset Members"
-msgstr "Restablecer miembros"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Esto eliminará todos los datos de miembros, personas y familias, no puede ser revertido."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Restablecer familias/personas"
-
-#: 
 msgid "Reset Database"
 msgstr "Restablecer base de datos"
 
@@ -8830,20 +8794,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Audiencia no en ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Información de Instalación de ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Versión de Servidor de base de datos"
-
-#: 
 msgid "Web Server"
 msgstr "Servidor Web"
-
-#: 
-msgid "Email Information"
-msgstr "Información de correo electrónico"
 
 #: 
 msgid "List maintenance"

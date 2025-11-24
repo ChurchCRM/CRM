@@ -3844,10 +3844,6 @@ msgid "Details:"
 msgstr "Chi tiết:"
 
 #: 
-msgid "File Missing"
-msgstr "Tệp bị thiếu"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Thao tác này sẽ ghi đè số phong bì gia đình trong cơ sở dữ liệu với những số được chọn trên trang này. Tiếp tục?"
 
@@ -4104,10 +4100,6 @@ msgstr "Một hoặc nhiều tệp không xác thực được chữ ký"
 #: 
 msgid "Configure HTTPS"
 msgstr "Cấu hình HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Các tệp không kiểm tra được tính toàn vẹn"
 
 #: 
 msgid "Family:"
@@ -7997,10 +7989,6 @@ msgid "UserName not set"
 msgstr "UserName chưa được đặt"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Các thành viên và gia đình đã được xóa sạch khỏi bảng dữ liệu"
-
-#: 
 msgid "Self Registrations"
 msgstr "Tự đăng ký"
 
@@ -8271,20 +8259,8 @@ msgid "is disabled"
 msgstr "đã được vô hiệu hóa"
 
 #: 
-msgid "System Information"
-msgstr "Thông tin hệ thống"
-
-#: 
 msgid "Software Version"
 msgstr "Phiên bản phần mềm"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Cài đặt giá trị máy chủ Email"
-
-#: 
-msgid "Database"
-msgstr "Dữ liệu"
 
 #: 
 msgid "Database Version"
@@ -8607,18 +8583,6 @@ msgid "Database Reset Functions"
 msgstr "Các chức năng thiết lập lại cơ sở dữ liệu"
 
 #: 
-msgid "Reset Members"
-msgstr "Đặt lại thành viên"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Thao tác này sẽ xóa tất cả dữ liệu thành viên, mọi người và gia đình và không thể hoàn tác."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Đặt lại gia đình / người"
-
-#: 
 msgid "Reset Database"
 msgstr "Đặt lại cơ sở dữ liệu"
 
@@ -8811,20 +8775,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Khán giả không ở trong Nhà thờCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Thông tin cài đặt ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Phiên bản máy chủ cơ sở dữ liệu"
-
-#: 
 msgid "Web Server"
 msgstr "Máy chủ web"
-
-#: 
-msgid "Email Information"
-msgstr "Thông tin Email"
 
 #: 
 msgid "List maintenance"

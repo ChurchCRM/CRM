@@ -3825,10 +3825,6 @@ msgid "Details:"
 msgstr "Detaylar:"
 
 #: 
-msgid "File Missing"
-msgstr "Eksik dosya"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Bu, veritabanındaki aile zarf numaralarının bu sayfada seçilenlerle üzerine yazacaktır. Devam et?"
 
@@ -4084,10 +4080,6 @@ msgstr "Bir veya daha fazla dosya başarısız oldu imza doğrulaması"
 #: 
 msgid "Configure HTTPS"
 msgstr "HTTPS'yi yapılandırın"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Dosyalar Dürüstlük Kontrolü Başarısız"
 
 #: 
 msgid "Family:"
@@ -7977,10 +7969,6 @@ msgid "UserName not set"
 msgstr "Kullanıcı adı ayarlanmadı"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "İnsanlar ve aileler veritabanından temizlendi."
-
-#: 
 msgid "Self Registrations"
 msgstr "Kendi Kayıtları"
 
@@ -8251,20 +8239,8 @@ msgid "is disabled"
 msgstr "devre dışı bırakıldı"
 
 #: 
-msgid "System Information"
-msgstr "Sistem bilgisi"
-
-#: 
 msgid "Software Version"
 msgstr "Yazılım versiyonu"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Geçerli posta sunucusu ayarları"
-
-#: 
-msgid "Database"
-msgstr "Veri tabanı"
 
 #: 
 msgid "Database Version"
@@ -8598,18 +8574,6 @@ msgid "Database Reset Functions"
 msgstr "Veritabanı Sıfırlama İşlevleri"
 
 #: 
-msgid "Reset Members"
-msgstr "Üyeleri sıfırla"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Bu, tüm üye verileri, kişileri ve aileleri kaldıracak ve geri alınamaz."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Aileleri/insanları sıfırlayın"
-
-#: 
 msgid "Reset Database"
 msgstr "Veritabanını sıfırla"
 
@@ -8802,20 +8766,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Kilisede izleyici değil"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCrm Kurulum Bilgileri"
-
-#: 
-msgid "Database Server Version"
-msgstr "Veritabanı sunucusu sürümü"
-
-#: 
 msgid "Web Server"
 msgstr "Web sunucusu"
-
-#: 
-msgid "Email Information"
-msgstr "E -posta bilgileri"
 
 #: 
 msgid "List maintenance"

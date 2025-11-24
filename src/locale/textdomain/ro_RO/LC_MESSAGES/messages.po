@@ -3926,10 +3926,6 @@ msgid "Details:"
 msgstr "Detalii:"
 
 #: 
-msgid "File Missing"
-msgstr "Fișier lipsă"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Aceasta va suprascrie numerele plicului familiei din baza de date cu cele selectate pe această pagină. Continua?"
 
@@ -4186,10 +4182,6 @@ msgstr "Unul sau mai multe fișiere au semnătura invalidă"
 #: 
 msgid "Configure HTTPS"
 msgstr "Configurare HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Fișiere fără verificarea integrității"
 
 #: 
 msgid "Family:"
@@ -8080,10 +8072,6 @@ msgid "UserName not set"
 msgstr "UserName nesetat"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Persoanele și familiile au fost șterse din baza de date"
-
-#: 
 msgid "Self Registrations"
 msgstr "Înregistrare personală"
 
@@ -8354,20 +8342,8 @@ msgid "is disabled"
 msgstr "este dezactivat"
 
 #: 
-msgid "System Information"
-msgstr "Informații sistem"
-
-#: 
 msgid "Software Version"
 msgstr "Versiune soft"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Setări valide ale serverului de mail"
-
-#: 
-msgid "Database"
-msgstr "Bază de date"
 
 #: 
 msgid "Database Version"
@@ -8698,18 +8674,6 @@ msgid "Database Reset Functions"
 msgstr "Funcții de resetare a Bazei de Date"
 
 #: 
-msgid "Reset Members"
-msgstr "Resetare membri"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Aceasta va elimina toate datele membrilor, persoanelor și familiilor și nu poate fi anulat"
-
-#: 
-msgid "Reset Families/People"
-msgstr "Resetare familii/oameni"
-
-#: 
 msgid "Reset Database"
 msgstr "Resetare bază de date"
 
@@ -8901,20 +8865,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Publicul care nu este în ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informații de instalarea a sistemului ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Versiunea serverului bazei de date"
-
-#: 
 msgid "Web Server"
 msgstr "Server web"
-
-#: 
-msgid "Email Information"
-msgstr "Informații email"
 
 #: 
 msgid "List maintenance"

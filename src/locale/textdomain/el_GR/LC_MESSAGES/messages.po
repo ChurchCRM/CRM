@@ -3821,10 +3821,6 @@ msgid "Details:"
 msgstr "Λεπτομέριες:"
 
 #: 
-msgid "File Missing"
-msgstr "Λείπει το αρχείο"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Αυτό θα αντικαταστήσει τους αριθμούς των οικογενειακών φακέλων στη βάση δεδομένων με αυτούς που έχουν επιλεγεί σε αυτήν τη σελίδα. Να συνεχίσει?"
 
@@ -4080,10 +4076,6 @@ msgstr "Ένα ή περισσότερα αρχεία απέτυχε στην ε
 #: 
 msgid "Configure HTTPS"
 msgstr "Διαμόρφωση HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Αποτυχία ελέγχου ακεραιότητας αρχείων"
 
 #: 
 msgid "Family:"
@@ -7973,10 +7965,6 @@ msgid "UserName not set"
 msgstr "Όνομα χρήστη δεν έχει οριστεί"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Τα άτομα και οι οικογένειες έχουν διαγραφεί από τη βάση δεδομένων."
-
-#: 
 msgid "Self Registrations"
 msgstr "Αυτοεγγραφές"
 
@@ -8247,20 +8235,8 @@ msgid "is disabled"
 msgstr "είναι απενεργοποιημένο"
 
 #: 
-msgid "System Information"
-msgstr "Πληροφορίες συστήματος"
-
-#: 
 msgid "Software Version"
 msgstr "Εκδοση ΛΟΓΙΣΜΙΚΟΥ"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Έγκυρες ρυθμίσεις διακομιστή αλληλογραφίας"
-
-#: 
-msgid "Database"
-msgstr "Βάση δεδομένων"
 
 #: 
 msgid "Database Version"
@@ -8582,18 +8558,6 @@ msgid "Database Reset Functions"
 msgstr "Λειτουργίες επαναφοράς βάσης δεδομένων"
 
 #: 
-msgid "Reset Members"
-msgstr "Επαναφορά μελών"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Αυτό θα καταργήσει όλα τα δεδομένα μελών, τα άτομα και τις οικογένειες και δεν μπορεί να αναιρεθεί."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Επαναφορά Οικογένειες/Άτομα"
-
-#: 
 msgid "Reset Database"
 msgstr "Επαναφορά βάσης δεδομένων"
 
@@ -8786,20 +8750,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Το κοινό δεν είναι στο ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Πληροφορίες εγκατάστασης ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Έκδοση διακομιστή βάσης δεδομένων"
-
-#: 
 msgid "Web Server"
 msgstr "Διακομιστής Ιστού"
-
-#: 
-msgid "Email Information"
-msgstr "Πληροφορίες email"
 
 #: 
 msgid "List maintenance"

@@ -3970,10 +3970,6 @@ msgid "Details:"
 msgstr "detaljer:"
 
 #: 
-msgid "File Missing"
-msgstr "Fil saknas"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Detta kommer att skriva över familjens kuvertnummer i databasen med de valda på denna sida. Fortsätta?"
 
@@ -4230,10 +4226,6 @@ msgstr "En eller flera filer misslyckades signaturvalidering"
 #: 
 msgid "Configure HTTPS"
 msgstr "Konfigurera HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Filer som inte har integritetskontroll"
 
 #: 
 msgid "Family:"
@@ -8123,10 +8115,6 @@ msgid "UserName not set"
 msgstr "Användarnamn inte inställt"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Personer och familjerna har rensats från databasen."
-
-#: 
 msgid "Self Registrations"
 msgstr "Självregistrering"
 
@@ -8397,20 +8385,8 @@ msgid "is disabled"
 msgstr "är ur funktion"
 
 #: 
-msgid "System Information"
-msgstr "Systeminformation"
-
-#: 
 msgid "Software Version"
 msgstr "Mjukvaru-version"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Giltiga e-postserverinställningar"
-
-#: 
-msgid "Database"
-msgstr "Databas"
 
 #: 
 msgid "Database Version"
@@ -8744,18 +8720,6 @@ msgid "Database Reset Functions"
 msgstr "Funktioner för återställning av databaser"
 
 #: 
-msgid "Reset Members"
-msgstr "Återställ medlemmar"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Detta tar bort all medlemsinformation, personer och familjer och kan inte ångras."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Återställ familjer / personer"
-
-#: 
 msgid "Reset Database"
 msgstr "Återställ databasen"
 
@@ -8948,20 +8912,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Publiken inte i ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM installationsinformation"
-
-#: 
-msgid "Database Server Version"
-msgstr "Databaseserverversion"
-
-#: 
 msgid "Web Server"
 msgstr "Webbserver"
-
-#: 
-msgid "Email Information"
-msgstr "E-postinformation"
 
 #: 
 msgid "List maintenance"
