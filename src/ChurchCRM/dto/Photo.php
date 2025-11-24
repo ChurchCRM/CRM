@@ -29,7 +29,7 @@ class Photo
     {
         $this->photoType = $photoType;
         $this->id = $id;
-        $this->remotesEnabled = SystemConfig::getBooleanValue('bEnableGooglePhotos') || SystemConfig::getBooleanValue('bEnableGravatarPhotos');
+        $this->remotesEnabled = SystemConfig::getBooleanValue('bEnableGravatarPhotos');
         $this->photoHunt();
     }
 
@@ -125,15 +125,6 @@ class Photo
             $person = PersonQuery::create()->findOneById($this->id);
             if ($person) {
                 $personEmail = $person->getEmail();
-                if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
-                    $photoPath = $this->loadFromGoogle($personEmail, $baseName);
-                    if ($photoPath) {
-                        $this->setURIs($photoPath);
-
-                        return;
-                    }
-                }
-
                 if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
                     try {
                         $photoPath = $this->loadFromGravatar($personEmail, $baseName);
@@ -246,30 +237,7 @@ class Photo
         throw new \Exception('Gravatar not found');
     }
 
-    private function loadFromGoogle($email, string $baseName)
-    {
-        $url = 'http://picasaweb.google.com/data/entry/api/user/';
-        $url .= strtolower(trim($email));
-        $url .= '?alt=json';
-        $headers = @get_headers($url);
-        if (strpos($headers[0], '404') === false) {
-            $json = file_get_contents($url);
-            if (!empty($json)) {
-                $obj = json_decode($json, null, 512, JSON_THROW_ON_ERROR);
-                $photoEntry = $obj->entry;
-                $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
-                $photo = imagecreatefromstring(file_get_contents($photoURL));
-                if ($photo) {
-                    $photoPath = $baseName . '-remote.png';
-                    imagepng($photo, $photoPath);
-
-                    return $photoPath;
-                }
-            }
-        }
-
-        return false;
-    }
+    
 
     private function getRandomColor(\GdImage $image)
     {
