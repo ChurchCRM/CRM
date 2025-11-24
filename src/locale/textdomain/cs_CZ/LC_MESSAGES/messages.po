@@ -3822,10 +3822,6 @@ msgid "Details:"
 msgstr "Detaily:"
 
 #: 
-msgid "File Missing"
-msgstr "Soubor chybí"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Tím se čísla obálek rodin v databázi přepíší čísly vybranými na této stránce.  Pokračovat?"
 
@@ -4080,10 +4076,6 @@ msgstr "Jeden nebo více souborů neprošlo ověřením podpisu"
 #: 
 msgid "Configure HTTPS"
 msgstr "Konfigurovat HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Soubory, u kterých selhala kontrola integrity"
 
 #: 
 msgid "Family:"
@@ -7967,10 +7959,6 @@ msgid "UserName not set"
 msgstr "UživatelskéJméno není nastaveno"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Osoby a rodiny byly z databáze vymazány."
-
-#: 
 msgid "Self Registrations"
 msgstr "Vlastní registrace"
 
@@ -8239,20 +8227,8 @@ msgid "is disabled"
 msgstr "je zakázáno"
 
 #: 
-msgid "System Information"
-msgstr "Systémové informace"
-
-#: 
 msgid "Software Version"
 msgstr "Verze softwaru"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Validní nastavení e-mailového serveru"
-
-#: 
-msgid "Database"
-msgstr "Databáze"
 
 #: 
 msgid "Database Version"
@@ -8586,18 +8562,6 @@ msgid "Database Reset Functions"
 msgstr "Funkce obnovení databáze"
 
 #: 
-msgid "Reset Members"
-msgstr "Obnovit členy"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Tímto se odstraní všechna data členů, osob a rodin a nelze to vrátit zpět."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Vymazat Rodiny/Osoby"
-
-#: 
 msgid "Reset Database"
 msgstr "Vymazat databázi"
 
@@ -8788,20 +8752,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Publikum, které není v systému ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informace o instalaci ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Verze databázového serveru"
-
-#: 
 msgid "Web Server"
 msgstr "Webový server"
-
-#: 
-msgid "Email Information"
-msgstr "Informace o e-mailu"
 
 #: 
 msgid "List maintenance"

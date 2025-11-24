@@ -3827,10 +3827,6 @@ msgid "Details:"
 msgstr "Подробиці:"
 
 #: 
-msgid "File Missing"
-msgstr "Файл відсутній"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Це призведе до заміни номерів сімейних конвертів у базі даних на вибрані на цій сторінці. Продовжити?"
 
@@ -4086,10 +4082,6 @@ msgstr "Один або кілька файлів не вдалося перев
 #: 
 msgid "Configure HTTPS"
 msgstr "Налаштуйте HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Файли не вдалося перевірити цілісність"
 
 #: 
 msgid "Family:"
@@ -7979,10 +7971,6 @@ msgid "UserName not set"
 msgstr "Ім'я користувача не встановлено"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Люди та сім'ї вилучені з бази даних."
-
-#: 
 msgid "Self Registrations"
 msgstr "Самореєстрація"
 
@@ -8253,20 +8241,8 @@ msgid "is disabled"
 msgstr "вимкнено"
 
 #: 
-msgid "System Information"
-msgstr "Інформація про систему"
-
-#: 
 msgid "Software Version"
 msgstr "Версія програмного забезпечення"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Дійсні налаштування поштового сервера"
-
-#: 
-msgid "Database"
-msgstr "База даних"
 
 #: 
 msgid "Database Version"
@@ -8588,18 +8564,6 @@ msgid "Database Reset Functions"
 msgstr "Функції скидання бази даних"
 
 #: 
-msgid "Reset Members"
-msgstr "Скинути учасників"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Це призведе до видалення всіх даних учасників, людей та сімей, і їх не можна скасувати."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Скинути налаштування сімей / людей"
-
-#: 
 msgid "Reset Database"
 msgstr "Скинути базу даних"
 
@@ -8792,20 +8756,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Аудиторія не в ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Інформація про встановлення ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Версія сервера баз даних"
-
-#: 
 msgid "Web Server"
 msgstr "Веб-сервер"
-
-#: 
-msgid "Email Information"
-msgstr "Інформація про електронну пошту"
 
 #: 
 msgid "List maintenance"

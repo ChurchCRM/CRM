@@ -3827,10 +3827,6 @@ msgid "Details:"
 msgstr "ዝርዝሮች:"
 
 #: 
-msgid "File Missing"
-msgstr "ፋይል ጠፍቷል"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "ይህ በመረጃ ቋቱ ውስጥ ያሉትን የቤተሰብ ኤንቨሎፕ ቁጥሮች በዚህ ገጽ ላይ ከተመረጡት ጋር ይተካል. ይቀጥል?"
 
@@ -4086,10 +4082,6 @@ msgstr "አንድ ወይም ከዚያ በላይ ፋይሎች የፊርማ ማረ
 #: 
 msgid "Configure HTTPS"
 msgstr "HTTPS አዋቅር"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "ያልተሳኩ ፋይሎች የንጹህነት ማረጋገጫ"
 
 #: 
 msgid "Family:"
@@ -7981,10 +7973,6 @@ msgid "UserName not set"
 msgstr "የተጠቃሚ ስም አልተዘጋጀም"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "ሰዎቹ እና ቤተሰቦቹ ከመረጃ ቋቱ ጸድተዋል"
-
-#: 
 msgid "Self Registrations"
 msgstr "የግል ምዝገባዎች"
 
@@ -8256,20 +8244,8 @@ msgid "is disabled"
 msgstr "አይሰራም "
 
 #: 
-msgid "System Information"
-msgstr "የስርዓት መረጃ "
-
-#: 
 msgid "Software Version"
 msgstr "የሶፍትዌር ስሪት "
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "ትክክለኛ የደብዳቤ አገልጋይ ቅንብሮች"
-
-#: 
-msgid "Database"
-msgstr "የዉሂብ ጎታ"
 
 #: 
 msgid "Database Version"
@@ -8608,19 +8584,6 @@ msgstr "\n"
 "የውሂብ ጎታ ዳግም ማስጀመር ተግባራት"
 
 #: 
-msgid "Reset Members"
-msgstr "አባላትን ዳግም አስጀምር"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "\n"
-"ይህ ሁሉንም የአባል ውሂብ፣ ሰዎች እና ቤተሰቦች ያስወግዳል እና ሊቀለበስ አይችልም።"
-
-#: 
-msgid "Reset Families/People"
-msgstr "ቤተሰቦችን/ሰዎችን ዳግም ማስጀመር"
-
-#: 
 msgid "Reset Database"
 msgstr "የውሂብ ጎታ ዳግም አስጀምር"
 
@@ -8821,20 +8784,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "ታዳሚዎች በቤተክርስቲያን CRM ውስጥ አይደሉም"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM ጭነት መረጃ"
-
-#: 
-msgid "Database Server Version"
-msgstr "የውሂብ ጎታ አገልጋይ ሥሪት"
-
-#: 
 msgid "Web Server"
 msgstr "የድር አገልጋይ"
-
-#: 
-msgid "Email Information"
-msgstr "የኢሜል መረጃ"
 
 #: 
 msgid "List maintenance"

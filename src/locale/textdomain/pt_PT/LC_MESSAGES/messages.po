@@ -3986,10 +3986,6 @@ msgid "Details:"
 msgstr "Detalhes:"
 
 #: 
-msgid "File Missing"
-msgstr "Ficheiros Faltando"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Esta ação substituirá os números dos envelopes das famílias na base de dados por aqueles que foram selecionados nesta página. Continuar?"
 
@@ -4246,10 +4242,6 @@ msgstr "Um ou mais ficheiros falharam na validação da assinatura"
 #: 
 msgid "Configure HTTPS"
 msgstr "Configurar HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Aruqivos que falharam na verificação de integridade"
 
 #: 
 msgid "Family:"
@@ -8172,10 +8164,6 @@ msgid "UserName not set"
 msgstr "Nome de Utilizador não definido"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "As pessoas e famílias foram removidas da base de dados."
-
-#: 
 msgid "Self Registrations"
 msgstr "Próprios Registos"
 
@@ -8446,20 +8434,8 @@ msgid "is disabled"
 msgstr "está desabilitado"
 
 #: 
-msgid "System Information"
-msgstr "Informações do Sistema"
-
-#: 
 msgid "Software Version"
 msgstr "Versão do Software"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Configurações do servidor de E-mail válidas"
-
-#: 
-msgid "Database"
-msgstr "Base de Dados"
 
 #: 
 msgid "Database Version"
@@ -8791,18 +8767,6 @@ msgstr "Rever estas tarefas antes de continuar com a atualização:"
 #: 
 msgid "Database Reset Functions"
 msgstr "Funções de redefinição da base de dados"
-
-#: 
-msgid "Reset Members"
-msgstr "Redefinir membros"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Isso removerá todos os dados, pessoas e famílias dos membros e não poderá ser desfeito."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Redefinir famílias / pessoas"
 
 #: 
 msgid "Reset Database"

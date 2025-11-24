@@ -3897,10 +3897,6 @@ msgid "Details:"
 msgstr "Детали"
 
 #: 
-msgid "File Missing"
-msgstr "Файл отсутствует"
-
-#: 
 msgid "Family Select"
 msgstr "Семейный выбор"
 
@@ -4153,10 +4149,6 @@ msgstr "Один или несколько файлов не прошли про
 #: 
 msgid "Configure HTTPS"
 msgstr "Настроить HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Файлы, не прошедшие проверку целостности"
 
 #: 
 msgid "Family:"
@@ -5565,18 +5557,6 @@ msgid "Database Reset Functions"
 msgstr "Функции сброса базы данных"
 
 #: 
-msgid "Reset Members"
-msgstr "Сбросить участников"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Это приведет к удалению всех данных участника, людей и семей и не может быть отменено."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Сбросить семьи/людей"
-
-#: 
 msgid "Reset Database"
 msgstr "Сбросить базу данных"
 
@@ -5743,10 +5723,6 @@ msgstr "Неверный id списка"
 #: 
 msgid "Web Server"
 msgstr "Веб-сервер"
-
-#: 
-msgid "Email Information"
-msgstr "Сведения эл.почты"
 
 #: 
 #, fuzzy

@@ -3829,10 +3829,6 @@ msgid "Details:"
 msgstr "Detail:"
 
 #: 
-msgid "File Missing"
-msgstr "File Tidak Ada"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Ini akan menimpa nomor amplop keluarga dalam database dengan yang dipilih pada halaman ini. Terus?"
 
@@ -4089,10 +4085,6 @@ msgstr "Satu atau lebih file gagal validasi tanda tangan"
 #: 
 msgid "Configure HTTPS"
 msgstr "Konfigurasikan HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "File gagal diperiksa integritasnya"
 
 #: 
 msgid "Family:"
@@ -7982,10 +7974,6 @@ msgid "UserName not set"
 msgstr "UserName tidak disetel"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Orang-orang dan keluarga telah dibersihkan dari database."
-
-#: 
 msgid "Self Registrations"
 msgstr "Pendaftaran Mandiri"
 
@@ -8256,20 +8244,8 @@ msgid "is disabled"
 msgstr "dinonaktifkan"
 
 #: 
-msgid "System Information"
-msgstr "Sistem informasi"
-
-#: 
 msgid "Software Version"
 msgstr "Versi perangkat lunak"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Pengaturan Server Email yang Valid"
-
-#: 
-msgid "Database"
-msgstr "Basis data"
 
 #: 
 msgid "Database Version"
@@ -8592,18 +8568,6 @@ msgid "Database Reset Functions"
 msgstr "Fungsi Reset Database"
 
 #: 
-msgid "Reset Members"
-msgstr "Atur Ulang Anggota"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Ini akan menghapus semua data anggota, orang, dan keluarga dan tidak dapat dibatalkan."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Atur Ulang Keluarga / Orang"
-
-#: 
 msgid "Reset Database"
 msgstr "Reset Database"
 
@@ -8796,20 +8760,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Peserta tidak ada di ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informasi Instalasi ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Versi Database Server"
-
-#: 
 msgid "Web Server"
 msgstr "Web Server"
-
-#: 
-msgid "Email Information"
-msgstr "Informasi Email"
 
 #: 
 msgid "List maintenance"

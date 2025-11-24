@@ -3822,10 +3822,6 @@ msgid "Details:"
 msgstr "상세:"
 
 #: 
-msgid "File Missing"
-msgstr "파일 없음"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "데이터베이스의 헌금봉투 번호가 이 페이지에서 선택한 값으로 덮어쓰여집니다. 계속할까요?"
 
@@ -4080,10 +4076,6 @@ msgstr "한 개 이상의 파일이 서명 검증에 실패했습니다"
 #: 
 msgid "Configure HTTPS"
 msgstr "HTTPS 설정"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "무결성 검사를 통과하지 못한 파일"
 
 #: 
 msgid "Family:"
@@ -7966,10 +7958,6 @@ msgid "UserName not set"
 msgstr "사용자 이름이 설정되지 않았습니다"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "개인과 가족 데이터가 데이터베이스에서 삭제되었습니다."
-
-#: 
 msgid "Self Registrations"
 msgstr "자가 등록"
 
@@ -8238,20 +8226,8 @@ msgid "is disabled"
 msgstr "비활성화되어 있습니다"
 
 #: 
-msgid "System Information"
-msgstr "시스템 정보"
-
-#: 
 msgid "Software Version"
 msgstr "소프트웨어 버전"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "유효한 메일 서버 설정"
-
-#: 
-msgid "Database"
-msgstr "데이터베이스"
 
 #: 
 msgid "Database Version"
@@ -8580,18 +8556,6 @@ msgid "Database Reset Functions"
 msgstr "데이터베이스 초기화 기능"
 
 #: 
-msgid "Reset Members"
-msgstr "구성원 초기화"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "모든 구성원, 개인, 가족 데이터가 삭제되며 되돌릴 수 없습니다."
-
-#: 
-msgid "Reset Families/People"
-msgstr "가족/개인 초기화"
-
-#: 
 msgid "Reset Database"
 msgstr "데이터베이스 초기화"
 
@@ -8782,20 +8746,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "ChurchCRM에 없는 오디언스입니다"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM 설치 정보"
-
-#: 
-msgid "Database Server Version"
-msgstr "데이터베이스 서버 버전"
-
-#: 
 msgid "Web Server"
 msgstr "웹 서버"
-
-#: 
-msgid "Email Information"
-msgstr "이메일 정보"
 
 #: 
 msgid "List maintenance"

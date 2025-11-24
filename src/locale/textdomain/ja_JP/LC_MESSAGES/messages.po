@@ -800,16 +800,8 @@ msgid "Enter new user password. Administratively set passwords are not subject t
 msgstr "新しいユーザーパスワードを入力します　管理者が設定したパスワードには、長さや複雑さの要件は適用されません"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRMのインストール情報"
-
-#: 
 msgid "Web Server"
 msgstr "Webサーバ"
-
-#: 
-msgid "Email Information"
-msgstr "メールアドレス情報"
 
 #: 
 msgid "Passwords"

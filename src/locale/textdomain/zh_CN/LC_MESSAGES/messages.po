@@ -3932,10 +3932,6 @@ msgid "Details:"
 msgstr "细节："
 
 #: 
-msgid "File Missing"
-msgstr "文件丢失"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "这将用此页面上选择的系列信封覆盖数据库中的系列信封号码。继续吗？"
 
@@ -4192,10 +4188,6 @@ msgstr "一个或多个文件签名验证失败"
 #: 
 msgid "Configure HTTPS"
 msgstr "配置HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "文件未通过完整性检查"
 
 #: 
 msgid "Family:"
@@ -8083,10 +8075,6 @@ msgid "UserName not set"
 msgstr "用户名未设置"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "人员和家庭已从数据库中清除。"
-
-#: 
 msgid "Self Registrations"
 msgstr "自助注册"
 
@@ -8357,20 +8345,8 @@ msgid "is disabled"
 msgstr "被禁用"
 
 #: 
-msgid "System Information"
-msgstr "系统信息"
-
-#: 
 msgid "Software Version"
 msgstr "软件版本"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "有效的邮件服务器设置"
-
-#: 
-msgid "Database"
-msgstr "数据库"
 
 #: 
 msgid "Database Version"
@@ -8702,18 +8678,6 @@ msgid "Database Reset Functions"
 msgstr "数据库重置功能"
 
 #: 
-msgid "Reset Members"
-msgstr "重设会员"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "这将删除所有会员数据，人员和家庭，并且无法撤消。"
-
-#: 
-msgid "Reset Families/People"
-msgstr "重置家庭/人"
-
-#: 
 msgid "Reset Database"
 msgstr "重置数据库"
 
@@ -8906,20 +8870,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "观众不在教堂里"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM安装信息"
-
-#: 
-msgid "Database Server Version"
-msgstr "数据库服务器版本"
-
-#: 
 msgid "Web Server"
 msgstr "网络服务器"
-
-#: 
-msgid "Email Information"
-msgstr "电邮信息"
 
 #: 
 msgid "List maintenance"
