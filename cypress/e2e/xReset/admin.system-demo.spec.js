@@ -2,11 +2,11 @@
 
 describe('API Private Admin Demo', () => {
   it('Load demo data (force=true) as admin', () => {
-    const body = { includeFinancial: false, includeEvents: false, force: true };
+    const body = { includeFinancial: false, includeEvents: false, includeSundaySchool: true, force: true };
 
     cy.makePrivateAdminAPICall('POST', '/admin/api/demo/load', body, 200).then((resp) => {
 
-      cy.wait(3000); // wait for demo data to be processed
+      cy.wait(5000); // wait for demo data to be processed
 
       // Expect success flag and import metadata in body
       expect(resp.body).to.have.property('success');
