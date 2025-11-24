@@ -74,5 +74,9 @@ const aggregate = crypto.createHash('sha1').update(JSON.stringify(filesArray)).d
 
 const signatures = { version: version || null, files: filesArray, sha1: aggregate };
 
+const outDir = path.dirname(outFile);
+if (!fs.existsSync(outDir)) {
+  fs.mkdirSync(outDir, { recursive: true });
+}
 fs.writeFileSync(outFile, JSON.stringify(signatures));
 console.log('Wrote', outFile, 'checked=', filesArray.length);
