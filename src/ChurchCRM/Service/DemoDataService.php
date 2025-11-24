@@ -56,6 +56,9 @@ class DemoDataService
                 'includeSundaySchool' => $includeSundaySchool
             ]);
 
+            // Load demo system configuration (if present) before importing data
+            $this->importSystemConfig($includeSundaySchool, $includeFinancial);
+
             $emailMap = $this->importCongregation();
 
             $this->importGroups($includeSundaySchool, $emailMap);
@@ -97,6 +100,65 @@ class DemoDataService
 
             return $this->importResult;
         }
+    }
+
+    /**
+     * Load `config.json` from the demo data path and write values into SystemConfig.
+     * The `bEnabledSundaySchool` value will be set according to the flag passed to the API.
+     */
+    private function importSystemConfig(bool $includeSundaySchool, bool $includeFinancial): void
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $filePath = self::DATA_PATH . '/config.json';
+
+        if (!file_exists($filePath)) {
+            return;
+        }
+
+        try {
+            $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
+        } catch (JsonException $e) {
+            $this->addWarning('Demo config.json parse failed', ['error' => $e->getMessage()]);
+            $logger->error('Demo config.json parse failed', ['error' => $e->getMessage(), 'file' => $filePath]);
+            return;
+        }
+
+        if (!is_array($json)) {
+            $this->addWarning('Demo config.json is empty or invalid format', ['file' => $filePath]);
+            $logger->warning('Demo config.json is empty or invalid format', ['file' => $filePath]);
+            return;
+        }
+
+        foreach ($json as $key => $value) {
+            // Skip bEnabledSundaySchool and bEnabledFinance here; we'll set them explicitly from the API flags
+            if ($key === 'bEnabledSundaySchool' || $key === 'bEnabledFinance') {
+                continue;
+            }
+
+            try {
+                SystemConfig::setValue($key, $value);
+            } catch (Exception $e) {
+                $this->addWarning("Failed to set SystemConfig '{$key}' from demo config: {$e->getMessage()}", ['key' => $key, 'error' => $e->getMessage()]);
+                $logger->warning('Failed to set SystemConfig from demo config', ['key' => $key, 'error' => $e->getMessage()]);
+            }
+        }
+
+        // Ensure the Sunday School and Finance feature toggles are set according to the API flags
+        try {
+            SystemConfig::setValue('bEnabledSundaySchool', $includeSundaySchool ? '1' : '0');
+        } catch (Exception $e) {
+            $this->addWarning('Failed to set bEnabledSundaySchool from API flag', ['error' => $e->getMessage()]);
+            $logger->warning('Failed to set bEnabledSundaySchool from API flag', ['error' => $e->getMessage()]);
+        }
+
+        try {
+            SystemConfig::setValue('bEnabledFinance', $includeFinancial ? '1' : '0');
+        } catch (Exception $e) {
+            $this->addWarning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
+            $logger->warning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
+        }
+
+        $logger->info('Demo system config import complete', ['file' => $filePath]);
     }
 
     /**
