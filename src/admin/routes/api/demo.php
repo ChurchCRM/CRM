@@ -46,6 +46,9 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
                 'elapsedSeconds' => isset($duration) ? round($duration, 2) : null
             ];
 
+            // Log final counts for visibility (groups + sunday_schools plus other counters)
+            $logger->info('Admin demo data import completed', ['imported' => $result['imported']]);
+
             // Return 500 status code if the import failed
             $statusCode = $result['success'] ? 200 : 500;
             
