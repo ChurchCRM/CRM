@@ -115,6 +115,41 @@ class GroupService
     }
 
     /**
+     * Add a user to a group without performing Auth checks. Intended for trusted imports.
+     * Reuses the same internal behavior as addUserToGroup (special props handling).
+     *
+     * @param int $iGroupID
+     * @param int $iPersonID
+     * @param int $iRoleID
+     * @return array
+     */
+    public function addUserToGroupInternal(int $iGroupID, int $iPersonID, int $iRoleID): array
+    {
+        $result = false;
+        try {
+            $person2group2role = new Person2group2roleP2g2r();
+            $person2group2role
+                ->setPersonId($iPersonID)
+                ->setGroupId($iGroupID)
+                ->setRoleId($iRoleID);
+            $person2group2role->save();
+            $result = true;
+        } catch (\Throwable $t) {
+            // do nothing
+        }
+
+        if ($result) {
+            // Check if this group has special properties
+            $group = GroupQuery::create()->findOneById($iGroupID);
+            if ($group && $group->getHasSpecialProps()) {
+                $this->addPersonToGroupProperties($iGroupID, $iPersonID);
+            }
+        }
+
+        return $this->getGroupMembers($iGroupID, $iPersonID);
+    }
+
+    /**
      *  getGroupRoles.
      *
      * @param int $groupID ID of the group
