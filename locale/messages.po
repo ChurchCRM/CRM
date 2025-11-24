@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 15:48-0800\n"
+"POT-Creation-Date: 2025-11-23 18:26-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -591,6 +591,9 @@ msgid "Amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "Amount paid: ________________"
+msgstr ""
+
+msgid "An error occurred during demo data import"
 msgstr ""
 
 msgid "An error occurred: "
@@ -1327,6 +1330,9 @@ msgstr ""
 msgid "Clear Filters"
 msgstr ""
 
+msgid "Clear all data and reset the database to factory defaults. Application configuration (database credentials, install location, etc.) is preserved."
+msgstr ""
+
 msgid "Click a bar to filter payments"
 msgstr ""
 
@@ -1517,10 +1523,6 @@ msgid "Created via Family"
 msgstr ""
 
 msgid "Credit Card"
-msgstr ""
-
-#. Context: query_qry
-msgid "Credit Card People"
 msgstr ""
 
 #. Context: countries
@@ -1819,6 +1821,12 @@ msgstr ""
 
 #. Context: userconfig_ucfg
 msgid "Delimiter to separate emails in mailto: links"
+msgstr ""
+
+msgid "Demo data import failed: "
+msgstr ""
+
+msgid "Demo data imported successfully"
 msgstr ""
 
 #. Context: countries
@@ -2351,9 +2359,6 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-msgid "Error decoding integrity check result file"
-msgstr ""
-
 msgid "Error decoding signature definition file"
 msgstr ""
 
@@ -2406,6 +2411,10 @@ msgstr ""
 
 #. Context: countries
 msgid "Ethiopia"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Event"
 msgstr ""
 
 msgid "Event Attendance"
@@ -2833,6 +2842,10 @@ msgid "Find Registered students"
 msgstr ""
 
 msgid "Find family->"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people who didn't attend an event"
 msgstr ""
 
 #. Context: query_qry
@@ -3420,10 +3433,10 @@ msgstr ""
 msgid "Import Demo Data"
 msgstr ""
 
-msgid "Import Results"
+msgid "Import eGive"
 msgstr ""
 
-msgid "Import eGive"
+msgid "Import sample families, people, groups and optional events/financial records so you can explore ChurchCRM populated with realistic data."
 msgstr ""
 
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
@@ -3432,13 +3445,13 @@ msgstr ""
 msgid "Imported"
 msgstr ""
 
-msgid "Importing demo data..."
-msgstr ""
-
 msgid "Inactive"
 msgstr ""
 
 msgid "Include"
+msgstr ""
+
+msgid "Include Sunday School classes and enrollments"
 msgstr ""
 
 msgid "Include contact and demographic data in new member email notification body"
@@ -3861,9 +3874,6 @@ msgstr ""
 msgid "Load Authorized"
 msgstr ""
 
-msgid "Load sample families, people, groups for evaluation and demonstration."
-msgstr ""
-
 msgid "Loading"
 msgstr ""
 
@@ -4252,6 +4262,10 @@ msgid "Missing event id"
 msgstr ""
 
 #. Context: query_qry
+msgid "Missing people"
+msgstr ""
+
+#. Context: query_qry
 msgid "Missing pledges"
 msgstr ""
 
@@ -4417,6 +4431,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Nauru"
+msgstr ""
+
+msgid "Need to remove this data later?"
 msgstr ""
 
 msgid "Neighbor Families"
@@ -4814,6 +4831,9 @@ msgstr ""
 msgid "Optional"
 msgstr ""
 
+msgid "Optional Data to Include"
+msgstr ""
+
 msgid "Other"
 msgstr ""
 
@@ -5016,10 +5036,6 @@ msgid "People not in"
 msgstr ""
 
 msgid "People not in list"
-msgstr ""
-
-#. Context: query_qry
-msgid "People who are configured to pay by credit card."
 msgstr ""
 
 #. Context: query_qry
@@ -5695,12 +5711,6 @@ msgstr ""
 msgid "Reset Password"
 msgstr ""
 
-msgid "Reset System"
-msgstr ""
-
-msgid "Reset the software to factory defaults or clear all data."
-msgstr ""
-
 msgid "Reset your password"
 msgstr ""
 
@@ -6089,6 +6099,10 @@ msgid "Select how do you want to request the family information to be verified"
 msgstr ""
 
 msgid "Select none"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select the desired event"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -6963,6 +6977,9 @@ msgstr ""
 msgid "True / False"
 msgstr ""
 
+msgid "Try ChurchCRM with demo data"
+msgstr ""
+
 msgid "Tuesdays"
 msgstr ""
 
@@ -7086,6 +7103,9 @@ msgid "Unknown"
 msgstr ""
 
 msgid "Unknown Type"
+msgstr ""
+
+msgid "Unknown error"
 msgstr ""
 
 msgid "Unmet Application Prerequisites"
@@ -7455,6 +7475,9 @@ msgid "WARNING"
 msgstr ""
 
 msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr ""
+
+msgid "WARNING: This completely erases all database records including families, groups, events, and financial data"
 msgstr ""
 
 msgid "WARNING: This completely erases the existing database"
@@ -7853,9 +7876,6 @@ msgid "in cart"
 msgstr ""
 
 msgid "indicates items inherited from the associated family record."
-msgstr ""
-
-msgid "integrityCheck.json file missing"
 msgstr ""
 
 msgid "invalid calendar pinning"

@@ -306,5 +306,21 @@
                 "role": "Member"
             }
         ]
+    },
+    {
+        "name": "2024 Food drive",
+        "description": "Community food drive for 2024 — volunteer-run collection and distribution.",
+        "isSundaySchool": false,
+        "active": false,
+        "peopleTypes": ["Coordinator", "Volunteer"],
+        "members": [ 
+          {
+                "email": "kenneth.johnson22@demo.churchcrm.io",
+                "role": "Coordinator"
+            },
+            {
+                "email": "joshua.rodriguez@demo.churchcrm.io",
+                "role": "Volunteer"
+            }]
     }
 ]
