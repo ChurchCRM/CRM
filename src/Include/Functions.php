@@ -703,7 +703,6 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             break;
     // Handler for date fields
         case 2:
-            // code rajouté par Philippe Logel
             echo '<div class="input-group">' .
             '<div class="input-group-addon">' .
             '<i class="fa-solid fa-calendar"></i>' .
@@ -1042,7 +1041,6 @@ function validateCustomField($type, &$data, $col_Name, ?array &$aErrors): bool
     // Validate a date field
         case 2:
             // this part will work with each date format
-            // Philippe logel
             $data = InputUtils::filterDate($data);
 
             if (strlen($data) > 0) {
