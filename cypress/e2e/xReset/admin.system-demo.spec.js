@@ -6,7 +6,7 @@ describe('API Private Admin Demo', () => {
 
     cy.makePrivateAdminAPICall('POST', '/admin/api/demo/load', body, 200).then((resp) => {
 
-      cy.wait(15000); // wait for demo data to be processed (2x for slow GH actions)
+      cy.wait(50000); // wait for demo data to be processed 
 
       // Expect success flag and import metadata in body
       expect(resp.body).to.have.property('success');
