@@ -246,7 +246,7 @@ class DemoDataService
                     } catch (Exception $e) {
                         $familyName = $famData['name'] ?? 'unknown';
                         $msg = "Invalid createdAt for family '{$familyName}': {$e->getMessage()}";
-                        $this->importResult['warnings'][] = $msg;
+                        $this->addWarning($msg);
                         $logger->warning('Family createdAt parse failed', [
                             'family_name' => $familyName,
                             'createdAt' => $famData['createdAt'] ?? null,
@@ -391,7 +391,7 @@ class DemoDataService
      */
     private function importGroups(bool $includeSundaySchool, array $emailMap): void
     {
-        $logger = LoggerUtils::getAppLogger();
+
 
         $data = $this->loadJsonFile('groups.json');
         if (!$data) {
@@ -431,7 +431,7 @@ class DemoDataService
                     $this->importResult['imported']['sunday_schools']++;
                 }
             } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Group import failed for '{$groupData['name']}' : {$e->getMessage()}";
+                $this->addWarning("Group import failed for '{$groupData['name']}' : {$e->getMessage()}");
             }
         }
 
@@ -557,12 +557,15 @@ class DemoDataService
                     }
                 }
             } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Membership import failed for group '{$groupData['name']}' : {$e->getMessage()}";
+                $this->addWarning("Membership import failed for group '{$groupData['name']}' : {$e->getMessage()}", [
+                    'group_name' => $groupData['name'],
+                    'error' => $e->getMessage()
+                ]);
             }
         }
 
-        // Set session flag for auth bypass
-        $_SESSION['bManageGroups'] = true;
+        // Removed session flag for auth bypass (security fix)
+        // If group management permissions are required, ensure import is performed by an authenticated admin.
     }
 
     private function importNotes(): void

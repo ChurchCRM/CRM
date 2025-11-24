@@ -219,7 +219,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthDay = InputUtils::legacyFilterInput($_POST['BirthDay'], 'int');
     $iBirthYear = InputUtils::legacyFilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
-    // Philippe Logel
     $dFriendDate = InputUtils::filterDate($_POST['FriendDate']);
     $dMembershipDate = InputUtils::filterDate($_POST['MembershipDate']);
     $iClassification = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
@@ -1154,7 +1153,6 @@ require_once 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa-solid fa-calendar"></i>
                         </div>
-                        <!-- Philippe Logel -->
                         <input type="text" name="MembershipDate" class="form-control date-picker"
                                value="<?= change_date_for_place_holder($dMembershipDate) ?>" maxlength="10" id="sel1"
                                size="11"

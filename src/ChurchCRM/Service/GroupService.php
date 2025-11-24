@@ -114,6 +114,7 @@ class GroupService
         return $this->getGroupMembers($iGroupID, $iPersonID);
     }
 
+
     /**
      * Add a user to a group without performing Auth checks. Intended for trusted imports.
      * Reuses the same internal behavior as addUserToGroup (special props handling).
