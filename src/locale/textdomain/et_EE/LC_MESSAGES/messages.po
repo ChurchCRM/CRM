@@ -3826,10 +3826,6 @@ msgid "Details:"
 msgstr "Üksikasjad:"
 
 #: 
-msgid "File Missing"
-msgstr "Fail puudub"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "See kirjutab andmebaasi pereümbrike numbrid üle sellel lehel valitud numbritega. Kas jätkata?"
 
@@ -4086,10 +4082,6 @@ msgstr "Ühe või mitme faili allkirja valideerimine nurjus"
 #: 
 msgid "Configure HTTPS"
 msgstr "Seadistage HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Failide terviklikkuse kontrolli nurjumine"
 
 #: 
 msgid "Family:"
@@ -7978,10 +7970,6 @@ msgid "UserName not set"
 msgstr "Kasutajanimi pole määratud"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Inimesed ja perekonnad on andmebaasist kustutatud."
-
-#: 
 msgid "Self Registrations"
 msgstr "Enda registreerimised"
 
@@ -8252,20 +8240,8 @@ msgid "is disabled"
 msgstr "on keelatud"
 
 #: 
-msgid "System Information"
-msgstr "Süsteemi info"
-
-#: 
 msgid "Software Version"
 msgstr "Tarkvara versioon"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Kehtivad e-posti serveri sätted"
-
-#: 
-msgid "Database"
-msgstr "Andmebaas"
 
 #: 
 msgid "Database Version"
@@ -8599,18 +8575,6 @@ msgid "Database Reset Functions"
 msgstr "Andmebaasi lähtestamise funktsioonid"
 
 #: 
-msgid "Reset Members"
-msgstr "Lähtesta liikmed"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "See eemaldab kõik liikmete andmed, inimesed ja perekonnad ning seda ei saa tagasi võtta."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Lähtestage pered / inimesed"
-
-#: 
 msgid "Reset Database"
 msgstr "Lähtesta andmebaas"
 
@@ -8803,20 +8767,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Publik pole ChurchCRM-is"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM-i installiteave"
-
-#: 
-msgid "Database Server Version"
-msgstr "Andmebaasiserveri versioon"
-
-#: 
 msgid "Web Server"
 msgstr "Veebiserver"
-
-#: 
-msgid "Email Information"
-msgstr "E-posti teave"
 
 #: 
 msgid "List maintenance"

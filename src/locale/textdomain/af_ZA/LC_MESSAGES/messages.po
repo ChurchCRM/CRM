@@ -3826,10 +3826,6 @@ msgid "Details:"
 msgstr "Besonderhede:"
 
 #: 
-msgid "File Missing"
-msgstr "Lêer ontbreek"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Dit sal die familie-koevertnommers in die databasis oorskryf met die wat op hierdie bladsy gekies is. Aanhou?"
 
@@ -4087,10 +4083,6 @@ msgstr "Een of meer lêers kon nie handtekening bekragtig word nie"
 #: 
 msgid "Configure HTTPS"
 msgstr "Stel HTTPS op"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Lêers wat die integriteitskontrole misluk"
 
 #: 
 msgid "Family:"
@@ -7980,10 +7972,6 @@ msgid "UserName not set"
 msgstr "Gebruikersnaam nie gestel nie"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Die mense en gesinne is uit die databasis verwyder."
-
-#: 
 msgid "Self Registrations"
 msgstr "Selfregistrasies"
 
@@ -8254,20 +8242,8 @@ msgid "is disabled"
 msgstr "is uitgeskakel"
 
 #: 
-msgid "System Information"
-msgstr "Stelselinligting"
-
-#: 
 msgid "Software Version"
 msgstr "Sagteware weergawe"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Geldige posbedienerinstellings"
-
-#: 
-msgid "Database"
-msgstr "Databasis"
 
 #: 
 msgid "Database Version"
@@ -8601,18 +8577,6 @@ msgid "Database Reset Functions"
 msgstr "Databasisherstelfunksies"
 
 #: 
-msgid "Reset Members"
-msgstr "Stel lede weer in"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Dit sal al die liddata, mense en gesinne verwyder en kan nie ongedaan gemaak word nie."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Stel gesinne / mense terug"
-
-#: 
 msgid "Reset Database"
 msgstr "Stel die databasis terug"
 
@@ -8805,20 +8769,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Die publiek is nie in die KerkCRM nie"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM Installasie-inligting"
-
-#: 
-msgid "Database Server Version"
-msgstr "Databasis bediener weergawe"
-
-#: 
 msgid "Web Server"
 msgstr "Web bediener"
-
-#: 
-msgid "Email Information"
-msgstr "Epos informasie"
 
 #: 
 msgid "List maintenance"

@@ -3826,10 +3826,6 @@ msgid "Details:"
 msgstr "Détails :"
 
 #: 
-msgid "File Missing"
-msgstr "Fichier manquant"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Cette action va écraser le nombre d'enveloppe par famille au niveau de la base de données, avec ceux sélectionnés dans cette page. Voulez-vous continuer ?"
 
@@ -4085,10 +4081,6 @@ msgstr "Un ou plusieurs fichiers n&#39;ont pas été signé"
 #: 
 msgid "Configure HTTPS"
 msgstr "Configurer HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Les fichiers ont échoué au test d'intégrité"
 
 #: 
 msgid "Family:"
@@ -7978,10 +7970,6 @@ msgid "UserName not set"
 msgstr "Nom d'utilisateur non défini"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Les personnes et familles ont été effacées de la base de données."
-
-#: 
 msgid "Self Registrations"
 msgstr "Auto-inscription"
 
@@ -8252,20 +8240,8 @@ msgid "is disabled"
 msgstr "est en situation de handicap"
 
 #: 
-msgid "System Information"
-msgstr "Informations système"
-
-#: 
 msgid "Software Version"
 msgstr "Version du logiciel"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Paramètres du serveur de mail corrects"
-
-#: 
-msgid "Database"
-msgstr "Base de données"
 
 #: 
 msgid "Database Version"
@@ -8598,18 +8574,6 @@ msgid "Database Reset Functions"
 msgstr "Fonctions de réinitialisation de la base de données"
 
 #: 
-msgid "Reset Members"
-msgstr "Réinitialiser les membres"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Cette opération est irréversible, elle supprimera toutes les données des membres, personnes et familles."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Réinitialiser les familles/individus"
-
-#: 
 msgid "Reset Database"
 msgstr "Réinitialiser la base"
 
@@ -8802,20 +8766,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Public non membre de ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informations d'installation de ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Version de base  de données"
-
-#: 
 msgid "Web Server"
 msgstr "Serveur wen"
-
-#: 
-msgid "Email Information"
-msgstr "Informations par e-mail"
 
 #: 
 msgid "List maintenance"

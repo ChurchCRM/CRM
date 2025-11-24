@@ -3823,10 +3823,6 @@ msgid "Details:"
 msgstr "விவரங்கள்:"
 
 #: 
-msgid "File Missing"
-msgstr "கோப்பு காணவில்லை"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "இது இந்தப் பக்கத்தில் தேர்ந்தெடுக்கப்பட்டவற்றுடன் தரவுத்தளத்தில் உள்ள குடும்ப உறை எண்களை மேலெழுதும். தொடரவா?"
 
@@ -4081,10 +4077,6 @@ msgstr "ஒன்று அல்லது அதற்கு மேற்பட
 #: 
 msgid "Configure HTTPS"
 msgstr "HTTPS ஐ உள்ளமைக்கவும்"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "கோப்புகளின் நேர்மை சரிபார்ப்பில் தோல்வி"
 
 #: 
 msgid "Family:"
@@ -7969,10 +7961,6 @@ msgid "UserName not set"
 msgstr "பயனர்பெயர் அமைக்கப்படவில்லை"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "தரவுத்தளத்திலிருந்து மக்கள் மற்றும் குடும்பங்கள் அழிக்கப்பட்டுள்ளன."
-
-#: 
 msgid "Self Registrations"
 msgstr "சுய பதிவுகள்"
 
@@ -8241,20 +8229,8 @@ msgid "is disabled"
 msgstr "முடக்கப்பட்டுள்ளது"
 
 #: 
-msgid "System Information"
-msgstr "கணினி தகவல்"
-
-#: 
 msgid "Software Version"
 msgstr "மென்பொருள் பதிப்பு"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "செல்லுபடியாகும் அஞ்சல் சேவையக அமைப்புகள்"
-
-#: 
-msgid "Database"
-msgstr "தரவுத்தளம்"
 
 #: 
 msgid "Database Version"
@@ -8597,18 +8573,6 @@ msgid "Database Reset Functions"
 msgstr "தரவுத்தள மீட்டமைப்பு செயல்பாடுகள்"
 
 #: 
-msgid "Reset Members"
-msgstr "உறுப்பினர்களை மீட்டமைக்கவும்"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "இது உறுப்பினர் தரவு, நபர்கள் மற்றும் குடும்பங்கள் அனைத்தையும் அகற்றும், செயல்தவிர்க்க முடியாது."
-
-#: 
-msgid "Reset Families/People"
-msgstr "குடும்பங்கள்/மக்கள் மீட்டமை"
-
-#: 
 msgid "Reset Database"
 msgstr "தரவுத்தளத்தை மீட்டமைக்கவும்"
 
@@ -8799,20 +8763,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "சர்ச்சிஆர்எம்மில் பார்வையாளர்கள் இல்லை"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "சர்ச்சிஆர்எம் நிறுவல் தகவல்"
-
-#: 
-msgid "Database Server Version"
-msgstr "தரவுத்தள சர்வர் பதிப்பு"
-
-#: 
 msgid "Web Server"
 msgstr "இணைய சேவையகம்"
-
-#: 
-msgid "Email Information"
-msgstr "மின்னஞ்சல் தகவல்"
 
 #: 
 msgid "List maintenance"

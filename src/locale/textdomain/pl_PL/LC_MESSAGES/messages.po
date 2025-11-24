@@ -4103,20 +4103,8 @@ msgid "is disabled"
 msgstr "wyłączone"
 
 #: 
-msgid "System Information"
-msgstr "Informacje o Systemie"
-
-#: 
 msgid "Software Version"
 msgstr "Wersja Oprogramowania"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Poprawne Ustawienia Serwera Poczty"
-
-#: 
-msgid "Database"
-msgstr "Baza Danych"
 
 #: 
 msgid "Database Version"
@@ -4438,18 +4426,6 @@ msgid "Database Reset Functions"
 msgstr "Funkcje Resetowania Bazy Danych"
 
 #: 
-msgid "Reset Members"
-msgstr "Zresetuj Członków"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Spowoduje usunięcie danych członków, osób i rodzin; Zmiany są nieodwracalne."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Zresetuj Rodziny/Osoby"
-
-#: 
 msgid "Reset Database"
 msgstr "Zresetuj Bazę Danych"
 
@@ -4642,20 +4618,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Uczestnicy z poza ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informacje Instalacji ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Wersja Servera Bazy Danych"
-
-#: 
 msgid "Web Server"
 msgstr "Serwer WWW"
-
-#: 
-msgid "Email Information"
-msgstr "Informacje o Email"
 
 #: 
 msgid "List maintenance"

@@ -3827,10 +3827,6 @@ msgid "Details:"
 msgstr "التفاصيل:"
 
 #: 
-msgid "File Missing"
-msgstr "الملف مفقود"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "سيؤدي هذا إلى استبدال الأرقام المغلف الأسرة في قاعدة البيانات مع أولئك الذين يتم اختيارهم على هذه الصفحة. استمر؟"
 
@@ -4087,10 +4083,6 @@ msgstr "فشل واحد أو أكثر من الملفات التحقق من صح
 #: 
 msgid "Configure HTTPS"
 msgstr "تكوين HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "ملفات عدم التحقق من سلامة"
 
 #: 
 msgid "Family:"
@@ -7980,10 +7972,6 @@ msgid "UserName not set"
 msgstr "اسم المستخدم لم يحدد"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "تم مسح الناس والأسر من قاعدة البيانات."
-
-#: 
 msgid "Self Registrations"
 msgstr "التسجيلات النفس"
 
@@ -8254,20 +8242,8 @@ msgid "is disabled"
 msgstr "معطل"
 
 #: 
-msgid "System Information"
-msgstr "معلومات النظام"
-
-#: 
 msgid "Software Version"
 msgstr "إصدار البرنامج"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "إعدادات خادم البريد صحيح"
-
-#: 
-msgid "Database"
-msgstr "قاعدة البيانات"
 
 #: 
 msgid "Database Version"
@@ -8600,18 +8576,6 @@ msgid "Database Reset Functions"
 msgstr "وظائف إعادة تعيين قاعدة البيانات"
 
 #: 
-msgid "Reset Members"
-msgstr "الأعضاء إعادة تعيين"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "سيؤدي هذا إلى إزالة جميع البيانات عضوا، والأشخاص والأسر ولا يمكن التراجع عنه."
-
-#: 
-msgid "Reset Families/People"
-msgstr "عائلات إعادة تعيين / الشعب"
-
-#: 
 msgid "Reset Database"
 msgstr "قاعدة بيانات إعادة تعيين"
 
@@ -8804,20 +8768,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "الجمهور ليس في ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "معلومات تثبيت ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "إصدار خادم قاعدة البيانات"
-
-#: 
 msgid "Web Server"
 msgstr "قاعدة بيانات للانترنت"
-
-#: 
-msgid "Email Information"
-msgstr "معلومات البريد الإلكتروني"
 
 #: 
 msgid "List maintenance"

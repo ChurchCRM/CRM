@@ -3822,10 +3822,6 @@ msgid "Details:"
 msgstr "Maelezo:"
 
 #: 
-msgid "File Missing"
-msgstr "Faili Haipo"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Hii itafuta nambari za bahasha za familia kwenye hifadhidata na zile zilizochaguliwa kwenye ukurasa huu. Ungependa kuendelea?"
 
@@ -4080,10 +4076,6 @@ msgstr "Faili moja au zaidi imeshindwa kuthibitishwa kwa saini"
 #: 
 msgid "Configure HTTPS"
 msgstr "Sanidi HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Faili hazifanyi ukaguzi wa uadilifu"
 
 #: 
 msgid "Family:"
@@ -7968,10 +7960,6 @@ msgid "UserName not set"
 msgstr "Jina la mtumiaji halijawekwa"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Watu na familia zimeondolewa kwenye hifadhidata."
-
-#: 
 msgid "Self Registrations"
 msgstr "Usajili wa kibinafsi"
 
@@ -8240,20 +8228,8 @@ msgid "is disabled"
 msgstr "imezimwa"
 
 #: 
-msgid "System Information"
-msgstr "Taarifa za Mfumo"
-
-#: 
 msgid "Software Version"
 msgstr "Toleo la Programu"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Mipangilio Sahihi ya Seva ya Barua"
-
-#: 
-msgid "Database"
-msgstr "Hifadhidata"
 
 #: 
 msgid "Database Version"
@@ -8573,18 +8549,6 @@ msgid "Database Reset Functions"
 msgstr "Kazi za Kuweka upya Hifadhidata"
 
 #: 
-msgid "Reset Members"
-msgstr "Weka upya Wanachama"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Hatua hii itaondoa data yote ya wanachama, watu na familia na haiwezi kutenduliwa."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Weka Upya Familia/Watu"
-
-#: 
 msgid "Reset Database"
 msgstr "Weka upya Hifadhidata"
 
@@ -8776,20 +8740,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Hadhira haipo katika KanisaCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Taarifa ya Ufungaji wa ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Toleo la Seva ya Hifadhidata"
-
-#: 
 msgid "Web Server"
 msgstr "Seva ya Wavuti"
-
-#: 
-msgid "Email Information"
-msgstr "Taarifa za Barua Pepe"
 
 #: 
 msgid "List maintenance"
