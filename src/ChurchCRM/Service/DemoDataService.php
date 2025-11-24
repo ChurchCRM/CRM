@@ -4,11 +4,12 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Group;
+use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Service\GroupService;
 use ChurchCRM\dto\SystemConfig;
 use DateTime;
 use Exception;
@@ -323,6 +324,8 @@ class DemoDataService
 
     /**
      * Import groups from `groups.json` placed under admin/demo and create memberships.
+     * Uses Propel ORM only - no external service dependencies.
+     * IMPORTANT: Only creates roles that are explicitly defined in peopleTypes. Does NOT auto-create undefined roles.
      */
     private function importGroups(bool $includeSundaySchool, array $emailMap): void
     {
@@ -334,9 +337,7 @@ class DemoDataService
             return;
         }
 
-        $groupService = new GroupService();
-
-        // First pass: create groups
+        // First pass: create groups with correct types
         foreach ($data as $groupData) {
             try {
                 $isSS = !empty($groupData['isSundaySchool']);
@@ -346,12 +347,13 @@ class DemoDataService
                 }
 
                 $group = new Group();
-                // Use Group convenience helpers so the model creates role lists/options for Sunday School
+                // Use Group convenience helpers for Sunday School to set type 4
                 if ($isSS) {
                     $group->makeSundaySchool();
                 } else {
-                    // leave type as default (0) for non-sunday groups
-                    $group->setType(0);
+                    // Use groupType from JSON if provided, otherwise default to 0 (Unassigned)
+                    $groupType = isset($groupData['groupType']) ? (int)$groupData['groupType'] : 0;
+                    $group->setType($groupType);
                 }
                 $group->setName($groupData['name'] ?? '');
                 $group->setDescription($groupData['description'] ?? '');
@@ -372,6 +374,7 @@ class DemoDataService
         }
 
         // Second pass: create memberships for groups
+        // IMPORTANT: Only use roles defined in the group's peopleTypes array
         foreach ($data as $groupData) {
             try {
                 $isSS = !empty($groupData['isSundaySchool']);
@@ -386,25 +389,66 @@ class DemoDataService
                 }
 
                 $groupId = (int)$this->groupNameToId[$groupName];
-
-                $roleNameToId = [];
-                try {
-                    $roles = $groupService->getGroupRoles((string)$groupId);
-                    foreach ($roles as $r) {
-                        if (isset($r['lst_OptionName']) && isset($r['lst_OptionID'])) {
-                            $roleNameToId[$r['lst_OptionName']] = (int)$r['lst_OptionID'];
-                        }
-                    }
-                } catch (Exception $e) {
-                    $msg = "Failed to load roles for group '{$groupName}' (id: {$groupId}): {$e->getMessage()}";
-                    $this->importResult['warnings'][] = $msg;
-                    $logger->warning('Group roles fetch failed', [
-                        'group_name' => $groupName,
-                        'group_id' => $groupId,
-                        'error' => $e->getMessage()
-                    ]);
+                $group = $this->groupMap[$groupId] ?? null;
+                if (!$group) {
+                    $this->addWarning("Group '{$groupName}' (id: {$groupId}) not in map, skipping memberships", ['group_name' => $groupName]);
+                    continue;
                 }
 
+                // Get the list of allowed roles for this group from peopleTypes
+                $allowedRoles = $groupData['peopleTypes'] ?? [];
+                if (empty($allowedRoles)) {
+                    $this->addWarning("Group '{$groupName}' has no peopleTypes defined, skipping memberships", ['group_name' => $groupName]);
+                    continue;
+                }
+
+                // Normalize allowed roles to match comparison (ucfirst lowercase)
+                $normalizedAllowed = [];
+                foreach ($allowedRoles as $role) {
+                    $normalizedAllowed[ucfirst(strtolower(trim($role)))] = true;
+                }
+
+                // Load existing roles for this group using ORM (from ListOption table)
+                $roleList = ListOptionQuery::create()->findById((int)$group->getRoleListId());
+                $roleNameToId = [];
+                if ($roleList) {
+                    foreach ($roleList as $role) {
+                        $roleNameToId[$role->getOptionName()] = (int)$role->getOptionId();
+                    }
+                }
+
+                // Create any missing roles that are in peopleTypes
+                foreach ($normalizedAllowed as $allowedRoleName => $dummy) {
+                    if (!isset($roleNameToId[$allowedRoleName])) {
+                        try {
+                            // Create the role if it doesn't exist
+                            $newRole = new ListOption();
+                            $newRole->setId((int)$group->getRoleListId());
+                            
+                            // Get next available OptionID for this list
+                            $maxRoleId = ListOptionQuery::create()
+                                ->filterById((int)$group->getRoleListId())
+                                ->orderByOptionId('desc')
+                                ->findOne();
+                            $nextRoleId = $maxRoleId ? ((int)$maxRoleId->getOptionId() + 1) : 1;
+                            
+                            $newRole->setOptionId($nextRoleId);
+                            $newRole->setOptionName($allowedRoleName);
+                            $newRole->setOptionSequence($nextRoleId);
+                            $newRole->save();
+                            
+                            $roleNameToId[$allowedRoleName] = $nextRoleId;
+                        } catch (Exception $e) {
+                            $this->addWarning("Failed to create role '{$allowedRoleName}' for group '{$groupName}': {$e->getMessage()}", [
+                                'group_name' => $groupName,
+                                'role_name' => $allowedRoleName,
+                                'error' => $e->getMessage()
+                            ]);
+                        }
+                    }
+                }
+
+                // Now create memberships, but ONLY if the member's role is in peopleTypes
                 $members = $groupData['members'] ?? [];
                 foreach ($members as $m) {
                     $email = strtolower(trim($m['email'] ?? ''));
@@ -417,32 +461,46 @@ class DemoDataService
                     }
 
                     $personId = (int)$emailMap[$email];
-                    $roleId = 1;
                     $roleName = $m['role'] ?? '';
-                    if (!empty($roleName)) {
-                        $rn = ucfirst(strtolower(trim($roleName)));
-                        if (isset($roleNameToId[$rn])) {
-                            $roleId = $roleNameToId[$rn];
-                        } else {
-                            try {
-                                $newRole = $groupService->addGroupRole((string)$groupId, $rn);
-                                if (!empty($newRole['newRole']['roleID'])) {
-                                    $roleId = (int)$newRole['newRole']['roleID'];
-                                    $roleNameToId[$rn] = $roleId;
-                                }
-                            } catch (Exception $e) {
-                                // fallback to default
-                            }
-                        }
+                    
+                    // Normalize the role name
+                    $rn = ucfirst(strtolower(trim($roleName)));
+
+                    // CRITICAL: Only proceed if the role is in the allowed roles for this group
+                    if (!isset($normalizedAllowed[$rn])) {
+                        $this->addWarning("Group '{$groupName}': member {$personId} has role '{$rn}' which is not in peopleTypes, skipping", [
+                            'group_name' => $groupName,
+                            'person_id' => $personId,
+                            'role_name' => $rn
+                        ]);
+                        continue;
                     }
 
-                    // Use internal add so imports don't require an interactive auth context
-                    $groupService->addUserToGroupInternal($groupId, $personId, $roleId);
+                    // Get the roleId from our map (should exist after the loop above)
+                    $roleId = $roleNameToId[$rn] ?? 1;
+
+                    // Create membership using ORM
+                    try {
+                        $membership = new Person2group2roleP2g2r();
+                        $membership->setPersonId($personId);
+                        $membership->setGroupId($groupId);
+                        $membership->setRoleId($roleId);
+                        $membership->save();
+                    } catch (Exception $e) {
+                        $this->addWarning("Failed to add person {$personId} to group '{$groupName}': {$e->getMessage()}", [
+                            'person_id' => $personId,
+                            'group_name' => $groupName,
+                            'error' => $e->getMessage()
+                        ]);
+                    }
                 }
             } catch (Exception $e) {
                 $this->importResult['warnings'][] = "Membership import failed for group '{$groupData['name']}' : {$e->getMessage()}";
             }
         }
+
+        // Set session flag for auth bypass
+        $_SESSION['bManageGroups'] = true;
     }
 
     private function importNotes(): void
