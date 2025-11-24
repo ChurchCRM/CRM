@@ -16,7 +16,8 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
         $body = $request->getParsedBody();
         $includeFinancial = isset($body['includeFinancial']) ? (bool)$body['includeFinancial'] : false;
         $includeEvents = isset($body['includeEvents']) ? (bool)$body['includeEvents'] : false;
-        $force = $includeEvents = isset($body['force']) ? (bool)$body['force'] : false;        
+        $includeSundaySchool = isset($body['includeSundaySchool']) ? (bool)$body['includeSundaySchool'] : false;
+        $force = isset($body['force']) ? (bool)$body['force'] : false;
 
         if (!$force) {
         $peopleCount = PersonQuery::create()->count();        
@@ -30,9 +31,9 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
         
 
         try {
-            $logger->info('Admin demo data import started', ['includeFinancial' => $includeFinancial, 'includeEvents' => $includeEvents]);
+            $logger->info('Admin demo data import started', ['includeFinancial' => $includeFinancial, 'includeEvents' => $includeEvents, 'includeSundaySchool' => $includeSundaySchool]);
             $demoService = new DemoDataService();
-            $result = $demoService->importDemoData($includeFinancial, $includeEvents);
+            $result = $demoService->importDemoData($includeFinancial, $includeEvents, $includeSundaySchool);
 
             $duration = $result['endTime'] - $result['startTime'];
 
@@ -44,6 +45,9 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
                 'errors' => $result['errors'],
                 'elapsedSeconds' => isset($duration) ? round($duration, 2) : null
             ];
+
+            // Log final counts for visibility (groups + sunday_schools plus other counters)
+            $logger->info('Admin demo data import completed', ['imported' => $result['imported']]);
 
             // Return 500 status code if the import failed
             $statusCode = $result['success'] ? 200 : 500;

@@ -2,20 +2,15 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\Calendar;
-use ChurchCRM\model\ChurchCRM\CalendarEvent;
-use ChurchCRM\model\ChurchCRM\DonationFund;
-use ChurchCRM\model\ChurchCRM\EventAttend;
-use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Group;
+use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
-use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\dto\SystemConfig;
 use DateTime;
 use Exception;
 use JsonException;
@@ -28,17 +23,10 @@ class DemoDataService
     private array $importResult = [
         'success' => false,
         'imported' => [
-            'calendars' => 0,
-            'donation_funds' => 0,
             'groups' => 0,
             'families' => 0,
             'people' => 0,
             'notes' => 0,
-            'person2group2role' => 0,
-            'events' => 0,
-            'event_attendance' => 0,
-            'pledges' => 0,
-            'calendar_events' => 0
         ],
         'warnings' => [],
         'errors' => [],
@@ -49,215 +37,158 @@ class DemoDataService
     private array $familyMap = [];
     private array $personMap = [];
     private array $groupMap = [];
-    private array $eventMap = [];
-    private array $fundMap = [];
+    private array $groupNameToId = [];
+    private $logger;
 
-    public function importDemoData(bool $includeFinancial = false, bool $includeEvents = false): array
+    public function __construct()
+    {
+        $this->logger = LoggerUtils::getAppLogger();
+    }
+
+    public function importDemoData(bool $includeFinancial = false, bool $includeEvents = false, bool $includeSundaySchool = false): array
     {
         $this->importResult['startTime'] = microtime(true);
-        $logger = LoggerUtils::getAppLogger();
 
         try {
-            // If a simplified demo JSON exists under admin demo, import from it
-            $simplifiedFile = self::DATA_PATH . '/people.json';
-            if (file_exists($simplifiedFile)) {
-                $logger->info('Using simplified demo import', ['file' => $simplifiedFile]);
-                $this->importFromSimplified($simplifiedFile);
-            } else {
-                $logger->info('Using standard demo import');
-                // Load core demo data (groups, families, people, notes, memberships)
-                $this->importGroups();
-                $this->importFamilies();
-                $this->importPeople();
-                $this->importNotes();
-                $this->importPerson2GroupRole();
-            }
+            $this->logger->info('Demo data import started', [
+                'includeFinancial' => $includeFinancial,
+                'includeEvents' => $includeEvents,
+                'includeSundaySchool' => $includeSundaySchool
+            ]);
 
-            // Optionally load events-related data (calendars, events, attendance)
-            if ($includeEvents) {
-                $this->importCalendars();
-                $this->importEvents();
-                $this->importEventAttendance();
-                $this->importCalendarEvents();
-            }
+            // Load demo system configuration (if present) before importing data
+            $this->importSystemConfig($includeSundaySchool, $includeFinancial);
 
-            // Optionally load financial data (donation funds, pledges)
-            if ($includeFinancial) {
-                $this->importDonationFunds();
-                $this->importPledges();
-            }
+            $emailMap = $this->importCongregation();
+
+            $this->importGroups($includeSundaySchool, $emailMap);
 
             $this->importResult['success'] = true;
             $this->importResult['endTime'] = microtime(true);
             $duration = $this->importResult['endTime'] - $this->importResult['startTime'];
 
-            $logger->info('Demo data import completed successfully', [
+            $this->logger->info('Demo data import completed successfully', [
                 'duration' => $duration,
                 'imported' => $this->importResult['imported'],
                 'warnings' => count($this->importResult['warnings']),
                 'errors' => count($this->importResult['errors'])
             ]);
 
-            return $this->importResult;
-
-        } catch (Exception $e) {
-            $this->importResult['success'] = false;
-            $this->importResult['errors'][] = $e->getMessage();
-            $this->importResult['endTime'] = microtime(true);
-
-            $logger->error('Demo data import failed', [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
-            ]);
-
-            return $this->importResult;
-        }
-    }
-
-    /**
-     * Import events and financial related demo data separately.
-     * This allows UI to offer a separate "financial/events" seed option.
-     */
-    public function importFinancialData(): array
-    {
-        $this->importResult['startTime'] = microtime(true);
-        $logger = LoggerUtils::getAppLogger();
-
-        try {
-            // Financial imports (funds & pledges) - events/calendars are handled separately
-            $this->importDonationFunds();
-            $this->importPledges();
-
-            $this->importResult['success'] = true;
-            $this->importResult['endTime'] = microtime(true);
-            $duration = $this->importResult['endTime'] - $this->importResult['startTime'];
-
-            $logger->info('Demo financial data import completed successfully', [
-                'duration' => $duration,
-                'imported' => $this->importResult['imported'],
-                'warnings' => count($this->importResult['warnings'])
-            ]);
-
-            return $this->importResult;
-        } catch (Exception $e) {
-            $this->importResult['success'] = false;
-            $this->importResult['errors'][] = $e->getMessage();
-            $this->importResult['endTime'] = microtime(true);
-
-            $logger->error('Demo financial data import failed', [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
-            ]);
-
-            return $this->importResult;
-        }
-    }
-
-    /**
-     * Import events and calendar related demo data separately.
-     * This method focuses on calendars, events, and attendance associations.
-     */
-    public function importEventsAndCalendars(): array
-    {
-        $this->importResult['startTime'] = microtime(true);
-        $logger = LoggerUtils::getAppLogger();
-
-        try {
-            $this->importCalendars();
-            $this->importEvents();
-            $this->importEventAttendance();
-            $this->importCalendarEvents();
-
-            $this->importResult['success'] = true;
-            $this->importResult['endTime'] = microtime(true);
-            $duration = $this->importResult['endTime'] - $this->importResult['startTime'];
-
-            $logger->info('Demo events/calendar import completed successfully', [
-                'duration' => $duration,
-                'imported' => $this->importResult['imported'],
-                'warnings' => count($this->importResult['warnings'])
-            ]);
-
-            return $this->importResult;
-        } catch (Exception $e) {
-            $this->importResult['success'] = false;
-            $this->importResult['errors'][] = $e->getMessage();
-            $this->importResult['endTime'] = microtime(true);
-
-            $logger->error('Demo events/calendar import failed', [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
-            ]);
-
-            return $this->importResult;
-        }
-    }
-
-    private function importCalendars(): void
-    {
-        $data = $this->loadJsonFile('calendars.json');
-        if (!$data) return;
-
-        foreach ($data as $calendarData) {
-            try {
-                $calendar = new Calendar();
-                $calendar->setName($calendarData['name']);
-                $calendar->setForegroundColor($calendarData['foregroundColor']);
-                $calendar->setBackgroundColor($calendarData['backgroundColor']);
-                $calendar->save();
-
-                $this->importResult['imported']['calendars']++;
-            } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Calendar {$calendarData['calendar_id']}: {$e->getMessage()}";
+            // Log detailed warnings and errors for debugging
+            if (!empty($this->importResult['warnings'])) {
+                foreach ($this->importResult['warnings'] as $warning) {
+                    $this->logger->warning('Demo import warning', ['message' => $warning]);
+                }
             }
-        }
-    }
-
-    private function importDonationFunds(): void
-    {
-        $data = $this->loadJsonFile('donationfund_fun.json');
-        if (!$data) return;
-
-        foreach ($data as $fundData) {
-            try {
-                $fund = new DonationFund();
-                $fund->setName($fundData['fun_Name']);
-                $fund->setDescription($fundData['fun_Description']);
-                $fund->setActive((bool) $fundData['fun_Active']);
-                $fund->save();
-
-                $this->fundMap[(int) $fund->getId()] = $fund;
-                $this->importResult['imported']['donation_funds']++;
-            } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Donation Fund {$fundData['fun_ID']}: {$e->getMessage()}";
+            if (!empty($this->importResult['errors'])) {
+                foreach ($this->importResult['errors'] as $error) {
+                    $this->logger->error('Demo import error', ['message' => $error]);
+                }
             }
+
+            return $this->importResult;
+
+        } catch (Exception $e) {
+            $this->importResult['success'] = false;
+            $this->importResult['errors'][] = $e->getMessage();
+            $this->importResult['endTime'] = microtime(true);
+
+            $this->logger->error('Demo data import failed', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return $this->importResult;
         }
     }
 
     /**
-     * Import simplified demo format (people.json) created under src/admin/demo
+     * Load `config.json` from the demo data path and write values into SystemConfig.
+     * The `bEnabledSundaySchool` value will be set according to the flag passed to the API.
      */
-    private function importFromSimplified(string $filePath): void
+    private function importSystemConfig(bool $includeSundaySchool, bool $includeFinancial): void
     {
         $logger = LoggerUtils::getAppLogger();
+        $filePath = self::DATA_PATH . '/config.json';
+
+        if (!file_exists($filePath)) {
+            return;
+        }
+
         try {
             $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
-            $msg = 'Invalid simplified demo JSON: ' . $e->getMessage();
-            $this->importResult['warnings'][] = $msg;
-            $logger->error('Simplified import JSON parse failed', ['error' => $msg]);
+            $this->addWarning('Demo config.json parse failed', ['error' => $e->getMessage()]);
+            $logger->error('Demo config.json parse failed', ['error' => $e->getMessage(), 'file' => $filePath]);
             return;
+        }
+
+        if (!is_array($json)) {
+            $this->addWarning('Demo config.json is empty or invalid format', ['file' => $filePath]);
+            $logger->warning('Demo config.json is empty or invalid format', ['file' => $filePath]);
+            return;
+        }
+
+        foreach ($json as $key => $value) {
+            // Skip bEnabledSundaySchool and bEnabledFinance here; we'll set them explicitly from the API flags
+            if ($key === 'bEnabledSundaySchool' || $key === 'bEnabledFinance') {
+                continue;
+            }
+
+            try {
+                SystemConfig::setValue($key, $value);
+            } catch (Exception $e) {
+                $this->addWarning("Failed to set SystemConfig '{$key}' from demo config: {$e->getMessage()}", ['key' => $key, 'error' => $e->getMessage()]);
+                $logger->warning('Failed to set SystemConfig from demo config', ['key' => $key, 'error' => $e->getMessage()]);
+            }
+        }
+
+        // Ensure the Sunday School and Finance feature toggles are set according to the API flags
+        try {
+            SystemConfig::setValue('bEnabledSundaySchool', $includeSundaySchool ? '1' : '0');
+        } catch (Exception $e) {
+            $this->addWarning('Failed to set bEnabledSundaySchool from API flag', ['error' => $e->getMessage()]);
+            $logger->warning('Failed to set bEnabledSundaySchool from API flag', ['error' => $e->getMessage()]);
+        }
+
+        try {
+            SystemConfig::setValue('bEnabledFinance', $includeFinancial ? '1' : '0');
+        } catch (Exception $e) {
+            $this->addWarning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
+            $logger->warning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
+        }
+
+        $logger->info('Demo system config import complete', ['file' => $filePath]);
+    }
+
+    /**
+     * Import congregation data (families, people, notes) from `people.json` created under src/admin/demo
+     * Returns email -> personId map for use in group membership linking
+     */
+    private function importCongregation(): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $emailMap = [];
+
+        $filePath = self::DATA_PATH . '/people.json';
+        try {
+            $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
+        } catch (JsonException $e) {
+            $msg = 'Invalid demo JSON: ' . $e->getMessage();
+            $this->addWarning($msg, ['exception' => $e->getMessage()]);
+            $logger->error('Demo import JSON parse failed', ['error' => $msg]);
+            return $emailMap;
         }
 
         if (!$json) {
-            $msg = 'Invalid simplified demo JSON';
-            $this->importResult['warnings'][] = $msg;
-            $logger->error('Simplified import JSON empty', ['error' => $msg]);
-            return;
+            $msg = 'Invalid demo JSON';
+            $this->addWarning($msg);
+            $logger->error('Demo import JSON empty', ['error' => $msg]);
+            return $emailMap;
         }
 
         $families = $json['families'] ?? $json['data'] ?? [];
-        $logger->info('Starting simplified demo import', ['total_families' => count($families)]);
+        $logger->info('Starting families import', ['total_families' => count($families)]);
 
         // Build classification name to ID map
         $classificationMap = [];
@@ -298,7 +229,14 @@ class DemoDataService
                     try {
                         $family->setWeddingDate(new DateTime($famData['weddingDate']));
                     } catch (Exception $e) {
-                        // ignore invalid wedding date
+                        $familyName = $famData['name'] ?? 'unknown';
+                        $msg = "Invalid wedding date for family '{$familyName}': {$e->getMessage()}";
+                        $this->addWarning($msg);
+                        $logger->warning('Family wedding date parse failed', [
+                            'family_name' => $familyName,
+                            'weddingDate' => $famData['weddingDate'] ?? null,
+                            'error' => $e->getMessage()
+                        ]);
                     }
                 }
 
@@ -306,6 +244,14 @@ class DemoDataService
                     try {
                         $family->setDateEntered(new DateTime($famData['createdAt']));
                     } catch (Exception $e) {
+                        $familyName = $famData['name'] ?? 'unknown';
+                        $msg = "Invalid createdAt for family '{$familyName}': {$e->getMessage()}";
+                        $this->addWarning($msg);
+                        $logger->warning('Family createdAt parse failed', [
+                            'family_name' => $familyName,
+                            'createdAt' => $famData['createdAt'] ?? null,
+                            'error' => $e->getMessage()
+                        ]);
                     }
                 }
 
@@ -370,14 +316,12 @@ class DemoDataService
                                 $this->importResult['imported']['notes']++;
                             } catch (Exception $e) {
                                 $msg = "Person note import failed: {$e->getMessage()}";
-                                $this->importResult['warnings'][] = $msg;
-                                LoggerUtils::getAppLogger()->warning($msg, ['exception' => $e->getMessage()]);
+                                $this->addWarning($msg, ['exception' => $e->getMessage()]);
                             }
                         }
                     } catch (Exception $e) {
                         $msg = "Member import failed: {$e->getMessage()}";
-                        $this->importResult['warnings'][] = $msg;
-                        LoggerUtils::getAppLogger()->warning($msg, ['exception' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+                        $this->addWarning($msg, ['exception' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
                     }
                     $personIndex++;
                 }
@@ -398,12 +342,11 @@ class DemoDataService
                         $this->importResult['imported']['notes']++;
                     } catch (Exception $e) {
                         $msg = "Family note import failed: {$e->getMessage()}";
-                        $this->importResult['warnings'][] = $msg;
-                        LoggerUtils::getAppLogger()->warning($msg, ['exception' => $e->getMessage()]);
+                        $this->addWarning($msg, ['exception' => $e->getMessage()]);
                     }
                 }
 
-                $logger->info('Simplified family imported', [
+                $logger->info('Family imported', [
                     'family_name' => $family->getName(),
                     'family_id' => $family->getId()
                 ]);
@@ -417,8 +360,7 @@ class DemoDataService
                 if ($e->getPrevious() !== null) {
                     $errorMsg .= " | DB Error: {$e->getPrevious()->getMessage()}";
                 }
-                $this->importResult['warnings'][] = "Family '{$familyName}' import failed: {$errorMsg}";
-                $logger->warning('Simplified family import failed', [
+                $this->addWarning("Family '{$familyName}' import failed: {$errorMsg}", [
                     'family_name' => $familyName,
                     'error' => $errorMsg,
                     'exception_class' => get_class($e),
@@ -426,147 +368,204 @@ class DemoDataService
                 ]);
             }
         }
-    }
-
-    private function importGroups(): void
-    {
-        $data = $this->loadJsonFile('group_grp.json');
-        if (!$data) return;
-
-        foreach ($data as $groupData) {
+        
+        // Build email -> personId map from imported people
+        foreach ($this->personMap as $pid => $personObj) {
             try {
-                $group = new Group();
-                $group->setType((int) $groupData['grp_Type']);
-                $group->setRoleListId((int) $groupData['grp_RoleListID']);
-                $group->setDefaultRole((int) $groupData['grp_DefaultRole']);
-                $group->setName($groupData['grp_Name']);
-                $group->setDescription($groupData['grp_Description']);
-                $group->setHasSpecialProps((bool) $groupData['grp_hasSpecialProps']);
-                $group->setActive((bool) $groupData['grp_active']);
-                $group->setIncludeEmailExport((bool) $groupData['grp_include_email_export']);
-                $group->save();
-
-                $this->groupMap[(int) $group->getId()] = $group;
-                $this->importResult['imported']['groups']++;
+                $email = strtolower(trim($personObj->getEmail() ?? ''));
+                if ($email !== '') {
+                    $emailMap[$email] = (int)$pid;
+                }
             } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Group {$groupData['grp_ID']}: {$e->getMessage()}";
+                // ignore
             }
         }
+        
+        return $emailMap;
     }
 
-    private function importFamilies(): void
+    /**
+     * Import groups from `groups.json` placed under admin/demo and create memberships.
+     * Uses Propel ORM only - no external service dependencies.
+     * IMPORTANT: Only creates roles that are explicitly defined in peopleTypes. Does NOT auto-create undefined roles.
+     */
+    private function importGroups(bool $includeSundaySchool, array $emailMap): void
     {
-        $data = $this->loadJsonFile('family_fam.json');
-        if (!$data) return;
 
-        foreach ($data as $familyData) {
-            $connection = Propel::getConnection();
+
+        $data = $this->loadJsonFile('groups.json');
+        if (!$data) {
+            $this->logger->warning('Groups import skipped: groups.json missing or invalid', ['file' => 'groups.json']);
+            return;
+        }
+
+        // First pass: create groups with correct types
+        foreach ($data as $groupData) {
             try {
-                $connection->beginTransaction();
-
-                $family = new Family();
-                $family->setName($familyData['fam_Name']);
-                $family->setAddress1($familyData['fam_Address1']);
-                $family->setAddress2($familyData['fam_Address2']);
-                $family->setCity($familyData['fam_City']);
-                $family->setState($familyData['fam_State']);
-                $family->setZip($familyData['fam_Zip']);
-                $family->setCountry($familyData['fam_Country']);
-                $family->setHomePhone($familyData['fam_HomePhone']);
-                $family->setWorkPhone($familyData['fam_WorkPhone']);
-                $family->setCellPhone($familyData['fam_CellPhone']);
-                $family->setEmail($familyData['fam_Email']);
-
-                if ($familyData['fam_WeddingDate']) {
-                    $family->setWeddingDate(new DateTime($familyData['fam_WeddingDate']));
+                $isSS = !empty($groupData['isSundaySchool']);
+                // If includeSundaySchool flag is false, skip Sunday School groups; otherwise import all groups.
+                if (!$includeSundaySchool && $isSS) {
+                    continue;
                 }
 
-                $family->setDateEntered(new DateTime($familyData['fam_DateEntered']));
-                $family->setEnteredBy((int) $familyData['fam_EnteredBy']);
-                $family->setSendNewsletter($familyData['fam_SendNewsLetter'] === 'TRUE');
-
-                if ($familyData['fam_DateDeactivated']) {
-                    $family->setDateDeactivated(new DateTime($familyData['fam_DateDeactivated']));
+                $group = new Group();
+                // Use Group convenience helpers for Sunday School to set type 4
+                if ($isSS) {
+                    $group->makeSundaySchool();
+                } else {
+                    // Use groupType from JSON if provided, otherwise default to 0 (Unassigned)
+                    $groupType = isset($groupData['groupType']) ? (int)$groupData['groupType'] : 0;
+                    $group->setType($groupType);
                 }
+                $group->setName($groupData['name'] ?? '');
+                $group->setDescription($groupData['description'] ?? '');
+                $group->setHasSpecialProps(false);
+                $groupActive = isset($groupData['active']) ? (bool)$groupData['active'] : true;
+                $group->setActive($groupActive);
+                $group->save();
 
-                $family->setEnvelope((int) $familyData['fam_Envelope']);
-                $family->save();
-
-                $this->familyMap[(int) $family->getId()] = $family;
-                $this->importResult['imported']['families']++;
-
-                $connection->commit();
+                $this->groupMap[(int)$group->getId()] = $group;
+                $this->groupNameToId[trim((string)$group->getName())] = (int)$group->getId();
+                $this->importResult['imported']['groups']++;
+                if ($isSS && isset($this->importResult['imported']['sunday_schools'])) {
+                    $this->importResult['imported']['sunday_schools']++;
+                }
             } catch (Exception $e) {
-                $connection->rollBack();
-                $familyName = $familyData['fam_Name'] ?? 'unknown';
-                $this->importResult['warnings'][] = "Family '{$familyName}': {$e->getMessage()}";
-                LoggerUtils::getAppLogger()->warning("Family import failed", [
-                    'family_name' => $familyName,
+                $this->addWarning("Group import failed for '{$groupData['name']}' : {$e->getMessage()}");
+            }
+        }
+
+        // Second pass: create memberships for groups
+        // IMPORTANT: Only use roles defined in the group's peopleTypes array
+        foreach ($data as $groupData) {
+            try {
+                $isSS = !empty($groupData['isSundaySchool']);
+                if (!$includeSundaySchool && $isSS) {
+                    continue;
+                }
+
+                $groupName = trim((string)($groupData['name'] ?? ''));
+                if ($groupName === '' || !isset($this->groupNameToId[$groupName])) {
+                    $this->addWarning("Group '{$groupName}' not found in created groups, skipping memberships", ['group_name' => $groupName]);
+                    continue;
+                }
+
+                $groupId = (int)$this->groupNameToId[$groupName];
+                $group = $this->groupMap[$groupId] ?? null;
+                if (!$group) {
+                    $this->addWarning("Group '{$groupName}' (id: {$groupId}) not in map, skipping memberships", ['group_name' => $groupName]);
+                    continue;
+                }
+
+                // Get the list of allowed roles for this group from peopleTypes
+                $allowedRoles = $groupData['peopleTypes'] ?? [];
+                if (empty($allowedRoles)) {
+                    $this->addWarning("Group '{$groupName}' has no peopleTypes defined, skipping memberships", ['group_name' => $groupName]);
+                    continue;
+                }
+
+                // Normalize allowed roles to match comparison (ucfirst lowercase)
+                $normalizedAllowed = [];
+                foreach ($allowedRoles as $role) {
+                    $normalizedAllowed[ucfirst(strtolower(trim($role)))] = true;
+                }
+
+                // Load existing roles for this group using ORM (from ListOption table)
+                $roleList = ListOptionQuery::create()->findById((int)$group->getRoleListId());
+                $roleNameToId = [];
+                if ($roleList) {
+                    foreach ($roleList as $role) {
+                        $roleNameToId[$role->getOptionName()] = (int)$role->getOptionId();
+                    }
+                }
+
+                // Create any missing roles that are in peopleTypes
+                foreach ($normalizedAllowed as $allowedRoleName => $dummy) {
+                    if (!isset($roleNameToId[$allowedRoleName])) {
+                        try {
+                            // Create the role if it doesn't exist
+                            $newRole = new ListOption();
+                            $newRole->setId((int)$group->getRoleListId());
+                            
+                            // Get next available OptionID for this list
+                            $maxRoleId = ListOptionQuery::create()
+                                ->filterById((int)$group->getRoleListId())
+                                ->orderByOptionId('desc')
+                                ->findOne();
+                            $nextRoleId = $maxRoleId ? ((int)$maxRoleId->getOptionId() + 1) : 1;
+                            
+                            $newRole->setOptionId($nextRoleId);
+                            $newRole->setOptionName($allowedRoleName);
+                            $newRole->setOptionSequence($nextRoleId);
+                            $newRole->save();
+                            
+                            $roleNameToId[$allowedRoleName] = $nextRoleId;
+                        } catch (Exception $e) {
+                            $this->addWarning("Failed to create role '{$allowedRoleName}' for group '{$groupName}': {$e->getMessage()}", [
+                                'group_name' => $groupName,
+                                'role_name' => $allowedRoleName,
+                                'error' => $e->getMessage()
+                            ]);
+                        }
+                    }
+                }
+
+                // Now create memberships, but ONLY if the member's role is in peopleTypes
+                $members = $groupData['members'] ?? [];
+                foreach ($members as $m) {
+                    $email = strtolower(trim($m['email'] ?? ''));
+                    if ($email === '') {
+                        continue;
+                    }
+                    if (!isset($emailMap[$email])) {
+                        $this->addWarning("Group '{$groupName}': member with email '{$email}' not found", ['group_name' => $groupName, 'email' => $email]);
+                        continue;
+                    }
+
+                    $personId = (int)$emailMap[$email];
+                    $roleName = $m['role'] ?? '';
+                    
+                    // Normalize the role name
+                    $rn = ucfirst(strtolower(trim($roleName)));
+
+                    // CRITICAL: Only proceed if the role is in the allowed roles for this group
+                    if (!isset($normalizedAllowed[$rn])) {
+                        $this->addWarning("Group '{$groupName}': member {$personId} has role '{$rn}' which is not in peopleTypes, skipping", [
+                            'group_name' => $groupName,
+                            'person_id' => $personId,
+                            'role_name' => $rn
+                        ]);
+                        continue;
+                    }
+
+                    // Get the roleId from our map (should exist after the loop above)
+                    $roleId = $roleNameToId[$rn] ?? 1;
+
+                    // Create membership using ORM
+                    try {
+                        $membership = new Person2group2roleP2g2r();
+                        $membership->setPersonId($personId);
+                        $membership->setGroupId($groupId);
+                        $membership->setRoleId($roleId);
+                        $membership->save();
+                    } catch (Exception $e) {
+                        $this->addWarning("Failed to add person {$personId} to group '{$groupName}': {$e->getMessage()}", [
+                            'person_id' => $personId,
+                            'group_name' => $groupName,
+                            'error' => $e->getMessage()
+                        ]);
+                    }
+                }
+            } catch (Exception $e) {
+                $this->addWarning("Membership import failed for group '{$groupData['name']}' : {$e->getMessage()}", [
+                    'group_name' => $groupData['name'],
                     'error' => $e->getMessage()
                 ]);
             }
         }
-    }
 
-    private function importPeople(): void
-    {
-        $data = $this->loadJsonFile('person_per.json');
-        if (!$data) return;
-
-        foreach ($data as $personData) {
-            try {
-                // Validate family exists
-                $familyId = (int) $personData['per_fam_ID'];
-                if ($personData['per_fam_ID'] && !isset($this->familyMap[$familyId])) {
-                    $this->importResult['warnings'][] = "Person {$personData['per_ID']}: Family {$familyId} not found, skipping";
-                    continue;
-                }
-
-                $person = new Person();
-
-                if ($personData['per_fam_ID']) {
-                    $person->setFamilyId($familyId);
-                }
-
-                $person->setFirstName($personData['per_FirstName']);
-                $person->setLastName($personData['per_LastName']);
-                $person->setMiddleName($personData['per_MiddleName']);
-
-                if ($personData['per_BirthYear'] && $personData['per_BirthMonth'] && $personData['per_BirthDay']) {
-                    try {
-                        $person->setBirthDate(
-                            (int) $personData['per_BirthYear'],
-                            (int) $personData['per_BirthMonth'],
-                            (int) $personData['per_BirthDay']
-                        );
-                    } catch (Exception $e) {
-                        // Invalid date, skip
-                    }
-                }
-
-                $person->setGender($personData['per_Gender'] ?? '');
-                $person->setEmail($personData['per_Email']);
-                $person->setHomePhone($personData['per_HomePhone']);
-                $person->setCellPhone($personData['per_CellPhone']);
-                $person->setWorkPhone($personData['per_WorkPhone']);
-                $person->setFacebook($personData['per_Facebook']);
-                $person->setTwitter($personData['per_Twitter']);
-                $person->setLinkedin($personData['per_LinkedIn']);
-
-                if ($personData['per_MembershipDate']) {
-                    $person->setMembershipDate(new DateTime($personData['per_MembershipDate']));
-                }
-
-                $person->setFamilyRole((int) ($personData['per_fam_ID'] ? 1 : 0));
-                $person->setClsId((int) $personData['per_cls_ID']);
-                $person->save();
-
-                $this->personMap[(int) $person->getId()] = $person;
-                $this->importResult['imported']['people']++;
-            } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Person {$personData['per_ID']}: {$e->getMessage()}";
-            }
-        }
+        // Removed session flag for auth bypass (security fix)
+        // If group management permissions are required, ensure import is performed by an authenticated admin.
     }
 
     private function importNotes(): void
@@ -647,203 +646,18 @@ class DemoDataService
         }
     }
 
-    private function importPerson2GroupRole(): void
+    /**
+     * Record and log a warning for the importer
+     */
+    private function addWarning(string $message, array $context = []): void
     {
-        $data = $this->loadJsonFile('person2group2role_p2g2r.json');
-        if (!$data) return;
-
-        foreach ($data as $membershipData) {
-            try {
-                $personId = (int) $membershipData['p2g2r_per_ID'];
-                $groupId = (int) $membershipData['p2g2r_grp_ID'];
-
-                // Validate person and group exist
-                if (!isset($this->personMap[$personId])) {
-                    $this->importResult['warnings'][] = "Membership: Person {$personId} not found, skipping";
-                    continue;
-                }
-
-                if (!isset($this->groupMap[$groupId])) {
-                    $this->importResult['warnings'][] = "Membership: Group {$groupId} not found, skipping";
-                    continue;
-                }
-
-                $membership = new Person2group2roleP2g2r();
-                $membership->setPersonId($personId);
-                $membership->setGroupId($groupId);
-                $membership->setRoleId((int) $membershipData['p2g2r_rle_ID']);
-                $membership->save();
-
-                $this->importResult['imported']['person2group2role']++;
-            } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Membership {$membershipData['p2g2r_per_ID']}/{$membershipData['p2g2r_grp_ID']}: {$e->getMessage()}";
-            }
-        }
+        $this->importResult['warnings'][] = $message;
+        $this->logger->warning($message, $context);
     }
 
-    private function importEvents(): void
-    {
-        $data = $this->loadJsonFile('events_event.json');
-        if (!$data) return;
+    // Legacy membership import removed - memberships are created from `groups.json` during import.
 
-        foreach ($data as $eventData) {
-            try {
-                $event = new Event();
-                $event->setType((int) $eventData['event_type']);
-                $event->setTitle($eventData['event_title']);
-                $event->setDesc($eventData['event_desc'] ?? '');
-
-                if ($eventData['event_start_datetime']) {
-                    $event->setStartDateTime(new DateTime($eventData['event_start_datetime']));
-                }
-
-                if ($eventData['event_end_datetime']) {
-                    $event->setEndDateTime(new DateTime($eventData['event_end_datetime']));
-                }
-
-                $event->setURL($eventData['event_url']);
-                $event->save();
-
-                $this->eventMap[(int) $event->getId()] = $event;
-                $this->importResult['imported']['events']++;
-            } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Event {$eventData['event_id']}: {$e->getMessage()}";
-            }
-        }
-    }
-
-    private function importEventAttendance(): void
-    {
-        $data = $this->loadJsonFile('event_attend.json');
-        if (!$data) return;
-
-        foreach ($data as $attendanceData) {
-            try {
-                $personId = (int) $attendanceData['person_id'];
-                $eventId = (int) $attendanceData['event_id'];
-
-                // Validate person and event exist
-                if (!isset($this->personMap[$personId])) {
-                    continue; // Skip silently for bulk data
-                }
-
-                if (!isset($this->eventMap[$eventId])) {
-                    continue;
-                }
-
-                $attendance = new EventAttend();
-                $attendance->setPersonId($personId);
-                $attendance->setEventId($eventId);
-
-                if ($attendanceData['checkin_id']) {
-                    $attendance->setCheckinId((int) $attendanceData['checkin_id']);
-                }
-
-                if ($attendanceData['checkin_datetime']) {
-                    $attendance->setCheckinDate(new DateTime($attendanceData['checkin_datetime']));
-                }
-
-                if ($attendanceData['checkout_id']) {
-                    $attendance->setCheckoutId((int) $attendanceData['checkout_id']);
-                }
-
-                if ($attendanceData['checkout_datetime']) {
-                    $attendance->setCheckoutDate(new DateTime($attendanceData['checkout_datetime']));
-                }
-
-                $attendance->save();
-                $this->importResult['imported']['event_attendance']++;
-            } catch (Exception $e) {
-                // Skip attendance errors silently
-            }
-        }
-    }
-
-    private function importPledges(): void
-    {
-        $data = $this->loadJsonFile('pledge_plg.json');
-        if (!$data) return;
-
-        foreach ($data as $pledgeData) {
-            try {
-                $familyId = (int) $pledgeData['plg_FamID'];
-                $fundId = (int) $pledgeData['plg_fundID'];
-
-                // Validate family exists
-                if (!isset($this->familyMap[$familyId])) {
-                    $this->importResult['warnings'][] = "Pledge: Family {$familyId} not found, skipping";
-                    continue;
-                }
-
-                // Fund might not exist if import failed, skip
-                if ($fundId && !isset($this->fundMap[$fundId])) {
-                    continue;
-                }
-
-                $pledge = new Pledge();
-                $pledge->setId((int) $pledgeData['plg_plgID']);
-                $pledge->setFamilyId($familyId);
-                $pledge->setFyId((int) $pledgeData['plg_FYID']);
-
-                if ($pledgeData['plg_date']) {
-                    $pledge->setDate(new DateTime($pledgeData['plg_date']));
-                }
-
-                $pledge->setAmount((float) $pledgeData['plg_amount']);
-                $pledge->setSchedule($pledgeData['plg_schedule']);
-                $pledge->setMethod($pledgeData['plg_method']);
-                $pledge->setComment($pledgeData['plg_comment']);
-
-                if ($pledgeData['plg_DateLastEdited']) {
-                    $pledge->setDateLastEdited(new DateTime($pledgeData['plg_DateLastEdited']));
-                }
-
-                $pledge->setEditedBy((int) $pledgeData['plg_EditedBy']);
-                $pledge->setPledgeOrPayment($pledgeData['plg_PledgeOrPayment']);
-
-                if ($fundId) {
-                    $pledge->setFundId($fundId);
-                }
-
-                if ($pledgeData['plg_CheckNo']) {
-                    $pledge->setCheckNo($pledgeData['plg_CheckNo']);
-                }
-
-                $pledge->save();
-                $this->importResult['imported']['pledges']++;
-            } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Pledge {$pledgeData['plg_plgID']}: {$e->getMessage()}";
-            }
-        }
-    }
-
-    private function importCalendarEvents(): void
-    {
-        $data = $this->loadJsonFile('calendar_events.json');
-        if (!$data) return;
-
-        foreach ($data as $calEventData) {
-            try {
-                $calendarId = (int) $calEventData['calendar_id'];
-                $eventId = (int) $calEventData['event_id'];
-
-                // Validate calendar and event exist
-                if (!isset($this->eventMap[$eventId])) {
-                    $this->importResult['warnings'][] = "Calendar Event: Event {$eventId} not found, skipping";
-                    continue;
-                }
-
-                $calEvent = new CalendarEvent();
-                $calEvent->setCalendarId($calendarId);
-                $calEvent->setEventId($eventId);
-                $calEvent->save();
-
-                $this->importResult['imported']['calendar_events']++;
-            } catch (Exception $e) {
-                $this->importResult['warnings'][] = "Calendar Event {$calEventData['calendar_id']}/{$calEventData['event_id']}: {$e->getMessage()}";
-            }
-        }
-    }
+    // Event, attendance, pledge and calendar-event imports removed.
 
     private function loadJsonFile(string $filename): ?array
     {

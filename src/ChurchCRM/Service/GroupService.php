@@ -114,6 +114,7 @@ class GroupService
         return $this->getGroupMembers($iGroupID, $iPersonID);
     }
 
+
     /**
      *  getGroupRoles.
      *
