@@ -29,45 +29,17 @@ class AppIntegrityService
     private static function getIntegrityCheckData()
     {
         $logger = LoggerUtils::getAppLogger();
-        $integrityCheckFile = AppIntegrityService::resolveDocumentRoot() . '/integrityCheck.json';
         if (AppIntegrityService::$IntegrityCheckDetails !== null) {
-            $logger->debug('Integrity check results already cached; not reloading from file');
+            $logger->debug('Integrity check results already cached in memory; not recalculating');
 
             return AppIntegrityService::$IntegrityCheckDetails;
         }
 
-        $logger->debug('Integrity check results not cached; reloading from file');
+        $logger->debug('Running integrity check');
 
-        if (is_file($integrityCheckFile)) {
-            $logger->debug("Integrity check result file found at: {integrityCheckFile}", [
-                'integrityCheckFile' => $integrityCheckFile,
-            ]);
-
-            try {
-                $integrityCheckFileContents = file_get_contents($integrityCheckFile);
-                MiscUtils::throwIfFailed($integrityCheckFileContents);
-                AppIntegrityService::$IntegrityCheckDetails = json_decode($integrityCheckFileContents, null, 512, JSON_THROW_ON_ERROR);
-            } catch (\Exception $e) {
-                $logger->warning("Error decoding integrity check result file: {integrityCheckFile}", [
-                    'integrityCheckFile' => $integrityCheckFile,
-                    'exception' => $e,
-                ]);
-
-                AppIntegrityService::$IntegrityCheckDetails = new \stdClass();
-                AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
-                AppIntegrityService::$IntegrityCheckDetails->message = gettext('Error decoding integrity check result file');
-            }
-
-            return AppIntegrityService::$IntegrityCheckDetails;
-        }
-
-        $logger->debug("Integrity check result file not found at: {integrityCheckFile}", [
-                    'integrityCheckFile' => $integrityCheckFile,
-                ]);
-
-        AppIntegrityService::$IntegrityCheckDetails = new \stdClass();
-        AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
-        AppIntegrityService::$IntegrityCheckDetails->message = gettext('integrityCheck.json file missing');
+        // Always run verification fresh - don't use persistent cache files
+        $verificationResult = AppIntegrityService::verifyApplicationIntegrity();
+        AppIntegrityService::$IntegrityCheckDetails = (object) $verificationResult;
 
         return AppIntegrityService::$IntegrityCheckDetails;
     }
@@ -101,7 +73,7 @@ class AppIntegrityService
     {
         $logger = LoggerUtils::getAppLogger();
         $documentRoot = AppIntegrityService::resolveDocumentRoot();
-        $signatureFile = $documentRoot . '/signatures.json';
+        $signatureFile = $documentRoot . '/admin/data/signatures.json';
         $signatureFailures = [];
         if (is_file($signatureFile)) {
             if (!is_readable($signatureFile)) {

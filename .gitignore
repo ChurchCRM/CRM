@@ -41,7 +41,7 @@ src/Include/Config.php
 
 src/ChurchCRM/model/ChurchCRM/Base
 src/ChurchCRM/model/ChurchCRM/Map
-src/signatures.json
+src/admin/data/signatures.json
 src/integrityCheck.json
 src/tmp_attach
 src/logs/*.log
