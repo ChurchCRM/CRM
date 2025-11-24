@@ -273,32 +273,6 @@ module.exports = function (grunt) {
                 ],
             },
         },
-        generateSignatures: {
-            sign: {
-                version: "<%= package.version %>",
-                files: [
-                    {
-                        expand: true,
-                        cwd: "src/",
-                        src: [
-                            "**/*.php",
-                            "**/*.js",
-                            "!**/.htaccess",
-                            "!**/.gitignore",
-                            "!vendor/**/example/**",
-                            "!vendor/**/tests/**",
-                            "!vendor/**/docs/**",
-                            "!Images/Person/thumbnails/*.jpg",
-                            "!composer.lock",
-                            "!Include/Config.php",
-                            "!propel/propel.php",
-                            "!integrityCheck.json",
-                        ],
-                        dest: "churchcrm/",
-                    },
-                ],
-            },
-        },
     });
 
     grunt.registerTask("hash", "gets a file hash", function (arg1) {
@@ -321,34 +295,6 @@ module.exports = function (grunt) {
             } else {
                 console.log("DataTables CSS file not found: " + filePath);
             }
-        },
-    );
-
-    grunt.registerMultiTask(
-        "generateSignatures",
-        "Generates SHA1 signatures of the release archive",
-        function () {
-            var sha1 = require("node-sha1");
-            var signatures = {
-                version: this.data.version,
-                files: [],
-            };
-            this.files.forEach(function (filePair) {
-                var isExpandedPair = filePair.orig.expand || false;
-
-                filePair.src.forEach(function (src) {
-                    if (grunt.file.isFile(src)) {
-                        signatures.files.push({
-                            filename: src.substring(4),
-                            sha1: sha1(
-                                grunt.file.read(src, { encoding: null }),
-                            ),
-                        });
-                    }
-                });
-            });
-            signatures.sha1 = sha1(JSON.stringify(signatures.files));
-            grunt.file.write("src/signatures.json", JSON.stringify(signatures));
         },
     );
 
