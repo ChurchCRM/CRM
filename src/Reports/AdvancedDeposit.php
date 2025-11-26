@@ -836,6 +836,13 @@ $page = 1;
         // basename: 'AdvancedDepositReport', includeDateInFilename: true adds today's date, .csv is added automatically
         CsvExporter::create($headers, $rows, 'AdvancedDepositReport', 'UTF-8', true);
     } else {
-        header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Advanced%20Deposit%20Report');
+        $params = [
+            'ReturnMessage' => 'NoRows',
+            'ReportType' => 'Advanced Deposit Report',
+            'DateStart' => $sDateStart,
+            'DateEnd'   => $sDateEnd,
+            'datetype'  => $datetype,
+        ];
+        header('Location: ../FinancialReports.php?' . http_build_query($params));
     }
 }
