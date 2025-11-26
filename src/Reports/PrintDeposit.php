@@ -51,10 +51,15 @@ if ($output === 'pdf') {
         $_SESSION['sGlobalMessageClass'] = 'warning';
 
         if (array_key_exists('HTTP_REFERER', $_SERVER) && !empty($_SERVER['HTTP_REFERER'])) {
-            RedirectUtils::absoluteRedirect($_SERVER['HTTP_REFERER']);
-        } else {
-            RedirectUtils::redirect('DepositSlipEditor.php?DepositSlipID=' . (int)$iDepositSlipID);
+            $referer = $_SERVER['HTTP_REFERER'];
+            $parsedReferer = parse_url($referer);
+            $parsedRoot = parse_url(SystemURLs::getRootPath());
+            if (isset($parsedReferer['host']) && $parsedReferer['host'] === $parsedRoot['host']) {
+                RedirectUtils::absoluteRedirect($referer);
+                exit;
+            }
         }
+        RedirectUtils::redirect('DepositSlipEditor.php?DepositSlipID=' . (int)$iDepositSlipID);
         exit;
     }
     header('Location: ' . SystemURLs::getRootPath() . '/api/deposits/' . $iDepositSlipID . '/pdf');
