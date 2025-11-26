@@ -205,9 +205,29 @@ function initializeDepositSlip() {
         var selectedRows = dataT.rows(".selected").data();
         var type = this.getAttribute("data-exportType");
         $.each(selectedRows, function (index, value) {
-            window.CRM.VerifyThenLoadAPIContent(
-                window.CRM.root + "/api/deposits/" + value.Id + "/" + type,
-            );
+            var url = window.CRM.root + "/api/deposits/" + value.Id + "/" + type;
+            if (type === 'pdf') {
+                // Check payments first; if none, notify and skip
+                $.ajax({
+                    method: 'GET',
+                    url: window.CRM.root + '/api/deposits/' + value.Id + '/payments',
+                    dataType: 'json'
+                }).done(function(data) {
+                    var count = Array.isArray(data) ? data.length : 0;
+                    if (count === 0) {
+                        window.CRM.notify(i18next.t('No payments on this deposit'), { type: 'warning', delay: 5000 });
+                        return;
+                    }
+                    window.CRM.VerifyThenLoadAPIContent(url);
+                }).fail(function(jqXHR) {
+                    var errorMsg = i18next.t('There was a problem retrieving the requested object');
+                    if (jqXHR.responseJSON && jqXHR.responseJSON.message) { errorMsg = jqXHR.responseJSON.message; }
+                    window.CRM.notify(errorMsg, { type: 'danger', delay: 7000 });
+                });
+            } else {
+                // csv or other types - proceed as before
+                window.CRM.VerifyThenLoadAPIContent(url);
+            }
         });
     });
 }
