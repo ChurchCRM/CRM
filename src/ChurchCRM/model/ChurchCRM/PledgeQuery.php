@@ -67,7 +67,7 @@ class PledgeQuery extends BasePledgeQuery
      * @param array $familyIds Optional family IDs to filter
      * @param array $methods Optional payment methods to filter
      * @param array $classificationIds Optional classification IDs to filter
-     * @param string $datetype 'Payment' for pledge date, 'Deposit' for deposit date
+     * @param string $datetype 'Payment' for payment date (plg_date), 'Deposit' for deposit date (dep_date)
      * @param string $sort Sort order: 'deposit', 'fund', or 'family'
      * @return self
      */
@@ -110,7 +110,7 @@ class PledgeQuery extends BasePledgeQuery
             // For payment date, left join is fine since deposit is optional
             $this->leftJoinWithDeposit();
         }
-        
+
         if (!empty($fundIds)) {
             $this->filterByFundId($fundIds, \Propel\Runtime\ActiveQuery\Criteria::IN);
         }
