@@ -62,10 +62,44 @@ window.CRM.VerifyThenLoadAPIContent = function (url) {
                 window.open(url);
             },
             404: function () {
-                window.CRM.DisplayErrorMessage(url, { message: error });
+                // Try to fetch the body to get a more helpful message (the route may return JSON)
+                try {
+                    $.ajax({
+                        method: "GET",
+                        url: url,
+                        async: false,
+                        dataType: "json",
+                        success: function (data) {
+                            var msg = data && data.message ? data.message : error;
+                            window.CRM.DisplayErrorMessage(url, { message: msg });
+                        },
+                        error: function () {
+                            window.CRM.DisplayErrorMessage(url, { message: error });
+                        },
+                    });
+                } catch (e) {
+                    window.CRM.DisplayErrorMessage(url, { message: error });
+                }
             },
             500: function () {
-                window.CRM.DisplayErrorMessage(url, { message: error });
+                // For 500, try to fetch JSON body for a clearer message
+                try {
+                    $.ajax({
+                        method: "GET",
+                        url: url,
+                        async: false,
+                        dataType: "json",
+                        success: function (data) {
+                            var msg = data && data.message ? data.message : error;
+                            window.CRM.DisplayErrorMessage(url, { message: msg });
+                        },
+                        error: function () {
+                            window.CRM.DisplayErrorMessage(url, { message: error });
+                        },
+                    });
+                } catch (e) {
+                    window.CRM.DisplayErrorMessage(url, { message: error });
+                }
             },
         },
     });
