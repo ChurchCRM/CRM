@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\PledgeQuery as BasePledgeQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'pledge_plg' table.
@@ -36,16 +37,16 @@ class PledgeQuery extends BasePledgeQuery
         $this->filterByPledgeOrPayment('Payment');
 
         if (!empty($dateStart)) {
-            $this->filterByDate($dateStart, \Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL);
+            $this->filterByDate($dateStart, Criteria::GREATER_EQUAL);
         }
         if (!empty($dateEnd)) {
-            $this->filterByDate($dateEnd, \Propel\Runtime\ActiveQuery\Criteria::LESS_EQUAL);
+            $this->filterByDate($dateEnd, Criteria::LESS_EQUAL);
         }
         if (!empty($fundIds)) {
-            $this->filterByFundId($fundIds, \Propel\Runtime\ActiveQuery\Criteria::IN);
+            $this->filterByFundId($fundIds, Criteria::IN);
         }
         if (!empty($familyIds)) {
-            $this->filterByFamId($familyIds, \Propel\Runtime\ActiveQuery\Criteria::IN);
+            $this->filterByFamId($familyIds, Criteria::IN);
         }
         // Note: Classification filtering is complex and requires post-processing
         // as it involves a relationship through ListOption. Can be added to service layer if needed.
@@ -91,31 +92,31 @@ class PledgeQuery extends BasePledgeQuery
             $this->innerJoinWithDeposit();
             if (!empty($dateStart)) {
                 $this->useDepositQuery()
-                    ->filterByDate($dateStart, \Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL)
+                    ->filterByDate($dateStart, Criteria::GREATER_EQUAL)
                     ->endUse();
             }
             if (!empty($dateEnd)) {
                 $this->useDepositQuery()
-                    ->filterByDate($dateEnd, \Propel\Runtime\ActiveQuery\Criteria::LESS_EQUAL)
+                    ->filterByDate($dateEnd, Criteria::LESS_EQUAL)
                     ->endUse();
             }
         } else {
             // Filter by payment date
             if (!empty($dateStart)) {
-                $this->filterByDate($dateStart, \Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL);
+                $this->filterByDate($dateStart, Criteria::GREATER_EQUAL);
             }
             if (!empty($dateEnd)) {
-                $this->filterByDate($dateEnd, \Propel\Runtime\ActiveQuery\Criteria::LESS_EQUAL);
+                $this->filterByDate($dateEnd, Criteria::LESS_EQUAL);
             }
             // For payment date, left join is fine since deposit is optional
             $this->leftJoinWithDeposit();
         }
 
         if (!empty($fundIds)) {
-            $this->filterByFundId($fundIds, \Propel\Runtime\ActiveQuery\Criteria::IN);
+            $this->filterByFundId($fundIds, Criteria::IN);
         }
         if (!empty($familyIds)) {
-            $this->filterByFamId($familyIds, \Propel\Runtime\ActiveQuery\Criteria::IN);
+            $this->filterByFamId($familyIds, Criteria::IN);
         }
         // Handle payment methods - filter each method
         if (!empty($methods)) {
@@ -163,10 +164,10 @@ class PledgeQuery extends BasePledgeQuery
         $this->filterByPledgeOrPayment('Payment');
 
         if (!empty($dateStart)) {
-            $this->filterByDate($dateStart, \Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL);
+            $this->filterByDate($dateStart, Criteria::GREATER_EQUAL);
         }
         if (!empty($dateEnd)) {
-            $this->filterByDate($dateEnd, \Propel\Runtime\ActiveQuery\Criteria::LESS_EQUAL);
+            $this->filterByDate($dateEnd, Criteria::LESS_EQUAL);
         }
 
         return $this->orderByFamId();
