@@ -465,7 +465,8 @@ class FinancialService
         array $fundIds = [],
         array $familyIds = [],
         array $methods = [],
-        array $classificationIds = []
+        array $classificationIds = [],
+        string $datetype = 'Payment'
     ): array {
         AuthService::requireUserGroupMembership('bFinance');
 
@@ -476,6 +477,7 @@ class FinancialService
             $familyIds,
             $methods,
             $classificationIds,
+            $datetype,
             $sort
         );
 
