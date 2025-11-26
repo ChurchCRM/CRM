@@ -4,6 +4,7 @@ global $iChecksPerDepositForm;
 
 require_once '../Include/Config.php';
 require_once '../Include/Functions.php';
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -42,6 +43,20 @@ if ((!AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly && $o
 }
 
 if ($output === 'pdf') {
+    // Server-side guard: if this deposit has no payments, show a friendly message instead of redirecting
+    $paymentsCount = PledgeQuery::create()->filterByDepId($iDepositSlipID)->count();
+    if ($paymentsCount === 0) {
+        // Set a global session message and redirect back to the referring page (or deposit editor)
+        $_SESSION['sGlobalMessage'] = gettext('No Payments on this Deposit');
+        $_SESSION['sGlobalMessageClass'] = 'warning';
+
+        if (array_key_exists('HTTP_REFERER', $_SERVER) && !empty($_SERVER['HTTP_REFERER'])) {
+            RedirectUtils::absoluteRedirect($_SERVER['HTTP_REFERER']);
+        } else {
+            RedirectUtils::redirect('DepositSlipEditor.php?DepositSlipID=' . (int)$iDepositSlipID);
+        }
+        exit;
+    }
     header('Location: ' . SystemURLs::getRootPath() . '/api/deposits/' . $iDepositSlipID . '/pdf');
 } elseif ($output === 'csv') {
     header('Location: ' . SystemURLs::getRootPath() . '/api/deposits/' . $iDepositSlipID . '/csv');
