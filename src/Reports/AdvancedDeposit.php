@@ -95,7 +95,8 @@ $pledgeObjects = $financialService->getAdvancedDepositReportData(
     $fundIds,
     $familyIds,
     $methods,
-    $classList
+    $classList,
+    $datetype
 );
 
 // Convert Propel objects to array format for backward compatibility with existing PDF/CSV code
@@ -126,7 +127,14 @@ foreach ($pledgeObjects as $pledge) {
 // Exit if no rows returned
 $iCountRows = count($rsReport);
 if ($iCountRows < 1) {
-    header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Advanced%20Deposit%20Report');
+    $params = [
+        'ReturnMessage' => 'NoRows',
+        'ReportType' => 'Advanced Deposit Report',
+        'DateStart' => $sDateStart,
+        'DateEnd'   => $sDateEnd,
+        'datetype'  => $datetype,
+    ];
+    header('Location: ../FinancialReports.php?' . http_build_query($params));
     exit;
 }
 
