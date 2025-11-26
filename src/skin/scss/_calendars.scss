@@ -65,3 +65,12 @@
 .react-datepicker-popper {
     z-index: 1050 !important;
 }
+
+/* Bootstrap / jQuery datepicker popup (non-react)
+   Ensure the popup appears above fixed headers/sidebars
+   AdminLTE/header z-index can be high; use a larger value here. */
+.datepicker,
+.datepicker.dropdown-menu,
+.bootstrap-datepicker {
+    z-index: 2000 !important;
+}
