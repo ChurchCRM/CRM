@@ -63,7 +63,8 @@ window.CRM.VerifyThenLoadAPIContent = function (url) {
                 async: false,
                 dataType: "json",
                 success: function (data) {
-                    var msg = data && data.message ? data.message : fallbackError;
+                    var msg =
+                        data && data.message ? data.message : fallbackError;
                     callback(msg);
                 },
                 error: function () {
