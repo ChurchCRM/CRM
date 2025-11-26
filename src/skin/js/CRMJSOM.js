@@ -53,6 +53,28 @@ window.CRM.VerifyThenLoadAPIContent = function (url) {
     var error = i18next.t(
         "There was a problem retrieving the requested object",
     );
+
+    // Helper function to fetch error message from JSON response
+    function fetchErrorMessage(targetUrl, fallbackError, callback) {
+        try {
+            $.ajax({
+                method: "GET",
+                url: targetUrl,
+                async: false,
+                dataType: "json",
+                success: function (data) {
+                    var msg = data && data.message ? data.message : fallbackError;
+                    callback(msg);
+                },
+                error: function () {
+                    callback(fallbackError);
+                },
+            });
+        } catch (e) {
+            callback(fallbackError);
+        }
+    }
+
     $.ajax({
         method: "HEAD",
         url: url,
@@ -62,44 +84,14 @@ window.CRM.VerifyThenLoadAPIContent = function (url) {
                 window.open(url);
             },
             404: function () {
-                // Try to fetch the body to get a more helpful message (the route may return JSON)
-                try {
-                    $.ajax({
-                        method: "GET",
-                        url: url,
-                        async: false,
-                        dataType: "json",
-                        success: function (data) {
-                            var msg = data && data.message ? data.message : error;
-                            window.CRM.DisplayErrorMessage(url, { message: msg });
-                        },
-                        error: function () {
-                            window.CRM.DisplayErrorMessage(url, { message: error });
-                        },
-                    });
-                } catch (e) {
-                    window.CRM.DisplayErrorMessage(url, { message: error });
-                }
+                fetchErrorMessage(url, error, function (msg) {
+                    window.CRM.DisplayErrorMessage(url, { message: msg });
+                });
             },
             500: function () {
-                // For 500, try to fetch JSON body for a clearer message
-                try {
-                    $.ajax({
-                        method: "GET",
-                        url: url,
-                        async: false,
-                        dataType: "json",
-                        success: function (data) {
-                            var msg = data && data.message ? data.message : error;
-                            window.CRM.DisplayErrorMessage(url, { message: msg });
-                        },
-                        error: function () {
-                            window.CRM.DisplayErrorMessage(url, { message: error });
-                        },
-                    });
-                } catch (e) {
-                    window.CRM.DisplayErrorMessage(url, { message: error });
-                }
+                fetchErrorMessage(url, error, function (msg) {
+                    window.CRM.DisplayErrorMessage(url, { message: msg });
+                });
             },
         },
     });
