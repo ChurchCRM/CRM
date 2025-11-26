@@ -390,6 +390,12 @@ $(document).ready(function() {
   $("#clearAllFunds").click(function () {
         $("#fundsList").val(null).trigger("change");
   });
+
+  // Handle report download - clear "No Data Found" banner when exporting
+  $(document).on("click", "button[type='submit'], input[type='submit']", function() {
+    // Simply hide the No Data Found alert banner when any submit button is clicked
+    $(".alert-warning").hide();
+  });
   }
 );
 
