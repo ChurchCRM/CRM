@@ -212,7 +212,7 @@
             <div class="demo-import-confirm-content">
               <h2 class="mb-4">
                 <i class="fa fa-users mr-2 text-success"></i>
-                ${i18next.t('Import Demo Data')}
+                ${i18next.t("Import Demo Data")}
               </h2>
               
               <div class="alert alert-info mb-4">
@@ -220,38 +220,38 @@
               </div>
 
               <div class="demo-import-options mb-4">
-                <h4 class="mb-3">${i18next.t('Optional Data to Include')}</h4>
+                <h4 class="mb-3">${i18next.t("Optional Data to Include")}</h4>
                 <div class="form-check mb-2">
                   <input type="checkbox" class="form-check-input" id="includeDemoFinancial">
                   <label class="form-check-label" for="includeDemoFinancial">
-                    ${i18next.t('Include financial data (donation funds, pledges)')}
+                    ${i18next.t("Include financial data (donation funds, pledges)")}
                   </label>
                 </div>
                 <div class="form-check mb-2">
                   <input type="checkbox" class="form-check-input" id="includeDemoEvents">
                   <label class="form-check-label" for="includeDemoEvents">
-                    ${i18next.t('Include events and calendars')}
+                    ${i18next.t("Include events and calendars")}
                   </label>
                 </div>
                 <div class="form-check">
                   <input type="checkbox" class="form-check-input" id="includeDemoSundaySchool">
                   <label class="form-check-label" for="includeDemoSundaySchool">
-                    ${i18next.t('Include Sunday School classes and enrollments')}
+                    ${i18next.t("Include Sunday School classes and enrollments")}
                   </label>
                 </div>
               </div>
 
               <div class="demo-import-instructions mb-4">
-                <h4 class="mb-3">${i18next.t('Need to remove this data later?')}</h4>
+                <h4 class="mb-3">${i18next.t("Need to remove this data later?")}</h4>
                 <p>After importing, you can visit the <strong>System Maintenance</strong> page and click the <strong>Reset Database</strong> button to clear all data and start fresh. Your application configuration will be preserved.</p>
               </div>
 
               <div class="demo-import-buttons">
                 <button type="button" class="btn btn-success" id="demoImportConfirmBtn">
-                  <i class="fa fa-users mr-2"></i>${i18next.t('Import Demo Data')}
+                  <i class="fa fa-users mr-2"></i>${i18next.t("Import Demo Data")}
                 </button>
                 <button type="button" class="btn btn-secondary" id="demoImportCancelBtn">
-                  ${i18next.t('Cancel')}
+                  ${i18next.t("Cancel")}
                 </button>
               </div>
             </div>
@@ -300,7 +300,12 @@
         $("#demoImportSpinnerOverlay").removeClass("show");
     }
 
-    function doImport($button, includeFinancial, includeEvents, includeSundaySchool) {
+    function doImport(
+        $button,
+        includeFinancial,
+        includeEvents,
+        includeSundaySchool,
+    ) {
         var $status = $("#demoImportStatus");
         var $results = $("#demoImportResults");
         var $resultsList = $("#demoImportResultsList");
@@ -407,35 +412,56 @@
     }
 
     function attachHandlers() {
-        var selectors = ["#importDemoData", "#importDemoDataQuickBtn", "#importDemoDataV2"];
+        var selectors = [
+            "#importDemoData",
+            "#importDemoDataQuickBtn",
+            "#importDemoDataV2",
+        ];
         selectors.forEach(function (sel) {
             var $btn = $(sel);
             if ($btn.length) {
                 $btn.off("click").on("click", function (e) {
                     e.preventDefault();
-                    console.log("Import button clicked, showing confirmation overlay");
+                    console.log(
+                        "Import button clicked, showing confirmation overlay",
+                    );
                     showConfirmOverlay();
                 });
             }
         });
 
         // Attach confirm button handler
-        $(document).off("click", "#demoImportConfirmBtn").on("click", "#demoImportConfirmBtn", function (e) {
-            e.preventDefault();
-            console.log("Confirm button clicked, starting import");
-            var includeFinancial = $("#includeDemoFinancial").is(":checked");
-            var includeEvents = $("#includeDemoEvents").is(":checked");
-            var includeSundaySchool = $("#includeDemoSundaySchool").is(":checked");
-            var $btn = $("#importDemoData, #importDemoDataQuickBtn, #importDemoDataV2").first();
-            doImport($btn, includeFinancial, includeEvents, includeSundaySchool);
-        });
+        $(document)
+            .off("click", "#demoImportConfirmBtn")
+            .on("click", "#demoImportConfirmBtn", function (e) {
+                e.preventDefault();
+                console.log("Confirm button clicked, starting import");
+                var includeFinancial = $("#includeDemoFinancial").is(
+                    ":checked",
+                );
+                var includeEvents = $("#includeDemoEvents").is(":checked");
+                var includeSundaySchool = $("#includeDemoSundaySchool").is(
+                    ":checked",
+                );
+                var $btn = $(
+                    "#importDemoData, #importDemoDataQuickBtn, #importDemoDataV2",
+                ).first();
+                doImport(
+                    $btn,
+                    includeFinancial,
+                    includeEvents,
+                    includeSundaySchool,
+                );
+            });
 
         // Attach cancel button handler
-        $(document).off("click", "#demoImportCancelBtn").on("click", "#demoImportCancelBtn", function (e) {
-            e.preventDefault();
-            console.log("Cancel button clicked");
-            hideConfirmOverlay();
-        });
+        $(document)
+            .off("click", "#demoImportCancelBtn")
+            .on("click", "#demoImportCancelBtn", function (e) {
+                e.preventDefault();
+                console.log("Cancel button clicked");
+                hideConfirmOverlay();
+            });
     }
 
     $(document).ready(function () {

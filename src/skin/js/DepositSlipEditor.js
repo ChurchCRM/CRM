@@ -196,10 +196,13 @@ function initDepositSlipEditor() {
             .done(function (data) {
                 var count = Array.isArray(data) ? data.length : 0;
                 if (count === 0) {
-                    window.CRM.notify(i18next.t('No payments on this deposit'), {
-                        type: 'warning',
-                        delay: 5000,
-                    });
+                    window.CRM.notify(
+                        i18next.t("No payments on this deposit"),
+                        {
+                            type: "warning",
+                            delay: 5000,
+                        },
+                    );
                     return;
                 }
 
@@ -210,11 +213,13 @@ function initDepositSlipEditor() {
             })
             .fail(function (jqXHR, textStatus, errorThrown) {
                 // Fallback: show generic error and do not proceed
-                var errorMsg = i18next.t("There was a problem retrieving the requested object");
+                var errorMsg = i18next.t(
+                    "There was a problem retrieving the requested object",
+                );
                 if (jqXHR.responseJSON && jqXHR.responseJSON.message) {
                     errorMsg = jqXHR.responseJSON.message;
                 }
-                window.CRM.notify(errorMsg, { type: 'danger', delay: 7000 });
+                window.CRM.notify(errorMsg, { type: "danger", delay: 7000 });
             });
     });
 
