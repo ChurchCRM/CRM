@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 18:26-0800\n"
+"POT-Creation-Date: 2025-11-26 16:13-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1525,6 +1525,10 @@ msgstr ""
 msgid "Credit Card"
 msgstr ""
 
+#. Context: query_qry
+msgid "Credit Card People"
+msgstr ""
+
 #. Context: countries
 msgid "Croatia (Hrvatska)"
 msgstr ""
@@ -2413,10 +2417,6 @@ msgstr ""
 msgid "Ethiopia"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Event"
-msgstr ""
-
 msgid "Event Attendance"
 msgstr ""
 
@@ -2842,10 +2842,6 @@ msgid "Find Registered students"
 msgstr ""
 
 msgid "Find family->"
-msgstr ""
-
-#. Context: query_qry
-msgid "Find people who didn't attend an event"
 msgstr ""
 
 #. Context: query_qry
@@ -4262,10 +4258,6 @@ msgid "Missing event id"
 msgstr ""
 
 #. Context: query_qry
-msgid "Missing people"
-msgstr ""
-
-#. Context: query_qry
 msgid "Missing pledges"
 msgstr ""
 
@@ -4552,6 +4544,9 @@ msgstr ""
 msgid "No Group Selected"
 msgstr ""
 
+msgid "No Payments on this Deposit"
+msgstr ""
+
 msgid "No Restore Running"
 msgstr ""
 
@@ -4598,6 +4593,9 @@ msgid "No notes have been added for this family."
 msgstr ""
 
 msgid "No notes have been added for this person."
+msgstr ""
+
+msgid "No payments on this deposit"
 msgstr ""
 
 msgid "No payments yet. Click \"Add Payment\" to get started."
@@ -5036,6 +5034,10 @@ msgid "People not in"
 msgstr ""
 
 msgid "People not in list"
+msgstr ""
+
+#. Context: query_qry
+msgid "People who are configured to pay by credit card."
 msgstr ""
 
 #. Context: query_qry
@@ -6102,10 +6104,6 @@ msgid "Select none"
 msgstr ""
 
 #. Context: queryparameters_qrp
-msgid "Select the desired event"
-msgstr ""
-
-#. Context: queryparameters_qrp
 msgid "Select the desired family role."
 msgstr ""
 
@@ -6339,6 +6337,9 @@ msgid "Skip Backup"
 msgstr ""
 
 msgid "Skip records with incomplete mail address"
+msgstr ""
+
+msgid "Skipped"
 msgstr ""
 
 #. Context: countries
@@ -7839,6 +7840,9 @@ msgstr ""
 msgid "denotes required fields"
 msgstr ""
 
+msgid "deposit(s) with no payments"
+msgstr ""
+
 msgid "eGive"
 msgstr ""
 
@@ -7915,9 +7919,6 @@ msgid "kilometers"
 msgstr ""
 
 msgid "loading"
-msgstr ""
-
-msgid "lookup user images on Google when no local image is present"
 msgstr ""
 
 msgid "lookup user images on Gravatar when no local image is present"
