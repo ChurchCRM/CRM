@@ -7406,10 +7406,6 @@ msgid "Your Church's X Page"
 msgstr "كنيستك التغريد الصفحة"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "بحث صور المستخدم على جوجل عندما لا صورة محلية موجودة"
-
-#: 
 msgid "Self Register"
 msgstr "التسجيل الذاتي"
 
@@ -8312,10 +8308,6 @@ msgid "Emptied into Event"
 msgstr "أفرغت إلى معرف الحدث"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "ملف المفقودين integrityCheck.json"
-
-#: 
 msgid "Passed"
 msgstr "تم الاجتياز بنجاح"
 
@@ -8371,10 +8363,6 @@ msgstr "لقد تم إهمال دعم eGive، وبطاقات الائتمان، 
 #: 
 msgid "Estonian"
 msgstr "الإستونية"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "خطأ تكامل فك ملف نتيجة الاختيار"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8489,10 +8477,6 @@ msgstr "يرجى مراجعة السجلات لمزيد من المعلومات"
 #: 
 msgid "Verification URL"
 msgstr "URL التحقق"
-
-#: 
-msgid "Reset System"
-msgstr "إعادة النظام"
 
 #: 
 msgid "Unexpected Person Id"

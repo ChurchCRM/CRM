@@ -7557,10 +7557,6 @@ msgid "Your Church's X Page"
 msgstr "您的教會的X頁面"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "當沒有本地圖像時，在谷歌上查找用戶圖像"
-
-#: 
 msgid "Self Register"
 msgstr "自助登記"
 
@@ -8482,11 +8478,6 @@ msgstr "清空事件代碼"
 
 #: 
 #, fuzzy
-msgid "integrityCheck.json file missing"
-msgstr "無integrityCheck.json檔案"
-
-#: 
-#, fuzzy
 msgid "Passed"
 msgstr "通過"
 
@@ -8555,11 +8546,6 @@ msgstr "已棄用對eGive，信用卡和銀行匯票付款的支持。在將來�
 #, fuzzy
 msgid "Estonian"
 msgstr "愛沙尼亞語"
-
-#: 
-#, fuzzy
-msgid "Error decoding integrity check result file"
-msgstr "解碼完整性檢查結果文件錯誤"
 
 #: 
 #, fuzzy
@@ -8701,11 +8687,6 @@ msgstr "請查看日誌以獲取更多信息"
 #, fuzzy
 msgid "Verification URL"
 msgstr "驗證網址"
-
-#: 
-#, fuzzy
-msgid "Reset System"
-msgstr "系統重置"
 
 #: 
 #, fuzzy

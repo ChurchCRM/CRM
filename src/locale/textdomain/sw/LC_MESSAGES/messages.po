@@ -7394,10 +7394,6 @@ msgid "Your Church's X Page"
 msgstr "Ukurasa wa X wa Kanisa lako"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "tafuta picha za mtumiaji kwenye Google wakati hakuna picha ya ndani iliyopo"
-
-#: 
 msgid "Self Register"
 msgstr "Kujiandikisha"
 
@@ -8297,10 +8293,6 @@ msgid "Emptied into Event"
 msgstr "Imetolewa kwenye Tukio"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "faili ya integrityCheck.json haipo"
-
-#: 
 msgid "Passed"
 msgstr "Imepitishwa"
 
@@ -8356,10 +8348,6 @@ msgstr "Usaidizi wa malipo ya eGive, Kadi ya Mkopo na Rasimu ya Benki umeacha ku
 #: 
 msgid "Estonian"
 msgstr "Kiestonia"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Hitilafu katika kusimbua faili ya matokeo ya kuangalia uadilifu"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8483,10 +8471,6 @@ msgstr "Tafadhali angalia kumbukumbu kwa habari zaidi"
 #: 
 msgid "Verification URL"
 msgstr "URL ya uthibitishaji"
-
-#: 
-msgid "Reset System"
-msgstr "Weka upya Mfumo"
 
 #: 
 msgid "Unexpected Person Id"

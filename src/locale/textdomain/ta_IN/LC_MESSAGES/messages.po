@@ -7395,10 +7395,6 @@ msgid "Your Church's X Page"
 msgstr "உங்கள் தேவாலயத்தின் X பக்கம்"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "உள்ளூர் படம் இல்லாதபோது கூகுள் இல் பயனர் படங்களைத் தேடுங்கள்"
-
-#: 
 msgid "Self Register"
 msgstr "சுய பதிவு"
 
@@ -8298,10 +8294,6 @@ msgid "Emptied into Event"
 msgstr "நிகழ்வில் காலி"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "integrityCheck.json கோப்பு இல்லை"
-
-#: 
 msgid "Passed"
 msgstr "தேர்ச்சி பெற்றார்"
 
@@ -8357,10 +8349,6 @@ msgstr "eGive, கிரெடிட் கார்டு மற்றும்
 #: 
 msgid "Estonian"
 msgstr "எஸ்டோனியன்"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "ஒருமைப்பாடு சரிபார்ப்பு முடிவு கோப்பை டிகோட் செய்வதில் பிழை"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8484,10 +8472,6 @@ msgstr "மேலும் தகவலுக்கு பதிவுகளை�
 #: 
 msgid "Verification URL"
 msgstr "சரிபார்ப்பு URL"
-
-#: 
-msgid "Reset System"
-msgstr "கணினியை மீட்டமைக்கவும்"
 
 #: 
 msgid "Unexpected Person Id"

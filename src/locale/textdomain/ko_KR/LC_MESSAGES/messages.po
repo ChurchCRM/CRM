@@ -7393,10 +7393,6 @@ msgid "Your Church's X Page"
 msgstr "교회의 X(트위터) 페이지"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "로컬 사진이 없을 때 Google에서 사용자 이미지를 조회합니다"
-
-#: 
 msgid "Self Register"
 msgstr "자가 등록"
 
@@ -8295,10 +8291,6 @@ msgid "Emptied into Event"
 msgstr "행사에 모두 등록됨"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "integrityCheck.json 파일이 없습니다"
-
-#: 
 msgid "Passed"
 msgstr "통과"
 
@@ -8354,10 +8346,6 @@ msgstr "eGive, 신용카드, 자동이체 입금은 더 이상 지원되지 않�
 #: 
 msgid "Estonian"
 msgstr "에스토니아어"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "무결성 검사 결과 파일을 해석하는 중 오류"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8480,10 +8468,6 @@ msgstr "자세한 내용은 로그를 확인하세요"
 #: 
 msgid "Verification URL"
 msgstr "확인 URL"
-
-#: 
-msgid "Reset System"
-msgstr "시스템 초기화"
 
 #: 
 msgid "Unexpected Person Id"

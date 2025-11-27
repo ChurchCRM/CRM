@@ -1304,7 +1304,6 @@
     "Error sending email(s)": "Ошибка при отправке почты.",
     "Please check logs for more information": "Пожалуйста, проверьте журналы для получения дополнительной информации",
     "Verification URL": "Верификация URL",
-    "Reset System": "Сброс системы",
     "Unexpected Person Id": "Непредусмотренный ID человека",
     "Interval in Hours for software update check": "Интервал в часах для проверки обновления программного обеспечения",
     "Last Software Update Check Timestamp": "Отметка времени проверки последнего обновления программного обеспечения",

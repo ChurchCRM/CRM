@@ -7407,10 +7407,6 @@ msgid "Your Church's X Page"
 msgstr "የቤተክርስቲያንህ ትዊተር ገጽ"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "ምንም የአካባቢ ምስል በማይኖርበት ጊዜ የተጠቃሚ ምስሎችን በ Google ላይ ይፈልጉ"
-
-#: 
 msgid "Self Register"
 msgstr "ራስን መመዝገብ"
 
@@ -8314,10 +8310,6 @@ msgid "Emptied into Event"
 msgstr "በክስተቱ መታወቂያ ባዶ "
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "ታማኝነት ማረጋገጫ ፋይል ጠፍቷል "
-
-#: 
 msgid "Passed"
 msgstr "አልፈዋል "
 
@@ -8374,10 +8366,6 @@ msgstr "የኢጊቭ፣ የክሬዲት ካርድ እና የባንክ ረቂቅ 
 #: 
 msgid "Estonian"
 msgstr "ኢስቶኒያን"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "የትክክለኛነት ማረጋገጫ ዉጤት ፋይልን የመግለጽ ስህተት "
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8504,10 +8492,6 @@ msgstr "ለበለጠ መረጃ እባክዎን የምዝግብ ማስታወሻ�
 #: 
 msgid "Verification URL"
 msgstr "የማረጋገጫ ዩአርኤል"
-
-#: 
-msgid "Reset System"
-msgstr "ስርዓት ዳግም አስጀምር"
 
 #: 
 msgid "Unexpected Person Id"
