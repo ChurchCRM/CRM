@@ -7430,10 +7430,6 @@ msgid "Your Church's X Page"
 msgstr "Página de X de Su iglesia"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "buscar imágenes de usuario en Google cuando no esté presente una imagen local"
-
-#: 
 msgid "Self Register"
 msgstr "Auto-registrar"
 
@@ -8337,10 +8333,6 @@ msgid "Emptied into Event"
 msgstr "Vaciado hacia el del evento"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "falta archivo integrityCheck.json"
-
-#: 
 msgid "Passed"
 msgstr "Aprobado"
 
@@ -8396,10 +8388,6 @@ msgstr "Se ha abandonado el soporte para pagos en eGive, Tarjetas de Crédito y 
 #: 
 msgid "Estonian"
 msgstr "Estonio"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Error al decodificar el archivo de resultados de la comprobación de Integridad"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8523,10 +8511,6 @@ msgstr "Para mayor información por favor revise los logs"
 #: 
 msgid "Verification URL"
 msgstr "URL de verificación"
-
-#: 
-msgid "Reset System"
-msgstr "Restablecer sistema"
 
 #: 
 msgid "Unexpected Person Id"

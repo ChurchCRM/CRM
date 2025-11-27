@@ -5500,10 +5500,6 @@ msgid "Verification URL"
 msgstr "Верификация URL"
 
 #: 
-msgid "Reset System"
-msgstr "Сброс системы"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Непредусмотренный ID человека"
 

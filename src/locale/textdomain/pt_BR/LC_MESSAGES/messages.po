@@ -8943,11 +8943,6 @@ msgstr "Página do X da sua igreja"
 
 #: 
 #, fuzzy
-msgid "lookup user images on Google when no local image is present"
-msgstr "procurar imagens no Google quando não existirem imagens locais presentes"
-
-#: 
-#, fuzzy
 msgid "Self Register"
 msgstr "Auto registro"
 
@@ -10069,11 +10064,6 @@ msgstr "Esvaziado para o do Evento"
 
 #: 
 #, fuzzy
-msgid "integrityCheck.json file missing"
-msgstr "integrityCheck.json arquivo faltando"
-
-#: 
-#, fuzzy
 msgid "Passed"
 msgstr "Aprovado"
 
@@ -10142,11 +10132,6 @@ msgstr "O suporte para pagamentos de eGive, cartão de crédito e emissão de no
 #, fuzzy
 msgid "Estonian"
 msgstr "Estoniano"
-
-#: 
-#, fuzzy
-msgid "Error decoding integrity check result file"
-msgstr "Arquivo de resultado de verificação de integridade de erro de decodificação"
 
 #: 
 #, fuzzy
@@ -10294,11 +10279,6 @@ msgstr "Por favor, verifique os logs para mais informações"
 #, fuzzy
 msgid "Verification URL"
 msgstr "URL de Verificação"
-
-#: 
-#, fuzzy
-msgid "Reset System"
-msgstr "Redefinir o sistema"
 
 #: 
 #, fuzzy

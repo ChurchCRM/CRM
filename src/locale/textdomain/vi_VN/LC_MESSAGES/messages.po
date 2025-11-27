@@ -7423,10 +7423,6 @@ msgid "Your Church's X Page"
 msgstr "Trang X của Giáo hội của bạn"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "tra cứu hình ảnh người dùng trên Google khi không có hình ảnh cục bộ"
-
-#: 
 msgid "Self Register"
 msgstr "Tự đăng ký"
 
@@ -8329,10 +8325,6 @@ msgid "Emptied into Event"
 msgstr "Đã hết vào sự kiện"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "thiếu tệp tin liêm chính.json"
-
-#: 
 msgid "Passed"
 msgstr "Thông qua"
 
@@ -8388,10 +8380,6 @@ msgstr "Hỗ trợ cho thanh toán eGive, Thẻ tín dụng và Hối phiếu Ng
 #: 
 msgid "Estonian"
 msgstr "Người Estonia"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Lỗi giải mã tệp kết quả kiểm tra tính toàn vẹn"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8506,10 +8494,6 @@ msgstr "Vui lòng kiểm tra nhật ký để biết thêm thông tin"
 #: 
 msgid "Verification URL"
 msgstr "URL xác minh"
-
-#: 
-msgid "Reset System"
-msgstr "Đặt lại hệ thống"
 
 #: 
 msgid "Unexpected Person Id"

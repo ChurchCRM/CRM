@@ -7506,10 +7506,6 @@ msgid "Your Church's X Page"
 msgstr "Pargina de X a bisericii"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "căutați imagini ale utilizatorilor pe Google atunci când nu există nicio imagine locală"
-
-#: 
 msgid "Self Register"
 msgstr "Autoînregistrare"
 
@@ -8412,10 +8408,6 @@ msgid "Emptied into Event"
 msgstr "Emptied into Event"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "Lipsa fisier integrityCheck.json"
-
-#: 
 msgid "Passed"
 msgstr "A trecut"
 
@@ -8471,10 +8463,6 @@ msgstr "Asistența pentru plățile eGive, card de credit și debit bancar a fos
 #: 
 msgid "Estonian"
 msgstr "Estonă"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Eroare la decodarea fișierului rezultat al verificării integrității"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8594,10 +8582,6 @@ msgstr "Vă rugăm să verificați jurnalele (logs) pentru mai multe informații
 #: 
 msgid "Verification URL"
 msgstr "URL de verificare"
-
-#: 
-msgid "Reset System"
-msgstr "Resetare sistem"
 
 #: 
 msgid "Unexpected Person Id"

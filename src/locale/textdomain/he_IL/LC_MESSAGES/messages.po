@@ -7397,10 +7397,6 @@ msgid "Your Church's X Page"
 msgstr "דף ה-X של המוסד שלך"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "חיפוש תמונות משתמש בגוגל כאשר אין תמונה מקומית"
-
-#: 
 msgid "Self Register"
 msgstr "הרשמה עצמית"
 
@@ -8300,10 +8296,6 @@ msgid "Emptied into Event"
 msgstr "רוקן לתוך אירוע"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "קובץ integrityCheck.json חסר"
-
-#: 
 msgid "Passed"
 msgstr "עבר"
 
@@ -8359,10 +8351,6 @@ msgstr "התמיכה בתשלומי eGive, כרטיסי אשראי והעברו�
 #: 
 msgid "Estonian"
 msgstr "אסטונית"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "שגיאה בפענוח קובץ תוצאות בדיקת תקינות"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8486,10 +8474,6 @@ msgstr "לקבלת מידע נוסף - אנא בדוק רישומי מערכת"
 #: 
 msgid "Verification URL"
 msgstr "URL לאישור"
-
-#: 
-msgid "Reset System"
-msgstr "איתחול מערכת"
 
 #: 
 msgid "Unexpected Person Id"

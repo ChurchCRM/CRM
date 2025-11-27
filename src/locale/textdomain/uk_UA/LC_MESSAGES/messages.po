@@ -7405,10 +7405,6 @@ msgid "Your Church's X Page"
 msgstr "Сторінка Вашої Церкви у X"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "шукати зображення користувачів у Google, коли немає локального зображення"
-
-#: 
 msgid "Self Register"
 msgstr "Самореєстрація"
 
@@ -8311,10 +8307,6 @@ msgid "Emptied into Event"
 msgstr "Порожній в ідентифікаторі події"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "Файл integritetCheck.json відсутній"
-
-#: 
 msgid "Passed"
 msgstr "Пройшов"
 
@@ -8370,10 +8362,6 @@ msgstr "Підтримка платежів eGive, кредитних карто
 #: 
 msgid "Estonian"
 msgstr "Естонська"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Помилка декодування файлу результатів перевірки цілісності"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8497,10 +8485,6 @@ msgstr "Будь ласка, перевірте журнали для отрим
 #: 
 msgid "Verification URL"
 msgstr "URL-адреса для підтвердження"
-
-#: 
-msgid "Reset System"
-msgstr "Скинути систему"
 
 #: 
 msgid "Unexpected Person Id"

@@ -7406,10 +7406,6 @@ msgid "Your Church's X Page"
 msgstr "U Kerk se X-bladsy"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "soek gebruikersfoto's op Google as daar geen plaaslike beeld is nie"
-
-#: 
 msgid "Self Register"
 msgstr "Selfregister"
 
@@ -8312,10 +8308,6 @@ msgid "Emptied into Event"
 msgstr "Leeggestel in gebeurtenis"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "integriteitCheck.json-lêer ontbreek"
-
-#: 
 msgid "Passed"
 msgstr "Geslaag"
 
@@ -8371,10 +8363,6 @@ msgstr "Ondersteuning vir eGive-, kredietkaart- en bankwisselbetalings is verswa
 #: 
 msgid "Estonian"
 msgstr "Esties"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Kon nie die resultaatlêer vir integriteitskontrole dekodeer nie"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8498,10 +8486,6 @@ msgstr "Gaan die logboeke na vir meer inligting"
 #: 
 msgid "Verification URL"
 msgstr "Verifikasie-URL"
-
-#: 
-msgid "Reset System"
-msgstr "Stel die stelsel terug"
 
 #: 
 msgid "Unexpected Person Id"

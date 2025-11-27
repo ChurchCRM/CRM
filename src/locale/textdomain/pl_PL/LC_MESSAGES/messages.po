@@ -4173,10 +4173,6 @@ msgid "Emptied into Event"
 msgstr "Przekształcono na Wydarzenia"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "brak pliku integrityCheck.json"
-
-#: 
 msgid "Passed"
 msgstr "Poprawne"
 
@@ -4232,10 +4228,6 @@ msgstr "Wsparcie dla eGive, kart płatniczych i wpłat bankowych zostało zakoń
 #: 
 msgid "Estonian"
 msgstr "Estoński"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Błąd podczas odczytu pliku spójności systemu"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -4359,10 +4351,6 @@ msgstr "Sprawdź dziennik zdarzeń aby zobaczyć więcej"
 #: 
 msgid "Verification URL"
 msgstr "Adres URL potwierdzenia"
-
-#: 
-msgid "Reset System"
-msgstr "Zresetuj System"
 
 #: 
 msgid "Unexpected Person Id"

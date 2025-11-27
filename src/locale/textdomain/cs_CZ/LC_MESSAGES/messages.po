@@ -7393,10 +7393,6 @@ msgid "Your Church's X Page"
 msgstr "Stránka sboru na platformě X"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "vyhledat obrázky uživatelů pomocí Google, pokud není k dispozici žádný místní obrázek"
-
-#: 
 msgid "Self Register"
 msgstr "Vlastní registrace"
 
@@ -8296,10 +8292,6 @@ msgid "Emptied into Event"
 msgstr "Vyprázdněn do Události"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "soubor integrityCheck.json chybí"
-
-#: 
 msgid "Passed"
 msgstr "Splňuje"
 
@@ -8355,10 +8347,6 @@ msgstr "Podpora plateb eGive, kreditní kartou a bankovním převodem byla zruš
 #: 
 msgid "Estonian"
 msgstr "Estonština"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Chyba při dekódování souboru s výsledky kontroly integrity"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8482,10 +8470,6 @@ msgstr "Další informace naleznete v protokolech"
 #: 
 msgid "Verification URL"
 msgstr "Adresa URL pro ověření"
-
-#: 
-msgid "Reset System"
-msgstr "Obnovení systému"
 
 #: 
 msgid "Unexpected Person Id"

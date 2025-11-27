@@ -7506,10 +7506,6 @@ msgid "Your Church's Facebook Page"
 msgstr "您的教会的Facebook页面"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "当没有本地图像时，在谷歌上查找用户图像"
-
-#: 
 msgid "Self Register"
 msgstr "自助登记"
 
@@ -8415,10 +8411,6 @@ msgid "Emptied into Event"
 msgstr "嵌入事件ID"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "缺少完整性检查.json文件"
-
-#: 
 msgid "Passed"
 msgstr "已通过"
 
@@ -8474,10 +8466,6 @@ msgstr "已不再支持eGive，信用卡和银行汇票付款。现有的非银�
 #: 
 msgid "Estonian"
 msgstr "爱沙尼亚语"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "解码完整性检查结果文件时出错"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8601,10 +8589,6 @@ msgstr "请检查日志以获取更多信息"
 #: 
 msgid "Verification URL"
 msgstr "验证网址"
-
-#: 
-msgid "Reset System"
-msgstr "重置系统"
 
 #: 
 msgid "Unexpected Person Id"
