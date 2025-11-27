@@ -7549,10 +7549,6 @@ msgid "Your Church's X Page"
 msgstr "Din kyrkas X-sida"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "leta upp användarbilder på Google när det inte finns någon lokal bild"
-
-#: 
 msgid "Self Register"
 msgstr "Självregister"
 
@@ -8455,10 +8451,6 @@ msgid "Emptied into Event"
 msgstr "Tömd i händelse"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "integrityCheck.json-fil saknas"
-
-#: 
 msgid "Passed"
 msgstr "passerade"
 
@@ -8514,10 +8506,6 @@ msgstr "Stöd för betalningar för eGive, kreditkort och bankutkast har skrivit
 #: 
 msgid "Estonian"
 msgstr "estniska"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Fel vid avkodning av resultatfil för integritetskontroll"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8641,10 +8629,6 @@ msgstr "Kontrollera loggarna för mer information"
 #: 
 msgid "Verification URL"
 msgstr "Verifierings-URL"
-
-#: 
-msgid "Reset System"
-msgstr "Återställ systemet"
 
 #: 
 msgid "Unexpected Person Id"

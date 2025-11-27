@@ -7403,10 +7403,6 @@ msgid "Your Church's X Page"
 msgstr "Kilisenizin X sayfası"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "Yerel resim olmadığında Google'da Kullanıcı Görüntüleri Arama"
-
-#: 
 msgid "Self Register"
 msgstr "Kendi Kayıt Kayıt"
 
@@ -8309,10 +8305,6 @@ msgid "Emptied into Event"
 msgstr "Olay kimliğine boşaltıldı"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "IntegrityCheck.json Dosyası Eksik"
-
-#: 
 msgid "Passed"
 msgstr "Geçti"
 
@@ -8368,10 +8360,6 @@ msgstr "Egile, kredi kartı ve banka taslak ödemeleri için destek verilmiştir
 #: 
 msgid "Estonian"
 msgstr "Estonya"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Hata Kod çözme Bütünlük Kontrol Sonuç Dosyası"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8495,10 +8483,6 @@ msgstr "Daha fazla bilgi için lütfen günlükleri kontrol edin"
 #: 
 msgid "Verification URL"
 msgstr "Doğrulama URL'si"
-
-#: 
-msgid "Reset System"
-msgstr "Sistemi Sıfırla"
 
 #: 
 msgid "Unexpected Person Id"

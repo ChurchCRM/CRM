@@ -7408,10 +7408,6 @@ msgid "Your Church's X Page"
 msgstr "Halaman X Gereja Anda"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "mencari gambar pengguna di Google ketika tidak ada gambar lokal"
-
-#: 
 msgid "Self Register"
 msgstr "Daftar Mandiri"
 
@@ -8314,10 +8310,6 @@ msgid "Emptied into Event"
 msgstr "Dikosongkan ke Event"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "file integrityCheck.json hilang"
-
-#: 
 msgid "Passed"
 msgstr "Lolos"
 
@@ -8373,10 +8365,6 @@ msgstr "Dukungan untuk pembayaran eGive, Kartu Kredit, dan Bank Draft telah diti
 #: 
 msgid "Estonian"
 msgstr "Estonia"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Terjadi kesalahan saat mendekodekan file hasil pemeriksaan integritas"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8491,10 +8479,6 @@ msgstr "Silakan periksa log untuk informasi lebih lanjut"
 #: 
 msgid "Verification URL"
 msgstr "URL verifikasi"
-
-#: 
-msgid "Reset System"
-msgstr "Setel Ulang Sistem"
 
 #: 
 msgid "Unexpected Person Id"

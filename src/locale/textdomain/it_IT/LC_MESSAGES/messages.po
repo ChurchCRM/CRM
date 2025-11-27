@@ -7428,10 +7428,6 @@ msgid "Your Church's X Page"
 msgstr "Pagina X della Tua Chiesa"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "cerca le immagini degli utenti su Google quando non sono presenti immagini locali"
-
-#: 
 msgid "Self Register"
 msgstr "Registro personale"
 
@@ -8334,10 +8330,6 @@ msgid "Emptied into Event"
 msgstr "Svuotato nell' evento"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "file integrityCheck.json mancante"
-
-#: 
 msgid "Passed"
 msgstr "Superato"
 
@@ -8393,10 +8385,6 @@ msgstr "Il supporto per i pagamenti di eGive, carta di credito e assegno circola
 #: 
 msgid "Estonian"
 msgstr "Estone"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Errore nel decodificare il file del risultato della verifica dell'integrità"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8520,10 +8508,6 @@ msgstr "Si prega di controllare i registri per ulteriori informazioni"
 #: 
 msgid "Verification URL"
 msgstr "URL di verifica"
-
-#: 
-msgid "Reset System"
-msgstr "Ripristina Sistema"
 
 #: 
 msgid "Unexpected Person Id"

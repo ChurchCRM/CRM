@@ -7404,10 +7404,6 @@ msgid "Your Church's X Page"
 msgstr "Teie koguduse X leht"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "otsige Google'ist kasutaja pilte, kui kohalikku pilti pole"
-
-#: 
 msgid "Self Register"
 msgstr "Automaatne Registreerumine"
 
@@ -8310,10 +8306,6 @@ msgid "Emptied into Event"
 msgstr "Eemaldatud sündmuse"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "terviklikkuse Cheek.jsoni fail puudub"
-
-#: 
 msgid "Passed"
 msgstr "Surnud"
 
@@ -8369,10 +8361,6 @@ msgstr "EGive'i, krediitkaardi- ja pangaveebimaksete tugi on aegunud. Olemasolev
 #: 
 msgid "Estonian"
 msgstr "Eesti"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Viga terviklikkuse kontrollimise tulemuse faili dekodeerimisel"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8496,10 +8484,6 @@ msgstr "Lisateabe saamiseks kontrollige logisid"
 #: 
 msgid "Verification URL"
 msgstr "Kinnituse URL"
-
-#: 
-msgid "Reset System"
-msgstr "Lähtesta süsteem"
 
 #: 
 msgid "Unexpected Person Id"
