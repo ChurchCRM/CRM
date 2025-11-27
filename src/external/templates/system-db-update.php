@@ -24,7 +24,16 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         <li><strong><?= gettext('Current Software Version') ?>:</strong> <?= VersionUtils::getInstalledVersion() ?></li>
                     </ul>
 
-                    <?php if (empty($errorMessage)) { ?>
+                    <?php if (!empty($successMessage)) { ?>
+                        <div class="alert alert-success mt-3" role="alert">
+                            <i class="fa-solid fa-check-circle fa-fw"></i>
+                            <?= htmlspecialchars($successMessage, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                        </div>
+                        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                            // Redirect to dashboard after short delay
+                            setTimeout(function(){ window.location = "<?= SystemURLs::getRootPath() ?>/v2/dashboard"; }, 2500);
+                        </script>
+                    <?php } else if (empty($errorMessage)) { ?>
                         <form id="dbUpgradeForm" class="mt-3" method="post" action="<?= SystemURLs::getRootPath() ?>/external/system/db-upgrade">
                             <button type="submit" class="btn btn-primary" id="upgradeDatabase"><i class="fa-solid fa-database"></i> <?= gettext('Upgrade database now') ?></button>
                         </form>

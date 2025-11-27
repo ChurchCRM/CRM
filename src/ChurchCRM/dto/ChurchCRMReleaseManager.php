@@ -11,6 +11,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Github\Client;
+use ChurchCRM\Service\UpgradeService;
 
 class ChurchCRMReleaseManager
 {
@@ -283,6 +284,8 @@ class ChurchCRMReleaseManager
         $logger->info('Hash validation succeeded on ' . $zipFilename . ' Got: ' . $actualSha1);
 
         $zip = new \ZipArchive();
+        $codeDeploySuccessful = false;
+
         if ($zip->open($zipFilename) === true) {
             $logger->info('Extracting ' . $zipFilename . ' to: ' . SystemURLs::getDocumentRoot() . '/Upgrade');
 
@@ -298,6 +301,7 @@ class ChurchCRMReleaseManager
             $executionTime = new ExecutionTime();
 
             FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            $codeDeploySuccessful = true;
             $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
         }
         $logger->info('Deleting zip archive: ' . $zipFilename);
@@ -307,6 +311,20 @@ class ChurchCRMReleaseManager
         $logger->debug('Set sLastIntegrityCheckTimeStamp to null');
         $logger->info('Upgrade process complete');
         ini_set('display_errors', $displayErrors);
+        // Only attempt to upgrade the database if the code deploy/move completed successfully
+        if ($codeDeploySuccessful) {
+            try {
+                $logger->info('Attempting automatic database upgrade post code-deploy');
+                UpgradeService::upgradeDatabaseVersion();
+                $logger->info('Automatic database upgrade completed successfully');
+            } catch (\Exception $e) {
+                $logger->error('Automatic database upgrade failed: ' . $e->getMessage(), ['exception' => $e]);
+                // rethrow so the API caller is made aware of the failure
+                throw $e;
+            }
+        } else {
+            $logger->warning('Skipping automatic database upgrade because code deployment did not complete successfully');
+        }
         self::$isUpgradeInProgress = false;
     }
 
