@@ -120,6 +120,10 @@ require_once __DIR__ . '/header.php';
                             <div class="card-body">
                                 <table class="table table-sm table-borderless mb-0">
                                     <tr>
+                                        <td class="text-muted">PHP Version</td>
+                                        <td class="text-right font-weight-bold"><?php echo PHP_VERSION ?></td>
+                                    </tr>
+                                    <tr>
                                         <td class="text-muted">Upload Size</td>
                                         <td class="text-right font-weight-bold"><?php echo ini_get('upload_max_filesize') ?></td>
                                     </tr>
