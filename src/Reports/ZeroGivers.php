@@ -167,7 +167,13 @@ if ($output === 'pdf') {
         // basename: 'ZeroGivers', includeDateInFilename: true adds today's date, .csv is added automatically
         CsvExporter::create($headers, $rows, 'ZeroGivers', 'UTF-8', true);
     } else {
-        header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Zero%20Givers');
+        $params = [
+            'ReturnMessage' => 'NoRows',
+            'ReportType' => 'Zero Givers',
+            'DateStart' => $sDateStart,
+            'DateEnd'   => $sDateEnd,
+        ];
+        header('Location: ../FinancialReports.php?' . http_build_query($params));
     }
 } else {
     echo '[' . $output . '] output selected, but is not known';

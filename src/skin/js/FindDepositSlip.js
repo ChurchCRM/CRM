@@ -204,11 +204,67 @@ function initializeDepositSlip() {
     $(".exportButton").click(function (sender) {
         var selectedRows = dataT.rows(".selected").data();
         var type = this.getAttribute("data-exportType");
-        $.each(selectedRows, function (index, value) {
-            window.CRM.VerifyThenLoadAPIContent(
-                window.CRM.root + "/api/deposits/" + value.Id + "/" + type,
-            );
-        });
+
+        if (type === "pdf") {
+            // Validate all PDFs first before starting downloads
+            var validDeposits = [];
+            var skippedCount = 0;
+            var validationPending = selectedRows.length;
+
+            $.each(selectedRows, function (index, value) {
+                $.ajax({
+                    method: "GET",
+                    url:
+                        window.CRM.root +
+                        "/api/deposits/" +
+                        value.Id +
+                        "/payments",
+                    dataType: "json",
+                })
+                    .done(function (data) {
+                        var count = Array.isArray(data) ? data.length : 0;
+                        if (count > 0) {
+                            validDeposits.push(value);
+                        } else {
+                            skippedCount++;
+                        }
+                    })
+                    .fail(function (jqXHR) {
+                        skippedCount++;
+                    })
+                    .always(function () {
+                        validationPending--;
+                        if (validationPending === 0) {
+                            // All validations done, show summary and export valid deposits
+                            if (skippedCount > 0) {
+                                window.CRM.notify(
+                                    i18next.t("Skipped") +
+                                        " " +
+                                        skippedCount +
+                                        " " +
+                                        i18next.t("deposit(s) with no payments"),
+                                    { type: "warning", delay: 5000 },
+                                );
+                            }
+                            $.each(validDeposits, function (idx, deposit) {
+                                var url =
+                                    window.CRM.root +
+                                    "/api/deposits/" +
+                                    deposit.Id +
+                                    "/pdf";
+                                window.CRM.VerifyThenLoadAPIContent(url);
+                            });
+                        }
+                    });
+            });
+        } else {
+            // csv or other types - proceed as before
+            $.each(selectedRows, function (index, value) {
+                var url =
+                    window.CRM.root + "/api/deposits/" + value.Id + "/" + type;
+                window.CRM.VerifyThenLoadAPIContent(url);
+            });
+        }
     });
 }
 

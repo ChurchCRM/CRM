@@ -183,12 +183,44 @@ function initPaymentTable() {
 }
 
 function initDepositSlipEditor() {
-    // Handle Generate Report button
+    // Handle Generate Report button - block if no payments exist
     $('[name="DepositSlipGeneratePDF"]').on("click", function () {
         var depositId = $(this).data("deposit-id");
-        window.CRM.VerifyThenLoadAPIContent(
-            window.CRM.root + "/api/deposits/" + depositId + "/pdf",
-        );
+
+        // Fetch payments for this deposit; if none, notify and block
+        $.ajax({
+            url: window.CRM.root + "/api/deposits/" + depositId + "/payments",
+            method: "GET",
+            dataType: "json",
+        })
+            .done(function (data) {
+                var count = Array.isArray(data) ? data.length : 0;
+                if (count === 0) {
+                    window.CRM.notify(
+                        i18next.t("No payments on this deposit"),
+                        {
+                            type: "warning",
+                            delay: 5000,
+                        },
+                    );
+                    return;
+                }
+
+                // There are payments; proceed to open/download the PDF
+                window.CRM.VerifyThenLoadAPIContent(
+                    window.CRM.root + "/api/deposits/" + depositId + "/pdf",
+                );
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                // Fallback: show generic error and do not proceed
+                var errorMsg = i18next.t(
+                    "There was a problem retrieving the requested object",
+                );
+                if (jqXHR.responseJSON && jqXHR.responseJSON.message) {
+                    errorMsg = jqXHR.responseJSON.message;
+                }
+                window.CRM.notify(errorMsg, { type: "danger", delay: 7000 });
+            });
     });
 
     // Handle Clear Fund Filter button

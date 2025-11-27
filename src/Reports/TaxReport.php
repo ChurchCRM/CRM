@@ -448,7 +448,13 @@ if ($output === 'pdf') {
         // basename: 'TaxReport', includeDateInFilename: true adds today's date, .csv is added automatically
         CsvExporter::create($headers, $rows, 'TaxReport', 'UTF-8', true);
     } else {
-        header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+        $params = [
+            'ReturnMessage' => 'NoRows',
+            'ReportType' => 'Giving Report',
+            'DateStart' => $sDateStart,
+            'DateEnd'   => $sDateEnd,
+        ];
+        header('Location: ../FinancialReports.php?' . http_build_query($params));
         exit();
     }
 }

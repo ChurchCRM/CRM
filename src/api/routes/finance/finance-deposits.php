@@ -73,6 +73,9 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->get('/{id:[0-9]+}/ofx', function (Request $request, Response $response, array $args): Response {
     $id = (int) $args['id'];
     $deposit = DepositQuery::create()->findOneById($id);
+    if ($deposit === null) {
+        return SlimUtils::renderJson($response->withStatus(404), ['message' => 'Deposit not found']);
+    }
     $OFX = $deposit->getOFX();
     header($OFX->header);
     return SlimUtils::renderJSON($response, ['content' => $OFX->content]);
@@ -80,7 +83,22 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
 
     $group->get('/{id:[0-9]+}/pdf', function (Request $request, Response $response, array $args): Response {
         $id = (int) $args['id'];
+
+        // If there are no payments for this deposit, return a controlled response
+        $paymentsCount = PledgeQuery::create()->filterByDepId($id)->count();
+        if ($paymentsCount === 0) {
+            // Some clients and probes use HEAD; respond with appropriate status without throwing
+            if (strtoupper($request->getMethod()) === 'HEAD') {
+                return $response->withStatus(404);
+            }
+
+            return SlimUtils::renderJson($response->withStatus(404), ['message' => 'No Payments on this Deposit']);
+        }
+
         $deposit = DepositQuery::create()->findOneById($id);
+        if ($deposit === null) {
+            return SlimUtils::renderJson($response->withStatus(404), ['message' => 'Deposit not found']);
+        }
         $deposit->getPDF();
         return SlimUtils::renderSuccessJSON($response);
     });
