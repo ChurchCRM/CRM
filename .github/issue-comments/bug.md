@@ -3,7 +3,7 @@
 Thank you for reporting this bug! To help us resolve it faster, please:
 
 ### 1️⃣ **Collect Diagnostic Information**
-See our comprehensive guide: **[Bug Reporting & Diagnostics](https://wiki.churchcrm.io/Bug-Reporting-and-Diagnostics)**
+See our comprehensive guide: **[Bug Reporting & Diagnostics](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
 
 **Quick checklist:**
 - [ ] Include your **ChurchCRM version** (Admin → Dashboard or About)
@@ -20,7 +20,7 @@ If you have access to your ChurchCRM installation:
 ### 3️⃣ **Format Your Report**
 If reporting via GitHub:
 - Wrap logs in ```code``` blocks
-- [Redact sensitive info](https://wiki.churchcrm.io/Bug-Reporting-and-Diagnostics#privacy--security) (passwords, IPs, domains)
+- [Redact sensitive info](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics#privacy--security) (passwords, IPs, domains)
 - Include screenshots if visual
 
 ### 📚 Full Guide
@@ -30,7 +30,7 @@ See the complete guide for:
 - What information to collect
 - Privacy guidelines
 
-👉 **[Bug Reporting & Diagnostics Guide](https://wiki.churchcrm.io/Bug-Reporting-and-Diagnostics)**
+👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
 
 ---
 
