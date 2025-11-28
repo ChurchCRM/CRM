@@ -45,16 +45,23 @@ jobs:
             const issue = context.payload.issue || {};
             
             // Log the full issue payload for debugging
-            console.log('Issue payload:', JSON.stringify(issue, null, 2));
-            console.log('Issue type field:', issue.type);
+            console.log('Issue payload keys:', Object.keys(issue));
+            console.log('Issue body:', issue.body);
             console.log('Issue labels:', issue.labels);
             
-            // Detect issue type - try multiple possible sources
-            const issueType = (issue.type || '').toLowerCase();
+            // GitHub doesn't send 'type' in webhook payload, but we can detect from template used
+            // The template name is NOT directly available, so detect by checking issue body prefix or labels
+            const body = (issue.body || '').toLowerCase();
             const labels = (issue.labels || []).map(l => (l.name || l).toLowerCase());
             
-            const isBug = issueType === 'bug' || issueType === 'bug_report' || labels.includes('bug') || labels.includes('type:bug');
-            const isQuestion = issueType === 'question' || labels.includes('question') || labels.includes('type:question');
+            // Detect based on: body content pattern, labels, or title prefix
+            const isBug = body.includes('describe the issue') || 
+                         labels.some(l => l.includes('bug')) ||
+                         labels.some(l => l.includes('type:bug'));
+            
+            const isQuestion = body.includes('how can we help') || 
+                              labels.some(l => l.includes('question')) ||
+                              labels.some(l => l.includes('type:question'));
 
             // Choose template based on type detection; fall back to genericComment if no match
             let comment = '';
