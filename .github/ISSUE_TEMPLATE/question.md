@@ -2,7 +2,7 @@
 name: Question or Support
 about: A short, friendly question or help request
 title: 'Question: '
-labels: ''
+labels: 'question'
 assignees: ''
 
 ---
