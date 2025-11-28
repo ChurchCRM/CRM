@@ -628,17 +628,17 @@ $page = 1;
     } elseif ($sort === 'family') {
         // Sort by Family  Report
         foreach ($rsReport as $aRow) {
-            $fun_ID = $aRow['fun_ID'];
-            $fun_Name = $aRow['fun_Name'];
-            $fam_ID = $aRow['fam_ID'];
-            $fam_Name = $aRow['fam_Name'];
-            $fam_Address1 = $aRow['fam_Address1'];
-            $plg_depID = $aRow['plg_depID'];
-            $plg_amount = $aRow['plg_amount'];
-            $plg_method = $aRow['plg_method'];
-            $plg_comment = $aRow['plg_comment'];
-            $plg_CheckNo = $aRow['plg_CheckNo'];
-            $dep_Date = $aRow['dep_Date'];
+            $fun_ID = isset($aRow['fun_ID']) ? $aRow['fun_ID'] : null;
+            $fun_Name = isset($aRow['fun_Name']) ? $aRow['fun_Name'] : null;
+            $fam_ID = isset($aRow['fam_ID']) ? $aRow['fam_ID'] : null;
+            $fam_Name = isset($aRow['fam_Name']) ? $aRow['fam_Name'] : null;
+            $fam_Address1 = isset($aRow['fam_Address1']) ? $aRow['fam_Address1'] : null;
+            $plg_depID = isset($aRow['plg_depID']) ? $aRow['plg_depID'] : null;
+            $plg_amount = isset($aRow['plg_amount']) ? $aRow['plg_amount'] : null;
+            $plg_method = isset($aRow['plg_method']) ? $aRow['plg_method'] : null;
+            $plg_comment = isset($aRow['plg_comment']) ? $aRow['plg_comment'] : null;
+            $plg_CheckNo = isset($aRow['plg_CheckNo']) ? $aRow['plg_CheckNo'] : null;
+            $dep_Date = isset($aRow['dep_Date']) ? $aRow['dep_Date'] : null;
             
             if (!$fun_ID) {
                 $fun_ID = -1;
