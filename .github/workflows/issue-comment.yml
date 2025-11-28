@@ -22,9 +22,10 @@ jobs:
             const path = require('path');
             const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
 
-            // Read template files from the repository
+            // Read template files from the repository (bug, question, generic)
             let bugComment = '';
             let questionComment = '';
+            let genericComment = '';
             try {
               bugComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/bug.md'), 'utf8');
             } catch (e) {
@@ -35,15 +36,27 @@ jobs:
             } catch (e) {
               console.log('Could not read question.md:', e.message);
             }
+            try {
+              genericComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/generic.md'), 'utf8');
+            } catch (e) {
+              console.log('Could not read generic.md:', e.message);
+            }
 
-            const labels = context.payload.issue.labels.map(l => l.name);
+            const issue = context.payload.issue || {};
+            const labels = (issue.labels || []).map(l => l.name || l);
+
+            // Detect issue type from labels (applied via markdown template frontmatter)
             const isBug = labels.includes('bug');
+            const isQuestion = labels.includes('question');
 
+            // Choose template based on labels; fall back to genericComment if no match
             let comment = '';
             if (isBug && bugComment) {
               comment = bugComment;
-            } else if (labels.includes('question') && questionComment) {
+            } else if (isQuestion && questionComment) {
               comment = questionComment;
+            } else if (genericComment) {
+              comment = genericComment;
             }
 
             if (comment) {
@@ -54,5 +67,5 @@ jobs:
                 body: comment
               });
             } else {
-              console.log('No comment template matched or templates missing.');
+              console.log('No comment template available to post.');
             }

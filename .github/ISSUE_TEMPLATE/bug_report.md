@@ -1,46 +1,33 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: A short, clear bug report — we'll help you triage it
 title: 'Bug: '
-labels: 'bug'
+type: bug
 assignees: ''
 
 ---
 
-## 🚨 Recommended: Report via ChurchCRM App
+## Quick, friendly bug report
 
-**For the best support experience, please report bugs directly from your ChurchCRM installation:**
+Thanks for helping us improve ChurchCRM. Clear details help us triage and fix bugs faster.
 
-1. Log into your ChurchCRM instance
-2. Go to **Support** → **Report an Issue** 
-3. This will automatically capture your system information and configuration
+Please share:
+- **What happened**: One or two sentences describing the problem
+- **Steps to reproduce**: How to trigger the issue (numbered steps help)
+- **What you expected**: What should have happened instead
 
-**Only use this GitHub template if:**
-- You cannot access your ChurchCRM installation
-- The issue prevents you from logging in
-- You're reporting a documentation or installation issue
+If you cannot use the in-app reporter, add environment details:
+- ChurchCRM version (check the page footer or debug section)
+- PHP / Database / Hosting (if relevant)
 
----
+If you're an admin and can access the app, the fastest way to collect debug info:
 
-## What happened?
-<!-- A clear and concise description of the bug -->
+**Admin → System Maintenance → System Logs** (or click the debug icon). Attach logs/screenshots if available — please redact private data.
 
-## Steps to reproduce
-<!-- Tell us how to trigger this bug -->
-1. Go to '...'
-2. Click on '...'
-3. See error
+**Screenshots help**: If you can capture a quick image, it speeds up our investigation.
 
-## What did you expect to happen?
-<!-- What should have happened instead? -->
+**Advanced users**: If this is a UI workflow reproducible in the browser, a Cypress Recorder capture (exported spec) helps us add tests faster.
 
-## Environment (if not using in-app reporting)
-- ChurchCRM version: [e.g. 5.4.3]
-- Browser: [e.g. Chrome, Firefox, Safari]
-- Device: [e.g. Desktop, Mobile, Tablet]
+👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
 
-## Screenshots or logs
-<!-- If you have any screenshots or error messages, paste them here -->
-
-## Additional context
-<!-- Any other information that might help us understand the issue -->
+Thank you for your report! 🙂
