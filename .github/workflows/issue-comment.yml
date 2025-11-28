@@ -43,15 +43,17 @@ jobs:
             }
 
             const issue = context.payload.issue || {};
+            const labels = (issue.labels || []).map(l => l.name || l);
 
-            // Detect new GitHub issue "type" (defensive: check multiple possible keys)
-            const issueType = issue.type || issue.issueType || issue.issue_type?.name || null;
+            // Detect issue type from labels (applied via markdown template frontmatter)
+            const isBug = labels.includes('bug');
+            const isQuestion = labels.includes('question');
 
-            // Choose template strictly by issue type; fall back to genericComment if no match
+            // Choose template based on labels; fall back to genericComment if no match
             let comment = '';
-            if (issueType === 'bug' && bugComment) {
+            if (isBug && bugComment) {
               comment = bugComment;
-            } else if (issueType === 'question' && questionComment) {
+            } else if (isQuestion && questionComment) {
               comment = questionComment;
             } else if (genericComment) {
               comment = genericComment;
