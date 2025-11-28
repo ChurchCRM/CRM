@@ -25,4 +25,6 @@ We couldn't auto-detect the issue type. To help us route your issue correctly, p
 
 👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
 
-Thank you! 🙏
+---
+
+**Note:** ChurchCRM is maintained by volunteers. While we try to respond to every issue quickly, there may be a delay in our response depending on availability. Thank you for your patience! 🙏

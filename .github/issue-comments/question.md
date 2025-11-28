@@ -18,4 +18,6 @@ Attach logs or screenshots if helpful. Please redact any private information.
 
 👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
 
-Short notes work great — thanks for asking! 🙂
+---
+
+**Note:** ChurchCRM is maintained by volunteers. While we try to respond to every question quickly, there may be a delay in our response depending on availability. Thanks for asking! 🙂

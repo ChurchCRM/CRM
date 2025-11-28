@@ -22,10 +22,11 @@ jobs:
             const path = require('path');
             const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
 
-            // Read template files from the repository (bug, question, generic)
+            // Read template files from the repository (bug, question, generic, system-info)
             let bugComment = '';
             let questionComment = '';
             let genericComment = '';
+            let systemInfoComment = '';
             try {
               bugComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/bug.md'), 'utf8');
             } catch (e) {
@@ -41,32 +42,30 @@ jobs:
             } catch (e) {
               console.log('Could not read generic.md:', e.message);
             }
+            try {
+              systemInfoComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/system-info.md'), 'utf8');
+            } catch (e) {
+              console.log('Could not read system-info.md:', e.message);
+            }
 
             const issue = context.payload.issue || {};
-            
-            // Log the full issue payload for debugging
-            console.log('Issue payload keys:', Object.keys(issue));
-            console.log('Issue body:', issue.body);
-            console.log('Issue labels:', issue.labels);
-            
-            // GitHub doesn't send 'type' in webhook payload, but we can detect from template used
-            // The template name is NOT directly available, so detect by checking issue body prefix or labels
             const body = (issue.body || '').toLowerCase();
-            const labels = (issue.labels || []).map(l => (l.name || l).toLowerCase());
             
-            // Detect based on: body content pattern, labels, or title prefix
-            const isBug = body.includes('describe the issue') || 
-                         labels.some(l => l.includes('bug')) ||
-                         labels.some(l => l.includes('type:bug'));
+            // Check if system info was collected (in-app reporter includes "Collected Value Title")
+            const hasSystemInfo = body.includes('collected value title');
             
-            const isQuestion = body.includes('how can we help') || 
-                              labels.some(l => l.includes('question')) ||
-                              labels.some(l => l.includes('type:question'));
+            // Detect issue type from body content patterns
+            const isBug = body.includes('describe the issue');
+            const isQuestion = body.includes('how can we help');
+            
+            console.log('hasSystemInfo:', hasSystemInfo, 'isBug:', isBug, 'isQuestion:', isQuestion);
 
-            // Choose template based on type detection; fall back to genericComment if no match
+            // Choose template based on priority: system-info > specific type > generic
             let comment = '';
-            console.log('isBug:', isBug, 'isQuestion:', isQuestion);
-            if (isBug && bugComment) {
+            if (hasSystemInfo && systemInfoComment) {
+              console.log('Posting system-info comment');
+              comment = systemInfoComment;
+            } else if (isBug && bugComment) {
               console.log('Posting bug comment');
               comment = bugComment;
             } else if (isQuestion && questionComment) {

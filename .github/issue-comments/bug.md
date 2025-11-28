@@ -19,4 +19,6 @@ If you used the in-app reporter, we likely already have system details.
 
 👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
 
-Thank you for helping! ❤️
+---
+
+**Note:** ChurchCRM is maintained by volunteers. While we try to respond to every issue quickly, there may be a delay in our response depending on availability. Thank you for your patience! ❤️
