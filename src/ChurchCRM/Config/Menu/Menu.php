@@ -19,9 +19,6 @@ class Menu
     public static function init(): void
     {
         self::$menuItems = self::buildMenuItems();
-        /*if (!empty($menuItems)) {
-            self::scrapeDBMenuItems($menuItems);
-        }*/
     }
 
     public static function getMenu(): ?array
@@ -31,25 +28,31 @@ class Menu
 
     private static function buildMenuItems(): array
     {
-        return [
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $isAdmin = $currentUser->isAdmin();
+        $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-tachometer-alt'),
             'Calendar'     => self::getCalendarMenu(),
-            'People'       => self::getPeopleMenu(),
-            'Groups'       => self::getGroupMenu(),
+            'People'       => self::getPeopleMenu($isAdmin, $currentUser->isAddRecordsEnabled()),
+            'Groups'       => self::getGroupMenu($isAdmin),
             'SundaySchool' => self::getSundaySchoolMenu(),
             'Email'        => new MenuItem(gettext('Email'), 'v2/email/dashboard', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope'),
-            'Events'       => self::getEventsMenu(),
-            'Deposits'     => self::getDepositsMenu(),
+            'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled()),
+            'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu(),
             'Reports'      => self::getReportsMenu(),
-            'Admin'        => self::getAdminMenu(),
-            'Custom'       => self::getCustomMenu(),
+            'Custom'       => self::getCustomMenu()
         ];
+        if ($isAdmin) {
+            $menus['Admin'] = self::getAdminMenu($isAdmin);
+        }
+        return $menus;
+
     }
 
     private static function getCalendarMenu(): MenuItem
     {
-        $calendarMenu = new MenuItem(gettext('Calendar'), 'v2/calendar', SystemConfig::getBooleanValue('bEnabledCalendar'), 'fa-calendar');
+        $calendarMenu = new MenuItem(gettext('Calendar'), 'v2/calendar', true, 'fa-calendar');
         // Anniversaries calendar (ID 1) - black background
         $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark', 0, gettext("Today's Wedding Anniversaries")));
         // Birthdays calendar (ID 0) - blue background  
@@ -60,32 +63,35 @@ class Menu
         return $calendarMenu;
     }
 
-    private static function getPeopleMenu(): MenuItem
+    private static function getPeopleMenu(bool $isAdmin, bool $isAddRecordsEnabled): MenuItem
     {
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-user');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'PeopleDashboard.php'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Person'), 'PersonEditor.php', AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Person'), 'PersonEditor.php', $isAddRecordsEnabled));
         $peopleMenu->addSubMenu(new MenuItem(gettext('View Active People'), 'v2/people'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('View Inactive People'), 'v2/people?familyActiveStatus=inactive'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('View All People'), 'v2/people?familyActiveStatus=all'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', $isAddRecordsEnabled));
         $peopleMenu->addSubMenu(new MenuItem(gettext('View Active Families'), 'v2/family'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('View Inactive Families'), 'v2/family?mode=inactive'));
-        $adminMenu = new MenuItem(gettext('Admin'), '', AuthenticationManager::getCurrentUser()->isAdmin());
-        $adminMenu->addSubMenu(new MenuItem(gettext('Classifications Manager'), 'OptionManager.php?mode=classes', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'OptionManager.php?mode=famroles', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), 'PropertyList.php?Type=f', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext('Family Custom Fields'), 'FamilyCustomFieldsEditor.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext('People Properties'), 'PropertyList.php?Type=p', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', AuthenticationManager::getCurrentUser()->isAdmin()));
 
-        $peopleMenu->addSubMenu($adminMenu);
+        if ($isAdmin) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Classifications Manager'), 'OptionManager.php?mode=classes', $isAdmin));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'OptionManager.php?mode=famroles', $isAdmin));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), 'PropertyList.php?Type=f', $isAdmin));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Family Custom Fields'), 'FamilyCustomFieldsEditor.php', $isAdmin));
+            $adminMenu->addSubMenu(new MenuItem(gettext('People Properties'), 'PropertyList.php?Type=p', $isAdmin));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin));
+    
+            $peopleMenu->addSubMenu($adminMenu);
+        }
 
         return $peopleMenu;
     }
 
-    private static function getGroupMenu(): MenuItem
+    private static function getGroupMenu(bool $isAdmin): MenuItem
     {
         $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
         $groupMenu->addSubMenu(new MenuItem(gettext('List Groups'), 'GroupList.php'));
@@ -107,11 +113,13 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
-        $adminMenu = new MenuItem(gettext('Admin'), '', AuthenticationManager::getCurrentUser()->isAdmin());
-        $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'OptionManager.php?mode=grptypes', AuthenticationManager::getCurrentUser()->isAdmin()));
+        if ($isAdmin) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isAdmin));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'OptionManager.php?mode=grptypes', $isAdmin));
 
-        $groupMenu->addSubMenu($adminMenu);
+            $groupMenu->addSubMenu($adminMenu);
+        }
 
         return $groupMenu;
     }
@@ -129,31 +137,32 @@ class Menu
         return $sundaySchoolMenu;
     }
 
-    private static function getEventsMenu(): MenuItem
+    private static function getEventsMenu(bool $isAddEventEnabled): MenuItem
     {
         $eventsMenu = new MenuItem(gettext('Events'), '', SystemConfig::getBooleanValue('bEnabledEvents'), 'fa-ticket-alt');
-        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'EventEditor.php', AuthenticationManager::getCurrentUser()->isAddEventEnabled()));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'EventEditor.php', $isAddEventEnabled));
         $eventsMenu->addSubMenu(new MenuItem(gettext('List Church Events'), 'ListEvents.php'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('List Event Types'), 'EventNames.php', AuthenticationManager::getCurrentUser()->isAddEventEnabled()));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('List Event Types'), 'EventNames.php', $isAddEventEnabled));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'Checkin.php'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Event Attendance Reports'), 'EventAttendance.php'));
 
         return $eventsMenu;
     }
 
-    private static function getDepositsMenu(): MenuItem
+    private static function getDepositsMenu(bool $isAdmin, bool $isFinanceEnabled): MenuItem
     {
-        $depositsMenu = new MenuItem(gettext('Deposit'), '', SystemConfig::getBooleanValue('bEnabledFinance') && AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'fa-cash-register');
-        $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'FindDepositSlip.php', AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
-        $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'FinancialReports.php', AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
-        $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], AuthenticationManager::getCurrentUser()->isFinanceEnabled()));
+        $depositsMenu = new MenuItem(gettext('Deposit'), '', SystemConfig::getBooleanValue('bEnabledFinance') && $isFinanceEnabled, 'fa-cash-register');
+        $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'FindDepositSlip.php', $isFinanceEnabled));
+        $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'FinancialReports.php', $isFinanceEnabled));
+        $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], $isFinanceEnabled));
 
-        $adminMenu = new MenuItem(gettext('Admin'), '', AuthenticationManager::getCurrentUser()->isAdmin());
-        $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'DonationFundEditor.php', AuthenticationManager::getCurrentUser()->isAdmin()));
+        if ($isAdmin) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isAdmin));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'DonationFundEditor.php', $isAdmin));
 
-        $depositsMenu->addSubMenu($adminMenu);
-
+            $depositsMenu->addSubMenu($adminMenu);
+        }
         return $depositsMenu;
     }
 
@@ -204,19 +213,17 @@ class Menu
         return null;
     }
 
-    private static function getAdminMenu(): MenuItem
+    private static function getAdminMenu(bool $isAdmin): MenuItem
     {
         $menu = new MenuItem(gettext('Admin'), '', true, 'fa-tools');
-        $menu->addSubMenu(new MenuItem(gettext('Edit General Settings'), 'SystemSettings.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext('System Users'), 'UserList.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext('Property Types'), 'PropertyTypeList.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext('System Maintenance'), 'admin/system/maintenance', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', AuthenticationManager::getCurrentUser()->isCSVExport()));
-        $menu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'KioskManager.php', AuthenticationManager::getCurrentUser()->isAdmin()));
-        
-        $menu->addSubMenu(new MenuItem(gettext('Custom Menus'), 'v2/admin/menus', AuthenticationManager::getCurrentUser()->isAdmin()));
-
+        $menu->addSubMenu(new MenuItem(gettext('Edit General Settings'), 'SystemSettings.php', $isAdmin));
+        $menu->addSubMenu(new MenuItem(gettext('System Users'), 'UserList.php', $isAdmin));
+        $menu->addSubMenu(new MenuItem(gettext('Property Types'), 'PropertyTypeList.php', $isAdmin));
+        $menu->addSubMenu(new MenuItem(gettext('System Maintenance'), 'admin/system/maintenance', $isAdmin));
+        $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', $isAdmin));
+        $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', $isAdmin));
+        $menu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'KioskManager.php', $isAdmin));
+        $menu->addSubMenu(new MenuItem(gettext('Custom Menus'), 'v2/admin/menus', $isAdmin));
         return $menu;
     }
 
