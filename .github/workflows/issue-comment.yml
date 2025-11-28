@@ -44,18 +44,29 @@ jobs:
 
             const issue = context.payload.issue || {};
             
-            // Detect issue type from GitHub's native type field (set via template frontmatter)
-            const issueType = issue.type || '';
-            const isBug = issueType === 'bug';
-            const isQuestion = issueType === 'question';
+            // Log the full issue payload for debugging
+            console.log('Issue payload:', JSON.stringify(issue, null, 2));
+            console.log('Issue type field:', issue.type);
+            console.log('Issue labels:', issue.labels);
+            
+            // Detect issue type - try multiple possible sources
+            const issueType = (issue.type || '').toLowerCase();
+            const labels = (issue.labels || []).map(l => (l.name || l).toLowerCase());
+            
+            const isBug = issueType === 'bug' || issueType === 'bug_report' || labels.includes('bug') || labels.includes('type:bug');
+            const isQuestion = issueType === 'question' || labels.includes('question') || labels.includes('type:question');
 
-            // Choose template based on labels; fall back to genericComment if no match
+            // Choose template based on type detection; fall back to genericComment if no match
             let comment = '';
+            console.log('isBug:', isBug, 'isQuestion:', isQuestion);
             if (isBug && bugComment) {
+              console.log('Posting bug comment');
               comment = bugComment;
             } else if (isQuestion && questionComment) {
+              console.log('Posting question comment');
               comment = questionComment;
             } else if (genericComment) {
+              console.log('Posting generic comment');
               comment = genericComment;
             }
 
