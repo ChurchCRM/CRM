@@ -45,7 +45,7 @@ jobs:
             const issue = context.payload.issue || {};
 
             // Detect new GitHub issue "type" (defensive: check multiple possible keys)
-            const issueType = issue.type || issue.issue_type || issue.issueType || (issue.issue_type && issue.issue_type.name) || null;
+            const issueType = issue.type || issue.issueType || issue.issue_type?.name || null;
 
             // Choose template strictly by issue type; fall back to genericComment if no match
             let comment = '';
