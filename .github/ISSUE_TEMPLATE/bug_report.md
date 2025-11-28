@@ -2,7 +2,7 @@
 name: Bug report
 about: A short, clear bug report — we'll help you triage it
 title: 'Bug: '
-labels: ''
+labels: 'bug'
 assignees: ''
 
 ---
