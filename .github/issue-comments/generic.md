@@ -1,22 +1,28 @@
 ## Thanks for opening an issue!
 
-We couldn't auto-detect the issue type. This repo uses GitHub's issue type/template feature — please:
+We couldn't auto-detect the issue type. To help us route your issue correctly, please do one of the following:
 
-**Edit this issue and set the type to "bug" or "question"** so we can route it correctly.
+1. **Add a label**: Add the `Type:Bug` or `Type:Question` label to this issue (if you have permission)
+2. **Re-create with a template**: Close this issue and [create a new one](../../issues/new/choose) using the Bug Report or Question template
+3. **Just tell us**: Reply below with whether this is a bug report or a question, and provide the relevant details
+
+---
 
 **For bug reports**, please include:
 - A short summary of the problem
 - Steps to reproduce (if you have them)
 - Any relevant logs or screenshots (redact private data)
 
+**For questions**, please include:
+- What you're trying to do
+- What you've already tried
+
 **To collect system debug info**, if you're an admin:
 
 👉 **Admin → System Maintenance → System Logs** (or click the debug icon)
-
-Attach logs/screenshots when you set the issue type.
 
 **Advanced users**: If the issue is reproducible in the UI, the Cypress Recorder helps. Capture the steps and attach an exported spec.
 
 👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
 
-Set the issue type and we'll follow up with questions. Thank you! 🙏
+Thank you! 🙏
