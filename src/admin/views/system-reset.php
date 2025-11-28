@@ -35,11 +35,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 buttons: {
                     confirm: {
                         label: i18next.t('OK'),
-                        className: 'btn-success'
+                        className: 'btn-danger'
                     },
                     cancel: {
                         label: i18next.t('Cancel'),
-                        className: 'btn-danger'
+                        className: 'btn-secondary'
                     }
                 },
                 callback: function (result) {
@@ -56,6 +56,16 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t("Warning") + "!!!",
                     message: i18next.t("This will reset the system data and will restart the system as a new install."),
                     size: 'small',
+                    buttons: {
+                        confirm: {
+                            label: i18next.t('OK'),
+                            className: 'btn-danger'
+                        },
+                        cancel: {
+                            label: i18next.t('Cancel'),
+                            className: 'btn-secondary'
+                        }
+                    },
                     callback: function (result) {
                         if (result) {
                             $.ajax({
