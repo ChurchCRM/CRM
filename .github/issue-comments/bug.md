@@ -1,37 +1,22 @@
-## 🔍 Help Us Debug This Issue
+## Thanks for the bug report!
 
-Thank you for reporting this bug! To help us resolve it faster, please:
+To help us investigate quickly, please provide:
 
-### 1️⃣ **Collect Diagnostic Information**
-See our comprehensive guide: **[Bug Reporting & Diagnostics](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
+- **ChurchCRM version**: Check the page footer or debug section
+- **Problem summary**: One sentence describing what went wrong
+- **Steps to reproduce**: How to trigger the issue (numbered steps help)
+- **Logs/screenshots**: Attach if available (please redact private data)
 
-**Quick checklist:**
-- [ ] Include your **ChurchCRM version** (Admin → Dashboard or About)
-- [ ] Include your **environment** (PHP, Database, hosting type)
-- [ ] Attach **logs** from Admin → System Logs (filter by ERROR/CRITICAL)
-- [ ] Describe **steps to reproduce** the issue
+**Fastest way to collect debug info** — If you're an admin:
 
-### 2️⃣ **Best Way to Report**
-If you have access to your ChurchCRM installation:
-1. Go to **Support** → **Report an Issue** in your app
-2. This automatically captures your system information and logs
-3. Much faster for us to diagnose!
+👉 **Admin → System Maintenance → System Logs** (or click the debug icon)
 
-### 3️⃣ **Format Your Report**
-If reporting via GitHub:
-- Wrap logs in ```code``` blocks
-- [Redact sensitive info](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics#privacy--security) (passwords, IPs, domains)
-- Include screenshots if visual
+If you used the in-app reporter, we likely already have system details.
 
-### 📚 Full Guide
-See the complete guide for:
-- How to access logs in cPanel
-- SSH commands for self-hosted
-- What information to collect
-- Privacy guidelines
+**Screenshots speed up triage**: A quick image helps us understand the issue faster.
+
+**Advanced users**: If this is a UI workflow reproducible in the browser, a Cypress Recorder capture (exported spec) helps us add a test quickly.
 
 👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
 
----
-
-Thank you for helping make ChurchCRM better! 🙏
+Thank you for helping! ❤️
