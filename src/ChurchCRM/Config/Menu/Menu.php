@@ -145,8 +145,8 @@ class Menu
 
         if ($isAdmin) {
             $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isAdmin));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'OptionManager.php?mode=grptypes', $isAdmin));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isAdmin, 'fa-th-list'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'OptionManager.php?mode=grptypes', $isAdmin, 'fa-tags'));
 
             $groupMenu->addSubMenu($adminMenu);
         }
