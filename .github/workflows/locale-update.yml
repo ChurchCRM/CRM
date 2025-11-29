@@ -125,4 +125,4 @@ jobs:
           - Upload to POEditor for translation if needed" \
             --base ${{ github.ref_name }} \
             --head "$BRANCH_NAME" \
-            --label "i18n"
+            --label "Localization"
