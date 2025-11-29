@@ -380,7 +380,8 @@ class AppIntegrityService
         $orphanedFiles = [];
 
         // Directories to skip entirely (not scanned at all)
-        $skipDirs = ['logs', 'Images', 'Photos', 'private', 'temp', 'Include', 'admin'];
+        // Note: Include/Config.php is handled by isExcludedFromOrphanDetection()
+        $skipDirs = ['logs', 'temp' ];
 
         try {
             $items = @scandir($currentPath);
