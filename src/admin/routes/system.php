@@ -160,6 +160,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         // Get version information
         $currentVersion = VersionUtils::getInstalledVersion();
         $availableVersion = null;
+        $latestGitHubVersion = null;
         $isUpdateAvailable = false;
         
         // Check if update information is available in session
@@ -168,6 +169,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             if (isset($_SESSION['systemUpdateVersion']) && $_SESSION['systemUpdateVersion'] !== null) {
                 $availableVersion = $_SESSION['systemUpdateVersion']->__toString();
             }
+        }
+        
+        // Get the latest GitHub version (always show this, even if no update available)
+        if (isset($_SESSION['systemLatestVersion']) && $_SESSION['systemLatestVersion'] !== null) {
+            $latestGitHubVersion = $_SESSION['systemLatestVersion']->__toString();
         }
         
         // Get pre-release upgrade setting info
@@ -185,6 +191,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'hasOrphanedFiles'      => $hasOrphanedFiles,
             'currentVersion'        => $currentVersion,
             'availableVersion'      => $availableVersion,
+            'latestGitHubVersion'   => $latestGitHubVersion,
             'isUpdateAvailable'     => $isUpdateAvailable,
             'prereleaseConfig'      => $prereleaseConfig,
             'allowPrereleaseUpgrade' => $allowPrereleaseUpgrade,
