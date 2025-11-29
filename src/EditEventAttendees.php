@@ -109,9 +109,9 @@ if ($attendees->count() != 0) {
           <input type="hidden" name="DelPerID" value="<?= $person->getPerId() ?>">
           <input type="hidden" name="DelPerEventID" value="<?= $EventID ?>">
           <input type="hidden" name="EID" value="<?= $EventID ?>">
-          <input type="hidden" name="EName" value="<?= $EvtName ?>">
-          <input type="hidden" name="EDesc" value="<?= $EvtDesc ?>">
-          <input type="hidden" name="EDate" value="<?= $EvtDate ?>">
+          <input type="hidden" name="EName" value="<?= htmlspecialchars($event->getTitle()) ?>">
+          <input type="hidden" name="EDesc" value="<?= htmlspecialchars($event->getDesc()) ?>">
+          <input type="hidden" name="EDate" value="<?= $event->getStart()->format('Y-m-d H:i') ?>">
           <input type="submit" name="Action" value="<?= gettext('Delete') ?>" class="btn btn-danger" onClick="return confirm('<?= gettext('Are you sure you want to DELETE this person from Event ID: ') . $EventID ?>')">
       </form>
      </td>
