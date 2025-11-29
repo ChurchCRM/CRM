@@ -1,18 +1,42 @@
 # Security Policy
 
-## Reporting a Vulnerability
+## Reporting a Vulnerability vs. Filing a Bug
 
-At ChurchCRM, we take the security of our software seriously. If you discover any security issues, we appreciate your cooperation in responsibly disclosing the information to us.
+### When to Use a Security Advisory (Private Disclosure)
 
-**Please do not open a public issue.** Instead, use GitHub's [Security Advisory](https://github.com/ChurchCRM/CRM/security/advisories) feature to privately report vulnerabilities.
+Use GitHub's [Security Advisory](https://github.com/ChurchCRM/CRM/security/advisories) feature for issues that could be exploited by attackers, including:
 
-When reporting, include:
-- Description of the vulnerability
+- **Cross-Site Scripting (XSS)** – Injection of malicious scripts
+- **SQL Injection** – Unauthorized database access
+- **Authentication/Authorization Bypass** – Accessing data without proper permissions
+- **Session Hijacking** – Stealing or manipulating user sessions
+- **Remote Code Execution** – Running arbitrary code on the server
+- **Sensitive Data Exposure** – Leaking passwords, personal information, or financial data
+- **Cross-Site Request Forgery (CSRF)** – Forcing users to perform unintended actions
+
+**Please do not open a public issue for security vulnerabilities.** Public disclosure gives attackers time to exploit the issue before a fix is available.
+
+When reporting a security vulnerability, include:
+- Description of the vulnerability and its potential impact
 - Steps to reproduce the vulnerability
 - Affected versions
 - Any relevant environment and configuration information
+- Proof of concept (if available)
 
 We will acknowledge receipt within 48 hours and provide updates on the fix timeline.
+
+### When to File a Regular Bug Report
+
+Use [GitHub Issues](https://github.com/ChurchCRM/CRM/issues) for general bugs that do not pose a security risk, such as:
+
+- UI/display issues or broken layouts
+- Features not working as expected
+- Error messages or crashes (without security implications)
+- Performance problems
+- Documentation errors
+- Installation or upgrade issues
+
+If you're unsure whether an issue is security-related, err on the side of caution and use the Security Advisory.
 
 ## Scope
 
