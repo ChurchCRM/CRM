@@ -24,11 +24,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <strong><?= gettext('Available Version:') ?></strong>
-                            <?php if ($isUpdateAvailable && $availableVersion !== null): ?>
-                                <span class="badge badge-success ml-2" style="font-size: 1em;"><?= htmlspecialchars($availableVersion) ?></span>
+                            <strong><?= gettext('Latest GitHub Version:') ?></strong>
+                            <?php if ($latestGitHubVersion !== null): ?>
+                                <?php if ($isUpdateAvailable): ?>
+                                    <span class="badge badge-success ml-2" style="font-size: 1em;"><?= htmlspecialchars($latestGitHubVersion) ?></span>
+                                    <small class="text-success ml-1"><?= gettext('Update Available!') ?></small>
+                                <?php else: ?>
+                                    <span class="badge badge-info ml-2" style="font-size: 1em;"><?= htmlspecialchars($latestGitHubVersion) ?></span>
+                                <?php endif; ?>
                             <?php else: ?>
-                                <span class="badge badge-secondary ml-2" style="font-size: 1em;"><?= gettext('Up to date') ?></span>
+                                <span class="badge badge-secondary ml-2" style="font-size: 1em;"><?= gettext('Unknown') ?></span>
+                                <small class="text-muted ml-1"><?= gettext('(refresh from GitHub)') ?></small>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -69,6 +75,113 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <strong><?= gettext('System Up to Date') ?></strong>
                         <?= gettext('Your ChurchCRM installation is running the latest version.') ?>
                     </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- File Integrity Check Card -->
+        <?php
+        $failingFiles = $integrityCheckData['files'] ?? [];
+        $hasIntegrityIssues = count($failingFiles) > 0;
+        $integrityPassed = !$hasIntegrityIssues;
+        ?>
+        <div class="card mb-3">
+            <div class="card-header <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?> text-white">
+                <h3 class="card-title mb-0">
+                    <i class="fa fa-shield-alt mr-2"></i><?= gettext('File Integrity Check') ?>
+                    <?php if ($hasIntegrityIssues): ?>
+                        <span class="badge badge-light ml-2"><?= count($failingFiles) ?></span>
+                    <?php endif; ?>
+                </h3>
+            </div>
+            <div class="card-body">
+                <?php if ($integrityPassed): ?>
+                    <div class="text-center py-3">
+                        <i class="fa fa-check-circle text-success" style="font-size: 3rem;"></i>
+                        <h5 class="mt-3"><?= gettext('All Files Verified') ?></h5>
+                        <p class="text-muted mb-0"><?= gettext('All system files match their expected signatures.') ?></p>
+                    </div>
+                <?php else: ?>
+                    <div class="alert alert-warning mb-3">
+                        <i class="fa fa-exclamation-triangle mr-2"></i>
+                        <strong><?= gettext('File Integrity Issues Detected') ?></strong>
+                        <p class="mb-0 mt-2"><?= sprintf(gettext('%d files have been modified or are missing. Use Force Re-install to restore official versions.'), count($failingFiles)) ?></p>
+                    </div>
+                    
+                    <?php
+                    // Group files by status
+                    $missingFiles = [];
+                    $modifiedFiles = [];
+                    foreach ($failingFiles as $file) {
+                        if (is_object($file) && isset($file->status) && $file->status === 'File Missing') {
+                            $missingFiles[] = $file;
+                        } else {
+                            $modifiedFiles[] = $file;
+                        }
+                    }
+                    ?>
+                    
+                    <?php if (count($modifiedFiles) > 0): ?>
+                        <h6 class="mb-2">
+                            <a href="#collapseModifiedFiles" data-toggle="collapse" class="text-warning text-decoration-none">
+                                <i class="fa fa-edit mr-2"></i><?= gettext('Modified Files') ?> (<?= count($modifiedFiles) ?>)
+                                <i class="fa fa-chevron-down ml-2"></i>
+                            </a>
+                        </h6>
+                        <div id="collapseModifiedFiles" class="collapse mb-3">
+                            <div class="table-responsive">
+                                <table class="table table-sm table-striped mb-0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th><?= gettext('File Name') ?></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($modifiedFiles as $file): ?>
+                                            <tr>
+                                                <td><code><?= htmlspecialchars(is_object($file) ? $file->filename : $file) ?></code></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if (count($missingFiles) > 0): ?>
+                        <h6 class="mb-2">
+                            <a href="#collapseMissingFilesCard" data-toggle="collapse" class="text-danger text-decoration-none">
+                                <i class="fa fa-times-circle mr-2"></i><?= gettext('Missing Files') ?> (<?= count($missingFiles) ?>)
+                                <i class="fa fa-chevron-down ml-2"></i>
+                            </a>
+                        </h6>
+                        <div id="collapseMissingFilesCard" class="collapse mb-3">
+                            <div class="table-responsive">
+                                <table class="table table-sm table-striped mb-0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th><?= gettext('File Name') ?></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($missingFiles as $file): ?>
+                                            <tr>
+                                                <td><code class="text-danger"><?= htmlspecialchars(is_object($file) ? $file->filename : $file) ?></code></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <hr>
+                    <button type="button" class="btn btn-warning" id="forceReinstall">
+                        <i class="fa fa-redo mr-2"></i><?= gettext('Force Re-install') ?>
+                    </button>
+                    <small class="form-text text-muted d-inline-block ml-2">
+                        <?= gettext('Re-download and re-apply the current version to restore all files to their official state') ?>
+                    </small>
                 <?php endif; ?>
             </div>
         </div>
@@ -254,6 +367,56 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?php endif; ?>
                             <?php endif; ?>
 
+                            <?php if ($hasOrphanedFiles && isset($integrityCheckData['orphanedFiles']) && count($integrityCheckData['orphanedFiles']) > 0): ?>
+                                <div class="alert alert-danger mt-3">
+                                    <h5 class="alert-heading">
+                                        <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Security Warning: Orphaned Files Detected') ?>
+                                    </h5>
+                                    <hr>
+                                    <p><?= gettext("The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks.") ?></p>
+                                    <p><strong><?= gettext("Recommendation: Review and delete these files before or after the upgrade.") ?></strong></p>
+                                </div>
+                                
+                                <div class="card mt-3">
+                                    <div class="card-header bg-danger text-white" id="headingOrphanedFiles">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link text-white" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseOrphanedFiles" aria-expanded="false" 
+                                                    aria-controls="collapseOrphanedFiles">
+                                                <i class="fa fa-trash mr-2"></i><?= gettext('Orphaned Files') ?> (<?= count($integrityCheckData['orphanedFiles']) ?>)
+                                                <i class="fa fa-chevron-down float-right ml-2"></i>
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseOrphanedFiles" class="collapse" aria-labelledby="headingOrphanedFiles">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-sm table-bordered mb-0">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th><?= gettext('File Path') ?></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach ($integrityCheckData['orphanedFiles'] as $orphanedFile): ?>
+                                                            <tr>
+                                                                <td><code><?= htmlspecialchars($orphanedFile) ?></code></td>
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="alert alert-warning mt-3 mb-0">
+                                                <small>
+                                                    <i class="fa fa-info-circle mr-1"></i>
+                                                    <?= gettext('These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities.') ?>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
                             <?php if (!$hasWarnings): ?>
                                 <div class="alert alert-success">
                                     <i class="fa fa-check-circle mr-2"></i>
@@ -343,6 +506,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <i class="fa fa-check-circle text-success" style="font-size: 5rem;"></i>
                                 <h2 class="mt-4"><?= gettext('Upgrade Complete!') ?></h2>
                                 <p class="lead text-muted"><?= gettext('Your ChurchCRM installation has been successfully upgraded.') ?></p>
+                                <div class="alert alert-info mt-3 text-left" style="max-width: 600px; margin: 0 auto;">
+                                    <h5><i class="fa fa-info-circle mr-2"></i><?= gettext('Upgrade Summary') ?></h5>
+                                    <ul class="mb-0">
+                                        <li><?= gettext('Application files updated to latest version') ?></li>
+                                        <li><?= gettext('Database schema upgraded automatically') ?></li>
+                                        <li><?= gettext('Orphaned files from previous versions cleaned up') ?></li>
+                                    </ul>
+                                </div>
                                 <div class="mt-5">
                                     <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-primary btn-lg">
                                         <i class="fa fa-home mr-2"></i><?= gettext('Return to Dashboard') ?>

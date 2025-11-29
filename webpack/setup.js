@@ -68,6 +68,12 @@ window.Stepper = Stepper;
 			status: "#integrity-status",
 			collapse: "#integrity-collapse",
 		},
+		orphaned: {
+			table: "#orphaned-checks",
+			status: "#orphaned-status",
+			collapse: "#orphaned-collapse",
+			section: "#orphaned-files-section",
+		},
 	};
 
 	let setupStepper;
@@ -210,35 +216,80 @@ window.Stepper = Stepper;
 	}
 
        function appendIntegrityDetails(tableSelector, baseRowId, payload) {
-	       const detailRowId = `${baseRowId}-details`;
-	       $(`#${detailRowId}`).remove();
+              const detailRowId = `${baseRowId}-details`;
+              $(`#${detailRowId}`).remove();
 
-	       if (!payload || !Array.isArray(payload.files) || payload.files.length === 0) {
-		       return;
-	       }
+              if (!payload || !Array.isArray(payload.files) || payload.files.length === 0) {
+                      return;
+              }
 
-	       const items = payload.files
-		       .filter((file) => typeof file === "string" && file.trim().length > 0)
-		       .map((file) => file.trim());
+              const items = payload.files
+                      .filter((file) => typeof file === "string" && file.trim().length > 0)
+                      .map((file) => file.trim());
 
-	       if (items.length === 0) {
-		       return;
-	       }
+              if (items.length === 0) {
+                      return;
+              }
 
-	       const detailRow = $("<tr>", { id: detailRowId });
-	       const detailCell = $("<td>", { colspan: 2 });
-	       const heading = $("<div>")
-		       .addClass("font-weight-bold mb-2")
-		       .text(i18next.t("Files with issues"));
-	       const list = $("<ul>").addClass("mb-0 pl-3");
+              const detailRow = $("<tr>", { id: detailRowId });
+              const detailCell = $("<td>", { colspan: 2 });
+              const heading = $("<div>")
+                      .addClass("font-weight-bold mb-2")
+                      .text(i18next.t("Files with issues"));
+              const list = $("<ul>").addClass("mb-0 pl-3");
 
-	       items.forEach(function (fileName) {
-		       list.append($("<li>").text(fileName));
-	       });
+              items.forEach(function (fileName) {
+                      list.append($("<li>").text(fileName));
+              });
 
-	       detailCell.append(heading).append(list);
-	       detailRow.append(detailCell);
-	       $(tableSelector).append(detailRow);
+              detailCell.append(heading).append(list);
+              detailRow.append(detailCell);
+              $(tableSelector).append(detailRow);
+       }
+
+       function renderOrphanedFiles(payload) {
+              const config = GROUP_CONFIG.orphaned;
+              if (!config) {
+                      return;
+              }
+
+              // Check for orphaned files
+              const hasOrphanedFiles = Array.isArray(payload.orphanedFiles) && payload.orphanedFiles.length > 0;
+
+              if (!hasOrphanedFiles) {
+                      $(config.section).hide();
+                      return;
+              }
+
+              // Show the orphaned files section
+              $(config.section).show();
+
+              const orphanedItems = payload.orphanedFiles
+                      .filter((file) => typeof file === "string" && file.trim().length > 0)
+                      .map((file) => file.trim());
+
+              if (orphanedItems.length === 0) {
+                      $(config.section).hide();
+                      return;
+              }
+
+              // Update status badge
+              $(config.status).html(
+                      `<span class="badge badge-danger">${orphanedItems.length}</span>`
+              );
+
+              // Render orphaned files list
+              const $table = $(config.table);
+              $table.empty();
+
+              orphanedItems.forEach(function (fileName) {
+                      const $row = $("<tr>")
+                              .append($("<td>").addClass("text-danger").text(fileName));
+                      $table.append($row);
+              });
+
+              // Auto-expand the collapse
+              $(config.collapse).collapse("show");
        }
 
 	function updateGroupStatus(group) {
@@ -333,6 +384,9 @@ window.Stepper = Stepper;
 				state.prerequisites[rowId] = satisfied;
 
 				appendIntegrityDetails(config.table, rowId, data);
+
+				// Render orphaned files in separate section
+				renderOrphanedFiles(data);
 
 				// Mark checks as complete
 				state.checksComplete = true;
