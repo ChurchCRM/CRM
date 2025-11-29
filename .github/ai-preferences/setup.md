@@ -20,7 +20,7 @@ Before committing, run these checks:
 
 ```bash
 # Validate specific PHP file
-php -l src/EditEventAttendees.php
+php -l src/Checkin.php
 
 # Check all modified PHP files
 git diff --name-only | grep '.php$' | xargs php -l
@@ -58,7 +58,7 @@ grep -r "align=\|valign=\|nowrap\|<center>\|<font" src/ | grep -v "//" || true
 ```
 
 Examples:
-- Fix SQL injection in EditEventAttendees
+- Fix validation in Checkin form
 - Replace deprecated HTML attributes with Bootstrap CSS
 - Add missing element ID for test selector
 

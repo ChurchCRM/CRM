@@ -29,7 +29,11 @@ if (isset($_GET['calendarAction'])) {
         $sAction = $_POST['Action'];
     }
 
-    if (array_key_exists('EID', $_POST)) {
+    // Check for EID from GET (from ListEvents link) or POST (from form submission)
+    if (array_key_exists('EID', $_GET)) {
+        $sOpp = $_GET['EID'];
+        $sAction = 'Edit';
+    } elseif (array_key_exists('EID', $_POST)) {
         $sOpp = $_POST['EID'];
     } // from EDIT button on event listing
 
@@ -373,19 +377,37 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 }
 ?>
 
+<div class="mb-3 d-flex justify-content-between align-items-center">
+    <a href="ListEvents.php" class="btn btn-outline-secondary">
+        <i class="fas fa-chevron-left mr-1"></i>
+        <?= gettext('Return to Events') ?>
+    </a>
+    <?php if ($EventExists && $iEventID > 0): ?>
+    <div>
+        <a href="Checkin.php?EventID=<?= $iEventID ?>" class="btn btn-info mr-2">
+            <i class="fas fa-clipboard-check mr-1"></i>
+            <?= gettext('Manage Check-ins') ?>
+        </a>
+        <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting this event will also delete all attendance records. Are you sure?') ?>');">
+            <input type="hidden" name="EID" value="<?= $iEventID ?>">
+            <button type="submit" name="Action" value="Delete" class="btn btn-outline-danger">
+                <i class="fas fa-trash mr-1"></i>
+                <?= gettext('Delete Event') ?>
+            </button>
+        </form>
+    </div>
+    <?php endif; ?>
+</div>
+
 <div class='card'>
     <div class='card-header'>
-        <h3><?= ($EventExists === 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ') . $iEventID ?></h3>
-
-        <?php
-        if ($iErrors === 0) {
-            echo '<div>' . gettext('Items with a ') . '<span class="text-danger">*</span>' . gettext(' are required') . '</div>';
-        } else {
-            echo "<div class='alert alert-danger'>" . gettext('There were ') . $iErrors . gettext(' errors. Please see below') . '</div>';
-        }
-        ?>
+        <h3 class="mb-0"><?= ($EventExists === 0) ? gettext('Create a new Event') : gettext('Editing Event') . ': ' . htmlspecialchars($sEventTitle ?: 'ID ' . $iEventID) ?></h3>
+        <?php if ($iErrors > 0): ?>
+            <div class="alert alert-danger mt-2 mb-0"><?= gettext('There were ') . $iErrors . gettext(' errors. Please see below') ?></div>
+        <?php endif; ?>
     </div>
     <div class='card-body'>
+        <p class="text-muted mb-3"><span class="text-danger">*</span> <?= gettext('Required fields') ?></p>
 
     <form method="post" action="EventEditor.php" name="EventsEditor">
         <input type="hidden" name="EventID" value="<?= ($iEventID) ?>">
@@ -423,32 +445,31 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <?php
             } else { ?>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?>:</td>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?></td>
                     <td colspan="3" class="TextColumn">
                         <input type="hidden" name="EventTypeName" value="<?= ($sTypeName) ?>">
                         <input type="hidden" name="EventTypeID" value="<?= ($iTypeID) ?>">
-                        <?= ($iTypeID . '-' . $sTypeName) ?>
+                        <span class="badge badge-info font-weight-normal" style="font-size: 1rem;"><?= htmlspecialchars($sTypeName) ?></span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Title') ?>:</td>
-                    <td colspan="1" class="TextColumn">
-                        <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control w-100' required>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Title') ?></td>
+                    <td colspan="3" class="TextColumn">
+                        <input type="text" name="EventTitle" value="<?= htmlspecialchars($sEventTitle) ?>" maxlength="100" class="form-control" placeholder="<?= gettext('Enter event title...') ?>" required>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Desc') ?>:</td>
+                    <td class="LabelColumn"><?= gettext('Event Description') ?></td>
                     <td colspan="3" class="TextColumn">
                         <?= getQuillEditorContainer('EventDesc', 'EventDescInput', $sEventDesc, 'form-control', '100px') ?>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span>
-                        <?= gettext('Date Range') ?>:
-                    </td>
-                    <td class="TextColumn">
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Date & Time') ?></td>
+                    <td class="TextColumn" colspan="3">
                         <input type="text" name="EventDateRange" value=""
-                               maxlength="10" id="EventDateRange" size="50" class='form-control w-100' required>
+                               maxlength="10" id="EventDateRange" class="form-control" style="max-width: 400px;" required>
+                        <small class="form-text text-muted"><?= gettext('Select start and end date/time') ?></small>
                     </td>
                 </tr>
                 <tr>
@@ -460,64 +481,75 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                             echo gettext('No Attendance counts recorded');
                         } else {
                             ?>
-                            <table>
+                            <div class="row">
                                 <?php
                                 for ($c = 0; $c < $nCnts; $c++) {
-                                    ?><tr>
-                                    <td><strong><?= (gettext($aCountName[$c]) . ':') ?>&nbsp;</strong></td>
-                                    <td>
-                                        <input type="text" name="EventCount[]" value="<?= ($aCount[$c]) ?>" size="8" class='form-control'>
-                                        <input type="hidden" name="EventCountID[]" value="<?= ($aCountID[$c]) ?>">
-                                        <input type="hidden" name="EventCountName[]" value="<?= ($aCountName[$c]) ?>">
-                                    </td>
-                                    </tr>
+                                    $countName = $aCountName[$c];
+                                    $isTotal = (strtolower($countName) === 'total');
+                                    $inputId = 'EventCount_' . $c;
+                                    ?>
+                                    <div class="col-md-3 col-sm-6 mb-2">
+                                        <label for="<?= $inputId ?>" class="font-weight-bold"><?= gettext($countName) ?></label>
+                                        <input type="number" 
+                                               id="<?= $inputId ?>" 
+                                               name="EventCount[]" 
+                                               value="<?= (int) $aCount[$c] ?>" 
+                                               class="form-control attendance-count <?= $isTotal ? 'total-count' : 'addend-count' ?>"
+                                               <?= $isTotal ? 'readonly' : '' ?>
+                                               min="0"
+                                               data-count-name="<?= htmlspecialchars($countName) ?>">
+                                        <input type="hidden" name="EventCountID[]" value="<?= $aCountID[$c] ?>">
+                                        <input type="hidden" name="EventCountName[]" value="<?= $countName ?>">
+                                    </div>
                                     <?php
                                 } ?>
-                                <tr>
-                                    <td><strong><?= gettext('Attendance Notes: ') ?>&nbsp;</strong></td>
-                                    <td><input type="text" name="EventCountNotes" value="<?= $sCountNotes ?>" class='form-control'>
-                                    </td>
-                                </tr>
-                            </table>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="EventCountNotes" class="font-weight-bold"><?= gettext('Attendance Notes') ?></label>
+                                <input type="text" id="EventCountNotes" name="EventCountNotes" value="<?= htmlspecialchars($sCountNotes) ?>" class="form-control" placeholder="<?= gettext('Optional notes about attendance...') ?>">
+                            </div>
                             <?php
                         } ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td colspan="4" class="TextColumn"><?= gettext('Event Sermon') ?>:<br>
+                    <td class="LabelColumn"><?= gettext('Sermon / Event Text') ?></td>
+                    <td colspan="3" class="TextColumn">
+                        <small class="form-text text-muted mb-2"><?= gettext('Optional - Add sermon notes or additional event details') ?></small>
                         <?= getQuillEditorContainer('EventText', 'EventTextInput', $sEventText, 'form-control', '200px') ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Status') ?>:</td>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Status') ?></td>
                     <td colspan="3" class="TextColumn">
-                        <input type="radio" name="EventStatus" value="0" <?php if ($iEventStatus == 0) {
-                            echo 'checked';
-                                                                         } ?>/> <?= _('Active')?>
-                        <input type="radio" name="EventStatus" value="1" <?php if ($iEventStatus == 1) {
-                            echo 'checked';
-                                                                         } ?>/> <?= _('Inactive')?>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-success <?= ($iEventStatus == 0) ? 'active' : '' ?>">
+                                <input type="radio" name="EventStatus" value="0" <?= ($iEventStatus == 0) ? 'checked' : '' ?>>
+                                <i class="fas fa-check mr-1"></i><?= gettext('Active') ?>
+                            </label>
+                            <label class="btn btn-outline-secondary <?= ($iEventStatus == 1) ? 'active' : '' ?>">
+                                <input type="radio" name="EventStatus" value="1" <?= ($iEventStatus == 1) ? 'checked' : '' ?>>
+                                <i class="fas fa-ban mr-1"></i><?= gettext('Inactive') ?>
+                            </label>
+                        </div>
                     </td>
                 </tr>
 
                 <tr>
                     <td></td>
-                    <td><input type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary"></td>
+                    <td>
+                        <button type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary btn-lg">
+                            <i class="fas fa-save mr-1"></i><?= gettext('Save Changes') ?>
+                        </button>
+                    </td>
                 </tr>
                 <?php
             } ?>
         </table>
     </form>
     </div>
-</div>
-
-<div class="card-footer">
-    <a href="ListEvents.php" class='btn btn-secondary'>
-        <i class='fa fa-chevron-left'></i>
-        <?= gettext('Return to Events') ?>
-    </a>
 </div>
 <?php
 $eventStart = $sEventStartDate . ' ' . $iEventStartHour . ':' . $iEventStartMins;
@@ -540,6 +572,22 @@ $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
             startDate: startDate,
             endDate: endDate
         });
+
+        // Auto-calculate Total from other attendance counts
+        function updateTotalCount() {
+            var total = 0;
+            $('.addend-count').each(function() {
+                var val = parseInt($(this).val()) || 0;
+                total += val;
+            });
+            $('.total-count').val(total);
+        }
+
+        // Bind change event to all non-total count fields
+        $('.addend-count').on('input change', updateTotalCount);
+
+        // Calculate initial total on page load
+        updateTotalCount();
     });
 </script>
 

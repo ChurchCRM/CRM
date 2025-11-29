@@ -172,11 +172,10 @@ class Menu
     private static function getEventsMenu(bool $isAddEventEnabled): MenuItem
     {
         $eventsMenu = new MenuItem(gettext('Events'), '', SystemConfig::getBooleanValue('bEnabledEvents'), 'fa-ticket-alt');
-        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'EventEditor.php', $isAddEventEnabled, 'fa-plus-circle'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('List Church Events'), 'ListEvents.php', true, 'fa-list'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('List Event Types'), 'EventNames.php', $isAddEventEnabled, 'fa-tags'));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'EventEditor.php', $isAddEventEnabled, 'fa-plus-circle'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'Checkin.php', true, 'fa-user-check'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('Event Attendance Reports'), 'EventAttendance.php', true, 'fa-chart-bar'));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('List Event Types'), 'EventNames.php', $isAddEventEnabled, 'fa-tags'));
 
         return $eventsMenu;
     }

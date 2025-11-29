@@ -1,5 +1,5 @@
 // ChurchCRM Event Pages Styling
-// Includes Checkin, EditEventAttendees, and related event management pages
+// Includes Checkin and related event management pages
 
 // Form container and header styling
 #AddAttendees {
@@ -22,6 +22,27 @@
     .card-body {
         padding: 2rem;
     }
+
+    /* Event meta (title under header) */
+    .event-meta {
+        display: block;
+        margin-top: 0.5rem;
+    }
+
+    .event-meta .event-title {
+        /* Prevent breaking at hyphens by default (we also replace hyphens server-side)
+           Allow wrapping if container is narrow but avoid mid-token breaks */
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: anywhere;
+        margin-top: 0.25rem;
+    }
+
+    /* Ensure Select2 search inputs take full width in our layout */
+    .select2-container {
+        width: 100% !important;
+    }
+
 
     // Form inputs
     .form-control-lg {
