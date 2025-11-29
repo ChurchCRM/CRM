@@ -22,7 +22,7 @@ $EvtDate = InputUtils::legacyFilterInputArr($_POST, 'EDate');
 if ($sAction == 'Delete') {
     $dpeEventID = InputUtils::legacyFilterInputArr($_POST, 'DelPerEventID', 'int');
     $dpePerID = InputUtils::legacyFilterInputArr($_POST, 'DelPerID', 'int');
-    if ($dpeEventID && $dpePerID) {
+    if ($dpeEventID > 0 && $dpePerID > 0) {
         // Use Propel to delete the attendance row (prevents SQL injection)
         EventAttendQuery::create()
             ->filterByEventId($dpeEventID)
