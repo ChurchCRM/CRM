@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-26 16:13-0800\n"
+"POT-Creation-Date: 2025-11-29 10:53-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,9 +33,6 @@ msgstr ""
 msgid " Italic"
 msgstr ""
 
-msgid " Monthly Averages"
-msgstr ""
-
 msgid " Property Assignment"
 msgstr ""
 
@@ -43,9 +40,6 @@ msgid " Property Unassignment"
 msgstr ""
 
 msgid " Since:"
-msgstr ""
-
-msgid " are required"
 msgstr ""
 
 msgid " by that name already exists."
@@ -75,9 +69,6 @@ msgstr ""
 msgid " has a type mismatch"
 msgstr ""
 
-msgid " in this category."
-msgstr ""
-
 msgid " more entries will fit."
 msgstr ""
 
@@ -89,6 +80,12 @@ msgstr ""
 
 msgid "\"Why Came\" notes for "
 msgstr ""
+
+#, php-format
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] ""
+msgstr[1] ""
 
 #, php-format
 msgid "%d month old"
@@ -215,9 +212,6 @@ msgstr ""
 msgid "ALERT"
 msgstr ""
 
-msgid "ATTENDANCE COUNTS"
-msgstr ""
-
 msgid "About Me"
 msgstr ""
 
@@ -273,9 +267,6 @@ msgid "Add All Funds"
 msgstr ""
 
 msgid "Add All to Cart"
-msgstr ""
-
-msgid "Add Attendees for Event"
 msgstr ""
 
 msgid "Add Buyer"
@@ -335,6 +326,9 @@ msgstr ""
 msgid "Add New Event"
 msgstr ""
 
+msgid "Add New Event Type"
+msgstr ""
+
 msgid "Add New Family"
 msgstr ""
 
@@ -381,9 +375,6 @@ msgid "Add Selected Members to Group"
 msgstr ""
 
 msgid "Add Students"
-msgstr ""
-
-msgid "Add Visitor"
 msgstr ""
 
 msgid "Add a New"
@@ -446,9 +437,6 @@ msgstr ""
 msgid "Adult Checking Out Person"
 msgstr ""
 
-msgid "Adult Name (Optional)"
-msgstr ""
-
 msgid "Adult/Child"
 msgstr ""
 
@@ -503,7 +491,7 @@ msgstr ""
 msgid "All Data"
 msgstr ""
 
-msgid "All Events of Type"
+msgid "All Event Types"
 msgstr ""
 
 msgid "All Families"
@@ -525,6 +513,9 @@ msgid "All Payments"
 msgstr ""
 
 msgid "All People"
+msgstr ""
+
+msgid "All Types"
 msgstr ""
 
 msgid "All deposits within date range"
@@ -671,13 +662,13 @@ msgstr ""
 msgid "Arabic - Egypt"
 msgstr ""
 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr ""
-
 msgid "Are you sure you want to change the end time for "
 msgstr ""
 
 msgid "Are you sure you want to delete the selected"
+msgstr ""
+
+msgid "Are you sure you want to delete this check-in record?"
 msgstr ""
 
 msgid "Are you sure you want to delete this fund?"
@@ -762,22 +753,16 @@ msgstr ""
 msgid "Attachment"
 msgstr ""
 
+msgid "Attendance Count Categories"
+msgstr ""
+
 msgid "Attendance Counts"
 msgstr ""
 
-msgid "Attendance Notes: "
-msgstr ""
-
-msgid "Attendees"
+msgid "Attendance Notes"
 msgstr ""
 
 msgid "Attendees Checked In"
-msgstr ""
-
-msgid "Attendees for Event"
-msgstr ""
-
-msgid "Attending Members"
 msgstr ""
 
 msgid "Audience not in the CRM"
@@ -1134,6 +1119,9 @@ msgstr ""
 msgid "Chad (Tchad)"
 msgstr ""
 
+msgid "Change Event"
+msgstr ""
+
 msgid "Change Password"
 msgstr ""
 
@@ -1155,16 +1143,25 @@ msgstr ""
 msgid "Check GitHub for the latest release information"
 msgstr ""
 
+msgid "Check In"
+msgstr ""
+
+msgid "Check In Person"
+msgstr ""
+
+msgid "Check In to Event"
+msgstr ""
+
 msgid "Check Number"
 msgstr ""
 
 msgid "Check number not valid for 'CASH' payment"
 msgstr ""
 
-msgid "Check-in and Check-out"
+msgid "Check-in"
 msgstr ""
 
-msgid "CheckIn"
+msgid "Check-in and Check-out"
 msgstr ""
 
 msgid "CheckOut"
@@ -1183,9 +1180,6 @@ msgid "Checked Out By"
 msgstr ""
 
 msgid "Checked Out Time"
-msgstr ""
-
-msgid "Checked in By (Optional)"
 msgstr ""
 
 msgid "Checking Cart Status"
@@ -1212,6 +1206,9 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "Choose a volunteer opportunity"
+msgstr ""
+
+msgid "Choose an event..."
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -1313,6 +1310,9 @@ msgid "Cleaned count since last send:"
 msgstr ""
 
 msgid "Cleaned count:"
+msgstr ""
+
+msgid "Clear"
 msgstr ""
 
 msgid "Clear All Classes"
@@ -1465,6 +1465,9 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
+msgid "Create"
+msgstr ""
+
 msgid "Create Attendance Sheet"
 msgstr ""
 
@@ -1489,6 +1492,9 @@ msgstr ""
 msgid "Create Group + ADD Cart"
 msgstr ""
 
+msgid "Create New Event"
+msgstr ""
+
 msgid "Create New Fund Raiser"
 msgstr ""
 
@@ -1511,6 +1517,9 @@ msgid "Create a new Event"
 msgstr ""
 
 msgid "Create a new family (using last name)"
+msgstr ""
+
+msgid "Create an event type to get started."
 msgstr ""
 
 msgid "Create new family"
@@ -1541,13 +1550,13 @@ msgstr ""
 msgid "Curaçao"
 msgstr ""
 
-msgid "Current DB Version: "
+msgid "Current DB Version"
 msgstr ""
 
 msgid "Current Role"
 msgstr ""
 
-msgid "Current Software Version: "
+msgid "Current Software Version"
 msgstr ""
 
 msgid "Current Value"
@@ -1622,9 +1631,6 @@ msgstr ""
 msgid "DEBUG"
 msgstr ""
 
-msgid "DEFAULT START TIME"
-msgstr ""
-
 msgid "DSN"
 msgstr ""
 
@@ -1688,19 +1694,22 @@ msgstr ""
 msgid "Database server port is required (e.g., 3306)"
 msgstr ""
 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr ""
+
 msgid "Database username is required"
 msgstr ""
 
 msgid "Date"
 msgstr ""
 
+msgid "Date & Time"
+msgstr ""
+
 msgid "Date End"
 msgstr ""
 
 msgid "Date Entered:"
-msgstr ""
-
-msgid "Date Range"
 msgstr ""
 
 msgid "Date Start"
@@ -1745,6 +1754,9 @@ msgstr ""
 msgid "Default Role"
 msgstr ""
 
+msgid "Default Start Time"
+msgstr ""
+
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr ""
 
@@ -1784,6 +1796,9 @@ msgstr ""
 msgid "Delete Checkin in Entry"
 msgstr ""
 
+msgid "Delete Event"
+msgstr ""
+
 msgid "Delete Family Record AND Family Members"
 msgstr ""
 
@@ -1817,10 +1832,16 @@ msgstr ""
 msgid "Deleted from group"
 msgstr ""
 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr ""
+
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr ""
 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr ""
+
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
 msgstr ""
 
 #. Context: userconfig_ucfg
@@ -1935,9 +1956,6 @@ msgid "Discard"
 msgstr ""
 
 msgid "Disclaimer"
-msgstr ""
-
-msgid "Display Events in Year"
 msgstr ""
 
 msgid "Display bill counts on deposit slip"
@@ -2055,9 +2073,6 @@ msgstr ""
 msgid "ESE"
 msgstr ""
 
-msgid "EVENT TYPE NAME"
-msgstr ""
-
 #. Context: countries
 msgid "Ecuador"
 msgstr ""
@@ -2069,6 +2084,9 @@ msgid "Edit \"Why Came\" Notes"
 msgstr ""
 
 msgid "Edit Deposit Slip"
+msgstr ""
+
+msgid "Edit Event"
 msgstr ""
 
 msgid "Edit Event Type"
@@ -2119,7 +2137,7 @@ msgstr ""
 msgid "Editing"
 msgstr ""
 
-msgid "Editing Event ID: "
+msgid "Editing Event"
 msgstr ""
 
 #. Context: countries
@@ -2191,9 +2209,6 @@ msgstr ""
 msgid "Empty Cart"
 msgstr ""
 
-msgid "Empty Cart to Event"
-msgstr ""
-
 msgid "Empty Cart to Family"
 msgstr ""
 
@@ -2204,9 +2219,6 @@ msgid "Empty your entire cart?"
 msgstr ""
 
 msgid "Enable 2FA"
-msgstr ""
-
-msgid "Enable Calendar menu."
 msgstr ""
 
 msgid "Enable Email menu."
@@ -2300,14 +2312,17 @@ msgstr ""
 msgid "Enter Winners"
 msgstr ""
 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr ""
-
 #. Context: queryparameters_qrp
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr ""
 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr ""
+
 msgid "Enter event description..."
+msgstr ""
+
+msgid "Enter event title..."
 msgstr ""
 
 msgid "Enter family name"
@@ -2417,40 +2432,19 @@ msgstr ""
 msgid "Ethiopia"
 msgstr ""
 
-msgid "Event Attendance"
-msgstr ""
-
-msgid "Event Attendance Reports"
-msgstr ""
-
-msgid "Event Attendees"
+msgid "Event"
 msgstr ""
 
 msgid "Event Checkin"
 msgstr ""
 
-msgid "Event Date"
-msgstr ""
-
-msgid "Event Desc"
-msgstr ""
-
 msgid "Event Description"
-msgstr ""
-
-msgid "Event Guests"
 msgstr ""
 
 msgid "Event ID"
 msgstr ""
 
 msgid "Event Log severity to write, used by ORM and App Logs"
-msgstr ""
-
-msgid "Event Nonattendees"
-msgstr ""
-
-msgid "Event Sermon"
 msgstr ""
 
 msgid "Event Status"
@@ -2462,6 +2456,12 @@ msgstr ""
 msgid "Event Type"
 msgstr ""
 
+msgid "Event Type Name"
+msgstr ""
+
+msgid "Event Types"
+msgstr ""
+
 msgid "Event not found"
 msgstr ""
 
@@ -2469,9 +2469,6 @@ msgid "Events"
 msgstr ""
 
 msgid "Events Today"
-msgstr ""
-
-msgid "Every event type includes a Total count, you do not need to include it."
 msgstr ""
 
 msgid "Exclude"
@@ -2807,7 +2804,13 @@ msgstr ""
 msgid "Filesystem Permissions"
 msgstr ""
 
+msgid "Filter Events"
+msgstr ""
+
 msgid "Filter by Deposit:"
+msgstr ""
+
+msgid "Filter by Event Type"
 msgstr ""
 
 msgid "Filter by Family"
@@ -2817,6 +2820,9 @@ msgid "Filter by Fund"
 msgstr ""
 
 msgid "Filter by Payment Type:"
+msgstr ""
+
+msgid "Filter by Type"
 msgstr ""
 
 msgid "Filter by log level:"
@@ -3050,9 +3056,6 @@ msgstr ""
 msgid "Generate and Ship Backup to External Storage"
 msgstr ""
 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr ""
-
 msgid "Generate class lists and attendance sheets"
 msgstr ""
 
@@ -3269,9 +3272,6 @@ msgstr ""
 msgid "Guest"
 msgstr ""
 
-msgid "Guests"
-msgstr ""
-
 #. Context: countries
 msgid "Guinea (Guinée)"
 msgstr ""
@@ -3292,6 +3292,9 @@ msgid "Haiti"
 msgstr ""
 
 msgid "Hash mismatches can occur if you have customized files or installed extensions. If you did not intentionally modify these files, consider re-deploying from an official release."
+msgstr ""
+
+msgid "Head Count"
 msgstr ""
 
 #. Context: countries
@@ -3616,9 +3619,6 @@ msgstr ""
 msgid "Item"
 msgstr ""
 
-msgid "Items with a "
-msgstr ""
-
 msgid "JSON URL"
 msgstr ""
 
@@ -3857,7 +3857,7 @@ msgstr ""
 msgid "Listing All Church Events"
 msgstr ""
 
-msgid "Listing Events of Type = "
+msgid "Listing Events of Type"
 msgstr ""
 
 msgid "Lists"
@@ -3995,6 +3995,9 @@ msgid "Malta"
 msgstr ""
 
 msgid "Manage 2 Factor Authentication"
+msgstr ""
+
+msgid "Manage Check-ins"
 msgstr ""
 
 msgid "Manage Donations and Finance"
@@ -4147,6 +4150,9 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Members who joined in a particular month"
+msgstr ""
+
+msgid "Members, Visitors, Children"
 msgstr ""
 
 msgid "Members:"
@@ -4311,7 +4317,13 @@ msgstr ""
 msgid "Monthly"
 msgstr ""
 
+msgid "Monthly Averages"
+msgstr ""
+
 msgid "Monthly on"
+msgstr ""
+
+msgid "Monthly on the"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -4517,13 +4529,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-msgid "No Attendance Recorded"
-msgstr ""
-
 msgid "No Attendance counts recorded"
-msgstr ""
-
-msgid "No Attendees Assigned to Event"
 msgstr ""
 
 msgid "No Backup Running"
@@ -4566,6 +4572,9 @@ msgid "No custom person fields have been added yet"
 msgstr ""
 
 msgid "No email passed in"
+msgstr ""
+
+msgid "No event types defined yet."
 msgstr ""
 
 msgid "No family name entered!"
@@ -4636,9 +4645,6 @@ msgstr ""
 msgid "Non-Attender (staff)"
 msgstr ""
 
-msgid "Non-Attending Members"
-msgstr ""
-
 msgid "Non-deductible amount"
 msgstr ""
 
@@ -4652,6 +4658,9 @@ msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "None"
+msgstr ""
+
+msgid "None (one-time event)"
 msgstr ""
 
 msgid "None State"
@@ -4826,10 +4835,16 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
-msgid "Optional"
+msgid "Optional - Add sermon notes or additional event details"
+msgstr ""
+
+msgid "Optional - leave blank if not tracking"
 msgstr ""
 
 msgid "Optional Data to Include"
+msgstr ""
+
+msgid "Optional notes about attendance..."
 msgstr ""
 
 msgid "Other"
@@ -5003,6 +5018,9 @@ msgstr ""
 msgid "People"
 msgstr ""
 
+msgid "People Checked In"
+msgstr ""
+
 msgid "People Classification"
 msgstr ""
 
@@ -5025,6 +5043,9 @@ msgid "People Setup"
 msgstr ""
 
 msgid "People Verify Dashboard"
+msgstr ""
+
+msgid "People in Cart"
 msgstr ""
 
 msgid "People in Cart (filters ignored)"
@@ -5062,6 +5083,9 @@ msgid "Permissions"
 msgstr ""
 
 msgid "Person"
+msgstr ""
+
+msgid "Person Checking In"
 msgstr ""
 
 msgid "Person Classification"
@@ -5122,9 +5146,6 @@ msgid "Person has been already checked in for this event"
 msgstr ""
 
 msgid "Person to Make User"
-msgstr ""
-
-msgid "Person's Name"
 msgstr ""
 
 msgid "PersonID for Cart must be numeric"
@@ -5558,6 +5579,9 @@ msgstr ""
 msgid "Recovery codes can be used instead of a code generated from your authenticator app."
 msgstr ""
 
+msgid "Recurrence"
+msgstr ""
+
 msgid "Recurrence Pattern"
 msgstr ""
 
@@ -5702,6 +5726,9 @@ msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr ""
 
 msgid "Required"
+msgstr ""
+
+msgid "Required fields"
 msgstr ""
 
 msgid "Requires users to self-enroll in 2 factor authentication"
@@ -5924,6 +5951,9 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
+msgid "Save Event Type"
+msgstr ""
+
 msgid "Save Log Level"
 msgstr ""
 
@@ -5974,6 +6004,15 @@ msgstr ""
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr ""
 
+msgid "Search by name or email..."
+msgstr ""
+
+msgid "Search for adult..."
+msgstr ""
+
+msgid "Search for supervisor..."
+msgstr ""
+
 msgid "Season"
 msgstr ""
 
@@ -6022,7 +6061,7 @@ msgstr ""
 msgid "Select Event"
 msgstr ""
 
-msgid "Select Event Types To Display"
+msgid "Select Event for Check-In"
 msgstr ""
 
 msgid "Select Family:"
@@ -6103,14 +6142,14 @@ msgstr ""
 msgid "Select none"
 msgstr ""
 
+msgid "Select start and end date/time"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Select the desired family role."
 msgstr ""
 
-msgid "Select the event to which you would like to add your cart"
-msgstr ""
-
-msgid "Select the event to which you would like to check people in for"
+msgid "Select the event to check in your cart members"
 msgstr ""
 
 msgid "Select the group to which you would like to add your cart"
@@ -6175,9 +6214,6 @@ msgstr ""
 msgid "Senegal (Sénégal)"
 msgstr ""
 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr ""
-
 msgid "September"
 msgstr ""
 
@@ -6186,6 +6222,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Serbia (Србија)"
+msgstr ""
+
+msgid "Sermon / Event Text"
 msgstr ""
 
 msgid "Sermon Text"
@@ -6751,25 +6790,7 @@ msgstr ""
 msgid "The sunday school class for which you would like records returned."
 msgstr ""
 
-msgid "There "
-msgstr ""
-
-msgid "There are"
-msgstr ""
-
-msgid "There are no events in this category"
-msgstr ""
-
 msgid "There are people assigned to this Volunteer Opportunity."
-msgstr ""
-
-msgid "There currently are"
-msgstr ""
-
-msgid "There currently is"
-msgstr ""
-
-msgid "There is"
 msgstr ""
 
 msgid "There was a problem retrieving the requested object"
@@ -7073,6 +7094,9 @@ msgid ""
 "displayed IF the corresponding info has NOT been entered for that person. "
 msgstr ""
 
+msgid "Unclassified"
+msgstr ""
+
 msgid "Undefined"
 msgstr ""
 
@@ -7187,7 +7211,7 @@ msgstr ""
 msgid "Upgrade Required"
 msgstr ""
 
-msgid "Upgrade database"
+msgid "Upgrade database now"
 msgstr ""
 
 msgid "Upgrade failed."
@@ -7625,9 +7649,6 @@ msgstr ""
 msgid "Year"
 msgstr ""
 
-msgid "Yearly"
-msgstr ""
-
 msgid "Yearly on"
 msgstr ""
 
@@ -7734,6 +7755,9 @@ msgstr ""
 msgid "Your ChurchCRM installation is running the latest version."
 msgstr ""
 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr ""
+
 msgid "Your ChurchCRM password has been changed"
 msgstr ""
 
@@ -7800,6 +7824,9 @@ msgstr ""
 msgid "added"
 msgstr ""
 
+msgid "added to this event"
+msgstr ""
+
 msgid "already in cart"
 msgstr ""
 
@@ -7828,12 +7855,6 @@ msgstr ""
 msgid "characters in length."
 msgstr ""
 
-msgid "custom event type"
-msgstr ""
-
-msgid "custom event types"
-msgstr ""
-
 msgid "data for member"
 msgstr ""
 
@@ -7843,6 +7864,9 @@ msgstr ""
 msgid "deposit(s) with no payments"
 msgstr ""
 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr ""
+
 msgid "eGive"
 msgstr ""
 
@@ -7850,12 +7874,6 @@ msgid "eGive Import"
 msgstr ""
 
 msgid "eMail Dashboard"
-msgstr ""
-
-msgid "event"
-msgstr ""
-
-msgid "events"
 msgstr ""
 
 msgid "families"
@@ -7942,6 +7960,9 @@ msgstr ""
 msgid "open rate"
 msgstr ""
 
+msgid "optional"
+msgstr ""
+
 msgid "payment(s)?"
 msgstr ""
 
@@ -7959,6 +7980,11 @@ msgstr ""
 
 msgid "people removed from cart"
 msgstr ""
+
+msgid "person"
+msgid_plural "people"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "persons from"
 msgstr ""
@@ -8022,4 +8048,7 @@ msgstr ""
 
 #. Context: countries
 msgid "Åland Islands (Åland)"
+msgstr ""
+
+msgid "✓ CheckOut"
 msgstr ""
