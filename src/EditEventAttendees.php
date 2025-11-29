@@ -92,6 +92,7 @@ if ($attendees->count() != 0) {
         $family = $person->getFamily();
 
         $famCountry = $family ? $family->getFamCountry() : null;
+        $dummy = '';
         $sPhoneCountry = SelectWhichInfo($person->getPerCountry(), $famCountry, false);
         $sHomePhone = SelectWhichInfo(
             ExpandPhoneNumber($person->getPerHomephone(), $sPhoneCountry, $dummy),
