@@ -594,6 +594,68 @@ PR organization:
 
 ---
 
+## Security Vulnerability (CVE) Handling
+
+### Reviewing CVE Issues
+When asked to review a CVE issue:
+1. **Fetch the issue** using `github-pull-request_issue_fetch`
+2. **Check if the vulnerable file still exists** - use `file_search` or `read_file`
+3. **Verify the specific vulnerability** - check if input sanitization is in place
+4. **Focus on security fixes only** - ignore code style issues unless explicitly requested
+
+### Common Security Fixes
+
+**SQL Injection Prevention:**
+```php
+// CORRECT - Use InputUtils::filterInt() for integer parameters
+$iCurrentFundraiser = InputUtils::filterInt($_GET['CurrentFundraiser']);
+$tyid = InputUtils::filterInt($_POST['EN_tyid']);
+
+// CORRECT - Use Propel ORM (parameterized queries)
+$event = EventQuery::create()->findOneById((int)$eventId);
+
+// WRONG - Raw SQL with unsanitized input
+$sSQL = "SELECT * FROM table WHERE id = " . $_GET['id'];
+RunQuery($sSQL);
+```
+
+**XSS Prevention:**
+```php
+// CORRECT - Escape output
+<?= htmlspecialchars($value, ENT_QUOTES, 'UTF-8') ?>
+<?= htmlentities($value, ENT_QUOTES, 'UTF-8') ?>
+
+// WRONG - Unescaped output
+<?= $value ?>
+```
+
+### CVE Issue Response Format
+When a CVE issue is confirmed fixed, provide this response in a markdown code block:
+
+```markdown
+**Issue #XXXX (CVE-YYYY-ZZZZZ) - [Brief Description]:**
+
+[Explanation of how the vulnerability was fixed - 1-2 sentences]
+
+We are deleting this issue to ensure the software's safety. Please refer to the new https://github.com/ChurchCRM/CRM/security/policy for reporting CVE issues. Thank you again for reporting it and helping keep our software secure. Happy to accept the CVE via the new process.
+```
+
+### Automated CVE Detection Workflow
+The repository has an automated GitHub Actions workflow (`.github/workflows/issue-comment.yml`) that:
+1. Detects CVE mentions in issue titles or bodies (patterns: `CVE-`, `CVE-YYYY-NNNNN`, or `GHSA-xxxx-xxxx-xxxx`)
+2. Posts a security comment from `.github/issue-comments/security.md`
+3. Adds `security` and `security-delete-required` labels
+4. Closes the issue automatically
+
+This ensures security vulnerabilities are not publicly disclosed and directs reporters to use GitHub Security Advisories instead.
+
+### Security Policy Reference
+- Security policy: `SECURITY.md` in repository root
+- Private disclosure: https://github.com/ChurchCRM/CRM/security/advisories
+- Issue comment templates: `.github/issue-comments/security.md`
+
+---
+
 ## V2 Upgrade Wizard Architecture
 
 ChurchCRM implements a modern upgrade system at `/v2/admin/upgrade` with bs-stepper wizard.

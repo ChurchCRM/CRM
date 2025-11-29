@@ -61,9 +61,10 @@ jobs:
             const bodyLower = body.toLowerCase();
             
             // Check for CVE mentions in title or body (security vulnerability disclosure)
-            // Match full CVE format (CVE-2025-1234) or partial (CVE-)
+            // Match full CVE format (CVE-2025-1234), partial (CVE-), or GitHub Security Advisory (GHSA-xxxx-xxxx-xxxx)
             const cvePattern = /cve-(\d{4}-\d+)?/i;
-            const hasCVE = cvePattern.test(title) || cvePattern.test(body);
+            const ghsaPattern = /ghsa-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}/i;
+            const hasCVE = cvePattern.test(title) || cvePattern.test(body) || ghsaPattern.test(title) || ghsaPattern.test(body);
             
             // Check if system info was collected (in-app reporter includes "Collected Value Title")
             const hasSystemInfo = bodyLower.includes('collected value title');
