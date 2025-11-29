@@ -40,7 +40,7 @@ if (isset($_GET['calendarAction'])) {
     $tyid = 0;
 
     if (array_key_exists('EN_tyid', $_POST)) {
-        $tyid = $_POST['EN_tyid'];
+        $tyid = InputUtils::filterInt($_POST['EN_tyid']);
     }
 }
 
