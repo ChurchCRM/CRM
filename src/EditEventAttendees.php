@@ -102,7 +102,7 @@ if ($attendees->count() != 0) {
 ?>
     <tr>
         <td class="TextColumn"><?= FormatFullName($person->getPerTitle(), $person->getPerFirstName(), $person->getPerMiddleName(), $person->getPerLastName(), $person->getPerSuffix(), 3) ?></td>
-        <td class="TextColumn"><?= $sEmail ? '<a href="mailto:' . $sEmail . '" title="Send Email">' . $sEmail . '</a>' : 'Not Available' ?></td>
+        <td class="TextColumn"><?= $sEmail ? '<a href="mailto:' . htmlspecialchars($sEmail, ENT_QUOTES, 'UTF-8') . '" title="Send Email">' . htmlspecialchars($sEmail, ENT_QUOTES, 'UTF-8') . '</a>' : 'Not Available' ?></td>
         <td class="TextColumn"><?= $sHomePhone ? $sHomePhone : 'Not Available' ?></td>
     <td class="TextColumn text-center" colspan="1">
       <form method="POST" action="EditEventAttendees.php" name="DeletePersonFromEvent">
