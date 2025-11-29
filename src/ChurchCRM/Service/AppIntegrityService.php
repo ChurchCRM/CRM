@@ -283,4 +283,197 @@ class AppIntegrityService
 
         return false;
     }
+
+    /**
+     * Find files on the server that are not in the signatures.json manifest
+     * These are potentially orphaned files that could be security risks
+     *
+     * signatures.json stores paths relative to src/ (e.g., "index.php", "vendor/...")
+     * This method scans src/ and returns paths relative to document root (e.g., "src/index.php")
+     *
+     * @return array List of orphaned file paths relative to document root
+     */
+    public static function getOrphanedFiles(): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $documentRoot = AppIntegrityService::resolveDocumentRoot();
+        $signatureFile = $documentRoot . '/admin/data/signatures.json';
+        $orphanedFiles = [];
+
+        // Get list of files in signatures.json (paths are relative to src/)
+        $validFiles = [];
+        if (is_file($signatureFile) && is_readable($signatureFile)) {
+            try {
+                $signatureFileContents = file_get_contents($signatureFile);
+                MiscUtils::throwIfFailed($signatureFileContents);
+                $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
+                if (isset($signatureData->files) && is_array($signatureData->files)) {
+                    foreach ($signatureData->files as $file) {
+                        $validFiles[$file->filename] = true;
+                    }
+                }
+                $logger->debug('Loaded signatures for orphan detection', ['count' => count($validFiles)]);
+            } catch (\Exception $e) {
+                $logger->warning('Error reading signatures for orphan detection', ['exception' => $e]);
+                return [];
+            }
+        } else {
+            $logger->warning('Signature file not found or not readable', ['file' => $signatureFile]);
+            return [];
+        }
+
+        // Scan src/ directory - signatures.json paths are relative to src/
+        $srcPath = $documentRoot;
+        if (is_dir($srcPath)) {
+            $orphanedFiles = AppIntegrityService::scanDirectoryForOrphans($srcPath, $srcPath, $validFiles);
+        }
+
+        $logger->info('Orphan file scan complete', ['count' => count($orphanedFiles)]);
+        return $orphanedFiles;
+    }
+
+    /**
+     * Check if a path should be excluded from orphan detection
+     * Must match the same exclusions used in generate-signatures-node.js
+     *
+     * @param string $relativePath Path relative to src/
+     * @return bool True if should be excluded
+     */
+    private static function isExcludedFromOrphanDetection(string $relativePath): bool
+    {
+        // These patterns match generate-signatures-node.js excludes array
+        $excludePatterns = [
+            '/^\.htaccess$/',
+            '/^\.gitignore$/',
+            '/^composer\.lock$/',
+            '/^Include\/Config\.php$/',
+            '/^propel\/propel\.php$/',
+            '/^integrityCheck\.json$/',
+            '/^Images\/Person\/thumbnails\//',
+            '/^vendor\/.*\/example\//',
+            '/^vendor\/.*\/examples\//',
+            '/^vendor\/.*\/tests\//',
+            '/^vendor\/.*\/Tests\//',
+            '/^vendor\/.*\/test\//',
+            '/^vendor\/.*\/docs\//',
+        ];
+
+        foreach ($excludePatterns as $pattern) {
+            if (preg_match($pattern, $relativePath)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Recursively scan a directory for orphaned files
+     *
+     * @param string $currentPath The path to scan
+     * @param string $basePath The base path for relative path calculation (src/)
+     * @param array $validFiles Array of valid file paths from signatures (relative to src/)
+     * @return array List of orphaned file paths (relative to src/)
+     */
+    private static function scanDirectoryForOrphans(string $currentPath, string $basePath, array $validFiles): array
+    {
+        $orphanedFiles = [];
+
+        // Directories to skip entirely (not scanned at all)
+        // Note: Include/Config.php is handled by isExcludedFromOrphanDetection()
+        $skipDirs = ['logs', 'temp' ];
+
+        try {
+            $items = @scandir($currentPath);
+            if ($items === false) {
+                return [];
+            }
+
+            foreach ($items as $item) {
+                if ($item === '.' || $item === '..') {
+                    continue;
+                }
+
+                $fullPath = $currentPath . '/' . $item;
+
+                // Calculate path relative to basePath (src/)
+                $relativePath = ltrim(str_replace($basePath, '', $fullPath), '/');
+                $relativePath = str_replace('\\', '/', $relativePath);
+
+                if (is_dir($fullPath)) {
+                    // Skip certain directories
+                    if (in_array($item, $skipDirs)) {
+                        continue;
+                    }
+                    // Skip vendor subdirectories that are excluded from signatures
+                    if (self::isExcludedFromOrphanDetection($relativePath . '/')) {
+                        continue;
+                    }
+                    // Recursively scan subdirectories
+                    $orphanedFiles = array_merge(
+                        $orphanedFiles,
+                        AppIntegrityService::scanDirectoryForOrphans($fullPath, $basePath, $validFiles)
+                    );
+                } elseif (is_file($fullPath) && preg_match('/\.(php|js)$/i', $item)) {
+                    // Skip files that are excluded from signatures
+                    if (self::isExcludedFromOrphanDetection($relativePath)) {
+                        continue;
+                    }
+                    // Check if file is in valid list
+                    if (!isset($validFiles[$relativePath])) {
+                        $orphanedFiles[] = $relativePath;
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->warning('Error scanning directory for orphans', [
+                'path' => $currentPath,
+                'exception' => $e,
+            ]);
+        }
+
+        return $orphanedFiles;
+    }
+
+    /**
+     * Delete all orphaned files found on the system
+     *
+     * @return array Result array with 'deleted', 'failed', and 'errors' keys
+     */
+    public static function deleteOrphanedFiles(): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $documentRoot = AppIntegrityService::resolveDocumentRoot();
+        $orphanedFiles = AppIntegrityService::getOrphanedFiles();
+        $result = [
+            'deleted' => [],
+            'failed' => [],
+            'errors' => [],
+        ];
+
+        foreach ($orphanedFiles as $filePath) {
+            $fullPath = $documentRoot . '/' . $filePath;
+            try {
+                if (is_file($fullPath)) {
+                    if (@unlink($fullPath)) {
+                        $result['deleted'][] = $filePath;
+                        $logger->info('Deleted orphaned file', ['file' => $filePath]);
+                    } else {
+                        $result['failed'][] = $filePath;
+                        $result['errors'][] = sprintf('Failed to delete: %s', $filePath);
+                        $logger->warning('Failed to delete orphaned file', ['file' => $filePath]);
+                    }
+                }
+            } catch (\Exception $e) {
+                $result['failed'][] = $filePath;
+                $result['errors'][] = $e->getMessage();
+                $logger->error('Error deleting orphaned file', [
+                    'file' => $filePath,
+                    'exception' => $e,
+                ]);
+            }
+        }
+
+        return $result;
+    }
 }

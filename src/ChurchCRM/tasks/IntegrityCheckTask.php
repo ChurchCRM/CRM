@@ -23,7 +23,9 @@ class IntegrityCheckTask implements TaskInterface
 
     public function isActive(): bool
     {
-        return AuthenticationManager::getCurrentUser()->isAdmin() && ($this->integrityCheckData == null || $this->integrityCheckData->status == 'failure');
+        $hasIntegrityFailure = $this->integrityCheckData == null || $this->integrityCheckData->status == 'failure';
+        
+        return AuthenticationManager::getCurrentUser()->isAdmin() && $hasIntegrityFailure;
     }
 
     public function isAdmin(): bool
@@ -43,6 +45,6 @@ class IntegrityCheckTask implements TaskInterface
 
     public function getDesc(): string
     {
-        return gettext('Application Integrity Check Failed');
+        return gettext('Some system files have been modified or are missing. Review the debug page for details.');
     }
 }

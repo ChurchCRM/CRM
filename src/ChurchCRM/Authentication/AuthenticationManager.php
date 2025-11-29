@@ -275,11 +275,13 @@ class AuthenticationManager
         if (!$currentUser->isAdmin()) {
             $_SESSION['systemUpdateAvailable'] = false;
             $_SESSION['systemUpdateVersion'] = null;
+            $_SESSION['systemLatestVersion'] = null;
             return;
         }
 
         $updateInfo = ChurchCRMReleaseManager::checkSystemUpdateAvailable();
         $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
         $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
+        $_SESSION['systemLatestVersion'] = $updateInfo['latestVersion'];
     }
 }

@@ -17,6 +17,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-app bg-secondary">
                         <i class="fa fa-bug fa-3x"></i><br><?= gettext('Debug Info') ?>
                     </a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-app bg-danger">
+                        <i class="fa fa-trash fa-3x"></i><br><?= gettext('Orphaned Files') ?>
+                    </a>
                     <button type="button" class="btn btn-app bg-success" id="importDemoDataQuickBtn">
                         <i class="fa fa-users fa-3x"></i><br><?= gettext('Import Demo Data') ?>
                     </button>
