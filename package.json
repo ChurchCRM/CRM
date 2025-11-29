@@ -27,7 +27,7 @@
         "build:php": "run-s composer:install",
         "build:orm": "cd src/ && ./vendor/bin/propel build --config-dir=propel",
         "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external src/locale/vendor ai-notes/ src/logs/*.log",
-        "composer:install": "cd src/ && composer validate --no-check-publish && composer install --no-dev",
+        "composer:install": "cd src/ && composer validate --no-check-publish && composer install --no-dev && find vendor -type d \\( -name 'tests' -o -name 'Tests' -o -name 'test' -o -name 'docs' -o -name 'examples' -o -name 'example' \\) -exec rm -rf {} + 2>/dev/null || true",
         "composer:update": "cd src/ && composer update",
         "deploy": "run-s build build:signatures",
         "deploy:clean": "run-s preinstall deploy",
