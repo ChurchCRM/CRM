@@ -247,10 +247,14 @@ class AuthenticationManager
         // but rather redirect users to some other password reset mechanism.
         return SystemURLs::getRootPath() . '/session/forgot-password/reset-request';
     }
-    public static function redirectHomeIfFalse(bool $hasAccess): void
+    public static function redirectHomeIfFalse(bool $hasAccess, string $missingRole = ''): void
     {
         if (!$hasAccess) {
-            RedirectUtils::redirect('v2/dashboard');
+            if ($missingRole !== '') {
+                RedirectUtils::securityRedirect($missingRole);
+            } else {
+                RedirectUtils::redirect('v2/dashboard');
+            }
         }
     }
 

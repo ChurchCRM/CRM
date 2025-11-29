@@ -12,7 +12,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 
 $iFamilyID = 0;
 $iDonationFamilyID = 0;

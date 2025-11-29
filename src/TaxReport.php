@@ -9,7 +9,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly'));
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly'), 'Admin');
 
 $sPageTitle = gettext('Tax Report');
 require_once 'Include/Header.php';

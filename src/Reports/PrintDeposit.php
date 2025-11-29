@@ -12,7 +12,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 //Security
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 $iBankSlip = 0;
 if (array_key_exists('BankSlip', $_GET)) {
@@ -36,10 +36,14 @@ if (!$iDepositSlipID && array_key_exists('iCurrentDeposit', $_SESSION)) {
     $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 }
 
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 // If no DepositSlipId, redirect to the menu
-if ((!AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly && $output != 'pdf') || !$iDepositSlipID) {
+if (!$iDepositSlipID) {
     RedirectUtils::redirect('v2/dashboard');
+}
+
+// If CSVAdminOnly option is enabled and user is not admin, redirect to access denied.
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly && $output != 'pdf') {
+    RedirectUtils::securityRedirect('Admin');
 }
 
 if ($output === 'pdf') {
