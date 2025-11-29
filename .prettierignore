@@ -1,5 +1,11 @@
 src/locale/states
+src/locale/i18n/
 src/locale/poeditor.json
-
-src/mysql/upgrade.json
+src/locale/vendor/
 src/locale/js/
+
+src/vendor/
+src/skin/external/
+
+src/admin/data/signatures.json
+src/mysql/upgrade.json
