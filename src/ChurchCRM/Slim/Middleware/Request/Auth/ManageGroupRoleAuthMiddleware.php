@@ -13,4 +13,9 @@ class ManageGroupRoleAuthMiddleware extends BaseAuthRoleMiddleware
     {
         return gettext('User must have Manage Groups permission');
     }
+
+    protected function getRoleName(): string
+    {
+        return 'ManageGroups';
+    }
 }

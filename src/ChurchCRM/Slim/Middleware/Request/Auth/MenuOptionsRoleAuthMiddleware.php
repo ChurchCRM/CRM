@@ -11,6 +11,11 @@ class MenuOptionsRoleAuthMiddleware extends BaseAuthRoleMiddleware
 
     protected function noRoleMessage(): string
     {
-        return gettext('User must have MenuOptions permission');
+        return gettext('User must have Menu Options permission');
+    }
+
+    protected function getRoleName(): string
+    {
+        return 'MenuOptions';
     }
 }
