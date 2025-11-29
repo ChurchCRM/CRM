@@ -30,6 +30,7 @@
 @include meta.load-css("scss/ui-components");
 
 @include meta.load-css("scss/dropdowns");
+@include meta.load-css("scss/events");
 @include meta.load-css("scss/forms");
 @include meta.load-css("scss/tables");
 @include meta.load-css("scss/financial-reports");

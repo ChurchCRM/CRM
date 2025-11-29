@@ -519,7 +519,7 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 
 Commit messages:
 - Format: Imperative mood, < 72 chars, no file paths
-- Examples: "Fix SQL injection in EditEventAttendees", "Replace deprecated HTML attributes with Bootstrap CSS", "Add missing element ID for test selector"
+- Examples: "Fix validation in Checkin form", "Replace deprecated HTML attributes with Bootstrap CSS", "Add missing element ID for test selector"
 - Wrong: "Fixed the bug in src/EventEditor.php"
 
 PR organization:

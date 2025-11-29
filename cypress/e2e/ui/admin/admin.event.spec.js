@@ -15,8 +15,8 @@ describe("Admin Event", () => {
     it("Event List", () => {
         cy.visit("ListEvents.php");
         cy.contains("Listing All Church Events");
-        cy.contains("Select Event Types To Display");
-        cy.contains("Display Events in Year");
+        cy.contains("Filter Events");
+        cy.contains("Event Type");
         cy.contains("Add New Event");
     });
 

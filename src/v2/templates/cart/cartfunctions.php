@@ -22,7 +22,7 @@ use ChurchCRM\dto\SystemURLs;
     <?php }
     ?>
     <a href="<?= SystemURLs::getRootPath() . "/CartToEvent.php"?>" class="btn btn-app bg-info"><i
-        class="fa-solid fa-ticket-alt fa-3x"></i><br><?= gettext('Empty Cart to Event') ?></a>
+        class="fa-solid fa-ticket-alt fa-3x"></i><br><?= gettext('Check In to Event') ?></a>
 
     <?php if (AuthenticationManager::getCurrentUser()->isCSVExport()) {
         ?>

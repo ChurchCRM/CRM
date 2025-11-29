@@ -22,7 +22,7 @@ if ($sMessage === null) {
       $eventTitle = $event ? htmlspecialchars($event->getTitle(), ENT_QUOTES, 'UTF-8') : '';
   ?>
       <p class="text-center alert alert-info"><?= $iCount . ' ' . ($iCount === 1 ? gettext('Record') : gettext('Records')) . ' ' . gettext("Emptied into Event") . ':' ?>
-        <a href="<?= SystemURLs::getRootPath() ?>/EditEventAttendees.php?eventId=<?= $iEID ?>"><?= $eventTitle ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/Checkin.php?eventId=<?= $iEID ?>"><?= $eventTitle ?></a>
       </p>
 <?php
       break;
