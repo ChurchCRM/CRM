@@ -55,19 +55,22 @@ jobs:
             }
 
             const issue = context.payload.issue || {};
-            const title = (issue.title || '').toLowerCase();
-            const body = (issue.body || '').toLowerCase();
+            const title = (issue.title || '');
+            const body = (issue.body || '');
+            const titleLower = title.toLowerCase();
+            const bodyLower = body.toLowerCase();
             
             // Check for CVE mentions in title or body (security vulnerability disclosure)
-            const cvePattern = /cve-\d{4}-\d+/i;
+            // Match full CVE format (CVE-2025-1234) or partial (CVE-)
+            const cvePattern = /cve-(\d{4}-\d+)?/i;
             const hasCVE = cvePattern.test(title) || cvePattern.test(body);
             
             // Check if system info was collected (in-app reporter includes "Collected Value Title")
-            const hasSystemInfo = body.includes('collected value title');
+            const hasSystemInfo = bodyLower.includes('collected value title');
             
             // Detect issue type from body content patterns
-            const isBug = body.includes('describe the issue');
-            const isQuestion = body.includes('how can we help');
+            const isBug = bodyLower.includes('describe the issue');
+            const isQuestion = bodyLower.includes('how can we help');
             
             console.log('hasCVE:', hasCVE, 'hasSystemInfo:', hasSystemInfo, 'isBug:', isBug, 'isQuestion:', isQuestion);
 
