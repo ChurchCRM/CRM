@@ -99,7 +99,26 @@ require_once __DIR__ . '/header.php';
                                     </a>
                                 </h6>
                                 <div id="integrity-collapse" class="collapse">
-                                    <table class="table table-sm table-condensed mb-0" id="integrity-checks"></table>
+                                    <table class="table table-sm table-condensed mb-4" id="integrity-checks"></table>
+                                </div>
+
+                                <!-- Orphaned Files - Collapsible (Collapsed by default, hidden initially) -->
+                                <div id="orphaned-files-section" style="display: none;">
+                                    <h6 class="mb-3">
+                                        <a href="#orphaned-collapse" data-toggle="collapse" class="text-danger text-decoration-none collapsed" aria-expanded="false" aria-controls="orphaned-collapse">
+                                            <span>
+                                                <i class="fa-solid fa-exclamation-triangle mr-2"></i>Orphaned Files
+                                                <span id="orphaned-status" class="ml-2">
+                                                    <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                                </span>
+                                            </span>
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </a>
+                                    </h6>
+                                    <div id="orphaned-collapse" class="collapse">
+                                        <p class="small text-muted mb-2">These files are not part of the official release and should be reviewed.</p>
+                                        <table class="table table-sm table-condensed mb-0" id="orphaned-checks"></table>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer bg-white">
