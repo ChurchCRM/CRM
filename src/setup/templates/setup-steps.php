@@ -53,22 +53,6 @@ require_once __DIR__ . '/header.php';
                                     <strong><i class="fa-solid fa-exclamation-triangle"></i> Prerequisites Not Met</strong>
                                     <p class="mb-0 mt-1">Some server requirements are not satisfied. ChurchCRM may not function correctly.</p>
                                 </div>
-                                
-                                <!-- PHP Extensions - Collapsible (Collapsed by default) -->
-                                <h6 class="mb-3">
-                                    <a href="#php-extensions-collapse" data-toggle="collapse" class="text-dark text-decoration-none collapsed" aria-expanded="false" aria-controls="php-extensions-collapse">
-                                        <span>
-                                            <i class="fa-brands fa-php mr-2"></i>PHP Extensions
-                                            <span id="php-extensions-status" class="ml-2">
-                                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
-                                            </span>
-                                        </span>
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </a>
-                                </h6>
-                                <div id="php-extensions-collapse" class="collapse">
-                                    <table class="table table-sm table-condensed mb-4" id="php-extensions"></table>
-                                </div>
 
                                 <!-- File Permissions - Collapsible (Collapsed by default) -->
                                 <h6 class="mb-3">
@@ -99,7 +83,26 @@ require_once __DIR__ . '/header.php';
                                     </a>
                                 </h6>
                                 <div id="integrity-collapse" class="collapse">
-                                    <table class="table table-sm table-condensed mb-0" id="integrity-checks"></table>
+                                    <table class="table table-sm table-condensed mb-4" id="integrity-checks"></table>
+                                </div>
+
+                                <!-- Orphaned Files - Collapsible (Collapsed by default, hidden initially) -->
+                                <div id="orphaned-files-section" style="display: none;">
+                                    <h6 class="mb-3">
+                                        <a href="#orphaned-collapse" data-toggle="collapse" class="text-danger text-decoration-none collapsed" aria-expanded="false" aria-controls="orphaned-collapse">
+                                            <span>
+                                                <i class="fa-solid fa-exclamation-triangle mr-2"></i>Orphaned Files
+                                                <span id="orphaned-status" class="ml-2">
+                                                    <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                                </span>
+                                            </span>
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </a>
+                                    </h6>
+                                    <div id="orphaned-collapse" class="collapse">
+                                        <p class="small text-muted mb-2">These files are not part of the official release and should be reviewed.</p>
+                                        <table class="table table-sm table-condensed mb-0" id="orphaned-checks"></table>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer bg-white">
@@ -118,7 +121,7 @@ require_once __DIR__ . '/header.php';
                                 <h6 class="mb-0"><i class="fa-solid fa-server mr-2"></i>Server Information</h6>
                             </div>
                             <div class="card-body">
-                                <table class="table table-sm table-borderless mb-0">
+                                <table class="table table-sm table-borderless mb-3">
                                     <tr>
                                         <td class="text-muted">PHP Version</td>
                                         <td class="text-right font-weight-bold"><?php echo PHP_VERSION ?></td>
@@ -136,6 +139,22 @@ require_once __DIR__ . '/header.php';
                                         <td class="text-right font-weight-bold"><?php echo ini_get('memory_limit') ?></td>
                                     </tr>
                                 </table>
+
+                                <!-- PHP Extensions - Collapsible -->
+                                <h6 class="mb-2">
+                                    <a href="#php-extensions-collapse" data-toggle="collapse" class="text-dark text-decoration-none collapsed" aria-expanded="false" aria-controls="php-extensions-collapse">
+                                        <span>
+                                            <i class="fa-brands fa-php mr-2"></i>PHP Extensions
+                                            <span id="php-extensions-status" class="ml-2">
+                                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                            </span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </a>
+                                </h6>
+                                <div id="php-extensions-collapse" class="collapse">
+                                    <table class="table table-sm table-condensed mb-0" id="php-extensions"></table>
+                                </div>
                             </div>
                         </div>
                     </div>

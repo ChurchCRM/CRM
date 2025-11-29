@@ -6,12 +6,13 @@ use ChurchCRM\dto\ChurchCRMRelease;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
+use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Github\Client;
-use ChurchCRM\Service\UpgradeService;
 
 class ChurchCRMReleaseManager
 {
@@ -317,6 +318,21 @@ class ChurchCRMReleaseManager
                 $logger->info('Attempting automatic database upgrade post code-deploy');
                 UpgradeService::upgradeDatabaseVersion();
                 $logger->info('Automatic database upgrade completed successfully');
+                
+                // After successful database upgrade, clean up orphaned files
+                $logger->info('Beginning automatic orphaned file cleanup');
+                $cleanupResult = AppIntegrityService::deleteOrphanedFiles();
+                $logger->info('Orphaned file cleanup completed', [
+                    'deleted' => count($cleanupResult['deleted']),
+                    'failed' => count($cleanupResult['failed']),
+                ]);
+                
+                if (!empty($cleanupResult['failed'])) {
+                    $logger->warning('Some orphaned files could not be deleted', [
+                        'failedFiles' => $cleanupResult['failed'],
+                        'errors' => $cleanupResult['errors'],
+                    ]);
+                }
             } catch (\Exception $e) {
                 $logger->error('Automatic database upgrade failed: ' . $e->getMessage(), ['exception' => $e]);
                 // rethrow so the API caller is made aware of the failure
@@ -332,7 +348,7 @@ class ChurchCRMReleaseManager
      * Check if a system update is available for the current installation
      * Returns an array with 'available' (bool) and 'version' (ChurchCRMRelease|null) keys
      *
-     * @return array{available: bool, version: ChurchCRMRelease|null}
+     * @return array{available: bool, version: ChurchCRMRelease|null, latestVersion: ChurchCRMRelease|null}
      */
     public static function checkSystemUpdateAvailable(): array
     {
@@ -346,6 +362,12 @@ class ChurchCRMReleaseManager
                 $_SESSION['ChurchCRMReleases'] = self::populateReleases();
             }
             
+            // Get the latest release from GitHub
+            $latestRelease = null;
+            if (!empty($_SESSION['ChurchCRMReleases'])) {
+                $latestRelease = $_SESSION['ChurchCRMReleases'][0] ?? null;
+            }
+            
             $isCurrent = self::isReleaseCurrent($installedVersion);
             
             if (!$isCurrent) {
@@ -357,20 +379,23 @@ class ChurchCRMReleaseManager
                     ]);
                     return [
                         'available' => true,
-                        'version' => $nextRelease
+                        'version' => $nextRelease,
+                        'latestVersion' => $latestRelease
                     ];
                 }
             }
 
             return [
                 'available' => false,
-                'version' => null
+                'version' => null,
+                'latestVersion' => $latestRelease
             ];
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning('Failed to check for system updates', ['exception' => $e]);
             return [
                 'available' => false,
-                'version' => null
+                'version' => null,
+                'latestVersion' => null
             ];
         }
     }

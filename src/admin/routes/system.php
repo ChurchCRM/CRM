@@ -115,6 +115,22 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'menus.php', $pageArgs);
     });
 
+    // Orphaned Files Management page
+    $group->get('/orphaned-files', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        $orphanedFiles = AppIntegrityService::getOrphanedFiles();
+
+        $pageArgs = [
+            'sRootPath'      => SystemURLs::getRootPath(),
+            'sPageTitle'     => gettext('Orphaned Files Management'),
+            'orphanedFiles'  => $orphanedFiles,
+            'orphanedCount'  => count($orphanedFiles),
+        ];
+
+        return $renderer->render($response, 'orphaned-files.php', $pageArgs);
+    });
+
     // Upgrade page
     $group->get('/upgrade', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -123,24 +139,28 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $taskService = new TaskService();
         $preUpgradeTasks = $taskService->getActivePreUpgradeTasks();
         
-        // Check for warnings: either pre-upgrade tasks OR integrity check failures
+        // Check for warnings: either pre-upgrade tasks OR integrity check failures OR orphaned files
         $hasPreUpgradeTasks = count($preUpgradeTasks) > 0;
         $integrityCheckFailed = AppIntegrityService::getIntegrityCheckStatus() === gettext("Failed");
-        $hasWarnings = $hasPreUpgradeTasks || $integrityCheckFailed;
+        $orphanedFiles = AppIntegrityService::getOrphanedFiles();
+        $hasOrphanedFiles = count($orphanedFiles) > 0;
+        $hasWarnings = $hasPreUpgradeTasks || $integrityCheckFailed || $hasOrphanedFiles;
         
-        // Get integrity check data if failed
+        // Get integrity check data if failed or orphaned files exist
         $integrityCheckData = [];
-        if ($integrityCheckFailed) {
+        if ($integrityCheckFailed || $hasOrphanedFiles) {
             $integrityCheckData = [
                 'status' => AppIntegrityService::getIntegrityCheckStatus(),
                 'message' => AppIntegrityService::getIntegrityCheckMessage(),
                 'files' => AppIntegrityService::getFilesFailingIntegrityCheck(),
+                'orphanedFiles' => $orphanedFiles,
             ];
         }
         
         // Get version information
         $currentVersion = VersionUtils::getInstalledVersion();
         $availableVersion = null;
+        $latestGitHubVersion = null;
         $isUpdateAvailable = false;
         
         // Check if update information is available in session
@@ -149,6 +169,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             if (isset($_SESSION['systemUpdateVersion']) && $_SESSION['systemUpdateVersion'] !== null) {
                 $availableVersion = $_SESSION['systemUpdateVersion']->__toString();
             }
+        }
+        
+        // Get the latest GitHub version (always show this, even if no update available)
+        if (isset($_SESSION['systemLatestVersion']) && $_SESSION['systemLatestVersion'] !== null) {
+            $latestGitHubVersion = $_SESSION['systemLatestVersion']->__toString();
         }
         
         // Get pre-release upgrade setting info
@@ -163,8 +188,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'hasPreUpgradeTasks'    => $hasPreUpgradeTasks,
             'integrityCheckFailed'  => $integrityCheckFailed,
             'integrityCheckData'    => $integrityCheckData,
+            'hasOrphanedFiles'      => $hasOrphanedFiles,
             'currentVersion'        => $currentVersion,
             'availableVersion'      => $availableVersion,
+            'latestGitHubVersion'   => $latestGitHubVersion,
             'isUpdateAvailable'     => $isUpdateAvailable,
             'prereleaseConfig'      => $prereleaseConfig,
             'allowPrereleaseUpgrade' => $allowPrereleaseUpgrade,

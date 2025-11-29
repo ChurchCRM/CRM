@@ -28,6 +28,7 @@ $app->setBasePath($basePath);
 // Register routes FIRST before middleware
 require __DIR__ . '/routes/api/demo.php';
 require __DIR__ . '/routes/api/database.php';
+require __DIR__ . '/routes/api/orphaned-files.php';
 require __DIR__ . '/routes/system.php';
 
 // Body parsing and routing middleware

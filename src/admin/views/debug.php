@@ -11,25 +11,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <?php
 $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
-$hasIntegrityIssues = count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0;
-$emailValid = SystemConfig::hasValidMailServerSettings();
 ?>
-<?php if ($hasIntegrityIssues || !$emailValid): ?>
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong><i class="fa fa-exclamation-triangle"></i> <?= gettext('System Health Issues Detected') ?>:</strong>
-    <ul class="mb-0 mt-2">
-        <?php if ($hasIntegrityIssues): ?>
-        <li><?= gettext('Warning: Signature mismatch. Some ChurchCRM system files may have been modified since the last installation.') ?></li>
-        <?php endif; ?>
-        <?php if (!$emailValid): ?>
-        <li><?= gettext('Email server settings are invalid. Outgoing emails may not work.') ?></li>
-        <?php endif; ?>
-    </ul>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<?php endif; ?>
 <div class="row">
     <!-- Installation Configuration - First Card -->
     <div class="col-md-4">
@@ -91,71 +73,60 @@ $emailValid = SystemConfig::hasValidMailServerSettings();
             </div>
         </div>
     </div>
-    <!-- Health Checks -->
+    <!-- Application Integrity Check -->
+    <?php
+    $failing = AppIntegrityService::getFilesFailingIntegrityCheck();
+    $failingCount = count($failing);
+    $integrityPassed = $integrityStatus === gettext('Passed');
+    ?>
     <div class="col-md-4">
-        <div class="card">
-            <div class="card-header" id="headingIntegrity">
-                <h4 data-toggle="collapse" data-target="#collapseIntegrity" aria-expanded="false" aria-controls="collapseIntegrity" style="cursor: pointer;">
-                    <i class="fa fa-shield-alt mr-2"></i><?= gettext('Application Integrity Check') ?> 
-                    <span class="badge <?= $integrityStatus === 'Passed' ? 'badge-success' : 'badge-danger' ?> ml-2"><?= $integrityStatus ?></span>
-                    <i class="fa fa-chevron-down float-right"></i>
+        <div class="card <?= $integrityPassed ? '' : 'border-warning' ?>">
+            <div class="card-header <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?> text-white">
+                <h4 class="mb-0">
+                    <i class="fa fa-shield-alt mr-2"></i><?= gettext('Application Integrity') ?>
+                    <?php if (!$integrityPassed): ?>
+                        <span class="badge badge-light ml-2"><?= $failingCount ?></span>
+                    <?php endif; ?>
                 </h4>
             </div>
-            <div id="collapseIntegrity" class="collapse" aria-labelledby="headingIntegrity">
-                <div class="card-body">
-                <?php $message = AppIntegrityService::getIntegrityCheckMessage(); ?>
-                <p><strong><?= gettext('Details:') ?></strong> <?= !empty($message) ? $message : gettext('No integrity check has been performed yet.') ?></p>
-                <?php
-                $failing = AppIntegrityService::getFilesFailingIntegrityCheck();
-                if (count($failing) > 0) {
-                    ?>
-                    <div class="alert alert-info mt-3">
-                        <strong><i class="fa fa-info-circle mr-2"></i><?= gettext('Files Failing Integrity Check') ?>:</strong>
-                        <p class="mb-0 mt-2 text-muted"><?= gettext('The following files have hash mismatches or are missing:') ?></p>
-                    </div>
-                    <div class="table-responsive">
-                    <table class="table table-sm table-striped" width="100%" id="fileIntegrityCheckResultsTable">
-                        <thead>
-                        <tr>
-                            <th><?= gettext('File Name') ?></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        foreach ($failing as $filename) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <code class="text-monospace" style="word-break: break-all; font-size: 0.85rem;">
-                                        <?= htmlspecialchars($filename) ?>
-                                    </code>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
-                        </tbody>
-                    </table>
-                    </div>
-                    <div class="alert alert-warning mt-3">
-                        <small class="text-muted">
-                            <strong><?= gettext('Tip:') ?></strong>
-                            <?= gettext('Hash mismatches can occur if you have customized files or installed extensions. If you did not intentionally modify these files, consider re-deploying from an official release.') ?>
-                        </small>
-                    </div>
-                    <?php
-                } else {
-                    ?>
-                    <div class="alert alert-success">
-                        <i class="fa fa-check-circle mr-2"></i><?= gettext('All system files have passed integrity validation.') ?>
-                    </div>
-                    <?php
-                }
-                ?>
-                </div>
+            <div class="card-body">
+                <?php if ($integrityPassed): ?>
+                    <p><i class="fa fa-check-circle text-success mr-2"></i><?= gettext('All system files have passed integrity validation.') ?></p>
+                    <p class="text-muted small mb-0"><?= gettext('File signatures match the official release.') ?></p>
+                <?php else: ?>
+                    <p><?= sprintf(gettext('%d files have failed integrity validation.'), $failingCount) ?></p>
+                    <p class="text-muted small"><?= gettext('Files may be modified or missing. Consider re-deploying from an official release.') ?></p>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-warning btn-block">
+                        <i class="fa fa-cloud-upload-alt mr-2"></i><?= gettext('System Upgrade') ?>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
+    <?php
+    // Check for orphaned files and show a separate card if found
+    $orphanedFiles = AppIntegrityService::getOrphanedFiles();
+    $orphanedCount = count($orphanedFiles);
+    if ($orphanedCount > 0):
+    ?>
+    <div class="col-md-4">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">
+                    <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Orphaned Files') ?>
+                    <span class="badge badge-light ml-2"><?= $orphanedCount ?></span>
+                </h4>
+            </div>
+            <div class="card-body">
+                <p><?= sprintf(gettext('%d orphaned files were detected on your server.'), $orphanedCount) ?></p>
+                <p class="text-muted small"><?= gettext('These files are not part of the official release and may pose security risks.') ?></p>
+                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-danger btn-block">
+                    <i class="fa fa-trash mr-2"></i><?= gettext('Manage Orphaned Files') ?>
+                </a>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingPrerequisites">

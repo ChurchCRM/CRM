@@ -27,9 +27,12 @@ Routing & middleware
   - Set `$sPageTitle` then `require_once 'Include/Header.php'`
   - Add menu entries in `src/ChurchCRM/Config/Menu/Menu.php`
   - Do NOT create new pages under `/v2/admin/` - use legacy `src/*.php` pattern
-- **Admin APIs**: Place in `src/api/routes/system/` with AdminRoleAuthMiddleware
-  - Example: `system-database.php` contains `/database/import-demo-data` endpoint
-  - Use kebab-case for endpoint names (e.g., `/import-demo-data`)
+- **Admin APIs**: Place in `src/admin/routes/api/` (NEW location)
+  - Example: `orphaned-files.php` contains `/api/orphaned-files/delete-all` endpoint
+  - Routes are prefixed with `/admin/api/` when accessed from frontend
+  - Use kebab-case for endpoint names (e.g., `/delete-all`)
+  - AdminRoleAuthMiddleware is applied at the router level
+- **Legacy Admin APIs** (deprecated): `src/api/routes/system/` - do NOT add new files here
 - Middleware order (CRITICAL - Slim 4 uses LIFO):
     1. addBodyParsingMiddleware()
     2. addRoutingMiddleware()
@@ -555,6 +558,7 @@ PR organization:
 | `src/ChurchCRM/Service/` | Business logic layer |
 | `src/ChurchCRM/model/ChurchCRM/` | Propel ORM generated classes (don't edit) |
 | `src/api/` | REST API entry point + routes |
+| `src/admin/routes/api/` | Admin-only API endpoints (NEW - use this for admin APIs) |
 | `src/Include/` | Utility functions, helpers, Config.php |
 | `src/locale/` | i18n/translation strings |
 | `src/skin/v2/` | Compiled CSS/JS from Webpack |
