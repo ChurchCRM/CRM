@@ -14,6 +14,23 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
 $app->get('/dashboard', 'viewDashboard');
+$app->get('/access-denied', 'viewAccessDenied');
+
+function viewAccessDenied(Request $request, Response $response, array $args): Response
+{
+    $renderer = new PhpRenderer('templates/common/');
+
+    $queryParams = $request->getQueryParams();
+    $missingRole = $queryParams['role'] ?? '';
+
+    $pageArgs = [
+        'sRootPath'   => SystemURLs::getRootPath(),
+        'sPageTitle'  => gettext('Access Denied'),
+        'missingRole' => $missingRole,
+    ];
+
+    return $renderer->render($response, 'access-denied.php', $pageArgs);
+}
 
 function viewDashboard(Request $request, Response $response, array $args): Response
 {
