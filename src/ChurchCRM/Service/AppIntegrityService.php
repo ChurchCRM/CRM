@@ -283,4 +283,140 @@ class AppIntegrityService
 
         return false;
     }
+
+    /**
+     * Find files on the server that are not in the signatures.json manifest
+     * These are potentially orphaned files that could be security risks
+     *
+     * @return array List of orphaned file paths relative to document root
+     */
+    public static function getOrphanedFiles(): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $documentRoot = AppIntegrityService::resolveDocumentRoot();
+        $signatureFile = $documentRoot . '/admin/data/signatures.json';
+        $orphanedFiles = [];
+
+        // Get list of files in signatures.json
+        $validFiles = [];
+        if (is_file($signatureFile) && is_readable($signatureFile)) {
+            try {
+                $signatureFileContents = file_get_contents($signatureFile);
+                MiscUtils::throwIfFailed($signatureFileContents);
+                $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
+                if (isset($signatureData->files) && is_array($signatureData->files)) {
+                    foreach ($signatureData->files as $file) {
+                        $validFiles[$file->filename] = true;
+                    }
+                }
+            } catch (\Exception $e) {
+                $logger->warning('Error reading signatures for orphan detection', ['exception' => $e]);
+                return [];
+            }
+        }
+
+        // Scan for .php and .js files not in the manifest
+        $scanDirs = ['/src', '/react', '/webpack', '/install'];
+        foreach ($scanDirs as $dir) {
+            $fullPath = $documentRoot . $dir;
+            if (is_dir($fullPath)) {
+                $orphanedFiles = array_merge(
+                    $orphanedFiles,
+                    AppIntegrityService::scanDirectoryForOrphans($fullPath, $documentRoot, $validFiles)
+                );
+            }
+        }
+
+        $logger->info('Orphan file scan complete', ['count' => count($orphanedFiles)]);
+        return $orphanedFiles;
+    }
+
+    /**
+     * Recursively scan a directory for orphaned files
+     *
+     * @param string $currentPath The path to scan
+     * @param string $documentRoot The document root for relative path calculation
+     * @param array $validFiles Array of valid file paths from signatures
+     * @return array List of orphaned file paths
+     */
+    private static function scanDirectoryForOrphans(string $currentPath, string $documentRoot, array $validFiles): array
+    {
+        $orphanedFiles = [];
+        try {
+            $items = @scandir($currentPath);
+            if ($items === false) {
+                return [];
+            }
+
+            foreach ($items as $item) {
+                if ($item === '.' || $item === '..') {
+                    continue;
+                }
+
+                $fullPath = $currentPath . '/' . $item;
+                if (is_dir($fullPath)) {
+                    // Recursively scan subdirectories
+                    $orphanedFiles = array_merge(
+                        $orphanedFiles,
+                        AppIntegrityService::scanDirectoryForOrphans($fullPath, $documentRoot, $validFiles)
+                    );
+                } elseif (is_file($fullPath) && preg_match('/\.(php|js)$/i', $item)) {
+                    // Check if file is in valid list
+                    $relativePath = str_replace($documentRoot . '/', '', $fullPath);
+                    if (!isset($validFiles[$relativePath])) {
+                        $orphanedFiles[] = $relativePath;
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->warning('Error scanning directory for orphans', [
+                'path' => $currentPath,
+                'exception' => $e,
+            ]);
+        }
+
+        return $orphanedFiles;
+    }
+
+    /**
+     * Delete all orphaned files found on the system
+     *
+     * @return array Result array with 'deleted', 'failed', and 'errors' keys
+     */
+    public static function deleteOrphanedFiles(): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $documentRoot = AppIntegrityService::resolveDocumentRoot();
+        $orphanedFiles = AppIntegrityService::getOrphanedFiles();
+        $result = [
+            'deleted' => [],
+            'failed' => [],
+            'errors' => [],
+        ];
+
+        foreach ($orphanedFiles as $filePath) {
+            $fullPath = $documentRoot . '/' . $filePath;
+            try {
+                if (is_file($fullPath)) {
+                    if (@unlink($fullPath)) {
+                        $result['deleted'][] = $filePath;
+                        $logger->info('Deleted orphaned file', ['file' => $filePath]);
+                    } else {
+                        $result['failed'][] = $filePath;
+                        $result['errors'][] = sprintf('Failed to delete: %s', $filePath);
+                        $logger->warning('Failed to delete orphaned file', ['file' => $filePath]);
+                    }
+                }
+            } catch (\Exception $e) {
+                $result['failed'][] = $filePath;
+                $result['errors'][] = $e->getMessage();
+                $logger->error('Error deleting orphaned file', [
+                    'file' => $filePath,
+                    'exception' => $e,
+                ]);
+            }
+        }
+
+        return $result;
+    }
 }
