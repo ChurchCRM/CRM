@@ -30,7 +30,7 @@ if (array_key_exists('FamilyID', $_GET)) {
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
     if (!(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() || (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId()))) {
-        RedirectUtils::redirect('v2/dashboard');
+        RedirectUtils::securityRedirect('EditRecords');
     }
 
     $family = FamilyQuery::create()->findOneById($iFamilyID);
@@ -38,7 +38,7 @@ if ($iFamilyID > 0) {
         RedirectUtils::redirect('v2/dashboard');
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('AddRecords');
 }
 
 // Get the list of custom person fields
