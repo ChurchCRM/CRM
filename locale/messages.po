@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-29 10:53-0800\n"
+"POT-Creation-Date: 2025-11-29 14:01-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,16 +82,36 @@ msgid "\"Why Came\" notes for "
 msgstr ""
 
 #, php-format
+msgid "%d Orphaned Files Detected"
+msgstr ""
+
+#, php-format
 msgid "%d event in %s"
 msgid_plural "%d events in %s"
 msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr ""
+
+#, php-format
+msgid "%d files have failed integrity validation."
+msgstr ""
+
+#, php-format
+msgid "%d files will be permanently deleted."
+msgstr ""
+
+#, php-format
 msgid "%d month old"
 msgid_plural "%d months old"
 msgstr[0] ""
 msgstr[1] ""
+
+#, php-format
+msgid "%d orphaned files were detected on your server."
+msgstr ""
 
 #, php-format
 msgid "%d year old"
@@ -109,6 +129,9 @@ msgid "(No assigned family)"
 msgstr ""
 
 msgid "(Use the textbox for countries other than US and Canada)"
+msgstr ""
+
+msgid "(refresh from GitHub)"
 msgstr ""
 
 msgid "(this action cannot be undone)"
@@ -497,6 +520,9 @@ msgstr ""
 msgid "All Families"
 msgstr ""
 
+msgid "All Files Verified"
+msgstr ""
+
 msgid "All Funds"
 msgstr ""
 
@@ -546,6 +572,9 @@ msgid "All system file signatures match the expected values."
 msgstr ""
 
 msgid "All system files have passed integrity validation."
+msgstr ""
+
+msgid "All system files match their expected signatures."
 msgstr ""
 
 msgid "Allow Pre-release Upgrades"
@@ -634,13 +663,16 @@ msgstr ""
 msgid "Api Key"
 msgstr ""
 
-msgid "Application Integrity Check"
+msgid "Application Integrity"
 msgstr ""
 
 msgid "Application Integrity Check Failed"
 msgstr ""
 
 msgid "Application Prerequisites"
+msgstr ""
+
+msgid "Application files updated to latest version"
 msgstr ""
 
 msgid "Apply Filters"
@@ -663,6 +695,9 @@ msgid "Arabic - Egypt"
 msgstr ""
 
 msgid "Are you sure you want to change the end time for "
+msgstr ""
+
+msgid "Are you sure you want to delete all orphaned files?"
 msgstr ""
 
 msgid "Are you sure you want to delete the selected"
@@ -785,14 +820,14 @@ msgstr ""
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr ""
 
-msgid "Available Version:"
-msgstr ""
-
 #. Context: countries
 msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
 
 msgid "Back"
+msgstr ""
+
+msgid "Back to Debug Info"
 msgstr ""
 
 msgid "Back to Deposit Slip"
@@ -1346,6 +1381,9 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+msgid "Close & Refresh"
+msgstr ""
+
 msgid "Closed"
 msgstr ""
 
@@ -1399,6 +1437,9 @@ msgid "Confirm Delete"
 msgstr ""
 
 msgid "Confirm Delete Group"
+msgstr ""
+
+msgid "Confirm Deletion"
 msgstr ""
 
 msgid "Confirm Disable Group Specific Properties"
@@ -1688,6 +1729,9 @@ msgstr ""
 msgid "Database reset failed: "
 msgstr ""
 
+msgid "Database schema upgraded automatically"
+msgstr ""
+
 msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
 msgstr ""
 
@@ -1787,7 +1831,13 @@ msgstr ""
 msgid "Delete Access Token"
 msgstr ""
 
+msgid "Delete All Files"
+msgstr ""
+
 msgid "Delete All Logs"
+msgstr ""
+
+msgid "Delete All Orphaned Files"
 msgstr ""
 
 msgid "Delete Calendar"
@@ -1829,6 +1879,10 @@ msgstr ""
 msgid "Deleted"
 msgstr ""
 
+#, php-format
+msgid "Deleted %d files, %d failed"
+msgstr ""
+
 msgid "Deleted from group"
 msgstr ""
 
@@ -1842,6 +1896,9 @@ msgid "Deleting this event type will NOT delete existing events. Are you sure?"
 msgstr ""
 
 msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr ""
+
+msgid "Deletion Results"
 msgstr ""
 
 #. Context: userconfig_ucfg
@@ -1916,9 +1973,6 @@ msgid "Description"
 msgstr ""
 
 msgid "Details"
-msgstr ""
-
-msgid "Details:"
 msgstr ""
 
 msgid "Developer Chat"
@@ -2098,9 +2152,6 @@ msgstr ""
 msgid "Edit Fundraiser"
 msgstr ""
 
-msgid "Edit General Settings"
-msgstr ""
-
 msgid "Edit Group"
 msgstr ""
 
@@ -2195,9 +2246,6 @@ msgid "Email export"
 msgstr ""
 
 msgid "Email is Not Valid"
-msgstr ""
-
-msgid "Email server settings are invalid. Outgoing emails may not work."
 msgstr ""
 
 msgid "Email/Username"
@@ -2780,22 +2828,34 @@ msgstr ""
 msgid "Fiji"
 msgstr ""
 
+msgid "File Integrity Check"
+msgstr ""
+
+msgid "File Integrity Issues Detected"
+msgstr ""
+
 msgid "File Name"
 msgstr ""
 
 msgid "File Name:"
 msgstr ""
 
+msgid "File Path"
+msgstr ""
+
 msgid "File Type"
 msgstr ""
 
-msgid "Files Failing Integrity Check"
+msgid "File signatures match the official release."
 msgstr ""
 
 msgid "Files Missing"
 msgstr ""
 
 msgid "Files Modified"
+msgstr ""
+
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
 msgstr ""
 
 msgid "Files with issues"
@@ -2943,6 +3003,12 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr ""
 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr ""
+
+msgid "Force Re-install"
+msgstr ""
+
+msgid "Force re-install initiated. Please backup your database before applying."
 msgstr ""
 
 msgid "Foreground Color"
@@ -3289,9 +3355,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Haiti"
-msgstr ""
-
-msgid "Hash mismatches can occur if you have customized files or installed extensions. If you did not intentionally modify these files, consider re-deploying from an official release."
 msgstr ""
 
 msgid "Head Count"
@@ -3761,6 +3824,9 @@ msgstr ""
 msgid "Latest Families"
 msgstr ""
 
+msgid "Latest GitHub Version:"
+msgstr ""
+
 msgid "Latest Persons"
 msgstr ""
 
@@ -4009,6 +4075,9 @@ msgstr ""
 msgid "Manage Notes"
 msgstr ""
 
+msgid "Manage Orphaned Files"
+msgstr ""
+
 msgid "Manage Properties and Classifications"
 msgstr ""
 
@@ -4242,6 +4311,9 @@ msgstr ""
 msgid "Missing Families? Update Family Latitude or Longitude now."
 msgstr ""
 
+msgid "Missing Files"
+msgstr ""
+
 msgid "Missing Gender Data"
 msgstr ""
 
@@ -4274,6 +4346,9 @@ msgid "Mobile Phone"
 msgstr ""
 
 msgid "Moderate Detail"
+msgstr ""
+
+msgid "Modified Files"
 msgstr ""
 
 #. Context: countries
@@ -4550,6 +4625,9 @@ msgstr ""
 msgid "No Group Selected"
 msgstr ""
 
+msgid "No Orphaned Files Found"
+msgstr ""
+
 msgid "No Payments on this Deposit"
 msgstr ""
 
@@ -4587,9 +4665,6 @@ msgid "No funds have been added yet"
 msgstr ""
 
 msgid "No group assignments."
-msgstr ""
-
-msgid "No integrity check has been performed yet."
 msgstr ""
 
 msgid "No log files found."
@@ -4845,6 +4920,21 @@ msgid "Optional Data to Include"
 msgstr ""
 
 msgid "Optional notes about attendance..."
+msgstr ""
+
+msgid "Orphaned Files"
+msgstr ""
+
+msgid "Orphaned Files Management"
+msgstr ""
+
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr ""
+
+msgid "Orphaned files from previous versions cleaned up"
+msgstr ""
+
+msgid "Orphaned files from previous versions were found. These should be reviewed and deleted for security."
 msgstr ""
 
 msgid "Other"
@@ -5554,6 +5644,9 @@ msgstr ""
 msgid "Quiet Presort"
 msgstr ""
 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr ""
+
 msgid "Re-import to selected family"
 msgstr ""
 
@@ -5565,6 +5658,9 @@ msgid "Recent friends"
 msgstr ""
 
 msgid "Recipient Naming Method"
+msgstr ""
+
+msgid "Recommendation: Review and delete these files before or after the upgrade."
 msgstr ""
 
 msgid "Record"
@@ -5586,6 +5682,9 @@ msgid "Recurrence Pattern"
 msgstr ""
 
 msgid "Red text"
+msgstr ""
+
+msgid "Refresh List"
 msgstr ""
 
 msgid "Refresh from GitHub"
@@ -5801,6 +5900,9 @@ msgid "Review"
 msgstr ""
 
 msgid "Review & Submit"
+msgstr ""
+
+msgid "Review the files below and delete them to improve security."
 msgstr ""
 
 msgid "Role"
@@ -6041,6 +6143,16 @@ msgid "Security Groups Editor"
 msgstr ""
 
 msgid "Security Option"
+msgstr ""
+
+msgid "Security Recommendation"
+msgstr ""
+
+#, php-format
+msgid "Security Warning: %d orphaned files detected"
+msgstr ""
+
+msgid "Security Warning: Orphaned Files Detected"
 msgstr ""
 
 msgid "See All People"
@@ -6409,6 +6521,9 @@ msgstr ""
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr ""
 
+msgid "Some system files have been modified or are missing. Review the debug page for details."
+msgstr ""
+
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
 msgstr ""
 
@@ -6606,9 +6721,6 @@ msgstr ""
 msgid "System & Configuration"
 msgstr ""
 
-msgid "System Health Issues Detected"
-msgstr ""
-
 msgid "System Logs"
 msgstr ""
 
@@ -6724,7 +6836,7 @@ msgstr ""
 msgid "The desired gender to search the database for."
 msgstr ""
 
-msgid "The following files have hash mismatches or are missing:"
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -6808,6 +6920,15 @@ msgstr ""
 msgid "These are the family role numbers designated as spouse"
 msgstr ""
 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr ""
+
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr ""
+
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr ""
+
 msgid "This Family is Deactivated"
 msgstr ""
 
@@ -6865,6 +6986,9 @@ msgstr ""
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr ""
 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr ""
+
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr ""
 
@@ -6879,9 +7003,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Timor-Leste"
-msgstr ""
-
-msgid "Tip:"
 msgstr ""
 
 msgid "Title"
@@ -7157,9 +7278,6 @@ msgstr ""
 msgid "Unsupported Two Factor Authentication Configuration"
 msgstr ""
 
-msgid "Up to date"
-msgstr ""
-
 msgid "Update"
 msgstr ""
 
@@ -7209,6 +7327,9 @@ msgid "Upgrade Complete!"
 msgstr ""
 
 msgid "Upgrade Required"
+msgstr ""
+
+msgid "Upgrade Summary"
 msgstr ""
 
 msgid "Upgrade database now"
@@ -7545,9 +7666,6 @@ msgstr ""
 msgid "Warning: Signature mismatch"
 msgstr ""
 
-msgid "Warning: Signature mismatch. Some ChurchCRM system files may have been modified since the last installation."
-msgstr ""
-
 msgid "Warnings"
 msgstr ""
 
@@ -7586,6 +7704,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr ""
+
+msgid "What are Orphaned Files?"
 msgstr ""
 
 msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
@@ -7750,6 +7871,9 @@ msgid "Your ChurchCRM account was unlocked."
 msgstr ""
 
 msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr ""
+
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
 msgstr ""
 
 msgid "Your ChurchCRM installation is running the latest version."
