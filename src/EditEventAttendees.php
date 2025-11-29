@@ -6,30 +6,37 @@ require_once 'Include/Functions.php';
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 
 $sPageTitle = gettext('Church Event Editor');
 require_once 'Include/Header.php';
 
-$sAction = $_POST['Action'];
-$EventID = $_POST['EID']; // from ListEvents button=Attendees
-$EvtName = $_POST['EName'];
-$EvtDesc = $_POST['EDesc'];
-$EvtDate = $_POST['EDate'];
+// Safely fetch inputs (use legacyFilterInputArr to avoid undefined index warnings)
+$sAction = InputUtils::legacyFilterInputArr($_POST, 'Action');
+$EventID = InputUtils::legacyFilterInputArr($_POST, 'EID', 'int'); // from ListEvents button=Attendees
+$EvtName = InputUtils::legacyFilterInputArr($_POST, 'EName');
+$EvtDesc = InputUtils::legacyFilterInputArr($_POST, 'EDesc');
+$EvtDate = InputUtils::legacyFilterInputArr($_POST, 'EDate');
 
 // Process the action inputs
 if ($sAction == 'Delete') {
-    $dpeEventID = InputUtils::legacyFilterInput($_POST['DelPerEventID'], 'int');
-    $dpePerID = InputUtils::legacyFilterInput($_POST['DelPerID'], 'int');
-    $dpeSQL = "DELETE FROM event_attend WHERE event_id=$dpeEventID AND person_id=$dpePerID LIMIT 1";
-    RunQuery($dpeSQL);
-    $ShowAttendees = 1;
+    $dpeEventID = InputUtils::legacyFilterInputArr($_POST, 'DelPerEventID', 'int');
+    $dpePerID = InputUtils::legacyFilterInputArr($_POST, 'DelPerID', 'int');
+    if ($dpeEventID && $dpePerID) {
+        // Use Propel to delete the attendance row (prevents SQL injection)
+        EventAttendQuery::create()
+            ->filterByEventId($dpeEventID)
+            ->filterByPersonId($dpePerID)
+            ->delete();
+    }
 }
 
-if ($EventID === null) {
-    $EventID = InputUtils::legacyFilterInput($_GET['eventId'], 'int');
+
+if (empty($EventID)) {
+    $EventID = InputUtils::legacyFilterInputArr($_GET, 'eventId', 'int');
 }
 
-$event = EventQuery::create()->findPk($EventID);
+$event = EventQuery::create()->findPk((int) $EventID);
 
 if (empty($event)) {
     RedirectUtils::redirect('ListEvents.php');
@@ -47,9 +54,14 @@ if (empty($event)) {
     <strong><?= gettext('Description')?>:</strong><br/>
     <?= $EvtDesc ?>
     <p/>
+    <div class="mb-3">
+      <a href="Checkin.php?eventId=<?= $EventID ?>" class="btn btn-primary" title="<?= gettext('Check people in to this event') ?>">
+        <i class="fas fa-check-circle"></i> <?= gettext('Check In People') ?>
+      </a>
+    </div>
     <form method="post" action="EditEventAttendees.php" name="AttendeeEditor">
       <input type="hidden" name="EID" value="<?= $EventID  ?>">
-  <table class="table">
+  <table class="table table-sm table-striped">
   <thead>
   <tr>
     <th width="35%"><?= gettext('Name') ?></th>
@@ -60,37 +72,47 @@ if (empty($event)) {
   </thead>
   <tbody>
 <?php
-$sSQL = 'SELECT person_id, per_LastName FROM event_attend JOIN person_per ON person_per.per_id = event_attend.person_id WHERE event_id = ' . $EventID . ' ORDER by per_LastName, per_FirstName';
-$rsOpps = RunQuery($sSQL);
-$numAttRows = mysqli_num_rows($rsOpps);
-if ($numAttRows != 0) {
-    $sRowClass = 'RowColorA';
-    for ($na = 0; $na < $numAttRows; $na++) {
-        $attRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-        extract($attRow);
-        $sSQL = 'SELECT per_Title, per_ID, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Email, per_HomePhone, per_Country, fam_HomePhone, fam_Email, fam_Country FROM person_per LEFT JOIN family_fam ON per_fam_id=fam_id WHERE per_ID = ' . $person_id;
-        $perOpps = RunQuery($sSQL);
-        $perRow = mysqli_fetch_array($perOpps, MYSQLI_BOTH);
-        extract($perRow);
-        $sRowClass = AlternateRowStyle($sRowClass);
+// Fetch attendees using Propel to avoid raw SQL
+$attendees = EventAttendQuery::create()
+    ->filterByEventId((int) $EventID)
+    ->joinWithPerson()
+    ->usePersonQuery()
+    ->orderByLastName()
+    ->orderByFirstName()
+    ->endUse()
+    ->find();
 
-        $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+if ($attendees->count() != 0) {
+    foreach ($attendees as $att) {
+        $person = $att->getPerson();
+        if ($person === null) {
+            continue;
+        }
 
-        $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
-        $sEmail = SelectWhichInfo($per_Email, $fam_Email, false); ?>
-    <tr class="<?= $sRowClass ?>">
-        <td class="TextColumn"><?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) ?></td>
+        $family = $person->getFamily();
+
+        $famCountry = $family ? $family->getFamCountry() : null;
+        $sPhoneCountry = SelectWhichInfo($person->getPerCountry(), $famCountry, false);
+        $sHomePhone = SelectWhichInfo(
+            ExpandPhoneNumber($person->getPerHomephone(), $sPhoneCountry, $dummy),
+            ExpandPhoneNumber($family ? $family->getFamHomePhone() : null, $famCountry, $dummy),
+            true
+        );
+        $sEmail = SelectWhichInfo($person->getPerEmail(), $family ? $family->getFamEmail() : null, false);
+?>
+    <tr>
+        <td class="TextColumn"><?= FormatFullName($person->getPerTitle(), $person->getPerFirstName(), $person->getPerMiddleName(), $person->getPerLastName(), $person->getPerSuffix(), 3) ?></td>
         <td class="TextColumn"><?= $sEmail ? '<a href="mailto:' . $sEmail . '" title="Send Email">' . $sEmail . '</a>' : 'Not Available' ?></td>
         <td class="TextColumn"><?= $sHomePhone ? $sHomePhone : 'Not Available' ?></td>
     <td class="TextColumn text-center" colspan="1">
       <form method="POST" action="EditEventAttendees.php" name="DeletePersonFromEvent">
-          <input type="hidden" name="DelPerID" value="<?= $per_ID ?>">
+          <input type="hidden" name="DelPerID" value="<?= $person->getPerId() ?>">
           <input type="hidden" name="DelPerEventID" value="<?= $EventID ?>">
           <input type="hidden" name="EID" value="<?= $EventID ?>">
           <input type="hidden" name="EName" value="<?= $EvtName ?>">
           <input type="hidden" name="EDesc" value="<?= $EvtDesc ?>">
           <input type="hidden" name="EDate" value="<?= $EvtDate ?>">
-          <input type="submit" name="Action" value="<?= gettext('Delete') ?>" class="btn btn-danger" onClick="return confirm("<?= gettext('Are you sure you want to DELETE this person from Event ID: ') . $EventID ?>")">
+          <input type="submit" name="Action" value="<?= gettext('Delete') ?>" class="btn btn-danger" onClick="return confirm('<?= gettext('Are you sure you want to DELETE this person from Event ID: ') . $EventID ?>')">
       </form>
      </td>
     </tr>
