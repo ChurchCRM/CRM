@@ -20,8 +20,26 @@ function viewAccessDenied(Request $request, Response $response, array $args): Re
 {
     $renderer = new PhpRenderer('templates/common/');
 
+    // Allowed role codes that can be displayed on the access-denied page
+    $allowedRoles = [
+        'Admin',
+        'Finance',
+        'ManageGroups',
+        'EditRecords',
+        'DeleteRecords',
+        'AddRecords',
+        'MenuOptions',
+        'Notes',
+        'CreateDirectory',
+        'AddEvent',
+        'CSVExport',
+        'Authentication',
+    ];
+
     $queryParams = $request->getQueryParams();
-    $missingRole = $queryParams['role'] ?? '';
+    $missingRole = in_array($queryParams['role'] ?? '', $allowedRoles, true)
+        ? $queryParams['role']
+        : '';
 
     $pageArgs = [
         'sRootPath'   => SystemURLs::getRootPath(),
