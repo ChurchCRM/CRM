@@ -47,11 +47,6 @@ class BackupDownloader
                     header('Content-type: application/zip');
                     header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
                     break;
-                case 'enc':
-                    // Encrypted backup files (AES-256 via Defuse)
-                    header('Content-type: application/octet-stream');
-                    header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
-                    break;
                     // add more headers for other content types here
                 default:
                     header('Content-type: application/octet-stream');

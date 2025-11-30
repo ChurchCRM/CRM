@@ -81,16 +81,6 @@ function initializeFileInput() {
         $fileSize.text(formatFileSize(file.size));
         $fileInfo.removeClass('d-none');
         $dropzone.addClass('has-file');
-        
-        // Show encryption warning if file ends with .enc
-        var isEncrypted = file.name.endsWith('.enc');
-        if (isEncrypted) {
-            $('#encryptedFileWarning').removeClass('d-none');
-            $('#restorePassword').prop('required', true).attr('placeholder', i18next.t('Password required for encrypted backup'));
-        } else {
-            $('#encryptedFileWarning').addClass('d-none');
-            $('#restorePassword').prop('required', false).attr('placeholder', i18next.t('Enter password if backup is encrypted'));
-        }
     }
 }
 
@@ -121,18 +111,6 @@ function handleRestoreSubmit($form) {
             type: 'error',
             delay: 3000
         });
-        return;
-    }
-    
-    // Validate password is provided for encrypted files
-    var isEncrypted = file.name.endsWith('.enc');
-    var password = $('#restorePassword').val();
-    if (isEncrypted && !password) {
-        window.CRM.notify(i18next.t('Encrypted backup files require a password'), {
-            type: 'error',
-            delay: 3000
-        });
-        $('#restorePassword').focus();
         return;
     }
     

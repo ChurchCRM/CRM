@@ -6,7 +6,6 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
-use Defuse\Crypto\File;
 use Exception;
 use Ifsnop\Mysqldump\Mysqldump;
 use PharData;
@@ -19,15 +18,11 @@ class BackupJob extends JobBase
     private string $BackupFileBaseName;
     private ?\SplFileInfo $BackupFile = null;
     public string $BackupDownloadFileName;
-    public bool $shouldEncrypt;
-    public string $BackupPassword;
 
-    public function __construct(string $BaseName, string $BackupType, bool $EncryptBackup, string $BackupPassword)
+    public function __construct(string $BaseName, string $BackupType)
     {
         $this->BackupType = $BackupType;
         $this->BackupFileBaseName = sys_get_temp_dir() . '/' . $BaseName;
-        $this->shouldEncrypt = $EncryptBackup;
-        $this->BackupPassword = $BackupPassword;
         LoggerUtils::getAppLogger()->debug(
             "Backup job created; ready to execute: Type: '" .
                 $this->BackupType .
@@ -152,19 +147,6 @@ class BackupJob extends JobBase
         unlink($SqlFile->getPathname());
     }
 
-    private function encryptBackupFile(): void
-    {
-        LoggerUtils::getAppLogger()->info('Encrypting backup file: ' . $this->BackupFile);
-        $tempFile = new \SplFileInfo($this->BackupFile->getPathname() . 'temp');
-        rename($this->BackupFile, $tempFile);
-        // Add .enc extension to indicate the file is encrypted
-        $encryptedFile = new \SplFileInfo($this->BackupFile->getPathname() . '.enc');
-        File::encryptFileWithPassword($tempFile, $encryptedFile, $this->BackupPassword);
-        unlink($tempFile);
-        $this->BackupFile = $encryptedFile;
-        LoggerUtils::getAppLogger()->info('Finished encrypting backup file: ' . $this->BackupFile);
-    }
-
     public function execute(): bool
     {
         $time = new ExecutionTime();
@@ -176,9 +158,6 @@ class BackupJob extends JobBase
             $this->captureSQLFile($this->BackupFile);
         } elseif ($this->BackupType == BackupType::GZSQL) {
             $this->createGZSql();
-        }
-        if ($this->shouldEncrypt) {
-            $this->encryptBackupFile();
         }
         $time->end();
         $percentExecutionTime = (($time->getMilliseconds() / 1000) / ini_get('max_execution_time')) * 100;

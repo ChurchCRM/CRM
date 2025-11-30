@@ -1,20 +1,9 @@
 /**
  * Backup Database Application Logic
- * Handles the database backup workflow with encryption support
+ * Handles the database backup workflow
  */
 
 $(document).ready(function() {
-    // Toggle encryption options visibility
-    $('#encryptBackup').on('change', function() {
-        if ($(this).is(':checked')) {
-            $('#encryptionOptions').collapse('show');
-        } else {
-            $('#encryptionOptions').collapse('hide');
-            $('#pw1, #pw2').val('');
-            hidePasswordError();
-        }
-    });
-
     // Bind backup button handlers
     $('#doBackup').on('click', function(event) {
         event.preventDefault();
@@ -26,22 +15,6 @@ $(document).ready(function() {
         doBackup(true);
     });
 });
-
-/**
- * Show password validation error
- * @param {string} message - Error message to display
- */
-function showPasswordError(message) {
-    $('#passworderrortext').text(message);
-    $('#passworderror').removeClass('d-none');
-}
-
-/**
- * Hide password validation error
- */
-function hidePasswordError() {
-    $('#passworderror').addClass('d-none');
-}
 
 /**
  * Set the backup status display state
@@ -72,39 +45,14 @@ function setStatus(status) {
 }
 
 /**
- * Validate password fields when encryption is enabled
- * @returns {boolean} True if valid, false otherwise
- */
-function validatePassword() {
-    hidePasswordError();
-    if ($('#encryptBackup').is(':checked')) {
-        if ($('#pw1').val() === '') {
-            showPasswordError(i18next.t('You must enter a password'));
-            return false;
-        }
-        if ($('#pw1').val() !== $('#pw2').val()) {
-            showPasswordError(i18next.t('Passwords must match'));
-            return false;
-        }
-    }
-    return true;
-}
-
-/**
  * Execute the backup operation
  * @param {boolean} isRemote - Whether to backup to remote storage
  */
 function doBackup(isRemote) {
-    if (!validatePassword()) {
-        return;
-    }
-
     var endpointURL = isRemote ? 'database/backupRemote' : 'database/backup';
     
     var formData = {
-        BackupType: $('input[name=archiveType]:checked').val(),
-        EncryptBackup: $('#encryptBackup').is(':checked'),
-        BackupPassword: $('#pw1').val(),
+        BackupType: $('input[name=archiveType]:checked').val()
     };
 
     setStatus('running');

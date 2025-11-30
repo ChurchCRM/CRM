@@ -22,12 +22,7 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
         $BackupType = $input['BackupType'];
-        $Backup = new BackupJob(
-            $BaseName,
-            $BackupType,
-            $input['EncryptBackup'] ?? '',
-            $input['BackupPassword'] ?? ''
-        );
+        $Backup = new BackupJob($BaseName, $BackupType);
         $Backup->execute();
 
         return SlimUtils::renderJSON(
@@ -53,12 +48,7 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
                 SystemConfig::getValue('sChurchName')
             ) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
             $BackupType = $input['BackupType'];
-            $Backup = new BackupJob(
-                $BaseName,
-                $BackupType,
-                $input['EncryptBackup'] ?? '',
-                $input['BackupPassword'] ?? ''
-            );
+            $Backup = new BackupJob($BaseName, $BackupType);
             $Backup->execute();
             $copyStatus = $Backup->copyToWebDAV(
                 SystemConfig::getValue('sExternalBackupEndpoint'),

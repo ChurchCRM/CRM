@@ -45,7 +45,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="info-box-content">
                         <span class="info-box-text"><?= gettext('Encryption') ?></span>
                         <span class="info-box-number text-muted" style="font-size: 0.9rem; font-weight: normal;">
-                            <?= gettext('Encrypt backups if they may be accessible to unauthorized persons.') ?>
+                            <?= gettext('Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site.') ?>
                         </span>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <input type="radio" id="archiveType2" name="archiveType" value="2" class="custom-control-input" checked>
                             <label class="custom-control-label" for="archiveType2">
                                 <i class="fa-solid fa-file-code mr-1"></i><?= gettext('Database Only') ?>
-                                <span class="badge badge-secondary">.sql</span>
+                                <span class="badge badge-secondary">.sql.gz</span>
                             </label>
                         </div>
                         <small class="form-text text-muted d-block mt-1">
@@ -88,57 +88,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <small class="form-text text-muted d-block mt-1">
                             <?= gettext('Includes database and all uploaded photos. Larger file size.') ?>
                         </small>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            <!-- Encryption Options -->
-            <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="encryptBackup" name="encryptBackup" value="1">
-                    <label class="custom-control-label" for="encryptBackup">
-                        <i class="fa-solid fa-shield-alt mr-1"></i><?= gettext('Encrypt backup with password') ?>
-                    </label>
-                </div>
-            </div>
-
-            <div id="encryptionOptions" class="collapse">
-                <div class="card card-outline card-secondary">
-                    <div class="card-body">
-                        <div class="alert alert-info">
-                            <i class="fa-solid fa-info-circle mr-2"></i>
-                            <strong><?= gettext('Note:') ?></strong>
-                            <?= gettext('Encrypted backups use strong AES-256 encryption and can only be restored through ChurchCRM. The file will have a .enc extension. Standard archive tools cannot open encrypted backups.') ?>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="pw1"><?= gettext('Password') ?></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
-                                        </div>
-                                        <input type="password" class="form-control" id="pw1" name="pw1" placeholder="<?= gettext('Enter password') ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="pw2"><?= gettext('Confirm Password') ?></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
-                                        </div>
-                                        <input type="password" class="form-control" id="pw2" name="pw2" placeholder="<?= gettext('Re-enter password') ?>">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="passworderror" class="alert alert-danger d-none">
-                            <i class="fa-solid fa-exclamation-triangle mr-2"></i><span id="passworderrortext"></span>
-                        </div>
                     </div>
                 </div>
             </div>

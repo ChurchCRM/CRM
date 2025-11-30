@@ -7,10 +7,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\SQLUtils;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use Defuse\Crypto\Exception\WrongKeyOrModifiedCiphertextException;
-use Defuse\Crypto\File;
 use Exception;
 use PharData;
 use Propel\Runtime\Propel;
@@ -19,7 +16,6 @@ class RestoreJob extends JobBase
 {
     private \SplFileInfo $RestoreFile;
     public array $Messages = [];
-    private ?string $restorePassword = null;
 
     private function isIncomingFileFailed(): bool
     {
@@ -62,82 +58,19 @@ class RestoreJob extends JobBase
         // Use basename to strip any path components (prevents path traversal)
         $filename = basename($filename);
         
-        // Validate against allowed backup file patterns (including encrypted .enc files)
-        if (!preg_match('/^[\w\-\.]+\.(sql|sql\.gz|tar\.gz)(\.enc)?$/i', $filename)) {
+        // Validate against allowed backup file patterns
+        if (!preg_match('/^[\w\-\.]+\.(sql|sql\.gz|tar\.gz)$/i', $filename)) {
             LoggerUtils::getAppLogger()->warning('Blocked invalid backup filename: ' . $filename);
-            throw new \Exception('Invalid backup file. Only .sql, .sql.gz, .tar.gz files (optionally with .enc) are allowed.', 400);
+            throw new \Exception('Invalid backup file. Only .sql, .sql.gz, .tar.gz files are allowed.', 400);
         }
         
         return $filename;
-    }
-
-    private function decryptBackup(): void
-    {
-        // Check if file is encrypted (has .enc extension)
-        $basename = $this->RestoreFile->getBasename();
-        $isEncryptedFile = str_ends_with($basename, '.enc');
-        
-        $this->restorePassword = InputUtils::filterString($_POST['restorePassword']);
-        
-        // Only decrypt if file has .enc extension - the extension is the source of truth
-        if (!$isEncryptedFile) {
-            LoggerUtils::getAppLogger()->debug('File does not have .enc extension, skipping decryption');
-            return;
-        }
-        
-        // Encrypted file requires a password
-        if (empty($this->restorePassword)) {
-            throw new \Exception('Encrypted backup file requires a password to restore.', 400);
-        }
-        
-        LoggerUtils::getAppLogger()->info('Decrypting file: ' . $this->RestoreFile);
-        
-        // Determine the decrypted filename (remove .enc if present)
-        $decryptedPath = $isEncryptedFile 
-            ? substr($this->RestoreFile->getPathname(), 0, -4)  // Remove .enc
-            : $this->RestoreFile->getPathname();
-        
-        $tempfile = new \SplFileInfo($this->RestoreFile->getPathname() . '.tmp');
-
-        try {
-            File::decryptFileWithPassword($this->RestoreFile, $tempfile, $this->restorePassword);
-            unlink($this->RestoreFile);  // Remove encrypted file
-            rename($tempfile, $decryptedPath);  // Rename to proper extension
-            $this->RestoreFile = new \SplFileInfo($decryptedPath);
-            LoggerUtils::getAppLogger()->info('File decrypted to: ' . $this->RestoreFile);
-        } catch (WrongKeyOrModifiedCiphertextException $ex) {
-            if ($ex->getMessage() == 'Bad version header.') {
-                LoggerUtils::getAppLogger()->info("Bad version header; this file probably wasn't encrypted");
-                // Clean up temp file if it exists
-                if (file_exists($tempfile->getPathname())) {
-                    unlink($tempfile->getPathname());
-                }
-            } else {
-                LoggerUtils::getAppLogger()->error('Decryption failed: ' . $ex->getMessage());
-                throw $ex;
-            }
-        }
     }
 
     private function discoverBackupType(): void
     {
         $basename = $this->RestoreFile->getBasename();
         
-        // Check for encrypted files first (ends with .enc)
-        if (str_ends_with($basename, '.enc')) {
-            // Remove .enc to determine underlying type
-            $innerBasename = substr($basename, 0, -4);
-            if (str_ends_with($innerBasename, '.tar.gz')) {
-                $this->BackupType = BackupType::FULL_BACKUP;
-            } elseif (str_ends_with($innerBasename, '.sql.gz')) {
-                $this->BackupType = BackupType::GZSQL;
-            } elseif (str_ends_with($innerBasename, '.sql')) {
-                $this->BackupType = BackupType::SQL;
-            }
-            return;
-        }
-        
-        // Handle non-encrypted files
         switch ($this->RestoreFile->getExtension()) {
             case 'gz':
                 if (str_ends_with($basename, 'tar.gz')) {
@@ -214,7 +147,6 @@ class RestoreJob extends JobBase
         LoggerUtils::getAppLogger()->info('Executing restore job');
 
         try {
-            $this->decryptBackup();
             switch ($this->BackupType) {
                 case BackupType::SQL:
                     $this->restoreSQLBackup($this->RestoreFile);
