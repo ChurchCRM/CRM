@@ -48,9 +48,22 @@ class InputUtils
         return filter_var(trim($sInput), FILTER_SANITIZE_SPECIAL_CHARS);
     }
 
+    /**
+     * Sanitize HTML input by stripping disallowed tags and removing dangerous attributes.
+     * This prevents XSS attacks via event handlers (onclick, onerror, etc.) and javascript: URLs.
+     */
     public static function filterHTML($sInput): string
     {
-        return strip_tags(trim($sInput), self::$AllowedHTMLTags);
+        $filtered = strip_tags(trim($sInput), self::$AllowedHTMLTags);
+
+        // Strip event handler attributes (on*) to prevent XSS
+        $filtered = preg_replace('/\bon\w+\s*=\s*("[^"]*"|\'[^\']*\'|[^\s>]*)/i', '', $filtered);
+
+        // Strip javascript: and data: URLs from href and src attributes
+        $filtered = preg_replace('/\b(href|src)\s*=\s*("[^"]*javascript:[^"]*"|\'[^\']*javascript:[^\']*\')/i', '$1="#"', $filtered);
+        $filtered = preg_replace('/\b(href|src)\s*=\s*("[^"]*data:[^"]*"|\'[^\']*data:[^\']*\')/i', '$1="#"', $filtered);
+
+        return $filtered;
     }
 
     public static function filterChar($sInput, $size = 1): string
