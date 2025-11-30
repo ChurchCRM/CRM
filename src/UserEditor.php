@@ -9,6 +9,7 @@ use ChurchCRM\Emails\users\NewAccountEmail;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserConfig;
+use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -292,55 +293,42 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
             $permission = 'TRUE';
         }
 
-        // We can't update unless values already exist.
-        $sSQL = 'SELECT * FROM userconfig_ucfg '
-            . "WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID ";
-        $bRowExists = true;
-        $iNumRows = mysqli_num_rows(RunQuery($sSQL));
-        if ($iNumRows === 0) {
-            $bRowExists = false;
-        }
+        // Check if user config exists using Propel ORM
+        $userConfig = UserConfigQuery::create()
+            ->filterById($id)
+            ->filterByPeronId($iPersonID)
+            ->findOne();
 
-        if (!$bRowExists) { // If Row does not exist then insert default values.
-            // Defaults will be replaced in the following Update
-            $sSQL = 'SELECT * FROM userconfig_ucfg '
-                . "WHERE ucfg_id=$id AND ucfg_per_id=0 ";
-            $rsDefault = RunQuery($sSQL);
-            $aDefaultRow = mysqli_fetch_row($rsDefault);
-            if ($aDefaultRow) {
-                list(
-                    $ucfg_per_id,
-                    $ucfg_id,
-                    $ucfg_name,
-                    $ucfg_value,
-                    $ucfg_type,
-                    $ucfg_tooltip,
-                    $ucfg_permission,
-                    $ucfg_cat
-                ) = $aDefaultRow;
+        if ($userConfig === null) {
+            // Row doesn't exist - get default values and create new config
+            $defaultConfig = UserConfigQuery::create()
+                ->filterById($id)
+                ->filterByPeronId(0)
+                ->findOne();
 
+            if ($defaultConfig !== null) {
                 $userConfig = new UserConfig();
                 $userConfig
                     ->setPeronId($iPersonID)
                     ->setId($id)
-                    ->setName($ucfg_name)
-                    ->setValue($ucfg_value)
-                    ->setType($ucfg_type)
-                    ->setTooltip($ucfg_tooltip)
-                    ->setPermission($ucfg_permission)
-                    ->setCat($ucfg_cat);
+                    ->setName($defaultConfig->getName())
+                    ->setValue($value)
+                    ->setType($defaultConfig->getType())
+                    ->setTooltip($defaultConfig->getTooltip())
+                    ->setPermission($permission)
+                    ->setCat($defaultConfig->getCat());
                 $userConfig->save();
             } else {
                 echo '<br> Error on line ' . __LINE__ . ' of file ' . __FILE__;
                 exit;
             }
+        } else {
+            // Update existing config
+            $userConfig->setValue($value);
+            $userConfig->setPermission($permission);
+            $userConfig->save();
         }
 
-        // Save new setting
-        $sSQL = 'UPDATE userconfig_ucfg '
-            . "SET ucfg_value='$value', ucfg_permission='$permission' "
-            . "WHERE ucfg_id='$id' AND ucfg_per_id=$iPersonID ";
-        $rsUpdate = RunQuery($sSQL);
         next($type);
     }
 
