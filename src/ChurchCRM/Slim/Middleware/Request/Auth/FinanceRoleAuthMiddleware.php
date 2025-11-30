@@ -13,4 +13,9 @@ class FinanceRoleAuthMiddleware extends BaseAuthRoleMiddleware
     {
         return gettext('User must have Finance permission');
     }
+
+    protected function getRoleName(): string
+    {
+        return 'Finance';
+    }
 }

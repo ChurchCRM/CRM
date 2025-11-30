@@ -54,7 +54,7 @@ require_once 'Include/Header.php'; ?>
                 $aNameErrors[$iFieldID] = false;
             }
 
-            $aFieldSecurity[$iFieldID] = $_POST[$iFieldID . 'FieldSec'];
+            $aFieldSecurity[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'FieldSec'], 'int');
 
             if (isset($_POST[$iFieldID . 'special'])) {
                 $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
@@ -84,7 +84,7 @@ require_once 'Include/Header.php'; ?>
         if (isset($_POST['AddField'])) {
             $newFieldType = InputUtils::legacyFilterInput($_POST['newFieldType'], 'int');
             $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
-            $newFieldSec = $_POST['newFieldSec'];
+            $newFieldSec = InputUtils::legacyFilterInput($_POST['newFieldSec'], 'int');
 
             if (strlen($newFieldName) === 0) {
                 $bNewNameError = true;

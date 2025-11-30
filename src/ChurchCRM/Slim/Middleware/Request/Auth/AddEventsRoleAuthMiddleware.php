@@ -11,6 +11,11 @@ class AddEventsRoleAuthMiddleware extends BaseAuthRoleMiddleware
 
     protected function noRoleMessage(): string
     {
-        return gettext('User must have bAddEvent permissions');
+        return gettext('User must have Add Event permission');
+    }
+
+    protected function getRoleName(): string
+    {
+        return 'AddEvent';
     }
 }

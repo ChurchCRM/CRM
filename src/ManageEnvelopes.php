@@ -14,7 +14,7 @@ use ChurchCRM\Utils\RedirectUtils;
 $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 $iClassification = 0;
 if (isset($_POST['Classification'])) {
