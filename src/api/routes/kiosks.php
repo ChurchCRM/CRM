@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -79,4 +80,4 @@ $app->group('/kiosks', function (RouteCollectorProxy $group): void {
 
         return SlimUtils::renderSuccessJSON($response);
     });
-});
+})->add(AdminRoleAuthMiddleware::class);
