@@ -31,10 +31,10 @@ if (isset($_GET['calendarAction'])) {
 
     // Check for EID from GET (from ListEvents link) or POST (from form submission)
     if (array_key_exists('EID', $_GET)) {
-        $sOpp = $_GET['EID'];
+        $sOpp = InputUtils::filterInt($_GET['EID']);
         $sAction = 'Edit';
     } elseif (array_key_exists('EID', $_POST)) {
-        $sOpp = $_POST['EID'];
+        $sOpp = InputUtils::filterInt($_POST['EID']);
     } // from EDIT button on event listing
 
     $tyid = 0;
