@@ -459,7 +459,7 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     bootbox.confirm({
                         title: "<?= gettext("Confirm Delete Group") ?>",
                         message: '<p class="text-danger">' +
-                            "<?= gettext("Please confirm deletion of this group record") ?>: <?= htmlspecialchars($thisGroup->getName(), ENT_QUOTES, 'UTF-8') ?></p>" +
+                            "<?= gettext("Please confirm deletion of this group record") ?>: " + <?= json_encode($thisGroup->getName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> + "</p>" +
                             "<p>" +
                             "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
                             "</p><p>" +
