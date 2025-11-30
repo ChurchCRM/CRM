@@ -236,8 +236,6 @@ window.CRM.kiosk = {
                 data: JSON.stringify({ PersonId: personId }),
             })
             .done(function (data) {
-                //window.CRM.kiosk.startEventLoop();
-                //TODO:  Signal to the kiosk user that the notification was sent
             });
     },
 
@@ -264,7 +262,6 @@ window.CRM.kiosk = {
     },
 
     displayPersonInfo: function (personId) {
-        //TODO: Display information (allergies, etc) about the person selected.
     },
 
     startEventLoop: function () {

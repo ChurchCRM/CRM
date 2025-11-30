@@ -392,7 +392,7 @@ class User extends BaseUser
     public function confirmProvisional2FACode($twoFACode)
     {
         $google2fa = new Google2FA();
-        $window = 2; //TODO: make this a system config
+        $window = 2;
         $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManager::getTwoFASecretKey());
         $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
         if ($isKeyValid) {
@@ -450,7 +450,7 @@ class User extends BaseUser
     public function isTwoFACodeValid($twoFACode): bool
     {
         $google2fa = new Google2FA();
-        $window = 2; //TODO: make this a system config
+        $window = 2;
         $timestamp = $google2fa->verifyKeyNewer($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $this->getTwoFactorAuthLastKeyTimestamp(), $window);
         if ($timestamp !== false) {
             $this->setTwoFactorAuthLastKeyTimestamp($timestamp);

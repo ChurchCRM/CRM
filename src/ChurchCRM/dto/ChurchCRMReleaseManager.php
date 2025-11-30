@@ -16,7 +16,6 @@ use Github\Client;
 
 class ChurchCRMReleaseManager
 {
-    // todo: make these const variables private after deprecating PHP7.0 #4948
     public const GITHUB_USER_NAME = 'ChurchCRM';
     public const GITHUB_REPOSITORY_NAME = 'CRM';
 
