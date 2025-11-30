@@ -115,7 +115,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         if ($groupSettings['isSundaySchool'] ?? false) {
             $group->makeSundaySchool();
         }
-        $group->setName($groupSettings['groupName']);
+        $group->setName(strip_tags($groupSettings['groupName']));
         $group->setDescription($groupSettings['description'] ?? '');
         $group->setType($groupSettings['groupType'] ?? 0);
         $group->save();
@@ -126,7 +126,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
-        $group->setName($input['groupName']);
+        $group->setName(strip_tags($input['groupName']));
         $group->setType($input['groupType']);
         $group->setDescription($input['description'] ?? '');
         $group->save();
