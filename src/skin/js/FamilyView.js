@@ -7,19 +7,13 @@ function initializeFamilyView() {
         path: `family/${window.CRM.currentFamily}/nav`,
     }).then(function (data) {
         if (data?.PreFamilyId) {
-            $("#lastFamily").attr(
-                "href",
-                `${window.CRM.root}/v2/family/${data.PreFamilyId}`,
-            );
+            $("#lastFamily").attr("href", `${window.CRM.root}/v2/family/${data.PreFamilyId}`);
         } else {
             $("#lastFamily").addClass("hidden");
         }
 
         if (data?.NextFamilyId) {
-            $("#nextFamily").attr(
-                "href",
-                `${window.CRM.root}/v2/family/${data.NextFamilyId}`,
-            );
+            $("#nextFamily").attr("href", `${window.CRM.root}/v2/family/${data.NextFamilyId}`);
         } else {
             $("#nextFamily").addClass("hidden");
         }
@@ -46,13 +40,7 @@ function initializeFamilyView() {
             } else {
                 $("#family-property-table").show();
                 $.each(data, function (key, prop) {
-                    let {
-                        id: propId,
-                        name: propName,
-                        value: propVal,
-                        allowEdit,
-                        allowDelete,
-                    } = prop;
+                    let { id: propId, name: propName, value: propVal, allowEdit, allowDelete } = prop;
                     selectedFamilyProperties.push(propId);
 
                     let editIcon = allowEdit
@@ -74,10 +62,7 @@ function initializeFamilyView() {
 
     $("#add-family-property").on("click", function () {
         let inputOptions = masterFamilyProperties
-            .filter(
-                (masterProp) =>
-                    !selectedFamilyProperties.includes(masterProp.ProId),
-            )
+            .filter((masterProp) => !selectedFamilyProperties.includes(masterProp.ProId))
             .map(({ ProName: text, ProId: value }) => ({ text, value }));
 
         bootbox.prompt({
@@ -248,10 +233,7 @@ function initializeFamilyView() {
     });
 
     $("#verifyDownloadPDF").on("click", function () {
-        window.open(
-            `${window.CRM.root}/Reports/ConfirmReport.php?familyId=${window.CRM.currentFamily}`,
-            "_blank",
-        );
+        window.open(`${window.CRM.root}/Reports/ConfirmReport.php?familyId=${window.CRM.currentFamily}`, "_blank");
         $("#confirm-verify").modal("hide");
     });
 
@@ -279,9 +261,7 @@ function initializeFamilyView() {
     });
 
     $("#activateDeactivate").on("click", function () {
-        let popupTitle = window.CRM.currentActive
-            ? i18next.t("Confirm Deactivation")
-            : i18next.t("Confirm Activation");
+        let popupTitle = window.CRM.currentActive ? i18next.t("Confirm Deactivation") : i18next.t("Confirm Activation");
         let popupMessage = window.CRM.currentActive
             ? `${i18next.t("Please confirm deactivation of family")}: ${window.CRM.currentFamilyName}`
             : `${i18next.t("Please confirm activation of family")}: ${window.CRM.currentFamilyName}`;
@@ -305,17 +285,11 @@ function initializeFamilyView() {
     });
 
     $("#ShowPledges").on("change", function () {
-        updateUserSetting(
-            "finance.show.pledges",
-            $(this).prop("checked") ? "true" : "false",
-        );
+        updateUserSetting("finance.show.pledges", $(this).prop("checked") ? "true" : "false");
     });
 
     $("#ShowPayments").on("change", function () {
-        updateUserSetting(
-            "finance.show.payments",
-            $(this).prop("checked") ? "true" : "false",
-        );
+        updateUserSetting("finance.show.payments", $(this).prop("checked") ? "true" : "false");
     });
 
     $("#ShowSinceDate").on("change", function () {

@@ -9,9 +9,7 @@
         const phpVersion = urlParams.get("phpVersion");
         if (phpVersion) {
           var paragraph = document.getElementById("php-version");
-          var text = document.createTextNode(
-            "You are currently running PHP version: " + phpVersion,
-          );
+          var text = document.createTextNode("You are currently running PHP version: " + phpVersion);
 
           paragraph.appendChild(text);
         }
@@ -36,20 +34,14 @@
           <p id="php-version" class="subheading"></p>
           <br />
           <p class="subheading">
-            <a
-              href="https://www.php.net/supported-versions.php"
-              style="color: red"
+            <a href="https://www.php.net/supported-versions.php" style="color: red"
               >Checkout supported versions of PHP</a
             >
           </p>
         </div>
       </div>
       <div class="right-section">
-        <svg
-          class="svgimg"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="51.5 -15.288 385 505.565"
-        >
+        <svg class="svgimg" xmlns="http://www.w3.org/2000/svg" viewBox="51.5 -15.288 385 505.565">
           <g class="bench-legs">
             <path
               d="M202.778,391.666h11.111v98.611h-11.111V391.666z M370.833,390.277h11.111v100h-11.111V390.277z M183.333,456.944h11.111
@@ -109,18 +101,9 @@
                   repeatCount="indefinite"
                 ></animate>
               </stop>
-              <stop
-                offset="100%"
-                style="stop-color: #ededed; stop-opacity: 0"
-              />
+              <stop offset="100%" style="stop-color: #ededed; stop-opacity: 0" />
             </radialGradient>
-            <circle
-              class="lamp-light__glow"
-              fill="url(#SVGID_1_)"
-              cx="119.676"
-              cy="44.22"
-              r="65"
-            />
+            <circle class="lamp-light__glow" fill="url(#SVGID_1_)" cx="119.676" cy="44.22" r="65" />
             <path
               class="lamp-bottom"
               d="M135.417,487.781c0,1.378-1.244,2.496-2.778,2.496H106.25c-1.534,0-2.778-1.118-2.778-2.496v-74.869

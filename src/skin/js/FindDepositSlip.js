@@ -9,20 +9,14 @@ function initializeDepositSlip() {
     function updateSelectedCount() {
         var selectedRows = dataT.rows(".selected").data().length;
         $("#deleteSelectedRows").prop("disabled", !selectedRows);
-        $("#deleteSelectedRows").text(
-            "Delete (" + selectedRows + ") Selected Rows",
-        );
+        $("#deleteSelectedRows").text("Delete (" + selectedRows + ") Selected Rows");
         $("#exportSelectedRows").prop("disabled", !selectedRows);
         $("#exportSelectedRows").html(
-            '<i class="fa-solid fa-download"></i> Export (' +
-                selectedRows +
-                ") Selected Rows (OFX)",
+            '<i class="fa-solid fa-download"></i> Export (' + selectedRows + ") Selected Rows (OFX)",
         );
         $("#exportSelectedRowsCSV").prop("disabled", !selectedRows);
         $("#exportSelectedRowsCSV").html(
-            '<i class="fa-solid fa-download"></i> Export (' +
-                selectedRows +
-                ") Selected Rows (CSV)",
+            '<i class="fa-solid fa-download"></i> Export (' + selectedRows + ") Selected Rows (CSV)",
         );
         $("#generateDepositSlip").prop("disabled", !selectedRows);
         $("#generateDepositSlip").html(
@@ -45,14 +39,10 @@ function initializeDepositSlip() {
                 i18next.t("Deposit(s)") +
                 "?</p>" +
                 "<p>" +
-                i18next.t(
-                    "This will also delete all payments associated with this deposit",
-                ) +
+                i18next.t("This will also delete all payments associated with this deposit") +
                 "</p>" +
                 "<p>" +
-                i18next.t(
-                    "This action CANNOT be undone, and may have legal implications!",
-                ) +
+                i18next.t("This action CANNOT be undone, and may have legal implications!") +
                 "</p>" +
                 "<p>" +
                 i18next.t("Please ensure this what you want to do.") +
@@ -81,9 +71,7 @@ function initializeDepositSlip() {
         });
     });
 
-    $("#depositDate")
-        .datepicker({ format: "yyyy-mm-dd", language: window.CRM.lang })
-        .datepicker("setDate", new Date());
+    $("#depositDate").datepicker({ format: "yyyy-mm-dd", language: window.CRM.lang }).datepicker("setDate", new Date());
     $("#addNewDeposit").click(function (e) {
         var newDeposit = {
             depositType: $("#depositType option:selected").val(),
@@ -94,9 +82,7 @@ function initializeDepositSlip() {
         if (!$("#depositComment").val().trim()) {
             bootbox.confirm({
                 title: i18next.t("Add New Deposit"),
-                message: i18next.t(
-                    "You are about to add a new deposit without a comment",
-                ),
+                message: i18next.t("You are about to add a new deposit without a comment"),
                 buttons: {
                     cancel: {
                         label: i18next.t("Cancel"),
@@ -124,10 +110,7 @@ function initializeDepositSlip() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done(function (data) {
-            window.location.href =
-                window.CRM.root +
-                "/DepositSlipEditor.php?DepositSlipID=" +
-                data.Id;
+            window.location.href = window.CRM.root + "/DepositSlipEditor.php?DepositSlipID=" + data.Id;
         });
     }
 
@@ -214,11 +197,7 @@ function initializeDepositSlip() {
             $.each(selectedRows, function (index, value) {
                 $.ajax({
                     method: "GET",
-                    url:
-                        window.CRM.root +
-                        "/api/deposits/" +
-                        value.Id +
-                        "/payments",
+                    url: window.CRM.root + "/api/deposits/" + value.Id + "/payments",
                     dataType: "json",
                 })
                     .done(function (data) {
@@ -247,11 +226,7 @@ function initializeDepositSlip() {
                                 );
                             }
                             $.each(validDeposits, function (idx, deposit) {
-                                var url =
-                                    window.CRM.root +
-                                    "/api/deposits/" +
-                                    deposit.Id +
-                                    "/pdf";
+                                var url = window.CRM.root + "/api/deposits/" + deposit.Id + "/pdf";
                                 window.CRM.VerifyThenLoadAPIContent(url);
                             });
                         }
@@ -260,8 +235,7 @@ function initializeDepositSlip() {
         } else {
             // csv or other types - proceed as before
             $.each(selectedRows, function (index, value) {
-                var url =
-                    window.CRM.root + "/api/deposits/" + value.Id + "/" + type;
+                var url = window.CRM.root + "/api/deposits/" + value.Id + "/" + type;
                 window.CRM.VerifyThenLoadAPIContent(url);
             });
         }

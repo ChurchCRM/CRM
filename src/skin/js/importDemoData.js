@@ -300,12 +300,7 @@
         $("#demoImportSpinnerOverlay").removeClass("show");
     }
 
-    function doImport(
-        $button,
-        includeFinancial,
-        includeEvents,
-        includeSundaySchool,
-    ) {
+    function doImport($button, includeFinancial, includeEvents, includeSundaySchool) {
         var $status = $("#demoImportStatus");
         var $results = $("#demoImportResults");
         var $resultsList = $("#demoImportResultsList");
@@ -344,25 +339,11 @@
                         $resultsList.empty();
                         var imported = data.imported || {};
                         for (var key in imported) {
-                            if (
-                                Object.prototype.hasOwnProperty.call(
-                                    imported,
-                                    key,
-                                ) &&
-                                imported[key] > 0
-                            ) {
-                                var label = key
-                                    .replace(/_/g, " ")
-                                    .replace(/\b\w/g, function (l) {
-                                        return l.toUpperCase();
-                                    });
-                                $resultsList.append(
-                                    "<li>" +
-                                        label +
-                                        ": <strong>" +
-                                        imported[key] +
-                                        "</strong></li>",
-                                );
+                            if (Object.prototype.hasOwnProperty.call(imported, key) && imported[key] > 0) {
+                                var label = key.replace(/_/g, " ").replace(/\b\w/g, function (l) {
+                                    return l.toUpperCase();
+                                });
+                                $resultsList.append("<li>" + label + ": <strong>" + imported[key] + "</strong></li>");
                             }
                         }
                         if (data.warnings && data.warnings.length > 0) {
@@ -377,16 +358,11 @@
                         $results.show();
                     }
 
-                    window.CRM.notify(
-                        i18next.t("Demo data imported successfully"),
-                        { type: "success", delay: 3000 },
-                    );
+                    window.CRM.notify(i18next.t("Demo data imported successfully"), { type: "success", delay: 3000 });
                 } else {
                     window.CRM.notify(
                         i18next.t("Demo data import failed: ") +
-                            (data && data.error
-                                ? data.error
-                                : i18next.t("Unknown error")),
+                            (data && data.error ? data.error : i18next.t("Unknown error")),
                         { type: "error", delay: 5000 },
                     );
                 }
@@ -399,9 +375,7 @@
                 }
                 $button.prop("disabled", false);
 
-                var errorMessage = i18next.t(
-                    "An error occurred during demo data import",
-                );
+                var errorMessage = i18next.t("An error occurred during demo data import");
                 if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
                     errorMessage = xhr.responseJSON.error;
                 }
@@ -412,19 +386,13 @@
     }
 
     function attachHandlers() {
-        var selectors = [
-            "#importDemoData",
-            "#importDemoDataQuickBtn",
-            "#importDemoDataV2",
-        ];
+        var selectors = ["#importDemoData", "#importDemoDataQuickBtn", "#importDemoDataV2"];
         selectors.forEach(function (sel) {
             var $btn = $(sel);
             if ($btn.length) {
                 $btn.off("click").on("click", function (e) {
                     e.preventDefault();
-                    console.log(
-                        "Import button clicked, showing confirmation overlay",
-                    );
+                    console.log("Import button clicked, showing confirmation overlay");
                     showConfirmOverlay();
                 });
             }
@@ -436,22 +404,11 @@
             .on("click", "#demoImportConfirmBtn", function (e) {
                 e.preventDefault();
                 console.log("Confirm button clicked, starting import");
-                var includeFinancial = $("#includeDemoFinancial").is(
-                    ":checked",
-                );
+                var includeFinancial = $("#includeDemoFinancial").is(":checked");
                 var includeEvents = $("#includeDemoEvents").is(":checked");
-                var includeSundaySchool = $("#includeDemoSundaySchool").is(
-                    ":checked",
-                );
-                var $btn = $(
-                    "#importDemoData, #importDemoDataQuickBtn, #importDemoDataV2",
-                ).first();
-                doImport(
-                    $btn,
-                    includeFinancial,
-                    includeEvents,
-                    includeSundaySchool,
-                );
+                var includeSundaySchool = $("#includeDemoSundaySchool").is(":checked");
+                var $btn = $("#importDemoData, #importDemoDataQuickBtn, #importDemoDataV2").first();
+                doImport($btn, includeFinancial, includeEvents, includeSundaySchool);
             });
 
         // Attach cancel button handler

@@ -14,9 +14,7 @@ $(document).ready(function () {
             ) {
                 selected = true;
             }
-            familyCountry.append(
-                new Option(country.name, country.code, selected, selected),
-            );
+            familyCountry.append(new Option(country.name, country.code, selected, selected));
         });
         familyCountry.change();
     });
@@ -24,11 +22,7 @@ $(document).ready(function () {
     $("#Country").change(function () {
         $.ajax({
             type: "GET",
-            url:
-                window.CRM.root +
-                "/api/public/data/countries/" +
-                this.value.toLowerCase() +
-                "/states",
+            url: window.CRM.root + "/api/public/data/countries/" + this.value.toLowerCase() + "/states",
         }).done(function (data) {
             let stateSelect = $("#State");
             if (Object.keys(data).length > 0) {
@@ -37,15 +31,10 @@ $(document).ready(function () {
                     let selected = false;
                     if (stateSelect.data("user-selected") == "") {
                         selected = stateSelect.data("system-default") == name;
-                    } else if (
-                        stateSelect.data("user-selected") == name ||
-                        stateSelect.data("user-selected") == code
-                    ) {
+                    } else if (stateSelect.data("user-selected") == name || stateSelect.data("user-selected") == code) {
                         selected = true;
                     }
-                    stateSelect.append(
-                        new Option(name, code, selected, selected),
-                    );
+                    stateSelect.append(new Option(name, code, selected, selected));
                 });
                 stateSelect.change();
                 $("#stateInputDiv").addClass("hidden");

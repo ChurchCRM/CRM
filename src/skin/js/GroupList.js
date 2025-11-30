@@ -45,13 +45,10 @@ function initializeGroupList() {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to create group:", error);
-                window.CRM.notify(
-                    i18next.t("Failed to create group. Please try again."),
-                    {
-                        type: "danger",
-                        delay: 5000,
-                    },
-                );
+                window.CRM.notify(i18next.t("Failed to create group. Please try again."), {
+                    type: "danger",
+                    delay: 5000,
+                });
             });
     });
 
@@ -63,15 +60,10 @@ function initializeGroupList() {
             dataSrc: "",
             error: (xhr, error, thrown) => {
                 console.error("Failed to load groups:", thrown);
-                window.CRM.notify(
-                    i18next.t(
-                        "Failed to load groups. Please refresh the page.",
-                    ),
-                    {
-                        type: "danger",
-                        delay: 5000,
-                    },
-                );
+                window.CRM.notify(i18next.t("Failed to load groups. Please refresh the page."), {
+                    type: "danger",
+                    delay: 5000,
+                });
             },
         },
         columns: [

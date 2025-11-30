@@ -25,8 +25,7 @@ $("#submitIssue").click(function () {
         var systemInfo = encodeURIComponent(bugMsg + data["issueBody"]);
         // Include body parameter to show system info in GitHub issue
         // Use type=bug to set the issue type (required for workflow detection)
-        var gitHubTemplateURL =
-            "https://github.com/ChurchCRM/CRM/issues/new?type=bug&body=" + systemInfo;
+        var gitHubTemplateURL = "https://github.com/ChurchCRM/CRM/issues/new?type=bug&body=" + systemInfo;
         window.open(gitHubTemplateURL, `github`);
         $("#IssueReportModal").modal("toggle");
     });

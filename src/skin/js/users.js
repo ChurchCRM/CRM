@@ -51,17 +51,11 @@ function restUserLoginCount(userId, userName) {
             if (result) {
                 $.ajax({
                     method: "POST",
-                    url:
-                        window.CRM.root +
-                        "/api/user/" +
-                        userId +
-                        "/login/reset",
+                    url: window.CRM.root + "/api/user/" + userId + "/login/reset",
                     dataType: "json",
                     encode: true,
                 }).done(function (data) {
-                    if (data.status === "success")
-                        window.location.href =
-                            window.CRM.root + "/UserList.php";
+                    if (data.status === "success") window.location.href = window.CRM.root + "/UserList.php";
                 });
             }
         },
@@ -81,19 +75,12 @@ function resetUserPassword(userId, userName) {
             if (result) {
                 $.ajax({
                     method: "POST",
-                    url:
-                        window.CRM.root +
-                        "/api/user/" +
-                        userId +
-                        "/password/reset",
+                    url: window.CRM.root + "/api/user/" + userId + "/password/reset",
                     dataType: "json",
                     encode: true,
                 }).done(function (data) {
                     if (data.status === "success")
-                        showGlobalMessage(
-                            '<?= gettext("Password reset for") ?> ' + userName,
-                            "success",
-                        );
+                        showGlobalMessage('<?= gettext("Password reset for") ?> ' + userName, "success");
                 });
             }
         },
@@ -113,11 +100,7 @@ function disableUserTwoFactorAuth(userId, userName) {
             if (result) {
                 $.ajax({
                     method: "POST",
-                    url:
-                        window.CRM.root +
-                        "/api/user/" +
-                        userId +
-                        "/disableTwoFactor",
+                    url: window.CRM.root + "/api/user/" + userId + "/disableTwoFactor",
                 }).done(function (data) {
                     window.location.href = window.CRM.root + "/UserList.php";
                 });

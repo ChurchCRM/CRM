@@ -21,9 +21,7 @@ window.CRM.kiosk = {
             var outerDiv = $("<div>", {
                 id: "personId-" + classMember.personId,
             }).addClass("col-sm-3");
-            var innerDiv = $("<div>").addClass(
-                "card card-widget widget-user-2",
-            );
+            var innerDiv = $("<div>").addClass("card card-widget widget-user-2");
             var userHeaderDiv = $("<div>", {
                 class: "widget-user-header bg-yellow",
             }).attr("data-personid", classMember.personId);
@@ -32,13 +30,7 @@ window.CRM.kiosk = {
                     class: "initials-image profile-user-img img-responsive img-circle no-border",
                 })
                     .data("name", classMember.displayName)
-                    .data(
-                        "src",
-                        window.CRM.root +
-                            "/kiosk/activeClassMember/" +
-                            classMember.personId +
-                            "/photo",
-                    ),
+                    .data("src", window.CRM.root + "/kiosk/activeClassMember/" + classMember.personId + "/photo"),
             );
             userHeaderDiv.append(imageDiv);
             userHeaderDiv
@@ -123,10 +115,8 @@ window.CRM.kiosk = {
                     window.CRM.kioskAssignmentId = thisAssignment;
                 } else if (
                     thisAssignment &&
-                    (thisAssignment.EventId !==
-                        window.CRM.kioskAssignmentId.EventId ||
-                        thisAssignment.Event.GroupId !==
-                            window.CRM.kioskAssignmentId.Event.GroupId)
+                    (thisAssignment.EventId !== window.CRM.kioskAssignmentId.EventId ||
+                        thisAssignment.Event.GroupId !== window.CRM.kioskAssignmentId.Event.GroupId)
                 ) {
                     location.reload();
                 }
@@ -153,29 +143,16 @@ window.CRM.kiosk = {
                         $("#noEvent").hide();
                         $("#event").show();
                         $("#eventTitle").text(Assignment.Event.Title);
-                        $("#startTime").text(
-                            moment(Assignment.Event.Start).format(
-                                "MMMM Do YYYY, h:mm:ss a",
-                            ),
-                        );
-                        $("#endTime").text(
-                            moment(Assignment.Event.End).format(
-                                "MMMM Do YYYY, h:mm:ss a",
-                            ),
-                        );
+                        $("#startTime").text(moment(Assignment.Event.Start).format("MMMM Do YYYY, h:mm:ss a"));
+                        $("#endTime").text(moment(Assignment.Event.End).format("MMMM Do YYYY, h:mm:ss a"));
                     } else {
                         $("#noEvent").show();
-                        $("#noEvent").text(
-                            "No active assignments for this kiosk",
-                        );
+                        $("#noEvent").text("No active assignments for this kiosk");
                         $("#event").hide();
                     }
                 } else {
                     $("#noEvent").show();
-                    $("#noEvent").html(
-                        "This kiosk has not been accepted.<br/>Kiosk Name: " +
-                            data.Name,
-                    );
+                    $("#noEvent").html("This kiosk has not been accepted.<br/>Kiosk Name: " + data.Name);
                     $("#event").hide();
                 }
             });
@@ -235,8 +212,7 @@ window.CRM.kiosk = {
                 method: "POST",
                 data: JSON.stringify({ PersonId: personId }),
             })
-            .done(function (data) {
-            });
+            .done(function (data) {});
     },
 
     enterFullScreen: function () {
@@ -261,14 +237,10 @@ window.CRM.kiosk = {
         }
     },
 
-    displayPersonInfo: function (personId) {
-    },
+    displayPersonInfo: function (personId) {},
 
     startEventLoop: function () {
-        window.CRM.kiosk.kioskEventLoop = setInterval(
-            window.CRM.kiosk.heartbeat,
-            2000,
-        );
+        window.CRM.kiosk.kioskEventLoop = setInterval(window.CRM.kiosk.heartbeat, 2000);
     },
 
     stopEventLoop: function () {

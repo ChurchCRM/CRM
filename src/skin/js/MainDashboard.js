@@ -44,15 +44,7 @@ function initializeMainDashboard() {
             title: i18next.t("Name"),
             data: "Name",
             render: function (data, type, row) {
-                return (
-                    '<a href="' +
-                    window.CRM.root +
-                    "/v2/family/" +
-                    row.FamilyId +
-                    '">' +
-                    row.Name +
-                    "</a>"
-                );
+                return '<a href="' + window.CRM.root + "/v2/family/" + row.FamilyId + '">' + row.Name + "</a>";
             },
         },
         {
@@ -74,9 +66,7 @@ function initializeMainDashboard() {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    let latestFamiliesTable = $("#latestFamiliesDashboardItem").DataTable(
-        dataTableConfig,
-    );
+    let latestFamiliesTable = $("#latestFamiliesDashboardItem").DataTable(dataTableConfig);
     latestFamiliesTable.on("draw", function () {
         syncCartButtons();
     });
@@ -93,9 +83,7 @@ function initializeMainDashboard() {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    let updatedFamiliesTable = $("#updatedFamiliesDashboardItem").DataTable(
-        dataTableConfig,
-    );
+    let updatedFamiliesTable = $("#updatedFamiliesDashboardItem").DataTable(dataTableConfig);
     updatedFamiliesTable.on("draw", function () {
         syncCartButtons();
     });
@@ -139,9 +127,7 @@ function initializeMainDashboard() {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    let birthdayPersonTable = $("#PersonBirthdayDashboardItem").DataTable(
-        dataTableConfig,
-    );
+    let birthdayPersonTable = $("#PersonBirthdayDashboardItem").DataTable(dataTableConfig);
     birthdayPersonTable.on("draw", function () {
         syncCartButtons();
     });
@@ -157,15 +143,7 @@ function initializeMainDashboard() {
                 title: i18next.t("Name"),
                 data: "Name",
                 render: function (data, type, row) {
-                    return (
-                        '<a href="' +
-                        window.CRM.root +
-                        "/v2/family/" +
-                        row.FamilyId +
-                        '">' +
-                        data +
-                        "</a> "
-                    );
+                    return '<a href="' + window.CRM.root + "/v2/family/" + row.FamilyId + '">' + data + "</a> ";
                 },
             },
             {
@@ -223,9 +201,7 @@ function initializeMainDashboard() {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    let updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(
-        dataTableConfig,
-    );
+    let updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(dataTableConfig);
     updatedPersonTable.on("draw", function () {
         syncCartButtons();
     });
@@ -242,9 +218,7 @@ function initializeMainDashboard() {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
-    let latestPersonTable = $("#latestPersonDashboardItem").DataTable(
-        dataTableConfig,
-    );
+    let latestPersonTable = $("#latestPersonDashboardItem").DataTable(dataTableConfig);
     latestPersonTable.on("draw", function () {
         syncCartButtons();
     });
@@ -269,11 +243,7 @@ function initializeMainDashboard() {
                 let familiesInCart = familiesData.familiesInCart || [];
                 let groupsInCart = cartData.GroupCart || [];
 
-                window.CRM.cartManager.syncButtonStates(
-                    peopleInCart,
-                    familiesInCart,
-                    groupsInCart,
-                );
+                window.CRM.cartManager.syncButtonStates(peopleInCart, familiesInCart, groupsInCart);
             });
         }
     }

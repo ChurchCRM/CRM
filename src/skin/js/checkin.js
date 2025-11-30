@@ -33,11 +33,7 @@ function initializePersonSearchFields() {
             // Use a URL function that returns the dynamic search URL
             // The API expects the search term in the URL path: /api/persons/search/{query}
             url: function (params) {
-                return (
-                    window.CRM.root +
-                    "/api/persons/search/" +
-                    encodeURIComponent(params.term)
-                );
+                return window.CRM.root + "/api/persons/search/" + encodeURIComponent(params.term);
             },
             dataType: "json",
             delay: 250,
@@ -176,8 +172,7 @@ function displayPersonDetails(element, person) {
     }
 
     if (person && person.objid) {
-        var photoUrl =
-            window.CRM.root + "/api/person/" + person.objid + "/photo";
+        var photoUrl = window.CRM.root + "/api/person/" + person.objid + "/photo";
         var personViewUrl = "PersonView.php?PersonID=" + person.objid;
 
         // Compact inline display with photo and name

@@ -11,11 +11,7 @@ function initPaymentTable() {
             data: "FamilyString",
             render: function (data, type, full, meta) {
                 var familyName =
-                    data && data.trim()
-                        ? data
-                        : '<em class="text-muted">' +
-                          i18next.t("Anonymous") +
-                          "</em>";
+                    data && data.trim() ? data : '<em class="text-muted">' + i18next.t("Anonymous") + "</em>";
                 var icon = isDepositClosed
                     ? '<i class="fa-solid fa-magnifying-glass"></i>'
                     : '<i class="fa-solid fa-pen"></i>';
@@ -39,9 +35,7 @@ function initPaymentTable() {
             title: i18next.t("Check Number"),
             data: "CheckNo",
             render: function (data, type, full, meta) {
-                return data
-                    ? "<code>" + data + "</code>"
-                    : '<em class="text-muted">-</em>';
+                return data ? "<code>" + data + "</code>" : '<em class="text-muted">-</em>';
             },
         },
         {
@@ -61,17 +55,9 @@ function initPaymentTable() {
                 // For display, split multiple funds and show as individual badges
                 var funds = data.split(", ");
                 var badges = funds.map(function (fund) {
-                    return (
-                        '<span class="badge badge-info text-white mr-1 mb-1">' +
-                        fund.trim() +
-                        "</span>"
-                    );
+                    return '<span class="badge badge-info text-white mr-1 mb-1">' + fund.trim() + "</span>";
                 });
-                return (
-                    '<div class="d-flex flex-wrap">' +
-                    badges.join("") +
-                    "</div>"
-                );
+                return '<div class="d-flex flex-wrap">' + badges.join("") + "</div>";
             },
         },
         {
@@ -80,11 +66,7 @@ function initPaymentTable() {
             data: "sumAmount",
             render: function (data, type, full, meta) {
                 if (type === "display") {
-                    return (
-                        '<strong class="text-end d-block">$' +
-                        parseFloat(data || 0).toFixed(2) +
-                        "</strong>"
-                    );
+                    return '<strong class="text-end d-block">$' + parseFloat(data || 0).toFixed(2) + "</strong>";
                 }
                 return parseFloat(data || 0);
             },
@@ -106,14 +88,7 @@ function initPaymentTable() {
                     badgeClass = "badge-warning";
                     icon = '<i class="fa-solid fa-credit-card"></i> ';
                 }
-                return (
-                    '<span class="badge ' +
-                    badgeClass +
-                    '">' +
-                    icon +
-                    data +
-                    "</span>"
-                );
+                return '<span class="badge ' + badgeClass + '">' + icon + data + "</span>";
             },
         },
     ];
@@ -135,18 +110,11 @@ function initPaymentTable() {
 
     var dataTableConfig = {
         ajax: {
-            url:
-                window.CRM.root +
-                "/api/deposits/" +
-                depositSlipID +
-                "/payments",
+            url: window.CRM.root + "/api/deposits/" + depositSlipID + "/payments",
             dataSrc: "",
             error: function (xhr, error, thrown) {
                 console.error("DataTable error:", xhr, error, thrown);
-                showGlobalMessage(
-                    i18next.t("Error loading payments"),
-                    "danger",
-                );
+                showGlobalMessage(i18next.t("Error loading payments"), "danger");
             },
         },
         columns: colDef,
@@ -167,9 +135,7 @@ function initPaymentTable() {
         language: {
             emptyTable:
                 '<div class="alert alert-info mt-3 mb-0"><i class="fa-solid fa-circle-info"></i> ' +
-                i18next.t(
-                    'No payments yet. Click "Add Payment" to get started.',
-                ) +
+                i18next.t('No payments yet. Click "Add Payment" to get started.') +
                 "</div>",
         },
     };
@@ -196,26 +162,19 @@ function initDepositSlipEditor() {
             .done(function (data) {
                 var count = Array.isArray(data) ? data.length : 0;
                 if (count === 0) {
-                    window.CRM.notify(
-                        i18next.t("No payments on this deposit"),
-                        {
-                            type: "warning",
-                            delay: 5000,
-                        },
-                    );
+                    window.CRM.notify(i18next.t("No payments on this deposit"), {
+                        type: "warning",
+                        delay: 5000,
+                    });
                     return;
                 }
 
                 // There are payments; proceed to open/download the PDF
-                window.CRM.VerifyThenLoadAPIContent(
-                    window.CRM.root + "/api/deposits/" + depositId + "/pdf",
-                );
+                window.CRM.VerifyThenLoadAPIContent(window.CRM.root + "/api/deposits/" + depositId + "/pdf");
             })
             .fail(function (jqXHR, textStatus, errorThrown) {
                 // Fallback: show generic error and do not proceed
-                var errorMsg = i18next.t(
-                    "There was a problem retrieving the requested object",
-                );
+                var errorMsg = i18next.t("There was a problem retrieving the requested object");
                 if (jqXHR.responseJSON && jqXHR.responseJSON.message) {
                     errorMsg = jqXHR.responseJSON.message;
                 }
@@ -233,8 +192,7 @@ function initDepositSlipEditor() {
 
         // Reset chart colors if available
         if (window.fundChartInstance) {
-            window.fundChartInstance.data.datasets[0].backgroundColor =
-                window.originalFundColors;
+            window.fundChartInstance.data.datasets[0].backgroundColor = window.originalFundColors;
             window.fundChartInstance.update();
         }
     });
@@ -283,12 +241,7 @@ function initDepositSlipEditor() {
         // Show loading indicator
         var submitBtn = $(this).find('button[type="submit"]');
         var originalText = submitBtn.html();
-        submitBtn
-            .prop("disabled", true)
-            .html(
-                '<i class="fa-solid fa-spinner fa-spin"></i> ' +
-                    i18next.t("Saving..."),
-            );
+        submitBtn.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin"></i> ' + i18next.t("Saving..."));
 
         var formData = {
             depositDate: $("#DepositDate").val(),
@@ -315,10 +268,7 @@ function initDepositSlipEditor() {
             timeout: 10000,
         })
             .done(function (data) {
-                showGlobalMessage(
-                    i18next.t("Deposit saved successfully"),
-                    "success",
-                );
+                showGlobalMessage(i18next.t("Deposit saved successfully"), "success");
                 setTimeout(function () {
                     location.reload();
                 }, 1500);
@@ -368,21 +318,12 @@ function initDepositSlipEditor() {
 
         if (selectedRows > 0) {
             deleteBtn
-                .html(
-                    '<i class="fa-solid fa-trash-can"></i> ' +
-                        i18next.t("Delete") +
-                        " (" +
-                        selectedRows +
-                        ")",
-                )
+                .html('<i class="fa-solid fa-trash-can"></i> ' + i18next.t("Delete") + " (" + selectedRows + ")")
                 .removeClass("btn-outline-danger")
                 .addClass("btn-danger");
         } else {
             deleteBtn
-                .html(
-                    '<i class="fa-solid fa-trash-can"></i> ' +
-                        i18next.t("Delete"),
-                )
+                .html('<i class="fa-solid fa-trash-can"></i> ' + i18next.t("Delete"))
                 .removeClass("btn-danger")
                 .addClass("btn-outline-danger");
         }
@@ -392,10 +333,7 @@ function initDepositSlipEditor() {
     $("#deleteSelectedRows").on("click", function () {
         var selectedRows = dataT.rows(".selected").data();
         if (selectedRows.length === 0) {
-            showGlobalMessage(
-                i18next.t("Please select rows to delete"),
-                "warning",
-            );
+            showGlobalMessage(i18next.t("Please select rows to delete"), "warning");
             return;
         }
 
@@ -418,9 +356,7 @@ function initDepositSlipEditor() {
                     className: "btn-secondary",
                 },
                 confirm: {
-                    label:
-                        '<i class="fa-solid fa-trash-can"></i> ' +
-                        i18next.t("Delete"),
+                    label: '<i class="fa-solid fa-trash-can"></i> ' + i18next.t("Delete"),
                     className: "btn-danger",
                 },
             },
@@ -432,10 +368,7 @@ function initDepositSlipEditor() {
                         deletePromises.push(
                             $.ajax({
                                 type: "DELETE",
-                                url:
-                                    window.CRM.root +
-                                    "/api/payments/" +
-                                    this.GroupKey,
+                                url: window.CRM.root + "/api/payments/" + this.GroupKey,
                                 dataType: "json",
                             }),
                         );
@@ -444,17 +377,11 @@ function initDepositSlipEditor() {
                     $.when
                         .apply($, deletePromises)
                         .done(function () {
-                            showGlobalMessage(
-                                i18next.t("Payments deleted successfully"),
-                                "success",
-                            );
+                            showGlobalMessage(i18next.t("Payments deleted successfully"), "success");
                             dataT.ajax.reload();
                         })
                         .fail(function () {
-                            showGlobalMessage(
-                                i18next.t("Error deleting payments"),
-                                "danger",
-                            );
+                            showGlobalMessage(i18next.t("Error deleting payments"), "danger");
                         });
                 }
             },
@@ -532,8 +459,7 @@ function initCharts(
             }
         },
         onHover: function (event, activeElements) {
-            event.native.target.style.cursor =
-                activeElements.length > 0 ? "pointer" : "default";
+            event.native.target.style.cursor = activeElements.length > 0 ? "pointer" : "default";
         },
     };
 
@@ -549,14 +475,10 @@ function initCharts(
                     data: fundChartData,
                     backgroundColor: fundBackgroundColor,
                     borderRadius: 4,
-                    hoverBackgroundColor: fundBackgroundColor.map(
-                        function (color) {
-                            // Darken the color on hover
-                            return color
-                                .replace(")", ", 0.8)")
-                                .replace("rgb", "rgba");
-                        },
-                    ),
+                    hoverBackgroundColor: fundBackgroundColor.map(function (color) {
+                        // Darken the color on hover
+                        return color.replace(")", ", 0.8)").replace("rgb", "rgba");
+                    }),
                 },
             ],
         },
@@ -572,9 +494,7 @@ function initCharts(
 function highlightChartBar(chart, index) {
     var originalColors = chart.data.datasets[0].backgroundColor;
     var newColors = originalColors.map(function (color, i) {
-        return i === index
-            ? color
-            : color.replace(")", ", 0.3)").replace("rgb", "rgba");
+        return i === index ? color : color.replace(")", ", 0.3)").replace("rgb", "rgba");
     });
     chart.data.datasets[0].backgroundColor = newColors;
     chart.update();

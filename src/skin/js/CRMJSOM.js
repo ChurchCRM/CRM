@@ -14,12 +14,7 @@ window.CRM.APIRequest = function (options) {
         jqXHR.url = settings.url;
     };
     options.error = function (jqXHR, textStatus, errorThrown) {
-        window.CRM.system.handlejQAJAXError(
-            jqXHR,
-            textStatus,
-            errorThrown,
-            options.suppressErrorDialog,
-        );
+        window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
     };
     return $.ajax(options);
 };
@@ -36,12 +31,7 @@ window.CRM.DisplayErrorMessage = function (endpoint, error) {
         ": " +
         error.message;
     if (error.trace) {
-        message +=
-            "</p>" +
-            i18next.t("Stack Trace") +
-            ": <pre>" +
-            JSON.stringify(error.trace, undefined, 2) +
-            "</pre>";
+        message += "</p>" + i18next.t("Stack Trace") + ": <pre>" + JSON.stringify(error.trace, undefined, 2) + "</pre>";
     }
     bootbox.alert({
         title: i18next.t("ERROR"),
@@ -50,9 +40,7 @@ window.CRM.DisplayErrorMessage = function (endpoint, error) {
 };
 
 window.CRM.VerifyThenLoadAPIContent = function (url) {
-    var error = i18next.t(
-        "There was a problem retrieving the requested object",
-    );
+    var error = i18next.t("There was a problem retrieving the requested object");
 
     // Helper function to fetch error message from JSON response
     function fetchErrorMessage(targetUrl, fallbackError, callback) {
@@ -63,8 +51,7 @@ window.CRM.VerifyThenLoadAPIContent = function (url) {
                 async: false,
                 dataType: "json",
                 success: function (data) {
-                    var msg =
-                        data && data.message ? data.message : fallbackError;
+                    var msg = data && data.message ? data.message : fallbackError;
                     callback(msg);
                 },
                 error: function () {
@@ -109,8 +96,7 @@ window.CRM.kiosks = {
         window.CRM.APIRequest({
             path: "kiosks/" + id + "/reloadKiosk",
             method: "POST",
-        }).done(function (data) {
-        });
+        }).done(function (data) {});
     },
     enableRegistration: function () {
         return window.CRM.APIRequest({
@@ -222,27 +208,21 @@ window.CRM.groups = {
                 throw i18next.t("GroupID required for role selection prompt");
             }
             initFunction = function () {
-                window.CRM.groups
-                    .getRoles(selectOptions.GroupID)
-                    .done(function (rdata) {
-                        let rolesList = rdata.map(function (item) {
-                            return {
-                                text: i18next.t(item.OptionName), // to translate the Teacher and Student in localize text
-                                id: item.OptionId,
-                            };
-                        });
-                        $("#targetRoleSelection").select2({
-                            data: rolesList,
-                            dropdownParent: $(".bootbox"),
-                        });
+                window.CRM.groups.getRoles(selectOptions.GroupID).done(function (rdata) {
+                    let rolesList = rdata.map(function (item) {
+                        return {
+                            text: i18next.t(item.OptionName), // to translate the Teacher and Student in localize text
+                            id: item.OptionId,
+                        };
                     });
+                    $("#targetRoleSelection").select2({
+                        data: rolesList,
+                        dropdownParent: $(".bootbox"),
+                    });
+                });
             };
         }
-        if (
-            selectOptions.Type ===
-            (window.CRM.groups.selectTypes.Group |
-                window.CRM.groups.selectTypes.Role)
-        ) {
+        if (selectOptions.Type === (window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role)) {
             options.title = i18next.t("Select Group and Role");
             options.buttons.confirm.callback = function () {
                 selection = {
@@ -262,34 +242,28 @@ window.CRM.groups = {
                     id: item.Id,
                 };
             });
-            $("#targetGroupSelection")
-                .parents(".bootbox")
-                .removeAttr("tabindex");
+            $("#targetGroupSelection").parents(".bootbox").removeAttr("tabindex");
             $groupSelect2 = $("#targetGroupSelection").select2({
                 data: groupsList,
                 dropdownParent: $(".bootbox"),
             });
 
             $groupSelect2.on("select2:select", function (e) {
-                var targetGroupId = $(
-                    "#targetGroupSelection option:selected",
-                ).val();
+                var targetGroupId = $("#targetGroupSelection option:selected").val();
                 $parent = $("#targetRoleSelection").parent();
                 $("#targetRoleSelection").empty();
-                window.CRM.groups
-                    .getRoles(targetGroupId)
-                    .done(function (rdata) {
-                        rolesList = rdata.map(function (item) {
-                            return {
-                                text: i18next.t(item.OptionName), // this is for the Teacher and Student role
-                                id: item.OptionId,
-                            };
-                        });
-                        $("#targetRoleSelection").select2({
-                            data: rolesList,
-                            dropdownParent: $(".bootbox"),
-                        });
+                window.CRM.groups.getRoles(targetGroupId).done(function (rdata) {
+                    rolesList = rdata.map(function (item) {
+                        return {
+                            text: i18next.t(item.OptionName), // this is for the Teacher and Student role
+                            id: item.OptionId,
+                        };
                     });
+                    $("#targetRoleSelection").select2({
+                        data: rolesList,
+                        dropdownParent: $(".bootbox"),
+                    });
+                });
             });
         });
     },
@@ -358,17 +332,9 @@ window.CRM.system = {
             suppressErrorDialog: true,
         });
     },
-    handlejQAJAXError: function (
-        jqXHR,
-        textStatus,
-        errorThrown,
-        suppressErrorDialog,
-    ) {
+    handlejQAJAXError: function (jqXHR, textStatus, errorThrown, suppressErrorDialog) {
         if (jqXHR.status === 401) {
-            window.location =
-                window.CRM.root +
-                "/session/begin?location=" +
-                window.location.pathname;
+            window.location = window.CRM.root + "/session/begin?location=" + window.location.pathname;
         }
         try {
             var CRMResponse = JSON.parse(jqXHR.responseText);
@@ -392,18 +358,14 @@ window.CRM.dashboard = {
     renderers: {
         EventsCounters: function (data) {
             if (document.getElementById("BirthdateNumber") != null) {
-                document.getElementById("BirthdateNumber").innerText =
-                    data.Birthdays;
-                document.getElementById("AnniversaryNumber").innerText =
-                    data.Anniversaries;
+                document.getElementById("BirthdateNumber").innerText = data.Birthdays;
+                document.getElementById("AnniversaryNumber").innerText = data.Anniversaries;
                 document.getElementById("EventsNumber").innerText = data.Events;
             }
         },
         PageLocale: function (data) {
             $(".fi").addClass("fi-" + data.countryFlagCode);
-            $("#translationInfo").html(
-                data.name + " [" + window.CRM.locale + "]",
-            );
+            $("#translationInfo").html(data.name + " [" + window.CRM.locale + "]");
             if (data.displayPerCompleted && data.poPerComplete < 90) {
                 $("#translationPer").html(data.poPerComplete + "%");
                 $("#localePer").removeClass("hidden");
@@ -414,10 +376,7 @@ window.CRM.dashboard = {
         window.CRM.APIRequest({
             method: "GET",
             path:
-                "background/page?token=" +
-                Math.random() +
-                "&name=" +
-                window.CRM.PageName.replace(window.CRM.root, ""),
+                "background/page?token=" + Math.random() + "&name=" + window.CRM.PageName.replace(window.CRM.root, ""),
             suppressErrorDialog: true,
         }).done(function (data) {
             for (var key in data) {
