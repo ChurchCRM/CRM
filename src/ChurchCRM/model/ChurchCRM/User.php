@@ -89,22 +89,67 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isEditSelf();
     }
 
+    /**
+     * Update password using secure bcrypt hashing.
+     */
     public function updatePassword(string $password): void
     {
         $this->setPassword($this->hashPassword($password));
     }
 
+    /**
+     * Validate password against stored hash.
+     * Supports both legacy SHA-256 and new bcrypt formats for migration.
+     * If legacy hash matches, upgrades to bcrypt on successful validation.
+     */
     public function isPasswordValid(string $password): bool
     {
-        return $this->getPassword() == $this->hashPassword($password);
+        $storedHash = $this->getPassword();
+
+        // Check if this is a bcrypt hash (starts with $2y$)
+        if ($this->isBcryptHash($storedHash)) {
+            return password_verify($password, $storedHash);
+        }
+
+        // Legacy SHA-256 check for migration period
+        $legacyHash = $this->legacyHashPassword($password);
+        if (hash_equals($storedHash, $legacyHash)) {
+            // Upgrade to bcrypt on successful login
+            $this->setPassword($this->hashPassword($password));
+            $this->save();
+            return true;
+        }
+
+        return false;
     }
 
+    /**
+     * Hash password using bcrypt (PHP's password_hash with PASSWORD_DEFAULT).
+     * This is the secure method for new passwords.
+     */
     public function hashPassword(string $password): string
+    {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    /**
+     * Legacy SHA-256 hashing for backward compatibility during migration.
+     * @deprecated Will be removed in a future version
+     */
+    private function legacyHashPassword(string $password): string
     {
         return hash('sha256', $password . $this->getPersonId());
     }
 
-    public function isAddEventEnabled(): bool
+    /**
+     * Check if a hash is in bcrypt format.
+     */
+    private function isBcryptHash(string $hash): bool
+    {
+        return str_starts_with($hash, '$2y$') || str_starts_with($hash, '$2b$') || str_starts_with($hash, '$2a$');
+    }
+
+    public function isAddEventEnabled(): bool // TODO: Create permission to manag event deletion see https://github.com/ChurchCRM/CRM/issues/4726
     {
         return $this->isAddEvent();
     }
