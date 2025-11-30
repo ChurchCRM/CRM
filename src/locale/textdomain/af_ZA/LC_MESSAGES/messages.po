@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Rugsteun databasis"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Hierdie hulpmiddel sal u help om 'n back-up te maak van die ChurchCRM-databasis."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "U moet minstens een keer per week 'n handmatige rugsteun maak, tensy u reeds 'n gereelde rugsteunprosedure vir u stelsels het."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Nadat u die rugsteunlêer afgelaai het, moet u twee eksemplare maak. Sit een daarvan in 'n brandwerende kluis op die perseel en die ander op 'n veilige plek buite die perseel."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "As u bekommerd is oor die vertroulikheid van data wat in die ChurchCRM-databasis gestoor word, moet u die rugsteun-data enkripteer as dit êrens gestoor word wat moontlik vir ander toeganklik is."
-
-#: 
-msgid "Select archive type"
-msgstr "Kies tipe argief"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Rugsteunlêer met 'n wagwoord enkripteer?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Hertik wagwoord"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Genereer en stuur rugsteun na eksterne berging"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Inskrywing vir groepwenners"
 
@@ -902,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "Geen bywoningsgetalle aangeteken nie"
 
 #: 
-msgid "Event Sermon"
-msgstr "Preek van die gebeurtenis"
-
-#: 
 msgid "Event Status"
 msgstr "Gebeurtenisstatus"
 
 #: 
 msgid "Return to Events"
 msgstr "Keer terug na gebeure"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "TYP NAAM VAN GEBEURTENIS"
 
 #: 
 msgid "Sundays"
@@ -944,30 +903,6 @@ msgstr "Vrydag"
 #: 
 msgid "Saturdays"
 msgstr "Saterdag"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "STAALTYD STAAL"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "BYWONINGSTELLINGS"
-
-#: 
-msgid "Optional"
-msgstr "Opsioneel"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Voer 'n lys in van die aantal bywonings wat u by hierdie geleentheid wil insluit."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Skei elke telnaam met 'n komma. bv. Lede, besoekers, kampus, kinders"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Elke tipe gebeurtenis bevat 'n totale telling, u hoef dit nie in te sluit nie."
 
 #: 
 msgid "Add Event Type"
@@ -1929,28 +1864,12 @@ msgid "Confirm data labels"
 msgstr "Bevestig data-etikette"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Lys van gebeure van tipe = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Lys alle kerkgebeurtenisse"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Kies geleentheidstipes om te vertoon"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Vertoon gebeure in die jaar"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Begin datum / tyd"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Geen bywoning aangeteken nie"
 
 #: 
 msgid "Attendees"

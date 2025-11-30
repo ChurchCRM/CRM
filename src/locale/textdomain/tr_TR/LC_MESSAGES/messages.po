@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Veritabanı Yedeği"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Bu araç, ChurchCRM veritabanını manuel olarak yedeklemenize yardımcı olacaktır."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Sistemleriniz için düzenli bir yedekleme prosedürünüz yoksa en az haftada bir manuel yedekleme yapmanız gerekir."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Yedekleme dosyasını indirdikten sonra iki kopya almalısınız. Bunlardan birini sahada yangına dayanıklı bir kasaya, diğerini ise saha dışında güvenli bir yere koyun."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "ChurchCRM veritabanında depolanan verilerin gizliliği konusunda endişeleriniz varsa, yedek verileri başkalarının erişebildiği bir yerde saklanacaksa şifrelemelisiniz."
-
-#: 
-msgid "Select archive type"
-msgstr "Arşiv türünü seçin"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Yedekleme dosyası bir şifre ile şifrelensin mi?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Şifrenizi yeniden yazın"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Harici depolamaya yedekleme oluşturun ve gönderin"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Toplu kazanan girişi"
 
@@ -902,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "Katılım sayısı kaydedilmedi"
 
 #: 
-msgid "Event Sermon"
-msgstr "Etkinlik Vaaz"
-
-#: 
 msgid "Event Status"
 msgstr "Olay durumu"
 
 #: 
 msgid "Return to Events"
 msgstr "Etkinliklere Dön"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "Olay Türü Adı"
 
 #: 
 msgid "Sundays"
@@ -944,30 +903,6 @@ msgstr "Cuma günleri"
 #: 
 msgid "Saturdays"
 msgstr "Cumartesi günleri"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "Varsayılan başlangıç ​​zamanı"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "Katılım Sayıları"
-
-#: 
-msgid "Optional"
-msgstr "İsteğe bağlı"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Bu etkinliğe dahil etmek istediğiniz katılım sayısının bir listesini girin."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Her sayım_adı bir virgülle ayırın. Örneğin. Üyeler, ziyaretçiler, kampüs, çocuklar"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Her olay türü toplam sayı içerir, eklemeniz gerekmez."
 
 #: 
 msgid "Add Event Type"
@@ -1929,28 +1864,12 @@ msgid "Confirm data labels"
 msgstr "Veri etiketlerini onaylayın"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Türü listeleme olayları ="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Tüm kilise etkinliklerini listeleme"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Görüntülemek için olay türlerini seçin"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Yılda Etkinlik Görüntüleyin"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Başlangıç ​​tarihi/saati"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Katılım kaydedilmedi"
 
 #: 
 msgid "Attendees"

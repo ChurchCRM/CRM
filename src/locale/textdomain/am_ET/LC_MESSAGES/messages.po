@@ -64,41 +64,6 @@ msgid "Backup Database"
 msgstr "የመረጃ ቋቱን አስቀምጥ"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "ይሄ መሳሪያ የChurchCRM  መረጃ ቋት ለማስቀመጥ ይረዳል"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "ሳምንታዊ የምትኬ መንገድ እስከሌለ ድረስ ቢያንስ በሳምንት አንዴ የመረጃ ቋቱን ምትኬ ማስቀመጥ ያስፈልጋል።"
-
-#: 
-#, fuzzy
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "የምትኬ ሰነዱን ካወረዱ በኋላ በሁለት ቅጂዎች መዘጋጀት አለበት። አንደኛውን እሳት በማይደርስበት ድህረ ገፅ ላይ ይቀመጥ፥ ሁለተኛውን ምትኬ በሌላ ስፍራ ያስቀምጡት።"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "በዚህ ሶፍትዌር የሚቀመጠው መረጃ ደህንነት ካሳሰብዎት፤ አባክዎ ሰዎች ሊያገኙት በሚችሉት ቦታ የተቀመጠን የውሂብ ጎታ አመስጥረው ያስቀምጡ።"
-
-#: 
-msgid "Select archive type"
-msgstr "የማህደሩን አይነት ይምረጡ"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "የምትኬውን ሰነድ በይለፍ ቃል ያመስጥሩት?"
-
-#: 
-msgid "Re-type Password"
-msgstr "የይለፍቃሉን እንደገና ይፃፉ"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "ለውጫዊ የመረጃ ማስቀመጫ ምትኬ አዘጋጅ"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "የአሸናፊው ባች ማስገቢያ"
 
@@ -904,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "ምንም የተገኝነት ብዛት ተመዝግቧል"
 
 #: 
-msgid "Event Sermon"
-msgstr "የክስተት ስብከት"
-
-#: 
 msgid "Event Status"
 msgstr "የክስተት ሁኔታ"
 
 #: 
 msgid "Return to Events"
 msgstr "ወደ ዝግጅቶች ተመለስ"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "የክስተት አይነት ስም"
 
 #: 
 msgid "Sundays"
@@ -946,30 +903,6 @@ msgstr "አርብ"
 #: 
 msgid "Saturdays"
 msgstr "ቅዳሜ"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "ነባሪ መጀመሪያ ሰዓት"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "የመገኘት ብዛት"
-
-#: 
-msgid "Optional"
-msgstr "አማራጭ"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "ከዚህ ክስተት ጋር ማካተት የሚፈልጉትን የመገኘት ብዛት ዝርዝር ያስገቡ።"
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "እያንዳንዱን የቁጥር_ስም በነጠላ ሰረዝ ለይ። ለምሳሌ. አባላት፣ ጎብኝዎች፣ ካምፓስ፣ ልጆች"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "እያንዳንዱ የክስተት አይነት ጠቅላላ ቆጠራን ያካትታል፣ እሱን ማካተት አያስፈልግዎትም።"
 
 #: 
 msgid "Add Event Type"
@@ -1931,28 +1864,12 @@ msgid "Confirm data labels"
 msgstr "የውሂብ መለያዎችን ያረጋግጡ"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "የ. ዓይነት ክስተቶች ዝርዝር "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "ሁሉንም የቤተ ክርስቲያን ክስተቶች መዘርዘር"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "ለማሳየት የዝግጅት ዓይነቶችን ይምረጡ"
-
-#: 
-msgid "Display Events in Year"
-msgstr "በዓመት ውስጥ ያሉ ዝግጅቶችን አሳይ"
-
-#: 
 msgid "Start Date/Time"
 msgstr "የመጀመሪያ ቀን/ሰዓት"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "ምንም ተሳትፎ አልተመዘገበም።"
 
 #: 
 msgid "Attendees"

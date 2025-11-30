@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Εφεδρική βάση δεδομένων"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Αυτό το εργαλείο θα σας βοηθήσει στη μη αυτόματη δημιουργία αντιγράφων ασφαλείας της βάσης δεδομένων ChurchCRM."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Θα πρέπει να δημιουργείτε ένα μη αυτόματο αντίγραφο ασφαλείας τουλάχιστον μία φορά την εβδομάδα, εκτός εάν έχετε ήδη μια τακτική διαδικασία δημιουργίας αντιγράφων ασφαλείας για τα συστήματά σας."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Αφού κάνετε λήψη του αρχείου αντιγράφου ασφαλείας, θα πρέπει να δημιουργήσετε δύο αντίγραφα. Τοποθετήστε το ένα σε ένα πυρίμαχο χρηματοκιβώτιο επί τόπου και το άλλο σε ασφαλές μέρος εκτός του χώρου."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Εάν ανησυχείτε για το απόρρητο των δεδομένων που είναι αποθηκευμένα στη βάση δεδομένων ChurchCRM, θα πρέπει να κρυπτογραφήσετε τα εφεδρικά δεδομένα εάν θα αποθηκευτούν σε κάποιο σημείο που είναι δυνητικά προσβάσιμο σε άλλους"
-
-#: 
-msgid "Select archive type"
-msgstr "Επιλέξτε τύπο αρχείου"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Κρυπτογράφηση αρχείου αντιγράφου ασφαλείας με κωδικό πρόσβασης;"
-
-#: 
-msgid "Re-type Password"
-msgstr "Πληκτρολογήστε ξανά τον κωδικό πρόσβασης"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Δημιουργία και αποστολή αντιγράφων ασφαλείας σε εξωτερικό χώρο αποθήκευσης"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Συμμετοχή νικητή παρτίδας"
 
@@ -902,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "Δεν έχουν καταγραφεί μετρήσεις συμμετοχής"
 
 #: 
-msgid "Event Sermon"
-msgstr "Κήρυγμα εκδήλωσης"
-
-#: 
 msgid "Event Status"
 msgstr "Κατάσταση συμβάντος"
 
 #: 
 msgid "Return to Events"
 msgstr "Επιστροφή στις Εκδηλώσεις"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "ΟΝΟΜΑ ΤΥΠΟΥ ΕΚΔΗΛΩΣΗΣ"
 
 #: 
 msgid "Sundays"
@@ -944,30 +903,6 @@ msgstr "Παρασκευές"
 #: 
 msgid "Saturdays"
 msgstr "τα ΣΑΒΒΑΤΑ"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "ΠΡΟΕΠΙΛΟΓΗ ΩΡΑ ΕΝΑΡΞΗΣ"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "ΜΕΤΡΑΕΙ Η ΠΑΡΟΥΣΙΑΣΗ"
-
-#: 
-msgid "Optional"
-msgstr "Προαιρετικός"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Εισαγάγετε μια λίστα με τους αριθμούς παρευρισκόμενων που θέλετε να συμπεριλάβετε σε αυτό το συμβάν."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Διαχωρίστε κάθε count_name με κόμμα. π.χ. Μέλη, Επισκέπτες, Πανεπιστημιούπολη, Παιδιά"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Κάθε τύπος συμβάντος περιλαμβάνει έναν συνολικό αριθμό, δεν χρειάζεται να το συμπεριλάβετε."
 
 #: 
 msgid "Add Event Type"
@@ -1929,28 +1864,12 @@ msgid "Confirm data labels"
 msgstr "Επιβεβαιώστε τις ετικέτες δεδομένων"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Συμβάντα λίστας τύπου = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Καταχώριση όλων των Εκκλησιαστικών Εκδηλώσεων"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Επιλέξτε Τύποι συμβάντων για εμφάνιση"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Εμφάνιση συμβάντων το έτος"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Ημερομηνία/Ώρα έναρξης"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Δεν έχει καταγραφεί προσέλευση"
 
 #: 
 msgid "Attendees"

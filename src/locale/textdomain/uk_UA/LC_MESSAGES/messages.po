@@ -64,40 +64,6 @@ msgid "Backup Database"
 msgstr "Створити резервну копію бази даних"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Цей інструмент допоможе вам вручну створити резервну копію бази даних \"ChurchCRM\"."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Ви повинні робити резервну копію вручну принаймні раз на тиждень, якщо у вас вже є регулярне резервне копіювання для ваших систем."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Після завантаження файлу резервної копії слід зробити дві копії. Покладіть одну з них у вогнестійкий сейф на місці, а інший в безпечному місці поза територією помешкання."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Якщо ви турбуєтеся про конфіденційність даних, що зберігаються в базі даних, ви повинні зашифрувати резервні копії даних, якщо він буде зберігатися десь потенційно доступним для інших"
-
-#: 
-msgid "Select archive type"
-msgstr "Виберіть тип архіву"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Зашифрувати файл резервної копії з паролем?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Повторно введіть пароль"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Створити та відправити резервну копію на зовнішнє сховище"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Пакетний запис переможця"
 
@@ -904,20 +870,12 @@ msgid "No Attendance counts recorded"
 msgstr "Кількість відвідувачів не зафіксовано"
 
 #: 
-msgid "Event Sermon"
-msgstr "Проповідь події"
-
-#: 
 msgid "Event Status"
 msgstr "Статус події"
 
 #: 
 msgid "Return to Events"
 msgstr "Повернутися до подій"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "НАЗВА ТИПУ ПОДІЇ"
 
 #: 
 msgid "Sundays"
@@ -946,30 +904,6 @@ msgstr "П’ятниці"
 #: 
 msgid "Saturdays"
 msgstr "Суботи"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "ЗАВДАННЯ ЧАС ПОЧАТКУ"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "ЛІЧЕННЯ НА УЧАСТЬ"
-
-#: 
-msgid "Optional"
-msgstr "Необов’язково"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Введіть список кількості відвідувачів, який ви хочете включити в цю подію."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Відокремте кожне ім'я_читання комою. напр. Учасники, відвідувачі, кампус, діти"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Кожен тип події включає загальну кількість, вам не потрібно її включати."
 
 #: 
 msgid "Add Event Type"
@@ -1931,28 +1865,12 @@ msgid "Confirm data labels"
 msgstr "Підтвердьте мітки даних"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Перелік подій типу = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Перелік усіх церковних подій"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Виберіть типи подій для відображення"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Відобразити події в році"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Дата / час початку"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Відсутність зафіксовано"
 
 #: 
 msgid "Attendees"

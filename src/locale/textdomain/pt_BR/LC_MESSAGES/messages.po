@@ -78,44 +78,6 @@ msgstr "Backup do Banco de Dados"
 
 #: 
 #, fuzzy
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Esta ferramenta vai te ajudar a fazer o backup manual do banco de dados do ChurchCRM."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Você deve fazer um backup manualmente, pelo menos uma vez por semana, a menos que você tenha um backup automático programado para seus sistemas."
-
-#: 
-#, fuzzy
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Depois de baixar o arquivo de backup, você deve fazer duas cópias. Guarde uma delas localmente, em um local seguro à prova de fogo, e a outra em um local seguro, mas distante (como um escritório ou na nuvem)."
-
-#: 
-#, fuzzy
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Se você tem preocupações a respeito da confidencialidade dos dados armazenados no banco de dados do ChurchCRM, você deve criptografar os dados de backup, caso este seja armazenado em um local potencialmente acessível por outras pessoas."
-
-#: 
-msgid "Select archive type"
-msgstr "Selecione o tipo de arquivo"
-
-#: 
-#, fuzzy
-msgid "Encrypt backup file with a password?"
-msgstr "Criptografar o backup com uma senha?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Repita a Senha"
-
-#: 
-#, fuzzy
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Gerar e enviar Backup para Armazenamento Externo"
-
-#: 
-#, fuzzy
 msgid "Batch Winner Entry"
 msgstr "Entrada em lote"
 
@@ -1087,10 +1049,6 @@ msgid "No Attendance counts recorded"
 msgstr "Não foi registrada a contagem dos presentes"
 
 #: 
-msgid "Event Sermon"
-msgstr "Sermão do Evento"
-
-#: 
 msgid "Event Status"
 msgstr "Status do Evento"
 
@@ -1098,11 +1056,6 @@ msgstr "Status do Evento"
 #, fuzzy
 msgid "Return to Events"
 msgstr "Retornar a Eventos"
-
-#: 
-#, fuzzy
-msgid "EVENT TYPE NAME"
-msgstr "NOME DO TIPO DE EVENTO"
 
 #: 
 #, fuzzy
@@ -1138,36 +1091,6 @@ msgstr "Sextas-feiras"
 #, fuzzy
 msgid "Saturdays"
 msgstr "Sábados"
-
-#: 
-#, fuzzy
-msgid "DEFAULT START TIME"
-msgstr "HORÁRIO DE INÍCIO PADRÃO"
-
-#: 
-#, fuzzy
-msgid "ATTENDANCE COUNTS"
-msgstr "CONTAGEM DOS PRESENTES"
-
-#: 
-#, fuzzy
-msgid "Optional"
-msgstr "Opcional"
-
-#: 
-#, fuzzy
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Digite uma lista de presença que você deseja incluir neste evento."
-
-#: 
-#, fuzzy
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Separe cada count_name com uma vírgula. ex.: Membros, Visitantes, Sede, Crianças"
-
-#: 
-#, fuzzy
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Todo tipo de evento tem um contador total incluído, você não precisa incluí-lo."
 
 #: 
 #, fuzzy
@@ -2331,33 +2254,13 @@ msgstr "Corfirma conteúdo das etiquetas"
 
 #: 
 #, fuzzy
-msgid "Listing Events of Type = "
-msgstr "Listando Eventos por Tipo = "
-
-#: 
-#, fuzzy
 msgid "Listing All Church Events"
 msgstr "Listar todos os eventos da igreja"
 
 #: 
 #, fuzzy
-msgid "Select Event Types To Display"
-msgstr "Selecione os tipos de evento para mostrar"
-
-#: 
-#, fuzzy
-msgid "Display Events in Year"
-msgstr "Mostrar eventos no ano"
-
-#: 
-#, fuzzy
 msgid "Start Date/Time"
 msgstr "Início Data/Horário"
-
-#: 
-#, fuzzy
-msgid "No Attendance Recorded"
-msgstr "Não foi registrada o número de presentes"
 
 #: 
 msgid "Attendees"

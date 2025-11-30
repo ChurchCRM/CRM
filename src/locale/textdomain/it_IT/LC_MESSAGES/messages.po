@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Questo strumento ti assisterà nel salvataggio del database del ChurchCRM."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Dovresti eseguire un backup manuale almeno una volta alla settimana, a meno che questa procedura non sia già automatizzata"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Dopo aver scaricato l'archivio, dovresti farne due copie. Mettine una in un posto sicuro online e l'altra su un supporto rimovibile"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Se ti preoccupa la riservatezza dei dati memorizzati nel database ChurchCRM, dovresti crittografare i dati di backup memorizzati in qualsiasi parte potenzialmente accessibile ad altri"
-
-#: 
-msgid "Select archive type"
-msgstr "Seleziona il tipo di archivio"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Proteggi l'archivio con una password?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Reinserisci la password"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Generare e spedire il backup in un Archivio Esterno"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Numero Vincitori Inseriti"
 
@@ -905,20 +872,12 @@ msgid "No Attendance counts recorded"
 msgstr "Non conta presenze registrate"
 
 #: 
-msgid "Event Sermon"
-msgstr "Evento Sermone"
-
-#: 
 msgid "Event Status"
 msgstr "Stato degli eventi"
 
 #: 
 msgid "Return to Events"
 msgstr "Torna agli eventi"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "EVENTO TIPO NOME"
 
 #: 
 msgid "Sundays"
@@ -947,30 +906,6 @@ msgstr "Venerdì"
 #: 
 msgid "Saturdays"
 msgstr "Sabato"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "TEMPO DI AVVIO PREDEFINITO"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "FREQUENZA CONTA"
-
-#: 
-msgid "Optional"
-msgstr "Opzionale"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Inserisci un elenco delle presenze che si desidera includere con questo evento."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Separare ogni nome presente con una virgola. per esempio. Membri, Visitatori, Sede, Bambini"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Ogni tipo di evento include un conteggio totale, non è necessario includerlo."
 
 #: 
 msgid "Add Event Type"
@@ -1933,28 +1868,12 @@ msgid "Confirm data labels"
 msgstr "Confermare le etichette dati"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Elenco degli eventi di tipo = ␣"
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Elenco di tutti gli eventi della Chiesa"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Selezionare i tipi di evento per visualizzare"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Mostra Eventi Anno"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Data / Ora"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "No presenze registrati"
 
 #: 
 msgid "Attendees"

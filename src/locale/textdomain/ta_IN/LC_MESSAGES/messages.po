@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "காப்பு தரவுத்தளம் or தகவல்கள் தளம்"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "சர்ச்சிஆர்எம் தரவுத்தளத்தை கைமுறையாக காப்புப் பிரதி எடுக்க இந்தக் கருவி உங்களுக்கு உதவும்"
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "உங்கள் கணினிகளுக்கான வழக்கமான காப்புப்பிரதி செயல்முறையை நீங்கள் ஏற்கனவே வைத்திருக்காவிட்டால், வாரத்திற்கு ஒரு முறையாவது கைமுறையாக காப்புப் பிரதி எடுக்க வேண்டும்"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "காப்பு கோப்பைப் பதிவிறக்கிய பிறகு, நீங்கள் இரண்டு நகல்களை உருவாக்க வேண்டும். அவற்றில் ஒன்றைத் நெருப்பினால் பாதிக்கப்படாத பாதுகாப்பான இடத்திலும், மற்றொன்றை தளத்திற்கு வெளியே பாதுகாப்பான இடத்திலும் வைக்கவும்"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "சர்ச்சிஆர்எம் தரவுத்தளத்தில் சேமிக்கப்பட்ட தரவின் ரகசியத்தன்மை குறித்து நீங்கள் கவலைப்படுகிறீர்கள் என்றால், பிறருக்கு அணுகக்கூடிய வகையில் எங்காவது சேமிக்கப்பட்டால், காப்புப் பிரதித் தரவை என்க்ரிப்ட் அல்லது குறியாக்கம் அல்லது மறைக்குறியீடு செய்ய வேண்டும்"
-
-#: 
-msgid "Select archive type"
-msgstr "காப்பக வகையைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "கடவுச்சொல் மூலம் காப்புப் பிரதி கோப்பை குறியாக்கம் அல்லது என்க்ரிப்ட் செய்யவா?"
-
-#: 
-msgid "Re-type Password"
-msgstr "கடவுச்சொல்லை மீண்டும் தட்டச்சு செய்க"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "வெளிப்புற சேமிப்பகத்திற்கு காப்புப்பிரதியை உருவாக்கி அனுப்பவும்"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "தொகுதி வெற்றியாளர் நுழைவு"
 
@@ -903,20 +870,12 @@ msgid "No Attendance counts recorded"
 msgstr "வருகை எண்ணிக்கை பதிவு செய்யப்படவில்லை"
 
 #: 
-msgid "Event Sermon"
-msgstr "நிகழ்வு பிரசங்கம்"
-
-#: 
 msgid "Event Status"
 msgstr "நிகழ்வு நிலை"
 
 #: 
 msgid "Return to Events"
 msgstr "நிகழ்வுகளுக்குத் திரும்பு"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "நிகழ்வு வகை பெயர்"
 
 #: 
 msgid "Sundays"
@@ -945,30 +904,6 @@ msgstr "வெள்ளிக்கிழமைகள்"
 #: 
 msgid "Saturdays"
 msgstr "சனிக்கிழமைகளில்"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "இயல்புநிலை தொடக்க நேரம்"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "வருகை எண்ணிக்கை"
-
-#: 
-msgid "Optional"
-msgstr "விருப்பத்திற்குரியது"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "இந்த நிகழ்வில் நீங்கள் சேர்க்க விரும்பும் வருகை எண்ணிக்கையின் பட்டியலை உள்ளிடவும்."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "ஒவ்வொரு எண்ணும்_பெயரையும் கமாவால் பிரிக்கவும். எ.கா. உறுப்பினர்கள், பார்வையாளர்கள், வளாகம், குழந்தைகள்"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "ஒவ்வொரு நிகழ்வு வகையிலும் மொத்த எண்ணிக்கை இருக்கும், நீங்கள் அதைச் சேர்க்க வேண்டியதில்லை."
 
 #: 
 msgid "Add Event Type"
@@ -1929,28 +1864,12 @@ msgid "Confirm data labels"
 msgstr " தகவல்/தரவு விவரத்துணுக்குகளை உறுதிப்படுத்தவும்"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "வகை நிகழ்வுகளை பட்டியலிடுதல் =␣"
-
-#: 
 msgid "Listing All Church Events"
 msgstr "அனைத்து சபை/தேவாலய நிகழ்வுகளையும் பட்டியலிடுதல்"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "காண்பிக்க நிகழ்வு வகைகளைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Display Events in Year"
-msgstr "வருடத்தில் நிகழ்வுகளைக் காண்பிக்கவும்"
-
-#: 
 msgid "Start Date/Time"
 msgstr "தொடக்க தேதி/நேரம்"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "வருகை பதிவு செய்யப்படவில்லை"
 
 #: 
 msgid "Attendees"

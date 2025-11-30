@@ -64,40 +64,6 @@ msgid "Backup Database"
 msgstr "Varmista tietokanta"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Tämä työkalu auttaa sinua varmuuskopioimaan ChurchCRM-tietokannan manuaalisesti."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "\n"
-"Sinun tulee tehdä manuaalinen varmuuskopio vähintään kerran viikossa, ellei sinulla ole jo tavallista varmuuskopiointimenettelyä järjestelmillesi."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Kun olet ladannut varmuuskopiotiedoston, sinun tulee tehdä kaksi kopiota. Aseta yksi niistä paloturvalliseen kassakaappiin paikan päällä ja toinen turvalliseen paikkaan paikan päällä."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Jos olet huolissasi ChurchCRM-tietokantaan tallennettujen tietojen luottamuksellisuudesta, sinun tulee salata varmuuskopiotiedot, jos ne tallennetaan jonnekin, johon muut mahdollisesti voivat päästä."
-
-#: 
-msgid "Select archive type"
-msgstr "Valitse arkiston tyyppi"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Salataanko varmuuskopiotiedosto salasanalla?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Toista salasana"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Luo ja lähetä varmuuskopio ulkoiseen tallennustilaan"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Erän voittajan osallistuminen"
 

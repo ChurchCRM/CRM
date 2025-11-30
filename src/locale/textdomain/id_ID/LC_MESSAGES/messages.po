@@ -64,41 +64,6 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Fungsi ini akan menolongmu dalam backup manual database ChurchCRM."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Anda harus buat backup manual setidaknya seminggu sekali kecuali jika Anda sudah memiliki prosedur backup reguler."
-
-#: 
-#, fuzzy
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Setelah unduh file backup, buatlah dua salinan. Letakkan salah satunya ke dalam lokasi yang sangat aman dan yang satu lagi di tempat aman diluar itu."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Jika peduli dengan kerahasiaan data dalam database ChurchCRM, Anda harus enkripsi data backup-nya jika hendak disimpan di tempat yang berpotensi diakses orang lain."
-
-#: 
-msgid "Select archive type"
-msgstr "Pilih Jenis Arsip"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Enkripsi file backup dengan kata sandi?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Ketik Ulang Kata Sandi"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Hasilkan dan Kirim ke Penyimpanan Eksternal"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Masukkan Sekumpulan Pemenang"
 
@@ -904,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "Data kehadiran tidak direkam"
 
 #: 
-msgid "Event Sermon"
-msgstr "Kothbah kegiatan"
-
-#: 
 msgid "Event Status"
 msgstr "Status kegiatan"
 
 #: 
 msgid "Return to Events"
 msgstr "Kembali kepada kegiatan-kegiatan"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "Nama tipe kegiatan"
 
 #: 
 msgid "Sundays"
@@ -946,30 +903,6 @@ msgstr "Jumat"
 #: 
 msgid "Saturdays"
 msgstr "Sabtu"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "Waktu mulai standar"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "Jumlah kehadiran"
-
-#: 
-msgid "Optional"
-msgstr "Opsional"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Masukan sebuah daftar kehadiran yang anda ingin sertakan pada kegiatan ini"
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Pisahkan setiap \"count_name\" dengan tanda \",\" contohnya: Anggota, pengunjung, Kampus, anak-anak"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Setiap tipe kegiatan sudah memiliki perhitungan total, anda tidak perlu menyertakannya kembali"
 
 #: 
 msgid "Add Event Type"
@@ -1932,28 +1865,12 @@ msgid "Confirm data labels"
 msgstr "Konfirmasikan label data"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Cantumkan Acara Tipe = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Daftar Semua Acara Gereja"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Pilih Jenis Acara Untuk Ditampilkan"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Tampilkan Acara dalam Tahun"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Tanggal Mulai / Waktu"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Tidak Ada Kehadiran yang Tercatat"
 
 #: 
 msgid "Attendees"

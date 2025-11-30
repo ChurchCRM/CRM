@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "バックアップデータベース"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "このツールは、手動でChurchCRMデータベースをバックアップする際に役立ちます"
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "すでにシステムの定期的なバックアップ手順がある場合を除き、少なくとも週に1回は手動でバックアップを取る必要があります"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "バックアップ ファイルをダウンロードしたら、コピーを 2 つ作成する必要があります　そのうちの 1 つをサイト内の耐火金庫に置き、もう 1 つをサイト外の安全な場所に置きます"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "ChurchCRM データベースに保存されているデータの機密性が心配な場合は、他の人がアクセスできる可能性のある場所にバックアップ データを保存する場合は、バックアップ データを暗号化する必要があります"
-
-#: 
-msgid "Select archive type"
-msgstr "アーカイブの種類を選択してください"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "バックアップファイルをパスワードで暗号化しますか?"
-
-#: 
-msgid "Re-type Password"
-msgstr "パスワードを再入力してください"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "バックアップを生成して外部ストレージに送信する"
-
-#: 
 msgid "Price"
 msgstr "価格"
 
@@ -454,10 +421,6 @@ msgstr "金曜日"
 #: 
 msgid "Saturdays"
 msgstr "土曜日"
-
-#: 
-msgid "Optional"
-msgstr "オプション"
 
 #: 
 msgid "Default Option"

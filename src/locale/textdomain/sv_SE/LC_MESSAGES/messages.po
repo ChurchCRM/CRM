@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "Säkerhetskopiera databasen"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Detta verktyg hjälper dig att manuellt säkerhetskopiera ChurchCRM-databasen."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Du borde säkerhetskopiera databasen minst en gång i veckan om du inte redan har en annan säkerhetskopieringssystem igång"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Äfter nerladdningen av säkerhetskopian,  gör en till kopia. Spara en kopia i en brandsäkert kassaskåp på plats och en brandsäkert kassaskåp någonannanstans"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Om du är orolig för sekretess för data som lagras i ChurchCRM-databasen, bör du kryptera säkerhetskopieringsdata om de kommer att lagras någonstans som kan komma åt andra"
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Välj arkivtyp"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Kryptera säkerhetskopian med ett lösenord"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "Bekräfta lösenordet"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Generera och skicka säkerhetskopiering till extern lagring"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Batch Vinnare Entry"
 
@@ -938,21 +902,12 @@ msgstr "Inga deltagare angiven"
 
 #: 
 #, fuzzy
-msgid "Event Sermon"
-msgstr "Evenemangspredikan"
-
-#: 
-#, fuzzy
 msgid "Event Status"
 msgstr "Evenemangsstatus"
 
 #: 
 msgid "Return to Events"
 msgstr "Återgå till händelser"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "EVENEMANGTYP NAMN"
 
 #: 
 msgid "Sundays"
@@ -981,30 +936,6 @@ msgstr "Fredagar"
 #: 
 msgid "Saturdays"
 msgstr "Lördagar"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "DEFAULT START TID"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "DELTAGANDE SUMMOR"
-
-#: 
-msgid "Optional"
-msgstr "Valfri"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Ange en lista över de närvaro som du vill inkludera i detta evenemang."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Separera varje count_name med ett komma. t.ex. medlemmar, besökare, campus, barn"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Varje händelsetyp innehåller ett totalt antal, du behöver inte inkludera det."
 
 #: 
 msgid "Add Event Type"
@@ -1994,28 +1925,12 @@ msgid "Confirm data labels"
 msgstr "Bekräfta informations etikett"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Lista händelser av typ ="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Lista över alla evenamang"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Välj evenamang typer att visa"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Visa evenamang i år"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Start datum/tid"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Inga deltagande angiven"
 
 #: 
 #, fuzzy
