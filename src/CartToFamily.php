@@ -10,7 +10,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have add records permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddRecordsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddRecordsEnabled(), 'AddRecords');
 
 // Was the form submitted?
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {

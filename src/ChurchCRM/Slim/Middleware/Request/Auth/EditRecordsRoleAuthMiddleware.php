@@ -13,4 +13,9 @@ class EditRecordsRoleAuthMiddleware extends BaseAuthRoleMiddleware
     {
         return gettext('User must have Edit Records permission');
     }
+
+    protected function getRoleName(): string
+    {
+        return 'EditRecords';
+    }
 }

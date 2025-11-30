@@ -8,7 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Check for Create Directory user permission.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(), 'CreateDirectory');
 
 $sPageTitle = gettext('Directory reports');
 require_once 'Include/Header.php';
