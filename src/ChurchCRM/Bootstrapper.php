@@ -469,7 +469,8 @@ class Bootstrapper
             ],
         ];
     }
-    private static function configureUserEnvironment(): void  // TODO: This function needs to stop creating global variable-variables.
+
+    private static function configureUserEnvironment(): void
     {
         global $cnInfoCentral;
         if (AuthenticationManager::validateUserSessionIsActive(false)) { // set on POST to /session/begin

@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemURLs;
 
 class PHPZipArchiveCheckTask implements TaskInterface, PreUpgradeTaskInterface
 {
-    // todo: make these const variables private after deprecating PHP7.0 #4948
     public function isActive(): bool
     {
         return !class_exists('ZipArchive');
