@@ -337,14 +337,16 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $iEventID = $event->getId();
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
+                $filteredCount = InputUtils::legacyFilterInput($aCount[$c]);
+                $filteredCountNotes = InputUtils::legacyFilterInput($sCountNotes);
                 $sSQL = "INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
                        ('" . InputUtils::legacyFilterInput($iEventID) . "',
                         '" . InputUtils::legacyFilterInput($aCountID[$c]) . "',
                         '" . InputUtils::legacyFilterInput($aCountName[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($aCount[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($sCountNotes) . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                        '" . $filteredCount . "',
+                        '" . $filteredCountNotes . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='" . $filteredCount . "', evtcnt_notes='" . $filteredCountNotes . "'";
                 RunQuery($sSQL);
             }
         } else {
@@ -360,14 +362,16 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event->save();
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
+                $filteredCount = InputUtils::legacyFilterInput($aCount[$c]);
+                $filteredCountNotes = InputUtils::legacyFilterInput($sCountNotes);
                 $sSQL = "INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
                        ('" . InputUtils::legacyFilterInput($iEventID) . "',
                         '" . InputUtils::legacyFilterInput($aCountID[$c]) . "',
                         '" . InputUtils::legacyFilterInput($aCountName[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($aCount[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($sCountNotes) . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                        '" . $filteredCount . "',
+                        '" . $filteredCountNotes . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='" . $filteredCount . "', evtcnt_notes='" . $filteredCountNotes . "'";
                 RunQuery($sSQL);
             }
         }
