@@ -25,15 +25,12 @@ class BackupJob extends JobBase
     public function __construct(string $BaseName, string $BackupType, bool $EncryptBackup, string $BackupPassword)
     {
         $this->BackupType = $BackupType;
-        $this->TempFolder = $this->createEmptyTempFolder();
-        $this->BackupFileBaseName = $this->TempFolder . '/' . $BaseName;
+        $this->BackupFileBaseName = sys_get_temp_dir() . '/' . $BaseName;
         $this->shouldEncrypt = $EncryptBackup;
         $this->BackupPassword = $BackupPassword;
         LoggerUtils::getAppLogger()->debug(
             "Backup job created; ready to execute: Type: '" .
                 $this->BackupType .
-                "' Temp Folder: '" .
-                $this->TempFolder .
                 "' BaseName: '" . $this->BackupFileBaseName . "'"
         );
     }
@@ -110,7 +107,7 @@ class BackupJob extends JobBase
         LoggerUtils::getAppLogger()->debug('Archive opened at: ' . $this->BackupFile->getPathname());
         $phar->startBuffering();
 
-        $SqlFile = new \SplFileInfo($this->TempFolder . '/' . 'ChurchCRM-Database.sql');
+        $SqlFile = new \SplFileInfo(sys_get_temp_dir() . '/ChurchCRM-Database.sql');
         $this->captureSQLFile($SqlFile);
         $phar->addFile($SqlFile, 'ChurchCRM-Database.sql');
         LoggerUtils::getAppLogger()->debug('Database added to archive');
@@ -146,7 +143,7 @@ class BackupJob extends JobBase
 
     private function createGZSql(): void
     {
-        $SqlFile = new \SplFileInfo($this->TempFolder . '/' . 'ChurchCRM-Database.sql');
+        $SqlFile = new \SplFileInfo(sys_get_temp_dir() . '/ChurchCRM-Database.sql');
         $this->captureSQLFile($SqlFile);
         $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName . '.sql.gz');
         $gzf = gzopen($this->BackupFile->getPathname(), 'w6');
@@ -160,8 +157,12 @@ class BackupJob extends JobBase
         LoggerUtils::getAppLogger()->info('Encrypting backup file: ' . $this->BackupFile);
         $tempFile = new \SplFileInfo($this->BackupFile->getPathname() . 'temp');
         rename($this->BackupFile, $tempFile);
-        File::encryptFileWithPassword($tempFile, $this->BackupFile, $this->BackupPassword);
-        LoggerUtils::getAppLogger()->info('Finished encrypting backup file');
+        // Add .enc extension to indicate the file is encrypted
+        $encryptedFile = new \SplFileInfo($this->BackupFile->getPathname() . '.enc');
+        File::encryptFileWithPassword($tempFile, $encryptedFile, $this->BackupPassword);
+        unlink($tempFile);
+        $this->BackupFile = $encryptedFile;
+        LoggerUtils::getAppLogger()->info('Finished encrypting backup file: ' . $this->BackupFile);
     }
 
     public function execute(): bool

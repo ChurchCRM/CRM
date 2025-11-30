@@ -37,8 +37,11 @@ class RestoreJob extends JobBase
             throw new \Exception($message, 500);
         }
         $rawUploadedFile = $_FILES['restoreFile'];
-        $this->TempFolder = $this->createEmptyTempFolder();
-        $this->RestoreFile = new \SplFileInfo($this->TempFolder . '/' . $rawUploadedFile['name']);
+        
+        // Security: Sanitize the uploaded filename to prevent path traversal and malicious file uploads
+        $sanitizedFilename = $this->sanitizeUploadedFilename($rawUploadedFile['name']);
+        
+        $this->RestoreFile = new \SplFileInfo(sys_get_temp_dir() . '/' . $sanitizedFilename);
         LoggerUtils::getAppLogger()->debug('Moving ' . $rawUploadedFile['tmp_name'] . ' to ' . $this->RestoreFile);
         move_uploaded_file($rawUploadedFile['tmp_name'], $this->RestoreFile);
         LoggerUtils::getAppLogger()->debug('File move complete');
@@ -47,22 +50,70 @@ class RestoreJob extends JobBase
         LoggerUtils::getAppLogger()->info('Restore job created; ready to execute');
     }
 
+    /**
+     * Sanitize uploaded filename to prevent path traversal and malicious file uploads.
+     *
+     * @param string $filename The original filename from the upload
+     * @return string Sanitized filename
+     * @throws \Exception If the filename is invalid or has a disallowed extension
+     */
+    private function sanitizeUploadedFilename(string $filename): string
+    {
+        // Use basename to strip any path components (prevents path traversal)
+        $filename = basename($filename);
+        
+        // Validate against allowed backup file patterns (including encrypted .enc files)
+        if (!preg_match('/^[\w\-\.]+\.(sql|sql\.gz|tar\.gz)(\.enc)?$/i', $filename)) {
+            LoggerUtils::getAppLogger()->warning('Blocked invalid backup filename: ' . $filename);
+            throw new \Exception('Invalid backup file. Only .sql, .sql.gz, .tar.gz files (optionally with .enc) are allowed.', 400);
+        }
+        
+        return $filename;
+    }
+
     private function decryptBackup(): void
     {
-        LoggerUtils::getAppLogger()->info('Decrypting file: ' . $this->RestoreFile);
+        // Check if file is encrypted (has .enc extension)
+        $basename = $this->RestoreFile->getBasename();
+        $isEncryptedFile = str_ends_with($basename, '.enc');
+        
         $this->restorePassword = InputUtils::filterString($_POST['restorePassword']);
-        $tempfile = new \SplFileInfo($this->RestoreFile->getPathname() . 'temp');
+        
+        // Only decrypt if file has .enc extension - the extension is the source of truth
+        if (!$isEncryptedFile) {
+            LoggerUtils::getAppLogger()->debug('File does not have .enc extension, skipping decryption');
+            return;
+        }
+        
+        // Encrypted file requires a password
+        if (empty($this->restorePassword)) {
+            throw new \Exception('Encrypted backup file requires a password to restore.', 400);
+        }
+        
+        LoggerUtils::getAppLogger()->info('Decrypting file: ' . $this->RestoreFile);
+        
+        // Determine the decrypted filename (remove .enc if present)
+        $decryptedPath = $isEncryptedFile 
+            ? substr($this->RestoreFile->getPathname(), 0, -4)  // Remove .enc
+            : $this->RestoreFile->getPathname();
+        
+        $tempfile = new \SplFileInfo($this->RestoreFile->getPathname() . '.tmp');
 
         try {
             File::decryptFileWithPassword($this->RestoreFile, $tempfile, $this->restorePassword);
-            rename($tempfile, $this->RestoreFile);
-            LoggerUtils::getAppLogger()->info('File decrypted');
+            unlink($this->RestoreFile);  // Remove encrypted file
+            rename($tempfile, $decryptedPath);  // Rename to proper extension
+            $this->RestoreFile = new \SplFileInfo($decryptedPath);
+            LoggerUtils::getAppLogger()->info('File decrypted to: ' . $this->RestoreFile);
         } catch (WrongKeyOrModifiedCiphertextException $ex) {
             if ($ex->getMessage() == 'Bad version header.') {
                 LoggerUtils::getAppLogger()->info("Bad version header; this file probably wasn't encrypted");
+                // Clean up temp file if it exists
+                if (file_exists($tempfile->getPathname())) {
+                    unlink($tempfile->getPathname());
+                }
             } else {
-                LoggerUtils::getAppLogger()->error($ex->getMessage());
-
+                LoggerUtils::getAppLogger()->error('Decryption failed: ' . $ex->getMessage());
                 throw $ex;
             }
         }
@@ -70,9 +121,25 @@ class RestoreJob extends JobBase
 
     private function discoverBackupType(): void
     {
+        $basename = $this->RestoreFile->getBasename();
+        
+        // Check for encrypted files first (ends with .enc)
+        if (str_ends_with($basename, '.enc')) {
+            // Remove .enc to determine underlying type
+            $innerBasename = substr($basename, 0, -4);
+            if (str_ends_with($innerBasename, '.tar.gz')) {
+                $this->BackupType = BackupType::FULL_BACKUP;
+            } elseif (str_ends_with($innerBasename, '.sql.gz')) {
+                $this->BackupType = BackupType::GZSQL;
+            } elseif (str_ends_with($innerBasename, '.sql')) {
+                $this->BackupType = BackupType::SQL;
+            }
+            return;
+        }
+        
+        // Handle non-encrypted files
         switch ($this->RestoreFile->getExtension()) {
             case 'gz':
-                $basename = $this->RestoreFile->getBasename();
                 if (str_ends_with($basename, 'tar.gz')) {
                     $this->BackupType = BackupType::FULL_BACKUP;
                 } elseif (str_ends_with($basename, 'sql.gz')) {
@@ -97,38 +164,38 @@ class RestoreJob extends JobBase
     {
         LoggerUtils::getAppLogger()->debug('Restoring full archive');
         $phar = new PharData($this->RestoreFile);
-        LoggerUtils::getAppLogger()->debug('Extracting ' . $this->RestoreFile . ' to ' . $this->TempFolder);
-        $phar->extractTo($this->TempFolder);
+        
+        // Create a unique extraction directory for full backup restore
+        $extractDir = sys_get_temp_dir() . '/churchcrm_restore_' . bin2hex(random_bytes(8));
+        mkdir($extractDir, 0750, true);
+        
+        LoggerUtils::getAppLogger()->debug('Extracting ' . $this->RestoreFile . ' to ' . $extractDir);
+        $phar->extractTo($extractDir);
         LoggerUtils::getAppLogger()->debug('Finished extraction');
-        $sqlFile = $this->TempFolder . '/ChurchCRM-Database.sql';
+        $sqlFile = $extractDir . '/ChurchCRM-Database.sql';
         if (file_exists($sqlFile)) {
             $this->restoreSQLBackup($sqlFile);
             LoggerUtils::getAppLogger()->debug('Removing images from live instance');
             FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
             LoggerUtils::getAppLogger()->debug('Removal complete; Copying restored images to live instance');
-            FileSystemUtils::recursiveCopyDirectory($this->TempFolder . '/Images/', SystemURLs::getImagesRoot());
+            FileSystemUtils::recursiveCopyDirectory($extractDir . '/Images/', SystemURLs::getImagesRoot());
             LoggerUtils::getAppLogger()->debug('Finished copying images');
         } else {
             throw new Exception(gettext('Backup archive does not contain a database') . ': ' . $this->RestoreFile);
         }
+        
+        // Clean up extraction directory
+        FileSystemUtils::recursiveRemoveDirectory($extractDir, false);
         LoggerUtils::getAppLogger()->debug('Finished restoring full archive');
     }
 
     private function restoreGZSQL(): void
     {
         LoggerUtils::getAppLogger()->debug('Decompressing gzipped SQL file: ' . $this->RestoreFile);
-        $gzf = gzopen($this->RestoreFile, 'r');
-        $buffer_size = 4096;
-        $SqlFile = new \SplFileInfo($this->TempFolder . '/' . 'ChurchCRM-Database.sql');
-        $out_file = fopen($SqlFile, 'wb');
-        while (!gzeof($gzf)) {
-            fwrite($out_file, gzread($gzf, $buffer_size));
-        }
-        fclose($out_file);
-        gzclose($gzf);
-        $this->restoreSQLBackup($SqlFile);
-        unlink($this->RestoreFile);
-        unlink($SqlFile->getPathname());
+        $sqlFile = sys_get_temp_dir() . '/ChurchCRM-Database.sql';
+        file_put_contents($sqlFile, gzdecode(file_get_contents($this->RestoreFile)));
+        $this->restoreSQLBackup($sqlFile);
+        unlink($sqlFile);
     }
 
     private function postRestoreCleanup(): void
@@ -160,10 +227,15 @@ class RestoreJob extends JobBase
                     break;
             }
             $this->postRestoreCleanup();
-            LoggerUtils::getAppLogger()->info('Finished executing restore job.  Cleaning out temp folder.');
+            LoggerUtils::getAppLogger()->info('Finished executing restore job.');
         } catch (Exception $ex) {
             LoggerUtils::getAppLogger()->error('Error restoring backup: ' . $ex);
+        } finally {
+            // Clean up the uploaded restore file
+            if (file_exists($this->RestoreFile->getPathname())) {
+                unlink($this->RestoreFile->getPathname());
+                LoggerUtils::getAppLogger()->debug('Cleaned up restore file: ' . $this->RestoreFile->getPathname());
+            }
         }
-        $this->TempFolder = $this->createEmptyTempFolder();
     }
 }

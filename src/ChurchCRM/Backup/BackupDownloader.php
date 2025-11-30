@@ -2,8 +2,6 @@
 
 namespace ChurchCRM\Backup;
 
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\FileSystemUtils;
 use ChurchCRM\Utils\LoggerUtils;
 
 class BackupDownloader
@@ -17,7 +15,8 @@ class BackupDownloader
             throw new \Exception($message, 500);
         }
 
-        $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
+        // Security: Use system temp directory (outside web root)
+        $path = sys_get_temp_dir() . '/' . basename($filename);
         LoggerUtils::getAppLogger()->info('Download requested for :' . $path);
         if (!file_exists($path)) {
             $message = 'Requested download does not exist: ' . $path;
@@ -48,6 +47,11 @@ class BackupDownloader
                     header('Content-type: application/zip');
                     header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
                     break;
+                case 'enc':
+                    // Encrypted backup files (AES-256 via Defuse)
+                    header('Content-type: application/octet-stream');
+                    header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
+                    break;
                     // add more headers for other content types here
                 default:
                     header('Content-type: application/octet-stream');
@@ -65,7 +69,8 @@ class BackupDownloader
         }
         fclose($fd);
 
-        FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/tmp_attach/', true);
+        // Clean up the backup file after download
+        unlink($path);
         LoggerUtils::getAppLogger()->debug('Removed backup file from server filesystem');
     }
 }
