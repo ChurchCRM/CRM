@@ -64,41 +64,6 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Dette verktøyet vil hjelpe deg med å manuelt ta backup av ChurchCRM"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Du bør foreta en manuell backup minst en gang i uken, med mindre du allerede har en vanlig backup procedule for dine systemer."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Når du har lastet sikkerhetskopifilen, bør du lage to kopier. Sette en av dem i en brannsikker safe på stedet, og den andre på et trygt sted utenfor området."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Hvis backup av ChurchCRM skal lages hvor andre kan komme til den, bør denne krypteres av sikkerhensmessige årsaker."
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Velg arkiv type"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Krypter backup-fil med et passord?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Gjenta passord"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Sikkerhetskopier og eksporter til ekstern lagring"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Batch Vinner Entry"
 
@@ -927,21 +892,12 @@ msgstr "Ingen Tilskuere teller opp"
 
 #: 
 #, fuzzy
-msgid "Event Sermon"
-msgstr "Hendelse Sermon"
-
-#: 
-#, fuzzy
 msgid "Event Status"
 msgstr "Hendelse Status"
 
 #: 
 msgid "Return to Events"
 msgstr "Tilbake til Arrangement"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "EVENT TYPE NAME"
 
 #: 
 msgid "Sundays"
@@ -970,18 +926,6 @@ msgstr "Fredager"
 #: 
 msgid "Saturdays"
 msgstr "Lørdager"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "STANDARD START TID"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "DELTAKELSE TELLER"
-
-#: 
-msgid "Optional"
-msgstr "Valgfritt"
 
 #: 
 msgid "Add Event Type"
@@ -1967,20 +1911,8 @@ msgid "Listing All Church Events"
 msgstr "Notering Alle kirkelige handlinger"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Velg hendelse typer Å Vise"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Vise hendelser i år"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Startdato / tid"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Ingen Oppmøte Innspilt"
 
 #: 
 #, fuzzy

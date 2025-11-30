@@ -64,40 +64,6 @@ msgid "Backup Database"
 msgstr "النسخ الاحتياطي لقاعدة البيانات"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "هذه الأداة سوف تساعدك في النسخ الاحتياطي لقاعدة بيانات ChurchCRM يدويا."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "يجب عليك إجراء نسخة احتياطية يدوياً مرة واحدة في الأسبوع على الأقل , ما لم يكن لديك بالفعل إجراء نسخ احتياطي منتظم لأنظمتك."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "بعد تحميل ملف النسخ الاحتياطي، يجب إجراء نسختين. احتفظ بواحد منهم في حافظة واقية من الحريق في الموقع والآخر في مكان آمن خارج الموقع."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "إذا كنت تشعر بالقلق إزاء سرية البيانات المخزنة في قاعدة البيانات ChurchCRM، يجب أن تشفير البيانات الاحتياطية إذا كان سيتم تخزينها في مكان ما يحتمل أن تكون في متناول الآخرين"
-
-#: 
-msgid "Select archive type"
-msgstr "حدد نوع الأرشيف"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "تشفير ملف النسخ الاحتياطي بكلمة سر؟"
-
-#: 
-msgid "Re-type Password"
-msgstr "أعد إدخال كلمة السر"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "إنشاء وحفظ النسخة الاحتياطي إلى تخزين الخارجي"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "دفعة دخول الفائز"
 
@@ -903,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "سجلت لا تهم الحضور"
 
 #: 
-msgid "Event Sermon"
-msgstr "عظة الحدث"
-
-#: 
 msgid "Event Status"
 msgstr "حالة الحدث"
 
 #: 
 msgid "Return to Events"
 msgstr "العودة إلى أحداث"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "اسم نوع الحدث"
 
 #: 
 msgid "Sundays"
@@ -945,30 +903,6 @@ msgstr "الجمعة"
 #: 
 msgid "Saturdays"
 msgstr "السبت"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "وقت البدء الافتراضي"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "عدد الحضور"
-
-#: 
-msgid "Optional"
-msgstr "اختياري"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "إدخال قائمة من التهم الحضور تريد أن تدرج مع هذا الحدث."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "فصل كل count_name بفاصلة. على سبيل المثال الأعضاء، الزوار، الحرم الجامعي، الأطفال"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "ويشمل كل نوع الحدث عدد إجمالي، لا تحتاج إلى إدراجه."
 
 #: 
 msgid "Add Event Type"
@@ -1930,28 +1864,12 @@ msgid "Confirm data labels"
 msgstr "تسميات البيانات تأكيد"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "قائمة الأحداث من نوع ="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "قائمة أحداث الكنيسة"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "تحديد أنواع الحدث لعرضه"
-
-#: 
-msgid "Display Events in Year"
-msgstr "عرض الأحداث في السنة"
-
-#: 
 msgid "Start Date/Time"
 msgstr "تاريخ/وقت البدء"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "لا الحضور تسجيل"
 
 #: 
 msgid "Attendees"

@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "బ్యాకప్ డేటాబేస్"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "ChurchCRM డేటాబేస్‌ను మాన్యువల్‌గా బ్యాకప్ చేయడంలో ఈ సాధనం మీకు సహాయం చేస్తుంది."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "మీరు ఇప్పటికే మీ సిస్టమ్‌ల కోసం సాధారణ బ్యాకప్ విధానాన్ని కలిగి ఉండకపోతే మీరు కనీసం వారానికి ఒకసారి మాన్యువల్ బ్యాకప్ చేయాలి"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "మీరు బ్యాకప్ ఫైల్‌ను డౌన్‌లోడ్ చేసిన తర్వాత, మీరు రెండు కాపీలు చేయాలి వాటిలో ఒకదాన్ని ఫైర్ ప్రూఫ్ సేఫ్ ఆన్-సైట్‌లో మరియు మరొకటి ఆఫ్-సైట్‌లో సురక్షితమైన ప్రదేశంలో ఉంచండి"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "ChurchCRM డేటాబేస్‌లో నిల్వ చేయబడిన డేటా యొక్క గోప్యత గురించి మీరు ఆందోళన చెందుతుంటే, బ్యాకప్ డేటాను ఇతరులకు అందుబాటులో ఉండే చోట నిల్వ చేయబడితే మీరు దానిని ఎన్‌క్రిప్ట్ చేయాలి"
-
-#: 
-msgid "Select archive type"
-msgstr "ఆర్కైవ్ రకాన్ని ఎంచుకోండి"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "పాస్‌వర్డ్‌తో బ్యాకప్ ఫైల్‌ను గుప్తీకరించాలా"
-
-#: 
-msgid "Re-type Password"
-msgstr "పాస్వర్డ్ తిరిగి టైప్ చెయ్యండి"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "బాహ్య నిల్వకు బ్యాకప్‌ని రూపొందించండి మరియు రవాణా చేయండి"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "బ్యాచ్ విన్నర్ ఎంట్రీ"
 
@@ -902,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "హాజరు గణనలు నమోదు కాలేదు"
 
 #: 
-msgid "Event Sermon"
-msgstr "ఈవెంట్ ప్రసంగం"
-
-#: 
 msgid "Event Status"
 msgstr "ఈవెంట్ స్థితి"
 
 #: 
 msgid "Return to Events"
 msgstr "ఈవెంట్‌లకు తిరిగి వెళ్ళు"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "ఈవెంట్ రకం పేరు"
 
 #: 
 msgid "Sundays"
@@ -944,30 +903,6 @@ msgstr "శుక్రవారాలు"
 #: 
 msgid "Saturdays"
 msgstr "శనివారాలు"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "డిఫాల్ట్ ప్రారంభ సమయం"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "హాజరు గణనలు"
-
-#: 
-msgid "Optional"
-msgstr "ఐచ్ఛికం"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "ఈ ఈవెంట్‌తో మీరు చేర్చాలనుకుంటున్న హాజరు గణనల జాబితాను నమోదు చేయండి."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "ప్రతి కౌంట్_పేరును కామాతో వేరు చేయండి. ఉ.దా. సభ్యులు, సందర్శకులు, క్యాంపస్, పిల్లలు"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "ప్రతి ఈవెంట్ రకం మొత్తం గణనను కలిగి ఉంటుంది, మీరు దానిని చేర్చవలసిన అవసరం లేదు."
 
 #: 
 msgid "Add Event Type"

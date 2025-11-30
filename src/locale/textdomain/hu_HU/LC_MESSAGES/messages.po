@@ -64,29 +64,6 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Ez az eszköz segít neked mauális biztonsági mentést csinálni a ChurchCRM adatbázisról."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Meg kell, hogy egy kézi mentés legalább egyszer egy héten, kivéve, ha már van egy rendszeres biztonsági mentés procedule a rendszerek."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Miután letöltötte a backup fájlt, akkor kell, hogy két példányban. Tedd egyikük egy tűzálló széf a helyszínen, a másik pedig biztonságos helyen off-site."
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Válassza archívum típusa"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Titkosítása biztonsági mentés a jelszót?"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Batch Winner bejegyzés"
 
@@ -861,21 +838,12 @@ msgstr "Nem számít Részvétel rögzített"
 
 #: 
 #, fuzzy
-msgid "Event Sermon"
-msgstr "Esemény Prédikáció"
-
-#: 
-#, fuzzy
 msgid "Event Status"
 msgstr "Event Állapot"
 
 #: 
 msgid "Return to Events"
 msgstr "Vissza az eseményekhez"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "EVENT TYPE NAME"
 
 #: 
 msgid "Sundays"
@@ -904,10 +872,6 @@ msgstr "Fridays"
 #: 
 msgid "Saturdays"
 msgstr "Szombaton"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "JELENLÉTI SZÁMÍT"
 
 #: 
 msgid "Add Event Type"
@@ -1738,20 +1702,8 @@ msgid "Listing All Church Events"
 msgstr "Felsorolja az összes Church Events"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Válassza Esemény típusok megjelenítése"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Kijelző Események év"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Kezdő dátum / idő"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "No Részvétel Adatbázisunkban"
 
 #: 
 #, fuzzy

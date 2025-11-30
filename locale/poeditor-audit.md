@@ -1,7 +1,7 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 41
-**Complete Locales (≥95%):** 1
+**Complete Locales (≥95%):** 0
 **Incomplete Locales (<50%):** 15
 **Missing Locales with Translations:** 9
 
@@ -9,97 +9,98 @@
 
 | Locale | Language | Translations | Percentage | Status |
 |--------|----------|--------------|------------|--------|
-| `fr` | French | 2447 | 95.1% | 🟢 Complete |
-| `ta` | Tamil | 2334 | 90.71% | 🟡 Good |
-| `nl` | Dutch | 2282 | 88.69% | 🟡 Good |
-| `es` | Spanish | 2271 | 88.26% | 🟡 Good |
-| `id` | Indonesian | 2230 | 86.67% | 🟡 Good |
-| `cs` | Czech | 2195 | 85.31% | 🟡 Good |
-| `he` | Hebrew | 2195 | 85.31% | 🟡 Good |
-| `ko` | Korean | 2195 | 85.31% | 🟡 Good |
-| `pt-br` | Portuguese (BR) | 2190 | 85.11% | 🟡 Good |
-| `de` | German | 2188 | 85.04% | 🟡 Good |
-| `it` | Italian | 2183 | 84.84% | 🟡 Good |
-| `et` | Estonian | 2180 | 84.73% | 🟡 Good |
-| `vi` | Vietnamese | 2180 | 84.73% | 🟡 Good |
-| `sw` | Swahili | 2178 | 84.65% | 🟡 Good |
-| `af` | Afrikaans | 2173 | 84.45% | 🟡 Good |
-| `zh-tw` | Chinese (TW) | 2161 | 83.99% | 🟡 Good |
-| `ro` | Romanian | 2161 | 83.99% | 🟡 Good |
-| `ar` | Arabic | 2149 | 83.52% | 🟡 Good |
-| `am` | Amharic | 2146 | 83.4% | 🟡 Good |
-| `tr` | Turkish | 2146 | 83.4% | 🟡 Good |
-| `uk` | Ukrainian | 2146 | 83.4% | 🟡 Good |
-| `el` | Greek | 2143 | 83.29% | 🟡 Good |
-| `zh-cn` | Chinese | 2142 | 83.25% | 🟡 Good |
-| `sv` | Swedish | 2129 | 82.74% | 🟡 Good |
-| `pt` | Portuguese | 2072 | 80.53% | 🟡 Good |
-| `ru` | Russian | 1380 | 53.63% | 🟠 Needs Work |
-| `pl` | Polish | 1120 | 43.53% | 🔴 Incomplete |
-| `nb` | Norwegian Bokmål | 885 | 34.4% | 🔴 Incomplete |
-| `hu` | Hungarian | 741 | 28.8% | 🔴 Incomplete |
-| `sq` | Albanian | 731 | 28.41% | 🔴 Incomplete |
-| `te` | Telugu | 371 | 14.42% | 🔴 Incomplete |
-| `ja` | Japanese | 218 | 8.47% | 🔴 Incomplete |
-| `fi` | Finnish | 156 | 6.06% | 🔴 Incomplete |
-| `en-za` | English (ZA) | 89 | 3.46% | 🔴 Incomplete |
-| `hi` | Hindi | 87 | 3.38% | 🔴 Incomplete |
-| `th` | Thai | 59 | 2.29% | 🔴 Incomplete |
-| `en-au` | English (AU) | 40 | 1.55% | 🔴 Incomplete |
-| `en` | English | 20 | 0.78% | 🔴 Incomplete |
-| `en-ca` | English (CA) | 17 | 0.66% | 🔴 Incomplete |
-| `en-jm` | English (JM) | 6 | 0.23% | 🔴 Incomplete |
+| `fr` | French | 2427 | 90.83% | 🟡 Good |
+| `ta` | Tamil | 2314 | 86.6% | 🟡 Good |
+| `nl` | Dutch | 2262 | 84.66% | 🟡 Good |
+| `es` | Spanish | 2251 | 84.24% | 🟡 Good |
+| `id` | Indonesian | 2210 | 82.71% | 🟡 Good |
+| `cs` | Czech | 2175 | 81.4% | 🟡 Good |
+| `he` | Hebrew | 2175 | 81.4% | 🟡 Good |
+| `ko` | Korean | 2175 | 81.4% | 🟡 Good |
+| `pt-br` | Portuguese (BR) | 2170 | 81.21% | 🟡 Good |
+| `de` | German | 2168 | 81.14% | 🟡 Good |
+| `it` | Italian | 2163 | 80.95% | 🟡 Good |
+| `et` | Estonian | 2160 | 80.84% | 🟡 Good |
+| `vi` | Vietnamese | 2160 | 80.84% | 🟡 Good |
+| `sw` | Swahili | 2158 | 80.76% | 🟡 Good |
+| `af` | Afrikaans | 2153 | 80.58% | 🟡 Good |
+| `zh-tw` | Chinese (TW) | 2141 | 80.13% | 🟡 Good |
+| `ro` | Romanian | 2141 | 80.13% | 🟡 Good |
+| `ar` | Arabic | 2129 | 79.68% | 🟠 Needs Work |
+| `am` | Amharic | 2126 | 79.57% | 🟠 Needs Work |
+| `tr` | Turkish | 2126 | 79.57% | 🟠 Needs Work |
+| `uk` | Ukrainian | 2126 | 79.57% | 🟠 Needs Work |
+| `el` | Greek | 2123 | 79.45% | 🟠 Needs Work |
+| `zh-cn` | Chinese | 2122 | 79.42% | 🟠 Needs Work |
+| `sv` | Swedish | 2109 | 78.93% | 🟠 Needs Work |
+| `pt` | Portuguese | 2052 | 76.8% | 🟠 Needs Work |
+| `ru` | Russian | 1360 | 50.9% | 🟠 Needs Work |
+| `pl` | Polish | 1104 | 41.32% | 🔴 Incomplete |
+| `nb` | Norwegian Bokmål | 869 | 32.52% | 🔴 Incomplete |
+| `hu` | Hungarian | 730 | 27.32% | 🔴 Incomplete |
+| `sq` | Albanian | 721 | 26.98% | 🔴 Incomplete |
+| `te` | Telugu | 355 | 13.29% | 🔴 Incomplete |
+| `ja` | Japanese | 209 | 7.82% | 🔴 Incomplete |
+| `fi` | Finnish | 148 | 5.54% | 🔴 Incomplete |
+| `en-za` | English (ZA) | 89 | 3.33% | 🔴 Incomplete |
+| `hi` | Hindi | 79 | 2.96% | 🔴 Incomplete |
+| `th` | Thai | 57 | 2.13% | 🔴 Incomplete |
+| `en-au` | English (AU) | 33 | 1.24% | 🔴 Incomplete |
+| `en` | English | 20 | 0.75% | 🔴 Incomplete |
+| `en-ca` | English (CA) | 17 | 0.64% | 🔴 Incomplete |
+| `en-jm` | English (JM) | 6 | 0.22% | 🔴 Incomplete |
 | `en-us` | English (US) | 0 | 0% | 🔴 Incomplete |
 
 ## Summary by Status
 
-### 🟢 Complete Locales (≥95%) - 1 total
-- **French** (`fr`): 95.1%
+### 🟢 Complete Locales (≥95%) - 0 total
+*No complete locales*
 
-### 🟡 Good Locales (80-94%) - 24 total
-- **Tamil** (`ta`): 90.71%
-- **Dutch** (`nl`): 88.69%
-- **Spanish** (`es`): 88.26%
-- **Indonesian** (`id`): 86.67%
-- **Czech** (`cs`): 85.31%
-- **Hebrew** (`he`): 85.31%
-- **Korean** (`ko`): 85.31%
-- **Portuguese (BR)** (`pt-br`): 85.11%
-- **German** (`de`): 85.04%
-- **Italian** (`it`): 84.84%
-- **Estonian** (`et`): 84.73%
-- **Vietnamese** (`vi`): 84.73%
-- **Swahili** (`sw`): 84.65%
-- **Afrikaans** (`af`): 84.45%
-- **Chinese (TW)** (`zh-tw`): 83.99%
-- **Romanian** (`ro`): 83.99%
-- **Arabic** (`ar`): 83.52%
-- **Amharic** (`am`): 83.4%
-- **Turkish** (`tr`): 83.4%
-- **Ukrainian** (`uk`): 83.4%
-- **Greek** (`el`): 83.29%
-- **Chinese** (`zh-cn`): 83.25%
-- **Swedish** (`sv`): 82.74%
-- **Portuguese** (`pt`): 80.53%
+### 🟡 Good Locales (80-94%) - 17 total
+- **French** (`fr`): 90.83%
+- **Tamil** (`ta`): 86.6%
+- **Dutch** (`nl`): 84.66%
+- **Spanish** (`es`): 84.24%
+- **Indonesian** (`id`): 82.71%
+- **Czech** (`cs`): 81.4%
+- **Hebrew** (`he`): 81.4%
+- **Korean** (`ko`): 81.4%
+- **Portuguese (BR)** (`pt-br`): 81.21%
+- **German** (`de`): 81.14%
+- **Italian** (`it`): 80.95%
+- **Estonian** (`et`): 80.84%
+- **Vietnamese** (`vi`): 80.84%
+- **Swahili** (`sw`): 80.76%
+- **Afrikaans** (`af`): 80.58%
+- **Chinese (TW)** (`zh-tw`): 80.13%
+- **Romanian** (`ro`): 80.13%
 
-### 🟠 Needs Work (50-79%) - 1 total
-- **Russian** (`ru`): 53.63%
+### 🟠 Needs Work (50-79%) - 9 total
+- **Arabic** (`ar`): 79.68%
+- **Amharic** (`am`): 79.57%
+- **Turkish** (`tr`): 79.57%
+- **Ukrainian** (`uk`): 79.57%
+- **Greek** (`el`): 79.45%
+- **Chinese** (`zh-cn`): 79.42%
+- **Swedish** (`sv`): 78.93%
+- **Portuguese** (`pt`): 76.8%
+- **Russian** (`ru`): 50.9%
 
 ### 🔴 Incomplete Locales (<50%) - 15 total
-- **Polish** (`pl`): 43.53%
-- **Norwegian Bokmål** (`nb`): 34.4%
-- **Hungarian** (`hu`): 28.8%
-- **Albanian** (`sq`): 28.41%
-- **Telugu** (`te`): 14.42%
-- **Japanese** (`ja`): 8.47%
-- **Finnish** (`fi`): 6.06%
-- **English (ZA)** (`en-za`): 3.46%
-- **Hindi** (`hi`): 3.38%
-- **Thai** (`th`): 2.29%
-- **English (AU)** (`en-au`): 1.55%
-- **English** (`en`): 0.78%
-- **English (CA)** (`en-ca`): 0.66%
-- **English (JM)** (`en-jm`): 0.23%
+- **Polish** (`pl`): 41.32%
+- **Norwegian Bokmål** (`nb`): 32.52%
+- **Hungarian** (`hu`): 27.32%
+- **Albanian** (`sq`): 26.98%
+- **Telugu** (`te`): 13.29%
+- **Japanese** (`ja`): 7.82%
+- **Finnish** (`fi`): 5.54%
+- **English (ZA)** (`en-za`): 3.33%
+- **Hindi** (`hi`): 2.96%
+- **Thai** (`th`): 2.13%
+- **English (AU)** (`en-au`): 1.24%
+- **English** (`en`): 0.75%
+- **English (CA)** (`en-ca`): 0.64%
+- **English (JM)** (`en-jm`): 0.22%
 - **English (US)** (`en-us`): 0%
 
 ## 🚨 Missing Locales with Translations
@@ -110,15 +111,15 @@ These locales have translations available in POEditor but are not currently supp
 
 | Language | Code | Translations | Percentage | Recommendation |
 |----------|------|--------------|------------|----------------|
-| Burmese | `my` | 91 | 3.54% | ⏸️ Wait for more progress |
-| Croatian | `hr` | 39 | 1.52% | ⏸️ Wait for more progress |
-| Latvian | `lv` | 52 | 2.02% | ⏸️ Wait for more progress |
-| Malayalam | `ml` | 25 | 0.97% | ⏸️ Wait for more progress |
-| Serbian (Cyrillic) | `sr-cyrl` | 81 | 3.15% | ⏸️ Wait for more progress |
-| Slovenian | `sl` | 92 | 3.58% | ⏸️ Wait for more progress |
-| Spanish (AR) | `es-ar` | 60 | 2.33% | ⏸️ Wait for more progress |
-| Spanish (MX) | `es-mx` | 107 | 4.16% | ⏸️ Wait for more progress |
-| Spanish (SV) | `es-sv` | 37 | 1.44% | ⏸️ Wait for more progress |
+| Burmese | `my` | 83 | 3.11% | ⏸️ Wait for more progress |
+| Croatian | `hr` | 31 | 1.16% | ⏸️ Wait for more progress |
+| Latvian | `lv` | 47 | 1.76% | ⏸️ Wait for more progress |
+| Malayalam | `ml` | 17 | 0.64% | ⏸️ Wait for more progress |
+| Serbian (Cyrillic) | `sr-cyrl` | 76 | 2.84% | ⏸️ Wait for more progress |
+| Slovenian | `sl` | 84 | 3.14% | ⏸️ Wait for more progress |
+| Spanish (AR) | `es-ar` | 52 | 1.95% | ⏸️ Wait for more progress |
+| Spanish (MX) | `es-mx` | 99 | 3.71% | ⏸️ Wait for more progress |
+| Spanish (SV) | `es-sv` | 29 | 1.09% | ⏸️ Wait for more progress |
 
 ## Technical Notes
 

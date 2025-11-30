@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Резервное копирование базы данных"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Этот инструмент поможет вам вручную создать резервную копию базы данных ChurchCRM."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Следует в ручную создавать резервную копию не реже одного раза в неделю, если только у вас нет регулярной процедуры резервного копирования ваших систем."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "После загрузки файла резервной копии. Одну копию следует хранить в несгораемом сейфе на месте, и продублированную в безопасном месте за пределами предприятия."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Если вас беспокоит конфиденциальность данных, хранящихся в базе данных ChurchCRM, вы должны зашифровать данные резервного копии, если она будет храниться в потенциально доступном для других месте"
-
-#: 
-msgid "Select archive type"
-msgstr "Выберите тип архива"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Зашифровать файл резервной копии паролем?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Введите пароль еще раз"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Создать резервную копию и сохранить на внешнем хранилище"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Победитель пакетный ввод"
 
@@ -922,21 +889,12 @@ msgstr "Нет посещений счету не записаны"
 
 #: 
 #, fuzzy
-msgid "Event Sermon"
-msgstr "Проповедь события"
-
-#: 
-#, fuzzy
 msgid "Event Status"
 msgstr "Статус события"
 
 #: 
 msgid "Return to Events"
 msgstr "Вернуться к Событиям"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "Название события ТИП"
 
 #: 
 msgid "Sundays"
@@ -965,30 +923,6 @@ msgstr "Пятницам"
 #: 
 msgid "Saturdays"
 msgstr "По субботам"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "ВРЕМЯ НАЧАЛА ПО УМОЛЧАНИЮ"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "УЧАСТНИКИ COUNTS"
-
-#: 
-msgid "Optional"
-msgstr "По желанию"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Введите список показателей посещаемости, который вы хотите добавить в это мероприятие."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Разделите каждую категорию комой: участник, посетитель, комплекс, ребенок"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Каждый тип события включает общий подсчет, вам не нужно его включать."
 
 #: 
 msgid "Add Event Type"
@@ -1966,28 +1900,12 @@ msgid "Confirm data labels"
 msgstr "Подтвердите метки данных"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Список событий типа"
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Листинг всех церковных событий"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Выберите типы событий, чтобы отобразить"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Показать события в году"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Дата начала / Время"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Посещений не было записи"
 
 #: 
 #, fuzzy

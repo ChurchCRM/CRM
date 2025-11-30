@@ -64,14 +64,6 @@ msgid "Backup Database"
 msgstr "ฐานข้อมูลสำรอง"
 
 #: 
-msgid "Select archive type"
-msgstr "เลือกประเภทเก็บ"
-
-#: 
-msgid "Re-type Password"
-msgstr "พิมพ์รหัสผ่านอีกครั้ง"
-
-#: 
 msgid "Winner"
 msgstr "ผู้ชนะ"
 
