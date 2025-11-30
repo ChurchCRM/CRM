@@ -15,6 +15,30 @@ use Slim\Views\PhpRenderer;
 
 $app->group('/system', function (RouteCollectorProxy $group): void {
     
+    // Backup Database page
+    $group->get('/backup', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+        
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Backup Database'),
+        ];
+        
+        return $renderer->render($response, 'backup.php', $pageArgs);
+    });
+
+    // Restore Database page
+    $group->get('/restore', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+        
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Restore Database'),
+        ];
+        
+        return $renderer->render($response, 'restore.php', $pageArgs);
+    });
+
     $group->get('/reset', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
         

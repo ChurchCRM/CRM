@@ -22,12 +22,7 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
         $BackupType = $input['BackupType'];
-        $Backup = new BackupJob(
-            $BaseName,
-            $BackupType,
-            $input['EncryptBackup'] ?? '',
-            $input['BackupPassword'] ?? ''
-        );
+        $Backup = new BackupJob($BaseName, $BackupType);
         $Backup->execute();
 
         return SlimUtils::renderJSON(
@@ -53,12 +48,7 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
                 SystemConfig::getValue('sChurchName')
             ) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
             $BackupType = $input['BackupType'];
-            $Backup = new BackupJob(
-                $BaseName,
-                $BackupType,
-                $input['EncryptBackup'] ?? '',
-                $input['BackupPassword'] ?? ''
-            );
+            $Backup = new BackupJob($BaseName, $BackupType);
             $Backup->execute();
             $copyStatus = $Backup->copyToWebDAV(
                 SystemConfig::getValue('sExternalBackupEndpoint'),
@@ -73,21 +63,29 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
     });
 
     $group->post('/restore', function (Request $request, Response $response, array $args): Response {
-        $RestoreJob = new RestoreJob();
-        $RestoreJob->execute();
+        try {
+            $RestoreJob = new RestoreJob();
+            $RestoreJob->execute();
 
-        return SlimUtils::renderJSON(
-            $response,
-            json_decode(
-                json_encode(
-                    $RestoreJob,
+            return SlimUtils::renderJSON(
+                $response,
+                json_decode(
+                    json_encode(
+                        $RestoreJob,
+                        JSON_THROW_ON_ERROR
+                    ),
+                    (bool) JSON_OBJECT_AS_ARRAY,
+                    512,
                     JSON_THROW_ON_ERROR
-                ),
-                (bool) JSON_OBJECT_AS_ARRAY,
-                512,
-                JSON_THROW_ON_ERROR
-            )
-        );
+                )
+            );
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->error('Restore failed: ' . $e->getMessage());
+            return SlimUtils::renderJSON(
+                $response->withStatus($e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500),
+                ['error' => true, 'message' => $e->getMessage()]
+            );
+        }
     });
 
     $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response {

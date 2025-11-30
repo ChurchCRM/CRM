@@ -12,7 +12,9 @@ module.exports = {
     'setup': './webpack/setup',  // Setup wizard styles
     'family-register': './webpack/family-register',  // Family registration styles and scripts
     'upgrade-wizard': './webpack/upgrade-wizard',  // Upgrade wizard styles and scripts
-    'locale-loader': './webpack/locale-loader'  // Dynamic locale loader
+    'locale-loader': './webpack/locale-loader',  // Dynamic locale loader
+    'backup': './webpack/backup',  // Backup database page
+    'restore': './webpack/restore'  // Restore database page
   },
   output: {
     path: path.resolve('./src/skin/v2'),
