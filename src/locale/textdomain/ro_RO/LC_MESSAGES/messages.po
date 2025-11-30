@@ -389,11 +389,6 @@ msgid "Add Cart to Event"
 msgstr "Adauga in cos la eveniment"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Selectați evenimentul care doriți să îl adăugați în coș"
-
-#: 
 msgid "OR"
 msgstr "SAU"
 
@@ -502,10 +497,6 @@ msgid "Empty Cart to Family"
 msgstr "Coșul de Familie gol"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Coșul de Eveniment gol"
-
-#: 
 msgid "Map Cart"
 msgstr "Hartă Coș"
 
@@ -562,21 +553,8 @@ msgid "Event Checkin"
 msgstr "Evenimentul Checkin"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Selectați evenimentul la care doriți să înregistrați persoane"
-
-#: 
 msgid "Select Event"
 msgstr "Selectați Eveniment"
-
-#: 
-msgid "Add Visitor"
-msgstr "Adauga vizitator"
-
-#: 
-msgid "CheckIn"
-msgstr "CheckIn"
 
 #: 
 msgid "CheckOut"
@@ -601,10 +579,6 @@ msgstr "Verificat de către"
 #: 
 msgid "Action"
 msgstr "Acțiune"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Niciun participant nu a fost atribuit Evenimentului"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -931,44 +905,8 @@ msgid "Edit"
 msgstr "Editati"
 
 #: 
-msgid "Event Attendees"
-msgstr "Participanții la eveniment"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Ne participanții la eveniment"
-
-#: 
-msgid "Event Guests"
-msgstr "Eveniment Vizitatori"
-
-#: 
-msgid "There "
-msgstr "Acolo"
-
-#: 
 msgid "Event Title"
 msgstr "Titlu Eveniment"
-
-#: 
-msgid "Event Date"
-msgstr "Data evenimentului"
-
-#: 
-msgid "Attending Members"
-msgstr "Membrii participanți"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Membrii care nu participă"
-
-#: 
-msgid "Guests"
-msgstr "Vizitatori"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Nu există evenimente în această categorie"
 
 #: 
 msgid "Create Event"
@@ -979,20 +917,8 @@ msgid "Create a new Event"
 msgstr "Crează eveniment nou"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Editarea ID eveniment:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "erori. Vă rugăm să consultați mai jos"
-
-#: 
-msgid "Items with a "
-msgstr "Articole cu o"
-
-#: 
-msgid " are required"
-msgstr "sunt necesare"
 
 #: 
 msgid "Select your event type"
@@ -1003,17 +929,8 @@ msgid "You must pick an event type."
 msgstr "Trebuie să alegi un tip de eveniment"
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Eveniment Desc"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Nu a fost înregistrat niciun număr de prezență"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Note participanți"
 
 #: 
 #, fuzzy

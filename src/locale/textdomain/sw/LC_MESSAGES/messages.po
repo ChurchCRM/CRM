@@ -371,10 +371,6 @@ msgid "Add Cart to Event"
 msgstr "Ongeza Rukwama kwenye Tukio"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Chagua tukio ambalo ungependa kuongeza rukwama yako"
-
-#: 
 msgid "OR"
 msgstr "AU"
 
@@ -480,10 +476,6 @@ msgid "Empty Cart to Family"
 msgstr "Rukwama Tupu kwa Familia"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Rukwama Tupu kwa Tukio"
-
-#: 
 msgid "Map Cart"
 msgstr "Mkokoteni wa ramani"
 
@@ -540,20 +532,8 @@ msgid "Event Checkin"
 msgstr "Kuingia kwa Tukio"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Chagua tukio ambalo ungependa kuangalia watu"
-
-#: 
 msgid "Select Event"
 msgstr "Chagua Event"
-
-#: 
-msgid "Add Visitor"
-msgstr "Ongeza Mgeni"
-
-#: 
-msgid "CheckIn"
-msgstr "Ingia"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +558,6 @@ msgstr "Imeangaliwa na"
 #: 
 msgid "Action"
 msgstr "Hatua"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Hakuna Washiriki Waliokabidhiwa Tukio"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -898,44 +874,8 @@ msgid "Edit"
 msgstr "Hariri"
 
 #: 
-msgid "Event Attendees"
-msgstr "Walioudhuria"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Wasiohudhuria"
-
-#: 
-msgid "Event Guests"
-msgstr "Wageni waalikwa"
-
-#: 
-msgid "There "
-msgstr "Hapo "
-
-#: 
 msgid "Event Title"
 msgstr "Kichwa cha habari"
-
-#: 
-msgid "Event Date"
-msgstr "Tarehe"
-
-#: 
-msgid "Attending Members"
-msgstr "Wanachama walioudhuria"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Wanachama wasioudhuria"
-
-#: 
-msgid "Guests"
-msgstr "Wageni"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Hakuna matukio"
 
 #: 
 msgid "Create Event"
@@ -946,20 +886,8 @@ msgid "Create a new Event"
 msgstr "Ongeza tukio"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Kuhariri Kitambulisho cha Tukio: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " makosa. Tafadhali angalia chini"
-
-#: 
-msgid "Items with a "
-msgstr "Vipengee vilivyo na a "
-
-#: 
-msgid " are required"
-msgstr " zinahitajika"
 
 #: 
 msgid "Select your event type"
@@ -970,16 +898,8 @@ msgid "You must pick an event type."
 msgstr "Lazima uchague aina ya tukio."
 
 #: 
-msgid "Event Desc"
-msgstr "Maelezo"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Hakuna hesabu za mahudhurio zilizorekodiwa"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Vidokezo vya Mahudhurio: "
 
 #: 
 msgid "Event Sermon"

@@ -392,11 +392,6 @@ msgid "Add Cart to Event"
 msgstr "加入購物車事件"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "選擇事件時，如果你想添加您的購物車"
-
-#: 
 msgid "OR"
 msgstr "或"
 
@@ -506,10 +501,6 @@ msgid "Empty Cart to Family"
 msgstr "清空購物車家庭"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "清空購物車事件"
-
-#: 
 msgid "Map Cart"
 msgstr "地圖購物車"
 
@@ -566,21 +557,8 @@ msgid "Event Checkin"
 msgstr "事件記登"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "選擇事件時，你要檢查的人"
-
-#: 
 msgid "Select Event"
 msgstr "選擇活動"
-
-#: 
-msgid "Add Visitor"
-msgstr "添加訪客"
-
-#: 
-msgid "CheckIn"
-msgstr "登記"
 
 #: 
 msgid "CheckOut"
@@ -605,10 +583,6 @@ msgstr "簽出"
 #: 
 msgid "Action"
 msgstr "行動"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "沒有分配給事件的參加者"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -936,44 +910,8 @@ msgid "Edit"
 msgstr "編輯"
 
 #: 
-msgid "Event Attendees"
-msgstr "活動的參與者"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "事件Nonattendees"
-
-#: 
-msgid "Event Guests"
-msgstr "活動訪客"
-
-#: 
-msgid "There "
-msgstr "那裡"
-
-#: 
 msgid "Event Title"
 msgstr "活動名稱"
-
-#: 
-msgid "Event Date"
-msgstr "活動日期"
-
-#: 
-msgid "Attending Members"
-msgstr "出席委員"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "出席委員"
-
-#: 
-msgid "Guests"
-msgstr "賓客"
-
-#: 
-msgid "There are no events in this category"
-msgstr "有沒有在這個類別的事件"
 
 #: 
 msgid "Create Event"
@@ -984,20 +922,8 @@ msgid "Create a new Event"
 msgstr "建立新活動"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "編輯活動ID："
-
-#: 
 msgid " errors. Please see below"
 msgstr "錯誤。請參考下面"
-
-#: 
-msgid "Items with a "
-msgstr "一個項目"
-
-#: 
-msgid " are required"
-msgstr "需要"
 
 #: 
 msgid "Select your event type"
@@ -1008,17 +934,8 @@ msgid "You must pick an event type."
 msgstr "你必須選擇事件類型"
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "活動描述"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "沒有記錄考勤計數"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "出席附註："
 
 #: 
 #, fuzzy

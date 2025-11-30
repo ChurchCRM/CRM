@@ -372,10 +372,6 @@ msgid "Add Cart to Event"
 msgstr "Додати кошик до події"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Виберіть подію, до якої ви хочете додати свій кошик"
-
-#: 
 msgid "OR"
 msgstr "АБО"
 
@@ -481,10 +477,6 @@ msgid "Empty Cart to Family"
 msgstr "Порожній кошик для сім'ї"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Порожній кошик до події"
-
-#: 
 msgid "Map Cart"
 msgstr "Карта кошика"
 
@@ -541,21 +533,9 @@ msgid "Event Checkin"
 msgstr "Реєстрація події"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Виберіть подію, на яку ви хочете зареєструвати людей"
-
-#: 
 #, fuzzy
 msgid "Select Event"
 msgstr "Виберіть Подію"
-
-#: 
-msgid "Add Visitor"
-msgstr "Додати відвідувача"
-
-#: 
-msgid "CheckIn"
-msgstr "Перевірь"
 
 #: 
 msgid "CheckOut"
@@ -580,10 +560,6 @@ msgstr "Зареєстрував"
 #: 
 msgid "Action"
 msgstr "Дія"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Жоден учасник не призначений на подію"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -900,44 +876,8 @@ msgid "Edit"
 msgstr "Редагувати"
 
 #: 
-msgid "Event Attendees"
-msgstr "Учасники заходу"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Події без учасників"
-
-#: 
-msgid "Event Guests"
-msgstr "Гості заходу"
-
-#: 
-msgid "There "
-msgstr "Там "
-
-#: 
 msgid "Event Title"
 msgstr "Назва події"
-
-#: 
-msgid "Event Date"
-msgstr "Дата події"
-
-#: 
-msgid "Attending Members"
-msgstr "Присутні члени"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Неприсутні члени"
-
-#: 
-msgid "Guests"
-msgstr "Гості"
-
-#: 
-msgid "There are no events in this category"
-msgstr "У цій категорії немає подій"
 
 #: 
 msgid "Create Event"
@@ -948,20 +888,8 @@ msgid "Create a new Event"
 msgstr "Створити нову подію"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Редагування ідентифікатора події: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " помилки. Дивіться нижче"
-
-#: 
-msgid "Items with a "
-msgstr "Елементи з a "
-
-#: 
-msgid " are required"
-msgstr " вимагаються"
 
 #: 
 msgid "Select your event type"
@@ -972,16 +900,8 @@ msgid "You must pick an event type."
 msgstr "Ви повинні вибрати тип події."
 
 #: 
-msgid "Event Desc"
-msgstr "Опис події"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Кількість відвідувачів не зафіксовано"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Примітки щодо відвідуваності: "
 
 #: 
 msgid "Event Sermon"

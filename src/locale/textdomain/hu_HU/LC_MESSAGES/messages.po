@@ -362,11 +362,6 @@ msgid "Add Cart to Event"
 msgstr "Add kosárba a rendezvény"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Válassza ki az eseményt, amelyre szeretné felvenni a kosárba"
-
-#: 
 msgid "OR"
 msgstr "VAGY"
 
@@ -475,10 +470,6 @@ msgid "Empty Cart to Family"
 msgstr "Üres a kosár Család"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Üres Cart a rendezvény"
-
-#: 
 msgid "Map Cart"
 msgstr "Térkép Cart"
 
@@ -531,21 +522,8 @@ msgid "Event Checkin"
 msgstr "Event Checkin"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Válassza ki az eseményt, amelyre szeretné, hogy ellenőrizze az emberek számára"
-
-#: 
 msgid "Select Event"
 msgstr "Válassza Event"
-
-#: 
-msgid "Add Visitor"
-msgstr "Add Visitor"
-
-#: 
-msgid "CheckIn"
-msgstr "Bejelentkezés-"
 
 #: 
 msgid "CheckOut"
@@ -570,10 +548,6 @@ msgstr "Kivette"
 #: 
 msgid "Action"
 msgstr "Akció"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Nem Résztvevők Hozzárendelve Event"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -874,73 +848,16 @@ msgid "Edit"
 msgstr "Szerkeszt"
 
 #: 
-msgid "Event Attendees"
-msgstr "Event Résztvevők"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Event Nonattendees"
-
-#: 
-msgid "Event Guests"
-msgstr "Esemény vendégek"
-
-#: 
-msgid "There "
-msgstr "Ott"
-
-#: 
 msgid "Event Title"
 msgstr "Esemény címe"
-
-#: 
-msgid "Event Date"
-msgstr "Esemény dátuma"
-
-#: 
-msgid "Attending Members"
-msgstr "Résztvevő tagok"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Nem Résztvevő tagok"
-
-#: 
-msgid "Guests"
-msgstr "Vendégek"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Nincs esemény Ebben a kategóriában"
-
-#: 
-msgid "Editing Event ID: "
-msgstr "Szerkesztése Eseményazonosító:"
 
 #: 
 msgid " errors. Please see below"
 msgstr "hibák. Kérjük, olvassa el az alábbi"
 
 #: 
-msgid "Items with a "
-msgstr "Elemek egy"
-
-#: 
-msgid " are required"
-msgstr "van szükség"
-
-#: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Event Leírás"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Nem számít Részvétel rögzített"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Nézőszám Megjegyzések:"
 
 #: 
 #, fuzzy

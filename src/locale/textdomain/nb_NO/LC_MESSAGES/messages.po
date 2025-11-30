@@ -385,11 +385,6 @@ msgid "Add Cart to Event"
 msgstr "Legg Cart til Event"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Velg hendelsen som du ønsker å legge til i handlekurven"
-
-#: 
 msgid "OR"
 msgstr "ELLER"
 
@@ -498,10 +493,6 @@ msgid "Empty Cart to Family"
 msgstr "Tom Handlekurven til familien"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Tom Handlekurven til Event"
-
-#: 
 msgid "Map Cart"
 msgstr "Kart Cart"
 
@@ -559,21 +550,8 @@ msgid "Event Checkin"
 msgstr "Hendelse Checkin"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Velg hendelsen som du ønsker å kontrollere folk i for"
-
-#: 
 msgid "Select Event"
 msgstr "Velg hendelse"
-
-#: 
-msgid "Add Visitor"
-msgstr "Legg besøkende"
-
-#: 
-msgid "CheckIn"
-msgstr "CheckIn"
 
 #: 
 msgid "CheckOut"
@@ -598,10 +576,6 @@ msgstr "Sjekket ut av"
 #: 
 msgid "Action"
 msgstr "Handling"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Ingen deltakere Assigned til Event"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -924,44 +898,8 @@ msgid "Edit"
 msgstr "Redigere"
 
 #: 
-msgid "Event Attendees"
-msgstr "Event deltakere"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Event Nonattendees"
-
-#: 
-msgid "Event Guests"
-msgstr "Hendelsesgjester"
-
-#: 
-msgid "There "
-msgstr "Det"
-
-#: 
 msgid "Event Title"
 msgstr "Hendelse Tittel"
-
-#: 
-msgid "Event Date"
-msgstr "Hendelse Dato"
-
-#: 
-msgid "Attending Members"
-msgstr "Møtende medlemmer"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Non-møtende medlemmer"
-
-#: 
-msgid "Guests"
-msgstr "Gjester"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Det er ingen aktiviteter i denne kategorien"
 
 #: 
 msgid "Create Event"
@@ -972,22 +910,8 @@ msgid "Create a new Event"
 msgstr "Oprett nytt arrangement"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Redigerer Event ID:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "feil. Vennligst se nedenfor"
-
-#: 
-#, fuzzy
-msgid "Items with a "
-msgstr "Produkter i handlekurven"
-
-#: 
-#, fuzzy
-msgid " are required"
-msgstr "Denne verdien er nødvendig."
 
 #: 
 msgid "Select your event type"
@@ -998,17 +922,8 @@ msgid "You must pick an event type."
 msgstr "Du må velge en arrangements type"
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Hendelse Desc"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Ingen Tilskuere teller opp"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Oppmøte Merknader:"
 
 #: 
 #, fuzzy

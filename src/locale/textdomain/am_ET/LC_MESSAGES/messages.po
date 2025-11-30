@@ -373,10 +373,6 @@ msgid "Add Cart to Event"
 msgstr "ጋሪን ወደ ክስተት ያክሉ"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "ጋሪዎን ለመጨመር የሚፈልጉትን ክስተት ይምረጡ"
-
-#: 
 msgid "OR"
 msgstr "ወይም"
 
@@ -482,10 +478,6 @@ msgid "Empty Cart to Family"
 msgstr "ባዶ ጋሪ ለቤተሰብ"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "ባዶ ጋሪ ወደ ክስተት"
-
-#: 
 msgid "Map Cart"
 msgstr "የካርታ ጋሪ"
 
@@ -542,20 +534,8 @@ msgid "Event Checkin"
 msgstr "የክስተት ተመዝግቦ መግባት"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "ሰዎችን ማረጋገጥ የምትፈልገውን ክስተት ምረጥ"
-
-#: 
 msgid "Select Event"
 msgstr "ክስተት ይምረጡ"
-
-#: 
-msgid "Add Visitor"
-msgstr "ጎብኝን ጨምር"
-
-#: 
-msgid "CheckIn"
-msgstr "ያረጋግጡ"
 
 #: 
 msgid "CheckOut"
@@ -580,10 +560,6 @@ msgstr "የተረጋገጠ በ"
 #: 
 msgid "Action"
 msgstr "ድርጊት"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "ለክስተቱ የተመደቡ ተሳታፊዎች የሉም"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -900,44 +876,8 @@ msgid "Edit"
 msgstr "አርትዕ"
 
 #: 
-msgid "Event Attendees"
-msgstr "የክስተት ተሳታፊዎች"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "የክስተት ተሳታፊ ያልሆኑ"
-
-#: 
-msgid "Event Guests"
-msgstr "የክስተት እንግዶች"
-
-#: 
-msgid "There "
-msgstr "እዚያ "
-
-#: 
 msgid "Event Title"
 msgstr "የክስተት ርዕስ"
-
-#: 
-msgid "Event Date"
-msgstr "የክስተት ቀን"
-
-#: 
-msgid "Attending Members"
-msgstr "ተሳታፊ አባላት"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "የማይሳተፉ አባላት"
-
-#: 
-msgid "Guests"
-msgstr "እንግዶች"
-
-#: 
-msgid "There are no events in this category"
-msgstr "በዚህ ምድብ ውስጥ ምንም ክስተቶች የሉም"
 
 #: 
 msgid "Create Event"
@@ -948,20 +888,8 @@ msgid "Create a new Event"
 msgstr "አዲስ ክስተት ይፍጠሩ"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "የክስተት መታወቂያ ማረም፡ "
-
-#: 
 msgid " errors. Please see below"
 msgstr " ስህተቶች. እባኮትን ከታች ይመልከቱ"
-
-#: 
-msgid "Items with a "
-msgstr "እቃዎች ከ ሀ "
-
-#: 
-msgid " are required"
-msgstr " ያስፈልጋሉ"
 
 #: 
 msgid "Select your event type"
@@ -972,16 +900,8 @@ msgid "You must pick an event type."
 msgstr "የክስተት አይነት መምረጥ አለብህ።"
 
 #: 
-msgid "Event Desc"
-msgstr "የክስተት Desc"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "ምንም የተገኝነት ብዛት ተመዝግቧል"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "የመገኘት ማስታወሻዎች፡- "
 
 #: 
 msgid "Event Sermon"

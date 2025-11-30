@@ -381,11 +381,6 @@ msgid "Add Cart to Event"
 msgstr "Добавить корзину Событие"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Выберите событие, к которому вы хотели бы добавить вашу корзину"
-
-#: 
 msgid "OR"
 msgstr "ИЛИ"
 
@@ -494,10 +489,6 @@ msgid "Empty Cart to Family"
 msgstr "Очистить корзину для семьи"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Очистить корзину Событие"
-
-#: 
 msgid "Map Cart"
 msgstr "Карта Корзина"
 
@@ -554,21 +545,8 @@ msgid "Event Checkin"
 msgstr "Событие заезда"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Выберите событие, к которому вы хотели бы проверить людей в течение"
-
-#: 
 msgid "Select Event"
 msgstr "Выберите событие"
-
-#: 
-msgid "Add Visitor"
-msgstr "Добавить Посетитель"
-
-#: 
-msgid "CheckIn"
-msgstr "Регистрация"
 
 #: 
 msgid "CheckOut"
@@ -593,10 +571,6 @@ msgstr "Извлечен"
 #: 
 msgid "Action"
 msgstr "Действие"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Нет Участники назначенного событию"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -919,44 +893,8 @@ msgid "Edit"
 msgstr "Редактировать"
 
 #: 
-msgid "Event Attendees"
-msgstr "Участники мероприятия"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Событие Nonattendees"
-
-#: 
-msgid "Event Guests"
-msgstr "Гости события"
-
-#: 
-msgid "There "
-msgstr "Вот об этом (Вот) "
-
-#: 
 msgid "Event Title"
 msgstr "Событие Название"
-
-#: 
-msgid "Event Date"
-msgstr "Дата Событие"
-
-#: 
-msgid "Attending Members"
-msgstr "Посещение Пользователи"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Не посещающих Пользователи"
-
-#: 
-msgid "Guests"
-msgstr "Гости"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Там не было никаких событий в этой категории"
 
 #: 
 msgid "Create Event"
@@ -967,20 +905,8 @@ msgid "Create a new Event"
 msgstr "Создать новое событие"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Редактирование события: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " Ошибки. Пожалуйста, смотрите ниже"
-
-#: 
-msgid "Items with a "
-msgstr "Элементы с "
-
-#: 
-msgid " are required"
-msgstr " требуется"
 
 #: 
 msgid "Select your event type"
@@ -991,17 +917,8 @@ msgid "You must pick an event type."
 msgstr "Вы должны выбрать тип события."
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Событие Описание изделия"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Нет посещений счету не записаны"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Посещений Примечания: "
 
 #: 
 #, fuzzy

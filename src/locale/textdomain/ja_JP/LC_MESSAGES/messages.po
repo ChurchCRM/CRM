@@ -270,10 +270,6 @@ msgid "Data import successful."
 msgstr "データのインポートが成功しました"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "カートに追加したいイベントを選択してください"
-
-#: 
 msgid "Add New Event"
 msgstr "新しいイベントを追加"
 
@@ -430,18 +426,6 @@ msgstr "年"
 #: 
 msgid "Edit"
 msgstr "編集"
-
-#: 
-msgid "Event Attendees"
-msgstr "イベント参加者"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "イベント不参加者"
-
-#: 
-msgid "Event Guests"
-msgstr "イベントゲスト"
 
 #: 
 msgid "Sundays"

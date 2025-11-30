@@ -371,10 +371,6 @@ msgid "Add Cart to Event"
 msgstr "நிகழ்வில் மென்வண்டியைச் சேர்க்கவும்"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "உங்கள் மென்மென்வண்டியில் நீங்கள் சேர்க்க விரும்பும் நிகழ்வைத் தேர்ந்தெடுக்கவும்"
-
-#: 
 msgid "OR"
 msgstr "அல்லது"
 
@@ -480,10 +476,6 @@ msgid "Empty Cart to Family"
 msgstr "குடும்பத்திற்கு மென்வண்டியை காலி செய்யவும்"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "நிகழ்வுக்கு மென்வண்டியை காலி செய்யவும்"
-
-#: 
 msgid "Map Cart"
 msgstr "வரைபட மென்வண்டி"
 
@@ -540,20 +532,8 @@ msgid "Event Checkin"
 msgstr "நிகழ்வு சரிபார்ப்பு"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "நீங்கள் மக்களைச் அனுமதிக்க விரும்பும் நிகழ்வைத் தேர்ந்தெடுக்கவும்"
-
-#: 
 msgid "Select Event"
 msgstr "நிகழ்வைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Add Visitor"
-msgstr "பார்வையாளரைச் சேர்க்கவும்"
-
-#: 
-msgid "CheckIn"
-msgstr "உள்ளே சேர்த்தல்"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +558,6 @@ msgstr "யார் மூலம் வெளியேற்றுதல் ச
 #: 
 msgid "Action"
 msgstr "செயல்"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "நிகழ்வுக்கு பங்கேற்பாளர்கள் யாரும் ஒதுக்கப்படவில்லை"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -899,44 +875,8 @@ msgid "Edit"
 msgstr "தொகு"
 
 #: 
-msgid "Event Attendees"
-msgstr "நிகழ்வு பங்கேற்பாளர்கள்"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "நிகழ்வில் கலந்து கொள்ளாதவர்கள்"
-
-#: 
-msgid "Event Guests"
-msgstr "நிகழ்வு விருந்தினர்கள்"
-
-#: 
-msgid "There "
-msgstr "அங்கு␣"
-
-#: 
 msgid "Event Title"
 msgstr "நிகழ்வு தலைப்பு"
-
-#: 
-msgid "Event Date"
-msgstr "நிகழ்வு தேதி"
-
-#: 
-msgid "Attending Members"
-msgstr "கலந்துகொள்ளும் உறுப்பினர்கள்"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "கலந்து கொள்ளாத உறுப்பினர்கள்"
-
-#: 
-msgid "Guests"
-msgstr "விருந்தினர்கள்"
-
-#: 
-msgid "There are no events in this category"
-msgstr "இந்த வகையில் நிகழ்வுகள் எதுவும் இல்லை"
 
 #: 
 msgid "Create Event"
@@ -947,20 +887,8 @@ msgid "Create a new Event"
 msgstr "புதிய நிகழ்வை உருவாக்கவும்"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "நிகழ்வு ஐடியைத் திருத்துதல்:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "␣ பிழைகள். கீழே பார்க்கவும்"
-
-#: 
-msgid "Items with a "
-msgstr "a␣ கொண்ட பொருட்கள்"
-
-#: 
-msgid " are required"
-msgstr "␣ தேவை"
 
 #: 
 msgid "Select your event type"
@@ -971,16 +899,8 @@ msgid "You must pick an event type."
 msgstr "நிகழ்வின் வகையைத் தேர்ந்தெடுக்க வேண்டும்."
 
 #: 
-msgid "Event Desc"
-msgstr "நிகழ்வு விளக்கம்"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "வருகை எண்ணிக்கை பதிவு செய்யப்படவில்லை"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "வருகை குறிப்புகள்:␣"
 
 #: 
 msgid "Event Sermon"

@@ -371,10 +371,6 @@ msgid "Add Cart to Event"
 msgstr "Προσθήκη καλαθιού στην εκδήλωση"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Επιλέξτε την εκδήλωση στην οποία θέλετε να προσθέσετε το καλάθι σας"
-
-#: 
 msgid "OR"
 msgstr "Ή"
 
@@ -480,10 +476,6 @@ msgid "Empty Cart to Family"
 msgstr "Άδειο καλάθι στην οικογένεια"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Άδειο καλάθι σε εκδήλωση"
-
-#: 
 msgid "Map Cart"
 msgstr "Καλάθι χάρτη"
 
@@ -540,20 +532,8 @@ msgid "Event Checkin"
 msgstr "Checkin εκδήλωσης"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Επιλέξτε την εκδήλωση για την οποία θέλετε να κάνετε check in"
-
-#: 
 msgid "Select Event"
 msgstr "Επιλέξτε Συμβάν"
-
-#: 
-msgid "Add Visitor"
-msgstr "Προσθήκη επισκέπτη"
-
-#: 
-msgid "CheckIn"
-msgstr "CheckIn"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +558,6 @@ msgstr "Έλεγξε από"
 #: 
 msgid "Action"
 msgstr "Δράση"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Δεν έχουν οριστεί συμμετέχοντες στην εκδήλωση"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -898,44 +874,8 @@ msgid "Edit"
 msgstr "Επεξεργασία"
 
 #: 
-msgid "Event Attendees"
-msgstr "Συμμετέχοντες στην εκδήλωση"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Μη συμμετέχοντες εκδήλωσης"
-
-#: 
-msgid "Event Guests"
-msgstr "Προσκεκλημένοι της εκδήλωσης"
-
-#: 
-msgid "There "
-msgstr "Εκεί "
-
-#: 
 msgid "Event Title"
 msgstr "Τίτλος εκδήλωσης"
-
-#: 
-msgid "Event Date"
-msgstr "Ημερομηνία γεγονότος"
-
-#: 
-msgid "Attending Members"
-msgstr "Παρευρισκόμενα Μέλη"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Μη Παρευρισκόμενα Μέλη"
-
-#: 
-msgid "Guests"
-msgstr "Καλεσμένοι"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Δεν υπάρχουν εκδηλώσεις σε αυτή την κατηγορία"
 
 #: 
 msgid "Create Event"
@@ -946,20 +886,8 @@ msgid "Create a new Event"
 msgstr "Δημιουργήστε ένα νέο συμβάν"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Επεξεργασία αναγνωριστικού συμβάντος: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " Σφάλματα. Παρακαλούμε δείτε παρακάτω"
-
-#: 
-msgid "Items with a "
-msgstr "Αντικείμενα με α "
-
-#: 
-msgid " are required"
-msgstr " απαιτούνται"
 
 #: 
 msgid "Select your event type"
@@ -970,16 +898,8 @@ msgid "You must pick an event type."
 msgstr "Πρέπει να επιλέξετε έναν τύπο συμβάντος."
 
 #: 
-msgid "Event Desc"
-msgstr "Περιγραφή συμβάντος"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Δεν έχουν καταγραφεί μετρήσεις συμμετοχής"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Σημειώσεις Συμμετοχής: "
 
 #: 
 msgid "Event Sermon"
