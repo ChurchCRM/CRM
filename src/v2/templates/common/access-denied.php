@@ -17,6 +17,7 @@ $roleDescriptions = [
     'CreateDirectory' => gettext('Create directory permission'),
     'AddEvent' => gettext('Add event permission'),
     'CSVExport' => gettext('CSV export permission'),
+    'Authentication' => gettext('User authentication'),
 ];
 
 $roleDescription = isset($roleDescriptions[$missingRole]) 
