@@ -193,7 +193,7 @@ function NewCalendar(Request $request, Response $response, $args): Response
 {
     $input = $request->getParsedBody();
     $Calendar = new Calendar();
-    $Calendar->setName($input['Name']);
+    $Calendar->setName(strip_tags($input['Name']));
     $Calendar->setForegroundColor($input['ForegroundColor']);
     $Calendar->setBackgroundColor($input['BackgroundColor']);
     $Calendar->save();
