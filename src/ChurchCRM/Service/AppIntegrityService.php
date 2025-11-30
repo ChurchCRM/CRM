@@ -258,9 +258,14 @@ class AppIntegrityService
         if (function_exists('curl_version')) {
             $ch = curl_init();
 
-            $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
-            $request_scheme = $request_url_parser['scheme'] ?? 'http';
-            $request_host = $request_url_parser['host'] ?? $_SERVER['HTTP_HOST'];
+            // Security fix: Do NOT use HTTP_REFERER header as it's user-controlled (SSRF vulnerability)
+            // Use SERVER_NAME instead of HTTP_HOST since HTTP_HOST is also user-controlled
+            $request_scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+            if (isset($_SERVER['REQUEST_SCHEME'])) {
+                $request_scheme = $_SERVER['REQUEST_SCHEME'];
+            }
+            $request_host = $_SERVER['SERVER_NAME'] ?? 'localhost';
+
             // Run a test against an URL we know does not exist to check for ModRewrite like functionality
             $rewrite_chk_url = $request_scheme . '://' . $request_host . SystemURLs::getRootPath() . '/INVALID';
             $logger->debug("Testing CURL loopback check to: $rewrite_chk_url");
