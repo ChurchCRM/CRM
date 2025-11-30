@@ -70,7 +70,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <input type="radio" id="archiveType2" name="archiveType" value="2" class="custom-control-input" checked>
                             <label class="custom-control-label" for="archiveType2">
                                 <i class="fa-solid fa-file-code mr-1"></i><?= gettext('Database Only') ?>
-                                <span class="badge badge-secondary">.sql.gz</span>
+                                <span class="badge badge-secondary">.sql</span>
                             </label>
                         </div>
                         <small class="form-text text-muted d-block mt-1">
