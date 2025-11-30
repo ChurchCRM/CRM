@@ -10,9 +10,9 @@ use ChurchCRM\Utils\InputUtils;
 
 $eType = 'All';
 
-if (isset($_POST['WhichType'])) {
-    $eType = InputUtils::legacyFilterInput($_POST['WhichType']);
-} else {
+if (isset($_POST['WhichType']) && $_POST['WhichType'] !== 'All') {
+    $eType = InputUtils::filterInt($_POST['WhichType']);
+} elseif (isset($_POST['WhichType'])) {
     $eType = 'All';
 }
 
