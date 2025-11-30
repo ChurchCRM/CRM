@@ -64,43 +64,6 @@ msgid "Backup Database"
 msgstr "資料庫備份"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "這工具將會協助您手動備份ChurchCRM資料庫"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "你應該進行手動備份，每週至少一次，除非你已經有一個的定期備份系統程序。"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "在您下載的備份文件，你應該一式兩份。其中一人在一個防火安全的網站和其他異地在一個安全的位置。"
-
-#: 
-#, fuzzy
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "如果您擔心ChurchCRM資料庫存儲的數據的機密性，那當它被存儲在他人可能訪問的位置時，您應該加密備份數據"
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "選擇封存類型"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "使用密碼加密備份文件？"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "重新輸入密碼"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "生成備份並將其發送到外部存儲"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "批優勝者進入"
 
@@ -939,21 +902,12 @@ msgstr "沒有記錄考勤計數"
 
 #: 
 #, fuzzy
-msgid "Event Sermon"
-msgstr "活動講道"
-
-#: 
-#, fuzzy
 msgid "Event Status"
 msgstr "活動狀態"
 
 #: 
 msgid "Return to Events"
 msgstr "返回至活動"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "活動類型名稱"
 
 #: 
 msgid "Sundays"
@@ -982,30 +936,6 @@ msgstr "星期五"
 #: 
 msgid "Saturdays"
 msgstr "星期六"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "默認開始時間"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "出席COUNTS"
-
-#: 
-msgid "Optional"
-msgstr "選擇性"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "輸入您要包含在此活動中的出勤計數表。"
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "用逗號分隔每個count_name。 例如 會眾，訪客，成人，兒童"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "每種活動類型都包含一個總計數，您不需要包含它。"
 
 #: 
 msgid "Add Event Type"
@@ -1992,28 +1922,12 @@ msgid "Confirm data labels"
 msgstr "確認數據標籤"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "列出活動類型="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "列出所有教會活動"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "選擇要顯示的事件類型"
-
-#: 
-msgid "Display Events in Year"
-msgstr "顯示事件在年"
-
-#: 
 msgid "Start Date/Time"
 msgstr "開始日期/時間"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "沒有考勤記錄的"
 
 #: 
 #, fuzzy

@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "데이터베이스 백업"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "이 도구는 ChurchCRM 데이터베이스를 수동으로 백업할 때 도움을 줍니다."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "시스템에 정기 백업 절차가 없다면 최소한 주 1회는 수동 백업을 수행해야 합니다."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "백업 파일을 내려받은 뒤에는 사본을 두 개 만들어야 합니다. 하나는 현장의 내화 금고에, 다른 하나는 외부의 안전한 장소에 보관하세요."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "ChurchCRM 데이터베이스에 저장된 정보의 기밀성이 걱정된다면, 다른 사람이 접근할 수 있는 곳에 보관하기 전에 백업 데이터를 암호화하세요."
-
-#: 
-msgid "Select archive type"
-msgstr "압축 형식 선택"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "백업 파일을 비밀번호로 암호화할까요?"
-
-#: 
-msgid "Re-type Password"
-msgstr "비밀번호 다시 입력"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "백업 생성 후 외부 저장소로 전송"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "당첨자 일괄 등록"
 
@@ -902,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "등록된 출석 집계가 없습니다."
 
 #: 
-msgid "Event Sermon"
-msgstr "행사 설교"
-
-#: 
 msgid "Event Status"
 msgstr "행사 상태"
 
 #: 
 msgid "Return to Events"
 msgstr "행사 목록으로"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "행사 유형 이름"
 
 #: 
 msgid "Sundays"
@@ -944,30 +903,6 @@ msgstr "금요일"
 #: 
 msgid "Saturdays"
 msgstr "토요일"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "기본 시작 시간"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "출석 집계"
-
-#: 
-msgid "Optional"
-msgstr "선택 사항"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "이 행사에 포함할 출석 집계 항목을 입력하세요."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "각 집계 이름은 쉼표로 구분합니다. 예) 성도, 새가족, 캠퍼스, 어린이"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "모든 행사 유형에는 총합 집계가 기본 포함되므로 따로 입력할 필요가 없습니다."
 
 #: 
 msgid "Add Event Type"
@@ -1928,28 +1863,12 @@ msgid "Confirm data labels"
 msgstr "데이터 라벨 확인"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "해당 유형의 행사 목록 = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "전체 교회 행사 목록"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "표시할 행사 유형 선택"
-
-#: 
-msgid "Display Events in Year"
-msgstr "해당 연도의 행사 표시"
-
-#: 
 msgid "Start Date/Time"
 msgstr "시작 일시"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "출석 기록 없음"
 
 #: 
 msgid "Attendees"

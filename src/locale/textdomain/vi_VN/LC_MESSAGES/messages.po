@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "Sao lưu dữ liệu"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Bạn nên thực hiện một sao lưu thủ công ít nhất một lần một tuần, trừ khi bạn đã có một lịch sao lưu thường xuyên cho hệ thống của bạn."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Sau khi bạn tải về các tập tin sao lưu, bạn nên làm cho hai bản sao. Đặt một trong số tập tin này vào nơi an toàn trong máy chủ và ngoài máy chủ."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Nếu bạn lo lắng về tính bảo mật của dữ liệu được lưu trữ trong cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh, bạn nên mã hóa dữ liệu sao lưu nếu nó sẽ được lưu trữ ở đâu đó có khả năng tiếp cận với những người khác"
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Chọn loại lưu trữ"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Mã hóa tập tin sao lưu với một mật khẩu?"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "Gõ lại mật khẩu:"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Tạo và gửi tập tin lưu trữ đến kho lưu trữ bên ngoài"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Mục nhập người chiến thắng hàng loạt"
 
@@ -919,20 +883,12 @@ msgid "No Attendance counts recorded"
 msgstr "Không có số điểm chuyên cần nào được ghi lại"
 
 #: 
-msgid "Event Sermon"
-msgstr "Bài giảng của sự kiện"
-
-#: 
 msgid "Event Status"
 msgstr "Trạng thái sự kiện"
 
 #: 
 msgid "Return to Events"
 msgstr "Quay về sự kiện"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "TÊN LOẠI SỰ KIỆN"
 
 #: 
 msgid "Sundays"
@@ -961,30 +917,6 @@ msgstr "Thứ Sáu"
 #: 
 msgid "Saturdays"
 msgstr "Thứ Bảy"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "THỜI GIAN BẮT ĐẦU"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "SỐ LƯỢNG THAM DỰ"
-
-#: 
-msgid "Optional"
-msgstr "Không bắt buộc"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Nhập danh sách số lượng người tham dự bạn muốn đưa vào sự kiện này."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Phân tách từng tên_đếm bằng dấu phẩy. ví dụ: Thành viên, Khách truy cập, Cơ sở, Trẻ em"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Mọi loại sự kiện đều bao gồm Tổng số, bạn không cần phải bao gồm nó."
 
 #: 
 msgid "Add Event Type"
@@ -1946,28 +1878,12 @@ msgid "Confirm data labels"
 msgstr "Xác nhận nhãn dữ liệu"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Sự kiện danh sách thuộc loại ="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Danh sách tất cả các sự kiện Hội Thánh"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Chọn loại sự kiện để hiển thị"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Hiển thị sự kiện trong năm"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Thời gian/ngày bắt đầu"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Không có điểm danh nào được ghi lại"
 
 #: 
 msgid "Attendees"

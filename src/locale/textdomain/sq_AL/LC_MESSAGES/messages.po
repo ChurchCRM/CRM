@@ -63,24 +63,6 @@ msgstr "Karta e kreditit"
 msgid "Backup Database"
 msgstr "Databaza e kopjes rezervë"
 
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Ju duhet të bëni një backup manual të paktën një herë në javë nëse ju tashmë keni një procedule rregullt rezervë për sistemet tuaja."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Pasi ta shkarkoni file backup, ju duhet të bëjë dy kopje. Vendos një prej tyre në një zjarr-provë të sigurt në vend dhe të tjera në një vend të sigurt off-site."
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Fotografi Encrypt backup me një fjalëkalim?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Re-lloj Fjalëkalimi"
-
 #: 
 msgid "Batch Winner Entry"
 msgstr "Batch Fituesi Hyrja"
@@ -811,16 +793,8 @@ msgid "No Attendance counts recorded"
 msgstr "Nuk ka akuza Pjesëmarrja e regjistruara"
 
 #: 
-msgid "Event Sermon"
-msgstr "Predikimi Event"
-
-#: 
 msgid "Event Status"
 msgstr "Statusi Event"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "EMRI RAST LLOJI"
 
 #: 
 msgid "Sundays"
@@ -849,10 +823,6 @@ msgstr "Premteve"
 #: 
 msgid "Saturdays"
 msgstr "Shtunave"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "PIKAT Spektatorë"
 
 #: 
 msgid "Add Event Type"
@@ -1648,20 +1618,8 @@ msgid "Listing All Church Events"
 msgstr "Listing të gjitha ngjarjet e Kishës"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Zgjidhni ngjarje Llojet To Display"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Shfaq Ngjarjet në Vitin"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Filloni Data / Koha"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Nuk ka Pjesëmarrja Recorded"
 
 #: 
 #, fuzzy

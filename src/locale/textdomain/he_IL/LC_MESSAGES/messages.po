@@ -64,40 +64,6 @@ msgid "Backup Database"
 msgstr "גבה מסד נתונים"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "כלי זה יסייע לך ביצירת גיבוי ידני של מסד הנתונים של ChurchCRM"
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "עליך לבצע גיבוי ידני, לפחות פעם בשבוע, אלא אם המערכת שלך מבצעת גיבוי אוטומטי בשיגרה"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "לאחר הורדת קובץ הגיבוי, צור שני עותקים.\n"
-"אחסן אחד מהם בכספת חסינת אש באתר, ועותק נוסף - באתר אחר."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "אם אתה מודאג לגבי מידע רגיש, המאוחסן במערכת ChurchCRM, עליך לבצע הצפנה לקובץ הגיבוי, במידה שהוא מאוחסן במקום הנגיש לאחרים"
-
-#: 
-msgid "Select archive type"
-msgstr "בחר סוג ארכיון"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "להצפין קובץ גיבוי עם סיסמה?"
-
-#: 
-msgid "Re-type Password"
-msgstr "הקלד שוב את הסיסמה"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "צור גיבוי ושלח אל איחסון חיצוני"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "כניסה למנצח אצווה"
 
@@ -903,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "לא נרשמה נוכחות"
 
 #: 
-msgid "Event Sermon"
-msgstr "דרשת האירוע"
-
-#: 
 msgid "Event Status"
 msgstr "סטטוס האירוע"
 
 #: 
 msgid "Return to Events"
 msgstr "חזור לאירועים"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "שם סוג האירוע"
 
 #: 
 msgid "Sundays"
@@ -945,30 +903,6 @@ msgstr "ימי שישי"
 #: 
 msgid "Saturdays"
 msgstr "שבתות"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "שעת התחלה ברירת מחדל"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "ספירת נוכחות"
-
-#: 
-msgid "Optional"
-msgstr "אופציונלי"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "הזן רשימת ספירות נוכחות שברצונך לכלול באירוע זה"
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "הפרד כל שם_ספירה בפסיק. לדוגמה: חברים, מבקרים, קמפוס, ילדים"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "כל סוג אירוע כולל ספירה כוללת, אין צורך לכלול אותה"
 
 #: 
 msgid "Add Event Type"
@@ -1929,28 +1863,12 @@ msgid "Confirm data labels"
 msgstr "אשר תוויות נתונים"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "הצגת אירועים מסוג = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "הצגת כל אירועי המוסד"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "בחר סוגי אירועים להצגה"
-
-#: 
-msgid "Display Events in Year"
-msgstr "הצג אירועים בשנה"
-
-#: 
 msgid "Start Date/Time"
 msgstr "תאריך/שעת התחלה"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "לא נרשמה נוכחות"
 
 #: 
 msgid "Attendees"

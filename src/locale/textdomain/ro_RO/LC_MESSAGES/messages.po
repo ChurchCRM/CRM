@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "Baza de date de rezervă"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Această unealtă vă va ajuta în crearea manuală a unei copii de rezervă pentru baza de date ChurchCRM."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Trebuie să faci un backup manual, cel puțin o dată pe săptămână, dacă nu aveți deja o metoda de backup regulată pentru sistemele dvs."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "După ce descărcați fișierul copie de rezervă, ar trebui să faceți două copii. Pune una dintre acestea într-un seif ignifug la fața locului, iar celălaltă într-un loc sigur în afara amplasamentului."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Dacă aveți îngrijorări vis-a-vis de confidențialitatea datelor stocate în baza de date ChurchCRM ar trebui să criptați copia de rezervă, mai ales dacă ele sunt stocate într-un loc în care și alții le-ar putea accesa."
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Selectați tipul de arhivă"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Criptezi fișierul de backup cu o parolă?"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "Re-introduceți parola"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Generează și livrează copia de rezervă (backup) către o stocare externă"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Câștigător lot de intrare"
 
@@ -934,21 +898,12 @@ msgstr "Nu a fost înregistrat niciun număr de prezență"
 
 #: 
 #, fuzzy
-msgid "Event Sermon"
-msgstr "Predica eveniment"
-
-#: 
-#, fuzzy
 msgid "Event Status"
 msgstr "Stare Eveniment"
 
 #: 
 msgid "Return to Events"
 msgstr "Revenire la Evenimente"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "NUME TIP EVENIMENT"
 
 #: 
 msgid "Sundays"
@@ -977,30 +932,6 @@ msgstr "Zilele de vineri"
 #: 
 msgid "Saturdays"
 msgstr "Zilele de sâmbătă"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "Timp pornire prestabilit"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "CONTEAZĂ PARTICIPAREA"
-
-#: 
-msgid "Optional"
-msgstr "Opțional"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Introduceți o listă a numărului de prezențe pe care doriți să le includeți la acest eveniment."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Separați fiecare contor_nume cu o virgulă. Ex. Membri, Vizitatori, Campus, Copii"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Fiecare tip de eveniment include un număr total, nu trebuie să îl includeți."
 
 #: 
 msgid "Add Event Type"
@@ -1984,28 +1915,12 @@ msgid "Confirm data labels"
 msgstr "Confirmați etichetele datelor"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Listarea evenimentelor de tip = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Listarea Tuturor Evenimentelor Bisericii"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Selectați Tipurile de Evenimente de Afișat"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Afișați Evenimentele din anul"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Data/Ora de Început"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Fără Prezență Înregistrată"
 
 #: 
 #, fuzzy

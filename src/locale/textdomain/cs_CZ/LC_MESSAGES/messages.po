@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Zálohovat databázi"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Tento nástroj vám pomůže při ručním zálohování databáze ChurchCRM."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Ruční zálohování byste měli provádět alespoň jednou týdně, pokud již nemáte zavedený postup pravidelného zálohování systémů."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Po stažení záložního souboru byste měli vytvořit dvě kopie. Jednu z nich uložte do ohnivzdorného trezoru na pracovišti a druhou na bezpečné místo mimo pracoviště."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Pokud máte obavy o důvěrnost dat uložených v databázi ChurchCRM, měli byste záložní data šifrovat, pokud budou uložena na místě potenciálně přístupném jiným osobám"
-
-#: 
-msgid "Select archive type"
-msgstr "Vyberte typ archivu"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Zabezpečit zálohu heslem?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Heslo znovu"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Vytvoření a odeslání zálohy do externího úložiště"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Hromadné zadání vítězů"
 
@@ -902,20 +869,12 @@ msgid "No Attendance counts recorded"
 msgstr "Žádné zaznamenané počty účastníků"
 
 #: 
-msgid "Event Sermon"
-msgstr "Kázání při události"
-
-#: 
 msgid "Event Status"
 msgstr "Stav události"
 
 #: 
 msgid "Return to Events"
 msgstr "Zpět k událostem"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "NÁZEV TYPU UDÁLOSTI"
 
 #: 
 msgid "Sundays"
@@ -944,30 +903,6 @@ msgstr "Pátky"
 #: 
 msgid "Saturdays"
 msgstr "Soboty"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "VÝCHOZÍ ČAS ZAČÁTKU"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "POČTY NÁVŠTĚVNOSTI"
-
-#: 
-msgid "Optional"
-msgstr "Volitelné"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Zadejte seznam počtů návštěvnosti, které chcete zařadit k této události."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Oddělte každý count_name pomocí čárky, např. Členové, Návštěvníci, Děti"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Každý typ události obsahuje Celkový počet, nemusíte jej zadávat."
 
 #: 
 msgid "Add Event Type"
@@ -1928,28 +1863,12 @@ msgid "Confirm data labels"
 msgstr "Popisky potvrzovacích dat"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Vypisuji události typu = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Vypisuji všechny sborové události"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Vyberte typy událostí k zobrazení"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Zobrazit události v roce"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Datum a čas začátku"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Účast nebyla zaznamenána"
 
 #: 
 msgid "Attendees"
