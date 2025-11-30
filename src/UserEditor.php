@@ -269,7 +269,8 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
     ksort($type);
     reset($type);
     while ($current_type = current($type)) {
-        $id = key($type);
+        // Sanitize the array key to prevent SQL injection
+        $id = InputUtils::filterInt(key($type));
         // Filter Input
         if ($current_type === 'text' || $current_type === 'textarea') {
             $value = InputUtils::legacyFilterInput($new_value[$id]);
