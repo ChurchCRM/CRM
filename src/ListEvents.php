@@ -12,8 +12,6 @@ $eType = 'All';
 
 if (isset($_POST['WhichType']) && $_POST['WhichType'] !== 'All') {
     $eType = InputUtils::filterInt($_POST['WhichType']);
-} elseif (isset($_POST['WhichType'])) {
-    $eType = 'All';
 }
 
 // Get event type name for page title
