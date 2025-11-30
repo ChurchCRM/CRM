@@ -390,11 +390,6 @@ msgid "Add Cart to Event"
 msgstr "Korb zur Veranstaltung hinzufügen"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Wähle die Veranstaltung aus zu der du den Korb hinzufügen willst"
-
-#: 
 msgid "OR"
 msgstr "oder"
 
@@ -503,10 +498,6 @@ msgid "Empty Cart to Family"
 msgstr "Korb in Familie leeren"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Korb in Veranstaltung  leeren"
-
-#: 
 msgid "Map Cart"
 msgstr "Karte für Korb anzeigen"
 
@@ -564,21 +555,8 @@ msgid "Event Checkin"
 msgstr "Anmeldung zur Veranstaltung"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Veranstaltung auswählen zu der Teilnehmer angemeldet werden sollen"
-
-#: 
 msgid "Select Event"
 msgstr "Veranstaltung auswählen"
-
-#: 
-msgid "Add Visitor"
-msgstr "Besucher hinzufügen"
-
-#: 
-msgid "CheckIn"
-msgstr "Anmelden"
 
 #: 
 msgid "CheckOut"
@@ -603,10 +581,6 @@ msgstr "Abgemeldet durch"
 #: 
 msgid "Action"
 msgstr "Aktion"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Es sind keine Besucher der Veranstaltung zugewiesen"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -933,44 +907,8 @@ msgid "Edit"
 msgstr "Edit"
 
 #: 
-msgid "Event Attendees"
-msgstr "Veranstaltungsteilnehmer"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "besuchen keine Veranstaltung"
-
-#: 
-msgid "Event Guests"
-msgstr "Veranstaltungsgäste"
-
-#: 
-msgid "There "
-msgstr "Es befinden sich"
-
-#: 
 msgid "Event Title"
 msgstr "Veranstaltungsbezeichnung"
-
-#: 
-msgid "Event Date"
-msgstr "Datum der Veranstaltung"
-
-#: 
-msgid "Attending Members"
-msgstr "Mitglieder in der Veranstaltung"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Mitglieder die keine Veranstaltung besuchen"
-
-#: 
-msgid "Guests"
-msgstr "Gäste"
-
-#: 
-msgid "There are no events in this category"
-msgstr "In dieser Kategorie gibt es keine Veranstaltungen"
 
 #: 
 msgid "Create Event"
@@ -981,22 +919,8 @@ msgid "Create a new Event"
 msgstr "Neues Event erstellen"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Edit Event ID:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "Fehler. Siehe unten"
-
-#: 
-#, fuzzy
-msgid "Items with a "
-msgstr "Objekte im Korb:"
-
-#: 
-#, fuzzy
-msgid " are required"
-msgstr "Dieser Wert wird benötigt."
 
 #: 
 msgid "Select your event type"
@@ -1007,17 +931,8 @@ msgid "You must pick an event type."
 msgstr "Es muss ein Eventtyp ausgewählt werden."
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Veranstaltungsbeschreibung"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Keine Besucherzahlen eingegeben"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Besucher Notizen:"
 
 #: 
 #, fuzzy

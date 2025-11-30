@@ -372,10 +372,6 @@ msgid "Add Cart to Event"
 msgstr "הוסף סל לאירוע"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "בחר באירוע שברצונך להוסיף לסל"
-
-#: 
 msgid "OR"
 msgstr "או"
 
@@ -481,10 +477,6 @@ msgid "Empty Cart to Family"
 msgstr "רוקן סל למשפחה"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "רוקן סל לאירוע"
-
-#: 
 msgid "Map Cart"
 msgstr "מפה את הסל"
 
@@ -541,20 +533,8 @@ msgid "Event Checkin"
 msgstr "כניסה לאירוע"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "בחר באירוע אליו תרצה להוסיף אנשים"
-
-#: 
 msgid "Select Event"
 msgstr "בחר אירוע"
-
-#: 
-msgid "Add Visitor"
-msgstr "הוסף מבקר"
-
-#: 
-msgid "CheckIn"
-msgstr "כניסה"
 
 #: 
 msgid "CheckOut"
@@ -579,10 +559,6 @@ msgstr "רישום יציאה על-ידי"
 #: 
 msgid "Action"
 msgstr "פעולה"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "לא שוייכו נוכחים לאירוע"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -899,44 +875,8 @@ msgid "Edit"
 msgstr "עריכה"
 
 #: 
-msgid "Event Attendees"
-msgstr "משתתפי האירוע"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "הנעדרים מהאירוע"
-
-#: 
-msgid "Event Guests"
-msgstr "אורחי האירוע"
-
-#: 
-msgid "There "
-msgstr "שם"
-
-#: 
 msgid "Event Title"
 msgstr "כותרת אירוע"
-
-#: 
-msgid "Event Date"
-msgstr "תאריך האירוע"
-
-#: 
-msgid "Attending Members"
-msgstr "חברים נוכחים"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "חברים נעדרים"
-
-#: 
-msgid "Guests"
-msgstr "אורחים"
-
-#: 
-msgid "There are no events in this category"
-msgstr "אין אירועים בקטגוריה זאת"
 
 #: 
 msgid "Create Event"
@@ -947,20 +887,8 @@ msgid "Create a new Event"
 msgstr "צור אירוע חדש"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "עריכת מזהה אירוע: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " שגיאות. אנא ראה מטה"
-
-#: 
-msgid "Items with a "
-msgstr "פריטים עם "
-
-#: 
-msgid " are required"
-msgstr " נדרשים"
 
 #: 
 msgid "Select your event type"
@@ -971,16 +899,8 @@ msgid "You must pick an event type."
 msgstr "עליך לבחור סוג אירוע"
 
 #: 
-msgid "Event Desc"
-msgstr "תיאור האירוע"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "לא נרשמה נוכחות"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "הערות נוכחות: "
 
 #: 
 msgid "Event Sermon"

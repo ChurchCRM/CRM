@@ -371,10 +371,6 @@ msgid "Add Cart to Event"
 msgstr "Lisa korv üritusele"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Vali üritus millele sa soovid lisada korvi"
-
-#: 
 msgid "OR"
 msgstr "VÕI"
 
@@ -480,10 +476,6 @@ msgid "Empty Cart to Family"
 msgstr "Tühjenda pere korv"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Tühjenda Sündmuse korv"
-
-#: 
 msgid "Map Cart"
 msgstr "Kaardikogu"
 
@@ -540,20 +532,8 @@ msgid "Event Checkin"
 msgstr "Ürituste registreerimine"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Valige sündmus, kuhu soovite inimesi lisada"
-
-#: 
 msgid "Select Event"
 msgstr "Vali sündmus"
-
-#: 
-msgid "Add Visitor"
-msgstr "Lisage külastaja"
-
-#: 
-msgid "CheckIn"
-msgstr "Kirjuta sisse"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +558,6 @@ msgstr "Kontrollitud"
 #: 
 msgid "Action"
 msgstr "Tegevus"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Üritusele pole määratud ühtegi osavõtjat"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -898,44 +874,8 @@ msgid "Edit"
 msgstr "Redigeeri"
 
 #: 
-msgid "Event Attendees"
-msgstr "Üritustel osalejad"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Üritusel mitteosalenud"
-
-#: 
-msgid "Event Guests"
-msgstr "Ürituse külalised"
-
-#: 
-msgid "There "
-msgstr "Seal "
-
-#: 
 msgid "Event Title"
 msgstr "Ürituse pealkiri"
-
-#: 
-msgid "Event Date"
-msgstr "Ürituse kuupäev"
-
-#: 
-msgid "Attending Members"
-msgstr "Osalevad liikmed"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Mitteosalevad liikmed"
-
-#: 
-msgid "Guests"
-msgstr "Külalised"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Selles kategoorias pole ühtegi üritust"
 
 #: 
 msgid "Create Event"
@@ -946,20 +886,8 @@ msgid "Create a new Event"
 msgstr "Looge uus sündmus"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Sündmuse ID muutmine: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " vead. Palun vaadake allpool"
-
-#: 
-msgid "Items with a "
-msgstr "Üksused, millel on "
-
-#: 
-msgid " are required"
-msgstr " on kohustuslikud"
 
 #: 
 msgid "Select your event type"
@@ -970,16 +898,8 @@ msgid "You must pick an event type."
 msgstr "Peate valima sündmuse tüübi."
 
 #: 
-msgid "Event Desc"
-msgstr "Ürituste kirjeldus"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Ühtegi osalemisarvestust ei registreeritud"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Osalemise märkused: "
 
 #: 
 msgid "Event Sermon"

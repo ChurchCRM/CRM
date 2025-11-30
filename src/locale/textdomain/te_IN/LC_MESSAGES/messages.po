@@ -371,10 +371,6 @@ msgid "Add Cart to Event"
 msgstr "ఈవెంట్‌కి కార్ట్‌ని జోడించండి"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "మీరు మీ కార్ట్‌ను జోడించాలనుకుంటున్న ఈవెంట్‌ను ఎంచుకోండి"
-
-#: 
 msgid "OR"
 msgstr "లేదా"
 
@@ -480,10 +476,6 @@ msgid "Empty Cart to Family"
 msgstr "కుటుంబానికి ఖాళీ కార్ట్"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "ఈవెంట్‌కు ఖాళీ కార్ట్"
-
-#: 
 msgid "Map Cart"
 msgstr "మ్యాప్ కార్ట్"
 
@@ -540,20 +532,8 @@ msgid "Event Checkin"
 msgstr "ఈవెంట్ తనిఖీ"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "మీరు వ్యక్తులను తనిఖీ చేయాలనుకుంటున్న ఈవెంట్‌ను ఎంచుకోండి"
-
-#: 
 msgid "Select Event"
 msgstr "ఈవెంట్‌ని ఎంచుకోండి"
-
-#: 
-msgid "Add Visitor"
-msgstr "సందర్శకుడిని జోడించండి"
-
-#: 
-msgid "CheckIn"
-msgstr "చెక్ ఇన్"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +558,6 @@ msgstr "ద్వారా తనిఖీ చేయబడింది"
 #: 
 msgid "Action"
 msgstr "చర్య"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "ఈవెంట్‌కు హాజరైనవారు ఎవరూ కేటాయించబడలేదు"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -898,44 +874,8 @@ msgid "Edit"
 msgstr "సవరించు"
 
 #: 
-msgid "Event Attendees"
-msgstr "ఈవెంట్ హాజరైనవారు"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "ఈవెంట్ నాన్‌టెండిస్"
-
-#: 
-msgid "Event Guests"
-msgstr "ఈవెంట్ అతిథులు"
-
-#: 
-msgid "There "
-msgstr "అక్కడ "
-
-#: 
 msgid "Event Title"
 msgstr "ఈవెంట్ శీర్షిక"
-
-#: 
-msgid "Event Date"
-msgstr "ఈవెంట్ తేదీ"
-
-#: 
-msgid "Attending Members"
-msgstr "హాజరవుతున్న సభ్యులు"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "హాజరు కాని సభ్యులు"
-
-#: 
-msgid "Guests"
-msgstr "అతిథులు"
-
-#: 
-msgid "There are no events in this category"
-msgstr "ఈ వర్గంలో ఈవెంట్‌లు ఏవీ లేవు"
 
 #: 
 msgid "Create Event"
@@ -946,20 +886,8 @@ msgid "Create a new Event"
 msgstr "కొత్త ఈవెంట్‌ని సృష్టించండి"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "ఈవెంట్ IDని సవరించడం: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " లోపాలు. దయచేసి క్రింద చూడండి"
-
-#: 
-msgid "Items with a "
-msgstr "a తో అంశాలు "
-
-#: 
-msgid " are required"
-msgstr " అవసరం"
 
 #: 
 msgid "Select your event type"
@@ -970,16 +898,8 @@ msgid "You must pick an event type."
 msgstr "మీరు తప్పనిసరిగా ఈవెంట్ రకాన్ని ఎంచుకోవాలి."
 
 #: 
-msgid "Event Desc"
-msgstr "ఈవెంట్ డెస్క్"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "హాజరు గణనలు నమోదు కాలేదు"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "హాజరు గమనికలు: "
 
 #: 
 msgid "Event Sermon"

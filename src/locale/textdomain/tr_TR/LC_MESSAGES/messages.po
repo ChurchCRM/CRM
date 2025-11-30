@@ -371,10 +371,6 @@ msgid "Add Cart to Event"
 msgstr "Etkinliğe Sepet Ekle"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Sepetinizi eklemek istediğiniz etkinliği seçin"
-
-#: 
 msgid "OR"
 msgstr "VEYA"
 
@@ -480,10 +476,6 @@ msgid "Empty Cart to Family"
 msgstr "Aileye boş araba"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Etkinliğe boş araba"
-
-#: 
 msgid "Map Cart"
 msgstr "Harita arabası"
 
@@ -540,20 +532,8 @@ msgid "Event Checkin"
 msgstr "Olay kontrolü"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "İnsanları kontrol etmek istediğiniz olayı seçin"
-
-#: 
 msgid "Select Event"
 msgstr "Etkinliği Seçin"
-
-#: 
-msgid "Add Visitor"
-msgstr "Ziyaretçi ekle"
-
-#: 
-msgid "CheckIn"
-msgstr "Giriş"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +558,6 @@ msgstr "Tarafından kontrol edildi"
 #: 
 msgid "Action"
 msgstr "Eylem"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Etkinliğe atanan katılımcı yok"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -898,44 +874,8 @@ msgid "Edit"
 msgstr "Düzenlemek"
 
 #: 
-msgid "Event Attendees"
-msgstr "Etkinlik katılımcıları"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Etkinlik Nonsoles Non"
-
-#: 
-msgid "Event Guests"
-msgstr "Etkinlik Konukları"
-
-#: 
-msgid "There "
-msgstr "Orası"
-
-#: 
 msgid "Event Title"
 msgstr "Olay başlığı"
-
-#: 
-msgid "Event Date"
-msgstr "Etkinlik tarihi"
-
-#: 
-msgid "Attending Members"
-msgstr "Katılan Üyeler"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Katılımsız üyeler"
-
-#: 
-msgid "Guests"
-msgstr "Misafirler"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Bu kategoride olay yok"
 
 #: 
 msgid "Create Event"
@@ -946,20 +886,8 @@ msgid "Create a new Event"
 msgstr "Yeni Bir Etkinlik Oluşturun"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Düzenleme Olay Kimliği:"
-
-#: 
 msgid " errors. Please see below"
 msgstr " hatalar. Lütfen aşağıya bakın"
-
-#: 
-msgid "Items with a "
-msgstr "A ile eşyalar"
-
-#: 
-msgid " are required"
-msgstr " gerekmektedir"
 
 #: 
 msgid "Select your event type"
@@ -970,16 +898,8 @@ msgid "You must pick an event type."
 msgstr "Bir olay türü seçmelisiniz."
 
 #: 
-msgid "Event Desc"
-msgstr "Olay Desc"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Katılım sayısı kaydedilmedi"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Katılım Notları:"
 
 #: 
 msgid "Event Sermon"

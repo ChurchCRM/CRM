@@ -389,11 +389,6 @@ msgid "Add Cart to Event"
 msgstr "Dodaj Koszyk do Wydarzenia"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Koszyk"
-
-#: 
 msgid "OR"
 msgstr "LUB"
 
@@ -502,10 +497,6 @@ msgid "Empty Cart to Family"
 msgstr "Opróżnij Koszyk do Rodziny"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Opróżnij Koszyk do Wydarzenia"
-
-#: 
 msgid "Map Cart"
 msgstr "Pokaż Koszyk na mapie"
 
@@ -558,21 +549,8 @@ msgid "Event Checkin"
 msgstr "Zapis do wydarzenia"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Osoby"
-
-#: 
 msgid "Select Event"
 msgstr "Wybierz Wydarzenie"
-
-#: 
-msgid "Add Visitor"
-msgstr "Dodaj Gościa"
-
-#: 
-msgid "CheckIn"
-msgstr "Wpisz"
 
 #: 
 msgid "CheckOut"
@@ -597,10 +575,6 @@ msgstr "Wypisany przez"
 #: 
 msgid "Action"
 msgstr "Akcja"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Nie przypisano żadnych uczestników dla tego Wydarzenia"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -914,44 +888,8 @@ msgid "Edit"
 msgstr "Edytuj"
 
 #: 
-msgid "Event Attendees"
-msgstr "Uczestnicy"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Nieobecni-Nie biorący udziału"
-
-#: 
-msgid "Event Guests"
-msgstr "Goście"
-
-#: 
-msgid "There "
-msgstr "Tam"
-
-#: 
 msgid "Event Title"
 msgstr "Tytuł Wydarzenia"
-
-#: 
-msgid "Event Date"
-msgstr "Data Wydarzenia"
-
-#: 
-msgid "Attending Members"
-msgstr "Członkowie biorący udział"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Członkowie nie biorący udziału"
-
-#: 
-msgid "Guests"
-msgstr "Goście"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Nie ma Wydarzeń w tej Kategorii"
 
 #: 
 msgid "Create Event"
@@ -962,20 +900,8 @@ msgid "Create a new Event"
 msgstr "Utwórz nowe wydarzenie"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Edytuj ID Wydarzenia:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "Błędy. Popatrz poniżej"
-
-#: 
-msgid "Items with a "
-msgstr "Pola z "
-
-#: 
-msgid " are required"
-msgstr "są wymagane"
 
 #: 
 msgid "Select your event type"
@@ -986,16 +912,8 @@ msgid "You must pick an event type."
 msgstr "Musisz wybrać typ wydarzenia"
 
 #: 
-msgid "Event Desc"
-msgstr "Opis Wydarzenia"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Nie odnotowano Uczestników"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Notatki od Uczestników:"
 
 #: 
 #, fuzzy

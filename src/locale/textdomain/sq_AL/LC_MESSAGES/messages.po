@@ -337,10 +337,6 @@ msgid "Add Cart to Event"
 msgstr "Shto te Shporta Event"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Zgjidhni ngjarje për të cilën ju do të donte për të shtuar karrocë tuaj"
-
-#: 
 msgid "OR"
 msgstr "OSE"
 
@@ -446,10 +442,6 @@ msgid "Empty Cart to Family"
 msgstr "Shporta bosh për Familjen"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Shporta bosh për Event"
-
-#: 
 msgid "Map Cart"
 msgstr "Harta Shporta"
 
@@ -502,20 +494,8 @@ msgid "Event Checkin"
 msgstr "Checkin Event"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Zgjidhni ngjarje për të cilën ju do të donte për të kontrolluar njerëzit në për"
-
-#: 
 msgid "Select Event"
 msgstr "Zgjidhni Event"
-
-#: 
-msgid "Add Visitor"
-msgstr "Shto Vizitor"
-
-#: 
-msgid "CheckIn"
-msgstr "Checkin"
 
 #: 
 msgid "CheckOut"
@@ -540,10 +520,6 @@ msgstr "Kontrolluar ne daten Out By"
 #: 
 msgid "Action"
 msgstr "Veprim"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Nuk Pjesëmarrësit caktuar për Event"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -823,72 +799,16 @@ msgid "Edit"
 msgstr "Ndrysho"
 
 #: 
-msgid "Event Attendees"
-msgstr "Pjesëmarrësit Event"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Nonattendees Event"
-
-#: 
-msgid "Event Guests"
-msgstr "Guests Event"
-
-#: 
-msgid "There "
-msgstr "Jane "
-
-#: 
 msgid "Event Title"
 msgstr "Titulli i evenimentit"
-
-#: 
-msgid "Event Date"
-msgstr "Data Event"
-
-#: 
-msgid "Attending Members"
-msgstr "Të pranishëm Anëtarët"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Jo-Të pranishëm Anëtarëve"
-
-#: 
-msgid "Guests"
-msgstr "Guests"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Nuk ka ngjarje në këtë kategori"
-
-#: 
-msgid "Editing Event ID: "
-msgstr "Editing Event ID: "
 
 #: 
 msgid " errors. Please see below"
 msgstr " gabime. Ju lutemi shihni më poshtë"
 
 #: 
-msgid "Items with a "
-msgstr "Items me një "
-
-#: 
-msgid " are required"
-msgstr " janë të nevojshme"
-
-#: 
-msgid "Event Desc"
-msgstr "Event Përshkrimi"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Nuk ka akuza Pjesëmarrja e regjistruara"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Shënime Pjesëmarrja: "
 
 #: 
 msgid "Event Sermon"

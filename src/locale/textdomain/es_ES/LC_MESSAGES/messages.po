@@ -372,10 +372,6 @@ msgid "Add Cart to Event"
 msgstr "Añadir carrito al evento"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Seleccione el evento que desea añadir al carrito"
-
-#: 
 msgid "OR"
 msgstr "o"
 
@@ -481,10 +477,6 @@ msgid "Empty Cart to Family"
 msgstr "Vaciar carrito a la familia"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Vaciar carrito al evento"
-
-#: 
 msgid "Map Cart"
 msgstr "Generar mapa del carrito"
 
@@ -541,20 +533,8 @@ msgid "Event Checkin"
 msgstr "Registro de evento"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Seleccione el evento al que desea ingresar personas"
-
-#: 
 msgid "Select Event"
 msgstr "Seleccionar evento"
-
-#: 
-msgid "Add Visitor"
-msgstr "Agregar visitante"
-
-#: 
-msgid "CheckIn"
-msgstr "Registro de entrada"
 
 #: 
 msgid "CheckOut"
@@ -579,10 +559,6 @@ msgstr "Retirado por"
 #: 
 msgid "Action"
 msgstr "Acción"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "No hay participantes asignados a evento"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -899,44 +875,8 @@ msgid "Edit"
 msgstr "Editar"
 
 #: 
-msgid "Event Attendees"
-msgstr "Asistentes a evento"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "No asistentes a evento"
-
-#: 
-msgid "Event Guests"
-msgstr "Invitados a evento"
-
-#: 
-msgid "There "
-msgstr "Donde␣"
-
-#: 
 msgid "Event Title"
 msgstr "Título de evento"
-
-#: 
-msgid "Event Date"
-msgstr "Fecha de evento"
-
-#: 
-msgid "Attending Members"
-msgstr "Miembros que asistieron"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Miembros que no asistieron"
-
-#: 
-msgid "Guests"
-msgstr "Invitados"
-
-#: 
-msgid "There are no events in this category"
-msgstr "No hay eventos en esta categoría"
 
 #: 
 msgid "Create Event"
@@ -947,20 +887,8 @@ msgid "Create a new Event"
 msgstr "Crear un nuevo evento"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Editando Id. de evento: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " errores. Vea a continuación"
-
-#: 
-msgid "Items with a "
-msgstr "Items con un "
-
-#: 
-msgid " are required"
-msgstr "␣son requeridos"
 
 #: 
 msgid "Select your event type"
@@ -971,16 +899,8 @@ msgid "You must pick an event type."
 msgstr "Debe elegir un tipo de evento"
 
 #: 
-msgid "Event Desc"
-msgstr "Descripción de evento"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "no se han grabado registros de asistencia"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Nota de asistencia:␣"
 
 #: 
 msgid "Event Sermon"

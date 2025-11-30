@@ -371,10 +371,6 @@ msgid "Add Cart to Event"
 msgstr "Voeg mandjie by die geleentheid"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Kies die gebeurtenis waaraan u u mandjie wil voeg"
-
-#: 
 msgid "OR"
 msgstr "OF"
 
@@ -480,10 +476,6 @@ msgid "Empty Cart to Family"
 msgstr "Leë wa aan familie"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Leë wa aan geleentheid"
-
-#: 
 msgid "Map Cart"
 msgstr "Karteer mandtjie"
 
@@ -540,20 +532,8 @@ msgid "Event Checkin"
 msgstr "Geleentheid inklok"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Kies die geleentheid waarby jy mense by wil laat inklok"
-
-#: 
 msgid "Select Event"
 msgstr "Kies geleentheid"
-
-#: 
-msgid "Add Visitor"
-msgstr "Voeg besoeker by"
-
-#: 
-msgid "CheckIn"
-msgstr "Teken in"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +558,6 @@ msgstr "Uitklok teen"
 #: 
 msgid "Action"
 msgstr "Aksie"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Geen bewoners by geleentheid bygevoeg nie"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -898,44 +874,8 @@ msgid "Edit"
 msgstr "Redigeer"
 
 #: 
-msgid "Event Attendees"
-msgstr "Geleentheid bywoners"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Geleentheid afwesig"
-
-#: 
-msgid "Event Guests"
-msgstr "Geleentheid gaste"
-
-#: 
-msgid "There "
-msgstr "Daar"
-
-#: 
 msgid "Event Title"
 msgstr "Gebeurtenis titel"
-
-#: 
-msgid "Event Date"
-msgstr "Gebeurtenis datum"
-
-#: 
-msgid "Attending Members"
-msgstr "Bywonende lidmate"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Afwesige lidmate"
-
-#: 
-msgid "Guests"
-msgstr "Gaste"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Daar is geen geleenthede in hierdie kategorie"
 
 #: 
 msgid "Create Event"
@@ -946,20 +886,8 @@ msgid "Create a new Event"
 msgstr "Skep 'n nuwe geleentheid"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Wysig geleentheids-ID: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " foute. Sien onder Asseblief"
-
-#: 
-msgid "Items with a "
-msgstr "Items met 'n "
-
-#: 
-msgid " are required"
-msgstr " word benodig"
 
 #: 
 msgid "Select your event type"
@@ -970,16 +898,8 @@ msgid "You must pick an event type."
 msgstr "U moet 'n tipe gebeurtenis kies."
 
 #: 
-msgid "Event Desc"
-msgstr "Gebeurtenisbeskrywing"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Geen bywoningsgetalle aangeteken nie"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Bywoningsnotas: "
 
 #: 
 msgid "Event Sermon"

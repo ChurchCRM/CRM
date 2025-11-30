@@ -387,11 +387,6 @@ msgid "Add Cart to Event"
 msgstr "Thêm vào giỏ rồi gửi đến Sự kiện"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Chọn sự kiện mà bạn muốn thêm vào giỏ của bạn"
-
-#: 
 msgid "OR"
 msgstr "HOẶC"
 
@@ -498,10 +493,6 @@ msgid "Empty Cart to Family"
 msgstr "Xóa bỏ giỏ trong Gia đình"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Xóa bỏ giỏ trong Sự kiện"
-
-#: 
 msgid "Map Cart"
 msgstr "Giỏ Bản đồ"
 
@@ -558,20 +549,8 @@ msgid "Event Checkin"
 msgstr "Đăng ký sự kiện"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Chọn sự kiện mà bạn muốn kiểm tra mọi người"
-
-#: 
 msgid "Select Event"
 msgstr "Lựa chọn sự kiện"
-
-#: 
-msgid "Add Visitor"
-msgstr "Thêm người truy cập"
-
-#: 
-msgid "CheckIn"
-msgstr "Kiểm tra vào"
 
 #: 
 msgid "CheckOut"
@@ -596,10 +575,6 @@ msgstr "Kiểm tra bởi"
 #: 
 msgid "Action"
 msgstr "Hành động"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Không có người tham dự nào được chỉ định cho sự kiện"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -916,44 +891,8 @@ msgid "Edit"
 msgstr "Chỉnh sửa"
 
 #: 
-msgid "Event Attendees"
-msgstr "Người tham dự sự kiện"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Người không tham dự sự kiện"
-
-#: 
-msgid "Event Guests"
-msgstr "Khách sự kiện"
-
-#: 
-msgid "There "
-msgstr "tại đây␣"
-
-#: 
 msgid "Event Title"
 msgstr "Tiêu đề sự kiện"
-
-#: 
-msgid "Event Date"
-msgstr "Ngày sự kiện"
-
-#: 
-msgid "Attending Members"
-msgstr "Thành viên tham dự"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Thành viên không tham dự"
-
-#: 
-msgid "Guests"
-msgstr "Khách"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Không có sự kiện nào trong chuyên mục này"
 
 #: 
 msgid "Create Event"
@@ -964,20 +903,8 @@ msgid "Create a new Event"
 msgstr "Tạo sự kiện mới"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Chỉnh ID sự kiện: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " bị lỗi. Vui lòng xem bên dưới"
-
-#: 
-msgid "Items with a "
-msgstr "Các mặt hàng có"
-
-#: 
-msgid " are required"
-msgstr "được yêu cầu"
 
 #: 
 msgid "Select your event type"
@@ -988,16 +915,8 @@ msgid "You must pick an event type."
 msgstr "Bạn cần chọn loại sự kiện"
 
 #: 
-msgid "Event Desc"
-msgstr "Mô tả sự kiện"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Không có số điểm chuyên cần nào được ghi lại"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Ghi chú tham dự: "
 
 #: 
 msgid "Event Sermon"

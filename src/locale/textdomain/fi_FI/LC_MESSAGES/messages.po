@@ -372,10 +372,6 @@ msgid "Add Cart to Event"
 msgstr "Lisää tapahtuma koriin"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Valitse tapahtuma, jonka haluat lisätä koriin"
-
-#: 
 msgid "OR"
 msgstr "TAI"
 
@@ -481,10 +477,6 @@ msgid "Empty Cart to Family"
 msgstr "Tyhjennä kori perheestä"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Tyhjennä kori tapahtumista"
-
-#: 
 msgid "Map Cart"
 msgstr "Karttakori"
 
@@ -541,20 +533,8 @@ msgid "Event Checkin"
 msgstr "Tapahtumaan sisäänkirjautuminen"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Valitse tapahtuma, johon haluat kirjata ihmiset sisään"
-
-#: 
 msgid "Select Event"
 msgstr "Valitse Tapahtuma"
-
-#: 
-msgid "Add Visitor"
-msgstr "Lisää vierailija"
-
-#: 
-msgid "CheckIn"
-msgstr "Ilmoittautuminen"
 
 #: 
 msgid "CheckOut"
@@ -579,10 +559,6 @@ msgstr "Uloskirjattu toimesta"
 #: 
 msgid "Action"
 msgstr "Toiminta"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Tapahtumaan ei ole määrätty osallistujia"
 
 #. Context: queryparameteroptions_qpo
 #: 

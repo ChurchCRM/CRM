@@ -391,11 +391,6 @@ msgid "Add Cart to Event"
 msgstr "Lägg korgen till evenemang"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Välj evenemanget som du vill lägga korgen till"
-
-#: 
 msgid "OR"
 msgstr "ELLER"
 
@@ -504,10 +499,6 @@ msgid "Empty Cart to Family"
 msgstr "Tom korgen till familj"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Tom korgen till evenemang"
-
-#: 
 msgid "Map Cart"
 msgstr "Kartlägga korgen"
 
@@ -565,21 +556,8 @@ msgid "Event Checkin"
 msgstr "Evenemang inchekning"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Välj evenemang som du vill checka in personer till"
-
-#: 
 msgid "Select Event"
 msgstr "Välj evenemang"
-
-#: 
-msgid "Add Visitor"
-msgstr "Lägg till besökare"
-
-#: 
-msgid "CheckIn"
-msgstr "Checkar in"
 
 #: 
 msgid "CheckOut"
@@ -604,10 +582,6 @@ msgstr "Utcheckade av"
 #: 
 msgid "Action"
 msgstr "Handling"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Inga deltagare angiven till evenemang"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -935,44 +909,8 @@ msgid "Edit"
 msgstr "Redigera"
 
 #: 
-msgid "Event Attendees"
-msgstr "Evenemangdeltagare"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Evenemang icke deltagare"
-
-#: 
-msgid "Event Guests"
-msgstr "Evenemanggäster"
-
-#: 
-msgid "There "
-msgstr "Där "
-
-#: 
 msgid "Event Title"
 msgstr "Evenemangsnamn"
-
-#: 
-msgid "Event Date"
-msgstr "Evenemangdatum"
-
-#: 
-msgid "Attending Members"
-msgstr "Deltagande medlemmar"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Icke deltagande medlemmar"
-
-#: 
-msgid "Guests"
-msgstr "Gäster"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Finns inga evenemang i denn kategori"
 
 #: 
 msgid "Create Event"
@@ -983,22 +921,8 @@ msgid "Create a new Event"
 msgstr "Skapa en ny händelse"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Redigera Event ID:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "fel. Se nedan"
-
-#: 
-#, fuzzy
-msgid "Items with a "
-msgstr "Poster i korgen"
-
-#: 
-#, fuzzy
-msgid " are required"
-msgstr "Denna inmatning krävs."
 
 #: 
 msgid "Select your event type"
@@ -1009,17 +933,8 @@ msgid "You must pick an event type."
 msgstr "Du måste välja en händelsetyp."
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Evenemangsbeskr."
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Inga deltagare angiven"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Deltagare anteckningar: "
 
 #: 
 #, fuzzy
