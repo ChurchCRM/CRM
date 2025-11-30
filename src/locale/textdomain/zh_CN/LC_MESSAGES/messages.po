@@ -389,11 +389,6 @@ msgid "Add Cart to Event"
 msgstr "加入购物车事件"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "选择事件时，如果你想添加您的购物车"
-
-#: 
 msgid "OR"
 msgstr "或"
 
@@ -502,10 +497,6 @@ msgid "Empty Cart to Family"
 msgstr "清空购物车家庭"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "清空购物车事件"
-
-#: 
 msgid "Map Cart"
 msgstr "地图购物车"
 
@@ -562,21 +553,8 @@ msgid "Event Checkin"
 msgstr "事件入住"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "选择事件时，你要检查的人"
-
-#: 
 msgid "Select Event"
 msgstr "选择事件"
-
-#: 
-msgid "Add Visitor"
-msgstr "添加访客"
-
-#: 
-msgid "CheckIn"
-msgstr "签入"
 
 #: 
 msgid "CheckOut"
@@ -601,10 +579,6 @@ msgstr "签出"
 #: 
 msgid "Action"
 msgstr "行动"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "没有分配给事件的参加者"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -931,44 +905,8 @@ msgid "Edit"
 msgstr "编辑"
 
 #: 
-msgid "Event Attendees"
-msgstr "活动的参与者"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "事件Nonattendees"
-
-#: 
-msgid "Event Guests"
-msgstr "事件客人"
-
-#: 
-msgid "There "
-msgstr "那里"
-
-#: 
 msgid "Event Title"
 msgstr "活动名称"
-
-#: 
-msgid "Event Date"
-msgstr "活动日期"
-
-#: 
-msgid "Attending Members"
-msgstr "出席委员"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "出席委员"
-
-#: 
-msgid "Guests"
-msgstr "宾客"
-
-#: 
-msgid "There are no events in this category"
-msgstr "有没有在这个类别的事件"
 
 #: 
 msgid "Create Event"
@@ -979,20 +917,8 @@ msgid "Create a new Event"
 msgstr "建立新活动"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "编辑事件ID："
-
-#: 
 msgid " errors. Please see below"
 msgstr "错误。请参考下面"
-
-#: 
-msgid "Items with a "
-msgstr "一个项目"
-
-#: 
-msgid " are required"
-msgstr "需要"
 
 #: 
 msgid "Select your event type"
@@ -1003,17 +929,8 @@ msgid "You must pick an event type."
 msgstr "你必须选择事件类型"
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "事件描述"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "没有记录考勤计数"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "出席附注："
 
 #: 
 #, fuzzy

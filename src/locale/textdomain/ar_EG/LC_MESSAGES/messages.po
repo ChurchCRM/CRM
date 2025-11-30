@@ -372,10 +372,6 @@ msgid "Add Cart to Event"
 msgstr "إضافة سلة التسوق للحدث"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "حدد الحدث الذي تريد إضافة سلة التسوق إليه"
-
-#: 
 msgid "OR"
 msgstr "أو"
 
@@ -481,10 +477,6 @@ msgid "Empty Cart to Family"
 msgstr "عربة تسوق فارغة للأسرة"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "عربة تسوق فارغة للحدث"
-
-#: 
 msgid "Map Cart"
 msgstr "خريطة عربة التسوق"
 
@@ -541,20 +533,8 @@ msgid "Event Checkin"
 msgstr "تسجيل دخول الحدث"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "حدد الحدث الذي تريد إضافة سلة التسوق إليه"
-
-#: 
 msgid "Select Event"
 msgstr "حدد الحدث"
-
-#: 
-msgid "Add Visitor"
-msgstr "إضافة زائر"
-
-#: 
-msgid "CheckIn"
-msgstr "حضور"
 
 #: 
 msgid "CheckOut"
@@ -579,10 +559,6 @@ msgstr "تم الخروج بواسطة"
 #: 
 msgid "Action"
 msgstr "عمل"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "لا المخصصة للحدث الحضور"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -899,44 +875,8 @@ msgid "Edit"
 msgstr "تحرير"
 
 #: 
-msgid "Event Attendees"
-msgstr "حضور الحدث"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "عدم حضور الحدث"
-
-#: 
-msgid "Event Guests"
-msgstr "ضيوف الحدث"
-
-#: 
-msgid "There "
-msgstr "هناك "
-
-#: 
 msgid "Event Title"
 msgstr "عنوان الحدث"
-
-#: 
-msgid "Event Date"
-msgstr "تاريخ الحدث"
-
-#: 
-msgid "Attending Members"
-msgstr "الأعضاء الحاضرين"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "الأعضاء الغير حاضرين"
-
-#: 
-msgid "Guests"
-msgstr "الضيوف"
-
-#: 
-msgid "There are no events in this category"
-msgstr "لا توجد أية أحداث في هذه الفئة"
 
 #: 
 msgid "Create Event"
@@ -947,20 +887,8 @@ msgid "Create a new Event"
 msgstr "إنشاء حدث جديد"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "تعديل معرف الحدث: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " أخطاء. الرجاء انظر أدناه"
-
-#: 
-msgid "Items with a "
-msgstr "البنود مع "
-
-#: 
-msgid " are required"
-msgstr " مطلوبة"
 
 #: 
 msgid "Select your event type"
@@ -971,16 +899,8 @@ msgid "You must pick an event type."
 msgstr "يجب عليك اختيار نوع حدث."
 
 #: 
-msgid "Event Desc"
-msgstr "وصف الحدث"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "سجلت لا تهم الحضور"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "مذكرات الحضور: "
 
 #: 
 msgid "Event Sermon"

@@ -373,10 +373,6 @@ msgid "Add Cart to Event"
 msgstr "Tambahkan cart di Acara"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Pilih acara yang ingin ditambahkan cart"
-
-#: 
 msgid "OR"
 msgstr "Atau"
 
@@ -482,10 +478,6 @@ msgid "Empty Cart to Family"
 msgstr "Kosongkan Cart di Keluarga"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Kosongkan Cart di Acara"
-
-#: 
 msgid "Map Cart"
 msgstr "Peta-kan Cart"
 
@@ -542,20 +534,8 @@ msgid "Event Checkin"
 msgstr "Kehadiran di Acara"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Pilih Acara yang akan diisi daftar kehadirannya"
-
-#: 
 msgid "Select Event"
 msgstr "Pilih Acara"
-
-#: 
-msgid "Add Visitor"
-msgstr "Tambahkan pengunjung"
-
-#: 
-msgid "CheckIn"
-msgstr "Hadir"
 
 #: 
 msgid "CheckOut"
@@ -580,10 +560,6 @@ msgstr "Diisi oleh "
 #: 
 msgid "Action"
 msgstr "Aksi"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Tidak ada yang hadir pada acara"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -900,44 +876,8 @@ msgid "Edit"
 msgstr "sunting"
 
 #: 
-msgid "Event Attendees"
-msgstr "Tamu yang hadir"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Tamu yang tidak hadir"
-
-#: 
-msgid "Event Guests"
-msgstr "Tamu undangan"
-
-#: 
-msgid "There "
-msgstr "Di sana"
-
-#: 
 msgid "Event Title"
 msgstr "Judul kegiatan"
-
-#: 
-msgid "Event Date"
-msgstr "Tanggal kegiatan"
-
-#: 
-msgid "Attending Members"
-msgstr "Jumlah anggota yang hadir"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Jumlah anggota yang tidak hadir"
-
-#: 
-msgid "Guests"
-msgstr "Tamu-tamu"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Tidak ada kegiatan-kegiatan pada kategori ini"
 
 #: 
 msgid "Create Event"
@@ -948,20 +888,8 @@ msgid "Create a new Event"
 msgstr "Ciptakan kegiatan yang baru"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Sunting ID dari kegiatan"
-
-#: 
 msgid " errors. Please see below"
 msgstr "Error. Lihat ke bawah"
-
-#: 
-msgid "Items with a "
-msgstr "Barang dengan suatu"
-
-#: 
-msgid " are required"
-msgstr "diperlukan"
 
 #: 
 msgid "Select your event type"
@@ -972,16 +900,8 @@ msgid "You must pick an event type."
 msgstr "Anda harus memilih sebuat tipe kegiatan"
 
 #: 
-msgid "Event Desc"
-msgstr "Deskripsi kegiatan"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Data kehadiran tidak direkam"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Catatan mengenai kehadiran"
 
 #: 
 msgid "Event Sermon"

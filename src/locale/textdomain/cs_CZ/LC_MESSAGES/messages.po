@@ -371,10 +371,6 @@ msgid "Add Cart to Event"
 msgstr "Přidat košík do události"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Vyberte událost, do které chcete přidat svůj košík."
-
-#: 
 msgid "OR"
 msgstr "NEBO"
 
@@ -480,10 +476,6 @@ msgid "Empty Cart to Family"
 msgstr "Vyprázdnit košík do rodiny"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Vyprázdnit košík do události"
-
-#: 
 msgid "Map Cart"
 msgstr "Mapa košíku"
 
@@ -540,20 +532,8 @@ msgid "Event Checkin"
 msgstr "Přihlašování na událost"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Vyberte událost, na kterou chcete lidi přihlásit."
-
-#: 
 msgid "Select Event"
 msgstr "Vyberte událost"
-
-#: 
-msgid "Add Visitor"
-msgstr "Přidat návštěvníka"
-
-#: 
-msgid "CheckIn"
-msgstr "Přihlásit"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +558,6 @@ msgstr "Odhlášeno kým"
 #: 
 msgid "Action"
 msgstr "Akce"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "K události nejsou přiřazeni žádní účastníci"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -898,44 +874,8 @@ msgid "Edit"
 msgstr "Upravit"
 
 #: 
-msgid "Event Attendees"
-msgstr "Účastníci události"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Neúčastníci události"
-
-#: 
-msgid "Event Guests"
-msgstr "Hosté události"
-
-#: 
-msgid "There "
-msgstr "Je "
-
-#: 
 msgid "Event Title"
 msgstr "Název události"
-
-#: 
-msgid "Event Date"
-msgstr "Datum události"
-
-#: 
-msgid "Attending Members"
-msgstr "Účastnící se členové"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Neúčastnící se členové"
-
-#: 
-msgid "Guests"
-msgstr "Hosté"
-
-#: 
-msgid "There are no events in this category"
-msgstr "V této kategorii nejsou žádné události"
 
 #: 
 msgid "Create Event"
@@ -946,20 +886,8 @@ msgid "Create a new Event"
 msgstr "Vytvořit novou událost"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Upravujete událost ID: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " chyb. Viz níže"
-
-#: 
-msgid "Items with a "
-msgstr "Položky s "
-
-#: 
-msgid " are required"
-msgstr " je požadováno"
 
 #: 
 msgid "Select your event type"
@@ -970,16 +898,8 @@ msgid "You must pick an event type."
 msgstr "Musíte vybrat typ události"
 
 #: 
-msgid "Event Desc"
-msgstr "Popis události"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Žádné zaznamenané počty účastníků"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Poznámky k účasti: "
 
 #: 
 msgid "Event Sermon"

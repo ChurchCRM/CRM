@@ -115,8 +115,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         if ($groupSettings['isSundaySchool'] ?? false) {
             $group->makeSundaySchool();
         }
-        $group->setName($groupSettings['groupName']);
-        $group->setDescription($groupSettings['description'] ?? '');
+        $group->setName(strip_tags($groupSettings['groupName']));
+        $group->setDescription(strip_tags($groupSettings['description'] ?? ''));
         $group->setType($groupSettings['groupType'] ?? 0);
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
@@ -126,9 +126,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
-        $group->setName($input['groupName']);
+        $group->setName(strip_tags($input['groupName']));
         $group->setType($input['groupType']);
-        $group->setDescription($input['description'] ?? '');
+        $group->setDescription(strip_tags($input['description'] ?? ''));
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });
