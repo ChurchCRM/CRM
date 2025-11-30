@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-29 14:01-0800\n"
+"POT-Creation-Date: 2025-11-30 06:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -238,6 +238,9 @@ msgstr ""
 msgid "About Me"
 msgstr ""
 
+msgid "Access Denied"
+msgstr ""
+
 msgid "Access Token"
 msgstr ""
 
@@ -421,7 +424,13 @@ msgstr ""
 msgid "Add counter"
 msgstr ""
 
+msgid "Add event permission"
+msgstr ""
+
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr ""
+
+msgid "Add records permission"
 msgstr ""
 
 msgid "Add to Cart"
@@ -455,6 +464,9 @@ msgid "Address is required"
 msgstr ""
 
 msgid "Admin"
+msgstr ""
+
+msgid "Administrator privileges"
 msgstr ""
 
 msgid "Adult Checking Out Person"
@@ -1063,6 +1075,9 @@ msgstr ""
 msgid "CSV Individual Records"
 msgstr ""
 
+msgid "CSV export permission"
+msgstr ""
+
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr ""
 
@@ -1563,6 +1578,9 @@ msgstr ""
 msgid "Create an event type to get started."
 msgstr ""
 
+msgid "Create directory permission"
+msgstr ""
+
 msgid "Create new family"
 msgstr ""
 
@@ -1865,6 +1883,9 @@ msgid "Delete Selected"
 msgstr ""
 
 msgid "Delete Selected Rows"
+msgstr ""
+
+msgid "Delete records permission"
 msgstr ""
 
 msgid "Delete this Group"
@@ -2177,6 +2198,9 @@ msgid "Edit User"
 msgstr ""
 
 msgid "Edit Value"
+msgstr ""
+
+msgid "Edit records permission"
 msgstr ""
 
 msgid "Edit this Class"
@@ -2894,6 +2918,9 @@ msgstr ""
 msgid "Final Price"
 msgstr ""
 
+msgid "Finance access"
+msgstr ""
+
 msgid "Financial Reports"
 msgstr ""
 
@@ -3169,6 +3196,9 @@ msgstr ""
 msgid "Go"
 msgstr ""
 
+msgid "Go to Dashboard"
+msgstr ""
+
 msgid "Go to Login"
 msgstr ""
 
@@ -3270,6 +3300,9 @@ msgid "Group View"
 msgstr ""
 
 msgid "Group added to cart"
+msgstr ""
+
+msgid "Group management access"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -3469,6 +3502,9 @@ msgid "If you delete this type, you will also remove all properties using"
 msgstr ""
 
 msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr ""
+
+msgid "If you need access to this feature, please contact your church administrator."
 msgstr ""
 
 msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
@@ -4243,6 +4279,9 @@ msgstr ""
 msgid "Menu Name"
 msgstr ""
 
+msgid "Menu options access"
+msgstr ""
+
 msgid "Menus"
 msgstr ""
 
@@ -4812,6 +4851,9 @@ msgstr ""
 msgid "Notes"
 msgstr ""
 
+msgid "Notes access"
+msgstr ""
+
 msgid "Notes:"
 msgstr ""
 
@@ -5167,6 +5209,9 @@ msgid "Perform Import"
 msgstr ""
 
 msgid "Permission"
+msgstr ""
+
+msgid "Permission Required"
 msgstr ""
 
 msgid "Permissions"
@@ -5827,7 +5872,13 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
+msgid "Required Permission"
+msgstr ""
+
 msgid "Required fields"
+msgstr ""
+
+msgid "Required permission"
 msgstr ""
 
 msgid "Requires users to self-enroll in 2 factor authentication"
@@ -6858,6 +6909,9 @@ msgstr ""
 msgid "The minimum age for which you want records returned."
 msgstr ""
 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr ""
+
 msgid "The previous integrity check passed. All system file hashes match the expected values."
 msgstr ""
 
@@ -7396,7 +7450,13 @@ msgstr ""
 msgid "User authenticated via API Key: "
 msgstr ""
 
+msgid "User authentication"
+msgstr ""
+
 msgid "User must be an Admin"
+msgstr ""
+
+msgid "User must have Add Event permission"
 msgstr ""
 
 msgid "User must have Delete Records permission"
@@ -7411,10 +7471,7 @@ msgstr ""
 msgid "User must have Manage Groups permission"
 msgstr ""
 
-msgid "User must have MenuOptions permission"
-msgstr ""
-
-msgid "User must have bAddEvent permissions"
+msgid "User must have Menu Options permission"
 msgstr ""
 
 #. Context: userconfig_ucfg
@@ -7808,6 +7865,9 @@ msgid "You can create/delete sunday school group. "
 msgstr ""
 
 msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr ""
+
+msgid "You don't have access to this page"
 msgstr ""
 
 msgid "You have"
