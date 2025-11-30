@@ -155,7 +155,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
         echo '</table>';
         echo '<p class="text-center">';
 
-        if ($aHiddenFormField && count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php
+        if ($aHiddenFormField && count($aHiddenFormField) > 0) {
 ?>
             <form method="post" action="CartView.php">
                 <p class="text-center">

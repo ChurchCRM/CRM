@@ -121,12 +121,10 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             if ($sAction == 'add') {
                 if ($undupCount == 0) {
                     $rawPassword = User::randomPassword();
-                    $sPasswordHashSha256 = hash('sha256', $rawPassword . $iPersonID);
 
                     // Use ORM to create new user
                     $newUser = new User();
                     $newUser->setPersonId((int)$iPersonID)
-                        ->setPassword($sPasswordHashSha256)
                         ->setNeedPasswordChange(true)
                         ->setLastLogin(date('Y-m-d H:i:s'))
                         ->setAddRecords($AddRecords)
@@ -141,6 +139,8 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                         ->setDefaultFY($defaultFY)
                         ->setUserName($sUserName)
                         ->setEditSelf($EditSelf);
+                    // Use the User model's hashPassword method for secure bcrypt hashing
+                    $newUser->updatePassword($rawPassword);
                     $newUser->save();
 
                     $newUser->createTimeLineNote("created");

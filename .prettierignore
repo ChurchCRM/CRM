@@ -2,7 +2,6 @@ src/locale/states
 src/locale/i18n/
 src/locale/poeditor.json
 src/locale/vendor/
-src/locale/js/
 
 src/vendor/
 src/skin/external/

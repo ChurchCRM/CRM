@@ -140,6 +140,22 @@ class RestoreJob extends JobBase
         $this->Messages[] = gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting.');
         SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
         LoggerUtils::getAppLogger()->debug('Reset System Settings for: bEnableExternalBackupTarget and sLastIntegrityCheckTimeStamp');
+
+        // Rebuild views to ensure they are current after restore
+        $this->rebuildViews();
+    }
+
+    private function rebuildViews(): void
+    {
+        LoggerUtils::getAppLogger()->debug('Rebuilding database views after restore');
+        $connection = Propel::getConnection();
+        $viewsFile = SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql';
+        if (file_exists($viewsFile)) {
+            SQLUtils::sqlImport($viewsFile, $connection);
+            LoggerUtils::getAppLogger()->debug('Database views rebuilt successfully');
+        } else {
+            LoggerUtils::getAppLogger()->warning('Could not find rebuild_views.sql at: ' . $viewsFile);
+        }
     }
 
     public function execute(): void

@@ -110,7 +110,6 @@ window.CRM.kiosks = {
             path: "kiosks/" + id + "/reloadKiosk",
             method: "POST",
         }).done(function (data) {
-            //todo: tell the user the kiosk was reloaded..?  maybe nothing...
         });
     },
     enableRegistration: function () {

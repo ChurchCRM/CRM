@@ -112,7 +112,6 @@ class SystemURLs
                 }
             }
 
-            // jump to the first whitelisted url (TODO: maybe pick a ranodm URL?)
             if (!$validURL) {
                 header('Location: ' . $URL[0]);
                 exit;
