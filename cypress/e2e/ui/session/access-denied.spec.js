@@ -105,8 +105,8 @@ describe("Access Denied Page", () => {
         it("Should display default description for unknown role", () => {
             cy.visit("/v2/access-denied?role=UnknownRole");
             cy.contains("Permission Required").should("be.visible");
-            cy.get(".callout-warning").should("be.visible");
-            cy.contains("Required permission").should("be.visible");
+            // Unknown roles should NOT display a callout (security: don't expose invalid role names)
+            cy.get(".callout-warning").should("not.exist");
         });
     });
 
