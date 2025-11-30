@@ -10,10 +10,8 @@ use ChurchCRM\Utils\InputUtils;
 
 $eType = 'All';
 
-if (isset($_POST['WhichType'])) {
-    $eType = InputUtils::legacyFilterInput($_POST['WhichType']);
-} else {
-    $eType = 'All';
+if (isset($_POST['WhichType']) && $_POST['WhichType'] !== 'All') {
+    $eType = InputUtils::filterInt($_POST['WhichType']);
 }
 
 // Get event type name for page title
