@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <li><?= gettext("Make backups regularly (at least weekly)") ?></li>
                 </ul>
                 <div class="text-center">
-                    <a href="<?= SystemURLs::getRootPath() ?>/BackupDatabase.php" class="btn btn-primary btn-block">
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/backup" class="btn btn-primary btn-block">
                         <i class="fa fa-download mr-2"></i><?= gettext("Backup Database") ?>
                     </a>
                 </div>
@@ -71,7 +71,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <li><?= gettext("Supports ChurchInfo and older ChurchCRM backups") ?></li>
                 </ul>
                 <div class="text-center">
-                    <a href="<?= SystemURLs::getRootPath() ?>/RestoreDatabase.php" class="btn btn-warning btn-block">
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/restore" class="btn btn-warning btn-block">
                         <i class="fa fa-upload mr-2"></i><?= gettext("Restore Database") ?>
                     </a>
                 </div>

@@ -1,0 +1,144 @@
+<?php
+
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\SystemService;
+
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+$maxUploadSize = SystemService::getMaxUploadFileSize();
+?>
+
+<!-- Warning Card -->
+<div class="card card-danger">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-exclamation-triangle mr-2"></i><?= gettext('Important Warning') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="mb-0">
+                    <li class="text-danger"><strong><?= gettext('CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data.') ?></strong></li>
+                    <li><?= gettext('This action cannot be undone. Make sure you have a backup of the current data if needed.') ?></li>
+                    <li><?= gettext('If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema.') ?></li>
+                    <li><?= gettext('Encrypted backups (files ending with .enc) require the password used during backup creation.') ?></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Restore Form Card -->
+<div class="card card-warning">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-upload mr-2"></i><?= gettext('Restore Database') ?></h3>
+    </div>
+    <div class="card-body">
+        <form id="restoredatabase" action="<?= SystemURLs::getRootPath() ?>/api/database/restore" method="POST" enctype="multipart/form-data">
+            
+            <!-- File Upload Area -->
+            <div class="form-group">
+                <label><?= gettext('Select Backup File') ?></label>
+                <div id="dropzone" class="dropzone-area text-center p-4 border border-dashed rounded" style="border-style: dashed !important; cursor: pointer;">
+                    <input type="file" name="restoreFile" id="restoreFile" class="d-none" accept=".sql,.gz,.enc">
+                    <i class="fa-solid fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
+                    <p class="mb-1"><?= gettext('Drag and drop your backup file here') ?></p>
+                    <p class="text-muted mb-0"><?= gettext('or click to browse') ?></p>
+                    <small class="text-muted"><?= gettext('Supported formats:') ?> .sql, .sql.gz, .tar.gz, .enc</small>
+                </div>
+                <div id="fileInfo" class="alert alert-info mt-2 d-none">
+                    <i class="fa-solid fa-file mr-2"></i>
+                    <strong id="fileName"></strong>
+                    <span class="text-muted ml-2">(<span id="fileSize"></span>)</span>
+                </div>
+                <div id="encryptedFileWarning" class="alert alert-warning mt-2 d-none">
+                    <i class="fa-solid fa-lock mr-2"></i>
+                    <?= gettext('This appears to be an encrypted backup file. You will need to provide the password below.') ?>
+                </div>
+                <small class="form-text text-muted">
+                    <?= gettext('Maximum upload size') ?>: <strong><?= $maxUploadSize ?></strong>
+                </small>
+            </div>
+
+            <hr>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="restorePassword"><?= gettext('Backup Password') ?></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                    </div>
+                    <input type="password" class="form-control" id="restorePassword" name="restorePassword" placeholder="<?= gettext('Enter password if backup is encrypted') ?>">
+                </div>
+                <small class="form-text text-muted"><?= gettext('Leave blank if the backup is not encrypted.') ?></small>
+            </div>
+
+            <hr>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-warning btn-block btn-lg" id="submitRestore">
+                <i class="fa-solid fa-upload mr-2"></i><?= gettext('Restore Database') ?>
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Restore Status Card -->
+<div class="card" id="statusCard">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-tasks mr-2"></i><?= gettext('Restore Status') ?></h3>
+    </div>
+    <div class="card-body">
+        <div id="statusIdle">
+            <div class="text-center text-muted py-4">
+                <i class="fa-solid fa-database fa-3x mb-3"></i>
+                <p class="mb-0"><?= gettext('Ready to restore. Select a backup file and click Restore Database.') ?></p>
+            </div>
+        </div>
+        <div id="statusRunning" class="d-none">
+            <div class="text-center py-4">
+                <div class="spinner-border text-warning mb-3" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="sr-only"><?= gettext('Loading...') ?></span>
+                </div>
+                <p class="mb-0 text-warning font-weight-bold"><?= gettext('Restore in progress, please wait...') ?></p>
+                <small class="text-muted"><?= gettext('This may take several minutes for large databases. Do not close this page.') ?></small>
+            </div>
+        </div>
+        <div id="statusComplete" class="d-none">
+            <div class="text-center py-4">
+                <i class="fa-solid fa-check-circle fa-3x text-success mb-3"></i>
+                <p class="mb-2 text-success font-weight-bold"><?= gettext('Database restored successfully!') ?></p>
+                <div id="restoreMessages" class="text-left"></div>
+                <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="btn btn-primary btn-lg mt-3">
+                    <i class="fa-solid fa-sign-in-alt mr-2"></i><?= gettext('Login to Restored Database') ?>
+                </a>
+            </div>
+        </div>
+        <div id="statusError" class="d-none">
+            <div class="text-center py-4">
+                <i class="fa-solid fa-times-circle fa-3x text-danger mb-3"></i>
+                <p class="mb-2 text-danger font-weight-bold"><?= gettext('Restore failed.') ?></p>
+                <p class="text-muted" id="errorMessage"><?= gettext('Please check the backup file and try again.') ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.dropzone-area {
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+.dropzone-area:hover, .dropzone-area.dragover {
+    background-color: #e9ecef;
+    border-color: #007bff !important;
+}
+.dropzone-area.has-file {
+    background-color: #d4edda;
+    border-color: #28a745 !important;
+}
+</style>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/restore.min.js"></script>
+
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
